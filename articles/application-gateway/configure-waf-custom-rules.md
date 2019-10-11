@@ -1,45 +1,44 @@
 ---
-title: Web Application Firewall v2 aangepaste regels met behulp van Azure PowerShell configureren
-description: Informatie over het configureren van WAF v2 aangepaste regels met behulp van Azure PowerShell
+title: Aangepaste v2-regels voor Web Application Firewall configureren met behulp van Azure PowerShell
+description: Meer informatie over het configureren van aangepaste v2-regels voor Web Application Firewall met behulp van Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e50b47e22f5760c213cd0cafad82ecca592dec8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164739"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263741"
 ---
-# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Web Application Firewall v2 configureren met een aangepaste regel met behulp van Azure PowerShell
+# <a name="configure-web-application-firewall-v2-custom-rules-by-using-azure-powershell"></a>Aangepaste v2-regels voor Web Application Firewall configureren met behulp van Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Aangepaste regels kunnen u uw eigen regels geëvalueerd voor elke aanvraag die wordt doorgegeven via het Web Application Firewall (WAF) v2 maken. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regelsets. De aangepaste regels hebben een actie (wilt toestaan of blokkeren), een voorwaarde voor overeenkomst en een operator op die volledige aanpassing toestaan.
+Met aangepaste regels kunt u uw eigen regels maken, die worden geëvalueerd voor elke aanvraag die wordt door gegeven door de Web Application Firewall (WAF). Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. Als u een volledige aanpassing wilt toestaan, hebben de aangepaste regels een actie (toestaan of blok keren), een match-voor waarde en een operator.
 
-In dit artikel maakt u een Application Gateway WAF-v2 die gebruikmaakt van een aangepaste regel. De aangepaste regel blokken verkeer als de kop van de aanvraag gebruikersagent bevat *evilbot*.
+In dit artikel maakt u een Azure-toepassing gateway WAF v2 die gebruikmaakt van een aangepaste regel. De aangepaste regel blokkeert het verkeer als de aanvraag header de *evilbot*van de gebruikers agent bevat.
 
-Zie voor meer voorbeelden van aangepaste regel [maken en gebruik aangepaste web application firewall-regels](create-custom-waf-rules.md)
+Zie [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md)als u meer voor beelden van aangepaste regels wilt weer geven.
 
-Als u uitvoeren van Azure PowerShell in dit artikel in een continue script dat u kunt kopiëren wilt, plakken en uitvoeren, Zie [voorbeelden van Azure Application Gateway PowerShell](powershell-samples.md).
+Als u de Azure PowerShell-code in dit artikel wilt uitvoeren in één doorlopend script dat u kunt kopiëren, plakken en uitvoeren, raadpleegt u [Azure-toepassing gateway Power shell](powershell-samples.md)-voor beelden.
 
 ## <a name="prerequisites"></a>Vereisten
+* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-### <a name="azure-powershell-module"></a>Azure PowerShell-module
+* U hebt een Azure PowerShell module nodig. Als u ervoor kiest om Azure PowerShell lokaal te installeren en te gebruiken, is voor dit script Azure PowerShell module versie 2.1.0 of hoger vereist. Ga als volgt te werk:
 
-Als u wilt installeren en gebruiken van Azure PowerShell lokaal, met dit script is vereist voor de Azure PowerShell-moduleversie 2.1.0 of hoger.
-
-1. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
-2. Voer `Connect-AzAccount` uit om een verbinding met Azure tot stand te brengen.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+  1. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
+  2. Voer `Connect-AzAccount` uit om een verbinding met Azure tot stand te brengen.
 
 ## <a name="example-script"></a>Voorbeeldscript
 
 ### <a name="set-up-variables"></a>Variabelen instellen
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $rgname = "CustomRulesTest"
@@ -51,11 +50,15 @@ $appgwName = "WAFCustomRules"
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
+Voer de volgende code uit:
+
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 ```
 
-### <a name="create-a-vnet"></a>Een VNet maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -66,14 +69,18 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-vip"></a>Een statische openbare VIP maken
+### <a name="create-a-static-public-vip"></a>Een statisch openbaar VIP maken
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Maken van toepassingen en frontend-poort
+### <a name="create-a-pool-and-front-end-port"></a>Een pool en een front-end-poort maken
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -88,7 +95,9 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Maak een listener, http-instelling, regel en automatisch schalen
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Een listener, HTTP-instelling, regel en automatisch schalen maken
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -105,7 +114,9 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>De aangepaste regel maken en dit toepassen op de WAF-beleid
+### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Maak de aangepaste regel en pas deze toe op WAF-beleid
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
@@ -119,7 +130,9 @@ $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGro
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-### <a name="create-the-application-gateway"></a>De toepassingsgateway maken
+### <a name="create-an-application-gateway"></a>Een Application Gateway maken
+
+Voer de volgende code uit:
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `

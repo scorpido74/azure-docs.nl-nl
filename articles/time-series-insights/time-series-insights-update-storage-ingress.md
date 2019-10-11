@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051469"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273883"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
@@ -25,7 +25,7 @@ In dit artikel worden wijzigingen in de gegevens opslag en inkomend verkeer van 
 
 Azure Time Series Insights beleid voor het inkomen van gegevens bepaalt u waar gegevens kunnen worden gebrond en in welke indeling.
 
-[![Overzicht van Time Series-model](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+[overzicht van ![Time-serie model](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
 
 ### <a name="ingress-policies"></a>Ingangs beleid
 
@@ -34,7 +34,7 @@ De preview-versie van Time Series Insights ondersteunt dezelfde gebeurtenis bron
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
   
-Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden. Meer informatie over het optimaliseren van uw IoT JSON-gegevens vindt u in de [vorm van JSON](./time-series-insights-send-events.md#json).
+Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden. Meer informatie over het optimaliseren van uw IoT JSON-gegevens vindt u in de [vorm van JSON](./time-series-insights-send-events.md#supported-json-shapes).
 
 ### <a name="data-storage"></a>Gegevensopslag
 
@@ -56,7 +56,7 @@ De Time Series Insights preview indexeert gegevens met behulp van een optimalisa
 > * Tijdens de preview periode wordt een langere termijn verwacht voordat de gegevens beschikbaar worden gemaakt.
 > * Neem contact met ons op als u een belang rijke latentie ondervindt.
 
-### <a name="scale"></a>Schalen
+### <a name="scale"></a>Schaal
 
 De preview-versie van Time Series Insights biedt ondersteuning voor een eerste ingangs schaal van Maxi maal 1 Mega byte per seconde (Mbps) per omgeving. Verbeterde ondersteuning voor schalen is actief. We gaan onze documentatie bijwerken om deze verbeteringen weer te geven.
 
@@ -89,22 +89,22 @@ Met Time Series Insights worden kopieën van blobs gemaakt en opgeslagen in de v
     * Minimale gebeurtenis-tijds tempel in een BLOB voor blobs gepartitioneerd door de time series-ID.
 
 > [!NOTE]
-> * `<YYYY>`wordt toegewezen aan een jaar representatie van vier cijfers.
-> * `<MM>`wordt toegewezen aan een maand weergave van twee cijfers.
-> * `<YYYYMMDDHHMMSSfff>`wordt toegewezen aan een tijds tempel weergave met`YYYY`een jaar van vier cijfers (), een maand van 2 cijfers (`MM`), 2`DD`-cijferig dag (), 2`HH`-cijferig uur (), 2`MM`-cijferig minuut (), 2`SS`-cijfer seconde () en 3-cijfer milliseconde`fff`().
+> * `<YYYY>` wordt toegewezen aan een jaar representatie van vier cijfers.
+> * `<MM>` wijst toe aan een maand weergave van twee cijfers.
+> * `<YYYYMMDDHHMMSSfff>` wordt toegewezen aan een tijds tempel weergave met een jaar van vier cijfers (`YYYY`), 2-cijferige maand (`MM`), 2-cijfer dag (`DD`), 2-cijferig uur (`HH`), 2-cijferig minuut (`MM`), 2-cijferig seconde (`SS`) en 3-cijferig milliseconde (`fff`).
 
 Time Series Insights gebeurtenissen worden als volgt toegewezen aan de Parquet-bestands inhoud:
 
 * Elke gebeurtenis wordt toegewezen aan één rij.
 * Ingebouwde **Time Stamp** -kolom met een gebeurtenis tijds tempel. De tijds tempel eigenschap is nooit null. Standaard wordt de **gebeurtenis bron** in de wachtrij geplaatst als de time stamp-eigenschap niet is opgegeven in de bron van de gebeurtenis. De tijds tempel is UTC. 
-* Alle andere eigenschappen die worden toegewezen aan kolommen end with `_string` (String), `_bool` (Booleaans), `_datetime` (datetime) en `_double` (double), afhankelijk van het type eigenschap.
+* Alle andere eigenschappen die zijn toegewezen aan kolommen eindigen met `_string` (teken reeks), `_bool` (Booleaanse waarde), `_datetime` (datetime) en `_double` (double), afhankelijk van het type eigenschap.
 * Dat is het toewijzings schema voor de eerste versie van de bestands indeling, waarnaar wordt verwezen als **V = 1**. Wanneer deze functie wordt ontwikkeld, wordt de naam verhoogd naar **V = 2**, **v = 3**, enzovoort.
 
 ## <a name="azure-storage"></a>Azure Storage
 
 In deze sectie worden Azure Storage gegevens beschreven die relevant zijn voor Azure Time Series Insights.
 
-Lees de [Inleiding tot opslag](../storage/blobs/storage-blobs-introduction.md)-blobs voor een uitgebreide beschrijving van de Azure Blob Storage-service.
+Lees de [Inleiding tot opslag-blobs](../storage/blobs/storage-blobs-introduction.md)voor een uitgebreide beschrijving van de Azure Blob Storage-service.
 
 ### <a name="your-storage-account"></a>Uw opslag account
 
@@ -130,7 +130,7 @@ U kunt toegang krijgen tot gegevens die zijn opgeslagen in de Time Series Insigh
 U kunt op drie manieren toegang krijgen tot uw gegevens:
 
 * Vanuit de Time Series Insights preview Explorer: u kunt gegevens exporteren als een CSV-bestand vanuit de Time Series Insights preview Explorer. Zie [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md)voor meer informatie.
-* Van de preview-Api's van Time Series Insights: het API-eind punt `/getRecorded`kan worden bereikt op. Zie [Time Series query](./time-series-insights-update-tsq.md)(Engelstalig) voor meer informatie over deze API.
+* Van de Time Series Insights preview-Api's: het API-eind punt kan worden bereikt op `/getRecorded`. Zie [Time Series query](./time-series-insights-update-tsq.md)(Engelstalig) voor meer informatie over deze API.
 * Rechtstreeks vanuit een Azure-opslag account (hieronder).
 
 #### <a name="from-an-azure-storage-account"></a>Vanuit een Azure-opslag account
@@ -171,8 +171,8 @@ Een fysieke partitie is een blok-blob die is opgeslagen in uw opslag account. De
 
 Een logische partitie is een partitie binnen een fysieke partitie waarin alle gegevens worden opgeslagen die zijn gekoppeld aan één partitie sleutel waarde. De Time Series Insights preview logisch partitioneert elke Blob op basis van twee eigenschappen:
 
-* **Tijd reeks-id**: De partitie sleutel voor alle Time Series Insights gegevens in de gebeurtenis stroom en het model.
-* **Tijds tempel**: De tijd op basis van de eerste ingang.
+* **Tijd reeks-id**: de partitie sleutel voor alle time series Insights gegevens in de gebeurtenis stroom en het model.
+* **Tijds tempel**: de tijd op basis van de eerste ingang.
 
 Het Time Series Insights preview biedt query's op basis van deze twee eigenschappen. Deze twee eigenschappen bieden ook de meest efficiënte methode voor het snel leveren van Time Series Insights gegevens.
 

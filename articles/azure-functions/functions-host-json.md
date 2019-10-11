@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176586"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263338"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
 
@@ -187,6 +187,20 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 ## <a name="http"></a>http
 
 Configuratie-instellingen vindt u in [http-triggers en-bindingen](functions-bindings-http-webhook.md).
+
+```json
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100,
+            "dynamicThrottlesEnabled": true
+        }
+    }
+}
+```
+
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 

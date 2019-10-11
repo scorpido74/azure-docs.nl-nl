@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018923"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263874"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: toepassingen uitvoeren in AKS (Azure Kubernetes Service)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassingen uitvoeren in AKS (Azure Kubernetes Service)
 
 Kubernetes biedt een gedistribueerd platform voor toepassingen in containers. U gaat uw eigen toepassingen en services implementeren in een Kubernetes-cluster, en u laat het cluster de beschikbaarheid en connectiviteit beheren. In deze zelfstudie, deel vier van zeven, wordt een voorbeeldtoepassing geïmplementeerd in een Kubernetes-cluster. In deze zelfstudie leert u procedures om het volgende te doen:
 
@@ -105,7 +105,7 @@ Eerst wordt het *Extern IP-adres* voor de service *azure-vote-front* weergegeven
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Zodra het *Extern IP-adres* is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
+Zodra het *EXTERNAL-IP*-adres is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -115,7 +115,7 @@ Open een webbrowser naar het externe IP-adres van uw service als u de toepassing
 
 ![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [Toegang tot Container Registry met een Kubernetes-geheim toestaan](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret) als de containerinstallatiekopieën niet kunnen worden opgehaald.
+Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [verifiëren met Azure container Registry vanuit de Azure Kubernetes-service](cluster-container-registry-integration.md)als de container installatie kopieën niet kunnen worden opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
 

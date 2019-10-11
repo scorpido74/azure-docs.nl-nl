@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ecbd0cfed262b928e6a821406e80f5a4456c6c9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 93dd7b13ca9e1a3f078994e76610c45447cfa41c
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988077"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264087"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Zelfstudie: Azure Active Directory logboeken streamen naar een Azure-Event Hub
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Zelf studie: stream Azure Active Directory logboeken naar een Azure-Event Hub
 
 In deze zelfstudie leert u hoe u de diagnostische instellingen van Azure Monitor instelt voor het streamen van Azure AD-logboeken (Azure Active Directory) naar een Azure Event Hub. Gebruik dit mechanisme om uw logboeken te integreren met externe SIEM-hulpprogramma's (Security Information and Event Management), zoals Splunk en QRadar.
 
@@ -39,9 +39,9 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Logboeken streamen naar een Event Hub
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
-2. Selecteer **Azure Active Directory** > **Activiteit** > **Auditlogboeken**. 
+2. Selecteer **Azure Active Directory** **controle logboeken**voor @no__t **-1-controle @no__t**-3. 
 
 3. Selecteer **Exportinstellingen**.  
     
@@ -69,7 +69,7 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 10. Controleer na circa vijftien minuten of er gebeurtenissen in uw Event Hub worden weergegeven. Ga hiervoor vanuit de portal naar de Event Hub en controleer of het aantal **inkomende berichten** groter is dan nul. 
 
-    ![Controlelogboeken](./media/quickstart-azure-monitor-stream-logs-to-event-hub/InsightsLogsAudit.png)
+    ![Auditlogboeken](./media/quickstart-azure-monitor-stream-logs-to-event-hub/InsightsLogsAudit.png)
 
 ## <a name="access-data-from-your-event-hub"></a>Gegevens openen vanuit de Event Hub
 
@@ -77,7 +77,7 @@ Nadat gegevens in de Event Hub worden weergegeven, kunt u de gegevens op twee ma
 
 * **Een ondersteund SIEM-hulpprogramma configureren**. Als u gegevens vanuit de Event Hub wilt lezen, zijn voor de meeste hulpprogramma's de Event Hub-verbindingsreeks en bepaalde machtigingen voor uw Azure-abonnement vereist. Hulpprogramma's van derden met Azure Monitor-integratie zijn onder meer:
     
-    * **ArcSight**: Voor meer informatie over het integreren van Azure AD-logboeken met Splunk raadpleegt [u Azure Active Directory-logboeken integreren met ArcSight met behulp van Azure monitor](howto-integrate-activity-logs-with-arcsight.md).
+    * **ArcSight**: voor meer informatie over het integreren van Azure AD-logboeken met Splunk raadpleegt [u Azure Active Directory-logboeken integreren met ArcSight met behulp van Azure monitor](howto-integrate-activity-logs-with-arcsight.md).
     
     * **Splunk**: zie [Integrate Azure AD logs with Splunk by using Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md) (Azure AD-logboeken integreren met Splunk met behulp van Azure Monitor) voor meer informatie over het integreren van Azure AD-logboeken met Splunk.
     

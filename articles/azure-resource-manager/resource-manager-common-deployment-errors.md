@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001637"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263038"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
@@ -28,13 +28,14 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | Foutcode | Oplossing | Meer informatie |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Volg de naam beperkingen voor opslag accounts. | [Naam van opslag account oplossen](resource-manager-storage-account-name-errors.md) |
-| AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [Storage accounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [inrichting en toewijzing van problemen voor Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) en het [oplossen van toewijzings fouten](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Wacht tot de gelijktijdige bewerking is voltooid. | |
 | AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Access Control op basis van rollen in azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](resource-manager-register-provider-errors.md) |
-| BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
-| Conflict | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
+| Onjuiste aanvraag | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
+| Conflicteren | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
 | DeploymentActiveAndUneditable | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
+| DeploymentFailedCleanUp | Wanneer u in de volledige modus implementeert, worden alle resources die zich niet in de sjabloon bevinden, verwijderd. U krijgt deze fout melding wanneer u niet over de juiste machtigingen beschikt om alle resources te verwijderen die niet in de sjabloon staan. Als u de fout wilt voor komen, wijzigt u de implementatie modus in incrementeel. | [Implementatie modi Azure Resource Manager](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | De implementatie naam mag alleen letter, cijfer, '-', '. ' of ' _ ' bevatten. | |
 | DeploymentNameLengthLimitExceeded | De namen van de implementaties zijn beperkt tot 64 tekens.  | |
 | Heeft | De heeft-fout is een algemene fout die niet de details biedt die u nodig hebt om de fout op te lossen. Bekijk de fout Details voor een fout code die meer informatie bevat. | [Fout code zoeken](#find-error-code) |
@@ -61,7 +62,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | MissingRegistrationForLocation | Controleer de registratie status van de resource provider en de ondersteunde locaties. | [Registratie oplossen](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Registreer uw abonnement bij de resource provider. | [Registratie oplossen](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Controleer de registratie status van de resource provider. | [Registratie oplossen](resource-manager-register-provider-errors.md) |
-| Niet gevonden | Mogelijk probeert u een afhankelijke bron parallel te implementeren met een bovenliggende resource. Controleer of u een afhankelijkheid moet toevoegen. | [Afhankelijkheden oplossen](resource-manager-not-found-errors.md) |
+| NotFound | Mogelijk probeert u een afhankelijke bron parallel te implementeren met een bovenliggende resource. Controleer of u een afhankelijkheid moet toevoegen. | [Afhankelijkheden oplossen](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Er wordt geprobeerd een bewerking uit te voeren die het quotum voor het abonnement, de resource groep of de regio overschrijdt. Als dat mogelijk is, kunt u uw implementatie herzien zodat deze binnen de quota's blijft. Als dat niet het geval is, kunt u een wijziging aanvragen voor uw quota's. | [Quota's omzetten](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Zorg ervoor dat er een bovenliggende resource bestaat voordat u de onderliggende resources maakt. | [Bovenliggende resource omzetten](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Mogelijk hebt u een wacht woord met te veel tekens geselecteerd of hebt u uw wachtwoord waarde naar een beveiligde teken reeks geconverteerd voordat u deze als een para meter door gegeven. Als de sjabloon een **beveiligde teken reeks** parameter bevat, hoeft u de waarde niet te converteren naar een veilige teken reeks. Geef de wachtwoord waarde op als tekst. |  |
@@ -93,7 +94,7 @@ Validatiefouten ontstaan door scenario's en kunnen vóór de implementatie worde
 
 Beide typen fouten retourneren een foutcode die u gebruikt om de problemen met de implementatie op te lossen. Beide typen fouten worden weergegeven in het [activiteitenlogboek](resource-group-audit.md). Validatiefouten worden echter niet weergegeven in de implementatiegeschiedenis omdat de implementatie niet is gestart.
 
-### <a name="validation-errors"></a>Validatiefouten
+### <a name="validation-errors"></a>validatie fouten
 
 Wanneer u een implementatie uitvoert via de portal, ziet u een validatiefout na het indienen van uw waarden.
 
@@ -131,7 +132,7 @@ Het foutbericht en de foutcodes worden dan weergegeven. U ziet twee foutcodes. D
 
 ![Fout Details](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>Inschakelen van logboekregistratie voor foutopsporing
+## <a name="enable-debug-logging"></a>Logboek registratie voor fout opsporing inschakelen
 
 Soms hebt u meer informatie nodig over de aanvraag en het antwoord om te ontdekken wat er mis ging. Tijdens de implementatie kunt u aanvragen dat er aanvullende informatie wordt geregistreerd tijdens een implementatie.
 
@@ -167,7 +168,7 @@ Of de antwoord inhoud met:
 
 Aan de hand van deze informatie kunt u bepalen of een waarde in de sjabloon onjuist is ingesteld.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Momenteel biedt Azure CLI geen ondersteuning voor het inschakelen van logboek registratie voor fout opsporing, maar u kunt logboek registratie voor fout opsporing ophalen.
 
@@ -246,11 +247,11 @@ In sommige gevallen kunt u het beste de eenvoudigste manier om de sjabloon op te
 }
 ```
 
-Of stel dat u problemen ondervindt met de implementatie die zijn gerelateerd aan onjuist ingestelde afhankelijkheden. Test uw sjabloon door deze te splitsen in vereenvoudigde sjablonen. Maak eerst een sjabloon waarmee slechts één resource (zoals een SQL Server) wordt geïmplementeerd. Wanneer u zeker weet dat de bron correct is gedefinieerd, voegt u een bron toe die hiervan afhankelijk is (zoals een SQL Database). Wanneer u deze twee resources correct hebt gedefinieerd, voegt u andere afhankelijke resources toe (zoals controle beleid). Verwijder in tussen elke test implementatie de resource groep om ervoor te zorgen dat u de afhankelijkheden adequaat kunt testen.
+Of stel dat u implementatie fouten krijgt die u vermoedt dat ze zijn gerelateerd aan onjuist ingestelde afhankelijkheden. Test uw sjabloon door deze te splitsen in vereenvoudigde sjablonen. Maak eerst een sjabloon waarmee slechts één resource (zoals een SQL Server) wordt geïmplementeerd. Als u zeker weet dat de bron correct is gedefinieerd, voegt u een bron toe die hiervan afhankelijk is (zoals een SQL Database). Wanneer u deze twee resources correct hebt gedefinieerd, voegt u andere afhankelijke resources toe (zoals controle beleid). Verwijder in tussen elke test implementatie de resource groep om ervoor te zorgen dat u de afhankelijkheden adequaat kunt testen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u een zelf studie voor probleem oplossing wilt door lopen, raadpleegt u [Tutorial: Problemen met implementaties van Resource Manager-sjablonen oplossen @ no__t-0
+* Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](./resource-manager-tutorial-troubleshoot.md) voor een zelf studie over probleem oplossing.
 * Zie [bewerkingen controleren met Resource Manager](resource-group-audit.md)voor meer informatie over controle acties.
 * Zie [implementatie bewerkingen weer geven](resource-manager-deployment-operations.md)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.

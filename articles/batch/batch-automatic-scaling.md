@@ -13,13 +13,13 @@ ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdea67d682bab335de02e55f5864460e3daefb95
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254939"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274827"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -107,6 +107,11 @@ U kunt de waarden van deze door de service gedefinieerde variabelen ophalen en i
 | $TargetDedicatedNodes |Het doel aantal toegewezen reken knooppunten voor de pool. Het aantal toegewezen knoop punten is als doel opgegeven, omdat een pool mogelijk niet altijd het gewenste aantal knoop punten bereikt. Als het doel aantal toegewezen knoop punten bijvoorbeeld wordt gewijzigd door een evaluatie van automatisch schalen voordat de groep het eerste doel heeft bereikt, kan de groep het doel niet bereiken. <br /><br /> Een pool in een account dat is gemaakt met de batch-service configuratie heeft mogelijk niet het doel bereikt als het doel een knoop punt van een batch-account of een kern quotum overschrijdt. Een pool in een account dat is gemaakt met de configuratie van gebruikers abonnementen, bereikt mogelijk niet het doel als het doel het gedeelde kern quotum voor het abonnement overschrijdt.|
 | $TargetLowPriorityNodes |Het doel aantal reken knooppunten met lage prioriteit voor de groep. Het aantal knoop punten met een lage prioriteit wordt als doel opgegeven, omdat een pool mogelijk niet altijd het gewenste aantal knoop punten bereikt. Als het doel aantal knoop punten met een lage prioriteit bijvoorbeeld wordt gewijzigd door een evaluatie van automatisch schalen voordat de groep het eerste doel heeft bereikt, kan de groep het doel niet bereiken. Het doel van een pool kan ook niet worden bereikt als het doel een knoop punt van een batch-account of een kern quotum overschrijdt. <br /><br /> Zie [virtuele machines met lage prioriteit gebruiken met batch (preview)](batch-low-pri-vms.md)voor meer informatie over reken knooppunten met lage prioriteit. |
 | $NodeDeallocationOption |De actie die wordt uitgevoerd wanneer reken knooppunten uit een pool worden verwijderd. Mogelijke waarden zijn:<ul><li>opnieuw **in wachtrij plaatsen**: de standaard waarde. Hiermee worden taken onmiddellijk beëindigd en weer in de taak wachtrij geplaatst, zodat ze opnieuw worden gepland. Met deze actie zorgt u ervoor dat het doel aantal knoop punten zo snel mogelijk wordt bereikt, maar het kan minder efficiënt zijn, omdat alle actieve taken worden onderbroken en opnieuw moeten worden gestart, waardoor alle werkzaamheden die ze al hebben uitgevoerd, worden geverspild. <li>**beëindigen**: Hiermee worden taken onmiddellijk beëindigd en uit de taak wachtrij verwijderd.<li>**taskcompletion**: wacht tot actieve taken zijn voltooid en verwijder vervolgens het knoop punt uit de groep. Gebruik deze optie om te voor komen dat taken worden onderbroken en opnieuw in de wachtrij worden geplaatst, zodat alle werk dat de taak heeft uitgevoerd, wordt verspild. <li>**retaineddata**: er wordt gewacht tot alle lokale taak gegevens die op het knoop punt zijn bewaard, moeten worden opgeruimd voordat het knoop punt uit de groep wordt verwijderd.</ul> |
+
+> [!NOTE]
+> De variabele `$TargetDedicatedNodes` kan ook worden opgegeven met de alias `$TargetDedicated`. Op dezelfde manier kan de variabele `$TargetLowPriorityNodes` worden opgegeven met behulp van de alias `$TargetLowPriority`. Als zowel de volledig benoemde variabele als de bijbehorende alias wordt ingesteld door de formule, heeft de waarde die is toegewezen aan de volledig benoemde variabele prioriteit.
+>
+>
 
 U kunt de waarde van deze door de service gedefinieerde variabelen ophalen om aanpassingen te maken die zijn gebaseerd op metrische gegevens van de batch-service:
 

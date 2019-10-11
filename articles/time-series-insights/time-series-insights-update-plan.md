@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300701"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273719"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights-voorbeeld omgeving plannen
 
@@ -82,7 +82,7 @@ Een goede vuist regel:
 * Sla meta gegevens op in uw time series-model.
 * De modus Time Series, instance Fields en Events bevatten alleen de benodigde informatie, zoals een tijd reeks-ID of tijds tempel.
 
-Zie [gebeurtenissen vorm](./time-series-insights-send-events.md#json)geven voor meer informatie.
+Zie [gebeurtenissen vorm](./time-series-insights-send-events.md#supported-json-shapes)geven voor meer informatie.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

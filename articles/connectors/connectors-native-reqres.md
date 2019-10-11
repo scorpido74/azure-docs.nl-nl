@@ -9,15 +9,15 @@ ms.author: estfan
 ms.reviewers: klam, LADocs
 manager: carmonm
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
-ms.topic: article
-ms.date: 09/06/2019
+ms.topic: conceptual
+ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122716"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264346"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps
 
@@ -27,7 +27,8 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 * Activeer een werk stroom wanneer een externe webhook-gebeurtenis plaatsvindt.
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
-De aanvraag trigger ondersteunt *alleen* https. Als u in plaats daarvan uitgaande HTTP-of HTTPS-aanroepen wilt maken, gebruikt u de ingebouwde [http-trigger of-actie](../connectors/connectors-native-http.md).
+> [!NOTE]
+> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen blijven ondersteuning bieden voor TLS 1,0, 1,1 en 1,2. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +42,7 @@ De aanvraag trigger ondersteunt *alleen* https. Als u in plaats daarvan uitgaand
 
 Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u het [type trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak ' HTTP-aanvraag ' in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 
@@ -51,7 +52,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    ![Trigger voor aanvragen](./media/connectors-native-reqres/request-trigger.png)
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Description |
+   | Naam van eigenschap | JSON-eigenschaps naam | Verplicht | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
    | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
@@ -107,7 +108,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    }
    ```
 
-   Wanneer u een JSON-schema invoert, wordt in de ontwerp functie een herinnering `Content-Type` weer gegeven om de koptekst op te vragen en de `application/json`waarde voor de header in te stellen op. Zie voor meer informatie [inhouds typen verwerken](../logic-apps/logic-apps-content-type.md).
+   Wanneer u een JSON-schema invoert, wordt in de ontwerp functie een herinnering weer gegeven voor de `Content-Type`-header in uw aanvraag en wordt de waarde voor de header ingesteld op `application/json`. Zie voor meer informatie [inhouds typen verwerken](../logic-apps/logic-apps-content-type.md).
 
    ![Herinnering voor het toevoegen van de header content-type](./media/connectors-native-reqres/include-content-type.png)
 
@@ -150,7 +151,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
 1. Als u aanvullende eigenschappen wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Description |
+   | Naam van eigenschap | JSON-eigenschaps naam | Verplicht | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **Methode** | `method` | Nee | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
    | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
@@ -162,13 +163,13 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    De eigenschap **Method** wordt weer gegeven in de trigger zodat u een methode kunt selecteren in de lijst.
 
-   ![Een methode selecteren](./media/connectors-native-reqres/select-method.png)
+   ![Methode selecteren](./media/connectors-native-reqres/select-method.png)
 
 1. Voeg nu een andere actie toe als de volgende stap in uw werk stroom. Selecteer de **volgende stap** onder de trigger zodat u de actie kunt vinden die u wilt toevoegen.
 
    U kunt bijvoorbeeld reageren op de aanvraag door [een reactie actie toe te voegen](#add-response), die u kunt gebruiken om een aangepast antwoord te retour neren en dit later in dit onderwerp wordt beschreven.
 
-   Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw `504 GATEWAY TIMEOUT` logische app een naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
+   Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED`-antwoord naar de aanroeper.
 
 1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie. 
 
@@ -182,7 +183,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
 Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
-| JSON-eigenschaps naam | Gegevenstype | Description |
+| JSON-eigenschaps naam | Gegevenstype | Beschrijving |
 |--------------------|-----------|-------------|
 | `headers` | Object | Een JSON-object dat de headers van de aanvraag beschrijft |
 | `body` | Object | Een JSON-object waarmee de inhoud van de hoofd tekst van de aanvraag wordt beschreven |
@@ -194,7 +195,7 @@ Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
 U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTPS-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTPS-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
 
-Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw `504 GATEWAY TIMEOUT` logische app een naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
+Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED`-antwoord naar de aanroeper.
 
 1. Selecteer in de ontwerp functie voor logische apps onder de stap waarin u een reactie actie wilt toevoegen de optie **nieuwe stap**.
 
@@ -214,7 +215,7 @@ Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan
 
    In sommige velden wordt de lijst met dynamische inhoud geopend wanneer u in hun vakken klikt. Vervolgens kunt u tokens selecteren die beschik bare uitvoer van de vorige stappen in de werk stroom vertegenwoordigen. Eigenschappen uit het schema dat in het vorige voor beeld is opgegeven, worden nu weer gegeven in de lijst met dynamische inhoud.
 
-   Bijvoorbeeld, voor het vak **headers** , vermeld `Content-Type` als de sleutel naam en stel de sleutel waarde in op `application/json` zoals eerder in dit onderwerp wordt vermeld. Voor het vak **hoofd tekst** kunt u de uitvoer van de trigger hoofdtekst selecteren in de lijst met dynamische inhoud.
+   Bijvoorbeeld, voor het vak **kopteksten** , `Content-Type` als sleutel naam, en stel de sleutel waarde in op `application/json` zoals eerder in dit onderwerp is genoemd. Voor het vak **hoofd tekst** kunt u de uitvoer van de trigger hoofdtekst selecteren in de lijst met dynamische inhoud.
 
    ![Details van reactie actie](./media/connectors-native-reqres/response-details.png)
 
@@ -224,7 +225,7 @@ Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan
 
    Hier vindt u meer informatie over de eigenschappen die u kunt instellen in de reactie actie. 
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Description |
+   | Naam van eigenschap | JSON-eigenschaps naam | Verplicht | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **Statuscode** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
    | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |

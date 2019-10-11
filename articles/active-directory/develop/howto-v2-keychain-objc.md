@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269036"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264181"
 ---
-# <a name="configure-keychain"></a>Sleutel keten configureren
+# <a name="configure-keychain"></a>Sleutelketen configureren
 
-Wanneer de [micro soft-verificatie bibliotheek voor IOS-en macOS](msal-overview.md) (MSAL) in een gebruiker of een token vernieuwt, probeert de tokens in de sleutel hanger op te slaan. Met de cache-tokens in de sleutel hanger kan MSAL eenmalige aanmelding (SSO) bieden tussen meerdere apps die door dezelfde Apple-ontwikkelaar worden gedistribueerd. SSO wordt bereikt via de functionaliteit voor de toegangs groepen van de sleutel hanger (Zie de [documentatie van Apple](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc))
+Wanneer de [micro soft-verificatie bibliotheek voor IOS-en macOS](msal-overview.md) (MSAL) in een gebruiker of een token vernieuwt, probeert de tokens in de sleutel hanger op te slaan. In cache-tokens in de sleutel hanger kan MSAL eenmalige aanmelding (SSO) bieden tussen meerdere apps die worden gedistribueerd door dezelfde Apple-ontwikkelaar. SSO wordt bereikt via de functionaliteit voor de toegangs groepen van de sleutel hanger. Zie de documentatie voor de [sleutel hanger-items](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)van Apple voor meer informatie.
 
 In dit artikel wordt beschreven hoe u de rechten van een app kunt configureren, zodat MSAL tokens in de cache kan schrijven naar iOS-en macOS-sleutel hanger.
 
@@ -34,21 +34,21 @@ In dit artikel wordt beschreven hoe u de rechten van een app kunt configureren, 
 
 ### <a name="ios"></a>iOS
 
-MSAL op Ios maakt standaard `com.microsoft.adalcache` gebruik van de toegangs groep. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
+MSAL op iOS maakt standaard gebruik van de `com.microsoft.adalcache`-toegangs groep. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
 
-Voeg op Ios `com.microsoft.adalcache` de sleutel keten groep toe aan het recht van uw app in Xcode onder **project instellingen** > **capaciteit** > van**sleutel hanger delen**
+Voeg op iOS de `com.microsoft.adalcache`-sleutel keten groep toe aan het recht van uw app in XCode onder **project instellingen** > **mogelijkheden** > **sleutel hanger delen**
 
 ### <a name="macos"></a>macOS
 
-MSAL in macOS maakt `com.microsoft.identity.universalstorage` standaard gebruik van toegangs groep.
+MSAL in macOS maakt standaard gebruik van `com.microsoft.identity.universalstorage`-toegangs groep.
 
-Als gevolg van de beperkingen van `access group` macOS-sleutel hanger, wordt MSAL niet rechtstreeks vertaald naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerdere versies. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
+Als gevolg van de beperkingen van de macOS-sleutel hanger de `access group` van MSAL niet rechtstreeks naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerdere versies. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
 
 Op macOS 10,15 en hoger (macOS Catalina) maakt MSAL gebruik van de toegangs groeps kenmerk sleutel hanger voor het verkrijgen van een stille SSO, op dezelfde wijze als iOS.
 
 ## <a name="custom-keychain-access-group"></a>Toegangs groep voor aangepaste sleutel hanger
 
-Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u de aangepaste groep tijdens `MSALPublicClientApplicationConfig` het maken `MSALPublicClientApplication`door geven voordat u deze maakt, bijvoorbeeld:
+Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u uw aangepaste groep door geven tijdens het maken van `MSALPublicClientApplicationConfig` voordat u `MSALPublicClientApplication` maakt, bijvoorbeeld:
 
 Doel-C:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 728d32ddb63658d24e932e8eeef4a3f50371ccc3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177661"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72265046"
 ---
 # <a name="virtual-network-peering"></a>Virtual Network-peering
 
@@ -91,6 +91,9 @@ Zie [Machtigingen voor peering op een virtueel netwerk](virtual-network-manage-p
 Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een verbinding voor virtueel netwerk-peering. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie over prijzen voor VNet-peering en wereldwijde VNet-peering.
 
 Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute kan gebruiken in een gekoppeld virtueel netwerk voor cross-premises of VNet-naar-VNet-connectiviteit. Verkeer naar de gateway (binnenkomend of uitgaand) in het gekoppelde VNet brengt VNet-peering-kosten met zich mee. Raadpleeg kosten voor [VPN-gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) of ExpressRoute-gateway kosten en [VNet-peering-kosten](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
+
+>[!NOTE]
+> In een vorige versie van dit document is aangegeven dat de VNet-peering-kosten niet van toepassing zijn op gateway-door voer. Dit is bijgewerkt om nauw keurige prijzen weer te geven per prijzen pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 

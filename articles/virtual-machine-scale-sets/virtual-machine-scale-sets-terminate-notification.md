@@ -3,7 +3,7 @@ title: Melding beëindigen voor instanties van virtuele-machine schaal sets van 
 description: Meer informatie over het inschakelen van beëindigings meldingen voor instanties van de schaalset voor virtuele machines van Azure
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
-ms.author: manayar
-ms.openlocfilehash: de303032fcbbde30534c802e3d5185aedf05cb98
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.author: vashan
+ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076236"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264682"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure (preview-versie)
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. Met de preview-oplossing wordt een andere gebeurtenis toegevoegd: beëindigen: aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.
@@ -165,7 +165,7 @@ U kunt ook verwijzen naar voorbeeld scripts voor het uitvoeren van query's en he
 Als er een fout bericht ' onjuiste aanvraag ' wordt weer gegeven met de melding ' kan geen scheduledEventsProfile vinden voor het object van het type ' VirtualMachineProfile ', controleert u de API-versie die wordt gebruikt voor de bewerkingen van de schaalset. Compute API-versie **2019-03-01** of hoger is vereist voor deze preview.
 
 ### <a name="failure-to-get-terminate-events"></a>Kan geen beëindigings gebeurtenissen ophalen
-Als er geen Terminate- gebeurtenissen worden ontvangen via Scheduled Events, controleert u vervolgens de API-versie die wordt gebruikt voor het ophalen van de gebeurtenissen. Metadata Service API-versie **2019-01-01** of hoger is vereist voor Terminate-gebeurtenissen.
+Als er geen **Terminate** -gebeurtenissen worden ontvangen via Scheduled Events, controleert u vervolgens de API-versie die wordt gebruikt voor het ophalen van de gebeurtenissen. Metadata Service API-versie **2019-01-01** of hoger is vereist voor Terminate-gebeurtenissen.
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>De gebeurtenis Terminate met een onjuiste NotBefore-tijd ophalen  

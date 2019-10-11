@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841299"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274489"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -30,35 +30,35 @@ Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's a
 - Probeer de domein naam te pingen vanaf de opdracht regel op de virtuele machine.
 - Bekijk de lijst met fout berichten voor domein deelname in het [oplossen van fout berichten voor domein deelname](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
-### <a name="error-incorrect-credentials"></a>Fout: Onjuiste referenties
+### <a name="error-incorrect-credentials"></a>Fout: onjuiste referenties
 
-**Wordt** Er is een type fout opgetreden bij het invoeren van de referenties in de Azure Resource Manager sjabloon-interface oplossingen.
+**Oorzaak:** Er is een type fout opgetreden bij het invoeren van de referenties in de Azure Resource Manager sjabloon-interface oplossingen.
 
-**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
+**Oplossen:** Voer een van de volgende acties uit om het probleem op te lossen.
 
 - Voeg de Vm's hand matig toe aan een domein.
 - De sjabloon opnieuw implementeren wanneer de referenties zijn bevestigd. Zie [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 - Virtuele machines toevoegen aan een domein met behulp van een sjabloon met een [bestaande Windows-VM koppelen aan een AD-domein](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
-### <a name="error-timeout-waiting-for-user-input"></a>Fout: Time-out bij het wachten op invoer van de gebruiker
+### <a name="error-timeout-waiting-for-user-input"></a>Fout: time-out bij het wachten op invoer van de gebruiker
 
-**Wordt** Het account dat wordt gebruikt voor het volt ooien van het lidmaatschap van een domein, heeft mogelijk multi-factor Authentication (MFA).
+**Oorzaak:** Het account dat wordt gebruikt voor het volt ooien van het lidmaatschap van een domein, heeft mogelijk multi-factor Authentication (MFA).
 
-**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
+**Oplossen:** Voer een van de volgende acties uit om het probleem op te lossen.
 
 - MFA voor het account tijdelijk verwijderen.
 - Gebruik een service account.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Fout: Het account dat wordt gebruikt tijdens het inrichten, heeft geen machtigingen om de bewerking te volt ooien
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Fout: het account dat wordt gebruikt tijdens het inrichten, heeft geen machtigingen om de bewerking te volt ooien
 
-**Wordt** Het account dat wordt gebruikt, heeft geen machtigingen om Vm's toe te voegen aan het domein vanwege naleving en voor Schriften.
+**Oorzaak:** Het account dat wordt gebruikt, heeft geen machtigingen om Vm's toe te voegen aan het domein vanwege naleving en voor Schriften.
 
-**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
+**Oplossen:** Voer een van de volgende acties uit om het probleem op te lossen.
 
 - Gebruik een account dat lid is van de groep Administrators.
 - Verleen de benodigde machtigingen voor het account dat wordt gebruikt.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Fout: Domein naam kan niet worden omgezet
+### <a name="error-domain-name-doesnt-resolve"></a>Fout: de domein naam kan niet worden omgezet
 
 **Oorzaak 1:** Vm's bevinden zich in een virtueel netwerk dat niet is gekoppeld aan het virtuele netwerk (VNET) waarin het domein zich bevindt.
 
@@ -66,7 +66,7 @@ Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's a
 
 **Oorzaak 2:** Wanneer u Azure Active Directory Domain Services (Azure AD DS) gebruikt, zijn de DNS-server instellingen van het virtuele netwerk niet bijgewerkt zodat ze verwijzen naar de beheerde domein controllers.
 
-**Fix 2:** Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)om de DNS-instellingen voor het virtuele netwerk met Azure AD DS bij te werken.
+**Oplossing 2:** Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)om de DNS-instellingen voor het virtuele netwerk met Azure AD DS bij te werken.
 
 **Oorzaak 3:** De DNS-server instellingen van de netwerk interface verwijzen niet naar de juiste DNS-server in het virtuele netwerk.
 
@@ -80,11 +80,11 @@ De aanbevolen manier om Vm's in te richten, is met behulp van de Azure Resource 
 
 Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en om te controleren op fout berichten.
 
-1. Controleer of de twee onderdelen zijn geïnstalleerd door**Program** > ma's**en onderdelen**van het **configuratie scherm** > te controleren. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
+1. Controleer of de twee onderdelen zijn geïnstalleerd door in **het configuratie scherm**op  > **Program ma's** > **Program ma's en onderdelen**te controleren. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
 2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\scriptlogs.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
 3. Als het bestand **C:\Windows\Temp\scriptlogs.log** aanwezig is, opent u het en controleert u op fout berichten.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Fout: De Windows-agent voor virtueel bureau blad en de opstart lader voor de Windows Virtual Desktop agent ontbreken. C:\Windows\Temp\scriptlogs.log ontbreekt ook
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Fout: Windows Virtual Desktop agent en de opstart lader van de Windows Virtual Desktop agent ontbreken. C:\Windows\Temp\scriptlogs.log ontbreekt ook
 
 **Oorzaak 1:** De referenties die zijn opgegeven tijdens de invoer voor de Azure Resource Manager sjabloon zijn onjuist of de machtigingen zijn ontoereikend.
 
@@ -92,17 +92,17 @@ Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en 
 
 **Oorzaak 2:** Power shell DSC kan worden gestart en uitgevoerd, maar is niet voltooid omdat het niet kan worden aangemeld bij het virtuele Windows-bureau blad en de benodigde informatie kan verkrijgen.
 
-**Fix 2:** Bevestig de items in de volgende lijst.
+**Oplossing 2:** Bevestig de items in de volgende lijst.
 
 - Zorg ervoor dat het account geen MFA heeft.
 - Controleer of de naam van de Tenant juist is en of de Tenant bestaat in het virtuele bureau blad van Windows.
 - Bevestig dat het account ten minste RDS-Inzender machtigingen heeft.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Fout: De verificatie is mislukt, fout in C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Fout: de verificatie is mislukt, fout in C:\Windows\Temp\scriptlogs.log
 
-**Wordt** Power shell DSC kan worden uitgevoerd, maar kan geen verbinding maken met het virtuele bureau blad van Windows.
+**Oorzaak:** Power shell DSC kan worden uitgevoerd, maar kan geen verbinding maken met het virtuele bureau blad van Windows.
 
-**Fix:** Bevestig de items in de volgende lijst.
+**Oplossen:** Bevestig de items in de volgende lijst.
 
 - Registreer de Vm's hand matig met de virtueel-bureaublad service van Windows.
 - Het account dat wordt gebruikt om verbinding te maken met het virtuele bureau blad van Windows, heeft machtigingen voor de Tenant om hostgroepen op te stellen.
@@ -112,13 +112,13 @@ Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en 
 
 Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd op de host van de sessiehost (hand matig of via de Azure Resource Manager sjabloon en Power shell DSC), biedt deze een registratie token. De volgende sectie bevat informatie over het oplossen van problemen die van toepassing zijn op de Windows Virtual Desktop agent en het token.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: De status die is opgeslagen in de cmdlet Get-RdsSessionHost, toont de status als niet beschikbaar
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die is opgeslagen in de cmdlet Get-RdsSessionHost, toont de status als niet beschikbaar
 
 ![Met de cmdlet Get-RdsSessionHost wordt de status weer gegeven als niet beschikbaar.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Wordt** De agent kan zichzelf niet bijwerken naar een nieuwe versie.
+**Oorzaak:** De agent kan zichzelf niet bijwerken naar een nieuwe versie.
 
-**Fix:** Volg deze instructies om de agent hand matig bij te werken.
+**Oplossen:** Volg deze instructies om de agent hand matig bij te werken.
 
 1. Down load een nieuwe versie van de agent op de host-VM van de sessie.
 2. Start taak beheer en stop de RDAgentBootLoader-service op het tabblad Service.
@@ -127,11 +127,11 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 5. Voltooi de installatie wizard.
 6. Open taak beheer en start de RDAgentBootLoader-service.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Fout:  De register vermelding IsRegistered van de virtueel-bureaublad agent bevat de waarde 0
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Fout: de register vermelding IsRegistered van de virtuele-bureaublad agent bevat een waarde van 0
 
-**Wordt** Het registratie token is verlopen of is gegenereerd met de verval waarde van 999999.
+**Oorzaak:** Het registratie token is verlopen of is gegenereerd met de verval waarde van 999999.
 
-**Fix:** Volg deze instructies om de register fout van de agent op te lossen.
+**Oplossen:** Volg deze instructies om de register fout van de agent op te lossen.
 
 1. Als er al een registratie token bestaat, verwijdert u het met Remove-RDSRegistrationInfo.
 2. Nieuw token genereren met RDS-NewRegistrationInfo.
@@ -145,7 +145,7 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 **Oorzaak 2:** Poort 443 kan worden gesloten.
 
-**Fix 2:** Volg deze instructies voor het openen van poort 443.
+**Oplossing 2:** Volg deze instructies voor het openen van poort 443.
 
 1. Bevestig dat poort 443 is geopend door het PSPing-hulp programma te downloaden van [sysinternal-hulpprogram ma's](https://docs.microsoft.com/sysinternals/downloads/psping).
 2. Installeer PSPing op de host-VM waarop de agent wordt uitgevoerd.
@@ -203,9 +203,9 @@ Controleer de hieronder vermelde Register vermeldingen en controleer of de waard
 
 ![O_REVERSE_CONNECT_STACK_FAILURE-fout code.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Wordt** De side-by-side-stack is niet geïnstalleerd op de host-VM van de sessie.
+**Oorzaak:** De side-by-side-stack is niet geïnstalleerd op de host-VM van de sessie.
 
-**Fix:** Volg deze instructies voor het installeren van de side-by-side-stack op de host-VM van de sessie.
+**Oplossen:** Volg deze instructies voor het installeren van de side-by-side-stack op de host-VM van de sessie.
 
 1. Gebruik Remote Desktop Protocol (RDP) om rechtstreeks naar de host-VM te gaan als lokale beheerder.
 2. Down load en importeer [de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dit nog niet hebt gedaan, voert u deze cmdlet uit om u aan te melden bij uw account:
@@ -233,7 +233,7 @@ De virtuele machine die wordt gebruikt voor het uitvoeren van herstel, moet zich
 Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en domein:
 
 1. Maak verbinding met Standard Remote Desktop Protocol (RDP) naar de VM vanaf waar de oplossing wordt toegepast.
-2. Down load PsExec https://docs.microsoft.com/sysinternals/downloads/psexec van.
+2. Down load PsExec van https://docs.microsoft.com/sysinternals/downloads/psexec.
 3. Pak het gedownloade bestand uit.
 4. Start de opdracht prompt als lokale beheerder.
 5. Ga naar map waar PsExec is uitgepakt.
@@ -296,13 +296,13 @@ Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderst
 
 16. Wanneer de cmdlets worden uitgevoerd, start u de VM opnieuw op met de stack-aan-zij die niet goed werkt.
 
-## <a name="remote-licensing-model-isnt-configured"></a>Het externe licentie model is niet geconfigureerd
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>De licentie modus Extern bureaublad is niet geconfigureerd
 
 Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise multi-session, ontvangt u mogelijk een melding met de tekst ' Extern bureaublad licentie modus is niet geconfigureerd Extern bureaublad-services werkt niet meer over X dagen. Gebruik op de Connection Broker-server Serverbeheer om de Extern bureaublad licentie modus op te geven. "
 
 Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst ' de externe sessie is beëindigd omdat er geen Extern bureaublad licenties voor client toegang beschikbaar zijn voor deze computer. '
 
-Als u een van deze berichten ziet, betekent dit dat u de groepsbeleid editor moet openen en de licentie modus hand matig moet configureren op **per gebruiker**. Het hand matige configuratie proces verschilt, afhankelijk van welke versie van Windows 10 Enter prise multi-session u gebruikt. In de volgende secties wordt uitgelegd hoe u uw versie nummer controleert en wat u moet doen.
+Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt op **per gebruiker**. Verwijder alle configuraties die dit beleid instellen en volg de stappen om de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
 
 >[!NOTE]
 >Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)voor meer informatie over het configureren van een RDS CAL.
@@ -322,50 +322,11 @@ Nu u het versie nummer weet, gaat u verder met de relevante sectie.
 
 ### <a name="version-1809"></a>Versie 1809
 
-Als uw versie nummer ' 1809 ' bevat, kunt u een upgrade uitvoeren naar Windows 10 Enter prise multi-session versie 1903 of de hostgroep opnieuw implementeren met de nieuwste installatie kopie.
-
-Als u een upgrade wilt uitvoeren naar Windows 10, versie 1903:
-
-1. Als u dit nog niet hebt gedaan, downloadt en installeert u de [Update voor Windows 10 mei 2019](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
-2. Meld u aan bij uw computer met uw beheerders account.
-3. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
-4. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
-5. Selecteer **de licentie modus Extern bureaublad instellen**.
-6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven als **per gebruiker**, zoals wordt weer gegeven in de volgende afbeelding.
-    
-    ![Een scherm opname van het venster ' Extern bureaublad licentie modus instellen ' dat is geconfigureerd volgens de instructies in stap 6.](media/group-policy-editor-per-user.png)
-
-7. Selecteer **Toepassen**.
-8. Selecteer **OK**.
-9.  Start de computer opnieuw op.
-
-De hostgroep opnieuw implementeren met de nieuwste installatie kopie:
-
-1. Volg de instructies in [een hostgroep maken met behulp van Azure Marketplace](create-host-pools-azure-marketplace.md) totdat u wordt gevraagd om een versie van het besturings systeem installatie kopie te kiezen. U kunt kiezen voor een multi-sessie met Windows 10 Enter prise met of zonder Office365 ProPlus.
-2. Meld u aan bij uw computer met uw beheerders account.
-3. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
-4. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
-5. Selecteer **de licentie modus Extern bureaublad instellen**.
-6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven **per gebruiker**.
-7. Selecteer **Toepassen**.
-8. Selecteer **OK**.
-9.  Start de computer opnieuw op.
+Als uw versie nummer 1809 is, installeert u [de update KB4516077](https://support.microsoft.com/help/4516077).
 
 ### <a name="version-1903"></a>Versie 1903
 
-Als uw versie nummer "1903" is, volgt u deze instructies:
-
-1. Meld u aan bij uw computer met uw beheerders account.
-2. Voer **gpedit. msc** uit om de Groepsbeleid editor te openen.
-3. Ga onder computer configuratie naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad Session Host** > -**licentie verlening** .
-4. Selecteer **de licentie modus Extern bureaublad instellen**.
-6. In het venster dat wordt geopend, selecteert u eerst **ingeschakeld**en vervolgens onder Opties de licentie modus voor de extern bureau blad-sessiehostserver opgeven als **per gebruiker**, zoals wordt weer gegeven in de volgende afbeelding.
-    
-    ![Een scherm opname van het venster ' Extern bureaublad licentie modus instellen ' dat is geconfigureerd volgens de instructies in stap 6.](media/group-policy-editor-per-user.png)
-
-7. Selecteer **Toepassen**.
-8. Selecteer **OK**.
-9.  Start de computer opnieuw op.
+Als uw versie nummer 1903 is, installeert u [de update KB4517211](https://support.microsoft.com/help/4517211).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -375,6 +336,6 @@ Als uw versie nummer "1903" is, volgt u deze instructies:
 - Zie [extern bureaublad-client verbindingen](troubleshoot-client-connection.md)voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
 - Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
 - Zie [Windows Virtual Desktop Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de service.
-- Zie [zelf studie voor het oplossen van problemen met de zelf studie: Problemen oplossen met implementaties](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)van Resource Manager-sjablonen.
+- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)om de zelf studie voor problemen oplossen op te lossen.
 - Zie [bewerkingen controleren met Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)voor meer informatie over controle acties.
 - Zie [implementatie bewerkingen weer geven](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.

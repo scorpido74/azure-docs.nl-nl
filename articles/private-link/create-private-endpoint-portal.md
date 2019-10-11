@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 603e9912d7154913d2cd9f08c3b2040db953fe29
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030302"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274668"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt maken met Azure Portal
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een SQL-Server in Azure in dit voor beeld).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
@@ -41,12 +41,12 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
-    | Subscription | Selecteer uw abonnement.|
-    | Resource group | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Location | Selecteer **WestCentralUS**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
+    | Abonnement | Selecteer uw abonnement.|
+    | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
+    | Locatie | Selecteer **WestCentralUS**.|
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
 1. Laat de rest als standaard en selecteer **maken**.
@@ -58,17 +58,17 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
-    | Subscription | Selecteer uw abonnement. |
-    | Resource group | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
-    | **EXEMPLAARDETAILS** |  |
+    | Abonnement | Selecteer uw abonnement. |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
+    | **INSTANTIEDETAILS** |  |
     | Naam van de virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Image | Selecteer **Windows Server 2019 Data Center**. |
-    | Size | Laat de standaardwaarde **Standard DS1 v2** staan. |
+    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -79,9 +79,9 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Selecteer **Volgende: Schijven**.
+1. Selecteer **volgende: schijven**.
 
-1. In **een virtuele machine maken-schijven**, behoud de standaard instellingen en selecteer **Next: Netwerken**.
+1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
@@ -107,23 +107,23 @@ In deze sectie maakt u een SQL database-server in Azure.
 
 1. Voer in **SQL database basis beginselen maken**de volgende gegevens in of Selecteer deze:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | **Database Details** | |
-    | Subscription | Selecteer uw abonnement. |
-    | Resource group | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
-    | **EXEMPLAARDETAILS** |  |
-    | De naam van database  | Voer *mydatabase*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Abonnement | Selecteer uw abonnement. |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | **INSTANTIEDETAILS** |  |
+    | Databasenaam  | Voer *mydatabase*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |||
 5. Selecteer in **Server**de optie **nieuwe maken**. 
 6. In **nieuwe server**voert u de volgende gegevens in of selecteert u deze:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     |Servernaam  | Voer *mijn server*in. Als deze naam wordt gebruikt, maakt u een unieke naam.|
     | Aanmeldgegevens van serverbeheerder| Voer de naam van de beheerder van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
-    | Location | Selecteer een Azure-regio waar u wilt dat uw SQL Server zich bevindt. |
+    | Locatie | Selecteer een Azure-regio waar u wilt dat uw SQL Server zich bevindt. |
     
 7. Selecteer **OK**. 
 8. Selecteer **controleren + maken**. U gaat naar de @no__t voor het **bekijken en maken**van 1page, waar Azure uw configuratie valideert. 
@@ -138,30 +138,30 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
 2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
 1. Voer in **een persoonlijk eind punt maken (preview)-basis beginselen**de volgende gegevens in of Selecteer deze:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | **Project Details** | |
-    | Subscription | Selecteer uw abonnement. |
-    | Resource group | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
-    | **EXEMPLAARDETAILS** |  |
-    | Name | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Abonnement | Selecteer uw abonnement. |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | **INSTANTIEDETAILS** |  |
+    | Naam | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **WestCentralUS**.|
     |||
-5. Selecteer @ no__t-0Next: Resource @ no__t-0.
+5. Selecteer **volgende: resource**.
 6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     |Verbindingsmethode  | Selecteer verbinding maken met een Azure-resource in mijn Directory.|
-    | Subscription| Selecteer uw abonnement. |
+    | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. SQL/servers**. |
-    | Resource |*Mijn server* selecteren|
+    | Bron |*Mijn server* selecteren|
     |Doel-subresource |*SqlServer* selecteren|
     |||
-7. Selecteer @ no__t-0Next: Configuratie @ no__t-0.
+7. Selecteer **volgende: Configuratie**.
 8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     |**INBEL**| |
     | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
@@ -183,7 +183,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 1. Open het bestand gedownloade. rdp *.
 
@@ -219,11 +219,11 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
 
 4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | Servertype| Selecteer **Database Engine**.|
     | Servernaam| *MyServer.database.Windows.net* selecteren |
-    | Gebruikersnaam | Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
+    | Gebruikersnaam | Voer de gebruikers naam in als username@servername die wordt opgegeven tijdens het maken van de SQL-Server. |
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
     |Wacht woord onthouden|Selecteer **Ja**.|
     |||

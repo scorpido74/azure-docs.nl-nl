@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613784"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263865"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten met behulp van de Azure CLI
 
@@ -68,7 +68,7 @@ De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functie
 * Init-containers
 * [Host-aliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
-* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
+* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
 * [Windows Server-knoop punten (momenteel in de preview-versie van AKS)](windows-container-cli.md) worden niet ondersteund naast virtuele knoop punten. U kunt virtuele knoop punten gebruiken om Windows Server-containers te plannen zonder dat Windows Server-knoop punten nodig zijn in een AKS-cluster.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
@@ -87,7 +87,7 @@ Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geï
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 Maak een virtueel netwerk met behulp van de opdracht [AZ Network vnet Create][az-network-vnet-create] . In het volgende voor beeld wordt een virtuele netwerk naam *myVnet* met het adres voorvoegsel *10.0.0.0/8*en een subnet met de naam *myAKSSubnet*. Het adres voorvoegsel van dit subnet is standaard ingesteld op *10.240.0.0/16*:
 
@@ -158,7 +158,7 @@ U implementeert een AKS-cluster in het AKS-subnet dat u in een vorige stap hebt 
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Gebruik de opdracht [AZ AKS Create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Vervang `<subnetId>` door de id die u hebt verkregen in de vorige stap `<appId>` en `<password>` vervolgens en met de 
+Gebruik de opdracht [AZ AKS Create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Vervang `<subnetId>` door de ID die u in de vorige stap hebt verkregen en klik vervolgens `<appId>` en `<password>` met de 
 
 ```azurecli-interactive
 az aks create \
@@ -214,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Een voor beeld-app implementeren
 
-Maak een bestand met `virtual-node.yaml` de naam en kopieer de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd.
+Maak een bestand met de naam `virtual-node.yaml` en kopieer het in de volgende YAML. Als u de container op het knoop punt wilt plannen, worden er een [nodeSelector][node-selector] en- [tolerantie][toleration] gedefinieerd.
 
 ```yaml
 apiVersion: apps/v1
@@ -253,7 +253,7 @@ Voer de toepassing uit met de opdracht [kubectl apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Gebruik de opdracht [kubectl Get peul][kubectl-get] with het `-o wide` argument voor het uitvoeren van een lijst met een van de peulen en het geplande knoop punt. U ziet dat `aci-helloworld` de Pod is gepland op het `virtual-node-aci-linux` knoop punt.
+Gebruik de opdracht [kubectl Get peul][kubectl-get] met het argument `-o wide` om een lijst van peulen en het geplande knoop punt uit te voeren. U ziet dat de pod van de `aci-helloworld` is gepland op het knoop punt `virtual-node-aci-linux`.
 
 ```
 $ kubectl get pods -o wide
@@ -265,7 +265,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Aan de Pod wordt een intern IP-adres toegewezen vanuit het subnet van het virtuele netwerk van Azure dat is gedelegeerd voor gebruik met virtuele knoop punten.
 
 > [!NOTE]
-> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, kan er geen peulen gepland op virtuele knoop punten worden gestart en `HTTP response status code 400 error code "InaccessibleImage"`wordt de fout gerapporteerd.
+> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, mislukt het begin van de virtuele knoop punten en wordt de fout `HTTP response status code 400 error code "InaccessibleImage"` gerapporteerd.
 
 ## <a name="test-the-virtual-node-pod"></a>De pod van het virtuele knoop punt testen
 
@@ -275,13 +275,13 @@ Als u de pod die op het virtuele knoop punt wordt uitgevoerd wilt testen, blader
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Installeer `curl` in de Pod met `apt-get`:
+Installeer `curl` in de Pod met behulp van `apt-get`:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-U hebt nu toegang tot het adres van `curl`uw Pod met *http://10.241.0.4* , zoals. Geef uw eigen interne IP-adres op dat wordt `kubectl get pods` weer gegeven in de vorige opdracht:
+U hebt nu toegang tot het adres van uw Pod met `curl`, zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods`-opdracht:
 
 ```console
 curl -L http://10.241.0.4
@@ -364,6 +364,7 @@ Virtuele knoop punten zijn vaak één onderdeel van een schaal oplossing in AKS.
 [aks-github]: https://github.com/azure/aks/issues
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -384,4 +385,3 @@ Virtuele knoop punten zijn vaak één onderdeel van een schaal oplossing in AKS.
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

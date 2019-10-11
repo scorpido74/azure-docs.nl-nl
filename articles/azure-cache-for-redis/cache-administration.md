@@ -14,30 +14,30 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827587"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263694"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure-cache beheren voor redis
 In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieuw opstarten](#reboot) en het [plannen van updates](#schedule-updates) voor uw Azure-cache voor redis-exemplaren.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>Opnieuw starten
+## <a name="reboot"></a>Opnieuw opstarten
 Op de Blade **opnieuw opstarten** kunt u een of meer knoop punten van de cache opnieuw opstarten. Met deze mogelijkheid voor opnieuw opstarten kunt u uw toepassing testen op tolerantie als er een fout optreedt in een cache knooppunt.
 
-![Opnieuw starten](./media/cache-administration/redis-cache-administration-reboot.png)
+![Opnieuw opstarten](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Selecteer de knoop punten die u opnieuw wilt opstarten en klik op **opnieuw opstarten**.
 
-![Opnieuw starten](./media/cache-administration/redis-cache-reboot.png)
+![Opnieuw opstarten](./media/cache-administration/redis-cache-reboot.png)
 
 Als u een Premium-cache met clustering hebt ingeschakeld, kunt u selecteren welke Shards de cache moet worden opgestart.
 
-![Opnieuw starten](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Opnieuw opstarten](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u de gewenste knoop punten en klikt u op **opnieuw opstarten**. Als u een Premium-cache met clustering hebt ingeschakeld, selecteert u de gewenste Shards om opnieuw op te starten en klikt u vervolgens op **opnieuw opstarten**. Na enkele minuten worden de geselecteerde knoop punten opnieuw opgestart en zijn ze een paar minuten later weer online.
 
@@ -48,17 +48,11 @@ De invloed op client toepassingen varieert, afhankelijk van de knoop punten die 
 * **Zowel Master als slave** : wanneer beide cache knooppunten opnieuw worden opgestart, gaan alle gegevens verloren in de cache en worden de verbindingen met de cache mislukt totdat het primaire knoop punt weer online is. Als u [gegevens persistentie](cache-how-to-premium-persistence.md)hebt geconfigureerd, wordt de meest recente back-up hersteld wanneer de cache weer online is, maar eventuele cache schrijf bewerkingen die zijn opgetreden na de meest recente back-up, gaan verloren.
 * **Knoop punten van een Premium-cache waarbij Clustering is ingeschakeld** : wanneer u een of meer knoop punten van een Premium-cache opnieuw opstart terwijl Clustering is ingeschakeld, is het gedrag voor de geselecteerde knoop punten hetzelfde als wanneer u het bijbehorende knoop punt of knoop punten van een niet-geclusterde cache opnieuw opstart.
 
-> [!IMPORTANT]
-> Opnieuw opstarten is nu beschikbaar voor alle prijs categorieën.
-> 
-> 
-
 ## <a name="reboot-faq"></a>Veelgestelde vragen over opnieuw opstarten
 * [Welk knoop punt moet ik opnieuw opstarten om mijn toepassing te testen?](#which-node-should-i-reboot-to-test-my-application)
 * [Kan ik de cache opnieuw opstarten om client verbindingen te wissen?](#can-i-reboot-the-cache-to-clear-client-connections)
 * [Gaan er gegevens verloren vanuit mijn cache als ik opnieuw opstart?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [Kan ik mijn cache opnieuw opstarten met Power shell, CLI of andere beheer hulpprogramma's?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [Welke prijs categorieën kan de functionaliteit voor opnieuw opstarten gebruiken?](#what-pricing-tiers-can-use-the-reboot-functionality)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Welk knoop punt moet ik opnieuw opstarten om mijn toepassing te testen?
 Als u de tolerantie van uw toepassing wilt testen op fouten van het primaire knoop punt van uw cache, start u het **hoofd** knooppunt opnieuw op. Als u de tolerantie van uw toepassing wilt testen tegen storing van het secundaire knoop punt, start u het **Slave** -knoop punt opnieuw op. Als u de tolerantie van uw toepassing wilt testen tegen de totale uitval van de cache, moet u **beide** knoop punten opnieuw opstarten.
@@ -79,23 +73,18 @@ Als u slechts één van de knoop punten opnieuw opstart, gaan de gegevens doorga
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan ik mijn cache opnieuw opstarten met Power shell, CLI of andere beheer hulpprogramma's?
 Ja, voor Power shell-instructies Zie [een Azure-cache opnieuw opstarten voor redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Welke prijs categorieën kan de functionaliteit voor opnieuw opstarten gebruiken?
-Opnieuw opstarten is beschikbaar voor alle prijs categorieën.
-
 ## <a name="schedule-updates"></a>Updates plannen
 Op de Blade **updates plannen** kunt u een onderhouds venster voor uw cache-exemplaar aanwijzen. Wanneer het onderhouds venster is opgegeven, worden er redis-server updates gemaakt tijdens dit venster. 
 
 > [!NOTE] 
 > Het onderhouds venster is alleen van toepassing op redis-server updates en niet op Azure-updates of updates voor het besturings systeem van de virtuele machines die de cache hosten.
-> 
-> 
+>
 
 ![Updates plannen](./media/cache-administration/redis-schedule-updates.png)
 
 Als u een onderhouds venster wilt opgeven, controleert u de gewenste dagen en geeft u het onderhouds venster voor elke dag op en klikt u op **OK**. Houd er rekening mee dat de tijd van het onderhouds venster in UTC is. 
 
 Het standaard en minimale onderhouds venster voor updates is vijf uur. Deze waarde kan niet worden geconfigureerd vanuit de Azure Portal, maar u kunt deze configureren in Power shell met de para meter `MaintenanceWindow` van de cmdlet [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Zie kan ik geplande updates beheren met Power shell, CLI of andere beheer hulpprogramma's? voor meer informatie.
-
 
 ## <a name="schedule-updates-faq"></a>Veelgestelde vragen over het plannen van updates
 * [Wanneer worden er updates uitgevoerd als ik de functie updates plannen niet gebruik?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

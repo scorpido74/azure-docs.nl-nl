@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827412"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264316"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -39,7 +39,7 @@ Ja. Zie de documentatie van [Twistlock](https://www.twistlock.com/2016/11/07/twi
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Hoe kan ik Kubernetes met Azure Container Registry configureren?
 
-Raadpleeg de documentatie voor [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) en stappen voor de [Azure Kubernetes-service](container-registry-auth-aks.md).
+Raadpleeg de documentatie voor [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) en stappen voor de [Azure Kubernetes-service](../aks/cluster-container-registry-integration.md).
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Hoe kan ik beheerders referenties voor een container register ophalen?
 
@@ -111,7 +111,7 @@ Het duurt enige tijd om firewall regel wijzigingen door te geven. Nadat u de fir
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hoe kan ik Access docker Registry HTTP API v2?
 
-ACR ondersteunt het docker-REGI ster HTTP API v2. De Api's hebben toegang tot `https://<your registry login server>/v2/`. Voorbeeld: `https://mycontainerregistry.azurecr.io/v2/`
+ACR ondersteunt het docker-REGI ster HTTP API v2. De Api's zijn toegankelijk op `https://<your registry login server>/v2/`. Voorbeeld: `https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Hoe kan ik alle manifesten waarnaar niet wordt verwezen door een tag in een opslag plaats verwijderen?
 
@@ -127,7 +127,7 @@ Voor Power shell:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-Opmerking: U kunt de `-y` opdracht verwijderen toevoegen om bevestiging te overs Laan.
+Opmerking: u kunt `-y` toevoegen in de opdracht verwijderen om bevestiging over te slaan.
 
 Zie [container installatie kopieën verwijderen in azure container Registry](container-registry-delete.md)voor meer informatie.
 
@@ -172,7 +172,7 @@ U moet de Azure CLI-container uitvoeren door de docker-socket te koppelen:
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock azuresdk/azure-cli-python:dev
 ```
 
-Installeer `docker`in de container:
+Installeer `docker` in de container:
 
 ```bash
 apk --update add docker
@@ -190,7 +190,7 @@ Ja. Schakel TLS in met behulp van een recente docker-client (versie 18.03.0 en h
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Ondersteunt Azure Container Registry inhoud vertrouwen?
 
-Ja, u kunt vertrouwde installatie kopieën gebruiken in Azure Container Registry, omdat de poort van de docker- [notaris](https://docs.docker.com/notary/getting_started/) is geïntegreerd en kan worden ingeschakeld. Zie voor meer informatie [vertrouwen in inhoud in azure container Registry](container-registry-content-trust.md).
+Ja, u kunt vertrouwde installatie kopieën gebruiken in Azure Container Registry, omdat de poort van de [docker-notaris](https://docs.docker.com/notary/getting_started/) is geïntegreerd en kan worden ingeschakeld. Zie voor meer informatie [vertrouwen in inhoud in azure container Registry](container-registry-content-trust.md).
 
 
 ####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Waar bevindt zich het bestand voor de vinger afdruk?
@@ -198,22 +198,22 @@ Ja, u kunt vertrouwde installatie kopieën gebruiken in Azure Container Registry
 Onder `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
 
 * Open bare sleutels en certificaten van alle rollen (met uitzonde ring van delegerings rollen) worden opgeslagen in de `root.json`.
-* Open bare sleutels en certificaten van de rol delegering worden opgeslagen in het JSON-bestand van de bovenliggende `targets.json` rol ( `targets/releases` bijvoorbeeld voor de rol).
+* Open bare sleutels en certificaten van de rol delegering worden opgeslagen in het JSON-bestand van de bovenliggende rol (bijvoorbeeld `targets.json` voor de functie `targets/releases`).
 
 U wordt aangeraden deze open bare sleutels en certificaten te controleren na de algemene TUF-verificatie die door de docker-en notaris-client wordt uitgevoerd.
 
 ### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>Hoe kan ik toegang tot pull-of push-installatie kopieën verlenen zonder toestemming om de register bron te beheren?
 
-ACR ondersteunt [aangepaste rollen](container-registry-roles.md) die verschillende machtigings niveaus bieden. Met name `AcrPush` en rollen kunnen gebruikers installatie kopieën ophalen en/of pushen zonder toestemming om de register bron in azure te beheren. `AcrPull`
+ACR ondersteunt [aangepaste rollen](container-registry-roles.md) die verschillende machtigings niveaus bieden. Met name `AcrPull`-en `AcrPush`-rollen kunnen gebruikers installatie kopieën ophalen en/of pushen zonder toestemming om de register bron in azure te beheren.
 
-* Azure Portal: Uw registry-> Access Control (IAM): > Add (selecteren `AcrPull` of `AcrPush` voor de rol).
-* Azure CLI: Zoek de resource-ID van het REGI ster door de volgende opdracht uit te voeren:
+* Azure Portal: uw REGI ster-> Access Control (IAM)-> toevoegen (Selecteer `AcrPull` of `AcrPush` voor de rol).
+* Azure CLI: Zoek de bron-ID van het REGI ster door de volgende opdracht uit te voeren:
 
   ```azurecli
   az acr show -n myRegistry
   ```
   
-  Vervolgens kunt u de `AcrPull` rol of `AcrPush` toewijzen aan een gebruiker (het volgende voor beeld wordt gebruikt `AcrPull`):
+  Vervolgens kunt u de rol `AcrPull` of `AcrPush` toewijzen aan een gebruiker (in het volgende voor beeld wordt gebruikgemaakt van `AcrPull`):
 
   ```azurecli
     az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
@@ -245,7 +245,7 @@ De toegewezen gebruiker is vervolgens in staat om installatie kopieën in het RE
   docker pull myregistry.azurecr.io/hello-world
   ```
 
-Met alleen de `AcrPull` rol of `AcrPush` is de toegewezen persoon niet gemachtigd om de register resource in azure te beheren. Het REGI ster `az acr list` kan `az acr show -n myRegistry` bijvoorbeeld of niet worden weer gegeven.
+Met alleen de `AcrPull`-of `AcrPush`-rol heeft de toegewezen gebruiker geen machtiging om de register resource in azure te beheren. Bijvoorbeeld: `az acr list` of `az acr show -n myRegistry` geeft het REGI ster niet weer.
 
 ### <a name="how-do-i-enable-automatic-image-quarantine-for-a-registry"></a>Hoe kan ik automatische installatie kopie quarantaine inschakelen voor een REGI ster?
 
@@ -253,7 +253,7 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose-en status controles
 
-- [Status controleren met`az acr check-health`](#check-health-with-az-acr-check-health)
+- [Status controleren met `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker-pull mislukt met fout: net/http: de aanvraag is geannuleerd tijdens het wachten op de verbinding (client. timeout is overschreden terwijl er wordt gewacht op headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker-Push is gelukt, maar docker-pull mislukt met fout: niet toegestaan: verificatie vereist](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [De logboeken voor fout opsporing van de docker-daemon inschakelen en ophalen](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
@@ -263,15 +263,15 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 - [Waarom kan de Azure Portal geen opslag plaatsen of Tags ophalen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Hoe kan ik u http-traceringen verzamelen in Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Status controleren met`az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Status controleren met `az acr check-health`
 
 Zie [de status van een Azure container Registry controleren](container-registry-check-health.md)voor informatie over het oplossen van veelvoorkomende problemen met de omgeving en het REGI ster.
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker-pull mislukt met fout: net/http: de aanvraag is geannuleerd tijdens het wachten op de verbinding (client. timeout is overschreden terwijl er wordt gewacht op headers)
 
  - Als deze fout een tijdelijk probleem is, slaagt u opnieuw.
- - Als `docker pull` de failover continu mislukt, kan er een probleem zijn met de docker-daemon. Het probleem kan over het algemeen worden verholpen door de docker-daemon opnieuw te starten. 
- - Als dit probleem blijft optreden nadat docker daemon opnieuw is opgestart, kan het probleem een aantal problemen met de netwerk verbinding met de computer zijn. Voer de volgende opdracht uit om de eindpunt connectiviteit te testen om te controleren of het algemene netwerk op de computer in orde is. De minimale `az acr` versie met deze connectiviteits controle opdracht is 2.2.9. Voer een upgrade uit voor uw Azure-CLI als u een oudere versie gebruikt.
+ - Als `docker pull` doorlopend mislukt, kan er een probleem zijn met de docker-daemon. Het probleem kan over het algemeen worden verholpen door de docker-daemon opnieuw te starten. 
+ - Als dit probleem blijft optreden nadat docker daemon opnieuw is opgestart, kan het probleem een aantal problemen met de netwerk verbinding met de computer zijn. Voer de volgende opdracht uit om de eindpunt connectiviteit te testen om te controleren of het algemene netwerk op de computer in orde is. De minimale `az acr`-versie die deze connectiviteits controle opdracht bevat, is 2.2.9. Voer een upgrade uit voor uw Azure-CLI als u een oudere versie gebruikt.
  
    ```azurecli
     az acr check-health -n myRegistry
@@ -286,7 +286,7 @@ Gebruik [Dit](http://www.azurespeed.com/Azure/Upload) hulp programma om de uploa
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Docker-Push is gelukt, maar docker-pull mislukt met fout: niet toegestaan: verificatie vereist
 
-Deze fout kan zich voordoen met de Red Hat-versie van de docker `--signature-verification` -daemon, waarbij standaard is ingeschakeld. U kunt de opties voor docker daemon voor Red Hat Enterprise Linux (RHEL) of Fedora controleren door de volgende opdracht uit te voeren:
+Deze fout kan zich voordoen met de Red Hat-versie van de docker-daemon, waarbij `--signature-verification` standaard is ingeschakeld. U kunt de opties voor docker daemon voor Red Hat Enterprise Linux (RHEL) of Fedora controleren door de volgende opdracht uit te voeren:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -298,7 +298,7 @@ Zo heeft Fedora 28-server de volgende opties voor docker daemon:
 OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
 ```
 
-Met `--signature-verification=false` ontbreekt, `docker pull` mislukt met een fout die vergelijkbaar is met:
+Als `--signature-verification=false` ontbreekt, `docker pull` mislukt met een fout die vergelijkbaar is met:
 
 ```bash
 Trying to pull repository myregistry.azurecr.io/myimage ...
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 Om de fout op te lossen:
-1. Voeg de optie `--signature-verification=false` toe aan het configuratie bestand `/etc/sysconfig/docker`van docker daemon. Bijvoorbeeld:
+1. Voeg de optie `--signature-verification=false` toe aan het configuratie bestand van docker daemon `/etc/sysconfig/docker`. Bijvoorbeeld:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -317,11 +317,11 @@ Om de fout op te lossen:
   sudo systemctl restart docker.service
   ```
 
-Details van `--signature-verification` kunnen worden gevonden door uit `man dockerd`te voeren.
+Details van `--signature-verification` kunnen worden gevonden door `man dockerd` uit te voeren.
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>De logboeken voor fout opsporing van de docker-daemon inschakelen en ophalen  
 
-Begin `dockerd` met de `debug` optie. Maak eerst het configuratie bestand voor docker daemon (`/etc/docker/daemon.json`) als het niet bestaat en voeg de `debug` optie toe:
+Start `dockerd` met de optie `debug`. Maak eerst het configuratie bestand voor docker daemon (`/etc/docker/daemon.json`) als dit niet bestaat en voeg de `debug` optie toe:
 
 ```json
 {   
@@ -337,7 +337,7 @@ sudo service docker restart
 
 Meer informatie vindt u in de [docker-documentatie](https://docs.docker.com/engine/admin/#enable-debugging). 
 
- * De logboeken kunnen op verschillende locaties worden gegenereerd, afhankelijk van uw systeem. Het is `/var/log/upstart/docker.log`bijvoorbeeld voor Ubuntu 14,04.   
+ * De logboeken kunnen op verschillende locaties worden gegenereerd, afhankelijk van uw systeem. Bijvoorbeeld: voor Ubuntu 14,04 is het `/var/log/upstart/docker.log`.   
 Raadpleeg [docker-documentatie](https://docs.docker.com/engine/admin/#read-the-logs) voor meer informatie.    
 
  * Voor docker voor Windows worden de logboeken gegenereerd onder% LOCALAPPDATA%/docker/. Het bevat echter mogelijk niet alle informatie over de fout opsporing.   
@@ -350,21 +350,21 @@ Raadpleeg [docker-documentatie](https://docs.docker.com/engine/admin/#read-the-l
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    U hebt nu toegang tot alle bestanden van de virtuele machine die `dockerd`wordt uitgevoerd. Het logboek is op `/var/log/docker.log`.
+    U hebt nu toegang tot alle bestanden van de virtuele machine met `dockerd`. Het logboek is `/var/log/docker.log`.
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Nieuwe gebruikers machtigingen worden mogelijk niet direct na het bijwerken van kracht
 
 Wanneer u nieuwe machtigingen (nieuwe rollen) toewijst aan een Service-Principal, wordt de wijziging mogelijk niet onmiddellijk doorgevoerd. Er zijn twee mogelijke redenen:
 
 * De vertraging van de roltoewijzing Azure Active Directory. Normaal gesp roken is het snel, maar het kan enkele minuten duren als gevolg van de doorgifte vertraging.
-* Toestemmings vertraging op ACR-token server. Dit kan Maxi maal 10 minuten duren. Als u de oplossing wilt beperken `docker logout` , kunt u na 1 minuut opnieuw een verificatie uitvoeren met dezelfde gebruiker:
+* Toestemmings vertraging op ACR-token server. Dit kan Maxi maal 10 minuten duren. Als u wilt beperken, kunt u `docker logout` en vervolgens opnieuw verifiëren met dezelfde gebruiker na 1 minuut:
 
   ```bash
   docker logout myregistry.azurecr.io
   docker login myregistry.azurecr.io
   ```
 
-Momenteel biedt ACR geen ondersteuning voor het verwijderen van start replicatie door de gebruikers. De tijdelijke oplossing is het toevoegen van de start replicatie in de sjabloon, maar het maken ervan `"condition": false` overs Laan door toe te voegen, zoals hieronder wordt weer gegeven:
+Momenteel biedt ACR geen ondersteuning voor het verwijderen van start replicatie door de gebruikers. De tijdelijke oplossing is het toevoegen van de start replicatie in de sjabloon, maar het maken ervan overs Laan door `"condition": false` toe te voegen, zoals hieronder wordt weer gegeven:
 
 ```json
 {
@@ -382,8 +382,8 @@ Momenteel biedt ACR geen ondersteuning voor het verwijderen van start replicatie
 
 ### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Verificatie gegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen
 
-`InvalidAuthenticationInfo` Er kan een fout optreden, met name het `curl` gebruik van het `--location` hulp `-L`programma met de optie (omleidingen volgen).
-U kunt bijvoorbeeld de BLOB ophalen met `curl` behulp `-L` van de optie en basis verificatie:
+Er kan een `InvalidAuthenticationInfo` fout optreden, met name het `curl`-hulp programma met de optie `-L`, `--location` (om omleidingen uit te voeren).
+U kunt bijvoorbeeld de BLOB ophalen met `curl` met `-L` optie en basis verificatie:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
@@ -398,9 +398,9 @@ RequestId:00000000-0000-0000-0000-000000000000
 Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 ```
 
-De hoofd oorzaak is dat sommige `curl` implementaties de omleidingen volgen met headers van de oorspronkelijke aanvraag.
+De hoofd oorzaak is dat sommige `curl`-implementaties omleidingen volgen met kopteksten van de oorspronkelijke aanvraag.
 
-Om het probleem op te lossen, moet u de omleidingen hand matig volgen zonder de headers. De antwoord headers afdrukken met de `-D -` `curl` optie en vervolgens ophalen: de `Location` header:
+Om het probleem op te lossen, moet u de omleidingen hand matig volgen zonder de headers. Druk de antwoord headers af met de `-D -`-optie van `curl` en pak vervolgens het volgende uit: de header `Location`:
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
@@ -426,8 +426,8 @@ Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie e
 
 #### <a name="prerequisites"></a>Vereisten
 
-- Het ontsleutelen van HTTPS inschakelen in Fiddler:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Docker inschakelen voor het gebruik van een proxy via de docker-gebruikers interface:<https://docs.docker.com/docker-for-windows/#proxies>
+- Het ontsleutelen van HTTPS inschakelen in Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Docker inschakelen voor het gebruik van een proxy via de docker-gebruikers interface: <https://docs.docker.com/docker-for-windows/#proxies>
 - Zorg ervoor dat u de herstel bewerking ongedaan uitvoert.  Docker werkt niet met deze ingeschakelde en Fiddler niet actief.
 
 #### <a name="windows-containers"></a>Windows-containers
@@ -460,13 +460,13 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 ### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Hoe kan ik neemt u de map. git op in AZ ACR build opdracht?
 
-Als u een lokale bronmap doorgeeft aan de `az acr build` opdracht, wordt `.git` de map standaard uitgesloten van het geüploade pakket. U kunt een `.dockerignore` bestand maken met de volgende instelling. De opdracht voor het herstellen van alle bestanden onder `.git` in het geüploade pakket wordt door gegeven. 
+Als u een lokale bronmap doorgeeft aan de `az acr build`-opdracht, wordt de `.git`-map standaard uitgesloten van het geüploade pakket. U kunt een `.dockerignore`-bestand maken met de volgende instelling. Hiermee wordt de opdracht gegeven om alle bestanden onder `.git` in het geüploade pakket te herstellen. 
 
 ```
 !.git/**
 ```
 
-Deze instelling is ook van toepassing `az acr run` op de opdracht.
+Deze instelling is ook van toepassing op de `az acr run`-opdracht.
 
 ## <a name="cicd-integration"></a>CI/CD-integratie
 

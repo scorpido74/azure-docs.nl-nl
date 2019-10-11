@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244786"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274640"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -29,7 +29,8 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 
 Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map op uw computer. AzCopy V10 toevoegen is slechts een uitvoerbaar bestand, dus er is niets om te installeren.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Windows 64-bits](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Windows 32-bits](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 

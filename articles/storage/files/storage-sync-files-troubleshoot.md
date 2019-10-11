@@ -4,15 +4,15 @@ description: Veelvoorkomende problemen met Azure File Sync oplossen.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 6771164c26c51e40d80d0c82b42f04c4f95c4c37
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255102"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274875"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -797,6 +797,17 @@ U kunt dit probleem oplossen door de volgende stappen uit te voeren om de synchr
 4. Als Cloud lagen zijn ingeschakeld op een server eindpunt, verwijdert u de zwevende gelaagde bestanden op de server door de stappen uit te voeren die worden beschreven in de [gelaagde bestanden niet toegankelijk zijn op de server na het verwijderen van een server eindpunt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) sectie.
 5. Maak de synchronisatie groep opnieuw.
 
+<a id="-2145844941"></a>**De synchronisatie is mislukt, omdat de HTTP-aanvraag is omgeleid**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80190133 |
+| **HRESULT (decimaal)** | -2145844941 |
+| **Fout reeks** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **Herstel vereist** | Ja |
+
+Deze fout treedt op omdat Azure File Sync HTTP-omleiding (status code 3xx) niet ondersteunt. Om dit probleem op te lossen, schakelt u HTTP-omleiding uit op de proxy server of het netwerk apparaat.
+
 ### <a name="common-troubleshooting-steps"></a>Veelvoorkomende stappen voor probleem oplossing
 <a id="troubleshoot-storage-account"></a>**Controleer of het opslag account bestaat.**  
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -1008,7 +1019,7 @@ Als bestanden niet kunnen worden ingetrokken:
         - Voer `fltmc` uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
 > [!NOTE]
-> Gebeurtenis-ID 9006 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden ingetrokken (één gebeurtenis wordt per fout code geregistreerd). De operationele en diagnostische gebeurtenis logboeken moeten worden gebruikt als er aanvullende informatie nodig is om een probleem op te sporen.
+> Gebeurtenis-ID 9006 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden ingetrokken (één gebeurtenis wordt per fout code geregistreerd). Raadpleeg de sectie [fouten intrekken en herstellen](#recall-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
 
 ### <a name="recall-errors-and-remediation"></a>Fouten en herstel intrekken
 
@@ -1018,8 +1029,12 @@ Als bestanden niet kunnen worden ingetrokken:
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Het bestand is niet ingetrokken vanwege een netwerk probleem.  | Als de fout zich blijft voordoen, controleert u de netwerk verbinding met de Azure-bestands share. |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het server eindpunt is verwijderd. | Zie [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan niet worden ingetrokken vanwege een fout bij het weigeren van de toegang. Dit probleem kan optreden als de instellingen voor de firewall en het virtuele netwerk van het opslag account zijn ingeschakeld en de server geen toegang heeft tot het opslag account. | U kunt dit probleem oplossen door het IP-adres of het virtuele netwerk van de server toe te voegen aan de hand van de stappen die worden beschreven in de sectie [instellingen voor firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) in de implementatie handleiding. |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het niet toegankelijk is in de Azure-bestands share. | Controleer of het bestand bestaat in de Azure-bestands share om dit probleem op te lossen. Als het bestand zich in de Azure-bestands share bevindt, moet u een upgrade uitvoeren naar de nieuwste versie van Azure File Sync agent. |
-| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Het bestand kan niet worden ingetrokken vanwege een autorisatie fout naar het opslag account. | Als u dit probleem wilt oplossen, controleert [u Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het niet toegankelijk is in de Azure-bestands share. | Controleer of het bestand bestaat in de Azure-bestands share om dit probleem op te lossen. Als het bestand zich in de Azure-bestands share bevindt, moet u een upgrade uitvoeren naar de nieuwste versie van Azure File Sync [agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions). |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Het bestand kan niet worden ingetrokken vanwege een autorisatie fout naar het opslag account. | Als u dit probleem wilt oplossen, controleert [u Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat de Azure-bestands share niet toegankelijk is. | Controleer of de bestands share bestaat en toegankelijk is. Als de bestands share is verwijderd en opnieuw is gemaakt, voert u de stappen uit die worden beschreven in de [synchronisatie is mislukt, omdat de Azure-bestands share is verwijderd en opnieuw is gemaakt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) om de synchronisatie groep te verwijderen en opnieuw te maken. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden ingetrokken vanwege insuffcient-systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma de systeem bronnen uitgeput raken. |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Kan het bestand niet intrekken vanwege insuffcient geheugen. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodus het stuur programma voor onvoldoende geheugen veroorzaakt. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand is niet ingetrokken vanwege onvoldoende schijf ruimte. | U kunt dit probleem oplossen door bestanden op het volume te verplaatsen naar een ander volume, de grootte van het volume te verg Roten of bestanden af te dwingen om laag te maken met behulp van de cmdlet invoke-StorageSyncCloudTiering. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Gelaagde bestanden zijn niet toegankelijk op de server na het verwijderen van een server eindpunt
 Gelaagde bestanden op een server worden ontoegankelijk als de bestanden niet worden ingetrokken voordat een server eindpunt wordt verwijderd.

@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131439"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264489"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory opdracht activiteit gebruiken om Azure Data Explorer-besturings opdrachten uit te voeren
 
@@ -29,11 +29,13 @@ ms.locfileid: "71131439"
 ## <a name="create-a-new-pipeline"></a>Een nieuwe pijp lijn maken
 
 1. Selecteer het potlood hulp programma voor **ontwerpen** . 
-1. Maak een nieuwe pijp lijn door een **+** **pijp lijn** te selecteren in de vervolg keuzelijst.
+1. Maak een nieuwe pijp lijn door **+** te selecteren en vervolgens **pijp lijn** te selecteren in de vervolg keuzelijst.
 
    ![nieuwe pijp lijn maken](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Een opzoek activiteit maken
+
+Met een [opzoek activiteit](/azure/data-factory/control-flow-lookup-activity) kan een gegevensset worden opgehaald uit elke Azure Data Factory gegevens bronnen die worden ondersteund. De uitvoer van de opzoek activiteit kan worden gebruikt in een ForEach-of andere activiteit.
 
 1. Selecteer in het deel venster **activiteiten** onder **Algemeen**de **opzoek** activiteit. Sleep en zet deze neer in het hoofd papier aan de rechter kant.
  
@@ -89,7 +91,7 @@ ms.locfileid: "71131439"
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Een query toevoegen aan de opzoek activiteit
 
-1. In **pijplijn-4-docs** > -**instellingen** een query toevoegen in een **query** tekstvak, bijvoorbeeld:
+1. In **pijp lijn-4-docs** > **instellingen** een query toevoegen in een **query** tekstvak, bijvoorbeeld:
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131439"
 
 ## <a name="create-a-for-each-activity"></a>Een for-each-activiteit maken 
 
-1. Vervolgens voegt u een for-each-activiteit toe aan de pijp lijn. Met deze activiteit worden de gegevens verwerkt die zijn geretourneerd door de opzoek activiteit. 
+De [for-each-](/azure/data-factory/control-flow-for-each-activity) activiteit wordt gebruikt om een verzameling te herhalen en opgegeven activiteiten in een lus uit te voeren. 
+
+1. Nu voegt u een for-each-activiteit toe aan de pijp lijn. Met deze activiteit worden de gegevens verwerkt die zijn geretourneerd door de opzoek activiteit. 
     * Selecteer in het deel venster **activiteiten** onder **iteratie & Conditions**de **foreach** -activiteit en sleep deze naar het canvas.
     * Teken een lijn tussen de uitvoer van de opzoek activiteit en de invoer van de ForEach-activiteit in het canvas om ze te verbinden.
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131439"
 1.  Selecteer de ForEach-activiteit in het canvas. Op het tabblad **instellingen** onder:
     * Schakel het selectie vakje **opeenvolgend** in voor een opeenvolgende verwerking van de zoek resultaten of schakel deze optie uit om parallelle verwerking te maken.
     * Stel **batch-aantal**in.
-    * Geef in **items**de volgende verwijzing op naar de uitvoer waarde:  *@activity(' Lookup1 '). output. Value*
+    * Geef in **items**de volgende verwijzing op naar de uitvoer waarde: *@activity (' Lookup1 '). output. Value*
 
        ![Instellingen voor ForEach-activiteit](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -146,7 +150,7 @@ ms.locfileid: "71131439"
 
     > [!NOTE]
     > De opdracht activiteit heeft de volgende limieten:
-    > * Maximale grootte: grootte van 1 MB-reactie
+    > * Maximale grootte: 1 MB antwoord grootte
     > * Tijds limiet: 20 minuten (standaard), 1 uur (maximum).
     > * Indien nodig kunt u een query toevoegen aan het resultaat met behulp van [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), om de resulterende grootte/tijd te verminderen.
 
@@ -166,7 +170,7 @@ De structuur van de uitvoer van de opdracht activiteit wordt hieronder beschreve
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Geretourneerde waarde van een niet-async-besturings opdracht
 
-In een niet-async-opdracht is de structuur van de geretourneerde waarde vergelijkbaar met de structuur van het resultaat van de opzoek activiteit. In `count` het veld wordt het aantal geretourneerde records aangegeven. Een vast matrix veld `value` bevat een lijst met records. 
+In een niet-async-opdracht is de structuur van de geretourneerde waarde vergelijkbaar met de structuur van het resultaat van de opzoek activiteit. In het veld `count` wordt het aantal geretourneerde records aangegeven. Een vast matrix veld `value` bevat een lijst met records. 
 
 ```json
 { 

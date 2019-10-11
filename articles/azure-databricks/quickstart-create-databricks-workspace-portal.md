@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een Apache Spark-taak uitvoeren in Azure Databricks met behulp van Azure Portal'
+title: Een Apache Spark-taak uitvoeren in Azure Databricks met behulp van Azure Portal
 description: De quickstart laat zien hoe er met Azure Portal een Azure Databricks-werkruimte en een Apache Spark-cluster kan worden gemaakt, en hoe een Spark-taak kan worden uitgevoerd.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 3570325880b4c8d8eb311f00477262126a2b18ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1cc6d6236b940cf898651bdfdd47f4db1ac53851
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932571"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274167"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Snelstart: Een Apache Spark-taak uitvoeren in Azure Databricks met behulp van Azure Portal
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
 In deze Quick Start gebruikt u de Azure Portal om een Azure Databricks-werk ruimte te maken met een Apache Spark cluster. U voert een taak uit op het cluster en gebruikt aangepaste grafieken om realtime rapporten te produceren op basis van Boston-veiligheids gegevens.
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u de Azure Portal om een Azure Databricks-werk ruim
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -136,7 +136,7 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
 
 5. U ziet uitvoer in tabelvorm zoals weergegeven in de volgende schermafbeelding (alleen bepaalde kolommen worden weergegeven):
 
-    ![Voorbeeld gegevens] Voor (./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "beeld van JSON-gegevens")
+    Voor(./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "beeld van JSON-gegevens") ![voorbeeld gegevens]
 
 6. U maakt nu een visuele weer gave van deze gegevens om te laten zien hoeveel beveiligings gebeurtenissen worden gerapporteerd met de burgers Connect app en City worker app in plaats van andere bronnen. Selecteer op de onderkant van de tabel uitvoer het pictogram **staaf diagram** en klik vervolgens op **Opties tekenen**.
 
@@ -144,14 +144,14 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
 
 8. In **Tekening aanpassen** sleept en zet u de waarden neer zoals in de schermafbeelding wordt weergegeven.
 
-    ![Cirkel diagram aanpassen](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Staaf diagram aanpassen")
+    ![Cirkel diagram aanpassen](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "staaf diagram aanpassen")
 
    * Stel **sleutels** in op **bron**.
    * Stel **waarden** in op **< \id >** .
    * Stel **Aggregatie** in op **AANTAL**.
    * **Weergave type** instellen op **cirkel diagram**.
 
-     Klik op **Toepassen**.
+     Klik op **Apply** (Toepassen).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

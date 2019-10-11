@@ -5,19 +5,19 @@ metadata:
   title: Documentatie over toepassingsbeheer
   description: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Office 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/16/2019
+  ms.date: 10/10/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 0d7081a35a143abf1ae068ce7344e0e50e240eaa
+  ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127553"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72264141"
 landingContent:
 - title: Over toepassingsbeheer
   linkLists:

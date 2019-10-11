@@ -9,27 +9,27 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164249"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274797"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u Time Series Insights-resources maakt en implementeert met behulp van Azure Resource Manager sjablonen, Power shell en de resource provider van Time Series Insights.
+In dit artikel wordt beschreven hoe u Time Series Insights-resources maakt en implementeert met behulp van [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/), Power shell en de resource provider van Time Series Insights.
 
 Time Series Insights ondersteunt de volgende bronnen:
 
-   | Resource | Description |
+   | Bron | Beschrijving |
    | --- | --- |
    | Omgeving | Een Time Series Insights omgeving is een logische groepering van gebeurtenissen die worden gelezen vanuit gebeurtenis-Brokers, opgeslagen en beschikbaar worden gesteld voor query's. Zie [uw Azure time series Insights-omgeving plannen](time-series-insights-environment-planning.md) voor meer informatie. |
    | Bron van gebeurtenis | Een gebeurtenis bron is een verbinding met een gebeurtenis-Broker van waaruit Time Series Insights gebeurtenissen in de omgeving leest en opneemt. De momenteel ondersteunde gebeurtenis bronnen zijn IoT Hub en Event hub. |
    | Gegevensset voor referentie | Referentie gegevens sets bevatten meta gegevens over de gebeurtenissen in de omgeving. Meta gegevens in de referentie gegevens sets worden samengevoegd met gebeurtenissen tijdens de ingang. Referentie gegevens sets worden als resources gedefinieerd op basis van hun gebeurtenis sleutel eigenschappen. De daad werkelijke meta gegevens waaruit de referentie gegevensverzameling bestaat, worden geüpload of gewijzigd via data plan-Api's. |
-   | Toegangsbeleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
+   | Toegangs beleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
 
 Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en configuratie van resources in een resource groep definieert. De volgende documenten beschrijven sjabloon bestanden in meer detail:
 
@@ -47,7 +47,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. Installeer Azure PowerShell door de instructies in aan de slag te volgen [met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-1. Kloon of kopieer de sjabloon [201-timeseriesinsights-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) van github.
+1. Kloon of kopieer de sjabloon [201-timeseriesinsights-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) van github.
 
    * Een parameter bestand maken
 
@@ -59,21 +59,21 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
    * Vereiste para meters
 
-     | Parameter | Description |
+     | Parameter | Beschrijving |
      | --- | --- |
      | eventHubNamespaceName | De naam ruimte van de bron Event Hub. |
      | eventHubName | De naam van de bron Event Hub. |
-     | consumerGroupName | De naam van de Consumer groep die door de Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **OPMERKING:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Time Series Insights-service en niet worden gedeeld met andere lezers. |
-     | environmentName | De naam van de omgeving. De naam mag niet de `<`volgende tekens bevatten: `:` `>`,, `?` `\\` `%` `&`, `/`,,,,, en alle Stuur codes. Alle andere tekens zijn toegestaan.|
-     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de `<`volgende tekens bevatten: `:` `>`,, `?` `\\` `%` `&`, `/`,,,,, en alle Stuur codes. Alle andere tekens zijn toegestaan. |
+     | consumerGroupName | De naam van de Consumer groep die door de Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Time Series Insights-service en niet worden gedeeld met andere lezers. |
+     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
+     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
 
     <div id="optional-parameters"></div>
 
    * Optionele para meters
 
-     | Parameter | Description |
+     | Parameter | Beschrijving |
      | --- | --- |
-     | existingEventHubResourceId | Een optionele Resource-ID van een bestaande Event hub die wordt verbonden met de Time Series Insights omgeving via de bron van de gebeurtenis. **OPMERKING:** De gebruiker die de sjabloon implementeert, moet bevoegdheden hebben om de listkeys ophalen-bewerking uit te voeren op de Event hub. Als er geen waarde wordt door gegeven, wordt er een nieuwe Event Hub gemaakt door de sjabloon. |
+     | existingEventHubResourceId | Een optionele Resource-ID van een bestaande Event hub die wordt verbonden met de Time Series Insights omgeving via de bron van de gebeurtenis. **Opmerking:** De gebruiker die de sjabloon implementeert, moet bevoegdheden hebben om de listkeys ophalen-bewerking uit te voeren op de Event hub. Als er geen waarde wordt door gegeven, wordt er een nieuwe Event Hub gemaakt door de sjabloon. |
      | environmentDisplayName | Een optionele beschrijvende naam die wordt weer gegeven in hulp middelen of gebruikers interfaces in plaats van de naam van de omgeving. |
      | environmentSkuName | De naam van de SKU. Zie de pagina met prijzen voor [Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.  |
      | environmentSkuCapacity | De capaciteit van de eenheid van de SKU. Zie de pagina met prijzen voor [Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.|
@@ -140,7 +140,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
       Get-AzSubscription
       ```
 
-    * Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang `<YourSubscriptionId>` door de GUID voor het Azure-abonnement dat u wilt gebruiken:
+    * Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang `<YourSubscriptionId>` door de GUID van het Azure-abonnement dat u wilt gebruiken:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -166,7 +166,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie testen.
 
-   * Valideer uw implementatie door de `Test-AzResourceGroupDeployment` cmdlet uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
+   * Valideer uw implementatie door de cmdlet `Test-AzResourceGroupDeployment` uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,7 +174,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie maken
 
-    * Als u de nieuwe implementatie wilt maken, `New-AzResourceGroupDeployment` voert u de cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
+    * Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment`-cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
 
     * Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
 
@@ -208,7 +208,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
        DeploymentName          : MyDemoDeployment
        ResourceGroupName       : MyDemoRG
        ProvisioningState       : Succeeded
-       Timestamp               : 5/8/2019 10:28:34 PM
+       Timestamp               : 10/11/2019 3:20:37 AM
        Mode                    : Incremental
        TemplateLink            :
        Parameters              :

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een model trainen en formulier gegevens extra heren met behulp van de REST API met python-formulier herkenner'
+title: 'Quick Start: een model trainen en formulier gegevens extra heren met behulp van de REST API met python-formulier Recognizer'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het trainen van een model en het extra heren van gegevens uit formulieren.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074145"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264401"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quickstart: Een formulier Recognizer-model trainen en formulier gegevens extra heren met behulp van de REST API met python
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quick Start: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met python
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python voor Train-en Score formulieren om sleutel-waardeparen en tabellen te extra heren.
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit.
 - [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
-- Een set van ten minste vijf vormen van hetzelfde type. U gebruikt deze gegevens om het model te trainen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de gegevens naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
+- Een set van ten minste vijf vormen van hetzelfde type. U gebruikt deze gegevens om het model te trainen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -40,7 +40,7 @@ Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure 
 
 1. Vervang `<Endpoint>` door de URL van het eind punt voor de resource voor uw formulier herkenning.
 1. Vervang `<Subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
-1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
+1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
     ```python
     ########### Python Form Recognizer Train #############
@@ -67,7 +67,7 @@ Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure 
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognize-train.py`.
 
-U ontvangt een `200 (Success)` antwoord met de volgende JSON-uitvoer:
+U ontvangt een antwoord van `200 (Success)` met de volgende JSON-uitvoer:
 
 ```json
 {
@@ -108,15 +108,15 @@ U ontvangt een `200 (Success)` antwoord met de volgende JSON-uitvoer:
 }
 ```
 
-Noteer de `"modelId"` waarde. U hebt deze nodig voor de volgende stappen.
+Let op de waarde voor @no__t 0. U hebt deze nodig voor de volgende stappen.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Sleutel-waardeparen en tabellen uit formulieren extra heren
 
 Vervolgens analyseert u een document en extraheert u sleutel-waardeparen en-tabellen. Roep het **model-analyse-** API aan door het python-script uit te voeren dat volgt. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<path to your form>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF).
-1. Vervang `<modelID>` door de model-id die u in de vorige sectie hebt ontvangen.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<path to your form>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF). Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
+1. Vervang `<modelID>` door de model-ID die u in de vorige sectie hebt ontvangen.
 1. Vervang `<file type>` door het bestands type. Ondersteunde typen: `application/pdf`, `image/jpeg`, `image/png`.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 

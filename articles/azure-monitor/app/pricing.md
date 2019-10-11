@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936683"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264421"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -56,7 +56,7 @@ Er zijn twee manieren om dit op te lossen: gebruik van standaard bewaking en ada
 
 Met de [adaptieve steek proef](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempel waarde van 5 gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen in een adaptieve steek proef beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
 
-Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u gebruikmaken van [opname sampling] [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ], waarbij de voor beelden worden gerecevedd door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
+Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u gebruikmaken van [opname sampling](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) , waarbij steek proeven worden uitgevoerd wanneer de gegevens worden receved door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 
@@ -92,7 +92,7 @@ Als u wilt weten hoeveel gegevens uw app verzendt, kunt u het volgende doen:
 
 * Ga naar het deel venster **gebruik en geraamd kosten** om de grafiek met het dagelijkse gegevens volume weer te geven. 
 * Voeg in Metrics Explorer een nieuwe grafiek toe. Voor de grafiek metriek selecteert u **gegevens punt volume**. Schakel **groeperen**in en groepeer vervolgens op **gegevens type**.
-* Gebruik het `systemEvents` gegevens type. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
+* Gebruik het gegevens type @no__t 0. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
 
 ```kusto
 systemEvents 
@@ -107,19 +107,19 @@ Deze query kan worden gebruikt in een [Azure-logboek waarschuwing](https://docs.
 
 Het volume van de gegevens dat u verzendt, kan op drie manieren worden beheerd:
 
-* **Steek proeven**: U kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](../../azure-monitor/app/sampling.md).
+* **Steek proef**: u kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](../../azure-monitor/app/sampling.md).
  
-* **Dagelijks Cap**: Wanneer u een Application Insights resource maakt in de Azure Portal, wordt het dagelijks kapje ingesteld op 100 GB per dag. Wanneer u een Application Insights resource maakt in Visual Studio, is de standaard klein (slechts 32,3 MB/dag). De standaard waarde voor dagelijks Cap is ingesteld om testen te vergemakkelijken. De bedoeling is dat de gebruiker de dagelijkse limiet verhoogt voordat de app in de productie omgeving wordt geïmplementeerd. 
+* **Dagelijkse limiet**: wanneer u een Application Insights resource maakt in de Azure Portal, wordt de daglimiet ingesteld op 100 GB per dag. Wanneer u een Application Insights resource maakt in Visual Studio, is de standaard klein (slechts 32,3 MB/dag). De standaard waarde voor dagelijks Cap is ingesteld om testen te vergemakkelijken. De bedoeling is dat de gebruiker de dagelijkse limiet verhoogt voordat de app in de productie omgeving wordt geïmplementeerd. 
 
     De maximale limiet is 1.000 GB/dag, tenzij u een hoger maximum voor een toepassing met een hoog verkeer opvraagt. 
     
-    Waarschuwings-e-mails over de dagelijkse limiet worden verzonden naar accounts die lid zijn van deze rollen voor uw Application Insights-resource: "ServiceAdmin", "AccountAdmin", "coadmin", "eigenaar".
+    Waarschuwings-e-mails over de dagelijkse limiet worden verzonden naar het account dat lid is van deze rollen voor uw Application Insights resource: ' ServiceAdmin ', ' AccountAdmin ', ' coadmin ', ' eigenaar '.
 
     Wees voorzichtig wanneer u het dagelijks kapje instelt. Het is uw bedoeling om *nooit het dagelijkse kapje*te bereiken. Als u de dagelijkse limiet bereikt, verliest u gegevens voor de rest van de dag en kunt u uw toepassing niet bewaken. Als u de dagelijkse limiet wilt wijzigen, gebruikt u de optie **dagelijks volume limiet** . U kunt deze optie gebruiken in het deel venster **gebruik en geraamde kosten** (dit wordt verderop in het artikel meer gedetailleerder beschreven).
     
     We hebben de beperking verwijderd voor sommige abonnements typen waarvoor een tegoed is dat niet kan worden gebruikt voor Application Insights. Als er eerder een bestedings limiet voor het abonnement is, is het dialoog venster voor de dagelijkse Cap instructies om de bestedings limiet te verwijderen en het dagelijks kapje te activeren dat groter is dan 32,3 MB/dag.
     
-* **Beperking**: Met beperking wordt de gegevens snelheid beperkt tot 32.000 gebeurtenissen per seconde, gemiddeld meer dan 1 minuut per instrumentatie sleutel. Het gegevens volume dat door uw app wordt verzonden, wordt elke minuut beoordeeld. Als het per seconde gemiddeld rente overschrijdt gedurende de minuut, worden sommige aanvragen door de server geweigerd. De SDK buffert de gegevens en probeert deze opnieuw te verzenden. Er wordt een piek van enkele minuten gespreid. Als uw app op consistente wijze gegevens verzendt met meer dan de beperkings snelheid, worden sommige gegevens verwijderd. (De ASP.NET-, Java-en Java script-Sdk's proberen gegevens op deze manier opnieuw te verzenden; andere Sdk's kunnen gewoon vertraagde gegevens verwijderen.) Als er sprake is van beperking, wordt er een melding weer gegeven dat dit is gebeurd.
+* **Beperking**: beperking beperkt de gegevens snelheid tot 32.000 gebeurtenissen per seconde, gemiddeld meer dan 1 minuut per instrumentatie sleutel. Het gegevens volume dat door uw app wordt verzonden, wordt elke minuut beoordeeld. Als het per seconde gemiddeld rente overschrijdt gedurende de minuut, worden sommige aanvragen door de server geweigerd. De SDK buffert de gegevens en probeert deze opnieuw te verzenden. Er wordt een piek van enkele minuten gespreid. Als uw app op consistente wijze gegevens verzendt met meer dan de beperkings snelheid, worden sommige gegevens verwijderd. (De ASP.NET-, Java-en Java script-Sdk's proberen gegevens op deze manier opnieuw te verzenden; andere Sdk's kunnen gewoon vertraagde gegevens verwijderen.) Als er sprake is van beperking, wordt er een melding weer gegeven dat dit is gebeurd.
 
 ## <a name="reduce-your-data-volume"></a>Uw gegevens volume verminderen
 
@@ -137,9 +137,9 @@ U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperke
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
 
-Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
@@ -147,9 +147,9 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
-Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), wijzigt `dailyQuota`u de eigenschap in.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de dagelijkse `warningThreshold`Cap instellen. 
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die moet worden gewijzigd de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold` van het dagelijks kapje instellen. 
 
-## <a name="sampling"></a>Steekproef nemen
+## <a name="sampling"></a>Sampling
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
 Steek proeven zijn een efficiënte manier om kosten te verlagen en binnen uw maandelijkse quotum te blijven. De bemonsterings algoritme houdt gerelateerde items van telemetrie bij, zodat u bijvoorbeeld de aanvraag met betrekking tot een bepaalde uitzonde ring kunt vinden wanneer u zoekt. Het algoritme behoudt ook de juiste aantallen, zodat u de juiste waarden ziet in metrische Explorer voor aanvraag tarieven, uitzonderings snelheden en andere aantallen.
@@ -173,9 +173,9 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
+In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records aan dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
 
-## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
+## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
@@ -183,7 +183,7 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook [via arm worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/app/powershell) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze functionaliteit is alleen beschikbaar via ARM. 
+De retentie kan ook via [Power shell worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via ARM en moet worden gebruikt met extreme zorg. 
 
 Wanneer het factureren voor een langere Bewaar 2019 periode begint, worden de gegevens die langer zijn dan 90 dagen, gefactureerd als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
@@ -241,7 +241,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 |:---------------------------------------|:----------------:|
 | 1 toepassing met 3 Azure App Service exemplaren en 1 virtuele server | 4 |
 | 3 toepassingen die worden uitgevoerd op 2 Vm's; de Application Insights resources voor deze toepassingen bevinden zich in hetzelfde abonnement en in de laag per knoop punt | 2 | 
-| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 | 
+| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13,33 | 
 | Cloud Services met één werknemersrol en één webrol, elk met 2 exemplaren | 4 | 
 | Een Azure Service Fabric-cluster met 5 knoop punten met 50 micro Services; elke micro service die drie instanties uitvoert | 5|
 

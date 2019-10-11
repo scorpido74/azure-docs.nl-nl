@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269075"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264196"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: Browsers en webweergaven voor iOS/macOS aanpassen
+# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: browsers en webweergaven voor iOS/macOS aanpassen
 
-Voor interactieve verificatie is een webbrowser vereist. Op iOS gebruikt de micro soft Authentication Library (MSAL) standaard een systeem webbrowser (die mogelijk boven op uw app wordt weer gegeven) om interactieve verificatie uit te voeren voor gebruikers die zich aanmelden. Het gebruik van de systeem browser heeft het grote voor deel van het delen van de status voor eenmalige aanmelding (SSO) met andere toepassingen en met webtoepassingen.
+Voor interactieve verificatie is een webbrowser vereist. Op iOS gebruikt de micro soft Authentication Library (MSAL) standaard de systeem webbrowser (die mogelijk boven op uw app wordt weer gegeven) om interactieve verificatie uit te voeren voor gebruikers die zich aanmelden. Het gebruik van de systeem browser is het voor deel van het delen van de status voor eenmalige aanmelding (SSO) met andere toepassingen en met webtoepassingen.
 
 U kunt de ervaring wijzigen door de configuratie aan te passen aan andere opties voor het weer geven van webinhoud, zoals:
 
@@ -40,13 +40,13 @@ Voor iOS en macOS:
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL voor macOS ondersteunt `WKWebView`alleen.
+MSAL voor macOS ondersteunt alleen `WKWebView`.
 
 ## <a name="system-browsers"></a>Systeem browsers
 
-Voor IOS, `ASWebAuthenticationSession`, `SFAuthenticationSession`, en `SFSafariViewController` worden beschouwd als systeem browsers. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
+Voor iOS worden `ASWebAuthenticationSession`, `SFAuthenticationSession` en `SFSafariViewController` beschouwd als systeem browsers. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
 
-Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen systeem browser die beschikbaar is op die versie. Op iOS 12 + is dit `ASWebAuthenticationSession`. 
+Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen systeem browser die beschikbaar is op die versie. Op iOS 12 + wordt `ASWebAuthenticationSession`. 
 
 | Version | Webbrowser |
 |:-------------:|:-------------:|
@@ -56,8 +56,8 @@ Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen sy
 
 Ontwikkel aars kunnen ook een andere systeem browser voor MSAL-apps selecteren:
 
-- `SFAuthenticationSession`is de iOS 11-versie `ASWebAuthenticationSession`van.
-- `SFSafariViewController`is een meer algemeen doel en biedt een interface voor het surfen op internet en kan ook worden gebruikt voor aanmeldings doeleinden. In iOS 9 en 10 worden cookies en andere website gegevens gedeeld met Safari, maar niet in iOS 11 en hoger.
+- `SFAuthenticationSession` is de iOS 11-versie van `ASWebAuthenticationSession`.
+- `SFSafariViewController` is een meer algemeen doel en biedt een interface voor het surfen op internet en kan ook worden gebruikt voor aanmeldings doeleinden. In iOS 9 en 10 worden cookies en andere website gegevens gedeeld met Safari, maar niet in iOS 11 en hoger.
 
 ## <a name="in-app-browser"></a>Browser in-app
 
@@ -79,7 +79,7 @@ De browser die u gebruikt, is van invloed op de SSO-ervaring vanwege hoe ze cook
 
 ## <a name="change-the-default-browser-for-the-request"></a>De standaard browser voor de aanvraag wijzigen
 
-U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankelijk van uw UX-vereisten, door de volgende eigenschap te `MSALWebviewParameters`wijzigen in:
+U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankelijk van uw UX-vereisten, door de volgende eigenschap te wijzigen in `MSALWebviewParameters`:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -87,9 +87,9 @@ U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankeli
 
 ## <a name="change-per-interactive-request"></a>Wijziging per interactieve aanvraag
 
-Elke aanvraag kan worden geconfigureerd voor het overschrijven van de standaard browser door `MSALInteractiveTokenParameters.webviewParameters.webviewType` de eigenschap te wijzigen voordat deze `acquireTokenWithParameters:completionBlock:` wordt door gegeven aan de API.
+Elke aanvraag kan zo worden geconfigureerd dat de standaard browser wordt overschreven door de eigenschap `MSALInteractiveTokenParameters.webviewParameters.webviewType` te wijzigen voordat deze wordt door gegeven aan de API van `acquireTokenWithParameters:completionBlock:`.
 
-Daarnaast biedt MSAL ondersteuning voor het door geven `WKWebView` van een aangepast `MSALInteractiveTokenParameters.webviewParameters.customWebView` door de eigenschap in te stellen.
+Daarnaast biedt MSAL ondersteuning voor het door geven van een aangepaste `WKWebView` door de eigenschap `MSALInteractiveTokenParameters.webviewParameters.customWebView` in te stellen.
 
 Bijvoorbeeld:
 
@@ -104,7 +104,7 @@ MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenPa
     
 [app acquireTokenWithParameters:interactiveParameters completionBlock:completionBlock];
 ```
-SWIFT
+Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...

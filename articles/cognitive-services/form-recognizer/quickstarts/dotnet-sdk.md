@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242515"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264432"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstartgids: client bibliotheek voor formulier herkenning voor .NET
 
@@ -34,7 +34,7 @@ Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 
 * Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
 * Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit.
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken.
+* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens. Voor deze Quick Start kunt u de bestanden in de map **Train** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
 * De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Instellen
@@ -122,6 +122,7 @@ Voordat u een methode definieert, voegt u de volgende variabele definities toe b
 
 * U kunt de waarde van het eind punt van uw service vinden in de sectie **overzicht** van de Azure Portal. 
 * Als u de SAS-URL voor uw trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Als u een voorbeeld formulier nodig hebt om te analyseren, kunt u een van de bestanden in de map **test** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken. Deze hand leiding maakt alleen gebruik van PDF-formulieren.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 

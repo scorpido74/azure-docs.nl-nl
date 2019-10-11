@@ -98,7 +98,7 @@
             - name: Verificatie via Azure Container Instances
               href: container-registry-auth-aci.md
             - name: Verificatie via Azure Kubernetes Service (AKS)
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: Rollen en machtigingen
           href: container-registry-roles.md
         - name: Inhoud vertrouwen

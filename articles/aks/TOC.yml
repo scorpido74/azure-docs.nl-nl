@@ -215,8 +215,6 @@
               href: azure-ad-integration.md
         - name: Gebruik Kubernetes-RBAC met Azure AD-integratie
           href: azure-ad-rbac.md
-        - name: Verifiëren met ACR
-          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
     - name: Bewaking en registratie
       items:

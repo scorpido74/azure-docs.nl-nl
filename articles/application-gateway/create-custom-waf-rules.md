@@ -1,33 +1,33 @@
 ---
-title: Aangepaste regels voor Azure Web Application firewall (WAF) v2 maken en gebruiken
-description: Dit artikel bevat informatie over het maken van aangepaste regels voor Web Application firewall (WAF) v2 in Azure-toepassing gateway.
+title: Aangepaste regels voor Azure Web Application Firewall (WAF) v2 maken en gebruiken
+description: In dit artikel wordt beschreven hoe u aangepaste Web Application Firewall (WAF) v2-regels maakt in Azure-toepassing gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8cf82ce9ed4a9dc701c016f15224d6adfa299736
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937183"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263583"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Aangepaste v2-regels voor Web Application Firewall maken en gebruiken
 
-De Azure-toepassing gateway Web Application firewall (WAF) v2 biedt beveiliging voor webtoepassingen. Deze beveiliging wordt verzorgd door de OWASP (open Web Application Security project) kern regelset (CRS). In sommige gevallen moet u mogelijk uw eigen aangepaste regels maken om te voldoen aan uw specifieke behoeften. Zie [custom web application firewall rules Overview](custom-waf-rules-overview.md)(Engelstalig) voor meer informatie over aangepaste regels voor WAF.
+Azure-toepassing gateway Web Application Firewall (WAF) v2 biedt beveiliging voor webtoepassingen. Deze beveiliging wordt verzorgd door de basisregelset OWASP (open Web Application Security project). In sommige gevallen moet u mogelijk uw eigen aangepaste regels maken om te voldoen aan uw specifieke behoeften. Zie [overzicht: custom web application firewall rules](custom-waf-rules-overview.md)voor meer informatie over aangepaste regels voor WAF.
 
-In dit artikel ziet u een aantal voor beelden van aangepaste regels die u kunt maken en gebruiken met uw v2-WAF. Zie [aangepaste regels voor Web Application firewall configureren met](configure-waf-custom-rules.md)behulp van Azure PowerShell voor meer informatie over het implementeren van een WAF met een aangepaste regel met behulp van Azure PowerShell.
+In dit artikel ziet u een aantal voor beelden van aangepaste regels die u kunt maken en gebruiken met WAF v2. Zie [Web Application firewall aangepaste regels configureren met behulp van Azure PowerShell](configure-waf-custom-rules.md)voor meer informatie over het implementeren van WAF met een aangepaste regel met behulp van Azure PowerShell.
 
->[!NOTE]
-> Als uw toepassings gateway geen gebruik maakt van de WAF-laag, wordt de optie voor het bijwerken van de toepassings gateway naar de laag WAF weer gegeven in het rechterdeel venster.
+> [!NOTE]
+> Als uw toepassings gateway de WAF-laag niet gebruikt, wordt de optie voor het bijwerken van de toepassings gateway naar de laag WAF weer gegeven in het rechterdeel venster.
 
 ![WAF inschakelen][fig1]
 
-## <a name="example-1"></a>Voorbeeld 1
+## <a name="example-1"></a>Voor beeld 1
 
-U weet dat er een bot is met de naam *evilbot* die u wilt blok keren om uw website te verkennen. In dit geval blokkeert u de *evilbot* van de gebruikers agent in de aanvraag headers.
+U weet dat er een bot is met de naam *evilbot* die u wilt blok keren om uw website te verkennen. In dit voor beeld blokkeert u de *evilbot* van de gebruikers agent in de aanvraag headers.
 
 Logica: p
 
@@ -51,7 +51,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-En dit is de bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
   {
@@ -75,7 +75,7 @@ En dit is de bijbehorende JSON:
   }
 ```
 
-Zie [een aangepaste regel voor Web Application firewall configureren met Azure PowerShell](configure-waf-custom-rules.md)voor een overzicht van de geïmplementeerde WAF met deze aangepaste regel.
+Als u een WAF wilt weer geven die is geïmplementeerd met behulp van deze aangepaste regel, raadpleegt u [een Web Application firewall aangepaste regel configureren met behulp van Azure PowerShell](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>Voor beeld 1a
 
@@ -101,7 +101,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-En de bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
   {
@@ -125,11 +125,11 @@ En de bijbehorende JSON:
   }
 ```
 
-## <a name="example-2"></a>Voorbeeld 2
+## <a name="example-2"></a>Voor beeld 2
 
 U alle aanvragen van IP-adressen in het bereik 198.168.5.0/24 wilt blok keren.
 
-In dit voor beeld blokkeert u al het verkeer dat afkomstig is van een IP-adres bereik. De naam van de regel is *myrule1* en de prioriteit is ingesteld op 100.
+In dit voor beeld blokkeert u al het verkeer dat afkomstig is uit een bereik van IP-adressen. De naam van de regel is *myrule1*en de prioriteit is ingesteld op 100.
 
 Logica: p
 
@@ -151,7 +151,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Hier volgt de bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
   {
@@ -175,13 +175,15 @@ Hier volgt de bijbehorende JSON:
   }
 ```
 
-Overeenkomende CRS-regel:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Hier volgt de regel voor de bijbehorende kern regel:
 
-## <a name="example-3"></a>Voorbeeld 3
+  `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
-Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat als beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.0/24 overeenkomen, de aanvraag wordt geblokkeerd.
+## <a name="example-3"></a>Voor beeld 3
 
-Logic: p **en** q
+Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke matching voorwaarden maken en deze in dezelfde regel plaatsen. Deze aanpak zorgt ervoor dat als beide *evilbot* in de header van de gebruikers agent *en* IP-adressen uit het bereik 192.168.5.0/24 overeenkomen, de aanvraag wordt geblokkeerd.
+
+Logic: p *en* q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -212,7 +214,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-Hier volgt de bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
 { 
@@ -251,9 +253,9 @@ Hier volgt de bijbehorende JSON:
 
 ## <a name="example-4"></a>Voor beeld 4
 
-Voor dit voor beeld wilt u blok keren als de aanvraag zich buiten het IP-adres bereik *192.168.5.0/24*bevindt, of de teken reeks van de gebruikers agent is niet *Chrome* (wat betekent dat de gebruiker de Chrome-browser niet gebruikt). Omdat deze logica gebruikmaakt van **of**, zijn de twee voor waarden in afzonderlijke regels, zoals in het volgende voor beeld wordt weer gegeven. *myrule1* en *myrule2* moeten beide overeenkomen om het verkeer te blok keren.
+Voor dit voor beeld wilt u blok keren als de aanvraag zich buiten het IP-adres bereik *192.168.5.0/24*bevindt of als de teken reeks van de gebruikers agent niet *Chrome* is (dat wil zeggen, de gebruiker gebruikt niet de Chrome-browser). Omdat deze logica gebruikmaakt van *of*, zijn de twee voor waarden in afzonderlijke regels, zoals wordt weer gegeven in het volgende voor beeld. Om het verkeer te blok keren, moeten zowel *myrule1* als *myrule2* overeenkomen.
 
-Logic: **niet** (p **en** q) = **niet** p **of geen** q.
+Logic: *niet* (p *en* q) = *niet* p *of geen* q.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -291,7 +293,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-En de bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
 {
@@ -338,9 +340,9 @@ En de bijbehorende JSON:
 
 ## <a name="example-5"></a>Voor beeld 5
 
-U wilt aangepaste SQLI blok keren. Aangezien de logica die hier wordt gebruikt, is **of**en alle waarden in de *RequestUri*zijn, kan alle *MatchValues* in een door komma's gescheiden lijst staan.
+U wilt aangepaste SQLI blok keren. Omdat de logica die hier wordt gebruikt, *of* alle waarden in de *RequestUri*staan, kan alle *MatchValues* in een door komma's gescheiden lijst staan.
 
-Logic: p **of** q **of** r
+Logic: p *of* q *of* r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -359,7 +361,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
   {
@@ -385,7 +387,7 @@ Bijbehorende JSON:
   }
 ```
 
-Alternatieve Azure PowerShell:
+Dit is de alternatieve Azure PowerShell code:
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +438,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Bijbehorende JSON:
+Hier volgt de bijbehorende JSON-code:
 
 ```json
   {
@@ -495,6 +497,6 @@ Bijbehorende JSON:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw aangepaste regels hebt gemaakt, kunt u meer informatie over het weer geven van uw WAF-logboeken bekijken. Zie [Application Gateway Diagnostics](application-gateway-diagnostics.md#diagnostic-logging)(diagnostische gegevens) voor meer informatie.
+Nadat u uw aangepaste regels hebt gemaakt, kunt u meer informatie over het weer geven van uw WAF-logboeken bekijken. Zie [Application Gateway Diagnostics (diagnostische](application-gateway-diagnostics.md#diagnostic-logging)gegevens) voor meer informatie.
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png

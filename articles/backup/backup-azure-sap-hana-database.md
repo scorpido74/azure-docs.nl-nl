@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067107"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273946"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Back-up maken van een SAP HANA Data Base naar Azure
 
@@ -25,9 +25,9 @@ ms.locfileid: "71067107"
 
 **Ondersteuning** | **Details**
 --- | ---
-**Ondersteunde geografische gebieden** | Australië-Zuid-Oost, Oost-Australië <br> Brazilië - zuid <br> Canada-centraal, Canada-oost <br> Zuid-Azië-oost, Azië-oost <br> VS-Oost, VS-Oost 2, West-Centraal VS, VS-West, VS-West 2, Noord-Centraal VS, centraal VS, Zuid-Centraal VS<br> India, midden, India Zuid <br> Japan (oost), Japan (west)<br> Korea Centraal, Korea Zuid <br> Europa - noord, Europa - west <br> UK-zuid, UK-west
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost, Oost-Australië <br> Brazilië - Zuid <br> Canada-centraal, Canada-oost <br> Zuid-Azië-oost, Azië-oost <br> VS-Oost, VS-Oost 2, West-Centraal VS, VS-West, VS-West 2, Noord-Centraal VS, centraal VS, Zuid-Centraal VS<br> India, midden, India Zuid <br> Japan (oost), Japan (west)<br> Korea Centraal, Korea Zuid <br> Europa - noord, Europa - west <br> UK-zuid, UK-west
 **Ondersteunde VM-besturings systemen** | SLES 12 met SP2, SP3 of SP4.
-**Ondersteunde HANA-versies** | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS04 Rev 42
+**Ondersteunde HANA-versies** | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS04 Rev 43
 
 ### <a name="current-limitations"></a>Huidige beperkingen
 
@@ -40,7 +40,7 @@ ms.locfileid: "71067107"
 - U kunt om de 15 minuten een back-up maken van database Logboeken. Logboek back-ups gaan alleen naar de stroom nadat een volledige back-up voor de data base is voltooid.
 - U kunt volledige en differentiële back-ups maken. Incrementele back-up wordt momenteel niet ondersteund.
 - U kunt het back-upbeleid niet wijzigen nadat u het hebt toegepast voor SAP HANA back-ups. Als u een back-up met andere instellingen wilt maken, maakt u een nieuw beleid of wijst u een ander beleid toe.
-  - Als u een nieuw beleid wilt maken, klikt u in de kluis op **beleids regels** > **back-upbeleid** >  **+ SAP Hana toevoegen** > **in azure VM**en geeft u beleids instellingen op.
+  - Als u een nieuw beleid wilt maken, klikt u in de kluis op **beleid** > **back-upbeleid** >  **+**  > -**SAP Hana toevoegen in azure VM**en geeft u beleids instellingen op.
   - Als u een ander beleid wilt toewijzen, klikt u in de eigenschappen van de virtuele machine waarop de data base wordt uitgevoerd op de huidige beleids naam. Vervolgens kunt u op de pagina **back-upbeleid** een ander beleid selecteren dat u wilt gebruiken voor de back-up.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -101,7 +101,7 @@ Schakel nu back-up in.
 
 1. Klik in stap 2 op **back-up configureren**.
 2. Selecteer in **items selecteren waarvan u een back**-up wilt maken de data bases die u wilt beveiligen > **OK**.
-3. Kies in **back-upbeleid** > **back-upbeleid**, maak een nieuw back-upbeleid voor de data bases, in overeenstemming met de onderstaande instructies.
+3. In **back-upbeleid** > **Kies back-** upbeleid, maakt u een nieuw back-upbeleid voor de data bases, in overeenstemming met de onderstaande instructies.
 4. Nadat u het beleid hebt gemaakt, klikt u in het menu **back-up** op **back-up inschakelen**.
 5. Volg de voortgang van de configuratie van de back-up in het gebied **meldingen** van de portal.
 
@@ -122,7 +122,7 @@ Geef de beleids instellingen als volgt op:
        - Klik op **Volledige back-up** om het beleid te bekijken.
        - U kunt geen differentiële back-ups maken voor dagelijkse volledige back-ups.
        
-   - **Wekelijkse**: Selecteer de dag van de week, het uur en de tijd zone waarin de back-uptaak wordt uitgevoerd.
+   - **Wekelijks**: Selecteer de dag van de week, het uur en de tijd zone waarin de back-uptaak wordt uitgevoerd.
 3. Configureer in **Bewaar termijn**de Bewaar instellingen voor de volledige back-up.
     - Alle opties zijn standaard geselecteerd. Wis de limieten voor het Bewaar bereik die u niet wilt gebruiken en stel de beperkingen in die u doet.
     - De minimale Bewaar periode voor elk type back-up (volledig/differentieel/logboek) is zeven dagen.
@@ -167,7 +167,7 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
 
 1. Wacht totdat alle volledige of logboek back-ups voor de Data Base zijn voltooid. Controleer de status in SAP HANA Studio.
 2. Schakel logboek back-ups uit en stel de back-catalogus in op het bestands systeem voor de relevante data base.
-3. U doet dit door te dubbel klikken op **SystemDB** > -**configuratie** > **database** > **filter (logboek)** .
+3. U doet dit door te dubbel klikken op **systemdb** > **configuratie** >  database  > **filter (logboek)** te**selecteren**.
 4. Stel **enable_auto_log_backup** in op **Nee**.
 5. Stel **log_backup_using_backint** in op **False**.
 6. Maak een ad-hoc volledige back-up van de data base.

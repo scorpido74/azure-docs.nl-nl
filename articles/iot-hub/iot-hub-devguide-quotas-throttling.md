@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877176"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264635"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -39,15 +39,15 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 | Vertragen | Gratis, B1 en S1 | B2 en S2 | B3 en S3 | 
 | -------- | ------- | ------- | ------- |
 | [Identiteits register bewerkingen](#identity-registry-operations-throttle) (maken, ophalen, weer geven, bijwerken, verwijderen) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 83.33 per seconde per eenheid (5000/min per eenheid) |
-| [Nieuwe verbindingen met apparaten](#device-connections-throttle) (deze limiet geldt voor de frequentie van _nieuwe verbindingen_, niet het totale aantal verbindingen) | Hoger van 100 per seconde of 12 per seconde per eenheid <br/> Zo zijn twee S1-eenheden 2\*12 = 24 nieuwe verbindingen per seconde, maar u hebt ten minste 100 nieuwe verbindingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 nieuwe verbindingen per seconde (9\*12) in uw eenheden. | 120 nieuwe verbindingen per seconde per eenheid | 6\.000 nieuwe verbindingen per seconde per eenheid |
-| Apparaat-naar-cloud verzendt | Meer dan 100 verzend bewerkingen per seconde of 12 verzend bewerkingen per seconde/eenheid <br/> Bijvoorbeeld: twee S1-eenheden zijn 2\*12 = 24 per seconde, maar u hebt ten minste 100 verzend bewerkingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 verzend bewerkingen per seconde (9\*12) in uw eenheden. | 120 verzend bewerkingen per seconde per eenheid | 6\.000 verzend bewerkingen per seconde per eenheid |
+| [Nieuwe verbindingen voor apparaten](#device-connections-throttle) (deze limiet geldt voor de frequentie van _nieuwe verbindingen_, niet het totale aantal verbindingen) | Hoger van 100 per seconde of 12 per seconde per eenheid <br/> Twee S1-eenheden zijn bijvoorbeeld 2 @ no__t-012 = 24 nieuwe verbindingen per seconde, maar u hebt ten minste 100 nieuwe verbindingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 nieuwe verbindingen per seconde (9 @ no__t-012) in uw eenheden. | 120 nieuwe verbindingen per seconde per eenheid | 6\.000 nieuwe verbindingen per seconde per eenheid |
+| Apparaat-naar-cloud verzendt | Meer dan 100 verzend bewerkingen per seconde of 12 verzend bewerkingen per seconde/eenheid <br/> Twee S1-eenheden zijn bijvoorbeeld 2 @ no__t-012 = 24 per seconde, maar u hebt ten minste 100 verzend bewerkingen per seconde over uw eenheden. Met negen S1-eenheden hebt u 108 verzend bewerkingen per seconde (9 @ no__t-012) in uw eenheden. | 120 verzend bewerkingen per seconde per eenheid | 6\.000 verzend bewerkingen per seconde per eenheid |
 | Verzenden van Cloud naar apparaat<sup>1</sup> | 1,67 verzend bewerkingen per seconde/eenheid (100 berichten/minuut/eenheid) | 1,67 verzend bewerkingen per seconde/eenheid (100 verzend bewerkingen per minuut/eenheid) | 83,33 verzend bewerkingen per seconde/eenheid (5.000 verzend bewerkingen per minuut/eenheid) |
 | Cloud-naar-apparaat ontvangt<sup>1</sup> <br/> (alleen wanneer het apparaat HTTPS gebruikt)| 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 16,67 receive-bewerkingen per seconde/eenheid (1.000-ontvangst bewerkingen/min/eenheid) | 833,33 receive-bewerkingen per seconde/eenheid (50.000-ontvangst bewerkingen/min/eenheid) |
-| Bestand uploaden | 1,67 bestands upload meldingen per seconde per eenheid (100/min. per eenheid) | 1,67 bestands upload meldingen per seconde per eenheid (100/min. per eenheid) | 83,33 bestands upload meldingen per seconde per eenheid (5000/min per eenheid) |
-| Directe methoden<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
+| Bestand uploaden | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 1,67 initiëringen van het uploaden van bestanden per seconde per eenheid (100/min/eenheid) | 83,33 initiëringen van het uploaden van bestanden per seconde per eenheid (5000/min per eenheid) |
+| Directe methoden<sup>1</sup> | 160KB per seconde/eenheid<sup>2</sup> | 480KB per seconde/eenheid<sup>2</sup> | 24MB per seconde/eenheid<sup>2</sup> | 
 | Query's | 20 per minuut/eenheid | 20 per minuut/eenheid | 1000/min per eenheid |
 | Dubbele Lees bewerkingen (apparaat en module)<sup>1</sup> | 100 per seconde | Hoger van 100 per seconde of 10 per seconde per eenheid | 500 per seconde per eenheid |
-| Dubbele updates (apparaat en module)<sup>1</sup> | 50 per seconde | Meer dan 50 per seconde of 5 per seconde per eenheid | 250/sec/unit |
+| Dubbele updates (apparaat en module)<sup>1</sup> | 50 per seconde | Meer dan 50 per seconde of 5 per seconde per eenheid | 250 per seconde per eenheid |
 | Taak bewerkingen<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 1.67 per seconde per eenheid (100 per minuut/eenheid) | 83.33 per seconde per eenheid (5000/min per eenheid) |
 | Bewerkingen voor taken apparaat<sup>1</sup> <br/> (update dubbele, direct-methode aanroepen) | 10 per seconde | Hoger van 10 per seconde of 1 per seconde per eenheid | 50 per seconde per eenheid |
 | Configuraties en Edge-implementaties<sup>1</sup> <br/> (maken, bijwerken, weergeven, verwijderen) | 0.33 per seconde per eenheid (20 per minuut/eenheid) | 0.33 per seconde per eenheid (20 per minuut/eenheid) | 0.33 per seconde per eenheid (20 per minuut/eenheid) |
@@ -69,15 +69,15 @@ De volgende tabel geeft de afgedwongen vertragingen weer. Waarden verwijzen naar
 
 *  **Quota** is het totale aantal berichten dat *per dag*in uw hub kan worden verzonden. U kunt de quotum limiet van uw hub vinden onder het kolom **Totaal aantal berichten/dag** op de [pagina met IOT hub prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-*  De beperkings limieten voor Cloud-naar-apparaat-en apparaat-naar- Cloud bepalen het maximum aantal berichten dat kan worden verzonden, ongeacht de 4 KB-segmenten. Elk bericht kan Maxi maal 256 KB groot zijn. Dit is de [maximale bericht grootte](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  De beperkings limieten voor Cloud-naar-apparaat-en apparaat-naar-Cloud bepalen *het maximum aantal* berichten dat kan worden verzonden, ongeacht de 4 KB-segmenten. Elk bericht kan Maxi maal 256 KB groot zijn. Dit is de [maximale bericht grootte](iot-hub-devguide-quotas-throttling.md#other-limits).
 
 *  Het is een goed idee om uw oproepen te beperken, zodat u de beperkings limieten niet bereikt of overschrijdt. Als u de limiet bereikt, reageert IoT Hub met fout code 429. de client moet er een back-up van maken en het opnieuw proberen. Deze limieten zijn per hub (of in sommige gevallen per hub/eenheid). Raadpleeg [connectiviteit en betrouw bare patronen voor berichten/nieuwe pogingen beheren](iot-hub-reliability-features-in-sdks.md#retry-patterns)voor meer informatie.
 
 ### <a name="traffic-shaping"></a>Verkeers vorming
 
-Om burst-verkeer te kunnen verwerken, worden de aanvragen voor een beperkte tijd boven de gashendel geaccepteerd IoT Hub. De eerste enkele van deze aanvragen worden direct verwerkt. Als het aantal aanvragen echter de vertraging overloopt, IoT Hub begint met het plaatsen van de aanvragen in een wachtrij en verwerkt tegen de limiet snelheid. Dit effect wordt *Traffic Shaping*genoemd. Bovendien is de grootte van deze wachtrij beperkt. Als de fout met de vertraging wordt vervolgd, wordt de wachtrij uiteindelijk gevuld en IoT Hub wordt het `429 ThrottlingException`weigeren van aanvragen gestart.
+Om burst-verkeer te kunnen verwerken, worden de aanvragen voor een beperkte tijd boven de gashendel geaccepteerd IoT Hub. De eerste enkele van deze aanvragen worden direct verwerkt. Als het aantal aanvragen echter de vertraging overloopt, IoT Hub begint met het plaatsen van de aanvragen in een wachtrij en verwerkt tegen de limiet snelheid. Dit effect wordt *Traffic Shaping*genoemd. Bovendien is de grootte van deze wachtrij beperkt. Als de fout met de vertraging wordt vervolgd, wordt de wachtrij uiteindelijk opgevuld en IoT Hub wordt het weigeren van aanvragen met `429 ThrottlingException` gestart.
 
-U gebruikt bijvoorbeeld een gesimuleerd apparaat voor het verzenden van 200 apparaat-naar-Cloud-berichten per seconde naar uw S1-IoT Hub (dat een limiet van 100/sec. D2C-verzen ding heeft). Voor de eerste minuut of twee worden de berichten onmiddellijk verwerkt. Omdat het apparaat echter nog steeds meer berichten verzendt dan de beperkings limiet, worden met IoT Hub slechts 100 berichten per seconde verwerkt en wordt de rest in een wachtrij geplaatst. U begint merkt meer latentie. Uiteindelijk kunt u beginnen met `429 ThrottlingException` het ophalen van de wachtrij, en wordt het aantal vertragings fouten in de [metrische gegevens](iot-hub-metrics.md) van de IOT hub steeds groter.
+U gebruikt bijvoorbeeld een gesimuleerd apparaat voor het verzenden van 200 apparaat-naar-Cloud-berichten per seconde naar uw S1-IoT Hub (dat een limiet van 100/sec. D2C-verzen ding heeft). Voor de eerste minuut of twee worden de berichten onmiddellijk verwerkt. Omdat het apparaat echter nog steeds meer berichten verzendt dan de beperkings limiet, worden met IoT Hub slechts 100 berichten per seconde verwerkt en wordt de rest in een wachtrij geplaatst. U begint merkt meer latentie. Uiteindelijk begint u met het ophalen van `429 ThrottlingException` als de wachtrij opvult, en wordt het aantal vertraagde fouten in de [metrische gegevens](iot-hub-metrics.md) van de IOT hub steeds groter.
 
 ### <a name="identity-registry-operations-throttle"></a>Beperking van de identiteits register bewerkingen
 
@@ -96,8 +96,8 @@ IoT Hub dwingt andere operationele limieten af:
 | Bewerking | Limiet |
 | --------- | ----- |
 | Apparaten | Het maximum aantal apparaten dat u kunt verbinden met één IoT-hub is 1.000.000. De enige manier om deze limiet te verhogen, is om contact op te nemen met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).|
-| Uploaden van bestanden | 10 gelijktijdige uploads van bestanden per apparaat. |
-| Jobs<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
+| Uploads van bestanden | 10 gelijktijdige uploads van bestanden per apparaat. |
+| Taken<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
 | Extra eind punten | Betaalde SKU hubs kunnen 10 extra eind punten hebben. Gratis SKU-hubs kunnen één extra eind punt hebben. |
 | Bericht routering query's | Betaalde SKU-hubs hebben mogelijk 100 routerings query's. Gratis SKU-hubs kunnen vijf routerings query's hebben. |
 | Berichtverrijkingen | Betaalde SKU hubs kunnen Maxi maal 10 bericht verrijkingen hebben. Gratis SKU-hubs kunnen Maxi maal 2 bericht verrijkingen hebben.|
@@ -106,7 +106,7 @@ IoT Hub dwingt andere operationele limieten af:
 | Directe methode<sup>1</sup> | De maximale grootte van de directe methode lading is 128 KB. |
 | Automatische configuratie van apparaten<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
 | Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
-| Twins<sup>1</sup> | De maximum grootte per dubbele sectie (tags, gewenste eigenschappen, gerapporteerde eigenschappen) is 8 KB |
+| Apparaatdubbels<sup>1</sup> | De maximum grootte per dubbele sectie (tags, gewenste eigenschappen, gerapporteerde eigenschappen) is 8 KB |
 
 <sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie.
 

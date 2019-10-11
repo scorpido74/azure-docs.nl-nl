@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311641"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262856"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Verifiëren met Azure Container Registry vanuit Azure Container Instances
 
@@ -33,7 +33,7 @@ Service-principals moeten ook worden gebruikt wanneer de [gebruiker](container-r
 
 ## <a name="authenticate-using-the-service-principal"></a>Verificatie met behulp van de Service-Principal
 
-Als u een container in azure container instances wilt starten met behulp van een service- `--registry-username`Principal, geeft u de `--registry-password`id voor en het bijbehorende wacht woord voor op.
+Als u een container in Azure Container Instances wilt starten met behulp van een Service-Principal, geeft u de ID op voor `--registry-username` en het bijbehorende wacht woord voor `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -49,7 +49,7 @@ az container create \
 
 U kunt de voor gaande voorbeeld scripts voor Azure CLI vinden op GitHub, evenals versies voor Azure PowerShell:
 
-* [Azure-CLI][acr-scripts-cli]
+* [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -57,7 +57,7 @@ U kunt de voor gaande voorbeeld scripts voor Azure CLI vinden op GitHub, evenals
 De volgende artikelen bevatten aanvullende informatie over het werken met Service-principals en ACR:
 
 * [Verificatie Azure Container Registry met Service-principals](container-registry-auth-service-principal.md)
-* [Verifiëren met Azure Container Registry van de Azure Kubernetes-service (AKS)](container-registry-auth-aks.md)
+* [Verifiëren met Azure Container Registry van de Azure Kubernetes-service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

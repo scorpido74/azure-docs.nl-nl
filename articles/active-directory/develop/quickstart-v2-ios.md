@@ -17,14 +17,14 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345529"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264175"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snelstartgids: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
 Deze Quick Start bevat een code voorbeeld dat laat zien hoe een systeem eigen iOS-of macOS-toepassing zich kan aanmelden bij persoonlijke, werk-en school accounts, een toegangs token kan ophalen en de Microsoft Graph-API aanroept.
 
@@ -35,23 +35,23 @@ Deze Quick start is van toepassing op iOS-en macOS-apps. Sommige stappen zijn al
 > [!NOTE]
 > **Vereisten**
 > * XCode 10 +
-> * iOS 10+ 
-> * macOS 10.12+
+> * iOS 10 + 
+> * macOS 10.12 +
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
-> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
+> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens de voorbeeldcode](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
 > * [Handmatig] [Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>Optie 1: Registreer en configureer uw app automatisch en down load vervolgens het code voorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>Optie 1: uw app registreren en automatisch configureren en vervolgens het code voorbeeld downloaden
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Als u uw app wilt registreren,
 > 1. Ga naar het deel venster nieuwe [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) .
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
@@ -62,10 +62,10 @@ Deze Quick start is van toepassing op iOS-en macOS-apps. Sommige stappen zijn al
 >      - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app wanneer deze zich aanmelden of toestemming voor uw app geven.
 >      - Andere configuraties op deze pagina overs Laan.
 >      - Selecteer `Register`.
-> 1. Selecteer `Authentication` inde > sectie **beheren.** `Add Platform`  >  `iOS`
->      - Voer de ***bundel-id*** in voor uw toepassing. De bundel-id is een unieke teken reeks die bijvoorbeeld `com.<yourname>.identitysample.MSALMacOS`uw toepassing uniek aanduidt. Noteer de waarde die u gebruikt.
+> 1. Selecteer in de sectie **beheren** de optie `Authentication` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5.
+>      - Voer de ***bundel-id*** in voor uw toepassing. De bundel-id is een unieke teken reeks die uw toepassing uniek identificeert, bijvoorbeeld `com.<yourname>.identitysample.MSALMacOS`. Noteer de waarde die u gebruikt.
 >      - Houd er rekening mee dat de iOS-configuratie ook van toepassing is op macOS-toepassingen.
-> 1. Selecteer `Configure` de details van de ***MSAL-configuratie*** en sla deze op verderop in deze Quick Start.
+> 1. Selecteer `Configure` en sla de details van de ***MSAL-configuratie*** op verderop in deze Quick Start.
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Stap 1: Uw toepassing configureren
@@ -76,28 +76,28 @@ Deze Quick start is van toepassing op iOS-en macOS-apps. Sommige stappen zijn al
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-ios/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken
 
-#### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeld project downloaden
+#### <a name="step-2-download-the-sample-project"></a>Stap 2: het voorbeeld project downloaden
 
 - [Het code voorbeeld voor iOS downloaden](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 - [Het code voorbeeld voor macOS downloaden](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
-#### <a name="step-3-install-dependencies"></a>Stap 3: Afhankelijkheden installeren
+#### <a name="step-3-install-dependencies"></a>Stap 3: afhankelijkheden installeren
 
-Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld en `pod install` Voer uit om de meest recente MSAL-bibliotheek te installeren.
+Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld en voer `pod install` uit om de meest recente MSAL-bibliotheek te installeren.
 
-#### <a name="step-4-configure-your-project"></a>Stap 4: Het project configureren
+#### <a name="step-4-configure-your-project"></a>Stap 4: uw project configureren
 
 > [!div renderon="docs"]
 > Als u optie 1 hierboven hebt geselecteerd, kunt u deze stappen overs Laan. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Pak het zip-bestand uit en open het project in XCode.
-> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde voor `kClientID` te wijzigen voor met de client-id die u hebt opgeslagen toen u uw app in de portal eerder in de Quick Start hebt geregistreerd:
+> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde voor `kClientID` bij te werken met de client-ID die u hebt opgeslagen tijdens het registreren van uw app in de portal eerder in de Quick Start:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
-> 1. Alleen voor IOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > **bron code**.
+> 1. Alleen voor iOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > -**bron code**.
 > 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `CFBundleURLSchemes` door de ***bundel-id*** die u hebt ingevoerd in de portal.
 >
 >    ```xml
@@ -118,12 +118,12 @@ Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld 
 > [!div renderon="docs"]
 >
 > 1. Pak het zip-bestand uit en open het project in XCode.
-> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde bij `kClientID` te werken voor met de clientID die u hebt opgeslagen tijdens het registreren van uw app in de portal eerder in deze Quick Start:
+> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kClientID ' door het volgende code fragment. Vergeet niet om de waarde voor `kClientID` bij te werken met de clientID die u hebt opgeslagen toen u uw app in de portal eerder in deze Quick Start hebt geregistreerd:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
-> 1. Alleen voor IOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > **bron code**.
+> 1. Alleen voor iOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** > -**bron code**.
 > 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `Enter_the_bundle_Id_Here` door de ***bundel-id*** die u in de portal hebt gebruikt.
 >
 >    ```xml
@@ -192,7 +192,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Alleen voor iOS, extra app-vereisten
 
-Uw app moet ook het volgende hebben in uw `AppDelegate`. Hiermee kan de MSAL SDK-reactie van de auth Broker-app worden verwerkt wanneer u verificatie doet.
+Uw app moet ook het volgende in uw `AppDelegate` hebben. Hiermee kan de MSAL SDK-reactie van de auth Broker-app worden verwerkt wanneer u verificatie doet.
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -203,7 +203,7 @@ Uw app moet ook het volgende hebben in uw `AppDelegate`. Hiermee kan de MSAL SDK
  ```
 
 > [!NOTE]
-> Als u in `UISceneDelegate` plaats van de code van `UIApplicationDelegate`IOS 13 + inschakelt, plaatst `scene:openURLContexts:` u deze in plaats daarvan in de call back (Zie [de documentatie van Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
+> Als u op iOS 13 + een `UISceneDelegate` in plaats van `UIApplicationDelegate` neemt, plaatst u deze code in de `scene:openURLContexts:`-call back in plaats daarvan (Zie [de documentatie van Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
 > Als u zowel UISceneDelegate als UIApplicationDelegate voor compatibiliteit met oudere iOS-versies ondersteunt, moet MSAL call back worden geplaatst op beide locaties.
 
  ```swift
@@ -220,7 +220,7 @@ Uw app moet ook het volgende hebben in uw `AppDelegate`. Hiermee kan de MSAL SDK
     }
  ```
 
-Ten slotte moet uw app een `LSApplicationQueriesSchemes` vermelding bevatten in uw ***info. plist*** naast de `CFBundleURLTypes`. Dit is inclusief het voor beeld. 
+Ten slotte moet uw app een `LSApplicationQueriesSchemes`-vermelding in uw ***info. plist*** naast de `CFBundleURLTypes` hebben. Dit is inclusief het voor beeld. 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>
@@ -234,7 +234,7 @@ Ten slotte moet uw app een `LSApplicationQueriesSchemes` vermelding bevatten in 
 
 MSAL biedt twee methoden voor het verkrijgen van tokens: `acquireToken` en `acquireTokenSilent`.
 
-#### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: Een token interactief ophalen
+#### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: een token interactief ophalen
 
 In sommige situaties moeten gebruikers communiceren met het micro soft Identity-platform. In dergelijke gevallen kan de eind gebruiker verplicht zijn of haar account selecteren, hun referenties invoeren of toestemming geven voor de machtigingen van uw app. Bijvoorbeeld: 
 
@@ -250,9 +250,9 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |Waar:||
 > |---------|---------|
-> | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen `[ "user.read" ]` , voor Microsoft Graph `[ "<Application ID URL>/scope" ]` of voor aangepaste web-`api://<Application ID>/access_as_user`api's () |
+> | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen, `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-Api's (`api://<Application ID>/access_as_user`) |
 
-#### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: Een toegangs token op de achtergrond ophalen
+#### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: een toegangs token op de achtergrond ophalen
 
 Voor apps mogen gebruikers zich niet elke keer aanmelden wanneer ze een token aanvragen. Als de gebruiker al is aangemeld, kunnen apps tokens op de achtergrond aanvragen. 
 
@@ -265,8 +265,8 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 
 > |Waar: ||
 > |---------|---------|
-> | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen `[ "user.read" ]` , voor Microsoft Graph `[ "<Application ID URL>/scope" ]` of voor aangepaste web-`api://<Application ID>/access_as_user`api's () |
-> | `account` | Het account waarvoor een token wordt aangevraagd. Deze Quick start is een enkele account toepassing. Als u een app met meerdere accounts wilt maken, moet u de logica definiëren om te bepalen welk account moet worden gebruikt voor token aanvragen`applicationContext.account(forHomeAccountId: self.homeAccountId)` |
+> | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen, `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-Api's (`api://<Application ID>/access_as_user`) |
+> | `account` | Het account waarvoor een token wordt aangevraagd. Deze Quick start is over een enkele account toepassing. Als u een app met meerdere accounts wilt maken, moet u de logica definiëren om te bepalen welk account moet worden gebruikt voor token aanvragen met `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

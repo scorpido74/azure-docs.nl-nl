@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon '
+title: Een Azure Databricks-werk ruimte maken met Azure Resource Manager
 description: De snelstart laat zien hoe er met de Resource Manager-sjabloon een Azure Databricks-werkruimte en een Apache Spark-cluster kan worden gemaakt, en hoe een Spark-taak kan worden uitgevoerd.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 8d4cfb2be687f258255379d93fd60028dcd2eb2c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68932595"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274158"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Azure Resource Manager-sjabloon
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon
 
 In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een Azure Databricks-werk ruimte te maken met een Apache Spark cluster. U voert een taak uit op het cluster en gebruikt aangepaste grafieken om realtime rapporten te produceren van het gratis/betaalde gebruik op basis van demografische gegevens.
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een Azure 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -47,7 +47,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van de Re
 
    Geef de volgende waarden op:
 
-   |Eigenschap  |Description  |
+   |Eigenschap  |Beschrijving  |
    |---------|---------|
    |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
    |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
@@ -101,7 +101,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
 
    ![Een notitieblok maken in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Een notitieblok maken in Databricks")
 
-   Klik op **Create**.
+   Klik op **Maken**.
 
 3. In deze stap koppelt u het Storage-account aan het Databricks Apache Spark-cluster. U kunt dat op twee manieren doen. Koppel het Azure Storage-account rechtstreeks aan het Databricks Filesystem (DBFS) of open het Azure Storage-account rechtstreeks vanuit de toepassing die u maakt.
 
@@ -170,7 +170,7 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
    * Stel **Waarden** in op **niveau**.
    * Stel **Aggregatie** in op **AANTAL**.
 
-   Klik op **Toepassen**.
+   Klik op **Apply** (Toepassen).
 
 9. De uitvoer toont de visuele weergave zoals de volgende schermafbeelding laat zien:
 

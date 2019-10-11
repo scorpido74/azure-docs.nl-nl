@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 12/18/2018
-ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/10/2019
+ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568612"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264235"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Rapport over uitgeschaalde Cloud databases (preview-versie)
 
@@ -33,7 +33,7 @@ Down load en voer het [voor beeld aan de slag met Elastic database-hulpprogram m
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Een Shard-toewijzings beheer maken met behulp van de voor beeld-app
 Hier maakt u een Shard-toewijzings beheer samen met verschillende Shards, gevolgd door het invoegen van gegevens in de Shards. Als er al een Shards-instelling is met Shard-gegevens, kunt u de volgende stappen overs Laan en door gaan naar de volgende sectie.
 
-1. Bouw en voer de voorbeeld toepassing aan de slag **met Elastic database-hulpprogram ma's** . Volg de stappen tot en met stap 7 in het gedeelte [de voor beeld-app downloaden en uitvoeren](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Aan het einde van stap 7 wordt de volgende opdracht prompt weer gegeven:
+1. Bouw en voer de voorbeeld toepassing aan de slag **met Elastic database-hulpprogram ma's** uit door de stappen in de sectie artikel te volgen om [de voor beeld-app te downloaden en uit te voeren](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1). Nadat u alle stappen hebt voltooid, wordt de volgende opdracht prompt weer gegeven:
 
     ![opdracht prompt][1]
 2. Typ ' 1 ' in het opdracht venster en druk op **Enter**. Hiermee wordt het Shard-toewijzings beheer gemaakt en worden twee Shards toegevoegd aan de server. Typ "3" en druk op **Enter**; Herhaal de actie vier keer. Hiermee worden de rijen met voorbeeld gegevens in uw Shards ingevoegd.
@@ -62,15 +62,15 @@ Deze worden gebruikt om verbinding te maken met de Shard-kaart Manager en de Sha
 1. Open SQL Server Management Studio of SQL Server Data Tools in Visual Studio.
 2. Maak verbinding met de ElasticDBQuery-data base en voer de volgende T-SQL-opdrachten uit:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    gebruikers naam en wacht woord moeten hetzelfde zijn als de aanmeldings gegevens die worden gebruikt in stap 6 van [downloaden en de voor beeld-app uitvoeren](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) in [aan de slag met Elastic data base-hulpprogram ma's](sql-database-elastic-scale-get-started.md).
+    gebruikers naam en wacht woord moeten hetzelfde zijn als de aanmeldings gegevens die worden gebruikt in stap 3 van [de sectie downloaden en de voor beeld-app uitvoeren](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) in het artikel aan de slag **met Elastic database-hulpprogram ma's** .
 
-### <a name="external-data-sources"></a>Externe gegevensbronnen
+### <a name="external-data-sources"></a>Externe gegevens bronnen
 Als u een externe gegevens bron wilt maken, voert u de volgende opdracht uit op de ElasticDBQuery-Data Base:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
@@ -104,7 +104,7 @@ Deze query uitvoeren op de ElasticDBQuery-Data Base:
 
 U ziet dat de query de resultaten van alle Shards samenvoegt en de volgende uitvoer levert:
 
-![Uitvoergegevens][4]
+![Uitvoer Details][4]
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>Query resultaten voor Elastic data base importeren in Excel
  U kunt de resultaten van een query importeren in een Excel-bestand.
@@ -134,7 +134,7 @@ Zie [SQL database prijs](https://azure.microsoft.com/pricing/details/sql-databas
 * Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](sql-database-elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
 * Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](sql-database-elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
 * Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](sql-database-elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [extern\_ uitvoeren\_van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die als Shards fungeren in een horizon taal partitie schema.
 
 
 <!--Image references-->

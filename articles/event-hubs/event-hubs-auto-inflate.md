@@ -1,6 +1,6 @@
 ---
-title: Automatisch schalen van doorvoereenheden - Azure Event Hubs | Microsoft Docs
-description: Schakel automatisch vergroten in een naamruimte doorvoereenheden automatisch geschaald.
+title: Doorvoer eenheden automatisch opschalen-Azure Event Hubs | Microsoft Docs
+description: Schakel automatisch verg Roten in een naam ruimte in om doorvoer eenheden automatisch te schalen.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,65 +15,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273699"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264467"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisch schalen van Azure Event Hubs-doorvoereenheden
-Azure Event Hubs is een uiterst schaalbaar platform voor gegevensstromen. Gebruik van Event Hubs verhoogt daarom vaak na het starten van de service wilt gebruiken. Dergelijk gebruik vereist verhogen van de vooraf ingestelde [doorvoereenheden](event-hubs-scalability.md#throughput-units) schalen van Event Hubs en grotere standaardtarieven voor gegevensoverdracht worden verwerkt. De **automatisch vergroten** functie van Event Hubs automatisch omhoog wordt geschaald uitgaande door het aantal doorvoereenheden, om te voldoen aan gebruik behoeften. Verhoging van doorvoereenheden wordt voorkomen dat beperkingsscenario's, waarbij:
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisch schalen van Azure Event Hubs doorvoer eenheden
+Azure Event Hubs is een uiterst schaalbaar platform voor het streamen van gegevens. Als zodanig neemt Event Hubs gebruik vaak toe na het starten van de service. Voor dit gebruik moet u de vooraf vastgestelde [doorvoer eenheden](event-hubs-scalability.md#throughput-units) verg Roten om event hubs te schalen en grotere overdrachts snelheden af te handelen. De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Het verhogen van doorvoer eenheden voor komt het beperken van scenario's, waarbij:
 
-* Inkomend verkeer gegevenstarieven groter zijn dan set-doorvoereenheden.
-* Gegevens uitgaande aanvraag snelheid groter zijn dan de set-doorvoereenheden.
+* Tarieven voor gegevens ingang overschrijden de ingestelde doorvoer eenheden.
+* De tarieven voor gegevens uitwissel aanvragen overschrijden de ingestelde doorvoer eenheden.
 
-De Event Hubs-service verhoogt de doorvoer wanneer de belasting toeneemt dan de minimale drempelwaarde, zonder dat alle aanvragen waarbij ServerBusy-fouten.
+De Event Hubs-service verhoogt de door Voer wanneer de belasting groter wordt dan de minimale drempel waarde, zonder dat er aanvragen worden uitgevoerd met ServerBusy-fouten.
 
-## <a name="how-auto-inflate-works"></a>Automatisch vergroten werking
+## <a name="how-auto-inflate-works"></a>Hoe automatisch verg Roten werkt
 
-Verkeer van Event Hubs wordt bepaald door [doorvoereenheden](event-hubs-scalability.md#throughput-units). Eén doorvoereenheid kunt 1 MB per seconde van inkomend verkeer en twee keer die hoeveelheid uitgaande gegevens. Standard eventhubs kunnen worden geconfigureerd met 1-20 doorvoereenheden. Automatisch vergroten, kunt u met de minimale vereiste doorvoereenheden u klein beginnen. De functie vervolgens automatisch wordt geschaald naar het maximum aantal doorvoereenheden die u nodig, afhankelijk van de toename van uw verkeer hebt. Automatisch vergroten, biedt de volgende voordelen:
+Event Hubs verkeer wordt bepaald door [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Eén doorvoer eenheid maakt 1 MB per seconde van binnenkomend en twee keer zo hoog mogelijk. Standaard Event hubs kunnen worden geconfigureerd met 1-20-doorvoer eenheden. Als u automatisch verg Roten, kunt u klein beginnen met de mini maal vereiste doorvoer eenheden die u kiest. De functie schaalt vervolgens automatisch naar de maximum limiet van de doorvoer eenheden die u nodig hebt, afhankelijk van de toename van uw verkeer. Automatisch verg Roten biedt de volgende voor delen:
 
-- Een efficiënte schaling mechanisme om te klein beginnen en opschalen naarmate u groeit.
-- Automatisch schalen aan de opgegeven bovenste limiet zonder beperking van problemen.
-- Meer controle over het schalen, omdat u wanneer bepalen en hoe veel op schaal.
+- Een efficiënt schaal mechanisme om kleine te beginnen en omhoog te schalen naarmate u groeit.
+- Automatisch schalen naar de opgegeven bovengrens zonder beperking van problemen.
+- Meer controle over schalen, omdat u bepaalt wanneer en hoeveel u wilt schalen.
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Automatisch vergroten inschakelen voor een naamruimte
+## <a name="enable-auto-inflate-on-a-namespace"></a>Automatisch verg Roten inschakelen voor een naam ruimte
 
-U kunt inschakelen of uitschakelen automatisch vergroten op een Event Hubs-naamruimte met een van de volgende methoden:
+U kunt automatisch verg Roten op een standaardlaag Event Hubs naam ruimte in-of uitschakelen met behulp van een van de volgende methoden:
 
-- De [Azure-portal](https://portal.azure.com).
-- Een [Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
+- Het [Azure Portal](https://portal.azure.com).
+- Een [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Automatisch vergroten inschakelen via de portal
+> [!NOTE]
+> De Basic-laag Event Hubs naam ruimten bieden geen ondersteuning voor automatisch verg Roten.
+
+### <a name="enable-auto-inflate-through-the-portal"></a>Automatisch verg Roten inschakelen via de portal
 
 
-#### <a name="enable-at-the-time-of-creation"></a>Schakel op het moment van maken 
-U kunt de functie voor automatisch vergroten inschakelen **bij het maken van een Event Hubs-naamruimte**:
+#### <a name="enable-at-the-time-of-creation"></a>Inschakelen op het moment van maken 
+U kunt de functie voor automatisch verg Roten inschakelen **bij het maken van een event hubs naam ruimte**:
  
-![Inschakelen van automatisch vergroten op tijd event hub maken](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Automatisch verg Roten inschakelen op het moment Event Hub maken](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Met deze optie is ingeschakeld, kunt u met uw doorvoereenheden klein beginnen en opschalen toename van de behoeften van uw gebruik. De bovengrens voor inflatie heeft geen direct invloed op prijzen, die afhankelijk is van het aantal throughput units per uur gebruikt.
+Als deze optie is ingeschakeld, kunt u kleine met uw doorvoer eenheden starten en omhoog schalen naarmate uw gebruiks behoefte toeneemt. De bovengrens voor de inflatie is niet direct van invloed op de prijzen, wat afhankelijk is van het aantal gebruikte doorvoer eenheden per uur.
 
-#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Automatisch vergroten inschakelen voor een bestaande event hub
-U kunt ook de functie voor automatisch vergroten inschakelen en de instellingen ervan wijzigen met behulp van de volgende instructies: 
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Automatisch verg Roten inschakelen voor een bestaande Event Hub
+U kunt ook de functie voor automatisch verg Roten inschakelen en de instellingen wijzigen met behulp van de volgende instructies: 
  
-1. Op de **Event Hubs Namespace** weergeeft, schakelt **uitgeschakelde** onder **doorvoereenheden automatisch vergroten**.  
+1. Selecteer op de pagina **Event hubs naam ruimte** de optie **uitgeschakeld** onder **doorvoer eenheden automatisch verg Roten**.  
 
-    ![Throughput units op de pagina van Event Hubs-naamruimte selecteren](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. In de **schaalinstellingen** pagina, selecteert u het selectievakje voor **inschakelen** (als de functie voor automatisch schalen is niet ingeschakeld).
+    ![Doorvoer eenheden selecteren op de pagina met de Event Hubs naam ruimte](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. Schakel op de pagina **schaal instellingen** het selectie vakje voor **inschakelen** in (als de functie voor automatisch schalen niet is ingeschakeld).
 
     ![Selecteer inschakelen](./media/event-hubs-auto-inflate/scale-settings.png)
-3. Voer de **maximale** aantal doorvoereenheden of gebruik de schuifbalk om in te stellen de waarde. 
-4. (optioneel) Update de **minimale** aantal doorvoereenheden boven aan deze pagina. 
+3. Voer het **maximum** aantal doorvoer eenheden in of gebruik de schuif balk om de waarde in te stellen. 
+4. Beschrijving Werk het **minimum** aantal doorvoer eenheden toe boven aan deze pagina. 
 
 
 > [!NOTE]
-> Bij het toepassen van de configuratie om te verhogen doorvoereenheden automatisch vergroten, de Event Hubs-service verzendt diagnostische logboeken waarmee u informatie over waarom en wanneer de doorvoer is verhoogd. Als u Diagnostische logboekregistratie voor een event hub, schakelt **diagnostische instellingen** in het menu links op de Event Hub-pagina in de Azure-portal. Zie voor meer informatie, [instellen van diagnostische logboeken voor een Azure event hub](event-hubs-diagnostic-logs.md). 
+> Wanneer u de automatische vergren configuratie toepast om doorvoer eenheden te verhogen, verzendt de Event Hubs-service Diagnostische logboeken die u informatie geven over waarom en wanneer de door Voer is verhoogd. Als u diagnostische logboek registratie wilt inschakelen voor een Event Hub, selecteert u **Diagnostische instellingen** in het menu links op de pagina Event hub in de Azure Portal. Zie [Diagnostische logboeken instellen voor een Azure-Event hub](event-hubs-diagnostic-logs.md)voor meer informatie. 
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatisch vergroten met behulp van een Azure Resource Manager-sjabloon inschakelen
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatisch verg Roten inschakelen met behulp van een Azure Resource Manager sjabloon
 
-U kunt automatisch vergroten inschakelen tijdens de sjabloonimplementatie van een Azure Resource Manager. Bijvoorbeeld instellen de `isAutoInflateEnabled` eigenschap **waar** en stel `maximumThroughputUnits` tot en met 10. Bijvoorbeeld:
+U kunt automatisch verg Roten inschakelen tijdens de implementatie van een Azure Resource Manager sjabloon. Stel de eigenschap `isAutoInflateEnabled` bijvoorbeeld in op **True** en stel `maximumThroughputUnits` in op 10. Bijvoorbeeld:
 
 ```json
 "resources": [
@@ -116,7 +119,7 @@ U kunt automatisch vergroten inschakelen tijdens de sjabloonimplementatie van ee
     ]
 ```
 
-Zie voor de volledige sjabloon, de [maken Event Hubs-naamruimte en schakelt u vergroten](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) sjabloon op GitHub.
+Voor de volledige sjabloon, zie de [Event hubs naam ruimte maken en sjabloon verg Roten inschakelen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) op github.
 
 
 ## <a name="next-steps"></a>Volgende stappen

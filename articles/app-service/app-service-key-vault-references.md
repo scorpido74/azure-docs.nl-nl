@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240106"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274430"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Gebruik Key Vault verwijzingen voor App Service en Azure Functions
 
 > [!NOTE] 
-> Key Vault verwijzingen zijn momenteel beschikbaar als preview-versie en ze worden momenteel niet ondersteund door Linux-verbruiks abonnementen.
+> Key Vault verwijzingen zijn momenteel niet beschikbaar in Linux-verbruiks abonnementen.
 
 In dit onderwerp wordt beschreven hoe u kunt werken met geheimen van Azure Key Vault in uw App Service of Azure Functions toepassing zonder dat u code wijzigingen hoeft aan te brengen. [Azure Key Vault](../key-vault/key-vault-overview.md) is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
 
@@ -52,7 +52,7 @@ Een Key Vault-verwijzing heeft de vorm `@Microsoft.KeyVault({referenceString})`,
 > | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De **naam van het doel** geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
 > [!NOTE] 
-> In de huidige preview zijn versies vereist. Bij het draaien van geheimen moet u de versie in de configuratie van de toepassing bijwerken.
+> Er zijn momenteel versies vereist. Bij het draaien van geheimen moet u de versie in de configuratie van de toepassing bijwerken.
 
 Een volledige verwijzing ziet er bijvoorbeeld als volgt uit:
 
@@ -192,7 +192,9 @@ Als een verwijzing niet correct wordt opgelost, wordt in plaats daarvan de refer
 
 Dit wordt meestal veroorzaakt door een onjuiste configuratie van het Key Vault- [toegangs beleid](#granting-your-app-access-to-key-vault). Het kan echter ook worden veroorzaakt door een geheim dat niet meer aanwezig is of een syntaxis fout in de verwijzing zelf.
 
-Als de syntaxis juist is, kunt u andere oorzaken voor fouten weer geven door de huidige oplossings status te controleren met behulp van een ingebouwde detector.
+Als de syntaxis juist is, kunt u andere oorzaken voor fouten weer geven door de huidige oplossings status in de portal te controleren. Navigeer naar toepassings instellingen en selecteer bewerken voor de betreffende verwijzing. Onder de instellings configuratie ziet u status informatie, inclusief eventuele fouten. Als deze ontbreken, betekent dit dat de verwijzings syntaxis ongeldig is.
+
+U kunt ook een van de ingebouwde detectoren gebruiken om aanvullende informatie te krijgen.
 
 ### <a name="using-the-detector-for-app-service"></a>De detector voor App Service gebruiken
 
