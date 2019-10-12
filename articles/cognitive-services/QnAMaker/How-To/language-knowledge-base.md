@@ -1,41 +1,72 @@
 ---
-title: Niet-Engelse Knowledge Base-QnA Maker
+title: Taal concepten-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker ondersteunt Knowledge Base-inhoud in veel talen. Elke QnA Maker-service moet echter voor één taal worden gereserveerd. De eerste Knowledge Base die als doel heeft gericht op een bepaalde QnA Maker service, stelt de taal van die service in.
+description: QnA Maker ondersteunt Knowledge Base-inhoud in veel talen. Elke QnA Maker-service moet echter voor één taal worden gereserveerd. De eerste Knowledge Base die is gemaakt, gericht op een bepaalde QnA Maker service, stelt de taal van die service in.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961480"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286416"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Taal ondersteuning van Knowledge Base-inhoud voor QnA Maker
 
-QnA Maker ondersteunt Knowledge Base-inhoud in veel talen. Elke QnA Maker-service moet echter voor één taal worden gereserveerd. De eerste Knowledge Base die als doel heeft gericht op een bepaalde QnA Maker service, stelt de taal van die service in. [Hier](../Overview/languages-supported.md) vindt u een lijst met ondersteunde talen.
+De taal voor de service wordt geselecteerd wanneer u de eerste Knowledge Base maakt in de resource. Alle aanvullende kennis grondslagen in de resource moeten zich in dezelfde taal bekomen. 
 
-De taal wordt automatisch herkend door de inhoud van de gegevens bronnen die worden geëxtraheerd. Zodra u een nieuwe QnA Maker-service en een nieuwe Knowledge Base in die service hebt gemaakt, kunt u controleren of de taal juist is ingesteld.
+De taal bepaalt de relevantie van de resultaten QnA Maker worden uitgevoerd als reactie op gebruikers query's.
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com/).
+## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Eén taal voor alle kennis grondslagen in de resource
 
-1. Selecteer **resource groepen** en navigeer naar de resource groep waar de QnA Maker-service is geïmplementeerd en selecteer de **Azure Search** resource.
+Met QnA Maker kunt u de taal voor uw QnA-service selecteren tijdens het maken van de eerste Knowledge Base. Voor alle Knowledge bases in een QnA Maker resource moeten alle kennis bronnen zich in dezelfde taal bevinden. Deze taal kan niet worden gewijzigd.
 
-    ![Azure Search resource selecteren](../media/qnamaker-how-to-language-kb/select-azsearch.png)
+Het maken van kennis grondslagen in verschillende talen in een resource is een negatieve invloed op de relevantie van de resultaten QnA Maker levert antwoord op gebruikers query's.
 
-1. Selecteer **indexen**en selecteer vervolgens de **testkb** -index. Dit is de eerste Azure Search index die is gemaakt en bevat de opgeslagen inhoud van alle kennis bases in die service. 
+Bekijk een lijst met [ondersteunde talen](../overview/language-support.md#languages-supported) en hoe talen invloed hebben op [treffers en relevantie](#query-matching-and-relevance). 
 
-1. Selecteer **velden** om de velden in de index weer te geven.
+## <a name="select-language-when-creating-first-knowledge-base"></a>Taal selecteren bij het maken van de eerste Knowledge Base
 
-1. De kolom _Analyzer_ van de `questions` velden `answer` en is ingesteld op een specifieke taal. Deze taal is automatisch gedetecteerd tijdens de stap voor het maken van de Knowledge Base van de geïmporteerde bestanden en Url's. Deze taal kan niet worden gewijzigd nadat de resource is gemaakt.
+Taal selectie maakt deel uit van de stappen voor het maken van de eerste Knowledge Base in een resource. 
 
-    ![Geselecteerde analyse functie](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+![Scherm afbeelding van QnA Maker portal van het selecteren van de taal voor de eerste kennis database](../media/language-support/select-language-when-creating-knowledge-base.png)
+
+## <a name="query-matching-and-relevance"></a>Overeenkomende treffers en relevantie van query's
+QnA Maker is afhankelijk van [Azure Search taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor het leveren van resultaten. 
+
+Hoewel de Azure Search-functies op pari zijn voor ondersteunde talen, heeft QnA Maker een extra rangorde die zich boven de Azure Search-resultaten bevindt. In dit classificatie model gebruiken we enkele speciale semantische en op woord gebaseerde functies in de volgende talen. 
+
+|Talen met extra rangorde|
+|--|
+|Chinees|
+|Tsjechisch|
+|Nederlands|
+|Nederlands|
+|Frans|
+|Duits|
+|Hongaars|
+|Italiaans|
+|Japans|
+|Koreaans|
+|Pools|
+|Portugees|
+|Spaans|
+|Zweeds|
+
+Deze extra classificatie is een interne werking van de QnA Makerer.
+
+## <a name="verify-language"></a>Taal controleren
+
+U kunt de taal van uw QnA Maker-bron controleren via de pagina Service-instellingen in de QnA Maker.
+
+![Scherm afbeelding van de QnA Maker portal van de pagina Service-instellingen](../media/language-support/language-knowledge-base.png) 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
