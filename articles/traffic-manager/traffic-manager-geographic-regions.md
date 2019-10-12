@@ -482,7 +482,7 @@ In dit artikel geeft een lijst van de landen en regio's die worden gebruikt door
 
         - CF (Centraal-Afrikaanse Republiek)
 
-        - CI (Ivoorkust)
+        - Côte d'Ivoire
 
         - CM(Cameroon)
 

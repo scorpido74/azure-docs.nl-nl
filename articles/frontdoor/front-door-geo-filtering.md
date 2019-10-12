@@ -137,7 +137,7 @@ U kunt een beleid voor geo-filtering configureren voor uw voordeur met behulp va
 | MA | Marokko|
 | MD | Moldavië, Republiek|
 | MG | Madagascar|
-| MK | Noord Macedonië|
+| MK | Noord-Macedonië|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolië|
