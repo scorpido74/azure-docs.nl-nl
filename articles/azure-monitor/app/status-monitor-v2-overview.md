@@ -12,23 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057839"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286442"
 ---
 # <a name="status-monitor-v2"></a>Status Monitor v2
 
 Status Monitor v2 is een Power shell-module die is gepubliceerd op de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 Het vervangt [status monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
 De module biedt codeloze instrumentatie van .NET-Web-apps die worden gehost met IIS.
-Telemetrie wordt verzonden naar de Azure Portal, waar u [](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) uw app kunt bewaken.
+Telemetrie wordt verzonden naar de Azure Portal, waar u uw app kunt [bewaken](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) .
 
 ## <a name="powershell-gallery"></a>PowerShell Gallery
 
-Status Monitor v2 bevindt zich https://www.powershellgallery.com/packages/Az.ApplicationMonitor hier:.
+Status Monitor v2 bevindt zich hier: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -56,17 +56,13 @@ Status Monitor v2 bevindt zich https://www.powershellgallery.com/packages/Az.App
 
 - Ondersteunt Status Monitor v2 proxy-installaties?
 
-  *Ja*. Er zijn meerdere manieren om Status Monitor v2 te downloaden. Als uw computer toegang heeft tot internet, kunt u de PowerShell Gallery onboarden `-Proxy` met behulp van para meters.
+  *Ja*. Er zijn meerdere manieren om Status Monitor v2 te downloaden. Als uw computer toegang heeft tot internet, kunt u de PowerShell Gallery onboarden met behulp van `-Proxy`-para meters.
 U kunt de module ook hand matig downloaden en installeren op uw computer of rechtstreeks gebruiken.
 Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md).
 
 - Ondersteunt Status Monitor v2 ASP.NET Core toepassingen?
 
   *Nee*. Zie [Application Insights voor ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)voor instructies om de bewaking van ASP.net core-toepassingen in te scha kelen. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt ook als ASP.NET Core toepassing wordt gehost in IIS.
-  
-Ondersteunt Status Monitor v2 ASP.NET Core toepassingen? 
-
-  *Nee*. Volg [deze](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) instructies om bewaking in te scha kelen voor ASP.net core toepassingen. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt ook als ASP.NET Core toepassing wordt gehost in IIS.
 
 - Hoe kan ik controleren of de activering is geslaagd?
 
@@ -89,7 +85,7 @@ Uw telemetrie weergeven:
 
 Meer telemetrie toevoegen:
 
-* [Maak](monitor-web-app-availability.md) webtests om ervoor te zorgen dat uw site actief blijft.
-* [Voeg](../../azure-monitor/app/javascript.md) de telemetrie van de webclient toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+* [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
+* [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
 * [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
 

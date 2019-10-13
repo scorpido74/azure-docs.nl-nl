@@ -2,18 +2,17 @@
 title: Asynchroon vernieuwen voor Azure Analysis Services modellen | Microsoft Docs
 description: Meer informatie over het asynchroon vernieuwen van code met behulp van REST API.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932303"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301160"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
@@ -57,12 +56,12 @@ U kunt bijvoorbeeld de bewerking POST in de verzameling vernieuwen gebruiken om 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token in de autorisatie-header en moeten voldoen aan de volgende vereisten:
 
 - Het token moet een gebruikers token of een service-principal voor de toepassing zijn.
-- Voor het token moet de juiste doel groep zijn `https://*.asazure.windows.net`ingesteld op.
+- Voor het token moet de juiste doel groep zijn ingesteld op `https://*.asazure.windows.net`.
 - De gebruiker of toepassing moet voldoende machtigingen hebben op de server of het model om de aangevraagde aanroep te kunnen uitvoeren. Het machtigings niveau wordt bepaald door rollen in het model of de groep Administrators op de server.
 
     > [!IMPORTANT]
@@ -98,22 +97,22 @@ De hoofd tekst kan er als volgt uitzien:
 
 Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast.
 
-| Name             | Type  | Description  |Standaard  |
+| Naam             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL-vernieuwings [opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   Automatisch      |
+| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   Automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
-| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) TMSL sequence of met behulp van andere methoden.       | 10        |
-| `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
-| `Objects`        | Array | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
+| `MaxParallelism` | integer   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
+| `RetryCount`     | integer   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
+| `Objects`        | Matrix | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
 
 CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van een initiële belasting van grote gegevens sets die uren kunnen duren. Als de vernieuwings bewerking mislukt nadat een of meer batches zijn doorgevoerd, blijven de doorgevoerde batches doorgevoerd (de doorgevoerde batches kunnen niet worden hersteld).
 
 > [!NOTE]
 > De Batch grootte is op het moment van schrijven de MaxParallelism-waarde, maar deze waarde zou kunnen veranderen.
 
-## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId ophalen >
+## <a name="get-refreshesrefreshid"></a>GET/refreshes/\<refreshId >
 
-Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, wordt de status InProgress geretourneerd.
+Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, wordt de status **InProgress** geretourneerd.
 
 ```
 {
@@ -186,11 +185,11 @@ Als u de status van een synchronisatie bewerking wilt controleren, gebruikt u de
 
 Waarden voor `syncstate`:
 
-- 0: Repliceren. Database bestanden worden gerepliceerd naar een doelmap.
-- 1: Reactiveren. De data base wordt opnieuw gehydrateerd op alleen-lezen Server exemplaar (en).
-- 2: Voltooid. De synchronisatie bewerking is voltooid.
-- 3: Mislukt. De synchronisatie bewerking is mislukt.
-- 4: Wordt voltooid. De synchronisatie bewerking is voltooid, maar de stappen voor het opschonen worden uitgevoerd.
+- 0: repliceren. Database bestanden worden gerepliceerd naar een doelmap.
+- 1: reactiveren. De data base wordt opnieuw gehydrateerd op alleen-lezen Server exemplaar (en).
+- 2: voltooid. De synchronisatie bewerking is voltooid.
+- 3: mislukt. De synchronisatie bewerking is mislukt.
+- 4: volt ooien. De synchronisatie bewerking is voltooid, maar de stappen voor het opschonen worden uitgevoerd.
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
@@ -203,12 +202,12 @@ Hier volgt een C# code voorbeeld om aan de slag te gaan, [RestApiSample op githu
 
 Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -verificatie.
 
-### <a name="service-principal"></a>Service-principal
+### <a name="service-principal"></a>Service-Principal
 
 Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
 1.  Zoek in het code voorbeeld naar **String Authority =...** , vervang **common** door de Tenant-id van uw organisatie.
-2.  Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor \<dat de app- \<id > en de > waarden van de app-sleutel op een veilige manier toegankelijk zijn of gebruik verificatie op basis van certificaten voor service-principals.
+2.  Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor dat de \<App-ID > en \<App sleutel > waarden worden geopend op een veilige manier of gebruik verificatie op basis van certificaten voor service-principals.
 3.  Voet het voorbeeld uit.
 
 

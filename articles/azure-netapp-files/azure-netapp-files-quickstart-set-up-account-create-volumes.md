@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 9/11/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: d7bc07ddce605838cf7aa966c6c94b85dad6b58c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9676b10eafbc72a04cb68fc828a72f77e6c3916f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212214"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298579"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Quickstart: Azure NetApp Files instellen en een NFS-volume maken 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Snelstartgids: Azure NetApp Files instellen en een NFS-volume maken 
 
 In dit artikel wordt beschreven hoe u Azure NetApp Files snel kunt instellen en een volume kunt maken. 
 
@@ -69,7 +69,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -111,7 +111,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
 
     > [!NOTE]
     > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
-    > Gebruik voor het verkrijgen van de regio naam die wordt ondersteund door onze opdracht regel Programma's`Get-AzLocation | select Location`
+    > Gebruik `Get-AzLocation | select Location` om de regio naam op te halen die wordt ondersteund door onze opdracht regel Programma's.
     >
 
 1. Maak een nieuwe resource groep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) :
@@ -126,7 +126,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Definieer enkele variabelen zodat we deze in de rest van de voor beelden kunnen raadplegen:
 
@@ -138,7 +138,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
 
     > [!NOTE]
     > Raadpleeg de [beschik bare producten per regio](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) voor een lijst met ondersteunde regio's.
-    > Gebruik voor het verkrijgen van de regio naam die wordt ondersteund door onze opdracht regel Programma's`az account list-locations -query "[].{Region:name}" --out table`
+    > Gebruik `az account list-locations -query "[].{Region:name}" --out table` om de regio naam op te halen die wordt ondersteund door onze opdracht regel Programma's.
     >
 
 2. Maak een nieuwe resource groep met behulp van de opdracht [AZ Group Create](/cli/azure/group#az-group-create) :
@@ -198,7 +198,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Enkele nieuwe variabelen definiëren voor toekomstige referentie
 
@@ -242,7 +242,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
        * Voer **myvnet1** in als de Vnet-naam.
        * Geef een adres ruimte voor uw instelling op, bijvoorbeeld 10.7.0.0/16
        * Voer **myANFsubnet** in als de naam van het subnet.
-       * Geef het adres bereik van het subnet op, bijvoorbeeld 10.7.0.0/24. Houd er rekening mee dat u het toegewezen subnet niet met andere resources kunt delen.
+       * Geef het adres bereik van het subnet op, bijvoorbeeld 10.7.0.0/24. U kunt het toegewezen subnet niet delen met andere resources.
        * Selecteer **micro soft. NetApp/volumes** voor subnet delegering.
        * Klik op **OK** om het Vnet te maken.
    5. Selecteer in subnet de zojuist gemaakte Vnet (**myvnet1**) als het subnet van de gemachtigde.
@@ -251,11 +251,14 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
 
       ![Het venster virtueel netwerk maken](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Klik op **protocol**en selecteer vervolgens **NFS** als protocol type voor het volume.   
+4. Klik op **protocol**en voer de volgende acties uit: 
+    * Selecteer **NFS** als protocol type voor het volume.  
+    * Voer **myfilepath1** in als het bestandspad dat wordt gebruikt voor het maken van het exportpad voor het volume.  
+    * Selecteer de NFS-versie (**NFSv3** of **nfsv 4.1**) voor het volume.  
+> [!IMPORTANT] 
+> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, moet u een aanvraag indienen bij <anffeedback@microsoft.com>. 
 
-    Voer **myfilepath1** in als het bestandspad dat wordt gebruikt voor het maken van het exportpad voor het volume. 
-
-    ![NFS-protocol voor Quick Start opgeven](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+    ![Specify NFS protocol for quickstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klik op **Controleren + maken**.
 
@@ -304,7 +307,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Een aantal variabelen definiëren voor later gebruik.
     
@@ -398,7 +401,7 @@ Wanneer u klaar bent en u wilt, kunt u de resource groep verwijderen. De actie v
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Wanneer u klaar bent en u wilt, kunt u de resource groep verwijderen. De actie voor het verwijderen van een resource groep is onomkeerbaar.  
 

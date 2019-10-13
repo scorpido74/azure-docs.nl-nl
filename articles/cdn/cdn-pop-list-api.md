@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146878"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299250"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>De huidige POP-IP-lijst voor Azure CDN ophalen
 
@@ -41,7 +41,6 @@ Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van Azure C
 
 IP-adresbereiken en service tags voor micro soft-Services vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519)
 
-Filter op de waarden voor de inkomende header X-forward-host die is verzonden door Azure CDN van micro soft. De enige toegestane waarden voor de header moeten alle endpoint-hosts zijn zoals gedefinieerd in uw CDN-configuratie. Meer specifiek, alleen de hostnamen waarvoor u verkeer wilt accepteren, op deze specifieke oorsprong van uw bedrijf.
 
 ## <a name="typical-use-case"></a>Typische gebruiksscenario’s
 

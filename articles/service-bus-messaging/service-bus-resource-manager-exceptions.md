@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802516"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296380"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Uitzonde ringen voor Service Bus Resource Manager
 
@@ -30,13 +30,13 @@ Dit artikel bevat een lijst met uitzonde ringen die worden gegenereerd bij het w
 
 Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeven via de Azure Resource Manager.
 
-## <a name="error-bad-request"></a>Fout: Onjuiste aanvraag
+## <a name="error-bad-request"></a>Fout: ongeldige aanvraag
 
 "Onjuiste aanvraag" impliceert dat de aanvraag die door de Resource Manager is ontvangen, niet is gevalideerd.
 
-| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Topics </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. De configuratie parameter duplicaten detectie kan niet worden gewijzigd nadat deze is gemaakt. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven waarde 16384 is ongeldig. De eigenschap MaxSizeInMegabytes moet een van de volgende waarden hebben: 1024; 2048; 3072; 4096; 5120. | De MaxSizeInMegabytes-waarde is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is: 1024, 2048, 3072, 4096, 5120. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. Partitioneren kan niet worden gewijzigd voor wachtrij/onderwerp. | Partitioneren kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
@@ -52,21 +52,21 @@ Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeve
 
 Net als bij HTTP geeft "fout code 429" te veel aanvragen aan ". Het impliceert dat de specifieke resource (naam ruimte) wordt beperkt vanwege te veel aanvragen (of als gevolg van conflicterende bewerkingen) voor die bron.
 
-| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | 50004 | Subcode = 50004. De aanvraag is beëindigd omdat de naam ruimte van *uw naam ruimte* wordt beperkt. | Deze fout is opgetreden wanneer het aantal binnenkomende aanvragen de beperking van de resource overschrijdt. | Wacht een paar seconden en probeer het opnieuw. <br/> <br/> Meer informatie over de [quota](service-bus-quotas.md) en [limieten voor Azure Resource Manager aanvragen](../azure-resource-manager/resource-manager-request-limits.md)|
 | 429 | 40901 | Subcode = 40901. Er wordt een andere conflicterende bewerking uitgevoerd. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de huidige bewerking in uitvoering is voltooid en probeer het opnieuw. |
 | 429 | 40900 | Subcode = 40900. Conflicteren. U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. | Deze voor waarde kan worden bereikt wanneer meerdere aanvragen tegelijkertijd worden uitgevoerd om de bewerkingen op dezelfde entiteit (wachtrij, onderwerp, abonnement of regel) tegelijk uit te voeren. | Wacht een paar seconden en probeer het opnieuw |
+| 429 | 40901 | Er is een conflict opgetreden tussen de aanvraag op de entiteits *naam* en de andere aanvraag | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
+| 429 | 40901 | Er wordt een andere update aanvraag uitgevoerd voor de entiteits *naam entiteit*. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
 | 429 | geen | Er is een bron conflict opgetreden. Er wordt mogelijk een andere conflicterende bewerking uitgevoerd. Als dit een nieuwe poging is voor een mislukte bewerking, is het opruimen van de achtergrond nog in behandeling. Probeer het later opnieuw. | Deze voor waarde kan worden bereikt wanneer er een bewerking in behandeling is voor dezelfde entiteit. | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
-| 429 | geen | Er is een conflict opgetreden tussen de aanvraag op de entiteits *naam* en de andere aanvraag | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
-| 429 | geen | Er wordt een andere update aanvraag uitgevoerd voor de entiteits *naam entiteit*. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |
 
 
-## <a name="error-code-not-found"></a>Fout code: Niet gevonden
+## <a name="error-code-not-found"></a>Fout code: niet gevonden
 
 Deze klasse van fouten geeft aan dat de bron niet is gevonden.
 
-| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Niet gevonden | geen | Entiteit *' entiteit naam '* is niet gevonden. | De entiteit waartegen de bewerking niet is gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |
 | Niet gevonden | geen | Niet gevonden. De bewerking bestaat niet. | De bewerking die u probeert uit te voeren, bestaat niet. | Controleer de bewerking en probeer het opnieuw. |

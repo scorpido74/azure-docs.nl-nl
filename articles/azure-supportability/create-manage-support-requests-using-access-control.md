@@ -1,5 +1,5 @@
 ---
-title: Azure Role Access Control (RBAC) voor het beheren van de toegangs rechten voor het maken en beheren van ondersteunings aanvragen | Microsoft Docs
+title: Toegangs beheer voor het maken van ondersteunings aanvragen in azure
 description: Azure Role Access Control (RBAC) voor het beheren van de toegangs rechten voor het maken en beheren van ondersteunings aanvragen
 author: ganganarayanan
 ms.author: gangan
@@ -7,14 +7,18 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248840"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299258"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure Role Access Control (RBAC) voor het beheren van de toegangs rechten voor het maken en beheren van ondersteunings aanvragen
+
+> [!IMPORTANT]
+> Deze hand matige aanpak voor het beheren van de toegangs rechten voor de ondersteunings aanvraag in Azure is vervangen door een ingebouwde rol. Zie voor meer informatie [Inzender voor ondersteunings aanvragen](../role-based-access-control/built-in-roles.md#support-request-contributor). 
 
 [Met Access Control op basis van rollen (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) hebt u verfijnd toegangs beheer voor Azure.
 Ondersteuningsaanvraag maken in de Azure Portal, [Portal.Azure.com](https://portal.azure.com), gebruikt het RBAC-model van Azure om te bepalen wie ondersteunings aanvragen kan maken en beheren.

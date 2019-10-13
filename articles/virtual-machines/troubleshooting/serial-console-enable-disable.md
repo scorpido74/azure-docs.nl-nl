@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 1c1fe208c77142351a786fa636896e64a8a467d7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f48fe94504d8012affb77c4fd5d39df2537d72b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129651"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300125"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>De Azure Serial console in-en uitschakelen
 
@@ -27,35 +27,35 @@ Net als elke andere resource kan de Azure-seriële console worden in-en uitgesch
 
 U kunt ook de seriële console uitschakelen voor een afzonderlijke VM of een installatie kopie van een virtuele machine met behulp van diagnostische gegevens over opstarten uitschakelen. U hebt toegang tot Inzender niveau of hoger nodig op zowel de VM/virtuele-machine schaalset als het opslag account voor diagnostische gegevens over opstarten.
 
-## <a name="vm-level-disable"></a>VM-niveau uitschakelen
-De seriële console kan worden uitgeschakeld voor een specifieke VM of schaalset voor virtuele machines door de instelling diagnostische gegevens over opstarten uit te scha kelen. Schakel diagnostische gegevens over opstarten uit van de Azure Portal om de seriële console uit te scha kelen voor de virtuele machine of de schaalset van de VM. Als u een seriële console gebruikt voor een schaalset voor virtuele machines, moet u ervoor zorgen dat u de instanties van de schaalset voor virtuele machines bijwerkt naar het meest recente model.
+## <a name="vm-level-disable"></a>Uitschakelen op VM-niveau
+De seriële console kan worden uitgeschakeld voor een specifieke VM of schaalset voor virtuele machines door de instelling diagnostische gegevens over opstarten uit te scha kelen. Schakel diagnostische gegevens over opstarten uit vanuit Azure Portal om de seriële console voor de VM of de schaalset voor virtuele machines uit te scha kelen. Als u een seriële console gebruikt voor een schaalset voor virtuele machines, moet u ervoor zorgen dat u de instanties van de schaalset voor virtuele machines bijwerkt naar het meest recente model.
 
 
-## <a name="subscription-level-disable"></a>Abonnementsniveau uitschakelen
+## <a name="subscription-level-disable"></a>Uitschakelen op abonnements niveau
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Seriële console kunnen worden uitgeschakeld en opnieuw worden ingeschakeld voor een volledig abonnement met behulp van de volgende opdrachten in de Azure CLI:
 
 Als u de seriële console voor een abonnement wilt uitschakelen, gebruikt u de volgende opdrachten:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Gebruik de volgende opdrachten om seriële console in te scha kelen voor een abonnement:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Gebruik de volgende opdrachten om de huidige ingeschakelde/uitgeschakelde status van de seriële console voor een abonnement te verkrijgen:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" -o=json | jq .properties
+az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
 ### <a name="powershell"></a>PowerShell

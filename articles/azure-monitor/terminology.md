@@ -10,17 +10,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 10/08/2019
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827354"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300519"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor naamgevings-en terminologie wijzigingen
 Er zijn belang rijke wijzigingen aangebracht in Azure Monitor recent, waarbij verschillende services worden geconsolideerd om de controle van Azure-klanten te vereenvoudigen. In dit artikel worden de recente naam en terminologie wijzigingen in Azure Monitor documentatie beschreven.
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>Oktober 2019-diagnostisch logboek naar resource logboek
+Diagnostische logboeken zijn gewijzigd in bron logboeken, zodat ze beter overeenkomen met wat er daad werkelijk wordt verzameld. De term Diagnostische instellingen blijft hetzelfde.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Log Analytics met terminologie van februari 2019
 Na de consolidatie van verschillende services onder Azure Monitor, nemen we de volgende stap in de hand van de terminologie in onze documentatie om de Azure Monitor-service en de verschillende onderdelen beter te beschrijven. 
@@ -34,7 +37,7 @@ De term _log Analytics_ is nu voornamelijk van toepassing op de pagina in de Azu
 [Werk ruimten](platform/manage-access.md) die logboek gegevens bevatten in azure monitor worden nog steeds log Analytics werk ruimten genoemd. De naam van het menu **log Analytics** in het Azure Portal is gewijzigd in **log Analytics werk ruimten** en is waar u [nieuwe werk ruimten maakt](learn/quick-create-workspace.md) en gegevens bronnen configureert. Analyseer uw logboeken en andere bewakings gegevens in **Azure monitor** en configureer uw werk ruimte in **log Analytics-werk ruimten**.
 
 ### <a name="management-solutions"></a>Beheeroplossingen
-De naam van [beheer oplossingen](insights/solutions.md) is gewijzigd voor het bewaken van _oplossingen_, waardoor de functionaliteit ervan beter wordt beschreven.
+De naam van [beheer oplossingen](insights/solutions.md) is gewijzigd voor het _bewaken van oplossingen_, waardoor de functionaliteit ervan beter wordt beschreven.
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>Augustus 2018-consolidatie van bewakings Services in Azure Monitor

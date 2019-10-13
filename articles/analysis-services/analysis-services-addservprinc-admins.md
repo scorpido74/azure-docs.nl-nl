@@ -2,18 +2,17 @@
 title: Een Service-Principal toevoegen aan Azure Analysis Services rol Server beheerder | Microsoft Docs
 description: Meer informatie over het toevoegen van een Automation Service-Principal aan de server beheerdersrol
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8fbbdbd647aa3d733a26ceaf72629058ae3a274
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619271"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298718"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
@@ -22,7 +21,7 @@ ms.locfileid: "68619271"
 ## <a name="before-you-begin"></a>Voordat u begint
 Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd in Azure Active Directory.
 
-[Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+Een [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Service-principal maken - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
@@ -31,7 +30,7 @@ Als u deze taak wilt volt ooien, moet u beschikken over [Server beheerders](anal
 ## <a name="add-service-principal-to-server-administrators-role"></a>Service-Principal toevoegen aan de rol Server Administrators
 
 1. Maak in SSMS verbinding met uw Azure als server.
-2. Klik in **Server eigenschappen** > **beveiliging**op **toevoegen**.
+2. Klik in **Server eigenschappen** > -**beveiliging**op **toevoegen**.
 3. In **een gebruiker of groep selecteren**zoekt u de geregistreerde app op naam, selecteert u en klikt u vervolgens op **toevoegen**.
 
     ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

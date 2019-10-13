@@ -2,18 +2,17 @@
 title: On-premises gegevens gateway installeren voor Azure Analysis Services | Microsoft Docs
 description: Meer informatie over het installeren en configureren van een on-premises gegevens gateway.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678420"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298643"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
 
@@ -57,7 +56,7 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 
 2. Selecteer **on-premises gegevens gateway**.
 
-   ![Selecteren](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Selecteer](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Selecteer een locatie, accepteer de voor waarden en klik vervolgens op **installeren**.
 
@@ -102,11 +101,11 @@ Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron
    
      Het standaard abonnement is gebaseerd op het Azure-account dat u hebt gebruikt om u aan te melden.
 
-   * **Resourcegroep**: Maak een resourcegroep of selecteer een bestaande resourcegroep.
+   * **Resourcegroep**: maak een resourcegroep of selecteer een bestaande resourcegroep.
 
    * **Locatie**: Selecteer de regio waarin u uw gateway hebt geregistreerd.
 
-   * **Installatie naam**: Als de installatie van de gateway nog niet is geselecteerd, selecteert u de gateway die u op uw computer hebt geïnstalleerd en die u hebt geregistreerd. 
+   * **Installatie naam**: als de gateway-installatie nog niet is geselecteerd, selecteert u de gateway die u op uw computer hebt geïnstalleerd en geregistreerd. 
 
      Wanneer u klaar bent, klikt u op **maken**.
 

@@ -4,15 +4,15 @@ description: Azure delegated Resource Management maakt een cross-Tenant beheer m
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286619"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300999"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -58,6 +58,7 @@ Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgend
 - Waarschuwingen weer geven voor gedelegeerde abonnementen in de Azure Portal of programmatisch via REST API-aanroepen, met de mogelijkheid om waarschuwingen voor alle abonnementen weer te geven
 - Details van het activiteiten logboek voor gedelegeerde abonnementen weer geven
 - Log Analytics: gegevens opvragen uit externe werk ruimten van klanten in meerdere tenants
+- Waarschuwingen maken in de tenants van de klant die automatisering activeren, zoals Azure Automation runbooks of Azure Functions, in de Tenant van de service provider via webhooks
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgend
 - Beleids definities maken en bewerken binnen een gedelegeerd abonnement
 - Door de klant gedefinieerde beleids definities toewijzen binnen het gedelegeerde abonnement
 - Klanten zien beleid dat door de service provider is ontworpen naast het beleid dat ze zelf hebben ontworpen
-- Kan deployIfNotExists-toewijzingen in de tenants van de klant herstellen als de klant de beheerde identiteit en *roleDefinitionIds* voor die beleids toewijzing heeft geconfigureerd
+- Kan [deployIfNotExists herstellen of toewijzingen wijzigen binnen de Tenant van de klant](../how-to/deploy-policy-remediation.md)
 
 [Azure-resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/):
 

@@ -4,14 +4,14 @@ description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te expo
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959700"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300389"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
 
@@ -48,39 +48,36 @@ Exporteer de sjabloon vóór de implementatie of vanuit de geschiedenis, wanneer
 * U wilt een sjabloon die u gemakkelijk wilt gebruiken.
 * U hoeft geen wijzigingen op te nemen die u hebt aangebracht na de oorspronkelijke implementatie.
 
-## <a name="export-template-from-resource-group"></a>Sjabloon exporteren uit resource groep
+## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren van een resource groep
 
 Een of meer resources uit een resource groep exporteren:
 
 1. Selecteer de resource groep die de resources bevat die u wilt exporteren.
 
-1. Als u alle resources in de resource groep wilt exporteren, selecteert u alle en vervolgens **sjabloon exporteren**. De optie **sjabloon exporteren** wordt alleen ingeschakeld wanneer u ten minste één resource hebt geselecteerd.
+1. Selecteer een of meer resources door de selectie vakjes te selecteren.  Als u alles wilt selecteren, schakelt u het selectie vakje links van **naam**in. De menu opdracht **sjabloon exporteren** wordt alleen ingeschakeld wanneer u ten minste één resource hebt geselecteerd.
 
    ![Alle resources exporteren](./media/export-template-portal/select-all-resources.png)
 
-1. Schakel de selectie vakjes naast deze resources in om specifieke resources te selecteren die u wilt exporteren. Selecteer vervolgens **sjabloon exporteren**.
+    Alleen het opslag account is geselecteerd op de scherm opname.
+1. Selecteer **sjabloon exporteren**.
 
-   ![Te exporteren resources selecteren](./media/export-template-portal/select-resources.png)
-
-1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload.
+1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd.
 
    ![Sjabloon weer geven](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Sjabloon uit resource exporteren
+## <a name="export-template-from-a-resource"></a>Sjabloon uit een resource exporteren
 
 Een resource exporteren:
 
 1. Selecteer de resource groep met de resource die u wilt exporteren.
 
-1. Selecteer de resource die u wilt exporteren.
-
-   ![Resource selecteren](./media/export-template-portal/select-link-resource.png)
+1. Selecteer de resource die u wilt exporteren om de resource te openen.
 
 1. Selecteer voor die resource **sjabloon exporteren** in het linkerdeel venster.
 
    ![Resource exporteren](./media/export-template-portal/export-single-resource.png)
 
-1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload. De sjabloon bevat alleen de afzonderlijke resource.
+1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd. De sjabloon bevat alleen de afzonderlijke resource.
 
 ## <a name="export-template-before-deployment"></a>Sjabloon exporteren vóór implementatie
 
@@ -90,11 +87,10 @@ Een resource exporteren:
 
 1. Nadat u de validatie hebt door gegeven, selecteert u **een sjabloon voor Automation downloaden**voordat u de implementatie start.
 
-   ![Sjabloon downloaden](./media/export-template-portal/download-before-deployment.png)
+   ![Een sjabloon downloaden](./media/export-template-portal/download-before-deployment.png)
 
-1. De sjabloon wordt weer gegeven en kan worden gedownload.
+1. De sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd.
 
-   ![Sjabloon weer geven](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Sjabloon exporteren na implementatie
 

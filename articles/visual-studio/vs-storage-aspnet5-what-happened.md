@@ -1,5 +1,5 @@
 ---
-title: Wat is er gebeurd met mijn ASP.NET 5-project (Visual Studio Connected Services) | Microsoft Docs
+title: Wat is er gebeurd met mijn ASP.NET 5-project (Visual Studio Connected Services)
 description: Beschrijft wat er gebeurt nadat u verbinding hebt gemaakt met een Azure-opslag account in een Visual Studio ASP.NET 5-project met Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,26 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e29c0302ecd703cb02199df95892e24917baf8e8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510770"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300014"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Wat is er gebeurd met mijn ASP.NET 5-project (Visual Studio Azure Storage Connected Services)?
 ## <a name="references-added"></a>Toegevoegde verwijzingen
 Het NuGet-pakket van Azure Storage is toegevoegd aan uw Visual Studio-project.  
 Dit pakket voegt de volgende .NET-verwijzingen toe:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Micro soft. data. EDM**
+* **Micro soft. data. OData**
+* **Micro soft. data. Services. client**
+* **Micro soft. WindowsAzure. Configuration**
+* **Micro soft. WindowsAzure. Storage**
+* **Newton soft. json**
+* **System. data**
+* **Systeem. ruimtelijk**
 
 Daarnaast is het NuGet-pakket **micro soft. Framework. Configuration. json** toegevoegd.
 

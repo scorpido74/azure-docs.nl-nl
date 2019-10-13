@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299621"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298484"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -50,7 +50,7 @@ Ja, u kunt, als u de vereiste DNS-vermeldingen maakt. Azure NetApp Files levert 
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Kan het netwerk verkeer tussen de virtuele machine van Azure en de opslag worden versleuteld?
 
-Gegevens verkeer (verkeer van de NFSv3-of SMBv3-client naar Azure NetApp Files volumes) is niet versleuteld. Het verkeer van een Azure-VM (waarop een NFS-of SMB-client wordt uitgevoerd) moet echter worden Azure NetApp Files net zo veilig zijn als andere verkeer van Azure-VM-naar-VM. Dit verkeer is lokaal voor het Azure Data Center-netwerk. 
+Gegevens verkeer (verkeer van de NFSv3-, NFSv 4.1-of SMBv3-client naar Azure NetApp Files volumes) is niet versleuteld. Het verkeer van een Azure-VM (waarop een NFS-of SMB-client wordt uitgevoerd) moet echter worden Azure NetApp Files net zo veilig zijn als andere verkeer van Azure-VM-naar-VM. Dit verkeer is lokaal voor het Azure Data Center-netwerk. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Kan de opslag in rust worden versleuteld?
 
@@ -103,7 +103,7 @@ Azure NetApp Files biedt meet waarden voor de volume prestaties. U kunt Azure Mo
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Ik wil een volume automatisch koppelen wanneer een virtuele machine van Azure wordt gestart of opnieuw wordt opgestart.  Hoe kan ik mijn host configureren voor permanente NFS-volumes?
 
-Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM `/etc/fstab` , voegt u een vermelding toe aan het bestand op de host. 
+Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM, voegt u een vermelding toe aan het bestand `/etc/fstab` op de host. 
 
 Bijvoorbeeld: `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -120,7 +120,11 @@ De grootte van het volume dat in VG wordt gerapporteerd, is de maximale grootte 
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Wat is de NFS-versie Azure NetApp Files ondersteunen?
 
-Azure NetApp Files biedt momenteel ondersteuning voor NFSv3.
+Azure NetApp Files ondersteunt NFSv3 en NFSv 4.1. U kunt een volume maken met behulp van de NFS-versie. 
+
+> [!IMPORTANT] 
+> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, moet u een aanvraag indienen bij <anffeedback@microsoft.com>. 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hoe kan ik root Squashing inschakelen?
 
@@ -140,7 +144,7 @@ Azure NetApp Files ondersteunt momenteel één Active Directory-verbinding per a
 
 Zowel [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) en [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) worden ondersteund. U kunt bestaande Active Directory domein controllers gebruiken met Azure NetApp Files. Domein controllers kunnen zich in azure bevinden als virtuele machines, of on-premises via ExpressRoute of S2S VPN. Azure NetApp Files biedt op dit moment geen ondersteuning voor AD-deelname voor [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Als u Azure NetApp files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
+Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, wordt het pad van de organisatie-eenheid `OU=AADDC Computers` wanneer u Active Directory configureert voor uw NetApp-account.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welke versies van Windows Server Active Directory worden ondersteund?
 

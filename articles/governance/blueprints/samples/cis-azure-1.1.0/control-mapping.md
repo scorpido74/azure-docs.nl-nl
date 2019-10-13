@@ -1,17 +1,17 @@
 ---
-title: Voor beeld-CIS Microsoft Azure Stichtings basis-benchmark test blauw druk-Aanbevelings toewijzing
+title: Voor beeld van CIS Microsoft Azure Stichtings basis benchmarks-Aanbevelings toewijzing
 description: Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament voor de basis voor Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9368ad220f1ded1a11360dbdf0af86c27277a207
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: fa683206ec1ff4d02298fd2689791601ff11f85c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001272"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297789"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament-benchmarks
 
@@ -346,13 +346,13 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat op rollen gebaseerd toegangs beheer wordt gebruikt voor beheerde machtigingen in Kubernetes-Service clusters
 
-- \[Preview @ no__t-1: Op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
+- \[Preview @ no__t-1: op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Zorg ervoor dat web-apps alle HTTP-verkeer omleidt naar HTTPS in Azure App Service
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat webtoepassingen alleen toegankelijk zijn via beveiligde verbindingen.
 
-- Web-App moet alleen toegankelijk zijn via HTTPS
+- Webtoepassing mag alleen toegankelijk zijn via HTTPS
 
 ## <a name="next-steps"></a>Volgende stappen
 

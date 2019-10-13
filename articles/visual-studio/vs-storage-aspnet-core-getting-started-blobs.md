@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure Blob Storage en Visual Studio Connected Services (ASP.NET Core) | Microsoft Docs
+title: Aan de slag met Azure Blob-opslag met behulp van Visual Studio (ASP.NET Core)
 description: Aan de slag met Azure Blob Storage in een ASP.NET Core-project in Visual Studio, nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 8ae82548d4976e505dae055445c71a5c12cbf263
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516163"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300076"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Aan de slag met Azure Blob Storage en Visual Studio Connected Services (ASP.NET Core)
 
@@ -45,13 +46,13 @@ In deze sectie wordt uitgelegd hoe u de ontwikkel omgeving instelt. Dit omvat he
 
 1. Open Visual Studio.
 
-1. Selecteer in het hoofd menu de optie **bestand** > **Nieuw** > **project**.
+1. Selecteer in het hoofd menu **File** > **New** > **project**.
 
 1. Selecteer in het dialoog venster **Nieuw project** **Web** > **ASP.net core Web Application** > **AspNetCoreStorage**. Selecteer vervolgens **OK**.
 
     ![Scherm afbeelding van het dialoog venster Nieuw project in Visual Studio](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. Selecteer in het dialoog venster **nieuwe ASP.net core webtoepassing** de optie **.net core** > **ASP.net Core 2,0** >  **-Webtoepassing (model-view-controller)** . Selecteer vervolgens **OK**.
+1. Selecteer in het dialoog venster **nieuwe ASP.net core webtoepassing** **.net core** > **ASP.net Core 2,0** > -**Webtoepassing (model-view-controller)** . Selecteer vervolgens **OK**.
 
     ![Scherm afbeelding van het dialoog venster nieuwe ASP.NET Core webtoepassing](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
@@ -59,7 +60,7 @@ In deze sectie wordt uitgelegd hoe u de ontwikkel omgeving instelt. Dit omvat he
 
 1. Klik in **Solution Explorer**met de rechter muisknop op het project.
 
-2. Selecteer in het context menu de optie**verbonden service** **toevoegen** > .
+2. Selecteer in het context menu de optie **Add** > **Connected service**.
 
 1. In het dialoog venster **verbonden services** selecteert u **Cloud opslag met Azure Storage**en selecteert **u configureren**.
 
@@ -77,7 +78,7 @@ In deze sectie wordt uitgelegd hoe u de ontwikkel omgeving instelt. Dit omvat he
 
 1. Klik in **Solution Explorer**met de rechter muisknop op **controllers**.
 
-2. Selecteer in het context menu**controller** **toevoegen** > .
+2. Selecteer in het context menu de optie  > -**controller** **toevoegen**.
 
     ![Scherm opname van Solution Explorer](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
@@ -89,7 +90,7 @@ In deze sectie wordt uitgelegd hoe u de ontwikkel omgeving instelt. Dit omvat he
 
     ![Scherm afbeelding van het dialoog venster lege MVC-controller toevoegen](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
-1. Voeg de volgende `using` instructies toe aan `BlobsController.cs` het bestand:
+1. Voeg de volgende `using`-instructies toe aan het bestand `BlobsController.cs`:
 
     ```csharp
     using System.IO;
@@ -102,11 +103,11 @@ In deze sectie wordt uitgelegd hoe u de ontwikkel omgeving instelt. Dit omvat he
 
 Een BLOB-container is een geneste hiërarchie van blobs en mappen. De rest van de stappen in dit document vereist een verwijzing naar een BLOB-container, zodat de code in zijn eigen methode kan worden gebruikt voor herbruikbaarheid.
 
-Met de volgende stappen maakt u een methode om verbinding te maken met het opslag account met behulp van de connection string in **appSettings. json**. De stappen maken ook een verwijzing naar een container. De instelling connection string in **appSettings. json** krijgt de naam van de `<storageaccountname>_AzureStorageConnectionString`indeling. 
+Met de volgende stappen maakt u een methode om verbinding te maken met het opslag account met behulp van de connection string in **appSettings. json**. De stappen maken ook een verwijzing naar een container. De instelling connection string in **appSettings. json** krijgt de naam `<storageaccountname>_AzureStorageConnectionString`. 
 
 1. Open het `BlobsController.cs`-bestand.
 
-1. Voeg een methode toe met de naam **GetCloudBlobContainer** die een **CloudBlobContainer**retourneert. Zorg ervoor dat u `<storageaccountname>_AzureStorageConnectionString` vervangt door de werkelijke naam van de sleutel in **Web. config**.
+1. Voeg een methode toe met de naam **GetCloudBlobContainer** die een **CloudBlobContainer**retourneert. Vervang `<storageaccountname>_AzureStorageConnectionString` door de daad werkelijke naam van de sleutel in **Web. config**.
     
     ```csharp
     private CloudBlobContainer GetCloudBlobContainer()
@@ -124,13 +125,13 @@ Met de volgende stappen maakt u een methode om verbinding te maken met het opsla
     ```
 
 > [!NOTE]
-> Hoewel *test-BLOB-container* nog niet bestaat, wordt er door deze code een verwijzing naar gemaakt. Dit is zo dat de container kan worden gemaakt met `CreateIfNotExists` de methode die in de volgende stap wordt weer gegeven.
+> Hoewel *test-BLOB-container* nog niet bestaat, wordt er door deze code een verwijzing naar gemaakt. Dit is zo dat de container kan worden gemaakt met de `CreateIfNotExists`-methode die in de volgende stap wordt weer gegeven.
 
 ## <a name="create-a-blob-container"></a>Een blob-container maken
 
 De volgende stappen laten zien hoe u een BLOB-container maakt:
 
-1. Voeg een methode toe `CreateBlobContainer` met de naam `ActionResult`die retourneert een.
+1. Voeg een methode toe met de naam `CreateBlobContainer` waarmee een `ActionResult` wordt geretourneerd.
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -141,13 +142,13 @@ De volgende stappen laten zien hoe u een BLOB-container maakt:
     }
     ```
  
-1. Haal een `CloudBlobContainer` object op dat een verwijzing naar de gewenste BLOB-container naam vertegenwoordigt. 
+1. Een `CloudBlobContainer`-object ophalen dat een verwijzing naar de gewenste BLOB-container naam vertegenwoordigt. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Roep de `CloudBlobContainer.CreateIfNotExists` methode voor het maken van de container aan, als deze nog niet bestaat. De `CloudBlobContainer.CreateIfNotExists` methode retourneert **True** als de container niet bestaat en is gemaakt. Anders retourneert de methode **False**.    
+1. Roep de `CloudBlobContainer.CreateIfNotExists`-methode aan om de container te maken, als deze nog niet bestaat. De methode `CloudBlobContainer.CreateIfNotExists` retourneert **True** als de container niet bestaat en is gemaakt. Anders retourneert de methode **False**.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExistsAsync().Result;
@@ -159,7 +160,7 @@ De volgende stappen laten zien hoe u een BLOB-container maakt:
     ViewBag.BlobContainerName = container.Name;
     ```
     
-    Hieronder ziet u de voltooide `CreateBlobContainer` methode:
+    Hieronder ziet u de voltooide `CreateBlobContainer`-methode:
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -174,15 +175,15 @@ De volgende stappen laten zien hoe u een BLOB-container maakt:
 
 1. Klik in **Solution Explorer**met de rechter muisknop op de map **views** .
 
-2. Selecteer in het context menu de optie**nieuwe map** **toevoegen** > . Noem de nieuwe map-blobs. 
+2. Selecteer in het context menu de optie  > **nieuwe map** **toevoegen**. Noem de nieuwe map- *blobs*. 
 
 1. In **Solution Explorer**vouwt u de map **views** uit en klikt u met de rechter muisknop op **blobs**.
 
-4. Selecteer in het context menu de optie**weer gave** **toevoegen** > .
+4. **Selecteer in**het context menu de optie  > -**weer gave**.
 
 1. Voer in het dialoog venster **weer gave toevoegen** **CreateBlobContainer** in voor de weergave naam en selecteer **toevoegen**.
 
-1. Open `CreateBlobContainer.cshtml`en wijzig de waarde zodat deze eruitziet als in het volgende code fragment:
+1. Open `CreateBlobContainer.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -194,9 +195,9 @@ De volgende stappen laten zien hoe u een BLOB-container maakt:
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. Vouw in **Solution Explorer**de**gedeelde** map **weer gaven** > uit en open `_Layout.cshtml`.
+1. In **Solution Explorer**vouwt u de **weer gaven** > **gedeelde** map uit en opent u `_Layout.cshtml`.
 
-1. Zoek naar de niet-geordende lijst die er als `<ul class="nav navbar-nav">`volgt uitziet:.  Voeg na het `<li>` laatste element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
+1. Zoek naar de niet-geordende lijst die er als volgt uitziet: `<ul class="nav navbar-nav">`.  Voeg na het laatste `<li>`-element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="CreateBlobContainer">Create blob container</a></li>
@@ -206,7 +207,7 @@ De volgende stappen laten zien hoe u een BLOB-container maakt:
   
     ![Scherm opname van BLOB-container maken](./media/vs-storage-aspnet-core-getting-started-blobs/create-blob-container-results.png)
 
-    Zoals eerder vermeld, retourneert `CloudBlobContainer.CreateIfNotExists` de methode alleen **True** als de container niet bestaat en wordt gemaakt. Als de app wordt uitgevoerd wanneer de container bestaat, retourneert de methode daarom **False**.
+    Zoals eerder vermeld, retourneert de methode `CloudBlobContainer.CreateIfNotExists` alleen **True** als de container niet bestaat en wordt gemaakt. Als de app wordt uitgevoerd wanneer de container bestaat, retourneert de methode daarom **False**.
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>Een BLOB uploaden naar een BLOB-container
 
@@ -214,7 +215,7 @@ Upload bestanden naar die container wanneer de [BLOB-container wordt gemaakt](#c
 
 1. Open het `BlobsController.cs`-bestand.
 
-1. Voeg een methode toe `UploadBlob` met de naam die een teken reeks retourneert.
+1. Voeg een methode toe met de naam `UploadBlob` waarmee een teken reeks wordt geretourneerd.
 
     ```csharp
     public string UploadBlob()
@@ -225,13 +226,13 @@ Upload bestanden naar die container wanneer de [BLOB-container wordt gemaakt](#c
     }
     ```
  
-1. In de `UploadBlob` -methode haalt u `CloudBlobContainer` een object op dat een verwijzing naar de gewenste BLOB-container naam vertegenwoordigt. 
+1. In de `UploadBlob`-methode haalt u een `CloudBlobContainer`-object op dat een verwijzing naar de gewenste BLOB-container naam vertegenwoordigt. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Azure Storage ondersteunt verschillende typen blobs. In deze zelf studie wordt gebruikgemaakt van blok-blobs. Als u een verwijzing naar een blok-BLOB wilt ophalen `CloudBlobContainer.GetBlockBlobReference` , roept u de-methode aan.
+1. Azure Storage ondersteunt verschillende typen blobs. In deze zelf studie wordt gebruikgemaakt van blok-blobs. Als u een verwijzing naar een blok-BLOB wilt ophalen, roept u de `CloudBlobContainer.GetBlockBlobReference`-methode aan.
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
@@ -240,7 +241,7 @@ Upload bestanden naar die container wanneer de [BLOB-container wordt gemaakt](#c
     > [!NOTE]
     > De BLOB-naam maakt deel uit van de URL die wordt gebruikt voor het ophalen van een blob, en kan een wille keurige teken reeks zijn, inclusief de naam van het bestand.
 
-1. Nadat u een BLOB-verwijzing hebt, kunt u er een gegevens stroom naar uploaden door de methode van `UploadFromStream` het BLOB-verwijzings object aan te roepen. De `UploadFromStream` -methode maakt de BLOB als deze niet bestaat, of overschrijft deze als deze wel bestaat. (Wijzig  *&lt;file-to-upload >* naar een volledig gekwalificeerd pad naar een bestand dat u wilt uploaden.)
+1. Nadat u een BLOB-verwijzing hebt, kunt u er een gegevens stroom naar uploaden door de `UploadFromStream`-methode van het BLOB-verwijzings object aan te roepen. Met de methode `UploadFromStream` wordt de BLOB gemaakt als deze nog niet bestaat, of overschreven als deze wel bestaat. (Wijzig *&lt;file-to-upload >* naar een volledig gekwalificeerd pad naar een bestand dat u wilt uploaden.)
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
@@ -249,7 +250,7 @@ Upload bestanden naar die container wanneer de [BLOB-container wordt gemaakt](#c
     }
     ```
     
-    Hieronder ziet u de `UploadBlob` volledige methode (met een volledig gekwalificeerde pad voor het bestand dat moet worden geüpload):
+    Hieronder ziet u de voltooide methode `UploadBlob` (met een volledig pad naar het bestand dat moet worden geüpload):
 
     ```csharp
     public string UploadBlob()
@@ -264,9 +265,9 @@ Upload bestanden naar die container wanneer de [BLOB-container wordt gemaakt](#c
     }
     ```
 
-1. Vouw in **Solution Explorer**de**gedeelde** map **weer gaven** > uit en open `_Layout.cshtml`.
+1. In **Solution Explorer**vouwt u de **weer gaven** > **gedeelde** map uit en opent u `_Layout.cshtml`.
 
-1. Voeg na het `<li>` laatste element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
+1. Voeg na het laatste `<li>`-element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
@@ -282,7 +283,7 @@ In deze sectie ziet u hoe u de blobs in een BLOB-container kunt weer geven. De v
 
 1. Open het `BlobsController.cs`-bestand.
 
-1. Voeg een methode toe `ListBlobs` met de naam `ActionResult`die retourneert een.
+1. Voeg een methode toe met de naam `ListBlobs` waarmee een `ActionResult` wordt geretourneerd.
 
     ```csharp
     public ActionResult ListBlobs()
@@ -292,13 +293,13 @@ In deze sectie ziet u hoe u de blobs in een BLOB-container kunt weer geven. De v
     }
     ```
  
-1. In de `ListBlobs` -methode haalt u `CloudBlobContainer` een object op dat een verwijzing naar de BLOB-container vertegenwoordigt. 
+1. In de `ListBlobs`-methode haalt u een `CloudBlobContainer`-object op dat een verwijzing naar de BLOB-container vertegenwoordigt. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. Als u de blobs in een BLOB-container wilt weer `CloudBlobContainer.ListBlobsSegmentedAsync` geven, gebruikt u de-methode. De `CloudBlobContainer.ListBlobsSegmentedAsync` methode retourneert een `BlobResultSegment`. Dit object `IListBlobItem` bevat objecten die kunnen worden geconverteerd `CloudBlockBlob`naar `CloudPageBlob`, of `CloudBlobDirectory` objecten. In het volgende code fragment worden alle blobs in een BLOB-container opgesomd. Elke BLOB wordt op basis van het type naar het juiste object gecast. De naam (of URI in het geval van een `CloudBlobDirectory`) wordt toegevoegd aan een lijst.
+1. Als u de blobs in een BLOB-container wilt weer geven, gebruikt u de methode `CloudBlobContainer.ListBlobsSegmentedAsync`. De methode `CloudBlobContainer.ListBlobsSegmentedAsync` retourneert een `BlobResultSegment`. Dit object bevat `IListBlobItem`-objecten die kunnen worden geconverteerd naar `CloudBlockBlob`-, `CloudPageBlob`-of `CloudBlobDirectory`-objecten. In het volgende code fragment worden alle blobs in een BLOB-container opgesomd. Elke BLOB wordt op basis van het type naar het juiste object gecast. De naam (of URI in het geval van een `CloudBlobDirectory`) wordt toegevoegd aan een lijst.
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -324,7 +325,7 @@ In deze sectie ziet u hoe u de blobs in een BLOB-container kunt weer geven. De v
 
     return View(blobs);
     ```
-    Hieronder ziet u de voltooide `ListBlobs` methode:
+    Hieronder ziet u de voltooide `ListBlobs`-methode:
 
     ```csharp
     public ActionResult ListBlobs()
@@ -357,11 +358,11 @@ In deze sectie ziet u hoe u de blobs in een BLOB-container kunt weer geven. De v
 
 1. In **Solution Explorer**vouwt u de map **views** uit en klikt u met de rechter muisknop op **blobs**.
 
-2. Selecteer in het context menu de optie**weer gave** **toevoegen** > .
+2. **Selecteer in**het context menu de optie  > -**weer gave**.
 
-1. Voer`ListBlobs` in het dialoog venster **weer gave toevoegen** de weergave naam in en selecteer **toevoegen**.
+1. Voer in het dialoog venster **weer gave toevoegen** `ListBlobs` in voor de weergave naam en selecteer **toevoegen**.
 
-1. Open `ListBlobs.cshtml`en vervang de inhoud door de volgende code:
+1. Open `ListBlobs.cshtml` en vervang de inhoud door de volgende code:
 
     ```html
     @model List<string>
@@ -379,15 +380,15 @@ In deze sectie ziet u hoe u de blobs in een BLOB-container kunt weer geven. De v
     </ul>
     ```
 
-1. Vouw in **Solution Explorer**de**gedeelde** map **weer gaven** > uit en open `_Layout.cshtml`.
+1. In **Solution Explorer**vouwt u de **weer gaven** > **gedeelde** map uit en opent u `_Layout.cshtml`.
 
-1. Voeg na het `<li>` laatste element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
+1. Voeg na het laatste `<li>`-element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="ListBlobs">List blobs</a></li>
     ```
 
-1. Voer de toepassing uit en selecteer **lijst** -blobs om de resultaten te zien die vergelijkbaar zijn met de volgende scherm afbeelding:
+1. Voer de toepassing uit en selecteer **lijst-blobs** om de resultaten te zien die vergelijkbaar zijn met de volgende scherm afbeelding:
   
     ![Scherm opname van lijst-blobs](./media/vs-storage-aspnet-core-getting-started-blobs/listblobs.png)
 
@@ -397,7 +398,7 @@ In deze sectie ziet u hoe u een BLOB kunt downloaden. U kunt deze persistent mak
 
 1. Open het `BlobsController.cs`-bestand.
 
-1. Voeg een methode toe `DownloadBlob` met de naam die een teken reeks retourneert.
+1. Voeg een methode toe met de naam `DownloadBlob` waarmee een teken reeks wordt geretourneerd.
 
     ```csharp
     public string DownloadBlob()
@@ -408,19 +409,19 @@ In deze sectie ziet u hoe u een BLOB kunt downloaden. U kunt deze persistent mak
     }
     ```
  
-1. In de `DownloadBlob` -methode haalt u `CloudBlobContainer` een object op dat een verwijzing naar de BLOB-container vertegenwoordigt.
+1. In de `DownloadBlob`-methode haalt u een `CloudBlobContainer`-object op dat een verwijzing naar de BLOB-container vertegenwoordigt.
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Haal een BLOB-referentie object op door `CloudBlobContainer.GetBlockBlobReference` de methode aan te roepen. 
+1. Haal een BLOB-referentie object op door de `CloudBlobContainer.GetBlockBlobReference`-methode aan te roepen. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Als u een BLOB wilt downloaden, `CloudBlockBlob.DownloadToStream` gebruikt u de-methode. Met de volgende code wordt de inhoud van een BLOB overgedragen naar een Stream-object. Dit object wordt vervolgens persistent gemaakt naar een lokaal bestand. (Wijzig  *&lt;de naam van het lokale bestand >* in de volledig gekwalificeerde bestands naam waarmee wordt aangegeven waar de BLOB moet worden gedownload.) 
+1. Als u een BLOB wilt downloaden, gebruikt u de methode `CloudBlockBlob.DownloadToStream`. Met de volgende code wordt de inhoud van een BLOB overgedragen naar een Stream-object. Dit object wordt vervolgens persistent gemaakt naar een lokaal bestand. (Wijzig *&lt;local-bestands naam >* naar de volledig gekwalificeerde bestands naam waarmee de BLOB moet worden gedownload.) 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -429,7 +430,7 @@ In deze sectie ziet u hoe u een BLOB kunt downloaden. U kunt deze persistent mak
     }
     ```
     
-    Hieronder ziet u de `ListBlobs` volledige methode (met een volledig gekwalificeerde pad voor het lokale bestand dat wordt gemaakt):
+    Hieronder ziet u de voltooide methode `ListBlobs` (met een volledig gekwalificeerde pad voor het lokale bestand dat wordt gemaakt):
     
     ```csharp
     public string DownloadBlob()
@@ -444,15 +445,15 @@ In deze sectie ziet u hoe u een BLOB kunt downloaden. U kunt deze persistent mak
     }
     ```
 
-1. Vouw in **Solution Explorer**de**gedeelde** map **weer gaven** > uit en open `_Layout.cshtml`.
+1. In **Solution Explorer**vouwt u de **weer gaven** > **gedeelde** map uit en opent u `_Layout.cshtml`.
 
-1. Voeg na het `<li>` laatste element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
+1. Voeg na het laatste `<li>`-element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
-1. Voer de toepassing uit en selecteer **BLOB downloaden** om de BLOB te downloaden. De blob die is opgegeven `CloudBlobContainer.GetBlockBlobReference` in de methode roept down loads naar de `File.OpenWrite` locatie die is opgegeven in de methode aanroep. De tekst is *voltooid.* moet worden weer gegeven in de browser. 
+1. Voer de toepassing uit en selecteer **BLOB downloaden** om de BLOB te downloaden. De blob die in de methode `CloudBlobContainer.GetBlockBlobReference` is opgegeven, roept down loads naar de locatie die is opgegeven in de aanroep van de `File.OpenWrite`-methode. De tekst is *voltooid.* moet worden weer gegeven in de browser. 
 
 ## <a name="delete-blobs"></a>Blobs verwijderen
 
@@ -460,7 +461,7 @@ De volgende stappen laten zien hoe u een BLOB verwijdert:
 
 1. Open het `BlobsController.cs`-bestand.
 
-1. Voeg een methode toe `DeleteBlob` met de naam die een teken reeks retourneert.
+1. Voeg een methode toe met de naam `DeleteBlob` waarmee een teken reeks wordt geretourneerd.
 
     ```csharp
     public string DeleteBlob()
@@ -471,25 +472,25 @@ De volgende stappen laten zien hoe u een BLOB verwijdert:
     }
     ```
 
-1. In de `DeleteBlob` -methode haalt u `CloudBlobContainer` een object op dat een verwijzing naar de BLOB-container vertegenwoordigt.
+1. In de `DeleteBlob`-methode haalt u een `CloudBlobContainer`-object op dat een verwijzing naar de BLOB-container vertegenwoordigt.
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Haal een BLOB-referentie object op door `CloudBlobContainer.GetBlockBlobReference` de methode aan te roepen. 
+1. Haal een BLOB-referentie object op door de `CloudBlobContainer.GetBlockBlobReference`-methode aan te roepen. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Als u een BLOB wilt verwijderen, `Delete` gebruikt u de-methode.
+1. Als u een BLOB wilt verwijderen, gebruikt u de methode `Delete`.
 
     ```csharp
     blob.DeleteAsync().Wait();
     ```
     
-    De voltooide `DeleteBlob` methode moet er als volgt uitzien:
+    De voltooide methode `DeleteBlob` moet er als volgt uitzien:
     
     ```csharp
     public string DeleteBlob()
@@ -501,15 +502,15 @@ De volgende stappen laten zien hoe u een BLOB verwijdert:
     }
     ```
 
-1. Vouw in **Solution Explorer**de**gedeelde** map **weer gaven** > uit en open `_Layout.cshtml`.
+1. In **Solution Explorer**vouwt u de **weer gaven** > **gedeelde** map uit en opent u `_Layout.cshtml`.
 
-1. Voeg na het `<li>` laatste element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
+1. Voeg na het laatste `<li>`-element in de lijst de volgende HTML toe om een ander navigatie menu-item toe te voegen:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
-1. Voer de toepassing uit en selecteer **BLOB verwijderen** om de BLOB te verwijderen die is `CloudBlobContainer.GetBlockBlobReference` opgegeven in de methode aanroep. De tekst is *voltooid.* moet worden weer gegeven in de browser. Selecteer de knop **terug** in de browser en selecteer vervolgens **lijst** -blobs om te controleren of de BLOB zich niet meer in de container bevindt.
+1. Voer de toepassing uit en selecteer **BLOB verwijderen** om de BLOB te verwijderen die is opgegeven in de aanroep van de `CloudBlobContainer.GetBlockBlobReference`-methode. De tekst is *voltooid.* moet worden weer gegeven in de browser. Selecteer de knop **terug** in de browser en selecteer vervolgens **lijst-blobs** om te controleren of de BLOB zich niet meer in de container bevindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

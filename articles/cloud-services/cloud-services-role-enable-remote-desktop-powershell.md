@@ -1,5 +1,5 @@
 ---
-title: Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Power shell
+title: Power shell gebruiken om Extern bureaublad in te scha kelen voor een rol (Azure Cloud Services)
 description: Uw Azure Cloud service-toepassing configureren met behulp van Power shell om extern bureau blad-verbindingen toe te staan
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: gwallace
-ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358985"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298404"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Power shell
 
@@ -97,6 +97,6 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 >
 > Met de para meter **UninstallConfiguration** verwijdert u de extensie configuratie die wordt toegepast op de service. Elke extensie configuratie is gekoppeld aan de service configuratie. Het aanroepen van de *Remove* cmdlet zonder **UninstallConfiguration** koppelt de <mark>implementatie</mark> van de extensie configuratie, waardoor de uitbrei ding daarom effectief wordt verwijderd. De extensie configuratie blijft echter gekoppeld aan de service.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074959"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294340"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-import beperkingen en bekende problemen
 
@@ -33,12 +33,13 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 ### <a name="open-api-general"> </a>Algemeen
 
 -   De vereiste para meters voor beide paden en query's moeten unieke namen hebben. (In OpenAPI moet een parameter naam alleen uniek zijn binnen een locatie, bijvoorbeeld pad, query, koptekst. In API Management we echter toestaan dat bewerkingen worden doorzocht met behulp van pad-en query parameters (wat niet wordt ondersteund door OpenAPI). Daarom moeten parameter namen uniek zijn binnen de volledige URL-sjabloon.)
--   Ref pointers kunnen niet verwijzen naar externe bestanden.  **\$**
+-   **\$ref** pointers kunnen niet verwijzen naar externe bestanden.
 -   **x-MS-paden** en **x-servers** zijn de enige ondersteunde uitbrei dingen.
 -   Aangepaste extensies worden genegeerd bij het importeren en worden niet opgeslagen of bewaard om te worden geëxporteerd.
 -   **Recursie** -API Management biedt geen ondersteuning voor definities die recursief zijn gedefinieerd (bijvoorbeeld schema's die naar zichzelf verwijzen).
 -   De URL van het bron bestand (indien beschikbaar) wordt toegepast op relatieve server-Url's.
 -   Beveiligings definities worden genegeerd.
+-   Inline schema definities voor API-bewerkingen worden niet ondersteund. Schema definities worden gedefinieerd in het API-bereik en waarnaar kan worden verwezen in API-bewerkings aanvragen of-antwoord bereiken.
 
 ### <a name="open-api-v2"> </a>OpenAPI versie 2
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/10/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f76597a91c0e22f57d1ba66ff1a16eea9002af0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3e149a4a8e5ce7c82f0c9bf951bf9625763b30af
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250092"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285998"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Consortium leden beheren in de Azure Block Chain-service met behulp van Power shell
 
@@ -61,23 +61,23 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-Vervang het wacht *woord\> van het gebruikers account door het wacht woord voor het gebruikers account dat u hebt gebruikt bij het maken van het lid. \<*
+Vervang *\<Member account @ no__t-2* door het wacht woord voor het gebruikers account dat u hebt gebruikt bij het maken van het lid.
 
 Zoek de andere waarden in de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de pagina **overzicht** van de standaard Block Chain-service.
 
     ![Leden overzicht](./media/manage-consortium-powershell/member-overview.png)
 
-    Vervang *\<hetadres\>* van de *leden account\> en het RootContract door de waarden uit de portal. \<*
+    Vervang *\<Member-account @ no__t-2* en *\<RootContract adres @ no__t-5* door de waarden van de portal.
 
 1. Selecteer voor het eindpunt adres **transactie knooppunten**en selecteer vervolgens het **knoop punt standaard transactie**. Het standaard knooppunt heeft dezelfde naam als het block Chain-lid.
 1. Selecteer **verbindings reeksen**.
 
     ![Verbindingsreeksen](./media/manage-consortium-powershell/connection-strings.png)
 
-    *Vervang\<het eindpunt\> adres* door de waarde van **https (toegangs sleutel 1)** of **https (toegangs sleutel 2)** .
+    Vervang *\<Endpoint-adres @ no__t-2* door de waarde van **https (toegangs sleutel 1)** of **https (toegangs sleutel 2)** .
 
 ## <a name="manage-the-network-and-smart-contracts"></a>Het netwerk en de slimme contracten beheren
 
@@ -89,7 +89,7 @@ Gebruik deze cmdlet om verbinding te maken met de slimme contracten van het cons
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | RootContractAddress | Hoofd contract adres van de consortium Management-slimme contracten | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
@@ -106,7 +106,7 @@ Gebruik deze cmdlet om een object te maken voor het opslaan van de informatie vo
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | Adres van Block Chain-lid | Ja |
 | ManagedAccountPassword | Account wachtwoord | Ja |
@@ -123,7 +123,7 @@ Gebruik deze cmdlet om een verbinding tot stand te brengen met het RPC-eind punt
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | RemoteRPCEndpoint | Block Chain lid eindpunt adres | Ja |
 
@@ -143,13 +143,15 @@ Gebruik deze cmdlet om details van leden of lijst leden van het consortium op te
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
-| Name | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Naam | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | Nee |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection variabele in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMember -Name <Member Name>
@@ -172,14 +174,16 @@ Gebruik deze cmdlet om een Block Chain-lid te verwijderen.
 
 `Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
-| Name | Te verwijderen lidnaam | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Naam | Te verwijderen lidnaam | Ja |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection-en $MemberAccount-variabelen in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $MemberAccount
@@ -196,16 +200,18 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
  -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
-| Name | Naam van het block Chain-lid | Ja |
+| Naam | Naam van het block Chain-lid | Ja |
 | DisplayName | Nieuwe weergave naam | Nee |
 | AccountAddress | Account adres | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client |  Web3Client-object verkregen van New-Web3Connection| Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection-en $MemberAccount-variabelen in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Display name> -Web3Account $MemberAccount
@@ -224,15 +230,17 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
-| Role | De rol consortium. Waarden kunnen een beheerder of gebruiker zijn. BEHEERDER is de rol van beheerder van het consortium. De gebruiker is de rol van het consortium. | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Rol | De rol consortium. Waarden kunnen een beheerder of gebruiker zijn. BEHEERDER is de rol van beheerder van het consortium. De gebruiker is de rol van het consortium. | Ja |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection-en $MemberAccount-variabelen in te stellen.
 
 ```powershell-interactive
 $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subscription ID> -Role USER -Web3Account $MemberAccount
@@ -244,13 +252,15 @@ Gebruik deze cmdlet om de uitnodigings status van een lid van een consortium op 
 
 `Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | SubscriptionId | De ID van het Azure-abonnement van het lid dat moet worden uitgenodigd. Als de abonnements-ID wordt vermeld, worden de uitnodigingen van de abonnements-ID geretourneerd. Als de abonnements-ID wordt wegge laten, wordt een lijst met alle uitnodigingen van het lid geretourneerd. | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection variabele in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
@@ -273,14 +283,16 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
  -Web3Client <IClient>
 ```
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID van het Azure-abonnement van het lid dat u wilt intrekken | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| producten | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection-en $MemberAccount-variabelen in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscription ID> -Web3Account $MemberAccount
@@ -295,15 +307,17 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| Parameter | Description | Verplicht |
+| Parameter | Beschrijving | Verplicht |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
-| Role | Nieuwe consortium functie voor uitnodiging. Waarden kunnen **gebruiker** of **beheerder**zijn. | Ja |
-| Members |  Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Rol | Nieuwe consortium functie voor uitnodiging. Waarden kunnen **gebruiker** of **beheerder**zijn. | Ja |
+| producten |  Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
+
+Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection-en $MemberAccount-variabelen in te stellen.
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount

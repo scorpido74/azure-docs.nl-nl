@@ -11,21 +11,21 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 314056b6e55838d32c70d81570cdeaf7a84b6671
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173809"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300636"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 (preview) op Azure
 
 > [!IMPORTANT]
 > Er is momenteel een preview-versie van Azure-ondersteuning voor virtuele machines van generatie 2.
 > Deze preview-versie is beschikbaar zonder een service overeenkomst en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar als preview-versie in Azure. U kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Controleer de overwegingen op deze pagina voordat u een generatie kiest. 
 
@@ -55,14 +55,14 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 
 Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketplace:
 
-* Windows Server 2019 Datacenter
+* Windows Server 2019 Data Center
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Virtuele machines van Azure Generation 2
+## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
 Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-premises Hyper-V ondersteunt voor virtuele machines van de tweede generatie.
 
@@ -82,7 +82,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| VM-grootten         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -93,7 +93,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 | Ondersteuning voor schaal sets voor virtuele machines | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | BxDxH                |
 | Back-up maken/herstellen                    | :heavy_check_mark: | :heavy_check_mark: |
-| Gedeelde installatiekopiegalerie              | :heavy_check_mark: | BxDxH                |
+| Galerie met gedeelde afbeeldingen              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | BxDxH                |
 
 ## <a name="creating-a-generation-2-vm"></a>Een virtuele machine van de tweede generatie maken
@@ -121,7 +121,7 @@ Wanneer u een Windows Server-SKU als het aanbod selecteert, is er op het tabblad
 
 U kunt ook Power shell gebruiken om een virtuele machine te maken door rechtstreeks te verwijzen naar de SKU van de eerste en 2e generatie.
 
-Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de sku's `WindowsServer` in de aanbieding.
+Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's in de `WindowsServer`-aanbieding.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
@@ -140,7 +140,7 @@ Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor een h
 
 U kunt een virtuele machine van de tweede generatie van een beheerde installatie kopie of een beheerde schijf op dezelfde manier maken als een virtuele machine van de eerste generatie.
 
-### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+### <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 
 U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal sets voor Virtual Machine. Gebruik in de Azure CLI Azure-schaal sets om virtuele machines van generatie 2 te maken.
 

@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155149"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300297"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -34,17 +34,17 @@ Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer specifieke
 
 1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 2. Selecteer **nieuwe aanbieding**in het navigatie menu links en selecteer vervolgens **beheerde services**.
-3. U ziet een **Editor** sectie voor uw aanbieding met vier delen om in te vullen: **Bied instellingen**, **plannen**, **Marketplace**en **ondersteuning**. Zie voor richt lijnen over het volt ooien van deze secties.
+3. U ziet een **Editor** sectie voor uw aanbieding met vier delen om in te vullen: **aanbiedings instellingen**, **abonnementen**, **Marketplace**en **ondersteuning**. Zie voor richt lijnen over het volt ooien van deze secties.
 
 ## <a name="enter-offer-settings"></a>Aanbiedings instellingen invoeren
 
 Geef in de sectie **instellingen van aanbieding** het volgende op:
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |**Aanbiedings-ID**     | Een unieke id voor uw aanbieding (binnen uw Publisher-profiel). Deze ID mag alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Houd er rekening mee dat de aanbiedings-ID mogelijk zichtbaar is voor klanten op plaatsen als product-Url's en facturerings rapporten. Zodra u de aanbieding hebt gepubliceerd, kunt u deze waarde niet meer wijzigen.        |
 |**Uitgevers-ID**     | De uitgevers-ID die aan de aanbieding wordt gekoppeld. Als u meer dan één uitgever-ID hebt, kunt u het abonnement selecteren dat u wilt gebruiken voor deze aanbieding.       |
-|**Name**     | De naam (Maxi maal 50 tekens) die klanten te zien krijgen voor uw aanbieding in azure Marketplace en in de Azure Portal. Gebruik een herken bare merk naam die klanten begrijpen — als u dit aanbod via uw eigen website promoveert, moet u ervoor zorgen dat u deze precies dezelfde naam gebruikt.        |
+|**Naam**     | De naam (Maxi maal 50 tekens) die klanten te zien krijgen voor uw aanbieding in azure Marketplace en in de Azure Portal. Gebruik een herken bare merk naam die klanten begrijpen — als u dit aanbod via uw eigen website promoveert, moet u ervoor zorgen dat u deze precies dezelfde naam gebruikt.        |
 
 Wanneer u klaar bent, selecteert u **Opslaan**. U bent nu klaar om door te gaan naar de sectie **plannen** .
 
@@ -56,7 +56,7 @@ Selecteer in de sectie plannen voor elk plan dat u wilt maken, het **nieuwe plan
 
 Voer vervolgens de volgende secties uit in de sectie **Details van abonnement** :
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |**Titel**     | Beschrijvende naam voor het plan dat moet worden weer gegeven. Maximale lengte van 50 tekens.        |
 |**Samenvatting**     | Beknopt overzicht van het plan voor weer gave onder de titel. Maximale lengte van 100 tekens.        |
@@ -70,10 +70,10 @@ Ten slotte vult u de sectie **manifest Details** in. Hiermee maakt u een manifes
 - Voer vervolgens uw **Tenant-id**in. Dit is een GUID die is gekoppeld aan de Azure Active Directory Tenant-ID van uw organisatie (dat wil zeggen, de Tenant waarmee u werkt om de resources van uw klanten te beheren). Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map**. 
 - Voeg ten slotte een of meer **autorisatie** vermeldingen toe aan uw abonnement. Autorisaties definiëren de entiteiten die toegang hebben tot resources en abonnementen voor klanten die het abonnement hebben gekocht. U moet deze informatie opgeven om toegang te krijgen tot resources namens de klant met behulp van Azure delegated resource management.
   Geef voor elke autorisatie het volgende op. U kunt vervolgens zo vaak als nodig **nieuwe autorisatie** selecteren om meer gebruikers/roldefinities toe te voegen.
-  - **Azure AD-object-id**: De Azure AD-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen (zoals beschreven in de roldefinitie) worden toegekend voor de resources van uw klanten.
-  - **Weergave naam van Azure AD-object**: Een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
-  - **Role Definition**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor meer informatie over deze rollen.
-  - **Toewijs bare rollen**: Dit is alleen vereist als u beheerder voor gebruikers toegang hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
+  - **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals beschreven in de roldefinitie) voor de resources van uw klanten.
+  - **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
+  - **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor meer informatie over deze rollen.
+  - **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
 
 > [!TIP]
 > In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen.
@@ -86,20 +86,20 @@ In het gedeelte **Marketplace** kunt u de tekst en afbeeldingen opgeven die klan
 
 Geef informatie op over de volgende velden in het **overzichts** gedeelte:
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |**Titel**     |  Titel van de aanbieding, vaak de lange, formele naam. Deze titel wordt prominent weer gegeven in de Marketplace. Maximale lengte van 50 tekens. In de meeste gevallen moet dit hetzelfde zijn als de **naam** die u hebt opgegeven in de sectie instellingen voor de **aanbieding** .       |
 |**Samenvatting**     | Kort doel of functie van uw aanbieding. Dit wordt meestal weer gegeven onder de titel. Maximale lengte van 100 tekens.        |
 |**Lange samen vatting**     | Een langere samen vatting van het doel of de functie van uw aanbieding. Maximale lengte van 256 tekens.        |
 |**Beschrijving**     | Meer informatie over uw aanbieding. Dit veld heeft een maximale lengte van 3000 tekens en ondersteunt eenvoudige HTML-opmaak. U moet de woorden "beheerde service" of "Managed Services" ergens in uw beschrijving toevoegen.       |
-|**Marketing-id**     | Een unieke URL-beschrijvende id. deze wordt gebruikt in Marketplace-Url's voor deze aanbieding. Als uw uitgevers-ID bijvoorbeeld *Contoso* is en uw marketing-id *sampleApp*is, wordt de URL voor uw aanbieding in azure *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* Marketplace.        |
+|**Marketing-id**     | Een unieke URL-beschrijvende id. deze wordt gebruikt in Marketplace-Url's voor deze aanbieding. Als uw uitgevers-ID bijvoorbeeld *Contoso* is en uw marketing-id *sampleApp*is, wordt de URL voor uw aanbieding in azure Marketplace *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
 |**Preview-abonnement-Id's**     | Voeg een id toe aan 100-abonnement. De klanten die aan deze abonnementen zijn gekoppeld, kunnen de aanbieding in azure Marketplace bekijken voordat deze live gaat. We stellen uw eigen abonnementen hier voor, zodat u kunt bekijken hoe uw aanbieding wordt weer gegeven op de Azure Marketplace voordat deze beschikbaar is voor klanten.  (Micro soft-ondersteunings-en engineering teams kunnen tijdens deze preview-periode ook uw aanbieding bekijken.)   |
 |**Nuttige koppelingen**     | Url's die betrekking hebben op uw aanbieding, zoals documentatie, release opmerkingen, veelgestelde vragen, enzovoort.        |
 |**Voorgestelde categorieën (Maxi maal 5)**     | Een of meer categorieën (Maxi maal vijf) die van toepassing zijn op uw aanbieding. Deze categorieën helpen klanten uw aanbieding te ontdekken in azure Marketplace en de Azure Portal.        |
 
 In het gedeelte **marketing artefacten** kunt u logo's en andere assets uploaden die met uw aanbieding moeten worden weer gegeven. U kunt desgewenst scherm afbeeldingen of koppelingen uploaden naar Video's die klanten kunnen helpen bij het begrijpen van uw aanbieding.
 
-Er zijn vier logo grootten vereist: **Klein (40x40)** , **Gemiddeld (90x90)** , **groot (115x115)** en **breed (255x155)** . Volg deze richt lijnen voor uw logo's:
+Er zijn vier logo grootten vereist: **Small (40x40)** , **medium (90x90)** , **large (115x115)** en **Wide (255x155)** . Volg deze richt lijnen voor uw logo's:
 
 - Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Beperk het aantal primaire en secundaire kleuren in uw logo.
 - De themakleuren van de portal zijn wit en zwart. Gebruik deze kleuren niet als de achtergrondkleur voor uw logo. Gebruik een kleur waardoor uw logo opvalt in de portal. We adviseren eenvoudige primaire kleuren.
@@ -172,7 +172,7 @@ ResourceTypes     : {operations}
 Locations         : {}
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

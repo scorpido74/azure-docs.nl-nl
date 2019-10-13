@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170255"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300585"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren op Azure Virtual Machines
 
@@ -375,14 +375,15 @@ De load balancer maken:
 
 1. Configureer de load balancer met:
 
-   - **Naam**: een naam die de Load Balancer aanduidt.
-   - **Type**: de Load Balancer kunnen openbaar of privé zijn. Een persoonlijke load balancer kan vanuit hetzelfde VNET worden geopend. De meeste Azure-toepassingen kunnen een privé-load balancer gebruiken. Als uw toepassing rechtstreeks via internet toegang moet hebben tot SQL Server, gebruik dan een open bare load balancer.
-   - **Virtual Network**: hetzelfde netwerk als de virtuele machines.
-   - **Subnet**: hetzelfde subnet als de virtuele machines.
-   - **Privé-IP-adres**: hetzelfde IP-adres dat u hebt toegewezen aan de resource van het SQL Server FCI-cluster netwerk.
-   - **abonnement**: uw Azure-abonnement.
+   - **Abonnement**: uw Azure-abonnement.
    - **Resource groep**: gebruik dezelfde resource groep als uw virtuele machines.
-   - **Locatie**: gebruik dezelfde Azure-locatie als uw virtuele machines.
+   - **Naam**: een naam die de Load Balancer aanduidt.
+   - **Regio**: gebruik dezelfde Azure-locatie als uw virtuele machines.
+   - **Type**: de Load Balancer kunnen openbaar of privé zijn. Een persoonlijke load balancer kan vanuit hetzelfde VNET worden geopend. De meeste Azure-toepassingen kunnen een privé-load balancer gebruiken. Als uw toepassing rechtstreeks via internet toegang moet hebben tot SQL Server, gebruik dan een open bare load balancer.
+   - **SKU**: de SKU voor uw Load Balancer moet standaard zijn. 
+   - **Virtual Network**: hetzelfde netwerk als de virtuele machines.
+   - **IP-adres toewijzing**: de toewijzing van het IP-adres moet statisch zijn. 
+   - **Privé-IP-adres**: hetzelfde IP-adres dat u hebt toegewezen aan de resource van het SQL Server FCI-cluster netwerk.
    Zie de volgende afbeelding:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

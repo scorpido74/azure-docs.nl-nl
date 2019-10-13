@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827513"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300542"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -44,21 +44,21 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     |-----------------------|--------------|------------------|
     |    AD-webservices    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
-    |    DNS                |    53        |    UDP           |
+    |    DNS                |    53        |    EDP           |
     |    ICMPv4             |    N/A       |    ECHO antwoord    |
     |    Kerberos           |    464       |    TCP           |
-    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    464       |    EDP           |
     |    Kerberos           |    88        |    TCP           |
-    |    Kerberos           |    88        |    UDP           |
+    |    Kerberos           |    88        |    EDP           |
     |    LDAP               |    389       |    TCP           |
-    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    389       |    EDP           |
     |    LDAP               |    3268      |    TCP           |
-    |    NetBIOS-naam       |    138       |    UDP           |
+    |    NetBIOS-naam       |    138       |    EDP           |
     |    SAM/LSA            |    445       |    TCP           |
-    |    SAM/LSA            |    445       |    UDP           |
+    |    SAM/LSA            |    445       |    EDP           |
     |    Secure LDAP        |    636       |    TCP           |
     |    Secure LDAP        |    3269      |    TCP           |
-    |    W32Time            |    123       |    UDP           |
+    |    W32Time            |    123       |    EDP           |
 
 * De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de aanbevolen procedures, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
 
@@ -86,9 +86,9 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     * **Primaire DNS**  
         Dit is de DNS-server die is vereist voor de Active Directory domein deelname en SMB-verificatie bewerkingen. 
-    * **Secundaire DNS**   
+    * **Secundaire DNS**-   
         Dit is de secundaire DNS-server voor het controleren van redundante naam Services. 
-    * **Domein**  
+    * **Domeinen**  
         Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
     * **Voor voegsel van SMB-server (computer-account)**  
         Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.
@@ -100,7 +100,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     * **Pad naar de organisatie-eenheid**  
         Dit is het LDAP-pad voor de organisatie-eenheid (OE) waar de computer accounts van de SMB-server worden gemaakt. Dat wil zeggen OU = 2e niveau, OE = eerste niveau. 
 
-        Als u Azure NetApp files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
+        Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, wordt het pad van de organisatie-eenheid `OU=AADDC Computers` wanneer u Active Directory configureert voor uw NetApp-account.
         
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
@@ -111,6 +111,9 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     De Active Directory verbinding die u hebt gemaakt, wordt weer gegeven.
 
     ![Active Directory verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+
+> [!NOTE] 
+> U kunt de velden gebruikers naam en wacht woord bewerken nadat u de Active Directory verbinding hebt opgeslagen. Er kunnen geen andere waarden worden bewerkt na het opslaan van de verbinding. Als u andere waarden moet wijzigen, moet u eerst alle geïmplementeerde SMB-volumes verwijderen en vervolgens de Active Directory verbinding verwijderen en opnieuw maken.
 
 ## <a name="add-an-smb-volume"></a>Een SMB-volume toevoegen
 
@@ -127,7 +130,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
         Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U kunt niet `default` gebruiken als de volume naam.
+        U kunt `default` niet gebruiken als de naam van het volume.
 
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.

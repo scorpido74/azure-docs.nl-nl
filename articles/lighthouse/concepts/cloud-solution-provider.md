@@ -1,5 +1,5 @@
 ---
-title: Azure Lighthouse en het programma Cloud Solution Provider
+title: Overwegingen voor een Cloud Solution Provider-programma
 description: Wanneer u Azure delegated resource management gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 399d2cb829c0425e3c9ee70a61cafde8568f903b
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012124"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286199"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse en het programma Cloud Solution Provider
 
@@ -30,7 +30,7 @@ Met ADMINISTRATE krijgt elke gebruiker met de rol [beheerder agent](https://docs
 
 Met behulp van Azure delegated Resource Management kunt u verschillende groepen toewijzen aan verschillende klanten of rollen, zoals in het volgende diagram wordt weer gegeven. Omdat gebruikers over het juiste toegangs niveau beschikken via het beheer van gedelegeerde resources van Azure, kunt u het aantal gebruikers met de rol beheerder (en dus volledige ADMINISTRATE) verminderen. Dit helpt de beveiliging te verbeteren door het beperken van onnodige toegang tot de resources van uw klanten. Daarnaast hebt u meer flexibiliteit om meerdere klanten op schaal te beheren.
 
-Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die worden beschreven in onboarding van [een abonnement op Azure gedelegeerd resource beheer](../how-to/onboard-customer.md). Gebruikers met de rol beheerder agent in uw Tenant kunnen dit onboarding uitvoeren.
+Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die worden beschreven in [onboarding van een abonnement op Azure gedelegeerd resource beheer](../how-to/onboard-customer.md). Gebruikers met de rol beheerder agent in uw Tenant kunnen dit onboarding uitvoeren.
 
 ![Tenant beheer met ADMINISTRATE en Azure delegated resource management](../media/csp-2.jpg)
 

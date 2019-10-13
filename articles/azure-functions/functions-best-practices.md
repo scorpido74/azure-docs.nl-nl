@@ -1,23 +1,20 @@
 ---
 title: Aanbevolen procedures voor het Azure Functions | Microsoft Docs
 description: Lees de aanbevolen procedures en patronen voor Azure Functions.
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure functions, patronen, best practice, functies, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933043"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294354"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
@@ -29,7 +26,9 @@ Hieronder vindt u de aanbevolen procedures voor het bouwen en ontwerpen van uw s
 
 ### <a name="avoid-long-running-functions"></a>Langdurige functies voor komen
 
-Grote, langlopende functies kunnen onverwachte time-outproblemen veroorzaken. Een functie kan groot worden omdat er veel node. js-afhankelijkheden zijn. Het importeren van afhankelijkheden kan ook leiden tot grotere laad tijden die leiden tot onverwachte time-outs. Afhankelijkheden worden zowel expliciet als impliciet geladen. Eén module die door uw code is geladen, kan zijn eigen extra modules laden.  
+Grote, langlopende functies kunnen onverwachte time-outproblemen veroorzaken. Zie de time-outperiode van de [functie-app](functions-scale.md#timeout)voor meer informatie over de time-outs voor een bepaald hosting plan. 
+
+Een functie kan groot worden omdat er veel node. js-afhankelijkheden zijn. Het importeren van afhankelijkheden kan ook leiden tot grotere laad tijden die leiden tot onverwachte time-outs. Afhankelijkheden worden zowel expliciet als impliciet geladen. Eén module die door uw code is geladen, kan zijn eigen extra modules laden. 
 
 Als dat mogelijk is, kunnen er in kleinere functie sets grote functies worden gebruikt die samen werken en snel antwoorden retour neren. Zo kan een webhook of HTTP-activerings functie een bevestigings antwoord vereisen binnen een bepaalde tijds limiet; het is gebruikelijk dat webhooks een onmiddellijke reactie vereisen. U kunt de nettolading van de HTTP-trigger door geven aan een wachtrij die moet worden verwerkt door een functie voor wachtrij activering. Met deze aanpak kunt u de werkelijke hoeveelheid werk uitstellen en een onmiddellijke reactie retour neren.
 
@@ -49,7 +48,7 @@ Event hubs zijn handig voor het ondersteunen van de communicatie van grote volum
 
 ### <a name="write-functions-to-be-stateless"></a>Schrijf functies die stateless zijn 
 
-Functies moeten stateless en idempotent, indien mogelijk, zijn. Koppel de vereiste status informatie aan uw gegevens. Een order die wordt verwerkt, zou waarschijnlijk een gekoppeld `state` lid hebben. Een functie kan een volg orde op basis van die status verwerken terwijl de functie zelf staat. 
+Functies moeten stateless en idempotent, indien mogelijk, zijn. Koppel de vereiste status informatie aan uw gegevens. Bijvoorbeeld: een order die wordt verwerkt, heeft waarschijnlijk een gekoppeld `state`-lid. Een functie kan een volg orde op basis van die status verwerken terwijl de functie zelf staat. 
 
 Idempotent-functies worden met name aanbevolen met timer-triggers. Als u bijvoorbeeld iets hebt dat absoluut één keer per dag moet worden uitgevoerd, kunt u dit schrijven zodat het op elke dag kan worden uitgevoerd met dezelfde resultaten. De functie kan worden afgesloten wanneer er geen werk voor een bepaalde dag is. Ook als een vorige uitvoering niet kon worden voltooid, moet de volgende uitvoering worden opgehaald waar deze is gebleven.
 
@@ -93,19 +92,19 @@ Gebruik geen uitgebreide logboek registratie in productie code. Het heeft een ne
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Gebruik async code, maar voorkom het blok keren van aanroepen
 
-Asynchrone programmering is een aanbevolen best practice. Vermijd echter altijd het verwijzen naar de `Result` eigenschap of het `Wait` aanroepen van `Task` de methode voor een exemplaar. Deze benadering kan leiden tot uitputting van de thread.
+Asynchrone programmering is een aanbevolen best practice. Vermijd echter altijd het verwijzen naar de eigenschap `Result` of het aanroepen van `Wait`-methode voor een `Task`-exemplaar. Deze benadering kan leiden tot uitputting van de thread.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Indien mogelijk berichten in batch ontvangen
 
-Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json` bestand configureren zoals beschreven in de [host. json-referentie documentatie](functions-host-json.md)
+Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json`-bestand zoals beschreven in de [host. json-referentie documentatie](functions-host-json.md) configureren
 
-Voor C# functions kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van de hand `EventData sensorEvent` tekening van de methode kan `EventData[] sensorEvent`bijvoorbeeld niet worden gebruikt.  Voor andere talen moet u de eigenschap kardinaliteit expliciet instellen in uw `function.json` to om `many` batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+Voor C# functions kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van `EventData sensorEvent` kan de methode handtekening bijvoorbeeld `EventData[] sensorEvent` zijn.  Voor andere talen moet u de eigenschap kardinaliteit in uw `function.json` expliciet instellen op `many` om batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Gedrag van hosts configureren voor betere verwerking van gelijktijdigheid
 
-Met `host.json` het bestand in de functie-app kunt u de runtime van de host en trigger gedrag configureren.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren.  Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
+Het `host.json`-bestand in de functie-app staat de configuratie van de runtime van de host en trigger gedrag toe.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren.  Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
 
 Instellingen in het bestand hosts zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met 2 HTTP-functies en gelijktijdige aanvragen hebt ingesteld op 25, telt een aanvraag voor een HTTP-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Als deze functie-app is geschaald naar 10 instanties, zouden de twee functies effectief aanvragen van 250 toestaan (10 instanties * 25 gelijktijdige aanvragen per instantie).
 

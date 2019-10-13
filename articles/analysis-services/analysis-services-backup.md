@@ -2,20 +2,19 @@
 title: Back-up en herstel van Azure Analysis Services Data Base | Microsoft Docs
 description: Hierin wordt beschreven hoe u een back-up maakt en een Azure Analysis Services-Data Base herstelt.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932461"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295412"
 ---
-# <a name="backup-and-restore"></a>Back-ups en herstellen
+# <a name="backup-and-restore"></a>Back-up maken en terugzetten
 
 Het maken van een back-up van tabellaire model databases in Azure Analysis Services is veel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslag account](../storage/common/storage-create-storage-account.md). U kunt een opslag account en een container gebruiken die u al hebt, of ze kunnen worden gemaakt bij het configureren van opslag instellingen voor uw server.
 
@@ -50,13 +49,13 @@ Voordat u een back-up maakt, moet u de opslag instellingen voor uw server config
 
     ![Back-upinstellingen opslaan](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Back-up maken met behulp van SSMS
 
 1. Klik in SSMS met de rechter muisknop op een data base > **Maak een back-up**.
 
-2. Klik in back-updatabasebestand > op **Bladeren**.
+2. Klik in **back-updatabase** > **back-upbestand**op **Bladeren**.
 
 3. Controleer in het dialoog venster **bestand opslaan als** het mappad en typ een naam voor het back-upbestand. 
 
@@ -66,7 +65,7 @@ Voordat u een back-up maakt, moet u de opslag instellingen voor uw server config
 
     **Compressie Toep assen** : Selecteer deze optie om het back-upbestand te comprimeren. Gecomprimeerde back-upbestanden besparen schijf ruimte, maar vereisen iets hoger CPU-gebruik. 
 
-    **Back-upbestand** versleutelen: Selecteer deze optie om het back-upbestand te versleutelen. Voor deze optie is een door de gebruiker opgegeven wacht woord vereist om het back-upbestand te beveiligen. Het wacht woord voor komt dat de back-upgegevens op een andere manier worden gelezen dan een herstel bewerking. Als u ervoor kiest om back-ups te versleutelen, moet u het wacht woord opslaan op een veilige locatie.
+    **Back-upbestand versleutelen** : Selecteer deze optie om het back-upbestand te versleutelen. Voor deze optie is een door de gebruiker opgegeven wacht woord vereist om het back-upbestand te beveiligen. Het wacht woord voor komt dat de back-upgegevens op een andere manier worden gelezen dan een herstel bewerking. Als u ervoor kiest om back-ups te versleutelen, moet u het wacht woord opslaan op een veilige locatie.
 
 5. Klik op **OK** om het back-upbestand te maken en op te slaan.
 

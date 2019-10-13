@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350022"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300326"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
 
@@ -27,19 +27,21 @@ Er zijn vier belang rijke fasen in het big data verwerken:
 
 Maak eerst een opslag account en een container. Verleen vervolgens toegang tot de gegevens. De eerste gedeelten van dit artikel helpen u bij het uitvoeren van deze taken. In de overige secties worden de opties en hulpprogram ma's voor elke verwerkings fase gemarkeerd.
 
+Voor een volledige lijst met Azure-Services die u kunt gebruiken met Azure Data Lake Storage Gen2 raadpleegt u [Azure data Lake Storage integreren met Azure-Services](data-lake-store-integrate-with-azure-services.md)
+
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Een Data Lake Storage Gen2-account maken
 
 Een Data Lake Storage Gen2 account is een opslag account met een hiërarchische naam ruimte. 
 
-Als u er een wilt maken, raadpleegt u [Quickstart: Maak een Azure Data Lake Storage Gen2 Storage-](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)account.
+Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)om er een te maken.
 
 ## <a name="create-a-container"></a>Een container maken
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om een container voor uw bestanden te maken.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
-|Azure Opslagverkenner | [Een container maken met behulp van Storage Explorer](data-lake-storage-explorer.md#create-a-container) |
+|Azure Storage-verkenner | [Een container maken met behulp van Storage Explorer](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [Een BLOB-container of-bestands share maken met behulp van AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |Hadoop-container (HDFS) opdracht regel interface (CLI) met HDInsight |[Een container maken met behulp van HDFS met HDInsight](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
 |Code in een Azure Databricks notitie blok|[Een opslag account container maken (scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [Een container maken en koppelen (python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
@@ -66,14 +68,14 @@ Er zijn drie manieren om toegang te verlenen:
 
 In deze tabel ziet u hoe u toegang verleent voor elke Azure-service of elk hulp programma.
 
-|Hulpprogramma | Toegang verlenen | Richtlijnen |
+|Hulpprogramma | Toegang verlenen | Hulp |
 |---|--|---|
-|Storage Explorer| Een rol toewijzen aan gebruikers en groepen | [Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
+|Opslagverkenner| Een rol toewijzen aan gebruikers en groepen | [Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| Een rol toewijzen aan gebruikers en groepen <br>**or**<br> Een SAS-token gebruiken| [Beheerders-en niet-beheerders rollen toewijzen aan gebruikers met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Maak eenvoudig een SAS om een bestand te downloaden van Azure Storage-Azure Storage Explorer gebruiken](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
 |Apache DistCp | Een rol toewijzen aan een door de gebruiker toegewezen beheerde identiteit | [Een HDInsight-cluster met Data Lake Storage Gen2 maken](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Een rol toewijzen aan een door de gebruiker toegewezen identiteit<br>**or**<br> Een rol toewijzen aan een Service-Principal<br>**or**<br> Een sleutel voor het opslag account gebruiken | [Eigenschappen van gekoppelde service](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Een rol toewijzen aan een door de gebruiker toegewezen beheerde identiteit | [Een HDInsight-cluster met Data Lake Storage Gen2 maken](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Een rol toewijzen aan een Service-Principal | [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| Een rol toewijzen aan een Service-Principal | [Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Zie deze artikelen voor meer informatie over het verlenen van toegang tot specifieke bestanden en mappen.
 
@@ -87,7 +89,7 @@ Zie [Azure data Lake Storage Gen2 Security Guide (Engelstalig](https://docs.micr
 
 In deze sectie worden de verschillende gegevens bronnen en de verschillende manieren beschreven waarop de gegevens kunnen worden opgenomen in een Data Lake Storage Gen2-account.
 
-![Gegevens opnemen in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Gegevens opnemen in data Lake Storage Gen2")
+![Gegevens opnemen in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "gegevens opname in data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Ad hoc gegevens
 
@@ -95,18 +97,18 @@ Dit vertegenwoordigt kleinere gegevens sets die worden gebruikt voor het maken v
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om ad hoc gegevens op te nemen.
 
-| Gegevensbron | Het opnemen met |
+| Gegevens bron | Het opnemen met |
 | --- | --- |
 | Lokale computer |[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)|
 | Azure Storage Blob |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)<br><br>[DistCp uitgevoerd op HDInsight-cluster](data-lake-storage-use-distcp.md)|
 
 ### <a name="streamed-data"></a>Gestreamde gegevens
 
-Dit duidt op gegevens die kunnen worden gegenereerd door verschillende bronnen, zoals toepassingen, apparaten, Sens oren, enzovoort. Deze gegevens kunnen worden opgenomen in Data Lake Sorage Gen2 door diverse hulpprogram ma's. In deze hulpprogram ma's worden de gegevens doorgaans in realtime vastgelegd en verwerkt, en worden de gebeurtenissen in batches naar Data Lake Storage Gen2 geschreven, zodat ze verder kunnen worden verwerkt.
+Dit duidt op gegevens die kunnen worden gegenereerd door verschillende bronnen, zoals toepassingen, apparaten, Sens oren, enzovoort. Deze gegevens kunnen worden opgenomen in Data Lake Storage Gen2 door diverse hulpprogram ma's. In deze hulpprogram ma's worden de gegevens doorgaans in realtime vastgelegd en verwerkt, en worden de gebeurtenissen in batches naar Data Lake Storage Gen2 geschreven, zodat ze verder kunnen worden verwerkt.
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gestreamde gegevens op te nemen.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Azure HDInsight Storm | [Schrijven naar Apache Hadoop HDFS van Apache Storm op HDInsight](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
@@ -116,7 +118,7 @@ U kunt ook gegevens van relationele data bases bron. Over een bepaalde tijd verz
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken voor het opnemen van relationele gegevens.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Azure Data Factory | [Kopieeractiviteit in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -126,7 +128,7 @@ Dit type gegevensset wordt specifiek genoemd, omdat analyse van webserver logboe
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om webserver logboek gegevens op te nemen.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Azure Data Factory | [Kopieeractiviteit in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
@@ -138,7 +140,7 @@ De meeste HDInsight-cluster typen (Hadoop, HBase, Storm) ondersteunen Data Lake 
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens op te nemen die zijn gekoppeld aan HDInsight-clusters.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Apache DistCp | [Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |Hulp programma AzCopy | [Gegevens overdragen met de AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -148,7 +150,7 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens op te
 
 Grote hoeveel heden gegevens kunnen worden opgeslagen in bestaande Hadoop-clusters, lokaal op computers met HDFS. De Hadoop-clusters kunnen zich in een on-premises implementatie bevinden of bevinden zich in een IaaS-cluster op Azure. Er kunnen vereisten zijn om dergelijke gegevens te kopiëren naar Azure Data Lake Storage Gen2 voor een eenmalige benadering of op een regel matige wijze. Er zijn verschillende opties die u kunt gebruiken om dit te krijgen. Hieronder vindt u een lijst met alternatieven en de bijbehorende afwegingen.
 
-| Methode | Details | Voordelen | Overwegingen |
+| Hanter | Details | Voordelen | Overwegingen |
 | --- | --- | --- | --- |
 | Azure Data Factory (ADF) gebruiken om gegevens rechtstreeks vanuit Hadoop-clusters naar Azure Data Lake Storage Gen2 te kopiëren |[ADF ondersteunt HDFS als een gegevens bron](../../data-factory/connector-hdfs.md) |ADF biedt kant-en-klare ondersteuning voor HDFS en de eerste klasse end-to-end-beheer en-bewaking |Vereist dat Data Management Gateway on-premises of in het IaaS-cluster wordt geïmplementeerd |
 | Gebruik Distcp om gegevens van Hadoop naar Azure Storage te kopiëren. Kopieer vervolgens gegevens van Azure Storage naar Data Lake Storage Gen2 met behulp van het juiste mechanisme. |U kunt gegevens kopiëren van Azure Storage naar Data Lake Storage Gen2 met behulp van: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[Hulp programma AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[Apache DistCp uitgevoerd op HDInsight-clusters](data-lake-storage-use-distcp.md)</li></ul> |U kunt open source-hulpprogram ma's gebruiken. |Proces voor meerdere stappen waarbij meerdere technologieën zijn vereist |
@@ -167,10 +169,10 @@ Zodra de gegevens beschikbaar zijn in Data Lake Storage Gen2 kunt u analyses uit
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om taken voor gegevens analyse uit te voeren voor gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Azure HDInsight | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstart: Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks @ no__t-0<br><br>[Zelfstudie: Gegevens uitpakken, transformeren en laden met behulp van Azure Databricks @ no__t-0|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>De gegevens visualiseren
 
@@ -193,7 +195,7 @@ Uitgaande ![gegevens van data Lake Storage Gen2]uitgaand(./media/data-lake-stora
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens te downloaden van Data Lake Storage Gen2.
 
-|Hulpprogramma | Richtlijnen |
+|Hulpprogramma | Hulp |
 |---|--|
 |Azure Data Factory | [Kopieeractiviteit in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

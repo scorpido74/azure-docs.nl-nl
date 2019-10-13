@@ -2,18 +2,17 @@
 title: Verbinding maken met Azure Analysis Services met Excel | Microsoft Docs
 description: Meer informatie over het maken van verbinding met een Azure Analysis Services-server met behulp van Excel.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e6c73ad465f362a046a339f286cc25b4af508cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1ba6864d0bab460b270f6f27acced57d7943a17a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619183"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295331"
 ---
 # <a name="connect-with-excel"></a>Verbinden met Excel
 
@@ -27,9 +26,9 @@ Het account waarmee u zich aanmeldt, moet deel uitmaken van een model database f
 
 Het maken van verbinding met een server in Excel wordt ondersteund met behulp van gegevens ophalen in Excel 2016 en hoger. Het maken van verbinding met behulp van de wizard tabel importeren in Power Pivot wordt niet ondersteund. 
 
-1. Klik in Excel op het lint **gegevens** op **externe gegevens** > ophalen**uit andere bronnen** > **van Analysis Services**.
+1. Klik in Excel op het lint **gegevens** op **externe gegevens ophalen** > **van andere bronnen** > **van Analysis Services**.
 
-2. Voer in de wizard gegevens verbinding, in **Server naam**, de server naam in, inclusief protocol en URI. Bijvoorbeeld asazure://westcentralus.asazure.windows.net/advworks. Selecteer vervolgens bij **aanmeldings referenties** **de volgende gebruikers naam en wacht woord gebruiken**, en typ vervolgens de gebruikers naam van de organisatie, bijvoorbeeld nancy@adventureworks.comen wacht woord.
+2. Voer in de wizard gegevens verbinding, in **Server naam**, de server naam in, inclusief protocol en URI. Bijvoorbeeld asazure://westcentralus.asazure.windows.net/advworks. Selecteer vervolgens bij **aanmeldings referenties** **de volgende gebruikers naam en wacht woord gebruiken**, en typ vervolgens de gebruikers naam van de organisatie, bijvoorbeeld nancy@adventureworks.com en wacht woord.
 
     > [!IMPORTANT]
     > Als u zich aanmeldt met een micro soft-account, Live ID, Yahoo, Gmail enzovoort of u verplicht zich aan te melden met multi-factor Authentication, laat u het veld wacht woord leeg. U wordt gevraagd om een wacht woord nadat u op volgende hebt geklikt. 

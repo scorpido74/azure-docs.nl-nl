@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: aa04b2508f89b9658d904624e884bf9133caf3b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948229"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299524"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -41,7 +41,7 @@ Azure Time Series Insights is een volledig beheerde service voor analyse, opslag
 
 Voordat u Time Series Insights Explorer kunt gebruiken, moet u het volgende doen:
 
-- Maak een Time Series Insights-omgeving. Zie hoe u aan de [slag gaat met Time Series Insights](./time-series-insights-get-started.md)voor meer informatie.
+- Een Time Series Insights omgeving maken. Zie hoe u aan de [slag gaat met Time Series Insights](./time-series-insights-get-started.md)voor meer informatie.
 - [Bied toegang](time-series-insights-data-access.md) tot uw account in de omgeving.
 - Voeg een [IOT-hub](time-series-insights-how-to-add-an-event-source-iothub.md) of [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) gebeurtenis bron toe.
 
@@ -61,21 +61,21 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Vervolgens ziet u een grafiek met een telling van alle gebeurtenissen tijdens de geselecteerde tijds periode. Hier hebt u een aantal besturings elementen:
 
-    - **Paneel termen editor**: In de term ruimte kunt u een query uitvoeren op uw omgeving. Deze bevindt zich aan de linkerkant van het scherm:
-      - **Meting**: In deze vervolg keuzelijst worden alle numerieke kolommen (**dubbels**) weer gegeven.
-      - **Splitsen op**: Deze vervolg keuzelijst bevat categorische kolommen (**teken reeksen**).
+    - **Paneel voor termen editor**: de term ruimte is de locatie waar u een query op uw omgeving uitvoert. Deze bevindt zich aan de linkerkant van het scherm:
+      - **Meting**: in deze vervolg keuzelijst worden alle numerieke kolommen (**dubbele**waarden) weer gegeven.
+      - **Splitsen op**: deze vervolg keuzelijst bevat categorische kolommen (**teken reeksen**).
       - U kunt de stap interpolatie inschakelen, het minimum en maximum weer geven en de y-as van het configuratie scherm naast **meting**aanpassen. U kunt ook aanpassen of de weer gegeven gegevens een aantal, een gemiddelde of een som van de gegevens zijn.
       - U kunt Maxi maal vijf termen toevoegen die op dezelfde x-as worden weer gegeven. Gebruik de knop **kopiëren** om een extra term toe te voegen of selecteer **toevoegen** om een nieuwe term toe te voegen.
 
         [![Terms editor-paneel](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **Predikaat**: Gebruik het predicaat om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door te selecteren of te klikken, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde Operandtypen zijn onder andere:
+      - **Predikaat**: gebruik het predicaat om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door te selecteren of te klikken, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde typen operanden zijn onder andere:
 
          |Bewerking  |Ondersteunde typen  |Opmerkingen  |
          |---------|---------|---------|
-         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
-         |`=`, `!=`, `<>`     | String, Bool, Double, DateTime, TimeSpan NULL        |         |
-         |IN     | String, Bool, Double, DateTime, TimeSpan NULL        |  Alle operands moeten zijn van hetzelfde type of NULL-constante.        |
+         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, time span       |         |
+         |`=`, `!=`, `<>`     | Teken reeks, BOOL, double, DateTime, time span, NULL        |         |
+         |IN     | Teken reeks, BOOL, double, DateTime, time span, NULL        |  Alle operanden moeten van hetzelfde type zijn of NULL-constante zijn.        |
          |BIEDT     | Tekenreeks        |  Aan de rechter kant zijn alleen letterlijke teken reeksen van constanten toegestaan. Lege teken reeks en NULL zijn niet toegestaan.       |
 
       - **Voor beelden van query's**
@@ -116,8 +116,8 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Selecteer het tabblad **Statistieken** nadat u gebeurtenissen hebt bekeken om patronen en kolom statistieken weer te geven.
 
-    - **Patronen**: Met deze functie worden de meest statistische significante patronen in een geselecteerd gegevens gebied proactief geoppereerd. U hoeft geen duizenden gebeurtenissen te bekijken om te begrijpen welke patronen de meeste tijd en energie vereisen. Met Time Series Insights kunt u rechtstreeks naar deze statistisch significante patronen gaan om een analyse te blijven uitvoeren. Deze functie is ook handig voor het naslachten van historische gegevens.
-    - **Kolom statistieken**: Kolom statistieken bieden grafieken en tabellen die gegevens opsplitsen van elke kolom van de geselecteerde gegevens reeks over de geselecteerde time span.
+    - **Patronen**: met deze functie worden de meest statistische significante patronen in een geselecteerd gegevens gebied proactief geoppereerd. U hoeft geen duizenden gebeurtenissen te bekijken om te begrijpen welke patronen de meeste tijd en energie vereisen. Met Time Series Insights kunt u rechtstreeks naar deze statistisch significante patronen gaan om een analyse te blijven uitvoeren. Deze functie is ook handig voor het naslachten van historische gegevens.
+    - **Kolom statistieken**: kolom statistieken bieden grafieken en tabellen die gegevens opsplitsen van elke kolom van de geselecteerde gegevens reeks over de geselecteerde time span.
 
       [![STATS](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 
@@ -126,4 +126,5 @@ U hebt nu de verschillende functies en opties zien die beschikbaar zijn in de We
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [vaststellen en oplossen van problemen](time-series-insights-diagnose-and-solve-problems.md) in uw time series Insights omgeving.
+
 - Volg de rond leiding door de begeleide [Azure time series Insights Snelstartgids](time-series-quickstart.md) .

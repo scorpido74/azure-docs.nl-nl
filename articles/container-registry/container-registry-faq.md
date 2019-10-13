@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264316"
+ms.locfileid: "72286507"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -420,7 +420,7 @@ De browser kan de aanvraag voor het ophalen van opslag plaatsen of tags mogelijk
 * Ad-blok keringen
 * DNS-fouten
 
-Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie en-verbinding. Daarnaast kunt u ook een incognito of een persoonlijke sessie in uw browser proberen om eventuele verouderde browser cache of cookies te voor komen.
+Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie en-verbinding. Probeer `az acr check-health -n yourRegistry` uit te voeren met behulp van uw Azure CLI om te controleren of uw omgeving verbinding kan maken met de Container Registry. Daarnaast kunt u ook een incognito of een persoonlijke sessie in uw browser proberen om eventuele verouderde browser cache of cookies te voor komen.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hoe kan ik u http-traceringen verzamelen in Windows?
 

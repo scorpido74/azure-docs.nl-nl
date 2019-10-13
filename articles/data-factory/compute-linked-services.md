@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176858"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298319"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Reken omgevingen die worden ondersteund door Azure Data Factory
 In dit artikel worden verschillende reken omgevingen uitgelegd die u kunt gebruiken om gegevens te verwerken of te transformeren. Ook vindt u hier informatie over verschillende configuraties (op aanvraag versus uw eigen configuratie) die door Data Factory worden ondersteund bij het configureren van gekoppelde services die deze reken omgevingen koppelen aan een Azure data factory.
@@ -27,7 +27,8 @@ De volgende tabel bevat een lijst met reken omgevingen die worden ondersteund do
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Hdinsight-cluster op aanvraag](#azure-hdinsight-on-demand-linked-service) of [uw eigen hdinsight-cluster](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [varken](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop-streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Aangepast](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning-service](#azure-machine-learning-service-linked-service) | [Pijp lijn Azure Machine Learning uitvoeren](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Opgeslagen procedure](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [python](transform-data-databricks-python.md) |
@@ -354,8 +355,8 @@ Zie de volgende onderwerpen als u geen ervaring hebt met Azure Batch-service:
 | linkedServiceName | De naam van de Azure Storage gekoppelde service die is gekoppeld aan deze Azure Batch gekoppelde service. Deze gekoppelde service wordt gebruikt voor tijdelijke bestanden die vereist zijn om de activiteit uit te voeren. | Ja      |
 | connectVia        | Het Integration Runtime dat moet worden gebruikt voor het verzenden van de activiteiten naar deze gekoppelde service. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee       |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning gekoppelde service
-U maakt een Azure Machine Learning gekoppelde service om een Machine Learning batch Score-eind punt te registreren bij een data factory.
+## <a name="azure-machine-learning-studio-linked-service"></a>Azure Machine Learning Studio gekoppelde service
+U maakt een Azure Machine Learning Studio gekoppelde service om een Machine Learning batch Score-eind punt te registreren bij een data factory.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -385,11 +386,55 @@ U maakt een Azure Machine Learning gekoppelde service om een Machine Learning ba
 | Type                   | De eigenschap type moet worden ingesteld op: **AzureML**. | Ja                                      |
 | mlEndpoint             | De batch Score-URL.                   | Ja                                      |
 | apiKey                 | De API van het gepubliceerde werkruimte model.     | Ja                                      |
-| updateResourceEndpoint | De bron-URL van de update voor een Azure ML-webservice-eind punt dat wordt gebruikt om de voorspellende webservice bij te werken met het getrainde model bestand | Nee                                       |
+| updateResourceEndpoint | De bron-URL van de update voor een Azure Machine Learning-webservice-eind punt dat wordt gebruikt om de voorspellende webservice bij te werken met het getrainde model bestand | Nee                                       |
 | servicePrincipalId     | Geef de client-ID van de toepassing op.     | Vereist als updateResourceEndpoint is opgegeven |
 | servicePrincipalKey    | Geef de sleutel van de toepassing op.           | Vereist als updateResourceEndpoint is opgegeven |
 | bouw                 | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Vereist als updateResourceEndpoint is opgegeven |
 | connectVia             | Het Integration Runtime dat moet worden gebruikt voor het verzenden van de activiteiten naar deze gekoppelde service. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee                                       |
+
+## <a name="azure-machine-learning-service-linked-service"></a>Gekoppelde service van Azure Machine Learning-service
+U maakt een gekoppelde service van de Azure Machine Learning-service om een Azure Machine Learning service-werk ruimte te verbinden met een data factory.
+
+> [!NOTE]
+> Momenteel wordt alleen Service-Principal-verificatie ondersteund voor de gekoppelde service van de Azure Machine Learning-service.
+
+### <a name="example"></a>Voorbeeld
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>Eigenschappen
+| Eigenschap               | Beschrijving                              | Verplicht                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| Type                   | De eigenschap type moet worden ingesteld op: **AzureMLService**. | Ja                                      |
+| subscriptionId         | Azure-abonnements-ID              | Ja                                      |
+| resourceGroupName      | name | Ja                                      |
+| mlWorkspaceName        | Naam van Azure Machine Learning service werkruimte | Ja  |
+| servicePrincipalId     | Geef de client-ID van de toepassing op.     | Nee |
+| servicePrincipalKey    | Geef de sleutel van de toepassing op.           | Nee |
+| bouw                 | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Vereist als updateResourceEndpoint is opgegeven | Nee |
+| connectVia             | Het Integration Runtime dat moet worden gebruikt voor het verzenden van de activiteiten naar deze gekoppelde service. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee |    
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics gekoppelde service
 U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data Lake Analytics compute-service aan een Azure Data Factory te koppelen. De Data Lake Analytics U-SQL-activiteit in de pijp lijn verwijst naar deze gekoppelde service. 
@@ -410,7 +455,7 @@ U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data L
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {
@@ -428,7 +473,7 @@ U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data L
 | type                 | De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. | Ja                                      |
 | accountName          | Azure Data Lake Analytics account naam.  | Ja                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics-URI.           | Nee                                       |
-| subscriptionId       | Azure-abonnements-id                    | Nee                                       |
+| subscriptionId       | Azure-abonnements-ID                    | Nee                                       |
 | resourceGroupName    | Naam van Azure-resourcegroep                | Nee                                       |
 | servicePrincipalId   | Geef de client-ID van de toepassing op.     | Ja                                      |
 | servicePrincipalKey  | Geef de sleutel van de toepassing op.           | Ja                                      |

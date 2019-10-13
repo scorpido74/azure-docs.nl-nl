@@ -1,5 +1,5 @@
 ---
-title: Wat is er gebeurd met mijn Webtaak-project (Visual Studio Azure Storage Connected service)? | Microsoft Docs
+title: Wat is er gebeurd met mijn Webtaak-project (Visual Studio Azure Storage)?
 description: Beschrijft wat er is gebeurd in een Azure-webproject nadat verbinding is gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,26 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: c54214e0b919ddaa60403a1c986a144100143577
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 17861b7c25dfaf9bc9399e5261cdf2a5b43caf21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510469"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298727"
 ---
 # <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Wat is er gebeurd met mijn Webtaak-project (Visual Studio Azure Storage Connected service)?
 ## <a name="references-added"></a>Toegevoegde verwijzingen
 Het NuGet-pakket van Azure Storage is toegevoegd aan of bijgewerkt in uw Visual Studio-project.  
 Dit pakket voegt de volgende .NET-verwijzingen toe:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.ConfigurationManager**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Micro soft. data. EDM**
+* **Micro soft. data. OData**
+* **Micro soft. data. Services. client**
+* **Micro soft. WindowsAzure. ConfigurationManager**
+* **Micro soft. WindowsAzure. Storage**
+* **Newton soft. json**
+* **System. data**
+* **Systeem. ruimtelijk**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Verbindings reeks voor toegevoegde Azure Storage
 In het bestand app. config van uw project zijn de **AzureWebJobsStorage** -en **AzureWebJobsDashboard** -vermeldingen bijgewerkt met de Connection String en sleutel van het geselecteerde opslag account.

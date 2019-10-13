@@ -2,18 +2,17 @@
 title: Wat is Azure Analysis Services | Microsoft Docs
 description: Hier vindt u een algemene beschrijving van Analysis Services in Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259541"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294766"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -25,11 +24,11 @@ Azure Analysis Services is een volledig beheerd platform als een service (PaaS) 
 
 **Video:** Bekijk [Overzicht van Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) om te ontdekken hoe Azure Analysis Services past in de algemene BI-mogelijkheden van Microsoft.
 
-## <a name="get-up-and-running-quickly"></a>Snel aan de slag
+## <a name="get-up-and-running-quickly"></a>Ga snel aan de slag
 
 In Azure Portal kunt u binnen enkele minuten [een server maken](analysis-services-create-server.md). En met Azure Resource Manager-[sjablonen](../azure-resource-manager/resource-manager-create-first-template.md) en PowerShell kunt u servers maken met behulp van een declaratieve sjabloon. Met één enkele sjabloon kunt u meerdere serverresources implementeren, samen met andere Azure-onderdelen als opslagaccounts en Azure Functions. 
 
-**Video:** Bekijk [Implementatie automatiseren](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) en ontdek hoe u met Azure Automation sneller servers kunt maken.
+**Video:** Bekijk [Implementatie automatiseren](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) voor meer informatie over hoe u Azure Automation kunt gebruiken om sneller servers te maken.
 
 Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat u geavanceerde analyseoplossingen kunt creëren. Integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) biedt beveiligde, op rollen gebaseerde toegang tot kritieke gegevens. Integreer met [Azure Data Factory](../data-factory/introduction.md)-pijplijnen door een activiteit toe te voegen die gegevens in het model laadt. [Azure Automation](../automation/automation-intro.md) en [Azure Functions](../azure-functions/functions-overview.md) kunnen worden gebruikt voor de eenvoudige indeling van modellen met behulp van aangepaste code. 
 
@@ -37,7 +36,7 @@ Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat 
 
 Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke servicelaag variëren de abonnementskosten afhankelijk van verwerkingskracht, QPU's en geheugen. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
 
-### <a name="developer-tier"></a>Developer-laag
+### <a name="developer-tier"></a>Ontwikkelaarslaag
 
 Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. Eén abonnement bevat alle functionaliteit van de Standard-laag, maar heeft beperkte verwerkingskracht, QPU's en geheugengrootte. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Voor deze laag is geen SLA beschikbaar.
 
@@ -80,9 +79,9 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
-|Brazilië - zuid     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
-|Canada - midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|Brazilië - Zuid     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Canada-Midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|US - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |US - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |US - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
 |US - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -91,8 +90,8 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |US - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |US - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |US - west     |    S8, S9, S8v2, S9v2   |    2  |
-|VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
+|US - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|US - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -100,22 +99,22 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |---------|---------|:---------:|
 |Europa - noord     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Europa - noord     |    S8v2, S9v2      |    3     |
-|Verenigd Koninkrijk Zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa -west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa -west    |   S8, S9, S8v2, S9v2  |  1  |
+|VK - zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Europa - west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Europa - west    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Azië en Stille Oceaan 
+### <a name="asia-pacific"></a>Azië-Pacific 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
-|Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
-|Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Japan - oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Australië Oost     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Australië Oost     |    S8, S9, S8v2, S9v2    |    1     |
+|Australië Zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japan - Oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
-## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften
+## <a name="scale-to-your-needs"></a>Pas uw schaalgrootte aan uw behoeften aan
 
 ### <a name="scale-updown-pause-and-resume"></a>Omhoog/omlaag schalen, onderbreken en hervatten
 
@@ -149,7 +148,7 @@ Tabellarische modellen in Azure Analysis Services ondersteunen een breed scala a
 
 ## <a name="compatibility-level"></a>Compatibiliteitsniveau
 
-Compatibiliteits niveau verwijst naar een release-specifiek gedrag in de Analysis Services-engine. Azure Analysis Services ondersteunt modellen in tabel vorm met de compatibiliteits niveaus 1200 en hoger. Zie [compatibiliteits niveau voor Analysis Services tabellaire modellen voor](analysis-services-compat-level.md)meer informatie.
+Compatibiliteits niveau verwijst naar een release-specifiek gedrag in de Analysis Services-engine. Azure Analysis Services ondersteunt modellen in tabel vorm met de compatibiliteits niveaus 1200 en hoger. Zie [compatibiliteits niveau voor tabellaire modellen voor](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)meer informatie.
 
 
 ## <a name="your-data-is-secure"></a>Gegevens zijn beveiligd
@@ -162,11 +161,11 @@ Op serverniveau biedt Analysis Services firewall, Azure-verificatie, serverbehee
 
 De firewall van Azure Analysis Services blokkeert alle clientverbindingen behalve die met IP-adressen die zijn opgegeven in regels. Firewall-beveiliging is standaard niet ingeschakeld voor nieuwe servers. Het verdient aanbeveling om onmiddellijk nadat de server is gemaakt de firewallbeveiliging in te schakelen en de regels te configureren als onderdeel van een serverinrichtingsscript of in de portal. Configureer regels voor toegestane IP-adressen als individuele client-IP-adressen of als een bereik. Verbindingen van Power BI (service) kunnen ook worden toegestaan of geblokkeerd. Configureer de firewall en regels in de portal of met behulp van PowerShell. Zie [Configure a server firewall](analysis-services-qs-firewall.md) (een serverfirewall configureren) voor meer informatie.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Gebruikersverificatie wordt afgehandeld door [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Bij het inloggen gebruiken gebruikers de identiteit van een organisatie-account met op rollen gebaseerde toegang tot de database. Gebruikers-id's moeten lid zijn van de standaard Azure Active Directory voor het abonnement waarin de server is ondergebracht. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
-### <a name="data-security"></a>Gegevensbeveiliging
+### <a name="data-security"></a>Databeveiliging
 
 Azure Analysis Services maakt gebruik van Azure Blob-opslag om opslag en metagegevens voor Analysis Services-databases persistent te maken. Gegevensbestanden in Blob worden versleuteld met behulp van [Azure Blob Server Side Encryption (SSE)](../storage/common/storage-service-encryption.md). Wanneer de Direct Query-modus wordt gebruikt, worden alleen metagegevens opgeslagen. De werkelijke gegevens worden op het moment van uitvoering van de query via een versleuteld protocol opgehaald uit de gegevensbron.
 
@@ -190,7 +189,7 @@ Tabellarische modellen op het 1400-compatibiliteitsniveau ondersteunen beveiligi
 
 Service-principals zijn een Azure Active Directory-toepassingsresource die u in uw tenant maakt om onbeheerde bewerkingen op resource- en serviceniveau uit te voeren. Service-principals worden gebruikt met Azure Automation, de onbeheerde PowerShell-modus, aangepaste clienttoepassingen en webapps om veelvoorkomende taken zoals gegevensvernieuwing, omhoog/omlaag schalen en onderbreken/hervatten te automatiseren. Machtigingen worden aan service-principals toegewezen via rollidmaatschappen. Zie [Automatisering met service-principals](analysis-services-service-principal.md) voor meer informatie.
 
-### <a name="azure-governance"></a>Azure-governance
+### <a name="azure-governance"></a>Azure-beheer
 
 Azure Analysis Services is onderhevig aan de [gebruiksvoorwaarden van Microsoft Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) en de [privacyverklaring van Microsoft](https://privacy.microsoft.com/privacystatement).
 Ga naar het [Microsoft Vertrouwenscentrum](https://www.microsoft.com/trustcenter) voor meer informatie over Azure-beveiliging.
@@ -261,7 +260,7 @@ Analysis Services heeft een zeer actieve gebruikerscommunity. Doe mee op [het Az
 > [Meld u aan voor een gratis proefversie van Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Een server maken - portal](analysis-services-create-server.md)   
+> [Snelstart: Een server maken - Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Een server maken - PowerShell](analysis-services-create-powershell.md)  
+> [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)  

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241010"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298425"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Overzicht van de ontwikkeling van Azure Block Chain Service
 
@@ -25,7 +25,7 @@ Met de Azure Block Chain-Service kunt u consortium Block chain-netwerken maken o
 
 Er zijn verschillende soorten clients voor Block chain-netwerken, waaronder volledige knoop punten, licht knooppunten en externe clients. Azure Block Chain service bouwt een Block chain-netwerk dat knoop punten bevat. U kunt verschillende clients gebruiken als uw gateway naar de Azure Block Chain-Service voor de ontwikkeling van Block chain. De Azure Block Chain-service biedt basis verificatie of toegangs sleutel als ontwikkel eindpunt. Hieronder vindt u populaire clients waarmee u verbinding kunt maken.
 
-### <a name="metamask"></a>MetaMask
+### <a name="metamask"></a>Het-gegevensmasker
 
 Het-gegevensmask is een op een browser gebaseerde wallet (externe client), RPC-client en Basic contract Verkenner. In tegens telling tot andere browser-Wallet, injecteert het Web3-exemplaar een instantie in de Java script-context van de browser, die fungeert als een RPC-client die verbinding maakt met een groot aantal Ethereum blockchains (*mainnet*, *Ropsten testnet*, *Kovan testnet*, lokaal RPC-knoop punt, etc.). U kunt aangepaste RPC eenvoudig instellen om verbinding te maken met de Azure Block Chain-service en block Chain-ontwikkeling te starten met behulp van Remix.
 
@@ -39,7 +39,7 @@ Voor het ontwikkelen van geavanceerde oplossingen voor Enter prise Block Chain i
 
 Truffle is een populair Block Chain Development Framework om gedecentraliseerde toepassingen op Ethereum blockchains te schrijven, te compileren, te implementeren en te testen. U kunt Truffle ook beschouwen als een framework dat ervoor probeert slimme contract ontwikkeling en traditionele webontwikkeling naadloos te integreren.
 
-Zelfs het kleinste project communiceert met ten minste twee Block Chain-knoop punten: Een op de computer van de ontwikkelaar en de andere die het netwerk vertegenwoordigt waarop de ontwikkelaar zijn toepassing implementeert. Bijvoorbeeld het belangrijkste open bare Ethereum-netwerk of de Azure Block Chain-service. Truffle biedt een systeem voor het beheer van de compilatie-en implementatie-artefacten voor elk netwerk en biedt daarom een manier om de implementatie van het definitieve programma te vereenvoudigen. Zie voor meer informatie [Snelstart: Gebruik Truffle om verbinding te maken met een Azure Block Chain service](connect-truffle.md)-netwerk.
+Zelfs het kleinste project communiceert met ten minste twee Block Chain-knoop punten: één op de computer van de ontwikkelaar en de andere die het netwerk aanduidt waar de ontwikkelaar zijn toepassing implementeert. Bijvoorbeeld het belangrijkste open bare Ethereum-netwerk of de Azure Block Chain-service. Truffle biedt een systeem voor het beheer van de compilatie-en implementatie-artefacten voor elk netwerk en biedt daarom een manier om de implementatie van het definitieve programma te vereenvoudigen. Voor meer informatie raadpleegt u [Quick Start: Truffle gebruiken om verbinding te maken met een Azure Block Chain service-netwerk](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transaction"></a>Persoonlijke Ethereum-quorum transactie
 
@@ -51,13 +51,13 @@ Quorum is een op Ethereum gebaseerd, gedistribueerd grootboek protocol met trans
 * Machtigingen voor peer: machtigingen voor knoop punten en peering met behulp van slimme contracten, zodat alleen bekende partijen kunnen deel nemen aan het netwerk
 * Hogere prestaties-quorum biedt hogere prestaties dan open bare Geth
 
-Zie [zelf studie: Verzend een trans actie met behulp](send-transaction.md) van de Azure Block Chain-Service voor een voor beeld van een persoonlijke trans actie.
+Zie [zelf studie: een trans actie verzenden met behulp van de Azure Block Chain-Service](send-transaction.md) voor een voor beeld van een persoonlijke trans actie.
 
 ## <a name="block-explorers"></a>Verkenners blok keren
 
 Blok keer verkenners zijn online Block Chain-browsers die afzonderlijke blok inhoud, transactie adres gegevens en geschiedenis weer geven. Basis informatie over blokken is beschikbaar via Azure Monitor in de Azure Block Chain-service. Als u echter meer gedetailleerde informatie tijdens de ontwikkeling nodig hebt, kan het zijn dat u de blok Verkenner kunt gebruiken.  Er zijn populaire open-source blok verkenners die u kunt gebruiken. Hier volgt een lijst met blok verkenners die werken met de Azure Block Chain-Service:
 
-* [Azure Block Chain Service Explorer](https://web3labs.com/azure-offer) van Web3 Labs
+* [Epirus Azure Block Chain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) van Web3 Labs
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS meting
@@ -66,4 +66,4 @@ Omdat Block Chain wordt gebruikt in meer bedrijfs scenario's, is de snelheid van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstart: Truffle gebruiken om verbinding te maken met een Azure Block Chain service-netwerk](connect-truffle.md)
+[Snelstartgids: Truffle gebruiken om verbinding te maken met een Azure Block Chain service-netwerk](connect-truffle.md)

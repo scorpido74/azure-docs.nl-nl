@@ -1,6 +1,6 @@
 ---
-title: Stroomlogboeken lezen | Microsoft Docs
-description: In dit artikel ziet u hoe NSG-stroomlogboeken parseren
+title: NSG-stroom logboeken lezen | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u NSG-stroom logboeken parseert
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,33 +13,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: kumud
-ms.openlocfilehash: becae0f085fcaf4b0d0c7b29e102aaa3186fb85e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: edc4cc32cd358bd37fdab46e323c59ec207b2d5a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653748"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293476"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-stroomlogboeken lezen
 
-Informatie over het lezen van NSG-stroom logboeken vermeldingen met PowerShell.
+Meer informatie over het lezen van NSG-stroom logboek vermeldingen met Power shell.
 
-NSG-stroomlogboeken zijn opgeslagen in een opslagaccount in [blok-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Blok-blobs bestaan uit kleinere blokken. Elk logboek is een afzonderlijke blok-blob die elk uur wordt gegenereerd. Nieuwe logboeken worden gegenereerd per uur, de logboeken worden bijgewerkt met nieuwe gegevens om de paar minuten met de meest recente gegevens. In dit artikel leert u hoe u onderdelen van de logboeken van de stroom lezen.
+NSG-stroom logboeken worden opgeslagen in een opslag account in [blok-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Blok-blobs bestaan uit kleinere blokken. Elk logboek is een afzonderlijke blok-blob die elk uur wordt gegenereerd. Nieuwe logboeken worden elk uur gegenereerd, de logboeken worden elke paar minuten bijgewerkt met nieuwe vermeldingen met de meest recente gegevens. In dit artikel leert u hoe u gedeelten van de stroom Logboeken kunt lezen.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Scenario
 
-In het volgende scenario hebt u een voorbeeld van de flow-logboek die zijn opgeslagen in een storage-account. Leert u hoe u de meest recente gebeurtenissen in NSG-stroomlogboeken selectief kan lezen. In dit artikel gebruikt u PowerShell, maar de concepten die in het artikel worden besproken, zijn niet beperkt tot de programmeertaal en zijn van toepassing op alle talen ondersteund door de Azure Storage-API's.
+In het volgende scenario hebt u een voor beeld van een stroom logboek dat is opgeslagen in een opslag account. U leert hoe u de meest recente gebeurtenissen in NSG-stroom logboeken selectief kunt lezen. In dit artikel gebruikt u Power shell, maar de concepten die in het artikel worden besproken, zijn niet beperkt tot de programmeer taal en zijn van toepassing op alle talen die worden ondersteund door de Azure Storage-Api's.
 
 ## <a name="setup"></a>Instellen
 
-Voordat u begint, kunt u Network Security Group Flow-logboekregistratie is ingeschakeld op een of meer Netwerkbeveiligingsgroepen in uw account moet hebben. Zie voor instructies over het inschakelen van stroomlogboeken voor netwerkbeveiliging, het volgende artikel: [Inleiding tot stroomlogboeken voor Netwerkbeveiligingsgroepen](network-watcher-nsg-flow-logging-overview.md).
+Voordat u begint, moet u de stroom logboek registratie van de netwerk beveiligings groep inschakelen voor een of meer netwerk beveiligings groepen in uw account. Raadpleeg het volgende artikel: [Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen](network-watcher-nsg-flow-logging-overview.md)voor instructies over het inschakelen van Logboeken voor netwerk beveiligings stromen.
 
 ## <a name="retrieve-the-block-list"></a>De lijst met geblokkeerde websites ophalen
 
-De volgende PowerShell stelt u de variabelen die nodig zijn voor de NSG stroom log blob query en de blokken in vermelden de [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) blok-blob. Werk het script bevat de geldige waarden voor uw omgeving.
+De volgende Power shell stelt de variabelen in die nodig zijn om de NSG-stroom logboek-BLOB te doorzoeken en geeft een lijst van de blokken in de [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) -blok-blob. Werk het script bij zodat het geldige waarden voor uw omgeving bevat.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -70,8 +70,8 @@ function Get-NSGFlowLogCloudBlockBlob {
         # Gets the storage blog
         $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
+        # Gets the block blog of type 'Microsoft.Azure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.Azure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
         #Return the Cloud Block Blob
         $CloudBlockBlob
@@ -81,7 +81,7 @@ function Get-NSGFlowLogCloudBlockBlob {
 function Get-NSGFlowLogBlockList  {
     [CmdletBinding()]
     param (
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
     )
     process {
         # Stores the block list in a variable from the block blob.
@@ -98,7 +98,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-De `$blockList` variabele retourneert een lijst van de blokken in de blob. Elk blok-blob bevat ten minste twee blokken.  Het eerste vereiste blok heeft een lengte van `12` bytes, dit blok bevat de haakjes openen van het json-logboek. Het andere blok is de haakjes en heeft een lengte van `2` bytes.  Zoals u het volgende voorbeeld-logboek ziet bevat zeven vermeldingen, elk een afzonderlijke vermelding wordt. Alle nieuwe vermeldingen in het logboek worden toegevoegd aan het einde na de laatste blok.
+De variabele `$blockList` retourneert een lijst met de blokken in de blob. Elke blok-BLOB bevat ten minste twee blokken.  Het eerste blok heeft een lengte van @no__t 0 bytes. dit blok bevat de openings accolades van het JSON-logboek. Het andere blok is de haak sluiten en heeft een lengte van `2` bytes.  Zoals u kunt zien in het volgende voor beeld van het logboek, worden er zeven vermeldingen in weer gegeven, elk een afzonderlijk item is. Alle nieuwe vermeldingen in het logboek worden toegevoegd aan het eind recht vóór het eind blok.
 
 ```
 Name                                         Length Committed
@@ -114,16 +114,16 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ```
 
-## <a name="read-the-block-blob"></a>Lees de blok-blob
+## <a name="read-the-block-blob"></a>De blok-BLOB lezen
 
-Vervolgens moet u om te lezen de `$blocklist` variabele om de gegevens te halen. In dit voorbeeld die wordt de blokkeringslijst hebt doorlopen, het aantal bytes lezen uit elk blok en ze in een matrix van artikel. Gebruik de [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) methode voor het ophalen van de gegevens.
+Vervolgens moet u de variabele `$blocklist` lezen om de gegevens op te halen. In dit voor beeld laten we de blokkerings lijst door lopen, de bytes van elk blok lezen en ze in een matrix verhaalen. Gebruik de methode [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) om de gegevens op te halen.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
     [CmdletBinding()]
     param (
         [System.Array] [Parameter(Mandatory=$true)] $blockList,
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
 
     )
     # Set the size of the byte array to the largest block
@@ -160,9 +160,9 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Nu de `$valuearray` matrix de tekenreekswaarde bevat van elk blok. Als u wilt controleren of de vermelding, krijgen de tweede op de laatste waarde van de matrix door te voeren `$valuearray[$valuearray.Length-2]`. U wilt niet de laatste waarde, omdat het een haakje sluiten.
+Nu bevat de matrix @no__t 0 de teken reeks waarde van elk blok. Als u de vermelding wilt controleren, moet u de tweede op de laatste waarde van de matrix ophalen door `$valuearray[$valuearray.Length-2]` uit te voeren. U wilt niet de laatste waarde, omdat het de haak sluiten is.
 
-De resultaten van deze waarde worden weergegeven in het volgende voorbeeld:
+De resultaten van deze waarde worden weer gegeven in het volgende voor beeld:
 
 ```json
         {
@@ -184,10 +184,10 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Dit scenario is een voorbeeld van vermeldingen in de NSG-stroomlogboeken lezen zonder dat het hele logboek parseren. U kunt nieuwe vermeldingen in het logboek kunt lezen, zoals ze zijn geschreven met behulp van de blok-ID of door bij te houden van de lengte van blokken die zijn opgeslagen in de blok-blob. Hiermee kunt u alleen de nieuwe gegevens worden gelezen.
+Dit scenario is een voor beeld van het lezen van vermeldingen in NSG-stroom logboeken zonder het hele logboek te hoeven parseren. U kunt nieuwe vermeldingen in het logboek lezen zoals ze zijn geschreven met behulp van de blok-ID of door de lengte van blokken die zijn opgeslagen in de blok-BLOB te volgen. Zo kunt u alleen de nieuwe vermeldingen lezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [Elastic Stack gebruiken](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [gebruik Grafana](network-watcher-nsg-grafana.md), en [gebruik Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) voor meer informatie over manieren om NSG-stroomlogboeken weer te geven. Een functie van de Azure Open Source-benadering voor de blobs rechtstreeks verbruikt en verzenden naar verschillende log analytics-klanten kan hier vinden: [Azure Network Watcher NSG Stroomlogboeken Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
+Ga naar [elastische stack gebruiken](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [gebruik Grafana](network-watcher-nsg-grafana.md)en [gebruik Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) om meer te weten te komen over manieren om NSG-stroom logboeken weer te geven. Een open-source Azure-functie benadering voor het rechtstreeks gebruiken van de blobs en het geven van verschillende log Analytics-consumenten vindt u hier: [Azure Network WATCHER NSG stroom logboeken connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Ga voor meer informatie over de storage-blobs naar: [Azure Functions Blob storage-bindingen](../azure-functions/functions-bindings-storage-blob.md)
+Ga voor meer informatie over opslag-blobs naar: [Azure functions Blob Storage-bindingen](../azure-functions/functions-bindings-storage-blob.md)

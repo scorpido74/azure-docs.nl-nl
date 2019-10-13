@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1df278c67c8f84648d2fc7ab3818656cfb9de74a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100706"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300789"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Zelfstudie: Virtuele Linux-machines maken en beheren met de Azure CLI
 
@@ -33,7 +33,7 @@ Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele comp
 > * De grootte van een virtuele machine wijzigen
 > * De status van een virtuele machine weergeven en begrijpen
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
@@ -154,12 +154,12 @@ De grootte van een virtuele machine bepaalt de hoeveelheid rekenresources, zoals
 
 In de volgende tabel zijn grootten gecategoriseerd in use-cases.  
 
-| type                     | Veelgebruikte grootten           |    Description       |
+| Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
-| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, Ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
+| [Geoptimaliseerd geheugen](sizes-memory.md)    | Esv3, Ev3, M, DSv2, dv2  | Hoge geheugen-kernverhouding. Uiterst geschikt voor relationele-databases, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
+| [Geoptimaliseerde opslag](sizes-storage.md)      | Lsv2, ls              | Snelle doorvoer van schijfgegevens en IO. Ideaal voor big data-, SQL- en NoSQL-databases.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Gespecialiseerde VM's bedoeld voor intensieve grafische rendering en videobewerking.       |
 | [Hoge prestaties](sizes-hpc.md) | H        | Onze krachtigste CPU-VM's met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
 
@@ -251,12 +251,12 @@ Een Azure VM kan op een van de vele energiestatussen worden ingesteld. Deze stat
 
 ### <a name="power-states"></a>Energiestatussen
 
-| Energiestatus | Description
+| Energiestatus | Beschrijving
 |----|----|
-| Starten | Geeft aan dat de virtuele machine wordt gestart. |
+| Starting | Geeft aan dat de virtuele machine wordt gestart. |
 | In uitvoering | Geeft aan dat de virtuele machine wordt uitgevoerd. |
-| Stoppen | Geeft aan dat de virtuele machine wordt gestopt. | 
-| Gestopt | Geeft aan dat de virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
+| Stopping | Geeft aan dat de virtuele machine wordt gestopt. | 
+| Stopped | Geeft aan dat de virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
 | Vrijgeven | Geeft aan dat de toewijzing van de virtuele machine ongedaan wordt gemaakt. |
 | Toewijzing ongedaan gemaakt | Geeft aan dat de virtuele machine is verwijderd uit de hypervisor maar nog steeds beschikbaar is in het vlak van het besturingselement. Virtuele machines met de status Toewijzing ongedaan gemaakt genereren geen rekenkosten. |
 | - | Geeft aan dat de Aan-/uitstatus van de virtuele machine onbekend is. |

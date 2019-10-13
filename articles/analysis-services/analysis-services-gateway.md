@@ -2,18 +2,17 @@
 title: On-premises gegevens gateway voor Azure Analysis Services | Microsoft Docs
 description: Een on-premises gateway is nodig als uw Analysis Services-server in azure verbinding maakt met on-premises gegevens bronnen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678398"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294932"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
 
@@ -32,7 +31,7 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 ## <a name="how-it-works"> </a>Hoe werkt het?
 De gateway die u op een computer in uw organisatie installeert, wordt uitgevoerd als een Windows-service, **on-premises gegevens gateway**. Deze lokale service is geregistreerd bij de gateway-Cloud service via Azure Service Bus. Vervolgens maakt u een on-premises gegevens gateway resource voor uw Azure-abonnement. Uw Azure Analysis Services-servers worden vervolgens verbonden met uw Azure gateway-resource. Wanneer modellen op uw server verbinding moeten maken met uw on-premises gegevens bronnen voor query's of verwerking, passeren een query en gegevens stroom de gateway resource, Azure Service Bus, de lokale on-premises gegevens Gateway Service en uw gegevens bronnen. 
 
-![Hoe werkt het?](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Het werkt als volgt](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Query's en gegevens stroom:
 
@@ -49,30 +48,30 @@ Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang r
 
 ## <a name="ports-and-communication-settings"></a>Poorten en communicatie-instellingen
 
-De gateway maakt een uitgaande verbinding met Azure Service Bus. Er wordt gecommuniceerd via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 tot en met 9354.  De gateway vereist geen inkomende poorten.
+De gateway maakt een uitgaande verbinding met Azure Service Bus. Deze communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 tot en met 9354.  De gateway vereist geen inkomende poorten.
 
 Mogelijk moet u IP-adressen voor uw gegevens regio white list in uw firewall. U kunt de [IP-lijst van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Deze lijst wordt wekelijks bijgewerkt. De IP-adressen die worden weer gegeven in de IP-lijst van het Azure-Data Center zijn in CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
 
 Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt door de gateway.
 
-| Domeinnamen | Uitgaande poorten | Description |
+| Domein namen | Uitgaande poorten | Beschrijving |
 | --- | --- | --- |
-| *.powerbi.com |80 |HTTP gebruikt voor het downloaden van het installatie programma. |
-| *.powerbi.com |443 |HTTPS |
-| *.analysis.windows.net |443 |HTTPS |
+| *. powerbi.com |80 |HTTP gebruikt voor het downloaden van het installatie programma. |
+| *. powerbi.com |443 |HTTPS |
+| *. analysis.windows.net |443 |HTTPS |
 | *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
-| *.servicebus.windows.net |5671-5672 |Advanced Message Queuing Protocol (AMQP) |
+| *.servicebus.windows.net |5671-5672 |Advanced Message Queueing Protocol (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |Listeners op Service Bus Relay via TCP (vereist 443 voor de aanschaf van Access Control-token) |
-| *.frontend.clouddatahub.net |443 |HTTPS |
-| *.core.windows.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |443 |HTTPS |
+| *. core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Wordt gebruikt om de Internet verbinding te testen als de gateway onbereikbaar is voor de Power BI-service. |
-| *.microsoftonline-p.com |443 |Wordt gebruikt voor verificatie, afhankelijk van de configuratie. |
+| *. msftncsi.com |443 |Wordt gebruikt om de Internet verbinding te testen als de gateway onbereikbaar is voor de Power BI-service. |
+| *. microsoftonline-p.com |443 |Wordt gebruikt voor verificatie, afhankelijk van de configuratie. |
 | dc.services.visualstudio.com  |443 |Wordt door AppInsights gebruikt voor het verzamelen van telemetrie. |
 
 ### <a name="force-https"></a>HTTPS-communicatie met Azure Service Bus forceren
 
-U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik te maken van HTTPS in plaats van direct TCP; Dit kan echter de prestaties aanzienlijk verminderen. U kunt het bestand *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* wijzigen door de waarde te wijzigen `AutoDetect` van `Https`in. Dit bestand bevindt zich doorgaans in *C:\Program Files\On-premises data gateway*.
+U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik te maken van HTTPS in plaats van direct TCP; Dit kan echter de prestaties aanzienlijk verminderen. U kunt het bestand *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* wijzigen door de waarde te wijzigen van `AutoDetect` in `Https`. Dit bestand bevindt zich doorgaans in *C:\Program Files\On-premises data gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">

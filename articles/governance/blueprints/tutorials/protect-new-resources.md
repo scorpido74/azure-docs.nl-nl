@@ -1,19 +1,19 @@
 ---
-title: 'Zelf studie: nieuwe resources beveiligen met de resource vergrendelingen blauw drukken'
+title: Nieuwe resources beveiligen met de vergren delingen van blauw drukken
 description: In deze zelf studie leert u hoe u de Azure blauw drukken-resource vergrendelings opties alleen-lezen kunt gebruiken en niet verwijderen om nieuwe geïmplementeerde resources te beveiligen.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978143"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297008"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelfstudie: Nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen
 
 Met Azure-blauw drukken [resource vergrendeling](../concepts/resource-locking.md)kunt u nieuwe geïmplementeerde resources beveiligen tegen onrecht matig gemanipuleerd, zelfs door een account met de rol van _eigenaar_ . U kunt deze beveiliging toevoegen in de blauw drukken definities van resources die zijn gemaakt met een resource manager-sjabloon artefact.
 
@@ -42,11 +42,11 @@ Maak eerst de definitie van de blauw druk.
 
 1. Voer deze informatie in op het tabblad **basis beginselen** :
 
-   - **Naam blauw druk**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam **Locked-Storage account**.
-   - **Beschrijving van blauw druk**: Voeg een beschrijving voor de definitie van de blauw druk toe. Gebruiken **voor het testen van de resource vergrendeling op een blauw druk op geïmplementeerde resources**.
-   - **Locatie van definitie**: Selecteer de knop met het weglatings teken (...) en selecteer vervolgens de beheer groep of het abonnement waarvoor u de definitie van de blauw druk wilt opslaan.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van de blauw druk. Voor deze zelf studie gebruiken we de naam **Locked-Storage account**.
+   - **Beschrijving blauw druk**: een beschrijving voor de definitie van de blauw druk toevoegen. Gebruiken **voor het testen van de resource vergrendeling op een blauw druk op geïmplementeerde resources**.
+   - **Definitie locatie**: Selecteer de knop met het weglatings teken (...) en selecteer vervolgens de beheer groep of het abonnement waarvoor u de definitie van de blauw druk wilt opslaan.
 
-1. Selecteer het tabblad **artefacten** boven aan de pagina of selecteer **Next: Artefacten @ no__t-0 aan de onderkant van de pagina.
+1. Selecteer het tabblad **artefacten** boven aan de pagina of selecteer **volgende: artefacten** aan de onderkant van de pagina.
 
 1. Een resource groep toevoegen op het abonnements niveau:
    1. Selecteer de rij **artefact toevoegen** onder **abonnement**.
@@ -137,10 +137,10 @@ Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aa
    - **Basisinstellingen**
 
      - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waar u de definitie van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er voor elk abonnement een toewijzing gemaakt met behulp van de para meters die u invoert.
-     - **Toewijzings naam**: De naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk. We willen dat deze toewijzing de vergren deling van de nieuwe resource groep aangeeft. Wijzig daarom de naam van de toewijzing in **Assignment-Locked-Storage account-TestingBPLocks**.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de definitie van de blauw druk. We willen dat deze toewijzing de vergren deling van de nieuwe resource groep aangeeft. Wijzig daarom de naam van de toewijzing in **Assignment-Locked-Storage account-TestingBPLocks**.
      - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
        Voor deze zelf studie selecteert u **VS Oost 2**.
-     - **Definitie van blauw druk-versie**: Selecteer de gepubliceerde versie **1,0** van de blauw druk-definitie.
+     - **Definitie van blauw druk-definition**: Selecteer de gepubliceerde versie **1,0** van de blauw druk-definitie.
 
    - **Toewijzing vergren delen**
 
@@ -148,17 +148,17 @@ Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aa
 
    - **Beheerde identiteit**
 
-     Gebruik de standaard optie: **Systeem toegewezen**. Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
+     Gebruik de standaard optie: **toegewezen systeem**. Zie [Managed Identities](../../../active-directory/managed-identities-azure-resources/overview.md)(Engelstalig) voor meer informatie.
 
    - **Artefact parameters**
 
      De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder ze zijn gedefinieerd. Deze para meters zijn [dynamische para meters](../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Stel voor elk artefact de parameter waarde in op wat u ziet in de kolom **waarde** .
 
-     |Naam van het artefact|Type artefact|Parameternaam|Value|Description|
+     |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
-     |Resource groep RGtoLock|Resource group|Name|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |Resource groep RGtoLock|Resource group|Location|US - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
+     |Resource groep RGtoLock|Resourcegroep|Naam|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
+     |Resource groep RGtoLock|Resourcegroep|Locatie|US - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
+     |Storage account|Resource Manager-sjabloon|storageAccountType (Storage account)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
 
 1. Nadat u alle para meters hebt ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .
 

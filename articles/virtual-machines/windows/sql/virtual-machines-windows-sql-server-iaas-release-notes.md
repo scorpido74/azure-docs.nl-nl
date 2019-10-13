@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828599"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300096"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 
@@ -26,14 +26,15 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ## <a name="october-2019"></a>Oktober 2019
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Opslag Configuratie geoptimaliseerd voor prestaties** | U kunt nu [uw opslag configuratie volledig aanpassen](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) bij het maken van een nieuwe SQL Server VM. |
+| **Premium-bestands share voor FCI** | U kunt nu een failover-cluster exemplaar maken met behulp van [Premium-bestands share](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) in plaats van de oorspronkelijke methode van [opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>2019 augustus
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Voor Azure toegewezen host** | U kunt uw SQL Server-VM uitvoeren op een [toegewezen Azure-host](virtual-machines-windows-sql-dedicated-host.md). |
 | &nbsp; | &nbsp; |
@@ -42,7 +43,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 ## <a name="july-2019"></a>2019 juli
 
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **SQL-VM naar een andere regio verplaatsen** | Gebruik Azure Site Recovery om [uw SQL Server-VM van de ene regio naar de andere te migreren](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
@@ -50,7 +51,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 ## <a name="june-2019"></a>Juni 2019
 
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Nieuwe SQL IaaS-installatie modi** | Het is nu mogelijk om de SQL Server IaaS-uitbrei ding in de [Lightweight-modus](virtual-machines-windows-sql-server-agent-extension.md) te installeren om te voor komen dat de SQL Server-service opnieuw wordt gestart.  |
 | **Aanpassing van SQL Server-editie** | U kunt nu de [eigenschap Edition](virtual-machines-windows-sql-change-edition.md) voor uw SQL Server virtuele machine wijzigen. |
@@ -61,7 +62,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ## <a name="may-2019"></a>Mei 2019
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Nieuw SQL Server VM-beheer in Azure Portal** | Er is nu een manier om uw SQL Server-VM te beheren in de Azure Portal. Zie [SQL Server Vm's beheren in de Azure Portal](virtual-machines-windows-sql-manage-portal.md)voor meer informatie.  | 
 | &nbsp; | &nbsp; |
@@ -70,7 +71,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ## <a name="april-2019"></a>April 2019
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Uitgebreide ondersteuning voor SQL Server 2008/2008 R2** | [Uitgebreide ondersteuning](virtual-machines-windows-sql-server-2008-eos-extend-support.md) voor SQL Server 2008 en SQL Server 2008 R2 door te migreren *naar een* virtuele machine van Azure. | 
 | &nbsp; | &nbsp; |
@@ -78,7 +79,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ## <a name="march-2019"></a>2019 maart
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Ondersteuning voor aangepaste installatie kopieën** | U kunt nu de [SQL Server IaaS-extensie](virtual-machines-windows-sql-server-agent-extension.md#installation) installeren op aangepaste besturings systemen en SQL-installatie kopieën, die de beperkte functionaliteit van [flexibele licenties](virtual-machines-windows-sql-ahb.md)bieden. Wanneer u uw aangepaste installatie kopie met de SQL-resource provider wilt registreren, geeft u het licentie type op als ' AHUB '. Anders mislukt de registratie. | 
 | **Ondersteunings ondersteuning voor benoemde instanties** | U kunt nu de [SQL Server IaaS-extensie](virtual-machines-windows-sql-server-agent-extension.md#installation) gebruiken met een benoemd exemplaar als het standaard exemplaar op de juiste wijze is verwijderd. | 
@@ -88,7 +89,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ## <a name="february-2019"></a>Februari 2019
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Portal verbetering** | Het is nu mogelijk om het licentie model voor een SQL Server-VM te wijzigen van betalen per gebruik naar uw eigen licentie met behulp van de [Azure Portal](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider).|
 |**Vereenvoudiging van de implementatie van de beschikbaarheids groep met Azure SQL Server VM CLI** | Het is nu eenvoudiger dan ooit om een beschikbaarheids groep te implementeren op een SQL Server VM in Azure. U kunt de [Azure cli](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) gebruiken om de Windows-failovercluster, interne Load Balancer en beschikbaarheids groep-listeners te maken vanaf de opdracht regel. Zie [de azure SQL Server VM CLI gebruiken voor het configureren van een AlwaysOn-beschikbaarheids groep voor SQL Server op een virtuele Azure-machine](virtual-machines-windows-sql-availability-group-cli.md)voor meer informatie. | 
@@ -99,7 +100,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ### <a name="december-2018"></a>December 2018
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Nieuwe resource provider voor een SQL Server cluster** | Met een nieuwe resource provider (micro soft. SqlVirtualMachine/SqlVirtualMachineGroups) worden de meta gegevens van het Windows-failovercluster gedefinieerd. Het toevoegen van een SQL Server VM aan *SqlVirtualMachineGroups* Boots traps de WSFC-service (Windows Server failover cluster) en koppelt de virtuele machine aan het cluster.  |
 |**Automatische installatie van een implementatie van een beschikbaarheids groep met Azure Quick Start-sjablonen** |Het is nu mogelijk om het Windows-failovercluster te maken, SQL Server Vm's aan toe te voegen, de listener te maken en de interne load balancer met twee Azure Quick Start-sjablonen te configureren. Zie Azure Quick Start- [sjablonen gebruiken voor het configureren van een AlwaysOn-beschikbaarheids groep voor SQL Server op een virtuele machine van Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md)voor meer informatie. | 
@@ -109,14 +110,14 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 
 ### <a name="november-2018"></a>November 2018
 
-| Wijzigingen | Details |
+| Gewijzigde | Details |
 | --- | --- |
 | **Nieuwe SQL-VM-resource provider** |  Een nieuwe resource provider (micro soft. SqlVirtualMachine) biedt een beter beheer van uw SQL Server-Vm's. Zie voor meer informatie over het registreren van uw Vm's [een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM](virtual-machines-windows-sql-register-with-resource-provider.md). |
 |**Licentie model scha kelen** | U kunt nu scha kelen tussen de modellen van betalen per gebruik en uw eigen licentie voor uw SQL Server-VM met behulp van Azure CLI of Power shell. Zie [How to Change the License model for a SQL Server Virtual Machine in azure](virtual-machines-windows-sql-ahb.md)(Engelstalig) voor meer informatie. | 
 | &nbsp; | &nbsp; |
 
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 **Virtuele Windows-machines**:
 

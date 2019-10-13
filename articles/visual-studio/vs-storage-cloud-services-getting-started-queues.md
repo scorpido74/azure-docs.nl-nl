@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Queue Storage en Visual Studio Connected Services (Cloud Services) | Microsoft Docs
+title: Aan de slag met Queue Storage met behulp van Visual Studio (Cloud Services)
 description: Aan de slag met Azure Queue Storage in een Cloud service project in Visual Studio nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510689"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298789"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met Azure Queue Storage en Visual Studio Connected Services (Cloud Services-projecten)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -57,7 +58,7 @@ Als u toegang wilt krijgen tot wacht rijen in Visual Studio Cloud Services-proje
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**OPMERKING:** Gebruik alle bovenstaande code vóór de code in de volgende voor beelden.
+**Opmerking:** Gebruik alle bovenstaande code vóór de code in de volgende voor beelden.
 
 ## <a name="create-a-queue-in-code"></a>Een wachtrij maken in code
 Als u de wachtrij in code wilt maken, voegt u een aanroep naar **CreateIfNotExists**toe.

@@ -7,32 +7,32 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240653"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285911"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Gegevens opname van Azure Data Explorer
 
 Gegevens opname is het proces dat wordt gebruikt om gegevens records uit een of meer bronnen te laden om een tabel in azure Data Explorer te maken of bij te werken. Zodra de gegevens zijn opgenomen, worden deze beschikbaar voor query's. In het onderstaande diagram ziet u de end-to-end-stroom voor het werken in azure Data Explorer, inclusief gegevens opname.
 
-![Gegevensstroom](media/ingest-data-overview/data-flow.png)
+![Gegevens stroom](media/ingest-data-overview/data-flow.png)
 
 De Azure Data Explorer Data Management-service, die verantwoordelijk is voor de opname van gegevens, biedt de volgende functionaliteit:
 
-1. **Gegevens pull**: Gegevens ophalen uit externe bronnen (Event Hubs) of opname aanvragen van een Azure-wachtrij lezen.
+1. **Gegevens pull**: gegevens ophalen uit externe bronnen (Event hubs) of opname aanvragen van een Azure-wachtrij lezen.
 
-1. **Batch verwerking**: Batch gegevens worden naar dezelfde data base en tabel gestroomd om de door Voer van de opname te optimaliseren.
+1. **Batch**verwerking: batch gegevens stromen naar dezelfde data base en tabel om de door Voer van de opname te optimaliseren.
 
-1. **Validatie**: Voorlopige validatie en indelings conversie, indien nodig.
+1. **Validatie**: voorlopige validatie en indelings conversie, indien nodig.
 
-1. **Gegevens manipulatie**: Overeenkomende schema's, ordenen, indexeren, code ring en compressie van de gegevens.
+1. **Gegevens manipulatie**: overeenkomend schema, ordenen, indexeren, code ring en compressie van de gegevens.
 
-1. **Persistentie punt in de opname stroom**: De opname belasting voor de engine beheren en nieuwe pogingen afhandelen bij tijdelijke storingen.
+1. **Persistentie punt in de opname stroom**: Hiermee beheert u de opname belasting voor de engine en voert u nieuwe pogingen uit bij tijdelijke fouten.
 
-1. **Voer de gegevens opname**uit: Maakt de gegevens beschikbaar voor de query.
+1. **De gegevensopname vastleggen**: Hiermee maakt u de gegevens beschikbaar voor de query.
 
 ## <a name="ingestion-methods"></a>Opname methoden
 
@@ -64,7 +64,7 @@ Kusto biedt client-SDK die kan worden gebruikt voor het opnemen en opvragen van 
 
 * [Python SDK](/azure/kusto/api/python/kusto-python-client-library)
 
-* [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
+* [.NET-SDK](/azure/kusto/api/netfx/about-the-sdk)
 
 * [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
@@ -76,7 +76,7 @@ Kusto biedt client-SDK die kan worden gebruikt voor het opnemen en opvragen van 
 
 * Gegevens opnemen via de Azure Data Explorer Data Management-service (hoge door Voer en betrouw bare opname):
 
-    [**Batch opname**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (door de SDK opgegeven): de-client uploadt de gegevens naar Azure Blob-opslag (aangegeven door de Azure Data Explorer Data Management-service) en plaatst een melding in een Azure-wachtrij. Batch opname is de aanbevolen techniek voor het opnemen van hoge volumes, betrouw bare en goedkope gegevens opname.
+    [**Batch opname**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (door SDK): de-client uploadt de gegevens naar Azure Blob Storage (aangegeven door de Azure Data Explorer Data Management-service) en plaatst een melding in een Azure-wachtrij. Batch opname is de aanbevolen techniek voor het opnemen van hoge volumes, betrouw bare en goedkope gegevens opname.
 
 * Gegevens rechtstreeks opnemen in de Azure Data Explorer-Engine (geschikt voor verkennen en prototypen):
 
@@ -119,7 +119,7 @@ Voor organisaties met een bestaande infra structuur die is gebaseerd op een beri
 
 Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmaken zodat deze door Azure Data Explorer kunnen worden geparseerd. De ondersteunde gegevens indelingen zijn:
 
-* CSV, TSV, TSVE, PSV, SCSV, SOH
+* TXT, CSV, TSV, TSVE, PSV, SCSV, SOH
 * JSON (lijn-gescheiden, meerdere regels), AVRO
 * ZIP en GZIP 
 
@@ -136,7 +136,7 @@ Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmake
 Schema toewijzing helpt bij het binden van bron gegevens velden aan doel tabel kolommen.
 
 * [CSV-toewijzing](/azure/kusto/management/mappings?branch=master#csv-mapping) (optioneel) werkt met alle notaties op basis van een rang telwoord. Dit kan worden uitgevoerd met behulp van de opname opdracht parameter of [vooraf gemaakte in de tabel](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) en waarnaar wordt verwezen vanuit de opdracht parameter opnemen.
-* [JSON-toewijzing](/azure/kusto/management/mappings?branch=master#json-mapping) (verplicht) en [Avro-toewijzing](/azure/kusto/management/mappings?branch=master#avro-mapping) (verplicht) kan worden uitgevoerd met behulp van de opdracht parameter opnemen. Ze kunnen ook [vooraf worden gemaakt in de tabel](/azure/kusto/management/tables#create-ingestion-mapping) en worden verwezen vanuit de opdracht parameter opnemen.
+* [JSON-toewijzing](/azure/kusto/management/mappings?branch=master#json-mapping) (verplicht) en [Avro-toewijzing](/azure/kusto/management/mappings?branch=master#avro-mapping) (verplicht) kunnen worden uitgevoerd met behulp van de opdracht parameter opnemen. Ze kunnen ook [vooraf worden gemaakt in de tabel](/azure/kusto/management/tables#create-ingestion-mapping) en worden verwezen vanuit de opdracht parameter opnemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

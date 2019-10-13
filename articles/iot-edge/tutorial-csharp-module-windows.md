@@ -9,14 +9,14 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 32bd0438afa63212222acb84c0194bbc1f4816ce
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122907"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286678"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelfstudie: Een C# IOT Edge-module ontwikkelen voor Windows-apparaten
+# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelf studie: een C# IOT Edge-module ontwikkelen voor Windows-apparaten
 
 Gebruik Visual Studio om code C# te ontwikkelen en te implementeren op een Windows-apparaat met Azure IOT Edge. 
 
@@ -36,7 +36,7 @@ De IoT Edge-module die u maakt in deze zelfstudie filtert de temperatuurgegevens
 
 In deze zelf studie wordt gedemonstreerd hoe u **C#** een module ontwikkelt in **Visual Studio 2019**en hoe u deze implementeert op een **Windows-apparaat**. Als u modules voor Linux-apparaten ontwikkelt, gaat u in plaats daarvan naar [een C# IOT Edge module ontwikkelen voor Linux-apparaten](tutorial-csharp-module.md) . 
 
-Gebruik de volgende tabel om inzicht te krijgen in de opties voor het ontwikkelen en implementeren van C-modules op Windows-apparaten: 
+Gebruik de volgende tabel om inzicht te krijgen in de opties voor C# het ontwikkelen en implementeren van modules op Windows-apparaten: 
 
 | C# | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
@@ -47,7 +47,7 @@ Gebruik de volgende tabel om inzicht te krijgen in de opties voor het ontwikkele
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen, [een IOT Edge module te ontwikkelen voor een Windows-apparaat](tutorial-develop-for-windows.md). Nadat u deze zelf studie hebt voltooid, moet u de volgende vereisten al hebben: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Windows-apparaat met Azure IOT Edge](quickstart.md).
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) geconfigureerd met de extensie [Azure IOT Edge-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) .
@@ -76,9 +76,9 @@ De Azure IoT Edge-Hulpprogram Ma's bieden project sjablonen voor alle ondersteun
 
 4. Configureer in het venster IoT Edge toepassing en module het project met de volgende waarden: 
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
-   | Selecteer een sjabloon | Selecteer  **C# de module**. | 
+   | Een sjabloon selecteren | Selecteer  **C# de module**. | 
    | Naam van module Project | Geef de module de naam **CSharpModule**. | 
    | Docker-afbeeldings opslagplaats | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De container installatie kopie wordt vooraf ingevuld op basis van de waarde van de module Project naam. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke opslagplaats voor de installatiekopie ziet er ongeveer als volgt uit: \<registernaam\>.azurecr.io/csharpmodule. |
 
@@ -112,7 +112,7 @@ Het implementatie manifest deelt de referenties voor uw container register met d
 
 Met de standaard module code worden berichten ontvangen in een invoer wachtrij en door gegeven via een uitvoer wachtrij. We gaan enkele extra code toevoegen, zodat de module de berichten aan de rand verwerkt voordat deze naar IoT Hub worden doorgestuurd. Werk de module bij zodat deze de temperatuur gegevens in elk bericht analyseert en alleen het bericht verzendt naar IoT Hub als de Tempe ratuur een bepaalde drempel waarde overschrijdt. 
 
-1. Open **CSharpModule** > **Program.cs**in Visual Studio.
+1. Open in Visual Studio **CSharpModule** > **Program.cs**.
 
 2. Voeg bovenaan de naamruimte **CSharpModule** drie **using**-instructies toe voor typen die later worden gebruikt:
 
@@ -297,13 +297,13 @@ In de vorige sectie hebt u een IoT Edge-oplossing gemaakt en code toegevoegd aan
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Mogelijk wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het `--password-stdin`gebruik van te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de koppeling naar docker- [aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Er wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het gebruik van `--password-stdin` te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de [koppeling naar docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. Klik in de Solution Explorer van Visual Studio met de rechter muisknop op de naam van het project dat u wilt bouwen. De standaard naam is **AzureIotEdgeApp1** en omdat u een Windows-module bouwt, moet de extensie **Windows. amd64**zijn. 
 
 3. Selecteer **Build-en Push IOT Edge-modules**. 
 
-   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` de container installatie kopie gemaakt op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` de opslag plaats voor de installatie kopie naar het container register pusht. 
+   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` uitgevoerd om de container installatie kopie te bouwen op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` uitgevoerd om de opslag plaats van de installatie kopie naar het container register te pushen. 
 
 ## <a name="deploy-modules-to-device"></a>Modules implementeren op het apparaat
 
@@ -364,5 +364,5 @@ In deze zelfstudie hebt u een IoT Edge-module gemaakt met code voor het filteren
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [machine learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision service](tutorial-deploy-custom-vision.md)

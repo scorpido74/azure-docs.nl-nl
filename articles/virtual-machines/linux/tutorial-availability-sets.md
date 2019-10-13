@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8857e93aec883dc4b7fe0b71093184c3b604b24a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103593"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299445"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met de Azure CLI
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 > * Een VM maken in een beschikbaarheidsset
 > * Beschikbare VM-grootten controleren
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
@@ -50,7 +50,7 @@ Laten we eens kijken naar een typische VM-oplossing met vier front-end webserver
 
 ### <a name="availability-zone-overview"></a>Overzicht van beschikbaarheids zone
 
-Beschikbaarheidszones is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Om tolerantie te garanderen, zijn er mini maal drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing. Met Beschikbaarheidszones biedt Azure een toonaangevende SLA voor de VM-uptime van 99,99%.
+Beschikbaarheidszones is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om tolerantie te garanderen, zijn er mini maal drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing. Met Beschikbaarheidszones biedt Azure een toonaangevende SLA voor de VM-uptime van 99,99%.
 
 Net als bij beschikbaarheids sets, gaan we een typische VM-oplossing gebruiken waar u vier front-end webservers hebt en twee back-end-Vm's gebruikt die een Data Base hosten. Net als bij beschikbaarheids sets, wilt u uw virtuele machines in twee afzonderlijke beschikbaarheids zones implementeren: één beschikbaarheids zone voor de ' Web '-laag en één beschikbaarheids zone voor de laag ' data base '. Wanneer u een nieuwe virtuele machine maakt en de beschikbaarheids zone opgeeft als een para meter voor de opdracht AZ VM Create, zorgt Azure er automatisch voor dat de virtuele machines die u maakt, worden geïsoleerd in volledig verschillende beschikbaarheids zones. Als er een probleem is met het hele Data Center waarop een van uw webserver-of database server-Vm's worden uitgevoerd, weet u dat de andere exemplaren van uw webserver en data base-Vm's actief blijven omdat ze worden uitgevoerd op volledig gescheiden data centers.
 
@@ -113,7 +113,7 @@ az vm availability-set list-sizes \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een beschikbaarheidsset maken

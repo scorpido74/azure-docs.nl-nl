@@ -1,62 +1,61 @@
 ---
-title: Verbinding maken met Azure Analysis Services-servers | Microsoft Docs
-description: Leer hoe u verbinding maken met en gegevens ophalen uit een Analysis Services-server in Azure.
+title: Verbinding maken met Azure Analysis Services servers | Microsoft Docs
+description: Meer informatie over hoe u verbinding kunt maken met en gegevens kunt ophalen van een Analysis Services-server in Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a8863189ee9cb63d86b157c0bbebb6fd16116b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61027970"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295185"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
-Dit artikel wordt beschreven verbinding maken met een server met behulp van gegevensmodellering en beheertoepassingen, zoals SQL Server Management Studio (SSMS) of SQL Server Data Tools (SSDT). Of met de client melden van toepassingen zoals Microsoft Excel, Power BI Desktop of aangepaste toepassingen. Verbindingen met Azure Analysis Services gebruik van HTTPS.
+In dit artikel wordt beschreven hoe u verbinding maakt met een server met behulp van gegevens modellering en beheer toepassingen als SQL Server Management Studio (SSMS) of SQL Server Data Tools (SSDT). Of, met client rapportage toepassingen zoals micro soft Excel, Power BI Desktop of aangepaste toepassingen. Verbindingen met Azure Analysis Services HTTPS gebruiken.
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
-[De meest recente clientbibliotheken ophalen](analysis-services-data-providers.md)
+[De nieuwste client bibliotheken ophalen](analysis-services-data-providers.md)
 
-Alle verbindingen met een server, ongeacht het type, moeten bijgewerkte AMO ADOMD.NET en OLEDB-clientbibliotheken verbinding maken met en een interface met een Analysis Services-server. Voor SSMS, SSDT, Excel 2016 en later en Power BI, worden de meest recente clientbibliotheken geïnstalleerd of bijgewerkt met de maandelijkse versies. In sommige gevallen is het echter mogelijk dat een toepassing bevat mogelijk niet de nieuwste versie. Bijvoorbeeld, zijn als beleid vertraging worden bijgewerkt of Office 365-updates op het uitgestelde kanaal.
+Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, SSDT, Excel 2016 en hoger, en Power BI, worden de nieuwste client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Office 365-updates op het uitgestelde kanaal staan.
 
 ## <a name="server-name"></a>Servernaam
 
-Wanneer u een Analysis Services-server in Azure maakt, geeft u een unieke naam en de regio waar de server zich moet worden gemaakt. Wanneer u de servernaam opgeeft in een verbinding, is het naamgevingsschema server:
+Wanneer u een Analysis Services-server maakt in azure, geeft u een unieke naam en de regio op waar de server moet worden gemaakt. Wanneer u de server naam in een verbinding opgeeft, is het server naamgevings schema:
 
 ```
 <protocol>://<region>/<servername>
 ```
- Waar is protocol tekenreeks **asazure**, regio is de Uri waar de server is gemaakt (bijvoorbeeld westus.asazure.windows.net) en servername is de naam van uw unieke-server in de regio.
+ Waarbij het protocol de teken reeks **asazure**is, is de regio de URI waarin de server is gemaakt (bijvoorbeeld westus.asazure.Windows.net) en servername de naam is van uw unieke server in de regio.
 
-### <a name="get-the-server-name"></a>De naam van de server
+### <a name="get-the-server-name"></a>De server naam ophalen
 
-In **Azure-portal** > server > **overzicht** > **servernaam**, Kopieer de volledige servernaam. Als andere gebruikers in uw organisatie verbinding met deze server te, kunt u de naam van deze server met hen kunt delen. Wanneer u een servernaam opgeeft, kan het volledige pad moet worden gebruikt.
+Kopieer de volledige server naam in **Azure Portal** > Server > **overzicht** > **Server naam**. Als andere gebruikers in uw organisatie ook verbinding maken met deze server, kunt u deze naam met de server delen. Wanneer u een server naam opgeeft, moet het volledige pad worden gebruikt.
 
 ![Servernaam bepalen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> Het protocol voor de regio VS-Oost 2 is **aspaaseastus2**.
+> Het protocol voor de regio VS Oost 2 is **aspaaseastus2**.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
-Bij het verbinden met Azure Analysis Services met behulp van het objectmodel in tabelvorm, gebruikt u de volgende indelingen van de verbinding-tekenreeks:
+Wanneer u verbinding maakt met Azure Analysis Services met behulp van het object model in tabel vorm, gebruikt u de volgende connection string indelingen:
 
-###### <a name="integrated-azure-active-directory-authentication"></a>Geïntegreerde Azure Active Directory-verificatie
+###### <a name="integrated-azure-active-directory-authentication"></a>Geïntegreerde Azure Active Directory verificatie
 
-Geïntegreerde verificatie neemt de referentie-cache van Azure Active Directory, indien beschikbaar. Als dat niet het geval is, moet u de Azure-aanmelding-venster wordt weergegeven.
+Geïntegreerde verificatie haalt de Azure Active Directory referentie cache op, indien beschikbaar. Als dat niet het geval is, wordt het venster Azure-aanmelding weer gegeven.
 
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>;"
 ```
 
 
-###### <a name="azure-active-directory-authentication-with-username-and-password"></a>Azure Active Directory-verificatie met gebruikersnaam en wachtwoord
+###### <a name="azure-active-directory-authentication-with-username-and-password"></a>Verificatie Azure Active Directory met gebruikers naam en wacht woord
 
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>;User ID=<user name>;Password=<password>;Persist Security Info=True; Impersonation Level=Impersonate;";
@@ -64,20 +63,20 @@ Geïntegreerde verificatie neemt de referentie-cache van Azure Active Directory,
 
 ###### <a name="windows-authentication-integrated-security"></a>Windows-verificatie (geïntegreerde beveiliging)
 
-Gebruik het Windows-account waarop het huidige proces wordt uitgevoerd.
+Gebruik het Windows-account dat het huidige proces uitvoert.
 
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>; Integrated Security=SSPI;Persist Security Info=True;"
 ```
 
-## <a name="connect-using-an-odc-file"></a>Verbinding maken met behulp van een ODC-bestand
+## <a name="connect-using-an-odc-file"></a>Verbinding maken via een. ODC-bestand
 
-Met oudere versies van Excel kunnen gebruikers verbinding kunnen maken met een Azure Analysis Services-server met behulp van een bestand Office Data Connection (.odc). Zie voor meer informatie, [maakt u een bestand Office Data Connection (.odc)](analysis-services-odc.md).
+Met oudere versies van Excel kunnen gebruikers verbinding maken met een Azure Analysis Services server met behulp van een ODC-bestand (Office Data Connection). Zie [een ODC-bestand (Office Data Connection) maken](analysis-services-odc.md)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Verbinding maken met Excel](analysis-services-connect-excel.md)    
+[Verbinding maken met Excel](analysis-services-connect-excel.md)-    
 [Verbinding maken met Power BI](analysis-services-connect-pbi.md)   
 [Uw server beheren](analysis-services-manage.md)   
 

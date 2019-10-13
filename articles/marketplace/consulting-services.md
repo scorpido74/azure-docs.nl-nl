@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147291"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285979"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
@@ -79,7 +79,6 @@ Partners moeten beschikken over een **Silver-of Gold-competentie** in het releva
 |Denemarken   |Italië   |     Noorwegen          |Verenigde Staten |
 |Finland   |Japan   |     Polen          
 
-Het starten van advies Services gaat in een specifieke geografische regio. De eerste start is: Verenigde Staten, Canada, het Verenigd Konink rijk en Australië. De catalogussen voor andere landen/regio's zullen live gaan nadat een zinvolle en aantrekkelijke selectie van service aanbiedingen zijn ingediend door partners en goedgekeurd door micro soft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Registreren voor advies Services in azure Marketplace en AppSource
 Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) van uw bedrijfs gegevens in de Marketplace. Uitgevers kunnen verwijzen naar [een uitgever op Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), voor een volledige lijst met registratie vereisten. 
@@ -114,21 +113,21 @@ Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden v
 ## <a name="publishing-process"></a>Publicatie proces
 De aanbieding van uw advies service vindt u op Azure Marketplace en AppSource omvat de volgende fasen:
 
-1. **Vermelding**: Begin met het opstellen van een nieuwe aanbieding voor aanbiedingen door u aan te melden bij uw [Cloud Partner-Portal](https://cloudpartner.azure.com) -account. Selecteer ' nieuwe aanbieding ' en ' Consulting Services ' in de vervolg keuzelijst. Voer uw vermeldings artefact in en publiceer het.
-2. **Validatie**: Uw aanvraag wordt gecontroleerd om ervoor te zorgen dat u voldoet aan de criteria voor de geschiktheid. We sturen u vervolgens instructies om uw Consulting Services-aanbieding te vermelden. 
+1. **Aanbieding**: begin met het opstellen van een nieuwe aanbieding aanbieding door u aan te melden bij uw [Cloud Partner-Portal](https://cloudpartner.azure.com) -account. Selecteer ' nieuwe aanbieding ' en ' Consulting Services ' in de vervolg keuzelijst. Voer uw vermeldings artefact in en publiceer het.
+2. **Validatie**: uw aanvraag wordt gecontroleerd om ervoor te zorgen dat u voldoet aan de criteria voor de geschiktheid. We sturen u vervolgens instructies om uw Consulting Services-aanbieding te vermelden. 
 3. **Verzenden**: Geef de vereiste informatie op die wordt vermeld in de instructies. Alle inhoud en ondersteunende materiaal moeten in het Engels worden ingediend. 
-4. **Controleren**: Ons marketing-en redactionele team beoordeelt uw inzending en optimaliseert deze voor de Lees baarheid, grammatica en effectiviteit. 
-5. **Fase ring**: Uw inzending wordt voor bereid voor uw beoordeling. 
-6. **Publiceren**: Wanneer u en micro soft tevreden bent met de voorgefaseerde inhoud, is uw vermelding klaar om live op de markt te gaan. De go-live-datum voor uw aanbieding is afhankelijk van het land of de regio die is opgegeven in uw aanbieding. Als de catalogus voor uw geselecteerde land/regio al Live is op Azure Marketplace of AppSource, wordt uw vermelding binnen een paar uur weer gegeven. Anders wordt de vermelding weer gegeven zodra de catalogus live gaat.
+4. **Beoordeling**: ons marketing-en redactionele team beoordeelt uw inzending en optimaliseert deze voor de Lees baarheid, grammatica en effectiviteit. 
+5. **Fase ring**: uw inzending wordt voor bereid voor uw beoordeling. 
+6. **Publiceren**: als u en micro soft tevreden bent met de voorgefaseerde inhoud, is uw vermelding klaar om live op de markt te gaan. De go-live-datum voor uw aanbieding is afhankelijk van het land of de regio die is opgegeven in uw aanbieding. Als de catalogus voor uw geselecteerde land/regio al Live is op Azure Marketplace of AppSource, wordt uw vermelding binnen een paar uur weer gegeven. Anders wordt de vermelding weer gegeven zodra de catalogus live gaat.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>Criteria voor aanbiedingen en beoordelingen van de inhoud
 Aanbiedingen moeten van een van de volgende vijf service typen zijn (u kunt meer dan een lijst weer geven): 
 
-* **Beoordeling**: Een evaluatie van de omgeving van een klant om de toepas baarheid van een oplossing te bepalen en een schatting te maken van de kosten en timing. 
-* **Informatie**over: Een inleiding tot een oplossing of een advies service om de interesse van een klant te vestigen met behulp van frameworks, demo's en klant voorbeelden. 
-* **Implementatie**: Een volledige installatie die resulteert in een volledig werkende oplossing. Het is raadzaam om het te beperken tot oplossingen die in twee weken of minder kunnen worden geïmplementeerd. 
-* **Testen van concept**: Een implementatie met een beperkt bereik om te bepalen of een oplossing voldoet aan de vereisten van de klant. 
-* **Workshop**: Een interactieve afspraak die wordt uitgevoerd op de lokale locatie van een klant. Dit kan betrekking hebben op trainingen, beknopte, evaluaties of demo's die zijn gebaseerd op de gegevens of omgeving van de klant. 
+* **Beoordeling**: een evaluatie van de omgeving van een klant om de toepas baarheid van een oplossing te bepalen en een schatting te maken van de kosten en timing. 
+* Meer **informatie**: een inleiding tot een oplossing of een advies service om de interesse van klanten te tekenen met behulp van frameworks, demo's en klant voorbeelden. 
+* **Implementatie**: een volledige installatie die resulteert in een volledig werkende oplossing. Het is raadzaam om het te beperken tot oplossingen die in twee weken of minder kunnen worden geïmplementeerd. 
+* **Testen van concept**: een implementatie met een beperkt bereik om te bepalen of een oplossing voldoet aan de vereisten van de klant. 
+* **Workshop**: een interactieve afspraak die wordt uitgevoerd op de lokale locatie van een klant. Dit kan betrekking hebben op trainingen, beknopte, evaluaties of demo's die zijn gebaseerd op de gegevens of omgeving van de klant. 
 
 **Opmerking:** Met uitzonde ring van het Service type voor *informatie* kan advies services worden aangeboden in een persoon (dat wil zeggen, on-site op de locatie van een klant of de faciliteit van een partner) of virtueel (dat wil zeggen, via teleconferencing, webconferentie of externe implementatie). De beschik bare informatie moet persoonlijk worden aangeboden.
 
@@ -136,14 +135,14 @@ Zodra u de vereiste elementen hierboven hebt geconfigureerd, wordt door het team
 
 #### <a name="listing-title"></a>Titel van vermelding
 
-Het titel veld heeft een limiet van 50 tekens en moet de duur en het Service type van de aanbieding verzenden om de optimalisatie van zoek machines te maximaliseren. De vereiste indeling is als volgt: NAAM DUUR TYPE
+Het titel veld heeft een limiet van 50 tekens en moet de duur en het Service type van de aanbieding verzenden om de optimalisatie van zoek machines te maximaliseren. De vereiste indeling is als volgt: NAME: DURATION TYPE
 
 Voorbeelden:
 
 
 |Voorbeeld titel  |Juiste indeling  |
 |---------|---------|
-|Aan de slag met Azure IoT in productie    |   IoT voor productie: Evaluatie van 2 dagen      |
+|Aan de slag met Azure IoT in productie    |   Productie IoT: evaluatie van 2 dagen      |
 |Workshop op slimme geroosterers        |  Slimme geroosterers: 1 WK workshop       |
 |  Haalbaarheid SQL Server-migratie    | SQL-migratie: 3-WK testen van concept        |
 
@@ -151,7 +150,7 @@ Voorbeelden:
 
 Wanneer u de beschrijving van de aanbieding bekijkt en samen vattingen van aanbiedingen, worden de volgende criteria toegepast op het team:
 
-|Type aanbieding  |Vereist |Aanbevolen  |
+|Type aanbieding  |Verplicht |Aanbevolen  |
 |---------|---------|---------|
 |**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en geef aan welk product de klant kan verwachten      |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Onthoud dat er persoonlijke informatie moet worden aangeboden. Als u een virtuele service levert, kiest u een ander type aanbieding    |  Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines       |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 34997c130094b7e8b209b3ad3030038670d0a254
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 19f17aff4f915f8a16ccf9d69b12a845d9493e96
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702980"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299298"
 ---
 # <a name="action-rules-preview"></a>Actie regels (preview-versie)
 
@@ -67,13 +67,13 @@ U kunt ook filters definiëren om ze te beperken tot een specifieke subset van d
 
 De beschik bare filters zijn: 
 
-* **Ernst**: De optie om een of meer waarschuwings ernst te selecteren. **Ernst = Sev1** betekent dat de actie regel van toepassing is op alle waarschuwingen die zijn ingesteld op Sev1.
-* **Bewakings service**: Een filter op basis van de oorspronkelijke bewakings service. Dit filter is ook meervoudige selectie. Bijvoorbeeld: de **controle service = "Application Insights"** betekent dat de actie regel van toepassing is voor alle waarschuwingen op basis van Application Insights.
-* **Resource type**:  Een filter dat is gebaseerd op een specifiek resource type. Dit filter is ook meervoudige selectie. Bijvoorbeeld, **resource type = "virtual machines"** betekent dat de actie regel van toepassing is voor alle virtuele machines.
-* **Id van waarschuwings regel**: Een optie om te filteren op specifieke waarschuwings regels met behulp van de Resource Manager-ID van de waarschuwings regel.
-* **Bewakings voorwaarde**:  Een filter voor waarschuwings exemplaren die worden **geactiveerd** of **omgezet** als de monitor voorwaarde.
-* **Beschrijving**: Een regex (reguliere expressie) die overeenkomt met een teken reeks die overeenkomt met de beschrijving, gedefinieerd als onderdeel van de waarschuwings regel. De **Beschrijving bevat bijvoorbeeld ' Prod '** die overeenkomt met alle waarschuwingen die de teken reeks ' Prod ' in hun beschrijvingen bevatten.
-* **Waarschuwings context (Payload)** : Een regex match die een teken reeks overeenkomst definieert op basis van de waarschuwings context velden van de nettolading van een waarschuwing. Bijvoorbeeld: **waarschuwings context (Payload) bevat ' computer-01 '** komt overeen met alle waarschuwingen waarvan de nettolading de teken reeks ' computer-01 ' bevatten.
+* **Ernst**: de optie voor het selecteren van een of meer waarschuwings ernst. **Ernst = Sev1** betekent dat de actie regel van toepassing is op alle waarschuwingen die zijn ingesteld op Sev1.
+* **Bewakings service**: een filter op basis van de oorspronkelijke bewakings service. Dit filter is ook meervoudige selectie. Bijvoorbeeld: de **controle service = "Application Insights"** betekent dat de actie regel van toepassing is voor alle waarschuwingen op basis van Application Insights.
+* **Resource type**: een filter op basis van een specifiek resource type. Dit filter is ook meervoudige selectie. Bijvoorbeeld, **resource type = "virtual machines"** betekent dat de actie regel van toepassing is voor alle virtuele machines.
+* **Waarschuwings regel-id**: een optie om te filteren op specifieke waarschuwings regels met behulp van de resource manager-id van de waarschuwings regel.
+* **Bewakings voorwaarde**: een filter voor waarschuwings exemplaren die worden **geactiveerd** of **omgezet** als de monitor voorwaarde.
+* **Beschrijving**: een regex (reguliere expressie) die overeenkomt met een teken reeks die overeenkomt met de beschrijving, gedefinieerd als onderdeel van de waarschuwings regel. De **Beschrijving bevat bijvoorbeeld ' Prod '** die overeenkomt met alle waarschuwingen die de teken reeks ' Prod ' in hun beschrijvingen bevatten.
+* **Waarschuwings context (Payload)** : een matching-overeenkomst die een teken reeks overeenkomst definieert op basis van de waarschuwings context velden van de nettolading van een waarschuwing. Bijvoorbeeld: **waarschuwings context (Payload) bevat ' computer-01 '** komt overeen met alle waarschuwingen waarvan de nettolading de teken reeks ' computer-01 ' bevatten.
 
 Deze filters worden in combi natie met elkaar toegepast. Als u bijvoorbeeld **resource type = virtual machines** en **Ernst = Sev0**hebt ingesteld, hebt u gefilterd op alle **Sev0** -waarschuwingen op uw virtuele machines. 
 
@@ -86,13 +86,13 @@ Vervolgens configureert u de actie regel voor de ondersteuning van waarschuwinge
 #### <a name="suppression"></a>Onderdrukking
 
 Als u **onderdrukking**selecteert, configureert u de duur voor het onderdrukken van acties en meldingen. Kies een van de volgende opties:
-* **Vanaf nu (altijd)** : Onderdrukt alle meldingen voor onbepaalde tijd.
-* **Op een gepland tijdstip**: Onderdrukt meldingen binnen een gebonden duur.
-* **Met een terugkeer patroon**: Onderdrukt meldingen op een terugkerende dag, wekelijks of maandelijks schema.
+* **Vanaf nu (altijd)** : onderdrukt alle meldingen voor onbepaalde tijd.
+* **Op een gepland tijdstip**: onderdrukt meldingen binnen een gebonden duur.
+* **Met een terugkeer patroon**: onderdrukt meldingen op een terugkerende dag, wekelijks of maandelijks schema.
 
 ![Onderdrukking van actie regel](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
-#### <a name="action-group"></a>Actiegroep
+#### <a name="action-group"></a>Actie groep
 
 Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie groep toevoegen of een nieuwe maken. 
 
@@ -104,13 +104,13 @@ Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie g
 ### <a name="action-rule-details"></a>Details van de actie regel
 
 Configureer als laatste de volgende Details voor de actie regel:
-* Name
+* Naam
 * De resource groep waarin deze is opgeslagen
-* Description 
+* Beschrijving 
 
 ## <a name="example-scenarios"></a>Voorbeeldscenario's
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>Scenario 1: Waarschuwingen op basis van Ernst onderdrukken
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>Scenario 1: waarschuwingen onderdrukken op basis van Ernst
 
 Contoso wil meldingen onderdrukken voor alle Sev4-waarschuwingen op alle virtuele machines binnen het abonnement **ContosoSub** elk weekend.
 
@@ -121,7 +121,7 @@ Contoso wil meldingen onderdrukken voor alle Sev4-waarschuwingen op alle virtuel
     * Resource type = **virtual machines**
 * Onderdrukking met terugkeer patroon ingesteld op wekelijks, **zaterdag** en **zondag** gecontroleerd
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>Scenario 2: Waarschuwingen op basis van een waarschuwings context (Payload) onderdrukken
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>Scenario 2: waarschuwingen onderdrukken op basis van waarschuwings context (Payload)
 
 Contoso wil meldingen onderdrukken voor alle logboek waarschuwingen die zijn gegenereerd voor **computer-01** in **ContosoSub** voor onbepaalde tijd tijdens het onderhoud.
 
@@ -132,13 +132,13 @@ Contoso wil meldingen onderdrukken voor alle logboek waarschuwingen die zijn geg
     * Waarschuwings context (Payload) bevat **computer-01**
 * De onderdrukking is ingesteld op **vanaf nu (altijd)**
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scenario 3: Een actie groep die is gedefinieerd voor een resource groep
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scenario 3: een actie groep die is gedefinieerd voor een resource groep
 
 Contoso heeft [een metrische waarschuwing gedefinieerd op abonnements niveau](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Maar het wil ook bepalen van de acties die specifiek worden geactiveerd voor waarschuwingen die zijn gegenereerd op basis van de resource groep **ContosoRG**.
 
 **Oplossing:** Een actie regel maken met:
 * Scope = **ContosoRG**
-* Er zijn geen filters gevonden
+* Geen filters
 * De actie groep is ingesteld op **ContosoActionGroup**
 
 > [!NOTE]
@@ -168,10 +168,10 @@ Als u het beste logboek waarschuwingen met actie regels wilt gebruiken, maakt u 
 
 Nadat u een bereik hebt gedefinieerd tijdens het configureren van een actie regel, ziet u een lijst met actie regels die overlappen op hetzelfde bereik (indien van toepassing). Deze overlap ping kan een van de volgende opties zijn:
 
-* Een exacte overeenkomst: De actie regel die u definieert en de regel voor overlappende acties bevinden zich bijvoorbeeld op hetzelfde abonnement.
-* Een subset: De actie regel die u definieert, bevindt zich bijvoorbeeld op een abonnement en de regel voor overlappende acties bevindt zich in een resource groep binnen het abonnement.
-* Een hoofdverzameling: De actie regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de overlappende actie regel staat op het abonnement dat de resource groep bevat.
-* Een kruispunt: De actie regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de overlappende actie regel bevindt zich op **VM2** en **VM3**.
+* Een exacte overeenkomst: de actie regel die u definieert en de regel voor de overlappende actie bevinden zich op hetzelfde abonnement.
+* Een subset: de actie regel die u definieert, bevindt zich bijvoorbeeld op een abonnement en de overlappende actie regel bevindt zich op een resource groep binnen het abonnement.
+* Een omvattend: de actie regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de overlappende actie regel bevindt zich op het abonnement dat de resource groep bevat.
+* Een door snede: de actie regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de overlappende actie regel bevindt zich op **VM2** en **VM3**.
 
 ![Overlappende actie regels](media/alerts-action-rules/action-rules-overlapping.png)
 
@@ -179,10 +179,10 @@ Nadat u een bereik hebt gedefinieerd tijdens het configureren van een actie rege
 
 Nadat u de doel resource voor uw waarschuwings regel hebt gedefinieerd, kunt u de lijst met actie regels die op hetzelfde bereik handelen (indien van toepassing) bekijken door **geconfigureerde acties weer geven** te selecteren in de sectie **acties** . Deze lijst wordt ingevuld op basis van de volgende scenario's voor de Scope:
 
-* Een exacte overeenkomst: Bijvoorbeeld, de waarschuwings regel die u definieert en de actie regel bevinden zich op hetzelfde abonnement.
-* Een subset: De waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op een abonnement en de actie regel bevindt zich in een resource groep binnen het abonnement.
-* Een hoofdverzameling: De waarschuwings regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de actie regel bevindt zich op het abonnement dat de resource groep bevat.
-* Een kruispunt: De waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de actie regel bevindt zich op **VM2** en **VM3**.
+* Een exacte overeenkomst: bijvoorbeeld de waarschuwings regel die u definieert en de actie regel bevinden zich op hetzelfde abonnement.
+* Een subset: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op een abonnement en de actie regel bevindt zich op een resource groep in het abonnement.
+* Een hoofd verzameling: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de actie regel bevindt zich op het abonnement dat de resource groep bevat.
+* Een snij punt: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de actie regel bevindt zich op **VM2** en **VM3**.
     
 ![Overlappende actie regels](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
@@ -198,22 +198,22 @@ Onderdrukking heeft altijd voor rang op hetzelfde bereik.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Wat gebeurt er als er een resource is die in twee afzonderlijke actie regels wordt bewaakt? Ontvang ik een of twee meldingen? Bijvoorbeeld, **VM2** in het volgende scenario:
 
-      "action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1"
+      action rule AR1 defined for VM1 and VM2 with action group AG1
+      action rule AR2 defined for VM2 and VM3 with action group AG1
 
 Voor elke waarschuwing voor VM1 en VM3 wordt de actie groeps AG1 één keer geactiveerd. Voor elke waarschuwing op **VM2**wordt de AG1 van de actie groep twee keer geactiveerd, omdat actie regels geen acties ontdubbelen. 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Wat gebeurt er als er een resource wordt gevolgd in twee afzonderlijke actie regels en één aanroepen voor actie terwijl een andere wordt onderdrukt? Bijvoorbeeld, **VM2** in het volgende scenario:
 
-      "action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression"
+      action rule AR1 defined for VM1 and VM2 with action group AG1 
+      action rule AR2 defined for VM2 and VM3 with suppression
 
 Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Acties en meldingen voor elke waarschuwing in VM2 en VM3 worden onderdrukt. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Wat gebeurt er als er een waarschuwings regel en een actie regel zijn gedefinieerd voor dezelfde resource die verschillende actie groepen aanroept? Bijvoorbeeld, **VM1** in het volgende scenario:
 
-      "alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1" 
+      alert rule rule1 on VM1 with action group AG2
+      action rule AR1 defined for VM1 with action group AG1 
  
 Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Wanneer waarschuwings regel "firewallregel1" wordt geactiveerd, wordt ook AG2 geactiveerd. Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling. 
 

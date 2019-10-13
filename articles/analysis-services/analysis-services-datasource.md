@@ -2,18 +2,17 @@
 title: Gegevens bronnen die worden ondersteund in Azure Analysis Services | Microsoft Docs
 description: Beschrijft gegevens bronnen die worden ondersteund voor gegevens modellen in Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993391"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298633"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -51,7 +50,7 @@ Voor het maken van verbinding met on-premises gegevens bronnen van en Azure als 
 |Gegevensbron | In-Memory provider | DirectQuery-provider |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11,0, micro soft OLE DB provider voor SQL Server, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
-| SQL Server datawarehouse |SQL Server Native Client 11,0, micro soft OLE DB provider voor SQL Server, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
+| SQL Server Data Warehouse |SQL Server Native Client 11,0, micro soft OLE DB provider voor SQL Server, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
 | Oracle | OLE DB provider voor Oracle, Oracle-gegevens provider voor .NET |Oracle-gegevens provider voor .NET |
 | Teradata |OLE DB provider voor Teradata, Teradata-gegevens provider voor .NET |Teradata-gegevens provider voor .NET |
 | | | |
@@ -82,7 +81,7 @@ Voor het maken van verbinding met on-premises gegevens bronnen van en Azure als 
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
 |Share point-lijst<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Sybase-database     |  
+|Sybase-data base     |  
 |TXT-bestand  |
 |XML-tabel<sup>[1](#tab1400b)</sup>    |  
 ||
@@ -92,15 +91,15 @@ Voor het maken van verbinding met on-premises gegevens bronnen van en Azure als 
 
 ## <a name="specifying-a-different-provider"></a>Een andere provider opgeven
 
-Gegevens modellen in Azure Analysis Services kunnen verschillende gegevens providers vereisen bij het verbinden met bepaalde gegevens bronnen. In sommige gevallen wordt er een fout geretourneerd door tabellaire modellen die verbinding maken met gegevens bronnen die gebruikmaken van systeem eigen providers, zoals SQL Server Native Client (SQLNCLI11). Als u een andere systeem eigen provider dan SQLOLEDB gebruikt, ziet u mogelijk het volgende fout bericht: **De provider SQLNCLI/client is niet geregistreerd**. Als u een DirectQuery-model hebt om verbinding te maken met on-premises gegevens bronnen en u systeem eigen providers gebruikt, ziet u mogelijk het volgende fout bericht: **Fout bij het maken van OLE DB Row set. De syntaxis bij ' LIMIT '** is onjuist.
+Gegevens modellen in Azure Analysis Services kunnen verschillende gegevens providers vereisen bij het verbinden met bepaalde gegevens bronnen. In sommige gevallen wordt er een fout geretourneerd door tabellaire modellen die verbinding maken met gegevens bronnen die gebruikmaken van systeem eigen providers, zoals SQL Server Native Client (SQLNCLI11). Als u systeem eigen providers gebruikt, met uitzonde ring van SQLOLEDB, ziet u mogelijk het volgende fout bericht: **de provider SQLNCLI is niet geregistreerd**. Als u een DirectQuery-model hebt om verbinding te maken met on-premises gegevens bronnen en u systeem eigen providers gebruikt, ziet u mogelijk het volgende fout bericht: **Fout bij het maken van OLE DB Row set. De syntaxis bij ' LIMIT ' is onjuist**.
 
 Bij het migreren van een on-premises SQL Server Analysis Services tabellaire model naar Azure Analysis Services, kan het nodig zijn om de provider te wijzigen.
 
 **Een provider opgeven**
 
-1. Klik in SSDT > **tabellaire model Verkenner** > -**gegevens bronnen**met de rechter muisknop op een gegevens bron verbinding en klik vervolgens op **gegevens bron bewerken**.
+1. Klik in SSDT > **Tabellaire model verkenner** > **gegevens bronnen**met de rechter muisknop op een gegevens bron verbinding en klik vervolgens op **gegevens bron bewerken**.
 2. Klik in **verbinding bewerken**op **Geavanceerd** om het venster Geavanceerde eigenschappen te openen.
-3. Selecteer bij**providers** **Geavanceerde eigenschappen** > instellen de juiste provider.
+3. Selecteer in **Geavanceerde eigenschappen instellen** > -**providers**de juiste provider.
 
 ## <a name="impersonation"></a>Imitatie
 In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio (SSDT) of SSMS.

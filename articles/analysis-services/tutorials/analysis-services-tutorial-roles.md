@@ -2,20 +2,19 @@
 title: 'Zelfstudie: Azure Analysis Services-beheerder en -gebruikersrollen configureren | Microsoft Docs'
 description: Informatie over het configureren van Azure Analysis Services-rollen.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932218"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294428"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder en gebruikersrollen configureren
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
 
  In deze zelfstudie gebruikt u SQL Server Management Studio (SSMS) om verbinding te maken met uw server in Azure voor het configureren van de serverbeheerderrol en de modeldatabaserol. U maakt ook kennis met [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL is een scripttaal op basis van JSON voor tabelvormige modellen op het compatibiliteitsniveau van 1200 en hoger. Het kan worden gebruikt om veel in tabelvormige modelleertaken te automatiseren. TMSL wordt vaak gebruikt met PowerShell, maar in deze zelfstudie gebruikt u de XMLA-query-editor in SSMS. In deze zelfstudie voert u de volgende taken uit: 
   
@@ -53,7 +52,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 1. Klik in SSMS > **Objectverkenner** op **Verbinding maken** > **Analysis Services**.
 
-    ![Verbinden](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Connect](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. In het dialoogvenster **Verbinden met server** plakt u in **Servernaam** de servernaam die u hebt gekopieerd uit de portal. In **Verificatie** kiest u **Active Directory Universal met ondersteuning voor MFA**, voert u uw gebruikersaccount en drukt vervolgens op **Verbinden**.
    

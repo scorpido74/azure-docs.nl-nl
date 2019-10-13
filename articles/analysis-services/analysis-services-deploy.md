@@ -2,18 +2,17 @@
 title: Implementeren in Azure Analysis Services met behulp van Visual Studio (SSDT) | Microsoft Docs
 description: Leer hoe u een tabellair model met behulp van SSDT implementeert op een Azure Analysis Services-server.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2811685df678730b90f2fdb28d472f8fa268ec6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 759d85db26ac7370c0b884d2e4839d3045384673
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932458"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301128"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Een model implementeren vanuit Visual Studio
 

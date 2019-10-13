@@ -1,5 +1,5 @@
 ---
-title: Voor beeld-PCI-DSS v 3.2.1 blauw druk-besturings element toewijzen
+title: Voor beeld van PCI-DSS v 3.2.1 blauw druk-beheer
 description: Bepaal de toewijzing van het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1-blauw druk op Azure Policy en RBAC.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981487"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297200"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>De toewijzing van het voor beeld van het PCI-DSS v 3.2.1-blauw druk
 
@@ -34,8 +34,8 @@ Deze blauw druk helpt u bij het beheren en best uren van netwerken door [Azure P
 
 Deze blauw druk helpt u bij het afdwingen van uw beleid met het gebruik van cryptograph-besturings elementen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren. Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids regels die door deze blauw druk worden toegewezen, vereisen transparante gegevens versleuteling voor SQL-data bases. controleren op ontbrekende versleuteling voor opslag accounts en Automation-account variabelen. Er zijn ook beleids regels voor het controleren van onbeveiligde verbindingen met opslag accounts, functie-apps, WebApp, API Apps en Redis Cache en het controleren van niet-versleutelde Service Fabric communicatie.
 
-- Functie-App moet alleen toegankelijk zijn via HTTPS
-- Web-App moet alleen toegankelijk zijn via HTTPS
+- functie-app mag alleen toegankelijk zijn via HTTPS
+- Webtoepassing mag alleen toegankelijk zijn via HTTPS
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 - Schijf versleuteling moet worden toegepast op virtuele machines
@@ -100,12 +100,12 @@ Azure implementeert op rollen gebaseerd toegangs beheer (RBAC) om u te helpen bi
 
 Deze blauw druk helpt u sterke wacht woorden af te dwingen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee Windows-vm's worden gecontroleerd die geen minimale sterkte en andere wachtwoord vereisten afdwingen. Het bewustzijn van Vm's in strijd met het beleid voor wachtwoord sterkte helpt u bij het uitvoeren van corrigerende maat regelen om ervoor te zorgen dat wacht woorden voor alle VM-gebruikers accounts voldoen aan het beleid.
 
-- \[Preview @ no__t-1: Windows-Vm's met een maximale wachtwoord duur van 70 dagen controleren
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: Windows-Vm's controleren die geen maximale wachtwoord duur van 70 dagen hebben
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van Windows-Vm's die geen maximale wachtwoord duur van 70 dagen hebben
 - \[Preview @ no__t-1: Windows-Vm's controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview @ no__t-1: Vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
-- \[Preview @ no__t-1: Virtuele Windows-machines controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
-- \[Preview @ no__t-1: Vereisten implementeren voor het controleren van virtuele Windows-machines die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: vereisten implementeren om Windows-Vm's te controleren die de minimale wachtwoord lengte niet beperken tot 14 tekens
+- \[Preview @ no__t-1: Windows-Vm's controleren die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
+- \[Preview @ no__t-1: vereisten implementeren voor het controleren van Windows-Vm's die het opnieuw gebruiken van de voor gaande 24 wacht woorden toestaan
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 en 10.5.4-controle genereren
 
@@ -124,7 +124,7 @@ Diagnostische logboeken bieden inzicht in bewerkingen die zijn uitgevoerd in azu
 Deze blauw druk helpt u bij het beheren en bepalen van uw netwerk door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die de acceptabele netwerk locaties controleren en de goedgekeurde bedrijfs producten die voor de omgeving zijn toegestaan. Deze kunnen door elk bedrijf worden aangepast via de beleids parameters in elk van deze beleids regels.
 
 - Toegestane locaties
-- Toegestane locaties voor resourcegroepen
+- Toegestane locaties voor resource groepen
 
 ## <a name="next-steps"></a>Volgende stappen
 

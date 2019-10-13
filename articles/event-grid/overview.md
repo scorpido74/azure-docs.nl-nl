@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c00c1ecf001162964b01a3e858534fa502b7484c
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077160"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285842"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -22,7 +22,7 @@ Met Azure Event Grid kunt u eenvoudig toepassingen bouwen met op gebeurtenissen 
 
 U kunt filters gebruiken voor het doorsturen van specifieke gebeurtenissen naar verschillende eindpunten, multicasting uitvoeren naar meerdere eindpunten en ervoor zorgen dat uw gebeurtenissen op betrouwbare wijze worden bezorgd.
 
-Azure Event Grid wordt geïmplementeerd voor maximale beschikbaarheid door systeemeigen spreiden over meerdere foutdomeinen in elke regio en in meerdere beschikbaarheidszones (in de regio's die ze ondersteunen). Azure Event Grid is momenteel beschikbaar in alle openbare regio's. Het is nog niet beschikbaar in de Azure Duitsland, Azure China 21Vianet of Azure Government-clouds.
+Azure Event Grid wordt geïmplementeerd om de beschik baarheid te maximaliseren door systeem eigen verspreiding uit te breiden over meerdere fout domeinen in elke regio, en over beschikbaarheids zones (in regio's die deze ondersteunen). Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)voor een lijst met regio's die door Event grid worden ondersteund.
 
 In dit artikel vindt u een overzicht van Azure Event Grid. Zie [Aangepaste gebeurtenissen maken en routeren met behulp van Azure Event Grid](custom-event-quickstart.md) als u aan de slag wilt met Azure Event Grid. 
 
@@ -34,15 +34,15 @@ Deze afbeelding toont hoe Event Grid bronnen en handlers verbindt, maar biedt ge
 
 Zie [gebeurtenisbronnen](event-sources.md) voor meer informatie over de mogelijkheden van elke bron, evenals de gerelateerde artikelen. Op dit moment ondersteunen de volgende Azure-services het verzenden van gebeurtenissen naar Event Grid:
 
-* [Azure-abonnementen (bewerkingen)](event-sources.md#azure-subscriptions)
+* [Azure-abonnementen (beheer bewerkingen)](event-sources.md#azure-subscriptions)
 * [Container Registry](event-sources.md#container-registry)
 * [Aangepaste onderwerpen](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)
 * [Media Services](event-sources.md#media-services)
-* [Resourcegroepen (bewerkingen)](event-sources.md#resource-groups)
+* [Resource groepen (beheer bewerkingen)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
-* [Storage-Blob](event-sources.md#storage)
+* [Opslag-BLOB](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Event Handlers
@@ -56,7 +56,7 @@ Zie [gebeurtenis-handlers](event-handlers.md) voor meer informatie over de mogel
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue-preview) (Preview)
+* [Service Bus](event-handlers.md#service-bus-queue-preview) (preview-versie)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Concepten
@@ -71,7 +71,7 @@ Azure Event Grid bevat vijf concepten waarmee u aan de slag kunt:
 
 Zie [Concepten in Azure Event Grid](concepts.md) voor meer informatie over deze concepten.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Mogelijkheden
 
 Hier volgt een aantal essentiële functies van Azure Event Grid:
 
@@ -100,9 +100,9 @@ Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid 
 
 ![De automatisering van bewerkingen](./media/overview/Ops_automation.png)
 
-Met Event Grid kunt u sneller automatiseren en gemakkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
+Met Event Grid kunt u sneller automatiseren en makkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
 
-### <a name="application-integration"></a>Integratie van toepassingen
+### <a name="application-integration"></a>Integratie van applicaties
 
 ![Integratie van toepassingen met Azure](./media/overview/app_integration.png)
 

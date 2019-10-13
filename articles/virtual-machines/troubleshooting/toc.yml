@@ -65,8 +65,6 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Veelvoorkomende foutberichten
   href: error-messages.md
-- name: Te verzamelen gegevens wanneer u een case opent voor Microsoft Azure Automation
-  href: collect-data-microsoft-azure-automation-case.md
 - name: Prestatieproblemen met VM's
   href: performance-diagnostics.md
 - name: Problemen met algemene prestaties voor de virtuele machine van Azure in Linux of Windows oplossen

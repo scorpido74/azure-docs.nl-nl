@@ -1,17 +1,17 @@
 ---
-title: Voor beeld-Canada Federal PBMM blauw druk-Control-toewijzing
+title: Voor beeld van Canada Federal PBMM Blues-Control-toewijzing
 description: De toewijzing van de voor beelden van Canada Federal PBMM blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 7630db80c81f1e717b84c6be0c4fcf9526ed06c9
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: b16ad4fd08776312d318067b4bc84f79b9797e70
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248616"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299160"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>De toewijzing van het voor beeld van Canada Federal PBMM blauw drukken
 

@@ -2,18 +2,17 @@
 title: Client bibliotheken die nodig zijn om verbinding te maken met Azure Analysis Services | Microsoft Docs
 description: Beschrijft de vereiste client bibliotheken voor client toepassingen en hulpprogram ma's om verbinding te maken Azure Analysis Services
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e597b03abfdeda01d74986b7b30c14de46fd3f1
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861132"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298657"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
@@ -21,23 +20,23 @@ Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's o
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Down load de nieuwste client bibliotheken (Windows Installer)  
 
-|Downloaden  |Productversie  | 
+|Downloaden  |Product versie  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.1.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.1.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.5.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.5.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO en ADOMD (NuGet-pakketten)
 
 Analysis Services-beheer objecten (AMO) en ADOMD-client bibliotheken zijn beschikbaar als Installeer bare pakketten van [NuGet.org](https://www.nuget.org/). Het is raadzaam om te migreren naar NuGet-verwijzingen in plaats van Windows Installer te gebruiken. 
 
-|Pakket  | Productversie  | 
+|Pakket  | Product versie  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.5      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
 
-NuGet-pakket-assemblies AssemblyVersion volgen van semantische versie: VEELGEBRUIKT. SECUNDAIR. VERZENDEN. NuGet verwijst naar de verwachte versie, zelfs als er sprake is van een andere versie in de GAC (als gevolg van MSI-installatie). De PATCH wordt voor elke release verhoogd. AMO-en ADOMD-versies worden in-sync bewaard.
+NuGet-pakket-assemblies AssemblyVersion volgen van semantische versie: primair. Secundair. Verzenden. NuGet verwijst naar de verwachte versie, zelfs als er sprake is van een andere versie in de GAC (als gevolg van MSI-installatie). De PATCH wordt voor elke release verhoogd. AMO-en ADOMD-versies worden in-sync bewaard.
 
 ## <a name="understanding-client-libraries"></a>Informatie over client bibliotheken
 
@@ -55,7 +54,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
  De Analysis Services OLE DB-provider wordt automatisch geïnstalleerd door de meeste hulpprogram ma's en client toepassingen die worden gebruikt voor toegang tot Analysis Services-data bases. Het moet worden geïnstalleerd op computers die worden gebruikt om toegang te krijgen tot Analysis Services gegevens.  
   
- OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP. \<versie >. dll.
+ OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP. \<version >. dll.
 
 ### <a name="amo"></a>AMO  
 
@@ -75,7 +74,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
 1.  Ga naar `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Als u meer dan één map hebt, kiest u het hogere nummer.
   
-2.  Klik met de rechter muisknop op **Msolap. dll** > -**Eigenschappen** > **Details**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
+2.  Klik met de rechter muisknop op **Msolap. dll** > **Eigenschappen** > -**gegevens**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
     
     ![Details van de client bibliotheek](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -83,14 +82,14 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
 ### <a name="amo"></a>AMO
 
 1. Ga naar `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Als u meer dan één map hebt, kiest u het hogere nummer.
-2. Klik met de rechter muisknop op**Eigenschappen** > van **micro soft. AnalysisServices** >  **.**  
+2. Klik met de rechter muisknop op **micro soft. AnalysisServices** > **Eigenschappen** > **Details**.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. Ga naar `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Als u meer dan één map hebt, kiest u het hogere nummer.
-2. Klik met de rechter muisknop op**Eigenschappen** > van **micro soft. AnalysisServices. AdomdClient** >  **.**  
+2. Klik met de rechter muisknop op **micro soft. AnalysisServices. AdomdClient** > **Eigenschappen** > **Details**.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Verbinding maken met Excel](analysis-services-connect-excel.md)    
+[Verbinding maken met Excel](analysis-services-connect-excel.md)-    
 [Verbinden met Power BI](analysis-services-connect-pbi.md)

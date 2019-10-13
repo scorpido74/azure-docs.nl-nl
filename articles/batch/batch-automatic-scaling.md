@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274827"
+ms.locfileid: "72286691"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -207,7 +207,7 @@ Deze vooraf gedefinieerde **functies** zijn beschikbaar voor gebruik bij het def
 | LG (double) |double |Retourneert de logaritme van het logboek grondtal 2 van de dubbele waarde. |
 | LG (doubleVecList) |doubleVec |Hiermee wordt het onderdeel-and-log-basis 2 van de doubleVecList geretourneerd. Een VEC (double) moet expliciet worden door gegeven voor de para meter. Anders wordt ervan uitgegaan dat de dubbele LG (double) versie wordt gebruikt. |
 | LN (double) |double |Retourneert het natuurlijke logboek van de dubbele waarde. |
-| LN (doubleVecList) |doubleVec |Hiermee wordt het onderdeel-and-log-basis 2 van de doubleVecList geretourneerd. Een VEC (double) moet expliciet worden door gegeven voor de para meter. Anders wordt ervan uitgegaan dat de dubbele LG (double) versie wordt gebruikt. |
+| LN (doubleVecList) |doubleVec |Retourneert het natuurlijke logboek van de dubbele waarde. |
 | logboek (dubbel) |double |Retourneert de logaritme met grondtal 10 van de dubbele waarde. |
 | logboek (doubleVecList) |doubleVec |Hiermee wordt het onderdeel weerstands logboek van de doubleVecList geretourneerd. Een VEC (double) moet expliciet worden door gegeven voor de enkele dubbele para meter. Anders wordt de dubbele logboek versie (double) gebruikt. |
 | Max (doubleVecList) |double |Retourneert de maximum waarde in de doubleVecList. |

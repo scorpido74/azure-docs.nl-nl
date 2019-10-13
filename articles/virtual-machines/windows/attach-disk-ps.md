@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81d0469645281f63527db5cf600f157d8d6b29d7
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ebdaa9aafa884a266ef8cf8d75d1d5fb326c690e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968363"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300648"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Een gegevens schijf koppelen aan een virtuele Windows-machine met Power shell
 
@@ -20,12 +20,10 @@ Dit artikel laat u zien hoe u met behulp van Power shell zowel nieuwe als bestaa
 
 Lees eerst de volgende tips:
 
-* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie voor meer informatie, [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* De grootte van de virtuele machine bepaalt hoeveel gegevens schijven u kunt bijvoegen. Zie [grootten voor virtuele machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
 * Als u Premium Ssd's wilt gebruiken, moet u een [VM-type met Premium-opslag capaciteit](sizes-memory.md)hebben, zoals de virtuele machine van de DS-serie of GS-serie.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+In dit artikel wordt Power shell gebruikt in de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Een lege gegevens schijf toevoegen aan een virtuele machine
 
@@ -51,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Beheerde schijven in een beschikbaarheids zone gebruiken
 
-Als u een schijf in een beschikbaarheids zone wilt maken, gebruikt u [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) met de `-Zone` para meter. In het volgende voor beeld wordt een schijf in zone *1*gemaakt.
+Als u een schijf in een beschikbaarheids zone wilt maken, gebruikt u [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) met de para meter `-Zone`. In het volgende voor beeld wordt een schijf in zone *1*gemaakt.
 
 ```powershell
 $rgName = 'myResourceGroup'

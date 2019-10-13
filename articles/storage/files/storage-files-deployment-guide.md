@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699715"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299578"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files implementeren
-[Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard SMB-protocol. In dit artikel wordt uitgelegd hoe u Azure Files in uw organisatie nagenoeg implementeert.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. In dit artikel wordt uitgelegd hoe u Azure Files in uw organisatie nagenoeg implementeert.
 
 Voordat u de stappen in dit artikel uitvoert, wordt u ten zeerste geadviseerd om de Lees [planning voor een Azure files-implementatie](storage-files-planning.md) te volgen.
 
@@ -63,9 +63,9 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Er kunnen meerdere shares met een opslag account worden opgegeven. Zie [het CSV-bestand van de gegevensset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file) voor meer informatie.
+    Er kunnen meerdere shares met een opslag account worden opgegeven. Zie [het CSV-bestand van de gegevensset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie.
 
-5. Maak het CSV-bestand van het stationset. Het CSV-bestand van het station bevat een lijst met de schijven die beschikbaar zijn voor de on-premises export agent. U kunt bijvoorbeeld de volgende CSV `X:`-bestanden van stationset, `Y:`en `Z:` stations gebruiken voor de on-premises export taak:
+5. Maak het CSV-bestand van het stationset. Het CSV-bestand van het station bevat een lijst met de schijven die beschikbaar zijn voor de on-premises export agent. Het volgende stationset CSV-bestand bevat bijvoorbeeld een lijst met `X:`, `Y:` en `Z:`-stations die moeten worden gebruikt in de on-premises export taak:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -74,7 +74,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Zie [het CSV-bestand van het stationset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file) voor meer informatie.
+    Zie [het CSV-bestand van het stationset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie.
 
 6. Gebruik het [hulp programma WAImportExport](https://www.microsoft.com/download/details.aspx?id=55280) om uw gegevens naar een of meer harde schijven te kopiëren.
 
@@ -90,7 +90,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
 ### <a name="robocopy"></a>Robocopy
 Robocopy is een goed bekend Kopieer programma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken. Het gebruik van Robocopy is heel eenvoudig:
 
-1. [Koppel uw Azure-bestands share](storage-how-to-use-files-windows.md). Voor optimale prestaties raden we u aan de Azure-bestands share lokaal te koppelen op de server die de gegevens bevat. In sommige gevallen, zoals wanneer de bestands server die de gegevens verzendt, een NAS-apparaat is, is dit mogelijk niet mogelijk. In dat geval is het perfect om de Azure-bestands share op een PC te koppelen. In dit voor beeld `net use` wordt gebruikt op de opdracht regel om de bestands share te koppelen:
+1. [Koppel uw Azure-bestands share](storage-how-to-use-files-windows.md). Voor optimale prestaties raden we u aan de Azure-bestands share lokaal te koppelen op de server die de gegevens bevat. In sommige gevallen, zoals wanneer de bestands server die de gegevens verzendt, een NAS-apparaat is, is dit mogelijk niet mogelijk. In dat geval is het perfect om de Azure-bestands share op een PC te koppelen. In dit voor beeld wordt `net use` gebruikt op de opdracht regel om de bestands share te koppelen:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -129,7 +129,7 @@ Als u een on-premises bestands share wilt vervangen, is het handig om de shares 
 > Als u een Azure-bestands share wilt koppelen, moet u de sleutel van het opslag account gebruiken als wacht woord. Daarom raden we u aan om te koppelen in vertrouwde omgevingen. 
 
 ### <a name="windows"></a>Windows
-Power shell kan worden gebruikt om de opdracht mount op meerdere Pc's uit te voeren. In het volgende voor beeld `$computers` is hand matig ingevuld, maar u kunt de lijst met computers die automatisch moeten worden gekoppeld, genereren. U kunt deze variabele bijvoorbeeld vullen met resultaten van Active Directory.
+Power shell kan worden gebruikt om de opdracht mount op meerdere Pc's uit te voeren. In het volgende voor beeld wordt `$computers` hand matig ingevuld, maar u kunt de lijst met computers die automatisch moeten worden gekoppeld, genereren. U kunt deze variabele bijvoorbeeld vullen met resultaten van Active Directory.
 
 ```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-Een eenvoudig bash-script in combi natie met SSH kan hetzelfde resultaat opleveren in het volgende voor beeld. De `$computer` variabele is op een vergelijk bare manier links ingevuld door de gebruiker:
+Een eenvoudig bash-script in combi natie met SSH kan hetzelfde resultaat opleveren in het volgende voor beeld. De variabele `$computer` is op een vergelijk bare manier links ingevuld door de gebruiker:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")

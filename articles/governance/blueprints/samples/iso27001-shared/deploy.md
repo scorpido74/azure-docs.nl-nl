@@ -1,17 +1,17 @@
 ---
-title: Voor beeld-ISO 27001 van gedeelde services blauw druk-stappen implementeren
+title: Voor beeld van ISO 27001 Shared Services blauw druk-stappen voor implementatie
 description: Implementeer stappen voor het voor beeld van de ISO 27001 Shared Services-blauw druk, inclusief para meters voor de artefact parameter.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 184bc87dc74cd67115b82b5be1a939c8286ed54f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 3a58894f8033e1f837a3b8ac64438337c3a7f0a5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248952"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299102"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het voor beeld van de ISO 27001-gedeelde services gebruiken
 

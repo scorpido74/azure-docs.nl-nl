@@ -6,15 +6,15 @@ keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934930"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300945"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Aanbevolen code ring voor live streamen
 
@@ -31,12 +31,13 @@ Zie voor gedetailleerde informatie over Live encoding met Media Services [live s
 
 ## <a name="live-encoders-that-output-rtmp"></a>Live coderings Programma's die RTMP uitvoeren
 
-Media Services raadt het gebruik aan van een van de volgende live-encoders met RTMP als uitvoer. De ondersteunde URL-schema's `rtmp://` zijn `rtmps://`of.
+Media Services raadt het gebruik aan van een van de volgende live-encoders met RTMP als uitvoer. De ondersteunde URL-schema's zijn `rtmp://` of `rtmps://`.
 
 > [!NOTE]
 > Bij het streamen via RTMP controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 1935 en 1936 open zijn.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -51,7 +52,7 @@ Media Services raadt het gebruik aan van een van de volgende live-encoders met R
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Live coderings Programma's die gefragmenteerde MP4 uitvoeren
 
-Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken met multi-bitrate Smooth Streaming (gefragmenteerde MP4) als uitvoer. De ondersteunde URL-schema's `http://` zijn `https://`of.
+Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken met multi-bitrate Smooth Streaming (gefragmenteerde MP4) als uitvoer. De ondersteunde URL-schema's zijn `http://` of `https://`.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
@@ -73,9 +74,9 @@ Als u de inhoud wilt afspelen, moet zowel een audio-als een video stroom aanwezi
 
 ### <a name="configuration-tips"></a>Configuratie tips
 
-- Gebruik indien mogelijk een internetverbinding ' hardwired '.
+- Gebruik, indien mogelijk, een hardwired-Internet verbinding.
 - Wanneer u de vereisten voor de band breedte bepaalt, verdubbelt u de streaming bitrates. Hoewel het niet verplicht is, kunt u met deze eenvoudige regel de impact van de netwerk congestie verminderen.
-- Wanneer u coderingsprogramma's op basis van software, sluit u alle onnodige programma's.
+- Wanneer u software encoders gebruikt, moet u overbodige Program ma's sluiten.
 - Het wijzigen van de encoder configuratie nadat deze is gestart, heeft negatieve gevolgen voor de gebeurtenis. Configuratie wijzigingen kunnen ertoe leiden dat de gebeurtenis Insta Biel wordt. 
 - Zorg ervoor dat u uw gebeurtenis in ruime tijd kunt instellen. Voor grootschalige gebeurtenissen raden we u aan om de installatie een uur voor uw gebeurtenis te starten.
 
@@ -127,7 +128,7 @@ Volg dezelfde stappen als in [Pass-through live-gebeurtenis verificatie](#pass-t
 
 ### <a name="email-your-recorded-settings"></a>Uw vastgelegde instellingen per e-mail verzenden
 
-Als laatste moet u de vastgelegde instellingen en de para meters amshelp@microsoft.com van uw Live-Archief per e-mail verzenden naar Azure Media Services als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
+Ten slotte moet u uw vastgelegde instellingen en de para meters van uw Live-Archief per e-mail verzenden naar Azure Media Services amshelp@microsoft.com als melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
 
 ## <a name="next-steps"></a>Volgende stappen
 

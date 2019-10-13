@@ -1,50 +1,50 @@
 ---
-title: Aanbevolen beveiligingsprocedures voor Azure naar
-description: Wanneer met behulp van Azure Resourcemanagement overgedragen, is het belangrijk dat beveiliging en toegangsbeheer.
+title: Aanbevolen beveiligingsprocedures
+description: Wanneer u Azure delegated resource management gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 843b965e6ea74a7c11dc11459ff5d30ddbe5c987
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809867"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286192"
 ---
 # <a name="recommended-security-practices"></a>Aanbevolen beveiligingsprocedures
 
-Wanneer met behulp van Azure Resourcemanagement overgedragen, is het belangrijk dat beveiliging en toegangsbeheer. Gebruikers in uw tenant hebben rechtstreeks toegang tot abonnementen en resourcegroepen, dus moet u stappen ondernemen om te onderhouden van beveiliging van uw tenant. Moet u controleren of dat u alleen de toegang die nodig is om op doeltreffende uw klanten resources toestaan. Dit onderwerp bevat aanbevelingen voor het doen.
+Wanneer u Azure delegated resource management gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer. Gebruikers in uw Tenant hebben direct toegang tot klant abonnementen en resource groepen, dus u wilt stappen ondernemen om de beveiliging van uw Tenant te behouden. U wilt er ook voor zorgen dat u alleen de toegang toestaat die nodig is om de resources van uw klanten effectief te beheren. In dit onderwerp vindt u aanbevelingen waarmee u dit kunt doen.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure multi-factor Authentication vereisen
+## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication vereisen
 
-[Azure multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (ook wel bekend als verificatie in twee stappen) helpt voorkomen dat aanvallers toegang krijgen tot een account doordat meerdere stappen voor verificatie. U moet meervoudige verificatie vereisen voor alle gebruikers in uw serviceprovider-tenant, met inbegrip van gebruikers die toegang tot resources van de klant.
+[Azure multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (ook wel verificatie in twee stappen genoemd) helpt voor komen dat aanvallers toegang krijgen tot een account door meerdere verificaties tappen te vereisen. U moet Multi-Factor Authentication vereisen voor alle gebruikers in de Tenant van de service provider, met inbegrip van gebruikers die toegang hebben tot de resources van de klant.
 
-Het is raadzaam dat u uw klanten voor het implementeren van Azure multi-factor Authentication in hun tenants ook vragen.
+U wordt aangeraden om uw klanten ook in te stellen om Azure Multi-Factor Authentication te implementeren in hun tenants.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Machtigingen toewijzen aan groepen met behulp van het principe van minimale bevoegdheden
 
-Beheer om eenvoudiger te maken, wordt u aangeraden Azure AD-gebruikersgroepen voor elke rol die is vereist om uw klanten resources te beheren. Hiermee kunt u afzonderlijke gebruikers aan de groep indien nodig, in plaats van machtigingen worden toegewezen aan die gebruiker rechtstreeks toevoegen of verwijderen.
+We raden u aan Azure AD-gebruikers groepen te gebruiken voor elke rol die is vereist voor het beheren van de resources van uw klanten om het beheer eenvoudiger te maken. Zo kunt u afzonderlijke gebruikers aan de groep toevoegen of verwijderen, in plaats van machtigingen rechtstreeks aan die gebruiker toe te wijzen.
 
-Bij het maken van de structuur van uw toestemming, moet u het principe van minimale bevoegdheden volgen zodat gebruikers hebben alleen de machtigingen die nodig zijn om hun taak te voltooien waardoor de kans dat onbedoeld fouten.
+Wanneer u uw machtigingen structuur maakt, moet u ervoor zorgen dat u het principe van minimale bevoegdheden volgt, zodat gebruikers alleen de benodigde machtigingen hebben om hun taak te volt ooien, waardoor de kans op onbedoelde fouten wordt verminderd.
 
-U wilt bijvoorbeeld een structuur als volgt gebruiken:
+U kunt bijvoorbeeld een structuur als volgt gebruiken:
 
-|Groepsnaam  |type  |principalId  |Roldefinitie  |Roldefinitie-ID  |
+|Groeps naam  |Type  |principalId  |Roldefinitie  |Roldefinitie-ID  |
 |---------|---------|---------|---------|---------|
-|Architecten     |Gebruikersgroep         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Beoordeling     |Gebruikersgroep         |\<principalId\>         |Lezer         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM-specialisten     |Gebruikersgroep         |\<principalId\>         |VM-Inzender         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automation     |Service principal name (SPN)         |\<principalId\>         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ontwerpers     |Gebruikersgroep         |\<principalId @ no__t-1         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Beoordeling     |Gebruikersgroep         |\<principalId @ no__t-1         |Lezer         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|VM-specialisten     |Gebruikersgroep         |\<principalId @ no__t-1         |Inzender voor VM'S         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
+|Automation     |SPN (Service Principal Name)         |\<principalId @ no__t-1         |Inzender         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Als u deze groepen hebt gemaakt, kunt u gebruikers kunt toewijzen, indien nodig. Alleen de gebruikers toevoegen die echt moeten toegang hebben. Zorg dat het lidmaatschap van regelmatig controleren en verwijderen van alle gebruikers die niet langer juiste of die nodig zijn om op te nemen.
+Wanneer u deze groepen hebt gemaakt, kunt u indien nodig gebruikers toewijzen. Voeg alleen de gebruikers toe die echt toegang moeten hebben. Zorg ervoor dat u het groepslid maatschap regel matig controleert en alle gebruikers verwijdert die niet meer geschikt of nood zakelijk zijn om op te nemen.
 
-Houd er rekening mee dat wanneer u [Onboarding van klanten via een openbare beheerde service-aanbieding](../how-to/publish-managed-services-offers.md), een groep (of gebruiker of service-principal) die u heeft dezelfde machtigingen voor elke klant die het abonnement koopt. Om te wijzen aan verschillende groepen om te werken met elke klant, moet u een aparte privé plan dat is afzonderlijk exclusief voor elke klant of de Onboarding van klanten met behulp van Azure Resource Manager-sjablonen publiceren. Bijvoorbeeld, kan u een openbare-plan met zeer beperkte toegang, en vervolgens samen met de klant direct voor de Onboarding van hun bronnen voor aanvullende toegang die met een aangepaste Azure-Resourcesjabloon aanvullende toegang verlenen, indien nodig.
+Houd er rekening mee dat bij het opheffen van [klanten via een openbaar beheerd service-aanbod](../how-to/publish-managed-services-offers.md)elke groep (of gebruiker of Service-Principal) die u opneemt, dezelfde machtigingen heeft voor elke klant die het abonnement koopt. Als u verschillende groepen wilt toewijzen voor samen werking met elke klant, moet u een afzonderlijk privé-plan publiceren dat exclusief is voor elke klant, of dat klanten met behulp van Azure Resource Manager sjablonen afzonderlijk kunnen worden opgeheven. U kunt bijvoorbeeld een openbaar abonnement met zeer beperkte toegang publiceren en vervolgens rechtstreeks samen werken met de klant om hun resources uit te geven voor aanvullende toegang met behulp van een aangepaste Azure-resource sjabloon waarmee extra toegang wordt verleend als dat nodig is.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Implementeren van Azure multi-factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Meer informatie over [ervaringen voor cross-tenant](cross-tenant-management-experience.md).
+- [Azure multi-factor Authentication implementeren](../../active-directory/authentication/howto-mfa-getstarted.md).
+- Meer informatie over de [ervaring op het beheer van cross-tenants](cross-tenant-management-experience.md).

@@ -1,5 +1,5 @@
 ---
-title: Voor beeld-PCI-DSS v 3.2.1 blauw druk-stappen implementeren
+title: Voor beeld van PCI-DSS v 3.2.1 blauw drukken-stappen implementeren
 description: Implementeer stappen voor het voor beeld van de betalings kaart branche gegevens beveiliging standaard v 3.2.1 blauw druk, inclusief blauw druk-artefact parameter Details.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248863"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299042"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
 
@@ -100,7 +100,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |\[Preview @ no__t-1 audit PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen | Diagnostische instelling voor geselecteerde bron typen controleren. Standaard waarde is alle resources zijn geselecteerd| 
 |Toegestane locaties|Beleidstoewijzing|Lijst met toegestane locaties|Lijst met locaties van data centers die zijn toegestaan voor het implementeren van een resource in. Deze lijst kan worden aangepast aan de gewenste Azure-locaties wereld wijd. Selecteer de locaties die u wilt toestaan.| 
 |Toegestane locaties voor resource groepen|Beleidstoewijzing |Toegestane locatie |Met dit beleid kunt u de locaties beperken waarop uw organisatie resource groepen kan maken in. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen.| 
-|Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaar dagen|Gegevens retentiegerelateerde in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
+|Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaar dagen|Bewaren van gegevens in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
 |Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio).| 
 
 ## <a name="next-steps"></a>Volgende stappen

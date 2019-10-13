@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 11e9fadc240b90ceb7e4a0e6690978dac9bae859
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255082"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296459"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -59,6 +59,8 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
 
+    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
+
 1. Selecteer **Azure veer Cloud** om naar de overzichts pagina te gaan. Selecteer vervolgens de knop **maken** om aan de slag te gaan.
 
 1. Vul het formulier in, waarbij u rekening moet houden met de volgende richt lijnen:
@@ -74,6 +76,8 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 1. Ga naar de **overzichts** pagina van de service en selecteer **Configuratie server**.
 
 1. In de sectie **standaard opslagplaats** stelt u de **URI** in op ' https://github.com/Azure-Samples/piggymetrics ', stelt u een **Label** in op ' config ' en selecteert u **Toep assen** om uw wijzigingen op te slaan.
+
+    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Micro service-toepassingen bouwen en implementeren
 
@@ -130,10 +134,15 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Een openbaar eind punt toewijzen aan de gateway
 
-1. Open de pagina **toepassings dashboard** .
-2. Selecteer de `gateway`-toepassing om de pagina met **toepassings Details** weer te geven.
-3. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren. 
-4. Voer het toegewezen open bare IP-adres in uw browser in om de actieve toepassing weer te geven.
+1. Open het tabblad **apps** in het menu aan de linkerkant.
+2. Selecteer de `gateway`-toepassing om de pagina **overzicht** weer te geven.
+3. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren.
+
+    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+
+1. Voer het toegewezen open bare eind punt ( **URL**met label) in uw browser in om de actieve toepassing weer te geven.
+
+    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

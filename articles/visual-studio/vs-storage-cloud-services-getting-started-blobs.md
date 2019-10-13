@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Blob Storage en Visual Studio Connected Services (Cloud Services) | Microsoft Docs
+title: Aan de slag met Blob Storage met behulp van Visual Studio (Cloud Services)
 description: Aan de slag met Azure Blob Storage in een Cloud service project in Visual Studio nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,22 +12,23 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510705"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298805"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met Azure Blob Storage en met Visual Studio verbonden services (Cloud Services-projecten)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Blob Storage nadat u een Azure Storage-account hebt gemaakt of ernaar hebt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in een Visual Studio-Cloud Services-project. We laten u zien hoe u toegang krijgt tot BLOB-containers en hoe u veelvoorkomende taken kunt uitvoeren, zoals het uploaden, vermelden en downloaden van blobs. De voor beelden zijn geschreven in\# C en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Blob Storage nadat u een Azure Storage-account hebt gemaakt of ernaar hebt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in een Visual Studio-Cloud Services-project. We laten u zien hoe u toegang krijgt tot BLOB-containers en hoe u veelvoorkomende taken kunt uitvoeren, zoals het uploaden, vermelden en downloaden van blobs. De voor beelden zijn geschreven in C @ no__t-0 en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-Azure Blob Storage is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Een enkele blob kan elke grootte zijn. Blobs kunnen items zijn zoals afbeeldingen, audio en video-bestanden, onbewerkte gegevens en bestanden.
+Azure Blob Storage is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Eén Blob kan elke grootte hebben. Blobs kunnen dingen zijn zoals afbeeldingen, audio-en video bestanden, onbewerkte gegevens en document bestanden.
 
-Net zoals bestanden in mappen staan, staan opslag-blobs in containers. Nadat u een opslag hebt gemaakt, maakt u een of meer containers in de opslag ruimte. In een opslag met de naam ' Plakboek ' kunt u bijvoorbeeld containers maken in de opslag met de naam "installatie kopieën" om afbeeldingen op te slaan en een andere met de naam "audio" om audio bestanden op te slaan. Nadat u de containers hebt gemaakt, kunt u er afzonderlijke BLOB-bestanden naar uploaden.
+Net zoals bestanden Live in mappen, opslag-blobs in containers. Nadat u een opslag hebt gemaakt, maakt u een of meer containers in de opslag ruimte. In een opslag met de naam ' Plakboek ' kunt u bijvoorbeeld containers maken in de opslag met de naam "installatie kopieën" om afbeeldingen op te slaan en een andere met de naam "audio" om audio bestanden op te slaan. Nadat u de containers hebt gemaakt, kunt u er afzonderlijke BLOB-bestanden naar uploaden.
 
 * Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor meer informatie over het programmatisch manipuleren van blobs.
 * Zie [opslag documentatie](https://azure.microsoft.com/documentation/services/storage/)voor algemene informatie over Azure Storage.

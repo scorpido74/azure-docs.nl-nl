@@ -5,16 +5,16 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/11/2019
 ms.author: victorh
-ms.openlocfilehash: 79b626ef6beaad3a8f15da08b882fc7d596540b0
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fe12a1a9f954718dfacb59ae0ed54e69309da650
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960387"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293795"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quickstart: Een privé-DNS-zone met Azure maken met behulp van de Azure Portal
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quick Start: een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
 In deze Snelstartgids wordt u begeleid bij de stappen voor het maken van uw eerste privé-DNS-zone en-record met behulp van de Azure Portal.
 
@@ -24,7 +24,7 @@ In deze snelstart leert u de volgende zaken:
 
 > [!div class="checklist"]
 > * Een privé-DNS-zone maken
-> * Een virtueel netwerk maken
+> * Maak een virtueel netwerk
 > * Het virtuele netwerk koppelen
 > * Virtuele testmachines maken
 > * Een extra DNS-record maken
@@ -48,7 +48,7 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 1. Typ of Selecteer op de pagina **privé-DNS zone maken** de volgende waarden:
 
-   - **Resourcegroep**: Selecteer **nieuwe maken**, Voer *MyAzureResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
+   - **Resource groep**: Selecteer **nieuwe maken**, Voer *MyAzureResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
    -  **Naam**: Typ *Private.contoso.com* voor dit voor beeld.
 1. Selecteer voor de locatie van de **resource groep**de optie **West-Centraal VS**.
 
@@ -58,7 +58,7 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 Het maken van de zone kan een paar minuten duren.
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 1. Selecteer op de pagina Portal linksboven **een resource maken**en vervolgens **netwerken**, en selecteer vervolgens **virtueel netwerk**.
 2. Typ **myAzureVNet**voor **naam**.
@@ -70,7 +70,7 @@ Het maken van de zone kan een paar minuten duren.
 
 Als u de privé-DNS-zone aan een virtueel netwerk wilt koppelen, maakt u een koppeling met een virtueel netwerk.
 
-![Virtuele netwerkkoppeling toevoegen](media/private-dns-portal/dns-add-virtual-network-link.png)
+![Koppeling van virtueel netwerk toevoegen](media/private-dns-portal/dns-add-virtual-network-link.png)
 
 1. Open de resource groep **MyAzureResourceGroup** en selecteer de privé zone **Private.contoso.com** .
 2. Selecteer **virtuele netwerk koppelingen**in het linkerdeel venster.
@@ -92,10 +92,10 @@ Maak nu twee virtuele machines, zodat u uw DNS-privézone kunt testen:
 2. Typ **Azure12345678** voor het wacht woord en bevestig het wacht woord.
 
 5. Voor **open bare binnenkomende poorten**selecteert u **geselecteerde poorten toestaan**en vervolgens **RDP (3389)** selecteren voor **binnenkomende poorten selecteren**.
-10. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **Next: Schijven >** .
-11. Accepteer de standaard instellingen op de pagina **schijven** en klik vervolgens op **Next: Netwerk >** .
+10. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **volgende: schijven >** .
+11. Accepteer de standaard instellingen op de pagina **schijven** en klik vervolgens op **volgende: netwerk >** .
 1. Zorg ervoor dat **myAzureVNet** is geselecteerd voor het virtuele netwerk.
-1. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **Next: Beheer >** .
+1. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **volgende: beheer >** .
 2. Voor **Diagnostische gegevens over opstarten**selecteert u **uit**, accepteert u de andere standaard waarden en selecteert u vervolgens **bekijken + maken**.
 1. Controleer de instellingen en klik vervolgens op **maken**.
 

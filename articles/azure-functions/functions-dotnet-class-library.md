@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254640"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293864"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslag C# informatie voor Azure functions ontwikkel aars
 
@@ -30,6 +30,10 @@ In dit artikel wordt ervan uitgegaan dat u de volgende artikelen al hebt gelezen
 
 * [Hand leiding Azure Functions ontwikkel aars](functions-reference.md)
 * [Azure Functions Visual Studio 2019-Hulpprogram Ma's](functions-develop-vs.md)
+
+## <a name="supported-versions"></a>Ondersteunde versies
+
+In de runtime van Azure Functions 2. x wordt .NET Core 2,2 gebruikt. Uw functie code kan .NET Core 2,2-Api's gebruiken door de Visual Studio-project instellingen bij te werken. De functie sjablonen worden niet standaard ingesteld op .NET Core 2,2 om te voor komen dat klanten die geen .NET Core-2,2 hebben geïnstalleerd, nadelig worden beïnvloed.
 
 ## <a name="functions-class-library-project"></a>Class-bibliotheek project voor functies
 
@@ -55,9 +59,10 @@ Deze map wordt geïmplementeerd in uw functie-app in Azure. De binding-uitbrei d
 > [!IMPORTANT]
 > Het bouw proces maakt een *Function. json* -bestand voor elke functie. Deze *functie. json* -bestand is niet bedoeld om rechtstreeks te worden bewerkt. U kunt de bindings configuratie niet wijzigen of de functie uitschakelen door dit bestand te bewerken. Zie [functies uitschakelen](disable-function.md#functions-2x---c-class-libraries)voor meer informatie over het uitschakelen van een functie.
 
+
 ## <a name="methods-recognized-as-functions"></a>Methoden die worden herkend als functions
 
-In een klassen bibliotheek is een functie een statische methode met een `FunctionName` en een trigger-kenmerk, zoals wordt weer gegeven in het volgende voor beeld:
+In een klassen bibliotheek is een functie een statische methode met een `FunctionName` en een trigger kenmerk, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 public static class SimpleExample
@@ -72,17 +77,17 @@ public static class SimpleExample
 } 
 ```
 
-Het `FunctionName` kenmerk markeert de methode als een functie-ingangs punt. De naam moet uniek zijn binnen een project, beginnen met een letter en mag alleen letters, cijfers, `_`en `-`tot 127 tekens lang zijn. Project sjablonen maken vaak een methode met `Run`de naam, maar de naam van de methode C# kan een geldige methode naam zijn.
+Het kenmerk `FunctionName` markeert de methode als een functie-ingangs punt. De naam moet uniek zijn binnen een project, beginnen met een letter en mag alleen letters, cijfers, `_` en `-` bevatten, Maxi maal 127 tekens lang zijn. Project sjablonen maken vaak een methode met de naam `Run`, maar de naam van de methode C# kan een geldige methode naam zijn.
 
-Het trigger kenmerk geeft het trigger type aan en bindt invoer gegevens aan een methode parameter. De functie voor beeld wordt geactiveerd door een wachtrij bericht en het wachtrij bericht wordt door gegeven aan de methode in de `myQueueItem` para meter.
+Het trigger kenmerk geeft het trigger type aan en bindt invoer gegevens aan een methode parameter. De functie voor beeld wordt geactiveerd door een wachtrij bericht en het wachtrij bericht wordt door gegeven aan de methode in de para meter `myQueueItem`.
 
 ## <a name="method-signature-parameters"></a>Methode handtekening parameters
 
 De methode handtekening kan andere para meters bevatten dan de hand tekening die is gebruikt met het trigger kenmerk. Hier volgen enkele van de aanvullende para meters die u kunt gebruiken:
 
 * [Invoer-en uitvoer bindingen](functions-triggers-bindings.md) die als zodanig zijn gemarkeerd door ze te verduidelijken met kenmerken.  
-* Een `ILogger` of`TraceWriter` ([versie 1. x](functions-versions.md#creating-1x-apps)) para meter voor [logboek registratie](#logging).
-* Een `CancellationToken` para meter voor een [correcte afsluit](#cancellation-tokens)actie.
+* Een para meter `ILogger` of `TraceWriter` ([versie 1. x-only](functions-versions.md#creating-1x-apps)) voor [logboek registratie](#logging).
+* Een `CancellationToken`-para meter voor een [correcte afsluit](#cancellation-tokens)actie.
 * [Bindings expressies](./functions-bindings-expressions-patterns.md) para meters voor het ophalen van meta gegevens van triggers.
 
 De volg orde van de para meters in de functie handtekening is hierbij niet van belang. U kunt bijvoorbeeld trigger parameters plaatsen voor of na andere bindingen en u kunt de para meter logger voor of na de trigger-of bindings parameters plaatsen.
@@ -110,7 +115,7 @@ De bindende referentie artikelen ([opslag wachtrijen](functions-bindings-storage
 
 ### <a name="binding-expressions-example"></a>Voor beeld van bindings expressies
 
-Met de volgende code wordt de naam van de wachtrij opgehaald die moet worden bewaakt vanuit een app-instelling en wordt de aanmaak tijd `insertionTime` van het wachtrij bericht opgehaald in de para meter.
+Met de volgende code wordt de naam van de wachtrij opgehaald die moet worden bewaakt vanuit een app-instelling en wordt de aanmaak tijd van het wachtrij bericht opgehaald in de para meter `insertionTime`.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -133,7 +138,7 @@ Het bouw proces maakt een *Function. json* -bestand in een functie map in de map
 
 Het doel van dit bestand is om informatie aan de schaal controller te verstrekken die moet worden gebruikt voor [het schalen van beslissingen over het verbruiks abonnement](functions-scale.md#how-the-consumption-and-premium-plans-work). Daarom heeft het bestand alleen trigger gegevens, geen invoer-of uitvoer bindingen.
 
-De gegenereerde *functie. json* -bestand `configurationSource` bevat een eigenschap die aangeeft dat de runtime .net-kenmerken voor bindingen moet gebruiken in plaats van *Function. json* -configuratie. Hier volgt een voorbeeld:
+De gegenereerde *functie. json* -bestand bevat een `configurationSource`-eigenschap waarmee de runtime .net-kenmerken voor bindingen kan gebruiken in plaats van *Function. json* -configuratie. Hier volgt een voorbeeld:
 
 ```json
 {
@@ -152,11 +157,11 @@ De gegenereerde *functie. json* -bestand `configurationSource` bevat een eigensc
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
+## <a name="microsoftnetsdkfunctions"></a>Micro soft. NET. SDK. functions
 
-Het bestand *Function. json* wordt gegenereerd door de [\.micro soft net\.\.SDK-functies](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)van het NuGet-pakket. 
+Het gegenereerde bestand *Function. json* wordt uitgevoerd door het NuGet [-pakket micro soft @ no__t-2NET @ no__t-3Sdk @ no__t-4Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtime. Het doel raamwerk is een onderscheid tussen een 1. x-project en een 2. x-project. Hier vindt u de relevante delen van *. csproj* -bestanden, met verschillende doel raamwerken `Sdk` en hetzelfde pakket:
+Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtime. Het doel raamwerk is een onderscheid tussen een 1. x-project en een 2. x-project. Hier vindt u de relevante delen van *. csproj* -bestanden, met verschillende doel raamwerken en hetzelfde `Sdk`-pakket:
 
 **Functions 1. x**
 
@@ -183,9 +188,9 @@ Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtim
 
 Onder de `Sdk` pakket afhankelijkheden zijn triggers en bindingen. Een 1. x-project verwijst naar 1. x-triggers en-bindingen, omdat de triggers en bindingen het .NET Framework doel hebben, terwijl 2. x-triggers en-bindingen .NET core hebben.
 
-Het `Sdk` pakket is ook afhankelijk van [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json)en indirect op [WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Deze afhankelijkheden zorgen ervoor dat uw project gebruikmaakt van de versies van de pakketten die werken met de runtime versie van functions die het project doel heeft. `Newtonsoft.Json` Heeft bijvoorbeeld versie 11 voor .NET Framework 4.6.1, maar de functions-runtime die als doel heeft .NET Framework 4.6.1 is alleen `Newtonsoft.Json` compatibel met 9.0.1. De functie code in dat project moet dus ook 9.0.1 gebruiken `Newtonsoft.Json` .
+Het `Sdk`-pakket is ook afhankelijk van [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json)en indirect op [WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Deze afhankelijkheden zorgen ervoor dat uw project gebruikmaakt van de versies van de pakketten die werken met de runtime versie van functions die het project doel heeft. @No__t-0 heeft bijvoorbeeld versie 11 voor .NET Framework 4.6.1, maar de functions-runtime die is gericht op .NET Framework 4.6.1 is alleen compatibel met `Newtonsoft.Json` 9.0.1. De functie code in dat project moet dus ook `Newtonsoft.Json` 9.0.1 gebruiken.
 
-De bron code voor `Microsoft.NET.Sdk.Functions` is beschikbaar in de [\-\-\-Azure\-functions](https://github.com/Azure/azure-functions-vs-build-sdk)van github opslag plaats en build SDK.
+De bron code voor `Microsoft.NET.Sdk.Functions` is beschikbaar in de GitHub opslag plaats [Azure @ no__t-2FUNCTIONS @ no__t-3vs @ no__t-4build @ no__t-5sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
 ## <a name="runtime-version"></a>Runtime versie
 
@@ -199,7 +204,7 @@ Als u de basis Hulpprogramma's installeert met behulp van NPM, is dit niet van i
 
 ## <a name="supported-types-for-bindings"></a>Ondersteunde typen voor bindingen
 
-Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een poco-para meter `CloudBlockBlob` , een para meter of een of meer andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB](functions-bindings-storage-blob.md#trigger---usage) -bindingen bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
+Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob`-para meter of een van de andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob.md#trigger---usage) bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -207,13 +212,13 @@ Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan b
 
 U kunt de retour waarde van een methode voor een uitvoer binding gebruiken door het kenmerk toe te passen op de retour waarde van de methode. Zie [Triggers en bindingen](./functions-bindings-return-value.md)voor voor beelden. 
 
-Gebruik de retour waarde alleen als de uitvoering van een geslaagde functie altijd resulteert in een retour waarde die aan de uitvoer binding moet worden door gegeven. Gebruik `ICollector` of`IAsyncCollector`, zoals wordt weer gegeven in de volgende sectie.
+Gebruik de retour waarde alleen als de uitvoering van een geslaagde functie altijd resulteert in een retour waarde die aan de uitvoer binding moet worden door gegeven. Gebruik anders `ICollector` of `IAsyncCollector`, zoals wordt weer gegeven in de volgende sectie.
 
 ## <a name="writing-multiple-output-values"></a>Meerdere uitvoer waarden schrijven
 
-Als u meerdere waarden naar een uitvoer binding wilt schrijven, of als het aanroepen van een geslaagde functie ertoe kan leiden dat er niets kan worden door [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) gegeven [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) aan de uitvoer binding, gebruikt u de typen of. Deze typen zijn alleen-schrijven verzamelingen die naar de uitvoer binding worden geschreven wanneer de methode is voltooid.
+Als u meerdere waarden naar een uitvoer binding wilt schrijven, of als het aanroepen van een geslaagde functie ertoe kan leiden dat er niets kan worden door gegeven aan de uitvoer binding, gebruikt u de [`ICollector`-](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [@no__t 3-](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typen. Deze typen zijn alleen-schrijven verzamelingen die naar de uitvoer binding worden geschreven wanneer de methode is voltooid.
 
-In dit voor beeld worden meerdere wachtrij berichten naar dezelfde wachtrij `ICollector`geschreven met behulp van:
+In dit voor beeld worden meerdere wachtrij berichten naar dezelfde wachtrij geschreven met `ICollector`:
 
 ```csharp
 public static class ICollectorExample
@@ -233,7 +238,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Logboekregistratie
 
-Als u de uitvoer wilt registreren in C#uw streaming-logboeken, neemt u een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze `log`naam te noemen, zoals in het volgende voor beeld:  
+Als u de uitvoer wilt registreren in C#uw streaming-logboeken, neemt u een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze naam te `log`, zoals in het volgende voor beeld:  
 
 ```csharp
 public static class SimpleExample
@@ -248,11 +253,11 @@ public static class SimpleExample
 } 
 ```
 
-Vermijd het `Console.Write` gebruik van in azure functions. Zie [Logboeken schrijven in C# functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **monitor Azure functions** voor meer informatie.
+Vermijd het gebruik van `Console.Write` in Azure Functions. Zie [Logboeken schrijven in C# functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **monitor Azure functions** voor meer informatie.
 
 ## <a name="async"></a>Asynchroon
 
-Als u een functie [asynchroon](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)wilt maken, `async` gebruikt u het tref `Task` woord en retourneert u een object.
+Als u een functie [asynchroon](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het sleutel woord `async` en retourneert u een `Task`-object.
 
 ```csharp
 public static class AsyncExample
@@ -270,7 +275,7 @@ public static class AsyncExample
 }
 ```
 
-U kunt geen `out` para meters gebruiken in async-functies. Voor uitvoer bindingen gebruikt u in plaats daarvan de [functie retour waarde](#binding-to-method-return-value) of een [Collector-object](#writing-multiple-output-values) .
+U kunt de para meters `out` niet gebruiken in async-functies. Voor uitvoer bindingen gebruikt u in plaats daarvan de [functie retour waarde](#binding-to-method-return-value) of een [Collector-object](#writing-multiple-output-values) .
 
 ## <a name="cancellation-tokens"></a>Annulerings tokens
 
@@ -302,7 +307,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-Als u een omgevings variabele of een instellings waarde voor `System.Environment.GetEnvironmentVariable`een app wilt ophalen, gebruikt u, zoals wordt weer gegeven in het volgende code voorbeeld:
+Als u een omgevings variabele of een instellings waarde voor een app wilt ophalen, gebruikt u `System.Environment.GetEnvironmentVariable`, zoals wordt weer gegeven in het volgende code voorbeeld:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -323,18 +328,18 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-App-instellingen kunnen worden gelezen van omgevings variabelen bij het lokaal ontwikkelen en wanneer ze worden uitgevoerd in Azure. Wanneer u lokaal ontwikkelt, worden de app- `Values` instellingen opgehaald uit de verzameling in het bestand *Local. settings. json* . In beide omgevingen, lokaal en Azure, `GetEnvironmentVariable("<app setting name>")` wordt de waarde van de app-instelling met de naam opgehaald. Als u bijvoorbeeld lokaal uitvoert, wordt ' mijn site naam ' geretourneerd als het bestand *Local. settings. json* bevat `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
+App-instellingen kunnen worden gelezen van omgevings variabelen bij het lokaal ontwikkelen en wanneer ze worden uitgevoerd in Azure. Bij het ontwikkelen van lokaal, zijn de app-instellingen afkomstig uit de verzameling `Values` in het bestand *Local. settings. json* . In beide omgevingen, lokaal en Azure, wordt met `GetEnvironmentVariable("<app setting name>")` de waarde opgehaald van de app-instelling met de naam. Wanneer u bijvoorbeeld lokaal uitvoert, wordt ' mijn site naam ' geretourneerd als uw *lokale. settings. json* -bestand `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` bevat.
 
-De eigenschap [System. Configuration. ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) is een alternatieve API voor het ophalen van waarden voor app-instellingen, maar we `GetEnvironmentVariable` raden u aan om te gebruiken zoals hier wordt weer gegeven.
+De eigenschap [System. Configuration. ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) is een alternatieve API voor het ophalen van waarden voor app-instellingen, maar we raden u aan `GetEnvironmentVariable` te gebruiken, zoals hier wordt weer gegeven.
 
 ## <a name="binding-at-runtime"></a>Binding tijdens runtime
 
-In C# en andere .net-talen kunt u een [dwingend](https://en.wikipedia.org/wiki/Imperative_programming) bindings patroon gebruiken, in plaats van de [declaratieve](https://en.wikipedia.org/wiki/Declarative_programming) bindingen in kenmerken. Dwingende binding is handig wanneer bindings parameters tijdens runtime moeten worden berekend in plaats van ontwerp tijd. Met dit patroon kunt u verbinding maken met ondersteunde invoer-en uitvoer bindingen die onderweg zijn in uw functie code.
+In C# en andere .net-talen kunt u een [dwingend](https://en.wikipedia.org/wiki/Imperative_programming) bindings patroon gebruiken, in plaats van de [*declaratieve*](https://en.wikipedia.org/wiki/Declarative_programming) bindingen in kenmerken. Dwingende binding is handig wanneer bindings parameters tijdens runtime moeten worden berekend in plaats van ontwerp tijd. Met dit patroon kunt u verbinding maken met ondersteunde invoer-en uitvoer bindingen die onderweg zijn in uw functie code.
 
 Definieer als volgt een dwingende binding:
 
 - Neem in de hand tekening van de functie **geen** kenmerk op voor de gewenste dwingende bindingen.
-- Geef een invoer parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) of [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)op.
+- Geef een invoer parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) of [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)door.
 - Gebruik het volgende C# patroon om de gegevens binding uit te voeren.
 
   ```cs
@@ -344,7 +349,7 @@ Definieer als volgt een dwingende binding:
   }
   ```
 
-  `BindingTypeAttribute`is het .net-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T`kan geen `out` parameter type zijn ( `out JObject`zoals). De Mobile apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [\<ICollector t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [IAsyncCollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) gebruiken met dwingende binding.
+  `BindingTypeAttribute` is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T` kan geen para meter van het type `out` zijn (zoals `out JObject`). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ICollector @ no__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [IAsyncCollector @ no__t-4T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) gebruiken met dwingende binding.
 
 ### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
 
@@ -373,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Voor beeld van meerdere kenmerken
 
-In het vorige voor beeld wordt de app-instelling voor het hoofd-opslag account van de functie `AzureWebJobsStorage`-app opgehaald Connection String (dat wil zeggen). U kunt een aangepaste app-instelling opgeven die moet worden gebruikt voor het opslag account door de [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) toe te voegen `BindAsync<T>()`en de kenmerk matrix door te geven aan. Gebruik een `Binder` para meter, `IBinder`niet.  Bijvoorbeeld:
+In het vorige voor beeld wordt de app-instelling voor het hoofd-opslag account van de functie-app opgehaald connection string (`AzureWebJobsStorage`). U kunt een aangepaste app-instelling opgeven die moet worden gebruikt voor het opslag account door de [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) toe te voegen en de kenmerk matrix door te geven aan `BindAsync<T>()`. Gebruik de para meter `Binder`, niet `IBinder`.  Bijvoorbeeld:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

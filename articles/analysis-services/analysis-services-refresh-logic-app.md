@@ -2,17 +2,16 @@
 title: Vernieuwen met Logic Apps voor Azure Analysis Services-modellen | Microsoft Docs
 description: Meer informatie over het asynchroon vernieuwen van code met behulp van Azure Logic Apps.
 author: chrislound
-manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311744"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294615"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -20,7 +19,7 @@ U kunt met behulp van Logic Apps en REST-aanroepen automatische gegevens vernieu
 
 Zie voor meer informatie over het gebruik van REST-Api's met Azure Analysis Services [asynchroon vernieuwen met de rest API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In de voor beelden in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services. Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
 
@@ -33,7 +32,7 @@ Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory 
 
 #### <a name="create-a-service-principal-spn"></a>Een service-principal maken (SPN)
 
-Zie [een service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md)met behulp van Azure portal voor meer informatie over het maken van een service-principal.
+Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een service-principal.
 
 #### <a name="configure-permissions-in-azure-analysis-services"></a>Machtigingen configureren in Azure Analysis Services
  
@@ -63,17 +62,17 @@ Deze stap wordt gevuld met de HTTP POST-URL zodra de logische app is opgeslagen.
 
 Configureer de HTTP-activiteit als volgt:
 
-|Eigenschap  |Value  |
+|Eigenschap  |Waarde  |
 |---------|---------|
-|**Methode**     |POST         |
-|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https:\//westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/refreshes|
-|**Headers**     |   Content-Type, application/json <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Methode**     |Verzenden         |
+|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https: \//westus. asazure. Windows. net/servers/mijn server/modellen/AdventureWorks/vernieuwingen|
+|**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |
 |**Bouw**     |Vul uw Azure Active Directory TenantId in         |
-|**Gericht**     |https://*.asazure.windows.net         |
+|**Gericht**     |https://*. asazure. Windows. net         |
 |**Client ID**     |Voer uw service principal name ClientID in         |
-|**Referentie type**     |`Secret`         |
+|**Referentie type**     |Geheim         |
 |**Geheim**     |Voer uw service principal name Secret in         |
 
 Voorbeeld:
@@ -96,7 +95,7 @@ Hier volgt een voor beeld Azure Data Factory webactiviteit die deze actie uitvoe
 
 Als u geen gebruik wilt maken van een Orchestration-hulp programma zoals Data Factory om het model vernieuwen te activeren, kunt u de logische app zo instellen dat de gegevens worden vernieuwd op basis van een schema.
 
-Gebruik het bovenstaande voor beeld om de eerste activiteit te verwijderen en te vervangen  door een plannings activiteit.
+Gebruik het bovenstaande voor beeld om de eerste activiteit te verwijderen en te vervangen door een **plannings** activiteit.
 
 ![Activiteit plannen](./media/analysis-services-async-refresh-logic-app/12.png)
 

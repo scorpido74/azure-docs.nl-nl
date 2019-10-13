@@ -12,16 +12,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035294"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299933"
 ---
-# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Quickstart: Een ASP.NET Core-app maken met Azure-app-configuratie
+# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snelstartgids: een ASP.NET Core-app maken met Azure-app configuratie
 
 In deze Snelstartgids neemt u Azure-app configuratie op in een ASP.NET Core-app om de opslag en het beheer van toepassings instellingen gescheiden van uw code te centraliseren. ASP.NET Core bouwt één op sleutel waarde gebaseerd configuratie object met behulp van instellingen uit een of meer gegevens bronnen die door een toepassing worden opgegeven. Deze gegevens bronnen worden *configuratie providers*genoemd. Omdat de .NET core-client van de app-configuratie wordt geïmplementeerd als een dergelijke provider, wordt de service weer gegeven als een andere gegevens bron.
 
@@ -36,7 +36,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een ASP.NET Core-app 
 
 6. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
 
-    | Sleutel | Value |
+    | Sleutel | Waarde |
     |---|---|
     | TestApp:Settings:BackgroundColor | Wit |
     | TestApp:Settings:FontSize | 24 |
@@ -53,7 +53,9 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 
 2. Voer in de nieuwe map de volgende opdracht uit om een nieuw ASP.NET Core MVC-Web-app-project te maken:
 
+    ```CLI
         dotnet new mvc --no-https
+    ```
 
 ## <a name="add-secret-manager"></a>Secret Manager toevoegen
 
@@ -83,19 +85,23 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
 1. Voeg een verwijzing naar het NuGet-pakket van @no__t 0 toe door de volgende opdracht uit te voeren:
 
+    ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
-
+    ```
 2. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:
 
+    ```CLI
         dotnet restore
-
+    ```
 3. Voeg een geheim met de naam *ConnectionStrings:AppConfig* toe aan Secret Manager.
 
     Dit geheim bevat de connection string voor toegang tot uw app-configuratie opslag. Vervang de waarde in de volgende opdracht door de connection string voor uw app-configuratie archief.
 
     Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
 
+    ```CLI
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
 
     > [!IMPORTANT]
     > Bij sommige shells worden de connection string afgekapt, tenzij deze tussen aanhalings tekens staan. Zorg ervoor dat de uitvoer van de `dotnet user-secrets`-opdracht de volledige connection string toont. Als dat niet het geval is, voert u de opdracht opnieuw uit en plaatst u de connection string tussen aanhalings tekens.
@@ -111,6 +117,11 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     ```
 
 5. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration()`-methode aan te roepen.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` vervangt `CreateWebHostBuilder` in .NET Core 3,0.  Selecteer de juiste syntaxis op basis van uw omgeving.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Update `CreateWebHostBuilder` voor .NET Core 2. x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -123,9 +134,23 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
             .UseStartup<Startup>();
     ```
 
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Update `CreateHostBuilder` voor .NET Core 3. x
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 6. Open *index. cshtml* in de weer gaven > basismap en vervang de inhoud door de volgende code:
 
-    ```html
+    ```HTML
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
@@ -144,7 +169,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
 7. Open *_Layout. cshtml* in de weer gaven > gedeelde map en vervang de inhoud door de volgende code:
 
-    ```html
+    ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -169,15 +194,19 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
-        dotnet build
+    ```CLI
+       dotnet build
+    ```
 
 2. Wanneer de build is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
 
+    ```CLI
         dotnet run
+    ```
 
 3. Open een browser venster en ga naar `http://localhost:5000`. Dit is de standaard-URL voor de web-app die lokaal wordt gehost.
 

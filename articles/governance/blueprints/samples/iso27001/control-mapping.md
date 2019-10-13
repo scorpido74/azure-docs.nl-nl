@@ -1,17 +1,17 @@
 ---
-title: Voor beeld-ISO 27001 blauw druk-besturings element toewijzing
+title: ISO 27001 blauw druk-voor beeld-beheer toewijzing
 description: Bepaal de toewijzing van het ISO 27001-blauw druk-voor beeld. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: f381cb2beff0dd828e7ab1e5661857d826c49ecf
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 57636db9eb341bad2e0caca83a2c413320847aae
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248872"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297501"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>De toewijzing van het ISO 27001 blauw druk-voor beeld bepalen
 

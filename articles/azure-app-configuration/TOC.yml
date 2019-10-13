@@ -101,6 +101,8 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: Resources
   items:
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/en-us/pricing/details/app-configuration/'
     - name: Video's
       items:
         - name: Aan de slag

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 03163d75681bee7434e2b7576a678b1094d47b94
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: cda3b0db1a4f1b098d8ea57887a047fcdef04243
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973700"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286502"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
 
@@ -25,6 +25,10 @@ Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een l
 |**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="270"></a>2.7.0
+
+- Deze release corrigeert een regressie waarmee wordt voor komen dat gebruikers query's uitvoeren op het SQL-API-account van de emulator bij gebruik van .NET core-of x86 .NET-clients.
 
 ### <a name="246"></a>2.4.6
 

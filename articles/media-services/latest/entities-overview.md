@@ -1,6 +1,6 @@
 ---
-title: Filteren, bestellen, voor het wisselbestand van entiteiten in Media Services - Azure | Microsoft Docs
-description: Dit artikel worden besproken filteren, bestellen, voor het wisselbestand van Azure Media Services-entiteiten.
+title: Filteren, ordenen, paginering van Media Services entiteiten-Azure | Microsoft Docs
+description: In dit artikel wordt het filteren, ordenen en pagineren van Azure Media Services entiteiten beschreven.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,240 +9,120 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60732362"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298947"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filters, bestellen, wisselbestand van Media Services-entiteiten
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filteren, ordenen, paginering van Media Services entiteiten
 
-Media Services ondersteunt de volgende OData-queryopties voor Media Services v3-entiteiten: 
+In dit onderwerp worden de OData-query opties en paginerings ondersteuning beschreven die beschikbaar zijn wanneer u een lijst van Azure Media Services v3-entiteiten weergeeft.
 
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
+## <a name="considerations"></a>Overwegingen
 
-Beschrijving van de operator:
+* Eigenschappen van entiteiten van het type datetime zijn altijd in UTC-indeling.
+* De lege ruimte in de query reeks moet een URL-gecodeerd zijn voordat u een aanvraag verzendt.
 
-* EQ = gelijk zijn aan
-* Ne = niet gelijk zijn aan
-* Ge = groter dan of gelijk aan
-* Le = kleiner dan of gelijk aan
-* Gt = groter dan
-* Lt = minder dan
+## <a name="comparison-operators"></a>Vergelijkingsoperators
 
-Eigenschappen van entiteiten die van het type datum/tijd zijn altijd in UTC-notatie.
+U kunt de volgende opera toren gebruiken om een veld te vergelijken met een constante waarde:
 
-## <a name="page-results"></a>Resultaten van de pagina
+Gelijkheids operatoren:
 
-Als een query-antwoord veel items bevat, retourneert de service een "\@odata.nextLink" eigenschap om de volgende pagina van de resultaten. Dit kan worden gebruikt door de volledige resultatenset. U kunt het formaat van de pagina niet configureren. Formaat van de pagina is afhankelijk van het type entiteit, lees de afzonderlijke secties die volgen voor meer informatie.
+- `eq`: testen of een veld **gelijk is aan** een constante waarde
+- `ne`: testen of een veld **niet gelijk is aan** een constante waarde
 
-Als entiteiten zijn gemaakt of verwijderd, wanneer de verzameling worden er pagina's, worden de wijzigingen worden doorgevoerd in de geretourneerde resultaten (als deze wijzigingen in het gedeelte van de verzameling die niet zijn gedownload zijn). 
+Bereik operatoren:
 
-> [!TIP]
-> U moet de volgende koppeling altijd gebruiken om inventariseren van de verzameling en niet afhankelijk van het formaat van een bepaalde pagina.
+- `gt`: testen of een veld **groter is dan** een constante waarde
+- `lt`: testen of een veld **kleiner is dan** een constante waarde
+- `ge`: testen of een veld **groter is dan of gelijk is aan** een constante waarde
+- `le`: testen of een veld **kleiner is dan of gelijk is aan** een constante waarde
 
-## <a name="assets"></a>Assets
+## <a name="filter"></a>Filter
 
-### <a name="filteringordering"></a>Filteren/bestellen
+**$filter** filter gebruiken om een OData-filter parameter op te geven om alleen de objecten te vinden waarin u bent geïnteresseerd.
 
-De volgende tabel ziet u hoe de filters en opties bestellen kunnen worden toegepast op de [Asset](https://docs.microsoft.com/rest/api/media/assets) eigenschappen: 
+In het volgende voor beeld wordt gefilterd op de alternateId van een Asset:
 
-|Name|Filteren|Bestellen|
-|---|---|---|
-|id|||
-|name|eq, gt, lt| Oplopend of aflopend|
-|properties.alternateId |eq||
-|properties.assetId |eq||
-|Properties.container |||
-|Properties.created| eq, gt, lt| Oplopend of aflopend|
-|Properties.Description |||
-|properties.lastModified |||
-|properties.storageAccountName |||
-|properties.storageEncryptionFormat | ||
-|type|||
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
+```
 
-De volgende C#-voorbeeld kunt u filteren op de aanmaakdatum:
+In het C# volgende voor beeld wordt gefilterd op de aangemaakte datum van het activum:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```
+```    
 
-### <a name="pagination"></a>Paginering 
+## <a name="order-by"></a>Sorteren op
 
-Paginering wordt voor elk van de vier ingeschakelde sorteervolgorde ondersteund. Op dit moment is de paginagrootte 1000.
-
-#### <a name="c-example"></a>C#-voorbeeld
-
-De volgende C#-voorbeeld laat zien hoe om te inventariseren alle activa in het account.
-
-```csharp
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-#### <a name="rest-example"></a>REST-voorbeeld
-
-Houd rekening met het volgende voorbeeld van waar $skiptoken wordt gebruikt. Zorg ervoor dat u vervangen *amstestaccount* met uw accountnaam en stel de *api-versie* waarde naar de nieuwste versie.
-
-Als u een lijst van Assets als volgt:
+**$OrderBy** -gebruik dit om de geretourneerde objecten te sorteren op basis van de opgegeven para meter. Bijvoorbeeld:    
 
 ```
-GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
+```
+
+Als u de resultaten in oplopende of aflopende volg orde wilt sorteren, voegt u `asc` of `desc` toe aan de veld naam, gescheiden door een spatie. Bijvoorbeeld `$orderby properties/created desc`.
+
+## <a name="skip-token"></a>Token overs Laan
+
+**$skiptoken** -als een query-antwoord veel items bevat, retourneert de service de waarde over Skip token (`@odata.nextLink`) die u gebruikt om de volgende pagina met resultaten op te halen. Dit kan worden gebruikt om door de volledige resultatenset te bladeren.
+
+In Media Services v3 kunt u de pagina grootte niet configureren. De pagina grootte is afhankelijk van het type entiteit, lees de afzonderlijke secties die volgen voor meer informatie.
+
+Als entiteiten worden gemaakt of verwijderd tijdens het pagineren via de verzameling, worden de wijzigingen weer gegeven in de geretourneerde resultaten (als deze wijzigingen zich in het deel van de verzameling bevinden dat nog niet is gedownload). 
+
+> [!TIP]
+> U moet altijd de `nextLink` gebruiken om de verzameling op te sommen en niet afhankelijk van een bepaalde pagina grootte.
+>
+> De `nextLink` is alleen aanwezig als er meer dan één pagina met entiteiten is.
+
+Bekijk het volgende voor beeld van waar $skiptoken wordt gebruikt. Zorg ervoor dat u *amstestaccount* vervangt door de naam van uw account en stel de *API-versie* waarde in op de nieuwste versie.
+
+Als u een lijst met assets als volgt aanvraagt:
+
+```
+GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
 x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-U wilt teruggaan een antwoord ongeveer als volgt uit:
+U ontvangt een antwoord dat er ongeveer als volgt uitziet:
 
 ```
 HTTP/1.1 200 OK
- 
+
 {
 "value":[
 {
-"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 0","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-00000000-0000-0000-0000-0000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 },
 // lots more assets
 {
-"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 517","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-00000000-0000-0000-0000-000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 }
-],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
-}
-```
-
-U zou de volgende pagina vervolgens aanvragen door een get-aanvraag verzenden voor:
-
-```
-https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
-```
-
-Zie voor meer voorbeelden van REST [activa - lijst](https://docs.microsoft.com/rest/api/media/assets/list)
-
-## <a name="content-key-policies"></a>Beleid voor inhoudssleutels
-
-### <a name="filteringordering"></a>Filteren/bestellen
-
-De volgende tabel ziet u hoe deze opties kunnen worden toegepast op de [Inhoudbeleidsregels sleutel](https://docs.microsoft.com/rest/api/media/contentkeypolicies) eigenschappen: 
-
-|Name|Filteren|Bestellen|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|Properties.created |Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|Properties.Description |Eq, ne, ge, le, gt, lt||
-|properties.lastModified|Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|Properties.Options |||
-|properties.policyId|eq, ne||
-|type|||
-
-### <a name="pagination"></a>Paginering
-
-Paginering wordt voor elk van de vier ingeschakelde sorteervolgorde ondersteund. Op dit moment is de grootte van 10.
-
-De volgende C# voorbeeld laat zien hoe om te inventariseren door alle **Inhoudbeleidsregels sleutel** in het account.
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
 }
 ```
 
-Zie voor voorbeelden van REST [inhoud sleutelbeleid - lijst](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-
-## <a name="jobs"></a>Taken
-
-### <a name="filteringordering"></a>Filteren/bestellen
-
-De volgende tabel ziet u hoe deze opties kunnen worden toegepast op de [taken](https://docs.microsoft.com/rest/api/media/jobs) eigenschappen: 
-
-| Name    | Filteren                        | Bestellen |
-|---------|-------------------------------|-------|
-| name                    | eq            | Oplopend of aflopend|
-| properties.state        | eq, ne        |                         |
-| Properties.created      | gt, ge, lt, le| Oplopend of aflopend|
-| properties.lastModified | gt, ge, lt, le | Oplopend of aflopend| 
-
-### <a name="pagination"></a>Paginering
-
-Taken paginering wordt ondersteund in Media Services v3.
-
-De volgende C# voorbeeld laat zien hoe om te inventariseren door de taken in het account.
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
+U kunt vervolgens de volgende pagina aanvragen door een GET-aanvraag te verzenden voor:
 
 ```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+```
 
-Zie voor voorbeelden van REST [taken - lijst](https://docs.microsoft.com/rest/api/media/jobs/list)
-
-## <a name="streaming-locators"></a>Streaming-locators
-
-### <a name="filteringordering"></a>Filteren/bestellen
-
-De volgende tabel ziet u hoe deze opties kunnen worden toegepast op de StreamingLocator-eigenschappen: 
-
-|Name|Filteren|Bestellen|
-|---|---|---|
-|id |||
-|name|Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|Properties.created |Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Paginering
-
-Paginering wordt voor elk van de vier ingeschakelde sorteervolgorde ondersteund. Op dit moment is de grootte van 10.
-
-De volgende C#-voorbeeld laat zien hoe om te inventariseren alle StreamingLocators in het account.
+In het C# volgende voor beeld ziet u hoe u alle stream-locators in het account inventariseert.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -254,56 +134,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-Zie voor voorbeelden van REST [Streaming-Locators - lijst](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+## <a name="using-logical-operators-to-combine-query-options"></a>Query opties combi neren met logische Opera tors
 
-## <a name="streaming-policies"></a>Beleid voor streaming
+Media Services v3 ondersteunt ' or '-en ' and '-en ' logische Opera tors. 
 
-### <a name="filteringordering"></a>Filteren/bestellen
+In het volgende voor beeld wordt de status van de taak gecontroleerd:
 
-De volgende tabel ziet u hoe deze opties kunnen worden toegepast op de StreamingPolicy-eigenschappen: 
-
-|Name|Filteren|Bestellen|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|Properties.created |Eq, ne, ge, le, gt, lt|Oplopend of aflopend|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>Paginering
-
-Paginering wordt voor elk van de vier ingeschakelde sorteervolgorde ondersteund. Op dit moment is de grootte van 10.
-
-De volgende C#-voorbeeld laat zien hoe om te inventariseren alle StreamingPolicies in het account.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
+```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-Zie voor voorbeelden van REST [Streaming beleid - lijst](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+U maakt dezelfde query C# als volgt: 
 
-## <a name="transform"></a>Transformeren
+```csharp
+var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
+client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
+```
 
-### <a name="filteringordering"></a>Filteren/bestellen
+## <a name="filtering-and-ordering-options-of-entities"></a>Opties voor filteren en ordenen van entiteiten
 
-De volgende tabel ziet u hoe deze opties kunnen worden toegepast op de [transformeert](https://docs.microsoft.com/rest/api/media/transforms) eigenschappen: 
+In de volgende tabel ziet u hoe de opties voor filteren en ordenen kunnen worden toegepast op verschillende entiteiten:
 
-| Name    | Filteren                        | Bestellen |
-|---------|-------------------------------|-------|
-| name                    | eq            | Oplopend of aflopend|
-| Properties.created      | gt, ge, lt, le| Oplopend of aflopend|
-| properties.lastModified | gt, ge, lt, le | Oplopend of aflopend|
+|Naam van entiteit|Naam van eigenschap|Filter|Bestelling|
+|---|---|---|---|
+|[Assets](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
+||Eigenschappen. alternateId |`eq`||
+||Eigenschappen. assetId |`eq`||
+||Eigenschappen. gemaakt| `eq`, `gt`, `lt`| `asc` en `desc`|
+|[Beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. Beschrijving    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||Eigenschappen. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. policyId|`eq`, `ne`||
+|[Taken](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` en `desc`|
+||Eigenschappen. State        | `eq`, `ne`        |                         |
+||Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
+||Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
+|[Streaming-Locators](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Transformeert](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` en `desc`|
+|| Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
+|| Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een bestand streamen](stream-files-dotnet-quickstart.md)
+* [Lijst assets](https://docs.microsoft.com/rest/api/media/assets/list)
+* [Lijst met inhouds sleutel beleidsregels](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [Taken weer geven](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [Streaming-beleids regels weer geven](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [Streaming-Locators weer geven](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Een bestand streamen](stream-files-dotnet-quickstart.md)
+* [Quota en beperkingen](limits-quotas-constraints.md)

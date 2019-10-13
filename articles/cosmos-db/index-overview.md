@@ -4,14 +4,14 @@ description: Begrijpen hoe indexering werkt in Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914198"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299783"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB-overzicht
 
@@ -64,9 +64,11 @@ Wanneer een item wordt geschreven, indexeert Azure Cosmos DB in feite elke eigen
 
 ## <a name="index-kinds"></a>Index typen
 
-Azure Cosmos DB ondersteunt momenteel drie soorten indexen:
+Azure Cosmos DB ondersteunt momenteel drie soorten indexen.
 
-Het **bereik** index type wordt gebruikt voor:
+### <a name="range-index"></a>Bereik index
+
+De **bereik** index is gebaseerd op een geordende boom structuur. Het bereik index type wordt gebruikt voor:
 
 - Gelijkheids query's:
 
@@ -74,20 +76,41 @@ Het **bereik** index type wordt gebruikt voor:
    SELECT * FROM container c WHERE c.property = 'value'
    ```
 
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Gelijkheids overeenkomst voor een matrix element
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
+
 - Bereik query's:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (werkt voor `>`, `<`, `>=` ,,`!=`,) `<=`
+  (werkt voor `>`, `<`, `>=`, `<=`, `!=`)
 
-- `ORDER BY`aanvragen
+- Controleren op de aanwezigheid van een eigenschap:
 
-   ```sql 
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- Komt overeen met het voor voegsel van de teken reeks (bevat de bereik index):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
+- `ORDER BY` query's:
+
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`aanvragen
+- `JOIN` query's:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -95,31 +118,41 @@ Het **bereik** index type wordt gebruikt voor:
 
 Bereik indexen kunnen worden gebruikt voor scalaire waarden (teken reeks of getal).
 
-Het type **ruimtelijke** index wordt gebruikt voor:
+### <a name="spatial-index"></a>Ruimtelijke index
 
-- Georuimtelijke afstand query's: 
+Met **ruimtelijke** indexen kunnen efficiënte query's worden uitgevoerd op georuimtelijke objecten zoals-Points, lijnen, veelhoeken en multiveelhoeken. Deze query's gebruiken ST_DISTANCE-, ST_WITHIN-, ST_INTERSECTS-tref woorden. Hieronder vindt u enkele voor beelden van ruimtelijke-index type:
+
+- Georuimtelijke afstand query's:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Georuimtelijk binnen query's: 
+- Georuimtelijk binnen query's:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
+- Georuimtelijke Intersect-query's:
+
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
 Ruimtelijke indexen kunnen worden gebruikt op correct opgemaakte [GEOjson](geospatial.md) -objecten. Punten, line strings toe, veelhoeken en multiveelhoeken worden momenteel ondersteund.
 
-De **samengestelde** index soort wordt gebruikt voor:
+### <a name="composite-indexes"></a>Samengestelde indexen
 
-- `ORDER BY`query's op meerdere eigenschappen:
+**Samengestelde** indexen verhogen de efficiëntie wanneer u bewerkingen uitvoert op meerdere velden. De samengestelde index soort wordt gebruikt voor:
+
+- `ORDER BY` query's op meerdere eigenschappen:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de eigenschap filter wordt toegevoegd aan de `ORDER BY` component.
+- Query's met een filter en `ORDER BY`. Deze query's kunnen gebruikmaken van een samengestelde index als de filter eigenschap wordt toegevoegd aan de component `ORDER BY`.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -131,16 +164,23 @@ De **samengestelde** index soort wordt gebruikt voor:
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
+Zolang de ene filter-predikaat gebruikmaakt van het index type, evalueert de query-engine dat eerst voordat de rest wordt gescand. Als u bijvoorbeeld een SQL-query hebt, bijvoorbeeld `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* Met de bovenstaande query wordt eerst gefilterd op vermeldingen waarbij voor naam "Andrew" met behulp van de index. Vervolgens worden alle voor naam = "Andrew" vermeldingen door gegeven aan een volgende pijp lijn om het CONTAINs-filter predicaat te evalueren.
+
+* U kunt query's versnellen en volledige container scans voor komen met behulp van functies die de index niet gebruiken (bijvoorbeeld CONTAINs) door extra filter predikaten toe te voegen die de index gebruiken. De volg orde van de filter componenten is niet belang rijk. De query-engine geeft aan welke predikaten meer selectief zijn en voeren de query dienovereenkomstig uit.
+
+
 ## <a name="querying-with-indexes"></a>Query's uitvoeren met indexen
 
-De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de `WHERE` component van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
+De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gemakkelijker om de index bij het verwerken van een query te zoeken. Door de component `WHERE` van een query te vergelijken met de lijst met geïndexeerde paden, is het mogelijk om de items te identificeren die overeenkomen met het query predicaat zeer snel.
 
 Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land) overeenkomt met het pad dat in rood is gemarkeerd:
 
 ![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier `ORDER BY` heeft een query die door meerdere eigenschappen orders *altijd* een samengestelde index nodig.
+> Een `ORDER BY`-component waarmee orders met één eigenschap *altijd* een bereik index nodig hebben en mislukt als het pad waarnaar wordt verwezen, niet in een van beide eigenschappen voor komt. Op dezelfde manier kan een `ORDER BY`-query voor orders met meerdere eigenschappen *altijd* een samengestelde index nodig hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Queue Storage en Visual Studio Connected Services (project taak) | Microsoft Docs
+title: Aan de slag met Queue Storage met Visual Studio (webtaaks-projecten)
 description: Hoe u aan de slag gaat met Azure Queue Storage in een Webtaak-project nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510802"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298743"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Aan de slag met Azure Queue Storage en Visual Studio Connected Services (project taak)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -45,7 +46,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 Naast **teken reeksen**kan de para meter een byte matrix, een **CloudQueueMessage** -object of een poco die u definieert.
 
 ### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(onbewerkt oud CLR-object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) berichten in wachtrij
-In het volgende voor beeld bevat het wachtrij bericht JSON voor een **BlobInformation** -object dat een eigenschap blobnaam bevat. De SDK deserialiseren automatisch het object.
+In het volgende voor beeld bevat het wachtrij bericht JSON voor een **BlobInformation** -object dat een eigenschap **blobnaam** bevat. De SDK deserialiseren automatisch het object.
 
 ```csharp
 public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
@@ -72,7 +73,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Async-functies kunnen een [annulerings token](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)hebben, zoals wordt weer gegeven in het volgende voor beeld, waarmee een BLOB wordt gekopieerd. (Zie de sectie blobs voor een uitleg van de [](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) tijdelijke aanduiding **Queue trigger** .)
+Async-functies kunnen een [annulerings token](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)hebben, zoals wordt weer gegeven in het volgende voor beeld, waarmee een BLOB wordt gekopieerd. (Zie de sectie [blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) voor een uitleg van de tijdelijke aanduiding **Queue trigger** .)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -88,9 +89,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typen het kenmerk Queue trigger werkt met
 U kunt **Queue trigger** gebruiken met de volgende typen:
 
-* **string**
+* **tekenreeksexpressie**
 * Een POCO-type geserialiseerd als JSON
-* **byte[]**
+* **byte []**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Polling-algoritme
@@ -107,7 +108,7 @@ Hetzelfde geldt wanneer er meerdere berichten voor één wachtrij worden ontvang
 ## <a name="get-queue-or-queue-message-metadata"></a>Meta gegevens van wachtrij of wachtrij bericht ophalen
 U kunt de volgende bericht eigenschappen ophalen door para meters toe te voegen aan de methode handtekening:
 
-* **DateTimeOffset** expirationTime
+* **Date Time offset** expirationTime
 * **Date Time offset** insertionTime
 * **Date Time offset** nextVisibleTime
 * **teken reeks** Queue trigger (bevat bericht tekst)
@@ -184,13 +185,13 @@ public static void GracefulShutdownDemo(
 
 **Opmerking:** Het dash board toont mogelijk niet de status en de uitvoer van functies die zijn afgesloten.
 
-Zie webjobs- [correct afsluiten](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)voor meer informatie.   
+Zie [webjobs-correct afsluiten](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)voor meer informatie.   
 
 ## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Een wachtrij bericht maken tijdens het verwerken van een wachtrij bericht
 Als u een functie wilt schrijven die een nieuw wachtrij bericht maakt, gebruikt u het kenmerk **wachtrij** . Net als bij **Queue trigger**geeft u de naam van de wachtrij door als een teken reeks of kunt u [de wachtrij naam dynamisch instellen](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Teken reeks wachtrij berichten
-Het volgende niet-async-code voorbeeld maakt een nieuw wachtrij bericht in de wachtrij met de naam ' output Queue ' met dezelfde inhoud als het wachtrij bericht dat in de wachtrij met de naam ' inputqueue ' is ontvangen. (Voor asynchrone functies gebruikt **u\<IAsyncCollector T >** zoals verderop in deze sectie wordt weer gegeven.)
+Het volgende niet-async-code voorbeeld maakt een nieuw wachtrij bericht in de wachtrij met de naam ' output Queue ' met dezelfde inhoud als het wachtrij bericht dat in de wachtrij met de naam ' inputqueue ' is ontvangen. (Voor asynchrone functies gebruikt u **IAsyncCollector @ no__t-1T >** zoals verderop in deze sectie wordt weer gegeven.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +217,7 @@ public static void CreateQueueMessage(
 De SDK serialeert het object automatisch naar JSON. Er wordt altijd een wachtrij bericht gemaakt, zelfs als het object null is.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Meerdere berichten of asynchrone functies maken
-Als u meerdere berichten wilt maken, maakt u het parameter type voor de uitvoer wachtrij **\<ICollector t >** of **\<IAsyncCollector t >** , zoals in het volgende voor beeld wordt weer gegeven.
+Als u meerdere berichten wilt maken, maakt u het parameter type voor de uitvoer wachtrij **ICollector @ no__t-1T >** of **IAsyncCollector @ no__t-3T gebruiken >** , zoals in het volgende voor beeld wordt weer gegeven.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -235,13 +236,13 @@ Elk wachtrij bericht wordt onmiddellijk gemaakt wanneer de **add** -methode word
 ### <a name="types-that-the-queue-attribute-works-with"></a>Typen waarvoor het wachtrij kenmerk werkt
 U kunt het kenmerk **wachtrij** gebruiken voor de volgende parameter typen:
 
-* **out-teken reeks** (maakt wachtrij bericht als de parameter waarde niet-null is wanneer de functie wordt beëindigd)
+* **uitvoer teken reeks** (maakt wachtrij bericht als de parameter waarde niet-null is wanneer de functie wordt beëindigd)
 * **out-byte []** (werkt als **teken reeks**)
-* **out-CloudQueueMessage** (werkt als **teken reeks**)
-* **out-poco** (een geserialiseerd type, maakt een bericht met een null-object als de para meter null is wanneer de functie wordt beëindigd)
+* **out CloudQueueMessage** (werkt als **teken reeks**)
+* **out poco** (een serialiseerbaar type wordt een bericht met een null-object gemaakt als de para meter null is wanneer de functie wordt beëindigd)
 * **ICollector**
 * **IAsyncCollector**
-* **CloudQueue** (voor het hand matig maken van berichten met de Azure Storage-API)
+* **CloudQueue** (voor het rechtstreeks maken van berichten met de Azure Storage-API)
 
 ### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>De SDK-kenmerken van webjobs in de hoofd tekst van een functie gebruiken
 Als u in uw functie wat werk moet doen voordat u een webjobs SDK-kenmerk gebruikt, zoals een **wachtrij**, **BLOB**of **tabel**, kunt u de **IBinder** -interface gebruiken.
@@ -327,11 +328,11 @@ Het kenmerk **BLOB** kan worden gebruikt met de volgende typen:
 * **Stream** (lezen of schrijven, opgegeven met behulp van de para meter FileAccess-constructor)
 * **TextReader**
 * **TextWriter**
-* **teken reeks** wie
+* **teken reeks** (lezen)
 * **out-teken reeks** (write; maakt alleen een BLOB als de teken reeks parameter niet-null is wanneer de functie wordt geretourneerd)
 * POCO (lezen)
 * out POCO (write; maakt altijd een blob, maakt als null-object als de POCO-para meter null is wanneer de functie wordt geretourneerd)
-* **CloudBlobStream** schrijven
+* **CloudBlobStream** (schrijven)
 * **ICloudBlob** (lezen of schrijven)
 * **CloudBlockBlob** (lezen of schrijven)
 * **CloudPageBlob** (lezen of schrijven)
@@ -514,7 +515,7 @@ Uitvoer van console methoden die u aanroept in een functie of in de **Main ()** 
 
 Console-uitvoer kan niet worden gekoppeld aan een bepaalde methode aanroep, omdat de console een enkelvoudige thread heeft, terwijl veel taak functies tegelijkertijd kunnen worden uitgevoerd. Daarom biedt de SDK elke functie aanroep met een eigen uniek logboek schrijver-object.
 
-Als u Logboeken voor tracering van [toepassingen](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview)wilt schrijven, gebruikt u **console. out** (maakt logboeken die zijn gemarkeerd als info) en **console. fout** (maakt logboeken die zijn gemarkeerd als fout). U kunt ook tracering [of TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)gebruiken. deze biedt uitgebreide, waarschuwings-en kritieke niveaus naast info en fout. Logboeken voor toepassings tracering worden weer gegeven in de logboek bestanden van de web-app, Azure-tabellen of Azure-blobs, afhankelijk van hoe u uw Azure-web-app hebt geconfigureerd. Net als bij alle console-uitvoer, worden de meest recente 100-toepassings logboeken ook weer gegeven op de dashboard pagina voor de Webtaak, niet op de pagina voor een functie aanroep.
+Als u [Logboeken voor tracering van toepassingen](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview)wilt schrijven, gebruikt u **console. out** (maakt logboeken die zijn gemarkeerd als info) en **console. fout** (maakt logboeken die zijn gemarkeerd als fout). U kunt ook [Tracering of TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)gebruiken. deze biedt uitgebreide, waarschuwings-en kritieke niveaus naast info en fout. Logboeken voor toepassings tracering worden weer gegeven in de logboek bestanden van de web-app, Azure-tabellen of Azure-blobs, afhankelijk van hoe u uw Azure-web-app hebt geconfigureerd. Net als bij alle console-uitvoer, worden de meest recente 100-toepassings logboeken ook weer gegeven op de dashboard pagina voor de Webtaak, niet op de pagina voor een functie aanroep.
 
 Console-uitvoer wordt alleen in het dash board weer gegeven als het programma wordt uitgevoerd in een Azure-Webtaak, niet als het programma lokaal of in een andere omgeving wordt uitgevoerd.
 
@@ -550,7 +551,7 @@ In een doorlopende Webtaak worden toepassings logboeken weer gegeven in/data/Job
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-De toepassings logboeken van een Azure-Blob zien er als volgt uit: 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, console. write-Hallo wereld!, 2014-09-26T21:01:13, error, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, console. fout-Hallo wereld!, 2014-09-26T21 : 01:13, Information, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, console. out-Hallo wereld!,
+De toepassings logboeken van een Azure-Blob zien er als volgt uit: 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, console. write-Hallo wereld!, 2014-09-26T21:01:13, error, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, console. fout-Hallo wereld!, 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, console. out-Hallo wereld!,
 
 En in een Azure-tabel de **console. out** en **console. fout** logboeken zien er als volgt uit:
 

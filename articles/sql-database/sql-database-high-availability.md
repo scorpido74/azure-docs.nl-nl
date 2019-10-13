@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 54994dd626df23694ea372d4a662d2b4fb051fc8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.date: 10/11/2019
+ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285760"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299706"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
@@ -39,7 +39,7 @@ Deze service lagen maken gebruik van de standaard beschikbaarheids architectuur.
 
 Het standaard beschikbaarheids model bevat twee lagen:
 
-- Een stateless Compute-laag die het `sqlserver.exe`-proces uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens op de gekoppelde SSD bevat, zoals TempDB, model database, plan cache, buffer groep en column Store-groep. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat `sqlserver.exe` initialiseert, de status van het knoop punt beheert en een failover naar een ander knoop punt uitvoert, indien nodig.
+- Een stateless Compute-laag die het `sqlservr.exe`-proces uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens bevat, zoals TempDB, model databases op de gekoppelde SSD en de plannings cache, de buffer groep en de column Store-groep in het geheugen. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat `sqlservr.exe` initialiseert, de status van het knoop punt beheert en een failover naar een ander knoop punt uitvoert, indien nodig.
 - Een stateful gegevenslaag met de database bestanden (. MDF/. ldf) die zijn opgeslagen in Azure Blob Storage. Azure Blob-opslag heeft ingebouwde functie voor gegevens beschikbaarheid en redundantie. Hiermee wordt gegarandeerd dat elke record in het logboek bestand of de pagina in het gegevens bestand blijft behouden, zelfs als SQL Server proces vastloopt.
 
 Wanneer de data base-engine of het besturings systeem wordt bijgewerkt, of als er een fout wordt gedetecteerd, wordt het stateless SQL Server proces door Azure Service Fabric verplaatst naar een ander stateless reken knooppunt met voldoende vrije capaciteit. Gegevens in Azure Blob-opslag worden niet beïnvloed door de verplaatsing en de gegevens/logboek bestanden zijn gekoppeld aan het zojuist geïnitialiseerde SQL Server proces. Dit proces garandeert een Beschik baarheid van 99,99%, maar een zware werk belasting kan tijdens de overgang enige prestatie vermindering veroorzaken, omdat de nieuwe SQL Server-instantie begint met koude cache.
@@ -54,7 +54,24 @@ De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppe
 
 Een extra voor deel is dat het Premium-beschikbaarheids model de mogelijkheid biedt om alleen-lezen SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](sql-database-read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
 
-### <a name="zone-redundant-configuration"></a>Zone redundante configuratie
+## <a name="hyperscale-service-tier-availability"></a>Beschik baarheid van grootschalige-servicelaag
+
+De grootschalige is een beschrijving van de architectuur van [gedistribueerde functies](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture). 
+
+![Functionele architectuur grootschalige](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+Het beschikbaarheids model in grootschalige bevat vier lagen:
+
+- Een stateless Compute-laag die de `sqlservr.exe`-processen uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens bevat, zoals niet-bedekkende RBPEX-cache, TempDB, model database, enzovoort, op de gekoppelde SSD en de plannings cache, buffer groep en de column Store-groep in het geheugen. Deze stateless laag bevat de primaire Compute-replica en optioneel een aantal secundaire Compute-replica's die als failover-doelen kunnen fungeren.
+- Een stateless opslagbus gevormd door pagina servers. Deze laag is de gedistribueerde opslag engine voor de `sqlservr.exe`-processen die worden uitgevoerd op de reken replica's. Elke pagina Server bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals het bedekken van RBPEX cache op de gekoppelde SSD en gegevens pagina's in het cache geheugen. Elke pagina Server heeft een gekoppelde pagina server in een actief/actief-configuratie om taak verdeling, redundantie en hoge Beschik baarheid te bieden.
+- Een stateful opslag laag voor transactie logboeken, gevormd door het reken knooppunt waarop het logboek service proces wordt uitgevoerd, de overloop zone voor het transactie logboek en de lange termijn opslag van transactie Logboeken. Voor de opslag zone en de lange termijn wordt Azure Storage gebruikt. Dit biedt Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor het transactie logboek en zorgt voor de duurzaamheid van gegevens voor doorgevoerde trans acties.
+- Een stateful gegevensopslag laag met de database bestanden (. MDF/. ndf) die zijn opgeslagen in Azure Storage en worden bijgewerkt door pagina servers. Deze laag maakt gebruik van de functies voor Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) van gegevens van Azure Storage. Hiermee wordt gegarandeerd dat elke pagina in een gegevens bestand blijft behouden, zelfs als processen in andere lagen van de grootschalige-architectuur vastlopen of als reken knooppunten mislukken.
+
+Reken knooppunten in alle grootschalige-lagen worden uitgevoerd op Azure Service Fabric, waarmee de status van elk knoop punt wordt gecontroleerd en waar nodig failovers worden uitgevoerd naar beschik bare, gezonde knoop punten.
+
+Zie voor meer informatie over hoge Beschik baarheid in grootschalige [Data Base hoge Beschik baarheid in grootschalige](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
+
+## <a name="zone-redundant-configuration"></a>Zone redundante configuratie
 
 Het cluster met knoop punten voor het Premium-beschikbaarheids model wordt standaard in hetzelfde Data Center gemaakt. Met de introductie van [Azure-beschikbaarheidszones](../availability-zones/az-overview.md)kan SQL database verschillende replica's van de bedrijfskritiek-data base plaatsen in verschillende beschikbaarheids zones in dezelfde regio. Om een Single Point of Failure te elimineren, wordt de controle ring ook gedupliceerd over meerdere zones als drie gateway ringen (GW). De route ring naar een specifieke gateway ring wordt beheerd door [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Omdat de zone redundante configuratie in de service lagen van Premium of Bedrijfskritiek geen extra database redundantie maakt, kunt u deze zonder extra kosten inschakelen. Als u een zone redundante configuratie selecteert, kunt u uw Premium-of Bedrijfskritiek-data bases tot een veel grotere set storingen leiden, inclusief een onherstelbare uitval van het Data Center, zonder dat u de toepassings logica hoeft te wijzigen. U kunt ook bestaande Premium-of Bedrijfskritiek-data bases of-groepen converteren naar de zone redundante configuratie.
 

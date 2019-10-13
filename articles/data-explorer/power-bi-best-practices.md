@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937325"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286746"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Aanbevolen procedures voor het gebruik van Power BI om gegevens van Azure Data Explorer te doorzoeken en te visualiseren
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. [Power bi](https://docs.microsoft.com/power-bi/) is een Business Analytics-oplossing waarmee u uw gegevens kunt visualiseren en de resultaten van uw organisatie kan delen. Azure Data Explorer biedt drie opties voor het maken van verbinding met gegevens in Power BI. Gebruik de [ingebouwde connector](power-bi-connector.md), [Importeer een query van Azure Data Explorer in Power bi](power-bi-imported-query.md)of gebruik een [SQL-query](power-bi-sql-query.md). In dit artikel vindt u tips voor het uitvoeren van query's en het visualiseren van uw Azure-Data Explorer gegevens met Power BI. 
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. [Power bi](https://docs.microsoft.com/power-bi/) is een Business Analytics-oplossing waarmee u uw gegevens kunt visualiseren en de resultaten van uw organisatie kan delen. Azure Data Explorer biedt drie opties voor het maken van verbinding met gegevens in Power BI. Gebruik de [ingebouwde connector](power-bi-connector.md), [Importeer een query van Azure Data Explorer in Power bi](power-bi-imported-query.md)of gebruik een [SQL-query](power-bi-sql-query.md). In dit artikel vindt u tips voor het uitvoeren van query's en het visualiseren van uw Azure-Data Explorer gegevens met Power BI. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Aanbevolen procedures voor het gebruik van Power BI 
 
@@ -48,7 +48,7 @@ De volgende sectie bevat tips en trucs voor het gebruik van Kusto-query taal met
 
 Complexe query's zijn eenvoudiger te zien in Kusto dan in Power Query. Ze moeten worden geïmplementeerd als [Kusto-functies](/azure/kusto/query/functions)en worden aangeroepen in Power bi. Deze methode is vereist voor het gebruik van **DirectQuery** met `let`-instructies in uw Kusto-query. Omdat Power BI twee query's samenvoegt en `let`-instructies niet kunnen worden gebruikt met de operator `join`, kunnen er syntaxis fouten optreden. Sla daarom elk deel van de samen voeging op als een Kusto-functie en sta Power BI toe deze twee functies samen te voegen.
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>Een relatieve gegevens tijd operator simuleren
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>Een relatieve datum-tijd operator simuleren
 
 Power BI bevat geen *relatieve* datum-tijd operator, zoals `ago()`.
 Als u `ago()` wilt simuleren, gebruikt u een combi natie van `DateTime.FixedLocalNow()`-en `#duration` Power BI-functies.
@@ -142,7 +142,7 @@ Power BI bevat een scheduler voor het vernieuwen van gegevens waarmee periodiek 
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI kunt alleen korte (@no__t 02000 tekens) query's verzenden naar Kusto
 
-Als het uitvoeren van een query in Power BI resulteert in de volgende fout: _. fout: Web. Contents kan de inhoud niet ophalen van..._  de query is waarschijnlijk langer dan 2000 tekens. Power BI gebruikt **PowerQuery** voor het opvragen van Kusto door een HTTP GET-aanvraag uit te geven die de query codeert als onderdeel van de URI die wordt opgehaald. Daarom zijn Kusto-query's die zijn uitgegeven door Power BI beperkt tot de maximum lengte van een aanvraag-URI (2000 tekens, min kleine offset). Als tijdelijke oplossing kunt u een [opgeslagen functie](/azure/kusto/query/schema-entities/stored-functions) definiëren in Kusto en deze functie Power bi gebruiken in de query.
+Als het uitvoeren van een query in Power BI resulteert in de volgende fout: _Data Source. error: Web. Contents kan de inhoud niet ophalen...._ de query is waarschijnlijk langer dan 2000 tekens. Power BI gebruikt **PowerQuery** voor het opvragen van Kusto door een HTTP GET-aanvraag uit te geven die de query codeert als onderdeel van de URI die wordt opgehaald. Daarom zijn Kusto-query's die zijn uitgegeven door Power BI beperkt tot de maximum lengte van een aanvraag-URI (2000 tekens, min kleine offset). Als tijdelijke oplossing kunt u een [opgeslagen functie](/azure/kusto/query/schema-entities/stored-functions) definiëren in Kusto en deze functie Power bi gebruiken in de query.
 
 ## <a name="next-steps"></a>Volgende stappen
 

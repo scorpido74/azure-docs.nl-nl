@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Uitval en -noodgevallen afhandelen
       href: service-bus-outages-disasters.md
+    - name: Beperking
+      href: service-bus-throttling.md
     - name: Beveiliging
       items:
         - name: Verificatie en autorisatie

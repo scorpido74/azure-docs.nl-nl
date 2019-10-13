@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: Resources vergrendelen
           href: resource-group-lock-resources.md
-        - name: Verificatie-API om toegang te krijgen tot abonnementen
-          href: resource-manager-api-authentication.md
         - name: EA-abonnementen maken
           href: programmatically-create-subscription.md
         - name: Toegang verlenen om EA-abonnementen te maken

@@ -1,5 +1,5 @@
 ---
-title: Wat is er gebeurd met mijn Cloud service project? | Microsoft Docs
+title: Wat is er gebeurd met mijn Cloud service project?
 description: Beschrijft wat er gebeurt in een Cloud Services-project nadat u verbinding hebt gemaakt met een Azure-opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,31 +12,32 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: d96e523b6e4e060eaef33de0f961e7020e5dfb57
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ac5a635b687e51ddd34899717497548296c2fc23
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510631"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298760"
 ---
 # <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Wat is er gebeurd met mijn Cloud Services-project (Visual Studio Azure Storage Connected service)?
 ## <a name="references-added"></a>Toegevoegde verwijzingen
 Het NuGet-pakket van Azure Storage is toegevoegd aan uw Visual Studio-project.  
 Dit pakket voegt de volgende .NET-verwijzingen toe:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Micro soft. data. EDM**
+* **Micro soft. data. OData**
+* **Micro soft. data. Services. client**
+* **Micro soft. WindowsAzure. Configuration**
+* **Micro soft. WindowsAzure. Storage**
+* **Newton soft. json**
+* **System. data**
+* **Systeem. ruimtelijk**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Verbindings reeks voor toegevoegde Azure Storage
 Elementen zijn gemaakt met de connection string en sleutel van het geselecteerde opslag account. Er zijn wijzigingen aangebracht in de volgende bestanden:
 
-* **ServiceDefinition.csdef**
-* **ServiceConfiguration.Cloud.cscfg**
-* **ServiceConfiguration.Local.cscfg**
+* **ServiceDefinition. csdef**
+* **ServiceConfiguration. Cloud. cscfg**
+* **ServiceConfiguration. local. cscfg**
 

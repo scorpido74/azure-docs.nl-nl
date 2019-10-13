@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met table Storage en Visual Studio Connected Services (Cloud Services) | Microsoft Docs
+title: Aan de slag met tabel opslag met Visual Studio (Cloud Services)
 description: Hoe u aan de slag gaat met Azure Table Storage in een Cloud service project in Visual Studio nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510716"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299987"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met Azure Table Storage en Visual Studio Connected Services (Cloud Services-projecten)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -27,9 +28,9 @@ In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Table Storage i
 
 Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde gegevens opslaan. De service is een NoSQL-gegevens opslag die geverifieerde aanroepen binnen en buiten de Azure-Cloud accepteert. Azure-tabellen zijn ideaal voor het opslaan van gestructureerde, niet-relationele gegevens.
 
-Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in\# C-code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in C @ no__t-0 code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**OPMERKING:** Sommige Api's die aanroepen naar Azure Storage, zijn asynchroon. Zie [asynchrone programmering met async en wacht](https://msdn.microsoft.com/library/hh191443.aspx) op voor meer informatie. In de onderstaande code wordt ervan uitgegaan dat er asynchrone programmeer methoden worden gebruikt.
+**Opmerking:** Sommige Api's die aanroepen naar Azure Storage, zijn asynchroon. Zie [asynchrone programmering met async en wacht](https://msdn.microsoft.com/library/hh191443.aspx) op voor meer informatie. In de onderstaande code wordt ervan uitgegaan dat er asynchrone programmeer methoden worden gebruikt.
 
 * Zie [aan de slag met Azure Table Storage met behulp van .net](../storage/storage-dotnet-how-to-use-tables.md) voor meer informatie over het programmatisch bewerken van tabellen.
 * Zie [opslag documentatie](https://azure.microsoft.com/documentation/services/storage/) voor algemene informatie over Azure Storage.

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991876"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299676"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen2
 
-In dit artikel vindt u informatie over de aanbevolen procedures en overwegingen voor het werken met Azure Data Lake Storage Gen2. In dit artikel vindt u informatie over beveiliging, prestaties, tolerantie en bewaking voor Data Lake Storage Gen2. Voordat Data Lake Storage Gen2 werken met echt big data in services zoals Azure HDInsight was complex. U moest gegevens in meerdere Blob Storage-accounts Shard, zodat de PETA byte-opslag en optimale prestaties op die schaal kunnen worden bereikt. Met Data Lake Storage Gen2 worden de meeste vaste limieten voor grootte en prestaties verwijderd. Er zijn echter nog enkele overwegingen die in dit artikel worden behandeld, zodat u de beste prestaties kunt verkrijgen met Data Lake Storage Gen2.
+In dit artikel vindt u informatie over de aanbevolen procedures en overwegingen voor het werken met Azure Data Lake Storage Gen2. In dit artikel vindt u informatie over beveiliging, prestaties, tolerantie en bewaking voor Data Lake Storage Gen2. Voordat Data Lake Storage Gen2 werken met echt big data in services zoals Azure HDInsight was complex. U moest gegevens in meerdere Blob Storage-accounts Shard, zodat de PETA byte-opslag en optimale prestaties op die schaal kunnen worden bereikt. Data Lake Storage Gen2 ondersteunt afzonderlijke bestands grootten als hoge 5 TB en de meeste vaste limieten voor prestaties zijn verwijderd. Er zijn echter nog enkele overwegingen die in dit artikel worden behandeld, zodat u de beste prestaties kunt verkrijgen met Data Lake Storage Gen2.
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
@@ -39,7 +39,7 @@ Azure Active Directory service-principals worden meestal gebruikt door services 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>De Data Lake Storage Gen2 firewall inschakelen met toegang tot de Azure-service
 
-Data Lake Storage Gen2 ondersteunt de mogelijkheid om een firewall in te scha kelen en de toegang alleen te beperken tot Azure-Services. dit wordt aanbevolen om de vector van externe aanvallen te beperken. De firewall kan worden ingeschakeld voor een opslag account in de Azure portal via > Firewall**firewall inschakelen (ingeschakeld)**  > **toegang tot opties voor Azure-Services toestaan** .
+Data Lake Storage Gen2 ondersteunt de mogelijkheid om een firewall in te scha kelen en de toegang alleen te beperken tot Azure-Services. dit wordt aanbevolen om de vector van externe aanvallen te beperken. Firewall kan worden ingeschakeld voor een opslag account in de Azure Portal via de **firewall** > **firewall inschakelen (aan)**  >  opties**voor toegang tot Azure-Services toestaan** .
 
 Om toegang te krijgen tot uw opslag account vanuit Azure Databricks, implementeert u Azure Databricks naar uw virtuele netwerk en voegt u dat virtuele netwerk vervolgens toe aan uw firewall. Zie [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -47,7 +47,7 @@ Om toegang te krijgen tot uw opslag account vanuit Azure Databricks, implementee
 
 Bij het ontwerpen van een systeem met Data Lake Storage Gen2 of een Cloud service, moet u rekening houden met uw beschikbaarheids vereisten en hoe u kunt reageren op mogelijke onderbrekingen in de service. Een probleem kan worden gelokaliseerd voor het specifieke exemplaar of zelfs voor de hele regio, zodat een plan voor beide belang rijk is. Afhankelijk van de beoogde herstel tijd en de Recovery Point Objective-Sla's voor uw workload, kunt u een meer of minder agressieve strategie kiezen voor hoge Beschik baarheid en herstel na nood gevallen.
 
-### <a name="high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen
+### <a name="high-availability-and-disaster-recovery"></a>Grote beschikbaarheid en noodherstel
 
 Hoge Beschik baarheid (HA) en herstel na nood gevallen (DR) kunnen soms samen worden gecombineerd, hoewel elk een iets andere strategie heeft, met name wanneer het gaat om gegevens. Data Lake Storage Gen2 heeft reeds 3x-replicatie op de schermen afgehandeld tegen de beveiliging tegen gelokaliseerde hardwarestoringen. Daarnaast kunnen andere replicatie opties, zoals ZRS of GZRS (preview), de HA verbeteren, terwijl GRS & RA-GRS DR verbeteren. Bij het bouwen van een plan voor HA moet de werk belasting, in het geval van een onderbreking van de service, zo snel mogelijk toegang hebben tot de meest recente gegevens door over te scha kelen naar een afzonderlijk gerepliceerd exemplaar lokaal of in een nieuwe regio.
 
@@ -65,7 +65,7 @@ Kopieer taken kunnen worden geactiveerd door Apache Oozie-werk stromen met behul
 
 Azure Data Factory kan ook worden gebruikt voor het plannen van Kopieer taken met behulp van een Kopieer activiteit en kan zelfs worden ingesteld op basis van een frequentie via de wizard kopiëren. Houd er rekening mee dat Azure Data Factory een limiet van DMUs (Cloud data units) heeft en uiteindelijk de door Voer/Compute voor grote gegevens workloads optekent. Daarnaast biedt Azure Data Factory momenteel geen Delta-updates tussen Data Lake Storage Gen2-accounts, waardoor mappen als Hive-tabellen een volledige kopie nodig hebben om te repliceren. Raadpleeg het [Data Factory artikel](../../data-factory/load-azure-data-lake-storage-gen2.md) voor meer informatie over het kopiëren met Data Factory.
 
-## <a name="monitoring-considerations"></a>Overwegingen met betrekking tot bewaking
+## <a name="monitoring-considerations"></a>Bewakings overwegingen
 
 Data Lake Storage Gen2 biedt metrische gegevens in de Azure Portal onder het Data Lake Storage Gen2-account en in Azure Monitor. De beschik baarheid van Data Lake Storage Gen2 wordt weer gegeven in de Azure Portal. Als u de meest recente Beschik baarheid van een Data Lake Storage Gen2 account wilt krijgen, moet u uw eigen synthetische tests uitvoeren om Beschik baarheid te valideren. Andere metrische gegevens, zoals het totale opslag gebruik, lees-en schrijf aanvragen, en binnenkomen/uitgaand zijn beschikbaar om te worden gebruikt door toepassingen te bewaken en kunnen ook waarschuwingen activeren wanneer drempel waarden (bijvoorbeeld gemiddelde latentie of aantal fouten per minuut) worden overschreden.
 

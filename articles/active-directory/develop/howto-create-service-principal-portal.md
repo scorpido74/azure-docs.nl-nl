@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853456"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295517"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
 In dit artikel wordt beschreven hoe u een nieuwe Azure Active Directory (Azure AD)-toepassing en Service-Principal maakt die kunnen worden gebruikt met het toegangs beheer op basis van rollen. Wanneer u code hebt die resources moet openen of wijzigen, kunt u een identiteit voor de app maken. Deze identiteit staat bekend als een service-principal. U kunt vervolgens de vereiste machtigingen toewijzen aan de Service-Principal. In dit artikel leest u hoe u de-portal kunt gebruiken om de service-principal te maken. Het is gericht op een toepassing met één Tenant waarbij de toepassing alleen binnen één organisatie kan worden uitgevoerd. Normaal gesp roken gebruikt u toepassingen met één Tenant voor line-of-business-toepassingen die binnen uw organisatie worden uitgevoerd.
 
@@ -38,7 +38,7 @@ Laten we meteen beginnen met het maken van de identiteit. Als u een probleem ond
 1. Selecteer **Azure Active Directory**.
 1. Selecteer **App-registraties**.
 1. Selecteer **nieuwe registratie**.
-1. Geef de toepassing een naam. Selecteer een ondersteund account type, dat bepaalt wie de toepassing kan gebruiken. Onder omleidings- **URI**selecteert u **Web** voor het type toepassing dat u wilt maken. Voer de URI in waarnaar het toegangs token wordt verzonden. U kunt geen referenties maken voor een [systeem eigen toepassing](../manage-apps/application-proxy-configure-native-client-application.md). U kunt dit type niet gebruiken voor een geautomatiseerde toepassing. Nadat u de waarden hebt ingesteld, selecteert u **registreren**.
+1. Geef de toepassing een naam. Selecteer een ondersteund account type, dat bepaalt wie de toepassing kan gebruiken. Onder **omleidings-URI**selecteert u **Web** voor het type toepassing dat u wilt maken. Voer de URI in waarnaar het toegangs token wordt verzonden. U kunt geen referenties maken voor een [systeem eigen toepassing](../manage-apps/application-proxy-configure-native-client-application.md). U kunt dit type niet gebruiken voor een geautomatiseerde toepassing. Nadat u de waarden hebt ingesteld, selecteert u **registreren**.
 
    ![Typ een naam voor uw toepassing](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -46,9 +46,9 @@ U hebt uw Azure AD-toepassing en service-principal gemaakt.
 
 ## <a name="assign-the-application-to-a-role"></a>De toepassing aan een rol toewijzen
 
-Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: voor meer informatie over de beschik bare rollen. ingebouwde rollen](../../role-based-access-control/built-in-roles.md).
+Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie over de beschik bare rollen.
 
-U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen op lagere niveaus van bereik. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
+U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
 
 1. Navigeer naar het bereik dat u aan de toepassing wilt toewijzen. Als u bijvoorbeeld een rol wilt toewijzen aan het abonnements bereik, selecteert u **alle services** en **abonnementen**.
 
@@ -60,13 +60,13 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 
    Als u het gewenste abonnement niet ziet, selecteert u **globaal abonnementen filter**. Zorg ervoor dat het gewenste abonnement is geselecteerd voor de portal.
 
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)** .
 1. Selecteer **roltoewijzing toevoegen**.
 1. Selecteer de rol die u aan de toepassing wilt toewijzen. Selecteer de rol **Inzender** om de toepassing toe te staan acties uit te voeren zoals **opnieuw opstarten**, het **starten** en **stoppen** van exemplaren. Azure AD-toepassingen worden standaard niet weer gegeven in de beschik bare opties. Zoek de naam en selecteer deze om uw toepassing te vinden.
 
    ![Selecteer de rol die u aan de toepassing wilt toewijzen](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Selecteer **opslaan** voltooien van de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers die zijn toegewezen aan een rol voor dat bereik.
+1. Selecteer **Opslaan** om de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers die zijn toegewezen aan een rol voor dat bereik.
 
 De Service-Principal is ingesteld. U kunt deze gebruiken om uw scripts of apps uit te voeren. In de volgende sectie ziet u hoe u waarden kunt ophalen die nodig zijn bij het programmatisch aanmelden.
 
@@ -89,7 +89,7 @@ Daemon-toepassingen kunnen twee soorten referenties gebruiken om te verifiëren 
 
 ### <a name="upload-a-certificate"></a>Een certificaat uploaden
 
-U kunt een bestaand certificaat gebruiken als u er een hebt.  Desgewenst kunt u een zelfondertekend certificaat maken voor test doeleinden. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`gebruiker op uw computer:.  Exporteer dit certificaat met behulp van de MMC-module [gebruikers certificaat beheren](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) die toegankelijk is via het configuratie scherm van Windows.
+U kunt een bestaand certificaat gebruiken als u er een hebt.  Desgewenst kunt u een zelfondertekend certificaat maken voor test doeleinden. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de gebruiker op uw computer: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Exporteer dit certificaat met behulp van de MMC-module [gebruikers certificaat beheren](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) die toegankelijk is via het configuratie scherm van Windows.
 
 Het certificaat uploaden:
 
@@ -121,7 +121,7 @@ U moet over voldoende machtigingen beschikken om een toepassing te registreren b
 ### <a name="check-azure-ad-permissions"></a>Azure AD-machtigingen controleren
 
 1. Selecteer **Azure Active Directory**.
-1. Noteer uw rol. Als u de gebruikersrol hebt, moet u ervoor zorgen dat niet-beheerders toepassingen kunnen registreren.
+1. Noteer uw rol. Als **u de gebruikersrol** hebt, moet u ervoor zorgen dat niet-beheerders toepassingen kunnen registreren.
 
    ![Zoek uw rol. Als u een gebruiker bent, moet u ervoor zorgen dat niet-beheerders apps kunnen registreren](./media/howto-create-service-principal-portal/view-user-info.png)
 
@@ -132,7 +132,7 @@ Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebrui
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-abonnements machtigingen controleren
 
-In uw Azure-abonnement moet uw account toegang `Microsoft.Authorization/*/Write` hebben om een AD-app toe te wijzen aan een rol. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account is toegewezen aan de rol **Inzender** , hebt u niet de juiste machtigingen. Er wordt een fout bericht weer gegeven wanneer u een service-principal aan een rol probeert toe te wijzen.
+Uw account moet in uw Azure-abonnement beschikken over `Microsoft.Authorization/*/Write`-toegang om een AD-app toe te wijzen aan een rol. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account is toegewezen aan de rol **Inzender** , hebt u niet de juiste machtigingen. Er wordt een fout bericht weer gegeven wanneer u een service-principal aan een rol probeert toe te wijzen.
 
 Uw abonnements machtigingen controleren:
 
@@ -150,6 +150,5 @@ Uw abonnements machtigingen controleren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u een toepassing met meerdere tenants wilt instellen, raadpleegt [u de hand leiding voor ontwikkel aars voor verificatie met de Azure Resource Manager-API](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het opgeven van beveiligings beleid.  
 * Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met beschik bare acties die kunnen worden verleend of geweigerd aan gebruikers.

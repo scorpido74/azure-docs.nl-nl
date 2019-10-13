@@ -1,40 +1,43 @@
 ---
 title: Cross-Origin Resource Sharing (CORS) in Azure Cosmos DB
-description: In dit artikel wordt beschreven hoe u Cross-Origin Resource Sharing (CORS) configureren in Azure Cosmos DB met behulp van Azure portal en Azure Resource Manager-sjablonen.
+description: In dit artikel wordt beschreven hoe u een CORS (cross-Origin Resource Sharing) configureert in Azure Cosmos DB met behulp van Azure Portal-en Azure Resource Manager-sjablonen.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241897"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299175"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>Cross-Origin Resource Sharing (CORS) configureren 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Configureren van cross-Origin-resource delen (CORS) 
 
-Cross-Origin Resource Sharing (CORS) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd in een bepaald domein te krijgen tot bronnen in een ander domein. Webbrowsers implementeren een beveiligingsbeperking bekend als het beleid voor zelfde oorsprong die voorkomt een webpagina van aanroepen van API's in een ander domein dat. CORS biedt echter een veilige manier om toe te staan van het oorspronkelijke domein voor het aanroepen van API's in een ander domein. Core SQL-API in Azure Cosmos DB biedt nu ondersteuning voor Cross-Origin Resource Sharing (CORS) met behulp van de header 'allowedOrigins'. Nadat u de CORS-ondersteuning voor uw Azure Cosmos-account inschakelen, worden alleen geverifieerde aanvragen geëvalueerd om te bepalen of ze zijn toegestaan volgens de regels die u hebt opgegeven.
+Cross-Origin Resource Sharing (CORS) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd onder het ene domein toegang kan krijgen tot bronnen in een ander domein. Webbrowsers implementeren een beveiligings beperking die bekend staat als hetzelfde-Origin-beleid dat voor komt dat een webpagina Api's in een ander domein aanroept. CORS biedt echter een veilige manier om het domein van de oorsprong te laten aanroepen van Api's in een ander domein. De core-API (SQL) in Azure Cosmos DB ondersteunt nu het gebruik van CORS (cross-Origin Resource Sharing) door de header ' allowedOrigins ' te gebruiken. Nadat u de CORS-ondersteuning voor uw Azure Cosmos-account hebt ingeschakeld, worden alleen geverifieerde aanvragen geëvalueerd om te bepalen of ze zijn toegestaan volgens de regels die u hebt opgegeven.
 
-U kunt de Cross-origin resource sharing (CORS)-instelling van de Azure-portal of van een Azure Resource Manager-sjabloon configureren. Core SQL-API in Azure Cosmos DB biedt ondersteuning voor een JavaScript-bibliotheek die werkt in Node.js en browser gebaseerde omgevingen. Deze bibliotheek kan nu profiteren van de CORS-ondersteuning als u de Gateway gebruikt. Er is geen client-side-configuratie die nodig zijn om deze functie te gebruiken. Met CORS-ondersteuning, resources vanuit een browser rechtstreeks toegang tot Azure Cosmos DB via de [JavaScript-bibliotheek](https://www.npmjs.com/package/@azure/cosmos) of rechtstreeks vanuit de [REST-API](https://docs.microsoft.com/rest/api/cosmos-db/) voor eenvoudige bewerkingen. 
+U kunt de instelling voor het delen van cross-Origin-resources (CORS) configureren vanuit het Azure Portal of van een Azure Resource Manager sjabloon. Voor Cosmos-accounts die gebruikmaken van de core-API (SQL), ondersteunt Azure Cosmos DB een Java script-bibliotheek die werkt in node. js en op browser gebaseerde omgevingen. Deze bibliotheek kan nu profiteren van CORS-ondersteuning wanneer u de gateway modus gebruikt. Er is geen configuratie aan de client zijde nodig om deze functie te gebruiken. Met CORS-ondersteuning kunnen resources van een browser rechtstreeks toegang krijgen tot Azure Cosmos DB via de [Java script-bibliotheek](https://www.npmjs.com/package/@azure/cosmos) of rechtstreeks vanuit de [rest API](https://docs.microsoft.com/rest/api/cosmos-db/) voor eenvoudige bewerkingen. 
 
-## <a name="enable-cors-support-from-azure-portal"></a>CORS-ondersteuning van Azure-portal inschakelen
+> [!NOTE]
+> CORS-ondersteuning is alleen van toepassing op en wordt ondersteund voor de Azure Cosmos DB core-API (SQL). Het is niet van toepassing op de Azure Cosmos DB-Api's voor Cassandra, Gremlin of MongoDB, aangezien deze protocollen geen gebruik maken van HTTP voor client-server communicatie. 
 
-Gebruik de volgende stappen uit om in te schakelen Cross-Origin-Resource delen met behulp van Azure portal:
+## <a name="enable-cors-support-from-azure-portal"></a>CORS-ondersteuning van Azure Portal inschakelen
 
-1. Navigeer naar uw Azure cosmos DB-account. Open de **CORS** blade.
+Gebruik de volgende stappen om cross-Origin resource sharing in te scha kelen met behulp van Azure Portal:
 
-2. Geef een door komma's gescheiden lijst met oorsprongen die cross-origin-aanroepen naar uw Azure Cosmos DB-account kunt maken. Bijvoorbeeld, `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. U kunt ook een jokerteken gebruiken '\*' op het toestaan van alle oorsprongen en selecteer **indienen**. 
+1. Navigeer naar uw Azure Cosmos DB-account. Open de Blade **CORS** .
+
+2. Geef een door komma's gescheiden lijst van oorsprongen die cross-Origin-aanroepen naar uw Azure Cosmos DB-account kunnen maken. Bijvoorbeeld `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. U kunt ook een Joker teken ' \* ' gebruiken om alle oorsprongen toe te staan en **verzenden**te selecteren. 
 
    > [!NOTE]
-   > U kunt jokertekens op dit moment niet gebruiken als onderdeel van de domeinnaam. Bijvoorbeeld `https://*.mydomain.net` indeling wordt nog niet ondersteund. 
+   > Op dit moment kunt u geen joker tekens gebruiken als onderdeel van de domein naam. Bijvoorbeeld `https://*.mydomain.net`-indeling wordt nog niet ondersteund. 
    
-   ![Cross origin-resources delen met behulp van Azure portal inschakelen](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   ![Cross-Origin resource delen inschakelen met behulp van Azure Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
  
-## <a name="enable-cors-support-from-resource-manager-template"></a>Inschakelen van CORS-ondersteuning van Resource Manager-sjabloon
+## <a name="enable-cors-support-from-resource-manager-template"></a>CORS-ondersteuning inschakelen voor de Resource Manager-sjabloon
 
-Toevoegen om in te schakelen CORS met behulp van Resource Manager-sjabloon, de sectie "cors" met "allowedOrigins" eigenschap aan een bestaande sjabloon. De volgende JSON is een voorbeeld van een sjabloon die een nieuwe Azure Cosmos-account met CORS ingeschakeld maakt.
+Als u CORS wilt inschakelen met behulp van een resource manager-sjabloon, voegt u de sectie CORS met de eigenschap allowedOrigins toe aan een bestaande sjabloon. De volgende JSON is een voor beeld van een sjabloon waarmee een nieuw Azure Cosmos-account wordt gemaakt waarvoor CORS is ingeschakeld.
 
 ```json
 {
@@ -75,9 +78,9 @@ Toevoegen om in te schakelen CORS met behulp van Resource Manager-sjabloon, de s
 }
 ```
 
-## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>Met behulp van de Azure Cosmos DB JavaScript-bibliotheek vanuit een browser
+## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>De Azure Cosmos DB java script-bibliotheek gebruiken vanuit een browser
 
-De Azure Cosmos DB JavaScript-bibliotheek heeft vandaag, alleen de CommonJS-versie van de bibliotheek geleverd met het pakket. U hebt voor het gebruik van deze bibliotheek vanuit de browser, een hulpprogramma zoals Rollup of Webpack gebruiken om te maken van een browser compatibele bibliotheek. Bepaalde Node.js-clientbibliotheken hebt browser mocks voor hen. Hier volgt een voorbeeld van een webpack config-bestand met de benodigde mock-instellingen.
+Momenteel heeft de Azure Cosmos DB java script-bibliotheek alleen de CommonJS-versie van de bibliotheek geleverd met het pakket. Als u deze bibliotheek vanuit de browser wilt gebruiken, moet u een hulp programma zoals Rollup of webpack gebruiken om een met browsers compatibele bibliotheek te maken. Voor bepaalde node. JS-bibliotheken moet de browser worden gesimuleerd. Hier volgt een voor beeld van een webpack-configuratie bestand met de benodigde model instellingen.
 
 ```javascript
 const path = require("path");
@@ -96,15 +99,15 @@ module.exports = {
 };
 ```
  
-Hier volgt een [codevoorbeeld](https://github.com/christopheranderson/cosmos-browser-sample) die TypeScript en Webpack gebruikt met de Azure Cosmos DB JavaScript SDK-bibliotheek voor het maken van een takenlijst-app waarmee realtime updates wordt verzonden wanneer nieuwe items worden gemaakt.
-Als een best practice, moet u niet de primaire sleutel gebruiken om te communiceren met Azure Cosmos DB vanuit de browser. In plaats daarvan de resource-tokens gebruiken om te communiceren. Zie voor meer informatie over brontokens [beveiligen van toegang tot Azure Cosmos DB](secure-access-to-data.md#resource-tokens) artikel.
+Hier volgt een [code voorbeeld](https://github.com/christopheranderson/cosmos-browser-sample) dat gebruikmaakt van type script en webpack met de Azure Cosmos DB java script SDK-bibliotheek om een TODO-app te bouwen die realtime-updates verzendt wanneer er nieuwe items worden gemaakt.
+Als best practice gebruikt u de primaire sleutel niet om te communiceren met Azure Cosmos DB vanuit de browser. Gebruik in plaats daarvan bron tokens om te communiceren. Zie [toegang tot Azure Cosmos DB](secure-access-to-data.md#resource-tokens) -artikel beveiligen voor meer informatie over bron tokens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over andere manieren om uw Azure Cosmos-account te beveiligen, de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over andere manieren om uw Azure Cosmos-account te beveiligen:
 
-* [Een firewall configureren voor Azure Cosmos DB](how-to-configure-firewall.md) artikel.
+* [Een firewall configureren voor Azure Cosmos DB](how-to-configure-firewall.md) -artikel.
 
-* [Virtueel netwerk- en toegangsbeheer op basis van een subnet voor uw Azure Cosmos DB-account configureren](how-to-configure-vnet-service-endpoint.md)
+* [Virtueel netwerk en op subnet gebaseerde toegang voor uw Azure Cosmos DB-account configureren](how-to-configure-vnet-service-endpoint.md)
     
 

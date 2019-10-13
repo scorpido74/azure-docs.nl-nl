@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Blob Storage en Visual Studio Connected Services (project taak) | Microsoft Docs
+title: Aan de slag met Blob Storage met Visual Studio (project taak)
 description: Aan de slag met het gebruik van Blob Storage in een Webtaak-project nadat verbinding is gemaakt met een Azure-opslag met behulp van Visual Studio Connected Services.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510649"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299973"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Aan de slag met Azure Blob Storage en Visual Studio Connected Services (project taak)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -78,9 +79,9 @@ In het volgende code voorbeeld wordt de bestands extensie gewijzigd, omdat de bl
 ## <a name="types-that-you-can-bind-to-blobs"></a>Typen die u aan blobs kunt binden
 U kunt het kenmerk **sjabloon blobtrigger** gebruiken voor de volgende typen:
 
-* **string**
+* **tekenreeksexpressie**
 * **TextReader**
-* **Stream**
+* **Bitsnelheid**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
@@ -101,7 +102,7 @@ Als er tekst-blobs worden verwacht, kan **sjabloon blobtrigger** worden toegepas
         }
 
 ## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Geserialiseerde blob-inhoud ophalen met behulp van ICloudBlobStreamBinder
-In het volgende code voorbeeld wordt een klasse gebruikt die **ICloudBlobStreamBinder** implementeert om het kenmerk **sjabloon blobtrigger** in te scha kelen om een BLOB te binden aan het type webimage.
+In het volgende code voorbeeld wordt een klasse gebruikt die **ICloudBlobStreamBinder** implementeert om het kenmerk **sjabloon blobtrigger** in te scha kelen om een BLOB te binden aan het type **webimage** .
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -120,7 +121,7 @@ In het volgende code voorbeeld wordt een klasse gebruikt die **ICloudBlobStreamB
             output = input.Resize(width, height);
         }
 
-De webafbeeldings binding code wordt gegeven in een **WebImageBinder** -klasse die is afgeleid van **ICloudBlobStreamBinder**.
+De **Webafbeeldings** binding code wordt gegeven in een **WebImageBinder** -klasse die is afgeleid van **ICloudBlobStreamBinder**.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -193,7 +194,7 @@ De webjobs SDK zorgt ervoor dat er geen functie **sjabloon blobtrigger** meer da
 
 BLOB-ontvangstsen worden opgeslagen in een container met de naam *Azure-webjobs-hosts* in het Azure Storage-account dat is opgegeven door de AzureWebJobsStorage-Connection String. Een BLOB-ontvangst heeft de volgende informatie:
 
-* De functie die is aangeroepen voor de BLOB ( *{naam van Webtaak}* ). Vervullen. *{Functie naam}* , bijvoorbeeld: "WebJob1. functions. CopyBlob")
+* De functie die is aangeroepen voor de BLOB ( *{naam van Webtaak}* ). Vervullen. *{Function name}* , bijvoorbeeld: "WebJob1. functions. CopyBlob")
 * De container naam
 * Het BLOB-type ("BlockBlob" of "PageBlob")
 * De BLOB-naam

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: f3cfb892fc116640df5dd30abf857bde6e196224
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880109"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297042"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -34,7 +34,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 ## <a name="get-device-connection-details"></a>Verbindings Details van apparaat ophalen
 
-Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer **apparaat-verbinding**. Noteer de **bereik-id** en de **primaire sleutel**.
+Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer **apparaat-verbinding**. Noteer het **id-bereik** en de **primaire sleutel**.
 
 ![Verbindings Details van de apparaatgroep](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ Selecteer in uw Azure IoT Central-toepassing het tabblad **beheer** en selecteer
 
     - De naam van uw WiFi-netwerk (SSID).
     - Uw WiFi-netwerk wachtwoord.
-    - De verbindings Details: de **apparaat-id** die u zelf kunt kiezen en de **bereik-id** en groeps- **SAS-primaire sleutel** die u eerder hebt genoteerd.
+    - De verbindings Details: de **apparaat-id** die u zelf kunt kiezen en het **id-bereik** en de **groeps-SAS-primaire sleutel** die u eerder hebt genoteerd.
 
     > [!NOTE]
     > Momenteel kan IoT DevKit alleen verbinding maken met 2,4 GHz Wi-Fi. 5 GHz wordt niet ondersteund als gevolg van hardwarebeperkingen.
@@ -86,7 +86,7 @@ Selecteer op het tabblad **apparaten** In uw IOT Central-toepassing het apparaat
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Om de code te controleren of te wijzigen en te compileren, gaat u naar de [MXChip IOT DevKit sample code github-opslag plaats](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
+Ga naar de [code voorbeelden](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)om de code te bekijken of te wijzigen en te compileren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

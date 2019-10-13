@@ -2,18 +2,17 @@
 title: Azure Analysis Services-taken automatiseren met Service-principals | Microsoft Docs
 description: Meer informatie over het maken van service-principals voor het automatiseren van Azure Analysis Services taken.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4bfa969089407a35658160cf05a6407f8c717714
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 94f1313825b21b3adf7173b56798fce22736ea87
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347968"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294578"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
@@ -27,7 +26,7 @@ Analysis Services biedt ook ondersteuning voor bewerkingen die worden uitgevoerd
  
 Service-principals kunnen worden gemaakt in de Azure Portal of met behulp van Power shell. Voor meer informatie zie:
 
-[Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+Een [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Service-principal maken - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Referentie-en certificaat assets opslaan in Azure Automation
@@ -49,9 +48,9 @@ De Service-Principal-appID en het wacht woord of-certificaat kunnen worden gebru
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />De module AZ. AnalysisServices gebruiken
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Using AZ. AnalysisServices-module
 
-Gebruik`Connect-AzAccount` cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) . 
+Gebruik `Connect-AzAccount` cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) . 
 
 In het volgende voor beeld worden appID en een wacht woord gebruikt voor het uitvoeren van beheer bewerkingen voor synchronisatie met alleen-lezen replica's en omhoog/omlaag schalen:
 
@@ -93,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO en ADOMD 
 
-Bij het maken van verbinding met client toepassingen en web-apps, [AMO-en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of `cert:thumbprint`. 
+Bij het maken van verbinding met client toepassingen en web apps, [AMO en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of @no__ t-2. 
 
-In het volgende voor beeld `appID` en een `password` worden gebruikt voor het uitvoeren van een vernieuwings bewerking van een model database:
+In het volgende voor beeld worden `appID` en een `password` gebruikt voor het uitvoeren van een vernieuwings bewerking van een model database:
 
 ```csharp
 string appId = "xxx";
@@ -110,5 +109,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-[Aanmelden met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Meld u aan met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)   

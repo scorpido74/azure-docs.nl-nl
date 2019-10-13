@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986557"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299615"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-beveiligings handleiding
 
@@ -43,7 +43,7 @@ Hier volgen de onderwerpen die in dit artikel worden behandeld:
   In deze sectie wordt beschreven hoe u gegevens kunt beveiligen wanneer u deze overbrengt naar of uit Azure Storage. Er wordt gecommuniceerd over het aanbevolen gebruik van HTTPS en de versleuteling die wordt gebruikt door SMB 3,0 voor Azure-bestands shares. We gaan ook kijken naar client-side Encryption, waarmee u de gegevens kunt versleutelen voordat ze worden overgebracht naar de opslag in een client toepassing, en om de gegevens te ontsleutelen nadat deze buiten de opslag zijn overgedragen.
 * [Versleuteling 'at rest'](#encryption-at-rest)
 
-  We spreken over Storage Service Encryption (SSE). dit wordt nu automatisch ingeschakeld voor nieuwe en bestaande opslag accounts. We gaan ook kijken hoe u Azure Disk Encryption kunt gebruiken en de belangrijkste verschillen en gevallen van schijf versleuteling versus SSE versus versleuteling aan de client zijde te verkennen. We kijken kort naar FIPS-naleving voor de V.S. Overheids computers.
+  We spreken over Storage Service Encryption (SSE). dit wordt nu automatisch ingeschakeld voor nieuwe en bestaande opslag accounts. We gaan ook kijken hoe u Azure Disk Encryption kunt gebruiken en de belangrijkste verschillen en gevallen van schijf versleuteling versus SSE versus versleuteling aan de client zijde te verkennen. We kijken kort naar FIPS-compatibiliteit voor computers van de Amerikaanse overheid.
 * [Opslaganalyse](#storage-analytics) gebruiken om de toegang van Azure Storage te controleren
 
   In deze sectie wordt beschreven hoe u informatie kunt vinden in de logboeken van de opslag analyse voor een aanvraag. We nemen een kijkje in de werkelijke opslag analyse-logboek gegevens en zien hoe u kunt onderscheiden of een aanvraag wordt gedaan met de sleutel van het opslag account, met een gedeelde toegangs handtekening of anoniem, en of deze is geslaagd of mislukt.
@@ -86,11 +86,11 @@ Hier volgen de belangrijkste punten die u moet weten over het gebruik van RBAC v
 * U moet de gebruiker in uw Azure Active Directory instellen voordat u hieraan een rol kunt toewijzen.
 * U kunt een rapport maken met wie u hebt toegewezen/ingetrokken wat voor soort toegang tot/waar en op welk bereik u Power shell of de Azure CLI wilt gebruiken.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 * [Toegangsbeheer op basis van rollen in Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   In dit artikel wordt het toegangsbeheer op basis van rollen in Azure Active Directory uitgelegd.
-* [RBAC: Ingebouwde rollen](../../role-based-access-control/built-in-roles.md)
+* [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)
 
   In dit artikel vindt u meer informatie over de ingebouwde functies die beschikbaar zijn in RBAC.
 * [Resource Manager-implementatie en klassieke implementatie begrijpen](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -102,9 +102,7 @@ Hier volgen de belangrijkste punten die u moet weten over het gebruik van RBAC v
 * [Naslaginformatie over de REST-API voor de Azure Storage-resourceprovider](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   In deze API-verwijzing worden de Api's beschreven die u kunt gebruiken om uw opslag account programmatisch te beheren.
-* [Resource Manager-verificatie-API gebruiken voor toegang tot abonnementen](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  In dit artikel wordt beschreven hoe u kunt verifiëren met behulp van de Resource Manager-Api's.
 * [Toegangsbeheer op basis van rollen voor Microsoft Azure vanuit Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Dit is een koppeling naar een video op Channel 9 van de vergadering over MS Ignite in 2015. In deze sessie wordt ingegaan op de opties voor toegangsbeheer en rapportage in Azure en worden aanbevolen procedures behandeld voor de beveiliging van de toegang tot Azure-abonnementen met Azure Active Directory.
@@ -146,7 +144,7 @@ Een ander voor deel van het gebruik van Azure Key Vault is dat u ook de toegang 
 > [!NOTE]
 > Micro soft raadt u aan om op hetzelfde moment slechts één van de sleutels in al uw toepassingen te gebruiken. Als u Key 1 op sommige locaties en sleutel 2 in andere gebruikt, kunt u de sleutels niet draaien zonder dat de toepassing de toegang verliest.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 
 * [Instellingen van opslagaccounts beheren in de Azure-portal](storage-account-manage.md)
 * [Naslaginformatie over de REST-API voor de Azure Storage-resourceprovider](https://msdn.microsoft.com/library/mt163683.aspx)
@@ -188,7 +186,7 @@ Daarnaast kunt u opgeven dat aanvragen die worden gedaan met behulp van een SAS,
 #### <a name="definition-of-a-shared-access-signature"></a>Definitie van een Shared Access Signature
 Een Shared Access Signature is een reeks query parameters die zijn toegevoegd aan de URL die op de resource is gericht
 
-Dit geeft informatie over de toegang die is toegestaan en de tijds duur waarvoor de toegang is toegestaan. Hier volgt een voor beeld. deze URI biedt vijf minuten Lees toegang tot een blob. Houd er rekening mee dat SAS-query parameters een URL-code ring moeten hebben, zoals% 3A voor dubbele punt (:) of% 20 voor een spatie.
+Dit geeft informatie over de toegang die is toegestaan en de tijds duur waarvoor de toegang is toegestaan. Hier volgt een voor beeld. deze URI biedt vijf minuten Lees toegang tot een blob. Houd er rekening mee dat SAS-query parameters een URL-code ring moeten hebben, zoals% 3A voor dubbele punt (:) of %20 voor een spatie.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -228,7 +226,7 @@ Als u een SAS gebruikt die is afgeleid van een opgeslagen toegangs beleid, kunt 
 
 Omdat het gebruik van een SAS die is afgeleid van een opgeslagen toegangs beleid, u de mogelijkheid biedt om die SA'S onmiddellijk in te trekken, is het de aanbevolen best practice om altijd opgeslagen toegangs beleid te gebruiken wanneer dat mogelijk is.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 Raadpleeg de volgende artikelen voor meer informatie over het gebruik van hand tekeningen voor gedeelde toegang en opgeslagen toegangs beleid:
 
 * Dit zijn de referentie artikelen.
@@ -239,7 +237,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het gebruik van hand t
   * [Een service-SAS samen stellen](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Een account maken van SAS](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Authentication
+* Verificatie
 
   * [Verificatie voor de Azure Storage services](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Zelf studie aan de slag met gedeelde toegang
@@ -288,7 +286,7 @@ Versleuteling aan client zijde is ingebouwd in de Java-en de .NET Storage-client
 
 Voor de versleuteling zelf kunt u uw eigen versleutelings sleutels genereren en beheren. U kunt ook sleutels gebruiken die worden gegenereerd door de Azure Storage-client bibliotheek, of u kunt de sleutels laten genereren door de Azure Key Vault. U kunt uw versleutelings sleutels opslaan in uw on-premises sleutel opslag of u kunt deze opslaan in een Azure Key Vault. Met Azure Key Vault kunt u toegang verlenen tot de geheimen in Azure Key Vault voor specifieke gebruikers die Azure Active Directory gebruiken. Dit betekent dat niet alleen iedereen de Azure Key Vault kan lezen en de sleutels kan ophalen die u gebruikt voor versleuteling aan de client zijde.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 * [Blobs in Microsoft Azure Storage versleutelen en ontsleutelen met behulp van Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   In dit artikel wordt uitgelegd hoe u versleuteling aan de client zijde kunt gebruiken met Azure Key Vault, met inbegrip van hoe u de KEK maakt en opslaat in de kluis met behulp van Power shell.
@@ -302,7 +300,7 @@ Met Azure Disk Encryption kunt u de stations van het besturings systeem en de ge
 De oplossing ondersteunt de volgende scenario's voor IaaS Vm's wanneer deze zijn ingeschakeld in Microsoft Azure:
 
 * Integratie met Azure Key Vault
-* Vm's van de Standard-laag: [A, D, DS, G, GS, en dergelijke Series IaaS Vm's](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Virtuele machines uit de Standard-laag: [A, D, DS, G, GS, enzovoort serie IaaS vm's](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Versleuteling inschakelen op Windows-en Linux IaaS-Vm's
 * Versleuteling uitschakelen voor besturings systeem en gegevens stations voor Windows IaaS-Vm's
 * Versleuteling uitschakelen op gegevens stations voor Linux IaaS Vm's
@@ -329,7 +327,7 @@ De oplossing biedt geen ondersteuning voor de volgende scenario's, functies en t
 
 Deze functie zorgt ervoor dat alle gegevens op de schijven van de virtuele machine in de rest van Azure Storage zijn versleuteld.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 * [Azure Disk Encryption voor virtuele machines met Windows en Linux IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergelijking van Azure Disk Encryption, SSE en versleuteling aan de client zijde
@@ -391,7 +389,7 @@ In de onderstaande bronnen vindt u een artikel met een lijst met veel velden in 
 
 ![Moment opname van velden in een logboek bestand](./media/storage-security-guide/image3.png)
 
-We zijn geïnteresseerd in de vermeldingen voor GetBlob en hoe ze zijn geautoriseerd. Daarom moeten we zoeken naar vermeldingen met het Operation-type ' Get-BLOB ' en de aanvraag status (vierde</sup> kolom) en het autorisatie type (achtste</sup> kolom) controleren.
+We zijn geïnteresseerd in de vermeldingen voor GetBlob, en hoe ze zijn geautoriseerd. Daarom moeten we zoeken naar vermeldingen met het Operation-type ' Get-BLOB ' en de aanvraag status (vierde @ no__t-0 kolom) en het autorisatie type (achtste @ no__t-1 kolom) controleren.
 
 In de eerste paar rijen in de bovenstaande vermelding is de aanvraag status "geslaagd" en het autorisatie type "Authenticated". Dit betekent dat de aanvraag is geautoriseerd met de sleutel van het opslag account.
 
@@ -400,17 +398,17 @@ Er zijn drie gevallen waarin we geïnteresseerd zijn.
 
 1. De blob is openbaar en wordt geopend met behulp van een URL zonder Shared Access Signature. In dit geval is de aanvraag status ' AnonymousSuccess ' en is het autorisatie type ' anoniem '.
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **AnonymousSuccess**; 200; 124; 37; **anoniem**;; mijn opslag...
 2. De blob is persoonlijk en is gebruikt met een Shared Access Signature. In dit geval is de aanvraag status "SASSuccess" en is het autorisatie type "SAS".
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
-3. De blob is persoonlijk en de opslag sleutel is gebruikt om deze te openen. In dit geval is de aanvraag status "**geslaagd**" en is het autorisatie type "Authenticated".
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **SASSuccess**; 200; 416; 64; **SAS**;; mijn opslag...
+3. De blob is persoonlijk en de opslag sleutel is gebruikt om deze te openen. In dit geval is de aanvraag status "**geslaagd**" en is het autorisatie type "**Authenticated**".
 
-   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
+   1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Geslaagd**; 206; 59; 22; **geverifieerd**; mijn opslag...
 
 U kunt de micro soft Message Analyzer gebruiken om deze logboeken te bekijken en te analyseren. Het bevat Zoek-en filter mogelijkheden. U kunt bijvoorbeeld zoeken naar instanties van GetBlob om te zien of het gebruik overeenkomt met wat u verwacht, dat wil zeggen, om ervoor te zorgen dat iemand niet op de juiste wijze toegang krijgt tot uw opslag account.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 * [Storage Analytics](../storage-analytics.md)
 
   Dit artikel bevat een overzicht van opslag analyse en hoe u deze kunt inschakelen.
@@ -459,13 +457,13 @@ CORS is standaard uitgeschakeld voor alle services. U kunt CORS inschakelen met 
 
 Wat betekent elke rij:
 
-* **AllowedOrigins** Zo weet u welke niet-overeenkomende domeinen gegevens van de opslag service kunnen aanvragen en ontvangen. Dit betekent dat zowel contoso.com als fabrikam.com gegevens kunnen aanvragen van Blob Storage voor een specifiek opslag account. U kunt dit ook instellen op een Joker teken\*(), zodat alle domeinen toegang hebben tot aanvragen.
-* **AllowedMethods** Dit is de lijst met methoden (HTTP-aanvraag bewerkingen) die kunnen worden gebruikt bij het maken van de aanvraag. In dit voor beeld zijn alleen PUT en GET toegestaan. U kunt dit instellen op een Joker teken\*(), zodat alle methoden kunnen worden gebruikt.
+* **AllowedOrigins** Zo weet u welke niet-overeenkomende domeinen gegevens van de opslag service kunnen aanvragen en ontvangen. Dit betekent dat zowel contoso.com als fabrikam.com gegevens kunnen aanvragen van Blob Storage voor een specifiek opslag account. U kunt dit ook instellen op een Joker teken (@no__t 0), zodat alle domeinen toegang hebben tot aanvragen.
+* **AllowedMethods** Dit is de lijst met methoden (HTTP-aanvraag bewerkingen) die kunnen worden gebruikt bij het maken van de aanvraag. In dit voor beeld zijn alleen PUT en GET toegestaan. U kunt dit instellen op een Joker teken (\*), zodat alle methoden kunnen worden gebruikt.
 * **AllowedHeaders** Dit zijn de aanvraag headers die in het bron domein kunnen worden opgegeven bij het maken van de aanvraag. In dit voor beeld zijn alle meta gegevens headers die beginnen met x-MS-meta gegevens, x-MS-meta doel en x-MS-meta-ABC toegestaan. Het Joker teken (\*) geeft aan dat elke header die begint met het opgegeven voor voegsel is toegestaan.
 * **ExposedHeaders** Hiermee wordt aangegeven welke antwoord headers door de browser moeten worden weer gegeven aan de aanvraag verlener. In dit voor beeld wordt elke koptekst die begint met ' x-MS-meta-' weer gegeven.
 * **MaxAgeInSeconds** Dit is de maximale hoeveelheid tijd die een browser de aanvraag voor Preflight-opties in de cache opslaat. (Zie het eerste artikel hieronder voor meer informatie over de Preflight-aanvraag.)
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 Bekijk deze bronnen voor meer informatie over CORS en hoe u deze inschakelt.
 
 * [CORS-ondersteuning (cross-Origin Resource Sharing) voor de Azure Storage services op Azure.com](../storage-cors-support.md)
@@ -474,7 +472,7 @@ Bekijk deze bronnen voor meer informatie over CORS en hoe u deze inschakelt.
 * [CORS-ondersteuning (cross-Origin Resource Sharing) voor de Azure Storage services op MSDN](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Dit is de referentie documentatie voor CORS-ondersteuning voor de Azure Storage services. Dit heeft koppelingen naar artikelen die van toepassing zijn op elke opslag service en toont een voor beeld en legt elk element in het CORS-bestand voor.
-* [Microsoft Azure Storage: Kennismaken met CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Dit is een koppeling naar het eerste blog artikel waarin CORS wordt aangekondigd en hoe u deze kunt gebruiken.
 
@@ -486,19 +484,19 @@ Bekijk deze bronnen voor meer informatie over CORS en hoe u deze inschakelt.
    Als u HTTPS kunt gebruiken, dat beveiliging op transport niveau biedt, is het gebruik van MD5-controle overbodig en onnodig.
 
    Bekijk het [overzicht van Azure Blob MD5](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)voor meer informatie.
-2. **Informatie over FIPS-naleving voor de Verenigde Staten Government?**
+2. **Wat is de FIPS-naleving voor de Amerikaanse overheid?**
 
-   De Verenigde Staten Federal Information Processing Standard (FIPS) definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door de VS Computer systemen van de federale overheid voor de bescherming van gevoelige gegevens. Het inschakelen van de FIPS-modus op een Windows-Server of-bureau blad vertelt u het besturings systeem dat alleen FIPS-gevalideerde cryptografische algoritmen moeten worden gebruikt. Als een toepassing niet-compatibele algoritmen gebruikt, wordt de toepassing onderbroken. With.NET Framework versie 4.5.2 of hoger, de toepassing schakelt automatisch de algoritmen voor crypto grafie in voor het gebruik van FIPS-compatibele algoritmen wanneer de computer zich in de FIPS-modus bevindt.
+   De Verenigde Staten-Federal Information Processing Standard (FIPS) definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door Amerikaanse federale overheid computer systemen voor de beveiliging van gevoelige gegevens. Het inschakelen van de FIPS-modus op een Windows-Server of-bureau blad vertelt u het besturings systeem dat alleen FIPS-gevalideerde cryptografische algoritmen moeten worden gebruikt. Als een toepassing niet-compatibele algoritmen gebruikt, wordt de toepassing onderbroken. With.NET Framework versie 4.5.2 of hoger, de toepassing schakelt automatisch de algoritmen voor crypto grafie in voor het gebruik van FIPS-compatibele algoritmen wanneer de computer zich in de FIPS-modus bevindt.
 
    Micro soft laat elke klant weten of de FIPS-modus moet worden ingeschakeld. We geloven dat er geen dwingende reden is voor klanten die geen wettelijke voor Schriften ondergaan om standaard de FIPS-modus in te scha kelen.
 
-### <a name="resources"></a>Resources
+### <a name="resources"></a>Bronnen
 * [Waarom we ' FIPS-modus ' niet meer aanraden](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   In dit blog artikel vindt u een overzicht van FIPS en wordt uitgelegd waarom de FIPS-modus niet standaard is ingeschakeld.
 * [Validatie van FIPS 140](https://technet.microsoft.com/library/cc750357.aspx)
 
-  Dit artikel bevat informatie over de wijze waarop micro soft-producten en cryptografische modules voldoen aan de FIPS-standaard voor de Verenigde Staten. Federale overheid.
-* [Systeem cryptografie: FIPS-compatibele algoritmen gebruiken voor versleuteling, hashing en ondertekening van de beveiligings instellingen in Windows XP en latere versies van Windows](https://support.microsoft.com/kb/811833)
+  Dit artikel bevat informatie over hoe micro soft-producten en cryptografische modules voldoen aan de FIPS-norm voor de Amerikaanse federale overheid.
+* ["Systeem cryptografie: gebruik FIPS-compatibele algoritmen voor versleuteling, hashing en ondertekening van beveiligings instellingen in Windows XP en in latere versies van Windows](https://support.microsoft.com/kb/811833)
 
   In dit artikel vindt u informatie over het gebruik van FIPS-modus in oudere Windows-computers.

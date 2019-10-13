@@ -2,18 +2,17 @@
 title: 'Snelstart: Een firewall configureren voor een Analysis Services-server in Azure | Microsoft Docs'
 description: Informatie over het configureren van een firewall voor een instantie van Analysis Services-server in Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905883"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298529"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Snelstart: Een serverfirewall configureren - Portal
 
@@ -21,7 +20,7 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Analysis Services-server in uw abonnement. Raadpleeg voor meer informatie [Snelstart: Een server maken - Portal](analysis-services-create-server.md) of [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)
+- Een Azure Analysis Services-server in uw abonnement. Zie [Snelstart: Een server maken - Portal](analysis-services-create-server.md) of [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md) voor meer informatie.
 - Een of meer IP-adresbereiken voor clientcomputers (indien nodig).
 - Houd er rekening mee dat het importeren van een scenario van Power BI Premium momenteel niet wordt ondersteund.
 

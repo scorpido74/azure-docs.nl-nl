@@ -5,18 +5,18 @@ services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure functions, functies, gebeurtenisverwerking, dynamische Computing, serverloze architectuur
+keywords: Azure functions, functies, gebeurtenis verwerking, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ff0490a7854d0398df925fc56f766470ca9d1618
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c7f143f5d026b2fa6fa34c75d3616b05c3e97092
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973456"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294289"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue-opslag bindingen voor Azure Functions
 
@@ -24,17 +24,17 @@ In dit artikel wordt uitgelegd hoe u kunt werken met Azure Queue Storage-binding
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
+## <a name="packages---functions-1x"></a>Pakketten-functions 1. x
 
-De bindingen voor de wachtrij opslag zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-opslagplaats.
+De bindingen voor de wachtrij opslag zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) .
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
+## <a name="packages---functions-2x"></a>Pakketten-functions 2. x
 
-De bindingen voor de wachtrij opslag zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-opslagplaats.
+De bindingen voor de wachtrij opslag zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -45,17 +45,17 @@ Functions verwachten een *Base64* -gecodeerde teken reeks. Eventuele aanpassinge
 
 Gebruik de wachtrij trigger om een functie te starten wanneer er een nieuw item in een wachtrij wordt ontvangen. Het wachtrij bericht wordt opgegeven als invoer voor de functie.
 
-## <a name="trigger---example"></a>Trigger - voorbeeld
+## <a name="trigger---example"></a>Trigger-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#script (. CSX)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Trigger - voorbeeld met C#
+### <a name="trigger---c-example"></a>Trigger- C# voor beeld
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee de `myqueue-items`-wachtrij wordt gecontroleerd en een logboek wordt geschreven telkens wanneer een wachtrij-item wordt verwerkt.
 
@@ -72,11 +72,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - voorbeeld van C#-script
+### <a name="trigger---c-script-example"></a>Voor beeld C# van trigger-script
 
 In het volgende voor beeld ziet u een binding van een wachtrij trigger in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie pollt de `myqueue-items`-wachtrij en schrijft een logboek wanneer een wachtrij-item wordt verwerkt.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -93,9 +93,9 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -127,11 +127,11 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 In het gedeelte [gebruik](#trigger---usage) wordt uitgelegd `myQueueItem`, die wordt genoemd door de eigenschap `name` in function. json.  De [sectie meta gegevens](#trigger---message-metadata) van het bericht geeft een uitleg van alle andere variabelen die worden weer gegeven.
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript-voorbeeld
+### <a name="trigger---javascript-example"></a>Trigger-java script-voor beeld
 
 In het volgende voor beeld ziet u een binding van een wachtrij trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie pollt de `myqueue-items`-wachtrij en schrijft een logboek wanneer een wachtrij-item wordt verwerkt.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -148,12 +148,12 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
 > [!NOTE]
 > De para meter name komt overeen met `context.bindings.<name>` in de Java script-code die de nettolading van het wachtrij-item bevat. Deze nettolading wordt ook door gegeven als de tweede para meter voor de functie.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -172,7 +172,7 @@ module.exports = async function (context, message) {
 
 In het gedeelte [gebruik](#trigger---usage) wordt uitgelegd `myQueueItem`, die wordt genoemd door de eigenschap `name` in function. json.  De [sectie meta gegevens](#trigger---message-metadata) van het bericht geeft een uitleg van alle andere variabelen die worden weer gegeven.
 
-### <a name="trigger---java-example"></a>Trigger - Java-voorbeeld
+### <a name="trigger---java-example"></a>Trigger-Java-voor beeld
 
 In het volgende Java-voor beeld ziet u een trigger voor opslag wachtrij waarmee het geactiveerde bericht in de wachtrij `myqueuename` wordt geregistreerd.
 
@@ -236,11 +236,11 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - kenmerken
+## <a name="trigger---attributes"></a>Trigger-kenmerken
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgende kenmerken voor het configureren van een wachtrij trigger:
 
-* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
+* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
   De constructor van het kenmerk maakt de naam van de wachtrij die moet worden bewaakt, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -266,11 +266,11 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
   }
   ```
 
-  Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger---c-example).
+  Zie voor een volledig voor beeld [trigger- C# voor beeld](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Biedt een andere manier om het opslag account op te geven dat moet worden gebruikt. De constructor krijgt de naam van een app-instelling die een opslag connection string bevat. Het kenmerk kan worden toegepast op de parameter, klasseniveau of methode. Het volgende voorbeeld toont het klasseniveau en methode:
+  Biedt een andere manier om het opslag account op te geven dat moet worden gebruikt. De constructor krijgt de naam van een app-instelling die een opslag connection string bevat. Het kenmerk kan worden toegepast op de para meter, methode of class-niveau. In het volgende voor beeld wordt het niveau klasse en de methode weer gegeven:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -286,27 +286,27 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
 
 Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepaald:
 
-* De `QueueTrigger` van kenmerk `Connection` eigenschap.
-* De `StorageAccount` kenmerk toegepast op de dezelfde parameter als de `QueueTrigger` kenmerk.
-* De `StorageAccount` kenmerk toegepast op de functie.
-* De `StorageAccount` kenmerk toegepast op de klasse.
+* De eigenschap `Connection` van het kenmerk `QueueTrigger`.
+* Het kenmerk `StorageAccount` toegepast op dezelfde para meter als het kenmerk `QueueTrigger`.
+* Het kenmerk `StorageAccount` dat wordt toegepast op de functie.
+* Het kenmerk `StorageAccount` dat wordt toegepast op de klasse.
 * De instelling van de app ' AzureWebJobsStorage '.
 
-## <a name="trigger---configuration"></a>Trigger - configuratie
+## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `QueueTrigger` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `QueueTrigger`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t.| Moet worden ingesteld op `queueTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction**| N.v.t. | Alleen in het bestand *Function. json* . Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**De naam** | N.v.t. |De naam van de variabele die de nettolading van het wachtrij-item bevat in de functie code.  |
-|**queueName** | **Wachtrijnaam**| De naam van de wachtrij die moet worden gecontroleerd. |
-|**verbinding** | **verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
+|**type** | n.v.t.| Moet worden ingesteld op `queueTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**direction**| n.v.t. | Alleen in het bestand *Function. json* . Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | n.v.t. |De naam van de variabele die de nettolading van het wachtrij-item bevat in de functie code.  |
+|**queueName** | **QueueName**| De naam van de wachtrij die moet worden gecontroleerd. |
+|**Combi** | **Verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - gebruik
+## <a name="trigger---usage"></a>Trigger-gebruik
 
 In C# en C# script opent u de bericht gegevens met behulp van een methode parameter, zoals `string paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt verbinding maken met een van de volgende typen:
 
@@ -319,11 +319,11 @@ Als u probeert verbinding te maken met `CloudQueueMessage` en er een fout berich
 
 Gebruik in Java script `context.bindings.<name>` om toegang te krijgen tot de nettolading van het wachtrij-item. Als de payload JSON is, wordt deze gedeserialiseerd tot een object.
 
-## <a name="trigger---message-metadata"></a>Trigger - bericht-metagegevens
+## <a name="trigger---message-metadata"></a>Trigger-bericht meta gegevens
 
-De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van de expressies in andere bindingen voor gegevensbinding of als parameters in uw code. Dit zijn eigenschappen van de klasse [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
+De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Dit zijn eigenschappen van de klasse [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Eigenschap|Type|Description|
+|Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Nettolading van de wachtrij (als een geldige teken reeks). Als de nettolading van het wachtrij bericht als een teken reeks, `QueueTrigger` dezelfde waarde heeft als de variabele met de naam van de eigenschap `name` in *Function. json*.|
 |`DequeueCount`|`int`|Het aantal keren dat dit bericht in de wachtrij is geplaatst.|
@@ -333,7 +333,7 @@ De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens]
 |`NextVisibleTime`|`DateTimeOffset`|De tijd waarop het bericht volgende wordt weer gegeven.|
 |`PopReceipt`|`string`|De pop-ontvangst van het bericht.|
 
-## <a name="trigger---poison-messages"></a>Trigger - Onverwerkbare berichten
+## <a name="trigger---poison-messages"></a>Trigger-verontreinigde berichten
 
 Wanneer een functie voor het activeren van een wachtrij mislukt, Azure Functions de functie tot vijf keer opnieuw geprobeerd voor een gegeven wachtrij bericht, met inbegrip van de eerste try. Als alle vijf de pogingen mislukken, voegt de runtime van functions een bericht toe aan een wachtrij met de naam *&lt;originalqueuename >-Poison*. U kunt een functie schrijven om berichten uit de verontreinigde wachtrij te verwerken door ze te registreren of om een melding te verzenden dat er hand matige aandacht nodig is.
 
@@ -351,25 +351,25 @@ De Batch grootte en de drempel waarde voor het ophalen van een nieuwe batch kunn
 
 De wachtrij trigger voor komt automatisch dat een functie meerdere keren een wachtrij bericht verwerkt; functions hoeven niet te worden geschreven om te worden idempotent.
 
-## <a name="trigger---hostjson-properties"></a>Trigger - eigenschappen voor host.json
+## <a name="trigger---hostjson-properties"></a>Trigger-host. json-eigenschappen
 
 Het bestand [host. json](functions-host-json.md#queues) bevat instellingen die het gedrag van de wachtrij activeren controleren. Zie de sectie [host. json-instellingen](#hostjson-settings) voor meer informatie over de beschik bare instellingen.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 Gebruik de Azure Queue Storage-uitvoer binding om berichten te schrijven naar een wachtrij.
 
-## <a name="output---example"></a>Uitvoer - voorbeeld
+## <a name="output---example"></a>Uitvoer-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#script (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
+### <a name="output---c-example"></a>Uitvoer- C# voor beeld
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een wachtrij bericht wordt gemaakt voor elke ontvangen HTTP-aanvraag.
 
@@ -387,11 +387,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Uitvoer - voorbeeld van C#-script
+### <a name="output---c-script-example"></a>Voor beeld C# van uitvoer script
 
 In het volgende voor beeld ziet u een binding van een http-trigger in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item met een **CustomQueueMessage** -object lading voor elke ontvangen HTTP-aanvraag.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -418,7 +418,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is C# de script code voor het maken van één wachtrij bericht:
 
@@ -448,11 +448,11 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Uitvoer - JavaScript-voorbeeld
+### <a name="output---javascript-example"></a>Uitvoer-java script-voor beeld
 
 In het volgende voor beeld ziet u een binding van de HTTP-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item voor elke ontvangen HTTP-aanvraag.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -479,9 +479,9 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function (context, input) {
@@ -498,7 +498,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Uitvoer - Java-voorbeeld
+### <a name="output---java-example"></a>Uitvoer-Java-voor beeld
 
  In het volgende voor beeld ziet u een Java-functie die een wachtrij bericht maakt voor wanneer door een HTTP-aanvraag wordt geactiveerd.
 
@@ -514,7 +514,7 @@ module.exports = function(context) {
  }
 ```
 
-Gebruik in de [runtime-bibliotheek voor Java-functies](/java/api/overview/azure/functions/runtime)de `@QueueOutput`-annotatie voor para meters waarvan de waarde wordt geschreven naar de wachtrij opslag.  Het parametertype moet `OutputBinding<T>`, waarbij T alle systeemeigen Java-type van een POJO.
+Gebruik in de [runtime-bibliotheek voor Java-functies](/java/api/overview/azure/functions/runtime)de `@QueueOutput`-annotatie voor para meters waarvan de waarde wordt geschreven naar de wachtrij opslag.  Het parameter type moet `OutputBinding<T>` zijn, waarbij T een systeem eigen Java-type is van een POJO.
 
 ### <a name="output---python-example"></a>Voor beeld van de uitvoer-python
 
@@ -579,7 +579,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Uitvoer - kenmerken
+## <a name="output---attributes"></a>Uitvoer kenmerken
 
 Gebruik in [ C# class libraries](functions-dotnet-class-library.md)het [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
@@ -605,25 +605,25 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
+Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#output---c-example).
 
 U kunt het kenmerk `StorageAccount` gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie trigger-Attributes (Engelstalig) voor meer informatie.
 
-## <a name="output---configuration"></a>Uitvoer - configuratie
+## <a name="output---configuration"></a>Uitvoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `Queue` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `Queue`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `queue`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction** | N.v.t. | Moet worden ingesteld op `out`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**De naam** | N.v.t. | De naam van de variabele die de wachtrij in functie code vertegenwoordigt. Ingesteld op `$return` om te verwijzen naar de retour waarde van de functie.|
-|**queueName** |**Wachtrijnaam** | De naam van de wachtrij. |
-|**verbinding** | **verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
+|**type** | n.v.t. | Moet worden ingesteld op `queue`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**direction** | n.v.t. | Moet worden ingesteld op `out`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | n.v.t. | De naam van de variabele die de wachtrij in functie code vertegenwoordigt. Ingesteld op `$return` om te verwijzen naar de retour waarde van de functie.|
+|**queueName** |**QueueName** | De naam van de wachtrij. |
+|**Combi** | **Verbinding** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld `connection` instelt op ' mijn opslag ', zoekt de runtime van functions naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag connection string in de app-instelling met de naam `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Uitvoer - gebruik
+## <a name="output---usage"></a>Uitvoer gebruik
 
 In C# en C# script, een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt het retour type van de methode gebruiken in plaats van een `out`-para meter, en `T` kan een van de volgende typen zijn:
 
@@ -642,9 +642,9 @@ Schrijf C# in C# en script meerdere wachtrij berichten met behulp van een van de
 In Java script-functies gebruikt u `context.bindings.<name>` om toegang te krijgen tot het bericht van de uitvoer wachtrij. U kunt een teken reeks of een JSON-serialiseerbaar object gebruiken voor de nettolading van het wachtrij-item.
 
 
-## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
+## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding |  Referentie |
+| Dwingen |  Referentie |
 |---|---|
 | Wachtrij | [Fout codes voor de wachtrij](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -652,12 +652,12 @@ In Java script-functies gebruikt u `context.bindings.<name>` om toegang te krijg
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>instellingen voor host.JSON
+## <a name="hostjson-settings"></a>instellingen voor de host. json
 
-In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor deze binding in versie 2.x. Het onderstaande voorbeeld host.json bestand bevat alleen de versie 2.x-instellingen voor deze binding. Voor meer informatie over globale configuratie-instellingen in versie 2.x, Zie [naslaginformatie over host.json voor Azure Functions versie 2.x](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x. Het onderstaande voor beeld van host. JSON-bestand bevat alleen de instellingen van versie 2. x voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x [host. json Reference voor Azure functions versie 2. x](functions-host-json.md).
 
 > [!NOTE]
-> Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md).
+> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
 ```json
 {
@@ -675,7 +675,7 @@ In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor 
 ```
 
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|Het maximum interval tussen de polls van de wachtrij. Minimum is 00:00:00.100 (100 MS) en wordt verhoogd naar 00:01:00 (1 min.).  In 1. x is het gegevens type milliseconden en in 2. x een time span.|
 |visibilityTimeout|00:00:00|Het tijds interval tussen nieuwe pogingen wanneer het verwerken van een bericht mislukt. |
@@ -685,7 +685,7 @@ In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+* [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
 
 <!--
 > [!div class="nextstepaction"]

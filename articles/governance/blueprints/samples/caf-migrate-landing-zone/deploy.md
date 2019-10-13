@@ -1,22 +1,22 @@
 ---
-title: Voor beeld-CAF migratie van landings zone migreren-stappen implementeren
-description: Implementeer stappen voor het voor beeld van de CAF migrate-openings zone, inclusief blauw drukken-artefact parameter Details.
+title: Voor beeld van CAF-migratie landings zone-blauw drukken-stappen implementeren
+description: Implementeer stappen voor het voor beeld van de CAF-migratie van de openings zone, inclusief blauw drukken artefact parameter Details.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248505"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298016"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk voor Azure migrate-openings zone implementeren voor beeld van de blauw druk
 
-De volgende stappen moeten worden uitgevoerd voor het implementeren van de CAF van de Azure-blauw drukken voor het migreren van de openings zone.
+De volgende stappen moeten worden uitgevoerd om de CAF-blauw druk voor de migratie van Azure blauw drukken te implementeren:
 
 > [!div class="checklist1"]
 > - Aanbevolen om het voor beeld van de [CAF Foundation](../caf-foundation/index.md) -blauw druk te implementeren
@@ -118,7 +118,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Nu u de stappen voor het implementeren van het voor beeld van de CAF-migratie van de start zone hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de architectuur:
 
 > [!div class="nextstepaction"]
-> [Blauw druk CAF migratie van landings zone-overzicht](./index.md)
+> [Blauw druk van CAF migratie van de zone-overzicht](./index.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

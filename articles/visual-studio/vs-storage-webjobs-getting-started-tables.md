@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure Storage en met Visual Studio verbonden services (project taak)
+title: Aan de slag met Azure Storage met Visual Studio (webtaaks van projecten)
 description: Aan de slag met Azure Table Storage in een Azure WebJobs-project in Visual Studio nadat u verbinding hebt gemaakt met een opslag account met behulp van Visual Studio Connected Services
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510666"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299952"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Aan de slag met Azure Storage (projecten van Azure webtaaks)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -30,9 +31,9 @@ Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde ge
 Sommige code fragmenten bevatten het **tabel** kenmerk dat wordt gebruikt in functies die hand matig worden aangeroepen, dat wil zeggen, niet door een van de trigger kenmerken te gebruiken.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entiteiten toevoegen aan een tabel
-Als u entiteiten wilt toevoegen aan een tabel, gebruikt u het kenmerk **Table** met een **ICollector\<t >** of **IAsyncCollector\<t >** para meter waarbij **T** het schema aangeeft van de entiteiten die u wilt toevoegen. De kenmerk-constructor heeft een teken reeks parameter waarmee de naam van de tabel wordt opgegeven.
+Als u entiteiten wilt toevoegen aan een tabel, gebruikt u het kenmerk **Table** met een **ICollector @ no__t-2T >** of **IAsyncCollector @ no__t-4T >** para meter waarbij **t** het schema aangeeft van de entiteiten die u wilt toevoegen. De kenmerk-constructor heeft een teken reeks parameter waarmee de naam van de tabel wordt opgegeven.
 
-In het volgende code voorbeeld worden entiteits entiteiten toegevoegd aaneen tabel met de naam inkomend verkeer.
+In het volgende code voorbeeld **worden entiteits entiteiten toegevoegd aan een** tabel met *de naam*inkomend verkeer.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -79,7 +80,7 @@ Wanneer de functie is voltooid, wordt in de pagina **aanroep Details** het aanta
 ![De functie ingress is voltooid](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Meerdere entiteiten uit een tabel lezen
-Als u een tabel wilt lezen, gebruikt u het kenmerk **Table** met een **IQueryable\<T >** -para meter waarbij type **T** is afgeleid van **TableEntity** of **ITableEntity**implementeert.
+Als u een tabel wilt lezen, gebruikt u het kenmerk **Table** met een **IQueryable @ no__t-2T >-** para meter waarbij type **t** is afgeleid van **TableEntity** of **ITableEntity**implementeert.
 
 In het volgende code voorbeeld worden alle rijen uit de **ingangs** tabel gelezen en geregistreerd:
 
@@ -98,7 +99,7 @@ In het volgende code voorbeeld worden alle rijen uit de **ingangs** tabel geleze
 ### <a name="how-to-read-a-single-entity-from-a-table"></a>Een afzonderlijke entiteit uit een tabel lezen
 Er is een **Table** -kenmerk constructie met twee extra para meters waarmee u de partitie sleutel en de rij-sleutel kunt opgeven wanneer u wilt binden aan een enkele tabel entiteit.
 
-In het volgende code voorbeeld wordt een tabelrij gelezen voor een persoons entiteit op basis van de waarden van de partitie sleutel en de rijwaarden die zijn ontvangen in een wachtrij bericht:  
+In het volgende code voorbeeld wordt een tabelrij gelezen voor een **persoons** entiteit op basis van de waarden van de partitie sleutel en de rijwaarden die zijn ontvangen in een wachtrij bericht:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,

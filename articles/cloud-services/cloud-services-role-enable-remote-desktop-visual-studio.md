@@ -1,5 +1,5 @@
 ---
-title: Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services
+title: Extern bureaublad inschakelen voor een rol (Azure Cloud Services) met behulp van Visual Studio
 description: Uw Azure Cloud service-toepassing configureren om extern bureau blad-verbindingen toe te staan
 services: cloud-services
 author: ghogen
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515919"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298389"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Visual Studio
 
@@ -47,13 +47,13 @@ Wanneer u Visual Studio 2017 versie 15,4 en eerder gebruikt, kunt u de optie **e
    > [!Note]
    > De certificaten die u nodig hebt voor een verbinding met een extern bureau blad, wijken af van de certificaten die u voor andere Azure-bewerkingen gebruikt. Het RAS-certificaat moet een persoonlijke sleutel hebben.
 
-5. Selecteer een certificaat in de lijst of kies  **&lt;maken... &gt;** . Als u een nieuw certificaat maakt, geeft u een beschrijvende naam op voor het nieuwe certificaat wanneer u hierom wordt gevraagd en selecteert u **OK**. Het nieuwe certificaat wordt weer gegeven in de vervolg keuzelijst.
+5. Selecteer een certificaat in de lijst of kies **&lt;Create... &gt;** . Als u een nieuw certificaat maakt, geeft u een beschrijvende naam op voor het nieuwe certificaat wanneer u hierom wordt gevraagd en selecteert u **OK**. Het nieuwe certificaat wordt weer gegeven in de vervolg keuzelijst.
 
 6. Geef een gebruikers naam en wacht woord op. U kunt geen bestaand account gebruiken. Gebruik ' Administrator ' niet als de gebruikers naam voor het nieuwe account.
 
 7. Kies een datum waarop het account verloopt en waarna Extern bureaublad verbindingen worden geblokkeerd.
 
-8. Nadat u alle vereiste gegevens hebt opgegeven, selecteert u **OK**. Visual Studio voegt de Extern bureaublad-instellingen toe aan uw `.cscfg` project `.csdef` en bestanden, met inbegrip van het wacht woord dat is versleuteld met behulp van het gekozen certificaat.
+8. Nadat u alle vereiste gegevens hebt opgegeven, selecteert u **OK**. Visual Studio voegt de Extern bureaublad-instellingen toe aan de `.cscfg`-en `.csdef`-bestanden van uw project, met inbegrip van het wacht woord dat is versleuteld met behulp van het gekozen certificaat.
 
 9. Voltooi alle resterende stappen met behulp van de **volgende** knop en selecteer vervolgens **publiceren** wanneer u klaar bent om uw Cloud service te publiceren. Als u nog niet klaar bent om te publiceren, selecteert u **Annuleren** en antwoordt u op **Ja** wanneer u wordt gevraagd wijzigingen op te slaan. U kunt uw Cloud service later met deze instellingen publiceren.
 
@@ -86,7 +86,7 @@ U kunt een Cloud service project implementeren op basis van een build-server (bi
 
 Als u de RDP-uitbrei ding van Azure DevOps Services wilt gebruiken, neemt u de volgende gegevens op in uw build-pijp lijn:
 
-1. Voeg `/p:ForceRDPExtensionOverPlugin=true` in uw MSBuild-argumenten toe om ervoor te zorgen dat de implementatie werkt met de RDP-extensie in plaats van de RDP-invoeg toepassing. Bijvoorbeeld:
+1. Neem `/p:ForceRDPExtensionOverPlugin=true` op in uw MSBuild-argumenten om ervoor te zorgen dat de implementatie werkt met de RDP-extensie in plaats van de RDP-invoeg toepassing. Bijvoorbeeld:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -95,9 +95,9 @@ Als u de RDP-uitbrei ding van Azure DevOps Services wilt gebruiken, neemt u de v
 
 1. Nadat u de stappen hebt gebouwd, voegt u de **Implementatie stap Azure Cloud service** toe en stelt u de eigenschappen in.
 
-1. Voeg na de implementatie stap een **Azure Power shell** -stap toe en stel de eigenschap **weergave naam** in op ' Azure-implementatie: Schakel RDP-uitbrei ding (of een andere geschikte naam) in en selecteer het juiste Azure-abonnement.
+1. Voeg na de implementatie stap een **Azure Power shell** -stap toe, stel de eigenschap **weergave naam** in op ' Azure-implementatie: RDP-extensie inschakelen ' (of een andere geschikte naam) en selecteer het juiste Azure-abonnement.
 
-1. Stel het **script type** in op inline en plak de onderstaande code in het veld inline- **script** . (U kunt ook een `.ps1` bestand in uw project maken met dit script, het **script type** instellen op het pad naar het script bestand en het **pad** naar het script instellen om naar het bestand te verwijzen.)
+1. Stel het **script type** in op inline en plak de onderstaande code in het veld **inline-script** . (U kunt ook een `.ps1`-bestand in uw project maken met dit script, het **script type** instellen op het pad naar het script bestand en het **pad** naar het script instellen om naar het bestand te verwijzen.)
 
     ```ps
     Param(
@@ -146,6 +146,6 @@ Nadat u uw Cloud service op Azure hebt gepubliceerd en Extern bureaublad hebt in
 
 3. Voer de gebruikers naam en het wacht woord in die u eerder hebt gemaakt. U bent nu aangemeld bij uw externe sessie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)

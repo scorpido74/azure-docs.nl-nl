@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937506"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300226"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -62,6 +62,16 @@ In combi natie met Windows Virtual Desktop biedt ControlUp extra mogelijkheden v
 - [Raadpleeg de korte oplossing voor samen voegen](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Ga naar de website van de partner](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST-logo](./media/partners/devicetrust.png)
+
+deviceTRUST is een Windows-service provider voor virtueel bureau blad die de bedrijfs onderneming contextualizes, waardoor gebruikers de vrijheid hebben toegang te krijgen tot hun virtuele Windows-bureau blad vanaf elke locatie, op elk apparaat, via elk netwerk, terwijl het de informatie en controle die zij nodig hebben om te voldoen aan de governance vereisten. 
+
+deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contextuele beveiligings technologie. deviceTRUST maakt voorwaardelijke toegang mogelijk voor een veilige toegang tot het virtuele bureau blad van Windows, voorwaardelijke toegang tot een toepassing binnen het virtuele bureau blad van Windows en voor het Toep assen van voorwaardelijke Windows-bureaublad beleid zonder extra infra structuur. Met deviceTRUST kunt u een mobiele, flexibele werk ruimte maken die voldoet aan alle vereisten voor beveiliging, naleving en regelgeving. 
+
+- [Ga naar de website van de partner](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Lakeside-software
 
 ![Logo van de Lakeside-software](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials breidt de waarde van Windows virtueel bureau blad uit door
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Ga naar de website van de partner](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>Aanmeldings VSI
+
+![VSI-logo aanmelden](./media/partners/loginvsi.png)
+
+Aanmelden VSI is een Windows-service provider voor virtueel bureau blad en micro soft partner die software voor het testen van toepassings prestaties in virtuele Windows-desktop omgevingen levert. Klanten die hun on-premises bedrijfs Services verplaatsen naar Windows Virtual Desktop, gebruiken aanmelden VSI Enter prise Edition om de optimale prestaties, schaal baarheid en beschik baarheid van Windows 10 Enter prise multi-session, Windows 10 Enter prise te evalueren en te onderhouden. Windows 7 is ingeschakeld met hun bedrijfs kritieke toepassingen.
+
+- [Ga naar de website van de partner](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio-logo](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio breidt de waarde van het virtuele bureau blad van Windows uit door eenvou
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Ga naar de website van de partner](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak-logo](./media/partners/policypak.png)
+
+PolicyPak software is een virtueel bureau blad-partner voor Windows waarmee het totale instellingen beheer voor toepassingen, bureau blad, browsers, Java en beveiligings instellingen wordt uitgevoerd. PolicyPak houdt uw desktop-, systeem-en beveiligings instellingen in overeenstemming. PolicyPak verbetert de waarde van Windows virtueel bureau blad door een reeks onderdelen toe te voegen voor het verbeteren van het ingebouwde beheer van Windows. Gebruik uw bestaande Active Directory groepsbeleid en/of Windows intune voor het leveren van PolicyPak-instellingen en verg root de mogelijkheid van beheerders om hun Windows 10-computers te beheren. 
+
+De belangrijkste use cases voor PolicyPak zijn lokale beheerders rechten te verwijderen en UAC-Prompts te overwinnen, Ransomware te blok keren, meerdere browsers te beheren, de ondernemings-en compatibiliteits modus van Internet Explorer te beheren, het aantal Gpo's te beperken, Windows 10-bestands koppelingen te beheren het menu Start en de taak balk van Windows 10 beheren en de functies en optionele functies van Windows 10 beheren.  
+
+- [Ga](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)naar de website van de partner.
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic-logo](./media/partners/printerlogic.png)
+
+PrinterLogic is een Windows-service provider platform met toegevoegde waarde waarmee IT-professionals alle afdruk servers kunnen elimineren en een Maxi maal beschik bare afdruk infrastructuur voor servers kunnen leveren. PrinterLogic breidt de waarde van Windows virtueel bureau blad en Azure uit door het eenvoudig om printer objecten centraal te beheren en te implementeren op elke printer of elk eindpunt besturingssysteem.   
+
+Het PrinterLogic-platform is beschikbaar als SaaS of als webstack in uw eigen privécloud en zorgt ervoor dat gebruikers altijd beschikken over de juiste printers die ze nodig hebben in hun virtuele sessies op basis van gebruikers-ID, apparaatnaam of locatie. Deze functionaliteit wordt aangevuld met een volledige reeks functies voor afdruk beheer in de onderneming, zoals afdruk bijhouden en rapporteren, Mobile afdrukken en veilig badge versie afdrukken. 
+
+- [Ga](https://www.printerlogic.com)naar de website van de partner.
 
 ## <a name="thinprint"></a>ThinPrint
 

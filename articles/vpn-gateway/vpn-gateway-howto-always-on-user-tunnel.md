@@ -1,47 +1,50 @@
 ---
-title: Een always on-VPN-tunnel configureren voor VPN Gateway
-description: Stappen voor het configureren van de permanente gebruikers-VPN-tunnel voor VPN Gateway
+title: Een always on-VPN-gebruikers tunnel configureren voor uw VPN-gateway
+description: In dit artikel wordt beschreven hoe u een always on-VPN-gebruikers tunnel configureert voor uw VPN-gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: dc0abf12c60f845fde0d16bd874a1436aef3b7ab
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9aa1f951add5b79eab12f4957be05a42bbdd4434
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846470"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299924"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel"></a>Een always on-VPN-gebruikers tunnel configureren
+# <a name="configure-an-always-on-vpn-user-tunnel"></a>Een AlwaysOn-VPN-gebruikerstunnel configureren
 
-Een van de nieuwe functies van de VPN-client (virtueel particulier netwerk) van Windows 10 is de mogelijkheid om een VPN-verbinding te onderhouden. Always on is een Windows 10-functie waarmee het actieve VPN-profiel automatisch verbinding kan maken en verbonden blijft op basis van triggers, namelijk gebruikers aanmelding, wijziging van de netwerk status of het scherm apparaat actief.
+Een nieuwe functie van de Windows 10 VPN-client, altijd aan, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always on kan het actieve VPN-profiel automatisch verbinding maken en blijven verbonden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
 
-Virtuele Azure-netwerk gateways kunnen worden gebruikt met Windows 10 altijd aan om permanente gebruikers tunnels tot stand te brengen, evenals de tunnels van apparaten met Azure. Dit artikel helpt u bij het configureren van een always on-VPN-gebruikers tunnel.
+U kunt virtuele Azure-netwerk gateways met Windows 10 altijd on gebruiken om permanente gebruikers tunnels en tunnels voor apparaten te maken met Azure. Dit artikel helpt u bij het configureren van een always on-VPN-gebruikers tunnel.
 
 Altijd op VPN-verbindingen zijn twee typen tunnels:
 
-* De tunnel van het **apparaat** maakt verbinding met opgegeven VPN-servers voordat gebruikers zich aanmelden op het apparaat. Bij connectiviteits scenario's voor aanmelding en Apparaatbeheer wordt de tunnel apparaat gebruikt.
+* **Tunnel van apparaat**: Hiermee maakt u verbinding met opgegeven VPN-servers voordat gebruikers zich aanmelden bij het apparaat. Bij connectiviteits scenario's voor aanmelding en Apparaatbeheer wordt een tunnel gebruikt.
 
-* **Gebruikers tunnel** maakt verbinding alleen nadat een gebruiker zich heeft aangemeld bij het apparaat. Gebruikers tunnel stelt gebruikers in staat om toegang te krijgen tot bedrijfs bronnen via VPN-servers.
+* **Gebruikers tunnel**: maakt alleen verbinding nadat gebruikers zich aanmelden op het apparaat. Door gebruikers tunnels te gebruiken, hebt u toegang tot bedrijfs bronnen via VPN-servers.
 
-Tunnels en gebruikers tunnels van apparaten worden onafhankelijk van hun VPN-profielen gebruikt. Ze kunnen tegelijkertijd worden verbonden en kunnen verschillende verificatie methoden en andere VPN-configuratie-instellingen gebruiken.
+Tunnels en gebruikers tunnels van apparaten worden onafhankelijk van hun VPN-profielen gebruikt. Ze kunnen tegelijkertijd worden verbonden en ze kunnen, indien van toepassing, verschillende verificatie methoden en andere VPN-configuratie-instellingen gebruiken.
 
-## <a name="1-configure-the-gateway"></a>1. De gateway configureren
+In de volgende secties configureert u een VPN-gateway en een gebruikers tunnel.
 
-Configureer de VPN-gateway voor gebruik van IKEv2 en verificatie op basis van certificaten met behulp van dit [punt-naar-site-artikel](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+## <a name="step-1-configure-a-vpn-gateway"></a>Stap 1: een VPN-gateway configureren
 
-## <a name="2-configure-the-user-tunnel"></a>2. De gebruikers tunnel configureren
+U configureert de VPN-gateway voor gebruik van IKEv2 en authenticatie op basis van certificaten door de instructies in dit [punt-naar-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) -artikel te volgen.
 
-1. Installeer client certificaten op de Windows 10-client, zoals wordt weer gegeven in dit [artikel van punt-naar-site VPN-client](point-to-site-how-to-vpn-client-install-azure-cert.md). Het certificaat moet zich in het huidige gebruikers archief beslaan
-2. Configureer de always on VPN-client via Power shell, SCCM of intune met behulp van [deze instructies](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+## <a name="step-2-configure-a-user-tunnel"></a>Stap 2: een gebruikers tunnel configureren
 
-### <a name="configuration-example-for-user-tunnel"></a>Configuratie voorbeeld voor gebruikers tunnel
+1. Installeer client certificaten op de Windows 10-client, zoals wordt weer gegeven in dit artikel van [punt-naar-site VPN-client](point-to-site-how-to-vpn-client-install-azure-cert.md) . Het certificaat moet zich in het huidige gebruikers archief beslaan.
 
-Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaat in het archief van de lokale computer op de Windows 10-client hebt geïnstalleerd, gebruikt u de volgende voor beelden om een tunnel voor client apparaten te configureren.
+1. Configureer de always on VPN-client via Power shell, System Center Configuration Manager of intune door de instructies in [Windows 10 client altijd op VPN-verbindingen configureren](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)te volgen.
 
-1. Kopieer de volgende tekst en sla deze op als ***usercert. ps1***.
+### <a name="example-configuration-for-the-user-tunnel"></a>Voorbeeld configuratie voor de gebruikers tunnel
+
+Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaat in het archief van de lokale computer op de Windows 10-client hebt geïnstalleerd, configureert u een tunnel voor client apparaten met behulp van de volgende voor beelden:
+
+1. Kopieer de volgende tekst en sla deze op als *usercert. ps1*:
 
    ```
    Param(
@@ -93,7 +96,7 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Kopieer de volgende tekst en sla deze op als ***VPNProfile. XML*** in dezelfde map als **usercert. ps1**. Bewerk de volgende tekst zodat deze overeenkomt met uw omgeving.
+1. Kopieer de volgende tekst en sla deze op als *VPNProfile. XML* in dezelfde map als *usercert. ps1*. Bewerk de volgende tekst zodat deze overeenkomt met uw omgeving:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -136,33 +139,33 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
     <RegisterDNS>true</RegisterDNS>
     </VPNProfile>
    ```
-1. Voer Power shell uit als Administrator.
+1. Voer Power shell uit als beheerder.
 
-1. Ga in Power shell naar de map waarin **usercert. ps1** en **VPNProfile. XML** zich bevinden en voer de volgende opdracht uit:
+1. Ga in Power shell naar de map waarin *usercert. ps1* en *VPNProfile. XML* zich bevinden en voer de volgende opdracht uit:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-user-tunnel/p2s2.jpg)
-1. Kijk onder VPN-instellingen.
+1. Zoek de vermelding **UserTest** onder **VPN-instellingen**en selecteer vervolgens **verbinding maken**.
 
-1. Zoek de vermelding **UserTest** en klik op **verbinden**.
+1. Als de verbinding is geslaagd, hebt u een always on-gebruikers tunnel geconfigureerd.
 
-1. Als de verbinding is geslaagd, hebt u een permanente gebruikers tunnel geconfigureerd.
+## <a name="clean-up-your-resources"></a>Uw resources opschonen
 
-## <a name="cleanup"></a>Opschonen
+Ga als volgt te werk om het profiel te verwijderen:
 
-Als u het profiel wilt verwijderen, voert u de volgende opdracht uit:
-
-1. Verbreek de verbinding en schakel automatisch verbinding maken uit
+1. Voer de volgende opdracht uit:
 
    ```powershell
    C:\> Remove-VpnConnection UserTest  
    ```
 
+1. Verbreek de verbinding en schakel het selectie vakje **automatisch verbinding maken** uit.
+
 ![Opschonen](./media/vpn-gateway-howto-always-on-user-tunnel/p2s4..jpg)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met Azure Point-to-site-verbindingen](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) voor probleem oplossing
+Zie [problemen met Azure Point-to-site-verbindingen](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)voor informatie over het oplossen van verbindings problemen die zich kunnen voordoen.

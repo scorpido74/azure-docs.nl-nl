@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67973394"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286465"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>End-to-end-SSL configureren met behulp van Application Gateway met Power shell
 
@@ -20,7 +20,7 @@ ms.locfileid: "67973394"
 
 Azure-toepassing gateway ondersteunt end-to-end versleuteling van verkeer. Application Gateway beëindigt de SSL-verbinding bij de Application Gateway. De gateway past vervolgens de routerings regels op het verkeer toe, versleutelt het pakket opnieuw en stuurt het pakket door naar de juiste back-endserver op basis van de gedefinieerde routerings regels. Reacties van de webserver ondergaan hetzelfde proces terug naar de eindgebruiker.
 
-Application Gateway biedt ondersteuning voor het definiëren van aangepaste SSL-opties. Het biedt ook ondersteuning voor het uitschakelen van de volgende protocol versies: **Tlsv 1.0**, **Tlsv 1.1**en **tlsv 1.2**bepalen welke coderings suites moeten worden gebruikt en de volg orde van voor keur. Zie het [SSL-beleid Overview](application-gateway-SSL-policy-overview.md)(Engelstalig) voor meer informatie over CONFIGUREER bare SSL-opties.
+Application Gateway biedt ondersteuning voor het definiëren van aangepaste SSL-opties. Het biedt ook ondersteuning voor het uitschakelen van de volgende protocol versies: **tlsv 1.0**, **Tlsv 1.1**en **tlsv 1.2**, evenals de te definiëren coderings suites en de volg orde van voor keur. Zie het [SSL-beleid Overview](application-gateway-SSL-policy-overview.md)(Engelstalig) voor meer informatie over CONFIGUREER bare SSL-opties.
 
 > [!NOTE]
 > SSL 2,0 en SSL 3,0 zijn standaard uitgeschakeld en kunnen niet worden ingeschakeld. Ze worden beschouwd als onveilig en kunnen niet worden gebruikt met Application Gateway.
@@ -167,7 +167,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    > [!NOTE]
    > De standaard test haalt de open bare sleutel op uit de *standaard* SSL-binding op het IP-adres van de back-end en vergelijkt de waarde van de open bare sleutel die wordt ontvangen voor de open bare-sleutel waarde die u hier opgeeft. 
    > 
-   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat https://127.0.0.1/ u naar de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* SSL-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag https://127.0.0.1/ ontvangt op de back-endservers, moet u een standaard SSL-binding instellen. Als u dit niet doet, mislukt de test dan en de back-end niet white list.
+   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat u naar https://127.0.0.1/ op de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* SSL-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag ontvangt naar https://127.0.0.1/ op de back-endservers, moet u een standaard SSL-binding instellen. Als u dit niet doet, mislukt de test dan en de back-end niet white list.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **\_standaard klein**, **standaard\_medium**en **standaard\_groot**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
+10. Configureer de exemplaargrootte van de toepassingsgateway. De beschik bare grootten zijn **standaard @ no__t-1Small**, **Standard @ no__t-3Medium**en **Standard @ no__t-5Large**.  Voor capaciteit zijn de beschik bare waarden **1** tot en met **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
     - **TLSV1_1**
     - **TLSV1_2**
     
-    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **\_TLS\_ECDHE\_\_ECDSA\_\_met\_AES 128 GCM sha256**ingeschakeld. **TLS\_ECDHEECDSAmet\_AES 256 GCMSHA384\_en TLS RSA met\_\_\_\_** **\_\_\_ AES\_128\_GCMsha256\_** .
+    In het volgende voor beeld wordt de minimale Protocol versie ingesteld op **TLSv1_2** en wordt **TLS @ no__t-2ECDHE @ no__t-3ECDSA @ no__t-4WITH @ no__t-5AES @ no__t-6128 @ no__t-7GCM @ no__t-8SHA256**, **TLS @ no__t-10ECDHE @ no__t-11ECDSA @ no__t-12WITH __t-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**en **TLS @ NO__T-18RSA @ NO__T-19WITH @ NO__T-20AES @ no__t-21128 @ NO__T-22GCM @ NO__T-23SHA256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -229,7 +229,7 @@ Maak de toepassings gateway met behulp van alle voor gaande stappen. Het maken v
 
 Voor v1 SKU gebruikt u de onderstaande opdracht
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
 Voor v2 SKU gebruikt u de onderstaande opdracht
@@ -253,7 +253,7 @@ Gebruik deze procedure om een nieuw certificaat toe te passen als het back-end-c
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. Het nieuwe certificaat object voor verificatie ophalen in een variabele (TypeName: Micro soft. Azure. commands. Network. Models. PSApplicationGatewayAuthenticationCertificate).
+3. Haal het nieuwe verificatie certificaat object op in een variabele (TypeName: micro soft. Azure. commands. Network. Models. PSApplicationGatewayAuthenticationCertificate).
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
@@ -310,7 +310,7 @@ In de voor gaande stappen hebt u geleid tot het maken van een toepassing met end
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definieer een SSL-beleid. In het volgende voor beeld zijn **tlsv 1.0** en **tlsv 1.1** uitgeschakeld en worden de coderings suites **\_TLS\_ECDHE\_\_ECDSA\_\_met\_ AES 128 GCM Sha256**, **TLS\_ECDHE\_ECDSAmetAES\_256 GCMSHA384\_en TLS RSA\_\_\_** **\_ \_ Met\_AES128\_GCMsha256\_zijn de enige toegestaan.\_**
+2. Definieer een SSL-beleid. In het volgende voor beeld zijn **tlsv 1.0** en **tlsv 1.1** uitgeschakeld en de coderings suites **TLS @ no__t-3ECDHE @ no__t-4ECDSA @ no__t-5WITH @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ no__t-9SHA256**, **TLS @ no__t-11ECDHE @ no__t-12ECDSA @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**en **TLS @ NO__T-19RSA @ NO__T-20WITH @ NO__T-21AES @ no__t-22128 @ NO__T-23GCM @ NO__T-24SHA256** zijn de enige toegestaan.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

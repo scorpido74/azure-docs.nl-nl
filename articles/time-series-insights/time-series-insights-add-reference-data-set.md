@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c33619ba52246128526bb132dfe94416c7c4de8c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172922"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299597"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
 
@@ -34,45 +34,47 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ## <a name="add-a-reference-data-set"></a>Een set met referentie gegevens toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Ga naar uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
+1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
 1. Selecteer de pagina **overzicht** . Ga naar de **URL van Time Series Insights Explorer** en open de koppeling.  
 
-   Bekijk de Verkenner voor uw TSI-omgeving.
+   Bekijk de Verkenner voor uw Time Series Insights-omgeving.
 
-1. Vouw de omgevings kiezer uit in de TSI-Verkenner. Kies de actieve omgeving. Selecteer het pictogram referentie gegevens in de rechter bovenhoek van de Explorer-pagina.
+1. Vouw de omgevings kiezer uit in de Time Series Insights Explorer. Kies de actieve omgeving. Selecteer het pictogram referentie gegevens in de rechter bovenhoek van de Explorer-pagina.
 
-   [![Referentie gegevens toevoegen](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
+   [Referentie gegevens @no__t 1Add](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
 1. Selecteer de knop **+ een gegevensset toevoegen** om een nieuwe gegevensset toe te voegen.
 
-   [![Gegevensset toevoegen](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [![Add-gegevensset](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. Kies op de pagina **nieuwe referentie gegevensgroep** de indeling van de gegevens:
+
    - Kies **CSV** voor door komma's gescheiden gegevens. De eerste rij wordt beschouwd als een veldnamenrij.
    - Kies **JSON-matrix** voor gegevens in JSON-indeling (Java Script object Notation).
 
-   [![Kies gegevens indeling.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
+   [![Choose gegevens indeling.](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
 1. Geef de gegevens op met behulp van een van de twee methoden:
+
    - Plak de gegevens in de tekst editor. Selecteer vervolgens de knop **referentie gegevens parseren** .
    - Selecteer de knop **bestand kiezen** om gegevens uit een lokaal tekst bestand toe te voegen.
 
-   Plak bijvoorbeeld CSV-gegevens: [![Geplakte CSV-gegevens](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
+   Plak bijvoorbeeld CSV-gegevens: [![PASTED CSV-gegevens](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
 
-   Plak bijvoorbeeld JSON-matrix gegevens: [![JSON-gegevens plakken](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
+   Plak bijvoorbeeld JSON-matrix gegevens: [![PASTE JSON-gegevens](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
 
-   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van `CSV parsing error, no rows extracted`de pagina, zoals.
+   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van de pagina, bijvoorbeeld `CSV parsing error, no rows extracted`.
 
 1. Zodra de gegevens zijn geparseerd, wordt een gegevens raster weer gegeven waarin de kolommen en rijen worden weer gegeven die de gegevens vertegenwoordigen.  Controleer het gegevens raster om te controleren of het juist is.
 
-   [![Referentie gegevens toevoegen](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
+   [Referentie gegevens @no__t 1Add](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
 
-1. Bekijk elke kolom om te zien welk gegevens type wordt gebruikt en wijzig zo nodig het gegevens type.  Selecteer het gegevens type symbool in de kolomkop: **#** voor dubbele (numerieke gegevens), **T | F** voor Booleaanse waarde, of **ABC** voor teken reeks.
+1. Bekijk elke kolom om te zien welk gegevens type wordt gebruikt en wijzig zo nodig het gegevens type.  Selecteer het gegevens type symbool in de kolomkop: **#** voor dubbele (numerieke gegevens), **t | F** voor Booleaanse waarde, of **ABC** voor teken reeks.
 
-   [![Kies gegevens typen in de kolom koppen.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
+   [@no__t 1Choose gegevens typen in de kolom koppen.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
 
 1. Wijzig de naam van de kolom koppen, indien nodig. De naam van de sleutel kolom is nodig om lid te worden van de bijbehorende eigenschap in de bron van de gebeurtenis. Zorg ervoor dat de kolom namen van de referentie gegevens sleutel exact overeenkomen met de naam van de gebeurtenis voor uw binnenkomende gegevens, met inbegrip van hoofdletter gevoeligheid. De niet-sleutel kolom namen worden gebruikt voor het verbeteren van de inkomende gegevens met de bijbehorende referentie gegevens waarden.
 
@@ -82,17 +84,17 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 1. Geef de gegevensset een naam door het veld **naam van gegevensset** boven het gegevens raster in te vullen.
 
-    [![Geef de gegevensset een naam.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
+    [de gegevensset @no__t 1Name.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
 
 1. Geef de **primaire-sleutel** kolom in de gegevensset op door de vervolg keuzelijst boven het gegevens raster te selecteren.
 
-    [![Selecteer de sleutel kolom (men).](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
+    [![Select de sleutel kolom (men).](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
 
-    Selecteer desgewenst de knop voor **+** het toevoegen van een secundaire sleutel kolom als samengestelde primaire sleutel. Als u de selectie ongedaan wilt maken, kiest u de lege waarde uit de vervolg keuzelijst om de secundaire sleutel te verwijderen.
+    Selecteer desgewenst de knop **+** om een secundaire sleutel kolom toe te voegen als samengestelde primaire sleutel. Als u de selectie ongedaan wilt maken, kiest u de lege waarde uit de vervolg keuzelijst om de secundaire sleutel te verwijderen.
 
 1. Als u de gegevens wilt uploaden, selecteert u de knop **rijen uploaden** .
 
-    [![Wijzigingen](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [![Upload](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
     Op de pagina wordt de voltooide upload bevestigd en wordt het bericht met de **gegevensset geüpload**weer gegeven.
 

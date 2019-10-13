@@ -2,18 +2,17 @@
 title: Verbinding maken met Azure Analysis Services met Power BI | Microsoft Docs
 description: Meer informatie over het maken van verbinding met een Azure Analysis Services-server met behulp van Power BI.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619294"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295289"
 ---
 # <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
@@ -45,7 +44,7 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
 ## <a name="connect-in-power-bi-service"></a>Verbinding maken in Power BI (Service)
 
 1. Maak een Power BI Desktop-bestand dat een live verbinding heeft met uw model op uw server.
-2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens** > **bestanden**ophalen, zoek en selecteer uw pbix-bestand.
+2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens ophalen** > **bestanden**, en zoek en selecteer vervolgens uw pbix-bestand.
 
 ## <a name="see-also"></a>Zie ook
 [Verbinding maken met Azure Analysis Services](analysis-services-connect.md)   

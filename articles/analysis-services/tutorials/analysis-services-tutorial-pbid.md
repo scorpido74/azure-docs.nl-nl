@@ -1,21 +1,20 @@
 ---
 title: 'Zelfstudie: Verbinding maken met Azure Analysis Services met Power BI Desktop | Microsoft Docs'
 author: minewiskan
-manager: kfile
 description: Leer verbinding maken met Azure Analysis Services met Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932387"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294483"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Zelfstudie: Verbinding maken met Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Zelfstudie: Verbinden met Power BI Desktop
 
 In deze zelfstudie gebruikt u Power BI Desktop om verbinding te maken met de voorbeeldmodeldatabase Adventure Works op uw server. De taken die u uitvoert, zijn een simulatie van een normale gebruikersverbinding met het model en het maken van een basisrapport van modelgegevens.
 

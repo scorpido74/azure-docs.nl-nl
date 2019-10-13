@@ -2,29 +2,28 @@
 title: Server beheerders beheren in Azure Analysis Services | Microsoft Docs
 description: Meer informatie over het beheren van Server beheerders voor een Analysis Services-server in Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696310"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301095"
 ---
 # <a name="manage-server-administrators"></a>Serverbeheerders beheren
 
 Server beheerders moeten een geldige gebruiker of beveiligings groep zijn in de Azure Active Directory (Azure AD) voor de Tenant waarin de server zich bevindt. U kunt **Analysis Services beheerders** voor uw server gebruiken in azure Portal, Server eigenschappen in SSMS, Power shell of rest API voor het beheren van Server beheerders. 
 
-Voor **beveiligings groepen** moet een [e-mail bericht worden ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarvoor de `MailEnabled` eigenschap is ingesteld op. `True` Wanneer u `obj:groupid@tenantid`een groep op basis van een e-mail adres opgeeft.
+**Beveiligings groepen** moeten [e-mail hebben ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarbij de eigenschap `MailEnabled` is ingesteld op `True`. Wanneer u een Group by-e-mail adres opgeeft, wordt `obj:groupid@tenantid` gebruikt.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Server beheerders toevoegen met behulp van Azure Portal
 
 1. Klik in de portal, voor uw server, op **Analysis Services beheerders**.
-2. Klik in  **\<server naam >-Analysis Services beheerders**op **toevoegen**.
+2. Klik in **\<servername >-Analysis Services beheerders**op **toevoegen**.
 3. Selecteer in **Server beheerders toevoegen**de optie gebruikers accounts uit uw Azure AD of externe gebruikers uitnodigen op e-mail adres.
 
     ![Server beheerders in Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)

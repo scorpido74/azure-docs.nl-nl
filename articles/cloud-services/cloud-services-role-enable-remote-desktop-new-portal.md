@@ -1,5 +1,5 @@
 ---
-title: Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services | Microsoft Docs
+title: De portal gebruiken om Extern bureaublad in te scha kelen voor een rol (Azure Cloud Services)
 description: Uw Azure Cloud service-toepassing configureren om extern bureau blad-verbindingen toe te staan
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: bea4e0c43d6ae6e0ea05c43343535195a25cf3e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359516"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298439"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services
 
@@ -41,7 +41,7 @@ De Azure Portal gebruikt de Extern bureaublad-uitbreidings benadering zodat u Ex
     ![Cloud Services extern bureau blad](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > Alle rolinstanties worden opnieuw gestart wanneer u Extern bureaublad voor het eerst inschakelt en selecteert **OK** (vinkje). Om het opnieuw opstarten te voor komen, moet het certificaat dat wordt gebruikt voor het versleutelen van het wacht woord, worden geïnstalleerd voor de rol. Als u wilt voor komen dat de computer opnieuw wordt opgestart, uploadt u [een certificaat voor de Cloud service](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) en keert u terug naar dit dialoog venster.
+   > Alle rolinstanties worden opnieuw gestart wanneer u Extern bureaublad voor het eerst inschakelt en selecteert **OK** (vinkje). Om het opnieuw opstarten te voor komen, moet het certificaat dat wordt gebruikt voor het versleutelen van het wacht woord, worden geïnstalleerd voor de rol. Als u wilt voor komen dat de computer opnieuw wordt opgestart, [uploadt u een certificaat voor de Cloud service](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) en keert u terug naar dit dialoog venster.
 
 4. In **rollen**selecteert u de rol die u wilt bijwerken of selecteert u **Alles** voor alle rollen.
 
@@ -62,6 +62,6 @@ Als Extern bureaublad is ingeschakeld voor de rollen, kunt u rechtstreeks vanuit
 >[!NOTE]
 > Als uw Cloud service zich achter een NSG bevindt, moet u mogelijk regels maken die verkeer op de poorten **3389** en **20000**toestaan.  Extern bureaublad maakt gebruik van poort **3389**.  Cloud service-exemplaren worden gelijkmatig verdeeld, zodat u niet rechtstreeks kunt bepalen met welk exemplaar verbinding moet worden gemaakt.  De *RemoteForwarder* -en *remoteaccess* -agents beheren RDP-verkeer en toestaan dat de client een RDP-cookie verzendt en een afzonderlijk exemplaar opgeeft waarmee verbinding moet worden gemaakt.  De *RemoteForwarder* -en *remoteaccess* -agents vereisen dat poort **20000*** is geopend. deze kan worden geblokkeerd als u een NSG hebt.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)
