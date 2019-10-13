@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828931"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285781"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
@@ -47,7 +47,7 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
 
     ![Een persoonlijke Cloud maken-basis gegevens](media/create-private-cloud-basic-info.png)
 
-9. Klik op **Next: Geavanceerde opties**.
+9. Klik op **volgende: geavanceerde opties**.
 10. Voer het CIDR-bereik in voor vSphere/vSAN-subnetten. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises of andere Azure-subnetten (virtuele netwerken) of met het gateway-subnet.
 
     **Opties voor het CIDR-bereik:** /24,/23,/22 of/21. Een/24 CIDR-bereik ondersteunt Maxi maal 26 knoop punten, een/23 CIDR-bereik ondersteunt Maxi maal 58 knoop punten en een/22-en/21 CIDR-bereik ondersteunt 64-knoop punten (het maximum aantal knoop punten in een Privécloud).  Zie voor meer informatie en VLAN'S en subnetten het [overzicht van vlan's en subnetten](cloudsimple-vlans-subnets.md).
@@ -55,9 +55,9 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
       > [!IMPORTANT]
       > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de infra structuur van de Privécloud.  Gebruik het IP-adres in dit bereik op geen enkele virtuele machine.
 
-11. Klik op **Next: Controleren en maken**.
+11. Klik op **volgende: controleren en maken**.
 12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
-13. Klik op **Create**.
+13. Klik op **Maken**.
 
 Het inrichtings proces voor de privécloud wordt gestart.  Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
@@ -82,7 +82,7 @@ Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer
 2. Selecteer **VPN gateway**.
 3. Klik op **nieuw VPN gateway**.
 
-    ![VPN-gateway maken](media/create-vpn-gateway.png)
+    ![Een VPN-gateway maken](media/create-vpn-gateway.png)
 
 4. Geef voor **Gateway configuratie**de volgende instellingen op en klik op **volgende**.
 
@@ -139,7 +139,7 @@ Nadat u een Privécloud hebt gemaakt, maakt u een VLAN waar u uw werk belasting/
 5. Selecteer een VLAN-ID in de lijst.  
 6. Voer de naam van een subnet in om het subnet te identificeren.
 7. Geef het CIDR-bereik en-masker van het subnet op.  Dit bereik mag niet overlappen met bestaande subnetten.
-8. Klik op **Indienen**.
+8. Klik op **Submit**
 
     ![Details van VLAN/subnet maken](media/create-new-vlan-subnet-details.png)
 
@@ -155,11 +155,11 @@ U kunt zich nu aanmelden bij vCenter om virtuele machines en beleids regels in t
 
 1. Als u toegang wilt krijgen tot vCenter, start u vanuit de CloudSimple-Portal. Klik op de start pagina onder **algemene taken**op **VSphere-client starten**.  Selecteer de privécloud en klik vervolgens op **vSphere-client starten** op de privécloud.
 
-    ![vSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![VSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Selecteer de gewenste vSphere-client om toegang te krijgen tot de vCenter en meld u aan met uw gebruikers naam en wacht woord.  De standaard waarden zijn:
     * Gebruikers naam: **CloudOwner@cloudsimple.local**
-    * Wacht woord **CloudSimple123!**  
+    * Wacht woord: **CloudSimple123!**  
 
 De vCenter-schermen in de volgende procedures zijn afkomstig van de vSphere-client (HTML5).
 
@@ -168,27 +168,27 @@ De vCenter-schermen in de volgende procedures zijn afkomstig van de vSphere-clie
 CloudSimple raadt u aan uw wacht woord te wijzigen wanneer u zich voor de eerste keer aanmeldt bij vCenter.  
 Het wacht woord dat u instelt, moet voldoen aan de volgende vereisten:
 
-* Maximale levens duur: Het wacht woord moet elke 365 dagen worden gewijzigd
-* Hergebruik beperken: Gebruikers kunnen de voor gaande vijf wacht woorden niet opnieuw gebruiken
-* Duur: 8-20 tekens
-* Speciaal teken: Ten minste één speciaal teken
-* Alfabetische tekens: Ten minste één hoofd letter, A-Z en ten minste één kleine letter, a-z
-* Rijnummers Ten minste één numeriek teken, 0-9
-* Maximum aantal identieke aangrenzende tekens: Drie
+* Maximale levens duur: wacht woord moet elke 365 dagen worden gewijzigd
+* Hergebruik beperken: gebruikers kunnen de eerdere vijf wacht woorden niet opnieuw gebruiken
+* Lengte: 8-20 tekens
+* Speciaal teken: ten minste één speciaal teken
+* Alfabetische tekens: ten minste één hoofd letter, A-Z en minstens één kleine letter, a-z
+* Cijfers: ten minste één numeriek teken, 0-9
+* Maximum aantal identieke aangrenzende tekens: drie
 
-    Voorbeeld: CC of CC is acceptabel als onderdeel van het wacht woord, maar CCCC niet.
+    Voor beeld: CC of CC is acceptabel als onderdeel van het wacht woord, maar CCCC niet.
 
 Als u een wacht woord instelt dat niet aan de vereisten voldoet:
 
 * Als u de vSphere Flash-client gebruikt, wordt er een fout melding weer gegeven
 * Als u de HTML5-client gebruikt, wordt er geen fout gerapporteerd. De client accepteert de wijziging niet en het oude wacht woord blijft werken.
 
-## <a name="change-nsx-administrator-password"></a>NSX-beheerders wachtwoord wijzigen
+## <a name="access-nsx-manager"></a>Toegang tot NSX Manager
 
-NSX Manager wordt geïmplementeerd met een standaard wachtwoord.  U wordt aangeraden het wacht woord te wijzigen nadat u de Privécloud hebt gemaakt.
+NSX Manager wordt geïmplementeerd met een standaard wachtwoord. 
 
 * Gebruikers naam: **beheerder**
-* Wacht woord **CloudSimple123!**
+* Wacht woord: **CloudSimple123!**
 
 U vindt de Fully Qualified Domain Name (FQDN) en het IP-adres van NSX Manager op CloudSimple-Portal.
 
@@ -198,8 +198,6 @@ U vindt de Fully Qualified Domain Name (FQDN) en het IP-adres van NSX Manager op
 4. Gebruik de FQDN of het IP-adres van **NSX Manager** en maak verbinding via een webbrowser.
 
     ![FQDN van NSX Manager zoeken](media/private-cloud-nsx-manager-fqdn.png)
-
-Volg de instructies in de [installatie van NSX Manager](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)om het wacht woord te wijzigen.
 
 ## <a name="create-a-port-group"></a>Een poort groep maken
 

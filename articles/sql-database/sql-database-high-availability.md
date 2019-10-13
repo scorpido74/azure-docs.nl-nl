@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 06/10/2019
-ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 54994dd626df23694ea372d4a662d2b4fb051fc8
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568146"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285760"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
@@ -39,7 +39,7 @@ Deze service lagen maken gebruik van de standaard beschikbaarheids architectuur.
 
 Het standaard beschikbaarheids model bevat twee lagen:
 
-- Een stateless Compute-laag die het `sqlserver.exe` proces uitvoert en bevat alleen tijdelijke en in de cache opgeslagen gegevens op de gekoppelde SSD, zoals TempDB, model database, plan cache, buffer groep en column Store-groep. Dit stateless knoop punt wordt gebruikt door Azure service Fabric dat initialiseert `sqlserver.exe`, de status van het knoop punt beheert en failover naar een ander knoop punt uitvoert, indien nodig.
+- Een stateless Compute-laag die het `sqlserver.exe`-proces uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens op de gekoppelde SSD bevat, zoals TempDB, model database, plan cache, buffer groep en column Store-groep. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat `sqlserver.exe` initialiseert, de status van het knoop punt beheert en een failover naar een ander knoop punt uitvoert, indien nodig.
 - Een stateful gegevenslaag met de database bestanden (. MDF/. ldf) die zijn opgeslagen in Azure Blob Storage. Azure Blob-opslag heeft ingebouwde functie voor gegevens beschikbaarheid en redundantie. Hiermee wordt gegarandeerd dat elke record in het logboek bestand of de pagina in het gegevens bestand blijft behouden, zelfs als SQL Server proces vastloopt.
 
 Wanneer de data base-engine of het besturings systeem wordt bijgewerkt, of als er een fout wordt gedetecteerd, wordt het stateless SQL Server proces door Azure Service Fabric verplaatst naar een ander stateless reken knooppunt met voldoende vrije capaciteit. Gegevens in Azure Blob-opslag worden niet beïnvloed door de verplaatsing en de gegevens/logboek bestanden zijn gekoppeld aan het zojuist geïnitialiseerde SQL Server proces. Dit proces garandeert een Beschik baarheid van 99,99%, maar een zware werk belasting kan tijdens de overgang enige prestatie vermindering veroorzaken, omdat de nieuwe SQL Server-instantie begint met koude cache.
@@ -54,14 +54,15 @@ De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppe
 
 Een extra voor deel is dat het Premium-beschikbaarheids model de mogelijkheid biedt om alleen-lezen SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](sql-database-read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
 
-## <a name="zone-redundant-configuration"></a>Zone redundante configuratie
+### <a name="zone-redundant-configuration"></a>Zone redundante configuratie
 
-Het cluster met knoop punten voor het Premium-beschikbaarheids model wordt standaard in hetzelfde Data Center gemaakt. Met de introductie van [Azure-beschikbaarheidszones](../availability-zones/az-overview.md)kan SQL database verschillende replica's in het cluster plaatsen in verschillende beschikbaarheids zones in dezelfde regio. Om een Single Point of Failure te elimineren, wordt de controle ring ook gedupliceerd over meerdere zones als drie gateway ringen (GW). De route ring naar een specifieke gateway ring wordt beheerd door [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Omdat de zone redundante configuratie in de service lagen van Premium of Bedrijfskritiek geen extra database redundantie maakt, kunt u deze zonder extra kosten inschakelen. Als u een zone redundante configuratie selecteert, kunt u uw Premium-of Bedrijfskritiek-data bases tot een veel grotere set storingen leiden, inclusief een onherstelbare uitval van het Data Center, zonder dat u de toepassings logica hoeft te wijzigen. U kunt ook bestaande Premium-of Bedrijfskritiek-data bases of-groepen converteren naar de zone redundante configuratie.
+Het cluster met knoop punten voor het Premium-beschikbaarheids model wordt standaard in hetzelfde Data Center gemaakt. Met de introductie van [Azure-beschikbaarheidszones](../availability-zones/az-overview.md)kan SQL database verschillende replica's van de bedrijfskritiek-data base plaatsen in verschillende beschikbaarheids zones in dezelfde regio. Om een Single Point of Failure te elimineren, wordt de controle ring ook gedupliceerd over meerdere zones als drie gateway ringen (GW). De route ring naar een specifieke gateway ring wordt beheerd door [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Omdat de zone redundante configuratie in de service lagen van Premium of Bedrijfskritiek geen extra database redundantie maakt, kunt u deze zonder extra kosten inschakelen. Als u een zone redundante configuratie selecteert, kunt u uw Premium-of Bedrijfskritiek-data bases tot een veel grotere set storingen leiden, inclusief een onherstelbare uitval van het Data Center, zonder dat u de toepassings logica hoeft te wijzigen. U kunt ook bestaande Premium-of Bedrijfskritiek-data bases of-groepen converteren naar de zone redundante configuratie.
 
 Omdat de redundante data bases van de zone replica's hebben in verschillende data centers met een aantal onderlinge afstanden, kan de verhoogde netwerk latentie de doorvoer tijd verhogen en de prestaties van bepaalde OLTP-workloads beïnvloeden. U kunt altijd terugkeren naar de configuratie met één zone door de instelling voor zone redundantie uit te scha kelen. Dit proces is een online bewerking die vergelijkbaar is met de normale upgrade van de servicelaag. Aan het einde van het proces wordt de data base of groep gemigreerd van een redundante ring zone naar een enkele zone ring of andersom.
 
 > [!IMPORTANT]
 > Zone redundante data bases en elastische Pools worden momenteel alleen ondersteund in de service lagen Premium en Bedrijfskritiek in regio's selecteren. Wanneer u de laag Bedrijfskritiek gebruikt, is de redundante configuratie van de zone alleen beschikbaar wanneer de GEN5 Compute-hardware is geselecteerd. Zie [Services ondersteunen per regio](../availability-zones/az-overview.md#services-support-by-region)voor actuele informatie over de regio's die zone redundante data bases ondersteunen.  
+> Deze functie is niet beschikbaar in een beheerd exemplaar.
 
 De zone redundante versie van de architectuur met hoge Beschik baarheid wordt geïllustreerd in het volgende diagram:
 

@@ -1,5 +1,5 @@
 ---
-title: Cross-Tenant beheer ervaringen met Azure Lighthouse
+title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
-ms.translationtype: MT
+ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309656"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286619"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -57,7 +57,7 @@ Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgend
 
 - Waarschuwingen weer geven voor gedelegeerde abonnementen in de Azure Portal of programmatisch via REST API-aanroepen, met de mogelijkheid om waarschuwingen voor alle abonnementen weer te geven
 - Details van het activiteiten logboek voor gedelegeerde abonnementen weer geven
-- Log Analytics: Gegevens opvragen uit externe klant werkruimte in meerdere tenants
+- Log Analytics: gegevens opvragen uit externe werk ruimten van klanten in meerdere tenants
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -119,7 +119,7 @@ Ondersteunings aanvragen:
 ## <a name="current-limitations"></a>Huidige beperkingen
 Houd bij alle scenario's rekening met de volgende beperkingen:
 
-- Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze `https://management.azure.com`aanvragen beginnen met. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar `https://myaccount.blob.core.windows.net` , `https://mykeyvault.vault.azure.net/`zoals of. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
+- Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com`. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/`. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
 - Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar, beheerder van gebruikers toegang of ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden ook niet ondersteund.
 - Op dit moment kunt u geen abonnement (of resource groep binnen een abonnement) voor Azure delegated Resource Management gebruiken als het abonnement gebruikmaakt van Azure Databricks. Als een abonnement is geregistreerd voor onboarding met de resource provider **micro soft. ManagedServices** , kunt u op dit moment geen Databricks-werk ruimte maken voor dat abonnement.
 

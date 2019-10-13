@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 09/26/2019
 ms.author: magoedte
-ms.openlocfilehash: f8dcab1a7a46d518b752e48f9886b60a37d8ec4c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
-ms.translationtype: MT
+ms.openlocfilehash: 4f03fc71a11c1ecb2e96b316efac9249395fc333
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299544"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285538"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 In dit artikel wordt uitgelegd hoe u met de procedure voor het uitvoeren van Azure Log Analytics Workspace kunt verwijderen en hoe u de verwijderde werk ruimte herstelt. 
@@ -41,24 +41,25 @@ Met de bewerking voor het verwijderen van de werk ruimte wordt de resource manag
 > [!NOTE] 
 > Geïnstalleerde oplossingen en gekoppelde services, zoals het Automation-account, worden definitief uit de werk ruimte verwijderd tijdens het verwijderen en kunnen niet worden hersteld. Deze moeten na de herstel bewerking opnieuw worden geconfigureerd om de werk ruimte naar de vorige functionaliteit te brengen. 
 
-U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)of in [Azure Portal](https://portal.azure.com).
+U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)of in [Azure Portal](https://portal.azure.com).
 
 ### <a name="delete-workspace-in-azure-portal"></a>Werk ruimte in Azure Portal verwijderen
 1. Als u zich wilt aanmelden, gaat u naar de [Azure Portal](https://portal.azure.com). 
 2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 3. Selecteer een werk ruimte in de lijst met Log Analytics-werk ruimten en klik vervolgens op **verwijderen** boven in het middelste deel venster.
-   ![Optie verwijderen in deel venster Eigenschappen van werk ruimte](media/delete-workspace/log-analytics-delete-workspace.png)
+   ![Delete optie in deel venster werkruimte eigenschappen @ no__t-1
 4. Wanneer het venster bevestigings bericht wordt weer gegeven waarin u wordt gevraagd om het verwijderen van de werk ruimte te bevestigen, klikt u op **Ja**.
-   ![Verwijderen van werk ruimte bevestigen](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+   ![Confirm verwijderen van de werk ruimte @ no__t-1
 
 ## <a name="recover-workspace"></a>Werk ruimte herstellen
 Als u Inzender machtigingen hebt voor het abonnement en de resource groep waaraan de werk ruimte is gekoppeld vóór de tijdelijke bewerking, kunt u deze herstellen tijdens de tijdelijke verwijderings periode, inclusief gegevens, configuratie en verbonden agents. Na de periode voor het voorlopig verwijderen is de werk ruimte niet-herstelbaar en toegewezen voor permanente verwijdering.
 
-U kunt een werk ruimte herstellen door de werk ruimte opnieuw te maken met een van de ondersteunde Create-methoden: Power shell, Azure CLI of de Azure Portal zo lang deze eigenschappen worden gevuld met de details van de verwijderde werk ruimte, waaronder:
+U kunt een werk ruimte herstellen door de werk ruimte opnieuw te maken met behulp van [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) of [rest API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) werk ruimte methoden te maken zolang deze eigenschappen zijn gevuld met de details van de verwijderde werk ruimte, zoals:
 1.  Abonnements-id
 2.  Naam van resource groep
-3.  Naam van de werkruimte
+3.  Werkruimte naam
 4.  Regio
 
 > [!NOTE]
-> De namen van verwijderde werk ruimten blijven bewaard voor de zachte verwijderings periode en kunnen niet worden gebruikt bij het maken van een nieuwe werk ruimte. De werkruimte namen worden *vrijgegeven* en beschikbaar voor het maken van nieuwe werk ruimten nadat de tijdelijke verwijderings periode is verlopen.
+> * Werkruimte herstel wordt niet ondersteund in de [Azure Portal](https://portal.azure.com). Wanneer u tijdens de tijdelijke verwijderings periode een werk ruimte opnieuw maakt, geeft u een indicatie dat deze werkruimte naam al in gebruik is.
+> * Namen van verwijderde werk ruimten blijven behouden voor de zachte verwijderings periode en kunnen niet worden gebruikt bij het maken van een nieuwe werk ruimte.

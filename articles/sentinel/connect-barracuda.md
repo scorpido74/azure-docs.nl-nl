@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240203"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72284657"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Verbinding maken met uw Barracuda-apparaat 
 
@@ -37,10 +37,7 @@ Barracuda Web Application firewall kan Logboeken rechtstreeks integreren en expo
 1. Ga naar de [configuratie stroom BARRACUDA WAF](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)en volg de instructies voor het instellen van de verbinding, met behulp van de volgende para meters:
     - **Werk ruimte-id**: Kopieer de waarde van uw werk ruimte-id van de Azure Sentinel Barracuda-connector pagina.
     - **Primaire sleutel**: Kopieer de waarde van uw primaire sleutel op de pagina Azure Sentinel Barracuda-connector.
-2. In de Azure-Sentinel-portal gaat u naar de werk ruimte waarop u Azure Sentinel hebt geïmplementeerd en selecteert u het beletsel teken (...) aan het einde van de rij en selecteert u **Geavanceerde instellingen**. 
-1. Selecteer **gegevens** en vervolgens **syslog**.
-1. Zorg ervoor dat de faciliteit die u hebt ingesteld in Barracuda bestaat en stel de ernst in en klik op **Opslaan**.
-6. Als u het relevante schema in Log Analytics voor de Barracuda-gebeurtenissen wilt gebruiken, zoekt u naar **CommonSecurityLog** en **barracuda_CL**.
+1. Als u het relevante schema in Log Analytics voor de Barracuda-gebeurtenissen wilt gebruiken, zoekt u naar **CommonSecurityLog** en **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren

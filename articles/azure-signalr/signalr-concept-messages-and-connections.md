@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401199"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285485"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Berichten en verbindingen in Azure SignalR Service
 
@@ -20,7 +20,7 @@ Het factureringsmodel voor Azure SignalR Service is gebaseerd op het aantal verb
 
 ## <a name="message-formats"></a>Berichtindelingen 
 
-Azure SignalR Service ondersteunt dezelfde indelingen als ASP.NET Core SignalR: [JSON](https://www.json.org/) en [MessagePack](/aspnet/core/signalr/messagepackhubprotocol).
+De Azure signalerings service ondersteunt dezelfde indelingen als ASP.NET Core-Signa lering: [JSON](https://www.json.org/) en [Message Pack](/aspnet/core/signalr/messagepackhubprotocol).
 
 ## <a name="message-size"></a>Berichtgrootte
 
@@ -42,19 +42,21 @@ Het aantal berichten dat in de Azure-portal wordt weergegeven, blijft 0 totdat h
 
 ## <a name="how-connections-are-counted"></a>Hoe verbindingen worden geteld
 
-Er zijn serververbindingen en clientverbindingen. Standaard heeft elke toepassingsserver per hub vijf verbindingen met Azure SignalR Service en heeft elke client één clientverbinding met Azure SignalR Service.
+Er zijn server verbindingen en client verbindingen met de Azure signalerings service. Standaard begint elke toepassings server met vijf initiële verbindingen per hub, en elke client heeft één client verbinding.
 
 Het aantal verbindingen dat in de Azure-portal wordt weergegeven, betreft zowel server- als clientverbindingen.
 
-Stel dat u twee toepassingsservers hebt en dat u vijf hubs in code definieert. Het aantal serververbindingen is dan 50: 2 app-servers * 5 hubs * 5 verbindingen per hub.
+Stel dat u twee toepassingsservers hebt en dat u vijf hubs in code definieert. Het aantal server verbindingen is 50:2 app-servers * 5 hubs * 5 verbindingen per hub.
 
-ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Elke toepassingsserver moet standaard vijf extra serververbindingen hebben. Het aantal verbindingen voor de standaardhub blijft in overeenstemming met de andere hubs.
+ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Standaard moet elke toepassings server vijf extra initiële server verbindingen hebben. Het oorspronkelijke aantal verbindingen voor de standaard-hub blijft consistent met die van de andere hubs.
+
+Tijdens de levens duur van de toepassings server houdt de service en de toepassings server de status van de synchronisatie verbinding bij en maken ze een aanpassing van server verbindingen voor betere prestaties en stabiliteit van de service. Het is dus mogelijk dat de server verbindings nummers van tijd tot tijd veranderen.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Hoe binnenkomend/uitgaand verkeer wordt geteld
 
 Het verschil tussen binnenkomend en uitgaand verkeer is gebaseerd op het perspectief van Azure SignalR Service. Verkeer wordt geteld in bytes. Net zoals het aantal berichten, heeft het verkeer ook een samplefrequentie. De grafiek met binnenkomend/uitgaand verkeer in de Azure-portal wordt elke 100 kB per hub bijgewerkt.
 
-## <a name="related-resources"></a>Gerelateerde resources
+## <a name="related-resources"></a>Gerelateerde bronnen
 
 - [Aggregatietypen in Azure Monitor](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR-configuratie](/aspnet/core/signalr/configuration)

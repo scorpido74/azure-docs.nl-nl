@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/14/2019
-ms.openlocfilehash: 4c186787af08a565dc100dfbd79d166688d89d8f
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013442"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285530"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift-cluster maken
+# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Zelf studie: een Azure Red Hat open Shift-cluster maken
 
 Deze zelfstudie is deel één van een serie. U leert hoe u een Microsoft Azure Red Hat open Shift-cluster maakt met behulp van Azure CLI, hoe u het kunt schalen en hoe u het kunt verwijderen om de resources op te schonen.
 
@@ -46,17 +46,17 @@ Zorg ervoor dat u [uw ontwikkel omgeving hebt ingesteld](howto-setup-environment
 - Een beveiligings groep maken
 - Een Active Directory gebruiker maken om zich aan te melden bij het cluster.
 
-## <a name="step-1-sign-in-to-azure"></a>Stap 1: Aanmelden bij Azure
+## <a name="step-1-sign-in-to-azure"></a>Stap 1: aanmelden bij Azure
 
-Als u de Azure cli lokaal uitvoert, opent u een bash-opdracht shell en `az login` voert u uit om u aan te melden bij Azure.
+Als u de Azure CLI lokaal uitvoert, opent u een bash-opdracht shell en voert u `az login` uit om u aan te melden bij Azure.
 
 ```bash
 az login
 ```
 
- Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` u `{subscription ID}` de vervanging uit met het abonnement dat u wilt gebruiken.
+ Als u toegang hebt tot meerdere abonnementen, voert u `az account set -s {subscription ID}` vervangen `{subscription ID}` met het abonnement dat u wilt gebruiken.
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>Stap 2: Een Azure Red Hat OpenShift-cluster maken
+## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>Stap 2: een Azure Red Hat open Shift-cluster maken
 
 Stel in een bash-opdracht venster de volgende variabelen in:
 
@@ -73,7 +73,7 @@ Kies een locatie om uw cluster te maken. Zie [ondersteunde regio's](supported-re
 LOCATION=<location>
 ```
 
-Stel `APPID` in op de waarde die u hebt opgeslagen in stap 5 van [een Azure AD-App-registratie maken](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
+Stel `APPID` in op de waarde die u hebt opgeslagen in stap 5 van het [maken van een Azure AD-App-registratie](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
 
 ```bash
 APPID=<app ID value>
@@ -91,7 +91,7 @@ Stel `SECRET` in op de waarde die u hebt opgeslagen in stap 8 van [een client ge
 SECRET=<secret value>
 ```
 
-Stel `TENANT` in op de waarde van de Tenant-id die u hebt opgeslagen in stap 7 van [een nieuwe Tenant maken](howto-create-tenant.md#create-a-new-azure-ad-tenant)  
+Stel `TENANT` in op de Tenant-ID-waarde die u hebt opgeslagen in stap 7 van [een nieuwe Tenant maken](howto-create-tenant.md#create-a-new-azure-ad-tenant)  
 
 ```bash
 TENANT=<tenant ID>
@@ -103,7 +103,7 @@ Maak de resource groep voor het cluster. Voer de volgende opdracht uit vanaf dez
 az group create --name $CLUSTER_NAME --location $LOCATION
 ```
 
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Optioneel: Het virtuele netwerk van het cluster verbinden met een bestaand virtueel netwerk
+### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Optioneel: verbinding maken tussen het virtuele netwerk van het cluster en een bestaand virtueel netwerk
 
 Als u geen verbinding hoeft te maken met het virtuele netwerk (VNET) van het cluster dat u hebt gemaakt met een bestaand VNET via peering, kunt u deze stap overs Laan.
 
@@ -127,13 +127,16 @@ Bijvoorbeeld: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceG
 
 U bent nu klaar om een cluster te maken. Met de volgende opdracht maakt u het cluster in de opgegeven Azure AD-Tenant, geeft u het Azure AD-App-object en het geheim op dat moet worden gebruikt als beveiligings-principal en de beveiligings groep die de leden bevat die beheerders toegang tot het cluster hebben.
 
+> [!IMPORTANT]
+> Zorg ervoor dat u de juiste machtigingen hebt toegevoegd voor de Azure AD-app, zoals [hier wordt beschreven](howto-aad-app-configuration.md#add-api-permissions) voordat u het cluster maakt
+
 Als u uw cluster **niet** aan een virtueel netwerk wilt koppelen, gebruikt u de volgende opdracht:
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
-Als u uw cluster aan een virtueel netwerk wilt koppelen, gebruikt u de volgende opdracht waarmee de `--vnet-peer` vlag wordt toegevoegd:
+Als u uw cluster aan een virtueel **netwerk wilt koppelen** , gebruikt u de volgende opdracht waarmee de vlag `--vnet-peer` wordt toegevoegd:
  
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
@@ -142,7 +145,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 > [!NOTE]
 > Als er een fout bericht wordt weer geven dat de hostnaam niet beschikbaar is, kan het zijn dat de naam van uw cluster niet uniek is. Probeer de oorspronkelijke app-registratie te verwijderen en de stappen opnieuw uit te voeren met een andere cluster naam in [een nieuwe app-registratie maken](howto-aad-app-configuration.md#create-an-azure-ad-app-registration), waarbij u de stap voor het maken van een nieuwe gebruiker en beveiligings groep weglaat.
 
-Na een paar minuten `az openshift create` wordt voltooid.
+Na een paar minuten wordt `az openshift create` voltooid.
 
 ### <a name="get-the-sign-in-url-for-your-cluster"></a>De aanmeldings-URL voor uw cluster ophalen
 
@@ -152,28 +155,28 @@ Haal de URL op om u aan te melden bij uw cluster door de volgende opdracht uit t
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
-Zoek naar de `publicHostName` in de uitvoer, bijvoorbeeld:`"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
+Zoek naar de `publicHostName` in de uitvoer, bijvoorbeeld: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
 
-De aanmeldings-URL voor uw cluster wordt `https://` gevolgd door de `publicHostName` waarde.  Bijvoorbeeld: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  U gebruikt deze URI in de volgende stap als onderdeel van de app registratie omleidings-URI.
+De aanmeldings-URL voor uw cluster wordt `https://` gevolgd door de waarde van de `publicHostName`.  Bijvoorbeeld: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  U gebruikt deze URI in de volgende stap als onderdeel van de app registratie omleidings-URI.
 
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>Stap 3: De omleidings-URI voor de app-registratie bijwerken
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>Stap 3: de omleidings-URI voor de app-registratie bijwerken
 
 Nu u de aanmeldings-URL voor het cluster hebt, stelt u de gebruikers interface voor het omleiden van de app-registratie in:
 
 1. Open de [blade app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
 2. Klik op uw app-registratie object.
 3. Klik op **een omleidings-URI toevoegen**.
-4. Zorg ervoor dat het **type** **Web** is en stel de omleidings- **URI** in met het volgende patroon: `https://<public host name>/oauth2callback/Azure%20AD`. Bijvoorbeeld: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. Klik op **Opslaan**
+4. Zorg ervoor dat het **type** **Web** is en stel de **omleidings-URI** in met het volgende patroon: `https://<public host name>/oauth2callback/Azure%20AD`. Bijvoorbeeld: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. Klik op **Opslaan**.
 
-## <a name="step-4-sign-in-to-the-openshift-console"></a>Stap 4: Aanmelden bij de open Shift-console
+## <a name="step-4-sign-in-to-the-openshift-console"></a>Stap 4: Meld u aan bij de open Shift-console
 
-U bent nu klaar om u aan te melden bij de open Shift-console voor het nieuwe cluster. Met de webconsole van open [SHIFT](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) kunt u de inhoud van uw open Shift-projecten visualiseren, bekijken en beheren.
+U bent nu klaar om u aan te melden bij de open Shift-console voor het nieuwe cluster. Met de [webconsole](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) van open Shift kunt u de inhoud van uw open Shift-projecten visualiseren, bekijken en beheren.
 
 U hebt een nieuw browser exemplaar nodig dat de identiteit die u normaal gesp roken gebruikt om u aan te melden bij de Azure Portal.
 
-1. Open een *incognito* -venster (Chrome) of InPrivate Window (micro soft Edge).
-2. Ga naar de aanmeldings-URL die u hierboven hebt verkregen, bijvoorbeeld:`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
+1. Open een *incognito* -venster (Chrome) of *InPrivate* Window (micro soft Edge).
+2. Navigeer naar de aanmeldings-URL die u hierboven hebt verkregen, bijvoorbeeld: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
 
 Meld u aan met de gebruikers naam die u hebt gemaakt in stap 3 van [een nieuwe Azure Active Directory gebruiker maken](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user).
 
@@ -185,7 +188,7 @@ U bent nu aangemeld bij de cluster console.
 
  Meer informatie over [het gebruik van de open Shift-console](https://docs.openshift.com/aro/getting_started/developers_console.html) om installatie kopieën te maken en te bouwen in de [Red Hat open Shift](https://docs.openshift.com/aro/welcome/index.html) -documentatie.
 
-## <a name="step-5-install-the-openshift-cli"></a>Stap 5: De open Shift-CLI installeren
+## <a name="step-5-install-the-openshift-cli"></a>Stap 5: open Shift CLI installeren
 
 De open [SHIFT cli](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (of *OC-hulpprogram ma's*) bieden opdrachten voor het beheren van uw toepassingen en hulpprogram ma's op lagere niveaus voor interactie met de verschillende onderdelen van uw open Shift-cluster.
 
@@ -198,7 +201,7 @@ Klik in de open Shift-console op het vraag teken in de rechter bovenhoek op uw a
 
 De pagina **opdracht regel Programma's** bevat een opdracht van het formulier `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`.  Klik op de knop *kopiëren naar klem bord* om deze opdracht te kopiëren.  Stel in een Terminal venster [uw pad](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) in om uw lokale installatie van de hulpprogram ma's van OC op te laten staan. Meld u vervolgens aan bij het cluster met behulp van de OC CLI-opdracht die u hebt gekopieerd.
 
-Als u de token waarde niet kunt ophalen met behulp van de bovenstaande stappen, haalt u `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`de token waarde op uit:.
+Als u de token waarde niet kunt ophalen met behulp van de bovenstaande stappen, haalt u de token waarde op van: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

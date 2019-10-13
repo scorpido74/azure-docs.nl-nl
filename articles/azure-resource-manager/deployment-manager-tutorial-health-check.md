@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254986"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285685"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelf studie: status controle gebruiken in azure Deployment Manager (open bare preview)
 
@@ -38,8 +38,8 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Aanvullende bronnen:
 
-- De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.
+* De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -48,7 +48,16 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 * [Gebruik Azure Deployment Manager volt ooien met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
-* Down load [de sjablonen en de artefacten](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) die door deze zelf studie worden gebruikt.
+
+## <a name="install-the-artifacts"></a>De artefacten installeren
+
+Down load [de sjablonen en de artefacten](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) en pak deze lokaal uit als u dat nog niet hebt gedaan. En voer vervolgens het Power shell-script uit om [de artefacten voor te bereiden](./deployment-manager-tutorial.md#prepare-the-artifacts). Met het script maakt u een resource groep, maakt u een opslag container, maakt u een BLOB-container, uploadt u de gedownloade bestanden en maakt u vervolgens een SAS-token.
+
+Maak een kopie van de URL met SAS-token. Deze URL is nodig voor het invullen van een veld in de twee parameter bestanden, het bestand met de topologie parameters bestand en de implementatie parameters.
+
+Open CreateADMServiceTopology. para meters. json en werk de waarden van **projectName** en **artifactSourceSASLocation**bij.
+
+Open CreateADMRollout. para meters. json en werk de waarden van **projectName** en **artifactSourceSASLocation**bij.
 
 ## <a name="create-a-health-check-service-simulator"></a>Een Health Check-service Simulator maken
 
@@ -56,21 +65,12 @@ In productie gebruikt u meestal een of meer bewakings providers. Micro soft werk
 
 De volgende twee bestanden worden gebruikt voor het implementeren van de Azure-functie. U hoeft deze bestanden niet te downloaden om de zelf studie door te lopen.
 
-* Een resource manager-sjabloon bevindt zich op [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). U implementeert deze sjabloon om een Azure-functie te maken.
-* Een zip-bestand van de bron code van de Azure-functie, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
+* Een resource manager-sjabloon bevindt zich op [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). U implementeert deze sjabloon om een Azure-functie te maken.
+* Een zip-bestand van de bron code van de Azure-functie, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
 
 Als u de Azure-functie wilt implementeren, selecteert u **proberen** om de Azure Cloud shell te openen en plakt u het volgende script in het shell-venster.  Als u de code wilt plakken, klikt u met de rechter muisknop op het shell venster en selecteert u vervolgens **Plakken**.
 
-> [!IMPORTANT]
-> **projectName** in het Power shell-script wordt gebruikt voor het genereren van namen voor de Azure-Services die in deze zelf studie worden geïmplementeerd. Gebruik de **namePrefix** -waarde die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md) voor projectName.  Verschillende Azure-Services hebben verschillende vereisten voor de namen. Om ervoor te zorgen dat de implementatie is geslaagd, kiest u een naam van minder dan 12 tekens met alleen kleine letters en cijfers.
-> Sla een kopie van de project naam op. U gebruikt hetzelfde projectName-project met de zelf studie.
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
@@ -236,13 +236,6 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
 Voer het volgende Power shell-script uit om de topologie te implementeren. U hebt dezelfde **CreateADMServiceTopology. json** en **CreateADMServiceTopology. para meters. json** nodig die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
 
 ```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
-
-$resourceGroupName = "${projectName}rg"
-
-
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
@@ -369,9 +362,9 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Gebruik het veld **Filteren op naam** om u te beperken tot de resourcegroepen die u in deze zelfstudie hebt gemaakt. Er zijn er 3-4:
 
-    * **&lt;namePrefix > rg**: bevat de Deployment Manager-resources.
-    * **&lt;namePrefix > ServiceWUSrg**: bevat de resources die zijn gedefinieerd door ServiceWUS.
-    * **&lt;namePrefix>ServiceEUSrg**: bevat de resources die zijn gedefinieerd door ServiceEUS.
+    * **&lt;projectName > RG**: bevat de Deployment Manager resources.
+    * **&lt;projectName > ServiceWUSrg**: bevat de resources die zijn gedefinieerd door ServiceWUS.
+    * **&lt;projectName > ServiceEUSrg**: bevat de resources die zijn gedefinieerd door ServiceEUS.
     * De resourcegroep voor de door de gebruiker gedefinieerde beheerde identiteit.
 3. Selecteer de naam van de resourcegroep.
 4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
