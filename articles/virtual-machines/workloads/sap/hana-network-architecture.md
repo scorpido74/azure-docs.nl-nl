@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0872d3c798bd5bd94e425869822602e8123517b4
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099738"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303619"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Netwerk architectuur van SAP HANA (grote exemplaren)
 
@@ -73,9 +73,9 @@ De verschillen met SAP-implementaties in azure zijn:
 - De SAP-toepassings architectuur is gevoeliger voor netwerk latentie dan typische scenario's waarbij gegevens worden uitgewisseld tussen on-premises en Azure.
 - De Azure ExpressRoute-gateway heeft ten minste twee ExpressRoute-verbindingen. Een circuit dat is verbonden met een on-premise en een-netwerk dat is verbonden vanuit HANA grote instanties. Hiermee blijft alleen ruimte vrij voor andere twee extra circuits van verschillende Msee's om verbinding te maken met op ExpressRoute-gateway. Deze beperking is onafhankelijk van het gebruik van het ExpressRoute snelle pad. Alle verbonden circuits delen de maximale band breedte voor binnenkomende gegevens van de ExpressRoute-gateway.
 
-Met revisie 3 van HANA grote instantie stempels kan de netwerk latentie tussen virtuele machines en HANA grote instantie-eenheden hoger zijn dan een typische latentie van een snelle retour duur van VM-naar-VM-netwerk. Afhankelijk van de Azure-regio kunnen de gemeten waarden groter zijn dan de in het onderstaande gemiddelde geclassificeerde 0,7-MS [-retour latentie in SAP-Opmerking #1100926-Veelgestelde vragen: Netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E). Afhankelijk van de Azure-regio en het hulp programma voor het meten van de round-trip latentie tussen een Azure-VM en de HANA-eenheid voor grote instanties, kan de gemeten latentie tot en met 2 milliseconden zijn. Klanten implementeren echter op SAP HANA gebaseerde productie-SAP-toepassingen met succes op SAP HANA grote instantie. Zorg ervoor dat u uw bedrijfs processen grondig test in azure HANA grote exemplaren. Met een nieuwe functionaliteit, het ExpressRoute snelle pad, kan de netwerk latentie tussen HANA grote instanties en virtuele machines in azure aanzienlijk verminderen (zie hieronder). 
+Met revisie 3 van HANA grote instantie stempels kan de netwerk latentie tussen virtuele machines en HANA grote instantie-eenheden hoger zijn dan een typische latentie van een snelle retour duur van VM-naar-VM-netwerk. Afhankelijk van de Azure-regio, kunnen de gemeten waarden groter zijn dan de latentie van 0,7 MS die is geclassificeerd als onder gemiddeld in [SAP Note #1100926-Veelgestelde vragen: netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E). Afhankelijk van de Azure-regio en het hulp programma voor het meten van de round-trip latentie tussen een Azure-VM en de HANA-eenheid voor grote instanties, kan de gemeten latentie tot en met 2 milliseconden zijn. Klanten implementeren echter op SAP HANA gebaseerde productie-SAP-toepassingen met succes op SAP HANA grote instantie. Zorg ervoor dat u uw bedrijfs processen grondig test in azure HANA grote exemplaren. Met een nieuwe functionaliteit, het ExpressRoute snelle pad, kan de netwerk latentie tussen HANA grote instanties en virtuele machines in azure aanzienlijk verminderen (zie hieronder). 
 
-Met revisie 4 van Hana grote instantie stempels, is de netwerk latentie tussen virtuele Azure-machines die in de nabijheid van de Hana-grote instantie stempel is geïmplementeerd, gestuit om te voldoen aan het [gemiddelde of beter dan de gemiddelde classificatie zoals beschreven in SAP Note #1100926-VEELGESTELDE VRAGEN: Netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E) als het snelle pad van Azure ExpressRoute is geconfigureerd (zie hieronder). Als u virtuele Azure-machines in een nabijheid wilt implementeren in HANA grote instantie-eenheden van Revision 4, moet u gebruikmaken van [Azure proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Hoe proximity-plaatsings groepen kunnen worden gebruikt om de SAP-toepassingslaag te vinden in hetzelfde Azure-Data Center als revisie 4 gehoste HANA grote instantie-eenheden, worden beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen ](sap-proximity-placement-scenarios.md).
+Met revisie 4 van HANA grote instantie stempels, is de netwerk latentie tussen virtuele Azure-machines die in de nabijheid van de HANA-grote instantie stempel is geïmplementeerd, gestuit om te voldoen aan het gemiddelde of beter dan de gemiddelde classificatie zoals beschreven in [SAP Note #1100926-Veelgestelde vragen: Netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E) als het snelle pad van Azure ExpressRoute is geconfigureerd (zie hieronder). Als u virtuele Azure-machines in een nabijheid wilt implementeren in HANA grote instantie-eenheden van Revision 4, moet u gebruikmaken van [Azure proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Hoe proximity-plaatsings groepen kunnen worden gebruikt om de SAP-toepassingslaag te vinden in hetzelfde Azure-Data Center als revisie 4 gehoste HANA grote instantie-eenheden, worden beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen ](sap-proximity-placement-scenarios.md).
 
 Als u een deterministische netwerk latentie tussen Vm's en HANA grote instanties wilt bieden, is de keuze van de SKU van de ExpressRoute-gateway essentieel. In tegens telling tot de verkeers patronen tussen on-premises en virtuele machines, kan het verkeers patroon tussen Vm's en HANA grote instanties kleine, maar hoge bursts van aanvragen en gegevens volumes ontwikkelen. Om dergelijke bursts goed te kunnen afhandelen, wordt het gebruik van de Ultra Performance gateway-SKU sterk aangeraden. Het gebruik van de Ultra Performance gateway-SKU als een ExpressRotue-gateway is verplicht voor de klasse type II van HANA grote instanties.
 
@@ -124,7 +124,7 @@ Voor een meer schaal bare netwerk architectuur:
 
 ![SAP Application Layer implementeren via meerdere virtuele netwerken](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Afhankelijk van de regels en beperkingen die u wilt Toep assen tussen de verschillende virtuele netwerken die als host fungeren voor Vm's van verschillende SAP-systemen, moet u deze virtuele netwerken gelijkwaardig maken. Zie peering op [virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)voor meer informatie over peering voor virtuele netwerken.
+Afhankelijk van de regels en beperkingen die u wilt Toep assen tussen de verschillende virtuele netwerken die als host fungeren voor Vm's van verschillende SAP-systemen, moet u deze virtuele netwerken gelijkwaardig maken. Zie [peering op virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)voor meer informatie over peering voor virtuele netwerken.
 
 
 ## <a name="routing-in-azure"></a>Route ring in azure
@@ -138,7 +138,14 @@ Standaard zijn drie netwerk Routering overwegingen belang rijk voor SAP HANA op 
 * SAP HANA op Azure (grote exemplaren) eenheden hebben een toegewezen IP-adres uit het adres bereik van de server-IP-groep die u hebt verzonden bij het aanvragen van de implementatie van de HANA-grote instantie. Zie [SAP Hana (grote instanties) infra structuur en connectiviteit op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. Dit IP-adres is toegankelijk via de Azure-abonnementen en het circuit waarmee virtuele Azure-netwerken met HANA grote instanties worden verbonden. Het IP-adres dat is toegewezen aan het IP-adres bereik van de server, wordt rechtstreeks toegewezen aan de hardware-eenheid. Het is *niet* meer toegewezen via NAT, zoals in de eerste implementatie van deze oplossing. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Directe route ring naar HANA grote instanties
-De transitieve route ring tussen de HANA grote exemplaar eenheden en de on-premises of tussen HANA grote instantie routering die in twee verschillende regio's worden geïmplementeerd, werkt standaard niet. Er zijn verschillende mogelijkheden om dergelijke transitieve route ring in te scha kelen.
+
+De transitieve route ring werkt standaard niet in deze scenario's:
+
+* Tussen HANA grote instantie-eenheden en een on-premises implementatie.
+
+* Tussen HANA-route ring van grote instanties die in twee verschillende regio's zijn geïmplementeerd.
+
+Er zijn drie manieren om transitieve route ring in te scha kelen in deze scenario's:
 
 - Een reverse-proxy om gegevens te routeren naar en van. Bijvoorbeeld: F5 BIG-IP, NGINX met Traffic Manager geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en met on-premises als een oplossing voor virtuele firewall/verkeers routering.
 - Het gebruik van [iptables-regels](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) in een Linux-VM om route ring mogelijk te maken tussen on-premises locaties en Hana grote instantie-eenheden, of tussen Hana grote instantie-eenheden in verschillende regio's. De VM met IPTables moet worden geïmplementeerd in het virtuele Azure-netwerk dat is verbonden met HANA grote instanties en on-premises. De VM moet dienovereenkomstig worden aangepast, zodat de netwerk doorvoer van de virtuele machine voldoende is voor het verwachte netwerk verkeer. Voor meer informatie over VM-netwerk bandbreedte raadpleegt u de artikel [grootten van virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).

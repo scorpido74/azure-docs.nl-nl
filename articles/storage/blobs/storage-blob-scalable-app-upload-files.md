@@ -1,18 +1,18 @@
 ---
 title: Grote hoeveelheden willekeurige gegevens gelijktijdig uploaden naar Azure Storage | Microsoft Docs
-description: Informatie over het gebruik van de Azure SDK om grote hoeveelheden willekeurige gegevens gelijktijdig naar een Azure Storage-account te uploaden
+description: Meer informatie over het gebruik van de Azure Storage-client bibliotheek voor het uploaden van grote hoeveel heden wille keurige gegevens parallel met een Azure Storage-account
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5b20686399db9537e5db8622a433b5e506939d19
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698958"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302976"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Grote hoeveelheden willekeurige gegevens gelijktijdig uploaden naar Azure Storage
 
@@ -28,11 +28,11 @@ In deel twee van de serie leert u het volgende:
 
 Azure Blob-opslag biedt een schaalbare service voor het opslaan van gegevens. Om er zeker van te kunnen zijn of uw toepassing optimaal presteert, is het raadzaam te weten hoe blob-opslag werkt. Het is belangrijk dat u kennis hebt van de limieten van Azure-blobs, raadpleeg daarom voor meer informatie over deze limieten [schaalbaarheidsdoelen van blob-opslag](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
-De [naam van een partitie](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) is een andere mogelijk belang rijke factor bij het ontwerpen van een zeer krachtige toepassing met behulp van blobs. Voor blok grootten die groter zijn dan of gelijk zijn aan vier MiB, worden [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) gebruikt en worden de prestaties van de partitie niet beïnvloed. Voor blok grootten die kleiner zijn dan vier MiB, gebruikt Azure Storage een partitie schema op basis van bereik om te schalen en taak verdeling. Deze configuratie betekent dat bestanden met vergelijkbare naamconventies of voorvoegsels naar dezelfde partitie gaan. Deze logica bevat de naam van de container waar de bestanden naar worden geüpload. In deze zelfstudie gebruikt u de bestanden die GUID's voor namen en willekeurig gegenereerde inhoud bevatten. Deze worden vervolgens naar vijf verschillende containers met willekeurige namen geüpload.
+De [naam van een partitie](../blobs/storage-performance-checklist.md#partitioning) is een andere mogelijk belang rijke factor bij het ontwerpen van een toepassing met hoge prestaties met behulp van blobs. Voor blok grootten die groter zijn dan of gelijk zijn aan 4 MiB, worden [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) gebruikt en worden de prestaties van de partitie niet beïnvloed. Voor de blok grootte kleiner dan 4 MiB gebruikt Azure Storage een partitie schema op basis van bereik om te schalen en taak verdeling. Deze configuratie betekent dat bestanden met vergelijkbare naamconventies of voorvoegsels naar dezelfde partitie gaan. Deze logica bevat de naam van de container waar de bestanden naar worden geüpload. In deze zelfstudie gebruikt u de bestanden die GUID's voor namen en willekeurig gegenereerde inhoud bevatten. Deze worden vervolgens naar vijf verschillende containers met willekeurige namen geüpload.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de vorige zelfstudie over opslag hebben voltooid: [Maak een virtuele machine en een opslag account voor een schaal bare toepassing][previous-tutorial].
+Voor het volt ooien van deze zelf studie moet u de vorige hand leiding voor opslag hebben voltooid: [een virtuele machine en een opslag account maken voor een schaal bare toepassing][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Extern verbinding maken met uw virtuele machine
 
@@ -66,11 +66,11 @@ De toepassing maakt vijf containers met willekeurige namen en begint met het upl
 
 Naast het instellen van de limietinstellingen voor threads en verbindingen zijn de [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) voor de methode [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) geconfigureerd om gebruik te maken van parallelle uitvoering en om validatie van de MD5-hash uit te schakelen. De bestanden worden geüpload in blokken van 100 MB. Deze configuratie biedt betere prestaties maar kan duur zijn als er een slecht presterend netwerk wordt gebruikt, omdat, wanneer er zich een storing voordoet, het gehele blok van 100 MB opnieuw wordt geüpload.
 
-|Eigenschap|Waarde|Description|
+|Eigenschap|Waarde|Beschrijving|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Met deze instelling wordt de blob in blokken opgesplitst bij het uploaden. Voor de hoogste prestaties moet deze waarde acht maal het aantal kernen zijn. |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd.   |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Deze eigenschap bepaalt of een MD5-hash wordt berekend en samen met het bestand opgeslagen.   |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| waar| Met deze eigenschap wordt de controle uitgeschakeld van de MD5-hash van de inhoud die wordt geüpload. MD5-validatie zorgt voor een snellere overdracht. Maar hiermee wordt de geldigheid of de integriteit van de bestanden die worden overgebracht, niet bevestigd.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| onwaar| Deze eigenschap bepaalt of een MD5-hash wordt berekend en samen met het bestand opgeslagen.   |
 | [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| Twee seconden uitstel bij maximaal tien nieuwe pogingen |Hiermee bepaalt u het beleid voor het opnieuw proberen van aanvragen. Bij verbindingsfouten wordt opnieuw geprobeerd. In dit voorbeeld is een [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-beleid geconfigureerd met een uitstel van twee seconden en een maximumaantal nieuwe pogingen van 10. Deze instelling is belangrijk als de toepassing de [schaalbaarheidsdoelen van de blob-opslag ](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) bijna heeft bereikt.  |
 
 De taak `UploadFilesAsync` wordt in het volgende voorbeeld weergegeven:

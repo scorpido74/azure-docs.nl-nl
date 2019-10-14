@@ -6,14 +6,14 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 82c56a01d7f14f1eeae26dfa784f3545552bf6b9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 43d39039d01b22e7d918755e9557d6a1030ef7a8
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981391"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302871"
 ---
-# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
 
 Als u aan uw bedrijfsnormen en serviceovereenkomsten wilt blijven voldoen, is het belangrijk dat u begrijpt hoe u beleidsregels kunt maken en beheren in Azure. In deze zelfstudie leert u hoe u Azure Policy gebruikt om enkele algemene taken voor het maken, toewijzen en beheren van beleid in uw organisatie uit te voeren, zoals:
 
@@ -108,7 +108,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
    }
    ```
 
-   De eigenschap *Veld* in de beleidsregel moet een van de volgende waarden hebben: Een naam, type, locatie, tag of alias. Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
+   De eigenschap *Field* in de beleids regel moet een van de volgende waarden zijn: naam, type, locatie, tags of een alias. Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
 
    Meer Azure Policy-voorbeelden vindt u in [Voorbeelden van Azure Policy](../samples/index.md).
 
@@ -336,7 +336,7 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Voer de **naam** en **beschrijving** van het initiatief in.
 
-   Dit voorbeeld zorgt ervoor worden dat bronnen voldoen aan beleidsdefinities over beveiliging. Noem het initiatief **Beveiligen** en stel de volgende beschrijving in: **Dit initiatief is gemaakt voor het afhandelen van alle beleidsregels die zijn gekoppeld aan het beveiligen van resources**.
+   Dit voorbeeld zorgt ervoor worden dat bronnen voldoen aan beleidsdefinities over beveiliging. Geef het initiatief de naam **Beveiligen** en stel de volgende beschrijving in: **Dit initiatief is gemaakt voor het afhandelen van alle beleidsregels die zijn gekoppeld aan het beveiligen van resources**.
 
 1. Kies voor **Categorie** uit bestaande opties of maak een nieuwe categorie.
 
@@ -365,7 +365,7 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-1. Zoek de initiatiefdefinitie **Veilig worden** die u eerder hebt gemaakt en klik erop. Selecteer **Toewijzen** bovenaan de pagina om de pagina **Beveiligen: Initiatief toewijzen** te openen.
+1. Zoek de initiatiefdefinitie **Veilig worden** die u eerder hebt gemaakt en klik erop. Selecteer **Toewijzen** bovenaan de pagina om de pagina **Veilig worden: initiatief toewijzen** te openen.
 
    ![De pagina definitie van de definitie van het initiatief toewijzen](../media/create-and-manage/assign-definition.png)
 
@@ -373,12 +373,12 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
    ![Alternatieve opties voor een initiatief](../media/create-and-manage/select-right-click.png)
 
-1. Vul de pagina **Beveiligen: Initiatief toewijzen** in door de volgende voorbeeldinformatie in te voeren. U kunt uw eigen gegevens gebruiken.
+1. Vul het formulier **Veilig worden: definitie toewijzen** in door de volgende voorbeeldinformatie in te voeren. U kunt uw eigen gegevens gebruiken.
 
-   - Bereik: de beheergroep of het abonnement waarin u het initiatief hebt opgeslagen, wordt de standaardwaarde.
+   - Bereik: de beheergroep of het abonnement waarin u het initiatief hebt opgeslagen wordt de standaardwaarde.
      U kunt het bereik wijzigen om het initiatief toe te wijzen aan een abonnement of resourcegroep in de opslaglocatie.
-   - Uitsluitingen: configureer alle resources binnen het bereik om te voorkomen dat de initiatieftoewijzing erop wordt toegepast.
-   - Definitie van het initiatief en naam van de toewijzing: Beveiligen (vooraf ingevuld als de naam van het initiatief dat wordt toegewezen).
+   - Uitsluitingen: Configureer alle resources binnen het bereik om te voorkomen dat de initiatieftoewijzing erop wordt toegepast.
+   - Initiatiefdefinitie en naam van de Toewijzing: Veilig worden (vooraf ingevuld als de naam van het initiatief dat wordt toegewezen).
    - Beschrijving: deze initiatieftoewijzing heeft als doel deze groep beleidsdefinities af te dwingen.
    - Toegewezen door: automatisch gevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
@@ -390,7 +390,7 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Naleving** links op de Azure Policy-pagina.
 
-1. Zoek het initiatief **Bron ophalen**. De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
+1. Zoek het initiatief **Get Secure** . De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
    Klik op het initiatief voor volledige informatie over de voortgang van de toewijzing.
 
    ![Nalevings pagina initiatief-evaluaties niet gestart](../media/create-and-manage/compliance-status-not-started.png)
@@ -408,11 +408,11 @@ In het volgende voorbeeld is elke willekeurige versie van een SQL-server toegest
 
 Een implementatie die wordt verhinderd door een toegewezen beleid of initiatief kan worden weergegeven op twee locaties:
 
-- In de resourcegroep waarop de implementatie is gericht: Selecteer **Implementaties** aan de linkerkant van de pagina en klik op de **implementatienaam** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Om het beleid of het initiatief en de toewijzing te bepalen die de resource heeft geweigerd, klikt u op **Mislukt. Klik hier voor meer informatie ->** op de overzichtspagina van de implementatie. Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
+- Op de resource groep waarop de implementatie is gericht: Selecteer **implementaties** aan de linkerkant van de pagina en klik vervolgens op de naam van de **implementatie** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Klik op mislukt om het beleid of initiatief en de toewijzing te bepalen dat de resource **heeft geweigerd. Klik hier voor meer informatie->** op de pagina implementatie overzicht. Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
 
   ![Implementatie geweigerd door beleidstoewijzing](../media/create-and-manage/rg-deployment-denied.png)
 
-- Op de Azure Policy-pagina: Selecteer **Naleving** aan de linkerkant van de pagina en klik op het beleid **SQL Server versie 12.0 vereisen**. Op de pagina die wordt geopend, ziet u een toename van de teller **Weigeren**. Op het tabblad **Gebeurtenissen** ziet u ook wie heeft geprobeerd de door het beleid geweigerde implementatie uit te voeren.
+- Op de pagina Azure Policy: Selecteer **Naleving** aan de linkerkant van de pagina en klik op het beleid **SQL Server versie 12.0 vereisen**. Op de pagina die wordt geopend, ziet u een toename van de teller **Weigeren**. Op het tabblad **Gebeurtenissen** ziet u ook wie heeft geprobeerd de door het beleid geweigerde implementatie uit te voeren.
 
   ![Overzicht van de naleving van een toegewezen beleid](../media/create-and-manage/compliance-overview.png)
 

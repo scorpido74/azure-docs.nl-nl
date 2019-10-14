@@ -1,6 +1,6 @@
 ---
-title: Koppelen of ontkoppelen van een volume Azure NetApp bestanden voor Windows of Linux-machines | Microsoft Docs
-description: Beschrijft hoe u om te koppelen of ontkoppelen van een volume voor virtuele machines of virtuele Linux-machines.
+title: Een Azure NetApp Files-volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines | Microsoft Docs
+description: Hierin wordt beschreven hoe u een volume koppelt of ontkoppelt voor virtuele machines of virtuele Linux-machines.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: b-juche
-ms.openlocfilehash: a401cae7140d9ceec5ec81274e1b6f3b2b46b55a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76e01055043932f2c7e7d57bd7eed6265d666a8c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371502"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302784"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen 
 
-U kunt koppelen of ontkoppelen van een volume voor Windows of Linux-machines naar behoefte.  De instructies voor koppelen voor virtuele Linux-machines zijn op Azure NetApp bestanden beschikbaar.  
+U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines.  De koppelings instructies voor virtuele Linux-machines zijn beschikbaar op Azure NetApp Files.  
 
-1. Klik op de **Volumes** blade, en selecteer vervolgens het volume waarvan u wilt koppelen. 
-2. Klik op **instructies voor koppelen** uit het geselecteerde volume, en volg de instructies voor het koppelen van het volume. 
+1. Klik op de Blade **volumes** en selecteer vervolgens het volume dat u wilt koppelen. 
+2. Klik op **koppelings instructies** van het geselecteerde volume en volg de instructies om het volume te koppelen. 
 
-    ![Instructies NFS voor koppelen](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
+    ![Koppelings instructies NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![SMB-instructies voor koppelen](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
+    ![Koppelings instructies SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
+    
+Als u NFSv 4.1 gebruikt, gebruikt u de volgende opdracht om het bestands systeem te koppelen: `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`

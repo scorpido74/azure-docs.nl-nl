@@ -1,33 +1,31 @@
 ---
 title: Achtergrond taken uitvoeren met webjobs-Azure App Service
 description: Leer hoe u webjobs kunt gebruiken om achtergrond taken uit te voeren in Azure App Service web apps, API apps of mobiele apps.
-services: app-service
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
-ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
+manager: wgallace
+s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d97f826f4288d13589a2fb9da8148d58a2c5e1e
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177495"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303580"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Achtergrond taken uitvoeren met webjobs in Azure App Service
 
+In dit artikel wordt beschreven hoe u webjobs kunt implementeren met behulp van de [Azure Portal](https://portal.azure.com) voor het uploaden van een uitvoerbaar bestand of script. Zie [Webjobs implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over het ontwikkelen en implementeren van webjobs met Visual Studio.
+
 ## <a name="overview"></a>Overzicht
-Webjobs is een functie van [Azure app service](https://docs.microsoft.com/azure/app-service/) waarmee u een programma of script kunt uitvoeren in dezelfde context als een web-app, API-app of mobiele app. Er zijn geen extra kosten verbonden aan het gebruik van webjobs.
+Webjobs is een functie van [Azure app service](index.yml) waarmee u een programma of script kunt uitvoeren in dezelfde context als een web-app, API-app of mobiele app. Er zijn geen extra kosten verbonden aan het gebruik van webjobs.
 
 > [!IMPORTANT]
 > Webjobs wordt nog niet ondersteund voor App Service in Linux.
-
-In dit artikel wordt beschreven hoe u webjobs kunt implementeren met behulp van de [Azure Portal](https://portal.azure.com) voor het uploaden van een uitvoerbaar bestand of script. Zie [Webjobs implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over het ontwikkelen en implementeren van webjobs met Visual Studio.
 
 De Azure WebJobs SDK kan worden gebruikt met webjobs om veel programmeer taken te vereenvoudigen. Zie [Wat is de Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)? voor meer informatie.
 
@@ -180,6 +178,8 @@ U kunt een [NCRONTAB-expressie](../azure-functions/functions-bindings-timer.md#n
 ```
 
 Zie [een geactiveerde Webtaak plannen](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)voor meer informatie.
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ## <a name="ViewJobHistory"></a>De taak geschiedenis weer geven
 

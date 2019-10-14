@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327299"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303513"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
 Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soorten bedrijfs toepassingen en-services kunt schrijven en uitvoeren. Deze toepassingen en micro Services kunnen stateless of stateful zijn, en de resources worden verdeeld over virtuele machines om de efficiëntie te maximaliseren. 
@@ -30,19 +30,19 @@ Lees de [architectuur micro Services in Azure service Fabric](https://docs.micro
 
 Overweeg het gebruik van het Service Fabric platform voor de volgende typen toepassingen:
 
-* **Gegevens verzamelen, verwerken en IOT**: Service Fabric verhandelt grote schaal en heeft een lage latentie door de stateful Services. Hiermee kunnen gegevens worden verwerkt op miljoenen apparaten waar de gegevens voor het apparaat en de berekening worden geplaatst.
+* **Gegevens verzameling, verwerking en IOT**: Service Fabric verwerkt grote schaal en heeft een lage latentie door de stateful Services. Hiermee kunnen gegevens worden verwerkt op miljoenen apparaten waar de gegevens voor het apparaat en de berekening worden geplaatst.
 
     Klanten die IoT-Services hebben gebouwd met behulp van Service Fabric, zijn [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL-constructie](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneidere Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)en [net Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
-* **Interactieve toepassingen op basis van games en sessies**: Service Fabric is handig als uw toepassing Lees-en schrijf bewerkingen met een lage latentie vereist, zoals in online gaming of chat berichten. Met Service Fabric kunt u deze interactieve, stateful toepassingen bouwen zonder dat u een afzonderlijke Store of cache hoeft te maken. Ga naar [Azure gaming oplossingen](https://azure.microsoft.com/solutions/gaming/) voor ontwerp richtlijnen over het [gebruik van service fabric in gaming services](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf).
+* **Interactieve toepassingen op het niveau van games en sessies**: Service Fabric is handig als uw toepassing Lees-en schrijf bewerkingen met een lage latentie vereist, zoals in online gaming of chat berichten. Met Service Fabric kunt u deze interactieve, stateful toepassingen bouwen zonder dat u een afzonderlijke Store of cache hoeft te maken. Ga naar [Azure gaming oplossingen](https://azure.microsoft.com/solutions/gaming/) voor ontwerp richtlijnen over het [gebruik van service fabric in gaming services](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf).
 
     Klanten die gaming-services hebben gebouwd, zijn [volgende games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) en [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/). Klanten die interactieve sessies hebben gebouwd, zijn [Honeywell met Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
-* **Gegevens analyse en werk stroom verwerking**: Toepassingen die op betrouw bare wijze gebeurtenissen of gegevens stromen moeten verwerken van de geoptimaliseerde Lees-en schrijf bewerkingen in Service Fabric. Service Fabric ondersteunt ook pijp lijnen voor toepassings verwerking, waarbij resultaten betrouwbaar moeten zijn en moeten worden door gegeven aan de volgende verwerkings fase zonder verlies. Deze pijp lijnen bevatten transactionele en financiële systemen, waarbij de consistentie van gegevens en de berekenings garanties essentieel zijn.
+* **Gegevens analyse en werk stroom verwerking**: toepassingen die op betrouw bare wijze gebeurtenissen of gegevens stromen moeten verwerken van de geoptimaliseerde Lees-en schrijf bewerkingen in service Fabric. Service Fabric ondersteunt ook pijp lijnen voor toepassings verwerking, waarbij resultaten betrouwbaar moeten zijn en moeten worden door gegeven aan de volgende verwerkings fase zonder verlies. Deze pijp lijnen bevatten transactionele en financiële systemen, waarbij de consistentie van gegevens en de berekenings garanties essentieel zijn.
 
     Klanten die zakelijke werk stroom Services hebben gebouwd, zijn onder andere [Zeiss Group](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform), [quorum Business Solutions](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)en [Société General](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric).
 
-* **Berekening van gegevens**: Met Service Fabric kunt u stateful toepassingen bouwen die intensieve gegevens berekening uitvoeren. Service Fabric kunt de verwerkings locatie en gegevens in toepassingen. 
+* **Berekening van gegevens**: met Service Fabric kunt u stateful toepassingen bouwen die intensieve gegevens berekening uitvoeren. Service Fabric kunt de verwerkings locatie en gegevens in toepassingen. 
 
    Normaal gesp roken geldt dat als uw toepassing toegang tot gegevens vereist, de netwerk latentie die aan een externe gegevens cache of opslaglaag is gekoppeld, de tijd van de berekening beperkt. Stateful Service Fabric services elimineren die latentie, waardoor er meer geoptimaliseerde Lees-en schrijf bewerkingen mogelijk zijn. 
    
@@ -52,7 +52,7 @@ Overweeg het gebruik van het Service Fabric platform voor de volgende typen toep
 
 * **Maxi maal beschik bare Services**: Service Fabric biedt snelle failover door meerdere secundaire service replica's te maken. Als een knoop punt, proces of afzonderlijke service uitvalt vanwege een hardware-of andere fout, wordt een van de secundaire replica's gepromoveerd tot een primaire replica met mini maal verlies van service.
 
-* **Schaal bare Services**: Afzonderlijke services kunnen worden gepartitioneerd, zodat de status van het hele cluster kan worden uitgeschaald. U kunt ook afzonderlijke services maken en verwijderen. U kunt services van slechts enkele exemplaren op een paar knoop punten uitschalen naar duizenden exemplaren op meerdere knoop punten en deze vervolgens naar behoefte schalen. U kunt Service Fabric gebruiken om deze services te bouwen en hun volledige levens cyclus te beheren.
+* **Schaal bare Services**: afzonderlijke services kunnen worden gepartitioneerd, zodat de status van het hele cluster kan worden uitgeschaald. U kunt ook afzonderlijke services maken en verwijderen. U kunt services van slechts enkele exemplaren op een paar knoop punten uitschalen naar duizenden exemplaren op meerdere knoop punten en deze vervolgens naar behoefte schalen. U kunt Service Fabric gebruiken om deze services te bouwen en hun volledige levens cyclus te beheren.
 
 ## <a name="application-design-case-studies"></a>Case-study's over toepassings ontwerp
 Casestudy's die laten zien hoe Service Fabric wordt gebruikt voor het ontwerpen van toepassingen, worden gepubliceerd op de [klant verhalen](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) en micro [Services in azure](https://azure.microsoft.com/solutions/microservice-applications/) -sites.
@@ -70,7 +70,7 @@ In de volgende diagrammen ziet u de verschillen tussen het ontwerpen van een toe
 
 Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![Application die stateless Services gebruiken @ no__t-1
 
-Hier volgt een voor beeld van een toepassing die stateful Services gebruikt: ![Application die stateless Services gebruiken @ no__t-1
+Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![Application die stateful Services gebruiken @ no__t-1
 
 ## <a name="next-steps"></a>Volgende stappen
 

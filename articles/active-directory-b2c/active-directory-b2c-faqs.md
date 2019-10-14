@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065871"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302537"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Veelgestelde vragen
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
 Op deze pagina vindt u antwoorden op veelgestelde vragen over de Azure Active Directory B2C (Azure AD B2C). Blijf op de hoogte met het controleren op updates.
 
@@ -27,7 +27,7 @@ Er zijn twee veelvoorkomende redenen waarom de Azure AD-uitbrei ding niet werkt 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kan ik Azure AD B2C functies in mijn bestaande Azure AD-Tenant op basis van werk nemers gebruiken?
 
-Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Met aangepast beleid (in open bare preview) kan Azure AD B2C met Azure AD communiceren met de verificatie van werk nemers in een organisatie.
+Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Met aangepast beleid kan Azure AD B2C naar Azure AD communiceren met de verificatie van werk nemers in een organisatie.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Kan ik Azure AD B2C gebruiken om sociale aanmelding (Facebook en Google +) aan te bieden in Office 365?
 
@@ -35,9 +35,9 @@ Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsof
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Wat zijn lokale accounts in Azure AD B2C? Wat zijn de verschillen tussen werk-of school accounts in azure AD?
 
-In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de Tenant aanmelden met een e-mail adres `<xyz>@<tenant domain>`van het formulier. De `<tenant domain>` is een van de geverifieerde domeinen in de Tenant of het `<...>.onmicrosoft.com` eerste domein. Dit type account is een werk-of school account.
+In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de Tenant aanmelden met een e-mail adres van het formulier `<xyz>@<tenant domain>`. De `<tenant domain>` is een van de geverifieerde domeinen in de Tenant of het eerste `<...>.onmicrosoft.com` domein. Dit type account is een werk-of school account.
 
-In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met joe@comcast.neteen wille keurig e-mail adres (bijvoorbeeld bob@gmail.com sarah@contoso.com,, of jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
+In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met een wille keurig e-mail adres (bijvoorbeeld joe@comcast.net, bob@gmail.com, sarah@contoso.com of jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
 
 Gebruikers accounts voor toepassingen moeten altijd worden gemaakt via een gebruikers stroom voor registratie, registratie of aanmelding, of met behulp van de Azure AD-Graph API. Gebruikers accounts die zijn gemaakt in de Azure Portal worden alleen gebruikt voor het beheer van de Tenant.
 
@@ -52,14 +52,14 @@ Azure AD B2C biedt ook ondersteuning voor [aangepast beleid](active-directory-b2
 Nee. De standaard scopes die worden gebruikt voor onze ondersteunde providers voor sociale identificatie zijn:
 
 * Facebook: e-mail
-* Google+: email
+* Google +: e-mail
 * Microsoft-account: OpenID Connect-e-mail profiel
 * Amazon: profiel
 * LinkedIn: r_emailaddress, r_basicprofile
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Moet mijn toepassing worden uitgevoerd op Azure voor de IT-afdeling met Azure AD B2C?
 
-Nee, u kunt uw toepassing overal hosten (in de Cloud of on-premises). Alle IT-behoeften moeten communiceren met Azure AD B2C is de mogelijkheid om HTTP-aanvragen te verzenden en ontvangen op openbaar toegankelijke eind punten.
+Nee, u kunt uw toepassing overal hosten (in de Cloud of on-premises). Alles wat uw toepassing nodig heeft voor interactie met Azure AD B2C, is de mogelijkheid om HTTP-aanvragen te verzenden en te ontvangen op openbaar toegankelijke eindpunten.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Ik heb meerdere Azure AD B2C-tenants. Hoe kan ik deze beheren op het Azure Portal?
 
@@ -69,8 +69,8 @@ Voordat u Azure AD B2C in het menu aan de linkerkant van het Azure Portal opent,
 
 U kunt de [functie voor bedrijfs huisstijl](../active-directory/fundamentals/customize-branding.md) gebruiken om de inhoud van verificatie-e-mails aan te passen. Deze twee elementen van het e-mail bericht kunnen met name worden aangepast:
 
-* **Banner logo**: Aan de rechter kant weer gegeven.
-* **Achtergrond kleur**: Bovenaan weer gegeven.
+* **Banner logo**: wordt weer gegeven aan de rechter kant.
+* **Achtergrond kleur**: bovenaan weer gegeven.
 
     ![Scherm afbeelding van een aangepaste verificatie-e-mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
@@ -78,7 +78,7 @@ De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingev
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
 1. Open de Blade **Azure Active Directory** .
-1. Klik op de **eigenschappen** tabblad.
+1. Klik op het tabblad **Eigenschappen** .
 1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
 
@@ -122,7 +122,7 @@ Nee, Azure AD B2C biedt geen ondersteuning voor dezelfde set rapporten als Azure
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kan ik de gebruikers interface lokaliseren van pagina's die worden bediend door Azure AD B2C? Welke talen worden ondersteund?
 
-Ja.  Meer informatie over [taal aanpassing](active-directory-b2c-reference-language-customization.md), die in open bare preview is. We bieden vertalingen voor 36 talen en u kunt alle teken reeksen aanpassen aan uw behoeften.
+Ja, Zie [taal aanpassing](active-directory-b2c-reference-language-customization.md). We bieden vertalingen voor 36 talen en u kunt alle teken reeksen aanpassen aan uw behoeften.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Kan ik mijn eigen Url's gebruiken op mijn registratie-en aanmeldings pagina's die worden bediend door Azure AD B2C? Bijvoorbeeld, kan ik de URL wijzigen van contoso.b2clogin.com in login.contoso.com?
 

@@ -8,19 +8,19 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: b175c34f131a7a0f172c7be0dda083fbfda3dc1e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721446"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302964"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Queue Storage gebruiken met PHP
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Overzicht
 In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de Azure Queue Storage-service. De voor beelden zijn geschreven via klassen uit de [Azure Storage-client bibliotheek voor php][download]. De gedekte scenario's zijn het invoegen, inspecteren, ophalen en verwijderen van wachtrij berichten, en het maken en verwijderen van wacht rijen.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -28,12 +28,15 @@ In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met beh
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Een PHP-toepassing maken
+
 De enige vereiste voor het maken van een PHP-toepassing die toegang heeft tot Azure Queue-opslag is het verwijzen van klassen in de [Azure Storage-client bibliotheek voor php][download] vanuit uw code. U kunt elk ontwikkelprogramma gebruiken om uw toepassing te maken, waaronder Kladblok.
 
-In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal kunnen worden aangeroepen binnen een PHP-toepassing, of in code die wordt uitgevoerd binnen een Azure-webrole,-werk functie of-website.
+In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal kunnen worden aangeroepen binnen een PHP-toepassing, of in code die wordt uitgevoerd in een webtoepassing in Azure.
 
 ## <a name="get-the-azure-client-libraries"></a>De Azure-client bibliotheken ophalen
+
 ### <a name="install-via-composer"></a>Installeren via Composer
+
 1. Maak een bestand met de naam **Composer. json** in de hoofdmap van het project en voeg de volgende code toe:
    
     ```json
@@ -53,6 +56,7 @@ In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal
 Ga ook naar de [Azure Storage php-client bibliotheek][download] op github om de bron code te klonen.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Uw toepassing configureren voor toegang tot de wachtrij opslag
+
 Als u de Api's voor Azure Queue Storage wilt gebruiken, moet u het volgende doen:
 
 1. Refereer met de [require_once] -instructie naar het autoloader-bestand.
@@ -65,9 +69,10 @@ require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-In de volgende voor beelden wordt `require_once` de instructie altijd weer gegeven, maar alleen de klassen die nodig zijn om het voor beeld uit te voeren, worden verwezen.
+In de volgende voor beelden wordt de instructie `require_once` altijd weer gegeven, maar alleen de klassen die nodig zijn om het voor beeld uit te voeren, worden verwezen.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Een Azure Storage-verbinding instellen
+
 Als u een Azure Queue Storage-client wilt instantiëren, moet u eerst een geldig connection string hebben. De indeling voor de wachtrij service connection string is als volgt.
 
 Voor toegang tot een Live-service:
@@ -98,6 +103,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
+
 Met een **QueueRestProxy** -object kunt u een wachtrij maken met behulp van de methode **createQueue** . Bij het maken van een wachtrij kunt u opties instellen in de wachtrij, maar dit is niet vereist. (In het onderstaande voor beeld ziet u hoe u meta gegevens in een wachtrij kunt instellen.)
 
 ```php
@@ -137,6 +143,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="add-a-message-to-a-queue"></a>Een bericht aan een wachtrij toevoegen
+
 Gebruik **QueueRestProxy-> createMessage**om een bericht toe te voegen aan een wachtrij. De-methode heeft de naam van de wachtrij, de bericht tekst en bericht opties (optioneel).
 
 ```php
@@ -166,6 +173,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>Bekijken van het volgende bericht
+
 U kunt een bericht (of berichten) aan de voor kant van een wachtrij weer geven zonder het uit de wachtrij te verwijderen door het aanroepen van **QueueRestProxy-> peekMessages**. De methode **peekMessage** retourneert standaard één bericht, maar u kunt deze waarde wijzigen met behulp van de **PeekMessagesOptions-> methode setNumberOfMessages** .
 
 ```php
@@ -214,6 +222,7 @@ else{
 ```
 
 ## <a name="de-queue-the-next-message"></a>Het volgende bericht uit de wachtrij verwijderen
+
 Uw code verwijdert een bericht uit een wachtrij in twee stappen. Eerst roept u **QueueRestProxy-> listMessages**aan, waardoor het bericht onzichtbaar wordt voor alle andere code die vanuit de wachtrij wordt gelezen. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. (Als het bericht niet binnen deze tijds periode wordt verwijderd, wordt het opnieuw weer gegeven in de wachtrij.) Om het verwijderen van het bericht uit de wachtrij te volt ooien, moet u **QueueRestProxy-> deleteMessage**aanroepen. Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. Uw code aanroepen **deleteMessage** direct nadat het bericht is verwerkt.
 
 ```php
@@ -255,6 +264,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>De inhoud van een bericht in de wachtrij wijzigen
+
 U kunt de inhoud van een bericht in de wachtrij wijzigen door **QueueRestProxy-> updateMessage**aan te roepen. Als het bericht een werktaak vertegenwoordigt, kunt u deze functie gebruiken om de status van de werktaak bij te werken. Met de volgende code wordt het bericht in de wachtrij bijgewerkt met nieuwe inhoud en wordt de time-out voor de zicht baarheid ingesteld op een waarde van 60 seconden. Hiermee wordt de status van het werk dat is gekoppeld aan het bericht opgeslagen en wordt de client nog een minuut om te blijven werken met het bericht. U kunt deze techniek gebruiken om uit meerdere stappen bestaande werkstromen in berichten in de wachtrij te volgen zonder dat u helemaal opnieuw hoeft te beginnen als een verwerkingsstap vanwege een hardware- of softwarefout is mislukt. Doorgaans houdt u ook het aantal nieuwe pogingen bij en als het bericht meer dan *n* keer opnieuw is geprobeerd, verwijdert u het. Dit biedt bescherming tegen berichten die een toepassingsfout activeren telkens wanneer ze worden verwerkt.
 
 ```php
@@ -300,6 +310,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="additional-options-for-de-queuing-messages"></a>Aanvullende opties voor de wachtrij berichten
+
 Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of korte time-out voor de zicht baarheid instellen, waardoor uw code meer of minder tijd nodig is om elk bericht volledig te verwerken. In het volgende code voorbeeld wordt de methode **getMessages** gebruikt om 16 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp **van een for** -lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
 
 ```php
@@ -350,6 +361,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="get-queue-length"></a>Wachtrij lengte ophalen
+
 U kunt een schatting ophalen van het aantal berichten in de wachtrij. De **QueueRestProxy-> getQueueMetadata-** methode vraagt de wachtrij service om meta gegevens over de wachtrij te retour neren. Het aanroepen van de methode **getApproximateMessageCount** voor het geretourneerde object biedt een telling van het aantal berichten in een wachtrij. De telling is alleen geschatte omdat berichten kunnen worden toegevoegd of verwijderd nadat de wachtrij service op uw aanvraag reageert.
 
 ```php
@@ -381,6 +393,7 @@ echo $approx_msg_count;
 ```
 
 ## <a name="delete-a-queue"></a>Een wachtrij verwijderen
+
 Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de **QueueRestProxy-> delete Queue-** methode aan.
 
 ```php
@@ -409,6 +422,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Nu u de basis principes van Azure Queue Storage hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken:
 
 * Ga naar de [API-verwijzing voor Azure Storage php-client bibliotheek](https://azure.github.io/azure-storage-php/)
@@ -420,4 +434,3 @@ Zie ook het [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/
 [require_once]: https://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 [composer-phar]: https://getcomposer.org/composer.phar
-

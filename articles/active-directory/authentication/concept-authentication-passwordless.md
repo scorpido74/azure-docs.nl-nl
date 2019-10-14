@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000328"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303523"
 ---
 # <a name="what-is-passwordless"></a>Wat betekent zonder wachtwoord?
 
@@ -28,7 +28,7 @@ Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te
 
 Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt momenteel Windows hello voor onze Windows-Pc's. De Microsoft Authenticator app-en FIDO2-beveiligings sleutels worden toegevoegd aan de groep met wacht woorden.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-app
+## <a name="microsoft-authenticator-app"></a>App Microsoft Authenticator
 
 Laat de telefoon van uw werk nemer een verificatie methode met een wacht woord maken. U kunt ook de Microsoft Authenticator-app gebruiken als een handige multi-factor Authentication-optie naast een wacht woord. Maar nu is het beschikbaar als optie met een wacht woord.
 
@@ -52,12 +52,12 @@ Een beveiligings sleutel **moet** de volgende functies en uitbrei dingen van het
 | --- | --- | --- |
 | 1 | Residente sleutel | Met deze functie kan de beveiligings sleutel worden overdraagbaar, waar uw referentie wordt opgeslagen op de beveiligings sleutel. |
 | 2 | Client pincode | Met deze functie kunt u uw referenties beveiligen met een tweede factor en van toepassing op beveiligings sleutels die geen gebruikers interface hebben. |
-| 3 | hmac-secret | Deze uitbrei ding zorgt ervoor dat u zich kunt aanmelden bij uw apparaat wanneer het offline is of in de vliegtuig stand. |
+| 3 | HMAC-geheim | Deze uitbrei ding zorgt ervoor dat u zich kunt aanmelden bij uw apparaat wanneer het offline is of in de vliegtuig stand. |
 | 4 | Meerdere accounts per RP | Deze functie zorgt ervoor dat u dezelfde beveiligings sleutel kunt gebruiken voor meerdere services, zoals micro soft-account en Azure Active Directory. |
 
-De volgende providers bieden FIDO2-beveiligings sleutels van verschillende vorm factoren waarvan bekend is dat ze compatibel zijn met de paswordless-ervaring. Micro soft raadt klanten aan om de beveiligings eigenschappen van deze sleutels te evalueren door contact op te nemen met de leverancier en FIDO Alliance.
+De volgende providers bieden FIDO2-beveiligings sleutels van verschillende vorm factoren waarvan bekend is dat ze compatibel zijn met de ervaring zonder wacht woord. Micro soft raadt klanten aan om de beveiligings eigenschappen van deze sleutels te evalueren door contact op te nemen met de leverancier en FIDO Alliance.
 
-| Provider | Neem contact op met |
+| Provider | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
@@ -75,8 +75,8 @@ FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die ze
 - Beheerders kunnen alle gebruikers bereiken of gebruikers/groepen selecteren binnen hun Tenant voor elke methode
 - Eind gebruikers kunnen deze verificatie methoden zonder wacht woord registreren en beheren in hun account Portal
 - Eind gebruikers kunnen zich aanmelden met deze verificatie methoden met een wacht woord
-   - App Microsoft Authenticator: Werkt in scenario's waarin Azure AD-verificatie wordt gebruikt, inclusief alle browsers, tijdens de installatie van Windows 10 out of Box (OOBE), en met geïntegreerde mobiele apps op elk besturings systeem.
-   - Beveiligings sleutels: Werkt op het vergrendelings scherm voor Windows 10 versie 1809 of hoger en op het web in ondersteunde browsers, zoals micro soft Edge.
+   - Microsoft Authenticator-app: werkt in scenario's waarin Azure AD-verificatie wordt gebruikt, inclusief alle browsers, tijdens de installatie van Windows 10 out of Box (OOBE), en met geïntegreerde mobiele apps op elk besturings systeem.
+   - Beveiligings sleutels: werken op het vergrendelings scherm voor Windows 10 versie 1809 of hoger en het web in ondersteunde browsers, zoals micro soft Edge.
 
 ## <a name="next-steps"></a>Volgende stappen
 

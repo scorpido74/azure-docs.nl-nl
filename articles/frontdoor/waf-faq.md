@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375351"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302844"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Veelgestelde vragen over Azure Web Application Firewall
 
@@ -31,7 +31,7 @@ Een Azure WAF-beleid kan worden toegepast op webtoepassingen die worden gehost o
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Wat is WAF voor de Azure front-deur service? 
 
-Azure front-deur is een zeer schaal bare, wereld wijd gedistribueerde toepassing en Content Delivery Network. Wanneer u Azure WAF hebt geïntegreerd met de voor deur, worden denial-of-service-en gerichte toepassings aanvallen op de Azure-rand van het netwerk gestopt, sluit u af op aanvals bronnen voordat ze het virtuele netwerk binnengaan, wordt er beveiliging geboden zonder dat de prestaties worden aangetast.
+Azure front-deur is een zeer schaal bare, wereld wijd gedistribueerde toepassing en Content Delivery Network. Wanneer Azure WAF is geïntegreerd met Azure front-deur, worden denial-of-service-en gerichte toepassings aanvallen aan de rand van het Azure-netwerk gestopt. Deze beveiliging vindt plaats in de buurt van de bron van de aanvallen voordat ze een kans hebben om uw vitrual-netwerk in te voeren. WAF voor de Azure front deur-service biedt bescherming zonder verlies van prestaties.
 
 ## <a name="does-azure-waf-support-https"></a>Ondersteunt Azure WAF HTTPS?
 

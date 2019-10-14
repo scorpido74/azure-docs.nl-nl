@@ -1,22 +1,21 @@
 ---
-title: Zoek opdracht in volledige tekst toevoegen aan Azure Blob Storage-Azure Search
-description: Tekst inhoud in Azure Blob-opslag voor het indexeren van Azure Search verkennen in code met behulp van de HTTP-REST API.
-services: search
+title: Zoek opdracht in volledige tekst toevoegen aan Azure Blob Storage
+titleSuffix: Azure Search
+description: Inhoud extra heren en structuur toevoegen aan Azure-blobs bij het bouwen van een index voor zoeken in volledige tekst in Azure Search.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650091"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302904"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Blob-opslag doorzoeken met Azure Search
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Zoek opdracht in volledige tekst toevoegen aan Azure Blob-gegevens met behulp van Azure Search
 
 Het kan lastig zijn om te zoeken in de verschillende typen inhoud die zijn opgeslagen in Azure Blob Storage. U kunt echter met behulp van Azure Search de inhoud van uw blobs indexeren en doorzoeken met slechts enkele klikken. Voor het zoeken in Blob Storage moet een Azure Search-service worden ingericht. De verschillende service limieten en prijs categorieën van Azure Search zijn te vinden op de [pagina met prijzen](https://aka.ms/azspricing).
 
@@ -45,7 +44,7 @@ Azure Search kunnen worden geconfigureerd voor het extra heren van gestructureer
 
 JSON parseren kan momenteel niet worden geconfigureerd via de portal. [Meer informatie over JSON-parsering in Azure Search.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Snel starten
+## <a name="quickstart"></a>Snelstart
 Azure Search kunnen rechtstreeks worden toegevoegd aan blobs via de pagina voor de Blob Storage-Portal.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

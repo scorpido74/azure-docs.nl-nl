@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846247"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303591"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een limiet regel voor Web Application Firewall frequentie configureren met behulp van Azure PowerShell
 De frequentie limiet regel voor Azure Web Application Firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan vanaf één client-IP tijdens een duur van één minuut.
@@ -49,7 +49,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
-Maak een voor deur profiel door de instructies te volgen die [worden beschreven in Quick Start: Een voor deur profiel maken](quickstart-create-front-door.md)
+Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>URL-matching voorwaarden definiëren
 Definieer een URL-match voorwaarde (URL bevat/promo) met behulp van [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
@@ -76,11 +76,9 @@ Stel een frequentie limiet in met behulp van [New-AzFrontDoorWafCustomRuleObject
 
 ## <a name="configure-a-security-policy"></a>Een beveiligings beleid configureren
 
-Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzureRmResourceGroup`behulp van. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
+Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzureRmResourceGroup`. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
 
-In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met [behulp van de instructies in de Snelstartgids: Maak een artikel voor](quickstart-create-front-door.md) de voor deur.
-
- using [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Snelstartgids: een voor deur maken](quickstart-create-front-door.md) met behulp [van New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -94,7 +92,7 @@ In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGr
 Koppel het object voor het beveiligings beleid aan een bestaande front-endwebserver front-end-host en werk front-deur eigenschappen bij. Haal eerst het voorste deur object op met de opdracht [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) .
 Stel vervolgens de front-end *WebApplicationFirewallPolicyLink* -eigenschap in op de *resourceId* van het $ratePolicy dat in de vorige stap is gemaakt met behulp van de opdracht [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) . 
 
-In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met [behulp van de instructies in de Snelstartgids: Maak een artikel voor](quickstart-create-front-door.md) de voor deur. Vervang ook in het onderstaande voor beeld $frontDoorName door de naam van uw voorste deur profiel. 
+In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](quickstart-create-front-door.md) -artikel maken. Vervang ook in het onderstaande voor beeld $frontDoorName door de naam van uw voorste deur profiel. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
