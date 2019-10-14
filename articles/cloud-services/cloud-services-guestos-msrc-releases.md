@@ -10,40 +10,37 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/20/2019
+ms.date: 10/7/2019
 ms.author: raiye
-ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169362"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035176"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="september-2019-guest-os"></a>September 2019-gast besturingssysteem
 
->[!NOTE]
->Het besturings systeem september gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem september gast. Deze lijst is onderhevig aan wijzigingen.
-
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  2,90, 3,77, 4,70  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516115]  |  Flash   |  2,90, 3,77, 4,70, 5,35, 6,11  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4512578]  |  Meest recente cumulatieve update   |  6,11  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 en 4.7.2   |  6,11  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516044]  |  Meest recente cumulatieve update   |  5,35  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516064]  |  Windows-beveiliging   |  4,7  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514350]  |  .NET Framework 3,5   |  4,7  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4,7  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516062]  |  Windows-beveiliging   |  3,77  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514349]  |  .NET Framework 3,5   |  3,77  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3,77  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516033]  |  Windows-beveiliging   |  2.9  |  12 september 2019  |
-|  Rel 19-09   |  [4512488]  |  Niet-beveiliging   |  4,7  |  13 augustus 2019  |
-|  Rel 19-09   |  [4512518]  |  Niet-beveiliging   |  3,77  |  13 augustus 2019  |
-|  Rel 19-09   |  [4512506]  |  Niet-beveiliging   |  2.9  |  13 augustus 2019  |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516115]  |  Flash   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4512578]  |  Meest recente cumulatieve update   |  [6,11]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 en 4.7.2   |  [6,11]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516044]  |  Meest recente cumulatieve update   |  [5,35]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516064]  |  Windows-beveiliging   |  [4,70]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3,5   |  [4,70]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516062]  |  Windows-beveiliging   |  [3,77]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3,5   |  [3,77]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516033]  |  Windows-beveiliging   |  [2,90]  |  12 september 2019  |
+|  Rel 19-09   |  [4512488]  |  Niet-beveiliging   |  [4,70]  |  13 augustus 2019  |
+|  Rel 19-09   |  [4512518]  |  Niet-beveiliging   |  [3,77]  |  13 augustus 2019  |
+|  Rel 19-09   |  [4512506]  |  Niet-beveiliging   |  [2,90]  |  13 augustus 2019  |
 
 [4516046]: https://support.microsoft.com/kb/4516046
 [4516115]: https://support.microsoft.com/kb/4516115
@@ -60,6 +57,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
+[6,11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Augustus 2019-gast besturingssysteem
@@ -570,18 +572,18 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10-beveiliging | 5,22 | 14 augustus 2018 |
-| Rel 18-08 | [4343899] | Alleen Windows-beveiliging | 2,77 | 14 augustus 2018 |
+| Rel 18-08 | [4343899] | Alleen Windows-beveiliging | 2.77 | 14 augustus 2018 |
 | Rel 18-08 | [4343896] | Alleen Windows-beveiliging | 3,64 | 14 augustus 2018 |
 | Rel 18-08 | [4343888] | Alleen Windows-beveiliging | 4,57 | 14 augustus 2018 |
-| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 beveiliging | 2,77 | 14 augustus 2018 |
+| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 beveiliging | 2.77 | 14 augustus 2018 |
 | Rel 18-08 | [4344175], [4344172] | .NET 3.5, 4.x Security | 3,64 | 14 augustus 2018 |
 | Rel 18-08 | [4344178], [4344171] | .NET 3.5, 4.x Security | 4,57 | 14 augustus 2018 |
 | Rel 18-08 | [4346742], [4346739] | Versie van .NET 3,5, 4. x OOB | 3,64 | 30 juli 2018 |
 | Rel 18-08 | [4346745], [4346408] | Versie van .NET 3,5, 4. x OOB | 4,57 | 30 juli 2018 |
 | Rel 18-08 | [4343902] | Flash | 3,64, 4,57, 5,22 | 14 augustus 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14 augustus 2018 |
-| N/A | [4338818] |Niet-beveiligings update juli |2,77 | 10 juli 2018 |
-| N/A | [4019990] |Update van D3D-compiler voor .NET |2,77 | 10 juli 2018 |
+| N/A | [4338818] |Niet-beveiligings update juli |2.77 | 10 juli 2018 |
+| N/A | [4019990] |Update van D3D-compiler voor .NET |2.77 | 10 juli 2018 |
 | N/A | [4338830] |Niet-beveiligings update juli |3,64 | 10 juli 2018 |
 | N/A | [4338421] |Niet-Security .NET 3,5-Rollup van juli |3,64 | 10 juli 2018 |
 | N/A | [4338416] |Niet-beveiliging, .NET 4x Rollup |3,64 | 10 juli 2018 |
