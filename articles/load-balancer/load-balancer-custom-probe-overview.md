@@ -1,7 +1,7 @@
 ---
 title: Gebruik Azure Load Balancer status tests om te schalen en hoge Beschik baarheid te bieden voor uw service
 titlesuffix: Azure Load Balancer
-description: Informatie over het gebruik van statuscontroles instanties achter Load Balancer bewaken
+description: Meer informatie over het gebruik van status tests voor het controleren van exemplaren achter Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098930"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274116"
 ---
-# <a name="load-balancer-health-probes"></a>Load Balancer-tests voor status
+# <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
 Wanneer u taakverdelings regels met Azure Load Balancer gebruikt, moet u een status test opgeven zodat Load Balancer de status van het back-end-eind punt kan detecteren.  De configuratie van de status test en test reacties bepalen welke back-endadresgroep instanties nieuwe stromen ontvangen. U kunt Health tests gebruiken om het mislukken van een toepassing op een back-end-eind punt te detecteren. U kunt ook een aangepast antwoord op een status test genereren en de status test voor datatransport besturing gebruiken om de belasting of geplande downtime te beheren. Wanneer een status test is mislukt, verzendt Load Balancer geen nieuwe stromen meer naar het respectieve beschadigde exemplaar.
 
@@ -29,15 +29,15 @@ Status controles bieden ondersteuning voor meerdere protocollen. De beschik baar
 
 | | Standaard SKU | Basis-SKU |
 | --- | --- | --- |
-| [Test-typen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Test omlaag gedrag](#probedown) | Alle tests, gaan alle TCP-stromen. | Alle tests worden uitgeschakeld, alle TCP-stromen verlopen. | 
+| [Test typen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Gedrag van omlaag testen](#probedown) | Alle tests worden uitgevoerd, alle TCP-stromen worden voortgezet. | Alle tests worden uitgeschakeld, alle TCP-stromen verlopen. | 
 
 
 >[!IMPORTANT]
 >Bekijk dit document in zijn geheel, met inbegrip van belang rijke [ontwerp richtlijnen](#design) hieronder om een betrouw bare service te maken.
 
 >[!IMPORTANT]
->Load Balancer status tests zijn afkomstig van het IP-adres 168.63.129.16 en mogen niet worden geblokkeerd voor tests om uw exemplaar te markeren.  Beoordeling [bron-IP-adres-test](#probesource) voor meer informatie.
+>Load Balancer status tests zijn afkomstig van het IP-adres 168.63.129.16 en mogen niet worden geblokkeerd voor tests om uw exemplaar te markeren.  Controleer het [IP-adres van de test bron](#probesource) voor meer informatie.
 
 ## <a name="probes"></a>Configuratie testen
 
@@ -54,7 +54,7 @@ De status test configuratie bestaat uit de volgende elementen:
 Het aantal test reacties is van toepassing op beide
 
 - het aantal geslaagde tests waarmee een exemplaar kan worden gemarkeerd als actief, en
-- Het aantal mislukte tests dat ervoor zorgt dat een exemplaar wordt gemarkeerd als niet-actief.
+- het aantal mislukte tests dat ervoor zorgt dat een exemplaar wordt gemarkeerd als niet-actief.
 
 De opgegeven time-outwaarde en interval waarden bepalen of een exemplaar wordt gemarkeerd als up of down.  De duur van het interval vermenigvuldigd met het aantal test reacties bepaalt de duur waarin de test reacties moeten worden gedetecteerd.  De service reageert pas nadat de vereiste tests zijn uitgevoerd.
 
@@ -71,13 +71,13 @@ Voor dit voor beeld neemt het platform een korte tijd in beslag om te reageren o
 
 u kunt aannemen dat de reactie van een mislukte test wordt uitgevoerd tussen mini maal 10 seconden en een maximum van minder dan 15 seconden om te reageren op een wijziging in het signaal van de toepassing.  Dit voor beeld wordt gegeven om te illustreren wat er gebeurt, maar het is niet mogelijk om een exacte duur te ramen dan de hierboven aangegeven algemene richt lijnen die in dit voor beeld worden geïllustreerd.
  
-## <a name="types"></a>Test-typen
+## <a name="types"></a>Test typen
 
 Het protocol dat wordt gebruikt door de status test kan worden geconfigureerd met een van de volgende:
 
 - [TCP-listeners](#tcpprobe)
-- [HTTP-eindpunten](#httpprobe)
-- [HTTPS-eindpunten](#httpsprobe)
+- [HTTP-eind punten](#httpprobe)
+- [HTTPS-eind punten](#httpsprobe)
 
 De beschik bare protocollen zijn afhankelijk van de gebruikte Load Balancer SKU:
 
@@ -86,15 +86,15 @@ De beschik bare protocollen zijn afhankelijk van de gebruikte Load Balancer SKU:
 | Standaard SKU |    &#9989; |   &#9989; |   &#9989; |
 | Basis-SKU |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcpprobe"></a> TCP-test
+### <a name="tcpprobe"></a>TCP-test
 
-TCP-tests opnieuw verbinding maken met het uitvoeren van een drie richtingen open TCP-handshake met de gedefinieerde poort.  TCP-tests beëindigen een verbinding met een in vier richtingen gesloten TCP-handshake.
+TCP-tests initiëren een verbinding door een open TCP-handshake met drie richtings controle uit te voeren met de gedefinieerde poort.  TCP-tests beëindigen een verbinding met een in vier richtingen gesloten TCP-handshake.
 
-De minimale testinterval is 5 seconden en het minimale aantal antwoorden niet in orde is 2.  De totale duur van alle intervallen mag niet langer zijn dan 120 seconden.
+Het minimale test interval is 5 seconden en het minimum aantal foutieve reacties is 2.  De totale duur van alle intervallen mag niet langer zijn dan 120 seconden.
 
 Een TCP-test mislukt wanneer:
-* De TCP listener op het exemplaar reageert helemaal niet tijdens de time-outperiode.  Een test wordt gemarkeerd op basis van het aantal mislukte test aanvragen dat is geconfigureerd om te worden geantwoord voordat de test wordt ingedrukt.
-* De test ontvangt een TCP opnieuw instellen van het exemplaar.
+* De TCP-listener op het exemplaar reageert helemaal niet tijdens de time-outperiode.  Een test wordt gemarkeerd op basis van het aantal mislukte test aanvragen dat is geconfigureerd om te worden geantwoord voordat de test wordt ingedrukt.
+* De test ontvangt een TCP Reset van het exemplaar.
 
 Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resource manager-sjabloon:
 
@@ -109,21 +109,21 @@ Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resourc
       },
 ```
 
-### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS-test
+### <a name="httpprobe"></a><a name="httpsprobe"></a> Http/https-test
 
 >[!NOTE]
->HTTPS-test is alleen beschikbaar voor [Standard Load Balancer](load-balancer-standard-overview.md).
+>De HTTPS-test is alleen beschikbaar voor [Standard Load Balancer](load-balancer-standard-overview.md).
 
-HTTP-en HTTPS-tests bouwen op de TCP-test en geven een HTTP-GET met het opgegeven pad. Beide van deze tests ondersteuning voor relatieve paden voor de HTTP GET. HTTPS-tests zijn hetzelfde als HTTP-tests met de toevoeging van een Transport Layer Security (TLS, voorheen bekend als SSL) wrapper. De statustest is gemarkeerd als het exemplaar met een HTTP-statuscode 200 binnen de time-outperiode reageert.  Met de status test wordt standaard elke 15 seconden geprobeerd om de geconfigureerde poort voor Health probe te controleren. De minimale testinterval is 5 seconden. De totale duur van alle intervallen mag niet langer zijn dan 120 seconden.
+HTTP-en HTTPS-tests bouwen op de TCP-test en geven een HTTP-GET met het opgegeven pad. Beide tests ondersteunen relatieve paden voor HTTP GET. HTTPS-tests zijn hetzelfde als HTTP-tests met toevoeging van een Transport Layer Security (TLS, voorheen bekend als SSL) wrapper. De status test is gemarkeerd wanneer het exemplaar reageert met een HTTP-status 200 binnen de time-outperiode.  Met de status test wordt standaard elke 15 seconden geprobeerd om de geconfigureerde poort voor Health probe te controleren. Het minimale test interval is 5 seconden. De totale duur van alle intervallen mag niet langer zijn dan 120 seconden.
 
-HTTP/HTTPS-tests kunnen ook nuttig zijn als u de status test wilt uitdrukken.  Implementeer uw eigen logica om exemplaren te verwijderen uit load balancer draaiing als de test poort ook de listener voor de service zelf is. Bijvoorbeeld, kan u wilt verwijderen van een exemplaar als deze hoger dan 90% CPU is en een niet - 200 HTTP-status retourneren. 
+HTTP/HTTPS-tests kunnen ook handig zijn om uw eigen logica te implementeren om exemplaren te verwijderen uit load balancer draaiing als de test poort ook de listener voor de service zelf is. U kunt bijvoorbeeld besluiten om een instantie te verwijderen als deze hoger is dan 90% CPU en een niet-200 HTTP-status retourneert. 
 
-Als u gebruik van Cloudservices en web-functies die gebruikmaken van w3wp.exe hebben, bereikt u ook automatische bewaking van uw website. De status van een niet-200 terug fouten in de websitecode van uw naar de load balancer-test.
+Als u Cloud Services gebruikt en webrollen hebt die gebruikmaken van W3wp. exe, behaalt u ook de automatische controle van uw website. Fouten in de code van uw website retour neren een niet-200 status naar de load balancer-test.
 
-Een HTTP / HTTPS-test mislukt wanneer:
-* Statustest-eindpunt retourneert een HTTP-responscode dan 200 (bijvoorbeeld, 403, 404 of 500). Hiermee wordt de status test onmiddellijk gemarkeerd. 
+Een HTTP/HTTPS-test mislukt wanneer:
+* Met test eindpunt wordt een andere HTTP-antwoord code dan 200 (bijvoorbeeld 403, 404 of 500) geretourneerd. Hiermee wordt de status test onmiddellijk gemarkeerd. 
 * Het test eindpunt reageert helemaal niet op de time-outperiode van 31 seconden. Meerdere test aanvragen worden mogelijk niet beantwoord voordat de test wordt gemarkeerd als niet-actief en totdat de som van alle time-outintervals is bereikt.
-* De verbinding via een TCP-opnieuw instellen van statustest-eindpunt wordt gesloten.
+* Met test eindpunt wordt de verbinding gesloten via een TCP-Reset.
 
 Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resource manager-sjabloon:
 
@@ -151,19 +151,19 @@ Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resourc
       },
 ```
 
-### <a name="guestagent"></a>Test van Gast-agent (alleen klassiek)
+### <a name="guestagent"></a>Test voor gast agent (alleen klassiek)
 
-Cloudservicerollen (werkrollen en webrollen) gebruiken een gastagent voor het bewaken van test standaard.  Een gast agent test is een laatste redmiddel-configuratie.  Gebruik altijd expliciet een status test met een TCP-of HTTP-test. De test voor een gast-agent is niet zo effectief expliciet gedefinieerde tests voor de meeste scenario's van toepassing.
+Cloud service rollen (werk rollen en webrollen) gebruiken standaard een gast agent voor controle van de test.  Een gast agent test is een laatste redmiddel-configuratie.  Gebruik altijd expliciet een status test met een TCP-of HTTP-test. Een gast agent test is niet zo effectief als expliciet gedefinieerde tests voor de meeste toepassings scenario's.
 
-De test voor een gast-agent is een controle van de gastagent binnen de virtuele machine. Vervolgens wordt geluisterd en reageert met een HTTP 200 OK antwoord alleen wanneer het exemplaar in de status gereed heeft is. (Overige statussen zijn bezet, Recycling of stoppen.)
+Een gast agent test is een controle van de gast agent in de virtuele machine. Het luistert en reageert alleen met een HTTP 200 OK-antwoord wanneer het exemplaar de status gereed heeft. (Andere statussen zijn bezet, recycling of stoppen.)
 
-Zie voor meer informatie, [het servicedefinitiebestand (csdef) configureren voor statuscontroles](https://msdn.microsoft.com/library/azure/ee758710.aspx) of [aan de slag met het maken van een openbare load balancer voor cloudservices](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
+Zie voor meer informatie [het service definitie bestand (csdef) configureren voor status controles](https://msdn.microsoft.com/library/azure/ee758710.aspx) of [Ga aan de slag door een open bare Load Balancer voor Cloud Services te maken](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
 
-Als de guest-agent niet reageert met een HTTP 200 OK, markeert de load balancer het exemplaar als reageert niet. Wordt geblokkeerd stromen te verzenden naar dat exemplaar. De load balancer blijft om te controleren of het exemplaar. 
+Als de gast agent niet reageert met HTTP 200 OK, markeert het load balancer het exemplaar als niet meer reageert. Vervolgens stopt het verzenden van stromen naar dat exemplaar. De load balancer blijft het exemplaar controleren. 
 
-Als de guest-agent met een HTTP-200 reageert, stuurt de load balancer nieuwe stromen opnieuw naar dat exemplaar.
+Als de gast agent reageert met een HTTP-200, worden de nieuwe stromen opnieuw door de load balancer naar die instantie verzonden.
 
-Wanneer u een Webrol, de websitecode meestal wordt uitgevoerd in w3wp.exe, die niet wordt bewaakt door de Azure-infrastructuur of Gast-agent. Fouten in w3wp.exe (bijvoorbeeld 500 HTTP-antwoorden) worden niet gerapporteerd aan de gastagent. Als gevolg daarvan kan neemt de load balancer dat exemplaar uitgeschakeld.
+Wanneer u een webrole gebruikt, wordt de website code doorgaans uitgevoerd in W3wp. exe, die niet wordt bewaakt door de Azure-infra structuur of gast agent. Fouten in W3wp. exe (bijvoorbeeld HTTP 500-antwoorden) worden niet gerapporteerd aan de gast agent. Daarom is het niet zo dat de load balancer dat exemplaar niet kan worden gedraaid.
 
 <a name="health"></a>
 ## <a name="probehealth"></a>Gedrag van testen
@@ -176,9 +176,9 @@ TCP-, HTTP-en HTTPS-status tests worden als gezond beschouwd en markeren als in 
 Elk back-end-eind punt dat een goede status heeft bereikt, komt in aanmerking voor het ontvangen van nieuwe stromen.  
 
 > [!NOTE]
-> Als de status test schommelt, wordt de load balancer opnieuw gewacht voordat het back-end-eind punt weer in de status in orde wordt gezet. Deze extra wachttijd beschermt de gebruiker en de infrastructuur en is een opzettelijke beleid.
+> Als de status test schommelt, wordt de load balancer opnieuw gewacht voordat het back-end-eind punt weer in de status in orde wordt gezet. Deze extra wacht tijd beschermt de gebruiker en de infra structuur en is een opzettelijk beleid.
 
-## <a name="probedown"></a>Test omlaag gedrag
+## <a name="probedown"></a>Gedrag van omlaag testen
 
 ### <a name="tcp-connections"></a>TCP-verbindingen
 
@@ -186,29 +186,29 @@ Nieuwe TCP-verbindingen kunnen het resterende back-end van een ongeluk hebben.
 
 Als de status test van een back-end-eind punt mislukt, worden er TCP-verbindingen met dit back-end-eind punt gemaakt.
 
-Als alle tests voor alle exemplaren in een back-endpool mislukken, worden er geen nieuwe stromen worden verzonden naar de back-endpool. Standard Load Balancer toestaat tot stand gebrachte TCP stromen om door te gaan.  Basic Load Balancer wordt beëindigd als alle TCP-stromen naar de back-endpool.
+Als alle tests voor alle exemplaren in een back-end-groep mislukken, worden er geen nieuwe stromen verzonden naar de back-end-groep. Met Standard Load Balancer worden ingestelde TCP-stromen toegestaan.  Met Basic Load Balancer worden alle bestaande TCP-stromen naar de back-end-groep beëindigd.
  
 Load Balancer is een Pass Through-service (er worden geen TCP-verbindingen beëindigd) en de stroom is altijd tussen de client en het gast besturingssysteem en de toepassing van de virtuele machine. Een groep met alle tests zorgt ervoor dat een frontend niet reageert op de TCP-verbindings pogingen (SYN) omdat er geen gezonde back-end-eind punt is om de stroom te ontvangen en te reageren met een SYN-ACK.
 
-### <a name="udp-datagrams"></a>UDP-datagrammen
+### <a name="udp-datagrams"></a>UDP-data grammen
 
 UDP-data grammen worden afgeleverd aan goede back-end-eind punten.
 
-UDP is zonder verbinding en er is geen flow-status voor UDP bijgehouden. Als de status test van een back-end-eind punt mislukt, kunnen de bestaande UDP-stromen worden verplaatst naar een ander ongezonde exemplaar in de back-end-pool.
+UDP is zonder verbinding en er wordt geen stroom status bijgehouden voor UDP. Als de status test van een back-end-eind punt mislukt, kunnen de bestaande UDP-stromen worden verplaatst naar een ander ongezonde exemplaar in de back-end-pool.
 
-Als alle tests voor alle exemplaren in een back-endpool mislukken, worden bestaande UDP-stromen worden beëindigd voor Basic en Standard Load Balancers.
+Als alle tests voor alle exemplaren in een back-end-groep mislukken, worden bestaande UDP-stromen beëindigd voor Basic-en Standard load balancers.
 
 <a name="source"></a>
-## <a name="probesource"></a>Bron-IP-adres-test
+## <a name="probesource"></a>IP-adres van test bron
 
-Load Balancer maakt gebruik van een gedistribueerde testinterval service voor de interne statusmodel. De probing-service bevindt zich op elke host waarop Vm's en op aanvraag kunnen worden geprogrammeerd om status controles te genereren volgens de configuratie van de klant. Het status test verkeer is direct tussen de probing-service die de status test en de virtuele machine van de klant genereert. Alle tests van de Load Balancer zijn afkomstig uit het IP-adres 168.63.129.16 als bron gebruikt.  U kunt IP-adres ruimte gebruiken binnen een VNet dat geen RFC1918 ruimte heeft.  Met een wereld wijd gereserveerd IP-adres van micro soft verkleint u de kans op een IP-adres conflict met de IP-adres ruimte die u in het VNet gebruikt.  Dit IP-adres is hetzelfde in alle regio's en wordt niet gewijzigd en vormt geen beveiligings risico omdat alleen het interne onderdeel van het Azure-platform een pakket kan bron van dit IP-adres. 
+Load Balancer gebruikt een gedistribueerde probing-service voor het interne status model. De probing-service bevindt zich op elke host waarop Vm's en op aanvraag kunnen worden geprogrammeerd om status controles te genereren volgens de configuratie van de klant. Het status test verkeer is direct tussen de probing-service die de status test en de virtuele machine van de klant genereert. Alle Load Balancer status tests zijn afkomstig van het IP-adres 168.63.129.16 als bron.  U kunt IP-adres ruimte gebruiken binnen een VNet dat geen RFC1918 ruimte heeft.  Met een wereld wijd gereserveerd IP-adres van micro soft verkleint u de kans op een IP-adres conflict met de IP-adres ruimte die u in het VNet gebruikt.  Dit IP-adres is hetzelfde in alle regio's en wordt niet gewijzigd en vormt geen beveiligings risico omdat alleen het interne onderdeel van het Azure-platform een pakket kan bron van dit IP-adres. 
 
 Het AzureLoadBalancer-service label identificeert dit bron-IP-adres in uw [netwerk beveiligings groepen](../virtual-network/security-overview.md) en staat standaard het verkeer van de status test toe.
 
 Naast Load Balancer status tests [gebruiken de volgende bewerkingen dit IP-adres](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
-- Kan de VM-Agent om te communiceren met het platform om aan te geven is in een status 'Gereed'
-- Communicatie met de virtuele DNS-server voor gefilterde naamomzetting voor klanten die geen aangepaste DNS-servers definieert mogelijk maakt.  Dit filter zorgt ervoor dat klanten alleen de hostnamen van de implementatie kunnen omzetten.
+- Hiermee kan de VM-agent communiceren met het platform, zodat deze de status gereed heeft
+- Maakt communicatie met de virtuele DNS-server mogelijk om gefilterde naam omzetting te bieden aan klanten die geen aangepaste DNS-servers definiëren.  Deze filtering zorgt ervoor dat klanten alleen de hostnamen van hun implementatie kunnen omzetten.
 - Hiermee kan de virtuele machine een dynamisch IP-adres verkrijgen van de DHCP-service in Azure.
 
 ## <a name="design"></a>Ontwerp richtlijnen
@@ -225,7 +225,7 @@ Bij gebruik van de taakverdelings [regels voor ha-poorten](load-balancer-ha-port
 
 Vertaal of proxy een status test niet via het exemplaar dat de status test naar een ander exemplaar in uw VNet ontvangt, aangezien deze configuratie kan leiden tot het trapsgewijs uitvallen van fouten in uw scenario.  Bekijk het volgende scenario: een set apparaten van derden wordt geïmplementeerd in de back-endadresgroep van een Load Balancer bron om schaal en redundantie te bieden voor de apparaten en de status test is geconfigureerd om een poort te testen die de apparaat-proxy's van derden of vertaalt op andere virtuele machines achter het apparaat.  Als u de poort die u gebruikt om te vertalen of proxy aanvragen van de andere virtuele machines achter het apparaat, wilt testen, zal elke test reactie van één virtuele machine achter het apparaat het apparaat zelf markeren als inactief. Deze configuratie kan leiden tot een trapsgewijze uitval van het hele toepassings scenario als gevolg van één back-end-eind punt achter het apparaat.  De trigger kan een onregelmatige test fout veroorzaken, waardoor Load Balancer de oorspronkelijke bestemming (de instantie van het apparaat) aanduidt en op zijn beurt uw volledige toepassings scenario kunt uitschakelen. Test in plaats daarvan de status van het apparaat zelf. De selectie van de test om het status signaal te bepalen is een belang rijke overweging voor NVA-scenario's (Network Virtual Appliance) en u moet de leverancier van uw toepassing raadplegen voor wat het juiste gezondheids signaal is voor dergelijke scenario's.
 
-Als u het [bron-IP-adres](#probesource) van de test in uw firewall beleid niet toestaat, zal de status test mislukken omdat het niet mogelijk is om uw exemplaar te bereiken.  Load Balancer wordt op zijn beurt markeren in uw exemplaar omdat de status test is mislukt.  Deze onjuiste configuratie kan ertoe leiden dat het toepassings scenario met taak verdeling mislukt.
+Als u het [bron-IP-adres](#probesource) van de test in uw firewall beleid niet toestaat, zal de status test mislukken omdat het niet mogelijk is om uw exemplaar te bereiken.  Load Balancer markeert op zijn beurt uw instantie als gevolg van een fout in de status test.  Deze onjuiste configuratie kan ertoe leiden dat het toepassings scenario met taak verdeling mislukt.
 
 Voor de status test van Load Balancer om uw exemplaar te markeren, **moet** u dit IP-adres toestaan in alle Azure- [netwerk beveiligings groepen](../virtual-network/security-overview.md) en lokaal firewall beleid.  Standaard bevat elke netwerk beveiligings groep de [service label](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer om verkeer met de status test toe te staan.
 
@@ -233,24 +233,24 @@ Als u een mislukte status test wilt testen of een afzonderlijk exemplaar wilt ma
 
 Configureer uw VNet niet met het IP-adres bereik van micro soft dat 168.63.129.16 bevat.  Dergelijke configuraties conflicteren met het IP-adres van de status test en kunnen ertoe leiden dat uw scenario mislukt.
 
-Als u meerdere interfaces op de virtuele machine hebt, moet u zorgen dat u de test op de interface die u hebt ontvangen op reageren.  Mogelijk moet u het bron netwerk adres dit adres in de virtuele machine vertalen per interface.
+Als u meerdere interfaces op uw VM hebt, moet u ervoor zorgen dat u reageert op de test op de interface die u hebt ontvangen.  Mogelijk moet u het bron netwerk adres dit adres in de virtuele machine vertalen per interface.
 
 Schakel TCP- [tijds tempels](https://tools.ietf.org/html/rfc1323)niet in.  Het inschakelen van TCP-tijds tempels kan ertoe leiden dat status controles mislukken omdat TCP-pakketten worden verwijderd door de TCP-stack van het gast besturingssysteem van de virtuele machine, wat leidt tot Load Balancer het respectievelijke eind punt wordt gemarkeerd.  TCP-tijds tempels worden standaard ingeschakeld voor beveiligde VM-installatie kopieën en moeten worden uitgeschakeld.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Zowel open bare als interne [Standard Load Balancer](load-balancer-standard-overview.md) geven per eind punt en back-end-eindpunt status de waarde met meerdere dimensies via Azure monitor. Deze metrische gegevens kunnen worden gebruikt door andere Azure-Services of partner toepassingen. 
 
-Met Basic Public Load Balancer wordt de status van de status test per back-end-groep weer gegeven via Azure Monitor-Logboeken.  Azure Monitor-logboeken zijn niet beschikbaar voor interne load balancers van de Basic.  U kunt [Azure monitor logboeken](load-balancer-monitor-log.md) gebruiken om de status van de open bare Load Balancer test te controleren en het aantal tests te testen. Logboekregistratie kan worden gebruikt met Power BI of Azure Operational Insights voor statistische gegevens over de integriteitsstatus van de load balancer.
+Met Basic Public Load Balancer wordt de status van de status test per back-end-groep weer gegeven via Azure Monitor-Logboeken.  Azure Monitor-logboeken zijn niet beschikbaar voor interne load balancers van de Basic.  U kunt [Azure monitor logboeken](load-balancer-monitor-log.md) gebruiken om de status van de open bare Load Balancer test te controleren en het aantal tests te testen. Logboek registratie kan worden gebruikt met Power BI of Azure Operational Insights om statistische gegevens over load balancer status te bieden.
 
 ## <a name="limitations"></a>Beperkingen
 
-- HTTPS-tests bieden geen ondersteuning voor wederzijdse verificatie met een clientcertificaat.
+- HTTPS-tests bieden geen ondersteuning voor wederzijdse verificatie met een client certificaat.
 - U kunt assumehHealth-tests niet uitvoeren wanneer TCP-tijds tempels zijn ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md)
-- [Maken van een openbare load balancer in Resource Manager met behulp van PowerShell](load-balancer-get-started-internet-arm-ps.md)
-- [REST-API voor statuscontroles](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
-- Nieuwe mogelijkheden voor health test met aanvragen [van de Load Balancer Uservoice](https://aka.ms/lbuservoice)
+- [Aan de slag met het maken van een open bare load balancer in Resource Manager met behulp van Power shell](load-balancer-get-started-internet-arm-ps.md)
+- [REST API voor status tests](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- Nieuwe Health probe-vaardig heden aanvragen met [de UserVoice van Load Balancer](https://aka.ms/lbuservoice)

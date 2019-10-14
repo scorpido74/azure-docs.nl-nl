@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 633d960e430d035a187a402e664c70f27cd23756
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648737"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274102"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Gegevens van Amazon S3-buckets kopiëren met behulp van AzCopy
 
@@ -30,7 +30,7 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 Zie het artikel aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy te downloaden en kies hoe u autorisatie referenties opgeeft voor de opslag service.
 
 > [!NOTE]
-> In de voor beelden in dit artikel wordt ervan uitgegaan dat u uw identiteit `AzCopy login` hebt geverifieerd met behulp van de opdracht. AzCopy gebruikt vervolgens uw Azure AD-account om toegang te verlenen tot gegevens in Blob Storage.
+> In de voor beelden in dit artikel wordt ervan uitgegaan dat u uw identiteit hebt geverifieerd met behulp van de `AzCopy login` opdracht. AzCopy gebruikt vervolgens uw Azure AD-account om toegang te verlenen tot gegevens in Blob Storage.
 >
 > Als u liever een SAS-token gebruikt om toegang te verlenen tot BLOB-gegevens, kunt u dat token toevoegen aan de bron-URL in elke AzCopy-opdracht.
 >
@@ -57,59 +57,59 @@ AzCopy maakt gebruik [van de API put van URL](https://docs.microsoft.com/rest/ap
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>/<object-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>"` |
-| **Voorbeeld** | `azcopy copy "https://s3.amazonaws.com/mybucket/myobject" "https://mystorageaccount.blob.core.windows.net/mycontainer/myblob"` |
+| **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
+| **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > Voor beelden in dit artikel gebruiken Path-Url's voor AWS S3-buckets (bijvoorbeeld: `http://s3.amazonaws.com/<bucket-name>`). 
 >
 > U kunt ook virtuele Url's voor gehoste stijlen gebruiken (bijvoorbeeld: `http://bucket.s3.amazonaws.com`). 
 >
-> Zie [virtual host of buckets]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) voor meer informatie over virtuele hosting van buckets.
+> Zie [virtual hosting of buckets] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) ) voor meer informatie over virtuele hosting van buckets.
 
 ### <a name="copy-a-directory"></a>Een map kopiëren
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
-| **Voorbeeld** | `azcopy copy "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
+| **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Een Bucket kopiëren
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true` |
-| **Voorbeeld** | `azcopy copy "https://s3.amazonaws.com/mybucket" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true` |
+| **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
+| **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Alle buckets in alle regio's kopiëren
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy "https://s3.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **Voorbeeld** | `azcopy copy "https://s3.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
+| **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Alle buckets in een specifieke S3-regio kopiëren
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy copy "https://s3-<region-name>.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **Voorbeeld** | `azcopy copy "https://s3-rds.eu-north-1.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
+| **Syntaxis** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Voorbeeld** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Verschillen in regels voor object naamgeving afhandelen
 
 AWS S3 heeft een andere set naam conventies voor Bucket-namen in vergelijking met Azure Blob-containers. Meer informatie hierover vindt u [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules). Als u een groep buckets kopieert naar een Azure Storage-account, kan de Kopieer bewerking mislukken vanwege naam verschillen.
 
-AzCopy verwerkt twee van de meest voorkomende problemen die zich kunnen voordoen. buckets die punten en buckets bevatten die opeenvolgende afbreek streepjes bevatten. AWS S3-Bucket namen kunnen punten en opeenvolgende afbreek streepjes bevatten, maar een container in azure kan niet. AzCopy vervangt Peri Oden door afbreek streepjes en opeenvolgende afbreek streepjes met een getal dat het aantal opeenvolgende afbreek streepjes vertegenwoordigt (bijvoorbeeld: een `my----bucket` Bucket met de naam wordt `my-4-bucket`gewijzigd. 
+AzCopy verwerkt twee van de meest voorkomende problemen die zich kunnen voordoen. buckets die punten en buckets bevatten die opeenvolgende afbreek streepjes bevatten. AWS S3-Bucket namen kunnen punten en opeenvolgende afbreek streepjes bevatten, maar een container in azure kan niet. AzCopy vervangt Peri Oden door afbreek streepjes en opeenvolgende afbreek streepjes met een getal dat het aantal opeenvolgende afbreek streepjes vertegenwoordigt (bijvoorbeeld: een Bucket met de naam `my----bucket` wordt `my-4-bucket`. 
 
-Als AzCopy kopieën over bestanden overneemt, wordt ook gecontroleerd op naam conflicten en wordt geprobeerd deze op te lossen. Als er bijvoorbeeld buckets zijn met de naam `bucket-name` en `bucket.name`, wordt met AzCopy een Bucket `bucket.name` omgezet met de naam First `bucket-name` naar en vervolgens `bucket-name-2`naar.
+Als AzCopy kopieën over bestanden overneemt, wordt ook gecontroleerd op naam conflicten en wordt geprobeerd deze op te lossen. Als er bijvoorbeeld buckets zijn met de naam `bucket-name` en `bucket.name`, wordt met AzCopy een Bucket met de name `bucket.name` eerst omgezet in `bucket-name` en vervolgens naar `bucket-name-2`.
 
 ## <a name="handle-differences-in-object-metadata"></a>Verschillen in meta gegevens van object afhandelen
 
 AWS S3 en Azure staan verschillende sets tekens toe aan de namen van object sleutels. U vindt [hier](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)meer informatie over de tekens die AWS S3 gebruikt. Aan de kant van de Azure-Blob-object sleutels voldoen aan de naamgevings regels voor [ C# id's](https://docs.microsoft.com/dotnet/csharp/language-reference/).
 
-Als onderdeel van een AzCopy `copy` -opdracht kunt u een waarde opgeven voor de `s2s-invalid-metadata-handle` optionele vlag waarmee wordt aangegeven hoe u bestanden wilt afhandelen waarin de meta gegevens van het bestand incompatibele sleutel namen bevatten. De volgende tabel beschrijft de waarde van elke vlag.
+Als onderdeel van een AzCopy `copy`-opdracht kunt u een waarde opgeven voor de optionele `s2s-invalid-metadata-handle`-vlag waarmee wordt aangegeven hoe u bestanden wilt afhandelen waarin de meta gegevens van het bestand incompatibele sleutel namen bevatten. De volgende tabel beschrijft de waarde van elke vlag.
 
-| Vlag waarde | Description  |
+| Vlag waarde | Beschrijving  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (Standaard optie) De meta gegevens zijn niet opgenomen in het overgezette object. AzCopy registreert een waarschuwing. |
 | **FailIfInvalid** | Objecten worden niet gekopieerd. AzCopy registreert een fout en bevat een fout in het aantal mislukte overzichten dat wordt weer gegeven in het overzicht van de overdracht.  |
@@ -123,11 +123,11 @@ AzCopy voert de volgende stappen uit:
 
 1. Ongeldige tekens vervangen door _.
 
-2. De teken reeks `rename_` wordt aan het begin van een nieuwe geldige sleutel toegevoegd.
+2. De teken reeks `rename_` toevoegen aan het begin van een nieuwe geldige sleutel.
 
    Deze sleutel wordt gebruikt om de oorspronkelijke meta gegevens **waarde**op te slaan.
 
-3. De teken reeks `rename_key_` wordt aan het begin van een nieuwe geldige sleutel toegevoegd.
+3. De teken reeks `rename_key_` toevoegen aan het begin van een nieuwe geldige sleutel.
    Deze sleutel wordt gebruikt om de oorspronkelijke ongeldige **sleutel**van de meta gegevens op te slaan.
    U kunt deze sleutel gebruiken om de meta gegevens in azure Side te herstellen omdat de meta gegevens sleutel wordt behouden als een waarde in de Blob Storage-service.
 

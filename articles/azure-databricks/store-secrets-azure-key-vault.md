@@ -1,5 +1,5 @@
 ---
-title: Toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault zelf studie
+title: Toegang tot Blob-opslag met sleutel kluis-Azure Databricks
 description: In deze zelf studie wordt beschreven hoe u toegang krijgt tot Azure Blob Storage van Azure Databricks met behulp van geheimen die zijn opgeslagen in een sleutel kluis.
 author: mamccrea
 ms.author: mamccrea
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976513"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274087"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelfstudie: Toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelf studie: toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
 
 In deze zelf studie wordt beschreven hoe u toegang krijgt tot Azure Blob Storage van Azure Databricks met behulp van geheimen die zijn opgeslagen in een sleutel kluis.
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -40,7 +40,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Een opslag account en BLOB-container maken
 
-1. Selecteer in de Azure Portal **een resource** > **opslag**maken. Selecteer vervolgens **opslag account**.
+1. Selecteer in de Azure Portal **een resource maken** > -**opslag**. Selecteer vervolgens **opslag account**.
 
    ![Azure Storage-account resource zoeken](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -74,12 +74,12 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 3. Voer op de pagina **sleutel kluis maken** de volgende informatie in en behoud de standaard waarden voor de resterende velden:
 
-   |Eigenschap|Description|
+   |Eigenschap|Beschrijving|
    |--------|-----------|
-   |Name|Een unieke naam voor uw sleutel kluis.|
-   |Subscription|Kies een abonnement.|
-   |Resource group|Kies een resource groep of maak een nieuwe.|
-   |Location|Kies een locatie.|
+   |Naam|Een unieke naam voor uw sleutel kluis.|
+   |Abonnement|Kies een abonnement.|
+   |Resourcegroep|Kies een resource groep of maak een nieuwe.|
+   |Locatie|Kies een locatie.|
 
    ![Eigenschappen van Azure sleutel kluis](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 5. Geef op de pagina **een geheim maken** de volgende informatie op en behoud de standaard waarden voor de resterende velden:
 
-   |Eigenschap|Value|
+   |Eigenschap|Waarde|
    |--------|-----------|
-   |Opties uploaden|Handmatig|
-   |Name|Beschrijvende naam voor de sleutel van uw opslag account.|
-   |Value|Key1 van uw opslag account.|
+   |Upload opties|Handmatig|
+   |Naam|Beschrijvende naam voor de sleutel van uw opslag account.|
+   |Waarde|Key1 van uw opslag account.|
 
    ![Eigenschappen voor nieuw sleutel kluis geheim](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -111,13 +111,13 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Geef onder **Azure Databricks service**de volgende waarden op om een Databricks-werk ruimte te maken.
 
-   |Eigenschap  |Description  |
+   |Eigenschap  |Beschrijving  |
    |---------|---------|
-   |Naam van de werkruimte     | Geef een naam op voor uw Databricks-werkruimte.        |
-   |Subscription     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
-   |Resource group     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
-   |Location     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
-   |Prijscategorie     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+   |Werkruimte naam     | Geef een naam op voor uw Databricks-werkruimte.        |
+   |Abonnement     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
+   |Resourcegroep     | Selecteer dezelfde resource groep die de sleutel kluis bevat. |
+   |Locatie     | Selecteer dezelfde locatie als uw Azure Key Vault. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/)voor alle beschik bare regio's.        |
+   |Prijsniveau     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
    ![Eigenschappen van Databricks-werk ruimte](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
@@ -166,7 +166,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
    ```
 
    * **mount-name** is een DBFS-pad dat aangeeft waar de BLOB storage container of een map in de container (opgegeven in de bron) wordt gekoppeld.
-   * **conf-sleutel** kan ofwel `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` of`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **conf-de sleutel** kan `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` of `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net` zijn
    * **bereik: naam** is de naam van het geheime bereik dat u in de vorige sectie hebt gemaakt. 
    * **sleutel naam** is de naam van het geheim dat u hebt gemaakt voor de sleutel van het opslag account in uw sleutel kluis.
 
@@ -211,4 +211,4 @@ Als u deze toepassing niet wilt blijven gebruiken, verwijdert u de hele resource
 
 Ga naar het volgende artikel voor meer informatie over het implementeren van een door VNet geïnjecteerde Databricks-omgeving met een service-eind punt dat is ingeschakeld voor Cosmos DB.
 > [!div class="nextstepaction"]
-> [Zelfstudie: Azure Databricks implementeren met een Cosmos DB-eind punt](service-endpoint-cosmosdb.md)
+> [Zelf studie: Azure Databricks implementeren met een Cosmos DB-eind punt](service-endpoint-cosmosdb.md)

@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244101"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274197"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
@@ -30,6 +30,7 @@ Wijzigings detectie en Details zijn waardevol voor de volgende voorbeeld scenari
 - Meer informatie over welke andere eigenschappen mogelijk zijn gewijzigd wanneer de nalevings status van een resource is gewijzigd. Evaluatie van deze aanvullende eigenschappen kan inzicht bieden in andere eigenschappen die mogelijk moeten worden beheerd via een Azure Policy definitie.
 
 In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK van resource Graph. Zie de wijzigings [geschiedenis](../../policy/how-to/determine-non-compliance.md#change-history-preview) van Azure Policy of de [wijzigings geschiedenis](../../../azure-monitor/platform/activity-log-view.md#azure-portal)van het Azure-activiteiten logboek om deze informatie te bekijken in de Azure Portal.
+Zie voor meer informatie over wijzigingen in uw toepassingen van de laag van de infra structuur de implementatie van toepassingen [(preview-versie) gebruiken](../../../azure-monitor/app/change-analysis.md) in azure monitor.
 
 > [!NOTE]
 > Details wijzigen in resource grafiek zijn voor eigenschappen van Resource Manager. Zie voor het bijhouden van wijzigingen in een virtuele machine de Azure Automation [Wijzigingen bijhouden](../../../automation/automation-change-tracking.md) of de [gast configuratie](../../policy/concepts/guest-configuration.md)van de Azure Policy voor vm's.

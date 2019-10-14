@@ -3,15 +3,15 @@ title: Werken met grote gegevenssets
 description: Meer informatie over het ophalen en beheren van grote gegevens sets tijdens het werken met Azure resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980335"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274231"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -68,7 +68,7 @@ Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor v
 
 Als **resultTruncated** is ingesteld op **True**, wordt de eigenschap **$skipToken** in de reactie. Deze waarde wordt gebruikt met dezelfde query-en abonnements waarden om de volgende set records op te halen die overeenkomen met de query.
 
-In de volgende voor beelden ziet u hoe u de eerste 3000 records **overs laat** en de **eerste** 1000 records retourneert nadat deze zijn overgeslagen met Azure CLI en Azure PowerShell:
+In de volgende voor beelden ziet u hoe u de eerste 3000 records **overs laat** en de **eerste** 1000 records retourneert nadat deze records zijn overgeslagen met Azure CLI en Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -82,6 +82,90 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > De query moet het veld **id** **projecteren** om de paginering te kunnen uitvoeren. Als deze ontbreekt in de query, bevat het antwoord niet de **$skipToken**.
 
 Zie de [query volgende pagina](/rest/api/azureresourcegraph/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
+
+## <a name="formatting-results"></a>Resultaten van de opmaak
+
+De resultaten van een resource grafiek query worden in twee indelingen, _tabel_ en _ObjectArray_gegeven. De indeling wordt geconfigureerd met de para meter **resultFormat** als onderdeel van de aanvraag opties. De _tabel_ indeling is de standaard waarde voor **resultFormat**.
+
+De resultaten van Azure CLI worden standaard in JSON opgenomen. Resultaten in Azure PowerShell zijn standaard een **PSCustomObject** , maar ze kunnen snel worden GECONVERTEERD naar JSON met de cmdlet `ConvertTo-Json`. Voor andere Sdk's kunnen de query resultaten worden geconfigureerd voor het uitvoeren van de _ObjectArray_ -indeling.
+
+### <a name="format---table"></a>Indeling-tabel
+
+De standaard indeling, _tabel_, retourneert resultaten in een JSON-indeling die is ontworpen voor het markeren van het kolom ontwerp en de rijwaarden van de eigenschappen die door de query worden geretourneerd. Deze indeling lijkt veel op de gegevens zoals gedefinieerd in een gestructureerde tabel of werk blad met de kolommen die het eerst worden geïdentificeerd en vervolgens elke rij die gegevens aanduidt die zijn afgestemd op die kolommen.
+
+Hier volgt een voor beeld van een query resultaat met de _tabel_ opmaak:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Indeling-ObjectArray
+
+De _ObjectArray_ -indeling retourneert ook resultaten in een JSON-indeling. Dit ontwerp wordt echter uitgelijnd op de algemene relatie sleutel/waarde in JSON waarbij de kolom en de rijgegevens overeenkomen in matrix groepen.
+
+Hier volgt een voor beeld van een query resultaat met de _ObjectArray_ -opmaak:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+Hier volgen enkele voor beelden van het instellen van **resultFormat** voor het gebruik van de _ObjectArray_ -indeling:
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

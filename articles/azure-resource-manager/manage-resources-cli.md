@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001544"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274253"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-resources beheren met Azure CLI
 
@@ -26,7 +26,7 @@ Andere artikelen over het beheren van resources:
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Resources implementeren voor een bestaande resource groep
 
-U kunt Azure-resources rechtstreeks implementeren met behulp van Azure PowerShell of een resource manager-sjabloon implementeren om Azure-resources te maken.
+U kunt Azure-resources rechtstreeks implementeren met behulp van Azure CLI of een resource manager-sjabloon implementeren om Azure-resources te maken.
 
 ### <a name="deploy-a-resource"></a>Een resource implementeren
 
@@ -45,7 +45,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Een sjabloon implementeren
 
-Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie voor meer informatie [Snelstart: Azure Resource Manager sjablonen maken met behulp van Visual Studio code @ no__t-0.
+Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie Quick Start (Engelstalig) voor meer informatie over het [maken van Azure Resource Manager sjablonen met Visual Studio code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -79,7 +79,7 @@ az storage account delete --resource-group $resourceGroupName --name $storageAcc
 
 Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Resources verplaatsen
+## <a name="move-resources"></a>Bronnen verplaatsen
 
 Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 
@@ -96,7 +96,7 @@ az resource move --destination-group $destResourceGroupName --ids $storageAccoun
 
 Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](resource-group-move-resources.md).
 
-## <a name="lock-resources"></a>Resources vergrendelen
+## <a name="lock-resources"></a>Bronnen vergrendelen
 
 Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 

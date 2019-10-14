@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Sentimentanalyse voor streaminggegevens met behulp van Azure Databricks'
+title: Azure Databricks gebruiken voor sentiment-analyse
 description: Meer informatie over het gebruik van Azure Databricks met Event Hubs en Cognitive Services API voor het uitvoeren van sentiment-analyse op streaminggegevens in bijna realtime.
 services: azure-databricks
 author: lenadroid
@@ -9,14 +9,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68619568"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274214"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Sentimentanalyse voor streaminggegevens met behulp van Azure Databricks
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Sentimentanalyse voor streaming-gegevens met behulp van Azure Databricks
 
 In deze zelfstudie leert u hoe u sentimentanalyse kunt uitvoeren voor een bijna-realtime gegevensstroom met behulp van Azure Databricks. Met behulp van Azure Event Hubs gaat u een systeem van gegevensopname instellen. U importeert de berichten vanuit Event Hubs naar Azure Databricks met behulp van de Spark Event Hubs-connector. Ten slotte gebruikt u cognitieve service-Api's om sentiment analyse uit te voeren op de gestreamde gegevens.
 
@@ -57,7 +57,7 @@ U kunt aan deze vereisten voldoen via de stappen in het artikel [Een Azure Event
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
@@ -115,7 +115,7 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
 1. Ga in een webbrowser naar [Twitter voor ontwikkel aars](https://developer.twitter.com/en/apps)en selecteer **een app maken**. Mogelijk wordt er een bericht weer gegeven met de mede deling dat u moet aanvragen voor een Twitter-ontwikkelaars account. U kunt dit gewoon doen, en nadat uw toepassing is goedgekeurd, moet u een bevestigings-e-mail krijgen. Het kan enkele dagen duren voordat een ontwikkelaars account wordt goedgekeurd.
 
-    ![Bevestiging van Twitter-ontwikkelaars account](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Bevestiging van Twitter-ontwikkelaars account")
+    ![Twitter-ontwikkelaars account bevestiging]van(./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "bevestiging van Twitter-ontwikkelaars account")
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
@@ -135,9 +135,9 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
 1. Selecteer in de werk ruimte Azure Databricks de optie **clusters**en kies uw bestaande Spark-cluster. Kies in het menu cluster de optie **bibliotheken** en klik op **nieuwe installeren**.
 
-   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Bibliotheek toevoegen cluster zoeken")
+   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "toevoegen aan de bibliotheek een cluster zoeken")
 
-   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Nieuwe bibliotheek toevoegen installeren")
+   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "toevoegen nieuwe bibliotheek installeren")
 
 2. Selecteer op de pagina nieuwe bibliotheek voor **bron** **maven**. Voor een **coördinaat**klikt u op **Pakketten zoeken** voor het pakket dat u wilt toevoegen. Dit zijn de Maven-coördinaten voor de bibliotheken die in deze zelfstudie worden gebruikt:
 
@@ -146,13 +146,13 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
      ![Maven-coördinaten opgeven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Maven-coördinaten opgeven")
 
-     ![Maven-coördinaten opgeven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Maven-coördinaten zoeken")
+     ![Maven-coördinaten voor](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Zoek maven-coördinaten") opgeven
 
 3. Selecteer **Installeren**.
 
 4. Zorg ervoor dat beide bibliotheken zijn geïnstalleerd en correct zijn aangesloten in het menu cluster.
 
-    ![Bibliotheken controleren](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Bibliotheken controleren")
+    ![Bibliotheken]controleren(./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "bibliotheken controleren")
 
 6. Herhaal deze stappen voor het Twitter-pakket, `twitter4j-core:4.0.7`.
 
@@ -160,7 +160,7 @@ In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event
 
 In deze zelf studie gebruikt u de [Azure Cognitive Services Text Analytics api's](../cognitive-services/text-analytics/overview.md) om sentiment analyse uit te voeren op een stroom van tweets in bijna real time. Voordat u de Api's gebruikt, moet u een Azure Cognitive Services-account maken in Azure en een toegangs sleutel voor het gebruik van de Text Analytics-Api's ophalen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Selecteer **+ Een resource maken**.
 
@@ -192,11 +192,11 @@ In deze zelf studie gebruikt u de [Azure Cognitive Services Text Analytics api's
 
 7. Sla de waarden voor de eindpunt-URL en de toegangssleutel op die u in deze stap hebt opgehaald. U hebt deze verderop in deze zelfstudie nodig.
 
-## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Databricks
+## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Azure Databricks
 
 In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de volgende namen maken
 
-- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
+- **SendTweetsToEventHub** - een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter en ze kunt streamen naar Event Hubs.
 - **ReadTweetsFromEventHub**: een notitieblok voor consumenten waarmee u de tweets uit Event Hubs kunt lezen en sentimentanalyses kunt uitvoeren.
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer **Maken** in de vervolgkeuzelijst **Werkruimte** en selecteer **Notitieblok**.
@@ -216,7 +216,7 @@ In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de vol
 Plak in het notitieblok **SendTweetsToEventHub** de volgende code en vervang de tijdelijke aanduidingen door waarden voor uw Event Hubs-naamruimte en Twitter-toepassing die u eerder hebt gemaakt. Dit notitieblok streamt tweets met het sleutelwoord 'Azure' in realtime naar Event Hubs.
 
 > [!NOTE]
-> De Twitter-API heeft bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html)voor de aanvraag. Als u niet tevreden bent met de standaard frequentie beperking in Twitter API, kunt u in dit voor beeld tekst inhoud genereren zonder Twitter API te gebruiken. Hiervoor stelt u variabele **Data Source** in in `test` plaats van `twitter` en vult u de lijst **testSource** met de voorkeurs test invoer.
+> De Twitter-API heeft bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html)voor de aanvraag. Als u niet tevreden bent met de standaard frequentie beperking in Twitter API, kunt u in dit voor beeld tekst inhoud genereren zonder Twitter API te gebruiken. Als u dit wilt doen, stelt u variabele **Data Source** in op `test` in plaats van `twitter` en vult u de lijst **testSource** met voorkeurs test invoer.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -333,7 +333,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. U ziet uit
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
+Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
 
 ```scala
 
@@ -463,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Voeg een nieuwe codecel toe en plak het onderstaande codefragment. Dit fragment definieert een object dat functies bevat voor het aanroepen van de Tekstanalyse-API om taaldetetectie en sentimentanalyse uit te voeren. Zorg ervoor dat u de tijdelijke `<PROVIDE ACCESS KEY HERE>` aanduiding vervangt door de waarde die u voor uw Cognitive Services-account hebt opgehaald.
+Voeg een nieuwe codecel toe en plak het onderstaande codefragment. Dit fragment definieert een object dat functies bevat voor het aanroepen van de Tekstanalyse-API om taaldetetectie en sentimentanalyse uit te voeren. Zorg ervoor dat u de tijdelijke aanduiding `<PROVIDE ACCESS KEY HERE>` vervangt door de waarde die u voor uw Cognitive Services-account hebt opgehaald.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection

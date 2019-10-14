@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162420"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274183"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang
 
@@ -55,7 +55,7 @@ U kunt een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-a
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Microsoft Intune-inschrijving
+- Inschrijving Microsoft Intune
 - Microsoft Planner
 - Microsoft PowerApps
 - Micro soft Search in Bing
@@ -72,7 +72,6 @@ U kunt een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-a
 - Project Online
 - Skype voor Bedrijven Online
 - Virtueel particulier netwerk (VPN)
-- Visual Studio App Center
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>Andere toepassingen
@@ -116,7 +115,7 @@ In het beleid voor voorwaardelijke toegang kunt u **browsers** als client-app se
 
 Deze instelling werkt met alle browsers. Om echter te voldoen aan het beleid van een apparaat, zoals een vereiste apparaat vereist, worden de volgende besturings systemen en browsers ondersteund:
 
-| OS                     | Browsers                                        |
+| Besturingssysteem                     | Overzichten                                        |
 | :--                    | :--                                             |
 | Windows 10             | Micro soft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
@@ -143,19 +142,19 @@ Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| type | REG_SZ (teken reeks) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/service/UPDATE2/CRX |
+| Pad | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Naam | 1 |
+| Type | REG_SZ (teken reeks) |
+| Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/service/updatum2/CRX |
 
 Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sleutel:
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| type | REG_SZ (teken reeks) |
-| Data | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}} |
+| Pad | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Naam | 1 |
+| Type | REG_SZ (teken reeks) |
+| Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-Organization-Access"}}}} |
 
 Deze browsers ondersteunen de verificatie van apparaten, zodat het apparaat kan worden geïdentificeerd en gevalideerd op basis van een beleid. De controle van het apparaat mislukt als de browser wordt uitgevoerd in de privé modus.
 
@@ -173,7 +172,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | E-mail/agenda/personen-app, Outlook 2016, Outlook 2013 (met moderne verificatie)| Office 365 Exchange Online | Windows 10 |
 | MFA en locatie beleid voor apps. Beleids regels op basis van apparaten worden niet ondersteund.| Alle apps app service| Android en iOS |
 | Micro soft teams-Services: Hiermee beheert u alle services die micro soft-teams en alle client-apps ondersteunen-Windows Desktop, iOS, Android, WP en web client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android en macOS |
-| Office 2016-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 share point online | Windows 8.1, Windows 7 |
+| Office 2016-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 share point online | Windows 8,1, Windows 7 |
 | Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), ondersteuning van Office-groepen is gepland voor de toekomst. ondersteuning voor share point-apps is gepland voor de toekomst | Office 365 share point online | Windows 10 |
 | Office 2016 (alleen Word, Excel, Power Point, OneNote). Ondersteuning voor OneDrive voor bedrijven is gepland voor de toekomst| Office 365 share point online| macOS|
 | Office 2019| Office 365 share point online | Windows 10, macOS |
@@ -181,7 +180,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Office Yammer-app | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 share point online | Windows 10, macOS |
 | Outlook 2016 (Office voor macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
+| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
 | App Power BI | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
 | Skype voor Bedrijven | Office 365 Exchange Online| Android, IOS |
@@ -211,10 +210,10 @@ Deze instelling is van toepassing op de volgende client-apps:
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- Facturering van Microsoft
+- Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
-- Microsoft OneDrive
+- Micro soft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
@@ -246,7 +245,7 @@ In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een app-beveil
 Deze instelling is van toepassing op de volgende client-apps:
 
 - Micro soft Cortana
-- Microsoft OneDrive
+- Micro soft OneDrive
 - Microsoft Outlook
 - Microsoft Planner
 
