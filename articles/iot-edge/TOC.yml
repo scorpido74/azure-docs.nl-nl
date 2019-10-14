@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: Gegevens opslaan aan de rand
       items:
+        - name: Modules toegang geven tot de lokale opslag van een apparaat
+          href: how-to-access-host-storage-from-module.md
         - name: Azure Blob Storage op IoT Edge
           href: how-to-store-data-blob.md
         - name: Blob-opslagmodules implementeren

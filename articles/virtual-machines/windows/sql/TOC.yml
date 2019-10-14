@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: Failover-clusterexemplaar
           items:
-            - name: Configureren
+            - name: Met Storage Spaces Direct
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: Met Premium-bestandsopslag
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

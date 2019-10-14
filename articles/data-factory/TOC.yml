@@ -410,10 +410,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight-streamingactiviteit
           href: transform-data-using-hadoop-streaming.md
-        - name: ML-batchuitvoeringsactiviteit
+        - name: Machine Learning-batchuitvoeringsactiviteit
           href: transform-data-using-machine-learning.md
-        - name: Resourceactiviteit voor ML bijwerken
+        - name: Machine Learning-activiteit resources bijwerken
           href: update-machine-learning-models.md
+        - name: Machine Learning-pijplijnactiviteiten uitvoeren
+          href: transform-data-machine-learning-service.md
         - name: Opgeslagen procedureactiviteit
           href: transform-data-using-stored-procedure.md
         - name: Gekoppelde services berekenen

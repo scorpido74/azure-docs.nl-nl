@@ -44,6 +44,8 @@
     - name: Serviceproviders weergeven en beheren
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: Beleid implementeren dat kan worden hersteld
+      href: ./how-to/deploy-policy-remediation.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

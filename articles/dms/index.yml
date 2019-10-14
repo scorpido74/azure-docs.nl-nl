@@ -5,15 +5,15 @@ metadata:
   description: " Informatie over hoe u naadloze migraties uitvoert van meerdere databasebronnen naar Azure-gegevensplatforms met minimale downtime door Azure Database Migration Service te gebruiken."
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/04/2019
+  ms.date: 10/12/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 41b2733152a93705c81134ccbb75866bf6f0af1b
-  ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+  ms.openlocfilehash: bb2eec4e07eb444549c5b8491799d491a1960250
+  ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/03/2019
-  ms.locfileid: "71842994"
+  ms.lasthandoff: 10/13/2019
+  ms.locfileid: "72293787"
 landingContent:
 - title: Over Azure Database Migration Service
   linkLists:
@@ -31,14 +31,6 @@ landingContent:
     links:
     - text: Service maken - Portal
       url: quickstart-create-data-migration-service-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Migratieactiviteit bewaken
-      url: how-to-monitor-migration-activity.md
-    - text: Algemene problemen en fouten oplossen
-      url: known-issues-troubleshooting-dms.md
-    - text: Verbindingsproblemen met de brondatabase oplossen
-      url: known-issues-troubleshooting-dms-source-connectivity.md
   - linkListType: video
     links:
     - text: Inleiding tot Azure Data Migration Service
@@ -47,10 +39,8 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
     - text: Het migratieproces en aanbevolen hulpprogramma's/services
       url: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
-    - text: Adresvereisten en een DMS-exemplaar maken
+    - text: Vereisten voor adressen en een Azure Data Migration service-exemplaar maken
       url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
-    - text: Een online migratie bewaken en cutover uitvoeren
-      url: https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/
   - linkListType: whats-new
     links:
     - text: Bekijk ons blog
@@ -59,95 +49,59 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: SQL Server online migreren naar een individuele Azure SQL-database
+    - text: Migreren naar individuele SQL DB-database - online
       url: tutorial-sql-server-azure-sql-online.md
-    - text: SQL Server offline migreren naar een individuele Azure SQL-database
+    - text: Migreren naar individuele SQL DB-database - offline
       url: tutorial-sql-server-to-azure-sql.md
-    - text: SQL Server migreren naar een met Azure SQL-database beheerd online exemplaar
+    - text: Migreren naar beheerd exemplaar van SQL Database - online
       url: tutorial-sql-server-managed-instance-online.md
-    - text: SQL Server migreren naar een met Azure SQL-database beheerd offline exemplaar
+    - text: Migreren naar beheerd exemplaar van SQL Database - offline
       url: tutorial-sql-server-to-managed-instance.md
-    - text: RDS SQL Server online migreren naar een individuele Azure SQL-database of een beheerd Azure SQL Database-exemplaar
+    - text: RDS SQL Server migreren naar individuele SQL DB-database of beheerd exemplaar van SQL Database - online
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-  - linkListType: how-to-guide
+  - linkListType: reference
     links:
-    - text: PowerShell gebruiken om SQL Server te migreren naar individuele Azure SQL-database
-      url: howto-sql-server-to-azure-sql-powershell.md
-    - text: PowerShell gebruiken om SQL Server te migreren naar beheer Azure SQL-exemplaar
-      url: howto-sql-server-to-azure-sql-mi-powershell.md
-    - text: SSIS-pakketten opnieuw implementeren in individuele Azure SQL Database-database
-      url: how-to-migrate-ssis-packages.md
-    - text: SSIS-pakketten opnieuw implementeren in een beheerd exemplaar van Azure SQL Database
-      url: how-to-migrate-ssis-packages-managed-instance.md
-  - linkListType: concept
-    links:
-    - text: Bekende problemen - Onlinemigratie naar individuele Azure SQL DB-database
+    - text: Bekende problemen - Onlinemigratie naar individuele SQL DB-database
       url: known-issues-azure-sql-online.md
-    - text: Netwerktopologieën voor migraties van met Azure SQL-database beheerde exemplaren
+    - text: Netwerktopologieën voor migraties van beheerde exemplaren van SQL Database
       url: resource-network-topologies.md
   - linkListType: video
     links:
-    - text: SQL Server 2008 migreren naar een beheerd exemplaar voor Azure SQL Database
+    - text: SQL Server 2008 migreren naar beheerd exemplaar van SQL Database
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
-- title: PostgreSQL migreren naar Azure Database for PostgreSQL
+- title: Open-sourcedatabases migreren naar Azure
   linkLists:
   - linkListType: tutorial
     links:
-    - text: PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
+    - text: Migreren naar Azure Database for PostgreSQL - Individuele server - online
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
+    - text: RDS PostgreSQL migreren naar Azure Database for PostgreSQL - Individuele server - online
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-  - linkListType: concept
-    links:
-    - text: Bekende problemen - Onlinemigratie van PostgreSQL naar Azure Database for PostgreSQL - individuele server
-      url: known-issues-azure-postgresql-online.md
-  - linkListType: video
-    links:
-    - text: PostgreSQL migreren naar Azure Database for PostgreSQL
-      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
-- title: MySQL migreren naar Azure Database for MySQL
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: MySQL online migreren naar Azure Database for MySQL
+    - text: Migreren naar Azure Database for MySQL - online
       url: tutorial-mysql-azure-mysql-online.md
-    - text: RDS MySQL online migreren naar Azure Database for MySQL
+    - text: RDS MySQL migreren naar Azure Database for MySQL - online
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-  - linkListType: concept
+    - text: Migreren naar Azure Cosmos DB Mongo-API - online
+      url: tutorial-mongodb-cosmos-db-online.md
+    - text: Migreren naar Azure Cosmos DB Mongo-API - offline
+      url: tutorial-mongodb-cosmos-db.md
+  - linkListType: reference
     links:
+    - text: Bekende problemen - Onlinemigratie naar Azure Database for PostgreSQL - Individuele server
+      url: known-issues-azure-postgresql-online.md
     - text: Bekende problemen - Onlinemigratie naar Azure Database for MySQL
       url: known-issues-azure-mysql-online.md
-- title: MongoDB migreren naar Azure Cosmos DB
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: MongoDB online migreren naar Azure Cosmos DB
-      url: tutorial-mongodb-cosmos-db-online.md
-    - text: MongoDB offline migreren naar Azure Cosmos DB
-      url: tutorial-mongodb-cosmos-db.md
   - linkListType: video
     links:
-    - text: MongoDB migreren naar Azure Cosmos DB
+    - text: PostgreSQL migreren naar Azure Database for PostgreSQL - Individuele server
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
+    - text: Migreren naar Azure Cosmos DB Mongo-API
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
-- title: Oracle migreren naar Azure
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Oracle online migreren naar Azure DB for PostgreSQL - individuele server
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: concept
-    links:
-    - text: Bekende problemen - Onlinemigratie van Oracle naar Azure Database for PostgreSQL - individuele server
-      url: known-issues-oracle-azure-postgresql-online.md
-  - linkListType: video
-    links:
-    - text: Oracle migreren naar individuele Azure SQL Database-database
-      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
 - title: Hulpprogramma's en richtlijnen
   linkLists:
   - linkListType: reference
     links:
-    - text: Services en hulpprogramma's voor gegevensmigratiescenario's
+    - text: Services en hulpprogramma's op gegevensmigratiescenario
       url: dms-tools-matrix.md
     - text: Handleiding voor databasemigratie
       url: https://datamigration.microsoft.com/
@@ -159,3 +113,17 @@ landingContent:
       url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: Migratietoolkit voor gegevenstoegang
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
+- title: Oracle migreren naar Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Migreren naar Azure Database for PostgreSQL - Individuele server - online
+      url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: reference
+    links:
+    - text: Bekende problemen - Onlinemigratie naar Azure Database for PostgreSQL - Individuele server
+      url: known-issues-oracle-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: Migreren naar individuele SQL DB-database
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/

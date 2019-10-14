@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld - CAF-blauwdruk voor migratielandingszone - overzicht
+title: CAF-blauwdrukvoorbeeld voor de migratielandingszone - Overzicht
 description: Overzicht en architectuur van het CAF-blauwdrukvoorbeeld voor de migratielandingszone.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,16 +7,16 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 469ddfa647a2ee739756414ba1bad87c983057c6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c74ec9f425b99bb11011fce7b0b7bdca98005ad8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243971"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297871"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
-De Microsoft Cloud Adoption Framework-blauwdruk (CAF-blauwdruk) voor de Azure-migratielandingszone is een infrastructuur waarmee u uw eerste workload kunt migreren en uw cloudomgeving beheren in overeenstemming met CAF.
+De Microsoft CAF-blauwdruk (Cloud Adoption Framework) voor de Azure-migratielandingszone is een infrastructuur waarmee u uw eerste workload kunt migreren en uw cloudomgeving kunt beheren in overeenstemming met CAF.
 
 Het [CAF Foundation](../caf-foundation/index.md)-blauwdrukvoorbeeld is een uitbreiding op dit voorbeeld.
 
@@ -47,7 +47,7 @@ Zie [Microsoft Cloud Adoption Framework voor Azure: migreren](/azure/architectur
 U hebt het overzicht en de architectuur van het CAF-blauwdrukvoorbeeld voor de migratielandingszone doorgenomen.
 
 > [!div class="nextstepaction"]
->  [CAF-blauwdrukvoorbeeld voor de migratielandingszone: implementatiestappen](./deploy.md)
+>  [CAF-blauwdrukvoorbeeld voor de migratielandingszone - Implementatiestappen](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
