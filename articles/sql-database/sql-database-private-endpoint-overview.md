@@ -8,10 +8,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
 ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71066261"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse (preview-versie)
@@ -60,16 +60,16 @@ Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de
 
     - (1) Selecteer de verbindingen met het privé-eind punt in het linkerdeel venster
     - (2) toont een lijst met alle privé-eindpunt verbindingen (PECs)
-    - (3) de ![scherm opname van het bijbehorende privé-eind punt (PE) van alle Pecs][3]
+    - (3) overeenkomend persoonlijk eind punt (PE) dat is gemaakt ![Screenshot van alle PECs @ no__t-1
 
 1. Selecteer een individuele PEC uit de lijst door deze te selecteren.
-![Scherm opname van geselecteerde PEC][6]
+![Screenshot geselecteerde PEC @ no__t-1
 
 1. De SQL-beheerder kan kiezen voor het goed keuren of afwijzen van een PEC en optioneel een antwoord op een korte tekst toevoegen.
-![Scherm afbeelding van PEC-goed keuring][4]
+![Screenshot van PEC-goed keuring @ no__t-1
 
 1. Na goed keuring of weigering wordt in de lijst de juiste staat en de antwoord tekst weer gegeven.
-![Scherm afbeelding van alle PECs na goed keuring][5]
+![Screenshot van alle PECs na goed keuring @ no__t-1
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Cases van een persoonlijke koppeling gebruiken voor Azure SQL Database 
 

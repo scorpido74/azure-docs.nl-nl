@@ -553,7 +553,7 @@
         - name: Verificatie
           items:
             - name: Basisbeginselen van verificatie
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: OAuth 2.0- en OpenID Connect-protocollen
               items:
                 - name: OpenID Connect

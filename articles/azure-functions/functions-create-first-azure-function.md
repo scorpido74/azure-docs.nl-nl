@@ -1,24 +1,22 @@
 ---
-title: Maak uw eerste functie van de Azure Portal | Microsoft Docs
+title: Maak uw eerste serverloze functie van de Azure Portal
 description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eb3df5ace97e5a09b2869c0857d49926f354f2b0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096990"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329671"
 ---
-# <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
+# <a name="create-your-first-function-in-the-azure-portal"></a>Maak uw eerste functie in Azure Portal
 
 Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. In dit artikel vindt u informatie over het gebruik van functies voor het maken van een "Hallo wereld"-functie in de Azure Portal.
 

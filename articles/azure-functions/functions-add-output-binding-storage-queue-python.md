@@ -1,26 +1,22 @@
 ---
 title: Een Azure Storage wachtrij binding toevoegen aan uw python-functie
-description: Meer informatie over het toevoegen van een Azure Storage wachtrij-uitvoer binding aan uw python-functie met behulp van de Azure CLI en functions core-Hulpprogram Ma's.
-services: functions
-keywords: ''
+description: Meer informatie over het toevoegen van een Azure Storage wachtrij-uitvoer binding aan uw python-functie.
 author: ggailey777
 ms.author: glenga
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839178"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329738"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
-Met Azure Functions kunt u Azure-Services en andere resources verbinden met functies zonder dat u uw eigen integratie code hoeft te schrijven. Deze *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd in de functie definitie. Gegevens van bindingen worden aan de functie door gegeven als para meters. Een *trigger* is een speciaal type invoer binding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer-en uitvoer bindingen hebben. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie.
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 In dit artikel wordt beschreven hoe u de functie die u hebt gemaakt in het [vorige Quick](functions-create-first-function-python.md) start-artikel integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 
@@ -34,7 +30,7 @@ Voordat u aan dit artikel begint, moet u de stappen in [deel 1 van de python-Sne
 
 ## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+[!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
 
@@ -63,7 +59,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Omdat in de vorige Snelstartgids u de uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
+> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
 
 Kopieer de URL van uw `HttpTrigger`-functie uit de uitvoer van de runtime en plak deze in de adresbalk van uw browser. Voeg de query reeks `?name=<yourname>` toe aan deze URL en voer de aanvraag uit. U ziet hetzelfde antwoord in de browser zoals u dat in het vorige artikel hebt gedaan.
 
@@ -71,17 +67,17 @@ De uitvoer binding maakt ook een wachtrij met de naam `outqueue` in uw opslag ac
 
 Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te controleren of er een bericht is toegevoegd. U kunt uw wachtrij ook weer geven met behulp van de [Microsoft Azure Storage Explorer][Azure Storage Explorer] of in de [Azure Portal](https://portal.azure.com).
 
-### <a name="set-the-storage-account-connection"></a>De verbinding voor het opslag account instellen
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>Query uitvoeren op de opslag wachtrij
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-Nu is het tijd om de bijgewerkte functie-app opnieuw te publiceren naar Azure.
+### <a name="redeploy-the-project"></a>Het project opnieuw implementeren 
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+Als u uw gepubliceerde app wilt bijwerken, gebruikt u de opdracht [`func azure functionapp publish`-](functions-run-local.md#project-file-deployment) kern hulpprogramma's om uw project code te implementeren in Azure. Vervang in dit voor beeld `<APP_NAME>` door de naam van uw app.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
 
 U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg de query reeks `&name=<yourname>` toe aan de URL, zoals in dit voor beeld:
 
@@ -89,7 +85,7 @@ U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te test
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-U kunt [het bericht van de opslag wachtrij bekijken](#query-the-storage-queue) om te controleren of de uitvoer binding opnieuw een nieuw bericht in de wachtrij genereert.
+U kunt [de opslag wachtrij opnieuw bekijken](#query-the-storage-queue) om te controleren of de uitvoer binding een nieuw bericht in de wachtrij genereert, zoals verwacht.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

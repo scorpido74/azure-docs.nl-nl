@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Een toepassing bouwen met Python en de SQL-API'
+title: 'Snelstartgids: een python-app bouwen met Azure Cosmos DB SQL-API-account'
 description: Is een Python-codevoorbeeld dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit de SQL API van Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: f085ca6de2c04caa90c34bc1293da1210d2883eb
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+ms.openlocfilehash: f00d0e4f659c1ebe104dac1a25ea3688c9a1f2e5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020159"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327249"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: een Python-app maken met behulp van een SQL API-account van Azure Cosmos DB
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: een python-toepassing maken met behulp van Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -25,7 +29,7 @@ ms.locfileid: "70020159"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
 
 Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens ontwikkelt u een console-app die is gebouwd met de Python SDK voor [SQL API](sql-api-sdk-python.md) en voert u deze uit. In deze Quick Start wordt versie 3,0 van de [python-SDK](https://pypi.org/project/azure-cosmos)gebruikt.
 
@@ -33,7 +37,7 @@ Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account va
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3,6](https://www.python.org/downloads/), met het `python` uitvoer bare bestand dat `PATH`beschikbaar is in uw.
+* [Python 3,6](https://www.python.org/downloads/), met het `python` uitvoer bare bestand dat beschikbaar is in uw `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview) (Engelstalig)
 
@@ -88,7 +92,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     ![Een toegangssleutel bekijken en kopiëren in Azure Portal, blade Sleutels](./media/create-sql-api-dotnet/keys.png)
 
-2. Open het `CosmosGetStarted.py` bestand in \git-samples\azure-Cosmos-DB-python-Getting-Started in Visual Studio code.
+2. Open het bestand `CosmosGetStarted.py` in \git-samples\azure-Cosmos-DB-python-Getting-Started in Visual Studio code.
 
 3. Kopieer uw **URI**-waarde vanaf de portal (met de kopieerknop) en geef deze als waarde van de **eindpunt**sleutel in ``CosmosGetStarted.py``. 
 
@@ -171,11 +175,11 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `CosmosGetSta
         print(item['message'])
     ```
    
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 1. Selecteer **View** > **Command Palette** in Visual Studio Code. 
 
-2. Voer na de prompt **Python in: Selecteer Interpreter** in en selecteer de te gebruiken Python-versie.
+2. Voer na de prompt **Python: Select Interpreter** in en selecteer de te gebruiken Python-versie.
 
     De voettekst in Visual Studio Code wordt bijgewerkt om de geselecteerde interpreter aan te geven. 
 

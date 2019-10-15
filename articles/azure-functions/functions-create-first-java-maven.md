@@ -1,30 +1,28 @@
 ---
-title: Java en Maven gebruiken voor het publiceren van een functie-Azure Functions
-description: Lees hier hoe u een eenvoudige, door HTTP getriggerde functie maakt en publiceert naar Azure met Java en Maven.
-services: functions
-documentationcenter: na
+title: Java-en Maven gebruiken om een functie te publiceren in azure
+description: Een door HTTP geactiveerde functie maken en publiceren naar Azure met Java en Maven.
 author: rloutlaw
-manager: justhe
-keywords: azure-functies, functies, gebeurtenisverwerking, berekenen, architectuur zonder server
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
-ms.devlang: java
 ms.date: 08/10/2018
-ms.author: routlaw
-ms.reviewer: glenga
+ms.author: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5c51e445aaa27f3f83627ccf0da8fb80e01f156c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299402"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329536"
 ---
-# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Quickstart: Java gebruiken om een functie te maken en te publiceren in Azure Functions
+# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Snelstartgids: Java en Maven gebruiken om een functie te maken en te publiceren in azure
 
-In dit artikel wordt beschreven hoe u een Java-functie bouwt en publiceert op Azure functions met het opdracht regel programma maven. Wanneer u klaar bent, wordt uw functiecode uitgevoerd in het [Verbruiksabonnement](functions-scale.md#consumption-plan) in Azure en kan deze worden geactiveerd met behulp van een HTTP-aanvraag.
+In dit artikel leest u hoe u een Java-functie bouwt en publiceert op Azure Functions met het opdracht regel programma maven. Wanneer u klaar bent, wordt de functie code in azure uitgevoerd in een [hosting abonnement](functions-scale.md#consumption-plan) op de server en wordt geactiveerd door een HTTP-aanvraag.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+<!--
+> [!NOTE] 
+> You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
+-->
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,8 +30,12 @@ Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geï
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
 - [Apache Maven](https://maven.apache.org), versie 3,0 of hoger
-- [Azure-CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI]
 - [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
+- Een Azure-abonnement.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 > [!IMPORTANT]
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.
@@ -51,7 +53,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Als u problemen ondervindt met het uitvoeren van de opdracht, bekijkt `maven-archetype-plugin` u de versie die wordt gebruikt. Omdat u de opdracht uitvoert in een lege map zonder `.pom` bestand, probeert deze mogelijk een invoeg toepassing van de oudere `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` versie te gebruiken als u een upgrade hebt uitgevoerd van uw maven van een oudere versie. Als dit het geval is, `maven-archetype-plugin` verwijdert u de map en voert u de opdracht opnieuw uit.
+> Als u problemen ondervindt met het uitvoeren van de opdracht, bekijkt u wat `maven-archetype-plugin`-versie wordt gebruikt. Omdat u de opdracht uitvoert in een lege map zonder `.pom`-bestand, probeert deze mogelijk een invoeg toepassing van de oudere versie van `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` te gebruiken als u uw maven hebt bijgewerkt op basis van een oudere versie. Als dit het geval is, verwijdert u de map @no__t 0 en voert u de opdracht opnieuw uit.
 
 ### <a name="windows"></a>Windows
 
@@ -67,170 +69,124 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-U wordt door Maven gevraagd om de waarden die nodig zijn om het project te kunnen genereren. Informatie over de waarden voor _groupId_, _artifactId_ en _version_ kunt u vinden in de Engelstalige [naslag van Maven over naamconventies](https://maven.apache.org/guides/mini/guide-naming-conventions.html). De waarde voor _appName_ moet uniek zijn binnen Azure. Om die reden genereert Maven standaard een app-naam op basis van de eerder opgegeven waarde voor _artifactId_. De waarde voor _packageName_ bepaalt het Java-pakket voor de gegenereerde functiecode.
+Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren tijdens de implementatie. Geef de volgende waarden op wanneer u hierom wordt gevraagd:
 
-De id's `com.fabrikam.functions` en `fabrikam-functions` hieronder worden gebruikt als een voorbeeld en om latere stappen in deze snelstart makkelijker te kunnen lezen. In deze stap wordt u aangeraden om Maven van uw eigen waarden te voorzien.
+| Waarde | Beschrijving |
+| ----- | ----------- |
+| **Groep** | Een waarde die uw project op unieke wijze identificeert voor alle projecten, volgens de [pakket naamgevings regels](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) voor Java. In de voor beelden in deze Snelstartgids wordt gebruikgemaakt van `com.fabrikam.functions`. |
+| **artifactId** | Een waarde die bestaat uit de naam van het jar, zonder een versie nummer. In de voor beelden in deze Snelstartgids wordt gebruikgemaakt van `fabrikam-functions`. |
+| **Versie** | Kies de standaard waarde `1.0-SNAPSHOT`. |
+| **pakket** | Een waarde die het Java-pakket voor de gegenereerde functie code is. Gebruik de standaard. In de voor beelden in deze Snelstartgids wordt gebruikgemaakt van `com.fabrikam.functions`. |
+| **Toepassings** | Een wereld wijd unieke naam waarmee uw nieuwe functie-app in azure wordt geïdentificeerd. Gebruik de standaard waarde. Dit is de _artifactId_ die wordt toegevoegd met een wille keurig getal. Noteer deze waarde. u hebt deze later nodig. |
+| **appRegion** | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. De standaardwaarde is `westus`. Voer deze [Azure cli] -opdracht uit om een lijst met alle regio's op te halen:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | De naam voor de nieuwe [resource groep](../azure-resource-manager/resource-group-overview.md) waarin u de functie-app wilt maken. Gebruik `myResourceGroup`, dat wordt gebruikt door voor beelden in deze Quick Start. Een resource groep moet uniek zijn voor uw Azure-abonnement.|
 
-```Output
-Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
-Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
-Define value for property 'version' 1.0-SNAPSHOT : 
-Define value for property 'package': com.fabrikam.functions
-Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus: :
-Define value for property 'resourceGroup' java-functions-group: :
-Confirm properties configuration: Y
-```
+Typ `Y` of druk op ENTER om te bevestigen.
 
-Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_; in dit voorbeeld `fabrikam-functions`. De gereed voor uitvoering van gegenereerde code in het project is een door [http geactiveerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofd tekst van de aanvraag echoert. Vervang *src/main/Java/com/fabrikam/functions. java* door de volgende code: 
+Maven maakt de project bestanden in een nieuwe map met de naam _artifactId_, die in dit voor beeld is `fabrikam-functions`. 
 
-```java
-package com.fabrikam.functions;
-
-import java.util.*;
-import com.microsoft.azure.functions.annotation.*;
-import com.microsoft.azure.functions.*;
-
-public class Function {
-    /**
-     * This function listens at endpoint "/api/HttpTrigger-Java". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTrigger-Java
-     * 2. curl {your host}/api/HttpTrigger-Java?name=HTTP%20Query
-     */
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-        context.getLogger().info("Java HTTP trigger processed a request.");
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("name");
-        String name = request.getBody().orElse(query);
-
-        if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        }
-    }
-}
-
-```
-
-## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Open de nieuwe functie. java-bestand van het pad *src/main/Java* in een tekst editor en controleer de gegenereerde code. Deze code is een door [http geactiveerde](functions-bindings-http-webhook.md) functie die de hoofd tekst van de aanvraag echoert. 
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Wijzig de map naar de zojuist gemaakte projectmap (de map met uw host. json-en Pom. XML-bestanden) en bouw en voer de functie uit met maven:
+Voer de volgende opdracht uit, waarbij u de map wijzigt in de zojuist gemaakte projectmap en vervolgens het functie project bouwt en uitvoert:
 
-```CMD
+```console
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
 
-> [!NOTE]
-> Als u deze uitzondering krijgt: `javax.xml.bind.JAXBException` met Java 9, bekijkt u de tijdelijke oplossing op [GitHub](https://github.com/jOOQ/jOOQ/issues/6477).
-
-U ziet deze uitvoer als de functie lokaal op uw systeem wordt uitgevoerd en klaar is om op HTTP-aanvragen te reageren:
+U ziet uitvoer als het volgende van Azure Functions Core Tools wanneer u het project lokaal uitvoert:
 
 ```Output
-Listening on http://localhost:7071
-Hit CTRL-C to exit...
+...
+
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-   hello: http://localhost:7071/api/HttpTrigger-Java
+    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+...
 ```
 
-Activeer de functie vanaf de opdrachtregel met de opdracht curl in een nieuw terminalvenster:
+Activeer de functie vanaf de opdracht regel met behulp van krul in een nieuw terminal venster:
 
 ```CMD
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java -d LocalFunction
-```
-
-```Output
-Hello LocalFunction!
-```
-
-Gebruik `Ctrl-C` in de terminal om de functiecode te stoppen.
-
-## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
-
-Bij het implementeren naar Azure Functions worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan met de Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat.
-
-```azurecli
-az login
-```
-
-Implementeer de code in een nieuwe functie-app met behulp van de Maven-target `azure-functions:deploy`. Hiermee wordt een [zip-implementatie uitgevoerd met uitvoeren vanuit pakket](functions-deployment-technologies.md#zip-deploy) modus ingeschakeld.
-
-> [!NOTE]
-> Wanneer u Visual Studio code gebruikt om uw functie-app te implementeren, moet u een niet-gratis abonnement kiezen of wordt er een fout melding weer gegeven. U kunt uw abonnement aan de linkerkant van de IDE bekijken.
-
-```azurecli
-mvn azure-functions:deploy
-```
-
-Als het implementeren is voltooid, ziet u de URL die u kunt gebruiken voor toegang tot de Azure-functie-app:
-
-```output
-[INFO] Successfully deployed Function App with package.
-[INFO] Deleting deployment package from Azure Storage...
-[INFO] Successfully deleted deployment package fabrikam-function-20170920120101928.20170920143621915.zip
-[INFO] Successfully deployed Function App at https://fabrikam-function-20170920120101928.azurewebsites.net
-[INFO] ------------------------------------------------------------------------
-```
-
-Test de functie-app in Azure met behulp van `cURL`. Wijzig de URL in onderstaand voorbeeld om deze overeen te laten komen met de geïmplementeerde URL voor uw eigen functie-app uit de vorige stap.
-
-> [!NOTE]
-> Zorg ervoor dat u de **toegangs rechten** instelt `Anonymous`op. Wanneer u het standaard niveau van `Function`kiest, moet u de [functie sleutel](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) in aanvragen voor toegang tot uw functie-eind punt presen teren.
-
-```azurecli
-curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
 ```Output
 Hello AzureFunctions!
 ```
+De [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) is niet vereist wanneer deze lokaal wordt uitgevoerd. Gebruik `Ctrl+C` in de terminal om de functiecode te stoppen.
 
-## <a name="make-changes-and-redeploy"></a>Wijzigingen maken en opnieuw implementeren
+## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 
-Bewerk het bronbestand `src/main.../Function.java` in het gegenereerde project om de tekst te wijzigen die is geretourneerd met de functie-app. Wijzig deze regel:
+Een functie-app en gerelateerde resources worden in azure gemaakt wanneer u de functie-app voor het eerst implementeert. Voordat u kunt implementeren, gebruikt u de opdracht [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI om u aan te melden bij uw Azure-abonnement. 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+```azurecli
+az login
 ```
 
-In het volgende:
+> [!TIP]
+> Als uw account toegang heeft tot meerdere abonnementen, gebruikt u [AZ account set](/cli/azure/account#az-account-set) om het standaard abonnement voor deze sessie in te stellen. 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
+Gebruik de volgende maven-opdracht om uw project te implementeren in een nieuwe functie-app. 
+
+```azurecli
+mvn azure-functions:deploy
 ```
 
-Sla de wijzigingen op. Voer het schone pakket MVN uit en implementeer het `azure-functions:deploy` opnieuw door vanaf de terminal als voorheen uit te voeren. De functie-app wordt bijgewerkt, en deze aanvraag:
+Deze `azure-functions:deploy` maven-doel maakt de volgende resources in Azure:
 
-```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
++ Resource groep. Met de naam van de _resourceGroup_ die u hebt opgegeven.
++ Opslag account. Vereist door-functies. De naam wordt wille keurig gegenereerd op basis van de vereisten van het opslag account.
++ App service-plan. Serverloze hosting voor uw functie-app in de opgegeven _appRegion_. De naam wordt wille keurig gegenereerd.
++ Functie-app. Een functie-app is de implementatie-en uitvoerings eenheid voor uw functies. De naam is uw _AppName_, die wordt toegevoegd met een wille keurig gegenereerd nummer. 
+
+De implementatie verpakt de project bestanden ook en implementeert deze in de nieuwe functie-app met behulp van [zip-implementatie](functions-deployment-technologies.md#zip-deploy), waarbij de modus uitvoeren vanaf pakket is ingeschakeld.
+
+Nadat de implementatie is voltooid, ziet u de URL die u kunt gebruiken om toegang te krijgen tot de eind punten van uw functie-apps. Omdat de HTTP-trigger die we hebben gepubliceerd, gebruikmaakt van `authLevel = AuthorizationLevel.FUNCTION`, moet u de functie sleutel ophalen om het eind punt van de functie aan te roepen via HTTP. De eenvoudigste manier om de functie code op te halen, is van de [Azure-portal].
+
+## <a name="get-the-http-trigger-url"></a>De URL van de HTTP-trigger ophalen
+
+<!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
+
+U kunt de URL ophalen die is vereist voor het activeren van uw functie, met de functie sleutel van de Azure Portal. 
+
+1. Blader naar de [Azure-portal], Meld u aan, typ de _AppName_ van uw functie-app in **zoeken** boven aan de pagina en druk op ENTER.
+ 
+1. Vouw in uw functie-app **functies (alleen-lezen)** uit, kies uw functie en selecteer vervolgens in de rechter bovenhoek **</> functie-URL ophalen** . 
+
+    ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-java-maven/get-function-url-portal.png)
+
+1. Kies **standaard (functie toets)** en selecteer **kopiëren**. 
+
+U kunt nu de gekopieerde URL gebruiken om toegang te krijgen tot uw functie.
+
+## <a name="verify-the-function-in-azure"></a>De functie in azure controleren
+
+Als u de functie-app die wordt uitgevoerd op Azure wilt controleren met `cURL`, vervangt u de URL uit het voor beeld hieronder door de URL die u hebt gekopieerd uit de portal.
+
+```azurecli
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Heeft deze bijgewerkte uitvoer:
+Hiermee wordt een POST-aanvraag verzonden naar het eind punt van de functie met `AzureFunctions` in de hoofd tekst van de aanvraag. U ziet het volgende antwoord.
 
 ```Output
-Hi, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een Java-functie-app gemaakt met een eenvoudige HTTP-trigger en deze geïmplementeerd naar Azure Functions.
+U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie, deze uitvoeren op uw lokale computer en geïmplementeerd in Azure. Breid uw functie nu uit door...
 
-- Neem de [Azure Functions Java-handleiding voor ontwikkelaars](functions-reference-java.md) door voor meer informatie over het ontwikkelen van Java-functies. Deze handleiding is vooralsnog door een vertaalmachine vertaald.
-- U kunt extra functies met verschillende triggers toevoegen aan uw project met behulp van de Maven-target `azure-functions:add`.
-- Gebruik [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) en [Eclipse](functions-create-maven-eclipse.md) om functies lokaal te schrijven en fouten op te sporen. 
-- Gebruik Visual Studio Code om fouten op te sporen in functies die zijn geïmplementeerd in Azure. Raadpleeg de Visual Studio Code-documentatie over [serverloze Java-toepassingen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) voor instructies.
+> [!div class="nextstepaction"]
+> [Een Azure Storage wachtrij-uitvoer binding toevoegen](functions-add-output-binding-storage-queue-java.md)
 
-> [!NOTE] 
-> U kunt ook een Azure Functions project op basis van Kotlin maken met behulp van Azure-functions-Kotlin-Archetype in plaats daarvan. Ga naar de [github-opslag plaats](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) voor meer informatie.
+
+[Azure CLI]: /cli/azure
+[Azure-portal]: https://portal.azure.com

@@ -3,8 +3,8 @@ title: Quickstart voor Azure-appconfiguratie met .NET Framework | Microsoft Docs
 description: Een quickstart voor het gebruik van Azure-app-configuratie met .NET Framework-apps
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,16 +12,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326534"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329802"
 ---
-# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Quickstart: Een .NET Framework-app maken met Azure-appconfiguratie
+# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstartgids: een .NET Framework-app maken met Azure-app configuratie
 
 In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework gebaseerde console-app om de opslag en het beheer van toepassings instellingen gescheiden van uw code te centraliseren.
 
@@ -29,13 +29,13 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **configuratie Explorer** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
@@ -45,20 +45,23 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
-1. Start Visual Studio en selecteer **bestand** > **New** > **project**.
+1. Start Visual Studio en selecteer **bestand** > **Nieuw** > -**project**.
 
-2. Selecteer in **Nieuw project** **geïnstalleerd** > **Visual C#**  Windows-bureau blad.  >  Selecteer **console-app (.NET Framework)** en voer een naam in voor het project. Selecteer **.NET Framework 4.7.1** of up en selecteer **OK**.
+1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
+
+1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Maken**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt  u het selectie vakje include Prerelease in.
+1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. Werk het bestand *app. config* van uw project als volgt bij:
+1. Werk het bestand *app. config* van uw project als volgt bij:
 
     ```xml
     <configSections>
@@ -78,20 +81,20 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
     </appSettings>
     ```
 
-   De connection string van uw app-configuratie archief wordt gelezen uit de omgevings variabele `ConnectionString`. Voeg de `Environment` Configuration Builder toe vóór `MyConfigStore` de in `configBuilders` de eigenschap van `appSettings` de sectie.
+   De connection string van uw app-configuratie archief wordt gelezen uit de omgevings variabele `ConnectionString`. Voeg de `Environment` Configuration Builder toe vóór de `MyConfigStore` in de eigenschap `configBuilders` van de sectie `appSettings`.
 
-3. Open *Program.cs*en werk de methode `Main` bij voor het gebruik van app- `ConfigurationManager`configuratie door aan te roepen.
+1. Open *Program.cs*en werk de `Main`-methode bij om de app-configuratie te gebruiken door het aanroepen van `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Stel een omgevingsvariabele met de naam **ConnectionString** in en stel deze in op de toegangssleutel van uw app-configuratiearchief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
 
@@ -101,7 +104,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Start Visual Studio opnieuw zodat de wijziging kan worden doorgevoerd. Druk op CTRL + F5 om de console-app te bouwen en uit te voeren.
+1. Start Visual Studio opnieuw zodat de wijziging kan worden doorgevoerd. Druk op CTRL + F5 om de console-app te bouwen en uit te voeren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285967"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372248"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt maken met Azure Portal
 
@@ -115,8 +115,8 @@ In deze sectie maakt u een SQL database-server in Azure.
     | **INSTANTIEDETAILS** |  |
     | Databasenaam  | Voer *mydatabase*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |||
-5. Selecteer in **Server**de optie **nieuwe maken**. 
-6. In **nieuwe server**voert u de volgende gegevens in of selecteert u deze:
+5. Selecteer in **Server**de optie **nieuwe maken**. 
+6. In **nieuwe server**voert u de volgende gegevens in of selecteert u deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -125,9 +125,9 @@ In deze sectie maakt u een SQL database-server in Azure.
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
     | Locatie | Selecteer een Azure-regio waar u wilt dat uw SQL Server zich bevindt. |
     
-7. Selecteer **OK**. 
-8. Selecteer **controleren + maken**. U gaat naar de @no__t voor het **bekijken en maken**van 1page, waar Azure uw configuratie valideert. 
-9. Wanneer u het bericht door gegeven validatie ziet, selecteert u **maken**. 
+7. Selecteer **OK**. 
+8. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+9. Wanneer u het bericht door gegeven validatie ziet, selecteert u **maken**. 
 10. Wanneer u het bericht door gegeven validatie ziet, selecteert u maken. 
 
 ## <a name="create-a-private-endpoint"></a>Een persoonlijk eind punt maken
@@ -147,18 +147,18 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | Naam | Voer * myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **WestCentralUS**.|
     |||
-5. Selecteer **volgende: resource**.
-6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
+5. Selecteer **volgende: resource**.
+6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
     |Verbindingsmethode  | Selecteer verbinding maken met een Azure-resource in mijn Directory.|
     | Abonnement| Selecteer uw abonnement. |
-    | Resourcetype | Selecteer **micro soft. SQL/servers**. |
+    | Resourcetype | Selecteer **micro soft. SQL/servers**. |
     | Bron |*Mijn server* selecteren|
     |Doel-subresource |*SqlServer* selecteren|
     |||
-7. Selecteer **volgende: Configuratie**.
+7. Selecteer **volgende: Configuratie**.
 8. Voer in **een persoonlijk eind punt maken (preview)-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -167,12 +167,12 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
     | Subnet | Selecteer *mySubnet*. |
     |**INTEGRATIE VAN PARTICULIERE DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
+    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
     |Privé-DNS zone |Selecteer *(nieuw) privatelink. data base. Windows. net* |
     |||
 
-1. Selecteer **controleren + maken**. U gaat naar de @no__t voor het **bekijken en maken**van 1page, waar Azure uw configuratie valideert. 
-2. Wanneer u de **validatie**ziet  message, selecteert u **maken**. 
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 
@@ -217,7 +217,7 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
     ```
 3. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
+4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -227,16 +227,16 @@ Nadat u **myVm*hebt gemaakt, kunt u als volgt verbinding maken met het Internet:
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de SQL-Server. |
     |Wacht woord onthouden|Selecteer **Ja**.|
     |||
-1. Selecteer **verbinding maken**.
+1. Selecteer **Verbinden**.
 2. Bladeren door data bases vanuit het menu links.
 3. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
 4. Sluit de verbinding met extern bureau blad met *myVm*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, de SQL-Server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
-1. Voer *myResourceGroup* In de **Zoek** box aan de bovenkant van de portal en selecteer *myResourceGroup* from de zoek resultaten. 
-2. Selecteer **resource groep verwijderen**. 
-3. Voer myResourceGroup in bij **Typ de naam van de resource groep** And Selecteer **verwijderen**.
+1. Voer *myResourceGroup* In het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* from de zoek resultaten. 
+2. Selecteer **Resourcegroep verwijderen**. 
+3. Voer myResourceGroup in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

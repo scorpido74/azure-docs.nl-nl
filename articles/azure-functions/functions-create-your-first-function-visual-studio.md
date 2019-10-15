@@ -1,8 +1,6 @@
 ---
 title: Uw eerste functie maken in Azure met behulp van Visual Studio
 description: Lees hoe u een via HTTP geactiveerde Azure-functie maakt en publiceert met Visual Studio.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 keywords: azure-functies, functies, gebeurtenisverwerking, berekenen, architectuur zonder server
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096576"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329496"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Uw eerste functie maken met Visual Studio
 
@@ -39,7 +37,7 @@ Als u deze zelf studie wilt volt ooien, moet u eerst [Visual Studio 2019](https:
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio maakt een project en een klasse die standaard code voor het functie type HTTP-trigger bevatten. Met `FunctionName` het kenmerk voor de methode wordt de naam van de functie ingesteld, die standaard `HttpTrigger`is. Het `HttpTrigger` kenmerk geeft aan dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
+Visual Studio maakt een project en een klasse die standaard code voor het functie type HTTP-trigger bevatten. Met het kenmerk `FunctionName` van de methode wordt de naam van de functie ingesteld. deze is standaard `HttpTrigger`. Het kenmerk `HttpTrigger` geeft aan dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
 
 U kunt de mogelijkheden van uw functie uitbreiden met behulp van invoer-en uitvoer bindingen door de juiste kenmerken toe te passen op de-methode. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
 
