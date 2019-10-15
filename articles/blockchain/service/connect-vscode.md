@@ -1,23 +1,23 @@
 ---
-title: Azure Block Chain Development Kit voor Ethereum gebruiken om verbinding te maken met de Azure Block Chain-Service
+title: Azure Block Chain Development Kit gebruiken voor Ethereum-Azure Block Chain-Service
 description: Verbinding maken met een Azure Block Chain Service consortium-netwerk met behulp van de Azure Block Chain Development Kit for Ethereum-extensie in Visual Studio code
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 82b71a9d837ed3cb1d9461c0de2559178685b4b4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6364e887c699219d80974d592a8ff7c77cca2621
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935815"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329301"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Quickstart: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk
+# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Snelstartgids: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk
 
 In deze Quick Start installeert en gebruikt u de Azure Block Chain Development Kit voor Ethereum Visual Studio code extension om te koppelen aan een consortium op Azure Block Chain service. De Azure Block Chain Development Kit vereenvoudigt het maken, verbinden, bouwen en implementeren van slimme contracten op Ethereum-grootten. 
 
@@ -25,7 +25,7 @@ In deze Quick Start installeert en gebruikt u de Azure Block Chain Development K
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI](create-member-cli.md)
+* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Block Chain Development Kit voor Ethereum-uitbrei ding](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js](https://nodejs.org)
@@ -38,7 +38,7 @@ In deze Quick Start installeert en gebruikt u de Azure Block Chain Development K
 
 In azure Block Chain Development Kit wordt gecontroleerd of aan de vereisten van uw ontwikkel omgeving is voldaan. Controleren of uw ontwikkel omgeving:
 
-Kies **in het palet met de VS code-opdracht Azure Block chain: Welkomst pagina**weer geven.
+Kies in het palet met de VS code-opdracht **Azure Block chain: Welkomst pagina weer geven**.
 
 Azure Block Chain Development Kit voert een validatie script uit dat ongeveer een minuut in beslag neemt. U kunt de uitvoer weer geven door **Terminal > New Terminal**te selecteren. Selecteer in de menu balk van de Terminal het tabblad **uitvoer** en **Azure Block Chain** in de vervolg keuzelijst. Geslaagde validatie ziet eruit als in de volgende afbeelding:
 
@@ -54,7 +54,7 @@ Installeer de ontbrekende vereiste onderdelen voordat u doorgaat met de Snelstar
 
 U kunt verbinding maken met consortium leden met behulp van de Azure Block Chain Development Kit VS code extension. Wanneer u bent verbonden met een consortium, kunt u slimme contracten compileren, bouwen en implementeren in een Azure Block Chain Service consortium-lid.
 
-Als u geen toegang hebt tot een lid van een Azure Block Chain Service consortium, voltooit [u de vereiste Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Maak een Azure Block Chain Service Block Chain-lid met behulp van Azure CLI](create-member-cli.md).
+Als u geen toegang hebt tot een lid van een Azure Block Chain Service consortium, voltooit u de vereiste [Snelstartgids: een Block Chain-lid maken met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain-Service Block Chain-lid maken met behulp van Azure cli ](create-member-cli.md).
 
 1. Vouw in het deel venster Visual Studio code (VS code) Explorer de **Azure Block Chain** -extensie uit.
 1. Selecteer **verbinding maken met consortium**.

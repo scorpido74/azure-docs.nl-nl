@@ -1,5 +1,5 @@
 ---
-title: Een Python-app maken in Linux - Azure App Service | Microsoft Docs
+title: 'Quick Start: een python-app maken op Linux-Azure App Service'
 description: Leer hoe u in een paar minuten uw eerste Python-app (Hello World) implementeert in Azure App Service on Linux.
 services: app-service\web
 documentationcenter: ''
@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
+ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7a0aded07c2cd4da6ada72bdb967b1d485a56b85
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242461"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329974"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
 
-In deze Quick Start implementeert u een eenvoudige python-app voor [app service op Linux](app-service-linux-intro.md), die een uiterst schaal bare webhostingservice met self-patch functie biedt. U gebruikt de Azure-opdracht regel interface (de [Azure cli](/cli/azure/install-azure-cli)) via het interactieve, op een browser gebaseerde Azure Cloud shell, zodat u de stappen kunt volgen op een Mac-, Linux-of Windows-computer.
+In dit artikel implementeert u een eenvoudige python-app voor [app service op Linux](app-service-linux-intro.md), die een uiterst schaal bare webhostingservice met self-patch functie biedt. U gebruikt de Azure-opdracht regel interface (de [Azure cli](/cli/azure/install-azure-cli)) via het interactieve, op een browser gebaseerde Azure Cloud shell, zodat u de stappen kunt volgen op een Mac-, Linux-of Windows-computer.
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-python/hello-world-in-browser.png)
 

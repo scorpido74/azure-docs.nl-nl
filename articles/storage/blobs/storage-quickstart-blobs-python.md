@@ -1,5 +1,5 @@
 ---
-title: 'Azure-snelstart: Een blob maken in objectopslag met Python | Microsoft Docs'
+title: 'Snelstartgids: een BLOB maken in Azure Blob-opslag met python'
 description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de opslagclientbibliotheek voor Python om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981213"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331802"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Quickstart: Blobs downloaden, uploaden en vermelden met behulp van Python
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Snelstart: Blobs downloaden, uploaden en vermelden met behulp van Python
 
-In deze Quick Start gebruikt u python voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage. Blobs zijn simpelweg objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. Blobs in Azure Storage verschillen van bestands shares, schema's met minder tabellen en berichten wachtrijen.  Zie [Inleiding tot Azure Storage](/azure/storage/common/storage-introduction)voor meer informatie.
+In dit artikel gebruikt u python voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage. Blobs zijn simpelweg objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. Blobs in Azure Storage verschillen van bestands shares, schema's met minder tabellen en berichten wachtrijen.  Zie [Inleiding tot Azure Storage](/azure/storage/common/storage-introduction)voor meer informatie.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

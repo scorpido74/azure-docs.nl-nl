@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Activiteit en logboekregistratie bewaken
           href: search-monitor-usage.md
-        - name: Analyse zoekverkeer
-          href: search-traffic-analytics.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI
