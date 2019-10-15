@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f00f6bcf07cbdc5aeaeb04aeccf7e88cf4822dbf
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917282"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311707"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Bulksgewijs gegevens laden in Apache Phoenix met psql
 
@@ -21,19 +21,19 @@ ms.locfileid: "70917282"
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Bulksgewijs laden met Apache Phoenix
 
-Er zijn meerdere manieren om gegevens op te halen in HBase, met inbegrip van client-Api's, een MapReduce-taak met TableOutputFormat of het hand matig invoeren van de gegevens via de HBase-shell. Phoenix voorziet in twee methoden voor het laden van CSV-gegevens in Phoenix-tabellen: `psql`een client laad programma met de naam en een MapReduce-hulp programma voor bulksgewijs laden.
+Er zijn meerdere manieren om gegevens op te halen in HBase, met inbegrip van client-Api's, een MapReduce-taak met TableOutputFormat of het hand matig invoeren van de gegevens via de HBase-shell. Phoenix voorziet in twee methoden voor het laden van CSV-gegevens in Phoenix-tabellen: een hulp programma voor het laden van de client met de naam `psql` en een op MapReduce gebaseerd hulp programma voor bulksgewijs laden.
 
-Het `psql` hulp programma heeft één thread en is het meest geschikt voor het laden van mega bytes of gigabytes aan gegevens. Alle CSV-bestanden die moeten worden geladen, moeten de bestands extensie. csv hebben.  U kunt ook SQL-script bestanden opgeven op `psql` de opdracht regel met de bestands extensie '. SQL '.
+Het hulp programma `psql` heeft één thread en is het meest geschikt voor het laden van mega bytes of gigabytes aan gegevens. Alle CSV-bestanden die moeten worden geladen, moeten de bestands extensie. csv hebben.  U kunt ook SQL-script bestanden opgeven in de `psql`-opdracht regel met de bestands extensie. SQL.
 
 Bulksgewijs laden met MapReduce wordt gebruikt voor veel grotere gegevens volumes, doorgaans in productie scenario's, omdat MapReduce meerdere threads gebruikt.
 
-Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakeld en of de instellingen van de querytime-out naar verwachting zijn.  Open uw HDInsight cluster [Apache Ambari](https://ambari.apache.org/) -dash board, selecteer HBase en klik vervolgens op het tabblad Configuratie.  Schuif omlaag om te controleren of Apache Phoenix is ingesteld `enabled` op zoals weer gegeven:
+Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakeld en of de instellingen van de querytime-out naar verwachting zijn.  Open uw HDInsight cluster [Apache Ambari](https://ambari.apache.org/) -dash board, selecteer HBase en klik vervolgens op het tabblad Configuratie.  Schuif omlaag om te controleren of Apache Phoenix is ingesteld op `enabled`, zoals wordt weer gegeven:
 
 ![Instellingen van HDInsight-cluster Apache Phoenix](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>Gebruiken `psql` om tabellen bulksgewijs te laden
+### <a name="use-psql-to-bulk-load-tables"></a>Gebruik `psql` om tabellen bulksgewijs te laden
 
-1. Maak een nieuwe tabel en sla de query op met de `createCustomersTable.sql`bestands naam.
+1. Maak een nieuwe tabel en sla de query op met de bestands naam `createCustomersTable.sql`.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,7 +44,7 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
         Country varchar);
     ```
 
-2. Kopieer uw CSV-bestand (voorbeeld inhoud weer gegeven `customers.csv` ) naar `/tmp/` een map die u in de zojuist gemaakte tabel wilt laden.  Gebruik de `hdfs` opdracht om het CSV-bestand naar de gewenste bron locatie te kopiëren.
+2. Kopieer uw CSV-bestand (voorbeeld inhoud weer gegeven) als `customers.csv` in een `/tmp/`-map voor het laden van de zojuist gemaakte tabel.  Gebruik de `hdfs` opdracht om het CSV-bestand naar de gewenste bron locatie te kopiëren.
 
     ```
     1,Samantha,260000.0,18,US
@@ -57,14 +57,14 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
     hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
     ```
 
-3. Maak een SQL SELECT-query om te controleren of de ingevoerde gegevens correct zijn geladen en sla de `listCustomers.sql`query vervolgens op met de bestands naam. U kunt elke SQL-query gebruiken.
+3. Maak een SQL SELECT-query om te controleren of de invoer gegevens correct zijn geladen en sla de query vervolgens op met de bestands naam `listCustomers.sql`. U kunt elke SQL-query gebruiken.
      ```sql
     SELECT Name, Income from Customers group by Country;
     ```
 
-4. De gegevens bulksgewijs laden door een *Nieuw* Hadoop-opdracht venster te openen. Ga eerst naar de locatie van de uitvoerings Directory `cd` met de opdracht en gebruik vervolgens `psql` het hulp programma `psql.py` (python-opdracht). 
+4. De gegevens bulksgewijs laden door een *Nieuw* Hadoop-opdracht venster te openen. Ga eerst naar de locatie van de uitvoerings Directory met de `cd`-opdracht en gebruik vervolgens het hulp programma `psql` (python `psql.py` opdracht). 
 
-    In het volgende voor beeld moet u het `customers.csv` bestand van een opslag account naar de lokale map Temp kopiëren `hdfs` met als in stap 2 hierboven.
+    In het volgende voor beeld moet u het `customers.csv`-bestand van een opslag account naar de lokale map Temp gekopieerd met `hdfs` zoals in stap 2 hierboven.
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -73,9 +73,9 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
     ```
 
     > [!NOTE]   
-    > Als u de `ZookeeperQuorum` naam wilt bepalen, zoekt u de [Apache ZooKeeper](https://zookeeper.apache.org/) quorum teken `/etc/hbase/conf/hbase-site.xml` reeks in het `hbase.zookeeper.quorum`bestand met de naam van de eigenschap.
+    > Als u de naam van de @no__t 0 wilt bepalen, zoekt u de [Apache ZooKeeper](https://zookeeper.apache.org/) quorum teken reeks in het bestand `/etc/hbase/conf/hbase-site.xml` met de eigenschaps naam `hbase.zookeeper.quorum`.
 
-5. Nadat de `psql` bewerking is voltooid, ziet u een bericht in het opdracht Venster:
+5. Nadat de `psql`-bewerking is voltooid, ziet u een bericht in het opdracht Venster:
 
     ```
     CSV Upsert complete. 5000 rows upserted
@@ -86,17 +86,17 @@ Controleer voordat u begint met het laden van gegevens of Phoenix is ingeschakel
 
 Gebruik het hulp programma MapReduce Load voor meer doorvoer belasting over het cluster. Met deze loader worden eerst alle gegevens naar HFiles geconverteerd en wordt vervolgens de gemaakte HFiles naar HBase.
 
-1. De CSV MapReduce loader starten met behulp `hadoop` van de opdracht met de Breda-client jar:
+1. Start de CSV MapReduce loader met de `hadoop` opdracht met het jar-client-Opper vlak:
 
     ```bash
     hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
     ```
 
-2. Maak een nieuwe tabel met een SQL-instructie, zoals `CreateCustomersTable.sql` in de vorige stap 1.
+2. Maak een nieuwe tabel met een SQL-instructie, net als bij `CreateCustomersTable.sql` in de vorige stap 1.
 
-3. Voer uit `!describe inputTable`om het schema van uw tabel te controleren.
+3. Voer `!describe inputTable` uit om het schema van uw tabel te controleren.
 
-4. Bepaal het pad naar de locatie van uw invoer gegevens, zoals het `customers.csv` voorbeeld bestand. De invoer bestanden bevinden zich mogelijk in uw WASB/ADLS-opslag account. In dit voorbeeld scenario bevinden de invoer bestanden zich in `<storage account parent>/inputFolderBulkLoad` de map.
+4. Bepaal het pad naar de locatie van de invoer gegevens, zoals het voor beeld `customers.csv`-bestand. De invoer bestanden bevinden zich mogelijk in uw WASB/ADLS-opslag account. In dit voorbeeld scenario bevinden de invoer bestanden zich in de map `<storage account parent>/inputFolderBulkLoad`.
 
 5. Ga naar de map voor de uitvoering van de opdracht voor het bulksgewijs laden van MapReduce:
 
@@ -104,9 +104,9 @@ Gebruik het hulp programma MapReduce Load voor meer doorvoer belasting over het 
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-6. Zoek uw `ZookeeperQuorum` waarde in `/etc/hbase/conf/hbase-site.xml`, met de naam `hbase.zookeeper.quorum`van de eigenschap.
+6. Zoek de waarde voor @no__t 0 in `/etc/hbase/conf/hbase-site.xml`, met eigenschaps naam `hbase.zookeeper.quorum`.
 
-7. Stel het klassenpad in en voer de `CsvBulkLoadTool` opdracht voor het hulp programma uit:
+7. Stel het klassenpad in en voer de opdracht `CsvBulkLoadTool` uit:
 
     ```bash
     /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
@@ -114,7 +114,7 @@ Gebruik het hulp programma MapReduce Load voor meer doorvoer belasting over het 
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. Als u MapReduce met Azure data Lake Storage wilt gebruiken, zoekt u de data Lake Storage hoofdmap. dit `hbase.rootdir` is de `hbase-site.xml`waarde in. In de volgende opdracht is `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`de hoofdmap van data Lake Storage. In deze opdracht geeft u de Data Lake Storage invoer-en uitvoer mappen op als para meters:
+8. Als u MapReduce met Azure Data Lake Storage wilt gebruiken, zoekt u de Data Lake Storage hoofdmap. Dit is de `hbase.rootdir` waarde in `hbase-site.xml`. In de volgende opdracht is de Data Lake Storage Root-Directory `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. In deze opdracht geeft u de Data Lake Storage invoer-en uitvoer mappen op als para meters:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -126,7 +126,7 @@ Gebruik het hulp programma MapReduce Load voor meer doorvoer belasting over het 
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-* Gebruik hetzelfde opslag medium voor zowel de invoer-als uitvoer mappen, Azure Storage (WASB) of Azure Data Lake Storage (ADL). Als u gegevens wilt overdragen van Azure Storage naar Data Lake Storage, kunt u `distcp` de opdracht gebruiken:
+* Gebruik hetzelfde opslag medium voor zowel de invoer-als uitvoer mappen, Azure Storage (WASB) of Azure Data Lake Storage (ADL). Als u gegevens wilt overdragen van Azure Storage naar Data Lake Storage, kunt u de `distcp`-opdracht gebruiken:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
@@ -141,6 +141,6 @@ Gebruik het hulp programma MapReduce Load voor meer doorvoer belasting over het 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Bulksgewijs laden van gegevens met Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
-* [Apache Phoenix gebruiken met Apache HBase-clusters op basis van Linux in HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Apache Phoenix gebruiken met Apache HBase-clusters op basis van Linux in HDInsight](../hbase/apache-hbase-query-with-phoenix.md)
 * [Gezouteerde tabellen](https://phoenix.apache.org/salted.html)
 * [Apache Phoenix grammatica](https://phoenix.apache.org/language/index.html)

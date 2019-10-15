@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39f451e94f2a825e69425f71aceda5f34de7eeb5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c9d3b2858ea3d80836b280b795025f2ce2eb85c7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642641"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311771"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Uw persoonlijke cloud omgeving beveiligen
 
@@ -33,12 +33,12 @@ Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources](../
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC voor Private Cloud vCenter
 
-Er wordt een `CloudOwner@cloudsimple.local` standaard gebruiker gemaakt in het vCenter-SSO-domein wanneer een privécloud wordt gemaakt.  CloudOwner-gebruiker heeft bevoegdheden voor het beheren van vCenter.   Aanvullende identiteits bronnen worden toegevoegd aan de vCenter-SSO om toegang te verlenen aan verschillende gebruikers.  Vooraf gedefinieerde rollen en groepen worden ingesteld op de vCenter die kan worden gebruikt om extra gebruikers toe te voegen.
+Een standaard gebruiker `CloudOwner@cloudsimple.local` wordt in het vCenter-SSO-domein gemaakt wanneer een Privécloud wordt gemaakt.  CloudOwner-gebruiker heeft bevoegdheden voor het beheren van vCenter. Aanvullende identiteits bronnen worden toegevoegd aan de vCenter-SSO om toegang te verlenen aan verschillende gebruikers.  Vooraf gedefinieerde rollen en groepen worden ingesteld op de vCenter die kan worden gebruikt om extra gebruikers toe te voegen.
 
 ### <a name="add-new-users-to-vcenter"></a>Nieuwe gebruikers toevoegen aan vCenter
 
-1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor *CloudOwner@cloudsimple.local* de gebruiker op de privécloud.
-2. Aanmelden bij vCenter met *CloudOwner@cloudsimple.local*
+1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor **CloudOwner@cloudsimple.local-** gebruiker op de privécloud.
+2. Meld u aan bij vCenter met **CloudOwner@cloudsimple.local**
 3. [Gebruikers met eenmalige aanmelding via VCenter toevoegen](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Gebruikers toevoegen aan een [vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
@@ -51,8 +51,8 @@ U kunt aanvullende id-providers voor het vCenter SSO-domein van uw Privécloud t
 * [Gebruik Active Directory als een id-provider](set-vcenter-identity.md) in Private Cloud vCenter.
 * [Azure AD als id-provider gebruiken](azure-ad.md) op de Privécloud-vCenter
 
-1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor *CloudOwner@cloudsimple.local* de gebruiker op de privécloud.
-2. Aanmelden bij vCenter met *CloudOwner@cloudsimple.local*
+1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor **CloudOwner@cloudsimple.local-** gebruiker op de privécloud.
+2. Meld u aan bij vCenter met **CloudOwner@cloudsimple.local**
 3. Gebruikers van de ID-provider toevoegen aan een [vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Netwerk beveiligen in uw Privécloud

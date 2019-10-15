@@ -1,6 +1,6 @@
 ---
-title: 'Fouten opsporen in Application Proxy connectors: Azure Active Directory | Microsoft Docs'
-description: Problemen met Azure Active Directory (Azure AD) Application Proxy connectors kunt verhelpen.
+title: Fout opsporing voor Application proxy-connectors-Azure Active Directory | Microsoft Docs
+description: Problemen met de connector voor toepassings proxy van Azure Active Directory (Azure AD) oplossen.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: c3088ae777fe1a64be218105d36fdb9e01d7b798
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66172233"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311845"
 ---
-# <a name="debug-application-proxy-connector-issues"></a>Application Proxy connector problemen verhelpen 
+# <a name="debug-application-proxy-connector-issues"></a>Problemen met de connector voor toepassings proxy oplossen 
 
-Dit artikel helpt bij het oplossen van problemen met Azure Active Directory (Azure AD) Application Proxy connectors. Als u de Application Proxy-service voor externe toegang tot een on-premises web-toepassing, maar u problemen ondervindt bij het verbinding maken met de toepassing, gebruikt u deze stroomdiagram om op te sporen connector problemen. 
+Dit artikel helpt u bij het oplossen van problemen met de connectors voor toepassings proxy van Azure Active Directory (Azure AD). Als u de Application proxy-service gebruikt voor externe toegang tot een on-premises webtoepassing, maar u problemen hebt met het maken van verbinding met de toepassing, gebruikt u dit stroom diagram om problemen met de connector op te lossen. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u de Application Proxy-connector hebt geïnstalleerd en een probleem zijn. Bij het oplossen van problemen met Application Proxy, wordt u aangeraden dat u begint met deze stroom oplossen om te bepalen of de Application Proxy connectors correct zijn geconfigureerd. Als u er nog steeds geen verbinding met de toepassing, volgt u de werkstroom voor het oplossen van problemen in [fouten opsporen in Application Proxy toepassingsproblemen](application-proxy-debug-apps.md).  
+In dit artikel wordt ervan uitgegaan dat u de connector voor de toepassings proxy hebt geïnstalleerd en een probleem ondervindt. Bij het oplossen van problemen met toepassings proxy raden we u aan om te beginnen met deze probleemoplossings stroom om te bepalen of toepassings proxy-connectors correct zijn geconfigureerd. Als u nog steeds problemen hebt met het maken van verbinding met de toepassing, volgt u de stroom problemen oplossen in toepassings [problemen met toepassings proxy](application-proxy-debug-apps.md).  
 
 
-Zie voor meer informatie over Application Proxy en met behulp van de connectors:
+Voor meer informatie over toepassings proxy en het gebruik van de connectors raadpleegt u:
 
-- [Externe toegang tot on-premises toepassingen via de toepassingsproxy](application-proxy.md)
-- [Application Proxy connectors](application-proxy-connectors.md)
-- [Installeren en registreren van een connector](application-proxy-add-on-premises-application.md)
-- [Oplossen van problemen met Application Proxy- en foutberichten](application-proxy-troubleshoot.md)
+- [Externe toegang tot on-premises toepassingen via toepassings proxy](application-proxy.md)
+- [Application proxy-connectors](application-proxy-connectors.md)
+- [Een connector installeren en registreren](application-proxy-add-on-premises-application.md)
+- [Problemen met toepassings proxy en fout berichten oplossen](application-proxy-troubleshoot.md)
 
-## <a name="flowchart-for-connector-issues"></a>Stroomdiagram voor connector-problemen
+## <a name="flowchart-for-connector-issues"></a>Stroom diagram voor connector problemen
 
-Deze stroomdiagram leidt u door de stappen voor het opsporen van fouten in enkele van de meest voorkomende problemen die connector. Zie voor meer informatie over elke stap in de tabel de stroomdiagram te volgen.
+Dit stroom diagram leidt u door de stappen voor het opsporen van fouten in een aantal van de meest voorkomende problemen met de connector. Zie de tabel die volgt op het stroom diagram voor meer informatie over elke stap.
 
-![Stroomdiagram dat toont de stappen voor het opsporen van fouten in een connector](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
+![Stroom diagram met stappen voor het opsporen van fouten in een connector](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Bewerking | Description | 
+|  | Bewerking | Beschrijving | 
 |---------|---------|---------|
-|1 | De connectorgroep toegewezen aan de app zoeken | Hebt u waarschijnlijk een connector is geïnstalleerd op meerdere servers, in welk geval de connectors worden [toegewezen aan connectorgroepen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Zie voor meer informatie over connectorgroepen [publiceren van toepassingen op afzonderlijke netwerken en locaties met connectorgroepen](application-proxy-connector-groups.md). |
-|2 | De connector te installeren en een groep worden toegewezen | Als u een connector is geïnstalleerd hebt, raadpleegt u [Installeer en registreer een connector](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br>Als de connector niet is toegewezen aan een groep, Zie [de connector toewijzen aan een groep](application-proxy-connector-groups.md#create-connector-groups).<br></br>Als de toepassing is niet aan een connectorgroep toegewezen, Zie [de toepassing toewijzen aan een connectorgroep](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
-|3 | Een poorttest uitvoeren op de server-connector | Voer op de connectorserver, een poorttest met behulp van [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) of andere poort testen hulpprogramma om te controleren of poort 443 en 80 open zijn.|
-|4 | De domeinen en -poorten configureren | [Zorg ervoor dat de poorten en domeinen correct zijn geconfigureerd](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) voor de connector goed, er zijn bepaalde poorten die geopend moeten zijn en de URL's die uw server moet toegang hebben tot. |
-|5 | Controleer of er een back-end-proxy in gebruik is | Controleer of de connectors zijn met behulp van back-end-proxyservers en overslaan van deze. Zie voor meer informatie, [connector proxy problemen kunt oplossen en problemen met de netwerkverbinding service](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |
-|6 | Bijwerken van de connector en updater voor gebruik van de back-end-proxy | Als u een back-end-proxy wordt gebruikt, moet u om te controleren of dat de connector gebruikmaakt van dezelfde proxy. Zie voor meer informatie over het oplossen van problemen en configureren van connectors werken met proxyservers [werken met bestaande on-premises proxy-servers](application-proxy-configure-connectors-with-proxy-servers.md). |
-|7 | Laden van de interne URL van de app op de server-connector | Op de connectorserver de interne URL van de app worden geladen. |
-|8 | Verbinding met het interne netwerk controleren | Er is een probleem met de netwerkverbinding in uw interne netwerk dat deze foutopsporing stroom is niet kunt vaststellen. De toepassing moet toegankelijk zijn intern voor de connectors om te werken. U kunt inschakelen en weergeven van gebeurtenislogboeken van de connector, zoals beschreven in [Application Proxy connectors](application-proxy-connectors.md#under-the-hood). |
-|9 | De time-outwaarde voor de back-end verlengen | In de **extra instellingen** wijzigen voor uw toepassing, de **Toepassingstime-out back-end** instelt op **lang**. Zie [on-premises Apps toevoegen aan Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
-|10 | Als er problemen blijven optreden, gericht op specifieke flow problemen, app controleren en stromen foutopsporing SSO | Gebruik de [fouten opsporen in Application Proxy toepassingsproblemen](application-proxy-debug-apps.md) stroom oplossen van problemen. |
+|1 | De connector groep zoeken die is toegewezen aan de app | U hebt waarschijnlijk een connector op meerdere servers geïnstalleerd. in dat geval moeten de connectors worden [toegewezen aan connector groepen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Zie [toepassingen op verschillende netwerken en locaties publiceren met connector groepen](application-proxy-connector-groups.md)voor meer informatie over connector groepen. |
+|2 | De connector installeren en een groep toewijzen | Als u geen connector hebt geïnstalleerd, raadpleegt u [een connector installeren en registreren](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Zie [probleem met het](application-proxy-connector-installation-problem.md)installeren van de connector als u problemen ondervindt bij het installeren van de connector.<br></br> Als de connector niet is toegewezen aan een groep, raadpleegt [u de connector toewijzen aan een groep](application-proxy-connector-groups.md#create-connector-groups).<br></br>Als de toepassing niet is toegewezen aan een connector groep, raadpleegt [u de toepassing toewijzen aan een connector groep](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
+|3 | Een poort test uitvoeren op de connector server | Voer op de connector server een poort test uit met behulp van [Telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) of een ander hulp programma voor poort testen om te controleren of de poorten 443 en 80 zijn geopend.|
+|4 | De domeinen en poorten configureren | [Zorg ervoor dat uw domeinen en poorten correct zijn geconfigureerd](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) De connector werkt alleen goed als er bepaalde poorten zijn geopend en Url's waartoe de server toegang moet hebben. |
+|5 | Controleren of een back-end-proxy wordt gebruikt | Controleer of de connectors gebruikmaken van back-endservers van proxy servers of overs Laan. Zie problemen [met Connector proxy en problemen met de service connectiviteit oplossen](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)voor meer informatie. |
+|6 | De connector en de updater bijwerken om de back-end-proxy te gebruiken | Als een back-end-proxy wordt gebruikt, moet u controleren of de connector dezelfde proxy gebruikt. Zie [werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie over het oplossen van problemen en het configureren van connectors voor gebruik met proxy servers. |
+|7 | De interne URL van de app op de connector server laden | Laad de interne URL van de app op de connector server. |
+|8 | Interne netwerk verbinding controleren | Er is een probleem met de connectiviteit in uw interne netwerk die niet kan worden vastgesteld door deze fout opsporen. De toepassing moet intern toegankelijk zijn voor de werking van de connectors. U kunt connector gebeurtenis logboeken inschakelen en weer geven zoals beschreven in [Application proxy-connectors](application-proxy-connectors.md#under-the-hood). |
+|9 | De time-outwaarde voor de back-end verlengen | Wijzig in de **aanvullende instellingen** voor uw toepassing de time-outinstelling van de **back-end-toepassing** in **lang**. Zie [een on-premises app toevoegen aan Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). |
+|10 | Als problemen zich blijven voordoen, kunt u specifieke stroom problemen verhelpen, de app-en SSO-fout opsporing controleren | Gebruik de stroom probleem oplossing toepassings problemen oplossen van de toepassings [proxy](application-proxy-debug-apps.md) . |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 
-* [Publiceren van toepassingen op afzonderlijke netwerken en locaties met behulp van connectorgroepen](application-proxy-connector-groups.md)
-* [Werken met bestaande on-premises proxy-servers](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Application Proxy en de connector-fouten oplossen](application-proxy-troubleshoot.md)
-* [De Azure AD Application Proxy Connector op de achtergrond installeren](application-proxy-register-connector-powershell.md)
+* [Toepassingen publiceren op afzonderlijke netwerken en locaties met connector groepen](application-proxy-connector-groups.md)
+* [Werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)
+* [Problemen met toepassings proxy en connector fouten oplossen](application-proxy-troubleshoot.md)
+* [De Azure AD-toepassingsproxy-connector op de achtergrond installeren](application-proxy-register-connector-powershell.md)

@@ -1,112 +1,108 @@
 ---
-title: Verbinding maken met SQL Server of Azure SQL Database-Azure Logic Apps | Microsoft Docs
-description: Toegang tot en beheer van SQL-data bases op locatie of in de Cloud door werk stromen te automatiseren met Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/15/2018
-ms.topic: article
-ms.service: logic-apps
+title: Verbinding maken met SQL Server of Azure SQL Database-Azure Logic Apps
+description: Automatiseer taken voor SQL-data bases on-premises of in de Cloud met behulp van Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam; LADocs
+manager: carmonm
+ms.topic: conceptual
 tags: connectors
-ms.openlocfilehash: 804a913d17c3151d07a1ecf229e2db148dc45558
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 10/14/2019
+ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050767"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312043"
 ---
-# <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Verbinding maken met SQL Server of Azure SQL Database vanuit Azure Logic Apps
+# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
-In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen en werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De connector werkt zowel voor [SQL Server on](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) -premises als voor [Azure SQL database in de Cloud](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [on-premises SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als voor in de [cloud gebaseerde Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
 
-U kunt logische apps maken die worden uitgevoerd wanneer deze worden geactiveerd door gebeurtenissen in uw SQL database of in andere systemen, zoals Dynamics CRM Online. Uw Logic apps kunnen ook gegevens ophalen, invoegen en verwijderen, samen met het uitvoeren van SQL-query's en opgeslagen procedures. U kunt bijvoorbeeld een logische app maken waarmee automatisch wordt gecontroleerd op nieuwe records in Dynamics CRM Online, items toevoegt aan uw SQL database voor nieuwe records en vervolgens e-mail waarschuwingen worden verzonden.
+U kunt logische apps maken die worden uitgevoerd wanneer deze worden geactiveerd door gebeurtenissen in uw SQL database of in andere systemen, zoals Dynamics CRM Online. Uw Logic apps kunnen ook gegevens ophalen, invoegen en verwijderen, samen met het uitvoeren van SQL-query's en opgeslagen procedures. U kunt bijvoorbeeld een logische app maken die automatisch controleert op nieuwe records in Dynamics CRM Online, items toevoegt aan uw SQL database voor nieuwe records en vervolgens e-mail waarschuwingen over de toegevoegde items verzendt.
 
-Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie over de [SQL Server-connector](https://docs.microsoft.com/connectors/sql/)voor connector-specifieke technische gegevens.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de pagina met Naslag informatie over [SQL Server-connector](https://docs.microsoft.com/connectors/sql/)voor connector-specifieke technische gegevens, beperkingen en bekende problemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De logische app waar u toegang tot uw SQL database nodig hebt. Als u uw logische app wilt starten met een SQL-trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig. 
+* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [Azure SQL database](../sql-database/sql-database-get-started-portal.md) -of [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) 
+* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) of [Azure-SQL database](../sql-database/sql-database-get-started-portal.md)
 
-  Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u een Azure SQL Database maakt, kunt u voorbeeld databases gebruiken die zijn opgenomen. 
+  Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u een Azure SQL Database maakt, kunt u voorbeeld databases gebruiken die zijn opgenomen.
 
-* De naam van uw SQL-Server, de database naam, uw gebruikers naam en uw wacht woord. U hebt deze referenties nodig zodat u uw logica kunt machtigen om toegang te krijgen tot uw SQL Server. 
+* De naam van uw SQL-Server, de database naam, uw gebruikers naam en uw wacht woord. U hebt deze referenties nodig zodat u uw logica kunt machtigen om toegang te krijgen tot uw SQL Server.
+
+  * Voor SQL Server kunt u deze informatie vinden in het connection string:
+
+    `Server={your-server-address};Database={your-database-name};User Id={your-user-name};Password={your-password};`
 
   * Voor Azure SQL Database kunt u deze details vinden in de connection string of in de Azure Portal onder de SQL Database eigenschappen:
 
-    "Server = TCP: <*yourServerName*>. data base. Windows. net, 1433; Initial Catalog = <*yourDatabaseName*>; Beveiligings gegevens persistent maken = False; Gebruikers-ID = <*yourUserName*>; Wacht woord = <*yourPassword*>; MultipleActiveResultSets = False; Versleutelen = True; TrustServerCertificate = False; Verbindingstime-out = 30; "
+    `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-  * Voor SQL Server kunt u deze informatie vinden in het connection string: 
+* Voordat u logische apps kunt verbinden met on-premises systemen zoals SQL Server, moet u [een on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u de gateway selecteren wanneer u de SQL-verbinding voor uw logische app maakt.
 
-    "Server = <*yourServerAddress*>;D atabase = <*yourDatabaseName*>; Gebruikers-id = <*yourUserName*>; Wacht woord = <*yourPassword*>; "
-
-* Voordat u logische apps kunt verbinden met on-premises systemen, zoals SQL Server, moet u [een on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u de gateway selecteren wanneer u de SQL-verbinding voor uw logische app maakt.
+* De logische app waar u toegang tot uw SQL database nodig hebt. Als u uw logische app wilt starten met een SQL-trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig.
 
 <a name="add-sql-trigger"></a>
 
-## <a name="add-sql-trigger"></a>SQL-trigger toevoegen
+## <a name="add-a-sql-trigger"></a>Een SQL-trigger toevoegen
 
-In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
+In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van de logische app uit te voeren.
 
 1. Maak in de Azure Portal of Visual Studio een lege logische app, waarmee Logic Apps Designer wordt geopend. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Voer in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst triggers de gewenste SQL-trigger. 
+1. Voer op de ontwerp functie in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst triggers de gewenste SQL-trigger.
 
-   Voor dit voor beeld selecteert u deze trigger: **SQL Server: wanneer een item wordt gemaakt**
+   In dit voor beeld wordt de trigger **Wanneer een item is gemaakt** gebruikt.
 
-   ![Selecteer de trigger SQL Server wanneer een item is gemaakt](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
+   ![De trigger ' wanneer een item wordt gemaakt ' selecteren](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
 
-3. Als u wordt gevraagd om de verbindings gegevens, [maakt u nu uw SQL-verbinding](#create-connection). 
-   Als uw verbinding al bestaat, selecteert u de naam van de **tabel** die u wilt in de lijst.
+1. Als u wordt gevraagd om een verbinding te maken, [maakt u nu uw SQL-verbinding](#create-connection). Als uw verbinding bestaat, selecteert u een **tabel naam**.
 
-   ![Tabel selecteren](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
+   ![Selecteer de tabel die u wilt](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
-4. Stel de eigenschappen **interval** en **frequentie** in, waarmee wordt aangegeven hoe vaak uw logische app de tabel controleert.
+1. Stel de eigenschappen **interval** en **frequentie** in, waarmee wordt aangegeven hoe vaak uw logische app de tabel controleert.
 
-   In dit voor beeld wordt alleen de geselecteerde tabel gecontroleerd, niets anders. 
-   Als u iets interessanter wilt maken, voegt u acties toe waarmee de gewenste taken worden uitgevoerd. 
-   
-   Als u bijvoorbeeld het nieuwe item in de tabel wilt weer geven, kunt u andere acties toevoegen, zoals het maken van een bestand met velden uit de tabel en e-mail waarschuwingen verzenden. 
-   Zie [Logic apps](../connectors/apis-list.md)-connectors voor meer informatie over andere acties voor deze connector of andere connectors.
+   Deze trigger retourneert slechts één rij uit de geselecteerde tabel, niets anders. Als u andere taken wilt uitvoeren, moet u andere acties toevoegen waarmee de gewenste taken worden uitgevoerd. Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
-5. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**. 
+1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
-   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd. 
+   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
 <a name="add-sql-action"></a>
 
-## <a name="add-sql-action"></a>SQL-actie toevoegen
+## <a name="add-a-sql-action"></a>Een SQL-actie toevoegen
 
 In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) een stap in uw werk stroom die volgt op een trigger of een andere actie. In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../connectors/connectors-native-recurrence.md)en wordt een actie aangeroepen waarmee een rij uit een SQL database wordt opgehaald.
 
 1. Open in de Azure Portal of Visual Studio uw logische app in Logic Apps Designer. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. In de Logic app Designer, onder de trigger of actie, selecteert u **nieuwe stap** > **een actie toevoegen**.
+1. Selecteer **nieuwe stap**onder de trigger of actie waar u de SQL-actie wilt toevoegen.
 
-   ![Selecteer ' nieuwe stap ', ' een actie toevoegen '](./media/connectors-create-api-sqlazure/add-action.png)
-   
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. 
-   Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   ![Selecteer ' nieuwe stap '](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-2. Voer in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst acties de gewenste SQL-actie. 
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-   Voor dit voor beeld selecteert u deze actie. Hiermee wordt één record opgehaald: **SQL Server-rij ophalen**
+1. Onder **Kies een actie**, voert u in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst acties de gewenste SQL-actie.
 
-   ![Voer SQL Server in, selecteer SQL Server-rij ophalen](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
+   In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
 
-3. Als u wordt gevraagd om de verbindings gegevens, [maakt u nu uw SQL-verbinding](#create-connection). 
-   Als uw verbinding bestaat, selecteert u een **tabel naam**en voert u de **rij-id** voor de gewenste record in.
+   ![Zoek en selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+
+   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Als u de gegevens in deze rij wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+
+1. Als u wordt gevraagd om een verbinding te maken, [maakt u nu uw SQL-verbinding](#create-connection). Als uw verbinding bestaat, selecteert u een **tabel naam**en voert u de **rij-id** voor de gewenste record in.
 
    ![De tabel naam en de rij-ID invoeren](./media/connectors-create-api-sqlazure/table-row-id.png)
-   
-   In dit voor beeld wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. 
-   Als u de gegevens in deze rij wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt met velden uit de rij voor latere controle en dat bestand opslaan in een account voor Cloud opslag. Zie [Logic apps](../connectors/apis-list.md)-connectors voor meer informatie over andere acties in deze connector of andere connectors.
 
-4. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**. 
+1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+
+   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
 <a name="create-connection"></a>
 
@@ -120,16 +116,13 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resultaten tegelijk retourneert, of u wilt de controle over de grootte en de structuur voor uw resultaten sets beter te bepalen. Hier volgt een aantal manieren waarop u dergelijke grote resultaten sets kunt verwerken:
 
-* Schakel *paginering*in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)met behulp van paginering.
+* Schakel *paginering*in om de resultaten te beheren als kleinere sets. Zie voor meer informatie [bulk gegevens, records en items ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
 
 * Maak een opgeslagen procedure waarmee de resultaten op de gewenste manier worden georganiseerd.
 
-  Wanneer u meerdere rijen haalt of invoegt, kan de logische app deze rijen door lopen met behulp van een [*until-lus*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) binnen deze [grenzen](../logic-apps/logic-apps-limits-and-config.md). 
-  Als uw logische app echter moet werken met record sets zo groot is, bijvoorbeeld duizenden of miljoenen rijen, die u de kosten wilt beperken die voortvloeien uit aanroepen naar de data base.
+  Wanneer u meerdere rijen haalt of invoegt, kan de logische app deze rijen door lopen met behulp van een [*until-lus*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) binnen deze [grenzen](../logic-apps/logic-apps-limits-and-config.md). Als uw logische app echter moet werken met record sets zo groot is, bijvoorbeeld duizenden of miljoenen rijen, die u de kosten wilt beperken die voortvloeien uit aanroepen naar de data base.
 
-  Als u de resultaten op de gewenste manier wilt indelen, kunt u een [*opgeslagen procedure*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. 
-  Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. 
-  Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector.
+  Als u de resultaten op de gewenste manier wilt indelen, kunt u een [*opgeslagen procedure*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) maken die wordt uitgevoerd in uw SQL-exemplaar en gebruikmaakt van de **Select-order by-** instructie. Met deze oplossing hebt u meer controle over de grootte en de structuur van uw resultaten. Uw logische app roept de opgeslagen procedure aan met behulp van de actie voor het uitvoeren van een **opgeslagen procedure** van de SQL Server-connector.
 
   Raadpleeg de volgende artikelen voor meer informatie over de oplossing:
 
@@ -139,9 +132,8 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Zie de [referentie Details van de connector](/connectors/sql/)voor technische informatie over de triggers, acties en limieten van deze connector. 
+Zie de [referentie pagina van de connector](/connectors/sql/)voor technische informatie over de triggers, acties en limieten van deze connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
-
+* Meer informatie over andere [connectors voor Azure Logic apps](../connectors/apis-list.md)

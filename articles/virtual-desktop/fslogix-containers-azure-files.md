@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676598"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311793"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
 De Windows Virtual Desktop-service beveelt FSLogix-profiel containers aan als een gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows virtueel bureau blad. Er wordt een volledig gebruikers profiel opgeslagen in één container. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van systeem eigen ondersteunde virtuele harde schijven (VHD) en Hyper-V virtuele harde schijf (VHDX). Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel. In dit artikel wordt beschreven hoe FSLogix-profiel containers die worden gebruikt met Azure Files functie in Windows virtueel bureau blad.
+
+>[!NOTE]
+>Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
 
 ## <a name="user-profiles"></a>Gebruikersprofielen
 
@@ -45,10 +48,10 @@ In de volgende tabel worden de voor delen en beperkingen van eerdere gebruikers 
 
 | Technologie | Moderne instellingen | Win32-instellingen | BESTURINGSSYSTEEM instellingen | Gebruikersgegevens | Ondersteund op de server-SKU | Back-end-opslag in azure | On-premises back-end-opslag | Versie ondersteuning | Volgende aanmeldings tijd |Opmerkingen|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Gebruikers profiel schijven (UDP)** | Ja | Ja | Ja | Ja | Ja | Nee | Ja | Win 7+ | Ja | |
-| **Zwervend gebruikers profiel (ZWERVENDE gebruikers profielen), onderhouds modus** | Nee | Ja | Ja | Ja | Ja| Nee | Ja | Win 7+ | Nee | |
+| **Gebruikers profiel schijven (UDP)** | Ja | Ja | Ja | Ja | Ja | Nee | Ja | Win 7 + | Ja | |
+| **Zwervend gebruikers profiel (ZWERVENDE gebruikers profielen), onderhouds modus** | Nee | Ja | Ja | Ja | Ja| Nee | Ja | Win 7 + | Nee | |
 | **Enterprise State Roaming (ESR)** | Ja | Nee | Ja | Nee | Opmerkingen weer geven | Ja | Nee | Win 10 | Nee | Functies op de server-SKU, maar geen ondersteunende gebruikers interface |
-| **User Experience Virtualization (UE-V)** | Ja | Ja | Ja | Nee | Ja | Nee | Ja | Win 7+ | Nee |  |
+| **User Experience Virtualization (UE-V)** | Ja | Ja | Ja | Nee | Ja | Nee | Ja | Win 7 + | Nee |  |
 | **OneDrive-Cloud bestanden** | Nee | Nee | Nee | Ja | Opmerkingen weer geven | Opmerkingen weer geven  | Opmerkingen weer geven | Win 10 RS3 | Nee | Niet getest op server-SKU. Back-end-opslag in Azure is afhankelijk van de synchronisatieclient. On-premises back-end-opslag moet een synchronisatieclient hebben. |
 
 #### <a name="performance"></a>Prestaties

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 2b4d588799d72be85030e70aed58b2c8d6b0a9a3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/11/2019
+ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091756"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311734"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -28,7 +28,7 @@ De volgende items zijn vereist voor het volt ooien van de stappen in dit artikel
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono is alleen vereist voor Linux en macOS.
 - [Een PySpark Interactive Environment voor Visual Studio code](set-up-pyspark-interactive-environment.md).
-- Een lokale map met de naam **HDexample**.  In dit artikel wordt gebruikgemaakt van **C:\HD\HDexample**.
+- Een lokale map. In dit artikel wordt gebruikgemaakt van **C:\HD\HDexample**.
 
 ## <a name="install-spark--hive-tools"></a>& Hive-Hulpprogram Ma's voor Spark installeren
 
@@ -36,7 +36,7 @@ Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor
 
 1. Open Visual Studio Code.
 
-2. Ga in de menu balk naar**uitbrei dingen** **weer geven** > .
+2. Navigeer in de menu balk om  > -**extensies** **weer te geven**.
 
 3. Voer in het zoekvak **Spark &-Hive**in.
 
@@ -50,20 +50,20 @@ Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor
 
 Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in Visual Studio code:
 
-1. Ga in de menu balk naar **bestand** > **openen map** > **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt aan de linkerkant weer gegeven in de weer gave van de **Verkenner** .
+1. Navigeer in de menu balk naar **bestand** > **geopende map...**  > **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt aan de linkerkant weer gegeven in de weer gave van de **Verkenner** .
 
 2. Selecteer in de **Verkenner** -weer gave de map **HDexample** en selecteer vervolgens het pictogram **nieuw bestand** naast de werkmap:
 
    ![pictogram Visual Studio code nieuw bestand](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de `.py` bestands extensie (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
+3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de bestands extensie van het `.py`-bestand (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
 
 ## <a name="set-the-azure-environment"></a>De Azure-omgeving instellen
 
-Voer voor een nationale Cloud gebruiker de volgende stappen uit om eerst de Azure-omgeving in te stellen en **gebruik vervolgens de Azure:**  Aanmeld opdracht om u aan te melden bij Azure:
+Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de Azure-omgeving in te stellen en vervolgens de **Azure: Sign in** -opdracht te gebruiken om u aan te melden bij Azure:
 
-1. Selecteer **File\Preferences\Settings**.
-2. Zoek naar de volgende teken reeks: **Azure: Cloud**
+1. Navigeer naar **bestands** > **voor keuren** > **instellingen**.
+2. Zoek naar de volgende teken reeks: **Azure: Cloud**.
 3. Selecteer de nationale Cloud in de lijst:
 
    ![Configuratie van standaard aanmeldings vermelding instellen](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
@@ -72,7 +72,7 @@ Voer voor een nationale Cloud gebruiker de volgende stappen uit om eerst de Azur
 
 Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, moet u verbinding maken met uw Azure-account of een cluster koppelen (met Apache Ambari-gebruikers naam en wachtwoord referenties of een domein account). Volg deze stappen om verbinding te maken met Azure:
 
-1. Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Azure in:** Aanmelden:
+1. Ga in de menu balk naar **weer gave** > **opdracht palet...** en voer **Azure in: aanmelden**
 
     ![Component Hulpprogramma's van Spark & voor Visual Studio code login](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -80,11 +80,11 @@ Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, moe
 
 ## <a name="link-a-cluster"></a>Een cluster koppelen
 
-### <a name="link-azure-hdinsight"></a>Gekoppeld Azure HDInsight
+### <a name="link-azure-hdinsight"></a>Koppeling: Azure HDInsight
 
-U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](https://ambari.apache.org/)beheerde gebruikers naam, of u kunt een beveiligd Hadoop-cluster van het ondernemings beveiligings pakket koppelen met behulp `user1@contoso.com`van een domein gebruikers naam (zoals:).
+U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](https://ambari.apache.org/)beheerde gebruikers naam, of u kunt een beveiligd Hadoop-cluster van het ondernemings beveiligings pakket koppelen met behulp van een domein gebruikers naam (zoals: `user1@contoso.com`).
 
-1. Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Spark/Hive in: Koppel een cluster**.
+1. Ga in de menu balk naar **weer gave** > **opdracht palet...** , en voer **Spark/Hive in: koppel een cluster**.
 
    ![Opdracht palet koppeling cluster opdracht](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -105,23 +105,23 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
    > [!NOTE]  
    > De gekoppelde gebruikers naam en het bijbehorende wacht woord worden gebruikt als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.  
 
-### <a name="link-generic-livy-endpoint"></a>Gekoppeld Algemeen livy-eind punt
+### <a name="link-generic-livy-endpoint"></a>Koppeling: algemeen livy-eind punt
 
-1. Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Spark/Hive in: Koppel een cluster**.
+1. Ga in de menu balk naar **weer gave** > **opdracht palet...** , en voer **Spark/Hive in: koppel een cluster**.
 
 2. Selecteer het type van het **algemene livy-eind punt**voor het gekoppelde cluster.
 
-3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http\://10.172.41.42:18080.
+3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http @ no__t-0//10.172.41.42:18080.
 
 4. Selecteer autorisatie type **Basic** of **none**.  Als u **Basic**selecteert:  
-    &emsp;één. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
+    &emsp;a. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
     &emsp;b. Voer uw Ambari-wacht woord in.
 
 5. Bekijk de **uitvoer** weergave voor verificatie.
 
 ## <a name="list-clusters"></a>Clusters weer geven
 
-1. Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Spark/Hive in: Lijst cluster**.
+1. Ga in de menu balk naar **weer gave** > **opdracht palet...** en voer **Spark/Hive: List cluster**.
 
 2. Selecteer het gewenste abonnement.
 
@@ -135,7 +135,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 2. Selecteer het bestand **HelloWorld. HQL** dat u [eerder](#open-a-work-folder)hebt gemaakt. Deze wordt geopend in de Script Editor.
 
-3. Klik met de rechter muisknop op de script editor en **Selecteer Spark/Hive: Het standaard cluster**instellen.  
+3. Klik met de rechter muisknop op de script editor en selecteer **Spark/Hive: standaard cluster instellen**.  
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
@@ -159,15 +159,15 @@ Met Spark & Hive-Hulpprogram Ma's voor Visual Studio code kunt u interactieve Hi
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
-5. Klik met de rechter muisknop op de script **editor en selecteer Hive: Interactief** om de query te verzenden, of gebruik de sneltoets CTRL + ALT + I.  Component **selecteren: Batch** om het script te verzenden of gebruik de sneltoets CTRL + ALT + H.  
+5. Klik met de rechter muisknop op de script editor en selecteer **Hive: Interactive** om de query te verzenden, of gebruik de sneltoets CTRL + ALT + I.  Selecteer **Hive: batch** om het script in te dienen, of gebruik de sneltoets CTRL + ALT + H.  
 
 6. Als u geen standaard cluster hebt opgegeven, selecteert u een cluster. Met de hulpprogram ma's kunt u ook een blok code verzenden in plaats van het hele script bestand met behulp van het context menu. Na enkele ogen blikken worden de query resultaten weer gegeven op een nieuw tabblad:
 
    ![Resultaat van interactieve Apache Hive query](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - Deelvenster **RESULTATEN**: U kunt het hele resultaat opslaan als een CSV-, JSON-of Excel-bestand naar een lokaal pad of u hoeft alleen maar meerdere regels te selecteren.
+    - **Resultaten** paneel: u kunt het hele resultaat opslaan als een CSV-, JSON-of Excel-bestand naar een lokaal pad of door alleen meerdere regels te selecteren.
 
-    - Deelvenster **BERICHTEN**: Wanneer u een **regel** nummer selecteert, springt dit naar de eerste regel van het script dat wordt uitgevoerd.
+    - **Berichten** paneel: wanneer u een **regel** nummer selecteert, springt dit naar de eerste regel van het script dat wordt uitgevoerd.
 
 ## <a name="submit-interactive-pyspark-queries"></a>Interactieve PySpark-query's verzenden
 
@@ -195,13 +195,13 @@ Voer de volgende stappen uit om interactieve PySpark-query's te verzenden:
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
-5. Selecteer alle code, klik met de rechter muisknop op de script editor en **Selecteer Spark: PySpark Interactive** om de query te verzenden. Of gebruik de sneltoets CTRL + ALT + I.
+5. Selecteer alle code, klik met de rechter muisknop op de script editor en selecteer **Spark: PySpark Interactive** om de query te verzenden. Of gebruik de sneltoets CTRL + ALT + I.
 
    ![context menu van pyspark Interactive](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
 6. Selecteer het cluster als u geen standaard cluster hebt opgegeven. Na enkele ogen blikken worden de **python-interactieve** resultaten weer gegeven op een nieuw tabblad. Met de hulpprogram ma's kunt u ook een blok code verzenden in plaats van het hele script bestand met behulp van het snelmenu:
 
-   ![interactief pyspark Interactive python-venster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png) 
+   ![interactief pyspark Interactive python-venster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
 7. Voer **%% info**in en druk op SHIFT + ENTER om de taak gegevens weer te geven (optioneel):
 
@@ -250,7 +250,7 @@ Voer de volgende stappen uit om interactieve PySpark-query's te verzenden:
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
-5. Klik met de rechter muisknop op de script editor en **Selecteer Spark: PySpark-** batch, of gebruik de sneltoets CTRL + ALT + H.
+5. Klik met de rechter muisknop op de Script Editor, selecteer **Spark: PySpark batch**of gebruik de sneltoets CTRL + ALT + H.
 
 6. Selecteer een cluster waar u uw PySpark-taak naar wilt verzenden:
 
@@ -265,8 +265,8 @@ De [Apache livy](https://livy.incubator.apache.org/) -configuratie wordt onderst
 <a id="triggerlivyconf"></a>**Livy-configuratie activeren**
 
 Methode 1  
-1. Ga in de menu balk naar**instellingen**voor **bestand** > **voor keuren** > .
-2. Voer**in het vak **Zoek instellingen** HDInsight-taak verzenden in: Livy conf**.  
+1. Navigeer in de menu balk naar **bestands** > **voor keuren** > **instellingen**.
+2. Voer in het vak **Zoek instellingen** **HDInsight-taak inzending in: livy conf**.  
 3. Selecteer **bewerken in instellingen. json** voor het relevante Zoek resultaat.
 
 Methode 2 een bestand verzenden en u ziet dat de map. vscode automatisch wordt toegevoegd aan de werkmap. U kunt de livy-configuratie bekijken door **. vscode\settings.json**te selecteren.
@@ -284,64 +284,49 @@ Methode 2 een bestand verzenden en u ziet dat de map. vscode automatisch wordt t
 
     | name | description | type |
     | :- | :- | :- |
-    | file | Bestand met de toepassing die moet worden uitgevoerd | pad (vereist) |
+    | Profiler | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
     | className | Hoofd klasse java/Spark-toepassing | Tekenreeks |
-    | args | Opdracht regel argumenten voor de toepassing | lijst met teken reeksen |
-    | jars | potten die in deze sessie moeten worden gebruikt | lijst met teken reeksen | 
-    | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
-    | files | bestanden die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
+    | argumenten | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
+    | Pott | Potten die in deze sessie moeten worden gebruikt | Lijst met teken reeksen | 
+    | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | logbestanden | Bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | driverMemory | Hoeveelheid geheugen die moet worden gebruikt voor het stuur programma | Tekenreeks |
-    | driverCores | Het aantal kernen dat moet worden gebruikt voor het stuur programma | Int |
+    | driverCores | Het aantal kernen dat moet worden gebruikt voor het stuur programma | integer |
     | executorMemory | Hoeveelheid geheugen die per bewerkings proces moet worden gebruikt | Tekenreeks |
-    | executorCores | Aantal kernen dat voor elke uitvoerder moet worden gebruikt | Int |
-    | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | Int |
-    | archives | Archief archieven die moeten worden gebruikt in deze sessie | lijst met teken reeksen |
-    | queue | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
+    | executorCores | Aantal kernen dat voor elke uitvoerder moet worden gebruikt | integer |
+    | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | integer |
+    | archieven | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | wachtrij | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
     | name | De naam van deze sessie | Tekenreeks |
-    | conf | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
+    | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
 
-    Antwoord tekst   
-    Het gemaakte batch-object.
+    Antwoord tekst het gemaakte batch-object.
 
     | name | description | type |
-    | :- | :- | :- | 
-    | id | Sessie-id | Int | 
+    | :- | :- | :- |
+    | id | Sessie-id | integer |
     | appId | Toepassings-id van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassings informatie | Toewijzing van sleutel = val |
-    | logboek | Logboek regels | lijst met teken reeksen |
-    | toestand |Batch status | Tekenreeks |
+    | logbestand | Logboek regels | Lijst met teken reeksen |
+    | state |Batch status | Tekenreeks |
 
-    >[!NOTE]
-    >De toegewezen livy-configuratie wordt weer gegeven in het deel venster uitvoer wanneer u het script verzendt.
+    > [!NOTE]
+    > De toegewezen livy-configuratie wordt weer gegeven in het deel venster uitvoer wanneer u het script verzendt.
 
 ## <a name="integrate-with-azure-hdinsight-from-explorer"></a>Integreren met Azure HDInsight vanuit Explorer
 
-**Azure HDInsight** is toegevoegd aan de Verkenner-weer gave. U kunt uw clusters rechtstreeks in **Azure HDInsight**doorzoeken en beheren.
-
-1. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
-
-2. Ga in de menu balk naar **weer gave** > **Verkenner**.
-
-3. Vouw in het linkerdeel venster **Azure HDINSIGHT**uit.  De beschik bare abonnementen en clusters (Spark, Hadoop en HBase worden ondersteund) worden weer gegeven:
-
-   ![Weer gave van Azure HDInsight-abonnement](./media/hdinsight-for-vscode/hdi-azure-hdinsight-subscription.png)
-
-4. Vouw het cluster uit om de meta gegevens database en het tabel schema van de Hive weer te geven:
-
-   ![Azure HDInsight-cluster verwijderen](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
-
-## <a name="preview-hive-table"></a>Voor beeld Hive-tabel
 U kunt de Hive-tabel in uw clusters rechtstreeks bekijken via de **Azure HDInsight** Explorer:
+
 1. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account als u dit nog niet hebt gedaan.
 
 2. Selecteer het pictogram van **Azure** in de kolom uiterst links.
 
-3. Vouw in het linkerdeel venster **Azure HDINSIGHT**uit. De beschik bare abonnementen en clusters worden weer gegeven.
+3. Vouw in het linkerdeel venster **Azure: HDINSIGHT**uit. De beschik bare abonnementen en clusters worden weer gegeven.
 
 4. Vouw het cluster uit om de meta gegevens database en het tabel schema van de Hive weer te geven.
 
-5. Klik met de rechter muisknop op de Hive-tabel. Bijvoorbeeld: **hivesampletable**. Selecteer **voor beeld**. 
+5. Klik met de rechter muisknop op de Hive-tabel. Bijvoorbeeld: **hivesampletable**. Selecteer **voor beeld**.
 
    ![Component tabel van Spark & voor Visual Studio code-Preview](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
 
@@ -354,16 +339,17 @@ U kunt de Hive-tabel in uw clusters rechtstreeks bekijken via de **Azure HDInsig
    U kunt het hele resultaat opslaan als een CSV-, JSON-of Excel-bestand naar een lokaal pad, of u hoeft alleen maar meerdere regels te selecteren.
 
 - BERICHTEN paneel
-   1. Wanneer het aantal rijen in de tabel groter is dan 100, wordt het volgende bericht weer gegeven: "De eerste 100 rijen worden weer gegeven voor de Hive-tabel."
-   2. Wanneer het aantal rijen in de tabel kleiner is dan of gelijk is aan 100, ziet u een bericht zoals het volgende: "60 rijen worden weer gegeven voor Hive-tabel."
-   3. Wanneer er geen inhoud in de tabel is, wordt het volgende bericht weer gegeven: "0 rijen worden weer gegeven voor Hive-tabel."
+   1. Wanneer het aantal rijen in de tabel groter is dan 100, ziet u het volgende bericht: "de eerste 100 rijen worden weer gegeven voor de Hive-tabel."
+   2. Wanneer het aantal rijen in de tabel kleiner is dan of gelijk is aan 100, ziet u een bericht zoals het volgende: "60 rijen worden weer gegeven voor Hive-tabel".
+   3. Wanneer de tabel geen inhoud bevat, ziet u het volgende bericht: 0 rijen worden weer gegeven voor Hive-tabel.
 
         >[!NOTE]
         >
         >Installeer xclip in Linux om Kopieer tabel gegevens in te scha kelen.
         >
         >![Spark-& Hive voor Visual Studio code in Linux](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
-    ## <a name="additional-features"></a>Aanvullende functies
+
+## <a name="additional-features"></a>Aanvullende functies
 
 De Spark-& Hive voor Visual Studio code biedt ook ondersteuning voor de volgende functies:
 
@@ -399,7 +385,7 @@ Bij het verzenden van een taak naar een HDInsight-cluster wordt u gevraagd het c
 
   > [!NOTE]
   >
-  >U kunt gebruiken `Spark / Hive: List Cluster` om het gekoppelde cluster te controleren:
+  >U kunt `Spark / Hive: List Cluster` gebruiken om het gekoppelde cluster te controleren:
   >
   >![Koppeling naar het onderdeel Hulpprogramma's van Spark & voor Visual Studio code Reader](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -421,7 +407,7 @@ Wanneer u een taak verzendt naar een HDInsight-cluster met behulp van Data Lake 
 
 ## <a name="unlink-cluster"></a>Cluster ontkoppelen
 
-1. Ga in de menu balk naar het **opdracht palet** > **weer g **even** en voer Spark/component in: Een cluster**ontkoppelen.  
+1. Ga in de menu balk naar **weer gave** > **opdracht palet**en voer **Spark/Hive: ontkoppelen van een cluster**.  
 
 2. Selecteer een cluster om te ontkoppelen.  
 
@@ -429,7 +415,7 @@ Wanneer u een taak verzendt naar een HDInsight-cluster met behulp van Data Lake 
 
 ## <a name="sign-out"></a>Afmelden  
 
-Ga in de menu balk naar het**opdracht palet** **weer geven** > **en voer Azure in: Meld u af.**
+Ga in de menu balk naar **weer gave** > **opdracht palet**en voer Azure in **: Meld**u aan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

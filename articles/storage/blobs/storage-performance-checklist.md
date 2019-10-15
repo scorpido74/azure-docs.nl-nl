@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303039"
+ms.locfileid: "72311127"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
@@ -45,6 +45,9 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 | &nbsp; |Tools |[Gebruikt u de nieuwste versies van door micro soft meegeleverde client bibliotheken en-hulpprogram ma's?](#client-libraries-and-tools) |
 | &nbsp; |Nieuwe pogingen |[Gebruikt u een beleid voor opnieuw proberen met een exponentiële uitstel voor het beperken van fouten en time-outs?](#timeout-and-server-busy-errors) |
 | &nbsp; |Nieuwe pogingen |[Voor komt uw toepassing nieuwe pogingen voor niet-herstel bare fouten?](#non-retryable-errors) |
+| &nbsp; |Blobs kopiëren |[Worden de blobs op de meest efficiënte manier gekopieerd?](#blob-copy-apis) |
+| &nbsp; |Blobs kopiëren |[Gebruikt u de meest recente versie van AzCopy voor bulk Kopieer bewerkingen?](#use-azcopy) |
+| &nbsp; |Blobs kopiëren |[Gebruikt u de Azure Data Box-serie voor het importeren van grote hoeveel heden gegevens?](#use-azure-data-box) |
 | &nbsp; |Inhouds distributie |[Gebruikt u een CDN voor inhouds distributie?](#content-distribution) |
 | &nbsp; |Meta gegevens gebruiken |[Slaat u veelgebruikte meta gegevens over blobs op in hun meta gegevens?](#use-metadata) |
 | &nbsp; |Snel uploaden |[Als u probeert een BLOB snel te uploaden, kunt u blokken parallel uploaden?](#upload-one-large-blob-quickly) |
@@ -183,7 +186,7 @@ Voor meer informatie over prestatie verbeteringen in .NET core raadpleegt u de v
 
 ### <a name="increase-default-connection-limit"></a>Standaard verbindings limiet verhogen
 
-In .NET verhoogt de volgende code de standaard verbindings limiet (meestal 2 in een client omgeving of 10 in een server omgeving) tot 100. Normaal gesp roken moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt. Stel de verbindings limiet in voordat u verbindingen opent.
+In .NET verhoogt de volgende code de standaard verbindings limiet (meestal twee in een client omgeving of tien in een server omgeving) tot 100. Normaal gesp roken moet u de waarde instellen op ongeveer het aantal threads dat door uw toepassing wordt gebruikt. Stel de verbindings limiet in voordat u verbindingen opent.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -227,9 +230,23 @@ De client bibliotheken voeren een nieuwe poging uit met een bewustzijn welke fou
 
 Zie [status-en fout codes](/rest/api/storageservices/status-and-error-codes2)voor meer informatie over Azure Storage fout codes.
 
-## <a name="transfer-data"></a>Gegevens overdragen
+## <a name="copying-and-moving-blobs"></a>Blobs kopiëren en verplaatsen
 
-Zie [een Azure-oplossing voor gegevens overdracht kiezen](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor informatie over het efficiënt overdragen van gegevens naar en van Blob Storage of tussen opslag accounts.
+Azure Storage biedt een aantal oplossingen voor het kopiëren en verplaatsen van blobs in een opslag account, tussen opslag accounts en tussen on-premises systemen en de Cloud. In deze sectie worden enkele van deze opties beschreven, wat betreft de gevolgen voor de prestaties. Zie [een Azure-oplossing voor gegevens overdracht kiezen](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor informatie over het efficiënt overdragen van gegevens naar of van Blob Storage.
+
+### <a name="blob-copy-apis"></a>BLOB Copy-Api's
+
+Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik van de bewerking `Put Block from URL` kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
+
+Als u gegevens wilt kopiëren binnen hetzelfde opslag account, gebruikt u de bewerking [BLOB kopiëren](/rest/api/storageservices/Copy-Blob) . Het kopiëren van gegevens binnen hetzelfde opslag account wordt meestal snel voltooid.  
+
+### <a name="use-azcopy"></a>AzCopy gebruiken
+
+Het AzCopy-opdracht regel programma is een eenvoudige en efficiënte optie voor bulk overdracht van blobs naar, van en tussen opslag accounts. AzCopy is geoptimaliseerd voor dit scenario en kan hoge overdrachts snelheden bezorgen. AzCopy versie 10 maakt gebruik van de `Put Block From URL`-bewerking om BLOB-gegevens over opslag accounts te kopiëren. Zie voor meer informatie [kopiëren of verplaatsen van gegevens naar Azure Storage met behulp van AzCopy V10 toevoegen](/azure/storage/common/storage-use-azcopy-v10).  
+
+### <a name="use-azure-data-box"></a>Azure Data Box gebruiken
+
+Voor het importeren van grote hoeveel heden gegevens in Blob Storage kunt u de Azure Data Box-serie gebruiken voor offline overdrachten. Door micro soft geleverde Data Box-apparaten zijn een goede keuze om grote hoeveel heden gegevens naar Azure te verplaatsen wanneer u beperkt bent door tijd, netwerk beschikbaarheid of kosten. Zie de [documentatie van Azure DataBox](/azure/databox/)voor meer informatie.
 
 ## <a name="content-distribution"></a>Inhouds distributie
 
@@ -239,7 +256,7 @@ Zie [Azure CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
 
 ## <a name="use-metadata"></a>Meta gegevens gebruiken
 
-Het Blob service ondersteunt HEAD-aanvragen, die BLOB-eigenschappen of meta gegevens kunnen bevatten. Als uw toepassing bijvoorbeeld de EXIF-gegevens (wissel bare afbeeldings indeling) van een foto nodig heeft, kan deze de foto ophalen en uitpakken. Om band breedte te besparen en de prestaties te verbeteren, kan uw toepassing de EXIF-gegevens opslaan in de meta gegevens van de BLOB wanneer de toepassing de foto uploadt. U kunt vervolgens de EXIF-gegevens in meta gegevens ophalen met behulp van een HEAD-aanvraag. Het ophalen van alleen meta gegevens en niet de volledige inhoud van de BLOB bespaart aanzienlijke band breedte en vermindert de verwerkings tijd die nodig is om de EXIF-gegevens te extra heren. Houd er rekening mee dat er slechts 8 KB aan meta gegevens per Blob kan worden opgeslagen.  
+Het Blob service ondersteunt HEAD-aanvragen, die BLOB-eigenschappen of meta gegevens kunnen bevatten. Als uw toepassing bijvoorbeeld de EXIF-gegevens (wissel bare afbeeldings indeling) van een foto nodig heeft, kan deze de foto ophalen en uitpakken. Om band breedte te besparen en de prestaties te verbeteren, kan uw toepassing de EXIF-gegevens opslaan in de meta gegevens van de BLOB wanneer de toepassing de foto uploadt. U kunt vervolgens de EXIF-gegevens in meta gegevens ophalen met behulp van een HEAD-aanvraag. Het ophalen van alleen meta gegevens en niet de volledige inhoud van de BLOB bespaart aanzienlijke band breedte en vermindert de verwerkings tijd die nodig is om de EXIF-gegevens te extra heren. Houd er rekening mee dat 8 KiB van meta gegevens per Blob kan worden opgeslagen.  
 
 ## <a name="upload-blobs-quickly"></a>Snel blobs uploaden
 

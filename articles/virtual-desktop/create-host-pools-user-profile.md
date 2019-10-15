@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676684"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311588"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
 
 De virtueel-bureaublad service van Windows biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. Het is niet raadzaam om de oplossing voor de gebruikers profiel schijf (UPD) te gebruiken, die wordt afgeschaft in toekomstige versies van Windows virtueel bureau blad.
 
 In dit artikel wordt uitgelegd hoe u een FSLogix voor een hostgroep instelt met behulp van een bestands share op basis van een virtuele machine. Zie de [FSLogix-site](https://docs.fslogix.com/)voor meer documentatie over FSLogix.
+
+>[!NOTE]
+>Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Een nieuwe virtuele machine maken die zal fungeren als een bestands share
 
@@ -62,10 +65,10 @@ Als u de virtuele machines met de FSLogix-software wilt configureren, gaat u als
 6. Maak een sleutel met de naam **profielen**.
 7. Maak de volgende waarden voor de sleutel profielen:
 
-| Name                | type               | Gegevens/waarde                        |
+| Naam                | Type               | Gegevens/waarde                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | 32              | 1                                 |
+| Ingeschakeld             | 32              | 1                                 |
 | VHDLocations        | Waarde met meerdere teken reeksen | "Netwerkpad voor bestands share"     |
 
 >[!IMPORTANT]
->Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)te gebruiken.
+>Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken.

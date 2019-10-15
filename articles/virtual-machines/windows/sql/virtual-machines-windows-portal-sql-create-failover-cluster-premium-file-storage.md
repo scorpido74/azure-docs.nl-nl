@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301865"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311876"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren met Premium-bestands share op Azure Virtual Machines
 
@@ -37,7 +37,7 @@ U moet een operationeel memorandum hebben van de volgende technologieën:
 - [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server failover-cluster exemplaren](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Een belang rijk verschil is dat in een Azure IaaS VM-failovercluster wordt aangeraden één NIC per server (cluster knooppunt) en één subnet. Een Azure-netwerk maakt gebruikt van fysieke redundantie, waardoor extra NIC's en subnetten overbodig zijn voor een gastcluster voor een Azure IaaS-VM. Hoewel er in het cluster validatie rapport een waarschuwing wordt gegeven dat de knoop punten alleen bereikbaar zijn op één netwerk, kan deze waarschuwing veilig worden genegeerd op virtuele Azure IaaS VM-failoverclusters. 
+Een belang rijk verschil is dat in een Azure IaaS VM-failovercluster wordt aangeraden één NIC per server (cluster knooppunt) en één subnet. Azure Networking heeft fysieke redundantie waardoor extra Nic's en subnetten onnodig worden uitgevoerd op een Azure IaaS VM-gast cluster. Hoewel er in het cluster validatie rapport een waarschuwing wordt gegeven dat de knoop punten alleen bereikbaar zijn op één netwerk, kan deze waarschuwing veilig worden genegeerd op virtuele Azure IaaS VM-failoverclusters. 
 
 Daarnaast moet u een algemene uitleg hebben van de volgende technologieën:
 
@@ -51,7 +51,7 @@ Daarnaast moet u een algemene uitleg hebben van de volgende technologieën:
 
 Premium-bestands shares bieden IOPS en hebben een capaciteit die voldoet aan de behoeften van veel werk belastingen. Voor intensieve i/o-workloads kunt u echter [SQL Server FCI met opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md) op basis van beheerde Premium-schijven of Ultra-disks.  
 
-Controleer de IOPS-activiteit van uw huidige omgeving en controleer of Premium files de IOPS bevat die u nodig hebt voordat u een implementatie of migratie start. Gebruik schijf tellers van Windows-prestatie meter en bewaak het totale aantal IOPS (schijf overdrachten/sec) en de door Voer (schijf bytes per seconde) die zijn vereist voor SQL Server gegevens, logboek bestanden en tijdelijke DB. Veel werk belastingen hebben een bursting van IO zodat het een goed idee is om tijdens zware gebruiks perioden te controleren en de maximale IOPS en de gemiddelde IOPS te noteren. Premium-bestands shares bieden IOPS op basis van de grootte van de share. Premium-bestanden bieden ook extra bursting, waar u uw IO kunt inzoomen om de basislijn hoeveelheid tot een uur te laten opkomen. 
+Controleer de IOPS-activiteit van uw huidige omgeving en controleer of Premium files de IOPS bevat die u nodig hebt voordat u een implementatie of migratie start. Gebruik schijf items van de Windows-prestatie meter en bewaak de totale IOPS (schijf overdrachten/sec) en de door Voer (schijf bytes per seconde) die zijn vereist voor SQL Server gegevens, logboeken en tijdelijke DB-bestanden. Veel werk belastingen hebben een bursting van IO zodat het een goed idee is om tijdens zware gebruiks perioden te controleren en de maximale IOPS en de gemiddelde IOPS te noteren. Premium-bestands shares bieden IOPS op basis van de grootte van de share. Premium-bestanden bieden ook extra bursting, waar u uw IO kunt inzoomen om de basislijn hoeveelheid tot een uur te laten opkomen. 
 
 ### <a name="licensing-and-pricing"></a>Licentie verlening en prijzen
 
@@ -165,34 +165,20 @@ Nadat de virtuele machines zijn gemaakt en geconfigureerd, kunt u de Premium-bes
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en ga naar uw opslag account.
 1. Ga naar **Bestands shares** onder **Bestands service** en selecteer de Premium-bestands share die u wilt gebruiken voor uw SQL-opslag. 
 1. Selecteer **verbinding** om de Connection String voor uw bestands share weer te geven. 
-1. Selecteer de stationsletter die u wilt gebruiken in de vervolg keuzelijst en kopieer de twee Power shell-opdrachten uit de twee Power shell-opdracht blokken.  Plak ze in een tekst editor, zoals Klad blok. 
+1. Selecteer de stationsletter die u wilt gebruiken in de vervolg keuzelijst en Kopieer beide code blokken naar een Klad blok.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="Beide Power shell-opdrachten kopiëren van de bestands share Connect Portal":::
 
 1. RDP in de SQL Server-VM met behulp van het account dat door uw SQL Server FCI wordt gebruikt voor het service account. 
 1. Een beheer-Power shell-opdracht console starten. 
-1. Voer de `Test-NetConnection` opdracht uit om de verbinding met het opslag account te testen. Voer de `cmdkey`-opdracht niet uit vanuit het eerste code blok. 
+1. Voer de opdrachten uit vanuit de portal die u eerder hebt opgeslagen. 
+1. Ga naar de share met bestanden Verkenner of het dialoog venster **uitvoeren** (Windows-toets + r) met behulp van het netwerkpad `\\storageaccountname.file.core.windows.net\filesharename`. Voorbeeld: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. Voer de opdracht `cmdkey` uit vanuit het *tweede* code blok om de bestands share te koppelen als een station en persistent te maken. 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. Open **bestanden Verkenner** en navigeer naar **deze PC**. De bestands share is zichtbaar onder netwerk locaties: 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="Bestands share wordt weer gegeven als opslag in bestanden Verkenner":::
-
-1. Open het zojuist toegewezen station en maak hier ten minste één map om uw SQL-gegevens bestanden in te plaatsen. 
+1. Maak ten minste één map op de zojuist verbonden bestands share om uw SQL-gegevens bestanden in te brengen. 
 1. Herhaal deze stappen op elke SQL Server virtuele machine die u aan het cluster wilt deel nemen. 
 
   > [!IMPORTANT]
-  > Gebruik niet dezelfde bestands share voor zowel gegevens bestanden als back-ups. Gebruik dezelfde stappen voor het configureren van een secundaire bestands share voor back-ups als u een back-up wilt maken van uw data bases naar een bestands share. 
+  > Overweeg het gebruik van een afzonderlijke bestands share voor back-upbestanden om de IOPS-en grootte capaciteit van deze share voor gegevens en logboek bestanden op te slaan. U kunt een Premium-of standaard bestands share gebruiken voor back-upbestanden
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>Stap 3: het failovercluster met een bestands share configureren 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cb9f37d5e2c33984189c90857b409d3a59e74e59
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303118"
+ms.locfileid: "72311606"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Controle lijst voor prestaties en schaal baarheid voor tabel opslag
 
@@ -47,15 +47,15 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 | &nbsp; |Tabellen en partities |[Hebt u uw gegevens goed gepartitioneerd?](#schema) |
 | &nbsp; |Dynamische partities |[Vermijdt u alleen toevoegen en alleen laten voorafgaan door patronen?](#append-only-and-prepend-only-patterns) |
 | &nbsp; |Dynamische partities |[Worden uw toevoegingen/updates verspreid over verschillende partities?](#high-traffic-data) |
-| &nbsp; |Query bereik |[Hebt u uw schema ontworpen zodat punt query's in de meeste gevallen kunnen worden gebruikt en kunnen tabel query's spaarzaam worden gebruikt?](#query-scope) |
+| &nbsp; |Querybereik |[Hebt u uw schema ontworpen zodat punt query's in de meeste gevallen kunnen worden gebruikt en kunnen tabel query's spaarzaam worden gebruikt?](#query-scope) |
 | &nbsp; |Query densiteit |[Worden in uw query's doorgaans alleen de rijen gescand en geretourneerd die door uw toepassing worden gebruikt?](#query-density) |
 | &nbsp; |De geretourneerde gegevens beperken |[Gebruikt u filteren om te voor komen dat entiteiten worden geretourneerd die niet nodig zijn?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |De geretourneerde gegevens beperken |[Maakt u gebruik van projectie om te voor komen dat eigenschappen worden geretourneerd die niet nodig zijn?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Denormalisatie |[Hebt u uw gegevens genormaliseerd, zodat u inefficiënte query's of meerdere Lees aanvragen voor het ophalen van gegevens wilt voor komen?](#denormalization) |
-| &nbsp; |Invoegen/bijwerken/verwijderen |[Worden er aanvragen voor batch verwerking die transactioneel moeten zijn of tegelijkertijd kunnen worden uitgevoerd om retouren te verminderen?](#batching) |
-| &nbsp; |Invoegen/bijwerken/verwijderen |[Vermijdt u het ophalen van een entiteit alleen om te bepalen of INSERT of update moet worden aangeroepen?](#upsert) |
-| &nbsp; |Invoegen/bijwerken/verwijderen |[Moet u een reeks gegevens opslaan die regel matig worden opgehaald in één entiteit als eigenschappen in plaats van meerdere entiteiten?](#storing-data-series-in-a-single-entity) |
-| &nbsp; |Invoegen/bijwerken/verwijderen |[Voor entiteiten die altijd samen worden opgehaald en kunnen worden geschreven in batches (bijvoorbeeld time series-gegevens), kunt u het gebruik van blobs in plaats van tabellen overwegen?](#storing-structured-data-in-blobs) |
+| &nbsp; |Invoegen, bijwerken en verwijderen |[Worden er aanvragen voor batch verwerking die transactioneel moeten zijn of tegelijkertijd kunnen worden uitgevoerd om retouren te verminderen?](#batching) |
+| &nbsp; |Invoegen, bijwerken en verwijderen |[Vermijdt u het ophalen van een entiteit alleen om te bepalen of INSERT of update moet worden aangeroepen?](#upsert) |
+| &nbsp; |Invoegen, bijwerken en verwijderen |[Moet u een reeks gegevens opslaan die regel matig worden opgehaald in één entiteit als eigenschappen in plaats van meerdere entiteiten?](#storing-data-series-in-a-single-entity) |
+| &nbsp; |Invoegen, bijwerken en verwijderen |[Voor entiteiten die altijd samen worden opgehaald en kunnen worden geschreven in batches (bijvoorbeeld time series-gegevens), kunt u het gebruik van blobs in plaats van tabellen overwegen?](#storing-structured-data-in-blobs) |
 
 ## <a name="scalability-targets"></a>Schaalbaarheids doelen
 
@@ -254,7 +254,7 @@ Als uw client toepassing slechts een beperkt aantal eigenschappen van de entitei
 
 In tegens telling tot het werken met relationele data bases, de bewezen procedures voor het efficiënt uitvoeren van query's in tabel gegevens om uw gegevens te denormaliseren. Dat wil zeggen dat u dezelfde gegevens in meerdere entiteiten dupliceert (één voor elke sleutel die u kunt gebruiken om de gegevens te vinden) om zo het aantal entiteiten te beperken dat een query moet scannen om de gegevens te vinden die de client nodig heeft, in plaats van een groot aantal entiteiten te scannen om de gegevens van uw app te vinden lication-behoeften. Zo kunt u bijvoorbeeld in een e-commerce website een bestelling vinden op basis van de klant-ID (dit zijn de orders van deze klant) en op basis van de datum (Geef bestellingen op een datum). In Table Storage kunt u het beste de entiteit (of een verwijzing naar de) twee keer opslaan: eenmaal met tabel naam, PK en RK om het vinden van de klant-ID te vergemakkelijken, eenmaal om deze te vergemakkelijken op basis van de datum.  
 
-### <a name="insertupdatedelete"></a>Invoegen/bijwerken/verwijderen
+### <a name="insert-update-and-delete"></a>Invoegen, bijwerken en verwijderen
 
 In deze sectie worden bewezen procedures beschreven voor het wijzigen van entiteiten die zijn opgeslagen in de Table service.  
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105384"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311645"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in azure HDInsight
 
@@ -32,7 +32,7 @@ Apache Phoenix voegt diverse prestatie verbeteringen en-functies toe aan HBase q
 
 HBase heeft een enkele index die lexicographically is gesorteerd op de primaire rij. Deze records zijn alleen toegankelijk via de rij met rijen. Voor het verkrijgen van toegang tot records via een andere kolom dan de rij, moeten alle gegevens worden gescand tijdens het Toep assen van het vereiste filter. In een secundaire index vormen de kolommen of expressies die worden geïndexeerd een alternatieve rijdefinitie, waardoor lookups en bereik scans voor die index mogelijk zijn.
 
-Maak een secundaire index met de `CREATE INDEX` opdracht:
+Maak een secundaire index met de `CREATE INDEX`-opdracht:
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
@@ -44,7 +44,7 @@ Deze aanpak kan leiden tot een aanzienlijke prestatie verhoging voor het uitvoer
 
 Phoenix-weer gaven bieden een manier om een HBase-beperking te overwinnen, waarbij de prestaties beginnen te verminderen wanneer u meer dan ongeveer 100 fysieke tabellen maakt. In Phoenix-weer gaven kunnen meerdere *virtuele tabellen* één onderliggende fysieke HBase-tabel delen.
 
-Het maken van een Phoenix-weer gave is vergelijkbaar met de standaard syntaxis van SQL-weer gave. Het enige verschil is dat u kolommen voor uw weer gave kunt definiëren, naast de kolommen die zijn overgenomen van de basis tabel. U kunt ook nieuwe `KeyValue` kolommen toevoegen.
+Het maken van een Phoenix-weer gave is vergelijkbaar met de standaard syntaxis van SQL-weer gave. Het enige verschil is dat u kolommen voor uw weer gave kunt definiëren, naast de kolommen die zijn overgenomen van de basis tabel. U kunt ook nieuwe kolommen van het @no__t 0 toevoegen.
 
 Dit is bijvoorbeeld een fysieke tabel met de naam `product_metrics` met de volgende definitie:
 
@@ -65,13 +65,13 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Gebruik de `ALTER VIEW` instructie om later meer kolommen toe te voegen.
+Gebruik de instructie `ALTER VIEW` om later meer kolommen toe te voegen.
 
 ### <a name="skip-scan"></a>Scan overs Laan
 
 Scan overs Laan gebruikt een of meer kolommen van een samengestelde index om verschillende waarden te vinden. In tegens telling tot een bereik scan, wordt de functie voor het scannen van de intra-rij door lopen verbeterd, wat leidt tot [betere prestaties](https://phoenix.apache.org/performance.html#Skip-Scan). Tijdens het scannen wordt de eerste overeenkomende waarde overgeslagen samen met de index totdat de volgende waarde wordt gevonden.
 
-Bij een scan overs `SEEK_NEXT_USING_HINT` Laan wordt gebruikgemaakt van de opsomming van het HBase-filter. Met `SEEK_NEXT_USING_HINT`behulp van de overgeslagen scan houdt u bij welke set sleutels of bereiken van sleutels worden gezocht in elke kolom. De scan overs Laan gaat vervolgens naar een sleutel die werd door gegeven tijdens de filter evaluatie en bepaalt of het een van de combi Naties is. Als dat niet het geval is, evalueert de scan overs Laan de volgende hoogste sleutel om naar te gaan.
+Een scan overs Laan maakt gebruik van de `SEEK_NEXT_USING_HINT`-opsomming van het HBase-filter. Met behulp van `SEEK_NEXT_USING_HINT` houdt de scan overs Laan bij welke set sleutels of bereiken sleutels worden gezocht in elke kolom. De scan overs Laan gaat vervolgens naar een sleutel die werd door gegeven tijdens de filter evaluatie en bepaalt of het een van de combi Naties is. Als dat niet het geval is, evalueert de scan overs Laan de volgende hoogste sleutel om naar te gaan.
 
 ### <a name="transactions"></a>Transacties
 
@@ -81,13 +81,13 @@ Net als bij traditionele SQL-trans acties, kunt u met trans acties die via de Ph
 
 Raadpleeg de [documentatie over de Apache Phoenix-trans actie](https://phoenix.apache.org/transactions.html)om Phoenix-trans acties in te scha kelen.
 
-Als u een nieuwe tabel wilt maken waarvoor trans acties zijn `TRANSACTIONAL` ingeschakeld, `true` stelt u `CREATE` de eigenschap in op een instructie:
+Als u een nieuwe tabel wilt maken waarvoor trans acties zijn ingeschakeld, stelt u de eigenschap `TRANSACTIONAL` in op `true` in een `CREATE`-instructie:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Als u een bestaande tabel transactioneel wilt wijzigen, gebruikt u dezelfde eigenschap in een `ALTER` instructie:
+Als u een bestaande tabel wilt wijzigen in transactioneel, gebruikt u dezelfde eigenschap in een `ALTER`-instructie:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
@@ -100,7 +100,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 De *regio server hotspotting* kan zich voordoen wanneer u records met opeenvolgende sleutels naar HBase schrijft. Hoewel u meerdere regio servers in uw cluster hebt, zijn uw schrijf bewerkingen allemaal op slechts één. Met deze concentratie wordt het hotspotting-probleem gemaakt waarbij in plaats van uw schrijf werk belasting wordt gedistribueerd over alle beschik bare regio servers, maar één de belasting verwerkt. Aangezien elke regio een vooraf gedefinieerde maximum grootte heeft, wordt deze in twee kleine regio's gesplitst wanneer een regio die maximale grootte bereikt. Als dat gebeurt, neemt een van deze nieuwe regio's alle nieuwe records, waardoor de nieuwe hotspot wordt.
 
-Om dit probleem te verhelpen en de prestaties te verbeteren, kunt u tabellen vooraf splitsen, zodat alle regio servers gelijkelijk worden gebruikt. Phoenix biedt *gezouten tabellen*, waarmee de zout byte op transparante wijze kan worden toegevoegd aan de rij voor een bepaalde tabel. De tabel is vooraf gesplitst op de grens van de Salt-byte om te zorgen voor gelijke belasting distributie tussen regio servers tijdens de eerste fase van de tabel. Met deze aanpak wordt de schrijf belasting gedistribueerd over alle beschik bare regio servers, waardoor de schrijf-en lees prestaties worden verbeterd. Als u een tabel wilt Salt, `SALT_BUCKETS` geeft u de eigenschap Table op wanneer de tabel wordt gemaakt:
+Om dit probleem te verhelpen en de prestaties te verbeteren, kunt u tabellen vooraf splitsen, zodat alle regio servers gelijkelijk worden gebruikt. Phoenix biedt *gezouten tabellen*, waarmee de zout byte op transparante wijze kan worden toegevoegd aan de rij voor een bepaalde tabel. De tabel is vooraf gesplitst op de grens van de Salt-byte om te zorgen voor gelijke belasting distributie tussen regio servers tijdens de eerste fase van de tabel. Met deze aanpak wordt de schrijf belasting gedistribueerd over alle beschik bare regio servers, waardoor de schrijf-en lees prestaties worden verbeterd. Als u een tabel wilt zouten, geeft u de tabel eigenschap `SALT_BUCKETS` op wanneer de tabel wordt gemaakt:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -137,4 +137,4 @@ An HDInsight HBase-cluster bevat de [Ambari-gebruikers interface](hdinsight-hado
 
 ## <a name="see-also"></a>Zie ook
 
-* [Apache Phoenix gebruiken met HBase-clusters op basis van Linux in HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Apache Phoenix gebruiken met HBase-clusters op basis van Linux in HDInsight](hbase/apache-hbase-query-with-phoenix.md)

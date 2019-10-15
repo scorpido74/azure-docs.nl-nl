@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 1cc6d6236b940cf898651bdfdd47f4db1ac53851
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 4ace735d116ef73e8a6fee8c0a244d520e730189
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274167"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312154"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
@@ -55,7 +55,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
     |**Prijscategorie**     |  Kies tussen **Standard**, **Premium**of **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
-    Selecteer **Vastmaken aan dashboard** en klik op **Maken**.
+    Klik op **Maken**.
 
 4. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**.
 
@@ -79,7 +79,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
    * Voer een naam in voor het cluster.
-   * Voor dit artikel maakt u een cluster met **5,2** runtime.
+   * Voor dit artikel maakt u een cluster met **5,3** runtime.
    * Zorg ervoor dat u het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
     
      Selecteer **Cluster maken**. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
