@@ -61,7 +61,7 @@ Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wor
 
 1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
 
-1. Klik op **Next: Artefacten @ no__t-0 of klik op het tabblad **artefacten** .
+1. Klik op **Next: Artefacten** of klik op het tabblad **artefacten** .
 
 1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
 
