@@ -4,22 +4,24 @@ description: Gebruik omgevings variabelen en maak opties voor het inschakelen va
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2019
+ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2526f33f0053b5805394a4a898af88d86187066c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301280"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330808"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modules toegang geven tot de lokale opslag van een apparaat
 
 Naast het opslaan van gegevens met behulp van Azure Storage-services of in de container opslag van uw apparaat, kunt u ook opslag op de host IoT Edge apparaat zelf reserveren voor verbeterde betrouw baarheid, vooral wanneer u offline werkt.
 
-Als u opslag wilt instellen op het hostsysteem, moet u een omgevings variabele voor uw module maken die verwijst naar een opslagmap in de container. Gebruik vervolgens de opties voor het maken van die opslagmap om deze map te binden aan een map op de hostmachine.
+## <a name="link-module-storage-to-device-storage"></a>Module opslag koppelen aan opslag van apparaten
+
+Als u een koppeling van module opslag naar de opslag op het hostsysteem wilt inschakelen, maakt u een omgevings variabele voor uw module die verwijst naar een opslagmap in de container. Gebruik vervolgens de opties voor het maken van die opslagmap om deze map te binden aan een map op de hostmachine.
 
 Als u bijvoorbeeld de IoT Edge hub wilt inschakelen om berichten op te slaan op de lokale opslag van uw apparaat en deze later op te halen, kunt u de omgevings variabelen en de opties voor het maken in de Azure Portal configureren in de **runtime-instellingen geavanceerde rand configureren** sectie.
 
@@ -80,3 +82,7 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 Meer informatie over de opties voor het maken van [docker-documenten](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)vindt u in.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie voor een extra voor beeld van toegang tot host-opslag van een module [gegevens opslaan aan de rand met Azure Blob Storage op IOT Edge](how-to-store-data-blob.md).

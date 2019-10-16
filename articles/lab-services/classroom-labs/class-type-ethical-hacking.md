@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028671"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330670"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Een Lab instellen om ethische hacking-klasse te leren 
 In dit artikel wordt beschreven hoe u een klasse instelt die zich richt op forensischee-hacking. Indringings tests, een praktijk die wordt gebruikt door de ethische hacking-Community, treedt op wanneer iemand probeert toegang te krijgen tot het systeem of netwerk om beveiligings problemen te demonstreren die een kwaadwillende aanvaller kan misbruiken. 
@@ -28,13 +28,13 @@ In een ethische hacking-klasse kunnen studenten moderne technieken leren voor he
 Dit artikel bevat twee hoofd secties. In de eerste sectie wordt beschreven hoe u het leslokaal Lab maakt. In de tweede sectie wordt beschreven hoe u de sjabloon machine maakt waarvoor geneste virtualisatie is ingeschakeld en met de hulpprogram ma's en installatie kopieën die nodig zijn. In dit geval wordt een Metasploitable-installatie kopie en een Kali Linux-installatie kopie op een computer waarop Hyper-V is ingeschakeld voor het hosten van de installatie kopieën.
 
 ## <a name="lab-configuration"></a>Lab-configuratie
-Als u dit Lab wilt instellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services of een bestaand account gebruiken. Raadpleeg de volgende zelf studie voor het maken van een nieuw Lab-account: [Zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md).
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services of een bestaand account gebruiken. Raadpleeg de volgende zelf studie voor het maken van een nieuw Lab-account: [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md).
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) voor het maken van een nieuw lab en pas vervolgens de volgende instellingen toe:
 
-| Grootte van virtuele machine | Image |
+| Grootte van virtuele machine | Installatiekopie |
 | -------------------- | ----- | 
-| Gemiddeld (geneste virtualisatie) | Windows Server 2019 Datacenter |
+| Gemiddeld (geneste virtualisatie) | Windows Server 2019 Data Center |
 
 ## <a name="template-machine"></a>Sjabloon machine 
 
@@ -141,7 +141,7 @@ In dit artikel werd uitgelegd hoe u stapsgewijs door de stappen voor het maken v
 De volgende stappen zijn gebruikelijk voor het instellen van elk lab:
 
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Quota instellen](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [E-mail registratie koppelingen naar studenten](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users). 
 

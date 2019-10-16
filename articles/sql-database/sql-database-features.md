@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285805"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330970"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 
@@ -137,7 +137,7 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | [SQL-analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ja | Nee |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door Azure SQL Database en worden uitgevoerd op Azure SSIS Integration Runtime (IR), raadpleegt u [Azure-SSIS IR maken in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie [Azure SQL database afzonderlijke data bases/elastische Pools en beheerde exemplaren vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)om de SSIS-functies in SQL database server en het beheerde exemplaar te vergelijken. | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door een beheerd exemplaar en worden uitgevoerd op Azure SSIS Integration Runtime (IR), Zie [Azure-SSIS IR in ADF maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie [Azure SQL database afzonderlijke data bases/elastische Pools en beheerde exemplaren vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)om de SSIS-functies in SQL database en het beheerde exemplaar te vergelijken. |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door Azure SQL Database en worden uitgevoerd op Azure SSIS Integration Runtime (IR), raadpleegt u [Azure-SSIS IR maken in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie voor het vergelijken van de SSIS-functies in SQL Database-Server en beheerde instantie [een Azure SQL database enkele data base, elastische groep en beheerd exemplaar vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door een beheerd exemplaar en worden uitgevoerd op Azure SSIS Integration Runtime (IR), Zie [Azure-SSIS IR in ADF maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie [een Azure SQL database afzonderlijke Data Base, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)om de SSIS-functies in SQL database en het beheerde exemplaar te vergelijken. |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nee- [zie Power bi](https://docs.microsoft.com/power-bi/) | Nee- [zie Power bi](https://docs.microsoft.com/power-bi/) |
 | [Query prestaties inzichten (QPI)](sql-database-query-performance.md) | Ja | Nee. Gebruik ingebouwde rapporten in SQL Server Management Studio en Azure Data Studio. |
 | [VNet](../virtual-network/virtual-networks-overview.md) | Gedeeltelijk, het maakt beperkte toegang mogelijk met behulp van [VNet-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) | Ja, beheerd exemplaar wordt geïnjecteerd in het VNet van de klant. Zie [subnet](sql-database-managed-instance-transact-sql-information.md#subnet) en [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Knowledge Base-QnA Maker maken, trainen en publiceren'
+title: 'Snelstartgids: Knowledge Base-QnA Maker maken, trainen en publiceren'
 titleSuffix: Azure Cognitive Services
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. De QnA Maker Knowledge Base in dit voor beeld wordt gemaakt op basis van een eenvoudige webpagina met veelgestelde vragen over het beantwoorden van vragen over BitLocker-sleutel herstel.
 author: diberry
@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: aab64822730531acdcf5f3d91ed8bf028ce7cfd4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971935"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328097"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
 
 U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voor beeld van het maken van een QnA Maker Knowledge Base van een eenvoudige webpagina met veelgestelde vragen over het beantwoorden van vragen over BitLocker-sleutel herstel.
 
@@ -25,7 +25,7 @@ Neem een Chit-Chat persoonlijkheid op om uw kennis beter te maken met uw gebruik
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 > [!div class="checklist"]
 > * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
@@ -52,7 +52,7 @@ Neem een Chit-Chat persoonlijkheid op om uw kennis beter te maken met uw gebruik
 
 1. Voeg  **_professionele_ Chit-Chat** toe aan uw KB. 
 
-1. Selecteer **maken uw KB**.
+1. Selecteer **uw KB maken**.
 
     Het uitpakken van het proces duurt een paar minuten om het document te lezen en vragen en antwoorden te identificeren.
 

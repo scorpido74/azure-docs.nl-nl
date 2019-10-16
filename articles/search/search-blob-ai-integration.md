@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 2513825fcb275aeb3c4f0ca49ff5f2a6bd9441f0
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 5dc81f6e35f86c6dee77d44ff5c59c2657434a37
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303013"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376274"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>AI gebruiken voor het begrijpen van BLOB-gegevens
 
@@ -48,7 +48,7 @@ Nadat u Azure Search aan uw opslag account hebt toegevoegd, kunt u het standaard
 
 In de volgende secties gaan we meer onderdelen en concepten verkennen.
 
-## <a name="use-blob-indexers"></a>BLOB-Indexeer functies gebruiken
+## <a name="begin-with-blob-indexers"></a>Beginnen met Blob-Indexeer functies
 
 AI-verrijking is een invoeg toepassing voor een indexerings pijplijn en in Azure Search zijn deze pijp lijnen gebaseerd op een *Indexeer functie*. Een Indexeer functie is een subservice met gegevens bronnen die is voorzien van interne logica voor het bemonsteren van gegevens, het lezen van meta gegevens, het ophalen van gegevens en het serialiseren van gegevens van systeem eigen indelingen in JSON-documenten voor de volgende import. Indexeer functies worden vaak gebruikt voor importeren, gescheiden van AI, maar als u een AI-verrijkings pijplijn wilt maken, hebt u een Indexeer functie en een vakkennisset nodig om ermee te kunnen werken. In deze sectie wordt de nadruk gelegd op de Indexeer functie zelf.
 
@@ -76,30 +76,33 @@ Voor ingebouwde vaardig heden die door Cognitive Services worden ondersteund, is
 
 Als u alleen aangepaste vaardig heden en ingebouwde hulp programma-vaardig heden gebruikt, zijn er geen afhankelijkheden of kosten met betrekking tot Cognitive Services.
 
-## <a name="order-of-operations"></a>Volg orde van bewerkingen
+<!-- ## Order of operations
 
-Nu hebben we Indexeer functies, extractie van inhoud en vaardig heden gedekt, kunnen we de pijplijn mechanismen en de volg orde van de bewerkingen nader bekijken.
+Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
 
-Een vaardig heden is een samen stelling van een of meer vaardig heden. Wanneer er meerdere vaardig heden betrokken zijn, fungeert de vaardig heden als sequentiële pijp lijn, waardoor er afhankelijkheids grafieken worden geproduceerd waarbij de uitvoer van de ene vaardigheid wordt ingevoerd in een andere. 
+A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
 
-Als er bijvoorbeeld sprake is van een grote blob van ongestructureerde tekst, kan een voorbeeld volgorde van bewerkingen voor tekst analyse er als volgt uitzien:
+For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
 
-1. Gebruik tekst splitter om de BLOB te splitsen in kleinere delen.
-1. Gebruik Taaldetectie om te bepalen of inhoud Engels of een andere taal is.
-1. Gebruik Text Translator om alle tekst in een gemeen schappelijke taal op te halen.
-1. Voer entiteits herkenning, Sleuteltermextractie of Sentimentanalyse uit op segment tekst. In deze stap worden nieuwe velden gemaakt en ingevuld. Entiteiten kunnen locatie, personen, organisatie, datums zijn. Sleutel zinnen zijn korte combi Naties van woorden die bij elkaar horen. Sentiment Score is een classificatie voor continuüm van negatieve (0) tot positieve (1) sentiment.
-1. Gebruik tekst fusie om het document uit kleinere segmenten te maken.
+1. Use Text Splitter to break the blob into smaller parts.
+1. Use Language Detection to determine if content is English or another language.
+1. Use Text Translator to get all text into a common language.
+1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
+1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
+## <a name="how-to-use-ai-enriched-content"></a>AI-verrijkte inhoud gebruiken
 
-## <a name="outputs-and-use-cases"></a>Uitvoer en use cases
+De uitvoer van AI-verrijking is een zoek index op Azure Search of een Knowledge Store in Azure Storage.
 
-Een verrijkt document aan het einde van de pijp lijn wijkt af van de oorspronkelijke invoer versie door de aanwezigheid van aanvullende velden die nieuwe informatie bevatten die tijdens de verrijking is geëxtraheerd of gegenereerd. Zo kunt u op verschillende manieren werken met een combi natie van originele en gemaakte waarden.
+In Azure Search wordt een zoek index gebruikt voor interactief verkennen met behulp van vrije tekst en gefilterde query's in een client-app. Verrijkte documenten die zijn gemaakt met AI, worden ingedeeld in JSON en geïndexeerd op dezelfde manier als alle documenten worden geïndexeerd in Azure Search, met alle voor delen van een Indexeer functie. Tijdens het indexeren verwijst de BLOB-Indexeer functie bijvoorbeeld naar configuratie parameters en-instellingen om eventuele veld toewijzingen of wijzigingen detectie logica te gebruiken. Deze instellingen zijn volledig beschikbaar voor reguliere indexering en AI-verrijkte workloads. Na het indexeren kunt u, wanneer inhoud wordt opgeslagen op Azure Search, uitgebreide query's bouwen en expressies filteren om inzicht te krijgen in de inhoud.
 
-De uitvoer formulieren zijn een zoek index op Azure Search of een Knowledge Store in Azure Storage.
+In Azure Storage heeft een kennis archief twee manifesten: een BLOB-container of tabellen in tabel opslag. 
 
-In Azure Search worden verrijkte documenten ingedeeld in JSON en kunnen ze op dezelfde manier worden geïndexeerd als alle documenten worden geïndexeerd, met de voor delen die een Indexeer functie biedt. Velden van verrijkte documenten worden toegewezen aan een index schema. Tijdens het indexeren verwijst de BLOB-Indexeer functie naar configuratie parameters en-instellingen om eventuele veld toewijzingen of de door u opgegeven detectie logica te gebruiken. Na het indexeren kunt u, wanneer inhoud wordt opgeslagen op Azure Search, uitgebreide query's bouwen en expressies filteren om inzicht te krijgen in de inhoud.
++ Een BLOB-container legt verrijkte documenten in hun geheel vast. Dit is handig als u een feed wilt maken voor andere processen. 
 
-In Azure Storage heeft een kennis archief twee manifesten: een BLOB-container of tabellen in tabel opslag. Een BLOB-container legt verrijkte documenten in hun geheel vast. Dit is handig als u een feed wilt maken voor andere processen. Tabel opslag kan daarentegen de fysieke projecties van verrijkte documenten bevatten. U kunt segmenten of lagen maken met verrijkte documenten die specifieke onderdelen bevatten of uitsluiten. Voor analyse in Power BI worden de tabellen in azure Table Storage de gegevens bron geworden voor verdere visualisatie en onderzoek.
++ Tabel opslag kan daarentegen de fysieke projecties van verrijkte documenten bevatten. U kunt segmenten of lagen maken met verrijkte documenten die specifieke onderdelen bevatten of uitsluiten. Voor analyse in Power BI worden de tabellen in azure Table Storage de gegevens bron geworden voor verdere visualisatie en onderzoek.
+
+Een verrijkt document aan het einde van de pijp lijn wijkt af van de oorspronkelijke invoer versie door de aanwezigheid van aanvullende velden die nieuwe informatie bevatten die tijdens de verrijking is geëxtraheerd of gegenereerd. Zo kunt u werken met een combi natie van originele en gemaakte inhoud, ongeacht de uitvoer structuur die u gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

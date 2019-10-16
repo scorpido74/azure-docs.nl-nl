@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311876"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330095"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren met Premium-bestands share op Azure Virtual Machines
 
@@ -52,6 +52,8 @@ Daarnaast moet u een algemene uitleg hebben van de volgende technologieën:
 Premium-bestands shares bieden IOPS en hebben een capaciteit die voldoet aan de behoeften van veel werk belastingen. Voor intensieve i/o-workloads kunt u echter [SQL Server FCI met opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md) op basis van beheerde Premium-schijven of Ultra-disks.  
 
 Controleer de IOPS-activiteit van uw huidige omgeving en controleer of Premium files de IOPS bevat die u nodig hebt voordat u een implementatie of migratie start. Gebruik schijf items van de Windows-prestatie meter en bewaak de totale IOPS (schijf overdrachten/sec) en de door Voer (schijf bytes per seconde) die zijn vereist voor SQL Server gegevens, logboeken en tijdelijke DB-bestanden. Veel werk belastingen hebben een bursting van IO zodat het een goed idee is om tijdens zware gebruiks perioden te controleren en de maximale IOPS en de gemiddelde IOPS te noteren. Premium-bestands shares bieden IOPS op basis van de grootte van de share. Premium-bestanden bieden ook extra bursting, waar u uw IO kunt inzoomen om de basislijn hoeveelheid tot een uur te laten opkomen. 
+
+Zie [prestatie lagen voor bestands shares](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers)voor meer informatie over de prestaties van Premium-bestands shares. 
 
 ### <a name="licensing-and-pricing"></a>Licentie verlening en prijzen
 

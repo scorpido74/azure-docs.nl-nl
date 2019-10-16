@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003464"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326645"
 ---
-# <a name="where-clause"></a>WHERE-component
+# <a name="where-clause-in-azure-cosmos-db"></a>WHERE-component in Azure Cosmos DB
 
-De optionele WHERE-component`WHERE <filter_condition>`() geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden `true` evalueren om in aanmerking te komen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
+De optionele component WHERE (`WHERE <filter_condition>`) geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Voor een JSON-item moet de opgegeven voor waarden worden geëvalueerd om `true` te kunnen worden overwogen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,20 +29,20 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Hiermee geeft u de voorwaarde moet worden voldaan voor de documenten die moeten worden geretourneerd.  
+   Hiermee geeft u de voor waarde op waaraan moet worden voldaan om de documenten te retour neren.  
   
 - `<scalar_expression>`  
   
-   Expressie voor de waarde die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
+   Expressie die de waarde vertegenwoordigt die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
   
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Opdat het document dat moet worden geretourneerd van een expressie die is opgegeven als filter moet voorwaarde resulteren in waar. Alleen Booleaanse waarde ' True ', voldoen aan de voorwaarde, een andere waarde: niet-gedefinieerde, null, ingesteld op false, getal, matrix of Object zal voldoen niet aan de voorwaarde. 
+  Om het document als resultaat te retour neren moet een expressie worden geretourneerd die is opgegeven als filter voorwaarde, waarna resulteert in waar. Alleen Boole-waarde waar wordt voldaan aan de voor waarde, een andere waarde: niet gedefinieerd, null, onwaar, getal, matrix of object voldoet niet aan de voor waarde. 
 
 ## <a name="examples"></a>Voorbeelden
 
-Met de volgende query worden items opgevraagd die `id` een eigenschap bevatten waarvan `AndersenFamily`de waarde is. Hiermee wordt een item uitgesloten dat geen `id` eigenschap heeft of waarvan de waarde niet overeenkomt. `AndersenFamily`
+Met de volgende query worden items opgevraagd die een eigenschap `id` bevatten waarvan de waarde `AndersenFamily` is. Hiermee wordt een item uitgesloten dat geen eigenschap `id` heeft of waarvan de waarde niet overeenkomt met `AndersenFamily`.
 
 ```sql
     SELECT f.address
@@ -104,7 +104,7 @@ U kunt ook de unaire Opera Tors +,-, ~ en niet in query's gebruiken, zoals wordt
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered` Retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met de waarde gelijk aan `true`. Elke `false`andere waarde, zoals `Undefined`, `null` `<number>`,,,,, of`<array>`, sluit het item uit van het resultaat. `<string>` `<object>` 
+U kunt ook eigenschaps verwijzingen gebruiken in query's. @No__t-0 retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met een waarde die gelijk is aan `true`. Elke andere waarde, zoals `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` of `<array>`, sluit het item uit van het resultaat. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001712"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330028"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren
 
@@ -56,11 +56,11 @@ Enkele veelvoorkomende motivaties voor het gebruik van deze functie zijn:
 
 De **Azure AD-inrichtings service** voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen.
 
-![Azure AD Provisioning Service @ no__t-1 @ no__t-2Figure 1: De Azure AD-inrichtings service @ no__t-0
+![Azure AD Provisioning Service @ no__t-1*afbeelding 1: de Azure AD-inrichtings service*
 
-![Outbound werk stroom voor gebruikers inrichten @ no__t-1 @ no__t-2Figure 2: ' Uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen @ no__t-0
+![Outbound gebruikers inrichten werk stroom @ no__t-1*afbeelding 2: ' uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
 
-![Inbound werk stroom voor gebruikers inrichten @ no__t-1 @ no__t-2Figure 3: ' Binnenkomende ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) Azure Active Directory en Windows Server Active Directory @ no__t-0
+![Inbound gebruikers inrichten werk stroom @ no__t-1*afbeelding 3: ' inbound ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure AD?
 
@@ -99,7 +99,7 @@ Gebruik de Azure Active Directory Portal om de Azure AD-inrichtings service voor
 
 1. Selecteer de optie automatisch voor de **inrichtings modus** om instellingen op te geven voor beheerders referenties, toewijzingen, starten en stoppen en synchronisatie.
 
-   - Vouw de **beheerders referenties** uit om de referenties in te voeren die vereist zijn voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. In deze sectie kunt u ook e-mail meldingen inschakelen als de referenties zijn mislukt of als de inrichtings taak in [quarantaine wordt geplaatst](#quarantine).
+   - Vouw de **beheerders referenties** uit om de referenties in te voeren die vereist zijn voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. In deze sectie kunt u ook e-mail meldingen inschakelen als de referenties zijn mislukt of als de inrichtings taak in [quarantaine wordt geplaatst](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
    - Vouw **toewijzingen** uit om de gebruikers kenmerken weer te geven en te bewerken die worden gestroomd tussen Azure AD en de doel toepassing wanneer gebruikers accounts worden ingericht of bijgewerkt. Als de doel toepassing deze ondersteunt, kunt u in deze sectie desgewenst het inrichten van groepen en gebruikers accounts configureren. Selecteer een toewijzing in de tabel om de toewijzings editor aan de rechter kant te openen, waar u gebruikers kenmerken kunt weer geven en aanpassen.
 
      Met **filters** bereiken wordt de inrichtings service van de gebruikers en groepen in het bron systeem ingericht of ongedaan gemaakt op het doel systeem. Selecteer in het deel venster **kenmerk toewijzing** het **bereik bron object** dat u wilt filteren op specifieke kenmerk waarden. U kunt bijvoorbeeld opgeven dat alleen gebruikers waarvoor het kenmerk Afdeling is ingesteld op Verkoop moeten worden ingericht. Zie [Using scoping filters](define-conditional-rules-for-provisioning-user-accounts.md) (Bereikfilters gebruiken) voor meer informatie.
@@ -125,7 +125,7 @@ Wanneer de inrichtings service wordt gestart, zal de eerste synchronisatie ooit 
 
 1. Query's uitvoeren voor alle gebruikers en groepen van het bron systeem en alle kenmerken ophalen die zijn gedefinieerd in de [kenmerk toewijzingen](customize-application-attributes.md).
 1. Filter de gebruikers en groepen die zijn geretourneerd met behulp van de geconfigureerde [toewijzingen](assign-user-or-group-access-portal.md) of [bereik filters op basis van kenmerken](define-conditional-rules-for-provisioning-user-accounts.md).
-1. Wanneer een gebruiker is toegewezen of in het bereik van het inrichten is, vraagt de service het doel systeem om een overeenkomende gebruiker met behulp van de opgegeven [overeenkomende kenmerken](customize-application-attributes.md#understanding-attribute-mapping-properties). Voorbeeld: Als de naam van de userPrincipal in het bron systeem het overeenkomende kenmerk is en toewijst aan de gebruikers naam in het doel systeem, voert de inrichtings service een query uit op het doel systeem voor gebruikers namen die overeenkomen met de userPrincipal naam waarden in het bron systeem.
+1. Wanneer een gebruiker is toegewezen of in het bereik van het inrichten is, vraagt de service het doel systeem om een overeenkomende gebruiker met behulp van de opgegeven [overeenkomende kenmerken](customize-application-attributes.md#understanding-attribute-mapping-properties). Voor beeld: als de naam van de userPrincipal in het bron systeem het overeenkomende kenmerk is en toewijst aan de gebruikers naam in het doel systeem, voert de inrichtings service een query uit op het doel systeem voor gebruikers namen die overeenkomen met de userPrincipal naam waarden in het bron systeem.
 1. Als er geen overeenkomende gebruiker wordt gevonden in het doel systeem, wordt deze gemaakt met behulp van de kenmerken die worden geretourneerd door het bron systeem. Nadat het gebruikers account is gemaakt, detecteert en slaat de inrichtings service de ID van het doel systeem op voor de nieuwe gebruiker. dit wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 1. Als er een overeenkomende gebruiker wordt gevonden, wordt deze bijgewerkt met behulp van de kenmerken van het bron systeem. Nadat het gebruikers account is gevonden, detecteert en slaat de inrichtings service de ID van het doel systeem op voor de nieuwe gebruiker. dit wordt gebruikt om alle toekomstige bewerkingen op die gebruiker uit te voeren.
 1. Als de kenmerk toewijzingen ' verwijzings kenmerken ' bevatten, biedt de service extra updates op het doel systeem om de objecten waarnaar wordt verwezen, te maken en te koppelen. Een gebruiker kan bijvoorbeeld een kenmerk ' Manager ' hebben in het doel systeem, dat is gekoppeld aan een andere gebruiker die is gemaakt in het doel systeem.
@@ -173,7 +173,7 @@ Als de meeste of alle aanroepen voor het doel systeem consistent zijn als gevolg
 
 In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag gereduceerd.
 
-De inrichtings taak wordt uit quarantaine gehaald nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld.
+De inrichtings taak wordt uit quarantaine gehaald nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Hoe lang duurt het om gebruikers in te richten?
 

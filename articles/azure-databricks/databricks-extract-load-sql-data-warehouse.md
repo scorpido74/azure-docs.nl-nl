@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826044"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329762"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks
 
 In deze zelfstudie voert u een ETL-bewerking (Extraction, Transformation, and Loading) uit met behulp van Azure Databricks. U haalt gegevens op uit Azure Data Lake Storage Gen2 naar Azure Databricks, voert trans formaties uit op de gegevens in Azure Databricks en laadt de getransformeerde gegevens in Azure SQL Data Warehouse.
 
@@ -47,25 +47,25 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 Voltooi deze taken voordat u aan deze zelfstudie begint:
 
-* Maak een Azure SQL-datawarehouse, maak een firewallregel op serverniveau en maak verbinding met de server als serverbeheerder. Zie [Quickstart: Een Azure SQL-Data Warehouse maken en er query's op](../sql-data-warehouse/create-data-warehouse-portal.md)uitvoeren in de Azure Portal.
+* Maak een Azure SQL Data Warehouse, maak een firewall regel op server niveau en maak verbinding met de server als server beheerder. Zie [Quick Start: een Azure SQL-Data Warehouse maken en er een query op uitvoeren in de Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Maak een databasehoofdsleutel voor de Azure SQL-datawarehouse. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Maak een hoofd sleutel voor Azure SQL Data Warehouse. Zie [Een databasehoofdsleutel maken](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Maak een Azure Blob-opslagaccount met daarin een container. Haal ook de toegangssleutel op voor toegang tot het opslagaccount. Zie [Quickstart: Upload, down load en vermeld blobs met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Maak een Azure Blob-opslagaccount met daarin een container. Haal ook de toegangssleutel op voor toegang tot het opslagaccount. Zie [Quick Start: blobs uploaden, downloaden en vermelden met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Een Azure Data Lake Storage Gen2-opslagaccount maken. Zie [Quickstart: Maak een Azure Data Lake Storage Gen2 Storage-](../storage/blobs/data-lake-storage-quickstart-create-account.md)account.
+* Een Azure Data Lake Storage Gen2-opslagaccount maken. Zie [Quick Start: een Azure data Lake Storage Gen2-opslag account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-* Een service-principal maken. Raadpleeg [Uitleg: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
    Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-   * Bij het uitvoeren van de stappen in de sectie [de toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat u de rol voor blobgegevens voor **gegevens opslag** toewijst aan de Service-Principal in het bereik van het data Lake Storage Gen2-account. Als u de rol toewijst aan de bovenliggende resource groep of het abonnement, ontvangt u aan machtigingen gerelateerde fouten tot deze roltoewijzingen worden door gegeven aan het opslag account.
+   * Bij het uitvoeren van de stappen in de sectie [de toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat u de rol voor **blobgegevens voor gegevens opslag** toewijst aan de Service-Principal in het bereik van het data Lake Storage Gen2-account. Als u de rol toewijst aan de bovenliggende resource groep of het abonnement, ontvangt u aan machtigingen gerelateerde fouten tot deze roltoewijzingen worden door gegeven aan het opslag account.
 
       Als u liever een toegangs beheer lijst (ACL) wilt gebruiken om de service-principal te koppelen aan een specifiek bestand of een specifieke directory, verwijst u naar het [toegangs beheer in azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
    * Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Verzamel de benodigde informatie
 
@@ -73,17 +73,17 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
    Voor u begint, moet u de volgende gegevens hebben:
 
-   :heavy_check_mark:  de databasenaam, de naam van de databaseserver, de gebruikersnaam en het wachtwoord van uw Azure SQL Data Warehouse.
+   : heavy_check_mark: de database naam, de naam van de database server, de gebruikers naam en het wacht woord van uw Azure SQL Data Warehouse.
 
-   :heavy_check_mark:  de toegangssleutel van uw blob-opslagaccount.
+   : heavy_check_mark: de toegangs sleutel van uw Blob Storage-account.
 
-   :heavy_check_mark:  de naam van uw Azure Data Lake Storage Gen2-opslagaccount.
+   : heavy_check_mark: de naam van uw Data Lake Storage Gen2 Storage-account.
 
-   :heavy_check_mark:  de tenant-id van uw abonnement.
+   : heavy_check_mark: de Tenant-ID van uw abonnement.
 
-   :heavy_check_mark:  de toepassings-id van de app die u voor Azure Active Directory (Azure AD) hebt geregistreerd.
+   : heavy_check_mark: de toepassings-ID van de app die u hebt geregistreerd met Azure Active Directory (Azure AD).
 
-   :heavy_check_mark:  de verificatiesleutel van de app die u voor Azure Active Directory hebt geregistreerd.
+   : heavy_check_mark: de verificatie sleutel voor de app die u hebt geregistreerd bij Azure AD.
 
 ## <a name="create-an-azure-databricks-service"></a>Een Azure Databricks-service maken
 
@@ -101,7 +101,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**.  Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.      |
-    |**Prijscategorie**     |  selecteer **Standaard**.     |
+    |**Prijscategorie**     |  Selecteer **standaard**.     |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -365,7 +365,7 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    ```
 
    > [!NOTE]
-   > In dit voor beeld `forward_spark_azure_storage_credentials` wordt de vlag gebruikt, waardoor SQL Data Warehouse toegang krijgt tot gegevens uit Blob Storage met behulp van een toegangs sleutel. Dit is de enige ondersteunde verificatie methode.
+   > In dit voor beeld wordt de vlag `forward_spark_azure_storage_credentials` gebruikt, waardoor SQL Data Warehouse toegang krijgt tot gegevens uit de Blob-opslag met behulp van een toegangs sleutel. Dit is de enige ondersteunde verificatie methode.
    >
    > Als uw Azure-Blob Storage is beperkt tot het selecteren van virtuele netwerken, heeft SQL Data Warehouse [Managed Service Identity vereist in plaats van toegangs sleutels](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dit leidt ertoe dat de fout ' deze aanvraag is niet gemachtigd om deze bewerking uit te voeren. '
 
@@ -387,7 +387,7 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-service maken

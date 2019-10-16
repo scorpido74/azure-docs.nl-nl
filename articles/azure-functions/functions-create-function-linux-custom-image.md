@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950376"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329598"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -106,7 +106,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Wanneer de opdracht is voltooid, kunt u de nieuwe container lokaal uitvoeren.
 
 ### <a name="run-the-image-locally"></a>De installatie kopie lokaal uitvoeren
-Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort opgeeft met behulp van het argument `-p`.
+Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort specificeert met behulp van het argument `-p`.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -365,11 +365,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 Gebruik dezelfde URL als voorheen in de browser om uw functie te activeren. U ziet hetzelfde antwoord. Deze keer wordt de teken reeks die u doorgeeft als de para meter `name`, echter naar de `outqueue`-opslag wachtrij geschreven.
 
-### <a name="set-the-storage-account-connection"></a>De verbinding voor het opslag account instellen
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>Query uitvoeren op de opslag wachtrij
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 

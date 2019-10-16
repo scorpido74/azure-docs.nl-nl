@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219362"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376322"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Een persoonlijk eind punt maken met behulp van Azure CLI
 Persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel netwerk, een SQL Database-Server met een persoonlijk eind punt met behulp van Azure CLI. Vervolgens hebt u toegang tot de virtuele machine en kunt u veilig toegang krijgen tot de persoonlijke koppelings bron (een persoonlijke Azure SQL Database Server in dit voor beeld). 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Beleid voor privé-eind punten van subnet uitschakelen 
-Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet-configuratie met de naam * mySubnet * * bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet configuratie bijwerken met de naam *mySubnet* with [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Opmerking: de SQL Server-id is ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` vergelijkbaar met de SQL Server-id in de volgende stap. 
+Opmerking de SQL Server-ID is vergelijkbaar met @ no__t-0. u gebruikt de SQL Server-ID in de volgende stap. 
 
 ## <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken 
 Maak een persoonlijk eind punt voor de SQL Database-Server in uw Virtual Network: 
@@ -127,7 +127,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 1. Open het bestand gedownloade. rdp *.
 
@@ -149,7 +149,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Database-Server via de VM.
 
  1. Open Power shell in de Extern bureaublad van *myVM*.
- 2. Nslookup MyServer.database.Windows.net  invoeren er wordt een bericht weer gegeven dat er ongeveer als volgt uitziet: 
+ 2. Voer nslookup server. data base. Windows. net @ no__t-0 in, een bericht dat er ongeveer als volgt uitziet: 
 
 ```
       Server:  UnKnown 
@@ -160,9 +160,9 @@ In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Data
       Aliases:  myserver.database.windows.net 
 ```
  3. SQL Server Management Studio installeren 
- 4. Typ of Selecteer in verbinding maken met server de volgende informatie: Server type: Selecteer data base-engine.
+ 4. Typ of Selecteer in verbinding maken met server de volgende informatie: server type: Selecteer data base-engine.
  Server naam: Selecteer myserver.database.windows.net gebruikers naam: Voer een gebruikers naam in die tijdens het maken is opgegeven.
- Wacht woord Voer een wacht woord in dat u hebt opgegeven tijdens het maken.
+ Wacht woord: Voer een wacht woord in dat u hebt opgegeven tijdens het maken.
  Wacht woord onthouden: Selecteer Ja.
  
  5. Selecteer **verbinding maken**.
