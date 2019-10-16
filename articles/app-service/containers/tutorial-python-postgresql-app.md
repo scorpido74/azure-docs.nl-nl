@@ -1,5 +1,5 @@
 ---
-title: Python-web-app (Django) met PostgreSQL op Linux-Azure App Service | Microsoft Docs
+title: 'Zelf studie: python (Django) Web-app met PostgreSQL in Linux-Azure App Service'
 description: Meer informatie over het uitvoeren van een gegevensgestuurde python-web-app (Django) in azure, met verbinding met een PostgreSQL-data base.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,16 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.custom:
+- mvc
+- seodec18
+- seo-python-october2019
+ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203257"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329982"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
 
@@ -142,11 +145,11 @@ Quit the server with CONTROL-C.
 
 Ga naar `http://localhost:8000` in een browser. Als het goed is, ziet u nu het bericht `No polls are available.`. 
 
-Ga naar `http://localhost:8000/admin` en meld u aan met de gebruikers beheerder die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen** en maak een poll-vraag met enkele keuzes.
+Ga naar `http://localhost:8000/admin` en meld u aan met de beheerders gebruiker die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen** en maak een poll-vraag met enkele keuzes.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Ga opnieuw naar opnieuw en Bekijk de poll-vraag die wordt weer gegeven.
+Ga opnieuw naar `http://localhost:8000` en zie de poll-vraag die wordt weer gegeven.
 
 Met de Django-voorbeeldtoepassing worden gebruikersgegevens opgeslagen in de database. Als het gelukt is om een poll-vraag toe te voegen, worden met de app gegevens naar de lokale PostgreSQL-database geschreven.
 
@@ -166,7 +169,7 @@ In deze stap maakt u een PostgreSQL-database in Azure. Als de app is geïmplemen
 
 Maak een PostgreSQL-server met de opdracht [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) in Cloud Shell.
 
-Vervang  *\<*  *\<*  *\<* in het volgende voor beeld de postgresql-naam > door een unieke server naam en vervang de beheerder van de gebruikers naam > en het beheerders wachtwoord > met de gewenste gebruikers referenties. De gebruikersreferenties zijn voor het gebruikersaccount van de databasebeheerder. De servernaam wordt gebruikt als onderdeel van het PostgreSQL-eindpunt (`https://<postgresql-name>.postgres.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure.
+Vervang in de volgende voorbeeld opdracht *\<postgresql-name >* met een unieke server naam en vervang *\<admin-username >* en *\<admin-Password >* met de gewenste gebruikers referenties. De gebruikersreferenties zijn voor het gebruikersaccount van de databasebeheerder. De servernaam wordt gebruikt als onderdeel van het PostgreSQL-eindpunt (`https://<postgresql-name>.postgres.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
@@ -194,7 +197,7 @@ Wanneer de Azure Database for PostgreSQL-server wordt gemaakt, toont de Azure CL
 ```
 
 > [!NOTE]
-> Onthoud \<de beheerder van de gebruikers \<naam > en de beheerders wachtwoord > voor later. U hebt deze later nodig als u zich gaat aanmelden bij de Postgre-server en de bijbehorende databases.
+> Onthoud \<admin-username > en \<admin-Password > voor later. U hebt deze later nodig als u zich gaat aanmelden bij de Postgre-server en de bijbehorende databases.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Firewallregels maken voor de PostgreSQL-server
 
@@ -207,7 +210,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Met deze instelling worden netwerkverbindingen toegestaan vanaf alle IP-adressen binnen het Azure-netwerk. Voor gebruik in productieomgevingen moet u proberen om de meest beperkende firewallregels te configureren door [alleen de uitgaande IP-adressen te gebruiken die uw app gebruikt](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Voer in de Cloud shell de opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan door  *\<uw IP-adres >* te vervangen door [uw lokale IPv4-IP-adres](https://www.whatsmyip.org/).
+Voer in de Cloud Shell de opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan door *\<your-IP-adres >* te vervangen door [uw lokale IPv4-IP-adres](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -269,15 +272,15 @@ Zodra de gebruiker met beheerdersrechten is gemaakt, voert u de Django-server ui
 python manage.py runserver
 ```
 
-Ga opnieuw `http://localhost:8000` naar in. Als het goed is, ziet u het bericht `No polls are available.` opnieuw. 
+Ga opnieuw naar `http://localhost:8000`. Als het goed is, ziet u het bericht `No polls are available.` opnieuw. 
 
-Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gemaakte beheerder en maak een polling-vraag zoals eerder.
+Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gemaakte beheerder en maak een poll-vraag zoals voorheen.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Ga opnieuw naar opnieuw en Bekijk de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
+Ga opnieuw naar `http://localhost:8000` en zie de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
 
-## <a name="deploy-to-azure"></a>Implementeren naar Azure
+## <a name="deploy-to-azure"></a>Implementatie in Azure
 
 In deze step implementeert u de met Postgres verbonden Python-toepassing naar Azure App Service.
 
@@ -386,7 +389,7 @@ Als het goed is, ziet u de poll-vraag die u eerder hebt gemaakt.
 
 In App Service wordt een Django-project gedetecteerd in de opslagplaats door in elke submap te zoeken naar een _wsgi.py_ die standaard wordt gemaakt met `manage.py startproject`. Wanneer het bestand wordt gevonden, wordt de Django-web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](how-to-configure-python.md) voor meer informatie over het laden van Python-apps in App Service.
 
-Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheerders gebruiker die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
+Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheer gebruiker die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -412,7 +415,7 @@ In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Dez
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een PostgreSQL-database maken in Azure
@@ -424,7 +427,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
 U kunt ook andere resources bekijken:
 

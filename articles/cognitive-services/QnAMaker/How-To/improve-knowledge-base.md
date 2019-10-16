@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802334"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328014"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
@@ -71,7 +71,7 @@ Actief leren is standaard uitgeschakeld. Schakel deze in om voorgestelde vragen 
 
 1. Zoek de QnA Maker-service en schakel vervolgens **actief leren**in. 
 
-    [![Schakel op de pagina Service-instellingen de optie actief leren in. Als u de functie niet kunt in-of uitschakelen, moet u mogelijk een upgrade van uw service uitvoeren.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![On de pagina Service-instellingen in, schakelt u de functie actief leren in. Als u de functie niet kunt in-of uitschakelen, moet u mogelijk een upgrade van uw service uitvoeren.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > De exacte versie van de voor gaande afbeelding wordt alleen weer gegeven als voor beeld. Uw versie kan afwijken. 
@@ -84,15 +84,15 @@ Met actief onderwijs wijzigt u de Knowledge Base of Search Service na het goed k
 
 1. Als u de voorgestelde vragen wilt bekijken, selecteert u op de pagina Knowledge Base **bewerken** de optie **weergave opties**en selecteert u **actieve Learning suggesties weer geven**. 
 
-    [![Selecteer in het gedeelte bewerken van de Portal de optie suggesties weer geven om de nieuwe vragen van het actieve leer proces te bekijken.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![On het bewerkings gedeelte van de portal, selecteer suggesties weer geven om de nieuwe vragen van het actieve leer proces te bekijken.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Filter de Knowledge Base met vraag-en antwoord paren om alleen suggesties weer te geven door **filteren op suggesties**te selecteren.
 
-    [![Gebruik de wissel knop filteren op suggesties om alleen de voorgestelde suggesties van het actieve leer proces weer te geven.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![Use het filter op suggesties in-of uitschakelen om alleen de voorgestelde suggesties van het actieve leer proces weer te geven.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Elk QnA paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔` om de vraag of een `x` te accepteren om de suggesties te weigeren. Schakel het selectie vakje in om de vraag toe te voegen. 
+1. Elk QnA-paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔`, om de vraag of een `x` te accepteren om de suggesties te weigeren. Schakel het selectie vakje in om de vraag toe te voegen. 
 
-    [![Selecteer de suggesties voor de voorgestelde vraag van het actieve leer proces of wijs deze af door het groene vinkje of rode markering voor verwijderen te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Select of afwijzen alternatieve suggesties voor aanbevolen vragen door het groene vinkje of rode markering voor verwijderen te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     U kunt _alle suggesties_ toevoegen of verwijderen door alles **toevoegen** of **Alles negeren** te selecteren in de contextuele werk balk.
 
@@ -109,7 +109,7 @@ Met actief onderwijs wijzigt u de Knowledge Base of Search Service na het goed k
 
 Een bot of andere client toepassing moet de volgende architectuur stroom gebruiken om actief leren te gebruiken:
 
-* Bot [haalt het antwoord op uit de Knowledge Base](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) met de GenerateAnswer-API met `top` behulp van de eigenschap om een aantal antwoorden op te halen.
+* Bot [haalt het antwoord op uit de Knowledge Base](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) met de GENERATEANSWER-API, met behulp van de eigenschap `top` om een aantal antwoorden te verkrijgen.
 * Bot bepaalt expliciete feedback:
     * Met uw eigen [aangepaste bedrijfs logica](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)filtert u de lage scores.
     * In de bot of client-toepassing geeft u een lijst met mogelijke antwoorden op de gebruiker weer en het geselecteerde antwoord van de gebruiker ophalen.
@@ -118,7 +118,7 @@ Een bot of andere client toepassing moet de volgende architectuur stroom gebruik
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Gebruik de eigenschap Top in de GenerateAnswer-aanvraag om verschillende overeenkomende antwoorden te verkrijgen
 
-Bij het indienen van een vraag om QnA Maker voor een antwoord `top` , stelt de eigenschap van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd. 
+Bij het indienen van een vraag om QnA Maker voor een antwoord, stelt de eigenschap `top` van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Bij het indienen van een vraag om QnA Maker voor een antwoord `top` , stelt de e
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Gebruik de eigenschap Score samen met bedrijfs logica om een lijst met antwoorden te krijgen voor weer geven gebruiker
 
-Wanneer de client toepassing (zoals een chat-bot) het antwoord ontvangt, worden de belangrijkste drie vragen geretourneerd. Gebruik de `score` eigenschap om de nabijheid van de scores te analyseren. Dit proximity-bereik wordt bepaald door uw eigen bedrijfs logica. 
+Wanneer de client toepassing (zoals een chat-bot) het antwoord ontvangt, worden de belangrijkste drie vragen geretourneerd. Gebruik de eigenschap `score` om de nabijheid van de scores te analyseren. Dit proximity-bereik wordt bepaald door uw eigen bedrijfs logica. 
 
 ```json
 {
@@ -186,22 +186,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Eigenschap HTTP-aanvraag|Name|type|Doel|
+|Eigenschap HTTP-aanvraag|Naam|Type|Doel|
 |--|--|--|--|
 |URL-route parameter|Knowledge Base-ID|string|De GUID voor uw Knowledge Base.|
 |Aangepast subdomein|Resource naam QnAMaker|string|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Deze wordt weer gegeven als de `host`.|
-|Header|Content-Type|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
-|Header|Authorization|string|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|Header|Content-Type|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
+|Header|Autorisatie|string|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 
 De JSON-hoofd tekst heeft verschillende instellingen:
 
-|Eigenschap van JSON-hoofd tekst|type|Doel|
+|Eigenschap van JSON-hoofd tekst|Type|Doel|
 |--|--|--|--|
-|`feedbackRecords`|array|Lijst met feedback.|
+|`feedbackRecords`|matrix|Lijst met feedback.|
 |`userId`|string|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
 |`userQuestion`|string|De exacte tekst van de query van de gebruiker. Vereist.|
-|`qnaID`|nummer|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
+|`qnaID`|getal|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -221,7 +221,7 @@ Een geslaagde reactie retourneert de status 204 en geen JSON-antwoord tekst.
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch-veel feedback records in één aanroep
 
-In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records verzenden in één JSON-hoofd tekst in `feedbackRecords` de matrix. 
+In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records verzenden in één JSON-hoofd tekst in de matrix `feedbackRecords`. 
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -368,9 +368,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Actief leren wordt opgeslagen in de geëxporteerde kennis basis
 
-Wanneer de app actief leren is ingeschakeld en u de app exporteert, behoudt de `SuggestedQuestions` kolom in het TSV-bestand de actieve leer gegevens. 
+Wanneer voor uw app actief leren is ingeschakeld en u de app exporteert, worden in de kolom @no__t 0 in het TSV-bestand de actieve leer gegevens bewaard. 
 
-De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete, `autosuggested`en expliciete `usersuggested` feedback. Een voor beeld van dit JSON-object voor één door de gebruiker ingediende vraag `help` is:
+De kolom @no__t 0 is een JSON-object met informatie over impliciete, `autosuggested` en expliciete, `usersuggested`-feedback. Een voor beeld van dit JSON-object voor één door de gebruiker ingediende vraag van `help` is:
 
 ```JSON
 [
@@ -391,7 +391,7 @@ De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete,
 
 U kunt ook de API voor het downloaden van wijzigingen gebruiken om deze aanpassingen te controleren met behulp van REST of een van de op taal gebaseerde Sdk's:
 * [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met het verzamelen van informatie en worden suggesties voor uw Knowledge Base aanbevolen. 

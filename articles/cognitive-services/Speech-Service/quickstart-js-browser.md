@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Speech herkennen, java script (browser)-spraak service'
+title: 'Quick Start: spraak herkennen, java script (browser)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: Informatie over het herkennen van gesproken tekst in JavaScript in een browser met behulp van de Speech SDK
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.openlocfilehash: 77afdb491e4a6cee0a3d6861ea76f57502e56278
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71802439"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Quickstart: gesproken tekst in JavaScript herkennen in een browser met behulp van de Speech SDK
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Quick Start: spraak herkennen in Java script in een browser met behulp van de Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 

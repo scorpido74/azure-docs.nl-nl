@@ -4,16 +4,16 @@ description: Meer informatie over hoe u de bulk-uitvoerder bibliotheek kunt gebr
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827277"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327182"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Deze opslagplaats bevat het GraphBulkExecutor-voorbeeld met de volgende bestanden:
 
-File|Description
+Bestand|Beschrijving
 ---|---
 `App.config`|Hier worden de voor de toepassing en database specifieke parameters gespecificeerd. Dit bestand moet eerst worden aangepast om verbinding te kunnen maken met de doeldatabase en de verzamelingen.
 `Program.cs`| Dit bestand bevat de logica achter het maken van de verzameling @no__t 0, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.
@@ -136,7 +136,7 @@ File|Description
 
 In het `App.config`-bestand zijn de configuratiewaarden die kunnen worden opgegeven, als volgt:
 
-Instelling|Description
+Instelling|Beschrijving
 ---|---
 `EndPointUrl`|Dit is uw **.NET SDK-eindpunt**. Dit is aanwezig in de blade Overzicht van uw Azure Cosmos DB Gremlin API-databaseaccount. De indeling is `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|Dit is de primaire of secundaire sleutel die vermeld staat onder uw Azure Cosmos DB-account. Meer informatie over [Toegang verkrijgen tot Azure Cosmos DB-gegevens](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)

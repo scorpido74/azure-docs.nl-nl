@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710179"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330832"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
 In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf (VHD) voor het uploaden naar Azure voorbereidt, inclusief het maken van virtuele machines (Vm's) en het installeren van software. Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
 Windows 10 Enter prise multi-session is beschikbaar in de galerie met installatie kopieën van Azure. Er zijn twee opties voor het aanpassen van deze installatie kopie.
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Software voorbereiding en-installatie
 
-In deze sectie wordt beschreven hoe u FSLogix, Windows Defender en andere algemene toepassingen voorbereidt en installeert. 
+In deze sectie wordt beschreven hoe u FSLogix en Windows Defender voorbereidt en installeert, evenals een aantal basis configuratie opties voor apps en het REGI ster van uw installatie kopie. 
 
-Als u Office 365 ProPlus en OneDrive op uw VM installeert, raadpleegt u [Office installeren op een Master-VHD-installatie kopie](install-office-on-wvd-master-image.md). Volg de koppeling in de volgende stappen van dit artikel om terug te gaan naar dit artikel en het hoofd-VHD-proces te volt ooien.
+Als u Office 365 ProPlus en OneDrive op uw VM installeert, gaat u naar [Office installeren op een Master-VHD-installatie kopie](install-office-on-wvd-master-image.md) en volgt u de instructies voor het installeren van de apps. Wanneer u klaar bent, keert u terug naar dit artikel.
 
 Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we u aan deze te installeren nadat u de instructies van deze sectie hebt voltooid.
+
+### <a name="set-up-user-profile-container-fslogix"></a>Gebruikers profiel container instellen (FSLogix)
+
+Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
+
+### <a name="configure-windows-defender"></a>Windows Defender configureren
+
+Als Windows Defender is geconfigureerd in de virtuele machine, moet u ervoor zorgen dat de volledige inhoud van VHD-en VHDX-bestanden tijdens een bijlage niet wordt gescand.
+
+Deze configuratie verwijdert alleen het scannen van VHD-en VHDX-bestanden tijdens een bijlage, maar heeft geen invloed op real-time scans.
+
+Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
+
+Zie [uitsluitingen configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
 
 ### <a name="disable-automatic-updates"></a>Automatische updates uitschakelen
 
@@ -88,20 +102,6 @@ Voer deze opdracht uit om een start indeling op te geven voor Windows 10-Pc's.
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>Gebruikers profiel container instellen (FSLogix)
-
-Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
-
-### <a name="configure-windows-defender"></a>Windows Defender configureren
-
-Als Windows Defender is geconfigureerd in de virtuele machine, moet u ervoor zorgen dat de volledige inhoud van VHD-en VHDX-bestanden tijdens een bijlage niet wordt gescand.
-
-Deze configuratie verwijdert alleen het scannen van VHD-en VHDX-bestanden tijdens een bijlage, maar heeft geen invloed op real-time scans.
-
-Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
-
-Zie [uitsluitingen configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
 
 ### <a name="configure-session-timeout-policies"></a>Sessietime-outbeleid configureren
 
@@ -225,7 +225,7 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
 - [Een hostgroep met een Azure Resource Manager-sjabloon maken](create-host-pools-arm-template.md)
-- [Zelfstudie: Een hostgroep maken met Azure Marketplace @ no__t-0
+- [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Een hostgroep maken met Power shell](create-host-pools-powershell.md)
 - [Een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md)
 - [De taakverdelings methode voor virtuele Bureau bladen van Windows configureren](configure-host-pool-load-balancing.md)

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255877"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330773"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -99,8 +99,7 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **[\*]** - [alia
 
 ## <a name="modify"></a>Wijzigen
 
-Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Voor een wijzigings beleid moet altijd `mode` zijn ingesteld op _geïndexeerd_. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md).
-Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Voor een wijzigings beleid moet `mode` altijd zijn ingesteld op _geïndexeerd_ , tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
 
 > [!IMPORTANT]
 > Modify is momenteel alleen voor gebruik met tags. Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken.

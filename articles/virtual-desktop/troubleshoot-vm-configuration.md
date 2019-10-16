@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274489"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330825"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -302,10 +302,17 @@ Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise mul
 
 Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst ' de externe sessie is beëindigd omdat er geen Extern bureaublad licenties voor client toegang beschikbaar zijn voor deze computer. '
 
-Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt op **per gebruiker**. Verwijder alle configuraties die dit beleid instellen en volg de stappen om de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
+Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
 
 >[!NOTE]
 >Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)voor meer informatie over het configureren van een RDS CAL.
+
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>De groeps beleids instelling Extern bureaublad licentie modus uitschakelen
+
+Controleer de groeps beleids instelling door de groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiehost**@no __t-7**licensing** > **Stel de Extern bureaublad licentie modus**in. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
+
+>[!NOTE]
+>Als u groeps beleid via uw domein instelt, schakelt u deze instelling uit voor beleids regels die zijn gericht op deze Windows 10 Enter prise-Vm's met meerdere sessies.
 
 ### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Bepalen welke versie van Windows 10 Enter prise multi-sessie u gebruikt
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus wachtrijen gebruiken met python | Microsoft Docs
+title: 'Zelf studie: Azure Service Bus wacht rijen gebruiken met python'
 description: Meer informatie over het gebruik van Azure Service Bus wachtrijen van python.
 services: service-bus-messaging
 documentationcenter: python
@@ -14,12 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 3561d7e3569b31698fbbc5f8cf2518d9fe1fc398
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141915"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331128"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus wachtrijen gebruiken met python
 
@@ -57,7 +58,7 @@ De waarden voor de SAS-sleutel naam en-waarde zijn te vinden in de [Azure Portal
 sb_client.create_queue("taskqueue")
 ```
 
-De `create_queue` -methode biedt ook ondersteuning voor aanvullende opties, waarmee u standaard instellingen voor de wachtrij, zoals de TTL (time to Live) of de maximale wachtrij grootte, kunt overschrijven. In het volgende voor beeld wordt de maximale wachtrij grootte ingesteld op 5 GB en de TTL-waarde op 1 minuut:
+De methode `create_queue` biedt ook ondersteuning voor extra opties, waarmee u standaard instellingen voor de wachtrij, zoals de TTL (time to Live) of de maximale wachtrij grootte, kunt overschrijven. In het volgende voor beeld wordt de maximale wachtrij grootte ingesteld op 5 GB en de TTL-waarde op 1 minuut:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -67,9 +68,9 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 Zie [Azure service bus python-documentatie](/python/api/overview/azure/servicebus?view=azure-python)voor meer informatie.
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Als u een bericht wilt verzenden naar een service bus wachtrij, wordt de `send` methode voor het `ServiceBusClient` object door uw toepassing aangeroepen.
+Als u een bericht wilt verzenden naar een Service Bus wachtrij, roept uw toepassing de `send`-methode aan voor het object `ServiceBusClient`.
 
-In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij `taskqueue` verzendt `send_queue_message`met de naam:
+In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij met de naam `taskqueue` verzendt met behulp van `send_queue_message`:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -88,7 +89,7 @@ Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de
 Zie [Azure service bus python-documentatie](/python/api/overview/azure/servicebus?view=azure-python)voor meer informatie.
 
 ## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
-Er worden berichten van een wachtrij ontvangen met `get_receiver` behulp van `ServiceBusService` de methode voor het object:
+Er worden berichten van een wachtrij ontvangen met behulp van de `get_receiver`-methode voor het `ServiceBusService`-object:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -108,18 +109,18 @@ with queue_client.get_receiver() as queue_receiver:
 Zie [Azure service bus python-documentatie](/python/api/overview/azure/servicebus?view=azure-python)voor meer informatie.
 
 
-Berichten worden uit de wachtrij verwijderd wanneer ze worden gelezen wanneer de para `peek_lock` meter is ingesteld op ONWAAR. U kunt het bericht lezen (bekijken) en dit vergren delen zonder het uit de wachtrij te verwijderen `peek_lock` door de para meter in te stellen op **True**.
+Berichten worden uit de wachtrij verwijderd wanneer ze worden gelezen wanneer de para meter `peek_lock` is ingesteld op **Onwaar**. U kunt het bericht lezen (bekijken) en dit vergren delen zonder het uit de wachtrij te verwijderen door de para meter `peek_lock` in te stellen op **True**.
 
 Het gedrag van het lezen en verwijderen van het bericht als onderdeel van de receive-bewerking is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing een bericht niet verwerkt in het geval van een fout. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, wordt het bericht dat voor het vastlopen is verbruikt, overgeslagen wanneer de toepassing opnieuw wordt gestart en opnieuw bezig is met het uitvoeren van berichten.
 
-Als de `peek_lock` para meter is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door de methode **Delete** aan te roepen voor het **bericht** object. Met de methode **Delete** wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
+Als de para meter `peek_lock` is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door de methode **Delete** aan te roepen voor het **bericht** object. Met de methode **Delete** wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
 ```python
 msg.delete()
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een receiver-toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode voor het **ontgrendelen** van het bericht object worden aangeroepen. Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een receiver-toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode voor het **ontgrendelen** van het **bericht object worden** aangeroepen. Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
 
 Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt het bericht automatisch door Service Bus ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 

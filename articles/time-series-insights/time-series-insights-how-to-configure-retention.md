@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9986f57b05032c1e12769d59781e8b7aca443abb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298981"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330890"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Bewaar periode in Time Series Insights configureren
 
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u de **Bewaar tijd voor gegevens** en de **o
 
 Elke Azure Time Series Insights omgeving heeft een instelling voor het configureren van **gegevens retentie tijd**. De waarde ligt tussen 1 en 400 dagen. De gegevens worden verwijderd op basis van de opslag capaciteit van de omgeving of de Bewaar periode (1-400), afhankelijk van wat het eerste komt.
 
-Voor elke TSI omgeving is een extra **opslag limiet**ingesteld. Met deze instelling bepaalt u het gedrag van ingang en leegmaken wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee manieren om te kiezen:
+Voor elke Time Series Insights omgeving is een extra **opslag limiet**ingesteld. Met deze instelling bepaalt u het gedrag van ingang en leegmaken wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee manieren om te kiezen:
 
 - **Oude gegevens opschonen** (standaard)
 - **Ingangs onderbrekingen**
@@ -49,10 +49,14 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
 1. De instelling voor het gedrag van de **opslag limiet is overschreden** . Selecteer **oude gegevens leegmaken** of **ingangs gedrag onderbreken** .
 
-    [@no__t-retentie van 1Data accepteren en opslaan.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [@no__t-retentie van 1Data-accepteren en opslaan.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Accepteer het selectie vakje om aan te geven dat u de documentatie hebt gecontroleerd en inzicht hebt in de mogelijke Risico's van gegevens verlies. Selecteer **Opslaan** om de wijzigingen te configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees voor meer informatie [uitleg over retentie in time series Insights](time-series-insights-concepts-retention.md).
+
+- Meer informatie [over het schalen van uw time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).
+
+- Meer informatie over [het plannen van uw omgeving](time-series-insights-environment-planning.md).

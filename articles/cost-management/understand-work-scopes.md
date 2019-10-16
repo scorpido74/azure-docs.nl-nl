@@ -1,21 +1,21 @@
 ---
-title: Azure Cost Management bereiken begrijpen en ermee werken | Microsoft Docs
+title: Azure Cost Management bereiken begrijpen en ermee werken
 description: Dit artikel helpt u inzicht te krijgen in de facturerings-en resource beheer bereiken die beschikbaar zijn in Azure en hoe u de bereiken gebruikt in Cost Management en Api's.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338642"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374486"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -39,15 +39,15 @@ Azure ondersteunt drie bereiken voor resource beheer. Elk bereik biedt ondersteu
 
 - [**Beheer groepen**](../governance/management-groups/overview.md) -hiërarchische containers, Maxi maal acht niveaus, om Azure-abonnementen te organiseren.
 
-    Resource type: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Resource type: [micro soft. Management/managementGroups](/rest/api/resources/managementgroups)
 
 - **Abonnementen** : primaire containers voor Azure-resources.
 
-    Resource type: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
+    Resource type: [micro soft. resources/abonnementen](/rest/api/resources/subscriptions)
 
 - [**Resource groepen**](../azure-resource-manager/resource-group-overview.md#resource-groups) : logische groeperingen van gerelateerde resources voor een Azure-oplossing die dezelfde levens cyclus delen. Bijvoorbeeld resources die samen worden geïmplementeerd en verwijderd.
 
-    Resource type: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
+    Resource type: [micro soft. resources/abonnementen/resourceGroups](/rest/api/resources/resourcegroups)
 
 Met beheer groepen kunt u abonnementen indelen in een-hiërarchie. U kunt bijvoorbeeld een logische organisatie hiërarchie maken met behulp van beheer groepen. Geef vervolgens teams abonnementen op voor productie-en dev/test-workloads. En vervolgens resource groepen maken in de abonnementen voor het beheren van elk subsysteem of onderdeel.
 
@@ -106,7 +106,7 @@ Azure-abonnementen die zijn gemaakt op basis van afzonderlijke aanbiedingen, zoa
 
 - [**Facturerings account**](../billing/billing-view-all-accounts.md) : vertegenwoordigt een enkele eigenaar van een account voor een of meer Azure-abonnementen. Het biedt momenteel geen ondersteuning voor het verlenen van toegang aan meerdere personen of toegang tot samengevoegde kosten weergaven.
 
-    Resource type: Niet van toepassing
+    Resource type: niet van toepassing
 
 Afzonderlijke accounts beheerders van een Azure-abonnement kunnen facturerings gegevens, zoals facturen en betalingen, bekijken en beheren vanuit de [Azure-Accountcentrum](https://account.azure.com/subscriptions). Ze kunnen echter geen kosten gegevens weer geven of resources in de Azure Portal beheren. Als u toegang wilt verlenen aan de account beheerder, gebruikt u de eerder genoemde Cost Management-functies.
 
@@ -128,7 +128,10 @@ Factuur accounts voor micro soft-klanten overeenkomst hebben de volgende bereike
 
     Resource type: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Klant** : vertegenwoordigt een groep abonnementen die zijn gekoppeld aan een specifieke klant die is geboardd naar een micro soft-klant overeenkomst per partner. Dit bereik is specifiek voor CSP.
+
 In tegens telling tot EA-facturerings bereiken _zijn_ facturerings accounts voor klant overeenkomsten gebonden aan één map en kunnen ze geen abonnementen hebben op meerdere Azure AD-directory's.
+
 
 Facturerings bereik van de klant overeenkomst ondersteunen de volgende rollen:
 
@@ -149,7 +152,7 @@ Nadat de AWS-integratie is voltooid, raadpleegt [u de installatie en configurati
 - **Externe facturerings account** : vertegenwoordigt een klant overeenkomst met een externe leverancier. Dit is vergelijkbaar met het facturerings account EA.
 
     Resource type: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **Extern abonnement** : vertegenwoordigt een operationeel gebruikers account met een externe leverancier. Dit is vergelijkbaar met een Azure-abonnement.
 
     Resource type: `Microsoft.CostManagement/externalSubscriptions`
@@ -166,7 +169,7 @@ Alle Cost Management weer gaven in de Azure Portal bevatten een **bereik** selec
 
 Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is. Gebruik de volgende informatie om de juiste Scope-URI te maken voor Cost Management-Api's.
 
-### <a name="billing-accounts"></a>Factureringsaccounts
+### <a name="billing-accounts"></a>Facturerings accounts
 
 1. Open de Azure Portal en navigeer vervolgens naar **Cost Management en facturering** in de lijst met Services.
 2. Selecteer **Eigenschappen** in het menu van het facturerings account.
@@ -216,7 +219,7 @@ Wanneer u werkt met Cost Management Api's, weet u zeker dat de scope kritiek is.
 3. Kopieer de ID van de beheer groep uit de tabel.
 4. Uw bereik is: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Abonnement
 
 1. Open de Azure Portal en navigeer naar **abonnementen** in de lijst met Services.
 2. Kopieer de abonnements-ID uit de tabel.
@@ -234,4 +237,4 @@ Cost Management wordt momenteel ondersteund in [Azure Global](https://management
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u dit nog niet hebt al de eerste snelstartgids voltooid voor kostenbeheer, lezen via [kosten analyseren](quick-acm-cost-analysis.md).
+- Als u de eerste Snelstartgids voor Cost Management nog niet hebt voltooid, kunt u deze lezen bij het analyseren van de [kosten](quick-acm-cost-analysis.md).

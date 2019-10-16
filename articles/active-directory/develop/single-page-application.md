@@ -1,6 +1,6 @@
 ---
 title: Toepassingen met één pagina in Azure Active Directory
-description: Hierin wordt beschreven welke toepassingen met één pagina (kuuroorden) zijn en de basisprincipes van stroom protocol, registratie en verlopen van het token voor dit apptype.
+description: Beschrijft welke toepassingen met één pagina (SPAs) en de basis principes van de protocol stroom, registratie en Token verloop tijd voor dit type app.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,55 +17,55 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545305"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373858"
 ---
 # <a name="single-page-applications"></a>Toepassingen met één pagina
 
-Toepassingen met één pagina (kuuroorden) worden doorgaans gestructureerd als een JavaScript-presentatie-laag (front-end) die in de browser wordt uitgevoerd en een web-API back-end die wordt uitgevoerd op een server en implementeert de bedrijfslogica van de toepassing. Zie voor meer informatie over de impliciete autorisatietoekenning en kunt u bepalen of deze geschikt is voor uw toepassingsscenario, [inzicht in de OAuth2-impliciete stroom in Azure Active Directory verlenen](v1-oauth2-implicit-grant-flow.md).
+Toepassingen met één pagina (SPAs) zijn doorgaans gestructureerd als een Java script-presentatielaag (front-end) die wordt uitgevoerd in de browser, en een web-API-back-end die wordt uitgevoerd op een server en die de bedrijfs logica van de toepassing implementeert. Zie [inzicht krijgen in de OAuth2 impliciete toekennings stroom in azure Active Directory](v1-oauth2-implicit-grant-flow.md)voor meer informatie over de impliciete autorisatie toekenning en om te bepalen of deze geschikt is voor uw toepassings scenario.
 
-In dit scenario is wanneer de gebruiker zich aanmeldt, JavaScript front-end gebruikt [Active Directory Authentication Library voor JavaScript (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) en de impliciete autorisatietoekenning verkrijgen van een ID-token (id_token) van Azure AD. Het token is opgeslagen in de cache en de client gekoppeld aan de aanvraag als het bearer-token bij het maken van aanroepen naar de Web-API-back-end, dat is beveiligd met behulp van de OWIN-middleware.
+Als de gebruiker zich aanmeldt in dit scenario, gebruikt de front-end Java script [Active Directory Authentication Library voor Java script (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) en de impliciete autorisatie toekenning om een ID-token (id_token) van Azure ad te verkrijgen. Het token wordt in de cache opgeslagen en de client koppelt dit aan de aanvraag als het Bearer-token bij het aanroepen van de back-end van de Web-API, die wordt beveiligd met behulp van de OWIN-middleware.
 
 ## <a name="diagram"></a>Diagram
 
-![Diagram van de toepassing met één pagina](./media/authentication-scenarios/single_page_app.png)
+![Toepassings diagram met één pagina](./media/authentication-scenarios/single_page_app.png)
 
-## <a name="protocol-flow"></a>Stroom protocol
+## <a name="protocol-flow"></a>Protocol stroom
 
 1. De gebruiker navigeert naar de webtoepassing.
-1. De toepassing retourneert de JavaScript-front-end (presentatielaag) naar de browser.
-1. De gebruiker een aanmelding initieert, bijvoorbeeld door te klikken op een koppeling aanmelden. De browser verzendt een GET naar het autorisatie-eindpunt van de Azure AD om aan te vragen van een ID-token. Deze aanvraag bevat de toepassings-ID en antwoord-URL de queryparameters.
-1. Azure AD valideert de antwoord-URL op basis van de geregistreerde antwoord-URL die is geconfigureerd in Azure portal.
-1. De gebruiker meldt zich aan op de pagina aanmelden.
-1. Als verificatie geslaagd is, wordt Azure AD maakt u een ID-token en stuurt deze als een URL-fragment (#) naar antwoord-URL van de toepassing. Voor een productietoepassing moet deze antwoord-URL HTTPS. Het geretourneerde token bevat claims over de gebruiker en de Azure AD die nodig zijn voor de toepassing voor het valideren van het token.
-1. De JavaScript-client-code die wordt uitgevoerd in de browser extraheert het token uit het antwoord om te gebruiken bij het beveiligen van aanroepen van de toepassing web dat API terug beëindigen.
-1. De browser aanroept van de toepassing-web-API terug eindigen met de ID-token in de autorisatie-header. De Azure AD-verificatieservice problemen met een ID-token die kan worden gebruikt als een bearer-token als de resource hetzelfde als de client-ID is (in dit geval, dit geldt als de web-API de app zelf back-end is).
+1. De toepassing retourneert de Java script-front-end (presentatielaag) naar de browser.
+1. De gebruiker initieert zich aan te melden, bijvoorbeeld door te klikken op een aanmeldings koppeling. De browser verzendt een GET naar het Azure AD-autorisatie-eind punt om een ID-token aan te vragen. Deze aanvraag bevat de toepassings-ID en antwoord-URL in de query parameters.
+1. Azure AD valideert de antwoord-URL op basis van de geregistreerde antwoord-URL die in de Azure Portal is geconfigureerd.
+1. De gebruiker meldt zich aan op de aanmeldings pagina.
+1. Als de verificatie is geslaagd, maakt Azure AD een ID-token en retourneert deze als een URL-fragment (#) naar de antwoord-URL van de toepassing. Voor een productie toepassing moet deze antwoord-URL HTTPS zijn. Het geretourneerde token bevat claims over de gebruiker en Azure AD die vereist zijn voor de toepassing om het token te valideren.
+1. Met de Java script-client code die in de browser wordt uitgevoerd, wordt het token geëxtraheerd van het antwoord dat moet worden gebruikt voor het beveiligen van aanroepen naar de Web-API-back-end van de toepassing.
+1. De browser roept de Web-API van de toepassing aan met het ID-token in de autorisatie-header. Met de Azure AD-verificatie service wordt een ID-token uitgegeven dat kan worden gebruikt als Bearer-token als de bron hetzelfde is als de client-ID (in dit geval is dit True als de Web-API de eigen back-end van de app is).
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zie de [codevoorbeelden voor scenario's met één pagina toepassing](sample-v1-code.md#single-page-applications). Zorg ervoor dat u terugkomen vaak als nieuwe voorbeelden worden regelmatig toegevoegd.
+Zie de [code voorbeelden voor toepassings scenario's met één pagina](sample-v1-code.md#single-page-applications). Controleer regel matig of er nieuwe voor beelden worden toegevoegd.
 
 ## <a name="app-registration"></a>App-registratie
 
-* Één tenant - als u een toepassing voor uw organisatie bouwt, moet deze worden geregistreerd in de directory van uw bedrijf met behulp van de Azure-portal.
-* Multitenant - als u het bouwen van een toepassing die kan worden gebruikt door gebruikers buiten uw organisatie, deze moet worden geregistreerd in de directory van uw bedrijf, maar ook moet worden geregistreerd in de adreslijst van elke organisatie die van de toepassing gebruikmaakt. Als u uw toepassing in de directory, kunt u een aanmeldingsproces opnemen voor uw klanten waarmee ze akkoord gaan met uw toepassing. Wanneer ze zich registreren voor uw toepassing, wordt deze weergegeven met een dialoogvenster waarin de machtigingen die voor de toepassing moet worden weergegeven, en vervolgens de optie om in te stemmen. Afhankelijk van de vereiste machtigingen kan een beheerder in de andere organisatie worden vereist om toestemming te geven. Wanneer de gebruiker of beheerder hiermee akkoord gaat, wordt de toepassing is geregistreerd in de directory.
+* Eén Tenant: als u een toepassing bouwt voor uw organisatie, moet deze worden geregistreerd in de adres lijst van uw bedrijf met behulp van de Azure Portal.
+* Multi tenant: als u een toepassing bouwt die kan worden gebruikt door gebruikers buiten uw organisatie, moet deze zijn geregistreerd in de adres lijst van uw bedrijf, maar moet ook worden geregistreerd in de directory van elke organisatie waarin de toepassing wordt gebruikt. Om ervoor te zorgen dat uw toepassing beschikbaar is in hun Directory, kunt u een aanmeldings proces voor uw klanten toevoegen waarmee ze toestemming kunnen geven voor uw toepassing. Wanneer de gebruiker zich aanmeldt voor uw toepassing, wordt er een dialoog venster weer gegeven met de machtigingen die de toepassing nodig heeft en vervolgens de optie om toestemming te geven. Afhankelijk van de vereiste machtigingen kan een beheerder in de andere organisatie verplicht zijn om toestemming te geven. Wanneer de gebruiker of beheerder de toestemming heeft gegeven, wordt de toepassing geregistreerd in hun Directory.
 
-Na de registratie van de toepassing, moet deze worden geconfigureerd voor het gebruik van OAuth 2.0-impliciete-protocol. Dit protocol is standaard uitgeschakeld voor toepassingen. Schakel het protocol van de impliciete goedkeuring voor OAuth2 voor uw toepassing, het manifest van de toepassing vanuit Azure portal bewerken en de waarde 'oauth2AllowImplicitFlow' ingesteld op true. Zie voor meer informatie, [toepassingsmanifest](reference-app-manifest.md).
+Nadat de toepassing is geregistreerd, moet deze worden geconfigureerd voor het gebruik van OAuth 2,0 impliciet Grant-protocol. Dit protocol is standaard uitgeschakeld voor toepassingen. Als u het impliciete granting-Protocol van OAuth2 voor uw toepassing wilt inschakelen, bewerkt u het toepassings manifest van het Azure Portal en stelt u de waarde ' oauth2AllowImplicitFlow ' in op ' True '. Zie het [toepassings manifest](reference-app-manifest.md)voor meer informatie.
 
-## <a name="token-expiration"></a>Geldigheidsduur van het token
+## <a name="token-expiration"></a>Token verloop tijd
 
-Met behulp van ADAL.js helpt met het volgende:
+Het gebruik van ADAL. js helpt bij het volgende:
 
-* vernieuwen van een token verlopen
-* aanvragen van een toegangstoken voor het aanroepen van een web API-resource
+* Een verlopen token vernieuwen
+* Een toegangs token aanvragen om een web-API-resource aan te roepen
 
-Na een geslaagde verificatie wordt in Azure AD een cookie schrijft in de browser van de gebruiker een sessie tot stand brengen. Houd er rekening mee dat de sessie bestaat tussen de gebruiker en de Azure AD (niet tussen de gebruiker en de web-App). Wanneer een token is verlopen, ADAL.js maakt gebruik van deze sessie op de achtergrond verkrijgen van een ander token. ADAL.js maakt gebruik van een verborgen iFrame te verzenden en ontvangen van de aanvraag met behulp van de impliciete goedkeuring voor OAuth-protocol. ADAL.js kunt ook hetzelfde mechanisme gebruiken op de achtergrond toegangstokens verkrijgen voor andere web-API-resources die de toepassing wordt aangeroepen, zolang deze resources ondersteuning voor cross-origin resource sharing (CORS), zijn geregistreerd in de map van de gebruiker en eventuele vereiste toestemming is opgegeven door de gebruiker tijdens het aanmelden.
+Na een geslaagde verificatie schrijft Azure AD een cookie in de browser van de gebruiker om een sessie tot stand te brengen. Houd er rekening mee dat de sessie bestaat tussen de gebruiker en Azure AD (niet tussen de gebruiker en de webtoepassing). Wanneer een token verloopt, gebruikt ADAL. js deze sessie om een melding te krijgen van een ander token. ADAL. js gebruikt een verborgen iFrame om de aanvraag te verzenden en te ontvangen via het OAuth-granting-protocol. ADAL. js kan dit mechanisme ook gebruiken voor het op de achtergrond verkrijgen van toegangs tokens voor andere web-API-resources. de toepassing wordt aangeroepen zolang deze resources ondersteuning bieden voor het delen van meerdere Origin-resources (CORS), worden geregistreerd in de map van de gebruiker en de vereiste toestemming is gegeven door de gebruiker tijdens het aanmelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [toepassingstypen en scenario's](app-types.md)
-* Meer informatie over de Azure AD [de basisbeginselen van verificatie](authentication-scenarios.md)
+* Meer informatie over andere [toepassings typen en scenario's](app-types.md)
+* Meer informatie over de [basis beginselen](v1-authentication-scenarios.md) van Azure AD-verificatie

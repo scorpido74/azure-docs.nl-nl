@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 7fdb46ac7cffc4eb6a791304c7a6b58378806296
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679891"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374263"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Problemen met virtuele Windows 7-machines in Windows Virtual Desktop oplossen
 
@@ -30,7 +30,7 @@ Virtueel bureau blad van Windows kan alleen volledige Bureau bladen voor Windows
 
 Automatische DPI-schaling wordt niet ondersteund. u kunt de resolutie op uw virtuele machine hand matig wijzigen door met de rechter muisknop op het pictogram in de Extern bureaublad-client te klikken en **oplossing**te selecteren.
 
-## <a name="error-cant-access-the-remote-desktop-user-group"></a>Fout: Geen toegang tot de Extern bureaublad gebruikers groep
+## <a name="error-cant-access-the-remote-desktop-user-group"></a>Fout: geen toegang tot de Extern bureaublad gebruikers groep
 
 Als Windows virtueel bureau blad u of de referenties van uw gebruikers in de Extern bureaublad gebruikers groep niet kan vinden, ziet u mogelijk een van de volgende fout berichten:
 
@@ -45,5 +45,5 @@ U kunt deze fout oplossen door de gebruiker toe te voegen aan de Extern bureaubl
 4. Voer de volgende opdracht uit met `<username>`, vervangen door de naam van de gebruiker die u wilt toevoegen:
    
    ```cmd
-   localgroup "Remote Desktop Users" <username> /add
+   net localgroup "Remote Desktop Users" <username> /add
    ```

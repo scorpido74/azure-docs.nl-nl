@@ -1,6 +1,6 @@
 ---
-title: Onboarding updatebeheer, wijzigingen bijhouden en inventaris oplossingen van een Azure-VM
-description: Informatie over hoe om te onboarden een Azure-machine met updatebeheer, wijzigingen bijhouden en inventaris oplossingen die deel uitmaken van Azure Automation.
+title: Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een Azure-VM onboarden
+description: Leer hoe u een virtuele machine van Azure kunt vrijgeven met Updatebeheer-, Wijzigingen bijhouden-en inventaris oplossingen die deel uitmaken van Azure Automation.
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6b8693768e08f7ed80765015efa5af1a73b850c7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0069d2e8ccd3b4f65ced8b6e18ce568689f81e14
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476605"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374407"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Onboarding updatebeheer, wijzigingen bijhouden en inventaris oplossingen van een virtuele machine van Azure
+# <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Updatebeheer, Wijzigingen bijhouden en inventarisatie oplossingen van een virtuele machine in azure onboarden
 
-Azure Automation biedt oplossingen om u te helpen beveiligingsupdates beheren, het bijhouden van wijzigingen en inventaris wat op uw computers geïnstalleerd. Er zijn meerdere manieren om Onboarding van machines. U kunt Onboarding van de oplossing van een virtuele machine, [via uw Automation-account](automation-onboard-solutions-from-automation-account.md), [van meerdere machines Bladeren](automation-onboard-solutions-from-browse.md), of met behulp van een [runbook](automation-onboard-solutions.md). In dit artikel bevat informatie over onboarding via een virtuele machine van Azure.
+Azure Automation biedt oplossingen om u te helpen bij het beheren van beveiligings updates van het besturings systeem, het bijhouden van wijzigingen en de inventarisatie wat op uw computers is geïnstalleerd. Er zijn meerdere manieren om computers vrij te maken. U kunt de oplossing van een virtuele machine opheffen, van [uw Automation-account](automation-onboard-solutions-from-automation-account.md), [van het surfen op meerdere machines](automation-onboard-solutions-from-browse.md)of met behulp van een [runbook](automation-onboard-solutions.md). In dit artikel vindt u informatie over het onboarden van deze oplossingen van een virtuele machine van Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -26,91 +26,98 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>De oplossingen inschakelen
 
-Ga naar een bestaande virtuele machine. Onder **OPERATIONS**, selecteer **updatebeheer**, **voorraad**, of **wijzigingen bijhouden**. De virtuele machine kan bestaan in andere regio's, ongeacht de locatie van uw Automation-Account. Wanneer onboarding van een oplossing van een virtuele machine die u wilt dat de `Microsoft.OperationalInsights/workspaces/read` machtiging om te bepalen of de virtuele machine toegevoegd aan een werkruimte. Zie voor meer informatie over aanvullende machtigingen die nodig zijn in het algemeen, [machtigingen die nodig zijn voor Onboarding van machines](automation-role-based-access-control.md#onboarding).
+Ga naar een bestaande virtuele machine. Selecteer onder **bewerkingen** **Update beheer**, **inventaris**of het bijhouden van **wijzigingen**. De virtuele machine kan in elke regio bestaan, ongeacht de locatie van uw Automation-account. Wanneer u een oplossing van een virtuele machine onboardt, moet u de `Microsoft.OperationalInsights/workspaces/read`-machtiging hebben om te bepalen of de virtuele machine onboarded is voor een werk ruimte. Zie voor meer informatie over extra machtigingen die in het algemeen nodig zijn de [machtigingen die nodig zijn voor het onboarden van computers](automation-role-based-access-control.md#onboarding).
 
-Zorg ervoor dat zodat de oplossing voor de virtuele machine alleen **inschakelen voor deze virtuele machine** is geselecteerd. Onboarding meerdere virtuele machines aan de oplossing selecteert **inschakelen voor virtuele machines in dit abonnement**, en selecteer vervolgens **Selecteer machines om in te schakelen**. Voor meer informatie over hoe onboarding meerdere virtuele machines in één keer, Zie [onboarding updatebeheer, wijzigingen bijhouden en inventaris oplossingen](automation-onboard-solutions-from-automation-account.md).
+Als u de oplossing alleen voor de virtuele machine wilt inschakelen, moet u ervoor zorgen dat **inschakelen voor deze VM** is geselecteerd. Als u meerdere computers wilt voorbereiden op de oplossing, selecteert u **inschakelen voor vm's in dit abonnement**en selecteert u vervolgens **klikken om machines te selecteren die u wilt inschakelen**. Zie [Onboarding updatebeheer, wijzigingen bijhouden en Inventory Solutions](automation-onboard-solutions-from-automation-account.md)voor meer informatie over het voorbereiden van meerdere computers tegelijk.
 
-Selecteer de Azure Log Analytics-werkruimte en het Automation-account en selecteer vervolgens **inschakelen** de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
+Selecteer de Azure Log Analytics-werk ruimte en het Automation-account en selecteer vervolgens **inschakelen** om de oplossing in te scha kelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
-![Onboard de oplossing Update Management](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Onboarding van de Updatebeheer oplossing](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-Ga naar de andere oplossingen, en selecteer vervolgens **inschakelen**. De Log Analytics-werkruimte en het Automation-account vervolgkeuzelijsten zijn uitgeschakeld omdat deze oplossingen gebruikt u de dezelfde werkruimte en het Automation-account als de eerder ingeschakelde oplossing.
+Ga naar de andere oplossingen en selecteer **inschakelen**. De vervolg keuzelijsten Log Analytics werk ruimte en Automation-account zijn uitgeschakeld omdat deze oplossingen gebruikmaken van dezelfde werk ruimte en hetzelfde Automation-account als de eerder ingeschakelde oplossing.
 
 > [!NOTE]
-> **Bijhouden van wijzigingen** en **voorraad** dezelfde oplossing gebruiken. Wanneer een van deze oplossingen is ingeschakeld, wordt ook de andere ingeschakeld.
+> **Wijzigingen bijhouden** en **inventaris** gebruiken dezelfde oplossing. Wanneer een van deze oplossingen is ingeschakeld, is de andere ook ingeschakeld.
 
-## <a name="scope-configuration"></a>Scopeconfiguratie
+## <a name="scope-configuration"></a>Scope configuratie
 
-Elke oplossing maakt gebruik van de configuratie van een bereik in de werkruimte om u te richten op de computers die aan de oplossing. De scopeconfiguratie is een groep van een of meer opgeslagen zoekopdrachten die worden gebruikt voor het bereik van de oplossing op specifieke computers beperken. Toegang krijgen tot de bereik-configuraties, in uw Automation-account onder **gerelateerde RESOURCES**, selecteer **werkruimte**. In de werkruimte onder **GEGEVENSBRONNEN voor WERKRUIMTE**, selecteer **Scopeconfiguraties**.
+Elke oplossing maakt gebruik van een scope configuratie in de werk ruimte om te richten op de computers die de oplossing ophalen. De scope configuratie is een groep van een of meer opgeslagen Zoek opdrachten die wordt gebruikt om het bereik van de oplossing te beperken tot specifieke computers. Voor toegang tot de scope configuraties, in uw Automation-account, onder **gerelateerde resources**, selecteert u **werk ruimte**. Selecteer in de werk ruimte onder **gegevens bronnen voor werk ruimte** **Scope configuraties**.
 
-Als de geselecteerde werkruimte niet al de oplossingen voor beheer van updates of wijzigingen bijhouden, worden de volgende scopeconfiguraties gemaakt:
+Als de geselecteerde werk ruimte nog niet beschikt over de Updatebeheer-of Wijzigingen bijhouden oplossingen, worden de volgende Scope configuraties gemaakt:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig-change tracking**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig-updates**
 
-Als de geselecteerde werkruimte is al de oplossing, de oplossing niet is geïmplementeerd en configuratie van het bereik is niet toegevoegd.
+Als de geselecteerde werk ruimte al de oplossing heeft, wordt de oplossing niet opnieuw geïmplementeerd en wordt de scope configuratie niet toegevoegd.
 
-Selecteer het beletselteken ( **...** ) op een van de configuraties en selecteer vervolgens **bewerken**. In de **scopeconfiguratie bewerken** venster **computergroepen selecteren**. De **computergroepen** deelvenster ziet u de opgeslagen zoekopdrachten die worden gebruikt voor het maken van de configuratie van het bereik.
+Selecteer de weglatings tekens ( **...** ) op een van de configuraties en selecteer vervolgens **bewerken**. Selecteer in het deel venster **Scope configuratie bewerken** de optie **computer groepen selecteren**. In het deel venster **computer groepen** worden de opgeslagen Zoek opdrachten weer gegeven die worden gebruikt voor het maken van de scope configuratie.
 
-## <a name="saved-searches"></a>Opgeslagen zoekopdrachten
+## <a name="saved-searches"></a>Opgeslagen Zoek opdrachten
 
-Wanneer een computer wordt toegevoegd aan het updatebeheer, wijzigingen bijhouden of inventaris oplossingen, wordt de computer toegevoegd aan een van twee opgeslagen zoekopdrachten in uw werkruimte. De opgeslagen zoekopdrachten zijn query's die de computers die zijn gericht op deze oplossingen bevatten.
+Wanneer een computer wordt toegevoegd aan de Updatebeheer, Wijzigingen bijhouden of inventaris oplossingen, wordt de computer toegevoegd aan een van twee opgeslagen Zoek opdrachten in uw werk ruimte. De opgeslagen Zoek opdrachten zijn query's die de computers bevatten waarop deze oplossingen zijn gericht.
 
-Ga naar uw werkruimte. Onder **algemene**, selecteer **opgeslagen zoekopdrachten**. De twee opgeslagen zoekopdrachten die worden gebruikt door deze oplossingen worden weergegeven in de volgende tabel:
+Ga naar uw werkruimte. Onder **Algemeen**selecteert u **opgeslagen Zoek opdrachten**. De twee opgeslagen Zoek opdrachten die door deze oplossingen worden gebruikt, worden in de volgende tabel weer gegeven:
 
-|Name     |Category  |Alias  |
+|Naam     |Category  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Voor wijzigingen bijhouden       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 
-Selecteer een van de opgeslagen zoekopdrachten om de query die wordt gebruikt voor het vullen van de groep weer te geven. De volgende afbeelding ziet u de query en de resultaten:
+Selecteer een van de opgeslagen Zoek opdrachten om de query weer te geven die wordt gebruikt om de groep in te vullen. In de volgende afbeelding ziet u de query en de resultaten:
 
-![Opgeslagen zoekopdrachten](media/automation-onboard-solutions-from-vm/logsearch.png)
+![Opgeslagen Zoek opdrachten](media/automation-onboard-solutions-from-vm/logsearch.png)
 
-## <a name="unlink-workspace"></a>Werkruimte ontkoppelen
+## <a name="unlink-workspace"></a>Werk ruimte ontkoppelen
 
-De volgende oplossingen zijn afhankelijk van een Log Analytics-werkruimte:
+De volgende oplossingen zijn afhankelijk van een Log Analytics-werk ruimte:
 
 * [Updatebeheer](automation-update-management.md)
 * [Tracering wijzigen](automation-change-tracking.md)
-* [VM's starten/stoppen buiten kantooruren](automation-solution-vm-management.md)
+* [VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management.md)
 
-Als u besluit dat u niet meer wilt integreren van uw Automation-account met een Log Analytics-werkruimte, kunt u uw account rechtstreeks vanuit de Azure portal kunt ontkoppelen.  Voordat u doorgaat, moet u eerst te verwijderen van de oplossingen die eerder vermeld, anders wordt dit proces zal worden voorkomen dat u doorgaat. Lees het artikel voor de desbetreffende oplossing die u hebt geïmporteerd voor meer informatie over de stappen die nodig zijn om deze te verwijderen.
+Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen.  Voordat u doorgaat, moet u eerst de eerder genoemde oplossingen verwijderen, anders kan dit proces niet worden voortgezet. Raadpleeg het artikel voor de specifieke oplossing die u hebt geïmporteerd om inzicht te krijgen in de stappen die nodig zijn om deze te verwijderen.
 
-Nadat u deze oplossingen hebt verwijderd, kunt u de volgende stappen uit als u wilt loskoppelen van uw Automation-account kunt uitvoeren.
+Nadat u deze oplossingen hebt verwijderd, kunt u de volgende stappen uitvoeren om het Automation-account te ontkoppelen.
 
 > [!NOTE]
-> Sommige oplossingen met inbegrip van eerdere versies van de Azure SQL-oplossing voor controle mogelijk gemaakt automatiseringsactiva en moet mogelijk ook worden verwijderd voordat het ontkoppelen van de werkruimte.
+> Sommige oplossingen, waaronder eerdere versies van de Azure SQL-bewakings oplossing, hebben mogelijk Automation-assets gemaakt en moeten mogelijk ook worden verwijderd voordat u de werk ruimte ontkoppelt.
 
-1. Open uw Automation-account vanuit Azure portal, en op de Automation-account selecteren pagina **gekoppelde werkruimte** onder de sectie **gerelateerde Resources** aan de linkerkant.
+1. Open uw Automation-account vanuit het Azure Portal en selecteer op de pagina Automation-account de optie **gekoppelde werk ruimte** onder de sectie **Verwante resources** aan de linkerkant.
 
-2. Klik op de pagina van de werkruimte ontkoppelen **werkruimte ontkoppelen**.
+2. Klik op de pagina werk ruimte ontkoppelen op **werk ruimte ontkoppelen**.
 
-   ![Pagina voor werkruimte ontkoppelen](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+   ![Pagina werk ruimte ontkoppelen](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    U ontvangt een prompt waarin u wordt gevraagd of u wilt doorgaan.
 
-3. Terwijl Azure Automation probeert te ontkoppelen van het account uw Log Analytics-werkruimte, u kunt de voortgang volgen onder **meldingen** in het menu.
+3. Terwijl Azure Automation probeert het account te ontkoppelen van uw Log Analytics-werk ruimte, kunt u de voortgang bijhouden onder **meldingen** in het menu.
 
-Als u de oplossing Update Management gebruikt, kunt indien gewenst u verwijderen van de volgende items die niet meer nodig zijn nadat u de oplossing te verwijderen.
+Als u de oplossing Updatebeheer hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 
-* Plant u update - elk hebben namen die overeenkomen met de update-implementaties die u hebt gemaakt)
+* Update schema's: elk heeft een naam die overeenkomt met de update-implementaties die u hebt gemaakt.
 
-* Hybrid worker-groepen gemaakt voor de oplossing - elke naam op dezelfde manier naar machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Als u de VM's starten/stoppen buiten kantooruren oplossing gebruikt, kunt indien gewenst u verwijderen van de volgende items die niet meer nodig zijn nadat u de oplossing te verwijderen.
+Als u de oplossing VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 
-* Starten en stoppen van VM runbook schema 's
+* VM-runbook-schema's starten en stoppen
 * VM-runbooks starten en stoppen
 * Variabelen
 
-U kunt ook ook uw werkruimte ontkoppelen van uw Automation-Account van uw Log Analytics-werkruimte. Selecteer in de werkruimte **Automation-Account** onder **gerelateerde Resources**. Selecteer op de pagina Automation-Account **-account loskoppelen**.
+U kunt ook uw werk ruimte ontkoppelen van uw Automation-account vanuit uw Log Analytics-werk ruimte. Selecteer in uw werk ruimte **Automation-account** onder **gerelateerde resources**. Selecteer op de pagina Automation-account de optie **account loskoppelen**.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Een virtuele machine verwijderen uit Updatebeheer:
+
+* Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen zoek opdracht voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates`. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
+* Verwijder [micro soft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [log Analytics-agent voor Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verder met de zelfstudies voor de oplossingen voor meer informatie over het gebruik ervan:
+Ga verder met de zelf studies voor de oplossingen voor meer informatie over het gebruik ervan:
 
-* [Zelfstudie - updates voor uw virtuele machine beheren](automation-tutorial-update-management.md)
-* [Zelfstudie - software op een virtuele machine identificeren](automation-tutorial-installed-software.md)
-* [Zelfstudie: problemen met wijzigingen op een virtuele machine oplossen](automation-tutorial-troubleshoot-changes.md)
+* [Zelf studie-updates voor uw virtuele machine beheren](automation-tutorial-update-management.md)
+* [Zelf studie-software op een virtuele machine identificeren](automation-tutorial-installed-software.md)
+* [Zelf studie: problemen met wijzigingen in een virtuele machine oplossen](automation-tutorial-troubleshoot-changes.md)

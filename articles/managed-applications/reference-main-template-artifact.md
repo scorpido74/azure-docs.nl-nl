@@ -1,20 +1,20 @@
 ---
 title: Referentie voor Azure Managed Application Deployment-sjabloon artefact
-description: Dit artikel bevat een verwijzing naar het implementatie sjabloon artefact.
+description: Hier vindt u een voor beeld van de implementatie sjabloon artefact voor Azure Managed Applications.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336489"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330173"
 ---
-# <a name="reference-deployment-template-artifact"></a>Referentie: Artefact van implementatie sjabloon
+# <a name="reference-deployment-template-artifact"></a>Verwijzing: implementatie sjabloon artefact
 
 Dit artikel bevat een verwijzing naar een *mainTemplate. json* -artefact in azure Managed Applications. Zie [Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over het ontwerpen van een implementatie sjabloon.
 
@@ -191,6 +191,6 @@ In de volgende JSON ziet u een voor beeld van het bestand *mainTemplate. json* v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
-- [Referentielaag Artefact van elementen van gebruikers interface](reference-createuidefinition-artifact.md)
-- [Referentielaag Definitie artefact weer geven](reference-view-definition-artifact.md)
+- [Zelf studie: een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
+- [Verwijzing: elementen artefact van gebruikers interface](reference-createuidefinition-artifact.md)
+- [Verwijzing: definitie-artefact weer geven](reference-view-definition-artifact.md)

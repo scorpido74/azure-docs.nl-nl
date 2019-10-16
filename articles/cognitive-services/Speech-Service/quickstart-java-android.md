@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Speech, java (Android)-spraak service herkennen'
+title: 'Snelstartgids: herkenning van spraak, java (Android)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: Leer gesproken tekst herkennen in Java onder Android met behulp van de Speech SDK
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71803317"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Quickstart: Gesproken tekst herkennen in Java onder Android met behulp van de Speech-SDK
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Snelstartgids: Gesproken tekst herkennen in Java onder Android met behulp van de Speech SDK
 
 Quick starts zijn ook beschikbaar voor de [spraak-synthese](quickstart-text-to-speech-java-android.md) en de [eerste virtuele assistent](quickstart-virtual-assistant-java-android.md).
 

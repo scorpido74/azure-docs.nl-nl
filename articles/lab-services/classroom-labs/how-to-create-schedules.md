@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385596"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330593"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Planningen voor het maken en beheren van klassikale Labs in Azure Lab Services 
 Met planningen kunt u een leslokaal Lab zodanig configureren dat de virtuele machines in het lab automatisch worden gestart en op een opgegeven tijdstip worden afgesloten. U kunt een eenmalig schema of een terugkerende planning definiëren. De volgende procedures geven u stappen voor het maken en beheren van planningen voor een klas Lab: 
@@ -26,61 +26,52 @@ Met planningen kunt u een leslokaal Lab zodanig configureren dat de virtuele mac
 > [!IMPORTANT]
 > De geplande uitvoerings tijd van Vm's telt niet op het [quotum dat aan een gebruiker is toegewezen](how-to-configure-student-usage.md#set-quotas-for-users). Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt. 
 
-## <a name="add-a-schedule-once"></a>Een planning toevoegen (eenmaal)
+## <a name="set-a-schedule-for-the-lab"></a>Een planning voor het lab instellen
+Maak een geplande gebeurtenis voor het Lab zodat Vm's in het lab automatisch worden gestart/gestopt op specifieke tijdstippen. Het gebruikers quotum dat u eerder hebt opgegeven, is de extra tijd die wordt toegewezen aan elke gebruiker buiten dit geplande tijdstip. 
 
-1. Ga naar de pagina **schema's** en selecteer **planning toevoegen** op de werk balk. 
-
-    ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/add-schedule-button.png)
-2. Op de pagina **schema toevoegen** controleert u of de optie **eenmaal** is geselecteerd bovenaan. Als dat niet het geval is, selecteert u **eenmaal**. 
-3. Voer voor **plannings datum (vereist)** de datum in of selecteer het kalender pictogram om een datum te selecteren. 
-4. Selecteer bij **begin tijd**het tijdstip waarop u wilt dat de vm's worden gestart. De begin tijd is vereist als de eind tijd niet is ingesteld. Selecteer **begin gebeurtenis verwijderen** als u alleen de eind tijd wilt opgeven. Als de **begin tijd** is uitgeschakeld, selecteert u **Start gebeurtenis toevoegen** naast de vervolg keuzelijst om deze optie in te scha kelen. 
-5. Selecteer bij **eind tijd**het tijdstip waarop u wilt dat de virtuele machines worden afgesloten. De stop tijd is vereist als de begin tijd niet is ingesteld. Selecteer **Stop gebeurtenis verwijderen** als u alleen de begin tijd wilt opgeven. Als de **Stop tijd** is uitgeschakeld, selecteert u **Stop gebeurtenis toevoegen** naast de vervolg keuzelijst om deze optie in te scha kelen.
-6. Selecteer voor **tijd zone (vereist)** de tijd zone voor de start-en stop tijden die u hebt opgegeven. 
-7. Voor **notities**voert u een beschrijving of notities in voor de planning. 
-8. Selecteer **Opslaan**. 
-
-    ![Eenmalige-schema](../media/how-to-create-schedules/add-schedule-page.png)
-
-## <a name="add-a-recurring-schedule-weekly"></a>Een terugkerend schema toevoegen (wekelijks)
-
-1. Ga naar de pagina **schema's** en selecteer **planning toevoegen** op de werk balk. 
+1. Ga naar de pagina **schema's** en selecteer een **geplande gebeurtenis toevoegen** op de werk balk. 
 
     ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/add-schedule-button.png)
-2. Schakel op de pagina **schema toevoegen** de optie **wekelijks** aan de bovenkant in. 
-3. Selecteer voor **plannings dagen (vereist)** de dagen waarop de planning van kracht moet worden. In het volgende voor beeld wordt maandag t/m vrijdag geselecteerd. 
-4. Voer in het veld van de **Start datum** **van** de planning in of kies een datum door de knop **kalender** te selecteren. Dit veld is vereist. 
-5. Voor de **eind datum**van de planning voert u een eind datum in waarop de vm's moeten worden afgesloten. 
-6. Selecteer bij **begin tijd**het tijdstip waarop u wilt dat de vm's worden gestart. De begin tijd is vereist als de eind tijd niet is ingesteld. Selecteer **begin gebeurtenis verwijderen** als u alleen de eind tijd wilt opgeven. Als de **begin tijd** is uitgeschakeld, selecteert u **Start gebeurtenis toevoegen** naast de vervolg keuzelijst om deze optie in te scha kelen. 
-7. Selecteer bij **eind tijd**het tijdstip waarop u wilt dat de virtuele machines worden afgesloten. De stop tijd is vereist als de begin tijd niet is ingesteld. Selecteer **Stop gebeurtenis verwijderen** als u alleen de begin tijd wilt opgeven. Als de **Stop tijd** is uitgeschakeld, selecteert u **Stop gebeurtenis toevoegen** naast de vervolg keuzelijst om deze optie in te scha kelen.
-8. Selecteer voor **tijd zone (vereist)** de tijd zone voor de start-en stop tijden die u hebt opgegeven.  
-9. Voor **notities**voert u een beschrijving of notities in voor de planning. 
-10. Selecteer **Opslaan**. 
+2. Bevestig dat de **standaard** is geselecteerd het **gebeurtenis type**. U selecteert **alleen starten** om alleen de begin tijd voor de virtuele machines op te geven. U selecteert **alleen stoppen** om alleen de eind tijd voor de virtuele machines op te geven. 
+7. Selecteer in de sectie **herhalen** het huidige schema. 
+
+    ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/select-current-schedule.png)
+5. In het dialoog venster **herhalen** voert u de volgende stappen uit:
+    1. Bevestig dat **elke week** is ingesteld voor het veld **repeat** . 
+    3. De **begin datum**opgeven.
+    4. Geef de **begin tijd** op waarop u de vm's wilt starten.
+    5. Geef de **eind tijd** op waarop de vm's moeten worden afgesloten. 
+    6. Geef de **tijd zone** op voor de start-en stop tijden die u hebt opgegeven. 
+    2. Selecteer de dagen waarop u de planning wilt laten ingaan. In het volgende voor beeld is maandag-donderdag geselecteerd. 
+    8. Selecteer **Opslaan**. 
+
+        ![Herhalings schema instellen](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. Voer nu op de pagina **geplande gebeurtenis toevoegen** voor **notities (optioneel)** een beschrijving of notities in voor de planning. 
+4. Selecteer op de pagina **geplande gebeurtenis toevoegen** de optie **Opslaan**. 
 
     ![Wekelijks schema](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="view-schedules-in-calendar"></a>Schema's in de agenda weer geven
 U ziet dat de geplande datums en tijden zijn gemarkeerd in de weer gave kalender, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Schema's in de agenda weergave](../media/how-to-create-schedules/schedules-in-calendar.png)
+![Schema's in de agenda weergave](../media/how-to-create-schedules/schedules-calendar.png)
 
 Selecteer de knop **vandaag** in de rechter bovenhoek om over te scha kelen naar de huidige datum in de agenda. Selecteer **pijl-links** om over te scha kelen naar de vorige week en de **pijl-rechts** om over te scha kelen naar de volgende week in de agenda. 
 
 ## <a name="edit-a-schedule"></a>Een planning bewerken
-Wanneer u op een gemarkeerde planning in de agenda dubbelklikt of de knop **Potlood** op de werk balk selecteert, ziet u de pagina **schema bewerken** . Het bijwerken van instellingen op deze pagina is hetzelfde als het bijwerken van de instellingen op de pagina **schema toevoegen** zoals beschreven in de sectie [een terugkerende planning toevoegen](#add-a-recurring-schedule-weekly) . 
+Wanneer u een gemarkeerde planning in de agenda selecteert, ziet u knoppen om de planning te **bewerken** of te **verwijderen** . 
 
-![Schema pagina bewerken](../media/how-to-create-schedules/edit-schedule-page.png)
+![Schema pagina bewerken](../media/how-to-create-schedules/schedule-edit-button.png)
+
+Op de pagina **geplande gebeurtenis bewerken** kunt u het schema bijwerken en vervolgens **Opslaan**selecteren. 
 
 ## <a name="delete-a-schedule"></a>Een schema verwijderen
 
-1. Als u een planning wilt verwijderen, selecteert u de knop prullenbak kan (verwijderen) op de werk balk, zoals wordt weer gegeven in de volgende afbeelding:
+1. Als u een planning wilt verwijderen, selecteert u een gemarkeerde planning in de agenda en selecteert u de knop met het prullenbak pictogram (verwijderen):
 
-    ![Knop verwijderen op de werk balk](../media/how-to-create-schedules/delete-schedule-button.png)
-
-    U kunt de knop verwijderen gebruiken voor een van de geplande datums en tijden in de kalender en selecteer **verwijderen**. 
-2. Selecteer op de pagina **planningen verwijderen** de optie **Ja**.
-
-    ![De bevestiging schema verwijderen](../media/how-to-create-schedules/delete-schedules-confirmation.png)
-
+    ![Knop verwijderen op de werk balk](../media/how-to-create-schedules/schedule-delete-button.png)
+2. Selecteer **Ja** in het dialoog venster **geplande gebeurtenis verwijderen** om de verwijdering te bevestigen. 
 
 
 

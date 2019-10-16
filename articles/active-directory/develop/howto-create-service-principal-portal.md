@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295517"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324725"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -62,7 +62,7 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 
 1. Klik op **Toegangsbeheer (IAM)** .
 1. Selecteer **roltoewijzing toevoegen**.
-1. Selecteer de rol die u aan de toepassing wilt toewijzen. Selecteer de rol **Inzender** om de toepassing toe te staan acties uit te voeren zoals **opnieuw opstarten**, het **starten** en **stoppen** van exemplaren. Azure AD-toepassingen worden standaard niet weer gegeven in de beschik bare opties. Zoek de naam en selecteer deze om uw toepassing te vinden.
+1. Selecteer de rol die u aan de toepassing wilt toewijzen. Als u bijvoorbeeld wilt toestaan dat de toepassing acties uitvoert zoals **opnieuw opstarten**, exemplaren **starten** en **stoppen** , selecteert u de rol **Inzender** .  Meer informatie over de [beschik bare rollen](../../role-based-access-control/built-in-roles.md) : Azure AD-toepassingen worden standaard niet weer gegeven in de beschik bare opties. Zoek de naam en selecteer deze om uw toepassing te vinden.
 
    ![Selecteer de rol die u aan de toepassing wilt toewijzen](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Daemon-toepassingen kunnen twee soorten referenties gebruiken om te verifiëren 
 
 ### <a name="upload-a-certificate"></a>Een certificaat uploaden
 
-U kunt een bestaand certificaat gebruiken als u er een hebt.  Desgewenst kunt u een zelfondertekend certificaat maken voor test doeleinden. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de gebruiker op uw computer: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Exporteer dit certificaat met behulp van de MMC-module [gebruikers certificaat beheren](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) die toegankelijk is via het configuratie scherm van Windows.
+U kunt een bestaand certificaat gebruiken als u er een hebt.  Desgewenst kunt u een zelfondertekend certificaat maken voor test doeleinden. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de gebruiker op uw computer: 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Dit certificaat exporteren naar een bestand met behulp van de MMC-module [gebruikers certificaat beheren](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) , toegankelijk via het configuratie scherm van Windows.
 
 Het certificaat uploaden:
 
@@ -114,6 +120,14 @@ Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings g
 
    ![Kopieer de geheime waarde omdat u deze later niet kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>Toegangs beleid voor resources configureren
+Houd er rekening mee dat u extra machtigingen moet configureren voor bronnen waartoe uw toepassing toegang moet hebben. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
+
+1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.  
+1. Selecteer **toegangs beleid toevoegen**en selecteer vervolgens de sleutel, het geheim en de certificaat machtigingen die u uw toepassing wilt verlenen.  Selecteer de service-principal die u eerder hebt gemaakt.
+1. Selecteer **toevoegen** om het toegangs beleid toe te voegen en **Sla** vervolgens op om uw wijzigingen door te voeren.
+    ![Add-toegangs beleid @ no__t-1
+
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
 U moet over voldoende machtigingen beschikken om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing toe te wijzen aan een rol in uw Azure-abonnement.
@@ -125,7 +139,7 @@ U moet over voldoende machtigingen beschikken om een toepassing te registreren b
 
    ![Zoek uw rol. Als u een gebruiker bent, moet u ervoor zorgen dat niet-beheerders apps kunnen registreren](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. **Gebruikers instellingen**selecteren.
+1. Selecteer **gebruikers instellingen**in het linkerdeel venster.
 1. Controleer de instelling **app-registraties** . Deze waarde kan alleen worden ingesteld door een beheerder. Als deze instelling is ingesteld op **Ja**, kan elke gebruiker in de Azure AD-Tenant een app registreren.
 
 Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebruikers met een rol beheerder deze typen toepassingen registreren. Bekijk de [beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [rolmachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschik bare beheerders rollen en de specifieke machtigingen in azure AD die aan elke rol worden gegeven. Als uw account is toegewezen aan de gebruikersrol, maar de instelling van de app-registratie is beperkt tot gebruikers met beheerders rechten, vraagt u uw beheerder om u toe te wijzen aan een van de beheerders rollen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen om apps registreren.

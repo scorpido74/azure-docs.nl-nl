@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70812686"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
@@ -65,7 +65,7 @@ Op basis van dit bereik filter moeten gebruikers voldoen aan de volgende criteri
 Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen voor elke Azure AD-gebruikers inrichtings connector. In de volgende procedure wordt ervan uitgegaan dat u al automatisch inrichten hebt ingesteld voor [een van de ondersteunde toepassingen](../saas-apps/tutorial-list.md) en hoe u er een filter voor een bereik aan toevoegt.
 
 ### <a name="create-a-scoping-filter"></a>Een bereik filter maken
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise Applications** > **all applications** '.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise Applications** > -**alle toepassingen** .
 
 2. Selecteer de toepassing waarvoor u automatische inrichting hebt geconfigureerd: bijvoorbeeld ' ServiceNow '.
 
@@ -79,21 +79,21 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 
 7. Definieer een-component door een bron **kenmerk naam**, een **operator**en een **kenmerk waarde** op te geven die moet overeenkomen. De volgende Opera tors worden ondersteund:
 
-   a. **IS GELIJK AAN**. -Component retourneert ' True ' als het geëvalueerde kenmerk precies overeenkomt met de waarde van de invoer teken reeks (hoofdletter gevoelig).
+   a. **Is gelijk aan**. -Component retourneert ' True ' als het geëvalueerde kenmerk precies overeenkomt met de waarde van de invoer teken reeks (hoofdletter gevoelig).
 
-   b. **NIET GELIJK AAN**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met de invoer teken reeks waarde (hoofdletter gevoelig).
+   b. **niet gelijk aan**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met de invoer teken reeks waarde (hoofdletter gevoelig).
 
-   c. **IS WAAR**. -Component retourneert ' True ' als het geëvalueerde kenmerk een Booleaanse waarde True bevat.
+   c. **is waar**. -Component retourneert ' True ' als het geëvalueerde kenmerk een Booleaanse waarde True bevat.
 
-   d. **IS ONWAAR**. -Component retourneert ' True ' als het geëvalueerde kenmerk een Booleaanse waarde heeft van ONWAAR.
+   d. **is onwaar**. -Component retourneert ' True ' als het geëvalueerde kenmerk een Booleaanse waarde heeft van ONWAAR.
 
-   e. **IS NULL**. -Component retourneert ' True ' als het geëvalueerde kenmerk leeg is.
+   e. **is null**. -Component retourneert ' True ' als het geëvalueerde kenmerk leeg is.
 
-   f. **IS NIET NULL**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet leeg is.
+   f. **is niet null**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet leeg is.
 
-   g. **REGEX MATCH**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
+   g. **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
 
-   h. **GEEN REGEX-OVEREENKOMST**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met een reguliere-expressie patroon.
+   h. **geen regex-overeenkomst**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met een reguliere-expressie patroon.
 
 8. Selecteer **nieuwe scope-component toevoegen**.
 

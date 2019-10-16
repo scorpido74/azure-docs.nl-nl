@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 895ce98f290ce23580bb70023e2539ab4272f8b8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350262"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376333"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Ondersteuningsmatrix voor het repliceren van Azure-VM's van de ene naar de andere regio
 
-In dit artikel vindt u een overzicht van de ondersteuning en vereisten bij het instellen van herstel na nood gevallen van virtuele Azure-machines van een Azure-regio naar een andere, met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
+In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor herstel na nood gevallen van Azure-Vm's van de ene Azure-regio naar de andere, met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
 
 ## <a name="deployment-method-support"></a>Ondersteuning voor implementatie methoden
@@ -32,7 +32,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten bij het i
 ## <a name="resource-support"></a>Resource-ondersteuning
 
 **Resource actie** | **Details**
---- | --- | ---
+--- | --- 
 **Kluizen verplaatsen tussen resource groepen** | Niet ondersteund
 **Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Wordt niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
 **Virtuele Azure-machines van het ene naar het andere abonnement repliceren voor herstel na nood gevallen** | Ondersteund binnen dezelfde Azure Active Directory Tenant.
@@ -57,22 +57,22 @@ Beperkte regio's die zijn gereserveerd voor in-the-Country nood herstel |Duitsla
 
 >[!NOTE]
 >
-> - U kunt voor **Brazilië-Zuid**repliceren en een failover uitvoeren naar deze regio's: Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oost 2, VS-West, VS-West 2 en Noord-Centraal vs.
-> - Brazilië-zuid kan alleen worden gebruikt als bron regio op basis waarvan Vm's kunnen worden gerepliceerd met behulp van Site Recovery. Het kan niet als doel regio fungeren. Dit komt door latentie problemen als gevolg van geografische afstanden.
+> - U kunt voor **Brazilië-Zuid**repliceren en een failover uitvoeren naar deze regio's: Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oosten 2, VS-West, VS-West 2 en Noord-Centraal vs.
+> - Brazilië-zuid kan alleen worden gebruikt als bron regio op basis waarvan Vm's kunnen worden gerepliceerd met behulp van Site Recovery. Het kan niet als doel regio fungeren. Dit komt door latentie problemen als gevolg van geografische afstanden. Houd er rekening mee dat als u een failover van Brazilië-zuid als bron regio naar een doel, de failback-Brazilië-zuid vanuit de doel regio wordt ondersteund.
 > - U kunt binnen regio's werken waarvoor u de juiste toegang hebt.
 > - Als de regio waarin u een kluis wilt maken, niet wordt weer gegeven, controleert u of uw abonnement toegang heeft tot het maken van resources in die regio.
 > - Als u geen regio binnen een geografisch cluster ziet wanneer u replicatie inschakelt, moet u ervoor zorgen dat uw abonnement beschikt over machtigingen voor het maken van Vm's in die regio.
 
 
 
-## <a name="cache-storage"></a>Cacheopslag
+## <a name="cache-storage"></a>Cache opslag
 
 Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account dat wordt gebruikt door Site Recovery tijdens de replicatie.
 
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 V2-opslag accounts voor algemeen gebruik (warme en koele laag) | Ondersteund | Het gebruik van GPv2 wordt niet aanbevolen omdat de transactie kosten voor v2 beduidend hoger zijn dan v1 opslag accounts.
-Premium Storage | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
+Premium-opslag | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
 Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Als u gebruikmaakt van het cache-opslag account of het doel opslag account van de firewall, moet u [vertrouwde micro soft-Services toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
@@ -84,30 +84,31 @@ Site Recovery ondersteunt replicatie van virtuele Azure-machines met de besturin
 
 **Besturingssysteem** | **Details**
 --- | ---
-Windows Server 2019 | Server Core, server met bureaublad ervaring
-Windows Server 2016  | Server Core, server met bureaublad ervaring
-Windows Server 2012 R2 |
-Windows Server 2012 |
-Windows Server 2008 R2 | SP1 of hoger uitvoeren
-Windows 10 (x64) |
-Windows 8,1 (x64) |
-Windows 8 (x64) |
-Windows 7 (x64) | SP1 of hoger uitvoeren (Windows 7 RTM wordt niet ondersteund)
+Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervaring.
+Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
+Windows Server 2012 R2 | Ondersteund.
+Windows Server 2012 | Ondersteund.
+Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 met SP2 | Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows 10 (x64) | Ondersteund.
+Windows 8,1 (x64) | Ondersteund.
+Windows 8 (x64) | Ondersteund.
+Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 
 #### <a name="linux"></a>Linux
 
 **Besturingssysteem** | **Details**
 --- | ---
-Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
-CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6  
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6
 Ubuntu 14,04 LTS-server | [Ondersteunde kernel-versies](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu-servers die gebruikmaken van verificatie op basis van wacht woorden en aanmelden en het pakket Cloud-init om Cloud-Vm's te configureren, hebben mogelijk een op wacht woord gebaseerde aanmelding uitgeschakeld bij failover (afhankelijk van de cloudinit-configuratie). Aanmelden op basis van wacht woorden kan opnieuw worden ingeschakeld op de virtuele machine door het wacht woord opnieuw in te stellen in het menu > ondersteuning voor het oplossen van problemen met de >-instellingen (van de VM waarvoor een failover is uitgevoerd in de Azure Portal.
 Debian 7 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 11 | SP3<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
+SUSE Linux Enterprise Server 11 | Pack<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6<br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5) 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Ubuntu-kernel-versies voor virtuele Azure-machines
@@ -147,18 +148,18 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11: st
 
 * Bestands systemen: ext3, ext4, ReiserFS (SuSE Linux Enter prise server), XFS, BTRFS
 * Volume manager: LVM2
-* Multipath-software: Toewijzing van apparaten
+* Multipath-software: toewijzing van apparaten
 
 
 ## <a name="replicated-machines---compute-settings"></a>Gerepliceerde machines-Compute Settings
 
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
-Size | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/windows/sizes.md).
+Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/windows/sizes.md).
 Beschikbaarheidssets | Ondersteund | Als u replicatie inschakelt voor een virtuele machine van Azure met de standaard opties, wordt er automatisch een beschikbaarheidsset gemaakt, op basis van de instellingen van de bron regio. U kunt deze instellingen wijzigen.
 Beschikbaarheidszones | Ondersteund |
 Voor deel voor hybride gebruik (HUB) | Ondersteund | Als op de bron-VM een HUB-licentie is ingeschakeld, gebruikt een testfailover of een failover van de VM ook de HUB-licentie.
-Virtuele-machineschaalsets | Niet ondersteund |
+Schaalsets van virtuele machines | Niet ondersteund |
 Installatie kopieën van Azure galerie-micro soft gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Azure Gallery-installatie kopieën-derde partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
@@ -243,7 +244,7 @@ Interne Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer ko
 Openbaar IP-adres | Ondersteund | Een bestaand openbaar IP-adres koppelen aan de NIC. U kunt ook een openbaar IP-adres maken en dit koppelen aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op NIC | Ondersteund | Koppel de NSG aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op subnet | Ondersteund | Koppel de NSG aan het subnet met behulp van een Azure Automation script in een herstel plan.
-Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en een subnet opgeven in de**instellingen** > voor de **gerepliceerde items** > COMPUTE-**en netwerk** > **netwerk interfaces**.
+Gereserveerd (statisch) IP-adres | Ondersteund | Als de NIC op de bron-VM een statisch IP-adres heeft en het doel-subnet hetzelfde IP-adres beschikbaar heeft, wordt het toegewezen aan de virtuele machine waarvoor een failover is uitgevoerd.<br/><br/> Als het doel-subnet niet hetzelfde IP-adres beschikbaar heeft, is een van de beschik bare IP-adressen in het subnet gereserveerd voor de virtuele machine.<br/><br/> U kunt ook een vast IP-adres en subnet opgeven in **gerepliceerde items** > **instellingen** > **Compute en netwerk** > **netwerk interfaces**.
 Dynamisch IP-adres | Ondersteund | Als de NIC op de bron dynamische IP-adres Sering heeft, is de NIC op de virtuele machine waarvoor een failover is uitgevoerd, standaard ook dynamisch.<br/><br/> U kunt dit zo nodig wijzigen in een vast IP-adres.
 Meerdere IP-adressen | Niet ondersteund | Wanneer u een failover van een virtuele machine met meerdere IP-adressen hebt uitgevoerd, wordt alleen het primaire IP-adres van de NIC in de bron regio bewaard. Als u meerdere IP-adressen wilt toewijzen, kunt u virtuele machines toevoegen aan een [herstel plan](recovery-plan-overview.md) en een script koppelen om extra IP-adressen toe te wijzen aan het plan, of u kunt de wijziging hand matig of met een script uitvoeren na een failover. 
 Traffic Manager     | Ondersteund | U kunt Traffic Manager vooraf configureren zodat verkeer regel matig wordt gerouteerd naar het eind punt in de bron regio, en naar het eind punt in de doel regio in het geval van een failover.
@@ -254,7 +255,7 @@ Geverifieerde proxy | Niet ondersteund | Als de virtuele machine gebruikmaakt va
 VPN site-naar-site-verbinding met on-premises<br/><br/>(met of zonder ExpressRoute)| Ondersteund | Zorg ervoor dat de Udr's en Nsg's zodanig zijn geconfigureerd dat de Site Recovery verkeer niet naar on-premises wordt gerouteerd. [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)    
 VNET-naar-VNET-verbinding | Ondersteund | [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)  
 Service-eindpunten voor virtueel netwerk | Ondersteund | Als u de toegang tot het virtuele netwerk beperkt tot opslag accounts, moet u ervoor zorgen dat de vertrouwde micro soft-Services toegang krijgen tot het opslag account.
-Versnelde netwerken | Ondersteund | Versnelde netwerken moeten zijn ingeschakeld op de bron-VM. [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Versneld netwerken | Ondersteund | Versnelde netwerken moeten zijn ingeschakeld op de bron-VM. [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 

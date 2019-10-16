@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: e50d88181a27dcc46da858f220404eb09ad9b4bd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308974"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376385"
 ---
 # <a name="indexers-in-azure-search"></a>Indexeerfuncties in Azure Search
 
@@ -30,8 +30,8 @@ U kunt op aanvraag Indexeer functies of een periodiek schema voor gegevens verni
 U kunt op de volgende manieren indexeerfuncties maken en beheren:
 
 * [Wizard Portal-> gegevens importeren](search-import-data-portal.md)
-* [Service REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 Een nieuwe indexeerfunctie wordt in eerste instantie aangekondigd als preview-functie. Preview-functies worden geïntroduceerd in API's (REST en .NET) en vervolgens geïntegreerd in de portal nadat ze geleidelijk algemeen beschikbaar zijn gesteld. Als u een nieuwe indexeerfunctie evalueert, moet u er rekening mee houden dat u code moet schrijven.
 
@@ -45,26 +45,28 @@ Voor alle bewerkingen met betrekking tot Indexeer functies, waaronder GET-aanvra
 
 Indexeer functies verkennen gegevens archieven in Azure.
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [SQL Server op virtuele machines in Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [SQL Managed instances op Azure](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Basisconfiguratiestappen
 Indexeerfuncties kunnen functies bieden die uniek voor de gegevensbron zijn. In dit opzicht variëren bepaalde aspecten van de configuratie van de indexeerfunctie of de gegevensbron al naar gelang het type indexeerfunctie. Alle indexeerfuncties hebben echter dezelfde basissamenstelling en voor alle indexeerfuncties gelden dezelfde vereisten. Hieronder vindt u de stappen die voor alle indexeerfuncties gemeenschappelijk zijn.
 
-### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
+### <a name="step-1-create-a-data-source"></a>Stap 1: een gegevensbron maken
 Met een Indexeer functie wordt een gegevens bron verbinding opgehaald van een *gegevens bron* object. De definitie van de gegevens bron biedt een connection string en mogelijk referenties. Roep de [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) -rest API of- [klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) op om de resource te maken.
 
 Gegevensbronnen worden geconfigureerd en onafhankelijk van de indexeerfuncties beheerd die gebruikmaken van de gegevensbronnen. Dit betekent dat een gegevensbron door meerdere indexeerfuncties kan worden gebruikt om tegelijkertijd meer dan één index te laden.
 
-### <a name="step-2-create-an-index"></a>Stap 2: Een index maken
+### <a name="step-2-create-an-index"></a>Stap 2: een index maken
 Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname van gegevens, maar het maken van een index behoort hier niet toe. Een vereiste is dat u een vooraf gedefinieerde index moet hebben met velden die overeenkomen met de velden in uw externe gegevensbron. Velden moeten overeenkomen met de naam en het gegevens type. Zie [Create a index (Azure Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) of [index class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)(Engelstalig) voor meer informatie over het structureren van een index. Zie [Veldtoewijzingen in Azure Search-indexeerfuncties](search-indexer-field-mappings.md) voor hulp bij veldkoppelingen.
 
 > [!Tip]
 > Hoewel indexeerfuncties een index niet voor u kunnen genereren, kan de wizard **Gegevens importeren** in de portal helpen. In de meeste gevallen kan de wizard een indexschema afleiden uit bestaande metagegevens in de bron, met een voorlopig indexschema dat u kunt bewerken terwijl de wizard actief is. Als de index eenmaal is aangemaakt op de service, blijven verdere bewerkingen in de portal meestal beperkt tot het toevoegen van nieuwe velden. Overweeg de wizard voor het maken, maar niet voor het herzien van een index. Doorloop het [Portaloverzicht](search-get-started-portal.md) om aan de slag te gaan.
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: De Indexeer functie maken en plannen
+### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: de indexeerfunctie maken en plannen
 De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Een indexeerfunctie maken (Azure Search REST API)) voor meer informatie over het structureren van een indexeerfunctie.
 
 <a id="RunIndexer"></a>

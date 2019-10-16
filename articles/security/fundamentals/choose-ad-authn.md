@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "69997818"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing 
@@ -37,7 +37,7 @@ Identiteit is het nieuwe beheer vlak van IT-beveiliging. Verificatie is dus de t
 ### <a name="out-of-scope"></a>Buiten bereik
 Organisaties die geen bestaande on-premises Directory-footprint hebben, zijn niet de focus van dit artikel. Normaal gesp roken maken deze bedrijven alleen identiteiten in de Cloud, waarvoor geen hybride identiteits oplossing nodig is. Alleen Cloud-identiteiten bestaan uitsluitend in de Cloud en zijn niet gekoppeld aan de bijbehorende on-premises identiteiten.
 
-## <a name="authentication-methods"></a>Verificatiemethoden
+## <a name="authentication-methods"></a>Authenticatiemethoden
 Wanneer de hybride identiteits oplossing van Azure AD uw nieuwe besturings vlak is, is verificatie de basis van Cloud toegang. Het kiezen van de juiste verificatie methode is een cruciaal eerste beslissing bij het instellen van een Azure AD hybride identiteits oplossing. Implementeer de verificatie methode die is geconfigureerd met behulp van Azure AD Connect, waarmee ook gebruikers in de cloud worden ingericht.
 
 Als u een verificatie methode wilt kiezen, moet u rekening houden met de tijd, de bestaande infra structuur, de complexiteit en de kosten van de implementatie van uw keuze. Deze factoren zijn voor elke organisatie verschillend en kunnen in de loop van de tijd veranderen. 
@@ -67,9 +67,6 @@ In het volgende gedeelte kunt u bepalen welke verificatie methode het meest gesc
 
 ## <a name="decision-tree"></a>Beslissingsstructuur
 
-> [!NOTE]
-> PTA werkt alleen met een alternatieve ID wanneer UserPrincipalName als alternatieve ID is gekozen. Alleen dan wordt de on-premises UserPrincipalName gesynchroniseerd van AD naar AAD. Zie [Pass Through-verificatie ondersteunen "alternatieve id" als gebruikers naam in plaats van "userPrincipalName"](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)voor meer informatie.
-
 ![Beslissings structuur voor Azure AD-verificatie](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 Details over beslissings vragen:
@@ -89,7 +86,7 @@ Details over beslissings vragen:
 
 ## <a name="detailed-considerations"></a>Gedetailleerde overwegingen
 
-### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authenticatie: Wachtwoord-hashsynchronisatie
+### <a name="cloud-authentication-password-hash-synchronization"></a>Cloud authenticatie: wacht woord-hash-synchronisatie
 
 * **Moeite**. Voor de synchronisatie van wacht woord-hashes is de minimale inspanning vereist voor de implementatie, het onderhoud en de infra structuur.  Dit inspannings niveau is doorgaans van toepassing op organisaties die alleen hun gebruikers moeten aanmelden bij Office 365, SaaS-apps en andere resources op basis van Azure AD. Wanneer deze functie is ingeschakeld, wordt de synchronisatie van wacht woord-hashes onderdeel van het Azure AD Connect synchronisatie proces en wordt elke twee minuten uitgevoerd.
 
@@ -111,7 +108,7 @@ Details over beslissings vragen:
 
 Raadpleeg de implementatie van [wacht woord-hash synchronisatie](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) voor implementaties tappen.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authenticatie: Pass-through-verificatie  
+### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authenticatie: Pass Through-verificatie  
 
 * **Moeite**. Voor Pass-Through-verificatie hebt u een of meer nodig (drie) lichte agents die zijn geïnstalleerd op bestaande servers. Deze agents moeten toegang hebben tot uw on-premises Active Directory Domain Services, met inbegrip van uw on-premises AD-domein controllers. Ze hebben uitgaande toegang tot internet nodig en toegang tot uw domein controllers. Daarom wordt het niet ondersteund voor het implementeren van de agents in een perimeter netwerk. 
 
@@ -159,7 +156,7 @@ Raadpleeg [Federatie servers implementeren](https://docs.microsoft.com/windows-s
 > [!NOTE] 
 > Wanneer u uw Azure AD hybride identiteits oplossing implementeert, moet u een van de ondersteunde topologieën van Azure AD Connect implementeren. Meer informatie over ondersteunde en niet-ondersteunde configuraties in [topologieën voor Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
 
-## <a name="architecture-diagrams"></a>Architectuurdiagrammen
+## <a name="architecture-diagrams"></a>Architectuur diagrammen
 
 In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen op hoog niveau die zijn vereist voor elke verificatie methode die u kunt gebruiken met uw Azure AD hybride identiteits oplossing. Ze bieden een overzicht waarmee u de verschillen tussen de oplossingen kunt vergelijken.
 
@@ -187,8 +184,8 @@ In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen o
 |Krijgen gebruikers eenmalige aanmelding voor cloud resources van apparaten die lid zijn van een domein in het bedrijfs netwerk?|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja, met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)|Ja|
 |Welke typen aanmelding worden ondersteund?|UserPrincipalName + wacht woord<br><br>Geïntegreerde Windows-verificatie met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + wacht woord<br><br>Geïntegreerde Windows-verificatie met [naadloze SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatieve aanmeldings-ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + wacht woord<br><br>sAMAccountName + wacht woord<br><br>Geïntegreerde Windows-verificatie<br><br>[Verificatie van certificaten en Smart Cards](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatieve aanmeldings-ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Wordt Windows hello voor bedrijven ondersteund?|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Vereist een Windows Server 2016-domein functionaliteits niveau*|[Sleutel vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Certificaat vertrouwens model](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|Wat zijn de opties voor multi-factor Authentication?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA van derden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|
-|Welke status van gebruikers accounts worden ondersteund?|Uitgeschakelde accounts<br>(Maxi maal 30 minuten)|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wachtwoord is verlopen<br><br>Aanmeldings tijden|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wachtwoord is verlopen<br><br>Aanmeldings tijden|
+|Wat zijn de opties voor multi-factor Authentication?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA van derden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|
+|Welke status van gebruikers accounts worden ondersteund?|Uitgeschakelde accounts<br>(Maxi maal 30 minuten)|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|
 |Wat zijn de opties voor voorwaardelijke toegang?|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim regels](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |Worden verouderde protocollen geblokkeerd?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Kunt u het logo, de afbeelding en de beschrijving aanpassen op de aanmeldings pagina's?|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|

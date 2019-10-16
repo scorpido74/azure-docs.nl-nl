@@ -1,21 +1,21 @@
 ---
-title: Leden beheren in een Azure Block Chain Service consortium met behulp van Azure PowerShell
+title: Azure Block Chain-service leden beheren met Azure PowerShell
 description: Meer informatie over het beheren van Azure Block Chain Service consortium-leden met behulp van Azure PowerShell.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 3e149a4a8e5ce7c82f0c9bf951bf9625763b30af
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285998"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329185"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Consortium leden beheren in de Azure Block Chain-service met behulp van Power shell
 

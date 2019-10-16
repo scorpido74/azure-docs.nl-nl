@@ -13,38 +13,27 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 992bc7acbb02dcdbc33d00349ddc7ae821f3ed01
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264421"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329460"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u de kosten voor Application Insights begrijpt en beheert.  Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
 
-Als u vragen hebt over de werking van prijzen voor Application Insights, kunt u een vraag stellen op ons [forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights).
+Application Insights is ontworpen om alles wat u nodig hebt om de beschik baarheid, prestaties en het gebruik van uw webtoepassingen te bewaken, of ze nu worden gehost op Azure of on-premises. Application Insights ondersteunt populaire talen en frameworks, zoals .NET, Java en node. js, en kan worden geïntegreerd met DevOps-processen en-hulpprogram ma's zoals Azure DevOps, Jira en PagerDuty. Het is belang rijk om te begrijpen wat de kosten bepalen van het controleren van uw toepassingen. In dit artikel worden de kosten van uw toepassing gecontroleerd en wordt uitgelegd hoe u deze kunt proactief bewaken en beheren.
+
+Als u vragen hebt over de werking van prijzen voor Application Insights, kunt u een vraag stellen op ons [forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-De prijzen voor [Azure-toepassing Insights][start] is een model voor betalen naar gebruik, op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. 
+De prijzen voor [Azure-toepassing Insights][start] is een model voor **betalen naar gebruik** op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Elke Application Insights resource wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. Gegevens volume wordt gemeten als de grootte van het niet-gecomprimeerde JSON-gegevens pakket dat door Application Insights van uw toepassing wordt ontvangen. Er worden geen gegevens volumes in rekening gebracht voor het gebruik van de [Live Metrics stream](../../azure-monitor/app/live-stream.md).
 
-### <a name="data-volume-details"></a>Details van gegevens volume
-
-* Gegevens volume is het aantal ontvangen telemetrie-bytes door Application Insights. Gegevens volume wordt gemeten als de grootte van het niet-gecomprimeerde JSON-gegevens pakket dat door Application Insights van uw toepassing wordt ontvangen. Voor [tabellaire gegevens die naar Analytics worden geïmporteerd](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), wordt gegevens volume gemeten als de niet-gecomprimeerde grootte van bestanden die naar Application Insights worden verzonden.
-* De kosten voor gegevens volumes van uw toepassing worden nu gerapporteerd op een nieuwe facturerings meter met de naam **gegevens opname** vanaf april 2018. Deze nieuwe meter wordt gedeeld door bewakings technologieën zoals toepassingen Insights en Log Analytics en is momenteel beschikbaar onder de service naam **log Analytics**. 
-* [Live Metrics stream](../../azure-monitor/app/live-stream.md) gegevens worden niet geteld voor prijs doeleinden.
-
-> [!NOTE]
-> Alle prijzen die in de scherm afbeeldingen in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. Zie [Application Insights prijzen][pricing]voor actuele prijzen in uw valuta en regio.
-
-### <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
-
-Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren.
-
-Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
+Voor [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md) worden extra kosten in rekening gebracht. Webtests met meerdere stappen zijn webtests die een reeks acties uitvoeren. Er worden geen afzonderlijke kosten in rekening gebracht voor *ping-tests* van één pagina. Telemetrie van ping-tests en tests met meerdere stappen wordt in rekening gebracht op hetzelfde als andere telemetrie van uw app.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>De kosten voor het beheren van uw toepassing schatten 
 
@@ -64,7 +53,7 @@ Als u in de Azure monitoring-prijs calculator voor Application Insights de funct
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Inzicht in uw gebruik en geschatte kosten
 
-Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Ga naar de pagina **gebruik en geschatte kosten** in het Azure Portal om aan de slag te gaan voor de Application Insights resource:
+Application Insights maakt het eenvoudig om te begrijpen wat uw kosten waarschijnlijk zijn op basis van recente gebruiks patronen. Ga naar de pagina **gebruik en geschatte kosten** in het Azure Portal om aan de slag te gaan voor de Application Insights resource: 
 
 ![Prijzen kiezen](./media/pricing/pricing-001.png)
 
@@ -73,6 +62,8 @@ B. Er worden afzonderlijke kosten in rekening gebracht voor [webtests met meerde
 C. Bekijk trends in gegevens volumes voor de afgelopen maand.  
 D. [Steek proeven](../../azure-monitor/app/sampling.md)voor gegevens opname inschakelen.   
 E. Stel de dagelijkse gegevens volume limiet in.  
+
+(Alle prijzen die in de scherm afbeeldingen in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. Zie [Application Insights prijzen][pricing]voor actuele prijzen in uw valuta en regio.)
 
 Als u uw Application Insights-gebruik dieper wilt onderzoeken, opent u de pagina **metrische** gegevens, voegt u de metriek toe met de naam ' data Point volume ' en selecteert u vervolgens de optie *splitsing Toep assen* om de gegevens te splitsen op het type telemetrie-item. 
 
@@ -183,7 +174,7 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook via [Power shell worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via ARM en moet worden gebruikt met extreme zorg. 
+De retentie kan ook via [Power shell worden ingesteld](https://docs.microsoft.com/azure/azure-monitor/app/powershell#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. 
 
 Wanneer het factureren voor een langere Bewaar 2019 periode begint, worden de gegevens die langer zijn dan 90 dagen, gefactureerd als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 

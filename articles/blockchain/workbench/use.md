@@ -1,25 +1,25 @@
 ---
-title: Toepassingen in azure Block Chain Workbench preview gebruiken
+title: Toepassingen gebruiken in Azure Blockchain Workbench
 description: Zelf studie over het gebruik van toepassings contracten in azure Block Chain Workbench preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845137"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328957"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Zelfstudie: Toepassingen gebruiken in Azure Blockchain Workbench
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Zelf studie: toepassingen in azure Block Chain Workbench gebruiken
 
-U kunt Blockchain Workbench gebruiken om contracten te maken en acties op contracten uit te voeren. Daarnaast kunt gegevens van contracten bekijken, zoals de status en transactiegeschiedenis.
+U kunt Blockchain Workbench gebruiken voor het maken van contracten en het ondernemen van acties op contracten. Daarnaast kunt gegevens van contracten bekijken, zoals de status en transactiegeschiedenis.
 
 U leert het volgende:
 
@@ -62,16 +62,16 @@ Als u een nieuw contract wilt maken, moet u een lid zijn dat is opgegeven als ee
 
 Afhankelijk van de status van het contract, kunnen leden actie ondernemen om naar de volgende status van het contract te gaan. Acties zijn gedefinieerd als [overgangen](configuration.md#transitions) binnen een [status](configuration.md#states). Leden die horen bij een toegestane toepassing of exemplaarrol voor de overgang kunnen de actie uitvoeren. 
 
-1. In de sectie van de Blockchain Workbench-toepassing, selecteer de toepassingstegel met de opdracht om de actie te ondernemen.
+1. Selecteer in de sectie Blockchain Workbench-toepassing de toepassingstegel met het contract waarop u actie wilt ondernemen.
 2. Selecteer het contract in de lijst. U ziet in verschillende secties gegevens van het contract. 
 
     ![Contractgegevens](./media/use/contract-details.png)
 
-    | Section  | Description  |
+    | Sectie  | Beschrijving  |
     |---------|---------|
     | Status | Een overzicht van de huidige voortgang binnen de fasen van het contract |
     | Details | De huidige waarden van het contract |
-    | Action | Gegevens van de laatste actie |
+    | Bewerking | Gegevens van de laatste actie |
     | Activiteit | Transactiegeschiedenis van het contract |
     
 3. Selecteer **Actie ondernemen** in de sectie **Actie**.

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129126"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330852"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
@@ -34,17 +34,17 @@ Er kunnen om verschillende redenen geen gegevens in de [Azure time series Insigh
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Oorzaak van een: gebeurtenis bron gegevens bevindt zich niet in JSON-indeling
 
-Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
+Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie [ondersteunde JSON-shapes](./how-to-shape-query-json.md)voor json-voor beelden.
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: er ontbreekt een vereiste machtiging voor de bron sleutel van de gebeurtenis
 
 * Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Een van de **iothubowner** -of **service** beleidsregels werkt, omdat beide machtigingen voor **service verbinding** hebben.
 
-   [![Verbindings machtigingen voor IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [verbindings machtigingen voor ![IoT hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Voor een Event Hub in azure Event Hubs moet u de sleutel met de machtiging **Luis teren** opgeven. Een van de beleids regels voor **lezen** of **beheren** werkt, omdat deze beide over **Luister** machtigingen beschikken.
 
-   [![Event hub-Luister machtigingen](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [1Event-Luister machtigingen voor de hub @no__t](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Oorzaak C: de verleende consumenten groep is niet exclusief Time Series Insights
 
@@ -69,7 +69,7 @@ De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capacitei
 
 In de volgende afbeelding ziet u een Time Series Insights omgeving met een SKU van S1 en een capaciteit van 3. Het kan 3.000.000 gebeurtenissen per dag inkomen.
 
-[![Huidige capaciteit van de SKU van de omgeving](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![Environment SKU huidige capaciteit](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Als voor beeld wordt ervan uitgegaan dat een omgeving berichten van een Event Hub opneemt. Het dagelijkse ingangs tempo is ~ 67.000 berichten. Dit aantal wordt elke minuut op ongeveer 46 berichten omgezet. 
 
@@ -109,12 +109,12 @@ De eerste kolomkop moet de naam van de eigenschap time stamp zijn. Naast het **t
 
 De volgende waarden mogen niet worden weer geven:
 
-- *(abc)* : Geeft aan dat Time Series Insights de gegevens waarden leest als teken reeksen.
-- *Kalender pictogram*: Geeft aan dat de gegevens waarde door Time Series Insights gelezen als *datum/tijd*.
-- *#* : Geeft aan dat Time Series Insights de gegevens waarden leest als een geheel getal.
+- *(ABC)* : geeft aan dat Time Series Insights de gegevens waarden leest als teken reeksen.
+- *Kalender pictogram*: geeft aan dat Time Series Insights de gegevens waarde als *datum/tijd*leest.
+- *#* : geeft aan dat de gegevens waarden worden gelezen time series Insights als een geheel getal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Start een gesprek in het [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)voor hulp.
+- Meer informatie over [het oplossen van latentie in azure time series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Gebruik [Azure-ondersteuning](https://azure.microsoft.com/support/options/)voor ondersteunings opties.
+- Meer informatie [over het schalen van uw time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).

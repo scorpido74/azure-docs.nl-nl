@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e790728cbc7415532754d10773d466e9a0280422
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834667"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373908"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Overzicht van Azure Active Directory voor ontwikkel aars (v 1.0)
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) is een identiteitsservice in de cloud waarmee 
 
 | | |
 | --- | --- |
-|[De basisbeginselen van verificatie](authentication-scenarios.md) | Een inleiding tot verificatie met Azure AD. |
+|[De basisbeginselen van verificatie](v1-authentication-scenarios.md) | Een inleiding tot verificatie met Azure AD. |
 |[Soorten toepassingen](app-types.md) | Een overzicht van de verificatiescenario's die worden ondersteund door Azure AD. |
 | | |
 

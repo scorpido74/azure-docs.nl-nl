@@ -1,5 +1,5 @@
 ---
-title: Updates en patches voor uw Windows Azure-VM's beheren
+title: Updates en patches voor uw virtuele Azure-machines beheren
 description: Dit artikel biedt een overzicht van het gebruik van Azure Automation - Updatebeheer om updates en patches te beheren voor Windows Azure-VM's.
 services: automation
 author: zjalexander
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306066"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376081"
 ---
-# <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-updates beheren met behulp van Azure Automation
+# <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw virtuele Azure-machines beheren
 
 Met de oplossing voor updatebeheer kunt u updates en patches beheren voor virtuele machines. In deze zelfstudie leert u hoe u snel de status van beschikbare updates beoordeelt, de installatie van vereiste updates plant, de implementatieresultaten bekijkt en een waarschuwing maakt om te controleren of de updates juist zijn toegepast.
 
@@ -25,7 +25,7 @@ Zie [Automation-prijzen voor updatebeheer](https://azure.microsoft.com/pricing/d
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Onboarding voor Updatebeheer uitvoeren voor een VM 
+> * Onboarding voor Updatebeheer uitvoeren voor een VM
 > * Een update-evaluatie bekijken
 > * Waarschuwingen configureren
 > * Een update-implementatie plannen
@@ -92,12 +92,12 @@ Het Automation-account is al als resource geselecteerd. Als u het wilt wijzigen,
 
 Klik op **Voorwaarde toevoegen** om het signaal te selecteren dat geschikt is voor de update-implementatie. In de volgende tabel vindt u de details van de twee beschikbare signalen voor update-implementaties:
 
-|Signaalnaam|Dimensies|Description|
+|Signaalnaam|Dimensies|Beschrijving|
 |---|---|---|
 |**Totaal aantal uitvoeringen van update-implementaties**|- Naam van update-implementatie</br>- Status|Dit signaal wordt gebruikt om een waarschuwing af te geven over de algemene status van een update-implementatie.|
-|**Totaal aantal machine-uitvoeringen van update-implementaties**|- Naam van update-implementatie</br>- Status</br>- Doelcomputer</br>- Uitvoerings-id van update-implementatie|Dit signaal wordt gebruikt om een waarschuwing af te geven over de status van een update-implementatie die voor bepaalde computers is bedoeld|
+|**Totaal aantal machine-uitvoeringen van update-implementaties**|- Naam van update-implementatie</br>- Status</br>- Doelcomputer</br>-Run-ID van update-implementatie|Dit signaal wordt gebruikt om een waarschuwing af te geven over de status van een update-implementatie die voor bepaalde computers is bedoeld|
 
-Selecteer voor de dimensiewaarden een geldige waarde in de lijst. Als de gezochte waarde niet in de lijst voorkomt, klikt u op het **\+**-teken naast de dimensie en typt u de aangepaste naam. Vervolgens kunt u de waarde selecteren die u zoekt. Als u alle waarden van een dimensie wilt selecteren, klikt u op de knop **Selecteren\***. Als u geen waarde voor een dimensie kiest, wordt de dimensie tijdens de evaluatie genegeerd.
+Selecteer voor de dimensiewaarden een geldige waarde in de lijst. Als de gezochte waarde niet in de lijst voorkomt, klikt u op het **\+** -teken naast de dimensie en typt u de aangepaste naam. Vervolgens kunt u de waarde selecteren die u zoekt. Als u alle waarden van een dimensie wilt selecteren, klikt u op de knop **Selecteren\*** . Als u geen waarde voor een dimensie kiest, wordt de dimensie tijdens de evaluatie genegeerd.
 
 ![Signaallogica configureren](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -105,7 +105,7 @@ Voer onder **Waarschuwingslogica** voor **Drempelwaarde** in: **1**. Wanneer u k
 
 ### <a name="alert-details"></a>Meldingsdetails
 
-Selecteer bij **2. Waarschuwingsdetails definiëren** een naam en beschrijving voor de waarschuwing. Stel **Ernst** in op **Ter informatie (ernst 2)** voor een geslaagde uitvoering of **Ter informatie (ernst 1)** voor een mislukte uitvoering.
+Onder **2. Definieer waarschuwings Details**, voer een naam en beschrijving in voor de waarschuwing. Stel **Ernst** in op **Ter informatie (ernst 2)** voor een geslaagde uitvoering of **Ter informatie (ernst 1)** voor een mislukte uitvoering.
 
 ![Signaallogica configureren](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -135,35 +135,50 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
 * **Besturingssysteem**: selecteer het besturingssysteem dat het doel is voor de update-implementatie.
 
-* **Groepen om bij te werken (preview)**: definieer een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. Zie [Dynamische groepen](automation-update-management.md#using-dynamic-groups) voor meer informatie
+* **Groepen om bij te werken (preview)** : definieer een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. Zie [Dynamische groepen](automation-update-management-groups.md) voor meer informatie
 
-* **Bij te werken computers**: selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
+* **Bij te werken computers**: selecteer een opgeslagen zoekopdracht, geïmporteerde groep of kies een computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
 
 * **Updateclassificatie**: selecteer de typen software die de update-implementatie moet opnemen in de implementatie. Voor deze zelfstudie laat u alle typen geselecteerd.
 
   De classificatietypen zijn:
 
-   |OS  |Type  |
+   |Besturingssysteem  |Type  |
    |---------|---------|
-   |Windows     | Essentiële updates</br>Beveiligingsupdates</br>Updatepakketten</br>Functiepakketten</br>Servicepacks</br>Definitie-updates</br>Hulpprogramma's</br>Updates        |
+   |Windows     | Essentiële updates</br>Beveiligingsupdates</br>Updatepakketten</br>Functiepakketten</br>Servicepacks</br>Definitie-updates</br>Tools</br>Updates        |
    |Linux     | Essentiële en beveiligingsupdates</br>Andere Updates       |
 
-   Raadpleeg [Updateclassificaties](automation-update-management.md#update-classifications) voor een beschrijving van de classificatietypen.
+   Raadpleeg [Updateclassificaties](automation-view-update-assessments.md#update-classifications) voor een beschrijving van de classificatietypen.
 
-* **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Werking van opname](automation-update-management.md#inclusion-behavior) voor meer informatie over hoe de opname wordt verwerkt
+* **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven.
 
-* **Planningsinstellingen**: Het deelvenster **Planningsinstellingen** wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
+> [!NOTE]
+> Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van `*` definieert, worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
+
+* **Planningsinstellingen**: het deelvenster **Planningsinstellingen** wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 
    U kunt ook opgeven dat de implementatie eenmaal moet worden uitgevoerd, of u kunt een planning met meerdere implementaties instellen. Selecteer onder **Terugkeerpatroon** de optie **Eenmaal**. Laat de standaardwaarde staan op 1 dag en selecteer **OK**. Hiermee stelt u een terugkerend schema in.
 
 * **Voorafgaande scripts en navolgende scripts**: selecteer de scripts die moeten worden uitgevoerd vóór en na de implementatie. Zie[Manage Pre and Post scripts](pre-post-scripts.md) (Voorafgaande en navolgende scripts beheren) voor meer informatie.
-* **Onderhoudsvenster (minuten)**: Laat de standaardwaarde staan. U kunt het tijdvenster instellen waarin de update-implementatie moet plaatsvinden. Met deze instelling zorgt u ervoor dat wijzigingen worden uitgevoerd binnen de gedefinieerde onderhoudsvensters.
 
-* **Opties voor opnieuw opstarten**: met deze instelling wordt bepaald hoe het opnieuw opstarten moet worden afgehandeld. De volgende opties zijn beschikbaar:
+* **Onderhoudsvenster (minuten)** : laat hier de standaardwaarde staan. Onderhouds Vensters bepalen de hoeveelheid tijd die is toegestaan voor het installeren van updates. Houd rekening met de volgende details wanneer u een onderhouds venster opgeeft.
+
+  * Onderhouds Vensters bepalen hoeveel updates worden geïnstalleerd.
+  * Updatebeheer stopt met het installeren van nieuwe updates als het einde van een onderhouds venster nadert.
+  * Met Updatebeheer worden lopende updates niet beëindigd als het onderhouds venster wordt overschreden.
+  * Als het onderhouds venster op Windows is overschreden, is het vaak een update van een service pack dat veel tijd kost om te installeren.
+
+  > [!NOTE]
+  > "Door de manier waarop de gegevens niet van essentieel belang zijn voor een taskTo, voor komen dat updates buiten een onderhouds venster op Ubuntu worden toegepast, moet u het pakket voor de upgrade zonder toezicht opnieuw configureren om automatische updates uit te scha kelen. Zie [Automatische updates onderwerp in de hand leiding voor de Ubuntu-Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)voor meer informatie over het configureren van het pakket.
+
+* **Opties voor opnieuw opstarten**: met deze instelling wordt bepaald hoe het opnieuw opstarten moet worden verwerkt. De volgende opties zijn beschikbaar:
   * Opnieuw opstarten indien nodig (standaard)
   * Altijd opnieuw opstarten
   * Nooit opnieuw opstarten
   * Alleen opnieuw opstarten - updates worden niet geïnstalleerd
+
+> [!NOTE]
+> De register sleutels onder [register sleutels die worden gebruikt voor het beheren van opnieuw opstarten](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kunnen een gebeurtenis voor opnieuw opstarten veroorzaken als **het besturings element voor opnieuw** opstarten is ingesteld op **nooit opnieuw opstarten**.
 
 Als u klaar bent met het configureren van de planning, selecteert u **Maken**.
 
@@ -172,7 +187,9 @@ Als u klaar bent met het configureren van de planning, selecteert u **Maken**.
 U keert nu terug naar het statusdashboard. Selecteer **Geplande update-implementaties** om de gemaakte implementatieplanning weer te geven.
 
 > [!NOTE]
-> Updatebeheer biedt ondersteuning voor het implementeren van eerste partij-updates en het vooraf downloaden van patches. Hiervoor is vereist dat wijzigingen in de systemen worden hersteld. Zie [ondersteuning voor eerste partijen en vooraf downloaden](automation-update-management.md#firstparty-predownload) voor informatie over het configureren van deze instellingen in uw systemen.
+> Updatebeheer biedt ondersteuning voor het implementeren van eerste partij-updates en het vooraf downloaden van patches. Hiervoor is vereist dat wijzigingen in de systemen worden hersteld. Zie [ondersteuning voor eerste partijen en vooraf downloaden](automation-configure-windows-update.md) voor informatie over het configureren van deze instellingen in uw systemen.
+
+**Update-implementaties** kunnen ook programmatisch worden gemaakt. Zie [Software-update configuraties-maken](/rest/api/automation/softwareupdateconfigurations/create)voor meer informatie over het maken van een **Update-implementatie** met behulp van de rest API. Er is ook een voor beeld van een runbook dat kan worden gebruikt voor het maken van een wekelijkse **Update-implementatie**. Zie [een wekelijkse update-implementatie maken voor een of meer virtuele machines in een resource groep](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)voor meer informatie over dit runbook.
 
 ## <a name="view-results-of-an-update-deployment"></a>Resultaten van een update-implementatie weergeven
 
@@ -187,8 +204,8 @@ Onder **Updateresultaten** ziet u een overzicht van het totale aantal updates en
 De volgende lijst toont de beschikbare waarden:
 
 * **Niet geprobeerd**: de update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van de opgegeven onderhoudsperiode.
-* **Geslaagd**: De update is bijgewerkt.
-* **Mislukt**: De update is mislukt.
+* **Geslaagd**: de update is voltooid.
+* **Mislukt**: de update is mislukt.
 
 Selecteer **Alle logboeken** als u alle logboekvermeldingen wilt zien die tijdens de implementatie zijn gemaakt.
 
@@ -202,10 +219,10 @@ Zodra de update-implementatie is voltooid, wordt er een e-mail verzonden die ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Onboarding voor Updatebeheer uitvoeren voor een VM 
+> * Onboarding voor Updatebeheer uitvoeren voor een VM
 > * Een update-evaluatie bekijken
 > * Waarschuwingen configureren
 > * Een update-implementatie plannen

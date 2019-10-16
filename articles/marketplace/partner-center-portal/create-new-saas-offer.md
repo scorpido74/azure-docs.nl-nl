@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244172"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376292"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -436,7 +436,7 @@ Selecteer de frequentie waarmee klanten de vermelde prijs moeten betalen. Er moe
 - **Prijs**: USD per maand of USD per jaar
 
 Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. U bent verantwoordelijk voor het valideren van deze prijzen en de eigenaar van deze instellingen.
-**u moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.*
+*\*You moeten uw prijs wijzigingen eerst opslaan om de export van prijs gegevens in te scha kelen.*
 
 Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd:
 

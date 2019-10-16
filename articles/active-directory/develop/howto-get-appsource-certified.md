@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835210"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374100"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource-certificering verkrijgen voor Azure Active Directory
 
@@ -33,15 +33,15 @@ Als u een zelfstandige SaaS-toepassing op AppSource wilt weer geven, moet uw toe
 
 ## <a name="guides-and-code-samples"></a>Hand leidingen en code voorbeelden
 
-Als u meer wilt weten over het integreren van uw toepassing met Azure AD met open ID Connect, volgt u onze hand leidingen en code voorbeelden in de [Azure Active Directory hand leiding voor ontwikkel aars]aan de(v1-overview.md#get-started "slag met Azure AD voor ontwikkel aars").
+Als u meer wilt weten over het integreren van uw toepassing met Azure AD met open ID Connect, volgt u onze hand leidingen en code voorbeelden in de [Azure Active Directory hand leiding voor ontwikkel aars](v1-overview.md#get-started "Aan de slag met Azure AD voor ontwikkel aars").
 
 ## <a name="multi-tenant-applications"></a>Multi tenant-toepassingen
 
 Een *toepassing met meerdere tenants* is een toepassing die aanmeldingen accepteert van gebruikers van elk bedrijf of organisatie die Azure AD hebben zonder dat hiervoor een afzonderlijk exemplaar, configuratie of implementatie is vereist. AppSource beveelt aan dat toepassingen een multitenancy implementeren om de gratis proef versie met *één klik* in te scha kelen.
 
 Voer de volgende stappen uit om multitenancy voor uw toepassing in te scha kelen:
-1. Stel `Multi-Tenanted` de`Yes` eigenschap in op de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)* .
-1. Werk uw code bij om aanvragen naar het `common` eind punt te verzenden. U doet dit door het eind punt bij `https://login.microsoftonline.com/{yourtenant}` te `https://login.microsoftonline.com/common*`werken van naar.
+1. Stel de eigenschap `Multi-Tenanted` in op `Yes` voor de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)* .
+1. Werk uw code bij om aanvragen naar het `common`-eind punt te verzenden. U doet dit door het eind punt bij te werken van `https://login.microsoftonline.com/{yourtenant}` naar `https://login.microsoftonline.com/common*`.
 1. Voor sommige platforms, zoals ASP .NET, moet u uw code ook bijwerken om meerdere verleners te accepteren.
 
 Zie voor meer informatie over multitenancy [een Azure Active Directory-gebruiker (Azure AD) aanmelden met het toepassings patroon voor meerdere tenants](howto-convert-app-to-be-multi-tenant.md).
@@ -113,20 +113,20 @@ Zie [deze video](https://aka.ms/trialexperienceforwebapps)voor meer informatie o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [verificatie scenario's voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)voor meer informatie over het bouwen van toepassingen die ondersteuning bieden voor Azure AD-aanmeldingen.
+- Zie [verificatie scenario's voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios)voor meer informatie over het bouwen van toepassingen die ondersteuning bieden voor Azure AD-aanmeldingen.
 - Ga voor meer informatie over het weer geven van uw SaaS-toepassing in AppSource naar [AppSource-partner gegevens](https://appsource.microsoft.com/partners)
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Voor Azure AD-integratie gebruiken we [stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) met de community om ondersteuning te bieden.
 
-Wij raden u ten zeerste aan om uw vragen over Stack Overflow eerst te stellen en door bestaande problemen te bladeren om te zien of iemand uw vraag eerder heeft gesteld. Zorg ervoor dat uw vragen of opmerkingen zijn gelabeld met [ `[azure-active-directory]` en `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Wij raden u ten zeerste aan om uw vragen over Stack Overflow eerst te stellen en door bestaande problemen te bladeren om te zien of iemand uw vraag eerder heeft gesteld. Zorg ervoor dat uw vragen of opmerkingen zijn gelabeld met [`[azure-active-directory]` en `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Gebruik de volgende opmerkingen sectie om feedback te geven en ons te helpen onze inhoud te verfijnen en te vormen.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

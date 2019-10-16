@@ -1,20 +1,20 @@
 ---
 title: Naslag informatie voor createUiDefinition-artefacten van Azure Managed Application
-description: Dit artikel is een verwijzing naar createUiDefinition-artefact.
+description: Laat zien hoe u het createUiDefinition-artefact maakt voor een door Azure beheerde toepassing. Het bestand heeft de naam createUiDefinition. json.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336476"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330184"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Referentie: Artefact van elementen van gebruikers interface
+# <a name="reference-user-interface-elements-artifact"></a>Verwijzing: elementen artefact van gebruikers interface
 
 Dit artikel bevat een verwijzing naar een *createUiDefinition. json* -artefact in azure Managed Applications. Zie elementen van de [gebruikers interface maken](create-uidefinition-elements.md)voor meer informatie over het ontwerpen van gebruikers interface-elementen.
 
@@ -83,6 +83,6 @@ In de volgende JSON ziet u een voor beeld van het bestand *createUiDefinition. j
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
-- [Referentielaag Artefact van implementatie sjabloon](reference-main-template-artifact.md)
-- [Referentielaag Definitie artefact weer geven](reference-view-definition-artifact.md)
+- [Zelf studie: een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
+- [Verwijzing: implementatie sjabloon artefact](reference-main-template-artifact.md)
+- [Verwijzing: definitie-artefact weer geven](reference-view-definition-artifact.md)

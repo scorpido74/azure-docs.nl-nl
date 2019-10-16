@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835360"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374036"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integreren met Azure Active Directory
 
@@ -31,13 +31,13 @@ ms.locfileid: "68835360"
 
 In dit artikel vindt u informatie over de voor delen van het integreren van uw toepassing met Azure Active Directory (Azure AD) en het ophalen van resources voor integratie. Azure AD biedt organisaties een identiteits beheer op ondernemings niveau voor Cloud toepassingen. Azure AD-integratie biedt uw gebruikers een gestroomlijnde aanmeldings ervaring en helpt uw toepassing te voldoen aan het IT-beleid.
 
-## <a name="how-to-integrate"></a>Het integreren van
+## <a name="how-to-integrate"></a>Integratie
 
 Er zijn verschillende manieren waarop uw toepassing kan worden geïntegreerd met Azure AD. Profiteer van zoveel of slechts enkele van deze scenario's als geschikt voor uw toepassing.
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Ondersteuning voor Azure AD als een manier om u aan te melden bij uw toepassing
 
-**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Als u Azure AD gebruikt om u aan te melden bij uw toepassing, hebben uw gebruikers niet langer een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Met Azure AD-bevoegdheden meldt u zich aan voor een aantal van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij Azure AD. Meer informatie over het [toevoegen van ondersteuning voor Azure AD-aanmelding](authentication-scenarios.md).
+**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Als u Azure AD gebruikt om u aan te melden bij uw toepassing, hebben uw gebruikers niet langer een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Met Azure AD-bevoegdheden meldt u zich aan voor een aantal van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij Azure AD. Meer informatie over het [toevoegen van ondersteuning voor Azure AD-aanmelding](v1-authentication-scenarios.md).
 
 **Vereenvoudig de registratie voor uw toepassing.**  Wanneer u zich aanmeldt voor uw toepassing, kan Azure AD essentiële informatie over een gebruiker verzenden, zodat u uw aanmeldings formulier vooraf kunt invullen of het volledig moet elimineren. Gebruikers kunnen zich aanmelden voor uw toepassing met behulp van hun Azure AD-account via een vertrouwde instemming-ervaring die vergelijkbaar is met die van sociale media en mobiele toepassingen. Elke gebruiker kan zich registreren en aanmelden bij een toepassing die is geïntegreerd met Azure AD zonder dat hiervoor een rol is vereist. Meer informatie over [het aanmelden van uw toepassing voor aanmelding bij een Azure ad-account](../../app-service/configure-authentication-provider-aad.md).
 
@@ -97,5 +97,5 @@ De integratie met Azure AD is gebaseerd op voor delen waarvoor u geen extra code
 
 [Aan de slag](v2-overview.md#getting-started)met het schrijven van code.
 
-[Gebruikers aanmelden met het micro soft Identity-platform](authentication-scenarios.md)
+[Gebruikers aanmelden met het micro soft Identity-platform](v1-authentication-scenarios.md)
 

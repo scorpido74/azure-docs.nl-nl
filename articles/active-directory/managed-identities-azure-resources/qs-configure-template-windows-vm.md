@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31a33a000fdc07756d39e42c8f70fc06a58b170e
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 43f5e04440f55c44a53b85aa4d3600e0d926424d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309979"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330003"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon
 
@@ -32,7 +32,7 @@ In dit artikel wordt gebruikgemaakt van de Azure Resource Manager-implementatie 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met het gebruik van Azure Resource Manager-implementatie sjabloon, raadpleegt u de [sectie Overzicht](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-it-work)** .
+- Als u niet bekend bent met het gebruik van Azure Resource Manager-implementatie sjabloon, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-it-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
@@ -56,7 +56,7 @@ Als u door het systeem toegewezen beheerde identiteit op een virtuele machine wi
 
 1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
 
-2. Als u door het systeem toegewezen beheerde identiteit wilt inschakelen, laadt u de sjabloon in `Microsoft.Compute/virtualMachines` een editor, zoekt u `resources` de bron van belang `"identity"` binnen de sectie en voegt u de `"type": "Microsoft.Compute/virtualMachines"` eigenschap toe op hetzelfde niveau als de eigenschap. Gebruik de volgende syntaxis:
+2. Als u door het systeem toegewezen beheerde identiteit wilt inschakelen, laadt u de sjabloon in een editor, zoekt u de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources` en voegt u de eigenschap `"identity"` toe op hetzelfde niveau als de eigenschap `"type": "Microsoft.Compute/virtualMachines"`. Gebruik de volgende syntaxis:
 
    ```JSON
    "identity": { 
@@ -66,7 +66,7 @@ Als u door het systeem toegewezen beheerde identiteit op een virtuele machine wi
 
 
 
-3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan `resource` de sectie van uw sjabloon en deze moet er als volgt uitzien:
+3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan de sectie `resource` van uw sjabloon. deze moet er als volgt uitzien:
 
    ```JSON
    "resources": [
@@ -113,7 +113,7 @@ Als u een rol wilt toewijzen aan de door het systeem toegewezen identiteit van u
  
 2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en voeg de volgende informatie toe om uw VM- **lezer** toegang te geven tot de resource groep waarin deze is gemaakt.  De structuur van uw sjabloon kan variëren, afhankelijk van de editor en het implementatie model dat u kiest.
    
-   Onder de `parameters` sectie voegt u het volgende toe:
+   Onder de sectie `parameters` voegt u het volgende toe:
 
     ```JSON
     "builtInRoleType": {
@@ -125,13 +125,13 @@ Als u een rol wilt toewijzen aan de door het systeem toegewezen identiteit van u
         }
     ```
 
-    Onder de `variables` sectie voegt u het volgende toe:
+    Onder de sectie `variables` voegt u het volgende toe:
 
     ```JSON
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
-    Onder de `resources` sectie voegt u het volgende toe:
+    Onder de sectie `resources` voegt u het volgende toe:
 
     ```JSON
     {
@@ -155,15 +155,15 @@ Als u een door het systeem toegewezen beheerde identiteit van een virtuele machi
 
 1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
 
-2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines` bron van belang in de `resources` sectie. Als u een VM hebt die alleen door het systeem toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type `None`te wijzigen in.  
+2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources`. Als u een VM hebt die alleen door het systeem toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type te wijzigen in `None`.  
    
    **Micro soft. Compute/informatie API-versie 2018-06-01**
 
-   Als uw virtuele machine zowel door het systeem en de gebruiker toegewezen beheerde identiteiten heeft, verwijdert `SystemAssigned` u het identiteits type en blijft `UserAssigned` u samen met de `userAssignedIdentities` woordenlijst waarden.
+   Als uw virtuele machine zowel door het systeem en de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` uit het identiteits type en blijft u `UserAssigned` samen met de waarden van de `userAssignedIdentities` woorden lijst.
 
    **Micro soft. Compute/informatie API-versie 2018-06-01**
    
-   Als uw `apiVersion` `SystemAssigned` `UserAssigned` `identityIds` virtuele machine endedoordegebruikertoegewezenbeheerdeidentiteitenzijn,verwijdertuhetidentiteitstypeenblijftusamenmetdematrixvandedoordegebruikertoegewezenbeheerdeidentiteiten.`2017-12-01`  
+   Als uw `apiVersion` `2017-12-01` is en uw virtuele machine zowel door het systeem als de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` van het identiteits type en behoudt u `UserAssigned` samen met de `identityIds`-matrix van de door de gebruiker toegewezen beheerde identiteiten.  
    
 In het volgende voor beeld ziet u hoe u een door het systeem toegewezen beheerde identiteit verwijdert uit een VM zonder door de gebruiker toegewezen beheerde identiteiten:
 
@@ -175,6 +175,7 @@ In het volgende voor beeld ziet u hoe u een door het systeem toegewezen beheerde
     "location": "[resourceGroup().location]",
     "identity": { 
         "type": "None"
+        },
 }
 ```
 
@@ -189,11 +190,11 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
 
 Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
-1. Voeg onder `resources` het-element de volgende vermelding toe om een door de gebruiker toegewezen beheerde identiteit aan uw virtuele machine toe te wijzen.  Zorg ervoor dat u `<USERASSIGNEDIDENTITY>` vervangt door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt.
+1. Voeg onder het element `resources` de volgende vermelding toe om een door de gebruiker toegewezen beheerde identiteit aan uw virtuele machine toe te wijzen.  Zorg ervoor dat u `<USERASSIGNEDIDENTITY>` vervangt door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt.
 
    **Micro soft. Compute/informatie API-versie 2018-06-01**
 
-   `variables` `<USERASSIGNEDIDENTITYNAME>` `userAssignedIdentities` Als dat het `2018-06-01`geval is,wordenuwdoordegebruikertoegewezenbeheerdeidentiteitenopgeslagenindewoordenlijstindelingenmoetdewaardewordenopgeslagenineenvariabeledieisgedefinieerdindesectievanuwsjabloon.`apiVersion`
+   Als uw `apiVersion` `2018-06-01` is, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de indeling van de `userAssignedIdentities`-woorden lijst en moet de waarde van @no__t 3 worden opgeslagen in een variabele die is gedefinieerd in de sectie `variables` van uw sjabloon.
 
    ```json
    {
@@ -212,7 +213,7 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
    
    **Micro soft. Compute/informatie API-versie 2017-12-01**
     
-   `variables` `<USERASSIGNEDIDENTITYNAME>` `identityIds` Als dat het `2017-12-01`geval is,wordenuwdoordegebruikertoegewezenbeheerdeidentiteitenindematrixopgeslagenenmoetdewaardewordenopgeslagenineenvariabeledieisgedefinieerdindesectievanuwsjabloon.`apiVersion`
+   Als uw `apiVersion` `2017-12-01` is, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de matrix `identityIds` en moet de `<USERASSIGNEDIDENTITYNAME>`-waarde worden opgeslagen in een variabele die is gedefinieerd in de sectie `variables` van uw sjabloon.
     
    ```json
    {
@@ -229,7 +230,7 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
    }
    ```
        
-3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan `resource` de sectie van uw sjabloon en deze moet er als volgt uitzien:
+3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan de sectie `resource` van uw sjabloon. deze moet er als volgt uitzien:
    
    **Micro soft. Compute/informatie API-versie 2018-06-01**    
 
@@ -315,7 +316,7 @@ Als u een door de gebruiker toegewezen identiteit van een virtuele machine wilt 
 
 1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
 
-2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines` bron van belang in de `resources` sectie. Als u een VM hebt die alleen door de gebruiker toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type `None`te wijzigen in.
+2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources`. Als u een VM hebt die alleen door de gebruiker toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type te wijzigen in `None`.
  
    In het volgende voor beeld ziet u hoe u alle door de gebruiker toegewezen beheerde identiteiten verwijdert uit een VM zonder door het systeem toegewezen beheerde identiteiten:
    
@@ -327,20 +328,21 @@ Als u een door de gebruiker toegewezen identiteit van een virtuele machine wilt 
       "location": "[resourceGroup().location]",
       "identity": { 
           "type": "None"
+          },
     }
    ```
    
    **Micro soft. Compute/informatie API-versie 2018-06-01**
     
-   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert `useraAssignedIdentities` u deze uit de woorden lijst.
+   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert u deze uit de woorden lijst `useraAssignedIdentities`.
 
-   Als u een door het systeem toegewezen beheerde identiteit hebt, laat u deze dan `type` in de waarde onder de `identity` waarde staan.
+   Als u een door het systeem toegewezen beheerde identiteit hebt, moet u deze in de `type`-waarde onder de waarde `identity` laten staan.
  
    **Micro soft. Compute/informatie API-versie 2017-12-01**
 
-   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert `identityIds` u deze uit de matrix.
+   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert u deze uit de matrix `identityIds`.
 
-   Als u een door het systeem toegewezen beheerde identiteit hebt, laat u deze dan `type` in de waarde onder de `identity` waarde staan.
+   Als u een door het systeem toegewezen beheerde identiteit hebt, moet u deze in de `type`-waarde onder de waarde `identity` laten staan.
    
 ## <a name="next-steps"></a>Volgende stappen
 

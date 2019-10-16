@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/08/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 433bcd31399d8443355edcb2e8586993644174ca
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242364"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374534"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -34,6 +34,7 @@ De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedi
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Mei 2014<sup>1</sup> |
 | **Micro soft-klant overeenkomst** | [Microsoft Azure plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
 | **Micro soft-klant overeenkomst** | [Microsoft Azure plan voor dev/test](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
+| **Micro soft-partner overeenkomst** | Microsoft Azure Plan | CSP_2015-05-01, CSP_MG_2017-12-01, CSPDEVTEST_2018-05-01 | N/A | Oktober 2019 |
 | **Micro soft Developer Network (MSDN)** | [MSDN platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 oktober 2018<sup>2</sup> |

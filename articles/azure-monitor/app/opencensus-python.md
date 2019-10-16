@@ -1,5 +1,5 @@
 ---
-title: Python-toepassingen bewaken met Azure Monitor | Microsoft Docs
+title: Python-toepassingen bewaken met Azure Monitor (preview) | Microsoft Docs
 description: Biedt instructies om opentellingen python te bekabelen met Azure Monitor
 services: application-insights
 keywords: ''
@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 manager: carmonm
-ms.openlocfilehash: 1316cf6808f6ccfc4165ad162c51421638b130be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ed61cb1bc88c48fe89c4a9390f04747749bd48c5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294001"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329484"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
+# <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
 Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en logboek registratie van python-toepassingen via integratie met [Opentellingen](https://opencensus.io). Dit artikel begeleidt u stapsgewijs door het proces voor het instellen van opentellingen voor python en het ophalen van uw bewakings gegevens voor Azure Monitor.
 
@@ -46,7 +46,7 @@ Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee e
    | ------------- |:-------------|:-----|
    | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost |
-   | **Locatie** | US - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
 2. Klik op **Maken**.
 

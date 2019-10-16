@@ -1,136 +1,136 @@
 ---
-title: Opnieuw beveiligen van virtuele machines van Azure naar een on-premises site tijdens herstel na noodgevallen van virtuele VMware-machines en fysieke servers | Microsoft Docs
-description: Leer hoe u failback van Azure naar de on-premises site na een failover naar Azure tijdens het herstel na noodgevallen van virtuele VMware-machines en fysieke servers.
+title: Vm's van Azure naar een on-premises site opnieuw beveiligen tijdens nood herstel van virtuele VMware-machines en fysieke servers | Microsoft Docs
+description: Na een failover naar Azure tijdens het herstel na nood gevallen van virtuele VMware-machines en fysieke servers, leert u hoe u een failback kunt uitvoeren van Azure naar de on-premises site.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/12/2019
+ms.date: 10/14/2019
 ms.author: mayg
-ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482905"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331065"
 ---
-# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Opnieuw beveiligen en mislukt de back-machines naar een on-premises site na een failover naar Azure
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Machines opnieuw beveiligen en failback naar een on-premises site na een failover naar Azure
 
-Na [failover](site-recovery-failover.md) van on-premises VMware-machines of fysieke servers naar Azure, de eerste stap in mislukte terug naar uw on-premises site is de Azure-VM's die zijn gemaakt tijdens de failover opnieuw beveiligen. Dit artikel wordt beschreven hoe u dit doet. 
+Na een [failover](site-recovery-failover.md) van on-premises virtuele VMware-machines of fysieke servers naar Azure, is de eerste stap bij het uitvoeren van een failback naar uw on-premises site het opnieuw beveiligen van de Azure-vm's die zijn gemaakt tijdens de failover. In dit artikel wordt beschreven hoe u dit doet. 
 
-Bekijk de volgende video over het failover van Azure naar een on-premises site voor een snel overzicht.<br /><br />
+Bekijk de volgende video over het uitvoeren van een failover van Azure naar een on-premises site voor een beknopt overzicht.<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u een sjabloon voor het maken van uw virtuele machines, zorg ervoor dat elke virtuele machine heeft een eigen UUID voor de schijven gebruikt. Als de UUID van de on-premises virtuele machine veroorzaakt een met de UUID van het hoofddoel conflict omdat beide zijn gemaakt op basis van dezelfde sjabloon, mislukt de opnieuw beveiligen. Een andere hoofddoelserver is niet op basis van dezelfde sjabloon gemaakt implementeren. Let op de volgende informatie:
-- Als u wilt een failback uitvoeren naar een alternatieve vCenter, zorg ervoor dat worden uw nieuwe vCenter en de hoofddoelserver gedetecteerd. Een typische symptoom is dat de gegevensopslag niet toegankelijk zijn of die niet zichtbaar in de **opnieuw beveiligen** in het dialoogvenster.
-- Als u wilt repliceren naar on-premises, moet u een beleid voor failback. Dit beleid wordt automatisch gemaakt wanneer u een beleid vooruit maakt. Let op de volgende informatie:
-    - Dit beleid is automatisch gekoppeld aan de configuratieserver tijdens het maken van.
-    - Dit beleid niet meer worden bewerkt.
-    - De setwaarden van het beleid zijn (RPO-drempelwaarde = 15 minuten, bewaarperiode van het herstelpunt = 24 uur, App consistentie van de frequentie van momentopname = 60 minuten).
-- Tijdens het opnieuw beveiligen en failback moet de on-premises configuratieserver actief en verbonden.
-- Als de virtuele machines waarop u moet een failback wordt beheerd door een vCenter-server, zorg ervoor dat u hebt de [vereiste machtigingen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) voor detectie van virtuele machines op de vCenter-servers.
-- Verwijder de momentopnamen op de hoofddoelserver voordat u opnieuw beveiligen. Als u momentopnamen aanwezig op het hoofddoel van on-premises of op de virtuele machine zijn, wordt opnieuw beveiligen mislukt. De momentopnamen op de virtuele machine worden automatisch samengevoegd tijdens een taak opnieuw beveiligen.
-- Alle virtuele machines van een replicatiegroep moet van het hetzelfde besturingssysteemtype (alle Windows- of alle Linux). Een replicatiegroep met gemengde besturingssystemen op dit moment wordt niet ondersteund voor opnieuw beveiligen en failback naar on-premises. Dit is omdat het hoofddoel van hetzelfde besturingssysteem als de virtuele machine moet zijn. Alle virtuele machines van een replicatiegroep moet de dezelfde hoofddoelserver hebben. 
-- Een configuratieserver is vereiste on-premises als u failback. Tijdens een failback wordt bestaan de virtuele machine op de configuratie van server-database. Anders wordt de failback is mislukt. Zorg ervoor dat u regelmatig geplande back-ups van uw configuratieserver. Als er een noodgeval, de server met hetzelfde IP-adres herstellen zodat failback werkt.
-- Opnieuw beveiligen en failback moet een site-naar-site (S2S) VPN om gegevens te repliceren. Geef het netwerk zodat de failover-virtuele machines in Azure (ping) de configuratie van de on-premises server kunnen bereiken. Ook kunt u een processerver in het Azure-netwerk van de virtuele failover-machine implementeren. Ook moet deze processerver communiceren met de on-premises configuratieserver.
-- Zorg ervoor dat u de volgende poorten voor failover en failback openen:
+Als u een sjabloon hebt gebruikt om uw virtuele machines te maken, moet u ervoor zorgen dat elke virtuele machine een eigen UUID voor de schijven heeft. Als de UUID van de on-premises virtuele machine strijdig is met de UUID van het hoofd doel, omdat beide zijn gemaakt op basis van dezelfde sjabloon, mislukt de beveiliging. Implementeer een ander hoofd doel dat niet is gemaakt op basis van dezelfde sjabloon. Let op de volgende informatie:
+- Als u een failback wilt uitvoeren naar een andere vCenter, moet u ervoor zorgen dat uw nieuwe vCenter en de hoofddoel server worden gedetecteerd. Een typisch symptoom is dat de gegevens opslag niet toegankelijk is of niet zichtbaar is in het dialoog venster opnieuw **beveiligen** .
+- Als u terug wilt repliceren naar on-premises, hebt u een beleid voor failback nodig. Dit beleid wordt automatisch gemaakt wanneer u een doorstuur richtings beleid maakt. Let op de volgende informatie:
+    - Dit beleid wordt automatisch gekoppeld aan de configuratie server tijdens het maken.
+    - Dit beleid kan niet worden bewerkt.
+    - De ingestelde waarden van het beleid zijn (RPO-drempel waarde = 15 minuten, Bewaar periode van het herstel punt = 24 uur, app-consistentie frequentie voor moment opnamen = 60 minuten).
+- Tijdens het opnieuw beveiligen en failback moet de on-premises configuratie server actief en verbonden zijn.
+- Als een vCenter-Server de virtuele machines beheert waarvoor u een failback wilt uitvoeren, moet u ervoor zorgen dat u over de [vereiste machtigingen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) beschikt voor de detectie van Vm's op vCenter-servers.
+- Verwijder moment opnamen op de hoofddoel server voordat u opnieuw beveiligt. Als moment opnamen aanwezig zijn op het on-premises hoofd doel of op de virtuele machine, mislukt de beveiliging. De moment opnamen op de virtuele machine worden automatisch samengevoegd tijdens een taak voor opnieuw beveiligen.
+- Alle virtuele machines van een replicatie groep moeten van hetzelfde type besturings systeem (alle Windows of alle Linux) zijn. Een replicatie groep met gemengde besturings systemen wordt momenteel niet ondersteund voor opnieuw beveiligen en failback naar on-premises. Dit komt doordat het hoofd doel van hetzelfde besturings systeem als de virtuele machine moet zijn. Alle virtuele machines van een replicatie groep moeten hetzelfde hoofd doel hebben. 
+- Een configuratie server is on-premises vereist wanneer er een failback wordt uitgevoerd. Tijdens het failback moet de virtuele machine aanwezig zijn in de data base van de configuratie server. Anders mislukt de failback. Zorg ervoor dat u regel matig geplande back-ups maakt van uw configuratie server. Als er een nood geval is, herstelt u de server met hetzelfde IP-adres, zodat failback werkt. 
+- Voor het opnieuw beveiligen en failback is een site-naar-site (S2S) VPN-of ExpressRoute-peering vereist om gegevens te repliceren. Geef het netwerk op zodat de virtuele machines waarvoor failover is uitgevoerd in azure, de on-premises configuratie server kunnen bereiken. U moet een proces server implementeren in het Azure-netwerk van de virtuele machine (s) waarvoor failover is uitgevoerd. Deze proces server moet ook kunnen communiceren met de on-premises configuratie server en de hoofddoel server.
+- Als de IP-adressen van gerepliceerde items op failover worden bewaard, moeten er een S2S-of ExpressRoute-verbinding tot stand worden gebracht tussen virtuele Azure-machines en de failback-NIC van de configuratie server. Houd er rekening mee dat voor het bewaren van IP-adressen twee Nic's moeten worden geconfigureerd voor de connectiviteit van de bron machines en één voor Azure-failback-connectiviteit. Dit is om te voor komen dat de adresbereiken van de bron en failover van virtuele machines overlappen.
+- Zorg ervoor dat u de volgende poorten voor failover en failback opent:
 
     ![Poorten voor failover en failback](./media/vmware-azure-reprotect/failover-failback.png)
 
-- Lees alle de [vereisten voor poorten en URL in de whitelist](vmware-azure-deploy-configuration-server.md#prerequisites).
+- Lees alle [vereisten voor poorten en URL-white list](vmware-azure-deploy-configuration-server.md#prerequisites).
 
-## <a name="deploy-a-process-server-in-azure"></a>Een processerver in Azure implementeren
+## <a name="deploy-a-process-server-in-azure"></a>Een proces server in azure implementeren
 
-Mogelijk moet u een processerver in Azure voordat u een failback naar uw on-premises site:
-- De processerver ontvangt gegevens van de beveiligde virtuele machine in Azure, en verzendt die gegevens vervolgens naar de on-premises site.
-- Een netwerk met lage latentie is vereist tussen de processerver en de beveiligde virtuele machine. In het algemeen moet u rekening houden met latentie bij het bepalen of u een processerver in Azure moet:
-    - Als u een Azure ExpressRoute-verbinding instellen hebt, kunt u een on-premises processerver om gegevens te verzenden omdat de latentie tussen de virtuele machine en de processerver laag is.
-    - Echter, als u alleen een S2S-VPN hebt, raden wij de processerver in Azure implementeert.
-    - Het is raadzaam om met behulp van een Azure-processerver tijdens failback. De prestaties van de replicatie is hoger als de processerver dichter bij de replicerende virtuele machine (de failover-machine in Azure is). Voor een concepttest kunt u de processerver on-premises en ExpressRoute om persoonlijke peering.
+U hebt een proces server in azure nodig voordat u een failback naar uw on-premises site hebt:
 
-Een processerver in Azure implementeren:
+- De proces server ontvangt gegevens van de beveiligde virtuele machine (s) in azure, waarna gegevens worden verzonden naar de on-premises site.
+- Er is een netwerk met lage latentie vereist tussen de proces server en de beveiligde virtuele machine. Daarom is het raadzaam een proces server in azure te implementeren. De prestaties van de replicatie zijn hoger als de proces server dichter bij de virtuele machine die wordt gerepliceerd (de failover-machine in Azure). 
+- Voor een proef van het concept kunt u de on-premises proces server en ExpressRoute met privé-peering gebruiken.
 
-1. Als u een processerver in Azure implementeren wilt, Zie [instellen van een processerver in Azure voor failback](vmware-azure-set-up-process-server-azure.md).
-2. De virtuele Azure-machines verzenden replicatiegegevens naar de processerver. Netwerken zodanig configureren dat de processerver door de Azure VM's bereiken kan.
-3. Houd er rekening mee dat replicatie van Azure naar on-premises kan gebeuren alleen via de S2S VPN-verbinding of de persoonlijke peering van het ExpressRoute-netwerk. Zorg ervoor dat er voldoende bandbreedte beschikbaar via dat netwerkkanaal is.
+Een proces server in azure implementeren:
 
-## <a name="deploy-a-separate-master-target-server"></a>Implementeren van een afzonderlijke hoofddoelserver
+1. Als u een proces server in azure wilt implementeren, raadpleegt u [een proces server in azure instellen voor failback](vmware-azure-set-up-process-server-azure.md).
+2. De Azure-Vm's verzenden replicatie gegevens naar de proces server. Configureer netwerken zodat de virtuele machines van Azure de proces server kunnen bereiken.
+3. Houd er rekening mee dat replicatie van Azure naar on-premises alleen kan plaatsvinden via de S2S VPN of via de persoonlijke peering van uw ExpressRoute-netwerk. Zorg ervoor dat er voldoende band breedte beschikbaar is via dat netwerk kanaal.
 
-De hoofddoelserver ontvangt failbackgegevens. De master target-server wordt standaard uitgevoegd op de on-premises configuratieserver. Echter, afhankelijk van de hoeveelheid verkeer is mislukt-back, u mogelijk wilt maken van een afzonderlijke hoofddoelserver voor failback. Dit is het maken van een:
+## <a name="deploy-a-separate-master-target-server"></a>Een afzonderlijke hoofddoel server implementeren
 
-* [Maken van een Linux-hoofddoelserver](vmware-azure-install-linux-master-target.md) voor failback van virtuele Linux-machines. Dit is vereist. Houd er rekening mee dat Master target server op LVM wordt niet ondersteund.
-* (Optioneel) Maak een afzonderlijke hoofddoelserver voor failback van de Windows-VM. U doet dit door geïntegreerde Setup opnieuw uitvoeren en selecteren om te maken van een hoofddoelserver. [Meer informatie](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
+De hoofddoelserver ontvangt failbackgegevens. De master target-server wordt standaard uitgevoegd op de on-premises configuratieserver. Afhankelijk van het volume van mislukte-back-verkeer moet u echter mogelijk een afzonderlijke hoofddoel server voor failback maken. U maakt als volgt een:
 
-Nadat u een hoofddoelserver maakt, moet u de volgende taken uitvoeren:
+* [Maak een Linux-hoofddoel server](vmware-azure-install-linux-master-target.md) voor failback van virtuele Linux-machines. Dit is vereist. Houd er rekening mee dat de hoofddoel server op LVM niet wordt ondersteund.
+* U kunt eventueel een afzonderlijke hoofddoel server maken voor failback van Windows-VM'S. Hiervoor voert u Unified Setup opnieuw uit en selecteert u om een hoofddoel server te maken. [Meer informatie](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
-- Als de virtuele machine aanwezig on-premises op de vCenter-server wordt, moet de hoofddoelserver toegang tot de virtuele Machine-schijf (VMDK)-bestand van de on-premises virtuele machine. Toegang is vereist voor de gerepliceerde gegevens schrijven naar de schijven van de virtuele machine. Zorg ervoor dat de gegevensopslag van de on-premises virtuele machine is gekoppeld op het hoofddoel host met toegang voor lezen/schrijven.
-- Als de virtuele machine niet aanwezig zijn on-premises op de vCenter-server, moet de Site Recovery-service te maken van een nieuwe virtuele machine tijdens het opnieuw beveiligen. Deze virtuele machine wordt gemaakt op de ESX-host waarop u het hoofddoel maakt. Kies de ESX-host zorgvuldig, zodat de virtuele failback-machine wordt gemaakt op de host die u wilt.
-- U kunt Storage vMotion niet gebruiken voor de hoofddoelserver. Met Storage vMotion voor de hoofddoelserver kan leiden tot het failback-bewerking mislukt. De virtuele machine starten niet omdat de schijven zijn niet beschikbaar voor deze. Om dit te voorkomen, sluit u de hoofddoelservers uit van uw vMotion-lijst.
-- Als een hoofddoelserver een opslag-vMotion-taak na het opnieuw beveiligen ondergaat, wordt de beveiligde virtuele machine-schijven die zijn gekoppeld aan het hoofddoel migreren naar het doel van de taak vMotion. Als u na deze mislukken, wordt loskoppelen van de schijf mislukt omdat de schijven zijn niet gevonden. Er wordt vervolgens moeilijk te vinden van de schijven in uw storage-accounts. U moet deze handmatig zoeken en deze koppelt aan de virtuele machine. Daarna kan de on-premises virtuele machine worden opgestart.
-- Bewaarstation toevoegen aan uw bestaande Windows-hoofddoelserver. Voeg een nieuwe schijf toe en formatteren van de schijf. De retentieschijf wordt gebruikt voor het stoppen van de punten in de tijd wanneer de virtuele machine terug naar de on-premises site worden gerepliceerd. Hieronder vindt u enkele criteria bewaarstation. Als aan deze criteria worden niet voldaan, wordt het station wordt niet weergegeven voor de hoofddoelserver:
-    - Het volume wordt niet gebruikt voor andere doeleinden, zoals een doel van replicatie.
-    - Het volume is niet in de vergrendelingsmodus bevinden.
-    - Het volume is niet een cachevolume. De installatie van de hoofddoelserver kan niet bestaan op het desbetreffende volume. Het aangepaste installatievolume voor de doel-server en -master proces niet in aanmerking voor een volume bewaren. Wanneer de processerver en hoofddoelserver worden geïnstalleerd op een volume, is het volume een cachevolume van het hoofddoel.
-    - Het type bestandssysteem van het volume is niet FAT of FAT32.
-    - De capaciteit van het volume gelijk is aan nul.
-    - Het standaardbewaarvolume voor Windows is het R-volume.
-    - Het standaardbewaarvolume voor Linux is/mnt/Retention.
-- Als u een bestaande proces serverconfiguratie/server-machine of een schaal of proces server/master target servermachine, moet u een nieuw station toevoegen. Het nieuwe station moet voldoen aan deze vereisten. Als de retentieschijf niet aanwezig is, wordt het niet weergegeven in de vervolgkeuzelijst selecteren in de portal. Wanneer u een station aan de on-premises hoofddoelserver toevoegen, duurt het maximaal 15 minuten voor het station moet worden weergegeven in de selectie in de portal. U kunt ook de configuratieserver vernieuwen als het station niet wordt weergegeven na 15 minuten.
-- VMware-hulpprogramma's of open-vm-hulpprogramma's installeren op de hoofddoelserver. Zonder de hulpprogramma's, kan niet de gegevensopslag op van het hoofddoel ESXi-host worden gedetecteerd.
-- Stel de `disk.EnableUUID=true` instellen in de configuratieparameters van de hoofddoelserver virtuele machine in VMware. Als deze rij niet bestaat, deze toevoegen. Deze instelling is vereist voor een consistente UUID voor de VMDK zodat deze correct koppelt.
-- De ESX-host waarop de hoofddoelserver wordt gemaakt, moet ten minste één virtuele machine file system (VMFS) gegevensopslag die is gekoppeld aan deze hebben. Als er geen gegevensopslag VMFS zijn gekoppeld, de **gegevensopslag** invoer op de pagina opnieuw beveiligen is leeg en kan niet worden voortgezet.
-- De hoofddoelserver geen momentopnamen op de schijven. Als er momentopnamen, mislukt opnieuw beveiligen en failback.
-- De hoofddoelserver kan niet een Paravirtual SCSI-controller hebben. De controller mag alleen bestaan uit een LSI Logic-controller. Zonder een domeincontroller LSI Logic opnieuw beveiligen is mislukt.
-- Voor elk exemplaar, kan het hoofddoel maximaal 60 schijven die zijn gekoppeld aan hebben. Als het aantal virtuele machines opnieuw aan de on-premises hoofddoelserver wordt beveiligd met meer dan een totaal van 60 schijven aan de hoofddoelserver reprotects beginnen mislukken. Zorg ervoor dat u hebt onvoldoende master zich schijf sleuven of extra hoofddoelservers implementeren.
+Nadat u een hoofddoel server hebt gemaakt, voert u de volgende taken uit:
+
+- Als de virtuele machine on-premises aanwezig is op de vCenter-Server, moet de hoofddoel server toegang hebben tot het VMDK-bestand (virtuele-machine schijf) van de on-premises virtuele machine. Toegang is vereist om de gerepliceerde gegevens naar de schijven van de virtuele machine te schrijven. Controleer of de gegevens opslag van de on-premises virtuele machine is gekoppeld op de host van het hoofd doel met lees-en schrijf toegang.
+- Als de virtuele machine niet on-premises op de vCenter-Server aanwezig is, moet de Site Recovery-service een nieuwe virtuele machine maken tijdens het opnieuw beveiligen. Deze virtuele machine wordt gemaakt op de ESX-host waarop u het hoofd doel maakt. Kies zorgvuldig de ESX-host, zodat de virtuele machine voor failback wordt gemaakt op de host die u wilt.
+- U kunt Storage vMotion niet gebruiken voor de hoofddoel server. Het gebruik van Storage vMotion voor de hoofddoel server kan ertoe leiden dat de failback mislukt. De virtuele machine kan niet worden gestart omdat de schijven niet beschikbaar zijn. Als u wilt voor komen dat dit gebeurt, sluit u de hoofddoel servers uit vanuit uw vMotion-lijst.
+- Als een Master doel een Storage vMotion-taak ondergaat na het opnieuw beveiligen, worden de beveiligde virtuele-machine schijven die zijn gekoppeld aan het hoofd doel gemigreerd naar het doel van de vMotion-taak. Als u een failback-bewerking wilt uitvoeren, mislukt de ontkoppeling van de schijf omdat de schijven niet zijn gevonden. Vervolgens wordt het lastig om de schijven in uw opslag accounts te vinden. U moet deze hand matig zoeken en koppelen aan de virtuele machine. Daarna kan de on-premises virtuele machine worden opgestart.
+- Voeg een Bewaar station toe aan uw bestaande Windows-hoofddoel server. Voeg een nieuwe schijf toe en Format teer het station. Het Bewaar station wordt gebruikt om de tijdstippen te stoppen waarop de virtuele machine terugkeert naar de on-premises site. Hier volgen enkele criteria van een Bewaar station. Als niet aan deze criteria wordt voldaan, wordt het station niet vermeld voor de hoofddoel server:
+    - Het volume wordt niet gebruikt voor andere doel einden, zoals een doel van replicatie.
+    - Het volume bevindt zich niet in de vergrendelings modus.
+    - Het volume is geen cache volume. De Master doel installatie kan niet bestaan op dat volume. Het aangepaste installatie volume voor de proces server en het hoofd doel komt niet in aanmerking voor een Bewaar volume. Wanneer de proces server en het hoofd doel op een volume zijn geïnstalleerd, is het volume een cache volume van het hoofd doel.
+    - Het bestandssysteem type van het volume is niet FAT of FAT32.
+    - De volume capaciteit is niet nul.
+    - Het standaard retentie volume voor Windows is het R-volume.
+    - Het standaard Bewaar volume voor Linux is/mnt/retention.
+- U moet een nieuw station toevoegen als u een bestaande proces server/configuratie server machine of een schaal-of proces server/Master doel server machine gebruikt. Het nieuwe station moet voldoen aan de voor gaande vereisten. Als het Bewaar station niet aanwezig is, wordt het niet weer gegeven in de vervolg keuzelijst selectie in de portal. Nadat u een station aan het on-premises hoofd doel hebt toegevoegd, duurt het Maxi maal 15 minuten voordat het station wordt weer gegeven in de selectie in de portal. U kunt de configuratie server ook vernieuwen als het station niet meer dan 15 minuten wordt weer gegeven.
+- Installeer VMware-hulpprogram ma's of open-vm-hulpprogram ma's op de hoofddoel server. Zonder de hulpprogram ma's kunnen de gegevens opslag op de ESXi-host van het hoofd doel niet worden gedetecteerd.
+- Stel de instelling `disk.EnableUUID=true` in de configuratie parameters van de virtuele Master doel machine in VMware in. Als deze rij niet bestaat, voegt u deze toe. Deze instelling is vereist om een consistente UUID naar de VMDK te geven zodat deze correct wordt gekoppeld.
+- Aan de ESX-host waarop het hoofd doel wordt gemaakt, moet ten minste één VMFS-Data Store (Virtual Machine File System) zijn gekoppeld. Als er geen VMFS-gegevens opslag zijn gekoppeld, is de **gegevens opslag** invoer op de pagina opnieuw beveiligen leeg en kunt u niet door gaan.
+- De hoofddoel server kan geen moment opnamen op de schijven hebben. Als er moment opnamen zijn, mislukt het opnieuw beveiligen en failback.
+- Het hoofd doel kan geen Pvscsi SCSI-controller hebben. De controller kan alleen een LSI Logic-Controller zijn. Zonder een LSI Logic-Controller mislukt het opnieuw beveiligen.
+- Voor elk exemplaar kan aan het hoofd doel Maxi maal 60 schijven zijn gekoppeld. Als het aantal virtuele machines dat opnieuw wordt beveiligd voor het on-premises hoofd doel meer dan een totaal aantal 60 schijven heeft, wordt de beveiliging van het hoofd doel opnieuw beveiligd. Zorg ervoor dat u voldoende Master doel schijf sleuven hebt of extra hoofddoel servers implementeert.
     
 
 ## <a name="enable-reprotection"></a>Opnieuw beveiligen inschakelen
 
-Wanneer een virtuele machine wordt opgestart in Azure, duurt het even voordat de agent te registreren naar de configuratieserver (maximaal 15 minuten). Gedurende deze tijd kunt u het niet mogelijk om opnieuw te beveiligen en een foutmelding die aangeeft dat de agent is niet geïnstalleerd. Als dit het geval is, wacht een paar minuten en probeer het vervolgens opnieuw opnieuw beveiligen:
+Nadat een virtuele machine is opgestart in azure, kan het enige tijd duren voordat de agent de configuratie server opnieuw registreert (Maxi maal 15 minuten). Gedurende deze tijd kunt u niet opnieuw beveiligen en wordt een fout bericht weer gegeven dat de agent niet is geïnstalleerd. Als dit het geval is, wacht u een paar minuten en probeert u opnieuw te beveiligen:
 
 
-1. Selecteer **kluis** > **gerepliceerde items**. Met de rechtermuisknop op de virtuele machine die een failover, en selecteer vervolgens **opnieuw beveiligen**. Of, vanaf de knoppen, selecteert u de machine en selecteer vervolgens **opnieuw beveiligen**.
-2. Controleer de **Azure naar On-premises** richting van beveiliging is ingeschakeld.
-3. In **Masterdoelserver** en **processerver**, selecteert u de on-premises hoofddoelserver en de processerver.  
-4. Voor **gegevensopslag**, selecteert u het waarnaar u herstellen van de schijven wilt on-premises gegevensarchief. Deze optie wordt gebruikt wanneer de on-premises virtuele machine wordt verwijderd en moet u nieuwe schijven te maken. Deze optie wordt genegeerd als de schijven al bestaan. U moet wel een waarde op te geven.
-5. Selecteer het bewaarstation.
+1. Selecteer **kluis** > **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer vervolgens **opnieuw beveiligen**. U kunt ook op de opdracht knoppen de machine selecteren en vervolgens **opnieuw beveiligen**selecteren.
+2. Controleer of de **Azure to on-premises** richting van beveiliging is geselecteerd.
+3. In **hoofddoel server** en **proces server**selecteert u de on-premises hoofddoel server en de proces server.  
+4. Selecteer voor **gegevens opslag**de gegevens opslag waarnaar u de schijven on-premises wilt herstellen. Deze optie wordt gebruikt wanneer de on-premises virtuele machine wordt verwijderd en u moet nieuwe schijven maken. Deze optie wordt genegeerd als de schijven al bestaan. U moet nog een waarde opgeven.
+5. Selecteer het Bewaar station.
 6. Het failback-beleid wordt automatisch geselecteerd.
-7. Selecteer **OK** om te beginnen met opnieuw beveiligen. Er wordt een taak gestart voor het repliceren van de VM van Azure naar de on-premises site. U kunt de voortgang volgen op het tabblad **Taken**. Wanneer het opnieuw beveiligen is gelukt, krijgt de virtuele machine een beveiligde status.
+7. Selecteer **OK** om te beginnen met opnieuw beveiligen. Er wordt een taak gestart voor het repliceren van de VM van Azure naar de on-premises site. U kunt de voortgang volgen op het tabblad **taken** . Wanneer de beveiliging is geslaagd, wordt de status van de virtuele machine beveiligd.
 
 Let op de volgende informatie:
-- Als u wilt herstellen naar een alternatieve locatie (wanneer de on-premises virtuele machine wordt verwijderd), selecteer het bewaarstation en gegevensopslag die zijn geconfigureerd voor de hoofddoelserver. Wanneer u een failback naar de on-premises site, de virtuele VMware-machines in de failback-beschermingsplan dezelfde gegevensopslag gebruiken als de hoofddoelserver. Een nieuwe virtuele machine wordt vervolgens gemaakt in vCenter.
-- Als u herstellen van de virtuele machine op Azure aan een bestaande on-premises virtuele machine wilt, koppelt u de gegevensopslag van de on-premises virtuele machine met lees-/ schrijftoegang op de hoofddoelserver van ESXi-host.
+- Als u wilt herstellen naar een andere locatie (wanneer de on-premises virtuele machine wordt verwijderd), selecteert u het Bewaar station en de gegevens opslag die zijn geconfigureerd voor de hoofddoel server. Wanneer u een failback naar de on-premises site maakt, gebruiken de virtuele VMware-machines in het failback-beveiligings plan dezelfde gegevens opslag als de hoofddoel server. Er wordt vervolgens een nieuwe virtuele machine gemaakt in vCenter.
+- Als u de virtuele machine op Azure wilt herstellen naar een bestaande on-premises virtuele machine, koppelt u de gegevens opslag van de on-premises virtuele machine met lees-en schrijf toegang op de ESXi-host van de hoofddoel server.
 
-    ![In het dialoogvenster opnieuw beveiligen](./media/vmware-azure-reprotect/reprotectinputs.png)
+    ![Het dialoog venster opnieuw beveiligen](./media/vmware-azure-reprotect/reprotectinputs.png)
 
-- U kunt ook opnieuw beveiligen op het niveau van een plan voor herstel. Een replicatiegroep kan opnieuw worden beveiligd alleen via een plan voor herstel. Wanneer u opnieuw beveiligen met behulp van een herstelplan, moet u de waarden opgeven voor elke beveiligde computer.
-- Gebruik de dezelfde hoofddoelserver om een replicatiegroep opnieuw te beveiligen. Als u een andere hoofddoelserver gebruikt om opnieuw te beveiligen van een replicatiegroep, kan de server kan geen gemeenschappelijk tijdstip bieden in-time.
-- De on-premises virtuele machine is altijd uitgeschakeld tijdens het opnieuw beveiligen. Dit helpt ervoor te zorgen dat gegevens tijdens de replicatie consistent blijven. Op de virtuele machine niet inschakelt nadat het opnieuw beveiligen is voltooid.
+- U kunt ook opnieuw beveiligen op het niveau van een herstel plan. Een replicatie groep kan alleen opnieuw worden beveiligd via een herstel plan. Wanneer u een herstel plan opnieuw beveiligt, moet u de waarden voor elke beveiligde machine opgeven.
+- Gebruik de dezelfde hoofddoelserver om een replicatiegroep opnieuw te beveiligen. Als u een andere hoofddoel server gebruikt om een replicatie groep opnieuw te beveiligen, kan de server geen gemeen schappelijke punt in de tijd bieden.
+- De on-premises virtuele machine is uitgeschakeld tijdens het opnieuw beveiligen. Dit helpt ervoor te zorgen dat gegevens tijdens de replicatie consistent blijven. Schakel de virtuele machine niet in nadat de beveiliging is voltooid.
 
 
 
 ## <a name="common-issues"></a>Algemene problemen
 
-- Als u een alleen-lezengebruiker vCenter-detectie uitvoeren en virtuele machines beveiligt, beveiliging is geslaagd en uitvoeren van failovers werkt. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevensopslag kan niet worden gedetecteerd. Een symptoom is dat de gegevensopslag worden niet tijdens het opnieuw beveiligen weergegeven. U lost dit probleem, kunt u de vCenter-referenties bijwerken met een juiste account dat machtigingen heeft en en probeer het opnieuw. 
-- Wanneer u een failback van virtuele Linux-machine en on-premises uitvoert, kunt u zien dat het pakket Network Manager is verwijderd van de machine. Deze verwijdering doet zich voor omdat het pakket Network Manager wordt verwijderd wanneer de virtuele machine is hersteld in Azure.
-- Wanneer een virtuele Linux-machine is geconfigureerd met een statisch IP-adres en een failover naar Azure, wordt het IP-adres verkregen via DHCP. Als u een failover naar on-premises, blijft de virtuele machine het IP-adres verkrijgen via DHCP. Handmatig aanmelden bij de machine en stel het IP-adres terug naar een statisch adres indien nodig. Een Windows virtuele machine kunt opnieuw het statische IP-adres verkrijgen.
-- Als u de gratis versie van de ESXi 5.5 of de gratis versie van vSphere 6 Hypervisor gebruikt, de failover wordt voltooid, maar failback niet lukt. Upgraden naar de evaluatielicentie van beide programma zodat failback.
-- Als de configuratieserver van de processerver kan niet worden bereikt, kunt u Telnet gebruiken om te controleren op connectiviteit met de configuratieserver op poort 443. U kunt ook de configuratieserver van de processerver te pingen. Een processerver hebt ook een heartbeat wanneer deze verbonden met de configuratieserver.
-- Een Windows Server 2008 R2 SP1-server die is beveiligd als een fysieke on-premises server kan niet worden mislukt van Azure naar een on-premises site.
-- U kunt geen failback uitvoeren terug in de volgende omstandigheden:
-    - U machines hebt gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
-    - U hebt verplaatst een virtuele machine naar een andere resourcegroep.
-    - U hebt de Azure-VM hebt verwijderd.
-    - U de beveiliging van de virtuele machine uitgeschakeld.
-    - Maken van de VM handmatig in Azure. De machine moet zijn in eerste instantie beveiligde on-premises en failover naar Azure voordat opnieuw beveiligen.
-    - U kunt niet alleen op een ESXi-host. U kunt geen failback VMware-machines of fysieke servers naar Hyper-V-hosts, fysieke machines of VMware-werkstations.
+- Als u een alleen-lezen gebruikers-vCenter-detectie uitvoert en virtuele machines beveiligt, is de beveiliging geslaagd en werkt failover. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevens opslag niet kan worden gedetecteerd. Een symptoom is dat de gegevens opslag niet wordt weer gegeven tijdens het opnieuw beveiligen. U kunt dit probleem oplossen door de vCenter-referenties bij te werken met een geschikt account dat machtigingen heeft en de taak vervolgens opnieuw uit te voeren. 
+- Wanneer u een back-up van een virtuele Linux-machine maakt en deze on-premises uitvoert, kunt u zien dat het pakket met de netwerk beheerder is verwijderd van de computer. Dit wordt veroorzaakt doordat het pakket voor netwerk beheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.
+- Wanneer een virtuele Linux-machine is geconfigureerd met een statisch IP-adres en failover naar Azure wordt uitgevoerd, wordt het IP-adres verkregen van DHCP. Wanneer u een failover naar on-premises doorvoert, blijft de virtuele machine DHCP gebruiken voor het verkrijgen van het IP-adres. Meld u hand matig aan bij de computer en stel het IP-adres vervolgens weer in op een statisch adres, indien nodig. Een virtuele Windows-machine kan het vaste IP-adres opnieuw verkrijgen.
+- Als u de ESXi 5,5 Free Edition of de gratis versie van vSphere 6 Hyper Visor gebruikt, mislukt de failover, maar failback mislukt. Als u failback wilt inschakelen, moet u een upgrade uitvoeren naar de evaluatie licentie van het programma.
+- Als u de configuratie server niet kunt bereiken vanaf de proces server, gebruikt u Telnet om de verbinding met de configuratie server op poort 443 te controleren. U kunt ook proberen de configuratie server te pingen vanaf de proces server. Een proces server moet ook een heartbeat hebben als deze is verbonden met de configuratie server.
+- Een Windows Server 2008 R2 SP1-server die wordt beveiligd als een fysieke on-premises server kan niet worden teruggezet van Azure naar een on-premises site.
+- U kunt geen failback uitvoeren in de volgende situaties:
+    - U hebt computers gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
+    - U hebt een virtuele machine naar een andere resource groep verplaatst.
+    - U hebt de Azure-VM verwijderd.
+    - U hebt de beveiliging van de virtuele machine uitgeschakeld.
+    - U hebt de virtuele machine hand matig in azure gemaakt. De machine moet eerst on-premises en failover naar Azure worden uitgevoerd voordat de beveiliging opnieuw wordt beschermd.
+    - U kunt alleen een failover uitvoeren naar een ESXi-host. U kunt geen failback uitvoeren voor virtuele VMware-machines of fysieke servers naar Hyper-V-hosts, fysieke machines of VMware-werk stations.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de virtuele machine heeft een beveiligde status ingevoerd, kunt u [een failback initieert](vmware-azure-failback.md). De failback wordt afgesloten met de virtuele machine in Azure en de on-premises virtuele machine wordt opgestart. Verwacht dat de enige uitvaltijd voor de toepassing. Kies een tijd voor failback wanneer de toepassing downtime tolereren kan.
+Nadat de virtuele machine een beveiligde status heeft ingevoerd, kunt u [een failback initiëren](vmware-azure-failback.md). De failback wordt op de virtuele machine in azure afgesloten en de on-premises virtuele machine wordt opgestart. Verwachte uitval tijd voor de toepassing. Kies een tijd voor failback wanneer de toepassing downtime kan verdragen.
 
 

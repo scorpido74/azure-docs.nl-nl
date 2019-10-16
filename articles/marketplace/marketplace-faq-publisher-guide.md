@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969569"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330244"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -24,7 +24,7 @@ Antwoorden op veelgestelde vragen over de Azure Marketplace en de Microsoft AppS
 
 **Wat is Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) biedt toegang en informatie over oplossingen en services die beschikbaar zijn bij micro soft en onze partners. Klanten (IT-professionals en ontwikkel aars) kunnen ontdekken en proberen om cloud software oplossingen te kopen die zijn gebouwd op of gebouwd voor Azure. Onze catalogus van 8000 + vermeldingen biedt Azure-bouw stenen, zoals Virtual Machines (Vm's), Api's, Azure-apps, oplossings sjablonen en beheerde toepassingen, SaaS-apps, containers en advies Services. 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) biedt toegang en informatie over oplossingen en services die beschikbaar zijn bij micro soft en onze partners. Klanten kunnen cloud software oplossingen die zijn gebouwd op of voor Azure, detecteren, uitproberen of kopen. Onze catalogus van 8000 + vermeldingen biedt Azure-bouw stenen, zoals Virtual Machines (Vm's), Api's, Azure-apps, oplossings sjablonen en beheerde toepassingen, SaaS-apps, containers en advies Services.
 
 **Wie zijn klanten van Azure Marketplace?**
 
@@ -32,18 +32,15 @@ Azure Marketplace is ontworpen voor IT-professionals en Cloud ontwikkelaars die 
 
 **Welk type producten is momenteel beschikbaar in azure Marketplace?**
 
-Azure Marketplace biedt technische oplossingen en services van Microsoft en partners die zijn gemaakt om Azure-producten en -services uit te breiden. De oplossings catalogus omvat verschillende categorieën, inclusief, maar niet beperkt tot:
+Azure Marketplace biedt technische oplossingen en services van Microsoft en partners die zijn gemaakt om Azure-producten en -services uit te breiden. De oplossings catalogus omvat verschillende categorieën, waaronder:
 
 * basis besturingssystemen
 * databases
 * beveiliging
-* identity
+* identiteit
 * netwerken
 * Block Chain
 * ontwikkelhulpprogramma's
-* en meer
-
-Azure Marketplace biedt SaaS-toepassingen, Virtual Machines, oplossings sjablonen, door Azure beheerde toepassingen en Consulting Services.
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace voor klanten
 
@@ -92,15 +89,15 @@ Azure Marketplace is beschikbaar voor Azure-klanten in de landen/regio's die wor
 
 **Welke valuta's worden ondersteund door Azure Marketplace?**
 
-Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
+Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, kost, JPY, vermiljard, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Een oplossing implementeren vanuit Azure Marketplace
 
-**I hebben een Azure Marketplace-virtuele machine (VM) geïmplementeerd op een abonnement en nu wil ik het abonnement migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
+**Ik heb een Azure Marketplace virtual machine (VM) geïmplementeerd op een abonnement en ik wil het abonnement nu migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
 
 Als u een Azure-abonnement wilt migreren, inclusief Azure Marketplace-Vm's en-services, verwijdert of annuleert u een eerder Azure-abonnement voordat u het nieuwe Azure-account koppelt. Zodra de migratie is voltooid, worden de resulterende gebruiks kosten in rekening gebracht met de nieuwe Betalings wijze van de geregistreerde account.
 
-**I een Azure Marketplace virtual machine (VM)-abonnement naar mijn Enterprise Agreement wilt migreren. Wordt dit momenteel ondersteund?**
+**Ik wil een Azure Marketplace virtual machine (VM)-abonnement migreren naar mijn Enterprise Agreement. Wordt dit momenteel ondersteund?**
 
 Als u een Azure Marketplace virtual machine (VM)-abonnement wilt migreren naar een Enterprise Agreement, moet u voorafgaand aan de migratie een eerder abonnement stoppen of annuleren. Zodra de migratie van uw Azure-account en de bijbehorende abonnementen is voltooid, kunt u de Azure Marketplace-VM of-service opnieuw aanschaffen.  De resulterende gebruiks kosten worden per kwar taal in rekening gebracht onder uw Enterprise Agreement.
 
@@ -112,7 +109,7 @@ Prijzen zijn afhankelijk van het producttype en de specificaties van de uitgever
 
 *Niet gebundeld:*
 
-+ *BYOL-model (meebrengen van eigen licentie)* : Wanneer u een software licentie rechtstreeks van de uitgever of een wederverkoper aanschaft, zijn er geen extra kosten of kosten voor software.
++ *Uw BYOL-model (your-own-License)* : wanneer u een software licentie rechtstreeks van de uitgever of een wederverkoper aanschaft, zijn er geen extra kosten of kosten voor software in rekening gebracht.
 
 *Gecombineerde*
 
@@ -120,7 +117,7 @@ Het Azure-abonnement is opgenomen in de prijzen van de ISV-oplossing (Independen
 
 *Tarief*
 
-+ *Macro's* Gratis SKU. Er worden geen kosten in rekening gebracht voor software licentie kosten of het gebruik van de aanbieding.
++ *Gratis:* Gratis SKU. Er worden geen kosten in rekening gebracht voor software licentie kosten of het gebruik van de aanbieding.
 
 + *Gratis proef versie van software:* Een aanbieding die een beperkte periode gratis is. Er worden geen kosten in rekening gebracht voor de software licentie kosten van de uitgever tijdens de proef periode. Na verloop van tijd wordt het automatisch omgezet in een betaald aanbod op basis van de standaard tarieven die zijn uitgegeven door de uitgever.
 
@@ -338,7 +335,7 @@ Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product
 
 **Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
 
-Meer informatie vindt u in [Cloud Partner-Portal: klant leads-documentatie ophalen](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket verzenden via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Meer informatie vindt u in [Partner Center: klanten leads-documentatie ophalen](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket indienen via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
 
 **Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
 
@@ -346,17 +343,17 @@ Ja, als u een **contact persoon**, **SaaS-app**of **advies Services** -aanbod pu
 
 **Hoe kan ik controleren of de lead configuratie juist is?**
 
-Na het volt ooien van de aanbieding en het instellen van een doel voor de lead, kan de vermelding op de juiste manier worden gepubliceerd in de [Cloud Partner-Portal](https://cloudpartner.azure.com/). Voordat de vermelding live gaat, kunt u valideren of de configuratie van de lead-instellingen correct werkt.  Een test-lead verzenden naar de doel locatie van de lead die in de aanbieding is geconfigureerd.
+Na het volt ooien van de aanbieding en het instellen van een doel voor de lead, kan de vermelding op de juiste manier worden gepubliceerd in het [partner centrum](https://cloudpartner.azure.com/). Voordat de vermelding live gaat, kunt u valideren of de configuratie van de lead-instellingen correct werkt.  Een test-lead verzenden naar de doel locatie van de lead die in de aanbieding is geconfigureerd.
 
 **Welke landen/regio's zijn Azure Marketplace beschikbaar voor de verkoop van uitgevers?**
 
-Uitgevers op basis van de volgende landen/regio's kunnen momenteel worden verkocht in azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oosten rijk, Azerbeidzjan, Bahrein, Bangladesh, Belarus, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, ivoor kust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji Eilanden, Finland, Frank rijk, Georgië, Duitsland, Ghana, Grieken land, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Mongolië, Montenegro, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noor wegen, Oman Pakistan, Panama, Paraguay, Peru, Filipijnen, Slowakije, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitser land, Tadzjikistan, Tanzania, Thai land, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Uganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Konink rijk, Verenigde Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
+Uitgevers op basis van de volgende landen/regio's kunnen momenteel worden verkocht in azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oosten rijk, Azerbeidzjan, Bahrein, Bangladesh, Belarus, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, ivoor kust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji, Finland, Frank rijk, Georgië, Duitsland, Ghana, Grieken land, Guatemala, Guinee, Haïti, Honduras, Hongkong SAR, Hongarije, IJsland, India, Indonesië en Irak Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Mongolië, Montenegro, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noor wegen, Oman, Pakistan, Panama, Paraguay, Peru, Filipijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitser land, Tadzjikistan, Tanzania, Thai land, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Uganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Konink rijk, VS Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
 
 **Hoe kan ik een vermelding verwijderen uit Azure Marketplace?**
 
 *Virtuele machine & Azure-apps:*
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+1. Meld u aan bij [Partner Center](https://cloudpartner.azure.com/).
 1. Selecteer de aanbieding op het tabblad **alle aanbiedingen** .
 1. Selecteer in het deel venster aan de linkerkant van het scherm het tabblad **sku's** .
 1. Selecteer de SKU die u wilt verwijderen en klik op de knop **verwijderen** voor die SKU.
@@ -366,7 +363,7 @@ Zie [een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete
 
 *Web Apps (SaaS-apps, invoeg toepassingen) & Consulting Services:*
 
-1. Selecteer in het Cloud Partner-portal het vraag teken en klik vervolgens op **ondersteuning**.
+1. Selecteer in partner centrum het vraag teken en klik vervolgens op **ondersteuning**.
 1. Ga naar <https://go.microsoft.com/fwlink/?linkid=844975>.
 1. Selecteer op de pagina ondersteuning het type aanbieding.
 1. Selecteer een gepubliceerde aanbieding **verwijderen** .
@@ -419,19 +416,19 @@ Registreer een ticket met [Microsoft ondersteuning](https://support.microsoft.co
 
 **Met wie moet ik contact opnemen voor algemene ondersteunings problemen met Azure Marketplace?**
 
-Neem contact op met [Cloud Partner-Portal ondersteuning](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)voor algemene toepassings ondersteuning met betrekking tot de bruikbaarheid of het oplossen van problemen.
+Neem contact op met de [ondersteuning van partners](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)voor algemene toepassings ondersteuning met betrekking tot bruikbaarheid of probleem oplossing.
 
 Neem contact op met [Azure-ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)voor facturerings-en abonnements problemen met uw Azure Marketplace-aankoop.
 
 **Met wie kan ik contact opnemen met publicaties of vragen over het beheer van aanbiedingen?**
 
-Ga naar de [Publisher-hand leiding voor Azure Marketplace](marketplace-publishers-guide.md) voor actuele resources en documenten op veelgestelde vragen. Daarnaast kunt u een ticket vastleggen met [Microsoft ondersteuning in het Cloud Partner-Portal](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Ga naar de [Publisher-hand leiding voor Azure Marketplace](marketplace-publishers-guide.md) voor actuele resources en documenten op veelgestelde vragen. Daarnaast kunt u een ticket vastleggen met [Microsoft ondersteuning in het partner centrum](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace voor uitgevers
 
 **Hoe kan ik mijn geografische Beschik baarheid definiëren voor het inschakelen van de verkoop in verschillende landen/regio's?**
 
-1.  Navigeer in het Cloud Partner-portal naar de SKU waaraan u nieuwe landen/regio's wilt toevoegen.  Ga in de **SKU-Details**naar **land/regio Beschik baarheid** en klik op **regio's selecteren**.
+1.  Ga in het partner centrum naar de SKU waaraan u nieuwe landen/regio's wilt toevoegen.  Ga in de **SKU-Details**naar **land/regio Beschik baarheid** en klik op **regio's selecteren**.
 
     ![Regio's selecteren](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 

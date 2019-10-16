@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003528"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326790"
 ---
-# <a name="select-clause"></a>SELECT-component
+# <a name="select-clause-in-azure-cosmos-db"></a>SELECT-component in Azure Cosmos DB
 
 Elke query bestaat uit een SELECT-component en optionele [from](sql-query-from.md) -en [where](sql-query-where.md) -componenten, per ANSI SQL-standaards. Normaal gesp roken wordt de bron in de component FROM genummerd en de WHERE-component past een filter op de bron toe om een subset van JSON-items op te halen. De SELECT-component vervolgens projecteert de aangevraagde JSON-waarden in de selectie lijst.
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  De eigenschappen of de waarde die moet worden geselecteerd voor de resultatenset.  
+  Eigenschappen of waarde die voor de resultatenset moet worden geselecteerd.  
   
 - `'*'`  
 
-  Hiermee geeft u op dat de waarde zonder wijzigingen moet worden opgehaald. Specifiek als de verwerkte waarde een object is, worden alle eigenschappen worden opgehaald.  
+  Geeft aan dat de waarde moet worden opgehaald zonder dat er wijzigingen worden aangebracht. Met name als de verwerkte waarde een object is, worden alle eigenschappen opgehaald.  
   
 - `<object_property_list>`  
   
-  Hiermee geeft u de lijst met eigenschappen die moeten worden opgehaald. Elke geretourneerde waarde is een object met de eigenschappen die zijn opgegeven.  
+  Hiermee geeft u de lijst met eigenschappen op die moeten worden opgehaald. Elke geretourneerde waarde is een object met de opgegeven eigenschappen.  
   
 - `VALUE`  
 
-  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van de volledige JSON-object. Dit, in tegenstelling tot `<property_list>` loopt niet de verwachte waarde in een object.  
+  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van het volledige JSON-object. Dit betekent dat, in tegens telling tot `<property_list>`, de geschatte waarde in een object niet verloopt.  
  
 - `DISTINCT`
   
@@ -56,13 +56,13 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Expressie voor de waarde die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) sectie voor meer informatie.  
+  Expressie die de waarde vertegenwoordigt die moet worden berekend. Zie de sectie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
 
 ## <a name="remarks"></a>Opmerkingen
 
-De `SELECT *` syntaxis is alleen geldig als FROM-component precies één alias is gedeclareerd. `SELECT *` biedt een identity-projectie handig is als er geen projectie is vereist. Selecteer * is alleen geldig als FROM-component is opgegeven en slechts één invoer bron geïntroduceerd.  
+De syntaxis van de `SELECT *` is alleen geldig als FROM-component precies één alias heeft gedeclareerd. `SELECT *` biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. SELECT * is alleen geldig als de component FROM is opgegeven en slechts één invoer bron heeft geïntroduceerd.  
   
-Beide `SELECT <select_list>` en `SELECT *` 'syntactische suiker' zijn en kan ook worden uitgedrukt met behulp van eenvoudige SELECT-instructies zoals hieronder wordt weergegeven.  
+Zowel `SELECT <select_list>` als `SELECT *` zijn ' syntactische suiker ' en kunnen ook worden aangegeven met behulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -78,7 +78,7 @@ Beide `SELECT <select_list>` en `SELECT *` 'syntactische suiker' zijn en kan ook
   
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld van `address` een select- `AndersenFamily`query wordt een resultaat van `Families` de overeenkomstgeretourneerd:`id`
+In het volgende voor beeld van een SELECT-query wordt `address` geretourneerd van `Families` waarvan de `id` overeenkomt met `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -109,7 +109,7 @@ U kunt eigenschappen openen met de operator voor de geciteerde eigenschap []. Zo
 
 ### <a name="nested-properties"></a>Geneste eigenschappen
 
-In het volgende voor beeld worden twee geneste eigenschappen geprojecteerd, `f.address.state` en. `f.address.city`
+In het volgende voor beeld worden twee geneste eigenschappen, `f.address.state` en `f.address.city`, geprojecteerd.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ De resultaten zijn:
     }]
 ```
 
-In het voor gaande voor beeld moet de SELECT-component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de impliciete `$1`argument naam van de variabele. Met de volgende query worden twee impliciete argument `$1` variabelen `$2`geretourneerd: en.
+In het voor gaande voor beeld moet de component SELECT een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de variabele naam van het impliciete argument `$1`. Met de volgende query worden twee impliciete argument variabelen geretourneerd: `$1` en `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },

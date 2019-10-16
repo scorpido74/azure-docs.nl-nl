@@ -1,21 +1,21 @@
 ---
-title: De Azure Block Chain-service ondersteunt grootboek versies, patches en upgrades
+title: Azure Block Chain Service-grootboek versies, patches en upgrades
 description: Overzicht van de ondersteunde versies van de groot boeken in azure Block Chain Service, inclusief beleids regels voor systeem patches en door systeem beheer en door gebruikers beheerde upgrades.
 services: azure-blockchain
 keywords: Block Chain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286526"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329121"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Ondersteunde Azure Block Chain Service-grootboek versies
 

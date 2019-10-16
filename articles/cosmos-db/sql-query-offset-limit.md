@@ -1,23 +1,23 @@
 ---
-title: De component OFFSET LIMIET in Azure Cosmos DB
-description: Meer informatie over de component OFFSET LIMIET voor Azure Cosmos DB.
+title: Component OFFSET LIMIT in Azure Cosmos DB
+description: Meer informatie over de component OFFSET LIMIT voor Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 60ac28c80e9f7cc72f4d6005c12cb5f68671341e
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342457"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326880"
 ---
-# <a name="offset-limit-clause"></a>De component OFFSET LIMIET
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Component OFFSET LIMIT in Azure Cosmos DB
 
-De component OFFSET LIMIET is een optionele component overslaan en vervolgens een aantal waarden van de query uitvoeren. Het aantal OFFSET en het maximum aantal zijn vereist in de component OFFSET LIMIET.
+De component OFFSET LIMIT is een optionele component waarmee u een aantal waarden uit de query kunt overs Laan. Het aantal OFFSET en het aantal LIMIETen zijn vereist in de component OFFSET LIMIT.
 
-Wanneer de LIMIET van OFFSET wordt gebruikt in combinatie met een component ORDER BY, wordt de resultatenset wordt geproduceerd door te doen overslaan en de geordende waarden ondernemen. Als er geen component ORDER BY wordt gebruikt, wordt deze resulteren in een deterministische volgorde van waarden.
+Wanneer de OFFSET limiet wordt gebruikt in combi natie met een ORDER BY-component, wordt de resultatenset gemaakt door overs Laan en de geordende waarden uit te voeren. Als er geen ORDER BY-component wordt gebruikt, resulteert dit in een deterministische volg orde van waarden.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,19 +29,19 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   Hiermee geeft u het geheel getal van de items die de resultaten van de query moeten worden overgeslagen.
+   Hiermee geeft u het aantal items op dat door de query resultaten moet worden overgeslagen.
 
 - `<limit_amount>`
   
-   Hiermee geeft u het geheel getal van de items die de queryresultaten bevatten
+   Hiermee geeft u het gehele getal op van items die de query resultaten moeten bevatten
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Zowel de verschuiving van het aantal en het maximum aantal zijn vereist in de component OFFSET LIMIET. Als een optionele `ORDER BY` component wordt gebruikt, wordt de resultatenset wordt geproduceerd door de overslaan doen via de geordende waarden. Anders retourneert de query een vaste volgorde van waarden. Momenteel deze component wordt ondersteund voor query's in één partitie, partitie-overkoepelende query's niet nog ondersteund.
+  Zowel het aantal VERSCHUIVINGen als het aantal LIMIETen zijn vereist in de component OFFSET LIMIT. Als een optionele `ORDER BY`-component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden. Momenteel wordt deze component alleen ondersteund voor query's binnen één partitie, maar niet voor query's met meerdere partities.
 
 ## <a name="examples"></a>Voorbeelden
 
-Bijvoorbeeld, als volgt een query die de eerste waarde overslaat en retourneert de tweede waarde (in volgorde van de naam van het residente stad):
+Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede waarde wordt geretourneerd (op volg orde van de naam van de residente plaats):
 
 ```sql
     SELECT f.id, f.address.city
@@ -61,7 +61,7 @@ De resultaten zijn:
     ]
 ```
 
-Hier volgt een query die de eerste waarde overslaat en de tweede waarde retourneert (zonder volgorde):
+Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede waarde wordt geretourneerd (zonder volg orde):
 
 ```sql
    SELECT f.id, f.address.city

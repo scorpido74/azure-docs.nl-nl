@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Java-app maken in azure Service Fabric'
+title: 'Zelf studie: een Java-app maken in azure Service Fabric'
 description: In deze zelfstudie leert u hoe u een betrouwbare Java-servicetoepassing met een front-end en een betrouwbare stateful back-endservice maakt en de toepassing in een cluster implementeert.
 services: service-fabric
 documentationcenter: java
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5e9b94f0c67b4b4630d554f4dde22502c90e777c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173611"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376378"
 ---
-# <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Zelfstudie: Een toepassing maken met een Java API-front-end-service en een stateful back-end-service op Azure Service Fabric
+# <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Zelf studie: een toepassing maken met een Java API-front-end-service en een stateful back-end-service op Azure Service Fabric
 
 Deze zelfstudie is deel één van een serie. Wanneer u klaar bent, hebt u een stem toepassing met een Java-web-front-end die stem resultaten opslaat in een stateful back-end-service op Azure Service Fabric. Voor deze zelfstudie hebt u een werkende Mac OSX- of Linux-ontwikkelaarsmachine nodig. Als u de stemtoepassing niet handmatig wilt maken, kunt u [de broncode downloaden](https://github.com/Azure-Samples/service-fabric-java-quickstart) voor de voltooide toepassing en verdergaan met [Het voorbeeld van een stemtoepassing doorlopen](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Denk ook na over de [Snelstartgids voor Java reliable Services.](service-fabric-quickstart-java-reliable-services.md).
 
@@ -91,7 +91,7 @@ Als u een gebruikersinterface wilt toevoegen die kan worden weergegeven door de 
 
 1. Vouw de map *VotingApplication* uit en ga naar de map *VotingWebPkg-VotingApplication-Code*.
 
-2. Klik met de rechter muisknop op de *code* Directory en selecteer **nieuwe** > **map**.
+2. Klik met de rechter muisknop op de map *code* en selecteer **nieuwe** > -**map**.
 
 3. Geef de map *wwwroot* een naam en selecteer **volt ooien**.
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Het bestand HTTPCommunicationListener.java toevoegen
 
-De HTTP-communicatielistener fungeert als een domeincontroller die de HTTP-server instelt en de API's die stemacties definiëren weergeeft. Klik met de rechter muisknop op het *statelessservice* -pakket in de map *VotingWeb/src/statelessservice* en selecteer vervolgens **New * * * * File**.  Geef het bestand de naam *HttpCommunicationListener. java* en selecteer **volt ooien**.
+De HTTP-communicatielistener fungeert als een domeincontroller die de HTTP-server instelt en de API's die stemacties definiëren weergeeft. Klik met de rechter muisknop op het *statelessservice* -pakket in de map *VotingWeb/src/statelessservice* en selecteer vervolgens **New** > **File**.  Geef het bestand de naam *HttpCommunicationListener. java* en selecteer **volt ooien**.
 
 Vervang de bestandsinhoud door het volgende en sla uw wijzigingen op.  Verderop, in Het bestand HttpCommunicationListener.java bijwerken, wordt dit bestand gewijzigd voor het weergeven, lezen en schrijven van stemgegevens vanaf de back-endservice.  Op dit moment retourneert de listener eenvoudigweg de statische HTML-code voor de stem-app.
 
@@ -408,7 +408,7 @@ Nu de basis van de Java web-API-service is voltooid, gaan we de stateful back-en
 
 Service Fabric biedt u de mogelijkheid om uw gegevens consistent en betrouwbaar rechtstreeks in uw service op te slaan met behulp van betrouwbare verzamelingen. Betrouwbare verzamelingen zijn een set maximaal beschikbare en betrouwbare verzamelingsklassen. Het gebruik van deze klassen is bekend bij iedereen die Java-verzamelingen gebruikt.
 
-1. Klik in pakket Verkenner met de rechter muisknop op **stemmen** binnen het toepassings project en selecteer **service Fabric** > **service Fabric-service toevoegen**.
+1. Klik in pakket Verkenner met de rechter muisknop op **stem** in het toepassings project en selecteer **service Fabric** > **service Fabric service toevoegen**.
 
 2. Selecteer in het dialoog venster **service toevoegen** de optie **stateful service** en geef de service de naam **VotingDataService** en selecteer **service toevoegen**.
 
@@ -555,7 +555,7 @@ De basis voor de front-end stateless service en de back-endservice is nu gemaakt
 
  De basis voor de front-end stateless service en de back-endservice is nu gemaakt. De front-end- en back-endservices maken beide gebruik van een interface met de naam VotingRPC die de bewerkingen van de stemtoepassing definieert. Deze interface is geïmplementeerd door de front-end- en back-endservice om externe procedureaanroepen (RPC) tussen de twee services in te schakelen. Omdat Eclipse geen ondersteuning biedt voor het toevoegen van Gradle-subprojecten, moet het pakket met deze interface handmatig worden toegevoegd.
 
-1. Klik met de rechter muisknop op het **stem** project in de pakket Verkenner en selecteer **nieuwe** > **map**. Noem de map **VotingRPC/src/rpcmethods**.
+1. Klik met de rechter muisknop op het **stem** project in de pakket Verkenner en selecteer **nieuwe** > -**map**. Noem de map **VotingRPC/src/rpcmethods**.
 
     ![Een VotingRPC-pakket maken in de eclips-pakket Verkenner](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
@@ -891,11 +891,11 @@ In deze sectie worden de Gradle-scripts voor het project geconfigureerd.
 
 De toepassing is nu gereed om te worden geïmplementeerd in een lokaal Service Fabric-cluster.
 
-1. Klik met de rechter muisknop op het **stem** project in de pakket Verkenner en selecteer **service Fabric** > **Build-toepassing** om uw toepassing te bouwen.
+1. Klik met de rechter muisknop op het **stemmende** project in de pakket Verkenner en selecteer **service Fabric** > -**toepassing** voor het bouwen van uw toepassing.
 
 2. Voer uw lokale Service Fabric-cluster uit. Deze stap is afhankelijk van uw ontwikkelomgeving (Mac of Linux).
 
-    Als u een Mac gebruikt, voert u het lokale cluster uit met de volgende opdracht: Vervang de opdracht die is doorgevoerd in de parameter **-v**, door het pad naar uw eigen werkruimte.
+    Als u een Mac gebruikt, voert u het lokale cluster uit met de volgende opdracht. Vervang de opdracht uit de parameter **-v** door het pad naar uw eigen werkruimte.
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
@@ -909,9 +909,9 @@ De toepassing is nu gereed om te worden geïmplementeerd in een lokaal Service F
     ```
     Zie meer gedetailleerde instructies in de [Handleiding voor het instellen van Linux.](service-fabric-get-started-linux.md)
 
-4. Klik in de Package Explorer voor eclips met de rechter muisknop op het **stem** project en selecteer **service Fabric** > **toepassing publiceren** 
+4. Klik in de Package Explorer voor eclips met de rechter muisknop op het **stem** project en selecteer **service Fabric** > -**publicatie toepassing** 
 5. Selecteer in het venster **toepassing publiceren** de optie **lokaal. json** in de vervolg keuzelijst en selecteer **publiceren**.
-6. Ga naar uw webbrowser en open http:\//localhost: 8080 om uw actieve toepassing weer te geven op het lokale service Fabric cluster. 
+6. Ga naar uw webbrowser en open http: \//localhost: 8080 om uw actieve toepassing weer te geven op het lokale Service Fabric cluster. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

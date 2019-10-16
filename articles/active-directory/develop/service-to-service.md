@@ -1,6 +1,6 @@
 ---
 title: Service-naar-service-apps in Azure Active Directory
-description: Hierin wordt beschreven welke service-naar-service-toepassingen en de basisprincipes van stroom protocol, registratie en verlopen van het token voor dit apptype.
+description: Hierin worden de service-to-service-toepassingen en de basis beginselen van de protocol stroom, registratie en het verval van tokens voor dit app-type beschreven.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,60 +17,60 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540301"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373898"
 ---
 # <a name="service-to-service-apps"></a>Service-naar-service-apps
 
-Service-naar-service-toepassingen kunnen een daemon of server-toepassing die resources ophalen uit een web-API moet worden. Er zijn twee subregio's die betrekking hebben op deze sectie:
+Service-naar-service-toepassingen kunnen een daemon of server toepassing zijn die bronnen van een web-API moet ophalen. Er zijn twee subscenario's die van toepassing zijn op deze sectie:
 
-- Een daemon uit die nodig zijn om aan te roepen een web-API, die is gebouwd op type referenties toekenning van OAuth 2.0-client
+- Een daemon die een web-API moet aanroepen, gebaseerd op OAuth 2,0-client referenties toekennings type
 
-    In dit scenario is het belangrijk om te begrijpen van een aantal dingen. Eerst is tussenkomst van de gebruiker niet mogelijk is met een daemon-toepassing waarvoor u de toepassing een eigen identiteit hebben. Een voorbeeld van een daemontoepassing is een batch-taak, of de service van een besturingssysteem op de achtergrond uitgevoerd. Dit type toepassing vraagt een toegangstoken met behulp van de toepassings-id en presenteert de toepassings-ID, de referentie (wachtwoord of certificaat) en de toepassing-ID-URI naar Azure AD. Na een geslaagde authenticatie ontvangt de daemon voor een toegangstoken van Azure AD, dat vervolgens wordt gebruikt voor het aanroepen van de web-API.
+    In dit scenario is het belang rijk om enkele dingen te begrijpen. Ten eerste is gebruikers interactie niet mogelijk met een daemon-toepassing. hiervoor moet de toepassing een eigen identiteit hebben. Een voor beeld van een daemon-toepassing is een batch-taak of een besturingssysteem service die op de achtergrond wordt uitgevoerd. Met dit type toepassing wordt een toegangs token aangevraagd met behulp van de toepassings-ID en worden de toepassings-id's, referenties (wacht woord of certificaat) en de URI van de toepassings-ID naar Azure AD gepresenteerd. Na een geslaagde verificatie ontvangt de daemon een toegangs token van Azure AD, dat vervolgens wordt gebruikt om de Web-API aan te roepen.
 
-- Een servertoepassing (zoals een web-API) die nodig heeft om aan te roepen een web-API, die is gebouwd op namens van OAuth 2.0-concept-specificatie
+- Een server toepassing (zoals een web-API) die een web-API moet aanroepen, gebaseerd op OAuth 2,0 namens-concept specificatie
 
-    Stel dat een gebruiker is geverifieerd op een systeemeigen toepassing, en deze systeemeigen toepassing moet een web-API aanroepen in dit scenario. Azure AD geeft een JWT-toegangstoken voor het aanroepen van de web-API. Als de web-API een andere downstream web-API aanroepen moet, kan deze de stroom op-andere gebruikers-of gebruik het overdragen van de identiteit van de gebruiker en worden geverifieerd bij de tweede laag web-API.
+    In dit scenario Stel dat een gebruiker heeft geverifieerd op een systeem eigen toepassing en dat deze systeem eigen toepassing moet aanroepen van een web-API. Azure AD geeft een JWT-toegangs token om de Web-API aan te roepen. Als de Web-API een andere stroomafwaartse Web-API moet aanroepen, kan deze de identiteit van de gebruiker delegeren en verifiëren voor de Web-API op de tweede laag.
 
 ## <a name="diagram"></a>Diagram
 
-![Daemon of servertoepassing naar Web-API-diagram](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
+![Web API-diagram van daemon of server toepassing](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol stroom
+## <a name="dprotocol-flow"></a>DProtocol-stroom
 
-### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Toepassings-id met referenties voor OAuth 2.0-client verlenen
+### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Toepassings-id met OAuth 2,0-client referenties toewijzen
 
-1. De servertoepassing moet eerst worden geverifieerd bij Azure AD als zelf, zonder menselijke tussenkomst, zoals een dialoogvenster voor interactieve aanmelding. Wordt een aanvraag naar Azure AD-token-eindpunt met de referenties, toepassings-ID en toepassings-ID-URI.
-1. Azure AD verifieert de toepassing en retourneert een JWT-toegangstoken dat wordt gebruikt voor de web-API aanroepen.
-1. Via HTTPS gebruikt de web-App het geretourneerde JWT-toegangstoken om toe te voegen van de JWT-tekenreeks met een aanduiding 'Bearer' in de autorisatie-header van de aanvraag naar de web-API. De web-API valideert de JWT-token, en als validatie gelukt is, geeft de gewenste resource.
+1. Eerst moet de server toepassing worden geverifieerd met Azure AD als zichzelf, zonder menselijke tussen komst, zoals een interactief aanmeld venster. Er wordt een aanvraag gemaakt voor het token eindpunt van Azure AD, met de referentie, toepassings-ID en URI voor de toepassings-ID.
+1. Azure AD verifieert de toepassing en retourneert een JWT-toegangs token dat wordt gebruikt om de Web-API aan te roepen.
+1. Via HTTPS gebruikt de webtoepassing het geretourneerde JWT-toegangs token om de JWT-teken reeks toe te voegen met de aanduiding ' Bearer ' in de autorisatie-header van de aanvraag naar de Web-API. De Web-API valideert vervolgens de JWT-token en als de validatie is geslaagd, wordt de gewenste resource geretourneerd.
 
-### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>Gedelegeerde gebruikersidentiteit met OAuth 2.0 namens concept-specificatie
+### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>Gedelegeerde gebruikers-id met OAuth 2,0 namens-concept specificatie
 
-De stroom die hierna wordt ervan uitgegaan dat een gebruiker is geverifieerd op een andere toepassing (zoals een systeemeigen toepassing) en de identiteit van de gebruiker is gebruikt voor het verkrijgen van een toegangstoken uit aan de web-API van de eerste laag.
+In de onderstaande stroom wordt ervan uitgegaan dat een gebruiker is geverifieerd op een andere toepassing (zoals een systeem eigen toepassing) en dat de gebruikers-id is gebruikt om een toegangs token aan de Web-API op de eerste laag te verkrijgen.
 
-1. Het toegangstoken verzendt de systeemeigen toepassing naar de web-API van de eerste laag.
-1. De eerste laag web-API verzendt een aanvraag naar Azure AD-token-eindpunt biedt de toepassings-ID en referenties, evenals het toegangstoken van de gebruiker. Bovendien de aanvraag is verzonden met een on_behalf_of parameter die aangeeft van de web API nieuwe tokens voor het aanroepen van een downstream web-API namens de oorspronkelijke gebruiker wordt aangevraagd.
-1. Azure AD verifieert dat de eerste laag web-API heeft machtigingen voor toegang tot de tweede laag web-API en valideert de aanvraag, retourneren een JWT-toegangstoken en vernieuwen van een JWT-token naar de web-API voor de eerste laag.
-1. Via HTTPS roept de eerste laag web-API voor de web-API van de tweede laag vervolgens door de token tekenreeks in de autorisatie-header in de aanvraag toe te voegen. De eerste laag web-API kunt doorgaan met het aanroepen van de tweede laag web-API, zolang het toegangstoken en vernieuwen van tokens geldig zijn.
+1. De systeem eigen toepassing stuurt het toegangs token naar de Web-API voor de eerste laag.
+1. De Web-API voor de eerste laag verzendt een aanvraag naar het token eindpunt van Azure AD, met de toepassings-ID en referenties, evenals het toegangs token van de gebruiker. Daarnaast wordt de aanvraag verzonden met een on_behalf_of-para meter die aangeeft dat de Web-API nieuwe tokens aanvraagt voor het aanroepen van een stroomafwaartse Web-API namens de oorspronkelijke gebruiker.
+1. Azure AD controleert of de Web-API voor de eerste laag machtigingen heeft voor toegang tot de Web-API op de tweede laag en valideert de aanvraag, retourneert een JWT-toegangs token en een JWT-vernieuwings token naar de Web-API voor de eerste laag.
+1. Via HTTPS roept de Web-API voor de eerste laag vervolgens de Web-API op de tweede laag aan door de token teken reeks toe te voegen aan de autorisatie-header in de aanvraag. Met de Web-API voor de eerste laag kunt u de Web-API op de tweede laag aanroepen, zolang het toegangs token en de vernieuwings tokens geldig zijn.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zie de codevoorbeelden voor Daemon of servertoepassing naar Web-API-scenario's. En controleer regelmatig back-wanneer er nieuwe voorbeelden worden regelmatig toegevoegd. [Server- of Daemon-toepassing naar Web-API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Zie de code voorbeelden voor de Web-API-scenario's voor daemon of server toepassing. En controleer regel matig of er nieuwe voor beelden worden toegevoegd. [Server-of daemon-toepassing naar Web-API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>App-registratie
 
-* Één tenant - voor de toepassings-id en de gemachtigde gebruiker identiteit gevallen de daemon of server-toepassing moet zijn geregistreerd in dezelfde map in Azure AD. De web-API kan worden geconfigureerd als een reeks machtigingen die worden gebruikt voor het beperken van de daemon of van de server toegang tot de resources beschikbaar wilt maken. Als een gemachtigde gebruiker-ID-type wordt gebruikt, moet de servertoepassing Selecteer de gewenste machtigingen in de vervolgkeuzelijst 'Machtigingen voor andere toepassingen' in de Azure-portal. Deze stap is niet vereist als het toepassingstype identiteit wordt gebruikt.
-* Multitenant- en de toepassing daemon of de server is geconfigureerd om aan te geven van de machtigingen die nodig is voor functioneel. Deze lijst met vereiste machtigingen in een dialoogvenster weergegeven wanneer een gebruiker of beheerder in de doelmap toestemming geeft voor de toepassing, waardoor het beschikbaar is voor hun organisatie. Sommige toepassingen vereisen alleen machtigingen op gebruikersniveau, waar een gebruiker in de organisatie toestemming kunt geven. Andere toepassingen vereist beheerdersrechten, die een gebruiker in de organisatie kan niet met instemmen zijn. Alleen een directory-beheerder kan toestemming geven voor toepassingen waarvoor dit niveau van machtigingen. Wanneer de gebruiker of beheerder hiermee akkoord gaat, worden beide van de web-API's in de directory geregistreerd.
+* Eén Tenant: voor zowel de toepassings identiteit als de gedelegeerde gebruikers identiteiten moet de daemon of de server toepassing zijn geregistreerd in dezelfde map in azure AD. De Web-API kan worden geconfigureerd om een set machtigingen beschikbaar te stellen, die wordt gebruikt om de daemon of server toegang tot de resources te beperken. Als een overgedragen gebruikers identiteits type wordt gebruikt, moet de server toepassing de gewenste machtigingen selecteren in de vervolg keuzelijst Machtigingen voor andere toepassingen in de Azure Portal. Deze stap is niet vereist als het toepassings identiteits type wordt gebruikt.
+* Multi tenant: eerst is de daemon of server toepassing geconfigureerd om de machtigingen aan te geven die nodig zijn om functioneel te zijn. Deze lijst met vereiste machtigingen wordt weer gegeven in een dialoog venster wanneer een gebruiker of beheerder in de doelmap toestemming geeft voor de toepassing, zodat deze beschikbaar is voor hun organisatie. Voor sommige toepassingen zijn alleen machtigingen op gebruikers niveau vereist, waarbij elke gebruiker in de organisatie toestemming kan geven. Andere toepassingen vereisen machtigingen op beheerders niveau, die een gebruiker in de organisatie niet kan instemmen. Alleen een adreslijst beheerder kan toestemming geven voor toepassingen waarvoor dit machtigings niveau is vereist. Wanneer de gebruiker of beheerder de toestemming heeft gegeven, worden beide Web-Api's geregistreerd in hun Directory.
 
-## <a name="token-expiration"></a>Geldigheidsduur van het token
+## <a name="token-expiration"></a>Token verloop tijd
 
-Wanneer de eerste toepassing gebruikmaakt van de autorisatiecode ophalen een toegang JWT-token, ontvangt deze ook een JWT-vernieuwingstoken. Wanneer het toegangstoken is verlopen, kan het vernieuwingstoken dat kan worden gebruikt voor het opnieuw verifiëren zonder te vragen om referenties. Dit vernieuwingstoken wordt vervolgens gebruikt voor verificatie van de gebruiker, wat resulteert in een nieuw toegangstoken en een vernieuwingstoken.
+Wanneer de eerste toepassing de autorisatie code gebruikt om een JWT-toegangs token op te halen, ontvangt deze ook een JWT-vernieuwings token. Wanneer het toegangs token is verlopen, kan het vernieuwings token worden gebruikt om de gebruiker opnieuw te verifiëren zonder dat om referenties wordt gevraagd. Deze vernieuwings token wordt vervolgens gebruikt om de gebruiker te verifiëren, wat resulteert in een nieuw toegangs token en vernieuwings token.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over andere [toepassingstypen en scenario's](app-types.md)
-- Meer informatie over de Azure AD [de basisbeginselen van verificatie](authentication-scenarios.md)
+- Meer informatie over andere [toepassings typen en scenario's](app-types.md)
+- Meer informatie over de [basis beginselen](v1-authentication-scenarios.md) van Azure AD-verificatie

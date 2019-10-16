@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286113"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329447"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
 
@@ -193,7 +193,7 @@ De REST-bewerkingen voor het werken met het activiteiten logboek maken deel uit 
 
 * Azure-activiteiten logboeken kunnen worden gebruikt met Power BI om meer inzicht te krijgen in de acties in uw abonnement. Zie [Azure-activiteiten logboeken weer geven en analyseren in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Zie [Access Control op basis van rollen](../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van beveiligings beleid.
-* Zie [toepassings wijzigingen in Azure Monitor gebruiken] (................ /Azure-monitor/app/Change-Analysis. MD).
+* Zie [toepassings wijzigingen in azure monitor gebruiken](../azure-monitor/app/change-analysis.md)voor meer informatie over de wijzigingen in uw toepassingen vanuit de laag van de infra structuur voor de implementatie van toepassingen.
 * Zie [implementatie bewerkingen weer geven](resource-manager-deployment-operations.md)voor meer informatie over de opdrachten voor het weer geven van implementatie bewerkingen.
 * Zie [resources vergren delen met Azure Resource Manager](resource-group-lock-resources.md)voor meer informatie over het voor komen van het verwijderen van een resource voor alle gebruikers.
 * Zie [Azure Resource Manager resource provider bewerkingen](../role-based-access-control/resource-provider-operations.md) voor een overzicht van de beschik bare bewerkingen voor elke Microsoft Azure Resource Manager-provider.

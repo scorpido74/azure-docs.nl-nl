@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001735"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374075"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -71,14 +71,14 @@ Ons team bekijkt de details en geeft u de juiste toegang. Nadat uw aanvraag is g
 
 Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst een van de volgende Federatie protocollen implementeren die door Azure AD worden ondersteund. U moet ook akkoord gaan met de voor waarden van de Azure AD-toepassings galerie. Lees de voor waarden van de Azure AD-toepassings galerie op [deze website](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-- **OpenID connect verbinding maken**: Volg de instructies van de [ontwikkel aars](authentication-scenarios.md)om uw toepassing te integreren met Azure AD met behulp van het Open-ID Connect-protocol.
+- **OpenID Connect Connect**: als u uw toepassing wilt integreren met Azure AD met behulp van het Open-ID Connect-protocol, volgt u de instructies van de [ontwikkel aars](v1-authentication-scenarios.md).
 
     ![Een OpenID Connect Connect-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/openid.png)
 
     * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van OpenID Connect Connect, selecteert u **OpenID Connect connect & OAuth 2,0** , zoals wordt weer gegeven.
     * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **SAML 2,0** of **WS-voeder**: Als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../active-directory-saas-custom-apps.md).
+- **Saml 2,0** of **WS-voeder**: als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../active-directory-saas-custom-apps.md).
 
   ![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
