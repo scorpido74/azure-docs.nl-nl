@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: Extra abonnementen maken
       href: billing-create-subscription.md
-    - name: Extra abonnement maken - Microsoft-klantovereenkomst
-      href: billing-mca-create-subscription.md
     - name: Programmatisch Enterprise-abonnementen maken
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Abonnementsgegevens exporteren

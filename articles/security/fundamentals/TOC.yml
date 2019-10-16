@@ -3,6 +3,10 @@
 - name: Architectuur en ontwerp
   href: overview.md
   expanded: false
+  items: null
+- name: Architectuur en ontwerp
+  href: overview.md
+  expanded: false
   items:
     - name: Geavanceerde detectie van bedreigingen
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Azure-netwerkbeveiliging
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: Beveiliging van serverloze Azure-platforms
-      href: abstract-serverless-platform-security.md
-    - name: Containerbeveiliging in Azure
-      href: abstract-container-security.md
-    - name: Operationele beveiliging inschakelen
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Isolatie in de Azure-cloud
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Technische mogelijkheden voor beveiliging
       href: technical-capabilities.md
-    - name: Beveiligde apps in Azure ontwikkelen
-      href: abstract-develop-secure-apps.md
 - name: Gegevensbeveiliging en -versleuteling
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: Schijfversleuteling met de Azure AD-app voor virtuele Linux-machines
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Beveiliging voor Azure Storage
-      href: storage-overview.md
     - name: Gids voor opslagbeveiliging
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Klanten-lockbox
