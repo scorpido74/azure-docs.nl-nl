@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950010"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372620"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 
@@ -78,14 +78,14 @@ Nadat u Digital Apparaatdubbels hebt geïmplementeerd vanuit de [Azure Portal](h
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | Vervangen door |
+| Naam | Vervangen door |
 | --- | --- |
 | YOUR_INSTANCE_NAME | De naam van uw Digital Twins-exemplaar |
 | YOUR_LOCATION | De serverregio waarin het exemplaar wordt gehost |
 
  De volledige URL-indeling wordt weer gegeven in deze afbeelding.
 
-(![Digital Apparaatdubbels Portal Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/concepten/Digital-Twins-Spatial-Graph-Management-API-URL. png # Lightbox)
+[![Digital Apparaatdubbels-Portal beheer-API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Ga naar de preview-versie van Azure Digital Apparaatdubbels Management Api's alvast voor meer informatie over het gebruik van ruimtelijke Intelligence-grafieken.
 

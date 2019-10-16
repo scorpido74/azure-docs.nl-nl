@@ -1,6 +1,6 @@
 ---
-title: Azure InfoBox UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Common.TextBlock UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure InfoBox | Microsoft Docs
+description: Hierin wordt het micro soft. common. InfoBox UI-element voor Azure Portal beschreven. Gebruiken om tekst of waarschuwingen toe te voegen bij het implementeren van een beheerde toepassing.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67ae05c2ec7b36d76e49f26d5765bbc68b952292
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711223"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331693"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI-element
-Een besturingselement waarmee een informatievenster worden toegevoegd. Het vak bevat belangrijke tekst of waarschuwingen die gebruikers helpen om te begrijpen van de waarden die ze bieden. Het kan ook koppelen aan een URI voor meer informatie.
+# <a name="microsoftcommoninfobox-ui-element"></a>Micro soft. common. InfoBox UI-element
+Een besturings element waarmee een informatie venster wordt toegevoegd. Het vak bevat belang rijke tekst of waarschuwingen waarmee gebruikers inzicht kunnen krijgen in de waarden die ze bieden. Het kan ook worden gekoppeld aan een URI voor meer informatie.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+## <a name="ui-sample"></a>UI-voor beeld
+![Micro soft. common. InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
 
 
 ## <a name="schema"></a>Schema
@@ -43,8 +43,8 @@ Een besturingselement waarmee een informatievenster worden toegevoegd. Het vak b
 
 ## <a name="remarks"></a>Opmerkingen
 
-* Voor `icon`, gebruikt u **geen**, **Info**, **waarschuwing**, of **fout**.
-* De `uri` eigenschap is optioneel.
+* Voor `icon`, gebruikt u **geen**, **info**, **waarschuwing**of **fout**.
+* De eigenschap `uri` is optioneel.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
@@ -53,5 +53,5 @@ Een besturingselement waarmee een informatievenster worden toegevoegd. Het vak b
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

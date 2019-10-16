@@ -1,6 +1,6 @@
 ---
-title: Azure UserNameTextBox UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Compute.UserNameTextBox UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure UserNameTextBox | Microsoft Docs
+description: Hierin wordt het UI-element micro soft. compute. UserNameTextBox voor Azure Portal beschreven. Hiermee kunnen gebruikers Windows-of Linux-gebruikers namen opgeven.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875c73c546fa52642959e2593d41f9af82c13797
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700844"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331579"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI-element
-Besturingselement voor een tekstvak met ingebouwde validatie voor Windows en Linux-gebruikersnamen.
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Micro soft. compute. UserNameTextBox UI-element
+Een besturings element tekstvak met ingebouwde validatie voor Windows-en Linux-gebruikers namen.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
+## <a name="ui-sample"></a>UI-voor beeld
+![Micro soft. compute. UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -44,11 +44,11 @@ Besturingselement voor een tekstvak met ingebouwde validatie voor Windows en Lin
 ```
 
 ## <a name="remarks"></a>Opmerkingen
-- Als `constraints.required` is ingesteld op **waar**, en vervolgens in het tekstvak moet een waarde die moet worden gevalideerd. De standaardwaarde is **waar**.
-- `osPlatform` Er moet worden opgegeven en kan **Windows** of **Linux**.
-- `constraints.regex` is een reguliere-expressiepatroon van JavaScript. Als u opgeeft, klikt u vervolgens het tekstvak waarde moet overeenkomen met het patroon worden gevalideerd. De standaardwaarde is **null**.
-- `constraints.validationMessage` is een tekenreeks om weer te geven wanneer de waarde van het tekstvak, mislukt de validatie is opgegeven door `constraints.regex`. Als niet is opgegeven, wordt het tekstvak ingebouwde validatieberichten gebruikt. De standaardwaarde is **null**.
-- Dit element heeft ingebouwde valideren die is gebaseerd op de opgegeven waarde voor `osPlatform`. De ingebouwde validatie kan worden gebruikt samen met een aangepaste reguliere expressie. Als er een waarde voor `constraints.regex` is opgegeven, worden de ingebouwde en aangepaste validaties worden geactiveerd.
+- Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaard waarde is **True**.
+- `osPlatform` moet worden opgegeven en kan **Windows** of **Linux**zijn.
+- `constraints.regex` is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
+- `constraints.validationMessage` is een teken reeks die moet worden weer gegeven wanneer de waarde van het tekstvak niet voldoet aan de validatie die is opgegeven door `constraints.regex`. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
+- Dit element heeft ingebouwde validatie die is gebaseerd op de waarde die is opgegeven voor `osPlatform`. De ingebouwde validatie kan worden gebruikt in combi natie met een aangepaste reguliere expressie. Als er een waarde voor `constraints.regex` is opgegeven, worden de ingebouwde en aangepaste validaties geactiveerd.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 ```json
@@ -56,5 +56,5 @@ Besturingselement voor een tekstvak met ingebouwde validatie voor Windows en Lin
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

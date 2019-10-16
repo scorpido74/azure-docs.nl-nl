@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: nitinme
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186456"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331183"
 ---
 # <a name="synonyms-in-azure-search"></a>Synoniemen in Azure Search
 
@@ -25,7 +25,7 @@ In Azure Search wordt de uitbrei ding van synoniemen uitgevoerd op het moment va
 
 ## <a name="create-synonyms"></a>Synoniemen maken
 
-Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om postman en formulering van aanvragen te [gebruiken](search-get-started-postman.md) met behulp van deze API: [Maak synoniemen kaarten](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Voor C# ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure Search C#met ](search-synonyms-tutorial-sdk.md).
+Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om [postman](search-get-started-postman.md) en formulering van aanvragen te gebruiken met behulp van deze API: [Create synoniem Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Voor C# ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure Search C#met ](search-synonyms-tutorial-sdk.md).
 
 Als u gebruikmaakt van door de [klant beheerde sleutels](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde, kunt u die beveiliging ook Toep assen op de inhoud van uw synoniemen kaart.
 
@@ -40,6 +40,8 @@ Het opnemen van synoniemen in uw zoek toepassing is een proces in twee stappen:
 1.  Voeg aan de hand van de onderstaande Api's een synoniemen kaart toe aan uw zoek service.  
 
 2.  Configureer een Doorzoek bare veld om de synoniemen toewijzing in de index definitie te gebruiken.
+
+U kunt meerdere synoniemen kaarten maken voor uw zoek toepassing (bijvoorbeeld op taal als uw toepassing een meertalige klanten database ondersteunt). Er kan op dit moment slechts een veld worden gebruikt. U kunt de eigenschap synonymMaps van een veld op elk gewenst moment bijwerken.
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps-resource-Api's
 
@@ -152,18 +154,11 @@ De functie synoniem is van toepassing op zoek query's en is niet van toepassing 
 
 Synoniemen uitbreidingen zijn niet van toepassing op zoek termen met Joker tekens. voor waarden voor voor voegsels, fuzzy en regex worden niet uitgevouwen.
 
-Als u één query wilt uitvoeren die synoniemen uitbrei ding en Joker teken, regex of fuzzy zoek acties uitvoert, kunt u de query's combi neren met behulp van de of-syntaxis. Als u bijvoorbeeld synoniemen met Joker tekens wilt combi neren voor eenvoudige query syntaxis, is `<query> | <query>*`de term.
+Als u één query wilt uitvoeren die synoniemen uitbrei ding en Joker teken, regex of fuzzy zoek acties uitvoert, kunt u de query's combi neren met behulp van de of-syntaxis. Als u bijvoorbeeld synoniemen met Joker tekens wilt combi neren voor eenvoudige query syntaxis, wordt de term `<query> | <query>*`.
 
-## <a name="tips-for-building-a-synonym-map"></a>Tips voor het bouwen van een synoniemen kaart
-
-- Een beknopte, goed ontworpen synoniemen kaart is efficiënter dan een limitatieve lijst met mogelijke overeenkomsten. Buitensporig grote of complexe woorden lijsten nemen meer tijd in beslag om de query latentie te parseren en te beïnvloeden als de query wordt uitgebreid naar een groot aantal synoniemen. In plaats van te raden aan welke voor waarden kunnen worden gebruikt, kunt u de werkelijke voor waarden ophalen via een [analyse rapport voor zoek verkeer](search-traffic-analytics.md).
-
-- In het geval van een voorlopige en validatie oefening kunt u met dit rapport nauw keurig bepalen welke voor waarden van een synoniem overeenkomen en het vervolgens blijven gebruiken als validatie dat uw synoniemen kaart een beter resultaat produceert. In het vooraf gedefinieerde rapport krijgt de tegels "meest voorkomende Zoek query's" en "Zoek query's met nul resultaten" de benodigde informatie.
-
-- U kunt meerdere synoniemen kaarten maken voor uw zoek toepassing (bijvoorbeeld op taal als uw toepassing een meertalige klanten database ondersteunt). Er kan op dit moment slechts een veld worden gebruikt. U kunt de eigenschap synonymMaps van een veld op elk gewenst moment bijwerken.
+Als u een bestaande index in een ontwikkelings omgeving (niet-productie) hebt, kunt u experimenteren met een kleine woorden lijst om te zien hoe het toevoegen van synoniemen de zoek ervaring wijzigt, met inbegrip van de impact op Score profielen, het markeren van treffers en suggesties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u een bestaande index in een ontwikkelings omgeving (niet-productie) hebt, kunt u experimenteren met een kleine woorden lijst om te zien hoe het toevoegen van synoniemen de zoek ervaring wijzigt, met inbegrip van de impact op Score profielen, het markeren van treffers en suggesties.
-
-- [Schakel zoek verkeer analyse in](search-traffic-analytics.md) en gebruik het vooraf gedefinieerde Power bi rapport om te zien welke voor waarden het meest worden gebruikt, en welke woorden nul documenten retour neren. Met deze inzichten kunt u de woorden lijst zodanig aanpassen dat synoniemen worden opgenomen voor productspecifieke query's die moeten worden omgezet in documenten in uw index.
+> [!div class="nextstepaction"]
+> [Een synoniemen kaart maken](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

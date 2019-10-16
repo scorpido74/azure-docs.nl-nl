@@ -1,6 +1,6 @@
 ---
 title: Gebruikers interface-element van Azure FileUpload | Microsoft Docs
-description: Hierin wordt het micro soft. common. FileUpload UI-element voor Azure Portal beschreven.
+description: Hierin wordt het micro soft. common. FileUpload UI-element voor Azure Portal beschreven. Hiermee kunnen gebruikers bestanden uploaden bij het implementeren van een beheerde toepassing.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828003"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331698"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>UI-element micro soft. common. FileUpload
 Een besturings element waarmee een gebruiker een of meer bestanden kan opgeven die moeten worden geüpload.
 
 ## <a name="ui-sample"></a>UI-voor beeld
-![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+![Micro soft. common. FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -49,7 +49,7 @@ Een besturings element waarmee een gebruiker een of meer bestanden kan opgeven d
 
 ## <a name="remarks"></a>Opmerkingen
 - `constraints.accept` geeft de typen bestanden aan die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
-- Als `options.multiple` is ingesteld op **waar**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaardwaarde is **false**.
+- Als `options.multiple` is ingesteld op **waar**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaard waarde is **False**.
 - Dit element ondersteunt het uploaden van bestanden in twee modi op basis van de waarde van `options.uploadMode`. Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
 - Een geüpload bestand is beveiligd. De uitvoer-URL bevat een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor toegang tot het bestand tijdens de implementatie.
 - De waarde van `options.openMode` bepaalt hoe het bestand wordt gelezen. Als het bestand wordt verwacht als tekst zonder opmaak, geeft u **tekst**op. u kunt ook **binary**opgeven. De standaard waarde is **tekst**.

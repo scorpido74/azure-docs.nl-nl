@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240329"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372836"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
 Er is geen verschil in de structuur van runbooks die worden uitgevoerd in Azure Automation en runbooks die worden uitgevoerd op een Hybrid Runbook Worker. Runbooks die u gebruikt met elke waarschijnlijke verschillen aanzienlijk. Dit verschil is omdat runbooks die gericht zijn op een Hybrid Runbook Worker meestal resources op de lokale computer zelf of op basis van resources in de lokale omgeving beheert waar deze worden geïmplementeerd. Runbooks in Azure Automation beheren resources doorgaans in de Azure-Cloud.
 
-Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een `nxautomation` speciaal gebruikers account op Linux. In Linux betekent dit dat u moet controleren of het `nxautomation` account toegang heeft tot de locatie waar u de modules opslaat. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, geeft u **ALLUSERS** op `-Scope` voor de para meter om `naxautomation` te bevestigen dat het account toegang heeft.
+Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een speciaal gebruikers account `nxautomation` op Linux. In Linux betekent dit dat u moet controleren of het `nxautomation`-account toegang heeft tot de locatie waar u de modules opslaat. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, geeft u **ALLUSERS** op in de para meter `-Scope` om te bevestigen dat de `naxautomation`-account toegang heeft.
 
 Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -60,7 +60,7 @@ U kunt ook [InlineScript](automation-powershell-workflow.md#inlinescript)gebruik
 
 ### <a name="runas-account"></a>Runas-account
 
-Standaard gebruikt de Hybrid Runbook worker lokaal systeem voor Windows en een speciaal gebruikers account `nxautomation` voor Linux om runbooks uit te voeren. In plaats van dat runbooks hun eigen verificatie bieden voor lokale resources, kunt u een **runas** -account opgeven voor een Hybrid worker-groep. U geeft een [referentie-element](automation-credentials.md) op dat toegang heeft tot lokale bronnen, met inbegrip van certificaat archieven en alle runbooks die worden uitgevoerd onder deze referenties wanneer ze worden uitgevoerd op een Hybrid Runbook worker in de groep.
+Standaard gebruikt de Hybrid Runbook Worker lokaal systeem voor Windows en een speciaal gebruikers account `nxautomation` voor Linux om runbooks uit te voeren. In plaats van dat runbooks hun eigen verificatie bieden voor lokale resources, kunt u een **runas** -account opgeven voor een Hybrid worker-groep. U geeft een [referentie-element](automation-credentials.md) op dat toegang heeft tot lokale bronnen, met inbegrip van certificaat archieven en alle runbooks die worden uitgevoerd onder deze referenties wanneer ze worden uitgevoerd op een Hybrid Runbook worker in de groep.
 
 De gebruikers naam voor de referentie moet een van de volgende indelingen hebben:
 
@@ -89,11 +89,10 @@ Als u een beheerde identiteit voor Azure-resources wilt gebruiken op een Hybrid 
 
 1. Een Azure-VM maken
 2. [Beheerde identiteiten configureren voor Azure-resources op uw VM](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
-3. [Uw VM toegang verlenen tot een resource groep in Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
-4. [Een toegangs Token ophalen met de door het systeem toegewezen beheerde identiteit van de virtuele machine](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
-5. [Installeer de Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) op de virtuele machine.
+3. [Uw VM toegang verlenen tot een resource groep in Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) zelf studie-Windows-VM-toegang-arm. MD # Get-a-Access-token-using-the-vm's-door het systeem toegewezen beheerde identiteit-en-use-to-call-Azure-Resource-Manager)
+4. [Installeer de Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) op de virtuele machine.
 
-Zodra de voor gaande stappen zijn voltooid, kunt u `Connect-AzureRmAccount -Identity` in het runbook gebruiken om te verifiëren bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het certificaat voor het uitvoeren als-account te beheren.
+Zodra de voor gaande stappen zijn voltooid, kunt u in het runbook `Connect-AzureRmAccount -Identity` gebruiken om te verifiëren bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het certificaat voor het uitvoeren als-account te beheren.
 
 ```powershell
 # Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -102,6 +101,9 @@ Connect-AzureRmAccount -Identity
 # Get all VM names from the subscription
 Get-AzureRmVm | Select Name
 ```
+
+> [!NOTE]
+> `Connect-AzureRMAccount -Identity` werkt voor een Hybrid Runbook Worker met behulp van een door het systeem toegewezen identiteit en één door de gebruiker toegewezen identiteit. Als u meerdere door de gebruiker toegewezen identiteiten wilt gebruiken op de HRW, moet u de para meter `-AccountId` opgeven om de specifieke door de gebruiker toegewezen identiteit te selecteren.
 
 ### <a name="runas-script"></a>Uitvoeren als-account voor Automation
 
@@ -182,7 +184,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > **Add-AzureRmAccount** is nu een alias voor **Connect-AzureRmAccount**. Als u de bibliotheek items zoekt en u geen **Connect-AzureRMAccount**ziet, kunt u **add-AzureRMAccount**gebruiken, maar u kunt ook uw modules bijwerken in uw Automation-account.
 
-Sla het runbook *export-RunAsCertificateToHybridWorker* op uw computer op met `.ps1` een extensie. Importeer deze in uw Automation-account en bewerk het runbook en wijzig de waarde van `$Password` de variabele met uw eigen wacht woord. Publiceer het runbook en voer het vervolgens uit. Richt de Hybrid Worker-groep in die runbooks uitvoert en verifieert met behulp van het run as-account. De taak stroom rapporteert de poging om het certificaat te importeren in het archief van de lokale computer en wordt gevolgd door meerdere regels. Dit gedrag is afhankelijk van het aantal Automation-accounts dat u in uw abonnement definieert en als de verificatie is geslaagd.
+Sla het runbook *export-RunAsCertificateToHybridWorker* op uw computer op met een uitbrei ding van `.ps1`. Importeer deze in uw Automation-account en bewerk het runbook, waarbij u de waarde van de variabele `$Password` wijzigt met uw eigen wacht woord. Publiceer het runbook en voer het vervolgens uit. Richt de Hybrid Worker-groep in die runbooks uitvoert en verifieert met behulp van het run as-account. De taak stroom rapporteert de poging om het certificaat te importeren in het archief van de lokale computer en wordt gevolgd door meerdere regels. Dit gedrag is afhankelijk van het aantal Automation-accounts dat u in uw abonnement definieert en als de verificatie is geslaagd.
 
 ## <a name="job-behavior"></a>Taak gedrag
 
@@ -256,15 +258,15 @@ Als u runbooks wilt ondertekenen op een Linux-Hybrid Runbook Worker, moet het ui
 
 #### <a name="create-a-gpg-keyring-and-keypair"></a>Een GPG-sleutel hanger en-sleutel paar maken
 
-Als u de sleutel hanger en het sleutel paar wilt maken, moet u het Hybrid Runbook Worker `nxautomation`-account gebruiken.
+Als u de sleutel hanger en het sleutel paar wilt maken, moet u het Hybrid Runbook Worker-account gebruiken `nxautomation`.
 
-Gebruik `sudo` om u aan te melden `nxautomation` als het account.
+Gebruik `sudo` om u aan te melden als de `nxautomation`-account.
 
 ```bash
 sudo su – nxautomation
 ```
 
-Genereer het `nxautomation` GPG-sleutel paar nadat u het account hebt gebruikt.
+Genereer het GPG-sleutel paar nadat u het `nxautomation`-account hebt gebruikt.
 
 ```bash
 sudo gpg --generate-key
@@ -282,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>De sleutel hanger beschikbaar maken voor de Hybrid Runbook Worker
 
-Zodra de sleutel hanger is gemaakt, moet u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` , zodat het volgende voor beeld wordt vermeld onder de sectie`[worker-optional]`
+Zodra de sleutel hanger is gemaakt, moet u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` als u het volgende voor beeld wilt toevoegen onder de sectie `[worker-optional]`
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
@@ -290,7 +292,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Controleren of de handtekening validatie is ingeschakeld
 
-Als handtekening validatie is uitgeschakeld op de computer, moet u deze inschakelen. Voer de volgende opdracht uit om handtekening validatie in te scha kelen. Vervangen `<LogAnalyticsworkspaceId>` door de werk ruimte-id.
+Als handtekening validatie is uitgeschakeld op de computer, moet u deze inschakelen. Voer de volgende opdracht uit om handtekening validatie in te scha kelen. @No__t-0 vervangen door de werk ruimte-ID.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>

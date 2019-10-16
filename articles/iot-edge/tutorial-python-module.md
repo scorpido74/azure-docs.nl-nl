@@ -6,18 +6,18 @@ author: shizn
 manager: philmea
 ms.reviewer: kgremban
 ms.author: xshi
-ms.date: 03/24/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 99df85800c48585098a9df5bcc35d6b9ce9a8903
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001112"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331644"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een python IoT Edge-module ontwikkelen en implementeren voor Linux-apparaten
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Zelf studie: een python IoT Edge-module ontwikkelen en implementeren voor Linux-apparaten
 
 Gebruik Visual Studio code om C-code te ontwikkelen en te implementeren op een Linux-apparaat met Azure IoT Edge. 
 
@@ -46,13 +46,13 @@ Gebruik de volgende tabel om inzicht te krijgen in uw opties voor het ontwikkele
 | Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![VS-code gebruiken voor python-modules op Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![VS-code gebruiken voor python-modules op Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux-ARM32** | ![VS-code gebruiken voor python-modules op Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor de ontwikkeling van Linux-containers: [Ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door een van deze zelf studies te volt ooien, moet u aan de volgende vereisten voldoen: 
+Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door een van deze zelf studies te volt ooien, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -78,11 +78,11 @@ Gebruik de VS code voor het maken van een sjabloon voor een python-oplossing die
 
 1. Selecteer **View** > **Command Palette** om het VS Code-opdrachtpalet te openen. 
 
-1. Voer in het opdrachtpalet de opdracht **Azure: Aanmelden** in, voer deze uit en volg de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
+1. Voer in het opdrachtpalet de opdracht **Azure: Sign in** in en voer deze uit. Volg vervolgens de instructies om u aan te melden bij uw Azure-account. Als u al bent aangemeld, kunt u deze stap overslaan.
 
 1. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Volg de aanwijzingen en geef de volgende informatie op om uw oplossing te maken:
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
    | Map selecteren | Kies de locatie op uw ontwikkelcomputer waar VS Code de oplossingsbestanden moet maken. |
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor de oplossing in of accepteer de standaardnaam **EdgeSolution**. |
@@ -105,7 +105,7 @@ In het omgevingsbestand worden de referenties voor de containeropslagplaats opge
 
 Visual Studio code kan momenteel C-modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64. 
 
-1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor rand**oplossing in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
+1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor de rand oplossing**in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
 
 2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard. 
 
@@ -124,63 +124,67 @@ Elke sjabloon bevat voorbeeld code, waarmee gesimuleerde sensor gegevens van de 
 3. Voeg de variabelen **TEMPERATURE_THRESHOLD** en **TWIN_CALLBACKS** toe onder de globale tellers. De temperatuurdrempel bepaalt de waarde die de gemeten temperatuur van de machine moet overschrijden voordat de gegevens naar de IoT-hub worden verzonden.
 
     ```python
+    # global counters
     TEMPERATURE_THRESHOLD = 25
     TWIN_CALLBACKS = 0
+    RECEIVED_MESSAGES = 0
     ```
 
-4. Vervang de functie **receive_message_callback** door de volgende code:
+4. Vervang de functie **input1_listener** door de volgende code:
 
     ```python
-    # receive_message_callback is invoked when an incoming message arrives on the specified 
-    # input queue (in the case of this sample, "input1").  Because this is a filter module, 
-    # we forward this message to the "output1" queue.
-    def receive_message_callback(message, hubManager):
-        global RECEIVE_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        data = json.loads(message_text)
-        if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
-            map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
-        hubManager.forward_event_to_output("output1", message, 0)
-        return IoTHubMessageDispositionResult.ACCEPTED
+        # Define behavior for receiving an input message on input1
+        # Because this is a filter module, we forward this message to the "output1" queue.
+        async def input1_listener(module_client):
+            global RECEIVED_MESSAGES
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    input_message = await module_client.receive_message_on_input("input1")  # blocking call
+                    message = input_message.data
+                    size = len(message)
+                    message_text = message.decode('utf-8')
+                    print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+                    custom_properties = input_message.custom_properties
+                    print ( "    Properties: %s" % custom_properties )
+                    RECEIVED_MESSAGES += 1
+                    print ( "    Total messages received: %d" % RECEIVED_MESSAGES )
+                    data = json.loads(message_text)
+                    if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
+                        custom_properties["MessageType"] = "Alert"
+                        print ( "Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+                        await module_client.send_message_to_output(input_message, "output1")
+                except Exception as ex:
+                    print ( "Unexpected error in input1_listener: %s" % ex )
+        
+        # twin_patch_listener is invoked when the module twin's desired properties are updated.
+        async def twin_patch_listener(module_client):
+            global TWIN_CALLBACKS
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    data = await module_client.receive_twin_desired_properties_patch()  # blocking call
+                    print( "The data in the desired properties patch was: %s" % data)
+                    if "TemperatureThreshold" in data:
+                        TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
+                    TWIN_CALLBACKS += 1
+                    print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+                except Exception as ex:
+                    print ( "Unexpected error in twin_patch_listener: %s" % ex )
     ```
 
-5. Voeg een nieuwe functie toe met de naam **module_twin_callback**. Deze functie wordt aangeroepen wanneer de gewenste eigenschappen zijn bijgewerkt.
+5. Werk de **listeners** bij om ook dubbele updates te kunnen Luis teren.
 
     ```python
-    # module_twin_callback is invoked when the module twin's desired properties are updated.
-    def module_twin_callback(update_state, payload, user_context):
-        global TWIN_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
-        data = json.loads(payload)
-        if "desired" in data and "TemperatureThreshold" in data["desired"]:
-            TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
-        if "TemperatureThreshold" in data:
-            TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
-        TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        # Schedule task for C2D Listener
+        listeners = asyncio.gather(input1_listener(module_client), twin_patch_listener(module_client))
+
+        print ( "The sample is now waiting for messages. ")
     ```
 
-6. Voeg in de **HubManager**-klasse een nieuwe regel aan de **__init__** -methode toe om de zojuist toegevoegde functie **module_twin_callback** te initialiseren:
+6. Sla het bestand main.py op.
 
-    ```python
-    # Sets the callback when a module twin's desired properties are updated.
-    self.client.set_module_twin_callback(module_twin_callback, self)
-    ```
-
-7. Sla het bestand main.py op.
-
-8. Open in VS Code Explorer het bestand **deployment.template.json** in de werkruimte van de IoT Edge-oplossing. 
+7. Open in VS Code Explorer het bestand **deployment.template.json** in de werkruimte van de IoT Edge-oplossing. 
 
 9. Voeg de moduledubbel **PythonModule** toe aan het distributiemanifest. Voeg de volgende JSON-inhoud onderaan de sectie **moduleContent** in, na de moduledubbel **$edgeHub**: 
 
@@ -208,11 +212,11 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Mogelijk wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het `--password-stdin`gebruik van te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de koppeling naar docker- [aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Er wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het gebruik van `--password-stdin` te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de [koppeling naar docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. Klik in VS Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge solution**.
 
-   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` de container installatie kopie gemaakt op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` de opslag plaats voor de installatie kopie naar het container register pusht.
+   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` uitgevoerd om de container installatie kopie te bouwen op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` uitgevoerd om de opslag plaats van de installatie kopie naar het container register te pushen.
 
 
 ## <a name="deploy-modules-to-device"></a>Modules implementeren op het apparaat
@@ -270,5 +274,5 @@ In deze zelfstudie hebt u een IoT Edge-module gemaakt die code bevat voor het fi
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [machine learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision service](tutorial-deploy-custom-vision.md)

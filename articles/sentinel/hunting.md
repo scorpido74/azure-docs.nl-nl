@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240619"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372410"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel"></a>Zoeken naar bedreigingen met in azure Sentinel
 
@@ -35,20 +35,20 @@ Eén ingebouwde query biedt bijvoorbeeld gegevens over de meest voorkomende proc
 
 Met Azure Sentinel-jacht kunt u profiteren van de volgende mogelijkheden:
 
-- Ingebouwde query's: Om aan de slag te gaan, biedt een start pagina vooraf geladen query voorbeelden die zijn ontworpen om u op weg te helpen en u vertrouwd te raken met de tabellen en de query taal. Deze ingebouwde jacht-query's worden continu ontwikkeld door micro soft-beveiligings onderzoekers, het toevoegen van nieuwe query's en het afstemmen van bestaande query's om u een ingangs punt te bieden voor nieuwe detecties en te achterhalen waar u kunt zoeken naar de begin van nieuwe aanvallen. 
+- Ingebouwde query's: om aan de slag te gaan, biedt een start pagina vooraf geladen query voorbeelden die zijn ontworpen om u op weg te helpen en u vertrouwd te raken met de tabellen en de query taal. Deze ingebouwde jacht-query's worden continu ontwikkeld door micro soft-beveiligings onderzoekers, het toevoegen van nieuwe query's en het afstemmen van bestaande query's om u een ingangs punt te bieden voor nieuwe detecties en te achterhalen waar u kunt zoeken naar de begin van nieuwe aanvallen. 
 
-- Krachtige query taal met IntelliSense: Gebouwd op basis van een query taal die u de flexibiliteit biedt die u nodig hebt om naar het volgende niveau te gaan.
+- Krachtige query taal met IntelliSense: gebouwd op basis van een query taal die u de flexibiliteit biedt die u nodig hebt om naar het volgende niveau te gaan.
 
-- Uw eigen blad wijzers maken: Tijdens het jacht-proces kunt u komen over overeenkomsten of bevindingen, Dash boards of activiteiten die er vreemd of verdacht uitzien. Als u deze items wilt markeren zodat u ze in de toekomst weer kunt gebruiken, gebruikt u de bladwijzer functionaliteit. Met blad wijzers kunt u items later opslaan, zodat u deze kunt gebruiken om een incident voor onderzoek te maken. Zie [blad wijzers gebruiken in jacht](hunting.md)voor meer informatie over blad wijzers.
-- Notitie blokken gebruiken om onderzoek te automatiseren: Notebooks zijn net als stapsgewijze playbooks die u kunt maken om de stappen van een onderzoek en jacht te door lopen.  Notebooks bevatten alle jacht-stappen in een herbruikbare Playbook die kunnen worden gedeeld met anderen in uw organisatie. 
-- Query uitvoeren op de opgeslagen gegevens: De gegevens zijn toegankelijk in de tabellen die u wilt doorzoeken. U kunt bijvoorbeeld een query uitvoeren op proces maken, DNS-gebeurtenissen en veel andere gebeurtenis typen.
+- Uw eigen blad wijzers maken: tijdens het jacht-proces kunt u komen over overeenkomsten of bevindingen, Dash boards of activiteiten die er vreemd of verdacht uitzien. Als u deze items wilt markeren zodat u ze in de toekomst weer kunt gebruiken, gebruikt u de bladwijzer functionaliteit. Met blad wijzers kunt u items later opslaan, zodat u deze kunt gebruiken om een incident voor onderzoek te maken. Zie [blad wijzers gebruiken in jacht](hunting.md)voor meer informatie over blad wijzers.
+- Notitie blokken gebruiken om onderzoek te automatiseren: Notebooks zijn bijvoorbeeld stapsgewijze playbooks die u kunt maken om de stappen van een onderzoek en jacht te door lopen.  Notebooks bevatten alle jacht-stappen in een herbruikbare Playbook die kunnen worden gedeeld met anderen in uw organisatie. 
+- Query's uitvoeren op de opgeslagen gegevens: de gegevens zijn toegankelijk in de tabellen die u wilt doorzoeken. U kunt bijvoorbeeld een query uitvoeren op proces maken, DNS-gebeurtenissen en veel andere gebeurtenis typen.
 
 - Koppelingen naar Community: Maak gebruik van de kracht van de grotere Community om extra query's en gegevens bronnen te vinden.
  
 ## <a name="get-started-hunting"></a>Aan de slag met jacht
 
 1. Klik in de Azure-Sentinel-Portal op **jacht**.
-  ![Azure Sentinel start-jacht](media/tutorial-hunting/hunting-start.png)
+  ![Azure-Sentinel start de jacht @ no__t-1
 
 2. Wanneer u de pagina **jacht** opent, worden alle Zoek opdrachten in één tabel weer gegeven. De tabel bevat een lijst met alle query's die zijn geschreven door het team van beveiligings analisten van micro soft, evenals de aanvullende query's die u hebt gemaakt of gewijzigd. Elke query bevat een beschrijving van de functie voor het zoeken naar en de soort gegevens waarop deze wordt uitgevoerd. Deze sjablonen worden gegroepeerd op hun verschillende tactiek-de pictogrammen aan de rechter kant categoriseren het type bedreiging, zoals initiële toegang, persistentie en exfiltration. U kunt deze jacht-query sjablonen filteren met behulp van een van de velden. U kunt elke query opslaan in uw favorieten. Als u een query opslaat in uw favorieten, wordt de query automatisch uitgevoerd telkens wanneer de pagina **jacht** wordt geopend. U kunt uw eigen zoek opdracht maken of een bestaande zoek opdracht sjabloon klonen en aanpassen. 
  
@@ -68,7 +68,7 @@ Met Azure Sentinel-jacht kunt u profiteren van de volgende mogelijkheden:
 
 ## <a name="query-language"></a>Querytaal 
 
-Jacht in azure Sentinel is gebaseerd op de query taal van Azure Log Analytics. Zie [Query Language Reference (Engelstalig](https://docs.loganalytics.io/docs/Language-Reference/)) voor meer informatie over de query taal en ondersteunde Opera tors.
+Jacht in azure Sentinel is gebaseerd op de Kusto-query taal. Zie [Query Language Reference (Engelstalig](https://docs.loganalytics.io/docs/Language-Reference/)) voor meer informatie over de query taal en ondersteunde Opera tors.
 
 ## <a name="public-hunting-query-github-repository"></a>GitHub-opslag plaats voor open bare jacht-query's
 
@@ -78,7 +78,7 @@ Bekijk de [Zoek opslagplaats](https://github.com/Azure/Orion)van de query. Deel 
 
 ## <a name="sample-query"></a>Voorbeeld query
 
-Een typische query begint met een tabel naam gevolgd door een reeks Opera tors gescheiden door \|.
+Een typische query begint met een tabel naam gevolgd door een reeks Opera Tors, gescheiden door \|.
 
 In het bovenstaande voor beeld begint u met de tabel naam SecurityEvent en voegt u waar nodig gepipede elementen toe.
 

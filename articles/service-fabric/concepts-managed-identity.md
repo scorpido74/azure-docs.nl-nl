@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968284"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333120"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Beheerde identiteit voor Service Fabric toepassing (preview-versie)
 
@@ -45,7 +45,7 @@ De volgende termen worden gebruikt in de documentatieset beheerde identiteit voo
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric toepassingen
 
-Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. aan toepassingen die niet zijn geïmplementeerd als een Azure-resource kan geen identiteit worden toegewezen. De ondersteuning voor beheerde identiteiten in azure Service Fabric cluster bestaat uit twee fasen:
+Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan toepassingen die niet zijn geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in azure Service Fabric cluster bestaat uit twee fasen:
 
 1. Een of meer beheerde identiteiten toewijzen aan de resource van de toepassing. aan een toepassing kunnen respectievelijk een door het systeem toegewezen identiteit en/of Maxi maal 32 door de gebruiker toegewezen identiteiten worden toegewezen.
 
@@ -63,6 +63,8 @@ De lijst met ondersteunde scenario's voor de preview-versie is als volgt:
 De volgende scenario's worden niet ondersteund of worden niet aanbevolen. Houd er rekening mee dat deze acties mogelijk niet worden geblokkeerd, maar kan leiden tot storingen in uw toepassingen:
 
    - De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen. Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in te dienen om eerst een nieuwe identiteits toewijzing toe te voegen en vervolgens een eerder toegewezen account te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste gevolgen hebben, zoals het verlaten van uw toepassing in een status die niet kan worden geüpgraded. Het is veilig om de toepassing te verwijderen als het verwijderen van een identiteit nood zakelijk is. Houd er rekening mee dat hiermee de door het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, wordt verwijderd en alle koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, worden verwijderd.
+
+   - SF-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); de integratie wordt bereikt door het einde van de preview-periode voor de functie Managed Identity.
 
 >
 > [!NOTE]

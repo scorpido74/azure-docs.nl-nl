@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699356"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333182"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Overzicht van moment opnamen van shares voor Azure Files 
 Azure Files biedt de mogelijkheid om moment opnamen van shares van bestands shares te maken. Met moment opnamen delen wordt de status van de share op dat moment vastgelegd. In dit artikel wordt beschreven welke mogelijkheden moment opnamen delen bieden en hoe u deze kunt gebruiken in uw aangepaste use-case.
@@ -37,7 +37,7 @@ Nadat een moment opname van een share is gemaakt, kan deze worden gelezen, gekop
 
 De functionaliteit van de moment opname van shares wordt op bestands share niveau gegeven. Ophalen wordt op afzonderlijke bestands niveau gegeven, zodat afzonderlijke bestanden kunnen worden teruggezet. U kunt een volledige bestands share herstellen met behulp van SMB, de REST API, de portal, de client bibliotheek of het Power shell/CLI-hulp programma.
 
-Een moment opname van een share van een bestands share is identiek aan de basis bestands share. Het enige verschil is dat een **datum/tijd** -waarde wordt toegevoegd aan de share-URI om het tijdstip aan te geven waarop de moment opname van de share is gemaakt. Als de URI van een bestands share bijvoorbeeld is http://storagesample.core.file.windows.net/myshare, is de URI van de moment opname van de share gelijk aan:
+Een moment opname van een share van een bestands share is identiek aan de basis bestands share. Het enige verschil is dat een **datum/tijd** -waarde wordt toegevoegd aan de share-URI om het tijdstip aan te geven waarop de moment opname van de share is gemaakt. Als een bestands share-URI bijvoorbeeld http://storagesample.core.file.windows.net/myshare is, is de URI van de moment opname van de share gelijk aan:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -57,7 +57,7 @@ Hoewel share-moment opnamen incrementeel worden opgeslagen, moet u alleen de mee
 
 Moment opnamen tellen niet mee voor uw share limiet van 5 TB. Er is geen limiet voor het totale aantal moment opnamen van de ruimte share. De limieten van het opslag account zijn nog steeds van toepassing.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 Het maximum aantal moment opnamen van shares dat Azure Files vandaag toestaat, is 200. Na 200 moment opnamen delen, moet u oudere moment opnamen van shares verwijderen om nieuwe te kunnen maken. 
 
 Er is geen limiet voor de gelijktijdige aanroepen voor het maken van moment opnamen van shares. Er is geen limiet voor de hoeveelheid ruimte die moment opnamen van een bepaalde bestands share delen kan gebruiken. 
@@ -71,11 +71,11 @@ U kunt afzonderlijke bestanden in een moment opname van een bestands share kopi�
 
 De moment opname van de share blijft intact na het kopiëren, maar de basis bestands share wordt overschreven met een kopie van de gegevens die beschikbaar waren in de moment opname van de share. Alle herstelde bestanden tellen mee naar gewijzigde inhoud.
 
-U kunt een bestand in een moment opname van een share kopiëren naar een doel met een andere naam. Het resulterende doel bestand is een schrijfbaar bestand en geen moment opname van de share.
+U kunt een bestand in een moment opname van een share kopiëren naar een ander doel met een andere naam. Het resulterende doel bestand is een schrijfbaar bestand en geen moment opname van de share. In dit geval blijft uw basis bestands share intact.
 
 Wanneer een doel bestand wordt overschreven door een kopie, blijven de moment opnamen van shares die zijn gekoppeld aan het oorspronkelijke doel bestand intact.
 
-## <a name="general-best-practices"></a>Algemene aanbevolen procedures 
+## <a name="general-best-practices"></a>Algemene best practices 
 Wanneer u een infra structuur uitvoert op Azure, moet u, indien mogelijk, back-ups automatiseren voor gegevens herstel. Geautomatiseerde acties zijn betrouwbaarder dan hand matige processen, waardoor gegevens bescherming en herstel baarheid worden verbeterd. U kunt de REST API, de client-SDK of scripts gebruiken voor Automation.
 
 Voordat u de planner voor delen van snap shots implementeert, moet u de instellingen voor moment opnamen van delen en de Bewaar periode zorgvuldig overwegen om onnodige kosten te vermijden.

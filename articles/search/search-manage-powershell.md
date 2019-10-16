@@ -9,20 +9,20 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648094"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331248"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Uw Azure Search-service beheren met Power shell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)-> 
 
 U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Search te maken en te configureren. De **AZ. Search** -module breidt Azure PowerShell] uit met volledige pariteit van de [REST Api's van Azure Search Management](https://docs.microsoft.com/rest/api/searchmanagement). Met Azure PowerShell en **AZ. Search**kunt u de volgende taken uitvoeren:
 
@@ -39,8 +39,8 @@ Power shell kan niet worden gebruikt om de naam, regio of laag van uw service te
 Hoewel er geen speciale Power shell-opdrachten zijn voor inhouds beheer, kunt u Power shell-script schrijven dat REST of .NET aanroept om indexen te maken en te laden. De **AZ. Search** -module biedt deze bewerkingen niet.
 
 Andere taken die niet worden ondersteund via Power shell of een andere API (alleen Portal) zijn onder andere:
-+ [Een cognitieve Services-resource koppelen](cognitive-search-attach-cognitive-services.md) voor [AI-](cognitive-search-concept-intro.md)verrijkte indexering. Een cognitieve service is gekoppeld aan een vaardig heden, geen abonnement of service.
-+ [Bewakings oplossingen voor invoeg toepassingen](search-monitor-usage.md#add-on-monitoring-solutions) of [Zoek verkeer analyse](search-traffic-analytics.md) die wordt gebruikt voor het bewaken van Azure Search.
++ [Een cognitieve Services-resource koppelen](cognitive-search-attach-cognitive-services.md) voor [AI-verrijkte indexering](cognitive-search-concept-intro.md). Een cognitieve service is gekoppeld aan een vaardig heden, geen abonnement of service.
++ [Bewakings oplossingen voor het](search-monitor-usage.md#add-on-monitoring-solutions) bewaken van Azure Search.
 
 <a name="check-versions-and-load"></a>
 
@@ -84,7 +84,7 @@ Als u meerdere Azure-abonnementen hebt, stelt u uw Azure-abonnement in. Voer dez
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Voer de volgende opdracht uit om het abonnement op te geven. In het volgende voor beeld is `ContosoSubscription`de naam van het abonnement.
+Voer de volgende opdracht uit om het abonnement op te geven. In het volgende voor beeld is de naam van het abonnement `ContosoSubscription`.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -197,11 +197,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om de beheer- [API-sleutels](search-security-api-keys.md)te herstellen. Voor geverifieerde toegang worden twee beheer sleutels gemaakt met elke service. Sleutels zijn vereist voor elke aanvraag. Beide beheerders sleutels zijn functioneel gelijkwaardig, waarbij volledige schrijf toegang wordt verleend aan een zoek service met de mogelijkheid om gegevens op te halen of om een wille keurig object te maken en te verwijderen. Er bestaan twee sleutels, zodat u deze kunt gebruiken terwijl u de andere vervangt. 
 
-U kunt slechts één keer opnieuw genereren, opgegeven als de `primary` of `secondary` -sleutel. Voor een ononderbroken service moet u alle client code bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel rolt. Vermijd het wijzigen van de sleutels tijdens de vlucht.
+U kunt slechts één keer opnieuw genereren, opgegeven als de sleutel `primary` of `secondary`. Voor een ononderbroken service moet u alle client code bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel rolt. Vermijd het wijzigen van de sleutels tijdens de vlucht.
 
 Zoals u zou verwachten, zullen aanvragen die gebruikmaken van de oude sleutel, mislukken als u sleutels opnieuw genereert zonder de client code bij te werken. Door alle nieuwe sleutels te genereren, wordt uw service niet permanent vergrendeld en hebt u nog steeds toegang tot de service via de portal. Nadat u de primaire en secundaire sleutels opnieuw hebt gegenereerd, kunt u de client code bijwerken voor het gebruik van de nieuwe sleutels en bewerkingen worden hervat.
 
-De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven om Azure Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, `primary` ofwel `secondary`of. 
+De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven om Azure Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, hetzij `primary` of `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

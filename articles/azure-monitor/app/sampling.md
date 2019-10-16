@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169474"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372569"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -33,8 +33,8 @@ Door steek proeven worden de kosten voor verkeer en gegevens verminderd, en kunt
 * Adaptieve steek proeven zijn standaard ingeschakeld in de meest recente versie van ASP.NET en ASP.NET Core Sdk's (Software Development Kits).
 * U kunt ook hand matig steek proeven instellen. Dit kan in de portal worden geconfigureerd op de *pagina gebruik en geschatte kosten*in de ASP.NET SDK in het bestand ApplicationInsights. config, in de ASP.net core SDK via code of in de Java-SDK in het bestand ApplicationInsights. XML.
 * Als u aangepaste gebeurtenissen registreert en er zeker van wilt zijn dat een set gebeurtenissen wordt behouden of verwijderd, moeten de gebeurtenissen dezelfde OperationId-waarde hebben.
-* De sampling-deler *n* wordt gerapporteerd in elke record in de `itemCount`eigenschap, die in de zoek opdracht wordt weer gegeven onder de beschrijvende naam ' aanvraag aantal ' of ' aantal gebeurtenissen '. `itemCount==1`Wanneer er geen sampling bewerking wordt uitgevoerd.
-* Als u analyse query's schrijft, moet u [rekening houden met steek proeven](../../azure-monitor/log-query/aggregations.md). Met name in plaats van records eenvoudigweg te tellen, moet u `summarize sum(itemCount)`gebruiken.
+* De sampling-deler *n* wordt gerapporteerd in elke record in de eigenschap `itemCount`, die in de zoek opdracht wordt weer gegeven onder de beschrijvende naam ' aanvraag aantal ' of ' aantal gebeurtenissen '. `itemCount==1`when-steek proeven zijn niet in werking.
+* Als u analyse query's schrijft, moet u [rekening houden met steek proeven](../../azure-monitor/log-query/aggregations.md). Met name in plaats van records eenvoudigweg te tellen, moet u `summarize sum(itemCount)` gebruiken.
 
 ## <a name="types-of-sampling"></a>Typen steek proeven
 
@@ -53,7 +53,7 @@ Als er een adaptieve of vaste beoordeling wordt uitgevoerd, worden steek proeven
 
 Adaptieve steek proeven zijn beschikbaar voor de Application Insights SDK voor ASP.NET v 2.0.0-beta3 en hoger, micro soft. ApplicationInsights. AspNetCore SDK v 2.2.0-beta1 en hoger, en is standaard ingeschakeld.
 
-Adaptieve steek proeven zijn van invloed op het volume van de telemetrie die vanuit uw webserver-app wordt verzonden naar het Application Insights service-eind punt. Het volume wordt automatisch aangepast om binnen een opgegeven maximum hoeveelheid verkeer te blijven en wordt beheerd via de instelling `MaxTelemetryItemsPerSecond`. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor, `MaxTelemetryItemsPerSecond`zolang het volume hieronder niet wordt gebruikt. Naarmate het volume van de telemetrie toeneemt, wordt de sampling frequentie aangepast om het doel volume te bereiken.
+Adaptieve steek proeven zijn van invloed op het volume van de telemetrie die vanuit uw webserver-app wordt verzonden naar het Application Insights service-eind punt. Het volume wordt automatisch aangepast om binnen een opgegeven maximum hoeveelheid verkeer te blijven en wordt beheerd via de instelling `MaxTelemetryItemsPerSecond`. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden items niet verwijderd door de sampling processor zolang het volume onder `MaxTelemetryItemsPerSecond` ligt. Naarmate het volume van de telemetrie toeneemt, wordt de sampling frequentie aangepast om het doel volume te bereiken.
 
 Om het doel volume te bereiken, wordt een deel van de gegenereerde telemetrie genegeerd. Maar net als andere typen steek proeven behouden de algoritme gerelateerde telemetrie-items. Wanneer u bijvoorbeeld de telemetrie in de zoek actie inspecteert, kunt u de aanvraag voor een bepaalde uitzonde ring vinden.
 
@@ -63,7 +63,7 @@ Metrische aantallen, zoals de frequentie van aanvragen en uitzonderings snelhede
 
 [Meer informatie](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications) over het configureren van adaptieve steek proeven voor ASP.net core toepassingen. 
 
-In [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u verschillende para meters aanpassen in `AdaptiveSamplingTelemetryProcessor` het knoop punt. De weer gegeven afbeeldingen zijn de standaard waarden:
+In [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u verschillende para meters aanpassen in het knoop punt `AdaptiveSamplingTelemetryProcessor`. De weer gegeven afbeeldingen zijn de standaard waarden:
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
@@ -92,11 +92,11 @@ In [ApplicationInsights. config](../../azure-monitor/app/configuration-with-appl
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen zijn: Afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag, tracering. Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet zijn opgegeven, worden steek proeven gegeven.
+    Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen zijn: afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag, tracering. Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet zijn opgegeven, worden steek proeven gegeven.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken. De herkende typen zijn: Afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag, tracering. De opgegeven typen worden gesampled. alle exemplaren van de andere typen worden altijd verzonden.
+    Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken. De herkende typen zijn: afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag, tracering. De opgegeven typen worden gesampled. alle exemplaren van de andere typen worden altijd verzonden.
 
 
 **Als u** adaptieve steek proeven wilt uitschakelen, verwijdert u de knoop adaptivesamplingtelemetryprocessor-knoop punt (en) uit applicationinsights-config.
@@ -105,7 +105,7 @@ In [ApplicationInsights. config](../../azure-monitor/app/configuration-with-appl
 
 In plaats van de sampling para meter in het. config-bestand in te stellen, kunt u deze waarden programmatisch instellen.
 
-1. Verwijder alle `AdaptiveSamplingTelemetryProcessor` knoop punten uit het. config-bestand.
+1. Verwijder alle `AdaptiveSamplingTelemetryProcessor` knoop punt (en) uit het. config-bestand.
 2. Gebruik het volgende code fragment voor het configureren van adaptieve steek proeven.
 
 *C#*
@@ -145,12 +145,12 @@ U kunt ook de sampling frequentie voor elk type telemetrie aanpassen, of u kunt 
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Adaptieve steek proeven configureren voor ASP.NET Core toepassingen.
 
-Er zijn geen `ApplicationInsights.Config` voor ASP.net core toepassingen, dus elke configuratie wordt uitgevoerd via code.
+Er is geen `ApplicationInsights.Config` voor ASP.NET Core toepassingen, dus elke configuratie wordt uitgevoerd via code.
 Adaptieve steek proeven zijn standaard ingeschakeld voor alle ASP.NET Core-toepassingen. U kunt het steekproef gedrag uitschakelen of aanpassen.
 
 ### <a name="turning-off-adaptive-sampling"></a>Adaptieve steek proeven uitschakelen
 
-De standaard steekproef functie kan worden uitgeschakeld tijdens het toevoegen van Application Insights-service, ```ConfigureServices```in de ```ApplicationInsightsServiceOptions``` -methode `Startup.cs` met in het bestand:
+De standaard steekproef functie kan worden uitgeschakeld tijdens het toevoegen van Application Insights-service in de methode ```ConfigureServices```, met behulp van ```ApplicationInsightsServiceOptions``` binnen het `Startup.cs`-bestand:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -168,7 +168,7 @@ Met deze code wordt de bemonsterings functie uitgeschakeld. Volg de onderstaande
 
 ### <a name="configure-sampling-settings"></a>Sampling-instellingen configureren
 
-Gebruik extensie methoden van ```TelemetryProcessorChainBuilder``` zoals hieronder wordt weer gegeven om het steekproef gedrag aan te passen.
+Gebruik de uitbreidings methoden van ```TelemetryProcessorChainBuilder```, zoals hieronder wordt weer gegeven om het steekproef gedrag aan te passen.
 
 > [!IMPORTANT]
 > Als u deze methode gebruikt om steek proeven te configureren, moet u ervoor zorgen dat u aiOptions. EnableAdaptiveSampling = False gebruikt. instellingen met AddApplicationInsightsTelemetry ().
@@ -195,9 +195,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ```
 
-**Als u de bovenstaande methode gebruikt om steek proeven te configureren, moet ```aiOptions.EnableAdaptiveSampling = false;``` u ervoor zorgen dat u instellingen gebruikt met AddApplicationInsightsTelemetry ().**
+**Als u de bovenstaande methode gebruikt om steek proeven te configureren, moet u ervoor zorgen dat u ```aiOptions.EnableAdaptiveSampling = false;```-instellingen gebruikt met AddApplicationInsightsTelemetry ().**
 
-## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites"></a>Steek proeven met een vaste frequentie voor ASP.NET, ASP.NET Core en Java-websites
+## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>Steek proeven met een vaste frequentie voor ASP.NET, ASP.NET Core, Java-websites en python-toepassingen
 
 Met een steek proef van een vast bedrag wordt het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers verminderd. In tegens telling tot adaptieve steek proeven wordt de telemetrie verminderd met een vast bedrag dat door u wordt bepaald. Ook worden de client-en server sampling gesynchroniseerd, zodat verwante items worden bewaard. Als u bijvoorbeeld een pagina weergave in de zoek opdracht bekijkt, kunt u de bijbehorende aanvraag vinden.
 
@@ -207,7 +207,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Bemonsterde vaste frequentie in ASP.NET configureren
 
-1. **Adaptieve steek proeven uitschakelen**: In [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u het `AdaptiveSamplingTelemetryProcessor` knoop punt verwijderen of opmerkingen toevoegen.
+1. **Adaptieve steek proeven uitschakelen**: in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u het knoop punt `AdaptiveSamplingTelemetryProcessor` verwijderen of opmerkingen toevoegen.
 
     ```xml
 
@@ -262,7 +262,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet-core"></a>Bemonsterde vaste frequentie in ASP.NET Core configureren
 
-1. **Adaptieve steek proeven uitschakelen**:  U kunt wijzigingen aanbrengen in de ```ConfigureServices```-methode ```ApplicationInsightsServiceOptions```met behulp van:
+1. **Adaptieve bemonstering uitschakelen**: wijzigingen kunnen worden aangebracht in de methode ```ConfigureServices``` met behulp van ```ApplicationInsightsServiceOptions```:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -276,7 +276,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
     }
     ```
 
-2. **Schakel de bemonsterings module met vaste frequentie in.** U kunt wijzigingen aanbrengen in de ```Configure``` -methode, zoals wordt weer gegeven in het onderstaande fragment:
+2. **Schakel de bemonsterings module met vaste frequentie in.** U kunt wijzigingen aanbrengen in de methode ```Configure```, zoals in het onderstaande fragment wordt weer gegeven:
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -327,7 +327,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
         </IncludedTypes>
     ```
 
-De typen telemetrie die kunnen worden opgenomen in of uitgesloten van steek proeven zijn: Afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag en tracering.
+De typen telemetrie die kunnen worden opgenomen in of uitgesloten van steek proeven zijn: afhankelijkheid, gebeurtenis, uitzonde ring, pagina weergave, aanvraag en tracering.
 
 > [!NOTE]
 > Kies voor het steekproef percentage een percentage dat dicht bij 100/N ligt waarbij N een geheel getal is.  De huidige steek proef biedt geen ondersteuning voor andere waarden.
@@ -336,7 +336,27 @@ De typen telemetrie die kunnen worden opgenomen in of uitgesloten van steek proe
 
 <a name="other-web-pages"></a>
 
+### <a name="configuring-fixed-rate-sampling-in-opencensus-python"></a>Bemonsterde vaste frequentie configureren in opentellingen python ###
 
+1. Instrumenteer uw toepassing met de meest recente [Opentellings Azure monitor exporteurs](../../azure-monitor/app/opencensus-python.md).
+
+> [!NOTE]
+> Steek proeven met een vaste frequentie zijn alleen beschikbaar via de trace-export functie. Dit betekent dat binnenkomende en uitgaande aanvragen de enige typen telemetrie zijn waar steek proeven kunnen worden geconfigureerd.
+> 
+> 
+
+2. U kunt een `sampler` opgeven als onderdeel van uw `Tracer`-configuratie. Als er geen expliciete Voorbeeldset wordt gegeven, wordt de ProbabilitySampler standaard gebruikt. De ProbabilitySampler gebruikt standaard een frequentie van 1/10000, wat betekent dat één van elke 10000 aanvragen wordt verzonden naar Application Insights. Zie hieronder als u zelf een samplefrequentie wilt opgeven.
+
+3. Wanneer u een sampler opgeeft, moet u ervoor zorgen dat uw `Tracer` een sampler opgeeft met een samplefrequentie tussen 0,0 en 1,0. Een sampling frequentie van 1,0 vertegenwoordigt 100%, wat betekent dat al uw aanvragen worden verzonden als telemetrie naar Application Insights.
+
+    ```python
+    tracer = Tracer(
+        exporter=AzureExporter(
+            instrumentation_key='00000000-0000-0000-0000-000000000000',
+        ),
+        sampler=ProbabilitySampler(1.0),
+    )
+    ```
 
 ## <a name="ingestion-sampling"></a>Steek proeven voor opname
 
@@ -361,7 +381,7 @@ De steek proeven voor opname worden niet uitgevoerd terwijl de op SDK gebaseerde
 ## <a name="sampling-for-web-pages-with-javascript"></a>Steek proeven voor webpagina's met Java script
 U kunt webpagina's configureren voor steek proeven met een vaste frequentie vanaf elke server. 
 
-Wanneer u [de webpagina's voor Application Insights configureert](../../azure-monitor/app/javascript.md), wijzigt u het Java script-fragment dat u van de Application Insights Portal ontvangt. (In ASP.NET-apps gaat het fragment meestal in _Layout. cshtml.)  Voeg een regel toe `samplingPercentage: 10,` zoals vóór de instrumentatie sleutel:
+Wanneer u [de webpagina's voor Application Insights configureert](../../azure-monitor/app/javascript.md), wijzigt u het Java script-fragment dat u van de Application Insights Portal ontvangt. (In ASP.NET-apps gaat het fragment meestal in _Layout. cshtml.)  Voeg een regel toe als `samplingPercentage: 10,` vóór de instrumentatie sleutel:
 
     <script>
     var appInsights= ... 
@@ -519,7 +539,7 @@ Volg de instructies in [Dit](https://docs.microsoft.com/azure/azure-functions/fu
 
 *Er zijn bepaalde zeldzame gebeurtenissen die ik altijd wil zien. Hoe kan ik de bemonsterings module naraken?*
 
-* De beste manier om dit te doen is door een aangepaste [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)te schrijven, waarmee `SamplingPercentage` de 100 wordt ingesteld op het telemetrie-item dat u wilt behouden, zoals hieronder wordt weer gegeven. Als initialisatie functies worden gegarandeerd voordat telemetrie-processors (inclusief steek proeven) worden uitgevoerd, zorgt dit ervoor dat alle bemonsterings technieken dit item negeren van eventuele bemonsterings overwegingen.
+* De beste manier om dit te doen is door een aangepaste [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)te schrijven, waarmee de `SamplingPercentage` wordt ingesteld op 100 op het telemetrie-item dat u wilt behouden, zoals hieronder wordt weer gegeven. Als initialisatie functies worden gegarandeerd voordat telemetrie-processors (inclusief steek proeven) worden uitgevoerd, zorgt dit ervoor dat alle bemonsterings technieken dit item negeren van eventuele bemonsterings overwegingen.
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer

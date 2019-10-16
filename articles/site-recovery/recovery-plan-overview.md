@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814438"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331902"
 ---
 # <a name="about-recovery-plans"></a>Over herstelplannen
 
@@ -33,6 +33,9 @@ Met een herstel plan kunt u een systematisch herstel proces definiëren door kle
 
 
 ## <a name="model-apps"></a>Apps model leren
+
+> [!NOTE]
+> Maxi maal 100 beveiligde instanties kunnen worden toegevoegd aan één herstel plan.
 
 U kunt een herstel groep plannen en maken om app-specifieke eigenschappen vast te leggen. Laten we bijvoorbeeld eens kijken naar een typische toepassing met drie lagen met een back-end van SQL Server, middleware en een Webfront-end. Normaal gesp roken past u het herstel plan aan zodat de computers in elke laag in de juiste volg orde worden gestart na een failover.
 
@@ -60,16 +63,16 @@ Wanneer u deze aanpassing uitvoert, gebeurt het volgende wanneer u een failover 
 
 Het herstellen van grote toepassingen kan een complexe taak zijn. Hand matige stappen maken het proces gevoelig voor fouten en de persoon die de failover uitvoert, is mogelijk niet op de hoogte van alle app-complexiteit. U kunt een herstel plan gebruiken om een order in te stellen en de acties te automatiseren die nodig zijn bij elke stap, met Azure Automation runbooks voor failover naar Azure of scripts. Voor taken die niet kunnen worden geautomatiseerd, kunt u pauzes voor hand matige acties invoegen in herstel plannen. U kunt een aantal typen taken configureren:
 
-* **Taken op de virtuele Azure-machine na een failover**: Wanneer u een failover uitvoert naar Azure, moet u doorgaans acties uitvoeren, zodat u verbinding kunt maken met de virtuele machine na een failover. Bijvoorbeeld: 
+* **Taken op de virtuele Azure-machine na een failover**: wanneer u een failover uitvoert naar Azure, moet u doorgaans acties uitvoeren, zodat u na een failover verbinding kunt maken met de virtuele machine. Bijvoorbeeld: 
     * Maak een openbaar IP-adres op de Azure-VM.
     * Wijs een netwerk beveiligings groep toe aan de netwerk adapter van de virtuele Azure-machine.
     * Voeg een load balancer toe aan een beschikbaarheidsset.
-* **Taken in de virtuele machine na een failover**: Met deze taken wordt de app die op de computer wordt uitgevoerd, doorgaans opnieuw geconfigureerd, zodat deze goed blijft werken in de nieuwe omgeving. Bijvoorbeeld:
+* **Taken in de VM na een failover**: met deze taken wordt de app die op de computer wordt uitgevoerd, opnieuw geconfigureerd zodat deze goed blijft werken in de nieuwe omgeving. Bijvoorbeeld:
     * Wijzig de data base-connection string in de computer.
     * Wijzig de webserver configuratie of-regels.
 
 
-## <a name="test-failover"></a>Failover testen
+## <a name="test-failover"></a>Testfailover
 
 U kunt een herstel plan gebruiken om een testfailover te activeren. Gebruik de volgende aanbevolen procedures:
 
@@ -81,7 +84,7 @@ U kunt een herstel plan gebruiken om een testfailover te activeren. Gebruik de v
 
     ![Scherm afbeelding van een voor beeld van een test herstel plan in Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Video bekijken
+## <a name="watch-the-video"></a>Bekijk de video
 
 Bekijk een snelle voorbeeld video met een on-click failover voor een WordPress-app met twee lagen.
     

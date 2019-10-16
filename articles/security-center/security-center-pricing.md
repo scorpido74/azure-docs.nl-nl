@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: 356bfc28984ecc1bc6990c10378a3df155593e94
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: cce57053e265446a6307554509c34c5f802ed07f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996704"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372598"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Voer een upgrade uit naar de Standard-laag van Security Center voor verbeterde beveiliging
 Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor werkbelastingen die worden uitgevoerd in Azure, on-premises en in andere clouds. Het biedt zicht baarheid en controle over hybride Cloud werkbelastingen, actieve beveiligingen die uw bloot stelling aan bedreigingen verminderen en intelligente detectie om u te helpen bij het snel zich ontwikkelen van Cyber aanvallen.
 
 ## <a name="pricing-tiers"></a>Prijscategorieën
-Security Center wordt aangeboden in twee lagen:
+Security Center wordt aangeboden in twee prijscategorieën:
 
-- De laag **gratis** wordt automatisch ingeschakeld voor alle Azure-abonnementen en biedt beveiligings beleid, voortdurende veiligheids beoordeling en bruikbare beveiligings aanbevelingen om u te helpen uw Azure-resources te beveiligen.
+- De **gratis** laag is ingeschakeld op alle Azure-abonnementen zodra u de Azure Security Center dash board voor het eerst bezoekt in azure Portal, of als PROGREMMATICALY via API is ingeschakeld. De gratis laag biedt beveiligings beleid, doorlopende veiligheids beoordeling, en beschik bare beveiligings aanbevelingen om u te helpen uw Azure-resources te beveiligen.
 - De laag **standaard** biedt een uitbrei ding op de mogelijkheden van de gratis laag voor werk belastingen die worden uitgevoerd in privé-en andere open bare Clouds, met een uniforme beveiligings beheer en bedreigings beveiliging in uw hybride Cloud werkbelastingen. De laag standaard biedt ook geavanceerde mogelijkheden voor detectie van bedreigingen, die gebruikmaken van ingebouwde gedrags analyses en machine learning om aanvallen te identificeren en gebruik te maken van anti-actie-, toegangs-en toepassings besturings elementen van Zero dagen om de bloot stelling aan netwerk aanvallen en malware te verminderen. grotere. U kunt de Standard-laag gratis uitproberen. Security Center Standard ondersteunt Azure-resources, waaronder Vm's, schaal sets voor virtuele machines, App Service, SQL-servers en opslag accounts. Als u Azure Security Center Standard hebt, kunt u deze niet meer ondersteunen op basis van het resource type. 
 
 

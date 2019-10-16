@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Gegevens verwerken van Azure Event Hubs met Apache Spark in HDInsight'
+title: 'Zelf studie: gegevens uit Azure-Event Hubs verwerken met Apache Spark in HDInsight'
 description: 'Zelf studie: Apache Spark in azure HDInsight verbinden met Azure Event Hubs en de streaminggegevens verwerken.'
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,13 +9,13 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71266195"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelfstudie: Tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelf studie: tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
 
 In deze zelf studie leert u hoe u een [Apache Spark](https://spark.apache.org/) streaming-toepassing kunt maken om tweets te verzenden naar een Azure Event hub en een andere toepassing te maken om de tweets van de Event hub te lezen. Zie [overzicht van Apache Spark streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)voor een gedetailleerde uitleg van Spark-streaming. HDInsight brengt dezelfde streaming-functies naar een Spark-cluster in Azure.
 
@@ -44,11 +44,11 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
 1. Geef de volgende waarden op:
 
-    |Eigenschap |Value |
+    |Eigenschap |Waarde |
     |---|---|
-    |Name|Geef de naam van de toepassing op. De waarde die voor deze zelf studie wordt gebruikt, is **HDISparkStreamApp0423**. Deze naam moet een unieke naam zijn.|
-    |Description|Geef een korte beschrijving van de toepassing op. De waarde die voor deze zelf studie wordt gebruikt, is **een eenvoudige HDInsight Spark-streaming-toepassing**.|
-    |Website|Geef de website van de toepassing op. Het hoeft geen geldige website te zijn.  De waarde die wordt gebruikt voor deze `http://www.contoso.com`zelf studie is.|
+    |Naam|Geef de naam van de toepassing op. De waarde die voor deze zelf studie wordt gebruikt, is **HDISparkStreamApp0423**. Deze naam moet een unieke naam zijn.|
+    |Beschrijving|Geef een korte beschrijving van de toepassing op. De waarde die voor deze zelf studie wordt gebruikt, is **een eenvoudige HDInsight Spark-streaming-toepassing**.|
+    |Website|Geef de website van de toepassing op. Het hoeft geen geldige website te zijn.  De waarde die voor deze zelf studie wordt gebruikt, is `http://www.contoso.com`.|
     |URL voor terugbellen|U kunt het leeg laten.|
 
 1. Selecteer **Ja, ik heb de Twitter-ontwikkelaars overeenkomst gelezen en ga hiermee akkoord**en selecteer vervolgens **uw Twitter-toepassing maken**.
@@ -68,29 +68,29 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
 U gebruikt deze Event Hub om tweets op te slaan.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 2. Selecteer in het menu links **alle services**.  
 
 3. Selecteer **Event hubs**onder **Internet der dingen**. 
 
-    Voor ![beeld van het maken van Event hub voor Spark-streaming] Voor (./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "beeld van het maken van Event hub voor Spark-streaming")
+    ![Event hub maken voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Event hub maken voor het voor beeld van Spark-streaming")
 
 4. Selecteer **+ Toevoegen**.
 
 5. Voer de volgende waarden in voor de nieuwe Event Hubs naam ruimte:
 
-    |Eigenschap |Value |
+    |Eigenschap |Waarde |
     |---|---|
-    |Name|Voer een naam in voor de Event Hub.  De waarde die voor deze zelf studie wordt gebruikt, is **myeventhubns20180403**.|
-    |Prijscategorie|selecteer **Standaard**.|
-    |Subscription|Selecteer het juiste abonnement.|
-    |Resource group|Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe resource groep te maken.|
-    |Location|Selecteer dezelfde **locatie** als uw Apache Spark-cluster in HDInsight om de latentie en kosten te verminderen.|
+    |Naam|Voer een naam in voor de Event Hub.  De waarde die voor deze zelf studie wordt gebruikt, is **myeventhubns20180403**.|
+    |Prijscategorie|Selecteer **standaard**.|
+    |Abonnement|Selecteer het juiste abonnement.|
+    |Resourcegroep|Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe resource groep te maken.|
+    |Locatie|Selecteer dezelfde **locatie** als uw Apache Spark-cluster in HDInsight om de latentie en kosten te verminderen.|
     |Automatisch verg Roten inschakelen (optioneel) |Automatisch verg Roten: Hiermee wordt het aantal doorvoer eenheden dat aan uw Event Hubs naam ruimte is toegewezen, geschaald wanneer uw verkeer de capaciteit van de toegewezen doorvoer eenheden overschrijdt.  |
-    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen**inschakelt.  |
+    |Maximum aantal doorvoer eenheden automatisch verg Roten (optioneel)|Deze schuif regelaar wordt alleen weer gegeven als u **automatisch verg Roten inschakelen inschakelt**.  |
 
-    ![Een event hub naam opgeven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Een event hub naam opgeven voor het voor beeld van Spark-streaming")
+    ![Geef een event hub naam op voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "een event hub naam voor het voor beeld van Spark-streaming")
 
 6. Selecteer **maken** om de naam ruimte te maken.  De implementatie wordt binnen enkele minuten voltooid.
 
@@ -106,13 +106,13 @@ Maak een Event Hub nadat de naam ruimte Event Hubs is geïmplementeerd.  Vanuit 
 1. Selecteer op de pagina **Event hubs naam ruimte** de optie **+ Event hub**.  
 1. Voer de volgende waarden in op de pagina **Event hub maken** :
 
-    - **Naam**: Geef een naam op voor uw event hub. 
+    - **Naam**: Geef een naam op voor de Event hub. 
  
     - **Aantal partities**: 10.  
 
     - **Bewaar periode**van het bericht: 1.   
    
-      ![Event hub Details opgeven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Event hub Details opgeven voor het voor beeld van Spark-streaming")
+      ![Event hub Details opgeven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "bieden Event hub Details voor het voor beeld van Spark-streaming")
 
 1. Selecteer **Maken**.  De implementatie wordt binnen een paar seconden voltooid en u keert terug naar de pagina met de Event Hubs naam ruimte.
 
@@ -120,11 +120,11 @@ Maak een Event Hub nadat de naam ruimte Event Hubs is geïmplementeerd.  Vanuit 
 
 1. Selecteer **RootManageSharedAccessKey**.
     
-     ![Event hub-beleids regels instellen voor het Spark-streaming-voor beeld](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Event hub-beleids regels instellen voor het Spark-streaming-voor beeld")
+     ![Event hub-beleids regels instellen voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Stel Event hub-beleid in voor het Spark-streaming-voor beeld")
 
 1. Sla de waarden van de **primaire sleutel** en de **verbindings reeks-primaire sleutel** op om later in de zelf studie te gebruiken.
 
-     ![Event hub-beleids sleutels weer geven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Event hub-beleids sleutels weer geven voor het voor beeld van Spark-streaming")
+     ![Event hub-beleids sleutels weer geven voor het voor beeld van Spark-streaming](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "beleids sleutels van Event hub weer geven voor het Spark-streaming-voor beeld")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>Tweets naar de Event Hub verzenden
@@ -138,7 +138,7 @@ Maak een Jupyter-notebook en geef deze de naam **SendTweetsToEventHub**.
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. Bewerk de code hieronder door te `<Event hub name>`vervangen `<Event hub namespace connection string>` `<CONSUMER KEY>`, `<CONSUMER SECRET>` `<ACCESS TOKEN>`,,, en `<TOKEN SECRET>` met de juiste waarden. Voer de bewerkte code uit om tweets naar uw Event Hub te verzenden:
+2. Bewerk de onderstaande code door `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` en `<TOKEN SECRET>` te vervangen door de juiste waarden. Voer de bewerkte code uit om tweets naar uw Event Hub te verzenden:
 
     ```scala
     import java.util._
@@ -220,7 +220,7 @@ Maak een andere Jupyter-notebook en noem deze **ReadTweetsFromEventHub**.
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. Bewerk de onderstaande code door te `<Event hub name>`vervangen en `<Event hub namespace connection string>` door de juiste waarden. Voer de bewerkte code uit om tweets te lezen uit uw Event Hub:
+2. Bewerk de onderstaande code door `<Event hub name>` en `<Event hub namespace connection string>` te vervangen door de juiste waarden. Voer de bewerkte code uit om tweets te lezen uit uw Event Hub:
 
     ```scala
     import org.apache.spark.eventhubs._
@@ -252,7 +252,7 @@ Met HDInsight worden uw gegevens opgeslagen in Azure Storage of Azure Data Lake 
 
 Open het cluster in Azure Portal en selecteer **Verwijderen**.
 
-![HDInsight Azure Portal cluster verwijderen](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
+![Hdinsight Azure Portal cluster]verwijderen(./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "hdinsight-cluster verwijderen")
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight Spark-cluster als het standaardopslagaccount.
 

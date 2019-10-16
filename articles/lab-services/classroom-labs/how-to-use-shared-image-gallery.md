@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389983"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332002"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
 In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie van een virtuele machine van een sjabloon kan opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Deze installatie kopieën worden opgeslagen in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md)van Azure. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
@@ -31,18 +31,18 @@ In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Een afbeelding opslaan in de galerie met gedeelde afbeeldingen
 Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-account beheerder of een docent een afbeelding opslaan in de galerie met gedeelde afbeeldingen, zodat deze door andere docenten opnieuw kan worden gebruikt. 
 
-1. Op de start pagina van het lab selecteert u **afbeelding opslaan** op de tegel in de **sjabloon** sectie.
+1. Op de **sjabloon** pagina voor het lab selecteert **u exporteren naar gedeelde installatie kopie galerie** op de werk balk.
 
-    ![Knop Afbeelding opslaan](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  Voer in het venster **installatie kopie van virtuele machine opslaan** een naam in voor de installatie kopie en selecteer **Opslaan**. 
+    ![Knop Afbeelding opslaan](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. Voer in het dialoog venster **exporteren naar gedeelde afbeeldingen galerie** een **naam in voor de installatie kopie**en selecteer vervolgens **exporteren**. 
 
-    ![Venster installatie kopie van virtuele machine opslaan](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. Controleer de status van de Lab-tegel. 
+    ![Dialoog venster exporteren naar de galerie gedeelde afbeeldingen](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. U kunt de voortgang van deze bewerking zien op de **sjabloon** pagina. Deze bewerking kan enige tijd duren. 
 
-    ![Status van de bewerking voor het opslaan van de afbeelding](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. Controleer of de bewerking is gelukt.
+    ![Exporteren wordt uitgevoerd](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. Wanneer de export bewerking is voltooid, wordt het volgende bericht weer gegeven:
 
-    ![De bewerking voor het opslaan van de afbeelding is voltooid](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![Exporteren is voltooid](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
 

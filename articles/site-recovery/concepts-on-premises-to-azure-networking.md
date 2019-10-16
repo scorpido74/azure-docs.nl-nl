@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937561"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333036"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Verbinding maken met virtuele Azure-machines na een failover van on-premises 
 
@@ -77,8 +77,8 @@ Als alternatief voor het hand matig toewijzen van een openbaar IP-adres aan een 
 
 Als u na een failover het interne IP-adres van een virtuele Azure-machine wilt instellen, hebt u een aantal opties:
 
-- **Hetzelfde IP-adres behouden**: U kunt hetzelfde IP-adres gebruiken op de Azure-VM als de virtuele machine die is toegewezen aan de on-premises computer.
-- **Gebruik een ander IP-adres**: U kunt een ander IP-adres gebruiken voor de virtuele Azure-machine.
+- **Hetzelfde IP-adres behouden**: u kunt hetzelfde IP-adres gebruiken op de Azure-VM als de virtuele machine die is toegewezen aan de on-premises computer.
+- **Gebruik een ander IP-adres**: u kunt een ander IP-adres gebruiken voor de Azure-VM.
 
 
 ## <a name="retain-ip-addresses"></a>IP-adressen behouden
@@ -91,12 +91,12 @@ Met Site Recovery kunt u dezelfde IP-adressen behouden wanneer er een failover w
 
 Voor het bewaren van IP-adressen zijn de volgende stappen vereist:
 
-- Stel in de eigenschappen van on-premises computer netwerk-en IP-adres Sering in voor de doel-Azure-VM om de lokale instelling te spie gelen.
+- Stel in de berekening & netwerk eigenschappen van het gerepliceerde item netwerk-en IP-adres Sering in voor de doel-Azure-VM om de on-premises instelling te spie gelen.
 - Subnetten moeten worden beheerd als onderdeel van het nood herstel proces. U moet een Azure VNet hebben dat overeenkomt met het on-premises netwerk en nadat de failover-netwerk routes moeten worden gewijzigd om aan te geven dat het subnet is verplaatst naar Azure en nieuwe IP-adres locaties.  
 
 ### <a name="failover-example"></a>Voor beeld van failover
 
-We bekijken een voorbeeld.
+Laten we eens kijken naar een voor beeld.
 
 - De fictieve onderneming Woodgrove Bank fungeert als host voor hun zakelijke apps on-premises, die hun mobiele apps in Azure.
 - Ze maken verbinding vanaf on-premises met Azure via site-naar-site-VPN. 
@@ -120,7 +120,7 @@ Als u de adressen wilt behouden, gaat u als volgt te werk.
     > Afhankelijk van de toepassings vereisten, kan een VNet-naar-VNet-verbinding worden ingesteld voordat een failover wordt uitgevoerd, als een hand matige stap/script stap/Azure Automation-runbook in een Site Recovery [herstel plan](site-recovery-create-recovery-plans.md), of nadat de failover is voltooid.
 
 4. Voordat failover wordt ingesteld op de computer eigenschappen in Site Recovery, stellen ze het doel-IP-adres in op het adres van de on-premises computer, zoals wordt beschreven in de volgende procedure.
-5. Na een failover worden de virtuele Azure-machines gemaakt met hetzelfde IP-adres. Woodgrove maakt verbinding vanaf het **Azure-netwerk** met het **Recovery Network** VNet met behulp van een 
+5. Na een failover worden de virtuele Azure-machines gemaakt met hetzelfde IP-adres. Woodgrove maakt verbinding vanaf **Azure Network** met het **Recovery Network** vnet met behulp van vnet-peering (waarbij Transit connectiviteit is ingeschakeld).
 6. Op locatie moet Woodgrove netwerk wijzigingen aanbrengen, met inbegrip van het wijzigen van routes om aan te geven dat 192.168.1.0/24 is verplaatst naar Azure.  
 
 **Infra structuur vóór failover**

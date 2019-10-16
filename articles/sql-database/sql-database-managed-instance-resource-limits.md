@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982775"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372197"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -27,9 +27,9 @@ Dit artikel bevat een overzicht van de technische kenmerken en resource limieten
 
 ## <a name="hardware-generation-characteristics"></a>Kenmerken voor het genereren van hardware
 
-Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn van de onderliggende infra structuur en architectuur. Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware gegenereerde items: Gen4 en GEN5. Hardware-generaties hebben verschillende kenmerken, zoals wordt beschreven in de volgende tabel:
+Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn van de onderliggende infra structuur en architectuur. Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware gegenereerd: Gen4 en GEN5. Hardware-generaties hebben verschillende kenmerken, zoals wordt beschreven in de volgende tabel:
 
-|   | **Gen4** | **Gen5** |
+|   | **Gen4** | **GEN5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
@@ -39,13 +39,13 @@ Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn
 
 > [!IMPORTANT]
 > - Gen4-hardware wordt gefaseerd uitgevoerd. Het is raadzaam om nieuwe beheerde exemplaren te implementeren op GEN5-hardware.
-> - Gen4-hardware is op dit moment nog steeds alleen beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, VS-midden, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
+> - Gen4-hardware is op dit moment nog steeds beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, centraal VS, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
 
 ### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
 
 De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](sql-database-service-tier-business-critical.md) servicelaag is afhankelijk van het aantal vCores en de generatie van hardware. In de volgende tabel worden de limieten van het geheugen weer gegeven dat kan worden gebruikt voor OLTP-objecten in het geheugen.
 
-| OLTP-ruimte in het geheugen  | **Gen5** | **Gen4** |
+| OLTP-ruimte in het geheugen  | **GEN5** | **Gen4** |
 | --- | --- | --- |
 | 4 vCores  | 3,14 GB | |   
 | 8 vCores  | 6,28 GB | 8 GB |
@@ -65,28 +65,28 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 
 | **Functie** | **Algemeen** | **Bedrijfskritiek** |
 | --- | --- | --- |
-| Aantal vCores @ no__t-0 | Gen4 8, 16, 24<br/>GEN5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> GEN5 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same aantal vCores is toegewezen voor alleen-lezen query's. |
-| Maxi maal geheugen | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 20,4 GB-408 GB (5,1 GB/vCore) voor lees-en schrijf query's<br/>+ extra 20,4 GB-408 GB (5,1 GB/vCore) voor alleen-lezen query's.<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
-| Maximale opslag grootte van exemplaar (gereserveerd) | -2 TB voor 4 vCores (alleen GEN5)<br/>-8 TB voor andere grootten | Gen4 1 TB <br/> GEN5 <br/>-1 TB voor 4, 8, 16 vCores<br/>-2 TB voor 24 vCores<br/>-4 TB voor 32, 40, 64, 80 vCores |
+| Aantal vCores @ no__t-0 | Gen4:8, 16, 24<br/>GEN5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> GEN5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Same aantal vCores is toegewezen voor alleen-lezen query's. |
+| Maxi maal geheugen | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore) voor lees-en schrijf query's<br/>+ extra 20,4 GB-408 GB (5,1 GB/vCore) voor alleen-lezen query's.<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
+| Maximale opslag grootte van exemplaar (gereserveerd) | -2 TB voor 4 vCores (alleen GEN5)<br/>-8 TB voor andere grootten | Gen4:1 TB <br/> GEN5 <br/>-1 TB voor 4, 8, 16 vCores<br/>-2 TB voor 24 vCores<br/>-4 TB voor 32, 40, 64, 80 vCores |
 | Maximale databasegrootte | Tot momenteel beschik bare instantie grootte (Maxi maal 2 TB-8 TB afhankelijk van het aantal vCores). | Maxi maal beschik bare instantie grootte (Maxi maal 1 TB-4 TB, afhankelijk van het aantal vCores). |
-| Maximale grootte van tempDB | Beperkt tot 24 GB/vCore (96-1.920 GB) en momenteel beschik bare instantie opslag grootte.<br/>Voeg meer vCores toe om meer TempDB-ruimte te krijgen. | Maxi maal beschik bare opslag grootte van exemplaar. De grootte van het TempDB-logboek bestand is momenteel beperkt tot 24 GB/vCore. |
+| Maximale grootte van tempDB | Beperkt tot 24 GB/vCore (96-1.920 GB) en momenteel beschik bare instantie opslag grootte.<br/>Voeg meer vCores toe om meer TempDB-ruimte te krijgen.<br/> De grootte van het logboek bestand is beperkt tot 120 GB.| Maxi maal beschik bare opslag grootte van exemplaar. |
 | Maximum aantal data bases per exemplaar | 100, tenzij de maximale opslag grootte van het exemplaar is bereikt. | 100, tenzij de maximale opslag grootte van het exemplaar is bereikt. |
 | Maximum aantal database bestanden per exemplaar | Maxi maal 280, tenzij de limiet voor de opslag ruimte van het exemplaar of het bereik voor de [toewijzing van Azure Premium-schijf opslag](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) is bereikt. | 32.767 bestanden per data base, tenzij de maximale opslag grootte van het exemplaar is bereikt. |
 | Maximale grootte van het gegevens bestand | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 2 TB-8 TB) en de [opslag ruimte voor Azure Premium-schijven](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 1 TB-4 TB). |
 | Maximale grootte van logboek bestand | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. |
-| Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
-| Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Max 48 MB/s |
-| Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[de bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Niet beperkt. |
+| Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
+| Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Maxi maal 48 MB/s |
+| Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[de bestands grootte verg Roten om betere IO-prestaties te krijgen](#file-io-characteristics-in-general-purpose-tier) | Niet beperkt. |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
-| In-memory OLTP | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
-| Maximum aantal sessies | 30000 | 30000 |
+| OLTP in het geheugen | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
+| Maximum aantal sessies | 30.000 | 30.000 |
 | [Alleen-lezen replica's](sql-database-read-scale-out.md) | 0 | 1 (inclusief prijs) |
 
 > [!NOTE]
 > - De **momenteel beschik bare opslag grootte voor instanties** is het verschil tussen de gereserveerde exemplaar grootte en de gebruikte opslag ruimte.
 > - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> -systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
-> - De door Voer en IOPS zijn ook afhankelijk van het pagina formaat dat niet expliciet wordt beperkt door een beheerd exemplaar.
-> U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
+> - De door Voer en IOPS op Algemeen laag zijn ook afhankelijk van de [Bestands grootte](#file-io-characteristics-in-general-purpose-tier) die niet expliciet wordt beperkt door een beheerd exemplaar.
+> - U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
 > - Het maximum aantal IOPS is afhankelijk van de bestands indeling en de distributie van de werk belasting. Als u bijvoorbeeld een versie van 7 x 1GB maakt met Maxi maal 5K IOPS per en 7 kleine bestanden (kleiner dan 128 GB) met 500 IOPS per exemplaar, kunt u 38500 IOPS per instantie (7x5000 + 7x500) verkrijgen als uw werk belasting alle bestanden kan gebruiken. Houd er rekening mee dat een bepaalde hoeveelheid IOPS ook wordt gebruikt voor automatische back-ups.
 
 > [!NOTE]
@@ -99,7 +99,7 @@ In Algemeen servicelaag krijgt elk database bestand toegewezen IOPS en door Voer
 | Bestandsgrootte           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | IOPS per bestand       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12.500   |
-| Door Voer per bestand | 100-MiB/s | 125 MiB/s | 150 MiB/s | 200-MiB/s | 250 MiB/s | 250 MiB/s | 480-MiB/s | 
+| Door Voer per bestand | 100-MiB/s | 125-MiB/s | 150-MiB/s | 200-MiB/s | 250-MiB/s | 250-MiB/s | 480-MiB/s | 
 
 Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet dat IOPS/door Voer de limiet bereikt, kunt u de prestaties verbeteren door [de bestands grootte te verg Roten](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 
@@ -114,7 +114,7 @@ Beheerde exemplaren kunnen alleen worden gemaakt in [ondersteunde regio's](https
 Managed instance biedt momenteel alleen ondersteuning voor de implementatie van de volgende typen abonnementen:
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Cloud serviceprovider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
@@ -124,8 +124,8 @@ Managed instance biedt momenteel alleen ondersteuning voor de implementatie van 
 
 Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. Het beheerde exemplaar heeft twee standaard limieten per Azure-regio (die op aanvraag kunnen worden verhoogd door een speciale [ondersteunings aanvraag te maken in het Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance)), afhankelijk van een type abonnements type:
 
-- **Subnet limiet**: Het maximum aantal subnetten waarop beheerde exemplaren in één regio worden geïmplementeerd.
-- **limiet voor vCore-eenheden**: Het maximum aantal vCore-eenheden dat kan worden geïmplementeerd in alle instanties in één regio. Eén GP-vCore maakt gebruik van één vCore-eenheid en één BC vCore neemt vier vCore eenheden in beslag. Het totale aantal exemplaren is niet beperkt zolang het zich binnen de limiet van de vCore-eenheid bevindt.
+- **Subnet limiet**: het maximum aantal subnetten waarop beheerde exemplaren in één regio worden geïmplementeerd.
+- **limiet vCore**: het maximum aantal vCore-eenheden dat kan worden geïmplementeerd in alle instanties in één regio. Eén GP-vCore maakt gebruik van één vCore-eenheid en één BC vCore neemt vier vCore eenheden in beslag. Het totale aantal exemplaren is niet beperkt zolang het zich binnen de limiet van de vCore-eenheid bevindt.
 
 > [!Note]
 > Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) als u meer beheerde instanties in de huidige regio nodig hebt. Als alternatief kunt u nieuwe beheerde instanties maken in een andere Azure-regio zonder ondersteunings aanvragen te verzenden.
@@ -136,9 +136,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 | :---| :--- | :--- |
 |Betalen naar gebruik|3|320|
 |CSP |8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
-|Pay-as-you-go Dev/Test|3|320|
+|Dev/test met betalen per gebruik|3|320|
 |Enterprise Dev/Test|3|320|
-|EA|8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
+|ENTER|8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 
@@ -168,7 +168,7 @@ Het proces voor het verkrijgen van een groter quotum initiëren:
    - Geef aanvullende informatie over uw probleem, inclusief fout berichten, voor **Details**.
    - Als u **bestanden wilt uploaden**, voegt u een bestand toe met meer informatie (Maxi maal 4 MB).
 
-     ![Probleemdetails](media/sql-database-managed-instance-resource-limits/problem-details.png)
+     ![Details van probleem](media/sql-database-managed-instance-resource-limits/problem-details.png)
 
      > [!IMPORTANT]
      > Een geldige aanvraag moet het volgende omvatten:
@@ -178,7 +178,7 @@ Het proces voor het verkrijgen van een groter quotum initiëren:
 
 5. Klik op **Volgende**.
 6. Voer op het tabblad contact gegevens voor de nieuwe ondersteunings aanvraag de voor Keurs methode voor contact personen (e-mail adres of telefoon nummer) en de contact gegevens in.
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

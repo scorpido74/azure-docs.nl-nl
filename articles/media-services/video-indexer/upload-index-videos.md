@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128204"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372380"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -29,14 +29,15 @@ In het artikel ziet u hoe u de API [Video uploaden](https://api-portal.videoinde
 
 Als uw video eenmaal is geüpload, wordt de video eventueel door Video Indexer gecodeerd (besproken in het artikel). Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Media-account. 
 
-## <a name="uploading-considerations"></a>Aandachtspunten voor uploaden
+## <a name="uploading-considerations-and-limitations"></a>Overwegingen en beperkingen uploaden
  
+- Een naam van de video mag niet langer zijn dan 80 tekens.
 - Wanneer u uw video uploadt op basis van de URL (voor keur), moet het eind punt worden beveiligd met TLS 1,2 (of hoger).
 - De upload grootte met de URL-optie is beperkt tot 30 GB.
 - De lengte van de aanvraag-URL is beperkt tot 6144 tekens waarbij de lengte van de URL van de query teken reeks is beperkt tot 4096 tekens.
 - De upload grootte met de byte matrix optie is beperkt tot 2 GB.
 - De byte matrix optie verkeert na 30 minuten.
-- De URL die is opgenomen `videoURL` in de para meter moet worden gecodeerd.
+- De URL die is opgenomen in de para meter `videoURL` moet worden gecodeerd.
 - Het indexeren van Media Services assets heeft dezelfde beperking als het indexeren van een URL.
 - Video Indexer heeft een maximale duur limiet van vier uur voor één bestand.
 
@@ -60,22 +61,22 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Statuswijziging indexering: 
     - Eigenschappen:    
     
-        |Name|Description|
+        |Naam|Beschrijving|
         |---|---|
         |id|De video-ID|
-        |toestand|De videostatus|  
-    - Voor beeld: https\/:/test.com/notifyme?projectName=MyProject&id=1234abcd&State=processed
+        |state|De videostatus|  
+    - Voor beeld: https: \//test. com/notifyme? projectName = MyProject & id = 1234abcd & State = verwerkt
 - Personen geïdentificeerd in de video:
-  - properties
+  - Eigenschappen
     
-      |Name|Description|
+      |Naam|Beschrijving|
       |---|---|
       |id| De video-ID|
       |faceId|De gezichts-id die wordt weergegeven in de video-index|
       |knownPersonId|De persoons-id die uniek is in een gezichtsmodel|
       |personName|De naam van de persoon|
         
-    - Voor beeld: https\/:/test.com/notifyme?projectName=MyProject&id=1234abcd&FaceId=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Voor beeld: https: \//test. com/notifyme? projectName = MyProject & id = 1234abcd & FaceId = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & persoonnaam = Inigo_Montoya 
 
 #### <a name="notes"></a>Opmerkingen
 
@@ -94,7 +95,7 @@ De prijs is afhankelijk van de geselecteerde optie voor indexering.
 
 ### <a name="priority"></a>priority
 
-Video's worden geïndexeerd door Video Indexer op basis van de prioriteit. Gebruik de parameter **priority** voor het specificeren van de indexeringsprioriteit. De volgende waarden zijn geldig: **Laag**, **normaal** (standaard) en **hoog**.
+Video's worden geïndexeerd door Video Indexer op basis van de prioriteit. Gebruik de parameter **priority** voor het specificeren van de indexeringsprioriteit. De volgende waarden zijn geldig: **Laag**, **Normaal** (standaard) en **Hoog**.
 
 De parameter **priority** wordt alleen ondersteund voor betaalde accounts.
 
@@ -284,7 +285,7 @@ public class AccountContractSlim
 
 De statuscodes in de volgende tabel kunnen worden geretourneerd door de uploadbewerking.
 
-|Statuscode|ErrorType (in hoofdtekst van antwoord)|Description|
+|Statuscode|ErrorType (in hoofdtekst van antwoord)|Beschrijving|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|Dezelfde video wordt al verwerkt in het opgegeven account.|
 |400|VIDEO_ALREADY_FAILED|Dezelfde video kon minder dan twee uur geleden niet worden verwerkt in het opgegeven account. API-clients moeten ten minste twee uur wachten voordat ze een video opnieuw uploaden.|

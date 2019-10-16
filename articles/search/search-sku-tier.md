@@ -1,6 +1,6 @@
 ---
 title: Kies een prijs categorie of SKU voor Azure Search service-Azure Search
-description: "Azure Search kan in de volgende Sku's worden ingericht: Gratis, basis en standaard, en standaard is beschikbaar in verschillende resource configuraties en capaciteits niveaus."
+description: "Azure Search kan in de volgende Sku's worden ingericht: gratis, basis en standaard, en standaard is beschikbaar in verschillende resource configuraties en capaciteits niveaus."
 services: search
 author: HeidiSteen
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647351"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331194"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Kies een prijs categorie voor Azure Search
 
@@ -22,7 +22,7 @@ Wanneer u een Azure Search-service maakt, [wordt er een resource gemaakt op basi
 
 De meeste klanten beginnen met de gratis laag zodat ze de service kunnen evalueren. Na de evaluatie is het gebruikelijk om een tweede service te maken in een van de hogere lagen voor ontwikkelings-en productie-implementaties.
 
-Hoewel alle lagen, met inbegrip van de gratis laag, over het algemeen de functie pariteit bieden, kunnen grotere werk belastingen een nood zaak voor hogere lagen vereisen. AI-verrijking [met Cognitive Services](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
+Hoewel alle lagen, met inbegrip van de gratis laag, over het algemeen de functie pariteit bieden, kunnen grotere werk belastingen een nood zaak voor hogere lagen vereisen. [AI-verrijking met Cognitive Services](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
 
 > [!NOTE] 
 > De uitzonde ring op de functie pariteit is [Indexeer](search-indexer-overview.md)functies, die niet beschikbaar zijn op S3 HD.
@@ -41,7 +41,7 @@ De laag die u selecteert, bepaalt het factureer bare percentage. De volgende sch
 
 Met **gratis** maakt u een beperkte zoek service in een cluster, gedeeld met andere abonnees. U kunt kleine projecten, inclusief Quick starts en zelf studies, volt ooien, maar u kunt de service niet schalen of aanzienlijke werk belastingen uitvoeren. **Basic** en **Standard** zijn de meest gebruikte factureer bare lagen, waarbij **standaard** de standaard instelling is.
 
-![Prijs categorieën van Azure Search](media/search-sku-tier/tiers.png "Prijs categorieën van Azure Search")
+![Prijs categorieën van Azure Search](media/search-sku-tier/tiers.png "prijs categorieën van Azure Search")
 
 Sommige lagen zijn geoptimaliseerd voor bepaalde typen werk. **Standaard 3 High density (S3 HD)** is bijvoorbeeld een *hosting modus* voor S3, waarbij de onderliggende hardware is geoptimaliseerd voor een groot aantal kleinere indexen en die is bedoeld voor multitenancy-scenario's. S3 HD heeft dezelfde kosten per eenheid als S3, maar de hardware is geoptimaliseerd voor snelle bestands Lees bewerkingen op een groot aantal kleinere indexen.
 
@@ -77,11 +77,11 @@ Kosten zijn van toepassing op uitgaande gegevens als de services zich in verschi
 
 ### <a name="cognitive-search-ai-enrichment-with-cognitive-services"></a>Verrijking van cognitieve Zoek AI met Cognitive Services
 
-Voor [AI-verrijking met Cognitive Services](cognitive-search-concept-intro.md)moet u plannen dat u [een factureer bare Azure Cognitive Services resource](cognitive-search-attach-cognitive-services.md)bijvoegt in dezelfde regio als Azure Search, in de S0 prijs categorie voor de verwerking van betalen naar gebruik. Er zijn geen vaste kosten verbonden aan het koppelen van Cognitive Services. U betaalt alleen voor de verwerking die u nodig hebt.
+Voor [AI-verrijking met Cognitive Services](cognitive-search-concept-intro.md)moet u plannen dat u [een factureer bare Azure Cognitive Services resource bijvoegt](cognitive-search-attach-cognitive-services.md)in dezelfde regio als Azure Search, in de S0 prijs categorie voor de verwerking van betalen naar gebruik. Er zijn geen vaste kosten verbonden aan het koppelen van Cognitive Services. U betaalt alleen voor de verwerking die u nodig hebt.
 
 | Bewerking | Facturerings impact |
 |-----------|----------------|
-| Document kraken, tekst extractie | Free |
+| Document kraken, tekst extractie | Gratis |
 | Document kraken, afbeeldings extractie | Gefactureerd op basis van het aantal afbeeldingen dat is geëxtraheerd uit uw documenten. In een [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** is de para meter die het ophalen van de installatie kopie activeert. Als **imageAction** is ingesteld op ' geen ' (de standaard instelling), worden er geen kosten in rekening gebracht voor het ophalen van afbeeldingen. De frequentie voor het extra heren van afbeeldingen wordt beschreven op de pagina [prijs informatie](https://azure.microsoft.com/pricing/details/search/) voor Azure Search.|
 | [Vooraf ontwikkelde cognitieve vaardig heden](cognitive-search-predefined-skills.md) | Gefactureerd tegen hetzelfde aantal als dat u de taak met Cognitive Services rechtstreeks hebt uitgevoerd. |
 | Aangepaste vaardigheden | Een aangepaste vaardigheid is de functionaliteit die u opgeeft. De kosten voor het gebruik van een aangepaste vaardigheid zijn geheel afhankelijk van of aangepaste code andere services met data limieten aanroept. |
@@ -94,7 +94,7 @@ Het belangrijkste facturerings concept dat u moet begrijpen voor Azure Search be
 
 SU is het product van de *replica's* en *partities* die worden gebruikt door een service: **(R x P = su)** .
 
-Elke service begint met één SU (één replica vermenigvuldigd met één partitie) als mini maal. Het maximum voor elke service is 36 SUs. Dit maximum kan op meerdere manieren worden bereikt: 6 partities x 6 replica's of 3 partities x 12 replica's, bijvoorbeeld. Het is gebruikelijk om minder dan de totale capaciteit te gebruiken (bijvoorbeeld een service met drie replica's, 3 partities die is gefactureerd als negen SUs). Zie de grafiek [partitie-en replica combinaties](search-capacity-planning.md#chart) voor geldige combi Naties.
+Elke service begint met één SU (één replica vermenigvuldigd met één partitie) als mini maal. Het maximum voor elke service is 36 SUs. Dit maximum kan op verschillende manieren worden bereikt: 6 partities x 6 replica's of drie partities x 12 replica's, bijvoorbeeld. Het is gebruikelijk om minder dan de totale capaciteit te gebruiken (bijvoorbeeld een service met drie replica's, 3 partities die is gefactureerd als negen SUs). Zie de grafiek [partitie-en replica combinaties](search-capacity-planning.md#chart) voor geldige combi Naties.
 
 Het facturerings tarief is elk uur per SU. Elke laag heeft een geleidelijk hogere frequentie. Hogere lagen worden geleverd met grotere en snellere partities. Dit draagt bij aan een totaal hoger uurtarief voor die laag. U kunt de tarieven voor elke laag bekijken op de pagina [prijs informatie](https://azure.microsoft.com/pricing/details/search/) .
 
@@ -164,7 +164,7 @@ Bedrijfs vereisten bepalen doorgaans het aantal indexen dat u nodig hebt. U hebt
 Als u de grootte van een index wilt bepalen, moet u er [een maken](search-create-index-portal.md). De gegevens structuur in Azure Search is hoofd zakelijk een [omgekeerde index](https://en.wikipedia.org/wiki/Inverted_index) structuur, die andere kenmerken heeft dan de bron gegevens. Voor een omgekeerde index worden de grootte en complexiteit bepaald door de inhoud, niet noodzakelijkerwijs door de hoeveelheid gegevens die u in de feed invoert. Een grote gegevens bron met hoge redundantie kan resulteren in een kleinere index dan een kleinere gegevensset die zeer variabele inhoud bevat. Het is dus zelden mogelijk de index grootte af te leiden op basis van de grootte van de oorspronkelijke gegevensset.
 
 > [!NOTE] 
-> Hoewel de toekomstige behoeften voor indices en opslag in de toekomst kunnen worden geschat, is het een goed idee om te doen. Als de capaciteit van een laag te laag wordt, moet u een nieuwe service inrichten op een hogere laag en vervolgens [uw indexen opnieuw laden](search-howto-reindex.md). Er is geen in-place upgrade van een service van de ene naar de andere SKU.
+> Hoewel de toekomstige behoeften voor indices en opslag in de toekomst kunnen worden geschat, is het een goed idee om te doen. Als de capaciteit van een laag te laag wordt, moet u een nieuwe service inrichten op een hogere laag en vervolgens [uw indexen opnieuw laden](search-howto-reindex.md). Er is geen in-place upgrade van een service van de ene SKU naar een andere.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Een schatting maken van de gratis laag
@@ -191,7 +191,7 @@ Toegewezen resources kunnen grotere sampling-en verwerkings tijden bieden voor r
 
 1. [Bouw een initiële index](search-create-index-portal.md) om te bepalen hoe bron gegevens worden omgezet in een index. Dit is de enige manier om de index grootte te schatten.
 
-1. [Bewaak opslag, service limieten, query volume en latentie](search-monitor-usage.md) in de portal. In de portal worden query's per seconde, vertraagde query's en zoek latentie weer gegeven. Al deze waarden kunnen u helpen bij het bepalen of u de juiste laag hebt geselecteerd. U kunt ook uitgebreide controle van waarden configureren, zoals doorschakel analyse, door [Zoek verkeer analyse](search-traffic-analytics.md)in te scha kelen.
+1. [Bewaak opslag, service limieten, query volume en latentie](search-monitor-usage.md) in de portal. In de portal worden query's per seconde, vertraagde query's en zoek latentie weer gegeven. Al deze waarden kunnen u helpen bij het bepalen of u de juiste laag hebt geselecteerd. 
 
 Het index nummer en de grootte zijn even belang rijk voor uw analyse. Dit komt doordat de maximum limieten worden bereikt door het volledige gebruik van opslag (partities) of door maximale limieten voor resources (indexen, Indexeer functies enzovoort), afhankelijk van wat het eerste komt. De portal helpt u bij te houden, met het huidige gebruik en maximum aantal limieten naast elkaar op de pagina overzicht.
 
@@ -215,8 +215,6 @@ De functies gratis en preview bieden geen [Service Level Agreements (sla's)](htt
 
 ## <a name="tips-for-tier-evaluation"></a>Tips voor het evalueren van lagen
 
-+ Meer informatie over het bouwen van efficiënte indexen en informatie over de methoden voor het vernieuwen van de minste impact. Gebruik [Search Traffic Analytics](search-traffic-analytics.md) om inzicht te krijgen in query-activiteiten.
-
 + Sta toe dat metrische query's kunnen worden gebruikt voor het samen stellen en verzamelen van gegevens rondom gebruiks patronen (query's tijdens kantoor uren, indexeren tijdens daluren). Gebruik deze gegevens om beslissingen over service-inrichtingen te informeren. Hoewel het niet praktisch is om een uur-of dagelijks uitgebracht, kunt u partities en resources dynamisch aanpassen om geplande wijzigingen in query volumes aan te passen. U kunt ook ongeplande wijzigingen aanbrengen als de niveaus lang genoeg zijn om te garanderen dat er actie wordt ondernomen.
 
 + Houd er rekening mee dat het enige nadeel van onderinrichting is dat u een service mogelijk moet afbreken als de werkelijke vereisten groter zijn dan uw voor spellingen. Om service onderbrekingen te voor komen, maakt u een nieuwe service in hetzelfde abonnement op een hogere laag en voert u deze naast elkaar uit totdat alle apps en aanvragen gericht zijn op het nieuwe eind punt.
@@ -225,7 +223,7 @@ De functies gratis en preview bieden geen [Service Level Agreements (sla's)](htt
 
 Begin met een gratis laag en bouw een initiële index met behulp van een subset van uw gegevens om de kenmerken ervan te begrijpen. De gegevens structuur in Azure Search is een omgekeerde index structuur. De grootte en complexiteit van een omgekeerde index worden bepaald door de inhoud. Houd er rekening mee dat uiterst redundante inhoud een kleinere index zou kunnen opleveren dan zeer onregelmatige inhoud. Daarom bepalen inhouds kenmerken in plaats van de grootte van de gegevensset vereisten voor de opslag van de index.
 
-Nadat u een eerste schatting hebt gemaakt van uw index grootte, moet u [een factureer bare service inrichten](search-create-service-portal.md) op een van de lagen die in dit artikel worden besproken: Basis, standaard of opslag geoptimaliseerd. Verlaag eventuele kunst matige beperkingen voor het wijzigen van de gegevens en [bouw uw index opnieuw](search-howto-reindex.md) op om alle gegevens te bevatten die u wilt doorzoeken.
+Nadat u een eerste schatting hebt gemaakt van uw index grootte, moet u [een factureer bare service inrichten](search-create-service-portal.md) op een van de lagen die in dit artikel worden besproken: Basic, Standard of Storage Optimized. Verlaag eventuele kunst matige beperkingen voor het wijzigen van de gegevens en [bouw uw index opnieuw](search-howto-reindex.md) op om alle gegevens te bevatten die u wilt doorzoeken.
 
 [Wijs partities en replica's](search-capacity-planning.md) zo nodig toe om de prestaties en schaal die u nodig hebt te verkrijgen.
 

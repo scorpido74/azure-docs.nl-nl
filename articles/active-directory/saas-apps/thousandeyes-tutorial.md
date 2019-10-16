@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ThousandEyes | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ThousandEyes.
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ThousandEyes | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ThousandEyes.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,246 +13,204 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: bb78b014ffe2d40b9a61da8e47893056e435ddc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088643"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373240"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Zelfstudie: Azure Active Directory-integratie met ThousandEyes
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ThousandEyes
 
-In deze zelfstudie leert u hoe u ThousandEyes integreren met Azure Active Directory (Azure AD).
-ThousandEyes integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u ThousandEyes integreert met Azure Active Directory (Azure AD). Wanneer u ThousandEyes integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt beheren in Azure AD die toegang tot ThousandEyes heeft.
-* U kunt uw gebruikers worden automatisch aangemeld ThousandEyes (Single Sign-On) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot ThousandEyes.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij ThousandEyes met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met ThousandEyes, moet u de volgende items:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* ThousandEyes eenmalige aanmelding ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* ThousandEyes-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Biedt ondersteuning voor ThousandEyes **SP** gestart door SSO
+* ThousandEyes ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* ThousandEyes ondersteunt [ **geautomatiseerde** gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
 
-* Biedt ondersteuning voor ThousandEyes [ **automatisch** inrichten van gebruikers](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
-## <a name="adding-thousandeyes-from-the-gallery"></a>ThousandEyes uit de galerie toe te voegen
+## <a name="adding-thousandeyes-from-the-gallery"></a>ThousandEyes toevoegen uit de galerie
 
-Voor het configureren van de integratie van ThousandEyes in Azure AD, moet u ThousandEyes uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ThousandEyes in azure AD wilt configureren, moet u ThousandEyes uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen ThousandEyes uit de galerie, moet u de volgende stappen uitvoeren:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **ThousandEyes** in het zoekvak.
+1. Selecteer **ThousandEyes** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor ThousandEyes
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Azure AD SSO met ThousandEyes configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ThousandEyes.
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Als u Azure AD SSO wilt configureren en testen met ThousandEyes, voltooit u de volgende bouw stenen:
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[THOUSANDEYES SSO configureren](#configure-thousandeyes-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een ThousandEyes-test gebruiker](#create-thousandeyes-test-user)** -om een equivalent van B. Simon in ThousandEyes te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-4. Typ in het zoekvak **ThousandEyes**, selecteer **ThousandEyes** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **ThousandEyes** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-     ![ThousandEyes in de lijst met resultaten](common/search-new-app.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met ThousandEyes op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ThousandEyes tot stand worden gebracht.
-
-Om te configureren en testen van Azure AD eenmalige aanmelding met ThousandEyes, moet u de volgende bouwstenen voltooien:
-
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding ThousandEyes](#configure-thousandeyes-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker ThousandEyes](#create-thousandeyes-test-user)**  : als u wilt een equivalent van Britta Simon in ThousandEyes die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voor het configureren van Azure AD eenmalige aanmelding met ThousandEyes, moet u de volgende stappen uitvoeren:
-
-1. In de [Azure-portal](https://portal.azure.com/)op de **ThousandEyes** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![ThousandEyes domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.thousandeyes.com/login/sso`
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **ThousandEyes instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+1. Op de sectie **ThousandEyes instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    a. Aanmeldings-URL
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-    b. Azure AD-id
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-    c. Afmeldings-URL
-
-### <a name="configure-thousandeyes-single-sign-on"></a>ThousandEyes voor eenmalige aanmelding configureren
-
-1. In een ander browservenster aanmelden bij uw **ThousandEyes** bedrijf site als beheerder.
-
-2. Klik in het menu aan de bovenkant op **Settings**.
-
-    ![Settings](./media/thousandeyes-tutorial/ic790066.png "Settings")
-
-3. Klik op **Account**
-
-    ![Account](./media/thousandeyes-tutorial/ic790067.png "Account")
-
-4. Klik op de **beveiliging & verificatie** tabblad.
-
-    ![Beveiliging en verificatie](./media/thousandeyes-tutorial/ic790068.png "beveiligings- en -verificatie")
-
-5. In de **Setup Single Sign-On** sectie, voert u de volgende stappen uit:
-
-    ![Instellen van eenmalige aanmelding](./media/thousandeyes-tutorial/ic790069.png "Setup Single Sign-On")
-
-    a. Selecteer **eenmalige aanmelding inschakelen**.
-
-    b. In **aanmeldings-URL van pagina** tekstvak plakken **aanmeldings-URL**, die u hebt gekopieerd vanuit Azure portal.
-
-    c. In **afmeldings-URL van pagina** tekstvak plakken **afmeldings-URL van**, die u hebt gekopieerd vanuit Azure portal.
-
-    d. **Identity Provider Issuer** tekstvak plakken **Azure AD-id**, die u hebt gekopieerd vanuit Azure portal.
-
-    e. In **verificatiecertificaat**, klikt u op **bestand kiezen**, en upload het certificaat dat u hebt gedownload vanuit Azure portal.
-
-    f. Klik op **Opslaan**.
-
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
-
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Create**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan ThousandEyes.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan ThousandEyes.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **ThousandEyes**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **ThousandEyes**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-2. Selecteer in de lijst met toepassingen, **ThousandEyes**.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling ThousandEyes in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+## <a name="configure-thousandeyes-sso"></a>ThousandEyes SSO configureren
 
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Meld u in een ander browser venster aan bij de **ThousandEyes** -bedrijfs site als beheerder.
 
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
+2. Klik in het menu aan de bovenkant op **Settings**.
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+    ![Instellingen](./media/thousandeyes-tutorial/ic790066.png "Instellingen")
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+3. Klik op **account**
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+    ![Account](./media/thousandeyes-tutorial/ic790067.png "account")
 
-### <a name="create-thousandeyes-test-user"></a>ThousandEyes testgebruiker maken
+4. Klik op het tabblad **beveiliging & verificatie** .
 
-Het doel van deze sectie is het maken van een gebruiker met de naam van Britta Simon in ThousandEyes. ThousandEyes ondersteunt automatisch gebruikers inrichten, dit is standaard ingeschakeld. U kunt [hier](thousandeyes-provisioning-tutorial.md) meer informatie vinden over het configureren van het automatisch inrichten van gebruikers.
+    Verificatie van beveiligings ![& verificatie](./media/thousandeyes-tutorial/ic790068.png "&")
+
+5. Voer de volgende stappen uit in de sectie **eenmalige aanmelding instellen** :
+
+    Eenmalige(./media/thousandeyes-tutorial/ic790069.png "aanmelding") voor eenmalige ![aanmelding instellen]
+
+    a. Selecteer **eenmalige aanmelding inschakelen**.
+
+    b. Plak in het tekstvak **URL van aanmeldings pagina** de **aanmeldings-URL**die u hebt gekopieerd uit Azure Portal.
+
+    c. Plak in het tekstvak **URL voor afmelding** de **afmeldings-URL**die u van Azure Portal hebt gekopieerd.
+
+    d. Tekstvak voor de uitgever van de **identiteits provider** , plak de **Azure ad-id**, die u van Azure Portal hebt gekopieerd.
+
+    e. Klik in **verificatie certificaat**op **bestand kiezen**en upload het certificaat dat u hebt gedownload van Azure Portal.
+
+    f. Klik op **Opslaan**.
+
+### <a name="create-thousandeyes-test-user"></a>ThousandEyes-test gebruiker maken
+
+Het doel van deze sectie is het maken van een gebruiker met de naam Julia Simon in ThousandEyes. ThousandEyes ondersteunt het automatisch inrichten van gebruikers, dat standaard is ingeschakeld. U kunt [hier](thousandeyes-provisioning-tutorial.md) meer informatie vinden over het configureren van het automatisch inrichten van gebruikers.
 
 **Als u de gebruiker handmatig moet maken, voert u de volgende stappen uit:**
 
-1. Meld u aan uw bedrijf ThousandEyes site als een beheerder.
+1. Meld u als beheerder aan bij de ThousandEyes-bedrijfs site.
 
 2. Klik op **Instellingen**.
 
-    ![Settings](./media/thousandeyes-tutorial/IC790066.png "Settings")
+    ![Instellingen](./media/thousandeyes-tutorial/IC790066.png "Instellingen")
 
 3. Klik op **Account**.
 
-    ![Account](./media/thousandeyes-tutorial/IC790067.png "Account")
+    ![Account](./media/thousandeyes-tutorial/IC790067.png "account")
 
-4. Klik op de **Accounts en gebruikers** tabblad.
+4. Klik op het tabblad **Accounts & gebruikers** .
 
-    ![Accounts en gebruikers](./media/thousandeyes-tutorial/IC790073.png "Accounts en gebruikers")
+    ![Accounts & gebruikers](./media/thousandeyes-tutorial/IC790073.png "Accounts & gebruikers")
 
-5. In de **gebruikers toevoegen en Accounts** sectie, voert u de volgende stappen uit:
+5. Voer in de sectie **gebruikers & accounts toevoegen** de volgende stappen uit:
 
-    ![Gebruikersaccounts toevoegen](./media/thousandeyes-tutorial/IC790074.png "gebruikersaccounts toevoegen")
+    ![Gebruikers accounts toevoegen](./media/thousandeyes-tutorial/IC790074.png "gebruikers accounts toevoegen")
 
-    a. In **naam** tekstvak typt u de naam van gebruiker, zoals **Britta Simon**.
+    a. Typ in het tekstvak **naam** de naam van de gebruiker zoals **B. Simon**.
 
-    b. In **e** tekstvak, typ het e-mailadres van gebruiker, zoals brittasimon@contoso.com.
+    b. Typ in het tekstvak **e-mail** het e-mail adres van de gebruiker, bijvoorbeeld b.simon@contoso.com.
 
-    b. Klik op **nieuwe gebruiker toevoegen aan het Account**.
+    b. Klik op **nieuwe gebruiker toevoegen aan account**.
 
     > [!NOTE]
-    > De houder van Azure Active Directory-account ontvangt een e-mailbericht ook een koppeling om te bevestigen en activeren van het account.
+    > De houder van het Azure Active Directory-account krijgt een e-mail bericht met een koppeling om het account te bevestigen en te activeren.
 
 > [!NOTE]
-> U kunt elke andere ThousandEyes gebruiker account hulpmiddelen voor het maken of API's geleverd door ThousandEyes voor het inrichten van Azure Active Directory-gebruikersaccounts.
+> U kunt alle andere hulpprogram ma's voor het maken van ThousandEyes-gebruikers accounts of Api's die worden geleverd door ThousandEyes, gebruiken om Azure Active Directory gebruikers accounts in te richten.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+## <a name="test-sso"></a>SSO testen 
 
-Wanneer u op de tegel ThousandEyes in het toegangsvenster, moet u worden automatisch aangemeld bij de ThousandEyes waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+Wanneer u op de tegel ThousandEyes in het toegangs venster klikt, moet u automatisch worden aangemeld bij de ThousandEyes waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer ThousandEyes met Azure AD](https://aad.portal.azure.com/)
 
 - [Inrichten van gebruikers configureren](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)

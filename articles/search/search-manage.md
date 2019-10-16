@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719867"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331258"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Service beheer voor Azure Search in het Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)-> 
 
 Azure Search is een volledig beheerde, op de cloud gebaseerde zoek service die wordt gebruikt voor het bouwen van een uitgebreide zoek ervaring in aangepaste apps. In dit artikel worden de Service beheer taken behandeld die u kunt uitvoeren in de [Azure Portal](https://portal.azure.com) voor een zoek service die u al hebt ingericht. Service beheer is lichter ontwerp, beperkt tot de volgende taken:
 
@@ -34,8 +34,7 @@ Azure Search is een volledig beheerde, op de cloud gebaseerde zoek service die w
 
 U ziet dat de *upgrade* niet wordt weer gegeven als een beheer taak. Omdat resources worden toegewezen wanneer de service wordt ingericht, is een nieuwe service vereist voor het verplaatsen naar een andere laag. Zie [een Azure Search-service maken](search-create-service-portal.md)voor meer informatie.
 
-> [!Tip]
-> Zoekt u meer informatie over het analyseren van zoek verkeer of de prestaties van query's? U kunt het query volume bewaken, waarnaar wordt gezocht door personen, en hoe succes volle Zoek resultaten zijn in de GUID van klanten tot specifieke documenten in uw index. Zie [zoeken naar Traffic Analytics voor Azure Search](search-traffic-analytics.md), [metrische gegevens over gebruik en query's bewaken](search-monitor-usage.md), en [prestaties en optimalisatie](search-performance-optimization.md)voor meer informatie.
+U kunt het query volume en andere metrische gegevens bewaken en deze inzichten gebruiken om uw service aan te passen voor snellere reactie tijden. Zie het [gebruik en de metrische gegevens van Query's controleren](search-monitor-usage.md) en [prestaties en optimalisatie](search-performance-optimization.md)voor meer informatie.
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ Voor algemene informatie over uw service kunt u op de volgende manieren informat
 
 * In de portal, op het service dashboard, via meldingen, eigenschappen en status berichten.
 * Gebruik [Power shell](search-manage-powershell.md) of het [Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/) om [service-eigenschappen](https://docs.microsoft.com/rest/api/searchmanagement/services)of status van het gebruik van index bronnen op te halen.
-* Via [Search Traffic Analytics](search-traffic-analytics.md), zoals eerder is aangegeven.
+
 
 <a id="sub-5"></a>
 
@@ -64,8 +63,8 @@ In het dash board is bron bewaking beperkt tot de informatie die wordt weer gege
 
 Met de Search Service REST API kunt u op een programmatische manier een aantal documenten en indexen ophalen: 
 
-* [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Aantal documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Documenten tellen](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen
 
@@ -77,7 +76,7 @@ Klanten die [Indexeer functies](search-indexer-overview.md) gebruiken om indexen
 
 Als u geen Indexeer functies gebruikt, gebruikt u uw toepassings code om objecten en gegevens parallel naar verschillende zoek services te pushen. Zie [prestaties en optimalisatie in azure Search](search-performance-optimization.md)voor meer informatie.
 
-## <a name="backup-and-restore"></a>Back-ups en herstellen
+## <a name="backup-and-restore"></a>Back-up maken en terugzetten
 
 Omdat Azure Search geen primaire oplossing voor gegevens opslag is, bieden we geen formeel mechanisme voor back-up en herstel van self-service. U kunt echter de voorbeeld code **index-Backup-Restore** in dit [Azure Search .net-voor beeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples) gebruiken om een back-up te maken van de index definitie en moment opname naar een reeks json-bestanden en deze bestanden vervolgens gebruiken om de index te herstellen, indien nodig. Met dit hulp programma kunt u ook indexen verplaatsen tussen service lagen.
 

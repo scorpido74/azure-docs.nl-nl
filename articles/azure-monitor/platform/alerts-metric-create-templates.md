@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873290"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372778"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -22,7 +22,7 @@ ms.locfileid: "70873290"
 In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) kunt gebruiken om [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te configureren in azure monitor. Met Resource Manager-sjablonen kunt u via programma code waarschuwingen instellen op een consistente en reproduceer bare manier in uw omgevingen. Er zijn momenteel nieuwere metrische waarschuwingen beschikbaar voor [Deze set met resource typen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Resource sjabloon voor het maken van metrische waarschuwingen voor het resource type: Voor de Azure log Analytics-werk ruimte `Microsoft.OperationalInsights/workspaces`(i.e.) zijn aanvullende stappen vereist. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
+> Resource sjabloon voor het maken van metrische waarschuwingen voor het resource type: Azure Log Analytics-werk ruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces` vereist extra stappen. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
 
 De basis stappen zijn als volgt:
 
@@ -32,7 +32,7 @@ De basis stappen zijn als volgt:
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sjabloon voor een eenvoudige waarschuwing voor een statische drempel waarde voor waarschuwingen
 
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, `Microsoft.Insights/metricAlerts` maakt u een bron van het type en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
+Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een resource van het type `Microsoft.Insights/metricAlerts` en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
 
 Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van deze procedure.
 
@@ -281,7 +281,7 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Sjabloon voor een waarschuwing met metrische gegevens voor eenvoudige dynamische drempel waarden
 
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, `Microsoft.Insights/metricAlerts` maakt u een bron van het type en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
+Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een resource van het type `Microsoft.Insights/metricAlerts` en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
 
 Sla de JSON hieronder op als simpledynamicmetricalert. json voor het doel van deze procedure.
 
@@ -2480,7 +2480,7 @@ Sla de onderstaande JSON op als lijst-van vm's: static. json voor het doel van d
                 "PT5M",
                 "PT15M",
                 "PT30M",
-                "PT1H""
+                "PT1H"
             ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"

@@ -1,20 +1,20 @@
 ---
 title: Referentie voor Azure Managed Application View definition artefact
-description: Dit artikel bevat een verwijzing naar het weer geven van definitie-artefacten.
+description: Hier vindt u een voor beeld van het weer geven van definitie artefacten voor Azure Managed Applications. De bestands naam is viewDefinition. json.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: e60f26fe0a7144d768bac020d62c61cb92594914
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1f56f6c9c519bd29423d92a8dc8b8ce5904b523c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336541"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332641"
 ---
-# <a name="reference-view-definition-artifact"></a>Referentie: Definitie-artefact weergeven
+# <a name="reference-view-definition-artifact"></a>Verwijzing: definitie-artefact weer geven
 
 Dit artikel bevat een verwijzing naar een *viewDefinition. json* -artefact in azure Managed Applications. Zie [definition artefact weer geven](concepts-view-definition.md)voor meer informatie over de configuratie van de ontwerp weergaven.
 
@@ -89,6 +89,6 @@ In de volgende JSON ziet u een voor beeld van het bestand *viewDefinition. json*
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
-- [Referentielaag Artefact van elementen van gebruikers interface](reference-createuidefinition-artifact.md)
-- [Referentielaag Artefact van implementatie sjabloon](reference-main-template-artifact.md)
+- [Zelf studie: een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
+- [Verwijzing: elementen artefact van gebruikers interface](reference-createuidefinition-artifact.md)
+- [Verwijzing: implementatie sjabloon artefact](reference-main-template-artifact.md)

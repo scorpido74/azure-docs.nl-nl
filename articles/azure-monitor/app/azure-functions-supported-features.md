@@ -12,16 +12,16 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959909"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372439"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
-Azure Functions biedt [ingebouwde integratie](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](https://github.com/Azure/Azure-Functions/wiki/App-Insights)de slag te gaan.
+Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-monitoring.md) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)de slag te gaan.
 
 ## <a name="supported-features"></a>Ondersteunde functies
 
@@ -34,10 +34,10 @@ Azure Functions biedt [ingebouwde integratie](https://docs.microsoft.com/azure/a
 | &bull; uitzonde ringen                   | Ja             | Ja               | 
 | &bull; prestatie meter items         | Ja             | Ja               |
 | &bull; afhankelijkheden                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ja               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Ja               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Ja               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Ja               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Ja               | 
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
@@ -62,7 +62,7 @@ Het automatisch verzamelen van prestatie meter items werkt alleen op Windows-com
 
 De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel. Zie [het besturings kanaal beveiligen](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) voor instructies.
 
-## <a name="sampling"></a>Steekproef nemen
+## <a name="sampling"></a>Sampling
 
 Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)voor meer informatie.
 

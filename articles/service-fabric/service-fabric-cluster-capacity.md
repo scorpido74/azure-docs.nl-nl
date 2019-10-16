@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167410"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333107"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 Voor een productie-implementatie is capaciteits planning een belang rijke stap. Hier volgen enkele van de items die u moet overwegen als onderdeel van dat proces.
@@ -81,7 +81,7 @@ De laag duurzaamheid wordt gebruikt om aan het systeem de bevoegdheden aan te ge
 | Bron           | 1                              | Vm's met ten minste 50 GB lokale SSD                                              | Wordt niet vertraagd door het Service Fabric cluster           | Kan gedurende een belang rijke periode niet worden uitgesteld                                                    |
 
 > [!WARNING]
-> Voor knooppunt typen met de duurzaamheid Bronze zijn _geen bevoegdheden_nodig. Dit betekent dat infrastructuur taken die van invloed zijn op uw staatloze workloads niet worden gestopt of uitgesteld, wat van invloed kan zijn op uw workloads. Gebruik alleen bronzen voor knooppunt typen die alleen stateless werk belastingen uitvoeren. Voor werk belastingen met Silver of hoger wordt aanbevolen. 
+> Voor knooppunt typen met de duurzaamheid Bronze zijn _geen bevoegdheden_nodig. Dit betekent dat infrastructuur taken die van invloed zijn op uw stateful werk belastingen, niet worden gestopt of uitgesteld, wat van invloed kan zijn op uw workloads. Gebruik alleen bronzen voor knooppunt typen die alleen stateless werk belastingen uitvoeren. Voor werk belastingen met Silver of hoger wordt aanbevolen. 
 > 
 > Ongeacht eventuele duurzaamheids niveau, wordt het cluster vernietigd door de [toewijzings](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) bewerking voor de VM-schaalset
 
@@ -123,7 +123,7 @@ De betrouwbaarheids categorie wordt gebruikt om het aantal replica's in te stell
 
 De betrouwbaarheids categorie kan de volgende waarden hebben:
 
-* Platinum: Voer de systeem services uit met het aantal zeven van de doel replicaset
+* Platinum: Voer de systeem services uit met het aantal negen doel replica sets
 * Goud: Voer de systeem services uit met het aantal zeven van de doel replicaset
 * Silver: Voer de systeem services uit met een aantal van vijf ingestelde doel replicaset 
 * Bronze: Voer de systeem services uit met een aantal van drie doel replica sets

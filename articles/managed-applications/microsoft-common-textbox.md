@@ -1,6 +1,6 @@
 ---
-title: Azure TextBox UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Common.TextBox UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure-tekstvak | Microsoft Docs
+description: Hierin wordt het gebruikers interface-element micro soft. common. TextBox beschreven voor Azure Portal. Gebruiken voor het toevoegen van niet-opgemaakte tekst.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044528"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331611"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI-element
-Een besturingselement dat kan worden gebruikt om niet-opgemaakte tekst te bewerken.
+# <a name="microsoftcommontextbox-ui-element"></a>Gebruikers interface-element van micro soft. common. TextBox
+Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgemaakte tekst.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+## <a name="ui-sample"></a>UI-voor beeld
+![Micro soft. common. TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -44,10 +44,10 @@ Een besturingselement dat kan worden gebruikt om niet-opgemaakte tekst te bewerk
 ```
 
 ## <a name="remarks"></a>Opmerkingen
-- Als `constraints.required` is ingesteld op **waar**, en vervolgens in het tekstvak moet een waarde die moet worden gevalideerd. De standaardwaarde is **false**.
-- `constraints.regex` is een reguliere-expressiepatroon van JavaScript. Als u opgeeft, klikt u vervolgens het tekstvak waarde moet overeenkomen met het patroon worden gevalideerd. De standaardwaarde is **null**.
-- `constraints.validationMessage` is een tekenreeks die moet worden weergegeven wanneer de waarde van het tekstvak niet kan worden gevalideerd. Als niet is opgegeven, wordt het tekstvak ingebouwde validatieberichten gebruikt. De standaardwaarde is **null**.
-- Het is mogelijk om op te geven van een waarde voor `constraints.regex` wanneer `constraints.required` is ingesteld op **false**. In dit scenario is een waarde niet vereist voor het tekstvak worden gevalideerd. Als er een is opgegeven, moet deze overeenkomen met de reguliere-expressiepatroon.
+- Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaard waarde is **False**.
+- `constraints.regex` is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
+- `constraints.validationMessage` is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
+- Het is mogelijk om een waarde voor `constraints.regex` op te geven wanneer `constraints.required` is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
@@ -56,5 +56,5 @@ Een besturingselement dat kan worden gebruikt om niet-opgemaakte tekst te bewerk
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

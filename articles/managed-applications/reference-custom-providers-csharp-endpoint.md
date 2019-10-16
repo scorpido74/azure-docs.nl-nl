@@ -1,18 +1,18 @@
 ---
 title: Rest eindpunt C# referentie van de aangepaste provider-Azure
-description: Dit artikel is een eenvoudige referentie voor een gerust C# eind punt van een aangepaste provider.
+description: Biedt een eenvoudige referentie voor een inactieve C# eind punt van een aangepaste Azure-provider. Het eind punt wordt gegeven via een Azure-functie-app.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172911"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332653"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Rest- C# eindpunt referentie van aangepaste provider
 
@@ -258,6 +258,6 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van aangepaste Azure-resource providers](./custom-providers-overview.md)
-- [Zelfstudie: Een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Procedure: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Referentielaag Verwijzing naar aangepaste resource-cache](./custom-providers-proxy-cache-resource-endpoint-reference.md)
+- [Zelf studie: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Verwijzing: verwijzing naar aangepaste resource-cache](./custom-providers-proxy-cache-resource-endpoint-reference.md)

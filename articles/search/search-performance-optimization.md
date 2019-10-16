@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182284"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333162"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Implementatie strategieën en aanbevolen procedures voor het optimaliseren van de prestaties van Azure Search
 
@@ -88,17 +88,12 @@ Hier volgt een globaal visueel element van wat die architectuur eruit zou zien.
    ![Eén gegevens bron met combi Naties van gedistribueerde Indexeer functies en services][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>REST-Api's gebruiken voor het pushen van inhouds updates op meerdere services
-Als u de Azure Search-REST API gebruikt om [inhoud in uw Azure search index](https://docs.microsoft.com/rest/api/searchservice/update-index)te pushen, kunt u uw verschillende Zoek Services synchroon laten door wijzigingen in alle zoek services te pushen wanneer een update is vereist. Zorg ervoor dat u in uw code cases afhandelt waarbij een update naar één zoek service mislukt, maar slaagt voor andere zoek services.
+Als u de Azure Search-REST API gebruikt om [inhoud in uw Azure search index te pushen](https://docs.microsoft.com/rest/api/searchservice/update-index), kunt u uw verschillende Zoek Services synchroon laten door wijzigingen in alle zoek services te pushen wanneer een update is vereist. Zorg ervoor dat u in uw code cases afhandelt waarbij een update naar één zoek service mislukt, maar slaagt voor andere zoek services.
 
 ## <a name="leverage-azure-traffic-manager"></a>Gebruik Azure Traffic Manager
 Met [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) kunt u aanvragen routeren naar meerdere websites met geografische locaties die vervolgens worden ondersteund door meerdere Azure Search Services. Een voor deel van het Traffic Manager is dat het Azure Search kan testen om er zeker van te zijn dat het beschikbaar is en gebruikers kan omleiden naar alternatieve Zoek Services in het geval van uitval tijd. Daarnaast kunt u, als u Search-aanvragen begeleidt via Azure-websites, in azure Traffic Manager taken verdelen waarbij de website niet Azure Search. Hier volgt een voor beeld van de architectuur die gebruikmaakt van Traffic Manager.
 
    ![Meerdere tabbladen van services per regio, met centrale Traffic Manager][3]
-
-## <a name="monitor-performance"></a>Prestaties bewaken
-Azure Search biedt de mogelijkheid om de prestaties van uw service te analyseren en te controleren met behulp van de analyse van het [gegevens verkeer](search-traffic-analytics.md). Wanneer u deze functie inschakelt en instrumentatie toevoegt aan uw client-app, kunt u eventueel de afzonderlijke Zoek bewerkingen registreren, evenals geaggregeerde metrische gegevens voor een Azure Storage-account dat vervolgens kan worden verwerkt voor analyse of visualisatie in Power BI. Met metrische gegevens kunt u op deze manier prestatie statistieken opgeven, zoals het gemiddelde aantal query's of de reactie tijden van query's. Daarnaast kunt u met de bewerking logboek registratie Details van specifieke zoek bewerkingen inzoomen.
-
-Traffic Analytics is handig om inzicht te krijgen in latentie tarieven van die Azure Search perspectief. Omdat de metrische gegevens van de query prestaties zijn geregistreerd op basis van het moment dat een query volledig wordt verwerkt in Azure Search (vanaf het moment dat deze wordt aangevraagd wanneer deze wordt verzonden), kunt u deze gebruiken om te bepalen of er latentie problemen zijn van de Azure Search aan de service zijde of het wegvallen IDE van de service, bijvoorbeeld van netwerk latentie.  
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [service limieten in azure Search](search-limits-quotas-capacity.md)voor meer informatie over de prijs categorieën en de limieten voor services voor elk van deze.

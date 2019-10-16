@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147362"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372710"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -114,6 +114,12 @@ Naast de telemetrie van apparaten kunnen ook bericht routering het verzenden van
 ## <a name="testing-routes"></a>Routes testen
 
 Wanneer u een nieuwe route maakt of een bestaande route bewerkt, moet u de route query testen met een voorbeeld bericht. U kunt afzonderlijke routes testen of alle routes tegelijk testen en er tijdens de test geen berichten naar de eind punten worden doorgestuurd. Azure Portal, Azure Resource Manager, Azure PowerShell en Azure CLI kunnen worden gebruikt voor het testen. Resultaten helpen te bepalen of het voorbeeld bericht overeenkomt met de query. het bericht komt niet overeen met de query of de test kan niet worden uitgevoerd omdat het voorbeeld bericht of de query syntaxis onjuist is. Zie [route ring testen](/rest/api/iothub/iothubresource/testroute) en [alle routes testen](/rest/api/iothub/iothubresource/testallroutes)voor meer informatie.
+
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Garanties best Ellen met ten minste eenmaal per levering
+
+IoT Hub berichten routering gegarandeerd besteld en ten minste één keer per levering van berichten aan de eind punten. Dit betekent dat er dubbele berichten kunnen zijn en dat een reeks berichten opnieuw kan worden verzonden met de oorspronkelijke bericht volgorde. Als de oorspronkelijke bericht volgorde bijvoorbeeld [1, 2, 3, 4] is, kunt u een bericht reeks als volgt ontvangen: [1, 2, 1, 2, 3, 1, 2, 3, 4]. Als u altijd bericht [1] ontvangt, wordt het gegarandeerd dat de service [2, 3, 4] wordt gevolgd.
+
+Voor het afhandelen van berichten wordt u aangeraden een unieke id te stempelen in de toepassings eigenschappen van het bericht op het punt van de oorsprong, meestal een apparaat of module. De service die de berichten verbruikt, kan dubbele berichten verwerken die gebruikmaken van deze id.
 
 ## <a name="latency"></a>Latentie
 

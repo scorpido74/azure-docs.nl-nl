@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123804"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332994"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -44,41 +44,41 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 1. Selecteer in de Azure Portal **waarschuwingen**.
 
-   [![Berichten](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
-   [![Waarschuwing toevoegen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![Add-waarschuwing](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Vervolgens configureert u de exacte voor waarden voor de signaal logica.
 
-   [![Signaal logica configureren](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [![Configure-signaal logica](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Hier kunt u waarschuwingen configureren aan de hand van een van de volgende voor waarden:
 
-   |Gegevens  |Description  |
+   |Gegevens  |Beschrijving  |
    |---------|---------|
    |**Ontvangen bytes van binnenkomend verkeer**     | Aantal onbewerkte bytes dat uit gebeurtenis bronnen is gelezen. Aantal onbewerkte items bevat doorgaans de naam en waarde van de eigenschap.  |  
    |**Ongeldige berichten ontvangen**     | Aantal ongeldige berichten dat is gelezen uit alle Azure Event Hubs-of Azure IoT Hub-gebeurtenis bronnen.      |
    |**Ontvangen berichten met ingang**   | Aantal berichten dat is gelezen uit alle gebeurtenis bronnen van Event Hubs of IoT hubs.        |
    |**In ingangs opgeslagen bytes**     | De totale grootte van de opgeslagen en beschik bare gebeurtenissen voor de query. Grootte wordt alleen berekend op de waarde van de eigenschap.        |
-   |**Opgeslagen gebeurtenissen** in ingangs    |   Aantal samengevoegde gebeurtenissen dat is opgeslagen en beschikbaar is voor query's.      |
-   |**Tijds vertraging van ontvangen berichten**   |  Verschil in seconden tussen het tijdstip waarop het bericht in de bron van de gebeurtenis in de wachtrij is geplaatst en de tijd die wordt verwerkt in binnenkomend verkeer.      |
-   |**Vertraging van ontvangen berichten aantal aangekomen items**   |  Het verschil tussen het Volg nummer van de laatste bericht in de bron partitie en het Volg nummer van het bericht dat wordt verwerkt in ingress.      |
+   |**Opgeslagen gebeurtenissen**     |   Aantal samengevoegde gebeurtenissen dat is opgeslagen en beschikbaar is voor query's.      |
+   |@No__t van **ontvangen berichten tijds vertragings tijd** -1|  Verschil in seconden tussen het tijdstip waarop het bericht in de bron van de gebeurtenis in de wachtrij is geplaatst en de tijd die wordt verwerkt in binnenkomend verkeer.      |
+   |@No__t van **ontvangen berichten telling van aantal binnengekomen items** -1|  Het verschil tussen het Volg nummer van de laatste bericht in de bron partitie en het Volg nummer van het bericht dat wordt verwerkt in ingress.      |
 
    Selecteer **Done**.
 
 1. Nadat u de gewenste signaal logica hebt geconfigureerd, controleert u de gekozen waarschuwings regel visueel.
 
-   [![Ingangs](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 
-* Als u een beperking hebt, ziet u een waarde voor de *tijds vertraging*voor het ontvangen van berichten, waarmee u kunt zien hoeveel seconden achter uw TSI ligt vanaf de werkelijke tijd dat het bericht de gebeurtenis bron opvraagt (exclusief indexerings tijd van appx). 30-60 seconden).  
+* Als u een beperking hebt, ziet u een waarde voor de *tijds vertraging*van het ontvangen van berichten, met de melding dat u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht in beslag neemt op de gebeurtenis bron (exclusief indexerings tijd van appx. 30-60 seconden).  
 
   De vertraging bij het *Ontvangen van berichten* van het aantal inkomende berichten moet ook een waarde hebben, zodat u kunt bepalen hoeveel achterstanden er achter u zijn.  De eenvoudigste manier om aan de slag te gaan is om de capaciteit van uw omgeving te verg Roten tot een grootte waardoor u het verschil kunt oplossen.  
 
-  Als u bijvoorbeeld een S1-omgeving met één eenheid hebt en u ziet dat er sprake is van een vertraging van 5.000.000 berichten, kunt u de grootte van uw omgeving verg Roten tot zes eenheden om ongeveer een dag te krijgen.  U kunt nog meer verg Roten om sneller te kunnen werken. De ophaal periode is een veelvoorkomende gebeurtenis bij het inrichten van een omgeving, met name wanneer u deze verbindt met een gebeurtenis bron die al gebeurtenissen bevat of wanneer u grote hoeveel heden historische gegevens uploadt.
+  Als u bijvoorbeeld ziet dat uw S1-omgeving vertraging van 5.000.000 berichten demonstreert, kunt u de grootte van uw omgeving tot zes eenheden verhogen om ongeveer een dag te krijgen.  U kunt nog meer verg Roten om sneller te kunnen werken. De ophaal periode is een veelvoorkomende gebeurtenis bij het inrichten van een omgeving, met name wanneer u deze verbindt met een gebeurtenis bron die al gebeurtenissen bevat of wanneer u grote hoeveel heden historische gegevens uploadt.
 
 * Een andere techniek is het instellen van een waarschuwing over een **opgeslagen ingangs gebeurtenissen** > = een drempel waarde die iets lager is dan de totale capaciteit van de omgeving voor een periode van twee uur.  Deze waarschuwing helpt u te begrijpen als u voortdurend op capaciteit werkt, wat een hoge kans op latentie aangeeft. 
 
@@ -94,6 +94,6 @@ U kunt latentie en beperking voor komen door uw omgeving correct te configureren
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor aanvullende stappen voor probleem oplossing kunt [u problemen in uw time series Insights omgeving vaststellen en oplossen](time-series-insights-diagnose-and-solve-problems.md).
+- Meer informatie over [het diagnosticeren en oplossen van problemen in uw time series Insights omgeving](time-series-insights-diagnose-and-solve-problems.md).
 
-- Als u meer hulp nodig hebt, start u een gesprek op het [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). U kunt ook contact opnemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) voor ondersteunings opties.
+- Meer informatie [over het schalen van uw time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).

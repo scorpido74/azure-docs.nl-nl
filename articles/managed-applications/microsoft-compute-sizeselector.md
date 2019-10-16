@@ -1,6 +1,6 @@
 ---
-title: Azure SizeSelector UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Compute.SizeSelector UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure SizeSelector | Microsoft Docs
+description: Hierin wordt het UI-element micro soft. compute. SizeSelector voor Azure Portal beschreven. Gebruiken voor het selecteren van de grootte van een virtuele machine.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e5be5635964ebeedc7be4d1d1f5403e4d281b55c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722346"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332672"
 ---
-# <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI-element
-Een besturingselement voor het selecteren van een grootte voor een of meer exemplaren van de virtuele machine.
+# <a name="microsoftcomputesizeselector-ui-element"></a>Micro soft. compute. SizeSelector UI-element
+Een besturings element voor het selecteren van een grootte voor een of meer exemplaren van virtuele machines.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
+## <a name="ui-sample"></a>UI-voor beeld
 
-De gebruiker ziet een selector met de standaardwaarden van de definitie van het element.
+De gebruiker ziet een selector met de standaard waarden van de element definitie.
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Micro soft. compute. SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
 
-Na het selecteren van het besturingselement, ziet de gebruiker een uitgebreid overzicht van de beschikbare grootten.
+Nadat het besturings element is geselecteerd, ziet de gebruiker een uitgebreid overzicht van de beschik bare grootten.
 
-![Microsoft.Compute.SizeSelector uitgevouwen](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![Micro soft. compute. SizeSelector uitgebreid](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -66,14 +66,14 @@ Na het selecteren van het besturingselement, ziet de gebruiker een uitgebreid ov
 ```
 
 ## <a name="remarks"></a>Opmerkingen
-- `recommendedSizes` moet ten minste één grootte hebben. De aanbevolen grootte van de eerste wordt als standaardwaarde gebruikt. De lijst met beschikbare grootten niet is gesorteerd op de status van de aanbevolen. De gebruiker kan deze kolom te sorteren op aanbevolen status selecteren.
-- Als een aanbevolen grootte is niet beschikbaar in de geselecteerde locatie, wordt de grootte automatisch overgeslagen. In plaats daarvan wordt de volgende aanbevolen grootte gebruikt.
-- `constraints.allowedSizes` en `constraints.excludedSizes` zijn beide optioneel, maar kunnen niet gelijktijdig worden gebruikt. Kan de lijst met beschikbare grootten worden bepaald door het aanroepen van [lijst van beschikbare VM-grootten voor een abonnement](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Elke grootte niet is opgegeven in de `constraints.allowedSizes` verborgen is, en elke grootte niet is opgegeven in `constraints.excludedSizes` wordt weergegeven.
-- `osPlatform` Er moet worden opgegeven en kan **Windows** of **Linux**. Wordt gebruikt om te bepalen van de kosten voor hardware van de virtuele machines.
-- `imageReference` voor installatiekopieën met eigen, maar opgegeven voor externe afbeeldingen wordt weggelaten. Wordt gebruikt om te bepalen van de softwarekosten voor van de virtuele machines.
-- `count` wordt gebruikt voor het instellen van de juiste vermenigvuldiger voor het element. Azureondersteunt een statische waarde, zoals **2**, of een dynamische waarde van een ander element, zoals `[steps('step1').vmCount]`. De standaardwaarde is **1**.
+- `recommendedSizes` moet ten minste één grootte hebben. De eerste aanbevolen grootte wordt als de standaard waarde gebruikt. De lijst met beschik bare grootten is niet gesorteerd op de aanbevolen status. De gebruiker kan die kolom selecteren om deze op de aanbevolen status te sorteren.
+- Als er geen aanbevolen grootte beschikbaar is op de geselecteerde locatie, wordt de grootte automatisch overgeslagen. In plaats daarvan wordt de volgende aanbevolen grootte gebruikt.
+- `constraints.allowedSizes` en `constraints.excludedSizes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt. De lijst met beschik bare grootten kan worden bepaald door het aanroepen [van een lijst met beschik bare virtuele machine grootten voor een abonnement](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). De grootte die niet is opgegeven in de `constraints.allowedSizes` is verborgen en elke grootte die niet in `constraints.excludedSizes` is opgegeven, wordt weer gegeven.
+- `osPlatform` moet worden opgegeven en kan **Windows** of **Linux**zijn. Dit wordt gebruikt om de hardwarekosten van de virtuele machines te bepalen.
+- `imageReference` wordt wegge laten voor afbeeldingen van de eerste partij, maar is opgegeven voor installatie kopieën van derden. De oplossing wordt gebruikt om de software kosten van de virtuele machines te bepalen.
+- `count` wordt gebruikt om de juiste vermenigvuldiger voor het element in te stellen. Het ondersteunt een statische waarde, zoals **2**, of een dynamische waarde van een ander element, zoals `[steps('step1').vmCount]`. De standaard waarde is **1**.
 - De `numAvailabilityZonesRequired` kan 1, 2 of 3 zijn.
-- Standaard `hideDiskTypeFilter` is **false**. Het type schijf filter kan de gebruiker om te zien van alle schijftypen of alleen SSD.
+- @No__t-0 is standaard **False**. Met het filter schijf type kan de gebruiker alle schijf typen of alleen SSD bekijken.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 ```json
@@ -81,5 +81,5 @@ Na het selecteren van het besturingselement, ziet de gebruiker een uitgebreid ov
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

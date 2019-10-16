@@ -1,22 +1,22 @@
 ---
-title: Azure Site Recovery controleren met Azure Monitor-Logboeken (Log Analytics)
+title: Azure Site Recovery controleren met Azure Monitor-Logboeken (Log Analytics) | Microsoft Docs
 description: Meer informatie over het bewaken van Azure Site Recovery met Azure Monitor-Logboeken (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718481"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331921"
 ---
-# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery controleren met Azure Monitor-logboeken
+# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
-In dit artikel wordt beschreven hoe u computers die zijn gerepliceerd door Azure [site Recovery](site-recovery-overview.md)bewaakt met behulp van [Azure monitor](../azure-monitor/platform/data-platform-logs.md)-logboeken en [log Analytics](../azure-monitor/log-query/log-query-overview.md).
+In dit artikel wordt beschreven hoe u computers die zijn gerepliceerd door Azure [site Recovery](site-recovery-overview.md)bewaakt met behulp van [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)en [log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
 Azure Monitor logboeken bieden een platform voor gegevens over het logboek waarmee activiteiten en Diagnostische logboeken worden verzameld, samen met andere bewakings gegevens. In Azure Monitor-logboeken gebruikt u Log Analytics om logboek query's te schrijven en te testen, en om logboek gegevens interactief te analyseren. U kunt de resultaten van het logboek visualiseren en doorzoeken en waarschuwingen configureren om acties uit te voeren op basis van bewaakte gegevens.
 
@@ -25,10 +25,14 @@ Voor Site Recovery kunt u Logboeken Azure Monitor om u te helpen de volgende han
 - **Site Recovery status en-status bewaken**. U kunt bijvoorbeeld de replicatie status controleren, de status van de testfailover, Site Recovery gebeurtenissen, herstel punt doelstellingen (Rpo's) voor beveiligde machines en tarieven voor de snelheid van schijven/gegevens wijzigen.
 - **Stel waarschuwingen in voor site Recovery**. U kunt bijvoorbeeld waarschuwingen configureren voor computer status, de status van de testfailover of Site Recovery taak status.
 
-Het gebruik van Azure Monitor-logboeken met Site Recovery wordt ondersteund voor Azure naar Azure-replicatie en virtuele VMware-machines/fysieke servers naar Azure-replicatie.
+Het gebruik van Azure Monitor-logboeken met Site Recovery wordt ondersteund voor **Azure naar Azure** -replicatie en **virtuele VMware-machines/fysieke servers naar Azure-** replicatie.
+
+> [!NOTE]
+> De logboeken voor de verloop gegevens en de upload frequentie zijn alleen beschikbaar voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio.
+
 ## <a name="before-you-start"></a>Voordat u begint
 
-Dit is wat u nodig hebt:
+U hebt het volgende nodig:
 
 - Ten minste één computer die wordt beveiligd in een Recovery Services kluis.
 - Een Log Analytics-werk ruimte om Site Recovery-logboeken op te slaan. [Meer informatie over](../azure-monitor/learn/quick-create-workspace.md) het instellen van een werk ruimte.
@@ -42,9 +46,10 @@ U wordt aangeraden de [algemene controle vragen](monitoring-common-questions.md)
 
     ![Diagnostische logboek registratie selecteren](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. Geef in **Diagnostische instellingen**een naam op voor de logboek actie en selecteer **verzenden naar log Analytics**.
+2. Geef in **Diagnostische instellingen**een naam op en schakel het selectie vakje **verzenden naar log Analytics**in.
 3. Selecteer het abonnement Azure Monitor logboeken en de Log Analytics-werk ruimte.
-4. Selecteer in de lijst Logboeken alle logboeken met het voor voegsel **AzureSiteRecovery**. Klik vervolgens op **OK**.
+4. Selecteer **Azure Diagnostics** in de wissel knop.
+5. Selecteer in de lijst Logboeken alle logboeken met het voor voegsel **AzureSiteRecovery**. Klik vervolgens op **OK**.
 
     ![Werkruimte selecteren](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -61,7 +66,7 @@ U haalt gegevens op uit logboeken met behulp van logboek query's die zijn geschr
 
 ### <a name="query-replication-health"></a>Status van query replicatie
 
-Met deze query wordt een cirkel diagram getekend voor de huidige replicatie status van alle beveiligde Azure-Vm's, onderverdeeld in drie statussen: Normaal, waarschuwing of kritiek.
+Met deze query wordt een cirkel diagram getekend voor de huidige replicatie status van alle beveiligde Azure-Vm's, onderverdeeld in drie statussen: normaal, waarschuwing of kritiek.
 
 ```
 AzureDiagnostics  
@@ -88,7 +93,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>Query RPO-tijd
 
-Met deze query wordt een staaf diagram getekend van virtuele Azure-machines die zijn gerepliceerd met Site Recovery, onderverdeeld op basis van Recovery Point Objective (RPO): Minder dan 15 minuten, tussen 15-30 minuten en meer dan 30 minuten.
+Met deze query wordt een staaf diagram getekend van virtuele Azure-machines die zijn gerepliceerd met Site Recovery, onderverdeeld op basis van Recovery Point Objective (RPO): minder dan 15 minuten, tussen 15-30 minuten en meer dan 30 minuten.
 
 ```
 AzureDiagnostics 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>Wijzigings frequentie van query gegevens (verloop) voor een virtuele machine
 
-Met deze query wordt een trend grafiek getekend voor een specifieke Azure VM (ContosoVM123), die de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie van gegevens bijhoudt. Deze informatie is alleen beschikbaar voor virtuele Azure-machines die zijn gerepliceerd naar een secundaire Azure-regio.
+> [!NOTE] 
+> De gegevens van het verloop zijn alleen beschikbaar voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio.
+
+Met deze query wordt een trend grafiek getekend voor een specifieke Azure VM (ContosoVM123), die de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie van gegevens bijhoudt. 
 
 ```
 AzureDiagnostics   

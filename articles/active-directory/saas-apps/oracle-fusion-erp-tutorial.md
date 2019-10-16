@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Oracle Fusion ERP | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Oracle Fusion ERP | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Oracle Fusion ERP.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ba929ab13864664a823ba969ecb472812d946a9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5cd7ea1a20eb82d030e9bdabe76ff7d14a619d1e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989552"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373093"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Oracle Fusion ERP
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Oracle Fusion ERP
 
 In deze zelf studie leert u hoe u Oracle Fusion ERP integreert met Azure Active Directory (Azure AD). Wanneer u Oracle Fusion ERP integreert met Azure AD, kunt u het volgende doen:
 
@@ -74,7 +74,7 @@ Als u Azure AD SSO wilt configureren en testen met Oracle Fusion ERP, voltooit u
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Oracle Fusion ERP** Application Integration de sectie **Manage** en selecteer eenmalige **aanmelding**.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Oracle Fusion ERP** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
@@ -87,27 +87,27 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met [het klantondersteuningsteam van Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het klantondersteuningsteam van Oracle Fusion ERP](https://www.oracle.com/applications/erp/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Op de sectie **Oracle Fusion ERP instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -117,7 +117,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer **Oracle Fusion ERP** in de lijst met toepassingen.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -129,19 +129,19 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-oracle-fusion-erp-sso"></a>Oracle Fusion ERP SSO configureren
 
-Als u eenmalige aanmelding aan de zijde van **Oracle Fusion ERP** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding aan de zijde van **Oracle Fusion ERP** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Oracle Fusion ERP](https://www.oracle.com/applications/erp/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-oracle-fusion-erp-test-user"></a>Oracle Fusion ERP-testgebruiker maken
 
-In deze sectie gaat u in Oracle Fusion ERP een gebruiker maken met de naam Britta Simon. Werk samen met het [Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com) -ondersteunings team om de gebruikers toe te voegen in het Oracle Fusion ERP-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie gaat u in Oracle Fusion ERP een gebruiker maken met de naam Britta Simon. Werk samen met het [Oracle Fusion ERP-ondersteunings team](https://www.oracle.com/applications/erp/) om de gebruikers toe te voegen in het Oracle Fusion ERP-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Oracle Fusion ERP in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Oracle Fusion ERP waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

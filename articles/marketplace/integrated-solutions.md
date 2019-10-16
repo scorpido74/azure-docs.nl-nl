@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993632"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Geïntegreerde oplossingen in azure Marketplace en AppSource
@@ -24,8 +24,8 @@ Deze oplossingen zijn gebaseerd op een specifieke klant behoefte of-scenario, di
 
 Voor delen van een geïntegreerde aanpak zijn:
 
-* *Branche expertise*: Systeem integrators die branchespecifieke oplossingen en kennis bieden
-* *Tijd tot waarde*: Geïntegreerde implementatie aanpak om u te helpen onmiddellijke voor delen te realiseren
+* *Branche deskundigheid*: systeem integrators die branchespecifieke oplossingen en kennis bieden
+* *Time-to-waarde*: geïntegreerde implementatie methode om u te helpen onmiddellijke voor delen te realiseren
 * *Beste oplossingen*: Ontdek het gemak van een geïntegreerde aankoop-en implementatie-ervaring
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71132089"
 ---
-# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Linux-VM herstellen met behulp van de opdrachten voor het herstellen van virtuele Azure-machines
+# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Linux-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
 Als op de virtuele Linux-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de schijf zelf beperken. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de herstel opdrachten van de virtuele machine van Azure kunt gebruiken om de schijf te verbinden met een andere virtuele Linux-machine om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM opnieuw op te bouwen.
 
@@ -48,19 +48,19 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
 
    Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. Het bevat algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
-   Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen in een afzonderlijk browser tabblad door naar te [https://shell.azure.com](https://shell.azure.com)gaan.
+   Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen op een afzonderlijk browser tabblad door naar [https://shell.azure.com](https://shell.azure.com)te gaan.
 
    Selecteer **kopiëren** om de blokken code te kopiëren en plak de code in het Cloud shell en selecteer **Enter** om het programma uit te voeren.
 
    Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.30 of hoger van Azure CLI nodig. Voer ``az --version`` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Als dit de eerste keer is dat u de `az vm repair` opdrachten gebruikt, voegt u de extensie VM-herstel cli toe.
+2. Als dit de eerste keer is dat u de `az vm repair`-opdrachten gebruikt, voegt u de extensie VM-Repair CLI toe.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Als u de `az vm repair` opdrachten eerder hebt gebruikt, moet u alle updates Toep assen op de extensie voor VM-herstel.
+   Als u eerder de `az vm repair`-opdrachten hebt gebruikt, past u eventuele updates toe op de extensie voor VM-herstel.
 
    ```azurecli-interactive
    az extension update -n vm-repair
@@ -82,9 +82,9 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten controleren en inschakelen
 
-``myVMDeployed`` In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele ``myResourceGroup``machine met de naam in de resource groep met de naam:
+In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele machine met de naam ``myVMDeployed`` in de resource groep met de naam ``myResourceGroup``:
 
-Azure-CLI
+Azure CLI
 
 ```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/

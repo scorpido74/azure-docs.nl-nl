@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ed1b105f64d109284de441af1bcaee5f0827d75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264635"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331362"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -95,7 +95,7 @@ IoT Hub dwingt andere operationele limieten af:
 
 | Bewerking | Limiet |
 | --------- | ----- |
-| Apparaten | Het maximum aantal apparaten dat u kunt verbinden met één IoT-hub is 1.000.000. De enige manier om deze limiet te verhogen, is om contact op te nemen met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).|
+| Apparaten | Het totale aantal apparaten plus modules dat kan worden geregistreerd voor één IoT-hub, is beperkt tot 1.000.000. De enige manier om deze limiet te verhogen, is om contact op te nemen met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).|
 | Uploads van bestanden | 10 gelijktijdige uploads van bestanden per apparaat. |
 | Taken<sup>1</sup> | Maximum aantal gelijktijdige taken is 1 (gratis en S1), 5 (voor S2) en 10 (voor S3). Het maximum aantal gelijktijdige [import/export-taken voor apparaten](iot-hub-bulk-identity-mgmt.md) is echter 1 voor alle lagen. <br/>De taak geschiedenis wordt Maxi maal 30 dagen bewaard. |
 | Extra eind punten | Betaalde SKU hubs kunnen 10 extra eind punten hebben. Gratis SKU-hubs kunnen één extra eind punt hebben. |

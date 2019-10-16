@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/15/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174735"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373549"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -40,6 +40,16 @@ Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk.
 ---
 
 ## <a name="september-2019"></a>September 2019
+
+### <a name="deprecation-of-the-power-bi-content-packs"></a>Afschaffing van de Power BI inhouds pakketten
+
+**Type:** Keur  
+**Service categorie:** Rapporteren  
+**Product mogelijkheden:** & Rapportage controleren
+
+Power BI is het afnemen van inhouds pakketten uit hun archief en vanaf **1 oktober 2019**wordt het Azure AD Power bi-inhouds pakket niet meer ondersteund. Klanten die het inhouds pakket momenteel gebruiken, kunnen het blijven gebruiken, ook al zijn de onderliggende Api's oudere versies. Als alternatief voor dit inhouds pakket kunt u Azure AD-werkmappen (gebouwd op Log Analytics) gebruiken om inzicht te krijgen in uw Azure AD-gerelateerde services.
+
+Zie [Azure monitor werkmappen gebruiken voor Azure Active Directory-rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)voor meer informatie over de werkmappen. Voor meer informatie over de afschaffing van de inhouds pakketten raadpleegt u het blog bericht [Power bi sjabloon apps voor algemene Beschik baarheid aankondigen](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Mijn profiel wordt hernoemd en geïntegreerd met de pagina Microsoft Office-account
 
@@ -165,7 +175,7 @@ Vanaf 1 juli 2019 heeft micro soft de MFA-server voor nieuwe implementaties gest
 
 ---
 
-## <a name="august-2019"></a>2019 augustus
+## <a name="august-2019"></a>Augustus 2019
 
 ### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Plannen voor wijziging: afschaffing van de Power BI inhouds pakketten
 
@@ -390,7 +400,7 @@ Zie voor meer informatie de [meldingen over Azure AD](https://docs.microsoft.com
 
 ---
 
-## <a name="july-2019"></a>2019 juli
+## <a name="july-2019"></a>Juli 2019
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>Plannen voor wijziging: update van Application proxy-service om alleen TLS 1,2 te ondersteunen
 

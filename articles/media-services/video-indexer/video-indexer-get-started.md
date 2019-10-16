@@ -8,26 +8,29 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 10/10/2019
 ms.author: juliako
-ms.openlocfilehash: fca8dc31a0f909a1602819a2830d9bebbbda0c88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9d89247740852b7bfc185fbcf864947efe30ef0f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799318"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372333"
 ---
-# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Quickstart: Registreren en uw eerste video uploaden
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Snelstartgids: aanmelden en uw eerste video uploaden
 
 In deze zelfstudie ziet u hoe u zich registreert bij de Video Indexer-website en hoe u uw eerste video uploadt.
 
-Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Betaalde optie, maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account. 
+Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account. 
 
 ## <a name="sign-up-for-video-indexer"></a>Registreren voor Video Indexer
 
 Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video Indexer](https://www.videoindexer.com) en registreert u zich.
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Een video met behulp van de Video Indexer-website uploaden
+
+> [!NOTE]
+> Een naam van de video mag niet langer zijn dan 80 tekens.
 
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website.
 2. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.

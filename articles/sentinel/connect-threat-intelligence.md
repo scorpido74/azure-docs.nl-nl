@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262704"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372280"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verbinding maken met gegevens van Threat Intelligence-providers
 
@@ -60,9 +60,9 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 1. [Registreer een toepassing](/graph/auth-v2-service#1-register-your-app) in azure Active Directory om een toepassings-id, toepassings geheim en Azure Active Directory Tenant-id op te halen. U hebt deze waarden nodig voor wanneer u uw geïntegreerde TIP-product of-app configureert die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators-API.
 
-2. [API-machtigingen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) voor de geregistreerde toepassing configureren: Voeg de Microsoft Graph-toepassings machtiging **ThreatIndicators. readwrite. OwnedBy** aan uw geregistreerde toepassing toe.
+2. [API-machtigingen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) voor de geregistreerde toepassing configureren: voeg de Microsoft Graph toepassings machtiging **ThreatIndicators. readwrite. OwnedBy** toe aan uw geregistreerde toepassing.
 
-3. Vraag uw Azure Active Directory Tenant beheerder om toestemming van de beheerder te verlenen aan de geregistreerde toepassing voor uw organisatie. Van de Azure Portal: **Azure Active Directory** > **app-registraties** ***app*-naam>weergaveAPI-machtigingen verlenen beheerders toestemming voor\<**  >  >  >  ***Tenant naam*.> \<**
+3. Vraag uw Azure Active Directory Tenant beheerder om toestemming van de beheerder te verlenen aan de geregistreerde toepassing voor uw organisatie. Vanuit de Azure Portal: **Azure Active Directory** > **app-registraties** >  **\<_App-naam_>**  > **weer gave-API-machtigingen**0**toestemming verlenen aan de beheerder voor 2-_Tenant naam_ 4**.
 
 4. Configureer uw TIP-product of-app die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators API om indica toren naar Azure Sentinel te verzenden door het volgende op te geven:
     
@@ -76,7 +76,7 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 6. Selecteer de **pagina connector openen**en vervolgens **verbinding maken**.
 
-7. Als u de bedreigings indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
+7. Als u de bedreigings indicatoren wilt weer geven die in azure Sentinel worden geïmporteerd, gaat u naar **Azure Sentinel-Logs** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Toegang tot Azure Data Lake Storage Gen2-gegevens met Azure Databricks met behulp van Apache Spark | Microsoft Docs'
+title: 'Zelf studie: toegang tot Azure Data Lake Storage Gen2 gegevens met Azure Databricks met Spark | Microsoft Docs'
 description: Deze zelf studie laat zien hoe u Spark-query's uitvoert op een Azure Databricks cluster om toegang te krijgen tot gegevens in een Azure Data Lake Storage Gen2 Storage-account.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992266"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331841"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Zelfstudie: Toegang tot Data Lake Storage Gen2-gegevens met Azure Databricks met behulp van Apache Spark
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Zelf studie: toegang tot Data Lake Storage Gen2 gegevens met Azure Databricks met Spark
 
 In deze zelfstudie ziet u hoe u een Azure Databricks-cluster kunt verbinden met gegevens die zijn opgeslagen in een Azure-opslagaccount waarvoor Azure Data Lake Storage Gen2 is ingeschakeld. Deze verbinding stelt u in staat om systeemeigen query’s en analyses van uw cluster uit te voeren op uw gegevens.
 
@@ -38,16 +38,16 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * Installeer AzCopy v10. Zie [Gegevens overdragen met AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Een service-principal maken. Raadpleeg [Uitleg: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
 
-  :heavy_check_mark: Wanneer u de stappen uitvoert in de sectie [De toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat de rol **Gegevensbijdrager voor opslagblob** is toegewezen aan de service-principal.
+  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
 
   > [!IMPORTANT]
   > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
-  :heavy_check_mark: Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
+  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
 
 ### <a name="download-the-flight-data"></a>De vluchtgegevens downloaden
 
@@ -77,7 +77,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.       |
-    |**Prijscategorie**     |  selecteer **Standaard**.     |
+    |**Prijscategorie**     |  Selecteer **standaard**.     |
 
     ![Een Azure Databricks-werkruimte maken](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Een Azure Databricks-service maken")
 
@@ -97,15 +97,13 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
     ![Een Databricks Spark-cluster maken in Azure](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
 
-4. Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
+    Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
 
-    * Voer een naam in voor het cluster.
+    - Voer een naam in voor het cluster.
+     
+    - Zorg ervoor dat u het selectievakje **Beëindigen na 120 minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
 
-    * Maak voor dit artikel een cluster met de **5.1**-runtime.
-
-    * Zorg ervoor dat u het selectievakje **Beëindigen na \_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
-
-    * Selecteer **Cluster maken**. Als het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Apache Spark-taken uitvoeren.
+4. Selecteer **Cluster maken**. Als het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Apache Spark-taken uitvoeren.
 
 ## <a name="ingest-data"></a>Gegevens opnemen
 
@@ -127,11 +125,11 @@ Gebruik AzCopy om gegevens uit uw *csv*-bestand te kopiëren naar uw Data Lake S
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Vervang de `<csv-folder-path>` waarde van de tijdelijke aanduiding door het pad naar het *CSV* -bestand.
+   * Vervang de tijdelijke aanduiding voor @no__t 0 door het pad naar het *CSV* -bestand.
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de `<container-name>` tijdelijke aanduiding door een wille keurige naam die u wilt toewijzen aan de container.
+   * Vervang de tijdelijke aanduiding voor @no__t 0 door een wille keurige naam die u wilt toewijzen aan de container.
 
 ## <a name="create-a-container-and-mount-it"></a>Een container maken en koppelen
 
@@ -163,7 +161,7 @@ In deze sectie maakt u een container en een map in uw opslag account.
     extra_configs = configs)
     ```
 
-18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de `container-name` waarde van de tijdelijke aanduiding door de naam die u in de vorige stap aan de container hebt door gegeven.
+18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de waarde van de tijdelijke aanduiding @no__t 0 door de naam die u in de vorige stap aan de container hebt door gegeven.
 
 Gebruik deze waarden om de vermelde tijdelijke aanduidingen te vervangen.
 
@@ -173,7 +171,7 @@ Gebruik deze waarden om de vermelde tijdelijke aanduidingen te vervangen.
 
    * De tijdelijke aanduiding `storage-account-name` is de naam van uw Azure Data Lake Storage Gen2-opslagaccount.
 
-   * Vervang de `container-name` tijdelijke aanduiding door een wille keurige naam die u wilt toewijzen aan de container.
+   * Vervang de tijdelijke aanduiding voor @no__t 0 door een wille keurige naam die u wilt toewijzen aan de container.
 
    > [!NOTE]
    > In een productie-instelling kunt u uw wacht woord opslaan in Azure Databricks. Voeg vervolgens een zoek sleutel toe aan uw code blok in plaats van het wacht woord. Nadat u deze quickstart hebt afgerond, raadpleegt u het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) (Engelstalig) op de website van Azure Databricks voor voorbeelden van deze methode.
@@ -224,7 +222,7 @@ Hierna kunt u beginnen met het doorzoeken van de gegevens die u hebt geüpload i
 
 Als u dataframes wilt maken voor uw gegevensbronnen, voert u het volgende script uit:
 
-* Vervang de `<csv-folder-path>` waarde van de tijdelijke aanduiding door het pad naar het *CSV* -bestand.
+* Vervang de tijdelijke aanduiding voor @no__t 0 door het pad naar het *CSV* -bestand.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -292,4 +290,4 @@ Verwijder de resourcegroep en alle gerelateerde resources, wanneer u deze niet m
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Gegevens extraheren, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+> [Gegevens uitpakken, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

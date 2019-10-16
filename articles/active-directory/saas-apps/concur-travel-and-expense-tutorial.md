@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met concur reizen en onkosten | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met concur reizen en onkosten | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en concur reizen en onkosten.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026718"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373419"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met concur reizen en onkosten
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met concur reizen en onkosten
 
 In deze zelf studie leert u hoe u concur Traveling and lasten integreert met Azure Active Directory (Azure AD). Wanneer u concur Traveling and lasten integreert met Azure AD, kunt u het volgende doen:
 
@@ -38,16 +38,18 @@ Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Di
 U hebt de volgende items nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Concur reis-en onkosten abonnement voor eenmalige aanmelding (SSO) ingeschakeld.
+* Concur reis-en onkosten abonnement.
+* De rol ' bedrijfs beheerder ' onder uw concur-gebruikers account. U kunt testen of u de juiste toegang hebt door naar het [CONCUR SSO self-service tool](https://www.concursolutions.com/nui/authadmin/ssoadmin)te gaan. Als u geen toegang hebt, neemt u contact op met concur support of implementation project manager. 
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelf studie kunt u Azure AD SSO configureren en testen.
 
-* Concur Traveling en lasten bieden ondersteuning voor door **IDP** GEÏNITIEERDe SSO
+* Concur Traveling en lasten bieden ondersteuning voor eenmalige aanmelding met **IDP** en **SP**
+* Concur Traveling en lasten bieden ondersteuning voor het testen van SSO in zowel de productie-als implementatie omgeving 
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste teken reeks waarde voor elk van de drie regio's: US, EMEA en China. Er kan slechts één exemplaar worden geconfigureerd voor elke regio in één Tenant. 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>Concur Traveling and lasten toevoegen uit de galerie
 
@@ -85,25 +87,28 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. In het gedeelte **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+    > [!NOTE]
+    > De id (Entiteits-ID) en de antwoord-URL (assertion Consumer Service-URL) zijn regio-specifiek. Selecteer op basis van het Data Center van uw concur-entiteit. Als u het Data Center van uw concur-entiteit niet weet, neemt u contact op met de ondersteuning van concur. 
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+5. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **gebruikers kenmerk** om de instellingen te bewerken. De unieke gebruikers-id moet overeenkomen met concur User login_id. Normaal gesp roken moet u **User. userPrincipalName** wijzigen in **User. mail**.
 
-1. Op de sectie **concur reis-en onkosten instellen** kopieert u de juiste URL ('s) op basis van uw vereiste.
+    ![Gebruikers kenmerk bewerken](common/edit-attribute.png)
 
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+6. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om de meta gegevens te downloaden en op uw computer op te slaan.
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -113,7 +118,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen **concur reizen en onkosten**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -125,19 +130,39 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Concur reizen en onkosten-SSO configureren
 
-Als u eenmalige aanmelding wilt configureren voor **concur reizen en onkosten** zijde, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [concur Traveling and onkosten-ondersteunings team](https://www.concur.com/support). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+1. Als u eenmalige aanmelding wilt configureren voor **concur reizen en onkosten** zijde, moet u de gedownloade **federatieve meta gegevens-XML** uploaden naar [concur SSO self-service tool](https://www.concursolutions.com/nui/authadmin/ssoadmin) en u aanmelden met een account met de rol ' bedrijfs beheerder '. 
+
+1. Klik op **Add**.
+1. Voer een aangepaste naam in voor uw IdP, bijvoorbeeld ' Azure AD (US) '. 
+1. Klik op **XML-bestand uploaden** en voeg de **XML voor federatieve meta gegevens** toe die u eerder hebt gedownload.
+1. Klik op **meta gegevens toevoegen** om de wijziging op te slaan.
+
+    ![Scherm afbeelding van concur SSO self-service tool](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Concur reis-en onkosten test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in concur reizen en onkosten. Werk met [concur Traveling and inkosten team](https://www.concur.com/support) om de gebruikers toe te voegen in het concur Traveling and onkosten-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in concur reizen en onkosten. Werk samen met concur-ondersteunings team om de gebruikers toe te voegen in het concur Traveling and onkosten-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+
+> [!NOTE]
+> B. de aanmeldings-id van Simon concur moet overeenkomen met B. de unieke id van Simon bij Azure AD. Bijvoorbeeld als B. de unieke id voor Azure AD is `B.Simon@contoso.com`. B. de aanmeldings-id van Simon concur moet ook `B.Simon@contoso.com` zijn. 
+
+## <a name="configure-concur-mobile-sso"></a>Concur Mobile SSO configureren
+Als u concur Mobile SSO wilt inschakelen, moet u de URL van de **gebruikers toegang**van concur ondersteunings team opgeven. Volg de onderstaande stappen om de **URL voor gebruikers toegang** op te halen uit Azure AD:
+1. Ga naar **bedrijfs toepassingen**
+1. Klik op **concur reizen en onkosten**
+1. Klik op **Eigenschappen**
+1. Kopieer de **gebruikers toegangs-URL** en geef deze URL naar concur-ondersteuning
+
+> [!NOTE]
+> De selfservice optie voor het configureren van SSO is niet beschikbaar, dus werk met concur-ondersteunings team om mobiele SSO in te scha kelen. 
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel concur reis-en onkosten in het toegangs venster klikt, moet u automatisch worden aangemeld bij de concur reizen en onkosten waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

@@ -9,16 +9,16 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534703"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372786"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Oplossingen voor Updatebeheer, Wijzigingen bijhouden en inventaris inschakelen op meerdere Vm's
 
-Azure Automation biedt oplossingen voor het beheren van beveiligings updates van het besturings systeem, het bijhouden van wijzigingen en het inventariseren van wat op uw computers is geïnstalleerd. Er zijn meerdere manieren om computers vrij te maken, u kunt de oplossing [van een virtuele machine](automation-onboard-solutions-from-vm.md), van uw Automation- [account](automation-onboard-solutions-from-automation-account.md), voor het bladeren door virtuele machines, of per [runbook](automation-onboard-solutions.md), uitvoeren. In dit artikel wordt beschreven hoe u deze oplossingen voorbereidt tijdens het bladeren door virtuele machines in Azure.
+Azure Automation biedt oplossingen voor het beheren van beveiligings updates van het besturings systeem, het bijhouden van wijzigingen en het inventariseren van wat op uw computers is geïnstalleerd. Er zijn meerdere manieren om computers vrij te maken, u kunt de oplossing [van een virtuele machine](automation-onboard-solutions-from-vm.md), van uw [Automation-account](automation-onboard-solutions-from-automation-account.md), voor het bladeren door virtuele machines, of per [runbook](automation-onboard-solutions.md), uitvoeren. In dit artikel wordt beschreven hoe u deze oplossingen voorbereidt tijdens het bladeren door virtuele machines in Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -76,7 +76,7 @@ De volgende oplossingen zijn afhankelijk van een Log Analytics-werk ruimte:
 
 * [Updatebeheer](automation-update-management.md)
 * [Tracering wijzigen](automation-change-tracking.md)
-* [Vm's starten/stoppen buiten kantoor uren](automation-solution-vm-management.md)
+* [VM's buiten bedrijfsuren starten/stoppen](automation-solution-vm-management.md)
 
 Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst de eerder genoemde oplossingen verwijderen, anders kan dit proces niet worden voortgezet. Raadpleeg het artikel voor de specifieke oplossing die u hebt geïmporteerd om inzicht te krijgen in de stappen die nodig zijn om deze te verwijderen.
 
@@ -101,7 +101,7 @@ Als u de oplossing Updatebeheer hebt gebruikt, kunt u eventueel de volgende item
 
 * Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Als u de oplossing Vm's starten/stoppen buiten kantoor uren hebt gebruikt, wilt u eventueel mogelijk de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
+Als u de oplossing VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 
 * VM-runbook-schema's starten en stoppen
 * VM-runbooks starten en stoppen
@@ -113,46 +113,53 @@ U kunt ook uw werk ruimte ontkoppelen van uw Automation-account vanuit uw Log An
 
 Bij het onboarden van meerdere machines zijn er mogelijk computers die **niet**kunnen worden ingeschakeld. Er zijn verschillende redenen waarom sommige computers niet kunnen worden ingeschakeld. In de volgende secties worden mogelijke oorzaken voor de status **kan niet inschakelen** op een virtuele machine worden weer gegeven wanneer u probeert onboarding uit te voeren.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM-rapporten naar een andere werk ruimte\<: '\>workspacenaam '.  Configuratie wijzigen om deze functie in te scha kelen
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM-rapporten naar een andere werk ruimte: ' \<workspaceName @ no__t-1 '.  Configuratie wijzigen om deze functie in te scha kelen
 
-**Oorzaak**: Deze fout geeft aan dat de virtuele machine die u probeert uit te voeren rapporteert aan een andere werk ruimte.
+**Oorzaak**: deze fout geeft aan dat de virtuele machine die u probeert uit te voeren rapporteert aan een andere werk ruimte.
 
-**Oplossing**: Klik op **als configuratie gebruiken** om het beoogde Automation-account en de log Analytics-werk ruimte te wijzigen.
+**Oplossing**: Klik op **gebruik als configuratie** om het beoogde Automation-account en de log Analytics-werk ruimte te wijzigen.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM-rapporten naar een werk ruimte die niet beschikbaar is in dit abonnement
 
-**Oorzaak**: De werk ruimte waarnaar de virtuele machine rapporteert:
+**Oorzaak**: de werk ruimte waarmee de virtuele machine rapporteert:
 
 * Bevindt zich in een ander abonnement of
 * Bestaat niet meer of
 * Bevindt zich in een resource groep waarvoor u geen toegangs machtigingen hebt
 
-**Oplossing**: Zoek het Automation-account dat is gekoppeld aan de werk ruimte die door de VM wordt gerapporteerd aan en onboarding van de virtuele machine door de scope configuratie te wijzigen.
+**Oplossing**: Zoek het Automation-account dat is gekoppeld aan de werk ruimte die de VM rapporteert en de virtuele machine onboardt door de scope configuratie te wijzigen.
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>De versie of distributie van het VM-besturings systeem wordt niet ondersteund
 
-**Wordt** De oplossing wordt niet ondersteund voor alle Linux-distributies of alle versies van Windows.
+**Oorzaak:** De oplossing wordt niet ondersteund voor alle Linux-distributies of alle versies van Windows.
 
-**Oplossen** Raadpleeg de [lijst met ondersteunde clients](automation-update-management.md#clients) voor de oplossing.
+**Oplossing:** Raadpleeg de [lijst met ondersteunde clients](automation-update-management.md#clients) voor de oplossing.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klassieke virtuele machines kunnen niet worden ingeschakeld
 
-**Oorzaak**: Virtuele machines die gebruikmaken van het klassieke implementatie model, worden niet ondersteund.
+**Oorzaak**: virtuele machines die gebruikmaken van het klassieke implementatie model, worden niet ondersteund.
 
 **Oplossing**: Migreer de virtuele machine naar het Resource Manager-implementatie model. Zie [klassieke implementatie model bronnen migreren](../virtual-machines/windows/migration-classic-resource-manager-overview.md)voor meer informatie over hoe u dit doet.
 
 ### <a name="vm-is-stopped-deallocated"></a>De VM is gestopt. deallocated
 
-**Oorzaak**: De virtuele machine **wordt niet uitgevoerd** .
+**Oorzaak**: de virtuele machine **wordt niet uitgevoerd** .
 
-**Oplossing**: Als u een virtuele machine wilt voorbereiden op een oplossing, moet de virtuele machine worden uitgevoerd. Klik op de koppeling VM-inline **starten** om de VM te starten zonder op de pagina te navigeren.
+**Oplossing**: als u een VM wilt voorbereiden op een oplossing, moet de virtuele machine worden uitgevoerd. Klik op de koppeling VM-inline **starten** om de VM te starten zonder op de pagina te navigeren.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Een virtuele machine verwijderen uit Updatebeheer:
+
+* Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen zoek opdracht voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates`. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
+* Verwijder [micro soft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [log Analytics-agent voor Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu de oplossing is ingeschakeld voor uw virtuele machines, gaat u naar het artikel overzicht van Updatebeheer voor meer informatie over het weer geven van de update-evaluatie voor uw machines.
+Nu de oplossing is ingeschakeld voor uw virtuele machines, gaat u naar het Updatebeheer overzichts artikel voor meer informatie over het maken van een **Update-implementatie** voor uw machines.
 
 > [!div class="nextstepaction"]
-> [Updatebeheer-update-evaluatie weer geven](./automation-update-management.md#viewing-update-assessments)
+> [Updatebeheer-updates en patches voor uw virtuele Azure-machines beheren](./automation-tutorial-update-management.md)
 
 Aanvullende zelf studies voor de oplossingen en hoe u deze kunt gebruiken:
 

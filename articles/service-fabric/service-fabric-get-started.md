@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/22/2019
+ms.date: 10/03/2019
 ms.author: atsenthi
-ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036015"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333076"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Uw ontwikkelomgeving voorbereiden in Windows
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Als u alleen de SDK nodig hebt, kunt u dit pakket installeren:
 * [Microsoft Azure Service Fabric SDK installeren][core-sdk]
 
 De huidige versies zijn:
-* Service Fabric SDK en Hulpprogram Ma's 3.4.664
-* Service Fabric runtime-6.5.664
+* Service Fabric SDK en Hulpprogram Ma's 3.4.676
+* Service Fabric runtime-6.5.676
 * Service Fabric-Hulpprogram Ma's voor Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15,9 bevat Service Fabric-Hulpprogram Ma's voor Visual Studio 2.4.11024.1 
 * Visual Studio 2019 16,1 bevat Service Fabric-Hulpprogram Ma's voor Visual Studio 2.5.20423.3
@@ -93,7 +93,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Nu u uw ontwikkelingsomgeving hebt ingesteld, kunt u apps ontwikkelen en uitvoeren.
 
 * [Meer informatie over het maken, implementeren en beheren van toepassingen](service-fabric-tutorial-create-dotnet-app.md)
-* [Meer informatie over de programmeer modellen: Reliable Services en Reliable Actors](service-fabric-choose-framework.md)
+* [Meer informatie over de programmeermodellen: Reliable Services en Reliable Actors](service-fabric-choose-framework.md)
 * [Voorbeelden van Service Fabric-code op GitHub bekijken](https://aka.ms/servicefabricsamples)
 * [Uw cluster visualiseren door gebruik te maken van Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 * Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md)

@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739565"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372818"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Onboarding van oplossingen voor updates en het bijhouden van wijzigingen voor Azure Automation
 
@@ -81,7 +81,7 @@ Nu de oplossingen zijn ingeschakeld, kunt u een Azure-VM toevoegen voor de onboa
    ![Update-oplossing voor de virtuele machine inschakelen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Als u niet tot de andere oplossing is voltooid wachten, wordt bij het inschakelen van de volgende oplossing ontvangt u een bericht weergegeven: *De installatie van een andere oplossing wordt uitgevoerd op deze of een andere virtuele machine. Pas wanneer die installatie is voltooid, wordt de knop Inschakelen beschikbaar en kunt u de installatie van de oplossing op deze virtuele machine aanvragen.*
+> Als u niet wacht totdat de andere oplossing is voltooid, wordt u bij het inschakelen van de volgende oplossing een bericht ontvangen: de *installatie van een andere oplossing wordt uitgevoerd op deze of een andere virtuele machine. Wanneer deze installatie is voltooid, wordt de knop inschakelen ingeschakeld en kunt u de installatie van de oplossing op deze virtuele machine aanvragen.*
 
 ## <a name="install-and-update-modules"></a>Modules installeren en bijwerken
 
@@ -131,9 +131,16 @@ U moet onboarding van de oplossing Wijzigingen bijhouden of Updatebeheer voor ee
 1. Selecteer **OK** om de runbooktaak te starten.
 1. Bewaak de voortgang en eventuele fouten op de pagina van de runbooktaak.
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Een virtuele machine verwijderen uit Updatebeheer:
+
+* Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen zoek opdracht voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates`. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
+* Verwijder [micro soft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) of de [log Analytics-agent voor Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Handmatige onboarding van een Azure-VM uitvoeren.

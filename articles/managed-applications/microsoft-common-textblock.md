@@ -1,6 +1,6 @@
 ---
-title: Azure TextBlock UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Common.TextBlock UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure TextBlock | Microsoft Docs
+description: Hierin wordt het micro soft. common. TextBlock UI-element voor Azure Portal beschreven. Gebruiken om tekst toe te voegen aan de-interface.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da2453889f04352dbabe182772312d70deec4464
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722558"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331615"
 ---
-# <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI-element
-Een besturingselement dat kan worden gebruikt om tekst toevoegen aan de interface van de portal.
+# <a name="microsoftcommontextblock-ui-element"></a>Micro soft. common. TextBlock UI-element
+Een besturings element dat kan worden gebruikt om tekst toe te voegen aan de portal-interface.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
+## <a name="ui-sample"></a>UI-voor beeld
+![Micro soft. common. TextBox](./media/managed-application-elements/microsoft.common.textblock.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -49,5 +49,5 @@ Een besturingselement dat kan worden gebruikt om tekst toevoegen aan de interfac
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

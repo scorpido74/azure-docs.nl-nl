@@ -5,20 +5,35 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: MT
+ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937530"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372255"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
 De [Azure site Recovery](site-recovery-overview.md) -service wordt voortdurend bijgewerkt en verbeterd. Om u te helpen up-to-date te blijven, geeft u in dit artikel informatie over de nieuwste releases, nieuwe functies en nieuwe inhoud. Deze pagina wordt regel matig bijgewerkt.
 
 U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery) kanaal.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Update voor service stack update/SHA-2
+
+Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire regio, of on-premises virtuele VMware-machines of fysieke servers naar Azure, moet u rekening houden met het volgende:
+
+- Vanuit versie 9.30. x. x van de extensie van de Mobility-service (voor Azure-Vm's) en de Mobility Service-agent (voor VMware/fysieke machines) moeten op bepaalde besturings systemen van de machine de onderhouds stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
+- Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB.
+- Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+
+**Besturingssysteem** | **Azure VM** | **VMware-VM/fysieke machine**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Onderhouds stack-update](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 ## <a name="supported-updates"></a>Ondersteunde updates
 
@@ -73,7 +88,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
+Opslagaccount | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)

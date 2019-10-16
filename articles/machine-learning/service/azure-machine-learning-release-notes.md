@@ -10,18 +10,63 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177907"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331573"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2019-10-14"></a>2019-10-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1069"></a>Azure Machine Learning SDK voor python v-1.0.69
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + Het beperken van de model verklaringen voor de beste uitvoering in plaats van het berekenen van de uitleg voor elke uitvoering. U kunt dit gedrag wijzigen voor lokale, externe en ADB.
+    + Er is ondersteuning toegevoegd voor de uitleg van het on-demand-model voor de gebruikers interface
+    + Psutil is toegevoegd als een afhankelijkheid van automl en is opgenomen psutil als een Conda-afhankelijkheid in amlcompute.
+    + Het probleem met heuristische lags-en Rolling venster grootten is opgelost in de Voorspellings gegevens sets waarvan sommige reeksen een lineaire algebra fouten kunnen veroorzaken
+      + Er is afdrukken toegevoegd voor de heuristisch verbepaald para meters in de prognoses worden uitgevoerd.
+  + **azureml-contrib-datadrift**
+    + Er is beveiliging toegevoegd tijdens het maken van metrische gegevens voor uitvoer als DataSet level drift zich niet in de eerste sectie bevindt.
+  + **azureml-contrib-interpreteren**
+    + de naam van het pakket voor azureml-contrib-uitleg-model is gewijzigd in azureml-contrib-interpreteren
+  + **azureml-core**
+    + API is toegevoegd om de registratie van gegevens sets op te heffen. `dataset.unregister_all_versions()`
+    + De gegevensset-API is toegevoegd om de gewijzigde tijd van de gegevens te controleren. `dataset.data_changed_time`.
+    + Het gebruik van `FileDataset` en `TabularDataset` als invoer voor `PythonScriptStep`, `EstimatorStep` en `HyperDriveStep` in Azure Machine Learning pijp lijn
+    + De prestaties van `FileDataset.mount` zijn verbeterd voor mappen met een groot aantal bestanden
+    + De URL is toegevoegd aan bekende fout aanbevelingen in de details van de uitvoering.
+    + Er is een fout opgetreden tijdens het uitvoeren. Get _metrics waar aanvragen zouden mislukken als een uitvoering te veel onderliggende items heeft
+    + Er is ondersteuning toegevoegd voor verificatie op het Arcadia-cluster.
+    + Als u een experiment object maakt, wordt het experiment in de Azure Machine Learning-werk ruimte gemaakt, zodat het bijhouden van de uitvoerings geschiedenis kan worden uitgevoerd. Het experiment-id en de gearchiveerde tijd worden gevuld in het object experiment bij het maken. Voor beeld: experiment = experiment (werk ruimte, ' nieuw experiment ') experiment_id = experiment.id Archive () en reactivate () zijn functies die kunnen worden aangeroepen in een experiment om het experiment te verbergen en te herstellen, zodat het niet wordt weer gegeven in de UX of standaard wordt geretourneerd in een aanroep om experimenten weer te geven. Als een nieuw experiment wordt gemaakt met dezelfde naam als een gearchiveerd experiment, kunt u de naam van het gearchiveerde experiment wijzigen door een nieuwe naam door te geven. Er kan slechts één actief experiment met een bepaalde naam zijn. Voor beeld: experiment1 = experiment (werk ruimte, "actief experiment") experiment1. Archive () # nieuw actief experiment maken met dezelfde naam als de gearchiveerde. experiment2. = Experiment (werk ruimte, "actief experiment") experiment1. reactivate (new_name = "vorig actief experiment") de statische methode lijst () op het experiment kan een naam filter en een View type-filter hebben. View type-waarden zijn "ACTIVE_ONLY", "ARCHIVED_ONLY" en "alle" voor beeld: archived_experiments = experiment. List (workspace, view_type = "ARCHIVED_ONLY") all_first_experiments = experiment. List (werk ruimte, name = "eerste experiment", view_type = "ALL")
+    + Ondersteuning voor het gebruik van een omgeving voor model implementatie en service-update
+  + **azureml-datadrift**
+    + Het kenmerk show van de klasse DataDriftDector biedt geen ondersteuning voor het optionele argument ' with_details '. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
+    + Het DataDriftDetector kenmerk ' get_output ' wordt gewijzigd:
+      + Invoer parameter start_time, end_time zijn optioneel in plaats van verplicht.
+      + NPUT specifieke start_time en/of end_time met een specifiek run_id in dezelfde aanroepen, resulteren in een fout uitzondering in de waarde omdat ze elkaar wederzijds uitsluiten 
+      + Op basis van specifieke start_time en/of end_time worden alleen de resultaten van geplande uitvoeringen geretourneerd. 
+      + De para meter daily_latest_only is afgeschaft.
+    + Ondersteuning bij het ophalen van op gegevensset gebaseerde gegevens-drift-uitvoer.
+  + **azureml-uitleg-model**
+    + De naam van het pakket voor AzureML-uitleggen-model wordt gewijzigd in AzureML-interpreteren, waarbij het oude pakket wordt gehandhaafd voor achterwaartse compatibiliteit voor nu
+    + Er is een vaste automl-bug met onbewerkte uitleg ingesteld op de classificatie taak, in plaats van regressie, standaard bij het downloaden van ExplanationClient
+    + Voeg ondersteuning toe voor `ScoringExplainer` om deze rechtstreeks te maken met behulp van `MimicWrapper`
+  + **azureml-pijp lijn-kern**
+    + Verbeterde prestaties voor het maken van een grote pijp lijn
+  + **azureml-Train-core**
+    + Tensor Flow 2,0-ondersteuning is toegevoegd in tensor flow estimator
+  + **azureml-Train-automl**
+    + De bovenliggende uitvoering wordt niet meer uitgevoerd wanneer de installatie herhaling is mislukt, omdat deze al wordt gebruikt door de indeling.
+    + Lokale-docker-en Local-Conda-ondersteuning toegevoegd voor AutoML-experimenten
 
 ## <a name="2019-10-08"></a>2019-10-08
 

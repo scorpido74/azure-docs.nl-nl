@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254503"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331149"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -56,7 +56,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Endpoint Protection-evaluatie](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Gratis|
 |Analyse van schijf versleuteling|✔|✔|X|✔|✔|X|Gratis|
 |Beoordeling van beveiligings lekken van derden|✔|X|X|✔|X|X|Gratis|
-|[Evaluatie van netwerk beveiliging]()|✔|✔|X|✔|✔|X|Gratis|
+|[Evaluatie van netwerk beveiliging](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Gratis|
 
 ### Ondersteunde Endpoint Protection-oplossingen<a name="endpoint-supported"></a>
 

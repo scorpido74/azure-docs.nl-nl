@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d0a946ede154561aaa49d335b7b91fdae72c51d3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155554"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332544"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure
 
-Dit artikel helpt u bij het oplossen van het probleem wanneer uw virtuele machine (VM) vastloopt op het Windows voorbereiden. De computer niet uitschakelen tijdens het opstarten.
+In dit artikel vindt u een beschrijving van de schermen ' Getting Started ' en ' getting Starting Windows Ready ' die kunnen optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat stappen om u te helpen bij het verzamelen van gegevens voor een ondersteunings ticket.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u **Diagnostische gegevens over opstarten** gebruikt om de scherm opname van een virtuele machine op te halen, wordt het besturings systeem niet volledig opgestart. Op de VM wordt het bericht ' Windows gereed ' opgehaald weer gegeven. Schakel de computer niet uit.'
+Een Windows-VM wordt niet opgestart. Wanneer u **Diagnostische gegevens over opstarten** gebruikt om de scherm opname van de virtuele machine op te halen, ziet u mogelijk dat de VM het bericht ' getting readyed ' of ' getting Windows Ready ' weergeeft.
 
 ![Voorbeeld bericht voor Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -38,178 +38,71 @@ Wanneer u **Diagnostische gegevens over opstarten** gebruikt om de scherm opname
 
 Dit probleem treedt meestal op wanneer de server de laatste keer opnieuw wordt opgestart nadat de configuratie is gewijzigd. De configuratie wijziging kan worden geïnitialiseerd door Windows-updates of door de wijzigingen in de functies/functie van de server. Als de grootte van de updates groot is, heeft het besturings systeem meer tijd nodig om de wijzigingen opnieuw te configureren. Windows Update
 
-## <a name="back-up-the-os-disk"></a>Back-up maken van de besturingssysteem schijf
-
-Maak een back-up van de besturingssysteem schijf voordat u het probleem probeert op te lossen.
-
-### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Voor Vm's met een versleutelde schijf moet u eerst de schijven ontgrendelen
-
-Volg deze stappen om te bepalen of de virtuele machine een versleutelde virtuele machine is.
-
-1. Open de virtuele machine op de Azure Portal en blader vervolgens naar de schijven.
-
-2. Bekijk de **versleutelings** kolom om te controleren of versleuteling is ingeschakeld.
-
-Als de schijf met het besturings systeem is versleuteld, ontgrendelt u de versleutelde schijf. Voer de volgende stappen uit om de schijf te ontgrendelen.
-
-1. Maak een herstel-VM die zich in dezelfde resource groep, opslag account en locatie bevindt als de betrokken VM.
-
-2. Verwijder de betreffende VM in het Azure Portal en behoud de schijf.
-
-3. Voer Power shell uit als beheerder.
-
-4. Voer de volgende cmdlet uit om de geheime naam op te halen.
-
-    ```Powershell
-    Login-AzAccount
- 
-    $vmName = “VirtualMachineName”
-    $vault = “AzureKeyVaultName”
- 
-    # Get the Secret for the C drive from Azure Key Vault
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.Tags.VolumeLetter -eq “C:\”) -and ($_.ContentType -eq ‘BEK‘)}
-
-    # OR Use the below command to get BEK keys for all the Volumes
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
-    ```
-
-5. Nadat u de geheime naam hebt, voert u de volgende opdrachten uit in Power shell.
-
-    ```Powershell
-    $secretName = 'SecretName'
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $secretname
-    $bekSecretBase64 = $keyVaultSecret.SecretValueText
-    ```
-
-6. Converteer de base64-gecodeerde waarde naar bytes en schrijf de uitvoer naar een bestand. 
-
-    > [!Note]
-    > Als u de USB-ontgrendelings optie gebruikt, moet de bestands naam van het BEK overeenkomen met de oorspronkelijke BEK-GUID. Maak een map op uw C-station met de naam ' BEK ' voordat u deze stappen uitvoert.
-    
-    ```Powershell
-    New-Item -ItemType directory -Path C:\BEK
-    $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
-    $path = “c:\BEK\$secretName.BEK”
-    [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
-    ```
-
-7. Nadat het BEK-bestand op uw PC is gemaakt, kopieert u het bestand naar de herstel-VM waaraan de vergrendelde besturingssysteem schijf is gekoppeld. Voer de volgende opdrachten uit met behulp van de BEK-bestands locatie.
-
-    ```Powershell
-    manage-bde -status F:
-    manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
-    ```
-    **Optioneel**: In sommige gevallen kan het nodig zijn om de schijf te ontsleutelen met behulp van deze opdracht.
-   
-    ```Powershell
-    manage-bde -off F:
-    ```
-
-    > [!Note]
-    > De vorige opdracht gaat ervan uit dat de schijf die moet worden versleuteld, is op letter F.
-
-8. Als u logboeken wilt verzamelen, gaat u naar het pad **stationsletter: \ Windows\System32\winevt\Logs**.
-
-9. Ontkoppel het station van de herstel machine.
-
-### <a name="create-a-snapshot"></a>Een momentopname maken
-
-Als u een moment opname wilt maken, volgt u de stappen in [een moment opname van een schijf](../windows/snapshot-copy-managed-disk.md).
-
 ## <a name="collect-an-os-memory-dump"></a>Een dump van het besturings systeem verzamelen
 
-Volg de stappen in de sectie [OS-dump verzamelen](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) om een OS-dump te verzamelen wanneer de virtuele machine op de configuratie is vastgelopen.
+Als het probleem niet wordt opgelost nadat u hebt gewacht tot de wijzigingen zijn verwerkt, moet u een geheugen dump bestand verzamelen en contact opnemen met de ondersteuning. Voer de volgende stappen uit om het dump bestand te verzamelen:
 
-## <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
+
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+3. Extern bureau blad naar de herstel-VM. 
+4. Als de besturingssysteem schijf is versleuteld, moet u de versleuteling uitschakelen voordat u verdergaat met de volgende stap. Zie [de versleutelde besturingssysteem schijf ontsleutelen in de virtuele machine die niet kan worden opgestart](troubleshoot-bitlocker-boot-error.md#solution)voor meer informatie.
+
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Dump bestand zoeken en een ondersteunings ticket verzenden
+
+1. Ga op de herstel-VM naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf F is, moet u naar F:\Windows.
+2. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het dump bestand. 
+
+Als u het dump bestand niet kunt vinden, gaat u naar de volgende stap om dump logboek en seriële console in te scha kelen.
+
+### <a name="enable-dump-log-and-serial-console"></a>Dump logboek en seriële console inschakelen
+
+Voer het volgende script uit om dump logboek en seriële console in te scha kelen.
+
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
+2. Voer het volgende script uit:
+
+    In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F is.  Vervang deze door de juiste waarde in uw VM.
+
+    ```powershell
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+    REM Enable Serial Console
+    bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store F:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+    REM Suggested configuration to enable OS Dump
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    reg unload HKLM\BROKENSYSTEM
+    ```
+
+    1. Zorg ervoor dat er voldoende ruimte op de schijf is om zoveel geheugen toe te wijzen als het RAM-geheugen, afhankelijk van de grootte die u voor deze VM selecteert.
+    2. Als er onvoldoende ruimte is of als dit een virtuele machine met een grote grootte is (G, GS of E-serie), kunt u vervolgens de locatie wijzigen waar dit bestand wordt gemaakt en naar elke andere gegevens schijf die is gekoppeld aan de virtuele machine. Hiervoor moet u de volgende sleutel wijzigen:
+
+            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+
+            reg unload HKLM\BROKENSYSTEM
+
+3. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](../windows/troubleshoot-recovery-disks-portal.md).
+4. Start de VM en open de seriële console.
+5. Selecteer **niet-maskeer bare interrupt (NMI) verzenden** om de geheugen dump te activeren.
+    ![the-installatie kopie over waar de niet-maskeer bare interrupt @ no__t-1 moet worden verzonden
+6. Koppel de besturingssysteem schijf weer aan een herstel-VM en probeer het dump bestand te verzamelen.
+
+## <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning
 
 Nadat u het dump bestand hebt verzameld, neemt u contact op met [micro soft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om de hoofd oorzaak te analyseren.
-
-
-## <a name="rebuild-the-vm-by-using-powershell"></a>De virtuele machine opnieuw samen stellen met behulp van Power shell
-
-Nadat u het geheugen dump bestand hebt verzameld, volgt u deze stappen om de virtuele machine opnieuw op te bouwen.
-
-**Voor niet-beheerde schijven**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID “SubscriptionID” | Select-AzSubscription
-
-$rgname = "RGname"
-$loc = "Location"
-$vmsize = "VmSize"
-$vmname = "VmName"
-$vm = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-
-$nic = Get-AzNetworkInterface -Name ("NicName") -ResourceGroupName $rgname;
-$nicId = $nic.Id;
-
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nicId;
-
-$osDiskName = "OSdiskName"
-$osDiskVhdUri = "OSdiskURI"
-
-$vm = Set-AzVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOption attach -Windows
-
-New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
-```
-
-**Voor beheerde schijven**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID "SubscriptionID" | Select-AzSubscription
-
-#Fill in all variables
-$subid = "SubscriptionID"
-$rgName = "ResourceGroupName";
-$loc = "Location";
-$vmSize = "VmSize";
-$vmName = "VmName";
-$nic1Name = "FirstNetworkInterfaceName";
-#$nic2Name = "SecondNetworkInterfaceName";
-$avName = "AvailabilitySetName";
-$osDiskName = "OsDiskName";
-$DataDiskName = "DataDiskName"
-
-#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
-$osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
-$dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
-
-$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
-
-#Uncomment to add Availability Set
-#$avSet = Get-AzAvailabilitySet –Name $avName –ResourceGroupName $rgName;
-#$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
-
-#Get NIC Resource Id and add
-$nic1 = Get-AzNetworkInterface -Name $nic1Name -ResourceGroupName $rgName;
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
-
-#Uncomment to add a secondary NIC
-#$nic2 = Get-AzNetworkInterface -Name $nic2Name -ResourceGroupName $rgName;
-#$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic2.Id;
-
-#Windows VM
-$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
-
-#Linux VM
-#$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
-
-#Uncomment to add additional Data Disk
-#Add-AzVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
-
-New-AzVM -ResourceGroupName $rgName -Location $loc -VM $vm;
-```

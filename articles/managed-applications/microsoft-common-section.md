@@ -1,6 +1,6 @@
 ---
-title: Azure sectie UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Common.Section UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure sectie | Microsoft Docs
+description: Hierin wordt het gebruikers interface-element micro soft. common. Section voor Azure Portal beschreven. Gebruiken om elementen in de portal te groeperen voor het implementeren van beheerde toepassingen.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698899"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331659"
 ---
-# <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI element
-Een besturingselement waarin een of meer elementen onder de kop zijn gegroepeerd.
+# <a name="microsoftcommonsection-ui-element"></a>Gebruikers interface-element van micro soft. common. Section
+Een besturings element dat een of meer elementen onder een kop groepeert.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+## <a name="ui-sample"></a>UI-voor beeld
+![Micro soft. common. Section](./media/managed-application-elements/microsoft.common.section.png)
 
 ## <a name="schema"></a>Schema
 ```json
@@ -49,18 +49,18 @@ Een besturingselement waarin een of meer elementen onder de kop zijn gegroepeerd
 ```
 
 ## <a name="remarks"></a>Opmerkingen
-- `elements` moet ten minste één element hebben en kan alle elementtypen behalve `Microsoft.Common.Section`.
-- Dit element biedt geen ondersteuning voor de `toolTip` eigenschap.
+- `elements` moet ten minste één element hebben en kan alle element typen hebben, met uitzonde ring van `Microsoft.Common.Section`.
+- Dit element biedt geen ondersteuning voor de eigenschap `toolTip`.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
-Voor toegang tot de uitvoerwaarden van elementen in `elements`, gebruikt u de [basics()](create-uidefinition-functions.md#basics) of [steps()](create-uidefinition-functions.md#steps) functies en puntnotatie:
+Als u de uitvoer waarden van elementen in `elements` wilt openen, gebruikt u de functies [()](create-uidefinition-functions.md#basics) of [stappen (](create-uidefinition-functions.md#steps) ) en punt notatie:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Elementen van het type `Microsoft.Common.Section` hebben geen uitvoerwaarden zelf.
+Elementen van het type `Microsoft.Common.Section` hebben geen uitvoer waarden zelf.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

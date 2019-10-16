@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729215"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373395"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
@@ -56,7 +56,7 @@ Toepassingen waarvoor een gebruikers record vereist is in de toepassing voordat 
 
 Azure AD biedt verschillende integratie paden om het automatisch inrichten van gebruikers voor uw toepassing in te scha kelen.
 
-* De [Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) -inrichtings service beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
+* De [Azure AD-inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
 
 * Wanneer u de [Microsoft Graph](https://docs.microsoft.com/graph/)gebruikt, beheert uw toepassing de inkomende en uitgaande toewijzing van gebruikers en groepen vanuit Azure AD naar uw toepassing door de Microsoft Graph API te doorzoeken.
 
@@ -67,7 +67,7 @@ Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informa
 | Mogelijkheden die zijn ingeschakeld of worden uitgebreid met automatische inrichting| Azure AD-inrichtings service (SCIM 2,0)| Microsoft Graph-API (OData v 4.0)| SAML JIT |
 |---|---|---|---|
 | Gebruikers-en groeps beheer in azure AD| √| √| Alleen gebruiker |
-| Gebruikers en groepen beheren die zijn gesynchroniseerd vanuit on-premises Active Directory| √*| √*| Alleen gebruiker * |
+| Gebruikers en groepen beheren die zijn gesynchroniseerd vanuit on-premises Active Directory| √| √| Alleen gebruiker * |
 | Toegang tot gegevens buiten gebruikers en groepen tijdens het inrichten van toegang tot O365-gegevens (teams, share point, E-mail, agenda, documenten, enz.)| X +| √| X |
 | Gebruikers maken, lezen en bijwerken op basis van bedrijfs regels| √| √| √ |
 | Gebruikers verwijderen op basis van bedrijfs regels| √| √| X |
@@ -76,20 +76,20 @@ Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informa
 | Gast accounts (B2B) ondersteunen| √| √| √ |
 | Niet-ondernemings accounts ondersteunen (B2C)| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect Setup is vereist voor het synchroniseren van gebruikers van AD naar Azure AD.  
-<sup>+</sup >: Het gebruik van SCIM voor het inrichten verhindert niet dat u uw toepassing kunt integreren met micro soft Graph voor andere doel einden.
+<sup>*</sup> – Azure AD Connect Setup is vereist voor het synchroniseren van gebruikers van AD naar Azure AD.  
+<sup>+</sup >: als u scim gebruikt voor het inrichten, kunt u uw toepassing niet integreren met micro soft Graph voor andere doel einden.
 
-## <a name="azure-ad-provisioning-service"></a>Azure AD-inrichtings service
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD-inrichtings service (SCIM)
 
-Azure AD Provisioning Services maakt gebruik van SCIM, een protocol dat door veel id-providers (id) wordt ondersteund. U wordt aangeraden de Azure AD-inrichtings service te gebruiken als u naast Azure AD id wilt ondersteunen, omdat elke IdP die compatibel is met SCIM, verbinding kan maken met uw SCIM-eind punt.
+De Azure AD-inrichtings Services gebruiken [SCIM] (https://aka.ms/SCIMOverview, een protocol dat door veel id-providers (id) wordt ondersteund. U wordt aangeraden de Azure AD-inrichtings service te gebruiken als u naast Azure AD id wilt ondersteunen, omdat elke IdP die compatibel is met SCIM, verbinding kan maken met uw SCIM-eind punt.
 
 Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SCIM: 
+
+* [Meer informatie over de SCIM-standaard](https://aka.ms/SCIMOverview)
 
 * [Systeem gebruiken voor Identity Management (SCIM) van meerdere domeinen om automatisch gebruikers en groepen in te richten van Azure Active Directory naar toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Meer informatie over de Azure AD SCIM-implementatie](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
-* [Een SCIM-eind punt bouwen met micro soft CLI-bibliotheken](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph voor inrichting
 
