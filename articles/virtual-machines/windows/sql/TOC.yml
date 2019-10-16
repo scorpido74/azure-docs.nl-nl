@@ -102,7 +102,7 @@
           items:
             - name: Met Storage Spaces Direct
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Met Premium-bestandsopslag
+            - name: Met Premium-bestandsshare
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Naslaginformatie
   items:

@@ -103,7 +103,7 @@
           items:
             - name: Controleren en afstemmen
               href: concepts-monitoring.md
-            - name: Serverlogboeken
+            - name: Logboeken
               href: concepts-server-logs.md
             - name: Auditlogboeken
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure-CLI
               href: howto-auto-grow-storage-cli.md
-        - name: Serverlogboeken openen
+        - name: Toegangslogboeken
           items:
             - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md

@@ -15,7 +15,7 @@
   items:
     - name: 'Functie maken - C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: Functie maken - Java/Maven
+    - name: Functie maken - Java
       href: functions-create-first-java-maven.md
     - name: Functie maken - JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: 'Opslag - C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: Opslag - Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: Opslag - JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Opslag - Python

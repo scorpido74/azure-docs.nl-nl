@@ -96,22 +96,22 @@
           items:
             - name: Leslokaallabs maken en beheren
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: Sjablonen instellen en publiceren
+            - name: 'Sjablonen instellen, aanpassen en publiceren'
               href: classroom-labs/how-to-create-manage-template.md
-            - name: Gebruik configureren en beheren
+            - name: VM-pool instellen en beheren
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Labgebruikers toevoegen en beheren
               href: classroom-labs/how-to-configure-student-usage.md
             - name: Schema's maken en beheren
               href: classroom-labs/how-to-create-schedules.md
-            - name: Een omgeving met meerdere VM's binnen een VM-sjabloon maken
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: Een gedeelde installatiekopiegalerie gebruiken
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Verbinding met Extern bureaublad inschakelen voor Linux
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: Wachtwoorden voor virtuele machines instellen of opnieuw instellen
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
             - name: Geneste virtualisatie inschakelen in een sjabloon-VM
               href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: Een omgeving met meerdere VM's binnen een VM-sjabloon maken
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: Verbinding maken met VM's in leslokaallabs (student)
           items:
             - name: Leslokaallabs openen

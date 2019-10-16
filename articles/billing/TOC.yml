@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: Meer informatie over uw EA-factuur
       href: billing-understand-your-bill-ea.md
-    - name: Meer informatie over uw factuur - alleen Microsoft-klantovereenkomst
+    - name: Meer informatie over uw factuur - Microsoft-klantovereenkomst
       href: billing-mca-understand-your-bill.md
+    - name: Meer informatie over uw factuur - Microsoft-partnerovereenkomst
+      href: billing-mpa-understand-your-bill.md
     - name: Uw Microsoft Azure-factuur weergeven en downloaden
       href: billing-download-azure-invoice.md
     - name: Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden
       href: billing-download-azure-daily-usage.md
-    - name: Belastingdocumenten voor uw Microsoft-klantovereenkomst weergeven en downloaden
+    - name: Belastingdocumenten weergeven en downloaden
       href: billing-mca-download-tax-document.md
     - name: Kosten voor services van derden
       href: billing-understand-your-azure-marketplace-charges.md
     - name: Informatie over gebruiksvoorwaarden
       href: billing-understand-your-usage.md
-    - name: Informatie over gebruiksvoorwaarden - alleen Microsoft-klantovereenkomst
+    - name: Informatie over gebruiksvoorwaarden - Microsoft-klantovereenkomst
       href: billing-mca-understand-your-usage.md
     - name: Informatie over factureringsvoorwaarden
       href: billing-understand-your-invoice.md
-    - name: Informatie over factureringsvoorwaarden - alleen Microsoft-klantovereenkomst
+    - name: Informatie over factureringsvoorwaarden - Microsoft-klantovereenkomst
       href: billing-mca-understand-your-invoice.md
-    - name: Uw factuur betalen - alleen Microsoft-klantovereenkomst
+    - name: Informatie over factureringsvoorwaarden - Microsoft-partnerovereenkomst
+      href: billing-mpa-invoice-terms-explained.md
+    - name: Uw factuur betalen - Microsoft-klantovereenkomst
       href: billing-how-to-pay-bill.md
     - name: Factureringsaccounts voor Microsoft-klantovereenkomst
       href: billing-mca-overview.md
+    - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
+      href: mpa-overview.md
 - name: Kosten beheren
   items:
     - name: Onverwachte kosten voorkomen
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Gebruik controleren
           href: billing-check-free-service-usage.md
-        - name: Abonnement upgraden
+        - name: Account upgraden
           href: billing-upgrade-azure-subscription.md
-        - name: Informatie over metertoewijzing
-          href: billing-understand-free-service-meter-mapping.md
     - name: Profiel bewerken
       href: billing-how-to-change-azure-account-profile.md
     - name: Open banking en krachtige klantverificatie
@@ -158,7 +162,7 @@
         - name: EA-taken in Microsoft-klantovereenkomst
           href: billing-mca-enterprise-operations.md
     - name: Factureringsaccount instellen voor Microsoft-klantovereenkomst
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Registreren met Office 365-account
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Registreren voor Office 365 met een Azure-account
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: Eigendom aanvragen - Microsoft-klantovereenkomst
       href: billing-mca-request-billing-ownership.md
+    - name: Eigendom aanvragen - Microsoft-partnerovereenkomst
+      href: mpa-request-ownership.md
     - name: Abonnement annuleren
       href: billing-how-to-cancel-azure-subscription.md
     - name: Creditcard wijzigen

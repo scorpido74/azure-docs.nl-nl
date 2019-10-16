@@ -148,6 +148,8 @@
           href: automation-onboard-solutions-from-automation-account.md
     - name: Handleidingen
       items:
+        - name: Updates en patches voor uw virtuele Azure-machines beheren
+          href: automation-tutorial-update-management.md
         - name: Updates voor meerdere virtuele machines beheren
           href: manage-update-multi.md
         - name: Pre- en post-scripts
@@ -157,6 +159,14 @@
         - name: SCCM integreren met updatebeheer
           href: oms-solution-updatemgmt-sccmintegration.md
           displayName: Configuration Manager
+        - name: Windows-update voor Updatebeheer configureren
+          href: automation-configure-windows-update.md
+        - name: Dynamische groepen gebruiken met Updatebeheer
+          href: automation-update-management-groups.md
+        - name: Query's uitvoeren op Updatebeheer-logboeken
+          href: automation-update-management-query-logs.md
+        - name: Update-evaluaties bekijken
+          href: automation-view-update-assessments.md
     - name: Problemen oplossen
       items:
         - name: Onboarding
@@ -300,14 +310,18 @@
       href: automation-connections.md
     - name: Referenties
       href: automation-credentials.md
-    - name: Modules
-      href: automation-integration-modules.md
+    - name: PowerShell-modules
+      items:
+        - name: Modules
+          href: automation-integration-modules.md
+        - name: Az-modules gebruiken in Azure Automation
+          href: az-modules.md
+        - name: Azure PowerShell-modules bijwerken
+          href: automation-update-azure-modules.md
     - name: Planningen
       href: automation-schedules.md
     - name: Variabelen
       href: automation-variables.md
-    - name: Azure PowerShell-modules bijwerken
-      href: automation-update-azure-modules.md
     - name: Python 2-pakketten beheren
       href: python-packages.md
     - name: Problemen met gedeelde resources oplossen

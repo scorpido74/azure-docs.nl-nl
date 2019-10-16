@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: Model op basis van vCore
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: Serverloze compute-laag
+                  href: sql-database-serverless.md
+                - name: Vooruitbetalen voor reservecapaciteit
+                  href: sql-database-reserved-capacity.md
             - name: DTU-servicelagen
               href: sql-database-service-tiers-dtu.md
-            - name: Serverloze compute-laag
-              href: sql-database-serverless.md
-            - name: Vooruitbetalen voor reservecapaciteit
-              href: sql-database-reserved-capacity.md
-            - name: Migreren vanaf de servicelaag Premium RS
-              href: sql-database-service-tiers-prs.md
         - name: Compute en opslag
           items:
             - name: Overzicht
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: Veelgestelde vragen over Hyperscale
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Migreren vanaf de servicelaag Premium RS
+              href: sql-database-service-tiers-prs.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: Herstelanalyse
               href: sql-database-disaster-recovery-drills.md
+            - name: Failovergroep configureren
+              href: sql-database-configure-failover-group.md
     - name: Controleren en afstemmen
       items:
         - name: Documentatie over controleren en afstemmen
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync instellen
           href: sql-database-get-started-sql-data-sync.md
-        - name: Toevoegen van een failovergroep aan elastische pool
+        - name: Elastische pool aan een failovergroep toevoegen
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Beveiliging configureren
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Beveiliging voor geo-replica's configureren
           href: sql-database-geo-replication-security-config.md
-        - name: Failovergroep configureren
-          href: sql-database-configure-failover-group.md
         - name: Functies in het geheugen proberen
           href: sql-database-in-memory-sample.md
         - name: Automatisch instellen inschakelen
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: Beveiliging configureren
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: Een beheerd exemplaar aan een failovergroep toevoegen
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: Concepten
       items:
         - name: Beheer API-referentiemateriaal
