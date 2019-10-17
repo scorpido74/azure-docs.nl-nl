@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 10/11/2019
-ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299706"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390702"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
@@ -88,6 +88,13 @@ De zone redundante versie van de architectuur met hoge Beschik baarheid wordt ge
 ## <a name="accelerated-database-recovery-adr"></a>Versneld database herstel (ADR)
 
 [Versneld database herstel (ADR)](sql-database-accelerated-database-recovery.md) is een nieuwe functie van SQL database engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name in de aanwezigheid van langlopende trans acties. ADR is momenteel beschikbaar voor afzonderlijke data bases, elastische Pools en Azure SQL Data Warehouse.
+
+## <a name="testing-database-fault-resiliency"></a>Database fout tolerantie testen
+
+Hoge Beschik baarheid is een fundamenental onderdeel van Azure SQL Database platform en werkt transparant voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op de toepassing voordat u deze implementeert voor productie. U kunt een speciale API aanroepen om de data base of de elastische pool opnieuw te starten, waardoor de failover wordt geactiveerd. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat de client verbindingen met de nieuwe primaire in een andere AZ worden omgeleid. Naast het testen van de werking van de failover van de bestaande database sessies, kunt u ook controleren of deze van invloed is op de end-to-end-prestaties. Omdat de computer opnieuw moet worden opgestart, is het mogelijk dat er voor elke Data Base of elastische pool slechts één failover-aanroep elke 30 minuten wordt toegestaan. Zie [Data Base-failover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) en een [elastische pool failover](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)voor meer informatie.       
+
+> [!IMPORTANT]
+> De opdracht failover is momenteel niet beschikbaar voor Hypescale-data bases en beheerde instancses.  
 
 ## <a name="conclusion"></a>Conclusie
 

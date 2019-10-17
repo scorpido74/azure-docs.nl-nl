@@ -1,63 +1,63 @@
 ---
-title: Ongeldige Azure-sjabloon fouten | Microsoft Docs
-description: Beschrijft hoe u ongeldige sjabloon oplossen.
+title: Ongeldige sjabloon fouten in azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0417a975ffbbe0acd94ceac6c0f8e1de27a27aa6
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206266"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390328"
 ---
-# <a name="resolve-errors-for-invalid-template"></a>Los fouten voor ongeldige sjabloon
+# <a name="resolve-errors-for-invalid-template"></a>Fouten voor ongeldige sjabloon oplossen
 
-In dit artikel wordt beschreven hoe u ongeldige sjabloon oplossen.
+In dit artikel wordt beschreven hoe u ongeldige sjabloon fouten kunt oplossen.
 
 ## <a name="symptom"></a>Symptoom
 
-Bij het implementeren van een sjabloon, ontvangt u een fout die aangeeft:
+Wanneer u een sjabloon implementeert, wordt er een fout bericht weer gegeven met de volgende strekking:
 
 ```
 Code=InvalidTemplate
 Message=<varies>
 ```
 
-Het foutbericht is afhankelijk van het type fout.
+Het fout bericht is afhankelijk van het type fout.
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout kan worden veroorzaakt door verschillende typen fouten. Ze omvatten doorgaans een syntaxisfout of structurele fout in de sjabloon.
+Deze fout kan worden veroorzaakt door verschillende soorten fouten. Normaal gesp roken is er sprake van een syntaxis-of structureel fout in de sjabloon.
 
 <a id="syntax-error" />
 
-## <a name="solution-1---syntax-error"></a>Oplossing 1: syntaxisfout
+## <a name="solution-1---syntax-error"></a>Oplossing 1: syntaxis fout
 
-Als u een foutbericht dat aangeeft de sjabloonvalidatie is mislukt ontvangt dat, hebt u mogelijk een probleem syntaxis in de sjabloon.
+Als er een fout bericht wordt weer gegeven dat aangeeft dat de validatie van de sjabloon is mislukt, hebt u mogelijk een syntaxis probleem in uw sjabloon.
 
 ```
 Code=InvalidTemplate
 Message=Deployment template validation failed
 ```
 
-Deze fout is eenvoudig te maken omdat het sjabloonexpressies kunnen ingewikkeld zijn. De naamtoewijzing van de volgende voor een storage-account heeft bijvoorbeeld één set met vierkante haken, drie functies, drie sets met behulp van haakjes, één set met enkele aanhalingstekens en één eigenschap:
+Deze fout kan eenvoudig worden gemaakt omdat sjabloon expressies complex kunnen zijn. De volgende naam toewijzing voor een opslag account heeft bijvoorbeeld één set haken, drie functies, drie sets haakjes, één set met enkele aanhalings tekens en één eigenschap:
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 ```
 
-Als u de syntaxis van overeenkomende niet opgeeft, wordt in de sjabloon een waarde die is anders dan uw bedoeling produceert.
+Als u de overeenkomende syntaxis niet opgeeft, produceert de sjabloon een waarde die afwijkt van uw voor nemen.
 
-Wanneer u dit type fout ontvangt, moet u zorgvuldig de expressiesyntaxis van controleren. Overweeg het gebruik van een JSON-editor, zoals [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) of [Visual Studio Code](resource-manager-vs-code.md), die u kunt waarschuwen over syntaxisfouten.
+Wanneer u dit type fout ontvangt, controleert u de syntaxis van de expressie zorgvuldig. U kunt een JSON-editor gebruiken, zoals [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) of [Visual Studio code](resource-manager-vs-code.md), die u kan waarschuwen over syntaxis fouten.
 
 <a id="incorrect-segment-lengths" />
 
-## <a name="solution-2---incorrect-segment-lengths"></a>Oplossing 2 - onjuiste segmentlengte
+## <a name="solution-2---incorrect-segment-lengths"></a>Oplossing 2: onjuiste segment lengten
 
-Een ongeldige sjabloon-fout treedt op wanneer de resourcenaam is niet de juiste indeling.
+Er treedt een andere ongeldige sjabloon fout op wanneer de resource naam niet de juiste indeling heeft.
 
 ```
 Code=InvalidTemplate
@@ -65,7 +65,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-Een niveau root-bron moet één minder segment hebben in de naam dan in het resourcetype. Elk segment wordt onderscheiden door een schuine streep. In het volgende voorbeeld wordt het type heeft twee segmenten en de naam van de één segment, zodat er een **geldige naam**.
+Een resource op hoofd niveau moet een kleiner segment hebben in de naam van het resource type. Elk segment wordt onderscheiden door een slash. In het volgende voor beeld heeft het type twee segmenten en de naam heeft één segment, dus is het een **geldige naam**.
 
 ```json
 {
@@ -75,7 +75,7 @@ Een niveau root-bron moet één minder segment hebben in de naam dan in het reso
 }
 ```
 
-Maar het volgende voorbeeld is **niet de naam van een geldige** omdat er hetzelfde aantal segmenten als het type.
+Het volgende voor beeld is echter **geen geldige naam** omdat het hetzelfde aantal segmenten bevat als het type.
 
 ```json
 {
@@ -85,7 +85,7 @@ Maar het volgende voorbeeld is **niet de naam van een geldige** omdat er hetzelf
 }
 ```
 
-Hebben hetzelfde aantal segmenten voor de onderliggende resources, het type en de naam. Dit aantal segmenten zinvol is omdat de volledige naam en type van het onderliggende object bevat de naam van bovenliggend en het type. Daarom heeft de volledige naam nog steeds één minder segment dan het volledige type.
+Voor onderliggende resources hebben het type en de naam hetzelfde aantal segmenten. Dit aantal segmenten is zinvol omdat de volledige naam en het type voor het onderliggende item de naam en het type van het bovenliggende item bevatten. De volledige naam heeft dus nog steeds één kleiner segment dan het volledige type.
 
 ```json
 "resources": [
@@ -104,7 +104,7 @@ Hebben hetzelfde aantal segmenten voor de onderliggende resources, het type en d
 ]
 ```
 
-Aan de segmenten rechts kan met Resource Manager-typen die worden toegepast op resourceproviders lastig zijn. Bijvoorbeeld: een resourcevergrendeling toepassen op een website heeft een type met vier segmenten. Daarom is de naam van de drie segmenten:
+Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worden toegepast op alle resource providers. Voor het Toep assen van een resource vergrendeling op een website is bijvoorbeeld een type met vier segmenten vereist. De naam is daarom drie segmenten:
 
 ```json
 {
@@ -116,9 +116,9 @@ Aan de segmenten rechts kan met Resource Manager-typen die worden toegepast op r
 
 <a id="parameter-not-valid" />
 
-## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3 - parameter is niet geldig
+## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3-para meter is niet geldig
 
-Als u een parameterwaarde die niet een van de toegestane waarden opgeven, ontvangt u een bericht dat lijkt op de volgende fout:
+Als u een parameter waarde opgeeft die niet van de toegestane waarden is, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:
 
 ```
 Code=InvalidTemplate;
@@ -127,40 +127,40 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Dubbele controleren van de toegestane waarden in de sjabloon en opgeeft tijdens de implementatie. Zie voor meer informatie over de toegestane parameterwaarden [sectie opdrachtregelparameters van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md#parameters).
+Controleer de toegestane waarden in de sjabloon en geef er een op tijdens de implementatie. Zie [para meters in het gedeelte met Azure Resource Manager sjablonen](resource-group-authoring-templates.md#parameters)voor meer informatie over toegestane parameter waarden.
 
 <a id="too-many-resource-groups" />
 
-## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4: te veel resourcegroepen van doelserver
+## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4: te veel doel resource groepen
 
-Als u meer dan vijf doelgroepen resource in een implementatie met één opgeeft, ontvangt deze foutmelding. Overweeg de consolidatie van het aantal resourcegroepen in uw implementatie of de implementatie van enkele van de sjablonen als afzonderlijke implementaties. Zie voor meer informatie, [implementeren-Azure-resources aan meer dan één abonnement of resourcegroep](resource-manager-cross-resource-group-deployment.md).
+Als u meer dan vijf doel resource groepen in één implementatie opgeeft, wordt deze fout weer gegeven. U kunt het aantal resource groepen in uw implementatie consolideren, of een aantal sjablonen implementeren als afzonderlijke implementaties. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](resource-manager-cross-resource-group-deployment.md)voor meer informatie.
 
 <a id="circular-dependency" />
 
-## <a name="solution-5---circular-dependency-detected"></a>Oplossing 5 - circulaire afhankelijkheid gedetecteerd
+## <a name="solution-5---circular-dependency-detected"></a>Oplossing 5-circulaire afhankelijkheid gedetecteerd
 
-U ontvangt deze foutmelding wanneer resources afhankelijk van elkaar op een manier waarmee wordt voorkomen de implementatie zijn niet kan worden gestart dat. Een combinatie van afhankelijkheden kunt u twee of meer resources die wachten op andere resources die ook wachten. Bijvoorbeeld resource1 is afhankelijk van resource3, resource2, is afhankelijk van resource1 en resource3 is afhankelijk van resource2. Meestal kunt u dit probleem oplossen door het verwijderen van onnodige afhankelijkheden.
+U ontvangt deze fout melding wanneer de resources van elkaar afhankelijk zijn op een manier die verhindert dat de implementatie wordt gestart. Een combi natie van onderlinge afhankelijkheden zorgt ervoor dat twee of meer bronnen wachten op andere resources die ook wachten. Resource1 is bijvoorbeeld afhankelijk van Resource3, Resource2 is afhankelijk van Resource1 en Resource3 is afhankelijk van Resource2. U kunt dit probleem doorgaans oplossen door overbodige afhankelijkheden te verwijderen.
 
-Om op te lossen een circulaire afhankelijkheid:
+Een circulaire afhankelijkheid oplossen:
 
-1. In de sjabloon, de bron die is geïdentificeerd in de circulaire afhankelijkheid te vinden. 
-2. Voor die bron, onderzoekt de **dependsOn** eigenschap en elk gebruik van de **verwijzing** functie om te zien welke resources die deze afhankelijk is. 
-3. Bekijk deze resources om te zien welke bronnen ze afhankelijk zijn. Volg de afhankelijkheden totdat er een resource die is gebouwd op de oorspronkelijke bron.
-5. Voor de resources die betrokken zijn bij een circulaire afhankelijkheid, zorgvuldig al het gebruik van de **dependsOn** eigenschap voor het identificeren van eventuele afhankelijkheden die niet nodig zijn. Verwijder deze afhankelijkheden. Als u niet zeker weet dat er een afhankelijkheid nodig is, probeert u deze verwijdert. 
-6. De sjabloon opnieuw implementeert.
+1. Zoek in uw sjabloon de resource die in de circulaire afhankelijkheid is geïdentificeerd. 
+2. Bekijk voor die resource de eigenschap **dependsOn** en het gebruik van de functie **Reference** om te zien op welke resources deze is gebaseerd. 
+3. Bekijk deze bronnen om te zien van welke bronnen ze afhankelijk zijn. Volg de afhankelijkheden totdat u een bron ziet die afhankelijk is van de oorspronkelijke resource.
+5. Voor de resources die deel uitmaken van de circulaire afhankelijkheid, onderzoekt zorgvuldig alle toepassingen van de eigenschap **dependsOn** om eventuele afhankelijkheden te identificeren die niet nodig zijn. Verwijder deze afhankelijkheden. Als u niet zeker weet of een afhankelijkheid nodig is, kunt u deze verwijderen. 
+6. Implementeer de sjabloon opnieuw.
 
-Verwijderen van waarden uit de **dependsOn** eigenschap kan fouten veroorzaken wanneer u de sjabloon implementeert. Als u een fout optreedt, moet u de afhankelijkheid terug naar de sjabloon toevoegen. 
+Het verwijderen van waarden van de eigenschap **dependsOn** kan fouten veroorzaken tijdens het implementeren van de sjabloon. Als er een fout optreedt, voegt u de afhankelijkheid weer toe aan de sjabloon. 
 
-Als deze aanpak is een circulaire afhankelijkheid niet is opgelost, kunt u overwegen om deel uit van de logica van uw implementatie in onderliggende resources (zoals extensies of configuratie-instellingen). Configureer de onderliggende resources na de resources die betrokken zijn bij een circulaire afhankelijkheid te implementeren. Stel bijvoorbeeld dat u twee virtuele machines implementeert, maar moet u de eigenschappen instellen op elk die verwijzen naar de andere. U kunt deze implementeren in de volgende volgorde:
+Als deze aanpak de circulaire afhankelijkheid niet oplost, kunt u overwegen om een deel van uw implementatie logica te verplaatsen naar onderliggende resources (zoals extensies of configuratie-instellingen). Configureer deze onderliggende resources om te implementeren na de resources die bij de circulaire afhankelijkheid betrokken zijn. Stel bijvoorbeeld dat u twee virtuele machines implementeert, maar u moet eigenschappen instellen voor elke machine die naar de andere verwijzen. U kunt deze in de volgende volg orde implementeren:
 
 1. vm1
 2. vm2
-3. Extensie op vm1, is afhankelijk van vm1 en vm2. De extensie stelt waarden in voor vm1 die van vm2 krijgt.
-4. Extensie op vm2, is afhankelijk van vm1 en vm2. De extensie stelt waarden in voor vm2 die van vm1 krijgt.
+3. De uitbrei ding van VM1 is afhankelijk van VM1 en VM2. De uitbrei ding stelt waarden in voor VM1 die worden opgehaald uit VM2.
+4. De uitbrei ding van VM2 is afhankelijk van VM1 en VM2. De uitbrei ding stelt waarden in voor VM2 die worden opgehaald uit VM1.
 
-Diezelfde aanpak werkt voor App Service-apps. Houd rekening met configuratiewaarden verplaatsen naar een onderliggende resource van de app-resource. U kunt twee web-apps in de volgende volgorde kunt implementeren:
+Dezelfde benadering werkt voor App Service-apps. Overweeg configuratie waarden te verplaatsen naar een onderliggende resource van de app-resource. U kunt in de volgende volg orde twee Web-Apps implementeren:
 
 1. webapp1
 2. webapp2
-3. configuratie voor webapp1, is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden uit webapp2.
-4. configuratie voor webapp2, is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden uit webapp1.
+3. de configuratie voor webapp1 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden van webapp2.
+4. de configuratie voor webapp2 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden van webapp1.

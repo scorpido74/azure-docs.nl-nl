@@ -16,18 +16,18 @@ ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 7a0aded07c2cd4da6ada72bdb967b1d485a56b85
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e8ca84f233b3e6202a4647d15e07b36c2b8f1128
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329974"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433114"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
 In dit artikel implementeert u een eenvoudige python-app voor [app service op Linux](app-service-linux-intro.md), die een uiterst schaal bare webhostingservice met self-patch functie biedt. U gebruikt de Azure-opdracht regel interface (de [Azure cli](/cli/azure/install-azure-cli)) via het interactieve, op een browser gebaseerde Azure Cloud shell, zodat u de stappen kunt volgen op een Mac-, Linux-of Windows-computer.
 
-![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-python/hello-world-in-browser.png)
+![Een voor beeld van een python-app uitvoeren in App Service in azure](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,7 +72,7 @@ Open een webbrowser en ga naar de voor beeld-app op `http://localhost:5000/`.
 
 Het bericht **Hallo wereld** uit de voorbeeld-app wordt weergegeven op de pagina.
 
-![Voorbeeld-app die lokaal wordt uitgevoerd](media/quickstart-python/hello-world-in-browser.png)
+![Een voor beeld van een python-app lokaal uitvoeren](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
@@ -155,7 +155,7 @@ http://<app-name>.azurewebsites.net
 
 De Python-voorbeeldcode wordt uitgevoerd in een App Service op Linux met een ingebouwde installatiekopie.
 
-![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-python/hello-world-in-browser.png)
+![Een voor beeld van een python-app in azure uitvoeren](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 **Gefeliciteerd!** U hebt uw eerste Python-app geïmplementeerd naar App Service op Linux.
 
@@ -163,7 +163,7 @@ De Python-voorbeeldcode wordt uitgevoerd in een App Service op Linux met een ing
 
 Voer in het Cloud Shell `code application.py` in om de Cloud Shell editor te openen.
 
-![Code application.py](media/quickstart-python/code-applicationpy.png)
+![Application.py openen in de editor van Cloud Shell](./media/quickstart-python/open-application-py-in-the-cloud-shell-editor.png)
 
  Breng een kleine wijziging aan in de tekst in de aanroep voor `return`:
 
@@ -181,7 +181,7 @@ az webapp up -n <app-name> -l <location-name>
 
 Wanneer de implementatie is voltooid, gaat u terug naar het browservenster dat is geopend in de stap **Bladeren naar de app** en vernieuwt u de pagina.
 
-![Bijgewerkte voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-python/hello-azure-in-browser.png)
+![Een bijgewerkte voor beeld-app voor python uitvoeren in azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>Uw nieuwe Azure-app beheren
 
@@ -189,11 +189,11 @@ Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om d
 
 Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
 
-![Navigatie naar Azure-app in de portal](./media/quickstart-python/app-service-list.png)
+![Navigeer naar uw python-app in App Services in het Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
 De pagina Overzicht van uw app wordt weergegeven. Hier kunt u algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen.
 
-![App Service-pagina in Azure Portal](media/quickstart-python/app-service-detail.png)
+![Beheer uw python-app op de pagina overzicht in de Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
 Het linkermenu bevat een aantal pagina's voor het configureren van uw app. 
 

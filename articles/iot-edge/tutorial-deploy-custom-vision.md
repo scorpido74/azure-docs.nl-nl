@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55203c4b555b54514425b484b367f8b735e98e40
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b84ab9691064e7040e586ad82835f27fa5555920
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003912"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434646"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
@@ -32,8 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 <center>
 
-![Diagram-zelf studie architectuur, faseren en classificatie implementeren](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
-</center>
+![Diagram-zelf studie-architectuur, faseren en classificatie implementeren @ no__t-1 @ no__t-2
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -42,9 +41,9 @@ In deze zelfstudie leert u het volgende:
 >[!TIP]
 >Deze zelf studie is een vereenvoudigde versie van de [Custom Vision en Azure IOT Edge op een voorbeeld project van Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) . Deze zelf studie is ontworpen om te worden uitgevoerd op een virtuele machine in de Cloud en maakt gebruik van statische installatie kopieën om de afbeeldings classificatie te trainen en te testen, wat nuttig is voor iemand die alleen begint met het evalueren van Custom Vision op IoT Edge. Het voorbeeld project maakt gebruik van fysieke hardware en stelt een feed voor een live-camera in voor het trainen en testen van de classificatie van de installatie kopie, wat nuttig is voor iemand die een gedetailleerd, realistisch scenario wil uitproberen.
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor de ontwikkeling van Linux-containers: [Ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
+Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -72,11 +71,11 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
 
 4. Maak uw project met de volgende waarden:
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
-   | Name | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
-   | Description | Optionele projectbeschrijving. |
-   | Resourcegroep | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
+   | Naam | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
+   | Beschrijving | Optionele projectbeschrijving. |
+   | Bron | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
    | Projecttypen | **Classificatie** |
    | Classificatietypen | **Multiclass (één label per afbeelding)** |
    | Domeinen | **Algemeen (compact)** |
@@ -142,19 +141,17 @@ U hebt nu de bestanden voor een containerversie van de afbeeldingsclassificatie 
 
 Een oplossing is een logische manier om meerdere modules voor één IoT Edge-implementatie te ontwikkelen en te organiseren. Een oplossing bevat code voor een of meer modules, evenals het implementatiemanifest waarin wordt gedeclareerd hoe u deze modules op een IoT Edge-apparaat worden geconfigureerd. 
 
-1. Selecteer in Visual Studio Code **View** > **Terminal** om de met VS code geïntegreerde terminal te openen.
-
 1. Selecteer **View** > **Command Palette** om het VS Code-opdrachtpalet te openen. 
 
 1. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Geef in het opdrachtpalet de volgende informatie op om de oplossing te maken: 
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
    | Map selecteren | Kies de locatie op uw ontwikkelcomputer waar VS Code de oplossingsbestanden moet maken. |
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor uw oplossing in, bijvoorbeeld **CustomVisionSolution**, of accepteer de standaardinstelling. |
    | Modulesjabloon selecteren | Kies **Python-module**. |
    | Een modulenaam opgeven | Noem de module **classificatie**.<br><br>Het is belangrijk dat deze modulenaam in kleine letters wordt opgegeven. IoT Edge is hoofdlettergevoelig wat de verwijzing naar modules betreft, en deze oplossing gebruikt een bibliotheek die alle aanvragen opmaakt in kleine letters. |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. De uiteindelijke tekenreeks ziet er als volgt uit: \<registernaam\>.azurecr.io/classificatie. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal.<br><br>De uiteindelijke teken reeks ziet eruit als **\<registry name\>.azurecr.io/Classifier**. |
  
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -172,7 +169,7 @@ In het omgevingsbestand worden de referenties voor het containerregister opgesla
 
 Visual Studio code kan momenteel modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64, wat we gebruiken voor deze zelf studie. 
 
-1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor rand**oplossing in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
+1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor de rand oplossing**in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
 
 2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard. 
 
@@ -212,14 +209,14 @@ In een echte Custom Vision-implementatie zou u een camera hebben die live afbeel
 
 In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe en geeft u code op om de gesimuleerde camera te maken. 
 
-1. In hetzelfde Visual Studio Code-venster gebruikt u het opdrachtenpalet om **Azure IoT Edge: Add IoT Edge Module** uit te voeren. Geef in het opdrachtenpalet de volgende informatie op voor uw nieuwe module: 
+1. In hetzelfde Visual Studio Code-venster gebruikt u het opdrachtenpalet om **Azure IoT Edge: IoT Edge-module toevoegen** uit te voeren. Geef in het opdrachtenpalet de volgende informatie op voor uw nieuwe module: 
 
-   | Vraag | Value | 
+   | Vraag | Waarde | 
    | ------ | ----- |
    | Implementatiesjabloonbestand selecteren | Selecteer het bestand deployment.template.json in de map CustomVisionSolution. |
    | Modulesjabloon selecteren | Selecteer **Python-module** |
    | Een modulenaam opgeven | Noem de module **cameraCapture** |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Vervang **localhost:5000** door de waarde van de aanmeldingsserver voor uw Azure-containerregister. De uiteindelijke tekenreeks ziet er als volgt uit: **\<registernaam\>.azurecr.io/cameracapture**. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Vervang **localhost:5000** door de waarde van de aanmeldingsserver voor uw Azure-containerregister.<br><br>De uiteindelijke tekenreeks ziet er als volgt uit: **\<registernaam\>.azurecr.io/cameracapture**. |
 
    De nieuwe module wordt in de oplossingswerkruimte van het VS Code-venster geladen en het bestand deployment.template.json wordt bijgewerkt. Nu moet u twee modulemappen zien: classificatie en cameraCapture. 
 
@@ -381,7 +378,7 @@ Wanneer de afbeeldingen in het register staan, kunt u de oplossing implementeren
 Eerst gaat u de oplossing bouwen en naar het containerregister pushen. 
 
 1. Klik in VS Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge solution**. U kunt de voortgang van deze bewerking bekijken in de in VS Code geïntegreerde terminal. 
-2. U ziet dat er een nieuwe map, **config**, is toegevoegd aan uw oplossing. Vouw deze map uit en open het bestand **deployment.json** in de map.
+2. U ziet dat er een nieuwe map is toegevoegd aan uw oplossing, **configuratie**. Vouw deze map uit en open het bestand **Implementation. json** in.
 3. Lees de informatie in het bestand deployment.json. Het bestand deployment.json wordt automatisch gemaakt (of bijgewerkt) op basis van het implementatiesjabloonbestand dat u hebt geconfigureerd en op basis van informatie uit de oplossing, zoals het .env-bestand en de module.json-bestanden. 
 
 Selecteer vervolgens uw apparaat en implementeer uw oplossing.

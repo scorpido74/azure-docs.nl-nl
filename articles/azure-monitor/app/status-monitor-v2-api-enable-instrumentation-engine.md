@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Instrumentatie-engine inschakelen | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Enable-InstrumentationEngine. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: 'Azure-toepassing Insights API-referentie voor agent: instrumentatie-engine inschakelen | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Enable-InstrumentationEngine. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033153"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388284"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Status Monitor v2-API: Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights agent-API: Enable-InstrumentationEngine
 
 In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 
 Hiermee schakelt u de instrumentatie-engine in door een aantal register sleutels in te stellen.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
@@ -51,12 +51,12 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Parameters
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Optioneel.** Gebruik deze schakel optie om de licentie en privacyverklaring in headless installaties te accepteren.
+**Beschrijving.** Gebruik deze schakel optie om de licentie en privacyverklaring in headless installaties te accepteren.
 
 ### <a name="-verbose"></a>-Verbose
 **Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Voorbeeld uitvoer van het inschakelen van de instrumentatie-engine
@@ -75,11 +75,11 @@ Configuring registry for instrumentation engine...
 - [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
  
  Meer telemetrie toevoegen:
- - [Maak](monitor-web-app-availability.md) webtests om ervoor te zorgen dat uw site actief blijft.
-- [Voeg](../../azure-monitor/app/javascript.md) de telemetrie van de webclient toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+ - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
+- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
 - [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
  
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
  - Stel [de configuratie](status-monitor-v2-api-get-config.md) in om te bevestigen dat de instellingen correct zijn geregistreerd.
  - [De status ophalen om de](status-monitor-v2-api-get-status.md) bewaking te controleren.

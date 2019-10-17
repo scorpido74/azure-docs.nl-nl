@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0d6c8b4dc94728e3b4943b6ed411ef3b47bb7a0
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99e3cbc157817321e41a273b2bcf31128d71db18
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300575"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431027"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,6 +120,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
+- 10/16/2019: verbroken koppelingen herstellen in [back-up en herstellen](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-backup-restore)
+- 10/16/2019: Wijzig het minimale aanbevolen besturings systeem van SLES 12 SP3 in SLES 12 SP4 in [hoge Beschik baarheid van IBM DB2 LUW op Azure-vm's op SuSE Linux Enterprise Server met pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
 - 10/11/2019: wijzigingen in de configuratie van ultra Disk Storage en de introductie van ANF in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: wijziging in grafische afbeeldingen van [Azure proximity-plaatsings groepen voor een optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om meer duidelijkheid te krijgen
 - 10/01/2019: wijziging in [configuratie van SAP Hana infrastructuur en-bewerkingen op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) om de instructies te corrigeren rond Maxi maal beschik bare NFS-share voor/Hana/Shared. 

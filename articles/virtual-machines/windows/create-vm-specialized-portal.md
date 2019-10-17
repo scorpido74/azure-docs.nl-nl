@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079647"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390492"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Een virtuele machine maken op basis van een VHD met behulp van de Azure Portal
 
 Er zijn verschillende manieren om een virtuele machine (VM) in azure te maken: 
 
-- Als u al een virtuele harde schijf (VHD) hebt die u kunt gebruiken of als u de VHD wilt kopiëren van een bestaande virtuele machine om te gebruiken, maakt u een nieuwe virtuele machine door de VHD aan de nieuwe virtuele machine toe te voegen als een besturingssysteem schijf. 
+- Als u al een virtuele harde schijf (VHD) hebt die u kunt gebruiken of als u de VHD wilt kopiëren van een bestaande virtuele machine om te gebruiken, maakt u een nieuwe virtuele machine door de VHD aan de nieuwe virtuele machine toe te *voegen* als een besturingssysteem schijf. 
 
 - U kunt een nieuwe virtuele machine maken op basis van de VHD van een virtuele machine die is verwijderd. Als u bijvoorbeeld een virtuele machine van Azure hebt die niet correct werkt, kunt u de virtuele machine verwijderen en de VHD gebruiken om een nieuwe virtuele machine te maken. U kunt dezelfde VHD opnieuw gebruiken of een kopie van de VHD maken door een moment opname te maken en vervolgens een nieuwe beheerde schijf te maken op basis van de moment opname. Hoewel het maken van een moment opname een paar stappen onderneemt, wordt de oorspronkelijke VHD bewaard en krijgt u een terugval.
 
@@ -34,6 +34,7 @@ Er zijn verschillende manieren om een virtuele machine (VM) in azure te maken:
 
 Gebruik geen gespecialiseerde schijf als u meerdere Vm's wilt maken. Maak in plaats daarvan [een installatie kopie](capture-image-resource.md) voor grotere implementaties en [gebruik vervolgens de installatie kopie om meerdere vm's te maken](create-vm-generalized-managed.md).
 
+We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines van één moment opname of VHD. 
 
 ## <a name="copy-a-disk"></a>Een schijf kopiëren
 
@@ -74,6 +75,7 @@ Nadat u de virtuele harde schijf hebt die u wilt gebruiken, kunt u de virtuele m
 10. Voeg op de pagina **gast configuratie** alle gewenste uitbrei dingen toe.
 11. Wanneer u klaar bent, selecteert u **controleren + maken**. 
 12. Als de VM-configuratie wordt gevalideerd, selecteert u **maken** om de implementatie te starten.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

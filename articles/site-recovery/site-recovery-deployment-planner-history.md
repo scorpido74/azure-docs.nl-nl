@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620112"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433408"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Geschiedenis van Azure Site Recovery Deployment Planner-versie
 
 In dit artikel vindt u een overzicht van alle versies van Azure Site Recovery Deployment Planner, samen met de oplossingen, bekende beperkingen in elke release-datum.
+
+## <a name="version-251"></a>Versie 2,51
+
+**Release datum: 22 augustus 2019**
+
+**Dit**
+
+- Het probleem met de kosten aanbeveling is opgelost met Deployment Planner versie 2,5
 
 ## <a name="version-25"></a>Versie 2,5
 
@@ -101,7 +109,7 @@ In dit artikel vindt u een overzicht van alle versies van Azure Site Recovery De
 
 **Bekende beperkingen:**
 
-- Voor Hyper-V naar Azure herstel na nood gevallen kan de VM een naam hebben die `,`de volgende `[`tekens `]`bevat: ``` ` ``` , `"`,, en niet wordt ondersteund. Als het rapport is profileeerd, mislukt het genereren van rapporten of heeft dit een onjuist resultaat.
+- Voor Hyper-V naar Azure herstel na nood gevallen wordt de VM met een naam die de volgende tekens bevat: `,`, `"`, `[`, `]` en ``` ` ``` niet ondersteund. Als het rapport is profileeerd, mislukt het genereren van rapporten of heeft dit een onjuist resultaat.
 - Voor de nood herstel van VMware naar Azure wordt de VM met een naam die een komma bevat niet ondersteund. Als het rapport is profileeerd, mislukt het genereren van rapporten of heeft dit een onjuist resultaat.
 
 ## <a name="version-131"></a>Versie 1.3.1

@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Instrumentatie-engine uitschakelen | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Disable-InstrumentationEngine. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: 'API-naslag informatie over Azure-toepassing Insights-agent: instrumentatie-engine uitschakelen | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Disable-InstrumentationEngine. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98f70a457b1e09f755a854a28cfd31a8fc9ee9f2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: aaf493b5f2075ead62087824773f21643a1246e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033177"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388310"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Status Monitor v2-API: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights agent-API: Disable-InstrumentationEngine
 
 In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 Hiermee schakelt u de instrumentatie-engine uit door enkele register sleutels te verwijderen.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
@@ -41,7 +41,7 @@ PS C:\> Disable-InstrumentationEngine
 ### <a name="-verbose"></a>-Verbose
 **Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 
 #### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Voorbeeld uitvoer van het uitschakelen van de instrumentatie-engine
@@ -57,5 +57,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .

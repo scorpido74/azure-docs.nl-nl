@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2018
+ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236043"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433169"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure SQL
 
@@ -65,7 +65,7 @@ Voor de volgende stap hebt u [Microsoft SQL Server Management Studio](https://do
 - [Universele verificatie met SQL Database en SQL Data Warehouse (SSMS-ondersteuning voor MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Azure Active Directory-verificatie configureren en beheren met SQL Database of SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
 
-Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-accounts, zoals gebruikers, groepen en service-principals (toepassingen), en VM-namen die voor een beheerde identiteit zijn ingeschakeld, voor wat betreft de weergavenamen uniek zijn gedefinieerd in AAD. SQL-database controleert de weergavenaam van de AAD tijdens het maken van dergelijke gebruikers T-SQL en als deze niet uniek is, mislukt de opdracht vraagt om een unieke AAD-weergavenaam voor een bepaald account invoeren.
+Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-accounts, zoals gebruikers, groepen en service-principals (toepassingen), en VM-namen die voor een beheerde identiteit zijn ingeschakeld, voor wat betreft de weergavenamen uniek zijn gedefinieerd in AAD. SQL DB controleert de AAD-weergave naam tijdens T-SQL-aanmaak van deze gebruikers en als deze niet uniek is, mislukt de opdracht om een unieke AAD-weergave naam op te geven voor een bepaald account.
 
 1. Start SQL Server Management Studio.
 2. Voer in het dialoogvenster **Verbinding maken met server** de naam van de SQL-server in het veld **Servernaam** in.
@@ -103,7 +103,7 @@ Code die wordt uitgevoerd op de VM kan nu een token verkrijgen via de door het s
 
 Azure SQL biedt systeemeigen ondersteuning voor Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources direct kunnen worden geaccepteerd. U gebruikt de toegangsmethode met het **toegangstoken** voor het maken van een verbinding met SQL. Dit maakt deel uit van de integratie van Azure SQL met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Hier volgt een voorbeeld van .NET-code van het openen van een verbinding met SQL met behulp van een toegangstoken. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET framework 4.6** of hoger is vereist voor het gebruik van de methode van de access-token. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. Houd er rekening mee de resource-ID voor Azure SQL is `https://database.windows.net/`.
+Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met SQL met behulp van een toegangs token. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET Framework 4,6** of hoger of **.net Core 2,2** of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. Houd er rekening mee dat de resource-ID voor Azure SQL `https://database.windows.net/` is.
 
 ```csharp
 using System.Net;

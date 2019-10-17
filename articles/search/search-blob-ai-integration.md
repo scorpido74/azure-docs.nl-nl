@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 5dc81f6e35f86c6dee77d44ff5c59c2657434a37
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376274"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434035"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>AI gebruiken voor het begrijpen van BLOB-gegevens
 
@@ -30,7 +30,7 @@ Met AI-verrijking maakt u nieuwe informatie, vastgelegd als tekst, opgeslagen in
 
 In dit artikel bekijken we AI-verrijking via een brede lens, zodat u snel het hele proces kunt begrijpt, van het transformeren van onbewerkte gegevens in blobs, naar Doorzoek bare gegevens in een zoek index of een kennis archief.
 
-## <a name="what-it-means-to-enrich-blob-data"></a>Wat betekent ' verrijkt ' BLOB-gegevens
+## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>Wat betekent ' verrijkt ' BLOB-gegevens met AI
 
 *AI-verrijking* maakt deel uit van de indexerings architectuur van Azure Search die ingebouwde AI integreert van micro soft of aangepaste AI die u opgeeft. Het helpt u bij het implementeren van end-to-end scenario's waarin u blobs moet verwerken (zowel bestaande als nieuwe, zoals deze worden geleverd of bijgewerkt), kraken alle bestands indelingen openen om afbeeldingen en tekst te extra heren, de gewenste informatie extra heren met behulp van verschillende AI-mogelijkheden en Indexeer ze in een Azure Search index voor snel zoeken, ophalen en verkennen. 
 
@@ -40,33 +40,37 @@ Output is altijd een Azure Search index, die wordt gebruikt voor het snel zoeken
 
 Tussen is de pijplijn architectuur zelf. De pijp lijn is gebaseerd op de *Indexeer* functie, waaraan u een *vaardig heden*kunt toewijzen. deze bestaat uit een of meer *vaardig heden* die de AI bieden. Het doel van de pijp lijn is om *verrijkte documenten* te produceren die als onbewerkte inhoud worden ingevoerd, maar extra structuur, context en informatie ophalen terwijl u door de pijp lijn beweegt. Verrijkte documenten worden tijdens de indexering gebruikt om omgekeerde indexen en andere structuren te maken die worden gebruikt voor Zoek opdrachten in volledige tekst of verkennen en analyses.
 
-## <a name="how-to-get-started"></a>Hoe gaat u aan de slag
+## <a name="start-with-services-and-data"></a>Beginnen met Services en gegevens
 
-U kunt rechtstreeks beginnen op de portal-pagina van uw opslag account. Klik op **Azure Search toevoegen** en maak een nieuwe Azure Search-service of selecteer een bestaand account. Als u al een bestaande zoek service in hetzelfde abonnement hebt, klikt u op **toevoegen Azure Search** opent u de wizard gegevens importeren, zodat u direct kunt door lopen met indexeren, verrijking en index definitie.
+U hebt Azure Search en Azure Blob-opslag nodig. In Blob Storage hebt u een container nodig die bron inhoud levert.
 
-Nadat u Azure Search aan uw opslag account hebt toegevoegd, kunt u het standaard proces volgen om gegevens in een Azure-gegevens bron te verrijken. Ervan uitgaande dat u al blob-inhoud hebt, kunt u de wizard gegevens importeren in Azure Search gebruiken voor een eenvoudige inleiding tot AI-verrijking. In deze Quick Start worden de stappen uitgelegd: [een AI-verrijkings pijplijn maken in de portal](cognitive-search-quickstart-blob.md). 
+U kunt rechtstreeks beginnen op de portal-pagina van uw opslag account. Klik in de linker navigatie pagina onder **BLOB service** op **Azure Search toevoegen** om een nieuwe service te maken of een bestaande te selecteren. 
+
+Nadat u Azure Search aan uw opslag account hebt toegevoegd, kunt u het standaard proces volgen om gegevens in een Azure-gegevens bron te verrijken. U wordt aangeraden de wizard **gegevens importeren** in azure Search te openen voor een eenvoudige inleiding tot AI-verrijking. Deze Snelstartgids begeleidt u stapsgewijs door de stappen: [een AI-pijp lijn maken in de portal](cognitive-search-quickstart-blob.md). 
 
 In de volgende secties gaan we meer onderdelen en concepten verkennen.
 
-## <a name="begin-with-blob-indexers"></a>Beginnen met Blob-Indexeer functies
+## <a name="use-a-blob-indexer"></a>Een BLOB-indexer gebruiken
 
-AI-verrijking is een invoeg toepassing voor een indexerings pijplijn en in Azure Search zijn deze pijp lijnen gebaseerd op een *Indexeer functie*. Een Indexeer functie is een subservice met gegevens bronnen die is voorzien van interne logica voor het bemonsteren van gegevens, het lezen van meta gegevens, het ophalen van gegevens en het serialiseren van gegevens van systeem eigen indelingen in JSON-documenten voor de volgende import. Indexeer functies worden vaak gebruikt voor importeren, gescheiden van AI, maar als u een AI-verrijkings pijplijn wilt maken, hebt u een Indexeer functie en een vakkennisset nodig om ermee te kunnen werken. In deze sectie wordt de nadruk gelegd op de Indexeer functie zelf.
+AI-verrijking is een invoeg toepassing voor een indexerings pijplijn en in Azure Search zijn deze pijp lijnen gebaseerd op een *Indexeer functie*. Een Indexeer functie is een subservice met gegevens bronnen die is voorzien van interne logica voor het bemonsteren van gegevens, het lezen van meta gegevens, het ophalen van gegevens en het serialiseren van gegevens van systeem eigen indelingen in JSON-documenten voor de volgende import. Indexeer functies worden vaak gebruikt voor importeren, gescheiden van AI, maar als u een AI-verrijkings pijplijn wilt maken, hebt u een Indexeer functie en een vakkennisset nodig om ermee te kunnen werken. In deze sectie wordt de Indexeer functie gemarkeerd. de volgende sectie richt zich op vaardig heden.
 
-Blobs in Azure Storage worden geïndexeerd met behulp van de [Azure Search Blob Storage-indexer](search-howto-indexing-azure-blob-storage.md). U roept deze Indexeer functie aan door het type in te stellen en door verbindings gegevens op te geven die een Azure Storage account bevatten samen met een BLOB-container. Tenzij u eerder blobs in een virtuele map hebt ingedeeld, die u vervolgens als een para meter kunt door geven, haalt de BLOB-Indexeer functie uit de hele container op.
+Blobs in Azure Storage worden geïndexeerd met behulp van de [Azure Search Blob Storage-indexer](search-howto-indexing-azure-blob-storage.md). U kunt deze Indexeer functie aanroepen met behulp van de wizard **gegevens importeren** , een rest API of de .NET SDK. In code gebruikt u deze Indexeer functie door het type in te stellen en door verbindings informatie op te geven die een Azure Storage account bevat samen met een BLOB-container. U kunt uw blobs samendeelnen door een virtuele map te maken, die u vervolgens kunt door geven als een para meter of door te filteren op een bestands extensie.
 
-Een Indexeer functie doet het ' document kraken ' en na het verbinden met de gegevens bron is de eerste stap in de pijp lijn. In het geval van BLOB-gegevens worden er PDF-, Office-docs-, afbeeldings-en andere inhouds typen gedetecteerd. Het kraken van documenten met tekst extractie wordt niet in rekening gebracht. Het kraken van documenten met afbeeldings extractie wordt in rekening gebracht tegen tarieven die u kunt vinden op de pagina met Azure Search [prijzen](https://azure.microsoft.com/pricing/details/search/).
+Een Indexeer functie voert het ' document kraken ' uit en opent een blob om inhoud te controleren. Nadat u verbinding hebt gemaakt met de gegevens bron, is de eerste stap in de pijp lijn. In het geval van BLOB-gegevens worden er PDF-, Office-docs-, afbeeldings-en andere inhouds typen gedetecteerd. Het kraken van documenten met tekst extractie wordt niet in rekening gebracht. Het kraken van documenten met afbeeldings extractie wordt in rekening gebracht tegen tarieven die u kunt vinden op de pagina met Azure Search [prijzen](https://azure.microsoft.com/pricing/details/search/).
 
-Hoewel alle documenten worden gekraakt, treedt er alleen uitgebreide verrijking op als u de vaardig heden expliciet opgeeft. Als uw pijp lijn bijvoorbeeld uitsluitend bestaat uit tekst analyse, worden afbeeldingen in uw container of documenten genegeerd.
+Hoewel alle documenten worden gekraakt, treedt er alleen uitgebreide verrijking op als u de vaardig heden expliciet opgeeft. Als uw pijp lijn bijvoorbeeld uitsluitend bestaat uit afbeeldings analyse, wordt tekst in uw container of documenten genegeerd.
 
 De BLOB-indexer wordt geleverd met configuratie parameters en biedt ondersteuning voor het bijhouden van wijzigingen als de onderliggende gegevens voldoende informatie bevatten. Meer informatie over de kern functionaliteit vindt u in [Azure Search Blob Storage indexer](search-howto-indexing-azure-blob-storage.md).
 
-## <a name="add-ai"></a>AI toevoegen
+## <a name="add-ai-components"></a>AI-onderdelen toevoegen
 
-*Vaardig heden* zijn de afzonderlijke onderdelen van AI-verwerking die u zelfstandig of in combi natie met andere vaardig heden kunt gebruiken voor sequentiële verwerking. 
+AI-verrijking verwijst naar modules die naar patronen of kenmerken zoeken en voert vervolgens een bewerking uit. Gezichts herkenning in Foto's, tekst beschrijvingen van Foto's, het detecteren van sleutel zinnen in een document en OCR (of het herkennen van gedrukte of handgeschreven tekst in binaire bestanden) zijn voor beelden van illustreren.
 
-+ Ingebouwde vaardig heden worden ondersteund door Cognitive Services, met afbeeldings analyse op basis van Computer Vision en de verwerking van natuurlijke taal op basis van Text Analytics. Enkele voor beelden hiervan zijn [OCR](cognitive-search-skill-ocr.md), [herkenning van entiteiten](cognitive-search-skill-entity-recognition.md)en [afbeeldings analyse](cognitive-search-skill-image-analysis.md). U kunt de volledige lijst met ingebouwde vaardig heden bekijken in [vooraf gedefinieerde vaardig heden voor inhouds verrijking](cognitive-search-predefined-skills.md).
+In Azure Search zijn *vaardig heden* de afzonderlijke onderdelen van AI-verwerking die u zelfstandig kunt gebruiken of in combi natie met andere vaardig heden. 
 
-+ Aangepaste vaardig heden zijn aangepaste code, verpakt in een interface definitie waarmee integratie kan worden geïntegreerd in de pijp lijn. In klant oplossingen is het gebruikelijk om beide te gebruiken met aangepaste vaardig heden, AI-modules van derden of van derden.
++ Ingebouwde vaardig heden worden ondersteund door Cognitive Services, met afbeeldings analyse op basis van Computer Vision en de verwerking van natuurlijke taal op basis van Text Analytics. U kunt de volledige lijst met ingebouwde vaardig heden bekijken in [vooraf gedefinieerde vaardig heden voor inhouds verrijking](cognitive-search-predefined-skills.md).
+
++ Aangepaste vaardig heden zijn aangepaste code, verpakt in een [interface definitie](cognitive-search-custom-skill-interface.md) waarmee integratie kan worden geïntegreerd in de pijp lijn. In klant oplossingen is het gebruikelijk om beide te gebruiken met aangepaste vaardig heden, AI-modules van derden of van derden.
 
 Een *vakkennisset* is de verzameling van de vaardig heden die worden gebruikt in een pijp lijn en deze wordt aangeroepen nadat de fase voor het kraken van het document de inhoud beschikbaar maakt. Een Indexeer functie kan precies één vaardig heden gebruiken, maar deze vaardig heden bestaan onafhankelijk van een indexer, zodat u deze in andere scenario's opnieuw kunt gebruiken.
 
@@ -90,9 +94,9 @@ For example, given a large blob of unstructured text, a sample order of operatio
 1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
 1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
-## <a name="how-to-use-ai-enriched-content"></a>AI-verrijkte inhoud gebruiken
+## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>AI-verrijkte uitvoer in downstream-oplossingen gebruiken
 
-De uitvoer van AI-verrijking is een zoek index op Azure Search of een Knowledge Store in Azure Storage.
+De uitvoer van AI-verrijking is een zoek index op Azure Search of een [Knowledge Store](knowledge-store-concept-intro.md) in azure Storage.
 
 In Azure Search wordt een zoek index gebruikt voor interactief verkennen met behulp van vrije tekst en gefilterde query's in een client-app. Verrijkte documenten die zijn gemaakt met AI, worden ingedeeld in JSON en geïndexeerd op dezelfde manier als alle documenten worden geïndexeerd in Azure Search, met alle voor delen van een Indexeer functie. Tijdens het indexeren verwijst de BLOB-Indexeer functie bijvoorbeeld naar configuratie parameters en-instellingen om eventuele veld toewijzingen of wijzigingen detectie logica te gebruiken. Deze instellingen zijn volledig beschikbaar voor reguliere indexering en AI-verrijkte workloads. Na het indexeren kunt u, wanneer inhoud wordt opgeslagen op Azure Search, uitgebreide query's bouwen en expressies filteren om inzicht te krijgen in de inhoud.
 

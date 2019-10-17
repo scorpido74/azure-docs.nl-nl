@@ -14,19 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 53d65d5577f8905d66da80e99cab6647f0a4dc4c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 65bd619a95b102c4ad4be57f1661a89fbae43e22
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025031"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388432"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Offlinesynchronisatie inschakelen voor uw mobiele Xamarin.Forms-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Xamarin. Forms geïntroduceerd. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app--gegevens weer geven, toevoegen of wijzigen, zelfs wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
@@ -45,7 +46,7 @@ De offline synchronisatie code is opgenomen in het project door preprocessor-ins
 3. Beschrijving Als u Windows-apparaten wilt ondersteunen, installeert u een van de volgende SQLite-runtime pakketten:
 
    * **Windows 8,1 runtime:** Installeer [sqlite voor Windows 8,1][3].
-   * **Windows Phone 8.1:** Installeer [sqlite voor Windows Phone 8,1][4].
+   * **Windows Phone 8,1:** Installeer [sqlite voor Windows Phone 8,1][4].
    * **Universeel Windows-platform** Installeer [sqlite voor de universele Windows Universal][5].
 
      Hoewel de Snelstartgids geen universeel Windows-project bevat, wordt het Universal Windows-platform ondersteund met Xamarin Forms.
@@ -154,7 +155,7 @@ In deze sectie verbindt u de app opnieuw met de mobiele back-end, waardoor de ap
 
     U ziet dat de gegevens zijn gesynchroniseerd tussen de data base en het lokale archief en de items bevat die u hebt toegevoegd toen de verbinding van uw app werd verbroken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Offlinesynchronisatie van gegevens in Azure Mobile Apps][2]
 * [PROCEDURE voor Azure Mobile Apps .NET SDK][8]
 

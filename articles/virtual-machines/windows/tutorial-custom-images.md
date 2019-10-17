@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350846"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390570"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure PowerShell
 
@@ -53,7 +53,7 @@ Voor het maken van een installatiekopie van een virtuele machine moet u de bron-
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>De Windows VM generaliseren met behulp van Sysprep
 
-Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Zie voor meer informatie over [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
+Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
 
 
 1. Maak verbinding met de virtuele machine.
@@ -134,6 +134,7 @@ New-AzVm `
 ```
 
 We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines uit één installatie kopie. Als u grootschalige, gelijktijdige implementaties van meer dan 20 Vm's van dezelfde aangepaste installatie kopie plant, moet u een galerie met [gedeelde afbeeldingen](shared-image-galleries.md) gebruiken met meerdere installatie kopieën van replica's. 
+
 
 ## <a name="image-management"></a>Installatiekopiebeheer 
 

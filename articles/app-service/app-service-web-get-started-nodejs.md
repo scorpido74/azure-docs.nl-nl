@@ -11,192 +11,194 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 09/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018497"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433198"
 ---
-# <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
+# <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure 
 
-> [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js-web-app maken en implementeren in Azure App Service onder Linux ](./containers/quickstart-nodejs.md) om een app te implementeren in App Service onder _Linux_.
->
-
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U maakt de web-app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), en gebruikt ZipDeploy om de voorbeeldcode van Node.js in de web-app te implementeren.
-
-![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
-
-U kunt de onderstaande stappen volgen met behulp van een Mac-, Windows- of Linux-computer. Vanaf het moment dat de vereiste onderdelen zijn geïnstalleerd, duurt het ongeveer vijf minuten om de stappen uit te voeren.   
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Azure App Service biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Als u nog geen Azure-account hebt, [meldt u zich vandaag](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) aan voor een gratis account met $200 in azure-tegoed om een wille keurige combi natie van services uit te proberen.
 
-* <a href="https://nodejs.org/" target="_blank">Node.js en NPM installeren</a>
+U moet [Visual Studio code](https://code.visualstudio.com/) installeren, samen met [node. js en NPM](https://nodejs.org/en/download), het node. js-pakket beheer.
 
-## <a name="download-the-sample"></a>Het voorbeeld downloaden
+U moet ook de [Azure app service-extensie](vscode:extension/ms-azuretools.vscode-azureappservice)installeren, die u kunt gebruiken voor het maken, beheren en implementeren van Linux-web apps op het Azure-Platform as a Service (PaaS).
 
-Download het Node.js-voorbeeldproject in [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) en pak het ZIP-archief uit.
+### <a name="sign-in"></a>Aanmelden
 
-Open _index.js_ en zoek de volgende regel:
+Nadat de extensie is geïnstalleerd, meldt u zich aan bij uw Azure-account. Selecteer op de activiteiten balk in het Azure-logo om de **Azure app service** Explorer weer te geven. Selecteer **Aanmelden bij Azure...** en volg de instructies.
 
-```javascript
-const port = process.env.PORT || 1337;
+![Aanmelden bij Azure](containers/media/quickstart-nodejs/sign-in.png)
+
+### <a name="troubleshooting"></a>Problemen oplossen
+
+Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY`-en `HTTPS_PROXY`-omgevings variabelen met uw proxy gegevens in uw Terminal met behulp van `export`.
+
+```sh
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-App Service vult de omgevings variabele, **process. env. Port**. Gebruik dit in uw toepassing, zodat de code weet welke poort moet worden geluisterd.
+Als het probleem niet wordt opgelost door de omgevings variabelen in te stellen, kunt u contact met ons opnemen door hieronder op de knop met **een probleem** te klikken.
 
-Navigeer in een Terminal venster naar de **hoofdmap** van het knoop punt. js-voorbeeld project (de map die _index. js_bevat).
+### <a name="prerequisite-check"></a>Controle van vereisten
 
-## <a name="run-the-app-locally"></a>De app lokaal uitvoeren
+Voordat u doorgaat, moet u ervoor zorgen dat alle vereiste onderdelen zijn geïnstalleerd en geconfigureerd.
 
-Voer de toepassing lokaal uit zodat u kunt zien hoe deze eruit ziet wanneer u de toepassing implementeert naar Azure. Open een terminalvenster en gebruik het script `npm start` om de ingebouwde Node.js HTTP-server te starten.
+In VS code ziet u uw Azure-e-mail adres in de status balk en uw abonnement in **Azure app service** Explorer.
+
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
+
+## <a name="create-your-nodejs-application"></a>Uw node. js-toepassing maken
+
+Maak vervolgens een node. js-toepassing die in de cloud kan worden geïmplementeerd. In deze Snelstartgids wordt een toepassings generator gebruikt om de toepassing snel uit te steigeren vanuit een Terminal.
+
+> [!TIP]
+> Als u de [node. js-zelf studie](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)al hebt voltooid, kunt u verder naar [Azure implementeren](#deploy-to-azure).
+
+### <a name="scaffold-a-new-application-with-the-express-generator"></a>Steiger een nieuwe toepassing met de Express-generator
+
+[Express](https://www.expressjs.com) is een populair Framework voor het bouwen en uitvoeren van node. js-toepassingen. U kunt een nieuwe Express-toepassing maken met behulp van het hulp programma [Express Generator](https://expressjs.com/en/starter/generator.html) . De Express-generator wordt geleverd als een NPM-module en kan direct worden uitgevoerd (zonder installatie) met behulp van het opdracht regel programma NPM `npx`.
+
+```bash
+npx express-generator myExpressApp --view pug --git
+```
+
+Met de para meters voor de `--view pug --git` wordt de generator verteld om de [Pug](https://pugjs.org/api/getting-started.html) -sjabloon Engine (voorheen bekend als `jade`) te gebruiken en om een `.gitignore`-bestand te maken.
+
+Als u alle afhankelijkheden van de toepassing wilt installeren, gaat u naar de nieuwe map en voert u `npm install` uit.
+
+```bash
+cd myExpressApp
+npm install
+```
+
+### <a name="run-the-application"></a>De toepassing uitvoeren
+
+Controleer vervolgens of de toepassing wordt uitgevoerd. Start vanuit de Terminal de toepassing met behulp van de `npm start`-opdracht om de server te starten.
 
 ```bash
 npm start
 ```
 
-Open een webbrowser en navigeer naar de voorbeeldapp op `http://localhost:1337`.
+Open nu uw browser en navigeer naar [http://localhost:3000](http://localhost:3000), waar u er ongeveer als volgt zou moeten uitzien:
 
-Het bericht **Hello World** uit de voorbeeld-app wordt weergegeven op de pagina.
+![Een Express-toepassing uitvoeren](containers/media/quickstart-nodejs/express.png)
 
-![Voorbeeld-app die lokaal wordt uitgevoerd](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
+## <a name="deploy-to-azure"></a>Implementatie in Azure
 
-> [!NOTE]
-> In Azure App Service wordt de app uitgevoerd in IIS met [iisnode](https://github.com/Azure/iisnode). Voor het uitvoeren van de app met iisnode staat er een web.config-bestand in de hoofdmap van de app. Dit bestand kan worden gelezen door IIS en de instellingen voor iisnode zijn beschreven in [de GitHub-opslagplaats voor iisnode](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config).
+In deze sectie implementeert u uw node. js-app met behulp van VS code en de uitbrei ding Azure App Service. Deze Snelstartgids maakt gebruik van het meest eenvoudige implementatie model waarin uw app is ingepakt en geïmplementeerd op een Azure Web App on Linux.
 
-## <a name="create-a-project-zip-file"></a>Een ZIP-bestand van het project maken
+### <a name="deploy-using-azure-app-service"></a>Implementeren met behulp van Azure App Service
 
-Zorg ervoor dat u zich nog steeds in de **hoofdmap** van het voorbeeld project bevindt (de map die _index. js_bevat). Maak een ZIP-archief van alle bestanden in uw project. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
-
-```
-# Bash
-zip -r myAppFiles.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath myAppFiles.zip
-```
-
-U kunt dit ZIP-bestand later uploaden naar Azure en dit implementeren in App Service.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-scus.md)] 
-
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)] 
-
-## <a name="create-a-web-app"></a>Een web-app maken
-
-Maak in Cloud Shell een web-app in het App Service-plan van `myAppServicePlan` met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
-
-Vervang in het volgende voorbeeld `<app_name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`).
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name>
-```
-
-Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in het volgende voorbeeld:
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="set-nodejs-runtime"></a>Node.js-runtime instellen
-
-Stel de Node-runtime in op 10.14.1. Voer [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit als u alle ondersteunde runtimes wilt zien.
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
-```
-
-Blader naar uw nieuwe web-app. Vervang `<app_name>` door een unieke app-naam.
+Open eerst de toepassingsmap in VS code.
 
 ```bash
-http://<app_name>.azurewebsites.net
+code .
 ```
 
-Zo zou uw nieuwe web-app er moeten uitzien:
+Selecteer in de Verkenner van **Azure app service** het pictogram met de blauwe pijl-omhoog om uw app te implementeren in Azure.
 
-![Lege pagina van web-app](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+![Implementeren naar web-app](containers/media/quickstart-nodejs/deploy.png)
 
-[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
+> [!TIP]
+> U kunt ook implementeren vanuit het **opdracht palet** (CTRL + SHIFT + P) door ' implementeren naar web-app ' te typen en de opdracht **Azure app service: implementeren op Web app** uit te voeren.
 
-## <a name="browse-to-the-app"></a>Bladeren naar de app
+1. Kies de map die momenteel is geopend, `myExpressApp`.
 
-Blader naar de geïmplementeerde toepassing via uw webbrowser.
+1. Kies een optie voor het maken op basis van het besturings systeem dat u wilt implementeren:
 
-```
-http://<app_name>.azurewebsites.net
-```
+    - Linux: Kies **nieuwe web-app maken**.
+    - Windows: Kies **nieuwe web-app maken... Geavanceerd**.
 
-De Node.js-voorbeeldcode wordt uitgevoerd in een web-app van Azure App Service.
+1. Typ een wereld wijd unieke naam voor de web-app en druk op ENTER. Geldige tekens voor de naam van een app zijn ' a-z ', ' 0-9 ' en '-'.
 
-![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
+1. Als u een Linux-doel groep hebt, selecteert u een node. js-versie wanneer u hierom wordt gevraagd. Een **LTS** -versie wordt aanbevolen.
 
-**Gefeliciteerd!** U hebt uw eerste Node.js-app geïmplementeerd in App Service.
+1. Volg de extra prompts bij het richten op Windows met de optie *Advanced**:
+    1. Selecteer **een nieuwe resource groep maken**en voer een naam in voor de resource groep.
+    1. Selecteer **Windows** voor het besturings systeem.
+    1. Selecteer een bestaand App Service plan of maak een nieuw abonnement. U kunt een prijs categorie selecteren bij het maken van een nieuw plan.
+    1. Kies overs **Laan nu** wanneer u wordt gevraagd over Application Insights.
+    1. Kies een regio bij u in de buurt of in de buurt van de resources die u wilt gebruiken.
 
-## <a name="update-and-redeploy-the-code"></a>De code bijwerken en opnieuw implementeren
+1. Nadat u op alle prompts hebt gereageerd, worden de Azure-resources die voor uw app worden gemaakt, weer gegeven in het meldings kanaal.
 
-Open met een teksteditor het bestand `index.js` binnen de Node.js-app en breng een kleine wijziging aan in de tekst in de aanroep naar `response.end`:
+1. Selecteer **Ja** wanneer u wordt gevraagd uw configuratie bij te werken om `npm install` op de doel server uit te voeren. De app wordt vervolgens geïmplementeerd.
 
-```javascript
-response.end("Hello Azure!");
-```
+    ![Geconfigureerde implementatie](containers/media/quickstart-nodejs/server-build.png)
 
-Ga in het lokale terminal venster naar de **hoofdmap** van uw toepassing (de map waarin _index. js_zich bevindt), maak een nieuw zip-bestand voor uw bijgewerkte project.
+1. Wanneer de implementatie wordt gestart, wordt u gevraagd om uw werk ruimte bij te werken zodat latere implementaties automatisch worden gericht op dezelfde App Service web-app. Kies **Ja** om te controleren of uw wijzigingen zijn geïmplementeerd naar de juiste app.
 
-```azurecli-interactive
-# Bash
-zip -r myUpdatedAppFiles.zip .
+    ![Geconfigureerde implementatie](containers/media/quickstart-nodejs/save-configuration.png)
 
-# PowerShell
-Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
-```
+> [!TIP]
+> Zorg ervoor dat uw toepassing luistert op de poort die is verschaft door de variabele poort omgeving: `process.env.PORT`.
 
-Implementeer dit nieuwe ZIP-bestand in App Service, met behulp van dezelfde stappen als bij [Het ZIP-bestand implementeren](#deploy-zip-file).
+### <a name="browse-the-app-in-azure"></a>Door de app in azure bladeren
 
-Ga terug naar het browservenster dat is geopend in de stap **Bladeren naar de app** en vernieuw de pagina.
+Zodra de implementatie is voltooid, selecteert u **Bladeren website** in de prompt om uw nieuw geïmplementeerde web-app weer te geven.
 
-![Bijgewerkte voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
+### <a name="troubleshooting"></a>Problemen oplossen
 
-## <a name="manage-your-new-azure-app"></a>Uw nieuwe Azure-app beheren
+Als u de fout **' u bent niet gemachtigd om deze map of pagina weer te geven '** ziet, kan de toepassing waarschijnlijk niet correct worden gestart. Kop naar de volgende sectie en bekijkt u de logboek uitvoer om de fout te vinden en op te lossen. Als u het niet kunt oplossen, neemt u contact met ons op door de onderstaande knop met **een probleem** te selecteren. We helpen u graag!
 
-Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren die u hebt gemaakt.
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
 
-Klik in het linkermenu op **App Services** en klik op de naam van uw Azure-app.
+### <a name="update-the-app"></a>De app bijwerken
 
-![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+U kunt wijzigingen in deze app implementeren door hetzelfde proces te gebruiken en de bestaande app te kiezen in plaats van een nieuwe te maken.
 
-De pagina Overzicht van uw web-app wordt weergegeven. Hier kunt u algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. 
+## <a name="viewing-logs"></a>Logboeken weer geven
 
-![App Service-pagina in Azure Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
+In deze sectie leert u hoe u de logboeken van de actieve App Service-app kunt weer geven (of ' staart '). Alle aanroepen naar `console.log` in de app worden weer gegeven in het venster uitvoer in Visual Studio code.
 
-Het linkermenu bevat een aantal pagina's voor het configureren van uw app. 
+Zoek de app in de **Azure app service** Explorer, klik met de rechter muisknop op de app en kies **streaming-logboeken weer geven**.
 
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+Wanneer u hierom wordt gevraagd, kiest u logboek registratie inschakelen en start u de toepassing opnieuw. Zodra de app opnieuw is opgestart, wordt het venster VS code uitvoer geopend met een verbinding met de logboek stroom.
+
+![Streaming-logboeken weer geven](containers/media/quickstart-nodejs/view-logs.png)
+
+![Logboek registratie inschakelen en opnieuw starten](containers/media/quickstart-nodejs/enable-restart.png)
+
+Na een paar seconden ziet u een bericht met de mede deling dat u bent verbonden met de service voor logboek registratie. Vernieuw de pagina enkele keren om meer activiteit weer te geven.
+
+    ```bash
+    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+    ```
+
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Node.js met MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+Gefeliciteerd, u hebt deze Snelstartgids voltooid.
+
+Bekijk vervolgens de andere Azure-extensies.
+
+* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Docker-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+* [Azure CLI-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Azure Resource Manager-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+
+U kunt ze ook downloaden door het [node Pack voor Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Extension Pack te installeren.

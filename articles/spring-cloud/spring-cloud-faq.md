@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039117"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433323"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -30,9 +30,9 @@ Azure lente Cloud verbetert de diagnostische ervaring van toepassingen voor ontw
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Welke service plannen biedt Azure lente-Cloud aanbieding?
 
-Azure lente-Cloud is gratis tijdens de preview-periode.
+Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.
 
-Resource | Aantal
+Bron | Bedrag
 ------- | -------
 vCPU | 4
 Geheugen | 8 GBytes

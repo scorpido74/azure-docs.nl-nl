@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079669"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390596"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken op basis van een gespecialiseerde schijf met behulp van Power shell
 
@@ -36,9 +36,9 @@ U kunt ook de Azure Portal gebruiken om [een nieuwe VM te maken op basis van een
 
 In dit artikel wordt beschreven hoe u beheerde schijven gebruikt. Zie [een virtuele machine maken op basis van een speciale VHD in een opslag account](sa-create-vm-specialized.md)als u een oudere implementatie hebt waarvoor een opslag account is vereist.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines vanaf één VHD of moment opname. 
 
-## <a name="option-1-use-an-existing-disk"></a>Optie 1: Een bestaande schijf gebruiken
+## <a name="option-1-use-an-existing-disk"></a>Optie 1: een bestaande schijf gebruiken
 
 Als u een virtuele machine hebt verwijderd en u de besturingssysteem schijf opnieuw wilt gebruiken om een nieuwe virtuele machine te maken, gebruikt u [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
 
@@ -51,7 +51,7 @@ $osDisk = Get-AzDisk `
 ```
 U kunt deze schijf nu als de besturingssysteem schijf aan een [nieuwe virtuele machine](#create-the-new-vm)koppelen.
 
-## <a name="option-2-upload-a-specialized-vhd"></a>Optie 2: Een gespecialiseerde VHD uploaden
+## <a name="option-2-upload-a-specialized-vhd"></a>Optie 2: een speciale VHD uploaden
 
 U kunt de VHD uploaden vanaf een gespecialiseerde virtuele machine die is gemaakt met een on-premises Virtualization tool, zoals Hyper-V, of een VM die is geëxporteerd uit een andere cloud.
 
@@ -102,7 +102,7 @@ Een opslagaccount maken.
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* geüpload van ' C:\Users\Public\Documents\Virtual harde\" schijven naar een opslag account met de naam *mystorageaccount* in de resource groep *myResourceGroup* . Het bestand wordt opgeslagen in de container met de naam *mycontainer* en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* van ' C:\Users\Public\Documents\Virtual hard disks @ no__t-1 ' geüpload naar een opslag account met de naam *Mystorageaccount* in de *myResourceGroup* -resource groep. Het bestand wordt opgeslagen in de container met de naam *mycontainer* en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -131,7 +131,7 @@ Het kan enige tijd duren voordat deze opdracht is voltooid, afhankelijk van uw n
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Een beheerde schijf maken op basis van de VHD
 
-Maak een beheerde schijf van de speciale VHD in uw opslag account met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk1* gebruikt voor de naam van de schijf, wordt de schijf in *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* *Standard_LRS* -opslag geplaatst en wordt gebruikt als de URI voor de bron-VHD.
+Maak een beheerde schijf van de speciale VHD in uw opslag account met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk1* gebruikt voor de naam van de schijf, wordt de schijf in *Standard_LRS* -opslag geplaatst en wordt *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI voor de bron-VHD gebruikt.
 
 Maak een nieuwe resource groep voor de nieuwe virtuele machine.
 
@@ -153,7 +153,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>Optie 3: Een bestaande virtuele machine van Azure kopiëren
+## <a name="option-3-copy-an-existing-azure-vm"></a>Optie 3: een bestaande virtuele machine van Azure kopiëren
 
 U kunt een kopie maken van een virtuele machine die gebruikmaakt van beheerde schijven door een moment opname van de virtuele machine uit te voeren en vervolgens met die moment opname een nieuwe beheerde schijf en een nieuwe virtuele machine te maken.
 
@@ -204,7 +204,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoog moet worden uitgevoerd, `-AccountType Premium_LRS` voegt u de para meter toe aan de opdracht New-AzSnapshotConfig. Met deze para meter wordt de moment opname gemaakt zodat deze wordt opgeslagen als Premium-beheerde schijf. Premium-Managed Disks zijn duurder dan standaard. Zorg er dus voor dat u Premium nodig hebt voordat u deze para meter gebruikt.
+Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoog moet worden uitgevoerd, voegt u de para meter `-AccountType Premium_LRS` toe aan de opdracht New-AzSnapshotConfig. Met deze para meter wordt de moment opname gemaakt zodat deze wordt opgeslagen als Premium-beheerde schijf. Premium-Managed Disks zijn duurder dan standaard. Zorg er dus voor dat u Premium nodig hebt voordat u deze para meter gebruikt.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Een nieuwe schijf maken op basis van de moment opname
 
@@ -353,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten.
+U ziet de zojuist gemaakte VM in de [Azure Portal](https://portal.azure.com) onder **Bladeren** > **virtuele machines**of met behulp van de volgende Power shell-opdrachten.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

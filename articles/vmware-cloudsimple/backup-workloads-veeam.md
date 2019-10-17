@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 930e482ab85113ac802932929fdbea358ee26035
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619597"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430850"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B & R
 
@@ -54,7 +54,7 @@ Voor omgevingen met minder dan 30 TB om een back-up te maken, raadt CloudSimple 
 
 * Veeam backup-server en proxy server zijn geïnstalleerd op dezelfde VM in de Privécloud.
 * Een op Linux gebaseerde primaire back-upopslagplaats in azure die is geconfigureerd als een doel voor back-uptaken.
-* `azcopy`wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` die wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Voor omgevingen met meer dan 30 TB om een back-up te maken, raadt CloudSimple de
 * Een proxy server per knoop punt in het vSAN-cluster, zoals aanbevolen door Veeam.
 * Op Windows gebaseerde primaire back-upopslagplaats in de Privécloud om vijf dagen aan gegevens in de cache te plaatsen voor snelle herstel bewerkingen.
 * Linux backup-opslag plaats in azure als doel voor het maken van back-uptaken voor een langere retentie van de duur. Deze opslag plaats moet worden geconfigureerd als een scale-out back-upopslagplaats.
-* `azcopy`wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` die wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-advanceddeployment.png)
 
@@ -88,15 +88,15 @@ In de volgende secties wordt beschreven hoe u een Veeam-back-upoplossing voor uw
 
 Het implementatie proces bestaat uit de volgende stappen:
 
-1. [vCenter-gebruikers interface: Infrastructuur services in uw Privécloud instellen](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
-2. [CloudSimple-portal: Particuliere Cloud netwerken instellen voor Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
-3. [CloudSimple-portal: Bevoegdheden escaleren](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure Portal: Uw virtuele netwerk verbinden met de Privécloud](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-5. [Azure Portal: Een back-upopslagplaats maken in azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-6. [Azure Portal: Azure Blob-opslag configureren voor het bewaren van lange termijn gegevens](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [vCenter-gebruikers interface van de Privécloud: Veeam B & R installeren](#vcenter-console-of-private-cloud-install-veeam-br)
-8. [Veeam-console: Veeam Backup & Recovery-software configureren](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [CloudSimple-portal: Bevoegdheden voor Veeam-toegang en de escalatie instellen](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
+1. [vCenter-gebruikers interface: infrastructuur services in uw Privécloud instellen](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [CloudSimple-portal: Stel particuliere Cloud netwerken in voor Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [CloudSimple portal: bevoegdheden escaleren](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure Portal: Verbind uw virtuele netwerk met de Privécloud](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure Portal: een back-upopslagplaats maken in azure](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+6. [Azure Portal: Azure Blob-opslag voor lange termijn gegevens retentie configureren](#configure-azure-blob-storage-for-long-term-data-retention)
+7. [vCenter-gebruikers interface van Privécloud: Installeer Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)
+8. [Veeam-console: Veeam-back-up configureren & herstel software](#veeam-console-install-veeam-backup-and-recovery-software)
+9. [CloudSimple-portal: Veeam-toegang en de bevoegdheden van de escalatie instellen](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
@@ -115,7 +115,7 @@ De volgende items zijn vereist tijdens de implementatie fase:
 * CIDR van het subnet dat moet worden toegewezen aan het back-upnetwerk
 * Veeam 9,5 U3 Installeer bare media (ISO) geüpload naar het vSAN-gegevens archief van de Privécloud
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter-gebruikers interface: Infrastructuur services in uw Privécloud instellen
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter-gebruikers interface: infrastructuur services in uw Privécloud instellen
 
 Configureer infrastructuur services in de Privécloud om eenvoudig uw workloads en hulpprogram ma's te beheren.
 
@@ -126,7 +126,7 @@ Configureer infrastructuur services in de Privécloud om eenvoudig uw workloads 
   * U wilt Azure AD gebruiken.
 * Als u IP-adressen wilt zoeken, IP-adres beheer en naamomzettingsservices voor uw workloads in de Privécloud, stelt u een DHCP-en DNS-server in, zoals wordt beschreven in [DNS-en DHCP-toepassingen en werk belastingen instellen in de privécloud van CloudSimple](dns-dhcp-setup.md).
 
-### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple-privécloud: Particuliere Cloud netwerken instellen voor Veeam
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple Privécloud: Stel een privé-Cloud netwerk in voor Veeam
 
 Open de CloudSimple-Portal om particuliere Cloud netwerken in te stellen voor de Veeam-oplossing.
 
@@ -136,11 +136,11 @@ Maak firewall regels tussen het subnet van het beheer en het back-upnetwerk om n
 
 De volgende tabel bevat een lijst met poorten.
 
-| Pictogram | Description | Pictogram | Description |
+| Diapictogram | Beschrijving | Diapictogram | Beschrijving |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Server  | vCenter  | HTTPS/TCP  | 443 |
 | Backup Server <br> *Vereist voor de implementatie van Veeam Backup &-replicatie onderdelen* | Back-upproxy  | TCP/UDP  | 135, 137 tot 139 en 445 |
-    | Backup Server   | DNS  | UDP  | 53  | 
+    | Backup Server   | DNS  | EDP  | 53  | 
     | Backup Server   | Server voor Veeam-update meldingen  | TCP  | 80  | 
     | Backup Server   | Veeam-licentie-update server  | TCP  | 443  | 
     | Back-upproxy   | vCenter |   |   | 
@@ -155,22 +155,22 @@ CloudSimple biedt standaard een 1 Gbps ExpressRoute-koppeling. Voor grotere omge
 
 Als u wilt door gaan met de installatie, hebt u de verificatie sleutel en peer-circuit-URI nodig en hebt u toegang tot uw Azure-abonnement.  Deze informatie is beschikbaar op de pagina Virtual Network verbinding in de CloudSimple-Portal. Zie voor instructies [informatie over peering voor Azure Virtual Network verkrijgen](virtual-network-connection.md)voor een CloudSimple-verbinding. [Neem contact op met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)als u problemen hebt met het verkrijgen van de informatie.
 
-### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple-privécloud: Bevoegdheden voor cloudowner escaleren
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple Private Cloud: bevoegdheden voor cloudowner escaleren
 
-De standaard gebruiker ' cloudowner ' heeft niet voldoende bevoegdheden in de Privécloud van de cloud om VEEAM te installeren, dus de vCenter-bevoegdheden van de gebruiker moeten worden geëscaleerd. Zie [bevoegdheden](escalate-private-cloud-privileges.md)voor escalatie voor meer informatie.
+De standaard gebruiker ' cloudowner ' heeft niet voldoende bevoegdheden in de Privécloud van de cloud om VEEAM te installeren, dus de vCenter-bevoegdheden van de gebruiker moeten worden geëscaleerd. Zie [bevoegdheden voor escalatie](escalate-private-cloud-privileges.md)voor meer informatie.
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: Uw virtuele netwerk verbinden met de Privécloud
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: Verbind uw virtuele netwerk met de Privécloud
 
-Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Virtual Network-verbinding](azure-expressroute-connection.md)te volgen met behulp van ExpressRoute.
+Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Virtual Network-verbinding te volgen met behulp van ExpressRoute](azure-expressroute-connection.md).
 
-### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: Een back-up maken van een opslag plaats-VM
+### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: een back-up maken van de opslag plaats-VM
 
 1. Maak een Standard D2-v3-VM met (2 Vcpu's en 8 GB geheugen).
 2. Selecteer de installatie kopie op basis van CentOS 7,4.
 3. Een netwerk beveiligings groep (NSG) configureren voor de virtuele machine. Controleer of de virtuele machine geen openbaar IP-adres heeft en niet bereikbaar is vanaf het open bare Internet.
 4. Maak een gebruikers naam en wacht woord op basis van het account voor de nieuwe virtuele machine. Zie [een virtuele Linux-machine maken in de Azure Portal](../virtual-machines/linux/quick-create-portal.md)voor instructies.
 5. Maak een standaard HDD van 1x512 GiB en koppel deze aan de opslag plaats-VM.  Zie [How to attach a Managed Data Disk to a Windows VM in the Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)voor instructies.
-6. [Maak een xfs-volume op de beheerde schijf](https://www.digitalocean.com/docs/volumes/how-to/format-and-mount). Meld u aan bij de virtuele machine met behulp van de eerder genoemde referenties. Voer het volgende script uit om een logisch volume te maken, voeg de schijf hieraan toe, maak een XFS-bestandssysteem partitie en koppel de partitie onder het pad/backup1.
+6. [Maak een xfs-volume op de beheerde schijf](https://www.digitalocean.com/docs/volumes/how-to/). Meld u aan bij de virtuele machine met behulp van de eerder genoemde referenties. Voer het volgende script uit om een logisch volume te maken, voeg de schijf hieraan toe, maak een XFS-bestandssysteem [partitie](https://www.digitalocean.com/docs/volumes/how-to/partition/) en [koppel](https://www.digitalocean.com/docs/volumes/how-to/mount/) de partitie onder het pad/backup1.
 
     Voorbeeld script:
 
@@ -196,7 +196,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
 
 1. Maak een opslag account voor algemeen gebruik (GPv2) van het standaard type en een BLOB-container zoals beschreven in de micro soft video [aan de slag met Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage).
 2. Maak een Azure storage-container, zoals beschreven in de verwijzing [Create container](https://docs.microsoft.com/rest/api/storageservices/create-container) .
-2. Down load `azcopy` het opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
+2. Down load het `azcopy`-opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,9 +206,9 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
     sudo yum -y install icu
     ```
 
-3. Gebruik de `azcopy` opdracht voor het kopiëren van back-upbestanden naar en van de BLOB-container.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-linux.md) voor gedetailleerde opdrachten.
+3. Gebruik de `azcopy` opdracht om back-upbestanden van en naar de BLOB-container te kopiëren.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-linux.md) voor gedetailleerde opdrachten.
 
-### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-console van Privécloud: Veeam B & R installeren
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-console van Privécloud: Installeer Veeam B & R
 
 Toegang tot vCenter vanuit uw Privécloud voor het maken van een Veeam-service account, het installeren van Veeam B & R 9,5 en het configureren van Veeam met behulp van het service account.
 
@@ -218,17 +218,17 @@ Toegang tot vCenter vanuit uw Privécloud voor het maken van een Veeam-service a
 
     ![Een Veeam-service account maken](media/veeam-vcenter01.png)
 
-4. Maak een gedistribueerde poort groep in vCenter met behulp van het netwerk-VLAN van de back-up. Bekijk voor meer informatie de VMware-video die [een gedistribueerde poort groep maakt in de vSphere](https://www.youtube.com/watch?v=wpCd5ZbPOpA)-webclient.
-5. Maak de Vm's voor de Veeam-back-up en proxy servers in vCenter conform de [Veeam-systeem vereisten](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). U kunt Windows 2012 R2 of Linux gebruiken. Zie [vereisten voor het gebruik van Linux-back-](https://www.veeam.com/kb2216)upopslagplaatsen voor meer informatie.
+4. Maak een gedistribueerde poort groep in vCenter met behulp van het netwerk-VLAN van de back-up. Bekijk voor meer informatie de VMware-video die [een gedistribueerde poort groep maakt in de vSphere-webclient](https://www.youtube.com/watch?v=wpCd5ZbPOpA).
+5. Maak de Vm's voor de Veeam-back-up en proxy servers in vCenter conform de [Veeam-systeem vereisten](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). U kunt Windows 2012 R2 of Linux gebruiken. Zie [vereisten voor het gebruik van Linux-back-upopslagplaatsen](https://www.veeam.com/kb2216)voor meer informatie.
 6. Koppel de Installeer bare Veeam ISO als een cd-romstation in de VM van de Veeam-back-upserver.
 7. Als u een RDP-sessie naar de Windows 2012 R2-computer (het doel voor de Veeam-installatie) wilt, [installeert u Veeam B & R 9.5 U3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) in een Windows 2012 R2-VM.
 8. Zoek het interne IP-adres van de Veeam-back-upserver-VM en configureer het IP-adres als statisch in de DHCP-server. De exacte stappen die vereist zijn om dit te doen, zijn afhankelijk van de DHCP-server. In het geval van een Netgate <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">-artikel statische DHCP-toewijzingen</a> wordt uitgelegd hoe u een DHCP-server configureert met een pfSense-router.
 
-### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam-console: Veeam back-up-en herstel software installeren
+### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam-console: Veeam-back-up en herstel software installeren
 
 Configureer met behulp van de Veeam-console Veeam-back-up en herstel software. Zie [Veeam Backup & Replication v9-Installation and Deployment](https://www.youtube.com/watch?v=b4BqC_WXARk)(Engelstalig) voor meer informatie.
 
-1. Voeg VMware vSphere toe als een beheerde server omgeving. Geef desgevraagd de referenties op van het Veeam-service account dat u hebt gemaakt aan het begin [van de vCenter-console van de privécloud: Installeer Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br).
+1. Voeg VMware vSphere toe als een beheerde server omgeving. Geef desgevraagd de referenties op van het Veeam-service account dat u hebt gemaakt aan het begin van de [vCenter-console van de privécloud: Installeer Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br).
 
     * Gebruik de standaard instellingen voor laad beheer en standaard geavanceerde instellingen.
     * Stel de locatie van de koppelings server in als de back-upserver.
@@ -240,7 +240,7 @@ Configureer met behulp van de Veeam-console Veeam-back-up en herstel software. Z
     * Stel de locatie van de koppelings server in als de back-upserver.
     * Wijzig de back-uplocatie voor de configuratie van de Veeam-server in de externe opslag plaats.
 
-3. Versleuteling van configuratie back-up inschakelen met back-upinstellingen voor de configuratie van de **Home->** .
+3. Versleuteling van configuratie back-up inschakelen met **back-upinstellingen voor de configuratie van de Home->** .
 
 4. Voeg een Windows Server-VM toe als een proxy server voor VMware-omgeving. Met behulp van ' Traffic Rules ' voor een proxy, versleutelt u de back-upgegevens via de kabel.
 
@@ -253,18 +253,18 @@ Configureer met behulp van de Veeam-console Veeam-back-up en herstel software. Z
     * Als u back-uptaken wilt configureren, volgt u de instructies in de video [maken van een back-upkopie taak](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s).
     * Schakel versleuteling van back-upbestanden onder **Geavanceerde instellingen > opslag**in.
 
-### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple-portal: Bevoegdheden voor Veeam-toegang en de escalatie instellen
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple-portal: Veeam-toegang en de bevoegdheden van de escalatie instellen
 Maak een openbaar IP-adres voor de Veeam-back-up en herstel server. Zie [Public IP-adressen toewijzen](public-ips.md)voor instructies.
 
 Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande verbinding te maken met de Veeam-website voor het downloaden van updates/patches op TCP-poort 80. Zie [firewall tabellen en-regels instellen](firewall.md)voor instructies.
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 
-* [Een Privécloud maken](create-private-cloud.md)
+* [Een privécloud maken](create-private-cloud.md)
 * [VLAN'S/subnetten maken en beheren](create-vlan-subnet.md)
 * [vCenter-identiteits bronnen](set-vcenter-identity.md)
 * [DNS en DHCP-installatie van workload](dns-dhcp-setup.md)
@@ -298,7 +298,7 @@ Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](
 
 * [Een gedistribueerde poort groep maken in de vSphere-webclient-video](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
 
-### <a name="other-references"></a>Verwijzingen naar andere
+### <a name="other-references"></a>Andere verwijzingen
 
 * [Een XFS-volume maken op de beheerde schijf-RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [Een NFS-koppeling instellen op CentOS 7-HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)

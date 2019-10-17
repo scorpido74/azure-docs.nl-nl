@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a17d98d49d2c653e2498a663829d26e8a171fd74
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727062"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433506"
 ---
 # <a name="azure-infrastructure-security"></a>Azure-infrastructuur beveiliging
 Microsoft Azure wordt uitgevoerd in data centers die worden beheerd en beheerd door micro soft. Deze geografisch verspreide data centers voldoen aan de belangrijkste industrie normen, zoals ISO/IEC 27001:2013 en NIST SP 800-53, voor beveiliging en betrouw baarheid. De data centers worden beheerd, bewaakt en beheerd door micro soft-werk personeel. De werk nemers hebben jaren ervaring met het leveren van de grootste onlineservices ter wereld met een continuïteit van 24 x 7.
@@ -45,12 +45,12 @@ Het is belang rijk om inzicht te krijgen in de verantwoordelijkheid tussen u en 
 
 U bent altijd verantwoordelijk voor het volgende, ongeacht het type implementatie:
 
-- Data
+- Gegevens
 - Eindpunten
 - Account
-- Toegangs beheer
+- Toegangsbeheer
 
-Zorg ervoor dat u bekend bent met de verantwoordelijkheid van de verantwoordelijkheden tussen u en micro soft in een SaaS-, PaaS-en IaaS-implementatie. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)voor meer informatie.
+Zorg ervoor dat u bekend bent met de verantwoordelijkheid van de verantwoordelijkheden tussen u en micro soft in een SaaS-, PaaS-en IaaS-implementatie. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over wat micro soft doet bij het beveiligen van de Azure-infra structuur:

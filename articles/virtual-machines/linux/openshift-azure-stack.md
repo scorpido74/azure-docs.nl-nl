@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082599"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390652"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Open Shift container platform of OKD implementeren in Azure Stack
 
@@ -45,7 +45,7 @@ Als u de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (
 ```
 
 Voor alle opties is een Red Hat-abonnement vereist. Tijdens de implementatie wordt het Red Hat Enterprise Linux-exemplaar geregistreerd bij het Red Hat-abonnement en gekoppeld aan de groeps-ID die de rechten voor open Shift container platform bevat.
-Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt ook een activerings sleutel, organisatie-ID en groeps-ID gebruiken.  U kunt deze informatie controleren door u aan te https://access.redhat.com melden bij.
+Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt ook een activerings sleutel, organisatie-ID en groeps-ID gebruiken.  U kunt deze informatie controleren door u aan te melden bij https://access.redhat.com.
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack vereisten
 
@@ -66,9 +66,9 @@ Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
 - Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
 - RHEL-afbeeldings verwijzing (variabele in azuredeploy. json)
 
-Voor de stappen voor de implementatie met behulp van de Azure CLI, volgt u de toepasselijke sectie in het gedeelte open [SHIFT container platform](./openshift-container-platform.md) of de sectie [OKD](./openshift-okd.md) .
+Voor de stappen voor de implementatie met behulp van de Azure CLI, volgt u de toepasselijke sectie in het gedeelte open [SHIFT container platform](./openshift-container-platform-3x.md) of de sectie [OKD](./openshift-okd.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Taken na de implementatie](./openshift-post-deployment.md)
-- [Problemen met openshift-implementatie in azure oplossen](./openshift-troubleshooting.md)
+- [Taken na de implementatie](./openshift-container-platform-3x-post-deployment.md)
+- [Problemen met openshift-implementatie in azure oplossen](./openshift-container-platform-3x-troubleshooting.md)

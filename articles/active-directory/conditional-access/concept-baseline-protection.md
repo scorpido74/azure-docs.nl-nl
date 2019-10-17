@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533068"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430344"
 ---
 # <a name="what-are-baseline-policies"></a>Wat zijn basislijn beleidsregels?
 
@@ -28,29 +28,29 @@ Voor het beheren van het aangepaste beleid voor voorwaardelijke toegang is een A
 
 ![Basis beleid voor voorwaardelijke toegang in de Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-Er zijn vier beleids regels voor de basis lijn die door organisaties kunnen worden ingeschakeld:
+Er zijn vier beleids regels voor de basis lijn:
 
-* [MFA vereisen voor beheerders (preview-versie)](howto-baseline-protect-administrators.md)
-* [Beveiliging van eind gebruikers (preview-versie)](howto-baseline-protect-end-users.md)
-* [Verouderde verificatie blok keren (preview-versie)](howto-baseline-protect-legacy-auth.md)
-* [MFA vereisen voor Service beheer (preview-versie)](howto-baseline-protect-azure.md)
+* MFA vereisen voor beheerders (preview-versie)
+* Beveiliging van eind gebruikers (preview-versie)
+* Verouderde verificatie blok keren (preview-versie)
+* MFA vereisen voor Service beheer (preview-versie)
 
 Deze vier van deze beleids regels zijn van invloed op oudere verificatie stromen, zoals POP-, IMAP-en oudere bureau blad-clients.
 
 ### <a name="require-mfa-for-admins-preview"></a>MFA vereisen voor beheerders (preview-versie)
 
-Als gevolg van de kracht en toegang die beheerders accounts hebben, moet u deze met speciale zorg behandelen. Een gemeen schappelijke methode voor het verbeteren van de beveiliging van geprivilegieerde accounts is om een sterkere vorm van account verificatie te vereisen wanneer deze worden gebruikt om u aan te melden. In Azure Active Directory kunt u een sterkere account verificatie verkrijgen door te vereisen dat beheerders zich registreren voor en Azure multi-factor Authentication gebruiken.
+Als gevolg van de kracht en toegang die beheerders accounts hebben, moet u deze met speciale zorg behandelen. Een gemeen schappelijke methode voor het verbeteren van de beveiliging van geprivilegieerde accounts is om een sterkere vorm van account verificatie te vereisen wanneer deze worden gebruikt om u aan te melden. In Azure Active Directory kunt u een sterkere account verificatie verkrijgen door te vereisen dat beheerders zich registreren voor en Azure Multi-Factor Authentication gebruiken.
 
-[MFA vereisen voor beheerders (preview)](howto-baseline-protect-administrators.md) is een basislijn beleid waarvoor multi-factor Authentication (MFA) is vereist voor de volgende Directory rollen, gezien als de meest Privilegede Azure AD-rollen:
+MFA vereisen voor beheerders (preview) is een basislijn beleid waarvoor multi-factor Authentication (MFA) is vereist voor de volgende Directory rollen, gezien als de meest privilegede Azure AD-rollen:
 
 * Globale beheerder
 * SharePoint-beheerder
 * Exchange-beheerder
-* Beheerder voor voorwaardelijke toegang
+* Beheerder van voorwaardelijke toegang
 * Beveiligingsbeheerder
 * Helpdesk beheerder/wachtwoord beheerder
 * Factureringsbeheerder
-* Gebruikersbeheerder
+* Gebruikers beheerder
 
 Als uw organisatie deze accounts in gebruik heeft in scripts of code, kunt u overwegen deze te vervangen door [beheerde identiteiten](../managed-identities-azure-resources/overview.md).
 
@@ -58,7 +58,7 @@ Als uw organisatie deze accounts in gebruik heeft in scripts of code, kunt u ove
 
 Beheerders met een hoge bevoegdheid zijn niet de enige die zijn gericht op aanvallen. Ongeldige actors richten zich vaak op op normale gebruikers. Na het verkrijgen van de toegang, kunnen deze beschadigde actors namens de houder van het oorspronkelijke account toegang tot bevoegde informatie vragen of de volledige directory downloaden en een phishing-aanval uitvoeren op uw hele organisatie. Een gemeen schappelijke methode voor het verbeteren van de beveiliging van alle gebruikers is het vereisen van een sterkere vorm van account verificatie wanneer een Risk ante aanmelding wordt gedetecteerd.
 
-**Beveiliging van eind gebruikers (preview)** is een basislijn beleid waarmee alle gebruikers in een directory worden beveiligd. Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure multi-factor Authentication. Zodra de registratie is geregistreerd, worden gebruikers alleen om MFA gevraagd tijdens het aanmelden met een Risk ante poging. Gebruikers accounts die zijn aangetast, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico zijn afgebroken. 
+**Beveiliging van eind gebruikers (preview)** is een basislijn beleid waarmee alle gebruikers in een directory worden beveiligd. Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure Multi-Factor Authentication. Zodra de registratie is geregistreerd, worden gebruikers alleen om MFA gevraagd tijdens het aanmelden met een Risk ante poging. Gebruikers accounts die zijn aangetast, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico zijn afgebroken. 
 
 [!NOTE]
 Gebruikers die eerder zijn gemarkeerd voor risico, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico op beleids activering.
@@ -77,29 +77,16 @@ Organisaties gebruiken verschillende Azure-Services en beheren ze via Azure Reso
 
 * Azure Portal
 * Azure PowerShell
-* Azure-CLI
+* Azure CLI
 
 Het gebruik van een van deze hulpprogram ma's voor het uitvoeren van resource beheer is een zeer geprivilegieerde actie. Deze hulpprogram ma's kunnen configuratie-brede configuraties wijzigen, zoals service-instellingen en abonnements facturering.
 
 Voor het beveiligen van geprivilegieerde acties moet voor het beleid **MFA voor Service Management (preview-versie)** multi-factor Authentication worden vereist voor gebruikers die toegang hebben tot Azure Portal, Azure PowerShell of Azure cli.
 
-## <a name="enable-a-baseline-policy"></a>Een basislijn beleid inschakelen
-
-Een basislijn beleid inschakelen:
-
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **voorwaardelijke toegang**.
-1. Selecteer in de lijst met beleids regels een basislijn beleid dat u wilt inschakelen.
-1. Stel **beleid inschakelen** op aan **in**.
-1. Klik op Opslaan.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor meer informatie:
 
+* [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 * [Vijf stappen voor het beveiligen van uw identiteits infrastructuur](../../security/fundamentals/steps-secure-identity.md)
 * [Wat is voorwaardelijke toegang in Azure Active Directory?](overview.md)
-* [MFA vereisen voor beheerders (preview-versie)](howto-baseline-protect-administrators.md)
-* [Beveiliging van eind gebruikers (preview-versie)](howto-baseline-protect-end-users.md)
-* [Verouderde verificatie blok keren (preview-versie)](howto-baseline-protect-legacy-auth.md)
-* [MFA vereisen voor Service beheer (preview-versie)](howto-baseline-protect-azure.md)

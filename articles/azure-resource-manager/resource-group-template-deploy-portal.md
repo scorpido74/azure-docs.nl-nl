@@ -1,133 +1,133 @@
 ---
-title: Azure portal gebruiken voor het implementeren van Azure-resources | Microsoft Docs
-description: Azure-portal en Azure Resource Manager gebruiken om uw resources te implementeren.
+title: Azure Portal gebruiken om Azure-resources te implementeren | Microsoft Docs
+description: Gebruik Azure Portal en Azure resource Manage om uw resources te implementeren in een resource groep in uw abonnement.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: a171d9b4f054c942eebb08e7e11dd1164545f408
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460348"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390353"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resources implementeren met Resource Manager-sjablonen en Azure Portal
 
-Meer informatie over het gebruik van de [Azure-portal](https://portal.azure.com) met [Azure Resource Manager](resource-group-overview.md) implementeren van uw Azure-resources. Zie voor meer informatie over het beheren van uw resources, [Azure-resources beheren met behulp van de Azure-portal](manage-resources-portal.md).
+Meer informatie over het gebruik van de [Azure Portal](https://portal.azure.com) met [Azure Resource Manager](resource-group-overview.md) voor het implementeren van uw Azure-resources. Zie [Azure-resources beheren met behulp van de Azure Portal](manage-resources-portal.md)voor meer informatie over het beheren van uw resources.
 
-Azure-resources implementeren met behulp van de Azure-portal meestal bestaat uit twee stappen:
+Het implementeren van Azure-resources met behulp van de Azure Portal omvat meestal twee stappen:
 
 - Maak een resourcegroep.
-- Resources implementeren op de resourcegroep.
+- Resources implementeren in de resource groep.
 
-Bovendien kunt u ook een Azure Resource Manager-sjabloon voor het maken van Azure-resources implementeren.
+Daarnaast kunt u ook een Azure Resource Manager-sjabloon implementeren om Azure-resources te maken.
 
-In dit artikel ziet u beide methoden.
+In dit artikel worden beide methoden weer gegeven.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-1. Voor het maken van een nieuwe resourcegroep selecteert **resourcegroepen** uit de [Azure-portal](https://portal.azure.com).
+1. Als u een nieuwe resource groep wilt maken, selecteert u **resource groepen** uit het [Azure Portal](https://portal.azure.com).
 
-   ![Resourcegroepen selecteren](./media/resource-group-template-deploy-portal/select-resource-groups.png)
+   ![Resource groepen selecteren](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
-1. Selecteer onder de resourcegroepen, **toevoegen**.
+1. Selecteer onder resource groepen de optie **toevoegen**.
 
-   ![resourcegroep toevoegen](./media/resource-group-template-deploy-portal/add-resource-group.png)
+   ![Resource groep toevoegen](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
-1. Selecteer of Voer de waarden van de volgende eigenschappen:
+1. Selecteer of voer de volgende eigenschaps waarden in:
 
-    - **Abonnement**: Selecteer een Azure-abonnement.
-    - **Resourcegroep**: De resourcegroep een naam geven.
-    - **Regio**: Geef een Azure-locatie. Dit is waar de resourcegroep slaat metagegevens op over de resources. Om wettelijke redenen, kunt u opgeven waar de metagegevens worden opgeslagen. In het algemeen is het raadzaam dat u opgeeft dat een locatie waar de meeste van uw resources worden opgeslagen. Met behulp van dezelfde locatie bevinden, kan de sjabloon vereenvoudigen.
+    - **Subscription**: selecteer een Azure-abonnement.
+    - **Resource groep**: Geef de resource groep een naam.
+    - **Regio**: een Azure-locatie opgeven. Dit is de plaats waar de resource groep meta gegevens over de resources opslaat. Voor nalevings redenen wilt u mogelijk opgeven waar de meta gegevens worden opgeslagen. Over het algemeen is het raadzaam om een locatie op te geven waar de meeste resources zich bevinden. Met dezelfde locatie kan uw sjabloon worden vereenvoudigd.
 
-   ![Waarden instellen](./media/resource-group-template-deploy-portal/set-group-properties.png)
+   ![Groeps waarden instellen](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
 1. Selecteer **Controleren + maken**.
-1. Bekijk de waarden en selecteer vervolgens **maken**.
-1. Selecteer **vernieuwen** voordat u de nieuwe resourcegroep in de lijst kunt zien.
+1. Controleer de waarden en selecteer vervolgens **maken**.
+1. Selecteer **vernieuwen** voordat u de nieuwe resource groep in de lijst kunt zien.
 
-## <a name="deploy-resources-to-a-resource-group"></a>Resources implementeren op een resourcegroep
+## <a name="deploy-resources-to-a-resource-group"></a>Resources implementeren in een resource groep
 
-Nadat u een resourcegroep hebt gemaakt, kunt u resources aan de groep implementeren vanuit de Marketplace. De Marketplace biedt vooraf gedefinieerde oplossingen voor algemene scenario's.
+Nadat u een resource groep hebt gemaakt, kunt u resources in de groep implementeren vanuit de Marketplace. Marketplace biedt vooraf gedefinieerde oplossingen voor veelvoorkomende scenario's.
 
-1. Selecteer eerst een implementatie **een resource maken** uit de [Azure-portal](https://portal.azure.com).
+1. Als u een implementatie wilt starten, selecteert u **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
 
    ![Nieuwe resource](./media/resource-group-template-deploy-portal/new-resources.png)
 
-1. Zoek het type resource dat u wilt implementeren. De resources zijn ingedeeld in categorieën. Als er geen de bepaalde oplossing die u wilt implementeren, kunt u de Marketplace voor het zoeken. De volgende schermafbeelding ziet u dat de Ubuntu-Server is geselecteerd.
+1. Zoek het type resource dat u wilt implementeren. De resources zijn ingedeeld in categorieën. Als u de specifieke oplossing die u wilt implementeren niet ziet, kunt u de Marketplace hiervoor doorzoeken. Op de volgende scherm afbeelding ziet u dat de Ubuntu-Server is geselecteerd.
 
-   ![Resourcetype selecteren](./media/resource-group-template-deploy-portal/select-resource-type.png)
+   ![Resource type selecteren](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. Afhankelijk van het type geselecteerde bron hebt u een verzameling relevante eigenschappen om in te stellen vóór de implementatie. U moet een doelresourcegroep selecteren voor alle typen. De volgende afbeelding ziet u hoe u een Linux-machine maken en deze implementeren in de resourcegroep die u hebt gemaakt.
+1. Afhankelijk van het type van de geselecteerde resource, hebt u een verzameling relevante eigenschappen die moeten worden ingesteld vóór de implementatie. Voor alle typen moet u een doel resource groep selecteren. In de volgende afbeelding ziet u hoe u een virtuele Linux-machine maakt en deze implementeert in de resource groep die u hebt gemaakt.
 
    ![Een resourcegroep maken](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-   U kunt ook een resourcegroep maken bij het implementeren van uw resources. Selecteer **nieuw** en geef een naam op voor de resourcegroep.
+   U kunt er ook voor kiezen om een resource groep te maken bij het implementeren van uw resources. Selecteer **nieuwe maken** en geef de resource groep een naam.
 
-1. Uw implementatie begint. De implementatie kan enkele minuten duren. Sommige resources nemen meer tijd dan andere bronnen. Wanneer de implementatie is voltooid, ziet u een melding. Selecteer **naar de resource gaan** te openen
+1. Uw implementatie begint. De implementatie kan enkele minuten duren. Sommige resources nemen meer tijd in beslag dan andere resources. Wanneer de implementatie is voltooid, ziet u een melding. Selecteer **Ga naar resource** om te openen
 
-   ![Melding weergeven](./media/resource-group-template-deploy-portal/view-notification.png)
+   ![Melding weer geven](./media/resource-group-template-deploy-portal/view-notification.png)
 
-1. Na de implementatie van uw resources, kunt u meer resources toevoegen aan de resourcegroep door te selecteren **toevoegen**.
+1. Nadat u uw resources hebt geïmplementeerd, kunt u meer resources toevoegen aan de resource groep door **toevoegen**te selecteren.
 
    ![Resource toevoegen](./media/resource-group-template-deploy-portal/add-resource.png)
 
 ## <a name="deploy-resources-from-custom-template"></a>Resources implementeren vanuit een aangepaste sjabloon
 
-Als u wilt uitvoeren van een implementatie, maar niet een van de sjablonen op Marketplace, kunt u een aangepaste sjabloon die de infrastructuur voor uw oplossing definieert. Zie voor meer informatie over het maken van sjablonen, [inzicht in de structuur en de syntaxis van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md).
+Als u een implementatie wilt uitvoeren maar geen van de sjablonen in de Marketplace wilt gebruiken, kunt u een aangepaste sjabloon maken die de infra structuur voor uw oplossing definieert. Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](resource-group-authoring-templates.md)voor meer informatie over het maken van sjablonen.
 
 > [!NOTE]
-> De interface van de portal biedt geen ondersteuning voor die verwijst naar een [geheim van een Key Vault](resource-manager-keyvault-parameter.md). In plaats daarvan gebruik [PowerShell](resource-group-template-deploy.md) of [Azure CLI](resource-group-template-deploy-cli.md) voor het implementeren van uw sjabloon, lokaal of vanaf een externe URI.
+> De portal interface biedt geen ondersteuning voor het verwijzen naar een [geheim vanuit een Key Vault](resource-manager-keyvault-parameter.md). Gebruik in plaats daarvan [Power shell](resource-group-template-deploy.md) of [Azure cli](resource-group-template-deploy-cli.md) om uw sjabloon lokaal of vanuit een externe URI te implementeren.
 
-1. Voor het implementeren van een aangepaste sjabloon via de portal, selecteert u **een resource maken**, zoeken naar **sjabloon**. en selecteer vervolgens **sjabloonimplementatie**.
+1. Als u een aangepaste sjabloon via de portal wilt implementeren, selecteert u **een resource maken**en zoekt u naar **sjabloon**. en selecteer vervolgens **Sjabloonimlementatie**.
 
-   ![De sjabloonimplementatie zoeken](./media/resource-group-template-deploy-portal/search-template.png)
+   ![Sjabloon implementatie zoeken](./media/resource-group-template-deploy-portal/search-template.png)
 
 1. Selecteer **Maken**.
-1. U verschillende opties voor het maken van een sjabloon te bekijken:
+1. U ziet een aantal opties voor het maken van een sjabloon:
 
-    - **Bouw uw eigen sjabloon in de editor**: maken van een sjabloon met behulp van de sjabloon-editor.  De editor is in staat om een schema van de sjabloon resource toevoegen.
-    - **Algemene sjablonen**: Er zijn vier algemene templatess voor het maken van een virtuele Linux-machine, Windows virtuele machine, een webtoepassing en een Azure SQL database.
-    - **Een snelstartsjabloon van GitHub laden**: gebruik een bestaande [snelstartsjablonen](https://azure.microsoft.com/resources/templates/).
+    - **Uw eigen sjabloon bouwen in editor**: een sjabloon maken met de sjabloon editor van de portal.  Met de editor kunt u een resource sjabloon schema toevoegen.
+    - **Algemene sjablonen**: er zijn vier gebruikelijke sjablonen voor het maken van een virtuele Linux-machine, een virtuele Windows-machine, een webtoepassing en een Azure-SQL database.
+    - **Een github Quick Start-sjabloon laden**: gebruik een bestaande [Snelstartgids sjablonen](https://azure.microsoft.com/resources/templates/).
 
-   ![Opties weergeven](./media/resource-group-template-deploy-portal/see-options.png)
+   ![Opties weer geven](./media/resource-group-template-deploy-portal/see-options.png)
 
-    Deze zelfstudie bevat de instructies voor het laden van een quickstart-sjabloon.
+    Deze zelf studie bevat de instructies voor het laden van een Quick Start-sjabloon.
 
-1. Onder **een snelstartsjabloon van GitHub laden**typt of selecteert u **101-storage-account-create**.
+1. Onder **een github Quick Start-sjabloon laden**typt of selecteert u **101-Storage-account-create**.
 
     U hebt hiervoor twee opties:
 
-    - **Selecteer de sjabloon**: implementeer de sjabloon.
-    - **Sjabloon bewerken**: quickstart-sjabloon bewerken voordat u deze implementeert.
+    - **Sjabloon selecteren**: de sjabloon implementeren.
+    - **Sjabloon bewerken**: Bewerk de Quick Start-sjabloon voordat u deze implementeert.
 
-1. Selecteer **template bewerken** verkennen van de sjabloon-editor. De sjabloon wordt geladen in de editor. Er zijn twee parameters: **Opslagaccounttype** en **locatie**.
+1. Selecteer **sjabloon bewerken** om de sjabloon editor van de portal te verkennen. De sjabloon wordt geladen in de editor. U ziet dat er twee para meters zijn: **storageAccountType** en **Location**.
 
    ![Sjabloon maken](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. Breng een kleine wijziging aan de sjabloon. Bijvoorbeeld, werken de **storageAccountName** variabele:
+1. Breng een kleine wijziging aan in de sjabloon. Werk bijvoorbeeld de variabele **storageAccountName** bij naar:
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. Selecteer **Opslaan**. U ziet nu de interface van de implementatie sjabloon. U ziet de twee parameters die u hebt gedefinieerd in de sjabloon.
-1. Typ of Selecteer de waarden van eigenschappen:
+1. Selecteer **Opslaan**. Nu ziet u de implementatie-interface van de Portal sjabloon. Let op de twee para meters die u in de sjabloon hebt gedefinieerd.
+1. Voer de eigenschaps waarden in of Selecteer deze:
 
-    - **Abonnement**: Selecteer een Azure-abonnement.
-    - **Resourcegroep**: Selecteer **nieuw** en geef een naam.
+    - **Subscription**: selecteer een Azure-abonnement.
+    - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op.
     - **Locatie**: Selecteer een Azure-locatie.
-    - **Opslagaccounttype**: Gebruik de standaardwaarde.
-    - **Locatie**: Gebruik de standaardwaarde.
+    - **Type opslag account**: gebruik de standaard waarde.
+    - **Locatie**: gebruik de standaard waarde.
     - **Ik ga akkoord met de bovenstaande voorwaarden**: (selecteren)
 
 1. Selecteer **Aankoop**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie bekijken van auditlogboeken [bewerkingen controleren met Resource Manager](./resource-group-audit.md).
-- Zie voor het oplossen van fouten bij de implementatie, [implementatiebewerkingen bekijken](./resource-manager-deployment-operations.md).
-- Als u wilt een sjabloon exporteren uit een implementatie of de resourcegroep, Zie [exporteren van Azure Resource Manager-sjablonen](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Zie voor het veilig implementatie van uw service in meerdere regio's, [Azure Deployment Manager](./deployment-manager-overview.md).
+- Zie [bewerkingen controleren met Resource Manager](./resource-group-audit.md)voor meer informatie over het weer geven van audit Logboeken.
+- Zie [implementatie bewerkingen weer geven](./resource-manager-deployment-operations.md)om implementatie fouten op te lossen.
+- Zie [Azure Resource Manager sjablonen exporteren](./manage-resource-groups-portal.md#export-resource-groups-to-templates)als u een sjabloon wilt exporteren uit een implementatie of resource groep.
+- Zie [Azure Deployment Manager](./deployment-manager-overview.md)voor een veilige implementatie van uw service in meerdere regio's.

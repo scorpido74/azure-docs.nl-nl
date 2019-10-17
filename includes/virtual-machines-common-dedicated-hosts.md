@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266854"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390550"
 ---
 ## <a name="benefits"></a>Voordelen 
 
@@ -42,7 +42,7 @@ Voor maximale Beschik baarheid implementeert u meerdere Vm's, verspreid over mee
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>Beschikbaarheidszones gebruiken voor fout isolatie
 
-Beschikbaarheids zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Er wordt een hostgroep gemaakt in één beschikbaarheids zone. Nadat deze is gemaakt, worden alle hosts in die zone geplaatst. Als u een hoge Beschik baarheid in meerdere zones wilt bezorgen, moet u meerdere hostgroepen maken (één per zone) en de hosts vervolgens dienovereenkomstig verspreiden.
+Beschikbaarheids zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Er wordt een hostgroep gemaakt in één beschikbaarheids zone. Nadat deze is gemaakt, worden alle hosts in die zone geplaatst. Als u een hoge Beschik baarheid in meerdere zones wilt bezorgen, moet u meerdere hostgroepen maken (één per zone) en de hosts vervolgens dienovereenkomstig verspreiden.
 
 Als u een hostgroep toewijst aan een beschikbaarheids zone, moeten alle Vm's die op die host worden gemaakt, in dezelfde zone worden gemaakt.
 
@@ -71,7 +71,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 > [!NOTE]
 >  Onderhouds beheer bevindt zich momenteel in een beperkte preview-fase en vereist een voorbereidings proces. Gelden voor deze preview door een [inspectie enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)in te dienen.
 
-## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
+## <a name="capacity-considerations"></a>Capaciteits overwegingen
 
 Zodra een toegewezen host is ingericht, wijst Azure deze toe aan de fysieke server. Hiermee wordt de beschik baarheid van de capaciteit gegarandeerd wanneer u uw virtuele machine moet inrichten. Azure gebruikt de volledige capaciteit in de regio (of zone) om een fysieke server voor uw host te kiezen. Het betekent ook dat klanten kunnen verwachten dat ze hun toegewezen host footprint kunnen verg Roten zonder dat er bijna geen ruimte meer is in het cluster.
 
@@ -82,6 +82,8 @@ Er is een standaard quotum limiet van 3000 Vcpu's voor toegewezen hosts per regi
 ![Scherm afbeelding van de pagina gebruik en quota's in de portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 Zie [vCPU quota's voor virtuele machines](/azure/virtual-machines/windows/quotas)voor meer informatie.
+
+De gratis proef versie en MSDN-abonnementen hebben geen quota voor voor Azure toegewezen hosts.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -97,11 +99,11 @@ Zie [prijzen voor toegewezen hosts voor Azure](https://aka.ms/ADHPricing)voor me
 
 Er wordt een SKU gedefinieerd voor een host en deze vertegenwoordigt de VM-grootte reeks en-type. U kunt meerdere virtuele machines van verschillende grootten op één host combi neren, zolang ze dezelfde grootte reeks hebben. Het type is de hardware-generatie die momenteel beschikbaar is in de regio.
 
-Een `types` andere VM-reeks is van verschillende CPU-leveranciers en heeft verschillende CPU-generaties en aantal kernen.
+Verschillende `types` voor dezelfde VM-serie zijn van verschillende CPU-leveranciers en hebben verschillende CPU-generaties en aantal kernen.
 
 Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
-Tijdens de preview-periode ondersteunen we de volgende SKU\types:  DSv3_Type1 en ESv3_Type1
+Tijdens de preview-periode ondersteunen we de volgende SKU\types: DSv3_Type1 en ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Levens cyclus van host
@@ -109,10 +111,10 @@ Tijdens de preview-periode ondersteunen we de volgende SKU\types:  DSv3_Type1 en
 
 Azure bewaakt en beheert de integriteits status van uw hosts. De volgende statussen worden geretourneerd wanneer u een query op uw host uitvoert:
 
-| Status   | Description       |
+| Status   | Beschrijving       |
 |----------|----------------|
 | Host beschikbaar     | Er zijn geen bekende problemen met de host.   |
 | Host wordt onderzocht  | Er zijn enkele problemen met de host die we op zoek zijn. Dit is een overgangs status die vereist is voor Azure om het bereik en de hoofd oorzaak voor het geïdentificeerde probleem te identificeren. Voor virtuele machines die op de host worden uitgevoerd, kan dit gevolgen hebben. |
-| Toewijzing in afwachting van host   | Azure kan de host niet herstellen naar een goede status en u vraagt u uw virtuele machines opnieuw te implementeren vanaf deze host. Als `autoReplaceOnFailure` is ingeschakeld, worden uw virtuele machines *retoucheerd* naar goede hardware. Anders kan de virtuele machine worden uitgevoerd op een host die op het punt staat om te mislukken.|
-| De toewijzing van de host is ongedaan gemaakt  | Alle virtuele machines zijn van de host verwijderd. Er worden geen kosten meer in rekening gebracht voor deze host omdat de hardware niet is gedraaid.   |
+| Toewijzing in afwachting van host   | Azure kan de host niet herstellen naar een goede status en u vraagt u uw virtuele machines opnieuw te implementeren vanaf deze host. Als `autoReplaceOnFailure` is ingeschakeld, worden uw virtuele machines met de *service* hersteld naar goede hardware. Anders kan de virtuele machine worden uitgevoerd op een host die op het punt staat om te mislukken.|
+| Toewijzing van host is ongedaan gemaakt  | Alle virtuele machines zijn van de host verwijderd. Er worden geen kosten meer in rekening gebracht voor deze host omdat de hardware niet is gedraaid.   |
 

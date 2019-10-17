@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/25/2019
+ms.date: 10/16/2019
 ms.author: memildin
-ms.openlocfilehash: 3b4b02574c028822d25d841376b127a718243b2e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 69b81417e541bd6853e02065e8cee08e3e04b4a2
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202562"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433899"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
@@ -47,34 +47,50 @@ Security Center verzamelt, analyseert en integreert de logboek gegevens van uw A
 
 Security Center maakt gebruik van geavanceerde beveiligingsanalyses die veel verder gaan dan op handtekeningen gebaseerde benaderingen. Doorbraken in big data- en [machine learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-technologieën worden gebruikt om gebeurtenissen overal in de cloudinfrastructuur te evalueren - waarbij bedreigingen worden gedetecteerd die onmogelijk te identificeren waren geweest met behulp van handmatige benaderingen en het voorspellen van de ontwikkeling van aanvallen. Deze beveiligingsanalyses omvatten:
 
-* **Geïntegreerde bedreigings informatie**: Zoekt naar bekende ongeldige actors door gebruik te maken van wereld wijde bedreigings informatie van micro soft-producten en-services, de micro soft Digital misdrijven Unit (DCU), micro soft Security Response Center (MSRC) en externe feeds.
-* **Gedrags analyse**: Past bekende patronen toe om schadelijk gedrag te ontdekken.
-* **Afwijkings detectie**: Gebruikt statistische profilering om een historische basis lijn te maken. Er wordt een waarschuwing gegeven bij afwijkingen van vastgestelde basislijnen die aan een mogelijke aanvalsvector voldoen.
+* **Geïntegreerde bedreigings informatie**: zoekt naar bekende fout actoren door gebruik te maken van wereld wijde bedreigings informatie van micro soft-producten en-services, de micro soft Digital misdrijven Unit (DCU), micro soft Security Response Center (MSRC) en externe feeds.
+* **Gedrags analyse**: past bekende patronen toe om schadelijk gedrag te ontdekken.
+* **Afwijkings detectie**: gebruikt statistische profilering om een historische basis lijn te maken. Er wordt een waarschuwing gegeven bij afwijkingen van vastgestelde basislijnen die aan een mogelijke aanvalsvector voldoen.
 
-In de volgende onderwerpen vindt u meer informatie over elk van deze analyses.
+In de volgende secties vindt u meer informatie over elk van deze analyses.
 
 ### <a name="integrated-threat-intelligence"></a>Geïntegreerde bedreigings informatie
 
-Microsoft heeft een gigantische hoeveelheid informatie over wereldwijde bedreigingen. Telemetrie komt binnen uit meerdere bronnen, zoals Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, de Microsoft Digital Crimes Unit (DCU) en Microsoft Security Response Center (MSRC). Onderzoekers ontvangen ook informatie over bedreigingen die wordt gedeeld tussen de primaire cloudserviceproviders en abonnementen op feeds met informatie over bedreigingen van derden. Azure Security Center kan deze informatie gebruiken om u te waarschuwen over bedreigingen van bekende beveiligingsrisico’s.
+Microsoft heeft een gigantische hoeveelheid informatie over wereldwijde bedreigingen. Telemetrie loopt over van meerdere bronnen, zoals Azure, Office 365, micro soft CRM Online, micro soft Dynamics AX, outlook.com, MSN.com, de micro soft Digital misdrijven Unit (DCU) en het micro soft Security Response Center (MSRC). Onderzoekers ontvangen ook informatie over bedreigingen die worden gedeeld door grote Cloud serviceproviders en feeds van andere derden. Azure Security Center kan deze informatie gebruiken om u te waarschuwen over bedreigingen van bekende beveiligingsrisico’s.
 
 ### <a name="behavioral-analytics"></a>Gedragsanalyse
 
-Gedragsanalyse is een techniek waarbij gegevens worden geanalyseerd en vergeleken met een verzameling bekende patronen. Deze patronen zijn echter geen eenvoudige handtekeningen. Ze worden vastgesteld aan de hand van complexe machine learning-algoritmen die worden toegepast op grote gegevenssets. Ze worden ook vastgesteld via de zorgvuldige analyse van schadelijk gedrag door deskundige analisten. Azure Security Center kan gebruikmaken van gedragsanalyses om verdachte resources te identificeren op basis van de analyse van logboeken van virtuele machines, apparaatlogboeken van virtuele netwerken, infrastructuurlogboeken, crashdumps en andere bronnen.
+Gedragsanalyse is een techniek waarbij gegevens worden geanalyseerd en vergeleken met een verzameling bekende patronen. Deze patronen zijn echter geen eenvoudige handtekeningen. Ze worden vastgesteld aan de hand van complexe machine learning-algoritmen die worden toegepast op grote gegevenssets. Ze worden ook vastgesteld via de zorgvuldige analyse van schadelijk gedrag door deskundige analisten. Azure Security Center kunt gedrags analyse gebruiken om gemanipuleerde resources te identificeren op basis van de analyse van logboeken van virtuele machines, logboeken voor virtuele netwerk apparaten, infrastructuur logboeken, crash dumps en andere bronnen.
 
-Er wordt ook gekeken naar andere signalen om te controleren op ondersteunend bewijs van een wijdverbreide aanval. Aan de hand van dit verband kan beter worden vastgesteld welke gebeurtenissen samenhangen met de opgestelde indicatoren van inbreuk. 
+Daarnaast is er een correlatie met andere signalen om te controleren op ondersteunende bewijs van een verbreide campagne. Aan de hand van dit verband kan beter worden vastgesteld welke gebeurtenissen samenhangen met de opgestelde indicatoren van inbreuk. 
 
 ### <a name="anomaly-detection"></a>Anomaliedetectie
 
 Azure Security Center maakt ook gebruik van afwijkingsdetectie om bedreigingen te identificeren. In tegenstelling tot gedragsanalyses (die afhankelijk zijn van bekende patronen die zijn afgeleid van grote gegevenssets) is afwijkingsdetectie meer "gepersonaliseerd" en richt het zich op basislijnen die specifiek voor uw implementaties zijn. Machine learning wordt toegepast om de normale activiteit voor uw implementaties te bepalen en vervolgens worden regels gegenereerd om afwijkende omstandigheden te definiëren die een veiligheidsrisico zouden kunnen vormen.
 
+## <a name="how-are-alerts-classified"></a>Hoe worden waarschuwingen geclassificeerd?
+
+Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde kunt bepalen van elke waarschuwing, zodat u meteen aan de voor waarde wordt gevraagd wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
+
+> [!NOTE]
+> Ernst van waarschuwing wordt anders weer gegeven in de portal en de REST API, de verschillen worden vermeld in de onderstaande lijst.
+
+* **Hoog:** Er is een hoge waarschijnlijkheid dat uw resource is aangetast. U ziet het meteen. Security Center heeft hoge betrouw baarheid in zowel de schadelijke intentie als de bevindingen die worden gebruikt voor het uitgeven van de waarschuwing. Een waarschuwing waarmee de uitvoering van een bekend schadelijk hulp programma, zoals Mimikatz, wordt gedetecteerd, is een algemeen hulp programma dat wordt gebruikt voor referentie diefstal.
+* **Gemiddeld (laag in de rest API)** : dit is waarschijnlijk een verdachte activiteit kan erop wijzen dat een bron is aangetast.
+Het vertrouwen van Security Center in het analyse programma of het zoeken is gemiddeld en het vertrouwen van de schadelijke intentie is gemiddeld voor hoog. Deze worden doorgaans machine learning en detecties op basis van anomalieën. Bijvoorbeeld een aanmeldings poging vanaf een afwijkende locatie.
+* **Laag (informatie in de rest API)** : dit kan een goed aardige positieve of een geblokkeerde aanval zijn.
+   * Security Center niet zeker weet dat de intentie schadelijk is en de activiteit mogelijk onschuld is. Logboek wissen is bijvoorbeeld een actie die zich kan voordoen wanneer een aanvaller hun tracks probeert te verbergen, maar in veel gevallen is een routine bewerking door beheerders uitgevoerd.
+   * Security Center vertelt u doorgaans niet wanneer er aanvallen zijn geblokkeerd, tenzij dit een interessant geval is. 
+* **Informatie (Silent in de rest API)** : u ziet alleen informatieve waarschuwingen wanneer u inzoomt op een beveiligings incident of als u de rest API met een specifieke waarschuwings-id gebruikt. Een incident bestaat doorgaans uit een aantal waarschuwingen, wat soms alleen ter informatie kan worden weer gegeven, maar in de context van de andere waarschuwingen kan het een betrouw bare zijn. 
+ 
+
 ## <a name="continuous-monitoring-and-assessments"></a>Doorlopende bewaking en evaluaties
 
 Azure Security Center voor delen van het uitvoeren van beveiligings onderzoek en data Science teams in micro soft die voortdurend controleren op wijzigingen in de beveiliging tegen bedreigingen. Dit omvat de volgende initiatieven:
 
-* **Threat Intelligence-bewaking**: Bedreigings informatie omvat mechanismen, indica toren, implicaties en bruikbare adviezen over bestaande of opkomende bedreigingen. Deze informatie wordt gedeeld in de beveiligingscommunity en Microsoft volgt continu feeds met informatie over bedreigingen uit interne en externe bronnen.
-* **Signaal deling**: Inzichten van beveiligings teams in het hele assortiment van de Cloud en on-premises Services, servers en client eindpunt apparaten van micro soft worden gedeeld en geanalyseerd.
-* **Micro soft-beveiligings specialisten**: Lopende betrokkenheid bij teams in micro soft die werken in gespecialiseerde beveiligings velden, zoals forensische en detectie van webaanval.
-* **Afstemming van detectie**: Algoritmen worden uitgevoerd op basis van echte klant gegevens sets en beveiligings onderzoekers werken samen met klanten om de resultaten te valideren. Echte en fout-positieven worden gebruikt voor het verfijnen van machine learning-algoritmen.
+* **Threat Intelligence-bewaking**: bedreigings informatie omvat mechanismen, indica toren, implicaties en bruikbare adviezen over bestaande of opkomende bedreigingen. Deze informatie wordt gedeeld in de beveiligingscommunity en Microsoft volgt continu feeds met informatie over bedreigingen uit interne en externe bronnen.
+* **Signalen delen**: inzichten van beveiligingsteams overal uit Microsofts brede portfolio van cloud- en on-premises services, servers en client-endpointapparaten worden gedeeld en geanalyseerd.
+* **Microsoft-beveiligingsspecialisten**: continue inzet van teams overal bij Microsoft die op gespecialiseerde beveiligingsgebieden werken, zoals forensisch onderzoek en webaanvaldetectie.
+* **Detectieafstemming**: algoritmen worden uitgevoerd op echte gegevenssets van klanten en beveiligingsonderzoekers werken samen met klanten om de resultaten te valideren. Echte en fout-positieven worden gebruikt voor het verfijnen van machine learning-algoritmen.
 
 Deze gecombineerde inspanningen moeten resulteren in nieuwe en verbeterde detecties waarvan u onmiddellijk kunt profiteren: u hoeft helemaal geen actie te ondernemen.
 

@@ -1,6 +1,6 @@
 ---
-title: Instellen van SSL-codering en -verificatie voor Apache Kafka in Azure HDInsight
-description: SSL-codering voor communicatie tussen Kafka-clients en Kafka-brokers ook tussen Kafka-brokers instellen. Instellen van SSL-verificatie van clients.
+title: SSL-versleuteling en verificatie instellen voor Apache Kafka in azure HDInsight
+description: SSL-versleuteling instellen voor communicatie tussen Kafka-clients en Kafka-Brokers, en tussen Kafka-brokers. SSL-verificatie van clients instellen.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,58 +8,50 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5d567074a0038915cc43a585b34c9c71ccf3eb1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65465000"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431276"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Instellen van Secure Sockets Layer (SSL)-codering en -verificatie voor Apache Kafka in Azure HDInsight
+# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Versleuteling en verificatie van Secure Sockets Layer (SSL) instellen voor Apache Kafka in azure HDInsight
 
-In dit artikel leest u hoe u SSL-versleuteling tussen clients van Apache Kafka- en Apache Kafka-brokers instelt. Deze ook wordt beschreven hoe u voor het instellen van verificatie van clients (soms aangeduid als wederzijdse SSL).
+In dit artikel wordt beschreven hoe u SSL-versleuteling instelt tussen Apache Kafka-clients en Apache Kafka brokers. U kunt ook zien hoe u verificatie van clients instelt (ook wel SSL (Two-eenrichtings) genoemd).
 
 > [!Important]
-> Er zijn twee clients die u voor Kafka-toepassingen gebruiken kunt: een Java-client en een consoleclient. Alleen de Java-client `ProducerConsumer.java` kunt SSL gebruiken voor zowel produceren en te gebruiken. De producent consoleclient `console-producer.sh` werkt niet met SSL.
+> Er zijn twee clients die u kunt gebruiken voor Kafka-toepassingen: een Java-client en een-console-client. Alleen de Java-client `ProducerConsumer.java` kan SSL gebruiken voor zowel produceren als verbruiken. De console producer-client `console-producer.sh` werkt niet met SSL.
 
-## <a name="apache-kafka-broker-setup"></a>Apache Kafka-Broker-instellingen
+## <a name="apache-kafka-broker-setup"></a>Setup van Apache Kafka Broker
 
-De installatie van de broker Kafka SSL gebruikt vier VM's voor HDInsight-cluster in de volgende manier:
+Het installatie programma voor Kafka SSL Broker maakt op de volgende manier gebruik van vier HDInsight-cluster-Vm's:
 
-* hoofdknooppunt 0 - certificeringsinstantie (CA)
-* worker-knooppunt 0, 1 en 2 - makelaars
+* hoofd knooppunt 0-certificerings instantie (CA)
+* worker-knoop punt 0, 1 en 2-Brokers
 
 > [!Note] 
-> Deze handleiding worden zelfondertekende certificaten gebruikt, maar de veiligste oplossing is het gebruik van certificaten van vertrouwde certificeringsinstanties.
+> In deze hand leiding worden zelfondertekende certificaten gebruikt, maar de veiligste oplossing is het gebruik van certificaten die zijn uitgegeven door vertrouwde certificerings instanties.
 
-De samenvatting van het broker-installatieproces is als volgt:
+De samen vatting van het installatie proces van de Broker is als volgt:
 
-1. De volgende stappen worden herhaald op elk van de drie worker-knooppunten:
+1. De volgende stappen worden herhaald op elk van de drie worker-knoop punten:
 
     1. Genereer een certificaat.
-    1. Maak een certificaat aanvraag ondertekenen.
-    1. Verzend de aanvraag naar de certificeringsinstantie (CA) ondertekenen certificaat.
-    1. Aanmelden bij de CA en ondertekenen van de aanvraag.
-    1. SCP het ondertekende certificaat terug naar het worker-knooppunt.
-    1. SCP het openbare certificaat van de CA met het werkrolknooppunt.
+    1. Maak een aanvraag voor certificaat ondertekening.
+    1. Verzend de aanvraag voor certificaat ondertekening naar de certificerings instantie (CA).
+    1. Meld u aan bij de CA en onderteken de aanvraag.
+    1. SCP het ondertekende certificaat terug naar het worker-knoop punt.
+    1. SCP het open bare certificaat van de certificerings instantie naar het worker-knoop punt.
 
-1. Nadat u hebt alle certificaten, de certificaten in het certificaatarchief te plaatsen.
+1. Als u alle certificaten hebt, plaatst u de Certificaats in het certificaat archief.
 1. Ga naar Ambari en wijzig de configuraties.
 
-Gebruik de volgende gedetailleerde instructies om de broker-installatie te voltooien:
+Gebruik de volgende gedetailleerde instructies om de Broker-installatie te volt ooien:
 
 > [!Important]
-> In de volgende codefragmenten wnX is een afkorting van een van de drie worker-knooppunten en moet worden vervangen door `wn0`, `wn1` of `wn2` indien van toepassing. `WorkerNode0_Name` en `HeadNode0_Name` moet worden vervangen door de namen van de betreffende computers, zoals `wn0-abcxyz` of `hn0-abcxyz`.
+> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0`, `wn1` of `wn2` als dat nodig is. `WorkerNode0_Name` en `HeadNode0_Name` moeten worden vervangen door de namen van de respectieve computers, zoals `wn0-abcxyz` of `hn0-abcxyz`.
 
-1. Eerste setup uitvoeren op het hoofdknooppunt 0, waarbij voor HDInsight vol raken de rol van de certificeringsinstantie (CA).
-
-    ```bash
-    # Create a new directory 'ssl' and change into it
-    mkdir ssl
-    cd ssl
-    ```
-
-1. De initiële installatie van dezelfde uitvoeren op elk van de brokers (worker-knooppunten 0, 1 of 2).
+1. Voer de eerste installatie uit op het hoofd knooppunt 0, dat voor HDInsight de rol van de certificerings instantie (CA) zal vullen.
 
     ```bash
     # Create a new directory 'ssl' and change into it
@@ -67,10 +59,18 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
     cd ssl
     ```
 
-1. Uitvoeren op elk van de worker-knooppunten, de volgende stappen uit met behulp van het onderstaande codefragment.
-    1. Een keystore maken en deze vullen met een nieuwe persoonlijke certificaat.
-    1. Maak een aanvraag voor Certificaatondertekening.
-    1. SCP het ondertekenen van certificaten aanvragen bij de Certificeringsinstantie (headnode0)
+1. Voer dezelfde initiële installatie uit voor elk van de Brokers (worker-knoop punten 0, 1 en 2).
+
+    ```bash
+    # Create a new directory 'ssl' and change into it
+    mkdir ssl
+    cd ssl
+    ```
+
+1. Voer op elk van de worker-knoop punten de volgende stappen uit met behulp van het code fragment hieronder.
+    1. Maak een-opslag en vul deze in met een nieuw persoonlijk certificaat.
+    1. Maak een aanvraag voor certificaat ondertekening.
+    1. SCP de aanvraag voor certificaat ondertekening aan de CA (headnode0)
 
     ```bash
     keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
@@ -78,7 +78,7 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
     ```
 
-1. Wijzigen in de CA-computer en meld u aan alle van de ontvangen certificaat ondertekenen van aanvragen:
+1. Ga naar de CA-computer en Onderteken alle ontvangen aanvragen voor certificaat ondertekening:
 
     ```bash
     openssl x509 -req -CA ca-cert -CAkey ca-key -in wn0-cert-sign-request -out wn0-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
@@ -86,7 +86,7 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
     openssl x509 -req -CA ca-cert -CAkey ca-key -in wn2-cert-sign-request -out wn2-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
     ```
 
-1. De ondertekende certificaten naar de worker-knooppunten van de Certificeringsinstantie (headnode0) sturen.
+1. Stuur de ondertekende certificaten terug naar de worker-knoop punten van de CA (headnode0).
 
     ```bash
     scp wn0-cert-signed sshuser@WorkerNode0_Name:~/ssl/cert-signed
@@ -94,7 +94,7 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
     scp wn2-cert-signed sshuser@WorkerNode2_Name:~/ssl/cert-signed
     ```
 
-1. Het openbare certificaat van de CA verzenden naar elke worker-knooppunt.
+1. Verzend het open bare certificaat van de certificerings instantie naar elk worker-knoop punt.
 
     ```bash
     scp ca-cert sshuser@WorkerNode0_Name:~/ssl/ca-cert
@@ -102,7 +102,7 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
     scp ca-cert sshuser@WorkerNode2_Name:~/ssl/ca-cert
     ```
 
-1. Toevoegen op elke worker-knooppunt, het openbare certificaat van de CA's aan de truststore en keystore. Het certificaat van de werknemer van het knooppunt vervolgens toevoegen aan de sleutelopslag
+1. Voeg op elk worker-knoop punt het open bare CAs-certificaat toe aan de truststore en de-opslag. Voeg vervolgens een eigen ondertekend certificaat toe aan de opslag van het werk knooppunt
 
     ```bash
     keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
@@ -111,24 +111,24 @@ Gebruik de volgende gedetailleerde instructies om de broker-installatie te volto
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Kafka-configuratie voor het gebruik van SSL en opnieuw opstarten brokers bijwerken
+## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Kafka-configuratie bijwerken voor het gebruik van SSL en het opnieuw opstarten van Brokers
 
-U hebt nu elke Kafka-broker met een keystore en truststore instellen en de juiste certificaten zijn geïmporteerd. Vervolgens verwante eigenschappen van Kafka-configuratie met behulp van Ambari wijzigen en opnieuw opstarten van het Kafka-brokers.
+U hebt nu elke Kafka-Broker met een Store en truststore ingesteld en de juiste certificaten geïmporteerd. Wijzig vervolgens de eigenschappen van gerelateerde Kafka-configuratie met behulp van Ambari en start vervolgens de Kafka-Brokers opnieuw.
 
-Als u wilt de wijziging van de configuratie hebt voltooid, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de configuratie wijziging te volt ooien:
 
-1. Meld u aan bij Azure portal en selecteer uw Azure HDInsight Apache Kafka-cluster.
-1. Ga naar de UI Ambari door te klikken op **Ambari home** onder **Clusterdashboards**.
-1. Onder **Kafka-Broker** stelt de **listeners** eigenschap `PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. Onder **kafka-broker geavanceerde** stelt de **security.inter.broker.protocol** eigenschap `SSL`
+1. Meld u aan bij de Azure Portal en selecteer uw Azure HDInsight Apache Kafka-cluster.
+1. Ga naar de Ambari-gebruikers interface door te klikken op **Ambari start** onder **cluster dashboards**.
+1. Stel de eigenschap **listeners** onder **Kafka Broker** in op `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. Onder **Geavanceerd Kafka-Broker** stelt u de eigenschap **Security. intercompany Broker. protocol** in op `SSL`
 
-    ![Eigenschappen van een Kafka-ssl-configuratie, in Ambari bewerken](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. Onder **aangepaste kafka-broker** stelt de **ssl.client.auth** eigenschap `required`. Deze stap is alleen vereist als het instellen van verificatie en versleuteling.
+1. Stel de eigenschap **SSL. client. auth** onder **aangepast Kafka-broker** in op `required`. Deze stap is alleen vereist als u verificatie en versleuteling instelt.
 
-    ![Eigenschappen van een kafka-ssl-configuratie, in Ambari bewerken](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Configuratie-eigenschappen toevoegen aan de Kafka `server.properties` bestand voor het adverteren van IP-adressen in plaats van het volledig FULLY Qualified Domain Name ().
+1. Voer de onderstaande opdrachten uit om configuratie-eigenschappen toe te voegen aan het bestand Kafka `server.properties` om IP-adressen te adverteren in plaats van de FQDN-naam (Fully Qualified Domain Name).
 
     ```bash
     IP_ADDRESS=$(hostname -i)
@@ -142,7 +142,7 @@ Als u wilt de wijziging van de configuratie hebt voltooid, moet u de volgende st
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Om te verifiëren of de wijzigingen zijn aangebracht correct desgewenst kunt u controleren dat de volgende regels zijn aanwezig in de Kafka `server.properties` bestand.
+1. Als u wilt controleren of de vorige wijzigingen correct zijn aangebracht, kunt u eventueel controleren of de volgende regels aanwezig zijn in het bestand Kafka `server.properties`.
 
     ```bash
     advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
@@ -153,20 +153,20 @@ Als u wilt de wijziging van de configuratie hebt voltooid, moet u de volgende st
     ssl.truststore.password=MyServerPassword123
     ```
 
-1. Start opnieuw op alle Kafka-brokers.
-1. Start de client beheerder met de producent en consument opties om te controleren dat zowel producenten en consumenten op poort 9093 werkt.
+1. Start alle Kafka-Brokers opnieuw op.
+1. Start de admin-client met producer-en consumenten opties om te controleren of zowel producenten als consumenten op poort 9093 werken.
 
-## <a name="client-setup-with-authentication"></a>Clientinstallatie (met behulp van verificatie)
+## <a name="client-setup-with-authentication"></a>Client installatie (met verificatie)
 
 > [!Note]
-> De volgende stappen zijn alleen vereist als u beide SSL-versleuteling instelt **en** verificatie. Als u versleuteling alleen instelt, gaat u naar [installatie van de Client zonder verificatie](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
+> De volgende stappen zijn alleen vereist als u SSL-versleuteling **en** verificatie instelt. Als u alleen versleuteling wilt instellen, kunt u door gaan naar de [client installatie zonder verificatie](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
 
-Voer de volgende stappen uit om de clientinstallatie te voltooien:
+Voer de volgende stappen uit om de client installatie te volt ooien:
 
-1. Aanmelden bij de clientcomputer (hn1).
-1. Maak een java keystore en een ondertekend certificaat krijgen voor de broker. Kopieer vervolgens het certificaat naar de virtuele machine waarop de CA wordt uitgevoerd.
-1. Schakel over naar de CA-computer (hn0) om te ondertekenen certificaat van de client.
-1. Ga naar de clientcomputer (hn1) en navigeer naar de `~/ssl` map. Kopieer het ondertekende certificaat naar de client-computer.
+1. Meld u aan bij de client computer (HN1).
+1. Een Java-opslag archief maken en een ondertekend certificaat voor de Broker ophalen. Kopieer vervolgens het certificaat naar de virtuele machine waarop de CA wordt uitgevoerd.
+1. Schakel over naar de CA-computer (hn0) om het client certificaat te ondertekenen.
+1. Ga naar de client machine (HN1) en ga naar de map `~/ssl`. Kopieer het ondertekende certificaat naar de client computer.
 
 ```bash
 cd ssl
@@ -197,7 +197,7 @@ keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert 
 keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Ten slotte, bekijkt u het bestand `client-ssl-auth.properties` met de opdracht `cat client-ssl-auth.properties`. Het moet beschikken over de volgende regels:
+Bekijk ten slotte het bestand `client-ssl-auth.properties` met de opdracht `cat client-ssl-auth.properties`. Deze moet de volgende regels bevatten:
 
 ```bash
 security.protocol=SSL
@@ -208,16 +208,16 @@ ssl.keystore.password=MyClientPassword123
 ssl.key.password=MyClientPassword123
 ```
 
-## <a name="client-setup-without-authentication"></a>Installatie van de client (zonder verificatie)
+## <a name="client-setup-without-authentication"></a>Client installatie (zonder verificatie)
 
-Als u geen verificatie nodig hebt, worden de stappen voor het instellen van SSL-versleuteling zijn:
+Als u geen verificatie nodig hebt, zijn de stappen voor het instellen van alleen SSL-versleuteling:
 
-1. Aanmelden bij de clientcomputer (hn1) en navigeer naar de `~/ssl` map
-1. Kopieer het ondertekende certificaat naar de client-computer van de CA-computer (wn0).
-1. De CA-certificaat importeren in de truststore
-1. De CA-certificaat importeren in de sleutelopslag
+1. Meld u aan bij de client computer (HN1) en navigeer naar de map `~/ssl`
+1. Kopieer het ondertekende certificaat naar de client computer vanaf de CA-computer (wn0).
+1. Importeer het CA-certificaat naar de truststore
+1. Het CA-certificaat importeren in de-opslag
 
-Deze stappen worden weergegeven in het volgende codefragment.
+Deze stappen worden weer gegeven in het volgende code fragment.
 
 ```bash
 cd ssl
@@ -232,7 +232,7 @@ keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cer
 keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
-Ten slotte, bekijkt u het bestand `client-ssl-auth.properties` met de opdracht `cat client-ssl-auth.properties`. Het moet beschikken over de volgende regels:
+Ten slotte bekijkt u het bestand `client-ssl-auth.properties` met de opdracht `cat client-ssl-auth.properties`. Deze moet de volgende regels bevatten:
 
 ```bash
 security.protocol=SSL
@@ -242,4 +242,4 @@ ssl.truststore.password=MyClientPassword123
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Apache Kafka in HDInsight?](apache-kafka-introduction.md)
+* [Wat is Apache Kafka op HDInsight?](apache-kafka-introduction.md)
