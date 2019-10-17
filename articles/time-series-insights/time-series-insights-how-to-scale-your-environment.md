@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129086"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332847"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Uw Time Series Insights omgeving schalen
 
-In dit artikel wordt beschreven hoe u de capaciteit van uw omgeving wijzigt in uw Time Series Insights-omgeving met behulp van de Azure Portal. Capaciteit is de vermenigvuldiger die wordt toegepast op de ingangs frequentie, opslag capaciteit en kosten die zijn gekoppeld aan uw geselecteerde SKU.
+In dit artikel wordt beschreven hoe u de capaciteit van uw Time Series Insights omgeving kunt wijzigen met behulp van de [Azure Portal](https://portal.azure.com). Capaciteit is de vermenigvuldiger die wordt toegepast op de ingangs frequentie, opslag capaciteit en kosten die zijn gekoppeld aan uw geselecteerde SKU.
 
 U kunt de Azure Portal gebruiken om de capaciteit binnen een bepaalde prijs-SKU te verg Roten of te verkleinen.
 
@@ -49,16 +49,22 @@ Capaciteit schaalt lineair, dus een S1-SKU met capaciteit 2 ondersteunt 2 GB (2.
 
 1. Selecteer **configureren**in het menu voor uw time series Insights omgeving.
 
-   [![. png configureren](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [@no__t -1configure. png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
 1. Pas de schuif regelaar **capaciteit** aan om de capaciteit te selecteren die voldoet aan de vereisten voor uw ingangs tarieven en opslag capaciteit. Let op de **ingangs rente**, **opslag capaciteit**en **geschatte kosten** update dynamisch om de impact van de wijziging weer te geven.
 
-   [![Volledig](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![Slider](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    U kunt ook het nummer van de capaciteits-multiplier in het tekstvak rechts van de schuif regelaar typen.
 
 1. Selecteer **Opslaan** om de omgeving te schalen. De voortgangs indicator wordt weer gegeven totdat de wijziging wordt doorgevoerd.
 
+1. Controleer of de nieuwe capaciteit [voldoende is om beperking te voor komen](time-series-insights-diagnose-and-solve-problems.md).
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- Controleer of de nieuwe capaciteit [voldoende is om beperking te voor komen](time-series-insights-diagnose-and-solve-problems.md).
+- Lees voor meer informatie [uitleg over retentie in time series Insights](time-series-insights-concepts-retention.md).
+
+- Meer informatie over het [configureren van gegevens retentie in azure time series Insights](time-series-insights-how-to-configure-retention.md).
+
+- Meer informatie over [het plannen van uw omgeving](time-series-insights-environment-planning.md).

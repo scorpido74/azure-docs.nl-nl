@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 26652a956f9f50f82f462c564d6daf0dc37b0722
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254964"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329278"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
 
@@ -219,7 +219,7 @@ Zie [Ethereum-account](consortium.md#ethereum-account)voor meer informatie over 
 
 ## <a name="get-the-contract-abi"></a>De ABI van het contract ophalen
 
-In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de contract ABI ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt het bestand ook ophalen uit het meta gegevensbestand van de contract in het volheid-Compileer programma.
+In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de contract ABI ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt dit bestand ook ophalen uit het meta gegevensbestand voor contracten dat is gemaakt door de volheid-compiler.
 
 **De Development Kit gebruiken:**
 

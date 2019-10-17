@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051854"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376200"
 ---
 # <a name="monitoring-scheduled-events"></a>Bewakings Scheduled Events
 
@@ -81,7 +81,7 @@ Valideer de status van de service en zorg ervoor dat deze wordt uitgevoerd.
 .\SchService.ps1 -status  
 ```
 
-Dit moet worden `Running`geretourneerd.
+Dit moet `Running` retour neren.
 
 De service begint nu elke 10 seconden te pollen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Bevriezen, opnieuw opstarten, opnieuw implementeren en voor rang nemen gebeurtenissen vastgelegd door het plannen van gebeurtenissen. U kunt het script uitbreiden om enkele oplossingen te activeren voordat u de gebeurtenis goedkeurt.
 
@@ -98,7 +98,7 @@ Wanneer gebeurtenissen worden vastgelegd door de Schedule Event-service, wordt h
 >
 > Voor onze installatie hebt u Windows gekozen, maar u kunt een vergelijk bare oplossing voor Linux ontwerpen.
 
-U kunt de geplande gebeurtenis service op elk gewenst moment stoppen/verwijderen met behulp `–stop` van `–remove`de Schakel opties en.
+U kunt de geplande gebeurtenis service op elk gewenst moment stoppen/verwijderen met behulp van de Schakel opties `–stop` en `–remove`.
 
 ## <a name="connect-to-the-workspace"></a>Verbinding maken met de werk ruimte
 
@@ -158,17 +158,17 @@ Zodra de gebeurtenissen naar Log Analytics zijn gepusht, kunt u de volgende [que
     ![De query opslaan](./media/notifications/save-query.png)
 
 1. Selecteer **nieuwe waarschuwings regel**. 
-1. Op de pagina **regel maken** , gaat `collectorworkspace` u naar de **resource**.
-1. Onder **voor waarde**selecteert u de vermelding *wanneer het <login undefined>zoeken naar Logboeken van de klant* . De pagina **signaal logica configureren** wordt geopend.
+1. Op de pagina **regel maken** , moet u `collectorworkspace` als **resource**laten staan.
+1. Onder **voor waarde**selecteert u de vermelding *wanneer de zoek opdracht van het klant logboek <login undefined> is*. De pagina **signaal logica configureren** wordt geopend.
 1. Voer bij **drempel waarde** *0* in en selecteer vervolgens **gereed**.
 1. Onder **acties**, selecteer **actie groep maken**. De pagina **actie groep toevoegen** wordt geopend.
 1. Typ *myActionGroup*in de naam van de **actie groep**.
 1. Typ **myActionGroup**in **short name**.
-1. Selecteer in **resource groep***resourcegroupavailability* *.
+1. Selecteer **resourcegroupavailability**in de **resource groep**.
 1. Onder acties, Typ in **actie naam** **e-mail**en selecteer vervolgens **e-mail/SMS/push/Voice**. De pagina **e-mail/SMS/push/Voice** wordt geopend.
 1. Selecteer **e-mail**, typ uw e-mail adres en selecteer vervolgens **OK**.
 1. Selecteer **OK**op de pagina **actie groep toevoegen** . 
-1. Typ *myAlert* voor de naam van de **waarschuwings regel**in de pagina **regel maken** , en typ vervolgens *e-mail waarschuwings regel* voor de **Beschrijving**.
+1. Typ *myAlert* voor de naam van de **waarschuwings regel**in de pagina **regel maken** **, en**Typ vervolgens *e-mail waarschuwings regel* voor de **Beschrijving**.
 1. Wanneer u klaar bent, selecteert u **waarschuwings regel maken**.
 1. Start een van de virtuele machines in de beschikbaarheidsset opnieuw op. Binnen een paar minuten ontvangt u een e-mail bericht dat de waarschuwing is geactiveerd.
 

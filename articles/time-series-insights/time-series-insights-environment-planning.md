@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828171"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332926"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -31,33 +31,35 @@ In dit artikel wordt beschreven hoe u de Azure Time Series Insights algemene Bes
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Om aan de slag te gaan met Time Series Insights, is het het beste als u weet hoeveel gegevens u naar verwachting wilt pushen per minuut en hoe lang uw gegevens moeten worden opgeslagen.  
+Om aan de slag te gaan met Azure Time Series Insights, is het het beste als u weet hoeveel gegevens u naar verwachting wilt pushen per minuut en hoe lang uw gegevens moeten worden opgeslagen.  
 
 Zie [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over capaciteit en retentie voor beide time series Insights sku's.
 
 Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving voor een lange termijn wilt best uren:
 
-- <a href="#storage-capacity">Opslagcapaciteit</a>
-- <a href="#data-retention">Bewaar periode voor gegevens</a>
-- <a href="#ingress-capacity">Ingangs capaciteit</a>
-- <a href="#shape-your-events">Uw evenementen omvormen</a>
-- <a href="#ensure-that-you-have-reference-data">Controleren of er referentie gegevens aanwezig zijn</a>
+- [Opslagcapaciteit](#storage-capacity)
+- [Bewaar periode voor gegevens](#data-retention)
+- [Ingangs capaciteit](#ingress-capacity)
+- [Uw evenementen omvormen](#shape-your-events)
+- [Controleren of er referentie gegevens aanwezig zijn](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
 Standaard worden gegevens door Time Series Insights bewaard op basis van de hoeveelheid opslag ruimte die u hebt ingericht &#215; (eenheden van de hoeveelheid opslag per eenheid) en binnenkomend.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevens bewaren
 
-U kunt de instelling voor de **Bewaar tijd van gegevens** in uw time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
+U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
 
-Time Series Insights heeft twee modi. De ene modus optimaliseert om ervoor te zorgen dat uw omgeving de meest actuele gegevens bevat. Deze modus is standaard ingeschakeld. 
+Azure Time Series Insights heeft twee modi:
 
-De andere modus optimaliseert om ervoor te zorgen dat aan de Bewaar limieten wordt voldaan. In de tweede modus wordt ingangs onderbrekingen onderbroken als aan de totale opslag capaciteit van de omgeving wordt voldaan. 
+* De ene modus optimaliseert voor de meest actuele gegevens. Er wordt een beleid afgedwongen om **oude gegevens te verwijderen** die recente gegevens verlaten die beschikbaar zijn bij het exemplaar. Deze modus is standaard ingeschakeld. 
+* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Als u inschakelt, voor komt u dat nieuwe gegevens worden ontsleuteld wanneer deze zijn geselecteerd als de **opslag limiet is overschreden**. 
 
 U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de configuratie pagina van de omgeving in het Azure Portal.
 
-U kunt Maxi maal 400 dagen aan gegevens bewaaring configureren in uw Time Series Insights omgeving.
+> [!IMPORTANT]
+> U kunt Maxi maal 400 dagen aan gegevens bewaaring configureren in uw Azure Time Series Insights GA-omgeving.
 
 ### <a name="configure-data-retention"></a>Gegevensretentie configureren
 
@@ -67,14 +69,14 @@ U kunt Maxi maal 400 dagen aan gegevens bewaaring configureren in uw Time Series
 
 1. Voer in het vak **tijdstip van bewaren van gegevens (in dagen)** een waarde in tussen 1 en 400.
 
-   [![Bewaar periode configureren](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![Configure retentie](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Zie de [Bewaar periode configureren](./time-series-insights-how-to-configure-retention.md)voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens.
 
 ## <a name="ingress-capacity"></a>Ingangs capaciteit
 
-Het tweede gebied waarop u zich kunt richten voor het plannen van uw Time Series Insights-omgeving, is de capaciteit van ingang. Ingangs capaciteit is een afgeleide van de toewijzing per minuut.
+Het tweede gebied waarop u zich kunt richten bij het plannen van uw Time Series Insights-omgeving is de *capaciteit van ingang*. Ingangs capaciteit is een afgeleide van de toewijzing per minuut.
 
 Vanuit een beperkings perspectief wordt een ingangs gegevens pakket met een pakket grootte van 32 KB beschouwd als 32 gebeurtenissen, elke 1 KB. De Maxi maal toegestane gebeurtenis grootte is 32 KB. Gegevens pakketten groter dan 32 KB worden afgekapt.
 

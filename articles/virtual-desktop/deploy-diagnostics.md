@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177768"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332836"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -108,7 +108,7 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
 4. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items** en voegt u de volgende tellers toe:
 
-    -   Logische schijf (\*) \|% beschik bare ruimte
+    -   Logische schijf (\*) \%Free ruimte
     -   Logische schijf (C:) \\Avg. wachtrij lengte voor schijf
     -   Geheugen (\*) \\Available Mbytes
     -   Processor informatie (\*) \\Processor tijd
@@ -142,7 +142,7 @@ Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-p
 3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
 4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische schijf (\*) \|% beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
+   - Logische schijf (\*) \%Free ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
    - Logische schijf (C:) \\Avg. wachtrij lengte voor de schijf: de lengte van de aanvraag voor de overdracht van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
    - Geheugen (\*) @no__t 1Available Mbytes: het beschik bare geheugen voor het systeem in mega bytes.
    - Processor informatie (\*) \\Processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.

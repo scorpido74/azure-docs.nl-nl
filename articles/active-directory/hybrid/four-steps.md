@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124925"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373502"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
@@ -81,9 +81,9 @@ Azure AD-toepassingsproxy biedt de volgende voor delen:
 
 In moderne ondernemingen zijn IT-afdelingen vaak niet op de hoogte van alle Cloud toepassingen die door de gebruikers worden gebruikt om hun werk uit te voeren. Wanneer IT-beheerders worden gevraagd hoeveel Cloud-apps ze hun werk nemers gebruiken, hebben ze gemiddeld 30 of 40. In werkelijkheid is het gemiddelde groter dan 1.000 afzonderlijke apps die worden gebruikt door werk nemers in uw organisatie. 80% van de werk nemers gebruiken niet-goedgekeurde apps die niet zijn gecontroleerd en die mogelijk niet compatibel zijn met uw beveiligings-en nalevings beleid.
 
-[Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) kan u helpen om nuttige apps te identificeren die populair zijn bij gebruikers die ze kunnen erkennen en toevoegen aan de galerie met bedrijfs toepassingen, zodat gebruikers profiteren van mogelijkheden als SSO en voorwaardelijke toegang.
+Met [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) kunt u nuttige apps identificeren die populair zijn bij gebruikers die ze kunnen erkennen en toevoegen aan de galerie met bedrijfs toepassingen, zodat gebruikers profiteren van mogelijkheden als SSO en voorwaardelijke toegang.
 
-*" **Cloud app Security** helpt ons ervoor te zorgen dat onze mensen op de juiste wijze gebruikmaken van onze Cloud-en SaaS-toepassingen, op manieren die ondersteuning bieden voor het beleid voor de basis beveiliging dat Accenture ondersteunt*." --- [John blasi, Director beheren, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud app Security** helpt ons ervoor te zorgen dat onze mensen onze Cloud-en SaaS-toepassingen op de juiste wijze gebruiken, op manieren die ondersteuning bieden voor het basis beleid voor de beveiliging van Accenture."</em> --- [Piet blasi, directeur beheren, informatie beveiliging, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Naast het detecteren van schaduw, kan MCAS ook het risico niveau van apps bepalen, voor komen dat onbevoegde toegang tot Bedrijfs gegevens, mogelijke gegevens lekken en andere beveiligings Risico's die inherent zijn aan de toepassingen.
 
@@ -141,7 +141,7 @@ Standaard worden accounts door Azure AD ontgrendeld wanneer het wacht woord opni
 
 Azure biedt rapporten die door u en uw organisatie kunnen worden gebruikt om ervoor te zorgen dat gebruikers worden geregistreerd voor MFA en SSPR. Gebruikers die zich niet hebben geregistreerd, moeten mogelijk worden getraind voor het proces.
 
-Het rapport voor MFA [-](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) aanmeldingen bevat informatie over het gebruik van MFA en geeft inzicht in hoe MFA werkt in uw organisatie. U hebt toegang tot activiteiten voor aanmelden (en controles en risico detecties) voor Azure AD is essentieel voor het oplossen van problemen, gebruiks analyses en forensische onderzoek.
+Het rapport voor MFA [-aanmeldingen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) bevat informatie over het gebruik van MFA en geeft inzicht in hoe MFA werkt in uw organisatie. U hebt toegang tot activiteiten voor aanmelden (en controles en risico detecties) voor Azure AD is essentieel voor het oplossen van problemen, gebruiks analyses en forensische onderzoek.
 
 Op dezelfde manier kan het [rapport voor Self-Service wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) worden gebruikt om te bepalen wie (of niet) is geregistreerd voor SSPR.
 
@@ -227,7 +227,7 @@ We hopen dat dit document een handig schema is voor het opzetten van een sterke 
 
 U wordt aangeraden de volgende controle lijst af te drukken voor referentie wanneer u begint met uw reis naar een meer solide identiteits basis in uw organisatie.
 
-### <a name="today"></a>Vandaag
+### <a name="today"></a>Huidige
 
 |Klaar?|Item|
 |:-|:-|

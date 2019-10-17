@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687077"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376174"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Een subnet toevoegen
 
-Azure implementeert resources in een subnet binnen een Virtual Network, dus u moet een subnet maken. Maak een subnet-configuratie met de naam *mySubnet* met [add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). In het volgende voor beeld wordt een subnet met de naam *mySubnet* gemaakt waarbij de vlag voor het particuliere endpoint-netwerk beleid is ingesteld op **uitgeschakeld**.
+Azure implementeert resources in een subnet binnen een Virtual Network, dus u moet een subnet maken. Maak een subnet-configuratie met de naam *mySubnet* met [add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). In het volgende voor beeld wordt een subnet met de naam *mySubnet* gemaakt waarbij de vlag voor het particuliere endpoint-netwerk beleid is ingesteld op **uitgeschakeld**.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) om het open bare IP-adres van een virtuele machine te retour neren. In dit voor beeld wordt het open bare IP-adres van de *myVM* -VM geretourneerd:
+Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) To om het open bare IP-adres van een virtuele machine te retour neren. In dit voor beeld wordt het open bare IP-adres van de *myVM* -VM geretourneerd:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Open een opdrachtprompt op de lokale computer. Voer de opdracht mstsc uit.  <publicIpAddress>Vervang door het open bare IP-adres dat u in de laatste stap hebt geretourneerd: 
+Open een opdrachtprompt op de lokale computer. Voer de opdracht mstsc uit. Vervang @ no__t-0 @ no__t-1with het open bare IP-adres dat is geretourneerd door de laatste stap: 
 
 
 > [!NOTE]
@@ -184,18 +184,18 @@ Open een opdrachtprompt op de lokale computer. Voer de opdracht mstsc uit.  <p
 mstsc /v:<publicIpAddress>
 ```
 
-1. Selecteer **verbinding maken**als u hierom wordt gevraagd. 
+1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd. 
 2. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
   > [!NOTE]
   > Mogelijk moet u meer opties selecteren > een ander account gebruiken om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine. 
   
-3. Selecteer **OK**. 
-4. Er kan een certificaatwaarschuwing worden weergegeven. Als dit het geval is, selecteert u **Ja** of **door gaan**. 
+3. Selecteer **OK**. 
+4. Er kan een certificaatwaarschuwing worden weergegeven. Als dit het geval is, selecteert u **Ja** of **Doorgaan**. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
 
 1. Open Power shell in de Extern bureaublad van myVM.
-2. Voer `nslookup myserver.database.windows.net`in. 
+2. Voer @ no__t-0 in. 
 
     U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
@@ -207,14 +207,14 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
 3. SQL Server Management Studio installeren
-4. Typ of Selecteer in verbinding maken met server de volgende informatie: Waarde server type instellen data base-engine selecteren.
+4. Typ of Selecteer in verbinding maken met server de volgende informatie: instelling van het type waarde-server data base-engine selecteren.
       Server naam selecteren myserver.database.windows.net gebruikers naam Geef een gebruikers naam op die tijdens het maken is opgegeven.
       Wacht woord voer een wacht woord in dat u hebt opgegeven tijdens het maken.
       Wacht woord onthouden selecteren Ja.
 5. Selecteer verbinding maken.
 6. Bladeren door data bases vanuit het menu links. 
 7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren
-8. Sluit de verbinding met extern bureau blad met *myVM*. 
+8. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, SQL Database Server en de virtuele machine, gebruikt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resource groep en alle resources te verwijderen die het bevat:
