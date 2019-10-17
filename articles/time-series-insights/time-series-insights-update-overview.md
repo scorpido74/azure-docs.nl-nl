@@ -1,5 +1,5 @@
 ---
-title: 'Overzicht: Azure Time Series Insights (preview) | Microsoft Docs'
+title: 'Overzicht: Azure Time Series Insights preview | Microsoft Docs'
 description: Overzicht van Azure Time Series Insights (preview).
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978659"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72381986"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
@@ -45,7 +45,7 @@ Daardoor wordt alleen een fractie van de gegevens gebruikt voor operationele en 
 
 In de volgende afbeelding wordt een typische IoT-gegevensstroom weergegeven.
 
-  ![IoT-gegevensstroom][1]
+  [![IoT gegevens stroom](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights voor industriële IoT
 
@@ -70,7 +70,7 @@ Operationele inzichten en gegevensverkenning worden samen geleverd met een eenvo
 
 In dit gegevensstroomdiagram op hoog niveau ziet u de updates.
 
-  ![Belangrijkste mogelijkheden][2]
+  [![Key mogelijkheden](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 Met de introductie van deze belangrijke IoT-functionaliteiten biedt Time Series Insights de volgende belangrijke voordelen.
 
@@ -94,7 +94,3 @@ Informatie over use cases:
 
 > [!div class="nextstepaction"]
 > [Use cases voor Azure Time Series Insights (preview)](./time-series-insights-update-use-cases.md)
-
-<!-- Images -->
-[1]: media/v2-update-overview/overview-one.png
-[2]: media/v2-update-overview/overview-two.png

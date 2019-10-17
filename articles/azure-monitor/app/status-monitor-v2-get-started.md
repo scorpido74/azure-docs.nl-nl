@@ -1,6 +1,6 @@
 ---
-title: 'Azure Status Monitor v2: aan de slag | Microsoft Docs'
-description: Een Snelstartgids voor Status Monitor v2. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Azure-toepassing Insights-agent-aan de slag | Microsoft Docs
+description: Een Snelstartgids voor Application Insights agent. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: f1911d8187b186f301bea771963f922ee3574fd6
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058235"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388219"
 ---
-# <a name="get-started-with-status-monitor-v2"></a>Aan de slag met Status Monitor v2
+# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Aan de slag met Azure Monitor Application Insights-agent voor on-premises servers
 
 Dit artikel bevat de Quick Start-opdrachten die naar verwachting werken voor de meeste omgevingen.
 De instructies zijn afhankelijk van de PowerShell Gallery voor het distribueren van updates.
-Deze opdrachten ondersteunen de Power `-Proxy` shell-para meter.
+Deze opdrachten ondersteunen de Power shell-para meter `-Proxy`.
 
 Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md)voor een uitleg van deze opdrachten, instructies voor het aanpassen en informatie over het oplossen van problemen.
 
@@ -41,7 +41,7 @@ Install-Module -Name PowerShellGet -Force
 ``` 
 Sluit Power shell.
 
-### <a name="install-status-monitor-v2"></a>Status Monitor versie 2 installeren
+### <a name="install-application-insights-agent"></a>Application Insights-agent installeren
 Voer Power shell uit als beheerder.
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -59,7 +59,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 ### <a name="download-the-module"></a>De module downloaden
 Down load de nieuwste versie van de module hand matig van [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 
-### <a name="unzip-and-install-status-monitor-v2"></a>Unzip en installeer Status Monitor v2
+### <a name="unzip-and-install-application-insights-agent"></a>Application Insights agent uitpakken en installeren
 ```powershell
 $pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.3.0-alpha.nupkg"
 $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
@@ -85,11 +85,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  Meer telemetrie toevoegen:
 
-- [Maak](monitor-web-app-availability.md) webtests om ervoor te zorgen dat uw site actief blijft.
-- [Voeg](../../azure-monitor/app/javascript.md) de telemetrie van de webclient toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+- [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
+- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
 - [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
 
-Meer doen met Status Monitor v2:
+Meer doen met Application Insights agent:
 
 - Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een uitleg van de opdrachten die hier worden weer gegeven.
-- Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+- Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .

@@ -2,29 +2,29 @@
 title: bestand opnemen
 description: bestand opnemen
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 07/08/2018
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 359347e41264711a6ac0fa4d2dd0c3633590e917
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 07cae1cee9810646de5bf9610a29991376736373
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176108"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391616"
 ---
-Deze fout kan optreden wanneer de Azure File Sync-service niet toegankelijk is vanaf de server is. U kunt deze fout oplossen door het uitvoeren van de volgende stappen uit:
+Deze fout kan optreden wanneer de Azure File Sync-Service niet toegankelijk is vanaf de server. U kunt deze fout oplossen door de volgende stappen te door lopen:
 
-1. Controleer of de service Windows `FileSyncSvc.exe` niet wordt geblokkeerd door uw firewall.
-2. Controleer of poort 443 is geopend voor uitgaande verbindingen naar de Azure File Sync-service. U kunt dit doen met de `Test-NetConnection` cmdlet. De URL voor de `<azure-file-sync-endpoint>` tijdelijke aanduiding hieronder te vinden in de [Azure File Sync-proxy en firewall-instellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) document. 
+1. Controleer of de Windows-service `FileSyncSvc.exe` niet is geblokkeerd door uw firewall.
+2. Controleer of poort 443 is geopend voor uitgaande verbindingen met de Azure File Sync-Service. U kunt dit doen met de cmdlet `Test-NetConnection`. De URL voor de tijdelijke aanduiding voor @no__t 0 kan worden gevonden in het [Azure file sync proxy-en Firewall instellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall) document. 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443
     ```
 
-3. Zorg ervoor dat de proxyconfiguratie werkt zoals verwacht is ingesteld. Dit kan worden gedaan met de `Get-StorageSyncProxyConfiguration` cmdlet. Meer informatie over het configureren van de proxyconfiguratie voor Azure File Sync kunt u vinden in de [Azure File Sync-proxy en firewall-instellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
+3. Zorg ervoor dat de proxy configuratie is ingesteld als verwacht. U kunt dit doen met de `Get-StorageSyncProxyConfiguration`-cmdlet. Meer informatie over het configureren van de proxy configuratie voor Azure File Sync vindt u in de [Azure file sync proxy-en Firewall instellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall).
 
     ```powershell
     $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -32,4 +32,4 @@ Deze fout kan optreden wanneer de Azure File Sync-service niet toegankelijk is v
     Get-StorageSyncProxyConfiguration
     ```
     
-4. Neem contact op met de netwerkbeheerder voor aanvullende hulp bij het oplossen van problemen verbinding met het netwerk.
+4. Neem contact op met de netwerk beheerder voor aanvullende hulp bij het oplossen van problemen met de netwerk verbinding.

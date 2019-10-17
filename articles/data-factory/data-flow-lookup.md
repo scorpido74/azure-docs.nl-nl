@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249255"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387856"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
 
 Gebruik lookup om referentie gegevens van een andere bron toe te voegen aan uw gegevens stroom. Voor de opzoek transformatie is een gedefinieerde bron vereist die naar de referentie tabel verwijst en die overeenkomt met de sleutel velden.
 
-Opzoek ![transformatie](media/data-flow/lookup1.png "zoeken")
+![Zoek transformatie](media/data-flow/lookup1.png "Opzoeken")
 
 Selecteer de belangrijkste velden die u wilt vergelijken tussen de binnenkomende stroom velden en de velden uit de referentie bron. U moet eerst een nieuwe bron op het ontwerp canvas voor gegevens stromen hebben gemaakt om te gebruiken als de rechter zijde voor de zoek actie.
 
@@ -33,7 +33,7 @@ Na uw opzoek transformatie kunt u volgende trans formaties gebruiken om de resul
 
 In Data Factory worden gegevens stromen uitgevoerd in een uitgebreide Spark-omgeving. Als uw gegevensset kan worden aangepast in de geheugen ruimte van het worker-knoop punt, kunnen we de prestaties van de zoek opdracht optimaliseren.
 
-Broadcast ![toevoegen aan](media/data-flow/broadcast.png "uitzending")
+![Broadcast-koppeling](media/data-flow/broadcast.png "Broadcast-koppeling")
 
 ### <a name="broadcast-join"></a>Broadcast-koppeling
 

@@ -2,17 +2,17 @@
 title: bestand opnemen
 description: bestand opnemen
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/31/2018
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 33dff710d83bd12a8db343a89c6e4576d1397ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: be3ce42ccdb9bedd02b8dead2426ac629fa12ef2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176107"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391618"
 ---
-Nee: verwijderen van een servereindpunt is niet als een server opnieuw opstarten. Verwijderen en opnieuw maken van het servereindpunt is bijna nooit een geschikte oplossing voor het oplossen van problemen met synchronisatie, cloud-opslaglagen of andere aspecten van Azure File Sync. Een destructieve bewerking voor het verwijderen van een servereindpunt is en kan leiden tot verlies van gegevens in het geval met bestanden gelaagde aanwezig zijn buiten de server eindpunt-naamruimte (Zie [waarom gelaagde bestanden bestaan buiten de naamruimte van de eindpunt](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) voor meer informatie) of in de bestanden niet toegankelijk zijn voor gelaagde bestanden in de naamruimte van de eindpunt. Deze problemen wordt niet opgelost wanneer het servereindpunt wordt opnieuw gemaakt. Gelaagde bestanden kunnen bestaan binnen uw server eindpunt-naamruimte, zelfs als u nog nooit aangemeld met cloud-opslaglagen ingeschakeld. Daarom raden we aan het servereindpunt niet te verwijderen, tenzij u wilt stoppen met het gebruik van Azure File Sync met deze specifieke map of expliciet om dit te doen hebt gekregen van een Microsoft-technicus. Zie voor meer informatie over servereindpunten verwijderen [verwijderen van een servereindpunt](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint).    
+Nee: het verwijderen van een server eindpunt is niet hetzelfde als het opnieuw opstarten van een server. Het verwijderen en opnieuw maken van het server eindpunt is bijna nooit een geschikte oplossing voor het oplossen van problemen met synchronisatie, Cloud lagen of andere aspecten van Azure File Sync. Het verwijderen van een server eindpunt is een destructieve bewerking. Dit kan leiden tot gegevens verlies in het geval dat gelaagde bestanden zich buiten de naam ruimte van het server eindpunt bevinden. Zie [Waarom gelaagde bestanden zich buiten de naam ruimte van het server eindpunt bevinden](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint) voor meer informatie. Of dit kan leiden tot ontoegankelijke bestanden voor gelaagde bestanden die zich in de naam ruimte van het server eindpunt bevinden. Deze problemen worden niet opgelost wanneer het server-eind punt opnieuw wordt gemaakt. Gelaagde bestanden kunnen bestaan in de naam ruimte van uw server eindpunt, zelfs als u geen Cloud lagen hebt ingeschakeld. Daarom is het raadzaam om het server eindpunt niet te verwijderen tenzij u wilt stoppen met het gebruik van Azure File Sync met deze map of door een micro soft-Engineer expliciet is geïnstrueerd. Zie [een server eindpunt verwijderen](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint)voor meer informatie over het verwijderen van server eindpunten.    

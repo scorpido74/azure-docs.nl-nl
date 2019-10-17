@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030106"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388003"
 ---
-# <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
+# <a name="what-are-mapping-data-flows"></a>Wat zijn gegevens stromen toewijzen?
 
 Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen met behulp van uitgeschaalde Spark-clusters. Gegevens stroom activiteiten kunnen worden uitgevoerd via bestaande Data Factory plannings-, beheer-, flow-en bewakings mogelijkheden.
 
@@ -24,7 +24,7 @@ Het toewijzen van gegevens stromen biedt een volledig visuele ervaring zonder co
 
 Als u een gegevens stroom wilt maken, klikt u op het plus teken onder Factory-resources. 
 
-nieuwe gegevensstroom ![nieuwe gegevens](media/data-flow/newdataflow2.png "stroom")
+![nieuwe gegevens stroom](media/data-flow/newdataflow2.png "nieuwe gegevens stroom")
 
 Hiermee gaat u naar het canvas voor gegevens stromen waar u uw transformatie logica kunt maken. Klik op het vak Bron toevoegen om het configureren van de bron transformatie te starten. Zie [bron transformatie](data-flow-source.md)voor meer informatie.
 
@@ -32,13 +32,13 @@ Hiermee gaat u naar het canvas voor gegevens stromen waar u uw transformatie log
 
 Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![Geval](media/data-flow/canvas1.png "Geval")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>Grafiek
 
 In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Klik op het vak Bron toevoegen om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, klikt u op het plus teken aan de rechter kant van een bestaande trans formatie.
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![Geval](media/data-flow/canvas2.png "Geval")
 
 ### <a name="configuration-panel"></a>Configuratie paneel
 
@@ -50,13 +50,13 @@ Elke trans formatie heeft ten minste vier configuratie tabbladen:
 
 Het eerste tabblad in het configuratie venster van elke trans formatie bevat de instellingen die specifiek zijn voor die trans formatie. Raadpleeg de documentatie pagina van die trans formatie voor meer informatie.
 
-Tabblad Bron ![instellingen]tabblad(media/data-flow/source1.png "bron instellingen")
+![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
 #### <a name="optimize"></a>Optimaliseren
 
 Het tabblad _Optimize_ bevat instellingen voor het configureren van partitie schema's.
 
-![Optimaliseren optimaliseren](media/data-flow/optimize1.png "")
+![Optimaliseren](media/data-flow/optimize1.png "Optimaliseren")
 
 De standaard instelling is ' huidige partitionering gebruiken ', waarmee wordt Azure Data Factory het partitioneren van het schema systeem eigen te gebruiken voor gegevens stromen die worden uitgevoerd op Spark. In de meeste scenario's is deze instelling de aanbevolen methode.
 
@@ -92,7 +92,7 @@ Als u een goed beeld hebt van de kardinaliteit van uw gegevens, is het mogelijk 
 
 Het tabblad _controleren_ bevat een weer gave van de meta gegevens van de gegevensstroom die u transformeert. U kunt de kolom aantallen, gewijzigde kolommen, toegevoegde kolommen, gegevens typen, kolom ordening en kolom verwijzingen bekijken. Inspecteer is een alleen-lezen weer gave van uw meta gegevens. U hoeft de foutopsporingsmodus niet in te scha kelen om meta gegevens in het deel venster controleren weer te geven.
 
-![Controleren controleren](media/data-flow/inspect1.png "")
+![Controleert](media/data-flow/inspect1.png "Controleert")
 
 Wanneer u de vorm van uw gegevens via trans formaties wijzigt, worden de wijzigingen in de meta gegevens in het deel venster controleren weer gegeven. Als er geen gedefinieerd schema is in uw bron transformatie, worden de meta gegevens niet weer gegeven in het deel venster controleren. Het ontbreken van meta gegevens is gebruikelijk in schema-drift-scenario's.
 
@@ -104,11 +104,11 @@ Als de foutopsporingsmodus is ingeschakeld, biedt het tabblad _voor beeld van ge
 
 De bovenste balk bevat acties die van invloed zijn op de hele gegevens stroom, zoals opslaan en valideren. U kunt ook scha kelen tussen de grafiek-en configuratie modus met behulp van de knoppen **diagram weer geven** en **grafieken verbergen** .
 
-Grafiek ![verbergen grafiek](media/data-flow/hideg.png "verbergen")
+![Grafiek verbergen](media/data-flow/hideg.png "Grafiek verbergen")
 
 Als u uw grafiek verbergt, kunt u later door uw transformatie knooppunten navigeren via de knoppen **vorige** en **volgende** .
 
-![Navigeren](media/data-flow/showhide.png "")
+![Scha](media/data-flow/showhide.png "Scha")
 
 ## <a name="next-steps"></a>Volgende stappen
 

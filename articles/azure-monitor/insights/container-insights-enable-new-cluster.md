@@ -1,6 +1,6 @@
 ---
-title: Een nieuwe Azure Kubernetes Service (AKS)-cluster bewaken | Microsoft Docs
-description: Leer hoe u bewaking voor een nieuwe Azure Kubernetes Service (AKS)-cluster met Azure Monitor voor containers-abonnement wilt inschakelen.
+title: Een nieuw Azure Kubernetes service-cluster (AKS) bewaken | Microsoft Docs
+description: Meer informatie over het inschakelen van bewaking voor een nieuw Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers-abonnement.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,59 +13,58 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: magoedte
-ms.openlocfilehash: d73ab2d5cca4f20f954a0b0e972111d3f395c3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cff0286e944414d70cffd801620159ffef3db1a5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077528"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389814"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Schakel de bewaking van een nieuwe cluster met Azure Kubernetes Service (AKS)
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Bewaking van een nieuw Azure Kubernetes service (AKS)-cluster inschakelen
 
-In dit artikel wordt beschreven hoe u voor het instellen van Azure Monitor voor containers voor het bewaken van beheerde Kubernetes-cluster die worden gehost op [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) die u voorbereidt om te implementeren in uw abonnement.
+In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor het bewaken van beheerde Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/) die u wilt implementeren in uw abonnement.
 
-U kunt inschakelen bewaking van een AKS-cluster met behulp van een van de ondersteunde methoden:
+U kunt de bewaking van een AKS-cluster inschakelen met een van de ondersteunde methoden:
 
-* Azure-CLI
+* Azure CLI
 * Terraform
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
 
-Volg de stappen in dit artikel in de sectie voor bewaking van een nieuw AKS-cluster gemaakt met Azure CLI, [maken-AKS-cluster](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
+Als u de bewaking van een nieuw AKS-cluster dat is gemaakt met Azure CLI wilt inschakelen, volgt u de stap in het artikel Quick Start in het gedeelte [AKS-cluster maken](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet worden uitgevoerd van Azure CLI versie 2.0.59 of hoger. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
->
+>Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer `az --version` uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). Als u de AKS-preview CLI-extensie versie 0.4.12 of hoger hebt geïnstalleerd, verwijdert u alle wijzigingen die u hebt aangebracht om een preview-uitbrei ding in te scha kelen, omdat AKS preview-functies niet beschikbaar zijn in de Cloud voor Amerikaanse Governmnet van Azure.
 
-## <a name="enable-using-terraform"></a>Inschakelen met behulp van Terraform
+## <a name="enable-using-terraform"></a>Inschakelen met behulp van terraform
 
-Als u [implementeren van een nieuw AKS-cluster met behulp van Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), geeft u de argumenten vereist in het profiel [een Log Analytics-werkruimte maken](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) als u niet hebt gekozen om op te geven van een bestaande resourcegroep. 
+Als u [een nieuw AKS-cluster implementeert met behulp van terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), geeft u de vereiste argumenten in het profiel [op om een log Analytics-werk ruimte te maken](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) als u geen bestaande hebt opgegeven. 
 
 >[!NOTE]
->Als u gebruiken, Terraform wilt, moet u uitvoeren de Terraform Azure DB-Provider versie 1.17.0 of hoger.
+>Als u ervoor kiest om terraform te gebruiken, moet u de terraform Azure RM-provider versie 1.17.0 of hoger uitvoeren.
 
-Azure Monitor voor containers toevoegen aan de werkruimte, Zie [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) en het profiel te voltooien door de [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) en opgeven **oms_agent**. 
+Als u Azure Monitor voor containers wilt toevoegen aan de werk ruimte, raadpleegt u [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) en voltooit u het profiel door de [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) op te nemen en **oms_agent**op te geven. 
 
-Nadat u bewaking hebt ingeschakeld, en alle configuratietaken zijn voltooid, kunt u de prestaties van uw cluster op twee manieren controleren:
+Nadat u bewaking hebt ingeschakeld en alle configuratie taken zijn voltooid, kunt u de prestaties van uw cluster op twee manieren controleren:
 
-* Rechtstreeks in het AKS-cluster door te selecteren **Health** in het linkerdeelvenster.
-* Door het selecteren van de **Monitor Container insights** tegel op de pagina van de AKS-cluster voor het geselecteerde cluster. In Azure Monitor in het linkerdeelvenster selecteert **Health**. 
+* Rechtstreeks in het AKS-cluster door de **status** te selecteren in het linkerdeel venster.
+* Door de tegel **container Insights bewaken** in de AKS-cluster pagina voor het geselecteerde cluster te selecteren. Selecteer in Azure Monitor in het linkerdeel venster **status**. 
 
   ![Opties voor het selecteren van Azure Monitor voor containers in AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
-Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven. 
+Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven. 
 
-## <a name="verify-agent-and-solution-deployment"></a>Controleer of de implementatie van agent en de oplossing
-Met de versie van agent *06072018* of hoger, kunt u controleren dat zowel de agent en de oplossing zijn geïmplementeerd. U kunt alleen de implementatie van de agent controleren met eerdere versies van de agent.
+## <a name="verify-agent-and-solution-deployment"></a>Implementatie van agent en oplossing controleren
+Met Agent versie *06072018* of hoger kunt u controleren of zowel de agent als de oplossing is geïmplementeerd. Met eerdere versies van de agent kunt u alleen de implementatie van de agent verifiëren.
 
-### <a name="agent-version-06072018-or-later"></a>Agentversie 06072018 of hoger
-Voer de volgende opdracht om te controleren dat de agent is geïmplementeerd. 
+### <a name="agent-version-06072018-or-later"></a>Agent versie 06072018 of hoger
+Voer de volgende opdracht uit om te controleren of de agent is geïmplementeerd. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:
+De uitvoer moet er als volgt uitzien, wat aangeeft dat het goed is geïmplementeerd:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -73,13 +72,13 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-Als u wilt controleren of de implementatie van de oplossing, moet u de volgende opdracht uitvoeren:
+Voer de volgende opdracht uit om de implementatie van de oplossing te controleren:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:
+De uitvoer moet er als volgt uitzien, wat aangeeft dat het goed is geïmplementeerd:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -87,15 +86,15 @@ NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
 
-### <a name="agent-version-earlier-than-06072018"></a>Agent-versie ouder is dan 06072018
+### <a name="agent-version-earlier-than-06072018"></a>Agent versie ouder dan 06072018
 
-Om te controleren dat de versie van de Log Analytics-agent vóór uitgebracht *06072018* correct is geïmplementeerd met de volgende opdracht uitvoeren:  
+Voer de volgende opdracht uit om te controleren of de versie van de Log Analytics agent die is uitgebracht vóór *06072018* correct is geïmplementeerd:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:  
+De uitvoer moet er als volgt uitzien, wat aangeeft dat het goed is geïmplementeerd:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -103,14 +102,14 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-## <a name="view-configuration-with-cli"></a>Configuratie met CLI
-Gebruik de `aks show` opdracht om informatie te verkrijgen die de oplossing of niet ingeschakeld is, wat is de Log Analytics-werkruimte resourceID en overzichtsgegevens over het cluster.  
+## <a name="view-configuration-with-cli"></a>Configuratie weer geven met CLI
+Gebruik de `aks show`-opdracht om details op te halen, zoals de oplossing die is ingeschakeld of niet, wat is de Log Analytics werk ruimte resourceID en de samenvattings gegevens over het cluster.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 ```
 
-Na een paar minuten, de opdracht is voltooid en retourneert JSON opgemaakte informatie over de oplossing.  De resultaten van de opdracht het controle-Add-on-profiel moet worden weergegeven en lijkt op de volgende voorbeelduitvoer:
+Na enkele minuten is de opdracht voltooid en retourneert deze informatie over de JSON-indeling over de oplossing.  De resultaten van de opdracht moeten het profiel voor het toevoegen van bewaking weer geven en lijken op de volgende voorbeeld uitvoer:
 
 ```
 "addonProfiles": {
@@ -125,6 +124,6 @@ Na een paar minuten, de opdracht is voltooid en retourneert JSON opgemaakte info
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u problemen ondervindt tijdens een poging voor de Onboarding van de oplossing, raadpleegt u de [problemen oplossen met](container-insights-troubleshoot.md)
+* Als u problemen ondervindt bij het voorbereiden van de oplossing, raadpleegt u de [hand leiding](container-insights-troubleshoot.md) voor het oplossen van problemen
 
-* Deze metrische gegevens voor servicestatus zijn met bewaking ingeschakeld om vast te leggen van de gezondheid van metrische gegevens voor de AKS-clusterknooppunten en de schillen, beschikbaar in de Azure-portal. Zie voor meer informatie over het gebruik van Azure Monitor voor containers, [weergave Azure Kubernetes Service health](container-insights-analyze.md).
+* Als bewaking is ingeschakeld voor het vastleggen van metrische gegevens over de status van de AKS-cluster knooppunten en de peulen, zijn deze metrische gegevens over de status beschikbaar in de Azure Portal. Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor voor containers.

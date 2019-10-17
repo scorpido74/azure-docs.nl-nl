@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4fb2019b0298520d6bc2400e9fc2a2732664812
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329947"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439345"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Een map in Azure Active Directory verwijderen
 
@@ -69,25 +69,29 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
 1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
 
-2. U moet een abonnement annuleren voordat u het kunt verwijderen. Selecteer **facturering** en selecteer **producten & Services**en selecteer vervolgens **abonnement annuleren** voor het abonnement dat u wilt annuleren. U wordt naar een feedback pagina geleid.
+2. Bekijk een voor beeld van het nieuwe Microsoft 365-beheer centrum door ervoor te zorgen dat de nieuwe schakel optie voor het **beheer centrum** is ingeschakeld.
+
+   ![Bekijk een voor beeld van de nieuwe M365-beheer centrum-ervaring](./media/directory-delete-howto/preview-toggle.png)
+
+3. Zodra het nieuwe beheer centrum is ingeschakeld, moet u een abonnement annuleren voordat u het kunt verwijderen. Selecteer **facturering** en selecteer **producten & Services**en selecteer vervolgens **abonnement annuleren** voor het abonnement dat u wilt annuleren. U wordt naar een feedback pagina geleid.
 
    ![Kies een abonnement dat u wilt annuleren](./media/directory-delete-howto/cancel-choose-subscription.png)
 
-3. Vul het feedback formulier in en selecteer **abonnement annuleren** om het abonnement te annuleren.
+4. Vul het feedback formulier in en selecteer **abonnement annuleren** om het abonnement te annuleren.
 
    ![Opdracht annuleren in de preview van het abonnement](./media/directory-delete-howto/cancel-command.png)
 
-4. U kunt nu het abonnement verwijderen. Selecteer **verwijderen** voor het abonnement dat u wilt verwijderen. Als u het abonnement niet kunt vinden op de pagina **Products & Services** , controleert u of u de **abonnements status** hebt ingesteld op **alle**.
+5. U kunt nu het abonnement verwijderen. Selecteer **verwijderen** voor het abonnement dat u wilt verwijderen. Als u het abonnement niet kunt vinden op de pagina **Products & Services** , controleert u of u de **abonnements status** hebt ingesteld op **alle**.
 
    ![Koppeling verwijderen voor het verwijderen van het abonnement](./media/directory-delete-howto/delete-command.png)
 
-5. Selecteer **abonnement verwijderen** om het abonnement te verwijderen en de voor waarden te accepteren. Alle gegevens worden binnen drie dagen definitief verwijderd. Als u van gedachten verandert, kunt u [het abonnement opnieuw activeren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) tijdens de periode van drie dagen.
+6. Selecteer **abonnement verwijderen** om het abonnement te verwijderen en de voor waarden te accepteren. Alle gegevens worden binnen drie dagen definitief verwijderd. Als u van gedachten verandert, kunt u [het abonnement opnieuw activeren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) tijdens de periode van drie dagen.
   
    ![voor waarden zorgvuldig lezen](./media/directory-delete-howto/delete-terms.png)
 
-6. Nu is de status van het abonnement gewijzigd en is het abonnement gemarkeerd voor verwijdering. Het abonnement treedt de **status van** 72 uur later op.
+7. Nu is de status van het abonnement gewijzigd en is het abonnement gemarkeerd voor verwijdering. Het abonnement treedt de **status van** 72 uur later op.
 
-7. Zodra u een abonnement in uw map hebt verwijderd en 72 uur is verstreken, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en mogen er geen abonnementen worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
+8. Zodra u een abonnement in uw map hebt verwijderd en 72 uur is verstreken, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en mogen er geen abonnementen worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
   
    ![controle van het abonnement door geven op het scherm van verwijderen](./media/directory-delete-howto/delete-checks-passed.png)
 

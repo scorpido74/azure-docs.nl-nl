@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202204"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438626"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
 
@@ -47,13 +47,13 @@ Security Center maakt gebruik van micro soft Monitoring Agent voor het verzamele
 
 Het dash board gebeurtenissen dat werd weer gegeven toen u een werk ruimte heb geselecteerd, zijn buiten gebruik gesteld:
 
-![Gebeurtenissendashboard][2]
+![Gebeurtenissen dashboard][2]
 
 ### <a name="events-dashboard---the-new-experience"></a>Gebeurtenissen Dashboard: de nieuwe ervaring
 
 We raden u aan de systeem eigen mogelijkheden van Azure Log Analytics te gebruiken om de belangrijkste gebeurtenissen in uw werk ruimten te bekijken.
 
-Als u aangepaste gebeurtenissen in Security Center hebt gemaakt, zijn deze toegankelijk. Ga in log Analytics naar **Selecteer werk ruimte** > **opgeslagen Zoek opdrachten**. Uw gegevens gaan verloren of worden niet gewijzigd. Systeem eigen gebeurtenissen zijn ook beschikbaar in hetzelfde scherm in Log Analytics.
+Als u aangepaste gebeurtenissen in Security Center hebt gemaakt, zijn deze toegankelijk. Ga in Log Analytics naar de **werk ruimte selecteren** > **opgeslagen Zoek opdrachten**. Uw gegevens gaan verloren of worden niet gewijzigd. Systeem eigen gebeurtenissen zijn ook beschikbaar in hetzelfde scherm in Log Analytics.
 
 ![Opgeslagen Zoek opdrachten in werk ruimte][3]
 
@@ -115,7 +115,7 @@ De bestaande gegevens blijven beschikbaar in de beveiligings oplossing van Log A
 
 ### <a name="security-events-map---the-new-experience"></a>Toewijzing van beveiligings gebeurtenissen-de nieuwe ervaring
 
-We raden u aan de functie voor waarschuwings toewijzing te gebruiken die is ingebouwd in Security Center: **Toewijzing van beveiligings waarschuwingen (preview-versie)** . Deze functie biedt een geoptimaliseerde ervaring en werkt in alle abonnementen en aan de gekoppelde werk ruimten. Het biedt u een weer gave op hoog niveau in uw omgeving en is niet gericht op één werk ruimte.
+We raden u aan de functie voor waarschuwings toewijzing te gebruiken die is ingebouwd in Security Center: **map Security Alerts (preview)** . Deze functie biedt een geoptimaliseerde ervaring en werkt in alle abonnementen en aan de gekoppelde werk ruimten. Het biedt u een weer gave op hoog niveau in uw omgeving en is niet gericht op één werk ruimte.
 
 ## Aangepaste waarschuwings regels (preview-versie)<a name="menu_customalerts"></a>
 
@@ -156,7 +156,7 @@ Security Center kunt [geïntegreerde beveiligings oplossingen inschakelen in azu
 
 - [Firewall-en Web Application Firewall oplossingen van de volgende generatie](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
 - [Integratie van beveiligings oplossingen die de algemene gebeurtenis indeling (CEF) ondersteunen](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
-- [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
+- [Micro soft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
 Na het buiten gebruik stellen kunt u geen van de typen oplossingen die in de voor gaande lijst worden vermeld, toevoegen of wijzigen, hetzij via de gebruikers interface of de API. Azure Security Center vindt geen nieuwe exemplaren van deze partner oplossingen meer.
@@ -169,9 +169,9 @@ Als u bestaande verbonden oplossingen hebt, raden we u aan om over te stappen op
 
 Azure Security Center bewaakt beveiligingsconfiguraties door een set van [meer dan 150 aanbevolen regels](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) toe te passen om het besturingssysteem te beveiligen. Deze regels zijn van toepassing op firewalls, controle, wachtwoord beleid en meer. Als er wordt geconstateerd dat een computer een kwetsbare configuratie heeft, wordt er door Security Center een beveiligingsaanbeveling gegenereerd. In het [scherm beveiligings configuratie bewerken](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) kunnen klanten de standaard configuratie voor de beveiliging van besturings systemen aanpassen in Security Center.
 
-Deze preview-functie is buiten gebruik gesteld. Ga als [volgt](https://aka.ms/ascresetsecurityconfigurations) te werk om de standaard waarden na afloop van de eind datum van de beveiligings configuraties te herstellen via de API of Power shell
+Deze preview-functie is buiten gebruik gesteld. Ga als [volgt](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) te werk om de standaard waarden na afloop van de eind datum van de beveiligings configuraties te herstellen via de API of Power shell
 
-![Beveiligingsconfiguraties bewerken][17]
+![Beveiligings configuraties bewerken][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Beveiligings configuraties bewerken: de nieuwe ervaring
 

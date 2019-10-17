@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027019"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387273"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter Row Transform
 
@@ -19,7 +19,7 @@ Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid
 
 
 
-![ALTER Row Settings](media/data-flow/alter-row1.png "ALTER Row Settings")
+![Rij-instellingen wijzigen](media/data-flow/alter-row1.png "Rij-instellingen wijzigen")
 
 > [!NOTE]
 > Alter Row-trans formaties worden alleen toegepast op data base-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. U moet een taak stroom voor het uitvoeren van gegevens toevoegen aan een pijp lijn en de fout opsporing of triggers voor pijp lijn gebruiken om de Alter Row-beleids regels in uw database tabellen te bepalen.
@@ -28,7 +28,7 @@ Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid
 
 Een alter Row trans formatie maken en een rij-beleid met een voor waarde van `true()` opgeven. Elke rij die niet aan een van de eerder gedefinieerde expressies voldoet, wordt gemarkeerd voor het opgegeven beleid voor de rij. Standaard wordt elke rij die niet aan een voorwaardelijke expressie voldoet, gemarkeerd voor `Insert`.
 
-![ALTER Row One Policy](media/data-flow/alter-row4.png "ALTER Row One Policy")
+![Rij één beleids regel wijzigen](media/data-flow/alter-row4.png "Rij één beleids regel wijzigen")
 
 > [!NOTE]
 > Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de voor waarde als `true()` opgeven.
@@ -37,7 +37,7 @@ Een alter Row trans formatie maken en een rij-beleid met een voor waarde van `tr
 
 Schakel de modus voor fout opsporing van gegevens stromen in om de resultaten van de Alter Row-beleids regels weer te geven in het deel venster voor gegevens voorbeeld. Bij het uitvoeren van een alter Row in de modus voor fout opsporing van gegevens stromen worden geen DDL-of DML-acties op uw doel gemaakt. Als u deze acties wilt uitvoeren, voert u de gegevens stroom in een activiteit gegevens stroom uitvoeren binnen een pijp lijn uit.
 
-![ALTER Row policies](media/data-flow/alter-row3.png "ALTER Row policies")
+![Alter Row policies](media/data-flow/alter-row3.png "Alter Row policies")
 
 Hiermee kunt u de status van elke rij controleren en weer geven op basis van uw voor waarden. Er zijn pictogrammen voor elke insert-, update-, DELETE-en upsert-actie die wordt uitgevoerd in uw gegevens stroom, waarmee wordt aangegeven welke actie wordt uitgevoerd wanneer u de gegevens stroom in een pijp lijn uitvoert.
 
@@ -45,7 +45,7 @@ Hiermee kunt u de status van elke rij controleren en weer geven op basis van uw 
 
 U moet een type data base-Sink hebben voor Alter Row to work. In de Sink-instellingen moet u elke actie instellen die overeenkomt met uw Alter Row-voor waarden.
 
-Rij- ![sink Alter](media/data-flow/alter-row2.png "Row") Sink wijzigen
+![Rij-Sink wijzigen](media/data-flow/alter-row2.png "Rij-Sink wijzigen")
 
 Het standaard gedrag van de ADF-gegevens stroom met data base-sinks is het invoegen van rijen. Als u ook updates, upsert en verwijderingen wilt toestaan, moet u ook deze selectie vakjes in de Sink inschakelen om de acties toe te staan.
 

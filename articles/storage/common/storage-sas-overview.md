@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670835"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382017"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -24,9 +24,17 @@ Een Shared Access Signature (SAS) biedt beveiligde gedelegeerde toegang tot reso
 
 Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 
-- **SA'S voor gebruikers overdracht (preview).** Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is alleen van toepassing op Blob-opslag. Als u een gebruikers delegering SAS wilt maken, moet u eerst een sleutel voor gebruikers overdracht aanvragen die wordt gebruikt om de SA'S te ondertekenen. Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
-- **Service-SA'S.** Een service-SAS is beveiligd met de sleutel van het opslag account. Een service-SAS delegeert toegang tot een bron in slechts een van de Azure Storage services: Blob-opslag, wachtrij opslag, tabel opslag of Azure Files. Zie [Create a Service SAS (rest API) (Engelstalig)](/rest/api/storageservices/create-service-sas)voor meer informatie over de service-sa's.
-- **Account-SAS.** Een account-SAS wordt beveiligd met de sleutel van het opslag account. Een account-SAS delegeert toegang tot resources in een of meer van de opslagservices. Alle bewerkingen die beschikbaar zijn via een service of de SAS voor gebruikers overdracht zijn ook beschikbaar via een account-SAS. Daarnaast kunt u met de account-SAS de toegang delegeren voor bewerkingen die van toepassing zijn op het niveau van de service, zoals **service-eigenschappen ophalen/instellen** en bewerkingen voor **service statistieken ophalen** . U kunt ook toegang tot het lezen, schrijven en verwijderen van bewerkingen delegeren voor blobcontainers, tabellen, wachtrijen en bestandsshares die niet zijn toegestaan bij een service-SAS. [Maak een account SAS (rest API)](/rest/api/storageservices/create-account-sas)voor meer informatie over de account-SAS.
+- **SA'S voor gebruikers overdracht (preview).** Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is alleen van toepassing op Blob-opslag.
+
+    Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
+
+- **Service-SA'S.** Een service-SAS is beveiligd met de sleutel van het opslag account. Een service-SAS delegeert toegang tot een bron in slechts een van de Azure Storage services: Blob-opslag, wachtrij opslag, tabel opslag of Azure Files. 
+
+    Zie [Create a Service SAS (rest API) (Engelstalig)](/rest/api/storageservices/create-service-sas)voor meer informatie over de service-sa's.
+
+- **Account-SAS.** Een account-SAS wordt beveiligd met de sleutel van het opslag account. Een account-SAS delegeert toegang tot resources in een of meer van de opslagservices. Alle bewerkingen die beschikbaar zijn via een service of de SAS voor gebruikers overdracht zijn ook beschikbaar via een account-SAS. Daarnaast kunt u met de account-SAS de toegang delegeren voor bewerkingen die van toepassing zijn op het niveau van de service, zoals **service-eigenschappen ophalen/instellen** en bewerkingen voor **service statistieken ophalen** . U kunt ook toegang tot het lezen, schrijven en verwijderen van bewerkingen delegeren voor blobcontainers, tabellen, wachtrijen en bestandsshares die niet zijn toegestaan bij een service-SAS. 
+
+    [Maak een account SAS (rest API)](/rest/api/storageservices/create-account-sas)voor meer informatie over de account-SAS.
 
 > [!NOTE]
 > Micro soft raadt u aan om Azure AD-referenties, indien mogelijk, te gebruiken als een beveiligings best practice, in plaats van de account sleutel te gebruiken, wat eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist voor toegang tot Blob Storage, gebruikt u Azure AD-referenties om een gebruikers delegering SA'S te maken indien mogelijk voor superieure beveiliging.
@@ -34,7 +42,7 @@ Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 Een Shared Access Signature kan een van de twee volgende vormen hebben:
 
 - **Ad-hoc SAS:** Wanneer u een ad-hoc SAS maakt, worden de start tijd, de verloop tijd en de machtigingen voor de SA'S opgegeven in de SAS-URI (of impliciet als de begin tijd wordt wegge laten). Elk type SAS kan een ad-hoc-SAS zijn.
-- **Service-SA'S met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen @ no__t-0the-start tijd, verloop tijd en machtigingen @ no__t-1defined over voor het opgeslagen toegangs beleid.
+- **Service-sa's met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen @ no__t-0the-start tijd, verloop tijd en machtigingen @ no__t-1defined over voor het opgeslagen toegangs beleid.
 
 > [!NOTE]
 > Een SAS van gebruikers of een account-SAS moet een ad-hoc-SA'S zijn. Opgeslagen toegangs beleid wordt niet ondersteund voor de gebruikers delegering SA'S of de account-SAS.
@@ -47,7 +55,7 @@ Een Shared Access Signature is een ondertekende URI die verwijst naar een of mee
 
 U kunt op een van de volgende twee manieren een SAS ondertekenen:
 
-- Met een gebruikers overdrachts sleutel die is gemaakt met behulp van de referenties van Azure Active Directory (Azure AD). Een SAS voor gebruikers overdracht is ondertekend met de sleutel gebruikers overdracht.
+- Met een *gebruikers overdrachts sleutel* die is gemaakt met behulp van de referenties van Azure Active Directory (Azure AD). Een SAS voor gebruikers overdracht is ondertekend met de sleutel gebruikers overdracht.
 
     Als u de sleutel voor gebruikers overdracht wilt ophalen en de SA'S wilt maken, moet aan een Azure AD-beveiligingsprincipal een rol op basis van op rollen gebaseerd toegangs beheer (RBAC) worden toegewezen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevat. Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor gedetailleerde informatie over RBAC-rollen met machtigingen voor het ophalen van de sleutel voor gebruikers overdracht.
 
@@ -71,7 +79,7 @@ Een veelvoorkomend scenario waarbij een SAS handig is, is een service waar gebru
 
 1. Clients uploaden en downloaden gegevens via een front-end-proxy service, die verificatie uitvoert. Deze front-end proxy service heeft het voor deel dat het mogelijk is om validatie van bedrijfs regels toe te staan, maar voor grote hoeveel heden gegevens of trans acties met veel volumes is het maken van een service die kan worden geschaald naar wens, duur of lastig.
 
-   ![Scenario diagram: Front-end-proxy service](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
+   ![Scenario diagram: front-end proxy service](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
 1. Een licht gewicht service verifieert de client naar behoefte en genereert vervolgens een SAS. Zodra de client toepassing de SAS heeft ontvangen, kunnen ze rechtstreeks toegang krijgen tot Storage-account bronnen met de machtigingen die zijn gedefinieerd door de SA'S en voor het interval dat is toegestaan door de SAS. De SAS verkleint de nood zaak om alle gegevens door te sturen via de front-end-proxy service.
 

@@ -1,6 +1,6 @@
 ---
 title: Hybride Azure Active Directory-implementatie plannen in Azure Active Directory (Azure AD) | Microsoft Docs
-description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Leer hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960213"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389561"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: Uw hybride Azure Active Directory deelname-implementatie plannen
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
 Op een vergelijk bare manier als een gebruiker is een apparaat een andere core-identiteit die u wilt beveiligen en gebruiken om uw resources op elk gewenst moment en vanaf elke locatie te beveiligen. Met een van de volgende methoden kunt u dit doel bereiken door apparaat-id's in azure AD te maken en beheren:
 
@@ -43,11 +43,11 @@ Als u uw hybride implementatie van Azure AD wilt plannen, moet u vertrouwd zijn 
 
 |   |   |
 | --- | --- |
-| ![Vinkje][1] | Ondersteunde apparaten controleren |
-| ![Vinkje][1] | Bekijk de dingen die u moet weten |
-| ![Vinkje][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
-| ![Vinkje][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
-| ![Vinkje][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
+| ![Selecteren][1] | Ondersteunde apparaten controleren |
+| ![Selecteren][1] | Bekijk de dingen die u moet weten |
+| ![Selecteren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
+| ![Selecteren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
+| ![Selecteren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
 
 ## <a name="review-supported-devices"></a>Ondersteunde apparaten controleren
 
@@ -97,7 +97,7 @@ Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](ove
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname controleren
 
-Wanneer alle vereisten aanwezig zijn, worden Windows-apparaten automatisch geregistreerd als apparaten in uw Azure AD-Tenant. De status van deze apparaat-id's in azure AD wordt aangeduid als hybride Azure AD-deelname. Meer informatie over de concepten die in dit artikel worden behandeld, vindt u in de artikelen [Inleiding tot apparaat-id-beheer in azure Active Directory](overview.md) en [de implementatie van uw hybride Azure Active Directory-deelname plannen](hybrid-azuread-join-plan.md).
+Wanneer alle vereisten aanwezig zijn, worden Windows-apparaten automatisch geregistreerd als apparaten in uw Azure AD-Tenant. De status van deze apparaat-id's in azure AD wordt aangeduid als hybride Azure AD-deelname. Meer informatie over de concepten die in dit artikel worden behandeld, vindt u in het artikel [Inleiding tot apparaat-id-beheer in azure Active Directory](overview.md).
 
 Organisaties willen mogelijk een gecontroleerde validatie van hybride Azure AD-deelname uitvoeren voordat ze in hun hele organisatie allemaal tegelijk worden ingeschakeld. Bekijk het artikel [gecontroleerde validatie van hybride Azure AD-deelname](hybrid-azuread-join-control.md) om te begrijpen hoe u dit kunt doen.
 
@@ -129,7 +129,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
 > [!NOTE]
 > Azure AD biedt geen ondersteuning voor Smart Cards of certificaten in beheerde domeinen.
 
-Vanaf versie 1.1.819.0 bevat Azure AD Connect een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
+Vanaf versie 1.1.819.0 biedt Azure AD Connect u een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
 
 Ga op basis van het scenario dat overeenkomt met uw identiteits infrastructuur naar:
 
@@ -140,17 +140,17 @@ Ga op basis van het scenario dat overeenkomt met uw identiteits infrastructuur n
 
 Soms kunnen uw on-premises AD-Upn's afwijken van uw Azure AD-Upn's. In dergelijke gevallen biedt Windows 10 Hybrid Azure AD-deelname beperkte ondersteuning voor on-premises AD-Upn's op basis van de [verificatie methode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), het domein type en de Windows 10-versie. Er zijn twee typen on-premises AD-Upn's die in uw omgeving kunnen bestaan:
 
-- Routeer bare UPN: Een routeerbaar UPN heeft een geldig geverifieerd domein dat is geregistreerd bij een domein registratie service. Als contoso.com bijvoorbeeld het primaire domein in azure AD is, is contoso.org het primaire domein in on-premises AD eigendom van Contoso en wordt het [geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
-- Niet-omleid bare UPN: Een niet-Routeer bare UPN heeft geen geverifieerd domein. Het is alleen van toepassing op het particuliere netwerk van uw organisatie. Als contoso.com bijvoorbeeld het primaire domein is in azure AD, contoso. local is het primaire domein in on-premises AD, maar dit is geen verifieerbaar domein op internet en wordt alleen gebruikt in het netwerk van contoso.
+- Routeer bare UPN: een routeerbaar UPN heeft een geldig geverifieerd domein dat is geregistreerd bij een domein registratie service. Als contoso.com bijvoorbeeld het primaire domein in azure AD is, is contoso.org het primaire domein in on-premises AD eigendom van Contoso en wordt het [geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+- Niet-omleid bare UPN: een niet-routeerbaare UPN heeft geen geverifieerd domein. Het is alleen van toepassing op het particuliere netwerk van uw organisatie. Als contoso.com bijvoorbeeld het primaire domein is in azure AD, contoso. local is het primaire domein in on-premises AD, maar dit is geen verifieerbaar domein op internet en wordt alleen gebruikt in het netwerk van contoso.
 
 De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor deze on-premises AD-Upn's in Windows 10 Hybrid Azure AD-deelname
 
-| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Description |
+| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Beschrijving |
 | ----- | ----- | ----- | ----- |
-| Bare | Federatief | Van 1703 release | Algemeen beschikbaar |
-| Niet-routeerbaar | Federatief | Van 1803 release | Algemeen beschikbaar |
-| Bare | Beheerd | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
-| Niet-routeerbaar | Beheerd | Niet ondersteund | |
+| Bare | Federatie | Van 1703 release | Algemeen beschikbaar |
+| Niet-routeerbaar | Federatie | Van 1803 release | Algemeen beschikbaar |
+| Bare | Managed | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
+| Niet-routeerbaar | Managed | Niet ondersteund | |
 
 ## <a name="next-steps"></a>Volgende stappen
 

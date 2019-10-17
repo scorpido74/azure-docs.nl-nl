@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879346"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389614"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Quickstart: Een clienttoepassing configureren voor toegang tot web-API's
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's
 
 Voordat een web-/vertrouwelijke clienttoepassing kan deelnemen aan een werkstroom voor autorisatieverlening die verificatie (en het verkrijgen van een toegangstoken) vereist, moeten beveiligde referenties worden vastgesteld. De standaardmethode voor verificatie die wordt ondersteund door Azure Portal is de client-ID + geheime sleutel.
 
@@ -45,7 +45,7 @@ In deze snelstart leert u hoe u uw toepassing kunt configureren voor het volgend
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
+Zorg ervoor dat u voordat u aan de slag gaat aan deze vereisten voldoet:
 
 * Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
 * U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
@@ -58,7 +58,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
 1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**.
-1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u het **Overzicht** of de hoofdregistratiepagina van de toepassing.
+1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Volg de stappen om uw toepassing te configureren voor toegang tot web-API's:
     * [Omleidings-URI's toevoegen aan uw toepassing](#add-redirect-uris-to-your-application)
     * [Geavanceerde instellingen configureren voor uw toepassing](#configure-advanced-settings-for-your-application)
@@ -76,12 +76,13 @@ Ga als volgt te werk om een omleidings-URI toe te voegen aan uw toepassing:
    1. Selecteer het type toepassing dat u bouwt, **Web** of **Openbare client (mobiel en desktop)** .
    1. Voer de omleidings-URI voor uw toepassing in.
       * Geef voor webtoepassingen de basis-URL van uw toepassing op. `http://localhost:31544` kan bijvoorbeeld de URL zijn van een webtoepassing die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden.
-      * Geef voor openbare toepassingen de URI op die door Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, `https://MyFirstApp`bijvoorbeeld:.
+      * Geef voor openbare toepassingen de URI op die door Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, bijvoorbeeld: `https://MyFirstApp`.
 
 1. Volg deze stappen om een keuze te maken uit voorgestelde omleidings-URI's voor openbare clients (mobiel, desktop):
     1. Ga naar de sectie **Voorgestelde omleidings-URI's voor openbare clients (mobiel, desktop)** .
-    1. Selecteer de juiste omleidings-URI's voor uw toepassing met behulp van de selectievakjes.
+    1. Selecteer de juiste omleidings-URI's voor uw toepassing met behulp van de selectievakjes. U kunt ook een aangepaste omleidings-URI invoeren. Raadpleeg de documentatie van de bibliotheek als u niet zeker weet wat u moet gebruiken.
 
+Er zijn bepaalde beperkingen die van toepassing zijn op omleidings-Uri's. Meer informatie over de [beperkingen en beperkingen voor omleidings-uri's](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 > [!NOTE]
 > Probeer de nieuwe ervaring voor **verificatie** -instellingen uit, waar u instellingen voor uw toepassing kunt configureren op basis van het platform of apparaat dat u wilt instellen.
 >
@@ -96,7 +97,7 @@ Ga als volgt te werk om een omleidings-URI toe te voegen aan uw toepassing:
 Afhankelijk van de toepassing die u wilt registreren, zijn er enkele extra instellingen die u mogelijk moet configureren, zoals:
 
 * **Afmeldings-URL**
-* Voor apps met één pagina kunt u impliciete **toekenning** inschakelen en de tokens selecteren die u wilt verlenen aan het autorisatie-eind punt.
+* Voor apps met één pagina kunt u **impliciete toekenning** inschakelen en de tokens selecteren die u wilt verlenen aan het autorisatie-eind punt.
 * Voor desktop-apps die tokens verkrijgen met geïntegreerde Windows-verificatie, programma code stroom of gebruikers naam/wacht woord in het gedeelte **standaard client type** , configureert u de **toepassing behandelen als open bare client** ingesteld op **Ja**.
 * Voor oudere apps die gebruikmaken van de Live SDK om te integreren met de Microsoft-account-service, moet u de **ondersteuning voor Live SDK**configureren. Deze instelling is niet vereist voor nieuwe apps.
 * **Type standaard client**
@@ -112,11 +113,11 @@ Wanneer u [de ondersteunde account typen hebt geconfigureerd](quickstart-registe
 
 De ondersteunde account typen voor een bestaande app-registratie wijzigen:
 
-* Zie [het toepassings manifest configureren](reference-app-manifest.md) en de `signInAudience` sleutel bijwerken.
+* Zie [het toepassings manifest configureren](reference-app-manifest.md) en de sleutel `signInAudience` bijwerken.
 
 ## <a name="configure-platform-settings-for-your-application"></a>Platform instellingen voor uw toepassing configureren
 
-[![Instellingen configureren voor uw app op basis van het platform of apparaat](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[![Configure-instellingen voor uw app op basis van het platform of apparaat](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Als u toepassings instellingen wilt configureren op basis van het platform of apparaat, bent u gericht op het volgende:
 
@@ -128,10 +129,10 @@ Als u toepassings instellingen wilt configureren op basis van het platform of ap
 
    | Platform                | Opties              | Configuratie-instellingen            |
    |-------------------------|----------------------|-----------------------------------|
-   | **Webtoepassingen**    | **Web**              | Voer de omleidings- **URI** voor uw toepassing in. |
+   | **Webtoepassingen**    | **Web**              | Voer de **omleidings-URI** voor uw toepassing in. |
    | **Mobiele toepassingen** | **iOS**              | Voer de **bundel-id**van de app in, die u kunt vinden in Xcode in info. plist of build-instellingen. Als u de bundel-ID toevoegt, wordt er automatisch een omleidings-URI voor de toepassing gemaakt. |
    |                         | **Android**          | * Geef de **pakket naam**van de app op die u in het bestand AndroidManifest. XML kunt vinden.<br/>* Genereer en voer de **hand tekening-hash**in. Als de hand tekening-hash wordt toegevoegd, wordt er automatisch een omleidings-URI voor de toepassing gemaakt.  |
-   | **Bureau blad + apparaten**   | **Bureau blad + apparaten** | Beschrijving. Selecteer een van de aanbevolen omleidings- **uri's** als u apps voor desktop-en apparaten bouwt.<br/>Beschrijving. Voer een **aangepaste**omleidings-URI in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt als reactie op verificatie aanvragen. Voor .NET core-toepassingen waarbij u bijvoorbeeld interactie wilt, gebruikt `https://localhost`u. |
+   | **Bureau blad + apparaten**   | **Bureau blad + apparaten** | Beschrijving. Selecteer een van de aanbevolen **omleidings-uri's** als u apps voor desktop-en apparaten bouwt.<br/>Beschrijving. Voer een **aangepaste omleidings-URI**in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt als reactie op verificatie aanvragen. Gebruik bijvoorbeeld `https://localhost` voor .NET core-toepassingen waarbij u een interactie wilt. |
 
    > [!IMPORTANT]
    > Voor mobiele toepassingen die niet gebruikmaken van de meest recente MSAL-bibliotheek of die geen Broker gebruikt, moet u de omleidings-Uri's voor deze toepassingen configureren in **Desktop +-apparaten**.
@@ -184,7 +185,7 @@ Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
 * [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
 * [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
-* [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)
+* [Een geregistreerde toepassing verwijderen met het Microsoft Identity Platform](quickstart-remove-app.md)
 
 Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
 
