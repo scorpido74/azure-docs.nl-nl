@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/13/2018
 ms.author: nitinme
-ms.openlocfilehash: eedfd4e3b46a104fdfeed84034536e98b4c6ddaa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d6f71a7afbda7851b53b3ef64c7375f049db3328
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176320"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391605"
 ---
 > [!NOTE] 
-> De nieuwe service Spraak en de SDK vervangen Bing Speech, die met ingang van 15 oktober 2019 niet meer functioneert. Zie voor meer informatie over het overschakelen naar de Spraakservice [migreren van Bing Speech naar de Spraakservice](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md).
+> De nieuwe spraak service en SDK vervangen Bing Speech, wat niet meer werkt vanaf 14 januari 2020. Zie [migreren van Bing speech naar de speech-service](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md)voor meer informatie over het overschakelen naar de spraak service.

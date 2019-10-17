@@ -9,21 +9,21 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: b00e38259bc3fe8cb6998c64ec453a17963a5ee5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 77e731c1f737b579c68a0eba74fe9918b3f370d3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595784"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388136"
 ---
-# <a name="glossary"></a>Woordenlijst
+# <a name="custom-translator-glossary"></a>Woorden lijst voor aangepaste vertalers
 
 In de woorden lijst van de [aangepaste vertaler](https://portal.customtranslator.azure.ai) worden de termen beschreven die u kunt tegen komen tijdens het werken met de aangepaste vertaler.
 
 | **Woord of woord groep**       | **Definitie**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Brontaal          | De bron taal is de taal waarmee u begint en die u wilt converteren naar een andere taal (het doel).                                                                                                                                                                                                                                                                                                                                                         |
-| Doeltaal          | De doel taal is de taal waarvan u wilt dat de machine vertaling wordt aangeboden nadat de bron taal is ontvangen.                                                                                                                                                                                                                                                                                                                                               |
+| Bron taal          | De bron taal is de taal waarmee u begint en die u wilt converteren naar een andere taal (het doel).                                                                                                                                                                                                                                                                                                                                                         |
+| Doel taal          | De doel taal is de taal waarvan u wilt dat de machine vertaling wordt aangeboden nadat de bron taal is ontvangen.                                                                                                                                                                                                                                                                                                                                               |
 | Monolingual-bestand         | Een Monolingual-bestand heeft een enkele taal die niet is gekoppeld aan een ander bestand in een andere taal.                                                                                                                                                                                                                                                                                                                                                                 |
 | Parallelle bestanden           | Een parallel bestand is een combi natie van twee bestanden met bijbehorende tekst. Eén bestand heeft de bron taal. De andere heeft de doel taal.                                                                                                                                                                                                                                                                                                                                         |
 | Uitlijning van zin       | Parallelle gegevensset moet uitgelijnde zinnen bevatten voor zinnen die dezelfde tekst in beide talen vertegenwoordigen. Bijvoorbeeld: in een bron-parallel bestand moet de eerste zin in theorie worden toegewezen aan de eerste zin in het parallelle doel bestand.                                                                                                                                                                                                                               |

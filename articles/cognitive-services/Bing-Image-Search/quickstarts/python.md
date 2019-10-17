@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Afbeeldingen zoeken - REST API voor Bing Image Search en Python'
+title: 'Snelstartgids: zoeken naar installatie kopieën-Bing Image Search REST API en python'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Python en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034628"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390117"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Snelstartgids: Afbeeldingen zoeken met de REST API voor Bing Image Search en Python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en python
 
 Gebruik deze quickstart om zoekaanvragen naar de Bing Image Search API te leren sturen. Deze Python-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -67,12 +67,13 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. 
+2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. Haal de Url's op in verschillende miniatuur afbeeldingen van het `thumbnailUrl` veld van de reactie.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>Bekijk het antwoord
@@ -80,6 +81,8 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 1. Maak een nieuwe afbeelding met vier kolommen en vier rijen met behulp van de bibliotheek matplotlib. 
 
 2. Doorloop de rijen en kolommen van de afbeelding en gebruik de methode `Image.open()` van de PIL-bibiotheek om een miniatuur van de afbeelding toe te voegen aan elke ruimte. 
+
+3. Gebruik `plt.show()` voor het tekenen van de afbeelding en om de afbeeldingen weer te geven.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,13 +93,13 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. Gebruik `plt.show()` voor het tekenen van de afbeelding en om de afbeeldingen weer te geven.
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API, worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
+Antwoorden die afkomstig zijn van de Bing Afbeeldingen zoeken-API worden geretourneerd in de JSON-indeling. Dit voorbeeldantwoord is ingekort zodat één resultaat wordt weergegeven.
 
 ```json
 {

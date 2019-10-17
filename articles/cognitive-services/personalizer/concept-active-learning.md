@@ -1,5 +1,5 @@
 ---
-title: Actief leren-persoonlijker
+title: Actieve en inactieve gebeurtenissen-persoonlijker
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663713"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429049"
 ---
-# <a name="active-learning-and-learning-policies"></a>Actief leren en leren beleid 
+# <a name="active-and-inactive-events"></a>Actieve en inactieve gebeurtenissen
 
-Wanneer uw toepassing de classificatie-API aanroept, ontvangt u een rang schikking van de inhoud. Bedrijfs logica kan deze positie gebruiken om te bepalen of de inhoud moet worden weer gegeven voor de gebruiker. Wanneer u de gerangschikte inhoud weergeeft, is dit een _actieve_ positie gebeurtenis. Wanneer uw toepassing deze geclassificeerde inhoud niet weergeeft, is dat een niet- _actieve_ positie gebeurtenis. 
+Wanneer uw toepassing de Rank API aanroept, ontvangt u een actie die door de toepassing moet worden weer gegeven in het veld rewardActionId.  Vanaf dat moment zal Personaler een belonings oproep verwachten met dezelfde gebeurtenis-code. De belonings score wordt gebruikt voor het trainen van het model dat wordt gebruikt voor toekomstige positie oproepen. Als er geen belonings oproep wordt ontvangen voor de gebeurtenis-defaul, wordt er een berekenings beloning toegepast. Standaard beloningen worden vastgesteld in azure Portal.
 
-De gegevens van de actieve positie gebeurtenis worden teruggestuurd naar Personaler. Deze informatie wordt gebruikt om het model door te lopen via het huidige leer beleid.
-
-## <a name="active-events"></a>Actieve gebeurtenissen
-
-Actieve gebeurtenissen moeten altijd worden weer gegeven aan de gebruiker en de belonings oproep moet worden geretourneerd om de learning-lus te sluiten. 
-
-### <a name="inactive-events"></a>Inactieve gebeurtenissen 
-
-Inactieve gebeurtenissen mogen het onderliggende model niet wijzigen, omdat de gebruiker geen kans heeft gekregen te kiezen uit de gerangschikte inhoud.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Niet trainen met inactieve positie gebeurtenissen 
-
-Voor sommige toepassingen moet u mogelijk de Rank API aanroepen zonder te weten of de resultaten door de toepassing worden weer gegeven aan de gebruiker. 
-
-Dit gebeurt wanneer:
+In sommige gevallen moet de toepassing classificatie boorgat aanroepen, zelfs als het resultaat wordt gebruikt of weer gegeven voor de gebruiker. Dit kan gebeuren in situaties waarin bijvoorbeeld de pagina weergave van gepromoveerde inhoud wordt overschreven met een marketing campagne. Als het resultaat van de rang nummer nooit is gebruikt en de gebruiker deze niet meer zou zien, zou het niet kunnen worden getraind met een vergoeding in alle, nul of anderszins.
+Dit gebeurt meestal wanneer:
 
 * U kunt een bepaalde gebruikers interface vooraf renderen die de gebruiker al dan niet kan zien. 
 * Uw toepassing maakt mogelijk gebruik van een voorspellende personalisatie waarbij rang gesprekken worden gedaan met minder realtime-context en de uitvoer ervan kan of mogen niet worden gebruikt door de toepassing. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Actief leren uitschakelen voor inactieve rangorde gebeurtenissen tijdens een classificatie oproep
+In dergelijke gevallen is de juiste manier om persoonlijker te gebruiken, het aanroepen van de gebeurtenis om _inactief_te maken. Personaler verwacht geen beloning voor deze gebeurtenis en er wordt geen standaard beloning toegepast. Als de toepassing gebruikmaakt van de informatie van de classificatie oproep, hoeft u zich alleen maar te doen _met de gebeurtenis_ in uw bedrijfs logica. Vanaf het moment dat de gebeurtenis actief is, zal Personaler een beloning voor het evenement verwachten of een standaard beloning Toep assen als er geen expliciete oproep wordt gedaan voor de belonings-API.
 
-Als u automatisch leren wilt uitschakelen, roept `learningEnabled = False`u de rang orde aan.
+## <a name="get-inactive-events"></a>Inactieve gebeurtenissen ophalen
 
-Leren voor een inactieve gebeurtenis wordt impliciet geactiveerd als u een beloning voor de positie verzendt.
+Als u de training voor een gebeurtenis wilt uitschakelen, roept u de positie aan met `learningEnabled = False`.
 
-## <a name="learning-policies"></a>Leer beleid
+Het leren voor een inactieve gebeurtenis wordt impliciet geactiveerd als u een beloning voor de gebeurtenis-of-event verzendt, of als u de API voor de `activate` aanroept voor die gebeurtenis-activiteit.
 
-Met het leer beleid wordt het specifieke *Hyper parameters* van de model training bepaald. Twee modellen van dezelfde gegevens, getraind op basis van een ander leer beleid, gedragen zich op een andere manier.
+## <a name="learning-settings"></a>Leer instellingen
 
-### <a name="importing-and-exporting-learning-policies"></a>Trainings beleid importeren en exporteren
+De leer instellingen bepalen het specifieke *Hyper parameters* van de model training. Twee modellen van dezelfde gegevens, getraind met verschillende leer instellingen, zullen uiteindelijk afwijkend zijn.
+
+### <a name="import-and-export-learning-policies"></a>Leer beleid importeren en exporteren
 
 U kunt Learning-beleids bestanden importeren en exporteren vanuit het Azure Portal. Zo kunt u bestaande beleids regels opslaan, testen, vervangen en deze in uw broncode beheer archiveren als artefacten voor toekomstige Naslag informatie en controle.
 
@@ -60,7 +49,7 @@ De instellingen in het **trainings beleid** zijn niet bedoeld om te worden gewij
 
 ### <a name="comparing-effectiveness-of-learning-policies"></a>Effectiviteit van het leer beleid vergelijken
 
-U kunt vergelijken hoe verschillende leer beleid zou worden uitgevoerd op eerdere gegevens in persoonlijke logboeken door [offline](concepts-offline-evaluation.md)-evaluaties uit te voeren.
+U kunt vergelijken hoe verschillende leer beleid zou worden uitgevoerd op eerdere gegevens in persoonlijke logboeken door [offline-evaluaties](concepts-offline-evaluation.md)uit te voeren.
 
 [Upload uw eigen trainings beleid](how-to-offline-evaluation.md) om te vergelijken met het huidige leer beleid.
 

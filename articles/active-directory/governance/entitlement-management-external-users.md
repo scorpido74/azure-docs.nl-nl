@@ -1,0 +1,118 @@
+---
+title: De toegang tot externe gebruikers beheren in azure AD rechten beheer (preview)-Azure Active Directory
+description: Meer informatie over de instellingen die u kunt opgeven om toegang te bepalen voor externe gebruikers in Azure Active Directory rechten beheer.
+services: active-directory
+documentationCenter: ''
+author: msaburnley
+manager: daveba
+editor: markwahl-msft
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.subservice: compliance
+ms.date: 10/15/2019
+ms.author: ajburnle
+ms.reviewer: mwahl
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72452989"
+---
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Toegang tot externe gebruikers beheren in azure AD-rechts beheer (preview-versie)
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Het Azure AD-rechts beheer maakt gebruik van [Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) om samen te werken met mensen buiten uw organisatie in een andere adres lijst. Met Azure AD B2B verifiëren externe gebruikers hun basismap, maar hebben ze een weer gave in uw Directory. Met de weer gave in uw directory kan de gebruiker toegang krijgen tot uw resources.
+
+In dit artikel worden de instellingen beschreven die u kunt opgeven om de toegang voor externe gebruikers te bepalen.
+
+## <a name="how-entitlement-management-can-help"></a>Hoe rechten beheer kan helpen
+
+Wanneer u de [Azure AD B2B](../b2b/what-is-b2b.md) -uitnodiging gebruikt, moet u de e-mail adressen van de externe gast gebruikers die u wilt opnemen in uw Resource Directory, al kennen en ermee werken. Dit werkt prima wanneer u aan een kleiner of kort project werkt en u al alle deel nemers weet, maar dit is moeilijker te beheren als u veel gebruikers hebt waarmee u wilt werken of als de deel nemers de tijd veranderen.  U kunt bijvoorbeeld samen werken met een andere organisatie en één contact punt hebben met die organisatie, maar in de tijd moeten extra gebruikers van die organisatie ook toegang hebben.
+
+Met het rechten beheer kunt u een beleid definiëren waarmee gebruikers van organisaties die u opgeeft, zelf een toegangs pakket kunnen aanvragen. U kunt opgeven of goed keuring vereist is en een verval datum voor de toegang. Als goed keuring is vereist, kunt u ook een of meer gebruikers van de externe organisatie uitnodigen voor uw directory en deze toewijzen als fiatteurs, omdat ze waarschijnlijk weten welke externe gebruikers van hun organisatie toegang nodig hebben. Zodra u het toegangs pakket hebt geconfigureerd, kunt u de koppeling van het toegangs pakket verzenden naar uw contact persoon (sponsor) bij de externe organisatie. Deze contact persoon kan delen met andere gebruikers in de externe organisatie en ze kunnen deze koppeling gebruiken om het toegangs pakket aan te vragen. Gebruikers van die organisatie die al zijn uitgenodigd voor uw directory, kunnen ook deze koppeling gebruiken.
+
+Wanneer een aanvraag wordt goedgekeurd, wordt de gebruiker door het beheer van rechten voorzien van de benodigde toegang, waarbij de gebruiker kan worden uitgenodigd als deze zich nog niet in uw directory bevindt. Er wordt door Azure AD automatisch een B2B-gast account gemaakt. Houd er rekening mee dat een beheerder eerder is beperkt welke organisaties zijn toegestaan voor samen werking, door een [B2B-of Deny-lijst](../b2b/allow-deny-list.md) in te stellen voor het toestaan of blok keren van uitnodigingen voor andere organisaties.  Als de gebruiker niet is toegestaan door de lijst met toegestane of geblokkeerde websites, worden ze niet meer uitgenodigd.
+
+Omdat u niet wilt dat de toegang van de externe gebruiker voor het laatst permanent is, geeft u een verval datum op in het beleid, zoals 180 dagen. Na 180 dagen geldt dat voor het beheer van rechten alle toegang die is gekoppeld aan dat toegangs pakket wordt verwijderd als de toegang niet is uitgebreid. Standaard, als de gebruiker die is uitgenodigd via het rechten beheer geen andere toegangs pakket toewijzingen heeft, en wanneer ze de laatste toewijzing verliezen, wordt het gast account geblokkeerd om 30 dagen aan te melden en vervolgens verwijderd. Hiermee wordt voor komen dat overbodige accounts worden geproliferatieerd. Zoals beschreven in de volgende secties kunnen deze instellingen worden geconfigureerd.
+
+## <a name="how-access-works-for-external-users"></a>Hoe Access werkt voor externe gebruikers
+
+Het volgende diagram en de stappen bieden een overzicht van hoe externe gebruikers toegang krijgen tot een toegangs pakket.
+
+![Diagram van de levens cyclus van externe gebruikers](./media/entitlement-management-external-users/external-users-lifecycle.png)
+
+1. U maakt een toegangs pakket in uw directory met een beleid [voor gebruikers die niet in uw directory](entitlement-management-access-package-create.md#for-users-not-in-your-directory)zijn opgenomen.
+
+1. U stuurt een [koppeling naar mijn Access-Portal](entitlement-management-access-package-settings.md) naar uw contact persoon op de externe organisatie die ze kunnen delen met hun gebruikers om het toegangs pakket aan te vragen.
+
+1. Een externe gebruiker (**aanvrager A** in dit voor beeld) gebruikt de Portal-koppeling van mijn toegang om toegang tot het toegangs pakket aan te [vragen](entitlement-management-request-access.md) .
+
+1. Een fiatteur [keurt de aanvraag goed](entitlement-management-request-approve.md) (of de aanvraag wordt automatisch goedgekeurd).
+
+1. De aanvraag wordt verzonden naar de [leverings status](entitlement-management-process.md).
+
+1. Met het B2B-invite-proces wordt een gast gebruikers account gemaakt in uw directory (**aanvrager a (gast)** in dit voor beeld). Als er een [lijst met toegestane of een geweigerde](../b2b/allow-deny-list.md) lijst is gedefinieerd, wordt de lijst instelling toegepast.
+
+1. De gast gebruiker krijgt toegang tot alle resources in het toegangs pakket. Het kan enige tijd duren voordat wijzigingen zijn aangebracht in azure AD en aan andere online services van micro soft of verbonden SaaS-toepassingen. Zie [wanneer wijzigingen worden toegepast](entitlement-management-access-package-resources.md#when-changes-are-applied)voor meer informatie.
+
+1. De externe gebruiker ontvangt een e-mail met de melding dat de toegang is [bezorgd](entitlement-management-process.md).
+
+1. De externe gebruiker kan toegang krijgen tot de resources door te klikken op de koppeling in het e-mail bericht of door rechtstreeks toegang te krijgen tot een van de Directory bronnen om het uitnodigings proces te volt ooien.
+
+1. Afhankelijk van de beleids instellingen worden de toegangs pakket toewijzing voor de externe gebruiker verloopt, en wordt de toegang tot de externe gebruiker verwijderd.
+
+1. Afhankelijk van de levens cyclus van externe gebruikers instellingen, is de externe gebruiker niet langer gemachtigd om zich aan te melden en wordt het gast gebruikers account uit uw directory verwijderd wanneer de externe gebruiker geen toegangs pakket toewijzingen meer heeft.
+
+## <a name="manage-the-lifecycle-of-external-users"></a>De levens cyclus van externe gebruikers beheren
+
+U kunt selecteren wat er gebeurt wanneer een externe gebruiker, die is uitgenodigd voor uw directory via een aanvraag voor een toegangs pakket dat wordt goedgekeurd, geen toegangs pakket toewijzingen meer heeft. Dit kan gebeuren als de gebruiker alle toewijzingen van het toegangs pakket relinquishes of de toewijzing van het laatste toegangs pakket verloopt. Wanneer een externe gebruiker geen toegangs pakket toewijzingen meer heeft, is het standaard geblokkeerd om zich aan te melden bij uw Directory. Na 30 dagen wordt het gast gebruikers account verwijderd uit de map.
+
+**Vereiste rol:** Globale beheerder of gebruikers beheerder
+
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+
+1. Klik in het menu links in het gedeelte **beheer rechten** op **instellingen**.
+
+1. Klik op **Bewerken**.
+
+    ![Instellingen voor het beheren van de levens cyclus van externe gebruikers](./media/entitlement-management-external-users/settings-external-users.png)
+
+1. Selecteer in de sectie **de levens cyclus van externe gebruikers beheren** de verschillende instellingen voor externe gebruikers.
+
+1. Als een externe gebruiker de laatste toewijzing van toegangs pakketten kwijtraakt en u wilt voor komen dat ze zich aanmelden bij deze map, stelt u in dat de **externe gebruiker zich niet kan aanmelden bij deze map** op **Ja**.
+
+1. Als een externe gebruiker de laatste toewijzing van toegangs pakketten kwijtraakt en u de gast gebruikers account in uw Directory wilt verwijderen, stelt u **externe gebruiker verwijderen** in op **Ja**.
+
+    > [!NOTE]
+    > Met het rechten beheer worden alleen accounts verwijderd die zijn uitgenodigd via het rechten beheer. Houd er ook rekening mee dat een gebruiker wordt geblokkeerd om zich aan te melden en uit uw directory te verwijderen, zelfs als die gebruiker is toegevoegd aan resources in uw directory die geen toegang hebben tot pakket toewijzingen. Als de gast aanwezig was in de map voordat er toegangs pakket toewijzingen worden ontvangen, blijven ze behouden. Als de gast echter is uitgenodigd via een toewijzing van een toegangs pakket en als is uitgenodigd ook is toegewezen aan een OneDrive voor bedrijven-of share point online-site, worden ze nog steeds verwijderd.
+
+1. Als u de gast gebruikers account in uw Directory wilt verwijderen, kunt u het aantal dagen instellen voordat deze wordt verwijderd. Als u het gast gebruikers account wilt verwijderen zodra de laatste toewijzing aan toegangs pakketten is verloren, stelt u het **aantal dagen in voordat u de externe gebruiker uit deze map verwijdert** in **0**.
+
+1. Klik op **Opslaan**.
+
+## <a name="enable-a-catalog-for-external-users"></a>Een catalogus voor externe gebruikers inschakelen
+
+Wanneer u een [nieuwe catalogus](entitlement-management-catalog-create.md)maakt, is er een instelling waarmee gebruikers uit externe directory's toegang kunnen verkrijgen tot pakketten in de catalogus. Als u niet wilt dat externe gebruikers gemachtigd zijn om toegangs pakketten aan te vragen in de catalogus, stelt u **ingeschakeld voor externe gebruikers** in op **Nee**.
+
+**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
+
+![Deel venster nieuwe catalogus](./media/entitlement-management-shared/new-catalog.png)
+
+U kunt deze instelling ook wijzigen nadat u de catalogus hebt gemaakt.
+
+![Catalogus instellingen bewerken](./media/entitlement-management-shared/catalog-edit.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Voor gebruikers die niet in uw Directory voor komt](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
+- [Overdracht en rollen](entitlement-management-delegate.md)

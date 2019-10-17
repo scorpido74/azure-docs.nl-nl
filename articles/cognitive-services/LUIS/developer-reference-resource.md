@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 0707ed3dfee9af27b7cab66c7952d1e7c1d57cb8
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703202"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437187"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
 
@@ -27,7 +27,7 @@ Gebruik de Azure Cognitive Services Management-laag voor het maken, bewerken, we
 
 Zoek naar de referentie documentatie op basis van het hulp programma:
 
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
 * [PowerShell voor Azure RM](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
@@ -37,7 +37,7 @@ De Language Understanding-service wordt geopend vanuit een Azure-resource die u 
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-### <a name="rest-apis"></a>REST-API’s
+### <a name="rest-apis"></a>REST API's
 
 De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via REST-Api's:
 
@@ -49,10 +49,10 @@ De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via 
 |Taal |Referentiedocumentatie|Pakket|Voorbeelden|Snelstartgidsen|
 |--|--|--|--|--|
 |C#|[Ontwerpen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Voorspelling](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet ontwerpen](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-voor spelling](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Voor beelden van .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[App maken en beheren](sdk-csharp-quickstart-authoring-app.md)<br>[Query Voorspellings eindpunt](sdk-csharp-quickstart-query-prediction-endpoint.md)|
-|Aan de slag|[Ontwerpen en voors pellen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Voorspelling](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Ontwerpen met behulp van REST](luis-get-started-go-add-utterance.md)<br>[Voor spelling met REST](luis-get-started-go-get-intent.md)|
+|Go|[Ontwerpen en voors pellen](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Voorspelling](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Ontwerpen met behulp van REST](luis-get-started-go-add-utterance.md)<br>[Voor spelling met REST](luis-get-started-go-get-intent.md)|
 |Java|[Ontwerpen en voors pellen](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven ontwerpen](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-voor spelling](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Voorspelling](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Ontwerpen](luis-get-started-java-add-utterance.md)<br>[Voorspelling](luis-get-started-java-get-intent.md)
 |Node.js|[Ontwerpen](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM ontwerpen](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM-voor spelling](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Voorspelling](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Ontwerpen met behulp van REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Voor spelling met REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
-|Python|[Ontwerpen en voors pellen](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/?view=azure-python)|[Gooien](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Ontwerpen](sdk-python-quickstart-authoring-app.md)<br>[Voor spelling met REST](luis-get-started-python-get-intent.md)
+|Python|[Ontwerpen en voors pellen](sdk-python-quickstart-authoring-app.md)|[Gooien](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Ontwerpen](sdk-python-quickstart-authoring-app.md)<br>[Voor spelling met REST](luis-get-started-python-get-intent.md)
 
 ## <a name="other-tools-and-sdks"></a>Andere hulpprogram ma's en Sdk's
 

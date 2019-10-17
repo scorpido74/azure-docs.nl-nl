@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390242"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429025"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Voorbeeld: Sleuteltermen extraheren met behulp van Text Analytics
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Voor beeld: sleutel zinnen extra heren met behulp van Text Analytics
 
 De [Sleuteltermextractie API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) evalueert ongestructureerde tekst en retourneert voor elk JSON-document een lijst met sleuteltermen.
 
@@ -32,7 +32,7 @@ Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-langua
 
 Sleuteltermextractie werkt het beste wanneer u grotere segmenten tekst opgeeft. Dit is het tegenovergestelde van sentimentanalyse, wat beter presteert op kleinere blokken tekst. Overweeg dienovereenkomstig herstructurering van de invoer voor de beste resultaten uit beide bewerkingen.
 
-U moet JSON-documenten hebben in deze indeling: ID, tekst, taal
+U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal
 
 De document grootte moet 5.120 of minder tekens per document zijn en u kunt Maxi maal 1.000 items (Id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voorbeeld geeft de inhoud die u kunt indienen voor sleuteltermextractie.
 
@@ -68,13 +68,13 @@ De document grootte moet 5.120 of minder tekens per document zijn en u kunt Maxi
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Stap 1: Structureer de aanvraag
+## <a name="step-1-structure-the-request"></a>Stap 1: Structuur van de aanvraag
 
 Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor informatie over de definitie van aanvragen. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
 
-+ Maak een **POST**-aanvraag. Bekijk de API-documentatie voor deze aanvraag: [Sleutel frasen-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Maak een **POST**-aanvraag. Raadpleeg de API-documentatie voor deze aanvraag: [Key frases-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet in `/text/analytics/v2.1/keyPhrases` de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
++ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet `/text/analytics/v2.1/keyPhrases` in de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
 
 + Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 
@@ -83,7 +83,7 @@ Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor inf
 > [!Tip]
 > Gebruik [Postman](text-analytics-how-to-call-api.md) of open de **API-testconsole** in de [documentatie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) om de aanvraag te structureren en POST deze in de service.
 
-## <a name="step-2-post-the-request"></a>Stap 2: Plaats de aanvraag
+## <a name="step-2-post-the-request"></a>Stap 2: De aanvraag posten
 
 Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor meer informatie over de grootte en het aantal aanvragen dat u per minuut of per seconde kunt verzenden.
 
@@ -91,7 +91,7 @@ Terughalen als de service staatloos is. Er worden geen gegevens opgeslagen in uw
 
 ## <a name="step-3-view-results"></a>Stap 3: Resultaten weergeven
 
-Alle POST-verzoeken retourneren een ingedeeld JSON-antwoord met de id's en gedetecteerde eigenschappen.
+Alle POST-verzoeken retourneren een ingedeeld JSON-antwoord met de id's en gedetecteerde eigenschappen. De volg orde van de geretourneerde sleutel zinnen wordt intern bepaald door het model.
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
 

@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: MT
+ms.openlocfilehash: 927f5bc191c1bbd3e9f8ea89b9f4171ce82df612
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066110"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388156"
 ---
-# <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>De taal detectie container implementeren in azure Kubernetes service
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De Text Analytics taal detectie container implementeren naar de Azure Kubernetes-service
 
 Meer informatie over het implementeren van de taal detectie container. In deze procedure ziet u hoe u de lokale docker-containers maakt, de containers naar uw eigen persoonlijke container register pusht, de container in een Kubernetes-cluster uitvoert en deze test in een webbrowser.
 
@@ -46,13 +46,13 @@ Het voor beeld heeft twee container installatie kopieën, één voor de frontend
 
 ### <a name="the-language-frontend-container"></a>De taal-frontend-container
 
-Deze website is gelijk aan uw eigen toepassing aan de client zijde die aanvragen van het taal detectie-eind punt maakt. Wanneer de procedure is voltooid, krijgt u de gedetecteerde taal van een teken reeks door toegang te krijgen tot de website container in `http://<external-IP>/<text-to-analyze>`een browser met. Een voor beeld van deze URL `http://132.12.23.255/helloworld!`is. Het resultaat in de browser is `English`.
+Deze website is gelijk aan uw eigen toepassing aan de client zijde die aanvragen van het taal detectie-eind punt maakt. Wanneer de procedure is voltooid, krijgt u de gedetecteerde taal van een teken reeks door toegang te krijgen tot de website container in een browser met `http://<external-IP>/<text-to-analyze>`. Een voor beeld van deze URL is `http://132.12.23.255/helloworld!`. Het resultaat in de browser is `English`.
 
 ### <a name="the-language-container"></a>De taal container
 
 De taal detectie container, in deze specifieke procedure, is toegankelijk voor alle externe aanvragen. De container is op geen enkele manier gewijzigd, dus de standaard Cognitive Services-providerspecifieke taal detectie-API is beschikbaar.
 
-Voor deze container is deze API een POST-aanvraag voor taal detectie. Net als bij alle Cognitive Services containers kunt u meer informatie over de container vinden op basis van de gehoste Swagger- `http://<external-IP>:5000/swagger/index.html`gegevens.
+Voor deze container is deze API een POST-aanvraag voor taal detectie. Net als bij alle Cognitive Services containers kunt u meer informatie over de container vinden op basis van de gehoste Swagger-informatie, `http://<external-IP>:5000/swagger/index.html`.
 
 Poort 5000 is de standaard poort die wordt gebruikt met de Cognitive Services containers.
 
@@ -66,19 +66,19 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     az login
     ```
 
-1. Maak een resource groep met `cogserv-container-rg` de naam voor elke resource die in deze procedure wordt gemaakt.
+1. Maak een resource groep met de naam `cogserv-container-rg` om elke resource te bewaren die in deze procedure is gemaakt.
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Maak uw eigen Azure container Registry met de indeling van uw naam `registry`, `pattyregistry`bijvoorbeeld. Gebruik geen streepjes of onderstrepings tekens in de naam.
+1. Maak uw eigen Azure Container Registry met de indeling van uw naam en klik vervolgens `registry`, zoals `pattyregistry`. Gebruik geen streepjes of onderstrepings tekens in de naam.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    Sla de resultaten op om de eigenschap **login server** op te halen. Dit maakt deel uit van het adres van de gehoste container, die `language.yml` later in het bestand wordt gebruikt.
+    Sla de resultaten op om de eigenschap **login server** op te halen. Dit maakt deel uit van het adres van de gehoste container, die later in het bestand `language.yml` wordt gebruikt.
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -124,7 +124,7 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    Als u de versie in het container register wilt bijhouden, voegt u het label toe met een versie `v1`-indeling, zoals.
+    Als u de versie in het container register wilt volgen, voegt u de tag toe met een versie-indeling, zoals `v1`.
 
 1. Push de installatie kopie naar het container register. Dit kan enkele minuten duren.
 
@@ -132,7 +132,7 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Als er een `unauthorized: authentication required` fout optreedt, meldt u `az acr login --name <your-container-registry-name>` zich aan met de opdracht. 
+    Als u een `unauthorized: authentication required`-fout krijgt, meldt u zich aan met de `az acr login --name <your-container-registry-name>` opdracht. 
 
     Wanneer het proces is voltooid, moeten de resultaten er ongeveer als volgt uitzien:
 
@@ -150,7 +150,7 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
 
 ## <a name="get-language-detection-docker-image"></a>Docker-installatie kopie voor taal detectie ophalen
 
-1. Haal de nieuwste versie van de docker-installatie kopie op de lokale computer op. Dit kan enkele minuten duren. Als er een nieuwere versie van deze container is, wijzigt u de waarde `1.1.006770001-amd64-preview` van in de nieuwere versie.
+1. Haal de nieuwste versie van de docker-installatie kopie op de lokale computer op. Dit kan enkele minuten duren. Als er een nieuwere versie van deze container is, wijzigt u de waarde van `1.1.006770001-amd64-preview` naar de nieuwere versie.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -178,7 +178,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Sla de resultaten `appId` waarde op voor de para meter assigned in stap `<appId>`3,. Sla de `password` para meter `<client-secret>`op voor de client-Secret van de volgende sectie.
+    Sla de resultaten op `appId`-waarde voor de para meter assigned in stap 3, `<appId>`. Sla de `password` op voor de client-geheime para meter van de volgende sectie `<client-secret>`.
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -197,7 +197,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Sla de uitvoer voor de waarde `<acrId>`van de bereik parameter op in de volgende stap. Het ziet er als volgt uit:
+    Sla de uitvoer voor de waarde van de bereik parameter, `<acrId>`, op in de volgende stap. Het ziet er als volgt uit:
 
     ```console
     > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
@@ -206,7 +206,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
 
     Sla de volledige waarde voor stap 3 in deze sectie op.
 
-1. Als u de juiste toegang wilt verlenen voor het AKS-cluster om afbeeldingen te gebruiken die zijn opgeslagen in het container register, maakt u een roltoewijzing. Vervang `<appId>` en`<acrId>` door de waarden die in de vorige twee stappen zijn verzameld.
+1. Als u de juiste toegang wilt verlenen voor het AKS-cluster om afbeeldingen te gebruiken die zijn opgeslagen in het container register, maakt u een roltoewijzing. Vervang `<appId>` en `<acrId>` door de waarden die in de vorige twee stappen zijn verzameld.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -214,7 +214,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
 
 ## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes-service maken
 
-1. Maak de Kubernetes-cluster. Alle parameter waarden zijn afkomstig uit vorige secties, met uitzonde ring van de para meter name. Kies een naam die aangeeft wie het heeft gemaakt en het doel ervan, `patty-kube`zoals.
+1. Maak de Kubernetes-cluster. Alle parameter waarden zijn afkomstig uit vorige secties, met uitzonde ring van de para meter name. Kies een naam die aangeeft wie het heeft gemaakt en het doel ervan, bijvoorbeeld `patty-kube`.
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -307,29 +307,29 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Kopieer het volgende bestand en geef het `language.yml`de naam. Het bestand bevat een `service` sectie en een `deployment` sectie voor de twee container typen, de `language-frontend` website container en de `language` detectie container.
+1. Kopieer het volgende bestand en geef het de naam `language.yml`. Het bestand bevat een `service`-sectie en een `deployment` sectie elk voor de twee container typen, de container van de `language-frontend`-website en de `language`-detectie container.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Wijzig de implementatie regels voor taal-frontend `language.yml` van op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
+1. Wijzig de implementatie regels voor de taal-frontend van `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
 
     Implementatie-instellingen voor taal-frontend|Doel|
     |--|--|
-    |Regel 32<br> `image`eigenschap|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Regel 44<br> `name`eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt `<client-secret>` verwezen in een vorige sectie.|
+    |Regel 32<br> eigenschap `image`|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Regel 44<br> eigenschap `name`|Container Registry geheim voor de installatie kopie, aangeduid als `<client-secret>` in een vorige sectie.|
 
-1. Wijzig de taal implementatie regels `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en instellingen voor tekst analyse toe te voegen.
+1. Wijzig de taal implementatie regels van `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
 
     |Instellingen voor taal implementatie|Doel|
     |--|--|
-    |Regel 78<br> `image`eigenschap|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Regel 95<br> `name`eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt `<client-secret>` verwezen in een vorige sectie.|
-    |Regel 91<br> `apiKey`eigenschap|De bron sleutel voor tekst analyse|
-    |Regel 92<br> `billing`eigenschap|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Regel 78<br> eigenschap `image`|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Regel 95<br> eigenschap `name`|Container Registry geheim voor de installatie kopie, aangeduid als `<client-secret>` in een vorige sectie.|
+    |Regel 91<br> eigenschap `apiKey`|De bron sleutel voor tekst analyse|
+    |Regel 92<br> eigenschap `billing`|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container met de naam `language`van de Orchestrator.
+    Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container met de naam van Orchestrator `language`.
 
-1. Laad het bestand met de indelings definitie voor dit voor beeld vanuit de map waarin u de `language.yml`hebt gemaakt en opgeslagen.
+1. Laad het bestand met de indelings definitie voor dit voor beeld uit de map waarin u de `language.yml` hebt gemaakt en opgeslagen.
 
     ```console
     kubectl apply -f language.yml
@@ -347,7 +347,7 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
 
 ## <a name="get-external-ips-of-containers"></a>Externe IP-adressen van containers ophalen
 
-Controleer voor de twee containers of de `language-frontend` `language` Services actief zijn en ontvang het externe IP-adres.
+Controleer voor de twee containers of de `language-frontend`-en `language`-services worden uitgevoerd en haal het externe IP-adres op.
 
 ```console
 kubectl get all
@@ -385,13 +385,13 @@ Als de `EXTERNAL-IP` voor de service wordt weer gegeven als in behandeling, voer
 
 ## <a name="test-the-language-detection-container"></a>De taal detectie container testen
 
-Open een browser en navigeer naar het externe IP-adres `language` van de container uit de vorige `http://<external-ip>:5000/swagger/index.html`sectie:. U kunt de `Try it` functie van de API gebruiken om het taal detectie-eind punt te testen.
+Open een browser en navigeer naar het externe IP-adres van de container `language` in de vorige sectie: `http://<external-ip>:5000/swagger/index.html`. U kunt de `Try it`-functie van de API gebruiken om het taal detectie-eind punt te testen.
 
 ![De Swagger-documentatie van de container weer geven](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>De client toepassings container testen
 
-Wijzig de URL in de browser naar het externe IP-adres `language-frontend` van de container met de volgende `http://<external-ip>/helloworld`indeling:. De Engelse cultuur tekst van `helloworld` wordt voor speld als `English`.
+Wijzig de URL in de browser in het externe IP-adres van de `language-frontend`-container met de volgende notatie: `http://<external-ip>/helloworld`. De Engelse cultuur tekst van `helloworld` wordt voor speld als `English`.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
