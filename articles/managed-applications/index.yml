@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Documentatie voor door Azure beheerde toepassingen
 metadata:
-  title: 'Documentatie voor door Azure beheerde toepassingen - zelfstudies, API-verwijzing'
+  title: Documentatie voor door Azure beheerde toepassingen
   description: U kunt door Azure beheerde toepassingen gebruiken voor het publiceren van cloudoplossingen die eenvoudiger door consumenten zijn te onderhouden.
   services: managed-applications
   author: tfitzmac
