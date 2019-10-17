@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor voor containers regio toewijzingen
-description: Dit artikel beschrijft de regio toewijzingen ondersteund tussen Azure-Monitor voor containers, Log Analytics-werkruimte en aangepaste metrische gegevens.
+title: Azure Monitor voor de regio toewijzingen voor containers
+description: In dit artikel worden de regio toewijzingen beschreven die worden ondersteund tussen Azure Monitor voor containers, Log Analytics werk ruimte en aangepaste metrische gegevens.
 services: azure-monitor
 ms.service: azure-monitor
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.author: magoedte
 ms.date: 06/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 481a2a400be4e983e0a2337a200324061494efa1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518077"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388187"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Regio-toewijzingen ondersteund door Azure Monitor voor containers
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Regio toewijzingen die worden ondersteund door Azure Monitor voor containers
 
- Bij het inschakelen van Azure Monitor voor containers, alleen bepaalde regio's worden ondersteund voor het koppelen van een Log Analytics-werkruimte en een AKS-cluster en het verzamelen van aangepaste metrische gegevens verzonden naar Azure Monitor.
+ Als Azure Monitor voor containers wordt ingeschakeld, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een AKS-cluster en het verzamelen van aangepaste metrische gegevens die aan Azure Monitor zijn verzonden.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics-werkruimte ondersteund toewijzingen
+## <a name="log-analytics-workspace-supported-mappings"></a>Ondersteunde toewijzingen Log Analytics werk ruimte
 
-De AKS-clusterresources of Log Analytics-werkruimte kan zich bevinden in andere regio's, en de volgende tabel ziet u de toewijzingen.
+De AKS-cluster resources of Log Analytics werk ruimte kunnen zich in andere regio's bevinden, en in de volgende tabel ziet u de toewijzingen.
 
-|**AKS-Cluster regio** | **Log Analytics Workspace region** |
+|**AKS-cluster regio** | **Log Analytics werkruimte regio** |
 |-----------------------|------------------------------------|
-|**Afrika** | |
+|**Africa** | |
 |SouthAfricaNorth |West-Europa |
 |SouthAfricaWest |West-Europa |
 |**Australië** | |
@@ -65,14 +65,15 @@ De AKS-clusterresources of Log Analytics-werkruimte kan zich bevinden in andere 
 |EastUS2 |EastUS2 |
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
-|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
+|WestCentralUS<sup>1</sup>|Oost,<sup>1</sup>|
+|US Gov - Virginia |US Gov - Virginia |
 
-<sup>1</sup> vanwege beperkingen van de capaciteit, de regio niet beschikbaar is bij het maken van nieuwe resources. Dit omvat een Log Analytics-werkruimte. Bestaande gekoppelde resources in de regio moeten echter nog steeds werken.
+<sup>1</sup> vanwege capaciteits beperkingen is de regio niet beschikbaar bij het maken van nieuwe resources. Dit omvat een Log Analytics-werk ruimte. Bestaande gekoppelde resources in de regio moeten echter blijven werken.
 
-## <a name="custom-metrics-supported-regions"></a>Aangepaste metrische gegevens over ondersteunde regio 's
+## <a name="custom-metrics-supported-regions"></a>Ondersteunde regio's voor aangepaste metrische gegevens
 
-Verzamelen van metrische gegevens van Azure Kubernetes Services (AKS) clusters met knooppunten en schillen worden ondersteund voor het publiceren als aangepaste metrische gegevens in de volgende [Azure-regio's](../platform/metrics-custom-overview.md#supported-regions).
+Het verzamelen van metrische gegevens van knoop punten van Azure Kubernetes Services (AKS)-clusters en peulen wordt alleen ondersteund voor publicatie als aangepaste metrische gegevens in de volgende [Azure-regio's](../platform/metrics-custom-overview.md#supported-regions).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt bewaken van uw AKS-cluster, Controleer [het inschakelen van de Azure-Monitor voor containers](container-insights-onboard.md) om te begrijpen van de vereisten en de beschikbare methoden bewaking wilt inschakelen.  
+Als u wilt beginnen met het bewaken van uw AKS-cluster, raadpleegt u [How to Enable the Azure monitor for containers](container-insights-onboard.md) voor meer informatie over de vereisten en beschik bare methoden voor het inschakelen van  

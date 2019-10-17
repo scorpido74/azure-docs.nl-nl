@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029198"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387766"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Bron transformatie voor het toewijzen van gegevens stroom 
 
@@ -39,9 +39,9 @@ Azure Data Factory heeft toegang tot meer dan 80 systeem eigen connectors. Als u
 
 Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instellingen** . Hier kunt u de gegevensset voor uw bron punten kiezen of maken. U kunt ook schema-en bemonsterings opties voor uw gegevens selecteren.
 
-Tabblad Bron ![instellingen]tabblad(media/data-flow/source1.png "bron instellingen")
+![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
-**Schema drift:** [Schema-drift](concepts-data-flow-schema-drift.md) is de mogelijkheid van de Data Factory om systeem eigen flexibele schema's in uw gegevens stromen te verwerken zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
+**Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
 
 * Schakel het selectie vakje **schema-drift toestaan** in als de bron kolommen vaak worden gewijzigd. Met deze instelling kunnen alle binnenkomende bron velden door de trans formaties worden getransporteerd naar de sink.
 
@@ -51,7 +51,7 @@ Tabblad Bron ![instellingen]tabblad(media/data-flow/source1.png "bron instelling
 
 **Aantal regels overs Laan:** In het veld aantal regel items overs Laan wordt aangegeven hoeveel regels aan het begin van de gegevensset moeten worden genegeerd.
 
-**Proef** Schakel steek proeven in om het aantal rijen van de bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of van uw source gebruikt voor fout opsporing.
+**Steek proeven:** Schakel steek proeven in om het aantal rijen van de bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of van uw source gebruikt voor fout opsporing.
 
 Als u wilt valideren of uw bron juist is geconfigureerd, schakelt u de foutopsporingsmodus in en haalt u een voor beeld van de gegevens op. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
 
@@ -62,7 +62,7 @@ Als u wilt valideren of uw bron juist is geconfigureerd, schakelt u de foutopspo
 
 Als u een gegevensset op basis van een bestand gebruikt, zoals Azure Blob Storage of Azure Data Lake Storage, kunt u op het tabblad **bron opties** beheren hoe bestanden worden gelezen met uw bron.
 
-![](media/data-flow/sourceOPtions1.png "Bron opties") voor bron opties
+![Bron opties](media/data-flow/sourceOPtions1.png "Bron opties")
 
 **Pad met Joker tekens:** Als u een Joker teken gebruikt, wordt ADF geadviseerd om elke overeenkomende map en elk bestand in één bron transformatie te verwerken. Dit is een efficiënte manier om meerdere bestanden binnen één stroom te verwerken. Voeg meerdere Joker teken patronen toe met het plus teken dat wordt weer gegeven bij het aanwijzen van het bestaande Joker teken patroon.
 
@@ -79,15 +79,15 @@ Voor beelden van joker tekens:
 * ```/data/sales/20??/**``` haalt alle bestanden in de 20e Century op
 * ```/data/sales/2004/*/12/[XY]1?.csv``` haalt alle CSV-bestanden in 2004 december op, beginnend met X of Y, voorafgegaan door een getal van twee cijfers
 
-**Basispad:** Als u mappen in de bestands bron hebt gepartitioneerd met een ```key=value```-indeling (bijvoorbeeld Year = 2019), kunt u het hoogste niveau van die partitie mappen structuur toewijzen aan een kolom naam in de gegevens stroom van de gegevensstroom.
+Basispad **:** Als u mappen in de bestands bron hebt gepartitioneerd met een ```key=value```-indeling (bijvoorbeeld Year = 2019), kunt u het hoogste niveau van die partitie mappen structuur toewijzen aan een kolom naam in de gegevens stroom van de gegevensstroom.
 
 Stel eerst een Joker teken in om alle paden op te nemen van de gepartitioneerde mappen plus de blad bestanden die u wilt lezen.
 
-(media/data-flow/partfile2.png "Instelling van partitie bestand") voor ![partitie bron Bestands instellingen]
+![Bron Bestands instellingen voor partitioneren](media/data-flow/partfile2.png "Instelling voor partitie bestand")
 
 Gebruik de instelling basis pad partitie om te definiëren wat het hoogste niveau van de mappen structuur is. Wanneer u de inhoud van uw gegevens bekijkt via een voor beeld van de gegevens, ziet u dat de opgeloste partities in elk van uw mapniveau worden toegevoegd.
 
-![Partitie hoofdmap pad]Partition(media/data-flow/partfile1.png "root pad preview")
+![Basispad voor partitie](media/data-flow/partfile1.png "Voor beeld van basispad")
 
 **Lijst met bestanden:** Dit is een bestandenset. Maak een tekst bestand met een lijst met relatieve padgegevens die moeten worden verwerkt. Wijs dit tekst bestand aan.
 
@@ -126,26 +126,26 @@ Alle bron instellingen kunnen worden opgegeven als expressies met de [taal van d
 
 Als uw bron zich in SQL Database of SQL Data Warehouse bevindt, zijn aanvullende SQL-specifieke instellingen beschikbaar op het tabblad **bron opties** . 
 
-**Ingevoerd** Selecteer of u uw bron op een tabel wilt aanwijzen (equivalent van ```Select * from <table-name>```) of voer een aangepaste SQL-query in.
+**Invoer:** Selecteer of u uw bron op een tabel wilt aanwijzen (equivalent van ```Select * from <table-name>```) of voer een aangepaste SQL-query in.
 
-**Query**: Als u query in het invoer veld selecteert, voert u een SQL-query in voor uw bron. Deze instelling overschrijft elke tabel die u in de gegevensset hebt gekozen. **Order by** -componenten worden hier niet ondersteund, maar u kunt een volledige Select from-instructie instellen. U kunt ook door de gebruiker gedefinieerde tabel functies gebruiken. **Select * from udfGetData ()** is een UDF in SQL die een tabel retourneert. Met deze query wordt een bron tabel geproduceerd die u in uw gegevens stroom kunt gebruiken.
+**Query**: als u in het invoer veld query selecteert, voert u een SQL-query in voor uw bron. Deze instelling overschrijft elke tabel die u in de gegevensset hebt gekozen. **Order by** -componenten worden hier niet ondersteund, maar u kunt een volledige Select from-instructie instellen. U kunt ook door de gebruiker gedefinieerde tabel functies gebruiken. **Select * from udfGetData ()** is een UDF in SQL die een tabel retourneert. Met deze query wordt een bron tabel geproduceerd die u in uw gegevens stroom kunt gebruiken.
 
-**Batch grootte**: Voer een batch grootte in om grote gegevens te segmenteren in Lees bewerkingen.
+**Batch grootte**: Voer een batch grootte in om grote hoeveel heden gegevens in Lees bewerkingen te segmenteren.
 
-**Isolatie niveau**: De standaard waarde voor SQL-bronnen in de toewijzing van gegevens stroom is niet-vastgelegd. U kunt het isolatie niveau hier wijzigen in een van deze waarden:
+**Isolatie niveau**: de standaard waarde voor SQL-bronnen in de toewijzings gegevens stroom is niet-vastgelegd. U kunt het isolatie niveau hier wijzigen in een van deze waarden:
 * Doorgevoerde lezen
 * Lezen niet-doorgevoerd
 * Herhaal bare Lees bewerking
 * Serializable
 * Geen (isolatie niveau negeren)
 
-(media/data-flow/isolationlevel.png "Isolatie niveau") ![isolatie niveau]
+![Isolatie niveau](media/data-flow/isolationlevel.png "Isolatie niveau")
 
 ## <a name="projection"></a>Projectie
 
 Net als schema's in gegevens sets definieert de projectie in een bron de gegevens kolommen, typen en indelingen van de bron gegevens. Voor de meeste typen gegevensset, zoals SQL en Parquet, wordt de projectie van een bron vastgesteld op basis van het schema dat is gedefinieerd in een gegevensset. Als uw bron bestanden niet sterk worden getypt (bijvoorbeeld platte CSV-bestanden in plaats van Parquet-bestanden), kunt u de gegevens typen voor elk veld in de bron transformatie definiëren.
 
-![Instellingen op de projectie van het tabblad](media/data-flow/source3.png "") projectie
+![Instellingen op het tabblad projectie](media/data-flow/source3.png "Projectie")
 
 Als uw tekst bestand geen gedefinieerd schema heeft, selecteert u **gegevens type detecteren** zodat Data Factory de gegevens typen worden gesampled en afgeleid. Selecteer **standaard indeling instellen** op automatische detectie van de standaard gegevens indelingen. 
 
@@ -155,7 +155,7 @@ U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid va
 
 Op het tabblad **optimaliseren** voor de bron transformatie ziet u mogelijk een type **bron** partitie. Deze optie is alleen beschikbaar als uw bron Azure SQL Database is. Dit komt omdat Data Factory verbinding probeert te maken met het parallel uitvoeren van grote query's op uw SQL Database bron.
 
-(media/data-flow/sourcepart3.png "Partitioneren") van ![bron partitie-instellingen]
+![Instellingen van de bron partitie](media/data-flow/sourcepart3.png "Partitioneren")
 
 U hoeft geen gegevens op uw SQL Database bron te partitioneren, maar partities zijn handig voor grote query's. U kunt de partitie baseren op een kolom of een query.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Configuratie instellen | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Set-ApplicationInsightsMonitoringConfig. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: 'Naslag informatie over Azure-toepassing Insights-agent-API: set config | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Set-ApplicationInsightsMonitoringConfig. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2ab941b5587a8836f1e472fbce3966b12bfa1e11
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200443"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388260"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Status Monitor v2-API: Set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights agent-API: set-ApplicationInsightsMonitoringConfig
 
 In dit document wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 
 Hiermee stelt u het configuratie bestand in zonder volledige herinstallatie.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
@@ -42,12 +42,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld:
-- `MachineFilter`komt overeen met de huidige computer met `'.*'` behulp van het Joker teken.
-- `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
-- `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
-- Ten slotte gebruikt het `'.*'` Joker teken ookomalleweb-appstezoekendienietovereenkomenmetdeeerdereregelseneenstandaardinstrumentatiesleuteltoetewijzen.`AppFilter`
+In dit voor beeld:
+- `MachineFilter` komt overeen met de huidige computer door gebruik te maken van het Joker teken `'.*'`.
+- `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
+- `AppFilter='WebAppTwo'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
+- Ten slotte maakt `AppFilter` ook gebruik van het Joker teken `'.*'` om te voldoen aan alle web-apps die niet overeenkomen met de eerdere regels en wijst u een standaard instrumentatie sleutel toe.
 - Spaties worden toegevoegd voor de Lees baarheid.
 
 ```powershell
@@ -67,7 +67,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door in te `MachineFilter`stellen.
+U kunt één installatie script maken voor verschillende computers door `MachineFilter` in te stellen.
 
 > [!IMPORTANT]
 > Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
@@ -89,7 +89,7 @@ U kunt één installatie script maken voor verschillende computers door in te `M
 **Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 Standaard geen uitvoer.
 
@@ -128,11 +128,11 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
  
  Meer telemetrie toevoegen:
- - [Maak](monitor-web-app-availability.md) webtests om ervoor te zorgen dat uw site actief blijft.
-- [Voeg](../../azure-monitor/app/javascript.md) de telemetrie van de webclient toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+ - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
+- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
 - [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
  
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
  - Stel [de configuratie](status-monitor-v2-api-get-config.md) in om te bevestigen dat de instellingen correct zijn geregistreerd.
  - [De status ophalen om de](status-monitor-v2-api-get-status.md) bewaking te controleren.

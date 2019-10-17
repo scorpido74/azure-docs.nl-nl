@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: c881c95fb860befbc978aba5a6c73375dce235fe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+manager: gwallace
+ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919666"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391613"
 ---
 Met gestandaardiseerde installatie kopieën van virtuele machines kunnen organisaties migreren naar de Cloud en zorgen voor consistentie in de implementaties. Installatie kopieën bevatten doorgaans vooraf gedefinieerde beveiligings-en configuratie-instellingen en de benodigde software. Voor het instellen van uw eigen Imaging-pijp lijn zijn tijd, infra structuur en configuratie vereist, maar met Azure VM Image Builder kunt u een eenvoudige configuratie bieden waarmee uw installatie kopie wordt beschreven, verzonden naar de service en de installatie kopie wordt gebouwd en gedistribueerd.
  
@@ -20,7 +20,7 @@ Met de opbouw functie voor installatie kopieën van Azure VM (Azure Image Builde
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-## <a name="preview-features"></a>Evaluatiefuncties
+## <a name="preview-features"></a>Preview-functies
 
 Voor de preview worden de volgende functies ondersteund:
 
@@ -33,13 +33,13 @@ Voor de preview worden de volgende functies ondersteund:
 - Installatie kopieën maken in VHD-indeling.
  
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Regio's
 De Azure Image Builder-service is beschikbaar voor een preview in deze regio's. Installatie kopieën kunnen buiten deze regio's worden gedistribueerd.
-- East US
-- US - oost 2
-- US - west-centraal
-- US - west
-- US - west 2
+- VS - oost
+- VS - oost 2
+- VS - west-centraal
+- VS - west
+- VS - west 2
 
 ## <a name="os-support"></a>Ondersteuning voor besturings systeem
 AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieën:
@@ -58,7 +58,7 @@ AIB biedt ondersteuning voor RHEL ISO als bron voor:
 
 RHEL 7,6 Iso's worden niet ondersteund, maar worden getest.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -72,9 +72,9 @@ De opbouw functie voor installatie kopieën van Azure is een volledig beheerde A
 ![Conceptuele tekening van het Azure Image Builder-proces](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Maak de afbeeldings sjabloon als een. JSON-bestand. Dit JSON-bestand bevat informatie over de afbeeldings bron, aanpassingen en distributie. Er zijn meerdere voor beelden in de [Azure Image Builder github-opslag plaats](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Verzend het naar de service. Hiermee wordt een afbeeldings sjabloon artefact gemaakt in de resource groep die u opgeeft. Op de achtergrond downloadt de opbouw functie voor afbeeldingen de bron installatie kopie of ISO, en scripts als dat nodig is. Deze worden opgeslagen in een afzonderlijke resource groep die automatisch in uw abonnement wordt gemaakt, in de volgende indeling: IT_\<DestinationResourceGroup > _\<sjabloon >. 
-1. Zodra de afbeeldings sjabloon is gemaakt, kunt u de installatie kopie maken. In de opbouw functie voor achtergrond gebruiken de sjabloon en bron bestanden voor het maken van een virtuele machine (D1v2), netwerk, openbaar IP-\<adres en opslag\<in de IT_ DestinationResourceGroup > _ sjabloon > resource groep.
-1. Als onderdeel van het maken van de installatie kopie distribueert Image Builder de installatie kopie op basis van de sjabloon. vervolgens worden de extra resources\<in de IT_\<DestinationResourceGroup > _ sjabloon naam > resource groep die is gemaakt voor het proces.
+1. Verzend het naar de service. Hiermee wordt een afbeeldings sjabloon artefact gemaakt in de resource groep die u opgeeft. Op de achtergrond downloadt de opbouw functie voor afbeeldingen de bron installatie kopie of ISO, en scripts als dat nodig is. Deze worden opgeslagen in een afzonderlijke resource groep die automatisch wordt gemaakt in uw abonnement, in de indeling: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
+1. Zodra de afbeeldings sjabloon is gemaakt, kunt u de installatie kopie maken. In de opbouw functie voor achtergrond gebruiken de sjabloon en bron bestanden voor het maken van een virtuele machine (D1v2), netwerk, open bare IP en opslag in de IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > resource groep.
+1. Als onderdeel van het maken van de installatie kopie wordt de installatie kopie gedistribueerd op basis van de sjabloon, waarna de extra resources worden verwijderd uit de IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > resource groep die voor het proces is gemaakt.
 
 
 ## <a name="permissions"></a>Machtigingen
@@ -98,7 +98,7 @@ Als het service account niet wordt gevonden, kan dit betekenen dat het abonnemen
 ## <a name="costs"></a>Kosten
 U maakt een aantal reken-, netwerk-en opslag kosten bij het maken, maken en opslaan van installatie kopieën met Azure Image Builder. Deze kosten zijn vergelijkbaar met de kosten die zijn gemaakt bij het hand matig maken van aangepaste installatie kopieën. Voor de resources worden er kosten in rekening gebracht voor uw Azure-tarieven. 
 
-Tijdens het maken van de installatie kopie worden bestanden gedownload en opgeslagen in `IT_<DestinationResourceGroup>_<TemplateName>` de resource groep, waardoor er een kleine opslag kosten in rekening worden gebracht. Als u deze niet wilt blijven gebruiken, verwijdert u de afbeeldings sjabloon na het maken van de installatie kopie.
+Tijdens het proces voor het maken van de installatie kopie worden bestanden gedownload en opgeslagen in de resource groep `IT_<DestinationResourceGroup>_<TemplateName>`, waardoor er een kleine opslag kosten in rekening worden gebracht. Als u deze niet wilt blijven gebruiken, verwijdert u de **afbeeldings sjabloon** na het maken van de installatie kopie.
  
 Met de opbouw functie voor installatie kopieën wordt een VM gemaakt met behulp van een D1v2 VM-grootte en de opslag en netwerken die nodig zijn voor de virtuele machine. Deze resources duren de duur van het bouw proces en worden verwijderd wanneer de installatie kopie is gemaakt met de opbouw functie voor installatie kopieën. 
  

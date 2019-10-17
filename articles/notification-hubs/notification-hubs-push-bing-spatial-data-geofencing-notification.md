@@ -1,9 +1,9 @@
 ---
-title: Pushmeldingen met geofencing verzenden met Azure Notification Hubs en ruimtelijke Bing-gegevens | Microsoft Docs
+title: Push meldingen verzenden met de ruimtelijke gegevens van Azure Notification Hubs en Bing | Microsoft Docs
 description: In deze zelfstudie leert u hoe u locatiegebaseerde pushmeldingen kunt verzenden met Azure Notification Hubs en ruimtelijke Bing-gegevens.
 services: notification-hubs
 documentationcenter: windows
-keywords: pushmelding,pushmelding
+keywords: Push meldingen, Push meldingen
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213242"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387481"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Zelfstudie: Locatiegebaseerde pushmeldingen verzenden met Azure Notification Hubs en ruimtelijke Bing-gegevens
+# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Zelf studie: Push meldingen op basis van locaties verzenden met Azure Notification Hubs en ruimtelijke gegevens van Bing
 
 In deze zelfstudie leert u hoe u locatiegebaseerde pushmeldingen kunt verzenden met Azure Notification Hubs en ruimtelijke Bing-gegevens.
 
@@ -53,7 +53,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 3. Als u nog geen gegevensbron hebt, ziet u een koppeling voor het maken van een gegevensbron. Selecteer **Upload data as a data source**. U kunt ook het menu **Data sources** > **Upload Data** gebruiken.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Maak een bestand `NotificationHubsGeofence.pipe` op de harde schijf met de volgende inhoud: In deze zelfstudie gebruikt u een voorbeeldbestand op basis van een pipe waarmee een gebied van de kust van San Francisco wordt afgebakend:
+4. Maak een bestand `NotificationHubsGeofence.pipe` op uw harde schijf met de volgende inhoud: in deze zelf studie gebruikt u een voor beeld van een pipe dat een gebied van het San Francisco afgebakend:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries

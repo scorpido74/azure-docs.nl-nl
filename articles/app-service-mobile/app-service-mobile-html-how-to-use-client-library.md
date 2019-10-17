@@ -14,25 +14,26 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 410571320e5ffae9cf94c5035079e5b202190863
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8a22de6b3e518bb3c9392d7fd64411969b32f33f
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027366"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388737"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>De Java script-client bibliotheek voor Azure-Mobile Apps gebruiken
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Java script-SDK voor Azure Mobile Apps]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken en een tabel te maken. In deze hand leiding richten we ons op het gebruik van de mobiele back-end in HTML/Java script-webtoepassingen.
 
 ## <a name="supported-platforms"></a>Ondersteunde platforms
-De browser ondersteuning wordt beperkt tot de huidige en laatste versies van de grote browsers:  Google Chrome, micro soft Edge, micro soft Internet Explorer en Mozilla Firefox.  We verwachten dat de SDK werkt met een relatief moderne browser.
+De browser ondersteuning wordt beperkt tot de huidige en laatste versies van de belangrijkste browsers: Google Chrome, micro soft Edge, micro soft Internet Explorer en Mozilla Firefox.  We verwachten dat de SDK werkt met een relatief moderne browser.
 
 Het pakket wordt gedistribueerd als een universele java script-module, zodat het globale, AMD-en CommonJS-indelingen ondersteunt.
 
@@ -62,14 +63,14 @@ U kunt ook een vooraf ontwikkelde versie van de SDK gebruiken door rechtstreeks 
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Procedures: Gebruikers verifiëren
+## <a name="auth"></a>Procedure: gebruikers verifiëren
 Azure App Service ondersteunt het verifiëren en autoriseren van app-gebruikers met behulp van verschillende externe ID-providers: Facebook, Google, micro soft-account en Twitter. U kunt machtigingen voor tabellen instellen om de toegang tot specifieke bewerkingen te beperken tot alleen geverifieerde gebruikers. U kunt ook de identiteit van geverifieerde gebruikers gebruiken voor het implementeren van autorisatie regels in Server scripts. Zie voor meer informatie de zelf studie [aan de slag met verificatie] .
 
 Twee verificatie stromen worden ondersteund: een server stroom en een client stroom.  De server stroom biedt de eenvoudigste verificatie-ervaring, omdat deze afhankelijk is van de webauthenticatie interface van de provider. De client stroom biedt een diep gaande integratie met apparaatspecifieke mogelijkheden, zoals eenmalige aanmelding, afhankelijk van providerspecifieke Sdk's.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Procedures: Configureer uw mobiele App Service voor externe omleidings-Url's.
+### <a name="configure-external-redirect-urls"></a>Procedure: uw mobiele App Service configureren voor externe omleidings-Url's.
 Verschillende typen java script-toepassingen gebruiken een loop back-mogelijkheid voor het verwerken van OAuth-gebruikers interface stromen.  Deze mogelijkheden zijn onder andere:
 
 * Uw service lokaal uitvoeren

@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241827"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390082"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Wat is het resource model van de Service Fabric-toepassing?
 Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces van toepassingsregistratie, -inrichting en -implementatie kan in één stap worden uitgevoerd. Dit is de best practice voor het beheren van de levenscyclus van toepassingen in uw cluster. Bekijk de [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)voor meer informatie.
 
 Als dit van toepassing is, kunt u uw toepassingen beheren als Resource Manager-resources om te verbeteren:
-* Audittrail: Resource Manager controleert elke bewerking en houdt een gedetailleerd *activiteiten logboek* bij waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
-* Op rollen gebaseerd toegangs beheer: Het beheren van toegang tot clusters en toepassingen die op het cluster zijn geïmplementeerd, kunnen worden uitgevoerd via dezelfde resource manager-sjabloon.
+* Audittrail: in Resource Manager wordt elke bewerking gecontroleerd en wordt een gedetailleerd *activiteiten logboek* bijgehouden waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
+* Op rollen gebaseerd toegangs beheer: het beheren van toegang tot clusters en toepassingen die op het cluster zijn geïmplementeerd, kunnen worden uitgevoerd via dezelfde resource manager-sjabloon.
 * Azure Resource Manager (via de Azure Portal) wordt een een-stop-shop voor het beheren van uw cluster en essentiële toepassings implementaties.
 
 ## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Levens cyclus van Service Fabric toepassing met Azure Resource Manager 
@@ -35,10 +35,10 @@ Als u een toepassing en de bijbehorende services wilt implementeren met behulp v
           
 Maak vervolgens een Azure Resource Manager sjabloon, werk het parameter bestand bij met toepassings gegevens en implementeer het op het Service Fabric cluster. Raadpleeg [hier](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)voor beelden.
 
-### <a name="create-a-storage-account"></a>Een Storage-account maken 
+### <a name="create-a-storage-account"></a>Een account voor Opslag maken 
 Voor het implementeren van een toepassing vanuit een resource manager-sjabloon is een opslag account nodig om de installatie kopie van de toepassing te faseren. U kunt een bestaand opslag account opnieuw gebruiken of een nieuw opslag account maken om uw toepassingen te faseren. Als u een bestaand opslag account wilt gebruiken, kunt u deze stap overs Laan. 
 
-![Create a storage account][CreateStorageAccount]
+![Maak een opslagaccount][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Opslag account configureren 
 Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade **blobs** en klik op de knop **container toevoegen** . Voeg een nieuwe container met open bare BLOB-toegangs niveau toe.
@@ -51,10 +51,10 @@ Voordat de toepassing kan worden geïmplementeerd, moet deze worden klaargezet i
 1. Klik in Visual Studio met de rechter muisknop op het project stem en selecteer pakket.   
 ![Pakket toepassing][PackageApplication]  
 2. Open de **.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug** -map die zojuist is gemaakt en post de inhoud naar een bestand met de naam **stem. zip** , zodat de ApplicationManifest. XML zich in de hoofdmap van het zip-bestand bevindt.  
-![Zip-toepassing][ZipApplication]  
+![Zip toepassing @ no__t-1  
 3. Wijzig de extensie van. zip in **. sfpkg**.
 4. Klik in de Azure Portal in de **app** -container van uw opslag account op **uploaden** en upload **stemmen. sfpkg**.  
-![App-pakket uploaden][UploadAppPkg]
+![Upload app-pakket @ no__t-1
 
 De toepassing is nu gefaseerd. U kunt nu de Azure Resource Manager-sjabloon maken om de toepassing te implementeren.      
    
@@ -66,13 +66,13 @@ De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.
 >
 >
 
-| Parameter              | Description                                 | Voorbeeld                                                      | Opmerkingen                                                     |
+| Parameter              | Beschrijving                                 | Voorbeeld                                                      | Opmerkingen                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | De naam van het cluster waarnaar u wilt implementeren | SF-cluster123                                                |                                                              |
-| toepassing            | De naam van de toepassing                 | Hem                                                       |
+| Modules            | De naam van de toepassing                 | Hem                                                       |
 | applicationTypeName    | De type naam van de toepassing           | VotingType                                                   | Moeten overeenkomen met wat in ApplicationManifest. XML.                 |
-| applicationTypeVersion | De versie van het toepassings type         | 1.0.0                                                        | Moeten overeenkomen met wat in ApplicationManifest. XML.                 |
-| serviceName            | De naam van de service die de service         | Stemmen ~ VotingWeb                                             | Moet de indeling ApplicationName ~ Service type hebben            |
+| ApplicationTypeVersion | De versie van het toepassings type         | 1.0.0                                                        | Moeten overeenkomen met wat in ApplicationManifest. XML.                 |
+| ServiceName            | De naam van de service die de service         | Stemmen ~ VotingWeb                                             | Moet de indeling ApplicationName ~ Service type hebben            |
 | serviceTypeName        | De type naam van de service                | VotingWeb                                                    | Moeten overeenkomen met wat in ServiceManifest. XML                 |
 | appPackageUrl          | De URL van de Blob-opslag van de toepassing     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | De URL van het toepassings pakket in Blob Storage (de procedure die moet worden ingesteld, wordt hieronder beschreven) |
        
@@ -156,8 +156,8 @@ Informatie over het resource model van de toepassing ophalen:
 * [Toepassings-en service manifesten Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
 
 ## <a name="see-also"></a>Zie ook
-* [Aanbevolen procedures](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Toepassingen en services beheren als Azure-resources](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Toepassingen en services beheren als Azure-resources](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

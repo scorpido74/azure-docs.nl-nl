@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061382"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429403"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
-Azure Automation status configuratie is een Azure-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/dsc/configurations)kunt schrijven, beheren en compileren, [DSC-resources](/powershell/dsc/resources)kunt importeren en configuraties aan doel knooppunten kunt toewijzen. Cloud.
+Azure Automation status configuratie is een Azure-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations)kunt schrijven, beheren en compileren, [DSC-resources](/powershell/scripting/dsc/resources/resources)kunt importeren en configuraties aan doel knooppunten kunt toewijzen. Cloud.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Waarom Azure Automation status configuratie gebruiken?
 
@@ -27,11 +27,11 @@ Azure Automation status configuratie biedt verschillende voor delen ten opzichte
 
 ### <a name="built-in-pull-server"></a>Ingebouwde pull-server
 
-Azure Automation status configuratie biedt een DSC-pull-server vergelijkbaar met de [Windows-functie DSC-service](/powershell/dsc/pullserver) zodat doel knooppunten automatisch configuraties ontvangen, voldoen aan de gewenste status en rapporteren aan hun naleving. De ingebouwde pull-server in Azure Automation elimineert de nood zaak om uw eigen pull-server in te stellen en te onderhouden. Azure Automation kunnen virtuele of fysieke Windows-of Linux-machines in de Cloud of on-premises zijn gericht.
+Azure Automation status configuratie biedt een DSC-pull-server vergelijkbaar met de [Windows-functie DSC-service](/powershell/scripting/dsc/pull-server/pullserver) zodat doel knooppunten automatisch configuraties ontvangen, voldoen aan de gewenste status en rapporteren aan hun naleving. De ingebouwde pull-server in Azure Automation elimineert de nood zaak om uw eigen pull-server in te stellen en te onderhouden. Azure Automation kunnen virtuele of fysieke Windows-of Linux-machines in de Cloud of on-premises zijn gericht.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Beheer van al uw DSC-artefacten
 
-Met de configuratie van de Azure Automation-status wordt dezelfde Management laag naar de [gewenste status configuratie van Power shell](/powershell/dsc/overview) verzonden als Azure Automation aanbiedingen voor Power shell-scripts.
+Met de configuratie van de Azure Automation-status wordt dezelfde Management laag naar de [gewenste status configuratie van Power shell](/powershell/scripting/dsc/overview/overview) verzonden als Azure Automation aanbiedingen voor Power shell-scripts.
 
 Vanuit het Azure Portal, of vanuit Power shell, kunt u al uw DSC-configuraties,-resources en-doel knooppunten beheren.
 
@@ -51,7 +51,7 @@ Voor knoop punten waarop Windows worden uitgevoerd, worden de volgende versies o
 
 - Windows Server 2019
 - Windows Server 2016
-- Windows Server 2012R2
+- Windows Server-2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
@@ -62,7 +62,7 @@ De zelfstandige product-SKU van [Microsoft Hyper-V Server](/windows-server/virtu
 
 Voor knoop punten waarop Linux wordt uitgevoerd, worden de volgende distributies/versies ondersteund:
 
-De DSC Linux-extensie ondersteunt alle Linux-distributies die worden vermeld onder [ondersteunde Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)-distributies.
+De DSC Linux-extensie ondersteunt alle Linux-distributies die worden vermeld onder [ondersteunde Linux-distributies](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
 
 ### <a name="dsc-requirements"></a>DSC-vereisten
 
@@ -74,10 +74,10 @@ Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell 
 
 Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende poort en Url's vereist voor de status configuratie (DSC) om te communiceren met Automation:
 
-* Importeer Alleen TCP 443 is vereist voor uitgaande internet toegang.
+* Poort: alleen TCP 443 is vereist voor uitgaande internet toegang.
 * Globale URL: *. azure-automation.net
 * Globale URL van US Gov-Virginia: *. azure-automation.us
-* Agent service: https://\<workspaceId\>. agentsvc.Azure-Automation.net
+* Agent service: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
 
 Dit biedt netwerk connectiviteit voor het beheerde knoop punt om te communiceren met Azure Automation.
 Als u DSC-resources gebruikt die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan.
@@ -99,19 +99,19 @@ Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio,
 
 | **Regio** | **DNS-record** |
 | --- | --- |
-| US - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| US - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| US - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Canada - midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa -west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
+| VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| VS - oost   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| VS - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Canada-Midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Europa - west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa - noord |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Azië - zuidoost |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | India - centraal |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan - oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Japan - Oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australië - zuidoost |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Verenigd Koninkrijk Zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| VS (overheid) - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| VK - zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| US Gov - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/details.aspx?id=41653) XML-bestand in het micro soft Download centrum voor een lijst met IP-adressen van regio's in plaats van regio namen.
 
@@ -125,8 +125,8 @@ Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/de
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md) om aan de slag te gaan.
-- Voor meer informatie over het voorbereiden van knoop punten, zie onboarding [machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md)
+- Voor meer informatie over het voorbereiden van knoop punten, Zie [onboarding machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md)
 - Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md) voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [Azure Automation status configuratie](/powershell/module/azurerm.automation/#automation) -cmdlets voor informatie over de Power shell-cmdlet.
+- Zie [Azure Automation status configuratie-cmdlets](/powershell/module/azurerm.automation/#automation) voor informatie over de Power shell-cmdlet.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/) voor prijs informatie.
 - Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie gaat u naar [continue implementatie met behulp van Azure Automation-status configuratie en chocolade](automation-dsc-cd-chocolatey.md)

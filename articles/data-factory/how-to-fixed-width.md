@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962119"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387055"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Tekst bestanden met een vaste lengte verwerken met Data Factory gegevens stromen toewijzen
 
@@ -65,13 +65,13 @@ Met toewijzing van gegevens stromen in Microsoft Azure Data Factory kunt u gegev
 
     ```substring(Column_1,1,4)```
 
-    ![Afgeleide kolom](media/data-flow/fwderivedcol1.png)
+    ![afgeleide kolom](media/data-flow/fwderivedcol1.png)
 
 11. Herhaal stap 10 voor alle kolommen die u wilt parseren.
 
 12. Selecteer het tabblad **controleren** om de nieuwe kolommen te zien die worden gegenereerd:
 
-    ![controleert](media/data-flow/fwinspect.png)
+    ![Controleert](media/data-flow/fwinspect.png)
 
 13. Gebruik de Select Transform om een van de kolommen te verwijderen die u niet nodig hebt voor trans formatie:
 

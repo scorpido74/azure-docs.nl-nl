@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: f0de7aedc3883978582da1950e95aaabac9a1695
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272976"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391610"
 ---
 De volgende tabel bevat de limieten die zijn gekoppeld aan de verschillende service lagen S1, S2, S3 en F1. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie over de kosten van elke *eenheid* in elke laag.
 
@@ -56,7 +56,7 @@ De volgende tabel bevat de limieten die van toepassing zijn op IoT Hub resources
 > Als u meer dan 50 betaalde IoT-hubs in een Azure-abonnement nodig hebt, neemt u contact op met Microsoft Ondersteuning.
 
 > [!NOTE]
-> Op dit moment is het maximum aantal apparaten dat u kunt verbinden met één IoT-hub 1.000.000. Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
+> Op dit moment wordt het totale aantal apparaten plus modules dat kan worden geregistreerd voor één IoT-hub, beperkt op 1.000.000. Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
 
 IoT Hub beperkt aanvragen wanneer de volgende quota worden overschreden.
 

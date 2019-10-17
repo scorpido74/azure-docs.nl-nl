@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028221"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387539"
 ---
 # <a name="mapping-data-flow-parameters"></a>Gegevens stroom parameters toewijzen
 
@@ -40,15 +40,15 @@ Para meters kunnen worden gebruikt in elke Data flow-expressie. Para meters begi
 
 ## <a name="use-parameters-in-your-data-flow"></a>Para meters gebruiken in uw gegevens stroom
 
-* U kunt parameter waarden binnen uw transformatie expressies gebruiken. U vindt de lijst met para meters op het tabblad para meters in de opbouw functie voor expressies. ![Gegevens stroom parameters gebruiken](media/data-flow/params9.png "Data flow-para meters gebruiken")
+* U kunt parameter waarden binnen uw transformatie expressies gebruiken. U vindt de lijst met para meters op het tabblad para meters in de opbouw functie voor expressies. ![Data flow-para meters gebruiken](media/data-flow/params9.png "Use data flow-para meters ")
 
-* Para meters worden ook gebruikt voor het configureren van dynamische waarden voor de instellingen van de bron-en Sink-trans formatie. Wanneer u in Configureer bare velden klikt, wordt de koppeling ' dynamische contect toevoegen ' weer gegeven. Als u op deze knop klikt, wordt u naar de opbouw functie voor expressies geleid, waar u de para meters kunt gebruiken om dynamische waarden te gebruiken. ![Dynamische inhoud van gegevens stroom](media/data-flow/params6.png "Dynamische inhoud van gegevens stroom")
+* Para meters worden ook gebruikt voor het configureren van dynamische waarden voor de instellingen van de bron-en Sink-trans formatie. Wanneer u in Configureer bare velden klikt, wordt de koppeling ' dynamische contect toevoegen ' weer gegeven. Als u op deze knop klikt, wordt u naar de opbouw functie voor expressies geleid, waar u de para meters kunt gebruiken om dynamische waarden te gebruiken. ![Dynamische inhoud van gegevens stroom](media/data-flow/params6.png "Ddynamische inhoud ATA flow ")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Gegevens stroom parameters van de toewijzing instellen vanuit de pijp lijn
 
 Wanneer u de gegevens stroom hebt gemaakt met para meters, kunt u deze uitvoeren vanuit een pijp lijn met de activiteit gegevens stroom uitvoeren. Nadat u de activiteit aan uw pijplijn doek hebt toegevoegd, worden de beschik bare gegevensstroom parameters weer gegeven op het tabblad para meters van de activiteit.
 
-![Een]gegevensstroom parameter(media/data-flow/parameter-assign.png "instellen een para meter") voor een gegevens stroom instellen
+![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-assign.png "Een para meter voor een gegevens stroom instellen")
 
 Als uw parameter gegevens type teken reeks is en u op het tekstvak klikt om parameter waarden in te stellen, kunt u een pijp lijn of een gegevensstroom expressie opgeven. Als u pijplijn expressie kiest, wordt het deel venster pijplijn expressie weer gegeven. Zorg ervoor dat u pijplijn functies in de syntaxis van de teken reeks interpolatie opneemt met behulp van `'@{<expression>}'`, bijvoorbeeld:
 
@@ -61,7 +61,7 @@ Als uw para meter niet van het type teken reeks is, wordt u altijd weer gegeven 
 
 Elke toewijzings gegevens stroom kan een combi natie van de para meters van de pijplijn-en data flow-expressie hebben. 
 
-Voor ![beeld van gegevens stroom parameters](media/data-flow/parameter-example.png "Voor beeld van gegevens stroom parameters")
+![Voor beeld van gegevens stroom parameters](media/data-flow/parameter-example.png "Voor beeld van gegevens stroom parameters")
 
 
 

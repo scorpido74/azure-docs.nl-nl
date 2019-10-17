@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910263"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383522"
 ---
 # <a name="dynamic-packaging"></a>Dynamische verpakking
 
@@ -26,7 +26,7 @@ Microsoft Azure Media Services kan worden gebruikt voor het coderen van veel med
 
 In Media Services vertegenwoordigt een [streaming-eind punt](streaming-endpoint-concept.md) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren, met behulp van een van de algemene protocollen voor streaming media vermeld in de volgende sectie. Dynamische pakketten is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Voor bereiding van de bron bestanden voor levering
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>To voor bereiding van de bron bestanden voor levering
 
 Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) [coderen](encoding-concept.md) in een set van meerdere bitrate MP4-bestanden (ISO Base media 14496-12). U moet een [Asset](assets-concept.md) hebben met de gecodeerde MP4-bestanden en de streaming-configuratie bestanden die nodig zijn voor Media Services dynamische verpakking. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de volgende protocollen voor streaming media:
 
@@ -98,7 +98,7 @@ Zie [overzicht van live streaming](live-streaming-overview.md)voor meer informat
 Dynamische verpakking ondersteunt MP4-bestanden die video bevatten die is gecodeerd met [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
-> Resoluties van Maxi maal 4.000 en de frame snelheid van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt de code ring van H. 265 via de oudere v2-api's. Neem contact amshelp@microsoft.com op met als u vragen hebt over dit onderwerp. 
+> Resoluties van Maxi maal 4.000 en de frame snelheid van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt de code ring van H. 265 via de oudere v2-api's. Neem contact op met amshelp@microsoft.com als u vragen hebt over dit onderwerp. 
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Audio-codecs die worden ondersteund door dynamische pakketten
 
@@ -124,7 +124,7 @@ Dynamische verpakkingen ondersteunt meerdere audio sporen met een streepje of HL
 Dynamische pakketten bieden geen ondersteuning voor bestanden die [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) audio bevatten (een verouderde codec).
 
 > [!NOTE]
-> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus, via de oudere v2-api's. Neem contact amshelp@microsoft.com op met als u vragen hebt over dit onderwerp. 
+> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus, via de oudere v2-api's. Neem contact op met amshelp@microsoft.com als u vragen hebt over dit onderwerp. 
 
 ## <a name="manifests"></a>Manifesten 
  
@@ -220,7 +220,7 @@ Hier volgt een voor beeld van een manifest bestand van Smooth Streaming:
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>Naamgeving van sporen in het manifest
 
-Als er een audio track naam is opgegeven in het ISM-bestand, Media Services een `Label` element binnen een `AdaptationSet` toevoegen om de texturische informatie voor het specifieke audio spoor op te geven. Een voor beeld van het uitvoer streepje-manifest:
+Als er een audio track naam is opgegeven in het ISM-bestand, Media Services een `Label`-element binnen een `AdaptationSet` toevoegen om de texturische informatie voor het specifieke audio spoor op te geven. Een voor beeld van het uitvoer streepje-manifest:
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -232,15 +232,34 @@ Als er een audio track naam is opgegeven in het ISM-bestand, Media Services een 
 </AdaptationSet>
 ```
 
-De speler kan het `Label` element gebruiken om weer te geven in de gebruikers interface.
+De speler kan het element `Label` gebruiken om weer te geven in de gebruikers interface.
 
 ### <a name="signaling-audio-description-tracks"></a>Signa lering audio beschrijvings sporen
 
-Een klant kan aantekeningen maken op een audio track als audio beschrijving in het manifest. Hiertoe voegen ze de para meters Accessibility en Role toe aan het. ISM-bestand. Media Services herkent de audio beschrijving als een audio track de para meter ' Accessibility ' met de waarde ' description ' en ' Role ' met de waarde ' alternatief ' bevat. Als Media Services de audio beschrijving in het. ISM-bestand detecteert, wordt de informatie over de beschrijving van de audio `Accessibility="description"` door `Role="alternate"` gegeven aan het `StreamIndex` client manifest, evenals kenmerken in het-element.
+U kunt een commentaar track toevoegen aan uw video om visueel gehandicapten te helpen bij het volgen van de video-opname door naar de gesp roken tekst te Luis teren. U moet aantekeningen toevoegen aan een audio track als audio beschrijving in het manifest. Als u dit wilt doen, voegt u de para meters ' Accessibility ' en ' Role ' toe aan het. ISM-bestand. Het is uw verantwoordelijkheid om deze para meters op de juiste wijze in te stellen om een audio track als audio beschrijving te Signa leren. Voeg bijvoorbeeld `<param name="accessibility" value="description" />` en `<param name="role" value="alternate"` toe aan het. ISM-bestand voor een specifiek audio spoor. 
 
-Als de combi natie van ' Accessibility ' = ' description ' en ' Role ' = ' Alternate ' is ingesteld in. ISM-bestand, worden het streepje-manifest en het gladde manifest waarden die zijn ingesteld in de para meters ' Accessibility ' en ' Role '. Het is de verantwoordelijkheid van de klant om deze twee waarden recht in te stellen en een audio track als audio beschrijving te markeren. Per streepje spec, ' Accessibility ' = ' description ' en ' Role ' = ' Alternate ', wordt een audio track in een audio beschrijving genoemd.
+Zie voor meer informatie het voor beeld [een beschrijvende audio track](signal-descriptive-audio-howto.md) geven.
 
-Voor HLS V7 en hoger (`format=m3u8-cmaf`) geldt de afspeel lijst `CHARACTERISTICS="public.accessibility.describes-video"` alleen wanneer de combi natie van ' Accessibility ' = ' description ' en ' Role ' = ' Alternate ' is ingesteld in. ISM-bestand. 
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming-manifest
+
+Als u een Smooth Streaming stroom speelt, zou het manifest waarden in `Accessibility`-en `Role`-kenmerken voor dat audio spoor moeten bevatten. @No__t-2 zou bijvoorbeeld worden toegevoegd in het `StreamIndex`-element om aan te geven dat het een audio beschrijving is.
+
+#### <a name="dash-manifest"></a>DASH-manifest
+
+Voor een streepje-manifest worden de volgende twee elementen toegevoegd om de audio beschrijving te Signa leren:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS-afspeel lijst
+
+Voor HLS V7 en hoger `(format=m3u8-cmaf)`, zou de afspeel lijst `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` moeten bevatten wanneer het audio Description track wordt gesignaleerd.
+
+#### <a name="example"></a>Voorbeeld
+
+Zie [Audio Description-sporen Signa leren](signal-descriptive-audio-howto.md)voor meer informatie.
 
 ## <a name="dynamic-manifest"></a>Dynamisch manifest
 
@@ -248,7 +267,7 @@ Als u het aantal sporen, indelingen, bitsnelheden en presentatie tijd vensters w
 
 ## <a name="dynamic-encryption"></a>Dynamische versleuteling
 
-U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie primaire Digital Rights Management (DRM)-systemen: Micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties aan geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
+U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties aan geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
 
 ## <a name="more-information"></a>Meer informatie
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827146"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430307"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview)
 
@@ -73,7 +73,7 @@ Bekijk de volgende video van de Ignite 2018-conferentie voor een overzicht van i
 Dit zijn de typen resources waarmee u toegang tot kunt beheren met het beheer van rechten:
 
 - Azure AD-beveiligings groepen
-- Office 365-groepen
+- Office 365 Groups
 - Zakelijke Azure AD-toepassingen, waaronder SaaS-toepassingen en aangepaste, geïntegreerde toepassingen die ondersteuning bieden voor Federatie of inrichting
 - Share point online-site verzamelingen en-sites
 
@@ -92,7 +92,7 @@ Toegangs pakketten bestaan ook uit een of meer *beleids regels*. Een beleid defi
 
 Met een toegangs pakket en het bijbehorende beleid definieert de Access package manager het volgende:
 
-- Resources
+- Bronnen
 - Rollen die de gebruikers nodig hebben voor de resources
 - Interne gebruikers en partner organisaties van externe gebruikers die in aanmerking komen om toegang aan te vragen
 - Goedkeurings proces en de gebruikers die toegang kunnen goed keuren of weigeren
@@ -105,34 +105,24 @@ In het volgende diagram ziet u een voor beeld van de verschillende elementen in 
 
 ![Overzicht van rechten beheer](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Externe gebruikers
-
-Wanneer u de [Azure AD-uitnodiging voor Business-to-Business (B2B)](../b2b/what-is-b2b.md) gebruikt, moet u de e-mail adressen van de externe gast gebruikers die u wilt opnemen in uw Resource Directory, al kennen en ermee werken. Dit werkt prima wanneer u aan een kleiner of kort project werkt en u al alle deel nemers weet, maar dit is moeilijker te beheren als u veel gebruikers hebt waarmee u wilt werken of als de deel nemers de tijd veranderen.  U kunt bijvoorbeeld samen werken met een andere organisatie en één contact punt hebben met die organisatie, maar in de tijd moeten extra gebruikers van die organisatie ook toegang hebben.
-
-Met het rechten beheer kunt u een beleid definiëren waarmee gebruikers van organisaties die u opgeeft, ook een toegangs pakket kunnen aanvragen met behulp van Azure AD. U kunt opgeven of goed keuring vereist is en een verval datum voor de toegang. Als goed keuring is vereist, kunt u ook als fiatteur een of meer gebruikers aanwijzen van de externe organisatie die u eerder hebt uitgenodigd, omdat ze waarschijnlijk weten welke externe gebruikers van hun organisatie toegang nodig hebben. Zodra u het toegangs pakket hebt geconfigureerd, kunt u een koppeling naar het toegangs pakket verzenden naar uw contact persoon bij de externe organisatie. Deze contact persoon kan delen met andere gebruikers in de externe organisatie en ze kunnen deze koppeling gebruiken om het toegangs pakket aan te vragen.  Gebruikers van die organisatie die al zijn uitgenodigd voor uw directory, kunnen ook deze koppeling gebruiken.
-
-Wanneer een aanvraag wordt goedgekeurd, wordt de gebruiker door het beheer van rechten voorzien van de benodigde toegang, waarbij de gebruiker kan worden uitgenodigd als deze zich nog niet in uw directory bevindt. Er wordt door Azure AD automatisch een B2B-account gemaakt.  Houd er rekening mee dat een beheerder eerder is beperkt welke organisaties zijn toegestaan voor samen werking, door een [B2B-of Deny-lijst](../b2b/allow-deny-list.md) in te stellen voor het toestaan of blok keren van uitnodigingen voor andere organisaties.  Als de gebruiker niet is toegestaan door de lijst met toegestane of geblokkeerde websites, worden ze niet meer uitgenodigd.
-
-Omdat u niet wilt dat de toegang van de externe gebruiker voor het laatst permanent is, geeft u een verval datum op in het beleid, zoals 180 dagen. Na 180 dagen, als de toegang niet wordt verlengd, wordt door het beheer van rechten alle toegang verwijderd die aan dat toegangs pakket is gekoppeld.  Als de gebruiker die is uitgenodigd via het rechten beheer geen andere toegangs pakket toewijzingen heeft, dan wordt de eigen B2B-account voor 30 dagen geblokkeerd en vervolgens verwijderd wanneer ze de laatste toewijzing verliezen.  Hiermee wordt voor komen dat overbodige accounts worden geproliferatieerd.  
-
 ## <a name="terminology"></a>Terminologie
 
 Bekijk de volgende voor waarden om het rechten beheer en de bijbehorende documentatie beter te begrijpen.
 
-| Term of concept | Description |
+| Term of concept | Beschrijving |
 | --- | --- |
 | beheer rechten | Een service waarmee toegangs pakketten worden toegewezen, ingetrokken en beheerd. |
-| toegangspakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. |
+| toegangs pakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. |
 | toegangs aanvraag | Een aanvraag voor toegang tot de resources in een toegangs pakket. Een aanvraag loopt doorgaans via een werk stroom. |
 | policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben. Voor beelden van beleids regels zijn toegang tot werk nemers en externe toegang. |
-| catalog | Een container met gerelateerde resources en toegangs pakketten. |
+| catalogus | Een container met gerelateerde resources en toegangs pakketten. |
 | Algemene catalogus | Een ingebouwde catalogus die altijd beschikbaar is. Om resources toe te voegen aan de algemene catalogus, zijn bepaalde machtigingen vereist. |
-| resource | Een activum of service (zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site) waaraan een gebruiker machtigingen kan verlenen. |
-| brontype | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
+| Resource | Een activum of service (zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site) waaraan een gebruiker machtigingen kan verlenen. |
+| Resource type | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
 | resource functie | Een verzameling machtigingen die zijn gekoppeld aan een resource. |
 | Resource Directory | Een map met een of meer resources die moeten worden gedeeld. |
 | toegewezen gebruikers | Een toewijzing van een toegangs pakket aan een gebruiker, zodat de gebruiker alle resource rollen van dat toegangs pakket heeft. |
-| inschakelen | Het proces van het beschikbaar maken van een toegangs pakket voor gebruikers om aan te vragen. |
+| Kunt | Het proces van het beschikbaar maken van een toegangs pakket voor gebruikers om aan te vragen. |
 
 ## <a name="license-requirements"></a>Licentievereisten
 
@@ -154,5 +144,5 @@ Voor informatie over het toewijzen van licenties aan uw gebruikers raadpleegt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Uw eerste toegangs pakket maken](entitlement-management-access-package-first.md)
+- [Zelf studie: uw eerste toegangs pakket maken](entitlement-management-access-package-first.md)
 - [Algemene scenario's](entitlement-management-scenarios.md)

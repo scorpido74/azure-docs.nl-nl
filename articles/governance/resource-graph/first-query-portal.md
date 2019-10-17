@@ -3,17 +3,17 @@ title: Voer uw eerste query uit met Azure resource Graph Explorer
 description: Dit artikel begeleidt u stapsgewijs door de stappen voor het uitvoeren van uw eerste query vanuit Azure Portal met behulp van Azure resource Graph Explorer.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981249"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387609"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer
 
 De kracht van Azure resource Graph is rechtstreeks beschikbaar in Azure Portal via Azure resource Graph Explorer. Resource Graph Explorer biedt doorzoekbaar informatie over de Azure Resource Manager resource typen en eigenschappen die u kunt opvragen. Resource Graph Explorer biedt ook een schone interface voor het werken met meerdere query's, het evalueren van de resultaten en het converteren van de resultaten van sommige query's in een grafiek die kan worden vastgemaakt aan een Azure-dash board.
 
@@ -27,19 +27,19 @@ Open de [Azure Portal](https://portal.azure.com) om de resource Graph Explorer t
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **resource Graph Explorer**.
 
-1. Voer in het gedeelte **query 1** van het venster de query `project name, type | limit 5` in en selecteer **query uitvoeren**.
+1. Voer in het gedeelte **query 1** van het venster de query `Resources | project name, type | limit 5` in en selecteer **query uitvoeren**.
 
    > [!NOTE]
    > Zoals in dit voor beeld van een query geen sorteer volgorde biedt, zoals `order by`, is het uitvoeren van deze query waarschijnlijk meerdere malen dat een andere set resources per aanvraag kan worden verkregen.
 
 1. Controleer het antwoord op de query op het tabblad **resultaten** . Selecteer het tabblad **berichten** om de details van de query te bekijken, inclusief het aantal resultaten en de duur van de query. Eventuele fouten worden weer gegeven op dit tabblad.
 
-1. Werk de query bij naar `order by` de **naam** eigenschap: `project name, type | limit 5 | order by name asc`. Selecteer vervolgens **query uitvoeren**.
+1. Werk de query bij naar `order by` de **naam** eigenschap: `Resources | project name, type | limit 5 | order by name asc`. Selecteer vervolgens **query uitvoeren**.
 
    > [!NOTE]
    > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Hiermee worden de queryresultaten eerst beperkt en daarna geordend.
 
-1. Werk de query bij naar eerste `order by` de eigenschap **name** en vervolgens `limit` op de vijf belangrijkste resultaten: `project name, type | order by name asc | limit 5`. Selecteer vervolgens **query uitvoeren**.
+1. Werk de query bij naar eerste `order by` de eigenschap **name** en vervolgens `limit` op de vijf belangrijkste resultaten: `Resources | project name, type | order by name asc | limit 5`. Selecteer vervolgens **query uitvoeren**.
 
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat er niets in uw omgeving wordt gewijzigd, worden de geretourneerde resultaten consistent en zoals verwacht: besteld op basis van de eigenschap **name** , maar is nog steeds beperkt tot de vijf belangrijkste resultaten.
 
@@ -54,7 +54,8 @@ Als u na het uitvoeren van de laatste query hierboven het tabblad **grafieken** 
 1. Voer in het gedeelte **query 1** van het venster de volgende query in en selecteer **query uitvoeren**.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

@@ -1,5 +1,5 @@
 ---
-title: Gelokaliseerde meldingen naar iOS-apparaten pushen met behulp van Azure Notification Hubs | Microsoft Docs
+title: Gelokaliseerde push meldingen verzenden naar iOS met Azure Notification Hubs | Microsoft Docs
 description: Meer informatie over het gebruik van gelokaliseerde push meldingen naar iOS-apparaten met behulp van Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211888"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385645"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Zelfstudie: Gelokaliseerde meldingen naar iOS-apparaten pushen met behulp van Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Zelf studie: gelokaliseerde push meldingen verzenden naar iOS met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -82,7 +82,7 @@ Zie het artikel over [sjablonen](notification-hubs-templates-cross-platform-push
 
 In deze sectie wijzigt u de laatste nieuws-app die u in het onderwerp hebt gemaakt, [Notification Hubs gebruiken om belangrijk nieuws te verzenden] te verzenden om vertaalde nieuws te verzenden met behulp van sjablonen.
 
-Voeg in `MainStoryboard_iPhone.storyboard`uw een gesegmenteerd besturings element met de drie talen toe: Engels, Frans en Mandarijn.
+Voeg in uw `MainStoryboard_iPhone.storyboard` een gesegmenteerd besturings element toe met de drie talen: Engels, Frans en Mandarijn.
 
 ![Het Story Board voor iOS-gebruikers interface maken][13]
 
@@ -92,7 +92,7 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
 
 ## <a name="build-the-ios-app"></a>De iOS-app bouwen
 
-1. Voeg in `Notification.h`uw de `retrieveLocale` -methode toe en wijzig de methoden Store en Subscriber, zoals wordt weer gegeven in de volgende code:
+1. Voeg in uw `Notification.h` de methode `retrieveLocale` toe en wijzig de methoden Store en Subscriber, zoals wordt weer gegeven in de volgende code:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
 
     - (int) retrieveLocale;
     ```
-    Wijzig in `Notification.m`uw de `storeCategoriesAndSubscribe` -methode door de `locale` para meter toe te voegen en op te slaan in de standaard waarden van de gebruiker:
+    In uw `Notification.m` wijzigt u de `storeCategoriesAndSubscribe`-methode door de para meter `locale` toe te voegen en deze op te slaan in de standaard waarden van de gebruiker:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
     }
     ```
 
-    U gebruikt de- `registerTemplateWithDeviceToken`methode in plaats `registerNativeWithDeviceToken`van. Wanneer u zich registreert voor een sjabloon, moet u de JSON-sjabloon opgeven en ook een naam voor de sjabloon (omdat de app mogelijk andere sjablonen wil registreren). Zorg ervoor dat u uw categorieën als Tags registreert, zodat u zeker weet dat u de meldingen voor die nieuws wilt ontvangen.
+    U gebruikt de methode `registerTemplateWithDeviceToken` in plaats van `registerNativeWithDeviceToken`. Wanneer u zich registreert voor een sjabloon, moet u de JSON-sjabloon opgeven en ook een naam voor de sjabloon (omdat de app mogelijk andere sjablonen wil registreren). Zorg ervoor dat u uw categorieën als Tags registreert, zodat u zeker weet dat u de meldingen voor die nieuws wilt ontvangen.
 
     Voeg een methode toe om de land instelling op te halen uit de standaard instellingen van de gebruiker:
 
@@ -155,13 +155,13 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
     }
     ```
 
-2. Nu u de `Notifications` klasse hebt gewijzigd, moet u ervoor zorgen `ViewController` dat de nieuwe `UISegmentControl`wordt gebruikt. Voeg de volgende regel toe aan `viewDidLoad` de methode om ervoor te zorgen dat de land instellingen die momenteel zijn geselecteerd, worden weer gegeven:
+2. Nu u de klasse `Notifications` hebt gewijzigd, moet u ervoor zorgen dat de `ViewController` het gebruik van de nieuwe `UISegmentControl` maakt. Voeg de volgende regel toe aan de `viewDidLoad`-methode om ervoor te zorgen dat de land instellingen die momenteel zijn geselecteerd, worden weer gegeven:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Wijzig vervolgens in uw `subscribe` methode de aanroep `storeCategoriesAndSubscribe` naar de volgende code:
+    Wijzig vervolgens in de `subscribe`-methode de aanroep van de `storeCategoriesAndSubscribe` naar de volgende code:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
     }];
     ```
 
-3. Ten slotte moet u de `didRegisterForRemoteNotificationsWithDeviceToken` -methode bijwerken in uw AppDelegate. m, zodat u uw registratie correct kunt vernieuwen wanneer uw app wordt gestart. Wijzig de aanroep van de `subscribe` meldings methode met de volgende code:
+3. Ten slotte moet u de `didRegisterForRemoteNotificationsWithDeviceToken`-methode bijwerken in uw AppDelegate. m, zodat u uw registratie correct kunt vernieuwen wanneer uw app wordt gestart. Wijzig de aanroep van de `subscribe`-methode van meldingen met de volgende code:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Zorg ervoor dat u een IBOutlet toevoegt in uw view controller. h zoals wordt wee
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>Beschrijving Gelokaliseerde sjabloon meldingen verzenden van het apparaat
 
-Als u geen toegang hebt tot Visual Studio of als u alleen de gelokaliseerde sjabloon meldingen rechtstreeks vanuit de app op het apparaat wilt verzenden. U kunt de gelokaliseerde sjabloon parameters toevoegen aan `SendNotificationRESTAPI` de methode die u in de vorige zelf studie hebt gedefinieerd.
+Als u geen toegang hebt tot Visual Studio of als u alleen de gelokaliseerde sjabloon meldingen rechtstreeks vanuit de app op het apparaat wilt verzenden. U kunt de gelokaliseerde sjabloon parameters toevoegen aan de `SendNotificationRESTAPI`-methode die u in de vorige zelf studie hebt gedefinieerd.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag

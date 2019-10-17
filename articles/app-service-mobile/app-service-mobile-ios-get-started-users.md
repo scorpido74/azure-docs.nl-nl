@@ -14,19 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 674d5f783f43011ba154b668cea4ec41f6a945f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 800d86750f091404ee7f940d7cf8f6631e3fbbeb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025277"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388700"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Verificatie toevoegen aan uw iOS-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 In deze zelf studie voegt u verificatie toe aan het [Quick start voor iOS] -project met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie voor [Quick start voor iOS] , die u eerst moet volt ooien.
 
@@ -57,7 +58,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring gegenereerd omdat de app toegang probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* nu verificatie is vereist.
 
 ## <a name="add-authentication"></a>Verificatie toevoegen aan de app
-**Objective-C**:
+**Doel-C**:
 
 1. Open *QSTodoListViewController. m* in Xcode in uw Mac en voeg de volgende methode toe:
 

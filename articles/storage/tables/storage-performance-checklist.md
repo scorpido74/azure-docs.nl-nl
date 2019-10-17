@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311606"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389996"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Controle lijst voor prestaties en schaal baarheid voor tabel opslag
 
@@ -65,7 +65,7 @@ Zie [Azure Storage schaal baarheid en prestatie doelen voor opslag accounts](/az
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslag accounts
 
-Als u het maximum aantal opslag accounts nadert dat is toegestaan voor een bepaalde combi natie van abonnement/regio, kunt u meerdere opslag accounts gebruiken om Shard te verg Roten, leiden, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor standaard opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+Als u het maximum aantal opslag accounts nadert dat is toegestaan voor een bepaalde combi natie van abonnement/regio, kunt u meerdere opslag accounts gebruiken om Shard te verg Roten, leiden, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Capaciteits-en transactie doelen
 
@@ -282,6 +282,4 @@ Als u batch-invoeg acties uitvoert en vervolgens de bereiken van entiteiten same
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
-- [Controle lijst voor prestaties en schaal baarheid voor Blob Storage](../blobs/storage-performance-checklist.md)
-- [Controle lijst voor prestaties en schaal baarheid voor wachtrij opslag](../queues/storage-performance-checklist.md)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

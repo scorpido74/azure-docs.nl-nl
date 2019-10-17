@@ -17,14 +17,14 @@ ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329867"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435519"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Snelstartgids: Azure cache gebruiken voor redis met python
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis
 
 In dit artikel neemt u Azure-cache op voor redis in een python-app om toegang te hebben tot een beveiligde, toegewezen cache die toegankelijk is vanuit elke toepassing in Azure.
 
@@ -48,7 +48,7 @@ In het volgende voor beeld wordt *PIP3* voor Python3 gebruikt om het redis-py-pa
     pip3 install redis
 ```
 
-![Redis-py installeren](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Installeer de redis-py Python-interface naar Azure cache voor redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Lezen en schrijven naar de cache
@@ -100,7 +100,7 @@ for c in result:
 
 Voer het script uit met behulp van Python.
 
-![Python-test voltooid](./media/cache-python-get-started/cache-python-completed.png)
+![Python-script uitvoeren om de cache toegang in azure cache te testen voor redis](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
@@ -117,7 +117,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourceg
 
 Voer in het tekstvak **filteren op naam...** de naam van de resource groep in. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de lijst met resultaten van de resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
 
-![Verwijderen](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Uw Snelstartgids-resource groep voor Azure cache verwijderen voor redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resource groep in om te bevestigen en selecteer **verwijderen**.
 

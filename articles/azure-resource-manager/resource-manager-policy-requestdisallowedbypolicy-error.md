@@ -1,6 +1,6 @@
 ---
 title: RequestDisallowedByPolicy-fout met het Azure-resource beleid | Microsoft Docs
-description: Beschrijft de oorzaak van de RequestDisallowedByPolicy-fout.
+description: Beschrijft de oorzaak van de RequestDisallowedByPolicy-fout bij het implementeren van resources met Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c791342bf68f84f6893e549d8528d1a861aa9040
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121236"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390288"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy-fout met Azure-resource beleid
 
@@ -45,13 +45,13 @@ Gebruik een van de volgende methoden om details op te halen over het beleid dat 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Geef in Power shell de beleids-id als `Id` de para meter op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
+Geef in Power shell de beleids-id als de para meter `Id` op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Geef in azure CLI de naam op van de beleids definitie:
 

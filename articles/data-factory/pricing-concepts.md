@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140944"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387456"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory prijzen door middel van voor beelden
 
@@ -42,19 +42,19 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | --- | --- |
 | Een gekoppelde service maken | 2 entiteit voor lezen/schrijven  |
 | Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
-| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
-| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration Runtime (standaard instelling DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van de Kopieer prestaties |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
 **Totaal prijs scenario: $0,16811**
 
 - Data Factory bewerkingen = **$0,0001**
-  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-Orchestration = **$0,168**
-  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2 @ no__t-0000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Pipeline-&amp;-uitvoering = **$0,168**
+  - Uitvoeringen van activiteit = 001 @ no__t-02 = 0,002 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Gegevens en trans formatie met Azure Databricks per uur kopiëren
@@ -73,20 +73,20 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | --- | --- |
 | Een gekoppelde service maken | 3 entiteit voor lezen/schrijven  |
 | Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
-| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 3 uitvoeringen van activiteit (1 voor uitvoering van trigger, 2 voor uitvoeringen van activiteit) |
-| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 3 uitgevoerde uitvoerings records voor bewaking (1 voor pijplijn uitvoering, 2 voor uitvoering van activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration Runtime (standaard instelling DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van de Kopieer prestaties |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 3 uitgevoerde uitvoerings records voor bewaking (1 voor pijplijn uitvoering, 2 voor uitvoering van activiteit) |
 | Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
 **Totaal prijs scenario: $0,16916**
 
 - Data Factory bewerkingen = **$0,00012**
-  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 3\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-Orchestration = **$0,16904**
-  - Uitvoeringen van activiteit\*= 001 3 = 0,003 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 3 @ no__t-0000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Pipeline-&amp;-uitvoering = **$0,16904**
+  - Uitvoeringen van activiteit = 001 @ no__t-03 = 0,003 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
   - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
 
@@ -107,21 +107,21 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | --- | --- |
 | Een gekoppelde service maken | 3 entiteit voor lezen/schrijven  |
 | Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
-| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 4 uitvoeringen van activiteit (1 voor uitvoering van trigger, 3 voor uitvoeringen van activiteit) |
-| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
-| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 4 uitgevoerde uitvoerings records voor de controle (1 voor de pijplijn uitvoering, 3 voor de uitvoering van de activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration Runtime (standaard instelling DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van de Kopieer prestaties |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 4 uitgevoerde uitvoerings records voor de controle (1 voor de pijplijn uitvoering, 3 voor de uitvoering van de activiteit) |
 | Opzoek activiteit uitvoeren hypo these: uitvoerings tijd = 1 min | 1 min uitvoering pijplijn activiteit |
 | Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
 **Totaal prijs scenario: $0,17020**
 
 - Data Factory bewerkingen = **$0,00013**
-  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 4\*000005 = $0,00002 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-Orchestration = **$0,17007**
-  - Uitvoeringen van activiteit\*= 001 4 = 0,004 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 4 @ no__t-0000005 = $0,00002 [1 bewaking = $0,25/50.000 = 0,000005]
+- Pipeline-&amp;-uitvoering = **$0,17007**
+  - Uitvoeringen van activiteit = 001 @ no__t-04 = 0,004 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
   - Pijplijn activiteit = $0,00003 (voor 1 minuut van uitvoer tijd). $0.002/uur op Azure Integration Runtime)
   - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
@@ -150,19 +150,19 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | --- | --- |
 | Een gekoppelde service maken | 2 entiteit voor lezen/schrijven  |
 | Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
-| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
 | Pijp lijn ophalen | 1 entiteit lezen/schrijven |
 | Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
-| Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 8 kernen van algemene Compute met TTL van 10 |
-| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
+| Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 8 kernen van algemene reken kracht met TTL van 10 |
+| Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
 **Totaal prijs scenario: $0,3011**
 
 - Data Factory bewerkingen = **$0,0001**
-  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-Orchestration = **$0,301**
-  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2 @ no__t-0000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Pipeline-&amp;-uitvoering = **$0,301**
+  - Uitvoeringen van activiteit = 001 @ no__t-02 = 0,002 [1 run = $1/1000 = 0,001]
   - Data flow-activiteiten = $0,299 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.112/uur op Azure Integration Runtime met een algemene reken kracht van 8 kernen
 
 ## <a name="next-steps"></a>Volgende stappen

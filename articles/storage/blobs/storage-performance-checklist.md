@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311127"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382047"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
@@ -66,7 +66,7 @@ Als u het maximum aantal opslag accounts nadert dat is toegestaan voor een bepaa
 
 - Gebruikt u opslag accounts voor het opslaan van niet-beheerde schijven en het toevoegen van die schijven aan uw virtuele machines (Vm's)? Voor dit scenario raadt micro soft aan om beheerde schijven te gebruiken. Beheerde schijven kunnen automatisch worden geschaald en zonder dat u afzonderlijke opslag accounts hoeft te maken en beheren. Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md) (Engelstalig) voor meer informatie
 - Gebruikt u één opslag account per klant, voor het doel van gegevens isolatie? Voor dit scenario raadt micro soft aan om een BLOB-container te gebruiken voor elke klant, in plaats van een hele opslag account. Azure Storage kunt nu op rollen gebaseerd toegangs beheer (RBAC) rollen per container toewijzen. Zie voor meer informatie [toegang verlenen tot Azure Blob-en wachtrij gegevens met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md).
-- Gebruikt u meerdere opslag accounts om Shard uit te breiden, uitvoer, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor standaard opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+- Gebruikt u meerdere opslag accounts om Shard uit te breiden, uitvoer, I/O-bewerkingen per seconde (IOPS) of capaciteit? In dit scenario raadt micro soft u aan gebruik te maken van verhoogde limieten voor opslag accounts om zo mogelijk het aantal opslag accounts te beperken dat vereist is voor uw werk belasting. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslag account aan te vragen. Zie voor meer informatie [aankondigen van grotere opslag accounts met hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Capaciteits-en transactie doelen
 
@@ -286,6 +286,4 @@ Pagina-blobs zijn geschikt als de toepassing wille keurige schrijf bewerkingen o
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Controle lijst voor prestaties en schaal baarheid voor wachtrij opslag](../queues/storage-performance-checklist.md)
-- [Controle lijst voor prestaties en schaal baarheid voor tabel opslag](../tables/storage-performance-checklist.md)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

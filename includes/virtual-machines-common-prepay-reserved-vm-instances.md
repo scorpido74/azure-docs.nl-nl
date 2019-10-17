@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806097"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391621"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Bespaar kosten met Azure Reserved VM Instances
 
@@ -26,26 +26,26 @@ U kunt reserverings aanbevelingen gebruiken om te helpen bij het bepalen van de 
 - Aanbevelingen voor aankopen en aanbevolen hoeveelheid worden weer gegeven wanneer u een gereserveerde VM-instantie in de Azure Portal koopt.
 - Azure Advisor biedt inkoop aanbevelingen voor afzonderlijke abonnementen.  
 - U kunt de Api's gebruiken voor het verkrijgen van inkoop aanbevelingen voor zowel het gedeelde bereik als het bereik van één abonnement. Zie voor meer informatie [gereserveerde instanties aankoop aanbeveling api's voor zakelijke klanten](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
-- Voor Enterprise Agreement (EA)-klanten zijn er aanbevelingen voor het delen van gedeelde en enkelvoudige abonnementen beschikbaar met de [Azure Consumption Insights Power bi inhouds pakket](/power-bi/service-connect-to-azure-consumption-insights).
+- Voor Enterprise Agreement (EA) en klanten overeenkomst (MCA) van micro soft, zijn er aanbevelingen voor het delen van gedeelde en enkelvoudige abonnementen beschikbaar met de [Azure Consumption Insights Power bi inhouds pakket](/power-bi/service-connect-to-azure-consumption-insights).
 
-### <a name="services-that-get-vm-reservation-discounts"></a>Services die VM-reserverings kortingen ophalen
+### <a name="services-that-get-vm-reservation-discounts"></a>Services waarop VM-reserveringskortingen van toepassing zijn
 
-Uw VM-reserve ringen kunnen van toepassing zijn op het VM-gebruik dat wordt verzonden vanuit meerdere services, niet alleen voor uw VM-implementaties. Resources die reserverings kortingen ophalen, zijn afhankelijk van de instelling voor de flexibiliteit van de instantie grootte.
+Uw VM-reserveringen zijn toepasbaar op het gebruik van VM’s dat vanuit meerdere services wordt verzonden – niet alleen op uw VM-implementaties. Resources die reserveringskortingen krijgen, veranderen afhankelijk van de instelling voor de flexibiliteit van de instantiegrootte.
 
-#### <a name="instance-size-flexibility-setting"></a>Instelling voor de flexibiliteit van instantie grootte
+#### <a name="instance-size-flexibility-setting"></a>Instelling voor de flexibiliteit van de instantiegrootte
 
-De instelling voor de flexibiliteit van de instantie grootte bepaalt welke services de gereserveerde exemplaar kortingen ophalen.
+De instelling voor de flexibiliteit van de instantiegrootte bepaalt welke services de kortingen voor de gereserveerde instanties ontvangen.
 
-Of de instelling is ingeschakeld of uitgeschakeld, de reserverings kortingen zijn automatisch van toepassing op alle overeenkomende VM `Microsoft.Compute`-gebruik wanneer de ConsumedService is. Controleer daarom de gebruiks gegevens voor de waarde *ConsumedService* . Voorbeelden zijn:
+Of de instelling nu aan of uit staat, reserveringskortingen worden automatisch toegepast op elk overeenkomend VM-gebruik wanneer de *ConsumedService* `Microsoft.Compute` is. Controleer daarom uw gebruiksgegevens voor de *ConsumedService*-waarde. Voorbeelden zijn:
 
 - Virtuele machines
-- Virtual Machine Scale Sets
+- Virtuele-machineschaalsets
 - Containerservice
-- Azure Batch implementaties (in de modus gebruikers abonnementen)
+- Azure Batch-implementaties (in de modus gebruikersabonnementen)
 - Azure Kubernetes Service (AKS)
 - Service Fabric
 
-Als de instelling is ingeschakeld, worden de reserverings kortingen automatisch toegepast op het overeenkomende VM-gebruik wanneer de *ConsumedService* een van de volgende items is:
+Als de instelling aan staat, worden de reserveringskortingen automatisch toegepast op elk overeenkomstig VM-gebruik wanneer het bij de *ConsumedService* om een van de volgende varianten gaat:
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -53,16 +53,16 @@ Als de instelling is ingeschakeld, worden de reserverings kortingen automatisch 
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-Controleer de waarde *ConsumedService* in uw gebruiks gegevens om te bepalen of het gebruik in aanmerking komt voor reserverings kortingen.
+Controleer de *ConsumedService*-waarde in uw gebruiksgegevens om te bepalen of het gebruik in aanmerking komt voor reserveringskortingen.
 
-Zie flexibiliteit van de [grootte van virtuele machines met gereserveerde VM-instanties](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)voor meer informatie over de flexibiliteit van de grootte van het exemplaar.
+Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
 
 ### <a name="analyze-your-usage-information"></a>Uw gebruiks gegevens analyseren
 Analyseer uw gebruiks gegevens om te helpen bepalen welke reserve ringen u moet aanschaffen.
 
 Gebruiks gegevens zijn beschikbaar in het gebruiks bestand en Api's. Gebruik ze samen om te bepalen welke reserve ring moet worden gekocht. Controleren op VM-exemplaren met hoog gebruik op dagelijkse basis om het aantal te kopen reserve ringen te bepalen.
 
-Vermijd de `Meter` subcategorie en `Product` velden in gebruiks gegevens. Ze maken geen onderscheid tussen VM-grootten die Premium-opslag gebruiken. Als u deze velden gebruikt om de grootte van de virtuele machine te bepalen voor de reserve ring, kunt u de verkeerde grootte aanschaffen. Vervolgens krijgt u niet de verwachte reserverings korting. In plaats daarvan raadpleegt `AdditionalInfo` u het veld in uw gebruiks bestand of gebruiks-API om de juiste VM-grootte te bepalen.
+Vermijd de `Meter`-subcategorie en `Product`-velden in gebruiks gegevens. Ze maken geen onderscheid tussen VM-grootten die Premium-opslag gebruiken. Als u deze velden gebruikt om de grootte van de virtuele machine te bepalen voor de reserve ring, kunt u de verkeerde grootte aanschaffen. Vervolgens krijgt u niet de verwachte reserverings korting. In plaats daarvan raadpleegt u het veld `AdditionalInfo` in het gebruiks bestand of de gebruiks-API om de juiste VM-grootte te bepalen.
 
 ### <a name="purchase-restriction-considerations"></a>Overwegingen voor de aankoop beperking
 
@@ -80,7 +80,7 @@ Gereserveerde VM-instanties zijn beschikbaar voor de meeste VM-grootten met enke
 
 ## <a name="buy-a-reserved-vm-instance"></a>Een gereserveerde VM-instantie kopen
 
-U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Betaal voor de reserve ring [vóór of met maandelijkse betalingen](../articles/billing/billing-monthly-payments-reservations.md).
+U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Betaal [vooraf of per maand](../articles/billing/billing-monthly-payments-reservations.md) voor de reservering.
 
 Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instantie:
 
@@ -90,34 +90,34 @@ Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instant
 
 Een exemplaar kopen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **alle services** > -**reserve ringen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **Alle services** > **Reserveringen**.
 1. Selecteer **toevoegen** om een nieuwe reserve ring te kopen en klik vervolgens op **virtuele machine**.
 1. Voer de vereiste velden in. Actieve VM-exemplaren die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de reserverings korting. Het werkelijke aantal VM-exemplaren dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
 
-| Veld      | Description|
+| Veld      | Beschrijving|
 |------------|--------------|
-|Subscription|Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. De betalings wijze voor het abonnement wordt in rekening gebracht voor de kosten voor de reserve ring. Het abonnements type moet een Enter prise Agreement zijn (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijk abonnement met betalen naar gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement.|    
-|Scope       |Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: <ul><li>**Bereik van één resource groep** : past de reserverings korting alleen toe op de overeenkomende resources in de geselecteerde resource groep.</li><li>**Bereik van één abonnement** : past de reserverings korting toe op de overeenkomende resources in het geselecteerde abonnement.</li><li>**Gedeeld bereik** : past de reserverings korting toe op overeenkomende resources in in aanmerking komende abonnementen in de facturerings context. Voor EA-klanten is de facturerings context de inschrijving. Voor afzonderlijke abonnementen met betalen per gebruik-tarieven geldt het facturerings bereik uit alle in aanmerking komende abonnementen die zijn gemaakt door de account beheerder.</li></ul>|
+|Abonnement|Het abonnement dat wordt gebruikt om te betalen voor de reserve ring. De betalings wijze voor het abonnement wordt in rekening gebracht voor de kosten voor de reserve ring. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een micro soft-klant overeenkomst of een afzonderlijk abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). De kosten worden afgetrokken van het saldo van de monetaire toezeg ging, indien beschikbaar, of in rekening gebracht als overschrijding. Voor een abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card-of factuur betalings methode voor het abonnement.|    
+|Scope       |Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: <ul><li>**Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.</li><li>**Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.</li><li>**Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor EA-klanten is de facturerings context de inschrijving. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.</li></ul>|
 |Regio    |De Azure-regio die wordt gedekt door de reserve ring.|    
 |VM-grootte     |De grootte van de VM-exemplaren.|
-|Optimaliseren voor     |De flexibiliteit van VM-instantie grootte is standaard geselecteerd. Klik op **Geavanceerde instellingen** om de waarde voor de flexibiliteit van de instantie grootte te wijzigen om de reserverings korting toe te passen op andere virtuele machines in dezelfde [VM-grootte groep](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Met capaciteits prioriteit wordt de capaciteit van het Data Center voor uw implementaties prioriteit. Het biedt extra vertrouwen in uw vermogen om de VM-exemplaren te starten wanneer u ze nodig hebt. Capaciteits prioriteit is alleen beschikbaar wanneer het reserverings bereik één abonnement is. |
-|Begrip        |Eén jaar of drie jaar.|
+|Optimaliseren voor     |De flexibiliteit van VM-instantie grootte is standaard geselecteerd. Klik op **Geavanceerde instellingen** om de waarde voor de flexibiliteit van de instantie grootte te wijzigen om de reserverings korting toe te passen op andere virtuele machines in dezelfde [VM-grootte groep](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Met de capaciteitsprioriteit wordt prioriteit toegekend aan de datacentercapaciteit voor uw implementaties. Het biedt extra vertrouwen in uw vermogen om de VM-exemplaren te starten wanneer u ze nodig hebt. Capaciteits prioriteit is alleen beschikbaar wanneer het reserverings bereik één abonnement is. |
+|Termijn        |Eén jaar of drie jaar.|
 |Hoeveelheid    |Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve VM-exemplaren waarmee de factuur korting kan worden verkregen. Als u bijvoorbeeld 10 Standard_D2-Vm's uitvoert in het VS-Oost, geeft u hoeveelheid op als 10 om het voor deel voor alle actieve Vm's te maximaliseren. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="usage-data-and-reservation-utilization"></a>Gebruiks gegevens en reserverings gebruik
 
-Uw gebruiks gegevens hebben een goede prijs van nul voor het gebruik dat een reserverings korting krijgt. U kunt zien welke VM-instantie de reserverings korting voor elke reserve ring heeft ontvangen.
+Uw gebruiksgegevens kosten niets voor het deel waarvoor u een reserveringskorting verkrijgt. U kunt zien welke VM-instantie de reserverings korting voor elke reserve ring heeft ontvangen.
 
 Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../articles/billing/billing-understand-reserved-instance-usage-ea.md) als u een EA-klant bent voor meer informatie over hoe reserverings kortingen worden weer gegeven in gebruiks gegevens. Zie [het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen per gebruik voor meer informatie](../articles/billing/billing-understand-reserved-instance-usage.md)over een afzonderlijk abonnement.
 
 ## <a name="change-a-reservation-after-purchase"></a>Een reserve ring wijzigen na aankoop
 
-U kunt de volgende typen wijzigingen aanbrengen in een reserve ring na de aankoop:
+Na aankoop kunt u de volgende typen wijzigingen aanbrengen in een reservering:
 
-- Reserverings bereik bijwerken
+- Het bereik van de reservering bijwerken
 - Flexibiliteit van de instantie grootte (indien van toepassing)
 - Beheer
 
@@ -128,26 +128,26 @@ U kunt de volgende typen wijzigingen na de aankoop niet rechtstreeks aanbrengen:
 - Een bestaande reserverings regio
 - SKU
 - Hoeveelheid
-- Duration
+- Duur
 
 U kunt echter wel een reserve ring *uitwisselen* als u wijzigingen wilt aanbrengen.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Reserve ringen annuleren, omruilen of terugbetalen
+## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-U kunt reserve ringen annuleren, vervangen of terugbetalen met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
-Als u vragen hebt of hulp nodig hebt, [Maak een ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Reservations beheren](../articles/billing/billing-manage-reserved-vm-instance.md)voor meer informatie over het beheren van een reserve ring.
-- Raadpleeg de volgende artikelen voor meer informatie over Azure Reservations:
-    - [Wat zijn Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Reserve ringen in azure beheren](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Begrijpen hoe de reserverings korting wordt toegepast](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Meer informatie over reserverings gebruik voor een abonnement met betalen per gebruik-tarieven](../articles/billing/billing-understand-reserved-instance-usage.md)
+- Zie [Azure-reserveringen beheren](../articles/billing/billing-manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
+- Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
+    - [Wat zijn Azure-reserveringen?](../articles/billing/billing-save-compute-costs-reservations.md)
+    - [Reserveringen beheren in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
+    - [Begrijpen hoe de reserveringskorting wordt toegepast](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Windows-software kosten niet inbegrepen bij reserve ringen](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations in het Partner Center-programma van de Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+    - [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

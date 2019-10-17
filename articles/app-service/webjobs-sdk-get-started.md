@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8f33e36568171ab7b37f536a3c7883b004cb71c0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2b2b8fe383ff4ee3d4b23c2c6e555b44e0cc088c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68838032"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390070"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenis gerichte achtergrond verwerking
 
@@ -44,23 +44,19 @@ In dit artikel wordt beschreven hoe u webjobs kunt implementeren als een .NET Co
 
 ## <a name="webjobs-nuget-packages"></a>NuGet-pakketten voor webjobs
 
-1. Installeer de meest recente stabiele 3. x-versies van de volgende NuGet-pakketten:
+1. Installeer de meest recente stabiele 3. x-versie van het NuGet-pakket van @no__t 0, inclusief `Microsoft.Azure.WebJobs`.
 
-   * `Microsoft.Azure.WebJobs`
-   * `Microsoft.Azure.WebJobs.Extensions`
-
-     Dit zijn de opdrachten van de **Package Manager-console** voor versie 3.0.4:
+     Hier volgt de opdracht **Package Manager console** voor versie 3.0.2:
 
      ```powershell
-     Install-Package Microsoft.Azure.WebJobs -version 3.0.4
-     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
      ```
 
 ## <a name="create-the-host"></a>De host maken
 
-De host is de runtime container voor functies die Luis teren naar triggers en aanroepen-functies. Met de volgende stappen maakt u een host die [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)de algemene host in ASP.net core implementeert.
+De host is de runtime container voor functies die Luis teren naar triggers en aanroepen-functies. Met de volgende stappen maakt u een host die [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)implementeert, de algemene host in ASP.net core.
 
-1. Voeg in *Program.cs*een `using` instructie toe:
+1. Voeg in *Program.cs*een `using`-instructie toe:
 
     ```cs
     using Microsoft.Extensions.Hosting;
@@ -84,34 +80,27 @@ De host is de runtime container voor functies die Luis teren naar triggers en aa
     }
     ```
 
-In ASP.net core worden hardwareconfiguraties ingesteld door methoden voor het [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) exemplaar aan te roepen. Zie voor meer informatie [.net generic host](/aspnet/core/fundamentals/host/generic-host). De `ConfigureWebJobs` uitbreidings methode initialiseert de host webjobs. In `ConfigureWebJobs`initialiseert u specifieke webjobs-extensies en stelt u de eigenschappen van deze uitbrei dingen in.  
+In ASP.NET Core worden hardwareconfiguraties ingesteld door methoden aan te roepen voor het [`HostBuilder`-](/dotnet/api/microsoft.extensions.hosting.hostbuilder) exemplaar. Zie voor meer informatie [.net generic host](/aspnet/core/fundamentals/host/generic-host). De extensie methode `ConfigureWebJobs` initialiseert de host webjobs. In `ConfigureWebJobs` initialiseert u specifieke webjobs-extensies en stelt u de eigenschappen van deze uitbrei dingen in.  
 
 ## <a name="enable-console-logging"></a>Logboek registratie van de console inschakelen
 
 In deze sectie stelt u de console logboek registratie in die gebruikmaakt van het [ASP.net core-logboek registratie raamwerk](/aspnet/core/fundamentals/logging).
 
-1. Installeer de nieuwste stabiele versie van de volgende NuGet-pakketten:
+1. Installeer de nieuwste stabiele versie van het NuGet-pakket van @no__t 0, inclusief `Microsoft.Extensions.Logging`.
 
-   * `Microsoft.Extensions.Logging`-Het Framework voor logboek registratie.
-   * `Microsoft.Extensions.Logging.Console`-De console provider waarmee logboeken naar de-console worden verzonden.
-
-   Hier volgen de **Package Manager-console** opdrachten voor versie 2.2.0:
-
-   ```powershell
-   Install-Package Microsoft.Extensions.Logging -version 2.2.0
-   ```
+   Hier volgt de opdracht **Package Manager console** voor versie 2.2.0:
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
    ```
 
-1. Voeg in *Program.cs*een `using` instructie toe:
+1. Voeg in *Program.cs*een `using`-instructie toe:
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
 
-1. Roep de [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) methode aan [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder). De [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) -methode voegt console logboek registratie toe aan de configuratie.
+1. Roep de [`ConfigureLogging`-](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) methode aan op [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder). De methode [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) voegt console logboek registratie toe aan de configuratie.
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -120,7 +109,7 @@ In deze sectie stelt u de console logboek registratie in die gebruikmaakt van he
     });
     ```
 
-    De `Main` methode ziet er nu als volgt uit:
+    De methode `Main` ziet er nu als volgt uit:
 
     ```cs
     static void Main(string[] args)
@@ -155,13 +144,13 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
 1. Installeer de nieuwste stabiele versie van het pakket [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet, versie 3. x. 
 
-    Hier volgt de **Package Manager-console** opdracht voor versie 3.0.3:
+    Hier volgt de opdracht **Package Manager console** voor versie 3.0.4:
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.3
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
     ```
 
-2. In de `ConfigureWebJobs` uitbreidings methode roept u de `AddAzureStorage` -methode op [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) het exemplaar aan om de opslag extensie te initialiseren. Op dit moment lijkt de `ConfigureWebJobs` methode op het volgende voor beeld:
+2. In de `ConfigureWebJobs`-extensie methode roept u de `AddAzureStorage`-methode aan voor het [`HostBuilder`-](/dotnet/api/microsoft.extensions.hosting.hostbuilder) exemplaar om de opslag extensie te initialiseren. Op dit moment ziet de `ConfigureWebJobs`-methode eruit als in het volgende voor beeld:
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -173,7 +162,7 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
 ## <a name="create-a-function"></a>Een functie maken
 
-1. Klik met de rechter muisknop op het > project, selecteer**Nieuw item toevoegen...** , kies **klasse**, C# noem het nieuwe klassebestand *functions.cs*en selecteer **toevoegen**.
+1. Klik met de rechter muisknop op het project, selecteer **toevoegen** > **Nieuw item...** , kies **klasse**, C# noem het nieuwe klassebestand *functions.cs*en selecteer **toevoegen**.
 
 1. Vervang in Functions.cs de gegenereerde sjabloon door de volgende code:
 
@@ -193,11 +182,11 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
    }
    ```
 
-   Het `QueueTrigger` kenmerk geeft aan dat de runtime deze functie aanroept wanneer een nieuw bericht wordt geschreven in een Azure Storage `queue`wachtrij met de naam. De inhoud van het wachtrij bericht wordt gegeven aan de methode code in de `message` para meter. De hoofd tekst van de methode is waar u de trigger gegevens verwerkt. In dit voor beeld registreert de code alleen het bericht.
+   Het kenmerk `QueueTrigger` vertelt de runtime om deze functie aan te roepen wanneer een nieuw bericht wordt geschreven in een Azure Storage wachtrij met de naam `queue`. De inhoud van het wachtrij bericht wordt aan de methode code in de para meter `message` gegeven. De hoofd tekst van de methode is waar u de trigger gegevens verwerkt. In dit voor beeld registreert de code alleen het bericht.
 
-   De `message` para meter moet geen teken reeks zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
+   De para meter `message` moet geen teken reeks zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle functies die nodig zijn voor de webjobs SDK. In dit gedeelte maakt u een opslag account in Azure en configureert u het project om het te gebruiken. Als u al een opslag account hebt, gaat u verder met stap 6.
 
@@ -229,9 +218,9 @@ De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle f
 
 De webjobs SDK zoekt naar de opslag connection string in de toepassings instellingen in Azure. Wanneer u lokaal uitvoert, zoekt het naar deze waarde in het lokale configuratie bestand of in omgevings variabelen.
 
-1. Klik met de rechter muisknop op het > project, selecteer**Nieuw item toevoegen...** , kies **Java script JSON Configuration File**, noem het nieuwe bestand *appSettings. json* file en selecteer **toevoegen**. 
+1. Klik met de rechter muisknop op het project, selecteer **toevoegen** > **Nieuw item...** , kies **Java script JSON Configuration File**, noem het nieuwe bestand *appSettings. json* file en selecteer **toevoegen**. 
 
-1. Voeg in het nieuwe bestand een `AzureWebJobsStorage` veld toe, zoals in het volgende voor beeld:
+1. Voeg in het nieuwe bestand een `AzureWebJobsStorage`-veld toe, zoals in het volgende voor beeld:
 
     ```json
     {
@@ -289,9 +278,9 @@ In deze sectie maakt en voert u het project lokaal uit en wordt de functie geact
 
 1. Voer het project opnieuw uit.
 
-   Omdat u het `QueueTrigger` kenmerk in de `ProcessQueueMessage` functie hebt gebruikt, luistert de WeJobs SDK-runtime naar wachtrij berichten wanneer deze wordt gestart. Er wordt een nieuw wachtrij bericht gevonden in de wachtrij met de naam *wachtrij* en de functie wordt aangeroepen.
+   Omdat u het kenmerk `QueueTrigger` hebt gebruikt in de functie `ProcessQueueMessage`, luistert de WeJobs SDK-runtime naar wachtrij berichten wanneer deze wordt gestart. Er wordt een nieuw wachtrij bericht gevonden in de wachtrij met de naam *wachtrij* en de functie wordt aangeroepen.
 
-   Als gevolg van het navragen van de [wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm), kan het twee minuten duren voordat de runtime het bericht heeft gevonden en de functie aanroept. Deze wacht tijd kan worden verkleind door in de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings)te worden uitgevoerd.
+   Als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm), kan het twee minuten duren voordat de runtime het bericht heeft gevonden en de functie aanroept. Deze wacht tijd kan worden verkleind door in de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings)te worden uitgevoerd.
 
    De console-uitvoer ziet er als volgt uit:
 
@@ -322,7 +311,7 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service app-en Application Insights-exemplaar maken
 
-1. Als u nog geen app hebt App Service die u kunt gebruiken, maakt u er [een](app-service-web-get-started-dotnet-framework.md). Wanneer u uw app maakt, kunt u ook een verbonden Application Insights-resource maken. Wanneer u dit doet, wordt `APPINSIGHTS_INSTRUMENTATIONKEY` de in uw app ingesteld voor u.
+1. Als u nog geen app hebt App Service die u kunt gebruiken, maakt u er [een](app-service-web-get-started-dotnet-framework.md). Wanneer u uw app maakt, kunt u ook een verbonden Application Insights-resource maken. Wanneer u dit doet, wordt de `APPINSIGHTS_INSTRUMENTATIONKEY` ingesteld voor u in uw app.
 
 1. Als u nog geen Application Insights resource hebt die u kunt gebruiken, maakt u er [een](../azure-monitor/app/create-new-resource.md ). Stel het **toepassings type** in op **Algemeen**en sla de secties die volgen **de instrumentatie sleutel kopiëren**op.
 
@@ -338,13 +327,13 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Voeg in het vak **verbindings reeksen** de volgende vermelding toe.
 
-   |Name  |verbindings reeks  |Databasetype|
+   |Naam  |verbindings reeks  |Database type|
    |---------|---------|------|
-   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aanpassen|
+   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
-   |Name  |Waarde  |
+   |Naam  |Waarde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentatie sleutel} |
 
@@ -352,7 +341,7 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Selecteer **Opslaan**.
 
-1. Voeg de Application Insights verbinding toe aan het project, zodat u deze lokaal kunt uitvoeren. Voeg in het bestand *appSettings. json* een `APPINSIGHTS_INSTRUMENTATIONKEY` veld toe, zoals in het volgende voor beeld:
+1. Voeg de Application Insights verbinding toe aan het project, zodat u deze lokaal kunt uitvoeren. Voeg in het bestand *appSettings. json* een `APPINSIGHTS_INSTRUMENTATIONKEY`-veld toe, zoals in het volgende voor beeld:
 
     ```json
     {
@@ -370,9 +359,9 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 Als u wilt profiteren van [Application Insights](../azure-monitor/app/app-insights-overview.md) logboek registratie, werkt u de logboek registratie code bij om het volgende te doen:
 
 * Een Application Insights registratie provider toevoegen met standaard [filtering](webjobs-sdk-how-to.md#log-filtering); alle gegevens en logboeken op een hoger niveau worden zowel naar de console als Application Insights wanneer u lokaal wordt uitgevoerd.
-* Plaats het [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) -object in `using` een blok om ervoor te zorgen dat de logboek uitvoer wordt leeg gemaakt wanneer de host wordt afgesloten.
+* Plaats het [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) -object in een Block `using` om ervoor te zorgen dat de logboek uitvoer wordt leeg gemaakt wanneer de host wordt afgesloten.
 
-1. Installeer de meest recente stabiele 3. x-versie van het NuGet-pakket voor de Application Insights `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`logging provider:.
+1. Installeer de meest recente stabiele 3. x-versie van het NuGet-pakket voor de Application Insights logging provider: `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`.
 
    Hier volgt de opdracht **Package Manager console** voor versie 3.0.2:
 
@@ -380,7 +369,7 @@ Als u wilt profiteren van [Application Insights](../azure-monitor/app/app-insigh
    Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
    ```
 
-1. Open *Program.cs* en vervang de code in de `Main` -methode door de volgende code:
+1. Open *Program.cs* en vervang de code in de methode `Main` door de volgende code:
 
     ```cs
     static void Main(string[] args)
@@ -452,7 +441,7 @@ Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies 
 1. Vernieuw de **wachtrij** pagina en het nieuwe bericht verdwijnt omdat het is verwerkt door de functie die wordt uitgevoerd in Azure.
 
    > [!TIP]
-   > Wanneer u test in azure, moet u de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings) gebruiken om ervoor te zorgen dat de functie voor het activeren van een wachtrij direct wordt geactiveerd en vertragingen voor komen als gevolg van het navragen van de [wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm).
+   > Wanneer u test in azure, moet u de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings) gebruiken om ervoor te zorgen dat de functie voor het activeren van een wachtrij direct wordt geactiveerd en vertragingen voor komen als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm).
 
 ### <a name="view-logs-in-application-insights"></a>Logboeken in Application Insights weer geven
 
@@ -468,7 +457,7 @@ Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies 
 
 Invoer bindingen vereenvoudigen code waarmee gegevens worden gelezen. In dit voor beeld is het wachtrij bericht een BLOB-naam en gebruikt u de naam van de blob om een BLOB in Azure Storage te zoeken en te lezen.
 
-1. Vervang in *functions.cs*de `ProcessQueueMessage` -methode door de volgende code:
+1. Vervang in *functions.cs*de methode `ProcessQueueMessage` door de volgende code:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -480,9 +469,9 @@ Invoer bindingen vereenvoudigen code waarmee gegevens worden gelezen. In dit voo
    }
    ```
 
-   In deze code `queueTrigger` is een [bindings expressie](../azure-functions/functions-bindings-expressions-patterns.md), wat betekent dat deze tijdens runtime wordt omgezet in een andere waarde.  Tijdens runtime heeft het de inhoud van het bericht in de wachtrij.
+   In deze code is `queueTrigger` een [bindings expressie](../azure-functions/functions-bindings-expressions-patterns.md), wat betekent dat deze wordt omgezet in een andere waarde tijdens runtime.  Tijdens runtime heeft het de inhoud van het bericht in de wachtrij.
 
-1. Een `using`toevoegen:
+1. Een @no__t toevoegen-0:
 
    ```cs
    using System.IO;
@@ -490,7 +479,7 @@ Invoer bindingen vereenvoudigen code waarmee gegevens worden gelezen. In dit voo
 
 1. Maak een BLOB-container in uw opslag account.
 
-   a. Vouw in **Server Explorer** in Visual Studio het knoop punt voor uw opslag account uit, klik met de rechter muisknop op **blobs**en selecteer vervolgens BLOB- **container maken**.
+   a. Vouw in **Server Explorer** in Visual Studio het knoop punt voor uw opslag account uit, klik met de rechter muisknop op **blobs**en selecteer vervolgens **BLOB-container maken**.
 
    b. Voer in het dialoog venster **BLOB-container maken** *container* in als container naam en klik vervolgens op **OK**.
 

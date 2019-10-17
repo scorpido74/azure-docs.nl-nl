@@ -2,23 +2,20 @@
 title: Azure Cloud Services beheren met Azure Automation | Microsoft Docs
 description: Meer informatie over hoe de Azure Automation-Service kan worden gebruikt voor het beheren van Azure Cloud Services op schaal.
 services: cloud-services, automation
-documentationcenter: ''
 author: jodoglevy
 manager: timlt
 editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945502"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439069"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Cloud Services beheren met Azure Automation
 In deze hand leiding vindt u informatie over de Azure Automation-Service en hoe u deze kunt gebruiken om het beheer van uw Azure-Cloud Services te vereenvoudigen.
@@ -43,4 +40,3 @@ Nu u de basis principes van Azure Automation hebt geleerd en hoe u deze kunt geb
 
 * [Overzicht van Azure Automation](../automation/automation-intro.md)
 * [Mijn eerste runbook](../automation/automation-first-runbook-graphical.md)
-* [Trainings kaart Azure Automation](https://azure.microsoft.com/documentation/learning-paths/automation/)

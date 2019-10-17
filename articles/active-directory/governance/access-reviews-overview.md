@@ -1,5 +1,5 @@
 ---
-title: Wat zijn toegangsbeoordelingen? -Azure Active Directory | Microsoft Docs
+title: Wat zijn toegangsbeoordelingen? - Azure Active Directory | Microsoft Azure
 description: Met Azure Active Directory-toegangs beoordelingen kunt u groepslid maatschap en de toegang tot toepassingen beheren om te voldoen aan governance-, risico beheer en nalevings initiatieven in uw organisatie.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe8b50775390d60f75fafeae490e0307912600f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125281"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389528"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -56,13 +56,13 @@ Afhankelijk van wat u wilt controleren, maakt u uw toegangs beoordeling in azure
 
 | Toegangs rechten van gebruikers | Revisoren kunnen worden | Beoordeling gemaakt in | Ervaring voor revisoren |
 | --- | --- | --- | --- |
-| Leden van beveiligings groep</br>Office-groeps leden | Opgegeven revisoren</br>Groepseigenaren</br>Zelf beoordeling | Azure AD-toegangsbeoordelingen</br>Azure AD-groepen | Toegangsvenster |
+| Leden van beveiligings groep</br>Office-groeps leden | Opgegeven revisoren</br>Groeps eigenaren</br>Zelf beoordeling | Azure AD-toegangsbeoordelingen</br>Azure AD-groepen | Toegangsvenster |
 | Toegewezen aan een verbonden app | Opgegeven revisoren</br>Zelf beoordeling | Azure AD-toegangsbeoordelingen</br>Azure AD Enter prise-apps (in preview-versie) | Toegangsvenster |
 | Azure AD-rol | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 | Azure-resource functie | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 
 
-## <a name="onboard-access-reviews"></a>Toegangsbeoordelingen onboarden
+## <a name="onboard-access-reviews"></a>Toegangs Beoordelingen voor onboarding
 
 Volg deze stappen om toegangs beoordelingen uit te voeren.
 
@@ -76,7 +76,7 @@ Volg deze stappen om toegangs beoordelingen uit te voeren.
  
     ![Start pagina toegangs beoordelingen](./media/access-reviews-overview/access-reviews-overview-onboard.png)
 
-1. Klik op de pagina op de knop **nu** onboarden.
+1. Klik op de pagina op de knop **nu Onboarden** .
     
       ![Toegangs Beoordelingen voor onboarding](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
 
@@ -97,7 +97,7 @@ Als u klaar bent voor het implementeren van toegangs beoordelingen in uw organis
 
 ### <a name="which-users-must-have-licenses"></a>Welke gebruikers moeten licenties hebben?
 
-Elke gebruiker die communiceert met toegangs beoordelingen moet beschikken over een betaalde Azure AD Premium P2-licentie. Voorbeelden zijn:
+Elke gebruiker die communiceert met toegangs beoordelingen moet beschikken over een betaalde Azure AD Premium P2-licentie. Voorbeelden:
 
 - Beheerders die een toegangs beoordeling maken
 - Groeps eigenaren die een toegangs beoordeling uitvoeren
@@ -113,7 +113,7 @@ Hier volgen enkele voorbeeld scenario's die u kunnen helpen bij het bepalen van 
 | Een beheerder maakt een toegangs beoordeling van groep A met 500 gebruikers. Wijst drie groeps eigenaren als revisoren toe. | 1 licentie voor de beheerder en 3 licenties voor elke groeps eigenaar als controleurs. | 4 |
 | Een beheerder maakt een toegangs beoordeling van groep A met 500 gebruikers. Maakt het een zelf beoordeling. | 1 licentie voor de beheerder + 500 licenties voor elke gebruiker als eigen revisors. | 501 |
 | Een beheerder maakt een toegangs beoordeling van groep B met vijf gebruikers en 25 gast gebruikers. Maakt het een zelf beoordeling. | 1 licentie voor de beheerder + 5 licenties voor elke gebruiker als eigen revisors.<br/>(gast gebruikers worden gedekt in de vereiste verhouding van 1:5) | 6 |
-| Een beheerder maakt een toegangs beoordeling van groep C met 5 gebruikers en 108 gast gebruikers. Maakt het een zelf beoordeling. | 1 licentie voor de beheerder + 5 licenties voor elke gebruiker als eigen revisors + 16 extra licenties voor alle 108 gast gebruikers in de vereiste 1:5 verhouding.<br/>1 + 5 = 6 licenties, die 5\*6 = 30 gast gebruikers bedekken. Voor de resterende (108-5\*6) = 78 gast gebruikers, 78/5 = 16 extra licenties zijn vereist. In totaal moeten 6 + 16 = 22 licenties zijn vereist. | 22 |
+| Een beheerder maakt een toegangs beoordeling van groep C met 5 gebruikers en 108 gast gebruikers. Maakt het een zelf beoordeling. | 1 licentie voor de beheerder + 5 licenties voor elke gebruiker als eigen revisors + 16 extra licenties voor alle 108 gast gebruikers in de vereiste 1:5 verhouding.<br/>1 + 5 = 6 licenties, die 5 @ no__t-06 = 30 gast gebruikers bedekken. Voor de resterende (108-5 @ no__t-06) = 78 gast gebruikers, 78/5 = 16 extra licenties zijn vereist. In totaal moeten 6 + 16 = 22 licenties zijn vereist. | 22 |
 
 Zie [licenties toewijzen of verwijderen met behulp van de Azure Active Directory Portal](../fundamentals/license-users-groups.md)voor informatie over het toewijzen van licenties aan uw gebruik.
 

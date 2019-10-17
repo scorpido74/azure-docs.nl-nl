@@ -13,27 +13,28 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 44b3259745877ddb43e643f1fa8307e100ca8b38
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025242"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435391"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>IOS-client bibliotheek gebruiken voor Azure Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met de nieuwste [Azure Mobile apps IOS SDK][1]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken, een tabel te maken en een vooraf gebaseerd IOS Xcode-project te downloaden. In deze hand leiding richten we ons op de iOS-SDK aan de client zijde. Zie de server SDK HOWTOs voor meer informatie over de SDK aan de server zijde voor de back-end.
 
 ## <a name="reference-documentation"></a>Referentiedocumentatie
 
-De referentie documentatie voor de iOS-client-SDK bevindt zich hier: [Naslag informatie voor Azure Mobile apps IOS-client][2].
+De referentie documentatie voor de iOS-client-SDK bevindt zich hier: [Azure Mobile apps IOS-client referentie][2].
 
 ## <a name="supported-platforms"></a>Ondersteunde platforms
 
@@ -46,11 +47,11 @@ Deze SDK is dus niet geschikt voor controle-en soort gelijke apparaten.
 
 In deze hand leiding wordt ervan uitgegaan dat u een back-end hebt gemaakt met een tabel. In deze hand leiding wordt ervan uitgegaan dat de tabel hetzelfde schema heeft als de tabellen in deze zelf studies. In deze hand leiding wordt ervan uitgegaan dat u in uw code verwijst naar `MicrosoftAzureMobile.framework` en `MicrosoftAzureMobile/MicrosoftAzureMobile.h` hebt geïmporteerd.
 
-## <a name="create-client"></a>Procedures: Client maken
+## <a name="create-client"></a>Procedure: client maken
 
 Maak een `MSClient` om toegang te krijgen tot een Azure Mobile Apps-back-end in uw project. Vervang `AppUrl` door de URL van de app. U kunt `gatewayURLString` en `applicationKey` leeg laten. Als u een gateway voor verificatie instelt, vult u `gatewayURLString` met de gateway-URL in.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
@@ -62,11 +63,11 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Procedures: Tabel verwijzing maken
+## <a name="table-reference"></a>Procedure: tabel verwijzing maken
 
 Maak een verwijzing naar de back-endtabel als u gegevens wilt bekijken of bijwerken. Vervang `TodoItem` door de naam van uw tabel
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSTable *table = [client tableWithName:@"TodoItem"];
@@ -78,11 +79,11 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Procedures: Query gegevens
+## <a name="querying"></a>Procedure: gegevens opvragen
 
 Als u een database query wilt maken, moet u een query uitvoeren op het `MSTable`-object. Met de volgende query worden alle items in `TodoItem` opgehaald en wordt de tekst van elk item geregistreerd.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
@@ -110,13 +111,13 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>Procedures: Geretourneerde gegevens filteren
+## <a name="filtering"></a>Procedure: geretourneerde gegevens filteren
 
 Er zijn veel beschik bare opties om de resultaten te filteren.
 
 Als u wilt filteren met een predikaat, gebruikt u een `NSPredicate` en `readWithPredicate`. Met de volgende filters worden gegevens geretourneerd om alleen onvolledige TODO-items te vinden.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 // Create a predicate that finds items where complete is false
@@ -150,11 +151,11 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Procedures: MSQuery gebruiken
+## <a name="query-object"></a>Procedure: MSQuery gebruiken
 
 Als u een complexe query wilt uitvoeren (met inbegrip van sorteren en pagineren), maakt u een `MSQuery`-object rechtstreeks of met behulp van een predikaat:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 MSQuery *query = [table query];
@@ -179,11 +180,11 @@ met `MSQuery` kunt u verschillende query gedragingen beheren.
 
 Voer een `MSQuery`-query uit door het aanroepen van `readWithCompletion` voor het object.
 
-## <a name="sorting"></a>Procedures: Gegevens sorteren met MSQuery
+## <a name="sorting"></a>Procedure: gegevens sorteren met MSQuery
 
 We kijken naar een voor beeld om de resultaten te sorteren. Als u wilt sorteren op veld ' tekst ', gevolgd door ' voltooid ', roept u `MSQuery` als volgt aan:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [query orderByAscending:@"text"];
@@ -215,11 +216,11 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>Procedures: Velden beperken en query reeks parameters uitbreiden met MSQuery
+## <a name="selecting"></a><a name="parameters"></a>Procedure: velden beperken en query reeks parameters uitbreiden met MSQuery
 
 Als u de velden die in een query worden geretourneerd wilt beperken, geeft u de namen van de velden in de eigenschap **selectFields** op. In dit voor beeld worden alleen de velden tekst en voltooid geretourneerd:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 query.selectFields = @[@"text", @"complete"];
@@ -233,7 +234,7 @@ query.selectFields = ["text", "complete"]
 
 Als u aanvullende query teken reeks parameters wilt toevoegen aan de server aanvraag (bijvoorbeeld omdat er een aangepast script aan de server zijde gebruikmaakt), vult u `query.parameters` als volgt in:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 query.parameters = @{
@@ -248,7 +249,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>Procedures: Pagina grootte configureren
+## <a name="paging"></a>Procedure: pagina grootte configureren
 
 Met Azure Mobile Apps bepaalt het pagina formaat het aantal records dat wordt opgehaald uit de back-end-tabellen. Een aanroep van `pull`-gegevens zou vervolgens gegevens batcheert op basis van deze pagina grootte totdat er geen records meer worden opgehaald.
 
@@ -260,9 +261,9 @@ Met deze instelling bepaalt u alleen de pagina grootte aan de client zijde. Als 
 
 Deze instelling is ook het *aantal* gegevens records, niet de *byte grootte*.
 
-Als u het pagina formaat van de client verg root, moet u ook de pagina grootte op de server verg Roten. Zie [: Wijzig de grootte van de tabel paginering ' ](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) voor de stappen om dit te doen.
+Als u het pagina formaat van de client verg root, moet u ook de pagina grootte op de server verg Roten. Zie [' How to: de grootte van de tabel paginering aanpassen '](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) voor de stappen om dit te doen.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
   MSPullSettings *pullSettings = [[MSPullSettings alloc] initWithPageSize:3];
@@ -285,7 +286,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Procedures: Gegevens invoegen
+## <a name="inserting"></a>Procedure: gegevens invoegen
 
 Als u een nieuwe tabelrij wilt invoegen, maakt u een `NSDictionary` en roept u `table insert` aan. Als [dynamisch schema] is ingeschakeld, genereert de Azure app service mobiele back-end automatisch nieuwe kolommen op basis van de `NSDictionary`.
 
@@ -293,7 +294,7 @@ Als `id` niet is opgenomen, wordt door de back-end automatisch een nieuwe unieke
 
 Het `result` bevat het nieuwe item dat is ingevoegd. Afhankelijk van de server logica zijn er mogelijk extra of gewijzigde gegevens in vergelijking met wat er is door gegeven aan de-server.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
@@ -319,11 +320,11 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Procedures: Gegevens wijzigen
+## <a name="modifying"></a>Procedure: gegevens wijzigen
 
 Als u een bestaande rij wilt bijwerken, wijzigt u een item en roept u `update` aan:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSMutableDictionary *newItem = [oldItem mutableCopy]; // oldItem is NSDictionary
@@ -354,7 +355,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 
 U kunt ook de rij-ID en het bijgewerkte veld opgeven:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table update:@{@"id":@"custom-id", @"text":"my EDITED item"} completion:^(NSDictionary *result, NSError *error) {
@@ -380,11 +381,11 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 U moet mini maal het kenmerk @no__t 0 instellen wanneer u updates wilt maken.
 
-## <a name="deleting"></a>Procedures: Gegevens verwijderen
+## <a name="deleting"></a>Procedure: gegevens verwijderen
 
 Als u een item wilt verwijderen, roept u `delete` aan met het item:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table delete:item completion:^(id itemId, NSError *error) {
@@ -410,7 +411,7 @@ table.delete(newItem as [NSObject: AnyObject]) { (itemId, error) in
 
 U kunt ook verwijderen door een rij-ID op te geven:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [table deleteWithId:@"37BBF396-11F0-4B39-85C8-B319C729AF6D" completion:^(id itemId, NSError *error) {
@@ -436,13 +437,13 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 U moet mini maal het kenmerk `id` instellen bij het verwijderen.
 
-## <a name="customapi"></a>Procedures: Aangepaste API aanroepen
+## <a name="customapi"></a>Procedure: aangepaste API aanroepen
 
 Met een aangepaste API kunt u alle back-end-functies zichtbaar maken. Deze hoeft niet te worden toegewezen aan een tabel bewerking. U krijgt niet alleen meer controle over berichten, maar u kunt zelfs kopteksten lezen/instellen en de indeling van de antwoord tekst wijzigen.
 
 Roep `MSClient.invokeAPI` aan om een aangepaste API aan te roepen. De aanvraag-en antwoord inhoud worden behandeld als JSON. Als u andere media typen wilt gebruiken, [gebruikt u de andere overbelasting van `invokeAPI`][5].  Als u een `GET`-aanvraag wilt maken in plaats van een `POST`-aanvraag, stelt u de para meter `HTTPMethod` in `"GET"` en de para meter `body` in op `nil` (aangezien GET-aanvragen geen bericht tekst hebben.) Als uw aangepaste API andere HTTP-woorden ondersteunt, wijzigt u `HTTPMethod` op de juiste manier.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [self.client invokeAPI:@"sendEmail"
@@ -477,11 +478,11 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Procedures: Push-sjablonen registreren om cross-platform meldingen te verzenden
+## <a name="templates"></a>Procedure: push-sjablonen registreren om cross-platform meldingen te verzenden
 
 Als u sjablonen wilt registreren, geeft u sjablonen door met de methode **client. push registerDeviceToken** in uw client-app.
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 [client.push registerDeviceToken:deviceToken template:iOSTemplate completion:^(NSError *error) {
@@ -503,7 +504,7 @@ client.push?.registerDeviceToken(NSData(), template: iOSTemplate, completion: { 
 
 Uw sjablonen zijn van het type NSDictionary en kunnen meerdere sjablonen bevatten in de volgende indeling:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"alert": @"$(message)" } } } };
@@ -517,13 +518,13 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Alle labels worden verwijderd uit de aanvraag voor beveiliging.  Als u labels wilt toevoegen aan installaties of sjablonen binnen installaties, raadpleegt u [werken met de .net back-end-server-SDK voor Azure Mobile apps][4].  Als u meldingen wilt verzenden met behulp van deze geregistreerde sjablonen, kunt u werken met [Notification hubs-api's][3].
 
-## <a name="errors"></a>Procedures: Fouten afhandelen
+## <a name="errors"></a>Procedure: fouten afhandelen
 
 Wanneer u een Azure App Service mobiele back-end aanroept, bevat het voltooiings blok een `NSError`-para meter. Als er een fout optreedt, is deze para meter niet-Nil. In uw code moet u deze para meter controleren en de fout zo nodig afhandelen, zoals wordt getoond in de voor gaande code fragmenten.
 
 Het bestand [`<WindowsAzureMobileServices/MSError.h>`][6] definieert de constanten `MSErrorResponseKey`, `MSErrorRequestKey` en `MSErrorServerItemKey`. Meer informatie over de fout:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
@@ -537,7 +538,7 @@ let serverItem = error.userInfo[MSErrorServerItemKey]
 
 Daarnaast definieert het bestand constanten voor elke fout code:
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 if (error.code == MSErrorPreconditionFailed) {
@@ -549,7 +550,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Procedures: Gebruikers verifiëren met de Active Directory Authentication Library
+## <a name="adal"></a>Procedure: gebruikers verifiëren met de Active Directory Authentication Library
 
 U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het ondertekenen van gebruikers in uw toepassing met behulp van Azure Active Directory. Verificatie client stroom met behulp van een id-provider-SDK verdient de voor keur om de `loginWithProvider:completion:`-methode te gebruiken.  Verificatie van client stromen biedt een meer systeem eigen UX en maakt het mogelijk om extra aanpassingen aan te brengen.
 
@@ -572,7 +573,7 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het onde
    * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
    * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .
 
-**Objective-C**:
+**Doel-C**:
 
 ```objc
 #import <ADALiOS/ADAuthenticationContext.h>
@@ -636,7 +637,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Procedures: Gebruikers verifiëren met de Facebook SDK voor iOS
+## <a name="facebook-sdk"></a>Procedure: gebruikers verifiëren met de Facebook SDK voor iOS
 
 U kunt de Facebook-SDK voor iOS gebruiken om gebruikers te ondertekenen in uw toepassing met Facebook.  Het gebruik van een client stroom verificatie verdient de voor keur om de `loginWithProvider:completion:`-methode te gebruiken.  De client stroom verificatie biedt een meer systeem eigen UX en maakt het mogelijk om extra aanpassingen aan te brengen.
 
@@ -663,7 +664,7 @@ U kunt de Facebook-SDK voor iOS gebruiken om gebruikers te ondertekenen in uw to
 4. Naast het toevoegen van `FBSDKCoreKit.framework` aan uw project, moet u ook een verwijzing naar `FBSDKLoginKit.framework` op dezelfde manier toevoegen.
 5. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -715,7 +716,7 @@ U kunt de Facebook-SDK voor iOS gebruiken om gebruikers te ondertekenen in uw to
     }
     ```
 
-## <a name="twitter-fabric"></a>Procedures: Gebruikers verifiëren met Twitter Fabric voor iOS
+## <a name="twitter-fabric"></a>Procedure: gebruikers verifiëren met Twitter Fabric voor iOS
 
 U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw toepassing met behulp van Twitter. Client flow-verificatie verdient de voor keur aan het gebruik van de methode `loginWithProvider:completion:`, omdat het een meer systeem eigen UX voelt en extra aanpassing mogelijk maakt.
 
@@ -727,7 +728,7 @@ U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw to
 
     Als u ervoor kiest om de geheimen te gebruiken die u eerder hebt gemaakt, voegt u de volgende code toe aan de gemachtigde van de app:
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <Fabric/Fabric.h>
@@ -758,7 +759,7 @@ U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw to
 
 3. Voeg de volgende code toe aan uw toepassing, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     #import <TwitterKit/TwitterKit.h>
@@ -797,7 +798,7 @@ U kunt infra structuur voor iOS gebruiken om gebruikers te ondertekenen in uw to
     }
     ```
 
-## <a name="google-sdk"></a>Procedures: Gebruikers verifiëren met de Google Sign-in SDK voor iOS
+## <a name="google-sdk"></a>Procedure: gebruikers verifiëren met de Google Sign-in SDK voor iOS
 
 U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing te ondertekenen met een Google-account.  Google heeft onlangs wijzigingen in het OAuth-beveiligings beleid aangekondigd.  Met deze beleids wijzigingen is het gebruik van de Google SDK in de toekomst vereist.
 
@@ -805,7 +806,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 2. Installeer de Google SDK voor iOS door de [Google-aanmeldings voor IOS te](https://developers.google.com/identity/sign-in/ios/start-integrating) volgen. U kunt de sectie verifiëren met een back-end-server overs Laan.
 3. Voeg het volgende toe aan de `signIn:didSignInForUser:withError:`-methode van uw gemachtigde, afhankelijk van de taal die u gebruikt.
 
-    **Objective-C**:
+    **Doel-C**:
     ```objc
     NSDictionary *payload = @{
                                 @"id_token":user.authentication.idToken,
@@ -828,7 +829,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 
 4. Zorg ervoor dat u ook het volgende aan `application:didFinishLaunchingWithOptions:` in de gemachtigde van de app toevoegt, waarbij u SERVER_CLIENT_ID vervangt door de ID die u hebt gebruikt voor het configureren van App Service in stap 1.
 
-    **Objective-C**:
+    **Doel-C**:
 
     ```objc
     [GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
@@ -842,7 +843,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 
 5. Voeg de volgende code toe aan uw toepassing in een UIViewController die het `GIDSignInUIDelegate`-protocol implementeert, afhankelijk van de taal die u gebruikt.  U bent afgemeld voordat u zich opnieuw aanmeldt, maar u hoeft uw referenties niet opnieuw in te voeren. u ziet dan een dialoog venster voor toestemming.  Roep deze methode alleen aan als het sessie token is verlopen.
 
-   **Objective-C**:
+   **Doel-C**:
 
     ```objc
     #import <Google/SignIn.h>
@@ -909,7 +910,7 @@ U kunt de Google-aanmeld-SDK voor iOS gebruiken om gebruikers in uw toepassing t
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Dynamisch schema]: https://go.microsoft.com/fwlink/p/?LinkId=296271
+[Dynamisch schema]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965

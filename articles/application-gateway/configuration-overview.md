@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177423"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389978"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -48,7 +48,7 @@ U wordt aangeraden een subnet-grootte van Mini maal/28 te gebruiken. Met deze gr
 
 Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. Er zijn echter verschillende beperkingen:
 
-- U moet uitzonde ringen voor binnenkomend verkeer op poort 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor de v2-SKU toevoegen. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Externe entiteiten, met inbegrip van de klanten van deze gateways, kunnen geen wijzigingen op deze eind punten initiëren zonder dat er geschikte certificaten aanwezig zijn.
+- U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1-SKU en TCP-poorten 65200-65535 voor de v2 SKU met het doel- *subnet.* Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Externe entiteiten, met inbegrip van de klanten van deze gateways, kunnen geen wijzigingen op deze eind punten initiëren zonder dat er geschikte certificaten aanwezig zijn.
 
 - De uitgaande Internet verbinding kan niet worden geblokkeerd. Standaard regels voor uitgaande verbindingen in de NSG staan Internet connectiviteit toe. U wordt aangeraden dat u:
 

@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Status Monitor v2 en bekende problemen oplossen | Microsoft Docs
-description: De bekende problemen met Status Monitor v2 en voor beelden van probleem oplossing. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Problemen oplossen met Azure-toepassing Insights-agent en bekende problemen | Microsoft Docs
+description: De bekende problemen met Application Insights agent en voor beelden van probleem oplossing. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ab1ce01c41679c6ff686ab37692d3b8e9167a4f8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058299"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388206"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Problemen met Status Monitor v2 oplossen
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
 
 Wanneer u controle inschakelt, kunt u problemen ondervinden die het verzamelen van gegevens verhinderen.
 In dit artikel worden alle bekende problemen beschreven en vindt u voor beelden van problemen oplossen.
@@ -31,8 +31,8 @@ Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met on
 
 Als een of meer van deze DLL-bestanden aanwezig zijn in de bin-map, kan de bewaking mislukken:
 
-- Microsoft.ApplicationInsights.dll
-- Microsoft.AspNet.TelemetryCorrelation.dll
+- Microsoft. ApplicationInsights. dll
+- Micro soft. AspNet. TelemetryCorrelation. dll
 - System. Diagnostics. DiagnosticSource. dll
 
 Sommige van deze DLL-bestanden zijn opgenomen in de Visual Studio-sjablonen voor standaard-apps, zelfs als deze niet worden gebruikt door uw app.
@@ -93,15 +93,15 @@ Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/
 ### <a name="troubleshooting-powershell"></a>Problemen met Power shell oplossen
 
 #### <a name="determine-which-modules-are-available"></a>Bepalen welke modules beschikbaar zijn
-U kunt de `Get-Module -ListAvailable` opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
+U kunt de `Get-Module -ListAvailable`-opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
 
 #### <a name="import-a-module-into-the-current-session"></a>Een module in de huidige sessie importeren
-Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden `Import-Module <path to psd1>` met behulp van de opdracht.
+Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden met behulp van de `Import-Module <path to psd1>` opdracht.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Problemen met de module Status Monitor v2 oplossen
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Problemen met de module Application Insights agent oplossen
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Geef een lijst weer van de opdrachten die beschikbaar zijn in de module Status Monitor v2
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>De beschik bare opdrachten in de module Application Insights agent weer geven
 Voer de opdracht `Get-Command -Module Az.ApplicationMonitor` uit om de beschik bare opdrachten op te halen:
 
 ```
@@ -117,7 +117,7 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>De huidige versie van de Status Monitor V2-module bepalen
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>De huidige versie van de Application Insights Agent-module bepalen
 Voer de `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` opdracht uit om de volgende informatie over de module weer te geven:
    - Versie van Power shell-module
    - Application Insights SDK-versie
@@ -131,7 +131,7 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor e
 U kunt de processen op de geinstrumenteerde computer controleren om te bepalen of alle Dll's zijn geladen.
 Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
 
-Gebruik de `Get-ApplicationInsightsMonitoringStatus -InspectProcess` opdracht om de dll's te controleren.
+Gebruik de `Get-ApplicationInsightsMonitoringStatus -InspectProcess` opdracht om de Dll's te controleren.
 
 Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
 
@@ -141,13 +141,13 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor e
 #### <a name="setup"></a>Instellen
 
 1. Down load PerfView. exe en PerfView64. exe van [github](https://github.com/Microsoft/perfview/releases).
-2. Start PerfView64.exe.
+2. Start PerfView64. exe.
 3. Vouw **Geavanceerde opties**uit.
 4. Schakel deze selectie vakjes uit:
-    - **Zip**
-    - **Merge**
+    - **Telefoon**
+    - **Samen**
     - **.NET-symbool verzameling**
-5. Deze **extra providers**instellen:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. Deze **extra providers**instellen: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Logboeken verzamelen

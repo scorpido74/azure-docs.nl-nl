@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: d8ebc026add9dfd85d7cbe312a8cfffd3e365f82
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 31528c0ac7796aafbde74a3814d971138ec4ba2e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026873"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387246"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory gegevens stroom maken
 
@@ -21,15 +21,15 @@ Het toewijzen van gegevens stromen in ADF biedt een manier om gegevens op schaal
 
 Ga aan de slag door eerst een nieuwe v2-Data Factory te maken op basis van de Azure Portal. Nadat u de nieuwe fabriek hebt gemaakt, klikt u op de tegel & controle maken om de Data Factory-gebruikers interface te starten.
 
-Gegevens stroom ![Opties voor gegevens]stroom(media/data-flow/v2portal.png "maken")
+![Opties voor gegevens stroom](media/data-flow/v2portal.png "gegevens stroom maken")
 
 Zodra u zich in de Data Factory-gebruikers interface bevindt, kunt u voorbeeld gegevens stromen gebruiken. De voor beelden zijn beschikbaar in de galerie met ADF-sjablonen. Maak in ADF "pijp lijn van sjabloon" en selecteer de categorie gegevens stroom in de sjabloon galerie.
 
-Gegevens stroom ![Opties voor gegevens]stroom(media/data-flow/template.png "maken")
+![Opties voor gegevens stroom](media/data-flow/template.png "gegevens stroom maken")
 
 U wordt gevraagd om uw Azure Blob Storage-account gegevens in te voeren.
 
-Gegevensstroom ![Opties]gegevens(media/data-flow/template2.png "stroom maken 2")
+![Opties voor gegevens stroom](media/data-flow/template2.png "gegevens stroom maken 2")
 
 [De gegevens die voor deze steek proeven worden gebruikt, kunt u hier vinden](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Down load de voorbeeld gegevens en sla de bestanden op in de Azure Blob Storage-accounts, zodat u de voor beelden kunt uitvoeren.
 
@@ -37,7 +37,7 @@ Gegevensstroom ![Opties]gegevens(media/data-flow/template2.png "stroom maken 2")
 
 Gebruik de knop voor het maken van een resource plus teken in de ADF-gebruikers interface om gegevens stromen te maken.
 
-![Opties voor gegevens stroom](media/data-flow/newresource.png "nieuwe resource")
+![Opties voor gegevens stroom](media/data-flow/newresource.png "Nieuwe resource")
 
 ## <a name="next-steps"></a>Volgende stappen
 

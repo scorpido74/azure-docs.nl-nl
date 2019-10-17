@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099545"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430104"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
 
@@ -38,7 +38,7 @@ ms.locfileid: "70099545"
 [hana-ops-guide]:hana-vm-operations.md
 
 > [!NOTE]
-> Algemene ondersteunings verklaring: Open altijd een incident met SAP op onderdeel BC-VCM-LVM-hyper-v als u ondersteuning nodig hebt voor SAP LaMa of de Azure-connector.
+> Algemene ondersteunings verklaring: open altijd een incident met SAP op onderdeel BC-VCM-LVM-hyper-v als u ondersteuning nodig hebt voor SAP LaMa of de Azure-connector.
 
 SAP LaMa wordt door veel klanten gebruikt om hun SAP-landschap te bedienen en te bewaken. Sinds SAP LaMa 3,0 SP05 wordt het standaard geleverd met een connector naar Azure. U kunt deze connector gebruiken om de toewijzing van virtuele machines te verwijderen en te starten, Managed disks te kopiëren en te verplaatsen, en Managed disks te verwijderen. Met deze basis bewerkingen kunt u SAP-systemen verplaatsen, kopiëren, klonen en vernieuwen met behulp van SAP LaMa.
 
@@ -47,7 +47,7 @@ In deze hand leiding wordt beschreven hoe u de Azure connector voor SAP LaMa ins
 > [!NOTE]
 > De connector is alleen beschikbaar in de SAP LaMa Enter prise Edition
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
 De volgende SAP-opmerkingen zijn gerelateerd aan het onderwerp van SAP LaMa op Azure:
 
@@ -74,43 +74,43 @@ Lees ook de [SAP-Help Portal voor SAP LaMa](https://help.sap.com/viewer/p/SAP_LA
 De Azure-connector wordt geleverd vanaf SAP LaMa 3,0 SP05. U kunt het beste altijd het meest recente ondersteunings pakket en patch voor SAP LaMa 3,0 installeren. De Azure-connector maakt gebruik van een Service-Principal om te autoriseren bij Microsoft Azure. Volg deze stappen om een service-principal te maken voor het beheer van SAP liggend (LaMa).
 
 1. Ga naar https://portal.azure.com
-1. Open de Azure Active Directory-blade
+1. Open de Blade Azure Active Directory
 1. Klik op App-registraties
 1. Klik op toevoegen
-1. Voer een naam in, selecteer het toepassings type Web app/API, voer een aanmeldings-URL in (bijvoorbeeld http:\//localhost) en klik op maken
-1. De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
+1. Voer een naam in, selecteer het toepassings type Web app/API, voer een aanmeldings-URL in (bijvoorbeeld http: \//localhost) en klik op maken
+1. De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn
 1. Selecteer de nieuwe app en klik op sleutels op het tabblad instellingen.
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op opslaan
-1. Noteer de waarde in. Dit wordt gebruikt als het wacht woord voor de Service-Principal
+1. Schrijf de waarde op. Dit wordt gebruikt als het wacht woord voor de Service-Principal
 1. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam van de Service-Principal
 
-De Service-Principal heeft geen machtigingen voor toegang tot uw Azure-resources standaard. U moet de Service-Principal machtigingen verlenen voor toegang tot de services.
+De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet de Service-Principal machtigingen verlenen voor toegang tot de services.
 
 1. Ga naar https://portal.azure.com
 1. Open de Blade resource groepen
 1. Selecteer de resource groep die u wilt gebruiken
-1. Klik op de Access control (IAM)
+1. Klik op toegangs beheer (IAM)
 1. Klik op roltoewijzing toevoegen
 1. De rol bijdrager selecteren
-1. Voer de naam van de toepassing die u hierboven hebt gemaakt
+1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
 1. Op Opslaan klikken
 1. Herhaal stap 3 tot 8 voor alle resource groepen die u wilt gebruiken in SAP LaMa
 
 Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud managers en klik op toevoegen. Selecteer de Microsoft Azure Cloud Adapter en klik op volgende. Voer de volgende informatie in:
 
-* Label: Kies een naam voor het connector exemplaar
-* Gebruikers naam: Toepassings-id van de service-principal
-* Wacht woord Sleutel/wacht woord voor Service-Principal
-* URL: Standaard waarde blijven https://management.azure.com/
-* Bewakings interval (seconden): Moet ten minste 300
+* Label: Kies een naam voor de connector instantie
+* Gebruikers naam: toepassings-ID van Service-Principal
+* Wacht woord: sleutel/wacht woord voor Service-Principal
+* URL: standaard @no__t blijven-0
+* Bewakings interval (seconden): moet ten minste 300 zijn
 * Abonnements-ID: Azure-abonnements-ID
 * Azure Active Directory Tenant-ID: ID van de Active Directory Tenant
-* Proxy-host: De hostnaam van de proxy als SAP LaMa een proxy nodig heeft om verbinding te maken met Internet
+* Proxy-host: de hostnaam van de proxy als SAP LaMa een proxy nodig heeft om verbinding te maken met Internet
 * Proxy poort: TCP-poort van de proxy
 
 Klik op configuratie testen om uw invoer te valideren. U ziet
 
-Verbinding geslaagd: De verbinding met micro soft Cloud is geslaagd. 7 resource groepen gevonden (alleen 10 gevraagde groepen)
+De verbinding is gemaakt: de verbinding met micro soft Cloud is geslaagd. 7 resource groepen gevonden (alleen 10 gevraagde groepen)
 
 onder aan de website.
 
@@ -123,7 +123,7 @@ We raden u aan om een afzonderlijk subnet te gebruiken voor alle virtuele machin
 > [!NOTE]
 > Als dat mogelijk is, verwijdert u alle extensies van de virtuele machine, omdat deze mogelijk lange Runtimes veroorzaken voor het loskoppelen van schijven van een virtuele machine.
 
-Zorg ervoor dat de \<gebruiker hanasid > adm \<, sapsid > adm en groeps sapsys bestaan op de doel computer met dezelfde id en GID of gebruik van LDAP. Schakel de NFS-server in en start deze op de virtuele machines die moeten worden gebruikt om de SAP NetWeaver (A) SCS uit te voeren.
+Zorg ervoor dat de gebruiker \<hanasid > adm, \<sapsid > adm en groep sapsys bestaan op de doel computer met dezelfde ID en GID of gebruik van LDAP. Schakel de NFS-server in en start deze op de virtuele machines die moeten worden gebruikt om de SAP NetWeaver (A) SCS uit te voeren.
 
 ### <a name="manual-deployment"></a>Hand matige implementatie
 
@@ -133,7 +133,7 @@ SAP LaMa communiceert met de virtuele machine met behulp van de SAP host agent. 
 
 Maak een nieuwe virtuele machine met een van de ondersteunde besturings systemen die worden vermeld in SAP Note [2343511]. Extra IP-configuraties voor de SAP-instanties toevoegen. Elk exemplaar heeft ten minste op het IP-adres nodig en moet worden geïnstalleerd met behulp van een virtuele hostnaam.
 
-Het ASCS-exemplaar van SAP NetWeaver vereist schijven\<voor/sapmnt/SAPSID >\<,/usr/sap/SAPSID >,/usr/sap/trans en\</usr/sap/SAPSID > adm. De SAP NetWeaver-toepassings servers hebben geen extra schijven nodig. Alles met betrekking tot het SAP-exemplaar moet worden opgeslagen op de ASCS en worden geëxporteerd via NFS. Als dat niet het geval is, is het momenteel niet mogelijk om aanvullende toepassings servers met SAP LaMa toe te voegen.
+Het ASCS-exemplaar van SAP NetWeaver vereist schijven voor/sapmnt/\<SAPSID >,/usr/sap/\<SAPSID >,/usr/sap/trans en/usr/sap/@no__t adm. De SAP NetWeaver-toepassings servers hebben geen extra schijven nodig. Alles met betrekking tot het SAP-exemplaar moet worden opgeslagen op de ASCS en worden geëxporteerd via NFS. Als dat niet het geval is, is het momenteel niet mogelijk om aanvullende toepassings servers met SAP LaMa toe te voegen.
 
 ![SAP NetWeaver ASCS op Linux](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -182,45 +182,45 @@ De onderdelen zijn vereist voor het implementeren van de sjabloon. De eenvoudigs
 
 De sjablonen hebben de volgende para meters:
 
-* sapSystemId: De SAP-systeem-ID. Het wordt gebruikt om de schijf indeling te maken (bijvoorbeeld/usr/sap/\<sapsid >).
+* sapSystemId: de SAP-systeem-ID. Het wordt gebruikt om de schijf indeling te maken (bijvoorbeeld/usr/sap/\<sapsid >).
 
-* computerName: De computer naam van de nieuwe virtuele machine. Deze para meter wordt ook gebruikt door SAP LaMa. Wanneer u deze sjabloon gebruikt om een nieuwe virtuele machine in te richten als onderdeel van een systeem kopie, wacht SAP LaMa totdat de host met deze computer naam kan worden bereikt.
+* computername: de computer naam van de nieuwe virtuele machine. Deze para meter wordt ook gebruikt door SAP LaMa. Wanneer u deze sjabloon gebruikt om een nieuwe virtuele machine in te richten als onderdeel van een systeem kopie, wacht SAP LaMa totdat de host met deze computer naam kan worden bereikt.
 
-* osType: Het type van het besturings systeem dat u wilt implementeren.
+* osType: het type van het besturings systeem dat u wilt implementeren.
 
-* DBTYPE Het type van de data base. Deze para meter wordt gebruikt om te bepalen hoeveel extra IP-configuraties moeten worden toegevoegd en hoe de schijf indeling eruit moet zien.
+* DBTYPE: het type van de data base. Deze para meter wordt gebruikt om te bepalen hoeveel extra IP-configuraties moeten worden toegevoegd en hoe de schijf indeling eruit moet zien.
 
-* sapSystemSize: De grootte van het SAP-systeem dat u wilt implementeren. Het wordt gebruikt om het type en de grootte van het exemplaar van de virtuele machine te bepalen.
+* sapSystemSize: de grootte van het SAP-systeem dat u wilt implementeren. Het wordt gebruikt om het type en de grootte van het exemplaar van de virtuele machine te bepalen.
 
-* AdminUsername Gebruikers naam voor de virtuele machine.
+* adminUsername: gebruikers naam voor de virtuele machine.
 
-* AdminPassword Wacht woord voor de virtuele machine. U kunt ook een open bare sleutel voor SSH opgeven.
+* adminPassword: wacht woord voor de virtuele machine. U kunt ook een open bare sleutel voor SSH opgeven.
 
-* sshKeyData: Open bare SSH-sleutel voor de virtuele machines. Alleen ondersteund voor Linux-besturings systemen.
+* sshKeyData: open bare SSH-sleutel voor de virtuele machines. Alleen ondersteund voor Linux-besturings systemen.
 
-* subnetId: De ID van het subnet dat u wilt gebruiken.
+* subnetId: de ID van het subnet dat u wilt gebruiken.
 
-* deployEmptyTarget: U kunt een leeg doel implementeren als u de virtuele machine als doel wilt gebruiken voor het verplaatsen van een exemplaar. In dit geval worden er geen extra schijven of IP-configuraties gekoppeld.
+* deployEmptyTarget: u kunt een leeg doel implementeren als u de virtuele machine als doel wilt gebruiken voor het verplaatsen van een exemplaar. In dit geval worden er geen extra schijven of IP-configuraties gekoppeld.
 
-* sapcarLocation: De locatie voor de SAPCAR-toepassing die overeenkomt met het besturings systeem dat u implementeert. SAPCAR wordt gebruikt om de archieven die u opgeeft in andere para meters uit te pakken.
+* sapcarLocation: de locatie voor de SAPCAR-toepassing die overeenkomt met het besturings systeem dat u implementeert. SAPCAR wordt gebruikt om de archieven die u opgeeft in andere para meters uit te pakken.
 
-* sapHostAgentArchiveLocation: De locatie van het SAP host agent-archief. SAP host agent wordt geïmplementeerd als onderdeel van deze sjabloon implementatie.
+* sapHostAgentArchiveLocation: de locatie van het SAP host agent-archief. SAP host agent wordt geïmplementeerd als onderdeel van deze sjabloon implementatie.
 
-* sapacExtLocation: De locatie van de SAP-adaptieve extensies. SAP Note [2343511] bevat het minimale patch niveau dat vereist is voor Azure.
+* sapacExtLocation: de locatie van de SAP-adaptieve extensies. SAP Note [2343511] bevat het minimale patch niveau dat vereist is voor Azure.
 
-* vcRedistLocation: De locatie van de VC-runtime die is vereist voor het installeren van de SAP-adaptieve extensies. Deze para meter is alleen vereist voor Windows.
+* vcRedistLocation: de locatie van de VC runtime die is vereist om de SAP-uitbreidings uitbreidingen te installeren. Deze para meter is alleen vereist voor Windows.
 
-* odbcDriverLocation: De locatie van het ODBC-stuur programma dat u wilt installeren. Alleen het micro soft ODBC-stuur programma voor SQL Server wordt ondersteund.
+* odbcDriverLocation: de locatie van het ODBC-stuur programma dat u wilt installeren. Alleen het micro soft ODBC-stuur programma voor SQL Server wordt ondersteund.
 
-* sapadmPassword: Het wacht woord voor de sapadm-gebruiker.
+* sapadmPassword: het wacht woord voor de sapadm-gebruiker.
 
-* sapadmId: De Linux-gebruikers-ID van de sapadm-gebruiker. Niet vereist voor Windows.
+* sapadmId: de Linux-gebruikers-ID van de sapadm-gebruiker. Niet vereist voor Windows.
 
-* sapsysGid: De Linux-groeps-ID van de groep sapsys. Niet vereist voor Windows.
+* sapsysGid: de Linux-groeps-ID van de sapsys-groep. Niet vereist voor Windows.
 
-* _artifactsLocation: De basis-URI, waar artefacten die door deze sjabloon zijn vereist, zich bevinden. Wanneer de sjabloon wordt geïmplementeerd met behulp van de bijbehorende scripts, wordt een persoonlijke locatie in het abonnement gebruikt en wordt deze waarde automatisch gegenereerd. Alleen nodig als u de sjabloon niet implementeert vanuit GitHub.
+* _artifactsLocation: de basis-URI, waar artefacten vereist zijn voor deze sjabloon. Wanneer de sjabloon wordt geïmplementeerd met behulp van de bijbehorende scripts, wordt een persoonlijke locatie in het abonnement gebruikt en wordt deze waarde automatisch gegenereerd. Alleen nodig als u de sjabloon niet implementeert vanuit GitHub.
 
-* _artifactsLocationSasToken: De sasToken die vereist is voor toegang tot _artifactsLocation. Wanneer de sjabloon wordt geïmplementeerd met behulp van de bijbehorende scripts, wordt automatisch een sasToken gegenereerd. Alleen nodig als u de sjabloon niet implementeert vanuit GitHub.
+* _artifactsLocationSasToken: de sasToken die vereist is voor toegang tot _artifactsLocation. Wanneer de sjabloon wordt geïmplementeerd met behulp van de bijbehorende scripts, wordt automatisch een sasToken gegenereerd. Alleen nodig als u de sjabloon niet implementeert vanuit GitHub.
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -246,7 +246,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Voer SWPM uit en gebruik *ah1-ascs* voor de hostnaam van het *ascs-exemplaar*.
 
-![Linux][Logo_Linux] Linux  
+![Linux @ no__t-1 Linux  
 Voeg de volgende profiel parameter toe aan het SAP host agent-profiel, dat zich bevindt in/usr/sap/hostctrl/exe/host_profile. Zie SAP Note [2628497]voor meer informatie.
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -289,7 +289,7 @@ Binnen het NetApp-account specificeert de capaciteits pool de grootte en het typ
 
 ![Groep SAP LaMa NetApp-capaciteit gemaakt ](media/lama/sap-lama-capacitypool-list.png)
 
-De NFS-volumes kunnen nu worden gedefinieerd. Omdat er volumes voor meerdere systemen in één pool zijn, moet een zelfuitlegend naamgevings schema worden gekozen. Door de SID toe te voegen, kunt u gerelateerde volumes samen groeperen. Voor de ASCS en het as-exemplaar zijn de volgende koppels nodig:\</sapmnt/\>sid,\</usr/sap/\> sid en\</Home/\>sid adm. Optionele/usr/sap/trans voor de centrale transport Directory die ten minste wordt gebruikt door alle systemen van één land.
+De NFS-volumes kunnen nu worden gedefinieerd. Omdat er volumes voor meerdere systemen in één pool zijn, moet een zelfuitlegend naamgevings schema worden gekozen. Door de SID toe te voegen, kunt u gerelateerde volumes samen groeperen. Voor de ASCS en het AS-exemplaar zijn de volgende koppels nodig: */sapmnt/\<SID @ no__t-2*, */usr/sap/\<SID @ no__t-5*en */Home/\<sid @ no__t-8adm*. Optioneel is */usr/sap/trans* vereist voor de centrale transport Directory, die ten minste wordt gebruikt door alle systemen van één land.
 
 > [!NOTE]
 > Tijdens de bèta fase moeten de naam van de volumes uniek zijn binnen het abonnement.
@@ -336,7 +336,7 @@ Nadat de installatie is voltooid, moet het systeem worden gedetecteerd binnen de
 
 De koppel punten moeten er als volgt uitzien voor het ASCS en het AS-exemplaar:
 
-![SAP-LaMa koppel punten in ](media/lama/sap-lama-ascs.png) LaMa (dit is een voor beeld. De IP-adressen en het exportpad verschillen van de waarden die eerder zijn gebruikt)
+![SAP LaMa koppel punten in LaMa ](media/lama/sap-lama-ascs.png) (dit is een voor beeld. De IP-adressen en het exportpad verschillen van de waarden die eerder zijn gebruikt)
 
 
 #### <a name="install-sap-hana"></a>SAP HANA installeren
@@ -447,7 +447,7 @@ Gebruik *AS1-di-0* voor de *pas-host-naam* in het dialoog venster *primaire Appl
 
 * Er is een uitzonde ring opgetreden bij het valideren van de HDB userstore  
   * Zie log viewer  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Uitzonde ring in validator met ID ' RuntimeHDBConnectionValidator ' (validatie: 'VALIDATION_HDB_USERSTORE'): Kan de hdbuserstore niet ophalen  
+    com. SAP. NW. lm. ACI. monitor. API. Validation. RuntimeValidationException: uitzonde ring in validator met ID RuntimeHDBConnectionValidator (validatie: ' VALIDATION_HDB_USERSTORE '): kan de hdbuserstore niet ophalen  
     HANA-userstore bevindt zich niet op de juiste locatie
   * Oplossing  
     Zorg ervoor dat/usr/sap/AH1/hdbclient/install/installation.ini juist is
@@ -455,33 +455,33 @@ Gebruik *AS1-di-0* voor de *pas-host-naam* in het dialoog venster *primaire Appl
 ### <a name="errors-and-warnings-during-a-system-copy"></a>Fouten en waarschuwingen tijdens een systeem kopie
 
 * Er is een fout opgetreden bij het valideren van de stap voor het inrichten van het systeem
-  * Veroorzaakt door: com. SAP. NW. lm. ACI. engine. base. API. util. Exception. HAOperationException met de aanroep '/usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level\;= 0 =\;5 poort = 35013 PF =/usr/sap/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-R ' | /usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0\;status = 5\;poort = 35013 PF =/usr/sap/hostctrl/exe/host_profile-r-T dev_lvminfo-u systeem-p Hook-r
+  * Veroorzaakt door: com. SAP. NW. lm. ACI. engine. base. API. util. Exception. HAOperationException met de aanroep '/usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0 @ no__t-0status = 5 @ no__t-1port = 35013 PF =/usr/sap/hostctrl/exe/host_ Profiel-R-T dev_lvminfo-u systeem-p Hook-R | /usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0 @ no__t-2status = 5 @ no__t-3port = 35013 PF =/usr/sap/hostctrl/exe/host_profile-R-T dev_lvminfo-u systeem-p Hook-r
   * Oplossing  
     Back-ups maken van alle data bases in het bron HANA-systeem
 
 * Systeem kopie stap *begin* van data base-exemplaar
-  * De Hosta Gent-bewerking 000D3A282BC91EE8A1D76CF1F92E2944 is mislukt (OperationException. FaultCode: ' 127 ', bericht: ' De uitvoering van de opdracht is mislukt. : [Micro soft] [ODBC SQL Server Driver] [SQL Server] gebruiker heeft geen machtiging voor het wijzigen van de data base AS2, de data base bestaat niet of de Data Base bevindt zich niet in een status waarin toegangs controles zijn toegestaan. ')
+  * De Hosta Gent-bewerking 000D3A282BC91EE8A1D76CF1F92E2944 is mislukt (OperationException. FaultCode: ' 127 ', bericht: ' de uitvoering van de opdracht is mislukt. : [Micro soft] [ODBC SQL Server Driver] [SQL Server] gebruiker heeft geen machtiging voor het wijzigen van de data base AS2, de data base bestaat niet of de Data Base bevindt zich niet in een status waarin toegangs controles zijn toegestaan. ')
   * Oplossing  
     Zorg ervoor dat *NT AUTHORITY\SYSTEM* toegang kan krijgen tot de SQL Server. Zie SAP Note [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Fouten en waarschuwingen tijdens het systeem klonen
 
 * Er is een fout opgetreden bij een poging om de instantie agent te registreren in de stap *geforceerd registreren en de instantie agent* van de toepassings server of het ASCS te starten
-  * Er is een fout opgetreden bij het registreren van de exemplaar agent. (RemoteException: Kan de exemplaar gegevens niet laden uit het profiel\\AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0:  Kan geen toegang krijgen\\tot het profiel ' AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 ': Bestand of map niet. ')
+  * Er is een fout opgetreden bij het registreren van de exemplaar agent. (RemoteException: ' kan geen exemplaar gegevens laden uit het profiel ' \\as1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ': kan geen toegang krijgen tot het profiel ' \\as1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ': dit bestand of deze map. ')
   * Oplossing  
    Zorg ervoor dat de sapmnt-share op de ASCS/SCS volledige toegang heeft voor SAP_AS1_GlobalAdmin
 
 * Fout in stap *opstart beveiliging inschakelen voor klonen*
-  * Kan de oorzaak van het\\bestand AS1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0 niet openen: Een dergelijk(e) bestand of map bestaat niet
+  * Kan bestand niet openen: ' \\as1-ascs \ sapmnt \ AS1 \ SYS \ profile \ AS1_D00_as1-di-0 ' Oorzaak: het bestand of de map bestaat niet
   * Oplossing  
     Het computer account van de toepassings server moet schrijf toegang hebben tot het profiel
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>Fouten en waarschuwingen tijdens het maken van een systeem replicatie
 
 * Uitzonde ring bij klikken op systeem replicatie maken
-  * Veroorzaakt door: com. SAP. NW. lm. ACI. engine. base. API. util. Exception. HAOperationException met de aanroep '/usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level\;= 0 =\;5 poort = 35013 PF =/usr/sap/hostctrl /exe/host_profile-R-T dev_lvminfo-u SYSTEM-p Hook-R ' | /usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0\;status = 5\;poort = 35013 PF =/usr/sap/hostctrl/exe/host_profile-r-T dev_lvminfo-u systeem-p Hook-r
+  * Veroorzaakt door: com. SAP. NW. lm. ACI. engine. base. API. util. Exception. HAOperationException met de aanroep '/usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0 @ no__t-0status = 5 @ no__t-1port = 35013 PF =/usr/sap/hostctrl/exe/host_ Profiel-R-T dev_lvminfo-u systeem-p Hook-R | /usr/sap/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-DB-o level = 0 @ no__t-2status = 5 @ no__t-3port = 35013 PF =/usr/sap/hostctrl/exe/host_profile-R-T dev_lvminfo-u systeem-p Hook-r
   * Oplossing  
-    Testen of sapacext kan worden uitgevoerd als `<hanasid`> adm
+    Testen of sapacext kan worden uitgevoerd als `<hanasid` > adm
 
 * Fout bij het inschakelen van de volledige kopie in de stap opslag
   * Er is een fout opgetreden bij het rapporteren van een context kenmerk bericht voor pad IStorageCopyData. storageVolumeCopyList: 1 en veld targetStorageSystemId
@@ -496,68 +496,68 @@ Gebruik *AS1-di-0* voor de *pas-host-naam* in het dialoog venster *primaire Appl
     Voeg ASCS-export toe aan het ASCS HostAgent-profiel. Zie SAP Note [2628497]
 
 * De functie is niet geïmplementeerd tijdens het verplaatsen van ASCS
-  * Uitvoer van de opdracht: exportfs: host:/usr/sap/AX1: De functie is niet geïmplementeerd
+  * Uitvoer van de opdracht: exportfs: host:/usr/sap/AX1: functie niet geïmplementeerd
   * Oplossing  
     Zorg ervoor dat de NFS Server-service is ingeschakeld op de virtuele doel machine verplaatsen
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Fouten en waarschuwingen tijdens de installatie van de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: getProfileDir
-  * OPTREEDT (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' heeft een fout gerapporteerd: De \\\as1-ascs\sapmnt\AS1\SYS\profile van het knoop punt bestaat niet. SAPinst in de interactieve modus starten om dit probleem op te lossen)
+  * FOUT: (laatste fout gemeld door de stap: gevangen ESAPinstException in module aanroep: validator van stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' heeft een fout gerapporteerd: het knoop punt \\ \ as1-ascs\sapmnt\AS1\SYS\profile bestaat niet. SAPinst in de interactieve modus starten om dit probleem op te lossen)
   * Oplossing  
     Zorg ervoor dat SWPM wordt uitgevoerd met een gebruiker die toegang heeft tot het profiel. Deze gebruiker kan worden geconfigureerd in de installatie wizard voor de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: askUnicode
-  * OPTREEDT (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode ' heeft een fout gerapporteerd: SAPinst in de interactieve modus starten om dit probleem op te lossen)
+  * FOUT: (laatste fout gemeld door de stap: gevangen ESAPinstException in module aanroep: validator van stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode ' heeft een fout gerapporteerd: start SAPinst in de interactieve modus om dit probleem op te lossen)
   * Oplossing  
     Als u een recente SAP-kernel gebruikt, kan SWPM niet bepalen of het systeem meer dan een Unicode-systeem is met behulp van de bericht server van de ASCS. Zie SAP Note [2445033] voor meer informatie.  
     Dit probleem wordt opgelost in een nieuw ondersteunings pakket/patch van SAP LaMa.  
     Stel de profiel parameter OS_UNICODE = UC in het standaard Profiel van uw SAP-systeem in om dit probleem te omzeilen.
 
 * Fout bij het uitvoeren van SAPinst stap: dCheckGivenServer
-  * Fout bij het uitvoeren van SAPinst-stap: dCheckGivenServer ' version = ' 1.0 ' fout: (Laatste fout gemeld door de stap: \<p > de installatie is geannuleerd door de gebruiker. \</p>
+  * Fout bij het uitvoeren van SAPinst-stap: dCheckGivenServer ' version = ' 1.0 ' fout: (laatste fout gemeld door de stap: \<p > de installatie is geannuleerd door de gebruiker. \</p >
   * Oplossing  
     Zorg ervoor dat SWPM wordt uitgevoerd met een gebruiker die toegang heeft tot het profiel. Deze gebruiker kan worden geconfigureerd in de installatie wizard voor de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: checkClient
-  * Fout bij het uitvoeren van SAPinst-stap: checkClient ' version = ' 1.0 ' fout: (Laatste fout gemeld door de stap: \<p > de installatie is geannuleerd door de gebruiker. \</p>)
+  * Fout bij het uitvoeren van SAPinst-stap: checkClient ' version = ' 1.0 ' fout: (laatste fout gemeld door de stap: \<p > de installatie is geannuleerd door de gebruiker. \</p >)
   * Oplossing  
     Zorg ervoor dat het micro soft ODBC-stuur programma voor SQL Server is geïnstalleerd op de virtuele machine waarop u de toepassings server wilt installeren
 
 * Fout bij het uitvoeren van SAPinst stap: copyScripts
-  * Laatste fout gemeld door de stap: Systeem aanroep mislukt. DETAILS: Fout 13 (0x0000000d) (toestemming geweigerd) bij de uitvoering van systeem aanroep ' fopenU ' met para\\meter (\ AS1-ascs/sapmnt/AS1/sys/exe/UC/NTAMD64/strdbs. cmd, w), regel (494) in bestand (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib /filesystem/syxxcfstrm2.cpp), Stack tracering:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase:: Call ()  
+  * Laatste fout gemeld door de stap: systeem oproep is mislukt. DETAILS: fout 13 (0x0000000d) (toestemming geweigerd) bij de uitvoering van systeem aanroep ' fopenU ' met para meter (\\ \ AS1-ascs/sapmnt/AS1/SYS/exe/UC/NTAMD64/strdbs. cmd, w), regel (494) in bestand (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/ syslib/bestands systeem/syxxcfstrm2. cpp), Stack tracering:  
+  CThrThread. cpp: 85: CThrThread:: threadFunction ()  
+  CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
+  CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
+  EJSController. cpp: 179: EJSControllerImpl:: executeScript ()  
+  JSExtension. hpp: 1136: CallFunctionBase:: Call ()  
   iaxxcfile. cpp: 183: iastring CIaOsFileConnect:: callMemberFunction (iastring Const & naam, args_t Const & argumenten)  
   iaxxcfile. cpp: 1849: iastring CIaOsFileConnect:: newFileStream (args_t Const & _args)  
-  iaxxbfile. cpp: 773: CIaOsFile::newFileStream_impl(4)  
+  iaxxbfile. cpp: 773: CIaOsFile:: newFileStream_impl (4)  
   syxxcfile. cpp: 233: CSyFileImpl:: openstream (ISyFile:: eFileOpenMode)  
-  syxxcfstrm.cpp: artikel CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\\ AW1-ascs/sapmnt/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
-  syxxcfstrm2.cpp: 456: CSyFileStream2Impl:: Open ()
+  syxxcfstrm. cpp: 29: CSyFileStreamImpl:: CSyFileStreamImpl (CSyFileStream *, iastring, ISyFile:: eFileOpenMode)  
+  syxxcfstrm. cpp: 265: CSyFileStreamImpl:: Open ()  
+  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\ \ AW1-ascs/sapmnt/AW1/SYS/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
+  syxxcfstrm2. cpp: 456: CSyFileStream2Impl:: Open ()
   * Oplossing  
     Zorg ervoor dat SWPM wordt uitgevoerd met een gebruiker die toegang heeft tot het profiel. Deze gebruiker kan worden geconfigureerd in de installatie wizard voor de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: askPasswords
-  * Laatste fout gemeld door de stap: Systeem aanroep mislukt. DETAILS: Fout 5 (0x00000005) (toegang geweigerd.) bij de uitvoering van systeem aanroep ' NetValidatePasswordPolicy ' met para meter (...), regel (359) in bestand (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg. cpp), Stack tracering:  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase:: Call ()  
-  CSiStepExecute.cpp: 764: CSiStepExecute::invokeDialog()  
-  DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
-  DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase:: Call ()  
-  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect:: callMemberFunction (iastring Const & naam, args_t Const & argumenten)  
-  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect:: validatePasswordPolicy (args_t Const & _args)  
-  iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::P asswordValidationMessage CSyAccountMgtImpl:: validatePasswordPolicy (saponazure, * * * * *) const)
+  * Laatste fout gemeld door de stap: systeem oproep is mislukt. DETAILS: fout 5 (0x00000005) (toegang geweigerd.) bij de uitvoering van systeem aanroep ' NetValidatePasswordPolicy ' met para meter (...), regel (359) in bestand (\ bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg. cpp), Stack tracering:  
+  CThrThread. cpp: 85: CThrThread:: threadFunction ()  
+  CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
+  CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
+  EJSController. cpp: 179: EJSControllerImpl:: executeScript ()  
+  JSExtension. hpp: 1136: CallFunctionBase:: Call ()  
+  CSiStepExecute. cpp: 764: CSiStepExecute:: invokeDialog ()  
+  DarkModeGuiEngine. cpp: 56: DarkModeGuiEngine:: showDialogCalledByJs ()  
+  DarkModeDialog. cpp: 85: DarkModeDialog:: Submit ()  
+  EJSController. cpp: 179: EJSControllerImpl:: executeScript ()  
+  JSExtension. hpp: 1136: CallFunctionBase:: Call ()  
+  iaxxcaccount. cpp: 107: iastring CIaOsAccountConnect:: callMemberFunction (iastring Const & naam, args_t Const & argumenten)  
+  iaxxcaccount. cpp: 1186: iastring CIaOsAccountConnect:: validatePasswordPolicy (args_t Const & _args)  
+  iaxxbaccount. cpp: 430: CIaOsAccount:: validatePasswordPolicy_impl ()  
+  synxcaccmg. cpp: 297: ISyAccountMgt::P asswordValidationMessage CSyAccountMgtImpl:: validatePasswordPolicy (saponazure, * * * * *) const)
   * Oplossing  
     Zorg ervoor dat u in stap *isolatie* een host-regel toevoegt om communicatie van de virtuele machine naar de domein controller toe te staan
 

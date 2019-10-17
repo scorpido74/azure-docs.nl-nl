@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016352"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430056"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure PowerShell gebruiken met Azure Storage
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u algemene bewerkingen kunt gebruiken voor h
 > [!div class="checklist"]
 > * Opslag accounts weer geven
 > * Een verwijzing naar een bestaand opslag account ophalen
-> * Create a storage account
+> * Maak een opslagaccount
 > * Eigenschappen van opslag account instellen
 > * De toegangs sleutels ophalen en opnieuw genereren
 > * Toegang tot uw opslag account beveiligen
@@ -76,7 +76,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 U hebt nu $storageAccount, die verwijst naar een bestaand opslag account.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Het volgende script toont hoe u een opslag account voor algemeen gebruik maakt met behulp van [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Nadat u het account hebt gemaakt, haalt u de context op, die in volgende opdrachten kan worden gebruikt in plaats van dat u de verificatie voor elke aanroep opgeeft.
 
@@ -105,11 +105,11 @@ $ctx = $storageAccount.Context
 
 Het script maakt gebruik van de volgende Power shell-cmdlets:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) : haalt een lijst met geldige locaties op. In het voor `eastus` beeld wordt de locatie gebruikt.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) : haalt een lijst met geldige locaties op. In het voor beeld wordt `eastus` gebruikt voor de locatie.
 
 *   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --maakt een nieuwe resource groep. Een resource groep is een logische container waarin uw Azure-resources worden geïmplementeerd en beheerd. Ren heet `teststoragerg`.
 
-*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) : maakt het opslag account. In het voor `testpshstorage`beeld wordt gebruikt.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) : maakt het opslag account. In het voor beeld wordt `testpshstorage` gebruikt.
 
 De SKU-naam geeft het type replicatie voor het opslag account aan, zoals LRS (lokaal redundante opslag). Zie [Azure storage-replicatie](storage-redundancy.md)voor meer informatie over replicatie.
 
@@ -131,7 +131,7 @@ Als u de instellingen voor een opslag account wilt wijzigen, gebruikt u [set-AzS
 
 * De **labels** die aan het opslag account zijn toegewezen. Tags worden vaak gebruikt om resources te categoriseren voor facturerings doeleinden.
 
-* De **SKU** is de replicatie-instelling voor het opslag account, zoals LRS voor lokaal redundante opslag. U kunt bijvoorbeeld wijzigen van standaard\_LRS naar standaard\_-GRS of standaard\_RAGRS. Houd er rekening mee dat u\_de standaard ZRS\_, standaard GZRS\_, standaard RAGZRS of\_Premium LRS niet kunt wijzigen in andere sku's, of andere sku's kunt wijzigen.
+* De **SKU** is de replicatie-instelling voor het opslag account, zoals LRS voor lokaal redundante opslag. U kunt bijvoorbeeld wijzigen van Standard @ no__t-0LRS naar Standard @ no__t-1GRS of Standard @ no__t-2RAGRS. Houd er rekening mee dat u standaard @ no__t-0ZRS, Standard @ no__t-1GZRS, Standard @ no__t-2RAGZRS of Premium @ no__t-3LRS naar andere Sku's niet kunt wijzigen of andere Sku's kunt wijzigen.
 
 * De **toegangs laag** voor Blob Storage-accounts. De waarde voor de toegangs laag is ingesteld op **dynamisch** of **koud**en Hiermee kunt u de kosten tot een minimum beperken door de toegangs laag te selecteren die wordt uitgelijnd met de manier waarop u het opslag account gebruikt. Zie [opslag lagen dynamisch, koud en archief](../blobs/storage-blob-storage-tiers.md)voor meer informatie.
 
@@ -139,7 +139,7 @@ Als u de instellingen voor een opslag account wilt wijzigen, gebruikt u [set-AzS
 
 ### <a name="manage-the-access-keys"></a>De toegangs sleutels beheren
 
-Een Azure Storage-account wordt geleverd met twee account sleutels. Gebruik [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey)om de sleutels op te halen. In dit voor beeld wordt de eerste sleutel opgehaald. Als u het andere wilt ophalen, `Value[1]` gebruikt u `Value[0]`in plaats van.
+Een Azure Storage-account wordt geleverd met twee account sleutels. Gebruik [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey)om de sleutels op te halen. In dit voor beeld wordt de eerste sleutel opgehaald. Als u het andere wilt ophalen, gebruikt u `Value[1]` in plaats van `Value[0]`.
 
 ```powershell
 $storageAccountKey = `
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Als u de andere sleutel opnieuw wilt genereren `key2` , gebruikt u als sleutel naam `key1`in plaats van.
+Als u de andere sleutel opnieuw wilt genereren, gebruikt u `key2` als sleutel naam in plaats van `key1`.
 
 Genereer een van de sleutels opnieuw en haal deze opnieuw op om de nieuwe waarde weer te geven.
 
@@ -199,7 +199,7 @@ U kunt de bewaking configureren met de [Azure Portal](https://portal.azure.com),
 > U kunt minuut analyse inschakelen met behulp van Power shell. Deze mogelijkheid is niet beschikbaar in de portal.
 >
 
-* Voor informatie over het inschakelen en weer geven van metrische gegevens over opslag met behulp van Power shell, Zie [metrische opslag analyse](storage-analytics-metrics.md)-metrieken.
+* Voor informatie over het inschakelen en weer geven van metrische gegevens over opslag met behulp van Power shell, Zie [metrische opslag analyse-metrieken](storage-analytics-metrics.md).
 
 * Voor informatie over het inschakelen en ophalen van gegevens van opslag vastleggen met behulp van Power shell raadpleegt u [logboek registratie van opslag inschakelen met Power shell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) en [de logboek gegevens van uw opslag logboeken zoeken](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
 
@@ -242,7 +242,7 @@ In dit artikel wordt beschreven hoe u algemene bewerkingen kunt gebruiken voor h
 > [!div class="checklist"]
 > * Opslag accounts weer geven
 > * Een verwijzing naar een bestaand opslag account ophalen
-> * Create a storage account
+> * Maak een opslagaccount
 > * Eigenschappen van opslag account instellen
 > * De toegangs sleutels ophalen en opnieuw genereren
 > * Toegang tot uw opslag account beveiligen
@@ -252,4 +252,4 @@ In dit artikel vindt u ook verwijzingen naar verschillende andere artikelen, zoa
 
 * [Power shell-cmdlets voor Azure Storage Control vlak](/powershell/module/az.storage/)
 * [Power shell-cmdlets voor Azure Storage Data-vlak](/powershell/module/azure.storage/)
-* [Naslag informatie voor Windows Power shell](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Naslag informatie voor Windows Power shell](/powershell/scripting/developer/windows-powershell)

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169888"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429607"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer (preview-versie)
 
@@ -52,7 +52,7 @@ Een catalogus is een container met resources en toegangs pakketten. U maakt een 
 
 1. Als u wilt toestaan dat gebruikers in geselecteerde externe directory's toegangs pakketten kunnen aanvragen in deze catalogus, stelt u **ingeschakeld voor externe gebruikers** in op **Ja**.
 
-    ![Deel venster nieuwe catalogus](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Deel venster nieuwe catalogus](./media/entitlement-management-shared/new-catalog.png)
 
 1. Klik op **maken** om de catalogus te maken.
 
@@ -130,7 +130,9 @@ U kunt de naam en beschrijving voor een catalogus bewerken. Gebruikers zien deze
 
 1. Klik op de pagina **overzicht** van de catalogus op **bewerken**.
 
-1. Bewerk de naam of beschrijving van de catalogus.
+1. Bewerk de naam, beschrijving of ingeschakelde instellingen van de catalogus.
+
+    ![Catalogus instellingen bewerken](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Klik op **Opslaan**.
 

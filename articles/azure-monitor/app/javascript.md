@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937075"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430208"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -36,7 +36,7 @@ Application Insights kan met elke webpagina worden gebruikt. Het enige wat u hie
 > [!IMPORTANT]
 > U hoeft alleen een van de onderstaande methoden te gebruiken voor het toevoegen van de Application Insights java script SDK aan uw toepassing. Als u de installatie op basis van NPM gebruikt, gebruik dan niet de installatie op basis van het fragment. Hetzelfde geldt voor het omgekeerde scenario wanneer u de methode op basis van het fragment gebruikt. gebruik niet ook de op NPM gebaseerde installatie. 
 
-### <a name="npm-based-setup"></a>Installatie op basis van NPM
+### <a name="npm-based-setup"></a>installatie op basis van NPM
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -50,7 +50,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Installatie op basis van een fragment
 
-Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Bij voor keur moet dit het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd. Als u een razendsnelle server-app gebruikt, voegt u het fragment boven aan het bestand `_Host.cshtml` toe in de sectie `<head>`.
+Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Dit moet bij voor keur het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd. Als u een razendsnelle server-app gebruikt, voegt u het fragment boven aan het bestand `_Host.cshtml` toe in de sectie `<head>`.
 
 ```html
 <script type="text/javascript">
@@ -78,14 +78,14 @@ Standaard verzamelt de Application Insights java script SDK een aantal telemetri
     - Resultaat code en succes status van de aanvraag
     - ID (indien van toepassing) van de gebruiker die de aanvraag maakt
     - Correlatie context (indien aanwezig) waar de aanvraag is ingediend
-- **Gebruikers gegevens** (bijvoorbeeld locatie, netwerk, IP)
+- **Gebruikers informatie** (bijvoorbeeld locatie, netwerk, IP)
 - **Apparaatgegevens** (bijvoorbeeld browser, besturings systeem, versie, taal, resolutie, model)
 - **Sessie gegevens**
 
 ### <a name="telemetry-initializers"></a>Initialisatie functies voor telemetrie
-Initialisatie functies voor telemetrie worden gebruikt om de inhoud van de verzamelde telemetrie te wijzigen voordat ze worden verzonden vanuit de browser van de gebruiker. Ze kunnen ook worden gebruikt om te voor komen dat bepaalde telemetriegegevens worden verzonden door te `false`retour neren. U kunt meerdere telemetrie-initialisatie functies toevoegen aan uw Application Insights-exemplaar en ze worden uitgevoerd in de volg orde waarin ze worden toegevoegd.
+Initialisatie functies voor telemetrie worden gebruikt om de inhoud van de verzamelde telemetrie te wijzigen voordat ze worden verzonden vanuit de browser van de gebruiker. Ze kunnen ook worden gebruikt om te voor komen dat bepaalde telemetriegegevens worden verzonden door `false` te retour neren. U kunt meerdere telemetrie-initialisatie functies toevoegen aan uw Application Insights-exemplaar en ze worden uitgevoerd in de volg orde waarin ze worden toegevoegd.
 
-Het invoer argument voor `addTelemetryInitializer` is een call back die een [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) als-argument gebruikt en een `boolean` or `void`retourneert. Als er `false`wordt geretourneerd, wordt het telemetrie-item niet verzonden. anders wordt het teruggestuurd naar de volgende telemetrie-initialisatie functie, indien van toepassing, of verzonden naar het eind punt van de telemetrie-verzameling.
+Het invoer argument voor `addTelemetryInitializer` is een call back die een [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) als argument gebruikt en retourneert een `boolean` of `void`. Als `false` wordt geretourneerd, wordt het telemetrie-item niet verzonden. anders wordt het teruggestuurd naar de volgende telemetrie-initialisatie functie, indien van toepassing, of verzonden naar het eind punt van de telemetrie-verzameling.
 
 Een voor beeld van het gebruik van telemetrie-initialisatie functies:
 ```ts
@@ -99,53 +99,53 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 ## <a name="configuration"></a>Configuratie
-De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, behalve `instrumentationKey`voor.
+De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, met uitzonde ring van `instrumentationKey`.
 
-| Name | Standaard | Description |
+| Naam | Standaard | Beschrijving |
 |------|---------|-------------|
-| InstrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
-| accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
+| instrumentationKey | Null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
+| accountId | Null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
 | sessionRenewalMs | 1800000 | Er wordt een sessie geregistreerd als de gebruiker gedurende deze tijd inactief is in milliseconden. De standaard waarde is 30 minuten |
 | sessionExpirationMs | 86400000 | Een sessie wordt geregistreerd als deze de tijd in milliseconden heeft geduurd. De standaard waarde is 24 uur |
 | maxBatchSizeInBytes | 10.000 | De maximale grootte van de telemetrie batch. Als een batch deze limiet overschrijdt, wordt deze onmiddellijk verzonden en wordt een nieuwe batch gestart |
 | maxBatchInterval | 15.000 | Hoe lang batch-telemetrie voor verzen ding (in milliseconden) |
-| disableExceptionTracking | false | Als deze eigenschap waar is, worden uitzonde ringen niet verzameld. De standaardinstelling is onwaar. |
-| disableTelemetry | false | Indien waar, wordt de telemetrie niet verzameld of verzonden. De standaardinstelling is onwaar. |
-| enableDebug | false | Indien waar, worden **interne** fout opsporingsgegevens gegenereerd als een uitzonde ring **in plaats** van vastgelegd, ongeacht de instellingen voor de logboek registratie van de SDK. De standaardinstelling is onwaar. <br>***Opmerking:*** Als u deze instelling inschakelt, wordt de telemetrie verwijderd wanneer er een interne fout optreedt. Dit kan handig zijn voor het snel identificeren van problemen met uw configuratie of het gebruik van de SDK. Als u geen telemetriegegevens wilt verliezen tijdens het opsporen van fouten, kunt `consoleLoggingLevel` u `telemetryLoggingLevel` overwegen of `enableDebug`in plaats van te gebruiken. |
-| loggingLevelConsole | 0 | Registreert **interne** Application Insights fouten in de console. <br>0: uit, <br>1: Alleen kritieke fouten, <br>2: Alles (fouten & waarschuwingen) |
-| loggingLevelTelemetry | 1 | Hiermee worden **interne** Application Insights-fouten als telemetriegegevens verzonden. <br>0: uit, <br>1: Alleen kritieke fouten, <br>2: Alles (fouten & waarschuwingen) |
+| disableExceptionTracking | onwaar | Als deze eigenschap waar is, worden uitzonde ringen niet verzameld. De standaardinstelling is onwaar. |
+| disableTelemetry | onwaar | Indien waar, wordt de telemetrie niet verzameld of verzonden. De standaardinstelling is onwaar. |
+| enableDebug | onwaar | Indien waar, worden **interne** fout opsporingsgegevens gegenereerd als een uitzonde ring **in plaats** van vastgelegd, ongeacht de instellingen voor de logboek registratie van de SDK. De standaardinstelling is onwaar. <br>***Opmerking:*** Als u deze instelling inschakelt, wordt de telemetrie verwijderd wanneer er een interne fout optreedt. Dit kan handig zijn voor het snel identificeren van problemen met uw configuratie of het gebruik van de SDK. Als u geen telemetriegegevens wilt verliezen tijdens het opsporen van fouten, kunt u het beste `consoleLoggingLevel` of `telemetryLoggingLevel` gebruiken in plaats van `enableDebug`. |
+| loggingLevelConsole | 0 | Registreert **interne** Application Insights fouten in de console. <br>0: uit, <br>1: alleen kritieke fouten, <br>2: alles (fouten & waarschuwingen) |
+| loggingLevelTelemetry | 1 | Hiermee worden **interne** Application Insights-fouten als telemetriegegevens verzonden. <br>0: uit, <br>1: alleen kritieke fouten, <br>2: alles (fouten & waarschuwingen) |
 | diagnosticLogInterval | 10.000 | binnen Polling-interval (in MS) voor interne logboek registratie wachtrij |
 | samplingPercentage | 100 | Het percentage gebeurtenissen dat wordt verzonden. De standaard waarde is 100, wat betekent dat alle gebeurtenissen worden verzonden. Stel deze waarde in als u uw gegevens limiet voor grootschalige toepassingen wilt behouden. |
-| autoTrackPageVisitTime | false | Indien true, op een pagina weergave, wordt de vorige gestuurde pagina tijd bijgehouden als telemetrie en wordt er een nieuwe timer gestart voor de huidige pagina weergave. De standaardinstelling is onwaar. |
-| disableAjaxTracking | false | Indien true, worden Ajax-aanroepen niet autoinnen. De standaardinstelling is onwaar. |
-| disableFetchTracking | true | Indien waar, worden aanvragen voor ophalen niet meer verzameld. De standaard waarde is True |
-| overridePageViewDuration | false | Als deze eigenschap waar is, wordt het standaard gedrag van trackPageView gewijzigd om het eind punt van de pagina weergave te registreren wanneer trackPageView wordt aangeroepen. Als deze eigenschap onwaar is en er geen aangepaste duur wordt gegeven aan trackPageView, wordt de prestaties van de pagina weergave berekend met behulp van de API voor navigatie tijd. De standaardinstelling is onwaar. |
+| autoTrackPageVisitTime | onwaar | Indien true, op een pagina weergave, wordt de vorige gestuurde pagina tijd bijgehouden als telemetrie en wordt er een nieuwe timer gestart voor de huidige pagina weergave. De standaardinstelling is onwaar. |
+| disableAjaxTracking | onwaar | Indien true, worden Ajax-aanroepen niet autoinnen. De standaardinstelling is onwaar. |
+| disableFetchTracking | waar | Indien waar, worden aanvragen voor ophalen niet meer verzameld. De standaard waarde is True |
+| overridePageViewDuration | onwaar | Als deze eigenschap waar is, wordt het standaard gedrag van trackPageView gewijzigd om het eind punt van de pagina weergave te registreren wanneer trackPageView wordt aangeroepen. Als deze eigenschap onwaar is en er geen aangepaste duur wordt gegeven aan trackPageView, wordt de prestaties van de pagina weergave berekend met behulp van de API voor navigatie tijd. De standaardinstelling is onwaar. |
 | maxAjaxCallsPerView | 500 | Standaard 500-bepaalt hoeveel Ajax-aanroepen worden bewaakt per pagina weergave. Stel deze waarde in op-1 om alle Ajax-aanroepen (onbeperkt) op de pagina te bewaken. |
-| disableDataLossAnalysis | true | Indien onwaar, worden interne telemetriegegevens van de verzender bij het opstarten gecontroleerd op items die nog niet zijn verzonden. |
-| disableCorrelationHeaders | false | Als deze eigenschap onwaar is, voegt de SDK twee headers (' aanvraag-id ' en ' request-context ') toe aan alle afhankelijkheids aanvragen om ze te correleren met bijbehorende aanvragen aan de server zijde. De standaardinstelling is onwaar. |
+| disableDataLossAnalysis | waar | Indien onwaar, worden interne telemetriegegevens van de verzender bij het opstarten gecontroleerd op items die nog niet zijn verzonden. |
+| disableCorrelationHeaders | onwaar | Als deze eigenschap onwaar is, voegt de SDK twee headers (' aanvraag-id ' en ' request-context ') toe aan alle afhankelijkheids aanvragen om ze te correleren met bijbehorende aanvragen aan de server zijde. De standaardinstelling is onwaar. |
 | correlationHeaderExcludedDomains |  | Correlatie headers voor specifieke domeinen uitschakelen |
 | correlationHeaderDomains |  | Correlatie headers voor specifieke domeinen inschakelen |
-| disableFlushOnBeforeUnload | false | De standaard waarde is False. Indien waar, wordt de methode flush niet aangeroepen wanneer onBeforeUnload gebeurtenis triggers |
-| enableSessionStorageBuffer | true | Standaard waarde waar. Als deze eigenschap waar is, wordt de buffer met alle niet-verzonden telemetrie opgeslagen in de sessie opslag. De buffer wordt hersteld bij het laden van pagina's |
-| isCookieUseDisabled | false | De standaard waarde is False. Als deze eigenschap waar is, worden er geen gegevens van cookies opgeslagen of gelezen met de SDK.|
-| cookieDomain | null | Aangepast cookie domein. Dit is handig als u Application Insights cookies wilt delen in subdomeinen. |
-| isRetryDisabled | false | De standaard waarde is False. Indien onwaar, opnieuw proberen op 206 (gedeeltelijk geslaagd), 408 (time-out), 429 (te veel aanvragen), 500 (interne server fout), 503 (service niet beschikbaar) en 0 (alleen offline, alleen indien gedetecteerd) |
-| isStorageUseDisabled | false | Als deze eigenschap waar is, worden er geen gegevens uit lokale en sessie opslag opgeslagen of gelezen met de SDK. De standaardinstelling is onwaar. |
-| isBeaconApiDisabled | true | Als deze eigenschap onwaar is, verzendt de SDK alle telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
-| onunloadDisableBeacon | false | De standaard waarde is False. Wanneer het tabblad wordt gesloten, verzendt de SDK alle resterende telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
-| sdkExtension | null | Hiermee stelt u de naam van de SDK-extensie. Alleen alfabetische tekens zijn toegestaan. De naam van de extensie wordt toegevoegd als een voor voegsel voor de tag AI. internal. sdkVersion (bijvoorbeeld ' ext_javascript: 2.0.0 '). De standaard waarde is null. |
-| isBrowserLinkTrackingEnabled | false | De standaardinstelling is onwaar. Indien waar, worden alle aanvragen voor [browser koppelingen](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) door de SDK bijgehouden. |
-| appId | null | AppId wordt gebruikt voor de correlatie tussen AJAX-afhankelijkheden die zich voordoen aan de client zijde met de aanvragen aan de server zijde. Als Beacon-API is ingeschakeld, kan deze niet automatisch worden gebruikt, maar deze kan hand matig worden ingesteld in de configuratie. De standaard waarde is null |
-| enableCorsCorrelation | false | Als deze eigenschap waar is, voegt de SDK twee headers (' aanvraag-id ' en ' request-context ') toe aan alle CORS-aanvragen voor het correleren van uitgaande AJAX-afhankelijkheden met bijbehorende aanvragen aan de server zijde. De standaard waarde is False |
-| namePrefix | onbepaald | Een optionele waarde die wordt gebruikt als naam achtervoegsel voor localStorage en cookie naam.
-| enableAutoRouteTracking | false | Route wijzigingen automatisch bijhouden in toepassingen met één pagina (SPA). Indien waar, stuurt elke route wijziging een nieuwe pagina weergave naar Application Insights. Hash-route wijzigingen`example.com/foo#bar`() worden ook vastgelegd als nieuwe pagina weergaven.
-| enableRequestHeaderTracking | false | Indien waar, worden AJAX-& aanvraag headers voor ophalen bijgehouden. de standaard waarde is False.
-| enableResponseHeaderTracking | false | Als deze waarde True is, wordt de antwoord headers voor de aanvraag van AJAX & ophalen bijgehouden. de standaard waarde is False.
+| disableFlushOnBeforeUnload | onwaar | De standaard waarde is False. Indien waar, wordt de methode flush niet aangeroepen wanneer onBeforeUnload gebeurtenis triggers |
+| enableSessionStorageBuffer | waar | Standaard waarde waar. Als deze eigenschap waar is, wordt de buffer met alle niet-verzonden telemetrie opgeslagen in de sessie opslag. De buffer wordt hersteld bij het laden van pagina's |
+| isCookieUseDisabled | onwaar | De standaard waarde is False. Als deze eigenschap waar is, worden er geen gegevens van cookies opgeslagen of gelezen met de SDK.|
+| cookieDomain | Null | Aangepast cookie domein. Dit is handig als u Application Insights cookies wilt delen in subdomeinen. |
+| isRetryDisabled | onwaar | De standaard waarde is False. Indien onwaar, opnieuw proberen op 206 (gedeeltelijk geslaagd), 408 (time-out), 429 (te veel aanvragen), 500 (interne server fout), 503 (service niet beschikbaar) en 0 (alleen offline, alleen indien gedetecteerd) |
+| isStorageUseDisabled | onwaar | Als deze eigenschap waar is, worden er geen gegevens uit lokale en sessie opslag opgeslagen of gelezen met de SDK. De standaardinstelling is onwaar. |
+| isBeaconApiDisabled | waar | Als deze eigenschap onwaar is, verzendt de SDK alle telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
+| onunloadDisableBeacon | onwaar | De standaard waarde is False. Wanneer het tabblad wordt gesloten, verzendt de SDK alle resterende telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
+| sdkExtension | Null | Hiermee stelt u de naam van de SDK-extensie. Alleen alfabetische tekens zijn toegestaan. De naam van de extensie wordt toegevoegd als een voor voegsel voor de tag AI. internal. sdkVersion (bijvoorbeeld ' ext_javascript: 2.0.0 '). De standaard waarde is null. |
+| isBrowserLinkTrackingEnabled | onwaar | De standaardinstelling is onwaar. Indien waar, worden alle aanvragen voor [browser koppelingen](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) door de SDK bijgehouden. |
+| appId | Null | AppId wordt gebruikt voor de correlatie tussen AJAX-afhankelijkheden die zich voordoen aan de client zijde met de aanvragen aan de server zijde. Als Beacon-API is ingeschakeld, kan deze niet automatisch worden gebruikt, maar deze kan hand matig worden ingesteld in de configuratie. De standaard waarde is null |
+| enableCorsCorrelation | onwaar | Als deze eigenschap waar is, voegt de SDK twee headers (' aanvraag-id ' en ' request-context ') toe aan alle CORS-aanvragen voor het correleren van uitgaande AJAX-afhankelijkheden met bijbehorende aanvragen aan de server zijde. De standaard waarde is False |
+| namePrefix | gedefinieerde | Een optionele waarde die wordt gebruikt als naam achtervoegsel voor localStorage en cookie naam.
+| enableAutoRouteTracking | onwaar | Route wijzigingen automatisch bijhouden in toepassingen met één pagina (SPA). Indien waar, stuurt elke route wijziging een nieuwe pagina weergave naar Application Insights. Wijzigingen in de hash-route (`example.com/foo#bar`) worden ook vastgelegd als nieuwe pagina weergaven.
+| enableRequestHeaderTracking | onwaar | Indien waar, worden AJAX-& aanvraag headers voor ophalen bijgehouden. de standaard waarde is False.
+| enableResponseHeaderTracking | onwaar | Als deze waarde True is, wordt de antwoord headers voor de aanvraag van AJAX & ophalen bijgehouden. de standaard waarde is False.
 | distributedTracingMode | `DistributedTracingModes.AI` | Hiermee stelt u de gedistribueerde traceer modus in. Als de AI_AND_W3C-modus of de W3C-modus is ingesteld, worden W3C-tracerings context headers (traceparent/tracestate) gegenereerd en opgenomen in alle uitgaande aanvragen. AI_AND_W3C wordt verzorgd voor back-compatibiliteit met verouderde services van Application Insights instrumented.
 
 ## <a name="single-page-applications"></a>Toepassingen met één pagina
 
-Deze SDK verwerkt standaard **geen** route wijzigingen op basis van status die optreden in toepassingen met één pagina. Als u het bijhouden van automatische route wijzigingen wilt inschakelen voor uw toepassing met één `enableAutoRouteTracking: true` pagina, kunt u aan uw installatie configuratie toevoegen.
+Deze SDK verwerkt standaard **geen** route wijzigingen op basis van status die optreden in toepassingen met één pagina. Om het bijhouden van automatische route wijzigingen voor uw toepassing met één pagina in te scha kelen, kunt u `enableAutoRouteTracking: true` toevoegen aan uw installatie configuratie.
 
 Op dit moment bieden we een afzonderlijke [reageer-invoeg toepassing](#react-extensions) die u kunt initialiseren met deze SDK. Ook wordt het bijhouden van route wijzigingen voor u uitgevoerd, evenals [andere gereageerde telemetrie](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
 
@@ -178,7 +178,7 @@ Selecteer **browser** en kies vervolgens **fouten** of **prestaties**.
 
 ### <a name="analytics"></a>Analyse 
 
-Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door een `where` `client_Type == "Browser"`instructie toe te voegen, ziet u alleen gegevens van de Java script-SDK en alle telemetrie aan de server zijde die door andere sdk's zijn verzameld, worden uitgesloten.
+Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door de `client_Type == "Browser"`-instructie `where` toe te voegen, worden alleen gegevens van de Java script-SDK weer gegeven en worden de telemetrie aan de server zijde die door andere Sdk's is verzameld, uitgesloten.
  
 ```kusto
 // average pageView duration by name
@@ -199,8 +199,8 @@ dataset
 
 De minified-call stack van uw telemetrie van de uitzonde ring kan worden unminified in de Azure Portal. Alle bestaande integraties in het deel venster uitzonderings Details werken met de nieuwe unminified-opgeroepen procedures. Slepen en neerzetten unminifying ondersteunt alle bestaande en toekomstige JS-Sdk's (+ node. JS). u hoeft dus geen upgrade uit te voeren van uw SDK-versie. Als u uw unminified-Call stacks wilt weer geven,
 1. Selecteer een telemetrie voor uitzonde ringen in de Azure Portal om de ' end-to-end-transactie details weer te geven '
-2. Identificeer welke bron kaarten overeenkomen met deze aanroep stack. De bron toewijzing moet overeenkomen met het bron bestand van een stack frame, maar een achtervoegsel met`.map`
-3. Sleep de bron kaarten en zet deze neer op de aanroep stack in de Azure Portal![](https://i.imgur.com/Efue9nU.gif)
+2. Identificeer welke bron kaarten overeenkomen met deze aanroep stack. De bron toewijzing moet overeenkomen met het bron bestand van een stack frame, maar een achtervoegsel met `.map`
+3. Sleep de bron kaarten en zet deze neer op de aanroep stack in de Azure Portal ![](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 
@@ -208,7 +208,7 @@ Voor een licht gewicht-ervaring kunt u in plaats daarvan de basis versie van App
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Deze versie wordt geleverd met het minimale aantal functies en functionaliteiten en is afhankelijk van u om het te kunnen bouwen. Er wordt bijvoorbeeld geen verzameling (niet-onderschepte uitzonde ringen, AJAX, enzovoort) uitgevoerd. De api's voor het verzenden van bepaalde typen telemetrie `trackException`, zoals `trackTrace`,, enzovoort, zijn niet opgenomen in deze versie, dus u moet uw eigen wrapper opgeven. De enige API die beschikbaar is is `track`. Hier vindt u een voor [beeld](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
+Deze versie wordt geleverd met het minimale aantal functies en functionaliteiten en is afhankelijk van u om het te kunnen bouwen. Er wordt bijvoorbeeld geen verzameling (niet-onderschepte uitzonde ringen, AJAX, enzovoort) uitgevoerd. De Api's voor het verzenden van bepaalde typen telemetrie, zoals `trackTrace`, `trackException`, enzovoort, zijn niet opgenomen in deze versie, dus u moet uw eigen wrapper opgeven. De enige API die beschikbaar is, is `track`. Hier vindt u een voor [beeld](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -219,17 +219,17 @@ Voor voor beelden van uitvoer bare raadpleegt u [Application Insights java scrip
 Belang rijke wijzigingen in de SDK v2-versie:
 - Als u betere API-hand tekeningen wilt toestaan, zijn een aantal van de API-aanroepen, zoals trackPageView, trackException bijgewerkt. Uitvoeren in IE8 of lagere versies van de browser wordt niet ondersteund.
 - De telemetrie-envelop heeft veld naam-en structuur wijzigingen door gegevens schema-updates.
-- Verplaatst `context.operation` naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id`) --> `telemetryTrace.traceID`
-  - Als u de huidige pagina weergave-ID hand matig wilt vernieuwen (bijvoorbeeld in SPA-apps), kunt u dit doen met`appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
+- @No__t-0 is verplaatst naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id` @ no__t-1 @ no__t-2)
+  - Als u de huidige pagina weergave-ID hand matig wilt vernieuwen (bijvoorbeeld in SPA-apps), kunt u dit doen met `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
 Als u de huidige Application Insights PRODUCTION SDK (1.0.20) gebruikt en wilt zien of de nieuwe SDK in runtime werkt, werkt u de URL bij, afhankelijk van het huidige scenario voor het laden van de SDK.
 
-- Downloaden via CDN-scenario: Werk het code fragment dat u momenteel gebruikt om naar de volgende URL te verwijzen:
+- Down load via CDN scenario: werk het code fragment dat u momenteel gebruikt om naar de volgende URL te verwijzen:
    ```
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- NPM-scenario: Aanroep `downloadAndSetup` voor het downloaden van het volledige ApplicationInsights-script uit CDN en Initialiseer het met de instrumentatie sleutel:
+- NPM-scenario: roep `downloadAndSetup` aan om het volledige ApplicationInsights-script uit CDN te downloaden en Initialiseer het met de instrumentatie sleutel:
 
    ```ts
    appInsights.downloadAndSetup({
@@ -246,7 +246,7 @@ Application Insights een verschuldigde hoeveelheid loadtime aan uw website toevo
 
 Tijdens het downloaden van het script uit het CDN, wordt het bijhouden van de pagina in een wachtrij geplaatst. Zodra het gedownloade script asynchroon is geïnitialiseerd, worden alle gebeurtenissen bijgehouden die in de wachtrij zijn geplaatst. Als gevolg hiervan zult u geen telemetrie kwijt raken tijdens de hele levens cyclus van de pagina. Dit installatie proces voorziet uw pagina van een naadloos analyse systeem, dat niet zichtbaar is voor uw gebruikers.
 
-> Samenvatting:
+> Overzicht
 > - **25 KB** gzipped
 > - **15 MS** algemene initialisatie tijd
 > - Bijhouden van **nul** gemist tijdens de levens cyclus van de pagina

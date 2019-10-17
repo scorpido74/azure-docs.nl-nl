@@ -15,18 +15,18 @@ ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329982"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439486"
 ---
-# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
+# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Zelf studie: een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
 
 [App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. Deze zelf studie laat zien hoe u een gegevensgestuurde python-web-app (Django) kunt maken met behulp van PostgreSQL als de back-end van de data base. Wanneer u klaar bent, hebt u een Django-webtoepassing die wordt uitgevoerd in Azure App Service op Linux.
 
-![Python django-web-app in App Service in Linux](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Python django-web-app in Azure App Service in Linux](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 In deze zelfstudie leert u het volgende:
 
@@ -147,7 +147,7 @@ Ga naar `http://localhost:8000` in een browser. Als het goed is, ziet u nu het b
 
 Ga naar `http://localhost:8000/admin` en meld u aan met de beheerders gebruiker die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen** en maak een poll-vraag met enkele keuzes.
 
-![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Python django-app in App Services lokaal uitvoeren](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Ga opnieuw naar `http://localhost:8000` en zie de poll-vraag die wordt weer gegeven.
 
@@ -276,7 +276,7 @@ Ga opnieuw naar `http://localhost:8000`. Als het goed is, ziet u het bericht `No
 
 Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gemaakte beheerder en maak een poll-vraag zoals voorheen.
 
-![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Python django-app in App Services lokaal uitvoeren](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Ga opnieuw naar `http://localhost:8000` en zie de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
 
@@ -391,7 +391,7 @@ In App Service wordt een Django-project gedetecteerd in de opslagplaats door in 
 
 Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheer gebruiker die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
 
-![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Python django-app uitvoeren in App Services in azure](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 **Gefeliciteerd!** U voert een Python-web-app (Django) uit in Azure App Service voor Linux.
 
@@ -405,11 +405,11 @@ Ga naar de [Azure-portal](https://portal.azure.com) om de app te zien die u hebt
 
 Selecteer in het menu links **app Services**en selecteer vervolgens de naam van uw Azure-app.
 
-![Navigatie naar Azure-app in de portal](./media/tutorial-python-postgresql-app/app-resource.png)
+![Navigeer naar uw python django-app in de Azure Portal](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
 In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Deze pagina geeft u een overzicht van hoe uw app presteert. Hier kunt u ook algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. De tabbladen aan de linkerkant van de pagina tonen de verschillende configuratiepagina's die u kunt openen.
 
-![App Service-pagina in Azure Portal](./media/tutorial-python-postgresql-app/app-mgmt.png)
+![Beheer uw python django-app op de pagina overzicht in de Azure Portal](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

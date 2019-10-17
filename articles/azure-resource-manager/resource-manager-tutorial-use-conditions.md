@@ -1,6 +1,6 @@
 ---
 title: Voorwaarde gebruiken in Azure Resource Manager-sjablonen | Microsoft Docs
-description: Leer hoe u Azure-resources implementeert die zijn gebaseerd op voorwaarden.
+description: Leer hoe u Azure-resources implementeert die zijn gebaseerd op voorwaarden. Laat zien hoe u een nieuwe resource implementeert of een bestaande resource gebruikt.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258867"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390196"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Zelfstudie: Voorwaarde gebruiken in Azure Resource Manager-sjablonen
 
@@ -31,16 +31,16 @@ In de zelfstudie [Resource-implementatievolgorde instellen](./resource-manager-t
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een quickstartsjabloon openen
+> * Een snelstartsjabloon openen
 > * De sjabloon aanpassen
 > * De sjabloon implementeren
 > * Resources opschonen
 
 Deze zelf studie geldt alleen voor een basis scenario voor het gebruik van voor waarden. Zie voor meer informatie:
 
-* [Structuur van sjabloon bestand: Voor](conditional-resource-deployment.md)waarde.
+* [Structuur van sjabloon bestand: voor waarde](conditional-resource-deployment.md).
 * [Een resource voorwaardelijk implementeren in een Azure Resource Manager sjabloon](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
-* [Functie sjabloon: Als](./resource-group-template-functions-logical.md#if).
+* [Sjabloon functie: if](./resource-group-template-functions-logical.md#if).
 * [Vergelijkings functies voor Azure Resource Manager sjablonen](./resource-group-template-functions-comparison.md)
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.

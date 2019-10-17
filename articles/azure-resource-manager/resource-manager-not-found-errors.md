@@ -1,32 +1,32 @@
 ---
-title: Azure-resource niet vinden fouten | Microsoft Docs
-description: Beschrijft hoe u fouten oplossen wanneer een resource kan niet worden gevonden.
+title: Fouten in de Azure-resource niet gevonden | Microsoft Docs
+description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4db50bbb3073fe98599923843e6afdded3a8ca62
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206188"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390281"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Los fouten niet gevonden voor de Azure-resources
+# <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
 
-Dit artikel beschrijft de fouten die mogelijk ziet u wanneer een resource kan niet worden gevonden tijdens de implementatie.
+In dit artikel worden de fouten beschreven die kunnen worden weer gegeven wanneer een resource niet kan worden gevonden tijdens de implementatie.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer de sjabloon de naam van een resource die kan niet worden omgezet bevat, ontvangt u een fout op vergelijkbaar met:
+Wanneer uw sjabloon de naam bevat van een resource die niet kan worden omgezet, wordt een fout bericht van de volgende strekking weer gegeven:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Als u de [verwijzing](resource-group-template-functions-resource.md#reference) of [listKeys](resource-group-template-functions-resource.md#listkeys) functies met een resource die kan niet worden omgezet, ontvangt u de volgende fout:
+Als u de functies [Reference](resource-group-template-functions-resource.md#reference) of [listkeys ophalen](resource-group-template-functions-resource.md#listkeys) gebruikt met een resource die niet kan worden omgezet, wordt de volgende fout weer gegeven:
 
 ```
 Code=ResourceNotFound;
@@ -36,11 +36,11 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Oorzaak
 
-Resource Manager nodig heeft om op te halen van de eigenschappen voor een resource, maar de resource in uw abonnement kan niet worden geïdentificeerd.
+Resource Manager moet de eigenschappen van een resource ophalen, maar de resource in uw abonnement kan niet worden geïdentificeerd.
 
-## <a name="solution-1---set-dependencies"></a>Oplossing 1: set-afhankelijkheden
+## <a name="solution-1---set-dependencies"></a>Oplossing 1: afhankelijkheden instellen
 
-Als u de ontbrekende resource in de sjabloon implementeert probeert, controleert u of u wilt toevoegen van een afhankelijkheid. Resource Manager optimaliseert implementatie door het maken van resources tegelijk, indien mogelijk. Als een resource moet worden geïmplementeerd nadat een andere resource, moet u de **dependsOn** element in de sjabloon. Bijvoorbeeld, wanneer u een web-app implementeert, moet de App Service-plan bestaan. Als u dit nog niet hebt opgegeven dat de web-app afhankelijk van het App Service-plan is, Resource Manager wordt gemaakt van beide bronnen op hetzelfde moment. Er treedt een fout met de mededeling dat de App Service plan resource kan niet worden gevonden, omdat deze nog niet bestaat wanneer wordt geprobeerd een eigenschap instellen op de web-app. U kunt deze fout voorkomen door in te stellen van de afhankelijkheid in de web-app.
+Als u probeert de ontbrekende resource in de sjabloon te implementeren, controleert u of u een afhankelijkheid moet toevoegen. Resource Manager optimaliseert de implementatie door zo mogelijk bronnen parallel te maken. Als u een resource moet implementeren na een andere resource, moet u het element **dependsOn** in uw sjabloon gebruiken. Als u bijvoorbeeld een web-app implementeert, moet het App Service plan bestaan. Als u nog niet hebt opgegeven dat de web-app afhankelijk is van het App Service-abonnement, maakt Resource Manager beide resources tegelijk. Er wordt een fout bericht weer gegeven dat de resource van het App Service plan niet kan worden gevonden, omdat deze nog niet bestaat bij het instellen van een eigenschap in de web-app. U kunt deze fout voor komen door de afhankelijkheid in de web-app in te stellen.
 
 ```json
 {
@@ -53,29 +53,29 @@ Als u de ontbrekende resource in de sjabloon implementeert probeert, controleert
 }
 ```
 
-Maar u wilt voorkomen dat de afhankelijkheden die nodig zijn niet instellen. Wanneer u onnodige afhankelijkheden hebt, kunt u de duur van de implementatie verlengen door te voorkomen dat resources die niet afhankelijk van elkaar worden geïmplementeerd in parallelle. U kunt bovendien circulaire afhankelijkheden die de implementatie blokkeert maken. De [verwijzing](resource-group-template-functions-resource.md#reference) functie en [lijst *](resource-group-template-functions-resource.md#list) functies maakt een impliciete afhankelijkheid van de resource waarnaar wordt verwezen, wanneer deze resource is geïmplementeerd in dezelfde sjabloon en wordt verwezen door de naam (geen resource-ID ). Daarom moet u wellicht meer afhankelijkheden dan de afhankelijkheden die zijn opgegeven de **dependsOn** eigenschap. De [resourceId](resource-group-template-functions-resource.md#resourceid) functie niet afhankelijk van een impliciete maken of te valideren dat de resource bestaat. De [verwijzing](resource-group-template-functions-resource.md#reference) functie en [lijst *](resource-group-template-functions-resource.md#list) functies niet afhankelijk van een impliciete maken wanneer de resource wordt verwezen door de resource-ID. Geeft de naam van de resource die is geïmplementeerd in dezelfde sjabloon voor het maken van een impliciete afhankelijkheid.
+Maar u wilt voor komen dat afhankelijkheden worden ingesteld die niet nodig zijn. Wanneer u onnodige afhankelijkheden hebt, kunt u de duur van de implementatie verlengen door te voor komen dat bronnen die niet afhankelijk zijn van elkaar, parallel worden geïmplementeerd. Daarnaast kunt u circulaire afhankelijkheden maken die de implementatie blok keren. Met de functies [referentie](resource-group-template-functions-resource.md#reference) functie en [lijst *](resource-group-template-functions-resource.md#list) wordt een impliciete afhankelijkheid gemaakt voor de resource waarnaar wordt verwezen, wanneer die resource wordt geïmplementeerd in dezelfde sjabloon en wordt verwezen door de naam (niet resource-id). Daarom kunt u meer afhankelijkheden hebben dan de afhankelijkheden die zijn opgegeven in de eigenschap **dependsOn** . De functie [resourceId](resource-group-template-functions-resource.md#resourceid) maakt geen impliciete afhankelijkheid of valideert dat de resource bestaat. De functies [referentie](resource-group-template-functions-resource.md#reference) functie en [lijst *](resource-group-template-functions-resource.md#list) maken geen impliciete afhankelijkheid als de resource-id naar de resource wordt verwezen. Als u een impliciete afhankelijkheid wilt maken, geeft u de naam van de resource die is geïmplementeerd in dezelfde sjabloon door.
 
-Wanneer u problemen met afhankelijkheid ziet, moet u meer inzicht krijgen in de volgorde van de resource-implementatie. De volgorde van implementatiebewerkingen weergeven:
+Wanneer u afhankelijkheids problemen ziet, moet u inzicht krijgen in de volg orde van de resource-implementatie. De volg orde van de implementatie bewerkingen bekijken:
 
-1. Selecteer de geschiedenis van de implementatie voor de resourcegroep.
+1. Selecteer de implementatie geschiedenis voor uw resource groep.
 
-   ![Selecteer de implementatiegeschiedenis](./media/resource-manager-not-found-errors/select-deployment.png)
+   ![Implementatie geschiedenis selecteren](./media/resource-manager-not-found-errors/select-deployment.png)
 
-2. Selecteer een implementatie uit de geschiedenis, en selecteer **gebeurtenissen**.
+2. Selecteer een implementatie in de geschiedenis en selecteer **gebeurtenissen**.
 
-   ![gebeurtenissen van de implementatie selecteren](./media/resource-manager-not-found-errors/select-deployment-events.png)
+   ![implementatie gebeurtenissen selecteren](./media/resource-manager-not-found-errors/select-deployment-events.png)
 
-3. Controleer de volgorde van gebeurtenissen voor elke resource. Let op de status van elke bewerking. De volgende afbeelding ziet u bijvoorbeeld drie opslagaccounts die geïmplementeerd parallel. U ziet dat de drie opslagaccounts op hetzelfde moment worden gestart.
+3. Bekijk de volg orde van gebeurtenissen voor elke resource. Let op de status van elke bewerking. De volgende afbeelding toont bijvoorbeeld drie opslag accounts die parallel zijn geïmplementeerd. U ziet dat de drie opslag accounts op hetzelfde moment worden gestart.
 
    ![parallelle implementatie](./media/resource-manager-not-found-errors/deployment-events-parallel.png)
 
-   De volgende afbeelding ziet u drie opslagaccounts die niet zijn geïmplementeerd parallel. Het tweede opslagaccount, is afhankelijk van de eerste storage-account en het derde storage-account is afhankelijk van de tweede storage-account. De eerste storage-account is gestart, geaccepteerd en voltooid voordat het volgende wordt gestart.
+   De volgende afbeelding toont drie opslag accounts die niet parallel worden geïmplementeerd. Het tweede opslag account is afhankelijk van het eerste opslag account en het derde opslag account is afhankelijk van het tweede opslag account. Het eerste opslag account is gestart, geaccepteerd en voltooid voordat de volgende wordt gestart.
 
    ![sequentiële implementatie](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Oplossing 2: get-resource in een andere resourcegroep
+## <a name="solution-2---get-resource-from-different-resource-group"></a>Oplossing 2: de resource uit de verschillende resource groep ophalen
 
-Wanneer de resource is opgeslagen in een andere resourcegroep dan de versie die op worden geïmplementeerd, gebruikt u de [resourceId functie](resource-group-template-functions-resource.md#resourceid) om op te halen van de volledig gekwalificeerde naam van de resource.
+Als de resource in een andere resource groep aanwezig is dan het item dat wordt geïmplementeerd in, gebruikt u de [functie resourceId](resource-group-template-functions-resource.md#resourceid) om de volledig gekwalificeerde naam van de resource op te halen.
 
 ```json
 "properties": {
@@ -84,9 +84,9 @@ Wanneer de resource is opgeslagen in een andere resourcegroep dan de versie die 
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>Oplossing 3 - functie voor controle-verwijzing
+## <a name="solution-3---check-reference-function"></a>Oplossing 3-controle functie referentie
 
-Zoek naar een expressie met de [verwijzing](resource-group-template-functions-resource.md#reference) functie. De waarden die u opgeeft, afhankelijk van of de resource de dezelfde sjabloon, resourcegroep en -abonnement heeft. Controleer dat u de vereiste parameterwaarden voor uw scenario bieden bent. Als de resource in een andere resourcegroep, geeft u de volledige resource-ID. Bijvoorbeeld, om te verwijzen naar een opslagaccount in een andere resourcegroep, gebruiken:
+Zoek naar een expressie die de functie [Reference](resource-group-template-functions-resource.md#reference) bevat. De waarden die u opgeeft, variëren op basis van het feit of de resource zich in dezelfde sjabloon, resource groep en abonnement bevindt. Controleer of u de vereiste parameter waarden voor uw scenario opgeeft. Als de resource zich in een andere resource groep bevindt, geeft u de volledige Resource-ID op. Als u bijvoorbeeld wilt verwijzen naar een opslag account in een andere resource groep, gebruikt u:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

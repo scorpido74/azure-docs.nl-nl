@@ -14,20 +14,21 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 74a522f8761c2eeaf329c90ae35aef0f44c40254
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a3883d233bd621607ec724e0c85734b508195340
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027201"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388658"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>De Mobile Apps node. js-SDK gebruiken
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+>  Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 Dit artikel bevat gedetailleerde informatie en voor beelden die laten zien hoe u kunt werken met een node. js-back-end in de Mobile Apps-functie van Azure App Service.
 
@@ -97,9 +98,9 @@ Met deze toepassing wordt een mobiel geoptimaliseerde Web-API gemaakt met één 
 * [Snelstartgids voor Apache Cordova-client]
 * [Quick start voor iOS-client]
 * [Quick start voor Windows Store-client]
-* [Xamarin.iOS client quickstart]
-* [Xamarin.Android client quickstart]
-* [Xamarin.Forms client quickstart]
+* [Quick start voor Xamarin. iOS-client]
+* [Quick start voor Xamarin. Android-client]
+* [Quick start voor Xamarin. Forms-client]
 
 U kunt de code voor deze basis toepassing vinden in het [basicapp-voor beeld op github].
 
@@ -196,7 +197,7 @@ Als u deze optie alleen beschikbaar wilt hebben bij het ontwikkelen van lokale b
 
 De Azure-Mobile-apps node. js-Server-SDK biedt mechanismen voor het beschikbaar maken van gegevens tabellen die zijn opgeslagen in Azure SQL Database als een web-API. Het biedt vijf bewerkingen:
 
-| Bewerking | Description |
+| Bewerking | Beschrijving |
 | --- | --- |
 | /Tables/-*tabel naam* ophalen |Alle records in de tabel ophalen. |
 | /Tables/-*TableName*/:-id ophalen |Een specifieke record in de tabel ophalen. |
@@ -374,19 +375,19 @@ We raden u aan om **mobiele. js** toe te voegen aan uw **. gitignore** -bestand 
 
 De meeste instellingen in het bestand mobiele. js hebben een equivalente app-instelling in de [Azure-portal]. Gebruik de volgende lijst om uw app te configureren in de **app-instellingen**:
 
-| App-instelling | de instelling mobiele. js | Description | Geldige waarden |
+| App-instelling | de instelling mobiele. js | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |De naam van de app |string |
 | **MS_MobileLoggingLevel** |Logging. level |Mini maal logboek niveau van te registreren berichten |fout, waarschuwing, info, uitgebreid, fouten opsporen, Silly |
-| **MS_DebugMode** |Fout opsporing |Hiermee wordt de foutopsporingsmodus in-of uitgeschakeld |true, false |
-| **MS_TableSchema** |data.schema |Standaard schema naam voor SQL-tabellen |teken reeks (standaard: dbo) |
-| **MS_DynamicSchema** |data.dynamicSchema |Hiermee wordt de foutopsporingsmodus in-of uitgeschakeld |true, false |
-| **MS_DisableVersionHeader** |versie (ingesteld op niet gedefinieerd) |Hiermee wordt de X-ZUMO-Server-versie-header uitgeschakeld |true, false |
-| **MS_SkipVersionCheck** |skipversioncheck |Hiermee schakelt u de client API-versie controle uit |true, false |
+| **MS_DebugMode** |Fout opsporing |Hiermee wordt de foutopsporingsmodus in-of uitgeschakeld |waar, onwaar |
+| **MS_TableSchema** |data. schema |Standaard schema naam voor SQL-tabellen |teken reeks (standaard: dbo) |
+| **MS_DynamicSchema** |data. dynamicSchema |Hiermee wordt de foutopsporingsmodus in-of uitgeschakeld |waar, onwaar |
+| **MS_DisableVersionHeader** |versie (ingesteld op niet gedefinieerd) |Hiermee wordt de X-ZUMO-Server-versie-header uitgeschakeld |waar, onwaar |
+| **MS_SkipVersionCheck** |skipversioncheck |Hiermee schakelt u de client API-versie controle uit |waar, onwaar |
 
 Een app-instelling instellen:
 
-1. Meld u aan bij [Azure-portal].
+1. Meld u aan bij de [Azure-portal].
 1. Selecteer **alle resources** of **app Services**en selecteer vervolgens de naam van uw mobiele app.
 1. Het deel venster **instellingen** wordt standaard geopend. Als dat niet het geval is, selecteert u **instellingen**.
 1. Selecteer **Toepassings instellingen**in het menu **Algemeen** .
@@ -403,7 +404,7 @@ Voor het wijzigen van de meeste app-instellingen moet de service opnieuw worden 
 
 Het gebruik van Azure SQL Database als een gegevens archief is identiek voor alle Azure App Service toepassings typen. Als u dit nog niet hebt gedaan, volgt u deze stappen om een Mobile Apps back-end te maken:
 
-1. Meld u aan bij [Azure-portal].
+1. Meld u aan bij de [Azure-portal].
 1. Selecteer in de linkerbovenhoek van het venster de knop **+ nieuw** > **Web en mobiel** > **mobiele app**en geef een naam op voor uw Mobile apps back-end.
 1. Voer in het vak **resource groep** dezelfde naam in als uw app.
 1. Het standaard App Service plan wordt geselecteerd. Als u uw App Service plan wilt wijzigen:
@@ -921,9 +922,9 @@ Node. js-toepassingen hebben toegang tot een breed scala aan hulpprogram ma's vo
 [Quick start voor Android-client]: app-service-mobile-android-get-started.md
 [Snelstartgids voor Apache Cordova-client]: app-service-mobile-cordova-get-started.md
 [Quick start voor iOS-client]: app-service-mobile-ios-get-started.md
-[Xamarin.iOS Client quickstart]: app-service-mobile-xamarin-ios-get-started.md
-[Xamarin.Android Client quickstart]: app-service-mobile-xamarin-android-get-started.md
-[Xamarin.Forms Client quickstart]: app-service-mobile-xamarin-forms-get-started.md
+[Quick start voor Xamarin. iOS-client]: app-service-mobile-xamarin-ios-get-started.md
+[Quick start voor Xamarin. Android-client]: app-service-mobile-xamarin-android-get-started.md
+[Quick start voor Xamarin. Forms-client]: app-service-mobile-xamarin-forms-get-started.md
 [Quick start voor Windows Store-client]: app-service-mobile-windows-store-dotnet-get-started.md
 [offline gegevens synchronisatie]: app-service-mobile-offline-data-sync.md
 [Azure Active Directory-verificatie configureren]: ../app-service/configure-authentication-provider-aad.md

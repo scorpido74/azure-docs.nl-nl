@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331802"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430150"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Snelstart: Blobs downloaden, uploaden en vermelden met behulp van Python
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Quick Start: blobs uploaden, downloaden en vermelden in Azure Blob-opslag met python
 
 In dit artikel gebruikt u python voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage. Blobs zijn simpelweg objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. Blobs in Azure Storage verschillen van bestands shares, schema's met minder tabellen en berichten wachtrijen.  Zie [Inleiding tot Azure Storage](/azure/storage/common/storage-introduction)voor meer informatie.
 
