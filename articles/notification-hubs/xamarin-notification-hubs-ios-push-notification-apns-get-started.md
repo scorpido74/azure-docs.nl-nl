@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen verzenden naar Xamarin.iOS-apps met Azure Notification Hubs | Microsoft Docs
+title: Push meldingen naar Xamarin iOS verzenden met behulp van Azure Notification Hubs | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Xamarin.iOS-toepassing.
 services: notification-hubs
 keywords: ios-pushmeldingen,pushberichten,pushmeldingen,pushbericht
@@ -18,14 +18,14 @@ ms.date: 05/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 38a4924cd6bee2f6e2860320d51cfb61aa6fe1bb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213580"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387695"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Xamarin.iOS-apps met Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar Xamarin. iOS-apps met behulp van Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 

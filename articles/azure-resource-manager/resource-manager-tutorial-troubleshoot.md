@@ -1,6 +1,6 @@
 ---
 title: Problemen met Resource Manager-implementaties oplossen | Microsoft Docs
-description: Informatie over het controleren van en oplossen van problemen met Resource Manager-implementaties.
+description: Meer informatie over het bewaken en oplossen van Azure Resource Manager sjabloon implementaties. Hiermee worden activiteiten logboeken en implementatie geschiedenis weer gegeven.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c889c3123160680d96889227d6964ff197dc41cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388648"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390216"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Zelfstudie: Problemen met implementaties van Resource Manager-sjablonen oplossen
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen
 
 Informatie over het oplossen van fouten met implementaties van Resource Manager-sjablonen. In deze zelfstudie stelt u twee fouten in een sjabloon in en leert u hoe u de activiteitenlogboeken en de implementatiegeschiedenis kunt gebruiken om de problemen op te lossen.
 
@@ -101,7 +101,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van de volgende procedure:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Open de resourcegroep door **Resourcegroepen** en vervolgens de naam van de resourcegroep te selecteren. U ziet **1 mislukt** onder **Implementatie**.
 
     ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -115,7 +115,7 @@ De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van d
 
 U kunt de fout ook in de activiteitenlogboeken vinden:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Controleren** > **Activiteitenlogboek**.
 3. Gebruik de filters om het logboek te vinden.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: Veelgestelde vragen | Microsoft Docs'
+title: 'Azure Data Factory: veelgestelde vragen | Microsoft Docs'
 description: Krijg antwoorden op veelgestelde vragen over Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141572"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387067"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
@@ -48,7 +48,7 @@ Data Factory biedt vrijheid om alle stroom stijlen te model leren die vereist zi
 - Delta stromen:
     - Para meters kunnen worden gebruikt voor het definiëren van uw bovengrens voor Delta kopieën terwijl dimensie-of verwijzings tabellen uit een relationele archief worden verplaatst, hetzij on-premises als in de Cloud, om de gegevens in het Lake te laden. 
 
-Zie [Zelfstudie: Controle stromen](tutorial-control-flow.md).
+Zie [zelf studie: controle stromen](tutorial-control-flow.md)voor meer informatie.
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Gegevens die zijn getransformeerd op schaal met gratis pijp lijnen van code
 De nieuwe, op de browser gebaseerde ervaring biedt gratis pijplijn ontwerpen en implementaties met een moderne, interactieve webervaring.
@@ -74,7 +74,7 @@ Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een A
 ### <a name="sdks"></a>SDK's
 Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controleren
 U kunt uw gegevens fabrieken bewaken via Power shell, SDK of de visuele controle Hulpprogramma's in de gebruikers interface van de browser. U kunt op aanvraag, op basis van triggers en op tijd gebaseerde aangepaste stromen op een efficiënte en efficiënte manier bewaken en beheren. Annuleer bestaande taken, Bekijk fouten in een oogopslag, zoom op om gedetailleerde fout berichten op te halen en los de problemen op, in één venster van glas zonder tussen komst te scha kelen of te navigeren tussen schermen. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nieuwe functies voor SSIS in Data Factory
@@ -94,9 +94,9 @@ Sinds de eerste open bare preview-versie in 2017, heeft Data Factory de volgende
 ## <a name="what-is-the-integration-runtime"></a>Wat is de Integration runtime?
 Integration runtime is de reken infrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden:
 
-- **Gegevens verplaatsing**: Voor gegevens verplaatsing verplaatst de Integration runtime de gegevens tussen de bron-en doel gegevens archieven, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, indelings conversie, kolom toewijzing en het uitvoeren van en schaal bare gegevens overdracht.
-- **Verzend activiteiten**: Voor trans formatie biedt Integration runtime de mogelijkheid om met systeem eigen SSIS-pakketten uit te voeren.
-- **SSIS-pakketten uitvoeren**: De Integration runtime voert systeem eigen SSIS-pakketten uit in een beheerde Azure Compute-omgeving. De Integration runtime biedt ook ondersteuning voor het verzenden en bewaken van transformatie activiteiten die worden uitgevoerd op diverse Compute-Services, zoals Azure HDInsight, Azure Machine Learning, SQL Database en SQL Server.
+- **Gegevens verplaatsing**: voor gegevens verplaatsing verplaatst de Integration runtime de gegevens tussen de bron-en doel gegevens archieven, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, indelings conversie, kolom toewijzing en uitvoering van en schaal bare gegevens overdracht.
+- **Verzend activiteiten**: voor trans formatie biedt Integration runtime de mogelijkheid om systeem eigen SSIS-pakketten uit te voeren.
+- **SSIS-pakketten uitvoeren**: de Integration runtime voert de systeem eigen SSIS-pakketten uit in een beheerde Azure Compute-omgeving. De Integration runtime biedt ook ondersteuning voor het verzenden en bewaken van transformatie activiteiten die worden uitgevoerd op diverse Compute-Services, zoals Azure HDInsight, Azure Machine Learning, SQL Database en SQL Server.
 
 U kunt een of meer exemplaren van de Integration runtime zo nodig implementeren om gegevens te verplaatsen en te transformeren. De Integration runtime kan worden uitgevoerd op een openbaar netwerk van Azure of op een particulier netwerk (on-premises, Azure Virtual Network, of Amazon Web Services Virtual Private Cloud [VPC]). 
 
@@ -118,7 +118,7 @@ Activiteiten vertegenwoordigen een verwerkingsstap in een pijplijn. U kunt bijvo
 Gegevenssets vertegenwoordigen gegevensstructuren in de gegevensarchieven die simpelweg verwijzen naar de gegevens die u in uw activiteiten als in- of uitvoer wilt gebruiken. 
 
 ### <a name="linked-services"></a>Gekoppelde services
-Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken: Een gekoppelde service definieert de verbinding met de gegevens bron en een gegevensset vertegenwoordigt de structuur van de gegevens. Een Azure Storage gekoppelde service specificeert bijvoorbeeld de connection string om verbinding te maken met het Azure Storage-account. En een Azure Blob-gegevensset bevat de BLOB-container en de map die de gegevens bevat.
+Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier beschouwen: een gekoppelde service definieert de verbinding met de gegevens bron en een gegevensset vertegenwoordigt de structuur van de gegevens. Een Azure Storage gekoppelde service specificeert bijvoorbeeld de connection string om verbinding te maken met het Azure Storage-account. En een Azure Blob-gegevensset bevat de BLOB-container en de map die de gegevens bevat.
 
 Gekoppelde services hebben twee doelen in Data Factory:
 
@@ -170,13 +170,13 @@ Ja, para meters zijn een concept op het hoogste niveau in Data Factory. U kunt p
 Ja. U kunt standaard waarden definiëren voor de para meters in de pijp lijnen. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Kan een activiteit in een pijp lijn argumenten gebruiken die worden door gegeven aan een pijplijn uitvoering? 
-Ja. Elke activiteit in de pijp lijn kan de parameter waarde gebruiken die wordt door gegeven aan de pijp lijn en wordt uitgevoerd `@parameter` met de construct. 
+Ja. Elke activiteit in de pijp lijn kan de parameter waarde gebruiken die wordt door gegeven aan de pijp lijn en wordt uitgevoerd met de constructie `@parameter`. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Kan een uitvoer eigenschap van een activiteit worden gebruikt in een andere activiteit? 
-Ja. De uitvoer van een activiteit kan worden gebruikt in een volgende activiteit met `@activity` de construct.
+Ja. Een uitvoer van de activiteit kan worden gebruikt in een volgende activiteit met de constructie `@activity`.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hoe kan ik worden Null-waarden in een uitvoer van een activiteit zonder problemen verwerkt? 
-U kunt de `@coalesce` construct in de expressies gebruiken om null-waarden correct te verwerken. 
+U kunt de `@coalesce`-construct in de expressies gebruiken om null-waarden correct te verwerken. 
 
 ## <a name="mapping-data-flows"></a>Gegevens stromen toewijzen
 
@@ -210,5 +210,5 @@ Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connect
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende zelf studies voor stapsgewijze instructies voor het maken van een data factory:
 
-- [Snelstart: Een data factory maken](quickstart-create-data-factory-dot-net.md)
-- [Zelfstudie: Gegevens in de Cloud kopiëren](tutorial-copy-data-dot-net.md)
+- [Snelstartgids: een data factory maken](quickstart-create-data-factory-dot-net.md)
+- [Zelf studie: gegevens kopiëren in de Cloud](tutorial-copy-data-dot-net.md)

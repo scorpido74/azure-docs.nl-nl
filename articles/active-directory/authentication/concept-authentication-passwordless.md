@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303523"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430521"
 ---
-# <a name="what-is-passwordless"></a>Wat betekent zonder wachtwoord?
+# <a name="passwordless-authentication-options"></a>Verificatie opties met een wacht woord
 
 Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te beveiligen, maar gebruikers worden met de extra laag boven op de hoogte gehouden om hun wacht woord te onthouden. Verificatie methoden met een wacht woord zijn handiger omdat het wacht woord wordt verwijderd en vervangen door iets wat u hebt of iets dat u weet.
 
 |   | Iets dat u hebt | Iets dat u weet of weet |
 | --- | --- | --- |
-| Zonder wachtwoord | Telefoon of beveiligings sleutel | Biometrische of pincode |
+| Zonder wachtwoord | Windows 10-apparaat, telefoon of beveiligings sleutel | Biometrische of pincode |
 
-Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt momenteel Windows hello voor onze Windows-Pc's. De Microsoft Authenticator app-en FIDO2-beveiligings sleutels worden toegevoegd aan de groep met wacht woorden.
+Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt drie verificatie opties met een wacht woord:
+
+- Windows Hello voor Bedrijven 
+- Microsoft Authenticator-app 
+- FIDO2-beveiligings sleutels
+
+![Verificatie: beveiliging versus gebruiks gemak](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven 
+
+Windows hello voor bedrijven is ideaal voor IT-mede werkers die hun eigen aangewezen Windows-PC hebben. De biometrische en pincode zijn rechtstreeks gebonden aan de PC van de gebruiker, waardoor de toegang van iemand anders dan de eigenaar wordt voor komen. Met PKI-integratie en ingebouwde ondersteuning voor eenmalige aanmelding (SSO) biedt Windows hello voor bedrijven een eenvoudige en handige methode voor probleemloze toegang tot bedrijfs bronnen on-premises en in de Cloud.
+
+De [plannings handleiding](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) voor Windows hello voor bedrijven kan worden gebruikt om u te helpen bij het nemen van beslissingen over het type implementatie van Windows hello voor bedrijven en de opties die u moet overwegen.
 
 ## <a name="microsoft-authenticator-app"></a>App Microsoft Authenticator
 
@@ -44,7 +56,7 @@ Werk nemers kunnen met de open bare preview externe beveiligings sleutels gebrui
 
 ![Aanmelden bij micro soft Edge met een beveiligings sleutel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-Hoewel er veel sleutels zijn die FIDO2 gecertificeerd door de FIDO-Alliantie, vereist micro soft een aantal optionele uitbrei dingen van de FIDO2 CTAP-specificatie die door de leverancier moet worden geïmplementeerd om te zorgen voor maximale beveiliging en de beste ervaring.
+Hoewel er veel sleutels zijn die FIDO2 gecertificeerd door de FIDO-Alliantie, vereist micro soft een aantal optionele uitbrei dingen van de FIDO2-client-to-Authenticator-Protocol (CTAP) die door de leverancier moet worden geïmplementeerd om te zorgen voor maximale beveiliging en de beste reageren.
 
 Een beveiligings sleutel **moet** de volgende functies en uitbrei dingen van het FIDO2 CTAP-protocol implementeren als compatibel met micro soft:
 

@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 8c9043db8159e2b7ff6520e9525472048cf73ae1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031277"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385555"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
 
@@ -23,7 +23,7 @@ In deze zelf studie gebruikt u de Azure Data Factory gebruikers interface (UX) o
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.
@@ -46,7 +46,7 @@ In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp 
 
 3. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**. 
  
-   De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. (bijvoorbeeld Uwnaamadftutorialdatafactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
         
      ![Nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 4. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken. 
@@ -115,7 +115,7 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
     ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow5.png)
 1. Geef een naam op voor de filter transformatie **FilterYears**. Klik op het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op. 
     
-    ![Filteren](media/tutorial-data-flow/filter1.png)
+    ![Filter](media/tutorial-data-flow/filter1.png)
 1. Met de opbouw functie voor de data flow-expressie kunt u interactief expressies bouwen voor gebruik in verschillende trans formaties. Expressies kunnen ingebouwde functies, kolommen uit het invoer schema en door de gebruiker gedefinieerde para meters bevatten. Zie de [opbouw functie voor data flow](concepts-data-flow-expression-builder.md)-expressies voor meer informatie over het maken van expressies.
     
     In deze zelf studie wilt u de films van genre Comedy filteren die zijn uitgekomen tussen de jaren 1910 en 2000. Als jaar is momenteel een teken reeks, moet u deze converteren naar een geheel getal met behulp van de functie ```toInteger()```. Gebruik de Opera tors groter dan of gelijk aan (> =) en kleiner dan of gelijk aan (< =) om te vergelijken met de letterlijke jaar waarden 1910 en 200-. Voeg deze expressies samen met de operator and (& &). De expressie wordt als volgt opgehaald:
@@ -128,13 +128,13 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 
     Als u een debug-cluster hebt geactiveerd, kunt u uw logica controleren door op **vernieuwen** te klikken om de expressie-uitvoer te bekijken in vergelijking met de gebruikte invoer. Er is meer dan één recht antwoord op hoe u deze logica kunt uitvoeren met behulp van de data flow-expressie taal.
     
-    ![Filteren](media/tutorial-data-flow/filter2.png)
+    ![Filter](media/tutorial-data-flow/filter2.png)
 
     Klik op **opslaan en volt ooien** zodra u klaar bent met de expressie.
 
 1. Een **voor beeld** van een gegevens ophalen om te controleren of het filter goed werkt.
     
-    ![Filteren](media/tutorial-data-flow/filter3.png)
+    ![Filter](media/tutorial-data-flow/filter3.png)
 1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
     
     ![Samenvoegen](media/tutorial-data-flow/agg1.png)
@@ -184,10 +184,10 @@ U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap 
     ![Pijplijn](media/tutorial-data-flow/pipeline2.png)
 1. In het deel venster bewaking ziet u het aantal rijen en tijd dat aan elke transformatie stap is besteed.
     
-    ![Bewaking](media/tutorial-data-flow/pipeline3.png)
+    ![Controleren](media/tutorial-data-flow/pipeline3.png)
 1. Klik op een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
     
-    ![Bewaking](media/tutorial-data-flow/pipeline4.png)
+    ![Controleren](media/tutorial-data-flow/pipeline4.png)
 
 Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw map Sink hebben geschreven. U kunt controleren of de gegevens correct zijn door uw Blob-opslag te controleren.
 
@@ -196,7 +196,7 @@ Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw
 De pijp lijn in deze zelf studie voert een gegevens stroom uit die de gemiddelde waardering van comedies van 1910 tot 2000 samenvoegt en schrijft de gegevens naar ADLS. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Maak een pijp lijn met een gegevens stroom activiteit.
 > * Bouw een toewijzings gegevens stroom met vier trans formaties. 
 > * De uitvoering van de pijplijn testen.

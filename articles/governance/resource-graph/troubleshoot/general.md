@@ -3,15 +3,15 @@ title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met het uitvoeren van query's op Azure-resources met Azure resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976611"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389692"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 
@@ -23,7 +23,7 @@ De meeste fouten zijn het resultaat van een probleem bij het uitvoeren van een q
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="toomanysubscription"></a>Omstandigheden Te veel abonnementen
+### <a name="toomanysubscription"></a>Scenario: te veel abonnementen
 
 #### <a name="issue"></a>Probleem
 
@@ -33,13 +33,13 @@ Klanten met toegang tot meer dan 1000 abonnementen, waaronder cross-Tenant abonn
 
 Alleen de eerste 1000 abonnementen op Azure resource Graph worden door Azure CLI en Power shell doorgestuurd. De REST API voor de resource grafiek van Azure accepteert een maximum aantal abonnementen voor het uitvoeren van de query.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Batch-aanvragen voor de query met een subset van abonnementen die blijven onder de limiet van 1000-abonnementen. De oplossing maakt gebruik van de **abonnements** parameter in Power shell.
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -60,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Omstandigheden Niet-ondersteunde content-type REST-header
+### <a name="rest-contenttype"></a>Scenario: niet-ondersteunde content-type REST header
 
 #### <a name="issue"></a>Probleem
 
@@ -70,10 +70,11 @@ Klanten die een query uitvoeren op de Azure-resource grafiek REST API een _500_ 
 
 De Azure resource Graph-REST API ondersteunt alleen een `Content-Type` van **Application/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken in azure resource Graph de REST API header `Content-Type` is geconfigureerd voor **toepassing/JSON**.
-### <a name="rest-403"></a>Omstandigheden Geen lees machtiging voor alle abonnementen in de lijst
+
+### <a name="rest-403"></a>Scenario: geen lees machtiging voor alle abonnementen in de lijst
 
 #### <a name="issue"></a>Probleem
 
@@ -83,7 +84,7 @@ Klanten die expliciet een lijst met abonnementen door geven met een query van ee
 
 Als de klant geen lees machtiging heeft voor alle aangevraagde abonnementen, wordt de aanvraag geweigerd omdat de juiste beveiligings rechten ontbreken.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Neem ten minste één abonnement op in de lijst met abonnementen die de klant die de query uitvoert, ten minste lees toegang heeft tot. Zie [machtigingen in azure resource Graph](../overview.md#permissions-in-azure-resource-graph)voor meer informatie.
 

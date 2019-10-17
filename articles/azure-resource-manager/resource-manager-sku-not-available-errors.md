@@ -1,6 +1,6 @@
 ---
-title: Azure-SKU niet beschikbaar '-fouten | Microsoft Docs
-description: Beschrijft hoe u om op te lossen van de SKU niet beschikbaar-fout tijdens de implementatie.
+title: Fouten in azure SKU niet beschikbaar | Microsoft Docs
+description: Hierin wordt beschreven hoe u problemen met de SKU niet beschik bare fout bij het implementeren van resources met Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1dd0532452c3558e53f0236998953d2055ed328c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390739"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390219"
 ---
-# <a name="resolve-errors-for-sku-not-available"></a>Los de fouten voor de SKU is niet beschikbaar
+# <a name="resolve-errors-for-sku-not-available"></a>Fouten oplossen voor SKU is niet beschikbaar
 
-In dit artikel wordt beschreven hoe u om op te lossen de **SkuNotAvailable** fout. Als u bent niet een geschikte SKU gevonden in deze regio of een andere regio die voldoet aan uw bedrijf nodig heeft, dien een [SKU aanvraag](https://aka.ms/skurestriction) tot Azure Support.
+In dit artikel wordt beschreven hoe u de **SkuNotAvailable** -fout kunt oplossen. Als u geen geschikte SKU in die regio kunt vinden of een alternatieve regio die voldoet aan de behoeften van uw bedrijf, dient u een [SKU-aanvraag](https://aka.ms/skurestriction) in bij Azure-ondersteuning.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Symptoom
 
-Bij het implementeren van een resource (doorgaans een virtuele machine), ontvangt u de volgende code en het volgende foutbericht:
+Wanneer u een resource implementeert (meestal een virtuele machine), wordt de volgende fout code en fout bericht weer gegeven:
 
 ```
 Code: SkuNotAvailable
@@ -38,17 +38,17 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="cause"></a>Oorzaak
 
-U ontvangt deze foutmelding wanneer de SKU die u hebt geselecteerd (zoals VM-grootte) van de resource is niet beschikbaar voor de locatie die u hebt geselecteerd.
+Deze fout wordt weer gegeven wanneer de resource-SKU die u hebt geselecteerd (zoals VM-grootte) niet beschikbaar is voor de locatie die u hebt geselecteerd.
 
-## <a name="solution-1---powershell"></a>Oplossing 1: PowerShell
+## <a name="solution-1---powershell"></a>Oplossing 1-Power shell
 
-Om te bepalen welke SKU's zijn beschikbaar in een regio, gebruikt u de [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) opdracht. Filter de resultaten per locatie. U kunt de meest recente versie van PowerShell voor deze opdracht moet hebben.
+Gebruik de opdracht [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) om te bepalen welke sku's beschikbaar zijn in een regio. De resultaten filteren op locatie. U moet de meest recente versie van Power shell voor deze opdracht hebben.
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-De resultaten bevatten een lijst van SKU's voor de locatie en beperkingen voor deze SKU. U ziet dat een SKU kan worden weergegeven als `NotAvailableForSubscription`.
+De resultaten omvatten een lijst met Sku's voor de locatie en eventuele beperkingen voor die SKU. U ziet dat een SKU mogelijk wordt vermeld als `NotAvailableForSubscription`.
 
 ```powershell
 ResourceType          Name        Locations   Restriction                      Capability           Value
@@ -58,15 +58,15 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Oplossing 2 - Azure CLI
+## <a name="solution-2---azure-cli"></a>Oplossing 2-Azure CLI
 
-Om te bepalen welke SKU's zijn beschikbaar in een regio, gebruikt u de `az vm list-skus` opdracht. Gebruik de `--location` parameter voor het filteren van uitvoer naar de locatie die u gebruikt. Gebruik de `--size` parameter om te zoeken door de groottenaam van een gedeeltelijke.
+Gebruik de `az vm list-skus` opdracht om te bepalen welke Sku's beschikbaar zijn in een regio. Gebruik de para meter `--location` om de uitvoer te filteren op de locatie die u gebruikt. Gebruik de para meter `--size` om te zoeken op een gedeeltelijke grootte naam.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table
 ```
 
-De opdracht retourneert resultaten, zoals:
+De opdracht retourneert resultaten als:
 
 ```azurecli
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
@@ -78,23 +78,23 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Oplossing 3 - Azure portal
+## <a name="solution-3---azure-portal"></a>Oplossing 3-Azure Portal
 
-Om te bepalen welke SKU's zijn beschikbaar in een regio, gebruikt u de [portal](https://portal.azure.com). Aanmelden bij de portal en voeg een resource via de interface toe. Als u de waarden hebt ingesteld, ziet u de beschikbare SKU's voor die bron. U hoeft niet te voltooien van de implementatie.
+Gebruik de [Portal](https://portal.azure.com)om te bepalen welke sku's beschikbaar zijn in een regio. Meld u aan bij de portal en voeg een resource toe via de-interface. Wanneer u de waarden instelt, ziet u de beschik bare Sku's voor die bron. U hoeft de implementatie niet te volt ooien.
 
-Bijvoorbeeld: het proces voor het maken van een virtuele machine starten. Andere beschikbare grootte Selecteer **grootte wijzigen**.
+U kunt bijvoorbeeld het proces voor het maken van een virtuele machine starten. Als u andere beschik bare grootte wilt zien, selecteert u **grootte wijzigen**.
 
 ![VM maken](./media/resource-manager-sku-not-available-errors/create-vm.png)
 
-U kunt filteren en blader door de beschikbare grootten.
+U kunt filteren en door de beschik bare grootten bladeren.
 
-![Beschikbare SKU 's](./media/resource-manager-sku-not-available-errors/available-sizes.png)
+![Beschik bare Sku's](./media/resource-manager-sku-not-available-errors/available-sizes.png)
 
-## <a name="solution-4---rest"></a>Oplossing 4 - REST
+## <a name="solution-4---rest"></a>Oplossing 4-REST
 
-Om te bepalen welke SKU's zijn beschikbaar in een regio, gebruikt u de [Resource-SKU's - lijst](/rest/api/compute/resourceskus/list) bewerking.
+Als u wilt bepalen welke Sku's beschikbaar zijn in een regio, gebruikt u de bewerking [resource-sku's-List](/rest/api/compute/resourceskus/list) .
 
-Deze retourneert beschikbare SKU's en regio's in de volgende indeling:
+Het retourneert beschik bare Sku's en regio's in de volgende indeling:
 
 ```json
 {

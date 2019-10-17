@@ -1,24 +1,22 @@
 ---
 title: Uw Azure Functions uitvoeren vanuit een pakket | Microsoft Docs
 description: Laat de Azure Functions runtime uw functies uitvoeren door een implementatie pakket bestand te koppelen dat de project bestanden van de functie-app bevat.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 549768473460dcb97b66c3589d71c02039220605
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095962"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389952"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uw Azure Functions uitvoeren vanuit een pakket bestand
 
-In azure kunt u uw functies rechtstreeks uitvoeren vanuit een implementatie pakket bestand in uw functie-app. De andere optie is het implementeren van uw bestanden in `d:\home\site\wwwroot` de map van uw functie-app.
+In azure kunt u uw functies rechtstreeks uitvoeren vanuit een implementatie pakket bestand in uw functie-app. De andere optie is het implementeren van uw bestanden in de map `d:\home\site\wwwroot` van uw functie-app.
 
 In dit artikel worden de voor delen beschreven van het uitvoeren van uw functies vanuit een pakket. Ook wordt uitgelegd hoe u deze functie inschakelt in uw functie-app.
 
@@ -39,15 +37,15 @@ Zie [deze aankondiging](https://github.com/Azure/app-service-announcements/issue
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>Functies inschakelen om uit te voeren vanuit een pakket
 
-Als u wilt dat uw functie-app kan worden uitgevoerd vanuit een pakket, `WEBSITE_RUN_FROM_PACKAGE` voegt u alleen een instelling toe aan de instellingen van uw functie-app. De `WEBSITE_RUN_FROM_PACKAGE` instelling kan een van de volgende waarden hebben:
+Als u wilt dat uw functie-app vanuit een pakket wordt uitgevoerd, voegt u alleen een `WEBSITE_RUN_FROM_PACKAGE`-instelling toe aan de instellingen van de functie-app. De instelling voor @no__t 0 kan een van de volgende waarden hebben:
 
-| Value  | Description  |
+| Waarde  | Beschrijving  |
 |---------|---------|
-| **`1`**  | Aanbevolen voor functie-apps die worden uitgevoerd in Windows. Voer uit vanuit een pakket bestand in `d:\home\data\SitePackages` de map van uw functie-app. Als niet wordt [geïmplementeerd met zip Deploy](#integration-with-zip-deployment), moet voor deze optie ook een bestand met de naam `packagename.txt`worden opgegeven. Dit bestand bevat alleen de naam van het pakket bestand in de map, zonder spaties. |
+| **`1`**  | Aanbevolen voor functie-apps die worden uitgevoerd in Windows. Voer uit vanuit een pakket bestand in de map `d:\home\data\SitePackages` van uw functie-app. Als deze optie niet wordt [geïmplementeerd met zip Deploy](#integration-with-zip-deployment), moet de map ook een bestand met de naam `packagename.txt` hebben. Dit bestand bevat alleen de naam van het pakket bestand in de map, zonder spaties. |
 |**`<url>`**  | Locatie van een specifiek pakket bestand dat u wilt uitvoeren. Bij het gebruik van Blob Storage moet u een persoonlijke container met een [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) gebruiken om de runtime van de functies in te scha kelen voor toegang tot het pakket. U kunt de [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) gebruiken om pakket bestanden te uploaden naar uw Blob Storage-account.         |
 
 > [!CAUTION]
-> Bij het uitvoeren van een functie-app in Windows levert de optie externe URL slechterere prestaties bij koude start. Wanneer u de functie-app in Windows implementeert, `WEBSITE_RUN_FROM_PACKAGE` moet `1` u instellen op en publiceren met zip-implementatie.
+> Bij het uitvoeren van een functie-app in Windows levert de optie externe URL slechterere prestaties bij koude start. Wanneer u de functie-app in Windows implementeert, moet u `WEBSITE_RUN_FROM_PACKAGE` instellen op `1` en publiceren met de zip-implementatie.
 
 Hieronder ziet u een functie-app die is geconfigureerd om te worden uitgevoerd vanuit een zip-bestand dat wordt gehost in Azure Blob Storage:
 
@@ -58,7 +56,7 @@ Hieronder ziet u een functie-app die is geconfigureerd om te worden uitgevoerd v
 
 ## <a name="integration-with-zip-deployment"></a>Integratie met zip-implementatie
 
-Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van Azure app service waarmee u uw functie-app-project `wwwroot` kunt implementeren in de Directory. Het project wordt verpakt als een zip-implementatie bestand. Dezelfde api's kunnen worden gebruikt voor het implementeren van uw pakket naar `d:\home\data\SitePackages` de map. Met de `WEBSITE_RUN_FROM_PACKAGE` app-instellings `1`waarde van worden de zip-implementatie-api's uw `d:\home\data\SitePackages` pakket naar de map gekopieerd in plaats van `d:\home\site\wwwroot`de bestanden uit te pakken naar. Het `packagename.txt` bestand wordt ook gemaakt. De functie-app wordt vervolgens na het opnieuw opstarten uit het pakket uitgevoerd `wwwroot` en wordt alleen-lezen. Zie voor meer informatie over de implementatie van zip-implementatie [voor Azure functions](deployment-zip-push.md).
+Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van Azure app service waarmee u uw functie-app-project kunt implementeren in de map `wwwroot`. Het project wordt verpakt als een zip-implementatie bestand. Dezelfde Api's kunnen worden gebruikt voor het implementeren van uw pakket naar de map `d:\home\data\SitePackages`. Met de `WEBSITE_RUN_FROM_PACKAGE` waarde voor het instellen van een app van `1`, kopieert de zip-implementatie-Api's uw pakket naar de map `d:\home\data\SitePackages` in plaats van de bestanden uit te pakken naar `d:\home\site\wwwroot`. Ook wordt het `packagename.txt`-bestand gemaakt. Na het opnieuw opstarten wordt het pakket gekoppeld aan `wwwroot` als een alleen-lezen bestands systeem. Zie voor meer informatie over de implementatie van zip-implementatie [voor Azure functions](deployment-zip-push.md).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>De instelling WEBSITE_RUN_FROM_PACKAGE toevoegen
 
@@ -66,10 +64,10 @@ Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van A
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-- Uitvoeren vanuit pakket maakt `wwwroot` alleen-lezen, dus er wordt een fout bericht weer gegeven wanneer u bestanden naar deze map schrijft.
+- Uitvoeren vanaf pakket maakt `wwwroot` alleen-lezen, dus er wordt een fout bericht weer gegeven wanneer u bestanden naar deze map schrijft.
 - Tar-en gzip-indelingen worden niet ondersteund.
 - Deze functie is niet samen met de lokale cache.
-- Gebruik de lokale zip-optie (`WEBSITE_RUN_FROM_PACKAGE`= 1) voor verbeterde prestaties van koud start.
+- Gebruik de lokale zip-optie (`WEBSITE_RUN_FROM_PACKAGE` = 1) voor verbeterde prestaties van koud start.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 3819742e82fe6877b6a1aa58e52eec01b6b05515
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bc2e73d037b05c012002d7a07e2a2af2431423fa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001239"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428902"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>De tenant-ID van de Key Vault wijzigen na een verplaatsing van een abonnement
 
@@ -51,7 +51,7 @@ az keyvault update -n myvault --remove Properties.accessPolicies           # Rem
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Nu de kluis is gekoppeld aan de juiste Tenant-ID en de oude vermeldingen van het toegangs beleid worden verwijderd, stelt u nieuwe vermeldingen voor het toegangs beleid in met de Azure PowerShell [set-AzKeyVaultAccessPolicy](https://powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet of de Azure cli [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht.
+Nu de kluis is gekoppeld aan de juiste Tenant-ID en de oude vermeldingen van het toegangs beleid worden verwijderd, stelt u nieuwe vermeldingen voor het toegangs beleid in met de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet of de Azure cli [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht.
 
 Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-Tenant. Zie voor meer informatie over beheerde identiteiten [Key Vault verificatie bieden met een beheerde identiteit](managed-identity.md).
 

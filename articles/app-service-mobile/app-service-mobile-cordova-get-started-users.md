@@ -14,19 +14,20 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: d5e124c6f73285efdaef515deba5816093a27e98
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c42cf2c944457b6b738578f738cd338977df8185
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027579"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388816"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Verificatie toevoegen aan uw Apache Cordova-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="summary"></a>Samenvatting
 In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project op Apache Cordova met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie [aan de slag met Mobile apps] , die u eerst moet volt ooien.
@@ -54,10 +55,10 @@ Werk vervolgens de app bij om gebruikers te verifiëren voordat ze resources aan
    | Provider | Naam van de SDK-provider | OAuth-host |
    |:--- |:--- |:--- |
    | Azure Active Directory | Aad | https://login.microsoftonline.com |
-   | Facebook | facebook | https://www.facebook.com |
+   | Facebook | Facebook | https://www.facebook.com |
    | Google | Google | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
-   | Twitter | twitter | https://api.twitter.com |
+   | Twitter | Twitter | https://api.twitter.com |
 
     Een voor beeld van Content-Security-Policy (geïmplementeerd voor Azure Active Directory) is als volgt:
 

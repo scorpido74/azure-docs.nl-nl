@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: c062a75516a1b865c1ff6c35f00d4fbf7c4881c6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 27d968aa5202fbeb38be9a2416514d2185c1d8b9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029368"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436737"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen 
 
@@ -68,7 +68,13 @@ ___
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
 Hiermee wordt de huidige datum opgehaald waarop deze taak wordt uitgevoerd. U kunt een optionele tijd zone door geven in de vorm ' GMT ', ' PST ', ' UTC ', ' America/Caymaneilanden '. De lokale tijd zone wordt als standaard waarde gebruikt. Raadpleeg de SimpleDateFormat van Java voor beschik bare indelingen. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
 Hiermee wordt het huidige tijds tempel opgehaald wanneer de taak wordt uitgevoerd met de lokale tijd zone * ``currentTimestamp() == toTimestamp('2250-12-31 12:12:12') -> false`` @ no__t-1 @ no__t-2<br/><br/>
-Hiermee wordt de huidige tijds tempel opgehaald als UTC. Als u wilt dat uw huidige tijd wordt geïnterpreteerd in een andere tijd zone dan de tijd zone van uw cluster, kunt u een optionele tijd zone door geven in de vorm ' GMT ', ' PST ', ' UTC ', ' America/Caymaneilanden '. De waarde wordt standaard ingesteld op de huidige tijd zone. Raadpleeg de SimpleDateFormat van Java voor beschik bare indelingen. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.htmlTo zet de UTC-tijd om in een andere tijd zone gebruik fromUTC () * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
+Hiermee wordt de huidige tijds tempel opgehaald als UTC. Als u wilt dat uw huidige tijd wordt geïnterpreteerd in een andere tijd zone dan de tijd zone van uw cluster, kunt u een optionele tijd zone door geven in de vorm ' GMT ', ' PST ', ' UTC ', ' America/Caymaneilanden '. De waarde wordt standaard ingesteld op de huidige tijd zone. Raadpleeg de SimpleDateFormat van Java voor beschik bare indelingen. Gebruik [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) om de UTC-tijd om te zetten in een andere tijd zone met behulp van fromUTC ().
+* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
+* ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
+___
+### <code>dayOfMonth</code>
+<code><b>dayOfMonth(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Hiermee wordt de dag van de maand opgehaald op basis van een datum * ``dayOfMonth(toDate('2018-06-08')) -> 8`` @ no__t-1 @ no__t-2<br/><br/>
 Hiermee wordt de dag van de week opgehaald op basis van een datum. 1: zondag, 2-maandag..., 7-zaterdag * ``dayOfWeek(toDate('2018-06-08')) -> 6`` @ no__t-1 @ no__t-2<br/><br/>
 Hiermee wordt de dag van het jaar opgehaald op basis van een datum * ``dayOfYear(toDate('2016-04-09')) -> 100`` @ no__t-1 @ no__t-2<br/><br/>
@@ -166,7 +172,7 @@ ___
 ### <code>multiply</code>
 <code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
 Vermenigvuldigt het paar getallen. Hetzelfde als de operator * * ``multiply(20, 10) -> 200`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
-Met de functie NTile worden de rijen voor elke venster partitie verdeeld over `n` buckets, variërend van 1 tot Maxi maal `n`. Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: Er wordt aan de grootte van een normale Bucket een extra rij toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).
+Met de functie NTile worden de rijen voor elke venster partitie verdeeld over `n` buckets, variërend van 1 tot Maxi maal `n`. Bucket waarden kunnen Maxi maal 1 zijn. Als het aantal rijen in de partitie niet gelijkmatig is verdeeld over het aantal buckets, worden de waarden van de rest gedistribueerd per Bucket, beginnend met de eerste Bucket. De functie NTile is handig voor het berekenen van tertiles, kwartielen, deciles en andere algemene samenvattings statistieken. De functie berekent twee variabelen tijdens de initialisatie: er wordt één extra rij aan de grootte van een gewone Bucket toegevoegd. Beide variabelen zijn gebaseerd op de grootte van de huidige partitie. Tijdens het berekenings proces houdt de functie het huidige rijnummer, het huidige Bucket nummer en het rijnummer waarbij de Bucket wordt gewijzigd (bucketThreshold) bij. Wanneer het huidige rijnummer de Bucket drempel bereikt, wordt de Bucket waarde verhoogd met één en wordt de drempel verhoogd met de Bucket grootte (plus één extra als de huidige Bucket wordt opgevuld).
 * ``nTile()``
 * ``nTile(numOfBuckets)``
 ___

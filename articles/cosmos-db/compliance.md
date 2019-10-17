@@ -7,26 +7,26 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 35c8841220c116cc34ba670eaa9ac7b36dc4cd7a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3c77cc1baa07b0ee0e9f0141d81c623259ea57c4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615521"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387530"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Naleving in Azure Cosmos DB 
 
 Azure Cosmos DB is beschikbaar in alle Azure-regio's. Micro soft maakt vijf afzonderlijke Azure-Cloud omgevingen beschikbaar voor klanten:
 
-* **Openbare Azure** cloud, die wereldwijd beschikbaar is.
+* **Open bare Azure** -Cloud, die wereld wijd beschikbaar is.
 
 * **Azure China 21vianet** is beschikbaar via een unieke samen werking tussen micro soft en 21vianet, een van de grootste Internet providers van het land.
 
-* **Azure Duitsland** verzorgt services onder een gegevensbeheerdersmodel, die zorgt ervoor dat de klant gegevens blijven in Duitsland onder het beheer van T-Systems International GmbH, een dochteronderneming van Deutsche Telecom, die fungeert als de Duitse Gegevensbeheerder.
+* **Azure Duitsland** biedt services onder een model van de gegevens beheerder, wat ervoor zorgt dat klant gegevens in Duitsland blijven, onder controle van T-Systems International GmbH, een dochter onderneming van Deutsche Telecom, die fungeert als de Duitse gegevens beheerder.
 
-* **Azure Government** is beschikbaar in vier verschillende regio's in de Verenigde Staten voor Amerikaanse overheidsinstanties en hun partners. 
+* **Azure Government** is beschikbaar in vier regio's van de Verenigde Staten naar overheids instanties van de Verenigde Staten en hun partners. 
 
-* **Azure Government voor afdeling van of** is beschikbaar in twee regio's in de Verenigde Staten naar het US Department of Defense.
+* **Azure Government voor ministerie van defensie (DoD)** is beschikbaar in twee regio's in de Verenigde Staten van het Amerikaanse ministerie van defensie.
 
 Om klanten te helpen te voldoen aan hun eigen nalevings verplichtingen voor gereguleerde industrieën en markten over de hele wereld, houdt Azure de grootste nalevings portefeuille in de branche in termen van beide breedte (totaal aantal aanbiedingen) en diepte (aantal klant gerichte Services in het beoordelings bereik).  Nalevings aanbiedingen voor Azure worden gegroepeerd in vier wereld wijd toepas bare, Amerikaanse overheid, branchespecifieke en land/regio-specifieke.  Nalevings aanbiedingen zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, attesten, validaties, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controle bedrijven van derden, evenals contractuele wijzigingen; zelf beoordelingen en documentatie voor klant richtlijnen die door micro soft zijn gemaakt.
 
@@ -36,8 +36,8 @@ De certificaatdekking van Azure Cosmos DB wordt voortdurend uitgebreid. Op dit m
 
 | **Algemeen toepasbaar** | **Amerikaanse overheid** | **Industrie specifiek** | **Regio of land specifiek** |
 | --- | --- | --- | --- |
-| CSA STAR-certificering | DoD SRG Level 2 | HIPAA BAA | Australië IRAP niet geclassificeerd |
-| CSA STAR-Attestation | FedRAMP Gemiddeld | HITRUST | Duitsland C5|
+| CSA STAR-certificering | DoD SRG Level 2 | HIPAA BAA | IRAP in Australië |
+| CSA STAR Attestation | FedRAMP Gemiddeld | HITRUST | Duitsland C5|
 | ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | Singapore MTCS niveau 3 |
 | ISO 22301:2012 | | | Spanje ENS hoog|
 | ISO 27001:2013| | | |
@@ -53,7 +53,7 @@ De volgende tabel geeft een lijst van de certificeringen die worden ondersteund 
 | **Algemeen toepasbaar** | **Amerikaanse overheid** | **Industrie specifiek** | 
 | --- | --- | --- | --- |
 | CSA STAR-certificering | CJIS| HIPAA BAA | 
-| CSA STAR-Attestation| DoD SRG Level 2| HITRUST  | 
+| CSA STAR Attestation| DoD SRG Level 2| HITRUST  | 
 | ISO 20000-1:2011 | DoD SRG level 4 | PCI DSS | 
 | ISO 9001:2012 | DoD SRG Level 5 | | 
 | ISO 27001:2013 | FedRAMP Hoog | |
@@ -71,4 +71,4 @@ Raadpleeg de volgende artikelen voor meer informatie over de nalevings certifice
 
 * Zie [Azure Cosmos data base Security](database-security.md) -artikel voor een overzicht van Azure Cosmos DB beveiliging en de meest recente verbeteringen.
 
-* Zie voor meer informatie over Microsoft-certificeringen, de [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).
+* Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.

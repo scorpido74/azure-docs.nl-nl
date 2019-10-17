@@ -13,18 +13,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b67e0eaabe63707455eaa6cd4b235ec828dddff3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 991f3c8939c0f9e270423ff30282b02f110eb39e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025440"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388919"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>De Azure Mobile Apps SDK voor Android gebruiken
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 In deze hand leiding wordt uitgelegd hoe u de Android-client-SDK voor Mobile Apps kunt gebruiken voor het implementeren van algemene scenario's, zoals:
 
@@ -165,7 +166,7 @@ De kern van de Azure Mobile Apps SDK is het verlenen van toegang tot gegevens di
 Om toegang te krijgen tot gegevens uit SQL Azure tabellen, definieert u client gegevens klassen die overeenkomen met de tabellen in de back-end van de mobiele app. In de voor beelden in dit onderwerp wordt uitgegaan van een tabel met de naam **MyDataTable**, die de volgende kolommen bevat:
 
 * id
-* text
+* tekst
 * aangevuld
 
 Het overeenkomstige getypte client-side object bevindt zich in een bestand met de naam **MyDataTable. java**:
@@ -201,15 +202,15 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Zie [How voor meer informatie over het maken van extra tabellen in uw Mobile Apps back-end: Definieer een tabel controller @ no__t-0 (.NET-back-end) of [Definieer tabellen met behulp van een dynamisch schema][16] (node. js-back-end).
+Zie [procedure: een tabel controller][15] (.net-back-end) definiëren of [tabellen definiëren met behulp van een dynamisch schema][16] (node. js-back-end) voor meer informatie over het maken van extra tabellen in uw Mobile apps back-end.
 
 Een Azure Mobile Apps-back-end-tabel definieert vijf speciale velden, vier van die beschikbaar zijn voor clients:
 
-* `String id`: De wereld wijd unieke ID voor de record.  Als best practice, maakt u de id de teken reeks representatie van een [uuid][17] -object.
-* `DateTimeOffset updatedAt`: De datum/tijd van de laatste update.  Het veld updatedAt wordt ingesteld door de server en moet nooit worden ingesteld door de client code.
-* `DateTimeOffset createdAt`: De datum/tijd waarop het object is gemaakt.  Het veld createdAt wordt ingesteld door de server en moet nooit worden ingesteld door de client code.
-* `byte[] version`: Wordt normaal gesp roken weer gegeven als een teken reeks, de versie wordt ook ingesteld door de-server.
-* `boolean deleted`: Geeft aan dat de record is verwijderd, maar nog niet is leeg gemaakt.  Gebruik niet `deleted` als eigenschap in uw klasse.
+* `String id`: de wereld wijd unieke ID voor de record.  Als best practice, maakt u de id de teken reeks representatie van een [uuid][17] -object.
+* `DateTimeOffset updatedAt`: de datum/tijd van de laatste update.  Het veld updatedAt wordt ingesteld door de server en moet nooit worden ingesteld door de client code.
+* `DateTimeOffset createdAt`: de datum/tijd waarop het object is gemaakt.  Het veld createdAt wordt ingesteld door de server en moet nooit worden ingesteld door de client code.
+* `byte[] version`: wordt normaal gesp roken weer gegeven als een teken reeks, de versie wordt ook ingesteld door de-server.
+* `boolean deleted`: geeft aan dat de record is verwijderd, maar nog niet is leeg gemaakt.  Gebruik niet `deleted` als eigenschap in uw klasse.
 
 Het veld `id` is vereist.  Het veld `updatedAt` en `version` worden gebruikt voor offline synchronisatie (voor respectievelijk incrementele synchronisatie en conflict oplossing).  Het veld `createdAt` is een referentie veld dat niet door de client wordt gebruikt.  De namen zijn ' in-the-Wire ' namen van de eigenschappen en zijn niet aanpasbaar.  U kunt echter een toewijzing maken tussen uw object en de namen van ' in-the-Wire ' met behulp van de [gson][3] -bibliotheek.  Bijvoorbeeld:
 
@@ -458,7 +459,7 @@ Een aanvraag voor alle records met behulp van deze methode maakt mini maal twee 
 > [!TIP]
 > Het kiezen van de juiste pagina grootte is een evenwicht tussen het geheugen gebruik terwijl de aanvraag plaatsvindt, het bandbreedte gebruik en de vertraging bij het volledig ontvangen van de gegevens.  De standaard (50 records) is geschikt voor alle apparaten.  Als u uitsluitend op grotere geheugen apparaten hebt gewerkt, verhoogt u Maxi maal 500.  We hebben vastgesteld dat het verg Roten van de pagina groter dan 500 records leiden tot onaanvaardbare vertragingen en grote geheugen problemen.
 
-### <a name="chaining"></a>Procedures: Query methoden samen voegen
+### <a name="chaining"></a>Procedure: query methoden samen voegen
 
 De gebruikte methoden voor het uitvoeren van query's op back-end-tabellen kunnen worden samengevoegd. Met het koppelen van query methoden kunt u specifieke kolommen selecteren van gefilterde rijen die zijn gesorteerd en gewisseld. U kunt complexe logische filters maken.  Elke query methode retourneert een query-object. Roep de **Execute** -methode aan om de reeks methoden te beëindigen en de query werkelijk uit te voeren. Bijvoorbeeld:
 
@@ -684,7 +685,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Procedures: Werken met niet-getypte gegevens
+## <a name="untyped"></a>Procedure: werken met niet-getypte gegevens
 
 Het niet-getypte programmeer model geeft u de controle over JSON-serialisatie.  Er zijn enkele algemene scenario's waarin u mogelijk een niet-getypt programmeer model wilt gebruiken. Als uw back-endserver bijvoorbeeld veel kolommen bevat, hoeft u alleen te verwijzen naar een subset van de kolommen.  Het getypte model vereist dat u alle kolommen definieert die zijn gedefinieerd in de Mobile Apps back-end in uw gegevens klasse.  De meeste API-aanroepen voor toegang tot gegevens zijn vergelijkbaar met de getypte programmerings aanroepen. Het belangrijkste verschil is dat u in het niet-getypte model methoden aanroept in het object **MobileServiceJsonTable** , in plaats van het **MobileServiceTable** -object.
 
@@ -779,10 +780,10 @@ Dezelfde set filters, filters en paginerings methoden die beschikbaar zijn voor 
 
 De Azure Mobile Apps client SDK implementeert ook offline synchronisatie van gegevens met behulp van een SQLite-data base om een kopie van de server gegevens lokaal op te slaan.  Voor bewerkingen die zijn uitgevoerd op een offline tabel is geen mobiele verbinding vereist.  Hulp middelen voor offline synchronisatie in flexibiliteit en prestaties tegen de kosten van complexere logica voor conflict oplossing.  De Azure Mobile Apps client-SDK implementeert de volgende functies:
 
-* Incrementele synchronisatie: Alleen bijgewerkte en nieuwe records worden gedownload, de band breedte en het geheugen verbruik worden bespaard.
-* Optimistische gelijktijdigheid: Er wordt verondersteld dat er bewerkingen worden uitgevoerd.  Conflict oplossing wordt uitgesteld totdat er updates worden uitgevoerd op de server.
-* Conflict oplossing: De SDK detecteert wanneer een conflicterende wijziging is doorgevoerd op de server en levert hooks om de gebruiker te waarschuwen.
-* Voorlopig verwijderen: Verwijderde records worden gemarkeerd als verwijderd, waardoor andere apparaten hun offline cache kunnen bijwerken.
+* Incrementele synchronisatie: alleen bijgewerkte en nieuwe records worden gedownload, de band breedte en het geheugen verbruik worden bespaard.
+* Optimistische gelijktijdigheid: er wordt van uitgegaan dat er bewerkingen worden uitgevoerd.  Conflict oplossing wordt uitgesteld totdat er updates worden uitgevoerd op de server.
+* Conflict oplossing: de SDK detecteert wanneer een conflicterende wijziging is doorgevoerd op de server en levert hooks om de gebruiker te waarschuwen.
+* Voorlopig verwijderen: verwijderde records worden gemarkeerd als verwijderd, waardoor andere apparaten hun offline cache kunnen bijwerken.
 
 ### <a name="initialize-offline-sync"></a>Offline synchronisatie initialiseren
 
@@ -919,7 +920,7 @@ Er zijn vier stappen vereist om verificatie in te scha kelen in uw app:
 
 U kunt machtigingen voor tabellen instellen om de toegang tot specifieke bewerkingen te beperken tot alleen geverifieerde gebruikers. U kunt ook de SID van een geverifieerde gebruiker gebruiken om aanvragen te wijzigen.  Raadpleeg voor meer informatie aan de [Aan de slag met verificatie] en de documentatie bij de server SDK.
 
-### <a name="caching"></a>Verificatie Server stroom
+### <a name="caching"></a>Verificatie: Server stroom
 
 Met de volgende code wordt een aanmeldings proces voor Server stromen gestart met de Google-provider.  Aanvullende configuratie is vereist vanwege de beveiligings vereisten voor de Google-provider:
 

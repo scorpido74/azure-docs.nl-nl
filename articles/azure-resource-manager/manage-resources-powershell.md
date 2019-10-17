@@ -1,6 +1,6 @@
 ---
 title: Azure-resources beheren met behulp van Azure PowerShell | Microsoft Docs
-description: Gebruik Azure PowerShell en Azure resource Manage om uw resources te beheren.
+description: Gebruik Azure PowerShell en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: f61fcf7833021f23485992c7445f91d9a7b9ee45
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001517"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390354"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure-resources beheren met behulp van Azure PowerShell
 
@@ -49,7 +49,7 @@ $ctx = $storageAccount.Context
 
 ### <a name="deploy-a-template"></a>Een sjabloon implementeren
 
-Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie voor meer informatie [Snelstart: Azure Resource Manager sjablonen maken met behulp van Visual Studio code @ no__t-0.
+Met het volgende script maakt u een Quick Start-sjabloon voor het maken van een opslag account. Zie Quick Start (Engelstalig) voor meer informatie over het [maken van Azure Resource Manager sjablonen met Visual Studio code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -81,7 +81,7 @@ Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $stor
 
 Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Resources verplaatsen
+## <a name="move-resources"></a>Bronnen verplaatsen
 
 Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 
@@ -96,7 +96,7 @@ Move-AzResource -DestinationResourceGroupName $destResourceGroupName -ResourceId
 
 Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](resource-group-move-resources.md).
 
-## <a name="lock-resources"></a>Resources vergrendelen
+## <a name="lock-resources"></a>Bronnen vergrendelen
 
 Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 

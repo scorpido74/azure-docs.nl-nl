@@ -13,19 +13,20 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 0180e100432ac34b876af04ad99c9a5d189455c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c845c09c6b05436017f98323dfa78185cd58aa6
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025456"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388985"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Offline synchronisatie inschakelen voor uw mobiele Android-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Android beschreven. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe back-end.
@@ -95,9 +96,9 @@ Wanneer u op deze knop klikt, wordt een nieuwe achtergrond taak gestart. Eerst w
 4. Schakel WiFi in op het apparaat of in de Simulator. Klik vervolgens op de knop **vernieuwen** .
 5. Bekijk de TodoItem-gegevens opnieuw in de Azure Portal. De nieuwe en gewijzigde TodoItems moeten nu worden weer gegeven.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Offlinesynchronisatie van gegevens in Azure Mobile Apps]
-* [Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0 \(note: de video bevindt zich op Mobile Services, maar offline synchronisatie werkt op dezelfde manier als in azure Mobile Apps @ no__t-2
+* [Cloud cover: offline synchronisatie in Azure Mobile Services] \(note: de video bevindt zich op Mobile Services, maar offline synchronisatie werkt op dezelfde manier als in azure Mobile apps @ no__t-2
 
 <!-- URLs. -->
 
@@ -105,6 +106,6 @@ Wanneer u op deze knop klikt, wordt een nieuwe achtergrond taak gestart. Eerst w
 
 [Een Android-app maken]: app-service-mobile-android-get-started.md
 
-[Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0
+[Cloud cover: offline synchronisatie in azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

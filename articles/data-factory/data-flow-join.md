@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029318"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387228"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Data flow-koppelings transformatie koppelen
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029318"
 
 Gebruik samen voegen om gegevens uit twee tabellen in uw gegevens stroom te combi neren. Klik op de trans formatie die de relatie links is en voeg een koppelings transformatie toe vanuit de werkset. In de deelname transformatie selecteert u een andere gegevens stroom van uw gegevens stroom naar de juiste relatie.
 
-Deelname ![aan trans formatie](media/data-flow/join.png "") koppelen
+![Trans formatie koppelen](media/data-flow/join.png "Koppelen")
 
 ## <a name="join-types"></a>Koppelings typen
 
@@ -54,9 +54,9 @@ U moet ten minste 1 (1.. n) voor waarden voor samen voegen invoeren. Dit kunnen 
 
 ## <a name="join-performance-optimizations"></a>Prestaties optimaliseren
 
-In tegens telling tot samen voegen in hulpprogram ma's als SSIS is samen voegen in de ADF-gegevens stroom geen verplichte samenvoeg bewerking. Daarom hoeven de toetsen voor samen voegen niet eerst te worden gesorteerd. De koppelings bewerking wordt uitgevoerd op basis van de optimale koppelings bewerking in Spark: Broadcasten/toewijzing aan de zijkant:
+In tegens telling tot samen voegen in hulpprogram ma's als SSIS is samen voegen in de ADF-gegevens stroom geen verplichte samenvoeg bewerking. Daarom hoeven de toetsen voor samen voegen niet eerst te worden gesorteerd. De koppelings bewerking wordt uitgevoerd op basis van de optimale koppelings bewerking in Spark: Broadcast/toewijzing aan de zijkant:
 
-(media/data-flow/joinoptimize.png "Optimalisatie") van deelname aan ![trans formatie optimaliseren]
+![Trans formatie optimaliseren](media/data-flow/joinoptimize.png "Deelname aan optimalisatie")
 
 Als uw gegevensset kan worden aangepast in het geheugen van het worker-knoop punt, kunnen we uw deelname prestaties optimaliseren. U kunt ook het partitioneren van uw gegevens op de koppelings bewerking opgeven om gegevens sets te maken die beter in het geheugen kunnen passen per werk nemer.
 
@@ -64,7 +64,7 @@ Als uw gegevensset kan worden aangepast in het geheugen van het worker-knoop pun
 
 U kunt Self-samenvoegings voorwaarden in de ADF-gegevens stroom behaalt met behulp van de trans formatie selecteren als alias voor een bestaande stroom. Maak eerst een ' nieuwe vertakking ' vanuit een stroom en voeg vervolgens een SELECT toe aan een alias voor de hele oorspronkelijke stroom.
 
-Self ![-]deelname(media/data-flow/selfjoin.png "Self-") deelname
+![Self-deelname](media/data-flow/selfjoin.png "Self-deelname")
 
 In het bovenstaande diagram bevindt de geselecteerde trans formatie zich bovenaan. Het gaat hierbij om het aliassen van de oorspronkelijke stroom naar ' OrigSourceBatting '. In de onderstaande gemarkeerde join-trans formatie ziet u dat we deze Select alias Stream gebruiken als de rechter join, zodat we naar dezelfde sleutel in de linker & rechter kant van de inner join kunnen verwijzen.
 

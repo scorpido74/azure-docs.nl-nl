@@ -3,15 +3,15 @@ title: Voer uw eerste query uit met Power shell
 description: In dit artikel helpt u bij de stappen om de Resource Graph-module voor Azure PowerShell in te schakelen en uw eerste query uit te voeren.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9193b2e6cc00ef4c46afc72b041c12234af19299
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254540"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389709"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure PowerShell
 
@@ -61,7 +61,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -71,7 +71,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -81,7 +81,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.

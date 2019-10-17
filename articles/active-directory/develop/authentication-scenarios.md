@@ -1,6 +1,6 @@
 ---
 title: Verificatie in het micro soft Identity-platform | Azure
-description: Meer informatie over verificatie in het micro soft Identity platform, het app-model, de API, het inrichten en de meest voorkomende verificatie scenario's die door micro soft Identity platform worden ondersteund.
+description: Meer informatie over de basis principes van verificatie in het micro soft Identity platform (v 2.0).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -13,141 +13,163 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 10/15/2019
 ms.author: ryanwi
-ms.reviewer: saeeda, sureshja, hirsin
+ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76c5214fc26d299c6abb72ed6cd448728903e78f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272547"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430004"
 ---
-# <a name="what-is-authentication"></a>Wat is verificatie?
+# <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
-Bij *verificatie* wordt een partij gevraagd om legitieme referenties. Op basis hiervan kan een beveiligingsprincipal worden gemaakt voor identiteits- en toegangsbeheer. Eenvoudiger gezegd wordt bij dit proces bewezen dat u bent wie u zegt te zijn. Verificatie wordt soms afgekort tot 'AuthN'.
+## <a name="what-is-authentication"></a>Wat is verificatie?
 
-Bij *autorisatie* krijgt een geverifieerde beveiligingsprincipal toestemming om iets te doen. Er wordt aangegeven welke gegevens mogen worden gebruikt en wat ermee mag worden gedaan. Autorisatie wordt soms afgekort tot 'AuthZ'.
+In dit artikel worden veel van de verificatie concepten beschreven die u moet begrijpen om beveiligde web-apps, Web-Api's of apps te maken die beveiligde web-Api's aanroepen.
 
-Micro soft Identity platform vereenvoudigt verificatie voor toepassings ontwikkelaars door identiteit als een service te bieden, met ondersteuning voor industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect, evenals open-source-bibliotheken voor verschillende platformen tot hulp bij het snel starten van code ring.
+**Verificatie** is het proces van waaruit u wordt gedicteerd. Verificatie wordt soms afgekort tot 'AuthN'.
 
-Er zijn twee primaire use-cases in het micro soft Identity platform-programmeer model:
+**Autorisatie** is het verlenen van een geverifieerde partij toestemming om iets te doen. Hiermee geeft u op welke gegevens u toegang hebt tot en wat u met die gegevens kunt doen. Autorisatie wordt soms afgekort tot 'AuthZ'.
 
-* Tijdens een OAuth 2.0-stroom voor autorisatie - wanneer de resource-eigenaar autorisatie verleent aan de clienttoepassing, zodat de client toegang verkrijgt tot de resources van de resource-eigenaar.
-* Wanneer de client resources opent - zoals geïmplementeerd door de resourceserver, met gebruik van de claimwaarden in het toegangstoken, om toegangsbeheerbeslissingen te nemen op basis van die waarden.
+In plaats van apps te maken die elk hun eigen gebruikers naam en wacht woord behouden, waardoor een hoge administratieve belasting optreedt wanneer u meerdere apps hebt en gebruikers erin moet worden toegevoegd of verwijderd, kunnen apps die verantwoordelijkheid overdragen aan een gecentraliseerd ID-provider.
 
-## <a name="authentication-basics-in-microsoft-identity-platform"></a>Basis beginselen van verificatie in het micro soft Identity-platform
+Azure Active Directory (Azure AD) is een gecentraliseerde ID-provider in de Cloud. Door de verificatie en autorisatie te delegeren, worden scenario's zoals beleids regels voor voorwaardelijke toegang die een gebruiker in een specifieke locatie moeten, het gebruik van multi-factor Authentication en het inschakelen van een gebruiker in één keer aanmelden en vervolgens automatisch aangemeld bij alle web-apps die dezelfde gecentraliseerde map delen. Deze mogelijkheid wordt eenmalige aanmelding (SSO) genoemd.
 
-Bedenk het meest eenvoudige scenario waarin identiteiten zijn vereist: een gebruiker moet zich in een webbrowser verifiëren bij een webtoepassing. In het volgende diagram is dit scenario te zien:
+Een gecentraliseerde ID-provider is nog belang rijker voor apps die over de hele wereld beschikken over de locatie waar ze zich niet hoeven aan te melden vanuit het netwerk van de onderneming. Azure AD verifieert gebruikers en biedt toegangs tokens. Een toegangs token is een beveiligings token dat is uitgegeven door een autorisatie server. Het bevat informatie over de gebruiker en de app waarvoor het token is bedoeld, dat kan worden gebruikt voor toegang tot Web-Api's en andere beveiligde bronnen.
 
-![Overzicht van het aanmelden bij een webtoepassing](./media/authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
+Het micro soft Identity-platform vereenvoudigt de verificatie voor toepassings ontwikkelaars door identiteit als service te bieden, met ondersteuning voor industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect, evenals open-source bibliotheken voor verschillende platforms die u helpen bij het snel starten van code ring. Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft Graph, andere Microsoft-API's of API's die door ontwikkelaars zijn gemaakt. Zie [ontwikkeling van micro soft Identity platform](about-microsoft-identity-platform.md)voor meer informatie.
 
-Hier volgt wat u moet weten over de verschillende onderdelen in het diagram:
+## <a name="tenants"></a>Tenants
 
-* Micro soft Identity platform is de ID-provider. De identiteitsprovider is verantwoordelijk voor het verifiëren van de identiteit van gebruikers en toepassingen uit de directory van een organisatie. Er worden ook beveiligingstokens uitgegeven nadat die gebruikers en toepassingen zijn geverifieerd.
-* Een toepassing die authenticatie voor het micro soft-identiteits platform wil uitbesteden, moet zijn geregistreerd in Azure Active Directory (Azure AD). Azure AD registreert de app in de directory en geeft deze een unieke id.
-* Ontwikkel aars kunnen gebruikmaken van de open-source verificatie bibliotheken van micro soft Identity platform om eenvoudig verificatie te maken door de protocol gegevens voor u te verwerken. Zie verificatie bibliotheken van micro soft Identity platform [v 2.0](reference-v2-libraries.md) en [v 1.0-verificatie bibliotheken](active-directory-authentication-libraries.md)voor meer informatie.
-* Wanneer een gebruiker is geverifieerd, moet de toepassing het beveiligingstoken van de gebruiker valideren om er zeker van te zijn dat de verificatie is gelukt. U kunt snelstartgidsen, zelfstudies, codevoorbeelden in verschillende talen en frameworks bekijken waarin u ziet wat de toepassing moet doen.
-  * Om snel een app te bouwen en functionaliteit toe te voegen, zoals tokens ophalen, tokens vernieuwen, gebruikers aanmelden, bepaalde gebruikersgegevens weergeven, enzovoort, gaat u naar het gedeelte **Snelstartgidsen** in de documentatie.
-  * Ga naar het gedeelte **Zelfstudies** van de documentatie voor uitgebreide, op scenario's gebaseerde procedures voor ontwikkelaarstaken (zoals toegangstokens verkrijgen en deze gebruiken in aanroepen naar de Microsoft Graph-API en andere API's en aanmelden met Microsoft implementeren in een traditionele webbrowser-app via OpenID Connect).
-  * Ga naar [GitHub](https://github.com/Azure-Samples?q=active-directory) om codevoorbeelden te downloaden.
-* De stroom van aanvragen en antwoorden in het verificatieproces wordt bepaald aan de hand van het gebruikte verificatieprotocol, zoals OAuth 2.0, OpenID Connect, WS-Federation of SAML 2.0. Zie de sectie **concepten > Authentication Protocol** (Engelstalig) in de documentatie voor meer informatie over protocollen.
+Een Cloud-ID-provider fungeert als veel organisaties. Om gebruikers van verschillende organisaties gescheiden te houden, wordt Azure AD gepartitioneerd in tenants, met één Tenant per organisatie.
 
-In het bovenstaande voorbeeldscenario kunt u apps classificeren aan de hand van deze twee rollen:
+Tenants houden gebruikers en hun bijbehorende apps bij. Het micro soft Identity-platform biedt ook ondersteuning voor gebruikers die zich aanmelden met persoonlijke micro soft-accounts.
 
-* Apps die veilig toegang nodig hebben tot resources
-* Apps die zelf de rol van resource hebben
+Azure AD biedt ook Azure Active Directory B2C, zodat organisaties zich kunnen aanmelden bij gebruikers, meestal klanten, met behulp van sociale identiteiten, zoals een Google-account. Zie [Azure Active Directory B2C-documentatie](https://docs.microsoft.com/azure/active-directory-b2c) voor meer informatie.
 
-### <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
+### <a name="security-tokens"></a>Beveiligings tokens
 
-Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. In dit diagram wordt een overzicht proides:
+Beveiligings tokens bevatten informatie over gebruikers en apps. Azure AD maakt gebruik van JSon-tokens (JWTs) die claims bevatten. Een claim biedt bevestigingen over één entiteit naar een andere. Toepassingen kunnen claims gebruiken voor verschillende taken, zoals:
 
-|Stroom | Nodig | id_token | toegangstoken | token vernieuwen | Autorisatie code | 
-|-----|----------|----------|--------------|---------------|--------------------|
-|[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
-|[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
-|[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
-|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangstoken| x| x| x| |
-|[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
-|[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
+* Het token valideren
+* De Directory Tenant van de houder identificeren
+* Gebruikers gegevens weer geven
+* De autorisatie van het onderwerp bepalen
 
-**Opmerkingen**:
+Een claim bestaat uit sleutel-waardeparen die informatie geven, zoals:
 
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar `response_mode` de `query` browser `fragment`(waarbij of).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben `groups` `wids` deze tokens geen claims. 
+- de beveiligings token server die het token heeft gegenereerd.
+- de datum waarop het token is gegenereerd.
+- het onderwerp, zoals de gebruiker (met uitzonde ring van daemons).
+- de doel groep, de app waarvoor het token is gegenereerd.
+- de app (de client) die voor het token is aangevraagd. In het geval van web-apps kan dit hetzelfde zijn als de doel groep.
 
+Zie het [toegangs tokens](access-tokens.md) en de [id-tokens](id-tokens.md)voor meer gedetailleerde informatie over claims.
 
-Nu u een overzicht van de basis principes hebt, leest u meer over het identiteits-app-model en de API, hoe Provisioning werkt in het micro soft Identity platform en koppelingen naar gedetailleerde informatie over de algemene scenario's die door micro soft Identity platform worden ondersteund.
+Het is de app waarvoor het token is gegenereerd, de web-app die is aangemeld bij de gebruiker of de Web-API die wordt aangeroepen om het token te valideren. Het token is ondertekend door de Security Token server (STS) met een persoonlijke sleutel. De STS publiceert de bijbehorende open bare sleutel. Om een token te valideren, controleert de app de hand tekening met behulp van de open bare sleutel STS om te valideren dat de hand tekening is gemaakt met behulp van de persoonlijke sleutel.
 
-## <a name="application-model"></a>Toepassingsmodel
+Tokens zijn alleen geldig voor een beperkte periode. De STS biedt doorgaans een paar tokens: een toegangs token voor toegang tot de toepassing of beveiligde resource, en een vernieuwings token dat wordt gebruikt om het toegangs token te vernieuwen wanneer het toegangs token bijna is verlopen. 
 
-Micro soft Identity platform vertegenwoordigt toepassingen volgens een specifiek model dat is ontworpen om te voldoen aan twee belang rijke functies:
+Toegangs tokens worden door gegeven aan een web-API als het Bearer-token in de `Authenticate`-header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
 
-* **De app identificeren op basis van de ondersteunde verificatieprotocollen** - dit omvat het inventariseren van alle id's, URL's, geheimen en gerelateerde informatie die nodig is tijdens de verificatie. Hier ziet u het micro soft Identity-platform:
+### <a name="applications"></a>Applicaties
 
-    * Bewaart alle gegevens die nodig zijn om verificatie tijdens runtime te ondersteunen.
-    * Bewaart alle gegevens om te beslissen welke resources een app mogelijk nodig heeft en of aanvragen moeten worden uitgevoerd (en onder welke omstandigheden).
-    * Biedt de infrastructuur voor het implementeren van app-inrichting in de tenant van de app-ontwikkelaar en in andere Azure AD-tenants.
+Toepassingen kunnen gebruikers zelf aanmelden of zich aanmelden bij een id-provider. Zie [verificatie stromen en app-scenario's](authentication-flows-app-scenarios.md) voor meer informatie over aanmeldings scenario's die worden ondersteund door Azure AD.
 
-* Verwerk **de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt het dynamische inrichten van apps via tenants** -hier, het micro soft Identity-platform:
+Als een id-provider weet dat een gebruiker toegang heeft tot een bepaalde app, moeten zowel de gebruiker als de toepassing zijn geregistreerd bij de ID-provider. Wanneer u uw toepassing registreert bij Azure AD, geeft u een identiteits configuratie op voor uw toepassing, zodat deze kan worden geïntegreerd met Azure AD. Door de app te registreren, kunt u het volgende doen:
 
-    * Stelt gebruikers en beheerders in staat om de app dynamisch toestemming te geven of weigeren om resources namens hen te gebruiken.
-    * Stelt beheerders in staat om te beslissen wat apps mogen doen, welke gebruikers gebruik mogen maken van specifieke apps en hoe de directoryresources kunnen worden benaderd.
+- Pas de huis stijl van uw toepassing aan in het dialoog venster voor aanmelden. Dit is belang rijk omdat dit de eerste ervaring is die een gebruiker heeft met uw app.
+- Bepaal of u gebruikers alleen wilt laten aanmelden als ze tot uw organisatie behoren. Dit is één Tenant toepassing. Of sta gebruikers toe om zich aan te melden met een werk-of school account. Dit is een toepassing met meerdere tenants. U kunt ook persoonlijke micro soft-accounts of een sociaal account van een gekoppelde, Google, enzovoort toestaan.
+- machtigingen voor het bereik van aanvragen. U kunt bijvoorbeeld het bereik ' gebruiker. read ' aanvragen, dat toestemming geeft om het profiel van de aangemelde gebruiker te lezen.
+- Definieer bereiken waarmee de toegang tot uw web-API wordt gedefinieerd. Wanneer een app toegang wil krijgen tot uw API, moet dit doorgaans machtigingen aanvragen voor de bereiken die u definieert.
+- deel een geheim met Azure AD om de identiteit van de app aan Azure AD te bewijzen.  Dit is van belang voor het geval dat de app een vertrouwelijke client toepassing is. Een vertrouwelijke client toepassing is een toepassing die referenties veilig kan bevatten. Er is een vertrouwde back-end-server nodig om de referenties op te slaan.
 
-In het micro soft Identity-platform beschrijft een **toepassings object** een toepassing als een abstracte entiteit. Ontwikkelaars werken met toepassingen. Tijdens de implementatie gebruikt micro soft Identity platform een gegeven toepassings object als een blauw druk om een **Service-Principal**te maken. Dit is een concreet exemplaar van een toepassing in een directory of Tenant. De service-principal bepaalt wat de app daadwerkelijk kan doen in een specifieke doeldirectory, wie deze mag gebruiken, tot welke resources deze toegang heeft en meer. Met micro soft Identity platform maakt u via **toestemming**een service-principal van een toepassings object.
+Na de registratie krijgt de toepassing een GUID die de App deelt met Azure AD wanneer tokens worden aangevraagd. Als de app een vertrouwelijk client toepassing is, wordt ook het geheim of de open bare sleutel gedeeld, afhankelijk van het feit of er certificaten of geheimen zijn gebruikt.
 
-Het volgende diagram toont een vereenvoudigd micro soft Identity platform inrichtings stroom op basis van toestemming.  Er bestaan twee tenants (A en B), waarbij Tenant A eigenaar is van de toepassing, en Tenant B de toepassing instantiëren via een service-principal.  
+### <a name="application-model"></a>Toepassingsmodel
+
+Het micro soft Identity-platform vertegenwoordigt toepassingen die gebruikmaken van een model dat voldoet aan twee belang rijke functies:
+
+**Bepaal de app aan de hand van de verificatie protocollen die worden ondersteund en geef alle id's, Url's, geheimen en gerelateerde informatie op die nodig zijn voor de verificatie.**
+Het micro soft Identity-platform:
+
+* Bevat alle gegevens die nodig zijn voor de ondersteuning van verificatie tijdens runtime.
+* Bevat alle gegevens om te bepalen welke resources een app nodig heeft voor toegang en onder welke omstandigheden een bepaalde aanvraag moet worden afgehandeld.
+* Biedt een infra structuur voor het implementeren van app-inrichting in de Tenant van de app-ontwikkelaar en op elke andere Azure AD-Tenant.
+
+Verwerk **de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt de dynamische inrichting van apps op tenants** Toestemming is het proces van een resource-eigenaar die autorisatie verleent aan een client toepassing om toegang te krijgen tot beveiligde bronnen, onder specifieke machtigingen, namens de eigenaar van de resource. Het micro soft Identity-platform:
+
+* Stelt gebruikers en beheerders in staat om de app dynamisch toestemming te geven of weigeren om resources namens hen te gebruiken.
+* Stelt beheerders in staat om te beslissen wat apps mogen doen, welke gebruikers gebruik mogen maken van specifieke apps en hoe de directoryresources kunnen worden benaderd.
+
+In het micro soft Identity-platform beschrijft een **toepassings object** een toepassing als een abstracte entiteit. Tijdens de implementatie gebruikt het micro soft Identity-platform het object van de toepassing als een blauw druk om een **Service-Principal**te maken, die een concreet exemplaar van een toepassing in een directory of Tenant vertegenwoordigt. De Service-Principal definieert wat de app daad werkelijk kan doen in een specifieke doel directory, wie deze kan gebruiken, tot welke resources toegang heeft, enzovoort. Met het micro soft Identity-platform maakt u via **toestemming**een service-principal van een toepassings object.
+
+Het volgende diagram toont een vereenvoudigd micro soft Identity platform inrichtings stroom op basis van toestemming. Er worden twee tenants weer gegeven (A en B). Tenant A is eigenaar van de toepassing. Tenant B is een instantiëring van de toepassing via een service-principal.  
 
 ![Vereenvoudigde inrichtingsstroom op basis van toestemming](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 De inrichtingsstroom verloopt als volgt:
 
 1. Een gebruiker van Tenant B probeert zich aan te melden bij de app. het autorisatie-eind punt vraagt een token voor de toepassing aan.
-1. De gebruikers referenties zijn verkregen en geverifieerd voor verificatie
-1. De gebruiker wordt gevraagd toestemming te geven voor de app om toegang te krijgen tot Tenant B
-1. Micro soft Identity platform gebruikt het toepassings object in Tenant A als een blauw druk voor het maken van een Service-Principal in Tenant B
-1. De gebruiker ontvangt de aangevraagde token
+1. De gebruikers referenties zijn verkregen en geverifieerd voor authenticatie.
+1. De gebruiker wordt gevraagd toestemming te geven voor de app om toegang te krijgen tot Tenant B.
+1. Het micro soft Identity-platform gebruikt het toepassings object in Tenant A als een blauw druk voor het maken van een Service-Principal in Tenant B.
+1. De gebruiker ontvangt het aangevraagde token.
 
-U kunt dit proces zo vaak herhalen als u wilt (voor andere tenants, zoals C, D, enzovoort). Tenant A behoudt de blauw druk voor de app (toepassings object). De gebruikers en beheerders van de andere tenants waarvoor de app toestemming heeft, behouden controle over wat de toepassing mag doen. Dit kan worden beheerd met het bijbehorende service-principalobject in elke tenant. Zie [Application and Service Principal Objects in micro soft Identity platform](app-objects-and-service-principals.md)(Engelstalig) voor meer informatie.
+U kunt dit proces herhalen voor aanvullende tenants. Tenant A behoudt de blauw druk voor de app (toepassings object). Gebruikers en beheerders van alle andere tenants waar de app toestemming krijgt, houden de controle over wat de toepassing mag doen via het bijbehorende service-principal-object in elke Tenant. Zie [Application and Service Principal Objects in micro soft Identity platform](app-objects-and-service-principals.md)(Engelstalig) voor meer informatie.
 
-## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Claims in micro soft Identity platform-beveiligings tokens
+## <a name="web-app-sign-in-flow-with-azure-ad"></a>Aanmeldings stroom voor web-apps met Azure AD
 
-Beveiligings tokens (toegangs-en ID-tokens) die zijn uitgegeven door het micro soft Identity-platform bevatten claims of bevestigingen van informatie over het onderwerp dat is geverifieerd. Toepassingen kunnen voor verschillende taken gebruikmaken van claims, waaronder:
+Wanneer een gebruiker in de browser naar een web-app navigeert, gebeurt het volgende:
 
-* Het token valideren
-* De directorytenant van het onderwerp identificeren
-* Gebruikersgegevens weergeven
-* De autorisatie van het onderwerp bepalen
+- De web-app bepaalt of de gebruiker is geverifieerd.
+- Als de gebruiker niet is geverifieerd, wordt de web-app gemachtigd om zich aan te melden bij de gebruiker in azure AD. Deze aanmelding voldoet aan het beleid van de organisatie. Dit kan ertoe leiden dat de gebruiker de referenties invoert, met behulp van multi-factor Authentication of met een wacht woord helemaal (bijvoorbeeld met Windows hello).
+- De gebruiker wordt gevraagd toestemming te geven voor de toegang die de client-app nodig heeft. Daarom moeten client-apps worden geregistreerd bij Azure AD, zodat Azure AD tokens kan leveren die de toegang hebben die de gebruiker heeft ingestemd.
 
-Welke claims aanwezig zijn in een bepaald beveiligingstoken, is afhankelijk van het type token, het type referentie dat is gebruikt om de gebruiker te verifiëren en de configuratie van de toepassing.
+Wanneer de gebruiker is geverifieerd:
 
-In de onderstaande tabel vindt u een korte beschrijving van elk type claim dat wordt verzonden door het micro soft Identity-platform. Zie het [toegangs tokens](access-tokens.md) en de [id-tokens](id-tokens.md) die zijn uitgegeven door micro soft Identity platform voor meer gedetailleerde informatie.
+- Azure AD verzendt een token naar de web-app.
+- Er wordt een cookie opgeslagen dat is gekoppeld aan het domein van Azure AD. Dit bevat de identiteit van de gebruiker in het cookie jar van de browser. De volgende keer dat een app de browser gebruikt om te navigeren naar het eind punt van de Azure AD-autorisatie, geeft de browser de cookie weer zodat de gebruiker zich niet opnieuw hoeft aan te melden. Dit is ook de manier waarop SSO wordt behaald. De cookie wordt gemaakt door Azure AD en kan alleen worden geïnterpreteerd door Azure AD.
+- De web-app valideert vervolgens het token. Als de validatie slaagt, wordt de beveiligde pagina weer gegeven in de web-app en wordt een sessie cookie in het cookie jar van de browser opgeslagen. Wanneer de gebruiker naar een andere pagina navigeert, weet de web-app dat de gebruiker is geverifieerd op basis van de sessie cookie.
 
-| Claim | Description |
-| --- | --- |
-| Toepassings-id | Identificeert de toepassing die gebruikmaakt van het token. |
-| Doelgroep | Identificeert de ontvangende resource waar het token voor is bedoeld. |
-| Application Authentication Context Class Reference | Geeft aan hoe de client is geverifieerd (openbare client of vertrouwelijke client). |
-| Verificatiemoment | Registreert de datum en tijd waarop de verificatie heeft plaatsgevonden. |
-| Verificatiemethode | Geeft aan hoe het onderwerp van het token is geverifieerd (wachtwoord, certificaat, enzovoort). |
-| Voornaam | Biedt de naam van de gebruiker zoals ingesteld in Azure AD. |
-| Groepen | Bevat de object-id's van de Azure AD-groepen waar de gebruiker lid van is. |
-| Identiteitsprovider | Registreert de identiteitsprovider waarmee het onderwerp van het token is geverifieerd. |
-| Uitgegeven om | Registreert de tijd waarop het token is uitgegeven (vaak gebruikt om te controleren hoe nieuw het token is). |
-| Verlener | Identificeert de beveiligingstokenservice die het token heeft uitgegeven en de Azure AD-tenant. |
-| Achternaam | Biedt de achternaam van de gebruiker, zoals ingesteld in Azure AD. |
-| Name | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. |
-| Object-id | Bevat een onveranderbare, unieke id voor het onderwerp in Azure AD. |
-| Rollen | Bevat beschrijvende namen voor de Azure AD-toepassingsrollen die zijn toegewezen aan de gebruiker. |
-| Scope | Geeft aan welke machtigingen zijn verleend aan de clienttoepassing. |
-| Onderwerp | Geeft aan over welke principal het token informatie bevat. |
-| Tenant-id | Bevat een onveranderbare, unieke id voor de directorytenant die het token heeft uitgegeven. |
-| Levensduur van token | Definieert gedurende welke periode een token geldig is. |
-| User principal name | Bevat de user principal name van het onderwerp. |
-| Version | Bevat het versienummer van het token. |
+In het volgende sequentie diagram wordt deze interactie samenvatten:
+
+![verificatie proces van de web-app](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+
+### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Hoe een web-app bepaalt of de gebruiker is geverifieerd
+
+Web app-ontwikkel aars kunnen aangeven of voor alle of alleen bepaalde pagina's verificatie is vereist. In ASP.NET/ASP.NET core wordt dit bijvoorbeeld gedaan door het kenmerk `[Authorize]` toe te voegen aan de controller acties. 
+
+Met dit kenmerk wordt ASP.NET gecontroleerd op de aanwezigheid van een sessie cookie met de identiteit van de gebruiker. Als er geen cookie aanwezig is, stuurt ASP.NET de verificatie door naar de opgegeven id-provider. Als de ID-provider Azure AD is, wordt de verificatie door de web-app omgeleid naar https://login.microsoftonline.com, waarin een dialoog venster voor aanmelden wordt weer gegeven.
+
+### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Hoe een web-app zich aanmeldt bij Azure AD en een token verkrijgt
+
+Gebruikers verificatie gebeurt via de browser. Het OpenID Connect-protocol gebruikt standaard berichten van het HTTP-protocol.
+- De web-app stuurt een HTTP 202 (omleiding) naar de browser om Azure AD te gebruiken.
+- Wanneer de gebruiker is geverifieerd, verzendt Azure AD het token naar de web-app met behulp van een omleiding via de browser.
+- De omleiding wordt verzorgd door de web-app in de vorm van een omleidings-URI. Deze omleidings-URI is geregistreerd bij het Azure AD-toepassings object. Er kunnen verschillende omleidings-Uri's zijn omdat de toepassing kan worden geïmplementeerd op verschillende Url's. De web-app moet dus ook de omleidings-URi opgeven die moet worden gebruikt.
+- Azure AD controleert of de omleidings-URI die door de web-app is verzonden, een van de geregistreerde omleidings-Uri's voor de app is.
+
+## <a name="generalization-to-desktop-and-mobile-apps"></a>Generalisatie voor desktop-en Mobile-apps
+
+De hierboven beschreven stroom geldt, met kleine verschillen, voor desktop-en mobiele toepassingen.
+
+Desktop-en mobiele toepassingen kunnen een Inge sloten Webbe sturings element of een systeem browser gebruiken voor verificatie. In het volgende diagram ziet u hoe een bureau blad of een mobiele app de micro soft Authentication Library (MSAL) gebruikt om toegangs tokens te verkrijgen en Web-Api's aan te roepen.
+
+![Bureau blad-app hoe deze eruitziet](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+
+MSAL maakt gebruik van een browser voor het ophalen van tokens en net als bij Web apps, delegeert verificatie aan Azure AD.
+
+Omdat Azure AD dezelfde identiteits cookie in de browser opslaat als voor web-apps, wordt door de systeem eigen of de mobiele app, direct SSO met de bijbehorende Web-app, gebruikt.
+
+MSAL maakt standaard gebruik van de systeem browser, met uitzonde ring van .NET Framework desktop toepassingen waarin een Inge sloten besturings element wordt gebruikt om een meer geïntegreerde gebruikers ervaring te bieden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [toepassings typen en scenario's die worden ondersteund in micro soft Identity platform](app-types.md)
+Raadpleeg de [verklarende woorden lijst voor ontwikkel aars van micro soft Identity platform](developer-glossary.md) om vertrouwd te raken met algemene termen.
+Zie [verificatie stromen en app-scenario's](authentication-flows-app-scenarios.md) voor meer informatie over andere scenario's voor het verifiëren van gebruikers die worden ondersteund door het micro soft Identity-platform.
+Zie [MSAL-bibliotheken](msal-overview.md) voor meer informatie over de micro soft-bibliotheken die u helpen bij het ontwikkelen van toepassingen die werken met micro soft-accounts, Azure AD-accounts en Azure AD B2C gebruikers in één gestroomlijnd programmeer model.

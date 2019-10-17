@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2031820843342fb7e6b115865297e08cbee28a0a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030184"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387336"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>Gegevens stroom koppelen knoop punten verplaatsen
 
 
 
-![Cumulatieve transformatie opties](media/data-flow/agghead.png "aggregator-koptekst")
+![Aggregatie opties voor trans formatie](media/data-flow/agghead.png "aggregator-header")
 
 Het ontwerp oppervlak voor Azure Data Factory gegevens stroom is een constructie-Opper vlak waar u gegevens stromen van boven naar beneden bouwt, van links naar rechts. Er is een werkset aan elke trans formatie gekoppeld met een plus teken (+). Richt u op uw bedrijfs logica in plaats van knoop punten te verbinden via randen in een vrije-vorm DAG-omgeving.
 

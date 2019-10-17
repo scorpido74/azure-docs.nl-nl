@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/24/2019
+ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169998"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389520"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Een nieuw toegangs pakket maken in azure AD-rechts beheer (preview-versie)
 
@@ -36,15 +36,31 @@ Met een toegangs pakket kunt u een eenmalige configuratie uitvoeren van resource
 
 Alle toegangs pakketten moeten in een container worden geplaatst die een catalogus wordt genoemd. Een catalogus definieert welke resources u aan uw toegangs pakket kunt toevoegen. Als u geen catalogus opgeeft, wordt uw toegangs pakket in de algemene catalogus geplaatst. Op dit moment kunt u een bestaand toegangs pakket niet naar een andere catalogus verplaatsen.
 
-Alle toegangs pakketten moeten ten minste één beleid hebben. Beleids regels opgeven wie het toegangs pakket kan aanvragen en ook de instellingen voor goed keuring en verloop datum. Wanneer u een nieuw toegangs pakket maakt, kunt u een eerste beleids regel voor gebruikers in uw Directory maken, voor gebruikers die niet in uw Directory zijn, alleen voor beheerders direct toewijzingen of u kunt ervoor kiezen om het beleid later te maken.
+Als u een Access package manager bent, kunt u geen resources toevoegen die eigendom zijn van een catalogus. U bent beperkt tot het gebruik van de beschik bare resources in de catalogus. Als u resources aan een catalogus wilt toevoegen, kunt u de eigenaar van de catalogus vragen.
 
-In het volgende diagram ziet u het proces op hoog niveau voor het maken van een nieuw toegangs pakket.
+Alle toegangs pakketten moeten ten minste één beleid hebben. Beleids regels opgeven wie het toegangs pakket kan aanvragen en ook de instellingen voor goed keuring en levens cyclus. Wanneer u een nieuw toegangs pakket maakt, kunt u een eerste beleids regel voor gebruikers in uw Directory maken, voor gebruikers die niet in uw Directory zijn, alleen voor beheerders direct toewijzingen of u kunt ervoor kiezen om het beleid later te maken.
 
-![Een Access package-proces maken](./media/entitlement-management-access-package-create/access-package-process.png)
+![Een toegangs pakket maken](./media/entitlement-management-access-package-create/access-package-create.png)
+
+Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
+
+1. In Identity governance start u het proces voor het maken van een nieuw toegangs pakket.
+
+1. Selecteer de catalogus waarin u het toegangs pakket wilt maken.
+
+1. Resources van de catalogus toevoegen aan uw toegangs pakket.
+
+1. Wijs resource rollen toe voor elke resource.
+
+1. Gebruikers opgeven die toegang kunnen aanvragen.
+
+1. Geef een goedkeurings instelling op.
+
+1. Levenscyclus instellingen opgeven.
 
 ## <a name="start-new-access-package"></a>Nieuw toegangs pakket starten
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
@@ -64,20 +80,19 @@ Op het tabblad **basis beginselen** geeft u het toegangs pakket een naam en geef
 
 1. Selecteer in de vervolg keuzelijst **catalogus** de catalogus waarin u het toegangs pakket wilt maken. U kunt bijvoorbeeld een catalogus eigenaar hebben die alle marketing resources beheert die kunnen worden aangevraagd. In dit geval kunt u de marketing catalogus selecteren.
 
-    U ziet alleen catalogi waarvoor u gemachtigd bent om toegangs pakketten te maken in. Als u een toegangs pakket wilt maken in een bestaande catalogus, moet u Mini maal een globale beheerder, een gebruikers beheerder, een catalogus eigenaar in die catalogus zijn of toegang krijgen tot pakket beheer in die catalogus.
+    U ziet alleen catalogi waarvoor u gemachtigd bent om toegangs pakketten te maken in. Als u een toegangs pakket wilt maken in een bestaande catalogus, moet u een globale beheerder of gebruikers beheerder zijn of moet u een catalogus eigenaar zijn of toegang krijgen tot pakket beheer in die catalogus.
 
     ![Toegangs pakket-basis beginselen](./media/entitlement-management-access-package-create/basics.png)
 
-    Als u een globale beheerder of een gebruikers beheerder bent en u uw toegangs pakket wilt maken in een nieuwe catalogus die niet wordt weer gegeven, klikt u op **nieuwe maken**. Voer de naam en beschrijving van de catalogus in en klik vervolgens op **maken**.
+    Als u een globale beheerder, een gebruikers beheerder of een maker van de catalogus bent en u uw toegangs pakket wilt maken in een nieuwe catalogus die niet wordt weer gegeven, klikt u op **nieuwe catalogus maken**. Voer de naam en beschrijving van de catalogus in en klik vervolgens op **maken**.
 
     Het toegangs pakket dat u maakt en alle resources die erin worden opgenomen, wordt toegevoegd aan de nieuwe catalogus. U kunt later ook extra catalogus eigenaren toevoegen.
-
 
 1. Klik op **Volgende**.
 
 ## <a name="resource-roles"></a>Resourcerollen
 
-Op het tabblad **resource rollen** selecteert u de resources die u wilt toevoegen in het toegangs pakket.  Gebruikers die het toegangs pakket aanvragen en ontvangen, ontvangen alle resource rollen in het toegangs pakket.
+Op het tabblad **resource rollen** selecteert u de resources die u wilt toevoegen in het toegangs pakket. Gebruikers die het toegangs pakket aanvragen en ontvangen, ontvangen alle resource rollen in het toegangs pakket.
 
 1. Klik op het resource type dat u wilt toevoegen (**groepen en teams**, **toepassingen**of **share point-sites**).
 
@@ -97,19 +112,17 @@ Op het tabblad **resource rollen** selecteert u de resources die u wilt toevoege
 
 1. Klik op **Volgende**.
 
-## <a name="policy"></a>Beleid
+## <a name="requests"></a>Aanvragen
 
-Op het tabblad **beleid** maakt u het eerste beleid om op te geven wie het toegangs pakket en ook de instellingen voor goed keuring en verloop kan aanvragen. U kunt later meer beleids regels maken om extra groepen gebruikers toe te staan het toegangs pakket aan te vragen met hun eigen goed keuring en verloop instellingen. U kunt er ook voor kiezen om het beleid later te maken.
+Op het tabblad **aanvragen** maakt u het eerste beleid om op te geven wie het toegangs pakket en ook goedkeurings instellingen kan aanvragen. Later kunt u meer aanvraag beleidsregels maken zodat extra groepen gebruikers het toegangs pakket kunnen aanvragen met hun eigen goedkeurings instellingen.
 
-1. Stel de schakel optie **eerste beleid maken** in op **nu** of **later**.
+![Tabblad toegang tot pakket-aanvragen](./media/entitlement-management-access-package-create/requests.png)
 
-    ![Toegangs pakket-beleid](./media/entitlement-management-access-package-create/policy.png)
+Voer de stappen uit in een van de volgende secties.
 
-1. Als u **later**selecteert, gaat u naar de sectie [beoordeling + maken](#review--create) om uw toegangs pakket te maken.
+[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-1. Als u **nu**selecteert, voert u de stappen uit in een van de volgende beleids secties.
-
-[!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
+[!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="review--create"></a>Controleren en maken
 
@@ -125,4 +138,5 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een bestaand toegangspakket bewerken en beheren](entitlement-management-access-package-edit.md)
+- [Koppeling delen om een toegangs pakket aan te vragen](entitlement-management-access-package-settings.md)
+- [Resource rollen wijzigen voor een toegangs pakket](entitlement-management-access-package-resources.md)

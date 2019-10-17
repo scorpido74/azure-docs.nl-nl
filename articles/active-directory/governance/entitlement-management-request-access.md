@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169817"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389091"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Toegang aanvragen tot een toegangs pakket in azure AD-rechts beheer (preview-versie)
 
@@ -30,7 +30,7 @@ ms.locfileid: "72169817"
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Met het beheer van rechten van Azure AD kunt u een eenmalige installatie van resources en beleids regels inschakelen waarmee de toegang voor de levens duur van het toegangs pakket automatisch wordt beheerd. 
+Met het beheer van rechten van Azure AD maakt een toegangs pakket een eenmalige configuratie van resources en beleids regels waarmee de toegang voor de levens duur van het toegangs pakket automatisch wordt beheerd. 
 
 Een Access package manager kan beleid zodanig configureren dat gebruikers goed keuring nodig hebben om toegang te krijgen tot pakketten. Een gebruiker die toegang tot een toegangs pakket nodig heeft, kan een aanvraag indienen om toegang te krijgen. In dit artikel wordt beschreven hoe u een toegangs aanvraag verzendt.
 
@@ -40,7 +40,7 @@ De eerste stap is om u aan te melden bij de portal mijn toegang, waar u toegang 
 
 **Vereiste rol:** Aanvrager
 
-1. Zoek naar een e-mail of een bericht van het project of Business Manager waarmee u werkt. Het e-mail bericht moet een koppeling bevatten naar het toegangs pakket waartoe u toegang nodig hebt. De koppeling begint met ' myaccess ', bevat een directory-hint en eindigt met een toegangs pakket-ID vergelijkbaar met het volgende:
+1. Zoek naar een e-mail of een bericht van het project of Business Manager waarmee u werkt. Het e-mail bericht moet een koppeling bevatten naar het toegangs pakket waartoe u toegang nodig hebt. De koppeling begint met `myaccess`, bevat een directory-hint en eindigt met een toegangs pakket-ID.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

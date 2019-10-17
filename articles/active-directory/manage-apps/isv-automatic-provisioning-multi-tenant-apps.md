@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373395"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429448"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
@@ -81,7 +81,7 @@ Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informa
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD-inrichtings service (SCIM)
 
-De Azure AD-inrichtings Services gebruiken [SCIM] (https://aka.ms/SCIMOverview, een protocol dat door veel id-providers (id) wordt ondersteund. U wordt aangeraden de Azure AD-inrichtings service te gebruiken als u naast Azure AD id wilt ondersteunen, omdat elke IdP die compatibel is met SCIM, verbinding kan maken met uw SCIM-eind punt.
+Azure AD Provisioning Services maakt gebruik van [scim](https://aka.ms/SCIMOverview), een industrie standaard voor het inrichten van een groot aantal id-providers (id) en toepassingen (bijvoorbeeld een toegestane vertraging, g Suite, Dropbox). U wordt aangeraden de Azure AD-inrichtings service te gebruiken als u naast Azure AD id wilt ondersteunen, omdat elke IdP die compatibel is met SCIM, verbinding kan maken met uw SCIM-eind punt. Als u een eenvoudig/User-eind punt bouwt, kunt u inrichting inschakelen zonder dat u uw eigen synchronisatie-engine hoeft te onderhouden. 
 
 Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SCIM: 
 
@@ -106,16 +106,6 @@ Meer informatie over het gebruik van Microsoft Graph voor het inrichten van:
 * [Overzicht van Microsoft Graph auth](https://docs.microsoft.com/graph/auth/)
 
 * [Aan de slag met Microsoft Graph](https://developer.microsoft.com/graph/get-started)
-
-* [De Microsoft Graph-API gebruiken](https://docs.microsoft.com/graph/use-the-api)
-
-* [Microsoft Graph Explorer](https://aka.ms/ge) 
-
-* [Naslag informatie over Microsoft Graph machtigingen](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Aanbevolen procedures voor het werken met Microsoft Graph](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Aanbevolen scenario's voor Microsoft Graph](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>SAML JIT gebruiken voor het inrichten
 

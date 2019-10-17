@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Speech herkennen, C# (Xamarin)-spraak service'
+title: 'Quick Start: Speech herkennen C# , (Xamarin)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel maakt u een cross-platform C# Xamarin-toepassing voor Windows UWP, Android en IOS met behulp van de SDK van Cognitive Services speech. U transcribeert spraak naar tekst in realtime van de microfoon van uw apparaat of Simulator. De toepassing is gebouwd met het Speech SDK NuGet-pakket en micro soft Visual Studio 2019.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71804053"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387391"
 ---
-# <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Quickstart: Spraak herkennen met een platformoverschrijdende Xamarin-app met behulp van de Speech SDK
+# <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Quick Start: spraak herkennen met platformoverschrijdende Xamarin-app met behulp van de Speech SDK
 
 Quick starts zijn ook beschikbaar voor [spraak naar tekst](quickstart-csharp-uwp.md), [tekst naar spraak](quickstart-text-to-speech-csharp-uwp.md) -en [spraak omzetting](quickstart-translate-speech-uwp.md).
 
@@ -60,11 +60,13 @@ Voeg nu de XAML-code toe die de gebruikers interface van de toepassing definieer
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/MainPage.xaml.cs)]
 
-1. Zoek in de handler van `OnRecognitionButtonClicked` het bron bestand de teken `YourSubscriptionKey`reeks en vervang deze door de sleutel van uw abonnement.
+1. Zoek in de handler `OnRecognitionButtonClicked` van het bron bestand de teken reeks `YourSubscriptionKey` en vervang deze door de sleutel van uw abonnement.
 
-1. Zoek in de handler `OnRecognitionButtonClicked` de teken reeks `YourServiceRegion` en vervang deze door de [regio](regions.md) die aan uw abonnement is gekoppeld. (Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.)
+1. Zoek in de handler `OnRecognitionButtonClicked` de teken reeks `YourServiceRegion` en vervang deze door de [regio](regions.md) die aan uw abonnement is gekoppeld. (Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.)
 
-1. Vervolgens moet u een Xamarin- [service](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)maken, die wordt gebruikt om microfoon machtigingen op te vragen uit verschillende platform projecten (UWP, Android en IOS). Hiervoor voegt u de nieuwe map `Services` toe onder het project `helloworld` en maakt C# u een nieuw bron bestand onder het (Klik met de rechter muisknop op `Services` map en voegt u  > **nieuw item** **toe** > -**code bestand**) en wijzigt u de naam van de code in `IMicrophoneService.cs`. volgende fragment in dat bestand: 0 @ no__t-11
+1. Vervolgens moet u een Xamarin- [service](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)maken, die wordt gebruikt om microfoon machtigingen op te vragen uit verschillende platform projecten (UWP, Android en IOS). Hiervoor voegt u de nieuwe map `Services` toe onder het project `helloworld` en maakt C# u een nieuw bron bestand onder het (Klik met de rechter muisknop op `Services` map en voegt u  > **nieuw item** **toe** > -**code bestand**) en wijzigt u de naam van de code in `IMicrophoneService.cs`. volgende fragment in dat bestand:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Voorbeeld code toevoegen voor het project `helloworld.Android`
 
@@ -101,7 +103,7 @@ Voeg nu de C# code toe die het specifieke IOS-gedeelte van de toepassing definie
 
 1. Open info. plist onder het project `helloworld.iOS` in de tekst editor en voeg het volgende sleutel waardepaar toe onder het gedeelte dict <key>NSMicrophoneUsageDescription</key>
    <string>deze voor beeld-app vereist toegang tot de microfoon</string>
-   > Opmerking: Zorg ervoor dat de `Bundle Identifier` overeenkomt met de App-ID van het inrichtings Profiel van het apparaat, anders mislukt het maken van een voor beeld dat u bent gericht op het bouwen van een iPhone-apparaat. Met iPhoneSimulator kunt u het net zo laten.
+   > Opmerking: als u op een iPhone-apparaat bouwt, moet u ervoor zorgen dat `Bundle Identifier` overeenkomt met de App-ID van het inrichtings Profiel van uw apparaat. anders mislukt de build. Met iPhoneSimulator kunt u het net zo laten.
 
 1. Als u op een Windows-PC bouwt, moet u verbinding maken met een Mac-apparaat voor het bouwen via **Hulpprogram ma's** > **IOS** > -**paar met Mac**. Volg de instructie wizard van Visual Studio om verbinding met het Mac-apparaat mogelijk te maken.
 
@@ -120,7 +122,7 @@ Voeg nu de C# code toe die het UWP-gedeelte van de toepassing definieert.
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
 1. Klik vervolgens op `Package.appxmanifest` bestand onder het `helloworld.UWP`-project in Visual Studio en onder **mogelijkheden** > -**microfoon** wordt gecontroleerd en sla het bestand op.
-   > Opmerking: Als er een waarschuwing wordt weer gegeven: Certificaat bestand bestaat niet: HelloWorld. UWP_TemporaryKey. pfx, Controleer [spraak op tekst](quickstart-csharp-uwp.md) voor beeld voor meer informatie.
+   > Opmerking: als er een waarschuwing wordt weer gegeven: certificaat bestand bestaat niet: HelloWorld. UWP_TemporaryKey. pfx, Controleer [spraak op tekst](quickstart-csharp-uwp.md) voor beeld voor meer informatie.
 
 1. Kies in de menu balk de optie **bestand** > **Alles opslaan** om uw wijzigingen op te slaan.
 

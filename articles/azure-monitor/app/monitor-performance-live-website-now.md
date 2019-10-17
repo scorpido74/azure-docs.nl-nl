@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e7d69e2258036318b736f245f9e3aec3cf5f54de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67876421"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389931"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
+
+> [!IMPORTANT]
+> Status Monitor wordt niet meer aanbevolen voor gebruik. Het is vervangen door de Azure Monitor Application Insights agent (voorheen Status Monitor v2 genoemd). Zie onze documentatie voor [on-premises server implementaties](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) of [Azure virtual machine en implementaties van virtuele-machine schaal sets](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
 
 U kunt een live web-app instrumenteren met Azure Application Insights, zonder dat u de code hoeft te wijzigen of opnieuw hoeft te implementeren. U hebt een [Microsoft Azure](https://azure.com)-abonnement nodig.
 
@@ -31,15 +34,15 @@ Status Monitor wordt gebruikt om een .NET-toepassing die in IIS wordt gehost on-
 - (Er zijn ook afzonderlijke artikelen over het instrumenteren van [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
 
 
-![Schermopname van App Insights-overzicht grafieken met informatie over mislukte aanvragen, serverreactietijd en serveraanvragen](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Scherm afbeelding van de overzichts grafieken van app Insights met informatie over mislukte aanvragen, reactie tijd van de server en server aanvragen](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 U kunt kiezen uit twee routes om Application Insights toe te passen op uw .NET-webtoepassingen:
 
-* **Build-tijd:** [Voeg de Application INSIGHTS SDK][greenbrown] toe aan de code van uw web-app.
-* **Uitvoerings tijd:** Instrumenteer uw web-app op de server, zoals hieronder wordt beschreven, zonder de code opnieuw te maken en opnieuw te implementeren.
+* **Build-tijd:** [Voeg de Application Insights SDK][greenbrown] toe aan de code van uw web-app.
+* **Tijdens het gebruik:** Instrumenteer uw web-app op de server, zoals hieronder wordt beschreven, zonder deze opnieuw op te bouwen en de code opnieuw te implementeren.
 
 > [!NOTE]
-> Als u de opbouw tijd instrumentatie gebruikt, werkt de runtime-instrumentatie niet, zelfs niet als deze is ingeschakeld.
+> Als u de opbouw tijd instrumentatie gebruikt, werkt uitvoerings tijd instrumentatie niet, zelfs niet als het is ingeschakeld.
 
 Hier volgt een samenvatting van wat elke route u biedt:
 
@@ -64,7 +67,7 @@ Als uw app wordt gehost op een IIS-server, kunt u Application Insights inschakel
 2. Als Application Insights Status Monitor nog niet is geïnstalleerd, download u het [installatieprogramma](#download) en voert u het uit
 3. In Status Monitor selecteert u de geïnstalleerde web-app of website die u wilt bewaken. Meld u aan met uw Azure-referenties.
 
-    Configureer de resource waarvan u de resultaten wilt weergeven in de Application Insights-portal. (Normaal gesproken is het het beste om een nieuwe resource te maken. Selecteer een bestaande resource als u al webtests of [client bewaking][client] hebt voor deze app.) [][availability] 
+    Configureer de resource waarvan u de resultaten wilt weergeven in de Application Insights-portal. (Normaal gesproken is het het beste om een nieuwe resource te maken. Selecteer een bestaande resource als u al [webtests][availability] of [client bewaking][client] hebt voor deze app.) 
 
     ![Kies een app en een resource.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -145,12 +148,12 @@ Dit probleem wordt [hier](https://github.com/Microsoft/ApplicationInsights-Home/
   
 ### <a name="detailed-logs"></a>Gedetailleerde logboeken
 
-* Standaard Status Monitor worden Diagnostische logboeken uitgevoerd op:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Standaard Status Monitor worden Diagnostische logboeken uitgevoerd op: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
-* Als u uitgebreide logboeken wilt uitvoeren, wijzigt u het `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` configuratie bestand `<add key="TraceLevel" value="All" />` : en `appsettings`voegt u toe aan de.
+* Als u uitgebreide logboeken wilt uitvoeren, wijzigt u het configuratie bestand: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` en voegt u `<add key="TraceLevel" value="All" />` toe aan de `appsettings`.
 Start de status monitor vervolgens opnieuw.
 
-* Als Status Monitor is een .NET-toepassing, kunt u ook .net-tracering inschakelen [door de juiste diagnostische gegevens toe te voegen aan het configuratie bestand](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). In sommige scenario's kan het bijvoorbeeld nuttig zijn om te zien wat er gebeurt op netwerk niveau door [netwerk tracering te configureren](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* Als Status Monitor is een .NET-toepassing, kunt u ook [.net-tracering inschakelen door de juiste diagnostische gegevens toe te voegen aan het configuratie bestand](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). In sommige scenario's kan het bijvoorbeeld nuttig zijn om te zien wat er gebeurt op netwerk niveau door [netwerk tracering te configureren](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
 
 ### <a name="insufficient-permissions"></a>Onvoldoende machtigingen
   
@@ -189,9 +192,9 @@ Ondersteuning van het besturingssysteem voor Application Insights Status Monitor
 
 met de nieuwste SP en .NET Framework 4,5 (Status Monitor is gebaseerd op deze versie van het Framework)
 
-Aan de client zijde: Windows 7, 8, 8,1 en 10, opnieuw met .NET Framework 4,5
+Aan de clientzijde: Windows 7, 8, 8.1 en 10, eveneens met .NET Framework 4.5
 
-IIS-ondersteuning is: IIS 7, 7,5, 8, 8,5 (IIS is vereist)
+Ondersteuning voor IIS is: IIS 7, 7.5, 8, 8.5 (IIS is vereist)
 
 ## <a name="automation-with-powershell"></a>Automatisering met PowerShell
 Met PowerShell kunt u de bewaking op de IIS-server starten en stoppen.
@@ -208,9 +211,9 @@ Controleer welke apps worden bewaakt:
 * Geeft de Application Insights-bewakingsstatus voor elke web-app (of de benoemde app) op deze IIS-server.
 * Retourneert `ApplicationInsightsApplication` voor elke app:
 
-  * `SdkState==EnabledAfterDeployment`: De app wordt bewaakt en is in runtime geinstrumenteerd, hetzij door het Status Monitor-hulp programma, hetzij `Start-ApplicationInsightsMonitoring`door.
-  * `SdkState==Disabled`: De app heeft geen instrument voor Application Insights. De app is niet geïnstrumenteerd, of bewaking tijdens de uitvoering is uitgeschakeld met het hulpprogramma Status Monitor of met `Stop-ApplicationInsightsMonitoring`.
-  * `SdkState==EnabledByCodeInstrumentation`: De app is ingeinstrumenteerd door de SDK toe te voegen aan de bron code. De SDK kan niet worden bijgewerkt of gestopt.
+  * `Start-ApplicationInsightsMonitoring`: de app wordt bewaakt en was in runtime geïnstrumenteerd, door het hulpprogramma Status Monitor of door `SdkState==EnabledAfterDeployment`.
+  * `SdkState==Disabled` : de app is niet geïnstrumenteerd voor Application Insights. De app is niet geïnstrumenteerd, of bewaking tijdens de uitvoering is uitgeschakeld met het hulpprogramma Status Monitor of met `Stop-ApplicationInsightsMonitoring`.
+  * `SdkState==EnabledByCodeInstrumentation`: de app was geïnstrumenteerd door de SDK toe te voegen aan de broncode. De SDK kan niet worden bijgewerkt of gestopt.
   * `SdkVersion` toont de versie die voor het bewaken van deze app wordt gebruikt.
   * `LatestAvailableSdkVersion` toont de versie die momenteel beschikbaar is in de NuGet-galerie. Als u de app naar deze versie wilt bijwerken, gebruikt u `Update-ApplicationInsightsMonitoring`.
 
@@ -243,8 +246,8 @@ Controleer welke apps worden bewaakt:
 
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
-* `-Name`: De naam van een web-app in IIS.
-* `-InstrumentationKey` (Optioneel.) Gebruik deze om de resource te wijzigen waarnaar de telemetrie van de app wordt verzonden.
+* `-Name` : de naam van een web-app in IIS.
+* `-InstrumentationKey` (optioneel.) Gebruik deze om de resource te wijzigen waarnaar de telemetrie van de app wordt verzonden.
 * Deze cmdlet:
   * Upgradet de benoemde app naar de versie van de SDK die het laatst naar deze computer is gedownload. (Werkt alleen als `SdkState==EnabledAfterDeployment`)
   * Als u een instrumentatiesleutel opgeeft, wordt de vermelde app opnieuw geconfigureerd voor het verzenden van telemetrie naar de resource met die sleutel. (Werkt als `SdkState != Disabled`)
@@ -274,12 +277,12 @@ Status Monitor verzamelt niet zelf telemetrie. Het configureert enkel de web-app
 
 Wanneer u een web-app selecteert die u met Status Monitor wilt instrumenteren:
 
-* Gedownload en wordt de Application Insights-assembly's en het bestand ApplicationInsights.config in de web-app binaire bestanden map geplaatst.
+* Hiermee worden de Application Insights-assembly's en het bestand ApplicationInsights. config gedownload en geplaatst in de map binaire bestanden van de web-app.
 * Schakelt CLR-profilering in voor het verzamelen van afhankelijkheidsaanroepen.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Welke versie van Application Insights-SDK installeren Status Monitor?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Welke versie van Application Insights SDK wordt Status Monitor geïnstalleerd?
 
-Vanaf nu kunt Status Monitor alleen Application Insights-SDK-versie 2.3 of 2.4 installeren. 
+Vanaf nu kunnen Status Monitor alleen Application Insights SDK-versie 2,3 of 2,4 installeren. 
 
 De Application Insights SDK-versie 2,4 is de [laatste versie voor de ondersteuning van .net 4,0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) die [EOL januari 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Daarom kan vanaf nu Status Monitor worden gebruikt voor het instrumenteren van een .NET 4,0-toepassing. 
 
@@ -314,7 +317,7 @@ Voor toepassingen die bij het compileren al zijn geïnstrumenteerd:
 
 - De nieuwe [Power shell-module](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) gebruiken
 - Het [status monitor-installatie programma](https://go.microsoft.com/fwlink/?LinkId=506648) downloaden en uitvoeren
-- Of voer het [installatie programma](https://www.microsoft.com/web/downloads/platform.aspx) voor het webplatform uit en zoek het naar Application Insights status monitor.
+- Of voer het [installatie programma voor het webplatform](https://www.microsoft.com/web/downloads/platform.aspx) uit en zoek het naar Application Insights status monitor.
 
 ## <a name="next"></a>Volgende stappen
 
@@ -326,8 +329,8 @@ Uw telemetrie weergeven:
 
 Meer telemetrie toevoegen:
 
-* [Maak][availability] webtests om ervoor te zorgen dat uw site actief blijft.
-* [Voeg][usage] de telemetrie van de webclient toe om de uitzonde ringen van de webpagina code te bekijken en om u toe te voegen tracerings aanroepen
+* [Maak webtests][availability] om ervoor te zorgen dat uw site actief blijft.
+* [Voeg de telemetrie van de webclient][usage] toe om de uitzonde ringen van de webpagina code te bekijken en om u toe te voegen tracerings aanroepen
 * [Voeg Application INSIGHTS SDK toe aan uw code][greenbrown] , zodat u tracerings-en logboek aanroepen kunt invoegen.
 
 <!--Link references-->

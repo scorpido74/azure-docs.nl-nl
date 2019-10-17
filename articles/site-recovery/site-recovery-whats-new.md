@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372255"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383563"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -24,8 +24,8 @@ U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-upd
 
 Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire regio, of on-premises virtuele VMware-machines of fysieke servers naar Azure, moet u rekening houden met het volgende:
 
-- Vanuit versie 9.30. x. x van de extensie van de Mobility-service (voor Azure-Vm's) en de Mobility Service-agent (voor VMware/fysieke machines) moeten op bepaalde besturings systemen van de machine de onderhouds stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
-- Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB.
+- Van versie 9.30. x. x (verwachte release vanaf november 2019) van de extensie van de Mobility-service (voor Azure-Vm's) en Mobility Service-agent (voor VMware/fysieke machines) moeten op sommige besturings systemen van de machine de service stack-update en SHA-2 worden uitgevoerd. Details worden weer gegeven in de volgende tabel.
+- Installeer de update en SHA-2 in overeenstemming met de gekoppelde KB. SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt.
 - Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 
 **Besturingssysteem** | **Azure VM** | **VMware-VM/fysieke machine**

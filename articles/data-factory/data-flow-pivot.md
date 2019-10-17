@@ -6,43 +6,43 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029309"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387800"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Trans formatie van Azure data factory Pivot
 
 
 Gebruik Pivot in ADF-gegevens stroom als aggregatie waarbij een of meer groeperings kolommen de afzonderlijke rijwaarden in afzonderlijke kolommen hebben getransformeerd. In wezen kunt u rij-waarden in nieuwe kolommen draaien (gegevens omzetten in meta gegevens).
 
-![Draai opties](media/data-flow/pivot1.png "draai tabel 1")
+![Opties voor draai diagram](media/data-flow/pivot1.png "Draai tabel 1")
 
 ## <a name="group-by"></a>Groeperen op
 
-![Draai opties](media/data-flow/pivot2.png "draai tabel 2")
+![Opties voor draai diagram](media/data-flow/pivot2.png "Draai tabel 2")
 
 Stel eerst de kolommen in waarop u wilt groeperen voor de aggregatie van de draai tabel. U kunt hier meer dan 1 kolom instellen met het plus teken naast de kolom lijst.
 
 ## <a name="pivot-key"></a>Draai sleutel
 
-![Draai opties](media/data-flow/pivot3.png "draai tabel 3")
+![Opties voor draai diagram](media/data-flow/pivot3.png "Draai tabel 3")
 
 De Pivot-toets is de kolom die ADF van rij naar kolom draait. Standaard wordt elke unieke waarde in de gegevensset voor dit veld naar een kolom gedraaid. U kunt eventueel ook de waarden opgeven uit de gegevensset die u wilt draaien naar kolom waarden. Dit is de kolom die bepaalt welke nieuwe kolommen er worden gemaakt.
 
 ## <a name="pivoted-columns"></a>Gedraaide kolommen
 
-![Draai opties](media/data-flow/pivot4.png "draai tabel 4")
+![Opties voor draai diagram](media/data-flow/pivot4.png "Draai tabel 4")
 
 Ten slotte kiest u de aggregatie die u wilt gebruiken voor de gedraaide waarden en hoe u wilt dat de kolommen worden weer gegeven in de nieuwe uitvoer projectie van de trans formatie.
 
 Beschrijving U kunt een naamgevings patroon met een voor voegsel, Midden en achtervoegsel instellen dat moet worden toegevoegd aan elke nieuwe kolom naam uit de rijwaarden.
 
-Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou resulteren in nieuwe kolom waarden van elke verkoop waarde, dat wil zeggen. "25", "50", "1000" enz. Als u echter de waarde ' verkopen-' instelt voor het voor voegsel, zou elke kolom waarde ' verkoop-' aan het begin van de waarde toevoegen.
+Bijvoorbeeld: het draaien van ' verkoop ' op ' regio ' zou resulteren in nieuwe kolom waarden van elke verkoop waarde, dat wil zeggen ' 25 ', ' 50 ', ' 1000 ' enzovoort. Als u echter de waarde ' verkopen-' instelt voor het voor voegsel, zou elke kolom waarde ' verkoop-' aan het begin van de waarde toevoegen.
 
-![Draai opties](media/data-flow/pivot5.png "draai tabel 5")
+![Opties voor draai diagram](media/data-flow/pivot5.png "Draai tabel 5")
 
 Als u de rang schikking van de kolom instelt op normaal, worden alle gedraaide kolommen gegroepeerd met de geaggregeerde waarden. Als u de rang schikking van de kolommen instelt op ' zijdelings ', wordt er een alternatief voor de kolom en waarde.
 
@@ -60,7 +60,7 @@ Met de draai transformatie worden nieuwe kolom namen geproduceerd die dynamisch 
 
 Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarden. U kunt deze nieuwe kolommen omzetten in meta gegevens waarnaar later in uw gegevens stroom kan worden verwezen. Hiertoe klikt u op het tabblad voor beeld van gegevens. Alle nieuwe kolommen die door de draai tabel transformatie worden gegenereerd, worden weer gegeven met een pictogram met een ' gedrijfte ' in de tabelkop. Klik op de knop voor het toewijzen van een kaart om deze nieuwe kolommen in meta gegevens in te scha kelen, zodat ze deel uitmaken van het model van de gegevens stroom.
 
-![Draai tabel kolommen]toegewezen geplaatste(media/data-flow/newpivot1.png "draai kolommen")
+![Draai kolommen](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
 
 ### <a name="landing-new-columns-in-sink"></a>Nieuwe kolommen in Sink-overloop
 

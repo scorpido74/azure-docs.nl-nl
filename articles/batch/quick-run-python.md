@@ -12,18 +12,20 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: e5ec131e73c40e72862122d360574bb4ee5d3cda
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329366"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437366"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met de Python API
 
-In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een toepassing die is gebouwd op de Azure Batch Python API. Met de app worden verschillende invoerbestanden geüpload naar Azure-opslag en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt een *Batch-voorbeeldtaak* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
+In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een toepassing die is gebouwd op de Azure Batch Python API.  Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
+
+Met de app worden verschillende invoerbestanden geüpload naar Azure-opslag en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt een *Batch-voorbeeldtaak* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht.
  
-![Snelstartgids: app-werkstroom](./media/quick-run-python/sampleapp.png)
+![Overzicht van de Azure Batch werk stroom](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

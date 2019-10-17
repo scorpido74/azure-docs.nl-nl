@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Tracering starten | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Start-Trace. ETW-logboeken verzamelen van Status Monitor en Application Insights SDK.
+title: 'API-naslag informatie over Azure-toepassing Insights-agent: tracering starten | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Start-Trace. ETW-logboeken verzamelen van Status Monitor en Application Insights SDK.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200369"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389851"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Status Monitor v2-API: Start-ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights agent-API: start-ApplicationInsightsMonitoringTrace
 
 In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 
 Verzamelt [etw-gebeurtenissen](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) vanuit de runtime van code koppelen. Deze cmdlet is een alternatief voor het uitvoeren van [PerfView](https://github.com/microsoft/perfview).
 
 Verzamelde gebeurtenissen worden in realtime afgedrukt op de console en opgeslagen in een ETL-bestand. Het ETL-bestand van de uitvoer kan worden geopend door [PerfView](https://github.com/microsoft/perfview) voor verder onderzoek.
 
-Deze cmdlet wordt uitgevoerd totdat de time-outperiode (standaard 5 minuten) of hand matig (`Ctrl + C`) is bereikt.
+Deze cmdlet wordt uitgevoerd totdat de time-outperiode (standaard 5 minuten) is bereikt of hand matig wordt gestopt (`Ctrl + C`).
 
 > [!IMPORTANT] 
 > Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen vereist.
@@ -43,17 +43,17 @@ Normaal gesp roken wordt u gevraagd om gebeurtenissen te verzamelen om te onderz
 Tijdens de uitvoering van het programma code koppelen worden ETW-gebeurtenissen meegeteld wanneer IIS wordt gestart en wanneer de toepassing wordt gestart.
 
 Deze gebeurtenissen verzamelen:
-1. Voer `iisreset /stop` in een cmd-console met beheerders bevoegdheden uit om IIS en alle web-apps uit te scha kelen.
+1. Voer `iisreset /stop` uit in een cmd-console met beheerders bevoegdheden om IIS en alle web-apps uit te scha kelen.
 2. Deze cmdlet uitvoeren
-3. Voer in een cmd-console met beheerders bevoegdheden `iisreset /start` uitvoeren uit om IIS te starten.
+3. Voer `iisreset /start` uit in een cmd-console met beheerders bevoegdheden om IIS te starten.
 4. Probeer naar uw app te bladeren.
 5. Nadat de app is geladen, kunt u deze hand matig stoppen (`Ctrl + C`) of wachten op de time-out.
 
 ### <a name="what-events-to-collect"></a>Welke gebeurtenissen moeten worden verzameld
 
 Er zijn drie opties voor het verzamelen van gebeurtenissen:
-1. Gebruik de Schakel `-CollectSdkEvents` optie voor het verzamelen van gebeurtenissen die afkomstig zijn van de Application Insights SDK.
-2. Gebruik de Schakel `-CollectRedfieldEvents` optie voor het verzamelen van gebeurtenissen die worden gegenereerd door status monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
+1. Gebruik de schakel optie `-CollectSdkEvents` om gebeurtenissen te verzamelen die afkomstig zijn van de Application Insights SDK.
+2. Gebruik de schakel optie `-CollectRedfieldEvents` om gebeurtenissen te verzamelen die worden gegenereerd door Status Monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
 3. Gebruik beide Schakel opties om beide gebeurtenis typen te verzamelen.
 4. Standaard als er geen schakelaar is opgegeven, worden beide gebeurtenis typen verzameld.
 
@@ -61,24 +61,24 @@ Er zijn drie opties voor het verzamelen van gebeurtenissen:
 ## <a name="parameters"></a>Parameters
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Optioneel.** Gebruik deze para meter om in te stellen hoe lang dit script gebeurtenissen moet verzamelen. Standaard is dit 5 minuten.
+**Beschrijving.** Gebruik deze para meter om in te stellen hoe lang dit script gebeurtenissen moet verzamelen. Standaard is dit 5 minuten.
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**Optioneel.** Gebruik deze schakel optie om de map uitvoermap van het ETL-bestand in te stellen. Dit bestand wordt standaard gemaakt in de map Power shell-modules. Het volledige pad wordt weer gegeven tijdens het uitvoeren van het script.
+**Beschrijving.** Gebruik deze schakel optie om de map uitvoermap van het ETL-bestand in te stellen. Dit bestand wordt standaard gemaakt in de map Power shell-modules. Het volledige pad wordt weer gegeven tijdens het uitvoeren van het script.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Optioneel.** Gebruik deze schakel optie om Application Insights SDK-gebeurtenissen te verzamelen.
+**Beschrijving.** Gebruik deze schakel optie om Application Insights SDK-gebeurtenissen te verzamelen.
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**Optioneel.** Gebruik deze schakel optie om gebeurtenissen van Status Monitor en de Redfield-runtime te verzamelen.
+**Beschrijving.** Gebruik deze schakel optie om gebeurtenissen van Status Monitor en de Redfield-runtime te verzamelen.
 
 ### <a name="-verbose"></a>-Verbose
 **Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 
 ### <a name="example-of-application-startup-logs"></a>Voor beeld van opstart logboeken van toepassingen
@@ -115,13 +115,13 @@ Timeout Reached. Stopping...
 
 Extra probleem oplossing:
 
-- Bekijk hier de aanvullende stappen voor probleem oplossing: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- Bekijk de volgende stappen voor het oplossen van problemen: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
 - Raadpleeg de [API-verwijzing](status-monitor-v2-overview.md#powershell-api-reference) voor meer informatie over de para meters die u mogelijk hebt gemist.
 - Als u meer hulp nodig hebt, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 
 
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
  - Stel [de configuratie](status-monitor-v2-api-get-config.md) in om te bevestigen dat de instellingen correct zijn geregistreerd.
  - [De status ophalen om de](status-monitor-v2-api-get-status.md) bewaking te controleren.

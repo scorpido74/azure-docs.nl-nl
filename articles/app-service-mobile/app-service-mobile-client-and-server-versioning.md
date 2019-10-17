@@ -14,17 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 87c64a98d783d2604c985017fbce586ed51e5c9d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5be72a4125b276d85174a7a056cbbc2c23053e89
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025438"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388883"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client-en Server versie beheer in Mobile Apps en Mobile Services
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 De nieuwste versie van Azure Mobile Services is de **Mobile apps** -functie van Azure app service.
 
@@ -38,9 +39,9 @@ De sleutel `ZUMO-API-VERSION` kan worden opgegeven in de HTTP-header of in de qu
 
 Bijvoorbeeld:
 
-@NO__T OPHALEN-0
+@No__t ophalen-0
 
-KOPPEN ZUMO-API-VERSIE: 2.0.0
+HEADERS: ZUMO-API-VERSION: 2.0.0
 
 POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
@@ -65,16 +66,16 @@ Versie controle is opgenomen in de volgende server SDK-versies:
 
 | Server platform | SDK | Geaccepteerde versie header |
 | --- | --- | --- |
-| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Micro soft. Azure. Mobile. server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[Azure-Mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Gedrag van Mobile Apps back-ends
 | ZUMO-API-VERSIE | Waarde van MS_SkipVersionCheck | Antwoord |
 | --- | --- | --- |
-| x. y. z of Null |Waar |200 - OK |
+| x. y. z of Null |True |200-OK |
 | Null |ONWAAR/niet opgegeven |400 - Foute aanvraag |
 | 1. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
-| 2.0.0-2. x. y |ONWAAR/niet opgegeven |200 - OK |
+| 2.0.0-2. x. y |ONWAAR/niet opgegeven |200-OK |
 | 3.0.0-3. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
 
 [Mobile Services clients]: #MobileServicesClients

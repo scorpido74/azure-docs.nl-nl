@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Bewaking uitschakelen | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Disable-ApplicationInsightsMonitoring. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: 'Azure-toepassing Insights API-referentie voor agent: bewaking uitschakelen | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Disable-ApplicationInsightsMonitoring. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203431"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389905"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Status Monitor v2-API: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights agent-API: Disable-ApplicationInsightsMonitoring
 
 In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 
 Hiermee schakelt u de bewaking op de doel computer uit.
 Met deze cmdlet worden bewerkingen verwijderd uit IIS applicationHost. config en worden de register sleutels verwijderd.
@@ -42,7 +42,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="-verbose"></a>-Verbose
 **Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>Voorbeeld uitvoer van het uitschakelen van de bewaking
@@ -71,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .

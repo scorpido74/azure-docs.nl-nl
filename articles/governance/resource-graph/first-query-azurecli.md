@@ -3,17 +3,17 @@ title: Uw eerste query uitvoeren met Azure CLI
 description: Dit artikel helpt u bij de stappen om de Resource Graph-extensie voor Azure CLI in te schakelen en uw eerste query uit te voeren.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976715"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389740"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure CLI
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure CLI
 
 De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het controleren of de extensie voor [Azure CLI](/cli/azure/) is geïnstalleerd. In deze snelstartgids doorloopt u het proces voor het toevoegen van de extensie aan uw Azure CLI-installatie. U kunt de extensie gebruiken met een lokale installatie van Azure CLI of via de [Azure Cloud Shell](https://shell.azure.com).
 
@@ -54,7 +54,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -64,7 +64,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.

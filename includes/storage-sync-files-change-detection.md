@@ -1,17 +1,17 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: tamram
-ms.openlocfilehash: 59adee2f1d6a99a0a984b9b63c7201266b6381d4
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.author: rogarana
+ms.openlocfilehash: 55456a6be938411d3c08a0eaa8fdbfb0844e7129
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69984531"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391615"
 ---
-Wijzigingen die zijn aangebracht in de Azure-bestands share met behulp van de Azure Portal of SMB worden niet onmiddellijk gedetecteerd en gerepliceerd zoals wijzigingen in het server eindpunt. Azure Files hebt nog geen wijzigings meldingen of Logboeken, dus is er geen manier om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd. Op Windows Server maakt Azure File Sync gebruik van [Windows USN](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) -Logboeken om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd.
+Wijzigingen die zijn aangebracht in de Azure-bestands share met behulp van de Azure Portal of SMB worden niet onmiddellijk gedetecteerd en gerepliceerd zoals wijzigingen in het server eindpunt. Azure Files hebt nog geen wijzigings meldingen of Logboeken, dus is er geen manier om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd. Op Windows Server maakt Azure File Sync gebruik van [Windows USN-logboeken](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd.
 
 Om wijzigingen in de Azure-bestands share te detecteren, heeft Azure File Sync een geplande taak die een *wijzigings detectie taak*wordt genoemd. Een wijzigings detectie taak inventariseert elk bestand in de bestands share en vergelijkt deze met de synchronisatie versie voor dat bestand. Wanneer de wijzigings detectie taak bepaalt dat bestanden zijn gewijzigd, Azure File Sync initieert een synchronisatie sessie. De wijzigings detectie taak wordt elke 24 uur geïnitieerd. Omdat de wijzigings detectie taak werkt door elk bestand in de Azure-bestands share te inventariseren, neemt de detectie van wijzigingen langer deel uit van grotere naam ruimten dan in kleinere naam ruimten. Voor grote naam ruimten kan het langer dan eenmaal per 24 uur duren om te bepalen welke bestanden zijn gewijzigd.
 

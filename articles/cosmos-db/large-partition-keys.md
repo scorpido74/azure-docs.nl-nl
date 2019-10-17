@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811713"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436807"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Containers met een grote partitie sleutel maken
 
@@ -21,7 +21,7 @@ Grote partitie sleutels worden ondersteund met behulp van de functionaliteit van
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Een grote partitie sleutel maken (Azure Portal)
 
-Als u een grote partitie sleutel wilt maken en u een nieuwe container maakt met behulp van de Azure Portal, controleert u of de **sleutel mijn partitie groter is dan 100-bytes** . Standaard zijn alle nieuwe containers aangemeld met behulp van de grote partitie sleutels. Schakel het selectie vakje uit als u geen grote partitie sleutels nodig hebt of als u toepassingen hebt die worden uitgevoerd op de Sdk's-versie die ouder is dan 1,18.
+Als u een grote partitie sleutel wilt maken wanneer u een nieuwe container maakt met behulp van de Azure Portal, controleert u of de **sleutel mijn partitie groter is dan 100-bytes** . Schakel het selectie vakje uit als u geen grote partitie sleutels nodig hebt of als u toepassingen hebt die worden uitgevoerd op de Sdk's-versie die ouder is dan 1,18.
 
 ![Grote partitie sleutels maken met behulp van Azure Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
 
@@ -33,7 +33,7 @@ Als u een container met ondersteuning voor grote partitie sleutels wilt maken, r
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>Een grote partitie sleutel maken (.NET SDK)
 
-Als u een container met een grote partitie sleutel met behulp van de .net- `PartitionKeyDefinitionVersion.V2` SDK wilt maken, geeft u de eigenschap op. In het volgende voor beeld ziet u hoe u de eigenschap Version opgeeft in het PartitionKeyDefinition-object en deze instelt op PartitionKeyDefinitionVersion. v2.
+Als u een container met een grote partitie sleutel met behulp van de .NET-SDK wilt maken, geeft u de eigenschap `PartitionKeyDefinitionVersion.V2` op. In het volgende voor beeld ziet u hoe u de eigenschap Version opgeeft in het PartitionKeyDefinition-object en deze instelt op PartitionKeyDefinitionVersion. v2.
 
 ### <a name="v3-net-sdk"></a>v3 .NET SDK
 
@@ -71,7 +71,7 @@ De grote partitie sleutels worden ondersteund met de volgende minimum versies va
 |.Net     |    1,18     |
 |Java-synchronisatie     |   2.4.0      |
 |Java async   |  2.5.0        |
-| REST-API | versie hoger dan `2017-05-03` met behulp `x-ms-version` van de aanvraag header.|
+| REST-API | versie hoger dan `2017-05-03` met behulp van de `x-ms-version`-aanvraag header.|
 
 Op dit moment kunt u geen containers met een grote partitie sleutel gebruiken in Power BI en Azure Logic Apps. U kunt containers gebruiken zonder een grote partitie sleutel van deze toepassingen.
 

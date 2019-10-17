@@ -14,17 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 440ba2cd7ac9cea19f903dff493790194962e1e8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299485"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427920"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Snelstart: Een virtuele Linux-machine maken met de Azure CLI
 
-In deze Quick start ziet u hoe u de Azure-opdracht regel interface (CLI) kunt gebruiken om een virtuele Linux-machine (VM) in azure te implementeren. De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze zelfstudie installeren we Ubuntu 16.04 LTS. Als u wilt zien hoe de virtuele machine in de praktijk werkt, moet u hiermee verbinding maken via SSH en de NGINX-webserver installeren.
+In deze Quick start ziet u hoe u de Azure-opdracht regel interface (CLI) kunt gebruiken om een virtuele Linux-machine (VM) in azure te implementeren. De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts.
+
+In deze zelfstudie installeren we Ubuntu 16.04 LTS. Als u wilt zien hoe de virtuele machine in de praktijk werkt, moet u hiermee verbinding maken via SSH en de NGINX-webserver installeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -107,7 +113,7 @@ Wanneer u klaar bent, typt u `exit` om de SSH-sessie te verlaten.
 
 Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Gebruik het openbare IP-adres van uw VM als webadres. In het volgende voorbeeld ziet u de NGINX-standaardwebsite:
 
-![NGINX standaard welkomst pagina](./media/quick-create-cli/nginix-welcome-page.png)
+![De welkomstpagina van NGINX weergeven](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

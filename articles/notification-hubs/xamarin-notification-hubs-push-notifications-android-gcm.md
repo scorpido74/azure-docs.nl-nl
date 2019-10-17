@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen verzenden naar Xamarin.Android-apps met Azure Notification Hubs | Microsoft Docs
+title: Push meldingen verzenden naar Xamarin. Android-apps met behulp van Azure Notification Hubs | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Xamarin.Android-toepassing.
 author: sethmanheim
 manager: femila
@@ -17,14 +17,14 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: cba84b0f07db3a69cc964e47657a3f6b64659e6a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213567"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387654"
 ---
-# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Xamarin.Android-apps met behulp van Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar Xamarin. Android-apps met Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -87,12 +87,12 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     ![Pakketnaam in GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Stel de Android-doel versie voor het project in op **android 9,0 (cirkel)** door de volgende stappen uit te voeren: 
     1. Klik met de rechter muisknop op het project en selecteer **Eigenschappen**. 
-    1. Voor het **compileren met behulp van Android-versie: (Target Framework)** selecteert u **Android 9,0 (cirkel).** 
+    1. Selecteer voor het **compileren met behulp van Android-versie: (Target Framework)** het veld **Android 9,0 (cirkel)** . 
     1. Selecteer **Ja** in het bericht venster om door te gaan met het wijzigen van het doel raamwerk.
 1. Voeg de vereiste NuGet-pakketten aan het project toe door de volgende stappen uit te voeren:
     1. Klik met de rechtermuisknop op het project en selecteer **Manage NuGet Packages...** .
     1. Ga naar het tabblad **geïnstalleerd** , selecteer **Xamarin. Android. support. Design**en selecteer **bijwerken** in het rechterdeel venster om het pakket bij te werken naar de meest recente versie.
-    1. Ga naar het tabblad **Bladeren** . Zoek naar **Xamarin.GooglePlayServices.Base**. Selecteer **Xamarin.GooglePlayServices.Base** in de lijst met resultaten. Selecteer vervolgens **Install**.
+    1. Ga naar het tabblad **Bladeren** . Zoek naar **Xamarin. GooglePlayServices. base**. Selecteer **Xamarin.GooglePlayServices.Base** in de lijst met resultaten. Selecteer vervolgens **Install**.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
     6. Zoek in het venster **NuGet Package Manager** naar **Xamarin.Firebase.Messaging**. Selecteer **Xamarin.Firebase.Messaging** in de lijst met resultaten. Selecteer vervolgens **Install**.
@@ -135,8 +135,8 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
 
 3. Verzamel de volgende informatie voor uw Android-app en Notification Hub:
 
-   * **Verbindingsreeks voor luisteren**: Kies op het dashboard in de [Azure-portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
-   * **Hubnaam**: Naam van uw hub in de [Azure-portal]. Bijvoorbeeld *mynotificationhub2*.
+   * **Verbindingsreeks voor luisteren**: kies op het dashboard in [Azure-portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
+   * **Hubnaam**: de naam van uw hub in [Azure-portal]. Bijvoorbeeld *mynotificationhub2*.
 4. Klik in het venster **Solution Explorer** met de rechtermuisknop op uw **project**, selecteer **Add** en vervolgens **Class**.
 5. Maak een klasse `Constants.cs` voor uw Xamarin-project en definieer de volgende constantewaarden in de klasse. Vervang de tijdelijke aanduidingen door de waarden.
 
@@ -229,7 +229,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     CreateNotificationChannel();
     ```
 
-15. Voeg een klasse met `MyFirebaseMessagingService` de naam toe aan uw project. 
+15. Voeg een klasse met de naam `MyFirebaseMessagingService` toe aan uw project. 
 16. Voeg de volgende using-instructies toe aan `MyFirebaseMessagingService.cs`.
 
     ```csharp
@@ -248,7 +248,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Voeg de volgende code toe `MyFirebaseMessagingService.cs` om de ontvangen berichten te verwerken. 
+18. Voeg de volgende code toe aan `MyFirebaseMessagingService.cs` om ontvangen berichten te verwerken. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";

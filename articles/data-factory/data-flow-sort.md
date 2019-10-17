@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: f9d2699c870de21daea9ce421c79f089c04b99fa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 029ce3c509d3f4d241012d3786e60f0c6e95fdc2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387176"
 ---
 # <a name="azure-data-factory-data-flow-sort-transformations"></a>Trans formaties Azure Data Factory gegevens stroom sorteren
 
 
 
-Sorteer ![instellingen](media/data-flow/sort.png "sorteren")
+![Instellingen sorteren](media/data-flow/sort.png "Sorteren")
 
 Met de sorteer transformatie kunt u de binnenkomende rijen op de huidige gegevens stroom sorteren. De uitgaande rijen van de sorteer transformatie volgen daarna de regels die u hebt ingesteld. U kunt afzonderlijke kolommen kiezen en deze oplopend of DEC sorteren met behulp van de pijl-indicator naast elk veld. Als u de kolom wilt wijzigen voordat u de sortering toepast, klikt u op berekende kolommen om de expressie-editor te starten. Dit biedt de mogelijkheid om een expressie voor de sorteer bewerking te bouwen in plaats van eenvoudigweg een kolom voor de sortering toe te passen.
 

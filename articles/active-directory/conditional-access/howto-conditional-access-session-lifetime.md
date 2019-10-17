@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c93c9fe2b34ae3b87c44608cc5c5c8947ecc73
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499839"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389672"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Verificatie sessie beheer met voorwaardelijke toegang configureren
 
@@ -37,7 +37,7 @@ Met de aanmeldings frequentie wordt de tijds periode gedefinieerd voordat een ge
 
 De standaard configuratie van de Azure Active Directory (Azure AD) voor de aanmeldings frequentie van gebruikers is een draaiende Window van 90 dagen. Het is vaak een goed idee om gebruikers te vragen om referenties, maar dit kan Backfire: gebruikers die zijn getraind om hun referenties op te geven zonder dat ze dit doen, kunnen ze per ongeluk door geven aan een kwaad aardige referentie prompt.
 
-Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich gedurende 90 dagen opnieuw kan aanmelden. in werkelijkheid wordt een schending van de IT-beleids regels voor de sessie ingetrokken. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
+Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
 
 De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OIDC-protocollen zijn geïmplementeerd volgens de standaarden. De meeste micro soft-apps voor Windows, Mac en Mobile voldoen aan de instelling.
 
@@ -45,8 +45,8 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 
 Met een permanente browser sessie kunnen gebruikers aangemeld blijven nadat ze het browser venster hebben gesloten en opnieuw hebben geopend.
 
-Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op persoonlijke apparaten kiezen of ze de sessie willen blijven door een ' aangemeld blijven? ' weer te geven. vragen na geslaagde verificatie. Als de browser persistentie is geconfigureerd in AD FS met behulp van [de richt lijnen in het artikel](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)AD FS instellingen voor eenmalige aanmelding, zullen we voldoen aan dit beleid en de Azure AD-sessie behouden. U kunt ook configureren of gebruikers in uw Tenant de ' aangemeld blijven? ' moeten zien. prompt door de juiste instelling te wijzigen in het deel venster huis stijl in Azure Portal met behulp van de richt lijnen in het artikel [uw Azure AD-aanmeldings pagina aanpassen](../fundamentals/customize-branding.md).
+Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op persoonlijke apparaten kiezen of ze de sessie willen blijven door een ' aangemeld blijven? ' weer te geven. vragen na geslaagde verificatie. Als de browser persistentie is geconfigureerd in AD FS met behulp van de richt lijnen in het artikel [AD FS instellingen voor eenmalige aanmelding](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+), zullen we voldoen aan dit beleid en de Azure AD-sessie behouden. U kunt ook configureren of gebruikers in uw Tenant de ' aangemeld blijven? ' moeten zien. prompt door de juiste instelling te wijzigen in het deel venster huis stijl in Azure Portal met behulp van de richt lijnen in het artikel [uw Azure AD-aanmeldings pagina aanpassen](../fundamentals/customize-branding.md).
 
 ## <a name="configuring-authentication-session-controls"></a>Verificatie sessie besturings elementen configureren
 
@@ -55,7 +55,7 @@ Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Prem
 > [!WARNING]
 > Als u de functie [levens duur](../develop/active-directory-configurable-token-lifetimes.md) van het token in de open bare preview gebruikt, bieden we geen ondersteuning voor het maken van twee verschillende beleids regels voor dezelfde combi natie van gebruiker of app: een met deze functie en een andere met een configureerbaar token functie levens duur. Micro soft is van plan de Configureer bare levens duur van het token op 1 november in te stellen en te vervangen door de beheer functie voor de verificatie van de voorwaardelijke toegang.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>Beleid 1: Besturings element voor aanmeldings frequentie
+### <a name="policy-1-sign-in-frequency-control"></a>Beleid 1: regel voor aanmeldings frequentie
 
 1. Nieuw beleid maken
 1. Kies alle vereiste voor waarden voor de omgeving van de klant, inclusief de doel-Cloud-apps.
@@ -63,7 +63,7 @@ Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Prem
    > [!NOTE]
    > Het is raadzaam om een gelijke frequentie voor verificatie prompts in te stellen voor Key Microsoft Office-apps, zoals Exchange Online en share point online voor een optimale gebruikers ervaring.
 
-1. Ga naar de **Access controls** > -**sessie** en klik op **aanmeldings frequentie**
+1. Ga naar **toegangs beheer** > **sessie** en klik op **aanmeldings frequentie**
 1. Voer de vereiste waarde van dagen en uren in het eerste tekstvak in
 1. Een waarde van **uren** of **dagen** selecteren in de vervolg keuzelijst
 1. Uw beleid opslaan
@@ -74,7 +74,7 @@ Op Azure AD geregistreerde Windows-apparaten aanmelden bij het apparaat wordt be
 
 Als u een andere aanmeldings frequentie hebt geconfigureerd voor verschillende web-apps die worden uitgevoerd in dezelfde browser sessie, wordt het meest strikte beleid toegepast op beide apps, omdat alle apps die in dezelfde browser sessie worden uitgevoerd, een token van één sessie delen.
 
-### <a name="policy-2-persistent-browser-session"></a>Beleid 2: Permanente browser sessie
+### <a name="policy-2-persistent-browser-session"></a>Beleid 2: permanente browser sessie
 
 1. Nieuw beleid maken
 1. Kies alle vereiste voor waarden.
@@ -82,7 +82,7 @@ Als u een andere aanmeldings frequentie hebt geconfigureerd voor verschillende w
    > [!NOTE]
    > Houd er rekening mee dat dit besturings element vereist dat alle Cloud-apps als voor waarde worden gekozen. De browser sessie persistentie wordt bepaald door het verificatie sessie token. Alle tabbladen in een browser sessie delen één sessie token en daarom moeten alle gebruikers de persistentie status delen.
 
-1. Ga naar de **Access controls** > -**sessie** en klik op **permanente browser sessie**
+1. Ga naar **toegangs beheer** > **sessie** en klik op **permanente browser sessie**
 1. Selecteer een waarde in de vervolg keuzelijst
 1. Beleid opslaan
 

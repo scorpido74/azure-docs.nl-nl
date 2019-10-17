@@ -14,19 +14,20 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 0c96442de5b8eea2ec969c48e6a815b6ae78b5c4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027289"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388760"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Offline synchronisatie met mobiele iOS-apps inschakelen
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end en geïntegreerde services in de ontwikkeling van mobiele apps. Ontwikkel aars kunnen services **bouwen**, **testen** en **distribueren** om een continue integratie-en leverings pijplijn in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkel aars de status en het gebruik van hun app bewaken met behulp van de **analyse** -en **diagnose** Services en gebruikers benaderen met behulp van de **Push** service. Ontwikkel aars kunnen ook gebruikmaken van **auth** voor het verifiëren van hun gebruikers en **gegevens** service om app-gegevens in de Cloud op te slaan en te synchroniseren.
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan met App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
+>
+> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
 
 ## <a name="overview"></a>Overzicht
 In deze zelf studie wordt de offline synchronisatie van de Mobile Apps-functie van Azure App Service voor iOS beschreven. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app om gegevens weer te geven, toe te voegen of te wijzigen, zelfs wanneer ze geen netwerk verbinding hebben. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden de wijzigingen gesynchroniseerd met de externe back-end.
@@ -46,7 +47,7 @@ In **QSTodoService. m** (objectief-C) of **ToDoTableViewController. Swift** (SWI
 
 Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. Dit is de relevante code:
 
-* **Objective-C**. In de methode **QSTodoService. init** :
+* **Doel-C**. In de methode **QSTodoService. init** :
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
@@ -64,7 +65,7 @@ Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worde
 
 Nu gaan we de daad werkelijke synchronisatie bewerking uitvoeren en gegevens ophalen van de externe back-end:
 
-* **Objective-C**. `syncData` pusht eerst nieuwe wijzigingen en roept vervolgens **pullData** aan om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
+* **Doel-C**. `syncData` pusht eerst nieuwe wijzigingen en roept vervolgens **pullData** aan om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -133,7 +134,7 @@ In de SWIFT-versie, omdat de push bewerking niet strikt nood zakelijk was, is er
 
 In zowel de doel-C-als de SWIFT-versie kunt u de methode **pullWithQuery** gebruiken om een query op te geven voor het filteren van de records die u wilt ophalen. In dit voor beeld worden alle records in de tabel externe `TodoItem` opgehaald met de query.
 
-De tweede para meter van **pullWithQuery** is een query-id die wordt gebruikt voor *incrementele synchronisatie*. Met incrementele synchronisatie worden alleen records opgehaald die sinds de laatste synchronisatie zijn gewijzigd, met behulp van de `UpdatedAt`-tijds tempel van de record (`updatedAt` in het lokale archief genoemd). De query-ID moet een beschrijvende teken reeks zijn die uniek is voor elke logische query in uw app. Als u geen incrementele synchronisatie wilt uitvoeren, geeft u `nil` door als query-ID. Deze methode kan mogelijk inefficiënt zijn, omdat hiermee alle records voor elke pull-bewerking worden opgehaald.
+De tweede para meter van **pullWithQuery** is een query-id die wordt gebruikt voor *incrementele synchronisatie*. Met incrementele synchronisatie worden alleen records opgehaald die sinds de laatste synchronisatie zijn gewijzigd, met behulp van de `UpdatedAt` tijds tempel van de record (`updatedAt` in het lokale archief). De query-ID moet een beschrijvende teken reeks zijn die uniek is voor elke logische query in uw app. Als u geen incrementele synchronisatie wilt uitvoeren, geeft u `nil` door als query-ID. Deze methode kan mogelijk inefficiënt zijn, omdat hiermee alle records voor elke pull-bewerking worden opgehaald.
 
 De doel-C-app wordt gesynchroniseerd wanneer u gegevens wijzigt of toevoegt, wanneer een gebruiker de penbeweging voor vernieuwen uitvoert en bij het starten.
 
@@ -144,11 +145,11 @@ Omdat de app wordt gesynchroniseerd wanneer gegevens worden gewijzigd (doel-C) o
 ## <a name="review-core-data"></a>Het kern gegevens model controleren
 Wanneer u het offline archief met de basis gegevens gebruikt, moet u bepaalde tabellen en velden in uw gegevens model definiëren. De voor beeld-app bevat al een gegevens model met de juiste indeling. In deze sectie worden deze tabellen door lopen om te laten zien hoe ze worden gebruikt.
 
-Open **QSDataModel.xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
+Open **QSDataModel. xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
   * MS_TableOperations: Hiermee worden de items bijgehouden die moeten worden gesynchroniseerd met de server.
-  * MS_TableOperationErrors: Hiermee worden eventuele fouten bijgehouden die optreden tijdens offline synchronisatie.
-  * MS_TableConfig: Houdt de laatst bijgewerkte tijd bij voor de laatste synchronisatie bewerking voor alle pull-bewerkingen.
-  * TodoItem: Slaat de taak items op. De systeem kolommen **createdAt**, **updatedAt**en **Version** zijn optionele systeem eigenschappen.
+  * MS_TableOperationErrors: houdt eventuele fouten bij die optreden tijdens offline synchronisatie.
+  * MS_TableConfig: houdt de laatst bijgewerkte tijd bij voor de laatste synchronisatie bewerking voor alle pull-bewerkingen.
+  * TodoItem: slaat de taak items op. De systeem kolommen **createdAt**, **updatedAt**en **Version** zijn optionele systeem eigenschappen.
 
 > [!NOTE]
 > De Mobile Apps SDK reserveert kolom namen die beginnen met ' **``** '. Gebruik dit voor voegsel niet met iets anders dan systeem kolommen. Anders worden de kolom namen gewijzigd wanneer u de externe back-end gebruikt.
@@ -163,55 +164,55 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 
 ![Kenmerken van MS_TableOperations-tabel][defining-core-data-tableoperations-entity]
 
-| Kenmerk | type |
+| Kenmerk | Type |
 | --- | --- |
-| id | Integer 64 |
+| id | Geheel getal 64 |
 | itemId | Tekenreeks |
-| properties | Binary Data |
-| table | Tekenreeks |
-| tableKind | Integer 16 |
+| properties | Binaire gegevens |
+| Tabel | Tekenreeks |
+| tableKind | Geheel getal 16 |
 
 
 **MS_TableOperationErrors**
 
  ![Kenmerken van MS_TableOperationErrors-tabel][defining-core-data-tableoperationerrors-entity]
 
-| Kenmerk | type |
+| Kenmerk | Type |
 | --- | --- |
 | id |Tekenreeks |
-| operationId |Integer 64 |
-| properties |Binary Data |
-| tableKind |Integer 16 |
+| operationId |Geheel getal 64 |
+| properties |Binaire gegevens |
+| tableKind |Geheel getal 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Kenmerk | type |
+| Kenmerk | Type |
 | --- | --- |
 | id |Tekenreeks |
-| key |Tekenreeks |
-| keyType |Integer 64 |
-| table |Tekenreeks |
-| value |Tekenreeks |
+| sleutel |Tekenreeks |
+| keyType |Geheel getal 64 |
+| Tabel |Tekenreeks |
+| waarde |Tekenreeks |
 
 ### <a name="data-table"></a>Gegevens tabel
 
 **TodoItem**
 
-| Kenmerk | type | Opmerking |
+| Kenmerk | Type | Opmerking |
 | --- | --- | --- |
 | id | Teken reeks, gemarkeerd als vereist |Primaire sleutel in externe opslag |
-| aangevuld | Boolean-waarde | Veld taak item |
-| text |Tekenreeks |Veld taak item |
-| createdAt | Date | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
-| updatedAt | Date | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
-| version | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
+| aangevuld | Booleaans | Veld taak item |
+| tekst |Tekenreeks |Veld taak item |
+| CreatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
+| updatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
+| versie | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
 
 ## <a name="setup-sync"></a>Het synchronisatie gedrag van de App wijzigen
 In deze sectie wijzigt u de app zodat deze niet wordt gesynchroniseerd bij het starten van de app of wanneer u items invoegt en bijwerkt. Het wordt alleen gesynchroniseerd wanneer de knop beweging vernieuwen wordt uitgevoerd.
 
-**Objective-C**:
+**Doel-C**:
 
 1. Wijzig in **QSTodoListViewController. m**de methode **viewDidLoad** om de aanroep te verwijderen naar `[self refresh]` aan het einde van de methode. De gegevens worden nu niet gesynchroniseerd met de server op de app starten. In plaats daarvan wordt het gesynchroniseerd met de inhoud van het lokale archief.
 2. In **QSTodoService. m**wijzigt u de definitie van `addItem` zodat deze niet wordt gesynchroniseerd nadat het item is ingevoegd. Verwijder het `self syncData`-blok en vervang dit door het volgende:
@@ -242,7 +243,7 @@ In deze sectie maakt u verbinding met een ongeldige URL om een offline scenario 
 
 1. Wijzig de URL van de mobiele app in **QSTodoService. m** in een ongeldige URL en voer de app opnieuw uit:
 
-   **Objective-C**. In QSTodoService. m:
+   **Doel-C**. In QSTodoService. m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
@@ -274,9 +275,9 @@ De normale bewerkingen voor maken, lezen, bijwerken en verwijderen (ruw) voor mo
 
 Toen we het lokale archief met de-server hebben gesynchroniseerd, hebben we de methode **MSSyncTable. pullWithQuery** gebruikt.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Offline gegevens synchronisatie in Mobile Apps]
-* [Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0 \(The-video is ongeveer Mobile Services, maar Mobile Apps offline synchronisatie werkt op een vergelijk bare manier. \)
+* [Cloud cover: offline synchronisatie in Azure Mobile Services] @no__t 1The video over Mobile Services, maar Mobile apps offline synchronisatie werkt op een vergelijk bare manier. \)
 
 <!-- URLs. -->
 
@@ -289,5 +290,5 @@ Toen we het lokale archief met de-server hebben gesynchroniseerd, hebben we de m
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloud-dekking: Offline synchronisatie in azure Mobile Services @ no__t-0
+[Cloud cover: offline synchronisatie in azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

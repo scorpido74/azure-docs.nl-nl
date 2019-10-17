@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877841"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430706"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>Wat is VMware-oplossing op Azure door CloudSimple
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Wat is Azure VMware-oplossing op CloudSimple
 
-**VMware-oplossing op Azure door CloudSimple** is een volledig beheerde service waarmee u het VMware-platform in azure kunt uitvoeren. Deze oplossing omvat vSphere, vCenter, vSAN, NSX-T en bijbehorende hulpprogram ma's. Uw VMware-omgeving wordt systeem eigen op Azure bare-metal infrastructuur uitgevoerd in azure-Cloud locaties. De service omvat alle functies die nodig zijn om de VMware-platforms efficiënt en veilig te gebruiken.
+De **Azure VMware-oplossing door CloudSimple** is een volledig beheerde service waarmee u het VMware-platform in azure kunt uitvoeren. Deze oplossing omvat vSphere, vCenter, vSAN, NSX-T en bijbehorende hulpprogram ma's. Uw VMware-omgeving wordt systeem eigen op Azure bare-metal infrastructuur uitgevoerd in azure-Cloud locaties. De service omvat alle functies die nodig zijn om de VMware-platforms efficiënt en veilig te gebruiken.
 
 ![Overzicht van VMware-oplossing op Azure met CloudSimple](media/azure-vmware-solution-by-cloudsimple.png)
 
@@ -37,10 +37,10 @@ ms.locfileid: "69877841"
 ## <a name="benefits"></a>Voordelen
 
 * **Operationele continuïteit**. CloudSimple biedt systeem eigen toegang tot VMware-platforms. De CloudSimple-architectuur is compatibel met uw bestaande:
-    * Toepassingen
-    * Bewerkingen
+    * Applicaties
+    * Operations
     * Beveiliging
-    * Back-up
+    * Backup
     * Herstel na noodgeval
     * Controleren
     * Nalevings hulpprogramma's

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029188"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387163"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>Gegevens stroom van surrogaat sleutel transformatie toewijzen
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029188"
 
 Gebruik de trans formatie surrogaat sleutel voor het toevoegen van een wille keurige sleutel waarde die niet aan het bedrijf is toe te voegen aan uw gegevens stroom rijenset. Dit is handig bij het ontwerpen van dimensie tabellen in een ster schema analytisch gegevens model, waarbij elk lid in de dimensie tabellen een unieke sleutel moet hebben die een niet-bedrijfs sleutel is, onderdeel van de Kimball DW-methodologie.
 
-Vervangende surrogaat sleutel transformatie(media/data-flow/surrogate.png "sleutel") ![Transformeren]
+![Surrogaat sleutel transformatie](media/data-flow/surrogate.png "Surrogaat sleutel transformatie")
 
 ' Sleutel kolom ' is de naam die u voor de nieuwe kolom met surrogaat sleutels moet opgeven.
 
@@ -30,7 +30,7 @@ Vervangende surrogaat sleutel transformatie(media/data-flow/surrogate.png "sleut
 
 Als u de volg orde wilt starten vanuit een waarde die voor komt in een bron, kunt u een afgeleide kolom transformatie direct volgen op uw surrogaat sleutel transformatie en de twee waarden samen voegen:
 
-![SK toevoegen maximum](media/data-flow/sk006.png "aantal surrogaat sleutel transformatie toevoegen Max")
+![SK toevoegen Max](media/data-flow/sk006.png "Aantal trans formatie van surrogaat sleutel maximum toevoegen")
 
 Als u de sleutel waarde wilt seeden met het vorige maximum, zijn er twee technieken die u kunt gebruiken:
 
@@ -38,17 +38,17 @@ Als u de sleutel waarde wilt seeden met het vorige maximum, zijn er twee technie
 
 Gebruik de optie ' query ' om MAX () te selecteren in uw bron met behulp van de bron transformatie:
 
-(media/data-flow/sk002.png "Query surrogaat sleutel transformatie") voor ![surrogaat sleutel]
+![Surrogaat sleutel query](media/data-flow/sk002.png "Query voor surrogaat sleutel transformatie")
 
 ### <a name="file-sources"></a>Bestands bronnen
 
 Als uw vorige maximum waarde zich in een bestand bevindt, kunt u uw bron transformatie samen met een geaggregeerde trans formatie gebruiken en de expressie functie MAX () gebruiken om de vorige maximum waarde op te halen:
 
-(media/data-flow/sk008.png "Surrogaat sleutel") bestand voor ![surrogaat sleutel]bestand
+![Surrogaat sleutel bestand](media/data-flow/sk008.png "Surrogaat sleutel bestand")
 
 In beide gevallen moet u uw inkomende nieuwe gegevens samen voegen met de bron die de vorige maximum waarde bevat:
 
-(media/data-flow/sk004.png "Koppeling van surrogaat") sleutel voor ![surrogaat sleutel]toevoegen
+![Surrogaat sleutel toevoegen](media/data-flow/sk004.png "Surrogaat sleutel toevoegen")
 
 ## <a name="next-steps"></a>Volgende stappen
 

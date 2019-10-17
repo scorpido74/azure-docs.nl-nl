@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915563"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429176"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Aanbevolen procedures voor het gebruik van Azure Maps Search Service
 
@@ -50,25 +50,25 @@ Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding
 
    Als u de resultaten van uw gebruiker naar het relevante gebied wilt verduidelijken, moet u altijd de Maxi maal mogelijke gedetailleerde locatie-invoer toevoegen. Als u de zoek resultaten wilt beperken, kunt u overwegen de volgende invoer typen toe te voegen:
 
-   1. Stel de `countrySet` para meter in, bijvoorbeeld ' VS, FR '. Het standaard zoek gedrag is het doorzoeken van de hele wereld, waardoor mogelijk onnodige resultaten worden geretourneerd. Als uw query geen `countrySet` para meter bevat, kan de zoek opdracht onnauwkeurige resultaten retour neren. Als u bijvoorbeeld zoekt naar een stad met de naam **Bellevue** , worden de resultaten uit VS en Frank rijk geretourneerd, omdat er steden zijn met de naam **Bellevue** in Frank rijk en in de Verenigde Staten.
+   1. Stel de para meter `countrySet` in, bijvoorbeeld ' VS, FR '. Het standaard zoek gedrag is het doorzoeken van de hele wereld, waardoor mogelijk onnodige resultaten worden geretourneerd. Als uw query geen para meter `countrySet` bevat, kan de zoek opdracht onnauwkeurige resultaten retour neren. Als u bijvoorbeeld zoekt naar een stad met de naam **Bellevue** , worden de resultaten uit VS en Frank rijk geretourneerd, omdat er steden zijn met de naam **Bellevue** in Frank rijk en in de Verenigde Staten.
 
-   2. U kunt de `btmRight` para meters en `topleft` gebruiken om het begrenzingsvak in te stellen om de zoek opdracht te beperken tot een bepaald gebied op de kaart.
+   2. U kunt de para meters `btmRight` en `topleft` gebruiken om het begrenzingsvak in te stellen om de zoek opdracht te beperken tot een bepaald gebied op de kaart.
 
-   3. Als u het relevantie gebied voor de resultaten wilt beïnvloeden, kunt u de `lat`para `lon` meters en de coördinaten definiëren en de RADIUS van het zoek `radius` gebied instellen met behulp van de para meter.
+   3. Als u het relevantie gebied voor de resultaten wilt beïnvloeden, kunt u de para meters voor de `lat`and `lon` definiëren en de RADIUS van het zoek gebied instellen met behulp van de para meter `radius`.
 
 
    **Zoek parameters voor fuzzy**
 
-   1. De `minFuzzyLevel` en `maxFuzzyLevel`, helpen bij het retour neren van relevante overeenkomsten, zelfs wanneer query parameters niet precies overeenkomen met de gewenste gegevens. De meeste zoek query's zijn `minFuzzyLevel=1` standaard `maxFuzzyLevel=2` en voor het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. Bekijk een voor beeld van een zoek term ' restrant ', die overeenkomt met ' restaurant ' wanneer de `maxFuzzyLevel` is ingesteld op 2. De standaard niveaus voor fuzzy kunnen worden overschreven volgens de behoeften van de aanvraag. 
+   1. De `minFuzzyLevel` en `maxFuzzyLevel`, helpen bij het retour neren van relevante overeenkomsten, zelfs wanneer query parameters niet precies overeenkomen met de gewenste gegevens. De meeste zoek query's zijn standaard `minFuzzyLevel=1` en `maxFuzzyLevel=2` om prestaties te verkrijgen en de ongebruikelijke resultaten te verminderen. Bekijk een voor beeld van een zoek term ' restrant ', die overeenkomt met ' restaurant ' wanneer de `maxFuzzyLevel` is ingesteld op 2. De standaard niveaus voor fuzzy kunnen worden overschreven volgens de behoeften van de aanvraag. 
 
-   2. U kunt ook de exacte set resultaat typen opgeven die moeten worden geretourneerd met behulp `idxSet` van de para meter. Voor dit doel kunt u een lijst met door komma's gescheiden indexen verzenden, maar de volg orde van de items niet van belang is. De volgende indexen worden ondersteund:
+   2. U kunt ook de exacte set resultaat typen opgeven die moeten worden geretourneerd met behulp van de para meter `idxSet`. Voor dit doel kunt u een lijst met door komma's gescheiden indexen verzenden, maar de volg orde van de items niet van belang is. De volgende indexen worden ondersteund:
 
-       * `Addr` - **Adresbereiken:** Voor sommige straten zijn er adres punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. deze punten worden weer gegeven als adresbereiken.
-       * `Geo` - **Geographs**: Gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats.
-       * `PAD` - **Punt adres**:  Punten op een kaart waarbij een specifiek adres met een straat naam en nummer kan worden gevonden in een index, bijvoorbeeld Soquel Dr 2501. Het is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen.  
-       * `POI` - **Interessante punten**: Punten op een kaart die aandacht best Eden en mogelijk interessant zijn.  [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) retourneert niet poi's.  
-       * `Str` - **Streets**: Weer gave van straten op de kaart.
-       * `XStr` - **Kruis straten/snij punten**:  Vertegenwoordiging van koppelingen; plaatsen waar twee Streets INTERSECT.
+       * `Addr` @ no__t **-1**adresbereiken: voor sommige straten zijn er adres punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. deze punten worden weer gegeven als adresbereiken.
+       * `Geo` @ no__t-1**geographs**: gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats.
+       * `PAD` @ no__t-1**punt adres**: punten op een kaart waarbij een specifiek adres met een straat naam en nummer kan worden gevonden in een index, bijvoorbeeld Soquel Dr 2501. Het is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen.  
+       * `POI` @ no__t-1**punten van belang**: punten op een kaart die aandacht best Eden en mogelijk interessant zijn.  [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) retourneert niet poi's.  
+       * `Str` @ no__t-1**Streets**: de weer gave van straten op de kaart.
+       * `XStr` @ no__t-1-**Kruis straten/snij punten**: weer gave van verbindings lijnen; plaatsen waar twee Streets INTERSECT.
 
 
        **Voor beelden van gebruik**:
@@ -128,14 +128,14 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="search-results-language"></a>Taal van zoek resultaten
 
-Met `language` de para meter kunt u instellen in welke taal Zoek resultaten moeten worden geretourneerd. Als de taal niet is ingesteld in de aanvraag, wordt de zoek service automatisch ingesteld op de meest voorkomende taal in het land/de regio. Wanneer de gegevens in de opgegeven taal niet beschikbaar zijn, wordt ook de standaard taal gebruikt. Zie [ondersteunde talen](https://docs.microsoft.com/azure/azure-maps/supported-languages) voor een lijst met ondersteunde talen ten aanzien van Azure Maps services per land/regio.
+Met de para meter `language` kunt u instellen in welke taal Zoek resultaten moeten worden geretourneerd. Als de taal niet is ingesteld in de aanvraag, wordt de zoek service automatisch ingesteld op de meest voorkomende taal in het land/de regio. Wanneer de gegevens in de opgegeven taal niet beschikbaar zijn, wordt ook de standaard taal gebruikt. Zie [ondersteunde talen](https://docs.microsoft.com/azure/azure-maps/supported-languages) voor een lijst met ondersteunde talen ten aanzien van Azure Maps services per land/regio.
 
 
 ### <a name="predictive-mode-auto-suggest"></a>Voorspellende modus (automatische suggesties)
 
-Als u meer overeenkomsten voor gedeeltelijke query's wilt `typeahead` vinden, moet de para meter worden ingesteld op ' True '. De query wordt geïnterpreteerd als een gedeeltelijke invoer en de voor Spellings modus wordt in de zoek opdracht weer geven. Anders gaat de service ervan uit dat alle relevante gegevens zijn door gegeven in.
+Als u meer overeenkomsten voor gedeeltelijke query's zoekt, moet u de para meter `typeahead` instellen op ' True '. De query wordt geïnterpreteerd als een gedeeltelijke invoer en de voor Spellings modus wordt in de zoek opdracht weer geven. Anders gaat de service ervan uit dat alle relevante gegevens zijn door gegeven in.
 
-In de onderstaande voorbeeld query ziet u dat de Search-adres service wordt opgevraagd voor ' Microsoft ', waarbij de `typeahead` para meter is ingesteld op **True**. Als u het antwoord ziet, kunt u zien dat de zoek service de query heeft geïnterpreteerd als gedeeltelijke query en antwoord resultaten bevat voor automatisch voorgestelde query's.
+In de onderstaande voorbeeld query ziet u dat de Search-adres service wordt doorzocht op ' Microsoft ', waarbij de para meter `typeahead` is ingesteld op **True**. Als u het antwoord ziet, kunt u zien dat de zoek service de query heeft geïnterpreteerd als gedeeltelijke query en antwoord resultaten bevat voor automatisch voorgestelde query's.
 
 **Voorbeeldquery:**
 
@@ -254,7 +254,7 @@ query=1st Avenue & E 111th St, New York
  moet worden gecodeerd als:
 
 ```
-query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
+query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
@@ -265,7 +265,7 @@ Java script-type script:
 encodeURIComponent(query)
 ```
 
-C#/VB:
+C#VB
 ```csharp
 Uri.EscapeDataString(query)
 ```
@@ -311,7 +311,7 @@ url.QueryEscape(query)
 
 ## <a name="best-practices-for-poi-search"></a>Aanbevolen procedures voor POI Search
 
-Met POI-Zoek opdrachten (Points of interest) kunt u POI-resultaten aanvragen op naam, bijvoorbeeld zoek naar bedrijf op naam. We raden u ten zeerste aan `countrySet` om de para meter te gebruiken voor het opgeven van landen waar uw toepassing behoefte heeft. het standaard gedrag is om de hele wereld te doorzoeken, mogelijk onnodige resultaten te retour neren en/of tot een langere Zoek tijd.
+Met POI-Zoek opdrachten (Points of interest) kunt u POI-resultaten aanvragen op naam, bijvoorbeeld zoek naar bedrijf op naam. We raden u ten zeerste aan de para meter `countrySet` te gebruiken om landen op te geven waar uw toepassing behoefte heeft. het standaard gedrag is om de hele wereld te doorzoeken, mogelijk onnodige resultaten te retour neren en/of tot meer zoek tijden.
 
 ### <a name="brand-search"></a>Merk zoeken
 
@@ -496,7 +496,7 @@ Als u alleen POI resultaten wilt ophalen rond een specifieke locatie, is de [zoe
 
 ## <a name="understanding-the-responses"></a>Meer informatie over de antwoorden
 
-We gaan een aanvraag voor het zoeken naar een adres aanvragen bij de Azure Maps [Search-service](https://docs.microsoft.com/rest/api/maps/search) voor een adres in Seattle. Als u de onderstaande aanvraag-URL zorgvuldig bekijkt, moet u de `countrySet` para meter instellen op **ons** om te zoeken naar het adres in de Verenigde Staten van Amerika.
+We gaan een aanvraag voor het zoeken naar een adres aanvragen bij de Azure Maps [Search-service](https://docs.microsoft.com/rest/api/maps/search) voor een adres in Seattle. Als u de onderstaande aanvraag-URL zorgvuldig bekijkt, moet u de para meter `countrySet` op **ons** instellen om te zoeken naar het adres in de Verenigde Staten van America.
 
 **Voorbeeldquery:**
 
@@ -504,7 +504,7 @@ We gaan een aanvraag voor het zoeken naar een adres aanvragen bij de Azure Maps 
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-Hieronder vindt u een overzicht van de onderstaande antwoord structuur. De resultaat typen van de resultaat objecten in het antwoord wijken af. Als u voorzichtig bent, kunt u zien dat er drie verschillende typen resultaat objecten zijn: "punt adres", "straat" en "Cross Street". U ziet dat bij het zoeken naar adressen geen Poi's wordt geretourneerd. De `Score` para meter voor elk antwoord object geeft de relatieve overeenkomende score aan voor scores van andere objecten in hetzelfde antwoord. Zie [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) voor meer informatie over de para meters van het Response-object.
+Hieronder vindt u een overzicht van de onderstaande antwoord structuur. De resultaat typen van de resultaat objecten in het antwoord wijken af. Als u voorzichtig bent, kunt u zien dat er drie verschillende typen resultaat objecten zijn: "punt adres", "straat" en "Cross Street". U ziet dat bij het zoeken naar adressen geen Poi's wordt geretourneerd. De para meter `Score` voor elk antwoord object geeft de relatieve overeenkomende score aan voor scores van andere objecten in hetzelfde antwoord. Zie [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) voor meer informatie over de para meters van het Response-object.
 
 **Ondersteunde typen resultaat:**
 
@@ -512,11 +512,11 @@ Hieronder vindt u een overzicht van de onderstaande antwoord structuur. De resul
 
 * **Adres bereik:**  Voor sommige straten zijn er adres punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. deze punten worden weer gegeven als adresbereiken. 
 
-* **Geografie** Gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats. 
+* **Geografie:** Gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats. 
 
 * **POI-(interessante punten):** Punten op een kaart die aandacht best Eden en mogelijk interessant zijn.
 
-* **Adressen** Weer gave van straten op de kaart. Adressen worden omgezet naar de breedte graad/lengte graad van de straat die het adres bevat. Het huis nummer mag niet worden verwerkt. 
+* **Straat:** Weer gave van straten op de kaart. Adressen worden omgezet naar de breedte graad/lengte graad van de straat die het adres bevat. Het huis nummer mag niet worden verwerkt. 
 
 * **Kruis Straat:** Overschrijdingen. Representaties van koppelingen; plaatsen waar twee Streets INTERSECT.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Port Forwarding configureren in Azure Load Balancer met behulp van Azure Portal'
+title: 'Zelf studie: poort door sturen in Azure Load Balancer configureren met behulp van de Azure Portal'
 titlesuffix: Azure Load Balancer
 description: In deze zelfstudie ziet u hoe u Port Forwarding kunt configureren met Azure Load Balancer om verbinding te maken met VM’s in een virtueel Azure-netwerk.
 services: load-balancer
@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273437"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428223"
 ---
-# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Zelfstudie: Port Forwarding configureren in Azure Load Balancer met behulp van de portal
+# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Zelf studie: poort door sturen in Azure Load Balancer configureren via de portal
 
 Met Port Forwarding kunt u verbinding maken met virtuele machines (VM's) in een virtueel Azure-netwerk door gebruik te maken van een openbaar IP-adres en poortnummer van Azure Load Balancer. 
 
@@ -45,53 +45,53 @@ Voor alle stappen in deze zelfstudie moet u zich aanmelden bij Azure Portal op [
 Maak eerst een standaardversie van een openbare load balancer die verkeersbelasting over virtuele machines kan verdelen. Een standaardversie van een load balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een standaardversie van een load balancer maakt, moet u ook een nieuw, standaard, openbaar IP-adres maken dat als de front-end load balancer wordt geconfigureerd en standaard **LoadBalancerFrontend** wordt genoemd. 
 
 1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Load balancer**.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Subscription               | Selecteer uw abonnement.    |    
-    | Resource group         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Abonnement               | Selecteer uw abonnement.    |    
+    | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | type          | Selecteer **Openbaar**.                                        |
-    | SKU           | selecteer **Standaard**.                          |
+    | Type          | Selecteer **Openbaar**.                                        |
+    | SKU           | Selecteer **standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **Zone-redundant**.    |
      
     >[!NOTE]
      >Zorg ervoor dat u de load balancer en alle resources ervoor maakt op een locatie die ondersteuning voor beschikbaarheidszones biedt. Zie [Regio's die beschikbaarheidszones ondersteunen](../availability-zones/az-overview.md#services-support-by-region) voor meer informatie. 
 
-3. Klik op het tabblad **Beoordelen en maken** op **Maken**.  
+3. Klik op het tabblad **Controleren + Maken** op **Maken**.  
   
 ## <a name="create-and-configure-back-end-servers"></a>Back-endservers maken en configureren
 
 Maak een virtueel netwerk met twee virtuele machines en voeg de VM's toe aan de back-endadresgroep van uw load balancer. 
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in de portal.
    
 1. In het deelvenster **Virtueel netwerk maken** typt of selecteert u de volgende waarden:
    
    - **Naam**: typ *MyVNet*.
-   - **ResourceGroup**: selecteer in de vervolgkeuzelijst **Bestaande selecteren** de optie **MyResourceGroupLB**. 
-   - **Subnet** > **Naam**: typ *myBackendSubnet*.
+   - **ResourceGroup**: in de vervolgkeuzelijst **Selecteer een bestaande** en selecteer **MyResourceGroupLB**. 
+   - **Subnet** > **Naam**: typ *MyBackendSubnet*.
    
 1. Selecteer **Maken**.
 
-   ![Een virtueel netwerk maken](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+   ![Maak een virtueel netwerk](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>VM's maken en toevoegen aan de back-endadresgroep van de load balancer
 
 1. Selecteer **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** linksboven in de portal. 
    
 1. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
-   - **Abonnement** > **Resourcegroep**: selecteer in de vervolgkeuzelijst de optie **MyResourceGroupLB**.
-   - **Naam van virtuele machine**: typ *MyVM1*.
-   - **Regio**: Selecteer **Europa - west**. 
-   - **Gebruikersnaam**: typ *azureuser*.
-   - **Wachtwoord**: typ *Azure1234567*. 
+   - **Abonnement** > **Resourcegroep**: selecteer **MyResourceGroupLB** in de vervolgkeuzelijst.
+   - **Naam van de virtuele machine**: Typ *MyVM1*.
+   - **Regio**: Selecteer **Europa-West**. 
+   - **Gebruikers naam**: Typ *azureuser*.
+   - **Wacht woord**: Typ *Azure1234567*. 
      Typ nogmaals het wachtwoord in het veld **Wachtwoord bevestigen**.
    
 1. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**. 
@@ -116,7 +116,7 @@ Maak een virtueel netwerk met twee virtuele machines en voeg de VM's toe aan de 
    1. Kies in de vervolgkeuzelijst **Een Load Balancer selecteren** de optie **MyLoadBalancer**. 
    1. Selecteer onder **Een back-endadresgroep selecteren** de optie **Nieuwe maken**, typ vervolgens *MyBackendPool* en selecteer **Maken**. 
    
-   ![Een virtueel netwerk maken](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
+   ![Maak een virtueel netwerk](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
    
 1. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**. Stel bij **Bewaking** **Diagnostische gegevens over opstarten** in op **Uit**.
    
@@ -215,7 +215,7 @@ De load balancer-regel met de naam **myLoadBalancerRuleWeb** luistert op poort 8
    - **Protocol**: selecteer **TCP**.
    - **Poort**: typ *80*.
    - **Back-endpoort**: typ *80*.
-   - **Back-end-pool**: selecteer **MyBackEndPool**.
+   - **Back-endpool**: selecteer **MyBackendPool**.
    - **Statustest**: selecteer **MyHealthProbe**. 
    
 1. Selecteer **OK**.
@@ -232,15 +232,16 @@ Maak een inkomende NAT-regel (Network Address Translation) voor de load balancer
    
 1. Op de pagina **Binnenkomende NAT-regel toevoegen** typt of selecteert u de volgende waarden:
    
-   - **Naam**: typ *MyNATRuleVM1*.
-   - **Poort**: typ *4221*.
-   - **Doel-virtuele-machine**: selecteer **MyVM1** in de vervolgkeuzelijst.
-   - **Poorttoewijzing**: selecteer **Aangepast**.
-   - **Doelpoort**: typ *3389*.
+   - **Naam**: Typ *MyNATRuleVM1*.
+   - **Poort**: type *4221*.
+   - **Doel-virtuele machine**: Selecteer **MyVM1** in de vervolg keuzelijst.
+   - **IP-configuratie**van het netwerk: Selecteer **ipconfig1** in de vervolg keuzelijst.
+   - **Poort toewijzing**: Selecteer **aangepast**.
+   - **Doel poort**: type *3389*.
    
 1. Selecteer **OK**.
    
-1. Herhaal de stappen voor het toevoegen van een binnenkomende NAT-regel met de naam *MyNATRuleVM2*, die gebruikmaakt van **Poort**: *4222* en **Doel-virtuele-machine**: **MyVM2**.
+1. Herhaal de stappen om een binnenkomende NAT-regel met de naam *MyNATRuleVM2*toe te voegen met behulp van **poort**: *4222* en **doel-VM**: **MyVM2**.
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 
@@ -290,7 +291,7 @@ Gebruik PowerShell om IIS te installeren en de standaard IIS-webpagina te vervan
 
 ### <a name="test-load-balancing"></a>Taakverdeling testen
 
-1. Kopieer in de portal, op de **overzichtspagina** voor **MyLoadBalancer**, het openbare IP-adres onder **Openbaar IP-adres**. Beweeg de muisaanwijzer boven het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **40.67.218.235**. 
+1. Kopieer in de portal, op de **overzichtspagina** voor **MyLoadBalancer**, het openbare IP-adres onder **Openbaar IP-adres**. Beweeg de muisaanwijzer over het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **40.67.218.235**. 
    
 1. Plak of typ het openbare IP-adres van de load balancer (*40.67.218.235*) in de adresbalk van uw internetbrowser. 
    
@@ -307,7 +308,7 @@ Gebruik PowerShell om IIS te installeren en de standaard IIS-webpagina te vervan
 
 Met Port Forwarding kunt u via Extern bureaublad verbinding maken met een back-end-VM met behulp van het IP-adres van de load balancer en de waarde van de front-endpoort die is gedefinieerd in de NAT-regel. 
 
-1. Kopieer in de portal, op de **overzichtspagina** voor **MyLoadBalancer**, het openbare IP-adres. Beweeg de muisaanwijzer boven het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **40.67.218.235**. 
+1. Kopieer in de portal, op de **overzichtspagina** voor **MyLoadBalancer**, het openbare IP-adres. Beweeg de muisaanwijzer over het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **40.67.218.235**. 
    
 1. Open een opdrachtprompt en gebruik de volgende opdracht om een Extern-bureaubladsessie te maken met MyVM2, met behulp van het openbare IP-adres van de load balancer en de front-endpoort die u hebt gedefinieerd in de NAT-regel van de virtuele machine. 
    

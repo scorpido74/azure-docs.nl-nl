@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030694"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387327"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -23,11 +23,11 @@ Bij het ontwerpen en testen van gegevens stromen van de ADF UX, zorgt u ervoor d
 
 Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid testen door te klikken op het tabblad voor beeld van gegevens in het configuratie venster. Wanneer u uw logica hebt gecontroleerd, test u uw gegevens stroom end-to-end als een activiteit in een pijp lijn. Voeg een activiteit gegevens stroom uitvoeren toe en gebruik de knop fout opsporing om de prestaties van uw gegevens stroom te testen. Als u het uitvoerings plan en prestatie profiel van uw gegevens stroom wilt openen, klikt u op het bril pictogram onder acties op het tabblad uitvoer van de pijp lijn.
 
-Monitor voor gegevens stroom monitor voor ![gegevens stroom](media/data-flow/mon002.png "2")
+![Monitor voor gegevens stroom](media/data-flow/mon002.png "Monitor voor gegevens stroom 2")
 
  U kunt deze informatie gebruiken om de prestaties van uw gegevens stroom te schatten voor gegevens bronnen met verschillende grootte. Zie [toewijzing van gegevens stromen controleren](concepts-data-flow-monitoring.md)voor meer informatie.
 
-Monitor voor ![gegevensstroom bewaking]van(media/data-flow/mon003.png "gegevens stroom 3")
+![Gegevensstroom controleren](media/data-flow/mon003.png "Monitor voor gegevens stroom 3")
 
  Voor het uitvoeren van de fout opsporing voor de pijp lijn is ongeveer één minuut van het instellen van de cluster tijd in uw algemene prestatie berekeningen vereist voor een warm cluster. Als u de standaard Azure Integration Runtime initialiseert, kan het aantal tijd van het draaien ongeveer 5 minuten duren.
 
@@ -37,7 +37,7 @@ Een Integration Runtime met meer kernen verhoogt het aantal knoop punten in de S
 * Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat uw verwerkings snelheid hoger is dan de invoer snelheid
 * Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan.
 
-![Nieuwe IR]nieuwe(media/data-flow/ir-new.png "IR")
+![Nieuwe IR](media/data-flow/ir-new.png "Nieuwe IR")
 
 Zie [Integration runtime in azure Data Factory](concepts-integration-runtime.md)voor meer informatie over het maken van een Integration runtime.
 
@@ -56,7 +56,7 @@ Het inschakelen van debug maakt standaard gebruik van de standaard Azure Integra
 1. Als u **kolom**hebt geselecteerd, kiest u de kolom partitie.
 1. Als u **query**hebt geselecteerd, voert u een query in die overeenkomt met het partitie schema van de database tabel. Met deze query kan de bron database-engine gebruikmaken van partitie-eliminatie. De tabellen van de bron database hoeven niet te worden gepartitioneerd. Als uw bron nog niet is gepartitioneerd, maakt ADF nog steeds gebruik van gegevenspartitionering in de Spark-transformatie omgeving op basis van de sleutel die u in de bron transformatie selecteert.
 
-![](media/data-flow/sourcepart3.png "Bron onderdeel") bron onderdeel
+![Bron onderdeel](media/data-flow/sourcepart3.png "Bron onderdeel")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>Grootte, invoer en isolatie niveau van de bron batch
 
@@ -66,13 +66,13 @@ Onder **bron opties** in de bron transformatie kunnen de volgende instellingen i
 * Door een query in te stellen, kunt u rijen op de bron filteren voordat ze in de gegevens stroom voor verwerking arriveren. Zo kunt u de initiële gegevens sneller aanschaffen. Als u een query gebruikt, kunt u optionele query hints toevoegen voor uw Azure SQL-data base, zoals lezen niet-vastgelegd.
 * Lezen niet-doorgevoerd levert snellere query resultaten voor de bron transformatie
 
-![Bron](media/data-flow/source4.png "bron")
+![Bron](media/data-flow/source4.png "Bron")
 
 ### <a name="sink-batch-size"></a>Grootte van Sink-batch
 
 Stel **Batch grootte** in op het tabblad Instellingen voor Azure SQL DB-en Azure SQL DW-sinks om te voor komen dat de gegevens stromen worden verwerkt door rijen. Als Batch grootte is ingesteld, verwerkt ADF database schrijf bewerkingen in batches op basis van de opgegeven grootte.
 
-![Sink](media/data-flow/sink4.png "Sink")
+![Tenen](media/data-flow/sink4.png "Sink")
 
 ### <a name="partitioning-on-sink"></a>Partitioneren op Sink
 
@@ -101,7 +101,7 @@ U kunt bij elke trans formatie instellen welk partitie schema u data factory wil
 Als u fouten opspoort in de voorbeeld weergave van gegevens en de fout opsporing voor de pijp lijn, zijn de limiet-en sampling groottes voor bron gegevens sets op basis van bestanden alleen van toepassing op het aantal geretourneerde rijen, niet het aantal rijen dat wordt gelezen. Dit kan invloed hebben op de prestaties van de uitvoeringen van de fout opsporing en kan ertoe leiden dat de stroom mislukt.
 * Fout opsporing voor clusters is standaard kleine clusters met één knoop punt. het wordt aangeraden om voor beelden van kleine bestanden te gebruiken voor fout opsporing. Ga naar instellingen voor fout opsporing en wijs een kleine subset van uw gegevens aan met behulp van een tijdelijk bestand.
 
-    (media/data-flow/debugsettings3.png "Instellingen voor fout") opsporing van ![fout opsporing]
+    ![Instellingen voor fout opsporing](media/data-flow/debugsettings3.png "Instellingen voor fout opsporing")
 
 ### <a name="file-naming-options"></a>Opties voor bestands naamgeving
 

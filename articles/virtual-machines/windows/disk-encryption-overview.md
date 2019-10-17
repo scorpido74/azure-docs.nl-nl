@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e38a58d076f6a8b7b2b07e468c61835ed06f55a4
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255608"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435745"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption voor Windows-Vm's 
 
@@ -32,7 +32,7 @@ Meer informatie over de basis principes van Azure Disk Encryption voor Windows i
 
 ### <a name="supported-vm-sizes"></a>Ondersteunde VM-grootten
 
-Virtuele Windows-machines zijn beschikbaar in [verschillende grootten](sizes-general.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](/pricing/details/virtual-machines/series/)of op virtuele machines met minder dan 2 GB geheugen.
+Virtuele Windows-machines zijn beschikbaar in [verschillende grootten](sizes-general.md). Azure Disk Encryption is niet beschikbaar op [de Basic-, a-Series vm's](https://azure.microsoft.com/pricing/details/virtual-machines/series/)of op virtuele machines met minder dan 2 GB geheugen.
 
 Azure Disk Encryption is ook beschikbaar voor virtuele machines met Premium Storage.
 

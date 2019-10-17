@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027818"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387370"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -22,11 +22,11 @@ ms.locfileid: "72027818"
 
 Met de modus fout opsporing van gegevens stroom van Azure Data Factory-toewijzing kunt u de transformatie van de gegevensshape interactief bekijken terwijl u uw gegevens stromen bouwt en oplost. De foutopsporingssessie kan worden gebruikt in combi natie met data flow-ontwerp sessies en tijdens het opsporen van fouten in de pipeline voor het uitvoeren van gegevens stromen. Als u de foutopsporingsmodus wilt inschakelen, gebruikt u de knop ' fout opsporing voor gegevens stromen ' boven aan het ontwerp oppervlak.
 
-![](media/data-flow/debugbutton.png "Schuif regelaar") voor fout opsporing fouten opsporen
+![Schuif regelaar voor fout opsporing](media/data-flow/debugbutton.png "Schuif regelaar voor fout opsporing")
 
 Zodra u de schuif regelaar hebt ingeschakeld, wordt u gevraagd om te selecteren welke configuratie voor de integratie-runtime u wilt gebruiken. Als AutoResolveIntegrationRuntime is gekozen, wordt een cluster met acht kernen van algemene berekeningen met een tijd van 60 minuten voor Live. Zie [prestaties van gegevens stroom](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)voor meer informatie over data flow Integration-Runtimes.
 
-![Fout opsporing IR-selectie](media/data-flow/debugbutton2.png "fout opsporing IR-selectie")
+![Fout opsporing IR-selectie](media/data-flow/debugbutton2.png "Fout opsporing IR-selectie")
 
 Wanneer de foutopsporingsmodus is ingeschakeld, bouwt u interactief uw gegevens stroom met een actief Spark-cluster. De sessie wordt gesloten zodra u debug uitschakelt in Azure Data Factory. U moet rekening houden met de kosten per uur die zijn gemaakt door Azure Databricks gedurende de periode dat de foutopsporingssessie is ingeschakeld.
 
@@ -42,17 +42,17 @@ Wanneer u klaar bent met de fout opsporing, schakelt u de schakel optie voor fou
 
 Instellingen voor fout opsporing kunnen worden bewerkt door te klikken op instellingen voor fout opsporing op de werk balk gegevensstroom canvas. U kunt de rijlimiet of de bestands bron selecteren die u voor elk van uw bron transformaties wilt gebruiken. De limieten voor rijen in deze instelling gelden alleen voor de huidige foutopsporingssessie. U kunt ook de gekoppelde staging-service selecteren die moet worden gebruikt voor een SQL DW-bron. 
 
-(media/data-flow/debug-settings.png "Instellingen voor fout") opsporing van ![fout opsporing]
+![Instellingen voor fout opsporing](media/data-flow/debug-settings.png "Instellingen voor fout opsporing")
 
 Als u para meters hebt in uw gegevens stroom of een van de data sets waarnaar wordt verwezen, kunt u opgeven welke waarden moeten worden gebruikt tijdens de fout opsporing door het tabblad **para meters** te selecteren.
 
-Para meters(media/data-flow/debug-settings2.png "instellingen") voor fout opsporing van ![instellingen]
+![Para meters voor fout opsporing](media/data-flow/debug-settings2.png "Para meters voor fout opsporing")
 
 ## <a name="data-preview"></a>Voor beeld van gegevens
 
 Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het onderste paneel. Zonder de foutopsporingsmodus in, worden in de gegevens stroom alleen de huidige meta gegevens in en uit elk van de trans formaties op het tabblad inspectie weer gegeven. In de preview van de gegevens wordt alleen het aantal rijen weer gegeven dat u hebt ingesteld als uw limiet voor de instellingen voor fout opsporing. Klik op **vernieuwen** om de voorbeeld gegevens op te halen.
 
-![](media/data-flow/datapreview.png "Voor beeld") van gegevens voorbeeld gegevens
+![Voor beeld van gegevens](media/data-flow/datapreview.png "Voor beeld van gegevens")
 
 > [!NOTE]
 > Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.
@@ -67,15 +67,15 @@ Wanneer eenheids testen samen voegen, bestaan of trans formaties opzoeken, moet 
 
 Zodra u het voor beeld van de gegevens ziet, kunt u een snelle trans formatie genereren om een kolom te typecast, te verwijderen of te wijzigen. Klik op de kolomkop en selecteer een van de opties op de werk balk data preview.
 
-Snelle(media/data-flow/quick-actions1.png "acties") voor ![snelle acties]
+![Snelle acties](media/data-flow/quick-actions1.png "Snelle acties")
 
 Wanneer u een wijziging hebt geselecteerd, wordt de preview van de gegevens direct vernieuwd. Klik op **bevestigen** in de rechter bovenhoek om een nieuwe trans formatie te genereren.
 
-Snelle(media/data-flow/quick-actions2.png "acties") voor ![snelle acties]
+![Snelle acties](media/data-flow/quick-actions2.png "Snelle acties")
 
 Met **typecast** en **Modify** wordt een afgeleide kolom transformatie **gegenereerd en wordt** er een selectie transformatie gegenereerd.
 
-Snelle(media/data-flow/quick-actions3.png "acties") voor ![snelle acties]
+![Snelle acties](media/data-flow/quick-actions3.png "Snelle acties")
 
 > [!NOTE]
 > Als u de gegevens stroom bewerkt, moet u de voor beeld van de gegevens opnieuw ophalen voordat u een snelle trans formatie toevoegt.
@@ -84,7 +84,7 @@ Snelle(media/data-flow/quick-actions3.png "acties") voor ![snelle acties]
 
 Als u een kolom selecteert op het tabblad voor beeld van gegevens en op **Statistieken** klikt in de werk balk voor data-preview, wordt in de rechter kant van het gegevens raster een grafiek weer gegeven met gedetailleerde statistieken over elk veld. Azure Data Factory maakt een bepaling op basis van de gegevens bemonstering van welk type grafiek moet worden weer gegeven. Velden met hoge kardinaliteit worden standaard ingesteld op NULL/niet-NULL-grafieken terwijl categorische en numerieke gegevens met lage kardinaliteit balk diagrammen weer geven met een frequentie van gegevens waarden. U ziet ook de Max/len lengte van teken reeks velden, min/max-waarden in numerieke velden, standaard dev, percentielen, tellingen en gemiddelde.
 
-Kolom(media/data-flow/stats.png "Statistieken kolom") ![Statistieken]
+![Kolom statistieken](media/data-flow/stats.png "Kolom statistieken")
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen naar Android-apps met Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
+title: Push meldingen verzenden naar Android met behulp van Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Firebase Cloud Messaging pushmeldingen verzendt naar Android-apparaten.
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212360"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72386310"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -166,9 +166,9 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
 
     Werk de drie tijdelijke aanduidingen in de volgende code bij voor de klasse `NotificationSettings`:
 
-   * `SenderId`: Het projectnummer dat u eerder in de [Google Cloud Console](https://cloud.google.com/console) hebt verkregen.
-   * `HubListenConnectionString`: De verbindingsreeks `DefaultListenAccessSignature` voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
-   * `HubName`: Gebruik de naam van uw Notification Hub die wordt weergegeven op de hubpagina in de [Azure-portal].
+   * `SenderId`: het project nummer dat u eerder in de [Google Cloud console](https://cloud.google.com/console)hebt verkregen.
+   * `HubListenConnectionString`: de `DefaultListenAccessSignature`-connection string voor uw hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
+   * `HubName`: gebruik de naam van uw notification hub die wordt weer gegeven op de pagina hub in de [Azure-portal].
 
      `NotificationSettings`-code:
 

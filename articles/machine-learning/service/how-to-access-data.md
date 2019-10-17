@@ -11,22 +11,23 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436706"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 
-In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Door data stores te gebruiken, kunt u toegang krijgen tot uw opslag zonder dat u de verbindings gegevens van uw scripts hard kunt coderen. U kunt gegevens opslag maken op basis van deze [Azure Storage-oplossingen](#matrix).
+In dit artikel leert u hoe u eenvoudig toegang hebt tot uw gegevens in azure Storage-services via Azure Machine Learning gegevens opslag. Data stores worden gebruikt om verbindings gegevens op te slaan, zoals uw abonnements-ID en Token autorisatie. Door data stores te gebruiken, kunt u toegang krijgen tot uw opslag zonder dat u de verbindings gegevens van uw scripts hard kunt coderen. U kunt gegevens opslag maken op basis van deze [Azure Storage-oplossingen](#matrix). Voor niet-ondersteunde opslag oplossingen kunt u uw gegevens het beste verplaatsen naar onze ondersteunde Azure-opslag oplossingen om de kosten voor de uitvoer van gegevens op te slaan tijdens machine learning experimenten. [Meer informatie over het verplaatsen van uw gegevens](#move). 
 
 In deze procedure worden voor beelden van de volgende taken weer gegeven:
 * [Gegevens opslag registreren](#access)
 * [Gegevens opslag ophalen uit de werk ruimte](#get)
 * [Gegevens uploaden en downloaden met behulp van data stores](#up-and-down)
 * [Toegang tot gegevens tijdens de training](#train)
+* [Gegevens verplaatsen naar Azure](#move)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -127,7 +128,7 @@ for name, datastore in datastores.items():
 
 Wanneer u een werk ruimte maakt, worden een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte met de naam `workspaceblobstore` en `workspacefilestore` respectievelijk. Ze slaan de verbindings gegevens van de BLOB-container en de bestands share op die zijn ingericht in het opslag account dat aan de werk ruimte is gekoppeld. De `workspaceblobstore` wordt ingesteld als de standaard gegevens opslag.
 
-Ophalen van de werkruimte standaard gegevensopslag:
+De standaard gegevens opslag van de werk ruimte ophalen:
 
 ```Python
 datastore = ws.get_default_datastore()
@@ -146,9 +147,9 @@ De methoden [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azur
 
 ### <a name="upload"></a>Uploaden
 
- Een map of afzonderlijke bestanden uploaden naar de gegevensopslag met behulp van de Python-SDK.
+ Upload een map of afzonderlijke bestanden naar het gegevens archief met behulp van de python-SDK.
 
-Het uploaden van een map naar een gegevensarchief `datastore`:
+Een directory uploaden naar een Data Store `datastore`:
 
 ```Python
 import azureml.data
@@ -160,13 +161,13 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-De para meter `target_path` geeft de locatie in de bestands share (of BLOB-container) op die moet worden geüpload. Wordt standaard `None`, in welk geval de gegevens wordt het geüpload naar de hoofdmap. Als `overwrite=True` worden bestaande gegevens bij `target_path` overschreven.
+De para meter `target_path` geeft de locatie in de bestands share (of BLOB-container) op die moet worden geüpload. De standaard waarde is `None`, in dat geval worden de gegevens geüpload naar de hoofdmap. Als `overwrite=True` worden bestaande gegevens bij `target_path` overschreven.
 
 Of upload een lijst met afzonderlijke bestanden naar het gegevens archief via de `upload_files()`-methode.
 
 ### <a name="download"></a>Downloaden
 
-Gegevens uit een gegevensarchief op dezelfde manier downloaden naar uw lokale bestandssysteem.
+U kunt ook gegevens van een gegevens opslag naar uw lokale bestands systeem downloaden.
 
 ```Python
 datastore.download(target_path='your target path',
@@ -174,7 +175,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens moeten worden gedownload. Geef het pad naar de map in de bestandsshare (of de blob-container) om te downloaden, geeft dat pad op naar `prefix`. Als `prefix` is `None`, de inhoud van uw bestandsshare (of de blob-container) wordt gedownload.
+De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens moeten worden gedownload. Geef het pad naar `prefix` op om een pad op te geven naar de map in de bestands share (of BLOB-container) die u wilt downloaden. Als `prefix` `None` is, wordt alle inhoud van de bestands share (of BLOB-container) gedownload.
 
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Toegang tot uw gegevens tijdens de training
@@ -184,7 +185,7 @@ De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens
 
 De volgende tabel bevat de methoden die het reken doel vertellen hoe de gegevens opslag worden gebruikt tijdens de uitvoering. 
 
-Manier|Methode|Description|
+Manier|Methode|Beschrijving|
 ----|-----|--------
 Koppelen| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Gebruiken om de gegevens opslag te koppelen aan het berekenings doel.
 Downloaden|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Gebruik om de inhoud van uw gegevens archief te downloaden naar de locatie die is opgegeven door `path_on_compute`. <br><br> Deze down load gebeurt vóór de uitvoering.
@@ -239,12 +240,12 @@ est = Estimator(source_directory='your code directory',
 
 Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de opslag services die in de volgende matrix worden weer gegeven. Deze matrix bevat de beschik bare functies voor gegevens toegang voor de verschillende reken doelen en Data Store-scenario's. Meer informatie over de [Compute-doelen voor Azure machine learning](how-to-set-up-training-targets.md#compute-targets-for-training).
 
-|Compute|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
+|Computing|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
-| Lokaal|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|N/A         |N/A                                                                         |
-| Azure Machine Learning-Computing |[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ML&nbsp;pipelines](concept-ml-pipelines.md)|N/A         |N/A                                                                         |
-| Virtuele machines               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
-| HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
+| Lokaal|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|N/A         |N/A                                                                         |
+| Azure Machine Learning compute |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|N/A         |N/A                                                                         |
+| Virtuele machines               |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
+| HDInsight                      |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
 | Gegevensoverdracht                  |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                               |N/A                                           |[ML @ no__t-1pipelines](concept-ml-pipelines.md)            |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                                                            |
 | Databricks                     |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                              |N/A                                           |[ML @ no__t-1pipelines](concept-ml-pipelines.md)             |N/A                                                                         |
 | Azure Batch                    |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                               |N/A                                           |N/A         |N/A                                                                         |
@@ -268,17 +269,21 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
 
-| Methode | Toegang tot Data Store | Description |
+| Methode | Toegang tot Data Store | Beschrijving |
 | ----- | :-----: | ----- |
 | [Batch-voor spelling](how-to-run-batch-predictions.md) | ✔ | Maak voor spellingen voor grote hoeveel heden gegevens asynchroon. |
-| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Model (len) implementeren als een webservice. |
+| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Model (len) implementeren als een webservice. |
 | [Module IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Model (len) implementeren op IoT Edge apparaten. |
 
 In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
 
+<a name="move"></a>
+## <a name="move-data-to-supported-azure-storage-solutions"></a>Gegevens verplaatsen naar ondersteunde Azure Storage-oplossingen
+
+Azure machine learning service ondersteunt toegang tot gegevens van Azure Blob, Azure file, Azure Data Lake gen 1, Azure Data Lake gen 2, Azure SQL, Azure PostgreSQL. Voor niet-ondersteunde opslag is het raadzaam om uw gegevens tijdens machine learning experimenten op te slaan naar onze ondersteunde Azure Storage-oplossingen met behulp van Azure Data Factory. Azure Data Factory biedt een efficiënte en robuuste gegevens overdracht met meer dan 80 vooraf ontwikkelde connectors, waaronder Azure Data Services, on-premises gegevens bronnen, Amazon S3 en Redshift en Google BigQuery, zonder extra kosten. [Volg de stapsgewijze hand leiding om uw gegevens te verplaatsen met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een model te trainen](how-to-train-ml-models.md)
+* [Een model trainen](how-to-train-ml-models.md)
 
 * [Een model implementeren](how-to-deploy-and-where.md)

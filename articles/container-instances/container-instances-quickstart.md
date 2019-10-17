@@ -12,12 +12,12 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 111191aa664650fe1ffdfd8de492e13e98349b34
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327440"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429195"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstartgids: een container exemplaar implementeren in azure met behulp van Azure CLI
 
@@ -25,7 +25,7 @@ Gebruik Azure Container Instances om serverloze docker-containers in azure uit t
 
 In deze Quick Start gebruikt u de Azure CLI voor het implementeren van een geïsoleerde docker-container en maakt u de toepassing beschikbaar met een Fully Qualified Domain Name (FQDN). Een paar seconden nadat u één implementatie opdracht hebt uitgevoerd, kunt u bladeren naar de toepassing die in de container wordt uitgevoerd:
 
-![App die is geïmplementeerd in Azure Container Instances, weergegeven in de browser][aci-app-browser]
+![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
 
@@ -72,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 Als de `ProvisioningState` van de container is **geslaagd**, gaat u naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
 
-![Schermafbeelding van browser met toepassing die wordt uitgevoerd in een exemplaar van een Azure-container][aci-app-browser]
+![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
 
 Als de toepassing niet meteen wordt weergegeven, moet u mogelijk een paar seconden wachten terwijl DNS wordt doorgegeven. Probeer vervolgens de browser te vernieuwen.
 
@@ -158,7 +158,7 @@ In deze Quick Start hebt u een Azure-container exemplaar gemaakt met behulp van 
 Zie de Snelstartgids voor [Azure Kubernetes service (AKS)][container-service] als u opties wilt uitproberen voor het uitvoeren van containers in een Orchestration-systeem op Azure.
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

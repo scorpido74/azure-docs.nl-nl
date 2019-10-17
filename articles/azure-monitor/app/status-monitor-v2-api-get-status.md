@@ -1,6 +1,6 @@
 ---
-title: 'Naslag informatie voor Azure Status Monitor v2 API: Status ophalen | Microsoft Docs'
-description: Status Monitor v2 API-referentie. Get-ApplicationInsightsMonitoringStatus. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-web-apps die on-premises worden gehost, die in virtuele machines worden gehost en die via Azure worden gehost.
+title: 'Azure-toepassing Insights API-referentie voor agent: status ophalen | Microsoft Docs'
+description: Application Insights agent API-verwijzing. Get-ApplicationInsightsMonitoringStatus. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-web-apps die on-premises worden gehost, die in virtuele machines worden gehost en die via Azure worden gehost.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058261"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389877"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Status Monitor v2-API: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights agent-API: Get-ApplicationInsightsMonitoringStatus
 
 In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Beschrijving
 
 Deze cmdlet biedt informatie over het oplossen van problemen met Status Monitor.
 Gebruik deze cmdlet om de bewakings status, versie van de Power shell-module te onderzoeken en het actieve proces te controleren.
@@ -34,7 +34,7 @@ Met deze cmdlet worden versie-informatie en informatie over de vereiste sleutel 
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="example-application-status"></a>Voorbeeld: Toepassings status
+### <a name="example-application-status"></a>Voor beeld: toepassings status
 
 Voer de opdracht `Get-ApplicationInsightsMonitoringStatus` uit om de bewakings status van websites weer te geven.
 
@@ -80,7 +80,7 @@ In dit voor beeld;
 - **DemoWebApp333** is hand matig geinstrumenteerd met behulp van de Application Insights SDK. De SDK is Status Monitor gedetecteerd en de site wordt niet bewaakt.
 
 
-### <a name="example-powershell-module-information"></a>Voorbeeld: Informatie over de Power shell-module
+### <a name="example-powershell-module-information"></a>Voor beeld: Power shell-module gegevens
 
 Voer de opdracht `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` uit om informatie weer te geven over de huidige module:
 
@@ -134,11 +134,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Voorbeeld: Runtimestatus
+### <a name="example-runtime-status"></a>Voor beeld: runtime status
 
 U kunt het proces op de geinstrumenteerde computer controleren om te controleren of alle Dll's zijn geladen. Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
 
-Voer de volgende `Get-ApplicationInsightsMonitoringStatus -InspectProcess`opdracht uit:
+Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -193,7 +193,7 @@ Ook worden er externe hulpprogram ma's gedownload om te bepalen of de benodigde 
 
 Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig uitvoeren:
 - IISReset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights"
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
 - [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
@@ -204,5 +204,5 @@ Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Meer doen met Status Monitor v2:
- - Gebruik onze hand leiding voor het [oplossen van problemen](status-monitor-v2-troubleshoot.md) status monitor v2.
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .

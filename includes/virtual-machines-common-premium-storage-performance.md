@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975291"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391612"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -92,16 +92,16 @@ De beste manier om prestatie vereisten van uw toepassing te meten, is het gebrui
 
 De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logische schijf en fysieke schijf van uw server. Wanneer u Premium Storage-schijven met een virtuele machine gebruikt, zijn de fysieke-schijf tellers voor elke Premium-opslag schijf en worden voor elk volume dat op de Premium Storage-schijven wordt gemaakt, items voor logische schijven opgenomen. U moet de waarden vastleggen voor de schijven waarop de workload van uw toepassing wordt gehost. Als er een toewijzing is tussen logische en fysieke schijven, kunt u verwijzen naar fysieke-schijf items; Raadpleeg anders de items van de logische schijf. In Linux genereert de iostat gebruiken-opdracht een rapport voor CPU-en schijf gebruik. Het rapport schijf gebruik bevat statistieken per fysiek apparaat of partitie. Als u een database server hebt met gegevens en logboeken op afzonderlijke schijven, verzamelt u deze gegevens voor beide schijven. In de onderstaande tabel worden de items voor schijven, processors en geheugen beschreven:
 
-| Teller | Description | Controle | Iostat gebruiken |
+| Item | Beschrijving | Controle | Iostat gebruiken |
 | --- | --- | --- | --- |
-| **IOPS of trans acties per seconde** |Het aantal I/O-aanvragen dat per seconde aan de opslag schijf is uitgegeven. |Schijf lezen per seconde <br> Schijf schrijven per seconde |TPS <br> r/s <br> w/s |
+| **IOPS of trans acties per seconde** |Het aantal I/O-aanvragen dat per seconde aan de opslag schijf is uitgegeven. |Lees bewerkingen per seconde <br> Schrijf bewerkingen per seconde |TPS <br> r/s <br> w/s |
 | **Lees-en schrijf bewerkingen op schijf** |% van lees-en schrijf bewerkingen die op de schijf worden uitgevoerd. |Percentage schijf leestijd <br> Percentage schrijf tijd schijf |r/s <br> w/s |
-| **Doorvoer** |Hoeveelheid gegevens die per seconde moet worden gelezen van of wegge schreven naar de schijf. |Bytes gelezen op schijf/sec <br> Bytes geschreven naar schijf/sec |kB_read/s <br> kB_wrtn/s |
+| **Doorvoer** |Hoeveelheid gegevens die per seconde moet worden gelezen van of wegge schreven naar de schijf. |Gelezen bytes per seconde <br> Geschreven bytes per seconde |kB_read/s <br> kB_wrtn/s |
 | **Latentie** |Totale tijd voor het volt ooien van een schijf-i/o-aanvraag. |Gemiddeld aantal seconden/Lees bewerkingen schijf <br> Gemiddeld aantal seconden per schrijf bewerking schijf |koper <br> svctm |
-| **I/o-grootte** |De grootte van I/O-aanvragen van problemen met de opslag schijven. |Gemiddeld aantal gelezen bytes per schijf <br> Gemiddeld aantal geschreven bytes per schijf |avgrq-sz |
-| **Wachtrij diepte** |Aantal openstaande I/O-aanvragen dat wacht op het lezen van of schrijven naar de opslag schijf. |Huidige wachtrij lengte voor de schijf |avgqu-sz |
-| **Max. Geheugen @ no__t-0 |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |% Toegewezen bytes in gebruik |Vmstat gebruiken |
-| **Max. CPU** |Hoeveelheid CPU vereist om toepassing probleemloos uit te voeren |Percentage processor tijd |% util |
+| **I/o-grootte** |De grootte van I/O-aanvragen van problemen met de opslag schijven. |Gemiddeld aantal gelezen bytes per schijf <br> Gemiddeld aantal geschreven bytes per schijf |avgrq-Sz |
+| **Wachtrij diepte** |Aantal openstaande I/O-aanvragen dat wacht op het lezen van of schrijven naar de opslag schijf. |Huidige wachtrij lengte voor de schijf |avgqu-Sz |
+| **Aantal. Geheugenmetabase** |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |% Toegewezen bytes in gebruik |Vmstat gebruiken |
+| **Aantal. VERBRUIK** |Hoeveelheid CPU vereist om toepassing probleemloos uit te voeren |Percentage processor tijd |% util |
 
 Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](https://msdn.microsoft.com/library/aa645516.aspx).
 
@@ -156,10 +156,10 @@ Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt be
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
-| Max. IOP's |8 kB |5,000 |40 MB per seconde |
-| Maximale door Voer |1024 kB |200 |200 MB per seconde |
-| Maximale door Voer + hoge IOPS |64 kB |3,200 |200 MB per seconde |
-| Maximale IOPS + hoge door Voer |32 KB |5,000 |160 MB per seconde |
+| Maximum aantal IOPS |8 kB |5\.000 |40 MB per seconde |
+| Maximale door Voer |1024 KB |200 |200 MB per seconde |
+| Maximale door Voer + hoge IOPS |64 kB |3\.200 |200 MB per seconde |
+| Maximale IOPS + hoge door Voer |32 KB |5\.000 |160 MB per seconde |
 
 Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van één Premium-opslag schijf, gebruikt u meerdere Premium-schijven die met elkaar zijn gesegmenteerd. U kunt bijvoorbeeld twee P30-schijven opstrepen om een gecombineerde IOPS van 10.000 IOPS te verkrijgen of een gecombineerde door Voer van 400 MB per seconde. Zoals uitgelegd in de volgende sectie, moet u een VM-grootte gebruiken die ondersteuning biedt voor de gecombineerde schijf-IOPS en-door voer.
 
@@ -174,7 +174,7 @@ Wanneer u begint met het ontwerpen van een toepassing, selecteert u een virtuele
 
 Virtuele machines met een hoge schaal zijn beschikbaar in verschillende groottes met een verschillend aantal CPU-kernen, geheugen, besturings systeem en tijdelijke schijf grootte. Elke VM-grootte heeft ook een maximum aantal gegevens schijven dat u kunt koppelen aan de virtuele machine. Daarom is de gekozen VM-grootte van invloed op de hoeveelheid verwerking, het geheugen en de opslag capaciteit die beschikbaar is voor uw toepassing. Dit is ook van invloed op de reken-en opslag kosten. Hieronder ziet u bijvoorbeeld de specificaties van de grootste VM-grootte in een DS-serie, DSv2-serie en een GS-serie:
 
-| VM-grootte | CPU-kernen | Geheugen | VM-schijf grootten | Met maximaal gegevens schijven | Cachegrootte | IOPS | I/o-limieten van bandbreedte cache |
+| VM-grootte | Cpu-cores | Geheugen | VM-schijf grootten | Met maximaal gegevens schijven | Cache grootte | IOPS | I/o-limieten van bandbreedte cache |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Lokale SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB per seconde |4\.000 IOPS en 33 MB per seconde |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Lokale SSD = 896 GB |64 |4224 GB |80.000 IOPS <br> 2\.000 MB per seconde |5\.000 IOPS en 50 MB per seconde |
@@ -199,7 +199,7 @@ Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario vo
 | --- | --- | --- |
 | **Kosten van VM per maand** |$1.570,58 (standaard @ no__t-0D14) |$1.003,66 (standaard @ no__t-0DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
-| **Totale kosten per maand** |$3,208.98 |$1,544.34 |
+| **Totale kosten per maand** |$3.208,98 |$1.544,34 |
 
 *Linux-distributies*  
 
@@ -256,7 +256,7 @@ Hieronder vindt u de aanbevolen schijf cache-instellingen voor gegevens schijven
 | ReadOnly |Configureer de host-cache als alleen-lezen voor de schijven met het kenmerk alleen-schrijven en lees-en schrijf bewerkingen. |
 | ReadWrite |Configureer de host-cache als ReadWrite alleen als uw toepassing het schrijven van gegevens in de cache op de juiste wijze afhandelt naar permanente schijven als dat nodig is. |
 
-*ReadOnly*  
+*Kenmerk*  
 Door het configureren van alleen-lezen cache op Premium Storage gegevens schijven, kunt u een lage lees latentie bereiken en zeer grote Lees-IOPS en door Voer voor uw toepassing verkrijgen. Dit kan twee oorzaken hebben:
 
 1. Lees bewerkingen van de cache, die zich op het geheugen van de virtuele machine en lokale SSD bevindt, zijn veel sneller dan lees bewerkingen van de gegevens schijf, die zich in de Azure Blob-opslag bevindt.  
@@ -286,24 +286,24 @@ Voor alle Premium-Ssd's of Ultra disks met cache is ingesteld op **ReadOnly** of
 * Voor Premium Storage-schijven waarbij cache is ingesteld op **readwrite**, schakelt u belemmeringen voor schrijf duurzaamheid in.
 * Als u wilt dat volume namen behouden blijven nadat u de virtuele machine opnieuw hebt opgestart, moet u bestand/etc/fstab bijwerken met de UUID-verwijzingen (Universally Unique Identifier) naar de schijven. Zie [een beheerde schijf toevoegen aan een virtuele Linux-machine](../articles/virtual-machines/linux/add-disk.md)voor meer informatie.
 
-De volgende Linux-distributies zijn gevalideerd voor Premium-Ssd's. Voor betere prestaties en stabiliteit met Premium Ssd's wordt u aangeraden uw Vm's te upgraden naar een van deze versies of hoger. 
+De volgende Linux-distributies zijn gevalideerd voor Premium-Ssd's. Voor betere prestaties en stabiliteit met Premium Ssd's wordt u aangeraden uw Vm's te upgraden naar een van deze versies of nieuwer. 
 
 Voor sommige versies is de meest recente LIS (Linux Integration Services), v 4.0, voor Azure vereist. Als u een distributie wilt downloaden en installeren, volgt u de koppeling die wordt weer gegeven in de volgende tabel. We voegen afbeeldingen toe aan de lijst wanneer de validatie is voltooid. In onze validaties ziet u dat de prestaties voor elke installatie kopie verschillen. De prestaties zijn afhankelijk van de kenmerken van de werk belasting en de instellingen van uw installatie kopie. Verschillende installatie kopieën zijn afgestemd op verschillende soorten workloads.
 
 | Distributie | Version | Ondersteunde kernel | Details |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
-| Debian | 7. x, 8. x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| SuSE-SLES-12-Priority-v20150213 <br> SuSE-SLES-12-v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 vereist](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 aanbevolen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
-| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 of RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12,04 of hoger| 3.2.0-75.110 + | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-US-30 GB |
+| Ubuntu | 14,04 of hoger| 3.13.0-44.73 +  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-US-30 GB |
+| Debian | 7. x, 8. x of hoger| 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12 of hoger| 3.12.36-38.1 + | SuSE-SLES-12-Priority-v20150213 <br> SuSE-SLES-12-v20150213 |
+| SUSE | SLES 11 SP4 of nieuwer| 3.0.101-0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 + of hoger| 3.18.4 + | CoreOS 584.0.0 |
+| CentOS | 6,5, 6,6, 6,7, 7,0 of nieuwer| &nbsp; | [LIS4 vereist](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
+| CentOS | 7.1 + of hoger| 3.10.0-229.1.2. EL7 + | [LIS4 aanbevolen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
+| Red Hat Enterprise Linux (RHEL) | 6,8 +, 7,2 + of hoger | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + of nieuwer | &nbsp; | UEK4 of RHCK |
+| Oracle | 7.0-7.1 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6,7 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Stuur Programma's voor open Logic CentOS
 
@@ -322,7 +322,7 @@ Wanneer een grootschalige virtuele machine is gekoppeld aan verschillende perman
 
 In Windows kunt u opslag ruimten gebruiken om schijven samen te strepen. U moet één kolom configureren voor elke schijf in een groep. Anders kan de algehele prestaties van het striped volume lager zijn dan verwacht, vanwege een ongelijke distributie van verkeer op de schijven.
 
-Belangrijk: Met Serverbeheer gebruikers interface kunt u het totale aantal kolommen instellen op 8 voor een striped volume. Wanneer u meer dan acht schijven koppelt, gebruikt u Power shell om het volume te maken. Met behulp van Power shell kunt u het aantal kolommen instellen dat gelijk is aan het aantal schijven. Als er bijvoorbeeld 16 schijven in één stripeset zijn ingesteld; Geef 16 kolommen op in de para meter *NumberOfColumns* van de Power shell-cmdlet *New-VirtualDisk* .
+Belang rijk: het gebruik van Serverbeheer gebruikers interface kunt u het totale aantal kolommen instellen op 8 voor een striped volume. Wanneer u meer dan acht schijven koppelt, gebruikt u Power shell om het volume te maken. Met behulp van Power shell kunt u het aantal kolommen instellen dat gelijk is aan het aantal schijven. Als er bijvoorbeeld 16 schijven in één stripeset zijn ingesteld; Geef 16 kolommen op in de para meter *NumberOfColumns* van de Power shell-cmdlet *New-VirtualDisk* .
 
 Gebruik in Linux het MDADM-hulp programma om schijven samen te strippen. Zie [Software RAID op Linux configureren](../articles/virtual-machines/linux/configure-raid.md)voor gedetailleerde stappen voor het verwijderen van schijven in Linux.
 
@@ -377,7 +377,7 @@ U moet de wachtrij diepte niet configureren voor een hoge waarde, maar voor een 
 Voor een striped volume moet u een hoge wachtrij diepte hebben, zodat elke schijf afzonderlijk een piek wachtrij heeft. Denk bijvoorbeeld aan een toepassing die een wachtrij diepte van 2 duwt en er vier schijven in de Stripe zijn. De twee i/o-aanvragen gaan naar twee schijven en de resterende twee schijven worden niet-actief. Configureer daarom de wachtrij diepte zodanig dat alle schijven bezet kunnen zijn. Onderstaande formule laat zien hoe u de wachtrij diepte van striped volumes kunt bepalen.  
     ![](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Beperken
+## <a name="throttling"></a>Beperking
 
 Azure Premium Storage voorziet in een opgegeven aantal IOPS en door Voer, afhankelijk van de grootte van de virtuele machine en de schijf groottes die u kiest. Telkens wanneer uw toepassing probeert te gaan van IOPS of door Voer boven deze limieten van wat de virtuele machine of schijf kan verwerken, Premium Storage deze beperking. Dit manifesteert in de vorm van verminderde prestaties in uw toepassing. Dit kan betekenen hogere latentie, lagere door Voer of lagere IOPS. Als Premium Storage niet wordt beperkt, kan uw toepassing volledig mislukken door te overschrijden wat de bronnen kunnen bereiken. Om prestatie problemen te voor komen vanwege beperking, moet u altijd voldoende resources inrichten voor uw toepassing. Houd rekening met wat we hebben besproken in de secties VM-grootten en schijf grootten hierboven. Benchmarking is de beste manier om erachter te komen welke resources u nodig hebt om uw toepassing te hosten.
 

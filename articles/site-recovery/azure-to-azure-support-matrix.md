@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376333"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383517"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Ondersteuningsmatrix voor het repliceren van Azure-VM's van de ene naar de andere regio
 
@@ -82,18 +82,21 @@ Site Recovery ondersteunt replicatie van virtuele Azure-machines met de besturin
 
 ### <a name="windows"></a>Windows
 
+
 **Besturingssysteem** | **Details**
 --- | ---
 Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervaring.
 Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
 Windows Server 2012 R2 | Ondersteund.
 Windows Server 2012 | Ondersteund.
-Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
-Windows Server 2008 met SP2 | Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 met SP1/SP2 | Ondersteund.<br/><br/> Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele machines van Azure, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 R2 SP1/SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows Server 2008 met SP2 | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4493730) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows Server 2008 met SP2.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Ondersteund.
 Windows 8,1 (x64) | Ondersteund.
 Windows 8 (x64) | Ondersteund.
-Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x van de Mobility service-extensie voor Azure Vm's, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  Als deze updates niet zijn geïnstalleerd, wordt de agent extensie mogelijk niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+Windows 7 (x64) met SP1 en hoger | Van versie 9.30. x. x (verwachte release vanaf november 2019) van de Mobility service-extensie voor virtuele Azure-machines, moet u een Windows [Servicing Stack update (Ssu)](https://support.microsoft.com/help/4490628) en [SHA-2-update](https://support.microsoft.com/help/4474419) installeren op computers met Windows 7 met SP1.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/geüpgraded. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
+
+
 
 #### <a name="linux"></a>Linux
 

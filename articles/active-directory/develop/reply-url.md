@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834818"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389599"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Beperkingen voor omleidings-URI en antwoord-URL
 
@@ -24,20 +24,26 @@ Een omleidings-URI of antwoord-URL is de locatie waarnaar de autorisatie server 
 
 ## <a name="maximum-number-of-redirect-uris"></a>Maximum aantal omleidings-Uri's
 
-In de volgende tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen wanneer u uw app registreert. 
+In de volgende tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen wanneer u uw app registreert.
 
-| Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Description |
+| Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Beschrijving |
 |--------------------------|---------------------------------|-------------|
-| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience`het veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
-| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience`het veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
+| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience`-veld in het manifest van de toepassing is ingesteld op ofwel *AzureADMyOrg* of *AzureADMultipleOrgs* |
+| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience`-veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>Maximale URI-lengte
 
 U kunt Maxi maal 256 tekens gebruiken voor elke omleidings-URI die u toevoegt aan een app-registratie.
 
+## <a name="supported-schemes"></a>Ondersteunde schema's
+Het Azure AD-toepassings model ondersteunt nu HTTP-en HTTPS-schema's voor apps die zich aanmelden bij micro soft-werk-of school accounts in de Azure Active Directory (Azure AD)-Tenant van een organisatie. Het veld `signInAudience` in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs*. Voor de apps die persoonlijke micro soft-accounts en werk-en school accounts aanmelden (@no__t 0 is ingesteld op *AzureADandPersonalMicrosoftAccount*), is alleen https-schema toegestaan.
+
+> [!NOTE]
+> Met de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring kunnen ontwikkel aars geen uri's toevoegen met een HTTP-schema in de gebruikers interface. Het toevoegen van HTTP-Uri's voor apps die aanmelden op werk-of school accounts worden alleen ondersteund via de manifest editor van de app. Nieuwe apps kunnen geen HTTP-schema's gebruiken in de omleidings-URI. Oudere apps die HTTP-schema's in omleidings-Uri's bevatten, blijven echter werken. Ontwikkel aars moeten HTTPS-schema's gebruiken in de omleidings-Uri's.
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>Beperkingen met behulp van een Joker teken in Uri's
 
-Joker teken-uri's, `https://*.contoso.com`zoals, zijn handig, maar moeten worden vermeden. Het gebruik van joker tekens in de omleidings-URI heeft gevolgen voor de beveiliging. Volgens de OAuth 2,0-specificatie ([sectie 3.1.2 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) moet een omleidings EINDPUNT-URI een absolute URI zijn. 
+Joker teken-Uri's, zoals `https://*.contoso.com`, zijn handig, maar moeten worden vermeden. Het gebruik van joker tekens in de omleidings-URI heeft gevolgen voor de beveiliging. Volgens de OAuth 2,0-specificatie ([sectie 3.1.2 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) moet een omleidings EINDPUNT-URI een absolute URI zijn. 
 
 Het Azure AD-toepassings model biedt geen ondersteuning voor joker tekens voor apps die zijn geconfigureerd om persoonlijke micro soft-accounts en werk-of school accounts te ondertekenen. Joker teken-Uri's zijn echter toegestaan voor apps die zijn geconfigureerd om werk-of school accounts te registreren in de Azure AD-Tenant van een organisatie. 
  
@@ -63,7 +69,7 @@ In deze benadering:
 
 ### <a name="add-redirect-uris-to-service-principals"></a>Omleidings-Uri's toevoegen aan service-principals
 
-Een andere manier is om omleidings-Uri's toe te voegen aan de [service](app-objects-and-service-principals.md#application-and-service-principal-relationship) -principals die de registratie van uw app in een Azure AD-Tenant vertegenwoordigen. U kunt deze aanpak gebruiken wanneer u geen para meter State of uw scenario gebruikt om nieuwe omleidings-Uri's toe te voegen aan de registratie van uw app voor elke nieuwe Tenant die u ondersteunt. 
+Een andere manier is om omleidings-Uri's toe te voegen aan de [service-principals](app-objects-and-service-principals.md#application-and-service-principal-relationship) die de registratie van uw app in een Azure AD-Tenant vertegenwoordigen. U kunt deze aanpak gebruiken wanneer u geen para meter State of uw scenario gebruikt om nieuwe omleidings-Uri's toe te voegen aan de registratie van uw app voor elke nieuwe Tenant die u ondersteunt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
