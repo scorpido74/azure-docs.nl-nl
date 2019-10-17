@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Zonder wachtwoord
       items:
+        - name: Implementeren zonder wachtwoord
+          href: howto-authentication-passwordless-deployment.md
         - name: Beveiligingssleutels zonder wachtwoord
           href: howto-authentication-passwordless-security-key.md
         - name: Zonder wachtwoord aanmelden via telefoon

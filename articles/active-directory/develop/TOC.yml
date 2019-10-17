@@ -345,6 +345,8 @@
               href: active-directory-how-applications-are-added.md
             - name: Beperkingen voor omleidings-URI en antwoord-URL
               href: reply-url.md
+            - name: Validatieverschillen per ondersteunde accounttypen
+              href: supported-accounts-validation.md
             - name: Apps met één tenant en apps met meerdere tenants
               href: single-and-multi-tenant-apps.md
         - name: Machtigingen en toestemming

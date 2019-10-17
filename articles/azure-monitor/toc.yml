@@ -217,7 +217,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: Bewaking zonder code
               items:
-                - name: Azure VM en Azure-virtuele-machineschaalset
+                - name: Azure VM en schaalset
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -231,10 +231,10 @@
                 - name: Kubernetes-toepassingen
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: Status Monitor
+                - name: Status Monitor (verouderd)
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: Status Monitor v2
+                - name: On-premises servers
                   items:
                     - name: Overzicht
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'

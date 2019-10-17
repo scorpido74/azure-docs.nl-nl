@@ -21,6 +21,8 @@
   items:
     - name: Algemeen beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policy-common.md
+    - name: Standaardinstellingen voor de beveiliging
+      href: concept-conditional-access-security-defaults.md
     - name: Onderdelen van beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policies.md
     - name: Voorwaarden
@@ -76,16 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klassieke beleidsregels migreren
       href: policy-migration.md
-    - name: Basislijnbeleid
-      items:
-        - name: MFA vereisen voor beheerders
-          href: howto-baseline-protect-administrators.md
-        - name: Beveiliging van de eindgebruiker
-          href: howto-baseline-protect-end-users.md
-        - name: Verouderde verificatie blokkeren
-          href: howto-baseline-protect-legacy-auth.md
-        - name: MFA vereisen voor servicebeheer
-          href: howto-baseline-protect-azure.md
     - name: Voorwaardelijke toegang implementeren
       href: howto-conditional-access-adoption-kit.md
     - name: Problemen oplossen
