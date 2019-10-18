@@ -1,6 +1,6 @@
 ---
-title: Communiceren met een apparaat-app in C# via Azure IoT Hub apparaat-streams (preview) | Microsoft Docs
-description: In deze snelstartgids hebt u twee voorbeelden uitvoeren C# toepassingen die via de stroom van een apparaat tot stand gebracht via IoT Hub communiceren.
+title: Communiceren met een apparaat-app C# in via Azure IOT hub Device streams (preview) | Microsoft Docs
+description: In deze Quick Start voert u twee voorbeeld C# toepassingen uit die communiceren via een apparaat stroom die is ingesteld via IOT hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: de581362371e28523c99f961dfdb5c2009901343
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446112"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516526"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Quickstart: Communiceren met de apparaattoepassing van een in C# via IoT Hub apparaat-streams (preview)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app C# in via IOT hub Device streams (preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Azure IoT Hub apparaat-streams als op dit moment ondersteunt een [preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure IoT Hub ondersteunt momenteel het streamen van apparaten als een [Preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[IoT Hub-apparaatstreams](./iot-hub-device-streams-overview.md) zorgen ervoor dat service- en apparaattoepassingen kunnen communiceren op een beveiligde manier die de firewall toestaat. In deze snelstartgids bestaat uit twee C# toepassingen die profiteren van apparaat-streams gegevens heen en weer (echo) te verzenden.
+[IoT Hub-apparaatstreams](./iot-hub-device-streams-overview.md) zorgen ervoor dat service- en apparaattoepassingen kunnen communiceren op een beveiligde manier die de firewall toestaat. In deze Quick Start C# worden twee toepassingen uitgevoerd die gebruikmaken van de streams van apparaten om gegevens heen en weer te sturen (ECHO).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,25 +30,25 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De Preview-versie van apparaat stromen is momenteel alleen ondersteund voor IoT-hubs die zijn gemaakt in de volgende regio's:
-  * US - centraal
-  * VS-midden EUAP
+* De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
+  * VS - centraal
+  * Centrale VS-EUAP
 
-* De twee voorbeeldtoepassingen die u in deze Quick Start uitvoert zijn geschreven met behulp van C#. U moet de .NET Core SDK 2.1.0 of hoger op uw ontwikkelcomputer.
-  * Download de [.NET Core-SDK voor meerdere platformen van .NET](https://www.microsoft.com/net/download/all).
-  * Controleer of de huidige versie van C# op een ontwikkelcomputer met behulp van de volgende opdracht uit:
+* De twee voorbeeld toepassingen die u in deze Quick start uitvoert, zijn C#geschreven in. U hebt de .NET Core SDK 2.1.0 of hoger nodig op uw ontwikkel computer.
+  * Down load de [.net core SDK voor meerdere platforms van .net](https://www.microsoft.com/net/download/all).
+  * Controleer de huidige versie van C# op uw ontwikkel computer met behulp van de volgende opdracht:
 
    ```
    dotnet --version
    ```
 
-* De Azure IoT-extensie voor Azure CLI toevoegen aan uw exemplaar van Cloud Shell met de volgende opdracht. De IOT-extensie wordt toegevoegd voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten naar de Azure CLI.
+* Voeg de Azure IoT-extensie voor Azure CLI toe aan uw Cloud Shell-exemplaar door de volgende opdracht uit te voeren. De IOT-extensie voegt IoT Hub, IoT Edge en IoT-specifieke opdrachten (Device Provisioning Service) toe aan de Azure CLI.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-* [Het voorbeeld downloaden C# project](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak het ZIP-archief. U hebt deze nodig op zowel de zijde van het apparaat en de servicezijde.
+* [Down load het C# voorbeeld project](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak het zip-archief uit. U hebt deze zowel aan de kant van het apparaat als aan de kant van de service nodig.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -58,56 +58,56 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht in Cloud Shell voor het maken van de apparaat-id:
+1. Als u de apparaat-id wilt maken, voert u de volgende opdracht uit in Cloud Shell:
 
    > [!NOTE]
-   > * Vervang de *YourIoTHubName* tijdelijke aanduiding door de naam die u voor uw IoT-hub kiest.
-   > * Gebruik *Mijnapparaat*, zoals wordt weergegeven. Het is de naam van het geregistreerde apparaat. Als u een andere naam voor uw apparaat, gebruikt u die naam in dit artikel en de naam van het apparaat in de voorbeeldtoepassingen bijwerken voordat u ze uitvoert.
+   > * Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
+   > * Voor de naam van het apparaat dat u wilt registreren, is het raadzaam om *mijn* te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, gebruikt u die naam in dit artikel en werkt u de apparaatnaam bij in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Aan de *apparaatverbindingsreeks* voor het apparaat dat u zojuist hebt geregistreerd, kunt u de volgende opdracht uitvoeren in Cloud Shell:
+1. Als u de *apparaat Connection String* wilt ophalen voor het apparaat dat u zojuist hebt geregistreerd, voert u de volgende opdracht uit in Cloud shell:
 
    > [!NOTE]
-   > Vervang de *YourIoTHubName* tijdelijke aanduiding door de naam die u voor uw IoT-hub kiest.
+   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Houd er rekening mee de apparaatverbindingsreeks voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
+    Bekijk de geretourneerde apparaat connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
 3. U hebt ook de *serviceverbindingsreeks* van uw IoT Hub nodig, zodat de toepassing aan de servicezijde verbinding kan maken met uw IoT Hub en een apparaatstream kan opzetten. Met de volgende opdracht haalt u deze waarde voor uw IoT-hub op:
 
    > [!NOTE]
-   > Vervang de *YourIoTHubName* tijdelijke aanduiding door de naam die u voor uw IoT-hub kiest.
+   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Houd er rekening mee de geretourneerde waarde voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
+    Bekijk de geretourneerde service connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Communiceren tussen het apparaat en de service via apparaat stromen
+## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Communiceren tussen het apparaat en de service via Device streams
 
-In deze sectie maakt u de apparaat-side '-toepassing en de toepassing aan de serverkant uitvoeren en communicatie tussen de twee.
+In deze sectie voert u zowel de toepassing op het apparaat als de toepassing aan de service zijde uit en communiceert u tussen de twee toepassingen.
 
 ### <a name="run-the-service-side-application"></a>De toepassing aan de servicezijde uitvoeren
 
-Ga naar de *iot-hub/snelstartgidsen/apparaat-streams-echo/service* Active directory in de map van de uitgepakte project. De volgende informatie bij de hand houden:
+Ga in een lokaal Terminal venster naar de map `iot-hub/Quickstarts/device-streams-echo/service` in de map ungezipte project. Zorg ervoor dat u de volgende informatie bij de hand hebt:
 
 | Parameternaam | Parameterwaarde |
 |----------------|-----------------|
-| `ServiceConnectionString` | De service-verbindingsreeks van uw IoT-hub opgeven. |
-| `DeviceId` | Geef de ID van het apparaat dat u eerder hebt gemaakt (bijvoorbeeld *Mijnapparaat*). |
+| `ServiceConnectionString` | De service connection string van uw IoT-hub. |
+| `MyDevice` | De id van het apparaat dat u eerder hebt gemaakt. |
 
-Compileer de code en voer deze als volgt uit:
+Compileer de code en voer deze uit met de volgende opdrachten:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/service/
@@ -117,24 +117,25 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<ServiceConnectionString>" "<MyDevice>"
+dotnet run "{ServiceConnectionString}" "MyDevice"
 
 # In Windows
-dotnet run <ServiceConnectionString> <MyDevice>
+dotnet run {ServiceConnectionString} MyDevice
 ```
+De toepassing wordt gewacht totdat de Device-toepassing beschikbaar wordt.
 
 > [!NOTE]
 > Er treedt een time-out op als de toepassing aan de apparaatzijde niet op tijd reageert.
 
 ### <a name="run-the-device-side-application"></a>De toepassing aan de apparaatzijde uitvoeren
 
-Ga naar de *iot-hub/snelstartgidsen/apparaat-streams-echo/apparaat* Active directory in de map van de uitgepakte project. De volgende informatie bij de hand houden:
+Navigeer in een ander lokaal Terminal venster naar de map `iot-hub/Quickstarts/device-streams-echo/device` in de map ungezipte project. Zorg ervoor dat u de volgende informatie bij de hand hebt:
 
 | Parameternaam | Parameterwaarde |
 |----------------|-----------------|
-| `DeviceConnectionString` | Geef de apparaatverbindingsreeks van uw IoT Hub op. |
+| `DeviceConnectionString` | Het apparaat connection string van uw IoT Hub. |
 
-Compileer de code en voer deze als volgt uit:
+Compileer de code en voer deze uit met de volgende opdrachten:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/device/
@@ -144,23 +145,23 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<DeviceConnectionString>"
+dotnet run "{DeviceConnectionString}"
 
 # In Windows
-dotnet run <DeviceConnectionString>
+dotnet run {DeviceConnectionString}
 ```
 
-Aan het einde van de laatste stap initieert de service-side '-toepassing een stroom op uw apparaat. Nadat de stroom tot stand is gebracht, wordt in de toepassing een buffer voor tekenreeks naar de service via de stroom verzendt. In dit voorbeeld de toepassing aan de serverkant gewoon een echo weer dezelfde gegevens op het apparaat, die laat zien van een geslaagde bidirectionele communicatie tussen de twee toepassingen.
+Aan het einde van de laatste stap initieert de toepassing aan de service zijde een stroom naar uw apparaat. Nadat de stroom is gemaakt, verzendt de toepassing een teken reeks buffer naar de service via de stroom. In dit voor beeld wordt de toepassing aan de service zijde eenvoudigweg teruggestuurd naar dezelfde gegevens op het apparaat. Dit illustreert een geslaagde bidirectionele communicatie tussen de twee toepassingen.
 
-Console-uitvoer op het apparaat plaats:
+Console-uitvoer aan de kant van het apparaat:
 
-![Console-uitvoer op het apparaat plaats](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
+![Console-uitvoer aan de kant van het apparaat](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
 
-Console-uitvoer aan de servicezijde:
+Console-uitvoer aan de kant van de service:
 
-![Console-uitvoer aan de servicezijde](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
+![Console-uitvoer aan de service zijde](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
 
-Het verkeer wordt verzonden via de stroom is tunnel via de IoT hub plaats van rechtstreeks verzonden. De voordelen die worden beschreven in [apparaat streamt voordelen](./iot-hub-device-streams-overview.md#benefits).
+Het verkeer dat via de stroom wordt verzonden, wordt via de IoT-hub getunneld en niet rechtstreeks verzonden. De voor delen worden beschreven in de [voor delen van Device streams](./iot-hub-device-streams-overview.md#benefits).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -168,9 +169,9 @@ Het verkeer wordt verzonden via de stroom is tunnel via de IoT hub plaats van re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u hebt instellen van een IoT-hub, een apparaat hebt geregistreerd, een apparaat-stroom tussen tot stand gebracht C# toepassingen aan de zijkant apparaat- en service en de stroom gebruikt voor het verzenden van gegevens heen en weer tussen de toepassingen.
+In deze Quick start gaat u een IoT-hub instellen, een apparaat registreren, een apparaat stroom tot C# stand brengen tussen toepassingen op het apparaat en de service zijde en de stream gebruiken om gegevens heen en weer te sturen tussen de toepassingen.
 
-Zie voor meer informatie over het apparaat stromen:
+Zie voor meer informatie over het streamen van apparaten:
 
 > [!div class="nextstepaction"]
 > [Overzicht van apparaatstreams](./iot-hub-device-streams-overview.md)

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 4a6fd7dd40905a8a81a104c9d6ef22040ff88f15
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "67445970"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516314"
 ---
-# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Quickstart: Schakel SSH en RDP via een stroom van een IoT Hub apparaat in met behulp van een node. js-proxy toepassing (preview)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Quick Start: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een node. js-proxy toepassing (preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
@@ -41,8 +41,8 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * US - centraal
-  * US - centraal EUAP
+  * VS - centraal
+  * Centrale VS-EUAP
 
 * Als u de service-Local-toepassing in deze Quick Start wilt uitvoeren, moet u node. js V10 toevoegen. x. x of hoger op uw ontwikkel machine hebben.
   * Down load [node. js](https://nodejs.org) voor meerdere platforms.
@@ -62,36 +62,36 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-Als u [Snelstart: Als u telemetrie vanaf een apparaat wilt verzenden naar een IoT-hub](quickstart-send-telemetry-node.md), kunt u deze stap overslaan.
+U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Node.js)](quickstart-send-telemetry-node.md).
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-Als u klaar [bent met Quick Start: Als u telemetrie vanaf een apparaat wilt verzenden naar een IoT-hub](quickstart-send-telemetry-node.md), kunt u deze stap overslaan.
+Als u de [Snelstartgids hebt voltooid: telemetrie van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-node.md), kunt u deze stap overs Laan.
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze sectie gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
 1. Als u de apparaat-id wilt maken, voert u de volgende opdracht uit in Cloud Shell:
 
    > [!NOTE]
-   > * Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u voor uw IOT-hub hebt gekozen.
-   > * Gebruik *mijn*, zoals wordt weer gegeven. Dit is de naam die is opgegeven voor het geregistreerde apparaat. Als u een andere naam kiest voor uw apparaat, gebruikt u die naam in dit artikel en werkt u de apparaatnaam bij in de voorbeeld toepassingen voordat u ze uitvoert.
+   > * Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
+   > * Voor de naam van het apparaat dat u wilt registreren, is het raadzaam om *mijn* te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, gebruikt u die naam in dit artikel en werkt u de apparaatnaam bij in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Als u wilt dat de back-endtoepassing verbinding maakt met uw IoT-hub en de berichten ophaalt, hebt u ook een *service connection string*nodig. Met de volgende opdracht wordt de teken reeks voor uw IoT-hub opgehaald:
 
    > [!NOTE]
-   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u voor uw IOT-hub hebt gekozen.
+   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Bekijk de geretourneerde waarde voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
+   Bekijk de geretourneerde service connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -110,25 +110,25 @@ Voordat u verdergaat met de volgende stap, moet u ervoor zorgen dat de toepassin
 
 ### <a name="run-the-service-local-proxy-application"></a>Voer de proxytoepassing in de service uit
 
-Voer de volgende handelingen uit als u de toepassing voor het starten van een apparaat-lokale proxy wilt uitvoeren in node. js:
+Met de toepassing voor het uitvoeren van een apparaat-lokale proxy voert u de service-Local proxy-toepassing uit die is geschreven in node. js door de volgende handelingen uit te voeren in een lokaal Terminal venster:
 
 1. Geef voor omgevings variabelen uw service referenties op, de doel apparaat-ID waar de SSH-daemon wordt uitgevoerd en het poort nummer van de proxy die op het apparaat wordt uitgevoerd.
 
    ```
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
    export PROXY_PORT=2222
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    SET PROXY_PORT=2222
    ```
 
-   Wijzig de voor gaande waarden zodat deze overeenkomen met uw apparaat-ID en connection string.
+   Wijzig de tijdelijke aanduiding ServiceConnectionString zodat deze overeenkomt met uw service connection string en **mijn** overeenkomen met uw apparaat-id als u een andere naam hebt opgegeven.
 
-1. Ga naar de map Quick starts */device-streams-service* in uw ongecomprimeerde projectmap en voer de service-Local proxy-toepassing uit.
+1. Navigeer naar de map `Quickstarts/device-streams-service` in de map ungezipte project. Gebruik de volgende code om de service-Local proxy-toepassing uit te voeren:
 
    ```
    cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
@@ -143,13 +143,13 @@ Voer de volgende handelingen uit als u de toepassing voor het starten van een ap
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>SSH naar uw apparaat via apparaatstreams
 
-Voer in Linux SSH uit met behulp `ssh $USER@localhost -p 2222` van op een Terminal. Gebruik in Windows uw favoriete SSH-client (bijvoorbeeld PuTTy).
+Voer in Linux SSH uit met behulp van `ssh $USER@localhost -p 2222` op een Terminal. Gebruik in Windows uw favoriete SSH-client (bijvoorbeeld PuTTy).
 
 Console-uitvoer op de service-Local na SSH-sessie wordt tot stand gebracht (de service-Local proxy-toepassing luistert op poort 2222):
 
 ![SSH-terminal uitvoer](./media/quickstart-device-streams-proxy-nodejs/service-console-output.png)
 
-Console-uitvoer van de SSH-client toepassing (SSH-client communiceert met SSH-daemon door verbinding te maken met poort 22, waar de toepassing voor de lokale proxy van de service luistert):
+Console-uitvoer van de SSH-client toepassing (SSH-client communiceert met SSH-daemon door verbinding te maken met poort 22, waarbij de toepassing service-Local proxy luistert):
 
 ![SSH-client uitvoer](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.png)
 
@@ -168,7 +168,7 @@ Gebruik nu uw RDP-client toepassing en maak verbinding met de Service proxy op p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een IoT-hub ingesteld, een apparaat geregistreerd en een Service proxy toepassing geïmplementeerd om RDP en SSH in te scha kelen op een IoT-apparaat. Het RDP-en SSH-verkeer wordt via de IoT-hub getunneld via een apparaat stroom. Dit proces elimineert de nood zaak van rechtstreekse verbinding met het apparaat.
+In deze Snelstartgids stelt u een IoT-hub in, registreert u een apparaat en implementeert u een Service proxy toepassing om RDP en SSH in te scha kelen op een IoT-apparaat. Het RDP-en SSH-verkeer wordt via de IoT-hub getunneld via een apparaat stroom. Dit proces elimineert de nood zaak van rechtstreekse verbinding met het apparaat.
 
 Zie voor meer informatie over het streamen van apparaten:
 

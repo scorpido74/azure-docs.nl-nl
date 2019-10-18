@@ -4,15 +4,15 @@ description: Hier vindt u een algemene beschrijving van Analysis Services in Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294766"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512604"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -81,15 +81,15 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |---------|---------|:---------:|
 |Brazilië - Zuid     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Canada-Midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|US - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|US - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|US - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
-|US - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|US - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|US - west     |    S8, S9, S8v2, S9v2   |    2  |
+|VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
+|VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
 |US - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
 |US - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
@@ -138,7 +138,7 @@ Azure Analysis Services is compatibel met veel geweldige functies die al deel ui
 
 Tabellarische modellen in zowel in-memory- als DirectQuery-modi worden ondersteund. In de in-memory-modus (standaard) ondersteunen tabellarische modellen meerdere gegevensbronnen. Omdat modelgegevens in hoge mate worden gecomprimeerd en in het geheugen worden gecachet, biedt deze modus de snelste queryrespons op grote hoeveelheden gegevens. Deze modus biedt ook de meeste flexibiliteit voor complexe gegevenssets en query's. Partitionering maakt incrementele belastingen mogelijk, verhoogt de parallellisatie en vermindert het geheugenverbruik. Andere geavanceerde functies voor gegevensmodellering, zoals berekende tabellen, en alle DAX-functies worden ondersteund. Geheugenmodellen moeten worden vernieuwd (verwerkt) om gecachete gegevens uit gegevensbronnen bij te werken. Dankzij Azure-service-principal-ondersteuning bieden onbeheerde vernieuwingsbewerkingen met PowerShell, TOM, TMSL en REST flexibiliteit om ervoor te zorgen dat uw modelgegevens altijd up-to-date zijn. 
 
-DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Extreem grote gegevenssets in afzonderlijke SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure SQL Data Warehouse-, Oracle- en Teradata-gegevensbronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevensbrontypen en DAX-formulebeperkingen, en enkele geavanceerde functies voor gegevensmodellering worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
+DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Extreem grote gegevenssets in afzonderlijke SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure SQL Data Warehouse-, Oracle- en Teradata-gegevensbronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevens bron typen, beperkingen van DAX-formules en sommige geavanceerde functies voor gegevens modellering worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
 
 \* Welke functies beschikbaar zijn hangt af van de laag.
 
@@ -200,7 +200,7 @@ Ga naar het [Microsoft Vertrouwenscentrum](https://www.microsoft.com/trustcenter
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Ontwikkel en implementeer modellen met de gratis [SQL Server Data Tools (SSDT) voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). SSDT bevat Analysis Services-projectsjablonen waarmee u snel aan de slag kunt gaan. Bovendien biedt SSDT voor tabellaire modellen met compatibiliteitsniveau 1400 nu ook de innovatieve queryfunctie Get Data en mashup-functionaliteit. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
+Ontwikkel en implementeer modellen met de gratis [SQL Server Data Tools (SSDT) voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). SSDT bevat Analysis Services-projectsjablonen waarmee u snel aan de slag kunt gaan. SSDT bevat nu de modern Get data source-query en mashup-functionaliteit voor modellen in tabel vorm 1400. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
 
 Als u Visual Studio 2017 of hoger gebruikt, zijn micro soft Analysis Services-projecten beschikbaar als een gratis Installeer bare VSIX-pakket. [Downloaden van Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 

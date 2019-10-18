@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744410"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514019"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Quickstart: Een database herstellen naar een beheerd exemplaar
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Snelstartgids: een Data Base herstellen naar een beheerd exemplaar
 
 In deze quickstart gebruikt u SQL Server Management Studio (SSMS) om een database (het standaardback-upbestand van Wide World Importers) te herstellen van Azure Blob Storage naar een [beheerd exemplaar](sql-database-managed-instance.md) voor Azure SQL Database.
 
@@ -37,10 +37,10 @@ Voor deze snelstartgids geldt het volgende:
 - Er moet gebruik worden gemaakt van SSMS voor verbinding met uw beheerde exemplaar. Raadpleeg de volgende snelstart voor het maken van verbinding:
   - [Verbinding maken met een Azure SQL Database Managed Instance vanaf een Azure-VM](sql-database-managed-instance-configure-vm.md)
   - [Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises ](sql-database-managed-instance-configure-p2s.md).
-- Vereist een Azure Blob Storage-account (bijvoorbeeld Standard_LRS v2) op **openbaar IP-adres** dat is `rw` beveiligd met een **SAS-referentie** met een machtiging. [Privé IP-adressen voor Blob-opslag die wordt beveiligd door Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) -en Azure Blob Storage service-eind punten worden momenteel niet ondersteund.
+- Vereist een Azure Blob Storage-account (bijvoorbeeld Standard_LRS v2) op **openbaar IP-adres** dat is beveiligd met een **SAS-referentie** met `rw`-machtiging. [Privé IP-adressen voor Blob-opslag die wordt beveiligd door Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) -en Azure Blob Storage service-eind punten worden momenteel niet ondersteund.
 
 > [!NOTE]
-> Zie [Back-up van SQL Server naar URL](sql-database-managed-instance-get-started-restore.md) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
+> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>De database herstellen met een back-upbestand
 
@@ -92,4 +92,4 @@ Volg in SSMS deze stappen om de Wide World Importers-database te herstellen naar
 
 - Zie [SQL Server Backup to URL Best Practices and Troubleshooting](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting) (Aanbevolen procedures en probleemoplossing voor back-up van SQL Server naar URL) voor het oplossen van problemen met een back-up naar een URL.
 - Zie [Uw toepassingen verbinding laten maken met Managed Instance](sql-database-managed-instance-connect-app.md) voor een overzicht van de verbindingsopties voor toepassingen.
-- Voor informatie over het uitvoeren van een query met een van uw favoriete hulpprogramma's of talen, raadpleegt u [Snelstarts: verbinding maken met Azure SQL-database en hierop query's uitvoeren](sql-database-connect-query.md).
+- Als u een query wilt uitvoeren met uw favoriete hulpprogram ma's of talen, raadpleegt u Quick starts [: Azure SQL database verbinding maken en Query's uitvoeren](sql-database-connect-query.md).

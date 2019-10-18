@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177686"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528877"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quick Start: uw node. js-webtoepassing bewaken met Azure-toepassing Insights
 
@@ -43,7 +43,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 1. Selecteer **Een resource maken** > **Hulpprogramma's voor ontwikkelaars** > **Application Insights**.
 
-   ![Application Insights-resource toevoegen](./media/nodejs-quick-start/1createresourseappinsights.png)
+   ![Een Azure-toepassing Insights-resource toevoegen](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
    >Als dit de eerste keer is dat u een Application Insights resource maakt, kunt u meer informatie vinden op het document [Create a Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
@@ -54,7 +54,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
    | ------------- |:-------------|:-----|
    | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Toepassingstype** | Node.js-toepassing | Type app dat u wilt controleren |
-   | **Locatie** | US - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
 2. Selecteer **Maken**.
 
@@ -62,7 +62,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 1. Selecteer **overzicht** en kopieer de **instrumentatie sleutel**van uw toepassing.
 
-   ![Nieuw App Insights-resourceformulier](./media/nodejs-quick-start/3key.png)
+   ![De Application Insights instrumentatie sleutel weer geven](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
 2. Voeg de Application Insights-SDK voor Node.js toe aan uw toepassing. Voer deze opdracht uit vanuit de hoofdmap van uw app:
 
@@ -86,19 +86,19 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 1. U kunt de pagina **Overzicht** van Application Insights in Azure Portal, waar u de instrumentatiesleutel hebt opgehaald, nu opnieuw openen om de details te bekijken van de toepassing die momenteel wordt uitgevoerd.
 
-   ![Menu Overzicht van Application Insights](./media/nodejs-quick-start/4overview.png)
+   ![Menu overzicht van Application Insights](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
 2. Selecteer **toepassings toewijzing** voor een visuele indeling van de afhankelijkheids relaties tussen de onderdelen van uw toepassing. Voor elk onderdeel worden KPI's weergegeven, zoals belasting, prestaties, fouten en waarschuwingen.
 
-   ![Toepassingskaart](./media/nodejs-quick-start/5appmap.png)
+   ![Toepassings toewijzing Application Insights](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Selecteer het pictogram **app Analytics** ![Application kaart pictogram @ no__t-2- **weer gave in Analytics**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Selecteer het pictogram van de **app-analyse** ![Application kaart pictogram ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **weer gave in de analyse**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
-   ![Analytics-grafiek met gebruikersaanvragen gedurende een tijdsperiode](./media/nodejs-quick-start/6analytics.png)
+   ![Application Insights Analytics-grafieken](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
 4. Ga terug naar de pagina **Overzicht** en bekijk de KPI-grafieken.  Dit dashboard biedt statistische gegevens over de toepassingsstatus, waaronder het aantal inkomende aanvragen, de duur van deze aanvragen en eventuele fouten die optreden.
 
-   ![Tijdlijngrafieken voor het Statusoverzicht](./media/nodejs-quick-start/7kpidashboards.png)
+   ![Tijdlijn grafieken voor Application Insights status overzicht](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
    Als u de grafiek **Laadtijd voor paginaweergave** wilt vullen met **telemetriegegevens aan de clientzijde**, voegt u dit script toe aan elke pagina die u wilt bijhouden:
 
@@ -124,7 +124,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 5. Selecteer aan de linkerkant de optie **metrische gegevens**. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resource te onderzoeken. U kunt **nieuwe grafiek toevoegen** selecteren om extra aangepaste weer gaven te maken of **bewerken** selecteren om de bestaande grafiek typen, hoogte, kleuren palet, groeperingen en metrische gegevens te wijzigen. U kunt bijvoorbeeld een grafiek maken waarin de gemiddelde laad tijd van een browser pagina wordt weer gegeven door ' browser pagina laadtijd ' te selecteren in de vervolg keuzelijst metrische gegevens en ' Gem ' van aggregatie. Ga voor meer informatie over Azure Metrics Explorer [aan de slag met azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Grafiek voor metrische servergegevens](./media/nodejs-quick-start/8metrics.png)
+   ![Grafiek met metrische gegevens van Application Insights server](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
 Bekijk de [extra Node./js-documentatie voor App Insights](../../azure-monitor/app/nodejs.md) voor meer informatie over het controleren van Node.js.
 

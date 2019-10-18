@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 63ed2c5c334aef8f6281ee34ec4ed6e47ca8521a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b427f785848fa70ba17ed415bda7292a787c998
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569095"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533788"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Quickstarts: Verbinding maken met Microsoft Azure SQL Database en hierop query's uitvoeren
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Quick starts: Azure SQL Database verbinding maken en query's uitvoeren
 
 Het volgende document bevat koppelingen naar voorbeelden van Azure die laten zien hoe u verbinding maakt met een Azure SQL-database en vervolgens een query uitvoert. Het bevat ook enkele aanbevelingen voor Transport Layer Security.
 
@@ -38,7 +38,7 @@ Het volgende document bevat koppelingen naar voorbeelden van Azure die laten zie
 |[PHP](sql-database-connect-query-php.md)|In deze snelstart wordt gedemonstreerd hoe u PHP gebruikt om een programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
 |[Python](sql-database-connect-query-python.md)|In deze snelstart wordt gedemonstreerd hoe u Python gebruikt om verbinding te maken met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om een query uit te voeren voor de gegevens. |
 |[Ruby](sql-database-connect-query-ruby.md)|In deze snelstart wordt gedemonstreerd hoe u Ruby gebruikt om een programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
-|[R](sql-database-connect-query-r.md)|In deze Snelstartgids ziet u hoe u met behulp van R met Azure SQL Database Machine Learning Services een programma maakt om verbinding te maken met een Azure-SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen.|
+|[N](sql-database-connect-query-r.md)|In deze Snelstartgids ziet u hoe u met behulp van R met Azure SQL Database Machine Learning Services een programma maakt om verbinding te maken met een Azure-SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>TLS-overwegingen voor de connectiviteit van SQL Database
@@ -59,9 +59,9 @@ U kunt verschillende bibliotheken en frameworks gebruiken om verbinding te maken
 
 De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die clienttoepassingen kunnen gebruiken vanuit een groot aantal talen om verbinding te maken met en gebruik te maken van SQL Server on-premises of in de cloud. U kunt deze gebruiken in Linux, Windows of Docker en om verbinding te maken met Azure SQL Database en Azure SQL Data Warehouse. 
 
-| Taal | Platform | Aanvullende resources | Downloaden | Aan de slag |
+| Taal | Platform | Aanvullende bronnen | Downloaden | Aan de slag |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Microsoft ADO.NET voor SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Downloaden](https://www.microsoft.com/net/download/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET voor SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Downloaden](https://www.microsoft.com/net/download/) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Microsoft JDBC-stuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Downloaden](https://go.microsoft.com/fwlink/?linkid=852460) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [PHP SQL-stuurprogramma voor SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Downloaden](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js-stuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Installeren](https://msdn.microsoft.com/library/mt652094.aspx) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)

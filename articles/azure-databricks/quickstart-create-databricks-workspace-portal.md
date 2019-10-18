@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ace735d116ef73e8a6fee8c0a244d520e730189
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 21a3e8541441e6139c1c84138870b3ffaf3cacc1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312154"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515800"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
@@ -39,11 +39,11 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
 
-    ![Databricks in Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks in Azure Portal")
+    ![Databricks op Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks op Azure Portal")
 
 2. Geef bij **Azure Databricks Service** de waarden op voor het maken van een Databricks-werkruimte.
 
-    ![Een Azure Databricks-werkruimte maken](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
+    ![Een Azure Databricks-werk ruimte maken](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
 
     Geef de volgende waarden op:
     
@@ -54,12 +54,13 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
     |**Prijscategorie**     |  Kies tussen **Standard**, **Premium**of **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+    |**Virtueel netwerk**     |  Kies voor het implementeren van een Azure Databricks-werk ruimte in uw eigen Virtual Network (VNet). Zie [Deploy Azure Databricks in uw Azure Virtual Network (VNet-injectie)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)voor meer informatie.        |
 
-    Klik op **Maken**.
+    Selecteer **Maken**.
 
 4. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**.
 
-    ![Tegel Databricks-implementatie](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Tegel Databricks-implementatie")
+    ![Tegel implementatie van Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Tegel implementatie van Databricks")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
@@ -70,11 +71,11 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Nieuw cluster**.
 
-    ![Databricks in Azure](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks in Azure")
+    ![Databricks op Azure](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in Azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
+    ![Een Databricks Spark-cluster maken in azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
 
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
@@ -92,11 +93,11 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
 
 1. Selecteer **Azure Databricks**in het linkerdeel venster. Selecteer in **algemene taken**de optie **Nieuw notitie blok**.
 
-    ![Een notitieblok maken in Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
 2. Voer in het dialoog venster **notebook maken** een naam in, selecteer **python** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitieblok maken in Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Een notitie blok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -136,15 +137,15 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
 
 5. U ziet uitvoer in tabelvorm zoals weergegeven in de volgende schermafbeelding (alleen bepaalde kolommen worden weergegeven):
 
-    Voor(./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "beeld van JSON-gegevens") ![voorbeeld gegevens]
+    ![Voorbeeldgegevens](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Voor beeld van JSON-gegevens")
 
 6. U maakt nu een visuele weer gave van deze gegevens om te laten zien hoeveel beveiligings gebeurtenissen worden gerapporteerd met de burgers Connect app en City worker app in plaats van andere bronnen. Selecteer op de onderkant van de tabel uitvoer het pictogram **staaf diagram** en klik vervolgens op **Opties tekenen**.
 
-    ![Staafdiagram maken](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Staafdiagram maken")
+    ![Staaf diagram maken](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Staaf diagram maken")
 
 8. In **Tekening aanpassen** sleept en zet u de waarden neer zoals in de schermafbeelding wordt weergegeven.
 
-    ![Cirkel diagram aanpassen](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "staaf diagram aanpassen")
+    ![Cirkel diagram aanpassen](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Staaf diagram aanpassen")
 
    * Stel **sleutels** in op **bron**.
    * Stel **waarden** in op **< \id >** .
@@ -157,7 +158,7 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
 
 Nadat u het artikel hebt doorgenomen, kunt u het cluster beëindigen. Dit doet u door vanuit de Azure Databricks-werkruimte in het linkerdeelvenster **Clusters** te selecteren. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatingsteken onder de kolom **Acties** en selecteert u het **beëindigingspictogram**.
 
-![Een Databricks-cluster stopzetten](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
+![Een Databricks-cluster stoppen](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
 Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
