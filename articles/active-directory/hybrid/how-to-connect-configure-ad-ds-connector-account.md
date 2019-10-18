@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Configureren van AD DS-Connector accountmachtigingen | Microsoft Docs'
-description: Dit document wordt uitgelegd hoe u de AD DS-Connector-account configureert met de nieuwe ADSyncConfig PowerShell-module
+title: 'Azure AD Connect: machtigingen voor het AD DS-Connector account configureren | Microsoft Docs'
+description: Dit document bevat informatie over het configureren van het AD DS Connector-account met de nieuwe ADSyncConfig Power shell-module
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,39 +11,39 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918505"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515815"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Accountmachtigingen voor AD DS-Connector configureren 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: machtigingen voor het AD DS-Connector account configureren 
 
-De PowerShell-Module met de naam [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) werd geïntroduceerd in build 1.1.880.0 (uitgebracht in augustus 2018) een verzameling van cmdlets bevat kunt u de juiste Active Directory-machtigingen configureren voor uw Azure AD Verbinding met het maken van de implementatie. 
+De Power shell-module met de naam [ADSyncConfig. psm1](reference-connect-adsyncconfig.md) is geïntroduceerd in Build 1.1.880.0 (uitgebracht in augustus 2018), die een verzameling cmdlets bevat waarmee u de juiste Active Directory machtigingen voor uw Azure AD Connect-implementatie kunt configureren. 
 
 ## <a name="overview"></a>Overzicht 
-De volgende PowerShell-cmdlets kan worden gebruikt voor installatie van Active Directory-machtigingen van de AD DS-Connector-account voor elke functie die u selecteert om in te schakelen in Azure AD Connect. Om te voorkomen dat problemen ondervindt, moet u bereid Active Directory-machtigingen op voorhand voor wanneer u wilt installeren, Azure AD Connect met behulp van een aangepast domein-account verbinding maken met uw forest. Deze module ADSyncConfig kan ook worden gebruikt om machtigingen te configureren na de implementatie van Azure AD Connect.
+De volgende Power shell-cmdlets kunnen worden gebruikt voor het instellen van Active Directory machtigingen van het AD DS Connector-account, voor elke functie die u selecteert om in Azure AD Connect in te scha kelen. Als u problemen wilt voor komen, moet u Active Directory-machtigingen vooraf voorbereiden wanneer u Azure AD Connect wilt installeren met behulp van een aangepast domein account om verbinding te maken met uw forest. Deze ADSyncConfig-module kan ook worden gebruikt om machtigingen te configureren nadat Azure AD Connect is geïmplementeerd.
 
-![overzicht van ad ds-account](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![overzicht van AD DS-account](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
-Voor installatie van de Azure AD verbinding maken met Express, is een automatisch gegenereerde (MSOL_nnnnnnnnnn)-account gemaakt in Active Directory met de vereiste machtigingen, dus u hoeft niet op deze module ADSyncConfig, tenzij u machtigingen hebt geblokkeerd overname op organisatie-eenheden of specifieke Active Directory-objecten die u wilt synchroniseren met Azure AD. 
+Voor Azure AD Connect snelle installatie wordt een automatisch gegenereerd account (MSOL_nnnnnnnnnn) gemaakt in Active Directory met alle benodigde machtigingen, dus u hoeft deze ADSyncConfig-module niet te gebruiken tenzij u de machtigingen hebt geblokkeerd overname voor organisatie-eenheden of op specifieke Active Directory objecten die u wilt synchroniseren met Azure AD. 
  
 ### <a name="permissions-summary"></a>Overzicht van bevoegdheden 
-De volgende tabel bevat een samenvatting van de vereiste machtigingen voor AD-objecten: 
+De volgende tabel bevat een overzicht van de vereiste machtigingen voor AD-objecten: 
 
 | Functie | Machtigingen |
 | --- | --- |
-| MS-DS-ConsistencyGuid functie |Schrijfmachtigingen heeft voor het kenmerk ms-DS-ConsistencyGuid is beschreven in [ontwerpconcepten - ms-DS-ConsistencyGuid gebruiken als sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Synchronisatie van wachtwoordhashes |<li>Directorywijzigingen repliceren</li>  <li>Alle repliceren Directory gewijzigd |
-| Hybride implementatie voor Exchange |Schrijfmachtigingen heeft voor de kenmerken beschreven in [Exchange hybrid terugschrijven](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contactpersonen. |
-| Openbare map voor Exchange-e-Mail |Leesmachtigingen voor de kenmerken beschreven in [Exchange Mail openbare map](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor openbare mappen. | 
-| Wachtwoord terugschrijven |Schrijfmachtigingen heeft voor de kenmerken beschreven in [aan de slag met wachtwoordbeheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
-| Apparaat terugschrijven |Schrijfmachtigingen heeft voor apparaatobjecten en containers die worden beschreven in [Write-back van apparaat](how-to-connect-device-writeback.md). |
-| Groep terugschrijven |Lezen, maken, bijwerken en verwijderen van groep objecten voor gesynchroniseerd **Office 365-groepen**.  Zie voor meer informatie [Write-back van groep](how-to-connect-preview.md#group-writeback).|
+| functie MS-DS-ConsistencyGuid |Lees-en schrijf machtigingen voor het kenmerk MS-DS-ConsistencyGuid dat wordt beschreven in [ontwerp concepten-MS-DS-ConsistencyGuid gebruiken als source Anchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
+| Wachtwoord-hash-synchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
+| Hybride implementatie van Exchange |Lees-en schrijf machtigingen voor de kenmerken die worden beschreven in [hybride write-back van Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contact personen. |
+| Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
+| Wachtwoord terugschrijven |Lees-en schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
+| Apparaat terugschrijven |Lees-en schrijf machtigingen voor apparaatklassen en containers die worden beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
+| Groep terugschrijven |Lezen, maken, bijwerken en verwijderen van groeps objecten voor gesynchroniseerde **Office 365-groepen**.  Zie voor meer informatie [groep terugschrijven](how-to-connect-preview.md#group-writeback).|
 
-## <a name="using-the-adsyncconfig-powershell-module"></a>Met behulp van de ADSyncConfig PowerShell-Module 
-De module ADSyncConfig vereist de [Remote Server Administration Tools (RSAT) voor AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) omdat deze afhankelijk van de AD DS-PowerShell-module en de hulpprogramma's is. Als u wilt installeren RSAT voor AD DS, open een Windows PowerShell-venster met 'Als Administrator uitvoeren' en uitvoeren: 
+## <a name="using-the-adsyncconfig-powershell-module"></a>De ADSyncConfig Power shell-module gebruiken 
+De ADSyncConfig-module vereist de [Remote Server Administration Tools (RSAT) voor AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) omdat deze afhankelijk is van de AD DS Power shell-module en-hulpprogram ma's. Als u RSAT voor AD DS wilt installeren, opent u een Windows Power shell-venster met ' uitvoeren als Administrator ' en voert u de volgende handelingen uit: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -51,15 +51,15 @@ Install-WindowsFeature RSAT-AD-Tools
 ![Configureren](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
->U kunt ook het bestand kopiëren **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** naar een domeincontroller waarop RSAT al heeft voor AD DS geïnstalleerd en deze PowerShell-module van daaruit gebruiken.
+>U kunt ook het bestand **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** kopiëren naar een domein controller waarop al RSAT voor AD DS is geïnstalleerd en deze Power shell-module van daaruit gebruikt.
 
-Als u wilt gaan met behulp van de ADSyncConfig die u wilt laden van de module in een Windows PowerShell-venster: 
+Als u de ADSyncConfig wilt gaan gebruiken, moet u de module laden in een Windows Power shell-venster: 
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1" 
 ```
 
-Om te controleren of alle cmdlets die zijn opgenomen in deze module die kunt u typen:  
+Als u alle cmdlets die in deze module zijn opgenomen wilt controleren, kunt u het volgende typen:  
 
 ``` powershell
 Get-Command -Module AdSyncConfig  
@@ -67,7 +67,7 @@ Get-Command -Module AdSyncConfig
 
 ![Selecteren](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
 
-Elke cmdlet heeft dezelfde parameters voor het invoeren van de AD DS-Connector-Account en een switch AdminSDHolder. Als u uw AD DS-Connector-Account, kunt u de accountnaam en -domein of alleen het account bieden DN (Distinguished Name),
+Elke cmdlet heeft dezelfde para meters om het AD DS Connector-account en een AdminSDHolder-switch in te voeren. Als u uw AD DS Connector-account wilt opgeven, kunt u de account naam en het domein opgeven, of alleen de DN-naam (account Distinguished Name).
 
 bijvoorbeeld:
 
@@ -75,7 +75,7 @@ bijvoorbeeld:
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
 ```
 
-Or;
+Of
 
 ```powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
@@ -83,201 +83,201 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 
 Vervang `<ADAccountName>`, `<ADDomainName>` en `<ADAccountDN>` door de juiste waarden voor uw omgeving.
 
-Als u niet wilt om machtigingen voor de container AdminSDHolder te wijzigen, gebruikt u de schakeloptie `-SkipAdminSdHolders`. 
+Als u de machtigingen voor de AdminSDHolder-container niet wilt wijzigen, gebruikt u de switch `-SkipAdminSdHolders`. 
 
-Standaard probeert alle cmdlets van de set machtigingen in te stellen van AD DS-machtigingen in de hoofdmap van elk domein in het Forest, wat betekent dat de gebruiker de PowerShell-sessie die is vereist voor domein Administrator-rechten op elk domein in het Forest.  Vanwege deze vereiste is het aanbevolen gebruik van een Enterprise-beheerder van het foresthoofddomein. Als uw Azure AD Connect-implementatie meerdere AD DS-Connectors heeft, wordt deze moet de dezelfde cmdlet uitvoeren op elke forest met een AD DS-Connector. 
+Standaard worden alle cmdlets voor set permissions geprobeerd AD DS machtigingen in te stellen voor de hoofdmap van elk domein in het forest, wat betekent dat de gebruiker die de Power shell-sessie uitvoert, domein beheerders rechten nodig heeft voor elk domein in het forest.  Vanwege deze vereiste wordt het aanbevolen een ondernemings Administrator te gebruiken vanuit de hoofdmap van het forest. Als uw Azure AD Connect-implementatie meerdere AD DS connectors heeft, moet deze dezelfde cmdlet uitvoeren op elk forest met een AD DS-connector. 
 
-U kunt ook machtigingen instellen voor een specifieke organisatie-eenheid of AD DS-object met behulp van de parameter `-ADobjectDN` gevolgd door de DN-naam van het doelobject waar u machtigingen wilt instellen. Wanneer u een doel ADobjectDN gebruikt, wordt de cmdlet machtigingen voor dit object ingesteld en niet op het hoofddomein of de AdminSDHolder container. Deze parameter kan handig zijn wanneer er een bepaalde organisatie-eenheden of AD DS-objecten dat overname van machtigingen uitgeschakeld (Zie zoeken naar AD DS-objecten met de overname van machtigingen uitgeschakeld) 
+U kunt ook machtigingen voor een specifieke OE of AD DS object instellen met behulp van de para meter `-ADobjectDN` gevolgd door de DN van het doel object waarvoor u machtigingen wilt instellen. Wanneer u een doel-ADobjectDN gebruikt, worden met de cmdlet alleen machtigingen voor dit object ingesteld en niet op de hoofd-of AdminSDHolder-container van het domein. Deze para meter kan nuttig zijn wanneer u bepaalde Ou's of AD DS objecten hebt waarvoor de overname van machtigingen is uitgeschakeld (Zie AD DS objecten selecteren waarvoor de overname van machtigingen is uitgeschakeld) 
 
-Uitzonderingen op deze algemene parameters zijn de `Set-ADSyncRestrictedPermissions` cmdlet die wordt gebruikt voor de machtigingen instellen voor het AD DS-Connector-Account zelf, en de `Set-ADSyncPasswordHashSyncPermissions` cmdlet omdat de machtigingen die zijn vereist voor synchronisatie van Wachtwoordhashes alleen op de domeinhoofdmap, daarom zijn ingesteld Deze cmdlet omvat niet de `-ObjectDN` of `-SkipAdminSdHolders` parameters.
+Uitzonde ringen op deze algemene para meters zijn de `Set-ADSyncRestrictedPermissions` cmdlet die wordt gebruikt om de machtigingen in te stellen voor het AD DS Connector-account zelf, en de `Set-ADSyncPasswordHashSyncPermissions`-cmdlet, omdat de vereiste machtigingen voor wachtwoord hash-synchronisatie alleen worden ingesteld op het domein basis , daarom bevat deze cmdlet geen `-ObjectDN`-of `-SkipAdminSdHolders`-para meters.
 
-### <a name="determine-your-ad-ds-connector-account"></a>Bepalen van uw AD DS-Connector Account 
-Azure AD Connect is al geïnstalleerd en u wilt controleren wat het AD DS-Connector-Account dat momenteel in gebruik door Azure AD Connect is, kunt u de cmdlet uitvoert: 
+### <a name="determine-your-ad-ds-connector-account"></a>Uw AD DS Connector-account bepalen 
+Als Azure AD Connect al is geïnstalleerd en u wilt controleren welk account AD DS connector momenteel wordt gebruikt door Azure AD Connect, kunt u de cmdlet uitvoeren: 
 
 ``` powershell
 Get-ADSyncADConnectorAccount 
 ```
-### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Ga naar AD DS-objecten met de overname van machtigingen is uitgeschakeld 
-Als u controleren wilt of er AD DS-object met de overname van machtigingen is uitgeschakeld, kunt u het volgende uitvoeren: 
+### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>AD DS objecten zoeken waarvoor de overname van machtigingen is uitgeschakeld 
+Als u wilt controleren of er een AD DS object is met de machtiging overname uitgeschakeld, kunt u het volgende uitvoeren: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' 
 ```
-Standaard deze cmdlet wordt alleen gezocht naar organisatie-eenheden met uitgeschakelde overname, maar kunt u andere klassen van de AD DS-object in `-ObjectClass` parameter of gebruik ' *' voor alle, als volgt objectklassen: 
+Deze cmdlet zoekt standaard alleen naar organisatie-eenheden met uitgeschakelde overname, maar u kunt ook andere AD DS-object klassen opgeven in `-ObjectClass` para meter of ' * ' gebruiken voor alle object klassen, als volgt: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
 ```
  
-### <a name="view-ad-ds-permissions-of-an-object"></a>AD DS-machtigingen van een object weergeven 
-U kunt onderstaande cmdlet gebruiken om de lijst met machtigingen die is ingesteld op een Active Directory-object door te geven van de DistinguishedName weer te geven: 
+### <a name="view-ad-ds-permissions-of-an-object"></a>AD DS machtigingen van een object weer geven 
+U kunt de onderstaande cmdlet gebruiken om de lijst met machtigingen weer te geven die momenteel zijn ingesteld voor een Active Directory-object door de DN-naam te verstrekken: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
 ```
 
-## <a name="configure-ad-ds-connector-account-permissions"></a>Accountmachtigingen voor AD DS-Connector configureren 
+## <a name="configure-ad-ds-connector-account-permissions"></a>Machtigingen voor het AD DS-Connector account configureren 
  
-### <a name="configure-basic-read-only-permissions"></a>Basic alleen-lezen-machtigingen configureren 
-Om in te stellen basic alleen-lezen machtigingen voor het AD DS-Connector-account als een functie van Azure AD Connect niet gebruikt, voert u de volgende uit: 
+### <a name="configure-basic-read-only-permissions"></a>Basis machtigingen voor alleen-lezen configureren 
+Als u basis machtigingen voor alleen-lezen wilt instellen voor de AD DS Connector-account wanneer u geen Azure AD Connect-functie gebruikt, voert u de volgende handelingen uit: 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
 
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
  
 
-|Type |Name |Access |Is van toepassing op| 
+|Type |Naam |Access |Van toepassing op| 
 |-----|-----|-----|-----|
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende apparaatobjecten| 
-|Toestaan |AD DS-Connector-Account|Alle eigenschappen lezen |Onderliggende InetOrgPerson-objecten| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende objecten van de Computer| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende foreignSecurityPrincipal objecten| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende groep objecten worden weergegeven| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende gebruikersobjecten| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende objecten van de contactpersoon| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende objecten van apparaat| 
+|Toestaan |AD DS Connector-account|Alle eigenschappen lezen |Onderliggend InetOrgPerson-objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende computer objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende foreignSecurityPrincipal-objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Objecten van onderliggende groep| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende gebruikers objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende contact personen-objecten| 
 
  
-### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-consistentie-Guid-machtigingen configureren 
-Om machtigingen voor het AD DS-Connector-account bij het gebruik van het kenmerk ms-Ds-consistentie-Guid als het bronankerkenmerk (ook wel "Laten beheren door Azure het bronanker voor mij" optie), voert u de volgende uit: 
+### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-consistentie-GUID-machtigingen configureren 
+Als u machtigingen wilt instellen voor de AD DS Connector-account wanneer u het kenmerk MS-DS-Consistency-GUID gebruikt als het bron anker (ook wel "de bron anker voor mij laten beheren"), voert u de volgende handelingen uit: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan|AD DS-Connector-Account|Eigenschap voor lezen/schrijven|Onderliggende gebruikersobjecten|
+|Toestaan|AD DS Connector-account|Eigenschap lezen/schrijven|Onderliggende gebruikers objecten|
 
-### <a name="permissions-for-password-hash-synchronization"></a>Machtigingen voor de wachtwoord-Hashsynchronisatie 
-Om machtigingen voor het AD DS-Connector-account bij het gebruik van wachtwoord-Hashsynchronisatie, voert u de volgende uit: 
+### <a name="permissions-for-password-hash-synchronization"></a>Machtigingen voor het synchroniseren van wacht woord-hashes 
+Om machtigingen in te stellen voor het AD DS Connector-account bij het gebruik van wachtwoord-hash-synchronisatie, voert u uit: 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [<CommonParameters>] 
 ```
 
 
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
 ```
 
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |AD DS-Connector-Account |Directorywijzigingen repliceren |Alleen dit object (hoofddomein)| 
-|Toestaan |AD DS-Connector-Account |Alle Active Directory repliceren gewijzigd |Alleen dit object (hoofddomein)| 
+|Toestaan |AD DS Connector-account |Directory wijzigingen repliceren |Alleen dit object (root van het domein)| 
+|Toestaan |AD DS Connector-account |Directory wijzigingen repliceren |Alleen dit object (root van het domein)| 
   
-### <a name="permissions-for-password-writeback"></a>Machtigingen voor het terugschrijven van wachtwoorden 
-Om machtigingen voor het AD DS-Connector-account wanneer u het terugschrijven van wachtwoorden, voert u de volgende uit: 
+### <a name="permissions-for-password-writeback"></a>Machtigingen voor het terugschrijven van wacht woorden 
+Om machtigingen in te stellen voor het AD DS Connector-account bij het gebruik van wacht woord terugschrijven, voert u uit: 
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-Of;
+Of
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |AD DS-Connector-Account |Wachtwoord opnieuw instellen |Onderliggende gebruikersobjecten| 
-|Toestaan |AD DS-Connector-Account |De eigenschap lockoutTime schrijven |Onderliggende gebruikersobjecten| 
-|Toestaan |AD DS-Connector-Account |De eigenschap pwdLastSet schrijven |Onderliggende gebruikersobjecten| 
+|Toestaan |AD DS Connector-account |Wachtwoord opnieuw instellen |Onderliggende gebruikers objecten| 
+|Toestaan |AD DS Connector-account |Eigenschap Write lockoutTime |Onderliggende gebruikers objecten| 
+|Toestaan |AD DS Connector-account |Eigenschap Write pwdLastSet |Onderliggende gebruikers objecten| 
 
-### <a name="permissions-for-group-writeback"></a>Machtigingen voor write-back van groep 
-Voer het volgende als u wilt instellen van machtigingen voor de AD DS-Connector-account bij het gebruik van Write-back van groep: 
+### <a name="permissions-for-group-writeback"></a>Machtigingen voor het terugschrijven van groepen 
+Om machtigingen in te stellen voor het AD DS Connector-account bij gebruik van groeps terugschrijven, uitvoeren: 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |AD DS-Connector-Account |Algemene lezen/schrijven |Alle kenmerken van het object type groep en subobjecten| 
-|Toestaan |AD DS-Connector-Account |Onderliggend object maken/verwijderen |Alle kenmerken van het object type groep en subobjecten| 
-|Toestaan |AD DS-Connector-Account |Structuur-objecten verwijderen/verwijderen|Alle kenmerken van het object type groep en subobjecten|
+|Toestaan |AD DS Connector-account |Algemene lees-en schrijf bewerkingen |Alle kenmerken van de object type groep en subobjecten| 
+|Toestaan |AD DS Connector-account |Onderliggend object maken/verwijderen |Alle kenmerken van de object type groep en subobjecten| 
+|Toestaan |AD DS Connector-account |Structuur objecten verwijderen/verwijderen|Alle kenmerken van de object type groep en subobjecten|
 
-### <a name="permissions-for-exchange-hybrid-deployment"></a>Machtigingen voor hybride implementatie voor Exchange 
-Om machtigingen voor het AD DS-Connector-account bij het gebruik van hybride implementatie voor Exchange, voert u de volgende uit: 
+### <a name="permissions-for-exchange-hybrid-deployment"></a>Machtigingen voor hybride implementatie van Exchange 
+Als u machtigingen wilt instellen voor de AD DS Connector-account bij gebruik van hybride implementatie van Exchange, voert u de volgende handelingen uit: 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 
-Deze cmdlet wordt de volgende machtigingen ingesteld:  
+Met deze cmdlet worden de volgende machtigingen ingesteld:  
  
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |AD DS-Connector-Account |Lezen/schrijven alle eigenschappen |Onderliggende gebruikersobjecten| 
-|Toestaan |AD DS-Connector-Account |Lezen/schrijven alle eigenschappen |Onderliggende InetOrgPerson-objecten| 
-|Toestaan |AD DS-Connector-Account |Lezen/schrijven alle eigenschappen |Onderliggende groep objecten worden weergegeven| 
-|Toestaan |AD DS-Connector-Account |Lezen/schrijven alle eigenschappen |Onderliggende objecten van de contactpersoon| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Onderliggende gebruikers objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Onderliggend InetOrgPerson-objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Objecten van onderliggende groep| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen/schrijven |Onderliggende contact personen-objecten| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Machtigingen voor Exchange Mail openbare mappen (Preview) 
-Om machtigingen voor het AD DS-Connector-account als u de functie openbare e-mailmappen Exchange gebruikt, voert u de volgende uit: 
+### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Machtigingen voor open bare Exchange-e-mail mappen (preview-versie) 
+Als u machtigingen wilt instellen voor de AD DS Connector-account wanneer u gebruikmaakt van de functie open bare mappen van Exchange mail, voert u uit: 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-Of; 
+Of 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |AD DS-Connector-Account |Alle eigenschappen lezen |Onderliggende PublicFolder objecten| 
+|Toestaan |AD DS Connector-account |Alle eigenschappen lezen |Onderliggende PublicFolder-objecten| 
 
-### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Machtigingen voor de AD DS-Connector beperken Account 
-Dit PowerShell-script worden machtigingen voor het AD-Connector-Account dat is opgegeven als parameter webserverbeheerders. Machtigingen verstrakking omvat de volgende stappen: 
+### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Machtigingen voor het AD DS Connector-account beperken 
+Met dit Power shell-script worden de machtigingen uitgebreid voor het AD-Connector account dat is geleverd als para meter. Het verhogen van de machtigingen bestaat uit de volgende stappen: 
 
-- Overname in het opgegeven object uitschakelen 
-- Alle ACE's op het specifieke object, met uitzondering van ACE's die specifiek zijn voor zelf worden verwijderd omdat we de standaardmachtigingen behouden willen als het gaat om zelf. 
+- Overname uitschakelen voor het opgegeven object 
+- Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek zijn voor zichzelf, omdat we de standaard machtigingen intact moeten houden wanneer het gaat om zichzelf. 
  
-  De parameter - ADConnectorAccountDN is het AD-serviceaccount waarvan de machtigingen wilt hoger worden ingesteld. Dit is doorgaans het domeinaccount MSOL_nnnnnnnnnnnn die is geconfigureerd in de AD DS-Connector (Zie bepalen de Connector-Account van uw AD DS). De - referentie parameter is nodig om op te geven van de Administrator-account waarvoor de vereiste bevoegdheden beschikt om te beperken van machtigingen voor Active Directory van het doelobject AD. Dit is meestal de onderneming of een domeinbeheerder.  
+  De para meter-ADConnectorAccountDN is het AD-account waarvan de machtigingen moeten worden gescherpt. Dit is doorgaans het MSOL_nnnnnnnnnnnn-domein account dat is geconfigureerd in de AD DS-connector (zie uw AD DS Connector-account bepalen). De para meter-Credential is nodig om het beheerders account op te geven dat over de benodigde bevoegdheden beschikt om Active Directory machtigingen voor het doel-AD-object te beperken. Dit is doorgaans de beheerder van de onderneming of het domein.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
@@ -290,24 +290,24 @@ $credential = Get-Credential
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
-Deze cmdlet wordt de volgende machtigingen ingesteld: 
+Met deze cmdlet worden de volgende machtigingen ingesteld: 
 
-|Type |Name |Access |Is van toepassing op|
+|Type |Naam |Access |Van toepassing op|
 |-----|-----|-----|-----| 
-|Toestaan |SYSTEEM |Volledig beheer |Dit object 
-|Toestaan |Ondernemingsadministrators |Volledig beheer |Dit object 
-|Toestaan |Domeinadministrators |Volledig beheer |Dit object 
+|Toestaan |OPGEHAALD |Volledig beheer |Dit object 
+|Toestaan |Ondernemings Administrators |Volledig beheer |Dit object 
+|Toestaan |Domein Administrators |Volledig beheer |Dit object 
 |Toestaan |Beheerders |Volledig beheer |Dit object 
-|Toestaan |Enterprise-domeincontrollers |Inhoud weergeven |Dit object 
-|Toestaan |Enterprise-domeincontrollers |Alle eigenschappen lezen |Dit object 
-|Toestaan |Enterprise-domeincontrollers |De machtiging lezen |Dit object 
-|Toestaan |Geverifieerde gebruikers |Inhoud weergeven |Dit object 
+|Toestaan |Ondernemings domein controllers |Inhoud weer geven |Dit object 
+|Toestaan |Ondernemings domein controllers |Alle eigenschappen lezen |Dit object 
+|Toestaan |Ondernemings domein controllers |Lees machtigingen |Dit object 
+|Toestaan |Geverifieerde gebruikers |Inhoud weer geven |Dit object 
 |Toestaan |Geverifieerde gebruikers |Alle eigenschappen lezen |Dit object 
-|Toestaan |Geverifieerde gebruikers |De machtiging lezen |Dit object 
+|Toestaan |Geverifieerde gebruikers |Lees machtigingen |Dit object 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure AD Connect: accounts en machtigingen](reference-connect-accounts-permissions.md)
 - [Snelle installatie](how-to-connect-install-express.md)
 - [Aangepaste installatie](how-to-connect-install-custom.md)
-- [ADSyncConfig verwijzing](reference-connect-adsyncconfig.md)
+- [ADSyncConfig-verwijzing](reference-connect-adsyncconfig.md)
 

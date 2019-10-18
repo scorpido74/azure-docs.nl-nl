@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331149"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529479"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -96,14 +96,14 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Blob-opslag|✔| ✔|
-|Opslagaccount|✔| N.V.T.|
+|Opslagaccount|✔| X|
 |App service|✔| ✔|
 |Functie|✔| X|
 |Cloudservice|✔| X|
-|VNet|✔| N.V.T.|
-|Subnet|✔| N.V.T.|
-|NIC|✔| N.V.T.|
-|NSG|✔| N.V.T.|
+|VNet|✔| X|
+|Subnet|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Abonnement|✔ * *| ✔|
 |Batch-account|✔| X|
 |Service Fabric-account|✔| X|
@@ -114,14 +114,14 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 |Stream Analytics|✔| X|
 |Event hub-naamruimte|✔| X|
 |Logische apps|✔| X|
-|Redis|✔| N.V.T.|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key Vault|✔| X|
 
 \* deze functies worden momenteel ondersteund in de open bare preview-versie.
 
-de aanbevelingen voor \* @ no__t-1-Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
+\*-aanbevelingen voor \* Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

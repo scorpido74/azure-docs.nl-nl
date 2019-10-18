@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034193"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516563"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Gebruik IoT Edge in Windows om Linux-containers uit te voeren
 
@@ -28,7 +28,7 @@ Dit artikel bevat de stappen voor het installeren van de Azure IoT Edge runtime 
 
 Gebruik deze sectie om te controleren of uw Windows-apparaat IoT Edge kan ondersteunen en om dit voor te bereiden voor een container engine vóór de installatie. 
 
-### <a name="supported-windows-versions"></a>Ondersteunde versies van Windows
+### <a name="supported-windows-versions"></a>Ondersteunde Windows-versies
 
 Azure IoT Edge met Linux-containers kan worden uitgevoerd op elke versie van Windows die voldoet aan de [vereisten voor docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)
 
@@ -47,7 +47,7 @@ Als uw IoT Edge-apparaat een Windows-computer is, controleert u of deze voldoet 
 ## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge installeren op een nieuw apparaat
 
 >[!NOTE]
->Azure IoT Edge-softwarepakketten zijn afhankelijk van de licentievoorwaarden die zich in de pakketten (in de map LICENSE). Lees de licentievoorwaarden voordat u het pakket. De installatie en het gebruik van het pakket wordt verstaan onder uw acceptatie van deze voorwaarden. Als u niet akkoord met de licentievoorwaarden gaat, moet u het pakket niet gebruiken.
+>Azure IoT Edge software pakketten zijn onderworpen aan de licentie voorwaarden in de pakketten (in de licentie lijst). Lees de licentie voorwaarden voordat u het pakket gebruikt. Uw installatie en het gebruik van het pakket zijn uw acceptatie van deze voor waarden. Als u niet akkoord gaat met de licentie voorwaarden, mag u het pakket niet gebruiken.
 
 Met een Power shell-script wordt de Azure IoT Edge Security daemon gedownload en geïnstalleerd. De Security daemon start vervolgens de eerste van twee runtime modules, de IoT Edge-agent, waarmee externe implementaties van andere modules worden ingeschakeld. 
 
@@ -58,7 +58,7 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het apparaat connection string op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
 
    * [Azure-portal](how-to-register-device-portal.md)
-   * [Azure-CLI](how-to-register-device-cli.md)
+   * [Azure CLI](how-to-register-device-cli.md)
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
 2. Voer Power shell uit als beheerder.
@@ -88,24 +88,29 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 
 6. Wanneer u hierom wordt gevraagd, geeft u de connection string op van het apparaat dat u in stap 1 hebt opgehaald. Het apparaat connection string het fysieke apparaat koppelt aan een apparaat-ID in IoT Hub. 
 
-   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-## <a name="verify-successful-installation"></a>Controleer of geslaagde installatie
+## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
 
-Controleer de status van de IoT Edge-service. Deze moet worden weer gegeven als actief.  
+Controleer de status van de IoT Edge-service: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Bekijk Logboeken van de laatste 5 minuten. 
+Bekijk service Logboeken in de afgelopen vijf minuten: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Lijst met modules. Na een nieuwe installatie is de enige module die u moet zien, **edgeAgent**. Nadat u [IOT Edge-modules](how-to-deploy-modules-portal.md) voor de eerste keer hebt geïmplementeerd, wordt de andere systeem module, **edgeHub**, ook op het apparaat gestart. 
+Voer een automatische controle uit voor de meest voorkomende configuratie-en netwerk fouten: 
 
+```powershell
+iotedge check
+```
+
+Een lijst met actieve modules weer geven. Na een nieuwe installatie is de enige module die u moet zien, **edgeAgent**. Nadat u [IOT Edge-modules](how-to-deploy-modules-portal.md) voor de eerste keer hebt geïmplementeerd, wordt de andere systeem module, **edgeHub**, ook op het apparaat gestart. 
 
 ```powershell
 iotedge list
@@ -113,7 +118,7 @@ iotedge list
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Edge-apparaat dat is ingericht met de runtime geïnstalleerd hebt, kunt u [IoT Edge-modules implementeren](how-to-deploy-modules-portal.md).
+Nu u een IoT Edge apparaat hebt ingericht terwijl de runtime is geïnstalleerd, kunt u [IOT Edge modules implementeren](how-to-deploy-modules-portal.md).
 
 Als u problemen ondervindt met de installatie van IoT Edge op de juiste wijze, raadpleegt u de pagina [probleem oplossing](troubleshoot.md) .
 

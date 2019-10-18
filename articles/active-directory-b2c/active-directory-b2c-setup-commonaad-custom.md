@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a0b9166d24bea28bb3271d719e8ffe0b24d71381
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: aca5714e758038cc7a8d9d570a337b8dd6d26fe8
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826935"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533124"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden voor multi tenant-Azure Active Directory instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -31,13 +31,13 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
 1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld `Azure AD B2C App`.
 1. Selecteer **accounts in elke organisatie Directory** voor deze toepassing.
-1. Voor de **omleidings-URI**accepteert u de waarde van **Web**en voert u de volgende URL in in kleine `your-B2C-tenant-name` letters, waar wordt vervangen door de naam van uw Azure AD B2C-Tenant.
+1. Voor de **omleidings-URI**accepteert u de waarde van **Web**en voert u de volgende URL in in kleine letters, waarbij `your-B2C-tenant-name` wordt vervangen door de naam van uw Azure AD B2C Tenant.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -57,10 +57,10 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies`Manual`voor **Opties**.
+1. Kies voor **opties**`Manual`.
 1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AADAppSecret`.  Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van de sleutel wanneer deze wordt gemaakt, zodat de verwijzing in de XML in de volgende sectie wordt *B2C_1A_AADAppSecret*.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-1. Selecteer`Signature`voor **sleutel gebruik**.
+1. Selecteer voor **sleutel gebruik**`Signature`.
 1. Selecteer **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
@@ -83,7 +83,7 @@ U kunt Azure AD definiëren als een claim provider door Azure AD toe te voegen a
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/common/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
@@ -93,9 +93,9 @@ U kunt Azure AD definiëren als een claim provider door Azure AD toe te voegen a
             <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
-            <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
+            <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000,https://login.microsoftonline.com/11111111-1111-1111-1111-111111111111</Item>
             <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
-            <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+            <!-- <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/</Item> -->
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret"/>
@@ -129,18 +129,18 @@ U kunt Azure AD definiëren als een claim provider door Azure AD toe te voegen a
 ### <a name="restrict-access"></a>Toegang beperken
 
 > [!NOTE]
-> Als `https://sts.windows.net` u de waarde voor **ValidTokenIssuerPrefixes** gebruikt, kunnen alle Azure AD-gebruikers zich aanmelden bij uw toepassing.
+> Als u `https://login.microsoftonline.com/` gebruikt als waarde voor **ValidTokenIssuerPrefixes** , kunnen alle Azure AD-gebruikers zich aanmelden bij uw toepassing.
 
 U moet de lijst met geldige token verleners bijwerken en de toegang beperken tot een specifieke lijst met gebruikers van Azure AD-tenants die zich kunnen aanmelden.
 
-Als u de waarden wilt verkrijgen, bekijkt u de OpenID Connect Connect Discovery-meta gegevens voor elk van de Azure AD-tenants waarvan u wilt dat gebruikers zich aanmelden. De indeling van de meta gegevens-URL is `https://login.windows.net/your-tenant/.well-known/openid-configuration`vergelijkbaar met `your-tenant` , waarbij uw Azure AD-Tenant naam is. Bijvoorbeeld:
+Als u de waarden wilt verkrijgen, bekijkt u de OpenID Connect Connect Discovery-meta gegevens voor elk van de Azure AD-tenants waarvan u wilt dat gebruikers zich aanmelden. De indeling van de meta gegevens-URL is vergelijkbaar met `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`, waarbij `your-tenant` uw Azure AD-Tenant naam is. Bijvoorbeeld:
 
-`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
+`https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
 Voer de volgende stappen uit voor elke Azure AD-Tenant die moet worden gebruikt om u aan te melden:
 
-1. Open uw browser en ga naar de OpenID Connect Connect meta data URL voor de Tenant. Zoek het object van de **Uitgever** en noteer de waarde ervan. Deze moet er ongeveer als `https://sts.windows.net/00000000-0000-0000-0000-000000000000/`volgt uitzien.
-1. Kopieer en plak de waarde in de **ValidTokenIssuerPrefixes** -sleutel. Scheid meerdere verleners met een komma. In het voor beeld van het voor gaande `ClaimsProvider` XML-voorbeeld worden twee verleners weer gegeven.
+1. Open uw browser en ga naar de OpenID Connect Connect meta data URL voor de Tenant. Zoek het object van de **Uitgever** en noteer de waarde ervan. Het moet er ongeveer uitzien als `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/`.
+1. Kopieer en plak de waarde in de **ValidTokenIssuerPrefixes** -sleutel. Scheid meerdere verleners met een komma. Een voor beeld met twee verleners wordt weer gegeven in het vorige `ClaimsProvider` XML-voor beeld.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
 
@@ -155,7 +155,7 @@ Nu hebt u uw beleid zodanig geconfigureerd dat Azure AD B2C weet hoe u kunt comm
 Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de schermen voor aanmelden/aanmelden. Om het beschikbaar te maken, maakt u een kopie van een bestaande sjabloon gebruiker en wijzigt u deze zodat deze ook de Azure AD-ID-provider heeft.
 
 1. Open het bestand *TrustFrameworkBase. XML* van het Starter Pack.
-2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"`bevat.
+2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"` bevat.
 3. Open *TrustFrameworkExtensions. XML* en zoek het element **UserJourneys** . Als het element niet bestaat, voegt u er een toe.
 4. Plak de volledige inhoud van het **UserJourney** -element dat u hebt gekopieerd als onderliggend element van het onderdeel **UserJourneys** .
 5. Wijzig de naam van de gebruikers traject. Bijvoorbeeld `SignUpSignInContoso`.
@@ -164,7 +164,7 @@ Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de s
 
 Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op het scherm aanmelden/aanmelden. Als u een **ClaimsProviderSelection** -element toevoegt voor Azure AD, wordt er een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. Zoek het **OrchestrationStep** -element dat `Order="1"` is opgenomen in de gebruikers traject die u hebt gemaakt in *TrustFrameworkExtensions. XML*.
+1. Zoek het **OrchestrationStep** -element dat `Order="1"` bevat in de gebruikers traject die u hebt gemaakt in *TrustFrameworkExtensions. XML*.
 1. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `AzureADExchange`:
 
     ```XML
@@ -175,7 +175,7 @@ Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider kno
 
 Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met Azure AD om een token te ontvangen. Koppel de knop aan een actie door het technische profiel voor uw Azure AD-claim provider te koppelen.
 
-1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de reis van de gebruiker.
 2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de **id** die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML
@@ -206,7 +206,7 @@ Werk het Relying Party (RP)-bestand bij dat de door u gemaakte gebruikers trajec
 1. Kopieer het **eind punt voor nu uitvoeren** en open het in een persoonlijk browser venster, bijvoorbeeld Incognito-modus in Google Chrome of een InPrivate-venster in micro soft Edge. Als u in een persoonlijk browser venster opent, kunt u de volledige gebruikers traject testen door geen gebruik te maken van de momenteel in de cache opgeslagen Azure AD-referenties.
 1. Selecteer de knop aanmelden bij Azure AD, bijvoorbeeld contoso- *werk nemer*, en geef vervolgens de referenties voor een gebruiker op in een van uw Azure AD-tenants. U wordt gevraagd de toepassing te autoriseren en vervolgens gegevens voor uw profiel op te geven.
 
-Als het aanmelden is gelukt, wordt uw browser omgeleid naar `https://jwt.ms`, waarin de inhoud wordt weer gegeven van het token dat wordt geretourneerd door Azure AD B2C.
+Als het aanmeldings proces is geslaagd, wordt uw browser omgeleid naar `https://jwt.ms`, waarin de inhoud van het token wordt weer gegeven dat door Azure AD B2C wordt geretourneerd.
 
 Voer de laatste twee stappen uit met behulp van de referenties voor een gebruiker die een andere Azure AD-Tenant heeft, om de aanmeld functionaliteit voor meerdere tenants te testen.
 
@@ -214,4 +214,4 @@ Voer de laatste twee stappen uit met behulp van de referenties voor een gebruike
 
 Wanneer u werkt met aangepaste beleids regels, hebt u mogelijk aanvullende informatie nodig bij het oplossen van problemen met een beleid tijdens de ontwikkeling ervan.
 
-Als u problemen wilt oplossen, kunt u het beleid tijdelijk in ' ontwikkelaars modus ' plaatsen en logboeken verzamelen met Azure-toepassing Insights. Meer informatie over het [in azure Active Directory B2C: Logboeken](active-directory-b2c-troubleshoot-custom.md)verzamelen.
+Als u problemen wilt oplossen, kunt u het beleid tijdelijk in ' ontwikkelaars modus ' plaatsen en logboeken verzamelen met Azure-toepassing Insights. Ontdek hoe u in [Azure Active Directory B2C: Logboeken verzamelt](active-directory-b2c-troubleshoot-custom.md).

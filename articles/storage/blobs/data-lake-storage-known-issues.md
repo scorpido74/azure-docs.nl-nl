@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 300da59aa1a16bb2c4cfeaf8035cbe882ae83358
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f635360c5a6da19d60f3992878a8950b03c5f748
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300238"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513877"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -105,7 +105,8 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 | **Lagen op object niveau** |De lagen cool en Archive worden ondersteund door de [toegang voor meerdere protocollen op Data Lake Storage](data-lake-storage-multi-protocol-access.md) preview. <br><br> Alle andere toegangs lagen worden nog niet ondersteund.|
 | **Ondersteuning voor Power shell en CLI** | Beperkte functionaliteit <br><br>Beheer bewerkingen, zoals het maken van een account, worden ondersteund. Gegevenslaag bewerkingen, zoals het uploaden en downloaden van bestanden, bevinden zich in de open bare preview als onderdeel van [toegang tot meerdere protocollen op Data Lake Storage](data-lake-storage-multi-protocol-access.md). Werken met mappen en toegangs beheer lijsten (Acl's) instellen wordt nog niet ondersteund. |
 | **Statische websites** |Nog niet ondersteund <br><br>Met name de mogelijkheid om bestanden te leveren aan [statische websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Toepassingen van derden** | Beperkte ondersteuning <br><br>Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2. <br>Toepassingen die BLOB-Api's aanroepen, werken waarschijnlijk met de open bare preview van [toegangs rechten voor meerdere protocollen op Data Lake Storage](data-lake-storage-multi-protocol-access.md). 
-| **Versie functies** |Nog niet ondersteund <br><br>Dit omvat [moment opnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) en [tijdelijke verwijdering](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
+| **Toepassingen van derden** | Beperkte ondersteuning <br><br>Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2. <br>Toepassingen die BLOB-Api's aanroepen, werken waarschijnlijk met de open bare preview van [toegangs rechten voor meerdere protocollen op Data Lake Storage](data-lake-storage-multi-protocol-access.md). |
+|**Voorlopig verwijderen** |Nog niet ondersteund|
+| **Versie functies** |Nog niet ondersteund <br><br>Dit omvat het [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)en andere versies van functies, zoals [moment opnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

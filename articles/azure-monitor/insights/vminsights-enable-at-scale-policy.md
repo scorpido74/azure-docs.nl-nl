@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: cbb471d337bd386b6c5f2c7a960565ef29855c9c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
-ms.translationtype: MT
+ms.openlocfilehash: 3c213f73b1dfedf6850df5f9a422193c0bcf7241
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338221"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515534"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen (preview) met behulp van Azure Policy
 
@@ -26,8 +26,8 @@ In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's (preview) voor virt
 
 Als u Azure Monitor voor VM's wilt detecteren, beheren en inschakelen voor alle virtuele machines of virtuele-machine schaal sets van Azure, kunt u Azure Policy of Azure PowerShell gebruiken. Azure Policy is de methode die wordt aanbevolen omdat u beleids definities kunt beheren om uw abonnementen effectief te regelen, zodat er consistente naleving en automatische inrichtingen kunnen worden ingeschakeld. Deze beleids definities:
 
-* Implementeer de Log Analytics-agent en de agent voor afhankelijkheden.
-* Rapport over nalevingsresultaten.
+* Implementeer de Log Analytics agent en de afhankelijkheids agent.
+* Rapport over de nalevings resultaten.
 * Herstellen voor niet-compatibele Vm's.
 
 Als u deze taken wilt uitvoeren met Azure PowerShell of een Azure Resource Manager sjabloon, raadpleegt u [Azure monitor voor VM's (preview) inschakelen met behulp van Azure PowerShell of Azure Resource Manager sjablonen](vminsights-enable-at-scale-powershell.md).
@@ -46,7 +46,7 @@ Deze informatie is nuttig om u te helpen bij het plannen en uitvoeren van uw gov
 
 Op deze pagina kunt u ook uw Log Analytics-werk ruimte configureren voor Azure Monitor voor VM's, dat:
 
-- Hiermee installeert u de installatie Servicetoewijzing en Infrastructure Insights oplossingen.
+- Hiermee wordt de Servicetoewijzing oplossing geïnstalleerd.
 - Hiermee schakelt u de prestatie meter items van het besturings systeem in die worden gebruikt door de prestatie grafieken, werkmappen en uw aangepaste logboek query's en waarschuwingen.
 
 ![Werk ruimte Azure Monitor voor VM's configureren](./media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
@@ -54,9 +54,10 @@ Op deze pagina kunt u ook uw Log Analytics-werk ruimte configureren voor Azure M
 Deze optie is niet gerelateerd aan beleids acties. Het is beschikbaar om een eenvoudige manier te bieden om te voldoen aan de [vereisten](vminsights-enable-overview.md) die nodig zijn om Azure monitor voor VM's in te scha kelen.  
 
 ### <a name="what-information-is-available-on-this-page"></a>Welke informatie is beschikbaar op deze pagina?
+
 De volgende tabel bevat een overzicht van de informatie die wordt weer gegeven op de pagina beleids dekking en hoe u deze kunt interpreteren.
 
-| Function | Description | 
+| Functie | Beschrijving | 
 |----------|-------------| 
 | **Bereik** | Beheer groep en abonnementen waarvoor u toegang hebt of die u hebt overgenomen, met de mogelijkheid om in te zoomen op de hiërarchie van de beheer groep.|
 | **Rol** | Uw rol aan het bereik, dat lezers, eigenaar of Inzender kan zijn. In sommige gevallen kan het lijken leeg te zijn om aan te geven dat u toegang tot het abonnement hebt, maar niet tot de beheer groep waarvan het deel uitmaakt. De gegevens in andere kolommen variëren, afhankelijk van uw rol. De rol is belang rijk om te bepalen welke gegevens u kunt zien en welke acties u kunt uitvoeren met betrekking tot het toewijzen van beleid of initiatieven (eigenaar), het bewerken ervan of het weer geven van naleving. |
@@ -71,55 +72,56 @@ Wanneer u het beleid of initiatief toewijst, kan het bereik dat u hebt geselecte
 
 ## <a name="enable-by-using-azure-policy"></a>Inschakelen met behulp van Azure Policy
 
-Azure Monitor inschakelen voor virtuele machines met behulp van Azure Policy in uw tenant:
+Azure Monitor voor VM's in te scha kelen met behulp van Azure Policy in uw Tenant:
 
 - Het initiatief toewijzen aan een bereik: beheer groep, abonnement of resource groep.
 - Nalevings resultaten controleren en herstellen.
 
-Zie voor meer informatie over het toewijzen van Azure Policy [overzicht van Azure Policy](../../governance/policy/overview.md#policy-assignment) en bekijk de [overzicht van beheergroepen](../../governance/management-groups/overview.md) voordat u doorgaat.
+Voor meer informatie over het toewijzen van Azure Policy, raadpleegt u [Azure Policy overzicht](../../governance/policy/overview.md#policy-assignment) en raadpleegt u het [overzicht van beheer groepen](../../governance/management-groups/overview.md) voordat u doorgaat.
 
 ### <a name="policies-for-azure-vms"></a>Beleid voor virtuele Azure-machines
 
 De beleids definities voor een virtuele machine van Azure worden weer gegeven in de volgende tabel.
 
-|Name |Description |type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
-|\[Voor\]beeld: Azure Monitor voor VM's inschakelen |Schakel Azure Monitor in voor de virtuele machines in het opgegeven bereik (beheer groep, abonnement of resource groep). Log Analytics-werkruimte wordt gebruikt als parameter. |Initiatief |
-|\[Voor\]beeld: Implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Afhankelijkheids agent voor Linux-Vm's implementeren |De afhankelijkheids agent voor Linux Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Afhankelijkheids agent voor Windows-Vm's implementeren |Een afhankelijkheids agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren |Implementeer Log Analytics-agent voor Linux-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren |Log Analytics-agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Azure Monitor voor VM's inschakelen |Schakel Azure Monitor in voor de virtuele machines in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. |Initiatieven |
+|\[Preview \]: implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Log Analytics agent implementatie controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: afhankelijkheids agent voor Linux-Vm's implementeren |De afhankelijkheids agent voor Linux Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Dependency agent voor Windows-Vm's implementeren |Een afhankelijkheids agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Log Analytics agent voor virtuele Linux-machines implementeren |Implementeer Log Analytics-agent voor Linux-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Log Analytics-agent implementeren voor Windows-Vm's |Log Analytics-agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Beleid voor virtuele-machine schaal sets van Azure
 
 De beleids definities voor een schaalset voor virtuele Azure-machines worden in de volgende tabel weer gegeven.
 
-|Name |Description |type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
-|\[Voor\]beeld: Azure Monitor inschakelen voor schaal sets voor virtuele machines |Schakel Azure Monitor in voor de virtuele-machine schaal sets in het opgegeven bereik (beheer groep, abonnement of resource groep). Log Analytics-werkruimte wordt gebruikt als parameter. Opmerking: Als het upgrade beleid voor de schaalset is ingesteld op hand matig, past u de extensie toe op alle Vm's in de set door de upgrade op de virtuele machines aan te roepen. In de CLI is dit AZ vmss update-instances. |Initiatief |
-|\[Voor\]beeld: Implementatie van afhankelijkheids agent in virtuele-machine schaal sets controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Implementatie van Log Analytics agent in virtuele-machine schaal sets controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren |De afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren |Een afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Log Analytics agent voor virtuele Linux-machine schaal sets implementeren |Implementeer Log Analytics agent voor virtuele Linux-machine schaal sets als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|\[Voor\]beeld: Log Analytics-agent voor schaal sets voor virtuele Windows-machines implementeren |Implementeer Log Analytics agent voor virtuele-machine schaal sets van Windows als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Azure Monitor inschakelen voor schaal sets voor virtuele machines |Schakel Azure Monitor in voor de virtuele-machine schaal sets in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. Opmerking: als het upgrade beleid van uw schaalset is ingesteld op hand matig, past u de extensie toe op alle virtuele machines in de set door de upgrade op de Vm's aan te roepen. In de CLI is dit AZ vmss update-instances. |Initiatieven |
+|\[Preview \]: implementatie van afhankelijkheids agent in virtuele-machine schaal sets controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: de implementatie van Log Analytics agent in virtuele-machine schaal sets controleren – VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren |De afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren |Een afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Log Analytics agent voor virtuele Linux-machine schaal sets implementeren |Implementeer Log Analytics agent voor virtuele Linux-machine schaal sets als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|\[Preview \]: Log Analytics agent gebruiken voor schaal sets voor virtuele Windows-machines |Implementeer Log Analytics agent voor virtuele-machine schaal sets van Windows als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
 
-Beleid voor zelfstandige (niet opgenomen in het initiatief) wordt hier beschreven:
+Zelfstandig beleid (niet inbegrepen bij het initiatief) wordt hier beschreven:
 
-|Name |Description |type |
+|Naam |Beschrijving |Type |
 |-----|------------|-----|
-|\[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM: niet-overeenkomend rapport |Rapport Vm's als niet-compatibel als ze niet worden vastgelegd in de Log Analytics werk ruimte die is opgegeven in het beleid of initiatief toewijzing. |Beleid |
+|\[Preview \]: controle Log Analytics-werk ruimte voor VM: rapport komt niet overeen |Rapport Vm's als niet-compatibel als ze niet worden vastgelegd in de Log Analytics werk ruimte die is opgegeven in het beleid of initiatief toewijzing. |Beleid |
 
-### <a name="assign-the-azure-monitor-initiative"></a>De Azure Monitor-initiatief toewijzen
-Volg deze stappen om de beleids toewijzing te maken op de pagina **dekking van Azure monitor voor VM's beleid** . Zie voor meer informatie over hoe u deze stappen hebt voltooid, [een beleidstoewijzing maken vanuit Azure portal](../../governance/policy/assign-policy-portal.md).
+### <a name="assign-the-azure-monitor-initiative"></a>Het Azure Monitor-initiatief toewijzen
+
+Volg deze stappen om de beleids toewijzing te maken op de pagina **dekking van Azure monitor voor VM's beleid** . Zie [een beleids toewijzing maken op basis van de Azure Portal](../../governance/policy/assign-policy-portal.md)voor meer informatie over het uitvoeren van deze stappen.
 
 Wanneer u het beleid of initiatief toewijst, kan het bereik dat u hebt geselecteerd in de toewijzing het bereik zijn dat hier wordt weer gegeven, of een subset ervan. U hebt bijvoorbeeld mogelijk een toewijzing voor het abonnement (beleids bereik) gemaakt en niet de beheer groep (dekkings bereik). In dit geval geeft het dekkings percentage de Vm's in het beleid of het initiatief bereik aan, gedeeld door de Vm's in het bereik van de dekking. In andere gevallen hebt u mogelijk enkele Vm's, of resource groepen of een abonnement uitgesloten van het beleids bereik. Als deze leeg is, wordt aangegeven dat het beleid of initiatief niet bestaat of dat u geen machtigingen hebt. Informatie wordt weer gegeven onder de **toewijzings status**.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer in de Azure portal, **Monitor**. 
+2. Selecteer in de Azure Portal **monitor**. 
 
 3. Kies **virtual machines (preview)** in het gedeelte **insightss** .
  
@@ -130,16 +132,16 @@ Wanneer u het beleid of initiatief toewijst, kan het bereik dat u hebt geselecte
 6. Op de pagina **toewijzing van Azure Policy** is het vooraf ingevuld met het initiatief Azure monitor voor VM's in te **scha kelen**. 
     Het vak **toewijzings naam** wordt automatisch ingevuld met de naam van het initiatief, maar u kunt dit wijzigen. U kunt ook een optionele beschrijving toevoegen. Het vak **toegewezen door** wordt automatisch ingevuld op basis van wie is aangemeld. Deze waarde is optioneel.
 
-7. (Optioneel) Selecteer een of meer als resources wilt verwijderen uit het bereik, **uitsluitingen**.
+7. Beschrijving Als u een of meer resources uit het bereik wilt verwijderen, selecteert u **uitsluitingen**.
 
-8. In de **Log Analytics-werkruimte** vervolgkeuzelijst lijst voor de ondersteunde regio, selecteer een werkruimte.
+8. Selecteer in de vervolg keuzelijst **log Analytics werkruimte** voor de ondersteunde regio een werk ruimte.
 
    > [!NOTE]
-   > Als de werkruimte buiten het bereik van de toewijzing valt, verleent *Inzender van Log Analytics* machtigingen voor de beleidstoewijzing Principal-ID. Als u dit niet doet, ziet u mogelijk een implementatie fout, zoals `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` om toegang te verlenen, Lees [hoe u de beheerde identiteit hand matig configureert](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > Als de werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u *log Analytics Inzender* machtigingen verlenen aan de principal-id van de beleids toewijzing. Als u dit niet doet, ziet u mogelijk een implementatie fout, zoals `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` om toegang te verlenen, Lees [hoe u de beheerde identiteit hand matig configureert](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
    > 
    >  Het selectie vakje **beheerde identiteit** is ingeschakeld omdat het initiatief dat wordt toegewezen, een beleid bevat met het effect *deployIfNotExists* .
     
-9. In de **identiteit beheren locatie** vervolgkeuzelijst, selecteert u de juiste regio.
+9. Selecteer de gewenste regio in de vervolg keuzelijst **identiteits locatie beheren** .
 
 10. Selecteer **Toewijzen**.
 
@@ -147,7 +149,7 @@ Nadat u de toewijzing hebt gemaakt, werkt de pagina **dekking van Azure monitor 
 
 De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiatief toe.  
 
-| Nalevingsstatus | Description | 
+| Nalevings status | Beschrijving | 
 |------------------|-------------|
 | **ACPI** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Niet compatibel** | Niet alle virtuele machines in het bereik hebben de Log Analytics-en Dependency-agents geïmplementeerd en vereisen mogelijk herstel.|
@@ -159,7 +161,7 @@ De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiat
 
 In de volgende tabel wordt elke mogelijke toewijzings status voor het initiatief toegewezen.
 
-| Toewijzings status | Description | 
+| Toewijzings status | Beschrijving | 
 |------------------|-------------|
 | **Geleverd** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Waarschuwing** | Het abonnement bevindt zich niet in een beheer groep.|
@@ -170,45 +172,44 @@ In de volgende tabel wordt elke mogelijke toewijzings status voor het initiatief
 
 <sup>1</sup> als u geen toegang hebt tot de beheer groep, vraagt u een eigenaar om toegang te bieden. U kunt ook naleving bekijken en toewijzingen beheren via de onderliggende beheer groepen of-abonnementen.
 
-## <a name="review-and-remediate-the-compliance-results"></a>Controleren en herstellen van de compliantieresultaten
+## <a name="review-and-remediate-the-compliance-results"></a>De compliantie resultaten controleren en herstellen
 
 Het volgende voor beeld is voor een Azure-VM, maar is ook van toepassing op virtuele-machine schaal sets. Zie resultaten van niet- [naleving identificeren](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources)voor meer informatie over het controleren van de nalevings resultaten. Selecteer een beheer groep of een abonnement uit de tabel op de pagina **dekking van Azure monitor voor VM's beleid** . Selecteer **naleving weer geven** door het weglatings teken (...) te selecteren.   
 
-![Naleving van het beleid voor virtuele Azure-machines](./media/vminsights-enable-at-scale-policy/policy-view-compliance-01.png)
+![Naleving van beleid voor Azure-Vm's](./media/vminsights-enable-at-scale-policy/policy-view-compliance-01.png)
 
 Op basis van de resultaten van de beleids regels die zijn opgenomen in het initiatief, worden virtuele machines gerapporteerd als niet-compatibel in de volgende scenario's:
 
 * Log Analytics agent of afhankelijkheids agent is niet geïmplementeerd.  
-    Dit scenario is gebruikelijk om een bereik met bestaande virtuele machines. Om het te beperken, implementeert u de vereiste agents door [herstel taken te maken](../../governance/policy/how-to/remediate-resources.md) op basis van een niet-compatibel beleid.  
-    - \[Voor\]beeld: Afhankelijkheids agent voor Linux-Vm's implementeren
-    - \[Voor\]beeld: Afhankelijkheids agent voor Windows-Vm's implementeren
-    - \[Voor\]beeld: Log Analytics-agent voor Linux-Vm's implementeren
-    - \[Voor\]beeld: Log Analytics-agent voor Windows-Vm's implementeren
+    Dit scenario is gebruikelijk voor een bereik met bestaande Vm's. Om het te beperken, implementeert u de vereiste agents door [herstel taken te maken](../../governance/policy/how-to/remediate-resources.md) op basis van een niet-compatibel beleid.  
+    - \[Preview \]: afhankelijkheids agent voor Linux-Vm's implementeren
+    - \[Preview \]: Dependency agent voor Windows-Vm's implementeren
+    - \[Preview \]: Log Analytics agent voor virtuele Linux-machines implementeren
+    - \[Preview \]: Log Analytics-agent implementeren voor Windows-Vm's
 
 * VM-installatie kopie (OS) wordt niet geïdentificeerd in de beleids definitie.  
-    De criteria van het implementatiebeleid voor zijn alleen de VM's die zijn geïmplementeerd vanuit een bekende Azure VM-installatiekopieën. Raadpleeg de documentatie om te zien of het besturingssysteem van de virtuele machine wordt ondersteund. Als dit wordt niet ondersteund, dupliceren van de update en van implementatiebeleid of te wijzigen zodat de installatiekopie van het voldoen aan het beleid.  
-    - \[Voor\]beeld: Implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld
-    - \[Voor\]beeld: Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld
+    De criteria van het implementatie beleid bevatten alleen de Vm's die zijn geïmplementeerd op basis van bekende VM-installatie kopieën van Azure. Raadpleeg de documentatie om te controleren of het VM-besturings systeem wordt ondersteund. Als dit niet wordt ondersteund, dupliceert u het implementatie beleid en werkt u het bij of wijzigt u het om de installatie kopie compatibel te maken.  
+    - \[Preview \]: implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld
+    - \[Preview \]: Log Analytics agent implementatie controleren-VM-installatie kopie (OS) niet vermeld
 
-* Virtuele machines zijn niet aangemeld bij de opgegeven Log Analytics-werkruimte.  
-    Het is mogelijk dat sommige virtuele machines binnen het initiatief bereik zijn aangemeld bij een Log Analytics-werkruimte dan de naam die opgegeven in de beleidstoewijzing. Dit beleid is een hulp programma voor het identificeren van de virtuele machines die aan een niet-compatibele werk ruimte rapporteren.  
-    - \[Voor\]beeld: Controleren Log Analytics werk ruimte voor VM: niet-overeenkomend rapport
+* Vm's worden niet aangemeld bij de opgegeven Log Analytics-werk ruimte.  
+    Het is mogelijk dat sommige Vm's in het initiatief bereik worden aangemeld bij een andere Log Analytics werk ruimte dan de virtuele machine die is opgegeven in de beleids toewijzing. Dit beleid is een hulp programma voor het identificeren van de virtuele machines die aan een niet-compatibele werk ruimte rapporteren.  
+    - \[Preview \]: controle Log Analytics-werk ruimte voor VM: rapport komt niet overeen
 
 ## <a name="edit-an-initiative-assignment"></a>Een initiatief toewijzing bewerken
 
 U kunt op elk gewenst moment nadat u een initiatief aan een beheer groep of abonnement hebt toegewezen, het bewerken om de volgende eigenschappen te wijzigen:
 
-- Toewijzingsnaam
-- Description
+- Toewijzings naam
+- Beschrijving
 - Toegewezen door
-- Log Analytics-werkruimte
+- Log Analytics werk ruimte
 - Uitzonderingen
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu de bewaking voor uw virtuele machines is ingeschakeld, is deze informatie beschikbaar voor analyse met Azure Monitor voor VM's. 
 
-- Zie [Azure monitor voor VM's status weer geven](vminsights-health.md)voor meer informatie over het gebruik van de status functie. 
-- Afhankelijkheden van gedetecteerde toepassingen, Zie [weergave Azure Monitor voor virtuele machines kaart](vminsights-maps.md). 
+- Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven. 
+
 - Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om knel punten en het algehele gebruik van de VM-prestaties te identificeren. 
-- Afhankelijkheden van gedetecteerde toepassingen, Zie [weergave Azure Monitor voor virtuele machines kaart](vminsights-maps.md).

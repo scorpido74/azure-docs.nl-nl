@@ -4,18 +4,18 @@ description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy li
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8c40241c49917c6db6663f346aed0ec5d3b96be7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b7348e3790166e1a1aecab422e571b8f2fc7cd5f
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195943"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513521"
 ---
-# <a name="azcopy-list"></a>lijst met azcopy
+# <a name="azcopy-list"></a>azcopy list
 
 Hiermee worden de entiteiten in een bepaalde resource weer gegeven.
 
@@ -35,7 +35,7 @@ azcopy list [containerURL]
 
 ## <a name="options"></a>Opties
 
-|Optie|Description|
+|Optie|Beschrijving|
 |--|--|
 |-h,--Help|Help-inhoud voor de lijst opdracht weer geven.|
 |--computer-leesbaar|Geeft een lijst van bestands grootten in bytes.|
@@ -44,7 +44,7 @@ azcopy list [containerURL]
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|

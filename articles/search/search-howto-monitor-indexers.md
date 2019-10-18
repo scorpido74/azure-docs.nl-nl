@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186596"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533701"
 ---
 # <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search Indexeer functie-status en-resultaten controleren
 
@@ -27,7 +27,7 @@ De controle van de Indexeer functie is handig wanneer u het volgende wilt doen:
 * Bekijk de resultaten van de lopende of vorige uitvoering van de Indexeer functie.
 * Identificeer indexerings fouten op het hoogste niveau en fouten of waarschuwingen over afzonderlijke documenten die worden geïndexeerd.
 
-## <a name="find-indexer-status-and-history-details"></a>De Indexeer functie-status en geschiedenis details zoeken
+## <a name="get-status-and-history"></a>Status en geschiedenis ophalen
 
 U kunt de gegevens van de Indexeer functie op verschillende manieren openen, zoals:
 
@@ -45,15 +45,15 @@ Indexeer functies die grote hoeveel heden gegevens verwerken, kunnen veel tijd i
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Indexeer functies in de portal bewaken
+## <a name="monitor-using-the-portal"></a>Controleren met behulp van de portal
 
 U kunt de huidige status van al uw Indexeer functies weer geven in de lijst **Indexeer functies** op de pagina overzicht van de zoek service.
 
    ![Lijst met Indexeer functies](media/search-monitor-indexers/indexers-list.png "Lijst met Indexeer functies")
 
-Wanneer een Indexeer functie wordt uitgevoerd, wordt de status in de lijst weergegeven en wordt de waarde **docs geslaagd** toont het aantal documenten dat tot nu toe is verwerkt. Het kan een paar minuten duren voordat de index status waarden en het aantal documenten zijn bijgewerkt door de portal.
+Wanneer een Indexeer functie wordt uitgevoerd, wordt de status in de lijst weer **gegeven en**wordt de waarde **docs geslaagd** toont het aantal documenten dat tot nu toe is verwerkt. Het kan een paar minuten duren voordat de index status waarden en het aantal documenten zijn bijgewerkt door de portal.
 
-Een Indexeer functie waarvan de meest recente uitvoering is geslaagd, is geslaagd. Het uitvoeren van een Indexeer functie kan worden geslaagd, zelfs als afzonderlijke documenten fouten bevatten, als het aantal fouten minder is dan de instelling **maximale mislukte items** van de Indexeer functie.
+Een Indexeer functie waarvan de meest recente uitvoering **is geslaagd, is geslaagd.** Het uitvoeren van een Indexeer functie kan worden geslaagd, zelfs als afzonderlijke documenten fouten bevatten, als het aantal fouten minder is dan de instelling **maximale mislukte items** van de Indexeer functie.
 
 Als de meest recente uitvoering **is**beëindigd met een fout, wordt de status weer gegeven. Als de status **opnieuw instellen is ingesteld** , is de status van het bijhouden van wijzigingen van de Indexeer functie opnieuw ingesteld.
 
@@ -79,7 +79,7 @@ Zie problemen [met algemene Indexeer functies oplossen in azure Search](search-i
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>Indexeer functies bewaken met behulp van de REST API
+## <a name="monitor-using-rest-apis"></a>Bewaken met REST-Api's
 
 U kunt de status en de uitvoerings geschiedenis van een Indexeer functie ophalen met behulp van de [opdracht Get Indexing-status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
@@ -126,7 +126,7 @@ Zie [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-ind
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>Indexeer functies bewaken met behulp van de .NET SDK
+## <a name="monitor-using-the-net-sdk"></a>Controleren met behulp van de .NET SDK
 
 U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
 
@@ -181,6 +181,6 @@ Wanneer een Indexeer functie opnieuw wordt ingesteld om de status van het bijhou
 
 Zie [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) in de rest API voor meer informatie over de status codes en de bewakings gegevens van de Indexeer functie.
 
-Details van Documentspecifieke fouten of waarschuwingen kunnen worden opgehaald door de lijsten `IndexerExecutionResult.Errors` en te `IndexerExecutionResult.Warnings`inventariseren.
+Details van Documentspecifieke fouten of waarschuwingen kunnen worden opgehaald door de lijsten `IndexerExecutionResult.Errors` en `IndexerExecutionResult.Warnings` te inventariseren.
 
 Zie [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) en [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)voor meer informatie over de .NET SDK-klassen die worden gebruikt om Indexeer functies te controleren.

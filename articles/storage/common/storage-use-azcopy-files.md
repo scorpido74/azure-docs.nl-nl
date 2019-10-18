@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 361b16ff074baaf0118ccfe6d3c2a20f0e66c623
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273905"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528683"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en File Storage 
 
@@ -195,7 +195,7 @@ De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing 
 
 U kunt AzCopy gebruiken om bestanden naar andere opslag accounts te kopiëren. De Kopieer bewerking is synchroon, dus wanneer de opdracht wordt geretourneerd. Dit geeft aan dat alle bestanden zijn gekopieerd.
 
-AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de omgevings variabele `AZCOPY_CONCURRENCY_VALUE` in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
+AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de variabele `AZCOPY_CONCURRENCY_VALUE` omgeving in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
 
 Deze sectie bevat de volgende voor beelden:
 
@@ -237,7 +237,7 @@ Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag document
 
 ## <a name="synchronize-files"></a>Bestanden synchroniseren
 
-U kunt de inhoud van een lokaal bestands systeem synchroniseren met een bestands share. Synchronisatie is in één richting. Met andere woorden, u kunt kiezen welke van deze twee eind punten de bron is en welke het doel is. Synchronisatie gebruikt ook server-naar-server-Api's.
+U kunt de inhoud van een bestands share synchroniseren met een andere bestands share. U kunt ook de inhoud van een map in een bestands share synchroniseren met de inhoud van een map die zich in een andere bestands share bevindt. Synchronisatie is in één richting. Met andere woorden, u kunt kiezen welke van deze twee eind punten de bron is en welke het doel is. Synchronisatie gebruikt ook server-naar-server-Api's.
 
 > [!NOTE]
 > Dit scenario wordt momenteel alleen ondersteund voor accounts die geen hiërarchische naam ruimte hebben. De huidige release van AzCopy synchroniseert niet tussen Azure Files en Blob Storage.
@@ -248,23 +248,23 @@ Als u de vlag `--delete-destination` instelt op `true` AzCopy, worden bestanden 
 
 Zie [azcopy Sync](storage-ref-azcopy-sync.md)(Engelstalig) voor gedetailleerde naslag documentatie.
 
-### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>Een bestands share bijwerken met wijzigingen in een lokaal bestands systeem
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Een bestands share bijwerken met wijzigingen in een andere bestands share
 
-In dit geval is de bestands share het doel en is het lokale bestands systeem de bron.
-
-|    |     |
-|--------|-----------|
-| **Syntaxis** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
-| **Voorbeeld** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/mycontainer' --recursive` |
-
-### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>Een lokaal bestands systeem bijwerken met wijzigingen in een bestands share
-
-In dit geval is het lokale bestands systeem het doel en de bestands share de bron.
+De eerste bestands share die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy sync 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' 'C:\myDirectory' --recursive` |
-| **Voorbeeld** | `azcopy sync 'https://mystorageaccount.file.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
+| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Een Directory bijwerken met wijzigingen in een map in een andere bestands share
+
+De eerste map die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>' --recursive` |
+| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

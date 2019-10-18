@@ -1,5 +1,5 @@
 ---
-title: Meerdere resource-instanties maken met Azure Resource Manager | Microsoft Docs
+title: Meerdere bron instanties maken-Azure Resource Manager
 description: Leer hoe u een Azure Resource Manager-sjabloon maakt om meerdere resource-instanties te maken.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cf2559b280a1c43269c0cf45d77ee98dcd5ee5a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388767"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528262"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Zelfstudie: Meerdere resource-instanties maken met Resource Manager-sjablonen
 
 Leer hoe u een Azure Resource Manager-sjabloon herhaaldelijk gebruikt om meerdere instanties van een Azure-resource te maken. In deze zelfstudie wijzigt u een sjabloon om drie instanties van het opslagaccount te maken.
 
-![Azure Resource Manager maakt u meerdere exemplaren-diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager maakt meerdere exemplaren diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een quickstartsjabloon openen
+> * Een snelstartsjabloon openen
 > * De sjabloon bewerken
 > * De sjabloon implementeren
 
@@ -64,7 +64,7 @@ Breng vanuit Visual Studio Code de volgende vier wijzigingen aan:
 ![Azure Resource Manager maakt meerdere instanties](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Voeg een `copy`-element toe aan de resourcedefinitie van het opslagaccount. In het copy-element geeft u het aantal iteraties en een variabele voor deze lus op. Het aantal iteraties moet een positief geheel getal zijn en mag niet hoger zijn dan 800.
-2. De functie `copyIndex()` retourneert de huidige iteratie in de lus. U gebruikt de index als het voorvoegsel van de naam. `copyIndex()` is gebaseerd op nul. Als u de indexwaarde wilt verschuiven, kunt u een waarde doorgeven in de functie copyIndex(). Bijvoorbeeld *copyIndex(1)*.
+2. De functie `copyIndex()` retourneert de huidige iteratie in de lus. U gebruikt de index als het voorvoegsel van de naam. `copyIndex()` is gebaseerd op nul. Als u de indexwaarde wilt verschuiven, kunt u een waarde doorgeven in de functie copyIndex(). Bijvoorbeeld *copyIndex(1)* .
 3. Verwijder het element **variables**, want dit wordt niet meer gebruikt.
 4. Verwijder het element **outputs**. Dit is niet langer nodig.
 
@@ -126,7 +126,7 @@ Raadpleeg de sectie [De sjabloon implementeren](./resource-manager-quickstart-cr
 
 Als u alle drie de opslagaccounts wilt weergeven, laat u de parameter --name weg:
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&

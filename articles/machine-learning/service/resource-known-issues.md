@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286549"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533170"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -37,7 +37,7 @@ Mogelijk wilt u een experiment uitvoeren met alleen gegevensset voor het visuali
  
 Vóór de oplossing kunt u de gegevensset koppelen aan een module voor gegevens transformatie (Selecteer kolommen in gegevensset, bewerk de meta gegevens, splits gegevens, enzovoort) en voer het experiment uit. Vervolgens kunt u de gegevensset visualiseren. 
 
-Onder afbeelding ziet u hoe: ![visulize-data @ no__t-1
+Onder afbeelding ziet u hoe: ![visulize data ](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problemen met de SDK-installatie
 
@@ -130,7 +130,7 @@ Als u met deze stappen het probleem niet kunt oplossen, probeert u het cluster o
 
 Als er een fout `FailToSendFeather` wordt weer gegeven bij het lezen van gegevens op Azure Databricks cluster, raadpleegt u de volgende oplossingen:
 
-* Upgrade `azureml-sdk[automl_databricks]`-pakket naar de nieuwste versie.
+* Upgrade `azureml-sdk[automl]` pakket naar de nieuwste versie.
 * Voeg .1.8-versie of hoger toe.
 * Voeg `pyarrow` versie 0,11 of hoger toe.
 
@@ -218,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes slaat de geheimen op in de indeling basis-64-code ring. U moet base-64 de `cert.pem`-en `key.pem`-onderdelen van de geheimen decoderen voordat u ze aan `attach_config.enable_ssl` levert. 
+>Kubernetes slaat de geheimen op in de indeling basis-64-code ring. U moet base-64 decoderen van de `cert.pem` en `key.pem` onderdelen van de geheimen voordat u ze aan de `attach_config.enable_ssl` verschaft. 
 
 ## <a name="recommendations-for-error-fix"></a>Aanbevelingen voor probleem oplossing
 Op basis van algemene waarneming zijn dit de aanbevelingen van Azure ML voor het oplossen van enkele veelvoorkomende fouten in azure ML.
@@ -226,7 +226,7 @@ Op basis van algemene waarneming zijn dit de aanbevelingen van Azure ML voor het
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (geen module met de naam)
 Als u in ModuleErrors uitvoert terwijl experimenten in azure ML worden ingediend, betekent dit dat het trainings script verwacht dat er een pakket wordt geïnstalleerd, maar dit wordt niet toegevoegd. Wanneer u de naam van het pakket opgeeft, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor uw training. 
 
-Als u [schattingen](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron die u wilt installeren van het pakket. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven met behulp van `conda_dependencies_file`or alle PIP-vereisten in een txt-bestand met behulp van de para meter `pip_requirements_file`.
+Als u [schattingen](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron van waaruit u het pakket wilt installeren. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven met `conda_dependencies_file`or alle PIP-vereisten in een txt-bestand met behulp van `pip_requirements_file`-para meter.
 
 Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de Framework afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  
@@ -239,4 +239,4 @@ Specifieke Framework-afhankelijkheden worden weer gegeven in de bijbehorende Fra
 Deze uitzonde ring moet afkomstig zijn uit uw trainings scripts. U kunt de logboek bestanden van Azure Portal bekijken voor meer informatie over de specifieke naam niet gedefinieerd of kenmerk fout. In de SDK kunt u `run.get_details()` gebruiken om het fout bericht te bekijken. Hiermee worden ook alle logboek bestanden weer geven die zijn gegenereerd voor de uitvoering. Bekijk uw trainings script, los het probleem op en probeer het opnieuw. 
 
 ### <a name="horovod-is-shutdown"></a>Horovod is afgesloten
-In de meeste gevallen betekent deze uitzonde ring dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor horovod is afgesloten. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs`. In het geval van gedistribueerde trainingen worden de namen van de logboeken met `_rank` in een achtervoegsel opgenomen, zodat u de Logboeken eenvoudig kunt onderscheiden. Als u de exacte fout wilt vinden die horovod afsluiten heeft veroorzaakt, gaat u naar alle logboek bestanden en zoekt u naar `Traceback` aan het einde van de driver_log-bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
+In de meeste gevallen betekent deze uitzonde ring dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor horovod is afgesloten. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs`. In het geval van gedistribueerde trainingen worden de namen van de logboeken in het achtervoegsel opgenomen met `_rank` zodat de Logboeken eenvoudig kunnen worden onderscheiden. Als u de exacte fout wilt vinden die horovod afsluiten heeft veroorzaakt, gaat u naar alle logboek bestanden en zoekt u naar `Traceback` aan het einde van de driver_log-bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 

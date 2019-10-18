@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330095"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529437"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren met Premium-bestands share op Azure Virtual Machines
 
@@ -45,7 +45,7 @@ Daarnaast moet u een algemene uitleg hebben van de volgende technologieën:
 - [Azure-resource groepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) -beheer modus van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Verwijder de volledige uitbrei ding van de virtuele machines die deel uitmaken van het failovercluster en Registreer deze vervolgens met de resource provider van de SQL-VM in de modus `lightweight`. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
+> Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) -beheer modus van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource virtuele machine voor de correspinding-Vm's en registreert u deze bij de resource provider van de SQL-VM in `lightweight` modus. Bij het verwijderen van de resource van de virtuele SQL-machine met Azure Portal moet u ervoor zorgen dat u de huidige virtuele machine opheffen. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
 
 ### <a name="workload-consideration"></a>Werklast vergoeding
 
@@ -344,8 +344,7 @@ De load balancer maken:
    Zie de volgende afbeelding:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
-
-   ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
+   
 
 ### <a name="configure-the-load-balancer-backend-pool"></a>De load balancer back-end-groep configureren
 

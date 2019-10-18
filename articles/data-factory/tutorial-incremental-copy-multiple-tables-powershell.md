@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 0c5b9a16a7b52239f1ef16d42e1b4be344863a04
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b7de8b164fcd818fba1f999ea7b67f11de646ccd
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140628"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533235"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
 In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een lokale SQL-server naar een Azure SWL-database worden gekopieerd.    
@@ -25,11 +25,11 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende Integration Runtime maken.
 > * De Integration Runtime installeren. 
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.
@@ -231,7 +231,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Een voorbeeld is `"adfrg"`. 
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
@@ -245,7 +245,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
 1. Voer de volgende opdracht uit om de resourcegroep te maken: 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     Als de resourcegroep al bestaat, wilt u waarschijnlijk niet dat deze wordt overschreven. Wijs een andere waarde toe aan de `$resourceGroupName`-variabele en voer de opdracht opnieuw uit.
 
@@ -257,10 +257,10 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-1. Voer de volgende cmdlet **Set AzureRmDataFactoryV2** uit om de data factory te maken: 
+1. Voer de volgende **set-AzDataFactoryV2-** cmdlet uit om de Data Factory te maken: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 Houd rekening met de volgende punten:
@@ -271,19 +271,18 @@ Houd rekening met de volgende punten:
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen Inzender of Eigenaar, of moet dit een beheerder van het Azure-abonnement zijn.
-* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, SQL Database, enzovoort) en berekeningen (Azure HDInsight, enzovoort) die worden gebruikt door de data factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, SQL Database, enzovoort) en berekeningen (Azure HDInsight, enzovoort) die worden gebruikt door de data factory, kunnen zich in andere regio's bevinden.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 
-
 ## <a name="create-linked-services"></a>Gekoppelde services maken
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in de lokale SQL Server-database en de SQL-database. 
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in de lokale SQL Server en de Azure SQL-database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>De gekoppelde service voor SQL Server maken
 In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppelen.
 
-1. Maak een JSON-bestand met de naam SqlServerLinkedService.json in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server. Maak de lokale mappen als deze nog niet bestaan. 
+1. Maak een JSON-bestand met de naam **SqlServerLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server. Maak de lokale mappen als deze nog niet bestaan. 
 
     > [!IMPORTANT]
     > Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.
@@ -291,100 +290,104 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
     Als u gebruikmaakt van SQL-verificatie, moet u de volgende JSON-definitie kopiëren:
 
     ```json
-    {
-        "properties": {
-            "type": "SqlServer",
-            "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
-                }
+    {  
+        "name":"SqlServerLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"SqlServer",
+            "typeProperties":{  
+                "connectionString":"integrated security=False;data source=<servername>;initial catalog=<database name>;user id=<username>;Password=<password>"
             },
-            "connectVia": {
-                "type": "integrationRuntimeReference",
-                "referenceName": "<integration runtime name>"
+            "connectVia":{  
+                "referenceName":"<integration runtime name>",
+                "type":"IntegrationRuntimeReference"
             }
-        },
-        "name": "SqlServerLinkedService"
-    }
+        }
+    } 
    ```    
     Als u gebruikmaakt van Windows-verificatie, moet u de volgende JSON-definitie kopiëren:
 
     ```json
-    {
-        "properties": {
-            "type": "SqlServer",
-            "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=<server>;Database=<database>;Integrated Security=True"
-                },
-                "userName": "<user> or <domain>\\<user>",
-                "password": {
-                    "type": "SecureString",
-                    "value": "<password>"
+    {  
+        "name":"SqlServerLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"SqlServer",
+            "typeProperties":{  
+                "connectionString":"integrated security=True;data source=<servername>;initial catalog=<database name>",
+                "userName":"<username> or <domain>\\<username>",
+                "password":{  
+                    "type":"SecureString",
+                    "value":"<password>"
                 }
             },
-            "connectVia": {
-                "type": "integrationRuntimeReference",
-                "referenceName": "<integration runtime name>"
+            "connectVia":{  
+                "referenceName":"<integration runtime name>",
+                "type":"IntegrationRuntimeReference"
             }
-        },
-        "name": "SqlServerLinkedService"
-    }    
+        }
+    }
     ```
     > [!IMPORTANT]
     > - Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.
-    > - Vervang &lt;integration runtime name> door de naam van uw integration runtime.
+    > - Vervang de &lt;naam> van de integration runtime door de naam van uw integration runtime.
     > - Vervang &lt;servername>, &lt;databasename>, &lt;username> en &lt;password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
     > - Als u een slash wilt gebruiken (`\`) in de naam van uw gebruikersaccount of server, moet u het escapeteken (`\`) gebruiken. Een voorbeeld is `mydomain\\myuser`.
 
-1. Schakel in PowerShell over naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
-
-1. Voer de cmdlet **Set-AzureRmDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u de waarden door voor de parameters *ResourceGroupName* en *DataFactoryName*: 
+1. Voer in Power shell de volgende cmdlet uit om over te scha kelen naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
+    Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
+    ```
+
+1. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u de waarden door voor de parameters *ResourceGroupName* en *DataFactoryName*: 
+
+    ```powershell
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
     ```
 
     Hier volgt een voorbeeld van uitvoer:
 
     ```json
     LinkedServiceName : SqlServerLinkedService
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>De gekoppelde SQL-databaseservice maken
-1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang voordat u het bestand opslaat &lt;server&gt; &lt;database name&gt;, &lt;user id&gt; en &lt;password&gt; door de naam van uw SQL-serverdatabase, databasenaam, gebruikers-id en wachtwoord. 
+1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;servername &gt;, &lt;database name &gt;, &lt;user name &gt; en &lt;password &gt; met de naam van uw SQL Server-Data Base, de naam van uw data base, gebruikers naam en wacht woord voordat u het bestand opslaat. 
 
     ```json
-    {
-        "name": "AzureSQLDatabaseLinkedService",
-        "properties": {
-            "type": "AzureSqlDatabase",
-            "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+    {  
+        "name":"AzureSQLDatabaseLinkedService",
+        "properties":{  
+            "annotations":[  
+    
+            ],
+            "type":"AzureSqlDatabase",
+            "typeProperties":{  
+                "connectionString":"integrated security=False;encrypt=True;connection timeout=30;data source=<servername>.database.windows.net;initial catalog=<database name>;user id=<user name>;Password=<password>;"
             }
         }
     }
     ```
-1. Voer in PowerShell de cmdlet **Set-AzureRmDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken. 
+1. Voer in Power shell de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     Hier volgt een voorbeeld van uitvoer:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
@@ -393,83 +396,89 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 
 ### <a name="create-a-source-dataset"></a>Een brongegevensset maken
 
-1. Maak een JSON-bestand met de naam SourceDataset.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **SourceDataset.json** in dezelfde map met de volgende inhoud: 
 
     ```json
-    {
-        "name": "SourceDataset",
-        "properties": {
-            "type": "SqlServerTable",
-            "typeProperties": {
-                "tableName": "dummyName"
+    {  
+        "name":"SourceDataset",
+        "properties":{  
+            "linkedServiceName":{  
+                "referenceName":"SqlServerLinkedService",
+                "type":"LinkedServiceReference"
             },
-            "linkedServiceName": {
-                "referenceName": "SqlServerLinkedService",
-                "type": "LinkedServiceReference"
-            }
+            "annotations":[  
+    
+            ],
+            "type":"SqlServerTable",
+            "schema":[  
+    
+            ]
         }
     }
    
     ```
 
-    Naam van de tabel is een dummy-naam. De kopieeractiviteit in de pijplijn gebruikt een SQL-query voor het laden van de gegevens in plaats van de hele tabel te laden.
+    De kopieeractiviteit in de pijplijn gebruikt een SQL-query voor het laden van de gegevens in plaats van de hele tabel te laden.
 
-1. Voer de cmdlet **Set-AzureRmDataFactoryV2Dataset** uit om de gegevensset SourceDataset te maken.
+1. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset source dataset te maken.
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
     
     ```json
     DatasetName       : SourceDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerTableDataset
     ```
 
 ### <a name="create-a-sink-dataset"></a>Een sinkgegevensset maken
 
-1. Maak een JSON-bestand met de naam SinkDataset.json in dezelfde map met de volgende inhoud. Het element tableName wordt in runtime dynamisch ingesteld door de pijplijn. De ForEach-activiteit in de pijplijn doorloopt een lijst met namen van tabellen en geeft de tabelnaam door aan deze gegevensset in elke iteratie. 
+1. Maak een JSON-bestand met de naam **SinkDataset. json** in dezelfde map met de volgende inhoud. Het element tableName wordt in runtime dynamisch ingesteld door de pijplijn. De ForEach-activiteit in de pijplijn doorloopt een lijst met namen van tabellen en geeft de tabelnaam door aan deze gegevensset in elke iteratie. 
 
     ```json
-    {
-        "name": "SinkDataset",
-        "properties": {
-            "type": "AzureSqlTable",
-            "typeProperties": {
-                "tableName": {
-                    "value": "@{dataset().SinkTableName}",
-                    "type": "Expression"
+    {  
+        "name":"SinkDataset",
+        "properties":{  
+            "linkedServiceName":{  
+                "referenceName":"AzureSQLDatabaseLinkedService",
+                "type":"LinkedServiceReference"
+            },
+            "parameters":{  
+                "SinkTableName":{  
+                    "type":"String"
                 }
             },
-            "linkedServiceName": {
-                "referenceName": "AzureSQLDatabaseLinkedService",
-                "type": "LinkedServiceReference"
-            },
-            "parameters": {
-                "SinkTableName": {
-                    "type": "String"
+            "annotations":[  
+    
+            ],
+            "type":"AzureSqlTable",
+            "typeProperties":{  
+                "tableName":{  
+                    "value":"@dataset().SinkTableName",
+                    "type":"Expression"
                 }
             }
         }
     }
     ```
 
-1. Voer de cmdlet **Set-AzureRmDataFactoryV2Dataset** uit om de gegevensset SinkDataset te maken.
+1. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset SinkDataset te maken.
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
     
     ```json
     DatasetName       : SinkDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
@@ -477,7 +486,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 ### <a name="create-a-dataset-for-a-watermark"></a>Een gegevensset maken voor een grenswaarde
 In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde. 
 
-1. Maak een JSON-bestand met de naam WatermarkDataset.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **water Mark DataSet. json** in dezelfde map met de volgende inhoud: 
 
     ```json
     {
@@ -494,187 +503,269 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
         }
     }    
     ```
-1. Voer de cmdlet **Set-AzureRmDataFactoryV2Dataset** uit om de gegevensset WatermarkDataset te maken.
+1. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset water Mark dataset te maken.
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
     
     ```json
     DatasetName       : WatermarkDataset
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : <data factory name>
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset    
     ```
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
-In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEach-activiteit doorloopt de lijst met namen van tabellen en voert de volgende bewerkingen uit: 
+In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **foreach-activiteit** doorloopt de lijst met tabel namen en voert de volgende bewerkingen uit: 
 
-1. Gebruik de opzoekactiviteit voor het ophalen van de oude bovengrenswaarde (de initiële waarde, of de waarde die is gebruikt in de laatste iteratie).
+1. Gebruik de **opzoek activiteit** om de oude watermerk waarde op te halen (de aanvankelijke waarde of het item dat is gebruikt in de laatste iteratie).
 
-1. Gebruik de opzoekactiviteit voor het ophalen van de nieuwe bovengrenswaarde (de maximale waarde van de bovengrenskolom in de brontabel).
+1. Gebruik de **opzoek activiteit** om de nieuwe watermerk waarde op te halen (de maximum waarde van de kolom water merk in de bron tabel).
 
-1. Gebruik de kopieeractiviteit voor het kopiëren van gegevens tussen deze twee bovengrenswaarden uit de brondatabase naar de doeldatabase.
+1. Gebruik de **Kopieer activiteit** om gegevens tussen deze twee watermerk waarden te kopiëren van de bron database naar de doel database.
 
-1. Gebruik de opgeslagen-procedureactiviteit voor het bijwerken van de oude bovengrenswaarde die in de eerste stap van de volgende iteratie moet worden gebruikt. 
+1. Gebruik de **activiteit** van de procedure voor het bijwerken van de oude watermerk waarde die in de eerste stap van de volgende iteratie moet worden gebruikt. 
 
 ### <a name="create-the-pipeline"></a>Maak de pijplijn
-1. Maak een JSON-bestand met de naam IncrementalCopyPipeline.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **IncrementalCopyPipeline. json** in dezelfde map met de volgende inhoud: 
 
     ```json
-    {
-        "name": "IncrementalCopyPipeline",
-        "properties": {
-            "activities": [{
+    {  
+        "name":"IncrementalCopyPipeline",
+        "properties":{  
+            "activities":[  
+                {  
+                    "name":"IterateSQLTables",
+                    "type":"ForEach",
+                    "dependsOn":[  
     
-                "name": "IterateSQLTables",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "items": {
-                        "value": "@pipeline().parameters.tableList",
-                        "type": "Expression"
-                    },
+                    ],
+                    "userProperties":[  
     
-                    "activities": [
-                        {
-                            "name": "LookupOldWaterMarkActivity",
-                            "type": "Lookup",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'"
-                                },
-    
-                                "dataset": {
-                                    "referenceName": "WatermarkDataset",
-                                    "type": "DatasetReference"
-                                }
-                            }
+                    ],
+                    "typeProperties":{  
+                        "items":{  
+                            "value":"@pipeline().parameters.tableList",
+                            "type":"Expression"
                         },
-                        {
-                            "name": "LookupNewWaterMarkActivity",
-                            "type": "Lookup",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}"
+                        "isSequential":false,
+                        "activities":[  
+                            {  
+                                "name":"LookupOldWaterMarkActivity",
+                                "type":"Lookup",
+                                "dependsOn":[  
+    
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
                                 },
+                                "userProperties":[  
     
-                                "dataset": {
-                                    "referenceName": "SourceDataset",
-                                    "type": "DatasetReference"
-                                }
-                            }
-                        },
-    
-                        {
-                            "name": "IncrementalCopyActivity",
-                            "type": "Copy",
-                            "typeProperties": {
-                                "source": {
-                                    "type": "SqlSource",
-                                    "sqlReaderQuery": "select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'"
-                                },
-                                "sink": {
-                                    "type": "SqlSink",
-                                    "SqlWriterTableType": "@{item().TableType}",
-                                    "SqlWriterStoredProcedureName": "@{item().StoredProcedureNameForMergeOperation}"
-                                }
-                            },
-                            "dependsOn": [{
-                                    "activity": "LookupNewWaterMarkActivity",
-                                    "dependencyConditions": [
-                                        "Succeeded"
-                                    ]
-                                },
-                                {
-                                    "activity": "LookupOldWaterMarkActivity",
-                                    "dependencyConditions": [
-                                        "Succeeded"
-                                    ]
-                                }
-                            ],
-    
-                            "inputs": [{
-                                "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                            }],
-                            "outputs": [{
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference",
-                                "parameters": {
-                                    "SinkTableName": "@{item().TableType}"
-                                }
-                            }]
-                        },
-    
-                        {
-                            "name": "StoredProceduretoWriteWatermarkActivity",
-                            "type": "SqlServerStoredProcedure",
-                            "typeProperties": {
-    
-                                "storedProcedureName": "usp_write_watermark",
-                                "storedProcedureParameters": {
-                                    "LastModifiedtime": {
-                                        "value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
-                                        "type": "datetime"
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"AzureSqlSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'",
+                                            "type":"Expression"
+                                        }
                                     },
-                                    "TableName": {
-                                        "value": "@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}",
-                                        "type": "String"
+                                    "dataset":{  
+                                        "referenceName":"WatermarkDataset",
+                                        "type":"DatasetReference"
                                     }
                                 }
                             },
+                            {  
+                                "name":"LookupNewWaterMarkActivity",
+                                "type":"Lookup",
+                                "dependsOn":[  
     
-                            "linkedServiceName": {
-                                "referenceName": "AzureSQLDatabaseLinkedService",
-                                "type": "LinkedServiceReference"
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
+    
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"SqlServerSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}",
+                                            "type":"Expression"
+                                        }
+                                    },
+                                    "dataset":{  
+                                        "referenceName":"SourceDataset",
+                                        "type":"DatasetReference"
+                                    },
+                                    "firstRowOnly":true
+                                }
                             },
+                            {  
+                                "name":"IncrementalCopyActivity",
+                                "type":"Copy",
+                                "dependsOn":[  
+                                    {  
+                                        "activity":"LookupOldWaterMarkActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    {  
+                                        "activity":"LookupNewWaterMarkActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    }
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
     
-                            "dependsOn": [{
-                                "activity": "IncrementalCopyActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"SqlServerSource",
+                                        "sqlReaderQuery":{  
+                                            "value":"select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'",
+                                            "type":"Expression"
+                                        }
+                                    },
+                                    "sink":{  
+                                        "type":"AzureSqlSink",
+                                        "sqlWriterStoredProcedureName":{  
+                                            "value":"@{item().StoredProcedureNameForMergeOperation}",
+                                            "type":"Expression"
+                                        },
+                                        "sqlWriterTableType":{  
+                                            "value":"@{item().TableType}",
+                                            "type":"Expression"
+                                        },
+                                        "storedProcedureTableTypeParameterName":{  
+                                            "value":"@{item().TABLE_NAME}",
+                                            "type":"Expression"
+                                        },
+                                        "disableMetricsCollection":false
+                                    },
+                                    "enableStaging":false
+                                },
+                                "inputs":[  
+                                    {  
+                                        "referenceName":"SourceDataset",
+                                        "type":"DatasetReference"
+                                    }
+                                ],
+                                "outputs":[  
+                                    {  
+                                        "referenceName":"SinkDataset",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+                                            "SinkTableName":{  
+                                                "value":"@{item().TABLE_NAME}",
+                                                "type":"Expression"
+                                            }
+                                        }
+                                    }
                                 ]
-                            }]
-                        }
+                            },
+                            {  
+                                "name":"StoredProceduretoWriteWatermarkActivity",
+                                "type":"SqlServerStoredProcedure",
+                                "dependsOn":[  
+                                    {  
+                                        "activity":"IncrementalCopyActivity",
+                                        "dependencyConditions":[  
+                                            "Succeeded"
+                                        ]
+                                    }
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
     
-                    ]
-    
+                                ],
+                                "typeProperties":{  
+                                    "storedProcedureName":"[dbo].[usp_write_watermark]",
+                                    "storedProcedureParameters":{  
+                                        "LastModifiedtime":{  
+                                            "value":{  
+                                                "value":"@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}",
+                                                "type":"Expression"
+                                            },
+                                            "type":"DateTime"
+                                        },
+                                        "TableName":{  
+                                            "value":{  
+                                                "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}",
+                                                "type":"Expression"
+                                            },
+                                            "type":"String"
+                                        }
+                                    }
+                                },
+                                "linkedServiceName":{  
+                                    "referenceName":"AzureSQLDatabaseLinkedService",
+                                    "type":"LinkedServiceReference"
+                                }
+                            }
+                        ]
+                    }
                 }
-            }],
-    
-            "parameters": {
-                "tableList": {
-                    "type": "Object"
+            ],
+            "parameters":{  
+                "tableList":{  
+                    "type":"array"
                 }
-            }
+            },
+            "annotations":[  
+    
+            ]
         }
     }
     ```
-1. Voer de cdmlet **Set-AzureRmDataFactoryV2Pipeline** uit om de pijplijn IncrementalCopyPipeline te maken.
+1. Voer de cmdlet **set-AzDataFactoryV2Pipeline** uit om de pijp lijn IncrementalCopyPipeline te maken.
     
    ```powershell
-   Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+   Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    Hier volgt een voorbeeld van uitvoer: 
 
    ```json
     PipelineName      : IncrementalCopyPipeline
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ADFIncMultiCopyTutorialFactory1201
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
     Activities        : {IterateSQLTables}
     Parameters        : {[tableList, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
    ```
  
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-1. Maak een parameterbestand met de naam Parameters.json in dezelfde map met de volgende inhoud:
+1. Maak een parameter bestand met de naam **para meters. json** in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -695,36 +786,31 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
         ]
     }
     ```
-1. Voer de pijplijn IncrementalCopyPipeline uit met behulp van de cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**. Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
+1. Voer de pijplijn IncrementalCopyPipeline uit met behulp van de cmdlet **invoke-AzDataFactoryV2Pipeline** . Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
     ``` 
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **Alle services**, zoek met het trefwoord *gegevensfactory's* en selecteer **Gegevensfactory's**. 
 
-    ![Het menu voor gegevensfactory's](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-data-factories-menu-1.png)
-
 1. Zoek naar uw data factory in de lijst met data factory’s, en selecteer deze om de pagina **Data Factory** te openen. 
 
-    ![Naar de data factory zoeken](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-search-data-factory-2.png)
+1. Selecteer op de pagina **Data Factory** de optie **Author & monitor** om Azure Data Factory op een afzonderlijk tabblad te starten.
 
-1. Selecteer op de pagina **Data Factory** de optie **Controleren en beheren**. 
+1. Selecteer op de pagina **aan de slag** de optie **monitor** aan de linkerkant. 
+![Pipeline uitgevoerd ](media/doc-common-process/get-started-page-monitor-button.png)    
 
-    ![De tegel Bewaking en beheer](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-monitor-manage-tile-3.png)
-
-1. De toepassing **Gegevensintegratie** wordt geopend op een afzonderlijk tabblad. U kunt alle pijplijnactiviteiten en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door de koppeling in de kolom **Parameters** te selecteren. Als er een fout is opgetreden, ziet u een koppeling in de kolom **Fout**. Selecteer de koppeling in de kolom **Acties**. 
+1. U kunt alle pijplijnactiviteiten en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door de koppeling in de kolom **Parameters** te selecteren. Als er een fout is opgetreden, ziet u een koppeling in de kolom **Fout**.
 
     ![Pijplijnuitvoeringen](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-1. Wanneer u de koppeling in de kolom **Acties** selecteert, ziet u de volgende pagina met alle uitvoeringen van activiteiten voor de pijplijn: 
+1. Wanneer u de koppeling in de kolom **acties** selecteert, ziet u alle uitvoeringen van de activiteit voor de pijp lijn. 
 
-    ![Uitvoering van activiteiten](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-activity-runs-5.png)
-
-1. Als u wilt teruggaan naar de weergave met **pijplijnuitvoeringen**, selecteert u **Pijplijnen** zoals weergegeven in de afbeelding. 
+1. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen**. 
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatabase om te controleren of de gegevens van de brontabellen naar de doeltabellen zijn gekopieerd: 
@@ -800,15 +886,11 @@ VALUES
 1. Voer nu de pijplijn opnieuw uit door de volgende PowerShell-opdracht te gebruiken:
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-1. Volg de pijplijnuitvoeringen met behulp van de instructies in de sectie [De pijplijn bewaken](#monitor-the-pipeline). Omdat de pijplijnstatus **In uitvoering** is, ziet u een andere actiekoppeling onder **Acties** om de pijplijn te annuleren. 
+1. Volg de pijplijnuitvoeringen met behulp van de instructies in de sectie [De pijplijn bewaken](#monitor-the-pipeline). Wanneer de status van de pijp lijn wordt **uitgevoerd**, ziet u een andere actie koppeling onder **acties** om de uitvoering van de pijp lijn te annuleren. 
 
-    ![Pijplijnuitvoeringen worden uitgevoerd](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-6.png)
-
-1. Klik op **Vernieuwen** om de lijst te vernieuwen totdat de uitvoering van de pijplijn is voltooid. 
-
-    ![Pijplijnuitvoeringen vernieuwen](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-succeded-7.png)
+1. Klik op **Vernieuwen** om te lijst te vernieuwen totdat de uitvoering van de pijplijn is voltooid. 
 
 1. Selecteer desgewenst de koppeling **Uitvoeringen van activiteit weergeven** onder **Acties** om alle activiteitsuitvoeringen te bekijken die gekoppeld zijn aan deze pijplijnuitvoering. 
 
@@ -877,11 +959,11 @@ In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Bereid de bron- en doelserver gegevensopslag voor.
-> * Een data factory maken.
+> * Een gegevensfactory maakt.
 > * Een zelf-hostende integration runtime (IR) maken.
 > * De Integration Runtime installeren.
 > * Maak gekoppelde services. 
-> * Bron-, sink- en grenswaardegegevenssets maken.
+> * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maken, starten en controleren van een pijplijn.
 > * Bekijk de resultaten.
 > * Gegevens in brontabellen toevoegen of bijwerken.

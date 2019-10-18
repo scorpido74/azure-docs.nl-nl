@@ -1,17 +1,17 @@
 ---
-title: Fouten bij het verplaatsen van Azure-resources naar een nieuw abonnement of resource groep oplossen
-description: Azure Resource Manager gebruiken voor resources verplaatsen naar een nieuwe resourcegroep of abonnement.
+title: Fouten bij verplaatsen oplossen-Azure Resource Manager
+description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: d56f6a5ffe01540b9ce1e5a20ec628a90da594c6
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 383098ab227013119bca668b42035c93334c8464
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061778"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533355"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Problemen oplossen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement
 
@@ -21,10 +21,10 @@ Dit artikel bevat suggesties voor het oplossen van problemen bij het verplaatsen
 
 Als u een upgrade wilt uitvoeren van uw Azure-abonnement (zoals overschakelen van gratis naar betalen per gebruik), moet u uw abonnement converteren.
 
-* Zie het upgraden van een gratis proefversie [uw gratis proefversie of Azure voor Microsoft Imagine-abonnement upgraden naar betalen per gebruik](../billing/billing-upgrade-azure-subscription.md).
-* Als u wilt wijzigen in een betalen per gebruik-account, Zie [wijzigen van uw Azure-betalen per gebruik-abonnement naar een andere aanbieding](../billing/billing-how-to-switch-azure-offer.md).
+* Als u een gratis proef versie wilt upgraden, raadpleegt u [uw gratis proef versie bijwerken of Microsoft Imagine Azure-abonnement naar betalen per](../billing/billing-upgrade-azure-subscription.md)gebruik.
+* Als u een betalen naar gebruik-account wilt wijzigen, raadpleegt u [uw Azure betalen naar gebruik-abonnement wijzigen in een andere aanbieding](../billing/billing-how-to-switch-azure-offer.md).
 
-Als u het abonnement niet kan omzetten [maken van een Azure-ondersteuningsaanvraag](../azure-supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
+Als u het abonnement niet kunt converteren, moet u [een Azure-ondersteunings aanvraag maken](../azure-supportability/how-to-create-azure-support-request.md). Selecteer **abonnements beheer** voor het type probleem.
 
 ## <a name="service-limitations"></a>Service beperkingen
 
@@ -39,7 +39,7 @@ Voor sommige services zijn aanvullende overwegingen vereist bij het verplaatsen 
 
 ## <a name="large-requests"></a>Grote aanvragen
 
-Indien mogelijk is grote break verplaatst naar afzonderlijke verplaatsingsbewerkingen. Resource Manager retourneert onmiddellijk een fout wanneer er meer dan 800 resources zijn in één bewerking. Verplaatsen van minder dan 800 resources kan echter ook mislukken door een time-out optreedt.
+Als dat mogelijk is, verbreekt u grote verplaatsingen in afzonderlijke Verplaats bewerkingen. Resource Manager retourneert onmiddellijk een fout wanneer er meer dan 800 resources zijn in één bewerking. Het verplaatsen van minder dan 800 resources kan echter ook mislukken door een time-out.
 
 ## <a name="resource-not-in-succeeded-state"></a>De resource heeft de status niet voltooid
 

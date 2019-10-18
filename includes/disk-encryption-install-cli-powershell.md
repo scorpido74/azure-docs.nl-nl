@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: b1da7b69db20b036b69add5604f80896e5d35587
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 05794a046fdcb15a91145a75717a6a454d15a8da
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245030"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511465"
 ---
-Azure Disk Encryption kunnen worden ingeschakeld en beheerd via de [Azure cli](/cli/azure) en [Azure PowerShell](/azure/new-azureps-module-az). Hiervoor moet u de hulpprogram ma's lokaal installeren en verbinding maken met uw Azure-abonnement.
+Azure Disk Encryption kunnen worden ingeschakeld en beheerd via de [Azure cli](/cli/azure) en [Azure PowerShell](/powershell/azure/new-azureps-module-az). Hiervoor moet u de hulpprogram ma's lokaal installeren en verbinding maken met uw Azure-abonnement.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -43,7 +43,7 @@ az account set --subscription "<subscription name or ID>"
 Zie [aan de slag met Azure CLI 2,0](/cli/azure/get-started-with-azure-cli)voor meer informatie. 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-De [Azure PowerShell AZ-module](/azure/new-azureps-module-az) bevat een set cmdlets die gebruikmaken van het [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) model voor het beheren van uw Azure-resources. U kunt dit in uw browser gebruiken met [Azure Cloud shell](/azure/cloud-shell/overview), of u kunt het installeren op uw lokale computer met behulp van de instructies in [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
+De [Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az) bevat een set cmdlets die gebruikmaken van het [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) model voor het beheren van uw Azure-resources. U kunt dit in uw browser gebruiken met [Azure Cloud shell](/azure/cloud-shell/overview), of u kunt het installeren op uw lokale computer met behulp van de instructies in [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
 
 Als u dit al hebt geïnstalleerd, moet u ervoor zorgen dat u de nieuwste versie van Azure PowerShell SDK-versie gebruikt om Azure Disk Encryption te configureren. Down load de nieuwste versie van [Azure PowerShell release](https://github.com/Azure/azure-powershell/releases).
 

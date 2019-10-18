@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb47d60f609e63e5a17fd8abd3efe420ea7fd187
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264099"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Check Point CloudGuard Dome9 Arc
 
@@ -89,17 +89,25 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
-    > [!NOTE]
-    > U selecteert de waarde voor uw bedrijfsnaam in de beheerportal van Dome9, zoals later in de zelfstudie wordt uitgelegd.
-
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke antwoord-URL en aanmeldings-URL. Contact persoon [Check Point CloudGuard Dome9 Arc client support team](mailto:Dome9@checkpoint.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke antwoord-URL en aanmeldings-URL. U krijgt de `<company name>` waarde uit de sectie **Check Point CloudGuard Dome9 Arc SSO configureren** , die verderop in de zelf studie wordt beschreven. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Check Point CloudGuard Dome9 Arc vereist dat rollen moeten worden geconfigureerd in azure AD. De rol claim is vooraf geconfigureerd, zodat u deze niet hoeft te configureren, maar u moet ze nog steeds in azure AD maken met dit [artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+1. Check Point CloudGuard Dome9 Arc-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+
+    ![image](common/edit-attribute.png)
+
+1. In aanvulling op het bovenstaande wordt met Check Point CloudGuard Dome9 Arc Application nog maar weinig kenmerken door gegeven aan het SAML-antwoord dat hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+    
+    | Naam |  Bronkenmerk|
+    | ---------------| --------------- |
+    | memberof | user.assignedroles |
+
+    >[!NOTE]
+    >Klik [hier](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial) voor meer informatie over het maken van rollen in azure AD.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -163,7 +171,7 @@ In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding 
 
     ![Controle punt CloudGuard Dome9 Arc-configuratie](./media/dome9arc-tutorial/configure3.png)
 
-    a. Voer in het tekstvak **Account ID** de bedrijfsnaam in. Deze waarde moet worden gebruikt in de antwoord-URL die wordt vermeld in de sectie Azure Portal **Basic SAML-configuratie** .
+    a. Voer in het tekstvak **Account ID** de bedrijfsnaam in. Deze waarde moet worden gebruikt in de URL voor **beantwoorden** en **Aanmelden** die wordt vermeld in de sectie **basis configuratie van SAML** van Azure Portal.
 
     b. Plak in het tekstvak **Uitgever** de waarde van de **Azure ad-id**, die u als Azure Portal hebt gekopieerd.
 
@@ -221,4 +229,3 @@ Wanneer u op de tegel controle punt CloudGuard Dome9 op de boog in het toegangs 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Check Point CloudGuard Dome9 Arc uit met Azure AD](https://aad.portal.azure.com/)
-

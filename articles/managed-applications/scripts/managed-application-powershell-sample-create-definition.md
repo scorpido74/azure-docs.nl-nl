@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Definitie van een beheerde toepassing maken | Microsoft Docs
+title: Definitie van beheerde toepassing maken-Azure PowerShell
 description: Biedt een Azure PowerShell script voorbeeld waarmee een definitie van een beheerde toepassing wordt gemaakt in het Azure-abonnement.
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: f0491a5025886317faf7cb4601f8db3915527b80
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4c0b06ed0e103a88f3f99e1c242dbfe15ba8fd2a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332581"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527274"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Een definitie van een beheerde toepassing maken met PowerShell
 

@@ -1,6 +1,6 @@
 ---
 title: Log Analytics-werk ruimten beheren in Azure Monitor | Microsoft Docs
-description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics werk ruimte in Azure Monitor met behulp van resource, werk ruimte of machtiging op tabel niveau. In dit artikel wordt beschreven hoe u deze kunt volt ooien.
+description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics werk ruimte in Azure Monitor met behulp van resource, werk ruimte of machtiging op tabel niveau. In dit artikel wordt beschreven hoe u dit kunt volt ooien.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329415"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532326"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -148,7 +148,7 @@ De rol van Log Analytics lezer omvat de volgende acties van Azure:
 
 Leden van de rol *Inzender van Log Analytics* kunnen:
 
-* Alle bewakings gegevens lezen die de Log Analytics lezer kan
+* Bevat alle bevoegdheden van de *rol van log Analytics lezer*, zodat de gebruiker alle bewakings gegevens kan lezen
 * Automation-accounts maken en configureren
 * Beheeroplossingen toevoegen en verwijderen
 
@@ -187,7 +187,7 @@ Gebruik deze rollen om gebruikers toegang te geven op verschillende niveaus:
 * Resourcegroep: toegang tot alle werkruimten in de resourcegroep
 * Resource: alleen toegang tot de opgegeven werkruimte
 
-U moet toewijzingen op het niveau van de resource (werk ruimte) uitvoeren om nauw keurig toegangs beheer te garanderen.  Gebruik [aangepaste rollen](../../role-based-access-control/custom-roles.md) om rollen te maken met de specifieke machtigingen die nodig zijn.
+We raden aan om toewijzingen op het niveau van de resource (werk ruimte) uit te voeren om nauw keurig toegangs beheer te garanderen. Gebruik [aangepaste rollen](../../role-based-access-control/custom-roles.md) om rollen te maken met de specifieke machtigingen die nodig zijn.
 
 ### <a name="resource-permissions"></a>Resource machtigingen
 
@@ -198,7 +198,7 @@ Wanneer gebruikers een query uitvoeren op Logboeken vanuit een werk ruimte met b
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Voorbeelden:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | De mogelijkheid om alle logboek gegevens voor de resource weer te geven.  |
 | `Microsoft.Insights/diagnosticSettings/write` | De mogelijkheid om Diagnostische instellingen te configureren om Logboeken in te stellen voor deze bron. |
 
-de machtiging `/read` wordt doorgaans verleend vanuit een rol met _\*/Lees-of_ _\*-_ machtigingen, zoals de ingebouwde functie voor [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Houd er rekening mee dat aangepaste rollen die specifieke acties of speciale ingebouwde rollen bevatten, deze machtiging mogelijk niet bevatten.
+de machtiging `/read` wordt doorgaans verleend vanuit een rol met _\*/Lees-of_ _\*-_ machtigingen, zoals de ingebouwde functie voor [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Aangepaste rollen met specifieke acties of speciale ingebouwde rollen bevatten mogelijk niet deze machtiging.
 
 Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u een ander toegangs beheer voor verschillende tabellen wilt maken.
 
@@ -224,7 +224,7 @@ Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u e
 
     * Ken gebruikers de volgende machtigingen toe aan hun resources: `Microsoft.Insights/logs/*/read`.
 
-    * Voeg de volgende niet-actie toe om te voor komen dat gebruikers het type SecurityEvent lezen: `Microsoft.Insights/logs/SecurityEvent/read`. De niet-actie moet in dezelfde aangepaste rol worden uitgevoerd als de actie die de Lees machtiging biedt (`Microsoft.Insights/logs/*/read`). Als de gebruiker de actie lezen inherent van een andere rol die is toegewezen aan deze resource of aan het abonnement of de resource groep, kunnen ze alle logboek typen lezen. Dit geldt ook als ze `*/read` overnemen, bijvoorbeeld met de rol lezer of Inzender.
+    * Voeg de volgende niet-actie toe om te voor komen dat gebruikers het type SecurityEvent lezen: `Microsoft.Insights/logs/SecurityEvent/read`. De niet-actie moet in dezelfde aangepaste rol worden uitgevoerd als de actie die de Lees machtiging biedt (`Microsoft.Insights/logs/*/read`). Als de gebruiker de actie lezen inherent van een andere rol die is toegewezen aan deze resource of aan het abonnement of de resource groep, kunnen ze alle logboek typen lezen. Dit geldt ook als ze `*/read` overnemen, die bijvoorbeeld met de rol lezer of Inzender zijn.
 
 4. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources en alle Azure AD-aanmelding wilt lezen en Updatebeheer gegevens van het oplossings logboek van de werk ruimte wilt lezen, voert u de volgende handelingen uit:
 
@@ -293,7 +293,7 @@ Als u een rol wilt maken die alleen toegang heeft tot _Security Baseline Baselin
 * Als een gebruiker toegang verleent per tabel, maar geen andere machtigingen heeft, zouden ze toegang kunnen krijgen tot logboek gegevens vanuit de API, maar niet van de Azure Portal. Als u toegang wilt bieden vanaf de Azure Portal, gebruikt u Log Analytics Reader als basis functie.
 * Beheerders van het abonnement hebben toegang tot alle gegevens typen, ongeacht andere machtigings instellingen.
 * Werkruimte eigenaren worden beschouwd als elke andere gebruiker voor toegangs beheer per tabel.
-* U moet rollen toewijzen aan beveiligings groepen in plaats van afzonderlijke gebruikers om het aantal toewijzingen te verminderen. Hiermee kunt u ook bestaande hulpprogram ma's voor groeps beheer gebruiken om de toegang te configureren en te controleren.
+* U kunt het beste rollen toewijzen aan beveiligings groepen in plaats van afzonderlijke gebruikers om het aantal toewijzingen te verminderen. Hiermee kunt u ook bestaande hulpprogram ma's voor groeps beheer gebruiken om de toegang te configureren en te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

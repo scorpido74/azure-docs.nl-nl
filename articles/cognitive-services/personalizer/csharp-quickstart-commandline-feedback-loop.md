@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Personaler-client bibliotheek voor .NET | Microsoft Docs'
+title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ga aan de slag met de Personaler-client bibliotheek voor .NET met een Learning-lus.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345232"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515592"
 ---
-# <a name="quickstart-personalize-client-library-for-net"></a>Quickstart: Client bibliotheek voor .NET personaliseren
+# <a name="quickstart-personalizer-client-library-for-net"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET
 
 Persoonlijke inhoud in deze C# Quick Start weer geven met de personaler service.
 
@@ -26,7 +26,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor .NET. Volg deze stappen
  * Rang schikking van een lijst met acties voor persoonlijke instellingen.
  * Rapport belonings Score die het succes van de beste geclassificeerde actie aangeeft.
 
-[](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | NuGet-voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [package)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  | -voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,8 +53,8 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 <!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_RESOURCE_KEY`voor de resource sleutel.
-* `PERSONALIZER_RESOURCE_ENDPOINT`voor het resource-eind punt.
+* `PERSONALIZER_RESOURCE_KEY` voor de resource sleutel.
+* `PERSONALIZER_RESOURCE_ENDPOINT` voor het resource-eind punt.
 
 In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
@@ -70,7 +70,7 @@ Wanneer een aangepaste lus voor het eerst wordt geïnstantieerd, is er geen mode
 
 Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE. 
 
-Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht DotNet `new` om een nieuwe console-app met de naam `personalizer-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron `Program.cs`bestand:. 
+Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht DotNet `new` om een nieuwe console-app te maken met de naam `personalizer-quickstart`. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -122,19 +122,19 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-c
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open het **Program.cs** -bestand in de map van het project in uw voorkeurs editor of IDE. Vervang de bestaande `using` code door de volgende `using` instructies:
+Open het **Program.cs** -bestand in de map van het project in uw voorkeurs editor of IDE. Vervang de bestaande `using` code door de volgende `using`-instructies:
 
 [!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Informatie over persoonlijker resources toevoegen
 
-Maak in de klasse **Program** de variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald `PERSONALIZER_RESOURCE_KEY` uit de omgevings variabelen met de naam en. `PERSONALIZER_RESOURCE_ENDPOINT` Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
+Maak in de klasse **Program** de variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald uit de omgevings variabelen, met de naam `PERSONALIZER_RESOURCE_KEY` en `PERSONALIZER_RESOURCE_ENDPOINT`. Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Een Personaler-client maken
 
-Maak vervolgens een methode voor het retour neren van een Personaler-client. De para meter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` de en de ApiKey `PERSONALIZER_RESOURCE_KEY`is.
+Maak vervolgens een methode voor het retour neren van een Personaler-client. De para meter voor de methode is het `PERSONALIZER_RESOURCE_ENDPOINT` en de ApiKey is de `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -146,7 +146,7 @@ Acties vertegenwoordigen de inhouds keuzes die persoonlijker moeten worden geran
 
 [!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
 
-Beide methoden gebruiken de `GetKey` -methode om de selectie van de gebruiker te lezen vanaf de opdracht regel. 
+Beide methoden gebruiken de methode `GetKey` om de selectie van de gebruiker te lezen vanaf de opdracht regel. 
 
 [!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
 
@@ -154,7 +154,7 @@ Beide methoden gebruiken de `GetKey` -methode om de selectie van de gebruiker te
 
 De training voor persoonlijker leren is een cyclus van positie-en belonings aanroepen. In deze Quick Start wordt elke classificatie oproep, om de inhoud te personaliseren, gevolgd door een belonings oproep om persoonlijker te vertellen hoe goed de service de inhoud rangschikt. 
 
-Met de volgende code in `main` de methode van het programma wordt een cyclus door lopen van de gebruiker om de voor keuren te stellen op de opdracht regel. deze gegevens worden naar eigen smaak verzonden, waarbij de gerangschikte selectie aan de klant wordt gepresenteerd waaruit u kunt kiezen uit de en verstuurt vervolgens een vergoeding naar persoonlijkere signalen waarmee wordt aangegeven hoe goed de service de selectie heeft gevolgd.
+Met de volgende code in de `main` methode van het programma wordt een cyclus door lopen van de gebruiker om de voor keuren te vragen op de opdracht regel. deze gegevens worden naar eigen smaak geclassificeerd, waarbij de gerangschikte selectie aan de klant wordt gepresenteerd om uit de lijst te kiezen. en verstuurt vervolgens een vergoeding naar persoonlijkere signalen waarmee wordt aangegeven hoe goed de service de selectie heeft gevolgd.
 
 ```csharp
 static void Main(string[] args)
@@ -242,7 +242,7 @@ Voeg de volgende methoden toe, die [de inhouds keuzes ophalen](#get-content-choi
 
 ## <a name="request-a-rank"></a>Een positie aanvragen
 
-Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker `currentContent` gevraagd om een van de inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, `excludeActions`weer gegeven als. De rang aanvraag heeft de acties, eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-ID (als GUID) nodig om de geclassificeerde reactie te ontvangen. 
+Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker gevraagd om een `currentContent` van de inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, weer gegeven als `excludeActions`. De rang aanvraag heeft de acties, eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-ID (als GUID) nodig om de geclassificeerde reactie te ontvangen. 
 
 Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur voor de gebruikers-levens duur. In productie systemen kan het bepalen en [evalueren](concept-feature-evaluation.md) van [acties en functies](concepts-features.md) een niet-triviale zaak zijn.  
 
@@ -258,7 +258,7 @@ In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, to
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 
-Voer de toepassing uit met de `run` opdracht DotNet in de map van de toepassing.
+Voer de toepassing uit met de opdracht DotNet `run` van de toepassingsmap.
 
 ```console
 dotnet run
@@ -273,7 +273,7 @@ De [bron code voor deze Quick](https://github.com/Azure-Samples/cognitive-servic
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

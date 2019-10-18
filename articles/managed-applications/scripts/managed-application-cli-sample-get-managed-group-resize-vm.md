@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen | Microsoft Docs
+title: Beheerde resource groep ophalen & grootte van Vm's wijzigen-Azure CLI
 description: Biedt een Azure CLI-voorbeeld script voor het ophalen van een beheerde resource groep in een door Azure beheerde toepassing. De grootte van de virtuele machines wordt door het script aangepast.
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7218e2fd033614b5e9f77cca34a5db82e3571094
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ccf853f33eea054b450563747646f3d9ec560aa3
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330147"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528904"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Resources in een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen met Azure CLI
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: 795b9beedabd119df98487a0bc00160bcf21507f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d43860d71b14bdac275df51695c9206539529171
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174147"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511463"
 ---
-Dit artikel bevat beveiligings aanbevelingen voor Azure Virtual Machines. Volg deze aanbevelingen om te voldoen aan de beveiligings verplichtingen die in ons model voor gedeelde verantwoordelijkheid zijn beschreven. De aanbevelingen helpen u ook om de algehele beveiliging van uw web-app-oplossingen te verbeteren. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
+Dit artikel bevat beveiligings aanbevelingen voor Azure Virtual Machines. Volg deze aanbevelingen om te voldoen aan de beveiligings verplichtingen die in ons model voor gedeelde verantwoordelijkheid zijn beschreven. De aanbevelingen helpen u ook om de algehele beveiliging van uw web-app-oplossingen te verbeteren. Zie [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
 
 Sommige aanbevelingen van dit artikel kunnen automatisch worden aangepakt door Azure Security Center. Azure Security Center is de eerste verdedigings linie voor uw resources in Azure. De beveiligings status van uw Azure-resources wordt periodiek geanalyseerd om mogelijke beveiligings problemen te identificeren. Vervolgens wordt u geadviseerd om de beveiligings problemen op te lossen. Zie [beveiligings aanbevelingen in azure Security Center](../articles/security-center/security-center-recommendations.md)voor meer informatie.
 

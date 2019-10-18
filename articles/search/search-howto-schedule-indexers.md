@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186567"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533623"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Indexeer functies voor Azure Search plannen
 Een Indexeer functie wordt normaal gesp roken eenmaal uitgevoerd, direct nadat deze is gemaakt. U kunt het opnieuw uitvoeren op aanvraag met behulp van de portal, de REST API of de .NET SDK. U kunt ook een Indexeer functie zo configureren dat deze regel matig wordt uitgevoerd volgens een planning.
@@ -48,7 +48,7 @@ Laten we eens kijken naar een voor beeld om dit meer concreet te maken. Stel dat
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Een schema definiëren in de portal
+## <a name="schedule-in-the-portal"></a>Plannen in de portal
 
 Met de wizard gegevens importeren in de portal kunt u het schema definiëren voor een Indexeer functie tijdens het maken. De standaard instelling voor het schema is elk **uur**, wat betekent dat de Indexeer functie eenmaal wordt uitgevoerd nadat deze is gemaakt en daarna opnieuw wordt uitgevoerd.
 
@@ -64,7 +64,7 @@ Nadat u een Indexeer functie hebt gemaakt, kunt u de schema-instellingen wijzige
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Een planning definiëren met behulp van de REST API
+## <a name="schedule-using-rest-apis"></a>Plannen met behulp van REST-Api's
 
 U kunt het schema voor een Indexeer functie definiëren met behulp van de REST API. Hiertoe neemt u de eigenschap **schema** op bij het maken of bijwerken van de Indexeer functie. In het onderstaande voor beeld ziet u een PUT-aanvraag voor het bijwerken van een bestaande Indexeer functie:
 
@@ -78,7 +78,7 @@ U kunt het schema voor een Indexeer functie definiëren met behulp van de REST A
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))`. Voor beelden `PT15M` : elke 2 uur voor `PT2H` elke 15 minuten.
+De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))`. Voor beelden: `PT15M` elke 15 minuten `PT2H` elke 2 uur.
 
 De optionele **StartTime** geeft aan wanneer geplande uitvoeringen moeten beginnen. Als u deze para meter weglaat, wordt de huidige UTC-tijd gebruikt. Deze tijd kan in het verleden liggen. in dat geval wordt de eerste uitvoering gepland alsof de Indexeer functie continu actief is sinds de oorspronkelijke **StartTime**.
 
@@ -86,7 +86,7 @@ U kunt op elk gewenst moment een Indexeer functie op aanvraag uitvoeren met de a
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Een planning definiëren met behulp van de .NET SDK
+## <a name="schedule-using-the-net-sdk"></a>Plannen met behulp van de .NET SDK
 
 U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
 

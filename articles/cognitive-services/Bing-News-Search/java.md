@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Een zoekopdracht op internet uitvoeren met C# - Bing Webzoekopdrachten-REST API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met Java-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Java en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423757"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515647"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Snelstartgids: Nieuws zoeken met Java en de REST API van Bing News Search
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Java en het Bing News Search REST API
 
 Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
 

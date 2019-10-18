@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a4774431b6a6e37ee9e175e161813936a71cdee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824718"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532713"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service in Linux
 
@@ -49,7 +49,7 @@ In deze zelfstudie leert u het volgende:
 Vereisten voor het voltooien van deze zelfstudie:
 
 * [Git installeren](https://git-scm.com/)
-* [.NET Core installeren](https://www.microsoft.com/net/core/)
+* [Installeer .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 ## <a name="create-local-net-core-app"></a>Lokale .NET Core-app maken
 
@@ -100,7 +100,7 @@ Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Databas
 
 Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Vervang de tijdelijke aanduiding voor de  *\<server naam >* door een unieke naam voor SQL database. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. *Vervang\<ook DB-username >* en  *\<db-password >* door een gebruikers naam en wacht woord van uw keuze. 
+Vervang de tijdelijke aanduiding voor de *\<server naam >* door een unieke SQL database naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server-name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang ook *\<db-username >* en *\<db-Password >* door de gebruikers naam en het wacht woord van uw keuze. 
 
 
 ```azurecli-interactive
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Verbindingsreeks maken
 
-Vervang de volgende teken reeks door de  *\<server naam >* ,  *\<DB-username >* en  *\<db-password >* die u eerder hebt gebruikt.
+Vervang de volgende teken reeks door de *\<server naam >* , *\<db-username >* en *\<db-wachtwoord >* die u eerder hebt gebruikt.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -165,27 +165,27 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Een web-app maken
+### <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
 ### <a name="configure-connection-string"></a>connection string configureren
 
-Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. Vervang  *\<*  *\<* in de volgende opdracht de app-naam >, evenals de verbindings reeks > para meter met de Connection String die u eerder hebt gemaakt.
+Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. Vervang in de volgende opdracht de *\<app naam >* , evenals de para meter *\<connection-string >* met de Connection String die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
-In ASP.net Core kunt u deze benoemde Connection String (`MyDbConnection`) gebruiken met het standaard patroon, zoals een Connection String dat is opgegeven in *appSettings. json*. In dit geval `MyDbConnection` wordt ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
+In ASP.NET Core kunt u deze benoemde connection string (`MyDbConnection`) gebruiken met het standaard patroon, zoals elke connection string die is opgegeven in *appSettings. json*. In dit geval wordt `MyDbConnection` ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
 
 Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in-production)om te zien hoe de Connection String in uw code wordt verwezen.
 
 ### <a name="configure-environment-variable"></a>Omgevings variabele configureren
 
-Vervolgens stelt u de instelling voor de app `ASPNETCORE_ENVIRONMENT` in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
+Vervolgens stelt u de instelling voor `ASPNETCORE_ENVIRONMENT`-app in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
 
-In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de  *\<app-naam >* .
+In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de *\<app naam >* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -219,7 +219,7 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 
 Als deze code detecteert dat deze in productie wordt uitgevoerd (wat de Azure-omgeving aanduidt), gebruikt deze de connection string die u hebt geconfigureerd om verbinding te maken met de SQL Database. Zie [Access Environment Varia bles](configure-language-dotnetcore.md#access-environment-variables)(Engelstalig) voor meer informatie over de manier waarop app-instellingen worden gebruikt in app service.
 
-De `Database.Migrate()` aanroep helpt u wanneer deze wordt uitgevoerd in azure, omdat deze automatisch de data bases maakt die uw .net core-app nodig heeft, op basis van de migratie configuratie.
+De `Database.Migrate()`-aanroep helpt u wanneer deze wordt uitgevoerd in azure, omdat hiermee automatisch de data bases worden gemaakt die uw .NET core-app nodig heeft, op basis van de migratie configuratie.
 
 Sla uw wijzigingen op en voer deze door naar de Git-opslagplaats.
 
@@ -304,7 +304,7 @@ Breng enkele wijzigingen aan de code aan zodat de eigenschap `Done` kan worden g
 
 Open _Controllers\TodosController.cs_.
 
-Zoek de methode `Create()` en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw methode `Create()` er uit als de onderstaande code:
+Zoek de `Create()`-methode en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw `Create()`-methode er uit als de onderstaande code:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -312,7 +312,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Open _Views\Todos\Create.cshtml_.
 
-In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander element `<div class="form-group">` voor `Done` toe:
+In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander `<div class="form-group">`-element voor `CreatedDate`. Voeg direct na deze twee elementen een ander `<div class="form-group">`-element voor `Done` toe:
 
 ```csharp
 <div class="form-group">
@@ -326,7 +326,7 @@ In de Razor-code zou u een `<div class="form-group">`-element voor `Description`
 
 Open _Views\Todos\Index.cshtml_.
 
-Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <th>
@@ -334,7 +334,7 @@ Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Ra
 </th>
 ```
 
-Zoek het element `<td>` dat de taghelpers voor `asp-action` bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het `<td>`-element dat de `asp-action`-taghelpers bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <td>
@@ -413,7 +413,7 @@ Wat u hebt geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
 U kunt ook andere resources bekijken:
 

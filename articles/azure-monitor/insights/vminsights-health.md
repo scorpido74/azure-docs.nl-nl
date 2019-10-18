@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 65ad9e1f5ef62ab2dd9f37a13d3c18871c30e603
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933126"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515501"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -36,7 +36,7 @@ Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor mee
 
 In deze sectie vindt u een overzicht van de standaard status criteria voor het bewaken van Azure Windows-en Linux-Vm's. Alle status criteria zijn vooraf geconfigureerd om een waarschuwing te verzenden wanneer ze een onjuiste voor waarde detecteren.
 
-| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Drempelwaarde | Waarschuwen over status | Severity | Categorie workload | 
+| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Spreek | Waarschuwen over status | Ernst | Categorie workload | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Logische schijf online | 5 | 15 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
 | Beschik bare ruimte op logische schijf | 5 | 15 | < | 200 MB (waarschuwing)<br> 100 MB (kritiek) | Waarschuwing | Sev1<br> Sev2 | Linux | 
@@ -44,9 +44,9 @@ In deze sectie vindt u een overzicht van de standaard status criteria voor het b
 | Percentage beschik bare ruimte logische schijf | 5 | 15 | < | 5% | Kritiek | Sev1 | Linux | 
 | Status van de netwerk adapter | 5 | 15 | <> | 1 (waar) | Waarschuwing | Sev2 | Linux | 
 | Beschik bare mega bytes geheugen van besturings systeem | 5 | 10 | < | 2,5 MB | Kritiek | Sev1 | Linux | 
-| Schijf Gem. Schijf sec/lezen | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
-| Schijf Gem. Schijfoverdrachten per seconde | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
-| Schijf Gem. Schijf sec/schrijven | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Aantal seconden/Lees tijd schijf | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Schijf gemiddelde tijd schijf overdracht | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
+| Schijf gemiddelde schrijf tijd schijf | 5 | 25 | > | 0,05 s | Kritiek | Sev1 | Linux | 
 | Schijf status | 5 | 25 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
 | Totale percentage processor tijd van het besturings systeem | 5 | 10 | >= | 95% | Kritiek | Sev1 | Linux | 
 | Totaal percentage CPU-gebruik | 5 | 10 | >= | 95% | Kritiek | Sev1 | Windows | 
@@ -105,7 +105,7 @@ Als u de status naast het onderdeel selecteert, wordt de status diagnose in de c
 
 De statussen die zijn gedefinieerd voor een virtuele machine, worden beschreven in de volgende tabel:
 
-|Pictogram |Status |Betekenis |
+|Diapictogram |Status |Betekenis |
 |-----|-------------|---------------|
 | |In orde |De virtuele machine bevindt zich binnen de gedefinieerde status voorwaarden. Deze status geeft aan dat er geen problemen zijn gedetecteerd en dat de virtuele machine normaal functioneert. Met een bovenliggende totaliserings monitor wordt de status samengevouwen en wordt de best mogelijke status van het onderliggende element weer gegeven.|
 | |Kritiek |De status bevindt zich niet in de gedefinieerde status, wat aangeeft dat er een of meer kritieke problemen zijn gedetecteerd. Deze problemen moeten worden opgelost om de normale functionaliteit te herstellen. Met een bovenliggende totaliserings monitor wordt de status weer gegeven en wordt de beste status van het onderliggende element weer gegeven.|
@@ -117,7 +117,7 @@ Een onbekende status kan worden veroorzaakt door de volgende problemen:
 - De agent is opnieuw geconfigureerd en er worden geen meldingen meer gerapporteerd aan de werk ruimte die is opgegeven toen Azure Monitor voor VM's werd ingeschakeld. Als u de agent wilt configureren om te rapporteren aan de werk ruimte, raadpleegt u [een werk ruimte toevoegen of verwijderen](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - De virtuele machine is verwijderd.
 - De werk ruimte die is gekoppeld aan Azure Monitor voor VM's, is verwijderd. U kunt de werk ruimte herstellen als u de voor delen van Premier Support hebt. Ga naar [premier](https://premier.microsoft.com/) en open een ondersteunings aanvraag.
-- De oplossings afhankelijkheden zijn verwijderd. Als u de ServiceMap-en InfrastructureInsights-oplossingen in uw Log Analytics-werk ruimte opnieuw wilt inschakelen, installeert u deze oplossingen opnieuw met behulp van de [Azure Resource Manager-sjabloon](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions). U kunt ook de optie werk ruimte configureren vinden op het tabblad aan de slag.
+- De oplossings afhankelijkheden zijn verwijderd. Als u de ServiceMap-en InfrastructureInsights-oplossingen in uw Log Analytics-werk ruimte opnieuw wilt inschakelen, installeert u de ServiceMap-oplossing opnieuw met behulp van de [Azure Resource Manager-sjabloon](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution). Als u de InfastructureInsights-oplossing, de e-mail vminsights@microsoft.com, opnieuw wilt installeren. 
 - De virtuele machine is afgesloten.
 - De Azure VM-service is niet beschikbaar of het onderhoud wordt uitgevoerd.
 - Er is voldaan aan de [dagelijkse gegevens of de Bewaar limiet](../platform/manage-cost-storage.md) voor de werk ruimte.
@@ -214,13 +214,13 @@ Alle status criteria die zijn gedefinieerd voor een onderdeel, zoals een logisch
 
 De criteria categorie kan ook worden weer gegeven naast de kolom **status criteria** . Als de criteria niet overeenkomen met de geselecteerde categorie, wordt in de kolom **status criteria** een bericht weer gegeven waarin **geen beschik bare status criteria voor de geselecteerde categorie zijn** opgenomen.
 
-De status van een status criterium wordt bepaald door een van de volgende vier typen: **Kritiek**, **waarschuwing**, **in orde**en **onbekend**. De eerste drie kunnen worden geconfigureerd, wat inhoudt dat u de drempel waarden van de monitors rechtstreeks in het configuratie venster van de **status criteria** kunt wijzigen. Dit is ook mogelijk met behulp van de [controle bewerking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)Azure monitor rest API update. **Onbekend** kan niet worden geconfigureerd en is gereserveerd voor specifieke scenario's.
+De status van een status criterium wordt bepaald door een van de vier typen: **kritiek**, **waarschuwing**, **in orde**en **onbekend**. De eerste drie kunnen worden geconfigureerd, wat inhoudt dat u de drempel waarden van de monitors rechtstreeks in het configuratie venster van de **status criteria** kunt wijzigen. Dit is ook mogelijk met behulp van de [controle bewerking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)Azure monitor rest API update. **Onbekend** kan niet worden geconfigureerd en is gereserveerd voor specifieke scenario's.
 
 De pagina **status diagnostiek** heeft drie hoofd secties:
 
-* Componentmodel
+* Onderdeel model
 * Statuscriteria
-* Statuswijzigingen
+* Status wijzigingen
 
 ![Secties van de pagina status diagnostiek](./media/vminsights-health/health-diagnostics-page-02.png)
 
@@ -282,7 +282,7 @@ De drie kolommen zijn onderling gekoppeld. Wanneer u een instantie in de kolom *
 
 Als u bijvoorbeeld *schijf-1 D:* in de lijst onder **onderdeel model**, **status criteria** filters naar *schijf-1d:* en **status wijzigingen** ziet, wordt de status wijziging weer gegeven op basis van de beschik baarheid van *schijf-1 D:* .
 
-Als u een bijgewerkte status wilt zien, kunt u de pagina status diagnostiek vernieuwen door de koppeling **vernieuwen** te selecteren. Als er een update is voor de status van het status criterium op basis van het vooraf gedefinieerde polling-interval, kunt u met deze taak voor komen dat er wordt gewacht en de meest recente status weer spie gelen. De **status** van de status criteria is een filter waarmee u de resultaten kunt bereiken op basis van de geselecteerde status: In orde, waarschuwing, kritiek, onbekend en alles. De **laatst bijgewerkte** tijd in de rechter bovenhoek vertegenwoordigt de laatste keer dat de pagina status diagnostiek is vernieuwd.
+Als u een bijgewerkte status wilt zien, kunt u de pagina status diagnostiek vernieuwen door de koppeling **vernieuwen** te selecteren. Als er een update is voor de status van het status criterium op basis van het vooraf gedefinieerde polling-interval, kunt u met deze taak voor komen dat er wordt gewacht en de meest recente status weer spie gelen. De **status** van de status criteria is een filter waarmee u de resultaten kunt bereiken op basis van de geselecteerde status: in orde, waarschuwing, kritiek, onbekend en alle. De **laatst bijgewerkte** tijd in de rechter bovenhoek vertegenwoordigt de laatste keer dat de pagina status diagnostiek is vernieuwd.
 
 ## <a name="alerts"></a>Waarschuwingen
 
@@ -302,15 +302,15 @@ Waarschuwingen van andere resource typen of-services zijn niet bedoeld om te wor
 
 U kunt deze weer gave filteren door waarden te selecteren in de vervolg keuzelijsten boven aan de pagina.
 
-|Kolom |Description |
+|Kolom |Beschrijving |
 |-------|------------|
-|Subscription |Selecteer een Azure-abonnement. Alleen waarschuwingen in het geselecteerde abonnement zijn opgenomen in de weer gave. |
+|Abonnement |Selecteer een Azure-abonnement. Alleen waarschuwingen in het geselecteerde abonnement zijn opgenomen in de weer gave. |
 |Resourcegroep |Selecteer één resource groep. In de weer gave zijn alleen waarschuwingen met doelen in de geselecteerde resource groep opgenomen. |
 |Resourcetype |Selecteer een of meer resource typen. Standaard worden alleen waarschuwingen van virtuele doel **machines** geselecteerd en opgenomen in deze weer gave. Deze kolom is alleen beschikbaar nadat een resource groep is opgegeven. |
-|Resource |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
-|Severity |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
-|Monitorconditie |Selecteer een monitor voorwaarde om waarschuwingen te filteren als deze zijn geactiveerd of opgelost door het systeem als de voor waarde niet langer actief is. U kunt ook **Alles** selecteren om waarschuwingen van alle voor waarden op te stellen. |
-|Waarschuwingsstatus |Selecteer een waarschuwings status, **Nieuw**, **bevestigen**, **gesloten**of **Alles** om waarschuwingen van alle statussen op te genomen. |
+|Bron |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
+|Ernst |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
+|Bewakings voorwaarde |Selecteer een monitor voorwaarde om waarschuwingen te filteren als deze zijn geactiveerd of opgelost door het systeem als de voor waarde niet langer actief is. U kunt ook **Alles** selecteren om waarschuwingen van alle voor waarden op te stellen. |
+|Waarschuwings status |Selecteer een waarschuwings status, **Nieuw**, **bevestigen**, **gesloten**of **Alles** om waarschuwingen van alle statussen op te genomen. |
 |Service bewaken |Selecteer een service of selecteer **Alles** om alle services op te laten gebruiken. Alleen waarschuwingen van VM Insights worden ondersteund voor deze functie.|
 |Tijdsbereik| Alleen waarschuwingen die binnen het geselecteerde tijd venster worden geactiveerd, worden in de weer gave opgenomen. Ondersteunde waarden zijn het afgelopen uur, de afgelopen 24 uur, de afgelopen 7 dagen en de afgelopen 30 dagen. |
 
@@ -441,4 +441,5 @@ Azure Monitor voor VM's status ondersteunt SMS-en e-mail meldingen wanneer waars
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om beperkingen en algemene VM-prestaties te identificeren.
+
 - Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)voor meer informatie over gedetecteerde toepassings afhankelijkheden.

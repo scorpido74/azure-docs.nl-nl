@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828660"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512436"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Een VHD uploaden naar Azure met behulp van Azure PowerShell
 
@@ -27,7 +27,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure PowerShell-module](/powershell/azure/install-Az-ps).
-- Als u van plan bent om een VHD te uploaden vanaf pem: Een VHD die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden vanaf pem: een VHD die is [voor bereid voor Azure](prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
@@ -39,9 +39,9 @@ Dit soort beheerde schijven heeft twee unieke statussen:
 - ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) is gegenereerd.
 - ActiveUpload, wat betekent dat de schijf gereed is om een upload te ontvangen en dat de SAS is gegenereerd.
 
-In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard prijzen voor harde schijven](https://azure.microsoft.com/pricing/details/managed-disks/), ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit is waar totdat `revoke-access` wordt aangeroepen op de beheerde schijf, wat vereist is om de schijf aan een virtuele machine te koppelen.
+In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard prijzen voor harde schijven](https://azure.microsoft.com/pricing/details/managed-disks/), ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit geldt totdat `revoke-access` wordt aangeroepen op de beheerde schijf, wat vereist is om de schijf aan een virtuele machine te koppelen.
 
-Voordat u een lege standaard HDD maakt voor het uploaden, hebt u de bestands grootte in bytes van de VHD die u wilt uploaden. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende gebruiken: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
+Voordat u een lege standaard HDD maakt voor het uploaden, hebt u de bestands grootte in bytes van de VHD die u wilt uploaden. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende doen: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
 
 Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken:
 
@@ -77,7 +77,7 @@ Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-ty
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
-Als uw SAS verloopt tijdens het uploaden en u nog geen `revoke-access` sa's hebt aangeroepen, kunt u een nieuwe SAS krijgen om het uploaden `grant-access`met opnieuw te laten verlopen.
+Als uw SAS verloopt tijdens het uploaden en u `revoke-access` nog niet hebt aangeroepen, kunt u een nieuwe SAS ophalen om het uploaden met `grant-access` voort te zetten.
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
@@ -94,7 +94,7 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > [!IMPORTANT]
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
-Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met uw waarden en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde uswest2) met uw waarden en voer het volgende script uit om een beheerde schijf te kopiëren.
 
 ```powershell
 
@@ -128,4 +128,4 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u uw schijf koppelen aan een virtuele machine en het gebruik ervan starten.
 
-Zie ons artikel over het onderwerp voor meer informatie over het koppelen van een schijf aan een virtuele machine: [Een gegevens schijf koppelen aan een virtuele Windows-machine met Power shell](attach-disk-ps.md).
+Zie het artikel over het onderwerp: [een gegevens schijf koppelen aan een Windows-VM met Power shell](attach-disk-ps.md)voor meer informatie over het koppelen van een gegevens schijf aan een virtuele machine. Zie [een Windows-VM maken op basis van een gespecialiseerde schijf](create-vm-specialized.md#create-the-new-vm)als u de schijf wilt gebruiken als de besturingssysteem schijf.

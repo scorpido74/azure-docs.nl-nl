@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023591"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512356"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -27,16 +27,16 @@ In dit artikel wordt beschreven hoe u uw SQL Server virtuele machine (VM) in azu
 
 Als u een Azure Marketplace-installatie kopie van SQL Server VM implementeert via de Azure Portal, wordt de SQL Server VM automatisch geregistreerd bij de resource provider. Als u zelf SQL Server wilt installeren op een virtuele Azure-machine in plaats van een installatie kopie te kiezen vanuit Azure Marketplace, of als u een Azure VM inricht vanaf een aangepaste VHD met SQL Server, moet u uw SQL Server VM registreren bij de resource provider voor :
 
-- **Vereenvoudig licentie beheer**: Volgens de product bepalingen van micro soft moeten klanten micro soft vertellen wanneer ze de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)gebruiken. Het registreren van de resource provider van de SQL-VM vereenvoudigt het SQL Server licentie beheer en biedt u de mogelijkheid om SQL Server Vm's snel te identificeren met behulp van de Azure Hybrid Benefit in de [Portal](virtual-machines-windows-sql-manage-portal.md) of AZ cli: 
+- **Beheer van licenties vereenvoudigen**: klanten moeten op basis van de product voorwaarden van micro soft vertellen wanneer ze de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)gebruiken. Het registreren van de resource provider van de SQL-VM vereenvoudigt het SQL Server licentie beheer en biedt u de mogelijkheid om SQL Server Vm's snel te identificeren met behulp van de Azure Hybrid Benefit in de [Portal](virtual-machines-windows-sql-manage-portal.md) of AZ cli: 
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-- **Functie voordelen**: Als u uw SQL Server-VM registreert bij de resource provider, worden [automatische patches](virtual-machines-windows-sql-automated-patching.md), [automatische back-ups](virtual-machines-windows-sql-automated-backup-v2.md)en bewakings mogelijkheden en beheer baarheid ontgrendeld. Daarnaast worden de [licenties](virtual-machines-windows-sql-ahb.md) en de flexibiliteit van de [editie](virtual-machines-windows-sql-change-edition.md) ontgrendeld. Voorheen waren deze functies alleen beschikbaar voor het SQL Server van VM-installatie kopieën vanuit Azure Marketplace.
+- **Voor delen van functies**: bij het registreren van uw SQL Server-VM met de resource provider worden [automatische patches](virtual-machines-windows-sql-automated-patching.md), [automatische back-ups](virtual-machines-windows-sql-automated-backup-v2.md)en bewakings mogelijkheden en beheer baarheid ontgrendeld. Daarnaast worden de [licenties](virtual-machines-windows-sql-ahb.md) en de flexibiliteit van de [editie](virtual-machines-windows-sql-change-edition.md) ontgrendeld. Voorheen waren deze functies alleen beschikbaar voor het SQL Server van VM-installatie kopieën vanuit Azure Marketplace.
 
-- **Gratis beheer**:  Registratie bij de resource provider van de SQL-VM en alle beheer baarheids modi zijn volledig gratis. Er zijn geen extra kosten verbonden aan de resource provider of bij het wijzigen van de beheer modus. 
+- **Gratis beheer**: registreren met de resource provider van de SQL-VM en alle beheer baarheids modi zijn volledig gratis. Er zijn geen extra kosten verbonden aan de resource provider of bij het wijzigen van de beheer modus. 
 
 Als u de resource provider van de SQL-VM wilt gebruiken, moet u ook de resource provider van de SQL-VM registreren bij uw abonnement. U kunt dit doen met behulp van de Azure Portal, de Azure CLI of Power shell. 
 
@@ -155,7 +155,7 @@ U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de 
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar de [virtuele machines van SQL Server](virtual-machines-windows-sql-manage-portal.md).
 1. Selecteer uw SQL Server-VM in de lijst. Als uw SQL Server VM hier niet wordt vermeld, is deze waarschijnlijk niet geregistreerd bij de resource provider van de SQL-VM. 
 1. Bekijk de waarde onder **status**. Als de **status** is **geslaagd**, is de SQL Server VM geregistreerd bij de resource provider van de SQL-VM. 
@@ -164,7 +164,7 @@ U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de 
 
 ### <a name="command-line"></a>Opdrachtregel
 
-Controleer de huidige SQL Server VM-registratie status met behulp van AZ CLI of Power shell. `ProvisioningState` wordt weer gegeven `Succeeded` als de registratie is geslaagd. 
+Controleer de huidige SQL Server VM-registratie status met behulp van AZ CLI of Power shell. in `ProvisioningState` wordt `Succeeded` weer gegeven als de registratie is geslaagd. 
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 
@@ -203,14 +203,14 @@ U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server Vm's waarop *de IaaS-* uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om te downgradeen: u moet de SQL IaaS-extensie volledig verwijderen en opnieuw installeren. 
+SQL Server Vm's waarop *de IaaS-* uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om te downgradeen: u moet de resource van de resource provider van de SQL-VM verwijderen met behulp van de Azure Portal en zich opnieuw registreren bij de resource provider van de SQL-VM. 
 
 De agent modus bijwerken naar Full: 
 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de resource van de [virtuele SQL-machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Selecteer uw SQL Server virtuele machine en selecteer **overzicht**. 
 1. Selecteer voor SQL Server Vm's met de IaaS of de modus voor licht gewicht de optie **alleen licentie type en editie-updates zijn beschikbaar met het uitbreidings bericht van de SQL IaaS-extensie** .
@@ -353,7 +353,7 @@ Ja. Het bijwerken van de beheer baarheids modus van Lightweight naar Full wordt 
 
 Nee. Het downgradeen van de SQL Server IaaS-extensie modus wordt niet ondersteund. De beheer baarheids modus kan niet worden gedowngraded van de volledige modus naar de modus Lightweight of no-agent, en kan niet worden gedowngraded van de modus voor niet-agent naar de No-modus. 
 
-Als u de beheer baarheids modus wilt wijzigen van volledig beheer, verwijdert u de SQL Server IaaS-extensie. Vervolgens verwijdert u de resource van micro soft. SqlVirtualMachine en registreert u de SQL Server VM opnieuw bij de resource provider van de SQL-VM.
+Als u de beheer baarheids modus wilt wijzigen van volledig beheer, verwijdert u de resource van micro soft. SqlVirtualMachine en registreert u de SQL Server VM opnieuw bij de resource provider van de SQL-VM.
 
 **Kan ik bij de Azure Portal van de resource provider van de SQL-VM registreren?**
 

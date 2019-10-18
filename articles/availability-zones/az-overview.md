@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c041ca02e3c8563545b5f8742e3735a348e43e87
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: 585f9f27e0562e9eabddd934a2b4f32a441b1777
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432184"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512566"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Wat zijn Beschikbaarheidszones in azure?
 Beschikbaarheidszones is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
@@ -36,6 +36,9 @@ Bouw hoge Beschik baarheid in uw toepassings architectuur door uw berekenings-, 
 Als u een uitgebreide bedrijfs continuïteit wilt bereiken op Azure, bouwt u uw toepassings architectuur met de combi natie van Beschikbaarheidszones met Azure-regio paren. U kunt uw toepassingen en gegevens synchroon repliceren met Beschikbaarheidszones binnen een Azure-regio voor hoge Beschik baarheid en asynchroon repliceren in azure-regio's voor nood herstel beveiliging.
  
 ![Conceptueel overzicht van één zone die in een regio wordt weer gegeven](./media/az-overview/az-graphic-two.png)
+
+> [!IMPORTANT]
+> De id's van de beschikbaarheids zone (de getallen 1, 2 en 3 in de bovenstaande afbeelding) worden logisch toegewezen aan de werkelijke fysieke zones voor elk abonnement, onafhankelijk van elkaar. Dit betekent dat Beschik baarheid Zone 1 in een bepaald abonnement kan verwijzen naar een andere fysieke zone dan de beschik baarheid Zone 1 in een ander abonnement. Als gevolg hiervan is het raadzaam om geen beschikbaarheids zone-Id's over verschillende abonnementen door te geven voor plaatsing van virtuele machines.
 
 ## <a name="services-support-by-region"></a>Services ondersteunen per regio
 

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452989"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527112"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Toegang tot externe gebruikers beheren in azure AD-rechts beheer (preview-versie)
 
@@ -90,12 +90,15 @@ U kunt selecteren wat er gebeurt wanneer een externe gebruiker, die is uitgenodi
 
 1. Als een externe gebruiker de laatste toewijzing van toegangs pakketten kwijtraakt en u wilt voor komen dat ze zich aanmelden bij deze map, stelt u in dat de **externe gebruiker zich niet kan aanmelden bij deze map** op **Ja**.
 
-1. Als een externe gebruiker de laatste toewijzing van toegangs pakketten kwijtraakt en u de gast gebruikers account in uw Directory wilt verwijderen, stelt u **externe gebruiker verwijderen** in op **Ja**.
+    > [!NOTE]
+    > Als een gebruiker zich niet kan aanmelden bij deze map, dan kan de gebruiker het toegangs pakket niet opnieuw aanvragen of extra toegang aanvragen in deze map. Niet configureren dat ze worden aangemeld als ze later toegang moeten aanvragen tot andere toegangs pakketten.
+
+1. Als een externe gebruiker de laatste toewijzing van toegangs pakketten kwijtraakt en u de gast gebruikers account in deze map wilt verwijderen, stelt u **externe gebruiker verwijderen** in op **Ja**.
 
     > [!NOTE]
-    > Met het rechten beheer worden alleen accounts verwijderd die zijn uitgenodigd via het rechten beheer. Houd er ook rekening mee dat een gebruiker wordt geblokkeerd om zich aan te melden en uit uw directory te verwijderen, zelfs als die gebruiker is toegevoegd aan resources in uw directory die geen toegang hebben tot pakket toewijzingen. Als de gast aanwezig was in de map voordat er toegangs pakket toewijzingen worden ontvangen, blijven ze behouden. Als de gast echter is uitgenodigd via een toewijzing van een toegangs pakket en als is uitgenodigd ook is toegewezen aan een OneDrive voor bedrijven-of share point online-site, worden ze nog steeds verwijderd.
+    > Met het rechten beheer worden alleen accounts verwijderd die zijn uitgenodigd via het rechten beheer. Houd er ook rekening mee dat een gebruiker wordt geblokkeerd voor het aanmelden en verwijderen van deze map, zelfs als die gebruiker is toegevoegd aan bronnen in deze map die geen toegang tot pakket toewijzingen hebben. Als de gast aanwezig was in deze map voordat er toegangs pakket toewijzingen worden ontvangen, blijven ze behouden. Als de gast echter is uitgenodigd via een toewijzing van een toegangs pakket en als is uitgenodigd ook is toegewezen aan een OneDrive voor bedrijven-of share point online-site, worden ze nog steeds verwijderd.
 
-1. Als u de gast gebruikers account in uw Directory wilt verwijderen, kunt u het aantal dagen instellen voordat deze wordt verwijderd. Als u het gast gebruikers account wilt verwijderen zodra de laatste toewijzing aan toegangs pakketten is verloren, stelt u het **aantal dagen in voordat u de externe gebruiker uit deze map verwijdert** in **0**.
+1. Als u het gast gebruikers account in deze map wilt verwijderen, kunt u het aantal dagen instellen waarna het wordt verwijderd. Als u het gast gebruikers account wilt verwijderen zodra de laatste toewijzing aan toegangs pakketten is verloren, stelt u het **aantal dagen in voordat u de externe gebruiker uit deze map verwijdert** in **0**.
 
 1. Klik op **Opslaan**.
 
@@ -113,6 +116,6 @@ U kunt deze instelling ook wijzigen nadat u de catalogus hebt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voor gebruikers die niet in uw Directory voor komt](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [Voor gebruikers die niet in uw Directory voor komt](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
 - [Overdracht en rollen](entitlement-management-delegate.md)

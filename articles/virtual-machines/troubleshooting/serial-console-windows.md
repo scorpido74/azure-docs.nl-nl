@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9fbe6768014550a3746085406e9039e83185c20f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0d48f3eacad86dac520d837b80605a75cce8cfd5
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949684"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514499"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -29,7 +29,7 @@ Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-m
 Zie [Azure Serial console voor Linux](serial-console-linux.md)voor meer informatie over de seriële console voor Linux.
 
 > [!NOTE]
-> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's. Het is nog niet beschikbaar in de Azure government en Azure China clouds.
+> De seriële console is algemeen beschikbaar in de wereld wijde Azure-regio's. Het is nog niet beschikbaar in Clouds van Azure Government of Azure China.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -38,96 +38,96 @@ Zie [Azure Serial console voor Linux](serial-console-linux.md)voor meer informat
 
 - Uw account dat gebruikmaakt van seriële console, moet de [rol Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) hebben voor de VM en het opslag account voor [Diagnostische gegevens over opstarten](boot-diagnostics.md)
 
-- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt maken met de [wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) functie van de VM-extensie voor toegang. Selecteer **wachtwoord opnieuw instellen** uit de **ondersteuning en probleemoplossing** sectie.
+- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt er een maken met de functie [wacht woord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
 
 * Voor de VM voor het exemplaar van de virtuele-machine schaalset moet [Diagnostische gegevens over opstarten](boot-diagnostics.md) zijn ingeschakeld.
 
-    ![De instellingen voor diagnostische gegevens over opstarten](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    ![Instellingen voor diagnostische gegevens over opstarten](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
 ## <a name="enable-serial-console-functionality-for-windows-server"></a>De functionaliteit van seriële console inschakelen voor Windows Server
 
 > [!NOTE]
 > Als u niets in de seriële console ziet, zorg er dan voor dat de diagnostische gegevens over opstarten zijn ingeschakeld op de virtuele machine of in de schaalset van virtual machines.
 
-### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Inschakelen van de seriële console in aangepaste of oudere installatiekopieën
-Nieuwere Windows Server-installatie kopieën op Azure hebben standaard een [speciale beheer console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ingeschakeld. SAC wordt ondersteund in serverversies van Windows, maar is niet beschikbaar in clientversies (bijvoorbeeld Windows 10, Windows 8 of Windows 7).
+### <a name="enable-the-serial-console-in-custom-or-older-images"></a>De seriële console inschakelen in aangepaste of oudere installatie kopieën
+Nieuwere Windows Server-installatie kopieën op Azure hebben standaard een [speciale beheer console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ingeschakeld. SAC wordt ondersteund op Server versies van Windows, maar is niet beschikbaar op client versies (bijvoorbeeld Windows 10, Windows 8 of Windows 7).
 
-Voor oudere Windows Server-installatiekopieën (die zijn gemaakt vóór februari 2018), kunt u automatisch de seriële console via de Azure-portal RunCommand-functie inschakelen. Selecteer in de Azure Portal de **opdracht uitvoeren**en selecteer vervolgens de opdracht met de naam **EnableEMS** in de lijst.
+Voor oudere Windows Server-installatie kopieën (gemaakt vóór 2018 februari), kunt u de seriële console automatisch inschakelen met behulp van de opdracht functie voor het uitvoeren van de Azure Portal. Selecteer in de Azure Portal de **opdracht uitvoeren**en selecteer vervolgens de opdracht met de naam **EnableEMS** in de lijst.
 
-![Lijst met opdrachten uitvoeren](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+![Opdracht lijst uitvoeren](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
 U kunt ook de seriële console voor Windows Vm's/virtuele-machine schaal sets die zijn gemaakt vóór 2018 februari, als volgt hand matig inschakelen:
 
-1. Verbinding maken met uw Windows-machine via Extern bureaublad
-1. Voer de volgende opdrachten vanaf een opdrachtprompt met beheerdersrechten:
+1. Verbinding maken met uw virtuele Windows-machine met behulp van Extern bureaublad
+1. Voer de volgende opdrachten uit vanaf een opdracht prompt:
     - `bcdedit /ems {current} on`
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-1. Start opnieuw op het systeem voor de console SAC zijn ingeschakeld.
+1. Start het systeem opnieuw op om de SAC-console in te scha kelen.
 
     ![SAC-console](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Indien nodig, kan de SAC ook worden ingeschakeld offline:
+Als dat nodig is, kan de SAC ook offline worden ingeschakeld:
 
-1. De windows-schijf waarvan u SAC geconfigureerd als een gegevensschijf aan de bestaande virtuele machine wilt koppelen.
+1. Koppel de Windows-schijf waarvoor u SAC wilt configureren als een gegevens schijf voor de bestaande virtuele machine.
 
-1. Voer de volgende opdrachten vanaf een opdrachtprompt met beheerdersrechten:
+1. Voer de volgende opdrachten uit vanaf een opdracht prompt:
    - `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
    - `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-#### <a name="how-do-i-know-if-sac-is-enabled"></a>Hoe weet ik of SAC is ingeschakeld?
+#### <a name="how-do-i-know-if-sac-is-enabled"></a>Hoe kan ik weet of SAC is ingeschakeld?
 
-Als [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) niet is ingeschakeld, wordt niet de seriële console weergegeven de SAC-prompt. In sommige gevallen, gegevens over de servicestatus van de virtuele machine wordt weergegeven en in andere gevallen zijn de velden leeg. Als u een installatiekopie van Windows Server die zijn gemaakt vóór februari 2018, SAC waarschijnlijk niet ingeschakeld.
+Als [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) niet is ingeschakeld, wordt de SAC-prompt niet weer gegeven door de seriële console. In sommige gevallen wordt informatie over de status van de virtuele machine weer gegeven en in andere gevallen is deze leeg. Als u een Windows Server-installatie kopie gebruikt die vóór februari 2018 is gemaakt, wordt SAC waarschijnlijk niet ingeschakeld.
 
-### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Het opstartmenu Windows in de seriële console inschakelen
+### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Het Windows-opstart menu inschakelen in de seriële console
 
-Als u nodig hebt om in te schakelen Windows boot loader aanwijzingen om weer te geven in de seriële console, kunt u de volgende aanvullende opties toevoegen aan uw opstartconfiguratiegegevens. Zie voor meer informatie, [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
+Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de seriële console, kunt u de volgende extra opties toevoegen aan de opstart configuratie gegevens. Zie [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)voor meer informatie.
 
 1. Maak verbinding met uw Windows-VM of een installatie kopie van een virtuele machine met behulp van Extern bureaublad.
 
-1. Voer de volgende opdrachten vanaf een opdrachtprompt met beheerdersrechten:
+1. Voer de volgende opdrachten uit vanaf een opdracht prompt:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
    - `bcdedit /set {bootmgr} timeout 10`
    - `bcdedit /set {bootmgr} bootems yes`
 
-1. Opnieuw opstarten van het systeem voor het opstartmenu worden ingeschakeld
+1. Start het systeem opnieuw op om het opstart menu in te scha kelen
 
 > [!NOTE]
-> De time-out die u hebt ingesteld voor het opstartmenu manager om weer te geven is van invloed op de opstarttijd van uw besturingssysteem. Als u denkt dat de 10 seconden time-outwaarde is te lang of te kort dat, doet u het op een andere waarde.
+> De time-out die u voor de weer gave van het menu opstart beheer instelt, is van invloed op de opstart tijd van het besturings systeem. Als u denkt dat de time-outwaarde van 10 seconden te kort of te lang is, stelt u deze in op een andere waarde.
 
 ## <a name="use-serial-console"></a>Seriële console gebruiken
 
 ### <a name="use-cmd-or-powershell-in-serial-console"></a>CMD of Power shell gebruiken in de seriële console
 
-1. Verbinding maken met de seriële console. Als u bent verbonden, is het de prompt **SAC >** :
+1. Maak verbinding met de seriële console. Als u verbinding hebt gemaakt, is de prompt **SAC >** :
 
     ![Verbinding maken met SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Voer `cmd` om een kanaal waaraan een CMD-exemplaar te maken.
+1.  Voer `cmd` in om een kanaal te maken dat een CMD-exemplaar heeft.
 
 1.  Voer `ch -si 1` in of druk op `<esc>+<tab>` sneltoetsen om over te scha kelen naar het kanaal waarop het CMD-exemplaar wordt uitgevoerd.
 
-1.  Druk op **Enter**, en geef vervolgens referenties aanmelden met beheerdersmachtigingen.
+1.  Druk op **Enter**en voer aanmeldings referenties in met beheerders machtigingen.
 
-1.  Nadat u geldige referenties hebt ingevoerd, wordt de CMD-instantie wordt geopend.
+1.  Nadat u geldige referenties hebt ingevoerd, wordt het CMD-exemplaar geopend.
 
-1.  Voer een PowerShell-sessie starten, `PowerShell` in de CMD-exemplaar, en druk vervolgens op **Enter**.
+1.  Als u een Power shell-exemplaar wilt starten, voert u `PowerShell` in het CMD-exemplaar in en drukt u vervolgens op **Enter**.
 
-    ![Open PowerShell-exemplaar](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+    ![Power shell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
-### <a name="use-the-serial-console-for-nmi-calls"></a>Gebruik de seriële console voor NMI aanroepen
-Een niet-maskeren interrupt (NMI) is ontworpen voor het maken van een signaal dat software op een virtuele machine wordt niet negeren. In het verleden zijn NMIs gebruikt om te controleren op hardwareproblemen op systemen die specifieke reactietijden vereist. Tegenwoordig gebruiken programmeurs en systeem beheerders NMI vaak als een mechanisme voor het opsporen van problemen met systemen die niet reageren.
+### <a name="use-the-serial-console-for-nmi-calls"></a>De seriële console gebruiken voor NMI-aanroepen
+Een niet-maskeer bare interrupt (NMI) is ontworpen om een signaal te maken dat software op een virtuele machine niet wordt genegeerd. In het verleden werden NMIs gebruikt voor het bewaken van hardwareproblemen op systemen waarop specifieke reactie tijden vereist zijn. Tegenwoordig gebruiken programmeurs en systeem beheerders NMI vaak als een mechanisme voor het opsporen van problemen met systemen die niet reageren.
 
-De seriële console kan worden gebruikt voor het verzenden van een NMI met een Azure-machine met behulp van het toetsenbordpictogram in de opdrachtbalk. Nadat de NMI wordt geleverd, wordt de virtuele-machineconfiguratie bepalen hoe het systeem reageert. Windows kan worden geconfigureerd voor crashes en een geheugendumpbestand maken wanneer er een NMI worden ontvangen.
+De seriële console kan worden gebruikt om een NMI te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de opdracht balk. Nadat de NMI is geleverd, wordt door de configuratie van de virtuele machine bepaald hoe het systeem reageert. Windows kan worden geconfigureerd om te crashen en een geheugen dump bestand te maken wanneer er een NMI wordt ontvangen.
 
 ![NMI verzenden](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
-Zie voor meer informatie over het configureren van Windows voor het maken van een crashdumpbestand wanneer deze een NMI ontvangt [het genereren van een crashdump-bestand met behulp van een NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
+Voor informatie over het configureren van Windows voor het maken van een crash dump bestand bij het ontvangen van een NMI, Zie [How to generate an crash dump file (een bestand met NMI genereren](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)).
 
-### <a name="use-function-keys-in-serial-console"></a>De functietoetsen gebruiken in de seriële console
-Functietoetsen zijn ingeschakeld voor gebruik voor de seriële console in de Windows-VM's. De F8 in de vervolgkeuzelijst de seriële console biedt het gemak van het invoeren van de geavanceerde instellingen voor opstarten menu eenvoudig, maar de seriële console compatibel is met alle andere functietoetsen. Mogelijk moet u op **Fn** + **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
+### <a name="use-function-keys-in-serial-console"></a>Functie toetsen gebruiken in seriële console
+Functie sleutels zijn ingeschakeld voor gebruik van seriële console in Windows-Vm's. Met de F8 in de vervolg keuzelijst van de seriële console kunt u eenvoudig het menu Geavanceerde opstart instellingen openen, maar de seriële console is compatibel met alle andere functie sleutels. Mogelijk moet u op **FN** drukken  + **F1** (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
 
-### <a name="use-wsl-in-serial-console"></a>Gebruik WSL in seriële console
-Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om in te schakelen WSL voor gebruik binnen de seriële console als u werkt met Windows Server 2019 of hoger. Dit kan nuttig zijn voor gebruikers die ook een vertrouwd bent met Linux-opdrachten hebben zijn. Zie voor instructies voor het inschakelen van WSL voor Windows Server, de [installatiehandleiding](https://docs.microsoft.com/windows/wsl/install-on-server).
+### <a name="use-wsl-in-serial-console"></a>WSL gebruiken in de seriële console
+Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om WSL in te scha kelen voor gebruik in de seriële console als u Windows Server 2019 of hoger uitvoert. Dit kan handig zijn voor gebruikers die ook vertrouwd zijn met Linux-opdrachten. Raadpleeg de [installatie handleiding](https://docs.microsoft.com/windows/wsl/install-on-server)voor instructies voor het inschakelen van WSL voor Windows Server.
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Uw Windows VM/virtual machine Scale set-exemplaar opnieuw starten binnen een seriële console
 U kunt een herstart starten binnen de seriële console door te navigeren naar de aan/uit-knop en op VM opnieuw opstarten te klikken. Hiermee start u het opnieuw opstarten van een virtuele machine en ziet u een melding binnen het Azure Portal met betrekking tot de herstart.
@@ -139,84 +139,85 @@ Dit is handig in situaties waarin u toegang wilt krijgen tot het opstart menu zo
 ## <a name="disable-the-serial-console"></a>De seriële console uitschakelen
 Standaard hebben alle abonnementen seriële console toegang ingeschakeld. U kunt de seriële console uitschakelen op het niveau van het abonnement of de VM/virtuele-machine schaalset. Ga voor gedetailleerde instructies naar [de Azure Serial console inschakelen en uitschakelen](./serial-console-enable-disable.md).
 
-## <a name="serial-console-security"></a>Seriële console-beveiliging
+## <a name="serial-console-security"></a>Seriële console beveiliging
 
-### <a name="access-security"></a>Beveiliging voor toegang
-Toegang tot de seriële console is beperkt tot gebruikers die beschikken over een toegangsrol van [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) of hoger op de virtuele machine. Als uw Azure Active Directory-tenant is multi-factor authentication (MFA) vereist, wordt toegang tot de seriële console ook de MFA moet omdat de seriële console-toegang via de [Azure-portal](https://portal.azure.com).
+### <a name="access-security"></a>Toegang tot beveiliging
+Toegang tot de seriële console is beperkt tot gebruikers die de rol van toegang tot de [virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) of een hoger niveau van de virtuele machine hebben. Als uw Azure Active Directory-Tenant multi-factor Authentication (MFA) vereist, heeft toegang tot de seriële console ook MFA nodig omdat de toegang tot de seriële console via de [Azure Portal](https://portal.azure.com).
 
-### <a name="channel-security"></a>Beveiliging van het kanaal
-Alle gegevens die worden verzonden heen en weer worden versleuteld op de kabel.
+### <a name="channel-security"></a>Kanaal beveiliging
+Alle gegevens die worden verzonden, worden versleuteld op de kabel.
 
-### <a name="audit-logs"></a>Controlelogboeken
-Alle toegang tot de seriële console momenteel is aangemeld de [diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) logboeken van de virtuele machine. Toegang tot deze logboeken zijn eigendom van en beheerd door de beheerder van de virtuele machine van Azure.
+### <a name="audit-logs"></a>Auditlogboeken
+Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken voor [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) van de virtuele machine. Toegang tot deze logboeken is eigendom van en beheerd door de beheerder van de virtuele Azure-machine.
 
 > [!CAUTION]
-> Er zijn geen wachtwoorden voor toegang voor de console worden geregistreerd. Echter, als opdrachten worden uitgevoerd binnen de console bevat of uitvoer van wachtwoorden, geheimen, gebruikersnamen of enige andere vorm van persoonlijk identificeerbare informatie (PII), die wordt geschreven naar de VM boot diagnostics-Logboeken. Ze worden geschreven, samen met andere zichtbare tekst, als onderdeel van de implementatie van de seriële console Schuif terug functie. Deze logboeken zijn circulaire en alleen personen met leesmachtigingen voor het opslagaccount voor diagnostische gegevens over de toegang tot hebben. We raden echter aan na de aanbevolen procedure van het gebruik van de extern bureaublad voor alles wat die hebben mogelijk betrekking op geheimen en/of PII.
+> Er zijn geen toegangs wachtwoorden voor de console vastgelegd. Als opdrachten echter worden uitgevoerd in de-console bevatten of uitvoer wachtwoorden, geheimen, gebruikers namen of andere vormen van persoons gegevens (PII), worden deze geschreven naar de logboeken voor diagnostische opstart gegevens van de VM. Ze worden samen met alle andere zicht bare tekst geschreven, als onderdeel van de implementatie van de functie scroll back van de seriële console. Deze logboeken zijn circulaire en alleen personen met lees machtigingen voor het diagnostische-opslag account hebben toegang tot ze. We raden u echter aan de best practice van het gebruik van de Extern bureaublad te volgen voor alles wat geheimen en/of PII kan inhouden.
 
 ### <a name="concurrent-usage"></a>Gelijktijdig gebruik
-Als een gebruiker is verbonden met de seriële console en een andere gebruiker is toegang tot deze virtuele machine met dezelfde aanvraagt, wordt de eerste gebruiker verbroken en wordt de tweede gebruiker heeft verbinding gemaakt met dezelfde sessie.
+Als een gebruiker is verbonden met de seriële console en een andere gebruiker de toegang tot dezelfde virtuele machine heeft gevraagd, wordt de verbinding met de eerste gebruiker verbroken en wordt de tweede gebruiker verbonden met dezelfde sessie.
 
 > [!CAUTION]
-> Dit betekent dat een gebruiker die niet verbonden wordt niet worden afgemeld. De mogelijkheid om af te dwingen een afmelden bij het verbreken van de verbinding (met behulp van SIGHUP of een vergelijkbaar mechanisme) is nog steeds in de roadmap. Voor Windows, er is een automatische time-out ingeschakeld in SAC; u kunt de terminal time-outinstelling configureren voor Linux.
+> Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out in SAC ingeschakeld. voor Linux kunt u de time-outinstelling van de terminal configureren.
 
 ## <a name="accessibility"></a>Toegankelijkheid
-Toegankelijkheid is een belangrijke focus voor de seriële console van Azure. Wat dat betreft, hebben we ervoor gezorgd dat de seriële console is toegankelijk voor het visuele element en verminderde horen, evenals mensen die mogelijk niet langer een muis te gebruiken.
+Toegankelijkheid is een belang rijke focus voor de Azure Serial console. In dat geval hebben we ervoor gezorgd dat de seriële console toegankelijk is voor het visuele en slechthorenden, evenals mensen die mogelijk geen muis gebruiken.
 
-### <a name="keyboard-navigation"></a>Toetsenbordnavigatie
-Gebruik de **tabblad** sleutel op het toetsenbord om te navigeren in de interface van de seriële console van de Azure-portal. Uw locatie wordt gemarkeerd op het scherm worden weergegeven. Als u wilt de focus van de seriële console-venster laten, drukt u op **Ctrl**+**F6** op het toetsenbord.
+### <a name="keyboard-navigation"></a>Toetsenbord navigatie
+Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt op het scherm gemarkeerd. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **Ctrl** +**F6** op het toetsen bord.
 
-### <a name="use-the-serial-console-with-a-screen-reader"></a>Gebruik de seriële console met een schermlezer
-De seriële console heeft ingebouwde ondersteuning voor schermlezers. Navigeren om met een schermlezer ingeschakeld, kunnen de alt-tekst voor de geselecteerde knop om te worden door de schermlezer voorgelezen.
+### <a name="use-the-serial-console-with-a-screen-reader"></a>De seriële console gebruiken met een scherm lezer
+De seriële console heeft ingebouwde ondersteuning voor scherm lezers. Door te navigeren met een ingeschakelde scherm lezer, kan de ALT-tekst voor de momenteel geselecteerde knop hardop worden gelezen door de scherm lezer.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Algemene scenario's voor het openen van de seriële console
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Algemene scenario's voor toegang tot de seriële console
 
 Scenario          | Acties in de seriële console
 :------------------|:-----------------------------------------
-Onjuiste firewall-regels | Toegang tot de seriële console en de oplossing Windows firewall-regels.
-Bestandssysteem beschadigd/selectievakje | Toegang tot de seriële console en het bestandssysteem herstellen.
-Problemen met RDP-configuratie | Toegang tot de seriële console en de instellingen wijzigen. Zie voor meer informatie de [RDP documentatie](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Systeem voor het vergrendelen van netwerk | Toegang tot de seriële console van de Azure-portal voor het beheren van het systeem. Sommige netwerk opdrachten worden weer gegeven in [Windows-opdrachten: CMD en Power shell @ no__t-0.
-Interactie met de bootloader | Toegang tot het BCD via de seriële console. Zie voor meer informatie, [inschakelen het opstartmenu Windows in de seriële console](#enable-the-windows-boot-menu-in-the-serial-console).
+Onjuiste firewall regels | Toegang tot seriële console en Windows Firewall-regels herstellen.
+Beschadiging/controle van bestands systeem | Open de seriële console en herstel het bestands systeem.
+Problemen met de RDP-configuratie | Toegang tot de seriële console en de instellingen te wijzigen. Zie de [RDP-documentatie](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)voor meer informatie.
+Netwerk vergrendeling systeem | Open de seriële console vanuit het Azure Portal om het systeem te beheren. Sommige netwerk opdrachten worden weer gegeven in [Windows-opdrachten: cmd en Power shell](serial-console-cmd-ps-commands.md).
+Interactie met bootloader | Toegang tot BCD via de seriële console. Zie [het Windows-opstart menu inschakelen in de seriële console](#enable-the-windows-boot-menu-in-the-serial-console)voor meer informatie.
 
 ## <a name="known-issues"></a>Bekende problemen
 Er zijn enkele problemen met de seriële console en het besturings systeem van de virtuele machine. Hier volgt een lijst met deze problemen en stappen voor het beperken van de oplossing voor Windows-Vm's. Deze problemen en oplossingen zijn van toepassing voor zowel Vm's als virtuele-machine schaal sets. Als deze niet overeenkomen met de fout die u ziet, raadpleegt u de common Serial console-service fouten bij [veelvoorkomende seriële console fouten](./serial-console-errors.md).
 
 Probleem                             |   Oplossing
 :---------------------------------|:--------------------------------------------|
-Drukken **Enter** nadat de banner van de verbinding niet leidt een aanmeldingsprompt tot moet worden weergegeven. | Zie voor meer informatie, [Hitting invoeren, gebeurt er niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Deze fout kan optreden als u werkt met een aangepaste VM, beperkte toestel of boot-configuratie die ervoor zorgt Windows dat niet correct verbinding maken met de seriële poort. Deze fout treedt ook op als u een Windows 10-VM uitvoert, omdat alleen virtuele machines met Windows Server zijn geconfigureerd om EMS te kunnen inschakelen.
-Alleen gegevens over de servicestatus wordt weergegeven bij het verbinden met een Windows-VM| Deze fout treedt op als de speciale beheer console niet is ingeschakeld voor uw Windows-installatie kopie. Zie [inschakelen van de seriële console in aangepaste of oudere installatiekopieën](#enable-the-serial-console-in-custom-or-older-images) voor instructies over het handmatig inschakelen SAC op uw Windows-VM. Zie voor meer informatie, [Windows health signalen](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
-Kan niet naar het type op SAC vragen als kernelfoutopsporing is ingeschakeld. | RDP-verbinding VM en voer `bcdedit /debug {current} off` vanaf een opdrachtprompt met verhoogde bevoegdheid. Als u niet de RDP-verbinding, kunt u in plaats daarvan de besturingssysteemschijf koppelen aan een andere Azure-virtuele machine en wijzigen terwijl als een gegevensschijf gekoppeld door uit te voeren `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, klikt u vervolgens wisselen van de schijf weer.
-Plakken in PowerShell in SAC resulteert in een derde teken als de oorspronkelijke inhoud beschikt over een herhalende teken. | Voor een tijdelijke oplossing Voer `Remove-Module PSReadLine` te verwijderen van de module PSReadLine uit de huidige sessie. Deze actie wordt niet verwijderen of de module verwijderen.
-Sommige invoer toetsenbord vreemd SAC uitvoer produceren (bijvoorbeeld **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) escapereeksen worden niet ondersteund door de SAC-prompt.
-Lange tekenreeksen plakken werkt niet. | De seriële console beperkt de lengte van tekenreeksen in de terminal naar 2048 tekens om te voorkomen dat de seriële poort-bandbreedte overbelasten geplakt.
+Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Deze fout kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een opstart configuratie uitvoert die ervoor zorgt dat Windows niet op de juiste wijze verbinding maakt met de seriële poort. Deze fout treedt ook op als u een Windows 10-VM uitvoert, omdat alleen virtuele machines met Windows Server zijn geconfigureerd om EMS te kunnen inschakelen.
+Er wordt alleen status informatie weer gegeven wanneer u verbinding maakt met een Windows-VM| Deze fout treedt op als de speciale beheer console niet is ingeschakeld voor uw Windows-installatie kopie. Zie [de seriële console inschakelen in aangepaste of oudere installatie kopieën](#enable-the-serial-console-in-custom-or-older-images) voor instructies over het hand matig inschakelen van SAC op uw Windows-VM. Zie [Windows Health Signals](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)(Engelstalig) voor meer informatie.
+SAC behaalt niet het volledige seriële console gebied in de browser | Dit is een bekend probleem met Windows en de terminal emulator. We volgen dit probleem met beide teams, maar nu is er geen oplossing.
+Kan niet op SAC-prompt typen als fout opsporing voor kernel is ingeschakeld. | RDP naar VM en voer `bcdedit /debug {current} off` uit vanaf een opdracht prompt met verhoogde bevoegdheid. Als u geen RDP hebt, kunt u in plaats daarvan de besturingssysteem schijf aan een andere virtuele machine van Azure koppelen en deze wijzigen als een gegevens schijf door `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` uit te voeren en de schijf vervolgens weer te vervangen.
+Plakken in Power shell in SAC resulteert in een derde teken als de oorspronkelijke inhoud een herhalend teken bevat. | Voer `Remove-Module PSReadLine` uit voor een tijdelijke oplossing om de module PSReadLine uit de huidige sessie te verwijderen. Met deze actie wordt de module niet verwijderd of verwijderd.
+Sommige toetsenbord ingangen produceren een vreemde SAC-uitvoer (bijvoorbeeld **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) -escape reeksen worden niet ondersteund door de SAC-prompt.
+Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de lengte van teken reeksen die in de terminal worden geplakt tot 2048 tekens om te voor komen dat de band breedte van de seriële poort wordt overbelast.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Q. Hoe kan ik feedback verzenden?**
+**V. Hoe kan ik feedback verzenden?**
 
-A. Feedback geven door het maken van een GitHub-probleem aan https://aka.ms/serialconsolefeedback. U kunt ook (minder bij voorkeur), kunt u feedback via verzenden azserialhelp@microsoft.com of in de categorie van de virtuele machine van https://feedback.azure.com.
+A. Feedback geven door een GitHub-probleem te maken op https://aka.ms/serialconsolefeedback. Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com.
 
-**Q. Biedt ondersteuning voor de seriële console kopiëren/plakken?**
+**V. ondersteunt de seriële console kopiëren/plakken?**
 
-A. Ja. Gebruik **Ctrl**+**Shift**+**C** en **Ctrl**+**Shift** + **V** kopiëren en plakken in de terminal.
+A. Ja. Gebruik **ctrl** +**SHIFT** +**C** en **CTRL** +**SHIFT** +**V** om de Terminal te kopiëren en te plakken.
 
-**Q. Wie kunt inschakelen of uitschakelen van de seriële console voor mijn abonnement?**
+**V. wie kan de seriële console voor mijn abonnement in-of uitschakelen?**
 
-A. Als u wilt in- of uitschakelen van de seriële console op het niveau van een brede, door het abonnement, moet u hebt schrijfmachtigingen voor het abonnement. Rollen die gemachtigd schrijven bevatten beheerder of eigenaar rollen. Aangepaste rollen kunnen ook schrijfmachtigingen hebben.
+A. Als u de seriële console op het niveau van een abonnement wilt in-of uitschakelen, moet u schrijf machtigingen hebben voor het abonnement. Rollen met schrijf machtiging zijn onder andere beheerders-of eigenaar rollen. Aangepaste rollen kunnen ook schrijf machtigingen hebben.
 
-**Q. Wie toegang heeft tot de seriële console voor mijn VM?**
+**V. wie kan toegang krijgen tot de seriële console voor mijn VM?**
 
-A. U moet de rol Inzender voor virtuele machines hebben of hoger voor een virtuele machine voor toegang tot de seriële console van de virtuele machine.
+A. U moet de rol Inzender voor virtuele machines of hoger hebben voor een VM om toegang te krijgen tot de seriële console van de VM.
 
-**Q. Mijn seriële console van alles zijn, niet wordt weergegeven wat moet ik doen?**
+**V. mijn seriële console geeft niets weer, wat moet ik doen?**
 
-A. Uw installatiekopie is waarschijnlijk niet goed is geconfigureerd voor toegang tot de seriële console. Zie voor meer informatie over het configureren van de afbeelding om in te schakelen van de seriële console [inschakelen van de seriële console in aangepaste of oudere installatiekopieën](#enable-the-serial-console-in-custom-or-older-images).
+A. De installatie kopie is waarschijnlijk onjuist geconfigureerd voor toegang tot seriële consoles. Voor informatie over het configureren van uw installatie kopie om de seriële console in te scha kelen, raadpleegt u [de seriële console inschakelen in aangepaste of oudere installatie kopieën](#enable-the-serial-console-in-custom-or-older-images).
 
-**Q. Is de seriële console beschikbaar voor virtuele-machineschaalsets?**
+**V. is de seriële console beschikbaar voor schaal sets voor virtuele machines?**
 
 A. Ja dat is zo! Zie de [seriële console voor Virtual Machine Scale sets](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Windows-opdrachten voor een diep gaande hand leiding voor CMD-en Power shell-opdrachten die u kunt gebruiken in Windows SAC: CMD en Power shell @ no__t-0.
-* Seriële console van het is ook beschikbaar voor [Linux](serial-console-linux.md) VM's.
-* Meer informatie over [diagnostische gegevens over opstarten](boot-diagnostics.md).
+* Zie [Windows-opdrachten: cmd en Power shell](serial-console-cmd-ps-commands.md)(Engelstalig) voor een diep gaande hand leiding voor cmd-en Power shell-opdrachten die u kunt gebruiken in Windows SAC.
+* De seriële console is ook beschikbaar voor [Linux](serial-console-linux.md) -vm's.
+* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md).

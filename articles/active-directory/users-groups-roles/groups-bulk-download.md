@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146290"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517149"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Bulksgewijs downloaden van een lijst met groepen (preview) in Azure Active Directory
 
 Met Azure Active Directory-Portal (Azure AD) kunt u de lijst met alle groepen in uw organisatie bulksgewijs downloaden naar een bestand met door komma's gescheiden waarden (CSV).
 
-> [!NOTE]
-> Bulk bewerkingen van Azure AD zijn een open bare preview-functie van Azure AD en zijn beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de voor waarden voor Preview-versies.
-
 ## <a name="to-download-a-list-of-groups"></a>Een lijst met groepen downloaden
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een beheerders account in de organisatie.
-1. Selecteer **groepen** > **Download groepen**in azure AD.
+1. Selecteer in azure AD **groepen**  > **Download groepen**.
 1. Selecteer op de pagina **groepen downloaden** de optie **Start** om een CSV-bestand te ontvangen waarin uw groepen worden weer gegeven.
 
    ![De opdracht groepen downloaden bevindt zich op de pagina alle groepen](./media/groups-bulk-download/bulk-download.png)

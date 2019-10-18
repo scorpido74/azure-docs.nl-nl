@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035618"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532400"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
@@ -34,7 +34,7 @@ Integreren met System Center Operations Manager voegt waarde toe aan uw strategi
 
 De agents die rapporteren aan de Operations Manager beheer groep verzamelen gegevens van uw servers op basis van de [log Analytics gegevens bronnen](agent-data-sources.md) en oplossingen die u hebt ingeschakeld in uw werk ruimte. Afhankelijk van de ingeschakelde oplossingen worden de gegevens rechtstreeks van een Operations Manager-beheer server naar de service verzonden of door het volume van de gegevens die worden verzameld op het door de agent beheerde systeem, worden ze rechtstreeks van de agent naar een Log Analytics-werk ruimte verzonden. De beheerserver stuurt de gegevens rechtstreeks naar de service. Deze worden nooit naar de operationele database of datawarehouse-database geschreven. Wanneer een beheer server de verbinding met Azure Monitor kwijtraakt, worden de gegevens lokaal in de cache opgeslagen totdat de communicatie opnieuw tot stand is gebracht. Als de beheer server offline is vanwege gepland onderhoud of niet-geplande onderbreking, hervat een andere beheer server in de beheer groep de verbinding met Azure Monitor.  
 
-In het volgende diagram ziet u de verbinding tussen de beheerser vers en agents in een System Center Operations Manager-beheer groep en Azure Monitor, met inbegrip van de richting en poorten.   
+In het volgende diagram ziet u de verbinding tussen de beheerser vers en agents in een System Center Operations Manager-beheer groep en Azure Monitor, met inbegrip van de richting en poorten.
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
@@ -51,21 +51,21 @@ Controleer de volgende vereisten voordat u begint.
 * U bent geverifieerd bij Azure met een account dat lid is van de [rol log Analytics Inzender](manage-access.md#manage-access-using-azure-permissions).
 
 * Ondersteunde regio's: alleen de volgende Azure-regio's worden ondersteund door System Center Operations Manager om verbinding te maken met een Log Analytics-werk ruimte:
-    - US - west-centraal
+    - VS - west-centraal
     - Australië - zuidoost
-    - Europa -west
-    - East US
+    - Europa - west
+    - VS - oost
     - Azië - zuidoost
-    - Japan - oost
-    - Verenigd Koninkrijk Zuid
+    - Japan - Oost
+    - VK - zuid
     - India - centraal
-    - Canada - midden
-    - US - west 2
+    - Canada-Midden
+    - VS - west 2
 
 >[!NOTE]
 >Recente wijzigingen aan Azure-Api's kunnen voor komen dat klanten de integratie tussen hun beheer groep en Azure Monitor voor de eerste keer configureren. Voor klanten die hun beheer groep al hebben geïntegreerd met de service, heeft dit geen invloed op de gebruikers, tenzij u uw bestaande verbinding opnieuw moet configureren.  
 >Er is een nieuwe management pack uitgebracht voor de volgende versies van Operations Manager:
-> - Voor System Center Operations Manager 2019 wordt management pack meegeleverd met de Operations Manager-build.
+> - Voor System Center Operations Manager 2019 wordt deze management pack opgenomen in de-bron media en geïnstalleerd tijdens de installatie van een nieuwe beheer groep of tijdens een upgrade.
 >- Operations Manager 1801 management pack is ook van toepassing op Operations Manager 1807.
 >- Voor System Center Operations Manager 1801, moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57173)downloaden.
 >- Voor System Center 2016-Operations Manager moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57172)downloaden.  
@@ -74,9 +74,9 @@ Controleer de volgende vereisten voordat u begint.
 
 ### <a name="network"></a>Netwerk
 
-Hieronder vindt u de informatie over de proxy-en firewall configuratie die is vereist voor de Operations Manager agent, beheerser vers en Operations-console om te communiceren met Azure Monitor. Verkeer van elk onderdeel is uitgaand van uw netwerk naar Azure Monitor.   
+Hieronder vindt u de informatie over de proxy-en firewall configuratie die is vereist voor de Operations Manager agent, beheerser vers en Operations-console om te communiceren met Azure Monitor. Verkeer van elk onderdeel is uitgaand van uw netwerk naar Azure Monitor.
 
-|Resource | Poortnummer| HTTPS-controle overslaan|  
+|Bron | Poortnummer| HTTPS-controle overslaan|  
 |---------|------|-----------------------|  
 |**Agent**|||  
 |\*.ods.opinsights.azure.com| 443 |Ja|  
@@ -100,9 +100,9 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 |api.loganalytics.io| 80 en 443||
 |docs.loganalytics.io| 80 en 443||  
 
-### <a name="tls-12-protocol"></a>TLS 1.2-protocol
+### <a name="tls-12-protocol"></a>TLS 1,2-protocol
 
-Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**. Raadpleeg voor meer informatie, [verzenden van gegevens veilig gebruik TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**. Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager verbinding maken met Azure Monitor
 
@@ -111,30 +111,30 @@ Voer de volgende stappen uit om uw Operations Manager-beheergroep te verbinden m
 Tijdens de eerste registratie van uw Operations Manager-beheer groep met een Log Analytics-werk ruimte is de optie om de proxy configuratie voor de beheer groep op te geven niet beschikbaar in de operations-console.  Deze optie is pas beschikbaar als de beheergroep bij de service is geregistreerd.  Als u dit wilt omzeilen, moet u de systeem proxy configuratie bijwerken met behulp van Netsh op het systeem waarop de operations-console wordt uitgevoerd om de integratie te configureren en alle beheerser vers in de beheer groep.  
 
 1. Open een opdrachtprompt met verhoogde bevoegdheid.
-   a. Ga naar **Start** en het type **cmd**.
-   b. Met de rechtermuisknop op **opdrachtprompt** en selecteert u uitvoeren als beheerder **.
+   a. Ga naar **Start** en typ **cmd**.
+   b. Klik met de rechter muisknop op **opdracht prompt** en selecteer als administrator uitvoeren * *.
 1. Voer de volgende opdracht in en druk op **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Na het volt ooien van de volgende stappen voor de integratie met Azure monitor, kunt u de `netsh winhttp reset proxy` configuratie verwijderen door uit te voeren en vervolgens de optie **proxy server configureren** in de operations-console gebruiken om de proxy-of log Analytics Gateway server op te geven .
+Na het volt ooien van de volgende stappen voor de integratie met Azure Monitor, kunt u de configuratie verwijderen door `netsh winhttp reset proxy` uit te voeren en vervolgens de optie **proxy server configureren** in de operations-console te gebruiken om de proxy-of log Analytics Gateway server op te geven.
 
 1. Selecteer de werkruimte **Beheer** in de Operations Manager-console.
 1. Vouw het knooppunt Operations Management Suite uit en klik op **Verbinding**.
 1. Klik op de koppeling **Registreren bij Operations Management Suite**.
-1. Op de **wizard Operations Management Suite voorbereiden: Verificatie** pagina, voer het e-mail adres of telefoon nummer en het wacht woord in van het beheerders account dat is gekoppeld aan uw OMS-abonnement en klik op **Aanmelden**.
+1. Voer op de pagina **Wizard Operations Management Suite voorbereiden: verificatie** het e-mailadres of telefoonnummer en het wachtwoord in van het beheerdersaccount dat is gekoppeld aan uw OMS-abonnement, en klik op **Aanmelden**.
 
    >[!NOTE]
    >De naam van de Operations Management Suite is buiten gebruik gesteld.
 
-1. Nadat u bent geverifieerd, kunt u op **de wizard Operations Management Suite voorbereiden: Pagina werk** ruimte selecteren, wordt u gevraagd om uw Azure-Tenant,-abonnement en-log Analytics-werk ruimte te selecteren. Als u meerdere werkruimten hebt, selecteert u in de keuzelijst de werkruimte die u bij de Operations Manager-beheergroep wilt registreren, en klikt u op **Volgende**.
+1. Nadat u bent geverifieerd, klikt u op de **wizard Operations Management Suite voorbereiden: pagina werk ruimte selecteren** , wordt u gevraagd om uw Azure-Tenant,-abonnement en log Analytics-werk ruimte te selecteren. Als u meerdere werkruimten hebt, selecteert u in de keuzelijst de werkruimte die u bij de Operations Manager-beheergroep wilt registreren, en klikt u op **Volgende**.
 
    > [!NOTE]
    > Operations Manager ondersteunt slechts één Log Analytics-werkruimte tegelijk. De verbinding en de computers die zijn geregistreerd voor Azure Monitor met de vorige werk ruimte worden verwijderd uit Azure Monitor.
    >
    >
-1. Op de **wizard Operations Management Suite voorbereiden: Pagina** samen vatting, bevestig uw instellingen en klik op **maken**als deze juist zijn.
-1. Op de **wizard Operations Management Suite voorbereiden: Volt** ooien op **sluiten**.
+1. Controleer de instellingen op de pagina **Wizard Operations Management Suite voorbereiden: samenvatting**. Als deze juist zijn, klikt u op **Maken**.
+1. Op de pagina **Wizard Operations Management Suite voorbereiden: voltooien** klikt u op **Sluiten**.
 
 ### <a name="add-agent-managed-computers"></a>Door een agent beheerde computers toevoegen
 
@@ -154,7 +154,7 @@ Voer de volgende stappen uit als er een interne proxy server is tussen de beheer
 1. Open de Operations Manager-console en selecteer de werkruimte **Beheer**.
 1. Vouw Operations Management Suite uit en klik op **Verbindingen**.
 1. Klik in de weergave OMS-verbinding op **Proxyserver configureren**.
-1. In **de wizard Operations Management Suite: Pagina Proxy** server, selecteert u **een proxy server gebruiken voor toegang tot de Operations Management Suite**en vervolgens typt u de URL met het poort nummer http://corpproxy:80 , bijvoorbeeld en klikt u vervolgens op **volt ooien**.
+1. Selecteer op de pagina **Wizard Operations Management Suite: proxyserver** de optie **Een proxyserver gebruiken voor toegang tot Operations Management Suite** en typ de URL met het poortnummer, bijvoorbeeld http://corpproxy:80, en klik op **Voltooien**.
 
 Als voor uw proxy server verificatie is vereist, voert u de volgende stappen uit om referenties en instellingen te configureren die moeten worden door gegeven aan beheerde computers die rapporteren aan Azure Monitor in de beheer groep.
 
@@ -191,10 +191,10 @@ Als u wilt door gaan met het bestaande wijzigings besturings proces voor het beh
 1. Open de Operations Manager-console met een account dat lid is van de rol Administrators in Operations Manager en selecteer de werkruimte **Beheer**.
 1. Vouw Log Analytics uit en selecteer **verbindingen**.
 1. Selecteer de koppeling **Operations Management Suite opnieuw configureren** in het middelste gedeelte van het deelvenster.
-1. Volg de **log Analytics wizard** voor onboarding en voer het e-mail adres of telefoon nummer en het wacht woord in van het beheerders account dat is gekoppeld aan uw nieuwe log Analytics-werk ruimte.
+1. Volg de **log Analytics wizard voor onboarding** en voer het e-mail adres of telefoon nummer en het wacht woord in van het beheerders account dat is gekoppeld aan uw nieuwe log Analytics-werk ruimte.
 
    > [!NOTE]
-   > De **wizard Operations Management Suite voorbereiden: Pagina werkruimte** selecteren geeft de bestaande werk ruimte weer die in gebruik is.
+   > Op de pagina **Wizard Operations Management Suite voorbereiden: werkruimte selecteren** wordt de bestaande werkruimte weergegeven die momenteel wordt gebruikt.
    >
    >
 
@@ -354,10 +354,10 @@ Als u de twee connectors Microsoft.SystemCenter.Advisor.DataConnector en Advisor
     Remove-Connector $connectorName
 ```
 
-In de toekomst moet u het `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` Management Pack bestand opnieuw importeren als u van plan bent om uw beheer groep opnieuw te verbinden met een log Analytics-werk ruimte. Afhankelijk van welke versie van System Center Operations Manager in uw omgeving is geïmplementeerd, bevindt dit bestand zich op de volgende locatie:
+Als u in de toekomst van plan bent om uw beheer groep opnieuw te verbinden met een Log Analytics-werk ruimte, moet u het `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` management pack-bestand opnieuw importeren. Afhankelijk van welke versie van System Center Operations Manager in uw omgeving is geïmplementeerd, bevindt dit bestand zich op de volgende locatie:
 
 * Op het bronmedium in de map `\ManagementPacks` voor System Center 2016 - Operations Manager of hoger.
-* Van het meest recente updatepakket dat op de beheergroep is toegepast. Voor Operations Manager 2012 is `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` de bronmap en voor 2012 R2 aanwezig in. `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`
+* Van het meest recente updatepakket dat op de beheergroep is toegepast. Voor Operations Manager 2012 is de bronmap `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` en voor 2012 R2. deze map bevindt zich in `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

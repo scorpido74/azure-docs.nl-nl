@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245251"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511466"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -131,7 +131,7 @@ Als u een sleutel versleutelings sleutel (KEK) wilt gebruiken voor een extra bev
 
 U kunt een nieuwe KEK genereren met behulp van de opdracht voor het maken van de Azure CLI [AZ-sleutel](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) , de Azure PowerShell [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet of de [Azure Portal](https://portal.azure.com/). U moet een RSA-sleutel type genereren. Azure Disk Encryption biedt nog geen ondersteuning voor het gebruik van elliptische curve toetsen.
 
-U kunt in plaats daarvan een KEK importeren uit uw on-premises sleutel beheer HSM. Zie [Key Vault-documentatie](/key-vault/key-vault-hsm-protected-keys)voor meer informatie. 
+U kunt in plaats daarvan een KEK importeren uit uw on-premises sleutel beheer HSM. Zie [Key Vault-documentatie](/azure/key-vault/key-vault-hsm-protected-keys)voor meer informatie.
 
 Uw sleutel kluis KEK-Url's moeten een versie nummer hebben. Azure dwingt deze beperking van versie beheer af. Zie de volgende voor beelden voor geldige geheime en KEK-Url's:
 

@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6aee9edaf3c594a2e7083416726da8e57bbf5c6b
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176773"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529151"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Beveiligings controles voor Azure Virtual Machine Scale Sets
 
@@ -50,9 +50,9 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [een virtuele Linux-machine versleutelen in azure](/azure/virtual-machines/linux/disk-encryption-linux) en [virtuele schijven op een Windows-VM versleutelen](/azure/virtual-machines/windows/encrypt-disks). |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [Azure Disk Encryption voor Virtual Machine Scale sets](disk-encryption-overview.md). |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute](/azure/expressroute) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)(Engelstalig).|
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Disk Encryption voor Virtual Machine Scale sets](disk-encryption-overview.md)|
 | Versleuteling op kolom niveau (Azure Data Services)| N/A | |
 | Versleutelde API-aanroepen| Ja | Via HTTPS en SSL. |
 

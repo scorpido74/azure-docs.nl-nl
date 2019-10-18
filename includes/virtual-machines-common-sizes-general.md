@@ -6,14 +6,14 @@ author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 58db6d0a51dd07344b4fc30473a02c6df83e4d28
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310562"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514479"
 ---
 VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en geheugen. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. Dit artikel bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer voor grootten in deze groepering.
 
@@ -23,9 +23,9 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 
   Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine tot middel grote data bases, controle van concepten en code opslagplaatsen.
 
-- Dv2-serie, een follow-on voor de oorspronkelijke D-serie, bevat een krachtigere CPU en optimale configuratie van CPU naar geheugen, zodat deze geschikt zijn voor de meeste productie werkbelastingen. De CPU van de Dv2-serie is ongeveer 35% sneller dan de CPU van de D-serie. Het is gebaseerd op de nieuwste generatie Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) of E5-2673 v4 2,3 GHz (Broadwell)-processors, en met de Intel Turbo Boost-technologie van 2,0, kan tot 3,1 GHz worden uitgevoerd. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
+- Dv2-serie, een follow-on voor de oorspronkelijke D-serie, bevat een krachtigere CPU en optimale configuratie van CPU naar geheugen, zodat deze geschikt zijn voor de meeste productie werkbelastingen. De dv2-serie is ongeveer 35% sneller dan de D-serie. Dv2-serie wordt uitgevoerd op de Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met de Intel Turbo Boost-technologie 2,0. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
 
-- De Dv3-serie bevat de 2,4 GHz Intel Xeon® E5-2673 v3-processor (Haswell) of de nieuwste 2,3 GHz Intel XEON® E5-2673 v4-processor (Broadwell) in een configuratie met Hyper-Threading. Dit biedt een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik.  Het geheugen is uitgevouwen (van ~ 3,5 GiB/vCPU naar 4 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading.  De Dv3 heeft niet langer de VM-grootten van het hoge geheugen van de D/dv2-families, die zijn verplaatst naar de nieuwe Ev3-serie.
+- De Dv3-serie wordt uitgevoerd op de Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors in een Hyper-Threaded configuratie, waardoor u een betere toegevoegde waarde hebt voor het algemeen werk belastingen voor het doel.  Het geheugen is uitgevouwen (van ~ 3,5 GiB/vCPU naar 4 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading.  De Dv3-serie heeft niet langer de VM-grootten van het hoge geheugen van de D/dv2-serie, die zijn verplaatst naar de Ev3 geoptimaliseerd voor geheugen voor [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series).
 
   Voor beelden van use-cases van de D-serie zijn zakelijke toepassingen, relationele data bases, caching in het geheugen en analyse.
 
@@ -33,23 +33,23 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
   
 ## <a name="b-series"></a>B-serie
 
-Premium-opslag:  Ondersteund
+Premium Storage: ondersteund
 
-Premium Storage caching:  Niet ondersteund
+Premium Storage caching: niet ondersteund
 
 De beproefde virtuele machines uit de B-serie zijn ideaal voor werk belastingen die de volledige prestaties van de CPU niet continu nodig hebben, zoals webservers, kleine data bases en ontwikkel-en test omgevingen. Deze werk belastingen hebben doorgaans een burstieve prestatie vereisten. De B-serie biedt deze klanten de mogelijkheid om een VM-grootte aan te schaffen met een prijs bewuste basislijn prestaties waarmee de VM-instantie tegoeden kan bouwen wanneer de virtuele machine minder is dan de basis prestaties. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine op de basis lijn van de virtuele machine worden gebursteerd met Maxi maal 100% van de CPU wanneer voor uw toepassing hogere CPU-prestaties zijn vereist.
 
 Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine data bases, micro Services, servers voor het controleren van concepten, build-servers.
 
 
-| Size             | vCPU  | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis-CPU-prestaties van VM | Maximale CPU-prestaties van VM | Starttegoed | Tegoed gestort/uur | Maximaal gestorte tegoed | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Max. aantal NIC's |          
+| Grootte             | vCPU  | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis CPU-prestaties van VM | Maximale CPU-prestaties van VM | Eerste tegoeden | Tegoeden per uur | Maximum aantal gestorte tegoeden | Maximaal aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale aantal NIC's |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1           | 0.5              | 1                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
-| Standard_B1s  | 1           | 1              | 2                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
-| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
-| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
-| Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
-| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400%                   | 120                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800/10                                  | 640/10                                  | 2  |
+| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
+| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400%                   | 120                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 240                   | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
 | Standard_B12ms | 12           | 48             | 96                         | 202%                  | 1200%                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320 / 50                                 | 6  |
 | Standard_B16ms | 16           | 64             | 128                         | 270%                  | 1600%                   | 480                   | 162                 | 3888           | 32                                     | 8640/100                                 | 4320 / 50                                 | 8  |
@@ -59,21 +59,21 @@ Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met w
 
 ## <a name="dsv3-series-sup1sup"></a>Dsv3-serie <sup>1</sup>
 
-ACU 160-190
+ACU: 160-190
 
-Premium-opslag:  Ondersteund
+Premium Storage: ondersteund
 
-Premium Storage caching:  Ondersteund
+Premium Storage caching: ondersteund
 
-De grootte van de Dsv3-serie is gebaseerd op de 2,4 GHz Intel Xeon® E5-2673 v3-processor (Haswell) of de nieuwste Intel XEON-processor van 2,3 GHz,® E5-2673 v4 (Broadwell), die 3,5 GHz kan bereiken met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. De Dsv3-serie biedt een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productieworkloads.
+Dsv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. De grootten van de Dsv3-serie bieden een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerkbelastingen.
 
 
-| Size             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps (cache grootte in GiB) | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
 | Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                      |
-| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000/256 (400)                                                    | 25600 / 384                              | 8 / 8000                                      |
+| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                      |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16000                                               |
 | Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000/768 (1200)                                                    | 76800/1152                               | 8 / 24000                                               |
 | Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000/1024 (1600)                                                    | 80000/1200                              | 8 / 30000                                               |
@@ -82,15 +82,15 @@ De grootte van de Dsv3-serie is gebaseerd op de 2,4 GHz Intel Xeon® E5-2673 v3-
 
 ## <a name="dasv3-series-preview"></a>Dasv3-serie (preview-versie)
 
-Premium-opslag: Ondersteund
+Premium Storage: ondersteund
 
-Premium Storage caching: Ondersteund
+Premium Storage caching: ondersteund
 
 Groottes van de Dasv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken en Premium-opslag gebruiken. De grootte van de Dasv3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
 
 [Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
 
-| Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
 |---|---|---|---|
 | Standard_D2as_v3  | 2  | 8   | 16  |
 | Standard_D4as_v3  | 4  | 16  | 32  |
@@ -102,18 +102,18 @@ Groottes van de Dasv3-serie zijn gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 
 
 ## <a name="dv3-series-sup1sup"></a>Dv3-serie <sup>1</sup>
 
-ACU 160-190
+ACU: 160-190
 
-Premium-opslag:  Niet ondersteund
+Premium Storage: niet ondersteund
 
-Premium Storage caching:  Niet ondersteund
+Premium Storage caching: niet ondersteund
 
-De grootte van de Dv3-serie is gebaseerd op de 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell)-processor of 2,3 GHz Intel XEON® E5-2673 v4-processor (Broadwell) die 3,5 GHz kan bereiken met de Intel Turbo Boost-technologie 2,0. De Dv3-serie biedt een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productieworkloads.
+Dv3-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0. De Dv3-serie biedt een combinatie van vCPU, geheugen en tijdelijke opslag voor de meeste productieworkloads.
 
 Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruik dan de Dsv3-grootten. De prijs- en factureringsmeters voor de Dsv3-grootten zijn gelijk aan die van de Dv3-serie. 
 
 
-| Grootte            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslag doorvoer: IOPS/Lees MBps/MBps schrijven | Max. aantal NIC's/netwerkbandbreedte |
+| Grootte            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's/netwerkbandbreedte |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -127,15 +127,15 @@ Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als
 
 ## <a name="dav3-series-preview"></a>Dav3-serie (preview-versie)
 
-Premium-opslag: Niet ondersteund
+Premium Storage: niet ondersteund
 
-Premium Storage caching: Niet ondersteund
+Premium Storage caching: niet ondersteund
 
 De grootte van de Dav3-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een gestimuleerde Fmax van 3.35 GHz kan bereiken. De grootte van de Dav3-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dasv3-grootten. De prijs-en facturerings meters voor Dasv3-grootten zijn gelijk aan die van de Dav3-serie.
 
 [Klik hier om u aan te melden voor de preview-versie](http://aka.ms/azureamdpreview).
 
-| Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB |
 |---|---|---|---|
 | Standard_D2a_v3  | 2  | 8   | 50   |
 | Standard_D4a_v3  | 4  | 16  | 100  |
@@ -147,29 +147,33 @@ De grootte van de Dav3-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7
 
 ## <a name="dsv2-series"></a>DSv2-serie
 
-ACU 210-250
+ACU: 210-250
 
-Premium-opslag:  Ondersteund
+Premium Storage: ondersteund
 
-Premium Storage caching:  Ondersteund
+Premium Storage caching: ondersteund
 
-| Size | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps (cache grootte in GiB) | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken.
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |4 |4000/32 (43) |3200/48 |2 / 750 |
-| Standard_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400/96 |2 / 1500 |
+| Standard_DS2_v2 |2 |7 |14 |8 |8000/64 (86) |6400/96 |2 / 1500 |
 | Standard_DS3_v2 |4 |14 |28 |16 |16000/128 (172) |12800/192 |4 / 3000 |
-| Standard_DS4_v2 |8 |28 |56 |32 |32000 / 256 (344) |25600 / 384 |8 / 6000 |
+| Standard_DS4_v2 |8 |28 |56 |32 |32000/256 (344) |25600/384 |8 / 6000 |
 | Standard_DS5_v2 |16 |56 |112 |64 |64000/512 (688) |51200/768 |8 / 12000 |
 
-## <a name="dv2-series"></a>Dv2-serie
+## <a name="dv2-series"></a>Dv2-reeksen
 
-ACU 210-250
+ACU: 210-250
 
-Premium-opslag:  Niet ondersteund
+Premium Storage: niet ondersteund
 
-Premium Storage caching:  Niet ondersteund
+Premium Storage caching: niet ondersteund
 
-| Size           | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/Lees MBps/MBps schrijven | Max. aantal gegevensschijven | Vracht IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0.
+
+| Grootte           | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximaal aantal gegevensschijven | Door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4 x 500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8 x 500            | 2 / 1500                                     |
@@ -179,14 +183,15 @@ Premium Storage caching:  Niet ondersteund
 
 ## <a name="av2-series"></a>Av2-serie
 
-ACU 100
+ACU: 100
 
-Premium-opslag:  Niet ondersteund
+Premium Storage: niet ondersteund
 
-Premium Storage caching:  Niet ondersteund
+Premium Storage caching: niet ondersteund
 
+DSv2-serie grootten worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken.
 
-| Size            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/Lees MBps/MBps schrijven | Maximum aantal gegevens schijven/door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) | 
+| Grootte            | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Maximumaantal gegevensschijven / doorvoer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2 x 500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4 x 500               | 2 / 500                 |
@@ -198,13 +203,13 @@ Premium Storage caching:  Niet ondersteund
 
 ## <a name="dc-series"></a>DC-serie
 
-Premium-opslag: Ondersteund
+Premium Storage: ondersteund
 
-Premium Storage caching: Ondersteund
+Premium Storage caching: ondersteund
 
 
 
-| Size          | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor opslag in cache en tijdelijke opslag: IOPS/MBps (cache grootte in GiB) | Maximale doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte          | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
-| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
-| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |

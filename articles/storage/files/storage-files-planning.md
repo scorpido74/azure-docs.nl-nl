@@ -4,15 +4,15 @@ description: Meer informatie over hoe u rekening moet houden bij het plannen van
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249359"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514660"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -26,7 +26,7 @@ ms.locfileid: "72249359"
 
 * **Opslagaccount**: alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Schaalbaarheids- en prestatiedoelen in Azure Storage) voor meer informatie over opslagaccountcapaciteit.
 
-* **Share**: een File Storage-share is een SMB-bestandsshare in Azure. Alle mappen en bestanden moeten worden gemaakt in een bovenliggende share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de totale capaciteit van de bestands share. Voor standaard bestands shares is de totale capaciteit Maxi maal 5 TiB (GA) of 100 TiB (preview), voor Premium-bestands shares, de totale capaciteit is Maxi maal 100 TiB.
+* **Share**: een File Storage-share is een SMB-bestandsshare in Azure. Alle mappen en bestanden moeten worden gemaakt in een bovenliggende share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de totale capaciteit van de bestands share. De totale capaciteit voor Premium-en standaard bestands shares is 100 TiB.
 
 * **Map**: een optionele hiërarchie van mappen.
 
@@ -79,10 +79,8 @@ Azure Files biedt twee prestatie lagen: Standard en Premium.
 
 Standaard bestands shares worden ondersteund door harde schijven (Hdd's). Standaard bestands shares bieden betrouw bare prestaties voor i/o-workloads die minder gevoelig zijn voor prestatie verschillen, zoals bestands shares voor algemene doel einden en ontwikkel-en test omgevingen. Standaard bestands shares zijn alleen beschikbaar in een facturerings model met betalen per gebruik.
 
-Standaard bestands shares met een grootte van Maxi maal 5 TiB zijn beschikbaar als GA aanbieding. Grotere bestands shares zijn de shares die groter zijn dan 5 TiB, Maxi maal 100 TiB, zijn momenteel beschikbaar als preview-aanbieding.
-
 > [!IMPORTANT]
-> Zie de sectie [onboarding to large file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen die u kunt uitvoeren, evenals het bereik en de beperkingen van de preview-versie.
+> Als u bestands shares wilt gebruiken die groter zijn dan 5 TiB, raadpleegt u de sectie [onboarding to largeed file shares (Standard-laag)](#onboard-to-larger-file-shares-standard-tier) voor de stappen voor onboarding, evenals regionale Beschik baarheid en beperkingen.
 
 ### <a name="premium-file-shares"></a>Premium-bestands shares
 
@@ -195,75 +193,43 @@ Houd bij het bepalen van de te gebruiken replicatie optie de volgende punten in 
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding naar grotere bestands shares (Standard-laag)
 
-Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premium-bestands shares zijn beschikbaar met 100 TiB als een GA aanbieding.
+Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premium-bestands shares zijn beschikbaar met een capaciteit van 100 TiB.
 
 ### <a name="restrictions"></a>Beperkingen
 
-- Azure preview- [voor waarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zijn van toepassing op grote bestands shares in de preview-versie, inclusief wanneer ze worden gebruikt met Azure file sync-implementaties.
-- Hiervoor moet u een nieuw opslag account voor algemene doel einden maken (kan bestaande opslag accounts niet uitbreiden).
-- LRS/ZRS naar GRS/GZRS-account conversie is niet mogelijk voor een nieuw opslag account dat is gemaakt nadat het abonnement is geaccepteerd op de preview-versie van grotere bestands shares.
-
+- LRS/ZRS naar GRS/GZRS-account conversie is niet mogelijk voor opslag accounts waarvoor grote bestands shares zijn ingeschakeld.
 
 ### <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaalde regio's is deze beschikbaar met een limiet van 100 TiB. deze regio's worden in de volgende tabel weer gegeven:
+Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaalde regio's zijn ze beschikbaar met een limiet van 100 TiB. deze regio's worden weer gegeven in de volgende tabel:
 
-|Regio |Ondersteunde redundantie |Ondersteunt bestaande opslag accounts |Portal ondersteuning * |
-|-------|---------|---------|---------|
-|Australië Oost |LRS     |Nee    |Ja|
-|Australië Zuidoost|LRS |Nee    |Ja|
-|India - centraal  |LRS     |Nee    |Ja|
-|Azië - oost      |LRS     |Nee    |Ja|
-|US - oost        |LRS     |Nee    |Ja|
-|Frankrijk - centraal |LRS, ZRS|Nee    |Ja|
-|Frankrijk - zuid   |LRS     |Nee    |Ja|
-|Europa - noord   |LRS     |Nee    |Nog niet|
-|India - zuid    |LRS     |Nee    |Ja|
-|Azië - zuidoost |LRS, ZRS|Nee    |Ja|
-|US - west-centraal|LRS     |Nee    |Ja|
-|Europa - west    |LRS, ZRS|Nee    |Ja|
-|US - west        |LRS     |Nee    |Ja|
-|US - west 2      |LRS, ZRS|Nee    |Ja|
+|Regio |Ondersteunde redundantie |
+|-------|---------|
+|Australië Oost |LRS     |
+|Australië Zuidoost|LRS |
+|India - centraal  |LRS     |
+|Azië - oost      |LRS     |
+|VS-Oost *        |LRS     |
+|Frankrijk - centraal |LRS, ZRS|
+|Frankrijk - zuid   |LRS     |
+|India - zuid    |LRS     |
+|Azië - zuidoost |LRS, ZRS|
+|VS - west-centraal|LRS     |
+|Europa-west *    |LRS, ZRS|
+|VS-West *        |LRS     |
+|VS - west 2      |LRS, ZRS|
 
-
-\* Voor regio's zonder ondersteuning van de portal kunt u Power shell of de Azure-opdracht regel interface (CLI) nog steeds gebruiken om meer dan 5 TiB-shares te maken. U kunt ook een nieuwe share maken via de Portal zonder een quotum op te geven. Hiermee wordt een share gemaakt met de standaard grootte van 100 TiB, die later kan worden bijgewerkt via Power shell of Azure CLI.
+\* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid.
 
 Vul deze [enquête](https://aka.ms/azurefilesatscalesurvey)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en functies.
 
-### <a name="steps-to-onboard"></a>Stappen voor onboarding
+### <a name="enable-and-create-larger-file-shares"></a>Grotere bestands shares inschakelen en maken
 
-Als u uw abonnement wilt registreren voor de grotere Preview van bestands shares, moet u Azure PowerShell gebruiken. U kunt [Azure Cloud shell](https://shell.azure.com/) gebruiken of de [module Azure PowerShell lokaal](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) installeren om de volgende Power shell-opdrachten uit te voeren:
-
-Zorg er eerst voor dat het abonnement dat u wilt inschrijven in de preview is geselecteerd:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Schrijf u vervolgens in het voor beeld in met de volgende opdrachten:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Uw abonnement wordt automatisch goedgekeurd zodra beide opdrachten worden uitgevoerd.
-
-Als u de registratie status wilt controleren, kunt u de volgende opdracht uitvoeren:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Het kan tot vijf tien minuten duren voordat de status is bijgewerkt naar **geregistreerd**. Zodra de status is **geregistreerd**, kunt u de functie gebruiken.
-
-### <a name="use-larger-file-shares"></a>Grotere bestands shares gebruiken
-
-Als u grotere bestands shares wilt gebruiken, maakt u een nieuw systeem voor algemeen gebruik v2-opslag account en een nieuwe bestands share.
+Als u grotere bestands shares wilt gaan gebruiken, raadpleegt u ons artikel [grote bestands shares inschakelen](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Gegevens groei patroon
 
-De maximale grootte voor een Azure-bestands share is vandaag 5 TiB (100 TiB in Preview). Vanwege deze huidige beperking moet u rekening houden met de verwachte groei van de gegevens bij het implementeren van een Azure-bestands share.
+De maximale grootte voor een Azure-bestands share is nu 100 TiB. Vanwege deze huidige beperking moet u rekening houden met de verwachte groei van de gegevens bij het implementeren van een Azure-bestands share.
 
 Het is mogelijk om meerdere Azure-bestands shares te synchroniseren met één Windows-Bestands server met Azure File Sync. Op deze manier kunt u ervoor zorgen dat oudere, grote bestands shares die on-premises zijn, in Azure File Sync kunnen worden gebracht. Zie [planning voor een Azure file sync-implementatie](storage-files-planning.md)voor meer informatie.
 

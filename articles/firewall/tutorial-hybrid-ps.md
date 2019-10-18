@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 5/3/2019
+ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ecc46f9ce4ec953d481bf8110326630053938524
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073081"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533339"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
 
@@ -43,7 +43,7 @@ In dit artikel leert u het volgende:
 > * De virtuele machines maken
 > * De firewall testen
 
-Zie [zelf studie als u in plaats daarvan Azure Portal wilt gebruiken om deze zelf studie te volt ooien: Implementeer en configureer Azure Firewall in een hybride netwerk met behulp](tutorial-hybrid-portal.md)van de Azure Portal.
+Zie [zelf studie: Azure firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal](tutorial-hybrid-portal.md)als u in plaats daarvan Azure Portal wilt gebruiken om deze zelf studie te volt ooien.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -62,9 +62,9 @@ Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
 Zie de sectie [routes maken](#create-the-routes) in dit artikel om te zien hoe deze routes worden gemaakt.
 
 >[!NOTE]
->Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden. Standaard biedt Azure Firewall geen ondersteuning voor geforceerde tunneling naar een on-premises netwerk.
+>Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 >
->Als uw configuratie echter geforceerde tunneling voor een on-premises netwerk vereist, zal micro soft deze in het geval per geval ondersteunen. Neem contact op met de ondersteuning zodat we uw aanvraag kunnen controleren. Als u dit hebt geaccepteerd, wordt uw abonnement white list en moet u ervoor zorgen dat de vereiste Firewall Internet connectiviteit wordt onderhouden.
+>Azure Firewall biedt momenteel geen ondersteuning voor geforceerde tunneling. Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is vereist en u de doel-IP-voor voegsels voor uw Internet doelen kunt bepalen, kunt u deze bereiken met het on-premises netwerk als de volgende hop configureren via een door de gebruiker gedefinieerde route op de AzureFirewallSubnet. U kunt ook BGP gebruiken om deze routes te definiëren.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.

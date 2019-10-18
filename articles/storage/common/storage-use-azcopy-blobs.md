@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f1b18601629db12d4f9e75f180488e91b6a6857a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 736957ec68f592da74fc6903acade1150d253467
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274868"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527030"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -223,7 +223,7 @@ De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing 
 
 U kunt AzCopy gebruiken om blobs naar andere opslag accounts te kopiëren. De Kopieer bewerking is synchroon, dus wanneer de opdracht wordt geretourneerd. Dit geeft aan dat alle bestanden zijn gekopieerd. 
 
-AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de omgevings variabele `AZCOPY_CONCURRENCY_VALUE` in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
+AzCopy maakt gebruik van [server-naar-server-](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api's](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url), zodat gegevens rechtstreeks tussen opslag servers worden gekopieerd. Deze Kopieer bewerkingen gebruiken de netwerk bandbreedte van uw computer niet. U kunt de door Voer van deze bewerkingen verhogen door de waarde van de variabele `AZCOPY_CONCURRENCY_VALUE` omgeving in te stellen. Zie de [door Voer optimaliseren](storage-use-azcopy-configure.md#optimize-throughput)voor meer informatie.
 
 > [!NOTE]
 > In dit scenario gelden de volgende beperkingen in de huidige release.
@@ -272,7 +272,7 @@ Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag document
 
 ## <a name="synchronize-files"></a>Bestanden synchroniseren
 
-U kunt de inhoud van een lokaal bestands systeem synchroniseren met een BLOB-container. Synchronisatie is in één richting. Met andere woorden, u kunt kiezen welke van deze twee eind punten de bron is en welke het doel is. Synchronisatie gebruikt ook server-naar-server-Api's.
+U kunt de inhoud van een lokaal bestands systeem synchroniseren met een BLOB-container. U kunt ook containers en virtuele mappen synchroniseren met elkaar. Synchronisatie is in één richting. Met andere woorden, u kunt kiezen welke van deze twee eind punten de bron is en welke het doel is. Synchronisatie gebruikt ook server-naar-server-Api's.
 
 > [!NOTE]
 > Dit scenario wordt momenteel alleen ondersteund voor accounts die geen hiërarchische naam ruimte hebben. De huidige release van AzCopy synchroniseert niet tussen andere bronnen en doelen (bijvoorbeeld: File Storage of Amazon Web Services (AWS) S3-buckets).
@@ -304,6 +304,24 @@ In dit geval is het lokale bestands systeem het doel en de container de bron.
 | **Syntaxis** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
 | **Voorbeeld** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
 |
+
+### <a name="update-a-container-with-changes-in-another-container"></a>Een container bijwerken met wijzigingen in een andere container
+
+De eerste container die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
+| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Een Directory bijwerken met wijzigingen in een map in een andere bestands share
+
+De eerste map die wordt weer gegeven in deze opdracht is de bron. De tweede is de bestemming.
+
+|    |     |
+|--------|-----------|
+| **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
+| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146334"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517106"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Groeps leden bulksgewijs verwijderen (preview) in Azure Active Directory
 
 Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden uit een groep verwijderen door een bestand met door komma's gescheiden waarden (CSV) te gebruiken om groeps leden bulksgewijs te verwijderen.
 
-> [!NOTE]
-> Bulk bewerkingen van Azure AD zijn een open bare preview-functie van Azure AD en zijn beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de voor waarden voor Preview-versies.
-
 ## <a name="to-bulk-remove-group-members"></a>Groeps leden bulksgewijs verwijderen
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden verwijderen van de groepen waarvan ze eigenaar zijn.
-1. Selecteer **groepen** > **alle groepen**in azure AD.
+1. Selecteer in azure AD **groepen**  > **alle groepen**.
 1. Open de groep waaruit u leden wilt verwijderen en selecteer vervolgens **leden**.
 1. Selecteer **leden verwijderen**op de pagina **leden** .
 1. Selecteer op de pagina **groeps leden bulksgewijs verwijderen (voor beeld)** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.

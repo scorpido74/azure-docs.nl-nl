@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 6f787760c1224172982e0818d8592ce0d36b5e2c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299490"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527286"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 (preview) op Azure
 
@@ -50,6 +50,10 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [NCv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) en [NCv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
 * [NVv3-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+
+
+>[!NOTE]
+>Het gebruik van VM-installatie kopieën van de 2e generatie voor de Mv2-serie is algemeen beschikbaar omdat de Mv2-serie alleen werkt met VM-installatie kopieën van de tweede generatie. VM-installatie kopieën van generatie 1 werken niet met Mv2-serie. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-installatie kopieën van generatie 2 in azure Marketplace
 

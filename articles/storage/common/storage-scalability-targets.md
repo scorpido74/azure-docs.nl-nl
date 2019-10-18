@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 293d0de024ad815b4755d48833b7058c29ebcd5a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326948"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513299"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts
 
@@ -39,15 +39,15 @@ Wanneer uw toepassing de limiet bereikt van wat een partitie voor uw workload ka
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
-## <a name="azure-files-scale-targets"></a>Azure bestanden schaal doelen
+## <a name="azure-files-scale-targets"></a>Azure Files schaal doelen
 
 Zie [Azure files schaal baarheid en prestatie doelen](../files/storage-files-scale-targets.md)voor meer informatie over de schaal-en prestatie doelen voor Azure Files en Azure file sync.
 
 > [!IMPORTANT]
 > Limieten voor opslag accounts zijn van toepassing op alle shares. Het omhoog schalen naar het maximum voor opslag accounts wordt alleen behaald als er slechts één share per opslag account is.
 >
-> Standaard bestands shares groter dan 5 TiB zijn in Preview en hebben bepaalde beperkingen.
-> Zie de sectie [standaard bestands shares](../files/storage-files-planning.md#standard-file-shares) in de plannings handleiding voor Azure files voor een lijst met beperkingen en voor een onboarding van de preview-versie van deze grotere bestands shares.
+> Standaard bestands shares groter dan 5 TiB hebben bepaalde beperkingen en regionale beperkingen.
+> Voor een lijst met beperkingen, regionale informatie en instructies voor het inschakelen van deze grotere grootte van bestands shares, zie de sectie [onboarding naar grotere bestands shares (Standard-laag)](../files/storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) van de Azure files plannings handleiding.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -55,7 +55,7 @@ Zie [Azure files schaal baarheid en prestatie doelen](../files/storage-files-sca
 
 Er zijn drie categorieën beperkingen waarmee u rekening moet houden voor Premium-bestanden: opslag accounts, shares en bestanden.
 
-Bijvoorbeeld: Eén share kan 100.000 IOPS behaalt en één bestand kan tot 5.000 IOPS worden geschaald. Als u bijvoorbeeld drie bestanden in één share hebt, is het maximum aantal IOPs dat u van deze share kunt verkrijgen 15.000.
+Bijvoorbeeld: een enkele share kan 100.000 IOPS behaalt en één bestand kan tot 5.000 IOPS worden geschaald. Als u bijvoorbeeld drie bestanden in één share hebt, is het maximum aantal IOPs dat u van deze share kunt verkrijgen 15.000.
 
 #### <a name="premium-file-share-limits"></a>Limieten voor Premium-bestands shares
 

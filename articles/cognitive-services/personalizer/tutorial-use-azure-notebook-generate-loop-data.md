@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure notebook-persoonlijker'
+title: 'Zelf studie: Azure notebook-Personaler'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie wordt een aangepaste lus _system in een Azure-notebook gesimuleerd, waarmee wordt voorgesteld welk type koffie een klant moet best Ellen. De gebruikers en hun voor keuren worden opgeslagen in een gegevensset van een gebruiker. Informatie over de koffie is ook beschikbaar en opgeslagen in een koffie-gegevensset.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: b724e54eb2d9e61bd576ab8a094489bbed6db20d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975406"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515165"
 ---
-# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelfstudie: Personaler gebruiken in azure notebook
+# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelf studie: persoonlijker gebruiken in azure notebook
 
 In deze zelf studie wordt een aangepaste lus in een Azure-notitie blok uitgevoerd, waarbij de end-to-end levenscyclus van een Personaler-lus wordt aangetoond. 
 
@@ -29,16 +29,16 @@ De notebook selecteert een wille keurige gebruiker, tijdstip van de dag en het t
 
 |Klanten-context functies|Tijdstippen van de dag|Typen weer|
 |--|--|--|
-|Els<br>Bob<br>Cathy<br>Dave|Ochtend<br>'S<br>'S avonds|Zon<br>Regen achtig<br>Besneeuwde| 
+|Robert<br>Bob<br>Cathy<br>Dave|Ochtend<br>'S<br>'S avonds|Zon<br>Regen achtig<br>Besneeuwde| 
 
 Om persoonlijker te kunnen leren, is de juiste koffie selectie voor elke persoon, maar kent het _systeem_ ook meer informatie over de koffie.
 
-|Functies van de koffie actie|Typen temperatuur|Plaatsen van oorsprong|Typen koffie|Biologische|
+|Functies van de koffie actie|Typen Tempe ratuur|Plaatsen van oorsprong|Typen koffie|Biologische|
 |--|--|--|--|--|
-|Cappacino|Dynamisch|Kenia|Donker|Biologische|
+|Cappacino|Warm|Kenia|Donker|Biologische|
 |Koud Brew|Huizen|Brazilië|Licht|Biologische|
 |Iced mocha|Huizen|Ethiopië|Licht|Niet biologisch|
-|Latte|Dynamisch|Brazilië|Donker|Niet biologisch|
+|Latte|Warm|Brazilië|Donker|Niet biologisch|
 
 
 Het **doel** van de aangepaste lus is het vinden van de beste overeenkomst tussen de gebruikers en de koffie, zo veel mogelijk tijd. 
@@ -83,7 +83,7 @@ Bestands beschrijvingen:
 
 Configureer in de Azure Portal uw [persoonlijke resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) met de frequentie van het **Update model** ingesteld op 15 seconden en een **wacht tijd** van vijf tien seconden. Deze instellingen zijn te vinden op de pagina **[instellingen](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
 
-|Instelling|Value|
+|Instelling|Waarde|
 |--|--|
 |model frequentie bijwerken|15 seconden|
 |wacht tijd op beloning|15 seconden|
@@ -114,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Sleutel en naam van de persoonlijker-resource instellen
 
-Zoek in de Azure Portal uw sleutel en eind punt op de pagina **Quick** start van uw persoonlijke resource. Wijzig de waarde van `<your-resource-name>` in de naam van uw Personaler-resource. Wijzig de waarde van `<your-resource-key>` in uw persoonlijke sleutel. 
+Zoek in de Azure Portal uw sleutel en eind punt op de pagina **Quick** start van uw persoonlijke resource. Wijzig de waarde van `<your-resource-name>` in de naam van uw Personaler-resource. Wijzig de waarde van `<your-resource-key>` naar uw persoonlijke sleutel. 
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -122,7 +122,7 @@ personalization_base_url = "https://<your-resource-name>.cognitiveservices.azure
 resource_key = "<your-resource-key>"
 ```
 
-### <a name="print-current-data-and-time"></a>Huidige gegevens en tijd afdrukken
+### <a name="print-current-date-and-time"></a>Huidige datum en tijd afdrukken
 Gebruik deze functie om de begin-en eind tijd van de iteratieve functie en herhalingen te noteren.
 
 Deze cellen hebben geen uitvoer. De functie voert de huidige datum en tijd uit als deze wordt aangeroepen.
@@ -198,10 +198,10 @@ Deze cel
 * Hiermee stelt u de beveiligingskop tekst in met uw persoonlijke-resource sleutel 
 * Hiermee wordt de wille keurige Seed ingesteld voor de positie gebeurtenis-ID
 * Lees bewerkingen in de JSON-gegevens bestanden
-* aanroepen `get_last_updated` methode-Learning-beleid is verwijderd in voorbeeld uitvoer
-* roept de `get_service_settings`-methode aan
+* roept `get_last_updated` methode-Learning-beleid verwijderd in voorbeeld uitvoer
+* roept `get_service_settings` methode aan
 
-De cel heeft een uitvoer van de aanroep van `get_last_updated`-en `get_service_settings`-functies.
+De cel heeft uitvoer van de aanroep van `get_last_updated`-en `get_service_settings`-functies.
 
 ```python
 # build URLs
@@ -245,7 +245,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Controleer of de uitvoer `rewardWaitTime` en `modelExportFrequency` beide zijn ingesteld op 15 seconden. 
+Controleer of de `rewardWaitTime` van de uitvoer en `modelExportFrequency` beide zijn ingesteld op 15 seconden. 
     
 ```console
 -----checking model
@@ -390,9 +390,9 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 De volgende cel is het _belangrijkste_ werk van het notitie blok, het ophalen van een wille keurige gebruiker, het ophalen van de lijst met koffie en het verzenden van beide naar de classificatie-API. Vergelijking van de voor spelling met de bekende voor keuren van de gebruiker en vervolgens terugsturen naar de Personaler-service. 
 
-De lus wordt uitgevoerd gedurende `num_requests` keer. Persoonlijkere het maken van een model vereist een paar duizend aanroepen om te rangschikken. 
+De lus wordt voor `num_requests` tijden uitgevoerd. Persoonlijkere het maken van een model vereist een paar duizend aanroepen om te rangschikken. 
 
-Hier volgt een voor beeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig, voor een beknoptere keuze. U kunt de volledige JSON voor koffie in `coffee.json` bekijken.
+Hier volgt een voor beeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig, voor een beknoptere keuze. U kunt de volledige JSON voor koffie bekijken in `coffee.json`.
 
 JSON verzonden naar de positie-API:
 
@@ -549,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Grafiek resultaten om de verbeteringen te bekijken 
 
-Maak een grafiek van de `count` en `rewards`.
+Een grafiek maken op basis van de `count` en `rewards`.
 
 ```python
 def createChart(x, y):
@@ -587,7 +587,7 @@ Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank AP
 1. Open de pagina **evaluaties** van de persoonlijke resource In het Azure Portal.
 1. Selecteer **evaluatie maken**.
 1. Voer de vereiste gegevens van de evaluatie naam en het datum bereik voor de lus-evaluatie in. Het datum bereik moet alleen de dagen bevatten waarop u bent gericht voor uw evaluatie. 
-    Open de pagina evaluaties van de persoonlijke 0In @no__t de Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    Open de pagina evaluaties van de persoonlijke resource ![In de Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Het doel van deze offline-evaluatie is om te bepalen of er een beter leer beleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat het **optimalisatie beleid** is ingeschakeld om het betere leer beleid te vinden.
 
@@ -608,7 +608,7 @@ Meer informatie over de [wacht tijd](concept-rewards.md#reward-wait-time) en de 
 get_service_settings()
 ```
 
-Controleer of de uitvoer `rewardWaitTime` en `modelExportFrequency` beide zijn ingesteld op 5 minuten. 
+Controleer of de `rewardWaitTime` van de uitvoer en `modelExportFrequency` beide zijn ingesteld op 5 minuten. 
 ```console
 -----checking model
 <Response [200]>

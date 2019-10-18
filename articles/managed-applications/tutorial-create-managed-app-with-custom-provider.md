@@ -1,5 +1,5 @@
 ---
-title: Een door Azure beheerde toepassing maken met aangepaste acties en resources
+title: Door Azure beheerde toepassing met aangepaste acties & resources
 description: In deze zelf studie wordt beschreven hoe u een door Azure beheerde toepassing maakt met een aangepaste Azure-provider.
 services: managed-applications
 ms.service: managed-applications
@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335997"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529215"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelfstudie: Een beheerde toepassing maken met aangepaste acties en resources
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelf studie: een beheerde toepassing maken met aangepaste acties en resources
 
-In deze zelf studie maakt u uw eigen beheerde toepassing met aangepaste acties en resources. De beheerde toepassing bevat een aangepaste actie op de `Overview` pagina, een aangepast resource type dat wordt weer gegeven als een afzonderlijke menu opdracht in `Table of Content` en een aangepaste context actie op de aangepaste resource pagina.
+In deze zelf studie maakt u uw eigen beheerde toepassing met aangepaste acties en resources. De beheerde toepassing bevat een aangepaste actie op de pagina `Overview`, een aangepast resource type dat wordt weer gegeven als een afzonderlijke menu opdracht in `Table of Content` en een aangepaste context actie op de aangepaste resource pagina.
 
 Deze zelf studie bevat de volgende stappen:
 
@@ -42,7 +42,7 @@ Voor het volt ooien van deze zelf studie moet u het volgende weten:
 
 In deze zelf studie maakt u een beheerde toepassing en de bijbehorende beheerde resource groep bevat aangepast provider exemplaar, opslag account en functie. De Azure-functie die in dit voor beeld wordt gebruikt, implementeert een API die aangepaste provider bewerkingen verwerkt voor acties en resources. Azure Storage-account wordt gebruikt als basis opslag voor de resources van uw aangepaste provider.
 
-De definitie van de gebruikers interface voor het maken van een `funcname` exemplaar `storagename` van een beheerde toepassing bevat en de invoer elementen. De naam van het opslag account en de functie naam moeten wereld wijd uniek zijn. Standaard functie bestanden worden geïmplementeerd vanuit een [voorbeeld functie pakket](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), maar u kunt dit wijzigen door een INPUT-element toe te voegen voor een pakket koppeling in *createUIDefinition. json*:
+De definitie van de gebruikers interface voor het maken van een exemplaar van een beheerde toepassing bevat `funcname` en `storagename` invoer elementen. De naam van het opslag account en de functie naam moeten wereld wijd uniek zijn. Standaard functie bestanden worden geïmplementeerd vanuit een [voorbeeld functie pakket](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), maar u kunt dit wijzigen door een INPUT-element toe te voegen voor een pakket koppeling in *createUIDefinition. json*:
 
 ```json
 {
@@ -83,13 +83,13 @@ en uitvoer in *createUIDefinition. json*:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-U kunt het volledige *createUIDefinition. json* -voor beeld [vinden op Referentie: Artefacten van gebruikers interface](reference-createuidefinition-artifact.md)-elementen.
+U kunt het volledige *createUIDefinition. json* -voor beeld vinden in de [verwijzing: elementen artefacten van de gebruikers interface](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Sjabloon met aangepaste provider
 
-Als u een exemplaar van een beheerde toepassing met een aangepaste provider wilt maken, moet u een aangepaste provider resource met de naam **openbaar** en type **micro soft. CustomProviders/ResourceProviders** in uw **mainTemplate. json**definiëren. In die resource definieert u de resource typen en acties voor uw service. Als u Azure-functie-en Azure Storage-account exemplaren wilt `Microsoft.Web/sites` implementeren `Microsoft.Storage/storageAccounts` , definieert u de resources van het type en respectievelijk.
+Als u een exemplaar van een beheerde toepassing met een aangepaste provider wilt maken, moet u een aangepaste provider resource met de naam **openbaar** en type **micro soft. CustomProviders/ResourceProviders** in uw **mainTemplate. json**definiëren. In die resource definieert u de resource typen en acties voor uw service. Als u Azure-functie-en Azure Storage-account exemplaren wilt implementeren, worden resources van het type `Microsoft.Web/sites` en `Microsoft.Storage/storageAccounts` gedefinieerd.
 
-In deze zelf `users` studie maakt u één resource type, `ping` aangepaste actie en `users/contextAction` aangepaste actie die worden uitgevoerd in een context van een `users` aangepaste resource. Geef voor elk resource type en elke actie een eind punt op dat verwijst naar de functie met de naam die is geleverd in [createUIDefinition. json](#user-interface-definition). Geef de **routingType** `Proxy,Cache` op voor de resource typen `Proxy` en voor acties:
+In deze zelf studie maakt u een resource type `users`, `ping` aangepaste actie en `users/contextAction` aangepaste actie die wordt uitgevoerd in een context van een `users` aangepaste resource. Geef voor elk resource type en elke actie een eind punt op dat verwijst naar de functie met de naam die is geleverd in [createUIDefinition. json](#user-interface-definition). Geef de **routingType** op als `Proxy,Cache` voor resource typen en `Proxy` voor acties:
 
 ```json
 {
@@ -124,16 +124,16 @@ In deze zelf `users` studie maakt u één resource type, `ping` aangepaste actie
 }
 ```
 
-U kunt het volledige *mainTemplate. json* -voor beeld [vinden op Referentie: Artefact](reference-main-template-artifact.md)van implementatie sjabloon.
+U kunt het volledige *mainTemplate. json* -voor beeld vinden op [Referentie: implementatie sjabloon artefact](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Definitie-artefact weergeven
 
 Als u gebruikers interface wilt definiëren die aangepaste acties en aangepaste resources in uw beheerde toepassing bevat, moet u **viewDefinition. json** -artefact maken. Zie [definitie artefact in azure Managed Applications weer geven](concepts-view-definition.md)voor meer informatie over het weer geven van definitie-artefacten.
 
 In deze zelf studie definieert u het volgende:
-* Een *overzichts* pagina met een werkbalk knop die een aangepaste `TestAction` actie vertegenwoordigt met de basis tekst invoer.
-* Een pagina met *gebruikers* die een aangepast resource type `users`vertegenwoordigt.
-* Een aangepaste resource actie `users/contextAction` op de pagina *gebruikers* die wordt uitgevoerd in een context van een aangepaste bron van `users`het type.
+* Een *overzichts* pagina met een werkbalk knop die een aangepaste actie vertegenwoordigt `TestAction` met de basis tekst invoer.
+* Een pagina met *gebruikers* die een aangepast resource type `users` vertegenwoordigt.
+* Een aangepaste resource actie `users/contextAction` op de pagina *gebruikers* die wordt uitgevoerd in een context van een aangepaste resource van het type `users`.
 
 In het volgende voor beeld ziet u de weergave configuratie voor een pagina overzicht:
 
@@ -176,13 +176,13 @@ Het onderstaande voor beeld bevat de pagina configuratie van resources van ' geb
   }
 ```
 
-U kunt het volledige *viewDefinition. json* -voor beeld [vinden op Referentie: Definitie artefact](reference-view-definition-artifact.md)weer geven.
+Het volledige *viewDefinition. json* -voor beeld vindt u in de [verwijzing: View definition artefact](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Definitie van beheerde toepassing
 
 Verpakken de volgende beheerde toepassings artefacten naar een zip-archief en upload deze naar opslag:
 
-* createUiDefinition.json
+* createUiDefinition. json
 * mainTemplate. json
 * viewDefinition. json
 
@@ -221,7 +221,7 @@ Voer hieronder het Azure CLI-script uit of volg de stappen in Azure Portal een d
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure-CLI](#tab/azurecli-interactive)
+# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -279,7 +279,7 @@ az managedapp definition create \
 
 Wanneer de definitie van de beheerde toepassing is geïmplementeerd, voert u het onderstaande script uit of volgt u de stappen in Azure Portal om uw exemplaar van de beheerde toepassing te implementeren met een aangepaste provider:
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure-CLI](#tab/azurecli-interactive)
+# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -328,7 +328,7 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Aangepaste acties en resources
 
-Nadat het exemplaar van de Service catalogus toepassing is geïmplementeerd, hebt u twee nieuwe resource groepen. De eerste resource `applicationGroup` groep bevat een exemplaar van de beheerde toepassing, de tweede `managedResourceGroup` resource groep bevat de resources voor de beheerde toepassing, met inbegrip van een **aangepaste provider**.
+Nadat het exemplaar van de Service catalogus toepassing is geïmplementeerd, hebt u twee nieuwe resource groepen. De eerste `applicationGroup` van de resource groep bevat een exemplaar van de beheerde toepassing, de tweede resource groep `managedResourceGroup` bevat de resources voor de beheerde toepassing, met inbegrip van een **aangepaste provider**.
 
 ![Toepassings resource groepen](./media/managed-application-with-custom-providers/application-resource-groups.png)
 
@@ -350,7 +350,7 @@ U kunt naar het exemplaar van de beheerde toepassing gaan en **aangepaste actie*
 
 ## <a name="looking-for-help"></a>Zoeken naar Help
 
-Als u vragen hebt over Azure Managed Applications, kunt u vragen om [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag `azure-managedapps` toe om een snel antwoord te krijgen.
+Als u vragen hebt over Azure Managed Applications, kunt u vragen om [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag `azure-managedapps` toe om snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,18 +4,18 @@ description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy Jo
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8786da42f000a2f13279499159a7af424aa10748
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195787"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513539"
 ---
-# <a name="azcopy-jobs-resume"></a>azcopy-taken hervatten
+# <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
 Hiermee wordt de bestaande taak hervat met de opgegeven taak-ID.
 
@@ -27,17 +27,17 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options"></a>Opties
 
-|Optie|Description|
+|Optie|Beschrijving|
 |--|--|
 |--doel-SAS-teken reeks|De doel-SAS van het doel voor de opgegeven JobId.|
-|--teken reeks uitsluiten|Filterwebonderdelen Deze mislukte overdracht (en) uitsluiten wanneer de taak wordt hervat. Bestanden moeten worden gescheiden door '; '.|
+|--teken reeks uitsluiten|Filter: deze mislukte overdracht (en) uitsluiten wanneer de taak wordt hervat. Bestanden moeten worden gescheiden door '; '.|
 |-h,--Help|Help-inhoud weer geven voor de opdracht hervatten.|
 |--reeks toevoegen|Filter: deze mislukte overdracht (en) zijn alleen beschikbaar wanneer de taak wordt hervat. Bestanden moeten worden gescheiden door '; '.|
 |--SAS-teken reeks |Bron-SAS van de bron voor de opgegeven JobId.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|

@@ -1,17 +1,17 @@
 ---
-title: Resource groepen en-resources maken bij abonnement-Azure Resource Manager sjabloon
+title: Abonnements niveau implementeren-Azure Resource Manager sjabloon
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 913014a9b7e24345cd21979ba20ea1a1a938d022
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001599"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532190"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -76,7 +76,7 @@ Voor implementaties op abonnements niveau moet u een locatie opgeven voor de imp
 
 U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy. json** implementeert, wordt er een standaard implementatie naam van **azuredeploy**gemaakt.
 
-Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam maar een andere locatie is. Als de fout code `InvalidDeploymentLocation` wordt weer geven, moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
+Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam maar een andere locatie is. Als u de fout code `InvalidDeploymentLocation` krijgt, moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
 ## <a name="use-template-functions"></a>Sjabloon functies gebruiken
 
@@ -153,7 +153,7 @@ Gebruik het [element Copy](resource-group-create-multiple.md) met resource groep
 }
 ```
 
-Zie voor meer informatie over resource iteratie [meer dan één exemplaar van een resource of eigenschap in azure Resource Manager sjablonen implementeren](./resource-group-create-multiple.md)en [Tutorial: Meerdere resource-instanties maken met Resource Manager-sjablonen @ no__t-0.
+Zie [meer dan één exemplaar van een resource of eigenschap in azure Resource Manager sjablonen implementeren](./resource-group-create-multiple.md)en [zelf studie: meerdere resource-instanties maken met Resource Manager-sjablonen](./resource-manager-tutorial-create-multiple-instances.md)voor meer informatie over resource iteratie.
 
 ## <a name="resource-group-and-resources"></a>Resource groep en resources
 

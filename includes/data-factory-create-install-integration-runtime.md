@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a2858ac73838b50c21a76db5860675171a306192
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176504"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533252"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
 
-In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server-database. De zelf-hostende Integration Runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server op uw computer naar Azure Blob Storage. 
+In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De zelf-hostende Integration runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server op uw computer naar Azure SQL database. 
 
 1. Maak een variabele voor de naam van de Integration Runtime. Gebruik een unieke naam en noteer deze. U gaat deze verderop in de zelfstudie gebruiken. 
 
@@ -29,12 +29,12 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
    Hier volgt een voorbeeld van uitvoer:
 
    ```json
-    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Name              : <Integration Runtime name>
     Type              : SelfHosted
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : onpremdf0914
-    Name              : myonpremirsp0914
-    Description       :
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
+    Description       : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DataFactory/factories/<DataFactoryName>/integrationruntimes/ADFTutorialIR
     ```
   
 3. Voer de volgende opdracht uit om de status van de gemaakte zelf-hostende Integration Runtime op te halen. Controleer of de waarde van de **status** eigenschap is ingesteld op **NeedRegistration**. 
@@ -45,21 +45,25 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
    Hier volgt een voorbeeld van uitvoer:
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
+   ```json  
+   State                     : NeedRegistration
+   Version                   : 
+   CreateTime                : 9/24/2019 6:00:00 AM
+   AutoUpdate                : On
+   ScheduledUpdateDate       : 
+   UpdateDelayOffset         : 
+   LocalTimeZoneOffset       : 
+   InternalChannelEncryption : 
    Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ServiceUrls               : {eu.frontend.clouddatahub.net}
+   Nodes                     : {}
+   Links                     : {}
+   Name                      : ADFTutorialIR
+   Type                      : SelfHosted
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
+   Description               : 
+   Id                        : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroup name>/providers/Microsoft.DataFactory/factories/<DataFactory name>/integrationruntimes/<Integration Runtime name>
    ```
 
 4. Voer de volgende opdracht uit om verificatiesleutels op te halen die worden gebruikt voor de registratie van de zelf-hostende Integration Runtime met Azure Data Factory-service in de cloud: 
@@ -72,8 +76,8 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
    ```json
    {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    "AuthKey1": "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+    "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
    ```    
 
@@ -92,27 +96,17 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
 6. Selecteer **Installeren** op de pagina **Gereed om Microsoft Integration Runtime te installeren**.
 
-7. Als er een waarschuwingsbericht wordt weergegeven met de melding of de computer moet worden geconfigureerd om in de slaapstand of sluimerstand over te gaan als deze niet in gebruik is, selecteert u **OK**.
+7. Selecteer **Voltooien** op de pagina **De installatie van Microsoft Integration Runtime is voltooid**.
 
-8. Als de pagina **Energiebeheer** wordt weergegeven, sluit u deze en gaat u naar de instellingenpagina.
-
-9. Selecteer **Voltooien** op de pagina **De installatie van Microsoft Integration Runtime is voltooid**.
-
-10. Plak de sleutel die u in de vorige sectie hebt opgeslagen op de pagina **Integration Runtime (zelf-hostend) registreren** en selecteer **Registreren**. 
+8. Plak de sleutel die u in de vorige sectie hebt opgeslagen op de pagina **Integration Runtime (zelf-hostend) registreren** en selecteer **Registreren**. 
 
     ![De Integration Runtime registreren](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-11. U ziet het volgende bericht wanneer de zelf-hostende Integration Runtime is geregistreerd:
+9. Selecteer op de pagina **nieuw Integration runtime (zelf-hostend) knoop punt** **volt ooien**. 
+
+10. U ziet het volgende bericht wanneer de zelf-hostende Integration Runtime is geregistreerd:
 
     ![Registratie is voltooid](media/data-factory-create-install-integration-runtime/registered-successfully.png)
-
-12. Selecteer **Volgende** op de pagina **Nieuw knooppunt voor Integration Runtime (zelf-hostend)** . 
-
-    ![Pagina Nieuw knooppunt voor Integration Runtime](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
-
-13. Op de pagina **Intranetcommunicatiekanaal** selecteert u **Overslaan**. Selecteer een TLS/SSL-certificaat voor het beveiligen van de communicatie tussen knooppunten in een Integration Runtime-omgeving met meerdere knooppunten. 
-
-    ![Pagina Intranetcommunicatiekanaal](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
 
 14. Op de pagina **Integration Runtime (zelf-hostend) registeren** selecteert u **Configuration Manager starten**.
 
@@ -136,7 +130,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
     f. Voer de gebruikersnaam in.
 
-    g. Voer het wachtwoord voor de gebruikersnaam in.
+    g. Voer het wacht woord in dat is gekoppeld aan de gebruikers naam.
 
     h. Selecteer **Test** om te controleren of Integration Runtime verbinding kan maken met SQL Server. U ziet een groen vinkje als het gelukt is om verbinding te maken. U ziet een foutbericht als er geen verbinding kan worden gemaakt. Los eventuele problemen op en zorg ervoor dat de Integration Runtime verbinding met SQL Server kan maken.    
 

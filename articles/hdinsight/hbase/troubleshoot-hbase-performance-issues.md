@@ -7,118 +7,121 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71266651"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529566"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Problemen met Apache HBase-prestaties in azure HDInsight oplossen
 
-In dit document worden verschillende richt lijnen voor het afstemmen van Apache HBase-prestaties en tips voor het verkrijgen van optimale prestaties in azure HDInsight beschreven. Veel van deze tips zijn afhankelijk van de specifieke werk belasting en het Lees-en schrijf-en scan patroon. Test configuratie wijzigingen grondig voordat u deze toepast op een productie omgeving.
+In dit artikel worden verschillende richt lijnen en tips voor het afstemmen van Apache HBase-prestaties beschreven voor optimale prestaties van Azure HDInsight. Veel van deze tips zijn afhankelijk van de specifieke werk belasting en het Lees-en schrijf-en scan patroon. Voordat u configuratie wijzigingen toepast in een productie omgeving, moet u ze zorgvuldig testen.
 
-## <a name="hdinsight-hbase-performance-insights"></a>Prestaties van HDInsight HBase performance Insights
+## <a name="hbase-performance-insights"></a>HBase-prestatie inzichten
 
-De meest voorkomende bottleneck in de meeste HBase-werk belastingen is het Write-Ahead logboek (WAL). Het heeft een grote invloed op de schrijf prestaties. HDInsight HBase heeft een gescheiden model voor opslag berekening, dat wil zeggen dat gegevens extern worden opgeslagen op Azure Storage, maar dat de regio servers worden gehost op de Vm's. Tot nu toe was het Write-Ahead logboek ook geschreven naar Azure Storage waardoor deze bottleneck in het geval van HDInsight wordt verkort. De functie voor [versnelde schrijf bewerkingen](./apache-hbase-accelerated-writes.md) is ontworpen om dit probleem op te lossen door de Write-Ahead logboek te schrijven naar Azure Premium SSD Managed disks. Deze voor delen bieden een enorme schrijf snelheid en helpen veel problemen bij het maken van een aantal write-intensieve workloads.
+De meest voorkomende bottleneck in de meeste HBase-werk belastingen is het Write-Ahead logboek (WAL). Het heeft een grote invloed op de schrijf prestaties. HDInsight HBase heeft een gescheiden model voor opslag berekening. Gegevens worden extern opgeslagen op Azure Storage, zelfs als virtuele machines de regio servers hosten. Tot die tijd werd de WAL ook geschreven naar Azure Storage. In HDInsight versterkt dit gedrag van deze bottleneck. De functie voor [versnelde schrijf bewerkingen](./apache-hbase-accelerated-writes.md) is ontworpen om dit probleem op te lossen. Het schrijft de WAL naar Azure Premium-SSD-Managed disks. Dit is een enorme voor deel van het schrijven van prestaties en het helpt veel problemen te voor komen door enkele van de Write-intensieve workloads.
 
-Gebruik [Premium blok-blobopslagaccounts](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) als uw externe opslag om prestaties van leesbewerkingen aanzienlijk te verbeteren. Deze optie is alleen mogelijk als de functie Write Ahead Logs is ingeschakeld.
+Gebruik [Premium Block Blob Storage account](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) als uw externe opslag om aanzienlijke verbeteringen in Lees bewerkingen te verkrijgen. Deze optie is alleen mogelijk als de functie WAL is ingeschakeld.
 
 ## <a name="compaction"></a>Compressie
 
-Compressie is een andere mogelijke bottleneck die in de Community fundamenteel is overeengekomen.  Primaire compressie is standaard uitgeschakeld in HDInsight HBase-clusters. Dit is omdat het een resource-intensieve proces is, willen we klanten de volledige flexibiliteit geven om deze te plannen volgens hun werkbelasting kenmerken, dat wil zeggen tijdens de piek uren. Het is ook belang rijk dat onze opslag extern (ondersteund door Azure Storage) is in plaats van lokale HDFS, wat gebruikelijk is bij de meeste on-premises instanties, de gegevens locatie is een van de belangrijkste doel stellingen van grote compressie.
+Compressie is een andere mogelijke bottleneck die fundamenteel is overeengekomen in de community. Primaire compressie is standaard uitgeschakeld in HDInsight HBase-clusters. De compressie is uitgeschakeld, omdat het een resource-intensieve proces is, kunnen klanten de volledige flexibiliteit plannen volgens hun werk belastingen. Ze kunnen bijvoorbeeld deze plannen tijdens daluren. Data Locality is ook niet relevant omdat onze opslag extern (ondersteund door Azure Storage) in plaats van naar een lokale Hadoop Distributed File System (HDFS).
 
-De veronderstelling is dat de klant de grote verwerkings periode zo nodig zal plannen. Als dit onderhoud niet wordt uitgevoerd, worden de Lees prestaties in de lange uitvoering aanzienlijk beïnvloed door compressie.
+Klanten moeten op hun gemak grote compressie plannen. Als ze deze onderhouds werkzaamheden niet uitvoeren, heeft de compressie nadelige invloed op de Lees prestaties van de lange uitvoering.
 
-Voor scan bewerkingen met name betekenen de gemiddelde latenties die veel hoger zijn dan 100 MS de oorzaak is van een probleem. Controleer of de grote compressie nauw keurig is gepland.
+Voor scan bewerkingen duiden de latentie die veel hoger zijn dan 100 milliseconden een oorzaak van bezorgdheid. Controleer of de grote compressie nauw keurig is gepland.
 
-## <a name="know-your-apache-phoenix-workload"></a>De werk belasting van uw Apache Phoenix kennen
+## <a name="apache-phoenix-workload"></a>Apache Phoenix workload
 
 Als u de volgende vragen beantwoordt, hebt u meer inzicht in uw Apache Phoenix-werk belasting:
 
 * Zijn al uw ' Lees bewerkingen ' vertaald naar scans?
     * Als dat het geval is, wat zijn dan de kenmerken van deze scans?
     * Hebt u uw BREDAS tabel schema geoptimaliseerd voor deze scans, inclusief de juiste indexeringen?
-* Hebt u de instructie `EXPLAIN` gebruikt om inzicht te krijgen in de query plannen van uw ' Lees bewerkingen '.
+* Hebt u de `EXPLAIN`-instructie gebruikt om inzicht te krijgen in de query plannen van het genereren van ' Lees bewerkingen '?
 * Zijn uw schrijf opdrachten "upsert-selecteren"?
-    * Als dat het geval is, worden er ook scans uitgevoerd. De verwachte latentie voor scans is de volg orde 100 MS gemiddeld, in tegens telling tot 10 MS voor punt haalt in HBase.  
+    * Als dat het geval is, worden er ook scans uitgevoerd. De verwachte latentie voor scans is ongeveer 100 milliseconden, vergeleken met 10 milliseconden voor punt wordt opgehaald in HBase.  
 
 ## <a name="test-methodology-and-metrics-monitoring"></a>Bewakings methodiek en metrische gegevens controleren
 
-Als u benchmarks gebruikt zoals YCSB, JMeter of Pherf om prestaties te testen en af te stemmen, controleert u het volgende:
+Als u benchmarks gebruikt zoals Yahoo! Cloud met Bench Mark, JMeter of Pherf om prestaties te testen en af te stemmen, moet u het volgende doen:
 
-1. De client computers worden niet knelpunten (Controleer het CPU-gebruik op client computers).
+- De client computers worden geen knel punt. U doet dit door het CPU-gebruik op client computers te controleren.
 
-1. Configuraties aan client zijde, zoals het aantal threads, enzovoort, worden op de juiste wijze afgestemd op de verzadiging van client bandbreedte.
+- Configuraties aan client zijde, zoals het aantal threads, worden op de juiste wijze afgestemd op de verzadiging van client bandbreedte.
 
-1. Test resultaten worden nauw keurig en systematisch vastgelegd.
+- Test resultaten worden nauw keurig en systematisch vastgelegd.
 
-Als uw query's plotseling zijn begonnen met het uitvoeren van problemen, kunt u controleren of er fouten zijn opgegaan in de code van uw toepassing. Dit leidt er plotseling toe dat er grote hoeveel heden gegevens worden gegenereerd, waardoor de lees latentie natuurlijk toeneemt.
+Als uw query's plotseling worden gestart, kunt u controleren op mogelijke fouten in uw toepassings code. Worden er plotseling grote hoeveel heden ongeldige gegevens gegenereerd? Als dat het geval is, kan dit de lees latentie verhogen.
 
 ## <a name="migration-issues"></a>Migratie problemen
 
-Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Controleer het volgende:
+Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Zorg ervoor dat:
 
-1. Tabel kenmerken, zoals compressie, bloei filters, enzovoort, moeten nauw keurig worden gemigreerd.
+- Tabel kenmerken worden nauw keurig gemigreerd. Kenmerken kunnen bestaan uit als compressie, bloei filters, enzovoort.
 
-1. Voor Phoenix-tabellen moeten de instellingen voor het zouten correct worden toegewezen aan de nieuwe cluster grootte. Zo wordt bijvoorbeeld het aantal zout buckets aanbevolen om meerdere van het aantal worker-knoop punten in het cluster te zijn. het specifieke veelvoud is een factor van de hoeveelheid Hot herkennen die wordt waargenomen.  
+- De instellingen voor het zouten in BREDAS tabellen worden op de juiste wijze toegewezen aan de nieuwe cluster grootte. Het aantal zout buckets moet bijvoorbeeld een veelvoud zijn van het aantal worker-knoop punten in het cluster. En u moet een veelvoud gebruiken dat een factor is van de hoeveelheid Hot herkennen.
 
-## <a name="server-side-config-tunings"></a>Aanpassings configuratie aan server zijde
+## <a name="server-side-configuration-tunings"></a>Aanpassing van de configuratie aan server zijde
 
-In HDInsight HBase worden HFiles op externe opslag opgeslagen. als er een cache verloren gaat, zijn de kosten van Lees bewerkingen dus niet hoger dan on-premises systemen, die gegevens bevatten die zijn opgeslagen door Local HDFS dankzij de netwerk latentie. Voor de meeste scenario's is intelligent gebruik van HBase-caches (Block cache en Bucket cache) ontworpen om dit probleem te omzeilen. Er zijn echter incidentele gevallen waarbij dit een probleem voor de klant kan zijn. Het gebruik van een Premium Block BLOB-account heeft dit enigszins geholpen. Met de WASB-BLOB (Windows Azure Storage driver) wordt echter gebruikgemaakt van bepaalde eigenschappen, zoals `fs.azure.read.request.size`, om gegevens op te halen in blokken op basis van de Lees modus (opeenvolgend versus wille keurig). We hebben geconstateerd dat er empirische experimenten zijn gevonden waarmee de blok grootte van de Lees aanvraag (`fs.azure.read.request.size`) wordt ingesteld op 512 KB en dat de blok grootte van de HBase-tabellen op dezelfde manier overeenkomt met het beste resultaat in de praktijk.
+In HDInsight HBase worden HFiles opgeslagen op externe opslag. Wanneer er een cache ontbreekt, zijn de kosten voor lees bewerkingen hoger dan on-premises systemen, omdat gegevens op on-premises systemen worden ondersteund door Local HDFS. Voor de meeste scenario's is intelligent gebruik van HBase-caches (Block cache en Bucket cache) ontworpen om dit probleem te omzeilen. In gevallen waarin het probleem niet wordt omzeild, kunt u dit probleem mogelijk oplossen met behulp van een account voor een Premium-blok-blob. Het Windows Azure Storage Blob-stuur programma is afhankelijk van bepaalde eigenschappen, zoals `fs.azure.read.request.size`, om gegevens op te halen in blokken op basis van de Lees modus (opeenvolgend versus wille keurig), zodat er mogelijk nog steeds exemplaren van hogere latenties met lees bewerkingen zijn. Door middel van empirische experimenten hebben we vastgesteld dat de blok grootte van de Lees aanvraag (`fs.azure.read.request.size`) wordt ingesteld op 512 KB en dat de blok grootte van de HBase-tabellen dezelfde grootte heeft als het beste resultaat in de praktijk.
 
-HDInsight HBase biedt voor de meeste grootschalige knoop punten clusters `bucketcache` als een bestand op lokale SSD dat is gekoppeld aan de VM, waardoor de `regionservers` wordt uitgevoerd. In de meeste gevallen kan het gebruik van heap-cache in plaats daarvan enige verbeteringen opleveren. Dit heeft de beperking van het gebruik van het beschik bare geheugen en is mogelijk kleiner dan een op bestanden gebaseerde cache, zodat dit niet altijd de beste keuze is.
+Voor de meeste clusters met een groot aantal knoop punten biedt HDInsight HBase `bucketcache` als een bestand op een lokale Premium-SSD die is gekoppeld aan de virtuele machine, die `regionservers` uitvoert. Het gebruik van een off-heap-cache kan in plaats daarvan enige verbeteringen opleveren. Deze tijdelijke oplossing heeft de beperking van het gebruik van het beschik bare geheugen en mogelijk kleiner dan een op bestanden gebaseerde cache, zodat het niet altijd de beste keuze is.
 
-Enkele van de andere specifieke para meters die we hebben afgestemd op het hebben van een deel van de vrijheid met een motivering als hieronder:
+Hieronder vindt u enkele van de andere specifieke para meters die we hebben afgestemd en die u helpen bij het variëren van graden:
 
-1. Verhoog de grootte van @no__t 0 van standaard 128 MB tot 256 MB. deze instelling wordt meestal aanbevolen voor een zwaar schrijf scenario.
+- Verg root `memstore` grootte van 128 MB tot 256 MB. Normaal gesp roken wordt deze instelling aanbevolen voor zware schrijf scenario's.
 
-1. Het aantal threads dat is gereserveerd voor compressie verhogen: van de standaard waarde van 1 tot 4. Deze instelling is relevant als we veelvuldige kleine compressies bekijken.
+- Verhoog het aantal threads dat is gereserveerd voor compressie, van de standaard instelling van **1** tot **4**. Deze instelling is relevant als we veelvuldige kleine compressies bekijken.
 
-1. Voorkom dat het leegmaken van @no__t 0 wordt geblokkeerd vanwege een opslag limiet. `Hbase.hstore.blockingStoreFiles` kan worden verhoogd tot 100 om deze buffer op te geven.
+- Blok keren dat `memstore` flush moet worden geblokkeerd vanwege een opslag limiet. Als u deze buffer wilt opgeven, verhoogt u de `Hbase.hstore.blockingStoreFiles`-instelling op **100**.
 
-1. Voor het beheren van leegmaak acties, kunnen de standaard waarden als volgt worden behandeld:
+- Gebruik de volgende instellingen voor het beheren van leegmaak acties:
 
-    1. `Hbase.regionserver.maxlogs` kan worden upped tot 140 van 32 (het leegmaken van leegmaak acties door WAL-limieten wordt voor komen).
+    - `Hbase.regionserver.maxlogs`: **140** (vermijdt leegmaak acties vanwege wal limieten)
 
-    1. `Hbase.regionserver.global.memstore.lowerLimit` = 0,55.
+    - `Hbase.regionserver.global.memstore.lowerLimit`: **0,55**
 
-    1. `Hbase.regionserver.global.memstore.upperLimit` = 0,60.
+    - `Hbase.regionserver.global.memstore.upperLimit`: **0,60**
 
-1. Phoenix-specifieke configuraties voor het afstemmen van thread groepen:
+- Phoenix-specifieke configuraties voor het afstemmen van thread groepen:
 
-    1. `Phoenix.query.queuesize` kan worden verhoogd tot 10000.
+    - `Phoenix.query.queuesize`: **10000**
 
-    1. `Phoenix.query.threadpoolsize` kan worden verhoogd tot 512.
+    - `Phoenix.query.threadpoolsize`: **512**
 
-1. Andere Phoenix-specifieke configuraties:
+- Andere Phoenix-specifieke configuraties:
 
-    1. `Phoenix.rpc.index.handler.count` kan worden ingesteld op 50 als er grote of veel index lookups zijn.
+    - `Phoenix.rpc.index.handler.count`: **50** (als er grote of veel index lookups zijn)
 
-    1. `Phoenix.stats.updateFrequency` – kan upped tot 1 uur in de standaard tijd van 15 minuten.
+    - `Phoenix.stats.updateFrequency`: **1 uur**
 
-    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems` – kan upped tot 1 uur en Maxi maal 30 minuten.
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 uur**
 
-    1. `Phoenix.coprocessor.maxmetadatacachesize` – kan upped tot 50 MB van 20 MB zijn.
+    - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-1. RPC-time-outs – HBase RPC-time-out, time-out voor HBase-client scanner en Phoenix-querytime kunnen tot drie minuten worden verhoogd. Het is belang rijk om te weten dat de para meter @no__t 0 is ingesteld op een waarde die overeenkomt met het einde van de server en client end. Anders leidt deze instelling tot fouten met betrekking tot `OutOfOrderScannerException` bij het einde van de client. Deze instelling moet worden ingesteld op een lage waarde voor grote scans. We stellen deze waarde in op 100.
+- RPC-time-outs: **drie minuten**
+
+   - RPC-time-outs zijn onder andere HBase RPC time-out, time-out voor HBase-client scanner en Bredae querytime-out. 
+   - Zorg ervoor dat de para meter `hbase.client.scanner.caching` is ingesteld op dezelfde waarde op zowel het server einde als de client-einde. Als ze niet hetzelfde zijn, leidt deze instelling tot client-end fouten die betrekking hebben op `OutOfOrderScannerException`. Deze instelling moet worden ingesteld op een lage waarde voor grote scans. We stellen deze waarde in op **100**.
 
 ## <a name="other-considerations"></a>Andere overwegingen
 
-Enkele andere para meters die in aanmerking komen voor afstemming:
+Hieronder vindt u aanvullende para meters voor het afstemmen van het volgende:
 
-1. `Hbase.rs.cacheblocksonwrite`: deze instelling is standaard ingesteld op True op HDI.
+- `Hbase.rs.cacheblocksonwrite`: standaard is deze instelling ingesteld op **' True '** op HDI.
 
-1. Instellingen waarmee u de kleine compressie voor later kunt uitstellen.
+- Instellingen waarmee u de kleine compressie voor later kunt uitstellen.
 
-1. Experimentele instellingen, zoals het aanpassen van het percentage wacht rijen dat is gereserveerd voor lees-en schrijf aanvragen.
+- Experimentele instellingen, zoals het aanpassen van percentages van wacht rijen die zijn gereserveerd voor lees-en schrijf aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als uw probleem niet is opgelost, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure-account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Verbinding maken met [@AzureSupport](https://twitter.com/azuresupport). Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. Uw Microsoft Azure-abonnement bevat toegang tot abonnements beheer en ondersteuning voor facturering, en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

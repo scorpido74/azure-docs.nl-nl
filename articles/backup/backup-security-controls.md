@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f44be7556b6d741df93faeeab1dbdfc15bc8ebfd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8170022a3ee4b4b65e8da0d9e5a2f8464675d08f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211799"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528104"
 ---
 # <a name="security-controls-for-azure-backup"></a>Beveiligings controles voor Azure Backup
 
-In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure Backup. 
+In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure Backup.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
@@ -34,22 +34,22 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via Diagnostische logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met behulp van log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) voor meer informatie. |  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics wordt ondersteund via resource Logboeken. Zie [Azure backup beveiligde werk belastingen bewaken met behulp van log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) voor meer informatie. |  |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Alle door de klant geactiveerde acties van de Azure Portal worden vastgelegd in activiteiten Logboeken. |  |
 | Logboek registratie en controle van het gegevens vlak| Nee | Azure Backup gegevens vlak kan niet rechtstreeks worden bereikt.  |  |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| | Documentatie
 |---|---|--|
-| Authentication| Ja | Verificatie is via Azure Active Directory. |  |
-| Authorization| Ja | Door de klant gemaakte en ingebouwde RBAC-rollen worden gebruikt. Zie [Access Control op basis van rollen gebruiken om Azure backup herstel punten te beheren](/azure/backup/backup-rbac-rs-vault) voor meer informatie. |  |
+| Verificatie| Ja | Verificatie is via Azure Active Directory. |  |
+| Autorisatie| Ja | Door de klant gemaakte en ingebouwde RBAC-rollen worden gebruikt. Zie [Access Control op basis van rollen gebruiken om Azure backup herstel punten te beheren](/azure/backup/backup-rbac-rs-vault) voor meer informatie. |  |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen | | Documentatie
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Storage-service versleuteling gebruiken voor opslag accounts. |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Storage-service versleuteling gebruiken voor opslag accounts. |  |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee |  |  |
 | Versleuteling op kolom niveau (Azure Data Services)| Nee |  |  |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Nee | HTTPS gebruiken. |  |

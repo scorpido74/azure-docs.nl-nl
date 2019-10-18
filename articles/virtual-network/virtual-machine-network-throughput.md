@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874931"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529112"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netwerk bandbreedte van virtuele machine
 
@@ -39,10 +39,10 @@ Virtuele Azure-machines moeten één hebben, maar er kunnen verschillende, netwe
 De verwachte uitgaande door Voer en het aantal netwerk interfaces dat wordt ondersteund door elke VM-grootte, worden in azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -VM-grootten gedetailleerd beschreven. Selecteer een type, zoals algemeen doel, en selecteer vervolgens een teken reeks op de resulterende pagina, zoals de dv2-serie. Elke reeks heeft een tabel met netwerk specificaties in de laatste kolom met de titel **maximum aantal nic's/verwachte netwerk prestaties (Mbps)** . 
 
 De doorvoer limiet is van toepassing op de virtuele machine. De door Voer wordt niet beïnvloed door de volgende factoren:
-- **Aantal netwerk interfaces**: De bandbreedte limiet is cumulatief van het uitgaande verkeer van de virtuele machine.
+- **Aantal netwerk interfaces**: de bandbreedte limiet is cumulatief van al het uitgaande verkeer van de virtuele machine.
 - **Versneld netwerken**: Hoewel de functie nuttig kan zijn bij het bereiken van de gepubliceerde limiet, wordt de limiet niet gewijzigd.
-- **Verkeers bestemming**: Alle doelen tellen mee voor de uitgaande limiet.
-- **Protocol**: Al het uitgaande verkeer via alle protocollen telt de limiet.
+- **Verkeers bestemming**: alle doelen tellen mee voor de uitgaande limiet.
+- **Protocol**: al het uitgaande verkeer via alle protocollen telt de limiet.
 
 ## <a name="network-flow-limits"></a>Limieten voor netwerk stroom
 
@@ -60,7 +60,7 @@ Vandaag ondersteunt de Azure-netwerk stack 250.000 totale netwerk stromen met go
 |---|---|---|
 |<b>Goede prestaties</b>|100.000 stromen |250.000 stromen|
 |<b>Verminderde prestaties</b>|Boven 100.000 stromen|Boven 250.000 stromen|
-|<b>Stroom limiet</b>|1M stromen|1M stromen|
+|<b>Stroom limiet</b>|500.000 stromen|500.000 stromen|
 
 Er zijn metrische gegevens beschikbaar in [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) om het aantal netwerk stromen en de frequentie van het maken van de stroom op uw virtuele machine-of VMSS-instanties bij te houden.
 

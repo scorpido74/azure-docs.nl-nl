@@ -1,5 +1,5 @@
 ---
-title: Statistische trans formatie in toewijzing van gegevens stroom-Azure Data Factory | Microsoft Docs
+title: Statistische trans formatie in Azure Data Factory gegevens stroom voor toewijzing | Microsoft Docs
 description: Meer informatie over het samen stellen van gegevens op schaal in Azure Data Factory met de statistische trans formatie toewijzings gegevens stroom.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431606"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514827"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Statistische trans formatie in toewijzing van gegevens stroom 
 
@@ -68,7 +68,9 @@ Samengestelde trans formaties zijn vergelijkbaar met SQL-query's voor aggregatie
 
 ### <a name="example"></a>Voorbeeld
 
-In het onderstaande voor beeld wordt een inkomende stream `MoviesYear` gebruikt en worden rijen gegroepeerd op kolom `year`. De trans formatie maakt een statistische kolom `avgrating` die het gemiddelde van kolom `Rating` evalueert. Deze cumulatieve trans formatie heet `AvgComedyRatingsByYear`. In de Data Factory UX ziet deze trans formatie er als volgt uit:
+In het onderstaande voor beeld wordt een inkomende stream `MoviesYear` gebruikt en worden rijen gegroepeerd op kolom `year`. De trans formatie maakt een statistische kolom `avgrating` die het gemiddelde van kolom `Rating` evalueert. Deze cumulatieve trans formatie heet `AvgComedyRatingsByYear`.
+
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
 ![Groeperen op voor beeld](media/data-flow/agg-script1.png "Groeperen op voor beeld")
 

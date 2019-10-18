@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
 ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71300156"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
@@ -25,33 +25,33 @@ Gebruik Azure Resource Manager sjablonen om de infra structuur te implementeren 
 
 Als u probeert te kiezen tussen het gebruik van Resource Manager-sjablonen en een van de andere infra structuur als code Services, moet u rekening houden met de volgende voor delen van het gebruik van sjablonen:
 
-* **Declaratieve syntaxis**: Met Resource Manager-sjablonen kunt u een volledige Azure-infra structuur declaratief maken en implementeren. U kunt bijvoorbeeld niet alleen virtuele machines implementeren, maar ook de netwerk infrastructuur, opslag systemen en andere bronnen die u nodig hebt.
+* **Declaratieve syntaxis**: Resource Manager-sjablonen bieden u de mogelijkheid om een volledige Azure-infra structuur declaratief te maken en te implementeren. U kunt bijvoorbeeld niet alleen virtuele machines implementeren, maar ook de netwerk infrastructuur, opslag systemen en andere bronnen die u nodig hebt.
 
-* **Herhaal bare resultaten**: Implementeer herhaaldelijk uw infra structuur in de ontwikkelings levenscyclus en laat de betrouw baarheid van uw resources op een consistente manier worden geïmplementeerd. Sjablonen zijn idempotent. Dit betekent dat u dezelfde sjabloon meerdere keren kunt implementeren en dezelfde resource typen in dezelfde status krijgt. U kunt één sjabloon ontwikkelen die de gewenste status aangeeft, in plaats van het ontwikkelen van veel afzonderlijke sjablonen om updates te vertegenwoordigen.
+* **Herhaal bare resultaten**: implementeer herhaaldelijk uw infra structuur in de ontwikkelings levenscyclus en laat de betrouw baarheid van uw resources op een consistente manier worden geïmplementeerd. Sjablonen zijn idempotent. Dit betekent dat u dezelfde sjabloon meerdere keren kunt implementeren en dezelfde resource typen in dezelfde status krijgt. U kunt één sjabloon ontwikkelen die de gewenste status aangeeft, in plaats van het ontwikkelen van veel afzonderlijke sjablonen om updates te vertegenwoordigen.
 
-* Indeling: U hoeft zich geen zorgen te maken over de complexiteit van het ordenen van bewerkingen. Resource Manager coördineert de implementatie van onderling afhankelijke resources, zodat deze in de juiste volg orde worden gemaakt. Als dat mogelijk is, implementeert Resource Manager bronnen parallel, zodat uw implementaties sneller worden uitgevoerd dan seriële implementaties. U implementeert de sjabloon via één opdracht, in plaats van via meerdere verplichte opdrachten.
+* Indeling **: u**hoeft zich geen zorgen te maken over de complexiteit van het ordenen van bewerkingen. Resource Manager coördineert de implementatie van onderling afhankelijke resources, zodat deze in de juiste volg orde worden gemaakt. Als dat mogelijk is, implementeert Resource Manager bronnen parallel, zodat uw implementaties sneller worden uitgevoerd dan seriële implementaties. U implementeert de sjabloon via één opdracht, in plaats van via meerdere verplichte opdrachten.
 
    ![Vergelijking Sjabloonimlementatie](./media/template-deployment-overview/template-processing.png)
 
-* **Ingebouwde validatie**: Uw sjabloon wordt pas geïmplementeerd nadat de validatie is door gegeven. Resource Manager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk in een halve status.
+* **Ingebouwde validatie**: uw sjabloon wordt pas geïmplementeerd nadat de validatie is door gegeven. Resource Manager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk in een halve status.
 
-* **Modulaire bestanden**: U kunt uw sjablonen opdelen in kleinere, herbruikbare onderdelen en ze samen koppelen tijdens de implementatie. U kunt ook een sjabloon in andere sjablonen nesten.
+* **Modulaire bestanden**: u kunt uw sjablonen opdelen in kleinere, herbruikbare onderdelen en deze samen voegen tijdens de implementatie. U kunt ook een sjabloon in andere sjablonen nesten.
 
-* **Een Azure-resource maken**: U kunt direct nieuwe Azure-Services en-functies in sjablonen gebruiken. Zodra een resource provider nieuwe resources introduceert, kunt u deze resources implementeren via sjablonen. U hoeft niet te wachten totdat de hulpprogram ma's of modules zijn bijgewerkt voordat u de nieuwe services gebruikt.
+* **Een Azure-resource maken**: u kunt direct nieuwe Azure-Services en-functies in sjablonen gebruiken. Zodra een resource provider nieuwe resources introduceert, kunt u deze resources implementeren via sjablonen. U hoeft niet te wachten totdat de hulpprogram ma's of modules zijn bijgewerkt voordat u de nieuwe services gebruikt.
 
-* **Bijgehouden implementaties**: In de Azure Portal kunt u de implementatie geschiedenis bekijken en informatie over de sjabloon implementatie ophalen. U kunt de geïmplementeerde sjabloon zien, de parameter waarden die zijn door gegeven en uitvoer waarden. Andere infra structuur als code services worden niet bijgehouden via de portal.
+* **Bijgehouden implementaties**: In het Azure Portal kunt u de implementatie geschiedenis bekijken en informatie ophalen over de sjabloon implementatie. U kunt de geïmplementeerde sjabloon zien, de parameter waarden die zijn door gegeven en uitvoer waarden. Andere infra structuur als code services worden niet bijgehouden via de portal.
 
-   ![Implementatiegeschiedenis](./media/template-deployment-overview/deployment-history.png)
+   ![Implementatie geschiedenis](./media/template-deployment-overview/deployment-history.png)
 
 * **Beleid als code**: [Azure Policy](../governance/policy/overview.md) is een beleid als code raamwerk waarmee governance wordt geautomatiseerd. Als u Azure-beleid gebruikt, wordt het door voeren van beleid uitgevoerd op niet-compatibele resources wanneer deze via sjablonen worden geïmplementeerd.
 
-* **Implementatie blauw drukken**: U kunt gebruikmaken van [blauw drukken](../governance/blueprints/overview.md) van micro soft om te voldoen aan de normen voor regelgeving en naleving. Deze blauw drukken bevatten vooraf gemaakte sjablonen voor verschillende architecturen.
+* **Implementatie blauw drukken**: u kunt gebruikmaken van [blauw drukken](../governance/blueprints/overview.md) van micro soft om te voldoen aan de normen van regelgeving en naleving. Deze blauw drukken bevatten vooraf gemaakte sjablonen voor verschillende architecturen.
 
-* **CI/cd-integratie**: U kunt sjablonen integreren in de hulpprogram ma's voor continue integratie en doorlopende implementatie (CI/CD), waarmee u uw release pijplijnen kunt automatiseren voor snelle en betrouw bare updates van toepassingen en infra structuur. Met Azure DevOps en Resource Manager-sjabloon taak kunt u Azure-pijp lijnen gebruiken om voortdurend Azure Resource Manager-sjabloon projecten te bouwen en implementeren. Voor meer informatie raadpleegt u [VS project met pijp lijnen](./vs-resource-groups-project-devops-pipelines.md) en [doorlopende integratie met Azure-pijp lijnen](./resource-manager-tutorial-use-azure-pipelines.md).
+* **CI/cd-integratie**: u kunt sjablonen integreren in de hulpprogram ma's voor continue integratie en continue implementatie (CI/cd), waarmee u uw release pijplijnen kunt automatiseren voor snelle en betrouw bare updates van toepassingen en infra structuur. Met Azure DevOps en Resource Manager-sjabloon taak kunt u Azure-pijp lijnen gebruiken om voortdurend Azure Resource Manager-sjabloon projecten te bouwen en implementeren. Voor meer informatie raadpleegt u [VS project met pijp lijnen](./vs-resource-groups-project-devops-pipelines.md) en [doorlopende integratie met Azure-pijp lijnen](./resource-manager-tutorial-use-azure-pipelines.md).
 
-* **Exporteer bare code**: U kunt een sjabloon voor een bestaande resource groep ophalen door de huidige status van de resource groep te exporteren of door de sjabloon die wordt gebruikt voor een bepaalde implementatie weer te geven. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
+* **Exporteer bare code**: u kunt een sjabloon voor een bestaande resource groep ophalen door de huidige status van de resource groep te exporteren of door de sjabloon die wordt gebruikt voor een bepaalde implementatie weer te geven. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
 
-* **Hulp middelen voor ontwerpen**: U kunt sjablonen ontwerpen met [Visual Studio code](resource-manager-tools-vs-code.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)gebruiken.
+* **Hulp middelen voor ontwerpen**: u kunt sjablonen ontwerpen met [Visual Studio code](resource-manager-tools-vs-code.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)gebruiken.
 
 ## <a name="template-file"></a>Sjabloon bestand
 
@@ -126,4 +126,4 @@ Zie [Using linked templates with Azure Resource Manager](resource-group-linked-t
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](resource-group-authoring-templates.md)voor meer informatie over de eigenschappen in sjabloon bestanden.
-* Voor meer informatie over het exporteren van [sjablonen raadpleegt u Quick Start: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
+* Zie [Snelstartgids: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)voor meer informatie over het exporteren van sjablonen.

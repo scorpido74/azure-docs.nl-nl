@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244048"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529029"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -93,7 +93,7 @@ Een voor beeld van dit proces vindt [u in een IOT edge apparaat configureren om 
 
 De modules IoT Edge hub en agent gebruiken lokale opslag voor het onderhouden van de status en het inschakelen van berichten tussen modules, apparaten en de Cloud. Voor betere betrouw baarheid en prestaties moet u de systeem modules configureren voor het gebruik van opslag op het host-bestands systeem.
 
-Zie [opslag van hosts voor systeem modules](offline-capabilities.md#host-storage-for-system-modules)voor meer informatie.
+Zie [opslag van hosts voor systeem modules](how-to-access-host-storage-from-module.md)voor meer informatie.
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>De geheugen ruimte die wordt gebruikt door IoT Edge hub beperken
 
@@ -125,7 +125,7 @@ De standaard waarde van de para meter timeToLiveSecs is 7200 seconden, die twee 
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Geen debug-versies van module-installatie kopieën gebruiken
 
-Wanneer u overstapt van test scenario's naar productie scenario's, moet u de configuraties voor fout opsporing verwijderen uit implementatie manifesten. Controleer of geen van de module-installatie kopieën in de implementatie manifesten het **@no__t achtervoegsel 1debug** hebben. Als u opties voor het maken hebt toegevoegd om poorten in de modules voor fout opsporing weer te geven, moet u deze opties voor maken ook verwijderen. 
+Wanneer u overstapt van test scenario's naar productie scenario's, moet u de configuraties voor fout opsporing verwijderen uit implementatie manifesten. Controleer of geen enkele module installatie kopieën in de implementatie manifesten het **\.debug** achtervoegsel hebben. Als u opties voor het maken hebt toegevoegd om poorten in de modules voor fout opsporing weer te geven, moet u deze opties voor maken ook verwijderen. 
 
 ## <a name="container-management"></a>Containerbeheer
 

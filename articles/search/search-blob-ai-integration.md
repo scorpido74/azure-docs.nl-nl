@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434035"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529375"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>AI gebruiken voor het begrijpen van BLOB-gegevens
 
@@ -40,7 +40,7 @@ Output is altijd een Azure Search index, die wordt gebruikt voor het snel zoeken
 
 Tussen is de pijplijn architectuur zelf. De pijp lijn is gebaseerd op de *Indexeer* functie, waaraan u een *vaardig heden*kunt toewijzen. deze bestaat uit een of meer *vaardig heden* die de AI bieden. Het doel van de pijp lijn is om *verrijkte documenten* te produceren die als onbewerkte inhoud worden ingevoerd, maar extra structuur, context en informatie ophalen terwijl u door de pijp lijn beweegt. Verrijkte documenten worden tijdens de indexering gebruikt om omgekeerde indexen en andere structuren te maken die worden gebruikt voor Zoek opdrachten in volledige tekst of verkennen en analyses.
 
-## <a name="start-with-services-and-data"></a>Beginnen met Services en gegevens
+## <a name="start-with-services"></a>Beginnen met Services
 
 U hebt Azure Search en Azure Blob-opslag nodig. In Blob Storage hebt u een container nodig die bron inhoud levert.
 

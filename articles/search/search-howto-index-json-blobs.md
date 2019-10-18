@@ -10,24 +10,22 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 147a2b690139aff546d82fc89a2fbcdefed03e01
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656681"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533763"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>JSON-blobs indexeren met Azure Search BLOB-Indexer
 In dit artikel wordt beschreven hoe u een Azure Search BLOB- [Indexeer functie](search-indexer-overview.md) kunt configureren voor het extra heren van gestructureerde inhoud van JSON-documenten in Azure Blob-opslag en hoe u deze kunt doorzoeken in azure Search. Deze werk stroom maakt een Azure Search index en laadt deze met bestaande tekst die is geëxtraheerd uit JSON-blobs. 
 
 U kunt de [Portal](#json-indexer-portal), [rest-API'S](#json-indexer-rest)of [.NET SDK](#json-indexer-dotnet) gebruiken voor het indexeren van JSON-inhoud. Algemene voor alle benaderingen is dat JSON-documenten zich bevinden in een BLOB-container in een Azure Storage-account. Zie voor hulp bij het pushen van JSON-documenten van andere niet-Azure-platforms [gegevens importeren in azure Search](search-what-is-data-import.md).
 
-JSON-blobs in Azure Blob-opslag zijn meestal één JSON-document of een verzameling van JSON-entiteiten. Voor JSON-verzamelingen kan de BLOB een **matrix** van goed opgemaakte JSON-elementen hebben. Blobs kunnen ook bestaan uit meerdere afzonderlijke JSON-entiteiten, gescheiden door een nieuwe regel. De BLOB-Indexeer functie in Azure Search kan deze constructie parseren, afhankelijk van de wijze waarop u de para meter **parsingMode** op de aanvraag hebt ingesteld.
-
-Alle JSON-parserings`json`modi `jsonArray`( `jsonLines`,,) zijn nu algemeen beschikbaar. 
+JSON-blobs in Azure Blob-opslag zijn meestal één JSON-document (de parserings modus is `json`) of een verzameling van JSON-entiteiten. Voor verzamelingen kan de BLOB een **matrix** van goed opgemaakte JSON-elementen bevatten (de geparseerde modus is `jsonArray`). Blobs kunnen ook bestaan uit meerdere afzonderlijke JSON-entiteiten, gescheiden door een nieuwe regel (de parserings modus is `jsonLines`). De **parsingMode** para meter voor de aanvraag bepaalt de uitvoer structuren.
 
 > [!NOTE]
-> Volg de aanbevelingen voor de configuratie van de Indexeer functie in [een-op-veel](search-howto-index-one-to-many-blobs.md) -indexering om meerdere zoek documenten uit één Azure-Blob af te voeren.
+> Zie [een-op-veel-indexering](search-howto-index-one-to-many-blobs.md)voor meer informatie over het indexeren van meerdere zoek documenten uit één blob.
 
 <a name="json-indexer-portal"></a>
 
@@ -39,17 +37,15 @@ U wordt aangeraden hetzelfde Azure-abonnement te gebruiken voor zowel Azure Sear
 
 ### <a name="1---prepare-source-data"></a>1: Bron gegevens voorbereiden
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/).
-
-1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om uw gegevens te bevatten. Het niveau van de open bare toegang kan worden ingesteld op een van de geldige waarden.
+[Meld u aan bij de Azure Portal](https://portal.azure.com/) en [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om uw gegevens te bevatten. Het niveau van de open bare toegang kan worden ingesteld op een van de geldige waarden.
 
 U hebt de naam van het opslag account, de container naam en een toegangs sleutel nodig om uw gegevens op te halen in de wizard **gegevens importeren** .
 
 ### <a name="2---start-import-data-wizard"></a>2-wizard gegevens importeren starten
 
-Op de pagina overzicht van uw Azure Search-service kunt u [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk of door te klikken op **toevoegen Azure Search** in het gedeelte **BLOB service** van het navigatie deel venster van uw opslag account.
+Op de pagina overzicht van uw Azure Search-service kunt u [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk.
 
-   De ![opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard gegevens importeren starten")
+   ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
 ### <a name="3---set-the-data-source"></a>3: de gegevens bron instellen
 
@@ -85,7 +81,7 @@ Vanaf deze pagina kunt u verdergaan met het aanpassen van de index.
 
 Op de pagina **index** ziet u een lijst met velden met een gegevens type en een reeks selectie vakjes voor het instellen van index kenmerken. Met de wizard kunt u een lijst met velden genereren op basis van meta gegevens en door de bron gegevens te bemonsteren. 
 
-U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en doorzoekbaar voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
+U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en **doorzoekbaar** voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
 
 Lees de beschrijving van [index kenmerken](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor meer informatie. 
 
@@ -116,19 +112,19 @@ Wanneer het indexeren is voltooid, kunt u [Search Explorer](search-explorer.md) 
 
 U kunt de REST API gebruiken voor het indexeren van JSON-blobs, het volgen van een werk stroom met drie delen voor alle Indexeer functies in Azure Search: een gegevens bron maken, een index maken, een Indexeer functie maken. Gegevens extractie uit Blob Storage vindt plaats wanneer u de aanvraag voor het maken van een index verzendt. Nadat deze aanvraag is voltooid, hebt u een query die kan worden geïndexeerd. 
 
-Aan het einde van deze sectie kunt u de code van de [rest-voorbeeld](#rest-example) weergave bekijken, waarin wordt uitgelegd hoe u alle drie de objecten maakt. Deze sectie bevat ook informatie over [JSON-parserings modi](#parsing-modes), [één BLOB](#parsing-single-blobs), [JSON-matrices](#parsing-arrays)en geneste [matrices](#nested-json-arrays).
+Aan het einde van deze sectie kunt u de code van de [rest-voorbeeld](#rest-example) weergave bekijken, waarin wordt uitgelegd hoe u alle drie de objecten maakt. Deze sectie bevat ook informatie over [JSON-parserings modi](#parsing-modes), [één BLOB](#parsing-single-blobs), [JSON-matrices](#parsing-arrays)en [geneste matrices](#nested-json-arrays).
 
-Voor op code gebaseerde JSON-indexering [](search-get-started-postman.md) gebruikt u postman en de rest API om deze objecten te maken:
+Voor op code gebaseerde JSON-indexering gebruikt u [postman](search-get-started-postman.md) en de rest API om deze objecten te maken:
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [TabIndex](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 Voor de volg orde van bewerkingen moet u objecten in deze volg orde maken en aanroepen. In tegens telling tot de werk stroom van de portal, is voor een code benadering een beschik bare index vereist om de JSON-documenten te accepteren die via de aanvraag voor het maken van een **Indexeer functie**
 
 JSON-blobs in Azure Blob-opslag zijn meestal één JSON-document of een JSON-matrix. De BLOB-Indexeer functie in Azure Search kan beide constructies parseren, afhankelijk van de wijze waarop u de para meter **parsingMode** op de aanvraag hebt ingesteld.
 
-| JSON-document | parsingMode | Description | Beschikbaarheid |
+| JSON-document | parsingMode | Beschrijving | Beschikbaarheid |
 |--------------|-------------|--------------|--------------|
 | Eén per BLOB | `json` | JSON-blobs worden als één tekst segment geparseerd. Elke JSON-BLOB wordt één Azure Search document. | Algemeen beschikbaar in de [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) -API en [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
 | Meerdere per BLOB | `jsonArray` | Parseert een JSON-matrix in de blob, waarbij elk element van de matrix een afzonderlijk Azure Search document wordt.  | Algemeen beschikbaar in de [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) -API en [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
@@ -142,7 +138,7 @@ Kopieer de volgende vier waarden naar Klad blok, zodat u ze in een aanvraag kunt
 
 + Naam van Azure Search-service
 + Beheerder sleutel Azure Search
-+ Naam van het Azure-opslagaccount
++ Azure Storage-account naam
 + Sleutel voor het Azure-opslag account
 
 U kunt deze waarden vinden in de portal:
@@ -155,7 +151,7 @@ U kunt deze waarden vinden in de portal:
 
 ### <a name="2---create-a-data-source"></a>2: een gegevens bron maken
 
-Deze stap bevat verbindings gegevens van gegevens bronnen die worden gebruikt door de Indexeer functie. De gegevens bron is een benoemd object in Azure Search dat de verbindings gegevens persistent maakt. Het gegevens bron type, `azureblob`, bepaalt welk gedrag voor gegevens extractie door de Indexeer functie wordt aangeroepen. 
+Deze stap bevat verbindings gegevens van gegevens bronnen die worden gebruikt door de Indexeer functie. De gegevens bron is een benoemd object in Azure Search dat de verbindings gegevens persistent maakt. Het gegevens bron type `azureblob`, bepaalt welk gedrag voor gegevens extractie door de Indexeer functie wordt aangeroepen. 
 
 Vervang geldige waarden door de service naam, de beheerders sleutel, het opslag account en de tijdelijke aanduidingen van de account sleutel.
 
@@ -209,7 +205,7 @@ Net als bij een index en een gegevens bron, en Indexeer functie is ook een benoe
 
 De configuratie van de Indexeer functie bevindt zich in de hoofd tekst van de aanvraag. Hiervoor is een gegevens bron en een lege doel index vereist die al bestaan in Azure Search. 
 
-Schema en para meters zijn optioneel. Als u deze weglaat, wordt de Indexeer functie onmiddellijk uitgevoerd `json` , met als de parseringsfout.
+Schema en para meters zijn optioneel. Als u deze weglaat, wordt de Indexeer functie onmiddellijk uitgevoerd, met `json` als de verwerkings modus.
 
 Deze specifieke Indexeer functie bevat geen veld toewijzingen. In de definitie van de Indexeer functie kunt u **veld Toewijzingen** laten staan als de eigenschappen van het JSON-bron document overeenkomen met de velden van de doel-zoek index. 
 
@@ -281,10 +277,10 @@ Het maken van de Indexeer functie op Azure Search triggers voor gegevens import.
 
 De .NET SDK heeft volledige pariteit met de REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 
@@ -292,18 +288,18 @@ De .NET SDK heeft volledige pariteit met de REST API. We raden u aan de sectie v
 
 JSON-blobs kunnen aannemen dat er meerdere formulieren zijn. De para meter **parsingMode** op de JSON-indexer bepaalt hoe JSON-blob-inhoud wordt geparseerd en gestructureerd in een Azure search index:
 
-| parsingMode | Description |
+| parsingMode | Beschrijving |
 |-------------|-------------|
 | `json`  | Indexeer elke BLOB als één document. Dit is de standaard instelling. |
 | `jsonArray` | Kies deze modus als uw blobs bestaan uit JSON-matrices en u elk element van de matrix nodig hebt om een afzonderlijk document in Azure Search te worden. |
 |`jsonLines` | Kies deze modus als uw blobs bestaan uit meerdere JSON-entiteiten die door een nieuwe regel worden gescheiden en u wilt dat elke entiteit een afzonderlijk document in Azure Search wordt. |
 
-U kunt een document beschouwen als één item in de zoek resultaten. Als u wilt dat elk element in de matrix wordt weer gegeven in Zoek resultaten als een onafhankelijk item, gebruikt u `jsonArray` de `jsonLines` optie of waar nodig.
+U kunt een document beschouwen als één item in de zoek resultaten. Als u wilt dat elk element in de matrix wordt weer gegeven in Zoek resultaten als een onafhankelijk item, gebruikt u de optie `jsonArray` of `jsonLines` waar nodig.
 
-In de definitie van de Indexeer functie kunt u eventueel [veld Toewijzingen](search-indexer-field-mappings.md) gebruiken om te kiezen welke eigenschappen van het JSON-bron document worden gebruikt om uw doel zoek index te vullen. Als `jsonArray` de matrix als een eigenschap met een lager niveau bestaat, kunt u voor de Parseerfout een documenthoofdmap instellen die aangeeft waar de matrix binnen de blob is geplaatst.
+In de definitie van de Indexeer functie kunt u eventueel [veld Toewijzingen](search-indexer-field-mappings.md) gebruiken om te kiezen welke eigenschappen van het JSON-bron document worden gebruikt om uw doel zoek index te vullen. Als de matrix is ingesteld als een eigenschap met een lager niveau, kunt u voor `jsonArray`-parserings modus een documenthoofdmap instellen die aangeeft waar de matrix in de blob is geplaatst.
 
 > [!IMPORTANT]
-> Wanneer u, `json` `jsonArray` of`jsonLines` de parserings modus gebruikt Azure Search, wordt ervan uitgegaan dat alle blobs in uw gegevens bron JSON bevatten. Als u een combi natie van JSON-en niet-JSON-blobs in dezelfde gegevens bron wilt ondersteunen, laat het ons dan weten op [onze UserVoice-site](https://feedback.azure.com/forums/263029-azure-search).
+> Wanneer u `json`, `jsonArray` of `jsonLines` Azure Search-parserings modus gebruikt, wordt ervan uitgegaan dat alle blobs in uw gegevens bron JSON bevatten. Als u een combi natie van JSON-en niet-JSON-blobs in dezelfde gegevens bron wilt ondersteunen, laat het ons dan weten op [onze UserVoice-site](https://feedback.azure.com/forums/263029-azure-search).
 
 
 <a name="parsing-single-blobs"></a>
@@ -336,7 +332,7 @@ U kunt ook de JSON-matrix optie gebruiken. Deze optie is handig wanneer Blobs ee
         { "id" : "3", "text" : "example 3" }
     ]
 
-Voor een JSON-matrix moet de definitie van de Indexeer functie er ongeveer uitzien als in het volgende voor beeld. U ziet dat de parsingMode-para `jsonArray` meter de parser opgeeft. Als u de juiste parser opgeeft en de juiste gegevens invoer hebt, zijn de enige twee matrix-specifieke vereisten voor het indexeren van JSON-blobs.
+Voor een JSON-matrix moet de definitie van de Indexeer functie er ongeveer uitzien als in het volgende voor beeld. U ziet dat met de para meter parsingMode de `jsonArray`-parser wordt opgegeven. Als u de juiste parser opgeeft en de juiste gegevens invoer hebt, zijn de enige twee matrix-specifieke vereisten voor het indexeren van JSON-blobs.
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -355,7 +351,7 @@ Ook hier ziet u dat veld Toewijzingen kunnen worden wegge laten. Uitgaande van e
 <a name="nested-json-arrays"></a>
 
 ## <a name="parse-nested-arrays"></a>Geneste matrices parseren
-Voor json-matrices die geneste elementen bevatten, kunt `documentRoot` u een een structuur met meerdere niveaus opgeven. Als uw blobs er bijvoorbeeld als volgt uitzien:
+Voor JSON-matrices met geneste elementen kunt u een `documentRoot` opgeven om een structuur met meerdere niveaus aan te duiden. Als uw blobs er bijvoorbeeld als volgt uitzien:
 
     {
         "level1" : {
@@ -367,7 +363,7 @@ Voor json-matrices die geneste elementen bevatten, kunt `documentRoot` u een een
         }
     }
 
-Gebruik deze configuratie om de matrix te indexeren die is `level2` opgenomen in de eigenschap:
+Gebruik deze configuratie om de matrix te indexeren die is opgenomen in de eigenschap `level2`:
 
     {
         "name" : "my-json-array-indexer",
@@ -383,7 +379,7 @@ Als uw BLOB meerdere JSON-entiteiten bevat, gescheiden door een nieuwe regel, en
     { "id" : "2", "text" : "example 2" }
     { "id" : "3", "text" : "example 3" }
 
-Voor JSON-lijnen moet de definitie van de Indexeer functie er ongeveer uitzien als in het volgende voor beeld. U ziet dat de parsingMode-para `jsonLines` meter de parser opgeeft. 
+Voor JSON-lijnen moet de definitie van de Indexeer functie er ongeveer uitzien als in het volgende voor beeld. U ziet dat met de para meter parsingMode de `jsonLines`-parser wordt opgegeven. 
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -397,7 +393,7 @@ Voor JSON-lijnen moet de definitie van de Indexeer functie er ongeveer uitzien a
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
 
-Ook hier ziet u dat veld Toewijzingen kunnen worden wegge laten, vergelijkbaar met de `jsonArray` parserings modus.
+Ook hier ziet u dat veld Toewijzingen kunnen worden wegge laten, vergelijkbaar met de `jsonArray`-verwerkings modus.
 
 ## <a name="add-field-mappings"></a>Veld toewijzingen toevoegen
 
@@ -415,7 +411,7 @@ Bekijk ons voor beeld van een JSON-document:
         }
     }
 
-Stel dat er een zoek index met de volgende `text` velden: `Edm.String`van `date` `Edm.DateTimeOffset`het type type en `tags` van het `Collection(Edm.String)`type is. Let op de discrepantie tussen ' datePublished ' in de bron `date` en het veld in de index. Als u uw JSON wilt toewijzen aan de gewenste vorm, gebruikt u de volgende veld toewijzingen:
+Stel dat er een zoek index is met de volgende velden: `text` type `Edm.String`, `date` type `Edm.DateTimeOffset` en `tags` van het type `Collection(Edm.String)`. Let op de discrepantie tussen ' datePublished ' in het veld bron en `date` in de index. Als u uw JSON wilt toewijzen aan de gewenste vorm, gebruikt u de volgende veld toewijzingen:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -439,4 +435,4 @@ U kunt ook verwijzen naar afzonderlijke matrix elementen met behulp van een inde
 + [Indexeer functies in Azure Search](search-indexer-overview.md)
 + [Azure Blob Storage indexeren met Azure Search](search-howto-index-json-blobs.md)
 + [Indexeren van CSV-blobs met Azure Search BLOB-Indexeer functie](search-howto-index-csv-blobs.md)
-+ [Zelfstudie: Semi-gestructureerde gegevens zoeken vanuit Azure Blob-opslag](search-semi-structured-data.md)
++ [Zelf studie: semi-gestructureerde gegevens zoeken vanuit Azure Blob-opslag](search-semi-structured-data.md)

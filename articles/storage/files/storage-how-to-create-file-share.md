@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b30df7410f56c203eb600089cce130a8de23d1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013565"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514618"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Een bestandsshare maken in Azure Files
 U kunt Azure-bestandsshares maken met de  [Azure-portal](https://portal.azure.com/), de PowerShell-cmdlets van Azure Storage, de clientbibliotheken van Azure Storage of de REST API van Azure Storage. In deze zelfstudie leert u het volgende:
@@ -23,6 +23,9 @@ U kunt Azure-bestandsshares maken met de  [Azure-portal](https://portal.azure.c
 ## <a name="prerequisites"></a>Vereisten
 Voor het maken van een Azure-bestandsshare kunt u een opslagaccount gebruiken dat al bestaat of [een nieuw Azure Storage-account maken](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Als u een Azure-bestandsshare wilt maken met PowerShell, hebt u de sleutel en de naam van uw opslagaccount nodig. U hebt een Azure Storage-accountsleutel nodig als u van plan bent Powershell of de CLI te gebruiken.
 
+> [!NOTE]
+> Als u bestands shares wilt maken die groter zijn dan 5 TiB, raadpleegt u ons artikel [grote bestands shares inschakelen](storage-files-how-to-create-large-file-share.md).
+
 ## <a name="create-a-file-share-through-the-azure-portal"></a>Een bestandsshare maken via de Azure-portal
 1. **Ga in de Azure-portal naar de blade Opslagaccount**:    
     ![Blade Opslagaccount](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
@@ -30,14 +33,14 @@ Voor het maken van een Azure-bestandsshare kunt u een opslagaccount gebruiken da
 2. **Klik op de knop Bestandsshare toevoegen**:    
     ![Klik op de knop Bestandsshare toevoegen](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **Geef de naam en een quotum op. Op dit moment is de maximale waarde van het quotum van 5 TiB**:    
+3. **Naam en quotum opgeven**:    
     ![Geef een naam en een gewenst quotum op voor de nieuwe bestandsshare](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. **Bekijk de nieuwe bestandsshare**:  ![Nieuwe bestandsshare bekijken](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. **Bekijk uw nieuwe bestandsshare**: ![Bekijk uw nieuwe bestandsshare](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. **Een bestand uploaden**:  ![Bestand uploaden](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. **Upload een bestand**: ![Upload een bestand](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. **Blader naar de bestandsshare en beheer uw mappen en bestanden**:  ![Bladeren naar bestandsshare](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. **Blader naar de bestandsshare en beheer uw mappen en bestanden**: ![Blader naar de bestandsshare](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>Een bestandsshare via de PowerShell maken

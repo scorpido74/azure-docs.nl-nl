@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373549"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532833"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` in het pictogram van de @no__t 1RSS-feed lezer @ no__t-2-feed reader.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` in het pictogram van de ![RSS feed-lezer ](./media/whats-new/feed-icon-16x16.png) feed-lezer.
 
 Azure AD ontvangt voortdurend verbeteringen. Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
 
@@ -36,6 +36,20 @@ Azure AD ontvangt voortdurend verbeteringen. Dit artikel bevat informatie over h
 - Plannen voor wijzigingen
 
 Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Active Directory](whats-new-archive.md).
+
+---
+
+## <a name="october-2019"></a>Oktober 2019
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>Afschaffing van de identityRiskEvent-API voor detectie van Azure AD Identity Protection-Risico's  
+
+**Type:** Plan voor wijziging  
+**Service categorie:** Identiteits beveiliging  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
+
+Als reactie op de feedback van ontwikkel aars kunnen Azure AD Premium P2-abonnees nu complexe query's uitvoeren op Azure AD Identity Protection risico detectie gegevens door gebruik te maken van de nieuwe riskDetection-API voor Microsoft Graph. De bestaande [identityRiskEvent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta) API bèta versie retourneert geen gegevens over **10 januari 2020**. Als uw organisatie gebruikmaakt van de identityRiskEvent-API, moet u overstappen naar de nieuwe riskDetection-API.
+
+Zie de [referentie documentatie voor API voor risico detectie](https://aka.ms/RiskDetectionsAPI)voor meer informatie over de nieuwe RISKDETECTION-API.
 
 ---
 
@@ -50,6 +64,8 @@ Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk.
 Power BI is het afnemen van inhouds pakketten uit hun archief en vanaf **1 oktober 2019**wordt het Azure AD Power bi-inhouds pakket niet meer ondersteund. Klanten die het inhouds pakket momenteel gebruiken, kunnen het blijven gebruiken, ook al zijn de onderliggende Api's oudere versies. Als alternatief voor dit inhouds pakket kunt u Azure AD-werkmappen (gebouwd op Log Analytics) gebruiken om inzicht te krijgen in uw Azure AD-gerelateerde services.
 
 Zie [Azure monitor werkmappen gebruiken voor Azure Active Directory-rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)voor meer informatie over de werkmappen. Voor meer informatie over de afschaffing van de inhouds pakketten raadpleegt u het blog bericht [Power bi sjabloon apps voor algemene Beschik baarheid aankondigen](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Mijn profiel wordt hernoemd en geïntegreerd met de pagina Microsoft Office-account
 
@@ -444,7 +460,7 @@ Het IP-adres van de MFA-server wordt verwijderd uit het [Office 365 IP-adres en 
 
 Op 26 juli 2019 hebben we gewijzigd hoe we alleen app-tokens bieden via de [client referenties verlenen](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Voorheen konden apps tokens krijgen om andere apps aan te roepen, ongeacht of de client-app zich in de Tenant bevindt. We hebben dit gedrag bijgewerkt, waardoor enkele Tenant bronnen, ook wel web-Api's genoemd, alleen kunnen worden aangeroepen door client-apps die voor komen in de resource-Tenant.
 
-Als uw app zich niet in de resource Tenant bevindt, wordt er een fout bericht weer gegeven met de tekst `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` als u dit probleem wilt verhelpen, moet u de client app Service-Principal in de Tenant maken met behulp van het [uitstemmings eindpunt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) van de beheerder of [via Power shell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). Hiermee zorgt u ervoor dat uw Tenant de app toestemming heeft gegeven om binnen de Tenant te worden gebruikt.
+Als uw app zich niet in de resource-Tenant bevindt, wordt er een fout bericht weer gegeven waarin wordt vermeld, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` u dit probleem wilt oplossen, moet u de client app service-principal maken in de Tenant met behulp van het [beheerders toestemmings eindpunt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) of [via Power shell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). Hiermee zorgt u ervoor dat uw Tenant de app toestemming heeft gegeven om binnen de Tenant te worden gebruikt.
 
 Zie [Wat is er nieuw voor verificatie?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant)voor meer informatie.
 

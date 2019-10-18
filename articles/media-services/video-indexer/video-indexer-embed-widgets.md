@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71036629"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
-In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw toepassingen. Video Indexer ondersteunt het insluiten van drie typen objecten in uw toepassing: *Cognitieve inzichten*, *speler*en *Redacteur*. 
+In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw toepassingen. Video Indexer ondersteunt het insluiten van drie typen objecten in uw toepassing: *cognitieve inzichten*, *speler*en *Redacteur*. 
 
-Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende `https://wus2.videoindexer.ai/embed/insights/...`:.
+Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typen widget
 
@@ -29,36 +29,36 @@ Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven accou
 
 Een cognitieve Insights-widget bevat alle visuele inzichten die zijn geëxtraheerd uit het indexerings proces van uw video. De cognitieve Insights-widget ondersteunt de volgende optionele URL-para meters.
 
-|Name|Definitie|Description|
+|Naam|Definitie|Beschrijving|
 |---|---|---|
-|`widgets`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de inzichten bepalen die u wilt weer geven. <br/> Voor beeld `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` : alleen mensen en de gebruikers interface-inzichten van de Brands worden weer gegeven.<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>Houd er rekening `widgets` mee dat de URL-para meter niet wordt ondersteund in versie 2.<br/>|
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. <br/> Voorbeeld: `locale=de`.|
-|`tab`|Het standaard geselecteerde tabblad|Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/> Voor beeld `tab=timeline` : Hiermee wordt de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
+|`widgets`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de inzichten bepalen die u wilt weer geven. <br/> Voor beeld: met `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` worden alleen de gebruikers interface-inzichten van gebruikers en Brands weer gegeven.<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>Houd er rekening mee dat de para meter `widgets` URL niet wordt ondersteund in versie 2.<br/>|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaard waarde is `en`. <br/> Voor beeld: `locale=de`.|
+|`tab`|Het standaard geselecteerde tabblad|Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/> Voor beeld: `tab=timeline` de inzichten weer geven op het tabblad **tijd lijn** geselecteerd.|
 
 ### <a name="player-widget"></a>Widget Speler
 
 U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve bitsnelheid. De Player-widget ondersteunt de volgende optionele URL-para meters.
 
-|Name|Definitie|Description|
+|Naam|Definitie|Beschrijving|
 |---|---|---|
-|`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voorbeeld: `t=60`.|
-|`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voorbeeld: `captions=en-US`.|
-|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Voorbeeld: `showCaptions=true`.|
-|`type`||Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Voorbeeld: `type=audio`.|
-|`autoplay`|Een Booleaanse waarde|Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Voorbeeld: `autoplay=false`.|
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
+|`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voor beeld: `t=60`.|
+|`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voor beeld: `captions=en-US`.|
+|`showCaptions`|Een Booleaanse waarde|Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Voor beeld: `showCaptions=true`.|
+|`type`||Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Voor beeld: `type=audio`.|
+|`autoplay`|Een Booleaanse waarde|Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaard waarde is `true`.<br/> Voor beeld: `autoplay=false`.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaard waarde is `en-US`.<br/>Voor beeld: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Editor-widget
 
 U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten van een video te beheren. De editor-widget ondersteunt de volgende optionele URL-para meters.
 
-|Name|Definitie|Description|
+|Naam|Definitie|Beschrijving|
 |---|---|---|
-|`accessToken`<sup>*</sup>|Tekenreeks|Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist `accessToken` de para meter.|
-|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
-|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Voorbeeld: `language=de`.|
+|`accessToken`<sup>*</sup>|Tekenreeks|Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> Voor de editor-widget is de para meter `accessToken` vereist.|
+|`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaard waarde is `en-US`.<br/>Voor beeld: `language=de-DE`.|
+|`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaard waarde is `en`.<br/>Voor beeld: `language=de`.|
 
-<sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
+<sup>*</sup> De eigenaar moet er `accessToken` voorzichtig van kunnen zijn.
 
 ## <a name="embedding-public-content"></a>Openbare inhoud insluiten
 
@@ -76,7 +76,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
 > [!NOTE]
-> Als u problemen hebt met het delen van uw video- `location` url's, voegt u de para meter toe aan de koppeling. De para meter moet worden ingesteld op de [Azure-regio's waarin video indexer bestaat](regions.md). Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Als u problemen hebt met het delen van uw video-Url's, voegt u de para meter `location` toe aan de koppeling. De para meter moet worden ingesteld op de [Azure-regio's waarin video indexer bestaat](regions.md). Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Persoonlijke inhoud insluiten
 
@@ -88,7 +88,7 @@ Als u de inhoud van het cognitieve Insights-object wilt ophalen, gebruikt u een 
 - De API voor het [verkrijgen van inzichten-widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
 - Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als de **src** -waarde voor de iframe, zoals eerder is weer gegeven.
 
-Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik het [object Insights ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of het [token video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) met `&allowEdit=true`. 
+Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik de widget voor het [verkrijgen van inzichten](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of [Haal token voor video toegang](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) op met `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interactie van widgets
 
@@ -227,7 +227,7 @@ Als u Video Indexer Insights insluit met uw eigen [Azure Media Player](https://a
 
 ### <a name="cognitive-insights-widget"></a>Widget Inzichten
 
-U kunt kiezen welke typen inzichten u wilt. Als u dit wilt doen, geeft u deze op als waarde voor de volgende URL-para meter die wordt toegevoegd aan de Inge sloten code die u ontvangt (van de API of `&widgets=<list of wanted widgets>`van de webtoepassing):.
+U kunt kiezen welke typen inzichten u wilt. Als u dit wilt doen, geeft u ze op als een waarde voor de volgende URL-para meter die wordt toegevoegd aan de Inge sloten code die u ontvangt (van de API of van de webtoepassing): `&widgets=<list of wanted widgets>`.
 
 De mogelijke waarden zijn: **personen**, **tref woorden**, **gevoel**, **Transcripten**en **zoeken**.
 
@@ -235,7 +235,7 @@ Als u bijvoorbeeld een widget wilt insluiten die alleen personen en zoek inzicht
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` de URL van de iframe op te geven. (De HTML- \<titel wordt aangepast > waarde).
+De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` aan de iframe-URL op te geven. (Het HTML-\<title-> waarde wordt aangepast).
     
 Als u bijvoorbeeld het iframe-venster de titel ' MyInsights ' wilt geven, ziet de URL er als volgt uit:
 
@@ -253,16 +253,16 @@ Bijvoorbeeld:
 
 Video Indexer Player heeft standaard ondertiteling gegenereerd die is gebaseerd op de transcriptie van de video. De transcriptie wordt geëxtraheerd uit de video met de bron taal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een andere taal, kunt u toevoegen `&captions=< Language | ”all” | “false” >` aan de URL van de insluitings speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt `all`u de waarde. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u door `&showCaptions=true`geven.
+Als u wilt insluiten met een andere taal, kunt u `&captions=< Language | ”all” | “false” >` toevoegen aan de Inge sloten URL van de speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt u de waarde `all`. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u `&showCaptions=true` door geven.
 
 De Inge sloten URL ziet er dan als volgt uit: 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-Als u bijschriften wilt uitschakelen, kunt u de waarde van `captions` de para meter `false`door geven als.
+Als u bijschriften wilt uitschakelen, kunt u de waarde van de `captions` parameter als `false` door geven.
 
 #### <a name="autoplay"></a>Zorgen
-Standaard wordt de video afgespeeld met de speler. u kunt ervoor kiezen om niet door `&autoplay=false` te geven aan de voor gaande insluit-URL.
+Standaard wordt de video afgespeeld met de speler. u kunt ervoor kiezen om `&autoplay=false` niet door te geven aan de voor gaande Inge sloten URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 

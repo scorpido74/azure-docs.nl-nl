@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168753"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515563"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -47,7 +47,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
      - 169.254.0.0/16 (link-local)
      - 168.63.129.16/32 (interne DNS-, DHCP-en Azure Load Balancer- [status test](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-     Hoewel u slechts één adres bereik kunt definiëren wanneer u het virtuele netwerk maakt, kunt u meer adresbereiken toevoegen aan de adres ruimte nadat het virtuele netwerk is gemaakt. Zie [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen van een adres bereik aan een bestaand virtueel netwerk.
+     Hoewel u slechts één adres bereik kunt definiëren wanneer u het virtuele netwerk in de portal maakt, kunt u meer adresbereiken toevoegen aan de adres ruimte nadat het virtuele netwerk is gemaakt. Zie [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen van een adres bereik aan een bestaand virtueel netwerk.
 
      >[!WARNING]
      >Als een virtueel netwerk adresbereiken heeft die overlappen met een ander virtueel netwerk of een on-premises netwerk, kunnen de twee netwerken niet worden verbonden. Voordat u een adres bereik definieert, moet u overwegen of u het virtuele netwerk in de toekomst mogelijk wilt verbinden met andere virtuele netwerken of on-premises netwerken.

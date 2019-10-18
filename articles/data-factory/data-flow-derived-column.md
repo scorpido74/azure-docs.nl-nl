@@ -1,17 +1,17 @@
 ---
-title: Afgeleide kolom transformatie in toewijzings gegevens stroom-Azure Data Factory | Microsoft Docs
+title: Afgeleide kolom transformatie in Azure Data Factory gegevens stroom toewijzen | Microsoft Docs
 description: Meer informatie over het transformeren van gegevens op schaal in Azure Data Factory met de toewijzing gegevens stroom die is afgeleide kolom transformatie.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 5a4ee90717d46fe593d9e10083b349e069216dac
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436764"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514811"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Afgeleide kolom transformatie bij toewijzing van gegevens stroom
 
@@ -46,7 +46,9 @@ Beweeg de muis aanwijzer over een bestaande afgeleide kolom en klik op het plus 
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een afgeleide kolom met de naam `CleanData` die een binnenkomende stream `MoviesYear` gebruikt en twee afgeleide kolommen maakt. De eerste afgeleide kolom vervangt kolom `Rating` met waarde als geheel getal. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met ' films '. Voor elke overeenkomende kolom maakt deze een kolom `movie` die gelijk is aan de waarde van de overeenkomende kolom, voorafgegaan door ' movie_ '. In de Data Factory UX ziet deze trans formatie er als volgt uit:
+Het onderstaande voor beeld is een afgeleide kolom met de naam `CleanData` die een binnenkomende stream `MoviesYear` gebruikt en twee afgeleide kolommen maakt. De eerste afgeleide kolom vervangt kolom `Rating` met waarde als geheel getal. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met ' films '. Voor elke overeenkomende kolom maakt een kolom `movie` die gelijk is aan de waarde van de overeenkomende kolom, voorafgegaan door ' movie_ '. 
+
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
 ![Voor beeld afleiden](media/data-flow/derive-script1.png "Voor beeld afleiden")
 

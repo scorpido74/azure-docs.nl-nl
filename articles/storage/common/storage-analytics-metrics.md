@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846896"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514775"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics-metrische gegevens (klassiek)
 
@@ -39,11 +39,11 @@ Opslaganalyse kunt metrische gegevens opslaan die geaggregeerde trans actie-stat
 > [!NOTE]
 >  Op dit moment zijn capaciteits gegevens alleen beschikbaar voor de Blob service.
 
- Capaciteits gegevens worden dagelijks vastgelegd voor de Blob service van een opslag account en er worden twee tabel entiteiten geschreven. De ene entiteit biedt statistieken voor gebruikers gegevens en de andere bevat statistieken over de `$logs` BLOB-container die door Opslaganalyse wordt gebruikt. De tabel *$MetricsCapacityBlob* bevat de volgende statistieken:  
+ Capaciteits gegevens worden dagelijks vastgelegd voor de Blob service van een opslag account en er worden twee tabel entiteiten geschreven. Eén entiteit biedt statistieken voor gebruikers gegevens en de andere bevat statistieken over de `$logs` BLOB-container die wordt gebruikt door Opslaganalyse. De tabel *$MetricsCapacityBlob* bevat de volgende statistieken:  
 
-- **Capaciteit**: De hoeveelheid opslag die wordt gebruikt door de Blob service van het opslag account, in bytes.  
-- **ContainerCount**: Het aantal BLOB-containers in de Blob service van het opslag account.  
-- **ObjectCount**: Het aantal doorgevoerde en niet-toegezegde blok-of pagina-blobs in de Blob service van het opslag account.  
+- **Capaciteit**: de hoeveelheid opslag die wordt gebruikt door de BLOB service van het opslag account, in bytes.  
+- **ContainerCount**: het aantal BLOB-containers in de BLOB service van het opslag account.  
+- **ObjectCount**: het aantal doorgevoerde en niet-toegezegde blok-of pagina-blobs in de BLOB service van het opslag account.  
 
   Zie [Opslaganalyse tabel met metrische](/rest/api/storageservices/storage-analytics-metrics-table-schema)gegevens voor meer informatie over de metrische gegevens van de capaciteit.  
 
@@ -54,9 +54,9 @@ Opslaganalyse kunt metrische gegevens opslaan die geaggregeerde trans actie-stat
 |Niveau metrische gegevens|Tabel namen|Ondersteund voor versies|  
 |-------------------|-----------------|----------------------------|  
 |Metrische gegevens per uur, primaire locatie|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Versies ouder dan 2013-08-15. Hoewel deze namen nog steeds worden ondersteund, is het raadzaam om te scha kelen naar het gebruik van de tabellen die hieronder worden weer gegeven.|  
-|Metrische gegevens per uur, primaire locatie|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
-|Metrische gegevens over minuten, primaire locatie|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
-|Metrische gegevens per uur, secundaire locatie|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
+|Metrische gegevens per uur, primaire locatie|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
+|Metrische gegevens over minuten, primaire locatie|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Alle versies. Ondersteuning voor metrische gegevens van bestands service is alleen beschikbaar in versie 2015-04-05 en hoger.|  
+|Metrische gegevens per uur, secundaire locatie|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
 |Metrische gegevens over minuten, secundaire locatie|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Alle versies. Geo-redundante replicatie met lees toegang moet zijn ingeschakeld.|  
 |Capaciteit (alleen Blob service)|$MetricsCapacityBlob|Alle versies.|  
 
@@ -74,45 +74,42 @@ Voer de volgende stappen uit om metrische gegevens in te scha kelen in de [Azure
 
 Met de [Azure Portal](https://portal.azure.com) kunt u op dit moment geen metrische gegevens over minuten configureren in uw opslag account. u moet metrische gegevens over de minuut inschakelen met behulp van Power shell of via een programma.
 
-> [!NOTE]
->  Houd er rekening mee dat de Azure Portal momenteel niet in staat is om de metrische gegevens over minuten in uw opslag account te configureren. U moet metrische gegevens over de minuut inschakelen met behulp van Power shell of via een programma.
-
 ## <a name="enable-storage-metrics-using-powershell"></a>Metrische opslag gegevens inschakelen met behulp van Power shell  
-U kunt Power shell op uw lokale machine gebruiken om metrische opslag gegevens te configureren in uw opslag account met behulp van de Azure PowerShell cmdlet **Get-AzureStorageServiceMetricsProperty** om de huidige instellingen op te halen en de cmdlet  **Stel-AzureStorageServiceMetricsProperty** in om de huidige instellingen te wijzigen.  
+U kunt Power shell op uw lokale machine gebruiken om metrische opslag gegevens te configureren in uw opslag account met behulp van de Azure PowerShell cmdlet **Get-AzStorageServiceMetricsProperty** om de huidige instellingen op te halen en de cmdlet  **Stel-AzStorageServiceMetricsProperty** in om de huidige instellingen te wijzigen.  
 
 De cmdlets die metrische opslag gegevens regelen, gebruiken de volgende para meters:  
 
 * **Service**type, mogelijke waarde zijn **BLOB**, **wachtrij**, **tabel**en **bestand**.
 * **MetricsType**, mogelijke waarden zijn **uur** en **minuut**.  
 * **MetricsLevel**, mogelijke waarden zijn:
-* **Geen**: Schakelt bewaking uit.
-* **Service**: Hiermee worden metrische gegevens verzameld, zoals binnenkomend/uitgaand, Beschik baarheid, latentie en succes percentages, die worden geaggregeerd voor de blob-, wachtrij-, tabel-en bestands Services.
-* **ServiceAndApi**: Naast de metrische gegevens van de service verzamelt dezelfde verzameling metrische gegevens voor elke opslag bewerking in de API van de Azure Storage-service.
+* **Geen**: schakelt bewaking uit.
+* **Service**: verzamelt metrische gegevens, zoals binnenkomend/uitgaand, Beschik baarheid, latentie en succes percentages, die worden geaggregeerd voor de blob-, wachtrij-, tabel-en bestands Services.
+* **ServiceAndApi**: als aanvulling op de metrische gegevens van de service, verzamelt dezelfde verzameling metrische gegevens voor elke opslag bewerking in de API van de Azure Storage-service.
 
 Met de volgende opdracht worden bijvoorbeeld de metrische gegevens over minuten voor de BLOB-service in uw opslag account met de Bewaar periode ingesteld op vijf dagen: 
 
 > [!NOTE]
-> Bij deze opdracht wordt ervan uitgegaan dat u bent aangemeld bij uw Azure- `Connect-AzAccount` abonnement met behulp van de opdracht.
+> Bij deze opdracht wordt ervan uitgegaan dat u bent aangemeld bij uw Azure-abonnement met behulp van de `Connect-AzAccount` opdracht.
 
-```  
+```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
-
+* Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
+        
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
 
 
 Met de volgende opdracht worden het huidige metrische gegevens niveau en de retentie dagen voor de BLOB-service in uw standaard-opslag account opgehaald:  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt, raadpleegt u: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ## <a name="enable-storage-metrics-programmatically"></a>Metrische opslag gegevens via een programma inschakelen  
 Naast het gebruik van de Azure Portal of de Azure PowerShell-cmdlets voor het beheren van metrische gegevens voor opslag, kunt u ook een van de Azure Storage-Api's gebruiken. Als u bijvoorbeeld een .NET-taal gebruikt, kunt u de Storage-client bibliotheek gebruiken.  
@@ -157,11 +154,11 @@ U kunt de volledige details van de schema's voor deze tabellen vinden op [Opslag
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**partitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Beschikbaarheid**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
-|20140522T1100|gebruiker Hele|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
+|**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Beschikbaarheid**|**AverageE2ELatency**|**Averageserverlatency aan**|**PercentSuccess**|  
+|20140522T1100|gebruiker Hele|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
+|20140522T1100|gebruiker QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
+|20140522T1100|gebruiker QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|gebruiker UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
 
 In dit voor beeld wordt de metrische gegevens voor de partitie sleutel gebruikt voor de omzetting van tijden van minuten. De rij sleutel identificeert het type informatie dat in de rij wordt opgeslagen en dit bestaat uit twee delen van gegevens, het toegangs type en het type aanvraag:  
 

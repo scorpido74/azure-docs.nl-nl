@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258473"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515780"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 Het [Azure-activiteiten logboek](activity-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. Naast het weer geven van het activiteiten logboek in de Azure Portal of het kopiëren naar een Log Analytics werk ruimte waar het kan worden geanalyseerd met andere gegevens die zijn verzameld door Azure Monitor, kunt u een logboek profiel maken om het activiteiten logboek te archiveren in een Azure Storage-account of om het te streamen naar een  Event hub.
@@ -23,12 +23,12 @@ Het archiveren van het activiteiten logboek naar een opslag account is handig al
 
 ## <a name="stream-activity-log-to-event-hub"></a>Activiteiten logboek streamen naar Event hub
 [Azure Event hubs](/azure/event-hubs/) is een service voor het streamen van gegevens en gebeurtenissen, waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen door gebruik te maken van een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. U kunt de streaming-mogelijkheid voor het activiteiten logboek op twee manieren gebruiken:
-* **Stroom naar logboek registratie van derden en telemetrie-systemen**: Na verloop van tijd wordt Azure Event Hubs streaming het mechanisme om uw activiteiten logboek te pipeen in Siem's-en log Analytics-oplossingen van derden.
-* **Een aangepast telemetrie-en logboek registratie platform bouwen**: Als u al een aangepast telemetrie-platform hebt of als u er een wilt maken, kunt u het activiteiten logboek flexibel opnemen met de zeer schaal bare publicatie van Event Hubs. 
+* **Streamen naar logboek registratie van derden en telemetrie-systemen**: na verloop van tijd is Azure Event hubs streaming het mechanisme om uw activiteiten logboek te pipeen in siem's-en log Analytics-oplossingen van derden.
+* **Een aangepast telemetrie-en logboek registratie platform bouwen**: als u al een aangepast telemetrie-platform hebt of als u er een wilt maken, kunt u met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs flexibel het activiteiten logboek opnemen. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="storage-account"></a>Storage-account
+### <a name="storage-account"></a>Opslagaccount
 Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook Diagnostische logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 
 Het opslag account hoeft zich niet in hetzelfde abonnement te benemen als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
@@ -55,9 +55,9 @@ Het logboek profiel definieert het volgende.
 
 **Welke regio's (locaties) moeten worden geëxporteerd.** U moet alle locaties toevoegen omdat veel gebeurtenissen in het activiteiten logboek globale gebeurtenissen zijn.
 
-**Hoe lang het activiteiten logboek moet worden bewaard in een opslag account.** Een bewaarperiode van nul dagen betekent dat Logboeken altijd worden bewaard. Anders kan de waarde een wille keurig aantal dagen tussen 1 en 365.
+**Hoe lang het activiteiten logboek moet worden bewaard in een opslag account.** Een Bewaar periode van nul dagen houdt in dat Logboeken permanent worden bewaard. Anders kan de waarde een wille keurig aantal dagen tussen 1 en 365.
 
-Als het Bewaar beleid is ingesteld, maar logboeken worden opgeslagen in een opslag account is uitgeschakeld, hebben het Bewaar beleid geen effect. Bewaarbeleid zijn toegepast per dag, dus aan het einde van een dag (UTC), logboeken van de dag dat nu is buiten de bewaarperiode van beleid worden verwijderd. Bijvoorbeeld, als u een beleid voor het bewaren van één dag had, worden aan het begin van de dag vandaag nog de logboeken van de dag voor gisteren vernietigd. De verwijderbewerking begint bij middernacht UTC, maar houd er rekening mee dat het kan tot 24 uur duren voor de logboeken worden verwijderd uit uw storage-account.
+Als het Bewaar beleid is ingesteld, maar logboeken worden opgeslagen in een opslag account is uitgeschakeld, hebben het Bewaar beleid geen effect. Bewaar beleid wordt per dag toegepast, dus aan het einde van de dag (UTC) worden logboeken van de dag die nu voorbij het Bewaar beleid vallen, verwijderd. Als u bijvoorbeeld een Bewaar beleid van één dag had, wordt aan het begin van de dag vandaag de logboeken van de dag voordat gisteren worden verwijderd. Het verwijderings proces begint om middernacht UTC, maar houd er rekening mee dat het Maxi maal 24 uur kan duren voordat de logboeken uit uw opslag account worden verwijderd.
 
 
 > [!IMPORTANT]
@@ -92,7 +92,7 @@ Maak of bewerk een logboek profiel met de optie **exporteren naar Event hub** in
 
 Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profiel verwijderen en vervolgens een nieuwe maken.
 
-1. Gebruiken `Get-AzLogProfile` om te bepalen of er een logboek profiel bestaat.  Als er een logboek profiel bestaat, noteert u de eigenschap *name* .
+1. Gebruik `Get-AzLogProfile` om te bepalen of er een logboek profiel bestaat.  Als er een logboek profiel bestaat, noteert u de eigenschap *name* .
 
 1. Gebruik `Remove-AzLogProfile` om het logboek profiel te verwijderen met de waarde van de eigenschap *name* .
 
@@ -101,18 +101,18 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Gebruiken `Add-AzLogProfile` om een nieuw logboek profiel te maken:
+3. Gebruik `Add-AzLogProfile` om een nieuw logboek profiel te maken:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Eigenschap | Vereist | Description |
+    | Eigenschap | Verplicht | Beschrijving |
     | --- | --- | --- |
-    | Name |Ja |De naam van het logboek profiel. |
+    | Naam |Ja |De naam van het logboek profiel. |
     | StorageAccountId |Nee |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
-    | serviceBusRuleId |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende `{service bus resource ID}/authorizationrules/{key name}`indeling:. |
-    | Location |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
+    | Servicebusruleid kunnen |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}`. |
+    | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
     | RetentionInDays |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
     | Category |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
 
@@ -142,22 +142,22 @@ Hier volgt een voor beeld van een Power shell-script voor het maken van een logb
 
 Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profiel verwijderen en vervolgens een nieuw logboek profiel maken.
 
-1. Gebruiken `az monitor log-profiles list` om te bepalen of er een logboek profiel bestaat.
+1. Gebruik `az monitor log-profiles list` om te bepalen of er een logboek profiel bestaat.
 2. Gebruik `az monitor log-profiles delete --name "<log profile name>` om het logboek profiel te verwijderen met de waarde van de eigenschap *name* .
-3. Gebruiken `az monitor log-profiles create` om een nieuw logboek profiel te maken:
+3. Gebruik `az monitor log-profiles create` om een nieuw logboek profiel te maken:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Eigenschap | Vereist | Description |
+    | Eigenschap | Verplicht | Beschrijving |
     | --- | --- | --- |
     | name |Ja |De naam van het logboek profiel. |
-    | storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
-    | locations |Ja |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement `az account list-locations --query [].name`met behulp van. |
-    | days |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op True. |
-    |enabled | Ja |Waar of ONWAAR.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
-    | categories |Ja |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
+    | Storage-account-id |Ja |De resource-ID van het opslag account waarnaar de activiteiten logboeken moeten worden opgeslagen. |
+    | locaties |Ja |Een door spaties gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. U kunt een lijst weer geven met alle regio's voor uw abonnement met behulp van `az account list-locations --query [].name`. |
+    | resterende |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen (permanent).  Als de waarde nul is, moet de para meter ingeschakeld worden ingesteld op ONWAAR. |
+    |ingeschakeld | Ja |Waar of onwaar.  Wordt gebruikt om het Bewaar beleid in of uit te scha kelen.  Indien waar, moet de para meter Days een waarde zijn die groter is dan 0.
+    | categorieën |Ja |Een door spaties gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn schrijven, verwijderen en actie. |
 
 
 
@@ -224,22 +224,22 @@ Of er naar Azure Storage of event hub worden verzonden, worden de gegevens van h
 ```
 De elementen in deze JSON worden in de volgende tabel beschreven.
 
-| De naam van element | Description |
+| Element naam | Beschrijving |
 | --- | --- |
-| time |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
+| tijd |Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
 | resourceId |De resource-ID van de betrokken resource. |
-| operationName |Naam van de bewerking. |
+| operationName |De naam van de bewerking. |
 | category |De categorie van de actie, bijvoorbeeld Schrijven, lezen, actie. |
 | resultType |Het type resultaat, bijvoorbeeld. Geslaagd, mislukt, starten |
 | resultSignature |Afhankelijk van het resource type. |
-| durationMs |Duur van de bewerking in milliseconden |
+| durationMs |De duur van de bewerking in milliseconden |
 | callerIpAddress |IP-adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. |
 | correlationId |Meestal een GUID in de teken reeks indeling. Gebeurtenissen die een correlationId delen, horen bij dezelfde uber-actie. |
-| identity |JSON-BLOB waarmee de autorisatie en claims worden beschreven. |
-| authorization |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
-| level |Het niveau van de gebeurtenis. Een van de volgende waarden: _Kritiek_, _fout_, _waarschuwing_, _informatief_en _uitgebreid_ |
+| identiteit |JSON-BLOB waarmee de autorisatie en claims worden beschreven. |
+| autorisatie |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
+| Afvlakking |Het niveau van de gebeurtenis. Een van de volgende waarden: _kritiek_, _fout_, _waarschuwing_, _informatief_en _uitgebreid_ |
 | location |De regio waarin de locatie is opgetreden (of algemeen). |
-| properties |`<Key, Value>` Set paren (bijvoorbeeld woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
+| properties |Set `<Key, Value>` paren (bijvoorbeeld woorden lijst) waarin de details van de gebeurtenis worden beschreven. |
 
 > [!NOTE]
 > De eigenschappen en het gebruik van deze eigenschappen kunnen variëren, afhankelijk van de resource.

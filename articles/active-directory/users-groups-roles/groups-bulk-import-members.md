@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4412bc9ce8d78b5810b25b60724575af66774127
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146258"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517123"
 ---
 # <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Groeps leden bulksgewijs importeren (preview) in Azure Active Directory
 
 Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden toevoegen aan een groep met behulp van een bestand met door komma's gescheiden waarden (CSV) voor het bulk importeren van groeps leden.
 
-> [!NOTE]
-> Bulk bewerkingen van Azure AD zijn een open bare preview-functie van Azure AD en zijn beschikbaar in elk betaald licentie abonnement voor Azure AD. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de voor waarden voor Preview-versies.
-
 ## <a name="to-bulk-import-group-members"></a>Groeps leden bulksgewijs importeren
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden van groepen waarvan ze eigenaar zijn, bulksgewijs importeren.
-1. Selecteer **groepen** > **alle groepen**in azure AD.
+1. Selecteer in azure AD **groepen**  > **alle groepen**.
 1. Open de groep waaraan u leden wilt toevoegen en selecteer vervolgens **leden**.
 1. Selecteer **leden importeren**op de pagina **leden** .
 1. Selecteer op de pagina **groeps leden bulksgewijs importeren (voor beeld)** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.

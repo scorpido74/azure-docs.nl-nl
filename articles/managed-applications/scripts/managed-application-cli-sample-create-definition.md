@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Definitie van een beheerde toepassing maken | Microsoft Docs
+title: Definitie van beheerde toepassing maken-Azure CLI
 description: Voorziet in een Azure CLI-voorbeeld script voor het maken van een definitie van een beheerde toepassing in het abonnement.
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: a653f2c10c28683c79f86c1c882bf00112f61ec0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5ac119aa2c4d79c046a6eeabe252801496caa1c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332622"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528929"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Een definitie van een beheerde toepassing maken met Azure CLI
 

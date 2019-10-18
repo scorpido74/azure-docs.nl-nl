@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager-sjablonen met afhankelijke resources maken | Microsoft Docs
+title: Azure Resource Manager sjabloon met afhankelijke resources
 description: Leer hoe u een Azure Resource Manager-sjabloon maakt met meerdere resources en hoe u deze via Azure Portal implementeert
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 486a13db9cf18cb44a063d37dde4a657f6dc625c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103663"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533500"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken
 
-Informatie over het maken van een Azure Resource Manager-sjabloon voor het implementeren van meerdere resources en de implementatievolgorde configureren. Nadat u de sjabloon hebt gemaakt, kunt u de sjabloon implementeren met behulp van de Cloud Shell van Azure Portal.
+Meer informatie over het maken van een Azure Resource Manager sjabloon voor het implementeren van meerdere resources en het configureren van de implementatie volgorde. Nadat u de sjabloon hebt gemaakt, kunt u de sjabloon implementeren met behulp van de Cloud Shell van Azure Portal.
 
 In deze zelfstudie hebt u een opslagaccount, een virtuele machine, een virtueel netwerk en enkele andere afhankelijke resources gemaakt. Sommige resources kunnen niet worden geïmplementeerd totdat er een andere resource bestaat. U kunt bijvoorbeeld niet een virtuele machine maken totdat het bijbehorende opslagaccount en de bijbehorende netwerkinterface bestaan. U definieert deze relatie door een resource afhankelijk van de andere resources te maken. Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. Zie [Define the order for deploying resources in Azure Resource Manager Templates](./resource-group-define-dependencies.md) (De volgorde voor het implementeren van resources definiëren in Azure Resource Manager-sjablonen) voor meer informatie.
 
-![volgorde diagram voor de implementatie van resource manager-sjabloon afhankelijke resources](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![volgorde diagram voor de implementatie van resources van Resource Manager-sjabloon](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een quickstartsjabloon openen
+> * Een snelstartsjabloon openen
 > * De sjabloon verkennen
 > * De sjabloon implementeren
 

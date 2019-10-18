@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SurveyMonkey Enter prise | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SurveyMonkey Enter prise | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SurveyMonkey Enter prise.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce7f40c300a86acd101d1b38cfef4b2af91c4085
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4238033f94fe8bfdc677c9eb623a2eab3cdf371c
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772679"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532919"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SurveyMonkey Enter prise
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SurveyMonkey Enter prise
 
 In deze zelf studie leert u hoe u SurveyMonkey Enter prise integreert met Azure Active Directory (Azure AD). Wanneer u SurveyMonkey Enter prise integreert met Azure AD, kunt u het volgende doen:
 
@@ -45,6 +45,9 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * SurveyMonkey Enter prise ondersteunt door **IDP** GEÏNITIEERDe SSO
+
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-surveymonkey-enterprise-from-the-gallery"></a>SurveyMonkey Enter prise toevoegen vanuit de galerie
 
@@ -82,25 +85,37 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
+1. SurveyMonkey Enter prise-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+
+    ![image](common/edit-attribute.png)
+
+6. SurveyMonkey Enter prise Application verwacht nog maar weinig kenmerken om te worden door gegeven in een SAML-respons die hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
+
+    | Naam | Bronkenmerk|
+    | ---------------| --------------- |
+    | E-mail | user.mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Op de **surveymonkey Enter prise instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -110,7 +125,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **surveymonkey Enter prise**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -122,19 +137,19 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-surveymonkey-enterprise-sso"></a>SurveyMonkey Enter prise SSO configureren
 
-Als u eenmalige aanmelding wilt configureren voor **surveymonkey Enter prise** Side, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [surveymonkey Enter prise ondersteunings team](mailto:support@selerix.com). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren voor **surveymonkey Enter prise** Side, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [surveymonkey Enter prise ondersteunings team](mailto:support@selerix.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-surveymonkey-enterprise-test-user"></a>SurveyMonkey Enter prise-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in SurveyMonkey Enter prise. Werk samen met [surveymonkey Enter prise-ondersteunings team](mailto:support@selerix.com) om de gebruikers toe te voegen in het surveymonkey Enter prise-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+Het is niet nodig om een test gebruiker te maken in SurveyMonkey Enter prise. Gebruikers accounts worden ingericht als de gebruiker kiest voor het maken van een nieuw account, op basis van de SAML-bevestiging. Uw SurveyMonkey Enter prise-Manager voor klant succes biedt stappen om dit proces te volt ooien nadat uw Azure-meta gegevens zijn toegevoegd aan de SurveyMonkey-ondernemings configuratie en klaar zijn om te worden gevalideerd.
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel SurveyMonkey Enter prise in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SurveyMonkey-onderneming waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

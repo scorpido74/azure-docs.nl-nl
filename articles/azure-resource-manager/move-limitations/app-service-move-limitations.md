@@ -1,73 +1,73 @@
 ---
-title: Azure App Service-resources verplaatsen naar een nieuw abonnement of de resource-groep
-description: Azure Resource Manager gebruiken voor het App Service-resources verplaatsen naar een nieuwe resourcegroep of abonnement.
+title: Azure App Service resources verplaatsen
+description: Gebruik Azure Resource Manager om App Service resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c1a09ff4c29a2fedfea2c165a95c042985b3c83a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723569"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533579"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>Richtlijnen voor het App Service-resources verplaatsen
+# <a name="move-guidance-for-app-service-resources"></a>Richt lijnen voor App Service resources verplaatsen
 
-De stappen voor het verplaatsen van resources van App Service verschillen afhankelijk van of u de resources binnen een abonnement of naar een nieuw abonnement verplaatst.
+De stappen voor het verplaatsen van App Service resources zijn afhankelijk van het feit of u de resources in een abonnement verplaatst of naar een nieuw abonnement.
 
-## <a name="move-in-same-subscription"></a>In hetzelfde abonnement verplaatsen
+## <a name="move-in-same-subscription"></a>Hetzelfde abonnement verplaatsen
 
-Wanneer u een Web-App verplaatst _binnen hetzelfde abonnement_, u kunt het SSL-certificaten van derden niet verplaatsen. Echter, kunt u een Web-App naar de nieuwe resourcegroep verplaatsen zonder te verplaatsen van het certificaat van derden en de SSL-functionaliteit van uw app nog steeds werkt.
+Wanneer u een web-app _binnen hetzelfde abonnement_verplaatst, kunt u geen SSL-certificaten van derden meer verplaatsen. U kunt echter een web-app naar de nieuwe resource groep verplaatsen zonder het certificaat van de derde partij te verplaatsen en de SSL-functionaliteit van uw app blijft werken.
 
-Als u verplaatsen van het SSL-certificaat met de Web-App wilt, volgt u deze stappen:
+Als u het SSL-certificaat wilt verplaatsen met de web-app, voert u de volgende stappen uit:
 
-1. Het certificaat van derden verwijderen van de Web-App, maar Bewaar een kopie van uw certificaat
-2. Verplaats de Web-App.
-3. Upload het certificaat van derden naar de verplaatste Web-App.
+1. Het certificaat van derden verwijderen uit de web-app, maar een kopie van uw certificaat blijven gebruiken
+2. De web-app verplaatsen.
+3. Upload het certificaat van derden naar de verplaatste web-app.
 
-## <a name="move-across-subscriptions"></a>Verplaatsen tussen abonnementen
+## <a name="move-across-subscriptions"></a>Scha kelen tussen abonnementen
 
-Wanneer u een Web-App verplaatst _voor abonnementen_, gelden de volgende beperkingen:
+Bij het verplaatsen van een web-app _tussen abonnementen_gelden de volgende beperkingen:
 
-- De doelresourcegroep mag geen bestaande App Service-resources. App Service-resources zijn onder andere:
+- De doel resource groep mag geen bestaande App Service resources hebben. App Service resources zijn onder andere:
     - Web Apps
     - App Service-abonnementen
-    - Geüpload of geïmporteerd SSL-certificaten
+    - Geüploade of geïmporteerde SSL-certificaten
     - App Service-omgevingen
-- Alle App Service-resources in de resourcegroep, moeten tegelijk worden verplaatst.
-- App Service-resources kunnen alleen worden verplaatst uit de resourcegroep waarin ze oorspronkelijk zijn gemaakt. Als een resource App Service is niet meer in de oorspronkelijke resourcegroep, het terug verplaatsen naar de oorspronkelijke resourcegroep. Verplaats de resource voor abonnementen.
+- Alle App Service resources in de resource groep moeten samen worden verplaatst.
+- App Service resources kunnen alleen worden verplaatst van de resource groep waarin ze oorspronkelijk zijn gemaakt. Als een App Service resource niet langer in de oorspronkelijke resource groep staat, zet u deze terug naar de oorspronkelijke resource groep. Verplaats vervolgens de resource over abonnementen.
 
-Als u niet de oorspronkelijke resourcegroep niet meer weet, kunt u deze kunt vinden via diagnostische gegevens. Voor uw web-app, selecteer **vaststellen en oplossen van problemen met**. Selecteer **configuratie en beheer**.
+Als u de oorspronkelijke resource groep niet meer weet, kunt u deze vinden via diagnostische gegevens. Selecteer voor uw web-app **diagnose en los problemen**op. Selecteer vervolgens **configuratie en beheer**.
 
-![Schakel diagnostische gegevens](./media/app-service-move-limitations/select-diagnostics.png)
+![Diagnostische gegevens selecteren](./media/app-service-move-limitations/select-diagnostics.png)
 
-Selecteer **migratieopties**.
+Selecteer **migratie opties**.
 
-![Selecteer opties voor de migratie](./media/app-service-move-limitations/select-migration.png)
+![Migratie opties selecteren](./media/app-service-move-limitations/select-migration.png)
 
 Selecteer de optie voor de aanbevolen stappen voor het verplaatsen van de web-app.
 
-![Selecteer de aanbevolen stappen](./media/app-service-move-limitations/recommended-steps.png)
+![Aanbevolen stappen selecteren](./media/app-service-move-limitations/recommended-steps.png)
 
-Ziet u de aanbevolen acties moet uitvoeren voordat het verplaatsen van de resources. De informatie bevat de oorspronkelijke resourcegroep voor de web-app.
+U ziet de aanbevolen acties die u moet uitvoeren voordat u de resources verplaatst. De informatie bevat de oorspronkelijke resource groep voor de web-app.
 
 ![Aanbevelingen](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-app-service-certificate"></a>App Service Certificate verplaatsen
 
-U kunt uw App Service Certificate verplaatsen naar een nieuwe resourcegroep of abonnement. Als uw App Service Certificate is gebonden aan een web-app, moet u enkele stappen uitvoeren voordat u de resources verplaatst naar een nieuw abonnement. De SSL-binding en persoonlijk certificaat van de web-app verwijderen voordat u de resources. Het App Service Certificate niet hoeft te worden verwijderd, alleen de persoonlijke certificaat in de web-app.
+U kunt uw App Service Certificate verplaatsen naar een nieuwe resource groep of een nieuw abonnement. Als uw App Service Certificate is gebonden aan een web-app, moet u een aantal stappen uitvoeren voordat u de resources verplaatst naar een nieuw abonnement. Verwijder de SSL-binding en het persoonlijke certificaat van de Web-App voordat u de resources verplaatst. De App Service Certificate hoeft niet te worden verwijderd, alleen het persoonlijke certificaat in de web-app.
 
 ## <a name="move-support"></a>Ondersteuning verplaatsen
 
-Om te bepalen welke resources van App Service kunnen worden verplaatst, ziet de ondersteuningstatus van de voor verplaatsen:
+Zie de ondersteunings status verplaatsen voor het volgende om te bepalen welke App Service resources kunnen worden verplaatst:
 
-- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
-- [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
-- [Microsoft.Web](../move-support-resources.md#microsoftweb)
+- [Micro soft. AppService](../move-support-resources.md#microsoftappservice)
+- [Micro soft. CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
+- [Micro soft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Micro soft. Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor de opdrachten om resources te verplaatsen, [resources verplaatsen naar een nieuwe resourcegroep of abonnement](../resource-group-move-resources.md).
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../resource-group-move-resources.md)voor opdrachten voor het verplaatsen van resources.

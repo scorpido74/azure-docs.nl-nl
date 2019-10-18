@@ -4,18 +4,18 @@ description: In dit artikel vindt u Naslag informatie voor de azcopy-aanmeld opd
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2938d85becbea738acc21fc7b15991301eef759f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195722"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514718"
 ---
-# <a name="azcopy-login"></a>azcopy-aanmelding
+# <a name="azcopy-login"></a>azcopy login
 
 Meldt zich aan bij Azure Active Directory om toegang te krijgen tot Azure Storage resources.
 
@@ -50,25 +50,25 @@ Interactief aanmelden met een opgegeven Tenant-ID:
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Meld u aan met een door het systeem toegewezen identiteit van de VM:
+Meld u aan met de door het systeem toegewezen identiteit van een virtuele machine (VM):
 
 ```azcopy
 azcopy login --identity
 ```
 
-Meld u aan met behulp van de door de gebruiker toegewezen identiteit van een virtuele machine met een client-ID van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een client-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine met een object-ID van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een object-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine met een resource-ID van de service-identiteit:
+Meld u aan met de door de gebruiker toegewezen identiteit van een virtuele machine en een resource-ID van de service-identiteit:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
@@ -92,7 +92,7 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 ## <a name="options"></a>Opties
 
-|Optie|Description|
+|Optie|Beschrijving|
 |--|--|
 |--reeks van toepassing-id|De toepassings-ID van de door de gebruiker toegewezen identiteit. Vereist voor Service Principal auth.|
 |--teken reeks voor certificaatpad|Het pad naar het certificaat voor SPN-verificatie. Vereist voor verificatie op basis van een service-principal voor certificaten.|
@@ -106,7 +106,7 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|

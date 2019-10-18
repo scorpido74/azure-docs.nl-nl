@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9f06aa44824c28369b331d4079e9e81417bf17c7
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 8ad542a3614253e11331e9b49513a887aff65890
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263840"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512926"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Zelfstudie: Een AKS-cluster (Azure Kubernetes Service) implementeren
 
@@ -30,7 +30,7 @@ In volgende zelfstudies wordt de Azure Vote-toepassing geïmplementeerd in het c
 
 In de vorige zelfstudies is een containerinstallatiekopie gemaakt en geüpload naar een Azure Container Registry-exemplaar. Als u deze stappen niet hebt uitgevoerd en u wilt door gaan met de [zelf studie 1: container installatie kopieën maken][aks-tutorial-prepare-app].
 
-Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Voor deze zelf studie moet u de Azure CLI-versie 2.0.75 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-kubernetes-cluster"></a>Een Kubernetes-cluster maken
 

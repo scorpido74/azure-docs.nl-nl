@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bing Visual Search-client bibliotheek voor Java | Microsoft Docs'
+title: 'Snelstartgids: Bing Visual Search-client bibliotheek voor Java | Microsoft Docs'
 description: Upload een afbeelding met behulp van de Bing Visual Search SDK en krijg inzicht in de afbeelding.
 services: cognitive-services
 author: aahill
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.date: 09/30/2019
 ms.author: aahi
 ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71695860"
 ---
-# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Quickstart: Client bibliotheek voor Java Bing Visual Search
+# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Snelstartgids: Bing Visual Search-client bibliotheek voor Java
 
 Ga aan de slag met de Bing Visual Search-client bibliotheek voor Java. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. 
 
@@ -25,7 +25,7 @@ Gebruik de Bing Visual Search-client bibliotheek voor Java om het volgende te do
 * Upload een installatie kopie om een visuele zoek opdracht te verzenden.
 * Down load het beeld inzicht token en de tags voor visuele zoeken.
 
-[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | Maven-voor[beelden](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [artefact)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | voor referentie documentatie
+[Naslag informatie over](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  |   | [artefact (Maven)  | -](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) voor[beelden](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) van de[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,7 +42,7 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-Wanneer u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de `BING_SEARCH_V7_SUBSCRIPTION_KEY`sleutel met de naam.
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `BING_SEARCH_V7_SUBSCRIPTION_KEY`.
 
 ### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
@@ -92,7 +92,7 @@ Maak een map voor de installatie kopie die u wilt uploaden naar de API. Plaats d
 mkdir -p src/main/resources
 ``` 
 
-Ga naar de nieuwe map en maak een bestand met de naam *BingVisualSearchSample. java*. Open het bestand in uw voorkeurs editor of IDE en voeg de `import` volgende-instructies toe:
+Ga naar de nieuwe map en maak een bestand met de naam *BingVisualSearchSample. java*. Open het bestand in uw voorkeurs editor of IDE en voeg de volgende `import`-instructies toe:
 
 [!code-java[Import statements](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=imports)]
 
@@ -103,7 +103,7 @@ public class BingVisualSearchSample {
 }
 ```
 
-Maak in de `main`-methode van de toepassing variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele. Maak vervolgens een `byte[]` voor de afbeelding die u wilt uploaden. Maak een `try`-blok voor de methoden die u later wilt definiëren en laad de afbeelding en converteer deze naar bytes met behulp van `toByteArray()`.
+Maak in de `main` methode van de toepassing variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele. Maak vervolgens een `byte[]` voor de installatie kopie die u wilt uploaden. Maak een `try` blok voor de methoden die u later gaat definiëren en laad de afbeelding en converteer deze naar bytes met behulp van `toByteArray()`.
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
@@ -112,7 +112,7 @@ Maak in de `main`-methode van de toepassing variabelen voor het Azure-eind punt 
 
 Deze Snelstartgids maakt gebruik van de Gradle dependency Manager. U vindt de client bibliotheek en informatie voor andere afhankelijkheids managers in de [centrale maven-opslag plaats](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-Zorg er in het bestand *Build. gradle. KTS* van het project voor dat u de client bibliotheek opneemt als een `implementation`-instructie. 
+Zorg er in het bestand *Build. gradle. KTS* van het project voor dat u de client bibliotheek als `implementation`-instructie opneemt. 
 
 ```kotlin
 dependencies {
@@ -144,7 +144,7 @@ BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKe
 
 ## <a name="send-a-visual-search-request"></a>Een visuele zoek opdracht verzenden
 
-In een nieuwe methode verzendt u de byte matrix van de afbeelding (die is gemaakt in de methode `main()`) met behulp van de [bingImages (). visualSearch (](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) )-methode van de client. 
+In een nieuwe methode verzendt u de byte matrix van de afbeelding (die is gemaakt in de `main()` methode) met behulp van de methode [bingImages (). visualSearch (](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) ) van de client. 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 
@@ -162,7 +162,7 @@ U kunt de app bouwen met:
 gradle build
 ```
 
-Voer de toepassing uit met `run` het doel:
+Voer de toepassing uit met het `run` doel:
 
 ```console
 gradle run
@@ -173,7 +173,7 @@ gradle run
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

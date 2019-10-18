@@ -9,14 +9,14 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b69000e251bb71bc08ea97b24a7422daf2cd89e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813825"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529225"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelfstudie: Een C IoT Edge-module ontwikkelen voor Windows-apparaten
+# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelf studie: een C IoT Edge-module ontwikkelen voor Windows-apparaten
 
 Gebruik Visual Studio om C-code te ontwikkelen en te implementeren op een Windows-apparaat met Azure IoT Edge. 
 
@@ -44,9 +44,9 @@ Gebruik de volgende tabel om inzicht te krijgen in de opties voor het ontwikkele
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Windows-container ontwikkeling: [Ontwikkel IOT Edge-modules voor Windows-apparaten](tutorial-develop-for-windows.md). Nadat u deze zelf studie hebt voltooid, moet u aan de volgende vereisten voldoen: 
+Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor Windows-container ontwikkeling: [ontwikkel IOT Edge-modules voor Windows-apparaten](tutorial-develop-for-windows.md). Nadat u deze zelf studie hebt voltooid, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Windows-apparaat met Azure IOT Edge](quickstart.md).
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) geconfigureerd met de extensie [Azure IOT Edge-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) .
@@ -84,15 +84,15 @@ Maak een C-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
 4. Configureer in het venster IoT Edge toepassing en module het project met de volgende waarden: 
 
-   | Veld | Value |
+   | Veld | Waarde |
    | ----- | ----- |
-   | Selecteer een sjabloon | Selecteer **C-module**. | 
+   | Een sjabloon selecteren | Selecteer **C-module**. | 
    | Naam van module Project | Geef de module de naam **CModule**. | 
    | Docker-afbeeldings opslagplaats | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De container installatie kopie wordt vooraf ingevuld op basis van de waarde van de module Project naam. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke opslagplaats voor de installatiekopie ziet er ongeveer als volgt uit: \<registernaam\>.azurecr.io/cmodule. |
 
    ![Uw project configureren voor doel apparaat, module type en container register](./media/tutorial-c-module-windows/add-application-and-module.png)
 
-5. Selecteer **OK** om uw wijzigingen toe te passen. 
+5. Selecteer **toevoegen** om het project te maken. 
 
 ### <a name="add-your-registry-credentials"></a>Uw registerreferenties toevoegen
 
@@ -138,19 +138,19 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
 
    4. Sla het bestand **CMakeLists.txt** op.
 
-   5. Open **CModule** > **Main. c**. Voeg aan de onderkant van de lijst met include-instructies een nieuwe toe om `parson.h` te bevatten voor JSON-ondersteuning:
+   5. Open **CModule**  > **Main. c**. Voeg aan de onderkant van de lijst met include-instructies een nieuwe toe om `parson.h` voor JSON-ondersteuning op te geven:
 
       ```c
       #include "parson.h"
       ```
 
-2.  Voeg in het bestand **Main. c** een globale variabele toe met `temperatureThreshold` de naam naast de variabele messagesReceivedByInput1Queue. Deze variabele bepaalt de waarde die de gemeten temperatuur moet overschrijden voordat de gegevens naar IoT Hub worden verzonden.
+2.  Voeg in het bestand **Main. c** een globale variabele toe met de naam `temperatureThreshold` naast de variabele messagesReceivedByInput1Queue. Deze variabele bepaalt de waarde die de gemeten temperatuur moet overschrijden voordat de gegevens naar IoT Hub worden verzonden.
 
     ```c
     static double temperatureThreshold = 25;
     ```
 
-3. Zoek de `CreateMessageInstance` functie in Main. c. Vervang de interne instructie if-else door de volgende code waarmee een aantal regels van functionaliteit wordt toegevoegd: 
+3. Zoek de functie `CreateMessageInstance` in Main. c. Vervang de interne instructie if-else door de volgende code waarmee een aantal regels van functionaliteit wordt toegevoegd: 
 
    ```c
    if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
@@ -171,7 +171,7 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
 
    De nieuwe code regels in de instructie else voegen een nieuwe eigenschap toe aan het bericht. Hiermee wordt het bericht als een waarschuwing labelen. Met deze code worden alle berichten als waarschuwingen gelabeld, omdat er functionaliteit wordt toegevoegd waarmee alleen berichten worden verzonden naar IoT Hub als er hoge Tempe raturen worden gerapporteerd. 
 
-4. Zoek de `InputQueue1Callback` functie en vervang de volledige functie door de volgende code. Deze functie implementeert het feitelijke berichtenfilter. Wanneer een bericht wordt ontvangen, wordt gecontroleerd of de gerapporteerde Tempe ratuur de drempel waarde overschrijdt. Zo ja, dan wordt het bericht doorgestuurd via de uitvoer wachtrij. Als dat niet het geval is, wordt het bericht genegeerd. 
+4. Zoek de functie `InputQueue1Callback` en vervang de volledige functie door de volgende code. Deze functie implementeert het feitelijke berichtenfilter. Wanneer een bericht wordt ontvangen, wordt gecontroleerd of de gerapporteerde Tempe ratuur de drempel waarde overschrijdt. Zo ja, dan wordt het bericht doorgestuurd via de uitvoer wachtrij. Als dat niet het geval is, wordt het bericht genegeerd. 
 
     ```c
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -255,7 +255,7 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
     }
     ```
 
-6. Zoek de `SetupCallbacksForModule` functie. Vervang de functie door de volgende code waarmee een **else if** -instructie wordt toegevoegd om te controleren of de module twee is bijgewerkt. 
+6. Zoek de functie `SetupCallbacksForModule`. Vervang de functie door de volgende code waarmee een **else if** -instructie wordt toegevoegd om te controleren of de module twee is bijgewerkt. 
 
    ```c
    static int SetupCallbacksForModule(IOTHUB_MODULE_CLIENT_LL_HANDLE iotHubModuleClientHandle)
@@ -309,13 +309,13 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Mogelijk wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het `--password-stdin`gebruik van te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de [koppeling naar docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Er wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het gebruik van `--password-stdin` te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de [koppeling naar docker-aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. Klik in de Solution Explorer van Visual Studio met de rechter muisknop op de naam van het project dat u wilt bouwen. De standaard naam is **AzureIotEdgeApp1** en omdat u een Windows-module bouwt, moet de extensie **Windows. amd64**zijn. 
 
 3. Selecteer **Build-en Push IOT Edge-modules**. 
 
-   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing configuratie met de naam **config** met het volledige implementatie manifest, met de informatie in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` de container installatie kopie gemaakt op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` de opslag plaats voor de installatie kopie naar het container register pusht. 
+   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing configuratie met de naam **config** met het volledige implementatie manifest, met de informatie in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` uitgevoerd om de container installatie kopie te bouwen op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` uitgevoerd om de opslag plaats van de installatie kopie naar het container register te pushen. 
 
 ## <a name="deploy-modules-to-device"></a>Modules implementeren op het apparaat
 
@@ -377,5 +377,5 @@ In deze zelfstudie hebt u een IoT Edge-module gemaakt met code voor het filteren
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [machine learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision service](tutorial-deploy-custom-vision.md)

@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262334"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
@@ -58,8 +58,8 @@ Afhankelijk van de [doelen](diagnostic-settings.md#destinations) voor de diagnos
 }
 ```
 
-### <a name="resources"></a>Resources
-In de resources-matrix van de resource waarvoor u de diagnostische instelling wilt maken, voegt u een bron van `[resource namespace]/providers/diagnosticSettings`het type toe. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Voeg de `metrics` eigenschap voor het verzamelen van metrische gegevens van resources aan dezelfde doelen toe als de [resource metrische gegevens ondersteunt](metrics-supported.md).
+### <a name="resources"></a>Bronnen
+In de resources-matrix van de resource waarvoor u de diagnostische instelling wilt maken, voegt u een resource van het type `[resource namespace]/providers/diagnosticSettings` toe. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Voeg de eigenschap `metrics` toe voor het verzamelen van metrische gegevens voor resources aan dezelfde doelen als de [resource metrische gegevens ondersteunt](metrics-supported.md).
    
 ```json
 "resources": [

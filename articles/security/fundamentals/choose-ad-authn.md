@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997818"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529392"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing 
-
-In dit artikel wordt een reeks artikelen gestart die organisaties helpen bij het implementeren van een volledige Azure Active Directory (Azure AD) hybride identiteits oplossing. Deze oplossing werd beschreven in het kader van de [Hybrid Identity Digital Transformation Framework](https://aka.ms/aadframework). Het betreft de bedrijfs resultaten en de doel stellingen van organisaties kunnen zich richten op het implementeren van een robuuste en veilige hybride identiteits oplossing. 
-
-In het eerste zakelijke resultaat van het Framework worden de vereisten voor organisaties gespeld om het verificatie proces te beveiligen wanneer gebruikers toegang hebben tot Cloud-apps. Het eerste zakelijke doel in de verificatie beveiligde bedrijfs resultaat is de mogelijkheid van gebruikers om zich aan te melden bij Cloud-apps met behulp van hun on-premises gebruikers namen en wacht woorden. Met deze aanmeldings-en verificatie procedure wordt alles in de Cloud mogelijk.
 
 Het kiezen van de juiste verificatie methode is de eerste reden voor organisaties die hun apps willen verplaatsen naar de Cloud. Doe deze beslissing niet lichter, om de volgende redenen:
 

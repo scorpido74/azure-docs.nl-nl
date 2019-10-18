@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen | Microsoft Docs
+title: Beheerde resource groep ophalen & grootte van Vm's wijzigen-Azure PowerShell
 description: Biedt Azure PowerShell voorbeeld script waarmee een beheerde resource groep voor een door Azure beheerde toepassing wordt opgehaald. De grootte van de virtuele machines wordt door het script aangepast.
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f11f9b56a8a17330fac3fb50bfd5f560357463e7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330127"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529414"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Resources in een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen met Azure PowerShell
 

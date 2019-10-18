@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migreren van Federatie naar PHS voor Azure AD | Microsoft Docs'
+title: 'Azure AD Connect: migreren van Federatie naar PHS voor Azure AD | Microsoft Docs'
 description: Dit artikel bevat informatie over het verplaatsen van uw hybride identiteits omgeving van Federatie naar wachtwoord hash-synchronisatie.
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b291f2243dfe28a8e866796e0b7375f94fa4f2e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779442"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514907"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory
 
@@ -37,7 +37,7 @@ Als u Mini maal de stappen voor het migreren naar wachtwoord-hash-synchronisatie
 > [!IMPORTANT]
 > U kunt de verouderde documentatie, hulpprogram ma's en blogs lezen die gebruikers conversie vereist wanneer u domeinen van federatieve identiteit naar beheerde identiteit converteert. Het is niet meer nodig om *gebruikers te converteren* . Micro soft werkt met het bijwerken van documentatie en hulpprogram ma's om deze wijziging weer te geven.
 
-Voer de stappen in [Azure AD Connect uit om Azure AD Connect bij te werken: Voer een upgrade uit naar](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)de nieuwste versie.
+Volg de stappen in Azure AD Connect om Azure AD Connect bij te werken: Voer een [upgrade uit naar de nieuwste versie](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
 ### <a name="password-hash-synchronization-required-permissions"></a>Synchronisatie van wacht woord-hash vereist
 
@@ -85,11 +85,11 @@ Controleren of uw huidige gebruikers instellingen voor aanmelden:
 3. Op de pagina **uw oplossing controleren ziet u** de **synchronisatie** status van de wachtwoord-hash.<br /> 
 
    * Als **wachtwoord hash-synchronisatie** is ingesteld op **uitgeschakeld**, voert u de stappen in dit artikel uit om deze functie in te scha kelen.
-   * Als **wachtwoord hash-synchronisatie** is ingesteld op **ingeschakeld**, kunt u de sectie **stap 1 overs Laan: Wachtwoord hash-synchronisatie** inschakelen in dit artikel.
+   * Als **wacht woord-hash-synchronisatie** is ingesteld op **ingeschakeld**, kunt u de sectie **stap 1: wachtwoord hash-synchronisatie inschakelen** in dit artikel overs Laan.
 4. Ga op de pagina **uw oplossing controleren** naar **Active Directory Federation Services (AD FS)** .<br />
 
-   * Als de AD FS configuratie in deze sectie wordt weer gegeven, kunt u veilig aannemen dat AD FS oorspronkelijk is geconfigureerd met behulp van Azure AD Connect. U kunt uw domeinen van federatieve identiteiten naar een beheerde identiteit converteren met behulp van de aanmeldings optie Azure AD Connect **gebruiker wijzigen** . Het proces wordt beschreven in de sectie **optie A: Overschakelen van Federatie naar hash-synchronisatie met wacht woord**met behulp van Azure AD Connect.
-   * Als AD FS niet in de huidige instellingen wordt vermeld, moet u uw domeinen hand matig met behulp van Power shell converteren van federatieve identiteit naar beheerde identiteit. Zie voor meer informatie over dit proces de sectie **optie B: Overschakelen van Federatie naar hash-synchronisatie met wacht woord met behulp van Azure AD Connect en Power shell**.
+   * Als de AD FS configuratie in deze sectie wordt weer gegeven, kunt u veilig aannemen dat AD FS oorspronkelijk is geconfigureerd met behulp van Azure AD Connect. U kunt uw domeinen van federatieve identiteiten naar een beheerde identiteit converteren met behulp van de aanmeldings optie Azure AD Connect **gebruiker wijzigen** . Het proces wordt beschreven in de sectie **optie A: overschakelen van Federatie naar wachtwoord-hash-synchronisatie met behulp van Azure AD Connect**.
+   * Als AD FS niet in de huidige instellingen wordt vermeld, moet u uw domeinen hand matig met behulp van Power shell converteren van federatieve identiteit naar beheerde identiteit. Zie voor meer informatie over dit proces de sectie **optie B: overschakelen van Federatie naar wachtwoord-hash-synchronisatie met behulp van Azure AD Connect en Power shell**.
 
 ### <a name="document-current-federation-settings"></a>Huidige Federatie-instellingen documenteren
 
@@ -115,7 +115,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 > [!NOTE]
 > Als **SupportsMfa** is ingesteld op **True**, gebruikt u een on-premises multi-factor Authentication-oplossing om een tweede factor Challenge in te voeren in de verificatie stroom van de gebruiker. Deze installatie werkt niet meer voor Azure AD-verificatie scenario's nadat dit domein is geconverteerd van federatieve naar beheerde authenticatie. Nadat u Federatie hebt uitgeschakeld, neemt u de relatie met uw on-premises Federatie op. Dit omvat ook on-premises MFA-adapters. 
 >
-> Gebruik in plaats daarvan de Cloud service van Azure multi-factor Authentication om dezelfde functie uit te voeren. Evalueer zorgvuldig uw multi-factor Authentication-vereisten voordat u doorgaat. Zorg ervoor dat u begrijpt hoe u Azure multi-factor Authentication, de implicaties van licenties en het gebruikers registratie proces kunt gebruiken voordat u uw domeinen converteert.
+> Gebruik in plaats daarvan de Azure Multi-Factor Authentication cloud-gebaseerde service om dezelfde functie uit te voeren. Evalueer zorgvuldig uw multi-factor Authentication-vereisten voordat u doorgaat. Zorg ervoor dat u weet hoe u Azure Multi-Factor Authentication, de implicaties van licenties en het gebruikers registratie proces kunt gebruiken voordat u uw domeinen converteert.
 
 #### <a name="back-up-federation-settings"></a>Back-up van Federatie-instellingen
 
@@ -140,14 +140,14 @@ Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u go
 | U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Office 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Office 365) en opnieuw voor alle toepassingen die nog AD FS als Relying Party vertrouwen. |
 | Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het bestand OnLoad. js (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een gebruikers-principal Naam (UPN) of uw organisatie heeft de aanmeldings ervaring sterk gemerkt). Het bestand OnLoad. js kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
 | U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
-| U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure multi-factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen gebruikmaken van Azure multi-factor Authentication, is een eenmalige-gebruikers registratie stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
+| U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure Multi-Factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige-gebruikers registratie-stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
 | U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Office 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Algemene AD FS aanpassingen
 
 In deze sectie worden algemene AD FS aanpassingen beschreven.
 
-#### <a name="insidecorporatenetwork-claim"></a>InsideCorporateNetwork claim
+#### <a name="insidecorporatenetwork-claim"></a>Claim InsideCorporateNetwork
 
 AD FS wordt de **InsideCorporateNetwork** -claim uitgegeven als de gebruiker die de verificatie uitvoert, zich in het bedrijfs netwerk bevindt. Deze claim kan vervolgens worden door gegeven aan Azure AD. De claim wordt gebruikt om multi-factor Authentication over te slaan op basis van de netwerk locatie van de gebruiker. Zie [vertrouwde IP-adressen voor federatieve gebruikers](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)voor meer informatie over het bepalen of deze functionaliteit momenteel is ingeschakeld in AD FS.
 
@@ -161,13 +161,13 @@ Zie [Active Directory locaties voor voorwaardelijke toegang](https://docs.micros
 
 Wanneer u een apparaat toevoegt aan Azure AD, kunt u regels voor voorwaardelijke toegang maken waarmee wordt afgedwongen dat apparaten voldoen aan uw toegangs normen voor beveiliging en naleving. Gebruikers kunnen zich ook bij een apparaat aanmelden met een werk-of school account van een organisatie in plaats van een persoonlijk account. Wanneer u hybride apparaten die deel uitmaken van Azure AD gebruikt, kunt u uw Active Directory apparaten die lid zijn van het domein toevoegen aan Azure AD. Uw federatieve omgeving is mogelijk ingesteld om deze functie te gebruiken.
 
-Om ervoor te zorgen dat hybride samen werking blijft werken voor apparaten die lid zijn van het domein nadat uw domeinen zijn geconverteerd naar wachtwoord-hash-synchronisatie, moet u voor Windows 10-clients Azure AD Connect gebruiken om Active Directory computer accounts te synchroniseren met Azure AD. 
+Om ervoor te zorgen dat hybride samen werking blijft werken voor apparaten die lid zijn van het domein nadat uw domeinen zijn geconverteerd naar een wachtwoord-hash-synchronisatie, moet u voor Windows 10-clients met behulp van Azure AD Connect-Apparaatinstellingen de SCP vullen en vervolgens de optie actief synchroniseren Directory-computer accounts naar Azure AD. 
 
 Voor Windows 8-en Windows 7-computer accounts gebruikt hybride deelname naadloze SSO om de computer te registreren in azure AD. U hoeft geen Windows 8-en Windows 7-computer accounts te synchroniseren zoals u dat voor Windows 10-apparaten kunt doen. U moet echter een bijgewerkt workplacejoin. exe-bestand (via een. msi-bestand) implementeren op Windows 8-en Windows 7-clients zodat ze zich kunnen registreren met naadloze SSO. [Down load het MSI-bestand](https://www.microsoft.com/download/details.aspx?id=53554).
 
 Zie [Configure Hybrid Azure AD-joined devices](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)(Engelstalig) voor meer informatie.
 
-#### <a name="branding"></a>Huisstijl
+#### <a name="branding"></a>Namen
 
 Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -224,7 +224,7 @@ U hebt uw oplossing gepland. Nu kunt u het implementeren. Implementatie omvat de
 * De voor bereiding op naadloze SSO.
 * Het wijzigen van de aanmeldings methode voor wachtwoord hash synchronisatie en het inschakelen van naadloze SSO.
 
-### <a name="step-1-enable-password-hash-synchronization"></a>Stap 1: Synchronisatie van wachtwoordhashes inschakelen
+### <a name="step-1-enable-password-hash-synchronization"></a>Stap 1: wacht woord-hash-synchronisatie inschakelen
 
 De eerste stap voor het implementeren van deze oplossing is het inschakelen van wachtwoord hash-synchronisatie met behulp van de wizard Azure AD Connect. Wachtwoord hash-synchronisatie is een optionele functie die u kunt inschakelen in omgevingen die gebruikmaken van Federatie. Er is geen effect op de verificatie stroom. In dit geval wordt Azure AD Connect het synchroniseren van wacht woord-hashes gestart zonder dat dit van invloed is op gebruikers die zich aanmelden met behulp van Federatie.
 
@@ -250,7 +250,7 @@ Voor plannings doeleinden moet u ramen dat ongeveer 20.000 gebruikers in één u
 Als u wilt controleren of de synchronisatie van wacht woord-hash correct werkt, voltooit u de taak voor **probleem oplossing** in de Azure AD Connect wizard:
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect server met behulp van de optie als administrator uitvoeren.
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Voer `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` uit.
 3. Start de wizard Azure AD Connect.
 4. Ga naar de pagina **extra taken** , selecteer **problemen oplossen**en selecteer **volgende**.
 5. Selecteer op de pagina **probleem oplossing** de optie **starten** om het menu probleem oplossing in Power shell te starten.
@@ -259,22 +259,22 @@ Als u wilt controleren of de synchronisatie van wacht woord-hash correct werkt, 
 
 Zie problemen met wachtwoord- [hash-synchronisatie met Azure AD Connect synchronisatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization)voor problemen oplossen.
 
-### <a name="step-2-prepare-for-seamless-sso"></a>Stap 2: Bereid u voor op naadloze SSO
+### <a name="step-2-prepare-for-seamless-sso"></a>Stap 2: bereid u voor op naadloze SSO
 
 Als u wilt dat uw apparaten naadloze SSO gebruiken, moet u een Azure AD-URL toevoegen aan de intranet zone-instellingen van gebruikers met behulp van een groeps beleid in Active Directory.
 
-Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http\/:\/contoso/** wijst toe aan de intranet zone en **http:\/\/intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
+Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http: \/ \/contoso/** toegewezen aan de intranet zone en **http: \/ \/intranet. contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
 
 Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) te voeren.
 
 > [!IMPORTANT]
 > Als u deze wijziging aanbrengt, wordt de manier waarop uw gebruikers zich aanmelden bij Azure AD, niet gewijzigd. Het is echter belang rijk dat u deze configuratie toepast op al uw apparaten voordat u verdergaat. Gebruikers die zich aanmelden op apparaten die deze configuratie nog niet hebben ontvangen, moeten een gebruikers naam en wacht woord invoeren om zich aan te melden bij Azure AD.
 
-### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>Stap 3: De aanmeldings methode wijzigen naar wachtwoord-hash synchronisatie en naadloze SSO inschakelen
+### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>Stap 3: Wijzig de aanmeldings methode in wachtwoord hash synchronisatie en schakel naadloze SSO in
 
 U hebt twee opties voor het wijzigen van de aanmeldings methode voor wachtwoord hash synchronisatie en het inschakelen van naadloze SSO.
 
-#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>Optie A: Overschakelen van Federatie naar wachtwoord-hash-synchronisatie met behulp van Azure AD Connect
+#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>Optie A: overschakelen van Federatie naar hash-synchronisatie met wacht woord met behulp van Azure AD Connect
 
 Gebruik deze methode als u uw AD FS-omgeving voor het eerst hebt geconfigureerd met behulp van Azure AD Connect. U kunt deze methode niet gebruiken als u uw AD FS-omgeving *niet eerder hebt* geconfigureerd met behulp van Azure AD Connect.
 
@@ -313,7 +313,7 @@ Wijzig eerst de aanmeldings methode:
    > [!IMPORTANT]
    > Op dit moment worden alle federatieve domeinen gewijzigd in beheerde authenticatie. Wachtwoord hash-synchronisatie is de nieuwe verificatie methode.
 
-7. Selecteer in de Azure AD-Portal **Azure Active Directory** > **Azure AD Connect**.
+7. Selecteer **Azure Active Directory**  > **Azure AD Connect**in de Azure AD-Portal.
 8. Controleer de volgende instellingen:
    * **Federatie** is ingesteld op **uitgeschakeld**.
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
@@ -324,9 +324,9 @@ Wijzig eerst de aanmeldings methode:
 Ga verder met [testen en volgende stappen](#testing-and-next-steps).
 
    > [!IMPORTANT]
-   > De sectie **optie B overs Laan: Overschakelen van Federatie naar hash-synchronisatie met wacht woord met behulp van Azure AD Connect en Power shell**. De stappen in deze sectie zijn niet van toepassing als u optie A hebt gekozen om de aanmeldings methode te wijzigen in wachtwoord hash synchronisatie en naadloze SSO in te scha kelen.
+   > Overs Laan **van de sectie optie B: overschakelen van Federatie naar wachtwoord-hash-synchronisatie met behulp van Azure AD Connect en Power shell**. De stappen in deze sectie zijn niet van toepassing als u optie A hebt gekozen om de aanmeldings methode te wijzigen in wachtwoord hash synchronisatie en naadloze SSO in te scha kelen.
 
-#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>Optie B: Overschakelen van Federatie naar wachtwoord-hash synchronisatie met Azure AD Connect en Power shell
+#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>Optie B: overschakelen van Federatie naar wachtwoord hash synchronisatie met Azure AD Connect en Power shell
 
 Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd met behulp van Azure AD Connect. Tijdens dit proces schakelt u naadloze SSO in en activeert u uw domeinen van federatieve naar beheerd.
 
@@ -335,9 +335,9 @@ Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd 
 3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in voor een account voor globale beheerders.
 4. Op de **aanmeldings** pagina van de gebruiker selecteert u de knop **wachtwoord hash-synchronisatie** . Selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
 
-   Voordat u de synchronisatie van wachtwoord-hashes inschakelt: ![Scherm afbeelding met de optie niet configureren op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Voordat u de synchronisatie van wacht woord-hashes inschakelt: ![Screenshot waarin de optie niet configureren wordt weer gegeven op de aanmeldings pagina van de gebruiker ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Nadat u de wachtwoord-hash-synchronisatie hebt ingeschakeld: ![Scherm opname van de nieuwe opties op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Nadat u wachtwoord hash-synchronisatie hebt ingeschakeld: ![Screenshot waarin nieuwe opties worden weer gegeven op de aanmeldings pagina van de gebruiker ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Als u begint met Azure AD Connect versie 1.1.880.0, is het selectie vakje **naadloze eenmalige aanmelding** standaard ingeschakeld.
@@ -353,7 +353,7 @@ Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd 
 
 6. Controleer op de pagina **gereed voor configuratie** of het selectie vakje **synchronisatie proces starten wanneer de configuratie is voltooid** is ingeschakeld. Selecteer vervolgens **configureren**.
 
-   ![Scherm afbeelding met de knop configureren op de pagina gereed om te configureren](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
+   ![Screenshot waarin de knop configureren wordt weer gegeven op de pagina gereed voor configuratie ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    Wanneer u de knop **configureren** selecteert, wordt naadloze SSO geconfigureerd zoals aangegeven in de vorige stap. De synchronisatie configuratie voor wacht woord-hashes is niet gewijzigd omdat deze eerder is ingeschakeld.
 
    > [!IMPORTANT]
@@ -382,7 +382,7 @@ De conversie volt ooien met behulp van de Azure AD Power shell-module:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. Selecteer in de Azure AD-Portal **Azure Active Directory** > **Azure AD Connect**.
+3. Selecteer **Azure Active Directory**  > **Azure AD Connect**in de Azure AD-Portal.
 4. Controleer of het domein is geconverteerd naar beheerd door de volgende opdracht uit te voeren:
 
    ``` PowerShell
@@ -400,7 +400,7 @@ Wanneer uw Tenant federatieve identiteiten heeft gebruikt, werden gebruikers omg
 De synchronisatie van wacht woord-hashes testen:
 
 1. Open Internet Explorer in de InPrivate-modus, zodat naadloze SSO niet automatisch wordt aangemeld.
-2. Ga naar de Office 365-aanmeldings pagina ([https://portal.office.com](https://portal.office.com/)).
+2. Ga naar de aanmeldings pagina van Office 365 ([ https://portal.office.com](https://portal.office.com/)).
 3. Voer een UPN van de gebruiker in en selecteer **volgende**. Zorg ervoor dat u de UPN van een hybride gebruiker invoert die is gesynchroniseerd vanaf uw on-premises Active Directory-exemplaar en die eerder Federated Authentication heeft gebruikt. Een pagina waarop u de gebruikers naam en het wacht woord opgeeft, wordt weer gegeven:
 
    ![Scherm opname van de aanmeldings pagina waarin u een gebruikers naam invoert](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -417,8 +417,8 @@ De synchronisatie van wacht woord-hashes testen:
 1. Meld u aan bij een computer die lid is van een domein en die is verbonden met het bedrijfs netwerk.
 2. Ga in Internet Explorer of Chrome naar een van de volgende Url's (Vervang ' Contoso ' door uw domein):
 
-   * https:\/\/MyApps.Microsoft.com/contoso.com
-   * https:\/\/MyApps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/myapps. microsoft.com/contoso.com
+   * https: \/ \/myapps. microsoft.com/contoso.onmicrosoft.com
 
    De gebruiker wordt kort omgeleid naar de aanmeldings pagina van Azure AD, waarin het bericht wordt weer gegeven dat u zich probeert aan te melden. De gebruiker wordt niet gevraagd om een gebruikers naam of wacht woord.<br />
 
@@ -437,7 +437,7 @@ Nadat u hebt gecontroleerd of alle gebruikers en clients zijn geverifieerd via A
 
 Als u AD FS niet gebruikt voor andere doel einden (dat wil zeggen, voor andere Relying Party-vertrouwens relaties), is het veilig om AD FS op dit punt uit te voeren.
 
-### <a name="rollback"></a>Ongedaan maken
+### <a name="rollback"></a>Actie
 
 Als u een belang rijk probleem ontdekt en dit niet snel kunt oplossen, kunt u ervoor kiezen om de oplossing terug te zetten naar Federatie.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Personaler-client bibliotheek voor node. js | Microsoft Docs'
+title: 'Quick Start: client bibliotheek voor persoonlijke instellingen voor node. js | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ga aan de slag met de Personaler-client bibliotheek voor node. js met een Learning-lus.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345244"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515202"
 ---
-# <a name="quickstart-personalize-client-library-for-nodejs"></a>Quickstart: Client bibliotheek personaliseren voor node. js
+# <a name="quickstart-personalizer-client-library-for-nodejs"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor node. js
 
 Aangepaste inhoud in deze node. js-Snelstartgids weer geven met de Personaler service.
 
@@ -26,7 +26,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor node. js. Volg deze sta
  * Rang schikking van een lijst met acties voor persoonlijke instellingen.
  * Rapport belonings Score die het succes van de beste geclassificeerde actie aangeeft.
 
-[](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | Voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js) van bron code pakket voor bibliotheek[(NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | 
+@No__t_1[pakket (NPM)  | -](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js) van [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,8 +54,8 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 
 Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY`voor de resource sleutel.
-* `PERSONALIZER_ENDPOINT`voor het resource-eind punt.
+* `PERSONALIZER_KEY` voor de resource sleutel.
+* `PERSONALIZER_ENDPOINT` voor het resource-eind punt.
 
 In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
 
@@ -116,23 +116,23 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-c
 
 ## <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
-Maak een nieuwe node. js-toepassing in uw voorkeurs editor of IDE `sample.js`met de naam. 
+Maak een nieuwe node. js-toepassing in uw voorkeurs editor of IDE met de naam `sample.js`. 
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Open het bestand **sample. js** in uw voorkeurs editor of IDE. Voeg het volgende `requires` toe om de NPM-pakketten toe te voegen:
+Open het bestand **sample. js** in uw voorkeurs editor of IDE. Voeg de volgende `requires` toe om de NPM-pakketten toe te voegen:
 
 [!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Informatie over persoonlijker resources toevoegen
 
-Maak variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald `PERSONALIZER_KEY` uit `PERSONALIZER_ENDPOINT`de omgevings variabelen met de naam en. Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
+Maak variabelen voor de Azure-sleutel en het eind punt van uw resource die worden opgehaald uit de omgevings variabelen, met de naam `PERSONALIZER_KEY` en `PERSONALIZER_ENDPOINT`. Als u de omgevings variabelen hebt gemaakt nadat de toepassing is gestart, moet de editor, IDE of shell die deze uitvoert, worden gesloten en opnieuw worden geladen om toegang te krijgen tot de variabele. De methoden worden verderop in deze Quick start gemaakt.
 
 [!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Een Personaler-client maken
 
-Maak vervolgens een methode voor het retour neren van een Personaler-client. De para meter voor de methode is `PERSONALIZER_RESOURCE_ENDPOINT` de en de ApiKey `PERSONALIZER_RESOURCE_KEY`is.
+Maak vervolgens een methode voor het retour neren van een Personaler-client. De para meter voor de methode is het `PERSONALIZER_RESOURCE_ENDPOINT` en de ApiKey is de `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
 
@@ -161,7 +161,7 @@ Voeg de volgende methoden toe, die [de inhouds keuzes ophalen](#get-content-choi
 
 ## <a name="request-a-rank"></a>Een positie aanvragen
 
-Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker gevraagd om inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, `excludeActions`weer gegeven als. De rang aanvraag heeft de [acties](concepts-features.md#actions-represent-a-list-of-options), eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-id (als GUID) nodig om de geclassificeerde reactie te ontvangen. 
+Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker gevraagd om inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, weer gegeven als `excludeActions`. De rang aanvraag heeft de [acties](concepts-features.md#actions-represent-a-list-of-options), eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-id (als GUID) nodig om de geclassificeerde reactie te ontvangen. 
 
 Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur voor de gebruikers-levens duur. In productie systemen kan het bepalen en [evalueren](concept-feature-evaluation.md) van [acties en functies](concepts-features.md) een niet-triviale zaak zijn.  
 
@@ -190,7 +190,7 @@ node sample.js
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -200,4 +200,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Wat is persoonlijkere?](what-is-personalizer.md)
 * [Waar kunt u Personaler gebruiken?](where-can-you-use-personalizer.md)
 * [Problemen oplossen](troubleshooting.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).

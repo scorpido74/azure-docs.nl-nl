@@ -4,15 +4,15 @@ description: Beschrijft de vereiste client bibliotheken voor client toepassingen
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298657"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512768"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
@@ -44,7 +44,7 @@ Analysis Services gebruik drie client Bibliotheken, ook wel bekend als gegevens 
 
 Micro soft-client toepassingen zoals Power BI Desktop en Excel installeren alle drie client bibliotheken en werken ze bij wanneer er nieuwe versies beschikbaar zijn. Afhankelijk van de versie of de frequentie van updates, zijn sommige client bibliotheken mogelijk niet de nieuwste versie die wordt vereist door Azure Analysis Services. Dit geldt ook voor aangepaste toepassingen of andere interfaces, zoals AsCmd, TOM en ADOMD.NET. Voor deze toepassingen moet de bibliotheken hand matig of programmatisch worden geïnstalleerd. De client bibliotheken voor hand matige installatie zijn opgenomen in SQL Server Feature Packs als distribueer bare pakketten. Deze client bibliotheken zijn echter gekoppeld aan de SQL Server-versie en zijn mogelijk niet het meest recent.  
 
-Client bibliotheken voor client verbindingen verschillen van gegevens providers die vereist zijn om verbinding te maken vanaf een Azure Analysis Services server met een gegevens bron. Zie [Data Source Connections](analysis-services-datasource.md)voor meer informatie over data source Connections.
+Client bibliotheken voor client verbindingen verschillen van gegevens providers die vereist zijn om verbinding te maken vanaf een Azure Analysis Services server met een gegevens bron. Zie [gegevens bron verbindingen](analysis-services-datasource.md)voor meer informatie over gegevens bron verbindingen.
 
 ## <a name="client-library-types"></a>Typen client bibliotheken
 

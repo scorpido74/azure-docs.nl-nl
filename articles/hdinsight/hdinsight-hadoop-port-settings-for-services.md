@@ -1,23 +1,23 @@
 ---
 title: Poorten die worden gebruikt door Hadoop-Services op HDInsight-Azure
-description: Dit biedt een lijst met poorten die worden gebruikt door Apache Hadoop services die worden uitgevoerd in azure HDInsight
+description: Dit artikel bevat een lijst met poorten die worden gebruikt door Apache Hadoop services die worden uitgevoerd in azure HDInsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/15/2019
+ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733413"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529558"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Poorten die worden gebruikt door Apache Hadoop Services in HDInsight
 
-Dit document bevat een lijst met de poorten die worden gebruikt door Apache Hadoop services die worden uitgevoerd op HDInsight-clusters op basis van Linux. Het bevat ook informatie over poorten die worden gebruikt om via SSH verbinding te maken met het cluster.
+Dit document bevat een lijst met poorten die worden gebruikt door Apache Hadoop services die worden uitgevoerd op HDInsight-clusters. Het bevat ook informatie over poorten die worden gebruikt om via SSH verbinding te maken met het cluster.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Open bare poorten versus niet-open bare poorten
 
@@ -34,7 +34,7 @@ Als u extra computers wilt toevoegen aan het virtuele netwerk, moet u eerst het 
 
 Alle knoop punten in een HDInsight-cluster bevinden zich in een Azure-Virtual Network en zijn niet rechtstreeks toegankelijk vanaf internet. Een open bare gateway biedt Internet toegang tot de volgende poorten, die gemeen schappelijk zijn voor alle typen HDInsight-clusters.
 
-| Service | Port | Protocol | Description |
+| Service | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Verbindt clients met sshd op de primaire hoofd knooppunt. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie. |
 | sshd |22 |SSH |Verbindt clients met sshd op het Edge-knoop punt. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie. |
@@ -47,14 +47,14 @@ Alle knoop punten in een HDInsight-cluster bevinden zich in een Azure-Virtual Ne
 
 De volgende opties zijn beschikbaar voor specifieke cluster typen:
 
-| Service | Port | Protocol | Clustertype | Description |
+| Service | Port | Protocol | Clustertype | Beschrijving |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |HBase REST API. Zie [aan de slag met Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API. Zie [Apache Spark-taken extern verzenden met Apache livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift-server |443 |HTTPS |Spark |Spark Thrift-server gebruikt om Hive-query's te verzenden. Zie [Beeline gebruiken met Apache Hive op HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm web-gebruikers interface. Zie [Apache Storm-topologieën implementeren en beheren in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Alle services die openbaar beschikbaar zijn op het Internet, moeten worden geverifieerd:
 
@@ -73,7 +73,7 @@ Alle services die openbaar beschikbaar zijn op het Internet, moeten worden gever
 
 ### <a name="ambari"></a>Ambari
 
-| Service | Knooppunten | Port | URL-pad | Protocol | 
+| Service | Knooppunten | Port | URL-pad | Protocol |
 | --- | --- | --- | --- | --- |
 | Ambari-webgebruikersinterface | Hoofdknooppunten | 8080 | / | HTTP |
 | Ambari REST API | Hoofdknooppunten | 8080 | /api/v1 | HTTP |
@@ -84,7 +84,7 @@ Voorbeelden:
 
 ### <a name="hdfs-ports"></a>HDFS-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | NameNode-webgebruikersinterface |Hoofdknooppunten |30070 |HTTPS |Web-UI voor weer gave van status |
 | NameNode-meta gegevens service |hoofd knooppunten |8020 |IPC |Meta gegevens van het bestands systeem |
@@ -95,7 +95,7 @@ Voorbeelden:
 
 ### <a name="yarn-ports"></a>GAREN-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | Webgebruikersinterface van Resource Manager |Hoofdknooppunten |8088 |HTTP |Web-UI voor Resource Manager |
 | Webgebruikersinterface van Resource Manager |Hoofdknooppunten |8090 |HTTPS |Web-UI voor Resource Manager |
@@ -104,25 +104,25 @@ Voorbeelden:
 | Resource Manager-toepassings interface |hoofd knooppunten |8050 |HTTP |Adres van de interface van de toepassings Manager |
 | NodeManager |Alle worker-knoop punten |30050 |&nbsp; |Het adres van de container beheerder |
 | NodeManager-webgebruikersinterface |Alle worker-knoop punten |30060 |HTTP |Resource Manager-interface |
-| Tijdlijn adres |Hoofdknooppunten |10200 |RPC |De RPC-service van de tijdlijn service. |
+| Tijdlijn adres |Hoofdknooppunten |10200 |RPC'S |De RPC-service van de tijdlijn service. |
 | Tijdlijn Web-UI |Hoofdknooppunten |8188 |HTTP |De Web-UI van de tijdlijn service |
 
 ### <a name="hive-ports"></a>Hive-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Hoofdknooppunten |10001 |Thrift |Service voor het maken van een verbinding met hive (Thrift/JDBC) |
 | Hive-metastore |Hoofdknooppunten |9083 |Thrift |Service voor verbinding maken met meta gegevens van Hive (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | WebHCat-server |Hoofdknooppunten |30111 |HTTP |Web-API boven op HCatalog en andere Hadoop-Services |
 
 ### <a name="mapreduce-ports"></a>MapReduce-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | JobHistory |Hoofdknooppunten |19888 |HTTP |MapReduce JobHistory-Web-UI |
 | JobHistory |Hoofdknooppunten |10020 |&nbsp; |MapReduce JobHistory-server |
@@ -130,21 +130,21 @@ Voorbeelden:
 
 ### <a name="oozie"></a>Oozie
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | Oozie-server |Hoofdknooppunten |11000 |HTTP |URL voor Oozie-service |
 | Oozie-server |Hoofdknooppunten |11001 |HTTP |Poort voor Oozie-beheerder |
 
 ### <a name="ambari-metrics"></a>Metrische gegevens van Ambari
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |6188 |HTTP |De Web-UI van de tijdlijn service |
-| Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |30200 |RPC |De Web-UI van de tijdlijn service |
+| Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |30200 |RPC'S |De Web-UI van de tijdlijn service |
 
 ### <a name="hbase-ports"></a>HBase-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | HMaster |Hoofdknooppunten |16000 |&nbsp; |&nbsp; |
 | HMaster info-webinterface |Hoofdknooppunten |16010 |HTTP |De poort voor de HBase Master Web-UI |
@@ -153,19 +153,19 @@ Voorbeelden:
 
 ### <a name="kafka-ports"></a>Kafka-poorten
 
-| Service | Knooppunten | Port | Protocol | Description |
+| Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
-| Broker |Worker-knooppunten |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |Gebruikt voor client communicatie |
+| Connection |Werkknooppunten |9092 |[Kafka wire-protocol](https://kafka.apache.org/protocol.html) |Gebruikt voor client communicatie |
 | &nbsp; |ZooKeeper-knooppunten |2181 |&nbsp; |De poort die clients gebruiken om verbinding te maken met Zookeeper |
 
 ### <a name="spark-ports"></a>Spark-poorten
 
-| Service | Knooppunten | Port | Protocol | URL-pad | Description |
+| Service | Knooppunten | Port | Protocol | URL-pad | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift-servers |Hoofdknooppunten |10002 |Thrift | &nbsp; | Service voor het maken van verbinding met Spark SQL (Thrift/JDBC) |
 | Livy-server | Hoofdknooppunten | 8998 | HTTP | &nbsp; | Service voor het uitvoeren van instructies, taken en toepassingen |
-| Jupyter Notebook | Hoofdknooppunten | 8001 | HTTP | &nbsp; | Website van Jupyter-notebook |
+| Jupyter-notebook | Hoofdknooppunten | 8001 | HTTP | &nbsp; | Website van Jupyter-notebook |
 
 Voorbeelden:
 
-* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. In dit voor beeld `10.0.0.11` is het IP-adres van de hoofd knooppunt die als host fungeert voor de livy-service.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. In dit voor beeld is `10.0.0.11` het IP-adres van de hoofd knooppunt die als host fungeert voor de livy-service.
