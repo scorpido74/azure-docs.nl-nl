@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299825"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515258"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text-API 3,0: vertalen
 
@@ -102,7 +102,7 @@ Aanvraag headers zijn onder andere:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: <code>application/json</code>.</td>
+    <td>De <em>vereiste aanvraag header</em>.<br/>Hiermee geeft u het inhouds type van de payload op.<br/> De geaccepteerde waarde is <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Content-length</td>
@@ -155,7 +155,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     Het `transliteration`-object wordt niet opgenomen als vele niet wordt uitgevoerd.
 
-    * `alignment`: een object met een enkele teken reeks eigenschap met de naam `proj`, waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de aanvraag parameter `includeAlignment` `true` is. Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende notatie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
+    * `alignment`: een object met een enkele teken reeks eigenschap met de naam `proj`, waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de aanvraag parameter `includeAlignment` `true` is. Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende indeling: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
 
     * `sentLen`: een object dat de grenzen van een zin retourneert in de invoer-en uitvoer tekst.
 
@@ -234,7 +234,7 @@ Als er een fout optreedt, wordt door de aanvraag ook een JSON-fout bericht geret
 In dit voor beeld ziet u hoe u een enkele zin van het Engels naar vereenvoudigd Chinees omzet.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 De antwoord tekst is:
@@ -256,7 +256,7 @@ De `translations`-matrix bevat één element, dat de vertaling van het enkele te
 In dit voor beeld ziet u hoe u een enkele zin van het Engels naar vereenvoudigd Chinees omzet. In de aanvraag wordt de invoer taal niet opgegeven. In plaats daarvan wordt de automatische detectie van de bron taal gebruikt.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 De antwoord tekst is:
@@ -278,7 +278,7 @@ Het antwoord is vergelijkbaar met het antwoord van het vorige voor beeld. Omdat 
 We gaan het vorige voor beeld uitbreiden door vele toe te voegen. De volgende aanvraag vraagt om een Chinese vertaling geschreven in Latijns schrift.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 De antwoord tekst is:
@@ -305,7 +305,7 @@ Het Vertaal resultaat bevat nu een eigenschap `transliteration`, waarmee de vert
 Als u meerdere teken reeksen in één keer verdeelt, hoeft u alleen een matrix met teken reeksen op te geven in de hoofd tekst van de aanvraag.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 De antwoord tekst is:
@@ -330,7 +330,7 @@ De antwoord tekst is:
 In dit voor beeld ziet u hoe u dezelfde invoer in verschillende talen in één aanvraag kunt vertalen.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 De antwoord tekst is:
@@ -374,17 +374,17 @@ Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanw
     <td>Ongepaste woorden worden vervangen door een markering in de uitvoer. De markering is afhankelijk van de para meter <code>ProfanityMarker</code>.<br/><br/>
 Voor <code>ProfanityMarker=Asterisk</code> worden woorden in grove taal vervangen door <code>***</code>:<br/>
     <strong>Voorbeeld bron (Japans)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Voor beeld van vertaling (Engels)</strong>: He is een \* @ no__t-2 @ no__t-3.<br/><br/>
-Voor <code>ProfanityMarker=Tag</code> worden woord woorden met XML-tags &lt;profanity @ no__t-2 en &lt;/Gods taal @ no__t-4:<br/>
+    <strong>Voor beeld van vertaling (Engels)</strong>: He is een \* \* \*.<br/><br/>
+Voor <code>ProfanityMarker=Tag</code> worden woorden in grove taal omgeven door XML-labels &lt;profanity &gt; en &lt;/profanity &gt;:<br/>
     <strong>Voorbeeld bron (Japans)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Voor beeld van vertaling (Engels)</strong>: hij is een &lt;profanity @ no__t-2jackass @ no__t-3/scheld = no__t-4.
+    <strong>Voor beeld van een vertaling (Engels)</strong>: hij is een &lt;profanity &gt;jackass &lt;/profanity &gt;.
   </tr>
 </table> 
 
 Bijvoorbeeld:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 Hiermee wordt het volgende geretourneerd:
 
@@ -401,7 +401,7 @@ Hiermee wordt het volgende geretourneerd:
 Vergelijken met:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 Die laatste aanvraag retourneert:
@@ -428,7 +428,7 @@ Het is gebruikelijk om inhoud te vertalen die aantekeningen bevat zoals inhoud v
 Hier volgt een voor beeld van een aanvraag om te illustreren.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 Het antwoord is:
@@ -448,7 +448,7 @@ Het antwoord is:
 Als u informatie over uitlijning wilt ontvangen, geeft u `includeAlignment=true` op in de query teken reeks.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 Het antwoord is:
@@ -484,7 +484,7 @@ Houd rekening met de volgende beperkingen:
 Als u informatie over de lengte van de zin wilt ontvangen in de bron tekst en de vertaalde tekst, geeft u `includeSentenceLength=true` op in de query teken reeks.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 Het antwoord is:
@@ -516,7 +516,7 @@ De op te geven opmaak maakt gebruik van de volgende syntaxis.
 Neem bijvoorbeeld de Engelse zin ' het woord wordomatic is een vermelding van een woorden lijst '. Als u het woord _wordomatic_ in de vertaling wilt behouden, verzendt u de aanvraag:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Het resultaat is:

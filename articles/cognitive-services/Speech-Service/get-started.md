@@ -1,7 +1,7 @@
 ---
 title: Probeer de speech-service gratis uit
 titleSuffix: Azure Cognitive Services
-description: Het is eenvoudig en betaalbaar om aan de slag te gaan met de speech-service. Een gratis proefversie van 30 dagen kunt u ontdekken wat de service kan doen en bepalen of deze geschikt is voor de behoeften van uw toepassing.
+description: Het is eenvoudig en betaalbaar om aan de slag te gaan met de speech-service. Met een gratis proef versie van 30 dagen kunt u ontdekken wat de service kan doen en bepalen of deze geschikt is voor de behoeften van uw toepassing.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,118 +10,118 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: seodec18, seo-javascript-october2019
+ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535104"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527539"
 ---
-# <a name="try-speech-services-for-free"></a>Speech Services gratis uitproberen
+# <a name="try-speech-services-for-free"></a>Probeer spraak services gratis uit
 
-Aan de slag met de spraak Services is eenvoudig en betaalbaar. Een gratis proefversie van 30 dagen kunt u ontdekken wat de service kan doen en bepalen of deze geschikt is voor de behoeften van uw toepassing.
+Aan de slag met de spraak Services is eenvoudig en betaalbaar. Met een gratis proef versie van 30 dagen kunt u ontdekken wat de service kan doen en bepalen of deze geschikt is voor de behoeften van uw toepassing.
 
 Als u meer tijd nodig hebt, meldt u zich aan voor een Microsoft Azure-account. het wordt geleverd met $200 in de service credit die u Maxi maal 30 dagen kunt gebruiken in een betaald abonnement voor spraak Services.
 
-Ten slotte biedt de spraak Services een gratis laag die geschikt is voor het ontwikkelen van toepassingen. Zelfs nadat uw servicetegoed is verlopen, kunt u dit gratis abonnement behouden.
+Ten slotte biedt de spraak Services een gratis laag die geschikt is voor het ontwikkelen van toepassingen. U kunt dit gratis abonnement blijven, zelfs nadat het tegoed van uw service verloopt.
 
-## <a name="free-trial"></a>Gratis proefversie
+## <a name="free-trial"></a>Gratis versie
 
-De gratis proefversie van 30 dagen hebt u toegang tot de standaardprijscategorie voor gedurende een beperkte periode.
+De gratis proef versie van 30 dagen geeft u voor een beperkte periode toegang tot de prijs categorie Standard.
 
-Om u te registreren voor een gratis proefversie van 30 dagen:
+Meld u aan voor een gratis proef versie van 30 dagen:
 
-1. Ga naar [probeer de Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
+1. Ga naar [proberen Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
 
-1. Selecteer de **Speech-API's** tabblad.
+1. Selecteer het tabblad **spraak-api's** .
 
-   ![Tabblad voor spraak-Services](media/index/try-speech-api-free-trial1.png)
+   ![Speech API-tabblad spraak Services](media/index/cognitive-services-speech-api-tab.png)
 
 1. Onder **spraak Services**selecteert u **API-sleutel ophalen**.
 
-   ![API-sleutel](media/index/try-speech-api-free-trial2.png)
+   ![Speech API-API-sleutel ophalen](media/index/speech-api-get-api-key.png)
 
-1. Ga akkoord met de voorwaarden en selecteer uw land/regio uit de vervolgkeuzelijst.
+1. Ga akkoord met de voor waarden en selecteer uw land instellingen in de vervolg keuzelijst.
 
-   ![Ga akkoord met voorwaarden](media/index/try-speech-api-free-trial3.png)
+   ![Speech API-overeenkomst met voor waarden](media/index/speech-api-agree-to-terms.png)
 
-1. Meld u aan met uw Microsoft, Facebook, LinkedIn of GitHub-account.
+1. Meld u aan met uw micro soft-, Facebook-, LinkedIn-of GitHub-account.
 
-    U kunt zich aanmelden voor een gratis Microsoft-account op de [portal voor Microsoft-account](https://account.microsoft.com/account). Als u aan de slag wilt gaan, selecteert u **Aanmelden met Microsoft** en selecteert u vervolgens **een account maken** wanneer u wordt gevraagd om u aan te melden. Volg de stappen voor het maken en te controleren of uw nieuwe Microsoft-account.
+    U kunt zich registreren voor een gratis Microsoft-account op de [Microsoft-account Portal](https://account.microsoft.com/account). Als u aan de slag wilt gaan, selecteert u **Aanmelden met Microsoft** en selecteert u vervolgens **een account maken** wanneer u wordt gevraagd om u aan te melden. Volg de stappen om uw nieuwe Microsoft-account te maken en te controleren.
 
-Nadat u zich bij probeer Cognitive Services aanmelden, begint de gratis proefversie. De weergegeven webpagina worden alle van de Azure Cognitive Services-services waarvoor u momenteel proefabonnementen hebt weergegeven. Naast **spraak Services**worden twee abonnements sleutels weer gegeven. U kunt beide sleutels gebruiken in uw toepassingen.
+Nadat u zich hebt aangemeld om Cognitive Services te proberen, begint de gratis proef versie. De weer gegeven webpagina bevat een lijst met alle Azure Cognitive Services-services waarvoor u momenteel proef abonnementen hebt. Naast **spraak Services**worden twee abonnements sleutels weer gegeven. U kunt een van beide sleutels gebruiken in uw toepassingen.
 
 > [!NOTE]
-> Alle gratis proefabonnementen komen in de regio VS-West. Wanneer u aanvragen, zorg ervoor dat u de `westus` eindpunt.
+> Alle gratis proef abonnementen bevinden zich in de regio vs West. Wanneer u aanvragen maakt, moet u ervoor zorgen dat u het `westus`-eind punt gebruikt.
 
-## <a name="new-azure-account"></a>Nieuwe Azure-account
+## <a name="new-azure-account"></a>Nieuw Azure-account
 
-Nieuwe Azure-accounts, ontvangen een tegoed van $200-services die beschikbaar is gedurende maximaal 30 dagen. U kunt dit tegoed gebruiken om meer te weten te komen over de spraak Services of om te beginnen met het ontwikkelen van toepassingen.
+Nieuwe Azure-accounts ontvangen een tegoed van $200 service dat Maxi maal 30 dagen beschikbaar is. U kunt dit tegoed gebruiken om meer te weten te komen over de spraak Services of om te beginnen met het ontwikkelen van toepassingen.
 
 Als u zich wilt aanmelden voor een nieuw Azure-account, gaat u naar de [pagina aanmelden bij Azure](https://azure.microsoft.com/free/ai/), selecteert u **gratis starten** en maakt u een nieuw Azure-account met behulp van uw Microsoft-account.
 
-U kunt zich aanmelden voor een gratis Microsoft-account op de [portal voor Microsoft-account](https://account.microsoft.com/account). Als u aan de slag wilt gaan, selecteert u **Aanmelden met Microsoft** en selecteert u vervolgens **een account maken** wanneer u wordt gevraagd om u aan te melden. Volg de stappen voor het maken en te controleren of uw nieuwe Microsoft-account.
+U kunt zich registreren voor een gratis Microsoft-account op de [Microsoft-account Portal](https://account.microsoft.com/account). Als u aan de slag wilt gaan, selecteert u **Aanmelden met Microsoft** en selecteert u vervolgens **een account maken** wanneer u wordt gevraagd om u aan te melden. Volg de stappen om uw nieuwe Microsoft-account te maken en te controleren.
 
 Nadat u uw Azure-account hebt gemaakt, volgt u de stappen in de volgende sectie om een abonnement op de spraak services te starten.
 
-## <a name="create-a-speech-resource-in-azure"></a>Een spraak-resource maken in Azure
+## <a name="create-a-speech-resource-in-azure"></a>Een spraak bron maken in azure
 
 Een speech Services-resource (gratis of betaalde laag) toevoegen aan uw Azure-account:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/) met uw Microsoft-account.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Microsoft-account.
 
-1. Selecteer **een resource maken** op linksboven in de portal.
+1. Selecteer **een resource maken** in de linkerbovenhoek van de portal.
 
-    ![Een resource maken](media/index/try-speech-api-create-speech1.png)
+    ![Speech API: een resource maken](media/index/speech-api-create-resource.png)
 
-1. In de **nieuw** venster, zoekt u **spraak**.
+1. Zoek in het **nieuwe** venster naar **spraak**.
 
-1. Selecteer in de lijst met zoekresultaten **spraak**.
+1. Selecteer in de zoek resultaten **spraak**.
 
-    ![Selecteer spraak](media/index/try-speech-api-create-speech2.png)
+    ![Speech API: spraak selecteren](media/index/speech-api-select-speech.png)
 
-1. Onder **spraak**, selecteer de **maken** knop.
+1. Klik onder **spraak**op de knop **maken** .
 
-    ![Selecteer de knop maken](media/index/try-speech-api-create-speech3.png)
+    ![Speech API-knop maken](media/index/speech-api-create-button.png)
 
-1. Onder **maken**, invoeren:
+1. Voer onder **maken**het volgende in:
 
-   * Een naam voor de nieuwe resource. De naam van de kunt u onderscheid maken tussen meerdere abonnementen voor dezelfde service.
-   * Kies het Azure-abonnement waaraan de nieuwe resource is gekoppeld om te bepalen hoe de kosten worden in rekening gebracht.
+   * Een naam voor de nieuwe resource. De naam helpt u bij het onderscheid tussen meerdere abonnementen op dezelfde service.
+   * Kies het Azure-abonnement waaraan de nieuwe resource is gekoppeld om te bepalen hoe de kosten worden gefactureerd.
    * Kies de [regio](regions.md) waar de resource wordt gebruikt.
-   * Op een gratis of betaalde prijscategorie kiezen. Selecteer **volledige prijs informatie weer geven** voor volledige informatie over prijzen en gebruiks quota's voor elke laag.
-   * Maak een nieuwe resourcegroep voor dit abonnement spraak of het abonnement toewijzen aan een bestaande resourcegroep. Resourcegroepen houdt u uw verschillende Azure-abonnementen ingedeeld.
-   * Voor een gemakkelijke manier toegang tot uw abonnement in de toekomst, selecteert u de **vastmaken aan dashboard** selectievakje.
+   * Kies een prijs categorie voor gratis of betaald. Selecteer **volledige prijs informatie weer geven** voor volledige informatie over prijzen en gebruiks quota's voor elke laag.
+   * Maak een nieuwe resource groep voor dit spraak abonnement of wijs het abonnement toe aan een bestaande resource groep. Met resource groepen kunt u de verschillende Azure-abonnementen ordenen.
+   * Schakel het selectie vakje **vastmaken aan dash board in als** u in de toekomst eenvoudig toegang wilt hebben tot uw abonnement.
    * Selecteer **maken.**
 
-     ![Selecteer de knop maken](media/index/try-speech-api-create-speech4.png)
+     ![Speech API: Create selecteren](media/index/speech-api-select-create.png)
 
-     Het duurt even om te maken en implementeren van uw nieuwe spraak-resource. Selecteer **snelstartgids** voor informatie over de nieuwe resource.
+     Het duurt even om uw nieuwe spraak bron te maken en te implementeren. Selecteer **Quick** start om informatie over uw nieuwe resource weer te geven.
 
-     ![Snelstartgids-Configuratiescherm](media/index/try-speech-api-create-speech5.png)
+     ![Speech API: de bron implementeren](media/index/speech-api-deploy-resource.png)
 
-1. Onder **Quick**start selecteert u de koppeling **sleutels** onder stap 1 om uw abonnements sleutels weer te geven. Elk abonnement heeft twee sleutels; u kunt beide sleutels gebruiken in uw toepassing. Selecteer de knop naast elke sleutel te kopiëren naar het Klembord plakken in uw code.
+1. Onder **Quick**start selecteert u de koppeling **sleutels** onder stap 1 om uw abonnements sleutels weer te geven. Elk abonnement heeft twee sleutels. u kunt een van beide sleutels gebruiken in uw toepassing. Selecteer de knop naast elke sleutel om deze naar het klem bord te kopiëren om deze naar uw code te plakken.
 
 > [!NOTE]
-> U kunt een onbeperkt aantal standard-laag-abonnementen maken in een of meerdere regio's. U kunt echter slechts één gratis-laag-abonnement maken. Modelimplementaties op de gratis laag die nog niet-gebruikte 7 dagen is uit bedrijf is genomen automatisch.
+> U kunt een onbeperkt aantal abonnementen op de Standard-laag maken in een of meer regio's. U kunt echter slechts één gratis-laag abonnement maken. Model implementaties in de gratis laag die gedurende 7 dagen niet worden gebruikt, worden automatisch genomen.
 
 ## <a name="switch-to-a-new-subscription"></a>Overschakelen naar een nieuw abonnement
 
-Als u wilt overschakelen van één abonnement naar een andere, vervangen bijvoorbeeld wanneer de gratis proefversie verloopt of bij het publiceren van uw toepassing, door de regio en abonnement sleutel in uw code de regio en abonnement sleutel van de nieuwe Azure-resource.
+Als u wilt overschakelen van het ene naar het andere abonnement, bijvoorbeeld wanneer uw gratis proef versie verloopt of wanneer u uw toepassing publiceert, vervangt u de regio en de abonnements sleutel in uw code door de regio en de abonnements sleutel van de nieuwe Azure-resource.
 
 > [!NOTE]
-> Sleutels voor een gratis proefversie worden gemaakt in de VS-West (`westus`) regio. Een abonnement dat is gemaakt via het Azure-dashboard mogelijk in een andere regio, indien gewenst.
+> Sleutels voor gratis proef versies worden gemaakt in de regio vs-West (`westus`). Een abonnement dat is gemaakt via het Azure-dash board, bevinden zich mogelijk in een andere regio als u dat doet.
 
-* Als uw toepassing gebruikmaakt van een [spraak SDK](speech-sdk.md), geef u de regiocode zoals `westus`, bij het maken van een spraak-configuratie.
+* Als uw toepassing gebruikmaakt van een [Speech SDK](speech-sdk.md), geeft u de regio code, zoals `westus`, op bij het maken van een spraak configuratie.
 * Als uw toepassing gebruikmaakt van een van de rest- [api's](rest-apis.md)van spraak Services, maakt de regio deel uit van de EINDPUNT-URI die u gebruikt bij het maken van aanvragen.
 
-Sleutels die zijn gemaakt voor een regio zijn alleen geldig in deze regio. Er wordt geprobeerd om ze te gebruiken met andere regio's leidt tot verificatiefouten.
+Sleutels die zijn gemaakt voor een regio, zijn alleen geldig in die regio. Als u deze probeert te gebruiken met andere regio's, worden verificatie fouten veroorzaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een van onze quickstarts van 10 minuten of Bekijk onze SDK-voorbeelden:
+Voltooi een van onze Quick starts voor 10 minuten of Bekijk onze SDK-voor beelden:
 
 > [!div class="nextstepaction"]
-> [Snelstart: Spraak herkennen in C# ](quickstart-csharp-dotnet-windows.md) 
->  [Speech SDK](speech-sdk.md#get-the-samples) -voor beelden
+> [Snelstartgids: spraak herkennen in C# ](quickstart-csharp-dotnet-windows.md) 
+> [Speech SDK](speech-sdk.md#get-the-samples) -voor beelden

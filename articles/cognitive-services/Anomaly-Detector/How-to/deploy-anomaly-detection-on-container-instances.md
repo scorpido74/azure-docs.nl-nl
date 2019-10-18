@@ -1,5 +1,5 @@
 ---
-title: Azure Container Instances uitvoeren
+title: Afwijkende detector-container uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
 description: Implementeer de afwijkende detector container in een Azure-container exemplaar en test deze in een webbrowser.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: cdcf701c6356303c84d3f79ee4230271f64ace78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 52d2e3ed59a7ad71177f34909e37ce885d603297
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854237"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515270"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Een anomalie detectie container implementeren naar Azure Container Instances
 
@@ -23,9 +23,9 @@ Meer informatie over het implementeren van de Cognitive Services [anomalie detec
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
+## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
 
-U moet eerst het aanvraag formulier voor de afwijkings [detectie container](https://aka.ms/adcontainer) volt ooien en verzenden om toegang tot de container aan te vragen.
+U moet eerst het [aanvraag formulier voor de afwijkings detectie container](https://aka.ms/adcontainer) volt ooien en verzenden om toegang tot de container aan te vragen.
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -38,5 +38,5 @@ U moet eerst het aanvraag formulier voor de afwijkings [detectie container](http
 ## <a name="next-steps"></a>Volgende stappen
 
 * Controleer de [installatie-en uitvoer containers](../anomaly-detector-container-configuration.md) voor het ophalen van de container installatie kopie en voer de container uit
-* Beoordeling [containers configureren](../anomaly-detector-container-configuration.md) voor configuratie-instellingen
+* Containers voor configuratie-instellingen [configureren](../anomaly-detector-container-configuration.md) controleren
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

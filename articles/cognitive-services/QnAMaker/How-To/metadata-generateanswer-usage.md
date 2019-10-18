@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248638"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554872"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -48,7 +48,7 @@ Nadat u uw Knowledge Base hebt gepubliceerd vanuit de [QnA Maker Portal](https:/
 U kunt als volgt uw eindpunt Details ophalen:
 1. Meld u aan bij [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. Selecteer in **mijn Knowledge**bases de optie **code weer geven** voor uw Knowledge Base.
-    @no__t 0Screenshot van mijn Knowledge bases @ no__t-1
+    ![Screenshot van mijn Knowledge bases ](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Haal de details van uw GenerateAnswer-eind punt op.
 
     ![Scherm opname van eindpunt Details](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -83,6 +83,7 @@ Een voor beeld van een JSON-bericht ziet er als volgt uit:
     "top": 6,
     "isTest": true,
     "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -91,6 +92,8 @@ Een voor beeld van een JSON-bericht ziet er als volgt uit:
     "userId": "sd53lsY="
 }
 ```
+
+Meer informatie over [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
 De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde. 
 

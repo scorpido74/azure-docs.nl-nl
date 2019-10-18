@@ -1,5 +1,5 @@
 ---
-title: Offline-evaluatie-persoonlijker
+title: Offline-evaluatie uitvoeren-persoonlijker
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het analyseren van uw leer proces met een offline-evaluatie
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884485"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515222"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analyseer uw leer proces met een offline-evaluatie
 
@@ -35,7 +35,7 @@ Lees meer over [offline-evaluaties](concepts-offline-evaluation.md) voor meer in
 
 1. Zoek uw persoonlijke bron in het [Azure Portal](https://azure.microsoft.com/free/).
 1. Ga in het Azure Portal naar de sectie **evaluaties** en selecteer **evaluatie maken**.
-    ![Ga in het Azure Portal naar de sectie * *-evaluaties * * en selecteer * * evaluatie maken * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
+    ![In de Azure Portal gaat u naar de sectie * *-evaluaties * * en selecteert u * * evaluatie maken * *. ](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Selecteer de volgende instellingen:
 
     * Een evaluatie naam
@@ -54,11 +54,11 @@ Zodra het is voltooid, kunt u de evaluatie selecteren in de lijst met evaluaties
 
 Vergelijkingen van het trainings beleid zijn onder andere:
 
-* **Online beleid**: Het huidige leer beleid dat wordt gebruikt in Personaler
-* **Basis lijn**: De standaard waarde van de toepassing (zoals bepaald door de eerste actie die in Rangings aanroepen wordt verzonden),
-* **Wille keurig beleid**: Een imaginair positie gedrag dat altijd een wille keurige keuze van de acties retourneert uit de opgegeven records.
-* **Aangepast beleid**: Er zijn extra leer beleid geüpload bij het starten van de evaluatie.
-* **Geoptimaliseerd beleid**: Als de evaluatie is gestart met de optie om een geoptimaliseerd beleid te detecteren, wordt het ook vergeleken en kunt u het downloaden of het online leer beleid maken, waarbij de huidige wordt vervangen.
+* **Online beleid**: het huidige Learning-beleid dat wordt gebruikt in personaler
+* **Basis lijn**: de standaard waarde van de toepassing (zoals wordt bepaald door de eerste actie die in rangings aanroepen wordt verzonden),
+* **Wille keurig beleid**: een imaginair positie gedrag dat altijd een wille keurige keuze van de acties retourneert uit de opgegeven records.
+* **Aangepast beleid**: er is extra leer beleid geüpload bij het starten van de evaluatie.
+* **Geoptimaliseerd beleid**: als de evaluatie is gestart met de optie om een geoptimaliseerd beleid te detecteren, wordt het ook vergeleken en kunt u het downloaden of het online leer beleid maken en het huidige vervangen.
 
 ![Resultaten grafiek van instellingen voor offline-evaluatie](./media/offline-evaluation/evaluation-results.png)
 

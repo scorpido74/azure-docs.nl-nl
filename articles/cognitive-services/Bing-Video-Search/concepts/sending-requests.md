@@ -1,5 +1,5 @@
 ---
-title: Zoekaanvragen verzenden naar de Bing Video's zoeken-API
+title: Zoek aanvragen naar de Bing Video's zoeken-API verzenden
 titleSuffix: Azure Cognitive Services
 description: Lees hier alles over het verzenden van zoekquery's naar de Bing Video's zoeken-API.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: ba2036c58ae54cc665623e63129ecea6c530b27d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 96f92f0dc1e9e0c6c409fe17680fc57412e2b7d3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878991"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512511"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Verzenden van zoekaanvragen naar de Bing Video's zoeken-API
 
@@ -53,7 +53,7 @@ De aanvraag moet de header [Ocp-Apim-Subscription-Key](https://docs.microsoft.co
 
 De headers ClientIP en Location zijn belangrijk voor het retourneren van locatiespecifieke inhoud.  
 
-Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers) voor een lijst met alle aanvraag- en antwoordheaders.
+Zie [Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers) voor een lijst van alle aanvraag- en antwoordheaders.
 
 ## <a name="example-search-request"></a>Voorbeeld van zoekaanvraag
 

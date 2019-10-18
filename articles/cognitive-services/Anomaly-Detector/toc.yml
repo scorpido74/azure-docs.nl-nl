@@ -8,14 +8,6 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: REST-API
-      items:
-        - name: 'C# gebruiken'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Java gebruiken
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Python gebruiken
-          href: quickstarts/detect-data-anomalies-python.md
     - name: Clientbibliotheek
       items:
         - name: 'C# gebruiken'
@@ -24,6 +16,14 @@
           href: quickstarts/detect-data-anomalies-python-sdk.md
         - name: Node.js gebruiken
           href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+    - name: REST-API
+      items:
+        - name: 'C# gebruiken'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: Java gebruiken
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: Python gebruiken
+          href: quickstarts/detect-data-anomalies-python.md
 - name: Zelfstudies
   items:
     - name: Afwijkingen in batch visualiseren met behulp van Power BI

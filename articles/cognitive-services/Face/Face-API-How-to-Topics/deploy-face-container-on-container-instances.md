@@ -1,7 +1,7 @@
 ---
-title: Azure Container Instances uitvoeren
+title: Een face-container uitvoeren in Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: De Face-container implementeren in Azure Container Instances en test in een webbrowser.
+description: Implementeer de face-container in een Azure-container exemplaar en test deze in een webbrowser.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: e67846b6b304b5425f7e8334eb3a4499a029d5ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2a596ea1f6f6405078d0e031de00212995342a19
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711591"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516820"
 ---
-# <a name="deploy-the-face-container-to-azure-container-instances"></a>De Face-container implementeren in Azure Container Instances
+# <a name="deploy-the-face-container-to-azure-container-instances"></a>De face-container implementeren op Azure Container Instances
 
-Informatie over het implementeren van de Cognitive Services [Face](../face-how-to-install-containers.md) container naar Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Deze procedure ziet u het maken van een Azure-Face-resource. Vervolgens we het binnenhalen van de bijbehorende containerinstallatiekopie bespreken. Ten slotte, selecteren we de mogelijkheid om uit te oefenen de indeling van de twee vanuit een browser. Met behulp van containers, kan de ontwikkelaar aandacht weg van beheer van infrastructuur in plaats daarvan gericht op de ontwikkeling van toepassingen verplaatsen.
+Meer informatie over het implementeren van de Cognitive Services [Face](../face-how-to-install-containers.md) -container naar Azure [container instances](https://docs.microsoft.com/azure/container-instances/). Met deze procedure wordt het maken van een Azure face-resource gedemonstreerd. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
+## <a name="request-access-to-the-private-container-registry"></a>Toegang aanvragen tot het persoonlijke container register
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

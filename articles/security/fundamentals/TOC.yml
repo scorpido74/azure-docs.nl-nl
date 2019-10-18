@@ -49,16 +49,6 @@
             - name: Meer informatie over Azure Disk Encryption
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Snelstartgidsen
-              items:
-                - name: Een virtuele Linux-machine versleutelen met behulp van Azure CLI
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Een virtuele Linux-machine versleutelen met behulp van Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Een virtuele Windows-machine versleutelen met behulp van Azure CLI
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Een virtuele Windows-machine versleutelen met behulp van Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Encryption
               items:
                 - name: Vereisten voor schijfversleuteling
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: Grensbeveiliging
-          href: network-best-practices.md
 - name: Toepassing
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Controle en logboekregistratie
       items:
-        - name: Beveiligingsbeheer
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Extern beheer en beveiliging
           href: management.md
         - name: Azure-logboekintegratie
@@ -199,9 +184,6 @@
             - name: Azure AD-auditlogboeken integreren
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Waarschuwingen van Beveiligingscentrum integreren
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Logboeken van Key Vault integreren
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md

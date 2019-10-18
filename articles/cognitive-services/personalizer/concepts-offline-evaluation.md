@@ -1,5 +1,5 @@
 ---
-title: Offline-evaluatie-persoonlijker
+title: De offline-evaluatie methode gebruiken-persoonlijker
 titleSuffix: Azure Cognitive Services
 description: Maak een feedback-lus C# in deze Snelstartgids met de personaler service.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662853"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515588"
 ---
 # <a name="offline-evaluation"></a>Offline-evaluatie
 
@@ -98,5 +98,5 @@ We raden u aan functie-evaluaties te bekijken en te vragen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Personaler](how-to-settings.md)
-configureren[offline](how-to-offline-evaluation.md) -evaluaties begrijpen [hoe personaler werkt](how-personalizer-works.md)
+[Personaler configureren](how-to-settings.md) 
+[offline-evaluaties](how-to-offline-evaluation.md) begrijpen [hoe personaler werkt](how-personalizer-works.md)

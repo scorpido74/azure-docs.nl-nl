@@ -58,8 +58,8 @@ Voeg de twee bestanden vervolgens samen:
 
 De gegevensset heeft verschillende typen statistieken voor elk e-mail bericht:
 
-* Kolommen zoals **Word\_freq\_*woord*** geven het percentage woorden in het e-mail bericht aan dat overeenkomt met *Word*. Als **Word\_freq\_** bijvoorbeeld **1**is, dan is 1% van alle woorden in het e-mail bericht *gemaakt*.
-* Kolommen zoals **char\_freq\_*char*** geven het percentage van alle tekens in het e-mail bericht aan dat *char*is.
+* Kolommen zoals **Word\_freq\_ *woord*** geven het percentage woorden in het e-mail bericht aan dat overeenkomt met *Word*. Als **Word\_freq\_** bijvoorbeeld **1**is, dan is 1% van alle woorden in het e-mail bericht *gemaakt*.
+* Kolommen zoals **char\_freq\_ *char*** geven het percentage van alle tekens in het e-mail bericht aan dat *char*is.
 * **kapitaal\_uitvoeren\_lengte\_langste** is de langste duur van een reeks hoofdletters.
 * **kapitaal\_uitvoeren\_lengte\_gemiddelde** is de gemiddelde duur van alle reeksen hoofdletters.
 * **kapitaal\_uitvoeren\_lengte\_totale** is de totale lengte van alle reeksen hoofdletters.
