@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935202"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516798"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Stappen voor het migreren naar de Azure-ontwerp bron
 
@@ -98,7 +98,7 @@ Het migratie proces is beschikbaar als u de eigenaar bent van een LUIS-app.
 
 ## <a name="app-contributor-begins-the-migration-process"></a>De Inzender voor apps start het migratie proces
 
-Volg dezelfde stappen als de eigenaar van de app voor migratie. Het proces maakt een nieuwe ontwerp bron van de soort `LUIS.Authoring`. 
+Volg dezelfde stappen als de eigenaar van de app voor migratie. Het proces maakt een nieuwe ontwerp bron van het type `LUIS.Authoring`. 
 
 U moet uw account migreren om als bijdrager toe te voegen aan gemigreerde apps waarvan anderen eigenaar zijn.  
 
@@ -110,7 +110,7 @@ Meer informatie [over het toevoegen van mede](luis-how-to-collaborate.md)werkers
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Problemen met het migratie proces oplossen
 
-Als er tijdens het `MissingSubscriptionRegistration` migratie proces een fout optreedt in de Luis-Portal met een rode meldings balk, maakt u een cognitieve service resource in de [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Meer informatie over [oorzaken van deze fout](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
+Als er tijdens het migratie proces een `MissingSubscriptionRegistration` fout in de LUIS-portal wordt weer gegeven, maakt u een cognitieve service resource in de [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Meer informatie over [oorzaken van deze fout](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
 ## <a name="next-steps"></a>Volgende stappen
 
