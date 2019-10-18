@@ -1,5 +1,5 @@
 ---
-title: Een Azure Resource Manager sjabloon maken en implementeren met behulp van het IntelliJ-idee | Microsoft Docs
+title: Azure Resource Manager-sjabloon implementeren-IntelliJ-idee
 description: Meer informatie over het maken van uw eerste Azure Resource Manager-sjabloon met behulp van het IntelliJ-idee en hoe u deze implementeert.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169446"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533655"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Snelstartgids: Azure Resource Manager sjablonen maken en implementeren met behulp van het IntelliJ-idee
 
@@ -72,7 +72,7 @@ In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [A
 
     ![Resource Manager-sjabloon implementatie bewerken](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. U kunt de twee bestanden op deze pagina bewerken en de wijzigingen in azure implementeren. Hier wijzigt u de waarde van **storageAccountType** in de parameter bestanden, van `Standard_LRS` naar `Standard_GRS`. Klik op **Update-implementatie** onder en bevestig de update.
+1. U kunt de twee bestanden op deze pagina bewerken en de wijzigingen in azure implementeren. Hier wijzigen we de waarde van **storageAccountType** in parameter bestanden, van `Standard_LRS` naar `Standard_GRS`. Klik op **Update-implementatie** onder en bevestig de update.
 
     ![Resource Manager-sjabloon implementatie bewerken](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 

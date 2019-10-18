@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
-  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/14/2019
-  ms.locfileid: "72302721"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529445"
 landingContent:
 - title: Over Azure Search
   linkLists:
@@ -52,10 +52,10 @@ landingContent:
     links:
     - text: AI gebruiken om blobgegevens te begrijpen
       url: search-blob-ai-integration.md
-    - text: Zoeken in volledige tekst toevoegen aan blobgegevens
+    - text: Uw blob-inhoud doorzoeken
       url: search-blob-storage-integration.md
     - text: Uitbreidingen voor Store AI
-      url: knowledge-store-create-portal.md
+      url: knowledge-store-concept-intro.md
   - linkListType: tutorial
     links:
     - text: Semi-gestructureerde blobgegevens indexeren

@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: Enterprise State Roaming inschakelen
       href: enterprise-state-roaming-enable.md
+    - name: Infrastructuur van virtueel bureaublad
+      href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Beheerde Azure-werkstations implementeren
       href: howto-azure-managed-workstation.md
     - name: Problemen met apparaatidentiteiten oplossen

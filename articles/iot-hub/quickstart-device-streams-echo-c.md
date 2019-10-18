@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050158"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515051"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Quickstart: communiceren met een apparaattoepassing in C via IoT Hub-apparaatstreams (preview)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app in C via IoT Hub Device streams (preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
@@ -56,9 +56,9 @@ U hebt de volgende vereisten nodig:
 
 De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-* US - centraal
+* VS - centraal
 
-* US - centraal EUAP
+* Centrale VS-EUAP
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
@@ -121,23 +121,23 @@ U moet een apparaat registreren bij uw IoT-hub voordat u verbinding kunt maken. 
 1. Als u de apparaat-id wilt maken, voert u de volgende opdracht uit in Cloud Shell:
 
    > [!NOTE]
-   > * Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u voor uw IOT-hub hebt gekozen.
-   > * Gebruik *mijn*, zoals wordt weer gegeven. Dit is de naam die is opgegeven voor het geregistreerde apparaat. Als u een andere naam kiest voor uw apparaat, gebruikt u die naam in dit artikel en werkt u de apparaatnaam bij in de voorbeeld toepassingen voordat u ze uitvoert.
+   > * Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
+   > * Voor de naam van het apparaat dat u wilt registreren, is het raadzaam om *mijn* te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, gebruikt u die naam in dit artikel en werkt u de apparaatnaam bij in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Als u de *apparaat Connection String* wilt ophalen voor het apparaat dat u zojuist hebt geregistreerd, voert u de volgende opdracht uit in Cloud shell:
 
    > [!NOTE]
-   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u voor uw IOT-hub hebt gekozen.
+   > Vervang de tijdelijke aanduiding *YourIoTHubName* door de naam die u hebt gekozen voor uw IOT-hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Let op het apparaat connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
+    Bekijk de geretourneerde apparaat connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +149,14 @@ In deze sectie voert u zowel de toepassing op het apparaat als de toepassing aan
 
 Voer de volgende stappen uit om de toepassing aan het apparaat zijde uit te voeren:
 
-1. Geef de referenties van uw apparaat op door het bron bestand *iothub_client_c2d_streaming_sample. c* te bewerken in de map *iothub_client/samples/iothub_client_c2d_streaming_sample* en vervolgens uw apparaat Connection String op te geven.
+1. Geef de referenties van uw apparaat op door het bron bestand **iothub_client_c2d_streaming_sample. c** te bewerken in de map `iothub_client/samples/iothub_client_c2d_streaming_sample` en uw apparaat connection string toe te voegen.
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. Compileer de code als volgt:
+1. Compileer de code met de volgende opdrachten:
 
    ```bash
    # In Linux
@@ -186,7 +186,7 @@ Voer de volgende stappen uit om de toepassing aan het apparaat zijde uit te voer
 
 ### <a name="run-the-service-side-application"></a>De toepassing aan de servicezijde uitvoeren
 
-Zoals eerder vermeld, ondersteunt de IoT Hub C SDK alleen Device streams op het apparaat. Volg de instructies in een van de volgende Quick starts om de toepassing aan de service zijde te bouwen en uit te voeren:
+Zoals eerder vermeld, ondersteunt de IoT Hub C SDK alleen Device streams op het apparaat. Volg de instructies in een van de volgende Quick starts om de bijbehorende service-side toepassing te bouwen en uit te voeren:
 
 * [Communiceren met een apparaat-app C# in via IOT hub Device streams](./quickstart-device-streams-echo-csharp.md)
 
@@ -198,7 +198,7 @@ Zoals eerder vermeld, ondersteunt de IoT Hub C SDK alleen Device streams op het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een IoT-hub ingesteld, een apparaat geregistreerd, een apparaat stroom gemaakt tussen een C-toepassing op het apparaat en een andere toepassing aan de kant van de service en de stream gebruikt om gegevens heen en weer te sturen tussen de toepassingen.
+In deze Quick Start stelt u een IoT-hub in, registreert u een apparaat en maakt u een apparaat stroom tussen een C-toepassing op het apparaat en een andere toepassing aan de service kant, en gebruikt u de stroom om gegevens heen en weer te sturen tussen de toepassingen.
 
 Zie voor meer informatie over het streamen van apparaten:
 

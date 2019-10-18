@@ -1,5 +1,5 @@
 ---
-title: Een Azure Resource Manager-sjabloon maken en implementeren via Azure Portal | Microsoft Docs
+title: Resource Manager-sjabloon implementeren-Azure Portal
 description: Leer hoe u uw eerste Azure Resource Manager-sjabloon maakt via Azure Portal en hoe u deze implementeert.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 708656ee88f5bacaa498bcd84fde34d69228d28b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 109c838d903faee7510441a8b3d502a7e95d8bb4
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170271"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533664"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Snelstart: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal
 
@@ -45,7 +45,7 @@ Veel ervaren sjabloon ontwikkelaars gebruiken deze methode om sjablonen te gener
     |Naam|Waarde|
     |----|----|
     |**Resourcegroep**|Selecteer **nieuwe maken**en geef een naam op voor de resource groep van uw keuze. In de schermafbeelding is de naam van de resourcegroep *mystorage1016rg*. Een resourcegroep is een container voor Azure-resources. Een resourcegroep maakt het gemakkelijker Azure-resources te beheren. |
-    |**Naam**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;your-naam > opslag @ no__t-2Today's datum in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
+    |**Naam**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;your naam > &lt;Today de datum van de opslag in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
 
     Voor de overige eigenschappen kunt u de standaardwaarden gebruiken.
 
