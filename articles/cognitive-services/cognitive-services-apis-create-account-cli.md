@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972668"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595325"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Nadat u uw Azure-locatie hebt, maakt u een nieuwe resource groep in de Azure CLI met behulp van de opdracht [AZ Group Create](/cli/azure/group#az-group-create) .
 
-Vervang in het onderstaande voor beeld de Azure-locatie `westus2` door een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
+Vervang in het onderstaande voor beeld de Azure-locatie `westus2` met een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
 
 ```azurecli-interactive
 az group create \
@@ -74,40 +74,47 @@ az group create \
 
 Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u wilt gebruiken, samen met de gewenste [prijs categorie](https://azure.microsoft.com/pricing/details/cognitive-services/) (of SKU). U gebruikt deze en andere informatie als para meters bij het maken van de resource.
 
+### <a name="multi-service"></a>Meerdere services
+
+| Service                    | type                      |
+|----------------------------|---------------------------|
+| Meerdere services. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/) voor meer informatie.            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> Veel cognitieve Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de laag gratis wilt gebruiken, gebruikt u `F0` als SKU voor uw resource.
+> Veel van de onderstaande Cognitive Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken, gebruikt u `F0` als de SKU voor uw resource.
 
 ### <a name="vision"></a>Vision
 
-| Service                    | Soort                      |
+| Service                    | type                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision-voor spelling | `CustomVision.Prediction` |
 | Custom Vision-training   | `CustomVision.Training`   |
-| Face-API                   | `Face`                    |
+| Face API                   | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
 ### <a name="search"></a>Search
 
-| Service            | Soort                  |
+| Service            | type                  |
 |--------------------|-----------------------|
-| Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
-| Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
+| Automatische suggesties van Bing   | `Bing.Autosuggest.v7` |
+| Bing Custom Search | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Speech
+### <a name="speech"></a>Spraak
 
-| Service            | Soort                 |
+| Service            | type                 |
 |--------------------|----------------------|
 | Spraakservices    | `SpeechServices`     |
 | Spraakherkenning | `SpeakerRecognition` |
 
 ### <a name="language"></a>Taal
 
-| Service            | Soort                |
+| Service            | type                |
 |--------------------|---------------------|
 | Formulier uitleg | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -117,7 +124,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 ### <a name="decision"></a>Besluit
 
-| Service           | Soort               |
+| Service           | type               |
 |-------------------|--------------------|
 | Anomaly Detector  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
