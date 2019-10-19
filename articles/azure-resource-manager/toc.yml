@@ -170,6 +170,7 @@
       items:
         - name: VS-project met pijplijnen
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: Sjabloon exporteren
       href: export-template-portal.md
     - name: Verplaatsen
