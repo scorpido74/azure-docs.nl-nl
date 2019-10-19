@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: f98950a73c74537fb0d3762d08810646c9ecb875
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435627"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592968"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Snelstartgids: een Azure Kubernetes service-cluster implementeren met behulp van Azure CLI
 
@@ -68,6 +68,8 @@ In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 ## <a name="create-aks-cluster"></a>AKS-cluster maken
 
 Gebruik de opdracht [AZ AKS Create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Azure Monitor voor containers kan ook worden ingeschakeld met behulp van de parameter *--enable-addons monitoring*.  Dit kan enkele minuten duren.
+
+> ERAAN Bij het maken van een AKS-cluster wordt automatisch een tweede bron groep gemaakt voor het opslaan van de AKS-resources. Zie [Waarom zijn er twee resource groepen gemaakt met AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks) voor meer informatie.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys

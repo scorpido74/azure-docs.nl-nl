@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433323"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592314"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -30,12 +30,10 @@ Azure lente Cloud verbetert de diagnostische ervaring van toepassingen voor ontw
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Welke service plannen biedt Azure lente-Cloud aanbieding?
 
-Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.
+Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.  Een lente-Cloud implementatie bevat 16 vCPU-kernen en 32 GB geheugen.  De bovengrens voor elk micro service-exemplaar binnen een implementatie is 4 vCPU-kernen met 8 GB geheugen.
 
 Bron | Bedrag
 ------- | -------
-vCPU | 4
-Geheugen | 8 GBytes
 App-exemplaren per lente toepassing | 20
 Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 50 *
 Azure veer Cloud service-instanties per regio per abonnement | twee

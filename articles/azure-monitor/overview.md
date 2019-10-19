@@ -1,21 +1,18 @@
 ---
 title: Overzicht van Azure Monitor | Microsoft Docs
 description: Overzicht van Microsoft-services en -functionaliteiten die bijdragen aan een complete bewakingsstrategie voor uw Azure-services en -toepassingen.
-author: bwren
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: overview
-ms.date: 10/07/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 578cb57c9c971874e16ddb75d399e165cc75dfa6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: d02ea18422e20aa2fede4f25cdffa985607e7b5c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035653"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597349"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
@@ -37,9 +34,9 @@ Het volgende diagram toont een weer gave op hoog niveau van Azure Monitor. In he
 
 
 ## <a name="monitoring-data-platform"></a>Bewakings gegevens platform
-Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen, [metrische gegevens en logboeken](platform/data-platform.md). [Metrische gegevens](platform/data-platform-metrics.md) zijn numerieke waarden die een aspect van een systeem op een bepaald moment beschrijven. Ze zijn lichtgewicht en kan in de buurt van realtime scenario's ondersteunen. [Logboeken](platform/data-platform-logs.md) bevatten verschillende soorten gegevens die zijn ingedeeld in records met verschillende sets eigenschappen voor elk type. Telemetrie, zoals gebeurtenissen en traceringen worden opgeslagen als Logboeken ook naar prestatiegegevens zodat deze kan allemaal worden gecombineerd voor analyse.
+Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen, [metrische gegevens en logboeken](platform/data-platform.md). [Metrische gegevens](platform/data-platform-metrics.md) zijn numerieke waarden die een aspect van een systeem op een bepaald moment beschrijven. Ze zijn licht gewicht en kunnen bijna realtime scenario's ondersteunen. [Logboeken](platform/data-platform-logs.md) bevatten verschillende soorten gegevens die zijn ingedeeld in records met verschillende sets eigenschappen voor elk type. Telemetrie zoals gebeurtenissen en traceringen worden opgeslagen als logboeken naast prestatie gegevens, zodat deze allemaal kunnen worden gecombineerd voor analyse.
 
-Voor veel Azure-resources ziet u de gegevens die worden verzameld door Azure Monitor rechts op de pagina overzicht in de Azure Portal. Bekijk een voor beeld van een virtuele machine, en u ziet verschillende grafieken die prestatie gegevens weer geven. Klik op een van de grafieken om de gegevens in [Metrics Explorer](platform/metrics-charts.md) te openen in de Azure Portal. Hiermee kunt u de waarden van meerdere metrieken in de loop van de tijd in een grafiek weer gegeven.  U kunt de grafieken interactief weergeven of vastmaken aan een dashboard om deze met andere visualisaties weer te geven.
+Voor veel Azure-resources ziet u de gegevens die worden verzameld door Azure Monitor rechts op de pagina overzicht in de Azure Portal. Bekijk een voor beeld van een virtuele machine, en u ziet verschillende grafieken die prestatie gegevens weer geven. Klik op een van de grafieken om de gegevens in [Metrics Explorer](platform/metrics-charts.md) te openen in de Azure Portal. Hiermee kunt u de waarden van meerdere metrieken in de loop van de tijd in een grafiek weer gegeven.  U kunt de grafieken interactief weer geven of deze vastmaken aan een dash board om ze te bekijken met andere visualisaties.
 
 ![Metrische gegevens](media/overview/metrics.png)
 
@@ -52,11 +49,11 @@ Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/)
 ## <a name="what-data-does-azure-monitor-collect"></a>Welke gegevens Azure Monitor verzamelen?
 Azure Monitor kunt gegevens verzamelen van verschillende bronnen. U kunt de gegevens van uw toepassingen controleren in lagen die variëren van uw toepassing, alle besturings systemen en services waarvan het afhankelijk is, tot het platform zelf. Azure Monitor verzamelt gegevens uit elk van de volgende lagen:
 
-- **Gegevens van toepassings bewaking**: Gegevens over de prestaties en functionaliteit van de code die u hebt geschreven, ongeacht het platform.
-- **Bewakings gegevens van gast besturingssysteem**: Gegevens over het besturings systeem waarop uw toepassing wordt uitgevoerd. Dit kan worden uitgevoerd in azure, een andere Cloud of on-premises. 
-- **Azure resource monitoring-gegevens**: Gegevens over de werking van een Azure-resource.
-- **Bewakings gegevens van Azure-abonnement**: Gegevens over de werking en het beheer van een Azure-abonnement, evenals gegevens over de status en werking van Azure zelf. 
-- **Azure-Tenant bewakings gegevens**: Gegevens over de werking van Azure-Services op Tenant niveau, zoals Azure Active Directory.
+- **Gegevens over toepassings bewaking**: gegevens over de prestaties en functionaliteit van de code die u hebt geschreven, ongeacht het platform.
+- **Bewakings gegevens van gast besturingssysteem**: gegevens over het besturings systeem waarop uw toepassing wordt uitgevoerd. Dit kan worden uitgevoerd in azure, een andere Cloud of on-premises. 
+- **Azure resource monitoring-gegevens**: gegevens over de werking van een Azure-resource.
+- **Bewakings gegevens voor Azure-abonnementen**: gegevens over de werking en het beheer van een Azure-abonnement, evenals gegevens over de status en werking van Azure zelf. 
+- **Azure-Tenant bewakings gegevens**: gegevens over de werking van Azure-Services op Tenant niveau, zoals Azure Active Directory.
 
 Zodra u een Azure-abonnement maakt en resources zoals virtuele machines en web-apps toevoegt, Azure Monitor begint met het verzamelen van gegevens.  [Activiteiten logboeken](platform/activity-logs-overview.md) record wanneer resources worden gemaakt of gewijzigd. Met [metrische gegevens](platform/data-platform.md) kunt u zien hoe de resource wordt uitgevoerd en welke resources deze gebruiken. 
 
@@ -120,7 +117,7 @@ Met [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md) kunt u versc
 ### <a name="views"></a>Weergaven
 [Weer gaven](../log-analytics/log-analytics-view-designer.md) geven logboek gegevens visueel presen teren in azure monitor.  Elke weer gave bevat één tegel die inzoomt op een combi natie van visualisaties, zoals staaf-en lijn diagrammen, en bevat een overzicht van belang rijke gegevens.  Bewakings oplossingen bevatten weer gaven waarin gegevens voor een bepaalde toepassing worden samenvatten, en u kunt uw eigen weer gaven maken om gegevens uit een logboek query weer te geven. Net als andere elementen in Azure Monitor kunnen weer gaven worden toegevoegd aan Azure-Dash boards.
 
-![Weergave](media/overview/view.png)
+![Weergeven](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power bi](https://powerbi.microsoft.com) is een Business Analytics-service die interactieve visualisaties biedt in diverse gegevens bronnen. Dit is een doel matige manier om gegevens beschikbaar te maken voor anderen binnen en buiten uw organisatie. U kunt Power BI zodanig configureren dat [logboek gegevens van Azure monitor automatisch worden geïmporteerd](../log-analytics/log-analytics-powerbi.md) om te profiteren van deze extra visualisaties.
@@ -136,7 +133,7 @@ U hebt vaak de vereiste om Azure Monitor te integreren met andere systemen en om
 [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs) is een streaming-service voor het streamen van gegevens en het opnemen van gebeurtenissen, waarmee u in een real-time analyse provider of batch-en opslag adapters data kunt transformeren en opslaan. Gebruik Event Hubs om [Azure monitor gegevens te streamen](platform/stream-monitoring-data-event-hubs.md) naar Siem-en controle hulpprogramma's van de partner.
 
 
-### <a name="logic-apps"></a>Logic Apps
+### <a name="logic-apps"></a>Logische apps
 [Logic apps](https://azure.microsoft.com/services/logic-apps) is een service waarmee u taken en bedrijfs processen kunt automatiseren met werk stromen die kunnen worden geïntegreerd met verschillende systemen en services. Er zijn activiteiten beschikbaar die metrische gegevens lezen en schrijven en Logboeken in Azure Monitor, waarmee u werk stromen kunt bouwen die zijn geïntegreerd met verschillende systemen.
 
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383522"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595517"
 ---
 # <a name="dynamic-packaging"></a>Dynamische verpakking
 
@@ -98,7 +98,7 @@ Zie [overzicht van live streaming](live-streaming-overview.md)voor meer informat
 Dynamische verpakking ondersteunt MP4-bestanden die video bevatten die is gecodeerd met [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
-> Resoluties van Maxi maal 4.000 en de frame snelheid van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt de code ring van H. 265 via de oudere v2-api's. Neem contact op met amshelp@microsoft.com als u vragen hebt over dit onderwerp. 
+> Resoluties van Maxi maal 4.000 en de frame snelheid van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt de code ring van H. 265 via de oudere v2-api's.
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Audio-codecs die worden ondersteund door dynamische pakketten
 
@@ -124,7 +124,7 @@ Dynamische verpakkingen ondersteunt meerdere audio sporen met een streepje of HL
 Dynamische pakketten bieden geen ondersteuning voor bestanden die [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) audio bevatten (een verouderde codec).
 
 > [!NOTE]
-> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus, via de oudere v2-api's. Neem contact op met amshelp@microsoft.com als u vragen hebt over dit onderwerp. 
+> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus, via de oudere v2-api's. 
 
 ## <a name="manifests"></a>Manifesten 
  
@@ -242,7 +242,7 @@ Zie voor meer informatie het voor beeld [een beschrijvende audio track](signal-d
 
 #### <a name="smooth-streaming-manifest"></a>Smooth Streaming-manifest
 
-Als u een Smooth Streaming stroom speelt, zou het manifest waarden in `Accessibility`-en `Role`-kenmerken voor dat audio spoor moeten bevatten. @No__t-2 zou bijvoorbeeld worden toegevoegd in het `StreamIndex`-element om aan te geven dat het een audio beschrijving is.
+Als u een Smooth Streaming stroom speelt, zou het manifest waarden in `Accessibility` en `Role` kenmerken voor dat audio spoor moeten bevatten. @No__t_2 zou bijvoorbeeld worden toegevoegd in het `StreamIndex`-element om aan te geven dat het een audio beschrijving is.
 
 #### <a name="dash-manifest"></a>DASH-manifest
 
@@ -272,6 +272,10 @@ U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynam
 ## <a name="more-information"></a>Meer informatie
 
 Raadpleeg [Azure Media Services Community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates over Media Services te krijgen.
+
+## <a name="need-help"></a>Hulp nodig?
+
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,15 +4,15 @@ description: Meer informatie over het publiceren van een Managed Service-aanbod 
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300297"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595262"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
@@ -132,7 +132,7 @@ Zodra u tevreden bent over alle gegevens die u hebt ingevoerd, is de volgende st
 
 ## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
 
-Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources) die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
+Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources) die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** . Als een gebruiker in de Tenant van de klant deze delegering niet kan uitvoeren, is het waarschijnlijk dat ze niet de rol van eigenaar voor het abonnement hebben. Om gebruikers te vinden die het abonnement kunnen delegeren, kan de gebruiker het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, moet het abonnement worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren. Een gebruiker in de Tenant van de klant met de rol Inzender of eigenaar kan dit doen door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
 

@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554371"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592483"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gids voor probleem oplossing voor veelvoorkomende problemen
 
@@ -151,8 +151,8 @@ Ga naar [het artikel aan de](https://docs.microsoft.com/azure/azure-monitor/log-
 
 Met omgevings variabelen wordt het Azure lente Cloud-Framework op de hoogte gebracht, zodat Azure begrijpt waar en hoe u de Services kunt configureren waaruit uw toepassing bestaat.  Zorg ervoor dat uw omgevings variabelen correct zijn om mogelijke problemen op te lossen.  U kunt het eind punt voor de Spring boot-klep gebruiken om uw omgevings variabelen te controleren.  
 
-[!WARNING]
-> Met deze procedure kunt u de omgevings variabelen zichtbaar maken.  Ga niet verder als uw test eindpunt openbaar toegankelijk is of als u een domein naam aan uw toepassing hebt toegewezen.
+> [!WARNING]
+> Met deze procedure worden de omgevings variabelen van uw test eindpunt weer gegeven.  Ga niet verder als uw test eindpunt openbaar toegankelijk is of als u een domein naam aan uw toepassing hebt toegewezen.
 
 1. Navigeer naar deze URL: `https://<your application test endpoint>/actuator/health`.  
     - Een antwoord dat lijkt op `{"status":"UP"}` geeft aan dat het eind punt is ingeschakeld.
@@ -186,6 +186,9 @@ Met omgevings variabelen wordt het Azure lente Cloud-Framework op de hoogte gebr
     ```
 
 Zoek het onderliggende knoop punt met de naam `systemEnvironment`.  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
+
+> [!IMPORTANT]
+> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Ik kan geen metrische gegevens of logboeken vinden voor mijn toepassing
 

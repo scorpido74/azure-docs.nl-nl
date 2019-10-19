@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676555"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597904"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -64,20 +64,20 @@ Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te s
 
 We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
 
-|OS|Vereiste licentie|
+|Besturingssysteem|Vereiste licentie|
 |---|---|
-|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
+|Windows 7 Enter prise |Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
 |Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) met Software Assurance|
 
 Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
 
-* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Een [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. Dit kan worden ingeschakeld via:
   * Azure AD Connect
   * Azure AD Domain Services
-  >[!NOTE]
-  >Windows virtueel bureau blad ondersteunt alleen Azure AD Domain Services gebruikers die afkomstig zijn van Azure Active Directory. Gebruikers die afkomstig zijn van Windows Server AD, worden op dit moment niet ondersteund.
+     >[!NOTE]
+     >Als u Azure AD Domain Services gebruikt, moeten uw gebruikers afkomstig zijn van Azure Active Directory. Het gebruik van Azure AD Domain Services met gebruikers die vanuit Windows Server AD zijn gebrond, wordt momenteel niet ondersteund.
 * Een Azure-abonnement dat een virtueel netwerk bevat dat of die is verbonden met de Windows Server-Active Directory
   
 De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:
@@ -92,7 +92,7 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *.core.windows.net
+* *. core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -121,7 +121,7 @@ Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieë
 
 * Windows 10 Enter prise-meerdere sessies
 * Windows 10 Enter prise
-* Windows 7 Enterprise
+* Windows 7 Enter prise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
@@ -134,7 +134,7 @@ De beschik bare opties voor automatisering en implementatie zijn afhankelijk van
 |Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
 |Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
 |Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
-|Windows 7 Enterprise|Ja|Ja|Nee|Nee|Handmatig|
+|Windows 7 Enter prise|Ja|Ja|Nee|Nee|Handmatig|
 |Windows Server 2019|Ja|Ja|Nee|Nee|Automatisch|
 |Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
 |Windows Server 2012 R2|Ja|Ja|Nee|Nee|Automatisch|

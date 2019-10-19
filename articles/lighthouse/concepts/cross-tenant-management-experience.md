@@ -4,15 +4,15 @@ description: Azure delegated Resource Management maakt een cross-Tenant beheer m
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/11/2019
+ms.date: 10/18/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300999"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598439"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -123,6 +123,7 @@ Houd bij alle scenario's rekening met de volgende beperkingen:
 - Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com`. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/`. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
 - Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar, beheerder van gebruikers toegang of ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden ook niet ondersteund.
 - Op dit moment kunt u geen abonnement (of resource groep binnen een abonnement) voor Azure delegated Resource Management gebruiken als het abonnement gebruikmaakt van Azure Databricks. Als een abonnement is geregistreerd voor onboarding met de resource provider **micro soft. ManagedServices** , kunt u op dit moment geen Databricks-werk ruimte maken voor dat abonnement.
+- U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
 
 ## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Api's en beheer hulpprogramma's gebruiken met beheer van meerdere tenants
 

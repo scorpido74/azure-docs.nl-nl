@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/28/2019
-ms.openlocfilehash: 0e4cafee26d9d3345d9099c3c9fc048fb982ada5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166418"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598188"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en lees het met een back-end-toepassing (python)
 
@@ -24,8 +24,6 @@ ms.locfileid: "72166418"
 IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. In deze snelstartgids verzendt u telemetrie vanuit een toepassing voor een gesimuleerd apparaat via IoT Hub naar een back-endtoepassing voor verwerking.
 
 In dit artikel wordt een vooraf geschreven Python-toepassing gebruikt om de telemetrie te verzenden en een CLI-hulpprogramma om de telemetrie uit IoT Hub te lezen. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -38,6 +36,8 @@ az extension add --name azure-cli-iot-ext
 ```
 
 Download het Python-voorbeeldproject van https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip en pak het ZIP-archief uit.
+
+Een python-versie 3.5.3 + hebben geïnstalleerd op uw ontwikkel computer. 
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 

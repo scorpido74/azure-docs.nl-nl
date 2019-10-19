@@ -18,13 +18,13 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68989277"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Quickstart: Een toepassing configureren voor het beschikbaar maken van web-Api's
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Snelstartgids: een toepassing configureren voor het beschikbaar maken van web-Api's
 
 U kunt een web-API ontwikkelen en deze beschikbaar maken voor clienttoepassingen door [machtigingen/bereiken](developer-glossary.md#scopes) en [rollen](developer-glossary.md#roles) beschikbaar te maken. Een correct geconfigureerde web-API wordt net als de andere Microsoft web-API's beschikbaar gesteld, met inbegrip van de Graph API en de Office 365-API's.
 
@@ -32,7 +32,7 @@ In deze snelstart leert u hoe u een toepassing kunt configureren voor het beschi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
+Zorg ervoor dat u voordat u aan de slag gaat aan deze vereisten voldoet:
 
 * Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
 * U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
@@ -43,7 +43,7 @@ Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
 Voordat u de app kunt configureren, volgt u deze stappen:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**.
 1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Kies welke methode u wilt gebruiken - een gebruikersinterface of een toepassingsmanifest - om een nieuw bereik beschikbaar te maken:
@@ -52,7 +52,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Een nieuw bereik beschikbaar maken via de gebruikersinterface
 
-[![Laat zien hoe u een API beschikbaar maakt met behulp van de gebruikers interface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Shows hoe u een API beschikbaar maakt met behulp van de gebruikers interface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
@@ -64,7 +64,7 @@ Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
 1. Wanneer de pagina **Een bereik toevoegen** wordt weergegeven, voert u de gegevens van het bereik in:
 
-    | Veld | Description |
+    | Veld | Beschrijving |
     |-------|-------------|
     | **Naam van bereik** | Voer een beschrijvende naam voor het bereik in.<br><br>Bijvoorbeeld `Employees.Read.All`. |
     | **Wie kan toestemming verlenen?** | Selecteer of gebruikers toestemming kunnen verlenen voor dit bereik, of dat toestemming van de beheerder is vereist. Selecteer **Alleen beheerders** voor machtigingen met meer bevoegdheden. |
@@ -73,7 +73,7 @@ Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
     Als gebruikers toestemming kunnen verlenen voor het bereik, voegt u ook waarden toe voor de volgende velden:
 
-    | Veld | Description |
+    | Veld | Beschrijving |
     |-------|-------------|
     | **Weergavenaam van gebruikerstoestemming** | Voer een beschrijvende naam voor het bereik in. Deze wordt zichtbaar voor gebruikers.<br><br>Bijvoorbeeld: `Read-only access to your Employee records` |
     | **Beschrijving van gebruikerstoestemming** | Voer een duidelijke beschrijving voor het bereik in. Deze wordt zichtbaar voor gebruikers.<br><br>Bijvoorbeeld: `Allow the application to have read-only access to your Employee data.` |
@@ -110,15 +110,15 @@ Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
    >
    > U kunt aanvullende bereiken indien nodig later weergeven. Houd er rekening mee dat uw web-API mogelijk meerdere bereiken weergeeft die zijn gekoppeld aan een verscheidenheid van verschillende functies. Via de resource kan toegang tot de web-API tijdens runtime worden beheerd, door het evalueren van de bereikclaim(s) (`scp`) in het ontvangen OAuth 2.0-toegangstoken.
 
-1. Wanneer u klaar bent, klikt u op **Opslaan**. Uw web-API is nu geconfigureerd voor gebruik door andere toepassingen in uw directory.
+1. Klik op **Opslaan** als u klaar bent. Uw web-API is nu geconfigureerd voor gebruik door andere toepassingen in uw directory.
 1. Volg de stappen om te [controleren of de web-API beschikbaar is gemaakt voor andere toepassingen](#verify-the-web-api-is-exposed-to-other-applications).
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Controleren of de web-API beschikbaar is gemaakt voor andere toepassingen
 
 1. Ga terug naar de Azure Active Directory-tenant, selecteer **App-registraties** en zoek en selecteer de clienttoepassing die u wilt configureren.
 1. Herhaal de stappen die worden beschreven in [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md).
-1. Wanneer u naar de stap gaat om [een API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-)te selecteren, selecteert u uw resource. U ziet nu het nieuwe bereik, dat beschikbaar is voor machtigingsaanvragen voor clients.
+1. Wanneer u naar de stap gaat om [een API te selecteren](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+), selecteert u uw resource. U ziet nu het nieuwe bereik, dat beschikbaar is voor machtigingsaanvragen voor clients.
 
 ## <a name="more-on-the-application-manifest"></a>Meer informatie over het toepassingsmanifest
 
@@ -133,10 +133,10 @@ Zie [Het Azure Active Directory-toepassingsmanifest begrijpen](reference-app-man
 
 Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
 
-* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
+* [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
-* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
-* [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)
+* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
+* [Een geregistreerde toepassing verwijderen met het Microsoft Identity Platform](quickstart-remove-app.md)
 
 Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
 

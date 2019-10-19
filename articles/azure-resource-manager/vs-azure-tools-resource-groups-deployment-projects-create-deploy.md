@@ -4,14 +4,14 @@ description: Gebruik Visual Studio om een Azure-resourcegroepproject te maken en
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 10/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170244"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597738"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure-resourcegroepen maken en implementeren met Visual Studio
 
@@ -23,7 +23,8 @@ In dit artikel wordt beschreven hoe u [Visual Studio 2019 of hoger gebruikt met 
 
 In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sjabloon.
 
-1. Kies in Visual Studio **bestand**, **Nieuw**en **project**. Selecteer de project sjabloon **Azure-resource groep** en **volgende**.
+1. Kies in Visual Studio **bestand** >**Nieuw** >**project**.
+1. Selecteer de project sjabloon **Azure-resource groep** en **volgende**.
 
     ![Project maken](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 
@@ -283,7 +284,7 @@ Voor het AzureRM-module script gebruikt u Visual Studio:
 
 U bent niet beperkt tot alleen de resources die beschikbaar zijn via de Visual Studio-interface. U kunt uw implementatie aanpassen door een aangepaste resource toe te voegen aan uw sjabloon. Als u wilt zien hoe het toevoegen van een resource in zijn werk gaat, voegt u een operationeel dashboard toe voor het beheren van de resource die u hebt geïmplementeerd.
 
-1. Open het bestand WebSite. json en voeg de volgende JSON toe na de bron van het opslag account, maar vóór het sluiten van `]` van de sectie resources.
+1. Open het bestand WebSite. json en voeg de volgende JSON toe na de bron van het opslag account, maar voordat de `]` van de sectie resources wordt gesloten.
 
    ```json
     ,{

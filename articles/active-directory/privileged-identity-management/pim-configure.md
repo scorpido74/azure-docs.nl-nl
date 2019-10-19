@@ -14,24 +14,24 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b204c3c30d935bc47adf76c3f0f50ccd7172393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 1ae9429920a4d3a6bac8830d6add2782276850d7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554947"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595346"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Wat is Azure AD Privileged Identity Management?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) is een service waarmee u toegang tot belangrijke resources in uw organisatie kunt beheren, controleren en bewaken. Dit is inclusief toegang tot resources in Azure AD, Azure-resources en andere Microsoft-onlineservices zoals Office 365 en Microsoft Intune.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) is een service waarmee u toegang tot belangrijke resources in uw organisatie kunt beheren, controleren en bewaken. Deze resources omvatten resources in azure AD, Azure en andere online services van micro soft, zoals Office 365 of Microsoft Intune.
 
 ## <a name="reasons-to-use"></a>Redenen om te gebruiken
 
-Organisaties willen het aantal mensen dat toegang heeft tot beveiligde gegevens of resources beperken, om zo de kans te verkleinen dat een kwaadwillende gebruiker toegang verkrijgt of een geautoriseerde gebruiker per ongeluk een gevoelige resource wijzigt. Gebruikers moeten echter wel bevoorrechte bewerkingen kunnen uitvoeren in Azure AD, Azure, Office 365 of SaaS-apps. Organisaties kunnen gebruikers daarom bevoorrechte JIT-toegang (Just-In-Time) geven tot Azure-resources en Azure Active Directory. Het is belangrijk dat er toezicht is op wat gebruikers met hun beheerdersbevoegdheden doen. Privileged Identity Management helpt het risico op buitensporige, onnodige of ongebruikte toegangs rechten te verminderen.
+Organisaties willen het aantal mensen dat toegang heeft tot beveiligde gegevens of resources beperken, om zo de kans te verkleinen dat een kwaadwillende gebruiker toegang verkrijgt of een geautoriseerde gebruiker per ongeluk een gevoelige resource wijzigt. Gebruikers moeten echter wel bevoorrechte bewerkingen kunnen uitvoeren in Azure AD, Azure, Office 365 of SaaS-apps. Organisaties kunnen gebruikers daarom bevoorrechte JIT-toegang (Just-In-Time) geven tot Azure-resources en Azure Active Directory. Het is belangrijk dat er toezicht is op wat gebruikers met hun beheerdersbevoegdheden doen.
 
 ## <a name="what-does-it-do"></a>Wat doet uw app?
 
-Privileged Identity Management in feite helpt u bij het beheren van de wie, wat, waar, waar en waarom voor bronnen die u bevalt. Hier volgen enkele van de belangrijkste functies van Privileged Identity Management:
+Privileged Identity Management biedt op tijd gebaseerde activeringen op basis van een rol om de Risico's van buitensporige, onnodige of ongebruikte toegangs machtigingen te beperken voor bronnen die u bevalt. Hier volgen enkele van de belangrijkste functies van Privileged Identity Management:
 
 - Bevoorrechte **JIT**-toegang (Just-In-Time) bieden aan Azure Active Directory- en Azure-resources
 - **Tijdsgebonden** toegang bieden aan resources met behulp van begin- en einddatums

@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 4472ff10c42cd9163693e7316b6bdaef50258db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569243"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597924"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Snelstartgids: Gebruik .NET (C#) en C# in Visual Studio om verbinding te maken met, en query's uit te voeren op, een Azure SQL-database
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Snelstartgids: .NET en C# in Visual Studio gebruiken om verbinding te maken met een Azure-SQL database en een query uit te zoeken
 
 In deze snelstartgids ziet u hoe u het [.NET Framework](https://www.microsoft.com/net/) en C#-code gebruikt in Visual Studio om query's uit te voeren op een Azure SQL-database met Transact-SQL-instructies.
 
@@ -28,9 +28,9 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 - Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een database te maken en vervolgens te configureren in Azure SQL Database:
 
-  || Individuele database | Beheerd exemplaar |
+  || Afzonderlijke database | Beheerd exemplaar |
   |:--- |:--- |:---|
-  | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
@@ -44,15 +44,15 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional of ENTER prise Edition.
 
-## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**. 
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**. 
 
 ## <a name="create-code-to-query-the-sql-database"></a>Code maken om query's uit te voeren op de SQL-database
 
@@ -72,7 +72,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
    
 1. Wanneer de installatie is voltooid, kunt u **NuGet Package Manager** sluiten. 
    
-1. Vervang in de code-editor de inhoud **Program.cs** door de volgende code. Vervang uw waarden voor `<server>`, `<username>`, `<password>` `<database>`en.
+1. Vervang in de code-editor de inhoud **Program.cs** door de volgende code. Vervang de waarden voor `<server>`, `<username>`, `<password>` en `<database>`.
    
    >[!IMPORTANT]
    >Voor de code in dit voorbeeld worden de voorbeeldgegevens gebruikt van AdventureWorksLT, die u als bron kunt kiezen bij het maken van uw database. Als in uw database andere gegevens staan, kunt u tabellen uit uw eigen database gebruiken in de SELECT-query. 
@@ -142,10 +142,10 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 - Meer informatie over [Aan de slag met .NET Core in Windows/Linux/macOS met behulp van de opdrachtregel](/dotnet/core/tutorials/using-with-xplat-cli).
 - Meer informatie over [Uw eerste Azure SQL-database ontwerpen met behulp van SSMS](sql-database-design-first-database.md) of [Uw eerste Azure SQL-database ontwerpen met behulp van .NET](sql-database-design-first-database-csharp.md).
 - Raadpleeg de [.NET-documentatie](https://docs.microsoft.com/dotnet/) voor meer informatie over .NET.
-- Voorbeeld van pogingslogica: [Maak robuuste verbinding met SQL met ADO.net][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Voor beeld van een logische poging: [Maak robuuste verbinding met SQL met ADO.net][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 

@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/30/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: e16747d74df7db0fb2ca2d4e0f07247258a980d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 882afb83aa2a9bad9633df43b29e00b43162bf87
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299750"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595664"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -195,7 +195,8 @@ De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe a
 Zodra u het parameter bestand hebt bijgewerkt, moet de klant de resource beheer sjabloon in de Tenant van de klant implementeren als implementatie op abonnements niveau. Er is een afzonderlijke implementatie nodig voor elk abonnement dat u wilt voorbereiden op het beheer van Azure-gedelegeerde resources (of voor elk abonnement dat resource groepen bevat die u wilt voorbereiden).
 
 > [!IMPORTANT]
-> De implementatie moet worden uitgevoerd door een niet-gast account in de Tenant van de klant die de [ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) van de eigenaar heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd).
+> De implementatie moet worden uitgevoerd door een niet-gast account in de Tenant van de klant die de [ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) van de eigenaar heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
