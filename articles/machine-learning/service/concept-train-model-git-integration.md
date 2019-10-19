@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377510"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553650"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -26,15 +26,15 @@ Omdat Azure Machine Learning gegevens van een lokale Git-opslag plaats registree
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git`-opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
-| Eigenschap | Beschrijving |
-| ----- | ----- |
-| `azureml.git.repository_uri` | De URI waaruit uw opslag plaats is gekloond. |
-| `mlflow.source.git.repoURL` | De URI waaruit uw opslag plaats is gekloond. |
-| `azureml.git.branch` | De actieve vertakking wanneer de uitvoering is ingediend. |
-| `mlflow.source.git.branch` | De actieve vertakking wanneer de uitvoering is ingediend. |
-| `azureml.git.commit` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
-| `mlflow.source.git.commit` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
-| `azureml.git.dirty` | `True` als de commit-bewerking vuil is; zo niet, `false`. |
+| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Beschrijving |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | De actieve vertakking wanneer de uitvoering is ingediend. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | De actieve vertakking wanneer de uitvoering is ingediend. |
+| `azureml.git.commit` | `git rev-parse HEAD` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True` als de vertakking/commit-bewerking vuil is; anders `false`. |
 
 Deze informatie wordt verzonden voor uitvoeringen die gebruikmaken van een Estimator, machine learning pijp lijn of script uitvoering.
 
@@ -49,7 +49,9 @@ De Git-informatie wordt opgeslagen in de eigenschappen voor een trainings uitvoe
 1. Selecteer uw werk ruimte in de [Azure Portal](https://portal.azure.com).
 1. Selecteer __experimenten__en selecteer vervolgens een van uw experimenten.
 1. Selecteer een van de uitvoeringen in de kolom __uitvoerings nummer__ .
-1. Selecteer __Logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __### @ no__t-2azure__.
+1. Selecteer __Logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __### \_azure__.
+
+    ![De # # #_azure vermelding in de portal](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 De geregistreerde gegevens bevatten tekst die vergelijkbaar is met de volgende JSON:
 

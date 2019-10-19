@@ -1,24 +1,18 @@
 ---
 title: Prestatie waarschuwingen maken met behulp van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt gebruiken om aangepaste waarschuwingen te maken op basis van logboek query's voor geheugen-en CPU-gebruik.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 2b1ee0e56b5a133e65a25b5d9af645f351d039c0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 04/26/2019
+ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722683"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555444"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Waarschuwingen instellen voor prestatie problemen in Azure Monitor voor containers
 Azure Monitor voor containers bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of op beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS).
@@ -31,7 +25,7 @@ In dit artikel wordt beschreven hoe u waarschuwingen inschakelt voor de volgende
 - *Aantal mislukte Pod is mislukt*, *in behandeling*, *onbekend*, *actief*of *geslaagd*
 - Wanneer vrije schijf ruimte op cluster knooppunten een drempel waarde overschrijdt 
 
-Als u een waarschuwing wilt ontvangen voor hoog CPU-of geheugen gebruik, of weinig vrije schijf ruimte op cluster knooppunten, gebruikt u de query's die worden gegeven om een metrische waarschuwing of metrische meting waarschuwing te maken. Metrische waarschuwingen hebben een lagere latentie dan logboek waarschuwingen. Logboek waarschuwingen bieden geavanceerde query's en grotere verfijning. Met query's voor logboek waarschuwingen kunt u een datum/tijd vergelijken met de *huidige operator en* één uur teruggaan. (Azure Monitor voor containers worden alle datums opgeslagen in UTC-notatie (Coordinated Universal Time).)
+Als u een waarschuwing wilt ontvangen voor hoog CPU-of geheugen gebruik, of weinig vrije schijf ruimte op cluster knooppunten, gebruikt u de query's die worden gegeven om een metrische waarschuwing of metrische meting waarschuwing te maken. Metrische waarschuwingen hebben een lagere latentie dan logboek waarschuwingen. Logboek waarschuwingen bieden geavanceerde query's en grotere verfijning. Met query's voor logboek waarschuwingen kunt u een datum/tijd vergelijken *met de huidige operator en* één uur teruggaan. (Azure Monitor voor containers worden alle datums opgeslagen in UTC-notatie (Coordinated Universal Time).)
 
 Als u niet bekend bent met Azure Monitor waarschuwingen, raadpleegt u [overzicht van waarschuwingen in Microsoft Azure](../platform/alerts-overview.md) voordat u begint. Zie [waarschuwingen in Logboeken vastleggen in azure monitor](../platform/alerts-unified-log.md)voor meer informatie over waarschuwingen die gebruikmaken van logboek query's. Zie [metrische waarschuwingen in azure monitor](../platform/alerts-metric-overview.md)voor meer informatie over metrische waarschuwingen.
 
@@ -108,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->De volgende query's gebruiken de waarden \<van de tijdelijke aanduidingen uw cluster naam > en \<de naam van uw-controller > om uw cluster en controller weer te geven. Vervang deze door de waarden die specifiek zijn voor uw omgeving bij het instellen van waarschuwingen.
+>De volgende query's gebruiken de waarden van de tijdelijke aanduiding \<your-cluster naam > en \<your-controller naam > om uw cluster en controller weer te geven. Vervang deze door de waarden die specifiek zijn voor uw omgeving bij het instellen van waarschuwingen.
 
 De volgende query berekent het gemiddelde CPU-gebruik van alle containers in een controller als gemiddeld CPU-gebruik van elke container instantie in een controller per minuut. De meting is een percentage van de limiet die voor een container is ingesteld.
 
@@ -217,7 +211,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-De volgende query retourneert pod-fase aantallen op basis van alle fasen: *Mislukt*, *in behandeling*, *onbekend*, *actief*of *geslaagd*.  
+Met de volgende query worden pod-fase aantallen geretourneerd op basis van alle fasen: *mislukt*, *in behandeling*, *onbekend*, *actief*of *geslaagd*.  
 
 ```kusto
 let endDateTime = now();
@@ -256,7 +250,7 @@ let endDateTime = now();
 >[!NOTE]
 >Als u een waarschuwing wilt ontvangen voor bepaalde pod-fasen, zoals *in behandeling*, *mislukt*of *onbekend*, wijzigt u de laatste regel van de query. Als u bijvoorbeeld een waarschuwing wilt ontvangen over *FailedCount* , gebruikt u: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-De volgende query retourneert cluster knooppunt schijven die meer dan 90% beschik bare ruimte gebruiken. Als u de cluster-id wilt ophalen, voert u eerst de volgende query uit en `ClusterId` kopieert u de waarde van de eigenschap:
+De volgende query retourneert cluster knooppunt schijven die meer dan 90% beschik bare ruimte gebruiken. Als u de cluster-ID wilt ophalen, voert u eerst de volgende query uit en kopieert u de waarde van de eigenschap `ClusterId`:
 
 ```kusto
 InsightsMetrics
@@ -290,12 +284,12 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **monitor** in het deel venster aan de linkerkant. Onder **inzichten**selecteert u **containers**.
 3. Selecteer op het tabblad **bewaakte clusters** een cluster in de lijst.
-4. Selecteer Logboeken in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.
-5. Selecteer op de pagina logboeken **+ nieuwe waarschuwings regel**.
-6. Selecteer in de sectie **voor waarde** het **tijdstip waarop de aangepaste zoek opdracht \<voor logboeken logica niet gedefinieerd >** vooraf gedefinieerde logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht** voor logboeken wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
+4. Selecteer **Logboeken** in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.
+5. Selecteer op de pagina **Logboeken** **+ nieuwe waarschuwings regel**.
+6. Selecteer in de sectie **voor waarde** de **wanneer de aangepaste zoek opdracht voor logboeken is \<logic niet-gedefinieerd >** vooraf gedefinieerde aangepaste logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht voor logboeken** wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
 7. Plak een van de [query's](#resource-utilization-log-search-queries) die eerder zijn gegeven in het veld **Zoek query** .
 8. Configureer de waarschuwing als volgt:
 

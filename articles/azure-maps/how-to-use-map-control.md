@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898208"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550286"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het Azure Maps kaart besturings element gebruiken
 
@@ -38,14 +38,14 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
     > NPM Azure-Maps-beheer installeren
 
-    Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en de script bron verwijzingen `<head>` naar het element van het bestand toe:
+    Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en script bron verwijzingen toe naar het `<head>` element van het bestand:
 
     ```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
-    <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
+    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
 
-3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, `<style>` voegt u het `<head>` volgende element toe aan het-element.
+3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, voegt u het volgende `<style>`-element toe aan het element `<head>`.
 
     ```HTML
     <style>
@@ -60,7 +60,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </style>
     ```
 
-4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef `id` het de naam **myMap**.
+4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het een `id` van **myMap**.
 
     ```HTML
     <body>
@@ -68,7 +68,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </body>
     ```
 
-5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe sectie in de HTML-hoofd tekst en maakt u een script. `HTMLElement` `<div>` `Map` Geef de naam `document.getElementById('myMap')`van de kaart of een (bijvoorbeeld) door als de eerste para meter bij het maken van een instantie van `id` de klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Zie [uw Azure Maps account en sleutels beheren](how-to-manage-account-keys.md)als u een account wilt maken of uw sleutel wilt zoeken. De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie.
+5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe sectie in de HTML-hoofd tekst en maakt u een script. Geef de `id` van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld `document.getElementById('myMap')`) als de eerste para meter bij het maken van een instantie van de `Map`-klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Zie [uw Azure Maps account en sleutels beheren](how-to-manage-account-keys.md)als u een account wilt maken of uw sleutel wilt zoeken. De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie.
 
     ```HTML
     <script type="text/javascript">
@@ -166,12 +166,12 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
 8. Open het bestand in uw webbrowser en Bekijk de weer gegeven kaart. Het moet er ongeveer uitzien als de volgende code:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Het kaart besturings element gebruiken" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Zie de pen <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>How to use the map control</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>().
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Het kaart besturings element gebruiken" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Zie de pen <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>How to use the map control</a> by Azure Maps (<a href='https://codepen.io/azuremaps'> @azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>voor meer informatie.
     </iframe>
 
 ## <a name="localizing-the-map"></a>De kaart lokaliseren
 
-Azure Maps biedt twee verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om deze informatie toe te voegen `atlas` aan de globale naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
+Azure Maps biedt twee verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de naam ruimte van de globale `atlas`, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -195,7 +195,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> Met de Web-SDK is het mogelijk meerdere toewijzings exemplaren op dezelfde pagina te laden met andere taal-en regio-instellingen. Deze instellingen kunnen bovendien worden bijgewerkt nadat de kaart is geladen met behulp van `setStyle` de functie van de kaart. 
+> Met de Web-SDK is het mogelijk meerdere toewijzings exemplaren op dezelfde pagina te laden met andere taal-en regio-instellingen. Deze instellingen kunnen bovendien worden bijgewerkt nadat de kaart is geladen met behulp van de `setStyle` functie van de kaart. 
 
 Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op "fr-FR" en de regionale weer gave ingesteld op ' auto '.
 

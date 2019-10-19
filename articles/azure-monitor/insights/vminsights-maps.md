@@ -1,143 +1,138 @@
 ---
-title: App-afhankelijkheden met Azure Monitor weergeven voor virtuele machines (preview) | Microsoft Docs
-description: Kaart is een functie van Azure Monitor voor virtuele machines. Automatisch toepassingsonderdelen op Windows en Linux-systemen detecteert en de communicatie tussen services toewijst. Dit artikel bevat informatie over het gebruik van de kaart-functie in verschillende scenario's.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+title: App-afhankelijkheden weer geven met Azure Monitor voor VM's (preview) | Microsoft Docs
+description: De kaart is een functie van Azure Monitor voor VM's. Het detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel vindt u informatie over het gebruik van de kaart functie in verschillende scenario's.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 10/15/2019
+ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206762"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553776"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>De functie voor toewijzing van Azure Monitor gebruiken voor virtuele machines (preview) om te begrijpen van toepassingsonderdelen
-In Azure Monitor voor virtuele machines, kunt u de onderdelen van de gedetecteerde toepassing op Windows en Linux-machines (VM's) die worden uitgevoerd in Azure of uw omgeving bekijken. U kunt de virtuele machines op twee manieren zien. Een kaart rechtstreeks vanuit een virtuele machine weergeven of een overzicht van Azure Monitor om te zien van de onderdelen voor groepen van virtuele machines weergeven. Dit artikel krijgt u inzicht in deze twee methoden voor de weergave en het gebruik van de functie voor toewijzing. 
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Gebruik de kaart functie van Azure Monitor voor VM's (preview) om inzicht te krijgen in toepassings onderdelen
+In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 
 
-Zie voor meer informatie over het configureren van Azure Monitor voor virtuele machines [Azure Monitor inschakelen voor virtuele machines](vminsights-enable-overview.md).
+Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor meer informatie over het configureren van Azure monitor voor VM's.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-## <a name="introduction-to-the-map-experience"></a>Inleiding tot de ervaring van de kaart
-Voordat u de kaart-ervaring, moet u begrijpen hoe deze geeft en gegevens worden gevisualiseerd. Of u de functie voor toewijzing rechtstreeks vanuit een virtuele machine of van Azure Monitor selecteert, geeft de functie van de kaart een consistente ervaring. Het enige verschil is dat van Azure Monitor, één kaart ziet u alle leden van een toepassing met meerdere lagen of het cluster.
+## <a name="introduction-to-the-map-experience"></a>Inleiding tot de kaart ervaring
+Voordat u aan de kaart ervaring gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. Of u de kaart functie rechtstreeks vanuit een virtuele machine of van Azure Monitor selecteert, de kaart functie biedt een consistente ervaring. Het enige verschil is dat van Azure Monitor, één kaart toont alle leden van een toepassing of cluster met meerdere lagen.
 
-De functie voor toewijzing visualiseert de afhankelijkheden van de virtuele machine door actieve processen uit waarvoor detecteren: 
+De functie map visualiseert de VM-afhankelijkheden door actieve processen te detecteren die het volgende hebben: 
 
-- Actieve netwerkverbindingen tussen servers.
-- Binnenkomende en uitgaande verbinding latentie.
-- De poorten in alle via TCP verbonden architectuur gedurende een opgegeven tijdperiode.  
+- Actieve netwerk verbindingen tussen servers.
+- Binnenkomende en uitgaande verbindings latentie.
+- Poorten via elke met TCP verbonden architectuur gedurende een opgegeven periode.  
  
-Vouw een virtuele machine om details van proces en processen die met de virtuele machine communiceren weer te geven. De clientgroep bevat het aantal van de front-end-clients die verbinding met de virtuele machine maken. De groepen van de server-poort weergegeven de telling van de virtuele machine verbinding met back-endservers. Een server-poort uitvouwen om te zien van de gedetailleerde lijst met servers die verbinding via deze poort maken.  
+Vouw een VM uit om proces details weer te geven en alleen de processen die communiceren met de virtuele machine. De client groep toont het aantal front-end-clients dat verbinding maakt met de virtuele machine. De server poort groepen tonen het aantal back-endservers waarmee de virtuele machine verbinding maakt. Vouw een server-poort groep uit om de gedetailleerde lijst met servers te zien die via die poort verbinding maken.  
 
-Wanneer u de virtuele machine, selecteert de **eigenschappen** deelvenster aan de rechterkant ziet u de eigenschappen van de virtuele machine. Eigenschappen van zijn systeeminformatie, zoals gemeld door het besturingssysteem, de eigenschappen van de Azure-VM en een ringdiagram met een overzicht van de gedetecteerde verbindingen. 
+Wanneer u de virtuele machine selecteert, worden in het deel venster met **Eigenschappen** aan de rechter kant de eigenschappen van de virtuele machine weer gegeven. Eigenschappen bevatten systeem informatie die is gerapporteerd door het besturings systeem, eigenschappen van de virtuele machine van Azure en een ring diagram met een overzicht van de gedetecteerde verbindingen. 
 
-![Het deelvenster met eigenschappen](./media/vminsights-maps/properties-pane-01.png)
+![Het deel venster Eigenschappen](./media/vminsights-maps/properties-pane-01.png)
 
-Selecteer aan de rechterkant van het deelvenster **logboekgebeurtenissen** om een lijst met gegevens die de virtuele machine is verzonden naar Azure Monitor weer te geven. Deze gegevens zijn beschikbaar voor het uitvoeren van query's.  Selecteer een recordtype open de **logboeken** pagina, waar u de resultaten voor dat recordtype zien. U ziet ook een vooraf geconfigureerde query die gefilterd op basis van de virtuele machine.  
+Selecteer aan de rechter kant van het deel venster **logboek gebeurtenissen** om een lijst met gegevens weer te geven die de VM naar Azure monitor heeft verzonden. Deze gegevens zijn beschikbaar voor het uitvoeren van query's.  Selecteer een record type om de pagina **Logboeken** te openen, waar u de resultaten voor het record type ziet. U ziet ook een vooraf geconfigureerde query die wordt gefilterd op de virtuele machine.  
 
-![Het deelvenster gebeurtenissen vastleggen in logboek](./media/vminsights-maps/properties-pane-logs-01.png)
+![Het deel venster logboek gebeurtenissen](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Sluit de **logboeken** pagina en Ga terug naar de **eigenschappen** deelvenster. Selecteer hier **waarschuwingen** naar waarschuwingen voor VM-criteria voor servicestatus weergeven. De functie van de kaart kan worden geïntegreerd met Azure-waarschuwingen om weer te geven van waarschuwingen voor de geselecteerde server in het geselecteerde tijdsbereik. Een pictogram voor de huidige waarschuwingen op de server weergegeven en de **Machine waarschuwingen** deelvenster geeft een lijst van de waarschuwingen. 
+Sluit de **Logboeken** pagina en ga terug naar het deel venster **Eigenschappen** . Hier selecteert u **waarschuwingen** om waarschuwingen over de status van de virtuele machine te bekijken. De kaart functie integreert met Azure-waarschuwingen om waarschuwingen weer te geven voor de geselecteerde server in het geselecteerde tijds bereik. Op de server wordt een pictogram voor de huidige waarschuwingen weer gegeven en in het deel venster **computer waarschuwingen** staan de waarschuwingen. 
 
-![Het deelvenster waarschuwingen van](./media/vminsights-maps/properties-pane-alerts-01.png)
+![Het deel venster waarschuwingen](./media/vminsights-maps/properties-pane-alerts-01.png)
 
-Als u de kaartfunctie relevante waarschuwingen worden weergegeven, maakt u een waarschuwingsregel die van toepassing op een specifieke computer:
+Als u de kaart functie relevante waarschuwingen wilt laten weer geven, maakt u een waarschuwings regel die van toepassing is op een specifieke computer:
 
-- Een component naar waarschuwingen voor groepen opnemen door computer (bijvoorbeeld **door Computer interval van 1 minuut**).
-- De waarschuwing baseren op een metrische waarde.
+- Neem een component op voor het groeperen van waarschuwingen per computer (bijvoorbeeld **per computer interval van 1 minuut**).
+- De waarschuwing baseren op een metrieke waarde.
 
-Zie voor meer informatie over Azure-waarschuwingen en het maken van het waarschuwingsregels [Unified waarschuwingen in Azure Monitor](../../azure-monitor/platform/alerts-overview.md).
+Zie [Unified Alerts in azure monitor](../../azure-monitor/platform/alerts-overview.md)voor meer informatie over Azure-waarschuwingen en het maken van waarschuwings regels.
 
-In de rechterbovenhoek de **legenda** optie beschrijft de rollen van de symbolen en op de kaart. Voor een nader bekijken op uw kaart en om deze oplossing te verplaatsen, gebruikt u de zoomknoppen in de rechterbenedenhoek. U kunt het zoomniveau instellen en aanpassen van de kaart naar de grootte van de pagina.  
+In de rechter bovenhoek worden de symbolen en rollen op de kaart in de **legenda** -optie beschreven. Voor een beter overzicht van uw kaart en om deze te verplaatsen, gebruikt u de Zoom knoppen in de rechter benedenhoek. U kunt het zoom niveau instellen en de kaart passend maken voor de grootte van de pagina.  
 
-## <a name="connection-metrics"></a>Metrische verbindingsgegevens
-De **verbindingen** deelvenster wordt het standaard metrische gegevens voor de geselecteerde verbinding van de virtuele machine voor de TCP-poort weergegeven. De metrische gegevens bevatten reactietijd, aantal aanvragen per minuut, verkeer doorvoer en koppelingen.  
+## <a name="connection-metrics"></a>Verbindings gegevens
+In het deel venster **verbindingen** worden standaard metrische gegevens weer gegeven voor de geselecteerde verbinding van de virtuele machine via de TCP-poort. De metrische gegevens bevatten de reactie tijd, aanvragen per minuut, verkeers doorvoer en koppelingen.  
 
-![Network connectivity grafieken in het deelvenster verbindingen](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
+![Netwerk verbindings grafieken in het deel venster verbindingen](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
 
 ### <a name="failed-connections"></a>Mislukte verbindingen
-De kaart bevat mislukte verbindingen voor processen en computers. Een rode stippellijn geeft aan dat een clientsysteem te bereiken een proces of de poort is mislukt. Voor systemen die gebruikmaken van de agent voor afhankelijkheden, wordt de agent rapporteert over mislukte verbindingspogingen. De functie voor toewijzing controleert een proces met inachtneming van TCP-sockets die niet voldoen aan een verbinding tot stand brengen. Deze fout kan worden veroorzaakt door een firewall, een onjuiste configuratie van de client of server of een externe service die niet beschikbaar.
+De kaart toont mislukte verbindingen voor processen en computers. Een stippel rode lijn geeft aan dat een client systeem een proces of poort niet kan bereiken. Voor systemen die gebruikmaken van de afhankelijkheids agent rapporteert de agent over mislukte Verbindings pogingen. De kaart functie bewaakt een proces door TCP-sockets te gebruiken die geen verbinding tot stand brengen. Deze fout kan het gevolg zijn van een firewall, een onjuiste configuratie in de client of server of een niet-beschik bare externe service.
 
 ![Een mislukte verbinding op de kaart](./media/vminsights-maps/map-group-failed-connection-01.png)
 
-Informatie over mislukte verbindingen kunnen u helpen oplossen, migratie valideren, beveiliging analyseren en inzicht in de algehele architectuur van de service. Mislukte verbindingen soms onschadelijk zijn, maar ze vaak wijzen op een probleem. Verbindingen mislukken, bijvoorbeeld wanneer een failover-omgeving plotseling niet meer bereikbaar is of wanneer twee toepassingslagen niet kunnen met elkaar worden verbonden na de cloudmigratie van een communiceren.
+Inzicht in mislukte verbindingen kan u helpen bij het oplossen van problemen, het valideren van de migratie, het analyseren van de beveiliging en het begrijpen van de algehele architectuur van de service. Mislukte verbindingen zijn soms onschadelijk, maar ze verwijzen vaak naar een probleem. Verbindingen kunnen mislukken, bijvoorbeeld wanneer een failover-omgeving plotseling onbereikbaar wordt of wanneer twee toepassings lagen niet met elkaar kunnen communiceren na een Cloud migratie.
 
-### <a name="client-groups"></a>Clientgroepen
-Op de kaart vertegenwoordigen clientgroepen clientcomputers die verbinding met de toegewezen machine maken. Één clientgroep vertegenwoordigt de clients voor een afzonderlijk proces of de machine.
+### <a name="client-groups"></a>Client groepen
+Op de kaart vertegenwoordigen client groepen client computers die verbinding maken met de toegewezen computer. Eén client groep vertegenwoordigt de clients voor een afzonderlijk proces of een afzonderlijke computer.
 
-![Een clientgroep op de kaart](./media/vminsights-maps/map-group-client-groups-01.png)
+![Een client groep op de kaart](./media/vminsights-maps/map-group-client-groups-01.png)
 
-Als u wilt zien van de bewaakte clients en het IP-adressen van de systemen in de groep van een client, de groep te selecteren. De inhoud van de groep worden hieronder weergegeven.  
+Als u de bewaakte clients en IP-adressen van de systemen in een client groep wilt weer geven, selecteert u de groep. De inhoud van de groep wordt hieronder weer gegeven.  
 
-![Lijst van de clientgroep van een met IP-adressen op de kaart](./media/vminsights-maps/map-group-client-group-iplist-01.png)
+![De lijst met IP-adressen van een client groep op de kaart](./media/vminsights-maps/map-group-client-group-iplist-01.png)
 
-Als de groep bewaakte en niet-bewaakte clients omvat, kunt u de juiste sectie van het ringdiagram van de groep voor het filteren van de clients selecteren.
+Als de groep bewaakte en niet-bewaakte clients bevat, kunt u de juiste sectie van het ring diagram van de groep selecteren om de clients te filteren.
 
-### <a name="server-port-groups"></a>Serverpoort groepen
-Server poortgroepen vertegenwoordigen poorten op servers waarop binnenkomende verbindingen van de toegewezen machine. De groep bevat de server-poort en een telling van het aantal servers dat verbindingen naar die poort hebben. Selecteer de groep om de afzonderlijke servers en verbindingen te bekijken. 
+### <a name="server-port-groups"></a>Server poort groepen
+Server-poort groepen vertegenwoordigen poorten op servers die binnenkomende verbindingen van de toegewezen computer hebben. De groep bevat de server poort en een telling van het aantal servers die verbindingen met die poort hebben. Selecteer de groep om de afzonderlijke servers en verbindingen weer te geven. 
 
-![Een groep server-poort op de kaart](./media/vminsights-maps/map-group-server-port-groups-01.png)  
+![Een server poort groep op de kaart](./media/vminsights-maps/map-group-server-port-groups-01.png)  
 
-Als de groep bewaakte en niet-bewaakte servers bevat, kunt u de juiste sectie van het ringdiagram van de groep voor het filteren van de servers selecteren.
+Als de groep bewaakte en niet-bewaakte servers bevat, kunt u de juiste sectie van het ring diagram van de groep selecteren om de servers te filteren.
 
-## <a name="view-a-map-from-a-vm"></a>Een toewijzing van een virtuele machine weergeven 
+## <a name="view-a-map-from-a-vm"></a>Een kaart van een virtuele machine weer geven 
 
-Voor toegang tot Azure Monitor voor virtuele machines rechtstreeks vanaf een virtuele machine:
+Rechtstreeks vanaf een virtuele machine toegang tot Azure Monitor voor VM's:
 
-1. Selecteer in de Azure portal, **virtuele Machines**. 
-2. Kies in de lijst, een virtuele machine. In de **bewaking** sectie **inzichten (preview)** .  
-3. Selecteer de **kaart** tabblad.
+1. Selecteer **virtual machines**In het Azure Portal. 
+2. Kies een virtuele machine in de lijst. Klik in de sectie **bewaking** op **inzichten (preview-versie)** .  
+3. Selecteer het tabblad **map** .
 
-De kaart worden gevisualiseerd met afhankelijkheden van de virtuele machine door te detecteren met verwerken van groepen en processen met actieve netwerkverbindingen via een opgegeven tijdperiode.  
+De kaart visualiseert de afhankelijkheden van de virtuele machine door het detecteren van actieve proces groepen en processen die actieve netwerk verbindingen hebben gedurende een opgegeven tijds bereik.  
 
-Standaard ziet u de kaart de laatste 30 minuten. Als u zien hoe de afhankelijkheden in het verleden hebt bekeken wilt, kunt u een query voor historische tijdsbereik van maximaal één uur. De query wilt uitvoeren, gebruiken de **TimeRange** selector in de linkerbovenhoek. U kunt een query kunt uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging wilt weergeven.  
+Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** selector in de linkerbovenhoek. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.  
 
-![Direct overzicht van de toewijzing van VM](./media/vminsights-maps/map-direct-vm-01.png)
+![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vm-01.png)
 
-## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Een toewijzing van een virtuele-machineschaalset weergeven
+## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Een kaart uit een schaalset voor virtuele machines weer geven
 
-Toegang krijgen tot Azure Monitor voor virtuele machines rechtstreeks vanaf een virtuele-machineschaalset:
+Direct toegang tot Azure Monitor voor VM's vanuit een schaalset voor virtuele machines:
 
-1. Selecteer in de Azure portal, **virtuele-machineschaalsets**.
-2. Kies in de lijst, een virtuele machine. Klik in de **bewaking** sectie **inzichten (preview)** .  
-3. Selecteer de **kaart** tabblad.
+1. Selecteer in de Azure Portal **virtuele-machine schaal sets**.
+2. Kies een virtuele machine in de lijst. Klik vervolgens in de sectie **bewaking** op **inzichten (preview-versie)** .  
+3. Selecteer het tabblad **map** .
 
-De kaart worden gevisualiseerd met alle exemplaren in de schaalset als een groepsknooppunt samen met de afhankelijkheden van de groep. De uitgevouwen knooppunt geeft de exemplaren in de schaalset. U kunt deze instanties 10 schuiven tegelijk. 
+De kaart visualeert alle instanties in de schaalset als groeps knooppunt samen met de afhankelijkheden van de groep. In het uitgevouwen knoop punt worden de exemplaren in de schaalset weer gegeven. U kunt 10 per keer door deze instanties bladeren. 
 
-Voor het laden van een kaart voor een specifiek exemplaar, selecteert u eerst dat exemplaar op de kaart. Selecteer vervolgens de **weglatingsteken** knop (...) aan de rechterkant en kies **Servertoewijzing**. In de kaart die wordt weergegeven, ziet u de procesgroepen en processen met actieve netwerkverbindingen via een opgegeven tijdperiode. 
+Als u een kaart voor een specifiek exemplaar wilt laden, selecteert u eerst dat exemplaar op de kaart. Selecteer vervolgens de knop met het **weglatings teken** (...) aan de rechter kant en kies **Server toewijzing laden**. In de kaart die wordt weer gegeven, ziet u proces groepen en processen die actieve netwerk verbindingen hebben gedurende een opgegeven tijds bereik. 
 
-Standaard ziet u de kaart de laatste 30 minuten. Als u zien hoe de afhankelijkheden in het verleden hebt bekeken wilt, kunt u een query voor historische tijdsbereik van maximaal één uur. De query wilt uitvoeren, gebruiken de **TimeRange** selector. U kunt een query kunt uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging wilt weergeven.
+Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** kiezer. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.
 
-![Direct overzicht van de toewijzing van VM](./media/vminsights-maps/map-direct-vmss-01.png)
+![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->U kunt ook toegang tot een toewijzing voor een specifiek exemplaar van de **exemplaren** weergave voor uw virtuele-machineschaalset. In de **instellingen** sectie, Ga naar **exemplaren** > **inzichten (preview)** .
+>U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instanties**  > **Insights (preview)** .
 
-## <a name="view-a-map-from-azure-monitor"></a>Een overzicht van Azure Monitor weergeven
-In Azure Monitor biedt de functie van de kaart een algemeen overzicht van uw virtuele machines en hun afhankelijkheden. Voor toegang tot de Map-functie in Azure Monitor:
+## <a name="view-a-map-from-azure-monitor"></a>Een kaart van Azure Monitor weer geven
 
-1. Selecteer in de Azure portal, **Monitor**. 
-2. In de **Insights** sectie **virtuele Machines (preview)** .
-3. Selecteer de **kaart** tabblad.
+In Azure Monitor biedt de kaart functie een globaal overzicht van uw Vm's en de bijbehorende afhankelijkheden. Voor toegang tot de kaart functie in Azure Monitor:
 
-   ![Azure Monitor-overzichtskaart van meerdere virtuele machines](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+1. Selecteer in de Azure Portal **monitor**. 
+2. Klik in de sectie **inzichten** op **virtual machines (preview)** .
+3. Selecteer het tabblad **map** .
 
-Kies een werkruimte met behulp van de **werkruimte** kiezer boven aan de pagina. Als u meer dan één Log Analytics-werkruimte hebt, kiest u de werkruimte die met de oplossing ingeschakeld en die rapporteren aan de virtuele machines heeft. 
+   ![Overzichts toewijzing van meerdere Vm's Azure Monitor](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-De **groep** selector retourneert abonnementen, resourcegroepen, [computergroepen](../../azure-monitor/platform/computer-groups.md), en virtual machine scale sets van computers die zijn gerelateerd aan de geselecteerde werkruimte. Uw selectie geldt alleen voor de functie voor toewijzing en niet meegenomen naar de prestaties of de status.
+Kies een werk ruimte met behulp van de **werkruimte** kiezer boven aan de pagina. Als u meer dan één Log Analytics-werk ruimte hebt, kiest u de werk ruimte die is ingeschakeld met de oplossing en waar u Vm's aan rapporteert. 
 
-Standaard ziet u de kaart de laatste 30 minuten. Als u zien hoe de afhankelijkheden in het verleden hebt bekeken wilt, kunt u een query voor historische tijdsbereik van maximaal één uur. De query wilt uitvoeren, gebruiken de **TimeRange** selector. U kunt een query kunt uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging wilt weergeven.  
+De **groeps** kiezer retourneert abonnementen, resource groepen, [computer groepen](../../azure-monitor/platform/computer-groups.md)en virtuele-machine schaal sets van computers die zijn gerelateerd aan de geselecteerde werk ruimte. Uw selectie is alleen van toepassing op de kaart functie en heeft geen betrekking op de prestaties of de status.
+
+Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** kiezer. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.  
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie voor meer informatie over het gebruik van de Health-functie, [weergave Azure VM-status](vminsights-health.md). 
-- Voor het identificeren van knelpunten, prestaties, controleren en begrijpen van de totale capaciteit van uw VM's, Zie [status van de prestaties van Azure Monitor weergeven voor virtuele machines](vminsights-performance.md). 
+
+Zie [prestatie status weer geven voor Azure monitor voor VM's](vminsights-performance.md)om knel punten te identificeren, prestaties te controleren en het algehele gebruik van uw vm's te begrijpen. 

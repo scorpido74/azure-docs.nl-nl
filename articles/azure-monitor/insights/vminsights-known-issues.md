@@ -1,38 +1,32 @@
 ---
-title: Azure Monitor voor bekende problemen-machines (preview) | Microsoft Docs
-description: In dit artikel bevat informatie over bekende problemen met Azure Monitor voor virtuele machines, een oplossing in Azure en combineert status, toepassing afhankelijkheid detectie en bewaking van toepassingsprestaties van het besturingssysteem van de virtuele machine van Azure.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+title: Bekende problemen met Azure Monitor voor VM's (preview) | Microsoft Docs
+description: In dit artikel worden bekende problemen met Azure Monitor voor VM's beschreven, een oplossing in azure die de status, detectie van toepassings afhankelijkheden en prestatie bewaking van het Azure VM-besturings systeem combineert.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/02/2019
+ms.openlocfilehash: f6719a8c28571faceb6ebad0567d13a4edc60fe6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522132"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553758"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Bekende problemen met Azure Monitor voor virtuele machines (preview)
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Bekende problemen met Azure Monitor voor VM's (preview-versie)
 
-In dit artikel bevat informatie over bekende problemen met Azure Monitor voor virtuele machines, een oplossing in Azure en combineert health, detectie van toepassingsonderdelen en bewaking van toepassingsprestaties van het besturingssysteem van de virtuele machine van Azure. 
+In dit artikel worden bekende problemen met Azure Monitor voor VM's beschreven, een oplossing in azure die de status, detectie van toepassings onderdelen en prestatie bewaking van het Azure VM-besturings systeem combineert. 
 
-## <a name="health"></a>Status 
-De volgende volgen bekende problemen met de huidige release van de Health-functie:
+## <a name="health"></a>Gezondheid 
+Hieronder vindt u bekende problemen met de huidige versie van de status functie:
 
-- Als een Azure-VM is verwijderd of wordt gewist, wordt deze weergegeven in de VM-lijstweergave voor enige tijd opnieuw uit. Bovendien op de status van een virtuele machine verwijderd of verwijderde klikt, wordt de **diagnostische gegevens over gezondheid** weergeven en start vervolgens een lus laden. Als u de naam van de verwijderde virtuele machine selecteert, wordt een deelvenster geopend met een bericht weergegeven dat de virtuele machine is verwijderd.
-- Wijzigingen in de configuratie, zoals het bijwerken van een drempelwaarde, wordt er maximaal 30 minuten duren, zelfs als de portal of Workload Monitor API kan ze onmiddellijk bijwerken. 
-- De status van diagnostische gegevens over ervaren updates sneller dan de andere weergaven. De gegevens kan zijn vertraagd wanneer u tussen deze twee schakelt. 
-- Voor virtuele Linux-machines heeft de titel van de pagina weergegeven van de health-criteria voor één VM-weergave met de volledige domeinnaam van de virtuele machine in plaats van de naam van de gebruiker gedefinieerde VM. 
-- Nadat u bewaking voor een virtuele machine met een van de ondersteunde methoden uitschakelen en u probeert u deze opnieuw implementeert, moet u deze implementeren in dezelfde werkruimte. Als u ervoor kiest een andere werkruimte en probeer om de status voor deze virtuele machine weer te geven, kan deze inconsistent gedrag weergegeven.
-- Na het verwijderen van de onderdelen van de oplossing uit uw werkruimte, kunt u doorgaan met de status van uw Azure-VM's, Zie specifiek prestaties en de kaart gegevens wanneer u gaat u naar de weergave in de portal. Gegevens wordt uiteindelijk niet meer weergegeven in de weergave prestaties en de kaart na enige tijd; de statusweergave blijven echter wel om de integriteitsstatus van de voor uw VM's weer te geven. De **Probeer nu** optie is beschikbaar voor re-Onboarding van prestaties en kaart-weergaven.
+- Als een virtuele machine van Azure wordt verwijderd of verwijderd, wordt deze ergens anders weer gegeven in de lijst weergave van de virtuele machine. Daarnaast wordt door het klikken op de status van een verwijderde of verwijderde virtuele machine de weer gave **status diagnostiek** geopend en wordt vervolgens een load-lus gestart. Als u de naam van de verwijderde VM selecteert, wordt er een deel venster geopend met een bericht dat de virtuele machine is verwijderd.
+- Wijzigingen in de configuratie, zoals het bijwerken van een drempel waarde, nemen tot 30 minuten in beslag, zelfs als de portal of de API voor workload-bewaking deze direct kan bijwerken. 
+- De status diagnostiek werkt sneller dan de andere weer gaven. De informatie wordt mogelijk vertraagd wanneer u hiertussen schakelt. 
+- Voor Linux-Vm's is de titel van de pagina die de status criteria voor één VM-weer gave bevat, de gehele domein naam van de virtuele machine in plaats van de door de gebruiker gedefinieerde VM-naam. 
+- Nadat u de bewaking voor een virtuele machine hebt uitgeschakeld met een van de ondersteunde methoden en u deze opnieuw implementeert, moet u deze implementeren in dezelfde werk ruimte. Als u een andere werk ruimte kiest en de status van die virtuele machine probeert weer te geven, wordt mogelijk inconsistent gedrag weer gegeven.
+- Nadat u de oplossings onderdelen uit uw werk ruimte hebt verwijderd, kunt u de status van uw Azure-Vm's blijven zien. de prestaties en het toewijzen van gegevens wanneer u navigeert naar een van de weer gaven in de portal. De gegevens worden uiteindelijk niet meer weer gegeven in de weer gave prestaties en kaart na enige tijd. de status weergave gaat echter door met het weer geven van de integriteits status voor uw Vm's. De optie **nu uitproberen** kan alleen worden weer gegeven voor de prestaties en alleen kaart weergaven.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk voor meer informatie over de vereisten en -methoden voor het inschakelen van bewaking van uw virtuele machines, [Azure Monitor inschakelen voor virtuele machines](vminsights-enable-overview.md).
+Als u inzicht wilt krijgen in de vereisten en methoden voor het inschakelen van de controle van uw virtuele machines, raadpleegt u [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md).

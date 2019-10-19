@@ -1,19 +1,18 @@
 ---
 title: Azure Diagnostics configureren voor het verzenden van gegevens naar Application Insights
 description: De Azure Diagnostics open bare configuratie bijwerken om gegevens te verzenden naar Application Insights.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/19/2016
+ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60396111"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552043"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>De diagnostische gegevens voor de Cloud service, virtuele machine of Service Fabric verzenden naar Application Insights
 Cloud Services, Virtual Machines, Virtual Machine Scale Sets en Service Fabric gebruiken allemaal de Azure Diagnostics extensie voor het verzamelen van gegevens.  Diagnostische gegevens van Azure worden verzonden naar Azure Storage tabellen.  U kunt echter ook alle of een subset van de gegevens naar andere locaties pipeen met Azure Diagnostics extensie 1,5 of hoger.
@@ -64,11 +63,11 @@ Voorbeeld configuratie van een Sink voor Application Insights:
     - Als u geen bestaande Application Insights resource hebt, raadpleegt u [een nieuwe Application Insights resource maken](../../azure-monitor/app/create-new-resource.md ) voor meer informatie over het maken van een resource en het ophalen van de instrumentatie sleutel.
     - Als u een Cloud service ontwikkelt met Azure SDK 2,8 en hoger, wordt deze instrumentatie sleutel automatisch ingevuld. De waarde is gebaseerd op de configuratie-instelling van de **APPINSIGHTS_INSTRUMENTATIONKEY** -service wanneer het Cloud service project wordt ingepakt. Zie [Application Insights gebruiken met Cloud Services](../../azure-monitor/app/cloudservices.md).
 
-- Het element channels bevat een of meer **kanaal** elementen.
+- Het element **channels** bevat een of meer **kanaal** elementen.
     - Het *naam* kenmerk verwijst uniek naar dat kanaal.
     - Met het kenmerk *LogLevel* kunt u het logboek niveau opgeven dat door het kanaal wordt toegestaan. De beschik bare logboek niveaus in volg orde van de meest minimale informatie zijn:
-        - Uitgebreid
-        - Information
+        - Uitgebreide
+        - Informatie
         - Waarschuwing
         - Fout
         - Kritiek
@@ -86,7 +85,7 @@ In de volgende afbeelding ziet u een overzicht van de configuratie waarden en ho
 ## <a name="complete-sink-configuration-example"></a>Voor beeld van de Sink-configuratie volt ooien
 Hier volgt een volledig voor beeld van het open bare configuratie bestand dat
 1. stuurt alle fouten naar Application Insights (opgegeven op het knoop punt **DiagnosticMonitorConfiguration** )
-2. verzendt ook uitgebreide logboeken voor de toepassings Logboeken (opgegeven op het knoop punt Logboeken).
+2. verzendt ook uitgebreide logboeken voor de toepassings Logboeken (opgegeven op het knoop punt **Logboeken** ).
 
 ```XML
 <WadCfg>

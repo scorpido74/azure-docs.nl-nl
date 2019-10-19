@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40d0cd29452b5473d16851451a88c93e78ef3f36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430004"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554422"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -35,7 +35,7 @@ In dit artikel worden veel van de verificatie concepten beschreven die u moet be
 
 **Autorisatie** is het verlenen van een geverifieerde partij toestemming om iets te doen. Hiermee geeft u op welke gegevens u toegang hebt tot en wat u met die gegevens kunt doen. Autorisatie wordt soms afgekort tot 'AuthZ'.
 
-In plaats van apps te maken die elk hun eigen gebruikers naam en wacht woord behouden, waardoor een hoge administratieve belasting optreedt wanneer u meerdere apps hebt en gebruikers erin moet worden toegevoegd of verwijderd, kunnen apps die verantwoordelijkheid overdragen aan een gecentraliseerd ID-provider.
+In plaats van apps te maken die elk eigen gebruikers naam en wacht woord behouden, waardoor een hoge administratieve belasting optreedt wanneer u gebruikers wilt toevoegen aan of verwijderen uit meerdere apps, kunnen apps die verantwoordelijkheid delegeren aan een gecentraliseerde ID-provider.
 
 Azure Active Directory (Azure AD) is een gecentraliseerde ID-provider in de Cloud. Door de verificatie en autorisatie te delegeren, worden scenario's zoals beleids regels voor voorwaardelijke toegang die een gebruiker in een specifieke locatie moeten, het gebruik van multi-factor Authentication en het inschakelen van een gebruiker in één keer aanmelden en vervolgens automatisch aangemeld bij alle web-apps die dezelfde gecentraliseerde map delen. Deze mogelijkheid wordt eenmalige aanmelding (SSO) genoemd.
 
@@ -43,7 +43,7 @@ Een gecentraliseerde ID-provider is nog belang rijker voor apps die over de hele
 
 Het micro soft Identity-platform vereenvoudigt de verificatie voor toepassings ontwikkelaars door identiteit als service te bieden, met ondersteuning voor industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect, evenals open-source bibliotheken voor verschillende platforms die u helpen bij het snel starten van code ring. Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft Graph, andere Microsoft-API's of API's die door ontwikkelaars zijn gemaakt. Zie [ontwikkeling van micro soft Identity platform](about-microsoft-identity-platform.md)voor meer informatie.
 
-## <a name="tenants"></a>Tenants
+### <a name="tenants"></a>Tenants
 
 Een Cloud-ID-provider fungeert als veel organisaties. Om gebruikers van verschillende organisaties gescheiden te houden, wordt Azure AD gepartitioneerd in tenants, met één Tenant per organisatie.
 
@@ -76,7 +76,7 @@ Tokens zijn alleen geldig voor een beperkte periode. De STS biedt doorgaans een 
 
 Toegangs tokens worden door gegeven aan een web-API als het Bearer-token in de `Authenticate`-header. Een app kan een vernieuwings token bieden voor de STS en als de gebruiker de toegang tot de app niet heeft ingetrokken, wordt een nieuw toegangs token en een nieuw vernieuwings token teruggestuurd. Zo wordt het scenario van iemand die de onderneming verlaat, afgehandeld. Wanneer de STS het vernieuwings token ontvangt, wordt er geen ander geldig toegangs token uitgegeven als de gebruiker niet meer is gemachtigd.
 
-### <a name="applications"></a>Applicaties
+## <a name="application-model"></a>Toepassingsmodel
 
 Toepassingen kunnen gebruikers zelf aanmelden of zich aanmelden bij een id-provider. Zie [verificatie stromen en app-scenario's](authentication-flows-app-scenarios.md) voor meer informatie over aanmeldings scenario's die worden ondersteund door Azure AD.
 
@@ -90,18 +90,16 @@ Als een id-provider weet dat een gebruiker toegang heeft tot een bepaalde app, m
 
 Na de registratie krijgt de toepassing een GUID die de App deelt met Azure AD wanneer tokens worden aangevraagd. Als de app een vertrouwelijk client toepassing is, wordt ook het geheim of de open bare sleutel gedeeld, afhankelijk van het feit of er certificaten of geheimen zijn gebruikt.
 
-### <a name="application-model"></a>Toepassingsmodel
-
 Het micro soft Identity-platform vertegenwoordigt toepassingen die gebruikmaken van een model dat voldoet aan twee belang rijke functies:
 
-**Bepaal de app aan de hand van de verificatie protocollen die worden ondersteund en geef alle id's, Url's, geheimen en gerelateerde informatie op die nodig zijn voor de verificatie.**
+Bepaal de app aan de hand van de verificatie protocollen die worden ondersteund en geef alle id's, Url's, geheimen en gerelateerde informatie op die nodig zijn voor de verificatie.
 Het micro soft Identity-platform:
 
 * Bevat alle gegevens die nodig zijn voor de ondersteuning van verificatie tijdens runtime.
 * Bevat alle gegevens om te bepalen welke resources een app nodig heeft voor toegang en onder welke omstandigheden een bepaalde aanvraag moet worden afgehandeld.
 * Biedt een infra structuur voor het implementeren van app-inrichting in de Tenant van de app-ontwikkelaar en op elke andere Azure AD-Tenant.
 
-Verwerk **de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt de dynamische inrichting van apps op tenants** Toestemming is het proces van een resource-eigenaar die autorisatie verleent aan een client toepassing om toegang te krijgen tot beveiligde bronnen, onder specifieke machtigingen, namens de eigenaar van de resource. Het micro soft Identity-platform:
+Verwerk de toestemming van de gebruiker tijdens de tijd van de token aanvraag en vereenvoudigt het dynamisch inrichten van apps via tenants toestemming is het proces van een resource-eigenaar die toestemming verleent aan een client toepassing voor toegang tot beveiligde bronnen, onder specifieke machtigingen, op naam van de resource-eigenaar. Het micro soft Identity-platform:
 
 * Stelt gebruikers en beheerders in staat om de app dynamisch toestemming te geven of weigeren om resources namens hen te gebruiken.
 * Stelt beheerders in staat om te beslissen wat apps mogen doen, welke gebruikers gebruik mogen maken van specifieke apps en hoe de directoryresources kunnen worden benaderd.
@@ -154,7 +152,7 @@ Gebruikers verificatie gebeurt via de browser. Het OpenID Connect-protocol gebru
 - De omleiding wordt verzorgd door de web-app in de vorm van een omleidings-URI. Deze omleidings-URI is geregistreerd bij het Azure AD-toepassings object. Er kunnen verschillende omleidings-Uri's zijn omdat de toepassing kan worden geïmplementeerd op verschillende Url's. De web-app moet dus ook de omleidings-URi opgeven die moet worden gebruikt.
 - Azure AD controleert of de omleidings-URI die door de web-app is verzonden, een van de geregistreerde omleidings-Uri's voor de app is.
 
-## <a name="generalization-to-desktop-and-mobile-apps"></a>Generalisatie voor desktop-en Mobile-apps
+## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Aanmeldings procedure voor Desk tops en mobiele apps met Azure AD
 
 De hierboven beschreven stroom geldt, met kleine verschillen, voor desktop-en mobiele toepassingen.
 

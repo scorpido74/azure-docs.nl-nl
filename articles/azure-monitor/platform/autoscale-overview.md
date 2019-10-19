@@ -1,19 +1,18 @@
 ---
 title: Overzicht van automatisch schalen in Virtual Machines, Cloud Services en Web Apps
 description: Automatisch schalen in Microsoft Azure. Is van toepassing op Virtual Machines, virtuele-machine schaal sets, Cloud Services en Web Apps.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959051"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552280"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Overzicht van automatisch schalen in Microsoft Azure Virtual Machines, Cloud Services en Web Apps
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
@@ -43,7 +42,7 @@ Virtuele-machine schaal sets gebruiken telemetriegegevens van Azure Diagnostics-
 ## <a name="custom-metrics"></a>Aangepaste metrische gegevens
 U kunt ook uw eigen aangepaste metrische gegevens gebruiken die door uw toepassing (en) kunnen worden verzonden. Als u uw toepassing (en) hebt geconfigureerd voor het verzenden van metrische gegevens naar Application Insights, kunt u gebruikmaken van deze metrische gegevens om beslissingen te nemen over het al dan niet schalen.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Tijd
 Regels op basis van een schema zijn gebaseerd op UTC. U moet uw tijd zone op de juiste wijze instellen bij het instellen van uw regels.  
 
 ## <a name="rules"></a>Regels
@@ -61,7 +60,7 @@ Regels kunnen een of meer typen acties activeren.
 * **E** -mail bericht verzenden naar abonnements beheerders, mede beheerders en/of aanvullend e-mail adres dat u opgeeft
 * **Automatiseren via webhooks** -webhooks aanroepen, waarmee u meerdere complexe acties binnen of buiten Azure kunt activeren. In azure kunt u een Azure Automation runbook, Azure function of een Azure Logic-app starten. Voor beeld van een URL van een derde partij buiten Azure bevat services zoals toegestane vertraging en Twilio.
 
-## <a name="autoscale-settings"></a>Instellingen voor automatische schaalaanpassing
+## <a name="autoscale-settings"></a>Instellingen voor automatisch schalen
 Voor automatisch schalen worden de volgende terminologie en structuur gebruikt.
 
 - Een **instelling voor automatisch schalen** wordt gelezen door de engine voor automatisch schalen om te bepalen of u omhoog of omlaag wilt schalen. Het bevat een of meer profielen, informatie over de doel bron en meldings instellingen.
@@ -105,7 +104,7 @@ U kunt automatisch schalen instellen via
 | --- | --- |
 | Web Apps |[Web Apps schalen](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[Een Cloud service automatisch schalen](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtual Machines: Klassiek |[De beschik baarheid van klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: klassiek |[De beschik baarheid van klassieke virtuele machines schalen](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows-schaal sets |[Schaal sets voor virtuele machines in Windows schalen](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux-schaal sets |[Schaal sets voor virtuele machines in Linux schalen](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |

@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387968"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553695"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
-
-
 
 Schema-drift is het geval waarin uw bronnen vaak meta gegevens wijzigen. Velden, kolommen en, typen kunnen worden toegevoegd, verwijderd of gewijzigd. Zonder de verwerking van schema drift wordt uw gegevens stroom kwetsbaar voor wijzigingen in de gegevens bron stroomopwaarts. Gebruikelijke ETL-patronen mislukken wanneer binnenkomende kolommen en velden worden gewijzigd omdat ze vaak aan deze bron namen worden gekoppeld.
 
@@ -31,6 +29,8 @@ Azure Data Factory systeem eigen ondersteuning biedt voor flexibele schema's die
 U moet in uw gegevens stroom een architectuur besluit nemen om schema drift in uw stroom te accepteren. Wanneer u dit doet, kunt u zich beschermen tegen schema wijzigingen van de bronnen. U verliest echter een vroege binding van uw kolommen en typen in uw gegevens stroom. Azure Data Factory behandel schema-drijf stromen als late binding stromen, dus wanneer u de trans formaties bouwt, zijn de geplaatste kolom namen niet voor u beschikbaar in de schema weergaven in de hele stroom.
 
 ## <a name="schema-drift-in-source"></a>Schema-drift in bron
+
+Kolommen die worden opgenomen in uw gegevens stroom van uw bron definitie worden gedefinieerd als ' overgelopen ' wanneer ze niet aanwezig zijn in de bron projectie. U kunt de bron projectie bekijken op het tabblad projectie van de bron transformatie. Wanneer u een gegevensset voor uw bron selecteert, neemt ADF automatisch het schema uit de gegevensset en maakt een project van die schema definitie van de gegevensset.
 
 In een bron transformatie wordt schema-drift gedefinieerd als het lezen van kolommen die uw gegevensset-schema niet definiëren. Als u schema-drift wilt inschakelen, schakelt u **schema-drift toestaan** in uw bron transformatie in.
 

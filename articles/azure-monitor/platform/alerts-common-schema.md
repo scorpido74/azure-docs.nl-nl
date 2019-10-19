@@ -1,19 +1,18 @@
 ---
 title: Algemeen waarschuwings schema voor Azure monitor-waarschuwingen
 description: Meer informatie over het algemene waarschuwings schema, waarom u het moet gebruiken en hoe u het kunt inschakelen
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9b142e00543d425b73c4102914bba2dd92c75b8b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702894"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552450"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
 
@@ -24,8 +23,8 @@ In dit artikel wordt beschreven wat het algemene waarschuwings schema is, wat de
 Het algemene waarschuwings schema standaardisert de verbruiks ervaring voor waarschuwings meldingen in azure vandaag. In het verleden hebben de drie waarschuwings typen in azure vandaag (metrische gegevens, logboeken en activiteiten Logboeken) hun eigen e-mail sjablonen, webhook-schema's, enzovoort. Met het algemene waarschuwings schema kunt u nu waarschuwings meldingen met een consistent schema ontvangen.
 
 Elk waarschuwings exemplaar beschrijft **de bron die is beïnvloed** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
-* **Essentiële zaken**: Een set **gestandaardiseerde velden**, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, samen met aanvullende veelvoorkomende meta gegevens van waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
-* **Waarschuwings context**: Een set velden waarin de **oorzaak van de waarschuwing**wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
+* **Essentials**: een set **gestandaardiseerde velden**, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, evenals aanvullende algemene meta gegevens voor waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
+* **Waarschuwings context**: een set velden waarin de **oorzaak van de waarschuwing**wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
 
 De typische integratie scenario's die we horen van klanten, omvatten de route ring van het waarschuwings exemplaar naar het betreffende team op basis van een draai tabel (bijvoorbeeld resource groep), waarna het verantwoordelijke team aan het werk gaat. Met het gemeen schappelijke waarschuwings schema kunt u gestandaardiseerde routerings logica hebben in waarschuwings typen door gebruik te maken van de essentiële velden, waardoor de context velden niet worden gebruikt voor de betrokken teams om verder te onderzoeken.
 
@@ -35,10 +34,10 @@ Dit betekent dat u mogelijk minder integraties kunt hebben, waardoor het proces 
 
 Het algemene waarschuwings schema wordt in eerste instantie in uw waarschuwings meldingen gemanifesteerd. De uitbrei dingen die u ziet, worden hieronder weer gegeven:
 
-| Action | Verbeteringen|
+| Bewerking | Opties|
 |:---|:---|
-| SMS | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
-| Email | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
+| Sms | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
+| E-mail | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
 | Webhook/Logic-app/Azure function/Automation-Runbook | Een consistente JSON-structuur voor alle waarschuwings typen, waarmee u eenvoudig integraties kunt bouwen voor de verschillende typen waarschuwingen. |
 
 Het nieuwe schema biedt ook een rijkere ervaring op het niveau van waarschuwingen voor zowel de Azure Portal als de Azure mobile app in de onmiddellijke toekomst. 

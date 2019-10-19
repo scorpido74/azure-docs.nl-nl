@@ -1,56 +1,50 @@
 ---
-title: Het bijwerken van Azure Monitor voor containers voor metrische gegevens | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u Azure-Monitor voor containers om in te schakelen van de functie voor aangepaste metrische gegevens die ondersteuning biedt voor verkennen en waarschuwingen op samengevoegde metrische gegevens bijwerken.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/06/2019
+ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148855"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554064"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Het bijwerken van Azure Monitor voor containers om in te schakelen van metrische gegevens
-Azure Monitor voor containers introduceert ondersteuning voor het verzamelen van metrische gegevens van Azure Kubernetes-Services (AKS) clusters knooppunten en schillen en aan het archief van de metrische gegevens over Azure Monitor worden geschreven. Deze wijziging is bedoeld om verbeterde tijdigheid te leveren bij het weergeven van statistische berekeningen (Avg, Count, Max, Min, Sum) in de prestatiegrafieken vastmaken prestatiegrafieken weergegeven in Azure portal-dashboards, ondersteuning en ondersteuning voor metrische waarschuwingen.
+# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te scha kelen
+Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verzamelen van metrische gegevens van knoop punten van Azure Kubernetes Services (AKS) en van peulen en het schrijven naar de opslag voor de Azure Monitor metrische gegevens. Deze wijziging is bedoeld om een verbeterde tijd lijn te bieden bij het presen teren van geaggregeerde berekeningen (Gem, aantal, Max, min, Sum) in prestatie grafieken, ondersteuning voor het vastmaken van prestatie grafieken in Azure Portal Dash boards en het ondersteunen van metrische waarschuwingen.
 
 De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
-| Metrische naamruimte | Gegevens | Description |
+| Metrische naam ruimte | Gegevens | Beschrijving |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn *knooppunt* metrische gegevens en *host* als een dimensie en ze ook bevatten de<br> de naam van het knooppunt als waarde voor de *host* dimensie. |
-| insights.container/pods | podCount | Dit zijn *pod* metrische gegevens en neem het volgende als dimensies - controllernaam, Kubernetes-naamruimten, naam, fase. |
+| inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
+| inzichten. container/peul | PodCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
 
-Bijwerken van het cluster ter ondersteuning van deze nieuwe mogelijkheden kan worden uitgevoerd in Azure portal, Azure PowerShell, of met Azure CLI. Met Azure PowerShell en CLI, kunt u deze per cluster of voor alle clusters in uw abonnement. Nieuwe implementaties van AKS bevat automatisch deze wijziging in de configuratie en mogelijkheden.
+Het bijwerken van het cluster ter ondersteuning van deze nieuwe mogelijkheden kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI kunt u dit per cluster of voor alle clusters in uw abonnement inschakelen. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden.
 
-Een toegewezen verwerken de **bewaking metrische gegevens Publisher** rol aan de service-principal van het cluster zodat de gegevens die worden verzameld door de agent kan worden gepubliceerd naar uw clusters-resource. Machtiging voor push-metrische gegevens naar de resource alleen bewaking van metrische gegevens over uitgever heeft, kan niet het wijzigen van een staat, bijwerken van de resource of geen gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens uitgeversrol](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Met beide processen wordt de rol **bewakings metrieken van uitgever** toegewezen aan de service-principal van het cluster, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd in de resource van uw clusters. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Vereisten 
-Voordat u begint, zorgt u ervoor dat u lid van bent de **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** rol op de bron van de AKS-cluster te verzamelen van knooppunt en pod metrische gegevens voor aangepaste prestaties. 
+Voordat u begint, moet u ervoor zorgen dat u lid bent van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van gegevens over aangepaste prestaties van knoop punten en pod mogelijk te maken. 
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet worden uitgevoerd van Azure CLI versie 2.0.59 of hoger. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version` uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade van een cluster op basis van de Azure-portal
+## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Een cluster upgraden van de Azure Portal
 
-Voor clusters bestaande AKS bewaakt door Azure Monitor voor containers, selecteren nadat het cluster om de status van de weergave meerdere cluster in Azure Monitor of rechtstreeks vanuit het cluster door te selecteren weer te geven **Insights** vanaf de linkerkant in het deelvenster ziet u een banner aan de bovenkant van de portal.
+Voor bestaande AKS-clusters die worden bewaakt door Azure Monitor voor containers, na het selecteren van het cluster om de status weer te geven vanuit de weer gave met meerdere clusters in Azure Monitor of rechtstreeks vanuit het cluster door **inzichten** te selecteren in het linkerdeel venster, ziet u een vaandel boven aan de portal.
 
-![Upgrade van de banner van de AKS-cluster in Azure portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
+![Span doek voor AKS-cluster bijwerken in Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
-Te klikken op **inschakelen** de procedure voor het upgraden van het cluster worden gestart. Dit proces duurt enkele seconden om te voltooien en u kunt de voortgang bijhouden onder meldingen in het menu.
+Als u op **inschakelen** klikt, wordt het proces voor het upgraden van het cluster gestart. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder meldingen in het menu.
 
-## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Upgrade van alle clusters met behulp van Bash in Azure-opdrachtshell
-Voer de volgende stappen uit om bij te werken van alle clusters in uw abonnement met behulp van Bash in Azure-opdrachtshell.
+## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Alle clusters bijwerken met behulp van bash in azure-opdracht shell
+Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met behulp van bash in azure-opdracht shell.
 
-1. De volgende opdracht uitvoeren met behulp van de Azure CLI.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde van de **overzicht van AKS** -pagina voor het AKS-cluster.
+1. Voer de volgende opdracht uit met behulp van de Azure CLI.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde op de pagina **overzicht van AKS** voor het AKS-cluster.
 
     ```azurecli
     az login
@@ -58,16 +52,16 @@ Voer de volgende stappen uit om bij te werken van alle clusters in uw abonnement
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Wijzigen van de configuratie kan een paar seconden duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-cli"></a>Upgraden van een per cluster met behulp van Azure CLI
-Voer de volgende stappen uit voor het bijwerken van een specifieke cluster in uw abonnement met behulp van Azure CLI.
+## <a name="upgrade-per-cluster-using-azure-cli"></a>Upgrade per cluster met behulp van Azure CLI
+Voer de volgende stappen uit om een specifiek cluster in uw abonnement bij te werken met Azure CLI.
 
-1. De volgende opdracht uitvoeren met behulp van de Azure CLI. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**, en **clusterName** met behulp van de waarden op de **overzicht van AKS** pagina voor de AKS-cluster.  Om de waarde van **clientIdOfSPN**, deze wordt geretourneerd wanneer u de opdracht uitvoert `az aks show` zoals wordt weergegeven in het onderstaande voorbeeld.
+1. Voer de volgende opdracht uit met behulp van de Azure CLI. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.  Om de waarde van **clientIdOfSPN**op te halen, wordt deze geretourneerd wanneer u de opdracht uitvoert `az aks show` zoals wordt weer gegeven in het onderstaande voor beeld.
 
     ```azurecli
     az login
@@ -76,10 +70,10 @@ Voer de volgende stappen uit voor het bijwerken van een specifieke cluster in uw
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ``` 
 
-## <a name="upgrade-all-clusters-using-azure-powershell"></a>Upgrade van alle clusters met behulp van Azure PowerShell
-Voer de volgende stappen uit om bij te werken van alle clusters in uw abonnement met behulp van Azure PowerShell.
+## <a name="upgrade-all-clusters-using-azure-powershell"></a>Alle clusters bijwerken met behulp van Azure PowerShell
+Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met Azure PowerShell.
 
-1. Kopieer en plak het volgende script in het bestand:
+1. Kopieer en plak het volgende script in uw bestand:
 
     ```powershell
     <# 
@@ -319,22 +313,22 @@ Voer de volgende stappen uit om bij te werken van alle clusters in uw abonnement
     Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
     ```
 
-2. Sla dit bestand als **onboard_metrics_atscale.ps1** naar een lokale map.
-3. De volgende opdracht uitvoeren met behulp van Azure PowerShell.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde van de **overzicht van AKS** -pagina voor het AKS-cluster.
+2. Sla dit bestand op als **onboard_metrics_atscale. ps1** naar een lokale map.
+3. Voer de volgende opdracht uit met behulp van de Azure PowerShell.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde op de pagina **overzicht van AKS** voor het AKS-cluster.
 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Wijzigen van de configuratie kan een paar seconden duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-powershell"></a>Upgraden van een per cluster met behulp van Azure PowerShell
-Voer de volgende stappen uit voor het bijwerken van een specifiek cluster met behulp van Azure PowerShell.
+## <a name="upgrade-per-cluster-using-azure-powershell"></a>Upgrade per cluster met behulp van Azure PowerShell
+Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure PowerShell.
 
-1. Kopieer en plak het volgende script in het bestand:
+1. Kopieer en plak het volgende script in uw bestand:
 
     ```powershell
     <# 
@@ -568,18 +562,18 @@ Voer de volgende stappen uit voor het bijwerken van een specifiek cluster met be
     }
     ```
 
-2. Sla dit bestand als **onboard_metrics.ps1** naar een lokale map.
-3. De volgende opdracht uitvoeren met behulp van Azure PowerShell. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**, en **clusterName** met behulp van de waarden op de **overzicht van AKS** pagina voor de AKS-cluster.
+2. Sla dit bestand op als **onboard_metrics. ps1** naar een lokale map.
+3. Voer de volgende opdracht uit met behulp van de Azure PowerShell. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Wijzigen van de configuratie kan een paar seconden duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+    Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>
     ```
 
-## <a name="verify-update"></a>Controleer of de update 
-Na het initiëren van de update met behulp van een van de methoden die eerder zijn beschreven, kunt u Azure Monitor metrics explorer gebruiken en controleren van de **metrische naamruimte** die **insights** wordt vermeld. Als dit het geval is, betekent dit kunt u direct verder gaan en deze instelling worden opgestart [metrische waarschuwingen](../platform/alerts-metric.md) of grafieken vastmaken [dashboards](../../azure-portal/azure-portal-dashboards.md).  
+## <a name="verify-update"></a>Update controleren 
+Nadat u de update hebt gestart met een van de methoden die eerder zijn beschreven, kunt u Azure Monitor Metrics Explorer gebruiken en controleren of de **metrische naam ruimte** die **inzichten** bevat wordt weer gegeven. Als dit het geval is, geeft dit aan dat u kunt door gaan met het instellen van [metrische waarschuwingen](../platform/alerts-metric.md) of het vastmaken van uw grafieken aan [Dash boards](../../azure-portal/azure-portal-dashboards.md).  

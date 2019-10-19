@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170660"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550858"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -33,11 +33,11 @@ U kunt functie-apps op verschillende manieren hosten:
 
 |                |[Verbruiks abonnement](functions-scale.md#consumption-plan)|[Premium-abonnement (preview-versie)](functions-scale.md#premium-plan)|[App Service-plan](functions-scale.md#app-service-plan)|[App Service-omgeving](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Binnenkomende IP-beperkingen & toegang tot de persoonlijke site](#inbound-ip-restrictions)|✅ Ja|✅ Ja|✅ Ja|✅ Ja|
-|[Integratie van virtueel netwerk](#virtual-network-integration)|❌ Nee|✅ Ja (regionaal)|✅ Ja (regionaal en gateway)|✅ Ja|
-|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌ Nee| ❌ Nee|✅ Ja|✅ Ja|
-|[Hybride verbindingen](#hybrid-connections)|❌ Nee|❌ Nee|✅ Ja|✅ Ja|
-|[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌ Nee| ❌ Nee|❌ Nee|✅ Ja|
+|[Binnenkomende IP-beperkingen & toegang tot de persoonlijke site](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Integratie van virtueel netwerk](#virtual-network-integration)|❌No|✅Yes (regionaal)|✅Yes (regionaal en gateway)|✅Yes|
+|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Hybride verbindingen](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
 ## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
@@ -52,7 +52,7 @@ Zie [Azure app service beperkingen voor statische toegang](../app-service/app-se
 ## <a name="private-site-access"></a>Toegang tot privésite
 
 Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals vanuit een virtueel Azure-netwerk. 
-* Toegang tot de persoonlijke site is beschikbaar in het [Premium](./functions-premium-plan.md)-, verbruiks-en [app service plan](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd. [](functions-scale.md#consumption-plan) 
+* Toegang tot de persoonlijke site is beschikbaar in de [Premium](./functions-premium-plan.md), [verbruik], (functies-scale. MD # verbruiks plan) en [app service plan](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd. 
     * Service-eind punten kunnen per app worden geconfigureerd onder platform functies > netwerk > toegangs beperkingen configureren > regel toevoegen. Virtuele netwerken kunnen nu worden geselecteerd als het type van een regel.
     * Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md) voor meer informatie.
         * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
@@ -87,8 +87,8 @@ VNet-integratie geeft uw functie-app toegang tot resources in uw virtuele netwer
 De VNet-integratie functie:
 
 * Vereist een Standard-, Premium-of PremiumV2-App Service plan
-* Ondersteunt TCP en UDP
-* Werkt met App Service-apps en functie-apps
+* ondersteunt TCP en UDP
+* werkt met App Service-apps en functie-apps
 
 Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
 
@@ -102,12 +102,20 @@ Virtuele netwerk integratie in functions maakt gebruik van een gedeelde infra st
 
 Zie voor meer informatie over het gebruik van virtuele netwerk integratie [een functie-app integreren met een virtueel Azure-netwerk](functions-create-vnet.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Verbinding maken met beveiligde bronnen van service-eind punten
 
 > [!note] 
-> Het kan tot 12 uur duren voordat uw opslag account beschikbaar is voor uw functie-app nadat u de toegangs beperkingen voor dat opslag account hebt geconfigureerd. Gedurende deze periode is uw toepassing volledig offline.
+> Het kan tot 12 uur duren voordat nieuwe service-eind punten beschikbaar zijn voor uw functie-app nadat u de toegangs beperkingen voor de downstream-resource hebt geconfigureerd. Gedurende deze tijd is de resource volledig niet beschikbaar voor uw app.
 
-Als u een hoger beveiligings niveau wilt bieden, kunt u het opslag account van uw toepassing beperken tot een virtueel netwerk. Vervolgens moet u uw site met dat virtuele netwerk integreren om toegang te krijgen tot uw opslag account. Deze configuratie wordt ondersteund op alle abonnementen die ondersteuning bieden voor de integratie van virtuele netwerken.
+Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Services beperken tot een virtueel netwerk met behulp van service-eind punten. Vervolgens moet u uw functie-app met dat virtuele netwerk integreren om toegang te krijgen tot de resource. Deze configuratie wordt ondersteund op alle abonnementen die ondersteuning bieden voor de integratie van virtuele netwerken.
+
+[Meer informatie over de service-eind punten van Virtual Network vindt u hier.](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. Het is momenteel niet mogelijk om beperkingen voor het virtuele netwerk voor dit account te gebruiken. Als u een service-eind punt voor een virtueel netwerk configureert op het opslag account dat u gebruikt voor uw functie-app, wordt uw app verbroken.
+
+[Lees hier meer over de vereisten voor opslag accounts.](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
 

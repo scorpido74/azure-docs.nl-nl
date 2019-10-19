@@ -2,7 +2,6 @@
 title: Een Windows-VM maken op basis van een gespecialiseerde VHD in azure | Microsoft Docs
 description: Maak een nieuwe Windows-VM door een speciale beheerde schijf te koppelen als de besturingssysteem schijf met behulp van het Resource Manager-implementatie model.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
@@ -12,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390596"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553427"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken op basis van een gespecialiseerde schijf met behulp van Power shell
 
@@ -63,100 +62,15 @@ Gebruik de VHD als-is om een nieuwe virtuele machine te maken.
   * Zorg ervoor dat de virtuele machine is geconfigureerd om het IP-adres en DNS-instellingen van DHCP op te halen. Dit zorgt ervoor dat de server een IP-adres binnen het virtuele netwerk verkrijgt wanneer het wordt gestart. 
 
 
-### <a name="get-the-storage-account"></a>Het opslag account ophalen
-U hebt een opslag account in azure nodig om de geüploade VHD op te slaan. U kunt een bestaand opslag account gebruiken of een nieuwe maken. 
+### <a name="upload-the-vhd"></a>De VHD uploaden
 
-De beschik bare opslag accounts weer geven.
-
-```powershell
-Get-AzStorageAccount
-```
-
-Als u een bestaand opslag account wilt gebruiken, gaat u verder naar de sectie [de VHD uploaden](#upload-the-vhd-to-your-storage-account) .
-
-Een opslagaccount maken.
-
-1. U hebt de naam van de resource groep nodig waar het opslag account wordt gemaakt. Gebruik Get-AzResourceGroup om alle resource groepen in uw abonnement weer te geven.
-   
-    ```powershell
-    Get-AzResourceGroup
-    ```
-
-    Maak een resource groep met de naam *myResourceGroup* in de regio *VS-West* .
-
-    ```powershell
-    New-AzResourceGroup `
-       -Name myResourceGroup `
-       -Location "West US"
-    ```
-
-2. Maak een opslag account met de naam *mystorageaccount* in de nieuwe resource groep met behulp van de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) .
-   
-    ```powershell
-    New-AzStorageAccount `
-       -ResourceGroupName myResourceGroup `
-       -Name mystorageaccount `
-       -Location "West US" `
-       -SkuName "Standard_LRS" `
-       -Kind "Storage"
-    ```
-
-### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* van ' C:\Users\Public\Documents\Virtual hard disks @ no__t-1 ' geüpload naar een opslag account met de naam *Mystorageaccount* in de *myResourceGroup* -resource groep. Het bestand wordt opgeslagen in de container met de naam *mycontainer* en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
-
-```powershell
-$resourceGroupName = "myResourceGroup"
-$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $resourceGroupName `
-   -Destination $urlOfUploadedVhd `
-   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Als de opdrachten zijn geslaagd, wordt een antwoord weer gegeven dat er ongeveer als volgt uitziet:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Het kan enige tijd duren voordat deze opdracht is voltooid, afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand.
-
-### <a name="create-a-managed-disk-from-the-vhd"></a>Een beheerde schijf maken op basis van de VHD
-
-Maak een beheerde schijf van de speciale VHD in uw opslag account met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk1* gebruikt voor de naam van de schijf, wordt de schijf in *Standard_LRS* -opslag geplaatst en wordt *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI voor de bron-VHD gebruikt.
-
-Maak een nieuwe resource groep voor de nieuwe virtuele machine.
-
-```powershell
-$destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzResourceGroup -Location $location `
-   -Name $destinationResourceGroup
-```
-
-Maak de nieuwe besturingssysteem schijf op basis van de geüploade VHD. 
-
-```powershell
-$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-$osDiskName = 'myOsDisk'
-$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
-    (New-AzDiskConfig -AccountType Standard_LRS  `
-    -Location $location -CreateOption Import `
-    -SourceUri $sourceUri) `
-    -ResourceGroupName $destinationResourceGroup
-```
+U kunt nu een VHD rechtstreeks uploaden naar een beheerde schijf. Zie [een VHD uploaden naar Azure met Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md)voor instructies.
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>Optie 3: een bestaande virtuele machine van Azure kopiëren
 
 U kunt een kopie maken van een virtuele machine die gebruikmaakt van beheerde schijven door een moment opname van de virtuele machine uit te voeren en vervolgens met die moment opname een nieuwe beheerde schijf en een nieuwe virtuele machine te maken.
 
+Als u een bestaande VM wilt kopiëren naar een andere regio, wilt u mogelijk azcopy gebruiken om [een kopie van een schijf in een andere regio](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)te bevinden. 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
 

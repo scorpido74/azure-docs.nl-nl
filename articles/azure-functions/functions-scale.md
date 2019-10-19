@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180101"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550635"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
-Wanneer u een functie-app in azure maakt, moet u een hosting abonnement kiezen voor uw app. Er zijn drie hosting plannen beschikbaar voor Azure Functions: [Verbruiks abonnement](#consumption-plan), [Premium-abonnement](#premium-plan)en [app service plan](#app-service-plan).
+Wanneer u een functie-app in azure maakt, moet u een hosting abonnement kiezen voor uw app. Er zijn drie hosting plannen beschikbaar voor Azure Functions: [verbruiks abonnement](#consumption-plan), [Premium-abonnement](#premium-plan)en [app service plan](#app-service-plan).
 
 Het hosting abonnement dat u kiest, bepaalt het volgende gedrag:
 
@@ -45,7 +45,7 @@ Functie ondersteuning valt in de volgende twee categorieën:
 
 In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hosting plannen aangegeven, wanneer dit wordt uitgevoerd op Windows of Linux:
 
-| | Verbruiksabonnement | Premium-abonnement | Toegewezen plan |
+| | Verbruiksabonnement | Premium-plan | Toegewezen plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Algemene beschikbaarheid | preview | Algemene beschikbaarheid |
 | Linux | Algemene beschikbaarheid | preview | Algemene beschikbaarheid |
@@ -78,11 +78,12 @@ Wanneer u het Premium-abonnement gebruikt, worden exemplaren van de Azure Functi
 
 Informatie over hoe u deze opties kunt configureren, vindt u in het [document van het Azure functions Premium-abonnement](functions-premium-plan.md).
 
-In plaats van de facturering per uitvoering en het verbruikte geheugen wordt de facturering voor het Premium-abonnement gebaseerd op het aantal kern seconden, uitvoerings tijd en het geheugen dat wordt gebruikt voor de benodigde en gereserveerde instanties.  Ten minste één exemplaar moet te allen tijde warm zijn. Dit betekent dat er een vaste maandelijkse prijs per actief abonnement is, ongeacht het aantal uitvoeringen.
+In plaats van de facturering per uitvoering en het verbruikte geheugen, wordt de facturering voor het Premium-abonnement gebaseerd op het aantal kern seconden en het geheugen dat voor de benodigde en vooraf gewarmte instanties wordt gebruikt. Ten minste één exemplaar moet op elk moment per plan warm zijn. Dit betekent dat er een mini maal maandelijks bedrag per actief abonnement is, ongeacht het aantal uitvoeringen. Houd er rekening mee dat alle functie-apps in een Premium-abonnement vooraf gewarmde en actieve instanties delen.
 
 Bekijk het Azure Functions Premium-abonnement in de volgende situaties:
 
 * Uw functie-apps worden continu uitgevoerd, of bijna continu.
+* U hebt een groot aantal kleine uitvoeringen en beschikt over een hoog uitvoerings bedrag, maar een laag van minder dan een tweede factuur in het verbruiks abonnement.
 * U hebt meer CPU-of geheugen opties nodig dan in het verbruiks abonnement is opgenomen.
 * De code moet langer worden uitgevoerd dan de [Maxi maal toegestane uitvoerings tijd](#timeout) voor het verbruiks abonnement.
 * U hebt functies nodig die alleen beschikbaar zijn in een Premium-abonnement, zoals VNET/VPN-verbindingen.
@@ -112,7 +113,7 @@ Als u uitvoert met een App Service-abonnement, moet u de instelling **altijd aan
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Zelfs met Always ingeschakeld, wordt de time-out voor de uitvoering van afzonderlijke `functionTimeout` functies bepaald door de instelling in het JSON-project bestand van de [host.](functions-host-json.md#functiontimeout)
+Zelfs met Always ingeschakeld, wordt de time-out voor uitvoering voor afzonderlijke functies bepaald door de `functionTimeout` instelling in het JSON-project bestand van de [host.](functions-host-json.md#functiontimeout)
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Het hosting plan van een bestaande toepassing bepalen
 
@@ -127,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Wanneer de uitvoer van deze opdracht is `dynamic`, bevindt uw functie-app zich in het verbruiks abonnement. Wanneer de uitvoer van deze opdracht is `ElasticPremium`, is uw functie-app in het Premium-abonnement. Alle andere waarden geven verschillende lagen van een App Service plan aan.
+Wanneer de uitvoer van deze opdracht wordt `dynamic`, bevindt uw functie-app zich in het verbruiks abonnement. Wanneer de uitvoer van deze opdracht is `ElasticPremium`, bevindt uw functie-app zich in het Premium-abonnement. Alle andere waarden geven verschillende lagen van een App Service plan aan.
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
@@ -180,7 +181,7 @@ Nuttige query's en informatie over het begrijpen van uw verbruiks factuur vindt 
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Servicelimieten
+## <a name="service-limits"></a>Servicebeperkingen
 
 In de volgende tabel worden de limieten aangegeven die van toepassing zijn op app-functies wanneer ze worden uitgevoerd in de verschillende hosting plannen:
 

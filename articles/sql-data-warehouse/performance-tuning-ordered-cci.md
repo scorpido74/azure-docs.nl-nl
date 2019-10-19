@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035101"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554544"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
@@ -119,16 +119,20 @@ Hier volgt een voor beeld van een geordende CCI-tabel distributie met geen segme
 ## <a name="create-ordered-cci-on-large-tables"></a>Besteld CCI maken voor grote tabellen
 Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder partities zijn de gegevens niet toegankelijk voor gebruikers totdat het bestelde CCI-proces is voltooid.   Voor gepartitioneerde tabellen, omdat de engine de bestelde CCI-partitie per partitie maakt, hebben gebruikers nog steeds toegang tot de gegevens in partities waar het maken van een CCI niet in behandeling is.   U kunt deze optie gebruiken om de downtime te minimaliseren tijdens het maken van een geordende CCI op grote tabellen: 
 
-1.  Partities maken voor de grote doel tabel (tabel A genoemd).
-2.  Maak een lege bestelde CCI-tabel (met de naam tabel B) met hetzelfde tabel-en partitie schema als tabel A.
+1.  Maak partities op de grote doel tabel (met de naam Table_A).
+2.  Maak een lege geordende CCI-tabel (met de naam Table_B) met hetzelfde tabel-en partitie schema als tabel A.
 3.  Een partitie van tabel A naar tabel B overschakelen.
-4.  Voer ALTER INDEX < Ordered_CCI_Index > Rebuild PARTITION = < Partition_ID > in tabel B uit om de switch-partitie opnieuw op te bouwen.  
-5.  Herhaal stap 3 en 4 voor elke partitie in tabel A.
-6.  Als alle partities zijn overgeschakeld van tabel A naar tabel B en opnieuw zijn opgebouwd, verwijdert u tabel A en wijzigt u tabel B in tabel A. 
+4.  Voer ALTER INDEX < Ordered_CCI_Index > uit op < Table_B > opnieuw te bouwen partitie = < Partition_ID > op tabel B om de switch in de partitie opnieuw op te bouwen.  
+5.  Herhaal stap 3 en 4 voor elke partitie in Table_A.
+6.  Wanneer alle partities zijn overgeschakeld van Table_A naar Table_B en opnieuw zijn opgebouwd, verwijdert u Table_A en wijzigt u de naam van Table_B in Table_A. 
+
+>[!NOTE]
+>Tijdens de preview-versie van de geordende geclusterde column store-index (CCI) in Azure SQL Data Warehouse kunnen dubbele gegevens worden gegenereerd als de bestelde CCI is gemaakt of opnieuw is samengesteld via een geclusterde column Store-INDEX in een gepartitioneerde tabel. Er is geen gegevens verlies betrokken. Binnenkort is er een oplossing voor dit probleem beschikbaar. Voor een tijdelijke oplossing kunnen gebruikers besteld CCI maken op een gepartitioneerde tabel met behulp van de opdracht CTAS
+
 
 ## <a name="examples"></a>Voorbeelden
 
-**A. Controleren op geordende kolommen en rang telwoord voor bestellingen:**
+**A. om te controleren op geordende kolommen en rang telwoord voor bestellingen:**
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 

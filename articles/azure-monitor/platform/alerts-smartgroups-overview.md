@@ -1,19 +1,18 @@
 ---
 title: Slimme groepen
 description: Slimme groepen zijn aggregaties van waarschuwingen waarmee u waarschuwings ruis kunt verminderen
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702862"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552362"
 ---
 # <a name="smart-groups"></a>Slimme groepen
 Een gemeen schappelijke uitdaging bij het omgaan met waarschuwingen is de ruis te verhelpen om erachter te komen wat de voor delen zijn: slimme groepen zijn bedoeld als oplossing voor dat probleem.  
@@ -29,11 +28,11 @@ De status van een slimme groep is een vergelijkbaar concept met de waarschuwings
 
 De volgende statussen van de Smart Group worden ondersteund.
 
-| State | Description |
+| Staat | Beschrijving |
 |:---|:---|
 | Nieuw | Het probleem is zojuist gedetecteerd en nog niet gecontroleerd. |
 | Bevestigd | Een beheerder heeft de slimme groep gecontroleerd en ermee begonnen. |
-| Gesloten | Het probleem is opgelost. Nadat een Smart-groep is gesloten, kunt u deze opnieuw openen door deze te wijzigen in een andere status. |
+| wegen | Het probleem is opgelost. Nadat een Smart-groep is gesloten, kunt u deze opnieuw openen door deze te wijzigen in een andere status. |
 
 [Meer informatie over het wijzigen van de status van uw slimme groep.](https://aka.ms/managing-alert-smart-group-states)
 
@@ -49,7 +48,7 @@ De detail pagina met een slimme groep wordt weer gegeven wanneer u een slimme gr
 
 De detail pagina van de Smart groep bevat de volgende secties.
 
-| Section | Description |
+| Sectie | Beschrijving |
 |:---|:---|
 | Waarschuwingen | Hier worden de afzonderlijke waarschuwingen weer gegeven die zijn opgenomen in de slimme groep. Selecteer een waarschuwing om de pagina met de details van de waarschuwing te openen. |
 | Geschiedenis | Een lijst met alle acties die worden uitgevoerd door de slimme groep en eventuele wijzigingen. Dit is momenteel beperkt tot status wijzigingen en wijzigingen in het waarschuwings lidmaatschap. |

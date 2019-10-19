@@ -1,24 +1,18 @@
 ---
 title: Prestaties van grafieken met Azure Monitor voor VM's (preview-versie) Microsoft Docs
 description: Prestaties is een functie van de Azure Monitor voor VM's die toepassings onderdelen automatisch detecteert op Windows-en Linux-systemen en de communicatie tussen services toewijst. In dit artikel vindt u informatie over het gebruik ervan in verschillende scenario's.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cdfc0115beecd69ec50e8b7fd026563d145e1761
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515307"
+ms.locfileid: "72555170"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Grafieken van prestaties met Azure Monitor voor VM's (preview-versie)
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879961"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552790"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Een installatie kopie van een virtuele machine of VHD maken
 
@@ -31,8 +31,6 @@ Als u meerdere exemplaren van een virtuele machine (VM) wilt maken voor gebruik 
 Zie [een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf kopie](upload-vhd.md)om een kopie te maken van uw bestaande virtuele Linux-machine voor back-up of fout opsporing of om een speciale Linux-VHD te uploaden vanaf een on-premises VM.  
 
 U kunt de **Azure VM Image Builder-service (open bare preview)** gebruiken om uw aangepaste installatie kopie te bouwen, geen hulp middelen meer te leren of door pijp lijnen voor het bouwen van een installatie kopie te maken, simpelweg een configuratie voor de installatie kopieën te bieden en de installatie kopie wordt gemaakt met de opbouw functie voor installatie kopieën. Zie aan de slag [met Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor meer informatie.
-
-Bovendien, gebruikt u de pakketer om uw aangepaste configuratie te maken. Zie [How to use Packer gebruiken om installatie kopieën van virtuele Linux-machines te maken in azure](build-image-with-packer.md)voor meer informatie.
 
 Voordat u een installatie kopie maakt, hebt u de volgende items nodig:
 
@@ -45,8 +43,8 @@ Voordat u een installatie kopie maakt, hebt u de volgende items nodig:
 Zie [een aangepaste installatie kopie van een virtuele Azure-machine maken met behulp van de CLI](tutorial-custom-images.md)voor een vereenvoudigde versie van dit artikel en voor het testen, evalueren of leren over Vm's in Azure.  Als dat niet het geval is, kunt u hier lezen om de volledige afbeelding op te halen.
 
 
-## <a name="step-1-deprovision-the-vm"></a>Stap 1: De inrichting van de virtuele machine ongedaan maken
-Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van de Azure VM-agent om computerspecifieke bestanden en gegevens te verwijderen. Gebruik de `waagent` opdracht met de `-deprovision+user` para meter op uw bron-Linux-virtuele machine. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
+## <a name="step-1-deprovision-the-vm"></a>Stap 1: de inrichting van de virtuele machine ongedaan maken
+Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van de Azure VM-agent om computerspecifieke bestanden en gegevens te verwijderen. Gebruik de `waagent` opdracht met de para meter `-deprovision+user` op uw virtuele Linux-machine. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
 
 1. Maak verbinding met uw virtuele Linux-machine met een SSH-client.
 2. Voer in het SSH-venster de volgende opdracht in:
@@ -55,9 +53,9 @@ Eerst moet u de inrichting van de virtuele machine ongedaan maken met behulp van
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met `+user` de para meter wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen `-deprovision`als u de referenties van het gebruikers account in de virtuele machine wilt blijven gebruiken.
+   > Voer deze opdracht alleen uit op een virtuele machine die u vastlegt als een installatie kopie. Met deze opdracht wordt niet gegarandeerd dat de installatie kopie van alle gevoelige informatie wordt gewist of geschikt is voor herdistributie. Met de para meter `+user` wordt ook het laatste ingerichte gebruikers account verwijderd. Gebruik alleen `-deprovision` om de referenties van het gebruikers account in de virtuele machine te blijven gebruiken.
  
-3. Voer **y** in om door te gaan. U kunt de `-force` para meter toevoegen om deze bevestigings stap te voor komen.
+3. Voer **y** in om door te gaan. U kunt de para meter `-force` toevoegen om deze bevestigings stap te voor komen.
 4. Nadat de opdracht is voltooid, voert u **Afsluiten** in om de SSH-client te sluiten.  De virtuele machine wordt nog steeds uitgevoerd.
 
 ## <a name="step-2-create-vm-image"></a>Stap 2: VM-installatie kopie maken
@@ -94,11 +92,11 @@ Gebruik de Azure CLI om de virtuele machine als gegeneraliseerd te markeren en d
    > [!NOTE]
    > De installatie kopie wordt gemaakt in dezelfde resource groep als de bron-VM. U kunt in deze installatie kopie Vm's maken in elke resource groep in uw abonnement. Vanuit een beheer perspectief wilt u mogelijk een specifieke resource groep maken voor uw VM-resources en installatie kopieën.
    >
-   > Als u uw installatie kopie wilt opslaan in zone-flexibele opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de `--zone-resilient true` para meter bevat.
+   > Als u uw installatie kopie wilt opslaan in zone-flexibele opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de para meter `--zone-resilient true` bevatten.
    
 Deze opdracht retourneert een JSON-bestand met een beschrijving van de VM-installatie kopie. Sla deze uitvoer op voor later naslag doeleinden.
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>Stap 3: Een virtuele machine maken op basis van de vastgelegde installatie kopie
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>Stap 3: een virtuele machine maken op basis van de vastgelegde installatie kopie
 Maak een virtuele machine met behulp van de installatie kopie die u hebt gemaakt met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVMDeployed* uit de installatie kopie met de naam *myImage*.
 
 ```azurecli
@@ -132,7 +130,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>Stap 4: De implementatie controleren
+## <a name="step-4-verify-the-deployment"></a>Stap 4: de implementatie controleren
 
 SSH naar de virtuele machine die u hebt gemaakt om de implementatie te controleren en te beginnen met het gebruik van de nieuwe VM. Als u verbinding wilt maken via SSH, zoekt u het IP-adres of de FQDN van uw virtuele machine met [AZ VM show](/cli/azure/vm#az-vm-show).
 

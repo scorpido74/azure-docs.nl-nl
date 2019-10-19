@@ -1,27 +1,27 @@
 ---
-title: Gebruik Apache Kafka MirrorMaker - Azure Eventhubs | Microsoft Docs
-description: In dit artikel bevat informatie over het gebruik van Kafka MirrorMaker voor het spiegelen van een Kafka-cluster in AzureEvent Hubs.
+title: Apache Kafka MirrorMaker gebruiken-Azure Event Hubs | Microsoft Docs
+description: Dit artikel bevat informatie over het gebruik van Kafka MirrorMaker om een Kafka-cluster in evenementen hubs te spie gelen.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 43a32177280361bb0c2a433af0cb5dd3cfc6b9d3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.author: shvija
+ms.openlocfilehash: 6d1596cf0a50ed5dcb896896282178b6fc12c1a1
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967590"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555104"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Kafka MirrorMaker gebruiken met Eventhubs voor Apache Kafka
+# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Gebruik Kafka MirrorMaker met Event Hubs voor Apache Kafka
 
-In deze zelfstudie laat zien hoe een Kafka-broker in een Kafka-ingeschakelde event hub met behulp van Kafka MirrorMaker spiegelen.
+Deze zelf studie laat zien hoe u een Kafka-Broker spiegelt in een Kafka die is ingeschakeld Event Hub met Kafka MirrorMaker.
 
-   ![Kafka MirrorMaker met Eventhubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
+   ![Kafka MirrorMaker met Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
 > Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
@@ -36,9 +36,9 @@ In deze zelfstudie leert u het volgende:
 > * Kafka MirrorMaker uitvoeren
 
 ## <a name="introduction"></a>Inleiding
-Een van de belangrijkste overweging voor moderne cloud schaal apps is de mogelijkheid om te werken, te verbeteren en infrastructuur wijzigen zonder dat service wordt onderbroken. Deze zelfstudie laat zien hoe een Kafka-functionaliteit event hub en Kafka MirrorMaker een bestaande Kafka-pijplijn kunt integreren in Azure door "spiegelen" van de invoerstroom van Kafka in de Event Hubs-service. 
+Een belang rijke overweging voor moderne Cloud Scale-apps is de mogelijkheid om de infra structuur bij te werken, te verbeteren en te wijzigen zonder dat de service wordt onderbroken. In deze zelf studie ziet u hoe een Kafka-Event Hub en Kafka MirrorMaker een bestaande Kafka-pijp lijn kan integreren in azure door de Kafka-invoer stroom te spie gelen in de Event Hubs-service. 
 
-Een Azure Event Hubs Kafka-eindpunt kunt u verbinding maken met Azure Event Hubs met behulp van het Kafka-protocol (dat wil zeggen, Kafka-clients). Met minimale wijzigingen aanbrengt in een Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voordelen van het Azure-ecosysteem. Event Hubs waarvoor Kafka is ingeschakeld op dit moment ondersteunt Kafka versies 1.0 en hoger.
+Met een Azure Event Hubs Kafka-eind punt kunt u verbinding maken met Azure Event Hubs met behulp van het Kafka-Protocol (dat wil zeggen Kafka-clients). Door minimale wijzigingen aan te brengen in een Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voor delen van het Azure-ecosysteem. Kafka ingeschakeld Event Hubs ondersteunt momenteel Kafka-versies 1,0 en hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,18 +49,18 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.
     * Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
-* [Download](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html) een binaire Maven-archief
+* Een binair archief van Maven [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)
     * Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 * [Git](https://www.git-scm.com/downloads)
     * Op Ubuntu kunt u `sudo apt-get install git` uitvoeren om Git te installeren.
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
-Er is een Event Hubs-naamruimte vereist om gegevens te verzenden naar en te ontvangen van Event Hubs-services. Zie [Een Event Hub maken waarvoor Kafka is ingeschakeld](event-hubs-create.md) voor instructies voor het ophalen van een Event Hubs Kafka-eindpunt. Zorg ervoor dat u het kopiëren van de Event Hubs-verbindingsreeks voor later gebruik.
+Er is een Event Hubs-naamruimte vereist om gegevens te verzenden naar en te ontvangen van Event Hubs-services. Zie [Een Event Hub maken waarvoor Kafka is ingeschakeld](event-hubs-create.md) voor instructies voor het ophalen van een Event Hubs Kafka-eindpunt. Zorg ervoor dat u de Event Hubs-connection string kopieert voor later gebruik.
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 
-Nu dat u hebt een Kafka Event Hubs-verbindingsreeks ingeschakeld, wordt de Azure Event Hubs voor Kafka-opslagplaats te klonen en navigeer naar de `mirror-maker` submap:
+Nu u een Kafka Event Hubs connection string hebt ingeschakeld, kloont u de Azure Event Hubs voor Kafka-opslag plaats en navigeert u naar de submap `mirror-maker`:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -69,21 +69,21 @@ cd azure-event-hubs-for-kafka/tutorials/mirror-maker
 
 ## <a name="set-up-a-kafka-cluster"></a>Een Kafka-cluster instellen
 
-Gebruik de [Kafka-snelstartgids](https://kafka.apache.org/quickstart) naar een cluster met de gewenste instellingen instellen (of gebruik een bestaande Kafka-cluster).
+Gebruik de [Kafka Snelstartgids](https://kafka.apache.org/quickstart) om een cluster in te stellen met de gewenste instellingen (of gebruik een bestaand Kafka-cluster).
 
 ## <a name="configure-kafka-mirrormaker"></a>Kafka MirrorMaker configureren
 
-Kafka MirrorMaker kunt u de 'mirroring' van een stroom. Opgegeven bron- en Kafka-clusters, MirrorMaker zorgt ervoor dat alle berichten verzonden naar het broncluster worden ontvangen door de bron- en doel-clusters. In dit voorbeeld laat zien hoe om een bron Kafka-cluster met een doel waarvoor Kafka is ingeschakeld event hub te spiegelen. In dit scenario kan worden gebruikt voor het verzenden van gegevens uit een bestaande pijplijn van Kafka naar Event Hubs zonder dat de stroom van gegevens wordt onderbroken. 
+Kafka MirrorMaker maakt het spie gelen van een stroom mogelijk. Op basis van de bron-en doel-Kafka-clusters zorgt MirrorMaker ervoor dat berichten die naar het bron cluster worden verzonden, zowel door de bron-als de doel clusters worden ontvangen. In dit voor beeld ziet u hoe u een bron Kafka-cluster spiegelt met een Event Hub voor doel-Kafka. Dit scenario kan worden gebruikt om gegevens te verzenden van een bestaande Kafka-pijp lijn naar Event Hubs zonder de stroom van gegevens te onderbreken. 
 
-Zie voor meer informatie over Kafka MirrorMaker, de [Kafka spiegelen/MirrorMaker handleiding](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330).
+Zie de [hand leiding Kafka mirroring/MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)voor meer gedetailleerde informatie over Kafka MirrorMaker.
 
-Voor het configureren van Kafka MirrorMaker, geeft u deze een Kafka-cluster als de consument/bron- en een Kafka-functionaliteit event hub als de producent/bestemming.
+Als u Kafka MirrorMaker wilt configureren, geeft u het een Kafka-cluster als consument/bron en een Kafka Event Hub als producent/bestemming.
 
-#### <a name="consumer-configuration"></a>Configuratie van consumenten
+#### <a name="consumer-configuration"></a>Consumenten configuratie
 
-Het configuratiebestand van de consument bijwerken `source-kafka.config`, waarin de eigenschappen van de bron van Kafka-cluster MirrorMaker staat.
+Werk het configuratie bestand van de consument bij `source-kafka.config`, waarmee MirrorMaker de eigenschappen van het Kafka cluster worden aangegeven.
 
-##### <a name="source-kafkaconfig"></a>bron-kafka.config
+##### <a name="source-kafkaconfig"></a>Bron-Kafka. config
 
 ```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
@@ -92,11 +92,11 @@ exclude.internal.topics=true
 client.id=mirror_maker_consumer
 ```
 
-#### <a name="producer-configuration"></a>Producent-configuratie
+#### <a name="producer-configuration"></a>Producer-configuratie
 
-Nu de producent-configuratiebestand bijwerken `mirror-eventhub.config`, waarin staat dat MirrorMaker de gedupliceerde (of 'gespiegelde') om gegevens te verzenden naar de Event Hubs-service. Met name wijzigen `bootstrap.servers` en `sasl.jaas.config` om te verwijzen naar uw Event Hubs Kafka-eindpunt. De Event Hubs-service vereist een beveiligde communicatie voor (SASL), die wordt bereikt door het instellen van de laatste drie eigenschappen in de volgende configuratie: 
+Werk nu het configuratie bestand van de producent bij `mirror-eventhub.config`, waarmee wordt aangegeven MirrorMaker de gedupliceerde (of gespiegelde) gegevens naar de Event Hubs-service te verzenden. Wijzig `bootstrap.servers` en `sasl.jaas.config` om naar het eind punt van Event Hubs Kafka te verwijzen. De Event Hubs-service vereist beveiligde (SASL) communicatie. dit wordt bereikt door de laatste drie eigenschappen in de volgende configuratie in te stellen: 
 
-##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
+##### <a name="mirror-eventhubconfig"></a>spiegel-eventhub. config
 
 ```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -110,15 +110,15 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ## <a name="run-kafka-mirrormaker"></a>Kafka MirrorMaker uitvoeren
 
-Voer het script Kafka MirrorMaker vanuit de hoofdmap van Kafka-directory met behulp van de nieuwe, bijgewerkte configuratiebestanden. Zorg ervoor dat de configuratiebestanden kopiëren naar de hoofdmap Kafka-directory, of de paden in de volgende opdracht kunt bijwerken.
+Voer het script Kafka MirrorMaker uit vanuit de hoofdmap van Kafka met de zojuist bijgewerkte configuratie bestanden. Kopieer de configuratie bestanden naar de hoofdmap Kafka of werk hun paden bij in de volgende opdracht.
 
 ```shell
 bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 --producer.config mirror-eventhub.config --whitelist=".*"
 ```
 
-Om te controleren dat gebeurtenissen de Kafka-functionaliteit event hub worden bereikt, Zie de statistieken voor de inkomende gegevens in de [Azure-portal](https://azure.microsoft.com/features/azure-portal/), of een gebruiker worden uitgevoerd op basis van de event hub.
+Raadpleeg de ingangs statistieken in de [Azure Portal](https://azure.microsoft.com/features/azure-portal/)of voer een consument uit op basis van de Event hub om te controleren of de Kafka-Event hub worden bereikt.
 
-Alle gebeurtenissen verzonden naar de bron van Kafka-cluster worden ontvangen door zowel de Kafka-cluster met MirrorMaker uitgevoerd, en de gespiegelde Kafka event hub-service ingeschakeld. Met behulp van MirrorMaker en een Event Hubs Kafka-eindpunt, kunt u een bestaande Kafka-pijplijn met de beheerde service van Azure Event Hubs migreren zonder het bestaande cluster wijzigen of onderbreken van een doorlopende gegevensstroom.
+Wanneer MirrorMaker wordt uitgevoerd, worden alle gebeurtenissen die worden verzonden naar de bron-Kafka-cluster ontvangen door zowel het Kafka-cluster als de gespiegelde Kafka Event Hub-service ingeschakeld. Door MirrorMaker en een Event Hubs Kafka-eind punt te gebruiken, kunt u een bestaande Kafka-pijp lijn migreren naar de beheerde Azure Event Hubs-service zonder dat u het bestaande cluster wijzigt of doorlopende gegevens stroom onderbreekt.
 
 ## <a name="samples"></a>Voorbeelden
 Bekijk de volgende voor beelden op GitHub:

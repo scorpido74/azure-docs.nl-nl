@@ -1,141 +1,138 @@
 ---
-title: 'Azure Monitor voor virtuele machines (preview): veelgestelde vragen | Microsoft Docs'
-description: Azure Monitor voor virtuele machines is een oplossing in Azure en combineert status en prestaties bewaken van het besturingssysteem van de virtuele machine van Azure, evenals automatisch detecteren van onderdelen van de toepassing en afhankelijkheden met andere resources en de communicatie tussen de kaarten ze. In dit artikel vindt u antwoorden op veelgestelde vragen.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
+title: Veelgestelde vragen over Azure Monitor voor VM's (preview) | Microsoft Docs
+description: Azure Monitor voor VM's is een oplossing in azure met een combi natie van de status-en prestatie bewaking van het Azure VM-besturings systeem, evenals het automatisch detecteren van toepassings onderdelen en afhankelijkheden met andere resources en het toewijzen van de communicatie tussen ermee. In dit artikel vindt u antwoorden op veelgestelde vragen.
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/09/2018
+ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522213"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555208"
 ---
-# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor voor virtuele machines (preview): veelgestelde vragen
-Dit Microsoft-FAQ is een lijst met veelgestelde vragen over Azure Monitor voor virtuele machines. Als u aanvullende vragen over de oplossing hebt, gaat u naar de [discussieforum](https://feedback.azure.com/forums/34192--general-feedback) en plaats uw vraag. Wanneer u een vraag is vaak wordt gevraagd, toevoegen we deze aan dit artikel zodat snel en eenvoudig kunnen worden gevonden.
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's (preview)
+Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor voor VM's. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
-## <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik toevoegen aan een bestaande werkruimte?
-Als uw virtuele machines al met een Log Analytics-werkruimte verbonden zijn, u kunt blijven gebruiken die werkruimte wanneer het voorbereiden op Azure-Monitor voor virtuele machines, mits deze is in een van de ondersteunde regio's die worden vermeld [hier](vminsights-enable-overview.md#prerequisites).
+## <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik onboarding uitvoeren op een bestaande werk ruimte?
+Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, kunt u deze werk ruimte blijven gebruiken bij onboarding naar Azure Monitor voor VM's, mits deze zich in een van de ondersteunde regio's bevindt die [hier](vminsights-enable-overview.md#prerequisites)worden vermeld.
 
-Wanneer onboarding, we configureert prestatiemeteritems voor de werkruimte die zorgt ervoor dat alle virtuele machines waarvoor gegevens zijn gerapporteerd aan de werkruimte om te beginnen met het verzamelen van deze informatie voor het weergeven en analyseren in Azure Monitor voor virtuele machines.  Als gevolg hiervan, ziet u de prestatiegegevens van alle virtuele machines die zijn verbonden met de geselecteerde werkruimte.  De status en kaart-functies zijn alleen ingeschakeld voor de virtuele machines die u hebt opgegeven om te onboarden.
+Als er een onboarding wordt uitgevoerd, worden er prestatie meter items voor de werk ruimte geconfigureerd die ervoor zorgen dat alle Vm's rapport gegevens naar de werk ruimte worden verzameld om deze informatie te verzamelen voor weer gave en analyse in Azure Monitor voor VM's.  Als gevolg hiervan worden er prestatie gegevens weer gegeven van alle Vm's die zijn verbonden met de geselecteerde werk ruimte.  De functies status en kaart worden alleen ingeschakeld voor de virtuele machines die u hebt opgegeven voor onboarding.
 
-Voor meer informatie over welke prestaties prestatiemeteritems zijn ingeschakeld, raadpleegt u onze [overzicht inschakelen](vminsights-enable-overview.md#performance-counters-enabled) artikel.
+Raadpleeg het artikel [overzicht inschakelen](vminsights-enable-overview.md#performance-counters-enabled) voor meer informatie over welke prestatie meter items zijn ingeschakeld.
 
-## <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik toevoegen aan een nieuwe werkruimte? 
-Als uw VM's momenteel niet met een bestaande Log Analytics-werkruimte verbonden zijn, moet u een nieuwe werkruimte maken voor het opslaan van uw gegevens. Het maken van een nieuwe standaardwerkruimte gebeurt automatisch als u één Azure-VM voor Azure Monitor voor VM's via Azure portal configureren.
+## <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik onboarding uitvoeren op een nieuwe werk ruimte? 
+Als uw Vm's momenteel niet zijn verbonden met een bestaande Log Analytics-werk ruimte, moet u een nieuwe werk ruimte maken om uw gegevens op te slaan. Het maken van een nieuwe standaardwerk ruimte wordt automatisch uitgevoerd als u een enkele Azure-VM voor Azure Monitor voor VM's configureert via de Azure Portal.
 
-Als u ervoor kiest om de methode op basis van een script te gebruiken, als volgt worden behandeld in de [inschakelen Azure Monitor voor virtuele machines (preview) met behulp van Azure PowerShell of Resource Manager-sjabloon](vminsights-enable-at-scale-powershell.md) artikel. 
+Als u ervoor kiest de op scripts gebaseerde methode te gebruiken, worden deze stappen behandeld in het artikel [enable Azure monitor voor VM's (preview) met Azure PowerShell of Resource Manager-sjabloon](vminsights-enable-at-scale-powershell.md) . 
 
-## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wat moet ik doen als mijn virtuele machine is al aan een bestaande werkruimte rapporteren?
-Als u al gegevens van uw virtuele machines verzamelen, u mogelijk al hebt geconfigureerd het rapport gegevens naar een bestaande Log Analytics-werkruimte.  Als deze werkruimte zich in een van onze ondersteunde regio's, kunt u Azure Monitor inschakelen voor virtuele machines aan die vooraf bestaande werkruimte.  Als de werkruimte die u al gebruikt zich niet in een van onze ondersteunde regio's, kunt u zich niet voor Onboarding van Azure Monitor voor virtuele machines op dit moment.  We werken actief ter ondersteuning van extra regio's.
+## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wat moet ik doen als mijn VM al rapporteert aan een bestaande werk ruimte?
+Als u al gegevens van uw virtuele machines verzamelt, is het mogelijk dat u deze al hebt geconfigureerd om gegevens te rapporteren aan een bestaande Log Analytics-werk ruimte.  Als die werk ruimte zich in een van de ondersteunde regio's bevindt, kunt u Azure Monitor voor VM's inschakelen voor die bestaande werk ruimte.  Als de werk ruimte die u al gebruikt, zich niet in een van de ondersteunde regio's bevindt, kunt u op dit moment niet op de Azure Monitor voor VM's.  We werken actief ter ondersteuning van extra regio's.
 
 >[!NOTE]
->We configureert prestatiemeteritems voor de werkruimte die van invloed is op alle VM's die aan de werkruimte rapporteren, ongeacht of u hebt gekozen voor de onboarding ze naar Azure Monitor voor virtuele machines of niet. Raadpleeg voor meer informatie over hoe de prestatiemeteritems zijn geconfigureerd voor de werkruimte, onze [documentatie](../../azure-monitor/platform/data-sources-performance-counters.md). Raadpleeg voor informatie over de items die zijn geconfigureerd voor Azure Monitor voor virtuele machines, onze [Azure Monitor inschakelen voor virtuele machines](vminsights-enable-overview.md#performance-counters-enabled) artikel.  
+>We configureren prestatie meter items voor de werk ruimte die van invloed zijn op alle Vm's die rapporteren aan de werk ruimte, ongeacht of u hebt gekozen om ze te Azure Monitor voor VM's. Raadpleeg onze [documentatie](../../azure-monitor/platform/data-sources-performance-counters.md)voor meer informatie over de configuratie van prestatie meter items voor de werk ruimte. Raadpleeg het artikel [enable Azure monitor voor VM's](vminsights-enable-overview.md#performance-counters-enabled) voor informatie over de tellers die zijn geconfigureerd voor Azure monitor voor VM's.  
 
-## <a name="why-did-my-vm-fail-to-onboard"></a>Waarom is mijn virtuele machine voor onboarding mislukt?
-Wanneer onboarding van een Azure-VM vanuit de Azure-portal, de volgende stappen plaats:
+## <a name="why-did-my-vm-fail-to-onboard"></a>Waarom is mijn VM niet op de onboarding uitgevoerd?
+Wanneer een virtuele machine van Azure wordt geboardd vanuit de Azure Portal, gebeurt het volgende:
 
-* Een standaard Log Analytics-werkruimte is gemaakt, als die optie hebt geselecteerd.
-* De prestatiemeteritems zijn geconfigureerd voor de geselecteerde werkruimte. Als deze stap mislukt, ziet u dat sommige van de van prestatiegrafieken en tabellen gegevens worden niet voor de virtuele machine weergegeven onboarding. U kunt dit oplossen door het uitvoeren van het PowerShell-script beschreven [hier](vminsights-enable-at-scale-powershell.md#enable-performance-counters).
-* De Log Analytics-agent is geïnstalleerd op virtuele Azure-machines met behulp van een VM-extensie, als dat nodig is vastgesteld.  
-* De Azure-Monitor voor agent voor afhankelijkheden voor virtuele machines-kaart is geïnstalleerd op virtuele Azure-machines met de extensie, als dat nodig is vastgesteld.  
-* Azure Monitor-onderdelen ondersteuning van de Health-functie zijn geconfigureerd, indien nodig, en de virtuele machine is geconfigureerd voor de gezondheid van rapportgegevens.
+* Er wordt een standaard Log Analytics werkruimte gemaakt als deze optie is geselecteerd.
+* De prestatie meter items zijn geconfigureerd voor de geselecteerde werk ruimte. Als deze stap mislukt, ziet u dat sommige prestatie grafieken en-tabellen geen gegevens weer geven voor de virtuele machine die u hebt opgevolgd. U kunt dit probleem oplossen door het Power shell-script uit te voeren dat [hier](vminsights-enable-at-scale-powershell.md#enable-performance-counters)wordt beschreven.
+* De Log Analytics-agent wordt op virtuele machines van Azure geïnstalleerd met behulp van een VM-extensie, indien nodig.  
+* De Azure Monitor voor VM's kaart dependency agent wordt geïnstalleerd op virtuele machines van Azure met behulp van een uitbrei ding, indien bepaald dat deze is vereist.  
+* Azure Monitor onderdelen die ondersteuning bieden voor de status functie worden zo nodig geconfigureerd en de virtuele machine is geconfigureerd om status gegevens te rapporteren.
 
-We controleren tijdens het onboarding-proces voor de status van elk van de bovenstaande om terug te keren van de meldingsstatus van een aan u in de portal. Configuratie van de werkruimte en de installatie van de agent duurt doorgaans 5 tot 10 minuten. Weergeven en de status van gegevens in de portal voor duren een aanvullende 5 tot 10 minuten.  
+Tijdens het onboarding-proces wordt gecontroleerd op de status van elk van de bovenstaande om een meldings status te retour neren in de portal. De configuratie van de werk ruimte en de installatie van de agent duurt doorgaans 5 tot 10 minuten. Het weer geven van bewakings-en status gegevens in de portal duurt 5 tot 10 minuten.  
 
-Als u onboarding hebt gestart en er berichten die aangeven dat de virtuele machine moet worden uitgevoerd, wacht u tot 30 minuten voor de virtuele machine om het proces te voltooien. 
+Als u onboarding hebt gestart en berichten ziet met de melding dat de virtuele machine moet worden uitgevoerd, kunt u Maxi maal 30 minuten voor de virtuele machine het proces volt ooien. 
 
-## <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Ik Azure Monitor alleen voor VM's, waarom zie ik alle mijn virtuele machines gecontroleerd door de Health-functie ingeschakeld?
-De Health-functie is ingeschakeld voor alle virtuele machines die zijn verbonden met de Log Analytics-werkruimte, zelfs wanneer de actie voor een enkele virtuele machine wordt gestart.
+## <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Ik heb alleen Azure Monitor voor VM's ingeschakeld, waarom kan ik al mijn Vm's zien die worden bewaakt door de status functie?
+De status functie is ingeschakeld voor alle Vm's die zijn verbonden met de Log Analytics-werk ruimte, zelfs wanneer de actie voor één virtuele machine wordt gestart.
 
-## <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Kan ik de planning voor wanneer een voorwaarde wordt geëvalueerd in criteria voor beveiligingsstatus wijzigen?
-Nee, de periode en de frequentie van criteria voor beveiligingsstatus kunnen niet worden gewijzigd met deze release. 
+## <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Kan ik de planning wijzigen voor wanneer de status criteria een voor waarde evalueren?
+Nee, de tijds periode en frequentie van de status criteria kunnen niet worden gewijzigd in deze release. 
 
-## <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Kan ik de van gezondheidscriteria voor een voorwaarde die ik niet nodig voor het bewaken van uitschakelen?
-Criteria voor beveiligingsstatus kunnen niet worden uitgeschakeld in deze release.
+## <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Kan ik status criteria uitschakelen voor een voor waarde die ik niet hoeft te controleren?
+Status criteria kunnen niet worden uitgeschakeld in deze versie.
 
-## <a name="are-the-health-alert-severities-configurable"></a>De status waarschuwing ernstcategorieën configureerbare zijn?  
-Status van de ernst van waarschuwing kan niet worden gewijzigd, ze kunnen alleen worden ingeschakeld of uitgeschakeld. Bovendien enkele dagen per week update waarschuwing gebaseerd op de status van de van gezondheidscriteria. 
+## <a name="are-the-health-alert-severities-configurable"></a>Zijn de ernst van de status waarschuwing configureerbaar?  
+Ernst van status waarschuwing kan niet worden gewijzigd. deze kunnen alleen worden ingeschakeld of uitgeschakeld. Daarnaast worden enkele waarschuwings Ernst bijgewerkt op basis van de status criteria. 
 
-## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Als ik de instellingen van een bepaalde status criteria configureren, kan deze worden toegewezen aan een specifiek exemplaar?  
-Als u alle instellingen van een health criterium-instantie wijzigt, worden alle exemplaren van de gezondheid van criteria van hetzelfde type op de Azure VM gewijzigd. Bijvoorbeeld, als de drempelwaarde van de status van de vrije ruimte criterium schijfexemplaar die overeenkomt met de logische schijf C: wordt gewijzigd, geldt deze drempelwaarde voor alle andere logische schijven die zijn gedetecteerd en bewaakt voor dezelfde virtuele machine.
+## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Als ik de instellingen van een bepaald status criterium opnieuw Configureer, kan de scope worden toegepast op een specifiek exemplaar?  
+Als u een instelling van een status criterium instantie wijzigt, worden alle status criterium exemplaren van hetzelfde type op de Azure-VM gewijzigd. Als de drempel waarde van het status criterium van de schijf die overeenkomt met de logische schijf C: is gewijzigd, geldt deze drempel waarde voor alle andere logische schijven die worden gedetecteerd en bewaakt voor dezelfde VM.
 
-## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Controleert de status-functie logische processors en kernen?
-Nee, afzonderlijke processor en logische processor op de gezondheid van criteria niet is opgenomen voor een Windows, totale CPU-gebruik wordt gecontroleerd om te evalueren effectief CPU druk op basis van het totale aantal logische CPU's beschikbaar voor de virtuele machine van Azure. 
+## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Bewaakt de status functie logische processors en kernen?
+Nee, de status van een afzonderlijke processor en een logisch processor niveau is niet opgenomen voor een Windows. alleen het totale CPU-gebruik wordt standaard gecontroleerd om de CPU-belasting effectief te beoordelen op basis van het totale aantal logische Cpu's dat beschikbaar is voor de virtuele machine van Azure. 
 
-## <a name="are-all-health-criteria-thresholds-configurable"></a>Zijn alle health criteria drempelwaarden kunnen worden geconfigureerd?  
-Drempelwaarden voor de health-criteria die zijn gericht op een Windows-VM zijn gewijzigd, niet omdat hun statussen zijn ingesteld op *met* of *beschikbaar*. Wanneer u de status van een query de [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wordt de *vergelijkingsoperator* waarde van **LessThan** of **groter dan** met een *drempelwaarde* waarde van **4** voor de service of de entiteit als:
-   - DNS-Client-Service Health-Service niet actief is. 
-   - DHCP-client-service health-Service niet actief is. 
-   - RPC-Service Health-Service niet actief is. 
-   - Windows firewall-service health-Service niet actief is.
-   - Windows-gebeurtenislogboek service health-Service niet actief is. 
-   - Server-service health-Service niet actief is. 
-   - Windows remote management-service health-Service wordt niet uitgevoerd. 
-   - Bestandssysteemfout of beschadiging – logische schijf is niet beschikbaar.
+## <a name="are-all-health-criteria-thresholds-configurable"></a>Zijn alle drempel waarden voor status criteria geconfigureerd?  
+Drempel waarden voor de status criteria die zijn gericht op een Windows-VM, kunnen niet worden gewijzigd, omdat hun status wordt ingesteld op *actief* of *beschikbaar*. Wanneer u een query uitvoert op de status van de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wordt de *ComparisonOperator* -waarde **LessThan** of **GreaterThan** met een *drempel* waarde van **4** voor de service of entiteit weer gegeven als:
+   - DNS-Client Service Health: de service wordt niet uitgevoerd. 
+   - Status van DHCP-client service: service wordt niet uitgevoerd. 
+   - RPC-Service Health: service is niet actief. 
+   - Status service Windows Firewall-service wordt niet uitgevoerd.
+   - Service status van Windows-gebeurtenis logboek: service is niet actief. 
+   - Server service status: service wordt niet uitgevoerd. 
+   - Status van Windows Remote Management service: service wordt niet uitgevoerd. 
+   - Fout in het bestands systeem of de beschadiging: de logische schijf is niet beschikbaar.
 
-Drempelwaarden voor de volgende criteria voor Linux-status zijn gewijzigd, niet omdat hun status is al ingesteld op *waar*. De status wordt weergegeven de *vergelijkingsoperator* met een waarde **LessThan** en *drempelwaarde* waarde van **1** wanneer opgevraagd uit de Workload bewakings-API voor de entiteit, afhankelijk van de context:
-   - Status van logische schijf – logische schijf is niet online / beschikbaar
-   - De Status van de schijf-schijf is niet online / beschikbaar
-   - Status van Network Adapter - netwerkadapter is uitgeschakeld
+Drempel waarden voor de volgende status criteria van Linux kunnen niet worden gewijzigd, omdat hun status al is ingesteld op *waar*. In de status wordt de *comparisonOperator* met de waarde **LessThan** en de *drempel* waarde **1** weer gegeven wanneer er een query wordt uitgevoerd vanuit de API voor het bewaken van workloads voor de entiteit, afhankelijk van de context:
+   - Status van de logische schijf: de logische schijf is niet online/beschikbaar
+   - Schijf status: schijf is niet online/beschikbaar
+   - Status van netwerk adapter: netwerk adapter is uitgeschakeld
 
-## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hoe wijzig ik waarschuwingen die opgenomen in de functie voor Health zijn?
-Regels voor waarschuwingen die zijn gedefinieerd voor elk criterium status worden niet weergegeven in de Azure-portal. U kunt inschakelen of uitschakelen van een statuswaarschuwing voor de regel alleen in de [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Bovendien kunt u niet toewijzen een [Azure Monitor actiegroep](../../azure-monitor/platform/action-groups.md) voor de gezondheid van waarschuwingen in Azure portal. U kunt alleen de melding instelling-API gebruiken voor het configureren van een actiegroep wordt geactiveerd wanneer een statuswaarschuwing wordt geactiveerd. Op dit moment kunt u actiegroepen op basis van een virtuele machine toewijzen zodat alle *statusmeldingen* dezelfde actiegroepen op basis van de VM-trigger wordt geactiveerd. In tegenstelling tot traditionele Azure-waarschuwingen is er geen concept van een aparte actiegroep voor elke status waarschuwingsregel. Bovendien worden alleen actiegroepen die zijn geconfigureerd voor e-mailadres of SMS-berichten ondersteund wanneer de gezondheid van waarschuwingen worden geactiveerd. 
+## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hoe kan ik wijzigen van waarschuwingen die zijn opgenomen in de status functie?
+Waarschuwings regels die voor elk status criterium zijn gedefinieerd, worden niet weer gegeven in de Azure Portal. U kunt een waarschuwings regel voor de status alleen in-of uitschakelen in de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). U kunt ook geen [Azure monitor actie groep](../../azure-monitor/platform/action-groups.md) toewijzen voor status waarschuwingen in de Azure Portal. U kunt de API voor meldings instellingen alleen gebruiken om een actie groep te configureren die wordt geactiveerd wanneer een status waarschuwing wordt geactiveerd. Op dit moment kunt u actie groepen toewijzen aan een virtuele machine, zodat alle *status waarschuwingen* voor de virtuele machine dezelfde actie groepen activeren. In tegens telling tot traditionele Azure-waarschuwingen is er geen concept van een afzonderlijke actie groep voor elke status waarschuwings regel. Daarnaast worden alleen actie groepen die zijn geconfigureerd om e-mail-of SMS-meldingen te bieden, ondersteund wanneer status waarschuwingen worden geactiveerd. 
 
-## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie niet sommige of alle gegevens in de prestatiegrafieken voor mijn virtuele machine
-Als er geen prestatiegegevens in de tabel schijf of in enkele van de van prestatiegrafieken en vervolgens uw prestatiemeteritems kunnen niet worden geconfigureerd in de werkruimte. Als u wilt oplossen, voert u de volgende [PowerShell-script](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
+## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie geen enkele of alle gegevens in de prestatie grafieken voor mijn VM
+Als u geen prestatie gegevens in de tabel schijf of in een aantal prestatie grafieken ziet, zijn de prestatie meter items mogelijk niet geconfigureerd in de werk ruimte. Voer het volgende [Power shell-script](vminsights-enable-at-scale-powershell.md#enable-with-powershell)uit om het probleem op te lossen.
 
-## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hoe verschilt Azure Monitor voor de functie voor toewijzing van virtuele machines van Serviceoverzicht?
-De Azure-Monitor voor de functie voor toewijzing van virtuele machines is gebaseerd op Service Map, maar heeft de volgende verschillen:
+## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hoe verschilt Azure Monitor voor VM's kaart functie van Servicetoewijzing?
+De functie Azure Monitor voor VM's map is gebaseerd op Servicetoewijzing, maar heeft de volgende verschillen:
 
-* De kaartweergave zijn toegankelijk vanaf de VM-beheerblade en van Azure Monitor voor virtuele machines in Azure Monitor.
-* De verbindingen in de kaart zijn nu klikbaar en een weergave van de metrische gegevens van de verbinding in het deelvenster aan clientzijde voor de geselecteerde verbinding.
-* Er is een nieuwe API die wordt gebruikt voor de toewijzingen voor betere ondersteuning van meer complexe kaarten maken.
-* Bewaakte VM's zijn nu opgenomen in het knooppunt voor de client en het ringdiagram toont het deel van de bewaakte vs niet-bewaakte virtuele machines in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep is uitgevouwen.
-* Bewaakte virtuele machines zijn nu opgenomen in de knooppunten poort groep en het ringdiagram toont het deel van de bewaakte vs niet-gecontroleerde computers in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep is uitgevouwen.
-* De stijl van de kaart is meer consistent zijn met App-kaart van Application insights bijgewerkt.
-* De panelen aan clientzijde zijn bijgewerkt, en hoeft niet de volledige set met integratie van die werden ondersteund in de Serviceoverzicht - updatebeheer, bijhouden, beveiliging en -servicedesk. 
-* De optie voor het kiezen van groepen en computers toe te wijzen, is bijgewerkt en biedt nu ondersteuning voor abonnementen, resourcegroepen, schaalsets van virtuele Azure-machine en cloudservices.
-* U kunt nieuwe Serviceoverzicht machine-groepen maken in de Azure-Monitor voor de functie voor virtuele machines toewijzen.  
+* De kaart weergave is toegankelijk via de VM-Blade en uit Azure Monitor voor VM's onder Azure Monitor.
+* De verbindingen in de kaart kunnen nu worden geklikt en weer geven van de verbindings gegevens in het deel venster voor de geselecteerde verbinding.
+* Er is een nieuwe API die wordt gebruikt om de kaarten te maken voor betere ondersteuning van complexere kaarten.
+* Bewaakte Vm's zijn nu opgenomen in het knoop punt client groep en het ring diagram toont het aandeel van de bewaakte en niet-bewaakte virtuele machines in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep wordt uitgevouwen.
+* Bewaakte virtuele machines zijn nu opgenomen in de server poort groep knoop punten en het ring diagram toont het aandeel van de bewaakte en niet-bewaakte computers in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep wordt uitgevouwen.
+* De kaart stijl is bijgewerkt zodat deze consistent is met de app-toewijzing van Application Insights.
+* De side panels zijn bijgewerkt en hebben niet de volledige set integraties die worden ondersteund in Servicetoewijzing-Updatebeheer, Wijzigingen bijhouden, beveiliging en Service Desk. 
+* De optie voor het kiezen van groepen en machines die u wilt toewijzen, is bijgewerkt en ondersteunt nu abonnementen, resource groepen, Azure-schaal sets voor virtuele machines en Cloud Services.
+* U kunt geen nieuwe Servicetoewijzing machine groepen maken in de functie Azure Monitor voor VM's kaart.  
 
-## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Waarom kunnen mijn prestatiegrafieken stippellijnen weergeven?
-Dit kan gebeuren een aantal oorzaken hebben.  In gevallen waarbij er een onderbreking in het verzamelen van gegevens wordt de stippellijn met regels weer.  Als u de samplingfrequentie gegevens voor de prestatiemeteritems ingeschakeld hebt gewijzigd (de standaardinstelling is het verzamelen van gegevens elke 60 seconden), ziet u de stippellijn in de grafiek als u een smal tijdsbereik voor de grafiek en de samplingfrequentie is kleiner dan de Bucketgrootte in de grafiek gebruikt (bijvoorbeeld de samplingfrequentie is elke 10 minuten en elke bucket op de grafiek is 5 minuten).  Het kiezen van een breder scala van de tijd om weer te geven, zou de regels van de grafiek wordt weergegeven als ononderbroken lijnen in plaats van punten in dit geval veroorzaken.
+## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Waarom worden stippel lijnen weer gegeven in mijn Performance grafieken?
+Dit kan een paar oorzaken hebben.  Als er sprake is van een onderbreking in het verzamelen van gegevens, worden de lijnen weer gegeven als gestippeld.  Als u de gegevens sampling frequentie hebt gewijzigd voor de prestatie meter items ingeschakeld (de standaard instelling is het verzamelen van gegevens elke 60 seconden), kunt u stippel lijnen in de grafiek zien als u een beperkt tijds bereik voor de grafiek kiest en de sampling frequentie kleiner is dan de Bucket grootte die in de grafiek wordt gebruikt (bijvoorbeeld de sampling frequentie is elke 10 minuten en elke Bucket in de grafiek is 5 minuten).  Als u een breder tijds bereik kiest voor weer gave, moeten de grafiek lijnen worden weer gegeven als ononderbroken lijnen in plaats van punten in dit geval.
 
-## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Worden groepen ondersteund met Azure Monitor voor virtuele machines?
-Ja, zodra u de agent voor afhankelijkheden we gegevens verzamelen van de virtuele machines om weer te geven van de groepen op basis van abonnement, resourcegroep, virtuele machine schaalsets, en cloudservices.  Als u hebt gebruikt Serviceoverzicht en machine-groepen hebt gemaakt, worden deze ook weergegeven.  Computergroepen wordt ook weergegeven in het filter groepen als u deze hebt gemaakt voor de werkruimte die u bekijkt. 
+## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Worden groepen ondersteund met Azure Monitor voor VM's?
+Ja, nadat u de afhankelijkheids agent hebt geïnstalleerd, verzamelen we informatie van de virtuele machines om groepen weer te geven op basis van het abonnement, de resource groep, de schaal sets voor virtuele machines en Cloud Services.  Als u Servicetoewijzing hebt gebruikt en computer groepen hebt gemaakt, worden deze ook weer gegeven.  Computer groepen worden ook weer gegeven in het filter groepen als u deze hebt gemaakt voor de werk ruimte die u bekijkt. 
 
-## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hoe zien de details voor wat het 95e percentiel vraagt om een lijndiagram in het aggregaat prestaties?
-Standaard wordt de lijst om weer te geven u de virtuele machines waarvoor de hoogste waarde voor het 95e percentiel voor de geselecteerde metrische gegevens, met uitzondering van de grafiek beschikbaar geheugen, waarin de machines met de laagste waarde van 5% van de gevallen gesorteerd.  Te klikken op de grafiek wordt geopend de **Top N lijst** weergeven met de juiste metriek geselecteerd.
+## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hoe kan ik raadpleegt u de details van wat is de 95e percentiel regel in de samengevoegde prestatie grafieken?
+Standaard wordt de lijst gesorteerd om u de virtuele machines weer te geven die de hoogste waarde voor het 95e percentiel hebben voor de geselecteerde metriek, met uitzonde ring van de beschik bare geheugen grafiek, waarin de computers met de laagste waarde van het vijfde percentiel worden weer gegeven.  Als u op de grafiek klikt, wordt de **bovenste N lijst** weergave geopend met de juiste metriek geselecteerd.
 
-## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hoe wordt de functie voor toewijzing dubbele IP-adressen in verschillende vnets en subnetten verwerkt?
-Als u IP-adresbereiken dupliceert met virtuele machines of virtuele machine van Azure schaalsets in subnetten en vnets, kan dit leiden tot Azure-Monitor voor virtuele machines toewijzen om onjuiste gegevens weer te geven. Dit is een bekend probleem en we bekijken de opties om deze ervaring te verbeteren.
+## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hoe verwerken de kaart functie dubbele IP-adressen over verschillende vnets en subnetten?
+Als u IP-bereiken dupliceert met Vm's of virtuele-machine schaal sets van Azure in subnetten en vnets, kan dit ertoe leiden dat Azure Monitor voor VM's kaart onjuiste gegevens weergeeft. Dit is een bekend probleem en we onderzoeken de opties om deze ervaring te verbeteren.
 
-## <a name="does-map-feature-support-ipv6"></a>Ondersteuning voor IPv6-functies worden toegewezen?
-Map-functie ondersteunt momenteel alleen IPv4 en we bekijken de ondersteuning voor IPv6. We ondersteunen ook IPv4 die wordt toegepast in IPv6.
+## <a name="does-map-feature-support-ipv6"></a>Ondersteunt de functie voor het toewijzen van IPv6?
+De toewijzings functie ondersteunt momenteel alleen IPv4 en we onderzoeken de ondersteuning voor IPv6. We bieden ook ondersteuning voor IPv4 die in IPv6 is getunneld.
 
-## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Wanneer ik een toewijzing voor een resourcegroep of andere grote groep laadt is de kaart het moeilijk om weer te geven
-Terwijl we verbeteringen in kaart aangebracht hebben voor het afhandelen van grote en complexe configuraties, realiseren we ons dat een kaart kan hebben een groot aantal knooppunten, verbindingen en knooppunt werkt als een cluster.  We zijn om verder te verbeteren van ondersteuning voor meer schaalbaarheid.   
+## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Wanneer ik een kaart voor een resource groep of een andere grote groep laad, kan de kaart moeilijk worden weer gegeven
+We hebben verbeteringen aangebracht in de toewijzing van het verwerken van grote en complexe configuraties, maar het is ook mogelijk dat een kaart een groot aantal knoop punten, verbindingen en een knoop punt als een cluster kan hebben.  We streven ernaar om ondersteuning te blijven bieden om de schaal baarheid te verbeteren.   
 
-## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Waarom ziet de grafiek netwerk op het tabblad prestaties er anders dan de grafiek netwerk op de pagina overzicht van Azure-VM?
+## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Waarom ziet de netwerk grafiek op het tabblad prestaties er anders uit dan de netwerk grafiek op de overzichts pagina van de Azure VM?
 
-De overzichtspagina voor een Azure-VM wordt weergegeven voor diagrammen op basis van de meting van de host van de activiteit in de Gast-VM.  Voor op de Azure VM-overzicht van de grafiek netwerk alleen wordt weergegeven netwerkverkeer dat wordt in rekening gebracht.  Dit omvat geen inter-vnet-verkeer.  De gegevens en grafieken weergegeven voor Azure Monitor voor virtuele machines is gebaseerd op gegevens van de Gast-VM en de netwerk-grafiek wordt weergegeven voor alle TCP/IP-verkeer dat binnenkomend en uitgaand naar die virtuele machine, met inbegrip van inter-vnet.
+Op de overzichts pagina voor een Azure-VM worden grafieken weer gegeven op basis van de meting van de activiteit van de host in de gast-VM.  Voor de netwerk grafiek in het overzicht van de Azure-VM wordt alleen het netwerk verkeer weer gegeven dat wordt gefactureerd.  Dit omvat geen Inter-vnet-verkeer.  De gegevens en grafieken die voor Azure Monitor voor VM's worden weer gegeven, zijn gebaseerd op gegevens van de gast-VM en de netwerk grafiek bevat alle TCP/IP-verkeer dat binnenkomend en uitgaand is voor die virtuele machine, inclusief tussen-vnet.
 
-## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hoe wordt de reactietijd voor gegevens die zijn opgeslagen in VMConnection en weergegeven in het deelvenster van de verbinding en de werkmappen gemeten?
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hoe wordt de reactie tijd gemeten voor gegevens die zijn opgeslagen in VMConnection en worden weer gegeven in het deel venster verbinding en in werkmappen?
 
-Reactietijd is een benadering. Omdat we de code van de toepassing niet instrumenteren doen, weten we nog niet echt als een aanvraag wordt gestart en wanneer het antwoord wordt ontvangen. In plaats daarvan wordt meegerekend gegevens die worden verzonden via een verbinding en klik vervolgens op gegevens die via die verbinding. De agent houdt van deze verzendt en ontvangt en wil ze worden gekoppeld: een reeks verzendt, gevolgd door een reeks ontvangt wordt geïnterpreteerd als een paar aanvraag/antwoord. De tijd tussen deze bewerkingen is de reactietijd. Het bevat de netwerklatentie en de verwerkingstijd van de server.
+De reactie tijd is een benadering. Omdat we de code van de toepassing niet instrumenteren, weten we niet echt wanneer een aanvraag begint en wanneer het antwoord wordt ontvangen. In plaats daarvan zien we dat er gegevens worden verzonden via een verbinding en dat de gegevens vervolgens weer worden teruggestuurd op deze verbinding. Onze agent houdt deze verzenden en ontvangen en probeert deze te koppelen: een volg orde van verzen dingen, gevolgd door een reeks ontvangen, wordt geïnterpreteerd als een aanvraag/antwoord-paar. De tijds duur tussen deze bewerkingen is de reactie tijd. Deze bevat de netwerk latentie en de verwerkings tijd van de server.
 
-Deze benadering geschikt is voor protocollen die aanvraag/antwoord op basis van zijn: een enkele aanvraag wordt verwerkt via de verbinding en één antwoord wordt ontvangen. Dit is het geval voor HTTP (S) (zonder pipelining), maar niet tevreden voor andere protocollen.
+Deze benadering werkt goed voor protocollen die op aanvraag/antwoord zijn gebaseerd: een enkele aanvraag verloopt op de verbinding en er wordt één antwoord ontvangen. Dit is het geval voor HTTP (S) (zonder pipeline), maar niet aan andere protocollen is voldaan.
 
-## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Zijn de beperkingen ervan als ik op de Log Analytics gratis prijsstelling?
-Als u Azure Monitor hebt geconfigureerd met een Log Analytics-werkruimte met de *gratis* prijscategorie, Azure Monitor voor de functie voor toewijzing van virtuele machines ondersteunen alleen vijf verbonden machines verbonden met de werkruimte. Als u vijf virtuele machines die zijn verbonden met een gratis werkruimte hebt, u verbinding te verbreken van de virtuele machines en later verbindt vervolgens een nieuwe virtuele machine, de nieuwe virtuele machine wordt niet bewaakt en doorgevoerd op de pagina overzicht.  
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Zijn er beperkingen als ik aan het gratis prijs plan van Log Analytics?
+Als u Azure Monitor hebt geconfigureerd met een Log Analytics-werk ruimte met behulp van de *gratis* prijs categorie, worden in azure monitor voor VM's kaart-functie alleen vijf verbonden computers ondersteund die zijn verbonden met de werk ruimte. Als u vijf Vm's hebt verbonden met een gratis werk ruimte, verbreekt u de verbinding van een van de virtuele machines en maakt u later een nieuwe virtuele machine, de nieuwe virtuele machine wordt niet bewaakt en wordt niet weer gegeven op de pagina overzicht.  
 
-In dit geval wordt er een bericht met de **nu proberen** wanneer u de virtuele machine openen en selecteer de optie **inzichten (preview)** in het linkervenster, zelfs nadat deze is al is geïnstalleerd op de virtuele machine.  Echter, u niet gevraagd met opties als normaal gesproken optreden zou als deze virtuele machine niet toegevoegd aan Azure-Monitor voor virtuele machines zijn. 
+In dit voor beeld wordt u gevraagd de optie **nu proberen** te kiezen wanneer u de virtuele machine opent en **inzichten (preview)** selecteert in het linkerdeel venster, zelfs nadat het al op de virtuele machine is geïnstalleerd.  U wordt echter niet gevraagd naar opties die normaal gesp roken optreden als deze virtuele machine niet is opvoerd aan Azure Monitor voor VM's. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Beoordeling [Azure Monitor inschakelen voor virtuele machines](vminsights-enable-overview.md) voor informatie over vereisten en methoden voor bewaking van uw virtuele machines wilt inschakelen.
+Bekijk [Azure monitor voor VM's](vminsights-enable-overview.md) om inzicht te krijgen in de vereisten en methoden om de bewaking van uw virtuele machines mogelijk te maken.

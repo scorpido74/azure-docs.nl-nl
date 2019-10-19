@@ -1,30 +1,30 @@
 ---
-title: Apache Kafka ingeschakelde event hub maken - Azure Event Hubs | Microsoft Docs
-description: Dit artikel bevat een overzicht voor het maken van een Apache Kafka Azure Event Hubs-naamruimte ingeschakeld met behulp van de Azure-portal.
+title: Apache Kafka ingeschakelde Event Hub-Azure Event Hubs maken | Microsoft Docs
+description: Dit artikel bevat een overzicht van het maken van een Apache Kafka Azure Event Hubs-naam ruimte die is ingeschakeld met behulp van de Azure Portal.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 9ce0f74ec6d4e536bfb3fe827ae6f8ae143b640e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822484"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555813"
 ---
-# <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka ingeschakeld eventhubs maken
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka ingeschakelde Event hubs maken
 
-Azure Event Hubs is een Big Data Platform as a Service (PaaS) waarmee miljoenen gebeurtenissen per seconde kan opnemen, en lage latentie en hoge doorvoer voor realtime analyses en visualisatie te streamen.
+Azure Event Hubs is een Big data streaming platform as a Service (PaaS) dat miljoenen gebeurtenissen per seconde opneemt en een lage latentie en hoge door Voer voor realtime analyse en visualisatie biedt.
 
-Azure Event Hubs biedt u een Kafka-eindpunt. Dit eindpunt kunt u uw Event Hubs-naamruimte te begrijpen systeemeigen [Apache Kafka](https://kafka.apache.org/intro) message protocol en API's. Met deze functie kunt u communiceren met uw eventhubs als u met Kafka-onderwerpen zonder te wijzigen van uw clients protocol of uitvoeren van uw eigen clusters. Biedt ondersteuning voor Eventhubs [Apache Kafka-versies 1.0](https://kafka.apache.org/10/documentation.html) en hoger.
+Azure Event Hubs biedt u een Kafka-eind punt. Met dit eind punt kan uw Event Hubs naam ruimte systeem eigen inzicht krijgen in [Apache Kafka](https://kafka.apache.org/intro) bericht protocol en api's. Met deze mogelijkheid kunt u met uw event hubs communiceren zoals u zou doen met Kafka-onderwerpen zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Event Hubs ondersteunt [Apache Kafka versie 1,0](https://kafka.apache.org/10/documentation.html) en hoger.
 
-In dit artikel wordt beschreven hoe u een Event Hubs-naamruimte maken en haal de verbindingsreeks die is vereist voor het verbinding maken met Kafka-toepassingen met Kafka-functionaliteit eventhubs.
+In dit artikel wordt beschreven hoe u een Event Hubs naam ruimte maakt en hoe u de connection string nodig hebt om verbinding te maken tussen Kafka-toepassingen en Kafka-Event hubs.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,13 +32,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken waarvoor Kafka is ingeschakeld
 
-1. Aanmelden bij de [Azure-portal][Azure portal], en klikt u op **een resource maken** op linksboven in het scherm.
+1. Meld u aan bij de [Microsoft Azure-portal][Azure portal] en klik op **Een resource maken** linksboven in het scherm.
 
 2. Zoek naar Event Hubs en selecteer de hier getoonde opties:
     
     ![Zoeken naar Event Hubs in de portal](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Geef een unieke naam op en schakel Kafka in op de naamruimte. Klik op **Create**.
+3. Geef een unieke naam op en schakel Kafka in op de naamruimte. Klik op **Maken**.
     
     ![Een naamruimte maken](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -56,7 +56,7 @@ U kunt nu gebeurtenissen vanaf uw toepassing, waarbij gebruikgemaakt wordt van h
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg deze koppelingen voor meer informatie over Event Hubs:
+Ga voor meer informatie over Event Hubs naar deze koppelingen:
 
 * [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 * [Meer informatie over Event Hubs for Kafka](event-hubs-for-kafka-ecosystem-overview.md)

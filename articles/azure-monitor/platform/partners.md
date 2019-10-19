@@ -1,19 +1,18 @@
 ---
 title: Partners die integreren met Azure Monitor
 description: Meer informatie over de partners van Azure Monitor en hoe u toegang kunt krijgen tot documentatie voor de integratie met deze.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262302"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552067"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -96,7 +95,7 @@ De Dynatrace OneAgent kan worden geïntegreerd met Azure-Vm's en App Services vi
 
 [Ga naar de documentatie.][dynatrace-doc]
 
-## <a name="elastic"></a>Elastisch
+## <a name="elastic"></a>Flexibel
 
 ![Elastisch logo](./media/partners/elastic.png)
 

@@ -1,20 +1,18 @@
 ---
 title: Versie geschiedenis van Azure Diagnostics-extensie configuratie schema
 description: Relevant voor het verzamelen van prestatie meter items in azure Virtual Machines, VM Scale Sets, Service Fabric en Cloud Services.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/04/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/04/2019
+ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735094"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552134"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Versie en geschiedenis van het configuratie schema van Azure Diagnostics-extensie
 Deze pagina indexeert Azure Diagnostics extensie schema versies die als onderdeel van de Microsoft Azure SDK worden geleverd.  
@@ -36,17 +34,17 @@ De uitbrei ding Azure Diagnostics wordt gebruikt met andere micro soft Diagnosti
 |Azure SDK-versie | Uitbrei ding van diagnostische gegevens | Model|  
 |------------------|-------------------------------|------|  
 |1.x               |1.0                            |invoeg toepassing|  
-|2.0 - 2.4         |1.0                            |invoeg toepassing|  
-|2.5               |1.2                            |switch|  
-|2.6               |1.3                            |"|  
-|2.7               |1.4                            |"|  
-|2.8               |1.5                            |"|  
-|2.9               |1.6                            |"|
-|2.96              |1.7                            |"|
-|2.96              |1.8                            |"|
-|2.96              |1.8.1                          |"|
-|2.96              |1.9                            |"|
-|2.96              |1,11                           |"|
+|2,0-2,4         |1.0                            |invoeg toepassing|  
+|2,5               |1.2                            |switch|  
+|2,6               |1.3                            |"|  
+|2,7               |1,4                            |"|  
+|2,8               |1.5                            |"|  
+|2,9               |1,6                            |"|
+|2,96              |1,7                            |"|
+|2,96              |1,8                            |"|
+|2,96              |1.8.1                          |"|
+|2,96              |1,9                            |"|
+|2,96              |1,11                           |"|
 
 
  Azure Diagnostics versie 1,0 eerst verzonden in een invoeg toepassings model, wat betekent dat wanneer u de Azure SDK installeert, u beschikt over de versie van Azure Diagnostics.  
@@ -62,7 +60,7 @@ Verschillende versies van Azure Diagnostics gebruiken verschillende configuratie
 Er is ondersteuning toegevoegd voor de Azure Monitor sink. Deze sink is alleen van toepassing op prestatie meter items. Hiermee wordt het verzenden van prestatie meter items die zijn verzameld op uw virtuele machine, VMSS of Cloud service, mogelijk om Azure Monitor als aangepaste metrische gegevens. De Azure Monitor Sink ondersteunt:
 * Ophalen van alle prestatie meter items die zijn verzonden naar Azure Monitor via de [API voor Azure monitor metrische gegevens.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 * Waarschuwingen voor alle prestatie meter items die worden verzonden naar Azure Monitor via de nieuwe [Unified Alerts-ervaring](../../azure-monitor/platform/alerts-overview.md) in azure monitor
-* De operator wild behandelen in prestatie meter items als de dimensie ' instance ' op uw metrische waarde. Als u bijvoorbeeld het prestatie meter item ' Logical\*()/DiskWrites/sec ' hebt verzameld, kunt u de dimensie ' instance ' filteren en splitsen voor het uitzetten of waarschuwen van schrijf bewerkingen per seconde voor elke logische schijf (C:, D:, enzovoort).
+* De operator wild behandelen in prestatie meter items als de dimensie ' instance ' op uw metrische waarde. Als u bijvoorbeeld het prestatie meter item ' logische schijf (\*)/DiskWrites/sec ' hebt verzameld, kunt u de dimensie ' instance ' filteren en splitsen voor het uitzetten of waarschuwen van de schrijf bewerkingen per seconde van de schijf (C:, D:, enzovoort).
 
 Azure Monitor definiëren als een nieuwe sink in de configuratie van de diagnostische gegevens
 ```json
@@ -174,14 +172,14 @@ Het sinks-element is toegevoegd en de mogelijkheid om diagnostische gegevens naa
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 en diagnostische uitbrei ding 1,3
 Voor Cloud service projecten in Visual Studio zijn de volgende wijzigingen aangebracht. (Deze wijzigingen zijn ook van toepassing op latere versies van de Azure SDK.)
 
-* De lokale emulator biedt nu ondersteuning voor diagnostische gegevens. Met deze wijziging kunt u Diagnostische gegevens verzamelen en ervoor zorgen dat uw toepassing de juiste traceringen maakt tijdens het ontwikkelen en testen in Visual Studio. Met de `UseDevelopmentStorage=true` Connection String wordt het verzamelen van diagnostische gegevens ingeschakeld terwijl u uw Cloud service project in Visual Studio uitvoert met behulp van de Azure-opslag emulator. Alle diagnostische gegevens worden verzameld in het opslag account (Development Storage).
+* De lokale emulator biedt nu ondersteuning voor diagnostische gegevens. Met deze wijziging kunt u Diagnostische gegevens verzamelen en ervoor zorgen dat uw toepassing de juiste traceringen maakt tijdens het ontwikkelen en testen in Visual Studio. Met de connection string `UseDevelopmentStorage=true` wordt het verzamelen van diagnostische gegevens ingeschakeld terwijl u uw Cloud service project in Visual Studio uitvoert met behulp van de Azure-opslag emulator. Alle diagnostische gegevens worden verzameld in het opslag account (Development Storage).
 * Het opslag account voor diagnostische gegevens connection string (micro soft. WindowsAzure. plugins. Diagnostics. Connections Tring) wordt eenmaal in het service configuratie bestand (. cscfg) opgeslagen. In azure SDK 2,5 is het opslag account voor diagnostische gegevens opgegeven in het bestand Diagnostics. wadcfgx.
 
 Er zijn enkele belang rijke verschillen tussen de manier waarop de connection string in azure SDK 2,4 en eerder heeft gewerkt en hoe deze werkt in azure SDK 2,6 of hoger.
 
 * In azure SDK 2,4 en eerder werd de connection string tijdens runtime gebruikt door de diagnostische invoeg toepassing om de gegevens van het opslag account voor het overbrengen van Diagnostische logboeken te verkrijgen.
 * In azure SDK 2,6 en hoger gebruikt Visual Studio de diagnostische connection string om de diagnostische extensie te configureren met de juiste gegevens over het opslag account tijdens het publiceren. Met de connection string kunt u verschillende opslag accounts definiëren voor verschillende service configuraties die door Visual Studio worden gebruikt bij het publiceren. Omdat de diagnostische invoeg toepassing echter niet meer beschikbaar is (na Azure SDK 2,5), kan het. cscfg-bestand de uitbrei ding voor diagnostische gegevens niet inschakelen. U moet de uitbrei ding afzonderlijk inschakelen via hulpprogram ma's als Visual Studio of Power shell.
-* Om het proces voor het configureren van de diagnostische uitbrei ding met Power shell te vereenvoudigen, bevat de pakket uitvoer van Visual Studio ook de open bare configuratie-XML voor de uitbrei ding van diagnostische gegevens voor elke rol. Visual Studio gebruikt de diagnostische connection string om de gegevens van het opslag account die aanwezig zijn in de open bare configuratie in te vullen. De open bare configuratie bestanden worden gemaakt in de map Extensions en volgen het `PaaSDiagnostics.<RoleName>.PubConfig.xml`patroon. Alle implementaties op basis van Power shell kunnen dit patroon gebruiken om elke configuratie aan een rol toe te wijzen.
+* Om het proces voor het configureren van de diagnostische uitbrei ding met Power shell te vereenvoudigen, bevat de pakket uitvoer van Visual Studio ook de open bare configuratie-XML voor de uitbrei ding van diagnostische gegevens voor elke rol. Visual Studio gebruikt de diagnostische connection string om de gegevens van het opslag account die aanwezig zijn in de open bare configuratie in te vullen. De open bare configuratie bestanden worden gemaakt in de map extensies en volgen het patroon `PaaSDiagnostics.<RoleName>.PubConfig.xml`. Alle implementaties op basis van Power shell kunnen dit patroon gebruiken om elke configuratie aan een rol toe te wijzen.
 * De connection string in het cscfg-bestand wordt ook gebruikt door de Azure Portal om toegang te krijgen tot de diagnostische gegevens, zodat deze kunnen worden weer gegeven op het tabblad **bewaking** . De connection string is nodig om de service zo te configureren dat uitgebreide bewakings gegevens in de portal worden weer gegeven.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Projecten migreren naar Azure SDK 2,6 en hoger
@@ -195,7 +193,7 @@ Bij de migratie van Azure SDK 2,5 naar Azure SDK 2,6 of hoger, als u een diagnos
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>Wat gebeurt er met het bijwerken van de verbindings reeksen voor de ontwikkelings opslag... selectie vakje doen?
 Het selectie vakje voor het bijwerken van de **verbindings reeksen voor de opslag van ontwikkel aars voor diagnostische gegevens en caching met Microsoft Azure Storage-account referenties bij het publiceren naar Microsoft Azure** biedt u een gemakkelijke manier om een ontwikkelings-opslag account bij te werken verbindings reeksen met het Azure Storage-account dat is opgegeven tijdens het publiceren.
 
-Stel dat u dit selectie vakje inschakelt en de diagnostische connection string `UseDevelopmentStorage=true`opgeeft. Wanneer u het project naar Azure publiceert, werkt Visual Studio automatisch de diagnostische connection string bij met het opslag account dat u in de wizard Publiceren hebt opgegeven. Als er echter een echt opslag account is opgegeven als de diagnostische connection string, wordt dat account in plaats daarvan gebruikt.
+Stel dat u dit selectie vakje inschakelt en de diagnostische connection string geeft `UseDevelopmentStorage=true` op. Wanneer u het project naar Azure publiceert, werkt Visual Studio automatisch de diagnostische connection string bij met het opslag account dat u in de wizard Publiceren hebt opgegeven. Als er echter een echt opslag account is opgegeven als de diagnostische connection string, wordt dat account in plaats daarvan gebruikt.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Verschillen in de functionaliteit van diagnostische functies tussen de Azure SDK 2,4 en eerdere en Azure SDK 2,5 en hoger
 Als u uw project bijwerkt vanuit Azure SDK 2,4 naar Azure SDK 2,5 of hoger, moet u rekening houdt met de volgende verschillen in de diagnostische functies.

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431873"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554216"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -83,7 +83,7 @@ Als u wilt weten hoeveel gegevens uw app verzendt, kunt u het volgende doen:
 
 * Ga naar het deel venster **gebruik en geraamd kosten** om de grafiek met het dagelijkse gegevens volume weer te geven. 
 * Voeg in Metrics Explorer een nieuwe grafiek toe. Voor de grafiek metriek selecteert u **gegevens punt volume**. Schakel **groeperen**in en groepeer vervolgens op **gegevens type**.
-* Gebruik het gegevens type @no__t 0. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
+* Gebruik het `systemEvents`-gegevens type. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
 
 ```kusto
 systemEvents 
@@ -170,7 +170,7 @@ Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **ge
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
-De retentie kan ook via [Power shell worden ingesteld](powershell.md) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. 
+De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. 
 
 Wanneer het factureren voor een langere Bewaar 2019 periode begint, worden de gegevens die langer zijn dan 90 dagen, gefactureerd als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 

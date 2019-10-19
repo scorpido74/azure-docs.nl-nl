@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101565"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553464"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Een gegeneraliseerde VHD uploaden en gebruiken om nieuwe virtuele machines te maken in azure
 
@@ -47,7 +47,7 @@ Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden 
 > 
 
 1. Meld u aan bij de virtuele Windows-machine.
-2. Open het venster met de opdrachtprompt als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe`.
+2. Open het venster met de opdrachtprompt als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer `sysprep.exe` uit.
 3. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is ingeschakeld.
 4. Selecteer voor **afsluit opties**de optie **Afsluiten**.
 5. Selecteer **OK**.
@@ -56,67 +56,14 @@ Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden 
 6. Wanneer Sysprep is voltooid, wordt de virtuele machine afgesloten. Start de virtuele machine niet opnieuw op.
 
 
-## <a name="get-a-storage-account"></a>Een opslag account ophalen
-
-U hebt een opslag account in azure nodig om de geüploade VM-installatie kopie op te slaan. U kunt een bestaand opslag account gebruiken of een nieuwe maken. 
-
-Als u de VHD gebruikt voor het maken van een beheerde schijf voor een virtuele machine, moet de locatie van het opslag account gelijk zijn aan de locatie waar u de virtuele machine gaat maken.
-
-Voer het volgende in om de beschik bare opslag accounts weer te geven:
-
-```azurepowershell
-Get-AzStorageAccount | Format-Table
-```
-
 ## <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account
 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* geüpload van *C:\Users\Public\Documents\Virtual harde\\ schijven* naar een opslag account met de naam *mystorageaccount* in de resource groep *myResourceGroup* . Het bestand wordt in de container met de naam *mycontainer* geplaatst en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
-
-```powershell
-$rgName = "myResourceGroup"
-$urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
-    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Als dat lukt, krijgt u een antwoord dat er ongeveer als volgt uitziet:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand kan het enige tijd duren voordat deze opdracht is voltooid.
-
-### <a name="other-options-for-uploading-a-vhd"></a>Andere opties voor het uploaden van een VHD
- 
-U kunt ook een VHD uploaden naar uw opslag account met behulp van een van de volgende opties:
-
-- [AzCopy](https://aka.ms/downloadazcopy)
-- [BLOB-API Azure Storage kopiëren](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Azure Storage Explorer uploaden van blobs](https://azurestorageexplorer.codeplex.com/)
-- [Naslag informatie voor Storage import/export-service REST API](https://msdn.microsoft.com/library/dn529096.aspx)
--   U kunt het beste de import/export-service gebruiken als de geschatte upload tijd langer is dan zeven dagen. U kunt [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) gebruiken om de tijd te schatten van de gegevens grootte en de overdrachts eenheid. 
-    Importeren/exporteren kan worden gebruikt om naar een Standard-opslag account te kopiëren. U moet de standaard opslag kopiëren naar een Premium Storage-account met behulp van een hulp programma zoals AzCopy.
-
-> [!IMPORTANT]
-> Als u AzCopy gebruikt om uw VHD te uploaden naar Azure, moet u ervoor zorgen dat u [ **/BlobType: pagina**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) hebt ingesteld voordat u het upload script uitvoert. Als de bestemming een blob is en deze optie niet is opgegeven, maakt AzCopy standaard een blok-blob.
-> 
-> 
-
+U kunt nu een VHD rechtstreeks uploaden naar een beheerde schijf. Zie [een VHD uploaden naar Azure met Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md)voor instructies.
 
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Een beheerde installatie kopie maken op basis van de geüploade VHD 
 
-Een beheerde installatie kopie maken op basis van de gegeneraliseerde VHD van het besturings systeem. Vervang de volgende waarden door uw eigen gegevens.
+Maak een beheerde installatie kopie van de gegeneraliseerde door het besturings systeem beheerde schijf. Vervang de volgende waarden door uw eigen gegevens.
 
 
 Stel eerst een aantal para meters in:

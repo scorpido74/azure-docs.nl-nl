@@ -1,19 +1,18 @@
 ---
 title: Het algemene waarschuwings schema integreren met Logic Apps
 description: Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.
-author: ananthradhakrishnan
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: ananthradhakrishnan
+ms.author: robb
+ms.date: 05/27/2019
+ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702957"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555646"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Het algemene waarschuwings schema integreren met Logic Apps
 
@@ -37,7 +36,7 @@ In dit artikel wordt ervan uitgegaan dat de lezer bekend is met
 
 1.  Selecteer de trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
-    ![Triggers voor logische apps](media/action-groups-logic-app/logic-app-triggers.png "Triggers voor logische apps")
+    ![Triggers voor logische apps](media/action-groups-logic-app/logic-app-triggers.png "Triggers voor logische app")
 
 1.  Selecteer **bewerken** om de HTTP-aanvraag trigger te wijzigen.
 

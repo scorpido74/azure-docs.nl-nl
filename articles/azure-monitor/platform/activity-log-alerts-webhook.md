@@ -1,19 +1,18 @@
 ---
 title: Het webhook-schema dat wordt gebruikt in waarschuwingen voor activiteiten logboeken begrijpen
 description: Meer informatie over het schema van de JSON dat wordt gepost naar een webhook-URL wanneer een activiteiten logboek waarschuwing wordt geactiveerd.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/31/2017
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/31/2017
+ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675223"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552754"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
 Als onderdeel van de definitie van een actie groep kunt u webhook-eind punten configureren voor het ontvangen van waarschuwings meldingen voor activiteiten Logboeken. Met webhooks kunt u deze meldingen naar andere systemen sturen voor nabewerkingen of aangepaste acties. In dit artikel ziet u hoe de payload voor het HTTP POST-bericht naar een webhook eruit ziet.
@@ -61,7 +60,7 @@ De JSON-nettolading die deel uitmaakt van de POST-bewerking verschilt op basis v
 }
 ```
 
-### <a name="administrative"></a>Beheer
+### <a name="administrative"></a>Administratief
 
 ```json
 {
@@ -258,35 +257,35 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 }
 ```
 
-| De naam van element | Description |
+| Element naam | Beschrijving |
 | --- | --- |
 | status |Wordt gebruikt voor metrische waarschuwingen. Altijd ingesteld op geactiveerd voor waarschuwingen voor activiteiten Logboeken. |
-| Context |De context van de gebeurtenis. |
+| context |De context van de gebeurtenis. |
 | resourceProviderName |De resource provider van de betrokken resource. |
 | conditionType |Altijd ' gebeurtenis '. |
 | name |De naam van de waarschuwings regel. |
 | id |De resource-ID van de waarschuwing. |
 | description |De beschrijving van de waarschuwing wordt ingesteld wanneer de waarschuwing wordt gemaakt. |
 | subscriptionId |Azure-abonnements-ID. |
-| timestamp |Tijdstip waarop de gebeurtenis is gegenereerd door de Azure-service die de aanvraag heeft verwerkt. |
+| tijdstempel |Tijdstip waarop de gebeurtenis is gegenereerd door de Azure-service die de aanvraag heeft verwerkt. |
 | resourceId |De resource-ID van de betrokken resource. |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource. |
-| properties |Set `<Key, Value>`-paren (dat wil zeggen, `Dictionary<String, String>`) die details bevat over de gebeurtenis. |
-| gebeurtenis |Element dat meta gegevens bevat over de gebeurtenis. |
-| authorization |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
+| properties |Set `<Key, Value>` paren (`Dictionary<String, String>`) die informatie over de gebeurtenis bevatten. |
+| gebeurtenislog |Element dat meta gegevens bevat over de gebeurtenis. |
+| autorisatie |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
 | category |De categorie van de gebeurtenis. Ondersteunde waarden zijn onder andere: beheer, waarschuwing, beveiliging, ServiceHealth en aanbeveling. |
-| oproepende functie |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. Kan null zijn voor bepaalde systeem aanroepen. |
+| aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. Kan null zijn voor bepaalde systeem aanroepen. |
 | correlationId |Meestal een GUID in een teken reeks indeling. Gebeurtenissen met correlationId horen bij dezelfde grotere actie en delen meestal een correlationId. |
 | eventDescription |Statische tekst beschrijving van de gebeurtenis. |
 | eventDataId |De unieke id voor de gebeurtenis. |
 | Source |De naam van de Azure-service of-infra structuur die de gebeurtenis heeft gegenereerd. |
 | httpRequest |De aanvraag omvat meestal de clientRequestId-, clientIpAddress-en HTTP-methode (bijvoorbeeld PUT). |
-| level |Een van de volgende waarden: Kritiek, fout, waarschuwing en informatief. |
+| Afvlakking |Een van de volgende waarden: kritiek, fout, waarschuwing en informatief. |
 | operationId |Meestal een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |Naam van de bewerking. |
+| operationName |De naam van de bewerking. |
 | properties |De eigenschappen van de gebeurtenis. |
-| status |Tekenreeksexpressie. Status van de bewerking. Veelvoorkomende waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
-| subStatus |Bevat meestal de HTTP-status code van de bijbehorende REST-aanroep. Het kan ook andere teken reeksen bevatten die een substatus beschrijven. Algemene waarden voor Substatussen zijn onder andere OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code: 409), interne server fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503) en time-out voor gateway (HTTP-status code: 504). |
+| status |tekenreeksexpressie. De status van de bewerking. Veelvoorkomende waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
+| subStatus |Bevat meestal de HTTP-status code van de bijbehorende REST-aanroep. Het kan ook andere teken reeksen bevatten die een substatus beschrijven. Algemene Substatussen zijn onder andere OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code: 409 ), Interne server fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503) en time-out voor gateway (HTTP-status code: 504). |
 
 Zie [overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)voor specifieke schema Details over alle andere waarschuwingen voor activiteiten Logboeken.
 

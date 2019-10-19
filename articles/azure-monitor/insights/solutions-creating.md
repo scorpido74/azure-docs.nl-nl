@@ -1,86 +1,80 @@
 ---
-title: Een oplossing in Azure bouwen | Microsoft Docs
-description: Beheeroplossingen omvatten verpakte beheerscenario's in Azure die klanten aan de Log Analytics-werkruimte toevoegen kunnen.  In dit artikel vindt u informatie over hoe u oplossingen voor moet worden gebruikt in uw eigen omgeving kunt maken of beschikbaar wordt gesteld aan uw klanten.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
+title: Een beheer oplossing bouwen in azure | Microsoft Docs
+description: Beheer oplossingen bevatten ingebouwde beheer scenario's in azure die klanten aan hun Log Analytics-werk ruimte kunnen toevoegen.  In dit artikel vindt u informatie over het maken van beheer oplossingen voor gebruik in uw eigen omgeving of voor uw klanten beschikbaar.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef1af4d3d27bc098341a4de716e293557baa946a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595808"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555303"
 ---
-# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Ontwerpen en bouwen van een oplossing in Azure (Preview)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Een beheer oplossing ontwerpen en bouwen in azure (preview)
 > [!NOTE]
-> Dit is een voorlopige documentatie voor het maken van oplossingen in Azure die zich momenteel in preview. Er is geen schema die hieronder worden beschreven kan worden gewijzigd.
+> Dit is voorlopige documentatie voor het maken van beheer oplossingen in azure die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.
 
-[Beheeroplossingen]( solutions.md) bieden verpakte beheerscenario's die klanten aan de Log Analytics-werkruimte toevoegen kunnen.  In dit artikel geeft een basic-proces voor het ontwerpen en bouwen van een beheeroplossing die geschikt is voor de meest voorkomende vereisten.  Als u niet bekend bent met het bouwen van oplossingen voor het beheer kunt u dit proces gebruiken als een beginpunt en vervolgens gebruikmaken van de concepten voor meer complexe oplossingen als uw vereisten veranderen.
+[Beheer oplossingen]( solutions.md) bieden verpakte beheer scenario's die klanten aan hun log Analytics-werk ruimte kunnen toevoegen.  Dit artikel bevat een basis proces voor het ontwerpen en bouwen van een beheer oplossing die geschikt is voor de meest voorkomende vereisten.  Als u geen ervaring hebt met het bouwen van beheer oplossingen, kunt u dit proces gebruiken als uitgangs punt en vervolgens de concepten voor complexere oplossingen benutten wanneer uw vereisten worden ontwikkeld.
 
-## <a name="what-is-a-management-solution"></a>Wat is een beheeroplossing?
+## <a name="what-is-a-management-solution"></a>Wat is een beheer oplossing?
 
-Oplossingen voor bevatten Azure-resources die samenwerken om een bepaald beheerscenario.  Ze worden geïmplementeerd als [Resource Management-sjablonen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) die bevatten meer informatie over het installeren en configureren van hun ingesloten resources, wanneer de oplossing is geïnstalleerd.
+Beheer oplossingen bevatten Azure-resources die samen werken om een bepaald beheer scenario te krijgen.  Ze worden geïmplementeerd als [resource beheer sjablonen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) die details bevatten over het installeren en configureren van de opgenomen resources wanneer de oplossing is geïnstalleerd.
 
-De basic-strategie is om te beginnen de uw beheeroplossing voor het bouwen van de afzonderlijke onderdelen in uw Azure-omgeving.  Zodra u de functionaliteit die goed werkt hebt, klikt u vervolgens kunt u starten verpakking ze naar een [management oplossingsbestand]( solutions-solution-file.md). 
+De basis strategie bestaat uit het starten van de beheer oplossing door de afzonderlijke onderdelen in uw Azure-omgeving te bouwen.  Zodra u de functionaliteit hebt werken, kunt u deze in een bestand met een [beheer oplossing]( solutions-solution-file.md)inpakken. 
 
 
 ## <a name="design-your-solution"></a>Ontwerp uw oplossing
-De meest algemene patroon voor een oplossing voor beheer wordt in het volgende diagram weergegeven.  De verschillende onderdelen van dit patroon worden beschreven de hieronder.
+In het volgende diagram ziet u het meest voorkomende patroon voor een beheer oplossing.  De verschillende onderdelen in dit patroon worden hieronder beschreven.
 
-![Overzicht van de Management-oplossing](media/solutions-creating/solution-overview.png)
+![Overzicht van beheer oplossingen](media/solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Gegevensbronnen
-De eerste stap bij het ontwerpen van een oplossing is het vaststellen van de gegevens die u nodig van de opslagplaats van Log Analytics hebt.  Deze gegevens kan worden verzameld door een [gegevensbron](../../azure-monitor/platform/agent-data-sources.md) of [een andere oplossing]( solutions.md), of uw oplossing moet mogelijk opgeven van het proces voor het verzamelen van deze.
+De eerste stap bij het ontwerpen van een oplossing is het bepalen van de gegevens die u nodig hebt uit de Log Analytics opslag plaats.  Deze gegevens kunnen worden verzameld door een [gegevens bron](../../azure-monitor/platform/agent-data-sources.md) of [een andere oplossing]( solutions.md), of uw oplossing moet mogelijk het proces leveren om het te kunnen verzamelen.
 
-Er zijn een aantal manieren om gegevensbronnen die kunnen worden verzameld in de Log Analytics-opslagplaats, zoals beschreven in [gegevensbronnen in Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Dit omvat gebeurtenissen in het Windows-gebeurtenislogboek of die worden gegenereerd door Syslog naast prestatiemeteritems voor zowel Windows als Linux-clients.  U kunt ook gegevens verzamelen van Azure-resources die door Azure Monitor worden verzameld.  
+Er zijn een aantal manieren om gegevens bronnen te verzamelen die kunnen worden verzameld in de Log Analytics-opslag plaats, zoals beschreven in [gegevens bronnen in log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Dit omvat gebeurtenissen in het Windows-gebeurtenis logboek of gegenereerd door syslog naast de prestatie meter items voor Windows-en Linux-clients.  U kunt ook gegevens verzamelen van Azure-resources die worden verzameld door Azure Monitor.  
 
-Als u gegevens die niet toegankelijk zijn via een van de beschikbare gegevensbronnen nodig hebt, dan kunt u de [HTTP Data Collector API](../../azure-monitor/platform/data-collector-api.md) waarmee u gegevens schrijven naar de Log Analytics-opslagplaats van een willekeurige client die een REST-API kunt aanroepen.  Aangepaste gegevensverzameling in een oplossing voor de meest voorkomende manier is het maken van een [runbook in Azure Automation](../../automation/automation-runbook-types.md) die de vereiste gegevens verzamelt van Azure of externe resources en de Collector-API gebruikt om te schrijven naar de opslagplaats.  
+Als u gegevens nodig hebt die niet toegankelijk zijn via een van de beschik bare gegevens bronnen, kunt u de [http data collector API](../../azure-monitor/platform/data-collector-api.md) gebruiken, waarmee u gegevens kunt schrijven naar de log Analytics opslagplaats vanaf elke client die een rest API kan aanroepen.  De meest voorkomende methode voor het verzamelen van aangepaste gegevens in een beheer oplossing is het maken van een [runbook in azure Automation](../../automation/automation-runbook-types.md) waarmee de vereiste gegevens van Azure of externe resources worden verzameld en de Data Collector-API wordt gebruikt om naar de opslag plaats te schrijven.  
 
-### <a name="log-searches"></a>Zoekopdrachten in Logboeken
-[Zoekopdrachten](../../azure-monitor/log-query/log-query-overview.md) worden gebruikt om te extraheren en analyseren van gegevens in de Log Analytics-opslagplaats.  Ze worden gebruikt door weergaven en waarschuwingen naast de mogelijkheid van de gebruiker voor het uitvoeren van ad hoc-analyse van gegevens in de opslagplaats.  
+### <a name="log-searches"></a>Zoek opdrachten in Logboeken
+[Zoek opdrachten in Logboeken](../../azure-monitor/log-query/log-query-overview.md) worden gebruikt voor het extra heren en analyseren van gegevens in de opslag plaats log Analytics.  Deze worden gebruikt door weer gaven en waarschuwingen, naast de mogelijkheid om de gebruiker ad hoc-analyse van gegevens in de opslag plaats uit te voeren.  
 
-U moet alle query's waarvan u denkt is handig om de gebruiker dat, zelfs als ze niet worden gebruikt door alle weergaven of waarschuwingen definiëren.  Deze worden weergegeven die voor hen beschikbaar als opgeslagen zoekopdrachten in de portal en u kunt ook opnemen in een [lijstquery's visualisatie onderdeel](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) in uw aangepaste weergave.
+U moet alle query's definiëren waarvan u denkt dat ze nuttig zijn voor de gebruiker, zelfs als ze niet worden gebruikt door een weer gave of waarschuwing.  Deze zijn beschikbaar als opgeslagen Zoek opdrachten in de portal, en u kunt deze ook opnemen in een [lijst met visualisatie onderdelen voor query's](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) in uw aangepaste weer gave.
 
 ### <a name="alerts"></a>Waarschuwingen
-[Waarschuwingen in Log Analytics](../../azure-monitor/platform/alerts-overview.md) geven aan welke problemen via [zoekopdrachten](#log-searches) ten opzichte van de gegevens in de opslagplaats.  Ze een melding van de gebruiker of automatisch een actie uitvoeren als reactie. U moet verschillende waarschuwing voorwaarden voor uw toepassing te identificeren en bijbehorende waarschuwingsregels opnemen in uw oplossingsbestand.
+[Waarschuwingen in log Analytics](../../azure-monitor/platform/alerts-overview.md) problemen identificeren via [Zoek opdrachten](#log-searches) in het logboek voor de gegevens in de opslag plaats.  Ze geven de gebruiker hiervan op de hoogte of voeren automatisch een actie uit als reactie. U moet verschillende waarschuwings voorwaarden voor uw toepassing identificeren en de bijbehorende waarschuwings regels in het oplossings bestand toevoegen.
 
-Als het probleem kan mogelijk worden opgelost met een geautomatiseerd proces, zult u doorgaans een runbook maken in Azure Automation om uit te voeren van dit herstel.  De meeste Azure-services kunnen worden beheerd met [cmdlets](/powershell/azure/overview) die het runbook wilt gebruikmaken van dergelijke functies kunnen worden uitgevoerd.
+Als het probleem mogelijk kan worden opgelost met een geautomatiseerd proces, maakt u meestal een runbook in Azure Automation om dit herstel uit te voeren.  De meeste Azure-Services kunnen worden beheerd met [cmdlets](/powershell/azure/overview) die het runbook zou gebruiken om dergelijke functionaliteit uit te voeren.
 
-Als uw oplossing externe functionaliteit in reactie op een waarschuwing vereist, dan kunt u een [antwoord voor webhook](../../azure-monitor/platform/alerts-metric.md).  Hiermee kunt u een externe webservice verzenden van gegevens uit de waarschuwing niet aanroepen.
+Als uw oplossing externe functionaliteit vereist in reactie op een waarschuwing, kunt u een [webhook-antwoord](../../azure-monitor/platform/alerts-metric.md)gebruiken.  Hierdoor kunt u een externe webservice aanroepen die informatie van de waarschuwing verzendt.
 
 ### <a name="views"></a>Weergaven
-Weergaven in Log Analytics worden gebruikt voor het visualiseren van gegevens uit de opslagplaats van Log Analytics.  Elke oplossing bevatten doorgaans één weergave met een [tegel](../../azure-monitor/platform/view-designer-tiles.md) die wordt weergegeven op de belangrijkste dashboard van de gebruiker.  De weergave mag een willekeurig aantal [visualisatie delen](../../azure-monitor/platform/view-designer-parts.md) voor verschillende visualisaties van de verzamelde gegevens voor de gebruiker.
+Weer gaven in Log Analytics worden gebruikt voor het visualiseren van gegevens uit de Log Analytics opslag plaats.  Elke oplossing bevat doorgaans één weer gave met een [tegel](../../azure-monitor/platform/view-designer-tiles.md) die wordt weer gegeven op het hoofd Dashboard van de gebruiker.  De weer gave kan een wille keurig aantal [visualisatie onderdelen](../../azure-monitor/platform/view-designer-parts.md) bevatten om verschillende visualisaties van de verzamelde gegevens aan de gebruiker te bieden.
 
-U [aangepaste weergaven maken met de ontwerper](../../azure-monitor/platform/view-designer.md) die u kunt later exporteren voor opname in het oplossingsbestand van uw.  
-
-
-## <a name="create-solution-file"></a>Oplossingsbestand maken
-Nadat u hebt geconfigureerd en de onderdelen die deel van uw oplossing uitmaken getest, kunt u [maken uw oplossingsbestand]( solutions-solution-file.md).  U implementeert de oplossingsonderdelen in een [Resource Manager-sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) die bevat een [oplossing resource]( solutions-solution-file.md#solution-resource) met een relatie tot de andere resources in het bestand.  
+U [maakt aangepaste weer gaven met behulp van de weer gave Designer](../../azure-monitor/platform/view-designer.md) , die u later kunt exporteren voor opname in het oplossings bestand.  
 
 
-## <a name="test-your-solution"></a>Testen van uw oplossing
-Terwijl u uw oplossing ontwikkelt, moet u het installeren en testen in uw werkruimte.  U kunt dit doen met behulp van een van de beschikbare methoden aan [testen en installeren van Resource Manager-sjablonen](../../azure-resource-manager/resource-group-template-deploy.md).
+## <a name="create-solution-file"></a>Oplossings bestand maken
+Zodra u de onderdelen die deel uitmaken van uw oplossing hebt geconfigureerd en getest, kunt u [het oplossings bestand]( solutions-solution-file.md).  U implementeert de oplossings onderdelen in een [Resource Manager-sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) die een [oplossings resource]( solutions-solution-file.md#solution-resource) bevat met relaties met de andere resources in het bestand.  
 
-## <a name="publish-your-solution"></a>Publiceer uw oplossing
-Nadat u hebt voltooid en uw oplossing getest, kunt u deze beschikbaar maken via de volgende bronnen aan klanten.
 
-- **Azure Quickstart-sjablonen**.  [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/) is een set van Resource Manager-sjablonen bijgedragen door de community via GitHub.  U kunt uw oplossing beschikbaar maken door de volgende informatie in de [handleiding voor bijdragen](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE).
-- **Azure Marketplace**.  De [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) kunt u distribueren en verkoop uw oplossing met andere ontwikkelaars, ISV's, en IT-professionals.  U kunt informatie over het publiceren van uw oplossing op Azure Marketplace op [over het publiceren en beheren van een aanbieding op Azure Marketplace](../../marketplace/marketplace-publishers-guide.md).
+## <a name="test-your-solution"></a>Uw oplossing testen
+Tijdens het ontwikkelen van uw oplossing moet u deze installeren en testen in uw werk ruimte.  U kunt dit doen met behulp van een van de beschik bare methoden om [Resource Manager-sjablonen te testen en te installeren](../../azure-resource-manager/resource-group-template-deploy.md).
+
+## <a name="publish-your-solution"></a>Uw oplossing publiceren
+Zodra u uw oplossing hebt voltooid en getest, kunt u deze beschikbaar maken voor klanten via de volgende bronnen.
+
+- **Sjablonen voor Azure Quick**start.  [Sjablonen voor Azure Quick](https://azure.microsoft.com/resources/templates/) start is een set Resource Manager-sjablonen die door de community zijn bijgedragen via github.  U kunt uw oplossing beschikbaar maken door de volgende informatie in de [bijdrage gids](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)te volgen.
+- **Azure Marketplace**.  Met [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) kunt u uw oplossing distribueren en verkopen aan andere ontwikkel aars, ISV'S en IT-professionals.  U kunt lezen hoe u uw oplossing publiceert naar Azure Marketplace op [het publiceren en beheren van een aanbieding op de Azure Marketplace](../../marketplace/marketplace-publishers-guide.md).
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [maken van een oplossingsbestand]( solutions-solution-file.md) voor uw oplossing.
-* Lees meer over van [Authoring Azure Resource Manager-sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
-* Search [Azure-Snelstartsjablonen](https://azure.microsoft.com/documentation/templates) voor voorbeelden van verschillende Resource Manager-sjablonen.
+* Meer informatie over het [maken van een oplossings bestand]( solutions-solution-file.md) voor uw beheer oplossing.
+* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Zoek in [Azure Quick](https://azure.microsoft.com/documentation/templates) start-sjablonen naar voor beelden van verschillende Resource Manager-sjablonen.

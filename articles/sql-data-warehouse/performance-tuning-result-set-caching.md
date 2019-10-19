@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.openlocfilehash: 3e6af57840cf60516aba994a6b5728bfb7b35f09
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513983"
+ms.locfileid: "72553523"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen met de cache van resultaten sets  
 Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat Azure SQL Data Warehouse query resultaten in de gebruikers database automatisch op voor herhaaldelijk gebruik.  Op deze manier kunnen volgende query's worden uitgevoerd om resultaten rechtstreeks uit de persistente cache te halen, zodat herberekening niet nodig is.   Caching van resultaten sets verbetert de query prestaties en vermindert het gebruik van reken resources.  Daarnaast gebruiken query's die in de cache opgeslagen resultaten zijn ingesteld geen gelijktijdigheids sleuven en worden dus niet met bestaande gelijktijdigheids limieten geteld. Voor de beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevens toegang hebben als de gebruikers die de in de cache opgeslagen resultaten maken.  
@@ -34,11 +34,10 @@ Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat Azure 
 Zodra de caching van de resultatenset voor een Data Base is ingeschakeld, worden de resultaten in de cache opgeslagen voor alle query's totdat de cache vol is, met uitzonde ring van de volgende query's:
 - Query's die gebruikmaken van niet-deterministische functies, zoals DateTime. Now ()
 - Query's met door de gebruiker gedefinieerde functies
+- Query's die gebruikmaken van tabellen met beveiliging op rijniveau of beveiliging op kolom niveau ingeschakeld
 - Query's die gegevens retour neren met een Rijgrootte groter dan 64 KB
 
 Query's met grote resultaten sets (bijvoorbeeld > 1.000.000 rijen) kunnen de prestaties vertragen tijdens de eerste uitvoering wanneer de resultaten cache wordt gemaakt.
-
-Beveiliging op rijniveau wordt niet ondersteund door het opslaan in de resultatenset.  
 
 ## <a name="when-cached-results-are-used"></a>Wanneer de resultaten in de cache worden gebruikt
 

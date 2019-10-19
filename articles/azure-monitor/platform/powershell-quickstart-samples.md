@@ -1,19 +1,18 @@
 ---
 title: Voor beelden van Azure Monitor Power shell-snel starten
 description: Gebruik Power shell om toegang te krijgen tot Azure Monitor functies, zoals automatisch schalen, waarschuwingen, webhooks en het zoeken naar activiteiten Logboeken.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 2/14/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 2/14/2018
+ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350242"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551848"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Voor beelden van Azure Monitor Power shell-snel starten
 In dit artikel wordt beschreven hoe u Power shell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
@@ -98,7 +97,7 @@ Met de volgende opdracht worden de laatste 1000 gebeurtenissen uit het activitei
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog` ondersteunt veel andere para meters. Zie de referentie `Get-AzLog` voor meer informatie.
+`Get-AzLog` ondersteunt veel andere para meters. Zie de `Get-AzLog` referentie voor meer informatie.
 
 > [!NOTE]
 > `Get-AzLog` biedt alleen 15 dagen aan geschiedenis. Met de para meter **-MaxRecords** kunt u een query uitvoeren op de laatste N gebeurtenissen, na 15 dagen. Als u toegang wilt hebben tot gebeurtenissen die ouder zijn dan 15 dagen,C# gebruikt u de rest API of SDK (steek proef met de SDK). Als u **StartTime**niet opneemt, wordt de standaard waarde **EndTime** min één uur. Als u geen **EndTime**opgeeft, is de standaard waarde huidige tijd. Alle tijden zijn in UTC.
@@ -146,22 +145,22 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>Metrische waarschuwingen maken
 U kunt de cmdlet `Add-AlertRule` gebruiken om een waarschuwings regel te maken, bij te werken of uit te scha kelen.
 
-U kunt de eigenschappen e-mail en webhook met respectievelijk `New-AzAlertRuleEmail` en `New-AzAlertRuleWebhook` maken. Wijs in de cmdlet waarschuwings regel deze eigenschappen toe als acties voor de eigenschap **Actions** van de waarschuwings regel.
+U kunt de eigenschappen e-mail en webhook maken met behulp van `New-AzAlertRuleEmail` en `New-AzAlertRuleWebhook`. Wijs in de cmdlet waarschuwings regel deze eigenschappen toe als acties voor de eigenschap **Actions** van de waarschuwings regel.
 
 De volgende tabel beschrijft de para meters en waarden die worden gebruikt om een waarschuwing te maken met behulp van een metriek.
 
-| parameter | value |
+| Bepaalde | waarde |
 | --- | --- |
-| Name |simpletestdiskwrite |
-| Locatie van deze waarschuwings regel |East US |
-| Resourcegroep |montest |
+| Naam |simpletestdiskwrite |
+| Locatie van deze waarschuwings regel |VS - oost |
+| ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Metrische waarde van de waarschuwing die wordt gemaakt |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| And |GreaterThan |
+| Metrische waarde van de waarschuwing die wordt gemaakt |\PhysicalDisk (_Totaal) \Gelezen schrijf bewerkingen per seconde. Raadpleeg de `Get-MetricDefinitions`-cmdlet voor informatie over het ophalen van de exacte metrische namen |
+| and |GreaterThan |
 | Drempel waarde (aantal per seconde in voor deze metrische gegevens) |1 |
 | WindowSize (UU: mm: SS-indeling) |00:05:00 |
 | aggregator (statistiek van de metrische gegevens, waarbij het gemiddelde aantal in dit geval wordt gebruikt) |Average |
-| aangepaste e-mail berichten (teken reeks matrix) |'foo@example.com','bar@example.com' |
+| aangepaste e-mail berichten (teken reeks matrix) |' foo@example.com ', ' bar@example.com ' |
 | e-mail verzenden naar eigen aars, mede werkers en lezers |-SendToServiceOwners |
 
 Een e-mail actie maken
@@ -229,7 +228,7 @@ Hier volgen de stappen die u moet gebruiken:
 
 1. Regel (s) maken.
 2. Maak een of meer profielen toewijzing van de regels die u eerder hebt gemaakt voor de profielen.
-3. Optioneel: Meldingen voor automatisch schalen maken door webhook en e-mail eigenschappen te configureren.
+3. Optioneel: meldingen voor automatisch schalen maken door webhook en e-mail eigenschappen te configureren.
 4. Maak een instelling voor automatisch schalen met een naam op de doel resource door de profielen en meldingen toe te wijzen die u in de vorige stappen hebt gemaakt.
 
 In de volgende voor beelden ziet u hoe u een instelling voor automatisch schalen kunt maken voor een Schaalset voor virtuele machines voor een Windows-besturings systeem op basis van de metrische gegevens van het CPU-gebruik.
@@ -279,7 +278,7 @@ In het volgende voor beeld ziet u hoe u recente automatisch schalen en waarschuw
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-U kunt de `Get-AzAutoScaleHistory`-cmdlet gebruiken om de geschiedenis van automatisch schalen op te halen.
+U kunt de cmdlet `Get-AzAutoScaleHistory` gebruiken om de geschiedenis van automatisch schalen op te halen.
 
 ```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
@@ -313,7 +312,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 U kunt een *logboek profiel* maken en gegevens uit uw activiteiten logboek exporteren naar een opslag account en u kunt de gegevens retentie configureren. U kunt eventueel ook de gegevens streamen naar uw event hub. Deze functie is momenteel beschikbaar als preview-versie en u kunt slechts één logboek profiel per abonnement maken. U kunt de volgende cmdlets gebruiken met uw huidige abonnement om logboek profielen te maken en te beheren. U kunt ook een bepaald abonnement kiezen. Hoewel Power Shell standaard het huidige abonnement heeft, kunt u dit altijd wijzigen met behulp van `Set-AzContext`. U kunt het activiteiten logboek configureren voor het routeren van gegevens naar een opslag account of event hub binnen dat abonnement. Gegevens worden geschreven als blob-bestanden in JSON-indeling.
 
 ### <a name="get-a-log-profile"></a>Een logboek profiel ophalen
-Gebruik de `Get-AzLogProfile`-cmdlet om uw bestaande logboek profielen op te halen.
+Gebruik de cmdlet `Get-AzLogProfile` om uw bestaande logboek profielen op te halen.
 
 ### <a name="add-a-log-profile-without-data-retention"></a>Een logboek profiel zonder gegevens retentie toevoegen
 ```powershell
@@ -389,7 +388,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werk ruimte gebruikt. U vindt de resource-ID van uw Log Analytics-werkruimte met de volgende opdracht:
+Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werk ruimte gebruikt. U kunt de resource-ID van uw Log Analytics-werk ruimte verkrijgen met de volgende opdracht:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

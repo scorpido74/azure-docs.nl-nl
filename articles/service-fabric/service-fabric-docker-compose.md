@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168834"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553555"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
 
 Docker gebruikt het [docker-Compose. yml](https://docs.docker.com/compose) -bestand voor het definiëren van toepassingen met meerdere containers. Om het eenvoudig te maken voor klanten die bekend zijn met docker om bestaande container toepassingen te organiseren op Azure Service Fabric, hebben we preview-ondersteuning voor docker-implementatie in het platform opgenomen. Service Fabric kunt versie 3 en hoger van `docker-compose.yml` bestanden accepteren. 
 
-Omdat deze ondersteuning in preview is, wordt slechts een subset van de samen stellen-instructies ondersteund. Toepassings upgrades worden bijvoorbeeld niet ondersteund. U kunt echter altijd toepassingen verwijderen en implementeren in plaats van deze te upgraden.
+Omdat deze ondersteuning in preview is, wordt slechts een subset van de samen stellen-instructies ondersteund.
 
 Als u deze preview wilt gebruiken, maakt u uw cluster met versie 5,7 of hoger van de Service Fabric runtime via de Azure Portal samen met de bijbehorende SDK. 
 
@@ -146,7 +146,7 @@ Geef het HTTP-of HTTPS-protocol op in de sectie poorten die wordt gebruikt door 
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName berekening
 
-Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), is de door Service Fabric geregistreerde DNS-naam `<ServiceName>` (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
+Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), wordt de DNS-naam die is geregistreerd door Service Fabric `<ServiceName>` (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
 
 Als de naam van de opgegeven toepassing bijvoorbeeld `fabric:/SampleApp/MyComposeApp`, is `<ServiceName>.MyComposeApp.SampleApp` de geregistreerde DNS-naam.
 

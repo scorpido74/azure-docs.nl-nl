@@ -1,20 +1,18 @@
 ---
 title: Azure Diagnostics gegevens streamen naar Event Hubs
 description: Azure Diagnostics met Event Hubs end-to-end configureren, met inbegrip van de richt lijnen voor algemene scenario's.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 07/13/2017
+ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "64922810"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555528"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics gegevens in het warme pad streamen met behulp van Event Hubs
 Azure Diagnostics biedt flexibele manieren voor het verzamelen van metrische gegevens en logboeken van virtuele machines van Cloud Services (Vm's) en het overdragen van resultaten naar Azure Storage. Vanaf het tijds bestek van maart 2016 (SDK 2,9) kunt u Diagnostische gegevens verzenden naar aangepaste gegevens bronnen en dynamische padgegevens in seconden overdragen met behulp van [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -24,7 +22,7 @@ Ondersteunde gegevens typen zijn:
 * ETW-gebeurtenissen (Event Tracing for Windows)
 * Prestatiemeteritems
 * Windows-gebeurtenislogboeken
-* Toepassingslogboeken
+* Toepassings logboeken
 * Logboeken van Azure Diagnostics-infrastructuur
 
 In dit artikel wordt beschreven hoe u Azure Diagnostics kunt configureren met Event Hubs van end-to-end. Er worden ook richt lijnen gegeven voor de volgende algemene scenario's:
@@ -40,12 +38,12 @@ Event Hubs het ontvangen van gegevens van Azure Diagnostics wordt ondersteund in
 * Azure Diagnostics extensie 1,6 ([Azure SDK voor .net 2,9 of hoger](https://azure.microsoft.com/downloads/) is gericht op deze standaard instelling)
 * [Visual Studio 2013 of hoger](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * Bestaande configuraties van Azure Diagnostics in een toepassing met behulp van een *. wadcfgx* -bestand en een van de volgende methoden:
-  * Visual Studio: [Diagnostische gegevens configureren voor Azure Cloud Services en Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
-  * Windows PowerShell: [Diagnostische gegevens inschakelen in azure Cloud Services met behulp van Power shell](../../cloud-services/cloud-services-diagnostics-powershell.md)
+  * Visual Studio: [Diagnostische gegevens configureren voor Azure Cloud Services en virtual machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+  * Windows Power shell: [Diagnostische gegevens inschakelen in Azure Cloud Services met behulp van Power shell](../../cloud-services/cloud-services-diagnostics-powershell.md)
 * Event Hubs naam ruimte die is ingericht per artikel, aan de [slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics verbinden met Event Hubs Sink
-Standaard worden door Azure Diagnostics altijd logboeken en metrische gegevens naar een Azure Storage-account verzonden. Een toepassing kan ook gegevens naar Event hubs verzenden door een nieuwe sectie **sinks** toe te voegen onder het element **PublicConfig** / **WadCfg** van het bestand *. wadcfgx* . In Visual Studio wordt het *. wadcfgx* -bestand opgeslagen in het volgende pad: > **Wadcfgx** -bestand van de Cloud service project**roles** >  **(rolnaam)**  > .
+Standaard worden door Azure Diagnostics altijd logboeken en metrische gegevens naar een Azure Storage-account verzonden. Een toepassing kan ook gegevens naar Event Hubs verzenden door een nieuwe sectie **sinks** toe te voegen onder het element **PublicConfig**  / **WadCfg** van het bestand *. wadcfgx* . In Visual Studio wordt het *. wadcfgx* -bestand opgeslagen in het volgende pad: **Cloud Service Project**  > **Roles**  >  **(rolnaam)**  >  bestand**Diagnostics. wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -68,7 +66,7 @@ Standaard worden door Azure Diagnostics altijd logboeken en metrische gegevens n
 }
 ```
 
-In dit voor beeld wordt de URL van de Event Hub ingesteld op de volledig gekwalificeerde naam ruimte van de Event Hub: Event Hubs naam ruimte + "/" + Event Hub.  
+In dit voor beeld wordt de URL van de Event Hub ingesteld op de volledig gekwalificeerde naam ruimte van de Event Hub: Event Hubs naam ruimte + '/' + Event Hub name.  
 
 De Event Hub URL wordt weer gegeven in het [Azure Portal](https://go.microsoft.com/fwlink/?LinkID=213885) op het event hubs dash board.  
 
@@ -100,7 +98,7 @@ De Event Hubs Sink moet ook worden gedeclareerd en gedefinieerd in de sectie **P
 }
 ```
 
-De `SharedAccessKeyName` waarde moet overeenkomen met een Shared Access Signature SAS-sleutel en-beleid die is gedefinieerd in de **Event hubs** naam ruimte. Blader naar het Event Hubs dash board in de [Azure Portal](https://portal.azure.com), klik op het tabblad **configureren** en stel een benoemd beleid in (bijvoorbeeld ' SendRule ') dat machtigingen voor *verzenden* heeft. De **Storage account** wordt ook gedeclareerd in **PrivateConfig**. Als ze werken, hoeft u hier geen waarden te wijzigen. In dit voor beeld laten we de waarden leeg, wat een teken is dat een stroomafwaartse Asset de waarden zal instellen. Bijvoorbeeld, het configuratie bestand *ServiceConfiguration. Cloud. cscfg* Environment stelt de naam en sleutels van de omgeving in.  
+De `SharedAccessKeyName` waarde moet overeenkomen met een sleutel en beleid van een Shared Access Signature (SAS) die is gedefinieerd in de **Event hubs** naam ruimte. Blader naar het Event Hubs dash board in de [Azure Portal](https://portal.azure.com), klik op het tabblad **configureren** en stel een benoemd beleid in (bijvoorbeeld ' SendRule ') dat machtigingen voor *verzenden* heeft. De **Storage account** wordt ook gedeclareerd in **PrivateConfig**. Als ze werken, hoeft u hier geen waarden te wijzigen. In dit voor beeld laten we de waarden leeg, wat een teken is dat een stroomafwaartse Asset de waarden zal instellen. Bijvoorbeeld, het configuratie bestand *ServiceConfiguration. Cloud. cscfg* Environment stelt de naam en sleutels van de omgeving in.  
 
 > [!WARNING]
 > De Event Hubs SAS-sleutel wordt opgeslagen als tekst zonder opmaak in het *. wadcfgx* -bestand. Deze sleutel wordt vaak ingecheckt bij broncode beheer of is beschikbaar als een asset in uw build-server, dus u moet deze zo nodig beveiligen. We raden u aan om hier een SAS-sleutel te gebruiken met *alleen machtigingen verzenden* , zodat een kwaadwillende gebruiker naar de Event hub kan schrijven, maar niet kan Luis teren of beheren.
@@ -184,7 +182,7 @@ In het bovenstaande voor beeld wordt de Sink toegepast op het bovenliggende **Pe
 }
 ```
 
-In het vorige voor beeld wordt de Sink toegepast op slechts drie tellers: **Aanvragen in wachtrij**, **geweigerde aanvragen**en **% processor tijd**.  
+In het vorige voor beeld wordt de Sink alleen toegepast op drie tellers: **aanvragen in de wachtrij**, **geweigerde aanvragen**en **% processor tijd**.  
 
 In het volgende voor beeld ziet u hoe een ontwikkelaar de hoeveelheid verzonden gegevens kan beperken tot de kritieke meet waarden die worden gebruikt voor de status van deze service.  
 
@@ -202,7 +200,7 @@ In het volgende voor beeld ziet u hoe een ontwikkelaar de hoeveelheid verzonden 
 In dit voor beeld wordt de Sink toegepast op Logboeken en wordt deze alleen gefilterd op fout niveau tracering.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Een Cloud Services toepassing en diagnose configuratie implementeren en bijwerken
-Visual Studio biedt het eenvoudigste pad voor het implementeren van de toepassing en de configuratie van Event Hubs sink. Als u het bestand wilt bekijken en bewerken, opent u het *. wadcfgx* -bestand in Visual Studio, bewerkt u het en slaat u het op. Het pad is de > project**rollen** > van de **Cloud service** **(rolnaam)**  > **Diagnostics. wadcfgx**.  
+Visual Studio biedt het eenvoudigste pad voor het implementeren van de toepassing en de configuratie van Event Hubs sink. Als u het bestand wilt bekijken en bewerken, opent u het *. wadcfgx* -bestand in Visual Studio, bewerkt u het en slaat u het op. Het pad is een **Cloud Service Project**  > **rollen**  >  **(rolnaam)**  > **Diagnostische gegevens. wadcfgx**.  
 
 Op dit punt worden alle Update acties voor implementatie en implementatie in Visual Studio, Visual Studio Team System en alle opdrachten of scripts die zijn gebaseerd op MSBuild en met de **/t: Publish** doel, de *. wadcfgx* in het verpakkings proces gebruikt. Daarnaast implementeren implementaties en updates het bestand in azure met behulp van de juiste Azure Diagnostics agent-extensie op uw Vm's.
 
@@ -321,7 +319,7 @@ namespace EventHubListener
 ## <a name="next-steps"></a>Volgende stappen
 • Meer [informatie over Event hubs](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Nummer Azure Diagnostics configuratie bestand voor voor beeld (. wadcfgx) volt ooien
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Bijlage: voor beeld van een complete Azure Diagnostics-configuratie bestand (. wadcfgx)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">

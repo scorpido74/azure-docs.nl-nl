@@ -1,57 +1,52 @@
 ---
 title: Overzicht van inzichten in Azure Monitor | Microsoft Docs
-description: Inzichten bieden een aangepaste controlemogelijkheden in Azure Monitor voor specifieke toepassingen en services. Dit artikel bevat een korte beschrijving van elk van de inzichten die momenteel beschikbaar zijn.
-services: azure-monitor
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
+description: Inzichten bieden een aangepaste bewakings ervaring in Azure Monitor voor bepaalde toepassingen en services. In dit artikel vindt u een korte beschrijving van elk van de inzichten die momenteel beschikbaar zijn.
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 8cb39a174c570b7019e872d731f49252a9505406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/22/2019
+ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247227"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555342"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Overzicht van inzichten in Azure Monitor
-Inzichten bieden een aangepaste bewakingservaring voor specifieke toepassingen en services. Opslaan van gegevens in de [gegevensplatform in de Azure Monitor](../platform/data-platform.md) gebruikmaken van andere functies van Azure Monitor voor analyse en waarschuwingsdoeleinden kan verzamelen van aanvullende gegevens en bieden een unieke gebruikerservaring in Azure portal. Toegang tot inzichten op basis van de **Insights** gedeelte van het menu Azure Monitor in Azure portal.
+Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en services. Ze slaan gegevens op in het [Azure monitor-gegevens platform](../platform/data-platform.md) en maken gebruik van andere Azure monitor functies voor analyse en waarschuwingen, maar kunnen ook extra gegevens verzamelen en een unieke gebruikers ervaring bieden in de Azure Portal. Krijg toegang tot inzichten via de sectie **inzichten** van het menu Azure monitor in het Azure Portal.
 
-De volgende secties bevatten een korte beschrijving van de inzichten die momenteel beschikbaar in Azure Monitor zijn. Zie de gedetailleerde documentatie voor meer informatie op elk.
+In de volgende secties vindt u een korte beschrijving van de inzichten die momenteel beschikbaar zijn in Azure Monitor. Raadpleeg de gedetailleerde documentatie voor meer informatie.
 
 ## <a name="application-insights"></a>Application Insights
-Application Insights is een uitbreidbare APM-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Dit werkt voor toepassingen op een groot aantal verschillende platformen, waaronder .NET, Node.js en Java EE, die wordt gehost on-premises, hybride of openbare Clouds. Ook kan worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars.
+Application Insights is een uitbreidbare APM-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Het werkt voor toepassingen op een groot aantal verschillende platformen, waaronder .NET, node. js en Java EE, lokaal gehost, hybride of een open bare Cloud. Het kan ook worden geïntegreerd met uw DevOps-proces en heeft verbindings punten naar verschillende ontwikkel hulpprogramma's.
 
-Zie [wat is Application Insights?](../app/app-insights-overview.md).
+Zie [Wat is Application Insights?](../app/app-insights-overview.md).
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor voor Containers
-Azure Monitor voor containers monitors de prestaties van containerwerkbelastingen geïmplementeerd in een Azure Container Instances of beheerde Kubernetes-clusters die worden gehost in Azure Kubernetes Service (AKS). Controle van uw containers is kritiek, met name wanneer u een productiecluster op schaal, met meerdere toepassingen uitvoert.
+## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
+Azure Monitor voor containers bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of beheerde Kubernetes-clusters die worden gehost op de Azure Kubernetes-service (AKS). Het bewaken van uw containers is van cruciaal belang, vooral wanneer u een productie cluster op schaal uitvoert met meerdere toepassingen.
 
-Zie [Azure Monitor voor containers overzicht](../insights/container-insights-overview.md).
+Zie [Azure monitor voor containers Overview](../insights/container-insights-overview.md)(Engelstalig).
 
-![Azure Monitor voor Containers](media/insights-overview/container-insights.png)
+![Azure Monitor voor containers](media/insights-overview/container-insights.png)
 
-## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor voor resourcegroepen (preview)
-Azure Monitor voor resourcegroepen helpt bij het sorteren en onderzoeken van problemen optreden op uw afzonderlijke resources, terwijl context over de status en prestaties van de resourcegroep als geheel.
+## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor voor resource groepen (preview-versie)
+Azure Monitor voor resource groepen helpt bij het sorteren en diagnosticeren van eventuele problemen die uw afzonderlijke bronnen ondervinden, terwijl de status en prestaties van de resource groep als geheel worden geboden.
 
-Zie [resourcegroepen bewaken met Azure Monitor (preview)](../insights/resource-group-insights.md).
+Zie [resource groepen bewaken met Azure monitor (preview)](../insights/resource-group-insights.md).
 
-![Azure Monitor voor resourcegroepen](media/insights-overview/resource-group-insights.png)
+![Azure Monitor voor resource groepen](media/insights-overview/resource-group-insights.png)
 
-## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor voor virtuele machines (preview)
-Azure Monitor voor virtuele machines bewaakt uw Azure virtual machines (VM) en virtuele-machineschaalsets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen.
+## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor voor VM's (preview-versie)
+Azure Monitor voor VM's bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen.
 
-Zie [wat is Azure Monitor voor virtuele machines?](vminsights-overview.md)
+Zie [Wat is Azure monitor voor VM's?](vminsights-overview.md)
 
 ![Azure Monitor voor virtuele machines](media/insights-overview/vm-insights.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de [gegevensplatform in de Azure Monitor](../platform/data-platform.md) gebruikt door inzicht te krijgen.
-* Meer informatie over de verschillende [gegevensbronnen die worden gebruikt door Azure Monitor](../platform/data-sources.md) en de verschillende soorten gegevens die zijn verzameld door elk van de inzichten.
+* Meer informatie over het [Azure monitor-gegevens platform](../platform/data-platform.md) dat wordt gebruikt door inzichten.
+* Meer informatie over de verschillende [gegevens bronnen die worden gebruikt door Azure monitor](../platform/data-sources.md) en de verschillende soorten gegevens die worden verzameld door elk van de inzichten.

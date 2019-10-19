@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598809"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553586"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-toepassing implementeren naar een cluster in Azure
 
@@ -46,6 +46,9 @@ Voor u met deze zelfstudie begint:
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 * [Installeer Visual Studio 2019](https://www.visualstudio.com/)en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
+
+> [!NOTE]
+> Een gratis account voldoet mogelijk niet aan de vereisten voor het maken van een virtuele machine. Hiermee voor komt u dat de zelf studie is voltooid.
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 

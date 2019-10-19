@@ -1,9 +1,9 @@
 ---
-title: Met behulp van Akka Streams voor Apache Kafka - Azure Eventhubs | Microsoft Docs
-description: Dit artikel bevat informatie over het verbinden met een Apache Kafka Streams Akka ingeschakeld Azure event hub.
+title: Akka-streams gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Docs
+description: Dit artikel bevat informatie over het verbinden van Akka-streams met een Apache Kafka ingeschakelde Azure Event Hub.
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,63 +12,63 @@ ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 32d710464cf61f998e18af28887561cefd2b1b3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: ba81ce88bcdf039d020dcd945e45a11cf603c114
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821557"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555748"
 ---
-# <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Met behulp van Akka Streams voor Apache Kafka met Eventhubs
-Deze zelfstudie leert u hoe verbinding Akka stromen maken met Kafka-functionaliteit eventhubs zonder te wijzigen van uw clients protocol of uitvoeren van uw eigen clusters. Biedt ondersteuning voor Azure Event Hubs voor de Kafka [Apache Kafka, versie 1.0.](https://kafka.apache.org/10/documentation.html)
+# <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Akka-streams gebruiken met Event Hubs voor Apache Kafka
+In deze zelf studie ziet u hoe u Akka-streams verbindt met gebeurtenis hubs met Kafka-functionaliteit zonder uw protocol-clients of uw eigen clusters te wijzigen. Azure Event Hubs voor de Kafka ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html)
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Het voorbeeldproject klonen
-> * Akka Streams producent uitvoeren 
-> * Akka Streams consument uitvoeren
+> * Akka-streams uitvoeren 
+> * Akka streams Consumer uitvoeren
 
 > [!NOTE]
 > Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie, zorg ervoor dat u de volgende vereisten:
+Als u deze zelf studie wilt volt ooien, moet u beschikken over de volgende vereisten:
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door. 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 * [Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
     * Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.
     * Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
-* [Download](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html) een binaire Maven-archief
+* Een binair archief van Maven [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)
     * Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 * [Git](https://www.git-scm.com/downloads)
     * Op Ubuntu kunt u `sudo apt-get install git` uitvoeren om Git te installeren.
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
-Een Event Hubs-naamruimte is vereist om te verzenden of ontvangen van alle Event Hubs-service. Zie [maken Kafka ingeschakeld Event Hubs](event-hubs-create-kafka-enabled.md) voor informatie over het ophalen van een Event Hubs Kafka-eindpunt. Zorg ervoor dat u het kopiëren van de Event Hubs-verbindingsreeks voor later gebruik.
+Een Event Hubs naam ruimte is vereist voor het verzenden of ontvangen van een Event Hubs service. Zie [Kafka ingeschakeld Event hubs maken](event-hubs-create-kafka-enabled.md) voor informatie over het ophalen van een event hubs Kafka-eind punt. Zorg ervoor dat u de Event Hubs-connection string kopieert voor later gebruik.
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 
-Nu dat u een verbindingsreeks Event Hubs waarvoor Kafka is ingeschakeld hebt, de Azure Event Hubs voor Kafka-opslagplaats te klonen en navigeer naar de `akka` submap:
+Nu u een Event Hubs connection string hebt ingeschakeld, kloont u de Azure Event Hubs voor Kafka-opslag plaats en navigeert u naar de `akka` submap:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
-## <a name="run-akka-streams-producer"></a>Akka Streams producent uitvoeren
+## <a name="run-akka-streams-producer"></a>Akka-streams uitvoeren
 
-In het opgegeven Akka Streams producent voorbeeld berichten verzenden naar de Event Hubs-service.
+Gebruik het meegeleverde Akka streams producer-voor beeld om berichten naar de Event Hubs-service te verzenden.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Geef een Event Hubs Kafka-eindpunt
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="producer-applicationconf"></a>Producent application.conf
+#### <a name="producer-applicationconf"></a>Producer Application. conf
 
-Update de `bootstrap.servers` en `sasl.jaas.config` waarden in `producer/src/main/resources/application.conf` om te leiden van de producent naar de Event Hubs Kafka-eindpunt met de juiste verificatie.
+Werk de `bootstrap.servers`-en `sasl.jaas.config` waarden in `producer/src/main/resources/application.conf` bij om de producent om te leiden naar het Event Hubs Kafka-eind punt met de juiste authenticatie.
 
 ```xml
 akka.kafka.producer {
@@ -86,26 +86,26 @@ akka.kafka.producer {
 }
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Producent uitvoeren vanaf de opdrachtregel
+### <a name="run-producer-from-the-command-line"></a>Producer uitvoeren vanaf de opdracht regel
 
-Voor de producent uitvoeren vanaf de opdrachtregel, genereren de JAR en vervolgens uitvoeren in Maven (of de JAR met behulp van Maven, klikt u vervolgens uitvoeren in Java door toe te voegen van de benodigde Kafka JAR(s) aan het klassepad genereren):
+Als u de producent wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of Genereer u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-De producent gestart voor het verzenden van gebeurtenissen naar de Kafka-functionaliteit event hub op onderwerp `test`, en worden de gebeurtenissen naar de stdout afgedrukt.
+De producent begint met het verzenden van gebeurtenissen naar het Kafka-Event Hub in het onderwerp `test` en drukt de gebeurtenissen op stdout.
 
-## <a name="run-akka-streams-consumer"></a>Akka Streams consument uitvoeren
+## <a name="run-akka-streams-consumer"></a>Akka streams Consumer uitvoeren
 
-In het voorbeeld opgegeven consumenten berichten ontvangen van de Kafka-functionaliteit eventhubs.
+Gebruik het voor beeld van de meegeleverde gebruiker om berichten te ontvangen van de Event hubs met Kafka-functionaliteit.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Geef een Event Hubs Kafka-eindpunt
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="consumer-applicationconf"></a>Consumenten application.conf
+#### <a name="consumer-applicationconf"></a>Consumer Application. conf
 
-Update de `bootstrap.servers` en `sasl.jaas.config` waarden in `consumer/src/main/resources/application.conf` om te leiden van de gebruiker voor het Event Hubs Kafka-eindpunt met de juiste verificatie.
+Werk de `bootstrap.servers`-en `sasl.jaas.config` waarden in `consumer/src/main/resources/application.conf` bij om de consumer naar het Event Hubs Kafka-eind punt met de juiste verificatie te sturen.
 
 ```xml
 akka.kafka.consumer {
@@ -126,27 +126,27 @@ akka.kafka.consumer {
 }
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Consumenten uitvoeren vanaf de opdrachtregel
+### <a name="run-consumer-from-the-command-line"></a>Consument uitvoeren vanaf de opdracht regel
 
-Voor de consument uitvoeren vanaf de opdrachtregel, genereren de JAR en vervolgens uitvoeren in Maven (of de JAR met behulp van Maven, klikt u vervolgens uitvoeren in Java door toe te voegen van de benodigde Kafka JAR(s) aan het klassepad genereren):
+Als u de gebruiker wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of genereert u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Als de Kafka-functionaliteit event hub gebeurtenissen (bijvoorbeeld, als uw producent wordt ook uitgevoerd), en vervolgens de consument begint het ontvangen van gebeurtenissen van onderwerp `test`. 
+Als de met Kafka ingeschakelde Event Hub gebeurtenissen heeft (bijvoorbeeld als uw producent ook wordt uitgevoerd), begint de Consumer gebeurtenissen te ontvangen van het onderwerp `test`. 
 
-Bekijk de [Akka Streams Kafka handleiding](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) voor meer informatie over Akka Streams gedetailleerde.
+Bekijk de [Akka-hand leiding voor Kafka-stromen](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) voor meer gedetailleerde informatie over Akka-streams.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe Akka Streams zonder te wijzigen van uw clients protocol of uitvoeren van uw eigen clusters verbinden gebeurtenishubs waarvoor Kafka is ingeschakeld. Biedt ondersteuning voor Azure Event Hubs voor de Kafka [Apache Kafka, versie 1.0.](https://kafka.apache.org/10/documentation.html). U hebt de volgende acties als onderdeel van deze zelfstudie: 
+In deze zelf studie hebt u geleerd hoe u Akka-streams verbindt met Event hubs met Kafka-functionaliteit zonder uw protocol-clients of uw eigen clusters te wijzigen. Azure Event Hubs voor de Kafka ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html). U hebt de volgende acties uitgevoerd als onderdeel van deze zelf studie: 
 
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Het voorbeeldproject klonen
-> * Akka Streams producent uitvoeren 
-> * Akka Streams consument uitvoeren
+> * Akka-streams uitvoeren 
+> * Akka streams Consumer uitvoeren
 
 Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
 

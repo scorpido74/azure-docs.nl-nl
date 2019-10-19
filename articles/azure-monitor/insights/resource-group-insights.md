@@ -1,126 +1,123 @@
 ---
-title: Azure Monitor-resourcegroep Insights | Microsoft Docs
-description: Informatie over de status en prestaties van uw gedistribueerde toepassingen en services op het niveau van de resourcegroep met Azure Monitor
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
+title: Azure Monitor voor het verkrijgen van resource groepen | Microsoft Docs
+description: Inzicht in de status en prestaties van uw gedistribueerde toepassingen en services op het niveau van de resource groep met Azure Monitor
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119416"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553984"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Resourcegroepen bewaken met Azure Monitor (preview)
+# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Resource groepen bewaken met Azure Monitor (preview-versie)
 
-Moderne toepassingen zijn vaak complexe en zeer gedistribueerde met veel afzonderlijke onderdelen werken samen met het oog op een service. Deze complexe herkennen, biedt Azure Monitor voor de bewaking inzicht voor resourcegroepen. Hierdoor kunt u gemakkelijk sorteren en onderzoeken van problemen optreden op uw afzonderlijke resources, terwijl context over de status en prestaties van de resourcegroep&mdash;en uw toepassing&mdash;als geheel.
+Moderne toepassingen zijn vaak complex en zeer gedistribueerd met veel discrete onderdelen die samen werken om een service te leveren. Door deze complexiteit te herkennen, biedt Azure Monitor bewakings inzichten voor resource groepen. Dit maakt het eenvoudig om problemen op te lossen die uw afzonderlijke bronnen tegen komen, terwijl u context biedt aan de status en prestaties van de resource groep &mdash;and uw toepassing &mdash;as een geheel.
 
-## <a name="access-insights-for-resource-groups"></a>Toegang tot inzichten voor resourcegroepen
+## <a name="access-insights-for-resource-groups"></a>Toegang tot inzichten voor resource groepen
 
-1. Selecteer **resourcegroepen** in de navigatiebalk aan de linkerkant.
-2. Kies een van de resourcegroepen die u wilt verkennen. (Als u hebt een groot aantal resourcegroepen te filteren op abonnement kan soms nuttig zijn.)
-3. Voor toegang tot inzichten voor een resourcegroep, klikt u op **Insights** in het menu aan de linkerkant van een resourcegroep.
+1. Selecteer **resource groepen** in de navigatie balk aan de linkerkant.
+2. Kies een van de resource groepen die u wilt verkennen. (Als u een groot aantal resource groepen hebt dat door het abonnement wordt gefilterd, kan het soms handig zijn.)
+3. Als u toegang wilt krijgen tot inzichten voor een resource groep, klikt u op **inzichten** in het menu aan de linkerkant van een resource groep.
 
-![Schermafbeelding van de resource-groep insights-overzichtspagina](./media/resource-group-insights/0001-overview.png)
+![Scherm afbeelding van overzichts pagina met resource groeps inzichten](./media/resource-group-insights/0001-overview.png)
 
-## <a name="resources-with-active-alerts-and-health-issues"></a>Resources met actieve waarschuwingen en statusproblemen
+## <a name="resources-with-active-alerts-and-health-issues"></a>Resources met actieve waarschuwingen en status problemen
 
-De overzichtspagina toont het aantal waarschuwingen is gestart en nog steeds actief is, samen met de huidige Azure Resource Health van elke resource. Samen deze informatie kunt u snel vinden alle resources die problemen ondervindt. Waarschuwingen helpen u problemen detecteren in uw code en hoe u uw infrastructuur hebt geconfigureerd. Azure Resource Health-oppervlakken probleem met de Azure-platform zelf, die niet specifiek zijn voor de afzonderlijke toepassingen.
+Op de overzichts pagina ziet u hoeveel waarschuwingen zijn geactiveerd en nog steeds actief zijn, samen met de huidige Azure Resource Health van elke resource. Deze informatie kan u helpen bij het snel opsporen van resources die problemen ondervinden. Waarschuwingen helpen u problemen in uw code te detecteren en te bepalen hoe u uw infra structuur hebt geconfigureerd. Azure Resource Health-Opper vlakken probleem met het Azure-platform zelf, dat niet specifiek is voor uw eigen toepassingen.
 
-![Schermopname van Azure Resource Health deelvenster](./media/resource-group-insights/0002-overview.png)
+![Scherm afbeelding van Azure Resource Health venster](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
-Als u Azure Resource Health, Controleer de **weergeven Azure Resource Health** vak boven de tabel. Deze kolom is verborgen om u te helpen bij de pagina snel geladen.
+Schakel het selectie vakje Azure Resource Health boven de tabel **weer geven** in om Azure resource Health weer te geven. Deze kolom wordt standaard verborgen zodat de pagina snel kan worden geladen.
 
-![Schermafbeelding met resource health graph is toegevoegd](./media/resource-group-insights/0003-overview.png)
+![Scherm opname met de resource status grafiek toegevoegd](./media/resource-group-insights/0003-overview.png)
 
-Standaard worden de resources zijn gegroepeerd op app-laag en het resourcetype. **App-laag** is een eenvoudige categorisatie van resourcetypen, die alleen in de context van de resource-groep insights-overzichtspagina bestaat. Er zijn met betrekking tot de toepassingscode resourcetypen, compute-infrastructuur, netwerken, opslag en databases. Beheerprogramma's krijgen hun eigen app-lagen en elke andere resource wordt gecategoriseerd als behorend tot de **andere** app-laag. Deze groepering kunt u in een oogopslag zien welke subsystemen van uw toepassing in orde is en niet in orde zijn.
+De resources zijn standaard gegroepeerd op app-laag en resource type. **App-laag** is een eenvoudige categorisatie van resource typen die alleen bestaat in de context van de overzichts pagina van de resource groep. Er zijn resource typen die betrekking hebben op toepassings code, berekenings infrastructuur, netwerken, opslag en data bases. Beheer hulpprogramma's halen hun eigen app-lagen en elke andere resource is gecategoriseerd als onderdeel van de **andere** app-laag. Deze groepering kan u helpen om in één oogopslag te zien welke subsystemen van uw toepassing in orde zijn en beschadigd zijn.
 
-## <a name="diagnose-issues-in-your-resource-group"></a>Problemen in uw resourcegroep
+## <a name="diagnose-issues-in-your-resource-group"></a>Problemen in uw resource groep vaststellen
 
-Pagina inzichten van de resourcegroep biedt verschillende andere hulpmiddelen binnen het bereik zodat u problemen identificeren
+De pagina resource groep Insights bevat verschillende andere hulpprogram ma's die u helpen bij het vaststellen van problemen
 
    |         |          |
    | ---------------- |:-----|
-   | [**Waarschuwingen**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Weergeven, maken en beheren van uw waarschuwingen. |
-   | [**Metrische gegevens**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Visualiseer en Verken uw metrische gegevens op basis van gegevens.    |
-   | [**Activiteitenlogboeken**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Abonnement op gebeurtenissen die hebben plaatsgevonden in Azure.  |
-   | [**Overzicht van de toepassing**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | De topologie van uw gedistribueerde toepassing voor het identificeren van knelpunten of fout hotspots navigeren. |
+   | [**Berichten**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Uw waarschuwingen weer geven, maken en beheren. |
+   | [**Metrische gegevens**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Visualiseer en verken uw metrische gegevens op basis van metriek.    |
+   | [**Activiteiten logboeken**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure.  |
+   | [**Overzicht van de toepassing**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Navigeer door de topologie van de gedistribueerde toepassing om knel punten in de prestaties of HOTS pots te identificeren. |
 
 ## <a name="failures-and-performance"></a>Fouten en prestaties
 
-Wat gebeurt er als u hebt gemerkt dat uw toepassing is traag of gebruikers fouten hebben gerapporteerd? Het is tijd in beslag nemen om te zoeken via al uw resources voor het isoleren van problemen.
+Wat als u hebt gezien dat uw toepassing traag werkt of gebruikers fouten hebben gerapporteerd? Het is tijdrovend om al uw resources te doorzoeken om problemen te isoleren.
 
-De **prestaties** en **fouten** tabbladen vereenvoudigen van dit proces door de prestaties en bijeenbrengt fout diagnostische weergaven voor veel algemene resourcetypen.
+De tabbladen **prestaties** en **fouten** vereenvoudigen dit proces door de diagnostische weer gaven voor prestaties en fouten samen te stellen voor veel veelvoorkomende resource typen.
 
-De meeste resourcetypen wordt een galerie van Azure Monitor werkmap-sjablonen geopend. Elke werkmap die u hebt gemaakt kan worden aangepast, opgeslagen, gedeeld met uw team en opnieuw gebruikte in de toekomst vergelijkbare om problemen te diagnosticeren.
+In de meeste resource typen wordt een galerie met Azure Monitor werkmap sjablonen geopend. Elke werkmap die u maakt, kan worden aangepast, opgeslagen, gedeeld met uw team en opnieuw in de toekomst worden gebruikt om Vergelijk bare problemen op te sporen.
 
-### <a name="investigate-failures"></a>Mislukte pogingen onderzoeken
+### <a name="investigate-failures"></a>Fouten onderzoeken
 
-Voor het testen van het tabblad fouten select **fouten** onder **onderzoeken** in het linkermenu.
+Als u het tabblad fouten wilt testen, selecteert u **fouten** die worden **onderzocht** in het menu aan de linkerkant.
 
-De aan de linkerkant in de menubalk verandert nadat uw selectie is gemaakt, biedt u de nieuwe opties.
+De menu balk aan de linkerkant wordt gewijzigd nadat u de selectie hebt gemaakt. u hebt nu nieuwe opties.
 
-![Schermafbeelding van de fout overzichtsvenster](./media/resource-group-insights/00004-failures.png)
+![Scherm opname van het deel venster fout overzicht](./media/resource-group-insights/00004-failures.png)
 
-Wanneer App Service is gekozen, krijgt u een galerie van Azure Monitor werkmap-sjablonen.
+Als App Service is gekozen, wordt er een galerie met Azure Monitor werkmap sjablonen weer gegeven.
 
-![Schermafbeelding van de werkmap-toepassingsgalerie](./media/resource-group-insights/0005-failure-insights-workbook.png)
+![Scherm afbeelding van galerie met toepassings werkmappen](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
-De sjabloon voor fout Insights kiezen, wordt de werkmap geopend.
+Als u de sjabloon voor fout Insights kiest, wordt de werkmap geopend.
 
-![Schermopname van het rapport over fouten](./media/resource-group-insights/0006-failure-visual.png)
+![Scherm opname van fout rapport](./media/resource-group-insights/0006-failure-visual.png)
 
-U kunt een van de rijen selecteren. De selectie wordt vervolgens weergegeven in de weergave van een grafische details.
+U kunt een van de rijen selecteren. De selectie wordt vervolgens weer gegeven in een grafische detail weergave.
 
-![Schermafbeelding van de foutdetails](./media/resource-group-insights/0007-failure-details.png)
+![Scherm opname van fout Details](./media/resource-group-insights/0007-failure-details.png)
 
-Werkmappen abstracte onmiddellijk het moeilijk werk van het maken van aangepaste rapporten en visualisaties naar een eenvoudig worden gebruikt. Sommige gebruikers willen mogelijk alleen het vooraf gedefinieerde parameters aanpassen, zijn werkmappen volledig aanpasbaar.
+Werkmappen bemoeilijkt het lastigste werk van het maken van aangepaste rapporten en visualisaties in een gemakkelijk te gebruiken indeling. Hoewel sommige gebruikers alleen de vooraf gedefinieerde para meters willen aanpassen, kunnen werkmappen volledig worden aangepast.
 
-Als u een beeld van hoe deze werkmap intern functioneert, selecteer **bewerken** in de bovenste balk.
+Selecteer **bewerken** in de bovenste balk om een beeld te krijgen van de manier waarop deze werkmap intern functioneert.
 
-![Schermafbeelding van de optie voor extra bewerken](./media/resource-group-insights/0008-failure-edit.png)
+![Scherm afbeelding van de optie extra bewerken](./media/resource-group-insights/0008-failure-edit.png)
 
-Een aantal **bewerken** vakken weergegeven in de buurt van de verschillende elementen van de werkmap. Selecteer de **bewerken** vak onder de tabel van bewerkingen.
+Er worden een aantal **invoer** vakken weer gegeven in de buurt van de verschillende elementen van de werkmap. Selecteer het **invoervak** onder de tabel met bewerkingen.
 
-![Schermafbeelding van de invoervakken](./media/resource-group-insights/0009-failure-edit-graph.png)
+![Scherm afbeelding van bewerkings vakken](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Hiermee wordt de onderliggende logboekquery die vraagt om de tabelvisualisatie van de.
+Hiermee wordt de onderliggende logboek query onthuld waarmee de tabel visualisatie wordt geroutef.
 
- ![Schermafbeelding van de query-logboekvenster](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Scherm afbeelding van query venster voor logboek](./media/resource-group-insights/0010-failure-edit-query.png)
 
-U kunt de query rechtstreeks wijzigen. Of u kunt gebruiken als uitgangspunt en lenen uit bij het ontwerpen van uw eigen aangepaste geparameteriseerde werkmap.
+U kunt de query rechtstreeks wijzigen. U kunt deze ook gebruiken als referentie en hiervan lenen wanneer u uw eigen aangepaste werkmap met para meters ontwerpt.
 
 ### <a name="investigate-performance"></a>Prestaties onderzoeken
 
-Prestaties biedt een eigen galerie van werkmappen. Voor App Service biedt de werkmap met vooraf gedefinieerde prestaties van toepassingen in de volgende weergave:
+Prestaties bieden een eigen galerie met werkmappen. Voor App Service bevat de vooraf gemaakte toepassings prestatie werkmap de volgende weer gave:
 
- ![Schermafbeelding van de weergave van agentprestaties](./media/resource-group-insights/0011-performance.png)
+ ![Scherm afbeelding van prestatie weergave](./media/resource-group-insights/0011-performance.png)
 
-In dit geval, als u bewerken selecteert ziet u dat deze set visualisaties wordt aangestuurd door Azure Monitor metrische gegevens.
+Als u in dit geval bewerken selecteert, ziet u dat deze set visualisaties wordt ingeschakeld door Azure Monitor metrische gegevens.
 
- ![Schermafbeelding van de Prestatieweergave met metrische gegevens over Azure](./media/resource-group-insights/0012-performance-metrics.png)
+ ![Scherm afbeelding van prestatie weergave met metrische gegevens van Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="enabling-access-to-alerts"></a>Toegang tot waarschuwingen inschakelen
 
-Om waarschuwingen te bekijken in Azure Monitor voor resourcegroepen, moet iemand met een eigenaar of de rol Inzender voor dit abonnement Azure Monitor openen voor resourcegroepen voor elke willekeurige resourcegroep in het abonnement. Hierdoor kan iedereen met toegang lezen om waarschuwingen te zien in Azure Monitor voor resourcegroepen voor alle van de resourcegroepen in het abonnement. Hebt u een rol eigenaar of bijdrager, vernieuw deze pagina in een paar minuten.
+Als u waarschuwingen in Azure Monitor voor resource groepen wilt weer geven, moet iemand met een eigenaar of Inzender rol voor dit abonnement Azure Monitor openen voor resource groepen voor een resource groep in het abonnement. Hiermee wordt iedereen met lees toegang in staat stellen om waarschuwingen in Azure Monitor voor resource groepen weer te geven voor alle resource groepen in het abonnement. Als u een rol voor eigenaar of bijdrager hebt, kunt u deze pagina in een paar minuten vernieuwen.
 
-Azure Monitor voor resourcegroepen, is afhankelijk van het systeem beheer van Azure Monitor-waarschuwingen om op te halen van de status van waarschuwing. Waarschuwingen Management is niet standaard geconfigureerd voor elke resourcegroep en het abonnement en kan alleen worden ingeschakeld door iemand met een rol eigenaar of Bijdrager. Kan het zijn ingeschakeld door:
-* Azure Monitor openen voor resourcegroepen voor elke willekeurige resourcegroep in het abonnement.
-* Of door te gaan naar het abonnement, te klikken op **Resourceproviders**, vervolgens te klikken op **registreren voor Alerts.Management**.
+Azure Monitor voor resource groepen is afhankelijk van het beheer systeem voor Azure Monitor waarschuwingen om de waarschuwings status op te halen. Waarschuwingen beheer is standaard niet geconfigureerd voor elke resource groep en elk abonnement en kan alleen worden ingeschakeld door iemand met een rol van eigenaar of Inzender. De functie kan worden ingeschakeld door:
+* Het openen van Azure Monitor voor resource groepen voor een resource groep in het abonnement.
+* Of ga naar het abonnement, klik op **resource providers**en klik vervolgens op **registreren voor waarschuwingen. beheer**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Monitor-werkmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor werkmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor-waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

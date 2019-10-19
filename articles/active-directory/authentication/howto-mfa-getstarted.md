@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162393"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554387"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -28,7 +28,7 @@ Mensen maken verbinding met de resources van de organisatie in steeds complexe s
 
 Voordat u een implementatie van Azure Multi-Factor Authentication start, zijn er vereiste items die moeten worden overwogen.
 
-| Scenario | Vereiste |
+| Scenario | Vereisten |
 | --- | --- |
 | **Cloud-only-** identiteits omgeving met moderne verificatie | **Geen aanvullende vereiste taken** |
 | Scenario's voor **hybride** identiteit | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wordt geïmplementeerd en gebruikers identiteiten worden gesynchroniseerd of Federated met de on-premises Active Directory Domain Services met Azure Active Directory. |
@@ -44,7 +44,7 @@ Uw abonnement op de MFA-implementatie moet een pilot implementatie bevatten, gev
 
 Het is essentieel om gebruikers te informeren over geplande communicatie, over aanstaande wijzigingen, vereisten voor Azure MFA-registratie en alle benodigde gebruikers acties. U wordt aangeraden communicaties uit te voeren in overleg met vertegenwoordigers vanuit uw organisatie, zoals een communicatie, wijzigings beheer of Human Resources-afdelingen.
 
-Micro soft biedt [communicatie sjablonen](https://aka.ms/mfatemplates) en [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers verzenden naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
+Micro soft biedt [communicatie sjablonen](https://aka.ms/mfatemplates) en [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) verzenden om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
@@ -52,10 +52,10 @@ Azure multi-factor Authentication wordt geïmplementeerd door beleids regels met
 
 * Alle gebruikers, een specifieke gebruiker, lid van een groep of toegewezen rol
 * Specifieke Cloud toepassing waartoe toegang wordt verkregen
-* Apparaatplatform
+* Platform apparaat
 * Status van apparaat
 * Netwerk locatie of geografisch geplaatste IP-adres
-* Client-toepassingen
+* Clienttoepassingen
 * Aanmeldings risico (vereist identiteits beveiliging)
 * Compatibel apparaat
 * Hybride Azure AD-apparaat toegevoegd
@@ -96,7 +96,7 @@ Het wordt aanbevolen dat organisaties voorwaardelijke toegang gebruiken om hun n
    2. Als u landen/regio's gebruikt
       1. Vouw de vervolg keuzelijst uit en selecteer de landen of regio's die u voor deze benoemde locatie wilt definiëren.
       2. Bepaal of u onbekende gebieden wilt toevoegen. Onbekende gebieden zijn IP-adressen die niet kunnen worden toegewezen aan een land/regio.
-7. Klik op **Maken**
+7. Klik op **Maken**.
 
 ## <a name="plan-authentication-methods"></a>Verificatie methoden plannen
 
@@ -109,7 +109,7 @@ Er wordt een push melding verzonden naar de Microsoft Authenticator-app op uw mo
 > [!NOTE]
 > Als uw organisatie mede werkers heeft in of reist naar China, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
 
-### <a name="verification-code-from-mobile-app"></a>Verificatiecode via mobiele app
+### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
 Een mobiele app, zoals de app Microsoft Authenticator, genereert elke 30 seconden een nieuwe OATH-verificatie code. De gebruiker voert de verificatie code in de aanmeldings interface in. De optie voor de mobiele app kan worden gebruikt, ongeacht of de telefoon een gegevens-of mobiel signaal heeft.
 
@@ -117,7 +117,7 @@ Een mobiele app, zoals de app Microsoft Authenticator, genereert elke 30 seconde
 
 Er wordt een automatische spraak oproep naar de gebruiker geplaatst. De gebruiker beantwoordt het gesprek en drukt **#** op het toetsen blok van de telefoon om hun verificatie goed te keuren. Bellen naar telefoon is een fantastische back-upmethode voor meldings-of verificatie code van een mobiele app.
 
-### <a name="text-message-to-phone"></a>Sms-bericht naar telefoon
+### <a name="text-message-to-phone"></a>SMS-bericht naar telefoon
 
 Er wordt een tekst bericht met een verificatie code naar de gebruiker verzonden. de gebruiker wordt gevraagd de verificatie code in te voeren in de aanmeldings interface.
 
@@ -176,32 +176,6 @@ Als uw gebruikers zijn ingeschakeld met behulp van gebruikers die per gebruiker 
 Voer deze Power shell uit in een ISE-venster of sla het bestand op als een. Het PS1-bestand dat lokaal moet worden uitgevoerd.
 
 ```PowerShell
-# Disable MFA for all users, keeping their MFA methods intact
-Get-MsolUser -All | Disable-MFA -KeepMethods
-
-# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
-function Disable-MFA {
-
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromPipeline=$True)]
-        $User,
-        [switch] $KeepMethods
-    )
-
-    Process {
-
-        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
-        $User | Set-MfaState -State Disabled
-
-        if ($KeepMethods) {
-            # Restore the MFA methods which got cleared when disabling MFA
-            Set-MsolUser -ObjectId $User.ObjectId `
-                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
-        }
-    }
-}
-
 # Sets the MFA requirement state
 function Set-MfaState {
 
@@ -231,6 +205,8 @@ function Set-MfaState {
     }
 }
 
+# Disable MFA for all users
+Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 ## <a name="plan-conditional-access-policies"></a>Beleid voor voorwaardelijke toegang plannen
@@ -246,21 +222,21 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
 1. Selecteer **Nieuw beleid**.
 1. Geef een beschrijvende naam op voor uw beleid.
 1. Onder **gebruikers en groepen**:
-   * Schakel op het tabblad include het keuze rondje **alle gebruikers** in
-   * Schakel op het tabblad exclude het selectie vakje voor **gebruikers en groepen** in en kies uw accounts voor toegang voor nood gevallen.
+   * Schakel op het tabblad **include** het keuze rondje **alle gebruikers** in
+   * Schakel op het tabblad **exclude** het selectie vakje voor **gebruikers en groepen** in en kies uw accounts voor toegang voor nood gevallen.
    * Klik op **Gereed**.
 1. Onder **Cloud-apps**selecteert u het keuze rondje **alle Cloud-apps** .
-   * EVENTUEEL Kies op het tabblad exclude de optie Cloud-apps waarvoor uw organisatie geen MFA vereist.
+   * Optioneel: Kies op het tabblad **uitsluiten** de optie Cloud-apps waarvoor uw organisatie geen MFA vereist.
    * Klik op **Gereed**.
 1. Onder **voor waarden** :
-   * EVENTUEEL Als Azure Identity Protection is ingeschakeld, kunt u ervoor kiezen om aanmeldings Risico's als onderdeel van het beleid te evalueren.
-   * EVENTUEEL Als u vertrouwde locaties of benoemde locaties hebt geconfigureerd, kunt u opgeven of deze locaties moeten worden opgenomen of uitgesloten van het beleid.
+   * Optioneel: als Azure Identity Protection is ingeschakeld, kunt u ervoor kiezen om het aanmeldings risico als onderdeel van het beleid te evalueren.
+   * Optioneel: als u vertrouwde locaties of benoemde locaties hebt geconfigureerd, kunt u opgeven dat deze locaties moeten worden opgenomen of uitgesloten van het beleid.
 1. Zorg ervoor dat onder **Grant**het keuze rondje **toegang verlenen** is geselecteerd.
     * Schakel het selectie vakje voor **multi-factor Authentication vereisen**in.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ![Een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de test groep](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -297,9 +273,9 @@ Als er al een NPS-exemplaar is geïmplementeerd en in gebruik is, kunt [u uw bes
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>NPS voorbereiden voor gebruikers die niet zijn Inge schreven voor MFA
 
-Kies wat er gebeurt wanneer gebruikers die niet zijn Inge schreven met MFA proberen te verifiëren. Gebruik de register instelling `REQUIRE_USER_MATCH` in het `HKLM\Software\Microsoft\AzureMFA` registerpad om het functie gedrag te bepalen. Deze instelling heeft één configuratie optie.
+Kies wat er gebeurt wanneer gebruikers die niet zijn Inge schreven met MFA proberen te verifiëren. Gebruik de register instelling `REQUIRE_USER_MATCH` in het registerpad `HKLM\Software\Microsoft\AzureMFA` om het functie gedrag te bepalen. Deze instelling heeft één configuratie optie.
 
-| Sleutel | Value | Standaard |
+| Sleutel | Waarde | Standaard |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | WAAR/ONWAAR | Niet ingesteld (gelijk aan TRUE) |
 
@@ -339,7 +315,7 @@ Op elke AD FS-server, in het archief van de lokale computer, is er een zelfonder
 
 Als de geldigheids periode van uw certificaten bijna is verlopen, [genereert en verifieert u een nieuw MFA-certificaat op elke AD FS-server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn `New-AdfsAzureMfaTenantCertificate` gegenereerd via de Power shell-cmdlet 2 jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
+In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn gegenereerd via de `New-AdfsAzureMfaTenantCertificate` Power shell-cmdlet 2 jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
 
 ## <a name="implement-your-plan"></a>Uw abonnement implementeren
 
@@ -357,11 +333,11 @@ Nu u uw oplossing hebt gepland, kunt u deze implementeren door de volgende stapp
 1. Configureer uw MFA-registratie beleid
    1. [Gecombineerde MFA en SSPR](howto-registration-mfa-sspr-combined.md)
    1. Met [identiteits beveiliging](../identity-protection/howto-mfa-policy.md)
-1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Bijhouden wie is inge schreven](#identify-non-registered-users)
 
 > [!TIP]
-> Government Cloud-gebruikers kunnen zich inschrijven op[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Government Cloud-gebruikers kunnen zich inschrijven op [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Uw oplossing beheren
 
@@ -369,7 +345,7 @@ Rapporten voor Azure MFA
 
 Azure Multi-Factor Authentication biedt rapporten via de Azure Portal:
 
-| Rapport | Location | Description |
+| Rapport | Locatie | Beschrijving |
 | --- | --- | --- |
 | Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
 

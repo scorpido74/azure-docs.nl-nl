@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d555c51838f3595367e931341a3cf6161857faef
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431276"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554600"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Versleuteling en verificatie van Secure Sockets Layer (SSL) instellen voor Apache Kafka in azure HDInsight
 
@@ -78,6 +78,12 @@ Gebruik de volgende gedetailleerde instructies om de Broker-installatie te volt 
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
     ```
 
+1. Voer op de CA-computer de volgende opdracht uit om CA-certificaat-en CA-sleutel bestanden te maken:
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
+    ```
+
 1. Ga naar de CA-computer en Onderteken alle ontvangen aanvragen voor certificaat ondertekening:
 
     ```bash
@@ -128,30 +134,18 @@ Voer de volgende stappen uit om de configuratie wijziging te volt ooien:
 
     ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Voer de onderstaande opdrachten uit om configuratie-eigenschappen toe te voegen aan het bestand Kafka `server.properties` om IP-adressen te adverteren in plaats van de FQDN-naam (Fully Qualified Domain Name).
+1. Onder **Geavanceerde Kafka-env** voegt u de volgende regels toe aan het einde van de **Kafka-envelop-sjabloon** eigenschap.
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. Als u wilt controleren of de vorige wijzigingen correct zijn aangebracht, kunt u eventueel controleren of de volgende regels aanwezig zijn in het bestand Kafka `server.properties`.
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![De eigenschap Kafka-env-sjabloon bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. Start alle Kafka-Brokers opnieuw op.
 1. Start de admin-client met producer-en consumenten opties om te controleren of zowel producenten als consumenten op poort 9093 werken.

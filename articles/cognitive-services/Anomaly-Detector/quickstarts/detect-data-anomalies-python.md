@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Afwijkingen als een batch detecteren met behulp van de anomalie detectie REST API en python'
+title: 'Snelstartgids: anomalieën als een batch detecteren met behulp van de anomalie detectie REST API en python'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 10/14/2019
 ms.author: aahi
-ms.openlocfilehash: f40f1b94b3e7c2732fd8bed0bc6e503277b533c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 53311567bbfa93cb66999518e5172b6c4ac36b3f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565818"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555146"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Quickstart: Afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API en python
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Snelstartgids: afwijkingen in uw tijdreeks gegevens detecteren met behulp van de anomalie detectie REST API en python
 
 Gebruik deze Quick Start om de twee detectie modi van de anomalie detectie-API te gebruiken voor het detecteren van afwijkingen in uw time series-gegevens. Deze python-toepassing verzendt twee API-aanvragen met tijdreeks gegevens in JSON-indeling en ontvangt de antwoorden.
 
@@ -36,19 +36,16 @@ Gebruik deze Quick Start om de twee detectie modi van de anomalie detectie-API t
 
 - Een JSON-bestand met gegevens punten van de tijd reeks. De voorbeeld gegevens voor deze Quick Start vindt u op [github](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
-[!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
+### <a name="create-an-anomaly-detector-resource"></a>Een afwijkende detector-resource maken
 
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
+[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-1. Maak een nieuw python-bestand in uw favoriete tekst editor of IDE. Voeg de volgende import bewerkingen toe.
+1. Maak een nieuw python-bestand en voeg de volgende import bewerkingen toe.
 
-    ```python
-    import requests
-    import json
-    ```
+    [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
 2. Maak variabelen voor uw abonnements sleutel en uw eind punt. Hieronder vindt u de Uri's die u voor anomalie detectie kunt gebruiken. Deze worden later toegevoegd aan uw service-eind punt om de API-aanvraag-Url's te maken.
 
@@ -57,94 +54,47 @@ Gebruik deze Quick Start om de twee detectie modi van de anomalie detectie-API t
     |Batch detectie    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |Detectie op het laatste gegevens punt     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
-    ```python
-    batch_detection_url = "/anomalydetector/v1.0/timeseries/entire/detect"
-    latest_point_detection_url = "/anomalydetector/v1.0/timeseries/last/detect"
+    [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-    endpoint = "[YOUR_ENDPOINT_URL]"
-    subscription_key = "[YOUR_SUBSCRIPTION_KEY]"
-    data_location = "[PATH_TO_TIME_SERIES_DATA]"
-    ```
+3. Lees in het JSON-gegevens bestand door het te openen en `json.load()` te gebruiken.
 
-3. Lees in het JSON-gegevens bestand door het te openen en `json.load()`met.
-
-    ```python
-    file_handler = open(data_location)
-    json_data = json.load(file_handler)
-    ```
+    [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
 
-1. Maak een nieuwe functie met `send_request()` de naam die de hierboven gemaakte variabelen accepteert. Voer vervolgens de volgende stappen uit.
+1. Maak een nieuwe functie met de naam `send_request()` die de hierboven gemaakte variabelen gebruikt. Voer vervolgens de volgende stappen uit.
 
-2. Maak een woorden lijst voor de aanvraag headers. Stel de `Content-Type` in `application/json`op en voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de koptekst.
+2. Maak een woorden lijst voor de aanvraag headers. Stel de `Content-Type` in op `application/json` en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key`-kop.
 
 3. Verzend de aanvraag via `requests.post()`. Combi neer uw eind punt en de detectie-URL voor afwijkingen voor de volledige aanvraag-URL en voeg uw kopteksten en JSON-aanvraag gegevens toe. En retourneert vervolgens het antwoord.
 
-```python
-def send_request(endpoint, url, subscription_key, request_data):
-    headers = {'Content-Type': 'application/json',
-               'Ocp-Apim-Subscription-Key': subscription_key}
-    response = requests.post(
-        endpoint+url, data=json.dumps(request_data), headers=headers)
-    return json.loads(response.content.decode("utf-8"))
-```
+[!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
 ## <a name="detect-anomalies-as-a-batch"></a>Afwijkingen als een batch detecteren
 
-1. Maak een methode met `detect_batch()` de naam om afwijkingen in de gegevens op te sporen als een batch. Roep de `send_request()` hierboven gemaakte methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens.
+1. Maak een methode met de naam `detect_batch()` om afwijkingen in de gegevens op te sporen als een batch. Roep de hierboven gemaakte `send_request()` methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens.
 
-2. Bel `json.dumps()` het resultaat om het te Format teren en druk het af op de-console.
+2. Bel `json.dumps()` op het resultaat om deze te Format teren en af te drukken naar de-console.
 
-3. Als het antwoord veld `code` bevat, drukt u de fout code en het fout bericht af.
+3. Als het antwoord `code` veld bevat, drukt u de fout code en het fout bericht af.
 
-4. Als dat niet het geval is, kunt u de positie van afwijkingen vinden in de gegevensset. Het veld van `isAnomaly` de respons bevat een Booleaanse waarde die aangeeft of een gegeven gegevens punt een afwijkend is. De lijst herhalen en de index van alle `True` waarden afdrukken. Deze waarden komen overeen met de index van afwijkende gegevens punten, als deze zijn gevonden.
+4. Als dat niet het geval is, kunt u de positie van afwijkingen vinden in de gegevensset. Het veld `isAnomaly` van de reactie bevat een Booleaanse waarde die aangeeft of een bepaald gegevens punt een afwijkend is. De lijst door lopen en de index van `True` waarden afdrukken. Deze waarden komen overeen met de index van afwijkende gegevens punten, als deze zijn gevonden.
 
-```python
-def detect_batch(request_data):
-    print("Detecting anomalies as a batch")
-    result = send_request(endpoint, batch_detection_url,
-                          subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-
-    if result.get('code') != None:
-        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(
-            result['code'], result['message']))
-    else:
-        # Find and display the positions of anomalies in the data set
-        anomalies = result["isAnomaly"]
-        print("Anomalies detected in the following data positions:")
-        for x in range(len(anomalies)):
-            if anomalies[x] == True:
-                print(x)
-```
+[!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De afwijkings status van het laatste gegevens punt detecteren
 
-1. Maak een methode met `detect_latest()` de naam om te bepalen of het meest recente gegevens punt in de tijd reeks een afwijkend is. Roep de `send_request()` bovenstaande methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. 
+1. Maak een methode met de naam `detect_latest()` om te bepalen of het meest recente gegevens punt in de tijd reeks een afwijkend is. Roep de bovenstaande `send_request()` methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. 
 
-2. Bel `json.dumps()` het resultaat om het te Format teren en druk het af op de-console.
+2. Bel `json.dumps()` op het resultaat om deze te Format teren en af te drukken naar de-console.
 
-```python
-def detect_latest(request_data):
-    print("Determining if latest data point is an anomaly")
-    # send the request, and print the JSON result
-    result = send_request(endpoint, latest_point_detection_url,
-                          subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-```
+[!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Laad uw time series-gegevens en verzend de aanvraag
+## <a name="send-the-request"></a>De aanvraag verzenden
 
-1. Laad uw JSON time series-gegevens die een bestandshandler openen en gebruiken `json.load()` . Roep vervolgens de hierboven gemaakte anomalie detectie methoden aan.
+1. Roep de hierboven gemaakte anomalie detectie methoden aan.
 
-```python
-file_handler = open(data_location)
-json_data = json.load(file_handler)
-
-detect_batch(json_data)
-detect_latest(json_data)
-```
+[!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>Voorbeeld van een antwoord
 
@@ -155,4 +105,8 @@ Een geslaagde reactie wordt geretourneerd in JSON-indeling. Klik op de onderstaa
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+>[Anomalie detectie met Azure Databricks streamen](../tutorials/anomaly-detection-streaming-databricks.md)
+
+* Wat is de [anomalie detectie-API?](../overview.md)
+* [Aanbevolen procedures](../concepts/anomaly-detection-best-practices.md) voor het gebruik van de anomalie detectie-API.
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs).

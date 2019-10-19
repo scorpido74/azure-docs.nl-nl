@@ -1,89 +1,83 @@
 ---
-title: Azure Monitor voor virtuele machines (preview) inschakelen voor de evaluatie | Microsoft Docs
-description: Informatie over het evalueren van Azure Monitor voor virtuele machines op een enkele Azure-machine of op een virtuele-machineschaalset.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Azure Monitor voor VM's inschakelen (preview) voor evaluatie | Microsoft Docs
+description: Meer informatie over het evalueren van Azure Monitor voor VM's op één virtuele machine in azure of op een schaalset voor virtuele machines.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ec909bcd16f923bbd7036f6a69df2bbb07e561b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/09/2019
+ms.openlocfilehash: 1182f48d2d05c90cc90b1832f9305001dd2d1211
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122533"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553816"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Azure Monitor voor virtuele machines (preview) inschakelen voor de evaluatie
+# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Azure Monitor voor VM's inschakelen (preview) voor evaluatie
 
-U kunt Azure Monitor evalueren voor virtuele machines (preview) op een klein aantal virtuele Azure-machines (VM's) of op een schaal van één virtuele machine of virtuele machine instellen. De eenvoudigste en meest directe manier om in te schakelen bewaking is van de Azure-portal. Het doel is om te controleren van uw virtuele machines en prestaties of beschikbaarheidsproblemen te detecteren. 
+U kunt Azure Monitor voor VM's (preview) evalueren op een klein aantal virtuele machines (Vm's) van Azure of op één virtuele machine of VM-schaalset. De eenvoudigste en meest directe manier om bewaking in te scha kelen, is van de Azure Portal. Het doel is uw Vm's te bewaken en eventuele problemen met prestaties of Beschik baarheid te detecteren. 
 
-Voordat u begint, controleert u de [vereisten](vminsights-enable-overview.md) en zorg ervoor dat uw abonnement en resources voldoen aan de vereisten.  
+Voordat u begint, controleert u [de vereisten](vminsights-enable-overview.md) en zorgt u ervoor dat uw abonnement en de resources voldoen aan de vereisten.  
 
-## <a name="enable-monitoring-for-a-single-azure-vm"></a>Schakel de bewaking voor een enkele Azure-VM
-Inschakelen van bewaking van uw Azure-VM:
+## <a name="enable-monitoring-for-a-single-azure-vm"></a>Bewaking inschakelen voor één Azure VM
+Controle van uw virtuele Azure-machine inschakelen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **virtuele Machines**.
+1. Selecteer **virtual machines**.
 
 1. Selecteer een VM in de lijst.
 
-1. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
+1. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
 
-1. Op de **inzichten (preview)** weergeeft, schakelt **Probeer nu**.
+1. Selecteer **nu proberen**op de pagina **inzichten (preview)** .
 
-    ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Azure Monitor voor VM's inschakelen voor een VM](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-1. Op de **Azure Monitor Insights voorbereiden** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement, selecteert u deze in de vervolgkeuzelijst.  
+1. Als u een bestaande Log Analytics-werk ruimte in hetzelfde abonnement hebt, selecteert u op de pagina **Azure monitor Insights voorbereiden** .  
 
-    De lijst worden er de standaardwerkruimte en de locatie waar de virtuele machine is geïmplementeerd in het abonnement. 
-
-    >[!NOTE]
-    >Zie voor het maken van een nieuwe werkruimte voor logboekanalyse voor het opslaan van de bewakingsgegevens van de virtuele machine, [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Uw Log Analytics-werkruimte moet behoren tot een van de [ondersteunde regio's](vminsights-enable-overview.md#log-analytics).
-
-Wanneer u bewaking inschakelt, moet u mogelijk wacht tien minuten voordat u de status van metrische gegevens voor de virtuele machine weergeven kunt.
-
-![Azure Monitor inschakelen voor virtuele machines verwerking van de implementatie controleren](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
-
-## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Schakel bewaking voor een enkele virtuele-machineschaalset
-
-Inschakelen van bewaking van uw schaalset voor virtuele Azure-machine:
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-
-2. Selecteer **Virtual Machine Scale Sets**.
-
-3. Selecteer een virtuele-machineschaalset in de lijst.
-
-4. Op de virtuele machine schaalset pagina in de **bewaking** sectie, selecteer **inzichten (preview)** .
-
-5. Op de **inzichten (preview)** pagina als u wilt gebruiken van een bestaande Log Analytics-werkruimte, selecteert u deze in de vervolgkeuzelijst.
-
-    De lijst worden er de standaardwerkruimte en de locatie die de virtuele machine is geïmplementeerd op in het abonnement. 
-
-    ![Azure Monitor voor virtuele machines inschakelen voor een virtuele-machineschaalset](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+    De lijst preselecteert de standaard werkruimte en de locatie waar de virtuele machine in het abonnement is geïmplementeerd. 
 
     >[!NOTE]
-    >Zie voor het maken van een nieuwe werkruimte voor logboekanalyse voor het opslaan van de bewakingsgegevens van de virtuele-machineschaalset [een Log Analytics-werkruimte maken](../learn/quick-create-workspace.md). Uw Log Analytics-werkruimte moet behoren tot een van de [ondersteunde regio's](vminsights-enable-overview.md#log-analytics).
+    >Zie [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md)om een nieuwe log Analytics-werk ruimte te maken voor het opslaan van de bewakings gegevens van de virtuele machine. Uw Log Analytics-werk ruimte moet deel uitmaken van een van de [ondersteunde regio's](vminsights-enable-overview.md#log-analytics).
 
-Wanneer u bewaking inschakelt, moet u mogelijk wacht tien minuten voordat u de bewakingsgegevens voor de schaalset kunt weergeven.
+Nadat u bewaking hebt ingeschakeld, moet u mogelijk ongeveer 10 minuten wachten voordat u de metrische gegevens van de status voor de virtuele machine kunt weer geven.
+
+![Verwerking van de implementatie van Azure Monitor voor VM's-bewaking inschakelen](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+
+## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Bewaking inschakelen voor één schaalset voor virtuele machines
+
+De bewaking van uw Azure virtual machine-schaalset inschakelen:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+
+2. Selecteer **Virtual Machine Scale sets**.
+
+3. Selecteer een schaalset voor virtuele machines in de lijst.
+
+4. Selecteer op de pagina schaalset voor virtuele machines in de sectie **controle** de optie **inzichten (preview-versie)** .
+
+5. Als u een bestaande Log Analytics-werk ruimte wilt gebruiken, selecteert u op de pagina **inzichten (preview)** de optie in de vervolg keuzelijst.
+
+    De lijst preselecteert de standaardwerk ruimte en de standaard locatie waar de virtuele machine wordt geïmplementeerd in het abonnement. 
+
+    ![Azure Monitor voor VM's inschakelen voor een schaalset voor virtuele machines](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+
+    >[!NOTE]
+    >Zie [een log Analytics-werk ruimte maken](../learn/quick-create-workspace.md)om een nieuwe log Analytics-werk ruimte te maken voor het opslaan van de bewakings gegevens uit de virtuele-machine schaalset. Uw Log Analytics-werk ruimte moet deel uitmaken van een van de [ondersteunde regio's](vminsights-enable-overview.md#log-analytics).
+
+Nadat u bewaking hebt ingeschakeld, moet u mogelijk ongeveer 10 minuten wachten voordat u de bewakings gegevens voor de schaalset kunt weer geven.
 
 >[!NOTE]
->Als u een handmatige upgrade model voor uw schaalset, voer een upgrade instanties om de installatie te voltooien. U kunt beginnen met de upgrade van de **exemplaren** pagina, in de **instellingen** sectie.
+>Als u een hand matig upgrade model gebruikt voor uw schaalset, moet u de exemplaren bijwerken om de installatie te volt ooien. U kunt de upgrades starten vanaf de pagina **instanties** , in de sectie **instellingen** .
 
-![Azure Monitor inschakelen voor virtuele machines verwerking van de implementatie controleren](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+![Verwerking van de implementatie van Azure Monitor voor VM's-bewaking inschakelen](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
 
-Nu dat u de bewaking voor uw schaalset voor virtuele machine of virtuele machine hebt ingeschakeld, is de controlegegevens beschikbaar zijn voor analyse in Azure Monitor voor virtuele machines. 
+Nu u bewaking hebt ingeschakeld voor uw VM of virtuele-machine schaalset, zijn de bewakings gegevens beschikbaar voor analyse in Azure Monitor voor VM's. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het gebruik van de Health-functie, [inzicht in de status van uw virtuele machines van Azure Monitor](vminsights-health.md). 
-* Afhankelijkheden van gedetecteerde toepassingen, Zie [gebruikt Azure Monitor voor virtuele machines kaart](vminsights-maps.md). 
-* Zie voor het identificeren van knelpunten, het algehele gebruik en prestaties van de virtuele machine, [weergave Azure VM-prestaties](vminsights-performance.md).
+* Zie [inzicht in de status van uw Azure monitor vm's](vminsights-health.md)voor meer informatie over het gebruik van de status functie. 
+* Zie [Azure monitor voor VM's kaart gebruiken](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven. 
+* Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om knel punten, algemeen gebruik en de prestaties van uw virtuele machine te identificeren.

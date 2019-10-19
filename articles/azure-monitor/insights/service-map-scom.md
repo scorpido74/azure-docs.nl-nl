@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor voor VM's integratie met System Center Operations Manager | Microsoft Docs
 description: Azure Monitor voor VM's detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel wordt beschreven hoe u met de kaart functie automatisch gedistribueerde toepassings diagrammen maakt in Operations Manager.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489724"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553976"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integratie met Azure Monitor voor VM's kaart functie
 
@@ -64,7 +58,7 @@ Ga als volgt te werk om Azure Monitor voor VM's kaart integratie te configureren
 
     ![De werk ruimte Operations Manager configuratie](media/service-map-scom/scom-config-workspace.png)
 
-4. In het venster **computer groep selecteren** kiest u de servicetoewijzing machine groepen die u wilt synchroniseren met Operations Manager. Klik op **computer groepen toevoegen/verwijderen**, kies groepen in de lijst met beschik **bare computer groepen**en klik op **toevoegen**.  Wanneer u klaar bent met het selecteren van groepen, klikt u op **OK** om te volt ooien.
+4. In het venster **computer groep selecteren** kiest u de servicetoewijzing machine groepen die u wilt synchroniseren met Operations Manager. Klik op **computer groepen toevoegen/verwijderen**, kies groepen in de lijst met **beschik bare computer groepen**en klik op **toevoegen**.  Wanneer u klaar bent met het selecteren van groepen, klikt u op **OK** om te volt ooien.
 
     ![De Operations Manager configuratie machine groepen](media/service-map-scom/scom-config-machine-groups.png)
 
@@ -94,26 +88,26 @@ Nadat de Log Analytics werk ruimte is verbonden, wordt een nieuwe map, Serviceto
 
 De map Servicetoewijzing heeft vier knoop punten:
 
-* **Actieve waarschuwingen**: Een lijst met alle actieve waarschuwingen over de communicatie tussen Operations Manager en Azure Monitor.  
+* **Actieve waarschuwingen**: een lijst met alle actieve waarschuwingen over de communicatie tussen Operations Manager en Azure monitor.  
 
   >[!NOTE]
   >Deze waarschuwingen worden niet Log Analytics waarschuwingen die zijn gesynchroniseerd met Operations Manager en ze worden gegenereerd in de beheer groep op basis van werk stromen die zijn gedefinieerd in de Servicetoewijzing management pack.
 
-* **Servers**: Geeft een lijst weer van de bewaakte servers die zijn geconfigureerd om te synchroniseren van Azure Monitor voor VM's kaart functie.
+* **Servers**: geeft een lijst van de bewaakte servers die zijn geconfigureerd om te synchroniseren van Azure monitor voor VM's kaart functie.
 
     ![Het deel venster Operations Manager monitoring servers](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Afhankelijkheids weergaven van computer groepen**: Een lijst met alle computer groepen die zijn gesynchroniseerd vanuit de kaart functie. U kunt op een wille keurige groep klikken om het gedistribueerde toepassings diagram weer te geven.
+* **Afhankelijkheids weergaven van computer groepen**: een lijst met alle computer groepen die zijn gesynchroniseerd vanuit de kaart functie. U kunt op een wille keurige groep klikken om het gedistribueerde toepassings diagram weer te geven.
 
     ![Het diagram voor gedistribueerde toepassingen Operations Manager](media/service-map-scom/scom-group-dad.png)
 
-* **Server afhankelijkheids weergaven**: Een lijst met alle servers die zijn gesynchroniseerd vanuit de kaart functie. U kunt klikken op een wille keurige server om het gedistribueerde toepassings diagram weer te geven.
+* **Server afhankelijkheids weergaven**: een lijst met alle servers die zijn gesynchroniseerd vanuit de kaart functie. U kunt klikken op een wille keurige server om het gedistribueerde toepassings diagram weer te geven.
 
     ![Het diagram voor gedistribueerde toepassingen Operations Manager](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>De werk ruimte bewerken of verwijderen
 
-U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het servicetoewijzing deel venster **overzicht** (**beheer** Venster > **Operations Management Suite** > **servicetoewijzing**).
+U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het Servicetoewijzing deel venster **overzicht** (**beheer** Venster > **Operations Management Suite**  > **servicetoewijzing**).
 
 >[!NOTE]
 >[Operations Management Suite is een verzameling services](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) die log Analytics bevat, die nu deel uitmaakt van [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -128,10 +122,10 @@ Met een regel, *micro soft. System Center. ServiceMapImport. rule*, wordt regel 
 
 ![Het venster Eigenschappen van Operations Manager onderdrukkingen](media/service-map-scom/scom-overrides.png)
 
-* **Ingeschakeld**: Automatische updates in-of uitschakelen.
-* **IntervalMinutes**: Hiermee geeft u de tijd tussen updates. Het standaard interval is een uur. Als u toewijzingen vaker wilt synchroniseren, kunt u de waarde wijzigen.
-* **TimeoutSeconds**: Hiermee geeft u de tijds duur voor de time-out van de aanvraag op.
-* **TimeWindowMinutes**: Hiermee geeft u het tijd venster voor het opvragen van gegevens op. De standaard waarde is 60 minuten, het Maxi maal toegestane interval.
+* **Ingeschakeld**: automatische updates in-of uitschakelen.
+* **IntervalMinutes**: Hiermee geeft u de tijd tussen updates op. Het standaard interval is een uur. Als u toewijzingen vaker wilt synchroniseren, kunt u de waarde wijzigen.
+* **TimeoutSeconds**: Hiermee geeft u de tijds duur vóór de time-out van de aanvraag op.
+* **TimeWindowMinutes**: Hiermee geeft u het tijd venster op voor het opvragen van gegevens. De standaard waarde is 60 minuten, het Maxi maal toegestane interval.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 

@@ -1,28 +1,22 @@
 ---
 title: Servicetoewijzing oplossing gebruiken in azure | Microsoft Docs
-description: Serviceoverzicht is een oplossing in Azure die automatisch toepassingsonderdelen op Windows- en Linux-systemen detecteert en de communicatie tussen services toewijst. Dit artikel bevat informatie voor het implementeren van Serviceoverzicht in uw omgeving en het gebruik hiervan in een verscheidenheid aan scenario's.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
+description: Serviceoverzicht is een oplossing in Azure die automatisch toepassingsonderdelen op Windows- en Linux-systemen detecteert en de communicatie tussen services toewijst. In dit artikel vindt u informatie over het implementeren van Servicetoewijzing in uw omgeving en het gebruik ervan in verschillende scenario's.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 07/24/2019
+ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905722"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553995"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing-oplossing gebruiken in azure
 
-Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kunt u uw servers weergeven op de manier zoals u ze ziet: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
+Met Servicetoewijzing worden automatisch toepassingsonderdelen op Windows- en Linux-systemen gedetecteerd en wordt de communicatie tussen services toegewezen. Met Servicetoewijzing kun u uw servers weergeven op de manier waarop ze hun waarde voor u hebben: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
 
 In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. Zie [het overzicht van Azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor meer informatie over het configureren van de vereisten voor deze oplossing. Als u wilt samenvatten, hebt u het volgende nodig:
 
@@ -44,15 +38,15 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 1. Schakel de Servicetoewijzing-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) of via het proces dat wordt beschreven in [bewakings oplossingen toevoegen van de Oplossingengalerie](solutions.md).
 1. [Installeer de afhankelijkheids agent in Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) of [Installeer de afhankelijkheids agent op Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) op elke computer waar u gegevens wilt ophalen. De agent voor afhankelijkheden kan verbindingen met computers in de directe nabijheid controleren, zodat er wellicht geen agent op elke computer nodig is.
 
-U opent Servicetoewijzing in de Azure Portal vanuit uw Log Analytics-werk ruimte en selecteert de optie **oplossingen** in het linkerdeel venster.<br><br> ![Selecteer de optie oplossingen in](./media/service-map/select-solution-from-workspace.png)de werk ruimte.<br> Selecteer in de lijst met oplossingen **ServiceMap (werkruimtenaam)** en klik op de overzichts pagina van de servicetoewijzing oplossing op de tegel servicetoewijzing samen vatting.<br><br> ![Tegel](./media/service-map/service-map-summary-tile.png)servicetoewijzing overzicht.
+U opent Servicetoewijzing in de Azure Portal vanuit uw Log Analytics-werk ruimte en selecteert de optie **oplossingen** in het linkerdeel venster.<br><br> optie ![Select oplossingen in de werk ruimte ](./media/service-map/select-solution-from-workspace.png).<br> Selecteer in de lijst met oplossingen **ServiceMap (werkruimtenaam)** en klik op de overzichts pagina van de servicetoewijzing oplossing op de tegel servicetoewijzing samen vatting.<br><br> tegel overzicht van ![Service kaart ](./media/service-map/service-map-summary-tile.png).
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Use cases: Zorg ervoor dat uw IT-processen afhankelijkheids detectie
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Use cases: Zorg dat uw IT-processen afhankelijk zijn van afhankelijkheids detectie
 
-### <a name="discovery"></a>Detectie
+### <a name="discovery"></a>Discovery
 
 Servicetoewijzing bouwt automatisch een algemene referentie kaart van afhankelijkheden op uw servers, processen en services van derden. Hiermee worden alle TCP-afhankelijkheden gedetecteerd en toegewezen, waarbij onverwachte verbindingen worden geïdentificeerd, externe systemen van derden waarvan u afhankelijk bent en afhankelijkheden van traditionele, donkere gebieden van uw netwerk, zoals Active Directory. Servicetoewijzing detecteert mislukte netwerk verbindingen die door uw beheerde systemen worden geprobeerd, en helpt u bij het identificeren van mogelijke server onjuiste configuratie, service storing en netwerk problemen.
 
-### <a name="incident-management"></a>incidentbeheer
+### <a name="incident-management"></a>Incident beheer
 
 Servicetoewijzing helpt de bevinding van probleem isolatie te elimineren door te zien hoe systemen zijn verbonden en elkaar beïnvloeden. Naast het identificeren van mislukte verbindingen, helpt IT bij het identificeren van onjuist geconfigureerde load balancers, verrassende of buitensporige belasting van essentiële services, en Rogue clients, zoals ontwikkel computers die praten met productie systemen. Door gebruik te maken van geïntegreerde werk stromen met Wijzigingen bijhouden kunt u ook zien of een wijzigings gebeurtenis op een back-end-computer of-service de hoofd oorzaak van een incident verklaart.
 
@@ -120,7 +114,7 @@ Wanneer u een aantal groepen hebt gemaakt, kunt u deze weer geven door het tabbl
 ![Tabblad groepen](media/service-map/machine-groups-tab.png)
 
 Selecteer vervolgens de naam van de groep om de kaart voor die computer groep weer te geven.
-![Computer groep](media/service-map/machine-group.png) de computers die deel uitmaken van de groep, worden in de kaart wit beschreven.
+![Machine groep ](media/service-map/machine-group.png) de computers die deel uitmaken van de groep, worden in de kaart wit beschreven.
 
 Als u de groep uitvouwt, worden de computers weer geven die de computer groep vormen.
 
@@ -161,11 +155,11 @@ Klik op het menu met weglatings tekens naast de groeps naam in de lijst groep.
 
 Bepaalde processen dienen specifieke rollen op computers: webservers, toepassings servers, Data Base, enzovoort. Met Servicetoewijzing worden de vakken proces en computer met functie pictogrammen gemarkeerd om in één oogopslag de rol te zien die een proces of server speelt.
 
-| Pictogram rol | Description |
+| Pictogram rol | Beschrijving |
 |:--|:--|
 | ![Webserver](media/service-map/role-web-server.png) | Webserver |
 | ![App-server](media/service-map/role-application-server.png) | Toepassings server |
-| ![Databaseserver](media/service-map/role-database.png) | Databaseserver |
+| ![Database server](media/service-map/role-database.png) | Database server |
 | ![LDAP-server](media/service-map/role-ldap.png) | LDAP-server |
 | ![SMB-server](media/service-map/role-smb.png) | SMB-server |
 
@@ -180,11 +174,11 @@ Mislukte verbindingen worden weer gegeven in Servicetoewijzing kaarten voor proc
 
 Informatie over mislukte verbindingen kan helpen bij het oplossen van problemen, migratie validatie, beveiligings analyse en algemene architectuur. Mislukte verbindingen zijn soms onschadelijk, maar ze verwijzen vaak rechtstreeks naar een probleem, zoals een failover-omgeving die plotseling onbereikbaar wordt of twee toepassings lagen die niet kunnen communiceren na een Cloud migratie.
 
-## <a name="client-groups"></a>Clientgroepen
+## <a name="client-groups"></a>Client groepen
 
 Client groepen zijn vakken op de kaart die client computers vertegenwoordigen die geen afhankelijkheids agenten hebben. Eén client groep vertegenwoordigt de clients voor een afzonderlijk proces of een afzonderlijke computer.
 
-![Clientgroepen](media/service-map/client-groups.png)
+![Client groepen](media/service-map/client-groups.png)
 
 Als u de IP-adressen van de servers in een client groep wilt weer geven, selecteert u de groep. De inhoud van de groep wordt weer gegeven in het deel venster **Eigenschappen van client groep** .
 
@@ -280,16 +274,16 @@ Het deel venster **computer prestaties** bevat standaard metrische gegevens voor
 Als u prestatie gegevens wilt bekijken, moet u mogelijk [de juiste log Analytics prestatie meter items inschakelen](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  De prestatie meter items die u wilt inschakelen:
 
 Windows:
-- Processor (*)\\% processor tijd
-- Geheugen\\percentage toegewezen bytes in gebruik
-- Netwerk adapter (*)\\verzonden bytes per seconde
-- Netwerk adapter (*)\\ontvangen bytes per seconde
+- Processor (*) \\ percentage processor tijd
+- Geheugen \\% toegewezen bytes in gebruik
+- Netwerk adapter (*) \\Bytes verzonden per seconde
+- Netwerk adapter (*) \\Bytes ontvangen per seconde
 
 Linux:
-- Processor (*)\\% processor tijd
-- Geheugen (*)\\percentage gebruikt geheugen
-- Netwerk adapter (*)\\verzonden bytes per seconde
-- Netwerk adapter (*)\\ontvangen bytes per seconde
+- Processor (*) \\ percentage processor tijd
+- Geheugen (*) \\ percentage gebruikt geheugen
+- Netwerk adapter (*) \\Bytes verzonden per seconde
+- Netwerk adapter (*) \\Bytes ontvangen per seconde
 
 Als u de netwerk prestatie gegevens wilt ophalen, moet u ook de Wire Data 2.0 oplossing in uw werk ruimte hebben ingeschakeld.
  
@@ -320,22 +314,22 @@ Er wordt één record per uur gegenereerd voor elke unieke computer en elk proce
 
 Er zijn intern gegenereerde eigenschappen die u kunt gebruiken om unieke processen en computers te identificeren:
 
-- Computer Gebruik *ResourceID* of *ResourceName_s* om een computer binnen een log Analytics-werk ruimte uniek te identificeren.
-- Proces: Gebruik *ResourceID* om een proces binnen een log Analytics-werk ruimte uniek te identificeren. *ResourceName_s* is uniek binnen de context van de computer waarop het proces wordt uitgevoerd (MachineResourceName_s) 
+- Computer: gebruik *ResourceID* of *ResourceName_s* om een computer binnen een log Analytics-werk ruimte uniek te identificeren.
+- Proces: gebruik *ResourceID* als unieke id voor een proces binnen een log Analytics-werk ruimte. *ResourceName_s* is uniek binnen de context van de computer waarop het proces wordt uitgevoerd (MachineResourceName_s) 
 
 Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijds bereik, kunnen query's meer dan één record retour neren voor dezelfde computer of hetzelfde proces. Als u alleen de meest recente record wilt opnemen, voegt u | ResourceId ophalen voor de query.
 
 ### <a name="connections"></a>Verbindingen
 
-Metrische verbindings gegevens worden geschreven naar een nieuwe tabel in Log Analytics-VMConnection. Deze tabel bevat informatie over de verbindingen voor een machine (inkomend en uitgaand). Verbindings gegevens worden ook weer gegeven met Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster.  TCP-verbindingen die voortkomen uit '*Accept*-ING ' op een luisterende socket zijn inkomend, terwijl ze zijn gemaakt door *verbinding te maken*met een bepaald IP-adres en poort uitgaand zijn. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op inkomend of uitgaand. 
+Metrische verbindings gegevens worden geschreven naar een nieuwe tabel in Log Analytics-VMConnection. Deze tabel bevat informatie over de verbindingen voor een machine (inkomend en uitgaand). Verbindings gegevens worden ook weer gegeven met Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster.  TCP-verbindingen die voortkomen uit '*Accept*-ING ' op een luisterende socket zijn inkomend, terwijl ze zijn gemaakt door *verbinding te maken*met een bepaald IP-adres en poort uitgaand zijn. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op **Inkomend** of **uitgaand**. 
 
 Records in deze tabellen worden gegenereerd op basis van gegevens die zijn gerapporteerd door de afhankelijkheids agent. Elke record vertegenwoordigt een observatie over een tijds interval van één minuut. De eigenschap TimeGenerated geeft het begin van het tijds interval aan. Elke record bevat informatie voor het identificeren van de respectieve entiteit, dat wil zeggen, verbinding of poort, en de metrische gegevens die aan die entiteit zijn gekoppeld. Op dit moment worden alleen netwerk activiteiten gerapporteerd die worden uitgevoerd via TCP via IPv4.
 
 Voor het beheren van de kosten en complexiteit vertegenwoordigen verbindings records geen afzonderlijke fysieke netwerk verbindingen. Meerdere fysieke netwerk verbindingen worden gegroepeerd in een logische verbinding, die vervolgens wordt weer gegeven in de respectievelijke tabel.  Dit betekent dat records in de tabel *VMConnection* een logische groepering vertegenwoordigen en niet de afzonderlijke fysieke verbindingen die worden waargenomen. Fysieke netwerk verbinding deelt dezelfde waarde voor de volgende kenmerken gedurende een gegeven interval van één minuut, worden geaggregeerd naar één logische record in *VMConnection*. 
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
-| `Direction` |Richting van de verbinding, waarde is inkomend of uitgaand |
+| `Direction` |Richting van de verbinding, waarde is *Inkomend* of *uitgaand* |
 | `Machine` |De FQDN van de computer |
 | `Process` |Identiteit van proces of groepen processen, initiëren/accepteren van de verbinding |
 | `SourceIp` |IP-adres van de bron |
@@ -345,7 +339,7 @@ Voor het beheren van de kosten en complexiteit vertegenwoordigen verbindings rec
 
 Om rekening te houden met de impact van groepering, wordt informatie over het aantal gegroepeerde fysieke verbindingen in de volgende eigenschappen van de record gegeven:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `LinksEstablished` |Het aantal fysieke netwerk verbindingen dat tot stand is gebracht tijdens het rapportage tijd venster |
 | `LinksTerminated` |Het aantal fysieke netwerk verbindingen dat is beëindigd tijdens het rapportage tijd venster |
@@ -356,7 +350,7 @@ Om rekening te houden met de impact van groepering, wordt informatie over het aa
 
 Naast de metrieken voor het aantal verbindingen, worden gegevens over het volume van de gegevens die zijn verzonden en ontvangen op een bepaalde logische verbinding of netwerk poort ook opgenomen in de volgende eigenschappen van de record:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `BytesSent` |Totaal aantal bytes dat is verzonden tijdens het rapportage tijd venster |
 | `BytesReceived` |Totaal aantal bytes dat is ontvangen tijdens het rapportage tijd venster |
@@ -384,17 +378,17 @@ Voor het gemak wordt het IP-adres van de externe kant van een verbinding opgenom
 
 *VMConnection* bevat ook geolocatie gegevens voor het externe einde van elke verbindings record in de volgende eigenschappen van de record: 
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `RemoteCountry` |De naam van het land of de regio die als host fungeert voor RemoteIp.  Bijvoorbeeld *Verenigde Staten* |
 | `RemoteLatitude` |De geolocatie breedte.  Bijvoorbeeld *47,68* |
 | `RemoteLongitude` |De geografische locatie lengte.  Bijvoorbeeld *-122,12* |
 
-#### <a name="malicious-ip"></a>Schadelijk IP
+#### <a name="malicious-ip"></a>Schadelijk IP-adres
 
 Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis van een reeks IP-adressen met bekende schadelijke activiteiten. Als de RemoteIp als schadelijk is geïdentificeerd, worden de volgende eigenschappen ingevuld (ze zijn leeg, wanneer het IP-adres niet als schadelijk wordt beschouwd) in de volgende eigenschappen van de record:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `MaliciousIp` |Het RemoteIp-adres |
 | `IndicatorThreadType` |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*,  *Watch list*.   |
@@ -412,7 +406,7 @@ Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis
 
 Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor servers met servicetoewijzing-agents. Deze records hebben de eigenschappen in de volgende tabel:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -428,7 +422,7 @@ Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor ser
 | `PhysicalMemory_d` | Het fysieke geheugen in MB |
 | `Cpus_d` | Het aantal Cpu's |
 | `CpuSpeed_d` | De CPU-snelheid in MHz|
-| `VirtualizationState_s` | *unknown*, *physical*, *virtual*, *hypervisor* |
+| `VirtualizationState_s` | *onbekend*, *fysiek*, *virtueel*, *Hyper Visor* |
 | `VirtualMachineType_s` | *hyper-v*, *VMware*, enzovoort |
 | `VirtualMachineNativeMachineId_g` | De VM-ID die is toegewezen door de Hyper Visor |
 | `VirtualMachineName_s` | De naam van de virtuele machine |
@@ -438,7 +432,7 @@ Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor ser
 
 Records met een type *ServiceMapProcess_CL* hebben inventaris gegevens voor met TCP verbonden processen op servers met servicetoewijzing agents. Deze records hebben de eigenschappen in de volgende tabel:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -492,7 +486,7 @@ ServiceMapProcess_CL | Where MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1
 
 ### <a name="list-all-computers-running-sql"></a>Alle computers met SQL weer geven
 
-ServiceMapComputer_CL | Where ResourceName_s in ((zoeken in (ServiceMapProcess_CL) "\*SQL\*" | Distinct MachineResourceName_s)) | DISTINCT ComputerName_s
+ServiceMapComputer_CL | waar ResourceName_s in ((zoeken in (ServiceMapProcess_CL) "\*sql \*" | Distinct MachineResourceName_s)) | DISTINCT ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke product versies van krul in mijn Data Center weer geven
 
@@ -549,47 +543,47 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzing zijn beschikbaar via de [Servicetoewijzing rest API](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiksgegevens
+## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiks gegevens
 
-Microsoft verzamelt automatisch gebruiks- en prestatiegegevens gegevens via uw gebruik van de Service Map-service. Microsoft gebruikt deze gegevens te bieden en de kwaliteit, beveiliging en integriteit van de Service Map-service te verbeteren. Om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden, bevatten de gegevens informatie over de configuratie van uw software, zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Micro soft verzamelt geen namen, adressen of andere contact gegevens.
+Micro soft verzamelt automatisch gebruiks-en prestatie gegevens via uw gebruik van de Servicetoewijzing service. Micro soft gebruikt deze gegevens om de kwaliteit, beveiliging en integriteit van de Servicetoewijzing-service te bieden en te verbeteren. Om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden, bevatten de gegevens informatie over de configuratie van uw software, zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Micro soft verzamelt geen namen, adressen of andere contact gegevens.
 
-Zie voor meer informatie over het verzamelen van gegevens en het gebruik, de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Zoek opdrachten](../../azure-monitor/log-query/log-query-overview.md) in Logboeken in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
+Meer informatie over [Zoek opdrachten in Logboeken](../../azure-monitor/log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er geen problemen installeren of uitvoeren van de Service Map, kunt in deze sectie u. Als u uw probleem nog steeds niet kunt oplossen, neem contact op met Microsoft Support.
+Als u problemen hebt met het installeren of uitvoeren van Servicetoewijzing, kan deze sectie u helpen. Als u het probleem nog steeds niet kunt oplossen, neemt u contact op met Microsoft Ondersteuning.
 
-### <a name="dependency-agent-installation-problems"></a>Problemen met de installatie van de afhankelijkheid agents
+### <a name="dependency-agent-installation-problems"></a>Problemen met de installatie van afhankelijkheids agent
 
-#### <a name="installer-prompts-for-a-reboot"></a>Installatieprogramma wordt u gevraagd om een opnieuw opstarten
-Bij de installatie of het verwijderen van de afhankelijkheids agent is *over het algemeen* geen herstart vereist. In sommige zeldzame gevallen vereist Windows Server echter opnieuw worden opgestart om door te gaan met een installatie. Dit gebeurt wanneer een afhankelijkheid, doorgaans de herdistribueerbare micro soft Visual C++ Redistributable-bibliotheek, opnieuw moet worden opgestart vanwege een vergrendeld bestand.
+#### <a name="installer-prompts-for-a-reboot"></a>Het installatie programma vraagt om opnieuw op te starten
+Bij de installatie of het verwijderen van de afhankelijkheids agent is *over het algemeen* geen herstart vereist. In bepaalde zeldzame gevallen moet Windows Server echter opnieuw worden opgestart om door te gaan met de installatie. Dit gebeurt wanneer een afhankelijkheid, doorgaans de herdistribueerbare micro soft Visual C++ Redistributable-bibliotheek, opnieuw moet worden opgestart vanwege een vergrendeld bestand.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Bericht ' kan de afhankelijkheids agent niet installeren: Kan Visual Studio runtime-bibliotheken niet installeren (code = [code_number]) ' wordt weer gegeven
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Bericht ' kan afhankelijkheids agent niet installeren: kan Visual Studio runtime-bibliotheken niet installeren (code = [code_number]) ' wordt weer gegeven
 
-De agent voor Microsoft Dependency is gebouwd op de runtime-bibliotheken voor Microsoft Visual Studio. U krijgt een bericht als er een probleem tijdens de installatie van de bibliotheken. 
+Micro soft dependency agent is gebaseerd op de runtime-bibliotheken van micro soft Visual Studio. Er wordt een bericht weer gegeven als er een probleem is tijdens de installatie van de bibliotheken. 
 
-De runtime-bibliotheek installatieprogramma's maken Logboeken in de map %LOCALAPPDATA%\temp. Het bestand is `dd_vcredist_arch_yyyymmddhhmmss.log`, waarbij *Arch* `x86` of `amd64` / *jjjjmmdduummss* de datum en tijd (24-uurs klok) is wanneer het logboek is gemaakt. Het logboek bevat informatie over het probleem dat wordt geblokkeerd door de installatie.
+De installatie Programma's voor runtime-bibliotheken maken Logboeken in de map%LOCALAPPDATA%\temp. Het bestand is `dd_vcredist_arch_yyyymmddhhmmss.log`, waarbij *arch* `x86` of `amd64` is en *jjjjmmdduummss* de datum en tijd (24-uurs klok) is wanneer het logboek is gemaakt. Het logboek bevat details over het probleem dat de installatie blokkeert.
 
 Het kan handig zijn om eerst de [meest recente runtime-bibliotheken](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) te installeren.
 
-De volgende tabel bevat de codenummers en voorgestelde oplossingen.
+De volgende tabel bevat code nummers en voorgestelde oplossingen.
 
-| Code | Description | Oplossing |
+| Coderen | Beschrijving | Resolutie |
 |:--|:--|:--|
-| 0x17 | Het installatieprogramma bibliotheek vereist een Windows-update die is niet geïnstalleerd. | Zoek in de meest recente bibliotheek installer-logboekbestand.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel `Error 0x80240017: Failed to execute MSU package,` , hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in de sectie vereisten in [Universal C runtime in het Windows](https://support.microsoft.com/kb/2999226) -artikel. Mogelijk moet u Windows Update uitvoeren en meerdere keren opnieuw om de vereiste onderdelen installeren.<br><br>Voer het installatieprogramma van Microsoft Dependency agent opnieuw uit. |
+| 0x17 | Voor het installatie programma van de bibliotheek is een Windows-Update vereist die niet is geïnstalleerd. | Zoek in het meest recente bibliotheek installatie logboek.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel `Error 0x80240017: Failed to execute MSU package,` hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in de sectie vereisten in [Universal C runtime in het Windows](https://support.microsoft.com/kb/2999226) -artikel. Mogelijk moet Windows Update worden uitgevoerd en meerdere keren opnieuw worden opgestart om de vereisten te kunnen installeren.<br><br>Voer het installatie programma voor de micro soft dependency agent opnieuw uit. |
 
-### <a name="post-installation-issues"></a>Na de installatie problemen
+### <a name="post-installation-issues"></a>Problemen na de installatie
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Server niet wordt weergegeven in het Serviceoverzicht
+#### <a name="server-doesnt-appear-in-service-map"></a>De server wordt niet weer gegeven in Servicetoewijzing
 
 Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer niet ziet in de Servicetoewijzing oplossing:
-* Is de agent voor afhankelijkheden zijn geïnstalleerd? U kunt dit controleren door te controleren of de service is geïnstalleerd en uitgevoerd.<br><br>
-**Windows**: Zoek de service met de naam **micro soft dependency agent**.
-**Linux**: Zoek naar het actieve proces **micro soft-dependency-agent**.
+* Is de afhankelijkheids agent geïnstalleerd? U kunt dit valideren door te controleren of de service is geïnstalleerd en wordt uitgevoerd.<br><br>
+**Windows**: zoek naar de service met de naam **micro soft dependency agent**.
+**Linux**: zoek naar het actieve proces **micro soft-dependency-agent**.
 
 * Bevindt u zich op de [laag log Analytics gratis](https://azure.microsoft.com/pricing/details/monitor/)? Met het gratis abonnement kunnen Maxi maal vijf unieke Servicetoewijzing machines worden gemaakt. Alle volgende computers worden niet weer gegeven in Servicetoewijzing, zelfs niet als de voor gaande vijf geen gegevens meer verzenden.
 
@@ -599,13 +593,13 @@ Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Krijgt u een aantal gebeurtenissen in de resultaten? Zijn de gegevens recente? Als dit het geval is, wordt uw Log Analytics-agent correct uitgevoerd en communiceert deze met de werk ruimte. Als dat niet het geval is, controleert u de agent op uw computer: [Log Analytics agent voor Windows probleem oplossing](../platform/agent-windows-troubleshoot.md) of [log Analytics agent voor Linux-probleem oplossing](../platform/agent-linux-troubleshoot.md).
+Hebt u een groot aantal gebeurtenissen in de resultaten? Zijn de gegevens recent? Als dit het geval is, wordt uw Log Analytics-agent correct uitgevoerd en communiceert deze met de werk ruimte. Als dat niet het geval is, controleert u de agent op uw computer: [log Analytics-agent voor Windows-probleem oplossing](../platform/agent-windows-troubleshoot.md) of [log Analytics agent voor Linux-probleem oplossing](../platform/agent-linux-troubleshoot.md).
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server wordt weergegeven in het Serviceoverzicht, maar er zijn geen processen is
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>De server wordt weer gegeven in Servicetoewijzing, maar er zijn geen processen
 
 Als uw machine in Servicetoewijzing wordt weer gegeven, maar er geen proces-of verbindings gegevens zijn, geeft dat aan dat de afhankelijkheids agent is geïnstalleerd en wordt uitgevoerd, maar het kernel-stuur programma is niet geladen. 
 
-Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) of `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). De laatste regels van het bestand aangeven waarom de kernel niet laden. De kernel kan bijvoorbeeld niet worden ondersteund op Linux als u de kernel wordt bijgewerkt.
+Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) of `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). De laatste regels van het bestand moeten aangeven waarom de kernel niet is geladen. De kernel wordt bijvoorbeeld mogelijk niet ondersteund op Linux als u uw kernel hebt bijgewerkt.
 
 ## <a name="feedback"></a>Feedback
 

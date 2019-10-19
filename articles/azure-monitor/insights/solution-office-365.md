@@ -1,23 +1,18 @@
 ---
 title: Office 365-beheer oplossing in azure | Microsoft Docs
 description: Dit artikel bevat informatie over de configuratie en het gebruik van de Office 365-oplossing in Azure.  Het bevat een gedetailleerde beschrijving van de Office 365-records die zijn gemaakt in Azure Monitor.
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.date: 08/13/2019
+ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061709"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553954"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -27,7 +22,7 @@ ms.locfileid: "70061709"
 > [!NOTE]
 > De aanbevolen methode voor het installeren en configureren van de Office 365-oplossing is het inschakelen van de [office 365-connector](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md) in plaats van de stappen in dit artikel uit te voeren. Dit is een bijgewerkte versie van de Office 365-oplossing met een verbeterde configuratie-ervaring. Als u Azure AD-logboeken wilt verbinden, kunt u de [Azure Sentinel Azure AD-connector](../../sentinel/connect-azure-active-directory.md) gebruiken of de [Diagnostische Azure AD-instellingen configureren](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md). Dit biedt uitgebreide logboek gegevens dan Office 365-beheer Logboeken. 
 >
-> Wanneer u de [Azure-Sentinel](../../sentinel/quickstart-onboard.md)onboardt, geeft u de log Analytics-werk ruimte op waarop u de Office 365-oplossing wilt installeren. Wanneer u de connector inschakelt, is de oplossing beschikbaar in de werk ruimte en gebruikt deze precies hetzelfde als andere bewakings oplossingen die u hebt geïnstalleerd.
+> Wanneer u de [Azure-Sentinel onboardt](../../sentinel/quickstart-onboard.md), geeft u de log Analytics-werk ruimte op waarop u de Office 365-oplossing wilt installeren. Wanneer u de connector inschakelt, is de oplossing beschikbaar in de werk ruimte en gebruikt deze precies hetzelfde als andere bewakings oplossingen die u hebt geïnstalleerd.
 >
 > Gebruikers van de Azure Government-Cloud moeten Office 365 installeren met behulp van de stappen in dit artikel, omdat Azure Sentinel nog niet beschikbaar is in de Government Cloud.
 
@@ -66,16 +61,16 @@ Voordat u met deze procedure begint, moet u de volgende informatie verzamelen.
 
 Vanuit uw Log Analytics-werk ruimte:
 
-- Werkruimte naam: De werk ruimte waar de Office 365-gegevens worden verzameld.
-- Naam van resource groep: De resource groep die de werk ruimte bevat.
-- Azure-abonnements-ID: Het abonnement met de werk ruimte.
+- Werkruimte naam: de werk ruimte waar de Office 365-gegevens worden verzameld.
+- Naam van resource groep: de resource groep die de werk ruimte bevat.
+- Azure-abonnements-ID: het abonnement met de werk ruimte.
 
 Van uw Office 365-abonnement:
 
-- Gebruikers Het e-mail adres van een Administrator-account.
-- Tenant-ID: Unieke ID voor het Office 365-abonnement.
+- Gebruikers naam: e-mail adres van een Administrator-account.
+- Tenant-ID: unieke ID voor Office 365-abonnement.
 - Client-ID: teken reeks van 16 tekens die de Office 365-client vertegenwoordigt.
-- Client geheim: De versleutelde teken reeks is vereist voor verificatie.
+- Client geheim: versleutelde teken reeks die nodig is voor authenticatie.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Een Office 365-toepassing maken in Azure Active Directory
 
@@ -88,7 +83,7 @@ De eerste stap is het maken van een toepassing in Azure Active Directory dat de 
     ![App-registratie toevoegen](media/solution-office-365/add-app-registration.png)
 1. Voer een toepassings **naam**in. Selecteer **accounts in elke organisatie Directory (een Azure AD-Directory-multi tenant)** voor de **ondersteunde account typen**.
     
-    ![App maken](media/solution-office-365/create-application.png)
+    ![Toepassing maken](media/solution-office-365/create-application.png)
 1. Klik op **registreren** en valideer de toepassings gegevens.
 
     ![Geregistreerde app](media/solution-office-365/registered-app.png)
@@ -104,7 +99,7 @@ De eerste stap is het maken van een toepassing in Azure Active Directory dat de 
 
     ![API selecteren](media/solution-office-365/select-api.png)
 
-1. Onder **welk type machtigingen vereist uw toepassing?** Selecteer de volgende opties voor zowel **toepassings machtigingen** als gedelegeerde **machtigingen**:
+1. Onder **welk type machtigingen vereist uw toepassing?** Selecteer de volgende opties voor zowel **toepassings machtigingen** als **gedelegeerde machtigingen**:
    - Informatie over de service status voor uw organisatie lezen
    - Gegevens van de activiteit voor uw organisatie lezen
    - Activiteiten rapporten voor uw organisatie lezen
@@ -191,7 +186,7 @@ Als u het beheerders account voor de eerste keer wilt inschakelen, moet u een ad
 
 1. Er wordt een venster weer gegeven dat vergelijkbaar is met de volgende. Klik op **accepteren**.
     
-    ![Toestemming van de beheerder](media/solution-office-365/admin-consent.png)
+    ![toestemming van de beheerder](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Abonneren op Log Analytics werk ruimte
 
@@ -514,7 +509,7 @@ Het kan enkele uren duren voordat gegevens worden verzameld. Zodra het verzamele
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Wanneer u de Office 365-oplossing aan uw Log Analytics-werk ruimte toevoegt, wordt de tegel **office 365** toegevoegd aan uw dash board. Deze tegel toont het aantal computers in uw omgeving, evenals een grafische voorstelling hiervan, en de bijbehorende updatenaleving.<br><br>
-![Office 365-overzichts tegel](media/solution-office-365/tile.png)  
+Tegel voor ![Office 365-samen vatting ](media/solution-office-365/tile.png)  
 
 Klik op de tegel **office 365** om het **Office 365** -dash board te openen.
 
@@ -522,10 +517,10 @@ Klik op de tegel **office 365** om het **Office 365** -dash board te openen.
 
 Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat de bovenste tien waarschuwingen per aantal dat overeenkomt met de criteria van die kolom voor het opgegeven bereik en tijds bereik. U kunt een zoek opdracht in het logboek uitvoeren met de volledige lijst door te klikken op alles weer geven onder aan de kolom of door op de kolomkop te klikken.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 |:--|:--|
-| Bewerkingen | Bevat informatie over de actieve gebruikers uit uw alle bewaakte Office 365-abonnementen. U kunt ook het aantal activiteiten zien dat na verloop van tijd plaatsvindt.
-| Exchange | Toont de uitsplitsing van Exchange Server-activiteiten, zoals de machtiging toevoegen-postvak of set-mailbox. |
+| Operations | Bevat informatie over de actieve gebruikers uit uw alle bewaakte Office 365-abonnementen. U kunt ook het aantal activiteiten zien dat na verloop van tijd plaatsvindt.
+| Uitwisselen | Toont de uitsplitsing van Exchange Server-activiteiten, zoals de machtiging toevoegen-postvak of set-mailbox. |
 | SharePoint | Toont de belangrijkste activiteiten die gebruikers uitvoeren op share point-documenten. Wanneer u inzoomt op deze tegel, worden in de zoek pagina de details van deze activiteiten weer gegeven, zoals het doel document en de locatie van deze activiteit. Voor een gebeurtenis die toegang heeft tot een bestand kunt u bijvoorbeeld het document zien dat wordt geopend, de bijbehorende account naam en het IP-adres. |
 | Azure Active Directory | Bevat de belangrijkste gebruikers activiteiten, zoals het opnieuw instellen van gebruikers wachtwoorden en aanmeldings pogingen. Wanneer u inzoomt, kunt u de details van deze activiteiten zien, zoals de status van het resultaat. Dit is vooral nuttig als u verdachte activiteiten op uw Azure Active Directory wilt bewaken. |
 
@@ -540,37 +535,37 @@ Alle records die zijn gemaakt in de Log Analytics-werk ruimte in Azure Monitor d
 
 De volgende eigenschappen zijn gebruikelijk voor alle Office 365-records.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| type | *OfficeActivity* |
-| ClientIP | Het IP-adres van het apparaat dat is gebruikt tijdens het vastleggen van de activiteit. Het IP-adres wordt weer gegeven in de notatie van een IPv4-of IPv6-adres. |
-| OfficeWorkload | Office 365-service waarnaar de record verwijst.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Type | *OfficeActivity* |
+| Client | Het IP-adres van het apparaat dat is gebruikt tijdens het vastleggen van de activiteit. Het IP-adres wordt weer gegeven in de notatie van een IPv4-of IPv6-adres. |
+| OfficeWorkload | Office 365-service waarnaar de record verwijst.<br><br>AzureActiveDirectory<br>Uitwisselen<br>SharePoint|
 | Bewerking | De naam van de activiteit van de gebruiker of beheerder.  |
 | OrganizationId | De GUID voor de Office 365-Tenant van uw organisatie. Deze waarde is altijd hetzelfde voor uw organisatie, ongeacht de Office 365-service waarin deze zich voordoet. |
-| RecordType | Het type bewerking dat is uitgevoerd. |
+| Record type | Het type bewerking dat is uitgevoerd. |
 | ResultStatus | Hiermee wordt aangegeven of de actie (opgegeven in de eigenschap Operation) is geslaagd of niet. Mogelijke waarden zijn geslaagd, PartiallySucceeded of mislukt. Voor Exchange-beheer activiteiten is de waarde True of false. |
-| UserId | De UPN (User Principal Name) van de gebruiker die de actie heeft uitgevoerd die heeft geresulteerd in het registreren van de record. bijvoorbeeld my_name@my_domain_name. Houd er rekening mee dat records voor activiteiten die worden uitgevoerd door systeem accounts (zoals SHAREPOINT\system of NTAUTHORITY\SYSTEM) ook worden opgenomen. | 
+| Naam | De UPN (User Principal Name) van de gebruiker die de actie heeft uitgevoerd die heeft geresulteerd in het registreren van de record. bijvoorbeeld my_name@my_domain_name. Houd er rekening mee dat records voor activiteiten die worden uitgevoerd door systeem accounts (zoals SHAREPOINT\system of NTAUTHORITY\SYSTEM) ook worden opgenomen. | 
 | UserKey | Een alternatieve ID voor de gebruiker die in de eigenschap UserId is geïdentificeerd.  Deze eigenschap wordt bijvoorbeeld gevuld met de unieke Pass Port-ID (PUID) voor gebeurtenissen die worden uitgevoerd door gebruikers in share point, OneDrive voor bedrijven en Exchange. Deze eigenschap kan ook dezelfde waarde opgeven als de eigenschap UserID voor gebeurtenissen die optreden in andere services en gebeurtenissen die worden uitgevoerd door systeem accounts|
-| UserType | Het type gebruiker dat de bewerking heeft uitgevoerd.<br><br>beheerder<br>Toepassing<br>DcAdmin<br>Normaal<br>Gereserveerd<br>ServicePrincipal<br>Systeem |
+| User type | Het type gebruiker dat de bewerking heeft uitgevoerd.<br><br>Beheerder<br>Toepassing<br>DcAdmin<br>Standaard<br>Gereserveerd<br>ServicePrincipal<br>Systeem |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory basis
 
 De volgende eigenschappen zijn gebruikelijk voor alle Azure Active Directory records.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Record type     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Het type Azure AD-gebeurtenis. |
-| ExtendedProperties | De uitgebreide eigenschappen van de Azure AD-gebeurtenis. |
+| extendedProperties | De uitgebreide eigenschappen van de Azure AD-gebeurtenis. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Aanmelding bij Azure Active Directory-account
 
 Deze records worden gemaakt wanneer een Active Directorye gebruiker zich probeert aan te melden.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -584,10 +579,10 @@ Deze records worden gemaakt wanneer een Active Directorye gebruiker zich probeer
 
 Deze records worden gemaakt wanneer er wijzigingen of toevoegingen worden aangebracht aan Azure Active Directory-objecten.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Record type     | AzureActiveDirectory |
 | AADTarget | De gebruiker die de actie (geïdentificeerd door de eigenschap Operation) is uitgevoerd. |
 | Actor | De gebruiker of service-principal die de actie heeft uitgevoerd. |
 | ActorContextId | De GUID van de organisatie waartoe de actor behoort. |
@@ -602,7 +597,7 @@ Deze records worden gemaakt wanneer er wijzigingen of toevoegingen worden aangeb
 
 Deze records worden gemaakt op basis van de beveiligings controle gegevens van data centers.  
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | EffectiveOrganization | De naam van de Tenant waarop de uitbrei ding/cmdlet is gericht. |
 | ElevationApprovedTime | De tijds tempel voor het moment waarop de verhoging werd goedgekeurd. |
@@ -618,13 +613,13 @@ Deze records worden gemaakt op basis van de beveiligings controle gegevens van d
 
 Deze records worden gemaakt wanneer er wijzigingen worden aangebracht in de Exchange-configuratie.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeAdmin |
+| OfficeWorkload | Uitwisselen |
+| Record type     | ExchangeAdmin |
 | ExternalAccess |  Hiermee geeft u op of de cmdlet is uitgevoerd door een gebruiker in uw organisatie, door het micro soft data center-personeel of een datacenter service-account of door een gedelegeerd beheerder. De waarde False geeft aan dat de cmdlet is uitgevoerd door iemand in uw organisatie. De waarde True geeft aan dat de cmdlet is uitgevoerd door een datacenter medewerker, een Data Center-service account of een gedelegeerd beheerder. |
 | ModifiedObjectResolvedName |  Dit is de beschrijvende naam van de gebruiker van het object dat door de cmdlet is gewijzigd. Dit wordt alleen vastgelegd als de cmdlet het object wijzigt. |
-| Organisatienaam | De naam van de Tenant. |
+| OrganizationName | De naam van de Tenant. |
 | OriginatingServer | De naam van de server van waaruit de cmdlet is uitgevoerd. |
 | Parameters | De naam en waarde voor alle para meters die zijn gebruikt met de cmdlet die wordt geïdentificeerd in de eigenschap Operations. |
 
@@ -633,10 +628,10 @@ Deze records worden gemaakt wanneer er wijzigingen worden aangebracht in de Exch
 
 Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden doorgevoerd in Exchange-post vakken.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Uitwisselen |
+| Record type     | ExchangeItem |
 | ClientInfoString | Informatie over de e-mailclient die is gebruikt om de bewerking uit te voeren, zoals een browser versie, Outlook-versie en informatie over mobiele apparaten. |
 | Client_IPAddress | Het IP-adres van het apparaat dat is gebruikt tijdens het registreren van de bewerking. Het IP-adres wordt weer gegeven in de notatie van een IPv4-of IPv6-adres. |
 | ClientMachineName | De naam van de computer die als host fungeert voor de Outlook-client. |
@@ -656,10 +651,10 @@ Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden doorgevoe
 
 Deze records worden gemaakt wanneer een postvak controle vermelding wordt gemaakt.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Uitwisselen |
+| Record type     | ExchangeItem |
 | Item | Hiermee wordt het item aangeduid waarop de bewerking is uitgevoerd | 
 | SendAsUserMailboxGuid | De Exchange-GUID van het postvak dat is gebruikt voor het verzenden van e-mail. |
 | SendAsUserSmtp | Het SMTP-adres van de gebruiker die wordt geïmiteerd. |
@@ -671,9 +666,9 @@ Deze records worden gemaakt wanneer een postvak controle vermelding wordt gemaak
 
 Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden aangebracht aan Exchange-groepen.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Uitwisselen |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informatie over elk item in de groep. |
 | CrossMailboxOperations | Geeft aan of de bewerking meer dan een postvak heeft betrokken. |
@@ -690,15 +685,15 @@ Deze records worden gemaakt wanneer wijzigingen of toevoegingen worden aangebrac
 
 Deze eigenschappen zijn gebruikelijk voor alle share point-records.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | Source | Hiermee wordt aangegeven dat er een gebeurtenis is opgetreden in share point. Mogelijke waarden zijn share point of ObjectModel. |
-| ItemType | Het type object dat is geopend of gewijzigd. Zie de tabel item type voor meer informatie over de typen objecten. |
+| Item type | Het type object dat is geopend of gewijzigd. Zie de tabel item type voor meer informatie over de typen objecten. |
 | MachineDomainInfo | Informatie over synchronisatie bewerkingen voor apparaten. Deze informatie wordt alleen gerapporteerd als deze aanwezig is in de aanvraag. |
 | MachineId |   Informatie over synchronisatie bewerkingen voor apparaten. Deze informatie wordt alleen gerapporteerd als deze aanwezig is in de aanvraag. |
-| Site_ | De GUID van de site waar het bestand of de map die door de gebruiker wordt gebruikt, zich bevindt. |
+| Site | De GUID van de site waar het bestand of de map die door de gebruiker wordt gebruikt, zich bevindt. |
 | Source_Name | De entiteit die de gecontroleerde bewerking heeft geactiveerd. Mogelijke waarden zijn share point of ObjectModel. |
 | User agent | Informatie over de client of browser van de gebruiker. Deze informatie wordt verstrekt door de client of browser. |
 
@@ -707,7 +702,7 @@ Deze eigenschappen zijn gebruikelijk voor alle share point-records.
 
 Deze records worden gemaakt wanneer er configuratie wijzigingen worden aangebracht in share point.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -720,7 +715,7 @@ Deze records worden gemaakt wanneer er configuratie wijzigingen worden aangebrac
 
 Deze records worden gemaakt als reactie op Bestands bewerkingen in share point.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -741,10 +736,10 @@ Deze records worden gemaakt als reactie op Bestands bewerkingen in share point.
 
 De volgende tabel biedt voorbeeldzoekopdrachten in logboeken voor updaterecords die worden verzameld door deze oplossing.
 
-| Query’s uitvoeren | Description |
+| Query | Beschrijving |
 | --- | --- |
 |Aantal bewerkingen voor uw Office 365-abonnement |Aantal &#124; samen vattingen van OfficeActivity () per bewerking |
-|Gebruik van share point-sites|OfficeActivity &#124; waarbij OfficeWorkload = ~ "share point &#124; -samenvattings aantal () door \| siteurl sorteren op aantal ASC|
+|Gebruik van share point-sites|OfficeActivity &#124; waarbij OfficeWorkload = ~ "share point &#124; -samenvattings aantal () door siteurl \| sorteren op aantal ASC|
 |Bestands toegangs bewerkingen op gebruikers type|zoeken in (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory" en "MyTest"|
 |Zoeken met een specifiek tref woord|Type = OfficeActivity OfficeWorkload = azureactivedirectory "MyTest"|
 |Externe acties op Exchange controleren|OfficeActivity &#124; waarbij OfficeWorkload = ~ "Exchange" en ExternalAccess = = True|

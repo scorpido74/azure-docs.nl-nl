@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528624"
+ms.locfileid: "72551963"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -1437,68 +1437,78 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatie type|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|cpu_percent|CPU-percentage|Procent|Average|CPU-percentage|Geen dimensies|
-|physical_data_read_percent|Gegevens-I/O-percentage|Procent|Average|Gegevens-I/O-percentage|Geen dimensies|
-|log_write_percent|Logboek-IO-percentage|Procent|Average|Logboek-IO-percentage. Niet van toepassing op data warehouses.|Geen dimensies|
-|dtu_consumption_percent|DTU-percentage|Procent|Average|DTU-percentage. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
-|opslag|Gebruikte gegevens ruimte|Bytes|Maximum|Totale database grootte. Niet van toepassing op data warehouses.|Geen dimensies|
-|connection_successful|Geslaagde verbindingen|Aantal|Totaal|Geslaagde verbindingen|Geen dimensies|
-|connection_failed|Mislukte verbindingen|Aantal|Totaal|Mislukte verbindingen|Geen dimensies|
-|blocked_by_firewall|Geblokkeerd door de firewall|Aantal|Totaal|Geblokkeerd door de firewall|Geen dimensies|
-|Constateer|Impassen|Aantal|Totaal|Impassen. Niet van toepassing op data warehouses.|Geen dimensies|
-|storage_percent|Percentage gebruikte gegevens ruimte|Procent|Maximum|Percentage van de database grootte. Niet van toepassing op data warehouses of grootschalige-data bases.|Geen dimensies|
-|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Procent|Average|Percentage OLTP-opslag in het geheugen. Niet van toepassing op data warehouses.|Geen dimensies|
-|workers_percent|Percentage werk nemers|Procent|Average|Werknemers percentage. Niet van toepassing op data warehouses.|Geen dimensies|
-|sessions_percent|Percentage sessies|Procent|Average|Percentage sessies. Niet van toepassing op data warehouses.|Geen dimensies|
-|dtu_limit|DTU-limiet|Aantal|Average|DTU-limiet. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
-|dtu_used|DTU gebruikt|Aantal|Average|DTU gebruikt. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
-|cpu_limit|CPU-limiet|Aantal|Average|CPU-limiet. Is van toepassing op vCore-data bases.|Geen dimensies|
-|cpu_used|CPU gebruikt|Aantal|Average|CPU gebruikt. Is van toepassing op vCore-data bases.|Geen dimensies|
-|dwu_limit|Limiet voor DWU|Aantal|Maximum|DWU-limiet. Is alleen van toepassing op data warehouses.|Geen dimensies|
-|dwu_consumption_percent|Percentage DWU|Procent|Maximum|DWU-percentage. Is alleen van toepassing op data warehouses.|Geen dimensies|
-|dwu_used|DWU gebruikt|Aantal|Maximum|DWU gebruikt. Is alleen van toepassing op data warehouses.|Geen dimensies|
-|dw_cpu_percent|CPU-percentage van DW-knooppunt niveau|Procent|Average|CPU-percentage van DW-knooppunt niveau|DwLogicalNodeId|
-|dw_physical_data_read_percent|IO-percentage gegevens-i/o-knooppunt niveau|Procent|Average|IO-percentage gegevens-i/o-knooppunt niveau|DwLogicalNodeId|
-|cache_hit_percent|Percentage cache treffers|Procent|Maximum|Percentage van cache treffer. Is alleen van toepassing op data warehouses.|Geen dimensies|
-|cache_used_percent|Percentage gebruikt cache|Procent|Maximum|Percentage gebruikt cache. Is alleen van toepassing op data warehouses.|Geen dimensies|
-|local_tempdb_usage_percent|Lokaal TempDB-percentage|Procent|Average|Lokaal TempDB-percentage. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|allocated_data_storage|Toegewezen gegevens ruimte|Bytes|Average|Toegewezen gegevens ruimte. Niet van toepassing op data warehouses.|Geen dimensies|
 |app_cpu_billed|App CPU gefactureerd|Aantal|Totaal|App CPU gefactureerd. Is van toepassing op serverloze data bases.|Geen dimensies|
 |app_cpu_percent|CPU-percentage van app|Procent|Average|CPU-percentage van de app. Is van toepassing op serverloze data bases.|Geen dimensies|
 |app_memory_percent|Percentage gebruikt geheugen van app|Procent|Average|Percentage gebruikt geheugen voor app. Is van toepassing op serverloze data bases.|Geen dimensies|
-|allocated_data_storage|Toegewezen gegevens ruimte|Bytes|Average|Toegewezen gegevens ruimte. Niet van toepassing op data warehouses.|Geen dimensies|
+|blocked_by_firewall|Geblokkeerd door de firewall|Aantal|Totaal|Geblokkeerd door de firewall|Geen dimensies|
+|cache_hit_percent|Percentage cache treffers|Procent|Maximum|Percentage van cache treffer. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|cache_used_percent|Percentage gebruikt cache|Procent|Maximum|Percentage gebruikt cache. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|connection_failed|Mislukte verbindingen|Aantal|Totaal|Mislukte verbindingen|Geen dimensies|
+|connection_successful|Geslaagde verbindingen|Aantal|Totaal|Geslaagde verbindingen|Geen dimensies|
+|cpu_percent|CPU-percentage|Procent|Average|CPU-percentage|Geen dimensies|
+|cpu_limit|CPU-limiet|Aantal|Average|CPU-limiet. Is van toepassing op vCore-data bases.|Geen dimensies|
+|cpu_used|CPU gebruikt|Aantal|Average|CPU gebruikt. Is van toepassing op vCore-data bases.|Geen dimensies|
+|Constateer|Impassen|Aantal|Totaal|Impassen. Niet van toepassing op data warehouses.|Geen dimensies|
+|dtu_limit|DTU-limiet|Aantal|Average|DTU-limiet. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
+|dtu_consumption_percent|DTU-percentage|Procent|Average|DTU-percentage. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
+|dtu_used|DTU gebruikt|Aantal|Average|DTU gebruikt. Is van toepassing op DTU-gebaseerde data bases.|Geen dimensies|
+|dw_cpu_percent|CPU-percentage van DW-knooppunt niveau|Procent|Average|CPU-percentage van DW-knooppunt niveau|DwLogicalNodeId|
+|dw_physical_data_read_percent|IO-percentage gegevens-i/o-knooppunt niveau|Procent|Average|IO-percentage gegevens-i/o-knooppunt niveau|DwLogicalNodeId|
+|dwu_consumption_percent|Percentage DWU|Procent|Maximum|DWU-percentage. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|dwu_limit|Limiet voor DWU|Aantal|Maximum|DWU-limiet. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|dwu_used|DWU gebruikt|Aantal|Maximum|DWU gebruikt. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|local_tempdb_usage_percent|Lokaal TempDB-percentage|Procent|Average|Lokaal TempDB-percentage. Is alleen van toepassing op data warehouses.|Geen dimensies|
+|log_write_percent|Logboek-IO-percentage|Procent|Average|Logboek-IO-percentage. Niet van toepassing op data warehouses.|Geen dimensies|
+|physical_data_read_percent|Gegevens-I/O-percentage|Procent|Average|Gegevens-I/O-percentage|Geen dimensies|
+|sessions_percent|Percentage sessies|Procent|Average|Percentage sessies. Niet van toepassing op data warehouses.|Geen dimensies|
+|sqlserver_process_core_percent|Kern percentage van SQL Server proces|Procent|Maximum|Deze metrische waarde is een tijdelijke aanduiding die momenteel niet wordt ingevuld.|Geen dimensies|
+|sqlserver_process_memory_percent|Percentage proces geheugen SQL Server|Procent|Maximum|Deze metrische waarde is een tijdelijke aanduiding die momenteel niet wordt ingevuld.|Geen dimensies|
+|opslag|Gebruikte gegevens ruimte|Bytes|Maximum|Totale database grootte. Niet van toepassing op data warehouses.|Geen dimensies|
+|storage_percent|Percentage gebruikte gegevens ruimte|Procent|Maximum|Percentage van de database grootte. Niet van toepassing op data warehouses of grootschalige-data bases.|Geen dimensies|
+|tempdb_data_size|Data File grootte van tempdb|Aantal|Maximum|Data File grootte van tempdb-gegevens bestanden. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|tempdb_log_size|Grootte van logboek bestanden tempdb|Aantal|Maximum|Grootte van KB-logboek bestanden. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|tempdb_log_used_percent|Percentage gebruikt TempDB-logboek|Procent|Maximum|Percentage gebruikt TempDB-logboek. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|workers_percent|Percentage werk nemers|Procent|Average|Werknemers percentage. Niet van toepassing op data warehouses.|Geen dimensies|
+|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Procent|Average|Percentage OLTP-opslag in het geheugen. Niet van toepassing op data warehouses.|Geen dimensies|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Micro soft. SQL/servers/elasticPools
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatie type|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|cpu_percent|CPU-percentage|Procent|Average|CPU-percentage|Geen dimensies|
-|physical_data_read_percent|Gegevens-I/O-percentage|Procent|Average|Gegevens-I/O-percentage|Geen dimensies|
-|log_write_percent|Logboek-IO-percentage|Procent|Average|Logboek-IO-percentage|Geen dimensies|
-|dtu_consumption_percent|DTU-percentage|Procent|Average|DTU-percentage. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
-|storage_percent|Percentage gebruikte gegevens ruimte||Procent|Average|Opslag percentage|Geen dimensies|
-|workers_percent|Percentage werk nemers|Procent|Average|Percentage werk nemers|Geen dimensies|
-|sessions_percent|Percentage sessies|Procent|Average|Percentage sessies|Geen dimensies|
-|eDTU_limit|eDTU-limiet|Aantal|Average|eDTU-limiet. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
-|storage_limit|Maximale grootte van gegevens|Bytes|Average|Opslag limiet|Geen dimensies|
-|eDTU_used|eDTU gebruikt|Aantal|Average|eDTU gebruikt. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
-|storage_used|Gebruikte gegevens ruimte|Bytes|Average|Gebruikte opslag|Geen dimensies|
-|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Procent|Average|Percentage OLTP-opslag in het geheugen|Geen dimensies|
-|cpu_limit|CPU-limiet|Aantal|Average|CPU-limiet. Is van toepassing op op vCore gebaseerde elastische Pools.|Geen dimensies|
-|cpu_used|CPU gebruikt|Aantal|Average|CPU gebruikt. Is van toepassing op op vCore gebaseerde elastische Pools.|Geen dimensies|
 |allocated_data_storage|Toegewezen gegevens ruimte|Bytes|Average|Toegewezen gegevens ruimte|Geen dimensies|
 |allocated_data_storage_percent|Percentage toegewezen gegevens ruimte|Procent|Maximum|Percentage toegewezen gegevens ruimte|Geen dimensies|
+|cpu_limit|CPU-limiet|Aantal|Average|CPU-limiet. Is van toepassing op op vCore gebaseerde elastische Pools.|Geen dimensies|
+|cpu_percent|CPU-percentage|Procent|Average|CPU-percentage|Geen dimensies|
+|cpu_used|CPU gebruikt|Aantal|Average|CPU gebruikt. Is van toepassing op op vCore gebaseerde elastische Pools.|Geen dimensies|
+|dtu_consumption_percent|DTU-percentage|Procent|Average|DTU-percentage. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
+|eDTU_limit|eDTU-limiet|Aantal|Average|eDTU-limiet. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
+|eDTU_used|eDTU gebruikt|Aantal|Average|eDTU gebruikt. Is van toepassing op op DTU gebaseerde elastische Pools.|Geen dimensies|
+|log_write_percent|Logboek-IO-percentage|Procent|Average|Logboek-IO-percentage|Geen dimensies|
+|physical_data_read_percent|Gegevens-I/O-percentage|Procent|Average|Gegevens-I/O-percentage|Geen dimensies|
+|sessions_percent|Percentage sessies|Procent|Average|Percentage sessies|Geen dimensies|
+|storage_limit|Maximale grootte van gegevens|Bytes|Average|Opslag limiet|Geen dimensies|
+|storage_percent|Percentage gebruikte gegevens ruimte||Procent|Average|Opslag percentage|Geen dimensies|
+|storage_used|Gebruikte gegevens ruimte|Bytes|Average|Gebruikte opslag|Geen dimensies|
+|sqlserver_process_core_percent|Kern percentage van SQL Server proces|Procent|Maximum|Deze metrische waarde is een tijdelijke aanduiding die momenteel niet wordt ingevuld.|Geen dimensies|
+|sqlserver_process_memory_percent|Percentage proces geheugen SQL Server|Procent|Maximum|Deze metrische waarde is een tijdelijke aanduiding die momenteel niet wordt ingevuld.|Geen dimensies|
+|tempdb_data_size|Data File grootte van tempdb|Aantal|Maximum|Data File grootte van tempdb-gegevens bestanden. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|tempdb_log_size|Grootte van logboek bestanden tempdb|Aantal|Maximum|Grootte van KB-logboek bestanden. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|tempdb_log_used_percent|Percentage gebruikt TempDB-logboek|Procent|Maximum|Percentage gebruikt TempDB-logboek. Niet van toepassing op data warehouses. Deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model of 100 DTU en hoger voor op DTU gebaseerde aankoop modellen.|Geen dimensies|
+|workers_percent|Percentage werk nemers|Procent|Average|Percentage werk nemers|Geen dimensies|
+|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Procent|Average|Percentage OLTP-opslag in het geheugen|Geen dimensies|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Micro soft. SQL/managedInstances
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatie type|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|virtual_core_count|Aantal virtuele kernen|Aantal|Average|Aantal virtuele kernen|Geen dimensies|
 |avg_cpu_percent|Gemiddeld CPU-percentage|Procent|Average|Gemiddeld CPU-percentage|Geen dimensies|
+|io_bytes_read|Gelezen IO-bytes|Bytes|Average|Gelezen IO-bytes|Geen dimensies|
+|io_requests|Aantal i/o-aanvragen|Aantal|Average|Aantal i/o-aanvragen|Geen dimensies|
+|io_bytes_written|Geschreven IO-bytes|Bytes|Average|Geschreven IO-bytes|Geen dimensies|
 |reserved_storage_mb|Gereserveerde opslag ruimte|Aantal|Average|Gereserveerde opslag ruimte|Geen dimensies|
 |storage_space_used_mb|Gebruikte opslag ruimte|Aantal|Average|Gebruikte opslag ruimte|Geen dimensies|
-|io_requests|Aantal i/o-aanvragen|Aantal|Average|Aantal i/o-aanvragen|Geen dimensies|
-|io_bytes_read|Gelezen IO-bytes|Bytes|Average|Gelezen IO-bytes|Geen dimensies|
-|io_bytes_written|Geschreven IO-bytes|Bytes|Average|Geschreven IO-bytes|Geen dimensies|
+|virtual_core_count|Aantal virtuele kernen|Aantal|Average|Aantal virtuele kernen|Geen dimensies|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

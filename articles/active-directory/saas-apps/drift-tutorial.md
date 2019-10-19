@@ -1,11 +1,11 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Drift | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met drift | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Drift.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,72 +13,78 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656612"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554368"
 ---
-# <a name="tutorial-integrate-drift-with-azure-active-directory"></a>Zelfstudie: Afwijking integreren met Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>Zelf studie: de integratie van eenmalige aanmelding (SSO) met drift Azure Active Directory
 
-In deze zelfstudie leert u hoe u Drift integreert met Azure Active Directory (Azure AD). Wanneer u Drift met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u drift kunt integreren met Azure Active Directory (Azure AD). Wanneer u drift integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot de afwijking heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld Drift met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot de drift.
+* Stel in dat uw gebruikers zich automatisch kunnen aanmelden om te kunnen verhuizen met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/).
-* Ingeschakeld abonnement drift eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Eenmalige eenmalige aanmelding (SSO) waarbij het abonnement is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Ondersteunt drift **SP en IDP** gestart door SSO en **Just In Time** inrichten van gebruikers.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+
+* Drift ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
+* Drift biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
+
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-drift-from-the-gallery"></a>Drift toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van Drift in Azure AD moet u Drift vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Drift** in het zoekvak in.
-1. Selecteer **Drift** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **drift** in het zoekvak.
+1. Selecteer **selecteren in** het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-drift"></a>Eenmalige aanmelding van Azure AD voor drift configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Drift met behulp van een testgebruiker met de naam **B. Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Drift vast te stellen.
+Azure AD SSO met drift configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in drift.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met Drift, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met behulp van drift, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  zodat uw gebruikers deze functie wilt gebruiken.
-2. **[Configureren van Drift](#configure-drift)**  de SSO-instellingen configureren op de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding met B. Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  B. Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maak Drift testgebruiker](#create-drift-test-user)**  hebben een equivalent van B. Simon in Drift die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Configureren van drijf-SSO](#configure-drift-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. Een gebruiker voor het maken van een **[drift testen](#create-drift-test-user)** : als u een equivalent van B. Simon in een drift wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Drift** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor het integreren van **de toepassing en** Selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** sectie, de toepassing is vooraf geconfigureerd en de vereiste URL's al vooraf zijn ingevuld met Azure. De gebruiker moet de configuratie op te slaan door te klikken op de **opslaan** knop en voer de volgende stappen uit:
+1. Op de **basis configuratie van SAML**  section is de toepassing vooraf geconfigureerd in de **IDP** - initiated modus en zijn de benodigde url's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de  button **Opslaan** .
 
     a. Klik op **Extra URL's instellen**.
  
@@ -88,53 +94,65 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     d. Typ een URL in het tekstvak **Aanmeldings-URL**: `https://start.drift.com`
 
-6. Uw toepassing afwijking wordt verwacht dat de SAML-asserties ondertekend in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van de SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
+6. Uw drift-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![image](common/edit-attribute.png)
 
-7. Ook als u wilt beginnen, af te wijken toepassing wordt verwacht dat enkele meer kenmerken moeten worden doorgegeven in SAML-antwoord. In de sectie gebruikersclaims in het dialoogvenster gebruikerskenmerken voert u de volgende stappen uit om toe te voegen van SAML-token kenmerk, zoals wordt weergegeven in de onderstaande tabel: 
+7. Daarnaast verwacht een drift-toepassing nog enkele kenmerken die in de onderstaande SAML-respons kunnen worden door gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste. 
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------| --------------- |    
-    | Name | user.displayname |
+    | Naam | user.displayname |
 
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![image](common/new-save-attribute.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
+1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de sectie een **drift instellen** .
 
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
+    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    c. Laat **Naamruimte** leeg.
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-    d. Selecteer Bron bij **Kenmerk**.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-    e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
 
-    f. Klik op **OK**.
+### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-    g. Klik op **Opslaan**.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de drift.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **federatieve metagegevens-XML** en selecteer **downloaden** voor het downloaden van het certificaat en sla deze op uw computer.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **Drift** in de lijst met toepassingen.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De link om het certificaat te downloaden](common/metadataxml.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Op de **Drift instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-   ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-### <a name="configure-drift"></a>Afwijking configureren
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-1. Voor het automatiseren van de configuratie in Drift, die u wilt installeren **mijn Apps beveiligde aanmelding browserextensie** door te klikken op **de extensie installeren**.
+## <a name="configure-drift-sso"></a>Configureren van drijf-SSO
 
-    ![Mijn apps-extensie](common/install-myappssecure-extension.png)
+1. Als u de configuratie binnen de drift wilt automatiseren, moet u de **uitbrei ding mijn apps beveiligde aanmeldings browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Na het toevoegen van uitbreiding naar de browser, klikt u op **Setup Drift** wordt u doorgeleid naar de toepassing van de afwijking. Geef de beheerdersreferenties aan te melden bij de afwijking van daaruit. De browserextensie wordt automatisch configureren van de toepassing voor u en stappen 3 en 4 automatiseren.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-    ![Configuratie voor de installatie](common/setup-sso.png)
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op het **installatie programma** en gaat u naar de toepassing drift. Geef de beheerders referenties op om u aan te melden bij drift. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-4 geautomatiseerd.
 
-3. Als u Drift handmatig instellen wilt, opent u een nieuw browservenster en meld u in uw site van het bedrijf Drift als beheerder en voer de volgende stappen uit:
+    ![Configuratie van Setup](common/setup-sso.png)
+
+3. Als u hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij de site van uw bedrijf als beheerder en voert u de volgende stappen uit:
 
 4. Klik links in de menubalk op het pictogram **Instellingen** > **App-instellingen** > **Verificatie** en voer de volgende stappen uit:
 
@@ -146,36 +164,6 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     c. Klik op **Enable SAML**.
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
-
-In deze sectie maakt u een testgebruiker in Azure portal B. Simon genoemd.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
-   1. Voer in het veld **Naam** `B. Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `B. Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In deze sectie schakelt u B. Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan de afwijking.
-
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer **Drift** in de lijst met toepassingen.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
-
-   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
-
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
-
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **B. Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
-
 ### <a name="create-drift-test-user"></a>Testgebruiker voor Drift maken
 
 In dit gedeelte wordt er een gebruiker met de naam Britta Simon gemaakt in Drift. Drift biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Drift bestaat, wordt er een nieuwe gemaakt nadat deze is geverifieerd.
@@ -183,14 +171,19 @@ In dit gedeelte wordt er een gebruiker met de naam Britta Simon gemaakt in Drift
 >[!Note]
 >Als u handmatig een gebruiker wilt maken, neem dan contact op met het [ondersteuningsteam van Drift](mailto:integrations@drift.com).
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+## <a name="test-sso"></a>SSO testen 
 
-Wanneer u de tegel Drift in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de afwijking waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+Wanneer u op de tegel Drift in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Drift waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer drift met Azure AD](https://aad.portal.azure.com/)
+

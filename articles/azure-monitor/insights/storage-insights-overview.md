@@ -1,24 +1,18 @@
 ---
 title: Azure Storage services bewaken met Azure Monitor voor opslag (preview) | Microsoft Docs
 description: In dit artikel wordt de Azure Monitor voor opslag functie beschreven waarmee opslag beheerders een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun Azure Storage accounts.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 08/15/2019
+ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212763"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553881"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslag service controleren met Azure Monitor voor opslag (preview-versie)
 
@@ -53,7 +47,7 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts (preview)** .
 
@@ -195,7 +189,7 @@ U kunt dezelfde wijzigingen uitvoeren op een van de vooraf gebouwde **fouten**, 
 
 4. We gaan de kolom **gebruikte capaciteits tijdlijn** verwijderen, dus Selecteer **kolom instellingen** in het raster metrische gegevens.
 
-    ![Kolominstellingen bewerken](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
+    ![Kolom instellingen bewerken](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
 5. Selecteer in het deel venster **kolom instellingen bewerken** onder het gedeelte kolommen **micro soft. Storage/Storage accounts-capacity-UsedCapacity Timeline $ | Gebruikte capaciteit tijd lijn voor account $** , en onder de vervolg keuzelijst **kolom renderer** selecteert **verborgen**. 
 

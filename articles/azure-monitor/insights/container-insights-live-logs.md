@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor voor container Logboeken in realtime weer geven | Microsoft Docs
 description: In dit artikel wordt een overzicht gegeven van de real-time weer gave van container Logboeken (stdout/stderr) en gebeurtenissen zonder kubectl te gebruiken met Azure Monitor voor containers.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389790"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554082"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Logboeken en gebeurtenissen in realtime weer geven (preview)
 Azure Monitor voor containers bevat een functie die momenteel als preview-versie beschikbaar is. deze biedt een live weer gave in uw Azure Kubernetes service (AKS)-container Logboeken (stdout/stderr) en gebeurtenissen zonder kubectl-opdrachten uit te voeren. Wanneer u een van beide opties selecteert, wordt er een nieuw deel venster weer gegeven onder de tabel prestatie gegevens in de weer gave **knoop punten**, **controllers**en **containers** . Hierin worden live logboeken en gebeurtenissen weer gegeven die door de container-Engine zijn gegenereerd voor verdere hulp bij het oplossen van problemen in real-time.
