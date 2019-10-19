@@ -1,21 +1,21 @@
 ---
-title: Gegevens streamen met Azure Event Hubs met behulp van het Kafka-protocol | Microsoft Docs
+title: Gegevensstreamen met Azure Event Hubs met behulp van het Kafka-Protocol | Microsoft Docs
 description: Dit artikel bevat informatie over het streamen naar Azure Event Hubs met behulp van het Kafka-protocol en API's.
 services: event-hubs
-author: basilhariri
-ms.author: bahariri
+author: ShubhaVijayasarathy
+ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 05/06/2019
-ms.openlocfilehash: a4e050fdef20cdc62ee92e6383c455ffcb9abc90
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebe3dc39cf135f09c084a8325d380b9bc9ef48dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203907"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554968"
 ---
-# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Gegevens streamen met Event Hubs met behulp van het Kafka-protocol
+# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Gegevensstreamen met Event Hubs met behulp van het Kafka-Protocol
 Deze snelstart laat zien hoe u kunt streamen naar Event Hubs waarvoor Kafka is ingeschakeld zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs waarvoor Kafka is ingeschakeld, kunnen praten met slechts een configuratiewijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]
@@ -40,7 +40,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
     
     ![Zoeken naar Event Hubs in de portal](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Geef een unieke naam op en schakel Kafka in op de naamruimte. Klik op **Create**. Opmerking: Event Hubs voor Kafka wordt alleen ondersteund door Event Hubs van de categorie Standard en Dedicated. Door Event Hubs van de categorie Basic wordt een onderwerpautorisatiefout geretourneerd als reactie op Kafka-bewerkingen.
+3. Geef een unieke naam op en schakel Kafka in op de naamruimte. Klik op **Maken**. Opmerking: Event Hubs voor Kafka wordt alleen ondersteund door de standaard-en toegewezen laag Event Hubs. Door Event Hubs van de categorie Basic wordt een onderwerpautorisatiefout geretourneerd als reactie op Kafka-bewerkingen.
     
     ![Een naamruimte maken](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -104,5 +104,5 @@ In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs waarvoor Kaf
 * [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Meer informatie over Event Hubs for Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Meer voorbeelden van de Event Hubs for Kafka-GitHub verkennen](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Gebruik [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) naar [gebeurtenissen voor het streamen van Kafka on-premises met Kafka ingeschakeld Event Hubs in de cloud.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Gebruik [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) voor het [streamen van gebeurtenissen van Kafka on premises naar Kafka ingeschakeld Event hubs in de Cloud.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Meer informatie over streamen naar Kafka waarvoor Event Hubs is ingeschakeld, met behulp van [Apache Flink](event-hubs-kafka-flink-tutorial.md) of [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md)

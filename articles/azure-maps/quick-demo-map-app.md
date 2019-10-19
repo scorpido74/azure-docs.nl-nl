@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 092da53c3179d939ebf0472219338b8d8392fda6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116564"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554266"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Een interactief doorzoekbare kaart maken met Azure Maps
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-account-and-get-your-key"></a>Een account maken en de sleutel ophalen
 
@@ -43,7 +43,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
      ![Een Azure Maps-account maken in de portal](./media/quick-demo-map-app/create-account.png)
 
-5. Nadat uw account is gemaakt, opent u het account en zoekt u de sectie Instellingen van het accountmenu. Selecteer **Sleutels** om de primaire en secundaire sleutel voor uw Azure Maps-account weer te geven. Kopieer de waarde van de **Primaire sleutel** naar uw lokale klembord voor gebruik in de volgende sectie.
+5. Nadat uw account is gemaakt, opent u het account en zoekt u de sectie Instellingen van het accountmenu. Selecteer **verificatie** om de primaire en secundaire sleutels voor uw Azure Maps-account weer te geven. Kopieer de waarde van de **Primaire sleutel** naar uw lokale klembord voor gebruik in de volgende sectie.
 
 ## <a name="download-the-application"></a>De toepassing downloaden
 
@@ -55,7 +55,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open het bestand **AzureMapDemo.html** in een browser naar keuze.
 2. Bekijk de kaart van Los Angeles. Zoom in en uit om te zien hoe de kaart automatisch met meer of minder informatie wordt weergegeven, afhankelijk van het zoomniveau. 
-3. Wijzig de standaardinstelling voor het midden van de kaart. Zoek in het bestand **AzureMapDemo.html** naar de variabele **center**. Vervang de lengte- en breedtegraad voor deze variabele door deze nieuwe waarden: **[-74.0060, 40.7128]**. Sla het bestand op en vernieuw de browser.
+3. Wijzig de standaardinstelling voor het midden van de kaart. Zoek in het bestand **AzureMapDemo.html** naar de variabele **center**. Vervang de lengte- en breedtegraad voor deze variabele door deze nieuwe waarden: **[-74.0060, 40.7128]** . Sla het bestand op en vernieuw de browser.
 4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants**.
 5. Beweeg de muis over de lijst met adressen en locaties die worden weergegeven onder het zoekvak. U ziet hoe bij de bijbehorende speld op de kaart een pop-upvenster met informatie over die locatie wordt weergegeven. Ten behoeve van de privacy van particuliere bedrijven worden er fictieve namen en adressen weergegeven.
 
@@ -70,7 +70,7 @@ In de zelfstudies vindt u gedetailleerde informatie over het gebruik en de confi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Maps-account gemaakt en een demo-toepassing gemaakt. Kijk eens in de volgende zelfstudies voor meer informatie over Azure-kaarten:
+In deze quickstart hebt u een Azure Maps-account gemaakt en een demo-toepassing gemaakt. Bekijk de volgende zelf studies voor meer informatie over Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps](tutorial-search-location.md)

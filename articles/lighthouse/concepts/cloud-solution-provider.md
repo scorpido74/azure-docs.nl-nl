@@ -1,24 +1,27 @@
 ---
 title: Overwegingen voor een Cloud Solution Provider-programma
-description: Wanneer u Azure delegated resource management gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer.
+description: Voor CSP-partners zorgt Azure gedelegeerd resource beheer voor betere beveiliging en controle door gedetailleerde machtigingen in te scha kelen.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286199"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550292"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse en het programma Cloud Solution Provider
 
 Als u een CSP-partner [(Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) bent, hebt u al toegang tot de Azure-abonnementen die zijn gemaakt voor uw klanten via het CSP-programma met behulp van de functie [beheren namens (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Met deze toegang kunt u de abonnementen van uw klanten rechtstreeks ondersteunen, configureren en beheren.
 
 Met Azure Lighthouse kunt u Azure delegated Resource Management gebruiken samen met ADMINISTRATE. Dit helpt de beveiliging te verbeteren en de toegang te verminderen door meer gedetailleerde machtigingen in te scha kelen voor uw gebruikers. Het biedt ook een grotere efficiëntie en schaal baarheid, omdat uw gebruikers met één aanmelding in uw Tenant kunnen werken op meerdere abonnementen van klanten.
+
+> [!TIP]
+> Bekijk en volg de [aanbevolen beveiligings procedures](recommended-security-practices.md) in combi natie met de [beveiligings vereisten](https://docs.microsoft.com/partner-center/partner-security-requirements)van de partner om de resources van klanten te helpen beschermen.
 
 ## <a name="administer-on-behalf-of-aobo"></a>Beheren namens (ADMINISTRATE)
 

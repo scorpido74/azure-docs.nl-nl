@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
-ms.translationtype: HT
+ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533775"
+ms.locfileid: "72554887"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Wat is een kennis winkel in Azure Search?
 
@@ -21,17 +21,17 @@ ms.locfileid: "72533775"
 > Het kennis archief is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 
-Het kennis archief is een functie in Azure Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor latere analyses of andere downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van resources in cognitive Services. In een standaard-AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden documenten opgeslagen voor gebruik in andere apps of op downstream data Science-workloads. 
+Het kennis archief is een functie in Azure Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor latere analyses of andere downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
 
-Als u AI-vaardig heden hebt gebruikt met Azure Search in het verleden, weet u al dat *vaardig heden* wordt gebruikt om een document te verplaatsen via een reeks verrijkingen. De uitkomst kan een Azure Search index zijn of (nieuwe in deze preview-versie) projecties in een kennis archief. De twee uitvoer, zoek index en kennis opslag zijn fysiek onderscheiden van elkaar. Ze delen dezelfde inhoud, maar worden op zeer verschillende manieren opgeslagen en gebruikt.
+Als u AI-vaardig heden hebt gebruikt met Azure Search in het verleden, weet u al dat *vaardig heden* een document verplaatst via een reeks verrijkingen. De uitkomst kan een zoek index zijn of (nieuw in deze preview) projecties in een kennis archief. De twee uitvoer, zoek index en kennis opslag, delen dezelfde inhoud, maar worden op zeer verschillende manieren opgeslagen en gebruikt.
 
-Een kennis archief is fysiek een [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview), als Azure-tabel opslag, Azure Blob-opslag of beide, afhankelijk van hoe u de pijp lijn configureert. Elk hulp programma of proces waarmee verbinding kan worden gemaakt met een Azure Storage-account, kan de inhoud van een kennis archief gebruiken.
+Fysiek is een kennis archief [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), ofwel Azure Table Storage, Azure Blob Storage, of beide. Elk hulp programma of proces waarmee verbinding kan worden gemaakt met Azure Storage, kan de inhoud van een kennis archief gebruiken.
 
-Projecties zijn uw mechanisme voor het structureren van gegevens in een kennis archief. In projecties kunt u bijvoorbeeld kiezen of de uitvoer wordt opgeslagen als één BLOB of een verzameling gerelateerde tabellen. Een eenvoudige manier om de inhoud van het kennis archief weer te geven, is via de ingebouwde [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) voor Azure Storage.
+![Kennis archief in pijplijn diagram](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Kennis archief in pijplijn diagram")
 
-![Kennis archief in pijplijn diagram](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Kennis archief in pijplijn diagram")
+Projecties zijn uw mechanisme voor het structureren van gegevens in een kennis archief. In projecties kunt u bijvoorbeeld kiezen of de uitvoer wordt opgeslagen als één BLOB of een verzameling gerelateerde tabellen. 
 
-Als u het kennis archief wilt gebruiken, voegt u een `knowledgeStore`-element toe aan een vaardig heden die stapsgewijze bewerkingen in een indexerings pijplijn definieert. Tijdens de uitvoering maakt Azure Search een ruimte in uw Azure Storage-account en worden de verrijkte documenten met de definitie gemaakt in de pijp lijn.
+Als u het kennis archief wilt gebruiken, voegt u een `knowledgeStore`-element toe aan een vaardig heden die stapsgewijze bewerkingen in een indexerings pijplijn definieert. Tijdens de uitvoering maakt Azure Search een ruimte in uw Azure Storage-account en projecteert de verrijkte documenten als blobs of in tabellen, afhankelijk van uw configuratie.
 
 ## <a name="benefits-of-knowledge-store"></a>Voor delen van kennis archief
 

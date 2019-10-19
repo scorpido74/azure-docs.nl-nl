@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246121"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553447"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Snelstartgids: een virtuele Windows-machine maken en versleutelen met de Azure Portal
 
@@ -60,8 +60,8 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer voor **regio**dezelfde regio die u hebt gebruikt bij het maken van uw sleutel kluis (bijvoorbeeld **VS-Oost**).
 1. Zorg ervoor dat de grootte *standaard D2s v3*is.
 1. Selecteer **wacht woord**onder **Administrator-account**. Voer een gebruikers naam en wacht woord in.
-    0ResourceGroup-scherm voor het maken van @no__t @ no__t-1
-1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK ![ResourceGroup maken @ no__t-1
+    ![ResourceGroup scherm maken ](../media/disk-encryption/portal-qs-windows-vm-creation.png)
+1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK ![ResourceGroup scherm maken ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Klik op ' bekijken + maken '.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
 
@@ -77,7 +77,7 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 
 1. Kies op het scherm versleuteling onder **schijven die moeten worden versleuteld, het** **besturings systeem en de gegevens schijven**.
 1. Klik onder **versleutelings instellingen**op ' Selecteer een sleutel kluis en sleutel voor versleuteling '.
-1. Selecteer in de zijbalk aan de rechter kant de naam van de sleutel kluis die u eerder hebt gemaakt als waarde voor * sleutel kluis * * en klik op **selecteren**.
+1. Selecteer in de zijbalk aan de rechter kant de naam van de sleutel kluis die u eerder hebt gemaakt als de waarde voor **sleutel kluis**en klik op **selecteren**.
 
     ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. Klik boven aan het scherm voor versleuteling op opslaan. Er wordt een waarschuwing weer gegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.

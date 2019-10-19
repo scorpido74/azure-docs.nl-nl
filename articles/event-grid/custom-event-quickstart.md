@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429120"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72556098"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen naar een webeindpunt door sturen met Azure CLI en Event Grid
 
@@ -27,7 +27,7 @@ Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenis
 
 Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn verzonden.
 
-![Azure Event Grid viewer gebruiken om te controleren of er gebeurtenis gegevens zijn verzonden](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
+![Resultaten weer geven in de Azure Event Grid viewer](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -98,7 +98,8 @@ az eventgrid event-subscription create \
 
 Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor een abonnement naartoe is verzonden. Selecteer het oogpictogram om de gebeurtenisgegevens uit te breiden. Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. De web-app bevat code waarmee het abonnement kan worden gevalideerd.
 
-![De validatie code van het abonnement in Azure Event Grid viewer weer geven](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
+![De abonnements gebeurtenis in Azure Event Grid viewer weer geven](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Een gebeurtenis verzenden naar het aangepaste onderwerp
 

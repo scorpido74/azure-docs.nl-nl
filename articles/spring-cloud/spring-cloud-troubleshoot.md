@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039026"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554371"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gids voor probleem oplossing voor veelvoorkomende problemen
 
@@ -37,7 +37,7 @@ Service bindingen kunnen ook start fouten van toepassingen veroorzaken. Gebruik 
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Als u deze fout wilt oplossen, gaat u naar de `server parameters` van uw MySql-exemplaar en wijzigt u `time_zone` van `SYSTEM` in `+0:00`.
+Als u deze fout wilt oplossen, gaat u naar de `server parameters` van uw MySql-exemplaar en wijzigt u `time_zone` van `SYSTEM` naar `+0:00`.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Mijn toepassing is vastgelopen of heeft een onverwachte fout gegenereerd
@@ -49,11 +49,11 @@ Als u fouten opspoort in de toepassing, moet u eerst de status en detectie statu
 * Als de detectie status _actief_is, gaat u naar _metrische gegevens_ om de status van de toepassing te controleren. Inspecteer de volgende metrische gegevens:
 
 
-  - `TomcatErrorCount` (_tomcat.global.error_): Alle Spring-toepassingsuitzonderingen worden hier geteld. Als dit aantal groot is, gaat u naar _Azure log Analytics_ om uw toepassings logboeken te controleren.
+  - `TomcatErrorCount` (_Tomcat. Global. error_): alle uitzonde ringen voor de lente toepassing worden hier geteld. Als dit aantal groot is, gaat u naar _Azure log Analytics_ om uw toepassings logboeken te controleren.
 
-  - `AppMemoryMax` (_jvm.memory.max_): De maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het kan niet worden gedefinieerd of in de loop van de tijd worden gewijzigd indien gedefinieerd. De gebruikte en toegewezen hoeveelheid geheugen is altijd kleiner dan of gelijk aan de maximale hoeveelheid geheugen als deze is gedefinieerd. Een geheugentoewijzing kan echter mislukken met de fout `OutOfMemoryError` als wordt geprobeerd het gebruikte geheugen te verhogen tot meer dan het toegewezen geheugen, ook al wordt de maximale hoeveelheid geheugen niet overschreden. Probeer in dat geval de maximale heap-grootte te verhogen via de parameter `-Xmx`.
+  - `AppMemoryMax` (_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het kan niet worden gedefinieerd of in de loop van de tijd worden gewijzigd indien gedefinieerd. De gebruikte en toegewezen hoeveelheid geheugen is altijd kleiner dan of gelijk aan de maximale hoeveelheid geheugen als deze is gedefinieerd. Een geheugentoewijzing kan echter mislukken met de fout `OutOfMemoryError` als wordt geprobeerd het gebruikte geheugen te verhogen tot meer dan het toegewezen geheugen, ook al wordt de maximale hoeveelheid geheugen niet overschreden. Probeer in dat geval de maximale heap-grootte te verhogen via de parameter `-Xmx`.
 
-  - `AppMemoryUsed` (_jvm.memory.used_): De hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een Java-toepassing met een normale belasting wordt deze metrische reeks omgezet in een zaagtandpatroon, waarbij het geheugengebruik steeds geleidelijk wordt verhoogd en abrupt wordt verlaagd. Dit komt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties worden weer gegeven op de sawteeth.
+  - `AppMemoryUsed` (_JVM. Memory. used_): de hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een Java-toepassing met een normale belasting wordt deze metrische reeks omgezet in een zaagtandpatroon, waarbij het geheugengebruik steeds geleidelijk wordt verhoogd en abrupt wordt verlaagd. Dit komt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties worden weer gegeven op de sawteeth.
     Deze metrische gegevens zijn belang rijk voor het identificeren van geheugen problemen, zoals: * memory-explosie aan het begin van * piek geheugen toewijzing voor een specifiek logisch pad * geleidelijke geheugen lekkages
 
   Ga naar [metrische](spring-cloud-concept-metrics.md)gegevens voor meer informatie.
@@ -107,7 +107,7 @@ Als u echter probeert het _Azure lente-Cloud_ service-exemplaar in te richten vi
 
 Als u probeert het _Azure lente-Cloud_ service-exemplaar in te richten via de Resource Manager-sjabloon, gaat u naar https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates om de syntaxis van de sjabloon te controleren.
 
-De naam van het _Azure lente-Cloud_ service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io`, waardoor de inrichting mislukt als de naam in conflict is met een bestaande. Meer informatie vindt u in de activiteitenlogboeken.
+De naam van het _Azure veer Cloud_ service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io`, zodat de inrichting mislukt als de naam in conflict is met een bestaande. Meer informatie vindt u in de activiteitenlogboeken.
 
 ### <a name="i-cannot-deploy-a-jar-package"></a>Ik kan geen JAR-pakket implementeren
 
@@ -147,11 +147,51 @@ U kunt ook client logboeken van _service register_ in _Azure log Analytics_contr
 
 Ga naar [het artikel aan de](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) slag om aan de slag te gaan met _Azure log Analytics_. Query's uitvoeren op de logboeken met behulp van de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
 
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Ik wil de omgevings variabelen van mijn toepassing controleren
+
+Met omgevings variabelen wordt het Azure lente Cloud-Framework op de hoogte gebracht, zodat Azure begrijpt waar en hoe u de Services kunt configureren waaruit uw toepassing bestaat.  Zorg ervoor dat uw omgevings variabelen correct zijn om mogelijke problemen op te lossen.  U kunt het eind punt voor de Spring boot-klep gebruiken om uw omgevings variabelen te controleren.  
+
+[!WARNING]
+> Met deze procedure kunt u de omgevings variabelen zichtbaar maken.  Ga niet verder als uw test eindpunt openbaar toegankelijk is of als u een domein naam aan uw toepassing hebt toegewezen.
+
+1. Navigeer naar deze URL: `https://<your application test endpoint>/actuator/health`.  
+    - Een antwoord dat lijkt op `{"status":"UP"}` geeft aan dat het eind punt is ingeschakeld.
+    - Als het antwoord negatief is, neemt u de volgende afhankelijkheden op in uw `POM.xml`:
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. Als het eind punt voor de installatie van de veer boot is ingeschakeld, gaat u naar de Azure Portal en zoekt u de configuratie pagina van uw toepassing.  Voeg een omgevings variabele toe met de naam `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` * '. 
+
+1. Start de toepassing opnieuw.
+
+1. Navigeer naar `https://<the test endpoint of your app>/actuator/env` en controleer het antwoord.  Dit ziet er als volgt uit:
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+Zoek het onderliggende knoop punt met de naam `systemEnvironment`.  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
+
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Ik kan geen metrische gegevens of logboeken vinden voor mijn toepassing
 
 Ga naar _app-beheer_ om te _controleren of de_toepassing wordt _uitgevoerd_ .
 
-Als u metrische gegevens kunt zien van _JVM_ maar geen metrische gegevens van _Tomcat_, controleert u of de afhankelijkheid @ no__t-2 is ingeschakeld in uw toepassings pakket en wordt opgestart.
+Als u metrische gegevens kunt zien van _JVM_ maar geen metrische gegevens van _Tomcat_, controleert u of de `spring-boot-actuator` afhankelijkheid is ingeschakeld in uw toepassings pakket en wordt opgestart.
 
 ```xml
 <dependency>
