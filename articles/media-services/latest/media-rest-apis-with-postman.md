@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308454"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675728"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Postman configureren voor Media Services REST API-aanroepen
 
-In dit artikel wordt beschreven hoe u **postman** zo configureert dat deze kan worden gebruikt voor het aanroepen van Azure Media Services-rest API'S (AMS). In dit artikel wordt beschreven hoe u omgevings-en verzamelings bestanden importeert in een **bericht**. De verzameling bevat gegroepeerde definities van HTTP-aanvragen die de REST-Api's van Azure Media Services (AMS) aanroepen. Het omgevings bestand bevat variabelen die door de verzameling worden gebruikt.
+In dit artikel wordt beschreven hoe u **postman** zo configureert dat deze kan worden gebruikt voor het aanroepen van Azure Media Services-rest API'S (AMS). In dit artikel wordt beschreven hoe u omgevings-en verzamelings bestanden importeert in een **bericht**. De verzameling bevat gegroepeerde definities van HTTP-aanvragen die de REST-Api's van Azure Media Services (AMS) aanroepen. Het omgevingsbestand bevat variabelen die worden gebruikt door de verzameling.
 
 Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v3-api's](media-services-apis-overview.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resourcegroep en de naam van de Media Services-account. 
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
 - Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
-    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
+    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
 
 > [!IMPORTANT]
 > Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
@@ -47,11 +47,9 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
 
 ## <a name="configure-postman"></a>Postman configureren
 
-In deze sectie ziet u hoe u de Postman configureert.
-
 ### <a name="configure-the-environment"></a>De omgeving configureren 
 
-1. Open de **Postman**.
+1. Open de **postman** -app.
 2. Selecteer rechts van het scherm de optie **Manage environment**.
 
     ![Omgeving beheren](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ In deze sectie ziet u hoe u de Postman configureert.
 
 Voordat u begint met het bewerken van AMS v3-resources, moet u Azure AD-token voor Service-Principal-verificatie ophalen en instellen.
 
-1. Selecteer in het linkervenster van Postman 'Step 1: Get AAD Auth token'.
+1. Selecteer in het linkerdeel venster van de Postman-app ' stap 1: AAD-verificatie Token ophalen '.
 2. Selecteer vervolgens Get Azure AD Token for Service Principal Authentication.
 3. Druk op **Verzenden**.
 
@@ -103,4 +101,4 @@ Voordat u begint met het bewerken van AMS v3-resources, moet u Azure AD-token vo
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Streamen van bestanden met rest](stream-files-tutorial-with-rest.md).  
-- [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST](stream-files-tutorial-with-rest.md)
+- [Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen](stream-files-tutorial-with-rest.md)

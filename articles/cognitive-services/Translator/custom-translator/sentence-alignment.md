@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: adbc21c3e963a98a8482de0c26bf5e257f43013e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595468"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675456"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Zin en uitlijning in parallelle documenten
 
@@ -26,20 +26,25 @@ Aangepaste vertalers leren de vertalingen van zinnen per zin. Er wordt een zin v
 
 ## <a name="pre-aligned-documents"></a>Vooraf uitgelijnde documenten
 
-Als u weet dat u parallelle documenten hebt, kunt u de opmaak van de zin onderdrukken door vooraf uitgelijnde tekst bestanden op te geven. U kunt alle zinnen uit beide documenten uitpakken in een tekst bestand, één zin per regel geordend en uploaden met een `.align` uitbrei ding. De `.align` uitbrei ding signaleert aangepaste vertalers, waarna de uitlijning van de zin moet worden overgeslagen.
+Als u weet dat u parallelle documenten hebt, kunt u de opmaak van de zin onderdrukken door vooraf uitgelijnde tekst bestanden op te geven. U kunt alle zinnen uit beide documenten uitpakken in een tekst bestand, een zin per regel ordenen en uploaden met een `.align` extensie. De `.align` extensie geeft een aangepaste vertaler door dat de uitlijning van de zin moet worden overgeslagen.
 
 Voor de beste resultaten probeert u te controleren of u één zin per regel hebt in uw bestanden. U hebt geen nieuwe regel tekens binnen een zin, omdat dit resulteert in slechte uitlijning.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Aanbevolen minimum aantal geëxtraheerde en uitgelijnde zinnen
+## <a name="suggested-minimum-number-of-sentences"></a>Voorgesteld minimum aantal zinnen
 
-Voor een succes volle training bevat de onderstaande tabel het minimale aantal geëxtraheerde zinnen en uitgelijnde zinnen dat is vereist in elke gegevensset. Het voorgestelde minimale aantal geëxtraheerde zinnen is veel hoger dan het voorgestelde minimum aantal uitgelijnde zinnen dat rekening moet worden gehouden met het feit dat de uitlijning van de zin mogelijk niet alle geëxtraheerde zinnen kan uitlijnen.
+Voor een succes volle training bevat de onderstaande tabel het minimale aantal zinnen dat is vereist in elk document type. Deze beperking is een veiligheids netwerk om ervoor te zorgen dat uw parallelle zinnen voldoende unieke woorden lijst hebben om een omzettings model te kunnen trainen. De algemene richt lijn heeft meer parallelle zinnen in het domein van de vertaling van menselijke vertalingen en moet kwalitatief hoogwaardige modellen produceren.
 
-| Gegevensset   | Aanbevolen minimum aantal geëxtraheerde zinnen | Aanbevolen minimum aantal ingelijnde zinnen | Maximum aantal uitgelijnde zinnen |
-|------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Training   | 10.000                                     | 2,000                                    | Geen bovengrens                 |
-| Optimalisatie     | 2,000                                      | 500                                      | 2,500                          |
-| Testen    | 2,000                                      | 500                                      | 2,500                          |
-| Woordenlijst | 0                                          | 0                                        | Geen bovengrens                 |
+| Documenttype   | Aanbevolen minimum aantal zinnen | Maximum aantal zinnen |
+|------------|--------------------------------------------|--------------------------------|
+| Training   | 10.000                                     | Geen bovengrens                 |
+| Optimalisatie     | 5\.000                                      | 2\.500                          |
+| Testen    | 5\.000                                      | 2\.500                          |
+| Woordenlijst | 0                                          | Geen bovengrens                 |
+
+> [!NOTE]
+> - De training kan niet worden gestart en mislukt als er niet wordt voldaan aan het minimum aantal zinnen van 10.000 voor training. 
+> - Afstemmen en testen zijn optioneel. Als u deze niet opgeeft, zal het systeem een passend percentage verwijderen van de training die moet worden gebruikt voor validatie en testen. 
+> - U kunt een model trainen met alleen woordenlijst gegevens. Raadpleeg [Wat is een woorden lijst](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary).
 
 ## <a name="next-steps"></a>Volgende stappen
 

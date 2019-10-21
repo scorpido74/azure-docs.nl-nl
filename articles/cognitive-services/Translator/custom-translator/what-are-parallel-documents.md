@@ -1,5 +1,5 @@
 ---
-title: Wat zijn parallelle documenten? -Aangepaste Translator
+title: Wat zijn parallelle documenten? -Aangepaste vertaler
 titleSuffix: Azure Cognitive Services
 description: Parallelle documenten zijn paren van documenten waarbij de ene vertaling van de andere is. Een document in het paar bevat zinnen in de bron taal en het andere document bevat de volgende zinnen die in de doel taal worden vertaald.
 author: swmachan
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595443"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675470"
 ---
 # <a name="what-are-parallel-documents"></a>Wat zijn parallelle documenten?
 
@@ -23,7 +23,7 @@ Het maakt niet uit welke taal is gemarkeerd als ' Bron ' en welke taal is gemark
 
 ## <a name="requirements"></a>Vereisten
 
-U hebt mini maal 10.000 unieke parallelle zinnen nodig om een systeem te trainen. Als best practice kunt u voortdurend meer parallelle inhoud toevoegen en opnieuw trainen, om de kwaliteit van uw Vertaal systeem te verbeteren.
+U hebt mini maal 10.000 unieke, afgestemde parallelle zinnen nodig om een systeem te trainen. Deze beperking is een veiligheids netwerk om ervoor te zorgen dat uw parallelle zinnen voldoende unieke woorden lijst hebben om een omzettings model te kunnen trainen. Als best practice, voeg voortdurend meer parallelle inhoud toe en opnieuw te trainen om de kwaliteit van uw Vertaal systeem te verbeteren. Raadpleeg de uitlijning van een [zin](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
 
 Micro soft vereist dat documenten die zijn geüpload naar de aangepaste vertaler geen inbreuk maken op de copyright-of intellectuele eigenschappen van derden. Voor meer informatie raadpleegt u de [gebruiks voorwaarden](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Het uploaden van een document via de portal heeft geen invloed op het eigendom van het intellectueel eigendom in het document zelf.

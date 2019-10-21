@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 10/18/2019
 ms.author: spelluru
-ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777605"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675755"
 ---
-# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Zelfstudie: gebruik van een lab bijhouden in Azure Lab Services
+# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Zelfstudie: Gebruik van een lab bijhouden in Azure Lab Services
 In deze zelfstudie leert u hoe een maker of eigenaar van een lab het gebruik van een lab kan bijhouden.
 
 In deze zelfstudie voert u de volgende acties uit:
@@ -49,18 +49,11 @@ In deze zelfstudie voert u de volgende acties uit:
     ![VM-gebruik](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Virtuele machines van studenten beheren 
-Als u met de muisaanwijzer een rij aanwijst in de lijst met virtuele machines, ziet u besturingselementen waarmee u de volgende taken kunt uitvoeren (zoals weergegeven in de afbeelding in de vorige sectie): 
-
-- Verbinding maken met een VM
-- Een VM starten
-- Een VM stoppen
-- Een VM verwijderen
-
+Op deze pagina kunt u Vm's van student starten, stoppen of opnieuw instellen met behulp van een vervolg keuzelijst in de kolom **status** of de knoppen op de werk balk. 
 
 ![Besturingselementen van virtuele machines](../media/tutorial-track-usage/vm-controls.png)
 
 U kunt ook de werkbalkknoppen gebruiken om een virtuele machine te starten, stoppen of verwijderen. 
-
 
 
 ## <a name="next-steps"></a>Volgende stappen

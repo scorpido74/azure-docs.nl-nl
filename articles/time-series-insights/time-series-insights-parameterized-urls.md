@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 10/03/2019
+ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: cad57e3e7e52ec291819110bab9d8d79f51e5a2f
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958159"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675834"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
@@ -34,7 +34,7 @@ De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is e
 
 Een voorbeeld van de parameter voor omgevings-id is `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Tijd
 
 U kunt absolute of relatieve tijdwaarden opgeven met een geparameteriseerde URL.
 
@@ -57,7 +57,7 @@ Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series
 
 * `1800000` (afgelopen 30 minuten)
 * `3600000` (afgelopen 60 minuten)
-* `10800000` (laatste 3 uur)
+* `10800000` (afgelopen 3 uur)
 * `21600000` (afgelopen 6 uur)
 * `43200000` (afgelopen 12 uur)
 * `86400000` (afgelopen 24 uur)
@@ -66,25 +66,25 @@ Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
-De para meter `timeSeriesDefinitions=<collection of term objects>` geeft de voor waarden van een Time Series Insights weer gave aan:
+Met de para meter `timeSeriesDefinitions=<collection of term objects>` worden de voor waarden van een Time Series Insights weer gave opgegeven:
 
-| Parameter | URL-item | Description |
+| Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
-| **name** | `\<string>` | De naam van het *onderdeel*. |
+| **naam** | `\<string>` | De naam van het *onderdeel*. |
 | **splitBy** | `\<string>` | De naam van de kolom waarop moet worden *gesplitst*. |
 | **measureName** | `\<string>` | De kolomnaam van de *meting*. |
 | **predicaat** | `\<string>` | De *where*-component voor filteren aan de serverzijde. |
-| **useSum** | `true` | Een optionele para meter waarmee het gebruik van een som voor uw meting wordt opgegeven. </br>  Opmerking: als `Events` de geselecteerde meting is, wordt standaard aantal geselecteerd.  </br>  Als `Events` niet is geselecteerd, wordt standaard het gemiddelde geselecteerd. |
+| **useSum** | `true` | Een optionele para meter waarmee het gebruik van een som voor uw meting wordt opgegeven. </br>  Opmerking: als `Events` de geselecteerde meting is, is aantal standaard geselecteerd.  </br>  Als `Events` niet is geselecteerd, wordt standaard het gemiddelde geselecteerd. |
 
-* Het sleutel-waardepaar voor de @no__t 0 maakt stapeling in de grafiek mogelijk.
-* Met het sleutel paar van de `multiChartSameScale=<true/false>` wordt dezelfde schaal van de Y-as voor alle termen binnen een optionele para meter ingeschakeld.  
+* Het `multiChartStack=<true/false>` sleutel-waardepaar maakt stapeling in de grafiek mogelijk.
+* Met de `multiChartSameScale=<true/false>` sleutel-waardepaar kunt u dezelfde schaal van de Y-as voor alle termen binnen een optionele para meter.  
 * Met de `timeBucketUnit=<Unit>&timeBucketSize=<integer>` kunt u de schuif regelaar voor het interval aanpassen om een meer gedetailleerde of vloeiendere weer gave van de grafiek te bieden.  
 * Met de para meter `timezoneOffset=<integer>` kunt u de tijd zone voor de grafiek instellen, zodat deze wordt weer gegeven als een offset naar UTC.
 
-| Paar (s) | Description |
+| Paar (s) | Beschrijving |
 | --- | --- |
-| `multiChartStack=false` | `true` is standaard ingeschakeld, dus geef `false` door aan stack. |
-| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  Het is standaard `false`, dus als u ' waar ' doorgeeft, wordt deze functionaliteit ingeschakeld. |
+| `multiChartStack=false` | `true` is standaard ingeschakeld, dus geef `false` door. |
+| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  Het is standaard `false`, dus als u ' waar ' inschakelt, wordt deze functionaliteit ingeschakeld. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Eenheden = dagen, uren, minuten, seconden en milliseconden.  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor timeBucketSize op te geven.  Rond af naar 7 dagen.  |
 | `timezoneOffset=-<integer>` | Het gehele getal is altijd in milliseconden. </br> Houd er rekening mee dat deze functionaliteit enigszins afwijkt van wat er in de Time Series Insights Explorer wordt ingeschakeld, waar u lokaal kunt kiezen (browser tijd) of UTC. |
 
@@ -114,11 +114,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 De onderstaande URL beschrijft en bouwt de weer gave Time Series Insights Explorer:
 
-[Voor waarden van ![Time Series Insights-Verkenner](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[Voor waarden voor de ![Time Series Insights-Verkenner](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 De volledige weer gave (met inbegrip van de grafiek):
 
-[@no__t-weer gave 1Chart](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[![Chart weer gave](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

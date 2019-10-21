@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201630"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675817"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -41,15 +41,15 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### Windows Server-besturings systemen<a name="os-windows"></a>
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> Integratie met micro soft Defender ATP ondersteunt alleen Windows Server 2012 R2 en Windows Server 2016.
+[!div class="mx-tableFixed"]
+|Besturingssysteem|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
+|---|---|---|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008|✔|✔|
 
 Zie [ondersteunde functies van virtual machine/server](security-center-services.md##vm-server-features)voor meer informatie over de ondersteunde functies voor de Windows-besturings systemen die hierboven worden vermeld.
 
@@ -93,9 +93,9 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * PostGreSQL
 * MySQL
 * CosmosDB
-* Storage-account
-* App Service
-* Function
+* Opslagaccount
+* App service
+* Functie
 * Cloudservice
 * VNet
 * Subnet
@@ -104,16 +104,16 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * Batch-account
 * Service Fabric-account
 * Automation-account
-* Load balancer
+* Load Balancer
 * Search
-* Service Bus-naamruimte
+* Service Bus-naam ruimte
 * Stream Analytics
-* Event Hub-naamruimte
-* Logic Apps
+* Event hub-naamruimte
+* Logische apps
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Sleutelkluis
+* Key Vault
 
 Zie [PaaS Services ondersteunde functies](security-center-services.md#paas-services)voor meer informatie over de ondersteunde functies voor de bovenstaande lijst met PaaS-resources.
 
