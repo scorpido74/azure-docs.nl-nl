@@ -32,6 +32,8 @@
       items:
         - name: Toegang tot gegevens toewijzen
           href: assign-access-acm-data.md
+        - name: Kosten analyse gebruiken voor veelvoorkomende taken
+          href: cost-analysis-common-uses.md
         - name: Kostenwaarschuwingen gebruiken
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: AWS-integratie instellen en configureren

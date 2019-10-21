@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: Best practices van Azure Architecture voor caching
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: Uitleg over failover en patching
+      href: cache-failover.md
 - name: Handleidingen
   items:
     - name: Plannen

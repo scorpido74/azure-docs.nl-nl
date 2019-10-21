@@ -248,6 +248,16 @@
               href: storage-blob-containers-list.md
             - name: Eigenschappen en metagegevens beheren (.NET)
               href: storage-blob-container-properties-metadata.md
+        - name: Blobs maken en beheren
+          items:
+            - name: Blobs vermelden (.NET)
+              href: storage-blobs-list.md
+            - name: Eigenschappen en metagegevens van blobs beheren (.NET)
+              href: storage-blob-properties-metadata.md
+            - name: Een blob kopiëren (.NET)
+              href: storage-blob-copy.md
+            - name: Blob-momentopnamen maken en beheren (.NET)
+              href: storage-blob-snapshots.md
         - name: Blobgegevens beveiligen
           items:
             - name: Toegang tot blobgegevens autoriseren

@@ -12,18 +12,18 @@ metadata:
   author: curtand
   ms.author: curtand
   ms.date: 08/28/2019
-  ms.openlocfilehash: b1782c41bce2de6a9da0858519dfeb87f6597df8
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 80b562ff3f5fba7c57253e3761802dd3379b017b
+  ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127402"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72554329"
 landingContent:
 - title: Over Privileged Identity Management
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure AD PIM?
+    - text: Wat is Azure AD Privileged Identity Management?
       url: pim-configure.md
   - linkListType: concept
     links:
@@ -37,9 +37,9 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: PIM implementeren
+    - text: Privileged Identity Management implementeren
       url: pim-deployment-plan.md
-    - text: Beginnen met PIM
+    - text: Aan de slag met Privileged Identity Management
       url: pim-getting-started.md
 - title: Mijn rollen activeren (geschikte en actieve rolgebruikers)
   linkLists:

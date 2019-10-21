@@ -65,6 +65,8 @@
           href: notifications.md
         - name: Een beheerd domein verwijderen
           href: delete-aadds.md
+        - name: Migreren vanuit een klassieke implementatie (preview)
+          href: migrate-from-classic-vnet.md
     - name: Azure AD DS beveiligen
       items:
         - name: Uw beheerde domein beveiligen
