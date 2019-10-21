@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7fc3508f7f672e277577f92218ff1860b676cb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559474"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596697"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Problemen met Privileged Identity Management oplossen
 
@@ -28,7 +28,7 @@ Ondervindt u een probleem met Privileged Identity Management (PIM) in Azure Acti
 
 ### <a name="problem"></a>Probleem
 
-U krijgt een autorisatie fout wanneer u een gebruiker probeert te maken die in aanmerking komt voor een Azure AD-beheerdersrol en u geen toegang hebt tot Azure-resources onder Privileged Identity Management. U hebt geen toegang tot Azure-resources onder Privileged Identity Management, zelfs niet als u een globale beheerder en de eigenaar van het abonnement bent.
+Als een actieve eigenaar of beheerder van de gebruikers toegang voor een Azure-resource kunt u uw resource in Privileged Identity Management zien, maar u kunt geen acties uitvoeren zoals het maken van een in aanmerking komende toewijzing of het weer geven van een lijst met roltoewijzingen van de resource overzichts pagina. Een van deze acties resulteert in een autorisatie fout.
 
 ### <a name="cause"></a>Oorzaak
 

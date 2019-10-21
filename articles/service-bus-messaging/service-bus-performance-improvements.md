@@ -1,6 +1,6 @@
 ---
 title: Aanbevolen procedures voor het verbeteren van de prestaties met behulp van Azure Service Bus | Microsoft Docs
-description: Beschrijft hoe u Service Bus gebruiken voor het uitwisselen van verwerkte berichten om prestaties te optimaliseren.
+description: Hierin wordt beschreven hoe u Service Bus kunt gebruiken om de prestaties te optimaliseren bij het uitwisselen van brokered berichten.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -10,40 +10,40 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589649"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596465"
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Aanbevolen procedures voor prestatieverbeteringen met Service Bus-berichten
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Aanbevolen procedures voor prestatie verbeteringen met behulp van Service Bus Messa ging
 
-In dit artikel wordt beschreven hoe u Azure Service Bus gebruiken voor het uitwisselen van verwerkte berichten om prestaties te optimaliseren. Het eerste deel van dit artikel beschrijft de verschillende methoden die worden aangeboden aan de prestaties verbeteren. Het tweede gedeelte bevat richtlijnen over het gebruik van Service Bus op een begrijpelijke manier de beste prestaties in een bepaald scenario bieden kunt.
+In dit artikel wordt beschreven hoe u Azure Service Bus kunt gebruiken om de prestaties te optimaliseren bij het uitwisselen van brokered berichten. In het eerste deel van dit artikel worden de verschillende mechanismen beschreven die worden geboden om de prestaties te verbeteren. Het tweede deel bevat richt lijnen voor het gebruik van Service Bus op een manier die de beste prestaties kan bieden in een bepaald scenario.
 
-In dit artikel wordt de term 'client' verwijst naar een entiteit die toegang heeft tot de Service Bus. Een client kan duren voordat de rol van een zender of ontvanger. De term 'zender' wordt gebruikt voor een Service Bus-wachtrij of onderwerp client waarmee berichten worden verzonden naar een Service Bus-wachtrij of onderwerp-abonnement. De term "ontvanger" verwijst naar een Service Bus-wachtrij of abonnement clienttoepassing die berichten van een Service Bus-wachtrij of abonnement ontvangt.
+In dit artikel verwijst de term ' client ' naar een wille keurige entiteit die toegang heeft tot Service Bus. Een client kan de rol van een afzender of ontvanger hebben. De term ' Sender ' wordt gebruikt voor een Service Bus wachtrij of een onderwerp-client die berichten verzendt naar een Service Bus wachtrij of een onderwerp-abonnement. De term ' Receive ' verwijst naar een Service Bus wachtrij of abonnements-client die berichten ontvangt van een Service Bus wachtrij of een abonnement.
 
-Deze secties worden enkele concepten die Service Bus gebruikt om u te helpen de prestaties verbeteren.
+In deze secties worden verschillende concepten geïntroduceerd die Service Bus gebruiken om de prestaties te verbeteren.
 
 ## <a name="protocols"></a>Protocollen
 
-Service Bus kunnen clients verzenden en ontvangen van berichten uit via een van drie protocollen:
+Met Service Bus kunnen clients berichten verzenden en ontvangen via een van de drie protocollen:
 
-1. Advanced Message Queuing Protocol (AMQP)
-2. Service Bus Messaging Protocol (SBMP)
+1. Advanced Message Queueing Protocol (AMQP)
+2. Service Bus Messa ging Protocol (SBMP)
 3. HTTP
 
-AMQP en SBMP zijn efficiënter, omdat ze de verbinding met Service Bus onderhouden, zolang de berichtenfactory bestaat. Ook worden batchverwerking en veelgevraagde geïmplementeerd. Tenzij uitdrukkelijk vermeld, wordt het gebruik van AMQP of SBMP aangenomen dat alle inhoud in dit artikel.
+AMQP en SBMP zijn efficiënter, omdat ze de verbinding met Service Bus onderhouden zolang de Messa ging-Factory bestaat. Het implementeert ook batch verwerking en vooraf ophalen. Tenzij expliciet vermeld, gaat alle inhoud in dit artikel uit van het gebruik van AMQP of SBMP.
 
-## <a name="reusing-factories-and-clients"></a>Factory's en-clients
+## <a name="reusing-factories-and-clients"></a>Fabrieken en clients opnieuw gebruiken
 
-Service Bus-clienttoepassing objecten, zoals [QueueClient] [ QueueClient] of [MessageSender][MessageSender], zijn gemaakt via een [ MessagingFactory] [ MessagingFactory] object, dat ook interne beheren van verbindingen biedt. Het is raadzaam dat u niet sluiten messaging fabrieken of wachtrij, onderwerp en abonnement clients nadat u een bericht verzenden en opnieuw maken wanneer u het volgende bericht verzonden. Het sluiten van een berichtenfactory Hiermee verwijdert u de verbinding met de Service Bus-service en een nieuwe verbinding tot stand is gebracht wanneer de factory opnieuw te maken. Een verbinding is een dure bewerking die u voorkomen kunt door de clientobjecten voor meerdere bewerkingen en dezelfde factory opnieuw te gebruiken. U kunt deze clientobjecten veilig gebruiken voor gelijktijdige asynchrone bewerkingen en naar meerdere threads. 
+Service Bus-client objecten, zoals [QueueClient][QueueClient] of [MessageSender][MessageSender], worden gemaakt via een [MessagingFactory][MessagingFactory] -object, dat ook intern beheer van verbindingen biedt. U wordt aangeraden geen bericht fabrieken of wacht woord-, onderwerp-en abonnements-clients te sluiten nadat u een-berichten hebt verzonden en ze vervolgens opnieuw te maken wanneer u het volgende bericht verzendt. Als u een Messa ging-Factory sluit, wordt de verbinding met de Service Bus-service verwijderd en wordt er een nieuwe verbinding tot stand gebracht wanneer de fabriek opnieuw wordt gemaakt. Het tot stand brengen van een verbinding is een dure bewerking die u kunt vermijden door dezelfde fabrieks-en client objecten voor meerdere bewerkingen te gebruiken. U kunt deze client objecten veilig gebruiken voor gelijktijdige asynchrone bewerkingen en uit meerdere threads. 
 
 ## <a name="concurrent-operations"></a>Gelijktijdige bewerkingen
 
-Door een bewerking uitgevoerd (verzenden, ontvangen, verwijderen, enz.) het duurt enige tijd. Deze keer bevat de verwerking van de bewerking door de Service Bus-service naast de latentie van de aanvraag en het antwoord. Als u wilt het aantal bewerkingen per keer verhogen, moeten gelijktijdig bewerkingen uitvoeren. 
+Het uitvoeren van een bewerking (verzenden, ontvangen, verwijderen, enz.) neemt enige tijd in beslag. Deze tijd omvat de verwerking van de bewerking door de Service Bus-service naast de latentie van de aanvraag en het antwoord. Om het aantal bewerkingen per tijd te verhogen, moeten bewerkingen gelijktijdig worden uitgevoerd. 
 
-De client plant gelijktijdige bewerkingen door asynchrone bewerkingen worden uitgevoerd. De volgende aanvraag is gestart voordat de vorige aanvraag is voltooid. Het volgende codefragment wordt een voorbeeld van een bewerking voor het asynchroon verzenden:
+De client plant gelijktijdige bewerkingen door asynchrone bewerkingen uit te voeren. De volgende aanvraag wordt gestart voordat de vorige aanvraag is voltooid. Het volgende code fragment is een voor beeld van een asynchrone verzend bewerking:
   
  ```csharp
   Message m1 = new BrokeredMessage(body);
@@ -61,7 +61,7 @@ De client plant gelijktijdige bewerkingen door asynchrone bewerkingen worden uit
   Console.WriteLine("All messages sent");
   ```
   
-  De volgende code is een voorbeeld van een asynchrone bewerking ontvangen. Zie het volledige programma [hier](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
+  De volgende code is een voor beeld van een asynchrone ontvangst bewerking. Bekijk [hier](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues)het volledige programma:
   
   ```csharp
   var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -70,21 +70,21 @@ De client plant gelijktijdige bewerkingen door asynchrone bewerkingen worden uit
   receiver.RegisterMessageHandler(...);
   ```
 
-## <a name="receive-mode"></a>Modus ontvangen
+## <a name="receive-mode"></a>Ontvangst modus
 
-Bij het maken van een wachtrij of abonnement client, kunt u een modus ontvangen: *Peek-lock* of *ontvangt en verwijdert*. De standaardwaarde modus ontvangen is [PeekLock][PeekLock]. Als het wordt uitgevoerd in deze modus, verzendt de client een aanvraag voor het ontvangen van een bericht van Service Bus. Nadat de client heeft het bericht hebt ontvangen, stuurt een aanvraag voor het voltooien van het bericht.
+Wanneer u een wachtrij of een abonnements-client maakt, kunt u een ontvangst modus opgeven: *bekijken/vergren delen* of *ontvangen en verwijderen*. De standaard modus voor ontvangen is [PeekLock][PeekLock]. Wanneer deze modus actief is, verzendt de client een aanvraag om een bericht van Service Bus te ontvangen. Nadat de client het bericht heeft ontvangen, verzendt het een aanvraag om het bericht te volt ooien.
 
-Bij het instellen van de modus ontvangen naar [ReceiveAndDelete][ReceiveAndDelete], beide stappen worden gecombineerd in één aanvraag. Deze stappen beperken het totale aantal bewerkingen en kunnen de verbeteren de algehele doorvoer van berichten. Deze prestatieverbetering wordt geleverd indien het verlies van berichten.
+Wanneer u de receive-modus instelt op [ReceiveAndDelete][ReceiveAndDelete], worden beide stappen gecombineerd in één aanvraag. Met deze stappen wordt het totale aantal bewerkingen verminderd en kunnen de algehele bericht doorvoer worden verbeterd. Deze prestatie verbetering is het risico dat berichten verloren gaan.
 
-Service Bus biedt geen ondersteuning voor transacties voor ontvangen en delete-bewerkingen. Bovendien peek-lock semantiek zijn vereist voor alle scenario's waarin de client wil om uit te stellen of [dead-letter uitvoeren voor](service-bus-dead-letter-queues.md) een bericht.
+Service Bus biedt geen ondersteuning voor trans acties voor het ontvangen en verwijderen van bewerkingen. Daarnaast zijn de semantiek van kortere vergren delingen vereist voor scenario's waarin de client een bericht wil uitstellen of [onbestelt](service-bus-dead-letter-queues.md) .
 
-## <a name="client-side-batching"></a>Client-side batchverwerking
+## <a name="client-side-batching"></a>Batch verwerking aan client zijde
 
-Client-side batchverwerking, kunt een wachtrij of onderwerp client van het verzenden van een bericht voor een bepaalde periode vertragen. Als de client aanvullende berichten verstuurt tijdens deze periode, worden de berichten in één batch verstuurd. Client-side batchverwerking ook zorgt ervoor dat een wachtrij of abonnement client meerdere batch **voltooid** aanvragen in één aanvraag. Batchverwerking is alleen beschikbaar voor asynchrone **verzenden** en **voltooid** bewerkingen. Synchrone bewerkingen worden onmiddellijk verzonden naar de Service Bus-service. Batchverwerking niet wordt omgeleid voor peek of ontvangen van bewerkingen, noch doet batchverwerking zich in clients.
+Met batch verwerking aan de client zijde kan een wachtrij of een onderwerp-client het verzenden van een bericht gedurende een bepaalde periode vertragen. Als de client aanvullende berichten verstuurt tijdens deze periode, worden de berichten in één batch verstuurd. Batch verwerking aan client zijde zorgt er ook voor dat een wachtrij of abonnements client meerdere **voltooide** aanvragen batcheert in één aanvraag. Batch verwerking is alleen beschikbaar voor asynchrone bewerkingen voor **verzenden** en **volt ooien** . Synchrone bewerkingen worden direct naar de Service Bus-service verzonden. Er vindt geen batch verwerking plaats voor Peek-en ontvangst bewerkingen en er worden geen batches op clients uitgevoerd.
 
-Een client maakt standaard gebruik van een batch-interval van 20 ms. U kunt de batch-interval wijzigen door in te stellen de [BatchFlushInterval] [ BatchFlushInterval] eigenschap voordat u de berichtenfactory maakt. Deze instelling is van invloed op alle clients die zijn gemaakt door deze factory.
+Een client gebruikt standaard een batch-interval van 20 MS. U kunt de batch-interval wijzigen door de eigenschap [BatchFlushInterval][BatchFlushInterval] in te stellen voordat u de Messa ging-Factory maakt. Deze instelling is van invloed op alle clients die zijn gemaakt door deze Factory.
 
-Als wilt uitschakelen batchverwerking, stel de [BatchFlushInterval] [ BatchFlushInterval] eigenschap **TimeSpan.Zero**. Bijvoorbeeld:
+Als u batch verwerking wilt uitschakelen, stelt u de eigenschap [BatchFlushInterval][BatchFlushInterval] in op **time span. Zero**. Bijvoorbeeld:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -93,27 +93,27 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Batchverwerking heeft geen invloed op het aantal factureerbare berichten bewerkingen en is alleen beschikbaar voor de Service Bus client protocol met behulp van de [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) bibliotheek. Het HTTP-protocol biedt geen ondersteuning voor batchverwerking.
+Batch verwerking heeft geen invloed op het aantal factureer bare berichten bewerkingen en is alleen beschikbaar voor het Service Bus-client protocol met behulp van de [micro soft. ServiceBus. Messa ging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) -bibliotheek. Het HTTP-protocol biedt geen ondersteuning voor batch verwerking.
 
 > [!NOTE]
-> Instellen van BatchFlushInterval zorgt ervoor dat de batchverwerking impliciete vanuit het perspectief van de toepassing. dat wil zeggen de toepassing maakt het SendAsync() en CompleteAsync() aanroept en maakt geen specifieke Batch aanroepen.
+> Door BatchFlushInterval in te stellen, zorgt u ervoor dat de batch impliciet is van het perspectief van de toepassing. De toepassing maakt bijvoorbeeld SendAsync () en CompleteAsync ()-aanroepen en maakt geen specifieke batch-aanroepen.
 >
-> Expliciete client-side batchverwerking kan worden geïmplementeerd met behulp van de onder de aanroep van methode - 
+> Expliciete batch verwerking aan de client zijde kan worden geïmplementeerd door gebruik te maken van de volgende methode aanroep: 
 > ```csharp
 > Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
 > ```
-> Hier moet de gecombineerde grootte van de berichten kleiner dan de maximale grootte wordt ondersteund door de prijscategorie.
+> Hier moet de gecombineerde grootte van de berichten kleiner zijn dan de maximale grootte die wordt ondersteund door de prijs categorie.
 
-## <a name="batching-store-access"></a>Toegang tot de store batchverwerking
+## <a name="batching-store-access"></a>Toegang tot batch-archief
 
-Service Bus batches meerdere berichten voor een betere de doorvoer van een wachtrij, onderwerp of abonnement wanneer er wordt geschreven naar de interne opslag. Als ingeschakeld op een wachtrij of onderwerp, berichten schrijven naar het archief wordt in batch worden opgenomen. Als ingeschakeld op een wachtrij of abonnement, berichten verwijderen uit de store worden in batch worden opgenomen. Als batch store-toegang is ingeschakeld voor een entiteit, vertraagd Service Bus een schrijfbewerking van store met betrekking tot die entiteit door maximaal 20 ms. 
+Voor het verg Roten van de door Voer van een wachtrij, onderwerp of abonnement Service Bus batches meerdere berichten wanneer deze naar de interne Store worden geschreven. Als deze functie is ingeschakeld voor een wachtrij of onderwerp, worden berichten in de Store naar batch geschreven. Als deze functie is ingeschakeld voor een wachtrij of abonnement, worden de berichten uit de Store in batches verwijderd. Als de toegang tot een batch-archief is ingeschakeld voor een entiteit, wordt door Service Bus een Store-schrijf bewerking voor die entiteit met Maxi maal 20 MS vertraagd. 
 
 > [!NOTE]
-> Er is geen risico van het verlies van berichten met batches, zelfs als er een Service Bus-fout aan het einde van een interval van 20 MS-batchverwerkingsindeling. 
+> Er is geen risico dat berichten met batch verwerking verloren gaan, zelfs als er een Service Bus fout aan het einde van een batch-interval voor 20ms. 
 
-Aanvullende store-bewerkingen die zich tijdens dit interval voordoen worden toegevoegd aan de batch. Batch verwerkt store toegang alleen van invloed op **verzenden** en **voltooid** operations; ontvangen van bewerkingen worden niet beïnvloed. Toegang tot batch store is een eigenschap van een entiteit. Batchverwerking gebeurt via alle entiteiten die in batch store-toegang inschakelen.
+Aanvullende archief bewerkingen die worden uitgevoerd tijdens dit interval, worden toegevoegd aan de batch. De toegang tot een batch-archief is alleen van invloed op **Verzend** -en **volledige** bewerkingen. ontvangst bewerkingen worden niet beïnvloed. De toegang tot een batch-archief is een eigenschap van een entiteit. Batch verwerking vindt plaats in alle entiteiten die de toegang tot een batch-archief inschakelen.
 
-Bij het maken van een nieuwe wachtrij, onderwerp of abonnement, wordt toegang tot batch store is standaard ingeschakeld. Als wilt uitschakelen in batch store-toegang, stel de [EnableBatchedOperations] [ EnableBatchedOperations] eigenschap **false** voordat u de entiteit maakt. Bijvoorbeeld:
+Bij het maken van een nieuwe wachtrij, een onderwerp of een abonnement, wordt de toegang tot een batch-archief standaard ingeschakeld. Als u de toegang tot de batch-Store wilt uitschakelen, stelt u de eigenschap [EnableBatchedOperations][EnableBatchedOperations] in op **False** voordat u de entiteit maakt. Bijvoorbeeld:
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -121,137 +121,127 @@ qd.EnableBatchedOperations = false;
 Queue q = namespaceManager.CreateQueue(qd);
 ```
 
-Toegang tot batch store heeft geen invloed op het aantal factureerbare berichten bewerkingen en is een eigenschap van een wachtrij, onderwerp of abonnement. Het is onafhankelijk van de modus ontvangen en het protocol dat wordt gebruikt tussen een client en de Service Bus-service.
+De toegang tot de batch-Store heeft geen invloed op het aantal factureer bare berichten bewerkingen en is een eigenschap van een wachtrij, onderwerp of abonnement. Het is onafhankelijk van de ontvangst modus en het protocol dat wordt gebruikt tussen een client en de Service Bus service.
 
-## <a name="prefetching"></a>Veelgevraagde
+## <a name="prefetching"></a>Vooraf ophalen
 
-[Veelgevraagde](service-bus-prefetch.md) kan de wachtrij of abonnement client extra berichten laden van de service wanneer deze een receive-bewerking wordt uitgevoerd. De client slaat deze berichten in een lokale cache. De grootte van de cache wordt bepaald door de [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] of [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] eigenschappen. Elke client waarmee veelgevraagde onderhoudt een eigen cache. Een cache is niet gedeeld tussen de clients. Als de client een ontvangstbewerking initieert en de cache leeg is, verzendt de service een batch van berichten. De grootte van de batch is gelijk aan de grootte van de cache of 256 KB, afhankelijk van wat kleiner is. Als de client een ontvangstbewerking initieert en de cache een bericht bevat, wordt het bericht afkomstig uit de cache.
+Als u [vooraf ophaalt](service-bus-prefetch.md) , kan de wachtrij of abonnements-client extra berichten van de service laden wanneer er een receive-bewerking wordt uitgevoerd. De client slaat deze berichten op in een lokale cache. De grootte van de cache wordt bepaald door de eigenschappen [QueueClient. PrefetchCount][QueueClient.PrefetchCount] of [SubscriptionClient. PrefetchCount][SubscriptionClient.PrefetchCount] . Elke client die het vooraf ophalen van een eigen cache beheert. Een cache wordt niet gedeeld tussen clients. Als de client een receive-bewerking initieert en de cache leeg is, verzendt de service een batch berichten. De grootte van de batch is gelijk aan de grootte van de cache of 256 KB, afhankelijk van wat kleiner is. Als de client een receive-bewerking initieert en de cache een bericht bevat, wordt het bericht opgehaald uit de cache.
 
-Wanneer een bericht is tabelruimte, wordt het prefetched bericht vergrendeld in de service. Met het lock kan niet het prefetched bericht worden ontvangen door een andere ontvanger. Als de ontvanger het bericht niet voltooien kan voordat de vergrendeling is verlopen, wordt het bericht beschikbaar voor andere ontvangers. De prefetched kopie van het bericht blijft in de cache. De ontvanger die de kopie van de verlopen cache wordt een uitzondering ontvangen als er wordt geprobeerd om uit te voeren dat bericht. Standaard wordt de bericht-vergrendeling verloopt na 60 seconden. Deze waarde kan worden uitgebreid tot 5 minuten. Om te voorkomen dat het verbruik van verlopen berichten, moet grootte van de cache altijd kleiner zijn dan het aantal berichten die kunnen worden gebruikt door een client binnen de time-outinterval vergrendelen.
+Wanneer een bericht vooraf is opgehaald, wordt het vooraf opgehaalde bericht door de service vergrendeld. Met de vergren deling kan het vooraf opgehaalde bericht niet worden ontvangen door een andere ontvanger. Als de ontvanger het bericht niet kan volt ooien voordat de vergren deling verloopt, wordt het bericht beschikbaar voor andere ontvangers. De vooraf opgehaalde kopie van het bericht blijft in de cache. De ontvanger die de verlopen kopie in de cache gebruikt, ontvangt een uitzonde ring wanneer deze probeert dat bericht te volt ooien. De bericht vergrendeling verloopt standaard na 60 seconden. Deze waarde kan worden verlengd tot 5 minuten. Om het verbruik van verlopen berichten te voor komen, moet de cache grootte altijd kleiner zijn dan het aantal berichten dat door een client kan worden gebruikt binnen het time-outinterval van de vergren deling.
 
-Wanneer u de vervaldatum van de vergrendeling standaardwaarde van 60 seconden, een goede waarde voor de [PrefetchCount] [ SubscriptionClient.PrefetchCount] is 20 keer het maximum-verwerkingssnelheden van alle ontvangers van de factory. Bijvoorbeeld, een factory maakt drie ontvangers en elke ontvanger kan maximaal 10 berichten per seconde verwerken. Het aantal prefetch mag niet meer dan 20 X 3 X 10 = 600. Standaard [PrefetchCount] [ QueueClient.PrefetchCount] is ingesteld op 0, wat betekent dat er geen berichten meer van de service worden opgehaald.
+Wanneer u de standaard verval datum van 60 seconden gebruikt, is een goede waarde voor [PrefetchCount][SubscriptionClient.PrefetchCount] 20 keer de maximale verwerkings snelheid van alle receivers van de fabriek. Een Factory maakt bijvoorbeeld drie ontvangers en elke ontvanger kan Maxi maal 10 berichten per seconde verwerken. Het aantal prefetch mag niet hoger zijn dan 20 X 3 X 10 = 600. [PrefetchCount][QueueClient.PrefetchCount] is standaard ingesteld op 0, wat betekent dat er geen extra berichten van de service worden opgehaald.
 
-De totale doorvoersnelheid voor een wachtrij of abonnement veelgevraagde berichten worden verhoogd omdat het totale aantal berichtbewerkingen of retouren beperkt. Ophalen van het eerste bericht, maar duurt het langer (als gevolg van de grootte van het toegenomen bericht). Ontvangen van berichten tabelruimte worden sneller omdat deze berichten door de client al zijn gedownload.
+Het vooraf ophalen van berichten verhoogt de algehele door Voer voor een wachtrij of abonnement, omdat hiermee het totale aantal bericht bewerkingen of afrondingen wordt verminderd. Als het eerste bericht wordt opgehaald, duurt dit echter langer (vanwege de verhoogde bericht grootte). Het ontvangen van vooraf opgehaalde berichten gaat sneller omdat deze berichten al zijn gedownload door de client.
 
-De time-to-live (TTL) eigenschap van een bericht wordt gecontroleerd door de server op het moment dat de server wordt het bericht naar de client verzonden. De client controleert niet de berichteigenschap TTL-waarde wanneer het bericht wordt ontvangen. In plaats daarvan kan het bericht worden ontvangen, zelfs als de TTL van het bericht is verlopen terwijl het bericht in de cache door de client opgeslagen is.
+De TTL-eigenschap (time-to-Live) van een bericht wordt gecontroleerd door de server op het moment dat de server het bericht naar de client verzendt. De client controleert de TTL-eigenschap van het bericht niet wanneer het bericht wordt ontvangen. In plaats daarvan kan het bericht worden ontvangen, zelfs als de TTL van het bericht is verstreken terwijl het bericht door de client in de cache is opgeslagen.
 
-Veelgevraagde heeft geen invloed op het aantal factureerbare berichten bewerkingen en is alleen beschikbaar voor de Service Bus-client-protocol. Het HTTP-protocol biedt geen ondersteuning voor veelgevraagde. Veelgevraagde is beschikbaar voor zowel asynchrone als synchrone bewerkingen ontvangen.
+Het vooraf ophalen heeft geen invloed op het aantal factureer bare berichten bewerkingen en is alleen beschikbaar voor het Service Bus-client protocol. Het HTTP-protocol biedt geen ondersteuning voor het vooraf ophalen van. Het vooraf ophalen is beschikbaar voor synchrone en asynchrone ontvangst bewerkingen.
 
-## <a name="prefetching-and-receivebatch"></a>Veelgevraagde en ReceiveBatch
+## <a name="prefetching-and-receivebatch"></a>Vooraf ophalen en ReceiveBatch
 
-Hoewel de concepten van meerdere berichten samen veelgevraagde hebben vergelijkbare semantiek tot het verwerken van berichten in een batch (ReceiveBatch), zijn er enkele kleine verschillen die er rekening mee moeten worden gehouden bij het gebruik van deze samen.
+Hoewel de concepten van het vooraf ophalen van meerdere berichten samen een vergelijk bare semantiek hebben voor het verwerken van berichten in een batch (ReceiveBatch), zijn er enkele kleine verschillen die in aanmerking moeten worden genomen wanneer ze met elkaar samen werken.
 
-Prefetch is een configuratie (of de modus) op de client (QueueClient en SubscriptionClient) en ReceiveBatch is een bewerking (die request response-semantiek heeft).
+Prefetch is een configuratie (of modus) op de client (QueueClient en SubscriptionClient) en ReceiveBatch is een bewerking (die een aanvraag/antwoord-semantiek heeft).
 
-Tijdens het gebruik van functies vervolgens tegelijk, houd rekening met de volgende gevallen:
+Houd rekening met de volgende gevallen wanneer u deze samen gebruikt:
 
-* Prefetch moet groter zijn dan of gelijk zijn aan het aantal berichten dat u verwacht te ontvangen van ReceiveBatch.
-* Prefetch mag maximaal n/3 maal het aantal berichten verwerkt per seconde, waarbij n staat voor de standaardduur van de vergrendeling.
+* Prefetch moet groter zijn dan of gelijk zijn aan het aantal berichten dat u verwacht van ReceiveBatch.
+* Prefetch kan Maxi maal n/3 keer het aantal berichten dat per seconde wordt verwerkt, waarbij n de standaard vergrendelings duur is.
 
-Er zijn enkele uitdagingen met met een greedy benadering (dat wil zeggen houden het aantal prefetch zeer hoog), omdat dit betekent dat het bericht is gekoppeld aan een bepaalde ontvanger. De aanbeveling is om te proberen prefetch van waarden tussen de drempelwaarden die hierboven worden vermeld en empirisch identificeren wat past.
+Er zijn enkele uitdagingen met een Greedy-benadering (waarbij het aantal prefetch zeer hoog blijft), omdat het impliceert dat het bericht is vergrendeld op een bepaalde ontvanger. Het is aan te raden om prefetch-waarden uit te proberen tussen de hierboven genoemde drempels en te identificeren wat past.
 
-## <a name="multiple-queues"></a>Meerdere wachtrijen
+## <a name="multiple-queues"></a>Meerdere wacht rijen
 
-Als de verwachte belasting kan niet worden verwerkt door een enkele gepartitioneerde wachtrij of onderwerp, moet u meerdere messaging-entiteiten. Wanneer u meerdere entiteiten, maakt u een specifieke client voor elke entiteit, in plaats van dezelfde client voor alle entiteiten.
+Als de verwachte belasting niet kan worden verwerkt door één wachtrij of onderwerp, moet u meerdere Messa ging-entiteiten gebruiken. Wanneer u meerdere entiteiten gebruikt, maakt u een speciale client voor elke entiteit, in plaats van dezelfde client voor alle entiteiten te gebruiken.
 
-## <a name="development-and-testing-features"></a>Ontwikkeling en testen functies
+## <a name="development-and-testing-features"></a>Functies voor ontwikkelen en testen
 
-Service Bus is een functie, die wordt gebruikt voor ontwikkeling, die **moeten nooit worden gebruikt in productie configuraties**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+Service Bus heeft één functie, die specifiek wordt gebruikt voor ontwikkeling, die **nooit moet worden gebruikt in productie configuraties**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
 
-Wanneer nieuwe regels of filters worden toegevoegd aan het onderwerp, kunt u [TopicDescription.EnableFilteringMessagesBeforePublishing][] om te controleren of de nieuwe filterexpressie werkt zoals verwacht.
+Wanneer er nieuwe regels of filters aan het onderwerp worden toegevoegd, kunt u [TopicDescription.EnableFilteringMessagesBeforePublishing][] gebruiken om te controleren of de nieuwe filter expressie werkt zoals verwacht.
 
 ## <a name="scenarios"></a>Scenario's
 
-De volgende secties beschrijven typische berichtverzending en beschrijven de gewenste instellingen voor Service Bus. Doorvoersnelheden (minder dan 1 bericht/seconde) zo klein zijn geclassificeerd, Gemiddeld (1 bericht per seconde of hoger, maar minder dan 100 berichten/seconde) en een hoge (100 berichten/seconde of hoger). Het aantal clients zijn geclassificeerd als kleine (5 of minder), Gemiddeld (meer dan 5, maar kleiner dan of gelijk aan 20), en groot (meer dan 20).
+In de volgende secties worden typische bericht scenario's beschreven en worden de voorkeurs instellingen voor Service Bus geschetst. Doorvoer tarieven worden geclassificeerd als klein (minder dan 1 bericht/seconde), gemiddeld (1 bericht/seconde of meer, maar minder dan 100 berichten/seconde) en hoog (100 berichten/seconde of hoger). Het aantal clients wordt geclassificeerd als klein (5 of minder), gemiddeld (meer dan 5, kleiner dan of gelijk aan 20), en groot (meer dan 20).
 
-### <a name="high-throughput-queue"></a>Hoge doorvoer wachtrij
+### <a name="high-throughput-queue"></a>Wachtrij voor hoge door Voer
 
-Doel: Maximaliseert de doorvoer van één wachtrij. Het aantal afzenders en ontvangers is klein.
+Doel: Maximaliseer de door Voer van één wachtrij. Het aantal afzenders en ontvangers is klein.
 
-* Als u wilt verhogen de verzendsnelheid in de wachtrij wordt geplaatst, gebruikt u meerdere messagingfactory afzenders maken. Voor iedere verzender asynchrone bewerkingen of meerdere threads te gebruiken.
-* Om te vergroten de totale snelheid van de ontvangen uit de wachtrij, gebruikt u meerdere messagingfactory ontvangers te maken.
-* Asynchrone bewerkingen om te profiteren van de client-side batchverwerking te gebruiken.
-* De batchverwerkingsindeling interval ingesteld op 50 ms te verminderen van het aantal verzendingen van Service Bus-client-protocol. Als meerdere afzenders worden gebruikt, vergroot u de batchverwerkingsindeling interval tot 100 ms.
-* Laat in batch store-toegang is ingeschakeld. Dit verhoogt de algemene frequentie waarmee berichten kunnen worden geschreven in de wachtrij wordt geplaatst.
-* Het aantal prefetch ingesteld op 20 keer de maximale verwerkingssnelheden van alle ontvangers van een fabriek. Dit aantal vermindert het aantal verzendingen van Service Bus-client-protocol.
-* Een gepartitioneerde wachtrij gebruiken voor verbeterde prestaties en beschikbaarheid.
+* Als u de totale verzend snelheid naar de wachtrij wilt verhogen, gebruikt u meerdere bericht fabrieken om afzenders te maken. Gebruik voor elke afzender asynchrone bewerkingen of meerdere threads.
+* Als u de totale ontvangst snelheid van de wachtrij wilt verhogen, gebruikt u meerdere bericht fabrieken om ontvangers te maken.
+* Gebruik asynchrone bewerkingen om te profiteren van batch verwerking aan de client zijde.
+* Stel het interval voor batch verwerking in op 50 MS om het aantal Service Bus-client protocol-verzen dingen te verminderen. Als er meerdere afzenders worden gebruikt, verhoogt u het batch-interval tot 100 MS.
+* De toegang tot de batch Store ingeschakeld laten. Deze toegang verhoogt het totale aantal berichten dat naar de wachtrij kan worden geschreven.
+* Stel het aantal prefetch in op 20 keer de maximale verwerkings snelheid van alle receivers van een Factory. Dit aantal vermindert het aantal Service Bus-client protocol overdrachten.
 
-### <a name="multiple-high-throughput-queues"></a>Meerdere wachtrijen met hoge doorvoer
+### <a name="multiple-high-throughput-queues"></a>Meerdere wacht rijen voor hoge door Voer
 
-Doel: Maximaliseer de algehele doorvoer van meerdere wachtrijen. De doorvoer van een afzonderlijke wachtrij is Gemiddeld of hoog.
+Doel: Maximaliseer de algehele door Voer van meerdere wacht rijen. De door Voer van een afzonderlijke wachtrij is gemiddeld of hoog.
 
-Gebruik de instellingen die worden beschreven de doorvoer van één wachtrij kunt maximaliseren om maximale doorvoer via meerdere wachtrijen. Bovendien kunt u verschillende factory's maken clients die verzenden of ontvangen van verschillende wachtrijen.
+Als u maximale door Voer in meerdere wacht rijen wilt verkrijgen, gebruikt u de instellingen die worden beschreven om de door Voer van een enkele wachtrij te maximaliseren. Daarnaast kunt u verschillende fabrieken gebruiken om clients te maken die vanuit verschillende wacht rijen worden verzonden of ontvangen.
 
 ### <a name="low-latency-queue"></a>Wachtrij met lage latentie
 
-Doel: End-to-end latentie van een wachtrij of onderwerp minimaliseren. Het aantal afzenders en ontvangers is klein. De doorvoer van de wachtrij is klein of gemiddelde.
+Doel: de end-to-end latentie van een wachtrij of onderwerp minimaliseren. Het aantal afzenders en ontvangers is klein. De door Voer van de wachtrij is klein of gemiddeld.
 
-* Client-side batchverwerking uitschakelen De client onmiddellijk een bericht.
-* Toegang tot batch store uitschakelen. Het bericht schrijft de service onmiddellijk naar de store.
-* Als één client, stelt u het aantal prefetch op 20 keer de verwerkingssnelheid van de ontvanger. Als meerdere berichten in de wachtrij op hetzelfde moment binnenkomen, verzendt de Service Bus-clientprotocol ze allemaal op hetzelfde moment. Wanneer de client het volgende bericht ontvangt, wordt dat bericht al in de lokale cache. De cache moet zo klein zijn.
-* Als u meerdere clients, moet u het aantal prefetch ingesteld op 0. De tweede client kan het tweede bericht ontvangen tijdens de eerste client die het eerste bericht nog steeds worden verwerkt door het instellen van het aantal.
-* Een gepartitioneerde wachtrij gebruiken voor verbeterde prestaties en beschikbaarheid.
+* Schakel batch verwerking aan client zijde uit. De client verzendt onmiddellijk een bericht.
+* Schakel de toegang tot de batch-Store uit. De service schrijft direct het bericht naar de Store.
+* Als u één client gebruikt, stelt u het aantal prefetch in op 20 keer de verwerkings factor van de ontvanger. Als meerdere berichten tegelijkertijd in de wachtrij arriveren, verzendt het Service Bus-client protocol deze allemaal tegelijk. Wanneer de client het volgende bericht ontvangt, bevindt het bericht zich al in de lokale cache. De cache moet klein zijn.
+* Als u meerdere clients gebruikt, stelt u het aantal prefetch in op 0. Door het aantal in te stellen, kan de tweede client het tweede bericht ontvangen terwijl de eerste client nog bezig is met het verwerken van het eerste bericht.
 
-### <a name="queue-with-a-large-number-of-senders"></a>In de wachtrij met een groot aantal afzenders
+### <a name="queue-with-a-large-number-of-senders"></a>Wachtrij met een groot aantal afzenders
 
-Doel: Maximale doorvoer van een wachtrij of onderwerp met een groot aantal afzenders te maken. Elke afzender verzendt berichten met een gemiddeld tarief. Het aantal ontvangers is klein.
+Doel: Maximaliseer de door Voer van een wachtrij of onderwerp met een groot aantal afzenders. Elke afzender verzendt berichten met een gemiddeld aantal. Het aantal ontvangers is klein.
 
-Service Bus kunnen maximaal 1000 gelijktijdige verbindingen met een Berichtentiteit (of 5000 met behulp van AMQP). Deze limiet wordt afgedwongen op het niveau van de naamruimte en wachtrijen/onderwerpen/abonnementen worden beperkt door de limiet van gelijktijdige verbindingen per naamruimte. Voor wachtrijen, wordt dit getal gedeeld tussen afzenders en ontvangers. Als alle 1000 verbindingen vereist voor afzenders zijn, vervangt u de wachtrij met een onderwerp en één abonnement. Een onderwerp accepteert maximaal 1000 gelijktijdige verbindingen van afzenders, terwijl het abonnement een extra 1000 gelijktijdige verbindingen van ontvangers aanvaardt. Als meer dan 1000 gelijktijdige afzenders vereist zijn, moeten de afzenders van berichten verzenden naar het Service Bus-protocol via HTTP.
+Service Bus maakt Maxi maal 1000 gelijktijdige verbindingen met een bericht entiteit mogelijk (of 5000 met AMQP). Deze limiet wordt afgedwongen op naam ruimte niveau, en wacht rijen/onderwerpen/abonnementen worden beperkt door de limiet van gelijktijdige verbindingen per naam ruimte. Voor wacht rijen wordt dit nummer gedeeld tussen afzenders en ontvangers. Als alle 1000-verbindingen voor afzenders zijn vereist, vervangt u de wachtrij door een onderwerp en één abonnement. Een onderwerp accepteert Maxi maal 1000 gelijktijdige verbindingen van afzenders, terwijl het abonnement een extra 1000 gelijktijdige verbindingen van ontvangers accepteert. Als meer dan 1000 gelijktijdige afzenders zijn vereist, moeten de afzenders via HTTP berichten verzenden naar het Service Bus Protocol.
 
-Voor maximale doorvoer, moet u de volgende stappen uitvoeren:
+Als u de door voer wilt maximaliseren, voert u de volgende stappen uit:
 
-* Als de afzender bevindt zich in een ander proces, gebruikt u alleen een enkel factory per proces.
-* Asynchrone bewerkingen om te profiteren van de client-side batchverwerking te gebruiken.
-* Gebruik de standaardwaarde batchverwerking interval van 20 ms te verminderen van het aantal verzendingen van Service Bus-client-protocol.
-* Laat in batch store-toegang is ingeschakeld. Dit verhoogt de algemene frequentie waarmee berichten kunnen worden geschreven in de wachtrij of onderwerp.
-* Het aantal prefetch ingesteld op 20 keer de maximale verwerkingssnelheden van alle ontvangers van een fabriek. Dit aantal vermindert het aantal verzendingen van Service Bus-client-protocol.
-* Een gepartitioneerde wachtrij gebruiken voor verbeterde prestaties en beschikbaarheid.
+* Als elke afzender zich in een ander proces bevindt, gebruikt u slechts één fabriek per proces.
+* Gebruik asynchrone bewerkingen om te profiteren van batch verwerking aan de client zijde.
+* Gebruik het standaard batch-interval van 20 MS om het aantal Service Bus-client protocol-verzen dingen te verminderen.
+* De toegang tot de batch Store ingeschakeld laten. Deze toegang verhoogt het totale aantal berichten dat kan worden geschreven naar de wachtrij of het onderwerp.
+* Stel het aantal prefetch in op 20 keer de maximale verwerkings snelheid van alle receivers van een Factory. Dit aantal vermindert het aantal Service Bus-client protocol overdrachten.
 
-### <a name="queue-with-a-large-number-of-receivers"></a>In de wachtrij met een groot aantal ontvangers
+### <a name="queue-with-a-large-number-of-receivers"></a>Wachtrij met een groot aantal ontvangers
 
-Doel: De snelheid van het ontvangen van een wachtrij of abonnement met een groot aantal ontvangers te maximaliseren. Elke ontvanger ontvangt berichten met een gemiddelde snelheid. Het aantal afzenders is klein.
+Doel: Maximaliseer de ontvangst frequentie van een wachtrij of abonnement met een groot aantal ontvangers. Elke ontvanger ontvangt berichten met een gemiddeld snelheid. Het aantal afzenders is klein.
 
-Service Bus kunnen maximaal 1000 gelijktijdige verbindingen met een entiteit. Als een wachtrij meer dan 1000 ontvangers vereist, vervangt u de wachtrij met een onderwerp en meerdere abonnementen. Elk abonnement kan maximaal 1000 gelijktijdige verbindingen ondersteunen. Ontvangers hebben ook toegang tot de wachtrij via het HTTP-protocol.
+Service Bus maakt Maxi maal 1000 gelijktijdige verbindingen met een entiteit mogelijk. Als een wachtrij meer dan 1000 ontvangers vereist, vervangt u de wachtrij door een onderwerp en meerdere abonnementen. Elk abonnement kan Maxi maal 1000 gelijktijdige verbindingen ondersteunen. Ontvangers kunnen ook toegang krijgen tot de wachtrij via het HTTP-protocol.
 
-Voor maximale doorvoer, het volgende doen:
+Ga als volgt te werk om door voer te maximaliseren:
 
-* Als elke ontvanger zich in een ander proces bevindt, gebruikt u alleen een enkel factory per proces.
-* Ontvangers kunnen synchrone of asynchrone bewerkingen gebruiken. Gezien de frequentie matige ontvangen van een afzonderlijke ontvanger, client-side batchverwerking van een volledige aanvraag heeft geen invloed op ontvanger doorvoer.
-* Laat in batch store-toegang is ingeschakeld. Dit vermindert de algehele belasting van de entiteit. Het vermindert ook de algemene frequentie waarmee berichten kunnen worden geschreven in de wachtrij of onderwerp.
-* Het aantal prefetch ingesteld op een kleine waarde (bijvoorbeeld PrefetchCount = 10). Dit aantal wordt voorkomen dat ontvangers inactiviteit terwijl andere ontvangers grote aantallen berichten in de cache opgeslagen hebben.
-* Een gepartitioneerde wachtrij gebruiken voor verbeterde prestaties en beschikbaarheid.
+* Als elke ontvanger zich in een ander proces bevindt, gebruikt u slechts één fabriek per proces.
+* Ontvangers kunnen synchrone of asynchrone bewerkingen gebruiken. Gezien de gemiddelde ontvangst snelheid van een afzonderlijke ontvanger, heeft het uitvoeren van batch verwerking aan de client zijde van een volledige aanvraag geen invloed op de door Voer van de ontvanger.
+* De toegang tot de batch Store ingeschakeld laten. Deze toegang vermindert de algehele belasting van de entiteit. Het vermindert ook de algehele snelheid waarmee berichten kunnen worden geschreven naar de wachtrij of het onderwerp.
+* Stel het aantal prefetch in op een kleine waarde (bijvoorbeeld PrefetchCount = 10). Dit aantal voor komt dat ontvangers inactief zijn terwijl andere ontvangers een groot aantal berichten in de cache hebben opgeslagen.
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Onderwerp met een klein aantal abonnementen
 
-Doel: De doorvoer van een onderwerp met een klein aantal abonnementen te maximaliseren. Een bericht wordt ontvangen door veel abonnementen, wat betekent dat de frequentie gecombineerde ontvangen voor alle abonnementen is groter dan de frequentie verzenden. Het aantal afzenders is klein. Het aantal ontvangers per abonnement is klein.
+Doel: Maximaliseer de door Voer van een onderwerp met een klein aantal abonnementen. Een bericht wordt ontvangen door veel abonnementen, wat betekent dat de gecombineerde ontvangst frequentie voor alle abonnementen groter is dan de verzend frequentie. Het aantal afzenders is klein. Het aantal ontvangers per abonnement is klein.
 
-Voor maximale doorvoer, het volgende doen:
+Ga als volgt te werk om door voer te maximaliseren:
 
-* Als u wilt verhogen de verzendsnelheid in het onderwerp, gebruikt u meerdere messagingfactory afzenders maken. Voor iedere verzender asynchrone bewerkingen of meerdere threads te gebruiken.
-* Om te verhogen de snelheid van de ontvangen van een abonnement, gebruikt u meerdere messagingfactory ontvangers te maken. Voor elke ontvanger asynchrone bewerkingen of meerdere threads te gebruiken.
-* Asynchrone bewerkingen om te profiteren van de client-side batchverwerking te gebruiken.
-* Gebruik de standaardwaarde batchverwerking interval van 20 ms te verminderen van het aantal verzendingen van Service Bus-client-protocol.
-* Laat in batch store-toegang is ingeschakeld. Dit verhoogt de algemene frequentie waarmee berichten kunnen worden geschreven in het onderwerp.
-* Het aantal prefetch ingesteld op 20 keer de maximale verwerkingssnelheden van alle ontvangers van een fabriek. Dit aantal vermindert het aantal verzendingen van Service Bus-client-protocol.
-* Een gepartitioneerde onderwerp gebruiken voor verbeterde prestaties en beschikbaarheid.
+* Als u de totale verzend snelheid in het onderwerp wilt verhogen, gebruikt u meerdere bericht fabrieken om afzenders te maken. Gebruik voor elke afzender asynchrone bewerkingen of meerdere threads.
+* Als u de totale ontvangst snelheid van een abonnement wilt verhogen, gebruikt u meerdere bericht fabrieken om ontvangers te maken. Gebruik voor elke ontvanger asynchrone bewerkingen of meerdere threads.
+* Gebruik asynchrone bewerkingen om te profiteren van batch verwerking aan de client zijde.
+* Gebruik het standaard batch-interval van 20 MS om het aantal Service Bus-client protocol-verzen dingen te verminderen.
+* De toegang tot de batch Store ingeschakeld laten. Deze toegang verhoogt het totale aantal berichten dat in het onderwerp kan worden geschreven.
+* Stel het aantal prefetch in op 20 keer de maximale verwerkings snelheid van alle receivers van een Factory. Dit aantal vermindert het aantal Service Bus-client protocol overdrachten.
 
 ### <a name="topic-with-a-large-number-of-subscriptions"></a>Onderwerp met een groot aantal abonnementen
 
-Doel: De doorvoer van een onderwerp met een groot aantal abonnementen te maximaliseren. Een bericht wordt ontvangen door veel abonnementen, wat betekent dat de frequentie gecombineerde ontvangen voor alle abonnementen is veel groter is dan de frequentie verzenden. Het aantal afzenders is klein. Het aantal ontvangers per abonnement is klein.
+Doel: Maximaliseer de door Voer van een onderwerp met een groot aantal abonnementen. Een bericht wordt ontvangen door veel abonnementen, wat betekent dat de gecombineerde ontvangst frequentie voor alle abonnementen veel groter is dan de verzend frequentie. Het aantal afzenders is klein. Het aantal ontvangers per abonnement is klein.
 
-Onderwerpen met een groot aantal abonnementen stellen een lage totale doorvoer doorgaans beschikbaar als alle berichten voor alle abonnementen worden gerouteerd. Deze lage doorvoer wordt veroorzaakt door het feit dat elk bericht wordt vaak ontvangen en alle berichten die zijn opgenomen in een onderwerp en de abonnementen worden opgeslagen in dezelfde locatie. Ervan wordt uitgegaan dat het aantal afzenders en ontvangers per abonnement aantal klein is. Service Bus ondersteunt maximaal 2.000 abonnementen per onderwerp.
+Onderwerpen met een groot aantal abonnementen bieden doorgaans een lage algehele door Voer als alle berichten naar alle abonnementen worden doorgestuurd. Deze lage door Voer wordt veroorzaakt door het feit dat elk bericht meerdere keren wordt ontvangen en alle berichten die zijn opgenomen in een onderwerp en alle bijbehorende abonnementen, worden opgeslagen in dezelfde Store. Er wordt van uitgegaan dat het aantal afzenders en het aantal ontvangers per abonnement klein is. Service Bus ondersteunt Maxi maal 2.000 abonnementen per onderwerp.
 
-Voor maximale doorvoer, probeert u de volgende stappen uit:
+Als u de door voer wilt maximaliseren, voert u de volgende stappen uit:
 
-* Asynchrone bewerkingen om te profiteren van de client-side batchverwerking te gebruiken.
-* Gebruik de standaardwaarde batchverwerking interval van 20 ms te verminderen van het aantal verzendingen van Service Bus-client-protocol.
-* Laat in batch store-toegang is ingeschakeld. Dit verhoogt de algemene frequentie waarmee berichten kunnen worden geschreven in het onderwerp.
-* Het aantal prefetch ingesteld op 20 keer de verwachte ontvangen frequentie in seconden. Dit aantal vermindert het aantal verzendingen van Service Bus-client-protocol.
-* Een gepartitioneerde onderwerp gebruiken voor verbeterde prestaties en beschikbaarheid.
-
-## <a name="next-steps"></a>Volgende stappen
-
-Zie voor meer informatie over het optimaliseren van prestaties van Service Bus, [gepartitioneerde berichtentiteiten][Partitioned messaging entities].
+* Gebruik asynchrone bewerkingen om te profiteren van batch verwerking aan de client zijde.
+* Gebruik het standaard batch-interval van 20 MS om het aantal Service Bus-client protocol-verzen dingen te verminderen.
+* De toegang tot de batch Store ingeschakeld laten. Deze toegang verhoogt het totale aantal berichten dat in het onderwerp kan worden geschreven.
+* Stel het aantal prefetch in op 20 keer de verwachte ontvangst frequentie in seconden. Dit aantal vermindert het aantal Service Bus-client protocol overdrachten.
 
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender

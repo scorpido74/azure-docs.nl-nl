@@ -1,23 +1,18 @@
 ---
 title: Gegevens visualiseren van Azure Monitor | Microsoft Docs
 description: Hierin wordt een overzicht gegeven van de beschik bare methoden voor het visualiseren van metrische gegevens en logboeken die zijn opgeslagen in Azure Monitor.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 11/24/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/24/2018
+ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984191"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597839"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Gegevens visualiseren van Azure Monitor
 Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
@@ -53,7 +48,7 @@ Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren va
 ## <a name="azure-monitor-views"></a>Azure Monitor weergaven
 Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste visualisaties met logboek gegevens maken. Deze worden gebruikt door [bewakings oplossingen](insights/solutions.md) om de verzamelde gegevens te presen teren.
 
-![Weergave](media/visualizations/view.png)
+![Weergeven](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties voor logboek gegevens.
@@ -71,7 +66,7 @@ Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste v
 - Query's zijn beperkt tot de antwoord grootte tot 8 MB en de uitvoer tijd van de query van 110 seconden.
 
 
-## <a name="workbooks"></a>Workbooks
+## <a name="workbooks"></a>Werkmappen
 [Werkmappen](../azure-monitor/app/usage-workbooks.md) zijn interactieve documenten die diep inzicht geven in uw gegevens, onderzoek en samen werking binnen het team. Specifieke voor beelden waarin werkmappen handig zijn, zijn probleemoplossings richtlijnen en incident postmortem.
 
 ![Werkmap](media/visualizations/workbook.png)

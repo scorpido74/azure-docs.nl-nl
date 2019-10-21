@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719965"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598299"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migreren van Media Indexer en Media Indexer 2 naar Video Indexer
 
@@ -29,7 +29,7 @@ Azure Media Services Video Indexer is gebaseerd op Azure Media Analytics, Azure 
 U kunt inzichten uit uw video-en audio bestanden extra heren met behulp van de [Azure Media Services v3 Analyzer-voor instellingen](../latest/analyzing-video-audio-files-concept.md) of rechtstreeks met behulp van de [video indexer-api's](https://api-portal.videoindexer.ai/). Er is momenteel een overlap ping tussen de functies die worden geboden door de Video Indexer Api's en de Media Services v3-Api's.
 
 > [!NOTE]
-> Als u het verschil wilt weten tussen het gebruik van instellingen van Video Indexer en Media Services, raadpleegt u het [vergelijkingsdocument](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
+> Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)als u wilt weten wanneer u de voor instellingen van Video Indexer versus Media Services Analyzer wilt gebruiken. 
 
 In dit artikel worden de stappen beschreven voor het migreren van Azure Media Indexer en Azure Media Indexer 2 naar Azure Media Services Video Indexer.  
 
@@ -37,12 +37,12 @@ In dit artikel worden de stappen beschreven voor het migreren van Azure Media In
 
 |Als dat nodig is  |Kies |
 |---|---|
-|een oplossing voor het maken van een spraak-naar-tekst-transcriptie voor elke indeling van een media bestand in een ondertitelings bestand met de volgende indeling: VTT, SRT of TTML<br/>evenals extra geluids inzichten zoals tref woorden, afnemen van onderwerpen, akoestische gebeurtenissen, sprekers diarization, extractie en vertaling van entiteiten| werk uw toepassingen bij om de mogelijkheden van Azure Video Indexer te gebruiken via de Video Indexer v2-REST API of de Azure Media Services v3-audio analyse vooraf.|
+|een oplossing die een spraak-naar-tekst transcriptie biedt voor elke indeling van een media bestand in een ondertitelings bestand met de volgende indelingen: VTT, SRT of TTML<br/>evenals extra geluids inzichten zoals tref woorden, afnemen van onderwerpen, akoestische gebeurtenissen, sprekers diarization, extractie en vertaling van entiteiten| werk uw toepassingen bij om de mogelijkheden van Azure Video Indexer te gebruiken via de Video Indexer v2-REST API of de Azure Media Services v3-audio analyse vooraf.|
 |functies voor spraak naar tekst| Gebruik de Cognitive Services Speech API direct.|  
 
 ## <a name="getting-started-with-video-indexer"></a>Aan de slag met Video Indexer
 
-In de volgende sectie wordt u naar de relevante koppelingen verwezen: [Hoe kan ik aan de slag met Video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+In het volgende gedeelte vindt u relevante koppelingen: [Hoe ga ik aan de slag met video indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Aan de slag met Media Services v3-Api's
 
@@ -77,9 +77,9 @@ Enkele bekende verschillen zijn onder andere:
 * Audio-Indexing BLOB-bestanden (AIB) worden niet meer ondersteund. Deze functie was specifiek voor de technologie van Indexer 1 en wordt niet meer aangeboden.  
 * Cognitive Services speech Services biedt geen ondersteuning voor het uitpakken van tref woorden. Video Indexer en Media Services v3 AudioAnalyzerPreset bieden echter een robuustere set sleutel woorden in JSON-bestands indeling. 
 
-## <a name="contact-us"></a>Contact opnemen 
+## <a name="need-help"></a>Hulp nodig?
 
-Als u vragen hebt over de afschaffing van Azure Media Indexer 1 en Azure Media Indexer 2 of bij het migreren naar een van de andere services, kunt u contact met ons opnemen viaamshelp@microsoft.com 
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

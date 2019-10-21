@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243283"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674948"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -28,7 +28,7 @@ Zie de voor [beelden van python-functies](/samples/browse/?products=azure-functi
 
 ## <a name="programming-model"></a>Programmeermodel
 
-Azure Functions verwacht dat een functie een stateless methode is in uw python-script dat invoer verwerkt en uitvoer produceert. Standaard verwacht de runtime dat de methode wordt geïmplementeerd als globale methode met de naam `main()` in het bestand `__init__.py`. U kunt ook [een alternatief invoer punt opgeven](#alternate-entry-point).
+Azure Functions verwacht dat een functie een stateless methode is in uw python-script dat invoer verwerkt en uitvoer produceert. Standaard verwacht de runtime dat de methode wordt geïmplementeerd als globale methode met de naam `main()` in het `__init__.py` bestand. U kunt ook [een alternatief invoer punt opgeven](#alternate-entry-point).
 
 Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methoden Attributes met behulp van de eigenschap `name` die is gedefinieerd in het bestand *Function. json* . Met de _functie. json_ hieronder wordt bijvoorbeeld een eenvoudige functie beschreven die wordt geactiveerd door een HTTP-aanvraag met de naam `req`:
 
@@ -50,7 +50,7 @@ Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methoden At
 }
 ```
 
-Het `__init__.py`-bestand bevat de volgende functie code:
+Het `__init__.py` bestand bevat de volgende functie code:
 
 ```python
 def main(req):
@@ -278,7 +278,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-In deze functie wordt de waarde van de para meter `name` opgehaald uit de para meter `params` van het [HttpRequest] -object. De hoofd tekst van de JSON-code ring wordt gelezen met behulp van de `get_json`-methode. 
+In deze functie wordt de waarde van de para meter `name` opgehaald uit de para meter `params` van het [HttpRequest] -object. De hoofd tekst van de JSON-code ring wordt gelezen met behulp van de `get_json` methode. 
 
 Op dezelfde manier kunt u de `status_code` en `headers` instellen voor het antwoord bericht in het geretourneerde [HttpResponse] -object.
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat al uw afhankelijkheden worden weer gegeven in het bestand *Requirements. txt* , dat zich in de hoofdmap van de projectmap bevindt. Azure Functions kunt deze afhankelijkheden [op afstand bouwen](functions-deployment-technologies.md#remote-build) .
 
-Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand.  
+Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand. 
 
-Als u wilt implementeren in Azure en een externe build wilt uitvoeren, gebruikt u de volgende opdracht:
+Zowel de [Azure functions core tools](functions-run-local.md#v2) als de [Azure functions uitbrei ding voor VS code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) voeren standaard een externe build uit. Gebruik bijvoorbeeld de volgende opdracht:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Als u geen externe build gebruikt en u een pakket gebruikt dat een compiler vereist en de installatie van veel Linux-compatibele wielen van PyPI niet ondersteunt, kunt u zonder lokaal te publiceren naar Azure met de volgende fout:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Als u lokaal wilt maken en de vereiste binaire bestanden wilt configureren, [installeert u docker](https://docs.docker.com/install/) op uw lokale computer en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vergeet niet om `<app name>` te vervangen door de naam van uw functie-app in Azure. 
+Als u uw app lokaal wilt maken in plaats van in azure, [installeert u docker](https://docs.docker.com/install/) op uw lokale machine en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vergeet niet om `<app name>` te vervangen door de naam van uw functie-app in Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -425,7 +418,7 @@ Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem vo
 
 ## <a name="unit-testing"></a>Eenheids tests
 
-Functies die zijn geschreven in python kunnen worden getest als andere python-code met behulp van standaard test raamwerken. Voor de meeste bindingen is het mogelijk om een invoer object voor een model te maken door een instantie van een geschikte klasse te maken uit het `azure.functions`-pakket. Omdat het pakket voor [@no__t 1](https://pypi.org/project/azure-functions/) niet direct beschikbaar is, moet u het installeren via uw `requirements.txt`-bestand, zoals beschreven in de sectie [python-versie en pakket beheer](#python-version-and-package-management) hierboven.
+Functies die zijn geschreven in python kunnen worden getest als andere python-code met behulp van standaard test raamwerken. Voor de meeste bindingen is het mogelijk om een invoer object voor een model te maken door een instantie van een geschikte klasse te maken uit het `azure.functions`-pakket. Omdat het [`azure.functions`](https://pypi.org/project/azure-functions/) -pakket niet onmiddellijk beschikbaar is, moet u het installeren via uw `requirements.txt`-bestand, zoals beschreven in de sectie [python-versie en pakket beheer](#python-version-and-package-management) hierboven.
 
 Het volgende is bijvoorbeeld een model test van een door HTTP geactiveerde functie:
 

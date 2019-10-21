@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met CakeHR | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met CakeHR | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en CakeHR.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026438"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595025"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met CakeHR
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met CakeHR
 
 In deze zelf studie leert u hoe u CakeHR integreert met Azure Active Directory (Azure AD). Wanneer u CakeHR integreert met Azure AD, kunt u het volgende doen:
 
@@ -67,10 +67,10 @@ Azure AD SSO met CakeHR configureren en testen met behulp van een test gebruiker
 Als u Azure AD SSO wilt configureren en testen met CakeHR, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[CAKEHR SSO configureren](#configure-cakehr-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een CakeHR-test gebruiker](#create-cakehr-test-user)** -om een equivalent van B. Simon in CakeHR te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    * **[Maak een CakeHR-test gebruiker](#create-cakehr-test-user)** -om een equivalent van B. Simon in CakeHR te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -103,17 +103,17 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -123,7 +123,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **CakeHR**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -135,25 +135,33 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-cakehr-sso"></a>CakeHR SSO configureren
 
-1. Open een nieuw webbrowser venster en meld u aan bij de CakeHR-bedrijfs site als beheerder.
+1. Als u de configuratie wilt automatiseren in CakeHR, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-2. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen**.
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+1. Nadat u de extensie hebt toegevoegd aan de browser, klikt u op **CakeHR instellen** gaat u naar de CakeHR-toepassing. Geef de beheerders referenties op om u aan te melden bij CakeHR. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-5 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+1. Als u CakeHR hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw CakeHR-bedrijfs site als beheerder en voert u de volgende stappen uit:
+
+1. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen**.
 
     ![CakeHR-configuratie](./media/cakehr-tutorial/config01.png)
 
-3. Klik aan de linkerkant van de menu balk op **integraties** > **SAML SSO** en voer de volgende stappen uit:
+1. Klik aan de linkerkant van de menu balk op **integraties**  > **SAML SSO** en voer de volgende stappen uit:
 
-     ![CakeHR-configuratie](./media/cakehr-tutorial/config02.png)
+    ![CakeHR-configuratie](./media/cakehr-tutorial/config02.png)
 
-     a. Typ in het tekstvak **Entiteits-ID** `cake.hr`.
+    a. Typ in het tekstvak **Entiteits-ID** `cake.hr`.
 
-     b. Plak in het tekstvak **URL voor verificatie** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
+    b. Plak in het tekstvak **URL voor verificatie** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
 
-     c. Plak in het tekstvak **sleutel vingerafdruk (SHA1-indeling)** de **vingerafdruk** waarde die u van Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak **sleutel vingerafdruk (SHA1-indeling)** de **vingerafdruk** waarde die u van Azure Portal hebt gekopieerd.
 
-     d. Schakel het selectie vakje **eenmalige aanmelding inschakelen** in.
+    d. Schakel het selectie vakje **eenmalige aanmelding inschakelen** in.
 
-     e. Klik op **Opslaan**.
+    e. Klik op **Opslaan**.
 
 ### <a name="create-cakehr-test-user"></a>CakeHR-test gebruiker maken
 
@@ -163,7 +171,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij CakeHR, mo
 
 1. Meld u aan bij CakeHR als een beveiligings beheerder.
 
-2. Klik aan de linkerkant van de menu balk op **bedrijfs** > **toevoegen**.
+2. Klik aan de linkerkant van de menu balk op **bedrijfs**  > **toevoegen**.
 
     ![CakeHR-configuratie](./media/cakehr-tutorial/config03.png)
 
@@ -179,11 +187,11 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij CakeHR, mo
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel CakeHR in het toegangs venster klikt, moet u automatisch worden aangemeld bij de CakeHR waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -192,4 +200,3 @@ Wanneer u op de tegel CakeHR in het toegangs venster klikt, moet u automatisch w
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer CakeHR met Azure AD](https://aad.portal.azure.com/)
-

@@ -6,15 +6,15 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263890"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675149"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark taken uitvoeren op AKS
 
@@ -33,7 +33,7 @@ Als u de stappen in dit artikel wilt uitvoeren, hebt u het volgende nodig.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Spark wordt gebruikt voor grootschalige gegevens verwerking en vereist dat de grootte van de Kubernetes-knoop punten voldoet aan de vereisten van de Spark-resources. We raden een minimale grootte van `Standard_D3_v2` aan voor uw AKS-knoop punten (Azure Kubernetes service).
+Spark wordt gebruikt voor grootschalige gegevens verwerking en vereist dat de grootte van de Kubernetes-knoop punten voldoet aan de vereisten van de Spark-resources. U kunt het beste een minimale grootte `Standard_D3_v2` voor uw AKS-knoop punten (Azure Kubernetes service).
 
 Als u een AKS-cluster nodig hebt dat voldoet aan deze minimale aanbeveling, voert u de volgende opdrachten uit.
 
@@ -43,10 +43,16 @@ Maak een resource groep voor het cluster.
 az group create --name mySparkCluster --location eastus
 ```
 
-Maak het AKS-cluster met knoop punten met een grootte `Standard_D3_v2`.
+Maak een service-principal voor het cluster. Nadat deze is gemaakt, hebt u de Service-Principal appId en het wacht woord nodig voor de volgende opdracht.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+Maak het AKS-cluster met knoop punten met een grootte `Standard_D3_v2` en waarden van de appId en het wacht woord die zijn door gegeven als Service-Principal-en client-geheime para meters.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 Maak verbinding met het AKS-cluster.
@@ -64,7 +70,7 @@ Voordat u Spark-taken uitvoert op een AKS-cluster, moet u de Spark-bron code mak
 Kloon de Spark-project opslagplaats naar uw ontwikkel systeem.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Ga naar de map van de gekloonde opslag plaats en sla het pad van de Spark-bron op in een variabele.
@@ -136,7 +142,7 @@ Voer de volgende opdrachten uit om een SBT-invoeg toepassing toe te voegen, waar
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Voer deze opdrachten uit om de voorbeeld code te kopiëren naar het zojuist gemaakte project en alle benodigde afhankelijkheden toe te voegen.
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -214,6 +220,13 @@ Ga terug naar de hoofdmap van Spark-opslag plaats.
 cd $sparkdir
 ```
 
+Maak een service account dat voldoende machtigingen heeft voor het uitvoeren van een taak.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 Verzend de taak met behulp van `spark-submit`.
 
 ```bash
@@ -223,6 +236,7 @@ Verzend de taak met behulp van `spark-submit`.
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```

@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037274"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597941"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelfstudie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Zelf studie: Apache HBase-beleid in HDInsight configureren met Enterprise Security Package
 
 Leer hoe u Apache Ranger-beleidsregels configureert voor Apache HBase-clusters met ESP (Enterprise Security Package). ESP-clusters worden verbonden met een domein zodat gebruikers zich kunnen verifiëren met domeinreferenties. In deze zelfstudie maakt u twee Ranger-beleidsregels om de toegang tot verschillende kolomfamilies in een HBase-tabel te beperken.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 * Maak een [HDInsight HBase-cluster met Enterprise Security Package](apache-domain-joined-configure-using-azure-adds.md).
 
@@ -86,7 +86,7 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens [Ap
 4. Bekijk de inhoud van de tabel:
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![HDInsight Hadoop HBase shell-uitvoer](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
@@ -107,12 +107,12 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
-   |Beleidsnaam  |  sales_customers_name_contact   |
-   |HBase Table   |  Customers |
+   |Policy Name  |  sales_customers_name_contact   |
+   |HBase Table   |  Klanten |
    |HBase Column-family   |  Name, Contact |
    |HBase Column   |  * |
    |Select Group  | |
-   |Gebruiker selecteren  | sales_user1 |
+   |Select User  | sales_user1 |
    |Machtigingen  | Lezen |
 
    U kunt de volgende jokertekens gebruiken in de onderwerpnaam:
@@ -131,12 +131,12 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
-   |Beleidsnaam  |  marketing_customers_contact   |
-   |HBase Table   |  Customers |
-   |HBase Column-family   |  Neem contact op met |
+   |Policy Name  |  marketing_customers_contact   |
+   |HBase Table   |  Klanten |
+   |HBase Column-family   |  Contact |
    |HBase Column   |  * |
    |Select Group  | |
-   |Gebruiker selecteren  | marketing_user1 |
+   |Select User  | marketing_user1 |
    |Machtigingen  | Lezen |
 
    ![Apache zwerver-beleid marketing maken](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
@@ -161,7 +161,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit sales_user1
    ```
 
-2. Open de HBase-shell en scan de `Customers`tabel.
+2. Open de HBase-shell en scan de tabel `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -203,7 +203,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
    kinit marketing_user1
    ```
 
-1. Open de HBase-shell en scan de `Customers`tabel:
+1. Open de HBase-shell en scan de tabel `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -235,7 +235,7 @@ Maak een Ranger-beleid voor **sales_user1** en **marketing_user1**.
 
 Als u deze toepassing verder niet meer gebruikt, verwijdert u het HBase-cluster dat u hebt gemaakt, via de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Typ **HDInsight** in het **Zoekvak** bovenaan. 
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt. 

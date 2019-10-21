@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387783"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596518"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Sink-trans formatie voor een gegevens stroom
 
@@ -61,6 +61,10 @@ Wanneer u automatische toewijzing uitschakelt, hebt u de mogelijkheid om een op 
 Wanneer u op regels gebaseerde toewijzing kiest, geeft u de ADF de opdracht om de overeenkomende expressie te evalueren zodat deze overeenkomt met de regels voor binnenkomende patronen en de uitgaande veld namen te definiëren. U kunt een combi natie van zowel veld-als op regels gebaseerde toewijzingen toevoegen. Veld namen worden vervolgens gegenereerd tijdens runtime via ADF op basis van binnenkomende meta gegevens van de bron. U kunt de namen van de gegenereerde velden weer geven tijdens fout opsporing en het deel venster gegevens voorbeeld gebruiken.
 
 Meer informatie over patroon vergelijking vindt u in de documentatie van het [kolom patroon](concepts-data-flow-column-pattern.md).
+
+U kunt ook reguliere expressie patronen invoeren wanneer u op basis van een regel vergelijking gebruikt door de rij uit te vouwen en een reguliere expressie op te geven naast ' naam overeenkomsten: '.
+
+![Regex-toewijzing](media/data-flow/scdt1g4.png "Regex-toewijzing")
 
 ## <a name="file-name-options"></a>Opties voor bestands namen
 

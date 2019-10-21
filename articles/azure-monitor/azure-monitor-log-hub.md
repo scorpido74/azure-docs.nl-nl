@@ -1,27 +1,26 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Documentatie voor Azure Monitor Log-gegevens | Microsoft Docs
-description: Azure Monitor kunt verzamelen van verschillende bronnen als logboekgegevens en bewaar voor correlatie- en analyse met behulp van de querytaal.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
+title: Documentatie over Azure Monitor-logboek gegevens | Microsoft Docs
+description: Azure Monitor kunt verschillende bronnen verzamelen als logboek gegevens en deze opslaan voor correlatie en analyse met behulp van de query taal.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: hub-page
-ms.date: 01/29/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/29/2019
+ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640103"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597328"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Documentatie voor Azure Monitor log-gegevens</h1>
-        <p>Azure Monitor kunt verzamelen van verschillende bronnen als logboekgegevens en bewaar voor correlatie- en analyse met behulp van de querytaal.</p>
-        <p>Verken onze meest populaire inhoud over het plannen, verzamelen en analyseren van logboekgegevens.</p>
+        <h1>Documentatie over Azure Monitor logboek gegevens</h1>
+        <p>Azure Monitor kunt verschillende bronnen verzamelen als logboek gegevens en deze opslaan voor correlatie en analyse met behulp van de query taal.</p>
+        <p>Bekijk onze populairste inhoud voor het plannen, verzamelen en analyseren van logboek gegevens.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -46,12 +45,12 @@ ms.locfileid: "60640103"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Leer de basisbeginselen</h3> 
+                                                                    <h3>Meer informatie over de basis principes</h3> 
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Wat is Azure Monitor?</a><br/>
-                                                                        <a href="/azure/azure-monitor/azure-monitor-rebrand">Huisstijlwijzigingen voor</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/data-sources">Bewaking van gegevensbronnen</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/service-providers">Overwegingen bij het ontwerp voor serviceproviders</a><br/>
+                                                                        <a href="/azure/azure-monitor/azure-monitor-rebrand">Huismerk wijzigingen</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">Gegevens bronnen bewaken</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">Ontwerp overwegingen voor service providers</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -70,19 +69,19 @@ ms.locfileid: "60640103"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Meer uitleg over beveiliging</h3> 
+                                                                    <h3>Beveiliging begrijpen</h3> 
                                                                     <p>
-                                                                        <a href="/azure/azure-monitor/platform/data-security">Logboekgegevens</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-security">Logboek gegevens</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/personal-data-mgmt">Verwerking van persoonlijke logboek gegevens</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/roles-permissions-security">Rolmachtigingen en -beveiliging</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/roles-permissions-security">Rolmachtigingen en-beveiliging</a><br/>
                                                                     </p>
                                                                     <br>
-                                                                     <h3>-Werkruimte beheren</h3>
+                                                                     <h3>Werk ruimte beheren</h3>
                                                                     <p>
-                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Werkruimte maken in Azure portal</a><br/>
-                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace-cli">Werkruimte maken met Azure CLI</a><br/>
-                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Werkruimte maken met Azure PowerShell</a><br/>
-                                                                  <a href="/azure/azure-monitor/platform/delete-workspace">Werkruimte verwijderen</a><br/>
+                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Een werk ruimte maken in de Azure Portal</a><br/>
+                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace-cli">Een werk ruimte maken met Azure CLI</a><br/>
+                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Een werk ruimte maken met Azure PowerShell</a><br/>
+                                                                  <a href="/azure/azure-monitor/platform/delete-workspace">Werk ruimte verwijderen</a><br/>
                                                                  </p>
                                                                 </div>
                                                             </div>
@@ -97,17 +96,17 @@ ms.locfileid: "60640103"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                    <h3>Bewaking</h3>
+                                                    <h3>Controleren</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">Metrische gegevens en Logboeken</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Tijd van beveiligingslogboek gegevens opnemen</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Opname tijd logboek gegevens</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Gegevensbronnen</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/data-sources">Overzicht<br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources">Overview<br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-windows-events">Windows-gebeurtenissen</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Windows en Linux-prestatiemeteritems</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Windows-en Linux-prestatie meter items</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-linux-applications">Prestaties van Linux-toepassingen</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-json">Aangepaste JSON-gegevens</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-collectd">Verzamelde prestatiegegevens</a><br/>
@@ -116,7 +115,7 @@ ms.locfileid: "60640103"
                                                             <a href="/azure/azure-monitor/platform/data-sources-iis-logs">IIS-logboeken</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-custom-logs">Aangepaste logboeken</a><br/>
                                                             <a href="/azure/azure-monitor/platform/custom-fields">Aangepaste velden</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-collector-api">Gegevensverzamelaar-API</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-collector-api">Data Collector-API</a><br/>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -133,21 +132,21 @@ ms.locfileid: "60640103"
                                                                     </div>
                                                                 </div>
                                                     <div class="cardText">
-                                                        <h3>Gegevens analyseren</h3>
+                                                        <h3>Analyseer data</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/log-query/get-started-queries">Aan de slag met query 's</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/search-queries">Inzicht in Logboeken-query 's</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/portals">Portals voor query's in Logboeken</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/query-language">Naslaginformatie voor querytalen log</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/cross-workspace-query">Query van meerdere bronnen</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/get-started-queries">Aan de slag met query's</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/search-queries">Informatie over logboek query's</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/portals">Query-portals vastleggen</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/query-language">Naslag informatie voor logboek query taal</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/cross-workspace-query">Query op meerdere resources</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Reageren op incidenten</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/alerts-overview">Overzicht van waarschuwingen</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Automatisch schalen</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Waarschuwingen voor logboeken</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Waarschuwingen voor activiteitenlogboeken</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Waarschuwingen registreren</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Waarschuwingen voor activiteiten logboeken</a><br/>
                                                             <a href="/azure/azure-monitor/platform/action-groups">Actiegroepen</a><br/>
                                                         </p>
                                                     </div>

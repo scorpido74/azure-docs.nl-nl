@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055298"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675655"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
 
-Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Encoding](encoding-concept.md) voor richtlijnen voor codering.
+Met Azure Media Services kunt u mediabestanden coderen in indelingen die kunnen worden afgespeeld met een groot aantal verschillende browsers en apparaten. Zo kunt u bijvoorbeeld inhoud streamen in de indelingen Apple HLS of MPEG DASH. Voordat u gaat streamen, moet u uw digitale mediabestand van hoge kwaliteit coderen. Zie [Coderen](encoding-concept.md) voor richtlijnen voor codering.
 
 In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en de video kunt streamen met Azure Media Services. 
 
@@ -48,7 +48,7 @@ In deze zelfstudie ontdekt u hoe u:
 
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
-    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Enkele andere alternatieven: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
+    We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio Code** met de REST-invoegtoepassing of **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-bestanden downloaden
 
@@ -62,11 +62,9 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
 
 ## <a name="configure-postman"></a>Postman configureren
 
-In deze sectie ziet u hoe u de Postman configureert.
-
 ### <a name="configure-the-environment"></a>De omgeving configureren 
 
-1. Open de **Postman**.
+1. Open de **postman** -app.
 2. Selecteer rechts van het scherm de optie **Manage environment**.
 
     ![Omgeving beheren](./media/develop-with-postman/postman-import-env.png)
@@ -107,7 +105,7 @@ In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en make
 
 ### <a name="get-azure-ad-token"></a>Azure AD-token verkrijgen 
 
-1. Selecteer in het linkervenster van Postman 'Step 1: Get AAD Auth token'.
+1. Selecteer in het linkerdeel venster van de Postman-app ' stap 1: AAD-verificatie Token ophalen '.
 2. Selecteer vervolgens Get Azure AD Token for Service Principal Authentication.
 3. Druk op **Verzenden**.
 
@@ -125,7 +123,7 @@ In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en make
 
 In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. 
 
-1. Selecteer in het linkervenster van Postman de optie Assets.
+1. Selecteer ' assets ' in het linkerdeel venster van de Postman-app.
 2. Selecteer vervolgens Create or update an Asset.
 3. Druk op **Verzenden**.
 
@@ -156,7 +154,7 @@ U kunt een ingebouwde EncoderNamedPreset gebruiken of aangepaste voorinstellinge
 > [!Note]
 > Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/transforms) moet u met de methode **Get** eerst controleren of er al een bestaat. In deze zelfstudie wordt ervan uitgegaan dat u alle transformaties maakt met een unieke naam.
 
-1. Selecteer in het linkervenster van Postman de optie Encoding and Analysis.
+1. Selecteer in het linkerdeel venster van de Postman-app de optie code ring en analyse.
 2. Selecteer daarna Create Transform.
 3. Druk op **Verzenden**.
 
@@ -189,9 +187,9 @@ U kunt een ingebouwde EncoderNamedPreset gebruiken of aangepaste voorinstellinge
 
 Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de eigenlijke aanvraag aan Media Services om de gemaakte **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer.
 
-In dit voorbeeld wordt de invoer van de taak is gebaseerd op een HTTPS-URL (' https: \/ /nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/ ').
+In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/).
 
-1. Selecteer in het linkervenster van Postman de optie Encoding and Analysis.
+1. Selecteer in het linkerdeel venster van de Postman-app de optie code ring en analyse.
 2. Selecteer vervolgens Create or Update Job.
 3. Druk op **Verzenden**.
 
@@ -222,9 +220,9 @@ In dit voorbeeld wordt de invoer van de taak is gebaseerd op een HTTPS-URL (' ht
         }
         ```
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met behulp van intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **Gepland**, **In de wachtrij geplaatst**, **Verwerken**, **Voltooid** (de eindstatus). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
 #### <a name="job-error-codes"></a>Foutcodes in taak
 
@@ -236,14 +234,14 @@ Wanneer de coderingstaak is voltooid, gaat u in de volgende stap de video in de 
 
 Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
 
-Bij het maken van een [Streaming-Locator gemaakt](https://docs.microsoft.com/rest/api/media/streaminglocators), moet u opgeven de gewenste **StreamingPolicyName**. In dit voorbeeld zal u worden streaming in-the-wissen (of niet-versleutelde) inhoud, zodat de vooraf gedefinieerde streaming beleid 'Predefined_ClearStreamingOnly wissen' wordt gebruikt.
+Wanneer u een [streaming-Locator](https://docs.microsoft.com/rest/api/media/streaminglocators)maakt, moet u de gewenste **StreamingPolicyName**opgeven. In dit voor beeld moet u de inhoud-de-Clear-(of niet-versleutelde) streamen. Daarom wordt het vooraf gedefinieerde beleid ' Predefined_ClearStreamingOnly ' voor het wissen van duidelijke gegevens gebruikt.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. 
 
 Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsvermeldingen**. U hoeft geen nieuw **streaming-beleid** te maken voor elke **streaming-locator**.
 
-1. Selecteer in het linkervenster van Postman de optie Streaming Policies.
+1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid '.
 2. Selecteer vervolgens Create a Streaming Locator.
 3. Druk op **Verzenden**.
 
@@ -269,7 +267,7 @@ Uw Media Service-account heeft een quotum voor het aantal **streaming-beleidsver
 
 Nu de [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen
 
-1. Selecteer in het linkervenster van Postman de optie Streaming Policies.
+1. Selecteer in het linkerdeel venster van de Postman-app ' streaming-beleid '.
 2. Selecteer vervolgens List Paths.
 3. Druk op **Verzenden**.
 
@@ -364,9 +362,9 @@ Voer de volgende CLI-opdracht uit:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk de [Azure Media Services-community](media-services-community.md) artikel om te zien van verschillende manieren kunt u vragen stellen, feedback te geven en updates over Media Services ophalen.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

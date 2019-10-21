@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387856"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596600"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
 
@@ -29,6 +29,20 @@ De zoek transformatie voert het equivalent van een left outer join uit. Daarom z
 
 Na uw opzoek transformatie kunt u volgende trans formaties gebruiken om de resultaten van elke overeenkomende rij te controleren met behulp van de expressie functie `isMatch()` om verdere keuzes te maken in uw logica, op basis van het feit of de zoek actie heeft geleid tot een overeenkomende rij of niet.
 
+![Zoek patroon](media/data-flow/lookup111.png "Zoek patroon")
+
+Nadat u de lookup-trans formatie hebt gebruikt, kunt u een voorwaardelijke Splits Transform-splitsing toevoegen aan de functie ```isMatch()```. In het bovenstaande voor beeld lopen overeenkomende rijen via de stroom van de bovenste stroom en niet-overeenkomende rijen door de ```NoMatch``` stroom.
+
+## <a name="first-or-last-value"></a>Eerste of laatste waarde
+
+Wanneer u meerdere overeenkomsten van uw zoek opdracht hebt, wilt u mogelijk de meerdere overeenkomende rijen verminderen door de eerste of de laatste overeenkomst te kiezen. U kunt dit doen met behulp van een statistische trans formatie na de zoek actie.
+
+In dit geval wordt een geaggregeerde trans formatie met de naam ```PickFirst``` gebruikt om de eerste waarde uit de zoek overeenkomsten te kiezen.
+
+![Aggregatie opzoeken](media/data-flow/lookup333.png "Aggregatie opzoeken")
+
+![Eerst opzoeken](media/data-flow/lookup444.png "Eerst opzoeken")
+
 ## <a name="optimizations"></a>Optimalisaties
 
 In Data Factory worden gegevens stromen uitgevoerd in een uitgebreide Spark-omgeving. Als uw gegevensset kan worden aangepast in de geheugen ruimte van het worker-knoop punt, kunnen we de prestaties van de zoek opdracht optimaliseren.
@@ -45,4 +59,5 @@ U kunt ook het partitioneren van uw gegevens opgeven door ' set partitioning ' t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met trans formaties koppelen [en maken](data-flow-exists.md) [worden](data-flow-join.md) soort gelijke taken uitgevoerd in gegevens stromen voor ADF-toewijzing. Bekijk de volgende trans formaties.
+* Met trans formaties koppelen [en maken](data-flow-exists.md) [worden](data-flow-join.md) soort gelijke taken uitgevoerd in gegevens stromen voor ADF-toewijzing. Bekijk de volgende trans formaties.
+* Een [voorwaardelijke splitsing](data-flow-conditional-split.md) met ```isMatch()``` gebruiken om rijen te splitsen op overeenkomende en niet-overeenkomende waarden

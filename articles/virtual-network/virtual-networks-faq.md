@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71957810"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595066"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -35,7 +35,7 @@ Gebruik VNets voor het volgende:
 
 * Schakel hybride Cloud scenario's in. VNets biedt u de flexibiliteit om een reeks hybride Cloud scenario's te ondersteunen. U kunt op een veilige manier Cloud toepassingen verbinden met elk type on-premises systeem, zoals mainframes en UNIX-systemen.
 
-### <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
+### <a name="how-do-i-get-started"></a>Hoe kan ik beginnen?
 Ga naar de documentatie van het [virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/) om aan de slag te gaan. Deze inhoud bevat overzichts-en implementatie-informatie voor alle VNet-functies.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Kan ik VNets gebruiken zonder cross-premises-connectiviteit?
@@ -51,7 +51,7 @@ U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configurer
 
 * Azure Portal
 * PowerShell
-* Azure-CLI
+* Azure CLI
 * Een netwerk configuratie bestand (netcfg-alleen voor klassieke VNets). Zie het artikel [een VNet configureren met behulp van een netwerk configuratie bestand](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welke adresbereiken kan ik gebruiken in mijn VNets?
@@ -63,17 +63,17 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 * 168.63.129.16/32 (interne DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Kan ik open bare IP-adressen hebben in mijn VNets?
-Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
+Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Open bare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
 Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?
 Ja. In Azure worden vijf IP-adressen gereserveerd in elk subnet. Dit zijn x. x. x. 0-x. x. x. 3 en het laatste adres van het subnet. x. x. x. 1-x. x. x. 3 is gereserveerd in elk subnet voor Azure-Services.   
-- x. x. x. 0: Netwerk adres
-- x. x. x. 1: Gereserveerd door Azure voor de standaard gateway
-- x. x. x. 2, x. x. x. 3: Gereserveerd door Azure om de Azure DNS Ip's toe te wijzen aan de VNet-ruimte
-- x. x. x. 255: Broadcast adres van netwerk
+- x. x. x. 0: netwerk adres
+- x. x. x. 1: gereserveerd door Azure voor de standaard gateway
+- x. x. x. 2, x. x. x. 3: gereserveerd door Azure om de Azure DNS IP-adressen toe te wijzen aan de VNet-ruimte
+- x. x. x. 255: netwerk broadcast adres
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Hoe klein en hoe groot kan VNets en subnetten?
 Het kleinste ondersteunde subnet is/29 en de grootste is/8 (met behulp van CIDR-subnet-definities).
@@ -116,7 +116,7 @@ Nee. Een VNet is beperkt tot één regio. Een virtueel netwerk omvat echter besc
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Kan ik een VNet verbinden met een ander VNet in azure?
 Ja. U kunt verbinding maken met een VNet met een ander VNet met behulp van:
-- **Peering op virtueel netwerk**: Zie [overzicht van VNet-peering](virtual-network-peering-overview.md) voor meer informatie
+- **Peering van het virtuele netwerk**: Zie [overzicht van VNet-peering](virtual-network-peering-overview.md) voor meer informatie
 - **Een Azure-VPN gateway**: Zie [een vnet-naar-VNet-verbinding configureren](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie. 
 
 ## <a name="name-resolution-dns"></a>Naam omzetting (DNS)
@@ -131,7 +131,7 @@ Ja. U kunt IP-adressen van de DNS-server opgeven in de VNet-instellingen. De ins
 Referentie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Kan ik mijn DNS-servers wijzigen nadat ik het netwerk heb gemaakt?
-Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u elk van de virtuele machines in uw VNet opnieuw opstarten om de nieuwe DNS-server op te halen.
+Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u een DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het VNet, zodat de nieuwe DNS-instellingen van kracht worden. Voor virtuele machines met Windows OS kunt u dit doen door `ipconfig /renew` rechtstreeks op de virtuele machine te typen. Raadpleeg de documentatie over het verlengen van DHCP-leases voor het specifieke type besturings systeem voor andere typen besturings systemen. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Wat is Azure DNS en werkt samen met VNets?
 Door Azure geleverde DNS is een DNS-service voor meerdere tenants die door micro soft wordt aangeboden. Azure registreert al uw Vm's en Cloud service-rolinstanties in deze service. Deze service biedt naam omzetting per hostnaam voor Vm's en rolinstanties die zich in dezelfde Cloud service bevinden, en op FQDN voor Vm's en rolinstanties in hetzelfde VNet. Zie [naam omzetting voor vm's en Cloud Services rolinstanties voor](virtual-networks-name-resolution-for-vms-and-role-instances.md)meer informatie over DNS.
@@ -150,12 +150,12 @@ Nee. U kunt geen aangepast DNS-achtervoegsel opgeven voor uw VNets.
 Ja. Alle netwerk interfaces (NIC) die zijn gekoppeld aan een virtuele machine die is geïmplementeerd via het Resource Manager-implementatie model, moeten zijn verbonden met een VNet. Vm's die via het klassieke implementatie model worden geïmplementeerd, kunnen eventueel worden verbonden met een VNet.
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Wat zijn de verschillende typen IP-adressen die ik aan Vm's kan toewijzen?
-* **Eigen** Toegewezen aan elke NIC binnen elke VM. Het adres wordt toegewezen met behulp van de statische of dynamische methode. Privé-IP-adressen worden toegewezen uit het bereik dat u hebt opgegeven in de instellingen van het subnet van uw VNet. Voor resources die zijn geïmplementeerd via het klassieke implementatie model, worden privé IP-adressen toegewezen, zelfs als ze niet zijn verbonden met een VNet. Het gedrag van de toewijzings methode verschilt, afhankelijk van het feit of een resource is geïmplementeerd met de Resource Manager of het klassieke implementatie model: 
+* **Privé:** Toegewezen aan elke NIC binnen elke VM. Het adres wordt toegewezen met behulp van de statische of dynamische methode. Privé-IP-adressen worden toegewezen uit het bereik dat u hebt opgegeven in de instellingen van het subnet van uw VNet. Voor resources die zijn geïmplementeerd via het klassieke implementatie model, worden privé IP-adressen toegewezen, zelfs als ze niet zijn verbonden met een VNet. Het gedrag van de toewijzings methode verschilt, afhankelijk van het feit of een resource is geïmplementeerd met de Resource Manager of het klassieke implementatie model: 
 
-  - **Resource Manager**: Een privé-IP-adres dat is toegewezen aan de dynamische of statische methode blijft toegewezen aan een virtuele machine (Resource Manager) totdat de resource wordt verwijderd. Het verschil is dat u het adres selecteert dat u wilt toewijzen wanneer u statische gebruikt en Azure kiest wanneer u dynamische gebruikt. 
-  - **Klassiek**: Een privé-IP-adres dat is toegewezen aan de dynamische methode kan worden gewijzigd wanneer een virtuele machine (klassieke) VM opnieuw wordt opgestart nadat de status gestopt (toewijzing ongedaan gemaakt) is bereikt. Als u er zeker van wilt zijn dat het privé-IP-adres voor een bron die via het klassieke implementatie model wordt geïmplementeerd, nooit wordt gewijzigd, wijst u een privé-IP-adres toe met de statische methode.
+  - **Resource Manager**: een privé-IP-adres dat is toegewezen aan de dynamische of statische methode blijft toegewezen aan een virtuele machine (Resource Manager) totdat de resource wordt verwijderd. Het verschil is dat u het adres selecteert dat u wilt toewijzen wanneer u statische gebruikt en Azure kiest wanneer u dynamische gebruikt. 
+  - **Klassiek**: een privé-IP-adres dat is toegewezen aan de dynamische methode kan worden gewijzigd wanneer een virtuele machine (klassieke) VM opnieuw wordt opgestart nadat de status gestopt (toewijzing ongedaan gemaakt) is bereikt. Als u er zeker van wilt zijn dat het privé-IP-adres voor een bron die via het klassieke implementatie model wordt geïmplementeerd, nooit wordt gewijzigd, wijst u een privé-IP-adres toe met de statische methode.
 
-* **Open** Optioneel toegewezen aan Nic's die zijn gekoppeld aan virtuele machines die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. Het adres kan worden toegewezen met de statische of dynamische toewijzings methode. Alle Vm's en Cloud Services rolinstanties die via het klassieke implementatie model zijn geïmplementeerd, bestaan in een Cloud service, waaraan een *dynamisch*, openbaar virtueel IP-adres (VIP) is toegewezen. Een openbaar *statisch* IP-adres, een [gereserveerd IP adres](virtual-networks-reserved-public-ip.md)genoemd, kan optioneel als VIP worden toegewezen. U kunt open bare IP-adressen toewijzen aan afzonderlijke Vm's of Cloud Services rolinstanties die worden geïmplementeerd via het klassieke implementatie model. Deze adressen worden een [openbaar IP-adres op exemplaar niveau](virtual-networks-instance-level-public-ip.md) genoemd en kunnen dynamisch worden toegewezen.
+* **Openbaar:** Optioneel toegewezen aan Nic's die zijn gekoppeld aan virtuele machines die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. Het adres kan worden toegewezen met de statische of dynamische toewijzings methode. Alle Vm's en Cloud Services rolinstanties die via het klassieke implementatie model zijn geïmplementeerd, bestaan in een Cloud service, waaraan een *dynamisch*, openbaar virtueel IP-adres (VIP) is toegewezen. Een openbaar *statisch* IP-adres, een [gereserveerd IP adres](virtual-networks-reserved-public-ip.md)genoemd, kan optioneel als VIP worden toegewezen. U kunt open bare IP-adressen toewijzen aan afzonderlijke Vm's of Cloud Services rolinstanties die worden geïmplementeerd via het klassieke implementatie model. Deze adressen worden een [openbaar IP-adres op exemplaar niveau](virtual-networks-instance-level-public-ip.md) genoemd en kunnen dynamisch worden toegewezen.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Kan ik een persoonlijk IP-adres reserveren voor een virtuele machine die ik op een later tijdstip moet maken?
 Nee. U kunt geen privé-IP-adres reserveren. Als er een privé-IP-adres beschikbaar is, wordt het toegewezen aan een virtuele machine of rolinstantie door de DHCP-server. De virtuele machine kan al dan niet de VM zijn waaraan u het privé-IP-adres wilt toewijzen. U kunt echter het privé-IP-adres van een al gemaakte virtuele machine wijzigen in elk beschikbaar privé-IP-adres.
@@ -245,16 +245,16 @@ Als de twee virtuele netwerken zich in verschillende regio's (globale VNet-peeri
 De volgende resources maken gebruik van elementaire load balancers. Dit betekent dat u niet kunt communiceren over globale VNet-peering:
 - Vm's achter Basic load balancers
 - Schaal sets voor virtuele machines met Basic load balancers 
-- Redis Cache 
+- Redis-cache 
 - Application Gateway (v1) SKU
 - Service Fabric
 - SQL MI
 - API Management
 - Active Directory-domein-service (toevoegen)
-- Logic Apps
+- Logische apps
 - HDInsight
 -   Azure Batch
-- App Service Environment
+- App Service-omgeving
 
 U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
@@ -405,11 +405,11 @@ Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtuee
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Azure KeyVault|    127|
+|Azure-sleutel kluis|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
-|Azure Service Bus| 128|
-|Azure Data Lake Store V1|  100|
+|Service Bus van Azure| 128|
+|Azure Data Lake Store v1|  100|
  
 >[!NOTE]
 > De limieten worden onderhevig aan wijzigingen in de keuze van de Azure-service. Raadpleeg de relevante service documentatie voor meer informatie over services. 

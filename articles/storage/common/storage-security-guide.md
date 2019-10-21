@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299615"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598095"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-beveiligings handleiding
 
@@ -25,7 +25,7 @@ Azure Storage biedt een uitgebreide reeks beveiligings mogelijkheden die ontwikk
     - U kunt RBAC-rollen toewijzen aan het opslag account voor beveiligings-principals en Azure AD gebruiken voor het autoriseren van resource beheer bewerkingen, zoals sleutel beheer.
     - Azure AD-integratie wordt ondersteund voor Blob-en wachtrij gegevens bewerkingen. U kunt RBAC-rollen toewijzen aan een abonnement, resource groep, opslag account of een afzonderlijke container of wachtrij voor een beveiligings-principal of een beheerde identiteit voor Azure-resources. Zie [toegang tot Azure Storage verifiëren met behulp van Azure Active Directory](storage-auth-aad.md)voor meer informatie.   
 - Gegevens kunnen worden beveiligd in transit tussen een toepassing en Azure met behulp van versleuteling aan de [client zijde](../storage-client-side-encryption.md), https of SMB 3,0.  
-- Besturings systeem-en gegevens schijven die door Azure virtual machines worden gebruikt, kunnen worden versleuteld met [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+- Besturings systeem-en gegevens schijven die door Azure virtual machines worden gebruikt, kunnen worden versleuteld met [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
 - Gedelegeerde toegang tot de gegevens objecten in Azure Storage kan worden verleend met behulp van een hand tekening voor gedeelde toegang. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](storage-sas-overview.md)voor meer informatie.
 
 Dit artikel bevat een overzicht van elk van deze beveiligings functies die kunnen worden gebruikt met Azure Storage. Koppelingen worden verstrekt aan artikelen die informatie geven over elke functie, zodat u gemakkelijk verder kunt onderzoeken op elk onderwerp.
@@ -328,7 +328,7 @@ De oplossing biedt geen ondersteuning voor de volgende scenario's, functies en t
 Deze functie zorgt ervoor dat alle gegevens op de schijven van de virtuele machine in de rest van Azure Storage zijn versleuteld.
 
 #### <a name="resources"></a>Bronnen
-* [Azure Disk Encryption voor virtuele machines met Windows en Linux IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Azure Disk Encryption voor virtuele machines met Windows en Linux IaaS](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergelijking van Azure Disk Encryption, SSE en versleuteling aan de client zijde
 
@@ -389,7 +389,7 @@ In de onderstaande bronnen vindt u een artikel met een lijst met veel velden in 
 
 ![Moment opname van velden in een logboek bestand](./media/storage-security-guide/image3.png)
 
-We zijn geïnteresseerd in de vermeldingen voor GetBlob, en hoe ze zijn geautoriseerd. Daarom moeten we zoeken naar vermeldingen met het Operation-type ' Get-BLOB ' en de aanvraag status (vierde @ no__t-0 kolom) en het autorisatie type (achtste @ no__t-1 kolom) controleren.
+We zijn geïnteresseerd in de vermeldingen voor GetBlob en hoe ze zijn geautoriseerd. Daarom moeten we zoeken naar vermeldingen met het Operation-type ' Get-BLOB ' en de aanvraag status (vierde </sup> kolom) en het autorisatie type (achtste </sup> kolom) controleren.
 
 In de eerste paar rijen in de bovenstaande vermelding is de aanvraag status "geslaagd" en het autorisatie type "Authenticated". Dit betekent dat de aanvraag is geautoriseerd met de sleutel van het opslag account.
 
@@ -457,7 +457,7 @@ CORS is standaard uitgeschakeld voor alle services. U kunt CORS inschakelen met 
 
 Wat betekent elke rij:
 
-* **AllowedOrigins** Zo weet u welke niet-overeenkomende domeinen gegevens van de opslag service kunnen aanvragen en ontvangen. Dit betekent dat zowel contoso.com als fabrikam.com gegevens kunnen aanvragen van Blob Storage voor een specifiek opslag account. U kunt dit ook instellen op een Joker teken (@no__t 0), zodat alle domeinen toegang hebben tot aanvragen.
+* **AllowedOrigins** Zo weet u welke niet-overeenkomende domeinen gegevens van de opslag service kunnen aanvragen en ontvangen. Dit betekent dat zowel contoso.com als fabrikam.com gegevens kunnen aanvragen van Blob Storage voor een specifiek opslag account. U kunt dit ook instellen op een Joker teken (\*) zodat alle domeinen toegang hebben tot aanvragen.
 * **AllowedMethods** Dit is de lijst met methoden (HTTP-aanvraag bewerkingen) die kunnen worden gebruikt bij het maken van de aanvraag. In dit voor beeld zijn alleen PUT en GET toegestaan. U kunt dit instellen op een Joker teken (\*), zodat alle methoden kunnen worden gebruikt.
 * **AllowedHeaders** Dit zijn de aanvraag headers die in het bron domein kunnen worden opgegeven bij het maken van de aanvraag. In dit voor beeld zijn alle meta gegevens headers die beginnen met x-MS-meta gegevens, x-MS-meta doel en x-MS-meta-ABC toegestaan. Het Joker teken (\*) geeft aan dat elke header die begint met het opgegeven voor voegsel is toegestaan.
 * **ExposedHeaders** Hiermee wordt aangegeven welke antwoord headers door de browser moeten worden weer gegeven aan de aanvraag verlener. In dit voor beeld wordt elke koptekst die begint met ' x-MS-meta-' weer gegeven.

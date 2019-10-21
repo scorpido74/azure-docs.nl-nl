@@ -8,80 +8,91 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: a5717d8ee44e4d2e086a6e7bc1b7c3d0deb614c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827548"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592878"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Voor beeld: beheerde identiteiten gebruiken in azure Kubernetes service
 
-Op dit moment moeten gebruikers een Service-Principal opgeven, of AKS deze namens u maken voor het AKS-cluster (met name de Kubernetes-Cloud provider) om extra resources, zoals load balancers en beheerde schijven in azure, te creëren. Service-principals worden doorgaans gemaakt met een verval datum. Clusters zullen uiteindelijk een toestand bereiken waarin de Service-Principal anders moet worden vernieuwd. het cluster werkt dan niet. Het beheren van service-principals voegt complexiteit toe. Beheerde identiteiten zijn in feite een wrapper rond service-principals en maken hun beheer eenvoudiger. Meer informatie over [Managed Identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) vindt u in het artikel.
+Momenteel vereist een Azure Kubernetes service (AKS)-cluster (met name de Kubernetes-Cloud provider) een *Service-Principal* voor het maken van extra resources, zoals load balancers en beheerde schijven in Azure. Ofwel moet u een service-principal of AKS in uw naam maken. Service-principals hebben doorgaans een verval datum. Clusters bereiken uiteindelijk een status waarin de Service-Principal moet worden vernieuwd om het cluster te laten functioneren. Het beheren van service-principals voegt complexiteit toe.
 
-AKS maakt twee beheerde identiteiten één door het systeem toegewezen beheerde identiteit en de andere door de gebruiker toegewezen identiteit. Een door het systeem toegewezen beheerde identiteit wordt gebruikt door de Cloud provider kubernetes om Azure-resources namens de gebruiker te maken. De levens cyclus van deze door het systeem toegewezen beheerde identiteit is gekoppeld aan dat van het cluster en wordt verwijderd wanneer het cluster wordt verwijderd. AKS maakt ook een door de gebruiker toegewezen beheerde identiteit die in het cluster wordt gebruikt voor het autoriseren van AKS om toegang te krijgen tot ACRs, kubelet om meta gegevens op te halen van Azure, enzovoort.
+*Beheerde identiteiten* zijn in feite een wrapper rond service-principals en maken hun beheer eenvoudiger. Meer informatie over [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)vindt u hier.
 
-In deze preview-periode is een Service-Principal nog vereist. Het wordt gebruikt voor de autorisatie van invoeg toepassingen, zoals bewaking, virtueel knoop punt, Azure-beleid en http-toepassings routering. Er wordt voortdurend gewerkt aan het verwijderen van de afhankelijkheid van de invoeg toepassingen op de SPN en uiteindelijk de SPN-vereiste in AKS wordt volledig verwijderd.
+AKS maakt twee beheerde identiteiten:
+
+- Door het **systeem toegewezen beheerde identiteit**: de identiteit die de Kubernetes-Cloud provider gebruikt om Azure-resources namens de gebruiker te maken. De levens cyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
+- Door de **gebruiker toegewezen beheerde identiteit**: de identiteit die wordt gebruikt voor autorisatie in het cluster. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren voor het gebruik van Access Control records (ACRs), of om de kubelet te autoriseren om meta gegevens op te halen uit Azure.
+
+In deze preview-periode is een Service-Principal nog vereist. Het wordt gebruikt voor de autorisatie van invoeg toepassingen, zoals bewaking, virtuele knoop punten, Azure Policy en HTTP-toepassings routering. Er wordt een probleem ondervindt bij het verwijderen van de afhankelijkheid van invoeg toepassingen op de Service Principal Name (SPN). Uiteindelijk wordt de vereiste van een SPN in AKS volledig verwijderd.
 
 > [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
+> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
 >
-> * [AKS-ondersteunings beleid](support-policies.md)
-> * [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+> - [AKS-ondersteunings beleid](support-policies.md)
+> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet het volgende hebben:
+U moet de volgende resources hebben geïnstalleerd:
 
-* U hebt ook de Azure CLI-versie 2.0.70 of hoger nodig en de AKS-Preview 0.4.14-extensie
+- De Azure CLI, versie 2.0.70 of hoger
+- De 0.4.14-uitbrei ding AKS-preview
 
-## <a name="install-latest-aks-cli-preview-extension"></a>De meest recente AKS CLI-preview-extensie installeren
-
-U hebt de **AKS-Preview 0.4.14-** uitbrei ding of hoger nodig.
+Gebruik de volgende Azure CLI-opdrachten om de 0.4.14-uitbrei ding AKS-preview of hoger te installeren:
 
 ```azurecli
-az extension update --name aks-preview 
+az extension update --name aks-preview
 az extension list
 ```
 
 > [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
+> Nadat u een functie voor een abonnement hebt geregistreerd, kunt u de registratie van die functie op dit moment niet ongedaan maken. Wanneer u een aantal preview-functies inschakelt, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die later in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik in plaats daarvan een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 ```azurecli-interactive
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-Het kan enkele minuten duren voordat de status *geregistreerd*wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List] [AZ-Feature-List]:
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de status is geregistreerd, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster] [AZ-provider-REGI ster]:
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identity"></a>Een AKS-cluster maken met beheerde identiteit
+## <a name="create-an-aks-cluster-with-managed-identities"></a>Een AKS-cluster maken met beheerde identiteiten
 
-U kunt nu een AKS-cluster met beheerde identiteiten maken met behulp van de volgende CLI-opdracht
+U kunt nu een AKS-cluster met beheerde identiteiten maken met behulp van de volgende CLI-opdrachten.
+
+Maak eerst een Azure-resource groep:
+
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
+Maak vervolgens een AKS-cluster:
+
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-## <a name="get-credentials-to-access-the-cluster"></a>Referenties voor toegang tot het cluster ophalen
+Haal tot slot referenties op voor toegang tot het cluster:
+
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Zodra het cluster binnen een paar minuten is gemaakt, kunt u de werk belasting van uw toepassing implementeren en ermee werken, net zoals bij AKS-clusters op basis van de Service-Principal. 
+
+Het cluster wordt in een paar minuten gemaakt. U kunt vervolgens de werk belasting van uw toepassing implementeren naar het nieuwe cluster en ermee werken, net zoals u dat hebt gedaan met AKS-clusters op basis van de Service-Principal.
 
 > [!IMPORTANT]
-> * AKS-clusters met beheerde identiteiten kunnen alleen worden ingeschakeld tijdens het maken van het cluster
-> * Bestaande AKS-clusters kunnen niet worden bijgewerkt/bijgewerkt om beheerde identiteiten in te scha kelen
+>
+> - AKS-clusters met beheerde identiteiten kunnen alleen worden ingeschakeld tijdens het maken van het cluster.
+> - Bestaande AKS-clusters kunnen niet worden bijgewerkt of bijgewerkt om beheerde identiteiten in te scha kelen.

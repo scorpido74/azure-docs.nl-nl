@@ -10,17 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/12/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122228"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597215"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelfstudie: Continue integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
+# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
 
 Meer informatie over het gebruik van Azure-pijp lijnen om voortdurend Azure Resource Manager-sjabloon projecten te bouwen en implementeren.
 
@@ -91,7 +91,7 @@ Deze opslag plaats wordt een *externe opslag plaats*genoemd. Elk van de ontwikke
 
     Vervang **[YourAccountName]** door de naam van uw github-account en vervang **[YourGitHubRepositoryName]** door de naam van de opslag plaats die u in de vorige procedure hebt gemaakt.
 
-    In de volgende scherm afbeeldingen ziet u een voor beeld.
+    In de volgende scherm afbeelding ziet u een voor beeld.
 
     ![GitHub bash Azure Resource Manager Azure DevOps Azure-pijp lijnen maken](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
@@ -126,7 +126,7 @@ De azuredeploy. json is toegevoegd aan de lokale opslag plaats. Vervolgens uploa
     ```
 
     Er kan een waarschuwing over LF worden weer gegeven. U kunt de waarschuwing negeren. **Master** is de Master vertakking.  Doorgaans maakt u een vertakking voor elke update. Voor het vereenvoudigen van de zelf studie gebruikt u de hoofd vertakking rechtstreeks.
-1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is  **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . De map **CreateAzureStorage** en **Azuredeploy. json** worden weer geven in de map.
+1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . De map **CreateAzureStorage** en **Azuredeploy. json** worden weer geven in de map.
 
 Tot nu toe hebt u een GitHub-opslag plaats gemaakt en een sjabloon geüpload naar de opslag plaats.
 
@@ -158,7 +158,7 @@ Maak een service verbinding die wordt gebruikt voor het implementeren van projec
     * **Verbindings naam**: Voer een naam in voor de verbinding. Bijvoorbeeld **AzureRmPipeline-** verbindingen. Noteer deze naam, u hebt de naam nodig wanneer u de pijp lijn maakt.
     * **Bereik niveau**: Selecteer **abonnement**.
     * **Abonnement**: Selecteer uw abonnement.
-    * **Resourcegroep**: Laat dit leeg.
+    * **Resource groep**: laat het veld leeg.
     * **Alle pijp lijnen toestaan deze verbinding te gebruiken**. geselecteerde
 1. Selecteer **OK**.
 
@@ -183,9 +183,11 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 
     ```yaml
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        azureSubscription: '[YourServiceConnectionName]'
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: '[EnterYourServiceConnectionName]'
+        subscriptionName: '[EnterTheTargetSubscriptionID]'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '[EnterANewResourceGroupName]'
         location: 'Central US'
@@ -200,14 +202,16 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 
     Breng de volgende wijzigingen aan:
 
-    * **abonnement**: werk de waarde bij met de service verbinding die u in de vorige procedure hebt gemaakt.
+    * **deloymentScope**: Selecteer het implementatie bereik in de opties: `Management Group`, `Subscription` en `Resource Group`. Gebruik de **resource groep** in deze zelf studie. Zie [implementatie bereiken](./resource-group-template-deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
+    * **ConnectedServiceName**: Geef de naam van de service verbinding op die u eerder hebt gemaakt.
+    * **Subscriptionname**: Geef de id van het doel abonnement op.
     * **actie**: de actie voor het **maken of bijwerken van de resource groep** heeft 2 acties-1. Maak een resource groep als er een nieuwe naam voor de resource groep wordt gegeven. twee. Implementeer de opgegeven sjabloon.
     * **resourceGroupName**: Geef een nieuwe naam op voor de resource groep. Bijvoorbeeld **AzureRmPipeline-RG**.
     * **locatie**: Geef de locatie voor de resource groep op.
     * **templateLocation**: als u een **gekoppeld artefact** hebt opgegeven, zoekt de taak het sjabloon bestand rechtstreeks vanuit de verbonden opslag plaats.
     * **csmFile** is het pad naar het sjabloon bestand. U hoeft geen sjabloon parameters bestand op te geven omdat alle para meters die in de sjabloon zijn gedefinieerd, standaard waarden hebben.
 
-    Zie [implementatie taak voor Azure-resource groep](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment) voor meer informatie over de taak
+    Zie [implementatie taak voor Azure-resource groep](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)en [Azure Resource Manager sjabloon implementatie taak](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) voor meer informatie over de taak
 1. Selecteer **Opslaan en uitvoeren**.
 1. Selecteer **opslaan en voer** de bewerking opnieuw uit. Er wordt een kopie van het YAML-bestand opgeslagen in de verbonden opslag plaats. U kunt het YAML-bestand zien door naar uw opslag plaats te bladeren.
 1. Controleer of de pijp lijn is uitgevoerd.
@@ -216,10 +220,10 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Open de resource groep. De naam is wat u hebt opgegeven in het YAML-bestand van de pijp lijn.  U ziet dat er één opslag account is gemaakt.  De naam van het opslag account begint met **Store**.
 1. Selecteer de naam van het opslag account om deze te openen.
-1. Selecteer **eigenschappen**. U ziet dat de **SKU** **Standard_LRS**is.
+1. Selecteer **Eigenschappen**. U ziet dat de **SKU** **Standard_LRS**is.
 
     ![Verificatie van de Azure DevOps Azure Pipelins-Portal Azure Resource Manager](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 

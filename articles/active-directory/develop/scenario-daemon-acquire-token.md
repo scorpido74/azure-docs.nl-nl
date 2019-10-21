@@ -16,20 +16,20 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056444"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596384"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
 
-Zodra de vertrouwelijke client toepassing is gebouwd, kunt u een token voor de app verkrijgen door het ``AcquireTokenForClient``bereik aan te roepen, door te geven en het token te forceren of niet te vernieuwen.
+Zodra de vertrouwelijke client toepassing is gebouwd, kunt u een token voor de app verkrijgen door het aanroepen van ``AcquireTokenForClient``, het door geven van het bereik en het afdwingen of niet vernieuwen van het token.
 
 ## <a name="scopes-to-request"></a>Te aanvragen scopes
 
-Het bereik dat moet worden aangevraagd voor een client referentie stroom is de naam van de resource `/.default`gevolgd door. Deze notatie vertelt Azure AD voor het gebruik van de **machtigingen op toepassings niveau** die statisch zijn gedeclareerd tijdens de registratie van de toepassing. Net zoals eerder gezien, moeten deze API-machtigingen worden verleend door een Tenant beheerder
+Het bereik dat moet worden aangevraagd voor een client referentie stroom is de naam van de resource, gevolgd door `/.default`. Deze notatie vertelt Azure AD voor het gebruik van de **machtigingen op toepassings niveau** die statisch zijn gedeclareerd tijdens de registratie van de toepassing. Net zoals eerder gezien, moeten deze API-machtigingen worden verleend door een Tenant beheerder
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -62,11 +62,11 @@ Het bereik dat wordt gebruikt voor client referenties moet altijd resourceId + "
 
 > [!IMPORTANT]
 > Voor MSAL waarbij een toegangs token wordt gevraagd voor een resource die een v 1.0-toegangs token accepteert, parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als resource-id te gebruiken.
-> Als, zoals Azure SQL ( **https://database.windows.net** ) voor de resource een doel groep verwacht die eindigt met een slash (voor Azure SQL: `https://database.windows.net/` ), moet u daarom een bereik van `https://database.windows.net//.default` aanvragen (Let op de dubbele slash). Zie ook MSAL.NET issue [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): De afsluitende slash van de bron-URL wordt wegge laten, waardoor SQL-verificatie is mislukt.
+> Als u, zoals Azure SQL ( **https://database.windows.net** ) verwacht dat een doel groep eindigt met een schuine streep (voor Azure SQL: `https://database.windows.net/` ), moet u een bereik van `https://database.windows.net//.default` aanvragen (Let op de dubbele slash). Zie ook MSAL.NET issue [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt.
 
-## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
+## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
 
-Voor het verkrijgen van een token voor de app gebruikt `AcquireTokenForClient` u of het equivalent, afhankelijk van de platformen.
+Voor het verkrijgen van een token voor de app gebruikt u `AcquireTokenForClient` of het equivalent dat afhankelijk is van de platformen.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -152,7 +152,7 @@ future.join();
 
 Als u nog geen bibliotheek hebt voor de taal van uw keuze, kunt u het protocol het beste rechtstreeks gebruiken:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste geval: Toegangs token aanvraag met een gedeeld geheim
+#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -165,7 +165,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: Toegangs token aanvraag met een certificaat
+#### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -179,17 +179,17 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-Zie de protocol documentatie voor meer informatie: [Micro soft Identity platform en de OAuth 2,0-client referenties stroom](v2-oauth2-client-creds-grant-flow.md).
+Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-client referenties stroom](v2-oauth2-client-creds-grant-flow.md)voor meer informatie.
 
 ## <a name="application-token-cache"></a>Toepassings token cache
 
-In MSAL.net `AcquireTokenForClient` maakt gebruik van de **toepassings token cache** (alle andere AcquireTokenXX-methoden gebruiken de token cache van de gebruiker `AcquireTokenSilent` ) worden `AcquireTokenForClient` niet `AcquireTokenSilent` aangeroepen voordat aanroepen als gebruikt de token cache van de **gebruiker** . `AcquireTokenForClient`Hiermee wordt de cache van het **toepassings** token zelf gecontroleerd en bijgewerkt.
+@No__t_0 gebruikt in MSAL.NET de cache van het **toepassings token** (alle andere AcquireTokenXX-methoden gebruiken de gebruikers token cache) pas `AcquireTokenSilent` aan voordat `AcquireTokenForClient` wordt aangeroepen als `AcquireTokenSilent` de token cache van de **gebruiker** gebruikt. `AcquireTokenForClient` controleert de cache van het **toepassings** token zelf en werkt deze bij.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Hebt u het resource/.-standaard bereik gebruikt?
 
-Als er een fout bericht wordt weer gegeven met de melding dat u een ongeldig bereik hebt gebruikt, hebt `resource/.default` u waarschijnlijk geen gebruik gemaakt van het bereik.
+Als er een fout bericht wordt weer gegeven met de melding dat u een ongeldig bereik hebt gebruikt, hebt u waarschijnlijk het `resource/.default` bereik niet gebruikt.
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Bent u verg eten om beheerders toestemming te geven? Daemon-apps zijn vereist!
 
@@ -212,5 +212,19 @@ Content: {
 
 ## <a name="next-steps"></a>Volgende stappen
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](scenario-daemon-call-api.md)
+> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

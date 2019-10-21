@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016633"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598334"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-community  
 
@@ -36,7 +36,7 @@ Deze Azure Media Services (AMS) community-pagina bespreekt verschillende maniere
 ## <a name="provide-feedback-and-make-suggestions"></a>Feedback geven en suggesties doen
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Discussie
+## <a name="discussion"></a>Gevoerd
 
 ### <a name="twitter"></a>Twitter
 
@@ -52,11 +52,11 @@ Op dit moment is MSDN Media Services het primaire Community-Forum van het team.
 
 Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Media-Services '.
 
-[![Stack overflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Contact opnemen met het team
+## <a name="need-help"></a>Hulp nodig?
 
-Azure Media Services primaire ondersteunings- **amshelp@microsoft.com** e-mail is:.
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

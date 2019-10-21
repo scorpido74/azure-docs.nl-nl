@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: f417d83a67f2f3afa33a83a56a72d0d82c64ab0d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850011"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597210"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Problemen met Azure NetApp Files-resourceproviders oplossen 
 
@@ -30,12 +30,12 @@ In dit artikel worden veelvoorkomende fouten van Azure NetApp Files Resource pro
 
 ***BareMetalTenantId kan niet worden gewijzigd.***  
 
-Deze fout treedt op wanneer u een volume probeert bij te werken of te `BaremetalTenantId` patchen en de eigenschap een gewijzigde waarde heeft.
+Deze fout treedt op wanneer u een volume probeert bij te werken of te patchen en de eigenschap `BaremetalTenantId` een gewijzigde waarde heeft.
 
 * Oorzaak:   
-U probeert een volume bij te werken en de `BaremetalTenantId` eigenschap heeft een andere waarde dan de waarde die is opgeslagen in Azure.
+U probeert een volume bij te werken en de eigenschap `BaremetalTenantId` heeft een andere waarde dan de waarde die is opgeslagen in Azure.
 * Oplossen   
-Neem `BaremetalTenantId` niets op in de patch-en update-aanvraag (put). U kunt er ook voor `BaremetalTenantId` zorgen dat hetzelfde is in de aanvraag.
+Neem `BaremetalTenantId` niet op in de patch-en update (put)-aanvraag. U kunt er ook voor zorgen dat `BaremetalTenantId` hetzelfde is in de aanvraag.
 
 ***ServiceLevel kan niet worden gewijzigd.***  
 
@@ -50,12 +50,12 @@ Maak een andere capaciteits groep en maak de volumes opnieuw in de nieuwe capaci
 
 ***PoolId kan niet worden gewijzigd***  
 
-Deze fout treedt op wanneer u een capaciteits groep wilt bijwerken of een patch wilt `PoolId` uitvoeren met een gewijzigde eigenschap.
+Deze fout treedt op wanneer u een capaciteits groep probeert bij te werken of te patchen met een gewijzigde eigenschap `PoolId`.
 
 * Oorzaak:   
-U probeert een eigenschap van een capaciteits `PoolId` groep bij te werken. De `PoolId` eigenschap is een alleen-lezen eigenschap en kan niet worden gewijzigd.
+U probeert een capaciteits pool `PoolId` eigenschap bij te werken. De eigenschap `PoolId` is een alleen-lezen eigenschap en kan niet worden gewijzigd.
 * Oplossen   
-Neem `PoolId` niets op in de patch-en update-aanvraag (put).  U kunt er ook voor `PoolId` zorgen dat hetzelfde is in de aanvraag.
+Neem `PoolId` niet op in de patch-en update (put)-aanvraag.  U kunt er ook voor zorgen dat `PoolId` hetzelfde is in de aanvraag.
 
 ***CreationToken kan niet worden gewijzigd.***
 
@@ -70,7 +70,7 @@ Als u het bestandspad (`CreationToken`) moet wijzigen, kunt u een nieuw volume m
 
 ***CreationToken moet ten minste 16 tekens lang zijn.***
 
-Deze fout treedt op wanneer het bestandspad (`CreationToken`) niet voldoet aan de lengte vereiste. De lengte van het bestandspad moet ten minste één teken lang zijn.
+Deze fout treedt op wanneer het bestandspad (`CreationToken`) niet voldoet aan de vereiste lengte. De lengte van het bestandspad moet ten minste één teken lang zijn.
 
 * Oorzaak:   
 Het bestandspad is leeg.  Wanneer u een volume maakt met behulp van de API, is een aanmaak token vereist. Als u de Azure Portal gebruikt, wordt het bestandspad automatisch gegenereerd.
@@ -101,7 +101,7 @@ Gebruik een andere index voor de regel die u wilt instellen.
 
 ***Fout {Action} {resourceTypeName}***
 
-Deze fout wordt weer gegeven wanneer een andere fout afhandeling de fout niet heeft verwerkt tijdens het uitvoeren van een actie op een resource.   De tekst ' fout ' bevat. Dit `{action}` kan een van de zijn`getting`( `creating`, `updating`,, `deleting`of).  De `{resourceTypeName}` is de `resourceTypeName` `netAppAccount`( bijvoorbeeld,,,enzovoort).`capacityPool` `volume`
+Deze fout wordt weer gegeven wanneer een andere fout afhandeling de fout niet heeft verwerkt tijdens het uitvoeren van een actie op een resource.   De tekst ' fout ' bevat. De `{action}` kan een van de (`getting`, `creating`, `updating` of `deleting`) zijn.  De `{resourceTypeName}` is de `resourceTypeName` (bijvoorbeeld `netAppAccount`, `capacityPool`, `volume`, enzovoort).
 
 * Oorzaak:   
 Deze fout is een onverwerkte uitzonde ring waarbij de oorzaak niet bekend is.
@@ -123,21 +123,21 @@ U kunt een onderstrepings teken vervangen door een koppel teken of een hoofd let
 
 ***FileSystemId kan niet worden gewijzigd.***
 
-Deze fout treedt op wanneer u probeert te `FileSystemId`wijzigen.  Wijzigen `FileSystemdId` is geen ondersteunde bewerking. 
+Deze fout treedt op wanneer u `FileSystemId` probeert te wijzigen.  Het wijzigen van `FileSystemdId` is geen ondersteunde bewerking. 
 
 * Oorzaak:   
-De ID van het bestands systeem wordt ingesteld wanneer het volume wordt gemaakt. `FileSystemId`kan later niet worden gewijzigd.
+De ID van het bestands systeem wordt ingesteld wanneer het volume wordt gemaakt. `FileSystemId` kan later niet worden gewijzigd.
 * Oplossen   
-Neem `FileSystemId` niets op in een patch-en update-aanvraag (put).  U kunt er ook voor `FileSystemId` zorgen dat hetzelfde is in de aanvraag.
+Neem `FileSystemId` niet op in een patch-en update-aanvraag (put).  U kunt er ook voor zorgen dat `FileSystemId` hetzelfde is in de aanvraag.
 
 ***ActiveDirectory met id: {string} bestaat niet.***
 
-Het `{string}` gedeelte is de waarde die u hebt ingevoerd `ActiveDirectoryId` in de eigenschap voor de Active Directory verbinding.
+Het gedeelte `{string}` is de waarde die u hebt ingevoerd in de eigenschap `ActiveDirectoryId` voor de Active Directory verbinding.
 
 * Oorzaak:   
-Wanneer u een account met de configuratie van Active Directory hebt gemaakt, hebt u een waarde `ActiveDirectoryId` ingevoerd die moet leeg zijn.
+Wanneer u een account hebt gemaakt met de Active Directory configuratie, hebt u een waarde ingevoerd voor `ActiveDirectoryId` die leeg moet zijn.
 * Oplossen   
-Neem `ActiveDirectoryId` niet op in de aanvraag maken (put).
+Neem `ActiveDirectoryId` niet op in de aanvraag Create (put).
 
 ***Ongeldige API-versie.***
 
@@ -150,16 +150,16 @@ Gebruik de juiste API-versie waarde.  De resource provider ondersteunt veel API-
 
 ***Er is een ongeldige waarde {Value} ontvangen voor {1}.***
 
-Dit bericht geeft aan dat er een fout `RuleIndex` `UnixReadOnly`is opgetreden in de `Nfsv3`velden voor `Nfsv4`, `AllowedClients` `UnixReadWrite`,,, en.
+Dit bericht geeft aan dat er een fout is opgetreden in de velden voor `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv3` en `Nfsv4`.
 
 * Oorzaak:   
 De invoer validatie aanvraag is mislukt voor ten minste een van de volgende velden: `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 en `Nfsv4`.
 * Oplossen   
-Zorg ervoor dat u alle vereiste en niet-conflicterende para meters op de opdracht regel instelt. U kunt bijvoorbeeld niet zowel de `UnixReadOnly` als `UnixReadWrite` -para meters op hetzelfde moment instellen.
+Zorg ervoor dat u alle vereiste en niet-conflicterende para meters op de opdracht regel instelt. U kunt bijvoorbeeld niet zowel de `UnixReadOnly` als de `UnixReadWrite` para meters op hetzelfde moment instellen.
 * Enkele   
 Zie de bovenstaande oplossing.
 
-***IP- {0} bereik {1} voor VLAN {2} wordt al gebruikt***
+***Het IP-bereik {0} naar {1} voor de VLAN-{2} wordt al gebruikt***
 
 Deze fout treedt op omdat de interne records van het gebruikte IP-bereik een conflict veroorzaken met het zojuist toegewezen IP-adres.
 
@@ -183,9 +183,9 @@ Zorg ervoor dat u alle vereiste en niet-conflicterende eigenschappen instelt in 
 Deze fout treedt op wanneer een gebruiker de eigenschap volume MountTargets probeert bij te werken of te patchen.
 
 * Oorzaak:   
-U probeert de volume `MountTargets` -eigenschap bij te werken. Het wijzigen van deze eigenschap wordt niet ondersteund.
+U probeert de volume `MountTargets` eigenschap bij te werken. Het wijzigen van deze eigenschap wordt niet ondersteund.
 * Oplossen   
-Neem `MountTargets` niets op in een patch-en update-aanvraag (put).  U kunt er ook voor zorgen `MountTargets` dat hetzelfde is in de aanvraag.
+Neem `MountTargets` niet op in een patch-en update-aanvraag (put).  U kunt er ook voor zorgen dat `MountTargets` hetzelfde is in de aanvraag.
 
 ***De naam wordt al gebruikt.***
 
@@ -252,7 +252,7 @@ Het probleem is waarschijnlijk tijdelijk. De aanvraag moet na enige tijd slagen.
 * Enkele   
 Geen. De onderliggende API is essentieel voor het beheren van volumes.
 
-***Er is{0}geen resultaat-id van de bewerking gevonden voor.***
+***Er is geen resultaat-id van de bewerking gevonden voor de {0}.***
 
 Deze fout geeft aan dat de bewerking niet kan worden voltooid vanwege een interne fout.
 
@@ -274,7 +274,7 @@ Verwijder een van de protocol typen.
 * Enkele   
 Laat de eigenschap protocol type leeg of null.
 
-***Aantal items: {value} voor object: ExportPolicy. rules [RuleIndex] bevindt zich buiten het minimum bereik.***
+***Aantal items: {value} voor object: ExportPolicy. rules [RuleIndex] ligt buiten het minimum bereik.***
 
 Deze fout treedt op wanneer de export beleids regels niet voldoen aan het minimum-of maximum bereik vereiste. Als u het export beleid definieert, moet er één beleids regel voor het exporteren van de minimum-en vijf export beleids regels zijn ingesteld op het maximum.
 
@@ -310,9 +310,9 @@ Zorg ervoor dat de bewerking correct is ingevoerd en dat deze beschikbaar is voo
 Deze fout treedt op wanneer u de eigenschap OwnerId van het volume probeert te wijzigen. Het wijzigen van de OwnerId is geen ondersteunde bewerking. 
 
 * Oorzaak:   
-De `OwnerId` eigenschap wordt ingesteld wanneer het volume wordt gemaakt. De eigenschap kan later niet worden gewijzigd.
+De eigenschap `OwnerId` wordt ingesteld wanneer het volume wordt gemaakt. De eigenschap kan later niet worden gewijzigd.
 * Oplossen   
-Neem `OwnerId` niets op in een patch-en update-aanvraag (put). U kunt er ook voor zorgen `OwnerId` dat hetzelfde is in de aanvraag.
+Neem `OwnerId` niet op in een patch-en update-aanvraag (put). U kunt er ook voor zorgen dat `OwnerId` hetzelfde is in de aanvraag.
 
 ***Bovenliggende groep niet gevonden***
 
@@ -335,7 +335,7 @@ Geen. Deze resources hebben geen eigenschappen die kunnen worden gewijzigd.
 
 ***De groeps grootte is te klein voor de totale volume grootte.***
 
-Deze fout treedt op wanneer u de grootte van de capaciteits pool bijwerkt en de grootte kleiner `usedBytes` is dan de totale waarde van alle volumes in die capaciteits groep.  Deze fout kan ook optreden wanneer u een nieuw volume maakt of het formaat van een bestaand volume wijzigt en de nieuwe grootte van het volume groter is dan de beschik bare ruimte in de capaciteits groep.
+Deze fout treedt op wanneer u de grootte van de capaciteits pool bijwerkt en de grootte kleiner is dan de totale `usedBytes` waarde van alle volumes in die capaciteits groep.  Deze fout kan ook optreden wanneer u een nieuw volume maakt of het formaat van een bestaand volume wijzigt en de nieuwe grootte van het volume groter is dan de beschik bare ruimte in de capaciteits groep.
 
 * Oorzaak:   
 U probeert de capaciteits groep bij te werken naar een kleinere grootte dan usedBytes in alle volumes van de capaciteits groep.  Of u probeert een volume te maken dat groter is dan de beschik bare ruimte in de capaciteits groep.  U kunt ook de grootte van een volume wijzigen en de nieuwe grootte overschrijdt de beschik bare ruimte in de capaciteits groep.
@@ -344,7 +344,7 @@ Stel de grootte van de capaciteits pool in op een grotere waarde of maak een kle
 * Enkele   
 Verwijder voldoende volumes zodat de grootte van de capaciteits groep kan worden bijgewerkt naar deze grootte.
 
-***De eigenschap: De locatie voor de moment opname moet hetzelfde zijn als het volume***
+***De eigenschap: de locatie voor de moment opname moet hetzelfde zijn als het volume***
 
 Deze fout treedt op wanneer u een moment opname maakt met een andere locatie dan het volume dat eigenaar is van de moment opname.
 
@@ -360,25 +360,25 @@ Deze fout treedt op wanneer u een resource maakt en u de eigenschap name invult 
 * Oorzaak:   
 Ongeldige waarde in de eigenschap name bij het maken van een resource.
 * Oplossen   
-Laat de eigenschap name leeg of laat het toe om dezelfde waarde te gebruiken als de eigenschap naam (tussen de laatste back slash "/" en het vraag teken "?" `resourceId`) in.
+Laat de eigenschap name leeg of laat het toe om dezelfde waarde te gebruiken als de eigenschap naam (tussen de laatste back slash "/" en het vraag teken "?") in `resourceId`.
 
 ***Het protocol type {Value} is niet bekend***
 
-Deze fout treedt op wanneer u een volume met een onbekend protocol type maakt.  Geldige waarden zijn "NFSv3" en "CIFS".
+Deze fout treedt op wanneer u een volume met een onbekend protocol type maakt.  Geldige waarden zijn "NFSv3", "NFSv4" en "CIFS".
 
 * Oorzaak:   
-U probeert een ongeldige waarde in te stellen in de eigenschap `protocolType` volume.
+U probeert een ongeldige waarde in te stellen in de eigenschap volume `protocolType`.
 * Oplossen   
-Stel een geldige teken reeks `protocolType`in.
+Stel een geldige teken reeks in `protocolType` in.
 * Enkele   
 Stel `protocolType` in op null.
 
 ***Protocol typen kunnen niet worden gewijzigd***
 
-Deze fout treedt op wanneer u een volume probeert bij `ProtocolType` te werken of te patchen.  Het wijzigen van protocol type is geen ondersteunde bewerking.
+Deze fout treedt op wanneer u probeert om `ProtocolType` voor een volume bij te werken of te patchen.  Het wijzigen van protocol type is geen ondersteunde bewerking.
 
 * Oorzaak:   
-De `ProtocolType` eigenschap wordt ingesteld wanneer het volume wordt gemaakt.  Het kan niet worden bijgewerkt.
+De eigenschap `ProtocolType` wordt ingesteld wanneer het volume wordt gemaakt.  Het kan niet worden bijgewerkt.
 * Oplossen   
 Geen.
 * Enkele   
@@ -386,7 +386,7 @@ Maak een ander volume met nieuwe protocol typen.
 
 ***Het maken van de resource van het type {resource soort} overschrijdt het quotum van {quota} resources van het type {resource soort} per {parentResourceType}. Het huidige aantal resources is {currentCount}. Verwijder een aantal bronnen van dit type voordat u een nieuw item maakt.***
 
-Deze fout treedt op wanneer u een`NetAppAccount`bron ( `Volume`, `CapacityPool`, of `Snapshot`) probeert te maken, maar het quotum de limiet heeft bereikt.
+Deze fout treedt op wanneer u een resource probeert te maken (`NetAppAccount`, `CapacityPool`, `Volume` of `Snapshot`), maar het quotum de limiet heeft bereikt.
 
 * Oorzaak:   
 U probeert een resource te maken, maar de quotum limiet is bereikt (voor beeld: `NetAppAccounts` per abonnement of `CapacityPools` per `NetAppAccount`).
@@ -439,34 +439,34 @@ Geen.  Zie de bovenstaande oplossing.
 
 ***SubnetId kan niet worden gewijzigd.***
 
-Deze fout treedt op wanneer u probeert het `subnetId` volume te wijzigen nadat het is gemaakt.  `SubnetId`moet worden ingesteld wanneer het volume wordt gemaakt en kan later niet meer worden gewijzigd.
+Deze fout treedt op wanneer u probeert om de `subnetId` te wijzigen nadat het volume is gemaakt.  `SubnetId` moet worden ingesteld wanneer het volume wordt gemaakt en kan later niet meer worden gewijzigd.
 
 * Oorzaak:   
-U probeert het `subnetId` te wijzigen nadat het volume is gemaakt. Dit is een niet-ondersteunde bewerking. 
+U probeert de `subnetId` te wijzigen nadat het volume is gemaakt. Dit is een niet-ondersteunde bewerking. 
 * Oplossen   
-Als het `subnetId` niet nodig is om het te wijzigen, kunt u de para meter verwijderen uit de aanvraag om het fout bericht te sluiten.
+Als het wijzigen van de `subnetId` niet nodig is, kunt u de para meter verwijderen uit de aanvraag om het fout bericht te sluiten.
 * Enkele   
-Als u het `subnetId`moet wijzigen, kunt u een nieuw volume maken met een nieuwe `subnetId`en vervolgens de gegevens naar het nieuwe volume migreren.
+Als u de `subnetId` wilt wijzigen, kunt u een nieuw volume maken met een nieuwe `subnetId` en vervolgens de gegevens migreren naar het nieuwe volume.
 
 ***SubnetId heeft een ongeldige indeling.***
 
-Deze fout treedt op wanneer u een nieuw volume probeert te maken, `subnetId` maar het is `resourceId` geen voor een subnet.
+Deze fout treedt op wanneer u een nieuw volume probeert te maken, maar de `subnetId` is geen `resourceId` voor een subnet.
 
 * Oorzaak:   
-Deze fout treedt op wanneer u een nieuw volume probeert te maken, maar `subnetId` het is `resourceId` geen voor een subnet. 
+Deze fout treedt op wanneer u een nieuw volume probeert te maken, maar de `subnetId` is geen `resourceId` voor een subnet. 
 * Oplossen   
-Controleer de waarde voor de `subnetId` om te controleren of deze een `resourceId` bevat voor het gebruikte subnet.
+Controleer de waarde voor de `subnetId` om ervoor te zorgen dat deze een `resourceId` bevat voor het gebruikte subnet.
 * Enkele   
 Geen. Zie de bovenstaande oplossing. 
 
 ***Het subnet moet de overdracht ' micro soft. NetApp/volumes ' hebben.***
 
-Deze fout treedt op wanneer u een volume maakt en het geselecteerde subnet niet wordt overgedragen `Microsoft.NetApp/volumes`.
+Deze fout treedt op wanneer u een volume maakt en het geselecteerde subnet wordt niet overgedragen aan `Microsoft.NetApp/volumes`.
 
 * Oorzaak:   
-U hebt geprobeerd het volume te maken en u hebt een subnet geselecteerd dat niet is `Microsoft.NetApp/volumes`overgedragen.
+U hebt geprobeerd het volume te maken en u hebt een subnet geselecteerd dat niet aan `Microsoft.NetApp/volumes` is overgedragen.
 * Oplossen   
-Selecteer een ander subnet dat wordt overgedragen `Microsoft.NetApp/volumes`.
+Selecteer een ander subnet dat wordt overgedragen aan `Microsoft.NetApp/volumes`.
 * Enkele   
 Voeg een juiste overdracht toe aan het subnet.
 

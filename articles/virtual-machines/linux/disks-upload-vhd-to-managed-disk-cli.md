@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717172"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595102"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een VHD uploaden naar Azure met behulp van Azure CLI
 
@@ -29,7 +29,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
 - Een VHD-bestand lokaal opgeslagen
-- Als u van plan bent om een VHD te uploaden vanaf pem: Een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden vanaf pem: een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
@@ -41,9 +41,9 @@ Dit soort beheerde schijven heeft twee unieke statussen:
 - ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) is gegenereerd.
 - ActiveUpload, wat betekent dat de schijf gereed is om een upload te ontvangen en dat de SAS is gegenereerd.
 
-In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard prijzen voor harde schijven](https://azure.microsoft.com/pricing/details/managed-disks/), ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit is waar totdat `revoke-access` wordt aangeroepen op de beheerde schijf, wat vereist is om de schijf aan een virtuele machine te koppelen.
+In een van deze statussen wordt de beheerde schijf gefactureerd tegen [standaard prijzen voor harde schijven](https://azure.microsoft.com/pricing/details/managed-disks/), ongeacht het werkelijke type schijf. Een P10 wordt bijvoorbeeld gefactureerd als een S10. Dit geldt totdat `revoke-access` wordt aangeroepen op de beheerde schijf, wat vereist is om de schijf aan een virtuele machine te koppelen.
 
-Voordat u een lege standaard HDD voor het uploaden kunt maken, moet u de bestands grootte van de VHD die u wilt uploaden, in bytes hebben. Om dat te bereiken, kunt u een `wc -c <yourFileName>.vhd` of `ls -al <yourFileName>.vhd` gebruiken. Deze waarde wordt gebruikt bij het opgeven van de para meter **--Upload-size-bytes** .
+Voordat u een lege standaard HDD voor het uploaden kunt maken, moet u de bestands grootte van de VHD die u wilt uploaden, in bytes hebben. U kunt hiervoor `wc -c <yourFileName>.vhd` of `ls -al <yourFileName>.vhd` gebruiken. Deze waarde wordt gebruikt bij het opgeven van de para meter **--Upload-size-bytes** .
 
 Maak een lege standaard HDD voor het uploaden door zowel de para meter **--for-upload** als de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
 
@@ -81,7 +81,7 @@ Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-ty
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Als uw SAS verloopt tijdens het uploaden en u nog `revoke-access` geen sa's hebt aangeroepen, kunt u een nieuwe SAS ontvangen om de `grant-access`upload opnieuw te kunnen gebruiken.
+Als uw SAS verloopt tijdens het uploaden en u `revoke-access` nog niet hebt aangeroepen, kunt u een nieuwe SAS krijgen om het uploaden met `grant-access` voort te zetten.
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
@@ -98,7 +98,7 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > [!IMPORTANT]
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
-Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde uswest2) met uw waarden en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+Vervang de `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met uw waarden, en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -109,11 +109,11 @@ targetLocale = <yourTargetLocationHere>
 
 sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
 
-az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
-sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
 .\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
@@ -126,4 +126,4 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u uw schijf koppelen aan een virtuele machine en het gebruik ervan starten.
 
-Zie ons artikel over het onderwerp voor meer informatie over het koppelen van een schijf aan een virtuele machine: [Een schijf toevoegen aan een virtuele Linux-machine](add-disk.md).
+Zie ons artikel over het onderwerp: [een schijf toevoegen aan een virtuele Linux-machine](add-disk.md)voor meer informatie over het koppelen van een schijf aan een virtuele machine.

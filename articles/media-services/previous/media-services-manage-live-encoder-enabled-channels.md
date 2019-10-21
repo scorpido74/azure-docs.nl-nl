@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016493"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598305"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -51,7 +51,7 @@ Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaa
 > 
 
 ## <a name="billing-implications"></a>Facturerings implicaties
-Een live coderings kanaal begint met factureren zodra de status overgangen via de API wordt uitgevoerd.   U kunt ook de status weer geven in de Azure Portal of in het hulp programma Azure Media Services Verkenner https://aka.ms/amse) (.
+Een live coderings kanaal begint met factureren zodra de status overgangen via de API wordt uitgevoerd.   U kunt ook de status weer geven in de Azure Portal of in het hulp programma Azure Media Services Verkenner (https://aka.ms/amse).
 
 In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan facturerings statussen in de API en Azure Portal. De statussen zijn iets anders tussen de API en de portal UX. Zodra een kanaal zich in de status ' running ' bevindt via de API of in de status ' gereed ' of ' streaming ' in de Azure Portal, wordt de facturering actief.
 Als u het kanaal niet meer wilt factureren, moet u het kanaal stoppen via de API of in de Azure Portal.
@@ -70,10 +70,10 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 
 | Kanaalstatus | Portal UI-indicatoren | Is het facturerings abonnement? |
 | --- | --- | --- |
-| Starten |Starten |Nee (overgangsstatus) |
-| Wordt uitgevoerd |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
-| Stoppen |Stoppen |Nee (overgangsstatus) |
-| Gestopt |Gestopt |Nee |
+| Starting |Starting |Nee (overgangsstatus) |
+| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |KLIKT |
+| Stopping |Stopping |Nee (overgangsstatus) |
+| Stopped |Stopped |Nee |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatisch afsluiten voor ongebruikte kanalen
 Vanaf 25 januari 2016 Media Services de implementatie van een update die automatisch een kanaal stopt (met Live encoding ingeschakeld) nadat het is uitgevoerd in een ongebruikte status gedurende een lange periode. Dit geldt voor kanalen zonder actieve Program Ma's en die gedurende een lange periode geen invoer bijdrage hebben ontvangen.
@@ -81,7 +81,7 @@ Vanaf 25 januari 2016 Media Services de implementatie van een update die automat
 De drempel waarde voor een ongebruikte periode is een nominale tijd van 12 uur, maar kan worden gewijzigd.
 
 ## <a name="live-encoding-workflow"></a>Live Encoding werk stroom
-Het volgende diagram vertegenwoordigt een live streaming-werk stroom waarbij een kanaal een enkele bitrate stroom ontvangt in een van de volgende protocollen: RTMP of Smooth Streaming; vervolgens wordt de stroom gecodeerd naar een multi-bitrate stream. 
+Het volgende diagram vertegenwoordigt een werk stroom voor live streamen waarbij een kanaal een enkele bitrate stroom ontvangt in een van de volgende protocollen: RTMP of Smooth Streaming; vervolgens wordt de stroom gecodeerd naar een multi-bitrate stream. 
 
 ![Live-werkstroom][live-overview]
 
@@ -89,9 +89,11 @@ Het volgende diagram vertegenwoordigt een live streaming-werk stroom waarbij een
 Hieronder volgen de algemene stappen voor het maken van veelvoorkomende toepassingen voor live streamen.
 
 > [!NOTE]
-> De maximum aanbevolen duur van een live gebeurtenis is momenteel acht uur. Neem contact op met amshelp@microsoft.com als u een kanaal voor langere tijd wilt uitvoeren. Er is een facturerings effect voor Live code ring en u moet er rekening mee houden dat het gebruik van een live coderings kanaal in de status ' running ' per uur in rekening wordt gebracht.  Het is raadzaam om uw actieve kanalen direct te stoppen nadat uw live streaming-gebeurtenis is voltooid om extra kosten per uur te voor komen. 
+> De maximum aanbevolen duur van een live gebeurtenis is momenteel acht uur.
+>
+> Er is een facturerings effect voor Live code ring en u moet er rekening mee houden dat het gebruik van een live coderings kanaal in de status ' running ' per uur in rekening wordt gebracht. Het is raadzaam om uw actieve kanalen direct te stoppen nadat uw live streaming-gebeurtenis is voltooid om extra kosten per uur te voor komen. 
 
-1. Sluit een videocamera aan op een computer. Start en configureer een on-premises Live coderings programma dat een **enkele** bitrate stroom kan uitvoeren in een van de volgende protocollen: RTMP of Smooth Streaming. 
+1. Sluit een videocamera aan op een computer. Start en configureer een on-premises Live coderings programma dat een **enkele** bitrate stroom kan uitvoeren in een van de volgende protocollen: RTMP of Smooth streaming. 
 
     Deze stap kan ook worden uitgevoerd nadat u uw kanaal hebt gemaakt.
 2. Maak en start een kanaal. 
@@ -126,7 +128,7 @@ Hieronder volgen de algemene stappen voor het maken van veelvoorkomende toepassi
 Als het **coderings type** is ingesteld op **Standard**, geldige opties zijn:
 
 * **RTMP** met één bitsnelheid
-* Gefragmenteerde **MP4** met enkele bitsnelheid (Smooth streaming)
+* **Gefragmenteerde MP4** met enkele bitsnelheid (Smooth streaming)
 
 #### <a id="single_bitrate_RTMP"></a>RTMP met één bitsnelheid
 Overwegingen:
@@ -172,7 +174,7 @@ U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. To
 
 Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
-## <a name="channel-preview"></a>Kanaalvoorbeeld
+## <a name="channel-preview"></a>Channel Preview
 ### <a name="preview-urls"></a>Preview-Url's
 Kanalen bieden een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
@@ -189,7 +191,7 @@ Zodra het kanaal begint met het opnemen van gegevens, kunt u een voor beeld van 
 U kunt de IP-adressen definiëren die verbinding mogen maken met het eind punt van de preview. Als er geen IP-adressen zijn opgegeven, is een IP-adres toegestaan. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , 10.0.0.1 (255.255.252.0)).
 
 ## <a name="live-encoding-settings"></a>Instellingen voor Live code ring
-In deze sectie wordt beschreven hoe de instellingen voor de Live Encoder binnen het kanaal kunnen worden aangepast wanneer het coderings **type** van een kanaal is ingesteld op **standaard**.
+In deze sectie wordt beschreven hoe de instellingen voor de Live Encoder binnen het kanaal kunnen worden aangepast wanneer het **coderings type** van een kanaal is ingesteld op **standaard**.
 
 > [!NOTE]
 > Uw bijdrager mag alleen één audio spoor bevatten: opname van meerdere audio sporen wordt momenteel niet ondersteund. Bij het uitvoeren van Live code ring met [on-premises Live](media-services-live-streaming-with-onprem-encoders.md)-code ringen kunt u een invoer voor bijdragen verzenden in het Smooth streaming-protocol met meerdere audio tracks.
@@ -197,7 +199,7 @@ In deze sectie wordt beschreven hoe de instellingen voor de Live Encoder binnen 
 > 
 
 ### <a name="ad-marker-source"></a>Bron van AD-markering
-U kunt de bron voor advertentie markeringen opgeven. De standaard waarde is **API**, waarmee wordt aangegeven dat de Live coderings Programma's binnen het kanaal moeten worden geluisterd naar een asynchrone AD-markerings- **API**.
+U kunt de bron voor advertentie markeringen opgeven. De standaard waarde is **API**, waarmee wordt aangegeven dat de Live coderings Programma's binnen het kanaal moeten worden geluisterd naar een asynchrone **ad-markerings-API**.
 
 ### <a name="cea-708-closed-captions"></a>Ondertiteling van CEA 708
 Een optionele vlag die het Live coderings programma vertelt dat alle CEA 708 bijschriften die zijn Inge sloten in de binnenkomende video, worden genegeerd. Wanneer de vlag is ingesteld op False (standaard), detecteert het coderings programma CEA 708-gegevens in de video-uitvoer stromen.
@@ -210,8 +212,6 @@ De taal-id van de audio stroom, die voldoet aan ISO 639-2, zoals ENG. Als deze n
 
 ### <a id="preset"></a>Systeem vooraf ingesteld
 Hiermee geeft u de voor instelling op die door de Live Encoder binnen dit kanaal moet worden gebruikt. Op dit moment is de enige toegestane waarde **Default720p** (standaard).
-
-Houd er rekening mee dat als u aangepaste voor instellingen nodig amshelp@microsoft.comhebt, contact moet opnemen.
 
 Met **Default720p** wordt de video in de volgende 6 lagen gecodeerd.
 
@@ -240,7 +240,7 @@ Wanneer uw kanaal Live Encoding ingeschakeld, hebt u een onderdeel in uw pijp li
 
 Hieronder vindt u de eigenschappen die u kunt instellen bij het Signa leren van advertenties. 
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Duur
 De duur, in seconden, van de commerciële grens. Dit moet een positieve waarde zijn die niet gelijk is aan nul om de commerciële grens te starten. Wanneer er een commerciële ondertekening wordt uitgevoerd en de duur is ingesteld op nul met de CueId die overeenkomt met de on-continue commerciële inbraak, wordt die afbreek bewerking geannuleerd.
 
 ### <a name="cueid"></a>CueId
@@ -256,11 +256,11 @@ Het Live coderings programma binnen het kanaal kan worden gesignaleerd om over t
 
 Het Live coderings programma kan worden geconfigureerd om over te scha kelen naar een pastel afbeelding en het binnenkomende video signaal te verbergen in bepaalde situaties, bijvoorbeeld tijdens een AD-break. Als een dergelijke pastel niet is geconfigureerd, wordt de invoer video niet gemaskeerd tijdens die AD-afbreek periode.
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Duur
 De duur van de pastel in seconden. Dit moet een positieve waarde zijn die niet gelijk is aan nul om de pastel te starten. Als er sprake is van een voortdurende pastel en er een duur van nul is opgegeven, wordt die voortdurende slag beëindigd.
 
-### <a name="insert-slate-on-ad-marker"></a>Slate invoegen op advertentiemarkering
-Als deze optie is ingesteld op True, wordt met deze instelling het Live coderings programma geconfigureerd voor het invoegen van een pastel afbeelding tijdens een AD-out. De standaardwaarde is true. 
+### <a name="insert-slate-on-ad-marker"></a>Pastel invoegen in advertentie markering
+Als deze optie is ingesteld op True, wordt met deze instelling het Live coderings programma geconfigureerd voor het invoegen van een pastel afbeelding tijdens een AD-out. De standaard waarde is True. 
 
 ### <a id="default_slate"></a>Standaard activum-id
 
@@ -269,7 +269,6 @@ Optioneel. Hiermee geeft u de activum-id op van het Media Services activum dat d
 
 > [!NOTE] 
 > Voordat u het kanaal maakt, moet de afbeelding pastel met de volgende beperkingen worden geüpload als een toegewezen activum (er moeten geen andere bestanden in deze asset zijn). Deze installatie kopie wordt alleen gebruikt wanneer het Live coderings programma een pastel invoegt als gevolg van een AD-break of expliciet is gesignaleerd om een pastel in te voegen. Er is momenteel geen optie voor het gebruik van een aangepaste installatie kopie wanneer het Live coderings programma de status ' invoer signaal verloren ' invoert. U kunt [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)stemmen voor deze functie.
-
 
 * Maxi maal 1920 in oplossing.
 * Maxi maal 3 MB groot.
@@ -313,10 +312,10 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 
 | Kanaalstatus | Portal UI-indicatoren | In rekening gebracht? |
 | --- | --- | --- |
-| Starten |Starten |Nee (overgangsstatus) |
-| Wordt uitgevoerd |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |Ja |
-| Stoppen |Stoppen |Nee (overgangsstatus) |
-| Gestopt |Gestopt |Nee |
+| Starting |Starting |Nee (overgangsstatus) |
+| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |Ja |
+| Stopping |Stopping |Nee (overgangsstatus) |
+| Stopped |Stopped |Nee |
 
 > [!NOTE]
 > Op dit moment is het begin gemiddelde van het kanaal ongeveer 2 minuten, maar het kan Maxi maal 20 minuten duren. Het opnieuw instellen van het kanaal kan tot vijf minuten duren.
@@ -331,7 +330,7 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 * Standaard kunt u Maxi maal 5 kanalen toevoegen aan uw Media Services-account. Dit is een zacht quotum voor alle nieuwe accounts. Zie [quota's en beperkingen](media-services-quotas-and-limitations.md)voor meer informatie.
 * U kunt het invoerprotocol niet wijzigen terwijl het kanaal of de gekoppelde programma's worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u afzonderlijke kanalen voor elk invoerprotocol.
 * U wordt alleen gefactureerd wanneer de status van uw kanaal **actief** is. Raadpleeg [deze](media-services-manage-live-encoder-enabled-channels.md#states) sectie voor meer informatie.
-* De maximum aanbevolen duur van een live gebeurtenis is momenteel acht uur. Neem contact op met amshelp@microsoft.com als u een kanaal voor langere tijd wilt uitvoeren.
+* De maximum aanbevolen duur van een live gebeurtenis is momenteel acht uur. 
 * Zorg ervoor dat het streaming-eind punt van waaruit u inhoud wilt streamen, de status **wordt uitgevoerd** heeft.
 * De vooraf ingestelde code ring maakt gebruik van het begrip ' maximale frame frequentie ' van 30 fps. Dus als de invoer 60fps/59.94 i is, worden de invoer frames verwijderd/ongedaan gemaakt op 30/29.97 fps. Als de invoer is 50fps/50i, worden de invoer frames verwijderd/de omlaced naar 25 fps. Als de invoer 25 fps is, blijft de uitvoer op 25 fps.
 * Vergeet niet om uw kanalen te stoppen wanneer u klaar bent. Als u dat niet doet, wordt de facturering voortgezet.
@@ -341,7 +340,12 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 * Pastel afbeeldingen moeten voldoen aan de beperkingen die [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)worden beschreven. Als u probeert een kanaal te maken met een standaard kleur die groter is dan 1920, wordt de aanvraag uiteindelijk afgemeld.
 * Nog een keer.... Vergeet niet om uw kanalen te stoppen wanneer u klaar bent met streamen. Als u dat niet doet, wordt de facturering voortgezet.
 
+## <a name="need-help"></a>Hulp nodig?
+
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+
 ## <a name="next-step"></a>Volgende stap
+
 Media Services-leertrajecten bekijken.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

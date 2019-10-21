@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "69532975"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Open bare client-en vertrouwelijke client toepassingen
@@ -30,12 +30,12 @@ Micro soft Authentication Library (MSAL) definieert twee typen clients: open bar
 - **Vertrouwelijke client toepassingen** zijn apps die worden uitgevoerd op servers (Web apps, Web API-apps of zelfs service/daemon-apps). Ze worden beschouwd als moeilijk te benaderen en daarom kan een toepassings geheim worden bewaard. Vertrouwelijke clients kunnen configuratie-en tijd geheimen bevatten. Elk exemplaar van de client heeft een afzonderlijke configuratie (inclusief client-ID en client geheim). Deze waarden zijn moeilijk te extra heren voor eind gebruikers. Een web-app is de meest voorkomende vertrouwelijke client. De client-ID wordt weer gegeven via de webbrowser, maar het geheim wordt alleen door gegeven in het back-upkanaal en nooit rechtstreeks zichtbaar.
 
     Vertrouwelijke client-apps: <BR>
-    ![Web-](media/msal-client-applications/web-app.png) app ![web](media/msal-client-applications/web-api.png) API![daemon/service](media/msal-client-applications/daemon-service.png)
+    ![Web app ](media/msal-client-applications/web-app.png) ![Web API ](media/msal-client-applications/web-api.png) ![Daemon/service ](media/msal-client-applications/daemon-service.png)
 
 - **Open bare client toepassingen** zijn apps die worden uitgevoerd op apparaten of desktop computers of in een webbrowser. Ze worden niet vertrouwd om toepassings geheimen veilig te blijven, zodat ze alleen toegang hebben tot Web-Api's namens de gebruiker. (Alleen open bare client stromen worden ondersteund.) Open bare clients kunnen geen configuratie-tijd geheimen bevatten, zodat ze geen client geheimen hebben.
 
     Open bare client-apps: <BR>
-    ![Mobiele app](media/msal-client-applications/desktop-app.png) browserloze API](media/msal-client-applications/browserless-app.png) voor![desktop-apps ![](media/msal-client-applications/mobile-app.png)
+    ![Desktop app ](media/msal-client-applications/desktop-app.png) ![Browserless API ](media/msal-client-applications/browserless-app.png) ![Mobile app ](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
 > In MSAL. js bevindt zich geen schei ding van open bare en vertrouwelijke client-apps.  MSAL. js vertegenwoordigt client-apps als apps op basis van gebruikers agent, open bare clients waarin de client code wordt uitgevoerd in een gebruikers agent zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is.

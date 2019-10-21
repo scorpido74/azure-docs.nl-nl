@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330773"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592803"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -57,7 +57,7 @@ Append wordt gebruikt om extra velden toe te voegen aan de aangevraagde resource
 
 ### <a name="append-evaluation"></a>Evaluatie toevoegen
 
-Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[\*]-** versie van de alias.
+Toevoegen evalueert voordat de aanvraag wordt verwerkt door een resource provider tijdens het maken of bijwerken van een resource. Append voegt velden toe aan de resource wanneer aan de **voor waarde van de beleids** regel wordt voldaan. Als het toevoeg effect een waarde in de oorspronkelijke aanvraag overschrijft met een andere waarde, fungeert deze als een weigerings effect en weigert de aanvraag. Als u een nieuwe waarde aan een bestaande matrix wilt toevoegen, gebruikt u de **[\*]** -versie van de alias.
 
 Wanneer een beleids definitie die gebruikmaakt van het toevoeg effect wordt uitgevoerd als onderdeel van een evaluatie cyclus, worden er geen wijzigingen aangebracht in resources die al bestaan. In plaats daarvan wordt er een resource gemarkeerd die voldoet aan de **if** -voor waarde als niet-compatibel.
 
@@ -67,7 +67,7 @@ Een toevoeg effect heeft alleen een **detail** matrix, wat vereist is. Omdat **D
 
 ### <a name="append-examples"></a>Voor beelden toevoegen
 
-Voor beeld 1: een combi natie van één **veld/waarde** met een niet- **[\*]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Wanneer de niet- **[\*]-** alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
+Voor beeld 1: een combi natie van één **veld/waarde** met een niet- **[\*]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen voor een opslag account. Wanneer de niet- **[\*]** -alias een matrix is, voegt het effect de **waarde** toe als de volledige matrix. Als de matrix al bestaat, treedt er een gebeurtenis deny op van het conflict.
 
 ```json
 "then": {
@@ -82,7 +82,7 @@ Voor beeld 1: een combi natie van één **veld/waarde** met een niet- **[\*]** -
 }
 ```
 
-Voor beeld 2: een combi natie van één **veld/waarde** met een **[\*]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen voor een opslag account. Door gebruik te maken van de alias **[\*]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
+Voor beeld 2: een combi natie van één **veld/waarde** met een **[\*]** - [alias](definition-structure.md#aliases) met een matrix **waarde** om IP-regels in te stellen op een opslag account. Door gebruik te maken van de alias **[\*]** , voegt het effect de **waarde** toe aan een mogelijk vooraf bestaande matrix. Als de matrix nog niet bestaat, wordt deze gemaakt.
 
 ```json
 "then": {
@@ -152,7 +152,7 @@ De eigenschap array **Operations** maakt het mogelijk verschillende labels op ve
         {
             "operation": "addOrReplace",
             "field": "tags['Dept']",
-            "field": "[parameters('DeptName')]"
+            "value": "[parameters('DeptName')]"
         }
     ]
 }
@@ -188,7 +188,7 @@ Voor beeld 1: Voeg de tag `environment` toe en vervang bestaande `environment`-t
 }
 ```
 
-Voor beeld 2: de tag @no__t 0 verwijderen en de code van de `environment` toevoegen of bestaande `environment`-tags vervangen door een waarde met para meters:
+Voor beeld 2: de `env` tag verwijderen en het `environment` label toevoegen of bestaande `environment` Tags vervangen door een waarde met para meters:
 
 ```json
 "then": {

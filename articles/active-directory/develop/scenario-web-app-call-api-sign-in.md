@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720198"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596365"
 ---
 # <a name="web-app-that-calls-web-apis---sign-in"></a>Web-app die web-Api's aanroept-aanmelden
 
@@ -30,11 +30,11 @@ Wat hier anders is, is dat wanneer de gebruiker zich afmeldt, vanuit deze toepas
 
 ## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Terugbellen onderscheppen na afmelden-eenmalige afmelding
 
-Uw toepassing kan de gebeurtenis after `logout` onderscheppen, bijvoorbeeld om de vermelding van de token cache te wissen die is gekoppeld aan het account dat is afgemeld. De web-app slaat toegangs tokens voor de gebruiker op in een cache. Als u de retour waarde na `logout` onderschept, kan uw webtoepassing de gebruiker uit de token cache verwijderen.
+Uw toepassing kan de gebeurtenis na het `logout` onderscheppen, bijvoorbeeld om de vermelding van de token cache te wissen die is gekoppeld aan het account dat is afgemeld. De web-app slaat toegangs tokens voor de gebruiker op in een cache. Wanneer u de na `logout`-call back onderschept, kan uw webtoepassing de gebruiker uit de token cache verwijderen.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Dit mechanisme wordt geïllustreerd in de `AddMsal()`-methode van [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
+Dit mechanisme wordt geïllustreerd in de `AddMsal()` methode [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
 
 Met de **Afmeldings-URL** die u hebt geregistreerd voor uw toepassing, kunt u eenmalige afmelding implementeren. Het micro soft Identity platform `logout`-eind punt roept de **Afmeldings-URL** aan die is geregistreerd bij uw toepassing. Deze aanroep treedt op als de afmelding is geïnitieerd vanuit uw web-app of vanuit een andere web-app of via de browser. Zie [eenmalige afmelding](v2-protocols-oidc.md#single-sign-out)voor meer informatie.
 
@@ -80,5 +80,24 @@ Het python-voor beeld verwijdert geen accounts uit de cache op de globale afmeld
 
 ## <a name="next-steps"></a>Volgende stappen
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Een token voor de web-app ophalen](scenario-web-app-call-api-acquire-token.md)
+> [Een token voor de web-app ophalen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Een token voor de web-app ophalen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Een token voor de web-app ophalen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Een token voor de web-app ophalen](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+
+---

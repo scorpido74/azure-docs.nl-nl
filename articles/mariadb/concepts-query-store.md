@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166220"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598397"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
@@ -70,6 +70,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 ```
 
 ## <a name="finding-wait-queries"></a>Wacht query's zoeken
+
+> [!NOTE]
+> Wacht statistieken mogen niet worden ingeschakeld tijdens piek uren van de werk belasting of voor onbepaalde tijd worden ingeschakeld voor gevoelige werk belastingen. <br>Voor workloads die worden uitgevoerd met een hoog CPU-gebruik of op servers die zijn geconfigureerd met een lagere vCores, moet u voorzichtig zijn bij het inschakelen van wacht statistieken. Deze moet niet voor onbepaalde tijd worden ingeschakeld. 
 
 Wacht gebeurtenis typen combi neren verschillende wacht gebeurtenissen in buckets op vergelijk bare wijze. Het query archief bevat het type wacht gebeurtenis, specifieke wacht gebeurtenis naam en de query in kwestie. Als u deze wacht gegevens wilt correleren met de statistieken voor de runtime van query's, betekent dit dat u meer inzicht krijgt in wat bijdragen aan de prestatie kenmerken van de query.
 
@@ -171,7 +174,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-- Als op een MariaDB-server de para meter `default_transaction_read_only` is ingeschakeld, kan de query Store geen gegevens vastleggen.
+- Als een MariaDB-server de para meter `default_transaction_read_only` heeft, kan de query Store geen gegevens vastleggen.
 - De functionaliteit voor het opslaan van query's kan worden onderbroken als er lange Unicode-query's worden aangetroffen (\> = 6000 bytes).
 - De Bewaar periode voor wacht statistieken is 24 uur.
 - Wacht statistieken maken gebruik van voor beeld Ti een fractie van gebeurtenissen vastleggen. De frequentie kan worden gewijzigd met behulp van de para meter `query_store_wait_sampling_frequency`.

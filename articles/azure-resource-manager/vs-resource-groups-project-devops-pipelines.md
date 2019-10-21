@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982444"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597518"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijp lijnen
 
@@ -71,25 +71,25 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
-Wanneer u de taak instelt op `AzurePowerShell@3`, gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt `AzurePowerShell@4`u de taak in op.
+Wanneer u de taak instelt op `AzurePowerShell@3`, gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt u de taak in op `AzurePowerShell@4`.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
+Geef bij `azureSubscription` de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Geef `scriptPath`voor het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
+Voor `scriptPath` geeft u het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -139,7 +139,7 @@ U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de
 
 ## <a name="copy-and-deploy-tasks"></a>Taken kopiëren en implementeren
 
-In deze sectie wordt beschreven hoe u doorlopende implementatie kunt configureren met behulp van een twee taken voor het faseren van de artefacten en het implementeren van de sjabloon. 
+In deze sectie wordt beschreven hoe u doorlopende implementatie kunt configureren met behulp van een twee taken voor het faseren van de artefacten en het implementeren van de sjabloon.
 
 In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)weer gegeven:
 
@@ -157,13 +157,13 @@ In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/task
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath` Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven. In dit voor beeld bestaan de bestanden in een map `AzureResourceGroup1` met de naam.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. De `SourcePath` geeft de locatie van de artefacten ten opzichte van het pijplijn bestand aan. In dit voor beeld bestaan de bestanden in een map met de naam `AzureResourceGroup1` die de naam is van het project.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
+Geef bij `azureSubscription` de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -176,35 +176,45 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-In de volgende YAML wordt de [implementatie taak voor de Azure-resource groep](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)weer gegeven:
+De volgende YAML toont de [implementatie taak voor de Azure Resource Manager sjabloon](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving.
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`: Selecteer het implementatie bereik uit de opties: `Management Group`, `Subscription` en `Resource Group`. Gebruik de **resource groep** in deze stapsgewijze instructies. Zie [implementatie bereiken](./resource-group-template-deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
 
-Geef `resourceGroupName` voor `location`en de naam en de locatie van de resource groep op die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
+- `ConnectedServiceName`: Geef de naam op van de service verbinding die u hebt gemaakt.
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
 
-De implementatie taak is gekoppeld aan een sjabloon `WebSite.json` met de naam en een para meters-bestand, genaamd website. para meters. json. Gebruik de namen van uw sjabloon en parameter bestanden.
+- `subscriptionName`: Geef de ID van het doel abonnement op. Deze eigenschap is alleen van toepassing op het implementatie bereik van de resource groep en de overzicht voor de implementatie van het abonnement.
+
+- `resourceGroupName` en `location`: Geef de naam en de locatie van de resource groep op die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
+
+De implementatie taak is gekoppeld aan een sjabloon met de naam `WebSite.json` en een bestand met para meters met de naam WebSite. para meters. json. Gebruik de namen van uw sjabloon en parameter bestanden.
 
 Nu u begrijpt hoe u de taken maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
 
@@ -226,16 +236,20 @@ Nu u begrijpt hoe u de taken maakt, gaan we de stappen door lopen om de pijp lij
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
 1. Selecteer **Opslaan**.
@@ -250,4 +264,4 @@ U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [zelf studie voor stapsgewijze instructies voor het gebruik van Azure-pijp lijnen met Resource Manager-sjablonen: Continue integratie van Azure Resource Manager sjablonen met Azure-pijp](resource-manager-tutorial-use-azure-pipelines.md)lijnen.
+Zie [zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen](resource-manager-tutorial-use-azure-pipelines.md)voor stapsgewijze instructies voor het gebruik van Azure-pijp lijnen met Resource Manager-sjablonen.

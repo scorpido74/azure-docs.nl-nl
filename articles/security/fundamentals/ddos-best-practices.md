@@ -1,9 +1,9 @@
 ---
-title: Aanbevolen procedures en referentie architecturen Azure DDoS Protection | Microsoft Docs
+title: Azure DDoS Protection-flexibele oplossingen ontwerpen | Microsoft Docs
 description: Meer informatie over hoe u logboek gegevens kunt gebruiken om grondige inzichten over uw toepassing te krijgen.
 services: security
 author: barclayn
-manager: barbkess
+manager: RKarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -12,58 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: a5b4451a6d03cec8e100ed67c0ed9333e8a221de
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727474"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595422"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Aanbevolen procedures en referentie architecturen
+# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection-flexibele oplossingen ontwerpen
 
 Dit artikel is voor IT-besluit vormers en beveiligings personeel. Het verwacht dat u bekend bent met Azure, netwerken en beveiliging.
-
-Voor het ontwerpen van een DDoS-tolerantie (Distributed Denial of service) is het plannen en ontwerpen vereist voor verschillende fout modi. In dit artikel worden aanbevolen procedures beschreven voor het ontwerpen van toepassingen in azure voor tolerantie tegen DDoS-aanvallen.
-
-## <a name="types-of-attacks"></a>Typen aanvallen
-
-DDoS is een type aanval dat probeert toepassings bronnen te uitgeputten. Het doel is de beschik baarheid van de toepassing en de mogelijkheid om legitieme aanvragen af te handelen te beïnvloeden. Aanvallen worden verfijnd en groter en van invloed. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
-
-Azure biedt continue beveiliging tegen DDoS-aanvallen. Deze beveiliging is standaard geïntegreerd in het Azure-platform en zonder extra kosten. 
+DDoS is een type aanval dat probeert toepassings bronnen te uitgeputten. Het doel is de beschik baarheid van de toepassing en de mogelijkheid om legitieme aanvragen af te handelen te beïnvloeden. Aanvallen worden verfijnd en groter en van invloed. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet. Voor het ontwerpen van een DDoS-tolerantie (Distributed Denial of service) is het plannen en ontwerpen vereist voor verschillende fout modi. Azure biedt continue beveiliging tegen DDoS-aanvallen. Deze beveiliging is standaard geïntegreerd in het Azure-platform en zonder extra kosten.
 
 Naast de core DDoS-beveiliging in het platform biedt [Azure DDoS Protection Standard](https://azure.microsoft.com/services/ddos-protection/) geavanceerde mogelijkheden voor DDoS-risico beperking tegen netwerk aanvallen. Het is automatisch afgestemd op het beveiligen van uw specifieke Azure-resources. De beveiliging is eenvoudig in te scha kelen tijdens het maken van nieuwe virtuele netwerken. Dit kan ook worden gedaan na het maken en er hoeven geen toepassings-of resource wijzigingen te worden aangebracht.
 
 ![De rol van Azure DDoS Protection bij het beveiligen van klanten en een virtueel netwerk van een aanvaller](./media/ddos-best-practices/image1.png)
 
-DDoS-aanvallen kunnen worden onderverdeeld in drie categorieën: volumetrisch, protocol en bron.
-
-### <a name="volumetric-attacks"></a>Volumetrische aanvallen
-
-Volumetrische aanvallen zijn het meest voorkomende type DDoS-aanval. Volumetrische aanvallen zijn assaults die gericht zijn op de netwerk-en transport lagen. Ze proberen bronnen te ontkoppelen, zoals netwerk koppelingen. 
-
-Deze aanvallen gebruiken vaak meerdere geïnfecteerde systemen om de netwerk lagen te laten overlopen met schijnbaar betrouwbaar verkeer. Ze gebruiken netwerklaag protocollen, zoals Internet Control Message Protocol (ICMP), User Data gram Protocol (UDP) en Transmission Control Protocol (TCP).
-
-De meest gebruikte DDoS-aanvallen voor netwerk lagen zijn TCP SYN-Flooding, ICMP-ECHO, UDP-Flooding, DNS en NTP-versterking van aanvallen. Dit type aanval kan niet alleen worden gebruikt om de service te verstoren, maar ook als een smokescreen voor meer kwaadwillend en gerichte netwerk indringing. Een voor beeld van een recente volumetrische aanval is de [memcached Exploiting](https://www.wired.com/story/github-ddos-memcached/) die betrokken github heeft. Dit aanvals gerichte UDP-poort 11211 en gegenereerde 1,35 TB/s van een aanvals volume.
-
-### <a name="protocol-attacks"></a>Protocol aanvallen
-
-Protocol aanvallen doel toepassings protocollen. Ze proberen alle beschik bare resources te gebruiken in infrastructuur apparaten zoals firewalls, toepassings servers en load balancers. Protocol aanvallen gebruiken pakketten die ongeldig zijn of die protocol afwijkingen bevatten. Deze aanvallen worden gebruikt door het verzenden van een groot aantal geopende aanvragen die worden beantwoord door servers en andere communicatie apparaten en te wachten op een reactie van het pakket. Het doel probeert te reageren op de openstaande aanvragen, veroorzaakt uiteindelijk het vastlopen van het systeem.
-
-Het meest voorkomende voor beeld van een DDoS-aanval op basis van een protocol is TCP SYN-Flooding. In deze aanval probeert een opeenvolging van TCP SYN-aanvragen een doel te overbelasten. Het doel is om ervoor te zorgen dat de bestemming niet meer reageert. De dyn-uitval van 2016, afgezien van een aanval op toepassings niveau, bestaat uit TCP SYN-flooden die zijn gericht op poort 53 van de DNS-servers van Dyn.
-
-### <a name="resource-attacks"></a>Bron aanvallen
-
-Bron aanvallen zijn gericht op de toepassingslaag. Ze starten een back-end-proces in een poging om een systeem te overbelasten. Bron aanvallen misbruiken het verkeer dat normaal lijkt, maar waarmee CPU-intensieve query's naar de server worden uitgevoerd. Het verkeer dat nodig is voor de uitlaat bronnen is lager dan het volume van het andere type aanvallen. Het verkeer in een bron aanval is niet van legitiem verkeer onderscheiden, waardoor het moeilijk te detecteren is. De meest voorkomende bron aanvallen bevinden zich op HTTP/HTTPS-en DNS-services.
-
-## <a name="shared-responsibility-in-the-cloud"></a>Gedeelde verantwoordelijkheid in de Cloud
-
-Een ingrijpende strategie helpt bij het bestrijden van het toenemende aantal aanvallen en verfijning. Beveiliging is een gedeelde verantwoordelijkheid tussen de klant en micro soft. Micro soft roept een [gedeeld verantwoordelijkheids model](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/)aan. In de volgende afbeelding ziet u deze verantwoordelijkheids divisie:
-
-![Verantwoordelijkheden van de klant en Azure](./media/ddos-best-practices/image2.png)
-
-Azure-klanten profiteren van de best practices van micro soft en het bouwen van wereld wijd gedistribueerde toepassingen die zijn ontworpen en getest voor fouten.
 
 ## <a name="fundamental-best-practices"></a>Best practices voor de basis
 
@@ -80,9 +46,9 @@ Ervoor zorgen dat een toepassing robuust genoeg is voor het afhandelen van een d
 
 ### <a name="design-for-scalability"></a>Ontwerpen voor schaal baarheid
 
-Schaal baarheid is hoe goed een systeem een grotere belasting kan afhandelen. U moet uw toepassingen zo ontwerpen dat ze [horizon taal](/azure/architecture/guide/design-principles/scale-out) kunnen worden geschaald om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.
+Schaal baarheid is hoe goed een systeem een grotere belasting kan afhandelen. Ontwerp uw toepassingen zodanig dat ze [horizon taal kunnen worden geschaald](/azure/architecture/guide/design-principles/scale-out) om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.
 
-Selecteer voor [Azure app service](/azure/app-service/app-service-value-prop-what-is)een [app service-abonnement](/azure/app-service/overview-hosting-plans) dat meerdere exemplaren biedt. Configureer voor Azure Cloud Services elk van uw rollen om [meerdere exemplaren](/azure/cloud-services/cloud-services-choose-me)te gebruiken. Zorg ervoor dat de architectuur van de virtuele machine (VM) voor [Azure virtual machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)meer dan één VM bevat en dat elke VM is opgenomen [](/azure/virtual-machines/virtual-machines-windows-manage-availability)in een beschikbaarheidsset. We raden u aan [virtuele-machine schaal sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) te gebruiken voor de mogelijkheden voor automatisch schalen.
+Selecteer voor [Azure app service](/azure/app-service/app-service-value-prop-what-is)een [app service-abonnement](/azure/app-service/overview-hosting-plans) dat meerdere exemplaren biedt. Configureer voor Azure Cloud Services elk van uw rollen om [meerdere exemplaren](/azure/cloud-services/cloud-services-choose-me)te gebruiken. Zorg ervoor dat de architectuur van de virtuele machine (VM) voor [Azure virtual machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)meer dan één VM bevat en dat elke VM is opgenomen in een [beschikbaarheidsset](/azure/virtual-machines/virtual-machines-windows-manage-availability). We raden u aan [virtuele-machine schaal sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) te gebruiken voor de mogelijkheden voor automatisch schalen.
 
 ### <a name="defense-in-depth"></a>Diep ingrijpende verdediging
 
@@ -115,7 +81,7 @@ De Azure DDoS Protection Basic-service is gericht op de beveiliging van de infra
 
 Standaard beveiliging biedt verbeterde functies voor DDoS-risico beperking. Het wordt automatisch afgestemd om uw specifieke Azure-resources in een virtueel netwerk te beveiligen. Beveiliging is eenvoudig in te scha kelen op een nieuw of bestaand virtueel netwerk en er zijn geen wijzigingen in de toepassing of resource. Het heeft verschillende voor delen ten opzichte van de Basic-service, inclusief logboek registratie, waarschuwingen en telemetrie. De volgende secties bevatten een overzicht van de belangrijkste functies van de Azure DDoS Protection Standard-Service.
 
-#### <a name="adaptive-real-time-tuning"></a>Adaptieve real-time tuning
+#### <a name="adaptive-real-time-tuning"></a>Adaptieve real time tuning
 
 De Azure DDoS Protection Basic-service helpt klanten te beschermen en te voor komen dat ze van invloed zijn op andere klanten. Als een service bijvoorbeeld is ingericht voor een typisch volume van legitiem binnenkomend verkeer dat kleiner is dan de frequentie van de *Activering* van het beleid voor de hele infrastructuur DDoS Protection, kan een DDoS-aanval op de resources van die klant niet worden opgemerkt. Meer in het algemeen, de complexiteit van recente aanvallen (bijvoorbeeld multi-vector DDoS) en het toepassingsspecifieke gedrag van tenants aanroepen voor een aangepast beveiligings beleid per klant. Deze aanpassing wordt door de service uitgevoerd met behulp van twee inzichten:
 
@@ -131,7 +97,7 @@ DDoS Protection Standard maakt voor de duur van een DDoS-aanval uitgebreide tele
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-beperkings beleid
 
-Selecteer in de Azure Portal**metrische gegevens** **controleren** > . Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
+Selecteer in de Azure Portal  > **metrische gegevens** **controleren** . Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
 
 DDoS Protection Standard geldt voor elk openbaar IP-adres van de beveiligde bron, in het virtuele netwerk waarop DDoS is ingeschakeld, drie opties voor het beperken van de oplossing (TCP SYN, TCP en UDP). U kunt de drempel waarden voor het beleid weer geven door de metrische **inkomende pakketten te selecteren om de DDoS-beperking te activeren**.
 
@@ -161,7 +127,7 @@ Planning en voor bereiding zijn essentieel om te begrijpen hoe een systeem tijde
 
 Als u DDoS Protection Standard hebt, moet u ervoor zorgen dat deze is ingeschakeld op het virtuele netwerk van Internet gerichte eind punten. Het configureren van DDoS-waarschuwingen helpt u voortdurend te kijken naar mogelijke aanvallen op uw infra structuur. 
 
-U moet uw toepassingen onafhankelijk bewaken. Het normale gedrag van een toepassing begrijpen. Bereid u voor op een besluit te nemen als de toepassing niet naar verwachting functioneert tijdens een DDoS-aanval.
+Bewaak uw toepassingen onafhankelijk. Het normale gedrag van een toepassing begrijpen. Bereid u voor op een besluit te nemen als de toepassing niet naar verwachting functioneert tijdens een DDoS-aanval.
 
 #### <a name="testing-through-simulations"></a>Testen via simulaties
 
@@ -183,7 +149,7 @@ Cyber beveiliging vereist een constante innovatie in verdediging. De Azure DDoS 
 
 Een DDoS-aanval die gericht is op Azure-resources, vereist meestal een minimale tussen komst van een gebruikers oogpunt. Als onderdeel van een strategie voor incident reacties is het niet meer mogelijk om de impact op de bedrijfs continuïteit te beperken.
 
-### <a name="microsoft-threat-intelligence"></a>Bedreigingsinformatie van Microsoft
+### <a name="microsoft-threat-intelligence"></a>Micro soft Threat Intelligence
 
 Micro soft heeft een uitgebreid netwerk met bedreigings informatie. Dit netwerk maakt gebruik van de collectieve kennis van een uitgebreide beveiligings community die ondersteuning biedt voor micro soft onlineservices, micro soft-partners en relaties binnen de Internet beveiligings community. 
 
@@ -193,7 +159,8 @@ De micro soft-eenheid voor digitale misdrijven (DCU) voert ook aanstootgevende s
 
 ### <a name="risk-evaluation-of-your-azure-resources"></a>Risico-evaluatie van uw Azure-resources
 
-Het is belang rijk om het bereik van uw risico van een DDoS-aanval voortdurend te begrijpen. Stel u regel matig in: 
+Het is belang rijk om het bereik van uw risico van een DDoS-aanval voortdurend te begrijpen. Stel u regel matig in:
+
 - Welke nieuwe open bare Azure-resources moeten worden beschermd?
 
 - Is er een Single Point of Failure in de service? 
@@ -226,9 +193,9 @@ Azure DDoS Protection Standard identificeert en vermindert DDoS-aanvallen zonder
 
 - Een actor heeft zich dreigen een DDoS-aanval voor uw resources te starten.
 
-- Als u een IP-of IP-bereik moet white list uit Azure DDoS Protection standaard. Een veelvoorkomend scenario is het white list van het IP-adres als het verkeer wordt gerouteerd vanuit een externe Cloud WAF naar Azure. 
+- Als u een lijst wilt toestaan van een IP-of IP-bereik uit Azure DDoS Protection standaard. Een veelvoorkomend scenario is het toestaan van lijst-IP als het verkeer wordt gerouteerd vanuit een externe Cloud WAF naar Azure. 
 
-Voor aanvallen met een belang rijke bedrijfs impact, maakt u een ondersteunings [ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)met een ernst.
+Voor aanvallen met een belang rijke bedrijfs impact, maakt u een [ondersteunings ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)met een ernst.
 
 ### <a name="post-attack-steps"></a>Stappen na aanval
 
@@ -268,7 +235,7 @@ In deze architectuur is DDoS Protection standaard ingeschakeld op het virtuele n
 
 #### <a name="paas-web-application"></a>PaaS-webtoepassing
 
-Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure app service](https://azure.microsoft.com/documentation/services/app-service/) en [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
+Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  and [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
 Er is een stand-by-regio ingesteld voor failover-scenario's.
 
 ![Diagram van de referentie architectuur voor een PaaS-webtoepassing](./media/ddos-best-practices/image11.png)
@@ -301,8 +268,8 @@ Meer informatie over deze referentie architectuur kunt u vinden in de documentat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure DDoS Protection product pagina](https://azure.microsoft.com/services/ddos-protection/)
+* [Gedeelde verantwoordelijkheid in de Cloud](shared-responsibility.md)
 
-* [Azure DDoS Protection blog](https://aka.ms/ddosblog)
+* [Azure DDoS Protection product pagina](https://azure.microsoft.com/services/ddos-protection/)
 
 * [Documentatie over Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)

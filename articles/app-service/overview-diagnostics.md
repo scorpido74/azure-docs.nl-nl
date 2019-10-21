@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066859"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675173"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Overzicht van Azure App Service diagnostische gegevens
 
@@ -37,7 +37,7 @@ Voor Azure Functions gaat u naar de functie-app en klikt u in de bovenste naviga
 
 Op de start pagina van App Service diagnostische gegevens kunt u de categorie kiezen die het probleem met uw app het beste beschrijft met behulp van de tref woorden in elke start pagina tegel. Op deze pagina vindt u ook **Diagnostische Hulpprogram ma's** voor Windows-apps. Zie [Diagnostische hulpprogram ma's (alleen voor Windows-apps)](#diagnostic-tools-only-for-windows-app).
 
-![Startpagina](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+![Gaan](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>Interactieve interface
 
@@ -47,7 +47,7 @@ Wanneer u een startpagina categorie selecteert die het beste past bij het proble
 
 Nadat u op deze tegels hebt geklikt, kunt u een lijst met onderwerpen weer geven die betrekking hebben op het probleem dat wordt beschreven in de tegel. Deze onderwerpen bevatten fragmenten van belang rijke informatie uit het volledige rapport. U kunt op een van deze onderwerpen klikken om de problemen verder te onderzoeken. U kunt ook klikken op **volledig rapport weer geven** om alle onderwerpen op één pagina te verkennen.
 
-![Onderwerpen](./media/app-service-diagnostics/application-logs-insights-3.png)
+![Topics](./media/app-service-diagnostics/application-logs-insights-3.png)
 
 ![Volledig rapport weer geven](./media/app-service-diagnostics/view-full-report-4.png)
 
@@ -92,17 +92,17 @@ Diagnostische Hulpprogram Ma's bevatten meer geavanceerde diagnostische hulpprog
 
 ### <a name="proactive-cpu-monitoring"></a>Proactieve CPU-bewaking
 
-Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden.
+Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden. Zie voor meer informatie [problemen met uw CPU oplossen voordat deze optreden](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden.
 
 ![Proactieve CPU-bewaking](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Automatisch herstel en proactief automatisch herstel
 
-Automatisch herstel is een actie die u kunt uitvoeren wanneer uw app onverwachte gedrag heeft. U kunt uw eigen regels instellen op basis van het aantal aanvragen, de langzame aanvraag, de geheugen limiet en de HTTP-status code om beperkings acties te activeren. Gebruik het hulp programma om tijdelijk een onverwacht gedrag te beperken tot u de hoofd oorzaak hebt gevonden.
+Automatisch herstel is een actie die u kunt uitvoeren wanneer uw app onverwachte gedrag heeft. U kunt uw eigen regels instellen op basis van het aantal aanvragen, de langzame aanvraag, de geheugen limiet en de HTTP-status code om beperkings acties te activeren. Gebruik het hulp programma om tijdelijk een onverwacht gedrag te beperken tot u de hoofd oorzaak hebt gevonden. Zie [de nieuwe automatische Retoucheer ervaring aankondigen in app service Diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)voor meer informatie.
 
 ![Automatisch herstellen](./media/app-service-diagnostics/auto-healing-10.png)
 
-Net als proactieve CPU-bewaking is proactieve automatische herstel bewerking een oplossing om het onverwachte gedrag van uw app te beperken. Met proactieve automatische herstel bewerking wordt uw app opnieuw gestart wanneer App Service bepaalt dat uw app een onherstelbare status heeft. Zie [de nieuwe automatische Retoucheer ervaring aankondigen in app service Diagnostics](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)voor meer informatie.
+Net als proactieve CPU-bewaking is proactieve automatische herstel bewerking een oplossing om het onverwachte gedrag van uw app te beperken. Met proactieve automatische herstel bewerking wordt uw app opnieuw gestart wanneer App Service bepaalt dat uw app een onherstelbare status heeft. Zie [Inleiding tot proactieve automatische Retouchies](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)voor meer informatie.
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigator-en wijzigings analyse (alleen voor Windows-apps)
 
@@ -112,6 +112,6 @@ In een groot team met continue integratie en waar uw app veel afhankelijkheden h
 
 ![Diff-weer gave](./media/app-service-diagnostics/diff-view-12.png)
 
-Wijzigings analyse voor app-wijzigingen is toegankelijk via tegel snelkoppelingen, **toepassings wijzigingen** en crashes van **toepassingen** in **Beschik baarheid en prestaties** , zodat u deze gelijktijdig met andere metrische gegevens kunt gebruiken. Voordat u de functie kunt gebruiken, moet u deze eerst inschakelen. Zie voor meer informatie [de nieuwe ervaring voor wijzigings analyse aankondigen in app service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
+Wijzigings analyse voor app-wijzigingen is toegankelijk via tegel snelkoppelingen, **toepassings wijzigingen** en **crashes van toepassingen** in **Beschik baarheid en prestaties** , zodat u deze gelijktijdig met andere metrische gegevens kunt gebruiken. Voordat u de functie kunt gebruiken, moet u deze eerst inschakelen. Zie voor meer informatie [de nieuwe ervaring voor wijzigings analyse aankondigen in app service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
 
 Post uw vragen of feedback op [UserVoice](https://feedback.azure.com/forums/169385-web-apps) door ' [diag] ' toe te voegen in de titel.

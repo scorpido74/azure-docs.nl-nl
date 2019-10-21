@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130225"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596783"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -40,7 +40,7 @@ Het voor deel van dit model is de mogelijkheid om centraal controle te uitoefene
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Hoe kan ik de Azure Firewall installeren?
 
-U kunt Azure Firewall instellen met behulp van de Azure Portal, Power shell, REST API of door sjablonen te gebruiken. Zie [zelf studie: Implementeer en configureer Azure Firewall met behulp](tutorial-firewall-deploy-portal.md) van de Azure portal voor stapsgewijze instructies.
+U kunt Azure Firewall instellen met behulp van de Azure Portal, Power shell, REST API of door sjablonen te gebruiken. Zie [zelf studie: Azure firewall implementeren en configureren met behulp van de Azure Portal](tutorial-firewall-deploy-portal.md) voor stapsgewijze instructies.
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Wat zijn enkele Azure Firewall concepten?
 
@@ -50,7 +50,7 @@ Er zijn drie typen regel verzamelingen:
 
 * *Toepassings regels*: Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
 * *Netwerk regels*: Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
-* *NAT-regels*: Configureer DNAT-regels om binnenkomende verbindingen toe te staan.
+* *NAT-regels*: DNAT-regels configureren om binnenkomende verbindingen toe te staan.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Ondersteunt Azure Firewall het filteren van inkomend verkeer?
 
@@ -58,7 +58,7 @@ Azure Firewall ondersteunt filters voor inkomend en uitgaand verkeer. Inkomende 
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welke logboek registratie en analyse services worden ondersteund door de Azure Firewall?
 
-Azure Firewall is geïntegreerd met Azure Monitor voor het weer geven en analyseren van Firewall Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of door verschillende hulpprogram ma's zoals Excel en Power BI. Zie [Zelfstudie: Azure Firewall logboeken](tutorial-diagnostics.md)bewaken.
+Azure Firewall is geïntegreerd met Azure Monitor voor het weer geven en analyseren van Firewall Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of door verschillende hulpprogram ma's zoals Excel en Power BI. Zie voor meer informatie [zelf studie: Azure firewall logboeken bewaken](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hoe werkt Azure Firewall anders dan bestaande services zoals Nva's in de Marketplace?
 
@@ -145,7 +145,7 @@ Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het verta
 
 Als u * **. contoso.com**configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>*De inrichtings status: Mislukt* gemiddelde?
+## <a name="what-does-provisioning-state-failed-mean"></a>Wat betekent de *inrichtings status: mislukt* ?
 
 Wanneer een configuratie wijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-end-exemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan een inconsistente status hebben, waarbij sommige instanties de vorige configuratie hebben, waarbij anderen de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een *geslaagde* inrichtings status heeft.
 
@@ -163,6 +163,14 @@ Azure Firewall moet meer exemplaren van virtuele machines inrichten terwijl deze
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Moet de grootte van het subnet van de firewall veranderen wanneer de service wordt geschaald?
 
 Nee. Azure Firewall hebt geen subnet dat groter is dan/26.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Hoe kan ik de door Voer van de firewall verhogen?
+
+De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps. Op dit moment is uitschalen alleen gebaseerd op het CPU-gebruik. In sommige gevallen kan een firewall met netwerk regels alleen worden geschaald om de door voer te verhogen omdat de netwerk regels het CPU-gebruik niet aanzienlijk beïnvloeden. Als u een hogere door Voer voor uw firewall nodig hebt, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verhogen.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het om Azure Firewall uit te schalen?
+
+Het duurt momenteel vijf tot zeven minuten voordat Azure Firewall uitschalen. Als u bursts hebt die een sneller automatisch schalen vereisen, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verg Roten.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Staat Azure Firewall standaard toegang tot Active Directory toe?
 

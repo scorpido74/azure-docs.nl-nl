@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71262334"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597289"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
 [Platform logboeken](platform-logs-overview.md) in azure bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) voor het configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties. Hierdoor kunt u automatisch het verzamelen van platform Logboeken starten wanneer een resource wordt gemaakt.
@@ -53,7 +53,7 @@ Afhankelijk van de [doelen](diagnostic-settings.md#destinations) voor de diagnos
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

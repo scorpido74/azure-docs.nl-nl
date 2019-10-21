@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263338"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596862"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
 
@@ -69,7 +69,7 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ Hiermee bepaalt u de [sampling functie in Application Insights](./functions-moni
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ Hiermee bepaalt u de [sampling functie in Application Insights](./functions-moni
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |isEnabled|waar|Hiermee worden steek proeven in-of uitgeschakeld.| 
-|maxTelemetryItemsPerSecond|5|De drempel waarde waarmee steek proeven worden gestart.| 
+|maxTelemetryItemsPerSecond|20|De drempel waarde waarmee steek proeven worden gestart.| 
 |EnableLiveMetrics |waar|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
 |EnableDependencyTracking|waar|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
 |EnablePerformanceCountersCollection|waar|Hiermee schakelt u de verzameling kudu-prestatie meter items.|

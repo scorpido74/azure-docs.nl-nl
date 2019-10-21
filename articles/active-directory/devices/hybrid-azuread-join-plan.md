@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389561"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596343"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -75,7 +75,7 @@ Als eerste plannings stap moet u uw omgeving controleren en bepalen of u apparat
 
 Hybride Azure AD-deelname wordt momenteel niet ondersteund als uw omgeving bestaat uit één AD-forest dat identiteits gegevens synchroniseert met meer dan één Azure AD-Tenant.
 
-Hybride Azure AD-deelname wordt momenteel niet ondersteund bij het gebruik van VDI (Virtual Desktop Infrastructure).
+Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van WIndows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
 

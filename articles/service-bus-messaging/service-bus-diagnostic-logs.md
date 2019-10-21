@@ -15,66 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 41e0bdc1f04c9491ebe939f46b59ae4eb2bc7ab6
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261809"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592412"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Diagnostische logboeken Service Bus
+# <a name="enable-diagnostic-logs-for-service-bus"></a>Diagnostische logboeken inschakelen voor Service Bus
 
-U kunt twee typen logboeken voor Azure Service Bus weer geven:
-* **[Activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md)** . Deze logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op een taak. De logboeken zijn altijd ingeschakeld.
-* **[Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)** . U kunt Diagnostische logboeken configureren voor uitgebreide informatie over alles wat er in een taak gebeurt. Diagnostische logboeken voor activiteiten vanaf het moment dat de taak is gemaakt totdat de taak wordt verwijderd, met inbegrip van updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
+Wanneer u begint met het gebruik van uw Azure Service Bus naam ruimte, wilt u wellicht controleren hoe en wanneer uw naam ruimte wordt gemaakt, verwijderd of geopend. Dit artikel bevat een overzicht van alle operationele/Diagnostische logboeken die beschikbaar zijn.
 
-## <a name="turn-on-diagnostic-logs"></a>Logboeken met diagnostische gegevens inschakelen
+Azure Service Bus ondersteunt momenteel activiteiten/operationele logboeken voor het vastleggen van **beheer bewerkingen** die worden uitgevoerd op de Azure service bus naam ruimte. In deze logboeken wordt het bewerkings type vastgelegd, inclusief het maken van de wachtrij, de gebruikte resources en de status van de bewerking.
 
-Diagnostische logboeken zijn standaard uitgeschakeld. Als u Diagnostische logboeken wilt inschakelen, voert u de volgende stappen uit:
+## <a name="operational-logs-schema"></a>Schema van operationele logboeken
 
-1.  In de [Azure-portal](https://portal.azure.com)onder **bewaking en beheer**, klikt u op **diagnoselogboeken**.
+Alle logboeken worden opgeslagen in de indeling JavaScript Object Notation (JSON) op de volgende twee locaties.
 
-    ![Blade navigatie naar Diagnostische logboeken](./media/service-bus-diagnostic-logs/image1.png)
+- **AzureActivity** : geeft logboeken weer van bewerkingen/acties die zijn uitgevoerd op uw naam ruimte op de portal of via Azure Resource Manager sjabloon implementaties.
+- **AzureDiagnostics** : geeft logboeken weer van bewerkingen/acties die worden uitgevoerd op uw naam ruimte met behulp van de API of via beheer-clients in de taal-SDK.
 
-2. Klik op de resource die u wilt bewaken.  
+De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-3.  Klik op **Diagnostische gegevens inschakelen**.
-
-    ![Diagnostische logboeken inschakelen](./media/service-bus-diagnostic-logs/image2.png)
-
-4.  Voor **Status**, klikt u op **op**.
-
-    ![Diagnostische logboeken voor status wijzigen](./media/service-bus-diagnostic-logs/image3.png)
-
-5.  Stel het gewenste archief doel in; bijvoorbeeld een opslag account, een Event Hub of Azure Monitor Logboeken.
-
-6.  De nieuwe instellingen voor diagnostische gegevens opslaan.
-
-Nieuwe instellingen van kracht in ongeveer 10 minuten. Daarna worden logboeken weer gegeven in het geconfigureerde archiverings doel op de Blade **Diagnostische logboeken** .
-
-Zie voor meer informatie over het configureren van diagnostische gegevens over de [overzicht van diagnostische logboeken in Azure](../azure-monitor/platform/resource-logs-overview.md).
-
-## <a name="diagnostic-logs-schema"></a>Diagnostische logboeken schema
-
-Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende sectie.
-
-## <a name="operational-logs-schema"></a>Operationele logboeken schema
-
-Logboeken in de **OperationalLogs** -categorie vastleggen wat er gebeurt tijdens service bus bewerkingen. In deze logboeken wordt het bewerkings type vastgelegd, inclusief het maken van de wachtrij, de gebruikte resources en de status van de bewerking.
-
-Operationeel logboek van JSON-tekenreeksen zijn onder andere elementen die worden vermeld in de volgende tabel:
-
-Name | Description
-------- | -------
-ActivityId | Interne ID, gebruikt voor bijhouden
-EventName | Naam van bewerking           
-resourceId | Resource-ID Azure Resource Manager
-SubscriptionId | Abonnements-id
-EventTimeString | Bewerkings tijd
-EventProperties | Bewerkings eigenschappen
-State | Bewerkingsstatus
-Caller | Aanroeper van de bewerking (Azure Portal of Management-client)
-category | OperationalLogs
+| Naam | Beschrijving |
+| ------- | ------- |
+| ActivityId | Interne ID, gebruikt om de opgegeven activiteit te identificeren |
+| eventName | Naam van bewerking |
+| ResourceId | Resource-ID Azure Resource Manager |
+| SubscriptionId | Abonnements-id |
+| EventTimeString | Bewerkings tijd |
+| EventProperties | Bewerkings eigenschappen |
+| Status | Bewerkingsstatus |
+| Caller | Aanroeper van de bewerking (Azure Portal of Management-client) |
+| Category | OperationalLogs |
 
 Hier volgt een voor beeld van een JSON-teken reeks voor een operationeel logboek:
 
@@ -91,6 +64,54 @@ Hier volgt een voor beeld van een JSON-teken reeks voor een operationeel logboek
   "category": "OperationalLogs"
 }
 ```
+
+## <a name="what-eventsoperations-are-captured-in-operational-logs"></a>Welke gebeurtenissen/bewerkingen worden vastgelegd in operationele logboeken?
+
+In de bewerkings logboeken worden alle beheer bewerkingen vastgelegd die worden uitgevoerd op de naam ruimte Azure Service Bus. Gegevens bewerkingen worden niet vastgelegd vanwege de grote hoeveelheid gegevens bewerkingen die worden uitgevoerd op Azure Service Bus.
+
+> [!NOTE]
+> Als u gegevens bewerkingen beter wilt bijhouden, raden we u aan client zijde tracering te gebruiken.
+
+De onderstaande beheer bewerkingen worden vastgelegd in operationele Logboeken. 
+
+| Scope | Bewerking|
+|-------| -------- |
+| Naamruimte | <ul> <li> Naam ruimte maken</li> <li> Naam ruimte bijwerken </li> <li> Naam ruimte verwijderen </li>  </ul> | 
+| Wachtrij | <ul> <li> Wachtrij maken</li> <li> Wachtrij bijwerken</li> <li> Wachtrij verwijderen </li> </ul> | 
+| Onderwerp | <ul> <li> Onderwerp maken </li> <li> Onderwerp bijwerken </li> <li> Onderwerp verwijderen </li> </ul> |
+| Abonnement | <ul> <li> Abonnement maken </li> <li> Abonnement bijwerken </li> <li> Abonnement verwijderen </li> </ul> |
+
+> [!NOTE]
+> Op dit moment worden **Lees** bewerkingen niet bijgehouden in de operationele Logboeken.
+
+## <a name="how-to-enable-operational-logs"></a>Hoe kan ik operationele logboeken inschakelen?
+
+Operationele logboeken zijn standaard uitgeschakeld. Als u Diagnostische logboeken wilt inschakelen, voert u de volgende stappen uit:
+
+1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw Azure service bus naam ruimte en klik onder **bewaking**op **Diagnostische instellingen**.
+
+   ![Blade navigatie naar Diagnostische logboeken](./media/service-bus-diagnostic-logs/image1.png)
+
+2. Klik op **Diagnostische instelling toevoegen** om de diagnostische instellingen te configureren.  
+
+   ![Diagnostische logboeken inschakelen](./media/service-bus-diagnostic-logs/image2.png)
+
+3. De diagnostische instellingen configureren
+   1. Typ een **naam** om de diagnostische instellingen te identificeren.
+   2. Kies een doel voor de diagnostische gegevens.
+      - Als u een **opslag account**kiest, moet u het opslag account configureren waarin de diagnostische gegevens worden opgeslagen.
+      - Als u **Event hubs**selecteert, moet u de juiste Event hub configureren waar de diagnostische instellingen worden gestreamd.
+      - Als u **log Analytics**kiest, moet u opgeven welk exemplaar van log Analytics de diagnostische gegevens worden verzonden.
+    3. Controleer **OperationalLogs**.
+
+       ![Diagnostische logboeken voor status wijzigen](./media/service-bus-diagnostic-logs/image3.png)
+
+4. Klik op **Opslaan**.
+
+
+Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in het geconfigureerde archiverings doel op de Blade **Diagnostische logboeken** .
+
+Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

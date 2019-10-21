@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294354"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596890"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
-Dit artikel bevat richt lijnen voor het verbeteren van de prestaties en betrouw baarheid van uw [serverloze](https://azure.microsoft.com/solutions/serverless/) functie-apps. 
+Dit artikel bevat richt lijnen voor het verbeteren van de prestaties en betrouw baarheid van uw [serverloze](https://azure.microsoft.com/solutions/serverless/) functie-apps.  
 
 ## <a name="general-best-practices"></a>Algemene best practices
 
@@ -100,7 +100,7 @@ Asynchrone programmering is een aanbevolen best practice. Vermijd echter altijd 
 
 Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json`-bestand zoals beschreven in de [host. json-referentie documentatie](functions-host-json.md) configureren
 
-Voor C# functions kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van `EventData sensorEvent` kan de methode handtekening bijvoorbeeld `EventData[] sensorEvent` zijn.  Voor andere talen moet u de eigenschap kardinaliteit in uw `function.json` expliciet instellen op `many` om batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+Voor C# functions kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van `EventData sensorEvent` kan de hand tekening van de methode bijvoorbeeld `EventData[] sensorEvent` zijn.  Voor andere talen moet u de eigenschap kardinaliteit in uw `function.json` expliciet instellen op `many` om batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Gedrag van hosts configureren voor betere verwerking van gelijktijdigheid
 

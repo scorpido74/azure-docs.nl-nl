@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554544"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595373"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
@@ -125,10 +125,6 @@ Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder p
 4.  Voer ALTER INDEX < Ordered_CCI_Index > uit op < Table_B > opnieuw te bouwen partitie = < Partition_ID > op tabel B om de switch in de partitie opnieuw op te bouwen.  
 5.  Herhaal stap 3 en 4 voor elke partitie in Table_A.
 6.  Wanneer alle partities zijn overgeschakeld van Table_A naar Table_B en opnieuw zijn opgebouwd, verwijdert u Table_A en wijzigt u de naam van Table_B in Table_A. 
-
->[!NOTE]
->Tijdens de preview-versie van de geordende geclusterde column store-index (CCI) in Azure SQL Data Warehouse kunnen dubbele gegevens worden gegenereerd als de bestelde CCI is gemaakt of opnieuw is samengesteld via een geclusterde column Store-INDEX in een gepartitioneerde tabel. Er is geen gegevens verlies betrokken. Binnenkort is er een oplossing voor dit probleem beschikbaar. Voor een tijdelijke oplossing kunnen gebruikers besteld CCI maken op een gepartitioneerde tabel met behulp van de opdracht CTAS
-
 
 ## <a name="examples"></a>Voorbeelden
 

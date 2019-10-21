@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172984"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598022"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Time handling in Azure Stream Analytics begrijpen
 
@@ -22,11 +22,11 @@ In dit artikel wordt beschreven hoe u ontwerp opties kunt maken voor het oplosse
 
 Voor een betere bespreking van de discussie kunt u een aantal achtergrond concepten definiëren:
 
-- **Tijd van gebeurtenis**: Het tijdstip waarop de oorspronkelijke gebeurtenis plaatsvond. Bijvoorbeeld wanneer een zwevende auto op de weg een bestaans hokje benadert.
+- **Tijd**van de gebeurtenis: de tijd waarop de oorspronkelijke gebeurtenis heeft plaatsgevonden. Bijvoorbeeld wanneer een zwevende auto op de weg een bestaans hokje benadert.
 
-- **Verwerkings tijd**: Het tijdstip waarop de gebeurtenis het verwerkings systeem bereikt en wordt waargenomen. Bijvoorbeeld wanneer een sensor die de telefoon gebruikt, de auto ziet en het computer systeem even duurt om de gegevens te verwerken.
+- **Verwerkings tijd**: de tijd waarop de gebeurtenis het verwerkings systeem bereikt en wordt waargenomen. Bijvoorbeeld wanneer een sensor die de telefoon gebruikt, de auto ziet en het computer systeem even duurt om de gegevens te verwerken.
 
-- **Water merk**: Een markering van een gebeurtenis die aangeeft tot welke punt gebeurtenissen zijn uitgevallen voor de streaming-processor. Met water merken kan het systeem aangeven dat de voortgang van de gebeurtenissen duidelijk wordt geconsumeerd. Door de aard van streams, worden de binnenkomende gebeurtenis gegevens nooit gestopt, waardoor water merken de voortgang van een bepaald punt in de stroom aangeven.
+- **Water merk**: een markering voor een gebeurtenis die aangeeft tot welke punt gebeurtenissen zijn uitgevallen op de streaming-processor. Met water merken kan het systeem aangeven dat de voortgang van de gebeurtenissen duidelijk wordt geconsumeerd. Door de aard van streams, worden de binnenkomende gebeurtenis gegevens nooit gestopt, waardoor water merken de voortgang van een bepaald punt in de stroom aangeven.
 
    Het watermerk concept is belang rijk. Met water merken kunnen Stream Analytics bepalen wanneer het systeem volledige, juiste en herhaal bare resultaten kan produceren die niet hoeven te worden ingetrokken. De verwerking kan worden uitgevoerd op een gegarandeerde manier die voorspelbaar en herhaalbaar is. Als er bijvoorbeeld een hertelling moet worden uitgevoerd voor een bepaalde voor waarde voor fout afhandeling, zijn water merken veilig begin-en eind punten.
 
@@ -78,7 +78,7 @@ Houd er rekening mee dat wanneer u ervoor kiest om **aankomst tijd** te gebruike
 
 Op basis van de definitie van het venster late aankomst tolerantie voor elk binnenkomend evenement Azure Stream Analytics de tijd van de **gebeurtenis** vergeleken met de **aankomst tijd**. Als de tijd van de gebeurtenis zich buiten het tolerantie venster bevindt, kunt u het systeem zo configureren dat het de gebeurtenis verwijdert of de tijd van de gebeurtenis aanpassen zodat deze binnen de tolerantie valt.
 
-Houd er rekening mee dat nadat water merken zijn gegenereerd, de service mogelijk gebeurtenissen kan ontvangen met een lagere gebeurtenis tijd dan het water merk. U kunt de service zo configureren dat deze gebeurtenissen worden neerzetten of de tijd van de gebeurtenis **aanpassen** aan de watermerk waarde.
+Houd er rekening mee dat nadat water merken zijn gegenereerd, de service mogelijk gebeurtenissen kan ontvangen met een lagere gebeurtenis tijd dan het water merk. U kunt de service zo configureren dat deze gebeurtenissen worden **neerzetten** of de tijd van de gebeurtenis **aanpassen** aan de watermerk waarde.
 
 Als onderdeel van de aanpassing wordt het **systeem. time stamp** van de gebeurtenis ingesteld op de nieuwe waarde, maar het veld voor de **gebeurtenis tijd** zelf wordt niet gewijzigd. Deze aanpassing is de enige situatie waarin een gebeurtenis **systeem. time stamp** kan afwijken van de waarde in het veld gebeurtenis tijd en kan leiden tot onverwachte resultaten.
 
@@ -86,7 +86,7 @@ Als onderdeel van de aanpassing wordt het **systeem. time stamp** van de gebeurt
 
 De hier beschreven methode voor het genereren van de heuristische water merk werkt goed in de meeste gevallen waarin tijd doorgaans wordt gesynchroniseerd tussen de verschillende afzenders van de gebeurtenis. In werkelijkheid, met name in veel IoT-scenario's, heeft het systeem echter weinig controle over de klok van de afzenders van de gebeurtenis. De afzenders van de gebeurtenis kunnen allerlei apparaten in het veld zijn, mogelijk op verschillende versies van hardware en software.
 
-In plaats van een water merk globaal te gebruiken voor alle gebeurtenissen in een invoer partitie, heeft Stream Analytics een ander mechanisme met de naam substreams om u te helpen. U kunt substreams gebruiken in uw taak door een taak query te schrijven die gebruikmaakt van de component [**time stamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) en het sleutel woord **over**. Als u de substream wilt aanwijzen, geeft u de naam van een sleutel kolom op `deviceid`achter het sleutel woord over, zoals een, zodat het systeem tijd beleid op die kolom toepast. Elke substream krijgt een eigen onafhankelijk water merk. Dit mechanisme is handig voor het genereren van tijdige uitvoer, bij het verwerken van grote klok scheefheden of netwerk vertragingen tussen gebeurtenis afzenders.
+In plaats van een water merk globaal te gebruiken voor alle gebeurtenissen in een invoer partitie, heeft Stream Analytics een ander mechanisme met de naam substreams om u te helpen. U kunt substreams gebruiken in uw taak door een taak query te schrijven die gebruikmaakt van de component [**time stamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) en het sleutel woord **over**. Als u de substream wilt aanwijzen, geeft u de naam van een sleutel kolom op achter het sleutel woord **over** , zoals een `deviceid`, zodat het systeem tijd beleid op basis van die kolom toepast. Elke substream krijgt een eigen onafhankelijk water merk. Dit mechanisme is handig voor het genereren van tijdige uitvoer, bij het verwerken van grote klok scheefheden of netwerk vertragingen tussen gebeurtenis afzenders.
 
 Substreams zijn een unieke oplossing die wordt geleverd door Azure Stream Analytics en die niet worden aangeboden door andere systemen voor gegevensverwerking van gegevens stromen. Stream Analytics past het venster late aankomst tolerantie toe op binnenkomende gebeurtenissen wanneer substreams worden gebruikt. De standaard instelling (5 seconden) is waarschijnlijk te klein voor apparaten met uiteenlopende-tijds tempels. We raden u aan om te beginnen met 5 minuten en aanpassingen aan te brengen op basis van het patroon voor de klok van het apparaat.
 
@@ -102,7 +102,7 @@ Dit concept wordt gebruikt om ervoor te zorgen dat de verwerking kan worden herh
 
 ## <a name="side-effects-of-event-ordering-time-tolerances"></a>Neven effecten van tijd toleranties voor gebeurtenis ordening
 
-Stream Analytics taken hebben verschillende opties voor het **ordenen van gebeurtenissen** . Twee kunnen worden geconfigureerd in de Azure Portal: de instelling voor de niet-ingestelde **volg orde** (buiten de juiste volg orde) en de **gebeurtenissen die een te late** instelling aankomen (tolerantie voor late aankomst). De **vroege aankomst** tolerantie is vast en kan niet worden aangepast. Deze tijd beleids regels worden door Stream Analytics gebruikt om sterke garanties te bieden. Deze instellingen hebben echter enkele soms onverwachte gevolgen:
+Stream Analytics taken hebben verschillende opties voor het **ordenen van gebeurtenissen** . Twee kunnen worden geconfigureerd in de Azure Portal: de instelling voor de niet-ingestelde **volg orde** (buiten de juiste volg orde) en de **gebeurtenissen die een te late instelling aankomen** (tolerantie voor late aankomst). De **vroege aankomst** tolerantie is vast en kan niet worden aangepast. Deze tijd beleids regels worden door Stream Analytics gebruikt om sterke garanties te bieden. Deze instellingen hebben echter enkele soms onverwachte gevolgen:
 
 1. Per ongeluk gebeurtenissen verzenden die te vroeg zijn.
 
@@ -110,7 +110,7 @@ Stream Analytics taken hebben verschillende opties voor het **ordenen van gebeur
 
 2. Oude gebeurtenissen verzenden naar Event Hubs die moeten worden verwerkt door Azure Stream Analytics.
 
-   Hoewel oude gebeurtenissen op de eerste onschadelijk kunnen oplopen, vanwege de toepassing van de vertraagde aankomst tolerantie, kunnen de oude gebeurtenissen worden verwijderd. Als de gebeurtenissen te oud zijn, wordt de waarde van **System. time stamp** gewijzigd tijdens gebeurtenis opname. Als gevolg van dit gedrag is momenteel Azure Stream Analytics beter geschikt voor de bijna-real-time verwerkings scenario's voor gebeurtenissen, in plaats van historische gebeurtenis verwerkings scenario's. In sommige gevallen kunt u de **gebeurtenissen die laat** tijd aankomen aan de grootste mogelijke waarde (20 dagen) instellen om dit gedrag te omzeilen.
+   Hoewel oude gebeurtenissen op de eerste onschadelijk kunnen oplopen, vanwege de toepassing van de vertraagde aankomst tolerantie, kunnen de oude gebeurtenissen worden verwijderd. Als de gebeurtenissen te oud zijn, wordt de waarde van **System. time stamp** gewijzigd tijdens gebeurtenis opname. Als gevolg van dit gedrag is momenteel Azure Stream Analytics beter geschikt voor de bijna-real-time verwerkings scenario's voor gebeurtenissen, in plaats van historische gebeurtenis verwerkings scenario's. In sommige gevallen kunt u de **gebeurtenissen die laat tijd aankomen** aan de grootste mogelijke waarde (20 dagen) instellen om dit gedrag te omzeilen.
 
 3. De uitvoer lijkt te zijn vertraagd.
 
@@ -128,10 +128,10 @@ Stream Analytics taken hebben verschillende opties voor het **ordenen van gebeur
 
 U kunt een aantal de tijds tolerantie-effecten van de gebeurtenis volgorde bekijken via de [metrische gegevens van stream Analytics-opdracht](stream-analytics-monitoring.md). De volgende metrische gegevens zijn relevant:
 
-|Gegevens  | Description  |
+|Gegevens  | Beschrijving  |
 |---------|---------|
 | **Out-of-order gebeurtenissen** | Hiermee wordt het aantal gebeurtenissen aangegeven dat niet in de juiste volg orde is ontvangen, die zijn verwijderd of een aangepast tijds tempel hebben gekregen. Deze metrische gegevens worden rechtstreeks beïnvloed door de configuratie van de instelling voor **niet-bestel gebeurtenissen** op de pagina **gebeurtenis volgorde** van de taak in de Azure Portal. |
-| **Late invoer gebeurtenissen** | Hiermee wordt het aantal gebeurtenissen aangegeven dat te laat arriveren vanaf de bron. Deze metriek bevat gebeurtenissen die zijn verwijderd of waarvoor de tijds tempel ervan is aangepast. Deze metrische gegevens worden rechtstreeks beïnvloed door de configuratie van de **gebeurtenissen die een te late** instelling aankomen op de pagina **gebeurtenis volgorde** van de taak in de Azure Portal. |
+| **Late invoer gebeurtenissen** | Hiermee wordt het aantal gebeurtenissen aangegeven dat te laat arriveren vanaf de bron. Deze metriek bevat gebeurtenissen die zijn verwijderd of waarvoor de tijds tempel ervan is aangepast. Deze metrische gegevens worden rechtstreeks beïnvloed door de configuratie van de **gebeurtenissen die een te late instelling aankomen** op de pagina **gebeurtenis volgorde** van de taak in de Azure Portal. |
 | **Vroege invoer gebeurtenissen** | Hiermee wordt het aantal gebeurtenissen aangegeven dat zich vroeg van de bron bevindt die zijn verwijderd, of hun tijds tempel is aangepast als deze na vijf minuten te vroeg zijn. |
 | **Watermerk vertraging** | Hiermee wordt de vertraging van de verwerkings taak voor streaming-gegevens aangegeven. Zie de volgende sectie voor meer informatie.|
 
@@ -171,7 +171,7 @@ De volgende afbeeldingen laten zien hoe water merken in verschillende omstandigh
 
 In deze tabel worden de voorbeeld gegevens weer gegeven die hieronder zijn gediagrameerd. U ziet dat de tijd van de gebeurtenis en de aankomst tijd variëren, soms overeenkomend en soms niet.
 
-| Tijdstip van gebeurtenis | Aankomst tijd | DeviceId |
+| Tijd van gebeurtenis | Aankomst tijd | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2
@@ -208,7 +208,7 @@ In deze afbeelding worden de volgende toleranties gebruikt:
 
    4. Wanneer de zesde gebeurtenis (device3) wordt verwerkt, wordt de aankomst tijd (12:17) en de tijd van de gebeurtenis (12:12) lager dan het watermerk niveau. De tijd van de gebeurtenis wordt aangepast aan het water merk niveau (12:17).
 
-   5. Wanneer de negende gebeurtenis (device3) wordt verwerkt, is de aankomst tijd (12:27) 6 minuten vóór de gebeurtenis tijd (12:21). Het beleid voor late aankomst wordt toegepast. De tijd van de gebeurtenis wordt aangepast (12:22), boven het water merk (12:21), zodat er geen verdere aanpassing wordt toegepast.
+   5. Wanneer de twaalfde gebeurtenis (device3) wordt verwerkt, is de aankomst tijd (12:27) 6 minuten vóór de tijd van de gebeurtenis (12:21). Het beleid voor late aankomst wordt toegepast. De tijd van de gebeurtenis wordt aangepast (12:22), boven het water merk (12:21), zodat er geen verdere aanpassing wordt toegepast.
 
 2. Tweede afbeelding van het water merk dat wordt uitgevoerd zonder een early-ontvangst beleid:
 

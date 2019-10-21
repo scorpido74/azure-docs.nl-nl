@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803382"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598127"
 ---
 # <a name="list-blob-containers-with-net"></a>BLOB-containers weer geven met .NET
 
@@ -30,21 +30,21 @@ De Overloads voor deze methoden bieden extra opties voor het beheren van de mani
 
 ### <a name="manage-how-many-results-are-returned"></a>Bepalen hoeveel resultaten er worden geretourneerd
 
-Standaard retourneert een lijst bewerking Maxi maal 5000 resultaten per keer. Als u een kleinere set resultaten wilt retour neren, geeft u een andere waarde `maxresults` dan nul op voor de para meter bij het aanroepen van een van de **ListContainerSegmented** -methoden.
+Standaard retourneert een lijst bewerking Maxi maal 5000 resultaten per keer. Als u een kleinere set resultaten wilt retour neren, geeft u een andere waarde dan nul op voor de para meter `maxresults` bij het aanroepen van een van de **ListContainerSegmented** -methoden.
 
-Als uw opslag account meer dan 5000 containers bevat of als u een waarde `maxresults` hebt opgegeven zodat de lijst bewerking een subset van containers in het opslag account retourneert, retourneert Azure Storage een *vervolg token* met de lijst met containers. Een vervolg token is een ondoorzichtige waarde die u kunt gebruiken om de volgende set resultaten op te halen uit Azure Storage.
+Als uw opslag account meer dan 5000 containers bevat of als u een waarde hebt opgegeven voor `maxresults` zodat de lijst bewerking een subset van containers in het opslag account retourneert, wordt Azure Storage een *vervolg token* geretourneerd met de lijst met containers. Een vervolg token is een ondoorzichtige waarde die u kunt gebruiken om de volgende set resultaten op te halen uit Azure Storage.
 
 Controleer in uw code de waarde van het vervolg token om te bepalen of deze null is. Wanneer het vervolg token null is, is de set met resultaten voltooid. Als het vervolg token niet null is, roept u **ListContainersSegmented** of **ListContainersSegmentedAsync** opnieuw aan, waarbij u in het vervolg token de volgende set resultaten ophaalt, totdat het vervolg token null is.
 
 ### <a name="filter-results-with-a-prefix"></a>Resultaten filteren met een voor voegsel
 
-Als u de lijst met containers wilt filteren, geeft u een `prefix` teken reeks op voor de para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de containers waarvan de namen met het voor voegsel beginnen.
+Als u de lijst met containers wilt filteren, geeft u een teken reeks op voor de para meter `prefix`. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de containers waarvan de namen met het voor voegsel beginnen.
 
-### <a name="return-container-metadata"></a>Meta gegevens van container retour neren
+### <a name="return-metadata"></a>Meta gegevens retour neren
 
-Als u de meta gegevens van de container wilt retour neren met de resultaten, geeft u de **meta gegevens** waarde op voor de [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) -inventarisatie. Azure Storage bevat de meta gegevens van elke geretourneerde container, dus u hoeft niet ook een van de **FetchAttributes** -methoden aan te roepen om de meta gegevens van de container op te halen.
+Als u de meta gegevens van de container wilt retour neren met de resultaten, geeft u de **meta gegevens** waarde op voor de [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) -inventarisatie. Azure Storage bevat de meta gegevens van elke geretourneerde container, dus u hoeft niet ook een van de **FetchAttributes** -methoden aan te roepen om de meta gegevens van de container op te halen.
 
-## <a name="example-list-containers"></a>Voorbeeld: Containers weergeven
+## <a name="example-list-containers"></a>Voor beeld: containers weer geven
 
 In het volgende voor beeld worden de containers in een opslag account die beginnen met een opgegeven voor voegsel, asynchroon weer gegeven. In het voor beeld worden containers in stappen van vijf resultaten tegelijk weer gegeven en wordt het vervolg token gebruikt om het volgende segment met resultaten op te halen. Het voor beeld retourneert ook container-meta gegevens met de resultaten.
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zie ook
 
-[Containers weer geven](/rest/api/storageservices/list-containers2)voor het inventariseren van[BLOB-resources](/rest/api/storageservices/enumerating-blob-resources) 
-
+[Containers weer geven](/rest/api/storageservices/list-containers2) 
+ het[inventariseren van BLOB-resources](/rest/api/storageservices/enumerating-blob-resources)

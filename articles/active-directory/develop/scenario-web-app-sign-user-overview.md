@@ -15,14 +15,14 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 68d47d4233aec62ec5f1955e52025b0d55221af8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086562"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596705"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app waarmee gebruikers worden aangemeld
+# <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app die gebruikers aantekent
 
 Meer informatie over wat u nodig hebt om een web-app te bouwen waarmee gebruikers zich aanmelden met het micro soft Identity-platform.
 
@@ -37,28 +37,28 @@ Meer informatie over wat u nodig hebt om een web-app te bouwen waarmee gebruiker
 Als u uw eerste Portable (ASP.NET Core) Web-Apps wilt maken waarmee gebruikers zich aanmelden, volgt u deze Snelstartgids:
 
 > [!div class="nextstepaction"]
-> [Snelstart: ASP.NET Core web-app die gebruikers aanmeldt](quickstart-v2-aspnet-core-webapp.md)
+> [Snelstartgids: ASP.NET Core web-app die gebruikers aanmeldt](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 Als u wilt weten hoe u aanmelden kunt toevoegen aan een verouderde ASP.NET-webtoepassing, probeert u de volgende zelf studie:
 
 > [!div class="nextstepaction"]
-> [Snelstart: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
+> [Quick Start: ASP.NET-Web-app die gebruikers aanmeldt](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 Als u een Java-ontwikkelaar bent, kunt u de volgende Snelstartgids uitproberen:
 
 > [!div class="nextstepaction"]
-> [Snelstart: Aanmelden met micro soft toevoegen aan een Java-Web-app](quickstart-v2-java-webapp.md)
+> [Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 Als u met python ontwikkelt, kunt u het volgende proberen:
 
 > [!div class="nextstepaction"]
-> [Snelstart: Aanmelden met micro soft toevoegen aan een Python-web-app](quickstart-v2-python-webapp.md)
+> [Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -81,5 +81,24 @@ Als tweede fase kunt u uw toepassing ook in staat stellen om namens de aangemeld
 
 ## <a name="next-steps"></a>Volgende stappen
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Appregistratie](scenario-web-app-sign-user-app-registration.md)
+> [Appregistratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Appregistratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Appregistratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Appregistratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
+
+---

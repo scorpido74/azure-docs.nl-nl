@@ -1,6 +1,6 @@
 ---
-title: Exporteren-beleid voor een NFS-volume met behulp van Azure NetApp bestanden configureren | Microsoft Docs
-description: Hierin wordt beschreven hoe het configureren van beleid voor het beheren van toegang tot een NFS-volume met behulp van Azure NetApp bestanden exporteren
+title: Beleid voor exporteren configureren voor een NFS-volume met behulp van Azure NetApp Files | Microsoft Docs
+description: Hierin wordt beschreven hoe u het beleid voor exporteren configureert om de toegang tot een NFS-volume te beheren met behulp van Azure NetApp Files
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086152"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674933"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportbeleid voor een NFS-volume configureren
 
-U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp Files-volume te beheren. Exporteren-beleid is ondersteuning voor NFS-volumes. 
+U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp Files-volume te beheren. Azure NetApp Files export beleid ondersteunt alleen NFS-volumes.  Zowel NFSv3 als NFSv4 worden ondersteund. 
 
 ## <a name="steps"></a>Stappen 
 
-1.  Klik op de blade **Exportbeleid maken** in de blade Volume beheren. 
+1.  Klik op **beleid exporteren** in het navigatie deel venster Azure NetApp files. 
 
 2.  Geef voor de volgende velden informatie op om een exportbeleidsregel te maken:   
     *  **Index**   
@@ -44,10 +44,6 @@ U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp F
         * Geen toegang 
         * Lezen en schrijven
         * Alleen-lezen
-
-    * **Protocollen**   
-        Geef het protocol op dat voor het exportbeleid moet worden gebruikt.   
-        Beleid voor het exporteren van Azure NetApp bestanden ondersteunt momenteel alleen NFSv3.
 
     ![Exportbeleid](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

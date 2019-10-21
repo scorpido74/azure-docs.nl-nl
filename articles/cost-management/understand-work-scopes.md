@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374486"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597086"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -132,6 +132,7 @@ Factuur accounts voor micro soft-klanten overeenkomst hebben de volgende bereike
 
 In tegens telling tot EA-facturerings bereiken _zijn_ facturerings accounts voor klant overeenkomsten gebonden aan één map en kunnen ze geen abonnementen hebben op meerdere Azure AD-directory's.
 
+Facturerings bereik van de klant overeenkomst gelden niet voor partners. Partner rollen en-machtigingen worden beschreven in [gebruikers rollen en-machtigingen toewijzen](/partner-center/permissions-overview).
 
 Facturerings bereik van de klant overeenkomst ondersteunen de volgende rollen:
 
@@ -159,11 +160,25 @@ Nadat de AWS-integratie is voltooid, raadpleegt [u de installatie en configurati
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>De scopes van de Cloud Solution Provider (CSP)
 
-Cloud Solution Provider-partners (CSP) worden niet ondersteund in Cost Management vandaag. In plaats daarvan kunt u [partner centrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)gebruiken.
+De volgende bereiken worden ondersteund voor Csp's met klanten in een micro soft-klant overeenkomst:
+
+- **Facturerings account** : vertegenwoordigt een klant overeenkomst voor meerdere micro soft-producten en-services. Facturerings accounts van klant overeenkomst zijn niet functioneel hetzelfde als EA-inschrijvingen. EA-inschrijvingen zijn nauw keuriger afgestemd op facturerings profielen.
+
+    Resource type: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Facturerings profiel** : Hiermee worden de abonnementen gedefinieerd die zijn opgenomen in een factuur. Facturerings profielen zijn het functionele equivalent van een EA-inschrijving, omdat dat de omvang is van facturen die op worden gegenereerd. Op dezelfde manier zijn aankopen waarvoor geen gebruik is gemaakt (zoals Marketplace en reserve ringen) alleen beschikbaar in dit bereik.
+
+    Resource type: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Klant** : vertegenwoordigt een groep abonnementen die zijn gekoppeld aan een specifieke klant die door een partner aan een micro soft-klant overeenkomst is toegevoegd.
+
+Alleen gebruikers met de rol van *globale beheerder* en *beheerder* kunnen kosten voor facturerings accounts, facturerings profielen en klanten rechtstreeks in de Azure-Tenant van de partner beheren en weer geven. Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie over de functies van het partner centrum.
+
+Azure Cost Management ondersteunt alleen CSP-partner klanten als de klanten een micro soft-klant overeenkomst hebben. Zie [partner centrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)voor de door csp's ondersteunde klanten die nog geen micro soft-klant overeenkomst hebben.
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Scha kelen tussen bereiken in Cost Management
 
-Alle Cost Management weer gaven in de Azure Portal bevatten een **bereik** selectie Pill in de linkerbovenhoek van de weer gave. Gebruik het om het bereik snel te wijzigen. Klik op de **Scope** Pill om de bereik kiezer te openen. Hierin worden facturerings accounts, de hoofd beheer groep en abonnementen weer gegeven die niet zijn genest onder de hoofd beheer groep. Als u een bereik wilt selecteren, klikt u op de achtergrond om deze te markeren en klikt u onderaan op **selecteren** . Als u wilt inzoomen op geneste bereiken, zoals resource groepen in een abonnement, klikt u op de koppeling Scope naam. Als u het bovenliggende bereik op een genest niveau wilt selecteren, klikt u op **deze &lt;scope @ no__t-2 selecteren** bovenaan de bereik kiezer.
+Alle Cost Management weer gaven in de Azure Portal bevatten een **bereik** selectie Pill in de linkerbovenhoek van de weer gave. Gebruik het om het bereik snel te wijzigen. Klik op de **Scope** Pill om de bereik kiezer te openen. Hierin worden facturerings accounts, de hoofd beheer groep en abonnementen weer gegeven die niet zijn genest onder de hoofd beheer groep. Als u een bereik wilt selecteren, klikt u op de achtergrond om deze te markeren en klikt u onderaan op **selecteren** . Als u wilt inzoomen op geneste bereiken, zoals resource groepen in een abonnement, klikt u op de koppeling Scope naam. Als u het bovenliggende bereik op een genest niveau wilt selecteren, klikt u op **dit &lt;scope &gt;** boven aan de bereik kiezer selecteren.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>De resource-ID voor een bereik identificeren
 

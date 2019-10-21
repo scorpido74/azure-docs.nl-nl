@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673156"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598113"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory
 
@@ -34,7 +34,7 @@ Voor de autorisatie stap moeten een of meer RBAC-rollen worden toegewezen aan de
 
 Systeem eigen toepassingen en webtoepassingen die aanvragen indienen bij de Azure Blob of Queue-service, kunnen ook toegang verlenen met Azure AD. Zie [toegang tot Azure Storage met Azure AD toestaan vanuit een Azure Storage toepassing](storage-auth-aad-app.md)voor meer informatie over het aanvragen van een toegangs token en het gebruik ervan om aanvragen voor BLOB-of wachtrij gegevens te autoriseren.
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>RBAC-rollen toewijzen voor toegangs rechten
+## <a name="assign-rbac-roles-for-access-rights"></a>RBAC-rollen toewijzen voor toegangs rechten
 
 Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot Blob-en wachtrij gegevens. U kunt ook aangepaste rollen definiëren voor toegang tot Blob-en wachtrij gegevens.
 

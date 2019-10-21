@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 10/17/2019
+ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950365"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595454"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight in Azure Database for MySQL
 
@@ -24,7 +24,7 @@ Query Performance Insight helpt u snel te identificeren wat uw langste query's z
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-### <a name="long-running-queries"></a>Query's waarvoor de uitvoering lang duurt
+### <a name="long-running-queries"></a>Langlopende query's
 
 - Langst uitgevoerde query's in de afgelopen X uur identificeren
 - Eerste N query's identificeren die op resources wachten
@@ -48,7 +48,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 
 Selecteer op de pagina Portal van uw Azure Database for MySQL-server **query Performance Insight** onder het gedeelte **intelligente prestaties** van de menu balk.
 
-### <a name="long-running-queries"></a>Query's waarvoor de uitvoering lang duurt
+### <a name="long-running-queries"></a>Langlopende query's
 
 Op het tabblad **langlopende query's** worden de top 5 query's weer gegeven op gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. U kunt meer query's weer geven door te selecteren in de vervolg keuzelijst **aantal query's** . Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
 
@@ -59,7 +59,7 @@ U kunt in de grafiek klikken en slepen om de tijdspanne te beperken tot een spec
 ### <a name="wait-statistics"></a>Wacht statistieken
 
 > [!NOTE]
-> Wacht statistieken zijn bedoeld voor het oplossen van problemen met de prestaties van query's. U wordt aangeraden alleen in te scha kelen voor het oplossen van problemen.
+> Wacht statistieken zijn bedoeld voor het oplossen van problemen met de prestaties van query's. U wordt aangeraden alleen in te scha kelen voor het oplossen van problemen. <br>Als het fout bericht wordt weer gegeven in de Azure Portal *, wordt het probleem ' micro soft. DBforMySQL ' aangetroffen. kan de aanvraag niet uitvoeren. Als dit probleem zich blijft voordoen of onverwacht, kunt u contact opnemen met ondersteuning met deze informatie.* gebruik tijdens het weer geven van wacht statistieken een kleinere periode.
 
 Wacht statistieken bieden een weer gave van de wacht gebeurtenissen die optreden tijdens het uitvoeren van een specifieke query. Meer informatie over de gebeurtenis typen wacht in de [documentatie](https://go.microsoft.com/fwlink/?linkid=2098206)van de MySQL-engine.
 

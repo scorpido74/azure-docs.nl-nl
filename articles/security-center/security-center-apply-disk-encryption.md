@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71822278"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592497"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Schijf versleuteling Toep assen in Azure Security Center
 Azure Security Center raadt u aan om schijf versleuteling toe te passen als u virtuele Windows-of Linux-schijven hebt die niet zijn versleuteld met Azure Disk Encryption. Met schijf versleuteling kunt u uw virtuele Windows-en Linux IaaS-VM-schijven versleutelen.  Versleuteling wordt aanbevolen voor het besturingssysteem en voor de gegevensvolumes op de VM.
@@ -43,15 +43,15 @@ Voor het versleutelen van Azure-Virtual Machines die zijn geïdentificeerd door 
 * De Azure Disk Encryption vereisten Azure PowerShell script verkrijgen en uitvoeren.
 * Versleutel uw virtuele machines.
 
-[Een Windows IaaS-VM met Azure PowerShell versleutelen](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) , wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
+[Een Windows IaaS-VM met Azure PowerShell versleutelen](../virtual-machines/windows/disk-encryption-powershell-quickstart.md) , wordt u door de volgende stappen geleid. In dit onderwerp wordt ervan uitgegaan dat u een Windows-client computer gebruikt van waaruit u schijf versleuteling configureert.
 
-Er zijn veel benaderingen die kunnen worden gebruikt voor Azure Virtual Machines. Als u al goed bekend bent met Azure PowerShell of Azure CLI, maakt u mogelijk liever gebruik van een andere manier. Zie [Azure Disk Encryption](../security/azure-security-disk-encryption.md)(Engelstalig) voor meer informatie over deze andere benaderingen.
+Er zijn veel benaderingen die kunnen worden gebruikt voor Azure Virtual Machines. Als u al goed bekend bent met Azure PowerShell of Azure CLI, maakt u mogelijk liever gebruik van een andere manier. Zie [Azure Disk Encryption](../security/fundamentals/encryption-overview.md)(Engelstalig) voor meer informatie over deze andere benaderingen.
 
 ## <a name="see-also"></a>Zie ook
 In dit document wordt uitgelegd hoe u de Security Center aanbeveling ' schijf versleuteling Toep assen ' implementeert. Zie het volgende voor meer informatie over schijf versleuteling:
 
-* [Versleuteling en sleutel beheer met Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec)--meer informatie over het gebruik van schijf versleuteling voor IaaS-Vm's en Azure Key Vault om uw gegevens te beschermen en te beveiligen.
-* [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) (document): meer informatie over het inschakelen van schijf versleuteling voor Windows-en Linux-Vm's.
+* [Versleuteling en sleutel beheer met Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec)--meer informatie over het gebruik van schijf versleuteling voor IaaS-vm's en Azure Key Vault om uw gegevens te beschermen en te beveiligen.
+* [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) (document): meer informatie over het inschakelen van schijf versleuteling voor Windows-en Linux-vm's.
 
 Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 

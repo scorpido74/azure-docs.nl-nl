@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Vereisten en hardware | Microsoft Docs'
-description: Dit onderwerp beschrijft de vereisten en de hardwarevereisten voor Azure AD Connect
+title: 'Azure AD Connect: vereisten en hardware | Microsoft Docs'
+description: In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,91 +16,91 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655826"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596314"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
-Dit onderwerp beschrijft de vereisten en de hardwarevereisten voor Azure AD Connect.
+In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
 
-## <a name="before-you-install-azure-ad-connect"></a>Voordat u Azure AD Connect installeren
+## <a name="before-you-install-azure-ad-connect"></a>Voordat u Azure AD Connect installeert
 Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 
 ### <a name="azure-ad"></a>Azure AD
-* Een Azure AD-tenant. U krijgt een met een [gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/). U kunt een van de volgende portals voor het beheren van Azure AD Connect:
-  * De [Azure-portal](https://portal.azure.com).
-  * De [Office-portal](https://portal.office.com).  
-* [Toevoegen en controleer of het domein](../active-directory-domains-add-azure-portal.md) u van plan bent te gebruiken in Azure AD. Bijvoorbeeld, als u van plan bent te gebruiken van contoso.com voor uw gebruikers en zorg ervoor dat dit domein is geverifieerd en u niet alleen het standaarddomein contoso.onmicrosoft.com gebruikt.
-* Een Azure AD-tenant kan door 50k-standaardobjecten. Bij het controleren van uw domein, wordt de limiet wordt verhoogd tot 300 kB-objecten. Als u nog meer objecten in Azure AD, moet u een ondersteuningsaanvraag in als u de limiet voor rekenquota nog verder wilt openen. Als u meer dan 500 k-objecten, moet u een licentie, zoals Office 365, Azure AD Basic, Azure AD Premium of Enterprise Mobility and Security.
+* Een Azure AD-tenant. U krijgt er een met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). U kunt een van de volgende portals gebruiken voor het beheren van Azure AD Connect:
+  * Het [Azure Portal](https://portal.azure.com).
+  * De [Office-Portal](https://portal.office.com).  
+* [Voeg en controleer het domein](../active-directory-domains-add-azure-portal.md) dat u wilt gebruiken in azure AD. Als u bijvoorbeeld van plan bent om contoso.com te gebruiken voor uw gebruikers, moet u ervoor zorgen dat dit domein is geverifieerd en dat u niet alleen gebruikmaakt van het standaard domein contoso.onmicrosoft.com.
+* Een Azure AD-Tenant maakt standaard 50.000-objecten mogelijk. Wanneer u uw domein verifieert, wordt de limiet verhoogd naar 300 KB-objecten. Als u nog meer objecten in azure AD nodig hebt, moet u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000-objecten nodig hebt, hebt u een licentie nodig, zoals Office 365, Azure AD Basic, Azure AD Premium of ENTER prise Mobility en Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Uw on-premises gegevens voorbereiden
-* Gebruik [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) voor het identificeren van fouten, zoals duplicaten en opmaak problemen in uw directory voordat u met Azure AD synchroniseert en Office 365.
-* Beoordeling [optionele synchronisatie-functies u in Azure AD inschakelen kunt](how-to-connect-syncservice-features.md) en evalueren welke functies u moet inschakelen.
+* Gebruik [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) om fouten te identificeren, zoals duplicaten en opmaak problemen in uw Directory voordat u synchroniseert met Azure AD en Office 365.
+* Bekijk de [optionele synchronisatie functies die u in azure AD kunt inschakelen](how-to-connect-syncservice-features.md) en bepaal welke functies u moet inschakelen.
 
 ### <a name="on-premises-active-directory"></a>On-premises Active Directory
-* Het AD-schema-versie en forest-functionaliteitsniveau moet WindowsServer 2003 of hoger. Domeincontrollers kunnen elke versie wordt uitgevoerd, zolang de schema- en forest niveau vereisten wordt voldaan.
-* Als u van plan bent om de functie te gebruiken **wachtwoord terugschrijven**, en vervolgens de domeincontrollers op Windows Server 2008 R2 of hoger zijn moet.
-* De domeincontroller die wordt gebruikt door Azure AD moet beschrijfbaar zijn. Het is **niet ondersteund** het gebruik van een RODC (alleen-lezen domeincontroller) en Azure AD Connect niet voldoet aan alle omleidingen schrijven.
-* Is het **niet ondersteund** gebruik van on-premises forests/domeinen met behulp van "gestippeld" (de naam van een punt bevat ".") NetBIOS-namen.
-* Het verdient [de Active Directory-Prullenbak inschakelen](how-to-connect-sync-recycle-bin.md).
+* De AD-schema versie en het functionele forest-functionaliteits niveau moeten Windows Server 2003 of hoger zijn. Op de domein controllers kan elke versie worden uitgevoerd zolang aan de vereisten voor schema-en forestniveau is voldaan.
+* Als u het **terugschrijven**van het functie wachtwoord wilt gebruiken, moeten de domein controllers zich op Windows Server 2008 R2 of later bevallen.
+* De domein controller die door Azure AD wordt gebruikt, moet beschrijfbaar zijn. Het gebruik van een RODC (alleen-lezen domein controller) wordt **niet ondersteund** en Azure AD Connect geen schrijf omleidingen volgen.
+* Het is **niet mogelijk** om on-premises forests/domeinen te gebruiken met behulp van ' dotted ' (naam bevat een punt '. ') NetBios-namen.
+* Het is raadzaam om [de Prullenbak van Active Directory in te scha kelen](how-to-connect-sync-recycle-bin.md).
 
-### <a name="azure-ad-connect-server"></a>Azure AD Connect-server
+### <a name="azure-ad-connect-server"></a>Azure AD Connect server
 >[!IMPORTANT]
->De Azure AD Connect-server bevat essentiële identiteitsgegevens en moeten worden behandeld als een laag 0-onderdeel, zoals beschreven in [het lagenmodel voor Active Directory met beheerdersrechten](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+>De Azure AD Connect-server bevat essentiële identiteits gegevens en moet worden behandeld als een onderdeel van de laag 0 zoals beschreven in [het Active Directory beheer laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
 
-* Azure AD Connect kan niet worden geïnstalleerd op Small Business Server of Windows Server Essentials voordat 2019 (Windows Server Essentials 2019 wordt ondersteund). De server moet gebruikmaken van Windows Server standard of hoger.
-* Azure AD Connect installeert op een domeincontroller wordt niet aanbevolen vanwege de procedures voor beveiliging en meer beperkende instellingen die kunnen voorkomen dat Azure AD Connect correct worden geïnstalleerd.
-* De Azure AD Connect-server moet een volledige GUI geïnstalleerd hebben. Het is **niet ondersteund** te installeren op server core.
+* Azure AD Connect kan niet worden geïnstalleerd op Small Business Server of Windows Server Essentials vóór 2019 (Windows Server Essentials 2019 wordt ondersteund). De server moet Windows Server Standard of hoger gebruiken.
+* Het installeren van Azure AD Connect op een domein controller wordt niet aanbevolen vanwege beveiligings procedures en meer beperkende instellingen waarmee wordt voor komen dat Azure AD Connect op de juiste manier worden geïnstalleerd.
+* Op de Azure AD Connect-server moet een volledige GUI zijn geïnstalleerd. Het wordt **niet ondersteund** voor installatie op Server Core.
 >[!IMPORTANT]
->Azure AD Connect installeert op small business server, server essentials of serverkern wordt niet ondersteund.
+>Het installeren van Azure AD Connect op Small Business Server, Server Essentials of Server Core wordt niet ondersteund.
 
-* Azure AD Connect moet worden geïnstalleerd op Windows Server 2008 R2 of hoger. Deze server moet domein toegevoegd en is mogelijk een domeincontroller of lidserver.
-* Als u Azure AD Connect op Windows Server 2008 R2 installeert, Controleer of de meest recente hotfixes toepassen van Windows Update. De installatie kan niet beginnen met een niet-gepatchte server.
-* Als u van plan bent om de functie te gebruiken **Wachtwoordsynchronisatie**, en vervolgens de Azure AD Connect-server moet zich op Windows Server 2008 R2 SP1 of hoger.
-* Als u van plan bent te gebruiken een **groep beheerd serviceaccount**, en vervolgens de Azure AD Connect-server moet zich op Windows Server 2012 of hoger.
-* De Azure AD Connect-server moet hebben [.NET Framework 4.5.1](#component-prerequisites) of hoger en [Microsoft PowerShell 3.0](#component-prerequisites) of hoger is geïnstalleerd.
-* De Azure AD Connect-server mag geen PowerShell transcriptie-Groepsbeleid is ingeschakeld.
-* Als Active Directory Federation Services wordt geïmplementeerd, de servers waarop de AD FS of Web Application Proxy zijn geïnstalleerd moet Windows Server 2012 R2 of hoger. [Windows remote management](#windows-remote-management) moet zijn ingeschakeld op deze servers voor installatie op afstand.
-* Als Active Directory Federation Services wordt geïmplementeerd, moet u [SSL-certificaten](#ssl-certificate-requirements).
-* Als Active Directory Federation Services wordt geïmplementeerd, dan moet u configureren [naamomzetting](#name-resolution-for-federation-servers).
-* Als uw globale beheerders hebben MFA ingeschakeld, klikt u vervolgens de URL **https://secure.aadcdn.microsoftonline-p.com** moet zich in de lijst met vertrouwde sites. U wordt gevraagd deze website aan de lijst met vertrouwde sites toevoegen wanneer u wordt gevraagd om een MFA-controle en deze niet is toegevoegd voordat. U kunt Internet Explorer toe te voegen aan uw vertrouwde sites.
-* Microsoft raadt aan uw Azure AD Connect-server voor het verkleinen van de kwetsbaarheid van de beveiliging voor deze kritieke onderdeel van uw IT-omgeving beperken.  Na de onderstaande aanbevelingen, neemt het beveiligingsrisico voor uw organisatie.
+* Azure AD Connect moet zijn geïnstalleerd op Windows Server 2008 R2 of later. Deze server moet lid zijn van een domein en kan een domein controller of een lidserver zijn.
+* Als u Azure AD Connect installeert op Windows Server 2008 R2, moet u ervoor zorgen dat u de meest recente hotfixes van Windows Update toepast. De installatie kan niet worden gestart met een niet-gepatchde server.
+* Als u van plan bent om de functie **wachtwoord synchronisatie**te gebruiken, moet de Azure AD Connect-server op Windows Server 2008 R2 SP1 of hoger zijn.
+* Als u van plan bent een **beheerd service account**voor een groep te gebruiken, moet de Azure AD Connect-server op Windows Server 2012 of hoger zijn.
+* Op de Azure AD Connect-server moet [.NET Framework 4.5.1](#component-prerequisites) of hoger en [micro soft power Shell 3,0](#component-prerequisites) of hoger zijn geïnstalleerd.
+* De Azure AD Connect-server moet Power shell transcriptie groepsbeleid niet hebben ingeschakeld.
+* Als Active Directory Federation Services wordt geïmplementeerd, moeten de servers waarop AD FS of Web Application proxy is geïnstalleerd, Windows Server 2012 R2 of later zijn. [Windows Remote Management](#windows-remote-management) moet zijn ingeschakeld op deze servers voor installatie op afstand.
+* Als Active Directory Federation Services wordt geïmplementeerd, hebt u [SSL-certificaten](#ssl-certificate-requirements)nodig.
+* Als Active Directory Federation Services wordt geïmplementeerd, moet u [naam omzetting](#name-resolution-for-federation-servers)configureren.
+* Als voor uw globale beheerders MFA is ingeschakeld, moet de URL **https://secure.aadcdn.microsoftonline-p.com** de lijst met vertrouwde sites zijn. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze niet eerder is toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.
+* Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiligings risico te verminderen voor dit kritieke onderdeel van uw IT-omgeving.  Als u de onderstaande aanbevelingen volgt, worden de beveiligings Risico's voor uw organisatie verminderd.
 
-* Azure AD Connect op een domein gekoppelde server implementeren en administratieve toegang beperken tot beheerders van het domein of andere over nauwkeurig omschreven beveiligingsgroepen.
+* Implementeer Azure AD Connect op een server die lid is van een domein en beperk beheerders toegang tot domein beheerders of andere nauw beheerde beveiligings groepen.
 
 Voor meer informatie zie: 
 
-* [Beveiligen beheerders groepen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Beheerders groepen beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Ingebouwde administrator-accounts beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [Ingebouwde Administrator-accounts beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Beveiliging verbeteren en sustainment door oppervlakteaanvallen verminderen](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Beveiligings verbetering en-ondersteuning door kwets baarheid te verminderen](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [De Active Directory kwetsbaarheid voor aanvallen verminderen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [De Active Directory kwets baarheid verminderen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
-### <a name="sql-server-used-by-azure-ad-connect"></a>SQL-Server die wordt gebruikt door Azure AD Connect
-* Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Een SQL Server 2012 Express LocalDB (een eenvoudige versie van SQL Server Express) wordt standaard geïnstalleerd. SQL Server Express heeft een limiet van 10GB waarmee u voor het beheren van ongeveer 100.000 objecten. Als u nodig hebt voor het beheren van een hoger aantal directory-objecten, moet u de installatiewizard verwijzen naar een andere installatie van SQL Server. Het type van de installatie van SQL Server kan invloed hebben op de [prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
-* Als u een andere installatie van SQL Server gebruikt, klikt u vervolgens deze vereisten zijn van toepassing:
-  * Azure AD Connect biedt ondersteuning voor alle versies van Microsoft SQL Server van 2008 R2 (met de meest recente servicepack) naar SQL Server 2019. Microsoft Azure SQL Database is **niet ondersteund** als een database.
-  * U moet een niet-hoofdlettergevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_CI_ in hun naam. Het is **niet ondersteund** voor het gebruik van een hoofdlettergevoelige sortering, geïdentificeerd door \_CS_ in hun naam.
-  * U kunt slechts één synchronisatie-engine per SQL-exemplaar hebben. Het is **niet ondersteund** voor het delen van een SQL-exemplaar met FIM/MIM Sync, DirSync of Azure AD Sync.
+### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server gebruikt door Azure AD Connect
+* Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Er is standaard een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server wijzen. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Als u een andere installatie van SQL Server gebruikt, zijn de volgende vereisten van toepassing:
+  * Azure AD Connect ondersteunt alle versies van Microsoft SQL Server van 2008 R2 (met het nieuwste Service Pack) tot SQL Server 2019. Microsoft Azure SQL Database wordt **niet ondersteund** als data base.
+  * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_CI_ in hun naam. Het gebruik van een hoofdletter gevoelige sortering wordt **niet ondersteund** , aangeduid door \_CS_ in hun naam.
+  * U kunt slechts één synchronisatie-engine per SQL-exemplaar hebben. Het is **niet mogelijk** om een SQL-exemplaar te delen met FIM/MIM Sync, DirSync of Azure AD Sync.
 
 ### <a name="accounts"></a>Accounts
-* Een globale beheerder van Azure AD-account voor de Azure AD-tenant die u wilt integreren in. Dit account moet een **school-of organisatieaccount** en mag niet een **Microsoft-account**.
-* Als u expresinstellingen gebruiken of een van DirSync upgrade, moet u een Enterprise-beheerdersaccount hebben voor uw on-premises Active Directory.
-* [Accounts in Active Directory](reference-connect-accounts-permissions.md) als u het installatiepad van aangepaste instellingen of een Enterprise-beheerder-account voor uw on-premises Active Directory.
+* Een Azure AD Global Administrator-account voor de Azure AD-Tenant waarmee u wilt integreren. Dit account moet een **school-of organisatie account** zijn en kan geen **Microsoft-account**zijn.
+* Als u snelle instellingen gebruikt of als u een upgrade uitvoert van DirSync, moet u een beheerders account voor de onderneming hebben voor uw on-premises Active Directory.
+* [Accounts in Active Directory](reference-connect-accounts-permissions.md) als u het installatiepad voor aangepaste instellingen of een beheerders account voor ondernemingen gebruikt voor uw on-premises Active Directory.
 
 ### <a name="connectivity"></a>Connectiviteit
-* De Azure AD Connect-server moet DNS-omzetting voor intranet en internet. De DNS-server moet kunnen omzetten van namen van zowel uw on-premises Active Directory en de Azure AD-eindpunten.
-* Als u firewalls op het Intranet en u moet poorten openen tussen de Azure AD Connect-servers en domeincontrollers, vervolgens worden [Azure AD Connect poorten](reference-connect-ports.md) voor meer informatie.
-* Als uw proxy of firewall beperken welke URL's kunnen worden geopend, wordt de URL's die zijn gedocumenteerd in [Office 365-URL's en IP-adresbereiken](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) moet worden geopend.
-  * Als u de Microsoft Cloud in Duitsland of de Microsoft Azure Government-cloud gebruikt, Zie [overwegingen met betrekking tot Azure AD Connect sync-service-exemplaren](reference-connect-instances.md) voor URL's.
-* Azure AD Connect (versie 1.1.614.0 en na) maakt standaard gebruik van TLS 1.2 voor het versleutelen van communicatie tussen de synchronisatie-engine en Azure AD. Als TLS 1.2 is niet beschikbaar in het onderliggende besturingssysteem, terugvalt Azure AD Connect incrementeel op het oudere protocollen (TLS 1.1 en TLS 1.0).
-* Voorafgaand aan versie 1.1.614.0, Azure AD Connect standaard TLS 1.0 gebruikt voor het versleutelen van communicatie tussen de synchronisatie-engine en Azure AD. Als u wilt wijzigen in TLS 1.2, volg de stappen in [TLS 1.2 inschakelen voor Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Als u een uitgaande proxy om verbinding te maken met Internet, de volgende instelling in de **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** bestand moet worden toegevoegd voor de installatiewizard en Azure AD Connect-synchronisatie om te kunnen verbinding maken met Internet en Azure AD. Deze tekst moet worden opgegeven aan de onderkant van het bestand. In deze code &lt;PROXYADDRESS&gt; de werkelijke proxy IP-adres of de hostnaam naam vertegenwoordigt.
+* De Azure AD Connect-server moet de DNS-omzetting voor intranet en Internet hebben. De DNS-server moet namen kunnen omzetten naar uw on-premises Active Directory en de Azure AD-eind punten.
+* Als u firewalls op uw intranet hebt en u poorten wilt openen tussen de Azure AD Connect servers en uw domein controllers, raadpleegt u [Azure AD Connect poorten](reference-connect-ports.md) voor meer informatie.
+* Als uw proxy of firewall beperkingen heeft voor de toegang tot Url's, moeten de Url's die worden beschreven in [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) adresbereiken worden geopend.
+  * Als u de Microsoft Cloud in Duitsland of de Microsoft Azure Government Cloud gebruikt, raadpleegt u [Azure AD Connect Sync Service instances-overwegingen](reference-connect-instances.md) voor url's.
+* Azure AD Connect (versie 1.1.614.0 en After) maakt standaard gebruik van TLS 1,2 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als TLS 1,2 niet beschikbaar is in het onderliggende besturings systeem, wordt Azure AD Connect incrementeel terugvallen op oudere protocollen (TLS 1,1 en TLS 1,0).
+* Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als u wilt overschakelen naar TLS 1,2, volgt u de stappen in [tls 1,2 inschakelen voor Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
+* Als u een uitgaande proxy gebruikt om verbinding te maken met internet, moet de volgende instelling in het **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** -bestand worden toegevoegd voor de installatie wizard en kan Azure AD Connect Sync worden om verbinding te maken met internet en Azure AD. Deze tekst moet aan de onderkant van het bestand worden opgegeven. In deze code bevat &lt;PROXYADDRESS &gt; het werkelijke IP-adres of de hostnaam van de proxy.
 
 ```
     <system.net>
@@ -114,7 +114,7 @@ Voor meer informatie zie:
     </system.net>
 ```
 
-* Als uw proxyserver is vereist voor verificatie, dan zal de [-serviceaccount](reference-connect-accounts-permissions.md#adsync-service-account) moet zich bevinden in het domein en moet u het installatiepad van aangepaste instellingen om op te geven een [aangepast serviceaccount](how-to-connect-install-custom.md#install-required-components). U moet ook een andere wijziging in machine.config. Met deze wijziging in machine.config reageren de installatie-engine van de wizard en synchroniseren op verificatieaanvragen van de proxyserver. In alle installatie wizardpagina's, met uitzondering van de **configureren** pagina, de ondertekende in van de gebruiker referenties worden gebruikt. Op de **configureren** pagina aan het einde van de installatiewizard van de context is overgeschakeld naar de [-serviceaccount](reference-connect-accounts-permissions.md#adsync-service-account) die door u is gemaakt. De sectie machine.config moet er als volgt.
+* Als voor uw proxy server verificatie is vereist, moet het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) zich in het domein bevinden en moet u het installatiepad van aangepaste instellingen gebruiken om een [aangepast Service account](how-to-connect-install-custom.md#install-required-components)op te geven. U hebt ook een andere wijziging nodig voor machine. config. Met deze wijziging in machine. config reageert de installatie wizard en de synchronisatie-engine op verificatie aanvragen van de proxy server. In alle pagina's van de wizard installatie, met uitzonde ring van de pagina **configureren** , worden de referenties van de aangemelde gebruiker gebruikt. Op de pagina **configureren** aan het einde van de installatie wizard wordt de context overgeschakeld naar het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) dat u hebt gemaakt. De sectie machine. config moet er als volgt uitzien.
 
 ```
     <system.net>
@@ -128,104 +128,104 @@ Voor meer informatie zie:
     </system.net>
 ```
 
-* Wanneer Azure AD Connect een webaanvraag naar Azure AD als onderdeel van directory-synchronisatie verzendt, is Azure AD kunnen tot vijf minuten om te reageren. Het is gebruikelijk voor proxyservers configuratie van de time-out voor inactiviteit verbinding hebben. Controleer of dat de configuratie is ingesteld op ten minste 6 minuten of langer.
+* Wanneer Azure AD Connect een webverzoek verzendt naar Azure AD als onderdeel van adreslijst synchronisatie, kan het tot vijf minuten duren voordat Azure AD reageert. Het is gebruikelijk dat proxy servers een time-outconfiguratie voor verbinding inactief hebben. Controleer of de configuratie is ingesteld op ten minste 6 minuten of langer.
 
-Zie MSDN voor meer informatie over de [proxy Element standaard](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
-Zie voor meer informatie als u problemen met de connectiviteit, [connectiviteitsproblemen](tshoot-connect-connectivity.md).
+Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.  
+Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
 ### <a name="other"></a>Overige
-* Optioneel: Een gebruikersaccount voor de test om te controleren of de synchronisatie.
+* Optioneel: een test gebruikers account om synchronisatie te controleren.
 
-## <a name="component-prerequisites"></a>Vereisten voor onderdelen
-### <a name="powershell-and-net-framework"></a>PowerShell en .NET Framework
-Azure AD Connect, is afhankelijk van Microsoft PowerShell en .NET Framework 4.5.1. U moet deze versie of een latere versie is geïnstalleerd op uw server. Afhankelijk van uw versie van Windows Server, het volgende doen:
+## <a name="component-prerequisites"></a>Onderdeel vereisten
+### <a name="powershell-and-net-framework"></a>Power shell en .NET Framework
+Azure AD Connect is afhankelijk van micro soft power shell en .NET Framework 4.5.1. U hebt deze versie of een nieuwere versie op uw server nodig. Afhankelijk van de versie van Windows Server gaat u als volgt te werk:
 
-* Windows Server 2012R2
-  * Microsoft PowerShell is standaard geïnstalleerd. Geen actie vereist.
-  * .NET framework 4.5.1 en latere releases worden aangeboden via Windows Update. Zorg ervoor dat u de meest recente updates hebt geïnstalleerd met Windows Server in het Configuratiescherm.
+* Windows Server-2012R2
+  * Micro soft power shell wordt standaard geïnstalleerd. Geen actie vereist.
+  * .NET Framework 4.5.1 en latere versies worden aangeboden via Windows Update. Zorg ervoor dat u de meest recente updates voor Windows Server hebt geïnstalleerd in het configuratie scherm.
 * Windows Server 2008 R2 en Windows Server 2012
-  * De nieuwste versie van Microsoft PowerShell is beschikbaar in **Windows Management Framework 4.0**, beschikbaar op [Microsoft Download Center](https://www.microsoft.com/downloads).
-  * .NET framework 4.5.1 en latere versies zijn beschikbaar op [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * De nieuwste versie van micro soft power shell is beschikbaar in **Windows Management Framework 4,0**, beschikbaar in het [micro soft Download centrum](https://www.microsoft.com/downloads).
+  * .NET Framework 4.5.1 en latere versies zijn beschikbaar in het [micro soft Download centrum](https://www.microsoft.com/downloads).
 
 
-### <a name="enable-tls-12-for-azure-ad-connect"></a>TLS 1.2 inschakelen voor Azure AD Connect
-Voorafgaand aan versie 1.1.614.0, Azure AD Connect standaard TLS 1.0 gebruikt voor het versleutelen van de communicatie tussen de synchronisatie-engine-server en Azure AD. U kunt dit wijzigen door het configureren van .NET-toepassingen kunnen gebruikmaken van TLS 1.2 standaard op de server. Meer informatie over TLS 1.2 kan worden gevonden [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).
+### <a name="enable-tls-12-for-azure-ad-connect"></a>TLS 1,2 inschakelen voor Azure AD Connect
+Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie engine-server en Azure AD. U kunt dit wijzigen door .NET-toepassingen standaard te configureren voor het gebruik van TLS 1,2 op de server. Meer informatie over TLS 1,2 vindt u in [micro soft-beveiligings advies 2960358](https://technet.microsoft.com/security/advisory/2960358).
 
-1. TLS 1.2 kan niet worden ingeschakeld voordat u Windows Server 2008 R2 of hoger. Zorg ervoor dat u hebt de .NET 4.5.1 hotfix voor uw besturingssysteem geïnstalleerd Zie [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). Mogelijk hebt u deze hotfix of een latere versie is al geïnstalleerd op uw server.
-2. Als u Windows Server 2008 R2 gebruikt, Controleer of dat TLS 1.2 is ingeschakeld. TLS 1.2 moeten al zijn ingeschakeld op de server van Windows Server 2012 en latere versies.
+1. TLS 1,2 kan niet worden ingeschakeld vóór Windows Server 2008 R2 of eerder. Controleer of u de .NET 4.5.1-hotfix hebt geïnstalleerd voor uw besturings systeem. Zie [micro soft-beveiligings advies 2960358](https://technet.microsoft.com/security/advisory/2960358). Mogelijk hebt u al deze hotfix of een latere versie geïnstalleerd op uw server.
+2. Als u Windows Server 2008 R2 gebruikt, moet u ervoor zorgen dat TLS 1,2 is ingeschakeld. Op Windows Server 2012 server en latere versies moet TLS 1,2 al zijn ingeschakeld.
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
     ```
-3. Voor alle besturingssystemen, stelt u deze registersleutel en de server opnieuw opstarten.
+3. Voor alle besturings systemen stelt u deze register sleutel in en start u de server opnieuw op.
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
     "SchUseStrongCrypto"=dword:00000001
     ```
-4. Als u ook wilt TLS 1.2 inschakelen tussen de synchronisatie-engine-server en een externe SQL Server en zorg ervoor dat u de vereiste versies geïnstalleerd hebt voor [TLS 1.2-ondersteuning voor Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
+4. Als u ook TLS 1,2 wilt inschakelen tussen de sync engine-server en een externe SQL Server, moet u ervoor zorgen dat u de vereiste versies hebt geïnstalleerd voor [TLS 1,2-ondersteuning voor Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
-## <a name="prerequisites-for-federation-installation-and-configuration"></a>Vereisten voor de federation-installatie en configuratie
+## <a name="prerequisites-for-federation-installation-and-configuration"></a>Vereisten voor Federatie-installatie en-configuratie
 ### <a name="windows-remote-management"></a>Windows Remote Management
-Wanneer u Azure AD Connect gebruikt om Active Directory Federation Services of de Web Application Proxy te implementeren, Controleer de volgende vereisten:
+Wanneer u Azure AD Connect gebruikt om Active Directory Federation Services of de webtoepassingsproxy te implementeren, moet u de volgende vereisten controleren:
 
-* Als de doel-server toegevoegd aan een domein is, zorg ervoor dat Windows extern beheerde is ingeschakeld
-  * Gebruik in een venster met verhoogde bevoegdheid PSH opdracht opdracht `Enable-PSRemoting –force`
-* Als de doelserver is een niet-domein WAP-machine, wordt er zijn een aantal aanvullende vereisten
-  * Op de doelcomputer (WAP-machine):
-    * Zorg ervoor dat de winrm (Windows Remote Management / WS-Management)-service wordt uitgevoerd via de module Services
-    * Gebruik in een venster met verhoogde bevoegdheid PSH opdracht opdracht `Enable-PSRemoting –force`
-  * Op de computer waarop de wizard wordt uitgevoerd (als de doel-VM niet van het domein is toegevoegd aan of niet-vertrouwd domein is):
-    * Gebruik de opdracht in een venster met verhoogde bevoegdheid PSH opdracht `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
-    * In Server Manager:
-      * DMZ WAP-host aan de Machinegroep toevoegen (Serverbeheer -> beheren-Servers toevoegen... > tabblad DNS gebruiken)
-      * Tabblad alle Servers van Serverbeheer: klik WAP-server met de rechtermuisknop en kies beheren opslaan als..., voer de referenties voor lokale (niet-domein) voor de WAP-machine
-      * Voor het valideren van externe PSH verbindingen, op het tabblad alle Servers van Serverbeheer: klik WAP-server met de rechtermuisknop en kies Windows PowerShell. Een externe PSH-sessie moet openen om te controleren of externe PowerShell-sessies kunnen worden gemaakt.
+* Als de doel server lid is van een domein, moet u ervoor zorgen dat Windows Remote Managed is ingeschakeld
+  * Gebruik in een PSH opdracht venster met verhoogde bevoegdheid de opdracht `Enable-PSRemoting –force`
+* Als de doel server een niet-domein gekoppelde WAP-computer is, zijn er een aantal aanvullende vereisten
+  * Op de doel computer (WAP-machine):
+    * Zorg ervoor dat de WinRM-service (Windows Remote Management/WS-Management) wordt uitgevoerd via de module Services
+    * Gebruik in een PSH opdracht venster met verhoogde bevoegdheid de opdracht `Enable-PSRemoting –force`
+  * Op de computer waarop de wizard wordt uitgevoerd (als de doel computer niet lid is van een domein of een niet-vertrouwd domein):
+    * Gebruik in een PSH-opdracht venster met verhoogde bevoegdheid de opdracht `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+    * In Serverbeheer:
+      * DMZ WAP-host toevoegen aan computer groep (Server beheer-> beheren-> servers toevoegen... DNS-tabblad gebruiken)
+      * Serverbeheer het tabblad alle servers: Klik met de rechter muisknop op WAP-server en kies beheren als... en geef lokale (niet-domein) referenties op voor de WAP-computer
+      * Als u verbinding met externe PSH wilt valideren, klikt u op het tabblad Serverbeheer alle servers: Klik met de rechter muisknop op WAP-server en kies Windows Power shell. Een externe PSH-sessie moet worden geopend om ervoor te zorgen dat externe Power shell-sessies kunnen worden tot stand gebracht.
 
-### <a name="ssl-certificate-requirements"></a>Vereisten voor SSL-certificaten
-* Het is raadzaam het SSL-certificaat gebruiken voor alle knooppunten van uw AD FS-farm en alle Web Application proxy-servers.
-* Het certificaat moet een X509 certificaat.
-* U kunt een zelfondertekend certificaat gebruiken op de federation-servers in een testomgeving. Echter, voor een productie-omgeving, wordt aangeraden dat u het certificaat van een openbare CA verkrijgen.
-  * Als u een certificaat dat is niet openbaar vertrouwde, zorgt u ervoor dat het certificaat is geïnstalleerd op elke Web Application Proxy-server vertrouwd op de lokale server en op alle federatieservers wordt
-* De identiteit van het certificaat moet overeenkomen met de naam van de federation-service (bijvoorbeeld sts.contoso.com).
-  * De identiteit is ofwel een onderwerp alternatieve naam (SAN)-extensie van type DNS-naam of, als er geen SAN-vermeldingen zijn, de naam van het onderwerp moet worden opgegeven als algemene naam.  
-  * Meerdere vermeldingen met SAN kunnen aanwezig zijn in het certificaat opgegeven een van deze overeenkomt met de naam van de federation-service.
-  * Als u van plan bent te gebruiken met Workplace Join, een extra SAN is vereist bij de waarde **enterpriseregistratie.** gevolgd door het achtervoegsel van de UPN (User Principal Name) van uw organisatie, bijvoorbeeld **: enterpriseregistration.contoso.com**.
-* Certificaten op basis van de volgende generatie (CNG) sleutels CryptoAPI en sleutelarchiefproviders worden niet ondersteund. Dit betekent dat u een certificaat op basis van een CSP (cryptographic serviceprovider) en niet een KSP (sleutelarchiefprovider) moet gebruiken.
-* Jokertekens certificaten worden ondersteund.
+### <a name="ssl-certificate-requirements"></a>Vereisten voor SSL-certificaat
+* Het wordt ten zeerste aanbevolen om hetzelfde SSL-certificaat te gebruiken voor alle knoop punten van uw AD FS-Farm en alle Web Application proxy-servers.
+* Het certificaat moet een x509-certificaat zijn.
+* U kunt een zelfondertekend certificaat gebruiken op Federatie servers in een test omgeving. Voor een productie omgeving wordt u echter aangeraden het certificaat van een open bare certificerings instantie te verkrijgen.
+  * Als u een certificaat gebruikt dat niet openbaar wordt vertrouwd, controleert u of het certificaat dat is geïnstalleerd op elke Web Application proxy-server, wordt vertrouwd op zowel de lokale server als alle Federatie servers
+* De identiteit van het certificaat moet overeenkomen met de naam van de Federation service (bijvoorbeeld sts.contoso.com).
+  * De identiteit is een SAN-extensie (alternatieve naam voor onderwerp) van het type dNSName of, als er geen SAN-vermeldingen zijn, de naam van het onderwerp opgegeven als een algemene naam.  
+  * Er kunnen meerdere SAN-vermeldingen aanwezig zijn in het certificaat, op voor waarde dat een van de items overeenkomt met de naam van de Federation-service.
+  * Als u van plan bent Workplace Join te gebruiken, is een extra SAN vereist met de waarde **Enterprise registratie.** gevolgd door het UPN-achtervoegsel (User Principal Name) van uw organisatie, bijvoorbeeld **enterpriseregistration.contoso.com**.
+* Certificaten die zijn gebaseerd op CNG-sleutels (CryptoAPI Next Generation) en sleutel opslag providers worden niet ondersteund. Dit betekent dat u een certificaat moet gebruiken dat is gebaseerd op een CSP (Cryptographic Service Provider) en niet een SLEUTELARCHIEFPROVIDER (Key Storage Provider).
+* Joker tekens worden ondersteund.
 
-### <a name="name-resolution-for-federation-servers"></a>Naamomzetting voor federatieservers
-* Instellen van DNS-records voor het AD FS federation-service (bijvoorbeeld sts.contoso.com) voor zowel het intranet (uw interne DNS-server) als de extranet (openbare DNS-via uw domeinregistrar). Zorg ervoor dat u een voor de intranet-DNS-record, records en geen CNAME-records. Dit is vereist voor windows-verificatie correct te laten werken op uw computer is toegevoegd aan het domein.
-* Als u meer dan één AD FS-server of Web Application Proxy server implementeert, controleer dan dat u de load balancer hebt geconfigureerd en dat de DNS-records voor de naam van de AD FS federation-service (bijvoorbeeld sts.contoso.com) aan de load balancer verwijzen.
-* Voor geïntegreerde windows-verificatie om te werken voor browser-toepassingen met behulp van Internet Explorer in uw intranet, zorg ervoor dat de naam van de AD FS federation-service (bijvoorbeeld sts.contoso.com) is toegevoegd aan de zone Lokaal intranet in Internet Explorer. Dit kan worden beheerd via Groepsbeleid en geïmplementeerd voor alle computers in uw domein.
+### <a name="name-resolution-for-federation-servers"></a>Naam omzetting voor Federatie servers
+* Stel DNS-records in voor de AD FS Federation-service naam (bijvoorbeeld sts.contoso.com) voor zowel het intranet (de interne DNS-server) als het extranet (open bare DNS via uw domein registratie functie). Zorg ervoor dat u een records en niet CNAME-records gebruikt voor de intranet-DNS-record. Dit is vereist voor een juiste werking van Windows-verificatie vanaf de computer die lid is van het domein.
+* Als u meer dan één AD FS server of Web Application proxy-server implementeert, moet u ervoor zorgen dat u uw load balancer hebt geconfigureerd en dat de DNS-records voor de AD FS Federation-service naam (bijvoorbeeld sts.contoso.com) verwijzen naar de load balancer.
+* Voor geïntegreerde Windows-verificatie voor het werken met browser toepassingen die gebruikmaken van Internet Explorer in uw intranet, moet u ervoor zorgen dat de naam van de AD FS Federation-service (bijvoorbeeld sts.contoso.com) wordt toegevoegd aan de intranet zone in Internet Explorer. Dit kan worden beheerd via groeps beleid en geïmplementeerd op alle computers die lid zijn van het domein.
 
 ## <a name="azure-ad-connect-supporting-components"></a>Azure AD Connect ondersteunende onderdelen
-Hier volgt een lijst van onderdelen die Azure AD Connect installeert op de server waarop Azure AD Connect is geïnstalleerd. Deze lijst is voor een basisinstallatie van Express. Als u een andere SQL Server op de pagina installatie synchronisatie services gebruiken wilt, is SQL Express LocalDB niet lokaal geïnstalleerd.
+Hier volgt een lijst met onderdelen die Azure AD Connect geïnstalleerd op de server waarop Azure AD Connect is geïnstalleerd. Deze lijst is voor een eenvoudige snelle installatie. Als u ervoor kiest om een andere SQL Server te gebruiken op de pagina synchronisatie Services installeren, wordt SQL Express LocalDB niet lokaal geïnstalleerd.
 
 * Azure AD Connect Health (Engelstalig)
-* Microsoft SQL Server 2012 Command Line Utilities
+* Microsoft SQL Server 2012-opdracht regel Programma's
 * Microsoft SQL Server 2012 Express LocalDB
-* Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013-distributiepakket
+* Microsoft SQL Server 2012 native client
+* Micro soft C++ Visual 2013-distributie pakket
 
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Hardwarevereisten voor Azure AD Connect
-De onderstaande tabel ziet u de minimale vereisten voor de Azure AD Connect sync-computer.
+In de volgende tabel ziet u de minimale vereisten voor de Azure AD Connect Sync-computer.
 
-| Aantal objecten in Active Directory | CPU | Geheugen | Grootte van de harde schijf |
+| Aantal objecten in Active Directory | CPU | Geheugen | Grootte van harde schijf |
 | --- | --- | --- | --- |
-| Minder dan 10.000 |1, 6 GHz |4 GB |70 GB |
-| 10,000–50,000 |1, 6 GHz |4 GB |70 GB |
-| 50,000–100,000 |1, 6 GHz |16 GB |100 GB |
-| 100.000 of meer objecten die is de volledige versie van SQL Server vereist voor | | | |
-| 100,000–300,000 |1, 6 GHz |32 GB |300 GB |
-| 300,000–600,000 |1, 6 GHz |32 GB |450 GB |
-| Meer dan 600.000 |1, 6 GHz |32 GB |500 GB |
+| Minder dan 10.000 |1,6 GHz |4 GB |70 GB |
+| 10000 – 50.000 |1,6 GHz |4 GB |70 GB |
+| 50.000 – 100000 |1,6 GHz |16 GB |100 GB |
+| Voor 100.000 of meer objecten is de volledige versie van SQL Server vereist | | | |
+| 100000 – 300000 |1,6 GHz |32 GB |300 GB |
+| 300000 – 600.000 |1,6 GHz |32 GB |450 GB |
+| Meer dan 600.000 |1,6 GHz |32 GB |500 GB |
 
-De minimale vereisten voor computers met AD FS of Web Application Servers is het volgende:
+De minimale vereisten voor computers met AD FS of Web Application servers is als volgt:
 
-* CPU: Dual-core, 1,6 GHz of hoger
+* CPU: Dual Core 1,6 GHz of hoger
 * GEHEUGEN: 2 GB of hoger
-* Azure-VM: Configuratie van a2 of hoger
+* Azure VM: a2-configuratie of hoger
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

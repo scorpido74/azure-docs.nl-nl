@@ -5,89 +5,58 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671331"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595215"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Een gebruikers delegering SA'S maken voor een container of BLOB met .NET (preview)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met de [Azure Storage-client bibliotheek voor .net](https://www.nuget.org/packages/Azure.Storage.Blobs).
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met de Azure Storage-client bibliotheek voor .NET.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Verifiëren met de Azure-identiteits bibliotheek (preview-versie)
+
+Met de Azure Identity client-bibliotheek voor .NET (preview) wordt een beveiligingsprincipal geverifieerd. Wanneer uw code wordt uitgevoerd in azure, is de beveiligingsprincipal een beheerde identiteit voor Azure-resources.
+
+Wanneer uw code wordt uitgevoerd in de ontwikkel omgeving, wordt de verificatie mogelijk automatisch verwerkt of is er mogelijk een browser aanmelding vereist, afhankelijk van de hulpprogram ma's die u gebruikt. Micro soft Visual Studio ondersteunt eenmalige aanmelding (SSO), zodat het actieve Azure AD-gebruikers account automatisch wordt gebruikt voor verificatie. Zie [eenmalige aanmelding bij toepassingen](../../active-directory/manage-apps/what-is-single-sign-on.md)voor meer informatie over SSO.
+
+Andere ontwikkel hulpprogramma's vragen u mogelijk om u aan te melden via een webbrowser. U kunt ook een Service-Principal gebruiken om te verifiëren vanuit de ontwikkel omgeving. Zie [identiteit voor Azure-app maken in de portal](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
+
+Na de verificatie krijgt de Azure Identity client-bibliotheek een token referentie. Deze token referentie wordt vervolgens ingekapseld in het service-client object dat u maakt om bewerkingen uit te voeren op basis van Azure Storage. De bibliotheek verwerkt dit voor uw probleemloos door de juiste token referentie op te halen.
+
+Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek.
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-rollen toewijzen voor toegang tot gegevens
+
+Wanneer een Azure AD-beveiligings-principal probeert toegang te krijgen tot BLOB-gegevens, moet die beveiligingsprincipal machtigingen hebben voor de resource. Of de beveiligingsprincipal een beheerde identiteit in azure of een Azure AD-gebruikers account voor het uitvoeren van code in de ontwikkel omgeving is, moet aan de beveiligingsprincipal een RBAC-rol worden toegewezen die toegang verleent tot BLOB-gegevens in Azure Storage. Voor informatie over het toewijzen van machtigingen via RBAC, zie de sectie **RBAC-rollen toewijzen voor toegangs rechten** in [toegang verlenen tot Azure-blobs en-wacht rijen met behulp van Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+
 ## <a name="install-the-preview-packages"></a>De preview-pakketten installeren
 
-In de voor beelden in dit artikel wordt gebruikgemaakt van de nieuwste preview-versie van de Azure Storage-client bibliotheek voor Blob Storage. Als u het preview-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+In de voor beelden in dit artikel wordt gebruikgemaakt van de nieuwste preview-versie van de [Azure Storage-client bibliotheek voor Blob Storage](https://www.nuget.org/packages/Azure.Storage.Blobs). Als u het preview-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-In de voor beelden in dit artikel wordt ook gebruikgemaakt van de nieuwste preview-versie van de [Azure Identity client-bibliotheek voor .net](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. De Azure Identity client-bibliotheek verifieert een beveiligingsprincipal. De geverifieerde beveiligingsprincipal kan vervolgens de SA'S van de gebruikers delegering maken. Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)voor meer informatie over de Azure Identity client-bibliotheek.
+In de voor beelden in dit artikel wordt ook gebruikgemaakt van de nieuwste preview-versie van de [Azure Identity client-bibliotheek voor .net](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. Als u het preview-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
 
-## <a name="create-a-service-principal"></a>Een service-principal maken
-
-Als u wilt verifiëren met Azure AD-referenties via de client bibliotheek van Azure Identity, gebruikt u een service-principal of een beheerde identiteit als de beveiligingsprincipal, afhankelijk van waar de code wordt uitgevoerd. Als uw code wordt uitgevoerd in een ontwikkel omgeving, gebruikt u een service-principal voor test doeleinden. Als uw code in azure wordt uitgevoerd, gebruikt u een beheerde identiteit. In dit artikel wordt ervan uitgegaan dat u code uitvoert vanuit de ontwikkel omgeving en laat zien hoe u een Service-Principal kunt gebruiken om de gebruikers delegering SA'S te maken.
-
-Roep de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) om een service-principal te maken met Azure CLI en een RBAC-rol toe te wijzen. Geef een Azure Storage rol voor gegevens toegang op om toe te wijzen aan de nieuwe service-principal. De rol moet de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevatten. Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor meer informatie over de ingebouwde rollen voor Azure Storage.
-
-Daarnaast kunt u het bereik voor de roltoewijzing opgeven. De Service-Principal maakt de gebruikers delegerings sleutel. Dit is een bewerking die wordt uitgevoerd op het niveau van het opslag account, zodat de roltoewijzing moet worden ingedeeld op het niveau van het opslag account, de resource groep of het abonnement. Voor meer informatie over RBAC-machtigingen voor het maken van een SA'S voor het delegeren van gebruikers, zie de sectie **machtigingen toewijzen met RBAC** in [een gebruikers delegatie maken (rest API)](/rest/api/storageservices/create-user-delegation-sas).
-
-Als u onvoldoende machtigingen hebt om een rol toe te wijzen aan de Service-Principal, moet u mogelijk de eigenaar van het account of de beheerder vragen de roltoewijzing uit te voeren.
-
-In het volgende voor beeld wordt de Azure CLI gebruikt om een nieuwe service-principal te maken en de rol van **BLOB-gegevens lezer voor opslag** toe te wijzen aan het account bereik
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-De `az ad sp create-for-rbac` opdracht retourneert een lijst met Service-Principal-eigenschappen in JSON-indeling. Kopieer deze waarden zodat u ze kunt gebruiken om de vereiste omgevings variabelen in de volgende stap te maken.
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.
-
-## <a name="set-environment-variables"></a>Omgevingsvariabelen instellen
-
-De Azure Identity client-bibliotheek leest waarden uit drie omgevings variabelen tijdens runtime om de service-principal te verifiëren. De volgende tabel beschrijft de waarde die moet worden ingesteld voor elke omgevings variabele.
-
-|Omgevingsvariabele|Value
-|-|-
-|`AZURE_CLIENT_ID`|De App-ID voor de Service-Principal
-|`AZURE_TENANT_ID`|De Azure AD-Tenant-ID van de Service-Principal
-|`AZURE_CLIENT_SECRET`|Het wacht woord dat voor de Service-Principal is gegenereerd
-
-> [!IMPORTANT]
-> Nadat u de omgevings variabelen hebt ingesteld, sluit u het console venster en opent u het opnieuw. Als u Visual Studio of een andere ontwikkel omgeving gebruikt, moet u de ontwikkel omgeving mogelijk opnieuw opstarten om de nieuwe omgevings variabelen te registreren.
-
 ## <a name="add-using-directives"></a>Using-instructies toevoegen
 
-Voeg de volgende `using`-instructies aan uw code toe om de Preview-versies van de Azure-identiteit en Azure Storage-client bibliotheken te gebruiken.
+Voeg de volgende `using`-instructies aan uw code toe om de Preview-versies van de identiteits-en Azure Storage-client bibliotheken van Azure te gebruiken.
 
 ```csharp
 using System;
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>De Service-Principal verifiëren
+## <a name="get-an-authenticated-token-credential"></a>Een geverifieerde token referentie ophalen
 
-Als u de Service-Principal wilt verifiëren, maakt u een instantie van de klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . De constructor `DefaultAzureCredential` leest de omgevings variabelen die u eerder hebt gemaakt.
+Maak een instantie van de [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) -klasse om een token referentie op te halen die door uw code kan worden gebruikt om aanvragen voor Azure Storage te autoriseren.
 
-Het volgende code fragment laat zien hoe u de geverifieerde referentie kunt ophalen en gebruiken om een serviceclient voor Blob Storage te maken
+Het volgende code fragment laat zien hoe de referenties van de geverifieerde token worden opgehaald en gebruikt om een serviceclient voor Blob Storage te maken:
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
@@ -165,7 +134,7 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Voorbeeld: Een SAS voor gebruikers overdracht ophalen
+## <a name="example-get-a-user-delegation-sas"></a>Voor beeld: een SAS voor gebruikers overdracht ophalen
 
 De volgende voorbeeld methode toont de volledige code voor het verifiëren van de beveiligingsprincipal en het maken van de SA'S voor gebruikers overdracht:
 
@@ -221,7 +190,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Voorbeeld: Een BLOB lezen met een SAS voor gebruikers overdracht
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Voor beeld: een blob met een gebruikers delegering SAS lezen
 
 In het volgende voor beeld worden de SA'S voor gebruikers overdracht getest die in het vorige voor beeld zijn gemaakt vanuit een gesimuleerde client toepassing. Als de SAS geldig is, kan de client toepassing de inhoud van de BLOB lezen. Als de SAS ongeldig is, bijvoorbeeld als deze is verlopen, retourneert Azure Storage fout code 403 (verboden).
 

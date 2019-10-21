@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885869"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598376"
 ---
 # <a name="private-offers"></a>Persoonlijke aanbiedingen
 
@@ -49,6 +49,9 @@ Persoonlijke aanbiedingen kunnen alleen worden gedetecteerd via de [Azure Portal
 ![[Persoonlijke aanbiedingen]](./media/marketplace-publishers-guide/private-offer.png)
 
 Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten. Bekijk gewoon het logo ' persoonlijk '.
+
+>[!Note]
+>Privé aanbiedingen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider Program (CSP).
 
 ## <a name="next-steps"></a>Volgende stappen
 

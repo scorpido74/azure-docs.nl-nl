@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265102"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596932"
 ---
 # <a name="my-first-python-runbook"></a>Mijn eerste python-runbook
 
@@ -83,7 +83,7 @@ In dit geval hebt u nog geen gepubliceerde versie omdat u het runbook zojuist he
 1. Schuif terug naar rechts om het deel venster voor **MyFirstRunbook-python**weer te geven.
    Met de opties bovenaan kunnen we het runbook starten, het runbook weer geven of plannen dat het op een bepaald moment in de toekomst wordt gestart.
 2. U wilt het runbook starten, dus klik op **Start** en klik vervolgens op **OK** wanneer de Blade runbook starten wordt geopend.
-3. Er wordt een taak venster geopend voor de runbook-taak die u hebt gemaakt. U kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
+3. Er wordt een taak venster geopend voor de runbook-taak die u hebt gemaakt. u kunt dit deel venster sluiten, maar in dit geval laat u het geopend, zodat u de voortgang van de taak kunt bekijken.
 1. De taak status wordt weer gegeven in **taak samenvatting** en komt overeen met de statussen die u hebt gezien tijdens het testen van het runbook.
 2. Zodra voor het runbook de status *Voltooid* wordt weergegeven, klikt u op **Uitvoer**. Het deel venster uitvoer wordt geopend en u kunt uw *Hallo wereld*zien.
 3. Sluit het deelvenster Uitvoer.
@@ -173,8 +173,8 @@ Test het runbook en voer het opnieuw uit om te zien dat de virtuele machine word
 Het runbook maakt momenteel gebruik van hardcoded waarden voor de namen van de resource groep en de VM.
 We gaan nu code toevoegen waarmee deze waarden worden opgehaald uit de invoer parameters.
 
-U gebruikt de `sys.argv` variabele om de parameter waarden op te halen.
-Voeg de volgende code toe aan het runbook direct na de `import` andere-instructies:
+U gebruikt de variabele `sys.argv` om de parameter waarden op te halen.
+Voeg de volgende code toe aan het runbook direct na de andere `import`-instructies:
 
 ```python
 import sys
@@ -183,8 +183,8 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Hiermee wordt de `sys` module geïmporteerd en worden twee variabelen gemaakt voor het opslaan van de resource groep en VM-namen.
-U ziet dat het element van de argumenten lijst `sys.argv[0]`,, de naam van het script en niet wordt ingevoerd door de gebruiker.
+Hiermee wordt de module `sys` geïmporteerd en worden twee variabelen gemaakt voor het opslaan van de resource groep en VM-namen.
+U ziet dat het element van de argumenten lijst, `sys.argv[0]`, de naam van het script is en niet wordt ingevoerd door de gebruiker.
 
 Nu kunt u de laatste twee regels van het runbook wijzigen om de invoer parameter waarden te gebruiken in plaats van hardcoded waarden te gebruiken:
 
@@ -198,13 +198,37 @@ Wanneer u een python-runbook start (op de **test** pagina of als een gepubliceer
 
 Wanneer u begint met het invoeren van een waarde in het eerste vak, wordt er een tweede weer gegeven, enzovoort, zodat u zo veel parameter waarden kunt invoeren als nodig is.
 
-De waarden zijn beschikbaar voor het script als de `sys.argv` matrix in de code die u zojuist hebt toegevoegd.
+De waarden zijn beschikbaar voor het script als de `sys.argv` matrix, zoals in de code die u zojuist hebt toegevoegd.
 
 Voer de naam van uw resource groep in als de waarde voor de eerste para meter en de naam van de virtuele machine die moet worden gestart als de waarde van de tweede para meter.
 
 ![Parameter waarden invoeren](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
 Klik op **OK** om het runbook te starten. Het runbook wordt uitgevoerd en start de virtuele machine die u hebt opgegeven.
+
+## <a name="error-handling-in-python"></a>Fout afhandeling in python
+
+U kunt ook de volgende conventies gebruiken om verschillende streams op te halen uit uw python-runbooks, met inbegrip van **waarschuwings**-, **fout**-en fout **opsporings** stromen.
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+In het volgende voor beeld wordt deze Conventie gebruikt in een `try...except` blok.
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> **sys. stderr** wordt niet ondersteund in azure Automation.
 
 ## <a name="next-steps"></a>Volgende stappen
 

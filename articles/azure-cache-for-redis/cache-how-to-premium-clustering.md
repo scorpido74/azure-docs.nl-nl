@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315982"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596911"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u clustering configureert in een Premium Azure-cache voor redis-exemplaar.
@@ -31,8 +31,8 @@ Azure cache voor redis biedt redis-cluster zoals [geïmplementeerd in redis](htt
 
 * De mogelijkheid om uw gegevensset automatisch te verdelen over meerdere knoop punten. 
 * De mogelijkheid om bewerkingen voort te zetten wanneer een subset van de knoop punten fouten ondervindt of niet in staat is te communiceren met de rest van het cluster. 
-* Meer door Voer: De door Voer wordt lineair verhoogd naarmate u het aantal Shards verhoogt. 
-* Meer geheugen grootte: Neemt lineair toe als u het aantal Shards verhoogt.  
+* Meer door Voer: de door Voer wordt lineair verhoogd naarmate u het aantal Shards verhoogt. 
+* Meer geheugen grootte: er wordt lineair verhoogd naarmate u het aantal Shards verhoogt.  
 
 Bij clustering wordt het aantal beschik bare verbindingen voor een geclusterde cache niet verhoogd. Zie voor meer informatie over de grootte, de door Voer en de band breedte met Premium-caches [wat Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -109,9 +109,9 @@ De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor 
 * Als u de redis ASP.NET-sessie status provider gebruikt, moet u 2.0.1 of hoger gebruiken. Zie [kan ik clustering gebruiken met de Redis ASP.net-sessie status en uitvoer cache providers?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Hoe worden sleutels gedistribueerd in een cluster?
-Op basis van de redis-documentatie voor het [distributie model voor sleutels](https://redis.io/topics/cluster-spec#keys-distribution-model) : De sleutel ruimte is opgesplitst in 16384 sleuven. Elke sleutel wordt gehasht en toegewezen aan een van deze sleuven, die over de knoop punten van het cluster worden gedistribueerd. U kunt configureren welk deel van de sleutel wordt gehasht om ervoor te zorgen dat meerdere sleutels zich in dezelfde Shard bevinden via hash-tags.
+Volgens de redis-documentatie over het [distributie model voor sleutels](https://redis.io/topics/cluster-spec#keys-distribution-model) : de sleutel ruimte is opgesplitst in 16384 sleuven. Elke sleutel wordt gehasht en toegewezen aan een van deze sleuven, die over de knoop punten van het cluster worden gedistribueerd. U kunt configureren welk deel van de sleutel wordt gehasht om ervoor te zorgen dat meerdere sleutels zich in dezelfde Shard bevinden via hash-tags.
 
-* Sleutels met een hash-code: als een deel van de sleutel is inge sloten `{` in `}`en, wordt alleen dat gedeelte van de sleutel gehasht om de hash-sleuf van een sleutel te bepalen. De volgende drie sleutels bevinden zich bijvoorbeeld in `{key}1`dezelfde Shard:, `{key}2`en `{key}3` omdat alleen het `key` deel van de naam wordt gehasht. Zie [hash-tags voor sleutels](https://redis.io/topics/cluster-spec#keys-hash-tags)voor een volledige lijst met de specificaties van hash-labels.
+* Sleutels met een hash-tag: als een deel van de sleutel wordt Inge sloten in `{` en `}`, wordt alleen dat gedeelte van de sleutel gehasht om de hash-sleuf van een sleutel te bepalen. De volgende drie sleutels bevinden zich bijvoorbeeld in dezelfde Shard: `{key}1`, `{key}2` en `{key}3` omdat alleen het `key` deel van de naam wordt gehasht. Zie [hash-tags voor sleutels](https://redis.io/topics/cluster-spec#keys-hash-tags)voor een volledige lijst met de specificaties van hash-labels.
 * Sleutels zonder hash-code-de volledige sleutel naam wordt gebruikt voor hashing. Dit resulteert in een statistische, gelijkmatige verdeling over de Shards van de cache.
 
 Voor de beste prestaties en door Voer wordt u aangeraden de sleutels gelijkmatig te verdelen. Als u sleutels met een hash-code gebruikt, is het de verantwoordelijkheid van de toepassing om ervoor te zorgen dat de sleutels gelijkmatig worden gedistribueerd.
@@ -124,9 +124,9 @@ Zie het gedeelte [clustering.cs](https://github.com/rustd/RedisSamples/blob/mast
 De grootste Premium-cache grootte is 120 GB. U kunt Maxi maal 10 Shards maken met een maximale grootte van 1,2 TB GB. Als u een grotere grootte nodig hebt, kunt u [meer aanvragen](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Ondersteunen alle redis-clients clusteren?
-Op dit moment ondersteunen niet alle clients redis clustering. Stack Exchange. redis is een service die hiervoor ondersteuning biedt. Zie de sectie [afspelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) in de [redis-cluster zelf studie](https://redis.io/topics/cluster-tutorial)voor meer informatie over andere clients. 
+Niet alle clients bieden ondersteuning voor redis-clustering. Raadpleeg de documentatie voor de bibliotheek die u gebruikt om te controleren of u een bibliotheek en versie gebruikt die ondersteuning biedt voor clustering. Stack Exchange. redis is een bibliotheek die clustering ondersteunt in de nieuwere versies. Zie de sectie [afspelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) in de [redis-cluster zelf studie](https://redis.io/topics/cluster-tutorial)voor meer informatie over andere clients. 
 
-Voor het redis-clustering-protocol moet elke client rechtstreeks in de cluster modus verbinding maken met elke Shard. Het gebruik van een client die geen ondersteuning biedt voor clustering resulteert waarschijnlijk in een groot aantal [verplaatste omleidings uitzonderingen](https://redis.io/topics/cluster-spec#moved-redirection).
+Het redis-cluster protocol vereist dat elke client rechtstreeks verbinding maakt met elke Shard in de cluster modus en dat er ook nieuwe fout reacties worden gedefinieerd, zoals ' verplaatste ' n.v.t. ' CROSSSLOTS '. Het gebruik van een client die geen ondersteuning biedt voor clustering met een cluster modus cache, kan leiden tot een groot aantal [verplaatsings uitzonderingen](https://redis.io/topics/cluster-spec#moved-redirection), of alleen uw toepassing afwijzen als u multi-Key-aanvragen van meerdere sleuven uitvoert.
 
 > [!NOTE]
 > Als u stack Exchange. redis als uw client gebruikt, moet u ervoor zorgen dat u de nieuwste versie van [stack Exchange. redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 of hoger gebruikt, anders werkt clusteren niet goed. Zie [uitzonde ringen verplaatsen](#move-exceptions) voor meer informatie als u problemen ondervindt met het verplaatsen van uitzonde ringen.
@@ -137,7 +137,7 @@ Voor het redis-clustering-protocol moet elke client rechtstreeks in de cluster m
 U kunt verbinding maken met uw cache met behulp van dezelfde [eind punten](cache-configure.md#properties), [poorten](cache-configure.md#properties)en [sleutels](cache-configure.md#access-keys) die u gebruikt wanneer u verbinding maakt met een cache waarvoor geen clustering is ingeschakeld. Redis beheert de Clustering op de back-end zodat u deze niet hoeft te beheren vanaf uw client.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Kan ik rechtstreeks verbinding maken met de afzonderlijke Shards van mijn cache?
-Voor het clustering-protocol moet de client de juiste Shard-verbindingen maken. Daarom moet de client dit op de juiste manier uitvoeren. In dat geval bestaat elk Shard uit een primair/replica-cache paar, gezamenlijk bekend als een cache-exemplaar. U kunt verbinding maken met deze cache-instanties met behulp van het redis-cli-hulp programma in de [instabiele](https://redis.io/download) vertakking van de redis-opslag plaats op github. Deze versie implementeert Basic-ondersteuning wanneer u begint `-c` met de switch. Zie voor meer informatie [afspelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) op [https://redis.io](https://redis.io) in de [zelf studie over redis-clusters](https://redis.io/topics/cluster-tutorial).
+Voor het clustering-protocol moet de client de juiste Shard-verbindingen maken. Daarom moet de client dit op de juiste manier uitvoeren. In dat geval bestaat elk Shard uit een primair/replica-cache paar, gezamenlijk bekend als een cache-exemplaar. U kunt verbinding maken met deze cache-instanties met behulp van het redis-cli-hulp programma in de [instabiele](https://redis.io/download) vertakking van de redis-opslag plaats op github. Deze versie implementeert Basic-ondersteuning wanneer u begint met de schakel optie `-c`. Zie voor meer informatie [spelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) op [https://redis.io](https://redis.io) in de [zelf studie redis-cluster](https://redis.io/topics/cluster-tutorial).
 
 Voor niet-SSL, gebruikt u de volgende opdrachten.
 
@@ -147,10 +147,13 @@ Voor niet-SSL, gebruikt u de volgende opdrachten.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Voor SSL, vervang `1300N` `1500N`door.
+Voor SSL, moet u `1300N` vervangen door `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Kan ik Clustering voor een eerder gemaakte cache configureren?
-Op dit moment kunt u clustering alleen inschakelen wanneer u een cache maakt. U kunt de grootte van het cluster wijzigen na het maken van de cache, maar u kunt geen clustering toevoegen aan een Premium-cache of Clustering verwijderen uit een Premium-cache nadat de cache is gemaakt. Een Premium-cache waarbij Clustering is ingeschakeld en slechts één Shard verschilt van een Premium-cache met dezelfde grootte zonder clusters.
+Ja. Zorg er eerst voor dat uw cache Premium is door te schalen als dat niet het geval is. Nu moet u de cluster configuratie opties kunnen zien, inclusief een optie om clsuter in te scha kelen. U kunt de cluster grootte wijzigen nadat de cache is gemaakt, of nadat u Clustering voor de eerste keer hebt ingeschakeld.
+
+   >[!IMPORTANT]
+   >Het inschakelen van clusters kan niet ongedaan worden gemaakt. En een cache waarbij Clustering is ingeschakeld en slechts één Shard gedraagt *anders* dan een *cache met dezelfde grootte zonder clusters.*
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Kan ik Clustering voor een Basic-of Standard-cache configureren?
 Clustering is alleen beschikbaar voor Premium-caches.
@@ -162,7 +165,7 @@ Clustering is alleen beschikbaar voor Premium-caches.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Ik krijg uitzonde ringen bij het gebruik van stack Exchange. redis en clustering, wat moet ik doen?
-Als u stack Exchange. redis gebruikt en uitzonde `MOVE` ringen ontvangt wanneer u Clustering gebruikt, moet u ervoor zorgen dat u [stack Exchange. redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) of hoger gebruikt. Zie [Configure the cache clients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)(Engelstalig) voor instructies over het configureren van uw .NET-toepassingen om stack Exchange. redis te gebruiken.
+Als u stack Exchange. redis gebruikt en `MOVE` uitzonde ringen ontvangt wanneer u Clustering gebruikt, moet u ervoor zorgen dat u [stack Exchange. redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) of hoger gebruikt. Zie [Configure the cache clients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)(Engelstalig) voor instructies over het configureren van uw .NET-toepassingen om stack Exchange. redis te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het gebruik van meer Premium-cache functies.

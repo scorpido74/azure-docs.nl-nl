@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3a9b1a54725dff8fd7b8a6c5023bc7eb0ba84fc8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527067"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596759"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -315,7 +315,7 @@ Zie MSAL voor meer informatie. Referentie documentatie voor python voor [Confide
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j is beschikbaar in de open bare preview. Ondertekende verklaringen worden nog niet ondersteund
+msal4j is beschikbaar in de open bare preview. Ondertekende verklaringen worden nog niet ondersteund.
 
 ---
 

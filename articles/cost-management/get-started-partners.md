@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9d95e23cf92c7ee98291831d60088d610c3e5c52
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377692"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596647"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
-Azure Cost Management is standaard beschikbaar voor partners die hun klanten hebben opvolgd voor een klant overeenkomst van micro soft. In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) -functies gebruiken. Ook wordt beschreven hoe partners Cost Management toegang bieden voor hun klanten. CSP-klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
+Azure Cost Management is standaard beschikbaar voor partners die hun klanten hebben opvolgd voor een klant overeenkomst van micro soft. In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) -functies gebruiken. Ook wordt beschreven hoe partners Cost Management toegang bieden voor hun klanten. Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
 
 CSP-partners gebruiken Cost Management voor het volgende:
 
@@ -29,11 +29,19 @@ CSP-partners gebruiken Cost Management voor het volgende:
 - Stel meldingen en automatisering in met behulp van programmeer [budgetten](tutorial-acm-create-budgets.md) en-waarschuwingen wanneer de kosten de budget overschrijden.
 - Schakel het Azure Resource Manager-beleid in dat klanten toegang biedt tot Cost Management gegevens. Klanten kunnen gegevens over verbruiks kosten weer geven voor hun abonnementen met [betalen naar](https://azure.microsoft.com/pricing/calculator/)gebruik-tarieven.
 
+Hier volgt een voor beeld van de kosten voor alle klanten.
+![Example de kosten voor alle klanten worden weer gegeven ](./media/get-started-partners/customer-costs1.png)
+
+Hier volgt een voor beeld van de kosten voor één klant.
+![Example met de kosten voor één klant ](./media/get-started-partners/customer-costs2.png)
+
 Alle functionaliteit die beschikbaar is in Azure Cost Management is ook beschikbaar met REST Api's. Gebruik de Api's om kosten beheer taken te automatiseren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Cost Management hebt lees toegang tot uw facturerings account of-abonnement nodig. Toegang kan op elk niveau boven uw resources worden verleend, van het facturerings account of een beheer groep tot afzonderlijke resource groepen waar u uw apps beheert. Om ervoor te zorgen dat abonnements gebruikers prijzen en kosten kunnen bekijken, moet de toegang tot de kosten voor het weer geven van uw facturerings account zijn ingeschakeld. Zie [toegang tot gegevens toewijzen](assign-access-acm-data.md)voor meer informatie over het inschakelen en toewijzen van toegang tot Azure Cost Management. Zie [inzicht in cost management gegevens](understand-cost-mgt-data.md)voor een volledige lijst met ondersteunde account typen.
+Azure Cost Management hebt lees toegang tot uw facturerings account of-abonnement nodig. Toegang kan op elk niveau boven uw resources worden verleend, van het facturerings account of een beheer groep tot afzonderlijke resource groepen waar u uw apps beheert. Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie over het inschakelen en toewijzen van toegang tot Azure Cost Management voor een facturerings account. De rol van **globale beheerder** en **beheerder agent** kan de kosten voor een facturerings account beheren.
+
+Zie [inzicht in cost management gegevens](understand-cost-mgt-data.md)voor een volledige lijst met ondersteunde account typen.
 
 
 ## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management scopes gebruikt?
@@ -48,9 +56,9 @@ Nadat u uw klanten aan een micro soft-klant overeenkomst hebt toegevoegd, zijn d
 
 ### <a name="billing-account-scope"></a>Bereik van facturerings account
 
-Gebruik het bereik van het facturerings account om kosten voor preheffingen voor al uw klanten en facturerings profielen weer te geven. U kunt ook factuur kosten voor op verbruik gebaseerde producten voor klanten weer geven op de micro soft-klanten overeenkomst. Factuur kosten worden ook weer gegeven voor aankopen op basis van producten voor klanten op de micro soft-klanten overeenkomst en de CSP-aanbieding. Op dit moment is de standaard valuta voor het weer geven van de kosten in het bereik Amerikaanse dollars. Budgetten die zijn ingesteld voor het bereik, zijn ook in USD.
+Gebruik het bereik van het facturerings account om kosten voor preheffingen voor al uw klanten en facturerings profielen weer te geven. Factuur kosten worden alleen weer gegeven voor producten op basis van verbruik van de klant van micro soft. Factuur kosten worden echter weer gegeven voor op aankopen gebaseerde producten voor klanten op zowel de klant overeenkomst van micro soft als de CSP-aanbieding. Op dit moment is de standaard valuta voor het weer geven van de kosten in het bereik Amerikaanse dollars. Budgetten die zijn ingesteld voor het bereik, zijn ook in USD.
 
-Ongeacht de klant-gefactureerde valuta, gebruiken partners het bereik om budgetten in te stellen en de kosten in USD te beheren voor hun klanten, abonnementen, resources en resource groepen.
+In het kader van verschillende klant-gefactureerde valuta's gebruiken partners het bereik van facturerings accounts om budgetten in te stellen en kosten in USD te beheren voor hun klanten, abonnementen, resources en resource groepen.
 
 Partners filteren ook kosten in een specifieke factuur valuta voor klanten in de weer gave kosten analyse. Selecteer de lijst met **werkelijke kosten** om de kosten in ondersteunde facturerings valuta's van klanten weer te geven.
 
@@ -62,17 +70,17 @@ Gebruik de [weer gave afgeschreven kosten](quick-acm-cost-analysis.md#customize-
 
 Gebruik het bereik van het facturerings profiel om de kosten voor preheffing in de facturerings valuta voor al uw klanten te bekijken voor alle producten en abonnementen die in een factuur zijn opgenomen. U kunt de kosten in een facturerings profiel voor een specifieke factuur filteren met behulp van het **InvoiceID** -filter. Het filter toont het verbruik en de aanschaf kosten van het product voor een specifieke factuur. U kunt ook de kosten voor een specifieke klant op de factuur filteren om de kosten voor de belasting vooraf te bekijken.
 
-Nadat u klanten hebt opvolgd voor een micro soft-klant overeenkomst, ontvangt u een klant factuur met de kosten voor recht op aangekochte producten, zoals SaaS, Azure Marketplace en reserve ringen. Wanneer de factuur in dezelfde facturerings valuta wordt gefactureerd, worden ook de kosten van klanten weer gegeven die niet zijn opgenomen in de nieuwe micro soft-klant overeenkomst.
+Nadat u klanten onboardt naar een micro soft-klant overeenkomst, ontvangt u een factuur met alle kosten voor alle producten (verbruik, aankopen en rechten) voor deze klanten op de micro soft-klant overeenkomst. Wanneer in dezelfde valuta wordt gefactureerd, omvatten deze facturen ook de kosten voor rechte en aangeschafte producten zoals SaaS, Azure Marketplace en reserve ringen voor klanten die zich nog in de CSP-aanbieding bevinden.
 
 Voor het afstemmen van de kosten voor de klant factuur kunt u met het bereik van het facturerings profiel alle kosten bekijken die toenemen voor een factuur voor uw klanten. Net als bij de factuur toont het bereik de kosten voor elke klant in de nieuwe klant overeenkomst van micro soft. In het bereik worden ook de kosten voor klant rechten weer gegeven die nog in de huidige CSP-aanbieding zijn opgenomen.
 
-Het facturerings profiel en het bereik van de facturerings account zijn de enige die de kosten voor rechten en op aankoop gebaseerde producten tonen.
+De scopes van het facturerings profiel en het betaal account zijn de enige toepasselijke bereiken die de kosten voor rechten en op aankoop gebaseerde producten zoals Azure Marketplace en reserverings aankopen tonen.
 
-In facturerings profielen worden de abonnementen gedefinieerd die zijn opgenomen in een factuur. Facturerings profielen zijn het functionele equivalent van een Enter prise Agreement-inschrijving. Een inschrijving is het bereik dat facturen worden gegenereerd. Op dezelfde manier zijn aankopen waarvoor geen gebruik is gemaakt, zoals Azure Marketplace en reserve ringen, alleen beschikbaar voor het bereik van het facturerings profiel.
+In facturerings profielen worden de abonnementen gedefinieerd die zijn opgenomen in een factuur. Facturerings profielen zijn het functionele equivalent van een Enter prise Agreement-inschrijving. Een facturerings profiel is het bereik waarin facturen worden gegenereerd.
 
 Op dit moment is de facturerings valuta van de klant de standaard valuta bij het weer geven van de kosten in het bereik van het facturerings profiel. Budgetten die zijn ingesteld op het bereik van het facturerings profiel, worden in de facturerings valuta opgenomen.
 
-Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebruiken het bereik om budgetten in te stellen in de facturerings valuta voor een:
+Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebruiken het bereik om budgetten in te stellen in de facturerings valuta voor de volgende items:
 
 - Specifieke gefilterde factuur
 - Gebruikers
@@ -87,7 +95,7 @@ Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebru
 
 Partners gebruiken de scope voor het beheren van de kosten die zijn gekoppeld aan klanten die onboarding voor de micro soft-klant overeenkomst zijn. Met het bereik kunnen partners de kosten van de preheffing voor een specifieke klant weer geven. U kunt ook de kosten vóór belastingen voor een specifiek abonnement, resource groep of resource filteren.
 
-Het bereik van de klant bevat geen klanten die zich op de huidige CSP-aanbieding bevinden. De rechten kosten, niet voor Azure-gebruik, voor huidige CSP-aanbieding klanten zijn beschikbaar op het facturerings account en het bereik van facturerings profielen wanneer u het klant filter toepast.
+Het bereik van de klant bevat geen klanten die zich op de huidige CSP-aanbieding bevinden. De scope bevat alleen klanten die een micro soft-klant overeenkomst hebben. De rechten kosten, niet voor Azure-gebruik, voor huidige CSP-aanbieding klanten zijn beschikbaar op het facturerings account en het bereik van facturerings profielen wanneer u het klant filter toepast.
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partner toegang tot de facturerings bereiken in Cost Management
 
@@ -114,7 +122,7 @@ Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weer geven.
 Klik onder **instellingen**op **beleid**.
 
 Het huidige beleid voor de zichtbaarheid van kosten wordt weer gegeven voor **Azure-gebruiks** kosten die zijn gekoppeld aan de abonnementen voor de geselecteerde klant.
-![Policy zodat klanten betalen per gebruik-kosten kunnen weer geven @ no__t-1
+![Policy zodat klanten betalen per gebruik-kosten kunnen weer geven ](./media/get-started-partners/cost-management-billing-policies.png)
 
 Wanneer het beleid is ingesteld op **Nee**, is Azure Cost Management niet beschikbaar voor abonnements gebruikers die zijn gekoppeld aan de klant. Tenzij deze is ingeschakeld door een partner, wordt het beleid voor kosten zichtbaarheid standaard uitgeschakeld voor alle gebruikers van het abonnement.
 
@@ -141,22 +149,22 @@ Bij afgeschreven weer gaven en werkelijke kosten voor gereserveerde instanties i
 
 Partners kunnen kosten ontdekken en analyseren voor de kosten analyse van klanten voor een specifieke klant of voor een factuur. Met de functies filter en groeperen op kunt u kosten analyseren op basis van meerdere velden, waaronder:
 
-| **Veld** | **Beschrijving** | **Gelijkwaardige kolom in het partner centrum** |
-| --- | --- | --- |
-| PartnerTenantID | Id voor de Azure Active Directory Tenant van de partner | Partner Azure Active Directory TenantID wordt aangeroepen als partner-ID. In GUID-indeling. |
-| PartnerName | De naam van de partner Azure Active Directory Tenant | Naam van de partner |
-| CustomerTenantID | Id van de Azure Active Directory Tenant van het abonnement van de klant | Organisatie-ID van de klant. Bijvoorbeeld klant Azure Active Directory TenantID. |
-| CustomerName | De naam van de Azure Active Directory Tenant die het abonnement van de klant bevat | De organisatie naam van de klant, zoals gerapporteerd in het partner centrum. Belang rijk voor het afstemmen van de factuur met uw systeem gegevens. |
-| ResellerMPNID | MPNID voor de wederverkoper die aan het abonnement is gekoppeld | MPN-ID van de wederverkoper van de record voor het abonnement. Niet beschikbaar voor huidige activiteit. |
-| subscription ID | Unieke door micro soft gegenereerde id voor het Azure-abonnement | N/A |
-| subscriptionName | De naam van het Azure-abonnement | N/A |
-| billingProfileID | De id voor het facturerings profiel. Er worden kosten in rekening voor facturen gegroepeerd in één facturerings valuta voor klanten. | Facturerings groep-ID van MCAPI-partner. Wordt gebruikt in API-aanvragen, maar niet opgenomen in reacties. |
-| invoiceID | Factuur-ID voor de factuur waarin de specifieke trans actie wordt weer gegeven | Factuur nummer waar de opgegeven trans actie wordt weer gegeven. |
-| resourceGroup | De naam van de Azure-resource groep. Wordt gebruikt voor het beheer van resource levenscyclus. | De naam van de resource groep. |
-| partnerEarnedCreditRate | De korting wordt toegepast als er een partner (PEC) wordt gebruikt op basis van de toegang tot de partner beheerder. | De frequentie van het tegoed van de partner (PEC). Bijvoorbeeld 0% of 15%. |
-| partnerEarnedCreditApplied | Geeft aan of het tegoed van de partner is toegepast. | N/A |
+| **Veld** | **Beschrijving** |
+| --- | --- |
+| PartnerTenantID | Id voor de Azure Active Directory Tenant van de partner |
+| PartnerName | De naam van de partner Azure Active Directory Tenant |
+| CustomerTenantID | Id van de Azure Active Directory Tenant van het abonnement van de klant |
+| CustomerName | De naam van de Azure Active Directory Tenant die het abonnement van de klant bevat |
+| ResellerMPNID | MPNID voor de wederverkoper die aan het abonnement is gekoppeld |
+| subscription ID | Unieke door micro soft gegenereerde id voor het Azure-abonnement |
+| subscriptionName | De naam van het Azure-abonnement |
+| billingProfileID | De id voor het facturerings profiel. Er worden kosten in rekening voor facturen gegroepeerd in één facturerings valuta voor klanten.
+| invoiceID | Factuur-ID voor de factuur waarin de specifieke trans actie wordt weer gegeven |
+| resourceGroup | De naam van de Azure-resource groep. Wordt gebruikt voor het beheer van resource levenscyclus. |
+| partnerEarnedCreditRate | De korting wordt toegepast als er een partner (PEC) wordt gebruikt op basis van de toegang tot de partner beheerder. |
+| partnerEarnedCreditApplied | Geeft aan of het tegoed van de partner is toegepast. |
 
-In de weer gave [kosten analyse](quick-acm-cost-analysis.md) kunt u ook [weer gaven opslaan](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) en gegevens exporteren naar [CSV-en PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) -bestanden.
+In de weer gave [kosten analyse](quick-acm-cost-analysis.md) kunt u ook [weer gaven opslaan](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) en gegevens exporteren naar [CSV-en PNG-bestanden](quick-acm-cost-analysis.md#automation-and-offline-analysis).
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Resource kosten voor het ontvangen van partners (PEC) weer geven
 
@@ -183,11 +191,14 @@ U kunt ook groeperen en filteren op de eigenschap **PartnerEarnedCreditApplied**
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST-Api's
 
-Partners, indirecte providers en klanten kunnen Cost Management Api's gebruiken die worden beschreven in de volgende secties voor algemene taken.
+Partners en klanten kunnen Cost Management Api's gebruiken die worden beschreven in de volgende secties voor algemene taken.
 
-### <a name="azure-cost-management-apis-for-partners"></a>Azure Cost Management Api's voor partners
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management-Api's-directe en indirecte providers
 
-Partners en gebruikers met toegang tot de facturerings bereiken in een partner-Tenant kunnen de volgende Api's gebruiken.
+Partners met toegang tot de facturerings bereiken in een partner-Tenant kunnen de volgende Api's gebruiken om gefactureerde kosten weer te geven.
+
+Api's in het abonnements bereik kunnen worden aangeroepen door een partner, ongeacht het kosten beleid als ze toegang hebben tot het abonnement. Andere gebruikers met toegang tot het abonnement, zoals de klant of de wederverkoper, kunnen de Api's pas aanroepen nadat de partner het kosten beleid voor de Tenant van de klant heeft ingeschakeld.
+
 
 #### <a name="to-get-a-list-of-billing-accounts"></a>Een lijst met facturerings accounts ophalen
 
@@ -198,111 +209,94 @@ armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-0
 #### <a name="to-get-a-list-of-customers"></a>Een lijst met klanten ophalen
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers?api-version=2019-10-01-preview"
+armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
 ```
 #### <a name="to-get-a-list-of-subscriptions"></a>Een lijst met abonnementen ophalen
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/billingSubscriptions?api-version=2019-10-01-preview"
-```
-
-#### <a name="to-create-new-subscription"></a>Nieuw abonnement maken
-
-```
-armclient post "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub.json -verbose
-```
-
-#### <a name="to-get-or-download-usage-for-azure-services"></a>Het gebruik van Azure-Services ophalen of downloaden
-
-```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
-```
-
-#### <a name="to-get-a-list-of-billing-profiles"></a>Een lijst met facturerings profielen ophalen
-
-```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/billingProfiles?api-version=2019-10-01-preview
-```
-
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>Het prijzen overzicht voor verbruikte Azure-Services ophalen of downloaden
-
-```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/BillingProfiles/JUT6-EU3Q-BG7-TGB/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
-```
-
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>De klant kosten voor de afgelopen twee maanden ophalen, gesorteerd op maand
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Kosten voor Azure-abonnementen voor de afgelopen twee maanden ophalen, gesorteerd op maand
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>Dagelijkse kosten voor de huidige maand ophalen
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
 ```
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Om het beleid te verkrijgen voor klanten om de kosten te bekijken
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview"
+armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Het beleid voor klanten instellen om kosten te bekijken
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview" @policy.json
+armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
 ```
 
-### <a name="azure-cost-management-apis-for-indirect-providers"></a>Azure Cost Management Api's voor indirecte providers
-
-Indirecte providers met toegang tot RBAC-bereiken in een Tenant van de klant kunnen de volgende Api's gebruiken. Meld u aan als gebruiker of met een Service-Principal om aan de slag te gaan.
-
-#### <a name="to-get-the-billing-account-information"></a>De gegevens van het facturerings account ophalen
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Azure-service gebruik voor een facturerings account ophalen
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>Een lijst met klanten ophalen
+#### <a name="to-download-a-customers-azure-service-usage"></a>Het Azure-service gebruik van een klant downloaden
+
+De volgende aanroep Get is een asynchrone bewerking.
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers?api-version=2019-10-01-preview"
+armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-#### <a name="to-get-a-list-of-resellers-associated-with-the-customer"></a>Een lijst ophalen met wederverkopers die zijn gekoppeld aan de klant
+Roep de `Location` URI aan die in het antwoord is geretourneerd om de bewerkings status te controleren. Wanneer de status *voltooid*is, bevat de eigenschap `downloadUrl` een koppeling die u kunt gebruiken om het gegenereerde rapport te downloaden.
+
+
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>Het prijzen overzicht voor verbruikte Azure-Services ophalen of downloaden
+
+Gebruik eerst het volgende bericht.
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db?api-version=2019-10-01-preview&$expand=resellers
+armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-#### <a name="to-get-a-list-of-subscriptions-with-reseller-information"></a>Een lijst met abonnementen met wederverkoper-informatie ophalen
+Roep vervolgens de eigenschaps waarde van de asynchrone bewerking aan. Bijvoorbeeld:
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/billingSubscriptions?api-version=2019-10-01-preview
+armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
 ```
+De voor gaande aanroep Get retourneert de download koppeling met het prijzen overzicht.
 
-#### <a name="to-create-a-subscription"></a>Een abonnement maken
-
-```
-armclient post "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub_reseller.json
-```
-
-### <a name="azure-cost-management-apis-for-customers"></a>Azure Cost Management-Api's voor klanten
-
-Klanten gebruiken de volgende informatie om toegang te krijgen tot de Api's. Meld u aan als gebruiker om aan de slag te gaan.
-
-#### <a name="to-get-or-download-azure-consumption-usage-information-with-retail-rates"></a>Informatie over gebruik van Azure-verbruik met retail tarieven ophalen of downloaden
+#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>De klant kosten voor de afgelopen twee maanden ophalen, gesorteerd op maand
 
 ```
-armclient post /subscriptions/66bada28-271e-4b7a-aaf5-c0ead63923d7/providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
 ```
+
+#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Kosten voor Azure-abonnementen voor de afgelopen twee maanden ophalen, gesorteerd op maand
+
+```
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
+```
+
+#### <a name="to-get-daily-costs-for-the-current-month"></a>Dagelijkse kosten voor de huidige maand ophalen
+
+```
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+```
+
+#### <a name="create-a-budget-for-a-partner"></a>Een budget voor een partner maken
+
+```
+armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+```
+
+
+#### <a name="create-a-budget-for-a-customer"></a>Een budget voor een klant maken
+
+```
+armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+```
+#### <a name="delete-a-budget"></a>Een budget verwijderen
+
+```
+armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Begin](quick-acm-cost-analysis.md) met het analyseren van de kosten in Cost Management

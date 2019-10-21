@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329435"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597308"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -191,7 +191,7 @@ Als uw Log Analytics-werk ruimte toegang heeft tot verouderde prijs categorieën
 2. Selecteer in het deel venster werk ruimte onder **Algemeen**de **prijs categorie**.  
 
 3. Selecteer onder **prijs categorie**een prijs categorie en klik vervolgens op **selecteren**.  
-    ![Selected-prijs plan @ no__t-1
+    ![Selected prijs plan ](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 U kunt [de prijs categorie ook instellen via Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) met behulp van de para meter `sku` (`pricingTier` in de arm-sjabloon). 
 
@@ -268,7 +268,7 @@ Op de pagina **gebruik en geschatte kosten** toont het diagram *gegevens opname 
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 Houd er rekening mee dat met de component ' where IsBillable = True ' gegevens typen worden gefilterd van bepaalde oplossingen waarvoor geen opname kosten gelden. 
@@ -278,12 +278,12 @@ U kunt verder inzoomen om gegevens trends te bekijken voor specifieke gegevens t
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>Gegevens volume per computer
 
-Als u de **grootte** van de factureer bare gebeurtenissen die per computer zijn opgenomen, wilt zien, gebruikt u de [eigenschap](log-standard-properties.md#_billedsize)`_BilledSize`, die de grootte in bytes levert:
+Als u de **grootte** van factureer bare gebeurtenissen wilt zien die per computer zijn opgenomen, gebruikt u de [eigenschap](log-standard-properties.md#_billedsize)`_BilledSize`, die de grootte in bytes levert:
 
 ```kusto
 union withsource = tt * 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Voor gegevens van knoop punten die worden gehost in azure, kunt u de **grootte** van factureer bare gebeurtenissen ontvangen die __per Azure-abonnement__worden opgenomen, en de eigenschap `_ResourceId` parseren als:
+Voor gegevens van knoop punten die worden gehost in azure, kunt u de **grootte** van het aantal factureer bare gebeurtenissen dat __per Azure-abonnement__wordt opgenomen, ophalen en de `_ResourceId` eigenschap parseren als:
 
 ```kusto
 union withsource = tt * 
@@ -428,7 +428,7 @@ De volgende query geeft een resultaat wanneer er meer dan 100 GB aan gegevens in
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ De volgende query gebruikt een eenvoudige formule om te voorspellen wanneer meer
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ Bij het instellen van de waarschuwing voor de eerste query - wanneer er meer dan
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoekquery** op `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Zoekquery** op `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **Waarschuwingslogica** is **Gebaseerd op** het *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
    - **Tijdsperiode** van *1440* minuten en **Waarschuwingsfrequentie** van elke *60* minuten, omdat de gebruiksgegevens maar één keer per uur worden bijgewerkt.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
@@ -465,7 +465,7 @@ Bij het maken van de waarschuwing voor de tweede query - wanneer wordt voorspeld
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoekquery** op `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Zoekquery** op `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **Waarschuwingslogica** is **Gebaseerd op** het *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
    - **Tijdsperiode** van *180* minuten en **Waarschuwingsfrequentie** van elke *60* minuten, omdat de gebruiksgegevens maar één keer per uur worden bijgewerkt.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:

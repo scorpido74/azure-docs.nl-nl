@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "70085669"
 ---
 # <a name="azure-functions-deployment-slots"></a>Implementatie sleuven Azure Functions
@@ -33,9 +33,9 @@ Hieronder ziet u hoe de functies worden beïnvloed door de wisselende sleuven:
 
 Er zijn een aantal voor delen voor het gebruik van implementatie sites. In de volgende scenario's worden veelvoorkomende toepassingen voor sleuven beschreven:
 
-- **Verschillende omgevingen voor verschillende doel einden**: Door gebruik te maken van verschillende sleuven kunt u app-exemplaren onderscheiden voordat u naar de productie-of staging-sleuf overgaat.
-- Voor bereiding: Als u implementeert op een sleuf in plaats van rechtstreeks naar productie, kan de app worden opgewarmd voordat u live gaat. Daarnaast vermindert het gebruik van sleuven de latentie voor HTTP-geactiveerde workloads. Instanties worden vóór de implementatie gewarmd, waardoor de gedistribueerde start voor nieuwe functies wordt verminderd.
-- **Eenvoudige terugval**: Na een swap met productie heeft de sleuf met een eerder gefaseerde app nu de vorige productie-app. Als de wijzigingen die zijn gewisseld naar de productie sleuf, niet naar verwachting zijn, kunt u de wisseling onmiddellijk omkeren om de laatste bekende juiste instantie terug te halen.
+- **Verschillende omgevingen voor verschillende doel einden**: het gebruik van verschillende sleuven biedt u de mogelijkheid om app-exemplaren te onderscheiden voordat u naar de productie-of staging-sleuf overgaat.
+- Voor bereiding: als u in plaats van rechtstreeks naar productie een sleuf implementeert, kan de app worden **opgewarmd**voordat u live gaat. Daarnaast vermindert het gebruik van sleuven de latentie voor HTTP-geactiveerde workloads. Instanties worden vóór de implementatie gewarmd, waardoor de gedistribueerde start voor nieuwe functies wordt verminderd.
+- **Eenvoudige terugvals**: na een swap met productie heeft de sleuf met een eerder gefaseerde app nu de vorige productie-app. Als de wijzigingen die zijn gewisseld naar de productie sleuf, niet naar verwachting zijn, kunt u de wisseling onmiddellijk omkeren om de laatste bekende juiste instantie terug te halen.
 
 ## <a name="swap-operations"></a>Swap bewerkingen
 
@@ -52,7 +52,7 @@ Tijdens een swap wordt één sleuf beschouwd als de bron en het andere doel. De 
 
 1. **Herhaal bewerking:** Nu de bron sleuf de pre-swap-app eerder in de doel sleuf heeft, voert u dezelfde bewerking uit door alle instellingen toe te passen en de instanties voor de bron sleuf opnieuw te starten.
 
-Houd de volgende punten in acht:
+Houd rekening met de volgende belangrijke punten:
 
 - Op een wille keurig punt van de wissel bewerking wordt de initialisatie van de verwisselde apps uitgevoerd op de bron site. De doel sleuf blijft online terwijl de bron sleuf wordt voor bereid, of de wisseling slaagt of mislukt.
 
@@ -111,8 +111,8 @@ U kunt sleuven wisselen via de [cli](https://docs.microsoft.com/cli/azure/functi
 
 1. Ga naar de functie-app
 1. Klik op de naam van de bron sleuf die u wilt wisselen
-1. Klik op het tabblad *overzicht* op de wissel knop ![wisseling Azure functions implementatie sleuf](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Controleer de configuratie-instellingen voor uw swap en ![Klik op wisselen swap Azure functions implementatie sleuf](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Klik op het tabblad *overzicht* op de knop **wisselen** ![Swap Azure functions implementatie sleuf ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Controleer de configuratie-instellingen voor uw swap en klik op **wisselen** ![Swap Azure functions implementatie sleuf ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 De bewerking kan even duren wanneer de wissel bewerking wordt uitgevoerd.
 
@@ -169,22 +169,22 @@ Gebruik de volgende stappen om het app service-plan van een sleuf te wijzigen:
 Azure Functions implementatie sleuven hebben de volgende beperkingen:
 
 - Het aantal beschik bare sleuven voor een app is afhankelijk van het plan. Het verbruiks abonnement is slechts één implementatie sleuf toegestaan. Er zijn extra sleuven beschikbaar voor apps die worden uitgevoerd onder het App Service-abonnement.
-- Als u een sleuf verwisselt, worden sleutels voor `AzureWebJobsSecretStorageType` apps waarvan de app `files`-instelling gelijk is aan ingesteld.
+- Als u een sleuf verwisselt, worden sleutels voor apps waarvoor een `AzureWebJobsSecretStorageType` app-instelling gelijk is aan `files` opnieuw ingesteld.
 - Er zijn geen sleuven beschikbaar voor het verbruiks abonnement voor Linux.
 
 ## <a name="support-levels"></a>Ondersteuningsniveaus
 
 Er zijn twee ondersteunings niveaus voor implementatie sites:
 
-- **Algemene Beschik baarheid (ga)** : Volledig ondersteund en goedgekeurd voor productie gebruik.
-- **Voor beeld**: Nog niet ondersteund, maar zal in de toekomst naar verwachting de GA-status bereiken.
+- **Algemene Beschik baarheid (ga)** : volledig ondersteund en goedgekeurd voor productie gebruik.
+- **Preview**: nog niet ondersteund, maar er wordt naar verwachting de Ga-status in de toekomst bereikt.
 
 | Besturings systeem/hosting abonnement           | Ondersteunings niveau     |
 | ------------------------- | -------------------- |
 | Windows-verbruik       | Algemene beschikbaarheid |
-| Windows Premium (preview) | Preview              |
+| Windows Premium (preview-versie) | Preview              |
 | Windows toegewezen         | Algemene beschikbaarheid |
-| Linux-verbruik         | Niet-ondersteund          |
+| Linux-verbruik         | Niet ondersteund          |
 | Linux Premium (preview-versie)   | Preview              |
 | Speciaal voor Linux           | Algemene beschikbaarheid |
 

@@ -9,26 +9,28 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 80132b165c4d7d0f4f192e30f1bf2a525c47c82e
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c2060b335c615cf92ec600d072db58cb34ae4963
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564356"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597415"
 ---
-|Taal                                 |1.x         |2.x|
-|-----------------------------------------|------------|---|
-|[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)|
-|[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (node 6)|GA (knoop punt 8 & 10)|
-|[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)|
-|[Java](../articles/azure-functions/functions-reference-java.md)|N/A|GA (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Experimenteel|Preview (Power shell Core 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)|Experimenteel|GA (python 3.6. x)|
-|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Experimenteel|GA (ondersteund door transpiling naar Java script)|
-|Bash                |Experimenteel|N/A|
-|Batch (.cmd, .bat)  |Experimenteel|N/A|
-|PHP                 |Experimenteel|N/A|
+|Taal                                 |1.x         |2.x| 3. x<sup>1</sup> |
+|-----------------------------------------|------------|---| --- |
+|[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| Preview (.NET Core 3. x) |
+|[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (node 6)|GA (knoop punt 8 & 10)| Preview (knoop punt 8 & 10) |
+|[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| Preview (.NET Core 3. x) |
+|[Java](../articles/azure-functions/functions-reference-java.md)|N/A|GA (Java 8)| Preview (Java 8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Experimenteel|Preview (Power shell Core 6)| Preview (Power shell Core 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md)|Experimenteel|GA (python 3.6. x)| Preview (python 3.6. x)|
+|[Type script](../articles/azure-functions/functions-reference-node.md#typescript) |Experimenteel|GA<sup>2</sup>| Preview<sup>2</sup> |
+|Bash                |Experimenteel|N/A|N/A|
+|Batch (.cmd, .bat)  |Experimenteel|N/A|N/A|
+|PHP                 |Experimenteel|N/A|N/A|
 
+<sup>1</sup> De functions v3. x runtime is beschikbaar als preview-versie.  
+<sup>2</sup> Ondersteund door transpiling naar Java script.
 
 
 Zie [Azure-route kaart](https://azure.microsoft.com/roadmap/?tag=functions)voor meer informatie over geplande wijzigingen in de taal ondersteuning.

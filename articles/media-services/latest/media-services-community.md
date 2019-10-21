@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69016113"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598347"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-community  
 
@@ -28,11 +28,11 @@ Op deze Azure Media Services Community-pagina worden verschillende manieren besc
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Discussie
+## <a name="discussion"></a>Gevoerd
 
 ### <a name="twitter"></a>Twitter
 
-U kunt de [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter-handle gebruiken om contact met ons op te nemen of om updates op Twitter te volgen. Gebruik de [@AzureSupport](https://twitter.com/azuresupport) Twitter-ingang om ondersteuning op Twitter aan te vragen.  
+U kunt de [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter-handle gebruiken om contact met ons op te nemen of om updates op Twitter te volgen. Gebruik de [@AzureSupport](https://twitter.com/azuresupport) Twitter-handle om ondersteuning op Twitter aan te vragen.  
 
 ### <a name="online-forums"></a>Onlineforums
 
@@ -44,11 +44,7 @@ Op dit moment is MSDN Media Services het primaire Community-Forum van het team.
 
 Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Media-Services '.
 
-[![Stack overflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
-
-## <a name="contact-the-team"></a>Contact opnemen met het team
-
-Azure Media Services primaire ondersteunings-e-mail is: **amshelp\@Microsoft.com**.
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="next-steps"></a>Volgende stappen
 

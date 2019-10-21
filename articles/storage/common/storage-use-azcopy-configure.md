@@ -4,16 +4,16 @@ description: AzCopy configureren, optimaliseren en problemen oplossen.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273937"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595128"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -32,7 +32,7 @@ Als u de proxy-instellingen voor AzCopy wilt configureren, stelt u de omgevings 
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | In een opdracht prompt gebruikt u: `set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruiken: `$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | Gebruik in een opdracht prompt: `set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruiken: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -84,7 +84,7 @@ Voordat u deze variabele instelt, wordt u aangeraden een bench Mark-test uit te 
 
 ### <a name="optimize-memory-use"></a>Geheugen gebruik optimaliseren
 
-Stel de omgevings variabele `AZCOPY_BUFFER_GB` in om de maximale hoeveelheid van het systeem geheugen op te geven dat door AzCopy moet worden gebruikt bij het downloaden en uploaden van bestanden.
+Stel de omgevings variabele `AZCOPY_BUFFER_GB` in om de maximale hoeveelheid geheugen te bepalen die door AzCopy moet worden gebruikt bij het downloaden en uploaden van bestanden.
 Deze waarde in gigabytes (GB) uitdrukken.
 
 | Besturingssysteem | Opdracht  |
@@ -99,7 +99,7 @@ AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebru
 
 De logboeken bevatten de status mislukt (`UPLOADFAILED`, `COPYFAILED` en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
 
-Standaard bevinden de logboek-en plan bestanden zich in de map @no__t 0 in Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
+Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE$\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
 
 > [!IMPORTANT]
 > Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.
@@ -151,7 +151,7 @@ Wanneer u een taak hervat, zoekt AzCopy naar het job plan-bestand. In het plan b
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>De locatie van het plan en de logboek bestanden wijzigen
 
-Plan-en logboek bestanden bevinden zich standaard in de map @no__t 0 in Windows of in de map `$HOME$\.azcopy` op Mac en Linux. U kunt deze locatie wijzigen.
+Plan-en logboek bestanden bevinden zich standaard in de map `%USERPROFILE$\.azcopy` op Windows of in de `$HOME$\.azcopy` Directory op Mac en Linux. U kunt deze locatie wijzigen.
 
 ### <a name="change-the-location-of-plan-files"></a>De locatie van plan bestanden wijzigen
 

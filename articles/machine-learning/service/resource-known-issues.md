@@ -11,16 +11,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533170"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675632"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
 Dit artikel helpt u bij het zoeken naar en corrigeren van fouten of fouten die zijn opgetreden bij het gebruik van Azure Machine Learning.
+
+## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Aanstaande SR-IOV-upgrade naar NCv3 machines in AmlCompute
+
+Azure Compute werkt de NCv3-Sku's bij vanaf begin november ter ondersteuning van alle MPI-implementaties en-versies en RDMA-werk woorden voor met InfiniBand uitgeruste virtuele machines. Hiervoor is een korte downtime vereist. [Lees meer informatie over de SR-IOV-upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+
+Als klant van Azure Machine Learning Managed Compute-aanbieding (AmlCompute), hoeft u op dit moment geen wijzigingen aan te brengen. Op basis van de [Update planning](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) moet u een korte breuk in uw training plannen. De service neemt de verantwoordelijkheid voor het bijwerken van de VM-installatie kopieën op uw cluster knooppunten en het automatisch schalen van uw cluster. Zodra de upgrade is voltooid, kunt u alle andere MPI-discibutions gebruiken (zoals OpenMPI met Pytorch), naast een hogere InfiniBand-band breedte, lagere latenties en betere prestaties van gedistribueerde toepassingen.
 
 ## <a name="visual-interface-issues"></a>Problemen met de Visual-Interface
 

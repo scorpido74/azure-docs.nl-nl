@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333311"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598225"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen over Azure Network Watcher
 De [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -service biedt een reeks hulpprogram ma's voor het bewaken, diagnosticeren, weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk. In dit artikel vindt u antwoorden op veelgestelde vragen over de service.
@@ -54,16 +54,26 @@ Ga naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/netw
 ### <a name="which-regions-is-network-watcher-available-in"></a>In welke regio's is Network Watcher beschikbaar?
 U kunt de nieuwste regionale Beschik baarheid bekijken op de [pagina Beschik baarheid van Azure-service](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Wat zijn de limieten voor resources op Network Watcher?
+Zie de pagina met [service beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) voor alle limieten.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Waarom is er slechts één exemplaar van Network Watcher per regio toegestaan?
+Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abonnement, maar dit is geen service limiet.
+
 ## <a name="nsg-flow-logs"></a>NSG-stroom logboeken
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Wat gebeurt er met NSG-stroom logboeken?
 Azure-netwerk bronnen kunnen worden gecombineerd en beheerd via [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview). Met NSG-stroom Logboeken kunt u 5-tuple-stroom gegevens registreren over al het verkeer via uw Nsg's. De onbewerkte stroom logboeken worden naar een Azure Storage-account geschreven, waar ze verder kunnen worden verwerkt, geanalyseerd, opgevraagd of geëxporteerd als dat nodig is.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>Zijn er aanvullende opmerkingen voor het gebruik van NSG-stroom logboeken?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Zijn er aanvullende opmerkingen voor het gebruik van NSG-stroom logboeken?
 Er zijn geen vereisten voor het gebruik van NSG-stroom Logboeken. Er zijn echter twee beperkingen
 - **Service-eind punten mogen niet aanwezig zijn in uw VNET**: NSG-stroom logboeken worden verzonden van agents op uw Vm's naar opslag accounts. Vandaag kunt u echter alleen logboeken rechtstreeks naar opslag accounts verzenden en een service-eind punt dat is toegevoegd aan uw VNET, niet gebruiken.
 
-Er zijn twee manieren om dit op te lossen:
+- **Er mag geen firewall worden**gebruikt voor het opslag account: vanwege interne beperkingen moeten opslag accounts toegankelijk zijn via het open bare Internet voor NSG-stroom Logboeken. Verkeer wordt nog steeds intern gerouteerd door Azure en er worden geen extra kosten in rekening gebracht.
+
+Raadpleeg de volgende twee vragen voor instructies over het omzeilen van deze problemen. Beide beperkingen worden naar verwachting verholpen met Jan 2020.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Hoe kan ik NSG-stroom Logboeken gebruiken met Service-eind punten?
 
 *Optie 1: NSG-stroom logboeken opnieuw configureren voor het verzenden naar Azure Storage account zonder VNET-eind punten*
 
@@ -88,8 +98,7 @@ U kunt de Storage-logboeken na enkele minuten controleren. U ziet dan een bijgew
 
 Als de Microsoft.Storage-service-eindpunten een vereiste zijn, moet u de NSG-stroomlogboeken uitschakelen.
 
-
-- **Opslag accounts mogen niet worden gefirewalld**: als gevolg van interne beperkingen, moeten opslag accounts toegankelijk zijn via het open bare Internet voor NSG-stroom Logboeken om ermee te werken. Verkeer wordt nog steeds intern gerouteerd door Azure en er worden geen extra kosten in rekening gebracht.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>De firewall van mijn opslag account Hoe kan ik uitschakelen?
 
 Dit probleem wordt opgelost door alle netwerken in te scha kelen voor toegang tot het opslag account:
 
@@ -97,8 +106,6 @@ Dit probleem wordt opgelost door alle netwerken in te scha kelen voor toegang to
 * Navigeer naar het opslagaccount door de naam van het opslagaccount te typen in de algemene zoekfunctie in de portal
 * Selecteer in de sectie **INSTELLINGEN** de optie **Firewalls en virtuele netwerken**
 * Selecteer **Alle netwerken** en sla dit op. Als deze optie al is geselecteerd, is er geen wijziging nodig.  
-
-Beide beperkingen worden naar verwachting verholpen met Jan 2020.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Wat is het verschil tussen stroom logboeken versie 1 & 2?
 Stroom logboeken versie 2 introduceert het concept van de *stroom status* & slaat informatie op over verzonden bytes en pakketten. [Meer informatie](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

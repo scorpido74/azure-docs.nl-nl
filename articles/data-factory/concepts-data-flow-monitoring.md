@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387975"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597125"
 ---
 # <a name="monitor-data-flows"></a>Gegevens stromen bewaken
 
@@ -24,7 +24,7 @@ Wanneer u de pijp lijn uitvoert, kunt u de pijp lijn en alle activiteiten in de 
 
 ![Gegevensstroom controleren](media/data-flow/mon001.png "Bewaking gegevensstroom")
 
-Er worden statistieken op dit niveau weer geven, inclusief de uitvoerings tijden en de status. De run-ID op het activiteit niveau wijkt af van de run-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u op de bril klikt, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
+U ziet de statistieken op dit niveau en ook de uitvoerings tijden en de status. De run-ID op het activiteit niveau wijkt af van de run-ID op het pijplijn niveau. De uitvoerings-ID op het vorige niveau is voor de pijp lijn. Als u op de bril klikt, krijgt u gedetailleerde informatie over de uitvoering van de gegevens stroom.
 
 ![Gegevensstroom controleren](media/data-flow/mon002.png "Bewaking gegevensstroom")
 
@@ -47,6 +47,11 @@ Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory
   * Berekend: u gebruikt de kolom voor voorwaardelijke verwerking of binnen een expressie in uw gegevens stroom, maar niet in de Sink
   * Afgeleid: de kolom is een nieuwe kolom die u hebt gegenereerd in uw stroom, dat wil zeggen dat deze niet aanwezig is in de bron
   * Toegewezen: de kolom afkomstig uit de bron en uw toewijzing is aan een Sink-veld gekoppeld
+  * Status van de gegevens stroom: de huidige status van de uitvoering
+  * Opstart tijd van het cluster: de hoeveelheid tijd voor het verkrijgen van de JIT Spark-Compute-omgeving voor het uitvoeren van gegevens stromen
+  * Aantal trans formaties: hoeveel transformatie stappen worden uitgevoerd in uw stroom
+  
+![Bewaking van Acit-gegevens stroom](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")  
   
 ## <a name="monitor-icons"></a>Bewaak pictogrammen
 

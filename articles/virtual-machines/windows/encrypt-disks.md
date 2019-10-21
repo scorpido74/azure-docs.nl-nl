@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: bee4b108d2747e8c386abe41dc61b5b19aecf4f5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828685"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597857"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Virtuele schijven op een Windows-VM versleutelen
-Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de virtuele machine (VM). Schijven worden versleuteld met behulp van cryptografische sleutels die zijn beveiligd in een Azure Key Vault. U kunt deze cryptografische sleutels beheren en het gebruik ervan controleren. In dit artikel wordt beschreven hoe u virtuele schijven op een Windows-VM versleutelt met behulp van Azure PowerShell. U kunt ook [een virtuele Linux-machine versleutelen met behulp van de Azure cli](../linux/disk-encryption-overview.md).
+Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de virtuele machine (VM). Schijven worden versleuteld met behulp van cryptografische sleutels die zijn beveiligd in een Azure Key Vault. U kunt deze cryptografische sleutels beheren en het gebruik ervan controleren. In dit artikel wordt beschreven hoe u virtuele schijven op een Windows-VM versleutelt met behulp van Azure PowerShell. U kunt ook [virtuele Linux-machines versleutelen](../linux/disk-encryption-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -146,4 +146,4 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [een Key Vault instellen voor virtuele machines](key-vault-setup.md)voor meer informatie over het beheren van een Azure Key Vault.
-* Zie [Azure Disk Encryption](../../security/azure-security-disk-encryption.md)voor meer informatie over schijf versleuteling, zoals het voorbereiden van een versleutelde aangepaste VM voor het uploaden naar Azure.
+* Zie [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)voor meer informatie over schijf versleuteling, zoals het voorbereiden van een versleutelde aangepaste VM voor het uploaden naar Azure.

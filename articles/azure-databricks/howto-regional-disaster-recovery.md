@@ -1,6 +1,6 @@
 ---
-title: Regionaal herstel na noodgevallen voor Azure Databricks
-description: Dit artikel beschrijft een benadering tot het uitvoeren van herstel na noodgevallen in Azure Databricks.
+title: Regionale nood herstel voor Azure Databricks
+description: In dit artikel wordt een aanpak beschreven voor herstel na nood gevallen in Azure Databricks.
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -8,89 +8,89 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 3718b79562ec05383b9881a1a97cc5bcc5e04258
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075457"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596903"
 ---
-# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionaal herstel na noodgevallen voor Azure Databricks-clusters
+# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
-In dit artikel beschrijft een disaster recovery-architectuur geschikt voor Azure Databricks-clusters en de stappen om uit te voeren dat ontwerp.
+In dit artikel wordt een nood herstel architectuur beschreven die nuttig is voor Azure Databricks-clusters en de stappen om dat ontwerp uit te voeren.
 
-## <a name="azure-databricks-architecture"></a>Azure Databricks-architectuur
+## <a name="azure-databricks-architecture"></a>Azure Databricks architectuur
 
-Op hoog niveau, wanneer u een Azure Databricks-werkruimte via Azure portal maakt een [beheerde apparaat](../managed-applications/overview.md) wordt geïmplementeerd als een Azure-resource in uw abonnement, in de gekozen Azure-regio (bijvoorbeeld VS-West). Dit apparaat is geïmplementeerd in een [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) met een [Network Security Group](../virtual-network/manage-network-security-group.md) en een Azure Storage-account, beschikbaar in uw abonnement. Het virtuele netwerk biedt niveau perimeterbeveiliging naar de Databricks-werkruimte en wordt beveiligd via de netwerkbeveiligingsgroep. In de werkruimte, kunt u Databricks-clusters maken door op te geven van de werknemer en VM-type-stuurprogramma en Databricks-runtimeversie. De persistente gegevens zijn beschikbaar in uw storage-account, Azure Blob Storage of Azure Data Lake Store. Zodra het cluster is gemaakt, kunt u taken uitvoeren via notebooks, REST-API's, ODBC-/ JDBC eindpunten door ze te koppelen aan een specifieke cluster.
+Wanneer u op hoog niveau een Azure Databricks-werk ruimte maakt op basis van de Azure Portal, wordt een [beheerd apparaat](../managed-applications/overview.md) geïmplementeerd als een Azure-resource in uw abonnement, in de gekozen Azure-regio (bijvoorbeeld VS-West). Dit apparaat wordt geïmplementeerd in een [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) met een [netwerk beveiligings groep](../virtual-network/manage-network-security-group.md) en een Azure Storage account dat beschikbaar is in uw abonnement. Het virtuele netwerk biedt beveiliging op beveiligings niveau voor de Databricks-werk ruimte en wordt beveiligd via de netwerk beveiligings groep. In de werk ruimte kunt u Databricks-clusters maken door de werk nemer en het VM-type van het stuur programma en de Databricks-runtime versie op te geven. De persistente gegevens zijn beschikbaar in uw opslag account. Dit kan zowel Azure Blob Storage als Azure Data Lake Storage zijn. Zodra het cluster is gemaakt, kunt u taken uitvoeren via notebooks, REST Api's, ODBC/JDBC-eind punten door ze te koppelen aan een specifiek cluster.
 
-De controlelaag Databricks beheert en bewaakt de omgeving van het Databricks-werkruimte. Een bewerking voor het beheer, zoals cluster maken vanuit de besturingselement vlak wordt gestart. Alle metagegevens, zoals geplande taken worden opgeslagen in een Azure-Database met geo-replicatie voor fouttolerantie.
+Het Databricks-besturings vlak beheert en bewaakt de Databricks-werkruimte omgeving. Een beheer bewerking zoals het maken van een cluster wordt gestart vanuit het besturings vlak. Alle meta gegevens, zoals geplande taken, worden opgeslagen in een Azure-data base met geo-replicatie voor fout tolerantie.
 
 ![Databricks-architectuur](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
-Een van de voordelen van deze architectuur is dat gebruikers verbinding maken met Azure Databricks met elke opslagbron in hun account. Een belangrijk voordeel is dat beide (Azure Databricks) compute en opslag onafhankelijk van elkaar kan worden geschaald.
+Een van de voor delen van deze architectuur is dat gebruikers Azure Databricks kunnen verbinden met elke opslag bron in hun account. Een belang rijk voor deel is dat zowel Compute (Azure Databricks) en Storage onafhankelijk van elkaar kunnen worden geschaald.
 
-## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Over het maken van een regionale disaster recovery-topologie
+## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Een regionale nood herstel topologie maken
 
-Zoals u in de bovenstaande beschrijving van de architectuur ziet, zijn er een aantal onderdelen die worden gebruikt voor een Big Data-pijplijn met Azure Databricks:  Azure Storage, Azure-Database en andere gegevensbronnen. Azure Databricks is de *compute* pijplijn voor het Big Data. Het is *kortstondige* aard is, wat betekent dat terwijl uw gegevens nog steeds beschikbaar in Azure Storage, is de *compute* (Azure Databricks-cluster) kan worden beëindigd, zodat u niet hoeft te betalen voor compute wanneer u deze niet nodig. De *compute* (Azure Databricks) en opslagbronnen moeten zich in dezelfde regio bevinden zodat taken niet hoge latentie ondervindt.  
+Zoals u in de voor gaande architectuur beschrijving ziet, worden er een aantal onderdelen gebruikt voor een Big Data-pijp lijn met Azure Databricks: Azure Storage, Azure data base en andere gegevens bronnen. Azure Databricks is de *reken kracht* voor de pijp lijn Big data. Het is *tijdelijk* van aard, wat betekent dat wanneer uw gegevens nog steeds beschikbaar zijn in azure Storage, de *compute* (Azure Databricks-cluster) kan worden beëindigd, zodat u niet hoeft te betalen voor reken kracht wanneer u deze niet nodig hebt. De *berekenings* (Azure Databricks) en de opslag bronnen moeten zich in dezelfde regio bevinden, zodat de taken geen hoge latentie hebben.  
 
-Voor het maken van de topologie van uw eigen regionale disaster recovery, de volgende vereisten voldoen:
+Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereisten:
 
-   1. Inrichten van meerdere Azure Databricks-werkruimten in afzonderlijke Azure-regio's. Bijvoorbeeld, de primaire Azure Databricks-werkruimte maken in VS-Oost 2. De secundaire noodherstel Azure Databricks-werkruimte maken in een apart gebied, zoals VS-West.
+   1. Richt meerdere Azure Databricks-werk ruimten in afzonderlijke Azure-regio's in. Maak bijvoorbeeld de primaire Azure Databricks-werk ruimte in Oost-VS2. Maak een tweede Azure Databricks werk ruimte voor herstel na nood gevallen in een afzonderlijke regio, zoals vs-West.
 
-   2. Gebruik [geografisch redundante opslag](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage). De gegevens die gekoppeld Azure Databricks standaard in Azure Storage opgeslagen is. De resultaten van de Databricks-taken worden ook opgeslagen in Azure Blob-opslag, zodat de verwerkte gegevens duurzaam en maximaal beschikbaar blijft nadat het cluster wordt beëindigd. Als de opslag en Databricks-cluster worden geplaatst, moet u geografisch redundante opslag gebruiken, zodat gegevens kunnen worden geopend in de secundaire regio als de primaire regio niet meer toegankelijk.
+   2. [Geografisch redundante opslag](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)gebruiken. De gegevens die zijn gekoppeld aan Azure Databricks, worden standaard opgeslagen in Azure Storage. De resultaten van Databricks-taken worden ook opgeslagen in Azure Blob Storage, zodat de verwerkte gegevens duurzaam zijn en die Maxi maal beschikbaar blijven nadat het cluster is beëindigd. Omdat de opslag-en het Databricks-cluster zich op dezelfde locatie bevinden, moet u geo-redundante opslag gebruiken zodat gegevens kunnen worden geopend in een secundaire regio als de primaire regio niet meer toegankelijk is.
 
-   3. Nadat de secundaire regio is gemaakt, moet u migreert van gebruikers, gebruikersmappen, -laptops, clusterconfiguratie, configuratie van taken, -bibliotheken, opslag, init scripts en toegangsbeheer configureren. Aanvullende details worden beschreven in de volgende sectie.
+   3. Zodra de secundaire regio is gemaakt, moet u de gebruikers, gebruikers mappen, notebooks, cluster configuratie, taken configuratie, Bibliotheken, opslag, init-scripts en toegangs beheer opnieuw configureren. Meer informatie vindt u in de volgende sectie.
 
 ## <a name="detailed-migration-steps"></a>Gedetailleerde migratiestappen
 
-1. **De Databricks-opdrachtregelinterface op uw computer instellen**
+1. **De Databricks-opdracht regel interface op uw computer instellen**
 
-   In dit artikel bevat een aantal voorbeelden van code die gebruikmaken van de opdrachtregelinterface voor het merendeel van de geautomatiseerde stappen brengen, omdat het een eenvoudig-voor-user-wrapper via REST-API van Azure Databricks.
+   Dit artikel bevat een aantal code voorbeelden die gebruikmaken van de opdracht regel interface voor de meeste automatische stappen, omdat het een gebruiks vriendelijke wrapper is dan Azure Databricks REST API.
 
-   Voordat u alle stappen van de migratie, door de databricks-cli te installeren op uw desktopcomputer of een virtuele machine waar u van plan bent om het werk te doen. Zie voor meer informatie, [Databricks CLI installeren](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   Voordat u een migratie stap uitvoert, installeert u de databricks-CLI op uw desktop computer of een virtuele machine waarop u het werk wilt uitvoeren. Zie [install DATABRICKS cli](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html) (Engelstalig) voor meer informatie.
 
    ```bash
    pip install databricks-cli
    ```
 
    > [!NOTE]
-   > Een python-scripts vindt u in dit artikel worden verwacht om te werken met Python 2.7 + < 3.x.
+   > Alle python-scripts die in dit artikel worden vermeld, worden verwacht te werken met python 2.7 + < 3. x.
 
 2. **Configureer twee profielen.**
 
-   Configureer één voor de primaire werkruimte en een andere naam voor de secundaire werkruimte:
+   Configureer een voor de primaire werk ruimte en een andere voor de secundaire werk ruimte:
 
    ```bash
    databricks configure --profile primary
    databricks configure --profile secondary
    ```
 
-   De codeblokken in dit artikel schakelen tussen profielen in de volgende stap met behulp van de bijbehorende werkruimte-opdracht. Zorg ervoor dat de namen van de profielen die u hebt gemaakt in elk codeblok worden vervangen.
+   De code blokken in dit artikel scha kelen tussen de profielen in elke volgende stap met behulp van de bijbehorende werk ruimte opdracht. Zorg ervoor dat de namen van de profielen die u maakt, worden vervangen door elk code blok.
 
    ```python
    EXPORT_PROFILE = "primary"
    IMPORT_PROFILE = "secondary"
    ```
 
-   U kunt handmatig overschakelen op de opdrachtregel, indien nodig:
+   U kunt indien nodig hand matig overschakelen op de opdracht regel:
 
    ```bash
    databricks workspace ls --profile primary
    databricks workspace ls --profile secondary
    ```
 
-3. **Azure Active Directory-gebruikers migreren**
+3. **Azure Active Directory gebruikers migreren**
 
-   Dezelfde Azure Active Directory-gebruikers handmatig toevoegen aan de secundaire werkruimte die aanwezig zijn in de primaire werkruimte.
+   Voeg dezelfde Azure Active Directory gebruikers hand matig toe aan de secundaire werk ruimte die voor komt in de primaire werk ruimte.
 
-4. **Migreer de gebruikersmappen en -laptops**
+4. **De gebruikers mappen en-notitie blokken migreren**
 
-   Gebruik de volgende python-code voor het migreren van de sandbox gebruiker-omgevingen, waaronder de geneste mapstructuur en -laptops per gebruiker.
+   Gebruik de volgende python-code voor het migreren van de sandbox-gebruikers omgevingen, waaronder de geneste mappen structuur en notitie blokken per gebruiker.
 
    > [!NOTE]
-   > Bibliotheken zijn niet gekopieerd in deze stap, terwijl de onderliggende API biedt geen ondersteuning voor de.
+   > Bibliotheken worden niet in deze stap gekopieerd, omdat de onderliggende API'S deze niet ondersteunt.
 
-   Kopiëren en sla het volgende pythonscript naar een bestand en de App uitvoeren op uw Databricks-opdrachtregel. Bijvoorbeeld `python scriptname.py`.
+   Kopieer en sla het volgende python-script op in een bestand en voer het uit in de Databricks-opdracht regel. Bijvoorbeeld `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -124,16 +124,16 @@ Voor het maken van de topologie van uw eigen regionale disaster recovery, de vol
    print "All done"
    ```
 
-5. **De configuraties van clusters migreren**
+5. **De cluster configuraties migreren**
 
-   Zodra laptops zijn gemigreerd, kunt u eventueel de configuraties van clusters migreren naar de nieuwe werkruimte. Het is bijna een volledig geautomatiseerde stap met databricks-cli, tenzij u wilt doen selectief config-clustermigratie in plaats van voor alle.
+   Wanneer notebooks zijn gemigreerd, kunt u eventueel de cluster configuraties migreren naar de nieuwe werk ruimte. Het is bijna een volledig automatische stap met behulp van databricks-CLI, tenzij u selectieve cluster configuratie wilt migreren in plaats van alle.
 
    > [!NOTE]
-   > Er is helaas geen eindpunt voor config cluster maken en dit script probeert elk cluster om meteen te maken. Als er niet voldoende kernen beschikbaar zijn in uw abonnement, kan het maken van een cluster mislukken. De fout kan worden genegeerd, zolang de configuratie zijn overgedragen.
+   > Er is geen cluster configuratie-eind punt gemaakt en dit script probeert elk cluster direct te maken. Als er onvoldoende kern geheugens beschikbaar zijn in uw abonnement, kan het maken van het cluster mislukken. De fout kan worden genegeerd, zolang de configuratie is overgedragen.
 
-   Het volgende script dat is opgegeven voor het afdrukken van een toewijzing van de oude naar het nieuwe cluster-id's die kan worden gebruikt voor het migreren van de taak later (voor taken die zijn geconfigureerd voor het gebruik van bestaande clusters).
+   Met het volgende script dat is opgegeven, wordt een toewijzing van oud naar nieuwe cluster-Id's afgedrukt, die later kunnen worden gebruikt voor taak migratie (voor taken die zijn geconfigureerd voor het gebruik van bestaande clusters).
 
-   Kopiëren en sla het volgende pythonscript naar een bestand en de App uitvoeren op uw Databricks-opdrachtregel. Bijvoorbeeld `python scriptname.py`.
+   Kopieer en sla het volgende python-script op in een bestand en voer het uit in de Databricks-opdracht regel. Bijvoorbeeld `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -216,16 +216,16 @@ Voor het maken van de topologie van uw eigen regionale disaster recovery, de vol
    print ("       If you won't use those new clusters at the moment, please don't forget terminating your new clusters to avoid charges")
    ```
 
-6. **Migratie van de configuratie van taken**
+6. **De taak configuratie migreren**
 
-   Als u de configuraties van clusters in de vorige stap hebt gemigreerd, kunt u zich voor het migreren van configuraties van de taak naar de nieuwe werkruimte. Er is een volledig geautomatiseerde stap met behulp van databricks-cli, tenzij u wilt doen selectief taak config migratie in plaats van deze voor alle taken uitvoert.
+   Als u cluster configuraties in de vorige stap hebt gemigreerd, kunt u ervoor kiezen om de taak configuraties naar de nieuwe werk ruimte te migreren. Het is een volledig geautomatiseerde stap met databricks-CLI, tenzij u een selectieve taak configuratie wilt migreren in plaats van deze te gebruiken voor alle taken.
 
    > [!NOTE]
-   > De configuratie voor een geplande taak bevat ook informatie 'schema', zodat die standaard volgens de geconfigureerde time-out werken gestart wordt zodra deze is gemigreerd. Daarom kan het volgende codeblok Hiermee verwijdert u alle schema-informatie tijdens de migratie (om te voorkomen dat dubbele wordt uitgevoerd in oude en nieuwe werkruimten). De schema's voor dergelijke taken configureren nadat u bent gereed voor cutover.
+   > De configuratie voor een geplande taak bevat ook de plannings gegevens, zodat deze standaard worden gestart volgens de geconfigureerde timing zodra deze wordt gemigreerd. Het volgende code blok verwijdert daarom alle plannings gegevens tijdens de migratie (om te voor komen dat dubbele uitvoeringen worden uitgevoerd op oude en nieuwe werk ruimten). Configureer de planningen voor dergelijke taken zodra u klaar bent voor cutover.
 
-   De taakconfiguratie vereist-instellingen voor een nieuwe of een bestaand cluster. Als bestaande cluster, probeert het onderstaande script-/code u het oude cluster-ID vervangt door nieuwe cluster-ID.
+   De taak configuratie vereist instellingen voor een nieuw of een bestaand cluster. Als u een bestaand cluster gebruikt, probeert het script/code hieronder de oude cluster-ID te vervangen door de nieuwe cluster-ID.
 
-   Kopieer en bewaar de volgende python script naar een bestand. Vervang de waarde voor `old_cluster_id` en `new_cluster_id`, met de uitvoer van een cluster migreren, doet u in de vorige stap. Voer het uit in uw databricks-cli vanaf de opdrachtregel, bijvoorbeeld `python scriptname.py`.
+   Kopieer het volgende python-script en sla het op in een bestand. Vervang de waarde voor `old_cluster_id` en `new_cluster_id` door de uitvoer van de cluster migratie die in de vorige stap is uitgevoerd. Voer deze uit in de databricks-cli-opdracht regel, bijvoorbeeld `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -280,17 +280,17 @@ Voor het maken van de topologie van uw eigen regionale disaster recovery, de vol
    print "All done"
    ```
 
-7. **Migreren van bibliotheken**
+7. **Bibliotheken migreren**
 
-   Er is momenteel geen eenvoudige manier om te migreren van bibliotheken van een werkruimte naar een andere. In plaats daarvan nu handmatig opnieuw deze bibliotheken in de nieuwe werkruimte. Het is mogelijk te automatiseren met behulp van de combinatie van [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) aangepaste bibliotheken uploaden naar de werkruimte en [bibliotheken CLI](https://github.com/databricks/databricks-cli#libraries-cli).
+   Er is momenteel geen eenvoudige manier om bibliotheken te migreren van de ene werk ruimte naar een andere. In plaats daarvan installeert u deze bibliotheken hand matig in de nieuwe werk ruimte. Het is mogelijk om een combi natie van [DBFS cli](https://github.com/databricks/databricks-cli#dbfs-cli-examples) te automatiseren voor het uploaden van aangepaste bibliotheken naar de werk ruimte en [bibliotheken cli](https://github.com/databricks/databricks-cli#libraries-cli).
 
-8. **Migreren van Azure blob storage en Azure Data Lake Store-koppelingen**
+8. **Azure Blob-opslag en Azure Data Lake Storage-koppelingen migreren**
 
-   Alle handmatig koppelen [Azure Blob-opslag](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) en [Azure Data Lake Store (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) koppelpunten met behulp van een oplossing op basis van een laptop. De storage-resources zouden in de primaire werkruimte is gekoppeld en die moet worden herhaald in de secundaire werkruimte. Er is geen externe API voor koppelingen.
+   Koppel alle [Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) -en [Azure data Lake Storage (Gen 2)-](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) koppel punten hand matig opnieuw met een oplossing op basis van een notitie blok. De opslag resources zouden zijn gekoppeld in de primaire werk ruimte en moeten worden herhaald in de secundaire werk ruimte. Er is geen externe API voor koppels.
 
-9. **Cluster init scripts migreren**
+9. **Scripts voor het initialiseren van het cluster migreren**
 
-   Cluster-initialisatiescripts kunnen worden gemigreerd van de oude naar het nieuwe werkruimte met behulp de [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Kopieer eerst de benodigde scripts `dbfs:/dat abricks/init/..` naar uw lokale bureaublad of de virtuele machine. Kopieer deze scripts vervolgens naar de nieuwe werkruimte op hetzelfde pad.
+   U kunt de scripts voor het initialiseren van clusters migreren van een oude naar een nieuwe werk ruimte met behulp van de [DBFS cli](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Kopieer eerst de benodigde scripts van `dbfs:/dat abricks/init/..` naar uw lokale bureau blad of virtuele machine. Kopieer vervolgens deze scripts naar de nieuwe werk ruimte op hetzelfde pad.
 
    ```bash
    // Primary to local
@@ -300,16 +300,16 @@ Voor het maken van de topologie van uw eigen regionale disaster recovery, de vol
    dbfs cp -r old-ws-init-scripts dbfs:/databricks/init --profile secondary
    ```
 
-10. **Handmatig opnieuw configureren en toepassen van toegangsbeheer.**
+10. **Toegangs beheer hand matig opnieuw configureren en Toep assen.**
 
-    Als uw bestaande primaire werkruimte is geconfigureerd voor het gebruik van de Premium-laag (SKU), is het waarschijnlijk u ook gebruikmaakt van de [Access Control-functie](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Als uw bestaande primaire werk ruimte is geconfigureerd voor het gebruik van de Premium-laag (SKU), is het waarschijnlijk dat u ook de [Access Control functie](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)gebruikt.
 
-    Als u de Access Control-functie gebruikt, moet u handmatig het toegangsbeheer toepassen op de resources (Notebooks, Clusters, taken, tabellen).
+    Als u de functie Access Control wilt gebruiken, moet u het toegangs beheer hand matig opnieuw Toep assen op de resources (notebooks, clusters, Jobs, tabellen).
 
-## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Herstel na noodgevallen voor uw Azure-ecosysteem
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Herstel na nood geval voor uw Azure-ecosysteem
 
-Als u van andere Azure-services gebruikmaakt, zorg er dan voor dat disaster recovery aanbevolen procedures voor deze services te implementeren. Bijvoorbeeld, als u gebruiken van een extern exemplaar van de Hive-metastore wilt, u moet rekening houden met herstel na noodgevallen voor [Azure SQL-Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md), en/of [Azure Database for MySQL ](../mysql/concepts-business-continuity.md). Raadpleeg voor algemene informatie over herstel na noodgevallen [herstel na noodgevallen voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Als u andere Azure-Services gebruikt, moet u er ook voor zorgen dat u aanbevolen procedures voor herstel na nood gevallen voor die Services implementeert. Als u bijvoorbeeld een exemplaar van een externe Hive-metastore wilt gebruiken, moet u rekening houden met nood herstel voor [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)en/of [Azure database for MySQL](../mysql/concepts-business-continuity.md). Zie [herstel na nood gevallen voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)voor algemene informatie over herstel na nood gevallen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie, [documentatie voor Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).
+Zie [Azure Databricks-documentatie](https://docs.azuredatabricks.net/user-guide/index.html)voor meer informatie.

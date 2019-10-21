@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671084"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595193"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Herstel na nood gevallen en failover van het opslag account (preview) in Azure Storage
 
@@ -47,16 +47,16 @@ Andere Azure Storage redundantie opties zijn onder meer zone-redundante opslag (
 
 Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vanaf het begin. Raadpleeg deze Azure-bronnen voor hulp bij het ontwerpen van uw toepassing en het plannen van nood herstel:
 
-* [Flexibele toepassingen ontwerpen voor Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
-* [Beschikbaarheids controlelijst](https://docs.microsoft.com/azure/architecture/checklist/availability): Een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
-* [Maxi maal beschik bare toepassingen ontwerpen met behulp van Ra-GRS](storage-designing-ha-apps-with-ragrs.md): Ontwerp richt lijnen voor het ontwikkelen van toepassingen om gebruik te maken van RA-GRS.
-* [Zelfstudie: Een Maxi maal beschik bare toepassing bouwen met Blob Storage @ no__t-0: Een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
+* [Flexibele toepassingen ontwerpen voor Azure](https://docs.microsoft.com/azure/architecture/resiliency/): een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
+* [Beschikbaarheids controlelijst](https://docs.microsoft.com/azure/architecture/checklist/availability): een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
+* [Ontwerpen van Maxi maal beschik bare toepassingen met Ra-GRS](storage-designing-ha-apps-with-ragrs.md): ontwerp richt lijnen voor het ontwikkelen van toepassingen om te profiteren van Ra-GRS.
+* [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob-opslag](../blobs/storage-create-geo-redundant-storage.md): een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
 
 Houd bovendien de volgende aanbevolen procedures voor het onderhouden van hoge Beschik baarheid voor uw Azure Storage gegevens:
 
-* **Cd's** Gebruik [Azure backup](https://azure.microsoft.com/services/backup/) om een back-up te maken van de VM-schijven die worden gebruikt door uw virtuele Azure-machines. U kunt ook [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) gebruiken om uw vm's te beschermen in het geval van een regionale nood situatie.
+* **Schijven:** Gebruik [Azure backup](https://azure.microsoft.com/services/backup/) om een back-up te maken van de VM-schijven die worden gebruikt door uw virtuele Azure-machines. U kunt ook [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) gebruiken om uw vm's te beschermen in het geval van een regionale nood situatie.
 * **Blok-blobs:** Schakel [zacht verwijderen](../blobs/storage-blob-soft-delete.md) in om te beschermen tegen verwijderingen op object niveau en overschrijvingen, of kopieer blok-blobs naar een ander opslag account in een andere regio met behulp van [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)of de [Azure data verplaatsings bibliotheek](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* **Logbestanden** Gebruik [AzCopy](storage-use-azcopy.md) of [Azure PowerShell](storage-powershell-guide-full.md) om uw bestanden te kopiëren naar een ander opslag account in een andere regio.
+* **Bestanden:** Gebruik [AzCopy](storage-use-azcopy.md) of [Azure PowerShell](storage-powershell-guide-full.md) om uw bestanden te kopiëren naar een ander opslag account in een andere regio.
 * **Tabellen:** gebruik [AzCopy](storage-use-azcopy.md) om tabel gegevens te exporteren naar een ander opslag account in een andere regio.
 
 ## <a name="track-outages"></a>Uitval bijhouden
@@ -119,8 +119,14 @@ U kunt een failover van een account initiëren vanuit de Azure Portal, Power she
 
 Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. de failover van het account is momenteel beschikbaar in deze regio's:
 
-- US - west 2
+- Azië - oost
+- Azië (zuidoost)
+- Australië Oost
+- Australië Zuidoost
+- US - centraal
+- US - oost 2
 - US - west-centraal
+- US - west 2
 
 Het voor beeld is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
 
@@ -170,7 +176,7 @@ De volgende functies of services worden niet ondersteund voor account-failover v
 - Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover worden uitgevoerd voor opslag accounts met Azure-bestands shares die worden gebruikt als Cloud-eind punten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwachte gegevens verlies in het geval van nieuwe gelaagde bestanden.  
 - Er kan geen failover worden uitgevoerd voor een opslag account met gearchiveerde blobs. Bewaar gearchiveerde blobs in een afzonderlijk opslag account waarvan u niet van plan bent een failover uit te voeren.
 - Er kan geen failover worden uitgevoerd voor een opslag account met Premium-blok-blobs. Opslag accounts die ondersteuning bieden voor Premium-blok-blobs ondersteunen momenteel geen geo-redundantie.
-- Nadat de failover is voltooid, zullen de volgende functies niet meer werken als deze oorspronkelijk is ingeschakeld: [Gebeurtenis abonnementen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [levenscyclus beleid](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) [Opslaganalyse logboek registratie](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Nadat de failover is voltooid, zullen de volgende functies niet meer werken als deze is ingeschakeld: [gebeurtenis abonnementen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [levenscyclus beleid](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) [Opslaganalyse logboek registratie](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Gegevens kopiëren als alternatief voor failover
 
@@ -184,4 +190,4 @@ In uitzonderlijke omstandigheden waarbij een regio door een belang rijke nood ge
 
 * [Failover van een account initiëren (preview-versie)](storage-initiate-account-failover.md)
 * [Maximaal beschikbare toepassingen met RA-GRS ontwerpen](storage-designing-ha-apps-with-ragrs.md)
-* [Zelfstudie: Een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 
+* [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

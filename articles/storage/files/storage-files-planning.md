@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6361814a30cc7d1bc9703dae8ddb14d955c1582d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514660"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598033"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -219,13 +219,13 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |VS-West *        |LRS     |
 |VS - west 2      |LRS, ZRS|
 
-\* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid.
+\* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
 
 Vul deze [enquête](https://aka.ms/azurefilesatscalesurvey)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en functies.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Grotere bestands shares inschakelen en maken
 
-Als u grotere bestands shares wilt gaan gebruiken, raadpleegt u ons artikel [grote bestands shares inschakelen](storage-files-how-to-create-large-file-share.md).
+Als u grotere bestands shares wilt gaan gebruiken, raadpleegt u ons artikel een [grote bestands share inschakelen en maken](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Gegevens groei patroon
 

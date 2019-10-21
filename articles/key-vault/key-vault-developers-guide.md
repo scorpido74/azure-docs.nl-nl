@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268834"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595301"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Ontwikkelaars handleiding Azure Key Vault
 
@@ -28,7 +28,7 @@ Zie [Wat is Key Vault](key-vault-overview.md)voor meer algemene informatie over 
 
 ## <a name="public-previews"></a>Open bare voor beelden
 
-Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer deze uit en laat ons weten wat u ervan vindt azurekeyvault@microsoft.comvia het e-mail adres van feedback.
+Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer het eens en laat ons weten wat u van azurekeyvault@microsoft.com hebt, ons feedback e-mail adres.
 
 ## <a name="creating-and-managing-key-vaults"></a>Sleutel kluizen maken en beheren
 
@@ -84,7 +84,7 @@ In node. js worden de API voor Key Vault beheer en de Key Vault object-API gesch
 
 [Azure PowerShell voor Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Aan de slag
+### <a name="quickstart-guides"></a>Quick start-gidsen
 
 - [Key Vault maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Aan de slag met Key Vault in node. js](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -117,7 +117,7 @@ De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen 
 
 Deze artikelen zijn over andere scenario's en services die gebruikmaken van of worden geïntegreerd met Key Vault.
 
-- [Azure Disk Encryption](../security/azure-security-disk-encryption.md) maakt gebruik van de industrie standaard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden. De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw sleutel kluis-abonnement te controleren en te beheren, terwijl u ervoor zorgt dat alle gegevens in de virtuele-machine schijven op rest worden versleuteld in uw Azure-opslag.
+- [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) maakt gebruik van de industrie standaard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden. De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw sleutel kluis-abonnement te controleren en te beheren, terwijl u ervoor zorgt dat alle gegevens in de virtuele-machine schijven op rest worden versleuteld in uw Azure-opslag.
 - [Azure data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) biedt optie voor het versleutelen van gegevens die in het account zijn opgeslagen. Data Lake Store biedt sleutel beheer twee modi voor het beheren van uw Mek's (Master Encryption Keys), die vereist zijn voor het ontsleutelen van gegevens die zijn opgeslagen in de Data Lake Store. U kunt Data Lake Store de Mek's voor u laten beheren of ervoor kiezen om het eigendom van de Mek's te behouden met uw Azure Key Vault-account. U geeft de modus van sleutel beheer op tijdens het maken van een Data Lake Store-account.
 - Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Het beheren van uw eigen Tenant sleutel wordt ook wel uw eigen sleutel of BYOK.
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551657"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592890"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -224,12 +224,14 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 > [!NOTE]
 > De rol van globale lezer heeft nu enkele beperkingen:
 >
->* Share point-beheer centrum: het share point-beheer centrum biedt geen ondersteuning voor de globale lezer-rol. U ziet share point niet in het linkerdeel venster onder beheer centrums in [Microsoft 365 beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage)en u krijgt toegang geweigerd wanneer u probeert te gaan naar *https://{naam van Azure AD-organisatie}-admin.SharePoint.com*.
+>* Share point-beheer centrum: het share point-beheer centrum biedt geen ondersteuning voor de globale lezer-rol. U ziet share point niet in het linkerdeel venster onder beheer centrums in [Microsoft 365 beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage).
+>* [Onedrive-beheer centrum](https://admin.onedrive.com/) : het onedrive-beheer centrum biedt geen ondersteuning voor de globale lezer-rol.
 >* [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
 >* [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
 >* [M365 Security Center](https://security.microsoft.com/homepage) : globale lezer kan geen gevoeligheids-en bewaar labels lezen. In het linkerdeel venster van M365 Security Center vindt u geen **gevoeligheids labels**, tabbladen voor het **bewaren van labels**en **labels voor label Analytics** .
 >* [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
 >* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor de globale lezer-rol.
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -wereld wijde lezer wordt alleen ondersteund voor [centrale rapportage](https://docs.microsoft.com/azure/information-protection/reports-aip) en wanneer uw Tenant zich niet op het [uniforme label platform](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.
 >
 > Deze functies zijn momenteel in ontwikkeling.
 >

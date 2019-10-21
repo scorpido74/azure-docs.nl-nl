@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838875"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674964"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -31,7 +31,7 @@ Azure Functions ondersteunt lokale ontwikkeling en hosting in Windows en Linux o
 
 Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën zijn beschikbaar voor elk van de Azure Functions. In het volgende diagram ziet u welke implementatie technologieën worden ondersteund voor elke combi natie van besturings systeem en hosting plan:
 
-| Implementatie technologie | Windows-verbruik | Windows Premium (preview) | Windows toegewezen  | Linux-verbruik | Linux Premium (preview-versie) | Speciaal voor Linux |
+| Implementatie technologie | Windows-verbruik | Windows Premium (preview-versie) | Windows toegewezen  | Linux-verbruik | Linux Premium (preview-versie) | Speciaal voor Linux |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Zip-implementatie |✔|✔|✔|✔|✔|✔|
@@ -46,7 +46,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 <sup>1</sup> implementatie technologie waarvoor [hand matige synchronisatie](#trigger-syncing)van de trigger is vereist.  
 <sup>2</sup> het bewerken van de portal is alleen ingeschakeld voor http-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 
-## <a name="key-concepts"></a>Belangrijkste concepten
+## <a name="key-concepts"></a>Belangrijke concepten
 
 Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties werken in Azure Functions.
 
@@ -63,7 +63,7 @@ Wanneer u een van de triggers wijzigt, moeten de functies de infra structuur op 
 Azure Functions kunt automatisch builds uitvoeren op de code die na de implementaties van de post wordt ontvangen. Deze builds werken enigszins anders, afhankelijk van of uw app op Windows of Linux wordt uitgevoerd. Externe builds worden niet uitgevoerd wanneer een app eerder is ingesteld om te worden uitgevoerd in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) . Ga naar [zip-implementatie](#zip-deploy)voor meer informatie over het gebruik van extern bouwen.
 
 > [!NOTE]
-> Als u problemen ondervindt met het maken van een externe build, kan het zijn dat de app is gemaakt voordat de functie beschikbaar werd gemaakt (1 augustus 2019). Probeer een nieuwe functie-app te maken.
+> Als u problemen ondervindt met het maken van een externe build, kan het zijn dat de app is gemaakt voordat de functie beschikbaar werd gemaakt (1 augustus 2019). Maak een nieuwe functie-app of voer `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` uit om uw functie-app bij te werken. Het kan twee pogingen om deze opdracht uit te voeren.
 
 #### <a name="remote-build-on-windows"></a>Externe Build op Windows
 
@@ -71,19 +71,18 @@ Alle functie-apps die worden uitgevoerd op Windows hebben een kleine beheer-app,
 
 Wanneer een app wordt geïmplementeerd in Windows, worden taalspecifieke opdrachten, zoals `dotnet restore` (C#) of `npm install` (Java script), uitgevoerd.
 
-#### <a name="remote-build-on-linux-preview"></a>Externe Build op Linux (preview-versie)
+#### <a name="remote-build-on-linux"></a>Externe Build op Linux
 
-Als u externe Build op Linux wilt inschakelen, moet u de volgende [Toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings)instellen:
+Om externe Build op Linux in te scha kelen, moet u de volgende [Toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings) instellen:
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Wanneer apps op afstand zijn gebouwd op Linux, worden ze [uitgevoerd vanuit het implementatie pakket](run-functions-from-deployment-package.md).
+Standaard worden zowel [Azure functions core tools](functions-run-local.md) als de [Azure functions-extensie voor Visual Studio code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) externe builds uitgevoerd bij het implementeren naar Linux. Daarom maken beide hulpprogram ma's deze instellingen automatisch voor u in Azure. 
 
-> [!NOTE]
-> Extern bouwen op basis van het toegewezen (App Service) Linux-abonnement wordt momenteel alleen ondersteund voor node. js en python.
+Wanneer apps op afstand zijn gebouwd op Linux, worden ze [uitgevoerd vanuit het implementatie pakket](run-functions-from-deployment-package.md). 
 
-##### <a name="consumption-preview-plan"></a>Plan voor verbruik (voor beeld)
+##### <a name="consumption-plan"></a>Verbruiksabonnement
 
 Linux-functie-apps die worden uitgevoerd in het verbruiks abonnement, hebben geen SCM/kudu-site, waarmee de implementatie opties worden beperkt. Functie-apps in Linux die worden uitgevoerd in het verbruiks abonnement, bieden echter ondersteuning voor externe builds.
 
@@ -99,27 +98,19 @@ De volgende implementatie methoden zijn beschikbaar in Azure Functions.
 
 U kunt een externe pakket-URL gebruiken om te verwijzen naar een extern pakket bestand (. zip) dat uw functie-app bevat. Het bestand wordt gedownload van de beschik bare URL en de app wordt uitgevoerd in de pakket modus in [uitvoering](run-functions-from-deployment-package.md) .
 
->__Hoe gebruikt u dit:__ Voeg `WEBSITE_RUN_FROM_PACKAGE` toe aan de instellingen van uw toepassing. De waarde van deze instelling moet een URL zijn (de locatie van het specifieke pakket bestand dat u wilt uitvoeren). U kunt instellingen toevoegen [in de portal](functions-how-to-use-azure-function-app-settings.md#settings) of met [behulp van de Azure cli](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Hoe gebruikt u dit:__ Voeg `WEBSITE_RUN_FROM_PACKAGE` toe aan de toepassings instellingen. De waarde van deze instelling moet een URL zijn (de locatie van het specifieke pakket bestand dat u wilt uitvoeren). U kunt instellingen toevoegen [in de portal](functions-how-to-use-azure-function-app-settings.md#settings) of met [behulp van de Azure cli](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 >
 >Als u Azure Blob Storage gebruikt, gebruikt u een persoonlijke container met een [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) om functies toegang te geven tot het pakket. Telkens wanneer de toepassing opnieuw wordt gestart, wordt een kopie van de inhoud opgehaald. Uw verwijzing moet geldig zijn voor de levens duur van de toepassing.
 
->__Wanneer u deze gebruikt:__ De URL van het externe pakket is de enige ondersteunde implementatie methode voor Azure Functions die in Linux in het verbruiks abonnement wordt uitgevoerd, als de gebruiker niet wil dat er een externe build plaatsvindt. Wanneer u het pakket bestand bijwerkt waarnaar wordt verwezen door een functie-app, moet u de [Triggers hand matig synchroniseren](#trigger-syncing) om Azure te laten weten dat uw toepassing is gewijzigd.
+>__Wanneer u deze gebruikt:__ De URL van het externe pakket is de enige ondersteunde implementatie methode voor Azure Functions die in Linux in het verbruiks abonnement wordt uitgevoerd, als de gebruiker niet wilt dat er een [externe build wordt gemaakt](#remote-build) . Wanneer u het pakket bestand bijwerkt waarnaar wordt verwezen door een functie-app, moet u de [Triggers hand matig synchroniseren](#trigger-syncing) om Azure te laten weten dat uw toepassing is gewijzigd.
 
 ### <a name="zip-deploy"></a>Zip-implementatie
 
 Gebruik Zip-implementatie om een zip-bestand met uw functie-app naar Azure te pushen. Desgewenst kunt u uw app zo instellen dat deze [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md), of opgeven dat er een [externe build wordt gemaakt](#remote-build) .
 
->__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [VS code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)of de [Azure cli](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [Visual Studio code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual studio](functions-develop-vs.md#publish-to-azure), de [Azure functions core tools](functions-run-local.md)of de [Azure cli](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Deze hulpprogram ma's gebruiken standaard de zip-implementatie en [worden uitgevoerd vanuit het pakket](run-functions-from-deployment-package.md). De kern Hulpprogramma's en de Visual Studio code-extensie maken beide gebruik van [externe build](#remote-build) bij het implementeren naar Linux. Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Als u een zip-implementatie met een [externe build](#remote-build)wilt uitvoeren, gebruikt u de volgende [kern hulpprogramma's](functions-run-local.md) opdracht:
-
-```bash
-func azure functionapp publish <app name> --build remote
-```
-
-U kunt ook tegenover code een instructie uitvoeren om een externe build uit te voeren tijdens de implementatie door de vlag ' ' azureFunctions. scmDoBuildDuringDeployment ' toe te voegen. Lees de instructies in de [wiki van Azure functions extension](https://github.com/microsoft/vscode-azurefunctions/wiki)voor meer informatie over het toevoegen van een markering aan VS code.
-
->Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren, stelt u de waarde van de toepassings instelling @no__t 0 in op `1`. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
+>Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren, stelt u de waarde voor `WEBSITE_RUN_FROM_PACKAGE` toepassings instelling in op `1`. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
 
 >__Wanneer u deze gebruikt:__ Zip-implementatie is de aanbevolen implementatie technologie voor Azure Functions.
 
@@ -132,7 +123,7 @@ U kunt een Linux-container installatie kopie implementeren die uw functie-app be
 >* Maak een Linux-functie-app in een Azure App Service plan in het Azure Portal. Voor **publiceren**selecteert u **docker-installatie kopie**en configureert u vervolgens de container. Geef de locatie op waar de installatie kopie wordt gehost.
 >* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-a-premium-plan)voor meer informatie.
 >
->Als u wilt implementeren in een bestaande app met behulp van een aangepaste container, gebruikt u in [Azure functions core tools](functions-run-local.md)de [`func deploy`](functions-run-local.md#publish) opdracht.
+>Als u wilt implementeren in een bestaande app met behulp van een aangepaste container, gebruikt u de [`func deploy`](functions-run-local.md#publish) opdracht in [Azure functions core tools](functions-run-local.md).
 
 >__Wanneer u deze gebruikt:__ Gebruik de optie docker-container wanneer u meer controle nodig hebt over de Linux-omgeving waarin uw functie-app wordt uitgevoerd. Dit implementatie mechanisme is alleen beschikbaar voor functies die worden uitgevoerd op Linux.
 
@@ -182,7 +173,7 @@ U kunt FTP gebruiken om bestanden rechtstreeks naar Azure Functions te verzenden
 
 In de portal-editor kunt u de bestanden in uw functie-app rechtstreeks bewerken (in principe elke keer dat u uw wijzigingen opslaat).
 
->__Hoe gebruikt u dit:__ Als u uw functies in het Azure Portal wilt kunnen bewerken, moet u [uw functies in de portal hebben gemaakt](functions-create-first-azure-function.md). Als u één bron van waarheid wilt behouden, is het gebruik van een andere implementatie methode de functie alleen-lezen en voor komt u dat de portal verder kan worden bewerkt. Als u wilt terugkeren naar een status waarin u uw bestanden kunt bewerken in de Azure Portal, kunt u de bewerkings modus hand matig weer inschakelen op `Read/Write` en alle implementatie-gerelateerde toepassings instellingen verwijderen (zoals `WEBSITE_RUN_FROM_PACKAGE`). 
+>__Hoe gebruikt u dit:__ Als u uw functies in het Azure Portal wilt kunnen bewerken, moet u [uw functies in de portal hebben gemaakt](functions-create-first-azure-function.md). Als u één bron van waarheid wilt behouden, is het gebruik van een andere implementatie methode de functie alleen-lezen en voor komt u dat de portal verder kan worden bewerkt. Als u wilt terugkeren naar een status waarin u uw bestanden kunt bewerken in de Azure Portal, kunt u de bewerkings modus hand matig weer inschakelen op `Read/Write` en alle implementatie-gerelateerde toepassings instellingen (zoals `WEBSITE_RUN_FROM_PACKAGE`) verwijderen. 
 
 >__Wanneer u deze gebruikt:__ De portal is een goede manier om aan de slag te gaan met Azure Functions. Voor een intensere ontwikkel werkzaamheden wordt u aangeraden een van de volgende client hulpprogramma's te gebruiken:
 >
@@ -192,16 +183,16 @@ In de portal-editor kunt u de bestanden in uw functie-app rechtstreeks bewerken 
 
 In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bieden voor het bewerken van portals:
 
-| | Windows-verbruik | Windows Premium (preview) | Windows toegewezen | Linux-verbruik | Linux Premium (preview-versie)| Speciaal voor Linux |
+| | Windows-verbruik | Windows Premium (preview-versie) | Windows toegewezen | Linux-verbruik | Linux Premium (preview-versie)| Speciaal voor Linux |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
-| C# Script |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| C#Schriften |✔|✔|✔| |✔<sup> \*</sup> |✔<sup> \*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup> \*</sup>|✔<sup> \*</sup>|
 | Python (Preview) | | | | | | |
 | Power shell (preview-versie) |✔|✔|✔| | | |
-| TypeScript (Node.js) | | | | | | |
+| Type script (node. js) | | | | | | |
 
 <sup>*</sup> Het bewerken van de portal is alleen ingeschakeld voor HTTP-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 

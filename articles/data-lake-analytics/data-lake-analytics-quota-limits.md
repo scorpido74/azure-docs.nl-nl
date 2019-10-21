@@ -1,6 +1,6 @@
 ---
-title: Quota en limieten in Azure Data Lake Analytics aanpassen
-description: Informatie over het aanpassen en het verhogen van quota en limieten in Azure Data Lake Analytics (ADLA)-accounts.
+title: Quota en limieten aanpassen in Azure Data Lake Analytics
+description: Meer informatie over het aanpassen en verg Roten van quota's en limieten in Azure Data Lake Analytics-accounts (ADLA).
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
@@ -9,73 +9,75 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812711"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595684"
 ---
-# <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Quota en limieten in Azure Data Lake Analytics aanpassen
+# <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Quota en limieten aanpassen in Azure Data Lake Analytics
 
-Informatie over het aanpassen en het verhogen van quota en limieten in Azure Data Lake Analytics (ADLA)-accounts. Deze limieten te weten, kunt u meer inzicht in uw U-SQL-taak gedrag. Alle quotalimieten zijn zachte, zodat u de maximale limieten verhogen kunt contact opnemen met de ondersteuning van Azure.
+Meer informatie over het aanpassen en verhogen van het quotum en de limieten in Azure Data Lake Analytics-accounts (ADLA). Als u deze limieten weet, kunt u beter inzicht krijgen in uw U-SQL-taak gedrag. Alle quota limieten zijn zacht, dus u kunt de maximum limiet verhogen door contact op te nemen met de ondersteuning van Azure.
 
 ## <a name="azure-subscriptions-limits"></a>Limieten voor Azure-abonnementen
 
-**Maximum aantal ADLA-accounts per abonnement per regio:**  5
+**Maximum aantal ADLA-accounts per abonnement per regio:** 5
 
-Als u probeert een zesde ADLA-account maakt, wordt u er een foutbericht "U hebt het maximum aantal Data Lake Analytics-accounts toegestaan (5) in het gebied onder de naam van abonnement bereikt". 
+Als u een zesde ADLA-account maakt, wordt er een fout melding weer geven dat het maximum aantal toegestane Data Lake Analytics accounts (5) in de regio onder de naam van het abonnement is bereikt.
 
-Als u verder gaan dan deze limiet wilt, kunt u deze opties proberen:
-* Kies een andere regio als geschikt
-* Neem contact op met ondersteuning van Azure door [een ondersteuningsticket openen](#increase-maximum-quota-limits) om aan te vragen een quotaverhoging.
+Als u de limiet wilt overschrijden, kunt u de volgende opties proberen:
+* Kies een andere regio indien geschikt
+* Neem contact op met de ondersteuning van Azure door [een ondersteunings ticket te openen](#increase-maximum-quota-limits) om een quotum toename aan te vragen.
 
-## <a name="default-adla-account-limits"></a>Standaardlimieten ADLA-account
+## <a name="default-adla-account-limits"></a>Standaard limieten voor ADLA-accounts
 
-**Maximum aantal eenheden van de analyse (AU's) per account:** 32
+**Maximum aantal Analytics units (AUs) per account:** 250, standaard 32
 
-Dit is het maximum aantal AU's mogen worden uitgevoerd in uw account. Als het totale aantal AU's uitgevoerd in alle projecten deze limiet overschrijdt, nieuwe taken in de wachtrij automatisch. Bijvoorbeeld:
+Dit is het maximum aantal van AUs dat gelijktijdig kan worden uitgevoerd in uw account. Als het totale aantal uitgevoerde AUs voor alle taken deze limiet overschrijdt, worden nieuwere taken in de wachtrij geplaatst. Bijvoorbeeld:
 
-* Als u slechts één taak hebt uitgevoerd met 32 AU's, wanneer u een tweede verzendt taak deze in de taakwachtrij wacht totdat de eerste taak is voltooid.
-* Als u al vier taken die worden uitgevoerd en wordt elke 8 gebruikt AU's, wanneer u een vijfde taak die 8 moet verzenden AU's dat deze in de taakwachtrij moet wachten totdat er 8 AU's beschikbaar.
+* Als er slechts één taak wordt uitgevoerd met 32 AUs, wanneer u een tweede taak indient, wacht deze in de taak wachtrij totdat de eerste taak is voltooid.
+* Als er al vier taken worden uitgevoerd, wordt er 8 AUs gebruikt, wanneer u een vijfde taak indient die 8 AUs vereist, waarna de taak wachtrij 8 AUs beschikbaar heeft.
 
-**Maximum aantal eenheden van de analyse (AU's) per taak:** 32
+    ![Azure Data Lake Analytics limieten en quotum pagina](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-Dit is de standaard maximale aantal AU's dat elke afzonderlijke taak kan worden toegewezen in uw account. Taken die meer dan deze limiet zijn toegewezen, worden geweigerd, tenzij de indiener wordt beïnvloed door een compute-beleid (limiet voor het indienen van taak) waarmee ze meer AU's per taak. De bovengrens van deze waarde is de AU-limiet voor het account.
+**Maximum aantal Analytics units (AUs) per taak:** 250, standaard 32
+
+Dit is het maximum aantal van AUs dat elke afzonderlijke taak kan worden toegewezen in uw account. Taken die meer dan deze limiet worden toegewezen, worden geweigerd, tenzij de indiener wordt beïnvloed door een berekenings beleid (taak verzendings limiet) waarmee ze meer AUs per taak bieden. De bovengrens van deze waarde is de AU-limiet voor het account.
 
 **Maximum aantal gelijktijdige U-SQL-taken per account:** 20
 
-Dit is het maximale aantal taken die gelijktijdig kunnen worden uitgevoerd in uw account. Boven deze waarde hoger taken worden in de wachtrij automatisch.
+Dit is het maximum aantal taken dat gelijktijdig kan worden uitgevoerd in uw account. Boven deze waarde worden nieuwere taken automatisch in de wachtrij geplaatst.
 
-## <a name="adjust-adla-account-limits"></a>Limieten ADLA aanpassen
+## <a name="adjust-adla-account-limits"></a>Limieten voor ADLA-accounts aanpassen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Kies een bestaande ADLA-account.
+2. Kies een bestaand ADLA-account.
 3. Klik op **Eigenschappen**.
-4. Wijzig de waarden voor **Maximum AU's**, **maximumaantal actieve taken**, en **limieten voor het verzenden van taken** op basis van uw behoeften.
+4. U kunt de waarden voor het **maximum aantal AUs**, het **maximum van de actieve taken**en de **Verzend limieten** van taken aanpassen aan uw behoeften.
 
-## <a name="increase-maximum-quota-limits"></a>Maximale quotalimieten verhogen
+## <a name="increase-maximum-quota-limits"></a>Maximum aantal quotum limieten verhogen
 
-U vindt meer informatie over Azure-limieten in de [documentatie voor Azure-servicespecifieke-limieten](../azure-subscription-service-limits.md#data-lake-analytics-limits).
+Meer informatie over Azure-limieten vindt u in de documentatie voor de [specifieke limieten van Azure-service](../azure-subscription-service-limits.md#data-lake-analytics-limits).
 
-1. Open een ondersteuningsaanvraag in Azure portal.
+1. Open een ondersteunings aanvraag in Azure Portal.
 
-    ![Azure Data Lake Analytics-portal-pagina](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-    ![Azure Data Lake Analytics-portal-pagina](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
-2. Selecteer het probleemtype **quotum**.
-3. Selecteer uw **abonnement** (Zorg ervoor dat het is niet een "" proefabonnement).
-4. Selecteer quotumtype **Data Lake Analytics**.
+    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+2. Selecteer het type **quotum**van het probleem.
+3. Selecteer uw **abonnement** (zorg ervoor dat het geen ' proef abonnement ' is).
+4. Selecteer quotum type **Data Lake Analytics**.
 
-    ![Azure Data Lake Analytics-portal-pagina](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
+    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
-5. In de pagina van het probleem, leggen uit uw limiet voor de aangevraagde verhoging met **Details** van waarom u deze extra capaciteit nodig hebt.
+5. Op de pagina probleem moet u de aangevraagde verhogings limiet uitleggen met **Details** over de reden waarom u deze extra capaciteit nodig hebt.
 
-    ![Azure Data Lake Analytics-portal-pagina](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
+    ![Pagina Azure Data Lake Analytics Portal](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
-6. Controleer of uw contactgegevens en de ondersteuningsaanvraag maken.
+6. Controleer uw contact gegevens en maak de ondersteunings aanvraag.
 
-Microsoft uw aanvraag beoordeelt en probeert zo snel mogelijk aan de behoeften van uw bedrijf.
+Micro soft bekijkt uw aanvraag en probeert zo snel mogelijk uw bedrijfs behoeften aan te passen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
