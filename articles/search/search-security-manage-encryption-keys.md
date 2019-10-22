@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
 ms.openlocfilehash: ce7a8af1416664a3a94b248c95203c8e775e805c
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70182407"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search versleuteling met door de klant beheerde sleutels in Azure Key Vault
@@ -45,7 +45,7 @@ In dit voor beeld worden de volgende services gebruikt.
 
 ## <a name="1---enable-key-recovery"></a>1-sleutel herstel inschakelen
 
-Deze stap is optioneel, maar wordt nadrukkelijk aanbevolen. Nadat u de Azure Key Vault resource hebt gemaakt, schakelt u de optie **voorlopig verwijderen** en **beveiliging** opschonen in de geselecteerde sleutel kluis in door de volgende Power shell-of Azure cli-opdrachten uit te voeren:   
+Deze stap is optioneel, maar wordt nadrukkelijk aanbevolen. Nadat u de Azure Key Vault resource hebt gemaakt, schakelt u de optie **voorlopig verwijderen** en **beveiliging opschonen** in de geselecteerde sleutel kluis in door de volgende Power shell-of Azure cli-opdrachten uit te voeren:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -92,7 +92,7 @@ Gebruik, indien mogelijk, een beheerde identiteit. Het is de eenvoudigste manier
 
  In het algemeen kan met een beheerde identiteit uw zoek service worden geverifieerd bij Azure Key Vault zonder dat er referenties worden opgeslagen in de code. De levens cyclus van dit type beheerde identiteit is gekoppeld aan de levens cyclus van uw zoek service, maar kan slechts één beheerde identiteit hebben. Meer [informatie over beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. Als u een beheerde identiteit wilt maken, meldt u zich aan bij [toAzure Portal](https://portal.azure.com) en opent u het dash board van de zoek service. 
+1. Als u een beheerde identiteit wilt maken, [meldt u zich aan bij toAzure Portal](https://portal.azure.com) en opent u het dash board van de zoek service. 
 
 1. Klik op **identiteit** in het navigatie deel venster links, wijzig de status in **op**aan en klik op **Opslaan**.
 
@@ -164,7 +164,7 @@ Als u een AAD-toepassing gebruikt voor Key Vault-verificatie in plaats van een b
 }
 ```
 
-## <a name="example-index-encryption"></a>Voorbeeld: Index versleuteling
+## <a name="example-index-encryption"></a>Voor beeld: index versleuteling
 Meer informatie over het maken van een nieuwe index via de REST API vindt u in [Create Index (Azure Search Service rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index), waarbij het enige verschil hier de details van de versleutelings sleutel opgeeft als onderdeel van de index definitie: 
 
 ```json
@@ -191,7 +191,7 @@ Meer informatie over het maken van een nieuwe index via de REST API vindt u in [
 ```
 U kunt de aanvraag voor het maken van de index nu verzenden en de index vervolgens normaal gaan gebruiken.
 
-## <a name="example-synonym-map-encryption"></a>Voorbeeld: Synoniemen kaart versleuteling
+## <a name="example-synonym-map-encryption"></a>Voor beeld: synoniem toewijzing versleuteling
 
 De informatie over het maken van een nieuwe synoniemen kaart via de REST API vindt u in de [toewijzing synoniemen maken (Azure Search Service rest API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), waarbij het enige verschil hier de details van de versleutelings sleutel opgeeft als onderdeel van de definitie van de synoniemen kaart: 
 
@@ -214,7 +214,7 @@ U kunt de aanvraag voor het maken van de synoniemen kaart nu verzenden en vervol
 > Hoewel **encryptionKey** niet kan worden toegevoegd aan bestaande Azure Search indexen of synoniemen toewijzingen, kan deze worden bijgewerkt door verschillende waarden op te geven voor een van de drie sleutel kluis Details (bijvoorbeeld het bijwerken van de sleutel versie). Wanneer u overstapt naar een nieuwe Key Vault sleutel of een nieuwe sleutel versie, moet een Azure Search index-of synoniemen toewijzing die de sleutel gebruikt eerst worden bijgewerkt voor gebruik van de nieuwe key\version **voordat** u de vorige key\version. verwijdert. Als u dit niet doet, wordt de toewijzing van de index of het synoniem onbruikbaar, omdat het niet mogelijk is om de inhoud te ontsleutelen wanneer de sleutel toegang verloren is gegaan.   
 > Als u de toegangs machtigingen voor de sleutel kluis op een later tijdstip herstelt, wordt de toegang tot inhoud hersteld.
 
-## <a name="aad-app"></a>Gevanceerde Een extern beheerde Azure Active Directory-toepassing gebruiken
+## <a name="aad-app"></a>Geavanceerd: een extern beheerde Azure Active Directory-toepassing gebruiken
 
 Wanneer een beheerde identiteit niet mogelijk is, kunt u een Azure Active Directory-toepassing maken met een beveiligingsprincipal voor uw Azure Search-service. Met name een beheerde identiteit is in deze omstandigheden niet haalbaar:
 

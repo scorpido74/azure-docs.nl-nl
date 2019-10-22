@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71677089"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Portal
@@ -34,9 +34,9 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Ga in het menu links naar **+ een resource** >  **Analytics** > **HDInsight**maken.
+1. Ga in het menu links naar **+ een resource maken**  >  **Analytics**  > **HDInsight**.
 
     ![Een nieuw cluster maken in de Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Een nieuw cluster maken in de Azure Portal")
 
@@ -73,7 +73,7 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
 1. U kunt met behulp van de beschik bare vervolg keuzelijst van **2 beveiliging en netwerken**uw cluster verbinden met een virtueel netwerk. Selecteer een virtueel Azure-netwerk en het subnet als u het cluster in een virtueel netwerk wilt plaatsen. Zie [een implementatie van een virtueel netwerk plannen voor Azure HDInsight-clusters](hdinsight-plan-virtual-network-deployment.md)voor meer informatie over het gebruik van HDInsight met een virtueel netwerk. Het artikel bevat specifieke configuratie vereisten voor het virtuele netwerk.
 
-    Als u de **Enterprise Security Package**wilt gebruiken, volgt u deze instructies: [Configureer een HDInsight-cluster met Enterprise Security Package met behulp van Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+    Als u de **Enterprise Security Package**wilt gebruiken, volgt u deze instructies: [een HDInsight-cluster met Enterprise Security Package configureren met behulp van Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
     Selecteer **volgende** om naar de volgende pagina te gaan.
 
@@ -81,10 +81,10 @@ De Azure Portal bevat de meeste cluster eigenschappen. Door Azure Resource Manag
 
      ![HDInsight-cluster opslag maken](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Een nieuw cluster maken in de Azure Portal")
 
-     | Storage                                      | Description |
+     | Storage                                      | Beschrijving |
      |----------------------------------------------|-------------|
-     | **Blobs Azure Storage als standaard opslag**   | <ul><li>Selecteer **Azure Storage**voor het **primaire opslag type**. Kies bij **selectie methode** **Mijn abonnementen** als u een opslag account wilt opgeven dat deel uitmaakt van uw Azure-abonnement. Selecteer vervolgens het opslag account. Selecteer anders **toegangs sleutel**. Geef vervolgens de informatie op voor het opslag account dat u wilt kiezen buiten uw Azure-abonnement.</li><li>Voor de **standaard container**kiest u de standaard container naam die wordt voorgesteld door de portal of geeft u uw eigen.</li><li>Als Azure Blob-opslag uw standaard opslag is, kunt u ook **extra opslag accounts** selecteren om extra opslag accounts op te geven die u aan het cluster wilt koppelen. Selecteer voor **Azure Storage sleutels** **een opslag sleutel toevoegen**. Vervolgens kunt u een opslag account opgeven vanuit uw Azure-abonnementen of van andere abonnementen. Geef de toegangs sleutel voor het opslag account op.</li><li>Als Blob Storage uw standaard opslag is, kunt u ook **Data Lake Storage toegang** selecteren om Azure data Lake Storage als extra opslag ruimte op te geven. Zie voor meer informatie [Snelstart: clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
-     | **Azure Data Lake Storage als standaard opslag** | Selecteer **Azure data Lake Storage gen1** of **Azure data Lake Storage Gen2**voor het **primaire opslag type**. Raadpleeg vervolgens het artikel [Snelstartgids: Clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) instellen voor instructies. |
+     | **Blobs Azure Storage als standaard opslag**   | <ul><li>Selecteer **Azure Storage**voor het **primaire opslag type**. Kies bij **selectie methode** **Mijn abonnementen** als u een opslag account wilt opgeven dat deel uitmaakt van uw Azure-abonnement. Selecteer vervolgens het opslag account. Selecteer anders **toegangs sleutel**. Geef vervolgens de informatie op voor het opslag account dat u wilt kiezen buiten uw Azure-abonnement.</li><li>Voor de **standaard container**kiest u de standaard container naam die wordt voorgesteld door de portal of geeft u uw eigen.</li><li>Als Azure Blob-opslag uw standaard opslag is, kunt u ook **extra opslag accounts** selecteren om extra opslag accounts op te geven die u aan het cluster wilt koppelen. Selecteer voor **Azure Storage sleutels** **een opslag sleutel toevoegen**. Vervolgens kunt u een opslag account opgeven vanuit uw Azure-abonnementen of van andere abonnementen. Geef de toegangs sleutel voor het opslag account op.</li><li>Als Blob Storage uw standaard opslag is, kunt u ook **Data Lake Storage toegang** selecteren om Azure data Lake Storage als extra opslag ruimte op te geven. Zie [Quick Start: clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)voor meer informatie.</li></ul> |
+     | **Azure Data Lake Storage als standaard opslag** | Selecteer **Azure data Lake Storage gen1** of **Azure data Lake Storage Gen2**voor het **primaire opslag type**. Raadpleeg vervolgens het artikel [Snelstartgids: clusters in HDInsight instellen](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) voor instructies. |
      | **Externe meta Stores**                      | Geef als optie een SQL database op om Apache Hive en Apache Oozie-meta gegevens te bewaren die aan het cluster zijn gekoppeld. Selecteer een SQL database voor **een Hive-SQL database**selecteren. Geef vervolgens de gebruikers naam en het wacht woord op voor de data base. Herhaal deze stappen voor Oozie-meta gegevens.<br><br>Hier volgen enkele aandachtspunten voor het gebruik van Azure SQL database voor meta Stores: <ul><li>De Azure-SQL database die wordt gebruikt voor de meta Store, moet verbinding maken met andere Azure-Services, waaronder Azure HDInsight. Selecteer aan de rechter kant van het dash board van Azure SQL database de naam van de server. Dit is de server waarop het SQL database-exemplaar wordt uitgevoerd. Nadat u in de server weergave bent, selecteert u **configureren**. Selecteer vervolgens bij **Azure**-Services **Ja**. Selecteer vervolgens **Opslaan**.</li><li>Wanneer u een meta Store maakt, moet u een Data Base geen naam met streepjes of afbreek streepjes. Deze tekens kunnen ertoe leiden dat het proces voor het maken van een cluster mislukt.</li></ul> |
 
      > [!WARNING]  
@@ -167,5 +167,5 @@ U hebt een HDInsight-cluster gemaakt. Meer informatie over het werken met uw clu
 
 * [Een zelfstandige toepassing maken met behulp van scala](spark/apache-spark-create-standalone-application.md)
 * [Taken op afstand uitvoeren op een Apache Spark cluster met behulp van Apache livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](spark/apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](spark/apache-spark-machine-learning-mllib-ipython.md)

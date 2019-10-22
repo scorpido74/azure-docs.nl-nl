@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331218"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Resource verbruik en query activiteit in Azure Search bewaken
@@ -30,8 +30,8 @@ De bewerkings-en **bewakings** secties die in het overzichts venster zijn **inge
 
 Op het tabblad **gebruik** ziet u de beschik baarheid van resources ten opzichte van huidige [limieten](search-limits-quotas-capacity.md). De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
 
-![Gebruiks status relatief ten]opzichte van de(./media/search-monitor-usage/usage-tab.png
- "gebruiks status") van de doel matigste limieten
+![Status van gebruik ten opzichte van de doel limieten](./media/search-monitor-usage/usage-tab.png
+ "Status van gebruik ten opzichte van de doel limieten")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Query's per seconde (QPS) en andere metrische gegevens
 
@@ -40,7 +40,7 @@ Het tabblad **bewaking** toont zwevende gemiddelden voor metrische gegevens, zoa
 
 Deze getallen zijn van benadering en zijn bedoeld om u een algemeen idee te geven van de manier waarop uw systeem bezig is met het verwerken van aanvragen. De werkelijke QPS kan hoger of lager zijn dan het getal dat u in de portal hebt gerapporteerd.
 
-Query's per seconde voor activiteiten van een ![activiteit]per(./media/search-monitor-usage/monitoring-tab.png "tweede activiteit")
+![Query's per seconde-activiteit](./media/search-monitor-usage/monitoring-tab.png "Query's per seconde-activiteit")
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 
@@ -78,13 +78,13 @@ In deze sectie leert u hoe u Blob Storage kunt gebruiken voor het opslaan van va
 
 2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **bewaking inschakelen**.
 
-   ![](./media/search-monitor-usage/enable-monitoring.png "Bewaking") inschakelen inschakelen
+   ![Bewaking inschakelen](./media/search-monitor-usage/enable-monitoring.png "Bewaking inschakelen")
 
 3. Kies de gegevens die u wilt exporteren: Logboeken, metrieken of beide. U kunt het kopiëren naar een opslag account, het naar een Event Hub verzenden of het exporteren naar Azure Monitor-Logboeken.
 
    Voor archivering naar Blob Storage moet alleen het opslag account bestaan. Containers en blobs worden zo gemaakt als nodig wanneer logboek gegevens worden geëxporteerd.
 
-   ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief")
+   ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief configureren")
 
 4. Sla het profiel op.
 

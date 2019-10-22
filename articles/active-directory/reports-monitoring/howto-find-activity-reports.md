@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127393"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteiten rapporten zoeken in de Azure Portal
@@ -52,12 +52,12 @@ U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krij
 
 Categorieën zijn onder andere:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- Authorization
-- Neem contact op met
+- Verificatie
+- Autorisatie
+- Contact
 - Apparaat
 - Apparaatconfiguratie
 - DirectoryManagement
@@ -73,25 +73,25 @@ U kunt ook filteren op een specifieke service met behulp van het vervolg filter 
 
 Services omvatten:
 
-- Alle
+- Alles
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
 - Verificatiemethoden
-- B2C
+- Business to consumer
 - Voorwaardelijke toegang
 - Hoofddirectory
 - Rechtenbeheer
-- Identity Protection
+- Identiteitsbeveiliging
 - Uitgenodigde gebruikers
 - PIM
 - Self-service voor groepsbeheer
-- Selfservice voor wachtwoordbeheer
+- Self-service voor wachtwoordbeheer
 - Gebruiksvoorwaarden
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport 
 
-De weer gave aanmeldingen bevat alle gebruikers aanmeldingen en het gebruiks rapport van de **toepassing** . U kunt ook informatie over het gebruik van toepassingen weer geven in het gedeelte **beheren** van het overzicht **bedrijfs toepassingen** .
+De weer gave **aanmeldingen** bevat alle gebruikers aanmeldingen en het gebruiks rapport van de **toepassing** . U kunt ook informatie over het gebruik van toepassingen weer geven in het gedeelte **beheren** van het overzicht **bedrijfs toepassingen** .
 
 Het rapport aanmeldingen openen:
 
@@ -99,7 +99,7 @@ Het rapport aanmeldingen openen:
 2. Selecteer de map in de rechter bovenhoek en selecteer vervolgens de Blade **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
 3. Selecteer **aanmeldingen** in het gedeelte **activiteit** van de Blade Azure Active Directory. 
 
-    ![Weer gave voor] aanmeldingen (./media/howto-find-activity-reports/483.png "Weer gave voor") aanmeldingen
+    ![Weer gave voor aanmeldingen](./media/howto-find-activity-reports/483.png "Weer gave voor aanmeldingen")
 
 
 ### <a name="filtering-on-application-name"></a>Filteren op toepassings naam
@@ -139,7 +139,7 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 - [Gebruikers die risico lopen](concept-user-at-risk.md)
 - [Riskante aanmeldingen](concept-risky-sign-ins.md)
 
-    ![Beveiligings rapporten](./media/howto-find-activity-reports/04.png "Beveiligings rapporten")
+    ![Beveiligingsrapporten](./media/howto-find-activity-reports/04.png "Beveiligingsrapporten")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>Problemen oplossen met activiteiten rapporten
 
@@ -147,15 +147,15 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Waarom? 
 
- ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
+ ![Reporting](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
 Wanneer u activiteiten Logboeken in de Azure Portal downloadt, beperken we de schaal tot 250000 records, gesorteerd op meest recente eerst. 
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md) om maximaal een miljoen records op te halen.
 
@@ -165,7 +165,7 @@ U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md)
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
+ ![Reporting](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -176,7 +176,7 @@ Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderst
 | Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
 | Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het logboek. Als u de vermeldingen na twee uur nog steeds niet ziet, [maakt u een ondersteuningsticket aan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) en dan gaan we aan de slag met het probleem.
 
@@ -186,7 +186,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
+ ![Reporting](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -197,7 +197,7 @@ Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderst
 | Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
 | Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het logboek. Als u de vermeldingen na twee uur nog steeds niet ziet, [maakt u een ondersteuningsticket aan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) en dan gaan we aan de slag met het probleem.
 
@@ -205,9 +205,9 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Waarom? 
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
+ ![Reporting](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Oorzaak
 
@@ -220,7 +220,7 @@ Afhankelijk van uw licentie bewaart Azure Active Directory Actions de activiteit
 
 Zie [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md) voor meer informatie.  
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API's van de rapportagefunctie van Azure AD](concept-reporting-api.md) gebruiken om de gegevens via programmacode op te halen en op te slaan in een database. Een alternatief is om auditlogboeken te integreren in een SIEM-systeem van derden, zoals Splunk of SumoLogic.
 

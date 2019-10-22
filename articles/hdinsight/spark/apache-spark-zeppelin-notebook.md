@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71180732"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark cluster in azure HDInsight
@@ -23,7 +23,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Dit geldt `abfs://` `adl://` voor Azure Blob Storage, voor Azure data Lake Storage Gen2 of voor Azure data Lake Storage gen1. `wasb://` Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://`.  Zie ook [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag van uw clusters. Dit wordt `wasb://` voor Azure Blob Storage `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, wordt de URI `wasbs://`.  Zie ook [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-notebook starten
 
@@ -34,7 +34,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Maak een nieuwe notebook. Ga in het deel venster koptekst naar **notitie blok** > **nieuwe notitie maken**.
+2. Maak een nieuwe notebook. Ga in het deel venster koptekst naar **Notebook**  > **nieuwe notitie maken**.
 
     ![Een nieuwe Zeppelin-notebook maken](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Een nieuwe Zeppelin-notebook maken")
 
@@ -44,7 +44,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
     ![Status van Zeppelin-notebook](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Status van Zeppelin-notebook")
 
-4. Laad voorbeeldgegevens in een tijdelijke tabel. Wanneer u een Spark-cluster in HDInsight maakt, wordt het voorbeeld gegevensbestand `hvac.csv`,, gekopieerd naar het bijbehorende opslag account onder `\HdiSamples\SensorSampleData\hvac`.
+4. Laad voorbeeldgegevens in een tijdelijke tabel. Wanneer u een Spark-cluster in HDInsight maakt, wordt het bestand met voorbeeld gegevens `hvac.csv` gekopieerd naar het gekoppelde opslag account onder `\HdiSamples\SensorSampleData\hvac`.
 
     Plak het volgende fragment in de lege alinea die standaard wordt gemaakt in het nieuwe notitie blok.
 
@@ -81,7 +81,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
     > [!NOTE]  
     > % spark2-interpreter wordt niet ondersteund in Zeppelin-notebooks voor alle HDInsight-versies en% sh-interpreter wordt niet ondersteund vanaf HDInsight 4,0.
 
-5. U kunt nu Spark SQL-instructies uitvoeren op `hvac` de tabel. Plak de volgende query in een nieuwe alinea. Met de query worden de gebouw-ID en het verschil tussen het doel en de werkelijke Tempe raturen voor elk gebouw op een bepaalde datum opgehaald. Druk op **SHIFT + ENTER**.
+5. U kunt nu Spark SQL-instructies uitvoeren op de `hvac` tabel. Plak de volgende query in een nieuwe alinea. Met de query worden de gebouw-ID en het verschil tussen het doel en de werkelijke Tempe raturen voor elk gebouw op een bepaalde datum opgehaald. Druk op **SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -94,7 +94,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
     ![Een Spark SQL-instructie uitvoeren met behulp van de notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Een Spark SQL-instructie uitvoeren met behulp van de notebook1")
 
-7. U kunt ook Spark SQL-instructies uitvoeren met behulp van variabelen in de query. Het volgende code fragment laat zien hoe u een variabele `Temp`definieert, in de query met de mogelijke waarden waarmee u een query wilt uitvoeren. Wanneer u de query voor het eerst uitvoert, wordt een vervolg keuzelijst automatisch gevuld met de waarden die u hebt opgegeven voor de variabele.
+7. U kunt ook Spark SQL-instructies uitvoeren met behulp van variabelen in de query. Het volgende code fragment laat zien hoe u een variabele definieert, `Temp` in de query met de mogelijke waarden waarmee u een query wilt uitvoeren. Wanneer u de query voor het eerst uitvoert, wordt een vervolg keuzelijst automatisch gevuld met de waarden die u hebt opgegeven voor de variabele.
 
     ```sql
     %sql  
@@ -105,8 +105,8 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
 8. Selecteer het pictogram van het **staaf diagram** om de weer gave te wijzigen.  Selecteer vervolgens **instellingen** en breng de volgende wijzigingen aan:
 
-   * **Groepen**  Voeg **targettemp**toe.  
-   * **Gegevens** 1. Verwijder de **datum**.  2. Voeg **temp_diff**toe.  3.  Wijzig de aggregator van **Sum** in **AVG**.  
+   * **Groepen:**  Voeg **targettemp**toe.  
+   * **Waarden:** i. Verwijder de **datum**.  2. Voeg **temp_diff**toe.  3.  Wijzig de aggregator van **Sum** in **AVG**.  
 
      In de volgende scherm afbeelding ziet u de uitvoer.
 
@@ -133,7 +133,7 @@ In dit artikel ziet u hoe u het [Spark-CSV-](https://search.maven.org/#artifactd
 
     ![Settings1 van interpreter wijzigen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Settings1 van interpreter wijzigen")
 
-3. Voeg een nieuwe sleutel toe `livy.spark.jars.packages`met de naam en stel de waarde in `group:id:version`de indeling in. Als u het [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakket wilt gebruiken, moet u dus de waarde van de sleutel instellen op `com.databricks:spark-csv_2.10:1.4.0`.
+3. Voeg een nieuwe sleutel toe met de naam `livy.spark.jars.packages` en stel de waarde ervan in de notatie `group:id:version`. Als u het [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakket wilt gebruiken, moet u dus de waarde van de sleutel instellen op `com.databricks:spark-csv_2.10:1.4.0`.
 
     ![Settings2 van interpreter wijzigen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Settings2 van interpreter wijzigen")
 
@@ -174,10 +174,10 @@ In dat geval moet u de volgende stappen uitvoeren voordat u taken kunt uitvoeren
 3. Een code-cel uitvoeren vanuit een bestaand Zeppelin-notebook. Hiermee maakt u een nieuwe livy-sessie in het HDInsight-cluster.
 
 ## <a name="seealso"></a>Zie ook
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

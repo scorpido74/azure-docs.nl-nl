@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331194"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Kies een prijs categorie voor Azure Search
@@ -41,7 +41,7 @@ De laag die u selecteert, bepaalt het factureer bare percentage. De volgende sch
 
 Met **gratis** maakt u een beperkte zoek service in een cluster, gedeeld met andere abonnees. U kunt kleine projecten, inclusief Quick starts en zelf studies, volt ooien, maar u kunt de service niet schalen of aanzienlijke werk belastingen uitvoeren. **Basic** en **Standard** zijn de meest gebruikte factureer bare lagen, waarbij **standaard** de standaard instelling is.
 
-![Prijs categorieën van Azure Search](media/search-sku-tier/tiers.png "prijs categorieën van Azure Search")
+![Prijs categorieën van Azure Search](media/search-sku-tier/tiers.png "Prijs categorieën van Azure Search")
 
 Sommige lagen zijn geoptimaliseerd voor bepaalde typen werk. **Standaard 3 High density (S3 HD)** is bijvoorbeeld een *hosting modus* voor S3, waarbij de onderliggende hardware is geoptimaliseerd voor een groot aantal kleinere indexen en die is bedoeld voor multitenancy-scenario's. S3 HD heeft dezelfde kosten per eenheid als S3, maar de hardware is geoptimaliseerd voor snelle bestands Lees bewerkingen op een groot aantal kleinere indexen.
 

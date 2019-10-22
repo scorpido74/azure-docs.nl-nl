@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265933"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Een Cognitive Services resource koppelen aan een vakkennis in Azure Search 
@@ -28,7 +28,7 @@ U kunt een beperkt aantal gratis documenten verrijken. U kunt ook een factureer 
 
 ## <a name="same-region-requirement"></a>Dezelfde regio vereiste
 
-Azure Search en Azure Cognitive Services bestaan alleen binnen dezelfde regio. Anders wordt dit bericht weer gegeven tijdens de uitvoering:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Azure Search en Azure Cognitive Services bestaan alleen binnen dezelfde regio. Als dat niet het geval is, ontvangt u dit bericht tijdens de uitvoering: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Er is geen manier om een service te verplaatsen tussen regio's. Als u deze fout ontvangt, moet u een nieuwe Cognitive Services-resource maken in dezelfde regio als Azure Search.
 
@@ -51,7 +51,7 @@ Gratis (beperkte verrijkingen) resources zijn beperkt tot 20 documenten per dag,
 
    ![Sectie uitgebreide Cognitive Services toevoegen](./media/cognitive-search-attach-cognitive-services/attach1.png "Sectie uitgebreide Cognitive Services toevoegen")
 
-1. Ga door naar de volgende stap en **Voeg verrijkingen toe**. Zie [voor een beschrijving van de beschik bare vaardig heden in de portal stap 2: Voeg cognitieve vaardig](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) heden toe aan de Snelstartgids voor de cognitieve zoek functie.
+1. Ga door naar de volgende stap en **Voeg verrijkingen toe**. Zie voor een beschrijving van de beschik bare vaardig heden in de portal [stap 2: cognitieve vaardig heden toevoegen](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) in de Snelstartgids voor de cognitieve zoek functie.
 
 ## <a name="use-billable-resources"></a>Factureer bare resources gebruiken
 
@@ -63,7 +63,7 @@ Er worden alleen kosten in rekening gebracht voor de vaardig heden die de Cognit
 
 1. Vouw **Cognitive Services koppelen** uit en selecteer vervolgens **nieuwe Cognitive Services resource maken**. Er wordt een nieuw tabblad geopend, zodat u de resource kunt maken:
 
-   ![Een Cognitive Services resource maken](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Een Cognitive Services resource maken")
+   ![Een Cognitive Services resource maken](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Een Cognitive Services-resource maken")
 
 1. Selecteer in de lijst **locatie** de regio waar uw Azure Search-service zich bevindt. Zorg ervoor dat u deze regio gebruikt om prestatie redenen. Als u deze regio gebruikt, worden ook de kosten voor uitgaande band breedte tussen regio's verwijderd.
 
@@ -81,7 +81,7 @@ Er worden alleen kosten in rekening gebracht voor de vaardig heden die de Cognit
 
    ![De Cognitive Services resource selecteren](./media/cognitive-search-attach-cognitive-services/attach2.png "De Cognitive Services resource selecteren")
 
-1. Vouw de sectie **verrijkingen toevoegen** uit om de specifieke cognitieve vaardig heden te selecteren die u wilt uitvoeren op uw gegevens. Voltooi de rest van de wizard. Zie [voor een beschrijving van de beschik bare vaardig heden in de portal stap 2: Voeg cognitieve vaardig](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) heden toe aan de Snelstartgids voor de cognitieve zoek functie.
+1. Vouw de sectie **verrijkingen toevoegen** uit om de specifieke cognitieve vaardig heden te selecteren die u wilt uitvoeren op uw gegevens. Voltooi de rest van de wizard. Zie voor een beschrijving van de beschik bare vaardig heden in de portal [stap 2: cognitieve vaardig heden toevoegen](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) in de Snelstartgids voor de cognitieve zoek functie.
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Een bestaande vaardig heden koppelen aan een Cognitive Services resource
 
@@ -99,9 +99,9 @@ Als u een bestaande vaardig heden hebt, kunt u deze koppelen aan een nieuwe of a
 
 ## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services via een programma koppelen
 
-Wanneer u de vaardig heden programmatisch definieert, voegt u een `cognitiveServices` sectie toe aan de vaardig heden. In dat gedeelte moet u de sleutel van de Cognitive Services resource die u wilt koppelen aan de vaardig heden, toevoegen. Houd er rekening mee dat de resource zich in dezelfde regio als uw Azure Search-resource moet bevinden. Neem `@odata.type`ook de naam op en stel `#Microsoft.Azure.Search.CognitiveServicesByKey`deze in op.
+Wanneer u de vaardig heden programmatisch definieert, voegt u een `cognitiveServices` sectie toe aan de vaardig heden. In dat gedeelte moet u de sleutel van de Cognitive Services resource die u wilt koppelen aan de vaardig heden, toevoegen. Houd er rekening mee dat de resource zich in dezelfde regio als uw Azure Search-resource moet bevinden. Neem ook `@odata.type` op en stel deze in op `#Microsoft.Azure.Search.CognitiveServicesByKey`.
 
-In het volgende voor beeld ziet u dit patroon. U ziet `cognitiveServices` de sectie aan het einde van de definitie.
+In het volgende voor beeld ziet u dit patroon. U ziet de `cognitiveServices` sectie aan het einde van de definitie.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>Voorbeeld: Kosten schatten
+## <a name="example-estimate-costs"></a>Voor beeld: kosten schatten
 
 Als u een schatting wilt maken van de kosten die zijn gekoppeld aan het indexeren van cognitieve Zoek opdrachten, begint u met een idee van wat een gemiddeld document lijkt te zijn, zodat u enkele getallen kunt uitvoeren. U kunt bijvoorbeeld ongeveer het volgende doen:
 

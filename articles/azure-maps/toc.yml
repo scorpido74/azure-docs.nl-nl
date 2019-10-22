@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Ondersteunde kaartstijlen
       href: supported-map-styles.md
-    - name: Browsers die Web-SDK ondersteunen
-      href: supported-browsers.md
     - name: Zoomniveaus en tegelraster
       href: zoom-levels-and-tile-grid.md
     - name: Gegevensstructuur van de Mobility Service
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: Routebeschrijving van A naar B
               href: map-route.md
+        - name: Browsers die Web-SDK ondersteunen
+          href: supported-browsers.md
     - name: Ontwikkelen met de Android SDK
       items:
         - name: Aan de slag gaan met Android-kaartbesturingselementen

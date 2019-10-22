@@ -11,10 +11,10 @@ ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: lahugh
 ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70094208"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kosten analyse en budgetten voor Azure Batch
@@ -29,7 +29,7 @@ Wanneer toepassingen worden geïmplementeerd op batch-knoop punten (Vm's) met be
 
 Batch-Pools gebruiken netwerk bronnen. Met name voor **VirtualMachineConfiguration** -Pools worden standaard load balancers gebruikt, waarvoor statische IP-adressen zijn vereist. De load balancers die door batch worden gebruikt, zijn zichtbaar voor accounts voor **gebruikers abonnementen** , maar zijn niet zichtbaar voor **batch-service** accounts. Voor de standaard load balancers worden kosten in rekening gebracht voor alle gegevens die worden door gegeven aan en van Vm's uit de batch-groep; Selecteer Batch-Api's voor het ophalen van gegevens uit pool knooppunten (zoals taak/knooppunt bestand ophalen), taak toepassings pakketten, resource/uitvoer bestanden en container installatie kopieën.
 
-### <a name="additional-services"></a>Extra services
+### <a name="additional-services"></a>Aanvullende services
 
 Services met inbegrip van Vm's en opslag kunnen de kosten van uw batch-account in rekening worden.
 
@@ -50,9 +50,9 @@ Via de Azure Portal kunt u budgetten en uitgaven voor uw batch-pool (s) of batch
 1. Selecteer **Cost Management + facturering** in de linkernavigatiebalk in het Azure Portal.
 1. Selecteer uw abonnement in de sectie **Mijn abonnementen**
 1. Ga naar **kosten analyse** in het gedeelte **Cost Management** van de navigatie balk aan de linkerkant. dit ziet er als volgt uit:
-1. Selecteer **filter toevoegen**. Selecteer in de eerste vervolg keuzelijst **resource** ![de resource filter selecteren](./media/batch-budget/resource-filter.png)
+1. Selecteer **filter toevoegen**. Selecteer **resource** ![Select het resource filter in de eerste vervolg keuzelijst ](./media/batch-budget/resource-filter.png)
 1. Selecteer in de tweede vervolg keuzelijst de batch-pool. Wanneer de pool is geselecteerd, ziet de kosten analyse er ongeveer uit als de volgende analyse.
-    ![Kosten analyse van een pool](./media/batch-budget/pool-cost-analysis.png)
+    ![Cost analyse van een pool ](./media/batch-budget/pool-cost-analysis.png)
 
 In de analyse van de resulterende kosten worden de kosten van de pool weer gegeven, evenals de resources die bijdragen aan deze kosten. In dit voor beeld zijn de virtuele machines die in de pool worden gebruikt de meest dure resource.
 
@@ -75,7 +75,7 @@ Meer informatie over het instellen van Vm's met lage prioriteit voor uw workload
 
 ### <a name="virtual-machine-os-disk-type"></a>Schijf type van het besturings systeem van de virtuele machine
 
-Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/windows/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor. `Standard_D2_v3`
+Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/windows/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor `Standard_D2_v3`.
 
 Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hogere prestaties en virtuele machines met Premium-schijven kunnen iets sneller beginnen dan Vm's met standaard schijven voor harde schijven. Met batch wordt de besturingssysteem schijf vaak niet gebruikt, omdat de toepassingen en taak bestanden zich op de tijdelijke schijf van de virtuele machine bevinden. In veel gevallen is het niet nodig om de verhoogde kosten te betalen voor de Premium-SSD die is ingericht wanneer de VM-grootte van een is opgegeven.
 
@@ -83,7 +83,7 @@ Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hog
 
 Als u batch wilt gebruiken gedurende een lange periode, kunt u besparen op de kosten van Vm's met behulp van [Azure Reservations](../billing/billing-save-compute-costs-reservations.md) voor uw workloads. Een reserverings tarief is aanzienlijk lager dan het tarief voor betalen naar gebruik. Voor exemplaren van virtuele machines die worden gebruikt zonder een reserve ring, wordt het tarief voor betalen naar gebruik in rekening gebracht. Als u een reserve ring aanschaft, wordt de reserverings korting toegepast en worden er geen kosten meer berekend op basis van de betalen naar gebruik-tarieven.
 
-### <a name="automatic-scaling"></a>Automatische schaalaanpassing
+### <a name="automatic-scaling"></a>Automatisch schalen
 
 Met [automatisch schalen](batch-automatic-scaling.md) wordt het aantal vm's in de batch-pool dynamisch geschaald op basis van de vereisten van de huidige taak. Door de pool te schalen op basis van de levens duur van een taak, zorgt u er automatisch voor dat Vm's alleen omhoog worden geschaald en gebruikt wanneer er een taak wordt uitgevoerd. Wanneer de taak is voltooid of als er geen taken zijn, worden de Vm's automatisch omlaag geschaald om reken resources op te slaan. Met schalen kunt u de totale kosten van uw batch-oplossing verlagen door alleen de benodigde resources te gebruiken.
 

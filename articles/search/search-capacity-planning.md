@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650070"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partities en replica's schalen voor het uitvoeren van query's en het indexeren van werk belastingen in Azure Search
@@ -29,10 +29,10 @@ Als u minder SUs-resultaten gebruikt, wordt er een proportionele lagere factuur 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
 Replica's en partities zijn de primaire resources die back-ups maken van een zoek service.
 
-| Resource | Definitie |
+| Bron | Definitie |
 |----------|------------|
 |*Partities* | Biedt index opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index).|
-|*Replicas* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert altijd als host voor één exemplaar van een index. Als u 12 replica's hebt, hebt u 12 kopieën van elke index die in de service is geladen.|
+|*Replica's* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert altijd als host voor één exemplaar van een index. Als u 12 replica's hebt, hebt u 12 kopieën van elke index die in de service is geladen.|
 
 > [!NOTE]
 > Het is niet mogelijk om rechtstreeks te manipuleren of te beheren welke indexen worden uitgevoerd op een replica. Eén exemplaar van elke index op elke replica maakt deel uit van de service architectuur.
