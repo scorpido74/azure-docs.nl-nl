@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072288"
 ---
 # <a name="azure-api-management-page-controls"></a>Besturings elementen van Azure API Management-pagina
@@ -37,9 +37,9 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
 ## <a name="developer-portal-template-page-controls"></a>Pagina besturings elementen voor ontwikkelaars Portal-sjabloon  
   
 -   [app-acties](#app-actions)  
--   [basic-signin](#basic-signin)  
--   [paging-control](#paging-control)  
--   [Providers](#providers)  
+-   [basis-aanmelden](#basic-signin)  
+-   [paginering-besturings element](#paging-control)  
+-   [hardwareproviders](#providers)  
 -   [besturings element zoeken](#search-control)  
 -   [registratie](#sign-up)  
 -   [abonneren: knop](#subscribe-button)  
@@ -58,7 +58,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
   
 ### <a name="parameters"></a>Parameters  
   
-|Parameter|Description|  
+|Parameter|Beschrijving|  
 |---------------|-----------------|  
 |appId|De id van de toepassing.|  
   
@@ -68,7 +68,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
 -   [Toepassingen](api-management-user-profile-templates.md#Applications)  
   
 ##  <a name="basic-signin"></a>basis-aanmelden  
- Het `basic-signin` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers aanmelding op de aanmeldings pagina in de ontwikkelaars Portal.  
+ Het `basic-signin` besturings element biedt een besturings element voor het verzamelen van informatie over gebruikers aanmelding op de aanmeldings pagina in de ontwikkelaars Portal.  
   
  ![basis&#45;besturings element voor aanmelden](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM Basic-besturings element voor aanmelden")  
   
@@ -87,7 +87,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
 -   [Aanmelden](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a>paginering-besturings element  
- De `paging-control` pagina biedt paginerings functionaliteit op pagina's voor de ontwikkelaars portal die een lijst met items weer geven.  
+ De `paging-control` biedt paginerings functionaliteit op pagina's van de ontwikkelaars portal die een lijst met items weer geven.  
   
  ![besturings element voor paginering](./media/api-management-page-controls/APIM-paging-control.png "Besturings element APIM")  
   
@@ -150,7 +150,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
 -   [Product lijst](api-management-product-templates.md#ProductList)  
   
 ##  <a name="sign-up"></a>registratie  
- Het `sign-up` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers profielen op de registratie pagina in de ontwikkelaars Portal.  
+ Het `sign-up` besturings element biedt een besturings element voor het verzamelen van informatie over gebruikers profielen op de registratie pagina in de ontwikkelaars Portal.  
   
  ![registratie&#45;beheer](./media/api-management-page-controls/APIM-sign-up-control.png "APIM-registratie beheer")  
   
@@ -188,7 +188,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
 -   [Voortplant](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a>abonnement-annuleren  
- Het `subscription-cancel` besturings element bevat een besturings element voor het annuleren van een abonnement op een product op de pagina gebruikers profiel in de ontwikkelaars Portal.  
+ Het `subscription-cancel` besturings element voorziet in een besturings element voor het annuleren van een abonnement op een product op de pagina gebruikers profiel in de ontwikkelaars Portal.  
   
  ![besturings&#45;element voor annuleren van abonnement](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-abonnement: beheer annuleren")  
   
@@ -202,7 +202,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
   
 ### <a name="parameters"></a>Parameters  
   
-|Parameter|Description|  
+|Parameter|Beschrijving|  
 |---------------|-----------------|  
 |subscriptionId|De id van het abonnement dat moet worden geannuleerd.|  
 |cancelUrl|Het abonnement annuleert de URL.|  

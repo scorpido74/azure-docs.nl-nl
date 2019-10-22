@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550858"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690829"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -36,7 +36,7 @@ U kunt functie-apps op verschillende manieren hosten:
 |[Binnenkomende IP-beperkingen & toegang tot de persoonlijke site](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Integratie van virtueel netwerk](#virtual-network-integration)|❌No|✅Yes (regionaal)|✅Yes (regionaal en gateway)|✅Yes|
 |[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[Hybride verbindingen](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Hybride verbindingen](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ Controleer [deze lijst op alle niet-http-triggers](./functions-triggers-bindings
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 
-[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure relay die u kunt gebruiken om toegang te krijgen tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. U kunt deze niet gebruiken voor toegang tot uw toepassing. Hybride verbindingen is beschikbaar voor functies die in een [app service plan](functions-scale.md#app-service-plan) en een [app service Environment](../app-service/environment/intro.md)worden uitgevoerd.
+[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure relay die u kunt gebruiken om toegang te krijgen tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. U kunt deze niet gebruiken voor toegang tot uw toepassing. Hybride verbindingen is beschikbaar voor functies die alleen in het verbruiks abonnement worden uitgevoerd.
 
 De hybride verbinding wordt gebruikt in Azure Functions en is afgestemd op één combi natie van TCP-host en poort. Dit betekent dat het eind punt van de hybride verbinding zich kan bevindt op elk besturings systeem en elke wille keurige toepassing, op voor waarde dat u toegang hebt tot een TCP-Luister poort. Met de functie Hybride verbindingen weet u niet of u weet wat het toepassings protocol is of wat u benadert. Het biedt gewoon toegang tot het netwerk.
 
-Raadpleeg voor meer informatie de [documentatie over app service voor hybride verbindingen](../app-service/app-service-hybrid-connections.md), waarmee functies in een app service plan worden ondersteund.
+Raadpleeg voor meer informatie de [documentatie over app service voor hybride verbindingen](../app-service/app-service-hybrid-connections.md), die ondersteuning biedt voor functies via dezelfde configuratie stappen.
 
 ## <a name="outbound-ip-restrictions"></a>Uitgaande IP-beperkingen
 

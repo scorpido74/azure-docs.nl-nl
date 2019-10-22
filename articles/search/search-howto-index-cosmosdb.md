@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69656698"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Cosmos DB indexeren met een Azure Search Indexeer functie
@@ -50,13 +50,13 @@ U wordt aangeraden hetzelfde Azure-abonnement te gebruiken voor zowel Azure Sear
 
 U moet beschikken over een Cosmos-account, een Azure Cosmos-data base die is toegewezen aan de SQL API-of MongoDB-API en een container van JSON-documenten. 
 
-Zorg ervoor dat uw Cosmos DB-data base gegevens bevat. Met de [wizard gegevens importeren](search-import-data-portal.md) worden meta gegevens gelezen en gegevens bemonstering uitgevoerd om een index schema af te leiden, maar worden ook gegevens uit Cosmos DB geladen. Als de gegevens ontbreken, stopt de wizard met deze fout ' fout bij het detecteren van het index schema van de gegevens Bron: Kan geen prototype-index maken omdat de gegevens bron emptycollection geen gegevens heeft geretourneerd.
+Zorg ervoor dat uw Cosmos DB-data base gegevens bevat. Met de [wizard gegevens importeren](search-import-data-portal.md) worden meta gegevens gelezen en gegevens bemonstering uitgevoerd om een index schema af te leiden, maar worden ook gegevens uit Cosmos DB geladen. Als de gegevens ontbreken, wordt de wizard gestopt met deze fout ' fout bij het detecteren van het index schema van de gegevens Bron: kan geen prototype-index samen stellen omdat gegevens bron ' emptycollection ' geen gegevens heeft geretourneerd '.
 
 ### <a name="2---start-import-data-wizard"></a>2-wizard gegevens importeren starten
 
 U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk op de pagina Azure Search service, of door te klikken op **toevoegen Azure Search** in het gedeelte **instellingen** van het navigatie deel venster van uw opslag account.
 
-   De ![opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard gegevens importeren starten")
+   ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
 ### <a name="3---set-the-data-source"></a>3: de gegevens bron instellen
 
@@ -67,7 +67,7 @@ Op de **gegevens bron** pagina moet de bron **Cosmos DB**zijn, met de volgende s
 
 + **Naam** is de naam van het gegevens bron object. Nadat u deze hebt gemaakt, kunt u deze voor andere werk belastingen kiezen.
 
-+ **Cosmos DB account** moet de primaire of secundaire Connection String van Cosmos DB zijn, met een `AccountEndpoint` en een `AccountKey`. Het account bepaalt of gegevens worden geconverteerd als SQL-API of Mongo DB API
++ **Cosmos DB account** moet de primaire of secundaire connection string van Cosmos DB zijn, met een `AccountEndpoint` en een `AccountKey`. Het account bepaalt of gegevens worden geconverteerd als SQL-API of Mongo DB API
 
 + **Data Base** is een bestaande data base van het account. 
 
@@ -93,7 +93,7 @@ Vanaf deze pagina kunt u verdergaan met het aanpassen van de index.
 
 Op de pagina **index** ziet u een lijst met velden met een gegevens type en een reeks selectie vakjes voor het instellen van index kenmerken. Met de wizard kunt u een lijst met velden genereren op basis van meta gegevens en door de bron gegevens te bemonsteren. 
 
-U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en doorzoekbaar voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
+U kunt kenmerken bulksgewijs selecteren door te klikken op het selectie vakje boven aan een kenmerk kolom. Kies **ophalen** en **doorzoekbaar** voor elk veld dat moet worden geretourneerd naar een client-app en waarop de volledige Zoek verwerking van de tekst van toepassing is. U zult merken dat gehele getallen geen volledige tekst of fuzzy Doorzoek bare waarden zijn (getallen worden geëvalueerd Verbatim en zijn vaak nuttig in filters).
 
 Lees de beschrijving van [index kenmerken](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) en [taal analyse](https://docs.microsoft.com/rest/api/searchservice/language-support) functies voor meer informatie. 
 
@@ -124,12 +124,12 @@ Wanneer het indexeren is voltooid, kunt u [Search Explorer](search-explorer.md) 
 
 U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volgen van een werk stroom die uit drie delen is gemeen schappelijk voor alle Indexeer functies in Azure Search: Maak een gegevens bron, maak een index en maak een Indexeer functie. Gegevens extractie vanuit Cosmos-opslag vindt plaats wanneer u de aanvraag voor het maken van een index verzendt. Nadat deze aanvraag is voltooid, hebt u een query die kan worden geïndexeerd. 
 
-Als u MongoDb evalueert, moet u de rest `api-version=2019-05-06-Preview` gebruiken om de gegevens bron te maken.
+Als u MongoDB evalueert, moet u de REST `api-version=2019-05-06-Preview` gebruiken om de gegevens bron te maken.
 
 In uw Cosmos DB-account kunt u kiezen of u wilt dat de verzameling automatisch alle documenten indexeert. Standaard worden alle documenten automatisch geïndexeerd, maar u kunt automatisch indexeren uitschakelen. Wanneer het indexeren is uitgeschakeld, kunnen documenten alleen worden geopend via hun eigen koppelingen of door query's met behulp van de document-ID. Azure Search moet Cosmos DB automatische indexering zijn ingeschakeld in de verzameling die door Azure Search wordt geïndexeerd. 
 
 > [!WARNING]
-> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb`. Met ingang van API-versie **2019-05-06** worden de Azure Search-api's en- `cosmosdb` Portal alleen ondersteund als in dit artikel wordt geadviseerd. Dit betekent dat het gegevens bron type moet `cosmosdb` zijn als u verbinding wilt maken met een Cosmos DB eind punt.
+> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb`. Met ingang van API-versie **2019-05-06** worden de Azure Search-api's en-Portal alleen ondersteund door de `cosmosdb` syntaxis zoals in dit artikel wordt genoemd. Dit betekent dat het gegevens bron type moet `cosmosdb` als u verbinding wilt maken met een Cosmos DB-eind punt.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-invoer voor de aanvraag samen stellen
 
@@ -174,12 +174,12 @@ Als u een gegevens bron wilt maken, moet u een POST-aanvraag formuleren:
 
 De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de volgende velden moet bevatten:
 
-| Veld   | Description |
+| Veld   | Beschrijving |
 |---------|-------------|
-| **name** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
-|**type**| Vereist. Moet zijn `cosmosdb`. |
-|**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Search uw Azure Cosmos DB-Data Base niet indexeren.|
-| **container** | Bevat de volgende elementen: <br/>**name**: Vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: Optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat Azure Search kan indexeren.<br/>Query's worden niet ondersteund voor MongoDB-verzamelingen. |
+| **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
+|**type**| Vereist. Moet `cosmosdb` zijn. |
+|**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Search uw Azure Cosmos DB-Data Base niet indexeren.|
+| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat Azure Search kan indexeren.<br/>Query's worden niet ondersteund voor MongoDB-verzamelingen. |
 | **dataChangeDetectionPolicy** | Aanbevelingen. Zie de sectie [gewijzigde documenten indexeren](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Optioneel. Zie het gedeelte [verwijderde documenten indexeren](#DataDeletionDetectionPolicy) .|
 
@@ -187,7 +187,7 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 U kunt een SQL-query opgeven voor het samen voegen van geneste eigenschappen of matrices, project JSON-eigenschappen en filteren van de gegevens die moeten worden geïndexeerd. 
 
 > [!WARNING]
-> Aangepaste query's worden niet ondersteund voor **MongoDb** -verzamelingen `container.query` : para meter moet worden ingesteld op null of worden wegge laten. Als u een aangepaste query wilt gebruiken, laat het ons dan weten over de stem van de [gebruiker](https://feedback.azure.com/forums/263029-azure-search).
+> Aangepaste query's worden niet ondersteund voor **MongoDb** -verzamelingen: de para meter `container.query` moet zijn ingesteld op null of worden wegge laten. Als u een aangepaste query wilt gebruiken, laat het ons dan weten over de stem van de [gebruiker](https://feedback.azure.com/forums/263029-azure-search).
 
 Voorbeeld document:
 
@@ -248,20 +248,20 @@ Query voor het afvlakken van matrices:
 Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron-JSON-documenten of de uitvoer van uw aangepaste query projectie.
 
 > [!NOTE]
-> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB `_rid` eigenschap, waarmee Azure Search automatisch wordt hernoemd `rid` , omdat veld namen niet met een undescore-teken kunnen worden gestart. Azure Cosmos DB `_rid` -waarden bevatten ook tekens die ongeldig zijn in azure Search sleutels. Daarom zijn de `_rid` waarden base64-gecodeerd.
+> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB de `_rid` eigenschap, die Azure Search automatisch wordt gewijzigd in `rid` omdat veld namen niet met een undescore-teken kunnen worden gestart. Azure Cosmos DB `_rid` waarden bevatten ook tekens die ongeldig zijn in Azure Search sleutels. Daarom zijn de `_rid`-waarden base64-gecodeerd.
 > 
-> Voor MongoDb-verzamelingen wordt de naam van de `_id` eigenschap automatisch door Azure Search gewijzigd in. `doc_id`  
+> Voor MongoDB-verzamelingen wordt de naam van de eigenschap `_id` door Azure Search automatisch gewijzigd in `doc_id`.  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Toewijzing tussen JSON-gegevens typen en Azure Search gegevens typen
 | JSON-gegevens type | Compatibele doel veld typen voor index |
 | --- | --- |
-| Bool |EDM. Boolean, EDM. String |
-| Getallen die eruit zien als gehele getallen |Edm.Int32, Edm.Int64, Edm.String |
+| BOOL |EDM. Boolean, EDM. String |
+| Getallen die eruit zien als gehele getallen |EDM. Int32, EDM. Int64, EDM. String |
 | Getallen die eruitzien als zwevende punten |Edm.Double, Edm.String |
 | Tekenreeks |Edm.String |
 | Matrices van primitieve typen, bijvoorbeeld ["a", "b", "c"] |Collection(EDM.String) |
 | Teken reeksen die eruitzien als datums |Edm.DateTimeOffset, Edm.String |
-| Geojson-objecten, bijvoorbeeld {"type": ' Point ', ' coördinaten ': [Long, lat]} |Edm.GeographyPoint |
+| Geojson-objecten, bijvoorbeeld {"type": "punt", "coördinaten": [Long, lat]} |Edm.GeographyPoint |
 | Andere JSON-objecten |N/A |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4: de Indexeer functie configureren en uitvoeren
@@ -289,16 +289,16 @@ Zie [Indexeer functies plannen voor Azure Search](search-howto-schedule-indexers
 
 De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen beschik bare REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>Gewijzigde documenten indexeren
 
-Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het `High Water Mark` beleid alleen ondersteund dat wordt gebruikt door de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
+Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel is het enige ondersteunde beleid het `High Water Mark`-beleid met behulp van de eigenschap `_ts` (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -307,7 +307,7 @@ Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt ide
 
 Het gebruik van dit beleid wordt sterk aanbevolen om te zorgen voor een goede prestaties van de Indexeer functie. 
 
-Als u een aangepaste query gebruikt, zorg er dan voor dat `_ts` de eigenschap wordt geprojecteerd door de query.
+Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap `_ts` wordt geprojecteerd door de query.
 
 <a name="IncrementalProgress"></a>
 
@@ -315,9 +315,9 @@ Als u een aangepaste query gebruikt, zorg er dan voor dat `_ts` de eigenschap wo
 
 Incrementele voortgang tijdens het indexeren zorgt ervoor dat als de uitvoering van de Indexeer functie wordt onderbroken door tijdelijke fouten of limiet voor uitvoerings tijd, de Indexeer functie kan ophalen waar de volgende keer wordt uitgevoerd, in plaats van de volledige verzameling helemaal opnieuw te indexeren. Dit is vooral belang rijk bij het indexeren van grote verzamelingen. 
 
-Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de `_ts` resultaten door de query worden gesorteerd op basis van de kolom. Zo kunt u periodiek controleren of Azure Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
+Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de resultaten door de query worden gesorteerd op de `_ts` kolom. Zo kunt u periodiek controleren of Azure Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
 
-In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` -component bevat, kan Azure Search mogelijk niet afleiden dat de query wordt gesorteerd door de. `_ts` U kunt Azure Search dat de resultaten worden gesorteerd met behulp `assumeOrderByHighWaterMarkColumn` van de configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
+In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts`-component bevat, kan Azure Search mogelijk niet afleiden dat de query wordt gesorteerd door de `_ts`. U kunt Azure Search dat de resultaten worden gesorteerd met behulp van de `assumeOrderByHighWaterMarkColumn` configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
 
     {
      ... other indexer definition properties
@@ -329,7 +329,7 @@ In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` -c
 
 ## <a name="indexing-deleted-documents"></a>Verwijderde documenten indexeren
 
-Wanneer rijen uit de verzameling worden verwijderd, wilt u deze rijen meestal ook verwijderen uit de zoek index. Het doel van het detectie beleid voor het verwijderen van gegevens is het efficiënt identificeren van verwijderde gegevens items. Momenteel is het enige ondersteunde beleid het `Soft Delete` beleid (verwijderen is gemarkeerd met een vlag van een sorteer bewerking), dat als volgt wordt opgegeven:
+Wanneer rijen uit de verzameling worden verwijderd, wilt u deze rijen meestal ook verwijderen uit de zoek index. Het doel van het detectie beleid voor het verwijderen van gegevens is het efficiënt identificeren van verwijderde gegevens items. Op dit moment wordt het enige ondersteunde beleid het `Soft Delete` beleid (verwijderen is gemarkeerd met een vlag van een sorteer bewerking), dat als volgt wordt opgegeven:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -337,7 +337,7 @@ Wanneer rijen uit de verzameling worden verwijderd, wilt u deze rijen meestal oo
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap waarnaar `softDeleteColumnName` wordt verwezen, wordt geprojecteerd door de query.
+Als u een aangepaste query gebruikt, moet u ervoor zorgen dat de eigenschap waarnaar wordt verwezen door `softDeleteColumnName`, wordt geprojecteerd door de query.
 
 In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig verwijderings beleid:
 

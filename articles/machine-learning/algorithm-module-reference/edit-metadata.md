@@ -1,5 +1,5 @@
 ---
-title: 'Meta gegevens bewerken: Modulereferentie'
+title: 'Meta gegevens bewerken: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module meta gegevens bewerken in de Azure Machine Learning-service voor het wijzigen van meta gegevens die zijn gekoppeld aan kolommen in een gegevensset.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128873"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693818"
 ---
 # <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
@@ -34,13 +34,13 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
 + De naam van kolommen wijzigen.
   
- Gebruik de meta gegevens bewerken op elk gewenst moment om de definitie van een kolom te wijzigen, meestal om te voldoen aan de vereisten voor een downstream-module. Sommige modules werken bijvoorbeeld alleen met specifieke gegevens typen of vereisen markeringen voor de kolommen, zoals `IsFeature` of. `IsCategorical`  
+ Gebruik de meta gegevens bewerken op elk gewenst moment om de definitie van een kolom te wijzigen, meestal om te voldoen aan de vereisten voor een downstream-module. Sommige modules werken bijvoorbeeld alleen met specifieke gegevens typen of vereisen markeringen voor de kolommen, zoals `IsFeature` of `IsCategorical`.  
   
  Nadat u de vereiste bewerking hebt uitgevoerd, kunt u de meta gegevens herstellen naar de oorspronkelijke staat.
   
 ## <a name="configure-edit-metadata"></a>Meta gegevens bewerken configureren
   
-1. In Azure Machine Learning voegt u de module meta gegevens bewerken toe aan uw experiment en verbindt u de gegevensset die u wilt bijwerken. U kunt de gegevensset onder **gegevens transformatie** vinden in de categorie **bewerken** .
+1. Voeg in Azure Machine Learning de module meta gegevens bewerken toe aan uw pijp lijn en verbind de gegevensset die u wilt bijwerken. U kunt de gegevensset onder **gegevens transformatie** vinden in de categorie **bewerken** .
   
 1. Selecteer **de kolom kiezer starten** en kies de kolom of set kolommen waarmee u wilt werken. U kunt kolommen afzonderlijk op naam of index kiezen of u kunt een groep kolommen op type kiezen.  
   
@@ -63,9 +63,9 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
 1. Gebruik de optie **velden** als u de manier wilt wijzigen waarop Azure machine learning de gegevens in een model gebruikt.
 
-    + **Functie**: Gebruik deze optie om een kolom te markeren als een functie in modules die alleen op functie Kolommen werken. Standaard worden alle kolommen als onderdelen behandeld.  
+    + **Functie**: gebruik deze optie om een kolom te markeren als een functie in modules die alleen op functie Kolommen werken. Standaard worden alle kolommen als onderdelen behandeld.  
   
-    + **Label**: Gebruik deze optie om het label te markeren, dat ook wel het voorspel bare kenmerk of de doel variabele wordt genoemd. Voor veel modules moet exact één label kolom aanwezig zijn in de gegevensset.
+    + **Label**: gebruik deze optie om het label te markeren, dat ook wel het voorspel bare kenmerk of de doel variabele wordt genoemd. Voor veel modules moet exact één label kolom aanwezig zijn in de gegevensset.
 
         In veel gevallen kan Azure Machine Learning afleiden dat een kolom een klassen label bevat. Door deze meta gegevens in te stellen, kunt u ervoor zorgen dat de kolom correct wordt geïdentificeerd. Als u deze optie instelt, worden er geen gegevens waarden gewijzigd. Het wijzigt alleen de manier waarop sommige algoritmen voor machine learning de gegevens verwerken.
   
@@ -76,13 +76,13 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
 1. Gebruik de volgende opties om eerdere selecties te wissen en meta gegevens te herstellen naar de standaard waarden.  
   
-    + **Functie wissen**: Gebruik deze optie om de functie vlag te verwijderen.  
+    + **Functie wissen**: gebruik deze optie om de functie vlag te verwijderen.  
   
          Alle kolommen worden in eerste instantie behandeld als functies. Voor modules die wiskundige bewerkingen uitvoeren, moet u mogelijk deze optie gebruiken om te voor komen dat numerieke kolommen als variabelen worden beschouwd.
   
-    + **Label wissen**: Gebruik deze optie om de meta gegevens van het **Label** te verwijderen uit de opgegeven kolom.  
+    + **Label wissen**: gebruik deze optie om de meta gegevens van het **Label** te verwijderen uit de opgegeven kolom.  
   
-    + **Score wissen**: Gebruik deze optie om de meta gegevens van de **Score** te verwijderen uit de opgegeven kolom.  
+    + **Score wissen**: gebruik deze optie om de meta gegevens van de **Score** te verwijderen uit de opgegeven kolom.  
   
          U kunt een kolom momenteel niet expliciet markeren als een score in Azure Machine Learning. Een aantal bewerkingen resulteert echter in een kolom die intern als score wordt gemarkeerd. Een aangepaste R-module kan ook Score waarden uitvoeren.
 
@@ -94,7 +94,7 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
     + De naam van alle geselecteerde kolommen moet worden gewijzigd. U kunt geen kolommen weglaten of overs Laan.  
   
-1. Voer het experiment uit.  
+1. Voer de pijplijn uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

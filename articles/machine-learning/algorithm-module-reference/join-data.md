@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens samen voegen: Module verwijzing'
+title: 'Koppelings gegevens: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module koppeling samen voegen in Azure Machine Learning-service voor het samen voegen van gegevens sets.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128743"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693096"
 ---
 # <a name="join-data"></a>Gegevens samenvoegen
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u de module invoeg **gegevens** gebruikt in 
 
 Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden gerelateerd aan een sleutel kolom. Samengestelde sleutels met behulp van meerdere kolommen worden ook ondersteund. 
 
-1. Voeg de gegevens sets toe die u wilt combi neren en sleep de module **samen voegen met gegevens** naar uw experiment. 
+1. Voeg de gegevens sets toe die u wilt combi neren en sleep de module **samen voegen met gegevens** naar de pijp lijn. 
 
     U kunt de module in de categorie **gegevens transformatie** vinden onder **bewerken**.
 
@@ -47,24 +47,24 @@ Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden ger
    
 1. Gebruik de vervolg keuzelijst **type samen voegen** om op te geven hoe de gegevens sets moeten worden gecombineerd.  
   
-    * **Inner join**: Een *inner join* is de meest voorkomende bewerking voor samen voegen. Het retourneert de gecombineerde rijen alleen wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Inner join**: een *inner join* is de meest voorkomende join-bewerking. Het retourneert de gecombineerde rijen alleen wanneer de waarden van de sleutel kolommen overeenkomen.  
   
-    * **Left outer join**: Een *left outer join* retourneert samengevoegde rijen voor alle rijen uit de linkertabel. Wanneer een rij in de linkertabel geen overeenkomende rijen in de rechter tabel heeft, bevat de geretourneerde rij ontbrekende waarden voor alle kolommen uit de rechter tabel. U kunt ook een vervangings waarde voor ontbrekende waarden opgeven.  
+    * **Left outer join**: een *left outer join* retourneert samengevoegde rijen voor alle rijen uit de linkertabel. Wanneer een rij in de linkertabel geen overeenkomende rijen in de rechter tabel heeft, bevat de geretourneerde rij ontbrekende waarden voor alle kolommen uit de rechter tabel. U kunt ook een vervangings waarde voor ontbrekende waarden opgeven.  
   
-    * **Volledige outer join**: Een *full outer samen voegen* retourneert alle rijen uit de linkertabel (**Tabel1**) en uit de rechter tabel (**tabel2**).  
+    * **Volledige outer join**: een *full outer join* retourneert alle rijen uit de linkertabel (**Tabel1**) en uit de rechter tabel (**tabel2**).  
   
          Voor elk van de rijen in een tabel die geen overeenkomende rijen heeft, bevat het resultaat een rij met ontbrekende waarden.  
   
-    * **Linker semi-koppeling**: Een *Left-koppeling* retourneert alleen de waarden uit de linkertabel wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Linker semi-koppeling**: een *Left semi-koppeling* retourneert alleen de waarden uit de linkertabel wanneer de waarden van de sleutel kolommen overeenkomen.  
 
 1. Voor de optie **behoud de juiste sleutel kolommen in een gekoppelde tabel**:
 
     * Selecteer deze optie om de sleutels uit beide invoer tabellen weer te geven.
     * Schakel deze optie uit als u de sleutel kolommen alleen wilt retour neren van de invoer links.
 
-1. Voer het experiment uit of selecteer de module samenvoegings gegevens en de geselecteerde **uitvoering** om de koppeling uit te voeren.
+1. Voer de pijp lijn uit of selecteer de module samenvoegings gegevens en de geselecteerde **uitvoering** om de koppeling uit te voeren.
 
-1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de**resultaten gegevensset** > voor gegevens > samenvoeging.
+1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **samenvoeg gegevens**  > **resultaten gegevensset**  > **visualiseren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

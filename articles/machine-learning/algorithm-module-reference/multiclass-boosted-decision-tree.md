@@ -1,5 +1,5 @@
 ---
-title: 'Beslissings structuur met een versterkte klasse: Module verwijzing'
+title: 'Beslissings structuur met een versterkte klasse: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over hoe u de module voor de beslissings structuur met de klasse met meer klassen in Azure Machine Learning service kunt gebruiken om een classificatie te maken met behulp van gelabelde gegevens.
 services: machine-learning
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a9cf134a3db5b9bc62cd0f9054aefa6092954d9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129911"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692825"
 ---
-# <a name="multiclass-boosted-decision-tree"></a>Beslissings structuur met een geboostte klasse met klassen
+# <a name="multiclass-boosted-decision-tree"></a>Versterkte beslissingsstructuur met meerdere klassen
 
 In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
@@ -31,11 +31,11 @@ Deze module maakt een niet-getraind classificatie model. Omdat classificatie een
 
 U kunt dit type model trainen door het Train- [model](././train-model.md)te gebruiken. 
 
-1.  Voeg de module voor de beslissings structuur met een **hogere klasse** toe aan uw experiment.
+1.  Voeg de module voor de **beslissings structuur met een hogere klasse** toe aan uw pijp lijn.
 
 1.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
-    + **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    + **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
 
 
     *  Het **maximum aantal Leaves per structuur** beperkt het maximum aantal Terminal knooppunten (bladeren) dat in een wille keurige structuur kan worden gemaakt.

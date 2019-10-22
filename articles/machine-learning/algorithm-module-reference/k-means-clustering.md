@@ -1,5 +1,5 @@
 ---
-title: 'K-betekent clusteren: Module verwijzing'
+title: 'K-betekent clustering: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module K-betekent clustering in de Azure Machine Learning-service om cluster modellen te trainen.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128705"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693115"
 ---
-# <a name="module-k-means-clustering"></a>Programma K-means-clustering
+# <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
 In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Studio kunt gebruiken om een niet-getraind k-means clustering model te maken. 
  
-K: is een van de eenvoudigste en meest bekende algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
+K: is een van de eenvoudigste en *meest bekende* algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 
 * [Abnormale gegevens detecteren](https://msdn.microsoft.com/magazine/jj891054.aspx).
 * Clustering van tekst documenten.
@@ -28,7 +28,7 @@ K: is een van de eenvoudigste en meest bekende algoritmen voor leren. U kunt het
 
 U kunt als volgt een cluster model maken:
 
-* Voeg deze module toe aan uw experiment.
+* Voeg deze module toe aan de pijp lijn.
 * Verbind een gegevensset.
 * Stel para meters in, zoals het aantal clusters dat u verwacht, de afstands metriek die moet worden gebruikt voor het maken van de clusters, enzovoort. 
   
@@ -54,11 +54,11 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
 
 ## <a name="configure-the-k-means-clustering-module"></a>De K-betekent-cluster module configureren
   
-1.  Voeg de **cluster module K-betekent** toe aan uw experiment.  
+1.  Voeg de **cluster module K-betekent** aan uw pijp lijn toe.  
   
 2.  Selecteer de optie **trainer maken** om op te geven hoe het model moet worden getraind.  
   
-    -   **Eén para meter**: Als u weet welke para meters u wilt gebruiken in het cluster model, kunt u een specifieke set waarden als argumenten opgeven.  
+    -   **Eén para meter**: als u de exacte para meters die u wilt gebruiken in het cluster model weet, kunt u een specifieke set waarden opgeven als argumenten.  
   
 3.  Voor het **aantal Centroids**typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
   
@@ -66,15 +66,15 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
 4.  De **initialisatie van** eigenschappen wordt gebruikt om het algoritme op te geven dat wordt gebruikt voor het definiëren van de eerste cluster configuratie.  
   
-    -   **Eerste N**: Een initieel aantal gegevens punten wordt gekozen uit de gegevensset en wordt gebruikt als de eerste methode. 
+    -   **Eerste N**: het eerste aantal gegevens punten wordt gekozen uit de gegevensset en gebruikt als eerste manier. 
     
          Deze methode wordt ook wel de *smeden-methode*genoemd.  
   
-    -   **Wille keurig**: Met het algoritme wordt wille keurig een gegevens punt in een cluster geplaatst en wordt het eerste gemiddelde berekend als de massa middelpunt van de wille keurig toegewezen punten van het cluster. 
+    -   **Wille keurig**: het algoritme plaatst een gegevens punt in een cluster wille keurig en berekent het oorspronkelijke gemiddelde als de massa middelpunt van de wille keurig toegewezen punten van het cluster. 
 
          Deze methode wordt ook wel de *wille keurige partitie* methode genoemd.  
   
-    -   **K-betekent + +** : Dit is de standaard methode voor het initialiseren van clusters.  
+    -   **K-betekent + +** : dit is de standaard methode voor het initialiseren van clusters.  
   
          De **K-houdt + +-** algoritme is voorgesteld in 2007 door David Arthur en Sergei Vassilvitskii om te voor komen dat er geclusterd wordt door het standaard-K-algoritme. **K-betekent + +** verbetert de standaard K-betekent dat u een andere methode gebruikt voor het kiezen van de eerste cluster centrums.  
   
@@ -83,7 +83,7 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
 6.  Kies voor **metriek**de functie die u wilt gebruiken voor het meten van de afstand tussen cluster vectoren of tussen nieuwe gegevens punten en de wille keurig gekozen massa middelpunt. Azure Machine Learning ondersteunt de volgende waarden voor de cluster afstand:  
   
-    -   **Euclidean**: De Euclidean-afstand wordt vaak gebruikt als een meting van de sprei ding van het cluster voor k-means clustering. Deze metrische gegevens hebben de voor keur omdat hiermee de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
+    -   **Euclidean**: de Euclidean-afstand wordt vaak gebruikt als een meting van een cluster spreiding voor k-means clustering. Deze metrische gegevens hebben de voor keur omdat hiermee de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
   
 7.  Voor **herhalingen**typt u het aantal keren dat het algoritme moet worden herhaald om de trainings gegevens te herhalen voordat de selectie van centroids wordt voltooid.  
   
@@ -93,15 +93,15 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
      Omdat k-means clustering een onbewaakte machine learning methode is, zijn labels optioneel. Als uw gegevensset echter al een kolom label heeft, kunt u deze waarden gebruiken om de selectie van de clusters te begeleiden, of u kunt opgeven dat de waarden moeten worden genegeerd.  
   
-    -   **Kolom Label negeren**: De waarden in de kolom Label worden genegeerd en worden niet gebruikt bij het maken van het model.
+    -   **Kolom Label negeren**: de waarden in de kolom Label worden genegeerd en worden niet gebruikt bij het maken van het model.
   
-    -   **Ontbrekende waarden vullen**: De label kolom waarden worden gebruikt als functies om de clusters te bouwen. Als er rijen ontbreken in een label, wordt de waarde toegerekend met behulp van andere functies.  
+    -   **Ontbrekende waarden vullen**: de waarden van de label kolom worden gebruikt als functies om de clusters te bouwen. Als er rijen ontbreken in een label, wordt de waarde toegerekend met behulp van andere functies.  
   
-    -   **Overschrijven van het dichtstbijzijnde naar het midden**: De label kolom waarden worden vervangen door voorspelde label waarden met behulp van het label van het punt dat zich het dichtst bij de huidige massa middelpunt bevindt.  
+    -   **Overschrijven van dichtstbijzijnde naar Center**: de waarden van de label kolom worden vervangen door voorspelde label waarden met behulp van het label van het punt dat zich het dichtst bij de huidige massa middelpunt bevindt.  
 
 8.  Selecteer de optie **kenmerken normaliseren** als u functies wilt normaliseren vóór de training.
   
-     Als u normalisatie toepast vóór de training, worden de gegevens punten genormaliseerd naar `[0,1]` MinMaxNormalizer.
+     Als u normalisatie toepast vóór de training, worden de gegevens punten genormaliseerd om te `[0,1]` door MinMaxNormalizer.
 
 10. Train het model.  
   
@@ -119,7 +119,7 @@ Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebru
 
 2. Selecteer **getraind model**en selecteer vervolgens **Opslaan als getraind model**.
 
-Het opgeslagen model vertegenwoordigt de trainings gegevens op het moment dat u het model hebt opgeslagen. Als u later de trainings gegevens die in het experiment worden gebruikt, bijwerkt, wordt het opgeslagen model niet bijgewerkt. 
+Het opgeslagen model vertegenwoordigt de trainings gegevens op het moment dat u het model hebt opgeslagen. Als u later de trainings gegevens die in de pijp lijn worden gebruikt, bijwerkt, wordt het opgeslagen model niet bijgewerkt. 
 
 #### <a name="see-the-clustering-result-dataset"></a>De gegevensset van het cluster resultaat bekijken 
 

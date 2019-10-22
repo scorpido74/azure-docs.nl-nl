@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122684"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Uw eigen sleutel voor Apache Kafka in azure HDInsight nemen
@@ -55,7 +55,7 @@ Als u een BYOK Kafka-cluster wilt maken, gaat u als volgt te werk:
 
         a. Als u een nieuwe sleutel wilt maken, selecteert u **genereren/importeren** in het menu **sleutels** onder **instellingen**.
 
-        ![Een nieuwe sleutel in azure Key Vault genereren](./media/apache-kafka-byok/kafka-create-new-key.png "Een nieuwe sleutel in azure Key Vault genereren")
+        ![Een nieuwe sleutel in Azure Key Vault genereren](./media/apache-kafka-byok/kafka-create-new-key.png "Een nieuwe sleutel in Azure Key Vault genereren")
 
         b. Stel **Opties** in voor het **genereren** en geven van de sleutel een naam.
 

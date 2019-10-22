@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647373"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Een Basic-index maken in Azure Search
 
 In Azure Search is een *index* een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en zoek opdrachten in de volledige tekst van een Azure Search-service. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
 
-Wanneer u een index toevoegt of uploadt, maakt Azure Search fysieke structuren op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's verzendt naar Azure Search, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt indexering of gegevens opname genoemd.
+Wanneer u een index toevoegt of uploadt, maakt Azure Search fysieke structuren op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's verzendt naar Azure Search, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt *indexering* of gegevens opname genoemd.
 
 U kunt een index maken in de portal, [rest API](search-create-index-rest-api.md)of [.NET SDK](search-create-index-dotnet.md).
 
@@ -54,7 +54,7 @@ Code, in plaats van een portal-benadering, wordt aanbevolen voor iteratief ontwe
 
 Schematisch, een Azure Search index bestaat uit de volgende elementen. 
 
-De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoring-profiles), [analyse](#analyzers) functies met onderdeel onderdelen ter ondersteuning van aanpassings-, [CORS](#cors) -en versleutelings [sleutel](#encryption-key) opties.
+De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoring-profiles), [analyse](#analyzers) functies met onderdeel onderdelen ter ondersteuning van aanpassings-, [CORS](#cors) -en [versleutelings sleutel](#encryption-key) opties.
 
 ```json
 {
@@ -146,7 +146,7 @@ De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van
 Bij het definiëren van het schema moet u de naam, het type en de kenmerken van elk veld in de index opgeven. Het veldtype classificeert de gegevens die in dat veld worden opgeslagen. Kenmerken worden ingesteld op afzonderlijke velden om op te geven hoe het veld wordt gebruikt. De volgende tabellen bevatten de typen en kenmerken die u kunt opgeven.
 
 ### <a name="data-types"></a>Gegevenstypen
-| type | Description |
+| Type | Beschrijving |
 | --- | --- |
 | *Edm.String* |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
 | *Collection(Edm.String)* |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
@@ -154,7 +154,7 @@ Bij het definiëren van het schema moet u de naam, het type en de kenmerken van 
 | *Edm.Int32* |32-bits waarden van een heel getal. |
 | *Edm.Int64* |64-bits waarden van een heel getal. |
 | *Edm.Double* |Numerieke gegevens met dubbele precisie. |
-| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4- `yyyy-MM-ddTHH:mm:ss.fffZ` indeling `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`(bijvoorbeeld of). |
+| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Een punt voor een geografische locatie op de wereld. |
 
 Gedetailleerdere informatie over ondersteunde Azure-Search[-gegevenstypen vindt u hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
@@ -163,11 +163,11 @@ Gedetailleerdere informatie over ondersteunde Azure-Search[-gegevenstypen vindt 
 
 Er moet precies één veld in de index zijn opgegeven als een **sleutel** veld dat elk document uniek identificeert.
 
-Andere kenmerken bepalen hoe een veld in een toepassing wordt gebruikt. Het kenmerk searchable wordt bijvoorbeeld toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. 
+Andere kenmerken bepalen hoe een veld in een toepassing wordt gebruikt. Het kenmerk **searchable** wordt bijvoorbeeld toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. 
 
-De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld **Doorzoek** bare en opgehaalde waarden zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
+De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld **Doorzoek** bare en **opgehaalde** waarden zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
 
-| Kenmerk | Description |
+| Kenmerk | Beschrijving |
 | --- | --- |
 | `key` |Een tekenreeks met de unieke id van elk document. Deze reeks wordt gebruikt om op te zoeken. Elke index moet een sleutel hebben. Slechts één veld kan de sleutel zijn en het type moet zijn ingesteld op Edm.String. |
 | `retrievable` |Hiermee geeft u op of een veld in een zoekresultaat kan worden geretourneerd. |
@@ -181,7 +181,7 @@ De Api's die u gebruikt om een index te maken, hebben verschillende standaard ge
 
 De kenmerken die u selecteert, hebben invloed op de opslag. In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken.
 
-De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md) gegevens bron van onroerend goed, die u in de portal kunt indexeren en doorzoeken. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index heeft bijvoorbeeld het kenmerk dat kan worden doorzocht en niets anders, het ophalen **van** *realestate-* index heeft het kenmerk retrievable selected en niets anders, enzovoort.
+De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md) gegevens bron van onroerend goed, die u in de portal kunt indexeren en doorzoeken. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index heeft bijvoorbeeld het kenmerk dat kan worden **doorzocht** en niets anders, het ophalen van *realestate-* index heeft het kenmerk **retrievable** selected en niets anders, enzovoort.
 
 ![Index grootte op basis van kenmerk selectie](./media/search-what-is-an-index/realestate-index-size.png "Index grootte op basis van kenmerk selectie")
 
@@ -197,7 +197,7 @@ Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke veld
 
 Velden die zijn toegevoegd aan een suggestie, worden gebruikt voor het bouwen van type-ahead zoek termen. Alle zoek termen worden tijdens het indexeren gemaakt en afzonderlijk opgeslagen. Zie Voorst [Ellen toevoegen](index-add-suggesters.md)voor meer informatie over het maken van een boom structuur.
 
-## <a name="scoring-profiles"></a>Scoringprofielen
+## <a name="scoring-profiles"></a>Scoreprofielen
 
 Een [Score profiel](index-add-scoring-profiles.md) is een sectie van het schema waarmee aangepaste Score gedragingen worden gedefinieerd waarmee u kunt beïnvloeden welke items hoger worden weer gegeven in de zoek resultaten. Score profielen bestaan uit veld gewichten en-functies. Als u deze wilt gebruiken, geeft u een profiel op naam op voor de query teken reeks.
 
@@ -213,15 +213,15 @@ Java script aan de client zijde kan standaard geen Api's aanroepen omdat de brow
 
 De volgende opties kunnen worden ingesteld voor CORS:
 
-+ **allowedOrigins** (vereist): Dit is een lijst met oorsprongen waaraan toegang tot uw index wordt verleend. Dit betekent dat elke Java script-code die door deze oorsprongen wordt bediend, een query kan uitvoeren op uw index (ervan uitgaande dat deze de juiste API-sleutel bevat). Elke oorsprong is doorgaans van het formulier `protocol://<fully-qualified-domain-name>:<port>` Hoewel `<port>` deze vaak wordt wegge laten. Zie [Cross-Origin Resource Sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
++ **allowedOrigins** (vereist): dit is een lijst met oorsprongen waaraan toegang tot uw index wordt verleend. Dit betekent dat elke Java script-code die door deze oorsprongen wordt bediend, een query kan uitvoeren op uw index (ervan uitgaande dat deze de juiste API-sleutel bevat). Elke oorsprong is doorgaans van het formulier `protocol://<fully-qualified-domain-name>:<port>` hoewel `<port>` vaak wordt wegge laten. Zie [Cross-Origin Resource Sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
 
-  Als u toegang tot alle oorsprongen wilt toestaan, neemt `*` u op als één item in de **allowedOrigins** -matrix. *Dit wordt niet aanbevolen voor productie Zoek Services* , maar het is vaak handig voor het ontwikkelen en opsporen van fouten.
+  Als u toegang tot alle oorsprong wilt toestaan, neemt u `*` op als één item in de **allowedOrigins** -matrix. *Dit wordt niet aanbevolen voor productie Zoek Services* , maar het is vaak handig voor het ontwikkelen en opsporen van fouten.
 
-+ **maxAgeInSeconds** (optioneel): Browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
++ **maxAgeInSeconds** (optioneel): browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS-Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
 
 ## <a name="encryption-key"></a>Versleutelings sleutel
 
-Hoewel alle Azure Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie versleutelings [sleutels beheren in azure Search](search-security-manage-encryption-keys.md)voor meer informatie.
+Hoewel alle Azure Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in azure Search](search-security-manage-encryption-keys.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

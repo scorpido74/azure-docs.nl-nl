@@ -11,10 +11,10 @@ ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70143147"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continue integratie en implementatie voor Azure SQL Data Warehouse
@@ -36,7 +36,7 @@ In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project 
 
 1. Navigeer naar Azure-pijp lijnen en maak een nieuwe build-pijp lijn
 
-      ![Nieuwe pijp lijn](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nieuwe pijp lijn")
+      ![Nieuwe pijp lijn](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nieuwe pijplijn")
 
 2. Selecteer uw bron code opslagplaats (Azure opslag plaatsen Git) en selecteer de sjabloon .NET desktop-app.
 

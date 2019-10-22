@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: d163c88469ec767c8e0d18f5978ecb61f7997c8b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ea7add9277dde79d0dd2bf960d287f3aba0c3df9
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490300"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375394"
 ---
 Controleer het type overeenkomst om te bepalen of u toegang hebt tot een factureringsaccount voor een Microsoft-klantovereenkomst.
  
-1. Meld u aan bij de [Azure-portal]( http://portal.azure.com).
+1. Meld u aan bij [Azure Portal]( http://portal.azure.com).
  
 2. Zoek naar **kostenbeheer en facturering**.
  
@@ -23,7 +23,7 @@ Controleer het type overeenkomst om te bepalen of u toegang hebt tot een facture
  
     ![Schermopname van de Microsoft-klantovereenkomst op de pagina Eigenschappen](./media/billing-check-mca/billing-mca-property.png)
  
-4. Als u toegang hebt tot meer dan één factureringsbereik, controleert u het type in de kolom voor het factureringsaccount. U hebt toegang tot een factureringsaccount voor een Microsoft-klantovereenkomst als het type factureringsaccount voor een of meer van de bereiken **Microsoft-klantovereenkomst** is.
+4. Als u toegang hebt tot meerdere factureringsbereiken, controleert u het type in de kolom voor de factureringsrekening. U hebt toegang tot een factureringsaccount voor een Microsoft-klantovereenkomst als het type factureringsaccount voor een of meer van de bereiken **Microsoft-klantovereenkomst** is.
  
     ![Schermopname met Microsoft-klantovereenkomst op de pagina met factureringsaccounts](./media/billing-check-mca/billing-mca-in-the-list.png)
  

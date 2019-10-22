@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936908"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>De wizard gegevens importeren voor Azure Search
@@ -62,7 +62,7 @@ U kunt alleen importeren uit één tabel, database weergave of gelijkwaardige ge
 
 U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert, en deze moet inhoud bevatten. Voor duidelijke redenen is het niet logisch om de wizard **gegevens importeren** uit te voeren op een lege gegevens bron.
 
-|  Selectie | Description |
+|  Selectie | Beschrijving |
 | ---------- | ----------- |
 | **Bestaande gegevensbron** |Als u al Indexeer functies hebt gedefinieerd in uw zoek service, hebt u mogelijk een bestaande definitie van een gegevens bron die u opnieuw kunt gebruiken. In Azure Search worden gegevens bron objecten alleen gebruikt door Indexeer functies. U kunt een gegevens bron object maken via een programma of via de wizard **gegevens importeren** en ze indien nodig opnieuw gebruiken.|
 | **Voorbeelden**| Azure Search biedt twee ingebouwde voorbeeld gegevens bronnen die worden gebruikt in zelf studies en Snelstartgids: een onroerend goed SQL database en een Hotels-data base die wordt gehost op Cosmos DB. Zie voor een door loop op basis van het voor beeld van hotels het artikel [een index maken in de snelstartgids Azure Portal](search-get-started-portal.md) . |
@@ -76,7 +76,7 @@ U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert,
 
 Achter de schermen worden de volgende objecten gemaakt, geconfigureerd en aangeroepen door de wizard. Nadat de wizard is uitgevoerd, kunt u de uitvoer ervan vinden in de portal pagina's. De overzichts pagina van uw service bevat lijsten met indexen, Indexeer functies, gegevens bronnen en vaardig heden. Index definities kunnen worden weer gegeven in volledige JSON in de portal. Voor andere definities kunt u de [rest API](https://docs.microsoft.com/rest/api/searchservice/) gebruiken om specifieke objecten op te halen.
 
-| Object | Description | 
+| Object | Beschrijving | 
 |--------|-------------|
 | [Gegevensbron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Persistente verbindings gegevens naar bron gegevens, met inbegrip van referenties. Een gegevens bron object wordt uitsluitend gebruikt met Indexeer functies. | 
 | [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Fysieke gegevens structuur die wordt gebruikt voor zoeken in volledige tekst en andere query's. | 
@@ -92,7 +92,7 @@ De wizard gegevens importeren wordt gestart vanaf de opdracht balk op de overzic
 
 2. Klik op de pagina overzicht van services bovenaan op **gegevens importeren**.
 
-   De ![opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "Start de wizard gegevens importeren")
+   ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
 U kunt ook **gegevens importeren** uit andere Azure-Services, waaronder Azure Cosmos DB, Azure SQL database en Azure Blob-opslag. Zoek **Azure Search toevoegen** in het linkerdeel venster op de pagina service overzicht.
 
@@ -106,7 +106,7 @@ De wizard genereert een onvolledige index, die wordt gevuld met documenten die z
 
 1. Is het gegevens type dat geschikt is voor de inkomende gegevens? Azure Search ondersteunt de [gegevens typen Entity Data Model (EDM)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Voor Azure SQL-gegevens is er een [toewijzings grafiek](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types) die gelijkwaardige waarden bevat. Zie [veld Toewijzingen en trans formaties](search-indexer-field-mappings.md)voor meer achtergrond informatie.
 
-1. Hebt u één veld dat kan dienen als de *sleutel*? Dit veld moet EDM. String zijn en moet een unieke identificatie vormen voor een document. Voor relationele gegevens kan deze worden toegewezen aan een primaire sleutel. Voor blobs kan dit de `metadata-storage-path` zijn. Als veld waarden spaties of streepjes bevatten, moet u de optie **Base-64 Codeer sleutel** instellen in de stap **een Indexeer functie maken** onder **Geavanceerde opties**om de validatie controle voor deze tekens te onderdrukken.
+1. Hebt u één veld dat kan dienen als de *sleutel*? Dit veld moet EDM. String zijn en moet een unieke identificatie vormen voor een document. Voor relationele gegevens kan deze worden toegewezen aan een primaire sleutel. Voor blobs is dit mogelijk de `metadata-storage-path`. Als veld waarden spaties of streepjes bevatten, moet u de optie **Base-64 Codeer sleutel** instellen in de stap **een Indexeer functie maken** onder **Geavanceerde opties**om de validatie controle voor deze tekens te onderdrukken.
 
 1. Stel kenmerken in om te bepalen hoe dit veld wordt gebruikt in een index. 
 

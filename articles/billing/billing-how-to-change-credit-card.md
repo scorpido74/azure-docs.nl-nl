@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300311"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375593"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
 
@@ -131,7 +131,7 @@ Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, le
 1. Selecteer een bestaande creditcard of voeg een nieuwe toe.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Als u fouten krijgt bij het toevoegen of bijwerken van uw creditcard, probeer dan uw browser in privémodus te openen.
+We bieden geen ondersteuning voor virtuele of prepaidkaarten. Als u fouten krijgt bij het toevoegen of bijwerken van een geldige creditcard, probeer dan uw browser te openen in de privémodus.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 In de volgende secties worden veelgestelde vragen beantwoord over het wijzigen van uw creditcardgegevens.

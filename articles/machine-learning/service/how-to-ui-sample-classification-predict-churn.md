@@ -1,7 +1,7 @@
 ---
-title: '#5 voor beeld van visuele interface: Classificatie voor het voors pellen van verloop en verlangen + up-sell'
+title: 'Voor beeld van een Visual-Interface #5: classificatie voor het voors pellen van verloop en verlangen + up-sell'
 titleSuffix: Azure Machine Learning
-description: In dit voorbeeld experiment van de Visual-Interface ziet u de binaire classifier-voor spelling van het verloop, een algemene taak voor Customer Relationship Management (CRM).
+description: In deze voorbeeld pijplijn van de Visual-Interface wordt een binaire classifier-voor spelling van verloop, een algemene taak voor Customer Relationship Management (CRM) weer gegeven.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,45 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: 260d94ddf2572979e819ee89dfcbd315ef3c4769
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 82639779dde08bb1f71fb75dba62038dbf34d1b6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131933"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693556"
 ---
-# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Voor beeld 5-classificatie: Verloop, verlangen en up-sell voors pellen 
+# <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>Voor beeld 5-classificatie: voor spel verloop, verlangen en up-sell 
 
-Meer informatie over hoe u een complex machine learning experiment bouwt zonder een enkele regel code te schrijven met behulp van de visuele interface.
+Meer informatie over het bouwen van een complexe machine learning pijp lijn zonder dat u een regel code hoeft te schrijven met behulp van de visuele interface.
 
-In dit experiment worden drie, met **twee klassen gestimuleerde** classificaties voor de beslissings structuur voor het voors pellen van veelvoorkomende taken voor CRM-systemen (Customer Relationship Management): verloop, verlangen en up-selling. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen echter nog steeds de visuele interface gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de versleutelde waarden.
+Deze pijplijn treinen hebben drie, met **twee klassen gestimuleerde** classificaties voor de beslissings structuur voor het voors pellen van veelvoorkomende taken voor CRM-systemen (Customer Relationship Management): verloop, verlangen en up-selling. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens, maar we kunnen wel nog steeds de visuele interface gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de verborgen waarden.
 
-Omdat u probeert de vraag "welke?" te beantwoorden Dit wordt een probleem met de classificatie genoemd, maar u kunt dezelfde logica in dit project Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
+Omdat u probeert de vraag "welke?" te beantwoorden Dit wordt een probleem met de classificatie genoemd, maar u kunt ook dezelfde logica Toep assen die in dit voor beeld wordt weer gegeven om elk type machine learning probleem aan te pakken, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 
-Hier volgt de voltooide grafiek voor dit experiment:
+Hier is de voltooide grafiek voor deze pijp lijn:
 
-![Grafiek experimenteren](./media/how-to-ui-sample-classification-predict-churn/experiment-graph.png)
+![Pipeline-grafiek](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Selecteer de knop **openen** voor het voor beeld 5-experiment.
+4. Selecteer de knop **openen** voor het voor beeld 5-pijp lijn.
 
-    ![Het experiment openen](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
+    ![De pijp lijn openen](media/how-to-ui-sample-classification-predict-churn/open-sample5.png)
 
-## <a name="data"></a>Data
+## <a name="data"></a>Gegevens
 
-De gegevens voor dit experiment zijn afkomstig uit KDDe Cup 2009. Het bevat 50.000 rijen en kolommen met 230-functies. De taak is het voors pellen van verloop, verlangen en het verkopen van klanten die gebruikmaken van deze functies. Zie de [KDD-website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)voor meer informatie over de gegevens en de taak.
+De gegevens voor deze pijp lijn zijn afkomstig uit KDDe Cup 2009. Het bevat 50.000 rijen en kolommen met 230-functies. De taak is het voors pellen van verloop, verlangen en het verkopen van klanten die gebruikmaken van deze functies. Zie de [KDD-website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)voor meer informatie over de gegevens en de taak.
 
-## <a name="experiment-summary"></a>Experiment overzicht
+## <a name="pipeline-summary"></a>Pijplijn overzicht
 
-In dit voorbeeld experiment van de Visual-Interface ziet u een veelvoorkomende taak voor de voor spelling van een gemeen schappelijke geclassificeerd verloop, verlangen en verkoop, een algemene taken voor Customer Relationship Management (CRM).
+In deze voorbeeld pijplijn van de Visual-Interface ziet u een veelvoorkomende taak voor de voor spelling van het verloop, de verlangen en de verkoop van klanten met CRM (Customer Relationship Management).
 
-Voer eerst een eenvoudige gegevens verwerking uit.
+Ten eerste, een eenvoudige gegevens verwerking.
 
-- De onbewerkte gegevensset bevat veel ontbrekende waarden. Gebruik de module **clean Missing Data** om de ontbrekende waarden te vervangen door 0.
+- De onbewerkte gegevensset heeft veel ontbrekende waarden. Gebruik de module **clean Missing Data** om de ontbrekende waarden te vervangen door 0.
 
     ![De gegevensset opschonen](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
 
@@ -57,7 +57,7 @@ Voer eerst een eenvoudige gegevens verwerking uit.
 
 - Gebruik de **gesplitste gegevens** module om de gegevensset te splitsen in Train-en test sets.
 
-    Gebruik vervolgens de gestimuleerde binaire classificatie van de beslissings structuur met de standaard parameters voor het bouwen van de Voorspellings modellen. Bouw één model per taak, dat wil zeggen, één model waarmee u de verkoop, verlangen en het verloop kunt voors pellen.
+- Gebruik vervolgens de gestimuleerde binaire classificatie van de beslissings structuur met de standaard parameters voor het bouwen van de Voorspellings modellen. Bouw één model per taak, dat wil zeggen, één model waarmee u de verkoop, verlangen en het verloop kunt voors pellen.
 
 ## <a name="results"></a>Resultaten
 
@@ -75,8 +75,9 @@ Visualiseer de uitvoer van de module **Evaluate model** om de prestaties van het
 
 Bekijk de andere voor beelden die beschikbaar zijn voor de visuele interface:
 
-- [Voor beeld 1-regressie: De prijs van een auto voors pellen](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-- [Voor beeld 2-regressie: Algoritmen voor het voors pellen van prijzen vergelijken](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Voor beeld 3-classificatie: Krediet risico voors pellen](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Voor beeld 4-classificatie: Voor speld krediet risico (kosten gevoelig)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Voor beeld 6: classificatie: Vlucht vertragingen voors pellen](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Voor beeld 3-classificatie: krediet risico voors pellen](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Voor beeld 7-tekst classificatie: Books revisies](how-to-ui-sample-text-classification.md)

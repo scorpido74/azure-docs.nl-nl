@@ -9,15 +9,15 @@ ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67056476"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
-Dat hangt ervan af op de gateway-SKU. Zie voor meer informatie over het aantal verbindingen ondersteund [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Dit is afhankelijk van de gateway-SKU. Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
 
 ### <a name="supportedclientos"></a>Welke clientbesturingssystemen kan ik met point-to-site gebruiken?
 
@@ -30,7 +30,7 @@ De volgende clientbesturingssystemen worden ondersteund:
 * Windows Server 2012 R2 (alleen 64-bits)
 * Windows Server 2016 (alleen 64-bits)
 * Windows 10
-* Mac OS X-versie 10.11 of hoger
+* Mac OS X-versie 10,11 of hoger
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ De volgende clientbesturingssystemen worden ondersteund:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Kan ik met punt-naar-site-functionaliteit proxy's en firewalls passeren?
 
-Azure ondersteunt drie typen van punt-naar-site VPN-opties:
+Azure ondersteunt drie typen punt-naar-site VPN-opties:
 
-* Secure Socket Tunneling Protocol (SSTP). SSTP is een Microsoft bedrijfseigen SSL gebaseerde oplossing die firewalls passeren kan, omdat de meeste firewalls openen de uitgaande TCP-poort 443 SSL wordt gebruikt.
+* Secure Socket Tunneling Protocol (SSTP). SSTP is een eigen op SSL gebaseerde oplossing van micro soft die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
 
-* OpenVPN. OpenVPN is een op SSL gebaseerde oplossing die firewalls passeren kan, omdat de meeste firewalls openen de uitgaande TCP-poort 443 SSL wordt gebruikt.
+* OpenVPN. OpenVPN is een op SSL gebaseerde oplossing die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
 
-* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die gebruikmaakt van uitgaande UDP-poort 500 en 4500 en IP-protocol niet. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
+* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die gebruikmaakt van uitgaande UDP-poorten 500 en 4500 en IP-protocol nummer. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Als ik een clientcomputer die is geconfigureerd voor punt-naar-site opnieuw start, wordt de VPN-verbinding dan automatisch opnieuw tot stand gebracht?
 
@@ -68,21 +68,21 @@ Het is moeilijk om de exacte doorvoer van de VPN-tunnels te onderhouden. IPSec e
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Kan ik voor point-to-site elke VPN-softwareclient gebruiken die SSTP en/of IKEv2 ondersteunt?
 
-Nee. U kunt alleen de systeemeigen VPN-client van Windows voor SSTP en de systeemeigen VPN-client van Mac voor IKEv2 gebruiken. U kunt echter de OpenVPN-client op alle platforms verbinding maken via OpenVPN-protocol gebruiken. Raadpleeg de lijst met ondersteunde clientbesturingssystemen.
+Nee. U kunt alleen de systeemeigen VPN-client van Windows voor SSTP en de systeemeigen VPN-client van Mac voor IKEv2 gebruiken. U kunt echter de OpenVPN-client op alle platforms gebruiken om verbinding te maken via het OpenVPN-protocol. Raadpleeg de lijst met ondersteunde clientbesturingssystemen.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Biedt Azure ondersteuning voor IKEv2-VPN met Windows?
 
-IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. OS-versies voorafgaand aan Windows 10 worden niet ondersteund en SSTP kunnen alleen worden gebruikt of **OpenVPN® Protocol**.
+IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. Versies van besturings systemen voorafgaand aan Windows 10 worden niet ondersteund en kunnen alleen gebruikmaken van het SSTP-of **OpenVPN®-protocol**.
 
 Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Versie van het besturingssysteem | Date | Aantal/koppeling |
+   | Versie van het besturingssysteem | Datum | Aantal/koppeling |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 Version 1709 | 22 maart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 versie 1709 | 22 maart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. De registersleutelwaarde instellen. Maak of stel de REG_DWORD-sleutel 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload' in het register in op 1.

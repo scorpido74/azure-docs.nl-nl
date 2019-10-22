@@ -7,48 +7,47 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176452"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692428"
 ---
 >[!IMPORTANT]
->De vereisten voor andere zelfstudies voor Azure Machine Learning-service en de artikelen met procedures kunt u de resources die u hebt gemaakt.
-
+>U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning service-zelf studies en procedures voor artikelen gebruiken.
 
 ### <a name="delete-everything"></a>Alles verwijderen
 
-Als u niet dat iets dat u hebt gemaakt wilt, verwijdert u de hele resourcegroep, zodat u geen kosten:
+Als u niet van plan bent om iets te gebruiken dat u hebt gemaakt, verwijdert u de hele resource groep, zodat u geen kosten meer hebt:
 
-1. Selecteer in de Azure portal, **resourcegroepen** aan de linkerkant van het venster.
+1. Selecteer in de Azure Portal **resource groepen** aan de linkerkant van het venster.
  
    ![Een resourcegroep verwijderen in de Azure-portal](./media/aml-ui-cleanup/delete-resources.png)
 
-1. Selecteer de resourcegroep die u hebt gemaakt in de lijst.
+1. Selecteer in de lijst de resource groep die u hebt gemaakt.
 
-1. Aan de rechterkant van het venster, selecteer de knop met het weglatingsteken ( **...** ).
+1. Selecteer de knop met het weglatings teken ( **...** ) aan de rechter kant van het venster.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
-Als u de resourcegroep verwijdert, verwijdert u ook alle resources die u hebt gemaakt in de visuele interface.  
+Als u de resource groep verwijdert, worden ook alle resources verwijderd die u hebt gemaakt in de visuele interface.  
 
-### <a name="delete-only-the-compute-target"></a>Alleen de compute-doel verwijderen
+### <a name="delete-only-the-compute-target"></a>Alleen het reken doel verwijderen
 
-De compute-doel dat u hebt gemaakt, wordt hier *automatisch automatisch wordt geschaald* naar nul knooppunten wanneer deze niet wordt gebruikt. Dit is om kosten te minimaliseren. Als u verwijderen van de compute-doel wilt, voert u deze stappen uit:
+Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul knoop punten wanneer het niet wordt gebruikt. Dit is om de kosten te minimaliseren. Als u het berekenings doel wilt verwijderen, voert u de volgende stappen uit:
 
-1. In de [Azure-portal](https://portal.azure.com), opent u uw werkruimte.
+1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com).
 
-    ![Verwijderen van de compute-doel](./media/aml-ui-cleanup/delete-compute-target.png)
+    ![Het reken doel verwijderen](./media/aml-ui-cleanup/delete-compute-target.png)
 
-1. In de **Compute** sectie van uw werkruimte, selecteert u de resource.
+1. Selecteer de resource in het gedeelte **berekenen** van uw werk ruimte.
 
 1. Selecteer **Verwijderen**.
 
 ### <a name="delete-individual-assets"></a>Afzonderlijke assets verwijderen
 
-In de visuele interface waar u uw experiment hebt gemaakt, kunt u afzonderlijke assets verwijderen door ze te selecteren en vervolgens te klikken op de **verwijderen** knop.
+In de visuele interface waar u uw experiment hebt gemaakt, verwijdert u afzonderlijke assets door ze te selecteren en vervolgens de knop **verwijderen** te selecteren. U kunt de registratie van gegevens sets ongedaan maken in uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
 
-![Experimenten verwijderen](./media/aml-ui-cleanup/delete-experiment.png)
+![Assets verwijderen](./media/aml-ui-cleanup/delete-asset.png)

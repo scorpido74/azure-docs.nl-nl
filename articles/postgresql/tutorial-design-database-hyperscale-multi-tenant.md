@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163987"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Zelf studie: een Data Base met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus) (preview)
@@ -130,7 +130,7 @@ Toepassingen met meerdere tenants kunnen alleen uniekheid afdwingen per Tenant. 
 
 In een grootschalige-implementatie worden tabel rijen op verschillende knoop punten opgeslagen op basis van de waarde van een door de gebruiker opgegeven kolom. Deze distributie kolom markeert welke Tenant eigenaar is van welke rijen.
 
-Laten we de distributie kolom instellen op bedrijfs\_-id, de Tenant-id. Voer in psql de volgende functies uit:
+Laten we de distributie kolom instellen op bedrijfs \_id, de Tenant-id. Voer in psql de volgende functies uit:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -166,7 +166,7 @@ Deze gegevens worden nu verdeeld over werk knooppunten.
 
 ## <a name="query-tenant-data"></a>Query's uitvoeren op Tenant gegevens
 
-Wanneer de toepassing gegevens aanvraagt voor één Tenant, kan de data base de query uitvoeren op één worker-knoop punt. Query's met één Tenant filteren op één Tenant-ID. Bijvoorbeeld, de volgende query filters `company_id = 5` voor advertenties en hits. Probeer het programma uit te voeren in psql om de resultaten te bekijken.
+Wanneer de toepassing gegevens aanvraagt voor één Tenant, kan de data base de query uitvoeren op één worker-knoop punt. Query's met één Tenant filteren op één Tenant-ID. De volgende query filtert bijvoorbeeld `company_id = 5` voor advertenties en impressies. Probeer het programma uit te voeren in psql om de resultaten te bekijken.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Gegevens delen tussen tenants
 
-Tot nu toe zijn alle tabellen gedistribueerd door `company_id`, maar sommige gegevens zijn niet natuurlijk ' horen ' bij een Tenant met name en kunnen worden gedeeld. Zo kan het voor komen dat alle bedrijven in het voor beeld-ad-platform geografische gegevens voor hun doel groep willen ophalen op basis van IP-adressen.
+Tot nu toe zijn alle tabellen gedistribueerd door `company_id`, maar sommige gegevens maken geen deel uit van een wille keurige Tenant en kunnen worden gedeeld. Zo kan het voor komen dat alle bedrijven in het voor beeld-ad-platform geografische gegevens voor hun doel groep willen ophalen op basis van IP-adressen.
 
 Een tabel maken voor het opslaan van gedeelde geografische informatie. Voer de volgende opdrachten uit in psql:
 
@@ -199,7 +199,7 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Maak `geo_ips` vervolgens een ' verwijzings tabel ' om een kopie van de tabel op elk worker-knoop punt op te slaan.
+Maak vervolgens `geo_ips` een ' verwijzings tabel ' om een kopie van de tabel op elk worker-knoop punt op te slaan.
 
 ```sql
 SELECT create_reference_table('geo_ips');
@@ -211,7 +211,7 @@ Laad deze met voorbeeld gegevens. Vergeet niet om deze opdracht in psql uit te v
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Het toevoegen van de klikkens\_tabel met geo ip's is efficiënt op alle knoop punten.
+Het toevoegen van de klikkens tabel met geo \_ips is efficiënt op alle knoop punten.
 Hier volgt een koppeling om de locaties te vinden van iedereen die op ad heeft geklikt
 290. Probeer de query uit te voeren in psql.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Elke Tenant moet mogelijk speciale gegevens opslaan die niet nodig zijn voor anderen. Alle tenants delen echter een gemeen schappelijke infra structuur met een identiek database schema. Waar kunnen de extra gegevens worden geplaatst?
 
-Een slag is het gebruik van een open-beëindigd kolom Type, zoals PostgreSQL van JSONB.  Ons schema bevat een JSONB-veld `clicks` met `user_data`de naam.
+Een slag is het gebruik van een open-beëindigd kolom Type, zoals PostgreSQL van JSONB.  Ons schema bevat een JSONB-veld in `clicks` met de naam `user_data`.
 Een bedrijf (bedrijf 5), kan de kolom gebruiken om bij te houden of de gebruiker zich op een mobiel apparaat bevindt.
 
 Hier volgt een query om te ontdekken wie er meer te weten komt: mobiele of traditionele bezoekers.

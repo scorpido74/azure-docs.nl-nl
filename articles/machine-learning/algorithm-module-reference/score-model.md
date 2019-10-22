@@ -1,5 +1,5 @@
 ---
-title: 'Score model: Module verwijzing'
+title: 'Score model: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module score model in Azure Machine Learning service om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128508"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692678"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
@@ -24,20 +24,20 @@ Gebruik deze module om voor spellingen te genereren met behulp van een getrainde
 
 ## <a name="how-to-use"></a>Gebruiksinstructies
 
-1. Voeg de module **score model** toe aan uw experiment.
+1. Voeg de module **score model** toe aan de pijp lijn.
 
 2. Koppel een getraind model en een gegevensset die nieuwe invoer gegevens bevat. 
 
     De gegevens moeten een indeling hebben die compatibel is met het type getrainde model dat u gebruikt. Het schema van de invoer gegevensset moet ook algemeen overeenkomen met het schema van de gegevens die worden gebruikt om het model te trainen.
 
-3. Voer het experiment uit.
+3. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
 Nadat u een set scores hebt gegenereerd met het [score model](./score-model.md):
 
 + Genereren van een set metrische gegevens die worden gebruikt voor het evalueren van de nauw keurigheid van het model (prestaties).  u kunt de gescoorde gegevensset verbinden om het [model te evalueren](./evaluate-model.md). 
-+ Klik met de rechter muisknop op de module en selecteer visualiseren om een voor beeld van de resultaten weer te geven.
++ Klik met de rechter muisknop op de module en selecteer **visualiseren** om een voor beeld van de resultaten weer te geven.
 + Sla de resultaten op in een gegevensset.
 
 De Score of voorspelde waarde kan in veel verschillende indelingen worden opgegeven, afhankelijk van het model en uw invoer gegevens:
@@ -48,7 +48,7 @@ De Score of voorspelde waarde kan in veel verschillende indelingen worden opgege
 
 ## <a name="publish-scores-as-a-web-service"></a>Scores publiceren als een webservice
 
-Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie deze zelf studie over het maken van een webservice op basis van een experiment in Azure Machine Learning:
+Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie deze zelf studie over het maken van een webservice op basis van een pijp lijn in Azure Machine Learning:
 
 
 ## <a name="next-steps"></a>Volgende stappen

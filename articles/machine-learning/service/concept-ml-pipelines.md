@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514928"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692540"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -112,6 +112,14 @@ In de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/
 Een Azure ML-pijp lijn is gekoppeld aan een Azure Machine Learning-werk ruimte en een pijplijn stap is gekoppeld aan een berekenings doel dat in die werk ruimte beschikbaar is. Zie [Azure machine learning-werk ruimten maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) of [Wat zijn reken doelen in azure machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)voor meer informatie.
 
 In Azure Machine Learning is een compute-doel de omgeving waarin een ML-fase plaatsvindt. De software omgeving kan een externe virtuele machine zijn, Azure Machine Learning compute, Azure Databricks, Azure Batch, enzovoort. De hardware-omgeving kan ook aanzienlijk variëren, afhankelijk van de GPU-ondersteuning, het geheugen, de opslag, enzovoort. U kunt het berekenings doel voor elke stap opgeven, zodat u de kosten nauw keurig kunt controleren. U kunt meer of minder krachtige bronnen gebruiken voor de specifieke actie, het gegevens volume en de prestatie behoeften van uw project. 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>Hoe kan ik bouw pijp lijnen met behulp van de Azure Machine Learning visuele interface?
+
+Ontwikkel aars die de voor keur geven aan een visueel ontwerp oppervlak kunnen de Azure Machine Learning visuele interface gebruiken om pijp lijnen te maken. U kunt dit hulp programma openen via de selectie van de **visuele interface** op de start pagina van uw werk ruimte.  Met de visuele interface kunt u stappen naar het ontwerp oppervlak slepen en neerzetten. Voor snelle ontwikkeling kunt u bestaande modules in het spectrum van ML-taken gebruiken. bestaande modules dekken alles van gegevens transformatie tot het selecteren van algoritmen om te oefenen met implementatie. U kunt ook een volledig aangepaste pijp lijn maken door uw eigen stappen te combi neren die in python-scripts zijn gedefinieerd.
+
+Wanneer u pijp lijnen visueel ontwerpt, worden de invoer en uitvoer van een stap zichtbaar weer gegeven. U kunt gegevens verbindingen slepen en neerzetten om de gegevensstroom van uw pijp lijn snel te begrijpen en te wijzigen.
+ 
+![Azure Machine Learning Visual Interface-voor beeld](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Uitleg over de uitvoerings grafiek
 

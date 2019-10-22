@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70095679"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
@@ -42,7 +42,7 @@ Binnen Azure Batch verwijst een *toepassing* naar een set binaire bestanden die 
 
 ![Diagram van toepassingen en toepassings pakketten op hoog niveau][1]
 
-### <a name="applications"></a>Toepassingen
+### <a name="applications"></a>Applicaties
 Een toepassing in batch bevat een of meer toepassings pakketten en bevat configuratie opties voor de toepassing. Een toepassing kan bijvoorbeeld de standaard versie van het toepassings pakket opgeven die op reken knooppunten moet worden geïnstalleerd en of de pakketten kunnen worden bijgewerkt of verwijderd.
 
 ### <a name="application-packages"></a>Toepassingspakketten
@@ -109,9 +109,9 @@ Als u deze menu optie selecteert, wordt het venster **toepassingen** geopend:
 
 In dit venster wordt de ID weer gegeven van elke toepassing in uw account en de volgende eigenschappen:
 
-* **Pakketten**: Het aantal versies dat is gekoppeld aan deze toepassing.
-* **Standaard versie**: De versie van de toepassing wordt geïnstalleerd als u geen versie aangeeft wanneer u de toepassing voor een groep opgeeft. Deze instelling is optioneel.
-* **Updates toestaan**: De waarde die aangeeft of pakket updates, verwijderingen en toevoegingen zijn toegestaan. Als dit is ingesteld op **Nee**, worden pakket updates en verwijderingen uitgeschakeld voor de toepassing. Alleen nieuwe versies van toepassings pakketten kunnen worden toegevoegd. De standaardinstelling is **Ja**.
+* **Pakketten**: het aantal versies dat is gekoppeld aan deze toepassing.
+* **Standaard versie**: de versie van de toepassing die is geïnstalleerd als u geen versie aangeeft wanneer u de toepassing voor een groep opgeeft. Deze instelling is optioneel.
+* **Updates toestaan**: de waarde die aangeeft of pakket updates, verwijderingen en toevoegingen zijn toegestaan. Als dit is ingesteld op **Nee**, worden pakket updates en verwijderingen uitgeschakeld voor de toepassing. Alleen nieuwe versies van toepassings pakketten kunnen worden toegevoegd. De standaardinstelling is **Ja**.
 
 Als u de bestands structuur van het toepassings pakket op het reken knooppunt wilt zien, gaat u naar uw batch-account in de portal. Navigeer vanuit uw batch-account naar **groepen**. Selecteer de pool met de reken knooppunten waarin u bent geïnteresseerd.
 
@@ -129,8 +129,8 @@ Als u de details van een toepassing wilt bekijken, selecteert u de toepassing in
 In de toepassings Details kunt u de volgende instellingen voor uw toepassing configureren.
 
 * **Updates toestaan**: Geef op of de toepassings pakketten kunnen worden bijgewerkt of verwijderd. Zie ' een toepassings pakket bijwerken of verwijderen ' verderop in dit artikel.
-* **Standaard versie**: Geef een standaard toepassings pakket op dat moet worden geïmplementeerd op reken knooppunten.
-* **Weergave naam**: Geef een beschrijvende naam op die door de batch-oplossing kan worden gebruikt wanneer er informatie over de toepassing wordt weer gegeven, bijvoorbeeld in de gebruikers interface van een service die u aan uw klanten verstrekt via batch.
+* **Standaard versie**: Geef een standaard toepassings pakket op dat moet worden geïmplementeerd op Compute-knoop punten.
+* **Weergave naam**: Geef een beschrijvende naam op die door uw batch-oplossing kan worden gebruikt wanneer er informatie over de toepassing wordt weer gegeven, bijvoorbeeld in de gebruikers interface van een service die u aan uw klanten verstrekt via batch.
 
 ### <a name="add-a-new-application"></a>Een nieuwe toepassing toevoegen
 Als u een nieuwe toepassing wilt maken, voegt u een toepassings pakket toe en geeft u een nieuwe, unieke toepassings-ID op. Het eerste toepassings pakket dat u met de nieuwe toepassings-ID toevoegt, maakt ook de nieuwe toepassing.
@@ -171,7 +171,7 @@ Nadat u een bestand hebt geselecteerd, klikt u op **OK** om te beginnen met uplo
 > 
 
 ### <a name="add-a-new-application-package"></a>Een nieuw toepassings pakket toevoegen
-Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten** > **toevoegen**.
+Als u een toepassings pakket versie voor een bestaande toepassing wilt toevoegen, selecteert u een toepassing in de Windows- **toepassingen** en klikt u op **pakketten**  > **toevoegen**.
 
 ![De Blade toepassings pakket toevoegen in Azure Portal][8]
 
@@ -225,7 +225,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Als een implementatie van een toepassings pakket om welke reden dan ook mislukt, markeert [][net_nodestate]de batch-service het knoop punt onbruikbaar en worden er geen taken gepland voor uitvoering op dat knoop punt. In dit geval moet u het knoop punt **opnieuw opstarten** om de implementatie van het pakket opnieuw te starten. Wanneer het knoop punt opnieuw wordt gestart, wordt de taak planning ook opnieuw ingeschakeld op het knoop punt.
+> Als een implementatie van een toepassings pakket om welke reden dan ook mislukt, markeert de batch-service het knoop punt [onbruikbaar][net_nodestate]en worden er geen taken gepland voor uitvoering op dat knoop punt. In dit geval moet u het knoop punt **opnieuw opstarten** om de implementatie van het pakket opnieuw te starten. Wanneer het knoop punt opnieuw wordt gestart, wordt de taak planning ook opnieuw ingeschakeld op het knoop punt.
 > 
 > 
 
@@ -251,7 +251,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>De geïnstalleerde toepassingen uitvoeren
-De pakketten die u voor een groep of taak hebt opgegeven, worden gedownload en geëxtraheerd naar een benoemde map binnen het `AZ_BATCH_ROOT_DIR` knoop punt. Batch maakt ook een omgevings variabele die het pad naar de benoemde map bevat. De opdracht regels van uw taak gebruiken deze omgevings variabele bij het verwijzen naar de toepassing op het knoop punt. 
+De pakketten die u voor een groep of taak hebt opgegeven, worden gedownload en uitgepakt naar een benoemde map binnen het `AZ_BATCH_ROOT_DIR` van het knoop punt. Batch maakt ook een omgevings variabele die het pad naar de benoemde map bevat. De opdracht regels van uw taak gebruiken deze omgevings variabele bij het verwijzen naar de toepassing op het knoop punt. 
 
 Op Windows-knoop punten heeft de variabele de volgende indeling:
 
@@ -267,7 +267,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`en `version` zijn waarden die overeenkomen met de versie van de toepassing en het pakket die u voor de implementatie hebt opgegeven. Als u bijvoorbeeld hebt opgegeven dat versie 2,7 van de toepassings *blender* moet worden geïnstalleerd op Windows-knoop punten, gebruiken de opdracht regels van de taak deze omgevings variabele voor toegang tot de bestanden:
+`APPLICATIONID` en `version` zijn waarden die overeenkomen met de toepassing en pakket versie die u voor de implementatie hebt opgegeven. Als u bijvoorbeeld hebt opgegeven dat versie 2,7 van de toepassings *blender* moet worden geïnstalleerd op Windows-knoop punten, gebruiken de opdracht regels van de taak deze omgevings variabele voor toegang tot de bestanden:
 
 ```
 Windows:
@@ -287,7 +287,7 @@ Als u bijvoorbeeld ' 2,7 ' hebt ingesteld als de standaard versie voor de toepas
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-Het volgende code fragment toont een voor beeld van een opdracht regel van de taak waarmee de standaard versie van de blender-toepassing wordt gestart:
+Het volgende code fragment toont een voor beeld van een opdracht regel van de taak waarmee de standaard versie van de *blender* -toepassing wordt gestart:
 
 ```csharp
 string taskId = "blendertask01";

@@ -1,5 +1,5 @@
 ---
-title: 'Connectiviteit controleren-ExpressRoute-probleemoplossings gids: Azure| Microsoft Docs'
+title: 'Connectiviteit controleren-ExpressRoute-probleemoplossings gids: Azure | Microsoft Docs'
 description: Op deze pagina vindt u instructies voor het oplossen van problemen en het valideren van end-to-end-connectiviteit van een ExpressRoute-circuit.
 services: expressroute
 author: rambk
@@ -9,16 +9,16 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71123446"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
 Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. ExpressRoute, dat een on-premises netwerk uitbreidt naar de micro soft-Cloud via een particuliere verbinding die wordt vereenvoudigd door een connectiviteits provider, omvat de volgende drie afzonderlijke netwerk zones:
 
--   Klantnetwerk
+-   Klant netwerk
 -   Provider netwerk
 -   Micro soft Data Center
 
@@ -40,10 +40,10 @@ In het voor gaande diagram duiden de getallen op belang rijke netwerk punten. In
 Afhankelijk van het ExpressRoute-connectiviteits model (co-locatie, Point-to-Point Ethernet-verbinding in de Cloud en een wille keurige (IPVPN)), kunnen de netwerk punten 3 en 4 switches zijn (laag 2-apparaten). De belangrijkste netwerk punten worden als volgt geïllustreerd:
 
 1.  Klant Compute Device (bijvoorbeeld een server of PC)
-2.  CEs Klant-Edge-routers 
-3.  PEs (CE gericht): Provider Edge routers/switches die zijn gericht zijn op klanten Edge-routers. In dit document wordt PE-CEs genoemd.
-4.  Wachtwoordexportserver (MSEE gericht): Provider Edge routers/switches die zijn gericht op Msee's. In dit document wordt ' PE-Msee's ' genoemd.
-5.  Msee's Micro soft Enter prise Edge (MSEE) ExpressRoute-routers
+2.  CEs: klanten Edge-routers 
+3.  PEs (CE gericht): provider Edge routers/switches die zijn gericht op klanten Edge-routers. In dit document wordt PE-CEs genoemd.
+4.  PEs (MSEE gericht): provider Edge routers/switches die zijn gericht op Msee's. In dit document wordt ' PE-Msee's ' genoemd.
+5.  Msee's: micro soft Enter prise Edge (MSEE) ExpressRoute-routers
 6.  Virtual Network (VNet)-gateway
 7.  Compute-apparaat op het Azure-VNet
 
@@ -157,7 +157,7 @@ Een voor beeld van een antwoord is:
     Sku                              : Standard
     Status                           : Enabled
 
-Ga als volgt te werk om te controleren of een ExpressRoute-circuit operationeel is, Let vooral op de volgende velden: ServiceProviderProvisioningState : Ingerichte status: Enabled
+Ga als volgt te werk om te controleren of een ExpressRoute-circuit operationeel is, Let vooral op de volgende velden: ServiceProviderProvisioningState: provisioned status: ingeschakeld
 
 > [!NOTE]
 > Als de *status* niet is ingeschakeld, neemt u contact op met [Microsoft ondersteuning][Support]. Als de *ServiceProviderProvisioningState* niet is ingericht, neemt u contact op met uw service provider.
@@ -165,7 +165,7 @@ Ga als volgt te werk om te controleren of een ExpressRoute-circuit operationeel 
 >
 
 ## <a name="validate-peering-configuration"></a>Peering-configuratie valideren
-Nadat de service provider de inrichting van het ExpressRoute-circuit heeft voltooid, kan een routerings configuratie worden gemaakt over het ExpressRoute-circuit tussen MSEE-pull (4) en Msee's (5). Elk ExpressRoute-circuit kan een, twee of drie routerings contexten hebben ingeschakeld: Persoonlijke Azure-peering (verkeer naar particuliere virtuele netwerken in Azure), open bare Azure-peering (verkeer naar open bare IP-adressen in Azure) en micro soft-peering (verkeer naar Office 365). Zie voor meer informatie over het maken en wijzigen van routerings configuratie het artikel [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
+Nadat de service provider de inrichting van het ExpressRoute-circuit heeft voltooid, kan een routerings configuratie worden gemaakt over het ExpressRoute-circuit tussen MSEE-pull (4) en Msee's (5). Elk ExpressRoute-circuit kan een, twee of drie routerings contexten hebben ingeschakeld: persoonlijke Azure-peering (verkeer naar particuliere virtuele netwerken in Azure), open bare Azure-peering (verkeer naar open bare IP-adressen in Azure) en micro soft-peering (verkeer naar Office 365). Zie voor meer informatie over het maken en wijzigen van routerings configuratie het artikel [route ring maken en wijzigen voor een ExpressRoute-circuit][CreatePeering].
 
 ### <a name="verification-via-the-azure-portal"></a>Verificatie via de Azure Portal
 
@@ -295,7 +295,7 @@ Een voor beeld van een antwoord voor de opdracht, in het geslaagde scenario:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Op dezelfde manier kunt u de ARP-tabel controleren op basis van de MSEE in het *primaire*/*secundaire* pad, voor *privé*/*open bare*/*micro soft* -peerings.
+Op dezelfde manier kunt u de ARP-tabel controleren vanuit de MSEE in het*secundaire* pad van de *primaire* /, voor *privé* /*open bare* /*micro soft* -peerings.
 
 In het volgende voor beeld ziet u het antwoord van de opdracht voor een peering bestaat niet.
 
@@ -352,7 +352,7 @@ Een voor beeld van een geslaagd resultaat van de opdracht is:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Op dezelfde manier kunt u de routerings tabel controleren op basis van de MSEE in het *primaire*/*secundaire* pad, voor *privé*/-*open bare*/*micro soft* -peering-context.
+Op dezelfde manier kunt u de routerings tabel controleren vanuit de MSEE in het*secundaire* pad van de *primaire* /, voor *privé* /*open bare* /*micro soft* een peering-context.
 
 In het volgende voor beeld ziet u het antwoord van de opdracht voor een peering bestaat niet:
 
@@ -379,14 +379,14 @@ Een voorbeeld uitvoer van de opdracht voor een niet-bestaande peering is:
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende koppelingen voor meer informatie en hulp:
+Raadpleeg de volgende koppelingen voor meer informatie of hulp:
 
 - [Microsoft Ondersteuning][Support]
 - [Een ExpressRoute-circuit maken en wijzigen][CreateCircuit]
 - [Route ring voor een ExpressRoute-circuit maken en wijzigen][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Connectiviteit voor logische Express-route"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "connectiviteit voor logische Express-route"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Pictogram alle resources"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Pictogram overzicht"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "Voorbeeld scherm van ExpressRoute Essentials"

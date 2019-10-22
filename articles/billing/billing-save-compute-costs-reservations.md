@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806341"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390165"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -40,11 +40,11 @@ Voor virtuele Windows-machines en SQL Database kunt u de licentiekosten dekken m
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Wie komt in aanmerking voor de aanschaf van een reservering?
 
-Als u een abonnement wilt kopen, moet u een eigenaarsrol voor het abonnement hebben in een zakelijke abonnement (MS-AZR-0017P of MS-AZR-0148P) of een abonnement waarvoor wordt betaald per gebruik (MS-AZR-0003P of MS-AZR-0023P). Cloud Solution Providers kunnen Azure-reserveringen aanschaffen via Azure Portal of het  [Partnercentrum](/partner-center/azure-reservations) .
+Als u een abonnement wilt kopen, moet u een eigenaarsrol voor het abonnement hebben in een zakelijke abonnement (MS-AZR-0017P of MS-AZR-0148P) of een abonnement waarvoor wordt betaald per gebruik (MS-AZR-0003P of MS-AZR-0023P) of een abonnement in een Microsoft-klantovereenkomst. Cloud Solution Providers kunnen Azure-reserveringen aanschaffen via Azure Portal of het  [Partnercentrum](/partner-center/azure-reservations) .
 
 Enterprise Agreement-klanten (EA) kunnen het aantal aankopen voor EA-beheerders beperken door de optie **Gereserveerde instanties toevoegen** in de EA-portal uit te schakelen. EA-beheerders moeten een abonnementseigenaar zijn voor minimaal één EA-abonnement om een reservering te kunnen aanschaffen. De optie is nuttig voor bedrijven die hun reserveringen voor verschillende kostenplaatsen willen laten aanschaffen door een gecentraliseerd team. Na de aankoop kunnen gecentraliseerde teams kostenplaatseigenaars aan de reserveringen toevoegen. Eigenaars kunnen de reservering vervolgens aan hun abonnementen koppelen. Het centraleteam heeft geen toegang als abonnementseigenaar nodig tot de locatie waar de reservering wordt aangeschaft.
 
-Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld aan abonnementen die via Enterprise, een Cloud Solution Provider (CSP) of afzonderlijk abonnementen met tarieven voor betalen per gebruik zijn aangeschaft.
+Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld aan abonnementen die via Enterprise, een Cloud Solution Provider (CSP), een Microsoft-klantovereenkomst of afzonderlijk abonnementen met tarieven voor betalen per gebruik zijn aangeschaft.
 
 ## <a name="scope-reservations"></a>Reserveringen koppelen
 
@@ -56,7 +56,7 @@ Met koppelen voor resourcegroepen beschikt u over drie opties om een reservering
 
 - **Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.
 - **Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.
-- **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de inschrijving de factureringscontext. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.
+- **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de inschrijving de factureringscontext. Voor Microsoft-klantovereenkomst-klanten is het factuurbereik het factureringsprofiel. Voor afzonderlijke abonnementen met tarieven voor betalen per gebruik is het factureringsbereik alle in aanmerking komende abonnementen die zijn gemaakt door de accountbeheerder.
 
 Wanneer u reserveringskorting op uw gebruik toepast, wordt de reservering in deze volgorde door Azure verwerkt:
 
@@ -84,7 +84,7 @@ U kunt het bereik altijd bijwerken nadat u een reservering hebt gekocht. Ga hier
 
 U kunt uw reserveringsgebruik op meerdere manieren bewaken, via Azure Portal, met API's of aan de hand van gebruiksgegevens. Ga naar **Reserveringen** in Azure Portal om alle reserveringen te zien waartoe u toegang hebt. In het raster met reserveringen ziet u het meest recent vastgelegde gebruikspercentage voor de reservering. Klik op de reservering om het gebruik van de reservering op lange termijn weer te geven.
 
-U kunt ook reserveringsgebruik krijgen met behulp van [API's](billing-reservation-apis.md#see-reservation-usage) en vanuit uw [gebruiksgegevens](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) als u een Enterprise Agreement-klant bent.
+U kunt ook reserveringsgebruik krijgen met behulp van [API's](billing-reservation-apis.md#see-reservation-usage) en vanuit uw [gebruiksgegevens](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) als u een Enterprise Agreement- of Microsoft-klantovereenkomst-klant bent.
 
 Als u ziet dat het gebruik van uw aan een resourcegroep gekoppelde reservering laag is, kunt u het reserveringsbereik bijwerken naar een enkel abonnement of delen binnen de factureringscontext. U kunt de reservering ook splitsen en de resulterende reserveringen op verschillende resourcegroepen toepassen.
 
@@ -99,6 +99,7 @@ Een reserveringsbereik wordt niet automatisch bijgewerkt als u de resourcegroep 
 Reserveringskortingen zijn van toepassing op de volgende in aanmerking komende typen abonnementen en aanbiedingen.
 
 - Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P)
+- Abonnementen met een Microsoft-klantovereenkomst.
 - Afzonderlijke abonnementen met tarieven voor betalen naar gebruik (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P)
 - CSP-abonnementen
 
@@ -106,7 +107,7 @@ Voor resources die voor een abonnement met andere typen aanbiedingen worden uitg
 
 ## <a name="how-is-a-reservation-billed"></a>Op welke manier wordt een reservering gefactureerd?
 
-De aangeschafte reservering wordt verrekend volgens de betalingswijze die is gekoppeld aan het abonnement. Als u een zakelijk abonnement hebt, worden de reserveringskosten afgetrokken van het saldo van uw financiële toezegging. Wanneer het saldo van uw financiële toezegging ontoereikend is voor de kosten van de reservering, wordt de overschrijding gefactureerd. Als u een abonnement hebt van een afzonderlijk plan met tarieven voor betalen per gebruik, worden kosten voor vooruitbetalingen onmiddellijk in rekening gebracht op de creditcard die in uw account is geregistreerd. Maandelijkse betalingen worden op uw factuur weergegeven en deze kosten worden maandelijks op uw creditcard in rekening gebracht. Wanneer u per factuur wordt gefactureerd, ziet u de kosten op uw volgende factuur.
+De aangeschafte reservering wordt verrekend volgens de betalingswijze die is gekoppeld aan het abonnement. De reserveringskosten worden afgetrokken van het saldo van uw financiële toezegging, indien beschikbaar. Wanneer het saldo van uw financiële toezegging ontoereikend is voor de kosten van de reservering, wordt de overschrijding gefactureerd. Als u een abonnement hebt van een afzonderlijk plan met tarieven voor betalen per gebruik, worden kosten voor vooruitbetalingen onmiddellijk in rekening gebracht op de creditcard die in uw account is geregistreerd. Maandelijkse betalingen worden op uw factuur weergegeven en deze kosten worden maandelijks op uw creditcard in rekening gebracht. Wanneer u per factuur wordt gefactureerd, ziet u de kosten op uw volgende factuur.
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
@@ -114,13 +115,13 @@ De reserveringskorting is van toepassing op het resourcegebruik dat overeenkomt 
 
 Voor een reserveringskorting geldt: *gebruiken of verliezen*. Als u geen overeenkomende resources voor eender welk uur hebt, verliest u een reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
 
-Wanneer u een resource afsluit, is de reserveringskorting automatisch van toepassing op een andere overeenkomende resource in het opgegeven bereik. Als er geen overeenkomende resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
+Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomende resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
 Stel dat u bijvoorbeeld later een resource wilt maken en dat u een ondergebruikte overeenkomende reservering hebt. De reserveringskorting is automatisch van toepassing op de nieuwe overeenkomende resource.
 
 Als de virtuele machines worden uitgevoerd in verschillende abonnementen binnen uw inschrijving/account, selecteert u het bereik als Gedeeld. Dankzij gedeeld bereik kan de reserveringskorting worden toegepast op verschillende abonnementen. U kunt het bereik wijzigen nadat u een reservering hebt gekocht. Zie [Azure-reserveringen beheren](billing-manage-reserved-vm-instance.md) voor meer informatie.
 
-Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld met Enterprise, CSP of abonnementen met tarieven voor betalen per gebruik. Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
+Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld met Enterprise, Microsoft-klantovereenkomst, CSP of abonnementen met tarieven voor betalen per gebruik. Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
 
 ## <a name="when-the-reservation-term-expires"></a>Wanneer de reserveringstermijn verloopt
 

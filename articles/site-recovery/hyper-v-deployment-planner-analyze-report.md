@@ -1,21 +1,21 @@
 ---
-title: Rapport van de Azure Site Recovery Deployment Planner voor herstel na noodgevallen van Hyper-V-machines naar Azure analyseren | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een rapport dat is gegenereerd door de Azure Site Recovery Deployment Planner voor herstel na noodgevallen van Hyper-V-machines naar Azure te analyseren.
+title: Analyseer het Azure Site Recovery Deployment Planner rapport voor nood herstel van virtuele Hyper-V-machines naar Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u een rapport analyseert dat is gegenereerd door de Azure Site Recovery Deployment Planner voor nood herstel van virtuele Hyper-V-machines naar Azure.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772730"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693592"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Rapport van de Azure Site Recovery-Implementatieplanner analyseren
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Het Azure Site Recovery Deployment Planner rapport analyseren
 In dit artikel worden de werkbladen in het Excel-rapport behandeld dat door de Azure Site Recovery-implementatieplanner voor Hyper-V naar Azure is gegenereerd.
 
 ## <a name="on-premises-summary"></a>Samenvatting on-premises
@@ -23,23 +23,23 @@ Het werkblad Samenvatting on-premises biedt een overzicht van de geprofileerde H
 
 ![Samenvatting on-premises](media/hyper-v-deployment-planner-analyze-report/on-premises-summary-h2a.png)
 
-**Begindatum** en **einddatum**: De begin- en einddatums van de profileringsgegevens die in aanmerking komen voor het genereren van rapporten. De begindatum is standaard de datum waarop de profilering start en de einddatum de datum waarop de profilering stopt. Deze informatie kunnen de waarden voor 'StartDate' en 'EndDate' zijn als het rapport met deze parameters wordt gegenereerd.
+**Begindatum** en **Einddatum** zijn de begin- en einddatums van de profileringsgegevens die in aanmerking komen voor het genereren van rapporten. De begindatum is standaard de datum waarop de profilering start en de einddatum de datum waarop de profilering stopt. Deze informatie kunnen de waarden voor 'StartDate' en 'EndDate' zijn als het rapport met deze parameters wordt gegenereerd.
 
-**Totale aantal dagen van profilering**: Het totale aantal dagen van profilering tussen de begin- en einddatum waarvoor het rapport wordt gegenereerd.
+**Totale aantal dagen van profilering**: het totale aantal dagen van profilering tussen de begin- en einddatum waarvoor het rapport wordt gegenereerd.
 
-**Aantal compatibele virtuele machines**: Het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het vereiste aantal opslagaccounts en Azure-kerngeheugens wordt berekend.
+**Aantal compatibele virtuele machine**: het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het vereiste aantal opslagaccounts en Azure-kerngeheugens wordt berekend.
 
-**Totale aantal schijven voor alle compatibele virtuele machines**: Het totale aantal schijven voor alle compatibele virtuele machines.
+**Totale aantal schijven voor alle compatibele virtuele machines**: het totale aantal schijven voor alle compatibele virtuele machines.
 
-**Gemiddeld aantal schijven per compatibele virtuele machine**: Het gemiddelde aantal schijven voor alle compatibele virtuele machines is berekend.
+**Gemiddeld aantal schijven per compatibele virtuele machine**: het gemiddelde aantal schijven dat voor alle compatibele virtuele machines is berekend.
 
-**Gemiddelde schijfgrootte (GB)** : De gemiddelde schijfgrootte die voor alle compatibele virtuele machines is berekend.
+**Gemiddelde schijfgrootte (GB)** : de gemiddelde schijfgrootte die voor alle compatibele virtuele machines is berekend.
 
-**Gewenste RPO (minuten)** : Ofwel de standaard herstelpunt of de waarde doorgegeven voor de parameter 'desiredrpo ' wordt op het moment van het rapport kunt u schatten van de vereiste bandbreedte.
+**Gewenste RPO (minuten)** : de standaard-RPO-waarde of de waarde die tijdens het genereren van het rapport voor de parameter 'DesiredRPO' wordt doorgegeven om de vereiste bandbreedte in te schatten.
 
-**Gewenste bandbreedte (Mbps)** : De waarde die u op het moment van het rapport kunt u schatten haalbare beoogde herstelpunt (RPO) doorgegeven voor de parameter 'Bandwidth'.
+**Gewenste bandbreedte (Mbps)** : de waarde die u tijdens het genereren van het rapport voor de parameter 'Bandwidth' hebt doorgegeven om het haalbare beoogde herstelpunt (RPO) in te schatten.
 
-**Waargenomen typisch gegevensverloop per dag (GB)** : Het gemiddelde gegevensverloop dat voor alle profileringsdagen is vastgesteld.
+**Waargenomen typisch gegevensverloop per dag (GB)** : het gemiddelde gegevensverloop dat voor alle profileringsdagen is vastgesteld.
 
 ## <a name="recommendations"></a>Aanbevelingen 
 Het werkblad met de aanbevelingen voor het Hyper-V naar Azure-rapport heeft de volgende gegevens aan de hand van de geselecteerde gewenste RPO:
@@ -49,31 +49,31 @@ Het werkblad met de aanbevelingen voor het Hyper-V naar Azure-rapport heeft de v
 ### <a name="profile-data"></a>Profielgegevens
 ![Profielgegevens](media/hyper-v-deployment-planner-analyze-report/profile-data-h2a.png)
 
-**Periode geprofileerde gegevens**: De periode gedurende welke de profilering is uitgevoerd. Het hulpprogramma neemt standaard alle geprofileerde gegevens in de berekening op. Als u voor het genereren van het rapport de optie StartDate en EndDate hebt gebruikt, wordt het rapport gegenereerd voor die specifieke periode. 
+**Periode geprofileerde gegevens**: de periode waarin de profilering is uitgevoerd. Het hulpprogramma neemt standaard alle geprofileerde gegevens in de berekening op. Als u voor het genereren van het rapport de optie StartDate en EndDate hebt gebruikt, wordt het rapport gegenereerd voor die specifieke periode. 
 
-**Aantal geprofileerde Hyper-V-servers**: Het aantal Hyper-V-servers waarvoor een VM-rapport wordt gegenereerd. Selecteer het aantal om de naam van de Hyper-V-servers weer te geven. Het werkblad On-premises opslagvereiste wordt geopend, waar alle servers samen met hun opslagvereisten worden weergegeven. 
+**Aantal geprofileerde Hyper-V-servers**: het aantal Hyper-V-servers waarvoor een VM-rapport wordt gemaakt. Selecteer het aantal om de naam van de Hyper-V-servers weer te geven. Het werkblad On-premises opslagvereiste wordt geopend, waar alle servers samen met hun opslagvereisten worden weergegeven. 
 
-**Gewenste RPO**: Het beoogde herstelpunt voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u tijdens het genereren van het rapport de parameter DesiredRPOinMin hebt gebruikt, wordt de betreffende waarde weergegeven bij het gewenste RPO-resultaat.
+**Gewenste RPO**: het gewenste beoogde herstelpunt (RPO) voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u tijdens het genereren van het rapport de parameter DesiredRPOinMin hebt gebruikt, wordt de betreffende waarde weergegeven bij het gewenste RPO-resultaat.
 
 ### <a name="profiling-overview"></a>Overzicht van profilering
 ![Overzicht van profilering](media/hyper-v-deployment-planner-analyze-report/profiling-overview-h2a.png)
 
-**Totaal aantal geprofileerde virtuele Machines**: Het totale aantal virtuele machines waarvan de geprofileerde gegevens beschikbaar is. Als het bestand dat is opgegeven bij VMListFile namen van virtuele machines bevat die niet zijn geprofileerd, worden deze virtuele machines niet meegenomen in het rapport en uitgesloten van het totale aantal geprofileerde virtuele machines.
+**Totale aantal geprofileerde virtuele machines**: het totale aantal virtuele machines waarvan de geprofileerde gegevens beschikbaar zijn. Als het bestand dat is opgegeven bij VMListFile namen van virtuele machines bevat die niet zijn geprofileerd, worden deze virtuele machines niet meegenomen in het rapport en uitgesloten van het totale aantal geprofileerde virtuele machines.
 
-**Compatibele virtuele Machines**: Het aantal virtuele machines die op Azure met behulp van Azure Site Recovery kan worden beveiligd. Dit is het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het aantal opslagaccounts en het aantal Azure-kerngeheugens wordt berekend. De details van elke compatibele virtuele machine zijn beschikbaar in de sectie 'Compatibele VM's'.
+**Compatibele virtuele machines**: het aantal virtuele machines dat op Azure kan worden beveiligd met Azure Site Recovery. Dit is het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het aantal opslagaccounts en het aantal Azure-kerngeheugens wordt berekend. De details van elke compatibele virtuele machine zijn beschikbaar in de sectie 'Compatibele VM's'.
 
-**Niet-compatibele virtuele Machines**: Het aantal geprofileerde virtuele machines die niet compatibel is met beveiliging met Site Recovery. De redenen voor incompatibiliteit worden vermeld in de sectie 'Niet-compatibele VM's'. Als het bestand dat is opgegeven bij VMListFile namen bevat van virtuele machines die niet zijn geprofileerd, worden die virtuele machines uitgesloten van het aantal niet-compatibele virtuele machines. Deze virtuele machines worden weergegeven als 'Gegevens niet gevonden' aan het einde van de sectie 'Niet-compatibele VM's'.
+**Niet-compatibele virtuele machines**: het aantal geprofileerde virtuele machines dat niet compatibel is met beveiliging met Site Recovery. De redenen voor incompatibiliteit worden vermeld in de sectie 'Niet-compatibele VM's'. Als het bestand dat is opgegeven bij VMListFile namen bevat van virtuele machines die niet zijn geprofileerd, worden die virtuele machines uitgesloten van het aantal niet-compatibele virtuele machines. Deze virtuele machines worden weergegeven als 'Gegevens niet gevonden' aan het einde van de sectie 'Niet-compatibele VM's'.
 
-**Gewenste RPO**: Uw gewenste herstelpunt objective, in minuten. Het rapport wordt gegenereerd voor drie RPO-waarden: 15 (standaard), 30 en 60 minuten. De aanbeveling voor bandbreedte in het rapport wordt gewijzigd op basis van uw selectie in de vervolgkeuzelijst **Gewenste RPO** in de rechterbovenhoek van het blad. Als u het rapport hebt gegenereerd met een aangepaste waarde voor de parameter -DesiredRPO, wordt deze aangepaste waarde als standaardwaarde weergegeven in de vervolgkeuzelijst **Gewenst RPO**.
+**Gewenste RPO**: het gewenste beoogde herstelpunt (Recovery Point Objective [RPO]) in minuten. Het rapport wordt gegenereerd voor drie RPO-waarden: 15 (standaard), 30 en 60 minuten. De aanbeveling voor bandbreedte in het rapport wordt gewijzigd op basis van uw selectie in de vervolgkeuzelijst **Gewenste RPO** in de rechterbovenhoek van het blad. Als u het rapport hebt gegenereerd met een aangepaste waarde voor de parameter -DesiredRPO, wordt deze aangepaste waarde als standaardwaarde weergegeven in de vervolgkeuzelijst **Gewenst RPO**.
 
 ### <a name="required-network-bandwidth-mbps"></a>Vereiste netwerkbandbreedte (Mbps)
 ![Vereiste netwerkbandbreedte](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
 
-**Om te voldoen aan de RPO 100% van de tijd**: De aanbevolen bandbreedte in Mbps die moet worden toegewezen om te voldoen aan uw gewenste RPO 100 procent van de tijd. Deze bandbreedte moet worden toegewezen voor onveranderlijke replicatie van verschillen bij al uw compatibele virtuele machines om eventuele RPO-schendingen te voorkomen.
+**Altijd aan de RPO voldoen:** de aanbevolen bandbreedte in Mbps die moet worden toegewezen om 100 procent van de tijd uw gewenste RPO te halen. Deze bandbreedte moet worden toegewezen voor onveranderlijke replicatie van verschillen bij al uw compatibele virtuele machines om eventuele RPO-schendingen te voorkomen.
 
-**Om te voldoen aan de RPO 90% van de tijd**: Niet mogelijk instellen vanwege bandbreedteprijzen of een andere reden de bandbreedte die nodig zijn om te voldoen aan uw gewenste RPO 100 procent van de tijd u. Als dit het geval is, kunt u een lagere bandbreedte-instelling gebruiken die 90% van de tijd aan de RPO kan voldoen. Voor inzicht in de gevolgen van het instellen van deze lagere bandbreedte bevat het rapport een wat-als-analyse van het aantal en de duur van de RPO-schendingen die u kunt verwachten.
+**90% van de tijd aan de RPO voldoen**: wellicht kunt u vanwege bandbreedteprijzen of andere redenen de bandbreedte niet instellen om altijd de RPO te halen. Als dit het geval is, kunt u een lagere bandbreedte-instelling gebruiken die 90% van de tijd aan de RPO kan voldoen. Voor inzicht in de gevolgen van het instellen van deze lagere bandbreedte bevat het rapport een wat-als-analyse van het aantal en de duur van de RPO-schendingen die u kunt verwachten.
 
-**Behaalde doorvoer**: De doorvoer van de server waarop u de GetThroughput-opdracht hebt uitgevoerd naar de Azure-regio waar het opslagaccount zich bevindt. Dit doorvoernummer geeft het geschatte niveau aan dat u kunt bereiken wanneer u de compatibele VM's beschermt met behulp van Site Recovery. De Hyper-V-serveropslag en de netwerkeigenschappen moeten dezelfde blijven als die van de server vanaf waar u het hulpprogramma uitvoert.
+**Behaalde doorvoer:** de doorvoer van de server waar u de GetThroughput-opdracht uitvoert naar de Azure-regio waar het opslagaccount zich bevindt. Dit doorvoernummer geeft het geschatte niveau aan dat u kunt bereiken wanneer u de compatibele VM's beschermt met behulp van Site Recovery. De Hyper-V-serveropslag en de netwerkeigenschappen moeten dezelfde blijven als die van de server vanaf waar u het hulpprogramma uitvoert.
 
 Voor alle Enterprise-implementaties van Site Recovery wordt het gebruik van [ExpressRoute](https://aka.ms/expressroute) aanbevolen.
 
@@ -121,21 +121,21 @@ De tijd die een initiële replicatie kost, is gebaseerd op de schijfgrootte van 
 ### <a name="cost-estimation"></a>Kostenraming
 De grafiek toont de weergave Samenvatting van de geschatte totale kosten voor noodherstel (DR) voor Azure van de gekozen doelregio en de valuta die u hebt opgegeven voor het genereren van rapporten.
 
-![Samenvatting kostenramingen](media/hyper-v-deployment-planner-analyze-report/cost-estimation-summary-h2a.png)
+![Kostenraming samenvatting](media/hyper-v-deployment-planner-analyze-report/cost-estimation-summary-h2a.png)
 
 De samenvatting helpt u bij het begrijpen van de kosten die u nodig hebt om te betalen voor opslag, rekensnelheid, netwerk en licentie wanneer u alle compatibele virtuele machines naar Azure met behulp van Site Recovery beveiligt. De kosten worden berekend op basis van compatibele virtuele machines en niet op basis van alle geprofileerde virtuele machines. 
  
 U kunt de kosten maandelijks of jaarlijks weergeven. Meer informatie over [ondersteunde doelregio's](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) en [ondersteunde valuta's](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Kosten per onderdelen**: De totale kosten voor Noodherstel zijn onderverdeeld in vier onderdelen: compute, opslag, netwerk en Site Recovery-licentiekosten. De kosten worden berekend op basis van het verbruik tijdens de replicatie en de tijd van de noodherstelanalyse. Rekenkosten, opslag (Premium en Standard), de ExpressRoute/VPN die is geconfigureerd tussen de on-premises site en Azure, en de Site Recovery-licentie worden gebruikt voor de berekeningen.
+**Kosten per onderdelen**: de totale kosten voor noodherstel zijn onderverdeeld in vier onderdelen: compute, opslag, netwerk en Site Recovery-licentiekosten. De kosten worden berekend op basis van het verbruik tijdens de replicatie en de tijd van de noodherstelanalyse. Rekenkosten, opslag (Premium en Standard), de ExpressRoute/VPN die is geconfigureerd tussen de on-premises site en Azure, en de Site Recovery-licentie worden gebruikt voor de berekeningen.
 
-**Kosten per status**: De kosten voor totaal noodherstel worden gecategoriseerd op basis van twee verschillende statussen: replicatie en noodherstelanalyse. 
+**Kosten per status**: de kosten voor een totaal noodherstel worden gecategoriseerd op basis van twee verschillende statussen: replicatie en noodherstelanalyse. 
 
-**Replicatiekosten**: De kosten die tijdens de replicatie is gemaakt. Dit zijn de kosten voor de opslag, het netwerk en de Site Recovery-licentie. 
+**Replicatiekosten**: de kosten die worden gemaakt tijdens de replicatie. Dit zijn de kosten voor de opslag, het netwerk en de Site Recovery-licentie. 
 
-**Kosten voor DR-oefeningen**: De kosten die is gemaakt tijdens testfailovers. Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve VM's. 
+**Kosten voor noodherstelanalyse**: de kosten die worden gemaakt tijdens testfailovers. Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve VM's. 
 
-**Azure-opslagkosten per maand/jaar**: Het staafdiagram toont de totale opslagkosten die worden gemaakt voor premium en standard-opslag voor replicatie en noodherstelanalyse. U vindt een gedetailleerde kostenanalyse per virtuele machine op het werkblad [Kostenraming](hyper-v-deployment-planner-cost-estimation.md).
+**Kosten voor Azure Storage per maand/jaar**: het staafdiagram toont de totale opslagkosten die worden gemaakt voor Premium- en Standard-opslag voor replicatie en noodherstelanalyse. Vindt u gedetailleerde kostenanalyse per virtuele machine in het blad [kostenraming](hyper-v-deployment-planner-cost-estimation.md).
 
 ### <a name="growth-factor-and-percentile-values-used"></a>Groeifactor en gebruikte percentielwaarden
 Deze sectie onder aan het werkblad toont de percentielwaarde die voor alle prestatiemeteritems van de geprofileerde virtuele machines wordt gebruikt (standaard is dit het 95e percentiel). Het toont ook de groeifactor in procenten die in alle berekeningen wordt gebruikt (standaard 30 procent).
@@ -152,17 +152,17 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 ## <a name="vm-storage-placement-recommendation"></a>Aanbeveling voor VM-opslagplaatsing 
 ![VM-opslagplaatsing](media/hyper-v-deployment-planner-analyze-report/vm-storage-placement-h2a.png)
 
-**Type schijfopslag**: Ofwel een standard- of premium storage-account dat wordt gebruikt voor het repliceren van alle bijbehorende virtuele machines die worden vermeld de **te plaatsen VM's** kolom.
+**Type schijfopslag**: het type opslagaccount (Standard Storage of Premium Storage) dat wordt gebruikt voor het repliceren van alle bijbehorende virtuele machines in de kolom **Te plaatsen VM's**.
 
-**Voorgestelde voorvoegsel**: De voorgestelde voorvoegsel van drie tekens die kan worden gebruikt voor het benoemen van het storage-account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
+**Voorgestelde voorvoegsel**: het voorgestelde voorvoegsel, bestaande uit drie tekens, dat kan worden gebruikt voor de naam van het opslagaccount. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
 
-**Voorgestelde accountnaam**: De naam van opslagaccount na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
+**Voorgestelde accountnaam**: de naam van het opslagaccount na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
 
-**Logboekopslagaccount**: Alle replicatielogboeken worden opgeslagen in een standard storage-account. In het geval van virtuele machines die repliceren naar een Premium Storage-account moet u een extra opslagaccount van het type Standard instellen voor het opslaan van logboeken. Eén Standard-account voor het opslaan van logboeken kan worden gebruikt door meerdere Premium-opslagaccounts voor replicatie. Virtuele machines die worden gerepliceerd naar een Standard-opslagaccount gebruiken hetzelfde account voor het opslaan van logboeken.
+**Logboekopslagaccount**: alle replicatielogboeken worden opgeslagen in een opslagaccount van het type Standard. In het geval van virtuele machines die repliceren naar een Premium Storage-account moet u een extra opslagaccount van het type Standard instellen voor het opslaan van logboeken. Eén Standard-account voor het opslaan van logboeken kan worden gebruikt door meerdere Premium-opslagaccounts voor replicatie. Virtuele machines die worden gerepliceerd naar een Standard-opslagaccount gebruiken hetzelfde account voor het opslaan van logboeken.
 
-**Voorgestelde Logboekaccountnaam**: Logboekaccountnaam van uw opslagaccount na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
+**Voorgestelde naam logboekaccount**: de naam van het account voor het opslaan van logboeken na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
 
-**Plaatsing samenvatting**: Een overzicht van het totale aantal virtuele machines de belasting van het storage-account op het moment van replicatie en failover of testfailover. De samenvatting omvat:
+**Plaatsing samenvatting**: een samenvatting van de belasting van het totale aantal virtuele machines in het opslagaccount tijdens replicatie en testfailover of failover. De samenvatting omvat:
 
 * Het totaalaantal VM's dat is toegewezen aan het opslagaccount. 
 * Het totaalaantal IOPS voor lezen/schrijven over alle VM's die in dit opslagaccount worden geplaatst.
@@ -170,16 +170,16 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 * De totale installatiegrootte over alle schijven.
 * Het totaalaantal schijven.
 
-**Te plaatsen VM's**: Een lijst van alle virtuele machines die moeten worden geplaatst in het opgegeven opslagaccount voor optimale prestaties en het gebruik.
+**Te plaatsen VM's**: een lijst van alle virtuele machines die in het opgegeven opslagaccount moeten worden geplaatst voor optimale prestaties en optimaal gebruik.
 
 ## <a name="compatible-vms"></a>Compatibele VM's
 Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner bevat alle gegevens over de compatibele VM's op het werkblad 'Compatibele VM's'.
 
 ![Compatibele VM's](media/hyper-v-deployment-planner-analyze-report/compatible-vms-h2a.png)
 
-**VM-naam**: De naam van de VM die wordt gebruikt in de opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VHD's) die aan de virtuele machines zijn gekoppeld. De namen zijn onder andere de namen van de Hyper-V-hosts waar de virtuele machines zijn geplaatst toen ze door het hulpprogramma werden gedetecteerd tijdens de profileringsperiode.
+**VM-naam**: de naam van de virtuele machine, die wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VHD's) die aan de virtuele machines zijn gekoppeld. De namen zijn onder andere de namen van de Hyper-V-hosts waar de virtuele machines zijn geplaatst toen ze door het hulpprogramma werden gedetecteerd tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: Waarden zijn **Ja** en **Ja**\*. **Ja** \* is bedoeld voor gevallen waarin de virtuele machine een geschikt is voor [premium SSD's](../virtual-machines/windows/disks-types.md). Hier past het geprofileerde hoge verloop of IOPS bij een grotere Premium-schijfgrootte dan bij de grootte die is toegewezen aan de schijf. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte: 
+**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja**\*. **Ja** \* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Hier past het geprofileerde hoge verloop of IOPS bij een grotere Premium-schijfgrootte dan bij de grootte die is toegewezen aan de schijf. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte: 
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15.
 * 256 GB tot 512 GB is een P20.
@@ -187,40 +187,40 @@ Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner 
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf op grond van de grootte ervan aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf door grootte aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
-**Opslagtype**: Standard of premium.
+**Opslagtype**: Standard of Premium.
 
-**Voorgestelde voorvoegsel**: Het voorvoegsel van drie tekens storage-account.
+**Voorgestelde voorvoegsel**: het voorvoegsel van drie tekens van het opslagaccount.
 
-**Storage-Account**: De naam die gebruikmaakt van het voorvoegsel van de voorgestelde storage-account.
+**Opslagaccount**: de naam die gebruikmaakt van het voorgestelde voorvoegsel voor het opslagaccount.
 
-**R/W IOPS (met groeifactor) pieken**: De piek werkbelasting IOPS voor lezen/schrijven op de schijf (de standaardwaarde is 95e percentiel) samen met de toekomstige groeifactor (standaard is 30 procent). De totale IOPS voor lezen/schrijven van een VM is niet altijd de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM. De piek IOPS voor lezen/schrijven van de VM is de piek van de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
+**Piek IOPS voor lezen/schrijven (met groeifactor)** : de piekworkload-IOPS voor lezen/schrijven op de schijf (standaard het 95e percentiel) samen met de toekomstige groeifactor (standaard 30 procent). De totale IOPS voor lezen/schrijven van een VM is niet altijd de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM. De piek IOPS voor lezen/schrijven van de VM is de piek van de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
 
-**Piek voor Gegevensverloop in MB/s (met groeifactor)** : Het piekverloop op de schijf (de standaardwaarde is 95e percentiel) samen met de toekomstige groeifactor (standaard is 30 procent). De totale gegevensverloop van de VM is niet altijd de som van de gegevensverloop van afzonderlijke schijven van de VM. De piekgegevensverloop van de VM is de piek van de som van de verloop van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
+**Piek voor gegevensverloop in Mb/s (met groeifactor)** : het piekverloop op de schijf (standaard het 95e percentiel), samen met de toekomstige groeifactor (standaard 30 procent). De totale gegevensverloop van de VM is niet altijd de som van de gegevensverloop van afzonderlijke schijven van de VM. De piekgegevensverloop van de VM is de piek van de som van de verloop van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
 
-**Azure VM-grootte**: De ideale toegewezen grootte van de virtuele machine in Azure Cloud Services voor deze on-premises virtuele machine. De toewijzing is gebaseerd op het geheugen, het aantal schijven/kerngeheugens/NIC's en de IOPS voor lezen/schrijven van de on-premises VM. De aanbeveling is altijd de laagste Azure VM-grootte die overeenkomt met alle kenmerken van de on-premises virtuele machine.
+**Azure VM-grootte**: de ideale toegewezen grootte voor virtuele machines van Azure Cloud Services voor deze on-premises VM. De toewijzing is gebaseerd op het geheugen, het aantal schijven/kerngeheugens/NIC's en de IOPS voor lezen/schrijven van de on-premises VM. De aanbeveling is altijd de laagste Azure VM-grootte die overeenkomt met alle kenmerken van de on-premises virtuele machine.
 
-**Aantal schijven**: Het totale aantal schijven (VHD's) van virtuele machines op de virtuele machine.
+**Aantal schijven**: het totale aantal schijven (VHD's) op de virtuele machine.
 
-**Schijfgrootte (GB)** : De totale grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
+**Schijfgrootte (GB)** : de totale grootte van alle schijven op de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
 
-**Kernen**: Het aantal CPU-kernen op de virtuele machine.
+**Kerngeheugens**: het aantal CPU-kerngeheugens van de virtuele machine.
 
-**Geheugen (MB)** : Het RAM-geheugen op de virtuele machine.
+**Geheugen (MB)** : het RAM-geheugen van de virtuele machine.
 
-**NIC's**: Het aantal NIC's op de virtuele machine.
+**NIC's**: het aantal NIC's van de virtuele machine.
 
-**Opstarttype**: Het opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.
+**Opstarttype**: het opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.
 
 ## <a name="incompatible-vms"></a>Niet-compatibele VM's
 Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner bevat alle gegevens over de niet-compatibele VM's op het werkblad 'Niet-compatibele VM's'.
 
 ![Niet-compatibele VM's](media/hyper-v-deployment-planner-analyze-report/incompatible-vms-h2a.png)
 
-**VM-naam**: De naam van de VM die wordt gebruikt in de opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VHD's) die aan de virtuele machines zijn gekoppeld. De namen zijn onder andere de namen van de Hyper-V-hosts waar de virtuele machines zijn geplaatst toen ze door het hulpprogramma werden gedetecteerd tijdens de profileringsperiode.
+**VM-naam**: de naam van de virtuele machine, die wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VHD's) die aan de virtuele machines zijn gekoppeld. De namen zijn onder andere de namen van de Hyper-V-hosts waar de virtuele machines zijn geplaatst toen ze door het hulpprogramma werden gedetecteerd tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: Geeft aan waarom de virtuele machine is niet compatibel voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
+**VM-compatibiliteit**: geeft aan waarom de virtuele machine niet compatibel is voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
 
 * De grootte van de schijf is groter dan 4095 GB. Azure Storage biedt momenteel geen ondersteuning voor gegevensschijven groter dan 4095 GB.
 
@@ -246,27 +246,27 @@ Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner 
 
 * De bron-IOPS is groter dan de ondersteunde IOPS-limiet voor opslag van 80.000 per VM.
 
-* Het gemiddelde gegevensverloop van de bron-VM overschrijdt de ondersteunde Site Recovery-limiet voor gegevensverloop van 10 MB/s voor de gemiddelde I/O-grootte voor de schijf.
+* Het gemiddelde gegevens verloop van de bron-VM overschrijdt de ondersteunde Site Recovery gegevens verloop limiet van 20 MB/s voor de gemiddelde I/O-grootte.
 
 * De gemiddelde effectieve schrijf-IOPS van de bron-VM overschrijdt de ondersteunde IOPS-limiet van Site Recovery van 840 voor schijven.
 
 * De berekende opslag voor momentopnamen overschrijdt de ondersteunde opslaglimiet van 10 TB voor momentopnamen.
 
-**R/W IOPS (met groeifactor) pieken**: De piekworkload-IOPS op de schijf (de standaardwaarde is 95e percentiel) samen met de toekomstige groeifactor (standaard is 30 procent). De piek IOPS voor lezen/schrijven van de VM is niet altijd de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM. De IOPS voor lezen/schrijven van de VM is de piek van de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
+**Piek IOPS voor lezen/schrijven (met groeifactor)** : de piekworkload-IOPS op de schijf (standaard het 95e percentiel), samen met de toekomstige groeifactor (standaard 30%). De piek IOPS voor lezen/schrijven van de VM is niet altijd de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM. De IOPS voor lezen/schrijven van de VM is de piek van de som van de IOPS voor lezen/schrijven van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
 
-**Piek voor Gegevensverloop (MB/s) (met groeifactor)** : Het piekverloop op de schijf (de standaardwaarde is 95e percentiel) samen met de toekomstige groeifactor (standaard is 30 procent). Onthoud dat de totale gegevensverloop van de VM niet altijd de som is van de gegevensverlopen van afzonderlijke schijven van de VM. De piekgegevensverloop van de VM is de piek van de som van de verloop van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
+**Piek voor gegevensverloop (Mb/s) (met groeifactor)** : het piekverloop op de schijf (standaard het 95e percentiel), samen met de toekomstige groeifactor (standaard 30 procent). Onthoud dat de totale gegevensverloop van de VM niet altijd de som is van de gegevensverlopen van afzonderlijke schijven van de VM. De piekgegevensverloop van de VM is de piek van de som van de verloop van afzonderlijke schijven van de VM gedurende elke minuut van de profileringsperiode.
 
-**Aantal schijven**: Het totale aantal VHD's op de virtuele machine.
+**Aantal schijven**: het totale aantal VHD's van de virtuele machine.
 
-**Schijfgrootte (GB)** : De totale ingestelde grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
+**Schijfgrootte (GB)** : de totale ingestelde grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
 
-**Kernen**: Het aantal CPU-kernen op de virtuele machine.
+**Kerngeheugens**: het aantal CPU-kerngeheugens van de virtuele machine.
 
-**Geheugen (MB)** : De hoeveelheid RAM-geheugen op de virtuele machine.
+**Geheugen (MB)** : de hoeveelheid RAM-geheugen van de virtuele machine.
 
-**NIC's**: Het aantal NIC's op de virtuele machine.
+**NIC's**: het aantal NIC's van de virtuele machine.
 
-**Opstarttype**: Het opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.
+**Opstarttype**: het opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-limieten
 De volgende tabel bevat de Site Recovery-limieten. Deze limieten zijn gebaseerd op tests, maar dekken niet alle mogelijke toepassings-I/O-combinaties. De werkelijke resultaten kunnen variëren op basis van uw toepassings-I/O-combinatie. Voor optimale resultaten, zelfs na het plannen van de implementatie, moet u toepassingen uitgebreid testen met behulp van een testfailover. Zo krijgt u een nauwkeurig inzicht in de prestaties van de applicatie.
@@ -274,8 +274,8 @@ De volgende tabel bevat de Site Recovery-limieten. Deze limieten zijn gebaseerd 
 **Beoogde replicatieopslag** | **Gemiddelde I/O-grootte van bron-VM** |**Gemiddeld gegevensverloop van bron-VM** | **Totale gegevensverloop van bron-VM per dag**
 ---|---|---|---
 Standard Storage | 8 kB | 2 MB/s per VM | 168 GB per VM
-Premium Storage | 8 kB  | 5 MB/s per VM | 421 GB per VM
-Premium Storage | 16 kB of hoger| 20 MB/s per virtuele machine | 1684 GB per virtuele machine
+Premium-opslag | 8 kB  | 5 MB/s per VM | 421 GB per VM
+Premium-opslag | 16 kB of hoger| 20 MB/s per VM | 1684 GB per VM
 
 Deze limieten zijn gemiddelden uitgaande van een I/O-overlapping van 30%. Site Recovery kan een hogere doorvoer verwerken op basis van overlappingsverhouding, grotere schrijfgrootten en daadwerkelijk workload-I/O-gedrag. De bovenstaande waarden zijn gebaseerd op een typische backlog van ongeveer vijf minuten. Dat wil zeggen dat de gegevens na het uploaden binnen vijf minuten worden verwerkt en er een herstelpunt is gemaakt.
 
@@ -296,15 +296,15 @@ Het werkblad toont de totale vrije ruimte opslagvereiste voor elk volume van de 
     Als er onvoldoende vrije ruimte is om de logboekbestanden op te slaan, wordt de replicatie onderbroken. De replicatiestatus van de VM meldt dat er 'synchronisatie is vereist'.
 * Als er onvoldoende netwerkbandbreedte is om de logboekbestanden naar Azure te pushen, stapelen de logboekbestanden zich op het volume op. In het ergste geval, waarbij de grootte van logboekbestanden tot 50 procent van de grootte van de VHD toeneemt, gaat de replicatie van de VM over in een status met het bericht 'hersynchronisatie vereist'. In het ergste geval hebt u voor de replicatie van verschillen 50 procent van de VHD-grootte aan extra vrije ruimte nodig.
 
-**Hyper-V-host**: De lijst met geprofileerde Hyper-V-servers. Als een server deel uitmaakt van een Hyper-V-cluster, worden alle clusterknooppunten gegroepeerd.
+**Hyper-V-host**: de lijst met geprofileerde Hyper-V-servers. Als een server deel uitmaakt van een Hyper-V-cluster, worden alle clusterknooppunten gegroepeerd.
 
-**Volume (VHD path)** : Elk volume van een Hyper-V-host waar VHD/vhdx-bestanden aanwezig zijn. 
+**Volume (VHD-pad)** : elk volume van een Hyper-V-host waar VHD's/VHDX-en aanwezig zijn. 
 
-**Vrije ruimte beschikbaar (GB)** : De vrije ruimte beschikbaar op het volume.
+**Vrije beschikbare (GB)** : de hoeveelheid vrije ruimte op het volume.
 
-**Totale opslagruimte vereist op het volume (GB)** : Totale vrije opslagruimte vereist op het volume voor een geslaagde initiële replicatie en replicatie van verschillen. 
+**Totale opslagruimte vereist op het volume (GB)** : de totale vrije opslagruimte die op het volume is vereist voor een geslaagde initiële replicatie en replicatie van verschillen. 
 
-**Totaal aantal extra opslagruimte worden ingericht op het volume voor een geslaagde replicatie (GB)** : Dit is de aanbevolen de hoeveelheid totale extra ruimte die moet worden ingericht op het volume voor een geslaagde initiële replicatie en replicatie van verschillen.
+**Totaal aan extra opslagruimte dat moet worden ingericht op het volume voor een geslaagde replicatie (GB)** : dit is de aanbevolen hoeveelheid totale extra ruimte die moet worden ingericht op het volume voor een geslaagde initiële replicatie en replicatie van verschillen.
 
 ## <a name="initial-replication-batching"></a>Initiële replicatie via batchverwerking 
 
@@ -321,38 +321,38 @@ Nadat u de aanbeveling voor lokale vereiste opslag voor elk volume hebt opgevolg
 ![Aanvullende batchverwerkingdetails IR](media/hyper-v-deployment-planner-analyze-report/ir-batching-for-rpo2-h2a.png)
 
 ### <a name="each-batch-provides-the-following-information"></a>Elke batch biedt de volgende informatie 
-**Hyper-V-host**: De Hyper-V-host van de virtuele machine moet worden beveiligd.
+**Hyper-V-host**: de Hyper-V-host van de virtuele machine die moet worden beveiligd.
 
-**Virtuele Machine**: De virtuele machine moet worden beveiligd. 
+**Virtuele machine**: de VM die moet worden beveiligd. 
 
-**Opmerkingen**: Als geen actie vereist voor een bepaald volume van een virtuele machine is, wordt hier de opmerking verstrekt. Als er bijvoorbeeld niet voldoende vrije ruimte beschikbaar is op een volume, wordt hier de opmerking 'Extra opslag toevoegen om deze VM te beveiligen' weergegeven.
+**Opmerkingen**: als voor een bepaald volume van een virtuele machine een actie is vereist, wordt hier een opmerking weergegeven. Als er bijvoorbeeld niet voldoende vrije ruimte beschikbaar is op een volume, wordt hier de opmerking 'Extra opslag toevoegen om deze VM te beveiligen' weergegeven.
 
-**Volume (VHD path)** : De naam van het volume waar de VM VHD's zich bevinden. 
+**Volume (VHD-pad)** : de naam van het volume waar de VHD's van de VM zich bevinden. 
 
-**Vrije ruimte beschikbaar op het volume (GB)** : De vrije schijfruimte beschikbaar op het volume voor de virtuele machine. Bij het berekenen van de beschikbare vrije ruimte op de volumes, wordt rekening gehouden met de schijfruimte die wordt gebruikt voor de replicatie van verschillen voor de virtuele machines in de vorige batches waarvan de VHD's zich op hetzelfde volume bevinden. 
+**Vrije ruimte beschikbaar op het volume (GB)** : de vrije schijfruimte die voor de virtuele machine beschikbaar is op het volume. Bij het berekenen van de beschikbare vrije ruimte op de volumes, wordt rekening gehouden met de schijfruimte die wordt gebruikt voor de replicatie van verschillen voor de virtuele machines in de vorige batches waarvan de VHD's zich op hetzelfde volume bevinden. 
 
 Bijvoorbeeld, VM1, VM2 en VM3 bevinden zich op een volume zoals E:\VHDpath. Vóór de replicatie is er 500 GB aan vrije ruimte op het volume. VM1 maakt deel uit van batch 1, VM2 maakt deel uit van batch 2 en VM3 maakt deel uit van batch 3. Voor VM1 is er 500 G aan vrije ruimte beschikbaar. Voor VM2 is 500 vrije ruimte beschikbaar, de schijfruimte die is vereist voor een replicatie van verschillen voor VM1. Als er voor VM1 300 GB ruimte nodig is voor een replicatie van verschillen, dan bedraagt de vrije ruimte die beschikbaar is voor VM2 500 GB – 300 GB = 200 GB. Voor een replicatie van verschillen van VM2 zou er dus 300 GB nodig zijn. De hoeveelheid vrije ruimte voor VM3 is 200 GB - 300 GB =-100 GB.
 
-**Opslagruimte vereist op het volume voor de initiële replicatie (GB)** : De beschikbare opslagruimte vereist op het volume voor de virtuele machine voor de initiële replicatie.
+**Opslagruimte vereist op het volume (GB) voor een initiële replicatie**: de vrije opslagruimte die op het volume is vereist om een initiële replicatie voor de virtuele machine te kunnen uitvoeren.
 
-**Opslagruimte vereist op het volume voor de replicatie van verschillen (GB)** : De beschikbare opslagruimte vereist op het volume voor de virtuele machine voor replicatie van verschillen.
+**Opslagruimte vereist op het volume (GB) voor een replicatie van verschillen**: de vrije opslagruimte die op het volume is vereist om een replicatie van verschillen voor de virtuele machine te kunnen uitvoeren.
 
-**Extra opslag vereist op basis van tekort Replicatiefout (GB)** : De extra opslagruimte vereist op het volume voor de virtuele machine. Dit is de maximale hoeveelheid opslagruimte, minus de beschikbare ruimte op het volume, die is vereist voor een initiële replicatie en een replicatie van verschillen.
+**Extra opslag vereist op basis van een tekort dat een replicatiefout zou veroorzaken (GB)** : de extra vereiste opslagruimte op het volume voor de virtuele machine. Dit is de maximale hoeveelheid opslagruimte, minus de beschikbare ruimte op het volume, die is vereist voor een initiële replicatie en een replicatie van verschillen.
 
-**Minimale bandbreedte vereist voor de initiële replicatie (Mbps)** : De minimale bandbreedte vereist voor de initiële replicatie voor de virtuele machine.
+**Minimale bandbreedte vereist voor initiële replicatie (Mbps)** : de minimale bandbreedte die is vereist voor de initiële replicatie voor de virtuele machine.
 
-**Minimale bandbreedte vereist voor replicatie van verschillen (Mbps)** : De minimale bandbreedte vereist voor replicatie van verschillen voor de virtuele machine.
+**Minimale bandbreedte vereist voor replicatie van verschillen (Mbps)** : de minimale bandbreedte die is vereist voor de replicatie van verschillen voor de VM.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Gegevens over het netwerkgebruik voor elke batch 
 Elke tabel bevat een samenvatting van het netwerkgebruik van de batch.
 
-**Bandbreedte beschikbaar voor batch**: De bandbreedte die beschikbaar zijn voor de batch na de vorige batch delta-replicatiebandbreedte overweegt.
+**Bandbreedte beschikbaar voor batch**: de bandbreedte die beschikbaar is voor de batch, rekening houdend met de bandbreedte voor de replicatie van verschillen van de vorige batch.
 
-**Geschatte bandbreedte die beschikbaar is voor de initiële replicatie van batch**: De bandbreedte die beschikbaar zijn voor de initiële replicatie van de virtuele machines van de batch. 
+**Geschatte bandbreedte beschikbaar voor initiële replicatie van batch**: de bandbreedte die beschikbaar is voor een initiële replicatie van de virtuele machines van de batch. 
 
-**Voor replicatie van verschillen van batch verbruikte bandbreedte**: De bandbreedte die nodig zijn voor replicatie van verschillen van de virtuele machines van de batch. 
+**Verbruikte bandbreedte initiële replicatie van verschillen van batch**: de bandbreedte die beschikbaar is voor een replicatie van verschillen van de virtuele machines van de batch. 
 
-**Geschatte tijd van de initiële replicatie voor batch (uu: mm)** : De tijd van de geschatte initiële replicatie in uren: minuten.
+**Geschatte tijd van de initiële replicatie voor batch (uu:mm)** : de geschatte tijd voor de initiële replicatie in uren:minuten.
 
 
 

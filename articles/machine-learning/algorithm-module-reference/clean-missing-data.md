@@ -1,5 +1,5 @@
 ---
-title: 'Ontbrekende gegevens wissen: Module verwijzing'
+title: 'Ontbrekende gegevens wissen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module clean missing data in Azure Machine Learning service om ontbrekende waarden te verwijderen, te vervangen of af te leiden.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a65e8224b00bb592d6e0e42abdd304cf325d4412
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128940"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693203"
 ---
 # <a name="clean-missing-data-module"></a>Ontbrekende gegevens module wissen
 
@@ -50,9 +50,9 @@ Met deze module kunt u een reinigings bewerking definiëren. U kunt ook de opsch
 
 Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepast op een set gegevens, wordt dezelfde reinigings bewerking toegepast op alle kolommen die u selecteert. Als u verschillende kolommen met verschillende methoden wilt opschonen, gebruikt u daarom afzonderlijke exemplaren van de module.
 
-1.  Voeg de module [clean Missing Data](./clean-missing-data.md) toe aan uw experiment en verbind de gegevensset met ontbrekende waarden.  
+1.  Voeg de module [clean Missing Data](./clean-missing-data.md) toe aan de pijp lijn en verbind de gegevensset met ontbrekende waarden.  
   
-2.  **Als u kolommen wilt**opschonen, kiest u de kolommen die de ontbrekende waarden bevatten die u wilt wijzigen. U kunt meerdere kolommen kiezen, maar u moet dezelfde vervangings methode gebruiken in alle geselecteerde kolommen. Normaal gesp roken moet u de teken reeks kolommen en numerieke kolommen afzonderlijk opschonen.
+2.  **Als u kolommen wilt opschonen**, kiest u de kolommen die de ontbrekende waarden bevatten die u wilt wijzigen. U kunt meerdere kolommen kiezen, maar u moet dezelfde vervangings methode gebruiken in alle geselecteerde kolommen. Normaal gesp roken moet u de teken reeks kolommen en numerieke kolommen afzonderlijk opschonen.
 
     Als u bijvoorbeeld wilt controleren op ontbrekende waarden in alle numerieke kolommen:
 
@@ -63,13 +63,13 @@ Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepas
 
     3. Voor **opnemen**selecteert u in de vervolg keuzelijst het **kolom Type** en selecteert u vervolgens **Numeriek**of een specifiek numeriek type. 
   
-    Elke opschonings-of vervangings methode die u kiest, moet van toepassing zijn op **alle** kolommen in de selectie. Als de gegevens in een kolom incompatibel zijn met de opgegeven bewerking, retourneert de module een fout en wordt het experiment gestopt.
+    Elke opschonings-of vervangings methode die u kiest, moet van toepassing zijn op **alle** kolommen in de selectie. Als de gegevens in een kolom incompatibel zijn met de opgegeven bewerking, retourneert de module een fout en stopt de pijp lijn.
   
 3.  Geef voor de **minimale waarde**van de vereiste voor de ondergrens het minimale aantal ontbrekende waarden op dat vereist is voor de bewerking die moet worden uitgevoerd.  
   
     U gebruikt deze optie in combi natie met de **Maxi maal ontbrekende waarde ratio** om de voor waarden te definiëren waaronder een reinigings bewerking wordt uitgevoerd op de gegevensset. Als er te veel of te weinig rijen zijn met ontbrekende waarden, kan de bewerking niet worden uitgevoerd. 
   
-    Het getal dat u invoert, vertegenwoordigt de **verhouding** van ontbrekende waarden voor alle waarden in de kolom. Standaard is de **minimale waarde** voor de eigenschap quoted ontbreekt ingesteld op 0. Dit betekent dat ontbrekende waarden worden opgeschoond, zelfs als er slechts één ontbrekende waarde is. 
+    Het getal dat u invoert, vertegenwoordigt de **verhouding** van ontbrekende waarden voor alle waarden in de kolom. Standaard is de minimale waarde voor de eigenschap **quoted ontbreekt** ingesteld op 0. Dit betekent dat ontbrekende waarden worden opgeschoond, zelfs als er slechts één ontbrekende waarde is. 
 
     > [!WARNING]
     > Aan deze voor waarde moet elke kolom worden voldaan om de opgegeven bewerking toe te passen. Stel dat u drie kolommen hebt geselecteerd en vervolgens de minimale verhouding van ontbrekende waarden instelt op .2 (20%), maar er in slechts één kolom 20% waarden ontbreken. In dit geval is de opschoon bewerking alleen van toepassing op de kolom met meer dan 20% ontbrekende waarden. Daarom worden de andere kolommen niet gewijzigd.
@@ -87,23 +87,23 @@ Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepas
 5. Voor de **reinigings modus**selecteert u een van de volgende opties voor het vervangen of verwijderen van ontbrekende waarden:  
   
   
-    + **Aangepaste vervangings waarde**: Gebruik deze optie om een tijdelijke aanduiding voor waarden (zoals 0 of N.V.T.) op te geven die van toepassing is op alle ontbrekende waarde. De waarde die u opgeeft als vervanging moet compatibel zijn met het gegevens type van de kolom.
+    + **Aangepaste vervangings waarde**: gebruik deze optie om een tijdelijke aanduiding voor waarden (zoals 0 of n.v.t.) op te geven die van toepassing is op alle ontbrekende waarde. De waarde die u opgeeft als vervanging moet compatibel zijn met het gegevens type van de kolom.
   
-    + **Vervangen door gemiddelde**: Hiermee wordt het gemiddelde van de kolom berekend en wordt het gemiddelde gebruikt als de vervangings waarde voor elke ontbrekende waarde in de kolom.  
+    + **Vervangen door gemiddelde**: berekent het gemiddelde van de kolom en gebruikt het gemiddelde als de vervangings waarde voor elke ontbrekende waarde in de kolom.  
   
         Is alleen van toepassing op kolommen met gegevens typen integer, Double of Boolean.  
   
-    + **Vervangen door mediaan**: Hiermee wordt de waarde van de kolom mediaan berekend en wordt de mediaan waarde gebruikt als vervanging voor een ontbrekende waarde in de kolom.  
+    + **Vervangen door mediaan**: berekent de kolom mediaan waarde en gebruikt de mediaan waarde als vervanging voor een ontbrekende waarde in de kolom.  
   
         Is alleen van toepassing op kolommen met het gegevens type integer of double. 
   
-    + **Vervangen door modus**: Hiermee wordt de modus voor de kolom berekend en wordt de modus gebruikt als de vervangings waarde voor elke ontbrekende waarde in de kolom.  
+    + **Vervangen door modus**: berekent de modus voor de kolom en gebruikt de modus als de vervangings waarde voor elke ontbrekende waarde in de kolom.  
   
         Is van toepassing op kolommen met het gegevens type integer, double, Boolean of categorische. 
   
-    + **Volledige rij verwijderen**: Hiermee wordt een rij in de gegevensset met een of meer ontbrekende waarden volledig verwijderd. Dit is handig als de ontbrekende waarde kan worden beschouwd als wille keurig ontbrekend.  
+    + **Hele rij verwijderen**: Hiermee verwijdert u alle rijen in de gegevensset met een of meer ontbrekende waarden. Dit is handig als de ontbrekende waarde kan worden beschouwd als wille keurig ontbrekend.  
   
-    + **Volledige kolom verwijderen**: Hiermee verwijdert u alle kolommen in de gegevensset met een of meer ontbrekende waarden.  
+    + **Hele kolom verwijderen**: Hiermee verwijdert u alle kolommen in de gegevensset met een of meer ontbrekende waarden volledig.  
   
     
   
@@ -113,27 +113,27 @@ Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepas
   
 7. **Indicator kolom voor ontbrekende waarde genereren**: Selecteer deze optie als u een bepaalde indicatie wilt uitvoeren van de vraag of de waarden in de kolom voldoen aan de criteria voor het schoonmaken van ontbrekende waarden. Deze optie is met name handig wanneer u een nieuwe reinigings bewerking instelt en er zeker van wilt zijn dat deze goed werkt.
   
-8. Voer het experiment uit.
+8. Voer de pijplijn uit.
 
 ### <a name="results"></a>Resultaten
 
 De module retourneert twee uitvoer:  
 
--   **Opgeschoonde gegevensset**: Een gegevensset die bestaat uit de geselecteerde kolommen, waarbij ontbrekende waarden worden verwerkt zoals opgegeven, samen met een indicator kolom, als u die optie hebt geselecteerd.  
+-   **Opgeschoonde gegevensset**: een gegevensset die bestaat uit de geselecteerde kolommen, waarbij ontbrekende waarden worden verwerkt zoals opgegeven, samen met een indicator kolom, als u die optie hebt geselecteerd.  
 
     Kolommen die niet zijn geselecteerd voor het opschonen, zijn ook ' door gegeven '.  
   
--  **Trans formatie**opschonen: Een gegevens transformatie die wordt gebruikt voor het opschonen, die in uw werk ruimte kan worden opgeslagen en later op nieuwe gegevens kan worden toegepast.
+-  **Reinigings transformatie**: een gegevens transformatie die wordt gebruikt voor het opschonen, die in uw werk ruimte kan worden opgeslagen en later op nieuwe gegevens kan worden toegepast.
 
 ### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Een opgeslagen opschonings bewerking Toep assen op nieuwe gegevens  
 
 Als u vaak reinigings bewerkingen wilt herhalen, kunt u het beste uw recept opslaan voor het opschonen van gegevens als een *trans formatie*. Het opslaan van een reinigings transformatie is met name handig als u regel matig opnieuw moet importeren en vervolgens gegevens met hetzelfde schema wilt opschonen.  
       
-1.  Voeg de module [trans formatie Toep assen](./apply-transformation.md) toe aan uw experiment.  
+1.  Voeg de module [trans formatie Toep assen](./apply-transformation.md) toe aan uw pijp lijn.  
   
 2.  Voeg de gegevensset die u wilt reinigen toe en verbind de gegevensset met de juiste invoer poort.  
   
-3.  Vouw de groep **trans formaties** uit in het linkerdeel venster van de interface. Zoek de opgeslagen trans formatie en sleep deze naar het experiment.  
+3.  Vouw de groep **trans formaties** uit in het linkerdeel venster van de interface. Zoek de opgeslagen trans formatie en sleep deze naar de pijp lijn.  
   
 4.  Verbind de opgeslagen trans formatie met de linker invoer poort van [Apply trans formatie](./apply-transformation.md). 
 
@@ -141,7 +141,7 @@ Als u vaak reinigings bewerkingen wilt herhalen, kunt u het beste uw recept opsl
 
     Stel dat u een trans formatie hebt gemaakt voor een subset met numerieke kolommen. U kunt deze trans formatie Toep assen op een gegevensset van gemengde kolom typen zonder een fout te verhogen, omdat de ontbrekende waarden alleen worden gewijzigd in de overeenkomende numerieke kolommen.
 
-6.  Voer het experiment uit.  
+6.  Voer de pijplijn uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

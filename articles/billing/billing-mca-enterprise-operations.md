@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709543"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375481"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Enterprise Agreement-taken uitvoeren in uw factureringsaccount voor een Microsoft-klantovereenkomst
 
@@ -27,7 +27,7 @@ Als uw organisatie een Microsoft-klantovereenkomst heeft ondertekend om uw Enter
 
 In het volgende diagram wordt beschreven hoe facturering is georganiseerd in het nieuwe factureringsaccount.
 
-![Afbeelding van ea-mca-post-transition-hierarchy](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Afbeelding van ea-mca-post-transition-hierarchy](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Enterprise Agreement   | Microsoft-klantovereenkomst    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Als u cumulatieve kosten wilt weergeven voor abonnementen die bij een account ho
 
 Voor elk factureringsprofiel in uw factureringsaccount wordt een maandelijkse factuur gegenereerd. Voor elke factuur kunt u een CSV-bestand met gebruiksgegevens en kosten van Azure, het prijzenoverzicht en belastingdocumenten (indien van toepassing) downloaden. U kunt ook een CSV-bestand met deze gegevens downloaden voor de kosten van de huidige maand.
 
-Zie [Gebruiksgegevens voor uw Microsoft-klantovereenkomst downloaden](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement) als u wilt weten hoe u het CSV-bestand met gebruiksgegevens en kosten van Azure kunt downloaden.
+Zie [Gebruiksgegevens voor uw Microsoft-klantovereenkomst downloaden](billing-download-azure-daily-usage.md) als u wilt weten hoe u het CSV-bestand met gebruiksgegevens en kosten van Azure kunt downloaden.
 
-Zie [Prijzenoverzichten voor de huidige factureringsperiode downloaden](billing-ea-pricing.md#microsoft-customer-agreement-pricing) als u wilt weten hoe u een prijzenoverzicht kunt downloaden.
+Zie [Prijzenoverzichten voor de huidige factureringsperiode downloaden](billing-ea-pricing.md) als u wilt weten hoe u een prijzenoverzicht kunt downloaden.
 
 Zie [Belastingdocumenten voor uw Microsoft-klantovereenkomst weergeven](billing-mca-download-tax-document.md#view-and-download-tax-documents) als u wilt weten hoe u belastingdocumenten kunt downloaden.
 
@@ -90,7 +90,7 @@ Maak een factuursectie om uw kosten te ordenen op basis van uw behoeften, net al
 
 ### <a name="create-a-new-account"></a>Een nieuw account maken
 
-Geef gebruikers de rol Maker van Azure-abonnement voor factuursecties om ze toestemming te geven om een Azure-abonnement te maken, zoals de accounts die worden gemaakt tijdens de inschrijving bij Enterprise Agreement. Zie [Anderen toestemming geven](billing-mca-create-subscription.md#give-others-permission) voor meer informatie.
+Geef gebruikers de rol Maker van Azure-abonnement voor factuursecties om ze toestemming te geven om een Azure-abonnement te maken, zoals de accounts die worden gemaakt tijdens de inschrijving bij Enterprise Agreement. Raadpleeg [Factureringsrollen beheren in de Azure-portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) voor meer informatie over het toewijzen van rollen
 
 ## <a name="changes-for-department-administrators"></a>Wijzigingen voor afdelingsbeheerders
 
@@ -116,7 +116,7 @@ Zie [Factureringsrollen beheren in de Azure-portal](billing-understand-mca-roles
 
 ### <a name="create-a-new-account-in-your-department"></a>Een nieuw account maken in uw afdeling
 
-Wijs de rol Maker van Azure-abonnement toe aan gebruikers voor de factuursectie die voor uw afdeling is gemaakt. Zie [Anderen toestemming geven](billing-mca-create-subscription.md#give-others-permission) voor meer informatie.
+Wijs de rol Maker van Azure-abonnement toe aan gebruikers voor de factuursectie die voor uw afdeling is gemaakt. Raadpleeg [Factureringsrollen beheren in de Azure-portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) voor meer informatie over het toewijzen van rollen
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Kosten voor accounts in uw afdelingen weergeven
 

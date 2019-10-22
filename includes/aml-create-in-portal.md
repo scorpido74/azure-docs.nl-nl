@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
 ms.openlocfilehash: 1da2afc6c0dfa0571d6e7ccbf358bb574aa736c5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71830071"
 ---
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor het Azure-abonnement dat u gebruikt. 
@@ -30,12 +30,12 @@ ms.locfileid: "71830071"
 
 1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
 
-   Veld|Description 
+   Veld|Beschrijving 
    ---|---
-   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
-   Subscription |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resource group | Gebruik een bestaande resource groep in uw abonnement of voer een naam in om een nieuwe resource groep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
-   Location | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
+   Werkruimte naam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
+   Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
+   Resourcegroep | Gebruik een bestaande resource groep in uw abonnement of voer een naam in om een nieuwe resource groep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
 
 1. Nadat u klaar bent met het configureren van de werk ruimte, selecteert u **maken**. 
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257597"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure-blauwdruk voor beveiliging en naleving: Analytics voor FedRAMP
@@ -73,20 +73,20 @@ De volgende sectie bevat informatie over de ontwikkelings-en implementatie-eleme
 
 ![alternatieve tekst](images/fedramp-analytics-components.png?raw=true "Diagram analyse voor FedRAMP-onderdelen")
 
-**Azure functions**: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) zijn oplossingen voor het uitvoeren van kleine stukjes code in de Cloud via de meeste programmeer talen. Functies in deze oplossing worden geïntegreerd met Azure Storage om automatisch klant gegevens in de Cloud op te halen en de integratie met andere Azure-Services te vergemakkelijken. Functies zijn eenvoudig schaalbaar en worden alleen kosten in rekening gebracht wanneer ze worden uitgevoerd.
+**Azure functions**: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) oplossingen voor het uitvoeren van kleine stukjes code in de Cloud via de meeste programmeer talen. Functies in deze oplossing worden geïntegreerd met Azure Storage om automatisch klant gegevens in de Cloud op te halen en de integratie met andere Azure-Services te vergemakkelijken. Functies zijn eenvoudig schaalbaar en worden alleen kosten in rekening gebracht wanneer ze worden uitgevoerd.
 
-**Azure Analysis Service**: [Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) biedt bedrijfsgegevens modellering en-integratie met Azure data platform-Services. Azure Analysis Service versnelt het bladeren door enorme hoeveel heden gegevens door gegevens uit meerdere bronnen te combi neren in één gegevens model.
+**Azure Analysis Service**: [Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) biedt hoogwaardige gegevens modellering en-integratie met Azure data platform-Services. Azure Analysis Service versnelt het bladeren door enorme hoeveel heden gegevens door gegevens uit meerdere bronnen te combi neren in één gegevens model.
 
-**Power BI**: [Power bi](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) biedt analyse-en rapportage functionaliteit voor klanten die proberen meer inzicht te krijgen in hun gegevens verwerkings inspanningen.
+**Power bi**: [Power bi](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) biedt analyse-en rapportage functionaliteit voor klanten die proberen meer inzicht te krijgen in hun gegevens verwerkings inspanningen.
 
-### <a name="networking"></a>Netwerken
-**Netwerk beveiligings groepen**: [Nsg's](../../virtual-network/virtual-network-vnet-plan-design-arm.md) worden ingesteld voor het beheren van verkeer dat is gericht op geïmplementeerde bronnen en services. Netwerk beveiligings groepen worden ingesteld op een schema voor weigeren volgens standaard en geven alleen verkeer toe dat is opgenomen in de vooraf geconfigureerde Access Control lijst (ACL).
+### <a name="networking"></a>Networking
+**Netwerk beveiligings groepen**: [nsg's](../../virtual-network/virtual-network-vnet-plan-design-arm.md) worden ingesteld voor het beheren van verkeer dat is gericht op geïmplementeerde bronnen en services. Netwerk beveiligings groepen worden ingesteld op een schema voor weigeren volgens standaard en geven alleen verkeer toe dat is opgenomen in de vooraf geconfigureerde Access Control lijst (ACL).
 
 Voor elk van de Nsg's zijn specifieke poorten en protocollen geopend, zodat de oplossing veilig en goed werkt. Daarnaast zijn de volgende configuraties ingeschakeld voor elke NSG:
   - [Diagnostische logboeken en gebeurtenissen](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) worden ingeschakeld en opgeslagen in een opslag account
   - [Azure monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md) is verbonden met de diagnostische logboeken van de NSG.
 
-### <a name="data-at-rest"></a>Data-at-rest
+### <a name="data-at-rest"></a>Inactieve gegevens
 De architectuur beveiligt gegevens op rest door versleuteling, database controle en andere metingen.
 
 **Gegevens replicatie** Azure Government heeft twee opties voor [gegevens replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy):
@@ -95,7 +95,7 @@ De architectuur beveiligt gegevens op rest door versleuteling, database controle
 
 **Azure Storage** Om te voldoen aan de versleutelde gegevens op rest-vereisten, gebruiken alle services die zijn geïmplementeerd in deze referentie architectuur [Azure Storage](https://azure.microsoft.com/services/storage/), die gegevens opslaat met [Storage service Encryption](../../storage/common/storage-service-encryption.md).
 
-AzureDiskEncryption
+**Azure Disk Encryption** 
 [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) maakt gebruik van de BitLocker-functie van Windows om volume versleuteling te bieden voor besturings systeem-en gegevens schijven. De oplossing kan worden geïntegreerd met Azure Key Vault om de versleutelings sleutels voor de schijf te controleren en te beheren.
 
 **Azure SQL database** Het Azure SQL Database exemplaar maakt gebruik van de volgende data base Security-maat eenheden:
@@ -110,16 +110,16 @@ AzureDiskEncryption
 ### <a name="logging-and-audit"></a>Logboek registratie en controle
 [Azure monitor](../../azure-monitor/overview.md) genereert een volledige weer gave van bewakings gegevens, waaronder activiteiten logboeken, metrische gegevens en diagnoses, waarmee klanten een volledig beeld van de systeem status kunnen maken.  
 [Azure monitor logboeken](../azure-security-disk-encryption-overview.md) biedt uitgebreide logboek registratie van systeem-en gebruikers activiteiten, evenals de systeem status. Het verzamelt en analyseert gegevens die zijn gegenereerd door resources in Azure-en on-premises omgevingen.
-- **Activiteiten logboeken**: [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement.
-- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken en Azure Blob-opslag, tabellen en wachtrij Logboeken.
-- **Firewall logboeken**: De Application Gateway biedt volledige diagnostische en toegangs logboeken. Er zijn firewall-logboeken beschikbaar voor WAF Application Gateway-resources.
-- **Archivering van Logboeken**: Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering met een gedefinieerde Bewaar periode van 2 dagen. Deze logboeken maken verbinding met Azure Monitor logboeken voor verwerking, opslag en dashboard rapportage.
+- **Activiteiten logboeken**: [activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement.
+- **Diagnostische logboeken**: [Diagnostische](../../azure-monitor/platform/resource-logs-overview.md) logboeken bevatten alle logboeken die worden verzonden door elke resource. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken en Azure Blob-opslag, tabellen en wachtrij Logboeken.
+- **Firewall logboeken**: de Application Gateway biedt volledige diagnostische en toegangs logboeken. Er zijn firewall-logboeken beschikbaar voor WAF Application Gateway-resources.
+- **Logboek archivering**: alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering met een gedefinieerde Bewaar periode van twee dagen. Deze logboeken maken verbinding met Azure Monitor logboeken voor verwerking, opslag en dashboard rapportage.
 
 Daarnaast zijn de volgende bewakings oplossingen opgenomen als onderdeel van deze architectuur:
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Met de Azure Automation oplossing worden runbooks opgeslagen, uitgevoerd en beheerd.
--   [Beveiliging en audit](../../security-center/security-center-intro.md): Het Beveiliging en audit-dash board biedt een hoog niveau inzicht in de beveiligings status van bronnen door metrische gegevens op te geven over beveiligings domeinen, belang rijke problemen, detecties, bedreigings informatie en algemene beveiligings query's.
--   [SQL-evaluatie](../../azure-monitor/insights/sql-assessment.md): De SQL Health Check-oplossing evalueert het risico en de status van de server omgevingen met een regel matig interval en biedt klanten een lijst met prioriteiten die specifiek zijn voor de geïmplementeerde server infrastructuur.
--   [Azure-activiteiten logboeken](../../azure-monitor/platform/collect-activity-logs.md): De Analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): met de Azure Automation oplossing worden runbooks opgeslagen, uitgevoerd en beheerd.
+-   [Beveiliging en audit](../../security-center/security-center-intro.md): het beveiliging en audit dash board biedt een hoog niveau inzicht in de beveiligings status van bronnen door metrische gegevens te verstrekken over beveiligings domeinen, belang rijke problemen, detecties, bedreigings informatie en algemene beveiligings query's.
+-   [SQL-evaluatie](../../azure-monitor/insights/sql-assessment.md): de SQL Health Check-oplossing evalueert het risico en de status van server omgevingen met een regel matig interval en biedt klanten een lijst met prioriteiten die specifiek zijn voor de geïmplementeerde server infrastructuur.
+-   [Azure-activiteiten logboeken](../../azure-monitor/platform/collect-activity-logs.md): de analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
 
 ### <a name="identity-management"></a>Identiteitsbeheer
 -   Verificatie voor de toepassing wordt uitgevoerd met behulp van Azure AD. Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)voor meer informatie. Daarnaast maakt de database kolom versleuteling gebruik van Azure AD om de toepassing te verifiëren voor Azure SQL Database. Zie voor meer informatie hoe u [gevoelige gegevens in SQL database kunt beveiligen](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
@@ -129,7 +129,7 @@ Daarnaast zijn de volgende bewakings oplossingen opgenomen als onderdeel van dez
 Voor meer informatie over het gebruik van de beveiligings functies van Azure SQL Database raadpleegt u de voorbeeld [toepassing contoso Clinic demo](https://github.com/Microsoft/azure-sql-security-sample) .
 
 ### <a name="security"></a>Beveiliging
-**Beheer van geheimen**: De oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt.
+**Geheimen beheer**: de oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt.
 
 ## <a name="guidance-and-recommendations"></a>Richt lijnen en aanbevelingen
 
@@ -139,25 +139,25 @@ Voor meer informatie over het gebruik van de beveiligings functies van Azure SQL
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory instellen
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) is essentieel voor het beheren van de implementatie en het inrichten van de toegang tot mede werkers met de omgeving. Een bestaande Windows Server-Active Directory kan in [vier klikken](../../active-directory/hybrid/how-to-connect-install-express.md)met Aad worden geïntegreerd. Klanten kunnen de geïmplementeerde Active Directory-infra structuur (domein controllers) ook koppelen aan een bestaande AAD door de geïmplementeerde Active Directory-infra structuur een subdomein van een AAD-forest te maken.
 
-### <a name="additional-services"></a>Extra services
+### <a name="additional-services"></a>Aanvullende services
 #### <a name="iaas---vm-considerations"></a>IaaS-VM-overwegingen
 In deze PaaS-oplossing zijn geen Azure IaaS-Vm's opgenomen. Een klant kan een virtuele machine van Azure maken om veel van deze PaaS-services uit te voeren. In dit geval kunnen specifieke functies en services voor bedrijfs continuïteit en Azure Monitor logboeken worden gebruikt:
 
 ##### <a name="business-continuity"></a>Bedrijfscontinuïteit
-- **Hoge beschikbaarheid**: Server werkbelastingen worden gegroepeerd in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) om te zorgen voor een hoge Beschik baarheid van virtuele machines in Azure. Er is ten minste één virtuele machine beschikbaar tijdens een geplande of niet-geplande onderhouds gebeurtenis die voldoet aan de 99,95% Azure SLA.
+- **Hoge Beschik baarheid**: Server werkbelastingen worden gegroepeerd in een [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) om te zorgen voor een hoge Beschik baarheid van virtuele machines in Azure. Er is ten minste één virtuele machine beschikbaar tijdens een geplande of niet-geplande onderhouds gebeurtenis die voldoet aan de 99,95% Azure SLA.
 
-- **Recovery Services kluis**: De [Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) maakt back-upgegevens en beveiligt alle configuraties van Azure virtual machines in deze architectuur. Met een Recovery Services kluis kunnen klanten bestanden en mappen herstellen vanaf een IaaS-VM zonder de hele virtuele machine te herstellen, waardoor de herstel tijd sneller verloopt.
+- **Recovery Services kluis**: de [Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) maakt back-upgegevens en beveiligt alle configuraties van Azure virtual machines in deze architectuur. Met een Recovery Services kluis kunnen klanten bestanden en mappen herstellen vanaf een IaaS-VM zonder de hele virtuele machine te herstellen, waardoor de herstel tijd sneller verloopt.
 
 ##### <a name="monitoring-solutions"></a>Bewakingsoplossingen
--   [Ad-evaluatie](../../azure-monitor/insights/ad-assessment.md): De Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
--   [Anitmalware-evaluatie](../../security-center/security-center-install-endpoint-protection.md): De antimalware-oplossing rapporteert over malware, bedreigingen en de beveiligings status.
--   [Updatebeheer](../../automation/automation-update-management.md): Met de Updatebeheer oplossing kan het klant beheer van beveiligings updates van besturings systemen worden uitgevoerd, inclusief de status van beschik bare updates en het proces voor het installeren van vereiste updates.
--   [Status van agent](../../monitoring/monitoring-solution-agenthealth.md): De Status van agent oplossing meldt hoeveel agents zijn geïmplementeerd en wat hun geografische distributie zijn, en hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
--   [Wijzigingen bijhouden](../../automation/change-tracking.md): Met de Wijzigingen bijhouden oplossing kunnen klanten eenvoudig wijzigingen in de omgeving identificeren.
+-   [Ad-evaluatie](../../azure-monitor/insights/ad-assessment.md): de Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
+-   [Anitmalware-evaluatie](../../security-center/security-center-install-endpoint-protection.md): de antimalware-oplossing rapporteert op malware, bedreigingen en beveiligings status.
+-   [Updatebeheer](../../automation/automation-update-management.md): met de updatebeheer oplossing kan het klant beheer van beveiligings updates van besturings systemen worden uitgevoerd, inclusief de status van beschik bare updates en het proces voor het installeren van vereiste updates.
+-   [Status van agent](../../monitoring/monitoring-solution-agenthealth.md): de status van agent oplossing rapporteert hoeveel agents er zijn geïmplementeerd en wat hun geografische distributie zijn, en hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
+-   [Wijzigingen bijhouden](../../automation/change-tracking.md): met de wijzigingen bijhouden oplossing kunnen klanten eenvoudig wijzigingen in de omgeving identificeren.
 
 ##### <a name="security"></a>Beveiliging
-- **Bescherming tegen schadelijke software**: [Micro soft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) voor virtual machines biedt realtime beschermings mogelijkheden waarmee u virussen, spyware en andere schadelijke software kunt identificeren en verwijderen, met Configureer bare waarschuwingen wanneer bekende of ongewenste software probeert om op beveiligde virtuele machines installeren of uitvoeren.
-- **Patch beheer**: Virtuele Windows-machines die zijn geïmplementeerd als onderdeel van deze referentie architectuur, worden standaard geconfigureerd voor het ontvangen van automatische updates van Windows Update-service. Deze oplossing omvat ook de [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) -service waarmee bijgewerkte implementaties kunnen worden gemaakt om virtuele machines te patchen wanneer dat nodig is.
+- **Bescherming tegen schadelijke software**: [micro soft antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) voor virtual machines biedt real-time beschermings mogelijkheden waarmee u virussen, spyware en andere schadelijke software kunt identificeren en verwijderen, met Configureer bare waarschuwingen wanneer bekende kwaad aardige of ongewenste software probeert te installeren of uit te voeren op beveiligde virtuele machines.
+- **Patch Management**: virtuele Windows-machines die zijn geïmplementeerd als onderdeel van deze referentie architectuur, worden standaard geconfigureerd voor het ontvangen van automatische updates van Windows Update-service. Deze oplossing omvat ook de [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) -service waarmee bijgewerkte implementaties kunnen worden gemaakt om virtuele machines te patchen wanneer dat nodig is.
 
 #### <a name="azure-commercial"></a>Azure-Commercial
 Hoewel deze architectuur voor gegevens analyse niet is bedoeld voor implementatie naar de [Azure-commerciële](https://azure.microsoft.com/overview/what-is-azure/) omgeving, kunnen vergelijk bare doel stellingen worden bereikt via de services die worden beschreven in deze referentie architectuur, evenals extra services die beschikbaar zijn alleen in de bedrijfs omgeving van Azure. Houd er rekening mee dat Azure Commercial een FedRAMP JAB P-ATO onderhoudt op het niveau van de gemiddelde impact, waardoor overheids instellingen en partners tamelijk gevoelige informatie kunnen implementeren in de Cloud met behulp van de Azure-commerciële omgeving.

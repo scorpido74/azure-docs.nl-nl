@@ -1,5 +1,5 @@
 ---
-title: 'Rijen toevoegen: Module verwijzing'
+title: 'Rijen toevoegen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning service om twee gegevens sets samen te voegen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129014"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693240"
 ---
 # <a name="add-rows-module"></a>Module rijen toevoegen
 
@@ -32,11 +32,11 @@ Het samen voegen van rijen is handig in scenario's zoals:
 
 Als u rijen wilt samen voegen vanuit twee gegevens sets, moeten de rijen precies hetzelfde schema hebben. Dit betekent dat hetzelfde aantal kolommen en hetzelfde type gegevens in de kolommen.
 
-1.  Sleep de module **rijen toevoegen** naar het experiment, u kunt deze vinden onder **gegevens transformatie**in de categorie **bewerken** .
+1.  Sleep de module **rijen toevoegen** naar uw pijp lijn, u kunt deze vinden onder **gegevens transformatie**in de categorie **bewerken** .
 
 2. Verbind de gegevens sets met de twee invoer poorten. De gegevensset die u wilt toevoegen, moet zijn verbonden met de tweede poort (rechts). 
   
-3.  Voer het experiment uit. Het aantal rijen in de uitvoer gegevensset moet gelijk zijn aan de som van de rijen van beide invoer gegevens sets.
+3.  Voer de pijplijn uit. Het aantal rijen in de uitvoer gegevensset moet gelijk zijn aan de som van de rijen van beide invoer gegevens sets.
 
     Als u dezelfde gegevensset toevoegt aan beide invoer van de module **rijen toevoegen** , wordt de gegevensset gedupliceerd. 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Regressie van Neural-netwerk: Module verwijzing'
+title: 'Neural netwerk regressie: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de Neural-module voor netwerk regressie in Azure Machine Learning service om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128575"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692741"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
 *Hiermee maakt u een regressie model met behulp van een Neural-netwerk algoritme*  
   
- Rubriek Model/regressie Machine Learning/initialiseren
+ Categorie: model/regressie Machine Learning/initialiseren
   
 ## <a name="module-overview"></a>Module overzicht  
 
@@ -30,7 +30,7 @@ Gebruik deze module om een regressie model te maken met behulp van een aanpasbaa
   
  Hoewel Neural-netwerken algemeen bekend zijn voor gebruik in diep gaande lessen en het model leren van complexe problemen, zoals afbeeldings herkenning, kunnen ze eenvoudig worden aangepast aan regressie problemen. Een klasse van statistische modellen kan een Neural-netwerk worden genoemd als ze adaptieve gewichten gebruiken en niet-lineaire functies van hun invoer kunnen benaderen. Daarom is Neural netwerk regressie geschikt voor problemen waarbij een meer traditioneel regressie model niet aan een oplossing kan voldoen.
   
- Neural Network regressie is een gemarkeerde leer methode en vereist daarom een *gecodeerde gegevensset*, die een kolom Label bevat. Omdat een regressie model een numerieke waarde voor spelt, moet de kolom Label een numeriek gegevens type zijn.  
+ Neural Network regressie is een *gemarkeerde*leer methode en vereist daarom een gecodeerde gegevensset, die een kolom Label bevat. Omdat een regressie model een numerieke waarde voor spelt, moet de kolom Label een numeriek gegevens type zijn.  
   
  U kunt het model trainen door het model en de gecodeerde gegevensset op te geven als invoer voor het [trainen van modellen](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden te voors pellen voor de nieuwe invoer voorbeelden.  
   
@@ -52,7 +52,7 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Een Neural-netwerk model maken met behulp van de standaard architectuur
   
-1.  Voeg de Neural-module voor **netwerk regressie** toe aan uw experiment in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
+1.  Voeg de **Neural-module netwerk regressie** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
   
 2. Geef aan hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
@@ -70,30 +70,30 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
   
 5.  Voor het **leer tempo**typt u een waarde die de stap definieert die bij elke herhaling moet worden uitgevoerd, vóór correctie. Een hogere waarde voor het leer tempo kan ertoe leiden dat het model sneller wordt geconvergeerd, maar dat het lokale minima kan overschrijden.
 
-6.  Geef voor **aantal Learning**-iteraties het maximum aantal keren op dat het algoritme de trainings cases verwerkt.
+6.  Geef voor **aantal Learning-iteraties**het maximum aantal keren op dat het algoritme de trainings cases verwerkt.
 
 7.  Voor * * de aanvankelijke leer gewicht diameter, typt u een waarde die de knooppunt gewichten aan het begin van het leer proces bepaalt.
 
 8.  Voor **de impuls**typt u een waarde die tijdens het leren moet worden toegepast als gewicht op knoop punten uit eerdere iteraties.
 
-10. Selecteer de optie, **wille keurige voor beelden**om de volg orde van de aanvragen tussen herhalingen te wijzigen. Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u het experiment uitvoert.
+10. Selecteer de optie, **wille keurige voor beelden**om de volg orde van de aanvragen tussen herhalingen te wijzigen. Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u de pijp lijn uitvoert.
   
-11. Voor **wille keurig getal zaad**kunt u eventueel een waarde invoeren die als seed moet worden gebruikt. Het opgeven van een Seed-waarde is handig als u de Herhaal baarheid van hetzelfde experiment wilt garanderen.
+11. Voor **wille keurig getal zaad**kunt u eventueel een waarde invoeren die als seed moet worden gebruikt. Het opgeven van een Seed-waarde is handig als u de Herhaal baarheid wilt garanderen voor uitvoeringen van dezelfde pijp lijn.
   
 13. Verbind een trainings gegevensset en een van de [trainings modules](module-reference.md): 
   
     -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u [Train model](./train-model.md).  
   
    
-14. Voer het experiment uit.  
+14. Voer de pijplijn uit.  
 
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u visualiseren.  
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u **visualiseren**.  
 
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de getrainde **model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van hetzelfde experiment.
++ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van dezelfde pijp lijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

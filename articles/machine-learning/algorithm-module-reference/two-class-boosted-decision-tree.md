@@ -1,5 +1,5 @@
 ---
-title: 'Versterkte beslissings structuur met twee klassen: Module verwijzing'
+title: 'Versterkte beslissings structuur met twee klassen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de geboostte beslissings structuur module met twee klassen in Azure Machine Learning service om een machine learning model te maken dat is gebaseerd op het gestimuleerde beslissings structuren algoritme.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128407"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692637"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Uitmuntende beslissings structuur module met twee klassen
 
@@ -32,11 +32,11 @@ Deze module maakt een niet-getraind classificatie model. Omdat classificatie een
 
 U kunt dit type model trainen met [Train model](././train-model.md). 
 
-1.  Voeg in Azure Machine Learning de uitgeboostte **beslissings structuur** module toe aan uw experiment.
+1.  Voeg in Azure Machine Learning de **Uitgeboostte beslissings structuur** module toe aan uw pijp lijn.
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
   
-    + **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    + **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
   
   
 3.  Voor het **maximum aantal Leaves per structuur**geeft u het maximum aantal Terminal knooppunten (bladeren) op dat in een wille keurige structuur kan worden gemaakt.
@@ -69,7 +69,7 @@ U kunt dit type model trainen met [Train model](././train-model.md).
 
 Nadat de model training is voltooid, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) om de resultaten weer te geven:
 
-+ Selecteer visualiseren om de structuur te zien die op elke iteratieis gemaakt. 
++ Selecteer **visualiseren**om de structuur te zien die op elke iteratie is gemaakt. 
 + Als u wilt inzoomen op de splitsingen en de regels voor elk knoop punt wilt weer geven, klikt u op elke boom structuur.
 
 

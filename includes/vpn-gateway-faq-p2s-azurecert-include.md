@@ -9,10 +9,10 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69520830"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -31,11 +31,11 @@ U kunt uw Enterprise PKI-oplossing (uw interne PKI), Azure PowerShell, MakeCert 
 
 ### <a name="certsettings"></a>Zijn er instructies voor het instellen van het certificaat en de parameters?
 
-* **Interne PKI/Enter prise PKI-oplossing:** Zie de stappen voor het [genereren van certificaten](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Interne PKI/Enterprise PKI-oplossing:** zie de stappen om [certificaten te genereren](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 
-* **Azure PowerShell:** Raadpleeg het [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) -artikel voor stappen.
+* **Azure PowerShell:** zie het [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md)-artikel voor een stappenplan.
 
-* **MakeCert:** Zie het artikel [makecert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) voor stappen.
+* **MakeCert:** zie het [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)-artikel voor een stappenplan.
 
 * **OpenSSL:** 
 

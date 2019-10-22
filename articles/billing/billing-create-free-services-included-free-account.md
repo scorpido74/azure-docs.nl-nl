@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709686"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375809"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Services maken die zijn inbegrepen bij een gratis Azure-account
 
-Een gratis Azure-account omvat een beperkt aantal gratis services voor de duur van 12 maanden. Zie [Wat is een gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor meer informatie. Azure houdt uw gebruik van elke service bij en brengt geen kosten in rekening, tenzij u de limieten overschrijdt. Binnen deze limieten biedt het gratis Azure-account de nodige flexibiliteit voor gebruik van verschillende serviceconfiguraties om te voldoen aan uw behoeften.
+Uw gratis Azure-account omvat een beperkt aantal gratis services voor de duur van 12 maanden. Binnen deze limieten hebt u de nodige flexibiliteit voor gebruik van verschillende serviceconfiguraties om te voldoen aan uw behoeften.
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Gratis services maken in de Azure-portal
-U wordt aangeraden de [pagina Gratis services](https://go.microsoft.com/fwlink/?linkid=859151) te gebruiken om nieuwe services te maken. U kunt zich ook aanmelden bij de [Azure-portal](https://portal.azure.com), **Alle services** aan de linkerkant selecteren en zoeken naar **gratis services**.
+U wordt aangeraden de link naar de [pagina Gratis services](https://go.microsoft.com/fwlink/?linkid=859151) te gebruiken om nieuwe services te maken. U kunt zich ook aanmelden bij de [Azure-portal](https://portal.azure.com) en zoeken naar **gratis services**. Wanneer u services maakt op de pagina Gratis services, zijn de meeste velden al voor u ingesteld zodat u gemakkelijk gratis services kunt maken.
+
+![Schermopname van het de pagina Gratis services](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>Services kunnen in elke regio worden gemaakt
 Zolang u binnen de limieten blijft, kunt u gratis services maken in elke regio waar services beschikbaar zijn. U krijgt bijvoorbeeld elke maand 750 uur gratis voor een virtuele B1S Windows-machine bij een gratis Azure-account. U kunt de virtuele machine maken in elke regio waar virtuele machines uit de B-serie beschikbaar zijn. Azure brengt u niets in rekening, tenzij u die 750 uur overschrijdt. Zo kan een klant in de VS een virtuele B1S Windows-machine inrichten in West-Europa en deze 750 uur lang gratis gebruiken.
@@ -37,5 +39,5 @@ U kunt gratis meerdere service-instanties maken, zolang de som van het gebruik b
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
-
+- Meer informatie over [hoe u het gebruik van gratis services controleert die deel uitmaken van uw gratis Azure-account](billing-check-free-service-usage.md).
 - Meer informatie over [hoe u kunt voorkomen dat uw gratis Azure-account wordt gefactureerd](billing-avoid-charges-free-account.md).

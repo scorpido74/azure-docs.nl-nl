@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983504"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
@@ -30,7 +30,7 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
 
 - **Activiteit** 
     - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
-    - **Audit logboeken** - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
+    - **Audit logboeken**  - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
     - **Inrichtings logboeken** : systeem activiteiten bieden over gebruikers, groepen en rollen die zijn ingericht door de Azure AD-inrichtings service. 
 
 - **Beveiliging** 
@@ -60,7 +60,7 @@ De inrichtings logboeken bieden antwoorden op de volgende vragen:
 
 U kunt toegang krijgen tot de inrichtings logboeken door **inrichtings logboeken** te selecteren in de sectie **bewaking** van de Blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Het kan Maxi maal twee uur duren voordat bepaalde inrichtings records worden weer gegeven in de portal.
 
-![Inrichtings logboeken](./media/concept-provisioning-logs/access-provisioning-logs.png "Inrichtings logboeken")
+![Inrichtings logboeken](./media/concept-provisioning-logs/access-provisioning-logs.png "Inrichtingslogboeken")
 
 
 Een inrichtings logboek heeft een standaard lijst weergave waarin het volgende wordt weer gegeven:
@@ -92,15 +92,15 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
 Als u de gerapporteerde gegevens wilt beperken tot een niveau dat geschikt is voor u, kunt u de inrichtings gegevens filteren met behulp van de volgende standaard velden. Houd er rekening mee dat de waarden in de filters dynamisch worden ingevuld op basis van uw Tenant. Als u bijvoorbeeld geen gebeurtenissen voor maken in uw Tenant hebt, is er geen filter optie om te maken.
 
-- Identiteit
-- Action
+- Identity
+- Bewerking
 - Bron systeem
 - Doel systeem
 - Status
-- Date
+- Datum
 
 
-![Filter](./media/concept-provisioning-logs/filter.png "Filter")
+![Filterwebonderdelen](./media/concept-provisioning-logs/filter.png "Filter")
 
 Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
@@ -110,15 +110,15 @@ Met het filter **doel systeem** kunt u opgeven waar de identiteit wordt ingerich
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
-- Overgeslagen
+- Genegeerd
 
 Met het **actie** filter kunt u het volgende filteren:
 
-- Maken 
-- Update
+- Create 
+- Bijwerken
 - Verwijderen
 - Uitschakelen
 - Overige
@@ -130,7 +130,7 @@ Mogelijke waarden zijn:
 - 7 dagen
 - 30 dagen
 - 24 uur
-- Aangepaste tijdinterval
+- Aangepast tijdsinterval
 
 Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum configureren.
 
@@ -161,7 +161,7 @@ De details worden gegroepeerd op basis van de volgende categorieën:
 - Samenvatting
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "Tabbladen")
+![Filterwebonderdelen](./media/concept-provisioning-logs/provisioning-tabs.png "Tabtekens")
 
 
 
@@ -176,7 +176,7 @@ Het tabblad **stappen** bevat een overzicht van de stappen voor het inrichten va
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "Filter")
+![Filterwebonderdelen](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problemen oplossen en aanbevelingen

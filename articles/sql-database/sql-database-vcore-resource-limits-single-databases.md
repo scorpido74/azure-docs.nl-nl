@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/29/2019
-ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/21/2019
+ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032867"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693372"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het op vCore gebaseerde aankoop model
 
@@ -25,7 +25,7 @@ In dit artikel vindt u gedetailleerde resource limieten voor Azure SQL Database 
 Zie [overzicht van resource limieten op een SQL database server](sql-database-resource-limits-database-server.md)voor het op DTU gebaseerde aankoop model limieten voor afzonderlijke data bases op een SQL database server.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [Power shell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), de [Azure cli](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)of de [rest API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
@@ -46,17 +46,17 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data
 |Geheugen (GB)|7|14|21|28|35|42|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
-|Maximale gegevens grootte (GB)|1024|1024|1024|1536|1536|1536|
-|Maximale logboek grootte (GB)|307|307|307|461|461|461|
+|Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|
+|Maximale logboek grootte (GB)|307|307|461|461|461|922|
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Maximum aantal gegevens IOPS (64 KB)|500|1000|1500|2000|2500|3000|
-|Maximale logboek frequentie (MBps)|3.75|7.5|11.25|15|18,75|22.5|
+|Maximale logboek frequentie (MBps)|3,75|7,5|11,25|15|18,75|22,5|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -69,17 +69,17 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data
 |Geheugen (GB)|49|56|63|70|112|168|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
-|Maximale gegevens grootte (GB)|1536|3072|3072|3072|4096|4096|
-|Maximale logboek grootte (GB)|461|922|922|922|1229|1229|
+|Maximale gegevens grootte (GB)|3072|3072|3072|3072|4096|4096|
+|Maximale logboek grootte (GB)|922|922|922|922|1229|1229|
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|384|384|
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)
 |Maximum aantal gegevens IOPS (64 KB)|3500|4000|4500|5000|8000|12000|
 |Maximale logboek frequentie (MBps)|26,25|30|30|30|30|30|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -93,16 +93,16 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximale logboek grootte (GB)|307|307|307|461|461|461|461|
+|Maximale logboek grootte (GB)|307|307|461|461|461|922|922|
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|384|
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Maximum aantal gegevens IOPS (64 KB)|1000|2000|3000|4000|5000|6000|7000|
-|Maximale logboek frequentie (MBps)|3.75|7.5|11.25|15|18,75|22.5|26,25|
+|Maximale logboek frequentie (MBps)|3,75|7,5|11,25|15|18,75|22,5|26,25|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -123,9 +123,9 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data
 |Maximum aantal gegevens IOPS (64 KB)|8000|9000|10.000|12000|16000|20000|40000|
 |Maximale logboek frequentie (MBps)|30|30|30|30|30|30|30|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -149,11 +149,11 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
 |Maximum aantal gegevens IOPS (64 KB)|500|1000|2000|3000|4000|
-|Maximale logboek frequentie (MBps)|2.5|5.6|10|15|20|
+|Maximale logboek frequentie (MBps)|2,5|5,6|10|15|20|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|75|150|300|450|600|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -175,9 +175,9 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Maximum aantal gegevens IOPS (64 KB)|5000|6000|7000|8000|
 |Maximale logboek frequentie (MBps)|20|20|20|20|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|750|900|1050|1200|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|
 |Aantal replica's|1|1|1|1|
-|Multi-AZ|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|N/A|N/A|N/A|N/A|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -196,17 +196,17 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|1|2|3|4|5|6|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale gegevens grootte (GB)|650|650|650|650|650|650|
-|Maximale logboek grootte (GB)|195|195|195|195|195|195|
+|Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale logboek grootte (GB)|307|307|307|307|307|307|
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Maximum aantal gegevens IOPS (64 KB)|5000|10.000|15.000|20000|25000|30000|
+|Maximum aantal gegevens IOPS (64 KB)|5000|10.000|15.000|20000|25000|30.000|
 |Maximale logboek frequentie (MBps)|8|16|24|32|40|48|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|
-|Maximaal aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|
+|Maximum aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|4|4|4|4|4|4|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -218,19 +218,19 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |vCores|7|8|9|10|16|24|
 |Geheugen (GB)|49|56|63|70|112|168|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|
-|OLTP-opslag in het geheugen (GB)|7|8|9.5|11|20|36|
+|OLTP-opslag in het geheugen (GB)|7|8|9,5|11|20|36|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale gegevens grootte (GB)|650|650|650|650|1024|1024|
-|Maximale logboek grootte (GB)|195|195|195|195|307|307|
+|Maximale gegevens grootte (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale logboek grootte (GB)|307|307|307|307|307|307|
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|384|384|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
 |Maximum aantal gegevens IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
 |Maximale logboek frequentie (MBps)|56|64|64|64|64|64|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1400|1600|1800|2000|3200|4800|
 |Maxi maal aantal gelijktijdige aanmeldingen (aanvragen)|1400|1600|1800|2000|3200|4800|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|4|4|4|4|4|4|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -244,17 +244,17 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maximale gegevens grootte (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximale logboek grootte (GB)|307|307|307|461|461|922|922|
+|Maximale logboek grootte (GB)|307|307|461|461|461|922|922|
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|384|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
 |Maximum aantal gegevens IOPS (64 KB)|8000|16000|24000|32000|40000|48000|56000|
 |Maximale logboek frequentie (MBps)|12|24|36|48|60|72|84|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|600|800|1000|1200|1400|
-|Maximaal aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|1400|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|
+|Maximum aantal gelijktijdige aanmeldingen|200|400|600|800|1000|1200|1400|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|4|4|4|4|4|4|4|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -275,10 +275,10 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Maximum aantal gegevens IOPS (64 KB)|64000|72000|80000|96000|128000|160000|320000|
 |Maximale logboek frequentie (MBps)|96|96|96|96|96|96|96|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
-|Maximaal aantal gelijktijdige aanmeldingen|1600|1800|2000|2400|3200|4000|8000|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|
+|Maximum aantal gelijktijdige aanmeldingen|1600|1800|2000|2400|3200|4000|8000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Aantal replica's|4|4|4|4|4|4|4|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Meerdere AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
 
@@ -301,20 +301,20 @@ De [Compute-laag zonder server](sql-database-serverless.md) is in preview.
 |Maximum aantal gegevens IOPS (64 KB)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|[Opmerking 2](#notes)|
 |I/o-latentie (bij benadering)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|[Opmerking 3](#notes)|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|200|400|800|1600|2400|3200|4000|8000|
-|Maximaal aantal gelijktijdige sessies|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Secundaire replica's|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Meerdere AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Uitschalen lezen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Back-upopslag bewaren|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|7 dagen|
 |||
 
 #### <a name="notes"></a>Opmerkingen
 
-**Opmerking 1**: Grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [Architectuur grootschalige service tier](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
+**Opmerking 1**: grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [grootschalige service tier-architectuur](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-**Opmerking 2**: Grootschalige-architectuur met meerdere lagen heeft caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting.
+**Opmerking 2**: grootschalige-architectuur met meerdere lagen heeft caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting.
 
-**Opmerking 3**: Latentie is 1-2 MS voor gegevens in de RBPEX-cache op basis van SSD op reken replica's, waarmee de meeste gebruikte gegevens pagina's in de cache worden opgeslagen. Hogere latentie voor gegevens die zijn opgehaald van pagina servers.
+**Opmerking 3**: de latentie is 1-2 MS voor gegevens in de RBPEX-cache op basis van SSD op reken replica's, waarmee de meeste gebruikte gegevens pagina's in de cache worden opgeslagen. Hogere latentie voor gegevens die zijn opgehaald van pagina servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 

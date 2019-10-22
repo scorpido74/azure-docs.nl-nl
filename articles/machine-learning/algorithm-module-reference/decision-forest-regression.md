@@ -1,5 +1,5 @@
 ---
-title: 'Regressie voor beslissings forest: Module verwijzing'
+title: 'Regressie van beslissings bos: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de herleidings module voor beslissings structuur in Azure Machine Learning service om een regressie model te maken op basis van een ensemble van beslissings structuren.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128891"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693178"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
@@ -24,7 +24,7 @@ Gebruik deze module om een regressie model te maken op basis van een ensemble va
 
 Nadat u het model hebt geconfigureerd, moet u het model trainen met een gegevensset met een label en de module [Train model](./train-model.md) .  Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen. 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Beslissings structuren zijn niet-parametrische modellen die een reeks eenvoudige tests voor elk exemplaar uitvoeren, waarbij een gegevens structuur van een binaire structuur wordt doorzocht totdat een Leaf-knoop punt (beslissing) is bereikt.
 
@@ -38,21 +38,21 @@ Beslissings structuren hebben de volgende voor delen:
 
 Dit regressie model bestaat uit een ensemble van beslissings structuren. Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit als een voor spelling. Er wordt een aggregatie uitgevoerd over de ensemble van structuren om een Gaussiaanse distributie te vinden die het dichtst bij de gecombineerde distributie ligt voor alle structuren in het model.
 
-Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor dit algoritme en de implementatie ervan: [Beslissings bossen: Een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 
-1. Voeg de **regressie** -module van de beslissings structuur toe aan het experiment. U kunt de module vinden in de interface onder **machine learning**, **model initialiseren**en **regressie**.
+1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de interface onder **machine learning**, **model initialiseren**en **regressie**.
 
-2. Open de module-eigenschappen en kies voor **resampling methode**de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt kiezen uit een of meer van de **replicatie**.
+2. Open de module-eigenschappen en kies voor **resampling methode**de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt **kiezen uit een** of meer van de **replicatie**.
 
-    - Overbaggen: De functie voor het verzamelen van de functie wordt ook *Boots trap aggregatie*genoemd. Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans, opgegeven door het combi neren van alle Gaussiaans die door afzonderlijke structuren worden geretourneerd.
+    - **Overbaggen**: de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans, opgegeven door het combi neren van alle Gaussiaans die door afzonderlijke structuren worden geretourneerd.
 
          Zie de Wikipedia-vermelding voor [Boots trap aggregatie](https://wikipedia.org/wiki/Bootstrap_aggregating)voor meer informatie.
 
-    - **Repliceren**: In replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.
+    - **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.
 
-         Voor meer informatie over het trainings proces met de optie **repliceren** raadpleegt [u besluitvormings forests voor computer vision en medische afbeeldings analyse. Criminisi en J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         Voor meer informatie over het trainings proces met de optie **repliceren** raadpleegt u [besluitvormings forests voor computer vision en medische afbeeldings analyse. Criminisi en J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
 
 3. Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
@@ -82,17 +82,17 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
 
    
 
-10. Voer het experiment uit.
+10. Voer de pijplijn uit.
 
 ### <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Als u de structuur wilt zien die op elke iteratie is gemaakt, klikt u met de rechter muisknop op de uitvoer vande trainings module en selecteert u visualiseren.
++ Als u de structuur wilt zien die op elke iteratie is gemaakt, klikt u met de rechter muisknop op de uitvoer van de trainings module en selecteert u **visualiseren**.
 
 + Als u de regels voor elk knoop punt wilt bekijken, klikt u op elke structuur en zoomt u in op de splitsingen.
 
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de uitvoer van de trainings module en selecteert u **Opslaan als getraind model**. Deze kopie van het model wordt niet bijgewerkt bij opeenvolgende uitvoeringen van het experiment. 
++ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de uitvoer van de trainings module en selecteert u **Opslaan als getraind model**. Deze kopie van het model wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

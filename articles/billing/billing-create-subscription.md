@@ -3,8 +3,8 @@ title: Een extra Azure-abonnement maken | Microsoft Docs
 description: Lees hier meer over het toevoegen van een nieuw Azure-abonnement in de Azure-portal.
 services: billing
 documentationcenter: ''
-author: jrosson
-manager: jrosson
+author: amberb
+manager: amberb
 editor: ''
 ms.service: billing
 ms.workload: na
@@ -13,22 +13,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: f907ebcfc1efc2e6eb9b458f83ab11d868871946
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: acb41de8344d1467e86c38c7c99e8ad4ab517ead
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615814"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375829"
 ---
-# <a name="create-an-additional-subscription-in-the-azure-portal"></a>Een extra abonnement maken in de Azure-portal
+# <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
 
-U kunt extra abonnementen voor uw account maken in Azure. Mogelijk wilt u een extra abonnement om te voorkomen dat u abonnementslimieten overschrijdt, om afzonderlijke omgevingen in te richten voor facturering en beveiliging, of om gegevens te isoleren om redenen van naleving.
+U kunt een extra abonnement maken voor de factureringsrekening van uw [Enterprise Agreement (EA) ](https://azure.microsoft.com/pricing/enterprise-agreement/), [Microsoft-klantovereenkomst ](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) of [Microsoft Partner-overeenkomst ](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) in de Azure-portal. Mogelijk wilt u een extra abonnement om te voorkomen dat u abonnementslimieten overschrijdt, om afzonderlijke omgevingen in te richten voor beveiliging, of om gegevens te isoleren om redenen van naleving.
 
-Als u Azure-abonnementen wilt maken onder de Enterprise Agreement van uw organisatie, moet u de rol van Accounteigenaar hebben voor uw organisatie.
+Als u een factureringsrekening voor een Microsoft Online-serviceprogramma (MOSP) hebt, kunt u extra abonnementen maken in de [Azure-registratieportal ](https://account.azure.com/signup?offer=ms-azr-0003p).
 
-Als u nog geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+Zie[Uw factureringsrekeningen weergeven in de Azure-portal](billing-view-all-accounts.md) voor meer informatie over factureringsrekeningen en het bepalen van uw type factureringsrekening.
 
-## <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
+## <a name="permission-required-to-create-azure-subscriptions"></a>Vereiste machtiging voor het maken van Azure-abonnementen
+
+U hebt de volgende machtigingen nodig voor het maken van abonnementen:
+
+|Factureringsaccount  |Machtiging  |
+|---------|---------|
+|Enterprise Agreement (EA) |  De rol van accounteigenaar voor de inschrijving van de Enterprise Agreement. Zie [Inzicht in Azure Enterprise Overeenkomst-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie.    |
+|Microsoft-klantovereenkomst (MCA) |  De rol van eigenaar of inzender voor de factuursectie, het factureringsprofiel of de factureringsrekening. Of de rol Maker van Azure-abonnement voor de factuursectie.  Zie [Rollen en taken voor abonnementsfacturering](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks) voor meer informatie.    |
+|Microsoft Partner-overeenkomst (MPA) |   De rol Globale beheerder en Beheerderagent in de partnerorganisatie. Zie [Partner Center - Assign users roles and permissions](https://docs.microsoft.com/partner-center/permissions-overview) (Engelstalig) voor meer informatie  |
+
+## <a name="create-a-subscription-in-the-azure-portal"></a>Een abonnement maken in de Azure-portal
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar **Abonnementen**.
@@ -39,7 +49,37 @@ Als u nog geen abonnement op Azure hebt, kunt u een [gratis account](https://azu
 
    ![Schermopname van de knop Toevoegen in de weergave Abonnementen](./media/billing-create-subscription/subscription-add.png)
 
-U kunt ook programmatisch extra abonnementen maken. Zie [Programmatisch Azure Enterprise-abonnementen maken)](../azure-resource-manager/programmatically-create-subscription.md) voor meer informatie.
+1. Als u toegang hebt tot meerdere factureringsrekeningen, selecteert u de factureringsrekening waarvoor u het abonnement wilt maken.
+
+1. Vul het formulier in en klik op **Maken**. In de onderstaande tabellen worden de velden in het formulier weergegeven per type factureringsrekening.
+
+**Enterprise Agreement**
+
+|Veld  |Definitie  |
+|---------|---------|
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Aanbieding     | Selecteer EA Dev/Test als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Enterprise. De DevTest-aanbieding moet zijn ingeschakeld voor uw inschrijvingsaccount om EA Dev/Test-abonnementen te maken.|
+
+**Microsoft-klantovereenkomst**
+
+|Veld  |Definitie  |
+|---------|---------|
+|Factureringsprofiel     | De kosten voor uw abonnement worden gefactureerd op het factureringsprofiel dat u selecteert. Als u toegang hebt tot slechts één factureringsprofiel, wordt de selectie grijs weergegeven.     |
+|Factuursectie     | De kosten voor uw abonnement worden weergegeven in deze factuursectie van het factureringsprofiel. Als u toegang hebt tot slechts één factuursectie, wordt de selectie grijs weergegeven.  |
+|Plannen     | Selecteer Microsoft Azure Plan for DevTest als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Plan. Als er slechts één plan is ingeschakeld voor het factureringsprofiel, wordt de selectie grijs weergegeven.  |
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+
+**Microsoft Partner-overeenkomst**
+
+|Veld  |Definitie  |
+|---------|---------|
+|Klant    | Het abonnement wordt gemaakt voor de klant die u selecteert. Als u slechts één klant hebt, wordt de selectie grijs weergegeven.  |
+|Reseller    | De reseller die services levert aan de klant. Dit is een optioneel veld dat alleen van toepassing is op indirecte providers in het CSP-model met twee lagen. |
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+
+## <a name="create-an-additional-azure-subscription-programmatically"></a>Programmatisch een extra Azure-abonnement maken
+
+U kunt ook programmatisch extra abonnementen maken. Zie [Programmatisch Azure-abonnementen maken](../azure-resource-manager/programmatically-create-subscription.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

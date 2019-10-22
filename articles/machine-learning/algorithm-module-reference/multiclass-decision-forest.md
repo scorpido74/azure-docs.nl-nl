@@ -1,5 +1,5 @@
 ---
-title: 'Forest voor de beslissing van de branche: Module verwijzing'
+title: 'Multi Class-besluitvormings forest: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module voor de beslissings structuur voor het maken van een machine learning model in Azure Machine Learning-service om op basis van het algoritme van het *beslissings forest* een gemodelleerde
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128622"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692768"
 ---
 # <a name="multiclass-decision-forest-module"></a>Module voor de beslissings forest voor multi klassen
 
@@ -41,21 +41,21 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
 
 
-1. Voeg de module voor de **beslissings forest** met een klassemodule toe aan uw experiment in de-interface. U kunt deze module vinden onder **machine learning**, **model initialiseren**en **classificatie**.
+1. Voeg de module voor het **beslissings forest** met een klassen naam toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **model initialiseren**en **classificatie**.
 
 2. Dubbel klik op de module om het deel venster **Eigenschappen** te openen.
 
 3. Kies voor **resampling methode**de methode die is gebruikt voor het maken van de afzonderlijke structuren.  U kunt kiezen uit overbagging of replicatie.
 
-    + Overbaggen: De functie voor het verzamelen van de functie wordt ook *Boots trap aggregatie*genoemd. In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft. De uitvoer van de modellen worden gecombineerd door middel van *stemmen*. Dit is een vorm van aggregatie. Zie de Wikipedia-vermelding voor Boots trap aggregatie voor meer informatie.
+    + **Overbaggen**: de functie voor het *verzamelen van de Boots trap* In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft. De uitvoer van de modellen worden gecombineerd door middel van *stemmen*. Dit is een vorm van aggregatie. Zie de Wikipedia-vermelding voor Boots trap aggregatie voor meer informatie.
 
-    + **Repliceren**: In replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling van welk gesplitst predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en maakt diverse structuren.
+    + **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling van welk gesplitst predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en maakt diverse structuren.
 
    
 
 4. Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
-    + **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een reeks waarden als argumenten op.
+    + **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een set waarden als argumenten op.
 
 
 5. **Aantal beslissings structuren**: Typ het maximum aantal beslissings structuren dat in de ensemble kan worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar kan de tijd van de training toenemen.
@@ -66,7 +66,7 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
 7. **Aantal wille keurige splitsingen per knoop punt**: Typ het aantal splitpen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
 
-8. **Minimum aantal steek proeven per blad knooppunt**: Geef het minimum aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken. Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels.
+8. **Minimum aantal steek proeven per blad knooppunt**: geeft het minimum aantal cases aan dat nodig is voor het maken van een Terminal knooppunt (Leaf) in een boom structuur. Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels.
 
     Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
 
@@ -76,13 +76,13 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
     + Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .
 
-11. Voer het experiment uit.
+11. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer visualiseren om de structuur weer te geven dieop elke iteratie is gemaakt.
++ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer **visualiseren**om de structuur weer te geven die op elke iteratie is gemaakt.
 + Als u de regels voor elk knoop punt wilt bekijken, klikt u op elke structuur om in te zoomen op de splitsingen.
 
 

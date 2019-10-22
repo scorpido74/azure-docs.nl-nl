@@ -1,5 +1,5 @@
 ---
-title: 'Multi Class Neural-netwerk: Module verwijzing'
+title: 'Multi Class Neural Network: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de netwerk module Multi Class Neural in Azure Machine Learning service voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128602"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692726"
 ---
 # <a name="multiclass-neural-network-module"></a>Multi Class Neural-netwerk module
 
@@ -40,9 +40,9 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 ## <a name="configure-multiclass-neural-network"></a>Multi Class Neural-netwerk configureren
 
-1. Voeg de **netwerk module Multi Class Neural** toe aan uw experiment in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .
+1. Voeg de **netwerk module Multi Class Neural** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .
 
-2. De **trainer modus maken**: Gebruik deze optie om op te geven hoe u wilt dat het model wordt getraind:
+2. De **trainer modus maken**: gebruik deze optie om op te geven hoe u wilt dat het model wordt getraind:
 
     - **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
 
@@ -61,21 +61,21 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
   
    
 
-5. **Aantal verborgen knoop punten**: Met deze optie kunt u het aantal verborgen knoop punten in de standaard architectuur aanpassen. Typ het aantal verborgen knoop punten. De standaard waarde is één verborgen laag met 100 knoop punten.
+5. **Aantal verborgen knoop punten**: met deze optie kunt u het aantal verborgen knoop punten in de standaard architectuur aanpassen. Typ het aantal verborgen knoop punten. De standaard waarde is één verborgen laag met 100 knoop punten.
 
 6. **Het leer tempo**: Definieer de grootte van de stap die bij elke herhaling moet worden uitgevoerd, vóór correctie. Een hogere waarde voor het leer tempo kan ertoe leiden dat het model sneller wordt geconvergeerd, maar dat het lokale minima kan overschrijden.
 
-7. **Aantal leer herhalingen**: Geef het maximum aantal keren op dat het algoritme de trainings cases moet verwerken.
+7. **Aantal leer herhalingen**: Geef het maximum aantal keren op dat de trainings cases moeten worden verwerkt door de algoritme.
 
-8. **Het eerste gewicht van de leer diameter**: De knooppunt gewichten aan het begin van het leer proces opgeven.
+8. **De eerste leer gewicht diameter**: Geef de knooppunt gewichten aan het begin van het leer proces op.
 
-9. **De momentum**: Geef een gewicht op dat moet worden toegepast tijdens het leren naar knoop punten uit eerdere iteraties.
+9. **De impuls**: Geef een gewicht op dat moet worden toegepast tijdens het leren naar knoop punten uit eerdere iteraties.
   
-11. **Voor beelden in wille keurige volg orde**: Selecteer deze optie om cases tussen herhalingen in wille keurige volg orde te plaatsen.
+11. **Voor beelden in wille keurige volg orde**: Selecteer deze optie om cases in wille keurige volg orde te plaatsen
 
-    Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u het experiment uitvoert.
+    Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u de pijp lijn uitvoert.
 
-12. **Wille keurig aantal Seed**: Typ een waarde die als seed moet worden gebruikt als u de Herhaal baarheid van hetzelfde experiment wilt waarborgen.
+12. **Wille keurig getal Seed**: Typ een waarde die als seed moet worden gebruikt als u de Herhaal baarheid wilt waarborgen voor uitvoeringen van dezelfde pijp lijn.
 
 14. Verbind een trainings gegevensset en een van de [trainings modules](module-reference.md): 
 
@@ -86,9 +86,9 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 Nadat de training is voltooid:
 
-- Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u visualiseren.  
+- Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u **visualiseren**.  
 
-- Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de getrainde **model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van hetzelfde experiment.
+- Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van dezelfde pijp lijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

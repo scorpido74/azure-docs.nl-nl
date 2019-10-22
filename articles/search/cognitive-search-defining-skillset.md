@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265515"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Een vakkennisset maken in een verrijkings pijplijn
 
-Met de cognitieve zoek functie worden gegevens geëxtraheerd en verrijkt om deze doorzoekbaar te maken in Azure Search. De stappen voor het ophalen en verrijken van informatie worden geadviseerd, gecombineerd tot een *vaardig* *heden waarnaar*wordt verwezen tijdens het indexeren. Een vaardig heden kan [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) of aangepaste vaardig heden gebruiken (Zie [voor beeld: Een aangepaste vaardigheid maken voor cognitieve Zoek](cognitive-search-create-custom-skill-example.md) opdrachten voor meer informatie).
+Met de cognitieve zoek functie worden gegevens geëxtraheerd en verrijkt om deze doorzoekbaar te maken in Azure Search. De stappen voor het ophalen en verrijken van informatie worden geadviseerd, gecombineerd tot een *vaardig* *heden waarnaar*wordt verwezen tijdens het indexeren. Een vaardig heden kan [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) of aangepaste vaardig heden gebruiken (Zie [voor beeld: een aangepaste vaardigheid maken voor cognitieve Zoek opdrachten](cognitive-search-create-custom-skill-example.md) voor meer informatie).
 
 In dit artikel leert u hoe u een verrijkings pijplijn kunt maken voor de vaardig heden die u wilt gebruiken. Een vakkennisset is gekoppeld aan een Azure Search [indexer](search-indexer-overview.md). Een deel van het pijplijn ontwerp, dat in dit artikel wordt besproken, is de vaardig heden zelf maken. 
 
@@ -36,9 +36,9 @@ Een aanbevolen eerste stap is te bepalen welke gegevens moeten worden opgehaald 
 
 Stel dat u een set van financiële adviezen wilt verwerken. Voor elk bestand wilt u bedrijfs namen ophalen en de algemene sentiment van de opmerkingen. U kunt ook een aangepaste verrijker schrijven die gebruikmaakt van de Bing Entity Search-service om aanvullende informatie over het bedrijf te vinden, zoals het soort bedrijf waar het bedrijf mee wordt betrokken. In wezen wilt u informatie ophalen zoals de volgende, geïndexeerd voor elk document:
 
-| record-text | bedrijven | Sentiment | bedrijfs beschrijvingen |
+| record-tekst | bedrijven | sentiment | bedrijfs beschrijvingen |
 |--------|-----|-----|-----|
-|voor beeld-record| ["Microsoft", "LinkedIn"] | 0,99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
+|voor beeld-record| ["Micro soft", "LinkedIn"] | 0,99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
 
 Het volgende diagram illustreert een hypothetische verrijkings pijplijn:
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Een set vaardigheden maken
 
-Tijdens het maken van een vaardig heden kunt u een beschrijving opgeven om de vaardig heden zelf documenteren te maken. Een beschrijving is optioneel, maar is handig voor het bijhouden van wat een vakkennisset doet. Omdat vaardig heden een JSON-document is dat geen opmerkingen toestaat, moet u hiervoor een `description` element gebruiken.
+Tijdens het maken van een vaardig heden kunt u een beschrijving opgeven om de vaardig heden zelf documenteren te maken. Een beschrijving is optioneel, maar is handig voor het bijhouden van wat een vakkennisset doet. Omdat vaardig heden een JSON-document is dat geen reacties toestaat, moet u hiervoor een `description`-element gebruiken.
 
 ```json
 {
@@ -163,23 +163,23 @@ Laten we eens kijken naar de eerste vaardigheid, de ingebouwde [vaardigheid voor
     }
 ```
 
-* Elke ingebouwde vaardigheid heeft `odata.type`de eigenschappen, `input`en. `output` Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteit herkenning `categories` is één entiteit onder een vaste set entiteits typen die het voortrainde model kan herkennen.
+* Elke ingebouwde vaardigheid heeft `odata.type`, `input` en `output` eigenschappen. Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteits herkenning is `categories` één entiteit tussen een vaste set entiteits typen die het voortrainde model kan herkennen.
 
-* Elke vaardigheid moet een ```"context"```hebben. De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. Meer specifiek ```"organizations"``` worden gegenereerd als lid van ```"/document"```. In downstream-vaardig heden kunt u deze zojuist gemaakte gegevens als ```"/document/organizations"```volgt raadplegen.  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
+* Elke vaardigheid moet een ```"context"``` hebben. De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. In het bijzonder worden ```"organizations"``` gegenereerd als lid van ```"/document"```. In downstream-vaardig heden kunt u deze zojuist gemaakte informatie als ```"/document/organizations"``` raadplegen.  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
 
-* De vaardigheid heeft één invoer met de naam ' text ', waarbij een bron invoer ```"/document/content"```is ingesteld op. De vaardigheid (entiteits herkenning) wordt uitgevoerd op het *inhouds* veld van elk document, een standaard veld dat wordt gemaakt door de indexer van Azure Blob. 
+* De vaardigheid heeft één invoer met de naam ' text ', waarbij een bron invoer is ingesteld op ```"/document/content"```. De vaardigheid (entiteits herkenning) wordt uitgevoerd op het *inhouds* veld van elk document, een standaard veld dat wordt gemaakt door de indexer van Azure Blob. 
 
-* De vaardigheid heeft één uitvoer met ```"organizations"```de naam. Outputs bestaan alleen tijdens de verwerking. Als u deze uitvoer wilt koppelen aan de invoer van een downstream-vaardigheid, ```"/document/organizations"```verwijst u naar de uitvoer als.
+* De vaardigheid heeft één uitvoer met de naam ```"organizations"```. Outputs bestaan alleen tijdens de verwerking. Als u deze uitvoer wilt koppelen aan de invoer van een downstream-vaardigheid, verwijst u naar de uitvoer als ```"/document/organizations"```.
 
-* Voor een bepaald document is de waarde van ```"/document/organizations"``` een matrix van organisaties die zijn geëxtraheerd uit de tekst. Bijvoorbeeld:
+* Voor een bepaald document is de waarde van ```"/document/organizations"``` een matrix van organisaties die worden geëxtraheerd uit de tekst. Bijvoorbeeld:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van ```"/document/organizations"``` afzonderlijk wilt door geven aan een andere vaardigheid (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad:```"/document/organizations/*"``` 
+In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van ```"/document/organizations"``` afzonderlijk aan een andere vaardigheid wilt door geven (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad: ```"/document/organizations/*"``` 
 
-De tweede vaardigheid voor sentiment extractie volgt hetzelfde patroon als de eerste verrijker. Het duurt ```"/document/content"``` als invoer en retourneert een sentiment-score voor elk inhouds exemplaar. Omdat u het ```"context"``` veld niet expliciet hebt ingesteld, is de uitvoer (mySentiment) nu een onderliggend element van ```"/document"```.
+De tweede vaardigheid voor sentiment extractie volgt hetzelfde patroon als de eerste verrijker. Het neemt ```"/document/content"``` als invoer en retourneert een sentiment-score voor elk inhouds exemplaar. Omdat u het veld ```"context"``` niet expliciet hebt ingesteld, is de uitvoer (mySentiment) nu een onderliggend element van ```"/document"```.
 
 ```json
     {
@@ -229,7 +229,7 @@ De structuur van de aangepaste Bing entity Search-verrijker intrekken:
 
 Deze definitie is een [aangepaste vaardigheid](cognitive-search-custom-skill-web-api.md) die een web-API aanroept als onderdeel van het verrijkings proces. Voor elke organisatie die wordt geïdentificeerd door entiteits herkenning, roept deze vaardigheid een web-API aan om de beschrijving van die organisatie te vinden. De indeling van wanneer de Web-API moet worden aangeroepen en hoe de ontvangen informatie wordt intern verwerkt door de verrijkings engine. De initialisatie die nodig is voor het aanroepen van deze aangepaste API moet echter worden gegeven in de JSON (zoals URI, httpHeaders en de invoer wordt verwacht). Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md)voor hulp bij het maken van een aangepaste web-API voor de verrijkings pijplijn.
 
-U ziet dat het veld context is ingesteld op ```"/document/organizations/*"``` met een asterisk, wat betekent dat de verrijkings stap wordt aangeroepen *voor elke* organisatie onder. ```"/document/organizations"``` 
+U ziet dat het veld context is ingesteld op ```"/document/organizations/*"``` met een asterisk, wat betekent dat de verrijkings stap wordt aangeroepen *voor elke* organisatie onder ```"/document/organizations"```. 
 
 In dit geval wordt de beschrijving van het bedrijf voor elke geïdentificeerde organisatie gegenereerd. Wanneer u verwijst naar de beschrijving in een downstream-stap (bijvoorbeeld in extractie van sleutel zinnen), gebruikt u het pad ```"/document/organizations/*/description"``` om dit te doen. 
 

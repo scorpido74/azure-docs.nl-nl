@@ -4,16 +4,16 @@ description: In dit artikel worden de algemene taken beschreven die een beheerde
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035218"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329343"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -62,7 +62,7 @@ Houd rekening met de volgende punten wanneer u een Enterprise-account overdraagt
 
 De werkelijke overdrachtsdatum kan een datum zijn op of na de start van de inschrijving waarnaar u wilt overdragen. De inschrijving waarnaar u overdraagt, is de _doelinschrijving_. Na de accountoverdracht blijven de gebruiksgegevens die al aanwezig waren vóór de overdrachtsdatum, beschikbaar in de inschrijving van waaruit u de overdracht uitvoert. De inschrijving van waaruit u overdraagt, is de _broninschrijving_.  Het gebruik van de broninschrijving wordt verrekend met de financiële toezegging of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
 
-U kunt een accountoverdracht antedateren tot de begindatum van de doelinschrijving. Of zo ver terug als de feitelijk begindatum van de inschrijving.
+U kunt een inschrijvingsoverdracht antedateren tot de begindatum van de doelinschrijving. Of zo ver terug als de feitelijk begindatum van de broninschrijving.
 
 ### <a name="monetary-commitment"></a>Financiële toezegging
 
@@ -212,12 +212,11 @@ Als er geen melding door een gebruiker wordt ontvangen, controleert u aan de han
 ![Voorbeeld met het venster Contactpersoon toevoegen ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-aanbieding
+
 De Azure Sponsorship-aanbieding is een beperkt gesponsord Microsoft Azure-account. De aanbieding is beschikbaar via een e-mailuitnodiging en alleen voor een beperkt aantal, door Microsoft geselecteerde klanten. Als u recht hebt op de aanbieding voor Microsoft Azure Sponsorship, ontvangt u een e-mailuitnodiging voor uw account-id.
+
 Zie voor meer informatie:
 
-- Overzicht van de Sponsorship-aanbieding: https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Portal met het Sponsorship-saldo: https://www.microsoftazuresponsorships.com/balance  
-- Externe veelgestelde vragen over Sponsorship: https://azuresponsorships-staging.azurewebsites.net/faq
 - Ondersteuningsaanvraag voor Sponsorship-activering: http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>Volgende stappen

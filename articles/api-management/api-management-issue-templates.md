@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072262"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sjablonen uitgeven in azure API Management
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
   
  Met de sjablonen in deze sectie kunt u de inhoud van de uitgifte pagina's in de ontwikkelaars portal aanpassen.  
   
@@ -37,7 +37,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
  ![Ontwikkelaars Portal probleem lijst](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Ontwikkelaars portal voor APIM issue List")  
   
-### <a name="default-template"></a>Standaardsjabloon  
+### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml
 <div class="row">
@@ -92,16 +92,16 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 ### <a name="controls"></a>Besturingselementen  
  De `Issue list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [paginering-besturings element](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Issues`|Verzameling van [uitgifte](api-management-template-data-model-reference.md#Issue) -entiteiten.|De problemen die zichtbaar zijn voor de huidige gebruiker.|  
 |`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  
-|`IsAuthenticated`|boolean|Hiermee wordt aangegeven of de huidige gebruiker is aangemeld bij de ontwikkelaars Portal.|  
-|`CanReportIssues`|boolean|Hiermee wordt aangegeven of de huidige gebruiker machtigingen heeft om een probleem op te lossen.|  
+|`IsAuthenticated`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker is aangemeld bij de ontwikkelaars Portal.|  
+|`CanReportIssues`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker machtigingen heeft om een probleem op te lossen.|  
 |`Search`|string|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
   
 ### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  

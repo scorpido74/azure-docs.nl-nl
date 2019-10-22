@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262774"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-blauwdruk voor beveiliging en naleving: Host voor PaaS-webtoepassingen voor de officiële workloads van het Verenigd Konink rijk
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-blauwdruk voor beveiliging en naleving: PaaS voor het hosten van webtoepassingen voor UK-officiële workloads
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Blauwdrukken voor Azure-beveiliging en naleving
 
@@ -39,7 +39,7 @@ Met behulp van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-r
 
 Deze blauw druk is een kern architectuur. Onze klanten kunnen deze blauw druk gebruiken als basis voor hun officiële classificatie op het web gebaseerde workloads en de sjablonen en resources uitbreiden met hun eigen vereisten. Deze blauw druk is gebaseerd op de beginselen van de [OFFICAL met drie lagen IaaS webtoepassingen](https://aka.ms/ukofficial-iaaswa) die onze klanten zowel [Infrastructure as a Service (IaaS) als](https://azure.microsoft.com/overview/what-is-iaas/) PaaS implementatie opties bieden voor het hosten van op internet gebaseerde workloads.
 
-Als u deze blauw druk wilt implementeren, is een Azure-abonnement vereist. Als u geen Azure-abonnement hebt, kunt u zich snel en eenvoudig op een gratis manier aanmelden: Aan de slag met Azure. Klik [hier](https://aka.ms/ukofficial-paaswa-repo/) voor implementatie-instructies.
+Als u deze blauw druk wilt implementeren, is een Azure-abonnement vereist. Als u geen Azure-abonnement hebt, kunt u zich snel en eenvoudig op een gratis manier aanmelden: aan de slag met Azure. Klik [hier](https://aka.ms/ukofficial-paaswa-repo/) voor implementatie-instructies.
 
 ## <a name="architecture-and-components"></a>Architectuur en onderdelen
 
@@ -60,7 +60,7 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Details van de impl
 - Azure Monitor (Logboeken)
 - Application Insights
 - Azure Resource Manager
-- Azure Security Center
+- Azure Beveiligingscentrum
 - Azure SQL Database
 - Azure Storage
 
@@ -78,7 +78,7 @@ De volgende technologieën bieden mogelijkheden voor identiteits beheer in de Az
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) is de multi tenant-Cloud Directory en identiteits beheer service van micro soft. Alle gebruikers voor de oplossing zijn gemaakt in Azure Active Directory, met inbegrip van gebruikers die toegang hebben tot de SQL Database.
 - Verificatie voor de operator die is gericht op de webtoepassing en de toegang tot het beheer van de Azure-resources wordt uitgevoerd met behulp van Azure AD. Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)voor meer informatie.
-- Database kolom versleuteling maakt gebruik van Azure AD om de toepassing te verifiëren voor Azure SQL Database. Zie [always encrypted voor meer informatie: Beveilig gevoelige gegevens in SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Database kolom versleuteling maakt gebruik van Azure AD om de toepassing te verifiëren voor Azure SQL Database. Zie [Always Encrypted: gevoelige gegevens in SQL database beveiligen](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)voor meer informatie.
 - De burger Facing Web-toepassing is geconfigureerd voor open bare toegang. Als u het maken en verifiëren van accounts wilt toestaan via Active Directory of id-providers voor sociale netwerken [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , indien nodig, kunnen worden geïntegreerd.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) detecteert mogelijke beveiligings problemen en Risk ante accounts voorziet in aanbevelingen voor het verbeteren van de beveiligings postuur van de identiteiten van uw organisatie, configureert automatische antwoorden op gedetecteerde verdachte acties die betrekking hebben op de identiteiten van uw organisatie en verdachte incidenten onderzoeken en de juiste actie ondernemen om ze op te lossen.
 - [Met Access Control op basis van rollen (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) kunt u nauw keurig toegang krijgen tot het beheer van Azure. Abonnements toegang is beperkt tot de abonnements beheerder en Azure Key Vault toegang is beperkt tot gebruikers die toegang tot sleutel beheer nodig hebben.
@@ -110,7 +110,7 @@ Basis-, standaard-en Premium-abonnementen zijn voor productie-workloads en worde
 Met deze sjabloon worden de volgende App Service-functies geïmplementeerd:
 
 - [Standaard](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service plan tier
-- Meerdere App Service [implementatie sleuven](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, preview, QA, bedoeld en training Production (standaard sleuf).
+- Meerdere App Service [implementatie sleuven](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): dev, preview, QA, bedoeld en training Production (standaard sleuf).
 - [Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/app-service/overview-managed-identity) om verbinding te maken met [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (dit kan ook worden gebruikt om toegang te verlenen tot [Azure SQL database](https://azure.microsoft.com/services/sql-database/) 
 - Integratie met [Azure-toepassing Insights](../../azure-monitor/app/azure-web-apps.md) voor het bewaken van de prestaties
 - [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) 
@@ -145,7 +145,7 @@ Deze sjabloon maakt gebruik van de volgende Azure Storage onderdelen:
 - [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 
 - Alleen HTTPS-verbindingen toestaan
 
-#### <a name="data-at-rest"></a>Data-at-rest
+#### <a name="data-at-rest"></a>Inactieve gegevens
 
 Via [Storage service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) alle gegevens die naar Azure Storage zijn geschreven, zijn versleuteld via 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn. U kunt door micro soft beheerde versleutelings sleutels met SSE gebruiken of u kunt [uw eigen versleutelings sleutels](../../storage/common/storage-encryption-keys-portal.md)gebruiken.
 
@@ -177,7 +177,7 @@ Gedetailleerde informatie over het beveiligen van Azure Storage vindt u in de [b
 - SQL-evaluatie
 - Diagnostische gegevens Key Vault
 - Application Insights verbinding
-- Azure-activiteitenlogboek
+- Azure-activiteiten logboek
 
 #### <a name="application-insights"></a>Application Insights
 
@@ -229,9 +229,9 @@ Deze Azure-blauwdruk voor beveiliging en naleving automatisering bestaat uit JSO
 Er zijn drie benaderingen voor de implementatie. Een eenvoudige ' Express ' [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) die geschikt is voor het snel bouwen van een test omgeving; een door para meters [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -benadering die een grotere configuratie biedt voor werkbelasting omgevingen; en een implementatie op basis van Azure Portal waarbij de operator de implementatie parameters kan opgeven via de Azure Portal. 
 
 1.  Kloon of down load [deze](https://aka.ms/ukofficial-paaswa-repo) github-opslag plaats naar uw lokale werk station.
-2.  Controle [methode 1: Azure CLI 2 (Express-versie](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) ) en de gegeven opdrachten uit te voeren.
+2.  Lees [methode 1: Azure CLI 2 (Express-versie)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) en voer de meegeleverde opdrachten uit.
 3.  Beoordelings [methode 1a: Azure CLI 2 (de implementatie configureren via script argumenten)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) en de gegeven opdrachten uitvoeren
-4.  Controle [methode 2: Implementatie proces](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) Azure Portal en de vermelde opdrachten uitvoeren
+4.  Beoordelings [methode 2: het implementatie proces Azure Portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) en de vermelde opdrachten uitvoeren
 
 ## <a name="guidance-and-recommendations"></a>Richt lijnen en aanbevelingen
 
@@ -239,7 +239,7 @@ Er zijn drie benaderingen voor de implementatie. Een eenvoudige ' Express ' [Azu
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) kan worden gebruikt vóór de API-app service om extra beveiligings lagen te bieden, beperkingen en controles uit te voeren om api's weer te geven, te beperken en te beveiligen.
 
-### <a name="azure-b2c"></a>Azure B2C
+### <a name="azure-b2c"></a>Azure-B2C
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) kan worden geïmplementeerd als een besturings element waarmee gebruikers zich kunnen registreren, een identiteit kunnen maken en autorisatie-en toegangs beheer voor de open bare webtoepassing kunnen inschakelen.
 

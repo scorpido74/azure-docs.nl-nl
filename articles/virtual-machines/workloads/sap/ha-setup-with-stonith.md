@@ -14,16 +14,16 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71212524"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hoge Beschik baarheid die in SUSE is ingesteld met behulp van de STONITH
 Dit document bevat gedetailleerde stapsgewijze instructies voor het instellen van de hoge Beschik baarheid op SUSE-besturings systeem met behulp van het STONITH-apparaat.
 
-**Uitsluiting** *Deze hand leiding wordt afgeleid door de installatie te testen in de micro soft HANA-omgeving met grote instanties, die goed werkt. Als het micro soft service management-team voor HANA grote instanties biedt geen ondersteuning voor het besturings systeem, moet u mogelijk contact opnemen met SUSE voor eventuele verdere problemen oplossen of verduidelijken op de laag van het besturings systeem. Het micro soft service management-team stelt STONITH-apparaat in en biedt volledige ondersteuning en kan worden betrokken bij het oplossen van problemen met STONITH-apparaten.*
+**Disclaimer:** *deze hand leiding wordt afgeleid door de installatie te testen in de micro soft Hana-omgeving met grote instanties, die werkt. Als het micro soft service management-team voor HANA grote instanties biedt geen ondersteuning voor het besturings systeem, moet u mogelijk contact opnemen met SUSE voor eventuele verdere problemen oplossen of verduidelijken op de laag van het besturings systeem. Het micro soft service management-team stelt STONITH-apparaat in en biedt volledige ondersteuning en kan worden betrokken bij het oplossen van problemen met STONITH-apparaten.*
 ## <a name="overview"></a>Overzicht
 Voor het instellen van de maximale Beschik baarheid met behulp van SUSE-clustering moeten aan de volgende vereisten worden voldaan.
 ### <a name="pre-requisites"></a>Vereisten
@@ -36,9 +36,9 @@ Voor het instellen van de maximale Beschik baarheid met behulp van SUSE-clusteri
 
 ### <a name="setup-details"></a>Details van de installatie
 In deze hand leiding worden de volgende instellingen gebruikt:
-- Besturingssysteem: SLES 12 SP1 voor SAP
+- Besturings systeem: SLES 12 SP1 voor SAP
 - HANA grote instanties: 2xS192 (vier sockets, 2 TB)
-- HANA-versie: HANA 2.0 SP1
+- HANA-versie: HANA 2,0 SP1
 - Server namen: sapprdhdb95 (Knooppunt1) en sapprdhdb96 (Knooppunt2)
 - STONITH-apparaat: op iSCSI gebaseerd STONITH-apparaat
 - NTP ingesteld op een van de HANA grote instantie knooppunten
@@ -63,7 +63,7 @@ Als u de end-to-end HA wilt instellen met behulp van STONITH, moet u de volgende
 7.  De resources configureren voor het cluster
 8.  Het failoverproces testen
 
-## <a name="1---identify-the-sbd-device"></a>1.   Het SBD-apparaat identificeren
+## <a name="1---identify-the-sbd-device"></a>1. Identificeer het SBD-apparaat
 In deze sectie wordt beschreven hoe u het SBD-apparaat voor uw Setup kunt bepalen nadat het micro soft service management team de STONITH heeft geconfigureerd. **Deze sectie is alleen van toepassing op de bestaande klant**. Als u een nieuwe klant bent, kunt u het micro soft service management-team de naam van een SBD-apparaat geven en deze sectie overs Laan.
 
 1,1 */etc/iscsi/initiatorname.iSCI* wijzigen in 
@@ -75,7 +75,7 @@ Micro soft Service Management biedt deze teken reeks. Wijzig het bestand op **be
 
 ![initiatorname. png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 */etc/iscsi/iscsid.conf*wijzigen: Stel *node. Session. Timeo. replacement_timeout = 5* en *node. startup = Automatic*in. Wijzig het bestand op **beide** knoop punten.
+1,2 */etc/iscsi/iscsid.conf*wijzigen: set *node. Session. Timeo. replacement_timeout = 5* en *node. startup = Automatic*. Wijzig het bestand op **beide** knoop punten.
 
 1,3 de detectie opdracht uit te voeren, worden vier sessies weer gegeven. Voer de app uit op beide knoop punten.
 
@@ -83,14 +83,14 @@ Micro soft Service Management biedt deze teken reeks. Wijzig het bestand op **be
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 ```
 
-![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
+![iSCSIadmDiscovery. png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
 1,4 Voer de opdracht uit om u aan te melden bij het iSCSI-apparaat. er worden vier sessies weer gegeven. Voer de app uit op **beide** knoop punten.
 
 ```
 iscsiadm -m node -l
 ```
-![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
+![iSCSIadmLogin. png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
 1,5 Voer het script opnieuw scannen uit: *rescan-SCSI-bus.sh*.  Met dit script worden de nieuwe schijven weer gegeven die u voor u hebt gemaakt.  Voer de app uit op beide knoop punten. Als het goed is, ziet u een LUN-nummer dat groter is dan nul (bijvoorbeeld: 1, 2 enz.)
 
@@ -105,9 +105,9 @@ rescan-scsi-bus.sh
   fdisk –l
 ```
 
-![fdisk-l.png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
+![fdisk-l. png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-## <a name="2---initialize-the-sbd-device"></a>2.   Het SBD-apparaat initialiseren
+## <a name="2---initialize-the-sbd-device"></a>2. het SBD-apparaat initialiseren
 
 2,1 het SBD-apparaat op **beide** knoop punten initialiseren
 
@@ -122,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>3.   Het cluster configureren
+## <a name="3---configuring-the-cluster"></a>3. het cluster wordt geconfigureerd
 In deze sectie worden de stappen beschreven voor het instellen van het cluster SUSE HA.
 ### <a name="31-package-installation"></a>3,1-pakket installatie
 3.1.1 Controleer of ha_sles en SAPHanaSR-doc-patronen zijn geïnstalleerd. Als deze niet is geïnstalleerd, installeert u ze. Installeer de app op **beide** knoop punten.
@@ -130,23 +130,23 @@ In deze sectie worden de stappen beschreven voor het instellen van het cluster S
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+ ![zypperpatternSAPHANASR-doc. png ](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 het cluster instellen
 3.2.1 u kunt *HA-cluster-init* opdracht gebruiken of de wizard YaST2 gebruiken om het cluster in te stellen. In dit geval wordt de wizard YaST2 gebruikt. U voert deze stap **alleen uit op het primaire knoop punt**.
 
-Volg YaST2 > hoge Beschik baarheid ![> cluster YaST-Control-Center](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
-. png![YaST-Hawk-install. png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+Volg YaST2 > hoge Beschik baarheid > cluster ![yast-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+ ![yast-Hawk-install. png ](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 Klik op **Annuleren** omdat het halk2-pakket al is geïnstalleerd.
 
-![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
+![YaST-Hawk-continue. png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
 Klik op **door gaan**
 
-Verwachte waarde = aantal geïmplementeerde knoop punten (in dit geval 2 ![) YaST-cluster-Security.](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) PNG Klik op **volgende**
-![YaST-cluster-configure-csync2](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) . png Voeg knooppunt namen toe en klik vervolgens op toevoegen voorgestelde bestanden '
+Verwachte waarde = aantal geïmplementeerde knoop punten (in dit geval 2) ![yast-Cluster-Security. png ](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) Klik op **volgende** 
+ ![yast-cluster-configure-csync2. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) Voeg knooppunt namen toe en klik vervolgens op voorgestelde bestanden toevoegen.
 
 Klik op ' csync2 inschakelen ' op '
 
@@ -160,26 +160,26 @@ De verificatie wordt uitgevoerd met behulp van de IP-adressen en vooraf gedeelde
 
 ![YaST-cluster-conntrackd. png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-Klik op **volgende**
-![YaST-Cluster-service. png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+Klik op **volgende** 
+ ![yast-Cluster-service. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 In de standaard optie is opstarten uitgeschakeld, gewijzigd in aan, zodat pacemaker wordt gestart bij het opstarten. U kunt de keuze maken op basis van uw installatie vereisten.
 Klik op **volgende** en de cluster configuratie is voltooid.
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4.   De Softdog-watchdog instellen
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. het instellen van de Softdog-watchdog
 In deze sectie wordt de configuratie van de watchdog (softdog) beschreven.
 
 4,1 Voeg de volgende regel toe aan */etc/init.d/boot.local* op **beide** knoop punten.
 ```
 modprobe softdog
 ```
-![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
+![modprobe-softdog. png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
 4,2 werk het bestand */etc/sysconfig/SBD* op **beide** knoop punten als volgt bij:
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
-![sbd-device.png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
+![SBD-device. png](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
 4,3 laden van de kernel-module op **beide** knoop punten door de volgende opdracht uit te voeren
 ```
@@ -191,7 +191,7 @@ modprobe softdog
 ```
 lsmod | grep dog
 ```
-![lsmod-grep-dog.png](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
+![lsmod-grep-Dog. png](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
 4,5 start het SBD-apparaat op **beide** knoop punten
 ```
@@ -229,11 +229,11 @@ SBD_OPTS=""
 ```
 systemctl start pacemaker
 ```
-![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
+![Start-pacemaker. png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Als de pacemaker-service *mislukt*, raadpleegt u *scenario 5: Pacemaker-service mislukt*
+Als de pacemaker-service *mislukt*, raadpleegt u *scenario 5: pacemaker-service mislukt*
 
-## <a name="5---joining-the-cluster"></a>5.   Lid worden van het cluster
+## <a name="5---joining-the-cluster"></a>5. lid worden van het cluster
 In deze sectie wordt beschreven hoe u het knoop punt aan het cluster kunt toevoegen.
 
 ### <a name="51-add-the-node"></a>5,1 het knoop punt toevoegen
@@ -241,9 +241,9 @@ Voer de volgende opdracht uit op **Knooppunt2** om Knooppunt2 aan het cluster to
 ```
 ha-cluster-join
 ```
-Als er een *fout optreedt* tijdens het toevoegen van het cluster *, raadpleegt u scenario 6: Knoop punt 2 kan niet aan het*cluster worden toegevoegd.
+Als er een *fout optreedt* tijdens het toevoegen van het cluster, raadpleegt u *scenario 6: node 2 kan niet deel nemen aan het cluster*.
 
-## <a name="6---validating-the-cluster"></a>6.   Het cluster valideren
+## <a name="6---validating-the-cluster"></a>6. het cluster wordt gevalideerd
 
 ### <a name="61-start-the-cluster-service"></a>6,1 de Cluster service starten
 Om het cluster voor de eerste keer op **beide** knoop punten te controleren en te starten.
@@ -257,9 +257,9 @@ Voer de opdracht *crm_mon* uit om ervoor te zorgen dat **beide** knoop punten on
 ```
 crm_mon
 ```
-![CRM-Mon. png](media/HowToHLI/HASetupWithStonith/crm-mon.png) u kunt zich ook aanmelden bij Hawk om de cluster status *https://\<node IP >: 7630*te controleren. De standaard gebruiker is hacluster en het wacht woord is Linux. Indien nodig kunt u het wacht woord wijzigen met de opdracht *passwd* .
+![crm-Mon. png ](media/HowToHLI/HASetupWithStonith/crm-mon.png) u kunt zich ook aanmelden bij Hawk om de cluster status *https://\<node IP-> te controleren: 7630*. De standaard gebruiker is hacluster en het wacht woord is Linux. Indien nodig kunt u het wacht woord wijzigen met de opdracht *passwd* .
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7. Cluster eigenschappen en-bronnen configureren 
+## <a name="7-configure-cluster-properties-and-resources"></a>7. cluster eigenschappen en-bronnen configureren 
 In deze sectie worden de stappen beschreven voor het configureren van de cluster resources.
 In dit voor beeld stelt u de volgende resource in, de rest kan worden geconfigureerd (indien nodig) door te verwijzen naar de gids van SUSE HA. Voer de configuratie alleen in **een van de knoop punten** uit. Doen op het primaire knoop punt.
 
@@ -320,13 +320,13 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 de resources valideren
 
 Wanneer u de opdracht *crm_mon*uitvoert, ziet u de twee resources daar.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png ](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-U kunt ook de status van het *IP-\<adres van het https://-knoop punt zien >: 7630/CIB/Live/State*
+U kunt ook de status zien op *https://\<node IP-adres >: 7630/CIB/Live/State*
 
 ![hawlk-status-page. png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8. Het failoverproces testen
+## <a name="8-testing-the-failover-process"></a>8. het failoverproces testen
 Als u het failoverproces wilt testen, stopt u de pacemaker-service op Knooppunt1 en de failover van resources naar Knooppunt2.
 ```
 Service pacemaker stop
@@ -334,17 +334,17 @@ Service pacemaker stop
 Stop nu de pacemaker-service op **Knooppunt2** en bronnen waarvoor failover is uitgevoerd naar **Knooppunt1**
 
 **Voor failover**  
-![Before-failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover. png ](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **Na een failover**  
-![After-failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![CRM-Mon-after-failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover. png ](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-Mon-after-failover. png ](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. Problemen oplossen
+## <a name="9-troubleshooting"></a>9. problemen oplossen
 In deze sectie worden de scenario's beschreven die kunnen worden aangetroffen tijdens de installatie. U hoeft deze problemen mogelijk niet op te lossen.
 
-### <a name="scenario-1-cluster-node-not-online"></a>Scenario 1: Het cluster knooppunt is niet online
+### <a name="scenario-1-cluster-node-not-online"></a>Scenario 1: cluster knooppunt is niet online
 Als een van de knoop punten niet online in Cluster beheer wordt weer gegeven, kunt u het volgende proberen om deze online te brengen.
 
 De iSCSI-service starten
@@ -373,7 +373,7 @@ Het YaST2-grafisch scherm wordt gebruikt voor het instellen van het cluster met 
 
 **Optreedt**
 
-![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
+![yast2-qt-gui-error. png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
 **Verwachte uitvoer**
 
@@ -389,13 +389,13 @@ Als u de pakketten wilt installeren, gebruikt u YaST > Software-> Software Manag
 
 ![YaST-sofwaremanagement. png](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-Onder afhankelijkheden selecteert u ' Aanbevolen pakketten installeren ![' YaST-dependencies. png](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+Onder afhankelijkheden selecteert u ' Aanbevolen pakketten installeren ' ![yast-dependencies. png ](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 Bekijk de wijzigingen en klik op OK
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-Installatie van pakketten ![loopt YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+Installatie van pakketten loopt ![yast-Performing-Installation. png ](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 Klik op Next
 
@@ -407,13 +407,13 @@ U moet ook de libqt4-en libyui-qt-pakketten installeren.
 ```
 zypper -n install libqt4
 ```
-![zypper-install-libqt4.png](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
+![Zypper-install-libqt4. png](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
 ```
 zypper -n install libyui-qt
 ```
-![Zypper-install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
-![Zypper-install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2 moet de grafische weer gave nu kunnen openen, zoals hier wordt weer gegeven.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![zypper-install-ligyui. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+ ![zypper-install-ligyui_part2. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2 de grafische weer gave nu moeten kunnen openen, zoals hier wordt weer gegeven.
+![yast2-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Scenario 3: YaST2 biedt geen hoge Beschik baarheid
 Als u de optie hoge Beschik baarheid wilt weer geven in het YaST2-beheer centrum, moet u de extra pakketten installeren.
@@ -433,8 +433,8 @@ Software beheer van YaST2 > > gebruiken
 
 De patronen selecteren
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![yast-pattern1. png ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+ ![yast-pattern2. png ](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Klik op **accepteren**
 
@@ -448,7 +448,7 @@ Klik op **volgende** wanneer de installatie is voltooid
 
 ![yast2-installation-report. png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scenario 4: HANA-installatie mislukt met gcc-assembly's fout
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>Scenario 4: HANA-installatie mislukt met gcc-assemblages fout
 De HANA-installatie mislukt met de volgende fout.
 
 ![Hana-Installation-Error. png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
@@ -457,7 +457,7 @@ Om het probleem op te lossen, moet u de volgende bibliotheken (libgcc_sl en libs
 
 ![Zypper-install-lib. png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>Scenario 5: Pacemaker-service mislukt
+### <a name="scenario-5-pacemaker-service-fails"></a>Scenario 5: pacemaker-service mislukt
 
 Het volgende probleem is opgetreden tijdens het starten van de pacemaker-service.
 
@@ -508,7 +508,7 @@ Persistent=true
 
 ![Permanent. png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Scenario 6: Knoop punt 2 kan niet aan het cluster worden toegevoegd
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Scenario 6: knoop punt 2 kan niet aan het cluster worden toegevoegd
 
 Wanneer u de Knooppunt2 koppelt aan het bestaande cluster met behulp van de opdracht *HA-cluster-join* , is de volgende fout opgetreden.
 

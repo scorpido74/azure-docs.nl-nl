@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
 ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72176041"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Quick Start: een Azure Search-index maken in postman met REST-Api's
@@ -47,7 +47,7 @@ REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel n
 
 1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-![Een HTTP-eind punt en toegangs sleutel]ophalen ontvang(media/search-get-started-postman/get-url-key.png "een http-eind punt en toegangs sleutel")
+![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
 Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -68,7 +68,7 @@ De samen stelling van de aanvraag header bevat twee elementen, inhouds type, plu
 
 In postman een aanvraag formuleren die eruitziet als de volgende scherm afbeelding. Kies **ophalen** als werk woord, geef de URL op en klik op **verzenden**. Met deze opdracht wordt verbinding gemaakt met Azure Search, wordt de verzameling indexen gelezen en wordt de HTTP-status code 200 geretourneerd op een geslaagde verbinding. Als uw service al indexen heeft, bevat het antwoord ook index definities.
 
-URL van ![postman-aanvraag en]header(media/search-get-started-postman/postman-url.png "postman-aanvraag-url's en koptekst")
+![URL en header van Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header van Postman-aanvraag")
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
@@ -86,7 +86,7 @@ U doet dit als volgt in postman:
 
 4. Klik op **Verzenden**.
 
-Het ![JSON-document in de hoofd tekst van de aanvraag Body]in de(media/search-get-started-postman/postman-request.png "hoofd tekst") van de aanvraag indexeren
+![Het JSON-document indexeren in de hoofd tekst van de aanvraag](media/search-get-started-postman/postman-request.png "Het JSON-document indexeren in de hoofd tekst van de aanvraag")
 
 ### <a name="index-definition"></a>Indexdefinitie
 
@@ -140,7 +140,7 @@ U doet dit als volgt in postman:
 
 4. Klik op **Verzenden**.
 
-![JSON-documenten in]de hoofd tekst van de aanvraag Body in de hoofd(media/search-get-started-postman/postman-docs.png "tekst van de aanvraag")
+![JSON-documenten in de hoofd tekst van de aanvraag](media/search-get-started-postman/postman-docs.png "JSON-documenten in de hoofd tekst van de aanvraag")
 
 ### <a name="json-documents-to-load-into-the-index"></a>JSON-documenten die in de index moeten worden geladen
 
@@ -253,7 +253,7 @@ U doet dit als volgt in postman:
 
 Deze query is leeg en retourneert een telling van de documenten in de zoek resultaten. De aanvraag en het antwoord moeten eruitzien als in de volgende schermopname voor Postman nadat u op **Send** (Verzenden) hebt geklikt. De statuscode moet 200 zijn.
 
- ![Ophalen met zoek teken reeks in de URL](media/search-get-started-postman/postman-query.png "ophalen met zoek reeks in de URL")
+ ![OPHALEN met zoek reeks in de URL](media/search-get-started-postman/postman-query.png "OPHALEN met zoek reeks in de URL")
 
 Voer een paar andere query voorbeelden uit om een idee te krijgen van de syntaxis. U kunt een teken reeks zoeken, Verbatim $filter query's, de ingestelde resultaten beperken, de zoek opdracht bereiken naar specifieke velden, en meer.
 
@@ -284,7 +284,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 Het toevoegen van `/stats` aan uw URL retourneert index gegevens. In Postman moet uw aanvraag er ongeveer als volgt uitzien en bevat de reactie het aantal documenten en de gebruikte ruimte in bytes.
 
- ![Index gegevens ophalen](media/search-get-started-postman/postman-system-query.png "index gegevens ophalen")
+ ![Index gegevens ophalen](media/search-get-started-postman/postman-system-query.png "Index gegevens ophalen")
 
 Let op dat de syntaxis van api-version verschilt. Voeg voor deze aanvraag `?` toe aan api-version. De `?` scheidt het URL-pad van de query teken reeks, terwijl & de combi natie ' naam = waarde ' scheidt in de query teken reeks. Voor deze query is api-version het eerste en enige item in de querytekenreeks.
 

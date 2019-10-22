@@ -1,22 +1,18 @@
 ---
 title: Azure-toepassing Insights-processen automatiseren met Microsoft Flow
 description: Meer informatie over hoe u Microsoft Flow kunt gebruiken om Herhaal bare processen snel te automatiseren met behulp van de Application Insights-connector.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/29/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 541d5b70ee56d62831f0947e64b9522e17a07dd9
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 08/29/2019
+ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194923"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678324"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Azure-toepassing Insights-processen automatiseren met de connector voor Microsoft Flow
 
@@ -32,31 +28,31 @@ U kunt ook extra acties toevoegen. Microsoft Flow maakt honderden acties beschik
 
 In deze zelf studie leert u hoe u een stroom maakt die gebruikmaakt van het algoritme voor de automatische cluster analyse om kenmerken te groeperen in de gegevens voor een webtoepassing. De stroom verzendt de resultaten automatisch per e-mail, maar één voor beeld van hoe u Microsoft Flow en Application Insights Analytics samen kunt gebruiken.
 
-### <a name="step-1-create-a-flow"></a>Stap 1: Stroom maken
+### <a name="step-1-create-a-flow"></a>Stap 1: een stroom maken
 
 1. Meld u aan bij [Microsoft flow](https://flow.microsoft.com)en selecteer vervolgens **mijn stromen**.
 2. Klik op **Nieuw** en vervolgens **gepland, leeg**.
 
     ![Nieuwe stroom maken op basis van gepland leeg](./media/automate-with-flow/1-create.png)
 
-### <a name="step-2-create-a-trigger-for-your-flow"></a>Stap 2: Een trigger maken voor uw stroom
+### <a name="step-2-create-a-trigger-for-your-flow"></a>Stap 2: een trigger maken voor uw stroom
 
 1. Vul in het pop-upvenster **een geplande stroom**in en geef aan hoe vaak u de stroom wilt uitvoeren.
 
     ![Terugkeer patroon van schema instellen met behulp van de frequentie en het interval](./media/automate-with-flow/2-schedule.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
-### <a name="step-3-add-an-application-insights-action"></a>Stap 3: Een Application Insights actie toevoegen
+### <a name="step-3-add-an-application-insights-action"></a>Stap 3: een Application Insights actie toevoegen
 
 1. Zoeken naar **Application Insights**.
 2. Klik op **Azure-toepassing Insights-visualiseren Analytics-query**.
 
-    ![Kies een actie: Analytics-query van Azure-toepassing Insights visualiseren](./media/automate-with-flow/3-visualize.png)
+    ![Kies een actie: Azure-toepassing inzichten visualiseren analyse query](./media/automate-with-flow/3-visualize.png)
 
 3. Selecteer **Nieuwe stap**.
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Stap 4: Verbinding maken met een Application Insights resource
+### <a name="step-4-connect-to-an-application-insights-resource"></a>Stap 4: verbinding maken met een Application Insights-resource
 
 U hebt een toepassings-ID en een API-sleutel voor uw resource nodig om deze stap te volt ooien. U kunt ze ophalen uit de Azure Portal, zoals wordt weer gegeven in het volgende diagram:
 
@@ -70,9 +66,9 @@ Geef een naam op voor de verbinding, samen met de toepassings-ID en API-sleutel.
 
 Als het vak verbinding niet meteen wordt weer gegeven, klikt u in de rechter bovenhoek van het vak op het weglatings teken om de query in te voeren. Selecteer vervolgens mijn verbindingen of gebruik een bestaand account.
 
-Klik op **Create**.
+Klik op **Maken**.
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Stap 5: De analyse query en het grafiek type opgeven
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Stap 5: de analyse query en het grafiek type opgeven
 Met dit voor beeld worden de mislukte aanvragen in de afgelopen dag geselecteerd en wordt er een relatie met de uitzonde ringen die zijn opgetreden als onderdeel van de bewerking. Analytics correleert deze op basis van de operation_Id-id. De query segmenteert vervolgens de resultaten met behulp van de algoritme van de autocluster.
 
 Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytics voordat u deze toevoegt aan uw stroom.
@@ -92,7 +88,7 @@ Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytic
     
     ![Configuratie venster Analyse query](./media/automate-with-flow/5-query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>Stap 6: De stroom configureren voor het verzenden van e-mail
+### <a name="step-6-configure-the-flow-to-send-email"></a>Stap 6: de stroom configureren voor het verzenden van e-mail
 
 1. Zoek naar **Office 365 Outlook**.
 2. Klik op **Office 365 Outlook-een E-mail verzenden**.
@@ -119,11 +115,11 @@ Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytic
 
     ![Office 365 Outlook-configuratie](./media/automate-with-flow/7-email.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>Stap 7: Uw stroom opslaan en testen
+### <a name="step-7-save-and-test-your-flow"></a>Stap 7: uw stroom opslaan en testen
 
 Klik op **Opslaan**.
 
-U kunt wachten tot de trigger deze actie uitvoert of op ![het pictogram](./media/automate-with-flow/testicon.png) test van beker glas in de bovenste **testen** .
+U kunt wachten tot de trigger deze actie uitvoert. u kunt ook op ![beaker test pictogram klikken ](./media/automate-with-flow/testicon.png) bovenaan te **testen** .
 
 Na het selecteren van **test**:
 

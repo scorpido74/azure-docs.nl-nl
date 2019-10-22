@@ -1,5 +1,5 @@
 ---
-title: 'Model trainen: Module verwijzing'
+title: 'Train model: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module **Train model** in azure machine learning service voor het trainen van een classificatie of regressie model.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128453"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693694"
 ---
-# <a name="train-model-module"></a>Module Train-Model
+# <a name="train-model-module"></a>Train model-module
 
 In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
@@ -43,7 +43,7 @@ In Azure Machine Learning is het maken en gebruiken van een machine learning mod
   
 1.  Configureer in Azure Machine Learning een classificatie model of regressie model.
     
-2. Voeg de module **Train model** toe aan het experiment.  U kunt deze module vinden onder de categorie **machine learning** . Vouw **Train**uit en sleep de module **Train model** naar uw experiment.
+2. Voeg de module **Train model** toe aan de pijp lijn.  U kunt deze module vinden onder de categorie **machine learning** . Vouw **Train**uit en sleep de module **Train model** naar uw pijp lijn.
   
 3.  Koppel de niet-getrainde modus aan de linkerkant. Koppel de trainings gegevensset aan de rechter invoer van **Train model**.
 
@@ -62,16 +62,16 @@ In Azure Machine Learning is het maken en gebruiken van een machine learning mod
     > [!TIP] 
     > Als u problemen ondervindt met het gebruik van de kolom kiezer, raadpleegt u het artikel [kolommen in gegevensset selecteren](./select-columns-in-dataset.md) voor tips. Hierin worden enkele algemene scenario's en tips beschreven voor het gebruik van de opties **with Rules** en **op naam** .
   
-5.  Voer het experiment uit. Als u veel gegevens hebt, kan dit enige tijd duren.
+5.  Voer de pijplijn uit. Als u veel gegevens hebt, kan dit enige tijd duren.
 
 ## <a name="bkmk_results"></a>Levert
 
 Nadat het model is getraind:
 
-+ Als u de model parameters en functie-gewichten wilt weer geven, klikt umet de rechter muisknop op de uitvoer en selecteert u visualiseren.
-+ Als u het model in andere experimenten wilt gebruiken, klikt u met de rechter muisknop op het model en selecteert u **model opslaan**. Typ een naam voor het model. 
++ Als u de model parameters en functie-gewichten wilt weer geven, klikt u met de rechter muisknop op de uitvoer en selecteert u **visualiseren**.
++ Als u het model in andere pijp lijnen wilt gebruiken, klikt u met de rechter muisknop op het model en selecteert u **model opslaan**. Typ een naam voor het model. 
 
-    Hiermee slaat u het model op als een moment opname die niet wordt bijgewerkt door herhaalde uitvoeringen van het experiment.
+    Hiermee slaat u het model op als een moment opname die niet wordt bijgewerkt door herhaalde uitvoeringen van de pijp lijn.
 + Als u het model wilt gebruiken bij het voors pellen van nieuwe waarden, verbindt u het met de module [score model](./score-model.md) , samen met nieuwe invoer gegevens.
 
 

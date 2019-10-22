@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 486a6b46b6c4590b7f49cd8aba449204cd8f4fac
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709705"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375767"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Azure-prijzen voor uw organisatie bekijken en downloaden
 
-Azure-klanten met een Azure EA (Enterprise Agreement) of [Microsoft-klantovereenkomst](#check-your-access-to-a-microsoft-customer-agreement) kunnen hun prijzen bekijken en downloaden in de Azure-portal.
+Azure-klanten met een Azure Enterprise Agreement (EA), Microsoft-klantovereenkomst (MCA) of Microsoft Partner-overeenkomst (MPA) kunnen hun prijzen bekijken en downloaden in de Azure-portal. [Ontdek hoe u uw type factureringsrekening kunt controleren](#check-your-billing-account-type).
 
-## <a name="ea-pricing"></a>EA-prijzen
+## <a name="download-pricing-for-an-enterprise-agreement"></a>Prijzen voor een Enterprise Agreement downloaden
 
 Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw organisatie, bieden alleen bepaalde beheerdersrollen toegang tot de EA-prijsgegevens van uw organisatie. Zie [Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie.
 
@@ -42,18 +42,9 @@ Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw or
 
    ![Schermopname van de knop CSV-bestand downloaden voor een prijzenoverzicht](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
-## <a name="microsoft-customer-agreement-pricing"></a>Prijzen van Microsoft-klantovereenkomst
+## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Prijzen voor een MCA- of MPA-account downloaden
 
-U moet de eigenaar van het factureringsprofiel, de bijdrager, de lezer of de factuurbeheerder zijn om prijzen te kunnen bekijken en downloaden. Zie [Factureringsprofielrollen en taken](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)voor meer informatie over factureringsrollen voor Microsoft-klantovereenkomsten.
-
-### <a name="download-price-sheets-for-the-current-billing-period"></a>Prijzenoverzichten voor de huidige factureringsperiode downloaden
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar *Kostenbeheer en facturering*.
-1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
-1. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (maand tot heden).
-1. Selecteer **Prijzenoverzicht voor Azure**.
-![Schermopname waarop downloaden uit Overzicht wordt weergegeven](./media/billing-ea-pricing/open-pricing.png)
+Als u een MCA hebt, moet u een eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder zijn om prijzen te kunnen bekijken en downloaden. Als u een MPA hebt, moet u de rol Globale beheerder en de rol Beheerderagent in de partnerorganisatie hebben om prijzen te kunnen bekijken en downloaden.
 
 ### <a name="download-price-sheets-for-billed-charges"></a>Prijzenoverzichten voor gefactureerde kosten downloaden
 
@@ -69,6 +60,17 @@ U moet de eigenaar van het factureringsprofiel, de bijdrager, de lezer of de fac
 1. Als u de prijzen voor alle Azure-services voor de betreffende factureringsperiode wilt zien, selecteert u **Azure-prijzenoverzicht**.
 
 ![Schermopname van het contextmenu met prijzenoverzichten](./media/billing-ea-pricing/contextmenu-pricesheet.png)
+
+### <a name="download-price-sheets-for-the-current-billing-period"></a>Prijzenoverzichten voor de huidige factureringsperiode downloaden
+
+Als u een MCA hebt, kunt u de prijzen voor de huidige factureringsperiode downloaden.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar *Kostenbeheer en facturering*.
+1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
+1. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (maand tot heden).
+1. Selecteer **Prijzenoverzicht voor Azure**.
+![Schermopname waarop downloaden uit Overzicht wordt weergegeven](./media/billing-ea-pricing/open-pricing.png)
 
 ## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Kosten schatten met de Azure-prijscalculator
 
@@ -86,8 +88,8 @@ U kunt ook de prijzen van uw organisatie gebruiken om de kosten te schatten met 
 1. Zoek producten en voeg deze vervolgens toe aan uw schatting.
 1. Geschatte prijzen die worden weergegeven, zijn gebaseerd op prijzen voor de organisatie die u hebt geselecteerd.
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Uw toegang tot een Microsoft-klantovereenkomst controleren
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>Uw type factureringsrekening controleren
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

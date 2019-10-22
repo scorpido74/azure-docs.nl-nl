@@ -11,39 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: banders
-ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 97e6e04bf7fab3a48f1ce0552e1b653b208be77b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70114439"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375440"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
 
-Met de bestedingslimiet in Azure voorkomt u dat u uw tegoed overschrijdt. Voor alle nieuwe klanten die zich aanmelden voor een Azure-proefversie of voor aanbiedingen met tegoeden verspreid over een aantal maanden, is de bestedingslimiet standaard ingeschakeld. De bestedingslimiet is $ 0 en deze kan niet worden gewijzigd. U kunt de bestedingslimiet bijvoorbeeld niet wijzigen in $ 100. U kunt de bestedingslimiet echter wel verwijderen. U hebt dus ofwel geen limiet ofwel u hebt een limiet van nul die allerlei uitgaven voorkomt. De bestedingslimiet is niet beschikbaar voor abonnementen onder sommige plannen, zoals toezeggingsplannen en plannen met betalen per gebruik-tarieven. Zie de [volledige lijst met Azure-aanbiedingen en de beschikbaarheid van de bestedingslimiet](https://azure.microsoft.com/support/legal/offer-details/).
+Met de bestedingslimiet in Azure voorkomt u dat u uw tegoed overschrijdt. Voor alle nieuwe klanten die zich aanmelden voor een gratis Azure-account of voor een abonnement met tegoeden verspreid over een aantal maanden, is de bestedingslimiet standaard ingeschakeld. De bestedingslimiet is gelijk aan de hoeveelheid van het tegoed en kan niet worden gewijzigd. Als u zich bijvoorbeeld hebt geregistreerd voor een gratis Azure-account, is uw bestedingslimiet $ 200 en kunt u deze niet wijzigen in $ 500. U kunt de bestedingslimiet echter wel verwijderen. U hebt dus geen limiet of u hebt een limiet die gelijk is aan de hoeveelheid van het tegoed. Hierdoor kunt u de meeste soorten uitgaven niet wijzigen. De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen en tarieven voor betalen per gebruik. Zie de [volledige lijst met Azure-abonnementstypen en de beschikbaarheid van de bestedingslimiet](https://azure.microsoft.com/support/legal/offer-details/).
 
 ## <a name="reaching-a-spending-limit"></a>Een bestedingslimiet bereiken
 
-Wanneer uw gebruik leidt tot kosten die hoger zijn dan de maandelijkse tegoeden van uw Azure-abonnement, worden de services waarvan u gebruikt hebt gemaakt voor de rest van die factureringsperiode uitgeschakeld.
+Wanneer uw gebruik leidt tot kosten die hoger zijn dan uw bestedingslimiet, worden de services waarvan u gebruikt hebt gemaakt voor de rest van die factureringsperiode uitgeschakeld.
 
-Als u bijvoorbeeld al het tegoed van uw abonnement besteedt, worden de Azure-resources die u hebt geïmplementeerd, verwijderd uit productie en worden uw virtuele Azure-machines gestopt en opnieuw toegewezen. De gegevens in uw opslagaccounts zijn beschikbaar als alleen-lezen.
+Als u bijvoorbeeld al het tegoed van uw gratis Azure-account besteedt, worden de Azure-resources die u hebt geïmplementeerd, verwijderd uit productie en worden uw virtuele Azure-machines gestopt en opnieuw toegewezen. De gegevens in uw opslagaccounts zijn beschikbaar als alleen-lezen.
 
-Aan het begin van de volgende factureringsperiode wordt uw abonnement automatisch opnieuw ingeschakeld als uw abonnement tegoeden heeft die verspreid zijn over meerdere maanden. Vervolgens kunt u uw Azure-resources opnieuw implementeren en beschikt u over volledige toegang tot uw opslagaccounts en databases.
+Als uw type abonnement tegoeden heeft die verspreid zijn over meerdere maanden, wordt uw abonnement automatisch opnieuw ingeschakeld aan het begin van de volgende factureringsperiode. Vervolgens kunt u uw Azure-resources opnieuw implementeren en beschikt u over volledige toegang tot uw opslagaccounts en databases.
 
-Azure verzendt e-mailmeldingen wanneer u de bestedingslimiet voor uw abonnement bereikt. Meldt u aan bij [Accountcentrum](https://account.windowsazure.com/Subscriptions) om meldingen te zien over abonnementen waarvan de bestedingslimiet is bereikt.
+Azure verzendt e-mailmeldingen wanneer u de bestedingslimiet bereikt. Meld u aan bij de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) om meldingen te zien over abonnementen waarvan de bestedingslimiet is bereikt.
 
-Als u een gratis proefabonnement hebt en de bestedingslimiet hebt bereikt, kunt u een upgrade uitvoeren naar een plan met tarieven voor [betalen per gebruik](billing-upgrade-azure-subscription.md) om de bestedingslimiet te verwijderen en het abonnement automatisch in te schakelen.
+Als u een gratis Azure-account hebt en de bestedingslimiet bereikt, kunt u een upgrade uitvoeren naar tarieven voor [betalen per gebruik](billing-upgrade-azure-subscription.md) om de bestedingslimiet te verwijderen en uw abonnement automatisch weer in te schakelen.
 
 <a id="remove"></a>
 
-## <a name="remove-the-spending-limit-in-account-center"></a>De bestedingslimiet verwijderen in Accountcentrum
+## <a name="remove-the-spending-limit-in-azure-portal"></a>De bestedingslimiet verwijderen in de Azure-portal
 
-U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldige betaalmethode aan uw Azure-abonnement is gekoppeld. Voor aanbiedingen met tegoeden verspreid over een aantal maanden kunt u de bestedingslimiet ook aan het begin van de volgende factureringsperiode inschakelen.
+U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldige betaalmethode aan uw Azure-abonnement is gekoppeld. Voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden, zoals Visual Studio Enterprise en Visual Studio Professional, kunt u de bestedingslimiet ook inschakelen aan het begin van uw volgende factureringsperiode.
 
 Ga als volgt te werk om de bestedingslimiet te verwijderen:
 
-1. Meld u aan bij het [Accountcentrum](https://account.windowsazure.com/Subscriptions).
-1. Selecteer een abonnement. Als het abonnement is uitgeschakeld omdat de bestedingslimiet is bereikt, klikt u op de melding: **De bestedingslimiet van het abonnement is bereikt. Het abonnement is uitgeschakeld om verdere onkosten te voorkomen.** Als dat niet het geval is, klikt u in het gebied **ABONNEMENTSSTATUS** op **Bestedingslimiet verwijderen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Selecteer een abonnement. Als de bestedingslimiet van het abonnement is bereikt, wordt het abonnement uitgeschakeld.
+1. Selecteer **Bestedingslimiet verwijderen** boven aan de pagina.
 1. Selecteer een voor u geschikte optie.
 
 ![Een optie selecteren om de bestedingslimiet te verwijderen](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -57,13 +58,13 @@ Ga als volgt te werk om de bestedingslimiet te verwijderen:
 
 De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en services van derden niet meer kunt implementeren of gebruiken. Hieronder ziet u de situaties waarin u het beste de bestedingslimiet van uw abonnement kunt verwijderen.
 
--  U bent van plan eigen installatiekopieën als Oracle en services als Azure DevOps Services te implementeren. In deze situatie overschrijdt u bijna meteen de bestedingslimiet, waardoor uw abonnement wordt uitgeschakeld.
-- U hebt services die u niet wilt onderbreken.
-- U hebt services en bronnen met instellingen zoals virtuele IP-adressen die u niet wilt kwijtraken. Deze instellingen gaan verloren wanneer de toewijzing van de services en bronnen ongedaan wordt gemaakt.
+-  U bent van plan eigen installatiekopieën als Oracle of services als Azure DevOps Services te implementeren. In deze situatie bereikt u bijna meteen de bestedingslimiet, waardoor uw abonnement wordt uitgeschakeld.
+- U hebt services die u niet wilt onderbreken. Wanneer u de bestedingslimiet bereikt, worden Azure-resources die u hebt geïmplementeerd uit de productie genomen. Ook worden uw virtuele machines van Azure stopgezet en wordt de toewijzing ervan ongedaan gemaakt. Als u services hebt die u niet wilt onderbreken, moet u de bestedingslimiet verwijderen.
+- U hebt services en bronnen met instellingen zoals virtuele IP-adressen die u niet wilt kwijtraken. Deze instellingen gaan verloren wanneer u de bestedingslimiet bereikt en de toewijzing van de services en bronnen ongedaan wordt gemaakt.
 
 ## <a name="turn-on-the-spending-limit-after-removing"></a>De bestedingslimiet inschakelen na het verwijderen
 
-Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd. Wijzig deze om deze optie automatisch aan het begin van de volgende factureringsperiode in te schakelen.
+Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden. U kunt deze functie gebruiken om uw bestedingslimiet automatisch aan het begin van de volgende factureringsperiode in te schakelen.
 
 1. Meld u aan bij het [Accountcentrum](https://account.windowsazure.com/Subscriptions).
 1. Klik op de gele banner om de optie voor de bestedingslimiet te wijzigen.

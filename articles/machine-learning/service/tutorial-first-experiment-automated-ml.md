@@ -11,13 +11,13 @@ author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
 ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72035679"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 
 In deze zelf studie leert u hoe u uw eerste geautomatiseerde machine learning-experiment kunt maken via de pagina voor het land van de werk ruimte (preview) zonder dat u maar één regel code hoeft te schrijven. In dit voor beeld wordt een classificatie model gemaakt om te voors pellen of een client zich abonneert op een vaste termijn storting met een financiële instelling.
 
@@ -26,10 +26,10 @@ Met geautomatiseerde machine learning kunt u tijdrovende taken automatiseren. Au
 In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Een Azure Machine Learning-werkruimte maken.
+> * Maak een Azure Machine Learning-werk ruimte.
 > * Voer een geautomatiseerd machine learning experiment uit.
 > * Experiment details weer geven.
-> * Het model implementeren.
+> * Implementeer het model.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,14 +66,14 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
 
 1. Selecteer **experiment maken**. 
 
-1. Voer de naam van het experiment in: `my-1st-automl-experiment`
+1. Voer de naam van dit experiment in: `my-1st-automl-experiment`
 
 1. Selecteer **een nieuwe berekening maken** en configureer uw reken doel. Een compute-doel is een lokale of cloud-gebaseerde resource omgeving die wordt gebruikt om uw trainings script uit te voeren of uw service-implementatie te hosten. Voor dit experiment gebruiken we een op de cloud gebaseerde compute. 
 
-   Veld | Description | Waarde voor zelf studie
+   Veld | Beschrijving | Waarde voor zelf studie
    ----|---|---
    Compute name |Een unieke naam die uw Compute-context identificeert.|automl-compute
-   Virtuele @ no__t-0machine @ no__t-1size| Selecteer de grootte van de virtuele machine voor de reken kracht.|Standard_DS12_V2
+   Virtuele-&nbsp;machine &nbsp;size| Selecteer de grootte van de virtuele machine voor de reken kracht.|Standard_DS12_V2
    Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven.|Minimum aantal knoop punten: 1<br>Maximum aantal knoop punten: 6
 
    >[!NOTE]
@@ -99,12 +99,12 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
        
     1. Controleer of de **instellingen en het voorbeeld** formulier als volgt zijn ingevuld en selecteer **volgende**.
         
-        Veld|Description| Waarde voor zelf studie
+        Veld|Beschrijving| Waarde voor zelf studie
         ---|---|---
         Bestands indeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Gescheiden
-        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen @ no__t-0 afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
+        Vorm|Een of meer tekens voor het opgeven van de grens tussen &nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
         Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
-        Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde kopteksten
+        Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde headers
         Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
     
         ![Configuratie van het tabblad voor beeld](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
@@ -118,10 +118,10 @@ U voltooit de volgende proef installatie en voert de stappen uit op de pagina vo
    >[!NOTE]
    > In deze zelf studie stelt u geen metrische Score of maximale kernen per herhalings drempel in. U kunt ook voor komen dat algoritmen worden getest.
    
-   Geavanceerd @ no__t-0settings|Description|Waarde @ no__t-0for @ no__t-1tutorial
+   Geavanceerde &nbsp;settings|Beschrijving|Waarde &nbsp;for &nbsp;tutorial
    ------|---------|---
    Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|AUC_weighted
-   Afsluit criteria| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Training @ no__t-0job @ no__t-1Time: 5 <br> <br> Max. @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-&#58;3iterations 10
+   Afsluit criteria| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Trainings &nbsp;job &nbsp;time: 5 <br> <br> Maxi maal aantal &nbsp; #&#58;&nbsp;of &nbsp;iterations 10
    Verwerking| Hiermee wordt de voor verwerking van automatische machine learning mogelijk gemaakt. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
    Validatie type | Kies een type Kruis validatie.|Kruis validatie met K-vouwen
    Aantal validaties | Aantal testen. | 2 Kruis validaties 
@@ -156,7 +156,7 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
 
 1. Vul het deel venster **beste model implementeren** als volgt in:
 
-    Veld| Value
+    Veld| Waarde
     ----|----
     Implementatie naam| mijn-automl-implementeren
     Beschrijving van implementatie| Mijn eerste geautomatiseerde machine learning-experiment implementatie
@@ -200,5 +200,5 @@ In deze zelf studie voor automatisch machine learning hebt u de landings pagina 
 + Zie het artikel over [geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md#classification) voor meer informatie over classificatie gegevens en diagrammen.
 
 >[!NOTE]
-> Deze gegevensset voor Bank marketing wordt beschikbaar gesteld onder de [Creative Commons (CCO: Openbaar domein) licentie @ no__t-0. Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
+> Deze gegevensset voor Bank marketing wordt beschikbaar gesteld in het [Creative Commons-licentie (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez en P. Rita. Een gegevensgestuurde benadering voor het voors pellen van het slagen van Bank telemarketing. Decision Support Systems, Elsevier, 62:22-31, juni 2014.

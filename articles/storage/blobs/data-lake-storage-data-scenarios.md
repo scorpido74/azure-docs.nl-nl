@@ -9,10 +9,10 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72300326"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
@@ -89,7 +89,7 @@ Zie [Azure data Lake Storage Gen2 Security Guide (Engelstalig](https://docs.micr
 
 In deze sectie worden de verschillende gegevens bronnen en de verschillende manieren beschreven waarop de gegevens kunnen worden opgenomen in een Data Lake Storage Gen2-account.
 
-![Gegevens opnemen in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "gegevens opname in data Lake Storage Gen2")
+![Gegevens opnemen in Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Gegevens opnemen in Data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Ad hoc gegevens
 
@@ -165,7 +165,7 @@ Met Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-data 
 
 Zodra de gegevens beschikbaar zijn in Data Lake Storage Gen2 kunt u analyses uitvoeren op die gegevens met behulp van de ondersteunde big data toepassingen. 
 
-![Gegevens analyseren in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "gegevens in data Lake Storage Gen2 analyseren")
+![Gegevens in Data Lake Storage Gen2 analyseren](./media/data-lake-storage-data-scenarios/analyze-data.png "Gegevens in Data Lake Storage Gen2 analyseren")
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om taken voor gegevens analyse uit te voeren voor gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
@@ -178,7 +178,7 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om taken voor geg
 
 U kunt een combi natie van Services gebruiken om visuele weer gaven te maken van gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
-![Gegevens visualiseren in data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "gegevens visualiseren in data Lake Storage Gen2")
+![Gegevens visualiseren in Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Gegevens visualiseren in Data Lake Storage Gen2")
 
 * U kunt beginnen met [Azure Data Factory om gegevens te verplaatsen van data Lake Storage Gen2 naar Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md)
 * Daarna kunt u [Power bi integreren met Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) om een visuele weer gave van de gegevens te maken.
@@ -191,7 +191,7 @@ U kunt ook gegevens downloaden of verplaatsen van Azure Data Lake Storage Gen2 v
 
 * Down load gegevens naar uw lokale computer voor verwerking in IDE-omgevingen tijdens het maken van prototypen van toepassingen.
 
-Uitgaande ![gegevens van data Lake Storage Gen2]uitgaand(./media/data-lake-storage-data-scenarios/egress-data.png "gegevens van data Lake Storage Gen2")
+![Uitgaande gegevens van Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Uitgaande gegevens van Data Lake Storage Gen2")
 
 Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om gegevens te downloaden van Data Lake Storage Gen2.
 

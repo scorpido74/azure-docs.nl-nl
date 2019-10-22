@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Envoy | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Envoy | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Envoy.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28f3fca731c9ceb28f66ecd1c178e5c025f80ede
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163534"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Envoy
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Envoy
 
 In deze zelf studie leert u hoe u Envoy integreert met Azure Active Directory (Azure AD). Wanneer u Envoy integreert met Azure AD, kunt u het volgende doen:
 
@@ -104,17 +104,17 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -124,7 +124,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst met toepassingen **Envoy**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -152,15 +152,15 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 5. Klik op **Company** (Bedrijf).
 
-    ![Company] (Bedrijf)(./media/envoy-tutorial/ic776783.png "Company") (Bedrijf)
+    ![Bedrijfs](./media/envoy-tutorial/ic776783.png "Bedrijf")
 
 6. Klik op **SAML**.
 
-    ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
+    ![SSO](./media/envoy-tutorial/ic776784.png "SAML")
 
 7. Voer in het gedeelte **SAML Authentication** (SAML-verificatie) de volgende stappen uit:
 
-    ![SAML Authentication] (SAML-verificatie)(./media/envoy-tutorial/ic776785.png "SAML Authentication") (SAML-verificatie)
+    ![SAML-verificatie](./media/envoy-tutorial/ic776785.png "SAML-verificatie")
     
     >[!NOTE]
     >De ID-waarde voor de locatie van het hoofdkwartier is automatisch gegenereerd door de toepassing.
@@ -169,7 +169,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     
     b. Plak de waarde van de **Login URL** (aanmeldings-URL), die u uit de Azure-portal hebt gekopieerd naar het tekstvak **IDENTITY PROVIDER HTTP SAML URL** (HTTP SAML-URL IDENTITEITSPROVIDER).
     
-    c. Klik op **wijzigingen opslaan**.
+    c. Klik op **Save changes** (Wijzigingen opslaan).
 
 ### <a name="create-envoy-test-user"></a>Envoy-testgebruiker maken
 
@@ -177,11 +177,11 @@ In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Envoy. Env
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Envoy in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Envoy waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

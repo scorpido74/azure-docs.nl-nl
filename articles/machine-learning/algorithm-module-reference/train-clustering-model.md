@@ -1,5 +1,5 @@
 ---
-title: 'Cluster model trainen: Module verwijzing'
+title: 'Train clustering model: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module clustering model leren in Azure Machine Learning service om cluster modellen te trainen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128477"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693655"
 ---
 # <a name="train-clustering-model"></a>Clustermodel trainen
 
@@ -29,7 +29,7 @@ De module heeft een niet-getraind cluster model dat u al hebt geconfigureerd met
   
 ## <a name="how-to-use-train-clustering-model"></a>Het gebruik van Train clustering model  
   
-1.  Voeg de module **clustering model trainen** toe aan uw experiment in Studio. U kunt de module vinden onder **machine learning-modules**in de categorie **trein** .  
+1.  Voeg de module **clustering model trainen** aan uw pijp lijn toe in Studio. U kunt de module vinden onder **machine learning-modules**in de categorie **trein** .  
   
 2. Voeg de [cluster module K-betekent](k-means-clustering.md) toe, of een andere aangepaste module die een compatibel cluster model maakt en stel de para meters van het cluster model in.  
     
@@ -43,16 +43,16 @@ De module heeft een niet-getraind cluster model dat u al hebt geconfigureerd met
 
     Als u deze optie uitschakelt, worden alleen de cluster toewijzingen uitgevoerd. 
 
-7. Voer het experiment uit of klik op de module **clustering model trainen** en selecteer **geselecteerde uitvoeren**.  
+7. Voer de pijp lijn uit of klik op de module **clustering model trainen** en selecteer **geselecteerde uitvoeren**.  
   
 ### <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
 
-+  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en klikt u op visualiseren.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en klikt u op **visualiseren**.
 
-+ Als u het getrainde model wilt opslaan voor later hergebruik, klikt u met de rechter muisknop op de module, selecteert u getraind **model**en klikt u op **Opslaan als getraind model**.
++ Als u het getrainde model wilt opslaan voor later hergebruik, klikt u met de rechter muisknop op de module, selecteert u **getraind model**en klikt u op **Opslaan als getraind model**.
 
 + Als u scores wilt genereren op basis van het model, gebruikt u [gegevens toewijzen aan clusters](assign-data-to-clusters.md).
 

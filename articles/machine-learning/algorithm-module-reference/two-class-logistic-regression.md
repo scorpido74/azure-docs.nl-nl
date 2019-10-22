@@ -1,5 +1,5 @@
 ---
-title: 'Logistiek regressie met twee klassen: Module verwijzing'
+title: 'Logistiek regressie met twee klassen: Naslag informatie over de module'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module logistiek-regressie van twee klassen in Azure Machine Learning service voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128384"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692628"
 ---
 # <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
 
@@ -36,11 +36,11 @@ Als u dit model wilt trainen, moet u een gegevensset opgeven die een kolom van h
 
 De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of ' no '. Het kan ook [Credit Risk] zijn, met mogelijke waarden van ' hoog ' of ' laag '. 
   
-1.  Voeg de module **logistiek-regressie met twee klassen** toe aan uw experiment.  
+1.  Voeg de module **logistiek-regressie met twee klassen** toe aan uw pijp lijn.  
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
+    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
   
 3.  Geef bij **optimalisatie tolerantie**een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
   
@@ -54,10 +54,10 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
   
     -   In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  
   
-     Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: <code>x = L1</code> dat <code>y = L2</code>wil zeggen <code>ax + by = c</code> , als en en vervolgens de lineaire lijn van de regularisatie-voor waarden definieert.  
+     Dit algoritme ondersteunt een lineaire combi natie van L1-en L2 regularisatie-waarden: dat wil zeggen, als <code>x = L1</code> en <code>y = L2</code>, <code>ax + by = c</code> definieert de lineaire lijn van de regularisatie-voor waarden.  
   
     > [!NOTE]
-    >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen:  [L1 en L2-regularisatie voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen: [L1 en L2 regularisatie voor machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
     > Er zijn verschillende lineaire combi Naties van L1-en L2-termen ontwikkeld voor logistieke regressie modellen: bijvoorbeeld [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization). U wordt aangeraden om te verwijzen naar deze combi Naties om een lineaire combi natie te definiëren die effectief is in uw model.
       
@@ -67,20 +67,20 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
   
      Deze optimalisatie parameter beperkt de hoeveelheid geheugen die wordt gebruikt voor het berekenen van de volgende stap en richting. Wanneer u minder geheugen opgeeft, is de training sneller, maar minder nauw keurig.  
   
-6.  Voor **wille keurig getal zaad**typt u een geheel getal. Het definiëren van een Seed-waarde is belang rijk als u wilt dat de resultaten worden gereproduceerd over meerdere uitvoeringen van hetzelfde experiment.  
+6.  Voor **wille keurig getal zaad**typt u een geheel getal. Het definiëren van een Seed-waarde is belang rijk als u wilt dat de resultaten reproduceerbaar zijn op meerdere uitvoeringen van dezelfde pijp lijn.  
   
   
-8. Voeg een gecodeerde gegevensset toe aan het experiment en Verbind een van de [trainings modules](module-reference.md).  
+8. Voeg een gecodeerde gegevensset toe aan de pijp lijn en Verbind een van de [trainings modules](module-reference.md).  
   
     -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .  
   
-9. Voer het experiment uit.  
+9. Voer de pijplijn uit.  
   
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training,klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u visualiseren.   
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u **visualiseren**.   
   
 + Als u voor spellingen wilt doen op nieuwe gegevens, gebruikt u het getrainde model en de nieuwe gegevens als invoer voor de module [score model](./score-model.md) . 
 

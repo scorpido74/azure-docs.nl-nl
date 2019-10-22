@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001781"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Resources voor Apache Spark cluster beheren in azure HDInsight 
@@ -64,7 +64,7 @@ U kunt de garen-interface gebruiken om toepassingen te bewaken die momenteel wor
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Clusters optimaliseren voor Spark-toepassingen
 
-De drie belang rijke para meters die kunnen worden gebruikt voor Spark-configuratie, zijn `spark.executor.instances`afhankelijk `spark.executor.cores`van de `spark.executor.memory`toepassings vereisten, en. Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Het wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken voor de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster wordt berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze informatie wordt opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.
+De drie belang rijke para meters die kunnen worden gebruikt voor de configuratie van Spark, afhankelijk van de toepassings vereisten, zijn `spark.executor.instances`, `spark.executor.cores` en `spark.executor.memory`. Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Het wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken voor de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster wordt berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze informatie wordt opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.
 
 De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) of kunnen ook voor elke afzonderlijke toepassing worden opgegeven.
 
@@ -81,7 +81,7 @@ De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (
     ![Services opnieuw starten](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>De para meters wijzigen voor een toepassing die wordt uitgevoerd in Jupyter notebook
-Voor toepassingen die worden uitgevoerd in de Jupyter-notebook, kunt `%%configure` u het Magic gebruiken om de configuratie wijzigingen door te voeren. In het ideale geval moet u dergelijke wijzigingen aan het begin van de toepassing aanbrengen voordat u uw eerste code-cel uitvoert. Dit zorgt ervoor dat de configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt. Als u de configuratie in een later stadium in de toepassing wilt wijzigen, moet u de `-f` para meter gebruiken. De voortgang van de toepassing gaat echter verloren.
+Voor toepassingen die worden uitgevoerd in de Jupyter-notebook kunt u de `%%configure` Magic gebruiken om de configuratie wijzigingen door te voeren. In het ideale geval moet u dergelijke wijzigingen aan het begin van de toepassing aanbrengen voordat u uw eerste code-cel uitvoert. Dit zorgt ervoor dat de configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt. Als u de configuratie in een later stadium in de toepassing wilt wijzigen, moet u de para meter `-f` gebruiken. De voortgang van de toepassing gaat echter verloren.
 
 Het volgende code fragment laat zien hoe u de configuratie wijzigt voor een toepassing die wordt uitgevoerd in Jupyter.
 
@@ -91,7 +91,7 @@ Het volgende code fragment laat zien hoe u de configuratie wijzigt voor een toep
 Configuratie parameters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de voorbeeld kolom.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>De para meters voor een toepassing die is verzonden met Spark verzenden wijzigen
-De volgende opdracht is een voor beeld van het wijzigen van de configuratie parameters voor een batch toepassing die wordt `spark-submit`verzonden met.
+De volgende opdracht is een voor beeld van het wijzigen van de configuratie parameters voor een batch toepassing die wordt verzonden met behulp van `spark-submit`.
 
     spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
@@ -103,12 +103,12 @@ De volgende opdracht is een voor beeld van het wijzigen van de configuratie para
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Deze para meters wijzigen op een Spark Thrift-server
 Spark Thrift server biedt JDBC/ODBC-toegang tot een Spark-cluster en wordt gebruikt voor het uitvoeren van Spark SQL-query's. Hulpprogram ma's als Power BI, tableau enzovoort. Gebruik het ODBC-protocol om te communiceren met Spark Thrift server om Spark SQL-query's uit te voeren als een Spark-toepassing. Wanneer een Spark-cluster wordt gemaakt, worden twee exemplaren van de Spark Thrift-server gestart, één op elk hoofd knooppunt. Elke Spark Thrift-server is zichtbaar als een Spark-toepassing in de garen-gebruikers interface.
 
-Spark Thrift server gebruikt de toewijzing van de dynamische uitvoerder van Spark en daarom wordt de `spark.executor.instances` niet gebruikt. In plaats daarvan gebruikt `spark.dynamicAllocation.minExecutors` `spark.dynamicAllocation.maxExecutors` Spark Thrift server om het aantal uitvoeringen op te geven. De configuratie parameters `spark.executor.cores` en `spark.executor.memory` wordt gebruikt om de grootte van de uitvoerder te wijzigen. U kunt deze para meters wijzigen, zoals wordt weer gegeven in de volgende stappen:
+Spark Thrift server gebruikt de toewijzing van de dynamische uitvoerder van Spark en daarom wordt de `spark.executor.instances` niet gebruikt. In plaats daarvan gebruikt Spark Thrift server `spark.dynamicAllocation.minExecutors` en `spark.dynamicAllocation.maxExecutors` om het aantal uitvoeringen op te geven. De configuratie parameters `spark.executor.cores` en `spark.executor.memory` worden gebruikt om de grootte van de uitvoerder te wijzigen. U kunt deze para meters wijzigen, zoals wordt weer gegeven in de volgende stappen:
 
-* Vouw de categorie **Geavanceerd Spark-Thrift-sparkconf** uit om de para `spark.dynamicAllocation.minExecutors`meters, `spark.executor.memory` `spark.dynamicAllocation.maxExecutors`en te wijzigen.
+* Vouw de categorie **Geavanceerd Spark-Thrift-sparkconf** uit om de para meters `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors` en `spark.executor.memory` bij te werken.
 
     ![Spark Thrift-server configureren](./media/apache-spark-resource-manager/spark-thrift-server-1.png "Spark Thrift-server configureren")
-* Vouw de categorie **aangepaste Spark-Thrift-sparkconf** uit om de para `spark.executor.cores`meter bij te werken.
+* Vouw de **aangepaste categorie Spark-Thrift-sparkconf** uit om de para meter `spark.executor.cores` bij te werken.
 
     ![Spark Thrift-server parameter configureren](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Spark Thrift-server parameter configureren")
 

@@ -1,5 +1,5 @@
 ---
-title: C#Vind Meerdere gegevens bronnen indexeren-Azure Search
+title: 'C#Zelf studie: meerdere gegevens bronnen indexeren-Azure Search'
 description: Meer informatie over het importeren van gegevens uit meerdere gegevens bronnen naar een enkele Azure Search-index.
 author: RobDixon22
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
 ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70241836"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Vind Gegevens uit meerdere gegevens bronnen in één Azure Search-index combi neren
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Search-index combi neren
 
 Azure Search kunt gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één gecombineerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
 
@@ -58,7 +58,7 @@ Als u wilt communiceren met uw Azure Search-service, hebt u de service-URL en ee
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
@@ -90,7 +90,7 @@ In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictiev
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) met de naam **Hotel-kamers** voor het opslaan van de voor beeld-json-bestanden van de hotel kamer. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
 
-   ![Een BLOB-container maken](media/tutorial-multiple-data-sources/blob-add-container.png "Een BLOB-container maken")
+   ![Een BLOB-container maken](media/tutorial-multiple-data-sources/blob-add-container.png "Een blob-container maken")
 
 1. Nadat de container is gemaakt, opent u deze en selecteert u **uploaden** op de opdracht balk.
 
@@ -121,13 +121,13 @@ Verbindings gegevens voor de Search-service en de gegevens bronnen worden opgege
 }
 ```
 
-De eerste twee vermeldingen gebruiken de URL en de beheer sleutels voor uw Azure Search service. Op basis van een `https://mydemo.search.windows.net`eind punt van, bijvoorbeeld de service naam die u `mydemo`moet opgeven, is.
+De eerste twee vermeldingen gebruiken de URL en de beheer sleutels voor uw Azure Search service. Op basis van een eind punt van `https://mydemo.search.windows.net`, bijvoorbeeld de service naam die u opgeeft, is `mydemo`.
 
 De volgende vermeldingen geven account namen en connection string informatie op voor de Azure Blob Storage en Azure Cosmos DB gegevens bronnen.
 
 ### <a name="identify-the-document-key"></a>De document sleutel identificeren
 
-In Azure Search wordt in het sleutel veld elke document in de index uniek aangeduid. Elke zoek index moet precies één sleutel veld van het type `Edm.String`bevatten. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+In Azure Search wordt in het sleutel veld elke document in de index uniek aangeduid. Elke zoek index moet precies één sleutel veld van het type `Edm.String` hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
 Wanneer u gegevens uit meerdere gegevens bronnen indexeert, moet elke waarde van de gegevens bron sleutel worden toegewezen aan hetzelfde sleutel veld in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een zinvolle document sleutel voor uw index te identificeren en ervoor te zorgen dat deze zich in elke gegevens bron bevindt.
 
@@ -171,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-In het **Program.cs** -bestand wordt de index gedefinieerd met een naam en een veld verzameling die wordt gegenereerd `FieldBuilder.BuildForType<Hotel>()` door de methode en die vervolgens als volgt worden gemaakt:
+In het **Program.cs** -bestand wordt de index gedefinieerd met een naam en een veld verzameling die wordt gegenereerd door de `FieldBuilder.BuildForType<Hotel>()` methode en die vervolgens als volgt worden gemaakt:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -300,9 +300,9 @@ Nadat de gegevens bron is gemaakt, wordt in het programma een BLOB-Indexeer func
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-De JSON-blobs bevatten een sleutel veld met de naam **id** in plaats van **HotelId**. De code gebruikt `FieldMapping` de-klasse om de Indexeer functie de waarde van het veld id te laten verwijzen naar de **HotelId** **-** document sleutel in de index.
+De JSON-blobs bevatten een sleutel veld met de naam **id** in plaats van **HotelId**. De code gebruikt de `FieldMapping`-klasse om de Indexeer functie de waarde van het veld id te laten verwijzen naar de **HotelId** **-** document sleutel in de index.
 
-Indexeer functies voor Blob-opslag kunnen para meters gebruiken die de te gebruiken parsing-modus identificeren. De parserings modus verschilt voor blobs die één document of meerdere documenten binnen dezelfde BLOB vertegenwoordigen. In dit voor beeld vertegenwoordigt elke Blob een enkel index document, zodat de code de `IndexingParameters.ParseJson()` para meter gebruikt.
+Indexeer functies voor Blob-opslag kunnen para meters gebruiken die de te gebruiken parsing-modus identificeren. De parserings modus verschilt voor blobs die één document of meerdere documenten binnen dezelfde BLOB vertegenwoordigen. In dit voor beeld vertegenwoordigt elke Blob een enkel index document, zodat de code de para meter `IndexingParameters.ParseJson()` gebruikt.
 
 Zie [JSON-blobs indexeren](search-howto-index-json-blobs.md)voor meer informatie over het parseren van para meters voor de Indexeer functie voor json-blobs. Zie de klasse [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) voor meer informatie over het opgeven van deze para meters met behulp van de .NET SDK.
 
@@ -349,7 +349,7 @@ De snelste manier om op te schonen na een zelfstudie is de resourcegroep met de 
 Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSON-blobs. Als uw bron gegevens JSON-inhoud bevatten, kunt u deze opties bekijken om te zien wat het beste werkt voor uw scenario.
 
 > [!div class="nextstepaction"]
-> [JSON-blobs indexeren met Azure Search BLOB-Indexer](search-howto-index-json-blobs.md)
+> [JSON-blobs indexeren met de indexeerfunctie van Azure Search Blob](search-howto-index-json-blobs.md)
 
 U kunt gestructureerde index gegevens uit een gegevens bron uitbreiden met cognitieve verrijkte gegevens van ongestructureerde blobs of volledige-tekst inhoud. De volgende zelf studie laat zien hoe u Cognitive Services in combi natie met Azure Search kunt gebruiken met behulp van de .NET SDK.
 

@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71203687"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>De OPC-kluis certificaat beheer service gebruiken
@@ -31,12 +31,12 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 
 ## <a name="secure-opc-ua-applications"></a>Veilige OPC UA-toepassingen
 
-### <a name="step-1-register-your-opc-ua-application"></a>Stap 1: Uw OPC UA-toepassing registreren 
+### <a name="step-1-register-your-opc-ua-application"></a>Stap 1: uw OPC UA-toepassing registreren 
 
 > [!IMPORTANT]
 > De rol schrijver is vereist voor het registreren van een toepassing.
 
-1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net`en meld u aan.
+1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
 2. Ga naar **Nieuw registreren**. Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
 2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) in de OPC ua .NET Standard stack weer gegeven:
 
@@ -44,7 +44,7 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 
 5. Selecteer **registreren** om de toepassing te registreren in de toepassings database van de certificaat service. De werk stroom leidt de gebruiker rechtstreeks naar de volgende stap om een ondertekend certificaat aan te vragen voor de toepassing.
 
-### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>Stap 2: Uw toepassing beveiligen met een door een CA ondertekend toepassings certificaat
+### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>Stap 2: uw toepassing beveiligen met een door een CA ondertekend toepassings certificaat
 
 Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op basis van een aanvraag voor certificaat ondertekening (CSR). U kunt ook een nieuw sleutel paar aanvragen, dat een nieuwe persoonlijke sleutel bevat in PFX-of PEM-indeling. Zie de documentatie van uw OPC UA-apparaat voor meer informatie over welke methode voor uw toepassing wordt ondersteund. In het algemeen wordt de CSR-methode aanbevolen, omdat er geen persoonlijke sleutel moet worden overgedragen over een kabel.
 
@@ -71,7 +71,7 @@ Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op b
 8. Nadat de persoonlijke sleutel is gedownload en veilig is opgeslagen, kunt u **persoonlijke sleutel verwijderen**selecteren. Het certificaat met de open bare sleutel blijft beschikbaar voor toekomstig gebruik.
 9. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de certificaatintrekkingslijst (CRL) hier ook worden gedownload.
 
-Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL `trusted` gekopieerd naar een map, terwijl de open bare en persoonlijke sleutels van het toepassings certificaat `own` worden toegepast op een map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
+Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl de open bare en persoonlijke sleutels van het toepassings certificaat worden toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Een nieuw certificaat aanvragen bij een CSR 
 
@@ -96,9 +96,9 @@ Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet w
 10. Nadat het certificaat is gedownload en beveiligd is opgeslagen, kunt u **certificaat verwijderen**selecteren.
 11. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de CRL ook hier worden gedownload.
 
-Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL `trusted` gekopieerd naar een map, terwijl het toepassings certificaat wordt `own` toegepast op een map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
+Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl het toepassings certificaat wordt toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
-### <a name="step-4-device-secured"></a>Stap 4: Apparaat beveiligd
+### <a name="step-4-device-secured"></a>Stap 4: apparaat beveiligd
 
 Het OPC UA-apparaat is nu klaar om te communiceren met andere OPC UA-apparaten die zijn beveiligd door door certificerings instanties ondertekende certificaten, zonder verdere configuratie.
 

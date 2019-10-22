@@ -12,10 +12,10 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269254"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
@@ -24,7 +24,7 @@ In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk rui
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -41,7 +41,7 @@ Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonn
 
 ## <a name="view"></a>Een werk ruimte weer geven
 
-1. Selecteer in de linkerbovenhoek van de portal, **alle services**.
+1. Selecteer in de linkerbovenhoek van de portal **alle services**.
 
 1. Typ **machine learning service**in het veld **alle services** filter.  
 
@@ -49,16 +49,16 @@ Een werkruimte te maken, moet u een Azure-abonnement. Als u nog geen Azure-abonn
 
    ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/all-services.png)
 
-1. Bekijk de lijst met werkruimten die zijn gevonden. U kunt filteren op basis van abonnement, resourcegroepen en locaties.  
+1. Bekijk de lijst met werk ruimten die zijn gevonden. U kunt filteren op basis van abonnement, resource groepen en locaties.  
 
 1. Selecteer een werk ruimte om de eigenschappen ervan weer te geven.
-   ![Eigenschappen van werk ruimte](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   ![Workspace eigenschappen ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
-Gebruik de knop verwijderen aan de bovenkant van de werkruimte die u wilt verwijderen.
+Gebruik de knop verwijderen boven aan de werk ruimte die u wilt verwijderen.
 
-  ![Knop verwijderen](media/how-to-manage-workspace/delete-workspace.png)
+  ![De knop Verwijderen](media/how-to-manage-workspace/delete-workspace.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -69,4 +69,4 @@ Gebruik de knop verwijderen aan de bovenkant van de werkruimte die u wilt verwij
 Volg de zelf studie met volledige lengte voor meer informatie over het gebruik van een werk ruimte om modellen te bouwen, te trainen en te implementeren met Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Modellen trainen](tutorial-train-models-with-aml.md)
+> [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Python-model maken: Module verwijzing'
+title: 'Python-model maken: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Leer hoe u het python-model model maken in Azure Machine Learning service kunt gebruiken om een aangepaste module voor model lering of gegevens verwerking te maken.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: c6d7aabd41e9d0e872926adbbcb2d18332cb7d5e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128928"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693896"
 ---
 # <a name="create-python-model"></a>Python-model maken
 
@@ -33,7 +33,7 @@ Nadat u het model hebt gemaakt, kunt u [Train model](train-model.md) gebruiken o
 Het gebruik van deze module vereist tussenliggende of deskundige kennis van python. De module ondersteunt het gebruik van alle informatie die is opgenomen in de Python-pakketten die al in Azure Machine Learning zijn geïnstalleerd. Zie de lijst met vooraf geïnstalleerde Python-pakketten in een [python-script uitvoeren](execute-python-script.md).
   
 
-In dit artikel wordt uitgelegd hoe u het **python-model maken** kunt gebruiken met een eenvoudig experiment. Hieronder ziet u de grafiek van het experiment.
+In dit artikel wordt uitgelegd hoe u het **python-model maken** gebruikt met een eenvoudige pijp lijn. Hieronder ziet u de grafiek van de pijp lijn.
 
 ![Create-python-model](./media/module/aml-create-python-model.png)
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: a91f1446d8aab3db36499a9b5707d48d387b6081
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 861b04203575a6046608cf3fad3117ad2726acab
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131556"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693471"
 ---
-# <a name="sample-1---regression-predict-price"></a>Voor beeld 1-regressie: Prijs voorspellen
+# <a name="sample-1---regression-predict-price"></a>Voor beeld 1-regressie: prijs voors pellen
 
 Meer informatie over het bouwen van een machine learning regressie model zonder een enkele regel code te schrijven met behulp van de visuele interface.
 
-In dit experiment wordt een regressor hierop van een **beslissings forest** voor speld om de prijs van een auto te voors pellen op basis van de technische functies zoals merk, model, paarden kracht en grootte. Omdat u probeert de vraag "hoeveel?" te beantwoorden Dit wordt een regressie probleem genoemd. U kunt echter dezelfde basis stappen in dit voor beeld Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
+Deze pijp lijn traint een **besluit forest regressor hierop** om de prijs van een auto te voors pellen op basis van technische functies zoals merk, model, paarden kracht en grootte. Omdat u probeert de vraag "hoeveel?" te beantwoorden Dit wordt een regressie probleem genoemd. U kunt echter dezelfde basis stappen in dit voor beeld Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 
 De belangrijkste stappen van een trainings machine learning model zijn:
 
@@ -30,21 +30,21 @@ De belangrijkste stappen van een trainings machine learning model zijn:
 1. Het model trainen
 1. Het model evalueren
 
-Hier volgt de uiteindelijke, voltooide grafiek van het experiment waarmee we aan de slag gaan. We bieden de motivering voor alle modules, zodat u op uw eigen wijze vergelijk bare beslissingen kunt nemen.
+Hier is de uiteindelijke, voltooide grafiek van de pijp lijn. Dit artikel bevat een motivering voor alle modules, zodat u op uw eigen wijze vergelijk bare beslissingen kunt nemen.
 
-![Grafiek van het experiment](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Grafiek van de pijp lijn](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Selecteer de knop **openen** voor het voor beeld van 1 experiment:
+4. Selecteer de knop **openen** voor de pijp lijn voor beeld 1:
 
-    ![Het experiment openen](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
+    ![De pijp lijn openen](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
 
 ## <a name="get-the-data"></a>De gegevens ophalen
 
-In dit voor beeld wordt de gegevensset **Auto Mobile price data (RAW)** gebruikt, die afkomstig is uit de ICB machine learning-opslag plaats. De gegevensset bevat 26 kolommen die informatie bevatten over auto's, waaronder merk, model, prijs, voertuig functies (zoals het aantal flessen), MPG en een risico score voor verzekeringen. Het doel van dit experiment is om de prijs van de auto te voors pellen.
+In dit voor beeld wordt de gegevensset **Auto Mobile price data (RAW)** gebruikt, die afkomstig is uit de ICB machine learning-opslag plaats. De gegevensset bevat 26 kolommen die informatie bevatten over auto's, waaronder merk, model, prijs, voertuig functies (zoals het aantal flessen), MPG en een risico score voor verzekeringen. Het doel van dit voor beeld is om de prijs van de auto te voors pellen.
 
 ## <a name="pre-process-the-data"></a>De gegevens vooraf verwerken
 
@@ -58,7 +58,7 @@ Gebruik de module **select columns in dataset** om normale verliezen met veel on
 
 Problemen met machine learning kunnen variëren. Veelvoorkomende machine learning taken omvatten classificatie-, cluster-, regressie-en aanbevolen systemen, die elk een ander algoritme kunnen vereisen. Uw keuze van algoritme is vaak afhankelijk van de vereisten van de use-case. Nadat u een algoritme hebt gekozen, moet u de para meters afstemmen om een nauw keuriger model te trainen. Vervolgens moet u alle modellen evalueren op basis van metrische gegevens, zoals nauw keurigheid, Intelligibility en efficiëntie.
 
-Omdat het doel van dit experiment is om de prijzen van auto's te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze. Gezien het feit dat het aantal functies relatief klein is (minder dan 100) en deze functies niet verspreid zijn, is de beslissings grens waarschijnlijk niet lineair. Daarom gebruiken we de regressie van het **besluitvormings forest** voor dit experiment.
+Omdat het doel van dit voor beeld is om de prijzen van auto's te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze. Gezien het feit dat het aantal functies relatief klein is (minder dan 100) en deze functies niet verspreid zijn, is de beslissings grens waarschijnlijk niet lineair. Daarom gebruiken we de regressie van het **beslissings forest** voor deze pijp lijn.
 
 Gebruik de module **Splits data** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 70% van de oorspronkelijke gegevens bevat en de test gegevensset 30% van de oorspronkelijke gegevens bevat.
 
@@ -84,8 +84,9 @@ Geef de scores door aan de module **Evaluate model** om metrische gegevens over 
 
 Bekijk de andere voor beelden die beschikbaar zijn voor de visuele interface:
 
-- [Voor beeld 2-regressie: Algoritmen voor het voors pellen van prijzen vergelijken](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Voor beeld 3-classificatie: Krediet risico voors pellen](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Voor beeld 4-classificatie: Voor speld krediet risico (kosten gevoelig)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Voor beeld 5-classificatie: Verloop voors pellen](how-to-ui-sample-classification-predict-churn.md)
-- [Voor beeld 6: classificatie: Vlucht vertragingen voors pellen](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Voor beeld 3-classificatie: krediet risico voors pellen](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Voor beeld 5-classificatie: voor spel verloop](how-to-ui-sample-classification-predict-churn.md)
+- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Voor beeld 7-tekst classificatie: Books revisies](how-to-ui-sample-text-classification.md)

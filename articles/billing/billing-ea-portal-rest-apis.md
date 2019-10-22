@@ -4,16 +4,16 @@ description: In dit artikel worden de REST API's beschreven die u kunt gebruiken
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 70e1e988ad3abdb90ecb60d33830f03f8dffb127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105441"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329328"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST API's in Azure Enterprise
 
@@ -95,7 +95,11 @@ De gegevensbestanden voor gebruik en facturering worden elke 24 uur bijgewerkt v
 
 ### <a name="test-enrollment-for-development"></a>Testinschrijving voor ontwikkeling
 
-Als u een partner of ontwikkelaar bent zonder Azure Enterprise-inschrijving en u toegang wilt krijgen tot de API, kunt u de testinschrijving gebruiken. De inschrijving heet _EnrollmentNumber 100_. Vervolgens kunt u een [test uitvoeren met de teogangssleutel voor inschrijving](https://automaticbillingspec.blob.core.windows.net/spec/TestEnrollmentUsageApiKey.txt) en de API aanroepen om voorbeeldgegevens te bekijken.
+Als u een partner of ontwikkelaar bent zonder Azure Enterprise-inschrijving en u toegang wilt krijgen tot de API, kunt u de testinschrijving gebruiken. De naam van de inschrijving is _EnrollmentNumber 100_ . U kunt gebruiksgegevens vinden en testen tot juni 2018. Vervolgens kunt u de volgende sleutel gebruiken om de API aan te roepen en voorbeeldgegevens te bekijken.
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
+```
 
 ### <a name="azure-service-catalog"></a>Azure-servicecatalogus
 

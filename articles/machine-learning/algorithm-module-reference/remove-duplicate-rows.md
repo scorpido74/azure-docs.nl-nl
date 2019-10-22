@@ -1,5 +1,5 @@
 ---
-title: 'Dubbele rijen verwijderen: Module verwijzing'
+title: 'Dubbele rijen verwijderen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module dubbele rijen verwijderen in Azure Machine Learning-service om mogelijke dubbele items uit een gegevensset te verwijderen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128525"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693665"
 ---
 # <a name="remove-duplicate-rows-module"></a>Module dubbele rijen verwijderen
 
@@ -26,15 +26,15 @@ Stel dat uw gegevens er als volgt uitzien en dat er meerdere records worden aang
 
 | PatientID | Initialen| Geslacht|Leeftijd|Stoffen|
 |----|----|----|----|----|
-|1|F.M.| M| 53| jan|
-|2| F.A.M.| M| 53| jan|
-|3| F.A.M.| M| 24| jan|
-|3| F.M.| M| 24| feb|
-|4| F.M.| M| 23| feb|
-| | F.M.| M| 23| |
-|5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NaN| |
-|7| F.A.M.| M| NaN| |
+|1|F.M.| mln.| 53| Jan|
+|2| F.A.M.| mln.| 53| Jan|
+|3| F.A.M.| mln.| 24| Jan|
+|3| F.M.| mln.| 24| Februari|
+|4| F.M.| mln.| 23| Februari|
+| | F.M.| mln.| 23| |
+|5| F.A.M.| mln.| 53| |
+|6| F.A.M.| mln.| Ner| |
+|7| F.A.M.| mln.| Ner| |
 
 Het is duidelijk dat dit voor beeld meerdere kolommen bevat met mogelijk dubbele gegevens. Of ze daad werkelijk worden gedupliceerd, is afhankelijk van uw kennis van de gegevens. 
 
@@ -51,7 +51,7 @@ Wanneer u de module uitvoert, wordt er een gegevensset voor kandidaten gemaakt e
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Dubbele rijen verwijderen gebruiken
 
-1. Voeg de module toe aan uw experiment. U kunt de module **dubbele rijen verwijderen** vinden onder **gegevens transformatie**, **bewerken**.  
+1. Voeg de module toe aan de pijp lijn. U kunt de module **dubbele rijen verwijderen** vinden onder **gegevens transformatie**, **bewerken**.  
 
 2. Verbind de gegevensset die u wilt controleren op dubbele rijen.
 
@@ -69,9 +69,9 @@ Wanneer u de module uitvoert, wordt er een gegevensset voor kandidaten gemaakt e
     + Als deze is geselecteerd, wordt de eerste rij geretourneerd en anderen verwijderd. 
     + Als u deze optie uitschakelt, wordt de laatste dubbele rij in de resultaten bewaard en anderen verwijderd. 
 
-5. Voer het experiment uit.
+5. Voer de pijplijn uit.
 
-6. Als u de resultaten wilt bekijken, klikt u met de rechter muisknop op de module,selecteert u **resultaten gegevensset**en klikt u op visualiseren. 
+6. Als u de resultaten wilt bekijken, klikt u met de rechter muisknop op de module, selecteert u **resultaten gegevensset**en klikt u op **visualiseren**. 
 
 > [!TIP]
 > Als de resultaten moeilijk te begrijpen zijn, of als u wilt voor komen dat sommige kolommen van overweging worden genomen, kunt u kolommen verwijderen met de module [kolommen in gegevensset selecteren](./select-columns-in-dataset.md) .

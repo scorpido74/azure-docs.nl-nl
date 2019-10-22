@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098747"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integratie van broncode beheer voor Azure SQL Data Warehouse
@@ -37,7 +37,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
    ![Verbindingen beheren](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verbindingen beheren")
 
-   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinding maken")
+   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Connect")
 
 3. Uw Azure opslag plaats-opslag plaats vanuit uw project naar uw lokale machine klonen
 
@@ -55,7 +55,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
 3. Voer in team Explorer in Visual Studio uw alle wijzigingen door naar uw lokale Git-opslag plaats 
 
-   ![Door voeren](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Door voeren")  
+   ![Fasen](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Doorvoeren")  
 
 4. Nu u de wijzigingen lokaal hebt doorgevoerd in de gekloonde opslag plaats, synchroniseert en pusht u uw wijzigingen in uw Azure opslag plaats-opslag plaats in uw Azure DevOps-project.
 
@@ -71,7 +71,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
 2. De wijziging door voeren en pushen van uw lokale opslag plaats naar uw Azure-opslag plaats
 
-   ![Push wijzigingen](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Push wijzigingen")
+   ![Push wijzigingen](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Wijzigingen pushen")
 
 3. Controleer of de wijziging is gepusht in uw Azure opslag plaats-opslag plaats
 

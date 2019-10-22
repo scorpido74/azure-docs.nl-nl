@@ -1,5 +1,5 @@
 ---
-title: 'Trans formatie Toep assen: Module verwijzing'
+title: 'Trans formatie Toep assen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module trans formatie Toep assen in Azure Machine Learning service om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: adb2477fe2b7eea0dd0a98c7240843d90411d832
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128967"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693879"
 ---
-# <a name="apply-transformation-module"></a>Module transformatie toepassen
+# <a name="apply-transformation-module"></a>Transformatie module Toep assen
 
 In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
@@ -32,7 +32,7 @@ Azure Machine Learning biedt ondersteuning voor het maken en Toep assen van vers
 
 ## <a name="how-to-use-apply-transformation"></a>Trans formatie Toep assen gebruiken  
   
-1. Voeg de module **trans formatie Toep assen** toe aan uw experiment. U kunt deze module vinden onder **machine learning**in de categorie **Score** . 
+1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden onder **machine learning**in de categorie **Score** . 
   
 2. Zoek een bestaande trans formatie die moet worden gebruikt als invoer.  Eerder opgeslagen trans formaties vindt u in de groep **trans formatie** in het navigatie deel venster aan de linkerkant.  
   
@@ -42,7 +42,7 @@ Azure Machine Learning biedt ondersteuning voor het maken en Toep assen van vers
   
 4. Er hoeven geen andere para meters te worden ingesteld, omdat alle aanpassingen worden uitgevoerd bij het definiëren van de trans formatie.  
   
-5. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u het experiment uit.  
+5. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u de pijp lijn uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

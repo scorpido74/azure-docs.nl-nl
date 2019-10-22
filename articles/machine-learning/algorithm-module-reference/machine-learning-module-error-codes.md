@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128670"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693080"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Uitzonde ringen en fout codes voor de verwijzing naar de algoritme-& module
 
@@ -32,15 +32,15 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 ## <a name="error-0001"></a>Fout 0001  
  Uitzonde ring treedt op als een of meer opgegeven kolommen met gegevensset niet zijn gevonden.  
   
- U ontvangt deze fout melding als er een kolom selectie is gemaakt voor een module, maar de geselecteerde kolom (men) niet aanwezig zijn in de gegevensset voor invoer. Deze fout kan optreden als u hand matig hebt getypt in een kolom naam of als de kolom kiezer een voorgestelde kolom heeft opgegeven die niet in uw gegevensset voor komt toen u het experiment uitvoerde.  
+ U ontvangt deze fout melding als er een kolom selectie is gemaakt voor een module, maar de geselecteerde kolom (men) niet aanwezig zijn in de gegevensset voor invoer. Deze fout kan optreden als u hand matig hebt getypt in een kolom naam of als de kolom kiezer een voorgestelde kolom heeft opgegeven die niet in uw gegevensset voor komt toen u de pijp lijn uitvoerde.  
   
-**Opgelost** Ga terug naar de module met deze uitzonde ring en controleer of de kolom naam of-namen juist zijn en of alle kolommen waarnaar wordt verwezen bestaan.  
+**Oplossing:** Ga terug naar de module met deze uitzonde ring en controleer of de kolom naam of-namen juist zijn en of alle kolommen waarnaar wordt verwezen bestaan.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer opgegeven kolommen zijn niet gevonden|  
-|Er is geen kolom met de{0}naam of de index gevonden|  
-|De kolom met de naam of{0}index bestaat niet in{1}|  
+|Kan geen kolom met de naam of de index {0} vinden|  
+|De kolom met de naam of index ' {0} ' bestaat niet in {1}|  
  
 
 ## <a name="error-0002"></a>Fout 0002  
@@ -48,16 +48,16 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
   
  Deze fout treedt op in Azure Machine Learning wanneer u een para meter opgeeft als invoer en het waardetype verschilt van het verwachte type en er geen impliciete conversie kan worden uitgevoerd.  
   
-**Opgelost** Controleer de module vereisten en bepaal welk waardetype vereist is (teken reeks, geheel getal, dubbel enzovoort)  
+**Oplossing:** Controleer de module vereisten en bepaal welk waardetype vereist is (teken reeks, geheel getal, dubbel enzovoort)  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan para meter niet parseren|  
-|Kan para meter niet{0}parseren|  
-|Kan para meter (Convert){0}niet parseren naar{1}|  
-|Kan para meter niet{0}converteren{1}van naar{2}|  
-|Kan de parameter{1}waarde{0}"" niet converteren van{2}"" naar "{3}"|  
-|Kan{0}de waarde "" in de{2}{1}kolom "" niet converteren van ""{3}naar "" met het gebruik van{4}de notatie ""|  
+|Parseren van de para meter {0} is mislukt|  
+|Kan para meter "{0}" niet parseren (converteren) naar {1}|  
+|Kan para meter "{0}" niet converteren van "{1}" naar "{2}"|  
+|Kan de parameter waarde ' {0} ' {1} ' niet converteren van ' {2} ' naar ' {3} '|  
+|Kan de waarde ' {0} ' in kolom ' {1} ' niet converteren van ' {2} ' naar ' {3} ' met het gebruik van de indeling ' {4} '|  
   
 
 ## <a name="error-0003"></a>Fout 0003  
@@ -76,7 +76,7 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer invoer waarden zijn null of leeg|  
-|{0}Invoer is null of leeg|  
+|De invoer {0} is null of leeg|  
   
 
 ## <a name="error-0004"></a>Fout 0004  
@@ -84,13 +84,13 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
   
  Deze fout wordt weer gegeven in Azure Machine Learning als de para meter in het bericht onder een grens waarde valt die vereist is voor de module om de gegevens te verwerken.  
   
-**Opgelost** Ga naar de module die de uitzonde ring opgooit en wijzig de para meter in een hogere waarde dan de opgegeven waarden.  
+**Oplossing:** Ga naar de module die de uitzonde ring opgooit en wijzig de para meter in een hogere waarde dan de opgegeven waarden.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meter moet groter zijn dan de grens waarde.|  
-|De waarde van de para meter moet groter {1}zijn dan.{0}|  
-|Para meter heeft{1}waarde ' ' die groter moet zijn dan{0}{2}|  
+|De waarde van de para meter {0} moet groter zijn dan {1}.|  
+|De para meter {0} heeft de waarde {1} die groter moet zijn dan {2}|  
   
 
 
@@ -99,13 +99,13 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
   
  U ontvangt deze fout in Azure Machine Learning als de para meter in het bericht lager is dan of gelijk is aan een grens waarde die vereist is voor de module om de gegevens te verwerken.  
   
-**Opgelost** Ga naar de module die de uitzonde ring opgooit en wijzig de para meter in groter dan of gelijk aan de opgegeven waarde.  
+**Oplossing:** Ga naar de module die de uitzonde ring opgooit en wijzig de para meter in groter dan of gelijk aan de opgegeven waarde.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meter moet groter dan of gelijk aan de grens waarde zijn.|  
-|De waarde van de para meter moet groter zijn dan of gelijk zijn aan {1}.{0}|  
-|Para meter heeft{1}waarde ' ' die groter moet zijn dan of gelijk is aan {2}.{0}|  
+|De waarde van de para meter {0} moet groter dan of gelijk zijn aan {1}.|  
+|De para meter {0} heeft de waarde {1} die groter is dan of gelijk is aan {2}.|  
   
 
 ## <a name="error-0006"></a>Fout 0006  
@@ -113,13 +113,13 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
   
  Deze fout wordt weer gegeven in Azure Machine Learning als de para meter in het bericht groter is dan of gelijk is aan een grens waarde die vereist is voor de module om de gegevens te verwerken.  
   
-**Opgelost** Ga naar de module om de uitzonde ring op te treden en wijzig de para meter zo dat deze kleiner is dan de opgegeven waarde.  
+**Oplossing:** Ga naar de module om de uitzonde ring op te treden en wijzig de para meter zo dat deze kleiner is dan de opgegeven waarde.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan de andere.|  
-|De waarde van de para meter moet kleiner zijn dan{1}de waarde van de para meter.{0}|  
-|Para meter heeft{1}waarde ' ' die kleiner moet zijn dan {2}.{0}|  
+|De waarde van de para meter {0} moet kleiner zijn dan de waarde van de para meter {1}.|  
+|De para meter {0} heeft de waarde {1} die kleiner moet zijn dan {2}.|  
   
 
 ## <a name="error-0007"></a>Fout 0007  
@@ -140,8 +140,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan of gelijk zijn aan een andere.|  
-|De waarde van de para meter moet kleiner zijn dan of gelijk zijn{1}aan de waarde van de para meter.{0}|  
-|Para meter heeft{1}waarde ' ' die kleiner moet zijn dan of gelijk is aan {2}.{0}|  
+|De waarde van de para meter {0} moet kleiner zijn dan of gelijk zijn aan de waarde van de para meter {1}.|  
+|De para meter {0} heeft de waarde {1} die kleiner moet zijn dan of gelijk is aan {2}.|  
   
 
 ## <a name="error-0008"></a>Fout 0008  
@@ -151,13 +151,13 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
   
  Deze fout wordt bijvoorbeeld weer gegeven als u [rijen toevoegen](add-rows.md) probeert te gebruiken om twee gegevens sets met een verschillend aantal kolommen te combi neren.  
   
-**Opgelost** Ga naar de module om de uitzonde ring te genereren en wijzig de para meter in het opgegeven bereik.  
+**Oplossing:** Ga naar de module om de uitzonde ring te genereren en wijzig de para meter in het opgegeven bereik.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De parameter waarde bevindt zich niet in het opgegeven bereik.|  
-|{0}De waarde van de para meter is niet binnen het bereik.|  
-|De waarde van de para meter moet binnen het bereik [{1}, {2}] liggen.{0}|  
+|De waarde voor de para meter {0} ligt niet in het bereik.|  
+|De waarde van de para meter {0} moet tussen [{1}, {2}] liggen.|  
   
 
 ## <a name="error-0009"></a>Fout 0009  
@@ -188,7 +188,7 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
 |Uitzonderings berichten|  
 |------------------------|  
 |De naam van het Azure-opslag account of de container naam is onjuist.|  
-|De naam van het Azure-{0}opslag account "" of{1}de container naam "" is onjuist; er wordt een container naam van de indelings container/BLOB verwacht.|  
+|De naam van het Azure-opslag account "{0}" of container naam "{1}" is onjuist; Er wordt een container naam van de indeling container/BLOB verwacht.|  
   
 
 ## <a name="error-0010"></a>Fout 0010  
@@ -196,12 +196,12 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
   
  Deze fout wordt weer gegeven in Azure Machine Learning als de kolom index in het bericht andere kolom namen in de twee invoer gegevens sets bevat.  
   
-**Opgelost** Gebruik [meta gegevens bewerken](edit-metadata.md) of wijzig de oorspronkelijke gegevensset zodat deze dezelfde kolom naam heeft voor de opgegeven kolom index.  
+**Oplossing:** Gebruik [meta gegevens bewerken](edit-metadata.md) of wijzig de oorspronkelijke gegevensset zodat deze dezelfde kolom naam heeft voor de opgegeven kolom index.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kolommen met een bijbehorende index in invoer gegevens sets hebben verschillende namen.|  
-|Kolom namen zijn niet hetzelfde voor kolommen {0} (op basis van nul) van invoer gegevens sets ( {2} {1} en).|  
+|Kolom namen zijn niet hetzelfde voor kolom {0} (op nul gebaseerd) van invoer gegevens sets ({1} en {2} respectievelijk).|  
   
 
 ## <a name="error-0011"></a>Fout 0011  
@@ -211,33 +211,33 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
   
  U kunt deze fout ook ophalen als u geen kolom hebt geselecteerd en ten minste één kolom is vereist om de module te laten werken.  
   
-**Opgelost** Wijzig de kolom selectie in de module zodat deze van toepassing is op de kolommen in de gegevensset.  
+**Oplossing:** Wijzig de kolom selectie in de module zodat deze van toepassing is op de kolommen in de gegevensset.  
   
  Als de module vereist dat u een specifieke kolom selecteert, zoals een kolom Label, controleert u of de rechter kolom is geselecteerd.  
   
- Als er ongepaste kolommen zijn geselecteerd, verwijdert u deze en voert u het experiment opnieuw uit.  
+ Als er ongepaste kolommen zijn geselecteerd, verwijdert u deze en voert u de pijp lijn opnieuw uit.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De opgegeven kolomset is niet van toepassing op een van de gegevensset-kolommen.|  
-|Opgegeven kolomset{0}"" is niet van toepassing op een van de gegevensset-kolommen.|  
+|Opgegeven column set "{0}" is niet van toepassing op een van de gegevensset-kolommen.|  
   
 
 ## <a name="error-0012"></a>Fout 0012  
  Uitzonde ring treedt op als het exemplaar van de klasse niet kan worden gemaakt met de door gegeven set argumenten.  
   
-**Opgelost** Deze fout kan niet optreden door de gebruiker en zal in een toekomstige versie worden afgeschaft.  
+**Oplossing:** Deze fout kan niet optreden door de gebruiker en zal in een toekomstige versie worden afgeschaft.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-traind model, Train model eerst.|  
-|Niet-traind model{0}(), gebruik getraind model.|  
+|Niet-traind model ({0}), gebruik getraind model.|  
   
 
 ## <a name="error-0013"></a>Fout 0013  
  Uitzonde ring treedt op als de kenniser die is door gegeven aan de module een ongeldig type is.  
   
- Deze fout treedt op wanneer een getraind model niet compatibel is met de verbonden Score-module. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ Deze fout treedt op wanneer een getraind model niet compatibel is met de verbonden Score-module. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
   
 **Opgelost**
 
@@ -246,7 +246,7 @@ Bepaal het type leerer dat wordt geproduceerd door de trainings module en bepaal
 Als het model is getraind met een van de gespecialiseerde trainings modules, koppelt u het getrainde model alleen aan de bijbehorende gespecialiseerde Score module. 
 
 
-|Modeltype|Trainings module| Score module|
+|Model type|Trainings module| Score module|
 |----|----|----|
 |een classificatie|[Model trainen](train-model.md) |[Score model](score-model.md)|
 |een regressie model|[Model trainen](train-model.md) |[Score model](score-model.md)|
@@ -264,7 +264,7 @@ Als het model is getraind met een van de gespecialiseerde trainings modules, kop
 |Uitzonderings berichten|  
 |------------------------|  
 |De leerer van een ongeldig type is door gegeven.|  
-|De leerer{0}"" heeft een ongeldig type.|  
+|De leerer {0} heeft een ongeldig type.|  
 
 
 ## <a name="error-0014"></a>Fout 0014  
@@ -274,7 +274,7 @@ Als het model is getraind met een van de gespecialiseerde trainings modules, kop
   
 **Opgelost**
 
-Open de module die de fout heeft gegenereerd en Identificeer de kolommen die als invoer worden gebruikt. Voor sommige modules kunt u met de rechter muisknop op de gegevensset-invoer klikken en visualiseren selecteren om statistieken op te halen voor afzonderlijke kolommen, inclusief het aantal unieke waarden en de distributie.
+Open de module die de fout heeft gegenereerd en Identificeer de kolommen die als invoer worden gebruikt. Voor sommige modules kunt u met de rechter muisknop op de gegevensset-invoer klikken en **visualiseren** selecteren om statistieken op te halen voor afzonderlijke kolommen, inclusief het aantal unieke waarden en de distributie.
 
 Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u stappen om het aantal unieke waarden in kolommen te verminderen. U kunt op verschillende manieren beperken, afhankelijk van het gegevens type van de kolom. 
 <!--
@@ -287,7 +287,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal unieke kolom waarden is groter dan toegestaan.|  
-|Aantal unieke waarden in kolom: "{0}" overschrijdt het aantal Tuples van. {1}|  
+|Aantal unieke waarden in kolom: "{0}" overschrijdt het aantal Tuples van {1}.|  
   
 
 ## <a name="error-0015"></a>Fout 0015  
@@ -295,12 +295,12 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  Deze fout wordt weer gegeven als u een onjuiste SQL-account naam, een wacht woord, een database server of een database naam opgeeft, of als er geen verbinding met de data base kan worden gemaakt vanwege problemen met de data base of server.  
   
-**Opgelost** Controleer of de account naam, het wacht woord, de database server en de data base correct zijn ingevoerd en of het opgegeven account het juiste machtigings niveau heeft. Controleer of de Data Base op dit moment toegankelijk is.  
+**Oplossing:** Controleer of de account naam, het wacht woord, de database server en de data base correct zijn ingevoerd en of het opgegeven account het juiste machtigings niveau heeft. Controleer of de Data Base op dit moment toegankelijk is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Fout bij het maken van de database verbinding.|  
-|Fout bij het maken van {0}een database verbinding:.|  
+|Fout bij het maken van een database verbinding: {0}.|  
   
 
 
@@ -309,13 +309,13 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  U ontvangt deze fout in Azure Machine Learning als de typen kolommen die in twee of meer gegevens sets zijn door gegeven, niet met elkaar compatibel zijn.  
   
-**Opgelost** [Meta gegevens bewerken](edit-metadata.md) gebruiken of de oorspronkelijke invoer gegevensset wijzigen<!--, or use [Convert to Dataset](convert-to-dataset.md)--> om ervoor te zorgen dat de typen kolommen compatibel zijn.  
+**Oplossing:** [Meta gegevens bewerken](edit-metadata.md) gebruiken of de oorspronkelijke invoer gegevensset wijzigen<!--, or use [Convert to Dataset](convert-to-dataset.md)--> om ervoor te zorgen dat de typen kolommen compatibel zijn.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kolommen met een bijbehorende index in invoer gegevens sets hebben incompatibele typen.|  
-|Kolommen {0} en{1} zijn incompatibel.|  
-|Kolom element typen zijn niet compatibel voor kolom {0} (op nul gebaseerd) van invoer gegevens sets{1} ( {2} en).|  
+|De kolommen {0} en {1} zijn niet compatibel.|  
+|Kolom element typen zijn niet compatibel voor kolom {0} (op nul gebaseerd) van invoer gegevens sets ({1} en {2}).|  
   
 
 ## <a name="error-0017"></a>Fout 0017  
@@ -339,15 +339,15 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan kolom van het huidige type niet verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan kolom van type {0}niet verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan kolom{1}van type {0}niet verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan kolom{1}van type {0}niet verwerken. Het type wordt niet ondersteund door de module. Parameter naam:{2}|  
+|Kan geen kolom van het type {0} verwerken. Het type wordt niet ondersteund door de module.|  
+|Kan kolom {1} van het type {0} niet verwerken. Het type wordt niet ondersteund door de module.|  
+|Kan kolom {1} van het type {0} niet verwerken. Het type wordt niet ondersteund door de module. Parameter naam: {2}|  
   
 
 ## <a name="error-0018"></a>Fout 0018  
  Uitzonde ring treedt op als de ingevoerde gegevensset ongeldig is.  
   
-**Opgelost** Deze fout in Azure Machine Learning kan worden weer gegeven in veel contexten, dus er is geen enkele oplossing. In het algemeen geeft de fout aan dat de gegevens die zijn opgegeven als invoer voor een module, een onjuist aantal kolommen hebben of dat het gegevens type niet overeenkomt met de vereisten van de module. Bijvoorbeeld:  
+**Oplossing:** Deze fout in Azure Machine Learning kan worden weer gegeven in veel contexten, dus er is geen enkele oplossing. In het algemeen geeft de fout aan dat de gegevens die zijn opgegeven als invoer voor een module, een onjuist aantal kolommen hebben of dat het gegevens type niet overeenkomt met de vereisten van de module. Bijvoorbeeld:  
   
 -   Voor de module is een kolom Label vereist, maar er is geen kolom gemarkeerd als label of u hebt nog geen kolom label geselecteerd.  
   
@@ -367,8 +367,8 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |De gegevensset is niet geldig.|  
-|{0}bevat ongeldige gegevens.|  
-|{0}en {1} moet een consistente kolom manier zijn.|  
+|{0} bevat ongeldige gegevens.|  
+|{0} en {1} moeten een consistente kolom voor u zijn.|  
   
 
 ## <a name="error-0019"></a>Fout 0019  
@@ -376,13 +376,13 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  Deze fout wordt weer gegeven in Azure Machine Learning als de opgegeven kolom waarden niet in de juiste volg orde staan.  
   
-**Opgelost** Sorteer de kolom waarden door de invoer gegevensset hand matig te wijzigen en de module opnieuw uit te voeren.  
+**Oplossing:** Sorteer de kolom waarden door de invoer gegevensset hand matig te wijzigen en de module opnieuw uit te voeren.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De waarden in de kolom worden niet gesorteerd.|  
-|De waarden in de{0}kolom zijn niet gesorteerd.|  
-|De waarden in de{0}kolom "" van{1}de gegevensset "" worden niet gesorteerd.|  
+|De waarden in de kolom {0} zijn niet gesorteerd.|  
+|De waarden in de kolom {0} van de gegevensset {1} zijn niet gesorteerd.|  
   
 
 ## <a name="error-0020"></a>Fout 0020  
@@ -390,13 +390,13 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  U ontvangt deze fout in Azure Machine Learning als er onvoldoende kolommen zijn geselecteerd voor een module.  
   
-**Opgelost** Ga terug naar de module en zorg ervoor dat voor de kolom kiezer het juiste aantal kolommen is geselecteerd.  
+**Oplossing:** Ga terug naar de module en zorg ervoor dat voor de kolom kiezer het juiste aantal kolommen is geselecteerd.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum.|  
-|Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane {0} minimum van kolom (men).|  
-|Het aantal kolommen in de invoer gegevensset{0}is kleiner dan het toegestane minimum van {1} kolom (men).|
+|Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum van {0} kolom (men).|  
+|Het aantal kolommen in de invoer gegevensset {0} is kleiner dan het toegestane minimum van {1} kolom (men).|
 
 ## <a name="error-0021"></a>Fout 0021  
  Uitzonde ring treedt op als het aantal rijen in een deel van de gegevens sets die aan de module zijn door gegeven, te klein is.  
@@ -425,7 +425,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
 -   U hebt een door komma's gescheiden lijst met waarden voor invoer opgegeven, maar het aantal waarden komt niet overeen, of meerdere invoer wordt niet ondersteund.  
   
-**Opgelost** Ga naar de module en controleer de kolom selectie om ervoor te zorgen dat het juiste aantal kolommen is geselecteerd. Controleer de uitvoer van upstream-modules en de vereisten van stroomafwaartse bewerkingen.  
+**Oplossing:** Ga naar de module en controleer de kolom selectie om ervoor te zorgen dat het juiste aantal kolommen is geselecteerd. Controleer de uitvoer van upstream-modules en de vereisten van stroomafwaartse bewerkingen.  
   
  Als u een van de opties voor kolom selectie hebt gebruikt waarmee meerdere kolommen kunnen worden geselecteerd (kolom indexen, alle functies, alle cijfers, enzovoort), moet u het exacte aantal kolommen valideren dat door de selectie wordt geretourneerd.  
   
@@ -433,14 +433,14 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  Controleer of het aantal of het type van de upstream-kolommen niet is gewijzigd.  
   
- Als u een aanbevelings-gegevensset gebruikt voor het trainen van een model, moet u er rekening mee houden dat de aanbevolener een beperkt aantal kolommen verwacht, overeenkomend met gebruikers-en gebruikers items. Verwijder aanvullende kolommen voordat u het model uitoefent of de aanbevelings gegevens sets splitst. Zie gesplitste [gegevens](split-data.md)voor meer informatie.  
+ Als u een aanbevelings-gegevensset gebruikt voor het trainen van een model, moet u er rekening mee houden dat de aanbevolener een beperkt aantal kolommen verwacht, overeenkomend met gebruikers-en gebruikers items. Verwijder aanvullende kolommen voordat u het model uitoefent of de aanbevelings gegevens sets splitst. Zie [gesplitste gegevens](split-data.md)voor meer informatie.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan het verwachte aantal.|  
-|Het aantal geselecteerde kolommen in de invoer gegevensset is niet gelijk {0}aan.|  
-|Kolom selectie patroon{0}: Hiermee geeft u het aantal geselecteerde kolommen in de invoer gegevensset niet {1}gelijk aan.|  
-|Het kolom selectie patroon{0}"" wordt verwacht dat er {2} kolommenwordenopgegevendiezijngeselecteerdindeinvoer-gegevensset,maardatereenof{1} meer kolommen zijn.|  
+|Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan {0}.|  
+|Het kolom selectie patroon ' {0} ' bevat het aantal geselecteerde kolommen in de ingevoerde gegevensset die niet gelijk is aan {1}.|  
+|Het kolom selectie patroon ' {0} ' wordt verwacht om {1} kolom (men) op te geven die zijn geselecteerd in de invoer gegevensset, maar {2} kolom (men) is/zijn opgegeven.|  
 
 
 
@@ -449,13 +449,13 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
   
  Deze fout in Azure Machine Learning treedt op als de doel kolom (zoals geselecteerd in de module parameters) niet van het geldige gegevens type is, alle ontbrekende waarden bevat of niet categorische zoals verwacht.  
   
-**Opgelost** Ga naar de module-invoer om de inhoud van de kolom Label/doel te controleren. Zorg ervoor dat deze niet alle ontbrekende waarden bevat. Als de module doel kolom verwacht te categorische, moet u ervoor zorgen dat er meer dan één afzonderlijke waarde in de doel kolom is.  
+**Oplossing:** Ga naar de module-invoer om de inhoud van de kolom Label/doel te controleren. Zorg ervoor dat deze niet alle ontbrekende waarden bevat. Als de module doel kolom verwacht te categorische, moet u ervoor zorgen dat er meer dan één afzonderlijke waarde in de doel kolom is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De invoer gegevensset bevat een niet-ondersteunde doel kolom.|  
-|De invoer gegevensset bevat een niet-ondersteunde doel{0}kolom.|  
-|Invoer gegevensset bevat niet-ondersteunde doel kolom "{0}" voor meer informatie over type {1}.|  
+|De invoer gegevensset bevat een niet-ondersteunde doel kolom {0}.|  
+|De invoer gegevensset bevat een niet-ondersteunde doel kolom {0} voor meer informatie over type {1}.|  
  
 
 ## <a name="error-0024"></a>Fout 0024  
@@ -475,7 +475,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |De gegevensset bevat geen label kolom.|  
-|Er bevindt zich geen label{0}kolom in.|  
+|Er bevindt zich geen kolom Label in {0}.|  
   
 
 ## <a name="error-0025"></a>Fout 0,025  
@@ -483,26 +483,26 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Deze fout in Azure Machine Learning treedt op als de invoer voor het Evalueer model geen geldige Score kolommen bevat. De gebruiker probeert bijvoorbeeld een gegevensset te evalueren voordat deze met een juist getraind model werd gescoord of de Score kolom is expliciet verwijderd uit de upstream. Deze uitzonde ring treedt ook op als de Score kolommen op de twee gegevens sets incompatibel zijn. U kunt bijvoorbeeld proberen de nauw keurigheid van een lineaire regressor hierop te vergelijken met die van een binaire classificatie.  
   
-**Opgelost** Ga naar het Evalueer model en controleer of het een of meer Score kolommen bevat. Als dat niet het geval is, wordt de gegevensset niet beoordeeld of zijn de Score kolommen verwijderd in een upstream-module.  
+**Oplossing:** Ga naar het Evalueer model en controleer of het een of meer Score kolommen bevat. Als dat niet het geval is, wordt de gegevensset niet beoordeeld of zijn de Score kolommen verwijderd in een upstream-module.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Gegevensset bevat geen kolom met scores.|  
-|Er bevindt zich geen score{0}kolom in.|  
-|Er bevindt zich geen score{0}kolom in ' ' die wordt geproduceerd{1}door een ' '. Geef de gegevensset een score met het juiste type kenniser.|  
+|Er bevindt zich geen kolom met scores in {0}.|  
+|Er bevindt zich geen score kolom in {0} die wordt geproduceerd door een {1}. Geef de gegevensset een score met het juiste type kenniser.|  
   
 
 ## <a name="error-0026"></a>Fout 0026  
  Uitzonde ring treedt op als kolommen met dezelfde naam niet zijn toegestaan.  
   
- Deze fout in Azure Machine Learning treedt op als meerdere kolommen dezelfde naam hebben. Een van de manieren waarop deze fout kan worden weer gegeven, is als de gegevensset geen koprij heeft en de kolom namen automatisch worden toegewezen: Col0, Kol1, etc.  
+ Deze fout in Azure Machine Learning treedt op als meerdere kolommen dezelfde naam hebben. Een van de manieren waarop deze fout kan worden weer gegeven, is als de gegevensset geen koprij heeft en de kolom namen automatisch worden toegewezen: Col0, Kol1, enzovoort.  
   
-**Opgelost** Als kolommen dezelfde naam hebben, voegt u een module voor het [bewerken van meta gegevens](edit-metadata.md) in tussen de invoer-gegevensset en de module. Gebruik de kolom kiezer in [meta gegevens bewerken](edit-metadata.md) om de kolommen te selecteren waarvan u de naam wilt wijzigen, en typ de nieuwe namen in het tekstvak **nieuwe kolom namen** .  
+**Oplossing:** Als kolommen dezelfde naam hebben, voegt u een module voor het [bewerken van meta gegevens](edit-metadata.md) in tussen de invoer-gegevensset en de module. Gebruik de kolom kiezer in [meta gegevens bewerken](edit-metadata.md) om de kolommen te selecteren waarvan u de naam wilt wijzigen, en typ de nieuwe namen in het tekstvak **nieuwe kolom namen** .  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Er zijn gelijke kolom namen opgegeven in argumenten. Gelijke kolom namen zijn niet toegestaan per module.|  
-|De argumenten "{0}"{1}en "" zijn gelijk aan de naam van de kolom. Geef verschillende namen op.|  
+|Gelijke kolom namen in argumenten {0} en {1} zijn niet toegestaan. Geef verschillende namen op.|  
   
 
 ## <a name="error-0027"></a>Fout 0027  
@@ -510,7 +510,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Dit is een veelvoorkomende fout in Azure Machine Learning en kan worden veroorzaakt door veel voor waarden.  
   
-**Opgelost** Er is geen specifieke oplossing. U kunt echter controleren op voor waarden, zoals de volgende:  
+**Oplossing:** Er is geen specifieke oplossing. U kunt echter controleren op voor waarden, zoals de volgende:  
   
 -   Als u de naam van kolommen wijzigt, moet u ervoor zorgen dat elke lijst (de invoer kolommen en de lijst met nieuwe namen) hetzelfde aantal items heeft.  
   
@@ -521,7 +521,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |De grootte van de door gegeven objecten is inconsistent.|  
-|De grootte van{0}is inconsistent met de grootte{1}van.|  
+|De grootte van ' {0} ' is inconsistent met de grootte van ' {1} '.|  
   
 
 ## <a name="error-0028"></a>Fout 0028  
@@ -529,13 +529,13 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Deze fout in Azure Machine Learning treedt op wanneer kolom namen worden gedupliceerd. Dit is niet uniek.  
   
-**Opgelost** Als er kolommen dezelfde naam hebben, voegt u een exemplaar van de [meta gegevens bewerken](edit-metadata.md) toe tussen de invoer-gegevensset en de module die de fout heeft opgevallen. Gebruik de kolom kiezer in [meta gegevens bewerken](edit-metadata.md) om de kolommen te selecteren waarvan u de naam wilt wijzigen en typ de namen van de nieuwe kolommen in het tekstvak **nieuwe kolom namen** . Als u de naam van meerdere kolommen wijzigt, moet u ervoor zorgen dat de waarden die u in de **nieuwe kolom namen** typt, uniek zijn.  
+**Oplossing:** Als er kolommen dezelfde naam hebben, voegt u een exemplaar van de [meta gegevens bewerken](edit-metadata.md) toe tussen de invoer-gegevensset en de module die de fout heeft opgevallen. Gebruik de kolom kiezer in [meta gegevens bewerken](edit-metadata.md) om de kolommen te selecteren waarvan u de naam wilt wijzigen en typ de namen van de nieuwe kolommen in het tekstvak **nieuwe kolom namen** . Als u de naam van meerdere kolommen wijzigt, moet u ervoor zorgen dat de waarden die u in de **nieuwe kolom namen** typt, uniek zijn.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De kolomset bevat dubbele kolom namen.|  
-|De naam{0}is gedupliceerd.|  
-|De naam{0}is gedupliceerd{1}in.|  
+|De naam {0} is gedupliceerd.|  
+|De naam {0} is gedupliceerd in {1}.|  
   
 
 ## <a name="error-0029"></a>Fout 0029  
@@ -553,7 +553,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
 -   De URL kan niet worden omgezet door de externe bron.  
   
-**Opgelost** Ga naar de module en controleer de indeling van de URI. Als de gegevens bron een web-URL is via HTTP, controleert u of de bedoelde bron geen bestand of een loop back-URI (localhost) is.  
+**Oplossing:** Ga naar de module en controleer de indeling van de URI. Als de gegevens bron een web-URL is via HTTP, controleert u of de bedoelde bron geen bestand of een loop back-URI (localhost) is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -565,12 +565,12 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Deze uitzonde ring in Azure Machine Learning treedt op wanneer het niet mogelijk is om een bestand te downloaden. Deze uitzonde ring wordt weer gegeven wanneer een poging tot het lezen van een HTTP-bron is mislukt na drie (3) pogingen.  
   
-**Opgelost** Controleer of de URI naar de HTTP-bron juist is en of de site momenteel toegankelijk is via internet.  
+**Oplossing:** Controleer of de URI naar de HTTP-bron juist is en of de site momenteel toegankelijk is via internet.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan een bestand niet downloaden.|  
-|Fout bij het downloaden van het {0}bestand:.|  
+|Fout bij het downloaden van het bestand: {0}.|  
   
 
 ## <a name="error-0031"></a>Fout 0031  
@@ -578,37 +578,37 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Deze fout in Azure Machine Learning treedt op als het aantal geselecteerde kolommen kleiner is dan nodig is.  Deze fout wordt weer gegeven als het minimale vereiste aantal kolommen niet is geselecteerd.  
   
-**Opgelost** Voeg extra kolommen aan de kolom selectie toe met behulp van de **kolom kiezer**.  
+**Oplossing:** Voeg extra kolommen aan de kolom selectie toe met behulp van de **kolom kiezer**.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal kolommen in de kolomset is kleiner dan vereist.|  
-|{0}Er moeten kolom (men) worden opgegeven. Het werkelijke aantal opgegeven kolommen is {1}.|  
+|Er moeten {0} kolom (men) worden opgegeven. Het werkelijke aantal opgegeven kolommen is {1}.|  
 
 ## <a name="error-0032"></a>Fout 0032  
  Uitzonde ring treedt op als argument geen getal is.  
   
  Deze fout wordt weer gegeven in Azure Machine Learning als het argument een double of NaN is.  
   
-**Opgelost** Wijzig het opgegeven argument om een geldige waarde te gebruiken.  
+**Oplossing:** Wijzig het opgegeven argument om een geldige waarde te gebruiken.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het argument is geen getal.|  
-|{0}is geen getal.|  
+|' {0} ' is geen getal.|  
   
 
 ## <a name="error-0033"></a>Fout 0033  
  Uitzonde ring treedt op als argument oneindig is.  
   
- Deze fout in Azure Machine Learning treedt op als het argument oneindig is. Deze fout treedt op `double.NegativeInfinity` als het argument of `double.PositiveInfinity`is.  
+ Deze fout in Azure Machine Learning treedt op als het argument oneindig is. Deze fout treedt op als het argument `double.NegativeInfinity` of `double.PositiveInfinity` is.  
   
-**Opgelost** Wijzig het opgegeven argument in een geldige waarde.  
+**Oplossing:** Wijzig het opgegeven argument in een geldige waarde.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Argument moet eindig zijn.|  
-|{0}is niet eindig.|  
+|' {0} ' is niet eindig.|  
   
 
 ## <a name="error-0034"></a>Fout 0034  
@@ -616,12 +616,12 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
   
  Deze fout in Azure Machine Learning treedt op als een gebruiker-item paar meer dan één classificatie waarde heeft.  
   
-**Opgelost** Zorg ervoor dat het gebruikers-item paar slechts één waarderings waarde bezit.  
+**Oplossing:** Zorg ervoor dat het gebruikers-item paar slechts één waarderings waarde bezit.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Er bestaat meer dan één classificatie voor de waarde (n) in de gegevensset.|  
-|Meer dan één classificatie voor de {0} gegevens tabel {1} voor de voor spelling van de gebruiker en het item.|  
+|Meer dan één classificatie voor gebruikers {0} en item {1} in de Voorspellings gegevens tabel voor de waardering.|  
   
 
 ## <a name="error-0035"></a>Fout 0035  
@@ -655,7 +655,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning treedt op als een functie Vector meermaals is gedefinieerd.  
   
-**Opgelost** Zorg ervoor dat de functie Vector niet meer dan één keer is gedefinieerd.  
+**Oplossing:** Zorg ervoor dat de functie Vector niet meer dan één keer is gedefinieerd.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -668,7 +668,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning treedt op als er meer dan één kolom is geselecteerd als de nieuwe label kolom. Voor de meeste bewaakte leer algoritmen moet één kolom worden gemarkeerd als het doel of label.  
   
-**Opgelost** Zorg ervoor dat u één kolom selecteert als de nieuwe label kolom.  
+**Oplossing:** Zorg ervoor dat u één kolom selecteert als de nieuwe label kolom.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -680,13 +680,13 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning treedt op als het aantal verwachte elementen een exacte waarde moet zijn, maar niet.  Deze fout wordt weer gegeven als het aantal elementen niet gelijk is aan de geldige verwachte waarde.  
   
-**Opgelost** Wijzig de invoer om het juiste aantal elementen te krijgen.  
+**Oplossing:** Wijzig de invoer om het juiste aantal elementen te krijgen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal elementen is niet geldig.|  
-|Het aantal elementen in{0}is niet geldig.|  
-|Het aantal elementen in{0}is niet gelijk aan het geldige {1} aantal element (en).|  
+|Het aantal elementen in {0} is niet geldig.|  
+|Het aantal elementen in {0} is niet gelijk aan het geldige aantal {1} element (en).|  
   
 
 ## <a name="error-0039"></a>Fout 0039  
@@ -694,7 +694,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning treedt op wanneer een interne bewerking niet kan worden voltooid.  
   
-**Opgelost** Deze fout wordt veroorzaakt door veel omstandigheden en er is geen specifiek verhaal.  
+**Oplossing:** Deze fout wordt veroorzaakt door veel omstandigheden en er is geen specifiek verhaal.  
  De volgende tabel bevat algemene berichten voor deze fout, gevolgd door een specifieke beschrijving van de voor waarde. 
  
  Als er geen details beschikbaar zijn, [verzendt u feedback](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) en geeft u informatie op over de modules die de fout hebben gegenereerd en de bijbehorende voor waarden.
@@ -702,7 +702,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|  
 |------------------------|  
 |De bewerking is mislukt.|  
-|Fout bij het volt ooien {0}van de bewerking:.|  
+|Fout bij het volt ooien van de bewerking: {0}.|  
   
 
 ## <a name="error-0040"></a>Fout 0040  
@@ -710,12 +710,12 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning wordt gemaakt bij het aanroepen van een afgeschafte module.  
   
-**Opgelost** De afgeschafte module vervangen door een ondersteunde versie. Raadpleeg het uitvoer logboek van de module voor informatie over welke module u in plaats daarvan kunt gebruiken.  
+**Oplossing:** De afgeschafte module vervangen door een ondersteunde versie. Raadpleeg het uitvoer logboek van de module voor informatie over welke module u in plaats daarvan kunt gebruiken.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module "{0}" is afgeschaft. Gebruik in plaats{1}daarvan de module.|  
+|Module {0} is afgeschaft. Gebruik in plaats daarvan de module {1}.|  
  
 
 ## <a name="error-0041"></a>Fout 0041  
@@ -723,12 +723,12 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Deze fout in Azure Machine Learning wordt gemaakt bij het aanroepen van een afgeschafte module.  
   
-**Opgelost** Vervang de afgeschafte module door een set met ondersteunde waarden. Deze informatie moet zichtbaar zijn in het uitvoer logboek van de module.  
+**Oplossing:** Vervang de afgeschafte module door een set met ondersteunde waarden. Deze informatie moet zichtbaar zijn in het uitvoer logboek van de module.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module "{0}" is afgeschaft. Gebruik de modules{1}voor de aangevraagde functionaliteit.|  
+|Module {0} is afgeschaft. Gebruik de modules {1} voor de aangevraagde functionaliteit.|  
  
 
 ## <a name="error-0042"></a>Fout 0042  
@@ -764,9 +764,9 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Conversie niet toegestaan.|  
-|Kan kolom van type {0} niet converteren naar kolom van type. {1}|  
-|Kan kolom{2}van type {0} niet converteren naar kolom van type {1}.|  
-|Kan kolom{2}"" van het type {0} naar de kolom "{3}" van het {1}type niet converteren.|  
+|Kan kolom van het type {0} niet converteren naar een kolom van het type {1}.|  
+|Kan kolom {2} van het type {0} niet converteren naar een kolom van het type {1}.|  
+|Kan kolom {2} van het type {0} niet converteren naar kolom {3} van het type {1}.|  
   
 
 ## <a name="error-0043"></a>Fout 0043  
@@ -774,12 +774,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
   
-**Opgelost** Geen.  
+**Oplossing:** Geen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
-|Kan geen waarden vergelijken voor \\kolom{0}"\\" van {1}het type. Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
+|Kan geen waarden vergelijken voor kolom \\ {0} \\ van het type {1}. Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
 
 
 ## <a name="error-0044"></a>Fout 0044  
@@ -787,13 +787,13 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op wanneer het niet mogelijk is om het type van een kolom of kolommen in een gegevensset af te leiden. Dit gebeurt meestal bij het samen voegen van twee of meer gegevens sets met verschillende element typen. Als Azure Machine Learning geen gemeen schappelijk type kunt bepalen dat alle waarden in een kolom of kolommen kan vertegenwoordigen zonder gegevens verlies, wordt deze fout gegenereerd.  
   
-**Opgelost** Zorg ervoor dat alle waarden in een bepaalde kolom in beide gegevens sets die worden gecombineerd, van hetzelfde type zijn (numeriek, Booleaans, categorische, teken reeks, datum, enz.) of naar hetzelfde type kunnen worden gedwongen.  
+**Oplossing:** Zorg ervoor dat alle waarden in een bepaalde kolom in beide gegevens sets die worden gecombineerd, van hetzelfde type zijn (numeriek, Booleaans, categorische, teken reeks, datum, enz.) of naar hetzelfde type kunnen worden gedwongen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Element type van de kolom kan niet worden afgeleid.|  
-|Kan element type niet afleiden voor kolom{0}' '-alle elementen zijn null-verwijzingen.|  
-|Kan element type niet afleiden voor kolom{0}"" van{1}gegevensset ""--alle elementen zijn null-verwijzingen.|  
+|Kan element type niet afleiden voor kolom {0}--alle elementen zijn null-verwijzingen.|  
+|Kan element type niet afleiden voor kolom {0} van gegevensset {1}--alle elementen zijn null-verwijzingen.|  
   
 
 ## <a name="error-0045"></a>Fout 0045  
@@ -801,12 +801,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer de element typen van twee gegevens sets die worden gecombineerd, verschillend zijn.  
   
-**Opgelost** Zorg ervoor dat alle waarden in een bepaalde kolom in beide gegevens sets worden gecombineerd van hetzelfde type (numeriek, Booleaans, categorische, teken reeks, datum, enzovoort).  
+**Oplossing:** Zorg ervoor dat alle waarden in een bepaalde kolom in beide gegevens sets worden gecombineerd van hetzelfde type (numeriek, Booleaans, categorische, teken reeks, datum, enzovoort).  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan geen kolom met gemengde element typen maken.|  
-|Kan geen kolom maken met de{0}id "" van gemengde element typen: \ n\tType van{1}gegevens {0}[, {2}] is \n\tType van{3}gegevens {0}[, {4}] is.|  
+|Kan geen kolom maken met de ID ' {0} ' van gemengde element typen: \ n\tType van gegevens [{1}, {0}] is {2} \n\tType aan gegevens [{3}] {0}.|  
   
 
 ## <a name="error-0046"></a>Fout 0046  
@@ -814,7 +814,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op wanneer het niet mogelijk is om een map te maken op het opgegeven pad. Deze fout wordt weer gegeven als een deel van het pad naar de uitvoermap voor een Hive-query onjuist of niet toegankelijk is.  
   
-**Opgelost** Ga naar de module en controleer of het mappad juist is ingedeeld en of het toegankelijk is met de huidige referenties.  
+**Oplossing:** Ga naar de module en controleer of het mappad juist is ingedeeld en of het toegankelijk is met de huidige referenties.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -827,13 +827,13 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op als de invoer-gegevensset voor de training niet het minimale aantal kolommen bevat dat vereist is voor de algoritme. De gegevensset is meestal leeg of bevat alleen trainings kolommen.  
   
-**Opgelost** Ga naar de invoer gegevensset om ervoor te zorgen dat er een of meer extra kolommen uit de kolom Label komen.  
+**Oplossing:** Ga naar de invoer gegevensset om ervoor te zorgen dat er een of meer extra kolommen uit de kolom Label komen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal functie kolommen in de invoer gegevensset is lager dan het toegestane minimum.|  
-|Het aantal functie kolommen in de invoer gegevensset is lager dan het toegestane {0} minimum van kolom (men).|  
-|Aantal functie kolommen in invoer gegevensset{0}"" is lager dan het toegestane minimum van {1} kolom (men).|  
+|Het aantal functie kolommen in de invoer gegevensset is kleiner dan het toegestane minimum van {0} kolom (men).|  
+|Het aantal functie kolommen in de invoer-gegevensset {0} is kleiner dan het toegestane minimum van {1} kolom (men).|  
   
 
 ## <a name="error-0048"></a>Fout 0048  
@@ -847,7 +847,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
 -   Het bestand is te groot om te lezen of heeft een onjuiste indeling  
   
-**Opgelost** Ga naar de module en het bestand dat u probeert te lezen.  
+**Oplossing:** Ga naar de module en het bestand dat u probeert te lezen.  
   
  Controleer of de namen van de container en het bestand juist zijn.  
   
@@ -858,7 +858,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan geen bestand openen.|  
-|Fout bij het openen van het {0}bestand:.|  
+|Fout bij het openen van het bestand: {0}.|  
 
 
 ## <a name="error-0049"></a>Fout 0049  
@@ -866,18 +866,18 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op wanneer het niet mogelijk is om een bestand te parseren. U ontvangt deze fout melding als de bestands indeling die is geselecteerd in de module [gegevens importeren](import-data.md) niet overeenkomt met de daad werkelijke indeling van het bestand, of als het bestand een onherkenbaar teken bevat.  
   
-**Opgelost** Ga naar de module en corrigeer de selectie van de bestands indeling als deze niet overeenkomt met de indeling van het bestand. Controleer, indien mogelijk, het bestand om te bevestigen dat het geen ongeldige tekens bevat.  
+**Oplossing:** Ga naar de module en corrigeer de selectie van de bestands indeling als deze niet overeenkomt met de indeling van het bestand. Controleer, indien mogelijk, het bestand om te bevestigen dat het geen ongeldige tekens bevat.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Een bestand kan niet worden geparseerd.|  
-|Fout bij het parseren van {0}het bestand:.|  
+|Fout bij het parseren van het bestand: {0}.|  
   
 
 ## <a name="error-0050"></a>Fout 0050  
  Uitzonde ring treedt op als de invoer-en uitvoer bestanden hetzelfde zijn.  
   
-**Opgelost** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
+**Oplossing:** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -887,7 +887,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 ## <a name="error-0051"></a>Fout 0051  
  Uitzonde ring treedt op wanneer verschillende uitvoer bestanden hetzelfde zijn.  
   
-**Opgelost** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
+**Oplossing:** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -901,7 +901,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Zie [toegangs sleutels voor opslag weer geven, kopiëren en opnieuw genereren](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)voor meer informatie over het ophalen van de sleutel voor een Azure-opslag account.  
   
-**Opgelost** Ga naar de module en controleer of de Azure Storage-sleutel juist is voor het account. Kopieer de sleutel opnieuw vanuit de klassieke Azure-Portal, indien nodig.  
+**Oplossing:** Ga naar de module en controleer of de Azure Storage-sleutel juist is voor het account. Kopieer de sleutel opnieuw vanuit de klassieke Azure-Portal, indien nodig.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -913,7 +913,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer een functie Vector niet kan worden gevonden.  
   
-**Opgelost** Zorg ervoor dat er een functie Vector aanwezig is in de ingevoerde gegevensset.  
+**Oplossing:** Zorg ervoor dat er een functie Vector aanwezig is in de ingevoerde gegevensset.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -922,13 +922,13 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 ## <a name="error-0054"></a>Fout 0054  
  Uitzonde ring treedt op als er te weinig verschillende waarden in de kolom zijn om de bewerking te volt ooien.  
   
-**Opgelost** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
+**Oplossing:** Deze fout in Azure Machine Learning wordt niet gebruikt en wordt afgeschaft.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Gegevens hebben te weinig unieke waarden in de opgegeven kolom om de bewerking te volt ooien.|  
 |Gegevens hebben te weinig unieke waarden in de opgegeven kolom om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
-|Gegevens hebben te weinig unieke waarden in de kolom{1}om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
+|Gegevens hebben te weinig unieke waarden in de kolom {1} om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
   
 
 ## <a name="error-0055"></a>Fout 0055  
@@ -939,7 +939,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module "{0}" is afgeschaft.|  
+|Module {0} is afgeschaft.|  
 
 ## <a name="error-0056"></a>Fout 0056  
  Uitzonde ring treedt op als de kolommen die u hebt geselecteerd voor een bewerking, de vereisten schenden.  
@@ -963,13 +963,13 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer geselecteerde kolommen bevinden zich niet in een categorie die is toegestaan.|  
-|De kolom met de{0}naam heeft geen toegestane categorie.|  
+|De kolom met de naam {0} heeft geen toegestane categorie.|  
   
 
 ## <a name="error-0057"></a>Fout 0057  
  Uitzonde ring treedt op bij het maken van een bestand of BLOB die al bestaat.  
   
- Deze uitzonde ring treedt op wanneer u de module [gegevens exporteren](export-data.md) of een andere module gebruikt om de resultaten van een experiment in azure machine learning naar Azure Blob-opslag op te slaan, maar u probeert een bestand of BLOB te maken dat al bestaat.   
+ Deze uitzonde ring treedt op wanneer u de module [gegevens exporteren](export-data.md) of een andere module gebruikt om resultaten van een pijp lijn in azure machine learning naar Azure Blob-opslag op te slaan, maar u probeert een bestand of BLOB te maken die al bestaat.   
   
 **Opgelost**
  
@@ -981,7 +981,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Het bestand of de BLOB bestaat al.|  
-|Bestand of BLOB{0}bestaat al.|  
+|Het bestand of de blob "{0}" bestaat al.|  
   
 
 ## <a name="error-0058"></a>Fout 0058  
@@ -989,7 +989,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze uitzonde ring kan ook optreden als de opgegeven label kolom niet overeenkomt met de gegevens of het data type dat wordt verwacht door de cursist of onjuiste waarden heeft. Deze uitzonde ring wordt bijvoorbeeld gemaakt wanneer u een label kolom met een werkelijke waarde gebruikt bij het trainen van een binaire classificatie.  
   
-**Opgelost** De oplossing is afhankelijk van de leerer of trainer die u gebruikt, en de gegevens typen van de kolommen in uw gegevensset. Controleer eerst de vereisten van de module machine learning algoritme of training.  
+**Oplossing:** De oplossing is afhankelijk van de leerer of trainer die u gebruikt, en de gegevens typen van de kolommen in uw gegevensset. Controleer eerst de vereisten van de module machine learning algoritme of training.  
   
  Ga naar de invoer gegevensset. Controleer of de kolom die u verwacht te behandelen, het juiste gegevens type heeft voor het model dat u maakt.  
   
@@ -1000,8 +1000,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |De kolom Label is niet zoals verwacht|  
-|De kolom Label is niet zoals verwacht in{0}.|  
-|De label kolom{0}"" wordt niet verwacht in "{1}".|  
+|De kolom Label is niet zoals verwacht in {0}.|  
+|De label kolom {0} wordt niet verwacht in {1}.|  
   
 
 ## <a name="error-0059"></a>Fout 0059  
@@ -1009,12 +1009,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op als een kolom index die is opgegeven bij het gebruik van de kolom kiezer, niet kan worden geparseerd.  Deze fout wordt weer gegeven wanneer de kolom index een ongeldige indeling heeft die niet kan worden geparseerd.  
   
-**Opgelost** Wijzig de kolom index om een geldige index waarde te gebruiken.  
+**Oplossing:** Wijzig de kolom index om een geldige index waarde te gebruiken.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer opgegeven kolom indexen of index bereiken kunnen niet worden geparseerd.|  
-|De kolom index of het{0}bereik "" kan niet worden geparseerd.|  
+|De kolom index of het bereik {0} kan niet worden geparseerd.|  
   
 
 ## <a name="error-0060"></a>Fout 0060  
@@ -1022,12 +1022,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op wanneer een out-of-Range-kolom bereik is opgegeven in de kolom kiezer. Deze fout wordt weer gegeven als het kolom bereik in de kolom kiezer niet overeenkomt met de kolommen in de gegevensset.  
   
-**Opgelost** Wijzig het kolom bereik in de kolom kiezer zodat dit overeenkomt met de kolommen in de gegevensset.  
+**Oplossing:** Wijzig het kolom bereik in de kolom kiezer zodat dit overeenkomt met de kolommen in de gegevensset.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig of buiten bereik opgegeven kolom index bereik.|  
-|Het kolom bereik{0}is ongeldig of valt buiten het bereik.|  
+|Het kolom bereik {0} is ongeldig of valt buiten het bereik.|  
   
 
 ## <a name="error-0061"></a>Fout 0061  
@@ -1035,7 +1035,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op wanneer u een rij probeert toe te voegen aan een gegevensset met een ander aantal kolommen dan de gegevensset.  U ontvangt deze fout melding als de rij die wordt toegevoegd aan de gegevensset, een verschillend aantal kolommen uit de invoer gegevensset heeft.  De rij kan niet worden toegevoegd aan de gegevensset als het aantal kolommen niet overeenkomt.  
   
-**Opgelost** Wijzig de invoer-gegevensset zodat hetzelfde aantal kolommen hetzelfde is als de toegevoegde rij, of wijzig de rij die wordt toegevoegd aan hetzelfde aantal kolommen als de gegevensset.  
+**Oplossing:** Wijzig de invoer-gegevensset zodat hetzelfde aantal kolommen hetzelfde is als de toegevoegde rij, of wijzig de rij die wordt toegevoegd aan hetzelfde aantal kolommen als de gegevensset.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1047,7 +1047,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer de metrische gegevens voor de evaluatie van twee verschillende gescoorde gegevens sets niet kunnen worden vergeleken. In dit geval is het niet mogelijk om de effectiviteit te vergelijken van de modellen die worden gebruikt voor het produceren van de twee gescoorde gegevens sets.  
   
-**Opgelost** Controleer of de gescoorde resultaten worden geproduceerd door hetzelfde soort machine learning model (binaire classificatie, regressie, classificatie met meerdere klassen, aanbeveling, Clustering, afwijkings detectie enz.) Alle modellen die u vergelijkt, moeten hetzelfde type leerder hebben.  
+**Oplossing:** Controleer of de gescoorde resultaten worden geproduceerd door hetzelfde soort machine learning model (binaire classificatie, regressie, classificatie met meerdere klassen, aanbeveling, Clustering, afwijkings detectie enz.) Alle modellen die u vergelijkt, moeten hetzelfde type leerder hebben.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1066,7 +1066,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
-    + Messages from R marked as **warnings** typically do not cause the experiment to fail.
+    + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
 3. Resolve script issues.  
     + Check for R syntax errors. Check for variables that are defined but never populated.
     + Review the input data and the script to determine if either the data or variables in the script use characters not supported by Azure Machine Learning.
@@ -1074,19 +1074,19 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
     + Check whether your code loads required libraries that are not loaded by default.
     + Check whether the required packages are the correct version.
     + Make sure that any dataset that you want to output is converted to a data frame.  
-4.  Resubmit the experiment.
+4.  Resubmit the pipeline.
 
  <!--
 > [!NOTE]
-> These topics contains examples of R code that you can use, as well as links to experiments in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
+> These topics contains examples of R code that you can use, as well as links to pipelines in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
 |Uitzonderings berichten|  
 |------------------------|  
 |Fout tijdens de evaluatie van het R-script.|  
-|De volgende fout is opgetreden tijdens de evaluatie van het r-script:----------begin van {0} fout bericht van r---------------------einde van het fout bericht van r-----------|  
-|Tijdens de evaluatie van r-script{1}"" is de volgende fout opgetreden:----------begin van fout bericht {0} van r---------------------einde van fout bericht van r-----------|  
+|De volgende fout is opgetreden tijdens de evaluatie van R-script:----------begin van fout bericht van R----------{0}-----------einde van het fout bericht van R-----------|  
+|Tijdens de evaluatie van R-script "{1}" is de volgende fout opgetreden:----------begin van fout bericht van R----------{0}-----------einde van fout bericht van R-----------|  
   
 
 
@@ -1095,12 +1095,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op als de naam van het Azure Storage-account of de opslag sleutel onjuist is opgegeven. Deze fout wordt weer gegeven als u een onjuiste account naam of een onjuist wacht woord voor het opslag account opgeeft. Dit kan gebeuren als u de account naam of het wacht woord hand matig invoert. Dit kan ook gebeuren als het account is verwijderd.  
   
-**Opgelost** Controleer of de account naam en het wacht woord juist zijn ingevoerd en of het account bestaat.  
+**Oplossing:** Controleer of de account naam en het wacht woord juist zijn ingevoerd en of het account bestaat.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De naam van het Azure-opslag account of de opslag sleutel is onjuist.|  
-|De naam{0}van het Azure-opslag account of de opslag sleutel voor de account naam is onjuist.|  
+|De naam van het Azure Storage-account "{0}" of de opslag sleutel voor de account naam is onjuist.|  
   
 
 ## <a name="error-0065"></a>Fout 0065  
@@ -1116,12 +1116,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
 -   Een SAS-URI bevat niet de naam van een geldige blob.  
   
-**Opgelost** Ga naar de module om de uitzonde ring te genereren. Controleer of de opgegeven BLOB bestaat in de container in het opslag account en of de machtigingen de BLOB kunnen bekijken. Controleer of de invoer van het formulier **containerName/filename** is als u Excel of CSV met coderings indelingen hebt. Controleer of een SAS-URI de naam van een geldige BLOB bevat.  
+**Oplossing:** Ga naar de module om de uitzonde ring te genereren. Controleer of de opgegeven BLOB bestaat in de container in het opslag account en of de machtigingen de BLOB kunnen bekijken. Controleer of de invoer van het formulier **containerName/filename** is als u Excel of CSV met coderings indelingen hebt. Controleer of een SAS-URI de naam van een geldige BLOB bevat.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De Azure Storage-blob is onjuist.|  
-|De naam{0}van de Azure Storage-blob is onjuist|  
+|De naam van de Azure Storage-blob "{0}" is onjuist|  
   
 
 ## <a name="error-0066"></a>Fout 0066  
@@ -1129,12 +1129,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op als een bron niet naar een Azure-Blob kan worden geüpload.  <!--You will receive this message if [Train Vowpal Wabbit 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) encounters an error attempting to save either the model or the hash created when training the model.--> Beide worden opgeslagen in hetzelfde Azure-opslag account als het account dat het invoer bestand bevat.  
   
-**Opgelost** Ga naar de module. Controleer of de naam van het Azure-account, de opslag sleutel en de container juist zijn en of het account gemachtigd is om naar de container te schrijven.  
+**Oplossing:** Ga naar de module. Controleer of de naam van het Azure-account, de opslag sleutel en de container juist zijn en of het account gemachtigd is om naar de container te schrijven.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De resource kan niet worden geüpload naar Azure Storage.|  
-|Het bestand{0}kan niet worden geüpload naar Azure Storage als {1}.|  
+|Het bestand ' {0} ' kan niet worden geüpload naar Azure Storage als {1}.|  
   
 
 ## <a name="error-0067"></a>Fout 0067  
@@ -1142,12 +1142,12 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
  Deze fout in Azure Machine Learning treedt op als een dataset een ander aantal kolommen heeft dan verwacht.  Deze fout wordt weer gegeven wanneer het aantal kolommen in de gegevensset afwijkt van het aantal kolommen dat de module verwacht tijdens de uitvoering.  
   
-**Opgelost** Wijzig de invoer gegevensset of de para meters.  
+**Oplossing:** Wijzig de invoer gegevensset of de para meters.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is een onverwacht aantal kolommen in de DataTable.|  
-|In plaats daarvan worden kolommen verwacht,{1}maar er zijn kolommen gevonden.{0}|  
+|Er worden {0} kolommen verwacht, maar er zijn {1} kolommen gevonden.|  
   
 
 ## <a name="error-0068"></a>Fout 0068  
@@ -1163,7 +1163,7 @@ Het fout bericht van Hive wordt normaal gesp roken weer gegeven in het fouten lo
 + Controleer of de query correct werkt buiten Azure Machine Learning door u aan te melden bij de Hive-console van uw Hadoop-cluster en de query uit te voeren.  
 + Probeer opmerkingen in het Hive-script op een afzonderlijke regel te plaatsen, in tegens telling tot het combi neren van uitvoer bare instructies en opmerkingen op één regel.  
 
-### <a name="resources"></a>Resources
+### <a name="resources"></a>Bronnen
 
 Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor machine learning:
 
@@ -1176,7 +1176,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|  
 |------------------------|  
 |Het Hive-script is onjuist.|  
-|Het Hive {0} -script is onjuist.|  
+|Het Hive-script {0} is niet juist.|  
   
 
 ## <a name="error-0069"></a>Fout 0069  
@@ -1186,20 +1186,20 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
  
  Deze fout wordt weer gegeven als de SQL-engine een fout tegen komt tijdens het uitvoeren van de query of het script. Het SQL-fout bericht wordt normaal gesp roken weer gegeven in het fouten logboek, zodat u actie kunt ondernemen op basis van de specifieke fout.  
   
-**Opgelost** Ga naar de module en Inspecteer de SQL-query op fouten.  
+**Oplossing:** Ga naar de module en Inspecteer de SQL-query op fouten.  
   
  Controleer of de query correct werkt buiten Azure ML door u rechtstreeks aan te melden bij de database server en de query uit te voeren.  
   
  Als er een gegenereerd SQL-bericht wordt gemeld door de module-uitzonde ring, actie ondernemen op basis van de gerapporteerde fout. De fout berichten bevatten bijvoorbeeld soms specifieke richt lijnen voor de waarschijnlijke fout:
 + Een *dergelijke kolom of ontbrekende data base*geeft aan dat u een ongeldige kolom naam hebt opgegeven. Als u zeker weet dat de naam van de kolom juist is, gebruikt u accolades of aanhalings tekens om de kolom-id op te sluiten.
-+ *SQL-logische fout \<in de\>buurt van het SQL-tref woord*, waarmee wordt aangegeven dat er mogelijk een syntaxis fout voor het opgegeven tref woord is
++ *Er is een SQL Logic-fout opgetreden in de buurt van \<SQL tref woord \>* , waarmee wordt aangegeven dat u een syntaxis fout hebt vóór het opgegeven tref woord
 
   
 |Uitzonderings berichten|  
 |------------------------|  
 |SQL-script is onjuist.|  
-|De SQL-{0}query is niet juist.|  
-|De SQL-{0}query is niet juist:{1}|  
+|De SQL-query {0} is niet juist.|  
+|De SQL-query {0} is niet juist: {1}|  
   
 
 ## <a name="error-0070"></a>Fout 0070  
@@ -1207,12 +1207,12 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
   
  Deze fout in Azure Machine Learning treedt op wanneer u een niet-bestaande Azure-tabel probeert te openen. Deze fout wordt weer gegeven als u een tabel in azure Storage opgeeft die niet bestaat als u leest van of schrijft naar Azure Table Storage. Dit kan gebeuren als u de naam van de gewenste tabel onjuist typt of als de doel naam en het opslag type niet overeenkomen. U kunt bijvoorbeeld een tabel lezen, maar u kunt in plaats daarvan de naam van een BLOB opgeven.  
   
-**Opgelost** Ga naar de module om te controleren of de naam van de tabel juist is.  
+**Oplossing:** Ga naar de module om te controleren of de naam van de tabel juist is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De Azure-tabel bestaat niet.|  
-|De Azure-{0}tabel bestaat niet.|  
+|De Azure-tabel {0} bestaat niet.|  
   
 ## <a name="error-0071"></a>Fout 0071  
  Uitzonde ring treedt op als de gegeven referenties onjuist zijn.  
@@ -1221,7 +1221,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
   
  Deze fout kan ook worden weer gegeven als de module geen verbinding kan maken met een HDInsight-cluster.  
   
-**Opgelost** Controleer de invoer voor de module en controleer de account naam en het wacht woord.  
+**Oplossing:** Controleer de invoer voor de module en controleer de account naam en het wacht woord.  
   
  Controleer op de volgende problemen waardoor een fout kan optreden:  
   
@@ -1238,7 +1238,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|  
 |------------------------|  
 |Er zijn onjuiste referenties door gegeven.|  
-|Onjuiste gebruikers naam{0}of wacht woord is door gegeven|  
+|Er is een onjuiste gebruikers naam {0} of het wacht woord is door gegeven|  
   
 
 ## <a name="error-0072"></a>Fout 0072  
@@ -1246,7 +1246,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
   
  Deze fout in Azure Machine Learning treedt op wanneer er een time-out optreedt voor een verbinding. U ontvangt deze fout melding als er momenteel verbindings problemen zijn met de gegevens bron of het doel, zoals een trage Internet verbinding, of als de gegevensset groot is en/of de SQL-query die in de gegevens wordt gelezen, complexe verwerking uitvoert.  
   
-**Opgelost** Bepaal of er momenteel problemen zijn met trage verbindingen met Azure Storage of Internet.  
+**Oplossing:** Bepaal of er momenteel problemen zijn met trage verbindingen met Azure Storage of Internet.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1258,12 +1258,12 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
   
  Deze fout in Azure Machine Learning treedt op wanneer het niet mogelijk is om een kolom naar een ander type te converteren.  U ontvangt deze fout melding als een module een bepaald type vereist en het niet mogelijk is om de kolom te converteren naar het nieuwe type.  
   
-**Opgelost** Wijzig de invoer gegevensset zodat de kolom kan worden geconverteerd op basis van de interne uitzonde ring.  
+**Oplossing:** Wijzig de invoer gegevensset zodat de kolom kan worden geconverteerd op basis van de interne uitzonde ring.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan kolom niet converteren.|  
-|Kan de kolom niet converteren {0}naar.|  
+|Kan de kolom niet converteren naar {0}.|  
   
 
 ## <a name="error-0074"></a>Fout 0074  
@@ -1300,12 +1300,12 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op als een ongeldig argument wordt door gegeven in de specificaties voor een doel of bron van een blob-bestand.  
   
-**Opgelost** In bijna alle modules die gegevens importeren of exporteren naar en van Azure Blob-opslag, worden parameter waarden die de schrijf modus beheren, toegewezen met behulp van een vervolg keuzelijst. Daarom is het niet mogelijk een ongeldige waarde door te geven en deze fout zou niet moeten worden weer gegeven. Deze fout wordt in een latere versie afgeschaft.  
+**Oplossing:** In bijna alle modules die gegevens importeren of exporteren naar en van Azure Blob-opslag, worden parameter waarden die de schrijf modus beheren, toegewezen met behulp van een vervolg keuzelijst. Daarom is het niet mogelijk een ongeldige waarde door te geven en deze fout zou niet moeten worden weer gegeven. Deze fout wordt in een latere versie afgeschaft.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteunde BLOB-schrijf modus.|  
-|Niet-ondersteunde BLOB-schrijf modus {0}:.|  
+|Niet-ondersteunde BLOB-schrijf modus: {0}.|  
   
 
 ## <a name="error-0078"></a>Fout 0078  
@@ -1313,7 +1313,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op wanneer de HTTP-optie voor [import gegevens](import-data.md) een 3xx-status code (301, 302, 304, etc.) ontvangt die omleiding aangeeft. Deze fout wordt weer gegeven als u probeert verbinding te maken met een HTTP-bron waarmee de browser wordt omgeleid naar een andere pagina. Uit veiligheids overwegingen zijn het omleiden van websites niet toegestaan als gegevens bronnen voor Azure Machine Learning.  
   
-**Opgelost** Als de website een vertrouwde website is, voert u de omgeleide URL rechtstreeks in.  
+**Oplossing:** Als de website een vertrouwde website is, voert u de omgeleide URL rechtstreeks in.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1325,12 +1325,12 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op als de naam van de Azure storage-container onjuist is opgegeven. Deze fout wordt weer gegeven als u niet zowel de container als de BLOB (bestands naam) hebt opgegeven met **het pad naar de blob die begint met de container** optie bij het schrijven naar Azure Blob Storage.  
   
-**Opgelost** Ga naar de module [gegevens exporteren](export-data.md) en controleer of het opgegeven pad naar de BLOB zowel de container als de bestands naam bevat in de indeling **container/filename**.  
+**Oplossing:** Ga naar de module [gegevens exporteren](export-data.md) en controleer of het opgegeven pad naar de BLOB zowel de container als de bestands naam bevat in de indeling **container/filename**.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De naam van de Azure storage-container is onjuist.|  
-|De naam{0}van de Azure storage-container is onjuist; er wordt een container naam van de indelings container/BLOB verwacht.|  
+|De naam van de Azure storage-container "{0}" is onjuist; Er wordt een container naam van de indeling container/BLOB verwacht.|  
   
 
 ## <a name="error-0080"></a>Fout 0080  
@@ -1338,12 +1338,12 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer een of meer van de kolommen die door de module worden gebruikt, alle ontbrekende waarden bevat. Als een module bijvoorbeeld statistische statistieken voor elke kolom computing, kan deze niet worden gebruikt voor een kolom die geen gegevens bevat. In dergelijke gevallen wordt het uitvoeren van de module gestopt met deze uitzonde ring.  
   
-**Opgelost** Ga naar de invoer gegevensset en verwijder alle kolommen die alle ontbrekende waarden bevatten.  
+**Oplossing:** Ga naar de invoer gegevensset en verwijder alle kolommen die alle ontbrekende waarden bevatten.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kolommen met alle waarden ontbreken, zijn niet toegestaan.|  
-|Voor {0} de kolom ontbreken alle waarden.|  
+|Voor de kolom {0} zijn alle waarden ontbreken.|  
   
 
 ## <a name="error-0081"></a>Fout 0081  
@@ -1351,7 +1351,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning wordt gemaakt als aan de volgende voor waarden wordt voldaan: (a) de invoer gegevensset heeft ten minste één sparse kolom en (b) het uiteindelijke aantal aangevraagde dimensies is hetzelfde als het aantal invoer dimensies.  
   
-**Opgelost** Overweeg het aantal dimensies in de uitvoer te verminderen om minder te zijn dan het aantal dimensies in de invoer. Dit is gebruikelijk in toepassingen van PCA.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
+**Oplossing:** Overweeg het aantal dimensies in de uitvoer te verminderen om minder te zijn dan het aantal dimensies in de invoer. Dit is gebruikelijk in toepassingen van PCA.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1363,7 +1363,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op wanneer een opgeslagen machine learning model of trans formatie niet kan worden geladen met een nieuwere versie van de Azure Machine Learning-runtime als gevolg van een wijziging van het resultaat.  
   
-**Opgelost** Het trainings experiment dat het model of de trans formatie produceert, moet opnieuw worden uitgevoerd en het model of de trans formatie moet opnieuw worden opgeslagen.  
+**Oplossing:** De trainings pijplijn die het model of de trans formatie produceert, moet opnieuw worden uitgevoerd en het model of de trans formatie moet opnieuw worden opgeslagen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1375,13 +1375,13 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer de gegevensset niet compatibel is met de cursist die wordt getraind. De gegevensset kan bijvoorbeeld ten minste één ontbrekende waarde in elke rij bevatten. als gevolg hiervan wordt de hele gegevensset tijdens de training overgeslagen. In andere gevallen verwachten sommige machine learning-algoritmen, zoals afwijkings detectie, niet dat labels aanwezig zijn en kan deze uitzonde ring worden gegenereerd als labels aanwezig zijn in de gegevensset.  
   
-**Opgelost** Raadpleeg de documentatie van de kenniser die wordt gebruikt om de vereisten voor de invoer gegevensset te controleren. Bekijk de kolommen om te zien of alle vereiste kolommen aanwezig zijn.  
+**Oplossing:** Raadpleeg de documentatie van de kenniser die wordt gebruikt om de vereisten voor de invoer gegevensset te controleren. Bekijk de kolommen om te zien of alle vereiste kolommen aanwezig zijn.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De gegevensset die voor de training wordt gebruikt, is ongeldig.|  
-|{0}bevat ongeldige gegevens voor training.|  
-|{0}bevat ongeldige gegevens voor training. Type informatieer: {1}.|  
+|{0} bevat ongeldige gegevens voor training.|  
+|{0} bevat ongeldige gegevens voor training. Type informatieer: {1}.|  
   
 
 ## <a name="error-0084"></a>Fout 0084  
@@ -1401,12 +1401,12 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op wanneer u een aangepast script uitvoert dat syntaxis fouten bevat.  
   
-**Opgelost** Controleer uw code in een externe editor en controleer op fouten.  
+**Oplossing:** Controleer uw code in een externe editor en controleer op fouten.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is een fout opgetreden tijdens de evaluatie van het script.|  
-|De volgende fout is opgetreden tijdens het uitvoeren van een script, Bekijk het uitvoer logboek voor meer informatie:---------- {0} begin van {1} fout bericht van de interpreter---------- {0} ----------einde van het fout bericht van de interpreter---- ------|  
+|De volgende fout is opgetreden tijdens het uitvoeren van een script, Bekijk het uitvoer logboek voor meer informatie:----------begin van fout bericht van {0} interpreter----------{1}----------einde van fout bericht van {0} interpreter----------|  
   
 
 ## <a name="error-0086"></a>Fout 0086  
@@ -1414,7 +1414,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
   
  Deze fout in Azure Machine Learning treedt op wanneer u een trans formatie selecteert op basis van een count-tabel, maar de geselecteerde trans formatie niet compatibel is met de huidige gegevens of met de nieuwe tabel Count.  
   
-**Opgelost** De module biedt ondersteuning voor het opslaan van het aantal en de regels waaruit de trans formatie in twee verschillende notaties is gemaakt. Als u aantallen tabellen samenvoegt, moet u controleren of beide tabellen die u wilt samen voegen dezelfde indeling hebben.  
+**Oplossing:** De module biedt ondersteuning voor het opslaan van het aantal en de regels waaruit de trans formatie in twee verschillende notaties is gemaakt. Als u aantallen tabellen samenvoegt, moet u controleren of beide tabellen die u wilt samen voegen dezelfde indeling hebben.  
   
 Over het algemeen kan een trans formatie op basis van een aantal alleen worden toegepast op gegevens sets die hetzelfde schema hebben als de gegevensset waarop de trans formatie oorspronkelijk is gemaakt.  
   
@@ -1429,8 +1429,8 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldige Count-Transform opgegeven.|  
-|De telling van de trans formatie op{0}de invoer poort is ongeldig.|  
-|De Count-trans formatie op de{0}invoer poort kan niet worden samengevoegd met de Count-trans formatie{1}op de invoer poort. Controleer de meta gegevens die worden gebruikt voor het tellen van overeenkomsten.|  
+|De Count-trans formatie op de invoer poort {0} is ongeldig.|  
+|De Count-trans formatie op de invoer poort {0} kan niet worden samengevoegd met de Count-trans formatie op de invoer poort {1}. Controleer de meta gegevens die worden gebruikt voor het tellen van overeenkomsten.|  
   
 
 ## <a name="error-0087"></a>Fout 0087  
@@ -1438,7 +1438,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u een bestaande Count-tabel probeert te importeren, maar de tabel is niet compatibel met de huidige gegevens of met de nieuwe tabel Count.  
   
-**Opgelost** Er zijn verschillende indelingen voor het opslaan van de aantallen en regels waaruit de trans formatie bestaat. Als u aantal tabellen samenvoegt, controleert u of beide dezelfde indeling gebruiken.  
+**Oplossing:** Er zijn verschillende indelingen voor het opslaan van de aantallen en regels waaruit de trans formatie bestaat. Als u aantal tabellen samenvoegt, controleert u of beide dezelfde indeling gebruiken.  
   
  Over het algemeen kan een trans formatie op basis van een aantal alleen worden toegepast op gegevens sets die hetzelfde schema hebben als de gegevensset waarop de trans formatie oorspronkelijk is gemaakt.  
   
@@ -1450,7 +1450,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u probeert een andere methode Count te gebruiken dan wordt ondersteund voor parametrisatie op basis van het aantal.  
   
-**Opgelost** In het algemeen worden de tellings methoden gekozen uit een vervolg keuzelijst, zodat u deze fout niet kunt zien.  
+**Oplossing:** In het algemeen worden de tellings methoden gekozen uit een vervolg keuzelijst, zodat u deze fout niet kunt zien.  
   
   <!--For general information, see [Learning with Counts](data-transformation-learning-with-counts.md). For requirements specific to creating and merging count-based features, see these topics:  
   
@@ -1463,7 +1463,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is een ongeldig tellings type opgegeven.|  
-|Het opgegeven type{0}tellijst is geen geldig tellijst type.|  
+|Het opgegeven Counting-type ' {0} ' is geen geldig type Count.|  
   
 
 ## <a name="error-0089"></a>Fout 0089  
@@ -1471,7 +1471,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u een aantal tabel maakt en de kolom Label bevat een ander aantal klassen dan u hebt opgegeven in de module parameters.  
   
-**Opgelost** Controleer uw gegevensset en zoek in de kolom Label precies hoeveel verschillende waarden (mogelijke klassen) hebben. Wanneer u de Count-tabel maakt, moet u ten minste dit aantal klassen opgeven.  
+**Oplossing:** Controleer uw gegevensset en zoek in de kolom Label precies hoeveel verschillende waarden (mogelijke klassen) hebben. Wanneer u de Count-tabel maakt, moet u ten minste dit aantal klassen opgeven.  
   
  In de Count-tabel kan niet automatisch het aantal beschik bare klassen worden bepaald.  
   
@@ -1480,7 +1480,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal klassen is onjuist. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
-|Het opgegeven aantal klassen is{0}. Dit is niet groter dan een label{1}waarde in de gegevensset die wordt gebruikt om te tellen. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
+|Het opgegeven aantal klassen is {0}, maar dit is niet groter dan een label waarde {1} in de gegevensset die wordt gebruikt om te tellen. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
   
 
 ## <a name="error-0090"></a>Fout 0090  
@@ -1488,23 +1488,23 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u [gegevens exporteren](export-data.md) of een andere optie gebruikt om gegevens op te slaan in een HDInsight-cluster en de opgegeven Hive-tabel kan niet worden gemaakt.  
   
-**Opgelost** Controleer de naam van het Azure Storage-account dat aan het cluster is gekoppeld en controleer of u hetzelfde account in de module eigenschappen gebruikt.  
+**Oplossing:** Controleer de naam van het Azure Storage-account dat aan het cluster is gekoppeld en controleer of u hetzelfde account in de module eigenschappen gebruikt.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De Hive-tabel kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
-|De Hive-tabel{0}kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
-|De Hive-tabel{0}kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account{1}is gekoppeld aan het cluster.|  
+|De Hive-tabel {0} kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
+|De Hive-tabel {0} kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat is gekoppeld aan het cluster ' {1} ' is.|  
  
 
 ## <a name="error-0100"></a>Fout 0100  
  Uitzonde ring treedt op wanneer er een niet-ondersteunde taal is opgegeven voor een aangepaste module.  
   
- Deze fout in Azure Machine Learning treedt op bij het maken van een aangepaste module en de eigenschap name van het **taal** element in een XML-definitie bestand van een aangepaste module heeft een ongeldige waarde. Op dit moment is `R`de enige geldige waarde voor deze eigenschap. Bijvoorbeeld:  
+ Deze fout in Azure Machine Learning treedt op bij het maken van een aangepaste module en de eigenschap name van het **taal** element in een XML-definitie bestand van een aangepaste module heeft een ongeldige waarde. Op dit moment is de enige geldige waarde voor deze eigenschap `R`. Bijvoorbeeld:  
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Opgelost** Controleer of de eigenschap name van het **taal** element in het XML-definitie bestand van de aangepaste module `R`is ingesteld op. Sla het bestand op, werk het aangepaste module zip-pakket bij en probeer opnieuw de aangepaste module toe te voegen.  
+**Oplossing:** Controleer of de eigenschap name van het **taal** element in het XML-definitie bestand van de aangepaste module is ingesteld op `R`. Sla het bestand op, werk het aangepaste module zip-pakket bij en probeer opnieuw de aangepaste module toe te voegen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1516,12 +1516,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer aan een of meer poorten of para meters dezelfde ID-waarde is toegewezen in een XML-definitie bestand van een aangepaste module.  
   
-**Opgelost** Controleer of de ID-waarden voor alle poorten en para meters uniek zijn. Sla het XML-bestand op, werk het aangepaste module zip-pakket bij en probeer opnieuw de aangepaste module toe te voegen.  
+**Oplossing:** Controleer of de ID-waarden voor alle poorten en para meters uniek zijn. Sla het XML-bestand op, werk het aangepaste module zip-pakket bij en probeer opnieuw de aangepaste module toe te voegen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Alle poort-en parameter-Id's voor een module moeten uniek zijn|  
-|{0}Module bevat dubbele poort/argument-id's. Alle poort/argument-Id's moeten uniek zijn voor een module.|  
+|Module {0} heeft dubbele poort/argument-Id's. Alle poort/argument-Id's moeten uniek zijn voor een module.|  
   
 
 ## <a name="error-0102"></a>Fout 0102  
@@ -1529,7 +1529,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u een gezipt pakket importeert met de extensie. zip, maar het pakket geen zip-bestand is, of als het bestand geen gebruik maakt van een ondersteunde zip-indeling.  
   
-**Opgelost** Zorg ervoor dat het geselecteerde bestand een geldig zip-bestand is en dat het is gecomprimeerd met een van de ondersteunde compressie algoritmen.  
+**Oplossing:** Zorg ervoor dat het geselecteerde bestand een geldig zip-bestand is en dat het is gecomprimeerd met een van de ondersteunde compressie algoritmen.  
   
  Als deze fout optreedt bij het importeren van gegevens sets in gecomprimeerde vorm, controleert u of alle opgenomen bestanden een van de ondersteunde bestands indelingen gebruiken en in Unicode-indeling zijn.  <!--For more information, see [Unpack Zipped Datasets](unpack-zipped-datasets.md).  -->
   
@@ -1545,7 +1545,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer het zip-pakket van de aangepaste module geen module definitie bestanden (. XML) bevat. Deze bestanden moeten zich bevinden in de hoofdmap van het zip-pakket (bijvoorbeeld niet in een submap).  
   
-**Opgelost** Controleer of een of meer XML-module definitie bestanden zich in de hoofdmap van het zip-pakket bevinden door deze uit te pakken naar een tijdelijke map op uw schijf station. Alle XML-bestanden moeten zich direct in de map bevindt waarnaar u het zip-pakket hebt uitgepakt. Zorg ervoor dat u het zip-pakket maakt dat u geen map met XML-bestanden naar zip selecteert, omdat hiermee een submap in het zip-pakket wordt gemaakt met dezelfde naam als de map die u hebt geselecteerd om te worden gepost.  
+**Oplossing:** Controleer of een of meer XML-module definitie bestanden zich in de hoofdmap van het zip-pakket bevinden door deze uit te pakken naar een tijdelijke map op uw schijf station. Alle XML-bestanden moeten zich direct in de map bevindt waarnaar u het zip-pakket hebt uitgepakt. Zorg ervoor dat u het zip-pakket maakt dat u geen map met XML-bestanden naar zip selecteert, omdat hiermee een submap in het zip-pakket wordt gemaakt met dezelfde naam als de map die u hebt geselecteerd om te worden gepost.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1559,12 +1559,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  `<Language name="R" sourceFile="myScripts/CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Opgelost** Zorg ervoor dat de waarde van de eigenschap **sourceFile** in het **taal** element van de XML-definitie van de aangepaste module juist is en dat het bron bestand zich in het juiste relatieve pad in het zip-pakket bevindt.  
+**Oplossing:** Zorg ervoor dat de waarde van de eigenschap **sourceFile** in het **taal** element van de XML-definitie van de aangepaste module juist is en dat het bron bestand zich in het juiste relatieve pad in het zip-pakket bevindt.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het R-script bestand waarnaar wordt verwezen, bestaat niet.|  
-|Het R-script bestand{0}waarnaar wordt verwezen, is niet gevonden. Zorg ervoor dat het relatieve pad naar het bestand juist is op de locatie van de definities.|  
+|Het R-script bestand {0} waarnaar wordt verwezen, is niet gevonden. Zorg ervoor dat het relatieve pad naar het bestand juist is op de locatie van de definities.|  
 
 
 ## <a name="error-0105"></a>Fout 0105  
@@ -1572,12 +1572,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer u een XML-definitie voor een aangepaste module maakt en het type van een para meter of argument in de definitie komt niet overeen met een ondersteund type.  
   
-**Opgelost** Zorg ervoor dat de eigenschap type van een **ARG** -element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
+**Oplossing:** Zorg ervoor dat de eigenschap type van een **ARG** -element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund parameter type.|  
-|Niet-ondersteund parameter type{0}opgegeven.|  
+|Niet-ondersteund parameter type ' {0} ' opgegeven.|  
 
 
 ## <a name="error-0106"></a>Fout 0106  
@@ -1585,12 +1585,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer het type van een invoer poort in een XML-definitie van een aangepaste module niet overeenkomt met een ondersteund type.  
   
-**Opgelost** Zorg ervoor dat de eigenschap type van een INPUT-element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
+**Oplossing:** Zorg ervoor dat de eigenschap type van een INPUT-element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund invoer type.|  
-|Niet-ondersteund invoer type{0}opgegeven.|  
+|Niet-ondersteund invoer type {0} opgegeven.|  
 
 
 ## <a name="error-0107"></a>Fout 0107  
@@ -1598,12 +1598,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer het type van een uitvoer poort in een XML-definitie van een aangepaste module niet overeenkomt met een ondersteund type.  
   
-**Opgelost** Zorg ervoor dat de eigenschap type van een uitvoer element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
+**Oplossing:** Zorg ervoor dat de eigenschap type van een uitvoer element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund uitvoer type.|  
-|Niet-ondersteund uitvoer type{0}opgegeven.|  
+|Niet-ondersteund uitvoer type {0} opgegeven.|  
 
 
 ## <a name="error-0108"></a>Fout 0108  
@@ -1611,19 +1611,19 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer er te veel invoer-of uitvoer poorten zijn gedefinieerd in een XML-definitie van een aangepaste module.  
   
-**Opgelost** Hiermee zorgt u ervoor dat het maximum aantal invoer-en uitvoer poorten dat is gedefinieerd in de XML-definitie van de aangepaste module, het maximum aantal ondersteunde poorten niet overschrijdt.  
+**Oplossing:** Hiermee zorgt u ervoor dat het maximum aantal invoer-en uitvoer poorten dat is gedefinieerd in de XML-definitie van de aangepaste module, het maximum aantal ondersteunde poorten niet overschrijdt.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het ondersteunde aantal invoer-of uitvoer poorten is overschreden.|  
-|Het aantal ondersteunde{0}poorten is overschreden. Het Maxi maal toegestane aantal{0}poorten{1}is.| 
+|Het aantal ondersteunde poorten voor de {0} is overschreden. Het Maxi maal toegestane aantal {0} poorten is {1}.| 
 
 ## <a name="error-0109"></a>Fout 0109  
  Deze wordt gegenereerd wanneer een module definitie bestand een onjuiste kolom kiezer definieert  
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer de syntaxis voor een kolom kiezer argument een fout bevat in een XML-definitie van een aangepaste module.  
   
-**Opgelost** Deze fout wordt gegenereerd als de syntaxis voor een kolom kiezer argument een fout bevat in een XML-definitie van een aangepaste module.  
+**Oplossing:** Deze fout wordt gegenereerd als de syntaxis voor een kolom kiezer argument een fout bevat in een XML-definitie van een aangepaste module.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1635,12 +1635,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer de eigenschap *portId* binnen het element Properties van een ARG van het type ColumnPicker niet overeenkomt met de id-waarde van een invoer poort.  
   
-**Opgelost** Zorg ervoor dat de eigenschap portId overeenkomt met de ID-waarde van een invoer poort die is gedefinieerd in de XML-definitie van de aangepaste module.  
+**Oplossing:** Zorg ervoor dat de eigenschap portId overeenkomt met de ID-waarde van een invoer poort die is gedefinieerd in de XML-definitie van de aangepaste module.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kolom kiezer verwijst naar een niet-bestaande invoer poort-ID.|  
-|Kolom kiezer verwijst naar een niet-bestaande invoer poort-{0}id.|  
+|Kolom kiezer verwijst naar een niet-bestaande invoer poort-ID {0}.|  
   
 
 ## <a name="error-0111"></a>Fout 0111  
@@ -1648,12 +1648,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer een ongeldige eigenschap wordt toegewezen aan een-element in de XML-definitie van de aangepaste module.  
   
-**Opgelost** Zorg ervoor dat de eigenschap wordt ondersteund door het aangepaste module-element.  
+**Oplossing:** Zorg ervoor dat de eigenschap wordt ondersteund door het aangepaste module-element.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Eigenschaps definitie is ongeldig.|  
-|De eigenschaps{0}definitie is ongeldig.|  
+|De definitie van de eigenschap {0} is ongeldig.|  
   
 
 ## <a name="error-0112"></a>Fout 0112  
@@ -1661,12 +1661,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt als er een fout is opgetreden in de XML-indeling waardoor de XML-definitie van de aangepaste module niet kan worden geparseerd als een geldig XML-bestand.  
   
-**Opgelost** Zorg ervoor dat elk element wordt geopend en correct is gesloten. Zorg ervoor dat er geen fouten zijn in de XML-indeling.  
+**Oplossing:** Zorg ervoor dat elk element wordt geopend en correct is gesloten. Zorg ervoor dat er geen fouten zijn in de XML-indeling.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het definitie bestand van de module kan niet worden geparseerd.|  
-|Het definitie bestand{0}van de module kan niet worden geparseerd.|  
+|Kan het definitie bestand voor de module {0} niet parseren.|  
   
 
 ## <a name="error-0113"></a>Fout 0113  
@@ -1674,13 +1674,13 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer het XML-definitie bestand van de aangepaste module kan worden geparseerd, maar bevat fouten, zoals de definitie van elementen die niet worden ondersteund door aangepaste modules.  
   
-**Opgelost** Zorg ervoor dat in het bestand met de aangepaste module definitie elementen en eigenschappen worden gedefinieerd die door aangepaste modules worden ondersteund.  
+**Oplossing:** Zorg ervoor dat in het bestand met de aangepaste module definitie elementen en eigenschappen worden gedefinieerd die door aangepaste modules worden ondersteund.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het definitie bestand van de module bevat fouten.|  
-|Het definitie bestand{0}van de module bevat fouten.|  
-|Het definitie bestand{0}van de module bevat fouten. {1}|  
+|Het definitie bestand van de module {0} bevat fouten.|  
+|Het definitie bestand van de module {0} bevat fouten. {1}|  
   
 
 ## <a name="error-0114"></a>Fout 0114  
@@ -1688,12 +1688,12 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning wordt gemaakt wanneer het maken van een aangepaste module mislukt. Dit doet zich voor wanneer er een of meer aangepaste fouten met betrekking tot de module worden aangetroffen tijdens het toevoegen van de aangepaste module. De extra fouten worden in dit fout bericht gerapporteerd.  
   
-**Opgelost** Los de fouten op die in dit uitzonderings bericht worden gemeld.  
+**Oplossing:** Los de fouten op die in dit uitzonderings bericht worden gemeld.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan de aangepaste module niet bouwen.|  
-|Het opbouwen van aangepaste modules is mislukt met de volgende fout (en):{0}|  
+|Het opbouwen van aangepaste modules is mislukt met fout (en): {0}|  
   
 
 ## <a name="error-0115"></a>Fout 0115  
@@ -1701,7 +1701,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer u een script voor een aangepaste module opgeeft die gebruikmaakt van een onbekende bestandsnaam extensie.  
   
-**Opgelost** Controleer de bestands indeling en de bestandsnaam extensie van alle script bestanden die in de aangepaste module zijn opgenomen.  
+**Oplossing:** Controleer de bestands indeling en de bestandsnaam extensie van alle script bestanden die in de aangepaste module zijn opgenomen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1723,7 +1723,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Verbonden met de server, kan niet naar de tabel schrijven.|  
-|Kan niet schrijven naar SQL-tabel:{0}|  
+|Kan niet schrijven naar SQL-tabel: {0}|  
 
 
 ## <a name="error-0122"></a>Fout 0122  
@@ -1731,7 +1731,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op wanneer er te veel kolommen zijn geselecteerd als gewichts kolommen.  
   
-**Opgelost** Controleer de invoer gegevensset en de bijbehorende meta gegevens. Zorg ervoor dat slechts één kolom gewichten bevat.  
+**Oplossing:** Controleer de invoer gegevensset en de bijbehorende meta gegevens. Zorg ervoor dat slechts één kolom gewichten bevat.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1743,7 +1743,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout in Azure Machine Learning treedt op als u een vector als de label kolom gebruikt.  
   
-**Opgelost** Wijzig indien nodig de gegevens indeling van de kolom of kies een andere kolom.  
+**Oplossing:** Wijzig indien nodig de gegevens indeling van de kolom of kies een andere kolom.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1776,18 +1776,18 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout wordt gegenereerd wanneer de gebruiker een SQL-domein opgeeft dat niet wordt ondersteund in Azure Machine Learning. Deze fout wordt weer gegeven als u probeert verbinding te maken met een database server in een domein dat niet white list is. De toegestane SQL-domeinen zijn momenteel: '. database.windows.net ', '. cloudapp.net ' of '. database.secure.windows.net '. Dat wil zeggen dat de server een Azure SQL-Server of een server in een virtuele machine in azure moet zijn.  
   
-**Opgelost** Ga naar de module. Controleer of de SQL database server deel uitmaakt van een van de geaccepteerde domeinen:  
+**Oplossing:** Ga naar de module. Controleer of de SQL database server deel uitmaakt van een van de geaccepteerde domeinen:  
   
--   .database.windows.net  
+-   . database.windows.net  
   
--   .cloudapp.net  
+-   . cloudapp.net  
   
--   .database.secure.windows.net  
+-   . database.secure.windows.net  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund SQL-domein.|  
-|Het SQL- {0} domein wordt momenteel niet ondersteund in azure ml|  
+|De {0} van het SQL-domein wordt momenteel niet ondersteund in azure ML|  
   
 
 ## <a name="error-0127"></a>Fout 0127  
@@ -1805,7 +1805,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |De pixel grootte van de afbeelding overschrijdt de toegestane limiet.|  
-|De pixel grootte van de afbeelding in{0}het bestand overschrijdt de toegestane limiet{1}:|  
+|De pixel grootte van de afbeelding in het bestand {0} overschrijdt de toegestane limiet: {1}|  
 
 
 ## <a name="error-0128"></a>Fout 0128  
@@ -1816,7 +1816,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet.|  
-|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen '{1}' en ' ' zijn het problematische paar.{0}|  
+|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen {0} en {1} zijn het problematische paar.|  
 
 
 ## <a name="error-0129"></a>Fout 0129  
@@ -1827,15 +1827,15 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal kolommen in de gegevensset overschrijdt de toegestane limiet.|  
-|Het aantal kolommen in de gegevensset in{0}is groter dan toegestaan.|  
-|Het aantal kolommen in de gegevensset in{0}is groter dan de toegestane limiet{1}van.|  
-|Het aantal kolommen in de gegevensset in{0}overschrijdt de{1}toegestane limiet van{2}.|  
+|Het aantal kolommen in de gegevensset in {0} overschrijdt toegestaan.|  
+|Het aantal kolommen in de gegevensset in {0} overschrijdt de toegestane limiet van {1}.|  
+|Het aantal kolommen in de gegevensset in {0} overschrijdt de toegestane {1} limiet van {2}.|  
 ## <a name="error-0130"></a>Fout 0130  
  Uitzonde ring treedt op wanneer alle rijen in de training-gegevensset ontbrekende waarden bevatten.  
   
  Dit probleem treedt op wanneer een deel van de kolom in de training-gegevensset leeg is.  
   
-**Opgelost** Gebruik de module [clean Missing Data](clean-missing-data.md) om kolommen met alle ontbrekende waarden te verwijderen.  
+**Oplossing:** Gebruik de module [clean Missing Data](clean-missing-data.md) om kolommen met alle ontbrekende waarden te verwijderen.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -1847,39 +1847,39 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
   
  Deze fout treedt op wanneer een of meer gegevens sets in een zip-bestand niet kunnen worden uitgepakt en correct kunnen worden gelezen. U ontvangt deze fout melding als het uitpakken mislukt omdat het zip-bestand zelf of een van de bestanden erin beschadigd is of omdat er een systeem fout is opgetreden bij het uitpakken en uitbreiden van een bestand.  
   
-**Opgelost** Gebruik de details in het fout bericht om te bepalen hoe u kunt door gaan.  
+**Oplossing:** Gebruik de details in het fout bericht om te bepalen hoe u kunt door gaan.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan niet laden gezipte gegevens sets|  
-|Gezipte {0} gegevensset is mislukt met het volgende bericht:{1}|  
-|Gezipte {0} gegevensset is mislukt {1} met een uitzonde ring met bericht:{2}|  
+|De gezipte gegevensset {0} is mislukt met het volgende bericht: {1}|  
+|De gezipte gegevensset {0} is mislukt met een {1}-uitzonde ring met het bericht: {2}|  
   
 
 ## <a name="error-0132"></a>Fout 0132  
  Er is geen bestands naam opgegeven voor het uitpakken. Er zijn meerdere bestanden gevonden in het zip-bestand.  
   
- Deze fout wordt gegenereerd als er geen bestands naam is opgegeven voor het uitpakken. Er zijn meerdere bestanden gevonden in het zip-bestand. U ontvangt deze fout melding als het zip-bestand meer dan een gecomprimeerd bestand bevat, maar u geen bestand hebt opgegeven voor extractie in het tekstvak **gegevensset** voor het uitpakken van het tekstvak, in het **Eigenschappen** venster van de module. Op dit moment kan slechts één bestand worden geëxtraheerd telkens wanneer de module wordt uitgevoerd.  
+ Deze fout wordt gegenereerd als er geen bestands naam is opgegeven voor het uitpakken. Er zijn meerdere bestanden gevonden in het zip-bestand. U ontvangt deze fout melding als het zip-bestand meer dan een gecomprimeerd bestand bevat, maar u geen bestand hebt opgegeven voor extractie in het tekstvak gegevensset voor het **uitpakken** van het tekstvak, in het **Eigenschappen** venster van de module. Op dit moment kan slechts één bestand worden geëxtraheerd telkens wanneer de module wordt uitgevoerd.  
   
-**Opgelost** Het fout bericht bevat een lijst met de bestanden in het zip-bestand. Kopieer de naam van het gewenste bestand en plak het in de **gegevensset om** het tekstvak uit te pakken.  
+**Oplossing:** Het fout bericht bevat een lijst met de bestanden in het zip-bestand. Kopieer de naam van het gewenste bestand en plak het in de **gegevensset om** het tekstvak uit te pakken.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Zip-bestand bevat meerdere bestanden. u moet het bestand opgeven dat moet worden uitgebreid.|  
-|Het bestand bevat meer dan een bestand. Geef het bestand op dat moet worden uitgebreid. De volgende bestanden zijn gevonden:{0}|  
+|Het bestand bevat meer dan een bestand. Geef het bestand op dat moet worden uitgebreid. De volgende bestanden zijn gevonden: {0}|  
   
 
 ## <a name="error-0133"></a>Fout 0133  
  Het opgegeven bestand is niet gevonden in het zip-bestand  
   
- Deze fout wordt gegenereerd wanneer de bestands naam in het veld **gegevensset voor** het uitpakken van het **Eigenschappen** venster niet overeenkomt met de naam van een bestand dat in het zip-bestand is gevonden. De meest voorkomende oorzaken van deze fout zijn een type fout of zoeken in het verkeerde archief bestand om het bestand uit te breiden.  
+ Deze fout wordt gegenereerd wanneer de bestands naam in het veld **gegevensset voor het uitpakken** van het **Eigenschappen** venster niet overeenkomt met de naam van een bestand dat in het zip-bestand is gevonden. De meest voorkomende oorzaken van deze fout zijn een type fout of zoeken in het verkeerde archief bestand om het bestand uit te breiden.  
   
-**Opgelost** Ga naar de module. Als de naam van het bestand dat u wilt decomprimeren wordt weer gegeven in de lijst met gevonden bestanden, kopieert u de bestands naam en plakt u deze in het vak **gegevensset voor** het uitpakken van de eigenschap. Als u de gewenste bestands naam niet in de lijst ziet, controleert u of u het juiste zip-bestand en de juiste naam voor het gewenste bestand hebt.  
+**Oplossing:** Ga naar de module. Als de naam van het bestand dat u wilt decomprimeren wordt weer gegeven in de lijst met gevonden bestanden, kopieert u de bestands naam en plakt u deze in het vak **gegevensset voor het uitpakken** van de eigenschap. Als u de gewenste bestands naam niet in de lijst ziet, controleert u of u het juiste zip-bestand en de juiste naam voor het gewenste bestand hebt.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Het opgegeven bestand is niet gevonden int het zip-bestand.|  
-|Het opgegeven bestand is niet gevonden. Het volgende bestand (en) gevonden:{0}|  
+|Het opgegeven bestand is niet gevonden. De volgende bestanden zijn gevonden: {0}|  
   
 
 ## <a name="error-0134"></a>Fout 0134
@@ -1900,13 +1900,13 @@ Oplossing:
 |Uitzonderings berichten|
 |------------------------|
 |Uitzonde ring treedt op als de label kolom ontbreekt of als er onvoldoende rijen met labels zijn.|  
-|Uitzonde ring treedt op wanneer de label kolom ontbreekt of {0} korter is dan een gelabelde rij|  
+|Uitzonde ring treedt op wanneer de label kolom ontbreekt of korter is dan {0} gelabelde rijen|  
   
 
 ## <a name="error-0135"></a>Fout 0135  
  Alleen op massa middelpunt gebaseerd cluster wordt ondersteund.  
   
-**Opgelost** Dit fout bericht kan optreden als u probeert een cluster model te evalueren dat is gebaseerd op een aangepast cluster algoritme dat geen gebruik maakt van centroids om het cluster te initialiseren.  
+**Oplossing:** Dit fout bericht kan optreden als u probeert een cluster model te evalueren dat is gebaseerd op een aangepast cluster algoritme dat geen gebruik maakt van centroids om het cluster te initialiseren.  
   
   <!--You can use [Evaluate Model](evaluate-model.md) to evaluate clustering models that are based on the  [K-Means Clustering](k-means-clustering.md) module. For custom algorithms, use the [Execute R Script](execute-r-script.md) module to create a custom evaluation script.  -->
   
@@ -1933,14 +1933,14 @@ Oplossing:
 |Uitzonderings berichten|  
 |------------------------|  
 |Conversie fout tussen Azure Table Storage-eigenschap en gegevensset-kolom.|  
-|Conversie fout tussen Azure Table Storage-eigenschap en gegevensset-kolom. Aanvullende informatie:{0}|  
+|Conversie fout tussen Azure Table Storage-eigenschap en gegevensset-kolom. Aanvullende informatie: {0}|  
 
 ## <a name="error-0138"></a>Fout 0138  
  Het geheugen is uitgeput, kan de uitvoering van de module niet volt ooien. Het downsamplen van de gegevensset kan helpen om het probleem op te lossen.  
   
  Deze fout treedt op wanneer voor de module die wordt uitgevoerd meer geheugen nodig is dan beschikbaar is in de Azure-container. Dit kan gebeuren als u met een grote gegevensset werkt en de huidige bewerking niet in het geheugen past.  
   
-**Opgelost** Als u een grote gegevensset probeert te lezen en de bewerking niet kan worden voltooid, kan het downsamplen van de gegevensset helpen.  
+**Oplossing:** Als u een grote gegevensset probeert te lezen en de bewerking niet kan worden voltooid, kan het downsamplen van de gegevensset helpen.  
   
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
   
@@ -1980,16 +1980,16 @@ Oplossing:
 |Conversie niet toegestaan.|  
 |Kan niet converteren: {0}.|  
 |Kan niet converteren: {0}, op rij {1}.|  
-|Kan kolom van type {0} niet converteren naar kolom van type {1} op rij. {2}|  
-|Kan kolom{2}van type {0} niet converteren naar kolom van type {1} op rij {3}.|  
-|Kan{2}kolom "" van het type {0} naar de kolom "{3}" van het {1} type op {4}de rij niet converteren.| 
+|Kan kolom van het type {0} niet converteren naar een kolom van het type {1} op rij {2}.|  
+|Kan kolom {2} van het type {0} niet converteren naar een kolom van het type {1} op rij {3}.|  
+|Kan kolom ' {2} ' van het type {0} niet converteren naar kolom {3} van het type {1} op rij-{4}.| 
 
 ## <a name="error-0140"></a>Fout 0140  
  Uitzonde ring treedt op als het door gegeven argument van de kolom set geen andere kolommen bevat behalve een label kolom.  
   
  Deze fout treedt op als u een gegevensset hebt verbonden met een module waarvoor meerdere kolommen zijn vereist, met inbegrip van functies, maar u hebt alleen de label kolom.  
   
-**Opgelost** Kies ten minste één functie kolom die u wilt toevoegen aan de gegevensset.  
+**Oplossing:** Kies ten minste één functie kolom die u wilt toevoegen aan de gegevensset.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -2001,7 +2001,7 @@ Oplossing:
   
  Deze fout in Azure Machine Learning treedt op wanneer er onvoldoende unieke waarden in de geselecteerde kolom zijn om de bewerking uit te voeren.  
   
-**Opgelost** Sommige bewerkingen voeren statistische bewerkingen uit op functie-en categorische-kolommen. als er onvoldoende waarden zijn, kan de bewerking mislukken of kan een ongeldig resultaat worden geretourneerd. Controleer uw gegevensset om te zien hoeveel waarden er in de kolommen functie en label staan, en bepaal of de bewerking die u probeert uit te voeren, statistisch geldig is.  
+**Oplossing:** Sommige bewerkingen voeren statistische bewerkingen uit op functie-en categorische-kolommen. als er onvoldoende waarden zijn, kan de bewerking mislukken of kan een ongeldig resultaat worden geretourneerd. Controleer uw gegevensset om te zien hoeveel waarden er in de kolommen functie en label staan, en bepaal of de bewerking die u probeert uit te voeren, statistisch geldig is.  
   
  Als de bron-gegevensset geldig is, kunt u ook controleren of een bewerking voor het door lopen van gegevens of de meta gegevens van de gegevens is gewijzigd en dat er waarden zijn verwijderd.  
   
@@ -2010,7 +2010,7 @@ Oplossing:
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal geselecteerde numerieke kolommen en unieke waarden in de categorische-en reeks kolommen is te klein.|  
-|Het totale aantal geselecteerde numerieke kolommen en unieke waarden in de kolommen categorische en string (momenteel {0}) moet ten minste{1}|  
+|Het totale aantal geselecteerde numerieke kolommen en unieke waarden in de categorische-en teken reeks kolommen (momenteel {0}) moet ten minste {1}|  
   
 
 ## <a name="error-0142"></a>Fout 0142  
@@ -2021,7 +2021,7 @@ Oplossing:
 |Uitzonderings berichten|  
 |------------------------|  
 |Het certificaat kan niet worden geladen.|  
-|Het certificaat {0} kan niet worden geladen. De vinger afdruk {1}van het is.|  
+|De certificaat {0} kan niet worden geladen. De vinger afdruk is {1}.|  
   
 
 ## <a name="error-0143"></a>Fout 0143  
@@ -2029,24 +2029,24 @@ Oplossing:
   
  Deze fout in Azure Machine Learning treedt op wanneer u een ongeldige URL opgeeft en de module een geldige GitHub-URL vereist.  
   
-**Opgelost** Controleer of de URL verwijst naar een geldige GitHub-opslag plaats. Andere site typen worden niet ondersteund.  
+**Oplossing:** Controleer of de URL verwijst naar een geldige GitHub-opslag plaats. Andere site typen worden niet ondersteund.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |De URL is niet van github.com.|  
-|De URL is niet van github.com:{0}|  
+|De URL is niet github.com: {0}|  
 
 ## <a name="error-0144"></a>Fout 0144  
  Het verwachte deel van de door de gebruiker ingevoerde GitHub-URL ontbreekt.  
   
  Deze fout in Azure Machine Learning treedt op wanneer u een GitHub-bestands bron opgeeft met een ongeldige URL-indeling.  
   
-**Opgelost** Controleer of de URL van de GitHub-opslag plaats geldig is en eindigt op \blob\\\of \tree.  
+**Oplossing:** Controleer of de URL van de GitHub-opslag plaats geldig is en eindigt op \blob\ of \tree \\.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan de GitHub-URL niet parseren.|  
-|Kan de GitHub-URL niet parseren\\(\blob of \tree\\wordt verwacht na de naam van de opslag plaats):{0}|  
+|Kan de GitHub-URL niet parseren (\blob \\ ' of ' \tree \\ ' wordt verwacht na de naam van de opslag plaats): {0}|  
 
 ## <a name="error-0145"></a>Fout 0145  
  Kan geen replicatie Directory maken om een of andere reden.  
@@ -2065,7 +2065,7 @@ Oplossing:
   
  Deze fout in Azure Machine Learning treedt op wanneer u bestanden uitpakt, maar sommige bestands namen zijn te lang.  
   
-**Opgelost** Bewerk de bestands namen zodanig dat gecombineerde paden en bestands namen niet langer zijn dan 248 tekens.  
+**Oplossing:** Bewerk de bestands namen zodanig dat gecombineerde paden en bestands namen niet langer zijn dan 248 tekens.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -2076,7 +2076,7 @@ Oplossing:
   
  Deze fout in Azure Machine Learning treedt op wanneer u de opgegeven bestanden niet kunt lezen of downloaden vanuit GitHub.  
   
-**Opgelost** Het probleem kan tijdelijk zijn. u kunt proberen om de bestanden op een ander tijdstip te openen. Of Controleer of u over de benodigde machtigingen beschikt en of de bron geldig is.  
+**Oplossing:** Het probleem kan tijdelijk zijn. u kunt proberen om de bestanden op een ander tijdstip te openen. Of Controleer of u over de benodigde machtigingen beschikt en of de bron geldig is.  
   
 |Uitzonderings berichten|  
 |------------------------|  
@@ -2106,7 +2106,7 @@ Oplossing:
 |Uitzonderings berichten|  
 |------------------------|  
 |Het GitHub-bestand is niet gevonden.|  
-|Het GitHub-bestand is niet gevonden.:{0}|  
+|Het GitHub-bestand is niet gevonden.: {0}|  
   
 
 ## <a name="error-0150"></a>Fout 0150  
@@ -2131,7 +2131,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |Fout bij het schrijven naar de Cloud opslag (mogelijk een ongeldige URL).|  
-|Fout bij het schrijven naar de {0}Cloud opslag:. Controleer de URL.|  
+|Fout bij het schrijven naar de Cloud opslag: {0}. Controleer de URL.|  
   
 ## <a name="error-0152"></a>Fout 0152  
  Het type van de Azure-Cloud is onjuist opgegeven in de module context.  
@@ -2139,7 +2139,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig Azure-Cloud type|  
-|Ongeldig Azure-Cloud type:{0}|  
+|Ongeldig Azure-Cloud type: {0}|  
   
 ## <a name="error-0153"></a>Fout 0153  
  Het opgegeven opslag eindpunt is ongeldig.  
@@ -2147,7 +2147,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig Azure-Cloud type|  
-|Ongeldig opslag eind punt:{0}|  
+|Ongeldig eind punt voor de opslag: {0}|  
 
 ## <a name="error-0154"></a>Fout 0154  
  De opgegeven server naam kan niet worden omgezet  
@@ -2155,7 +2155,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |De opgegeven server naam kan niet worden omgezet|  
-|De opgegeven server {0}. Documents.Azure.com kan niet worden omgezet|
+|De opgegeven server {0}. documents.azure.com kan niet worden omgezet|
 
 ## <a name="error-0155"></a>Fout 0155  
  De DocDb-client heeft een uitzonde ring gegenereerd  
@@ -2163,7 +2163,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |De DocDb-client heeft een uitzonde ring gegenereerd|  
-|DocDb-client:{0}|
+|DocDb-client: {0}|
 
 ## <a name="error-0156"></a>Fout 0156  
  Ongeldig antwoord voor HCatalog-server.  
@@ -2171,7 +2171,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd.|  
-|Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd. Foutdetails: {0}|
+|Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd. Fout Details: {0}|
 
 ## <a name="error-0157"></a>Fout 0157  
  Er is een fout opgetreden tijdens het lezen van Azure Cosmos DB vanwege inconsistente of verschillende document schema's. Reader vereist dat alle documenten hetzelfde schema hebben.  
@@ -2190,5 +2190,5 @@ Als u meer hulp nodig hebt, raden we u aan het gedetailleerde bericht te plaatse
 |Uitzonderings berichten|  
 |------------------------|  
 |Bibliotheek uitzondering.|  
-|Uitzonde ring van bibliotheek:{0}|  
-|{0}uitzonde ring van bibliotheek:{1}|  
+|Uitzonde ring van bibliotheek: {0}|  
+|uitzonde ring bij {0}-bibliotheek: {1}|  

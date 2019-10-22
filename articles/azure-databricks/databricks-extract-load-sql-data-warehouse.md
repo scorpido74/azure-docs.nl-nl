@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72329762"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks
@@ -91,7 +91,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
 1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
 
-    ![Databricks in Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks in Azure Portal")
+    ![Databricks op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks op Azure Portal")
 
 2. Geef bij **Azure Databricks Service** de volgende waarden op voor het maken van een Databricks-service:
 
@@ -113,11 +113,11 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Cluster**.
 
-    ![Databricks in Azure](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks in Azure")
+    ![Databricks op Azure](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
+    ![Een Databricks Spark-cluster maken in azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
 
 4. Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
 
@@ -135,11 +135,11 @@ In deze sectie maakt u een notebook in de Azure Databricks-werkruimte en voert u
 
 2. Selecteer aan de linkerkant **Werkruimte**. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitieblok maken in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
 3. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Details opgeven voor een notebook in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Details opgeven voor een notebook in Databricks")
+    ![Details opgeven voor een notitie blok in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Details opgeven voor een notitie blok in Databricks")
 
 4. Selecteer **Maken**.
 
@@ -365,23 +365,23 @@ Zoals eerder vermeld, maakt de SQL Data Warehouse-connector gebruik van Azure Bl
    ```
 
    > [!NOTE]
-   > In dit voor beeld wordt de vlag `forward_spark_azure_storage_credentials` gebruikt, waardoor SQL Data Warehouse toegang krijgt tot gegevens uit de Blob-opslag met behulp van een toegangs sleutel. Dit is de enige ondersteunde verificatie methode.
+   > In dit voor beeld wordt gebruikgemaakt van de `forward_spark_azure_storage_credentials` vlag, waarmee SQL Data Warehouse toegang krijgt tot gegevens uit de Blob-opslag met behulp van een toegangs sleutel. Dit is de enige ondersteunde verificatie methode.
    >
    > Als uw Azure-Blob Storage is beperkt tot het selecteren van virtuele netwerken, heeft SQL Data Warehouse [Managed Service Identity vereist in plaats van toegangs sleutels](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dit leidt ertoe dat de fout ' deze aanvraag is niet gemachtigd om deze bewerking uit te voeren. '
 
 6. Maak verbinding met de SQL-database en controleer of u de database **SampleTable** ziet.
 
-   ![De voorbeeldtabel verifiëren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Voorbeeldtabel verifiëren")
+   ![De voorbeeld tabel verifiëren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Voorbeeld tabel verifiëren")
 
 7. Voer een Select-query uit om de inhoud van de tabel te controleren. De tabel moet dezelfde gegevens bevatten als het dataframe **renamedColumnsDF**.
 
-    ![De inhoud van de voorbeeldtabel controleren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "De inhoud van de voorbeeldtabel controleren")
+    ![De inhoud van de voorbeeld tabel controleren](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "De inhoud van de voorbeeld tabel controleren")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Selecteer links **Clusters** vanuit de Azure Databricks-werkruimte. Als u het cluster wilt beëindigen, wijst u onder **Acties** het beletselteken (...) aan en selecteert u het pictogram **Beëindigen**.
 
-![Een Databricks-cluster stopzetten](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
+![Een Databricks-cluster stoppen](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
 Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten van inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 

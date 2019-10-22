@@ -1,5 +1,5 @@
 ---
-title: 'Neural-netwerk met twee klassen: Module verwijzing'
+title: 'Neural Network met twee klassen: Naslag informatie over modules'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de Neural-netwerk module met twee klassen in Azure Machine Learning-service om een Neural-netwerk model te maken dat kan worden gebruikt om een doel te voors pellen met slechts twee waarden.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f0ad3cc6f506efdc0579f7b8949c41b539ade6a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128353"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693601"
 ---
 # <a name="two-class-neural-network-module"></a>Neural-netwerk module met twee klassen
 
@@ -38,7 +38,7 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
   
 ## <a name="how-to-configure"></a>Configureren
 
-1.  Voeg de **Neural-netwerk module met twee klassen** toe aan uw experiment. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .  
+1.  Voeg de **Neural-netwerk module met twee klassen** toe aan de pijp lijn. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .  
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
@@ -46,7 +46,7 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 3.  Selecteer bij **verborgen laag specificatie**het type netwerk architectuur dat moet worden gemaakt.  
   
-    -   **Volledig gekoppelde Case**: Maakt gebruik van de standaard Neural-netwerk architectuur, die als volgt is gedefinieerd voor Neural-netwerken met twee klassen:
+    -   **Volledig gekoppelde Case**: maakt gebruik van de standaard Neural-netwerk architectuur, die als volgt is gedefinieerd voor Neural-netwerken met twee klassen:
   
         -   Heeft één verborgen laag.
   
@@ -60,31 +60,31 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 5.  Voor **leer snelheid**definieert u de grootte van de stap die bij elke herhaling moet worden uitgevoerd, vóór correctie. Een hogere waarde voor het leer tempo kan ertoe leiden dat het model sneller wordt geconvergeerd, maar dat het lokale minima kan overschrijden.
 
-6.  Geef voor **aantal Learning**-iteraties het maximum aantal keren op dat het algoritme de trainings aanvragen moet verwerken.
+6.  Geef voor **aantal Learning-iteraties**het maximum aantal keren op dat het algoritme de trainings aanvragen moet verwerken.
 
 7.  Voor **de eerste wegings diameter**geeft u de knooppunt gewichten aan het begin van het leer proces op.
 
 8.  Geef voor **de momentum**een gewicht op dat moet worden toegepast tijdens het leren naar knoop punten uit eerdere iteraties  
 
-10. Selecteer de optie **voor beelden** in wille keurige volg orde om cases van elkaar af te plaatsen tussen herhalingen. Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u het experiment uitvoert.
+10. Selecteer de optie **voor beelden in wille keurige** volg orde om cases van elkaar af te plaatsen tussen herhalingen. Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u de pijp lijn uitvoert.
   
 11. Typ voor **wille keurig getal zaad**een waarde die moet worden gebruikt als seed.
   
-     Het opgeven van een Seed-waarde is handig als u de Herhaal baarheid van hetzelfde experiment wilt garanderen.  Anders wordt een waarde van de systeem klok gebruikt als seed, wat kan leiden tot enigszins verschillende resultaten wanneer u het experiment uitvoert.
+     Het opgeven van een Seed-waarde is handig als u de Herhaal baarheid wilt garanderen voor uitvoeringen van dezelfde pijp lijn.  Anders wordt een waarde van een systeem klok gebruikt als seed, wat kan leiden tot enigszins verschillende resultaten wanneer u de pijp lijn uitvoert.
   
-13. Voeg een gecodeerde gegevensset toe aan het experiment en Verbind een van de [trainings modules](module-reference.md).  
+13. Voeg een gecodeerde gegevensset toe aan de pijp lijn en Verbind een van de [trainings modules](module-reference.md).  
   
     -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .  
   
-14. Voer het experiment uit.
+14. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u visualiseren.  
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u **visualiseren**.  
 
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de getrainde **model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van hetzelfde experiment.
++ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van dezelfde pijp lijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

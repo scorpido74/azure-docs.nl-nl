@@ -1,7 +1,7 @@
 ---
-title: 'Importeren vanuit de web-URL via HTTP: Module verwijzing'
+title: 'Importeren uit web-URL via HTTP: module-verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de web-URL importeren via de HTTP-module in Azure Machine Learning-service om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning experiment.
+description: Informatie over het gebruik van de web-URL importeren via de HTTP-module in Azure Machine Learning-service om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning-pijp lijn.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e2521dabdab8e9365019f35514f2d8d235c9c014
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128757"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693122"
 ---
 # <a name="import-from-web-url-via-http-module"></a>Importeren uit web-URL via HTTP-module
 
 In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning experiment.
+Gebruik deze module om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning-pijp lijn.
 
 De volgende beperkingen zijn van toepassing op de gegevens die op een webpagina worden gepubliceerd:
 
@@ -31,7 +31,7 @@ Er zijn twee manieren om gegevens op te halen: gebruik de wizard om de gegevens 
 
 ## <a name="use-the-data-import-wizard"></a>De wizard gegevens importeren gebruiken
 
-1. Voeg de module **gegevens importeren** toe aan uw experiment. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
+1. Voeg de module **gegevens importeren** toe aan de pijp lijn. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
 
 2. Klik op **wizard import data starten** en selecteer Web-URL via http.
 
@@ -45,7 +45,7 @@ Als u een bestaande gegevens verbinding wilt bewerken, start u de wizard opnieuw
 
 In de volgende stappen wordt beschreven hoe u de import bron hand matig configureert.
 
-1. Voeg de module [gegevens importeren](import-data.md) toe aan uw experiment. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
+1. Voeg de module [gegevens importeren](import-data.md) toe aan de pijp lijn. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
 
 2. Voor **gegevens bron**selecteert u **Web-URL via http**.
 
@@ -63,17 +63,17 @@ In de volgende stappen wordt beschreven hoe u de import bron hand matig configur
 
 5. Als de gegevens zich in CSV-of TSV-indeling bevindt, gebruikt u de optie **bestand heeft koprij** om aan te geven of de bron gegevens een koprij bevatten. De rij met koppen wordt gebruikt om kolom namen toe te wijzen.
 
-6. Selecteer de opties **in cache opgeslagen resultaten** als u niet verwacht dat de gegevens veel worden gewijzigd of als u wilt voor komen dat u de gegevens opnieuw laadt telkens wanneer u het experiment uitvoert.
+6. Selecteer de opties **in cache opgeslagen resultaten** als u niet verwacht dat de gegevens veel worden gewijzigd of als u wilt voor komen dat u de gegevens opnieuw laadt telkens wanneer u de pijp lijn uitvoert.
 
-    Als deze optie is geselecteerd, laadt het experiment de gegevens op het moment dat de module voor het eerst wordt uitgevoerd en wordt vervolgens een versie van de gegevensset in de cache gebruikt.
+    Als deze optie is geselecteerd, laadt de pijp lijn de gegevens op het moment dat de module voor het eerst wordt uitgevoerd en wordt vervolgens een versie van de gegevensset in de cache gebruikt.
 
-    Als u de gegevensset voor elke herhaling van de gegevensset van de experiment opnieuw wilt laden, schakelt u de optie **resultaten in cache gebruiken** uit. De resultaten worden ook opnieuw geladen als er wijzigingen zijn aangebracht in de para meters van [gegevens importeren](import-data.md).
+    Als u de gegevensset opnieuw wilt laden voor elke herhaling van de pijp lijn-gegevensset, schakelt u de optie **resultaten in cache gebruiken** uit. De resultaten worden ook opnieuw geladen als er wijzigingen zijn aangebracht in de para meters van [gegevens importeren](import-data.md).
 
-7. Voer het experiment uit.
+7. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
-Wanneer u klaar bent, klikt u op de uitvoer gegevensset en selecteert u visualiseren om te zien of de gegevens zijn geïmporteerd.
+Wanneer u klaar bent, klikt u op de uitvoer gegevensset en selecteert u **visualiseren** om te zien of de gegevens zijn geïmporteerd.
 
 
 ## <a name="next-steps"></a>Volgende stappen

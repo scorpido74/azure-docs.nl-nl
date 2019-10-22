@@ -9,12 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 89539d42e9ac9456c7ee971f6ea607b6b2c6befa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266314"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693298"
 ---
 # <a name="custom-web-api-skill"></a>Aangepaste web API-vaardigheid
 
@@ -29,18 +29,18 @@ De structuur van de JSON-nettoladingen wordt verder beschreven in dit document.
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Custom.WebApiSkill
+Micro soft. skills. custom. WebApiSkill
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Para meters zijn hoofdletter gevoelig.
 
-| Parameternaam     | Description |
+| Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| uri | De URI van de Web-API waarnaar de _JSON_ -nettolading wordt verzonden. Alleen **https** URI-schema is toegestaan |
-| httpMethod | De methode die moet worden gebruikt bij het verzenden van de payload. Toegestane methoden zijn `PUT` of`POST` |
-| httpHeaders | Een verzameling sleutel-waardeparen waarbij de sleutels koptekst namen en-waarden vertegenwoordigen header waarden die worden verzonden naar uw web-API en de payload. De volgende headers mogen niet voor komen in deze verzameling: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length` `TE` `Cookie` `Content-Type`,,, `Host`,, `Upgrade`,`Via` |
-| timeout | Beschrijving Hiermee geeft u de time-out op voor de HTTP-client die de API-aanroep maakt. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Bijvoorbeeld `PT60S` gedurende 60 seconden. Als deze niet is ingesteld, wordt de standaard waarde van 30 seconden gekozen. De time-out kan worden ingesteld op een maximum van 230 seconden en een minimum van 1 seconde. |
+| URI | De URI van de Web-API waarnaar de _JSON_ -nettolading wordt verzonden. Alleen **https** URI-schema is toegestaan |
+| httpMethod | De methode die moet worden gebruikt bij het verzenden van de payload. Toegestane methoden zijn `PUT` of `POST` |
+| httpHeaders | Een verzameling sleutel-waardeparen waarbij de sleutels koptekst namen en-waarden vertegenwoordigen header waarden die worden verzonden naar uw web-API en de payload. De volgende headers mogen niet voor komen in deze verzameling: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
+| timeout | Beschrijving Hiermee geeft u de time-out op voor de HTTP-client die de API-aanroep maakt. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Bijvoorbeeld `PT60S` 60 seconden. Als deze niet is ingesteld, wordt de standaard waarde van 30 seconden gekozen. De time-out kan worden ingesteld op een maximum van 230 seconden en een minimum van 1 seconde. |
 | batchSize | Beschrijving Hiermee wordt aangegeven hoeveel ' gegevens records ' (Zie de structuur van de _JSON_ -nettolading hieronder) per API-aanroep worden verzonden. Als deze niet is ingesteld, wordt de standaard waarde 1000 gekozen. We raden u aan gebruik te maken van deze para meter om een geschikte verhouding te krijgen tussen het door voeren van de indexering en de belasting van uw API |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
@@ -88,10 +88,10 @@ Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van
 Deze _JSON_ -structuur vertegenwoordigt de nettolading die wordt verzonden naar uw web-API.
 Deze beperkingen worden altijd gevolgd:
 
-* De entiteit op het hoogste niveau wordt `values` aangeroepen en is een matrix met objecten. Het aantal objecten is de meeste`batchSize`
+* De entiteit op het hoogste niveau heet `values` en is een matrix met objecten. Het aantal objecten is de meeste `batchSize`
 * Elk object in de `values` matrix heeft
     * Een `recordId` eigenschap die een **unieke** teken reeks is, die wordt gebruikt om die record te identificeren.
-    * Een `data` eigenschap die een _JSON_ -object is. De velden van de `data` eigenschap komen overeen met de namen die zijn opgegeven in de `inputs` sectie van de vaardigheids definitie. De waarde van deze velden gaat uit `source` van deze velden (die mogelijk afkomstig zijn uit een veld in het document of mogelijk van een andere vaardigheid)
+    * Een `data` eigenschap die een _JSON_ -object is. De velden van de eigenschap `data` komen overeen met de namen die zijn opgegeven in de sectie `inputs` van de definitie van de vaardigheid. De waarde van deze velden wordt uit de `source` van die velden (die mogelijk afkomstig zijn uit een veld in het document of mogelijk van een andere vaardigheid)
 
 ```json
 {
@@ -138,16 +138,16 @@ Deze beperkingen worden altijd gevolgd:
 
 ## <a name="sample-output-json-structure"></a>Voor beeld van JSON-structuur van uitvoer
 
-De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API. De Web-API mag alleen een _JSON_ -nettolading retour neren (gecontroleerd door `Content-Type` te kijken naar de reactie header) en moet voldoen aan de volgende beperkingen:
+De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API. De Web-API mag alleen een _JSON_ -nettolading retour neren (gecontroleerd door te kijken naar de `Content-Type` reactie header) en moet voldoen aan de volgende beperkingen:
 
-* Er moet een entiteit op het hoogste niveau worden `values` aangeroepen die een matrix met objecten moet zijn.
+* Er moet een entiteit op het hoogste niveau worden aangeroepen `values` die een matrix met objecten moet zijn.
 * Het aantal objecten in de matrix moet hetzelfde zijn als het aantal objecten dat naar de Web-API wordt verzonden.
 * Elk object moet het volgende hebben:
    * Een `recordId` eigenschap
-   * Een `data` eigenschap, die een object is waarbij de velden verrijkingen zijn die overeenkomen met de ' `output` namen ' in de en waarvan de waarde wordt beschouwd als de verrijking.
-   * Een `errors` eigenschap, een matrix met eventuele fouten die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan wel een `null` waarde hebben.
-   * Een `warnings` eigenschap, een matrix met waarschuwingen die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan wel een `null` waarde hebben.
-* De objecten in de `values` matrix moeten zich niet in dezelfde volg orde besturen als de objecten `values` in de matrix die als een aanvraag naar de Web-API worden verzonden. De `recordId` wordt echter gebruikt voor correlatie, zodat alle records in het antwoord met een `recordId` die geen deel uitmaakt van de oorspronkelijke aanvraag voor de Web-API, worden genegeerd.
+   * Een `data` eigenschap, die een object is waarbij de velden verrijkingen zijn die overeenkomen met de ' namen ' in de `output` en waarvan de waarde wordt beschouwd als de verrijking.
+   * Een `errors`-eigenschap, een matrix met eventuele fouten die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan een `null`-waarde hebben.
+   * Een `warnings`-eigenschap, een matrix met waarschuwingen die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan een `null`-waarde hebben.
+* De objecten in de `values` matrix moeten zich niet in dezelfde volg orde besturen als de objecten in de `values` matrix die als een aanvraag voor de Web-API worden verzonden. De `recordId` wordt echter gebruikt voor correlatie, zodat alle records in het antwoord met een `recordId` die geen deel uitmaken van de oorspronkelijke aanvraag voor de Web-API, worden verwijderd.
 
 ```json
 {
@@ -195,13 +195,14 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
 ## <a name="error-cases"></a>Fout cases
 Naast de Web-API die niet beschikbaar is, of het verzenden van niet-geslaagde status codes, worden de volgende als foutieve cases beschouwd:
 
-* Als de Web-API een status code voor geslaagde pogingen retourneert, maar het antwoord `application/json` geeft aan dat het niet het geval is, wordt het antwoord beschouwd als ongeldig en worden er geen verrijkingen uitgevoerd.
-* Als er een **Ongeldige** ( `recordId` in de oorspronkelijke aanvraag of met dubbele waarden) records in de antwoord `values` matrix aanwezig zijn, wordt er geen verrijking uitgevoerd voor **deze** records.
+* Als de Web-API een succes status code retourneert, maar het antwoord geeft aan dat deze niet `application/json`, wordt het antwoord beschouwd als ongeldig en worden er geen verrijkingen uitgevoerd.
+* Als er **Ongeldige** records zijn (met `recordId` niet in de oorspronkelijke aanvraag of met dubbele waarden) in de antwoord `values` matrix, wordt er geen verrijking uitgevoerd voor **deze** records.
 
 Als de Web-API niet beschikbaar is of een HTTP-fout retourneert, wordt een beschrijvende fout met alle beschik bare Details over de HTTP-fout toegevoegd aan de indexerings geschiedenis.
 
 ## <a name="see-also"></a>Zie ook
 
++ [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://aka.ms/powerskills)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Aangepaste vaardigheid toevoegen aan cognitieve zoek functie](cognitive-search-custom-skill-interface.md)
-+ [Voorbeeld: Een aangepaste vaardigheid maken voor cognitieve zoek acties](cognitive-search-create-custom-skill-example.md)
++ [Voor beeld: een aangepaste vaardigheid maken voor cognitieve zoek acties](cognitive-search-create-custom-skill-example.md)

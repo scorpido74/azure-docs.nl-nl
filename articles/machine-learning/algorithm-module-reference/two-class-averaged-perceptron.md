@@ -1,5 +1,5 @@
 ---
-title: 'Regressie voor beslissings forest: Module verwijzing'
+title: 'Regressie van beslissings bos: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning service om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128430"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693628"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Gemiddelde Perceptron-module met twee klassen
 
@@ -32,11 +32,11 @@ De eenvoudiger Perceptron modellen zijn geschikt voor het leren van lineaire opv
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Gemiddelde Perceptron configureren voor twee klassen
 
-1.  Voeg de **gemiddelde Perceptron-module met twee klassen** toe aan uw experiment.  
+1.  Voeg de **gemiddelde Perceptron-module met twee klassen** toe aan de pijp lijn.  
 
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden als argumenten op.
+    -   **Eén para meter**: als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden als argumenten op.
   
 3.  Geef voor het **leer tempo**een waarde op voor het *leer tempo*. De waarden voor het leer tempo bepalen de grootte van de stap die wordt gebruikt in stochastische verloop Daal telkens wanneer het model wordt getest en gecorrigeerd.
   
@@ -46,7 +46,7 @@ De eenvoudiger Perceptron modellen zijn geschikt voor het leren van lineaire opv
   
      Als u een vroege regel matig stopt, levert dat betere generalisatie. Het verhogen van het aantal iteraties verbetert de fitting, tegen het risico van overmontage.
   
-5.  Voor **wille keurig getal zaad**typt u optioneel een geheel getal dat moet worden gebruikt als seed. Het gebruik van een Seed wordt aanbevolen als u de reproduceer baarheid van het experiment over uitvoeringen wilt garanderen.  
+5.  Voor **wille keurig getal zaad**typt u optioneel een geheel getal dat moet worden gebruikt als seed. Het gebruik van een Seed wordt aanbevolen als u de reproduceer baarheid van de pijp lijn in uitvoeringen wilt garanderen.  
   
 1.  Verbind een trainings gegevensset en een van de trainings modules:
   

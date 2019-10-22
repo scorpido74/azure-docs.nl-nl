@@ -1,5 +1,5 @@
 ---
-title: 'Besluitvormings forest met twee klassen: Module verwijzing'
+title: 'Beslissings forest met twee klassen: Naslag informatie over modules'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module beslissings forest met twee klassen in Azure Machine Learning service om een machine learning model te maken op basis van het algoritme voor de beslissings bossen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128397"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693625"
 ---
 # <a name="two-class-decision-forest-module"></a>Module voor beslissings forest met twee klassen
 
@@ -49,23 +49,23 @@ Zie [Decision bossen](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer i
 
 ## <a name="how-to-configure"></a>Configureren
   
-1.  Voeg de module **beslissings forest met twee klassen** toe aan uw experiment in azure machine learning en open het deel venster **Eigenschappen** van de module. 
+1.  Voeg de module **beslissings forest met twee klassen** toe aan uw pijp lijn in azure machine learning en open het deel venster **Eigenschappen** van de module. 
 
     U kunt de module vinden onder **machine learning**. Vouw **initialiseren**en vervolgens **classificatie**uit.  
   
-2.  Kies voor **resampling methode**de methode die is gebruikt voor het maken van de afzonderlijke structuren.  U kunt kiezen uit een of meer van de **replicatie**.  
+2.  Kies voor **resampling methode**de methode die is gebruikt voor het maken van de afzonderlijke structuren.  U kunt **kiezen uit een** of meer van de **replicatie**.  
   
-    -   Overbaggen: De functie voor het verzamelen van de functie wordt ook *Boots trap aggregatie*genoemd. In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft.  
+    -   **Overbaggen**: de functie voor het *verzamelen van de Boots trap* In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft.  
   
          De uitvoer van de modellen worden gecombineerd door middel van *stemmen*. Dit is een vorm van aggregatie. Elke structuur in een forest met classificatie beslissingen voert een niet-genormaliseerd frequentie histogram van labels uit. De aggregatie is het opsommen van deze histogrammen en normaliseren om de ' kansen ' voor elk label op te halen. Op deze manier hebben de structuren met een hoog Voorspellings betrouwbaarheids niveau een groter gewicht in de definitieve beslissing van de ensemble.  
   
          Zie de Wikipedia-vermelding voor Boots trap aggregatie voor meer informatie.  
   
-    -   **Repliceren**: In replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.   
+    -   **Repliceren**: in replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling waarvan het gesplitste predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en de structuur is divers.   
   
 3.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
   
 4.  Voor het **aantal beslissings structuren**typt u het maximum aantal beslissings structuren dat kan worden gemaakt in de ensemble. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar de trainings tijd wordt verhoogd.  
   
@@ -93,13 +93,13 @@ Zie [Decision bossen](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer i
 
 Nadat de training is voltooid:
 
-+ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer visualiseren om de structuur weer te geven dieop elke iteratie is gemaakt.
++ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer **visualiseren**om de structuur weer te geven die op elke iteratie is gemaakt.
   
     Klik op elke structuur om in te zoomen op de splitsingen en Bekijk de regels voor elk knoop punt.
 
-+ Als u een moment opname van het model wilt opslaan, klikt u met de rechter muisknop op de getrainde **model** uitvoer en selecteert u **model opslaan**. Het opgeslagen model wordt niet bijgewerkt bij opeenvolgende uitvoeringen van het experiment.
++ Als u een moment opname van het model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **model opslaan**. Het opgeslagen model wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn.
 
-+ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een experiment.
++ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

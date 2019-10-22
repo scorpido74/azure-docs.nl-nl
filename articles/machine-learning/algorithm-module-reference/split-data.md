@@ -1,5 +1,5 @@
 ---
-title: 'Gesplitste gegevens: Module verwijzing'
+title: 'Gesplitste gegevens: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Informatie over het gebruik van de module Split data in Azure Machine Learning service om een gegevensset in twee verschillende sets te verdelen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128468"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692650"
 ---
 # <a name="split-data-module"></a>Module voor splitsen van gegevens
 
@@ -30,11 +30,11 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 > Voordat u de Splits modus kiest, moet u alle opties lezen om te bepalen welk type splitsing u nodig hebt.
 > Als u de Splits modus wijzigt, kunnen alle andere opties opnieuw worden ingesteld.
 
-1. Voeg de module **gegevens splitsen** toe aan uw experiment in de-interface. U kunt deze module vinden onder **gegevens transformatie**in de categorie voor **Beeld en splitsen** .
+1. Voeg de module **gegevens splitsen** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **gegevens transformatie**in de categorie voor **Beeld en splitsen** .
 
 2. **Splits modus**: Kies een van de volgende modi, afhankelijk van het type gegevens dat u hebt, en hoe u deze wilt delen. Elke Splits modus heeft verschillende opties. Klik op de volgende onderwerpen voor gedetailleerde instructies en voor beelden. 
 
-    - **Rijen splitsen**: Gebruik deze optie als u de gegevens alleen in twee delen wilt verdelen. U kunt opgeven welk percentage van de gegevens in elke splitsing moet worden geplaatst, maar standaard worden de gegevens gedeeld 50-50.
+    - **Rijen splitsen**: gebruik deze optie als u de gegevens wilt splitsen in twee delen. U kunt opgeven welk percentage van de gegevens in elke splitsing moet worden geplaatst, maar standaard worden de gegevens gedeeld 50-50.
 
         U kunt ook de selectie van rijen in elke groep wille keurig opwaarderen en stratified-steek proeven gebruiken. In stratified-steek proeven moet u één kolom met gegevens selecteren waarvoor u wilt dat waarden gelijkmatig worden verdeeld over de twee resultaat gegevens sets.  
 
@@ -42,10 +42,10 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 
         Als u bijvoorbeeld sentiment analyseert, kunt u op de aanwezigheid van een bepaalde product naam in een tekst veld controleren en vervolgens de gegevensset onderverdelen in rijen met de doel product naam en die zonder.
 
-    - **Relatieve expressie splitsen**:  Gebruik deze optie wanneer u een voor waarde op een kolom getal wilt Toep assen. Het getal kan een datum/tijd-veld, een kolom met leeftijds-of dollar bedragen of zelfs een percentage zijn. Stel dat u uw gegevensset wilt delen, afhankelijk van de kosten van de items, het groeperen van personen op leeftijds bereiken of het scheiden van gegevens op basis van een kalender datum.
+    - **Relatieve expressie splitsen**: gebruik deze optie wanneer u een voor waarde op een kolom getal wilt Toep assen. Het getal kan een datum/tijd-veld, een kolom met leeftijds-of dollar bedragen of zelfs een percentage zijn. Stel dat u uw gegevensset wilt delen, afhankelijk van de kosten van de items, het groeperen van personen op leeftijds bereiken of het scheiden van gegevens op basis van een kalender datum.
 
 ### <a name="split-rows"></a>Rijen splitsen
-1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw experiment in de interface en verbind de gegevensset die u wilt splitsen.
+1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn in de interface en verbind de gegevensset die u wilt splitsen.
   
 2.  Voor de **Splits modus**kiest u **rijen splitsen**. 
 
@@ -57,20 +57,20 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
   
 4. Selecteer de optie **wille keurig splitsen** als u selectie van gegevens wilt wille keurig in de twee groepen. Dit is de voorkeurs optie bij het maken van gegevens sets voor training en testen.
 
-5.  **Wille keurige Seed**: Typ een niet-negatief geheel getal om de Pseudorandom-volg orde van de te gebruiken instanties te initialiseren. Deze standaard seeding wordt gebruikt in alle modules die wille keurige getallen genereren. 
+5.  **Wille keurige Seed**: Typ een niet-negatief geheel getal om de Pseudorandom-volg orde van de exemplaren die moeten worden gebruikt, te initialiseren. Deze standaard seeding wordt gebruikt in alle modules die wille keurige getallen genereren. 
 
      Als u een Seed opgeeft, worden de resultaten doorgaans reproduceerbaar. Als u de resultaten van een splits bewerking moet herhalen, moet u een Seed opgeven voor de generator van wille keurige getallen. Anders wordt de wille keurige Seed standaard ingesteld op 0, wat betekent dat de initiële seedwaarde wordt opgehaald uit de systeem klok. Als gevolg hiervan kan de verdeling van gegevens enigszins verschillen telkens wanneer u een splitsing uitvoert. 
 
-6. **Stratified-splitsing**: Stel deze optie in op **True** om ervoor te zorgen dat de twee uitvoer gegevens sets een representatief voor beeld bevatten van de waarden in de kolom *Strata* of de *kolom stratificatie sleutel*. 
+6. **Stratified splitsen**: Stel deze optie in op **True** om ervoor te zorgen dat de twee uitvoer gegevens sets een representatief voor beeld bevatten van de waarden in de kolom *Strata* of de tabel *stratificatie sleutel*. 
 
     Met stratified-steek proeven worden de gegevens zo verdeeld dat elke uitvoer gegevensset ongeveer hetzelfde percentage van elke doel waarde ophaalt. U kunt er bijvoorbeeld voor zorgen dat uw trainings-en test sets ongeveer worden gesaldeerd met betrekking tot het resultaat of met betrekking tot een andere kolom, zoals gender.
 
-7. Voer het experiment uit.
+7. Voer de pijplijn uit.
 
 
 ## <a name="regular-expression-split"></a>Reguliere expressie splitsen
 
-1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw experiment en verbind deze als invoer met de gegevensset die u wilt splitsen.  
+1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn en verbind deze als invoer met de gegevensset die u wilt splitsen.  
   
 2.  Selecteer voor de **Splits modus** **reguliere expressie splitsen**.
 
@@ -79,13 +79,13 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
    De reguliere expressie moet de syntaxis van de reguliere expressie van python volgen.
 
 
-4. Voer het experiment uit.
+4. Voer de pijplijn uit.
 
     Op basis van de reguliere expressie die u opgeeft, wordt de gegevensset onderverdeeld in twee sets rijen: rijen met waarden die overeenkomen met de expressie en alle resterende rijen. 
 
 ## <a name="relative-expression-split"></a>De relatieve expressie is gesplitst.
 
-1. Voeg de module [gegevens splitsen](./split-data.md) toe aan uw experiment en verbind deze als invoer met de gegevensset die u wilt splitsen.
+1. Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn en verbind deze als invoer met de gegevensset die u wilt splitsen.
   
 2. Voor de **Splits modus**selecteert u **relatieve expressie splitsen**.
   
@@ -99,16 +99,16 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 
     - Gebruik het ampersand teken (&) voor de en-bewerking en gebruik het sluis teken (|) voor de OR-bewerking.
 
-    - De volgende Opera tors worden ondersteund `<`: `>`, `<=`, `>=`, `==`,,`!=`
+    - De volgende Opera tors worden ondersteund: `<`, `>`, `<=`, `>=`, `==`, `!=`
 
-    - U kunt geen bewerkingen groeperen met `(` behulp van en `)`.
+    - U kunt geen bewerkingen groeperen met behulp van `(` en `)`.
 
  - Teken reeks kolom: 
-    - De volgende Opera tors worden ondersteund `==`:,`!=`
+    - De volgende Opera tors worden ondersteund: `==`, `!=`
 
 
 
-4. Voer het experiment uit.
+4. Voer de pijplijn uit.
 
     De expressie splitst de gegevensset in twee sets rijen: rijen met waarden die voldoen aan de voor waarde en alle resterende rijen.
 

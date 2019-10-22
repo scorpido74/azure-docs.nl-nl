@@ -11,22 +11,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4eae7299ab696b01c57a27fd46cbf903c9395152
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177537"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375550"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Saldo van Azure-tegoed voor Microsoft-klantovereenkomst bijhouden
 
-U kunt het saldo van het Azure-tegoed voor een Microsoft-klantovereenkomst bijhouden in de Azure-portal. U kunt het tegoed gebruiken om te betalen voor kosten die niet onder dat tegoed vallen.
+U kunt het saldo van het Azure-tegoed voor uw type factureringsrekening voor een Microsoft-klantovereenkomst bijhouden in de Azure-portal. 
 
-Er worden gebruikskosten in rekening gebracht wanneer u producten gebruikt die niet onder het tegoed vallen of als u het saldo van uw tegoed overschrijdt. Zie [Producten die niet onder Azure-tegoed vallen](#products-that-arent-covered-by-azure-credits) voor meer informatie.
+U kunt het tegoed gebruiken om te betalen voor kosten die daarvoor in aanmerking komen. Er worden gebruikskosten in rekening gebracht wanneer u producten gebruikt die niet in aanmerking komen voor betaling met een tegoed of als u het saldo van uw tegoed overschrijdt. Zie [Producten die niet onder Azure-tegoed vallen](#products-that-arent-covered-by-azure-credits) voor meer informatie.
+
+In de factureringsrekening voor een Microsoft-klantovereenkomst wordt een tegoed toegewezen aan een factureringsprofiel. Elk factureringsprofiel heeft zijn eigen tegoed. U moet beschikken over de rol van eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder voor het factureringsprofiel of de rol van eigenaar, inzender of lezer voor de factureringsrekening om het Azure-tegoed voor een factureringsprofiel te kunnen bekijken. Zie [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](billing-understand-mca-roles.md) voor meer informatie over de rollen.
 
 Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance"></a>Het saldo van uw tegoed controleren
+## <a name="check-your-credit-balance-in-the-azure-portal"></a>Het saldo van uw tegoed controleren in de Azure-portal
 
 1. Meld u aan bij [Azure Portal]( https://portal.azure.com).
 
@@ -38,15 +40,15 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
 4. Op de pagina Azure-tegoed wordt de volgende informatie weergegeven:
 
-   ![Schermopname van het tegoedsaldo en transacties voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+   ![Schermopname van tegoedsaldo en transacties voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
    | Termijn               | Definitie                           |
    |--------------------|--------------------------------------------------------|
    | Geschat saldo  | Het geschatte resterende tegoed nadat alle gefactureerde en in behandeling zijnde transacties zijn voltooid |
    | Huidig saldo    | Het tegoed sinds uw laatste factuur. Hierbij is nog geen rekening gehouden met transacties die in behandeling zijn |
-   | Transacties       | Alle factureringstransacties die van invloed waren op het saldo van uw Azure-tegoed |
+   | Transacties       | Factureringstransacties die van invloed waren op het saldo van uw Azure-tegoed |
 
-   Wanneer uw geschatte saldo tot 0 daalt, worden er kosten in rekening gebracht voor al uw gebruik, met inbegrip van producten die onder tegoed vallen.
+   Wanneer uw geschatte saldo tot 0 daalt, worden er kosten in rekening gebracht voor al uw gebruik, met inbegrip van producten die in aanmerking komen voor betaling met een tegoed.
 
 6. Selecteer **Lijst met tegoeden** om een lijst met tegoeden voor het factureringsprofiel weer te geven. De lijst met tegoeden bevat de volgende informatie:
 
@@ -54,20 +56,280 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
    | Termijn | Definitie |
    |---|---|
-   | Geschat saldo | Het Azure-tegoed dat u nog over hebt nadat niet-gefactureerde, voor tegoed in aanmerking komende kosten van uw huidige saldo zijn afgetrokken|
-   | Huidig saldo | Het Azure-tegoed dat u nog hebt voordat niet-gefactureerde, voor tegoed in aanmerking komende kosten in rekening worden gebracht. Dit wordt berekend door uw nieuwe ontvangen Azure-tegoeden op te tellen bij het saldo dat u had na uw laatste factuur|
    | Bron | De aanschafbron van het tegoed |
    | Begindatum | De datum waarop u het tegoed hebt gekocht |
    | Vervaldatum | De datum waarop het tegoed vervalt |
-   | Saldo | Het saldo na uw laatste factuur |
+   | Huidig saldo | Het saldo na uw laatste factuur |
    | Oorspronkelijk bedrag | Het oorspronkelijke bedrag van het tegoed |
    | Status | De huidige status van het tegoed. De status kan actief, gebruikt, vervallen of bijna vervallen zijn |
+
+## <a name="check-your-credit-balance-programmatically"></a>Uw tegoedsaldo programmatisch controleren
+
+U kunt de [Azure Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's gebruiken om het tegoedsaldo voor uw factureringsrekening programmatisch op te halen.
+
+In de onderstaande voorbeelden worden REST API's gebruikt. PowerShell en Azure CLI worden momenteel niet ondersteund.
+
+### <a name="find-billing-profiles-you-have-access-to"></a>Factureringsprofielen zoeken waartoe u toegang hebt
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?$expand=billingProfiles&api-version=2019-10-01-preview
+```
+Via de API wordt een lijst met factureringsrekeningen en de bijbehorende factureringsprofielen geretourneerd.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx",
+      "name": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx",
+      "properties": {
+        "accountId": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "accountStatus": "Active",
+        "accountType": "Enterprise",
+        "agreementType": "MicrosoftCustomerAgreement",
+        "billingProfiles": [
+          {
+            "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx",
+            "name": "PBFV-xxxx-xxx-xxx",
+            "properties": {
+              "address": {
+                "addressLine1": "AddressLine1",
+                "city": "City",
+                "companyName": "CompanyName",
+                "country": "Country",
+                "postalCode": "xxxxx",
+                "region": "Region"
+              },
+              "currency": "USD",
+              "displayName": "Development",
+              "hasReadAccess": true,
+              "invoiceDay": 5,
+              "invoiceEmailOptIn": true
+            },
+            "type": "Microsoft.Billing/billingAccounts/billingProfiles"
+          }
+        ],
+        "displayName": "Contoso",
+        "hasReadAccess": true,
+      },
+      "type": "Microsoft.Billing/billingAccounts"
+    }
+  ]
+}
+```
+
+Kies het factureringsprofiel waarvoor u het tegoedsaldo wilt controleren met behulp van de eigenschap `displayName` van het factureringsprofiel. Kopieer de `id` van het factureringsprofiel. Als u bijvoorbeeld het tegoedsaldo van het factureringsprofiel **Development** (Ontwikkeling) wilt controleren, kopieert u ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
+
+### <a name="get-azure-credit-balance"></a>Saldo van Azure-tegoed ophalen 
+
+Voer de volgende aanvraag uit en vervang `<billingProfileId>` door de `id` die u hebt gekopieerd tijdens de eerste stap (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
+```
+
+Via de API worden het geschatte saldo en het huidige saldo voor het factureringsprofiel geretourneerd.
+
+```json
+{
+  "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/credits/balanceSummary/57c2e8df-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "57c2e8df-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "Microsoft.Consumption/credits/balanceSummary",
+  "eTag": null,
+  "properties": {
+    "balanceSummary": {
+      "estimatedBalance": {
+        "currency": "USD",
+        "value": 996.13
+      },
+      "currentBalance": {
+        "currency": "USD",
+        "value": 997.87
+      }
+    },
+    "pendingCreditAdjustments": {
+      "currency": "USD",
+      "value": 0.0
+    },
+    "expiredCredit": {
+      "currency": "USD",
+      "value": 0.0
+    },
+    "pendingEligibleCharges": {
+      "currency": "USD",
+      "value": -1.74
+    }
+  }
+}
+```
+
+| Elementnaam  | Beschrijving                                                                           |
+|---------------|---------------------------------------------------------------------------------------|
+| `estimatedBalance` | Het geschatte resterende tegoed nadat alle gefactureerde en in behandeling zijnde transacties zijn voltooid. |
+| `currentBalance`   | Het tegoed sinds uw laatste factuur. Hierbij is nog geen rekening gehouden met transacties die in behandeling zijn.    |
+| `pendingCreditAdjustments`      | De correcties die nog niet zijn gefactureerd, zoals terugbetalingen.  |
+| `expiredCredit`      |  Het tegoed dat sinds de laatste factuur is verlopen.  |
+| `pendingEligibleCharges`  | De nog niet gefactureerde kosten die in aanmerking voor betaling met het tegoed.   |
+
+### <a name="get-list-of-credits"></a>Lijst met tegoeden ophalen
+
+Voer de volgende aanvraag uit en vervang `<billingProfileId>` door de `id` die u hebt gekopieerd tijdens de eerste stap (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
+```
+Via de API worden lijsten met Azure-tegoeden voor een factureringsprofiel geretourneerd.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/lots/f2ecfd94-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "f2ecfd94-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/lots",
+      "eTag": null,
+      "properties": {
+        "originalAmount": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "source": "Azure Promotional Credit",
+        "startDate": "09/18/2019 21:47:31",
+        "expirationDate": "09/18/2020 21:47:30",
+        "poNumber": ""
+      }
+    },
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/xxxx-xxxx-xxx-xxx/providers/Microsoft.Consumption/lots/4ea40eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4ea40eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/lots",
+      "eTag": null,
+      "properties": {
+        "originalAmount": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 497.87
+        },
+        "source": "Azure Promotional Credit",
+        "startDate": "09/18/2019 21:47:31",
+        "expirationDate": "09/18/2020 21:47:30",
+        "poNumber": ""
+      }
+    }
+  ]
+}
+```
+| Elementnaam  | Beschrijving                                                                                               |
+|---------------|-----------------------------------------------------------------------------------------------------------|
+| `originalAmount` | Het oorspronkelijke bedrag van het tegoed. |
+| `closedBalance`   | Het saldo na uw laatste factuur.    |
+| `source`      | De bron die aangeeft door wie en hoe het tegoed is aangeschaft. |
+| `startDate`      |  De datum waarop het tegoed is geactiveerd.  |
+| `expirationDate`  | De datum waarop het tegoed vervalt.   |
+| `poNumber`  | Het inkoopordernummer van de factuur waarop het tegoed is gefactureerd.   |
+
+### <a name="get-transactions-that-affected-credit-balance"></a>Transacties die van invloed waren op het saldo van het tegoed
+
+Voer de volgende aanvraag uit en vervang `<billingProfileId>` door de `id` die u hebt gekopieerd tijdens de eerste stap (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). U moet een **startDate** (begindatum) en een **endDate** (einddatum) opgeven om transacties voor het gewenste tijdsbestek op te halen.
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
+```
+Via de API worden alle transacties geretourneerd die van invloed waren op het tegoedsaldo voor uw factureringsprofiel.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx`/providers/Microsoft.Consumption/events/e2032eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "e2032eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/events",
+      "eTag": null,
+      "properties": {
+        "transactionDate": "10/11/2019",
+        "description": "Credit eligible charges as of 10/11/2019",
+        "newCredit": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "adjustments": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "creditExpired": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "charges": {
+          "currency": "USD",
+          "value": -1.74
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 998.26
+        },
+        "eventType": "PendingCharges",
+        "invoiceNumber": ""
+      }
+    },
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/events/381efd80-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "381efd80-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/events",
+      "eTag": null,
+      "properties": {
+        "transactionDate": "09/18/2019",
+        "description": "New credit added on 09/18/2019",
+        "newCredit": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "adjustments": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "creditExpired": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "charges": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 1000.0
+        },
+        "eventType": "PendingNewCredit",
+        "invoiceNumber": ""
+      }
+    }
+  ]
+}
+```
+| Elementnaam  | Beschrijving                                                                                               |
+|---------------|-----------------------------------------------------------------------------------------------------------|
+| `transactionDate` | De datum waarop de transactie plaatsvond. |
+| `description` | De beschrijving van de transactie. |
+| `adjustments`   | De tegoedcorrecties voor de transactie.    |
+| `creditExpired`      | De hoeveelheid tegoed die is verlopen. |
+| `charges`      |  De kosten voor de transactie.  |
+| `closedBalance`  | Het saldo na de transactie.   |
+| `eventType`  | Het transactietype.   |
+| `invoiceNumber`  | Het factuurnummer van de factuur waarop de transactie wordt gefactureerd. Dit is leeg voor een transactie in behandeling.   |
 
 ## <a name="how-credits-are-used"></a>Hoe tegoeden worden gebruikt
 
 In een factureringsrekening voor een Microsoft-klantovereenkomst gebruikt u factureringsprofielen om uw facturen en betalingswijzen te beheren. Voor elk factureringsprofiel wordt maandelijks een factuur gegenereerd. U gebruikt de betalingswijzen om de factuur te betalen.
 
-Azure-tegoed is een van die betalingswijzen. U ontvangt een tegoed van Microsoft, bijvoorbeeld vanwege een speciale aanbieding of een serviceniveau. Deze tegoeden worden toegewezen aan een factureringsprofiel. Als er een factuur wordt gegenereerd voor het factureringsprofiel, worden de tegoeden automatisch toegepast op het totale gefactureerde bedrag om te berekenen welk bedrag u moet betalen. U betaalt het resterende bedrag met een andere betalingswijze zoals een cheque of een directe overboeking.
+U wijst tegoed toe dat u aanschaft voor een factureringsprofiel. Als er een factuur wordt gegenereerd voor het factureringsprofiel, worden de tegoeden automatisch toegepast op de totale kosten om te berekenen welk bedrag u moet betalen. U betaalt het resterende bedrag met uw betalingswijzen, zoals een cheque, directe overboeking of creditcard.
 
 ## <a name="products-that-arent-covered-by-azure-credits"></a>Producten die niet onder Azure-tegoed vallen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kolommen toevoegen: Module verwijzing'
+title: 'Kolommen toevoegen: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module kolommen toevoegen in Azure Machine Learning-service om twee gegevens sets samen te voegen.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 630f8f7d4561ed6e7e9f943f4b3b123daeee4d67
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cbb1249b529fde1368bfaff0c6c251c93fa6c309
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129025"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693864"
 ---
 # <a name="add-columns-module"></a>Module kolommen toevoegen
 
@@ -25,18 +25,18 @@ Gebruik deze module om twee gegevens sets samen te voegen. U combineert alle kol
 
 
 ## <a name="how-to-configure-add-columns"></a>Het configureren van kolommen toevoegen
-1. Voeg de module **Columns toevoegen** toe aan uw experiment.
+1. Voeg de module **Columns toevoegen** toe aan de pijp lijn.
 
-2. Verbind de twee gegevens sets die u wilt samen voegen. Als u meer dan twee gegevens sets wilt combi neren, kunt u meerdere combi Naties van **toevoegen kolommen**samen voegen.
+2. Verbind de twee gegevens sets die u wilt samen voegen. Als u meer dan twee gegevens sets wilt combi neren, kunt u meerdere combi Naties van **toevoegen kolommen samen voegen**.
 
     - Het is mogelijk om twee kolommen te combi neren met een verschillend aantal rijen. De uitvoer gegevensset wordt aangevuld met ontbrekende waarden voor elke rij in de kleinere bron kolom.
 
     - U kunt geen afzonderlijke kolommen kiezen om toe te voegen. Alle kolommen van elke gegevensset worden samengevoegd wanneer u **kolommen toevoegen**gebruikt. Als u alleen een subset van de kolommen wilt toevoegen, gebruikt u kolommen selecteren in gegevensset om een gegevensset met de gewenste kolommen te maken.
 
-3. Voer het experiment uit.
+3. Voer de pijplijn uit.
 
 ### <a name="results"></a>Resultaten
-Nadat het experiment is uitgevoerd:
+Nadat de pijp lijn is uitgevoerd:
 
 - Als u de eerste rijen van de nieuwe gegevensset wilt zien, klikt u met de rechter muisknop op de uitvoer van **kolommen toevoegen** en selecteert u visualiseren.
 

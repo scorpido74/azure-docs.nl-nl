@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69611915"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Bestaande Azure Service Bus Standard-naam ruimten migreren naar de Premium-laag
@@ -94,30 +94,30 @@ Als u uw Service Bus Standard-naam ruimte wilt migreren naar Premium met behulp 
 Migratie met behulp van de Azure Portal heeft dezelfde logische stroom als migratie met behulp van de opdrachten. Volg deze stappen om met behulp van de Azure Portal te migreren.
 
 1. Selecteer **migreren naar Premium**in het **Navigatie** menu in het linkerdeel venster. Klik op de knop aan de **slag** om door te gaan naar de volgende pagina.
-    ![Migratie landings pagina][]
+    ][] van ![Migration landings pagina
 
 1. Voltooi de **installatie**.
-   ![Naam ruimte instellen][]
+   ![Setup naam ruimte ][]
    1. Maak de Premium-naam ruimte en wijs deze toe om de bestaande standaard naam ruimte te migreren naar.
-        ![Installatie naam ruimte-Premium-naam ruimte maken][]
+        ![Setup naam ruimte: Premium-naam ruimte maken ][]
    1. Kies een **naam**voor de migratie van de post. U gebruikt deze naam om toegang te krijgen tot de standaard naam ruimte nadat de migratie is voltooid.
-        ![Installatie naam ruimte: de naam van de post migratie kiezen][]
+        ![Setup naam ruimte: Kies de naam van de post migratie ][]
    1. Selecteer **volgende** om door te gaan.
 1. Entiteiten synchroniseren tussen de Standard-en Premium-naam ruimten.
-    ![Setup-naam ruimte-entiteiten synchroniseren-starten][]
+    ![Setup naam ruimte-synchronisatie-entiteiten-starten ][]
 
    1. Selecteer **begin synchronisatie** om te beginnen met het synchroniseren van de entiteiten.
    1. Selecteer **Ja** in het dialoog venster om de synchronisatie te bevestigen en te starten.
    1. Wacht totdat de synchronisatie is voltooid. De status is beschikbaar op de status balk.
-        ![Naam ruimte instellen-entiteiten synchroniseren-voortgang][]
+        ![Setup naam ruimte: synchronisatie-entiteiten: voortgang ][]
         >[!IMPORTANT]
         > Als u de migratie om een of andere reden moet afbreken, raadpleegt u de afbreek stroom in het gedeelte Veelgestelde vragen van dit document.
    1. Nadat de synchronisatie is voltooid, selecteert u **volgende** onder aan de pagina.
 
 1. Bekijk de wijzigingen op de pagina samen vatting. Selecteer **volledige migratie** om te scha kelen tussen naam ruimten en de migratie te volt ooien.
-    ![Switch naam ruimte: menu switch][]  
+    ![Switch naam ruimte: menu switch ][]  
     De bevestigings pagina wordt weer gegeven wanneer de migratie is voltooid.
-    ![Switch naam ruimte-geslaagd][]
+    ![Switch naam ruimte-geslaagd ][]
 
 ## <a name="caveats"></a>Waarschuwingen
 
@@ -169,9 +169,9 @@ De downtime die door de toepassing wordt ervaren, is beperkt tot de tijd die nod
 Nee, er zijn geen code-of configuratie wijzigingen nodig om de migratie uit te voeren. De connection string dat de afzender-en receiver-toepassingen gebruiken om toegang te krijgen tot de standaard naam ruimte wordt automatisch toegewezen om te fungeren als alias voor de Premium-naam ruimte.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Wat gebeurt er wanneer ik de migratie afbreekt?
-De migratie kan worden afgebroken met behulp van `Abort` de opdracht of met behulp van de Azure Portal. 
+De migratie kan worden afgebroken met behulp van de `Abort`-opdracht of met behulp van de Azure Portal. 
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
@@ -179,8 +179,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure Portal
 
-![Stroom afbreken: afbreken van synchronisatie][]
-![afgebroken stroom-afbreken voltooid][]
+![Abort flow annuleren: de synchronisatie ][]
+ ![Abort flow afbreken voltooid ][]
 
 Wanneer het migratie proces wordt afgebroken, wordt het kopiëren van de entiteiten (onderwerpen, abonnementen en filters) van de standaard naar de Premium-naam ruimte afgebroken en wordt de koppeling verbroken.
 
@@ -191,7 +191,7 @@ De entiteiten in de Premium-naam ruimte worden echter niet verwijderd of de Prem
 >[!IMPORTANT]
 > Als u besluit de migratie af te breken, verwijdert u de Premium-naam ruimte die u voor de migratie hebt ingericht, zodat u niet in rekening wordt gebracht voor de resources.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Ik wil de berichten niet hoeven te verwerken. Wat moet ik doen?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Ik wil de berichten niet hoeven te verwerken. Wat kan ik doen?
 
 Er zijn mogelijk berichten die door de toepassingen van de afzender worden verzonden en die zijn toegewezen aan de opslag in de standaard naam ruimte terwijl de migratie plaatsvindt en net voordat de migratie wordt doorgevoerd.
 

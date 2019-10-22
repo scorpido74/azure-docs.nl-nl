@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718726"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375421"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Inzicht in uw Azure-externe servicekosten
 Externe services worden gepubliceerd door softwareleveranciers van derden in Azure Marketplace. SendGrid is bijvoorbeeld een externe service die u in Azure kunt kopen, maar die niet is gepubliceerd door Microsoft. Sommige Microsoft-producten worden ook verkocht via Azure Marketplace.
 
 ## <a name="how-external-services-are-billed"></a>Hoe externe services in rekening worden gebracht
 
-- Als u een [Microsoft-klantovereenkomst](#check-access) hebt, worden uw services van derden gefactureerd met de rest van uw Azure-services.
-- Als u geen Microsoft-klantovereenkomst hebt, worden uw externe services apart van de rest van uw Azure-services gefactureerd.
+- Als u een Microsoft-klantovereenkomst (MCA) of Microsoft Partner-overeenkomst (MPA) hebt, worden uw services van derden gefactureerd met de rest van uw Azure-services. [Controleer uw type factureringsrekening](#check-billing-account-type) om te zien of u toegang hebt tot een MCA of MPA.
+- Als u geen MCA of MPA hebt, worden uw externe services apart van uw Azure-services gefactureerd.
 - Elke externe service heeft een ander factureringsmodel. Sommige services worden gefactureerd op basis van betalen-naar-gebruik, terwijl andere vaste maandelijkse kosten hebben.
 - U kunt geen maandelijks gratis tegoed gebruiken voor externe services. Als u een Azure-abonnement gebruikt dat [gratis tegoed](https://azure.microsoft.com/pricing/spending-limits/) bevat, kan dit niet worden toegepast op kosten van externe services. Wanneer u een nieuwe externe service of resource inricht, wordt een waarschuwing weergegeven:
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Facturen weergeven en downloaden
+## <a name="view-and-download-invoices-for-external-services"></a>Facturen voor externe services weergeven en downloaden
 
-Als u een [Microsoft-klantovereenkomst](#check-access) hebt, staan uw kosten van derden op dezelfde factuur als uw Azure-kosten. Meer informatie over [Hoe u uw Azure-factuur kunt bekijken en downloaden](billing-download-azure-invoice.md) via de Azure-portal om uw kosten van derden te bekijken.
+Als u een Microsoft-klantovereenkomst (MCA) of Microsoft Partner-overeenkomst (MPA) hebt, worden uw services van derden gefactureerd met de rest van uw Azure-services. [Controleer uw type factureringsrekening](#check-billing-account-type) om te zien of u toegang hebt tot een MCA of MPA. Als dat het geval is, raadpleegt u [Facturen weergeven en downloaden in de Azure-portal](billing-download-azure-invoice.md) om uw kosten van derden te bekijken.
 
-Als u geen Microsoft-klantovereenkomst hebt, hebt u aparte facturen voor de kosten van derden. U kunt uw Azure Marketplace-facturen bekijken en downloaden via de Azure-portal door de volgende stappen uit te voeren:
+Als u MCA of MPA hebt, hebt u aparte facturen voor de kosten van derden. U kunt uw Azure Marketplace-facturen bekijken en downloaden via de Azure-portal door de volgende stappen uit te voeren:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar **Cost Management en facturering**.
@@ -108,10 +108,10 @@ Als u een externe serviceorder wilt annuleren, verwijdert u de resource in de [A
     ![Resource verwijderen](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Klik op **Verwijderen**.
 
-## <a name="check-access"></a>Toegang controleren
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Type factureringsrekening controleren
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

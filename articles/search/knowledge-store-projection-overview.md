@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265189"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Werken met projecties in een Knowledge Store in Azure Search
@@ -29,9 +29,9 @@ Projecties kunnen in tabel vorm worden opgeslagen, met gegevens die in rijen en 
 
 Het kennis archief ondersteunt twee soorten projecties:
 
-+ **Tabellen**: Voor gegevens die het beste als rijen en kolommen worden weer gegeven, kunt u met tabel prognoses een geschematiseerde vorm of projectie definiëren in tabel opslag. 
++ **Tabellen**: voor gegevens die het beste als rijen en kolommen worden weer gegeven, kunt u met tabel projecties een geschematiseerde vorm of projectie definiëren in tabel opslag. 
 
-+ **Objecten**: Wanneer u een JSON-weer gave van uw gegevens en verrijkingen nodig hebt, worden object projecties opgeslagen als blobs.
++ **Objecten**: wanneer u een JSON-weer gave van uw gegevens en verrijkingen nodig hebt, worden object projecties opgeslagen als blobs.
 
 Als u de prognoses wilt weer geven die in de context zijn gedefinieerd, kunt u stapsgewijs aan de [slag met kennis opslag](knowledge-store-howto.md).
 
@@ -64,18 +64,18 @@ U kunt één document in uw index in meerdere tabellen projecteren, waarbij de r
 
 ### <a name="defining-a-table-projection"></a>Tabel projectie definiëren
 
-Wanneer u een tabel projectie in het `knowledgeStore` element van uw vaardig heden definieert, begint u met het toewijzen van een knoop punt op de verrijkings structuur met de tabel bron. Dit knoop punt is doorgaans de uitvoer van een **shaper** -vaardigheid die u hebt toegevoegd aan de lijst met vaardig heden voor het produceren van een specifieke vorm die u moet projecteren in tabellen. Het knoop punt dat u hebt gekozen voor project, kan worden gesegmenteerd tot project in meerdere tabellen. De definitie van tabellen is een lijst met tabellen die u wilt projecteren. 
+Bij het definiëren van een tabel projectie binnen het `knowledgeStore` element van uw vaardig heden, begint u met het toewijzen van een knoop punt op de verrijkings structuur met de tabel bron. Dit knoop punt is doorgaans de uitvoer van een **shaper** -vaardigheid die u hebt toegevoegd aan de lijst met vaardig heden voor het produceren van een specifieke vorm die u moet projecteren in tabellen. Het knoop punt dat u hebt gekozen voor project, kan worden gesegmenteerd tot project in meerdere tabellen. De definitie van tabellen is een lijst met tabellen die u wilt projecteren. 
 
 #### <a name="projection-slicing"></a>Projectie segmentering
 Bij het definiëren van een tabel projectie groep kan een enkel knoop punt in de verrijkings structuur worden gesegmenteerd in meerdere gerelateerde tabellen. Het toevoegen van een tabel met een bronpad dat een onderliggend element is van een bestaande tabel projectie resulteert in het onderliggende knoop punt dat wordt afgesneden van het bovenliggende knoop punt en wordt geprojecteerd in de nieuwe, nog gerelateerde tabel. Hierdoor kunt u één knoop punt in een shaper-vaardigheid definiëren die de bron voor al uw tabel projecties kan zijn.
 
 Voor elke tabel zijn drie eigenschappen vereist:
 
-+ TableName De naam van de tabel in Azure Storage.
++ TableName: de naam van de tabel in Azure Storage.
 
-+ generatedKeyName: De kolom naam voor de sleutel waarmee deze rij uniek wordt geïdentificeerd.
++ generatedKeyName: de naam van de kolom voor de sleutel waarmee deze rij uniek wordt geïdentificeerd.
 
-+ Bron Het knoop punt uit de verrijkings structuur waaruit u uw verrijkingen opneemt. Dit is doorgaans de uitvoer van een shaper, maar het kan ook de uitvoer van een van de vaardig heden zijn.
++ Bron: het knoop punt uit de verrijkings structuur waar u uw verrijkingen van bevindt. Dit is doorgaans de uitvoer van een shaper, maar het kan ook de uitvoer van een van de vaardig heden zijn.
 
 Hier volgt een voor beeld van tabel prognoses.
 
@@ -154,9 +154,9 @@ Object projecties zijn JSON-representaties van de verrijkings structuur die vanu
 
 Voor het genereren van een object projectie zijn enkele object-specifieke kenmerken vereist:
 
-+ storageContainer: De container waar de objecten worden opgeslagen
-+ Bron Het pad naar het knoop punt van de verrijkings structuur die de basis vormt van de projectie
-+ Prestatie Een pad dat een unieke sleutel vertegenwoordigt voor het object dat moet worden opgeslagen. Het wordt gebruikt om de naam van de BLOB in de container te maken.
++ storageContainer: de container waar de objecten worden opgeslagen
++ Bron: het pad naar het knoop punt van de verrijkings structuur die de basis vormt van de projectie
++ sleutel: een pad dat een unieke sleutel vertegenwoordigt voor het object dat moet worden opgeslagen. Het wordt gebruikt om de naam van de BLOB in de container te maken.
 
 ## <a name="projection-lifecycle"></a>Projectie levenscyclus
 

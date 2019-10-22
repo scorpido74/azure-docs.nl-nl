@@ -1,5 +1,5 @@
 ---
-title: 'Converteren naar CSV: Module verwijzing'
+title: 'Converteren naar CSV: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module Convert to CSV in Azure Machine Learning service om een gegevensset te converteren naar een CSV-indeling die kan worden gedownload, geëxporteerd of worden gedeeld met R-of python-script modules.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128897"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693200"
 ---
 # <a name="convert-to-csv-module"></a>Converteren naar CSV-module
 
@@ -36,11 +36,11 @@ Wanneer u een gegevensset converteert naar CSV, wordt het bestand opgeslagen in 
 
 ## <a name="how-to-configure-convert-to-csv"></a>Conversie naar CSV configureren
 
-1.  Voeg de module [Convert to CSV](./convert-to-csv.md) toe aan uw experiment. Deze module vindt u in de groep **gegevens indeling** conversies in de-interface. 
+1.  Voeg de module [Convert to CSV](./convert-to-csv.md) toe aan de pijp lijn. Deze module vindt u in de groep **gegevens indeling conversies** in de-interface. 
 
 2. Verbind het met een wille keurige module die een gegevensset uitvoert.   
   
-3.  Voer het experiment uit.
+3.  Voer de pijplijn uit.
 
 ### <a name="results"></a>Resultaten
   
@@ -50,9 +50,9 @@ Dubbel klik op de uitvoer van [converteren naar CSV](./convert-to-csv.md)en sele
  + **Resultaat gegevensset-> downloaden**: Hiermee opent u direct een kopie van de gegevens in CSV-indeling die u kunt opslaan in een lokale map. Als u geen map opgeeft, wordt een standaard bestands naam toegepast en wordt het CSV-bestand opgeslagen in de lokale bibliotheek met **down loads** .
 
 
- + **Resultaat gegevensset-> opslaan als gegevensset**: Slaat het CSV-bestand terug naar de Azure ML-werk ruimte als afzonderlijke gegevensset.
+ + **Resultaat gegevensset-> opslaan als gegevensset**: slaat het CSV-bestand weer op in de Azure ml-werk ruimte als afzonderlijke gegevensset.
 
- + **Gegevens toegangs code genereren**: Azure ML genereert twee sets code voor toegang tot de gegevens, hetzij met behulp van python, hetzij met behulp van R. Kopieer het code fragment in uw toepassing om toegang te krijgen tot de gegevens. (*Gegevens toegangs code genereren wordt binnenkort beschikbaar.* )
+ + **Gegevens toegangs code genereren**: Azure ml genereert twee sets code voor toegang tot de gegevens, hetzij met behulp van python, hetzij met behulp van R. Kopieer het code fragment in uw toepassing om toegang te krijgen tot de gegevens. (*Gegevens toegangs code genereren wordt binnenkort beschikbaar.* )
 
 ## <a name="next-steps"></a>Volgende stappen
 

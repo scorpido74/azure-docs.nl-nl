@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
 ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69616427"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Mongoose gebruiken om verbinding te maken met Cosmos DB
@@ -228,15 +228,15 @@ Vervolgens moet u routes instellen voor het afhandelen van de URL's voor get-, c
 
 Laten we de bovenstaande code nog eens even bekijken. We hebben eerst het bestand index.js, waarmee de node-server wordt ingesteld. In het bestand worden uw routes ingesteld en gedefinieerd. Vervolgens communiceert het bestand routes.js met de hero-service. De service krijgt de opdracht functies op te halen, zoals **getHeroes**, en de aanvraag en respons door te geven. Het bestand hero.service.js haalt het model op en maakt verbinding met Mongo. Vervolgens wordt **getHeroes** uitgevoerd wanneer we deze functie aanroepen en wordt de respons 200 geretourneerd. 
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Voer nu de app uit door de volgende stappen te volgen:
 
 1. Sla alle wijzigingen op in Visual Studio Code. Selecteer aan de linkerkant de knop **Debug** ![pictogram Debug in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) en selecteer vervolgens de knop **Start Debugging** ![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
-1. Schakel nu over naar de browser. Open de **hulpprogramma's voor ontwikkelaars** en ga naar het tabblad **Network**. Ga naar `http://localhost:3000` en daar ziet u de toepassing.
+1. Schakel nu over naar de browser. Open de **hulpprogram ma's voor ontwikkel aars** en het **tabblad netwerk**. Ga naar `http://localhost:3000` en u ziet onze toepassing.
 
-    ![Nieuw Azure Cosmos DB-account in Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    ![Nieuw Azure Cosmos DB-account in de Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
 Er zijn nog geen hero's opgeslagen in de app. In het volgende deel van deze reeks zelfstudies gaan we put-, push- en delete-functionaliteit toevoegen. Vervolgens kunnen we helden toevoegen, bijwerken en verwijderen via de gebruikers interface met behulp van Mongoose-verbindingen met onze Azure Cosmos-data base. 
 
@@ -253,4 +253,4 @@ Wanneer u de resources niet meer nodig hebt, kunt u de resourcegroep, het Azure 
 Ga verder met deel 6 van de reeks zelfstudies om de functies Post, Put en Delete toe te voegen aan de app:
 
 > [!div class="nextstepaction"]
-> [Deel 6: De functies Post, Put en Delete aan de app toevoegen](tutorial-develop-mongodb-nodejs-part6.md)
+> [Deel 6: functies voor post, put en delete toevoegen aan de app](tutorial-develop-mongodb-nodejs-part6.md)

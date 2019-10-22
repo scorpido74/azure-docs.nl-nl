@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 39a7e78085f297838a028489de23c1991b6d672f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018750"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693437"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall (preview-versie)
 
@@ -35,66 +35,66 @@ Een samen vatting van de stappen voor het vergren delen van uitgaand verkeer van
 1. Maak een firewall.
 1. Toepassings regels toevoegen aan de firewall
 1. Voeg netwerk regels toe aan de firewall.
-1. Maak een routeringstabel.
+1. Een routerings tabel maken.
 
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Een nieuwe firewall voor uw cluster maken
 
 1. Maak een subnet met de naam **AzureFirewallSubnet** in het virtuele netwerk waarin uw cluster zich bevindt. 
-1. Maak een nieuwe firewall **test-FW01** met behulp van [de stappen in de zelf studie: Implementeer en configureer Azure Firewall met behulp](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)van de Azure Portal.
+1. Maak een nieuwe firewall **test-FW01** met behulp van de stappen in [zelf studie: implementeer en configureer Azure Firewall met behulp van de Azure Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
 
 ### <a name="configure-the-firewall-with-application-rules"></a>De firewall configureren met toepassings regels
 
 Maak een toepassings regel verzameling waarmee het cluster belang rijke communicatie kan verzenden en ontvangen.
 
-Selecteer de nieuwe firewall **test-FW01** van de Azure Portal. Klik op **regels** onder **instellingen** > **toepassings regel verzameling** > **toepassings regel verzameling toevoegen**.
+Selecteer de nieuwe firewall **test-FW01** van de Azure Portal. Klik op **regels** onder **instellingen**  > **toepassings regel verzameling**  > **toepassings regel verzameling toevoegen**.
 
-![Hoofd Verzameling met toepassingsregels toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Titel: toepassings regel verzameling toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Voer de volgende stappen uit op het scherm **toepassings regel toevoegen** :
 
 1. Voer een **naam**en **prioriteit**in en klik op **toestaan** in het vervolg keuzemenu **actie** , en voer de volgende regels in in het **gedeelte FQDN-labels** :
 
-   | **Name** | **Bron adres** | **FQDN-label** | **Opmerkingen** |
+   | **Naam** | **Bron adres** | **FQDN-label** | **Opmerkingen** |
    | --- | --- | --- | --- |
    | Rule_1 | * | HDInsight en WindowsUpdate | Vereist voor HDI-Services |
 
 1. Voeg de volgende regels toe aan de **sectie FQDN-doel items** :
 
-   | **Name** | **Bron adres** | **Protocol:Port** | **Doel-FQDN-naam** | **Opmerkingen** |
+   | **Naam** | **Bron adres** | **Protocol: poort** | **Doel-FQDN-naam** | **Opmerkingen** |
    | --- | --- | --- | --- | --- |
-   | Rule_2 | * | https:443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
-   | Rule_3 | * | https:443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
-   | Rule_4 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld voor het opslag account. |
+   | Rule_2 | * | https: 443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
+   | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
+   | Rule_4 | * | https: 443, http: 80 | < storage_account_name. blob. core. Windows. net > | Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld voor het opslag account. |
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
-   ![Hoofd Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>De firewall met netwerk regels configureren
 
 Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
 1. Selecteer de nieuwe firewall **test-FW01** van de Azure Portal.
-1. Klik op **regels** onder **instellingen** > **netwerk regel verzameling** > **netwerk regel verzameling toevoegen**.
+1. Klik op **regels** onder **instellingen**  > **netwerk regel verzameling**  > **netwerk regel verzameling toevoegen**.
 1. Voer op het scherm **netwerk regel verzameling toevoegen** een **naam**en **prioriteit**in en klik op **toestaan** in het vervolg keuzemenu **actie** .
 1. Maak de volgende regels in de sectie **IP-adressen** :
 
-   | **Name** | **Protocol** | **Bron adres** | **Doel adres** | **Doel poort** | **Opmerkingen** |
+   | **Naam** | **Protocol** | **Bron adres** | **Doel adres** | **Doel poort** | **Opmerkingen** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_1 | UDP | * | * | `123` | Time-service |
-   | Rule_2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal | 
-   | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | `*` | Als u Azure Data Lake Storage gebruikt, kunt u in de sectie IP-adressen een netwerk regel toevoegen om een SNI-probleem met ADLS Gen1 en Gen2 te verhelpen. Met deze optie wordt het verkeer naar de firewall doorgestuurd. Dit kan leiden tot hogere kosten voor grote gegevens belasting, maar het verkeer wordt vastgelegd en gecontroleerd in Firewall Logboeken. Bepaal het IP-adres voor uw Data Lake Storage-account. U kunt een Power shell-opdracht gebruiken `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` , bijvoorbeeld om de FQDN om te zetten in een IP-adres.|
+   | Rule_1 | EDP | * | * | `123` | Time-service |
+   | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal | 
+   | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | `*` | Als u Azure Data Lake Storage gebruikt, kunt u in de sectie IP-adressen een netwerk regel toevoegen om een SNI-probleem met ADLS Gen1 en Gen2 te verhelpen. Met deze optie wordt het verkeer naar de firewall doorgestuurd. Dit kan leiden tot hogere kosten voor grote gegevens belasting, maar het verkeer wordt vastgelegd en gecontroleerd in Firewall Logboeken. Bepaal het IP-adres voor uw Data Lake Storage-account. U kunt een Power shell-opdracht zoals `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` gebruiken om de FQDN om te zetten in een IP-adres.|
    | Rule_4 | TCP | * | * | `12000` | Beschrijving Als u Log Analytics gebruikt, maakt u een netwerk regel in de sectie IP-adressen om communicatie met uw Log Analytics-werk ruimte in te scha kelen. |
 
 1. Maak de volgende regels in de sectie **service Tags** :
 
-   | **Name** | **Protocol** | **Bron adres** | **Service Tags** | **Doel poort** | **Opmerkingen** |
+   | **Naam** | **Protocol** | **Bron adres** | **Service Tags** | **Doel poort** | **Opmerkingen** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_7 | TCP | * | SQL | `1433` | Configureer een netwerk regel in het gedeelte service tags voor SQL waarmee u het SQL-verkeer kunt registreren en controleren, tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt overgeslagen. |
 
 1. Klik op **toevoegen** om het maken van de netwerk regel verzameling te volt ooien.
 
-   ![Hoofd Toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Titel: toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Een route tabel maken en configureren
 
@@ -113,14 +113,14 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 1. Klik op **routes** onder **instellingen**.
 1. Klik op **toevoegen** om routes te maken voor de IP-adressen in de onderstaande tabel.
 
-| Routenaam | Adresvoorvoegsel | Volgend hoptype | Volgend hopadres |
+| Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | N.v.t. |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | N.v.t. |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | N.V.T. |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | N.V.T. |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | N.V.T. |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | N.V.T. |
+| 13.67.223.215 | 13.67.223.215/32 | Internet | N.V.T. |
+| 40.86.83.253 | 40.86.83.253/32 | Internet | N.V.T. |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.1.1.4 |
 
 De configuratie van de route tabel volt ooien:
@@ -139,9 +139,9 @@ Routes moeten worden gemaakt voor het toepassings verkeer om asymmetrische route
 
 Als uw toepassingen andere afhankelijkheden hebben, moeten ze worden toegevoegd aan uw Azure Firewall. Maak toepassings regels om HTTP/HTTPS-verkeer en netwerk regels voor alle andere toe te staan.
 
-## <a name="logging"></a>Logboekregistratie
+## <a name="logging-and-scale"></a>Logboek registratie en-schaal
 
-Azure Firewall kunt logboeken naar een aantal verschillende opslag systemen verzenden. Volg de stappen in [de zelf studie voor instructies over het configureren van logboek registratie voor uw firewall: Azure Firewall logboeken en metrische gegevens](../firewall/tutorial-diagnostics.md)bewaken.
+Azure Firewall kunt logboeken naar een aantal verschillende opslag systemen verzenden. Volg de stappen in de [zelf studie: Monitor Azure firewall logboeken en metrische gegevens](../firewall/tutorial-diagnostics.md)voor instructies over het configureren van logboek registratie voor uw firewall.
 
 Als u de logboek registratie-instellingen hebt voltooid en u gegevens wilt Log Analytics, kunt u het geblokkeerde verkeer bekijken met een query zoals de volgende:
 
@@ -151,8 +151,12 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Het integreren van uw Azure Firewall met Azure Monitor-Logboeken is handig wanneer u voor het eerst van een toepassing werkt wanneer u niet op de hoogte bent van alle toepassings afhankelijkheden. U kunt meer informatie over Azure Monitor logboeken van het [analyseren van logboek gegevens in azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
+Zie [Dit](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) document voor meer informatie over de schaal limieten van Azure firewall en het verhogen van de aanvraag.
+
 ## <a name="access-to-the-cluster"></a>Toegang tot het cluster
-Nadat de firewall is geïnstalleerd, kunt u het interne eind punt (`https://<clustername>-int.azurehdinsight.net`) gebruiken om toegang te krijgen tot de Ambari vanuit het VNET. Als u het open bare eind`https://<clustername>.azurehdinsight.net`punt () of SSH`<clustername>-ssh.azurehdinsight.net`-eind punt () wilt gebruiken, zorg er dan voor dat u de juiste routes in de route tabel en de NSG-instellingen hebt ingesteld om te voor komen dat het Assymetric-routerings probleem [hier](https://docs.microsoft.com/azure/firewall/integrate-lb)wordt uitgelegd.
+Nadat de firewall is geïnstalleerd, kunt u het interne eind punt (`https://<clustername>-int.azurehdinsight.net`) gebruiken om toegang te krijgen tot de Ambari van binnen het VNET. 
+
+Als u het open bare eind punt (`https://<clustername>.azurehdinsight.net`) of SSH-eind punt (`<clustername>-ssh.azurehdinsight.net`) wilt gebruiken, moet u ervoor zorgen dat u de juiste routes in de route tabel en NSG-regels hebt om te voor komen dat het Assymetric-routerings probleem [hier](https://docs.microsoft.com/azure/firewall/integrate-lb)wordt uitgelegd. In dit geval moet u het IP-adres van de client in de regels voor binnenkomende NSG toestaan en dit ook toevoegen aan de door de gebruiker gedefinieerde route tabel, waarbij de volgende hop is ingesteld als `internet`. Als deze niet correct is ingesteld, ziet u een time-outfout.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Een ander virtueel netwerk apparaat configureren
 
@@ -169,7 +173,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 ### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten
 
-| **Endpoint** |
+| **Endpoints** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -177,12 +181,12 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 #### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
 
-| **Endpoint** | **Details** |
+| **Endpoints** | **Details** |
 |---|---|
 | \*:123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
 | [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Dit zijn de HDInsight-service |
 | Privé-IP-adressen van AAD-DS voor ESP-clusters |
-| \*: 16800 voor KMS Windows-activering |
+| \*:16800 voor KMS Windows-activering |
 | \*12000 voor Log Analytics |
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden
@@ -190,7 +194,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 >[!Important]
 > De onderstaande lijst bevat alleen enkele van de belangrijkste FQDN-namen. U kunt de volledige lijst met FQDN-namen ophalen voor het configureren van uw NVA [in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
 
-| **Endpoint**                                                          |
+| **Endpoints**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

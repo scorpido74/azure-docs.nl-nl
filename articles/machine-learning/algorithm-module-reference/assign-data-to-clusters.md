@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens toewijzen aan cluster: Module verwijzing'
+title: 'Gegevens toewijzen aan cluster: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module gegevens toewijzen aan cluster in Azure Machine Learning service om het cluster model te scoren.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3caf568590beb5b1f9d346d472c93f134a4f3a5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128993"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693235"
 ---
-# <a name="module-assign-data-to-clusters"></a>Programma Gegevens toewijzen aan clusters
+# <a name="module-assign-data-to-clusters"></a>Module: gegevens toewijzen aan clusters
 
 In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* kunt gebruiken in de Azure machine learning Visual-Interface. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
 
@@ -44,9 +44,9 @@ De module gegevens toewijzen aan clusters retourneert een gegevensset die de waa
   
     Als u dit selectie vakje uitschakelt, worden alleen de resultaten geretourneerd. Deze optie kan nuttig zijn bij het maken van voor spellingen als onderdeel van een webservice.
   
-5.  Voer het experiment uit.  
+5.  Voer de pijplijn uit.  
   
 ### <a name="results"></a>Resultaten
 
-+  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module,selecteert u **resultaat gegevens sets**en selecteert u vervolgens visualiseren.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en selecteert u vervolgens **visualiseren**.
 

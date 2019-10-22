@@ -1,5 +1,5 @@
 ---
-title: 'Voorbeeld: Facetten met meerdere niveaus-Azure Search'
+title: 'Voor beeld: facetten met meerdere niveaus-Azure Search'
 description: Meer informatie over het bouwen van facet structuren voor taxonomieën op meerdere niveaus, het maken van een geneste navigatie structuur die u op toepassings pagina's kunt invoegen.
 author: HeidiSteen
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70274087"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Voorbeeld: Facetten met meerdere niveaus in Azure Search
+# <a name="example-multi-level-facets-in-azure-search"></a>Voor beeld: facetten met meerdere niveaus in Azure Search
 
 Azure Search-schema's bieden geen expliciete ondersteuning voor taxonomie categorieën met meerdere niveaus, maar u kunt ze benaderen door inhoud te bewerken voordat u de indexeert en vervolgens een speciale verwerking toe te passen op de resultaten. 
 
@@ -35,21 +35,21 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![Query resultaten](./media/search-example-adventureworks/prod-query-results.png "Query resultaten")
+  ![Query resultaten](./media/search-example-adventureworks/prod-query-results.png "Queryresultaten")
 
 ## <a name="indexing-to-a-collection-field"></a>Indexeren naar een verzamelings veld
 
 Maak in de index die deze structuur bevat, een **verzameling (EDM. String)** in het Azure Search schema om deze gegevens op te slaan. Zorg er ook voor dat veld kenmerken kunnen worden doorzocht, gefilterd, facetbaar en ophalen.
 
-Wanneer u inhoud indexeert die verwijst naar een specifieke taxonomie categorie, verzendt u de taxonomie als een matrix met tekst van elk niveau van de taxonomie. Indien bijvoorbeeld voor een entiteit met `ProductCategoryId = 5 (Mountain Bikes)`, het veld verzenden als`[ "Bikes", "Bikes|Mountain Bikes"]`
+Wanneer u inhoud indexeert die verwijst naar een specifieke taxonomie categorie, verzendt u de taxonomie als een matrix met tekst van elk niveau van de taxonomie. Indien een entiteit bijvoorbeeld `ProductCategoryId = 5 (Mountain Bikes)`, dient u het veld in te dienen als `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 U ziet dat de bovenliggende categorie ' Bikes ' in de waarde ' Mountain Bikes ' van de onderliggende categorie wordt opgenomen. Elke subcategorie moet het volledige pad insluiten ten opzichte van het hoofd element. Het sluis teken is wille keurig, maar het moet consistent zijn en mag niet in de bron tekst worden weer gegeven. Het scheidings teken wordt gebruikt in de toepassings code om de taxonomie structuur opnieuw te maken op basis van de facet resultaten.
 
 ## <a name="construct-the-query"></a>De query maken
 
-Bij het uitvoeren van query's, neemt u de volgende facet specificatie op (waarbij taxonomie het facetel taxonomie veld is):`facet = taxonomy,count:50,sort:value`
+Bij het uitvoeren van query's, neemt u de volgende facet specificatie op (waarbij taxonomie het facetel taxonomie veld is): `facet = taxonomy,count:50,sort:value`
 
-De Count-waarde moet hoog genoeg zijn om alle mogelijke taxonomie waarden te retour neren. De AdventureWorks-gegevens bevatten 41 afzonderlijke taxonomie waarden, `count:50` dus voldoende.
+De Count-waarde moet hoog genoeg zijn om alle mogelijke taxonomie waarden te retour neren. De AdventureWorks-gegevens bevatten 41 afzonderlijke taxonomie waarden, dus `count:50` is voldoende.
 
   ![Facet filter](./media/search-example-adventureworks/facet-filter.png "Facet filter")
 
@@ -89,8 +89,8 @@ Het object **Categorieën** kan nu worden gebruikt om een samenvouw bare taxonom
  
 Voor elke koppeling in de structuur moet het gerelateerde filter worden toegepast. Bijvoorbeeld:
 
-+ **taxonomie/alle** `(x:x eq 'Accessories')` documenten in de vertakking accessoires worden geretourneerd
-+ **taxonomie/wille keurig** `(x:x eq 'Accessories|Bike Racks')` retourneert alleen de documenten met een subcategorie fiets racks onder de vertakking accessoires.
++ **taxonomie/alle** `(x:x eq 'Accessories')` retourneert alle documenten in de vertakking accessoires
++ **taxonomie/elke** `(x:x eq 'Accessories|Bike Racks')` retourneert alleen de documenten met een subcategorie fiets racks onder de vertakking accessoires.
 
 Deze techniek wordt geschaald voor complexere scenario's, zoals diepere taxonomie structuren en dubbele subcategorieën die optreden onder verschillende bovenliggende categorieën (bijvoorbeeld `Bike Components|Forks` en `Camping Equipment|Forks`).
 
@@ -99,4 +99,4 @@ Deze techniek wordt geschaald voor complexere scenario's, zoals diepere taxonomi
 
 ## <a name="see-also"></a>Zie ook
 
-[Voorbeeld: De AdventureWorks Inventory data base model leren voor Azure Search](search-example-adventureworks-modeling.md)
+[Voor beeld: de AdventureWorks-inventarisatie database voor Azure Search model leren](search-example-adventureworks-modeling.md)

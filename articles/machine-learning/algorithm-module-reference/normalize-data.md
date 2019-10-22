@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens normaliseren: Module verwijzing'
+title: 'Gegevens normaliseren: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module normaliseren gegevens in Azure Machine Learning service om een gegevensset te transformeren met behulp van *normalisatie*.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c77ebbe8569ffd221fadb5b98a54fc26d0d70893
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128571"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692697"
 ---
 # <a name="normalize-data-module"></a>Gegevens module normaliseren
 
@@ -32,7 +32,7 @@ Deze module biedt verschillende opties voor het transformeren van numerieke gege
 
 - U kunt alle waarden wijzigen in een 0-1-schaal of de waarden transformeren door ze te vertegenwoordigen als percentiel posities in plaats van absolute waarden.
 - U kunt normalisatie Toep assen op één kolom of op meerdere kolommen in dezelfde gegevensset.
-- Als u het experiment wilt herhalen of dezelfde normalisatie stappen op andere gegevens wilt Toep assen, kunt u de stappen als een normalisatie transformatie opslaan en deze Toep assen op andere gegevens sets die hetzelfde schema hebben.
+- Als u de pijp lijn moet herhalen of dezelfde normalisatie stappen op andere gegevens wilt Toep assen, kunt u de stappen als een normalisatie transformatie opslaan en deze Toep assen op andere gegevens sets die hetzelfde schema hebben.
 
 > [!WARNING]
 > Voor sommige algoritmen moeten gegevens worden genormaliseerd voordat een model kan worden getraind. Andere algoritmen voeren hun eigen gegevens schaaling of normalisatie uit. Daarom moet u, wanneer u een machine learning algoritme kiest om te gebruiken bij het bouwen van een voorspellend model, de gegevens vereisten van het algoritme controleren voordat u normalisatie toepast op de trainings gegevens.
@@ -41,7 +41,7 @@ Deze module biedt verschillende opties voor het transformeren van numerieke gege
 
 U kunt per keer slechts één normalisatie methode Toep assen met behulp van deze module. Daarom wordt dezelfde normalisatie methode toegepast op alle kolommen die u selecteert. Als u verschillende normalisatie methoden wilt gebruiken, moet u een tweede exemplaar van **normaliseren gegevens**gebruiken.
 
-1. Voeg de module **Normal data-gegevens** toe aan uw experiment. U kunt de module vinden in Azure Machine Learning, onder **gegevens transformatie**, in de categorie **schalen en verminderen** .
+1. Voeg de module **Normal data-gegevens** toe aan de pijp lijn. U kunt de module vinden in Azure Machine Learning, onder **gegevens transformatie**, in de categorie **schalen en verminderen** .
 
 2. Verbind een gegevensset die ten minste één kolom met alle getallen bevat.
 
@@ -54,11 +54,11 @@ U kunt per keer slechts één normalisatie methode Toep assen met behulp van dez
     > [!TIP]
     > Om ervoor te zorgen dat kolommen van een specifiek type als invoer worden opgegeven, probeert u de module [select columns in dataset uit](./select-columns-in-dataset.md) te voeren voordat u **gegevens normaliseert**.
 
-4. **0 gebruiken voor constante kolommen wanneer dit selectie vakje is ingeschakeld**:  Selecteer deze optie als een wille keurige numerieke kolom één ongewijzigde waarde bevat. Dit zorgt ervoor dat dergelijke kolommen niet worden gebruikt in normalisatie bewerkingen.
+4. **0 voor constante kolommen gebruiken wanneer dit selectie**vakje is ingeschakeld: Selecteer deze optie als een wille keurige numerieke kolom één ongewijzigde waarde bevat. Dit zorgt ervoor dat dergelijke kolommen niet worden gebruikt in normalisatie bewerkingen.
 
 5. Kies in de vervolg keuzelijst **transformatie methode** één wiskundige functie die u wilt Toep assen op alle geselecteerde kolommen. 
   
-    - **Zscore**: Converteert alle waarden naar een z-Score.
+    - **Zscore**: converteert alle waarden naar een z-Score.
     
       De waarden in de kolom worden getransformeerd met behulp van de volgende formule:  
   
@@ -66,7 +66,7 @@ U kunt per keer slechts één normalisatie methode Toep assen met behulp van dez
   
       Gemiddelde en standaard afwijking worden voor elke kolom afzonderlijk berekend. Standaard deviatie voor populatie wordt gebruikt.
   
-    - **MinMax**: Met de min-maximum normalisatie wordt elke functie lineair geschaald naar het interval van [0, 1].
+    - **MinMax**: met de min-maximum normalisatie wordt elke functie lineair geschaald naar het interval van [0, 1].
     
       U kunt het interval voor [0, 1] opnieuw schalen door de waarden van elke functie te verschuiven zodat de minimale waarde 0 is en vervolgens te delen door de nieuwe maximale waarde (dit is het verschil tussen de oorspronkelijke maximum-en minimum waarden).
       
@@ -74,11 +74,11 @@ U kunt per keer slechts één normalisatie methode Toep assen met behulp van dez
   
       ![normalisatie met de functie min&#45;Max](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
   
-    - **Logistiek**: De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
+    - **Logistiek**: de waarden in de kolom worden getransformeerd met behulp van de volgende formule:
 
       ![formule voor normalisatie per logistiek functie](media/module/aml-normalization-logistic.png "AML_normalization-logistiek")  
   
-    - **Logaritmisch**: Met deze optie worden alle waarden geconverteerd naar een logaritmische schaal.
+    - **Logaritmisch**: met deze optie worden alle waarden geconverteerd naar een logaritmische schaal.
   
       De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
   
@@ -86,19 +86,19 @@ U kunt per keer slechts één normalisatie methode Toep assen met behulp van dez
     
       Hier zijn μ en σ de para meters van de distributie, berekend op basis van de gegevens als Maxi maal waarschijnlijke schattingen voor elke kolom afzonderlijk.  
   
-    - **TanH**: Alle waarden worden geconverteerd naar een hyperbolische tangens.
+    - **TanH**: alle waarden worden geconverteerd naar een hyperbolische tangens.
     
       De waarden in de kolom worden getransformeerd met behulp van de volgende formule:
     
       ![normalisatie met de functie tanh](media/module/aml-normalization-tanh.png "AML_normalization-TANH")
 
-6. Voer het experiment uit of dubbel klik op de module **normaliseren gegevens** en selecteer **geselecteerde uitvoeren**. 
+6. Voer de pijp lijn uit of dubbel klik op de module **normaliseren gegevens** en selecteer **geselecteerde uitvoeren**. 
 
 ## <a name="results"></a>Resultaten
 
 In de module **normaliseren gegevens** worden twee uitvoer gegenereerd:
 
-- Als u de getransformeerde waarden wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u getransformeerde **gegevensset**en klikt u op **visualiseren**.
+- Als u de getransformeerde waarden wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **getransformeerde gegevensset**en klikt u op **visualiseren**.
 
     Standaard worden waarden getransformeerd. Als u de getransformeerde waarden wilt vergelijken met de oorspronkelijke waarden, gebruikt u de module [kolommen toevoegen](./add-columns.md) om de gegevens sets opnieuw samen te voegen en de kolommen naast elkaar weer te geven.
 
