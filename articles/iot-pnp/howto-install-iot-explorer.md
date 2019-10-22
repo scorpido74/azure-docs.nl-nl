@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960579"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679858"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u:
 Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende nodig:
 
 - Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de tijdelijke aanduidingen `{YourIoTHubName}` en `{YourDeviceID}` vervangt door de waarden:
+- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de `{YourIoTHubName}` en `{YourDeviceID}` tijdelijke aanduidingen vervangt door de waarden:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -51,13 +51,13 @@ De model definitie voor een IoT-Plug en Play apparaat wordt opgeslagen in de ope
 
 Een bron toevoegen:
 
-1. Ga naar **instellingen**.
+1. Ga naar **Settings**.
 1. Selecteer **Nieuw** en kies uw bron.
 1. Als u uw bedrijfs model opslagplaats toevoegt, geeft u de connection string op.
 
 Een bron verwijderen:
 
-1. Ga naar **instellingen**.
+1. Ga naar **Settings**.
 1. Zoek de bron die u wilt verwijderen.
 1. Selecteer **X** om deze te verwijderen. U kunt de open bare model opslagplaats niet verwijderen omdat de algemene interface definities afkomstig zijn uit deze opslag plaats.
 
@@ -73,27 +73,33 @@ Op de pagina met **apparaten** lijst kunt u het volgende doen:
 
 - Selecteer **toevoegen** om een nieuw apparaat bij uw hub te registreren. Voer vervolgens een apparaat-ID in. Gebruik de standaard instellingen om automatisch verificatie sleutels te genereren en de verbinding met uw hub in te scha kelen.
 - Selecteer een apparaat en selecteer vervolgens **verwijderen** om een apparaat-id te verwijderen. Controleer de details van het apparaat voordat u deze actie voltooit, zodat u zeker weet dat u de juiste apparaat-id wilt verwijderen.
-- Query door `capabilityID` en `interfaceID`. Voeg uw `capabilityID` of `interfaceID` toe als para meter voor het opvragen van uw apparaten.
+- Query's uitvoeren op `capabilityID` en `interfaceID`. Voeg uw `capabilityID` of `interfaceID` als een para meter toe om uw apparaten te doorzoeken.
 
 ## <a name="interact-with-a-device"></a>Interactie met een apparaat
 
-Selecteer op de pagina **apparaten** lijst een waarde in de kolom **apparaat-id** om de detail pagina voor het geregistreerde apparaat weer te geven. Voor het apparaat zijn er twee secties: **Apparaat** en **digitale dubbele**.
+Selecteer op de pagina **apparaten** lijst een waarde in de kolom **apparaat-id** om de detail pagina voor het geregistreerde apparaat weer te geven. Voor elk apparaat zijn er twee secties: **apparaat** en **digitaal twee**.
 
 ### <a name="device"></a>Apparaat
 
-Deze sectie bevat de tabbladen **apparaat-id**, **dubbele apparaten**en **telemetrie** .
+Deze sectie bevat de tabbladen **apparaat-id**, **dubbele**, **telemetrie**, **directe methode** en **Cloud-naar-apparaat-berichten** .
 
 - U kunt de gegevens van de [apparaat-id](../iot-hub/iot-hub-devguide-identity-registry.md) weer geven en bijwerken op het tabblad **apparaat-id** .
 - U kunt de dubbele gegevens van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md) openen op het tabblad **apparaat dubbele** .
 - Als een apparaat is verbonden en actief gegevens verzendt, kunt u de [telemetrie](../iot-hub/iot-hub-devguide-messages-read-builtin.md) weer geven op het tabblad **telemetrie** .
+- U kunt op het tabblad **directe methode** een [rechtstreekse methode](../iot-hub/iot-hub-devguide-direct-methods.md) aanroepen op het apparaat.
+- U kunt een [Cloud-naar-apparaat-bericht](../iot-hub/iot-hub-devguide-messages-c2d.md) verzenden op het tabblad **Cloud-naar-apparaat-berichten** .
 
 ### <a name="digital-twin"></a>Digitale dubbele
 
-U kunt het hulp programma gebruiken om een digitale dubbele instantie van het apparaat weer te geven. In dit artikel worden alle interfaces weer gegeven die zijn gekoppeld aan het mogelijkheidsprofiel voor een IoT-Plug en Play apparaat. Selecteer een interface om de bijbehorende [IOT-Plug en Play primitieven](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)uit te vouwen.
+U kunt het hulp programma gebruiken om een digitale dubbele instantie van het apparaat weer te geven. In deze sectie van het hulp programma worden alle interfaces weer gegeven die zijn gekoppeld aan het mogelijkheidsprofiel voor een IoT-Plug en Play apparaat. Selecteer een interface om de bijbehorende [IOT-Plug en Play primitieven](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)uit te vouwen.
 
-#### <a name="properties"></a>properties
+### <a name="interface"></a>Interface
 
-U kunt de alleen-lezen eigenschappen die zijn gedefinieerd in een interface op de pagina **Eigenschappen** weer geven. U kunt de Beschrijf bare eigenschappen die in een interface zijn gedefinieerd, bijwerken op de pagina **Schrijf bare eigenschappen** .
+Op de pagina **Interface** kunt u de JSON-definitie van de interface weer geven.
+
+#### <a name="properties"></a>Eigenschappen
+
+U kunt de alleen-lezen eigenschappen die zijn gedefinieerd in een interface op de pagina **niet-Beschrijf bare eigenschappen** weer geven. U kunt de Beschrijf bare eigenschappen die in een interface zijn gedefinieerd, bijwerken op de pagina **Schrijf bare eigenschappen** :
 
 1. Ga naar de pagina met **Beschrijf bare eigenschappen** .
 1. Klik op de eigenschap die u wilt bijwerken.

@@ -1,6 +1,6 @@
 ---
-title: AS2-berichten voor B2B Enter prise Integration-Azure Logic Apps
-description: AS2-berichten uitwisselen in Azure Logic Apps met Enterprise Integration Pack
+title: AS2-berichten verzenden en ontvangen voor B2B-Azure Logic Apps
+description: AS2-berichten uitwisselen voor B2B-scenario's voor bedrijfs integratie met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656387"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680386"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
@@ -54,7 +54,7 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De logische app van waaruit u de AS2-connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De AS2-connector biedt alleen acties, geen triggers. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* De logische app van waaruit u de AS2-connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De AS2-connector biedt alleen acties, geen triggers. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en gekoppeld aan de logische app waar u de AS2-connector wilt gaan gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
@@ -62,9 +62,9 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 * Voordat u de AS2-connector kunt gebruiken, moet u een AS2- [overeenkomst](../logic-apps/logic-apps-enterprise-integration-agreements.md) maken tussen uw handels partners en de overeenkomst opslaan in uw integratie account.
 
-* Als u [Azure Key Vault](../key-vault/key-vault-overview.md) gebruikt voor certificaat beheer, controleert u of uw kluis sleutels de bewerkingen voor **versleuteling** en ontsleuteling toestaan. Anders mislukken de coderings-en decodeer acties.
+* Als u [Azure Key Vault](../key-vault/key-vault-overview.md) gebruikt voor certificaat beheer, controleert u of uw kluis sleutels de bewerkingen voor **versleuteling** en **ontsleuteling** toestaan. Anders mislukken de coderings-en decodeer acties.
 
-  Ga in het Azure Portal naar uw sleutel kluis, Bekijk de **toegestane bewerkingen**van uw kluis sleutel en bevestig dat de bewerkingen versleutelen en ontsleutelen zijn geselecteerd.
+  Ga in het Azure Portal naar uw sleutel kluis, Bekijk de **toegestane bewerkingen**van uw kluis sleutel en bevestig dat de bewerkingen **versleutelen** en **ontsleutelen** zijn geselecteerd.
 
   ![Controleer de bewerkingen van de kluis sleutel](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
@@ -76,13 +76,13 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 1. Voeg in de ontwerp functie een nieuwe actie toe aan uw logische app.
 
-1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 encode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2-code ring**
+1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 encode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 Encode**
 
    ![Selecteer ' AS2 encode '](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
 1. Geef nu informatie op voor deze eigenschappen:
 
-   | Eigenschap | Description |
+   | Eigenschap | Beschrijving |
    |----------|-------------|
    | **Bericht dat moet worden gecodeerd** | De bericht lading |
    | **AS2 van** | De id van de afzender van het bericht zoals opgegeven door de AS2-overeenkomst |

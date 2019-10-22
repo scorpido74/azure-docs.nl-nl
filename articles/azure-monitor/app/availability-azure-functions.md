@@ -1,22 +1,18 @@
 ---
 title: Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 description: In dit document wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie gegeven in de functie Timer trigger. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken als deze niet beschikbaar is in uw regio.
-services: application-insights
-documentationcenter: ''
-author: morgangrobin
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: morgangrobin
 ms.author: mogrobin
-ms.openlocfilehash: 38a83169a7d1ffa03416f5947ada703bcba5017a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: a2b29f2c24a3244cdc800d882e7c2ed8f943eabe
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301371"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677586"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 

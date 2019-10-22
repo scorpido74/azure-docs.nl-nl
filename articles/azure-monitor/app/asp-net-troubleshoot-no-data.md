@@ -1,23 +1,18 @@
 ---
 title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/23/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b4bfd984f1e169cb1044002118f9534c4efc9bd8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 07/23/2018
+ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169582"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678329"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problemen met ontbrekende gegevens oplossen - Application Insights voor .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Er ontbreekt een deel van de telemetrie
@@ -34,7 +29,7 @@ ms.locfileid: "71169582"
 
 *Er treden gegevens verloren in de console-app of op Web-apps wanneer de app wordt gestopt.*
 
-* Het SDK-kanaal houdt telemetrie in de buffer en verzendt deze in batches. Als de toepassing wordt afgesloten, moet u mogelijk expliciet [Flush ()](api-custom-events-metrics.md#flushing-data)aanroepen. Gedrag van `Flush()` hangt af van het gebruikte [kanaal](telemetry-channels.md#built-in-telemetry-channels) .
+* Het SDK-kanaal houdt telemetrie in de buffer en verzendt deze in batches. Als de toepassing wordt afgesloten, moet u mogelijk expliciet [Flush ()](api-custom-events-metrics.md#flushing-data)aanroepen. Het gedrag van `Flush()` is afhankelijk van het daad werkelijke [kanaal](telemetry-channels.md#built-in-telemetry-channels) dat wordt gebruikt.
 
 ## <a name="no-data-from-my-server"></a>Geen gegevens van mijn server
 *Ik heb mijn app op mijn webserver geïnstalleerd en nu zie ik geen telemetrie. De werk ervaring op mijn dev machine is OK.*
@@ -67,7 +62,7 @@ Holpen
 
 * Controleer of u aanmeldings referenties hebt ingesteld voor het juiste Azure-account.
 * Controleer of u toegang hebt tot de [Azure Portal](https://portal.azure.com)in uw browser. Open instellingen en controleer of er beperkingen gelden.
-* [Application Insights toevoegen aan uw bestaande project](../../azure-monitor/app/asp-net.md): Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights toevoegen.
+* [Application Insights toevoegen aan uw bestaande project](../../azure-monitor/app/asp-net.md): klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights toevoegen.
 
 ## <a name="emptykey"></a>Er wordt een fout bericht weer geven dat de instrumentatie sleutel mag niet leeg zijn
 Er is een fout opgetreden tijdens de installatie van Application Insights of mogelijk een logboek registratie adapter.
@@ -102,9 +97,9 @@ Anders wordt het project type niet rechtstreeks ondersteund door de Developer An
 De micro soft-aanmelding die u voor het laatst hebt gebruikt in uw standaard browser heeft geen toegang tot [de resource die is gemaakt toen Application Insights werd toegevoegd aan deze app](../../azure-monitor/app/asp-net.md). Er zijn twee mogelijke redenen:
 
 * U hebt meer dan een Microsoft-account-misschien een werk en een persoonlijke Microsoft-account? De aanmelding die u voor het laatst hebt gebruikt in uw standaard browser, was voor een ander account dan de versie die toegang heeft om [Application Insights toe te voegen aan het project](../../azure-monitor/app/asp-net.md).
-  * Holpen Klik in de rechter bovenhoek van het browser venster op uw naam en meld u af. Meld u vervolgens aan met het account dat toegang heeft. Klik in de linkernavigatiebalk op Application Insights en selecteer uw app.
+  * Herstellen: Klik in de rechter bovenhoek van het browser venster op uw naam en meld u af. Meld u vervolgens aan met het account dat toegang heeft. Klik in de linkernavigatiebalk op Application Insights en selecteer uw app.
 * Iemand anders heeft Application Insights toegevoegd aan het project en is verg eten om [toegang te krijgen tot de resource groep](../../azure-monitor/app/resources-roles-access-control.md) waarin het is gemaakt.
-  * Holpen Als ze een organisatie account hebben gebruikt, kunnen ze aan het team worden toegevoegd. of ze kunnen u afzonderlijke toegang verlenen tot de resource groep.
+  * Oplossen: als ze een organisatie-account hebben gebruikt, kunnen ze aan het team worden toegevoegd. of ze kunnen u afzonderlijke toegang verlenen tot de resource groep.
 
 ## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>' Activum niet gevonden ' bij het openen van Application Insights vanuit Visual Studio
 *Met de menu opdracht ' openen Application Insights ' gaat u naar de Azure Portal, maar krijg ik de fout ' kan het activum niet vinden '.*
@@ -118,7 +113,7 @@ De instrumentatie sleutel in ApplicationInsights. config bepaalt waar de telemet
 
 Holpen
 
-* Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights, Application Insights configureren. In het dialoog venster kunt u ervoor kiezen om telemetrie te verzenden naar een bestaande resource of een nieuw item te maken. Of
+* Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights, Application Insights configureren. In het dialoog venster kunt u ervoor kiezen om telemetrie te verzenden naar een bestaande resource of een nieuw item te maken. of
 * Open de resource rechtstreeks. Meld u aan bij [de Azure Portal](https://portal.azure.com), klik op Application Insights in de linker navigatie balk en selecteer vervolgens uw app.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Waar vind ik mijn telemetrie?
@@ -135,13 +130,13 @@ Holpen
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Open in de Application Insights-Portal [Diagnostische gegevens zoeken](../../azure-monitor/app/diagnostic-search.md). Gegevens worden doorgaans als eerste weer gegeven.
 * Klik op de knop Vernieuwen. De Blade wordt regel matig vernieuwd, maar u kunt dit ook hand matig doen. Het Vernieuwings interval is langer voor grotere Peri Oden.
-* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights. config en zoek de `<instrumentationkey>`. Controleer of de twee sleutels gelijk zijn. Zo niet:  
+* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open in uw project in Visual Studio ApplicationInsights. config en zoek de `<instrumentationkey>`. Controleer of de twee sleutels gelijk zijn. Zo niet:  
   * Klik in de portal op Application Insights en zoek de app-resource met de juiste sleutel. of
   * Klik in Visual Studio Solution Explorer met de rechter muisknop op het project en kies Application Insights, configureren. Stel de app opnieuw in om telemetrie naar de juiste resource te verzenden.
   * Als u de overeenkomende sleutels niet kunt vinden, controleert u of u dezelfde aanmeldings referenties in Visual Studio gebruikt als in voor de portal.
 * Ga in het [Microsoft Azure start-dash board](https://portal.azure.com)naar de service Health kaart. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
 * Controleer ook [onze status blog](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in `TelemetryContext`kan wijzigen? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
+* Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in `TelemetryContext` kan wijzigen? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
 * Als u ApplicationInsights. config hebt bewerkt, controleert u de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)zorgvuldig. Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
 
 ## <a name="q04"></a>Geen gegevens op pagina weergaven, browsers, gebruik
@@ -151,7 +146,7 @@ De gegevens zijn afkomstig van scripts in de webpagina's.
 
 * Als u Application Insights hebt toegevoegd aan een bestaand webproject, moet [u de scripts hand matig toevoegen](../../azure-monitor/app/javascript.md).
 * Zorg ervoor dat uw site niet wordt weer gegeven in de compatibiliteits modus van Internet Explorer.
-* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens `dc.services.visualstudio.com`naar worden verzonden.
+* Gebruik de functie fout opsporing van de browser (F12 op sommige browsers en kies vervolgens netwerk) om te controleren of de gegevens naar `dc.services.visualstudio.com` worden verzonden.
 
 ## <a name="no-dependency-or-exception-data"></a>Geen gegevens over afhankelijkheid of uitzonde ring
 Zie [afhankelijkheids telemetrie](../../azure-monitor/app/asp-net-dependencies.md) en [uitzonde ring telemetrie](asp-net-exceptions.md).
@@ -194,7 +189,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van`Microsoft.ApplicationInsighs`
+1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van `Microsoft.ApplicationInsighs`
 
 2. Wijzig uw applicationinsights. config-bestand zodat het de volgende bevat:
 
@@ -215,11 +210,11 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 ### <a name="net-core"></a>.NET Core
 
-1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van`Microsoft.ApplicationInsights`
+1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van `Microsoft.ApplicationInsights`
 
 De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.7.1 en verwijst naar micro soft. ApplicationInsights versie 2,10. De versie van micro soft. AspNet. ApplicationInsights. HostingStartup die moet worden geïnstalleerd, moet daarom worden 2.10.0
 
-2. Wijzig `ConfigureServices` de methode in `Startup.cs` uw klasse.:
+2. Wijzig `ConfigureServices` methode in uw `Startup.cs`-klasse.:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();

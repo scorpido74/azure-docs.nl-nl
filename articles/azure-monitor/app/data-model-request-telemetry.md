@@ -1,75 +1,71 @@
 ---
-title: Azure Application Insights-telemetriegegevens Model - aanvragen van telemetrie | Microsoft Docs
-description: Application Insights-gegevensmodel voor aanvraagtelemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure-toepassing Insights-gegevens model voor telemetrie-aanvraag-telemetrie aanvragen | Microsoft Docs
+description: Application Insights gegevens model voor aanvraag-telemetrie
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900516"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677332"
 ---
-# <a name="request-telemetry-application-insights-data-model"></a>Telemetrie van aanvraag: Application Insights-gegevensmodel
+# <a name="request-telemetry-application-insights-data-model"></a>Telemetrie aanvragen: Application Insights gegevens model
 
-Een aanvraag telemetrie-item (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) Hiermee geeft u de logische volgorde van de uitvoering is geactiveerd door een externe aanvraag naar uw toepassing. De uitvoering van elke aanvraag wordt geïdentificeerd door de unieke `ID` en `url` met alle uitvoeringsparameters. U kunt aanvragen groeperen op logische `name` en definieer de `source` van deze aanvraag. Uitvoering van code kan resulteren in `success` of `fail` en heeft een bepaalde `duration`. Geslaagde en mislukte uitvoeringen kunnen worden gegroepeerd verder door `resultCode`. De begintijd voor de aanvraagtelemetrie op het niveau van de envelop gedefinieerd.
+Een telemetrie van aanvragen (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt de logische volg orde van uitvoering die door een externe aanvraag naar uw toepassing wordt geactiveerd. Elke uitvoering van een aanvraag wordt geïdentificeerd door unieke `ID` en `url` met alle uitvoerings parameters. U kunt aanvragen groeperen op logische `name` en de `source` van deze aanvraag definiëren. Uitvoering van code kan resulteren in `success` of `fail` en een bepaalde `duration` heeft. Geslaagde en mislukte uitvoeringen kunnen verder worden gegroepeerd door `resultCode`. Begin tijd voor de telemetrie van de aanvraag die is gedefinieerd op het envelop niveau.
 
-Aanvraag telemetrie biedt ondersteuning voor de standard uitbreidbaarheidsmodel met behulp van aangepaste `properties` en `measurements`.
+Telemetrie van aanvragen ondersteunt het model voor standaard uitbreid baarheid met aangepaste `properties` en `measurements`.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
-Naam van de aanvraag vertegenwoordigt codepad genomen om de aanvraag te verwerken. De kardinaliteit van de lage waarde om toe te staan beter groepering van aanvragen. Voor HTTP-deze aanvragen vertegenwoordigt de HTTP-methode en de sjabloon van de URL-pad, zoals `GET /values/{id}` zonder de werkelijke `id` waarde.
+De naam van de aanvraag vertegenwoordigt het codepad dat is gemaakt om de aanvraag te verwerken. Lage kardinaliteit waarde om een betere groepering van aanvragen mogelijk te maken. Voor HTTP-aanvragen vertegenwoordigt deze de HTTP-methode en het URL-pad sjabloon zoals `GET /values/{id}` zonder de daad werkelijke `id` waarde.
 
-Application Insights web SDK verzendt Aanvraagnaam "as is" met betrekking tot gebruik van hoofdletters. Groeperen op gebruikersinterface is hoofdlettergevoelig, zodat `GET /Home/Index` worden afzonderlijk gerekend vanaf `GET /home/INDEX` Hoewel vaak ze leiden tot de dezelfde controller en de actie kan worden uitgevoerd. De reden hiervoor is dat URL's in het algemeen zijn [hoofdlettergevoelig](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). U kunt om te controleren of alle `404` is er gebeurd voor de URL's in hoofdletters worden getypt. U vindt meer op de naam van verzameling van aanvragen door ASP.NET Web SDK in de [blogbericht](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights Web-SDK verzendt de naam van de aanvraag ' in de staat ' met betrekking tot letters. Groeperen op de gebruikers interface is hoofdletter gevoelig, dus `GET /Home/Index` wordt afzonderlijk van `GET /home/INDEX` geteld, zelfs als ze vaak worden geretourneerd door dezelfde controller en actie-uitvoering. De reden hiervoor is dat url's in het algemeen [hoofdletter gevoelig](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)zijn. U kunt bijvoorbeeld zien of alle `404` heeft plaatsgevonden voor de url's die in hoofd letters worden getypt. Meer informatie over de aanvraag naam verzameling door ASP.NET Web SDK vindt u in het [blog bericht](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
-Maximumlengte: 1024 tekens
+Maximale lengte: 1024 tekens
 
 ## <a name="id"></a>Id
 
-Id van een exemplaar van de aanroep van aanvraag. Gebruikt voor correlatie tussen aanvragen en andere telemetrie-items. -ID moet globaal uniek zijn. Zie voor meer informatie, [correlatie](../../azure-monitor/app/correlation.md) pagina.
+Id van een exemplaar van een aanvraag aanroep. Wordt gebruikt voor correlatie tussen aanvraag en andere telemetrie-items. De ID moet globaal uniek zijn. Zie [correlatie](../../azure-monitor/app/correlation.md) pagina voor meer informatie.
 
-Maximumlengte: 128 tekens
+Maximale lengte: 128 tekens
 
-## <a name="url"></a>Url
+## <a name="url"></a>URL
 
-Aanvraag-URL met alle queryreeksparameters.
+Aanvraag-URL met alle query reeks parameters.
 
-Maximumlengte: 2048 tekens
+Maximale lengte: 2048 tekens
 
-## <a name="source"></a>source
+## <a name="source"></a>Bron
 
-De bron van de aanvraag. Voorbeelden hiervan zijn de instrumentatiesleutel van de oproepende functie of het ip-adres van de oproepende functie. Zie voor meer informatie, [correlatie](../../azure-monitor/app/correlation.md) pagina.
+De bron van de aanvraag. Voor beelden zijn de instrumentatie sleutel van de aanroeper of het IP-adres van de aanroeper. Zie [correlatie](../../azure-monitor/app/correlation.md) pagina voor meer informatie.
 
-Maximumlengte: 1024 tekens
+Maximale lengte: 1024 tekens
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>Duur
 
-Duur in de indeling van aanvraag: `DD.HH:MM:SS.MMMMMM`. Moet positief en kleiner dan `1000` dagen. Dit veld is verplicht als aanvraagtelemetrie Hiermee geeft u de bewerking opnieuw uit met de begin- en het einde.
+De duur van de aanvraag in de indeling: `DD.HH:MM:SS.MMMMMM`. Moet positief zijn en kleiner zijn dan `1000` dagen. Dit veld is vereist omdat de aanvraag-telemetrie de bewerking met het begin en het einde vertegenwoordigt.
 
-## <a name="response-code"></a>Responscode
+## <a name="response-code"></a>Antwoord code
 
-Resultaat van een aanvraag kan worden uitgevoerd. HTTP-statuscode voor HTTP-aanvragen. Kan het zijn `HRESULT` type waarde of een uitzondering voor andere aanvraagtypen.
+Resultaat van het uitvoeren van een aanvraag. HTTP-status code voor HTTP-aanvragen. Dit kan `HRESULT` waarde zijn of het type uitzonde ring voor andere aanvraag typen.
 
-Maximumlengte: 1024 tekens
+Maximale lengte: 1024 tekens
 
 ## <a name="success"></a>Geslaagd
 
-Vermelding van geslaagde of mislukte aanroep. Dit veld is vereist. Als niet is ingesteld op expliciet `false` -een aanvraag wordt beschouwd om succesvol te zijn. Deze waarde instelt op `false` als bewerking is onderbroken door uitzondering of foutcode van het resultaat geretourneerde.
+Indicatie van een geslaagde of mislukte aanroep. Dit veld is verplicht. Wanneer niet expliciet worden ingesteld op `false`, wordt een aanvraag als geslaagd beschouwd. Stel deze waarde in op `false` als de bewerking is onderbroken door een uitzonde ring of geretourneerde fout code.
 
-Voor de web-apps, Application Insights definiëren een aanvraag als voltooid wanneer de responscode is minder dan `400` of gelijk zijn aan `401`. Er zijn echter gevallen wanneer deze standaardtoewijzing is niet overeenkomt met de semantische van de toepassing. Antwoordcode `404` kan duiden op "Er zijn geen records', Hiermee deel van de normale stroom uitmaken kunnen. Ook kan dit wijzen op een verbroken koppeling. Voor de verbroken koppelingen, kunt u ook meer geavanceerde logica implementeren. Alleen wanneer deze koppelingen bevinden zich op dezelfde site door het analyseren van de url van verwijzende site, kunt u verbroken koppelingen markeren als fouten. Of deze markeren als fouten wanneer deze vanuit de mobiele toepassing van het bedrijf. Op dezelfde manier `301` en `302` geeft aan dat de fout wanneer deze vanuit de client die geen ondersteuning voor omleiden bieden.
+Voor de webtoepassingen Application Insights een aanvraag definiëren als geslaagd wanneer de respons code kleiner is dan `400` of gelijk is aan `401`. Er zijn echter gevallen waarin deze standaard toewijzing niet overeenkomt met de semantiek van de toepassing. De reactie code `404` kan duiden op "no records", die deel kunnen uitmaken van de normale stroom. Dit kan ook duiden op een verbroken koppeling. Voor de verbroken koppelingen kunt u zelfs meer geavanceerde logica implementeren. U kunt verbroken koppelingen alleen als fouten markeren als deze koppelingen zich op dezelfde site bevinden door het analyseren van URL-verwijzings bronnen. Of markeer ze als storingen wanneer ze worden geopend vanuit de mobiele toepassing van het bedrijf. Evenzo `301` en `302` geeft aan dat er een fout is opgetreden bij het openen van de client die geen ondersteuning biedt voor omleiden.
 
-Gedeeltelijk geaccepteerd inhoud `206` kan duiden op een storing van een algemene aanvraag. Application Insights-eindpunt ontvangt bijvoorbeeld een batch van telemetrie-items als één aanvraag. Het resultaat `206` wanneer sommige items in de batch zijn niet verwerkt. Toenemende aantal `206` duidt op een probleem dat moet worden onderzocht. Dezelfde logica is van toepassing op `207` meerdere Status waarbij het succes in de slechtste van afzonderlijke responscodes mogelijk.
+Gedeeltelijk geaccepteerde inhoud `206` kan duiden op een fout in een algemene aanvraag. Application Insights eind punt ontvangt bijvoorbeeld een batch met telemetrie-items als één aanvraag. Het retourneert `206` als sommige items in de batch niet zijn verwerkt. Het toenemende aantal `206` geeft aan dat er een probleem is dat moet worden onderzocht. Soort gelijke logica is van toepassing op `207` meerdere statussen, waarbij het succes het slechtste aantal afzonderlijke antwoord codes kan zijn.
 
-U kunt meer op aanvraag resultaat lezen code en de statuscode in de [blogbericht](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Meer informatie over de aanvraag resultaat code en status code vindt u in het [blog bericht](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
@@ -81,7 +77,7 @@ U kunt meer op aanvraag resultaat lezen code en de statuscode in de [blogbericht
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voor aangepaste aanvraagtelemetrie schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- Zie [gegevensmodel](data-model.md) voor Application Insights-typen en -gegevensmodel.
-- Meer informatie over het [configureren van ASP.NET Core](../../azure-monitor/app/asp-net.md) toepassing met Application Insights.
-- Bekijk [platforms](../../azure-monitor/app/platforms.md) ondersteund door Application Insights.
+- [Telemetrie van aangepaste aanvraag schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
+- Meer informatie over het [configureren van ASP.net core](../../azure-monitor/app/asp-net.md) toepassing met Application Insights.
+- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

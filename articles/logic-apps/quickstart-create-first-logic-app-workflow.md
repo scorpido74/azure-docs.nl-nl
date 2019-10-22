@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: uw eerste werk stroom met Azure Logic Apps maken en automatiseren'
-description: Maak uw eerste logische app waarmee taken, processen en werk stromen worden geautomatiseerd met behulp van Azure Logic Apps. Maak Logic apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration) voor uw systemen & Cloud Services.
+title: Uw eerste werk stroom-Azure Logic Apps maken en automatiseren
+description: 'Quick Start: uw eerste geautomatiseerde taak of werk stroom maken met behulp van Azure Logic Apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration)'
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: c85b3e3ced661eb36d9cb1eb0ae443a5ab21a913
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029513"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679147"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Quickstart: uw eerste geautomatiseerde werkstroom maken met Azure Logic Apps - Azure-portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Snelstart: maak uw eerste geautomatiseerde werkstroom met Azure Logic Apps - Azure-portal
 
 In deze snelstart leert u uw eerste geautomatiseerde werkstroom bouwen met [Azure Logic Apps](../logic-apps/logic-apps-overview.md). In dit artikel maakt u een logische app waarmee de RSS-feed van een website regelmatig wordt gecontroleerd op nieuwe items. Als er nieuwe items bestaan, stuurt de logische app een e-mail voor elk item. Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niveau:
 
@@ -44,14 +44,14 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | <*logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) mag bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Naam** | <*Logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
-   | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
-   | **Location** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
+   | **Resourcegroep** | <*Azure-resource-group-name* > | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
+   | **Locatie** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen** > **gaat u naar de resource** voor uw geïmplementeerde logische app.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen**  > **gaat u naar de resource** voor uw geïmplementeerde logische app.
 
    ![Ga naar de zojuist gemaakte logische app-resource](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -69,7 +69,7 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
 1. Selecteer in de ontwerp functie voor logische apps, onder het zoekvak, de optie **alle**.
 
-1. Typ ' RSS ' in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een feed-item wordt gepubliceerd-RSS**
+1. Typ ' RSS ' in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd-RSS**
 
    ![De trigger ' wanneer een feed-item wordt gepubliceerd ' selecteren](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -77,7 +77,7 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
    ![Trigger instellen met RSS-feed, frequentie en interval](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **De URL voor de RSS-feed** | `http://feeds.reuters.com/reuters/topNews` | De koppeling voor de RSS-feed die u wilt bijhouden |
    | **Interval** | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
@@ -139,7 +139,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) waa
 
       ![Eigenschappen voor inhoud van e-mail bericht selecteren](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Eigenschap | Description |
+      | Eigenschap | Beschrijving |
       |----------|-------------|
       | **Feedtitel** | De titel van het item |
       | **Feed gepubliceerd op** | De publicatiedatum en -tijd van het item |
@@ -177,7 +177,7 @@ Als u dit voorbeeld niet meer nodig hebt, verwijdert u de resourcegroep die uw l
 > [!NOTE]
 > Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd. Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 

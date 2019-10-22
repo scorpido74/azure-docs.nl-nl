@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: f400fb7f177301e2b8c21cde9be334635025b4b3
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992153"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677707"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Gegevens verzamelen van een virtuele machine van Azure met Azure Monitor
 
@@ -35,7 +35,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 1. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Selecteer **maken**en selecteer vervolgens opties voor de volgende items:
 
@@ -45,7 +45,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
    * Selecteer de **Locatie** waarop uw virtuele machines zijn geïmplementeerd.  Bekijk [in welke regio's Log Analytics beschikbaar is](https://azure.microsoft.com/regions/services/) voor aanvullende informatie.
    * Als u een werkruimte maakt in een nieuw abonnement dat na 2 april 2018 is gemaakt, gebruikt deze automatisch de prijscategorie *Per GB*. De optie voor het selecteren van een prijscategorie is dan niet beschikbaar.  Als u een werkruimte maakt voor een bestaand abonnement dat is gemaakt vóór 2 april, of voor een abonnement dat is gekoppeld aan een bestaande EA-inschrijving, kunt u hier uw gewenste prijscategorie selecteren.  Zie [Prijzen voor Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) voor aanvullende informatie over de afzonderlijke lagen.
   
-        ![Log Analytics resource-Blade maken](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Log Analytics resource-Blade maken](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Nadat u de vereiste gegevens hebt opgegeven in het deel venster **log Analytics werkruimte** , selecteert u **OK**.  
 
@@ -80,7 +80,7 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Windows-gebeurtenis Logboeke
 
 1. Selecteer **Geavanceerde instellingen**.
 
-    ![Geavanceerde instellingen van Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Geavanceerde instellingen van Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. Selecteer **Gegevens** en selecteer vervolgens **Windows-gebeurtenislogboeken**.
 
@@ -114,7 +114,7 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Windows-gebeurtenis Logboeke
 
 6. Wanneer u Linux-prestatiemeteritems voor een nieuwe Log Analytics-werkruimte voor het eerst configureert, krijgt u de optie om snel verschillende algemene prestatiemeteritems te maken. Ze worden weergegeven met een selectievakje ernaast.
 
-    ![Standaard Windows-prestatiemeteritems geselecteerd](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Standaard Windows-prestatiemeteritems geselecteerd](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Selecteer de **onderstaande configuratie Toep assen op mijn machines** en selecteer vervolgens **de geselecteerde prestatie meter items toevoegen**.  Ze worden toegevoegd en vooraf ingesteld met een sample-interval van tien seconden.  
 
@@ -124,9 +124,9 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Windows-gebeurtenis Logboeke
 
 Nu u gegevensverzameling hebt ingeschakeld, geven we een voorbeeld van een eenvoudige zoekopdracht in logboeken om enkele gegevens afkomstig van de doel-VM’s weer te geven.  
 
-1. Selecteer Logboeken in het linkerdeel venster van de geselecteerde werk ruimte.
+1. Selecteer **Logboeken**in het linkerdeel venster van de geselecteerde werk ruimte.
 
-2. Typ `Perf` op de pagina logboek registratie de query-editor en selecteer **uitvoeren**.
+2. Typ `Perf` in de query-editor op de pagina logboeken query en selecteer **uitvoeren**.
 
     ![Voorbeeld van zoeken in logboeken in Log Analytics](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 

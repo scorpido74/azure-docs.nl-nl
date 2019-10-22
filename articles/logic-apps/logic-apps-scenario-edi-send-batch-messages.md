@@ -1,6 +1,6 @@
 ---
-title: EDI-berichten verwerken in batch verwerking als een groep of verzameling-Azure Logic Apps | Microsoft Docs
-description: EDI-berichten verzenden voor batch verwerking in Logic apps
+title: EDI-berichten batchgewijs verwerken als een groep-Azure Logic Apps
+description: EDI-berichten verzenden en ontvangen als batches, groepen of verzamelingen in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827435"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680184"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-berichten in batches verzenden naar handels partners met Azure Logic Apps
 
-In Business to Business (B2B)-scenario's wisselen partners vaak berichten uit in groepenof batches. Wanneer u een batch-oplossing met Logic Apps bouwt, kunt u berichten verzenden naar handels partners en deze berichten samen in batches verwerken. In dit artikel wordt beschreven hoe u EDI-berichten kunt verwerken met behulp van X12 als voor beeld door een logische app voor het maken van een batch-Sender en een logische receiver-toepassing. 
+In Business to Business (B2B)-scenario's wisselen partners vaak berichten uit in groepen of *batches*. Wanneer u een batch-oplossing met Logic Apps bouwt, kunt u berichten verzenden naar handels partners en deze berichten samen in batches verwerken. In dit artikel wordt beschreven hoe u EDI-berichten kunt verwerken met behulp van X12 als voor beeld door een logische app voor het maken van een batch-Sender en een logische receiver-toepassing. 
 
 Batch verwerking van X12-berichten werkt zoals bij batch verwerking van andere berichten. u gebruikt een batch trigger waarmee berichten worden verzameld in een batch en een batch-actie die berichten naar de batch verzendt. Daarnaast bevat X12 batch verwerking een X12-coderings stap voordat de berichten naar de handels partner of een andere bestemming gaan. Zie [Batch Process-berichten](../logic-apps/logic-apps-batch-process-send-receive-messages.md)voor meer informatie over de batch trigger en-actie.
 
@@ -59,20 +59,20 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
 
 2. [Koppel uw logische app aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. Voeg in Logic Apps Designer de **batch** trigger toe, waarmee de werk stroom van de logische app wordt gestart. Voer in het zoekvak ' batch ' in als uw filter. Selecteer deze trigger: **Batch berichten**
+3. Voeg in Logic Apps Designer de **batch** trigger toe, waarmee de werk stroom van de logische app wordt gestart. Voer in het zoekvak ' batch ' in als uw filter. Selecteer deze trigger: **batch-berichten**
 
    ![Batch trigger toevoegen](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. De eigenschappen van de batch-ontvanger instellen: 
 
-   | Eigenschap | Value | Opmerkingen | 
+   | Eigenschap | Waarde | Opmerkingen | 
    |----------|-------|-------|
    | **Batch modus** | Inline |  |  
-   | **Batch naam** | TestBatch | Alleen beschikbaar in de inline batch modus | 
-   | **Release criteria** | Aantal berichten op basis van planning | Alleen beschikbaar in de inline batch modus | 
+   | **Batch naam** | TestBatch | Alleen beschikbaar in de **inline** batch modus | 
+   | **Release criteria** | Aantal berichten op basis van planning | Alleen beschikbaar in de **inline** batch modus | 
    | **Aantal berichten** | 10 | Alleen beschikbaar voor release criteria **op basis van het aantal berichten** | 
    | **Interval** | 10 | Alleen beschikbaar met release criteria **op basis van een planning** | 
-   | **Frequentie** | minuut | Alleen beschikbaar met release criteria **op basis van een planning** | 
+   | **Frequentie** | Notulen | Alleen beschikbaar met release criteria **op basis van een planning** | 
    ||| 
 
    ![Details van batch trigger opgeven](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -84,7 +84,7 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
 
    1. Kies **nieuwe stap**onder de batch trigger.
 
-   2. Voer in het zoekvak ' X12 batch ' in als uw filter en selecteer deze actie (wille keurige versie): **Batch code ring <*versie*>-X12** 
+   2. Voer in het zoekvak ' X12 batch ' in als uw filter en selecteer deze actie (wille keurige versie): **batch code ring <*versie*>-X12** 
 
       ![X12 batch-coderings actie selecteren](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -94,10 +94,10 @@ Voor deze batch-ontvanger geeft u de batch modus, naam, release criteria, X12 ov
 
    4. Stel deze eigenschappen in voor de batch encoder-actie:
 
-      | Eigenschap | Description |
+      | Eigenschap | Beschrijving |
       |----------|-------------|
       | **Naam van de X12-overeenkomst** | Open de lijst en selecteer uw bestaande overeenkomst. <p>Als de lijst leeg is, zorgt u ervoor dat u [uw logische app koppelt aan het integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) dat de gewenste overeenkomst heeft. | 
-      | **BatchName** | Klik in dit vak en wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch naam** . | 
+      | **Batch-naam** | Klik in dit vak en wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch naam** . | 
       | **PartitionName** | Klik in dit vak en selecteer nadat de lijst met dynamische inhoud wordt weer gegeven, het **partitie naam** token. | 
       | **Items** | Sluit het vak item Details en klik vervolgens in dit vak. Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u het token **batch-items** . | 
       ||| 
@@ -118,16 +118,16 @@ Als u er zeker van wilt zijn dat uw batch-ontvanger werkt zoals verwacht, kunt u
 
 1. Kies **nieuwe stap**onder de actie X12 coderen. 
 
-2. Voer in het zoekvak ' http ' in als uw filter. Selecteer deze actie: **HTTP-HTTP**
+2. Voer in het zoekvak ' http ' in als uw filter. Selecteer deze actie: **http-http**
     
    ![HTTP-actie selecteren](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
 3. Stel de eigenschappen voor de HTTP-actie in:
 
-   | Eigenschap | Description | 
+   | Eigenschap | Beschrijving | 
    |----------|-------------|
    | **Methode** | Selecteer in deze lijst de optie **post**. | 
-   | **Uri** | Genereer een URI voor uw aanvraag-bak en voer deze URI in dit vak in. | 
+   | **URI** | Genereer een URI voor uw aanvraag-bak en voer deze URI in dit vak in. | 
    | **Hoofdtekst** | Klik in dit vak en nadat de lijst met dynamische inhoud wordt geopend, selecteert u het token **Body** , dat wordt weer gegeven in de sectie **batch-code ring op overeenkomst naam**. <p>Als u het token **Body** niet ziet, klikt u naast **batch-code ring op overeenkomst naam**op **meer weer geven**. | 
    ||| 
 
@@ -160,7 +160,7 @@ Maak nu een of meer logische apps die berichten verzenden naar de logische app-o
    1. Kies **nieuwe stap**onder de actie HTTP-aanvraag.
 
    2. Voer in het zoekvak ' batch ' in als uw filter. 
-   Selecteer de lijst **acties** en selecteer deze actie: **Een Logic Apps werk stroom kiezen met batch trigger-berichten verzenden naar batch**
+   Selecteer de lijst **acties** en selecteer deze actie: **een Logic apps werk stroom kiezen met batch trigger: berichten verzenden naar batch**
 
       ![Selecteer een Logic Apps werk stroom kiezen met batch trigger](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,15 +168,15 @@ Maak nu een of meer logische apps die berichten verzenden naar de logische app-o
 
       ![De logische app voor de batch-ontvanger selecteren](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Selecteer deze actie: **Batch_messages-<*your-batch-ontvanger*>**
+   4. Selecteer deze actie: **Batch_messages-<*your-batch-receiver* >**
 
       ![Selecteer de actie ' Batch_messages '](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
 4. De eigenschappen van de batch Sender instellen.
 
-   | Eigenschap | Description | 
+   | Eigenschap | Beschrijving | 
    |----------|-------------| 
-   | **Batch naam** | De batch naam die is gedefinieerd door de logische app voor de ontvanger (TestBatch) in dit voor beeld <p>**Belang rijk**: De batch naam wordt tijdens runtime gevalideerd en moet overeenkomen met de naam die is opgegeven door de logische app van de ontvanger. Als u de batch naam wijzigt, mislukt de batch Sender. | 
+   | **Batch naam** | De batch naam die is gedefinieerd door de logische app voor de ontvanger (TestBatch) in dit voor beeld <p>**Belang rijk**: de batch naam wordt gevalideerd tijdens runtime en moet overeenkomen met de naam die is opgegeven door de logische app van de ontvanger. Als u de batch naam wijzigt, mislukt de batch Sender. | 
    | **Bericht inhoud** | De inhoud van het bericht dat u wilt verzenden, dat het **hoofd** token in dit voor beeld is | 
    ||| 
    
@@ -190,7 +190,7 @@ Maak nu een of meer logische apps die berichten verzenden naar de logische app-o
 
 ## <a name="test-your-logic-apps"></a>Uw logische Apps testen
 
-Als u de oplossing voor batch verwerking wilt testen, plaatst u X12-berichten in uw [](https://www.getpostman.com/postman) logische app voor het verzenden van uw batch van Postman of een vergelijkbaar hulp programma. Binnenkort begint u met het ophalen van X12-berichten in uw aanvraag opslaglocatie, ofwel elke 10 minuten of in batches van 10, allemaal met dezelfde partitie sleutel.
+Als u de oplossing voor batch verwerking wilt testen, plaatst u X12-berichten in uw logische app voor het verzenden van uw batch van [postman](https://www.getpostman.com/postman) of een vergelijkbaar hulp programma. Binnenkort begint u met het ophalen van X12-berichten in uw aanvraag opslaglocatie, ofwel elke 10 minuten of in batches van 10, allemaal met dezelfde partitie sleutel.
 
 ## <a name="next-steps"></a>Volgende stappen
 

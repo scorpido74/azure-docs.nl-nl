@@ -1,24 +1,19 @@
 ---
 title: Wat is Azure Application Insights? | Microsoft Docs
 description: Dit is een service waarmee u de prestaties van toepassingen kunt beheren en het gebruik van uw livewebtoepassing kunt bijhouden.  Met deze service kunt u problemen detecteren, prioriteren en onderzoeken en inzicht krijgen in de manier waarop mensen uw app gebruiken.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: overview
-ms.custom: mvc
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9042d5e89dd64e1c405b2657a191a766a2e37f75
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 06/03/2019
+ms.custom: mvc
+ms.openlocfilehash: 58c63c229510b476ea19a9650c8eed0fc2d72ac2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349970"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677821"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
 Application Insights, een functie van [Azure monitor](../overview.md), is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Afwijkende prestaties worden automatisch gedetecteerd. De service bevat krachtige analysehulpmiddelen om u te helpen bij het vaststellen van problemen en te begrijpen wat gebruikers daadwerkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js en Java EE, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.

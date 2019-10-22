@@ -1,26 +1,22 @@
 ---
 title: Azure Monitor-Azure-toepassing Insights standaard SDK-eind punten overschrijven | Microsoft Docs
 description: Wijzig de standaard Azure-toepassing Insights-eind punten voor de SDK voor regio's als Azure Government.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/26/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 25087c5b3a078b740764f51a7780a24277d5c642
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/26/2019
+ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639566"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677481"
 ---
- # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
+# <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
-Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen vereisen het aanpassen van de voorbeeld code en het vervangen van `QuickPulse_Endpoint_Address`de `TelemetryChannel_Endpoint_Address`waarden van `Profile_Query_Endpoint_address` de tijdelijke aanduidingen voor, en met de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
+Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen moeten de voorbeeld code aanpassen en de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` en `Profile_Query_Endpoint_address` vervangen door de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
 
 ## <a name="sdk-code-changes"></a>SDK-code wijzigingen
 
@@ -62,7 +58,7 @@ Wijzig het bestand appSettings. json in uw project als volgt om het belangrijkst
   }
 ```
 
-De waarden voor dynamische metrische gegevens en het eind punt voor de profiel query kunnen alleen worden ingesteld via code. Als u de standaard waarden voor alle eindpunt waarden via code wilt overschrijven, moet u de volgende `ConfigureServices` wijzigingen aanbrengen `Startup.cs` in de methode van het bestand:
+De waarden voor dynamische metrische gegevens en het eind punt voor de profiel query kunnen alleen worden ingesteld via code. Als u de standaard waarden voor alle eindpunt waarden via code wilt overschrijven, moet u de volgende wijzigingen aanbrengen in de `ConfigureServices` methode van het `Startup.cs`-bestand:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -157,7 +153,7 @@ Wijzig het applicationinsights. XML-bestand om het standaard eindpunt adres te w
 
 ### <a name="spring-boot"></a>Spring Boot
 
-Wijzig het `application.properties` bestand en voeg het volgende toe:
+Wijzig het `application.properties`-bestand en voeg het volgende toe:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -182,7 +178,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 ```javascript
 <script type="text/javascript">
@@ -199,7 +195,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist, [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) en [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-|Regio |  De naam van eindpunt | Value |
+|Regio |  Naam van eind punt | Waarde |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetrie-kanaal | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -211,7 +207,7 @@ Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist,
 Als u momenteel de [Application Insights rest API](https://dev.applicationinsights.io/
 ) gebruikt die normaal gesp roken wordt geopend via API.applicationinsights.io, moet u een eind punt gebruiken dat lokaal is voor uw regio:
 
-|Regio |  De naam van eindpunt | Value |
+|Regio |  Naam van eind punt | Waarde |
 |-----------------|:------------|:-------------|
 | Azure China | REST-API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST-API | `api.applicationinsights.us`|

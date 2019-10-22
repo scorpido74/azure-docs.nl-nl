@@ -1,26 +1,21 @@
 ---
 title: Toepassings overzicht in Azure-toepassing Insights | Microsoft Docs
 description: Complexe topologieën van toepassingen bewaken met het toepassings overzicht
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983770"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678394"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Toepassings toewijzing: Gedistribueerde toepassingen sorteren
+# <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
 Met toepassings overzicht kunt u knel punten in de prestaties of HOTS pots voor alle onderdelen van uw gedistribueerde toepassing herkennen. Elk knoop punt op de kaart vertegenwoordigt een toepassings onderdeel of de afhankelijkheden ervan. en heeft de status van de KPI en de waarschuwingen. U kunt op een wille keurig onderdeel klikken voor gedetailleerdere diagnostische gegevens, zoals Application Insights gebeurtenissen. Als uw app gebruikmaakt van Azure-Services, kunt u ook klikken op Azure Diagnostics, zoals SQL Database Advisor aanbevelingen.
 
@@ -50,7 +45,7 @@ Klik op een onderdeel om gerelateerde inzichten te bekijken en ga naar de presta
 
 ![Flyout](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Mislukte pogingen onderzoeken
+### <a name="investigate-failures"></a>Fouten onderzoeken
 
 Selecteer **fouten onderzoeken** om het deel venster fouten te starten.
 
@@ -66,7 +61,7 @@ Selecteer **prestaties onderzoeken**om prestatie problemen op te lossen.
 
 ![Scherm opname van prestatie ervaring](media/app-map/performance.png)
 
-### <a name="go-to-details"></a>Naar de details gaan
+### <a name="go-to-details"></a>Ga naar Details
 
 Selecteer **Ga naar Details** om de end-to-end-transactie ervaring te verkennen, waarmee weer gaven kunnen worden aangeboden op het stack niveau van de aanroep.
 
@@ -74,7 +69,7 @@ Selecteer **Ga naar Details** om de end-to-end-transactie ervaring te verkennen,
 
 ![Scherm opname van end-to-end-transactie Details](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Weergeven in Analytics
+### <a name="view-in-analytics"></a>Weer geven in Analytics
 
 Als u de gegevens van uw toepassing verder wilt opvragen en onderzoeken, klikt u op **weer geven in Analytics**.
 
@@ -119,7 +114,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET-Apps: Initialisatie functie laden naar de actieve TelemetryConfiguration**
+**ASP.NET-Apps: initialisatie functie laden naar de actieve TelemetryConfiguration**
 
 In ApplicationInsights. config:
 
@@ -147,11 +142,11 @@ Een alternatieve methode voor ASP.NET Web apps is het instantiëren van de initi
 ```
 
 > [!NOTE]
-> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core toepassingen. 
+> Het toevoegen van initializer met behulp van `ApplicationInsights.config` of het gebruik van `TelemetryConfiguration.Active` is niet geldig voor ASP.NET Core toepassingen. 
 
-**ASP.NET Core Apps: Initialisatie functie laden naar de TelemetryConfiguration**
+**ASP.NET Core Apps: initialisatie functie laden naar de TelemetryConfiguration**
 
-Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van `Startup.cs` uw klasse.
+Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuwe `TelemetryInitializer` toe door deze toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` methode van uw `Startup.cs`-klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -210,7 +205,7 @@ Als u wilt nadenken over de naam van de **Cloud functie**, kan het handig zijn o
 
 ![Scherm opname van toepassings kaart](media/app-map/cloud-rolename.png)
 
-In het bovenstaande toepassings overzicht zijn de namen van Cloud rollen voor verschillende aspecten van deze gedistribueerde toepassing. De functies van deze app bestaan dus uit: `Authentication`, `acmefrontend`, `Inventory Management`, a `Payment Processing Worker Role`. 
+In het bovenstaande toepassings overzicht zijn de namen van Cloud rollen voor verschillende aspecten van deze gedistribueerde toepassing. De functies van deze app bestaan dus uit: `Authentication`, `acmefrontend`, `Inventory Management`, een `Payment Processing Worker Role`. 
 
 In het geval van deze app wordt elk van deze namen van Cloud rollen ook aangeduid met een andere unieke Application Insights resource met hun eigen instrumentatie sleutels. Omdat de eigenaar van deze toepassing toegang heeft tot elk van deze vier verschillende Application Insights resources, kan toepassings overzicht een kaart van de onderliggende relaties samen voegen.
 
@@ -230,7 +225,7 @@ Het is ook mogelijk dat het exemplaar van de **Cloud functie** nuttig is voor sc
 
 Een scenario waarin u de waarde voor het exemplaar van de Cloud functie mogelijk wilt onderdrukken, kan zijn als uw app wordt uitgevoerd in een omgeving met containers, waarbij alleen de afzonderlijke server mogelijk niet voldoende informatie bevat om een bepaald probleem te vinden.
 
-Zie [eigenschappen toevoegen: voor meer informatie over het overschrijven van de eigenschap naam van de Cloud functie met telemetrie-initialisaties. ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Zie [Eigenschappen toevoegen: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)voor meer informatie over het overschrijven van de eigenschap naam van de Cloud functie met telemetrie-initialisatie functies.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -244,7 +239,7 @@ Voer de volgende stappen uit als u problemen ondervindt bij het ophalen van de t
 
 2. Upgrade alle onderdelen naar de nieuwste SDK-versie.
 
-3. Als u Azure Functions gebruikt met C#, moet u upgraden naar functions [v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Als u Azure Functions gebruikt met C#, moet u upgraden naar [functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Bevestig dat de naam van de [Cloud functie](#set-cloud-role-name) correct is geconfigureerd.
 

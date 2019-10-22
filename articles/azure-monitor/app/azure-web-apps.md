@@ -1,20 +1,18 @@
 ---
 title: Prestaties van Azure app Services controleren | Microsoft Docs
 description: Bewaking van toepassings prestaties voor Azure app Services. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286173"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677658"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service prestaties bewaken
 
@@ -330,7 +328,7 @@ Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met 
 > ASP.NET Core 3,0-toepassingen worden niet ondersteund. Volg de [hand matige instrumentatie](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) via code voor ASP.net Core 3,0-apps.
 
 1. Controleer of de toepassing wordt bewaakt via `ApplicationInsightsAgent`.
-    * Controleer of de app-instelling voor @no__t 0 is ingesteld op de waarde ~ 2.
+    * Controleer of `ApplicationInsightsAgent_EXTENSION_VERSION` app-instelling is ingesteld op de waarde ~ 2.
 2. Zorg ervoor dat de toepassing voldoet aan de vereisten die moeten worden bewaakt.
     * Bladeren naar `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 

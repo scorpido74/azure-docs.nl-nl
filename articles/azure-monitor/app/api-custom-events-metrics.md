@@ -1,23 +1,18 @@
 ---
 title: Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens | Microsoft Docs
 description: Voeg een paar regels code toe aan de apparaat-of bureau blad-app, de webpagina of de service om het gebruik en de diagnose problemen op te sporen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 80400495-c67b-4468-a92e-abf49793a54d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/27/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 8f29ea1e3de8f71c489438cd2d794c03b72ca38e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 03/27/2019
+ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514264"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677849"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -1183,8 +1178,8 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 
-* [ASP.NET-verwijzing](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Naslaginformatie over Java](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET-verwijzing](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Naslaginformatie over Java](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [Java script-referentie](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 

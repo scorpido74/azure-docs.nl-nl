@@ -1,23 +1,18 @@
 ---
 title: Zoek functie gebruiken in Azure-toepassing Insights | Microsoft Docs
 description: Zoek en filter ruwe telemetriegegevens die zijn verzonden door uw web-app.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/30/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.date: 07/30/2019
+ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705408"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678067"
 ---
 # <a name="using-search-in-application-insights"></a>Zoeken in Application Insights gebruiken
 
@@ -65,12 +60,12 @@ Open de vervolg keuzelijst gebeurtenis typen en kies de gebeurtenis typen die u 
 
 De gebeurtenis typen zijn:
 
-* Spoor - [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) op, waaronder TrackTrace-, log4Net-, NLog-en System. Diagnostic. trace-aanroepen.
+* **Traceer**  - [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) , waaronder TrackTrace, log4net, NLog en System. Diagnostics. trace-aanroepen.
 * **Aanvraag** -HTTP-aanvragen die door uw server toepassing worden ontvangen, waaronder pagina's, scripts, afbeeldingen, stijl bestanden en gegevens. Deze gebeurtenissen worden gebruikt voor het maken van de aanvraag-en antwoord overzichts diagrammen.
-*  - De telemetrie van de pagina weergave die wordt[verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
+* **Pagina weergave**  - [telemetrie verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
 * **Aangepaste gebeurtenis** : als u aanroepen naar track Event () hebt ingevoegd om het [gebruik te controleren](../../azure-monitor/app/api-custom-events-metrics.md), kunt u deze hier zoeken.
 * **Uitzonde ring** -niet-onderschepte [uitzonde ringen in de server](../../azure-monitor/app/asp-net-exceptions.md)en die u registreert met behulp van TrackException ().
-* Afhankelijkheids - [aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
+* **Afhankelijkheid**  - [aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
 * **Beschik baarheid** -resultaten van [beschikbaarheids testen](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filteren op eigenschaps waarden
@@ -101,9 +96,9 @@ Mogelijk wilt u een tijds bereik instellen, omdat Zoek opdrachten in een kortere
 
 Zoeken naar volledige woorden, geen subtekenreeksen. Gebruik aanhalings tekens voor het insluiten van speciale tekens.
 
-| Tekenreeks | *Niet* gevonden | Gevonden |
+| Tekenreeks | *Niet* gevonden | Gegeven |
 | --- | --- | --- |
-| HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
+| HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Verenigde Staten|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Dit zijn de zoek expressies die u kunt gebruiken:
@@ -115,13 +110,13 @@ Dit zijn de zoek expressies die u kunt gebruiken:
 | `apple OR banana` |Gebeurtenissen zoeken die een van beide woorden bevatten. Gebruik ' of ', niet ' of '. |
 | `apple NOT banana` |Gebeurtenissen zoeken die één woord bevatten, maar niet de andere. |
 
-## <a name="sampling"></a>Steekproeven
+## <a name="sampling"></a>Sampling
 
 Als uw app een grote hoeveelheid telemetrie genereert (en u de ASP.NET SDK-versie 2.0.0-beta3 of hoger gebruikt), beperkt de adaptieve steekproef module automatisch het volume dat naar de portal wordt verzonden door alleen een representatieve Fractie van gebeurtenissen te verzenden. Gebeurtenissen die betrekking hebben op dezelfde aanvraag, worden echter geselecteerd of als groep opgeheven, zodat u kunt navigeren tussen gerelateerde gebeurtenissen.
 
 [Meer informatie over steekproeven](../../azure-monitor/app/sampling.md).
 
-## <a name="create-work-item"></a>Werkitem maken
+## <a name="create-work-item"></a>Werk item maken
 
 U kunt een bug in GitHub of Azure DevOps maken met de details van een telemetrie-item.
 

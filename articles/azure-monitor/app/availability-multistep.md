@@ -1,23 +1,19 @@
 ---
 title: Bewaak uw webtoepassing met webtests met meerdere stappen en Azure-toepassing inzichten | Microsoft Docs
 description: Webtests met meerdere stappen instellen om uw webtoepassingen te bewaken met Azure-toepassing Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/25/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881447"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678242"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
@@ -31,7 +27,7 @@ U kunt een vastgelegde reeks Url's en interacties bewaken met een website via we
 * Visual Studio 2017 Enter prise of hoger.
 * Visual Studio Web Performance en load test tools.
 
-Om de vereiste voor de test hulpprogramma's te vinden. Start de > **afzonderlijke onderdelen** >  > van Visual Studio Installer**fouten opsporen en testen**op webprestaties**en laad Programma's**.
+Om de vereiste voor de test hulpprogramma's te vinden. Start het **Visual Studio-installatie programma**  > **afzonderlijke onderdelen**  > **fout opsporing en testen**  > **Web Performance en load test tools**.
 
 ![Scherm afbeelding van de gebruikers interface van Visual Studio Installer waarbij afzonderlijke onderdelen zijn geselecteerd met een selectie vakje naast het item voor de hulpprogram ma's voor webprestaties en laad Programma's](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -48,11 +44,11 @@ Als u een test met meerdere stappen wilt maken, neemt u het scenario op met Visu
 
 Gebruik Visual Studio Enterprise om een websessie op te nemen.
 
-1. Maak een test project voor webprestaties en belasting.  > **Nieuwe** **Visual C#**  **test voor** hetprojectvan > eenbestand >   > 
+1. Maak een test project voor webprestaties en belasting. **Bestands**  > **Nieuw**  > **project**  > **visuele C#**   > **test**
 
     ![Visual Studio nieuw project-gebruikers interface](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
-2. Open het `.webtest` bestand en begin met de opname.
+2. Open het `.webtest`-bestand en start de opname.
 
     ![Gebruikers interface voor het opnemen van de Visual Studio-test](./media/availability-multistep/open-web-test.png)
 
@@ -73,7 +69,7 @@ Gebruik Visual Studio Enterprise om een websessie op te nemen.
 
 ## <a name="upload-the-web-test"></a>De webtest uploaden
 
-1. Selecteer in de Portal Application Insights in het deel venster Beschik baarheid de optie test test**type** > **multi-step web test** **maken** > .
+1. Selecteer in de Portal Application Insights in het deel venster Beschik baarheid **test maken**  > **type test**  > **webtest met meerdere stappen**.
 
 2. Stel de test locaties, frequentie en waarschuwings parameters in.
 
@@ -84,7 +80,7 @@ Gebruik Visual Studio Enterprise om een websessie op te nemen.
 |**Test frequentie**| Hiermee stelt u in hoe vaak de test wordt uitgevoerd vanaf elke test locatie. Met een standaardfrequentie van vijf minuten en vijf testlocaties wordt uw site gemiddeld per minuut getest.|
 |**Test locaties**| Zijn de locaties waar onze servers webaanvragen verzenden naar uw URL. Het **minimum aantal aanbevolen test locaties is vijf** om ervoor te zorgen dat u problemen in uw website kunt onderscheiden van netwerk problemen. U kunt maximaal 16 locaties selecteren.
 
-### <a name="success-criteria"></a>Succescriteria
+### <a name="success-criteria"></a>Criteria voor geslaagde pogingen
 
 |Instelling| Uitleg
 |----|----|----|
@@ -98,7 +94,7 @@ Gebruik Visual Studio Enterprise om een websessie op te nemen.
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel = waarde voor **waarschuwings locaties** **aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie**  = **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
@@ -138,11 +134,11 @@ In alle gevallne moet u een account maken in uw toepassing voor testdoeleinden. 
 
 **SAML-verificatie**
 
-|Naam van eigenschap| Description|
+|Naam van eigenschap| Beschrijving|
 |----|-----|
 | Doel groep-URI | De doel groep-URI voor het SAML-token.  Dit is de URI voor de Access Control Service (ACS), met inbegrip van de ACS-naam ruimte en de hostnaam. |
 | Certificaat wachtwoord | Het wacht woord voor het client certificaat waarmee toegang wordt verleend aan de Inge sloten persoonlijke sleutel. |
-| Clientcertificaat  | De waarde van het client certificaat met de persoonlijke sleutel in base64-gecodeerde indeling. |
+| Client certificaat  | De waarde van het client certificaat met de persoonlijke sleutel in base64-gecodeerde indeling. |
 | Naam-id | De naam-id voor het token |
 | Niet na | De time span waarvoor het token geldig is.  De standaard waarde is 5 minuten. |
 | Niet voor | De time span waarvoor een token in het verleden geldig is (om tijd scheef te maken).  De standaard waarde is (negatief) 5 minuten. |
@@ -153,7 +149,7 @@ In alle gevallne moet u een account maken in uw toepassing voor testdoeleinden. 
 
 Hier is een voorbeeldwebtest van een Azure web-app met een App Key:
 
-![Voorbeeldschermopname](./media/availability-multistep/client-secret.png)
+![Voorbeeld scherm afbeelding](./media/availability-multistep/client-secret.png)
 
 Token van AAD krijgen met klantgeheim (AppKey).
 Bearer token uit antwoord halen.

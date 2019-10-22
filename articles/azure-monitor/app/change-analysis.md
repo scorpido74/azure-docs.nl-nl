@@ -1,21 +1,18 @@
 ---
 title: Toepassings wijzigings analyse in Azure Monitor gebruiken om problemen met web-apps op te sporen | Microsoft Docs
 description: Toepassings wijzigingen in Azure Monitor gebruiken om problemen met toepassingen op Live sites in Azure App Service op te lossen.
-services: application-insights
-author: cawams
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+author: cawams
 ms.author: cawa
-ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/07/2019
+ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033383"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678257"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -24,7 +21,7 @@ Wanneer er een probleem is met de live site of de storing optreedt, is het snel 
 Wijzigingen die zijn gebaseerd op de kracht van de [Azure-resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/overview), bieden inzicht in de veranderingen in de Azure-toepassing om de waarneembaarheid te verg Roten en MTTR te verminderen (gemiddelde tijd om te herstellen).
 
 > [!IMPORTANT]
-> De analyse van wijzigingen is momenteel beschikbaar als preview-versie. Deze preview-versie is beschikbaar zonder een service overeenkomst. Deze versie wordt niet aanbevolen voor productie werkbelastingen. Sommige functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-previews.
+> De analyse van wijzigingen is momenteel beschikbaar als preview-versie. Deze preview-versie is beschikbaar zonder een service overeenkomst. Deze versie wordt niet aanbevolen voor productie werkbelastingen. Sommige functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview"></a>Overzicht
 
@@ -80,7 +77,7 @@ In Azure Monitor is de analyse van wijzigingen op dit moment ingebouwd in de erv
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 
 
-1. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen** > oplossen beschik**baarheid en** > crashes van**toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen:
+1. Als u de wijzigings analyse wilt openen, selecteert u **problemen vaststellen en oplossen**  > **Beschik baarheid en prestaties**  > **toepassing Crashes**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen:
 
      ![Scherm opname van de weer gave diff wijzigen](./media/change-analysis/change-view.png)
 
@@ -90,7 +87,7 @@ In Azure Monitor is de analyse van wijzigingen op dit moment ingebouwd in de erv
 Als uw abonnement een groot aantal web-apps bevat, kan het inschakelen van de service op het niveau van de web-app inefficiënt zijn. Voer het volgende script uit om alle web-apps in uw abonnement in te scha kelen.
 
 Vereisten:
-* Power shell AZ-module. Volg de instructies op [de Azure PowerShell-module installeren](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0)
+* Power shell AZ-module. Volg de instructies op [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)
 
 Voer het volgende script uit:
 

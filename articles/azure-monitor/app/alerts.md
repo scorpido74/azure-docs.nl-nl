@@ -1,117 +1,112 @@
 ---
-title: Stel waarschuwingen in Azure Application Insights | Microsoft Docs
-description: Ontvang een melding over trage reactietijden, uitzonderingen en andere prestaties of gebruik wijzigingen in uw web-app.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.reviewer: lagayhar
-ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Waarschuwingen instellen in Azure-toepassing Insights | Microsoft Docs
+description: Ontvang een melding over trage reactie tijden, uitzonde ringen en andere wijzigingen in de prestaties of het gebruik van uw web-app.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/23/2019
+ms.reviewer: lagayhar
+ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60693146"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678410"
 ---
 # <a name="set-alerts-in-application-insights"></a>Waarschuwingen instellen in Application Insights
-[Azure Application Insights] [ start] kunt u te waarschuwen voor wijzigingen in de prestaties of gebruik metrische gegevens in uw web-app. 
+[Azure-toepassing Insights][start] kan u waarschuwen voor wijzigingen in de metrische gegevens voor prestaties of gebruik in uw web-app. 
 
-Application Insights bewaakt uw live app op een [groot aantal verschillende platformen] [ platforms] voor het vaststellen van prestatieproblemen en inzicht in gebruikspatronen.
+Application Insights bewaakt uw Live-App op een [groot aantal verschillende platformen][platforms] om u te helpen bij het vaststellen van prestatie problemen en het begrijpen van gebruiks patronen.
 
 Er zijn meerdere typen waarschuwingen:
 
-* [**Metrische waarschuwingen** ](../../azure-monitor/platform/alerts-metric-overview.md) laat u weten wanneer een metriek een drempelwaarde voor een bepaalde - zoals reactietijd, aantal uitzonderingen, CPU-gebruik of paginaweergaven.
-* [**Waarschuwingen voor activiteitenlogboeken** ](../../azure-monitor/platform/alerts-unified-log.md) wordt gebruikt om te beschrijven van waarschuwingen, waarbij de waarschuwing signaal is gebaseerd op een aangepaste Kusto-query.
-* [**Webtests** ] [ availability] zien wanneer uw site beschikbaar is op het internet of reageert traag is. [Meer informatie][availability].
-* [**Proactieve diagnostische gegevens** ](../../azure-monitor/app/proactive-diagnostics.md) worden automatisch geconfigureerd om u te waarschuwen over ongebruikelijke prestatiepatronen.
+* Met [**metrische waarschuwingen**](../../azure-monitor/platform/alerts-metric-overview.md) wordt u gewaarschuwd wanneer een metriek een drempel waarde voor een bepaalde periode kruist, zoals reactie tijden, uitzonderings aantallen, CPU-gebruik of pagina weergaven.
+* [**Waarschuwingen**](../../azure-monitor/platform/alerts-unified-log.md) in het logboek worden gebruikt om waarschuwingen te beschrijven waarbij het waarschuwings signaal is gebaseerd op een aangepaste Kusto-query.
+* [**Webtests**][availability] laten u weten wanneer uw site niet beschikbaar is op internet of langzaam reageert. [Meer informatie][availability].
+* [**Proactieve diagnoses**](../../azure-monitor/app/proactive-diagnostics.md) worden automatisch geconfigureerd om u te informeren over ongebruikelijke prestatie patronen.
 
-## <a name="set-a-metric-alert"></a>Instellen van een waarschuwing voor metrische gegevens
-Open het tabblad regels voor waarschuwingen en gebruik vervolgens de knop toevoegen.
+## <a name="set-a-metric-alert"></a>Een waarschuwing voor metrische gegevens instellen
+Open het tabblad waarschuwings regels en gebruik vervolgens de knop toevoegen.
 
-![Kies waarschuwing toevoegen op het tabblad regels voor waarschuwingen. Uw app als de bron om te meten, Geef een naam op voor de waarschuwing en kies een metrische waarde ingesteld.](./media/alerts/01-set-metric.png)
+![Klik op het tabblad waarschuwings regels op waarschuwing toevoegen. Stel uw app in als de resource die u wilt meten, geef een naam op voor de waarschuwing en kies een waarde.](./media/alerts/01-set-metric.png)
 
-* De resource voordat de andere eigenschappen instellen. **Kies de resource "(onderdelen)"** als u wilt instellen van waarschuwingen over metrische gegevens voor prestaties of het gebruik.
-* De naam die u aan de waarschuwing toewijst moet uniek zijn binnen de resourcegroep (niet alleen uw toepassing).
-* Wees voorzichtig om te weten de eenheden waarin u wordt gevraagd om in te voeren van de drempelwaarde.
-* Als u het selectievakje '... e-mail sturen naar eigenaars', worden waarschuwingen verzonden via e-mail naar iedereen die toegang tot deze resourcegroep heeft. Als u wilt deze set personen wilt uitbreiden, voeg deze toe aan de [resourcegroep of abonnement](../../azure-monitor/app/resources-roles-access-control.md) (niet de bron).
-* Als u 'Extra e-mailadressen' opgeeft, worden meldingen verzonden naar deze personen of groepen (of u dit selectievakje inschakelt het vak 'e-eigenaren...'). 
-* Stel een [webhook adres](../../azure-monitor/platform/alerts-webhooks.md) als u een web-app die op waarschuwingen reageert hebt ingesteld. Deze wordt aangeroepen wanneer de waarschuwing is geactiveerd en wanneer het probleem is opgelost. (Maar houd er rekening mee dat momenteel, queryparameters niet worden doorgegeven als webhookeigenschappen).
-* U kunt uitschakelen of inschakelen van de waarschuwing: de knoppen aan de bovenkant.
+* Stel de resource in vóór de andere eigenschappen. **Kies de resource (onderdelen)** als u waarschuwingen wilt instellen voor metrische gegevens over prestaties of gebruik.
+* De naam die u aan de waarschuwing geeft, moet uniek zijn binnen de resource groep (niet alleen uw toepassing).
+* Let op de eenheden waarin u wordt gevraagd de drempel waarde in te voeren.
+* Als u het selectie vakje e-mail eigenaren... inschakelt, worden waarschuwingen per e-mail verzonden naar iedereen die toegang heeft tot deze resource groep. Als u deze verzameling personen wilt uitbreiden, voegt u deze toe aan de [resource groep of het abonnement](../../azure-monitor/app/resources-roles-access-control.md) (niet de resource).
+* Als u ' extra e-mails ' opgeeft, worden er waarschuwingen verzonden naar deze personen of groepen (ongeacht of u de ' e-mail eigenaren ' hebt gecontroleerd. Box). 
+* Stel een [webhook-adres](../../azure-monitor/platform/alerts-webhooks.md) in als u een web-app hebt ingesteld die reageert op waarschuwingen. Deze wordt aangeroepen wanneer de waarschuwing wordt geactiveerd en wanneer deze is opgelost. (Maar houd er rekening mee dat query parameters niet worden door gegeven als webhook-eigenschappen.)
+* U kunt de waarschuwing in-of uitschakelen: Zie de knoppen aan de bovenkant.
 
-*Ik zie niet de knop Waarschuwing toevoegen.*
+*Ik zie de knop Waarschuwing toevoegen niet.*
 
-* Gebruikt u een organisatie-account? Als u eigenaar of bijdrager toegang tot de bron van deze toepassing hebt, kunt u waarschuwingen instellen. Bekijk de Access Control-tabblad. [Meer informatie over toegangsbeheer][roles].
+* Gebruikt u een organisatie account? U kunt waarschuwingen instellen als u eigenaar of Inzender toegang hebt tot deze toepassings bron. Bekijk het tabblad Access Control. [meer informatie over toegangs beheer][roles].
 
 > [!NOTE]
-> In de blade waarschuwingen ziet u dat er al een waarschuwing set up is: [Proactive Diagnostics](../../azure-monitor/app/proactive-failure-diagnostics.md). De automatische waarschuwing controleert een bepaalde metrische gegevens, fout snelheid van aanvragen. Tenzij u besluit de proactieve waarschuwing uitschakelen, moet u niet uw eigen melding instellen op de snelheid van aanvragen voor fout.
+> Op de Blade waarschuwingen ziet u dat er al een waarschuwing is ingesteld: [proactive Diagnostics](../../azure-monitor/app/proactive-failure-diagnostics.md). Met de automatische waarschuwing wordt een bepaalde metrische waarde gecontroleerd en is het aantal mislukte aanvragen. Tenzij u besluit de proactieve waarschuwing uit te scha kelen, hoeft u uw eigen waarschuwing niet in te stellen op het aantal mislukte aanvragen.
 > 
 > 
 
-## <a name="see-your-alerts"></a>Uw waarschuwingen weergegeven
-U krijgt een e-mail wanneer de status van een waarschuwing wijzigt tussen niet-actieve en actieve. 
+## <a name="see-your-alerts"></a>Uw waarschuwingen weer geven
+U ontvangt een e-mail bericht wanneer de status van een waarschuwing wordt gewijzigd tussen inactief en actief. 
 
-De huidige status van elke waarschuwing wordt weergegeven in het tabblad regels voor waarschuwingen.
+De huidige status van elke waarschuwing wordt weer gegeven op het tabblad waarschuwings regels.
 
-Er is een overzicht van recente activiteiten in de waarschuwingen vervolgkeuzelijst:
+In de vervolg keuzelijst waarschuwingen vindt u een overzicht van recente activiteiten:
 
-![Vervolgkeuzelijst voor waarschuwingen](./media/alerts/010-alert-drop.png)
+![Vervolg keuzelijst met waarschuwingen](./media/alerts/010-alert-drop.png)
 
-De geschiedenis van statuswijzigingen is in het activiteitenlogboek:
+De geschiedenis van status wijzigingen bevindt zich in het activiteiten logboek:
 
-![Klik op instellingen, auditlogboeken op het tabblad Overzicht.](./media/alerts/09-alerts.png)
+![Klik op het tabblad Overzicht op instellingen, audit logboeken](./media/alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>Hoe waarschuwingen werken
-* Een waarschuwing heeft drie statussen: 'Nooit geactiveerd', "Geactiveerd" en "Opgelost." Geactiveerde betekent dat de voorwaarde die u hebt opgegeven is waar, wanneer deze het laatst is geëvalueerd.
-* Een melding wordt gegenereerd wanneer de status van een waarschuwing wordt gewijzigd. (Als de voorwaarde voor de waarschuwing is al waar bij het maken van de waarschuwing, mogelijk niet ontvangt u een melding totdat de voorwaarde onwaar is.)
-* Elke melding genereert een e-mailbericht als u dit selectievakje is ingeschakeld in het vak e-mailberichten of e-mailadressen verstrekt. U kunt ook zoeken op de vervolgkeuzelijst met meldingen.
-* Een waarschuwing wordt telkens wanneer een metrische waarde, maar niet verder bereikt worden geëvalueerd.
-* De evaluatie van de metrische gegevens aggregeert in de voorafgaande periode en vergelijkt deze aan de drempelwaarde om de nieuwe status te bepalen.
-* De periode die u kiest, geeft het interval op waarover de metrische gegevens worden samengevoegd. Dit heeft geen invloed op hoe vaak de waarschuwing wordt geëvalueerd: die afhankelijk is van de frequentie van binnenkomst van metrische gegevens.
-* Als er worden geen gegevens voor een bepaalde metrische gegevens gedurende een bepaalde periode ontvangt, heeft de kloof verschillende gevolgen voor de evaluatie van de waarschuwing en op de grafieken in metric explorer. Wanneer er geen gegevens worden gedetecteerd voor langer zijn dan de controle-interval van de grafiek, wordt de grafiek in metric explorer een waarde van 0. Maar een waarschuwing op basis van de dezelfde meetwaarde is niet opnieuw worden geëvalueerd, en de status van de waarschuwing blijft ongewijzigd. 
+* Een waarschuwing heeft drie statussen: nooit geactiveerd, geactiveerd en opgelost. Geactiveerd betekent dat de voor waarde die u hebt opgegeven, waar was, toen deze de laatste keer werd geëvalueerd.
+* Er wordt een melding gegenereerd wanneer de status van een waarschuwing wordt gewijzigd. (Als de waarschuwings voorwaarde al waar was tijdens het maken van de waarschuwing, ontvangt u mogelijk geen melding totdat de voor waarde ONWAAR is.)
+* Elke melding genereert een e-mail bericht als u het selectie vakje e-mails of e-mail adressen hebt ingeschakeld. U kunt ook de vervolg keuzelijst meldingen bekijken.
+* Elke keer dat een metriek arriveert, wordt een waarschuwing geëvalueerd, maar niet anderszins.
+* De evaluatie aggregeert de metrische gegevens over de voorafgaande periode en vergelijkt deze met de drempel waarde om de nieuwe status te bepalen.
+* De periode die u kiest, geeft u het interval op waarmee metrische gegevens worden geaggregeerd. Dit is niet van invloed op hoe vaak de waarschuwing wordt geëvalueerd: dat is afhankelijk van de frequentie van de metrische gegevens.
+* Als er gedurende enige tijd geen gegevens binnenkomen voor een bepaalde metriek, heeft de onderbreking verschillende gevolgen voor waarschuwings evaluatie en op de grafieken in metrische Explorer. Als er in metrische Explorer geen gegevens meer worden gezien dan het steekproef interval van de grafiek, toont de grafiek de waarde 0. Een waarschuwing op basis van dezelfde metriek wordt echter niet opnieuw geëvalueerd en de status van de waarschuwing blijft ongewijzigd. 
   
-    Wanneer gegevens uiteindelijk aankomen, wordt de grafiek gaat terug naar een andere waarde dan nul. De waarschuwing wordt geëvalueerd op basis van de gegevens beschikbaar zijn voor de periode die u hebt opgegeven. Als het nieuwe gegevenspunt beschikbaar in de periode is, is de statistische functie alleen gebaseerd op dat van gegevenspunt.
-* Een waarschuwing kan vaak knipperen tussen de statussen van waarschuwingen en in orde is, zelfs als u een lange periode instelt. Dit kan gebeuren als de metrische waarde wordt bewogen over de drempelwaarde. Er is geen hysteresis drempelwaarde: de overgang naar waarschuwing vindt plaats op dezelfde waarde als de overgang op in orde.
+    Wanneer gegevens uiteindelijk worden ontvangen, springt het diagram terug naar een andere waarde dan nul. De waarschuwing wordt geëvalueerd op basis van de gegevens die beschikbaar zijn voor de periode die u hebt opgegeven. Als het nieuwe gegevens punt de enige die beschikbaar is in de periode, de aggregatie alleen op dat gegevens punt is gebaseerd.
+* Een waarschuwing kan regel matig Flik keren tussen waarschuwingen en goede statussen, zelfs als u een lange periode hebt ingesteld. Dit kan gebeuren als de metrische waarde wordt ingesteld om de drempel. Er is geen hysteresis in de drempel waarde: de overgang naar de waarschuwing vindt plaats in de vorm van de overgang naar in orde.
 
 ## <a name="what-are-good-alerts-to-set"></a>Wat zijn goede waarschuwingen om in te stellen?
-Dat hangt ervan af op uw toepassing. Beginnen met, is het beste niet te veel metrische gegevens instellen. Laten we zien hoe uw grafieken met metrische gegevens bekijkt terwijl uw app wordt uitgevoerd, als u wilt een idee krijgen van hoe deze gedraagt zich weer normaal. Met deze procedure kunt u vinden manieren om de prestaties te verbeteren. Stel waarschuwingen in om aan te geven wanneer de metrische gegevens buiten de normale zone gaat. 
+Dit is afhankelijk van uw toepassing. Als u wilt beginnen met, is het raadzaam om niet te veel metrische gegevens in te stellen. Besteed enige tijd aan het kijken van uw metrische grafieken terwijl uw app actief is, zodat u weet hoe deze normaal functioneert. Deze procedure helpt u bij het verbeteren van de prestaties. Stel vervolgens waarschuwingen in om u te laten weten wanneer de metrische gegevens buiten de normale zone gaan. 
 
 Populaire waarschuwingen zijn onder andere:
 
-* [Metrische gegevens over browser][client], met name Browser **pagina laadtijden**, zijn geschikt voor webtoepassingen. Als uw pagina veel scripts heeft, moet u controleren of **browseruitzonderingen**. Om deze metrische gegevens en waarschuwingen, die u hebt voor het instellen van [webpagina bewaking][client].
-* **Serverreactietijd** voor de serverkant van webtoepassingen. En het instellen van waarschuwingen, te controleren op deze metrische gegevens om te zien als dit niet goed met hoge aanvraagsnelheden varieert: variant kan erop wijzen dat uw app wordt uitgevoerd uit middelen te halen. 
-* **Serveruitzonderingen** : als u wilt zien, hebt u enkele [aanvullende instellingen](../../azure-monitor/app/asp-net-exceptions.md).
+* De [metrische gegevens][client]van de browser, met name de **laad tijden**van browser pagina's, zijn geschikt voor webtoepassingen. Als uw pagina veel scripts bevat, moet u zoeken naar **browser uitzonderingen**. Als u deze metrische gegevens en waarschuwingen wilt ophalen, moet u de bewaking van [webpagina's][client]instellen.
+* De **reactie tijd** van de server voor de server zijde van webtoepassingen. Naast het instellen van waarschuwingen, moet u deze metrische gegevens in een hand omlaten om te zien of deze onevenredig variëren met hoge aanvraag snelheden: variatie kan erop wijzen dat uw app bijna geen resources meer heeft. 
+* **Server uitzonderingen** : als u deze wilt weer geven, moet u [extra instellingen](../../azure-monitor/app/asp-net-exceptions.md)opgeven.
 
-Vergeet niet dat [snelheid van proactieve foutdiagnoses](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch de snelheid waarmee uw app op aanvragen met foutcodes reageert bewaken.
+Vergeet niet dat [Diagnostische gegevens over proactieve uitval snelheid](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch de snelheid bewaken waarmee uw app reageert op aanvragen met fout codes.
 
-## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Over het instellen van een uitzonderingswaarschuwing met behulp van aangepaste zoekopdrachten in Logboeken
+## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Een uitzonderings waarschuwing instellen met behulp van aangepaste zoek opdracht in Logboeken
 
-In deze sectie doorlopen we over het instellen van een waarschuwing voor een query op basis van uitzondering. Stel dat we willen een waarschuwing als de mislukte frequentie hoger is dan 10% in de afgelopen 24 uur voor dit voorbeeld.
+In deze sectie wordt uitgelegd hoe u een uitzonderings waarschuwing op basis van een query kunt instellen. Voor dit voor beeld laten we weten dat er een waarschuwing moet worden weer geven wanneer het aantal mislukte aanvragen in de afgelopen 24 uur groter is dan 10%.
 
-1. Ga naar uw Application Insights-resource in Azure portal.
-2. Aan de linkerkant, onder Klik op configureren **waarschuwing**.
+1. Ga in het Azure Portal naar de Insight-resource van uw toepassing.
+2. Aan de linkerkant onder Klik op **waarschuwing**configureren.
 
-    ![Aan de linkerkant onder configureren klikt u op waarschuwing](./media/alerts/1appinsightalert.png)
+    ![Aan de linkerkant onder Klik op waarschuwing configureren](./media/alerts/1appinsightalert.png)
 
-3. Selecteer aan de bovenkant van het tabblad waarschuwing **nieuwe waarschuwingsregel**.
+3. Selecteer de **nieuwe waarschuwings regel**boven aan het tabblad waarschuwing.
 
-     ![Aan de bovenkant van het tabblad waarschuwing klikt u op nieuwe waarschuwingsregel](./media/alerts/2createalert.png)
+     ![Klik boven aan het tabblad waarschuwing op nieuwe waarschuwings regel](./media/alerts/2createalert.png)
 
-4. De resource moet worden automatisch geselecteerd. Als u wilt een voorwaarde instellen, klikt u op **voorwaarde toevoegen**.
+4. De resource moet automatisch worden geselecteerd. Klik op **voor waarde toevoegen**om een voor waarde in te stellen.
 
-    ![Klik op een voorwaarde toevoegen](./media/alerts/3addcondition.png)
+    ![Klik op voor waarde toevoegen](./media/alerts/3addcondition.png)
 
-5. Selecteer in het tabblad configureren signaal logische **aangepast zoeken in Logboeken**
+5. Selecteer in het tabblad signaal logica configureren de optie **aangepaste logboek zoekactie**
 
-    ![Klik op het aangepaste logboek zoeken](./media/alerts/4customlogsearch.png)
+    ![Klik op aangepast logboek zoeken](./media/alerts/4customlogsearch.png)
 
-6. Voer de query in het vak 'Zoekquery' op het tabblad Zoeken met het aangepaste logboek. Voor dit voorbeeld gebruiken we de onderstaande Kusto-query.
+6. Voer in het tabblad Aangepaste logboek zoek opdracht uw query in het vak Zoek query in. Voor dit voor beeld gebruiken we de onderstaande Kusto-query.
     ```kusto
     let percentthreshold = 10;
     let period = 24h;
@@ -124,66 +119,66 @@ In deze sectie doorlopen we over het instellen van een waarschuwing voor een que
 
     ```
 
-    ![Query van het type in het zoekvak van de query](./media/alerts/5searchquery.png)
+    ![Query type in zoek opdracht](./media/alerts/5searchquery.png)
     
     > [!NOTE]
-    > U kunt deze stappen ook toepassen op andere typen waarschuwingen op basis van een query. U kunt meer informatie over de Kusto-query-language uit deze [Kusto-introductie doc](https://docs.microsoft.com/azure/kusto/concepts/) of [overzichtskaart van SQL tot Kusto](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
+    > U kunt deze stappen ook Toep assen op andere typen waarschuwingen op basis van query's. Meer informatie over de Kusto-query taal vindt u in deze [Kusto aan](https://docs.microsoft.com/azure/kusto/concepts/) de slag-doc of dit [SQL to Kusto Cheat-blad](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet) .
 
-7. Kies onder 'Alert logic', of deze gebaseerd op het aantal resultaten of meting van metrische gegevens. Selecteer vervolgens de voorwaarde (groter is dan, gelijk aan, kleiner dan) en een drempelwaarde. Terwijl u deze waarden wijzigen wilt, merkt u wellicht de voorwaarde voorbeeld zin van wijzigingen. In dit voorbeeld gebruiken we 'gelijk aan'.
+7. Kies onder ' waarschuwings logica ' of het is gebaseerd op het aantal resultaten of metrische meet waarden. Kies vervolgens de voor waarde (groter dan, gelijk aan, kleiner dan) en een drempel waarde. Wanneer u deze waarden wijzigt, is het mogelijk dat de preview-zin van de voor waarde wordt gewijzigd. In dit voor beeld gebruiken we ' is gelijk aan '.
 
-    ![Onder Alert logic kiezen uit de opties voor op basis van opgegeven en de voorwaarde, en typ vervolgens een drempelwaarde](./media/alerts/6alertlogic.png)
+    ![Kies onder waarschuwings logica de opties die zijn opgegeven voor op basis van en voor waarde en typ vervolgens een drempel waarde](./media/alerts/6alertlogic.png)
 
-8. Onder 'Evaluated op basis van', stelt u de periode en de frequentie. De periode hier moet overeenkomen met de waarde die we voor periode in de bovenstaande query. Klik vervolgens op **gedaan**.
+8. Stel bij ' geëvalueerd op basis van ' de periode en frequentie in. De periode die u hier opgeeft, moet overeenkomen met de waarde die we in de bovenstaande query hebben opgegeven voor de periode. Klik vervolgens op **gereed**.
 
-    ![Periode en frequentie instellen aan de onderkant en klik vervolgens op gereed](./media/alerts/7evaluate.png)
+    ![Stel onderaan de periode en frequentie in en klik vervolgens op gereed](./media/alerts/7evaluate.png)
 
-9. Nu ziet u de voorwaarde die we hebben gemaakt met de geschatte maandelijkse kosten. Hieronder onder ["Actiegroepen"](../platform/action-groups.md) kunt u een nieuwe groep maken of een bestaande set selecteren. Als u wilt, kunt u de acties kunt aanpassen.
+9. Nu ziet u de voor waarde die we hebben gemaakt met de geschatte maandelijkse kosten. Onder [actie groepen](../platform/action-groups.md) kunt u een nieuwe groep maken of een bestaande selecteren. Als u wilt, kunt u de acties aanpassen.
 
-    ![Klik op de selecteren of knoppen onder actiegroep maken](./media/alerts/8actiongroup.png)
+    ![Klik op de knoppen selecteren of maken onder actie groep](./media/alerts/8actiongroup.png)
 
-10. Ten slotte de gegevens van uw waarschuwing toevoegen (naam, beschrijving, ernst melding). Wanneer u klaar bent, klikt u op **waarschuwingsregel maken** aan de onderkant.
+10. Voeg ten slotte uw waarschuwings details toe (naam, beschrijving, Ernst) van de waarschuwings regel. Wanneer u klaar bent, klikt u onderaan op **waarschuwings regel maken** .
 
-    ![Onder Waarschuwingsdetails Typ uw naam waarschuwingsregel, Geef een beschrijving en kies een ernst](./media/alerts/9alertdetails.png)
+    ![Typ onder Details van waarschuwing uw naam van de waarschuwings regel, schrijf een beschrijving en kies een Ernst](./media/alerts/9alertdetails.png)
 
-## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Hoe u afmelden voor klassieke waarschuwing e-mailmeldingen
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>E-mail meldingen voor klassieke waarschuwingen afmelden
 
-In deze sectie is van toepassing op **beschikbaarheid van klassieke waarschuwingen**, **klassieke metrische Application Insights-waarschuwingen**, en zo de **klassieke waarschuwingen voor afwijkingen**.
+Deze sectie is van toepassing op waarschuwingen voor **klassieke Beschik baarheid**, **klassieke Application Insights metrische waarschuwingen**en **waarschuwingen voor klassieke fout afwijkingen**.
 
-U ontvangt e-mailmeldingen voor deze klassieke waarschuwingen als een van de volgende van toepassing is:
+U ontvangt e-mail meldingen voor deze klassieke waarschuwingen als een van de volgende van toepassing is:
 
-* Uw e-mailadres wordt vermeld in het veld bericht e-mailadres ontvangers in de instellingen van de waarschuwingsregel.
+* Uw e-mail adres wordt weer gegeven in het veld ontvangers van e-mail berichten in de instellingen voor waarschuwings regels.
 
-* De optie voor het verzenden van e-mailmeldingen voor gebruikers met bepaalde functies voor het abonnement is geactiveerd en u ingedrukt betreffende rol voor die bepaalde Azure-abonnement.
+* De optie voor het verzenden van e-mail meldingen naar gebruikers die bepaalde rollen voor het abonnement hebben, wordt geactiveerd en u houdt een rol voor dat specifieke Azure-abonnement.
 
-![Schermafbeelding van de melding van waarschuwingen](./media/alerts/alert-notification.png)
+![Scherm opname van waarschuwings melding](./media/alerts/alert-notification.png)
 
-Voor het beheren van beter uw beveiliging en privacy die algemeen wordt aangeraden dat u expliciet de geadresseerden voor meldingen opgeven voor uw klassieke waarschuwingen in de **melding e-mailontvangers** veld. De optie om alle gebruikers met bepaalde rollen te waarschuwen is voor achterwaartse compatibiliteit opgegeven.
+Om uw veiligheid en privacy beter te beheren, wordt u aangeraden de ontvangers van meldingen voor uw klassieke waarschuwingen expliciet op te geven in het veld ontvangers van het **e-mail bericht** . De optie om alle gebruikers op de hoogte te stellen van bepaalde rollen is bedoeld voor achterwaartse compatibiliteit.
 
-Als u wilt afmelden voor e-mailmeldingen die worden gegenereerd door een bepaalde waarschuwingsregel, verwijdert u uw e-mailadres van de **melding e-mailontvangers** veld.
+Als u zich wilt afmelden voor e-mail meldingen die door een bepaalde waarschuwings regel worden gegenereerd, verwijdert u uw e-mail adres uit het veld ontvangers van het e-mail **bericht**
 
-Als uw e-mailadres niet expliciet wordt vermeld, raden wij aan dat u de optie automatisch aan alle leden van bepaalde functies uitschakelen, en in plaats daarvan alle gebruiker e-mailberichten die u nodig hebt lijst voor het ontvangen van meldingen voor deze waarschuwingsregel in de e-mailmelding ontvangers-veld.
+Als uw e-mail adres niet expliciet wordt vermeld, kunt u het beste de optie uitschakelen om alle leden van bepaalde rollen automatisch te waarschuwen, en in plaats daarvan alle gebruikers-e-mail berichten weer te geven die meldingen moeten ontvangen voor die waarschuwings regel in de e-mail melding veld geadresseerden.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Wie de (klassiek) waarschuwingsmeldingen ontvangen?
+## <a name="who-receives-the-classic-alert-notifications"></a>Wie ontvangt de (klassieke) waarschuwings meldingen?
 
-In deze sectie is alleen van toepassing op klassieke waarschuwingen en helpt u optimaliseren van uw meldingen van waarschuwingen om ervoor te zorgen dat alleen de gewenste geadresseerden meldingen ontvangen. Meer informatie geven over het verschil tussen [klassieke waarschuwingen](../platform/alerts-classic.overview.md) en de nieuwe waarschuwingen optreden, raadpleeg dan de [waarschuwingen overzichtsartikel](../platform/alerts-overview.md). Gebruiken voor het beheren van waarschuwingsmeldingen in de nieuwe ervaring voor waarschuwingen, [actiegroepen](../platform/action-groups.md).
+Deze sectie is alleen van toepassing op klassieke waarschuwingen en helpt u bij het optimaliseren van uw waarschuwings meldingen om ervoor te zorgen dat alleen de gewenste ontvangers meldingen ontvangen. Raadpleeg het [artikel overzicht van waarschuwingen](../platform/alerts-overview.md)voor meer informatie over het verschil tussen [klassieke waarschuwingen](../platform/alerts-classic.overview.md) en de nieuwe waarschuwingen. Als u waarschuwings meldingen wilt beheren in de nieuwe waarschuwing, gebruikt u [actie groepen](../platform/action-groups.md).
 
-* We raden het gebruik van specifieke ontvangers voor klassieke waarschuwingen.
+* We raden u aan specifieke ontvangers te gebruiken voor klassieke waarschuwings meldingen.
 
-* Voor waarschuwingen over een Application Insights-metrische gegevens (inclusief metrische gegevens over beschikbaarheid), de **bulksgewijs/groep** selectievakje, indien ingeschakeld, verzendt naar gebruikers met de rol van eigenaar, bijdrager of lezer in het abonnement. In feite _alle_ gebruikers met toegang tot het abonnement de Application Insights-resource in het bereik en meldingen ontvangt.
+* Voor waarschuwingen over Application Insights metrische gegevens (inclusief beschikbaarheids gegevens), de optie voor het selectie vakje voor **bulk/groep** , indien ingeschakeld, stuurt de gebruiker naar gebruikers met de rol van eigenaar, bijdrager of lezer in het abonnement. In feite hebben _alle_ gebruikers met toegang tot het abonnement de Application Insights-resource binnen bereik en ontvangen ze meldingen.
 
 > [!NOTE]
-> Als u momenteel gebruikmaakt van de **bulksgewijs/groep** selectievakje, en uitschakelen, kunt u zich niet meer herstellen van de wijziging.
+> Als u momenteel de optie voor het selectie vakje **massaal/groep** gebruikt en deze functie uitschakelt, kunt u de wijziging niet meer ongedaan maken.
 
-Gebruik de nieuwe waarschuwing ervaring/bijna realtime waarschuwingen als u meldingen naar gebruikers op basis van hun rol nodig hebt. Met [actiegroepen](../platform/action-groups.md), kunt u e-mailmeldingen voor gebruikers configureren met een van de rollen Inzender of eigenaar/lezer is (niet gecombineerd samen als één optie).
+Gebruik de nieuwe waarschuwings ervaring/bijna realtime waarschuwingen als u gebruikers op basis van hun rollen wilt waarschuwen. Met [actie groepen](../platform/action-groups.md)kunt u e-mail meldingen configureren voor gebruikers met een van de rollen Inzender/eigenaar/lezer (niet gecombineerd als één optie).
 
 ## <a name="automation"></a>Automation
-* [PowerShell gebruiken voor het instellen van waarschuwingen automatiseren](../../azure-monitor/app/powershell-alerts.md)
-* [Webhooks gebruiken om te reageren op waarschuwingen automatiseren](../../azure-monitor/platform/alerts-webhooks.md)
+* [Power shell gebruiken voor het automatiseren van het instellen van waarschuwingen](../../azure-monitor/app/powershell-alerts.md)
+* [Webhooks gebruiken om het reageren op waarschuwingen te automatiseren](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Zie ook
-* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Webtests voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Instellen van waarschuwingen automatiseren](../../azure-monitor/app/powershell-alerts.md)
-* [Proactieve diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Proactieve diagnoses](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

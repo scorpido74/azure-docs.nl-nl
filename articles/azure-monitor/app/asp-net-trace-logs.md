@@ -1,23 +1,18 @@
 ---
 title: .NET-traceer Logboeken in Application Insights verkennen
 description: Zoek logboeken die zijn gegenereerd door Trace, NLog of Log4Net.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 654e4bc35de1ed33842944ba360d319705589683
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 05/08/2019
+ms.openlocfilehash: 352e31e2a2f1a88a33e82134460e6df0911dbd2e
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372509"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677633"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET core-en python-traceer Logboeken in Application Insights verkennen
 
@@ -58,20 +53,20 @@ Gebruik deze methode als uw project type niet wordt ondersteund door het Applica
 3. Zoek naar ' Application Insights '.
 4. Selecteer een van de volgende pakketten:
 
-   - Voor ILogger: [micro soft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - Voor NLog: [micro soft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Voor Log4Net: [micro soft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - Voor System. Diagnostics: [micro soft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Micro soft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
-[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - Voor ILogger: [micro soft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - Voor NLog: [micro soft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Voor Log4Net: [micro soft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Voor System. Diagnostics: [micro soft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Micro soft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) 
+[ ![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
+[ ![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 Het NuGet-pakket installeert de benodigde assembly's en wijzigt web. config of app. config als dat van toepassing is.
 
@@ -89,7 +84,7 @@ Als u liever log4net of NLog, gebruikt u:
     logger.Warn("Slow response - database01");
 
 ## <a name="use-eventsource-events"></a>Event source-gebeurtenissen gebruiken
-U kunt [System. Diagnostics. tracing. Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het NuGet-pakket van @no__t 0. Bewerk vervolgens de sectie `TelemetryModules` van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+U kunt [System. Diagnostics. tracing. Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EventSourceListener` NuGet-pakket. Bewerk vervolgens de sectie `TelemetryModules` van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -118,7 +113,7 @@ U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/
 Voor elke DiagnosticSource die u wilt traceren, voegt u een vermelding toe met het kenmerk **name** ingesteld op de naam van uw DiagnosticSource.
 
 ## <a name="use-etw-events"></a>ETW-gebeurtenissen gebruiken
-U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het NuGet-pakket van @no__t 0. Bewerk vervolgens de sectie ' TelemetryModules ' van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EtwCollector` NuGet-pakket. Bewerk vervolgens de sectie ' TelemetryModules ' van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 > [!NOTE] 
 > ETW-gebeurtenissen kunnen alleen worden verzameld als het proces dat als host fungeert voor de SDK wordt uitgevoerd onder een identiteit die lid is van prestatie logboek gebruikers of beheerders.

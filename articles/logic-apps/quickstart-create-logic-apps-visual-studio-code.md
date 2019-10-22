@@ -1,6 +1,6 @@
 ---
-title: Werk stromen maken en beheren in Visual Studio code-Azure Logic Apps
-description: 'Quick Start: JSON-definities voor logische apps maken en beheren in Visual Studio code (VS code)'
+title: Werk stromen automatiseren met Visual Studio code-Azure Logic Apps
+description: Onderliggende JSON-definities voor logische apps maken of bewerken met Visual Studio code (VS code)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035459"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679155"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>Quickstart: Logische app-definities maken en beheren met Visual Studio code
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>Snelstartgids: werk stroom definities voor logische apps maken en beheren met Visual Studio code
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en Visual Studio code kunt u logische apps maken en beheren die u helpen bij het automatiseren van taken, werk stromen en processen voor het integreren van apps, gegevens, systemen en services in organisaties en ondernemingen. In deze Quick start ziet u hoe u werk stroom definities voor logische apps kunt maken en bewerken door te werken met het werk stroom definitie schema in JavaScript Object Notation (JSON) via een op code gebaseerde ervaring. U kunt ook werken met bestaande Logic apps die al zijn geïmplementeerd in Azure.
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en Visual Studio code kunt u logische apps maken en beheren die u helpen bij het automatiseren van taken, werk stromen en processen voor het integreren van apps, gegevens, systemen en services in organisaties en ondernemingen. In deze Quick start ziet u hoe u de onderliggende werk stroom definities kunt maken en bewerken, die gebruikmaken van JavaScript Object Notation (JSON), voor logische apps via een op code gebaseerde ervaring. U kunt ook werken met bestaande Logic apps die al zijn geïmplementeerd in Azure.
 
 Hoewel u deze taken kunt uitvoeren in de [Azure Portal](https://portal.azure.com) en in Visual Studio, kunt u sneller aan de slag met Visual Studio code wanneer u al bekend bent met definities van logische apps en rechtstreeks in code wilt werken. U kunt bijvoorbeeld al gemaakte Logic apps uitschakelen, inschakelen, verwijderen en vernieuwen. Daarnaast kunt u werken met Logic apps en integratie accounts vanuit elk ontwikkel platform waarop Visual Studio code wordt uitgevoerd, zoals Linux, Windows en Mac.
 
@@ -33,7 +33,7 @@ Controleer voordat u begint of u deze items hebt:
 
 * Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basis kennis over [werk stroom definities voor logische apps](../logic-apps/logic-apps-workflow-definition-language.md) en hun structuur, die gebruikmaakt van JavaScript object NOTATION (JSON)
+* Basis kennis over [werk stroom definities voor logische apps](../logic-apps/logic-apps-workflow-definition-language.md) en hun structuur, zoals beschreven met JSON
 
   Als u nog geen ervaring hebt met Logic Apps, kunt u deze [Snelstartgids](../logic-apps/quickstart-create-first-logic-app-workflow.md)uitproberen, waarmee u uw eerste Logic apps in de Azure Portal maakt en meer richt op de basis concepten.
 

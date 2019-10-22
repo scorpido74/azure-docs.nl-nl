@@ -1,5 +1,5 @@
 ---
-title: Status controleren, logboek registratie instellen en waarschuwingen ontvangen-Azure Logic Apps | Microsoft Docs
+title: Status controleren, logboek registratie instellen en waarschuwingen ontvangen-Azure Logic Apps
 description: Status controleren, diagnostische gegevens registreren en waarschuwingen instellen voor Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261355"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680300"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Status controleren, diagnostische logboek registratie instellen en waarschuwingen voor Azure Logic Apps inschakelen
 
@@ -74,19 +73,19 @@ Als u meldingen over mislukte of andere mogelijke problemen wilt ontvangen, stel
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Diagnostische logboek registratie inschakelen voor uw logische app
 
-Voor uitgebreidere fout opsporing met runtime Details en-gebeurtenissen kunt u diagnostische logboek registratie instellen met [Azure monitor](../log-analytics/log-analytics-overview.md)-Logboeken. Azure Monitor is een service in azure waarmee u uw Cloud-en on-premises omgevingen kunt bewaken om de beschik baarheid en prestaties te behouden. 
+Voor uitgebreidere fout opsporing met runtime Details en-gebeurtenissen kunt u diagnostische logboek registratie instellen met [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Azure Monitor is een service in azure waarmee u uw Cloud-en on-premises omgevingen kunt bewaken om de beschik baarheid en prestaties te behouden. 
 
 Voordat u begint, moet u beschikken over een Log Analytics-werk ruimte. Meer informatie [over het maken van een log Analytics-werk ruimte](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Zoek en selecteer uw logische app in de [Azure Portal](https://portal.azure.com). 
 
-2. Kies in het menu Blade van de logische app onder > **controle**de optie diagnostische **Diagnostische instellingen**.
+2. Klik in het menu Blade van de logische app onder **bewaking**op **diagnostische gegevens** > **Diagnostische instellingen**.
 
    ![Ga naar bewaking, diagnostische gegevens en diagnostische instellingen](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
 3. Kies onder instellingen **voor** **Diagnostische gegevens**.
 
-   ![Logboeken met diagnostische gegevens inschakelen](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![Diagnostische logboeken inschakelen](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Selecteer nu de Log Analytics werk ruimte en gebeurtenis categorie voor logboek registratie zoals weer gegeven:
 
@@ -127,7 +126,7 @@ Volg deze stappen om gebeurtenissen in uw logische app te zoeken en weer te geve
 
    ![Zoek reeks opgeven](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   Meer informatie over [het zoeken naar gegevens in azure monitor](../log-analytics/log-analytics-log-searches.md)-Logboeken.
+   Meer informatie over [het zoeken naar gegevens in azure monitor-logboeken](../log-analytics/log-analytics-log-searches.md).
 
 5. Kies op de pagina resultaten in de linker balk de periode die u wilt weer geven.
 Als u de query wilt verfijnen door een filter toe te voegen, kiest u **+ toevoegen**.
@@ -178,9 +177,9 @@ Op basis van de opties die u wilt instellen, moet u ervoor zorgen dat u eerst [e
 
 Als u specifieke metrische gegevens of drempel waarden voor uw logische app wilt bewaken, stelt u [in azure waarschuwingen in](../azure-monitor/platform/alerts-overview.md). Meer informatie over [metrische gegevens in azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
-Voer de volgende stappen uit om waarschuwingen in te stellen zonder [Azure monitor logboeken](../log-analytics/log-analytics-overview.md). [Stel Azure monitor](#azure-diagnostics) -logboeken ook in voor meer geavanceerde waarschuwings criteria en-acties.
+Voer de volgende stappen uit om waarschuwingen in te stellen zonder [Azure monitor logboeken](../log-analytics/log-analytics-overview.md). [Stel Azure monitor-logboeken](#azure-diagnostics) ook in voor meer geavanceerde waarschuwings criteria en-acties.
 
-1. Kies in het menu Blade van de logische app onder >  **bewaking**de optie diagnostische**waarschuwings regels** > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
+1. Kies in het menu Blade van de logische app onder **controle**de optie **diagnostische gegevens**  > **waarschuwings regels**  > **waarschuwing toevoegen** , zoals hier wordt weer gegeven:
 
    ![Een waarschuwing voor uw logische app toevoegen](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 
@@ -211,7 +210,7 @@ Voer de volgende stappen uit om waarschuwingen in te stellen zonder [Azure monit
 
 Elke diagnostische gebeurtenis heeft details over uw logische app en die gebeurtenis, bijvoorbeeld de status, start tijd, eind tijd, enzovoort. Voor het programmatisch instellen van bewaking, tracering en logboek registratie kunt u deze gegevens gebruiken met de [rest API voor Azure Logic apps](https://docs.microsoft.com/rest/api/logic) en de [rest API voor Azure Diagnostics](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows).
 
-De `ActionCompleted` gebeurtenis heeft bijvoorbeeld de eigenschappen en `clientTrackingId` `trackedProperties` die u kunt gebruiken voor het volgen en bewaken van:
+De `ActionCompleted` gebeurtenis heeft bijvoorbeeld de `clientTrackingId`-en `trackedProperties`-eigenschappen die u kunt gebruiken voor het volgen en bewaken van:
 
 ``` json
 {
@@ -247,11 +246,11 @@ De `ActionCompleted` gebeurtenis heeft bijvoorbeeld de eigenschappen en `clientT
 }
 ```
 
-* `clientTrackingId`: Als u dit niet opgeeft, wordt deze ID automatisch door Azure gegenereerd en worden gebeurtenissen gecorreleerd in een logische app-uitvoering, inclusief alle geneste werk stromen die vanuit de logische app worden aangeroepen. U kunt deze id hand matig opgeven vanuit een trigger door een `x-ms-client-tracking-id` header met uw aangepaste ID-waarde in de trigger aanvraag door te geven. U kunt een trigger voor een aanvraag, een HTTP-trigger of een webhook gebruiken.
+* `clientTrackingId`: als u dit niet opgeeft, wordt deze ID automatisch door Azure gegenereerd en worden gebeurtenissen gecorreleerd in een logische app-uitvoering, inclusief geneste werk stromen die vanuit de logische app worden aangeroepen. U kunt deze ID hand matig opgeven vanuit een trigger door een `x-ms-client-tracking-id`-header door te geven met uw aangepaste ID-waarde in de trigger-aanvraag. U kunt een trigger voor een aanvraag, een HTTP-trigger of een webhook gebruiken.
 
-* `trackedProperties`: Als u invoer of uitvoer in diagnostische gegevens wilt volgen, kunt u bijgehouden eigenschappen toevoegen aan acties in de JSON-definitie van de logische app. In bijgehouden eigenschappen kunnen alleen de invoer en uitvoer van één actie worden bijgehouden, maar u kunt de `correlation` eigenschappen van gebeurtenissen gebruiken om te correleren over acties in een uitvoering.
+* `trackedProperties`: als u invoer of uitvoer in diagnostische gegevens wilt volgen, kunt u bijgehouden eigenschappen toevoegen aan acties in de JSON-definitie van de logische app. Bijgehouden eigenschappen kunnen alleen de invoer en uitvoer van één actie bijhouden, maar u kunt de `correlation` eigenschappen van gebeurtenissen gebruiken om te correleren over acties in een uitvoering.
 
-  Als u een of meer eigenschappen wilt volgen, `trackedProperties` voegt u de sectie en de gewenste eigenschappen aan de actie definitie toe. Stel dat u gegevens wilt bijhouden zoals een ' Order-ID ' in uw telemetrie:
+  Als u een of meer eigenschappen wilt volgen, voegt u de sectie `trackedProperties` en de gewenste eigenschappen toe aan de definitie van de actie. Stel dat u gegevens wilt bijhouden zoals een ' Order-ID ' in uw telemetrie:
 
   ``` json
   "myAction": {

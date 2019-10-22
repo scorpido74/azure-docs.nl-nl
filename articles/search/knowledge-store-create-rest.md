@@ -7,12 +7,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244470"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678463"
 ---
 # <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Een Azure Search Knowledge Store maken met behulp van REST
 
@@ -30,7 +30,7 @@ Maak de volgende services:
 
 - Maak een [Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) om de voorbeeld gegevens en het kennis archief op te slaan. Uw opslag account moet dezelfde locatie (zoals vs-West) voor uw Azure Search-service gebruiken. De waarde voor **account soort** moet **StorageV2 (algemeen gebruik v2)** (standaard) of **opslag (algemeen gebruik v1)** zijn.
 
-- Aanbevolen: down load de [postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Search. U kunt de REST API gebruiken met elk hulp programma dat kan werken met HTTP-aanvragen en-antwoorden. Postman is een goede keuze voor het verkennen van REST-Api's. In dit artikel wordt postman gebruikt. De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) voor dit artikel bevat ook een postman-verzameling van aanvragen. 
+- Aanbevolen: down load de [postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Search. U kunt de REST API gebruiken met elk hulp programma dat kan werken met HTTP-aanvragen en-antwoorden. Postman is een goede keuze voor het verkennen van REST-Api's. In dit artikel wordt postman gebruikt. De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) voor dit artikel bevat ook een postman-verzameling van aanvragen. 
 
 ## <a name="store-the-data"></a>De gegevens opslaan
 
@@ -46,11 +46,11 @@ Laadt het het CSV-bestand van het Hotel in Azure Blob-opslag, zodat het toeganke
 1. Selecteer **OK** om de BLOB-container te maken.
 1. Open de nieuwe **hotels: controle** container, selecteer **uploaden**en selecteer vervolgens het HotelReviews-Free. CSV-bestand dat u in de eerste stap hebt gedownload.
 
-    ![De gegevens uploaden upload](media/knowledge-store-create-portal/upload-command-bar.png "de Hotel beoordelingen")
+    ![De gegevens uploaden](media/knowledge-store-create-portal/upload-command-bar.png "De Hotels-beoordelingen uploaden")
 
 1. Selecteer **uploaden** om het CSV-bestand te importeren in Azure Blob-opslag. De nieuwe container wordt weer gegeven:
 
-    ![De BLOB-container maken](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "de BLOB-container maken")
+    ![De BLOB-container maken](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "De BLOB-container maken")
 
 ## <a name="configure-postman"></a>Postman configureren
 
@@ -63,14 +63,14 @@ Postman installeren en instellen.
 1. Selecteer het tabblad **verzamelingen** en selecteer vervolgens de knop **...** (weglatings tekens).
 1. Selecteer **Bewerken**. 
    
-   ![Postman-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Ga naar het menu bewerken in de Postman")
+   ![Postman-app met navigatie](media/knowledge-store-create-rest/postman-edit-menu.png "Ga naar het menu bewerken in postman")
 1. Selecteer in het dialoog venster **bewerken** het tabblad **variabelen** . 
 
 Op het tabblad **variabelen** kunt u waarden toevoegen die na elke keer dat er wordt vervangen door een specifieke variabele tussen dubbele accolades wordt aangetroffen. Postman vervangt bijvoorbeeld het symbool `{{admin-key}}` door de huidige waarde die u hebt ingesteld voor `admin-key`. Postman maakt de vervanging in Url's, kopteksten, de hoofd tekst van de aanvraag, enzovoort. 
 
 Als u de waarde voor `admin-key` wilt ophalen, gaat u naar de Azure Search-service en selecteert u het tabblad **sleutels** . Wijzig `search-service-name` en `storage-account-name` in de waarden die u hebt gekozen in [Services maken](#create-services). Stel `storage-connection-string` in met behulp van de waarde op het tabblad **toegangs sleutels** van het opslag account. U kunt de standaard waarde voor de andere waarden laten staan.
 
-Het ![tabblad](media/knowledge-store-create-rest/postman-variables-window.png "het venster variabelen van") postman app postman
+![Het tabblad app-variabelen van postman](media/knowledge-store-create-rest/postman-variables-window.png "Het venster variabelen van postman")
 
 
 | Variabele    | Waar om het te krijgen |

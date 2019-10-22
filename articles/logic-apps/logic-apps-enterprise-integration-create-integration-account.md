@@ -1,24 +1,22 @@
 ---
-title: Integratie accounts voor B2B-oplossingen maken en beheren-Azure Logic Apps
-description: Integratie accounts maken, koppelen, verplaatsen en verwijderen voor zakelijke integratie-en B2B-oplossingen met behulp van Azure Logic Apps
+title: B2B-integratie accounts maken of beheren-Azure Logic Apps
+description: Integratie accounts voor Enter prise Integration met Azure Logic Apps maken, koppelen en beheren
 services: logic-apps
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: carmonm
-ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 960733b7423ad1e22bd05a75d9b994cd85b1d30c
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801284"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680374"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Integratie accounts voor B2B-oplossingen maken en beheren met behulp van Azure Logic Apps
+# <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integratie accounts voor B2B-ondernemings integraties maken en beheren in Azure Logic Apps
 
 Voordat u [bedrijfsintegratie en B2B-oplossingen](../logic-apps/logic-apps-enterprise-integration-overview.md) kunt bouwen met behulp van [Azure Logic Apps](../logic-apps/logic-apps-overview.md), moet u een integratieaccount maken. Dit is een afzonderlijke Azure-resource die een veilige, schaalbare en beheerbare container biedt voor de integratieartefacten die u definieert en gebruikt met de werkstromen in uw logische app.
 
@@ -40,7 +38,7 @@ In dit onderwerp wordt beschreven hoe u deze taken uitvoert:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-## <a name="create-integration-account"></a>Integratie account maken
+## <a name="create-integration-account"></a>Integratieaccount maken
 
 Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, [Azure PowerShell](https://docs.microsoft.com//powershell/module/azurerm.logicapp/New-AzureRmIntegrationAccount)of [Azure cli](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create)uit te voeren.
 
@@ -58,13 +56,13 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, 
 
    ![Details van het integratie account opgeven](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschap | Vereist | Value | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Name** | Ja | <*integratie-account-naam*> | De naam van uw integratie account, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' fabrikam-Integration ' gebruikt. |
+   | **Naam** | Ja | <*Integration-account-name* > | De naam van uw integratie account, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' fabrikam-Integration ' gebruikt. |
    | **Abonnement** | Ja | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
-   | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die moet worden gebruikt voor het ordenen van verwante resources. Voor dit voor beeld maakt u een nieuwe resource groep met de naam ' FabrikamIntegration-RG '. |
-   | **Prijscategorie** | Ja | <*prijs niveau*> | De prijs categorie voor het integratie account, dat u later kunt wijzigen. Voor dit voor beeld selecteert u **gratis**. Zie de volgende onderwerpen voor meer informatie: <p>- [Logic Apps prijs model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Location** | Ja | <*Azure-regio*> | De regio waar de meta gegevens van uw integratie account moeten worden opgeslagen. Selecteer dezelfde locatie als uw logische app of maak uw Logic apps op dezelfde locatie als uw integratie account. Gebruik voor dit voor beeld ' vs-West '. <p>**Opmerking**: Als u een integratie account in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)wilt maken, selecteert u die ISE als de locatie. Zie [integratie accounts maken in een ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)voor meer informatie. |
+   | **Resourcegroep** | Ja | <*Azure-resource-group-name* > | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die moet worden gebruikt voor het ordenen van verwante resources. Voor dit voor beeld maakt u een nieuwe resource groep met de naam ' FabrikamIntegration-RG '. |
+   | **Prijscategorie** | Ja | > <*prijzen niveau* | De prijs categorie voor het integratie account, dat u later kunt wijzigen. Voor dit voor beeld selecteert u **gratis**. Zie de volgende onderwerpen voor meer informatie: <p>[prijs model](../logic-apps/logic-apps-pricing.md#integration-accounts) voor -  Logic apps <p>[limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) van -  Logic apps <p>prijzen voor - [Logic apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Locatie** | Ja | <*Azure-regio*> | De regio waar de meta gegevens van uw integratie account moeten worden opgeslagen. Selecteer dezelfde locatie als uw logische app of maak uw Logic apps op dezelfde locatie als uw integratie account. Gebruik voor dit voor beeld ' vs-West '. <p>**Opmerking**: als u een integratie account in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)wilt maken, selecteert u die ISE als de locatie. Zie [integratie accounts maken in een ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)voor meer informatie. |
    | **Log Analytics** | Nee | Uit, op | Laat de instelling **uitgeschakeld** voor dit voor beeld. |
    |||||
 
@@ -133,7 +131,7 @@ Als u deze wijziging wilt aanbrengen, kunt u de Azure Portal gebruiken door de s
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 1. Als u dit nog niet hebt gedaan, [installeert u de vereisten voor Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -147,7 +145,7 @@ Als u deze wijziging wilt aanbrengen, kunt u de Azure Portal gebruiken door de s
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
-   Als u bijvoorbeeld de laag basis hebt, kunt u het `skuName` `Standard`volgende instellen:
+   Als u bijvoorbeeld de laag basis hebt, kunt u `skuName` instellen op `Standard`:
 
    ```Azure CLI
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
@@ -171,7 +169,7 @@ Als u deze wijziging wilt aanbrengen, gebruikt u de [Azure cli](https://docs.mic
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
-   Als u bijvoorbeeld de laag standaard hebt, kunt u het `skuName` `Basic`volgende instellen:
+   Als u bijvoorbeeld de laag standaard hebt, kunt u `skuName` instellen op `Basic`:
 
    ```Azure CLI
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
@@ -197,7 +195,7 @@ Als u uw logische app wilt koppelen aan een ander integratie account of als u ee
 
    ![Selecteer op het tabblad gegevens de optie bewerken.](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-select-edit.png)
 
-1. Zoek het `integrationAccount` object in de editor en verwijder deze eigenschap. deze heeft de volgende indeling:
+1. Zoek het `integrationAccount`-object in de editor en verwijder deze eigenschap, die deze indeling heeft:
 
    ```json
    {
@@ -247,7 +245,7 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie o
 
 1. Voer de volgende stappen uit op basis van uw selectie om de resource groep of het abonnement te wijzigen:
 
-   * Resourcegroep: Selecteer de doel resource groep in de lijst **resource groep** . Als u een andere resource groep wilt maken, selecteert u **een nieuwe resource groep maken**.
+   * Resource groep: Selecteer de doel resource groep in de lijst **resource groep** . Als u een andere resource groep wilt maken, selecteert u **een nieuwe resource groep maken**.
 
    * Abonnement: Selecteer in de lijst **abonnement** het doel abonnement. Selecteer de doel resource groep in de lijst **resource groep** . Als u een andere resource groep wilt maken, selecteert u **een nieuwe resource groep maken**.
 

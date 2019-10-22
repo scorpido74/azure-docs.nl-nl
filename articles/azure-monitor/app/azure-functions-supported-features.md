@@ -1,23 +1,19 @@
 ---
 title: Azure-toepassing inzichten-Azure Functions ondersteunde functies | Microsoft Docs
 description: Ondersteunde functies Application Insights voor Azure Functions
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: TimothyMothra
+ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.author: tilee
-ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372439"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677562"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
@@ -34,14 +30,14 @@ Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-mo
 | &bull; uitzonde ringen                   | Ja             | Ja               | 
 | &bull; prestatie meter items         | Ja             | Ja               |
 | &bull; afhankelijkheden                   |                   |                   |               
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Ja               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Ja               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Ja               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Ja               | 
+| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Ja               | 
+| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Ja               | 
+| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Ja               | 
+| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Ja               | 
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Secure Control-kanaal|                 | Ja               | 
+| &nbsp; &nbsp; &nbsp; &mdash; beveiligd-besturings kanaal|                 | Ja               | 
 | &bull;-steek proef                     | Ja             | Ja               | 
 | &bull; heartbeats                   |                 | Ja               | 
 | | | | 

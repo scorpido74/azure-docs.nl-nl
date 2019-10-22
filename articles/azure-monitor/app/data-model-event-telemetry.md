@@ -1,35 +1,31 @@
 ---
-title: Azure Application Insights telemetrie Data Model - gebeurtenis telemetrie | Microsoft Docs
-description: Application Insights-gegevensmodel voor telemetrie van gebeurtenissen
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure-toepassing Insights-gegevens model telemetrie-gebeurtenis-telemetrie | Microsoft Docs
+description: Application Insights gegevens model voor telemetrie van gebeurtenissen
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900847"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678152"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie van gebeurtenissen: Application Insights-gegevensmodel
+# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie van gebeurtenissen: Application Insights gegevens model
 
-U kunt gebeurtenis maken telemetrie-items (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) om weer te geven van een gebeurtenis die heeft plaatsgevonden in uw toepassing. Het is doorgaans een gebruikersinteractie zoals knop klikt u op of rangschikken kassa. Een gebeurtenis van de levenscyclus van de toepassing, zoals het bijwerken van de initialisatie of configuratie kan ook zijn. 
+U kunt telemetrie-items (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) voor een gebeurtenis maken die een gebeurtenis vertegenwoordigen die in uw toepassing is opgetreden. Normaal gesp roken is het een gebruikers interactie, zoals het klikken op de knop of het afhandelen van de order. Het kan ook een levens cyclus gebeurtenis van een toepassing zijn, zoals initialisatie of configuratie-update. 
 
-Semantisch, gebeurtenissen kunnen of kunnen niet worden gecorreleerd met aanvragen. Als echter correct hebt gebruikt, telemetrie van gebeurtenissen is belangrijker dan aanvragen of traceringen. Gebeurtenissen vertegenwoordigen de zakelijke Telemetrie en moet een onderwerp te scheiden, minder agressief [steekproeven](../../azure-monitor/app/api-filtering-sampling.md).
+Semantisch, gebeurtenissen kunnen of kunnen niet worden gecorreleerd aan aanvragen. Als er echter goed wordt gebruikt, is de telemetrie van de gebeurtenis belang rijker dan aanvragen of traceringen. Gebeurtenissen vertegenwoordigen bedrijfs-telemetrie en moeten een onderliggend object zijn, waarbij minder agressieve [steek proeven](../../azure-monitor/app/api-filtering-sampling.md)worden genomen.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
-De naam van de gebeurtenis. Als u wilt toestaan dat de juiste groepering en nuttige metrische gegevens, uw toepassing zodanig beperken dat er een klein aantal gebeurtenisnamen van afzonderlijke wordt gegenereerd. Bijvoorbeeld, gebruik niet de naam van een afzonderlijk voor elk gegenereerde exemplaar van een gebeurtenis.
+Gebeurtenis naam. Als u de juiste groepering en bruikbare metrische gegevens wilt toestaan, beperkt u uw toepassing zodat er een klein aantal afzonderlijke gebeurtenis namen wordt gegenereerd. Gebruik bijvoorbeeld geen afzonderlijke naam voor elk gegenereerd exemplaar van een gebeurtenis.
 
-Maximumlengte: 512 tekens
+Maximale lengte: 512 tekens
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
@@ -41,6 +37,6 @@ Maximumlengte: 512 tekens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [gegevensmodel](data-model.md) voor Application Insights-typen en -gegevensmodel.
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
 - [Telemetrie van aangepaste gebeurtenissen schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Bekijk [platforms](../../azure-monitor/app/platforms.md) ondersteund door Application Insights.
+- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

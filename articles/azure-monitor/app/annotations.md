@@ -1,99 +1,94 @@
 ---
-title: Release-aantekeningen voor Application Insights | Microsoft Docs
-description: Implementatie toevoegen of maken van markeringen naar uw explorer grafieken met metrische gegevens in Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Release aantekeningen voor Application Insights | Microsoft Docs
+description: Voeg implementatie-of build markeringen toe aan uw grafieken met metrische gegevens Verkenner in Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/01/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/01/2019
+ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604545"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677859"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op grafieken met metrische gegevens in Application Insights
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op metrische grafieken in Application Insights
 
-Aantekeningen op [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) grafieken weergeven waar u een nieuwe build of andere belangrijke gebeurtenissen hebt geïmplementeerd. Aantekeningen maken het gemakkelijk om te zien of uw wijzigingen geen effect op de prestaties van uw toepassing heeft. Ze automatisch kunnen worden gemaakt door de [Azure pijplijnen](https://docs.microsoft.com/azure/devops/pipelines/tasks/) bouwen-systeem. Ook kunt u aantekeningen voor het markeren van een gebeurtenis die u wilt met ze worden gemaakt vanuit PowerShell.
+Aantekeningen in [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) grafieken laten zien waar u een nieuwe build of andere belang rijke gebeurtenissen hebt geïmplementeerd. Aantekeningen maken het eenvoudig om te zien of uw wijzigingen van invloed zijn op de prestaties van uw toepassing. Ze kunnen automatisch worden gemaakt door het build-systeem van [Azure pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) . U kunt ook aantekeningen maken om elke gewenste gebeurtenis te markeren door ze te maken vanuit Power shell.
 
 > [!NOTE]
-> In dit artikel bevat de afgeschafte **klassieke metrische gegevens ervaring**. Aantekeningen zijn alleen beschikbaar in de klassieke ervaring en  **[werkmappen](../../azure-monitor/app/usage-workbooks.md)** . Zie voor meer informatie over de huidige ervaring voor metrische gegevens, [geavanceerde functies van Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md).
+> In dit artikel wordt de afgeschafte **klassieke metrische ervaring**weer gegeven. Aantekeningen zijn momenteel alleen beschikbaar in de klassieke ervaring en in **[werkmappen](../../azure-monitor/app/usage-workbooks.md)** . Zie [geavanceerde functies van Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md)voor meer informatie over de huidige ervaring met metrische gegevens.
 
-![Voorbeeld van aantekeningen](./media/annotations/0-example.png)
+![Voor beeld van aantekeningen](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-pipelines-build"></a>Release-aantekeningen met Azure-pijplijnen bouwen
+## <a name="release-annotations-with-azure-pipelines-build"></a>Release annotaties with Azure pipelines build
 
-Release-aantekeningen zijn een functie van de Azure-pijplijnen cloud-gebaseerde service van Azure DevOps.
+Release aantekeningen zijn een functie van de Azure pipelines in de cloud van Azure DevOps.
 
-### <a name="install-the-annotations-extension-one-time"></a>Installeer de extensie aantekeningen (één keer)
-Als u om release-aantekeningen te maken, moet u een van de vele beschikbare Azure DevOps-extensies installeren in de Visual Studio Marketplace.
+### <a name="install-the-annotations-extension-one-time"></a>De aantekeningen uitbreiding installeren (één keer)
+Als u release aantekeningen wilt maken, moet u een van de vele Azure DevOps-uitbrei dingen installeren die beschikbaar zijn in de Visual Studio Marketplace.
 
-1. Aanmelden bij uw [Azure DevOps](https://azure.microsoft.com/services/devops/) project.
+1. Meld u aan bij uw [Azure DevOps](https://azure.microsoft.com/services/devops/) -project.
    
-1. Op de Visual Studio Marketplace [Versieaantekeningen extensie](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) pagina en selecteer vervolgens uw organisatie Azure DevOps **installeren** de extensie toevoegen aan uw organisatie Azure DevOps.
+1. Selecteer op de pagina [uitbrei ding aantekeningen](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) voor de release van Visual Studio Marketplace de Azure DevOps-organisatie en selecteer vervolgens **installeren** om de extensie toe te voegen aan uw Azure DevOps-organisatie.
    
    ![Selecteer een Azure DevOps-organisatie en selecteer vervolgens installeren.](./media/annotations/1-install.png)
    
-U hoeft alleen voor het installeren van de extensie voor uw organisatie Azure DevOps. U kunt nu de release-aantekeningen voor een project configureren in uw organisatie.
+U hoeft de uitbrei ding slechts eenmaal te installeren voor uw Azure DevOps-organisatie. U kunt nu release aantekeningen configureren voor elk project in uw organisatie.
 
-### <a name="configure-release-annotations"></a>Configureer versieaantekeningen
+### <a name="configure-release-annotations"></a>Release aantekeningen configureren
 
-Maak een afzonderlijke API-sleutel voor elk van uw Azure-pijplijnen release-sjablonen.
+Maak een afzonderlijke API-sleutel voor elk van de release sjablonen van Azure pipelines.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) en open de Application Insights-resource die wordt uw toepassing bewaakt. Of als u nog geen hebt, [Maak een nieuwe Application Insights-resource](../../azure-monitor/app/app-insights-overview.md).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en open de Application Insights resource waarmee uw toepassing wordt bewaakt. Of als u er geen hebt, [maakt u een nieuwe Application Insights resource](../../azure-monitor/app/app-insights-overview.md).
    
-1. Open de **API-toegang** tabblad en kopieer de **Application Insights-ID**.
+1. Open het tabblad **API-toegang** en kopieer de **Application Insights-id**.
    
-   ![Onder de API-toegang, kopieert u de toepassings-ID.](./media/annotations/2-app-id.png)
+   ![Kopieer de toepassings-ID onder API-toegang.](./media/annotations/2-app-id.png)
 
-1. In een afzonderlijke browservenster openen of maken van de releasesjabloon die u uw pijplijnen voor Azure-implementaties beheert.
+1. Open of maak in een afzonderlijk browser venster de release sjabloon waarmee de implementaties van uw Azure-pijp lijnen worden beheerd.
    
-1. Selecteer **taak toevoegen**, en selecteer vervolgens de **Application Insights-Release-aantekening** taak in het menu.
+1. Selecteer **taak toevoegen**en selecteer vervolgens de taak **aantekening van de Application Insights release** in het menu.
    
-   ![Selecteer de taak toevoegen en selecteer Application Insights-Release-aantekening.](./media/annotations/3-add-task.png)
+   ![Selecteer taak toevoegen en selecteer aantekening van Application Insights versie.](./media/annotations/3-add-task.png)
    
-1. Onder **toepassings-ID**, plakt u de Application Insights-ID die u hebt gekopieerd uit de **API-toegang** tabblad.
+1. Plak onder **toepassings-id**de Application Insights-id die u hebt gekopieerd via het tabblad **API-toegang** .
    
-   ![Plak de Application Insights-ID](./media/annotations/4-paste-app-id.png)
+   ![De Application Insights-ID plakken](./media/annotations/4-paste-app-id.png)
    
-1. Terug in de Application Insights **API-toegang** venster **API-sleutel maken**. 
+1. Klik in het venster Application Insights **API-toegang** op **API-sleutel maken**. 
    
-   ![Selecteer de API-sleutel maken op het tabblad API-toegang.](./media/annotations/5-create-api-key.png)
+   ![Op het tabblad API-toegang selecteert u API-sleutel maken.](./media/annotations/5-create-api-key.png)
    
-1. In de **API-sleutel maken** venster, typ een beschrijving, selecteer **aantekeningen schrijven**, en selecteer vervolgens **sleutel genereren**. Kopieer de nieuwe sleutel.
+1. Typ een beschrijving in het venster **API-sleutel maken** , selecteer **aantekeningen schrijven**en selecteer vervolgens **sleutel genereren**. Kopieer de nieuwe sleutel.
    
-   ![Typ een beschrijving in het venster van de API ' Create '-sleutel schrijven aantekeningen selecteren en selecteer vervolgens de sleutel genereren.](./media/annotations/6-create-api-key.png)
+   ![Typ een beschrijving in het venster API-sleutel maken, selecteer aantekeningen schrijven en selecteer vervolgens sleutel genereren.](./media/annotations/6-create-api-key.png)
    
-1. In het venster van de sjabloon versie op de **variabelen** tabblad **toevoegen** te maken van de definitie van een variabele voor de nieuwe API-sleutel.
+1. Selecteer in het venster release-sjabloon, op het tabblad **variabelen** , de optie **toevoegen** om een definitie van een variabele te maken voor de nieuwe API-sleutel.
 
-1. Onder **naam**, voer `ApiKey`, en klikt u onder **waarde**, plak de API-sleutel die u hebt gekopieerd uit de **API-toegang** tabblad.
+1. Voer onder **naam**`ApiKey` in en plak onder **waarde**de API-sleutel die u hebt gekopieerd op het tabblad **API-toegang** .
    
-   ![Op het tabblad Azure DevOps variabelen toevoegen, de naam van de variabele ApiKey, selecteren en plak de API-sleutel onder waarde.](./media/annotations/7-paste-api-key.png)
+   ![Ga naar het tabblad Azure DevOps-variabelen, selecteer toevoegen, noem de variabele ApiKey en plak de API-sleutel onder waarde.](./media/annotations/7-paste-api-key.png)
    
-1. Selecteer **opslaan** in het venster van de belangrijkste release-sjabloon op te slaan van de sjabloon.
+1. Selecteer **Opslaan** in het venster hoofd release sjabloon om de sjabloon op te slaan.
 
-## <a name="view-annotations"></a>Aantekeningen bekijken
-Wanneer u de releasesjabloon gebruikt voor een nieuwe release implementeert, wordt nu een aantekening naar Application Insights verzonden. De aantekeningen worden weergegeven op de grafieken in **Metrics Explorer**.
+## <a name="view-annotations"></a>Aantekeningen weer geven
+Wanneer u nu de release sjabloon gebruikt om een nieuwe release te implementeren, wordt er een aantekening naar Application Insights verzonden. De aantekeningen worden weer gegeven in grafieken in **Metrics Explorer**.
 
-Selecteer een aantekening-markering (licht grijze pijl) om te openen, details over de release, met inbegrip van de aanvrager, besturingselement bronvertakking, release-pijplijn en omgeving.
+Selecteer een aantekening markering (licht grijze pijl) om details over de release te openen, met inbegrip van de aanvrager, de bron beheer vertakking, de release pijplijn en de omgeving.
 
-![Selecteer de markering van een release-aantekening.](./media/annotations/8-release.png)
+![Selecteer een markering voor de vrijgave aantekening.](./media/annotations/8-release.png)
 
-## <a name="create-custom-annotations-from-powershell"></a>Aangepaste annotaties maken vanuit PowerShell
-U kunt de [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell-script vanuit GitHub om aantekeningen te maken van een proces dat u wilt, zonder dat met behulp van Azure DevOps. 
+## <a name="create-custom-annotations-from-powershell"></a>Aangepaste aantekeningen maken vanuit Power shell
+U kunt het Power shell-script [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) van github gebruiken om aantekeningen te maken op basis van elk gewenst proces, zonder Azure DevOps te gebruiken. 
 
-1. Maak een lokale kopie van [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Maak een lokale kopie van [CreateReleaseAnnotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
-1. Gebruik de stappen in de vorige procedure om uw Application Insights-ID ophalen en maken van een API-sleutel van uw Application Insights **API-toegang** tabblad.
+1. Volg de stappen in de voor gaande procedure om uw Application Insights-ID op te halen en een API-sleutel te maken op het tabblad Application Insights **API-toegang** .
    
-1. Het PowerShell-script met de volgende code, vervang de aanduidingen hoek tussen door de waarden in de aanroep. De `-releaseProperties` zijn optioneel. 
+1. Roep het Power shell-script aan met de volgende code en vervang de tijdelijke aanduidingen met punt haken door uw waarden. De `-releaseProperties` zijn optioneel. 
    
    ```powershell
    
@@ -106,9 +101,9 @@ U kunt de [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsi
              "TriggerBy"="<Your name>" }
    ```
 
-U kunt het script, bijvoorbeeld om aantekeningen te maken voor de laatste wijzigen.
+U kunt het script wijzigen, bijvoorbeeld om aantekeningen voor het verleden te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Werkitems maken](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatisering met PowerShell](../../azure-monitor/app/powershell.md)
+* [Werk items maken](../../azure-monitor/app/diagnostic-search.md#create-work-item)
+* [Automatisering met Power shell](../../azure-monitor/app/powershell.md)

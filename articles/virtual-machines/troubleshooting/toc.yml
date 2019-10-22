@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Fouten bij het verwijderen van klassieke opslagresources
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Onverwacht opnieuw opstarten van VM's met gekoppelde VHD's
-  href: unexpected-reboots-attached-vhds.md
-- name: Windows-activeringsproblemen
-  href: troubleshoot-activation-problems.md
-- name: Activeringsprobleem met geforceerde tunnels
-  href: custom-routes-enable-kms-activation.md
+- name: Problemen met het herstarten van VM's oplossen
+  items:
+    - name: Onverwacht opnieuw opstarten van VM's met gekoppelde VHD's
+      href: unexpected-reboots-attached-vhds.md
+    - name: Het opnieuw opstarten van systemen begrijpen
+      href: understand-vm-reboot.md
+- name: Windows-activering
+  items:
+    - name: Windows-activeringsproblemen
+      href: troubleshoot-activation-problems.md
+    - name: Activeringsprobleem met geforceerde tunnels
+      href: custom-routes-enable-kms-activation.md
 - name: Problemen met toegang tot toepassingen
   href: troubleshoot-app-connection.md
 - name: Nieuwe VM-implementaties
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: Geneste virtualisatie gebruiken
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Het opnieuw opstarten van systemen begrijpen
-  href: understand-vm-reboot.md
 - name: Hulpprogramma's voor probleemoplossing op afstand
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Reparatie van virtuele machine

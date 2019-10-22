@@ -1,140 +1,136 @@
 ---
-title: Azure Application Insights telemetrie Data Model - telemetrie Context | Microsoft Docs
-description: Application Insights telemetrie context-gegevensmodel
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure-toepassing Insights-telemetrie-gegevens model-telemetrie-context | Microsoft Docs
+description: Application Insights-context gegevens model voor telemetrie
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900707"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677446"
 ---
-# <a name="telemetry-context-application-insights-data-model"></a>Telemetrie-context: Application Insights-gegevensmodel
+# <a name="telemetry-context-application-insights-data-model"></a>Telemetrie-context: Application Insights gegevens model
 
-Elk telemetrie-item heeft mogelijk een sterk getypeerde context-velden. Elk veld kunt een specifiek scenario voor bewaking. Gebruik de verzameling aangepaste eigenschappen voor het opslaan van aangepaste of toepassingsspecifieke contextuele informatie.
+Elk telemetrie-item heeft mogelijk een sterk getypeerde context velden. Elk veld biedt een specifiek bewakings scenario. Gebruik de verzameling aangepaste eigenschappen om aangepaste of toepassingsspecifieke contextuele informatie op te slaan.
 
 
-## <a name="application-version"></a>Toepassingsversie
+## <a name="application-version"></a>Toepassings versie
 
-Gegevens in de velden van de context is altijd over de toepassing die de telemetrie verzendt. Toepassingsversie wordt gebruikt voor het analyseren van trend wijzigingen in de werking van de toepassing en de samenhang met de implementaties.
+De informatie in de context velden van de toepassing is altijd de toepassing die de telemetrie verzendt. De versie van de toepassing wordt gebruikt voor het analyseren van trend wijzigingen in het toepassings gedrag en de correlatie van de implementaties.
 
-Maximumlengte: 1024
+Maximale lengte: 1024
 
 
 ## <a name="client-ip-address"></a>IP-adres van client
 
-Het IP-adres van het clientapparaat. IPv4 en IPv6 worden ondersteund. Wanneer telemetrie wordt verzonden via een service, is de locatie-context over de gebruiker die de bewerking in de service heeft gestart. Application Insights de geo-locatie-informatie onttrekken aan de client-IP en vervolgens afkappen. Client-IP op zichzelf kan dus niet worden gebruikt als identificeerbare informatie voor de eindgebruiker. 
+Het IP-adres van het client apparaat. IPv4 en IPv6 worden ondersteund. Wanneer telemetrie wordt verzonden vanuit een service, is de locatie context over de gebruiker die de bewerking heeft gestart in de service. Application Insights de geo-locatie gegevens uit het client-IP-adres te extra heren en af te kappen. IP-adres van de client kan daarom niet worden gebruikt als Identificeer bare informatie voor eind gebruikers. 
 
-Maximumlengte: 46
+Maximale lengte: 46
 
 
 ## <a name="device-type"></a>Apparaattype
 
-Dit veld is oorspronkelijk hebt gebruikt om aan te geven van het type van het apparaat dat de eindgebruiker van de toepassing wordt gebruikt. Vandaag nog gebruikt voornamelijk te onderscheiden van JavaScript-telemetrie met het apparaattype typt 'PC' u "Browser" van de server-side-telemetriegegevens met het apparaat.
+Oorspronkelijk is dit veld gebruikt om het type apparaat aan te geven dat door de eind gebruiker van de toepassing wordt gebruikt. Vandaag gebruikt, voornamelijk voor het onderscheiden van Java script-telemetrie met het apparaattype ' browser ' van de telemetrie aan de server zijde met het apparaattype ' PC '.
 
-Maximumlengte: 64
+Maximale lengte: 64
 
 
 ## <a name="operation-id"></a>Bewerkings-id
 
-Een unieke id van de bewerking hoofdmap. Deze id kunt groep telemetrie voor meerdere onderdelen. Zie [telemetriecorrelatie](../../azure-monitor/app/correlation.md) voor meer informatie. De bewerkings-id wordt gemaakt door een aanvraag of een paginaweergave. Alle andere telemetrie Hiermee stelt u dit veld aan de waarde voor de overkoepelende weergave van de aanvraag of paginaweergave. 
+Een unieke id van de hoofd bewerking. Met deze id kunt u telemetrie groeperen over meerdere onderdelen. Zie de [correlatie van telemetrie](../../azure-monitor/app/correlation.md) voor meer informatie. De bewerkings-id wordt gemaakt door een aanvraag of een pagina weergave. Alle andere telemetrie stelt dit veld in op de waarde voor de insluitende aanvraag of pagina weergave. 
 
-Maximumlengte: 128
+Maximale lengte: 128
 
 
-## <a name="parent-operation-id"></a>Bovenliggende bewerkings-ID
+## <a name="parent-operation-id"></a>ID van bovenliggende bewerking
 
-De unieke id van de direct bovenliggende van de telemetrie-item. Zie [telemetriecorrelatie](../../azure-monitor/app/correlation.md) voor meer informatie.
+De unieke id van het telemetrie-item direct Parent. Zie de [correlatie van telemetrie](../../azure-monitor/app/correlation.md) voor meer informatie.
 
-Maximumlengte: 128
+Maximale lengte: 128
 
 
 ## <a name="operation-name"></a>Naam van bewerking
 
-De naam (groep) van de bewerking. Naam van de bewerking is gemaakt door een aanvraag of een paginaweergave. Dit veld instellen alle overige telemetrie-items op de waarde voor de overkoepelende weergave van de aanvraag of paginaweergave. Naam van de bewerking wordt gebruikt voor het zoeken naar alle telemetrie-items voor een groep van bewerkingen (bijvoorbeeld ' GET Home/Index'). Deze contexteigenschap wordt gebruikt om te beantwoorden vragen zoals "Wat zijn de typische uitzonderingen op deze pagina."
+De naam (groep) van de bewerking. De naam van de bewerking wordt gemaakt door een aanvraag of een pagina weergave. Alle andere telemetrie-items stellen dit veld in op de waarde voor de insluitende aanvraag of pagina weergave. De bewerkings naam wordt gebruikt voor het zoeken van alle telemetriegegevens voor een groep bewerkingen (bijvoorbeeld ' GET Home/index '). Deze context eigenschap wordt gebruikt om vragen te beantwoorden zoals ' wat zijn de typische uitzonde ringen die op deze pagina worden gegenereerd '.
 
-Maximumlengte: 1024
+Maximale lengte: 1024
 
 
 ## <a name="synthetic-source-of-the-operation"></a>Synthetische bron van de bewerking
 
-De naam van de synthetische bron. Telemetrie van de toepassing mogelijk synthetisch verkeer vertegenwoordigen. Webcrawler indexeren van de website, site-beschikbaarheidstests of traceringen van diagnostische bibliotheken, zoals Application Insights-SDK zelf kan zijn.
+De naam van de synthetische bron. Een bepaalde telemetrie van de toepassing kan synthetisch verkeer vertegenwoordigen. Het kan zijn dat web crawler de website, site beschikbaarheids tests of traceringen van diagnostische bibliotheken zoals Application Insights SDK zelf kan indexeren.
 
-Maximumlengte: 1024
+Maximale lengte: 1024
 
 
 ## <a name="session-id"></a>Sessie-id
 
-Sessie-ID - het exemplaar van de gebruikersinteractie met de app. Gegevens in de velden van de context sessie is altijd over de eindgebruiker. Wanneer telemetrie wordt verzonden via een service, wordt de sessiecontext is over de gebruiker die de bewerking in de service heeft gestart.
+Sessie-ID: het exemplaar van de interactie van de gebruiker met de app. De informatie in de context velden van de sessie is altijd van de eind gebruiker. Wanneer telemetrie wordt verzonden vanuit een service, is de sessie context over de gebruiker die de bewerking heeft gestart in de service.
 
-Maximumlengte: 64
+Maximale lengte: 64
 
 
 ## <a name="anonymous-user-id"></a>Anonieme gebruikers-id
 
-Anonieme gebruikers-id. Hiermee geeft u de gebruiker van de toepassing. Wanneer telemetrie wordt verzonden via een service, wordt de context van de gebruiker over de gebruiker die de bewerking in de service heeft gestart.
+Anonieme gebruikers-id. Vertegenwoordigt de eind gebruiker van de toepassing. Wanneer telemetrie vanuit een service wordt verzonden, is de gebruikers context de gebruiker die de bewerking in de service heeft gestart.
 
-[Sampling](../../azure-monitor/app/sampling.md) is een van de technieken voor het minimaliseren van de hoeveelheid verzamelde telemetrie. Samplingalgoritme probeert een steekproef binnen of buiten de gecorreleerde telemetrie. Anonieme gebruikers-id wordt gebruikt voor het genereren van de score. Dus anonieme gebruikers-id moet een willekeurige genoeg waarde. 
+[Steek proeven](../../azure-monitor/app/sampling.md) zijn een van de technieken om de hoeveelheid verzamelde telemetrie te minimaliseren. Er wordt geprobeerd om een voor beeld van een gecorreleerde telemetrie te kiezen in of uit te steek proef algoritme. De anonieme gebruikers-id wordt gebruikt voor het genereren van de sampling Score. Anonieme gebruikers-id moet dus een wille keurige waarde hebben. 
 
-Anonieme gebruikers-id gebruiken voor het opslaan van de gebruikersnaam van de is een misbruik van het veld. Geverifieerde gebruikers-id gebruiken.
+Het gebruik van een anonieme gebruikers-id voor het opslaan van de gebruikers naam is een misbruik van het veld. Geverifieerde gebruikers-id gebruiken.
 
-Maximumlengte: 128
+Maximale lengte: 128
 
 
 ## <a name="authenticated-user-id"></a>Geverifieerde gebruikers-id
 
-Geverifieerde gebruikers-id. Het tegenovergestelde van anonieme gebruikers-id, dit veld geeft de gebruiker met een beschrijvende naam. Sinds de persoonlijke gegevens is het niet verzameld door de meeste SDK standaard.
+Geverifieerde gebruikers-id. Het tegenovergestelde van een anonieme gebruikers-id is dit veld staat voor de gebruiker met een beschrijvende naam. Omdat de PII-gegevens niet standaard worden verzameld door de meeste SDK.
 
-Maximumlengte: 1024
+Maximale lengte: 1024
 
 
 ## <a name="account-id"></a>Account-id
 
-Dit is de account-ID of naam, die de gebruiker met fungeert in multitenant-toepassingen. Voorbeelden mogelijk abonnements-ID voor Azure-portal of blog naam blogplatform.
+In multi tenant-toepassingen is dit de account-ID of naam waarmee de gebruiker werkt. Voor beelden zijn mogelijk abonnements-ID voor het blog platform Azure Portal of blog naam.
 
-Maximumlengte: 1024
-
-
-## <a name="cloud-role"></a>Cloudrol
-
-Naam van de rol van de toepassing is een onderdeel van. Maps rechtstreeks naar de naam van de rol in azure. Kan ook worden gebruikt om te onderscheiden van microservices, die deel van één toepassing uitmaken.
-
-Maximumlengte: 256
+Maximale lengte: 1024
 
 
-## <a name="cloud-role-instance"></a>Cloudrolinstantie
+## <a name="cloud-role"></a>Cloud functie
 
-De naam van het exemplaar waar de toepassing wordt uitgevoerd. Computernaam voor on-premises, exemplaarnaam voor Azure.
+De naam van de rol waarvan de toepassing deel uitmaakt. Wijst rechtstreeks toe aan de naam van de rol in Azure. Kan ook worden gebruikt voor het onderscheiden van micro Services, die deel uitmaken van één toepassing.
 
-Maximumlengte: 256
+Maximale lengte: 256
 
 
-## <a name="internal-sdk-version"></a>Interne: SDK-versie
+## <a name="cloud-role-instance"></a>Cloud rolinstantie
+
+De naam van het exemplaar waarop de toepassing wordt uitgevoerd. Computer naam voor on-premises, exemplaar naam voor Azure.
+
+Maximale lengte: 256
+
+
+## <a name="internal-sdk-version"></a>Intern: SDK-versie
 
 SDK-versie. Zie https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification voor meer informatie.
 
-Maximumlengte: 64
+Maximale lengte: 64
 
 
-## <a name="internal-node-name"></a>Interne: De naam van knooppunt
+## <a name="internal-node-name"></a>Intern: knooppunt naam
 
-Dit veld geeft de naam van het knooppunt wordt gebruikt voor factureringsdoeleinden. Gebruik dit voor het overschrijven van de standaard detectie van knooppunten.
+Dit veld vertegenwoordigt de naam van het knoop punt dat wordt gebruikt voor facturerings doeleinden. Gebruik deze functie om de standaard detectie van knoop punten te onderdrukken.
 
-Maximumlengte: 256
+Maximale lengte: 256
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [uitbreiden en telemetrie filteren](../../azure-monitor/app/api-filtering-sampling.md).
-- Zie [gegevensmodel](data-model.md) voor Application Insights-typen en -gegevensmodel.
-- Bekijk standard context eigenschappen verzameling [configuratie](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+- Meer informatie over hoe u [telemetrie kunt uitbreiden en filteren](../../azure-monitor/app/api-filtering-sampling.md).
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
+- Bekijk de [configuratie](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)van de verzameling met standaard context eigenschappen.

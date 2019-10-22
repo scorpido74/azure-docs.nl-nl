@@ -1,6 +1,6 @@
 ---
-title: Afhandeling van uitzonde ringen & scenario voor fout registratie-Azure Logic Apps | Microsoft Docs
-description: Hier volgt een echte use-case over geavanceerde afhandeling van uitzonde ringen en fout registratie in Azure Logic Apps
+title: Afhandeling van uitzonde ringen & scenario voor fout registratie-Azure Logic Apps
+description: Praktijk gebruik en scenario voor geavanceerde uitzonde ring bij het verwerken en registreren van fouten in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,16 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385456"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680165"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: Afhandeling van uitzonde ringen en fouten logboek registratie voor Logic apps
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: afhandeling van uitzonde ringen en fouten logboek registratie voor Logic apps
 
-In dit scenario wordt beschreven hoe u een logische app kunt uitbreiden om de verwerking van uitzonde ringen beter te ondersteunen. We hebben een gebruiks voorbeeld van de praktijk gebruikt om de vraag te beantwoorden: "Ondersteunt Azure Logic Apps uitzonde ring en fout afhandeling?"
+In dit scenario wordt beschreven hoe u een logische app kunt uitbreiden om de verwerking van uitzonde ringen beter te ondersteunen. We hebben een echt gebruiks voorbeeld gebruikt om de vraag te beantwoorden: "ondersteunt Azure Logic Apps uitzonde ring en fout afhandeling?"
 
 > [!NOTE]
 > Het huidige Azure Logic Apps schema biedt een standaard sjabloon voor antwoord op actie. Deze sjabloon bevat zowel interne validatie-als fout reacties die worden geretourneerd door een API-app.
@@ -36,13 +36,13 @@ Het project heeft twee belang rijke vereisten:
 * Een manier om fouten weer te geven die zijn opgetreden in de werk stroom
 
 > [!TIP]
-> Voor een video op hoog niveau over dit project raadpleegt u de integratie gebruikers(http://www.integrationusergroup.com/logic-apps-support-error-handling/ "groep")integratie [gebruikers groep].
+> Zie [integratie gebruikers groep](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integratie gebruikers groep")voor een video op hoog niveau over dit project.
 
 ## <a name="how-we-solved-the-problem"></a>Hoe we het probleem hebben opgelost
 
-We hebben [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") als opslag plaats voor het logboek en de fout records gekozen (Cosmos DB verwijst naar records als documenten). Omdat Azure Logic Apps een standaard sjabloon voor alle antwoorden heeft, hoeven we geen aangepast schema te maken. We kunnen een API-app maken  om zowel fout-als logboek records in te voegen en op te **vragen** . Er kan ook een schema worden gedefinieerd voor elk in de API-app.  
+We hebben [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") als opslag plaats voor het logboek en de fout records gekozen (Cosmos DB verwijst naar records als documenten). Omdat Azure Logic Apps een standaard sjabloon voor alle antwoorden heeft, hoeven we geen aangepast schema te maken. We kunnen een API-app maken om zowel fout-als logboek records in te **voegen** en op te **vragen** . Er kan ook een schema worden gedefinieerd voor elk in de API-app.  
 
-Een andere vereiste was het opschonen van records na een bepaalde datum. Cosmos DB heeft een eigenschap met de naam [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "time to Live") (TTL), waarmee we een **time to Live** waarde voor elke record of verzameling kunnen instellen. Met deze mogelijkheid is de nood zaak om records in Cosmos DB hand matig te verwijderen, verwijderd.
+Een andere vereiste was het opschonen van records na een bepaalde datum. Cosmos DB heeft een eigenschap met de naam [time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL), die ons toestemming heeft verleend om voor elke record of verzameling een **time to Live** waarde in te stellen. Met deze mogelijkheid is de nood zaak om records in Cosmos DB hand matig te verwijderen, verwijderd.
 
 > [!IMPORTANT]
 > Voor het volt ooien van deze zelf studie moet u een Cosmos DB-Data Base en twee verzamelingen (logboek registratie en fouten) maken.
@@ -53,7 +53,7 @@ De eerste stap is het maken van de logische app en het openen van de app in Logi
 
 Omdat we de record die u van Dynamics CRM Online komt, wilt registreren, beginnen we bovenaan. We moeten een **aanvraag** trigger gebruiken omdat de bovenliggende logische app dit onderliggende knoop punt activeert.
 
-### <a name="logic-app-trigger"></a>Activering voor een logische app
+### <a name="logic-app-trigger"></a>Trigger voor logische app
 
 We gebruiken een **aanvraag** trigger zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -402,7 +402,7 @@ Onze oplossing heeft mogelijkheden toegevoegd met [Azure Cosmos DB](https://azur
 Als u de fouten wilt weer geven, kunt u een MVC-Web-app maken om de fout records van Cosmos DB weer te geven. De bewerkingen **lijst**, **Details**, **bewerken**en **verwijderen** zijn opgenomen in de huidige versie.
 
 > [!NOTE]
-> Bewerk bewerking: Cosmos DB vervangt het hele document. De records die worden weer gegeven in de **lijst** -en **detail** weergaven, zijn alleen voor beelden. Dit zijn niet echt patiënten-afspraak records.
+> Bewerkings bewerking: Cosmos DB vervangt het hele document. De records die worden weer gegeven in de **lijst** -en **detail** weergaven, zijn alleen voor beelden. Dit zijn niet echt patiënten-afspraak records.
 
 Hier volgen enkele voor beelden van de details van de MVC-app die zijn gemaakt met de eerder beschreven aanpak.
 
@@ -432,7 +432,7 @@ Onze open-source Azure Logic Apps-API-app voor uitzonde ringen beheer biedt func
 > Beide controllers gebruiken `async Task<dynamic>` bewerkingen, waardoor bewerkingen tijdens runtime kunnen worden opgelost, zodat we het Azure Cosmos DB schema in de hoofd tekst van de bewerking kan maken. 
 > 
 
-Elk document in Azure Cosmos DB moet een unieke ID hebben. We gebruiken `PatientId` en toevoegen een tijds tempel dat is geconverteerd naar een Unix-Time Stamp waarde (double). De waarde voor het verwijderen van de Fractie waarde wordt afgekapt.
+Elk document in Azure Cosmos DB moet een unieke ID hebben. We gebruiken `PatientId` en voegen een tijds tempel toe dat is geconverteerd naar een Unix-Time Stamp waarde (double). De waarde voor het verwijderen van de Fractie waarde wordt afgekapt.
 
 U kunt de bron code van de fout controller-API van [github](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)weer geven.
 
@@ -479,7 +479,7 @@ De expressie in het voor gaande code voorbeeld controleert op de *Create_NewPati
 
 ### <a name="source-code"></a>Broncode
 
-De bron code voor de API-toepassing voor uitzonde ringen voor Logic Apps is beschikbaar in deze [github-opslag plaats]-(https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API voor beheer Logic apps").
+De bron code voor de API-toepassing voor Logic Apps Exception Management is beschikbaar in deze [github-opslag plaats](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API voor uitzonde ringen voor logische apps").
 
 ## <a name="next-steps"></a>Volgende stappen
 

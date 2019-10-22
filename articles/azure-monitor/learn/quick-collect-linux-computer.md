@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Gegevens verzamelen van een hybride Linux-computer met Azure Monitor'
+title: 'Snelstartgids: gegevens verzamelen van een hybride Linux-computer met Azure Monitor'
 description: In deze Quick Start leert u hoe u de Log Analytics-agent voor Linux-computers die buiten Azure worden uitgevoerd, kunt implementeren en hoe u gegevens kunt verzamelen met Azure Monitor-Logboeken.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703059"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677970"
 ---
-# <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Quickstart: Gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
+# <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Snelstartgids: gegevens verzamelen van een Linux-computer in een hybride omgeving met Azure Monitor
 
 [Azure monitor](../overview.md) kunt gegevens rechtstreeks vanuit uw fysieke of virtuele Linux-computers in uw omgeving verzamelen in een log Analytics-werk ruimte voor gedetailleerde analyse en correlatie. Door de [log Analytics-agent](../platform/log-analytics-agent.md) te installeren, kan Azure monitor gegevens verzamelen van een Data Center of een andere cloud omgeving. In deze Quick start ziet u hoe u met een paar eenvoudige stappen gegevens van uw Linux-server configureert en verzamelt. Zie [gegevens verzamelen over Azure virtual machines](../../azure-monitor/learn/quick-collect-azurevm.md)voor meer informatie over Azure Linux-vm's.  
 
@@ -37,7 +37,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 1. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Log Analytics werk ruimte zoeken in het Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Selecteer **maken**en selecteer vervolgens opties voor de volgende items:
 
@@ -47,7 +47,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
    * Selecteer de **Locatie** waarop uw virtuele machines zijn geïmplementeerd.  Bekijk [in welke regio's Log Analytics beschikbaar is](https://azure.microsoft.com/regions/services/) voor aanvullende informatie.
    * Als u een werkruimte maakt in een nieuw abonnement dat na 2 april 2018 is gemaakt, gebruikt deze automatisch de prijscategorie *Per GB*. De optie voor het selecteren van een prijscategorie is dan niet beschikbaar.  Als u een werkruimte maakt voor een bestaand abonnement dat is gemaakt vóór 2 april, of voor een abonnement dat is gekoppeld aan een bestaande EA-inschrijving, kunt u hier uw gewenste prijscategorie selecteren.  Zie [Prijzen voor Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) voor aanvullende informatie over de afzonderlijke lagen.
   
-        ![Log Analytics resource-Blade maken](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Een Log Analytics-werk ruimte maken in de Azure Portal](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Nadat u de vereiste gegevens hebt opgegeven in het deel venster **log Analytics werkruimte** , selecteert u **OK**.  
 
@@ -65,11 +65,11 @@ Voordat u de Log Analytics-agent voor Linux installeert, hebt u eerst de werkrui
 
 3. **Geavanceerde instellingen**selecteren:
 
-    ![Geavanceerde instellingen van Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png) 
+    ![Menu Geavanceerde instellingen voor Log Analytics in het Azure Portal](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
  
 4. Selecteer **Verbonden bronnen** en selecteer vervolgens **Linux-servers**.
 
-5. De waarde rechts van **Werkruimte-ID** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
+5. De waarde rechts van **Werkruimte-id** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
 
 ## <a name="install-the-agent-for-linux"></a>De agent voor Linux installeren
 
@@ -119,7 +119,7 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Linux syslog-en prestatie me
 
 2. Selecteer **gegevens**en selecteer vervolgens **syslog**.  
 
-3. U voegt syslog toe door de naam van het logboek op te geven. Voer **syslog** in en selecteer vervolgens het plus **+** teken.  
+3. U voegt syslog toe door de naam van het logboek op te geven. Voer **syslog** in en selecteer vervolgens het plus teken **+** .  
 
 4. Schakel in de tabel de ernstcategorieën **Info**, **Kennisgeving** en **Fouten opsporen** uit. 
 
@@ -129,7 +129,7 @@ Azure Monitor kunt gebeurtenissen verzamelen uit de Linux syslog-en prestatie me
 
 7. Wanneer u Linux-prestatiemeteritems voor een nieuwe Log Analytics-werkruimte voor het eerst configureert, krijgt u de optie om snel verschillende algemene prestatiemeteritems te maken. Ze worden weergegeven met een selectievakje ernaast.
 
-    ![Standaard Windows-prestatiemeteritems geselecteerd](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Standaard prestatie meter items voor Linux geselecteerd in Azure Monitor](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Selecteer de **onderstaande configuratie Toep assen op mijn machines** en selecteer vervolgens **de geselecteerde prestatie meter items toevoegen**. Ze worden toegevoegd en vooraf ingesteld met een sample-interval van tien seconden.  
 
@@ -141,7 +141,7 @@ Nu u gegevensverzameling hebt ingeschakeld, geven we een voorbeeld van een eenvo
 
 1. Selecteer **Logboeken**in het linkerdeel venster van de geselecteerde werk ruimte.
 
-2. Typ `Perf` op de pagina logboek registratie de query-editor en selecteer **uitvoeren**.
+2. Typ `Perf` in de query-editor op de pagina logboeken query en selecteer **uitvoeren**.
  
     ![Zoeken in Log Analytics logboek](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

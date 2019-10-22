@@ -1,23 +1,18 @@
 ---
 title: Een nieuwe Azure-toepassing Insights-resource maken | Microsoft Docs
 description: Stel Application Insights bewaking hand matig in voor een nieuwe Live-toepassing.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.date: 08/16/2019
+ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562835"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677506"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
@@ -35,9 +30,9 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
 
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globaal unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
+   | **Naam**      | Globaal unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
-   | **Location** | East US | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
 
 Voer de juiste waarden in de vereiste velden in en selecteer vervolgens **controleren + maken**.
 
@@ -108,7 +103,7 @@ Als u de preview-Application Insights Azure CLI-opdrachten wilt gebruiken, moet 
  az extension add -n application-insights
 ```
 
-Als u de `az extension add` opdracht niet uitvoert, wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Als u de `az extension add` opdracht niet uitvoert, ziet u een fout bericht met de volgende tekst: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 U kunt nu het volgende uitvoeren om uw Application Insights-resource te maken:
 

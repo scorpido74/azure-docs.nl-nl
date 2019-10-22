@@ -102,6 +102,8 @@
           href: sap-hana-high-availability-rhel.md
         - name: Problemen oplossen met vergroten van SAP HANA-schaal en Pacemaker in SLES
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: SAP HANA uitschalen met stand-by-knooppunt met Azure NetApp Files op SLES
+          href: sap-hana-scale-out-standby-netapp-files-suse.md
     - name: Overzicht van back-ups van SAP HANA
       href: sap-hana-backup-guide.md
     - name: Back-ups maken van SAP HANA op bestandsniveau

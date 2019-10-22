@@ -1,37 +1,33 @@
 ---
-title: Azure Application Insights telemetrie Data Model - Tracetelemetrie | Microsoft Docs
-description: Application Insights-gegevensmodel voor tracetelemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Telemetrie-gegevens model van Azure-toepassing Insights-telemetrie traceren | Microsoft Docs
+description: Application Insights gegevens model voor het traceren van telemetrie
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899282"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678120"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>-Tracetelemetrie: Application Insights-gegevensmodel
+# <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie traceren: Application Insights gegevens model
 
-Traceren telemetrie (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt `printf` stijl trace-instructies die tekst gezocht. `Log4Net`, `NLog`, en andere vermeldingen in logboekbestanden op tekst gebaseerde worden vertaald naar instanties van dit type. De tracering heeft geen metingen als een uitbreidbaarheid.
+Telemetrie traceren (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt `printf` Style trace-instructies die met tekst worden doorzocht. `Log4Net`, `NLog` en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
 
-## <a name="message"></a>Message
+## <a name="message"></a>Bericht
 
-Traceringsbericht.
+Traceer bericht.
 
-Maximumlengte: 32.768 tekens
+Maximale lengte: 32768 tekens
 
 ## <a name="severity-level"></a>Ernstniveau
 
-Traceer ernstniveau. Waarde kan zijn `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Niveau van de ernst van de tracering. De waarde kan `Verbose`, `Information`, `Warning`, `Error` `Critical` zijn.
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
@@ -39,8 +35,8 @@ Traceer ernstniveau. Waarde kan zijn `Verbose`, `Information`, `Warning`, `Error
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET-traceerlogboeken in Application Insights verkennen](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Verken in Application Insights traceerlogboeken Java](../../azure-monitor/app/java-trace-logs.md).
-- Zie [gegevensmodel](data-model.md) voor Application Insights-typen en -gegevensmodel.
-- [Aangepaste traceersessie telemetrie schrijven](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Bekijk [platforms](../../azure-monitor/app/platforms.md) ondersteund door Application Insights.
+- [Verken .net-traceer Logboeken in Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+- [Verken Java-traceer Logboeken in Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
+- [Telemetrie van aangepaste tracering schrijven](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
+- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

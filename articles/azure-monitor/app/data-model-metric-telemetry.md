@@ -1,25 +1,21 @@
 ---
 title: Telemetrie-gegevens model van Azure-toepassing Insights-metrische telemetrie | Microsoft Docs
 description: Application Insights gegevens model voor metrische telemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60900457"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678133"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Metrische telemetrie: Application Insights-gegevensmodel
+# <a name="metric-telemetry-application-insights-data-model"></a>Metrische telemetrie: Application Insights gegevens model
 
 Er zijn twee soorten metrische telemetriegegevens die worden ondersteund door [Application Insights](../../azure-monitor/app/app-insights-overview.md): single meet en vooraf geaggregeerde metriek. Eén meting is slechts een naam en waarde. Statistische metrische gegevens Hiermee geeft u de minimum-en maximum waarde op van de metriek in het aggregatie-interval en de standaard deviatie van de metriek.
 
@@ -41,15 +37,15 @@ Metrische waarde waarmee systeem-en proces tellers worden weer gegeven:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Onderhanden werk... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | gemiddelde uitvoerings tijd van aanvragen
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Onderhanden werk... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | aantal aanvragen dat wacht op verwerking in een wachtrij
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
 De naam van de metrische gegevens die u wilt weer geven in Application Insights Portal en gebruikers interface. 
 
-## <a name="value"></a>Value
+## <a name="value"></a>Waarde
 
 Eén waarde voor meting. Som van afzonderlijke metingen voor de aggregatie.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Aantal
 
 Metrieke gewicht van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
@@ -61,13 +57,13 @@ Minimum waarde van de cumulatieve metriek. Mag niet worden ingesteld voor een me
 
 De maximum waarde van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
-## <a name="standard-deviation"></a>Standaarddeviatie
+## <a name="standard-deviation"></a>Standaardafwijking
 
 Standaard afwijking van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
-Metriek met de aangepaste eigenschap `CustomPerfCounter` ingesteld om `true` aan te geven dat de metrische gegevens het prestatie meter item van Windows vertegenwoordigen. Deze metrische gegevens worden in de tabel Performance Counters geplaatst. Niet in customMetrics. Ook de naam van deze metriek wordt geparseerd om categorie-, teller-en instantie namen op te halen.
+Metriek met de aangepaste eigenschap `CustomPerfCounter` ingesteld op `true` geeft aan dat de metrische gegevens het prestatie meter item van Windows vertegenwoordigen. Deze metrische gegevens worden in de tabel Performance Counters geplaatst. Niet in customMetrics. Ook de naam van deze metriek wordt geparseerd om categorie-, teller-en instantie namen op te halen.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 

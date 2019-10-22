@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsbewerkingen integreren met Microsoft Graph-Security - Azure Logic Apps
-description: Van uw app threat mogelijkheden voor beveiliging, detectie en reactie verbeteren door het beheer van beveiligingsbewerkingen met Microsoft Graph beveiligings- en Azure Logic Apps
+title: Beveiligings bewerkingen integreren en beheren-Azure Logic Apps & Microsoft Graph beveiliging
+description: Verbeter de bedreigings beveiliging, detectie en reactie van uw app met Microsoft Graph Security-& Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,114 +10,114 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60448044"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679096"
 ---
-# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Beveiliging tegen bedreigingen verbeteren door de beveiligingsbewerkingen integratie met Microsoft Graph beveiligings- en Azure Logic Apps
+# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
 
-Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en de [Microsoft Graph Security](https://docs.microsoft.com/graph/security-concept-overview) -connector, u kunt verbeteren hoe uw app wordt gedetecteerd, worden beveiligd en reageert op bedreigingen met het maken van geautomatiseerde werkstromen voor het integreren van Microsoft Security-producten, services en partners. Bijvoorbeeld, kunt u [Azure Security Center-playbooks](../security-center/security-center-playbooks.md) die bewaken en beheren van Microsoft Graph-Security-entiteiten, zoals waarschuwingen. Hier volgen enkele scenario's ondersteund door de Microsoft Graph-Security-connector:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Microsoft Graph Security](https://docs.microsoft.com/graph/security-concept-overview) connector kunt u verbeteren hoe uw app bedreigingen detecteert, beveiligt en beantwoordt door automatische werk stromen te maken voor de integratie van micro soft-beveiligings producten,-services en-partners. U kunt bijvoorbeeld [Azure Security Center playbooks](../security-center/security-center-playbooks.md) maken die Microsoft Graph beveiligings entiteiten, zoals waarschuwingen, bewaken en beheren. Hier volgen enkele scenario's die worden ondersteund door de Microsoft Graph Security connector:
 
-* Ontvang waarschuwingen op basis van query's of van waarschuwings-ID. Bijvoorbeeld, krijgt u een lijst met waarschuwingen met hoge urgentie.
-* Waarschuwingen bijwerken. U kunt bijvoorbeeld waarschuwing toewijzingen, opmerkingen toevoegen aan waarschuwingen of waarschuwingen label bijwerken.
-* Controleren wanneer waarschuwingen worden gemaakt of gewijzigd door het maken van [waarschuwen abonnementen (webhooks)](https://docs.microsoft.com/graph/api/resources/webhooks).
-* Uw waarschuwing abonnementen beheren. U kunt bijvoorbeeld actieve abonnementen ophalen, de verlooptijd voor een abonnement verlengen of abonnementen verwijderen.
+* Ontvang waarschuwingen op basis van query's of op waarschuwings-ID. U kunt bijvoorbeeld een lijst ophalen met waarschuwingen met hoge urgentie.
+* Waarschuwingen bijwerken. U kunt bijvoorbeeld waarschuwings toewijzingen bijwerken, opmerkingen toevoegen aan waarschuwingen of label waarschuwingen.
+* Controleren wanneer waarschuwingen worden gemaakt of gewijzigd door het maken van [waarschuwings abonnementen (webhooks)](https://docs.microsoft.com/graph/api/resources/webhooks).
+* Uw waarschuwings abonnementen beheren. U kunt bijvoorbeeld actieve abonnementen ophalen, de verloop tijd voor een abonnement verlengen of abonnementen verwijderen.
 
-Werkstroom van uw logische app kunt acties te antwoorden krijgen van de Microsoft Graph-Security-connector en die uitvoer beschikbaar maken voor andere acties in uw werkstroom. U kunt ook andere acties in uw werkstroom gebruiken de uitvoer van de Microsoft Graph-Security-connector-acties hebben. Bijvoorbeeld, als u waarschuwingen met hoge urgentie via de Microsoft Graph-Security-connector, u kunt deze waarschuwingen verzenden in een e-mailbericht met behulp van de Outlook-connector. 
+De werk stroom van uw logische app kan acties gebruiken die reacties ontvangen van de Microsoft Graph beveiligings connector en die uitvoer beschikbaar maken voor andere acties in uw werk stroom. U kunt ook andere acties in uw werk stroom gebruiken om de uitvoer van de Microsoft Graph Security connector-acties uit te voeren. Als u bijvoorbeeld waarschuwingen met hoge urgentie wilt ontvangen via de beveiligings connector van Microsoft Graph, kunt u deze waarschuwingen in een e-mail bericht verzenden met behulp van de Outlook-Connector. 
 
-Zie voor meer informatie over de beveiliging van Microsoft Graph, de [Security-API van Microsoft Graph-overzicht](https://aka.ms/graphsecuritydocs). Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Als u Microsoft Flow of PowerApps zoekt, raadpleegt u [wat stroom is?](https://flow.microsoft.com/) of [wat is PowerApps?](https://powerapps.microsoft.com/)
+Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(Engelstalig) voor meer informatie over Microsoft Graph beveiliging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md). Als u op zoek bent naar Microsoft Flow of PowerApps, raadpleegt u [Wat is flow?](https://flow.microsoft.com/) of [Wat is PowerApps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Voor het gebruik van de Microsoft Graph-Security-connector, moet u hebben *expliciet opgegeven* Azure Active Directory (AD) tenant administrator toestemming, die deel uitmaakt van de [verificatievereisten voor Microsoft Graph-beveiliging ](https://aka.ms/graphsecurityauth). Deze toestemming is vereist voor de toepassings-ID van de Microsoft Graph-Security-connector en de naam, die u kunt ook vinden in de [Azure-portal](https://portal.azure.com):
+* Als u de Microsoft Graph beveiligings connector wilt gebruiken, moet u Azure Active Directory (AD) toestemming van de Tenant beheerder *expliciet hebben opgegeven* , die deel uitmaakt van de [Microsoft Graph beveiligings verificatie vereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
 
-   | Eigenschap | Value |
+   | Eigenschap | Waarde |
    |----------|-------|
-   | **De naam van toepassing** | `MicrosoftGraphSecurityConnector` |
+   | **Toepassings naam** | `MicrosoftGraphSecurityConnector` |
    | **Toepassings-ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
    |||
 
-   Als u wilt verlenen toestemming voor de connector, kan de beheerder van de Azure AD-tenant beide deze stappen volgen:
+   Voor het verlenen van toestemming voor de connector kan uw Azure AD-Tenant beheerder de volgende stappen volgen:
 
-   * [Tenant-beheerder toestemming voor Azure AD-toepassingen](../active-directory/develop/v2-permissions-and-consent.md).
+   * [Verleen de Tenant beheerder toestemming voor Azure AD-toepassingen](../active-directory/develop/v2-permissions-and-consent.md).
 
-   * Tijdens de eerste uitvoering van uw logische app, kan uw app toestemming aanvragen van uw Azure AD-tenant-beheerder via de [toestemming toepassingservaring](../active-directory/develop/application-consent-experience.md).
+   * Tijdens de eerste uitvoering van de logische app kan uw app toestemming vragen van uw Azure AD-Tenant beheerder met behulp van de toestemming van de [toepassing](../active-directory/develop/application-consent-experience.md).
    
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot de beveiliging van Microsoft Graph-entiteiten, zoals waarschuwingen. Deze connector zijn momenteel geen triggers. Dus als u wilt een actie van de Microsoft Graph-beveiliging gebruikt, start uw logische app met een trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u toegang wilt krijgen tot uw Microsoft Graph beveiligings entiteiten, zoals waarschuwingen. Deze connector heeft momenteel geen triggers. Als u een Microsoft Graph beveiligings actie wilt gebruiken, start u de logische app met een trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
-## <a name="connect-to-microsoft-graph-security"></a>Verbinding maken met Microsoft Graph-beveiliging 
+## <a name="connect-to-microsoft-graph-security"></a>Verbinding maken met Microsoft Graph beveiliging 
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voeg voor lege, logische apps, de trigger en eventuele andere vereiste acties die u wilt voordat u een Microsoft Graph-Security-actie toevoegen.
-
-   -of-
-
-   Voor bestaande logische apps, onder de laatste stap waaraan u wilt toevoegen van een actie Microsoft Graph Security Kies **nieuwe stap**.
+1. Voor lege Logic apps voegt u de trigger en eventuele andere acties toe die u wilt toevoegen voordat u een Microsoft Graph beveiligings actie toevoegt.
 
    -of-
 
-   Als u wilt toevoegen een actie tussen fasen, de aanwijzer over de pijl tussen fasen. 
-   Kies het plusteken (+) die wordt weergegeven, en selecteer **een actie toevoegen**.
+   Voor bestaande Logic apps, onder de laatste stap waar u een Microsoft Graph beveiligings actie wilt toevoegen, kiest u **nieuwe stap**.
 
-1. Typ 'microsoft graph security' als filter in het zoekvak. Selecteer de actie die u wilt in de lijst met acties.
+   -of-
 
-1. Meld u aan met uw Microsoft Graph-Security-referenties.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken (+) dat wordt weer gegeven en selecteer **een actie toevoegen**.
 
-1. Geef de benodigde informatie voor de geselecteerde actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Voer in het zoekvak ' micro soft Graph Security ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
+
+1. Meld u aan met uw Microsoft Graph beveiligings referenties.
+
+1. Geef de benodigde gegevens voor de geselecteerde actie op en blijf door gaan met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="add-actions"></a>Acties toevoegen
 
-Hier vindt u meer gedetailleerde informatie over het gebruik van de verschillende acties die beschikbaar zijn met de Microsoft Graph-Security-connector.
+Hier vindt u meer specifieke informatie over het gebruik van de verschillende acties die beschikbaar zijn in de Microsoft Graph Security connector.
 
 ### <a name="manage-alerts"></a>Waarschuwingen beheren
 
-Als u wilt filteren, sorteren, of de meest recente resultaten oplevert, bieden *alleen* de [ODATA-queryparameters ondersteund door Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Geef geen* de volledige basis-URL of de HTTP-actie, bijvoorbeeld `https://graph.microsoft.com/v1.0/security/alerts`, of de `GET` of `PATCH` bewerking. Hier volgt een voorbeeld waarin de parameters voor een **waarschuwingen ontvangen** actie wanneer u een lijst met waarschuwingen met hoge urgentie:
+Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie op, bijvoorbeeld `https://graph.microsoft.com/v1.0/security/alerts`, of de `GET` of `PATCH` bewerking. Hier volgt een specifiek voor beeld waarin de para meters voor een actie **Get Alerts** worden weer gegeven wanneer u een lijst met waarschuwingen met hoge urgentie wilt:
 
 `Filter alerts value as Severity eq 'high'`
 
-Zie voor meer informatie over de query's met deze connector kunt u de [beveiligingswaarschuwingen van Microsoft Graph-referentiedocumentatie](https://docs.microsoft.com/graph/api/alert-list). Meer informatie voor het bouwen van betere ervaringen met deze connector, over de [schema eigenschappen waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert) die ondersteuning biedt voor de connector.
+Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u de [documentatie over Microsoft Graph Security Alerts](https://docs.microsoft.com/graph/api/alert-list). Meer informatie over de [schema-eigenschappen](https://docs.microsoft.com/graph/api/resources/alert) die door de connector worden ondersteund om uitgebreide ervaringen met deze connector te maken.
 
-| Bewerking | Description |
+| Bewerking | Beschrijving |
 |--------|-------------|
-| **Waarschuwingen ontvangen** | Ontvang waarschuwingen gefilterd op basis van een of meer [waarschuwen eigenschappen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
-| **Waarschuwing met ID ophalen** | Ophalen van een specifieke waarschuwing op basis van de waarschuwing-ID. | 
-| **Waarschuwing bijwerken** | Bijwerken van een specifieke waarschuwing op basis van de waarschuwing-ID. <p>Als u wilt controleren of u de eigenschappen vereist en bewerkbare doorgeven in uw aanvraag, Zie de [bewerkbare eigenschappen van waarschuwingen](https://docs.microsoft.com/graph/api/alert-update). Als u wilt een waarschuwing toewijst aan een beveiligingsanalist, zodat ze kunnen onderzoeken, kunt u bijvoorbeeld van de waarschuwing bijwerken **toegewezen aan** eigenschap. |
+| **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
+| **Waarschuwing bijwerken** | Een specifieke waarschuwing bijwerken op basis van de waarschuwings-ID. <p>Om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [Bewerk bare eigenschappen voor waarschuwingen](https://docs.microsoft.com/graph/api/alert-update). Als u bijvoorbeeld een waarschuwing wilt toewijzen aan een beveiligings analist zodat deze kan worden onderzocht, kunt u de waarschuwing voor de eigenschap **toegewezen aan** bijwerken. |
 |||
 
-### <a name="manage-alert-subscriptions"></a>Waarschuwing-abonnementen beheren
+### <a name="manage-alert-subscriptions"></a>Waarschuwings abonnementen beheren
 
-Biedt ondersteuning voor Microsoft Graph [ *abonnementen*](https://docs.microsoft.com/graph/api/resources/subscription), of [ *webhooks*](https://docs.microsoft.com/graph/api/resources/webhooks). Als u wilt ophalen, bijwerken, of abonnementen verwijderen, bieden de [ODATA-queryparameters ondersteund door Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) naar de Microsoft Graph-entiteit maken en opnemen `security/alerts` gevolgd door de ODATA-query. 
-*Neem geen* de basis-URL, bijvoorbeeld `https://graph.microsoft.com/v1.0`. Gebruik in plaats daarvan de indeling in het volgende voorbeeld:
+Microsoft Graph ondersteunt [*abonnementen*](https://docs.microsoft.com/graph/api/resources/subscription)of [*webhooks*](https://docs.microsoft.com/graph/api/resources/webhooks). Als u abonnementen wilt ontvangen, bijwerken of verwijderen, geeft u de ODATA-query parameters op die worden [ondersteund door Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) aan de construct Microsoft Graph entiteit en voegt u `security/alerts` toe, gevolgd door de ODATA-query. 
+*Neem* de basis-URL niet op, bijvoorbeeld `https://graph.microsoft.com/v1.0`. Gebruik in plaats daarvan de notatie in dit voor beeld:
 
 `security/alerts?$filter=status eq 'New'`
 
-| Bewerking | Description |
+| Bewerking | Beschrijving |
 |--------|-------------|
-| **Maken van abonnementen** | [Maken van een abonnement](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) die ontvangt u een melding over wijzigingen. U kunt dit abonnement voor de specifieke Waarschuwingstypen die u wilt filteren. Bijvoorbeeld, kunt u een abonnement dat u ontvangt een melding over waarschuwingen met hoge urgentie. |
-| **Actieve abonnementen ophalen** | [Niet-verlopen abonnementen ophalen](https://docs.microsoft.com/graph/api/subscription-list). | 
-| **Abonnement bijwerken** | [Bijwerken van een abonnement](https://docs.microsoft.com/graph/api/subscription-update) door te geven van de abonnements-ID. Om uit te breiden van uw abonnement, kunt u bijvoorbeeld van het abonnement bijwerken `expirationDateTime` eigenschap. | 
-| **Abonnement verwijderen** | [Een abonnement verwijdert](https://docs.microsoft.com/graph/api/subscription-delete) door te geven van de abonnements-ID. | 
+| **Abonnementen maken** | [Maak een abonnement](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
+| **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](https://docs.microsoft.com/graph/api/subscription-list). | 
+| **Abonnement bijwerken** | [Werk een abonnement](https://docs.microsoft.com/graph/api/subscription-update) bij door de abonnements-id op te geven. Als u uw abonnement wilt uitbreiden, kunt u bijvoorbeeld de `expirationDateTime` eigenschap van het abonnement bijwerken. | 
+| **Abonnement verwijderen** | [Een abonnement verwijderen](https://docs.microsoft.com/graph/api/subscription-delete) door de abonnements-id op te geven. | 
 ||| 
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](https://aka.ms/graphsecurityconnectorreference).
+Raadpleeg de [referentie pagina](https://aka.ms/graphsecurityconnectorreference)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

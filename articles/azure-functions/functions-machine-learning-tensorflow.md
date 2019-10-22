@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Python en tensor flow in Azure Functions gebruiken om machine learning te maken | Microsoft Docs'
+title: 'Zelf studie: gebruik python en tensor flow in Azure Functions om machine learning deverzekers | Microsoft Docs'
 description: In deze zelf studie wordt gedemonstreerd hoe u tensor flow machine learning modellen toepast in Azure Functions
 services: functions
 author: anthonychu
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729174"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677890"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelfstudie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
 
 In dit artikel wordt beschreven hoe u met behulp van Azure Functions python en tensor flow kunt gebruiken met een machine learning model om een afbeelding te classificeren op basis van de inhoud ervan.
 
@@ -52,10 +52,10 @@ cd functions-python-tensorflow-tutorial
 
 De opslag plaats bevat een paar mappen.
 
-- *starten*:  Dit is de werkmap voor de zelf studie
-- *einde*: Dit is het uiteindelijke resultaat en de volledige implementatie voor uw referentie
-- *resources*: Bevat de machine learning model en helper-bibliotheken
-- Front- *End*: Een website die de functie-app aanroept
+- *Start*: dit is de werkmap voor de zelf studie
+- *End*: dit is het uiteindelijke resultaat en de volledige implementatie voor uw referentie
+- *resources*: bevat het machine learning model en de helper-bibliotheken
+- Front- *End*: een website die de functie-app aanroept
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Een virtuele python-omgeving maken en activeren
 
@@ -79,7 +79,7 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-De terminal prompt wordt nu voorafgegaan door `(.venv)` om aan te duiden dat de virtuele omgeving is geactiveerd. Controleer of `python` in de virtuele omgeving is python 3.6. x.
+De terminal prompt wordt nu voorafgegaan door `(.venv)`, wat aangeeft dat de virtuele omgeving is geactiveerd. Bevestig dat `python` in de virtuele omgeving inderdaad python 3.6. x.
 
 ```console
 python --version
@@ -98,24 +98,24 @@ func init --worker-runtime python
 
 Een functie-app kan een of meer Azure Functions bevatten. Open de map *Start* in een editor en controleer de inhoud.
 
-- [*Local. settings. json*](functions-run-local.md#local-settings-file): Bevat toepassings instellingen die worden gebruikt voor lokale ontwikkeling
-- [*host. json*](functions-host-json.md): Bevat instellingen voor de Azure Functions-host en-extensies
-- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): Bevat Python-pakketten die vereist zijn voor deze toepassing
+- [*Local. settings. json*](functions-run-local.md#local-settings-file): bevat toepassings instellingen die worden gebruikt voor lokale ontwikkeling
+- [*host. json*](functions-host-json.md): bevat instellingen voor de Azure functions-host en-extensies
+- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): bevat Python-pakketten die vereist zijn voor deze toepassing
 
 ## <a name="create-an-http-function"></a>Een HTTP-functie maken
 
 Voor de toepassing is één HTTP API-eind punt vereist dat een afbeeldings-URL gebruikt als invoer en een voor spelling retourneert van het feit of de afbeelding een hond of een kat bevat.
 
-Gebruik in de Terminal de Azure Functions Core Tools om een nieuwe HTTP-functie met denaam classificeren te gebruiken.
+Gebruik in de Terminal de Azure Functions Core Tools om een nieuwe HTTP-functie met de naam *classificeren*te gebruiken.
 
 ```console
 func new --language python --template HttpTrigger --name classify
 ```
 
-Er wordt een nieuwe map met de naam classificering gemaakt, die twee bestanden bevat.
+Er wordt een nieuwe map met de naam *classificering* gemaakt, die twee bestanden bevat.
 
-- *init.py\_: \_ \_\_* Een bestand voor de hoofd functie
-- *Function. json*:  Een bestand met een beschrijving van de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen
+- *\_ \_init \_ \_. py*: een bestand voor de hoofd functie
+- *Function. json*: een bestand met een beschrijving van de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen
 
 ### <a name="run-the-function"></a>De functie uitvoeren
 
@@ -131,7 +131,7 @@ Open een browser en ga naar de volgende URL. De functie moet worden uitgevoerd e
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Gebruiken `Ctrl-C` om de functie-app te stoppen.
+Gebruik `Ctrl-C` om de functie-app te stoppen.
 
 ## <a name="import-the-tensorflow-model"></a>Het tensor flow-model importeren
 
@@ -140,7 +140,7 @@ U gebruikt een vooraf gemaakt tensor flow-model dat is getraind en dat is geëxp
 > [!NOTE]
 > Als u uw eigen wilt maken met behulp van de gratis laag van Custom Vision Service, kunt u de [instructies in de project opslagplaats van het voor beeld](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)volgen.
 
-Het model bestaat uit twee bestanden in de map *< REPOSITORY_ROOT >/resources/model* : *model. db* en *labels. txt*. Kopieer deze naar de map van de functie classificeren.
+Het model bestaat uit twee bestanden in de map *< REPOSITORY_ROOT >/resources/model* : *model. PB* en *labels. txt*. Kopieer deze naar de map van de functie *classificeren* .
 
 #### <a name="linux-and-macos"></a>Linux en macOS:
 
@@ -158,7 +158,7 @@ Zorg ervoor dat u de \* in de bovenstaande opdracht opneemt. Controleer of *clas
 
 ## <a name="add-the-helper-functions-and-dependencies"></a>De Help-functies en-afhankelijkheden toevoegen
 
-Sommige hulp functies voor het voorbereiden van de invoer installatie kopie en het maken van een voor spelling met behulp van tensor flow bevinden zich in een bestand met de naam *predict.py* in de map *resources* . Kopieer dit bestand naar de map van de functie classificeren.
+Sommige hulp functies voor het voorbereiden van de invoer installatie kopie en het maken van een voor spelling met behulp van tensor flow bevinden zich in een bestand met de naam *predict.py* in de map *resources* . Kopieer dit bestand naar de map van de functie *classificeren* .
 
 #### <a name="linux-and-macos"></a>Linux en macOS:
 
@@ -179,7 +179,7 @@ Controleer of *classificeren* nu een bestand met de naam *predict.py*bevat.
 De helper-bibliotheek heeft enkele afhankelijkheden die moeten worden geïnstalleerd. Open *Start/requirements. txt* in de editor en voeg de volgende afhankelijkheden toe aan het bestand.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
@@ -194,13 +194,13 @@ pip install --no-cache-dir -r requirements.txt
 
 ### <a name="caching-the-model-in-global-variables"></a>Het model in de cache opslaan in globale variabelen
 
-Open *predict.py* in de editor en Bekijk de `_initialize` functie boven aan het bestand. U ziet dat het tensor flow-model van de schijf wordt geladen wanneer de functie voor het eerst wordt uitgevoerd en wordt opgeslagen in globale variabelen. Het laden vanaf schijf wordt overgeslagen tijdens volgende uitvoeringen van `_initialize` de functie. Als u het model in het geheugen opslaat met deze techniek, versnelt u later de voor spellingen.
+Open *predict.py* in de editor en Bekijk de functie `_initialize` boven aan het bestand. U ziet dat het tensor flow-model van de schijf wordt geladen wanneer de functie voor het eerst wordt uitgevoerd en wordt opgeslagen in globale variabelen. Het laden vanaf schijf wordt overgeslagen tijdens volgende uitvoeringen van de functie `_initialize`. Als u het model in het geheugen opslaat met deze techniek, versnelt u later de voor spellingen.
 
 Raadpleeg de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md#global-variables)voor meer informatie over globale variabelen.
 
 ## <a name="update-function-to-run-predictions"></a>De functie update voor het uitvoeren van voor spellingen
 
-Open *classificering\_\_/init\_. py in de editor.\_* Importeer de bibliotheek voor voors pellen die u eerder hebt toegevoegd aan dezelfde map. Voeg de volgende `import` instructies toe onder de andere invoer die al in het bestand voor komt.
+Open *classificatie/\_ \_init \_ \_. py* in de editor. Importeer de bibliotheek voor voors *pellen* die u eerder hebt toegevoegd aan dezelfde map. Voeg de volgende `import`-instructies toe onder de andere invoer die al in het bestand voor komt.
 
 ```python
 import json
@@ -221,14 +221,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Zorg ervoor dat uw wijzigingen op te slaan.
+Zorg ervoor dat u de wijzigingen opslaat.
 
-Deze functie ontvangt een afbeeldings-URL in een query reeks `img`parameter met de naam. Er wordt `predict_image_from_url` een aanroep uitgevoerd vanuit de helper-bibliotheek waarmee de installatie kopie wordt gedownload en een voor spelling wordt geretourneerd met behulp van het tensor flow-model. De functie retourneert vervolgens een HTTP-antwoord met de resultaten.
+Deze functie ontvangt een afbeeldings-URL in een query reeks parameter met de naam `img`. Er wordt `predict_image_from_url` aangeroepen vanuit de helper-bibliotheek die de installatie kopie downloadt en een voor spelling retourneert met behulp van het tensor flow-model. De functie retourneert vervolgens een HTTP-antwoord met de resultaten.
 
-Omdat het http-eind punt wordt aangeroepen door een webpagina die wordt gehost op een ander domein, bevat `Access-Control-Allow-Origin` het HTTP-antwoord een header om te voldoen aan de vereisten voor CORS (cross-Origin Resource Sharing) van de browser.
+Omdat het HTTP-eind punt wordt aangeroepen door een webpagina die wordt gehost op een ander domein, bevat het HTTP-antwoord een `Access-Control-Allow-Origin`-header om te voldoen aan de vereisten voor de toepassing van het gebruik van meerdere resources (CORS) van de browser.
 
 > [!NOTE]
-> Ga `*` in een productie toepassing naar de specifieke oorsprong van de webpagina voor extra beveiliging.
+> Wijzig in een productie toepassing `*` in de specifieke oorsprong van de webpagina voor extra beveiliging.
 
 ### <a name="run-the-function-app"></a>De functie-app uitvoeren
 

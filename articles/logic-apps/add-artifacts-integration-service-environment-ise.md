@@ -1,6 +1,6 @@
 ---
-title: Artefacten toevoegen aan integratie service omgevingen (ISEs) in Azure Logic Apps
-description: Voeg Logic apps, aangepaste connectors en integratie accounts toe aan uw ISE (Integration service Environment) om toegang te krijgen tot Azure Virtual Networks (VNETs), terwijl u persoonlijke en geïsoleerd van open bare of ' wereld wijd ' Azure
+title: Artefacten toevoegen aan de integratie service omgeving-Azure Logic Apps
+description: Logische apps, integratie accounts en aangepaste connectors toevoegen aan uw integratie service omgeving (ISE) voor toegang tot Azure Virtual Networks (VNETs)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960491"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680515"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Artefacten toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -32,7 +32,7 @@ Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtua
 
 Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw integratie service omgeving (ISE):
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **Logic apps** > **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **Logic apps**  > **toevoegen**.
 
    ![Nieuwe logische app toevoegen aan ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -63,13 +63,13 @@ Op basis van de [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-en
 
 Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt van een ISE:
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **integratie accounts** > **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **integratie accounts**  > **toevoegen**.
 
    ![Nieuw integratie account toevoegen aan ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
    -of-
 
-   Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **integratie account**.
+   Selecteer in het hoofd menu van Azure **een resource maken**  > **integratie**  > **integratie account**.
 
 1. Geef de naam, het Azure-abonnement, de Azure-resource groep (nieuw of bestaand) en de prijs categorie op die u voor uw integratie account wilt gebruiken.
 
@@ -105,7 +105,7 @@ U kunt door micro soft beheerde connectors toevoegen die beschikbaar zijn voor g
 
 Als u aangepaste connectors in uw ISE wilt gebruiken, maakt u die aangepaste connectors rechtstreeks in uw ISE.
 
-1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **aangepaste connectors** > **toevoegen**.
+1. Zoek en open uw ISE als deze nog niet is geopend. Selecteer in het menu ISE onder **instellingen**de optie **aangepaste connectors**  > **toevoegen**.
 
    ![Een aangepaste connector maken](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

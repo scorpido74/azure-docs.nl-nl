@@ -1,24 +1,18 @@
 ---
 title: Application Insights voor Azure-Cloud Services | Microsoft Docs
 description: Controleer uw web- en werkrollen op een effectieve manier met Application Insights
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, Azure Diagnostics
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.workload: tbd
-ms.date: 09/05/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/05/2018
+ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933014"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677567"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -80,7 +74,7 @@ Als u de telemetrie naar de juiste resources wilt verzenden, kunt u de Applicati
 
 Als u hebt besloten om een afzonderlijke resource te maken voor elke rol, en wellicht een afzonderlijke set voor elke build-configuratie, is het het gemakkelijkst om ze allemaal in de Application Insights portal te maken. Als u een groot aantal resources maakt, kunt u [het proces automatiseren](../../azure-monitor/app/powershell.md).
 
-1. Selecteer in [de Azure Portal][portal] **nieuwe** > **ontwikkelaars Services** > **Application Insights**.  
+1. Selecteer in de [Azure Portal][portal] **nieuwe**  > **ontwikkelaars Services**  > **Application Insights**.  
 
     ![Application Insights deel venster](./media/cloudservices/01-new.png)
 
@@ -92,7 +86,7 @@ Elke resource wordt geïdentificeerd door een instrumentatie sleutel. U hebt dez
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics instellen voor elke rol
 Stel deze optie in om uw app te controleren met Application Insights. Voor webrollen biedt deze optie prestatie bewaking, waarschuwingen, diagnostische gegevens en gebruiks analyse. Voor andere rollen kunt u Azure Diagnostics, zoals opnieuw opstarten, prestatie meter items en aanroepen naar System. Diagnostics. trace, zoeken en controleren. 
 
-1. Open in Visual Studio Solution Explorer, onder  **\<uwcloudservice >**  > -**rollen**, de eigenschappen van elke rol.
+1. Open in Visual Studio Solution Explorer de eigenschappen van elke rol onder **\<YourCloudService >**  > **rollen**.
 
 1. Schakel in **configuratie**het selectie vakje **Diagnostische gegevens verzenden naar Application Insights** in en selecteer vervolgens de Application Insights resource die u eerder hebt gemaakt.
 
@@ -100,7 +94,7 @@ Als u hebt besloten om een afzonderlijke Application Insights-resource voor elke
 
 ![Application Insights configureren](./media/cloudservices/configure-azure-diagnostics.png)
 
-Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *\*ServiceConfiguration. cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration. \*. cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Als u het niveau van diagnostische gegevens wilt variëren dat naar Application Insights wordt verzonden, kunt u dit doen [door de *cscfg* -bestanden rechtstreeks te bewerken](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -142,7 +136,7 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
 
 Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Framework. 
 
-1. Voeg `\*.csdef` in bestand [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) toevoegen toe voor elke rol die vergelijkbaar is met 
+1. Voeg in `\*.csdef` bestand een [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) toe voor elke rol die vergelijkbaar is met 
 
     ```xml
     <Startup>
@@ -157,7 +151,7 @@ Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Fr
     </Startup>
     ```
     
-2. Down load [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)en plaats deze in `AppInsightsAgent` de map van elk rolinstantie. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
+2. Down load [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), plaats ze in de map `AppInsightsAgent` van elk Role-project. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
 
 3. Voeg op alle werk rollen omgevings variabelen toe: 
 
@@ -230,7 +224,7 @@ Voor werk rollen kunt u uitzonde ringen op twee manieren bijhouden:
 ## <a name="performance-counters"></a>Prestatiemeteritems
 Voor de volgende prestatiemeteritems worden gegevens verzameld:
 
-* \Process(??APP_WIN32_PROC??)\% Processor Time
+* \Process(?? APP_WIN32_PROC??) Processor tijd van \%
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -261,7 +255,7 @@ Dit doet u al volgt:
 ## <a name="client-telemetry"></a>Telemetrie op de client
 Zie [de Java script-SDK toevoegen aan uw][client]webpagina's voor meer informatie over het maken van een telemetrie in de Cloud, zoals het aantal pagina weergave, pagina laad tijden of script uitzonderingen, en om aangepaste telemetrie in uw pagina scripts te schrijven.
 
-## <a name="availability-tests"></a>Beschikbaarheidstesten
+## <a name="availability-tests"></a>Beschikbaarheidstests
 [Stel webtests][availability]in om ervoor te zorgen dat uw app Live en responsief blijft.
 
 ## <a name="display-everything-together"></a>Een totaaloverzicht weergeven

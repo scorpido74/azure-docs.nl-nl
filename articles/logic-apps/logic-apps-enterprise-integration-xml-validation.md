@@ -1,6 +1,6 @@
 ---
-title: XML-validatie voor B2B-bedrijfsintegratie - Azure Logic Apps | Microsoft Docs
-description: XML valideren met schema's voor B2B-oplossingen in Azure Logic Apps met Enterprise Integration Pack
+title: XML valideren voor B2B Enter prise Integration-Azure Logic Apps
+description: XML valideren met behulp van schema's in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,53 +8,62 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
-ms.date: 07/08/2016
-ms.openlocfilehash: 8db0dbadd944007ff953f9ea69695bf988ffebb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/21/2019
+ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996054"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680258"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-validatie voor B2B-bedrijfsintegratie in Azure Logic Apps met Enterprise Integration Pack
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Valideer XML voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
-Vaak in B2B-scenario's moeten de partners in een overeenkomst ervoor zorgen dat de wisselen ze berichten geldig zijn voordat de verwerking van gegevens kunt beginnen. U kunt documenten op basis van een vooraf gedefinieerd schema valideren met behulp van het gebruik van de XML-validatie-connector in de Enterprise Integration Pack.
+In het geval van B2B-scenario's moeten de handels partners in een overeenkomst er zeker van zijn dat de berichten die worden uitgewisseld geldig zijn voordat gegevens verwerking kan worden gestart. U kunt documenten valideren op basis van een vooraf gedefinieerd schema met behulp van de XML-validatie actie, die beschikbaar is in de Enterprise Integration Pack.
 
-## <a name="validate-a-document-with-the-xml-validation-connector"></a>Een document met de XML-validatie-connector valideren
+## <a name="prerequisites"></a>Vereisten
 
-1. Een logische app maken en [de app een koppeling naar het integratieaccount](../logic-apps/logic-apps-enterprise-integration-accounts.md "Leer hoe u een integratieaccount koppelt aan een logische app") waarvoor het schema dat u gebruiken wilt voor het valideren van XML-gegevens.
+* Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-2. Voeg een **aanvraag: wanneer een HTTP-aanvraag wordt ontvangen** trigger aan uw logische app.
+* Een lege of bestaande logische app waarvoor u de XML-validatie actie wilt gebruiken. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement, is gekoppeld aan de logische app waar u de XML-validatie actie wilt gebruiken en bevat het schema dat u wilt gebruiken voor het valideren van XML-inhoud. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
-3. Om toe te voegen de **XML-validatie** actie, kiest u **een actie toevoegen**.
+## <a name="add-xml-validation-action"></a>XML-validatie actie toevoegen
 
-4. Als u wilt alle acties in de map die u wilt filteren, voer *xml* in het zoekvak in. Kies **XML-validatie**.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
+1. Als u een lege logische app hebt, voert u in de ontwerp functie voor logische apps in het zoekvak `HTTP request` in als uw filter en selecteert u de trigger **Wanneer een HTTP-aanvraag is ontvangen** . Als dat niet het geval is, gaat u verder met de volgende stap.
 
-5. Als u de XML-inhoud die u wilt valideren, schakelt u **inhoud**.
+1. Selecteer **nieuwe stap**onder de laatste stap in de werk stroom.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de pijl die de stappen verbindt zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-6. Selecteer de body >-tag als de inhoud die u wilt valideren.
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak `xml validation` in als uw filter. Selecteer **XML-validatie**in de lijst acties.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-3.png)
+   ![Zoek en selecteer de actie XML-validatie](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 
-7. Om op te geven van het schema dat u gebruiken wilt voor het valideren van de vorige *inhoud* invoer, kiest u **SCHEMANAAM**.
+1. Als u de XML-inhoud wilt opgeven die u wilt valideren, klikt u in het vak **inhoud** zodat de lijst met dynamische inhoud wordt weer gegeven.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-4.png)
+   ![Lijst met dynamische inhoud openen](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
 
-8. Sla uw werk  
+   De lijst met dynamische inhoud bevat eigenschappen tokens die de uitvoer van de vorige stappen in de werk stroom vertegenwoordigen. Als in de lijst niet de verwachte eigenschap wordt weer gegeven, controleert u de kop van de trigger of actie, of u **meer weer geven**kunt selecteren.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-5.png)
+1. Selecteer in de lijst met dynamische inhoud de eigenschap met de inhoud die u wilt valideren.
 
-U bent nu klaar met het instellen van uw connector validatie. In een werkelijke toepassing, is het raadzaam om op te slaan van de gevalideerde gegevens in een line-of-business (LOB)-app, zoals SalesForce. Voor het verzenden van de gevalideerde uitvoer met Salesforce, moet u een actie toevoegen.
+   In dit voor beeld wordt de uitvoer van de **hoofd tekst** van de trigger geselecteerd.
 
-Als u wilt uw actie validatie testen, moet u een aanvraag indienen voor de HTTP-eindpunt.
+   ![Te valideren inhoud selecteren](./media/logic-apps-enterprise-integration-xml-validation/select-content-to-validate.png)
+
+1. Als u het schema wilt opgeven dat u voor validatie wilt gebruiken, opent u de lijst **schema naam** en selecteert u het validatie schema dat u hebt toegevoegd aan het gekoppelde integratie account.
+
+   ![Schema selecteren dat moet worden gebruikt voor validatie](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
+
+1. Sla uw logische app op.
+
+   U bent nu klaar met het instellen van de validatie. In een echte wereld-app wilt u mogelijk de gevalideerde gegevens opslaan in een LOB-app (line-of-Business) zoals Sales Force. Als u de gevalideerde uitvoer naar Sales Force wilt verzenden, voegt u een actie toe.
+
+1. Als u uw validatie actie wilt testen, kunt u een aanvraag verzenden om de werk stroom van uw logische app te activeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "meer informatie over Enterprise Integration Pack")   
 
+* Meer informatie over de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)

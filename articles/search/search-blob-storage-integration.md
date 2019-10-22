@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: db54c7886f5256dab41325cd12f1b893be732d72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6d8ad27766e85568cc759af84cc586476ad3ef9a
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529048"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678444"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Zoek opdracht in volledige tekst toevoegen aan Azure Blob-gegevens met behulp van Azure Search
 
@@ -70,5 +70,5 @@ Een meer permanente oplossing is het verzamelen van query-invoer en het weer gev
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een BLOB-indexer instellen](search-howto-indexing-azure-blob-storage.md) 
++ [Het uploaden, downloaden en vermelden van blobs met de Azure Portal (Azure Blob-opslag)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Een BLOB-indexer instellen (Azure Search)](search-howto-indexing-azure-blob-storage.md) 

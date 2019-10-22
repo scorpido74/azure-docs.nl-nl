@@ -1,6 +1,6 @@
 ---
-title: Geautomatiseerde werk stromen maken met Visual Studio-Azure Logic Apps
-description: Taken, bedrijfs processen en werk stromen automatiseren voor bedrijfs integratie met behulp van Azure Logic Apps en Visual Studio
+title: Werk stromen automatiseren met Visual Studio-Azure Logic Apps
+description: Maak, plan en voer terugkerende werk stromen voor bedrijfs integratie uit met behulp van Azure Logic Apps en Visual Studio
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165920"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680568"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>Snelstartgids: taken, processen en werk stromen automatiseren met behulp van Azure Logic Apps en Visual Studio
 
 Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en Visual Studio kunt u werkstromen maken voor het automatiseren van taken en processen om apps, gegevens, systemen en services van bedrijven en organisaties te integreren. Deze Quick Start laat zien hoe u deze werk stromen kunt ontwerpen en bouwen door Logic apps te maken in Visual Studio en deze apps te implementeren in Azure. Hoewel u deze taken kunt uitvoeren in de Azure Portal, kunt u met Visual Studio uw Logic apps toevoegen aan broncode beheer, verschillende versies publiceren en Azure Resource Manager sjablonen maken voor verschillende implementatie omgevingen.
 

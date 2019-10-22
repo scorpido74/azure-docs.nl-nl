@@ -1,6 +1,6 @@
 ---
-title: Maken en beheren van handelspartnerovereenkomsten - Azure Logic Apps
-description: Maken en beheren van overeenkomsten tussen zakelijke partners met behulp van Azure Logic Apps en Enterprise Integration Pack
+title: Handels partner overeenkomsten-Azure Logic Apps
+description: Overeenkomsten tussen handels partners maken en beheren met behulp van Azure Logic Apps en Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,101 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330310"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680423"
 ---
-# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Maken en beheren van handelspartnerovereenkomsten in Azure Logic Apps
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Handels partner overeenkomsten maken en beheren in Azure Logic Apps
 
-Een [handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*overeenkomst* helpt organisaties en bedrijven naadloos met elkaar communiceren met het definiëren van de te gebruiken tijdens het uitwisselen van de specifieke industriestandaard-protocol berichten van de Business-to-business (B2B). Overeenkomsten bieden algemene voordelen, bijvoorbeeld:
+Een  
+*overeenkomst* voor [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) helpt organisaties en bedrijven naadloos te communiceren met elkaar door het specifieke industrie standaard protocol te definiëren dat moet worden gebruikt bij het uitwisselen van Business-to-Business (B2B)-berichten. Overeenkomsten bieden algemene voor delen, zoals:
 
-* Kunnen organisaties voor het uitwisselen van gegevens met behulp van een bekende indeling.
-* De efficiëntie verbeteren bij het uitvoeren van B2B-transacties.
-* Zijn gemakkelijk te maken, beheren en gebruiken voor het bouwen van zakelijke oplossingen voor integratie.
+* Organisaties in staat stellen om informatie uit te wisselen met een bekende indeling.
+* Verbeter de efficiëntie bij het uitvoeren van B2B-trans acties.
+* Kunt u eenvoudig oplossingen voor bedrijfs integratie maken, beheren en gebruiken.
 
-Dit artikel wordt beschreven hoe u kunt maken van een AS2, EDIFACT of X12 overeenkomst die u gebruiken kunt bij het bouwen van enterprise integratieoplossingen voor B2B-scenario's met behulp van de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) en [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Nadat u een overeenkomst hebt gemaakt, kunt u vervolgens de AS2, EDIFACT of X12 connectors voor het uitwisselen van B2B-berichten.
+In dit artikel wordt beschreven hoe u een AS2-, EDIFACT-of X12-overeenkomst maakt die u kunt gebruiken bij het bouwen van oplossingen voor bedrijfs integratie voor B2B-scenario's met behulp van de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) en [Azure Logic apps](../logic-apps/logic-apps-overview.md). Nadat u een overeenkomst hebt gemaakt, kunt u de connectors AS2, EDIFACT of X12 gebruiken voor het uitwisselen van B2B-berichten.
 
-Zie voor het maken van overeenkomsten voor het uitwisselen van berichten voor RosettaNet [Exchange RosettaNet berichten](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
+Zie [Exchange RosettaNet-berichten](../logic-apps/logic-apps-enterprise-integration-rosettanet.md)voor het maken van overeenkomsten voor het uitwisselen van RosettaNet-berichten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u een Azure-abonnement nog geen [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw overeenkomst en andere B2B-artefacten. Deze integratie-account moet worden gekoppeld aan uw Azure-abonnement.
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) voor het opslaan van uw overeenkomst en andere B2B-artefacten. Dit integratie account moet worden gekoppeld aan uw Azure-abonnement.
 
-* Ten minste twee [handelspartners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gemaakt in uw integratie-account. Een overeenkomst vereist zowel een gastpartner als een hostpartner. Beide partners moeten de kwalificatie van de dezelfde 'bedrijfsidentiteit' gebruiken als de overeenkomst die u maken wilt, zoals AS2, X 12 of EDIFACT.
+* Ten minste twee [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gemaakt in uw integratie account. Een overeenkomst vereist zowel een host-partner als een gast partner. Beide partners moeten dezelfde ' Business Identity '-kwalificatie gebruiken als de overeenkomst die u wilt maken, zoals AS2, X12 of EDIFACT.
 
-* Optioneel: De logische app waar u het gebruik van uw overeenkomst en een trigger die de werkstroom van uw logische app wordt gestart. Als u wilt uw integratieaccount en B2B-artefacten maken, hoeft u niet een logische app. Voordat uw logische app u de B2B-artefacten in uw integratie-account gebruiken kunt, moet u uw integratie-account koppelen aan uw logische app. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Optioneel: de logische app waarvoor u uw overeenkomst wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. Als u alleen uw integratie account en B2B-artefacten wilt maken, hebt u geen logische app nodig. Voordat uw logische app echter de B2B-artefacten in uw integratie account kan gebruiken, moet u uw integratie account koppelen aan uw logische app. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-agreements"></a>Overeenkomsten maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-Selecteer in het hoofdmenu van Azure **alle services**. Typ 'integration' als filter in het zoekvak. Selecteer deze resource in de resultaten: **Integratieaccounts**
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' Integration ' in als uw filter. Selecteer in de resultaten deze resource: **integratie accounts**
 
-   ![Uw integratie-account zoeken](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
+   ![Uw integratie account zoeken](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. Onder **integratieaccounts**, selecteert u de integratieaccount waar u wilt maken van de overeenkomst.
+1. Onder **integratie accounts**selecteert u het integratie account waar u de overeenkomst wilt maken.
 
-   ![Selecteer het integratieaccount waar moet worden gemaakt van de overeenkomst](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
+   ![Het integratie account selecteren waar de overeenkomst moet worden gemaakt](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. In het rechterdeelvenster onder **onderdelen**, kiest u de **overeenkomsten** tegel.
+1. Kies in het rechterdeel venster onder **onderdelen**de tegel **overeenkomsten** .
 
-   ![Kies "Overeenkomsten"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+   ![Kies ' overeenkomsten '](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. Onder **overeenkomsten**, kiest u **toevoegen**. In de **toevoegen** deelvenster bevatten informatie over uw overeenkomst, bijvoorbeeld:
+1. Klik onder **overeenkomsten**op **toevoegen**. Geef in het deel venster **toevoegen** informatie op over uw overeenkomst, bijvoorbeeld:
 
-   ![Kies 'Toevoegen'](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+   ![Kies toevoegen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Eigenschap | Vereist | Value | Beschrijving |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Naam** | Ja | <*agreement-name*> | De naam van uw overeenkomst |
-   | **Overeenkomsttype selecteren** | Ja | **AS2**, **X12**, of **EDIFACT** | Het protocoltype voor uw overeenkomst. Wanneer u uw overeenkomst-bestand maakt, moet het overeenkomsttype overeenkomen met de inhoud van dat bestand. | |  
-   | **Hostpartner** | Ja | <*host-partner-name*> | De hostpartner vertegenwoordigt de organisatie die Hiermee geeft u de overeenkomst |
-   | **Identiteit van de host** | Ja | <*host-partner-identifier*> | De hostpartner-id |
-   | **Gastpartner** | Ja | <*naam van een gast van partner*> | De gastpartner vertegenwoordigt de organisatie die wordt zakendoen met de hostpartner |
-   | **Gastidentiteit** | Ja | <*guest-partner-identifier*> | De gastpartner-id |
-   | **Ontvangstinstellingen** | Varieert | Varieert | Deze eigenschappen kunt u opgeven hoe de hostpartner alle binnenkomende berichten ontvangt van de gastpartner in de overeenkomst. Zie voor meer informatie de betreffende overeenkomsttype selecteren: <p>- [Instellingen voor AS2-bericht](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Instellingen van de EDIFACT-bericht](logic-apps-enterprise-integration-edifact.md) <br>- [Instellingen voor X12 message](logic-apps-enterprise-integration-x12.md) |
-   | **Verzendinstellingen** | Varieert | Varieert | Deze eigenschappen kunt u opgeven hoe de hostpartner alle uitgaande berichten verzendt naar de gastpartner in de overeenkomst. Zie voor meer informatie de betreffende overeenkomsttype selecteren: <p>- [Instellingen voor AS2-bericht](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Instellingen van de EDIFACT-bericht](logic-apps-enterprise-integration-edifact.md) <br>- [Instellingen voor X12 message](logic-apps-enterprise-integration-x12.md) |
+   | **Naam** | Ja | <*overeenkomst-naam* > | De naam voor uw overeenkomst |
+   | **Type overeenkomst** | Ja | **AS2**, **X12**of **EDIFACT** | Het protocol type voor uw overeenkomst. Wanneer u een overeenkomst bestand maakt, moet de inhoud in dat bestand overeenkomen met het overeenkomst type. | |  
+   | **Host-partner** | Ja | <*host-partner naam* > | De host-partner vertegenwoordigt de organisatie die de overeenkomst specificeert |
+   | **Host-id** | Ja | <*host-partner-id* > | De id van de host-partner |
+   | **Gast partner** | Ja | <*gast-partner naam* > | De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner |
+   | **Gast identiteit** | Ja | <*gast-partner-id* > | De id van de gast partner |
+   | **Instellingen voor ontvangen** | Varieert | Varieert | Met deze eigenschappen geeft u op hoe de host-partner alle inkomende berichten van de gast partner in de overeenkomst ontvangt. Zie voor meer informatie het betreffende type overeenkomst: <p>[AS2-bericht instellingen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) -  <br>[EDIFACT-bericht instellingen](logic-apps-enterprise-integration-edifact.md) -  <br>[X12-bericht instellingen](logic-apps-enterprise-integration-x12.md) -  |
+   | **Instellingen verzenden** | Varieert | Varieert | Met deze eigenschappen geeft u op hoe de host-partner alle uitgaande berichten naar de gast partner in de overeenkomst verzendt. Zie voor meer informatie het betreffende type overeenkomst: <p>[AS2-bericht instellingen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) -  <br>[EDIFACT-bericht instellingen](logic-apps-enterprise-integration-edifact.md) -  <br>[X12-bericht instellingen](logic-apps-enterprise-integration-x12.md) -  |
    |||||
 
-1. Wanneer u klaar bent voor het maken van uw overeenkomst op de **toevoegen** pagina, kies **OK**, en Ga terug naar uw integratie-account.
+1. Wanneer u klaar bent met het maken van de overeenkomst, kiest u **OK**op de pagina **toevoegen** en gaat u terug naar uw integratie account.
 
-   De **overeenkomsten** lijst ziet u nu uw nieuwe overeenkomst.
+   In de lijst met **overeenkomsten** wordt nu uw nieuwe overeenkomst weer gegeven.
 
 ## <a name="edit-agreements"></a>Overeenkomsten bewerken
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het hoofdmenu van Azure **alle services**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het hoofd menu van Azure **alle services**.
 
-1. Typ 'integration' als filter in het zoekvak. Selecteer deze resource in de resultaten: **Integratieaccounts**
+1. Voer in het zoekvak ' Integration ' in als uw filter. Selecteer in de resultaten deze resource: **integratie accounts**
 
-1. Onder **integratieaccounts**, selecteert u het integratieaccount met de overeenkomst die u wilt bewerken.
+1. Onder **integratie accounts**selecteert u het integratie account met de overeenkomst die u wilt bewerken.
 
-1. In het rechterdeelvenster onder **onderdelen**, kiest u de **overeenkomsten** tegel.
+1. Kies in het rechterdeel venster onder **onderdelen**de tegel **overeenkomsten** .
 
-1. Onder **overeenkomsten**, selecteert u uw overeenkomst en kies **bewerken**.
+1. Onder **overeenkomsten**selecteert u uw overeenkomst en kiest u **bewerken**.
 
-1. Controleer en sla uw wijzigingen op.
+1. Breng uw wijzigingen aan en sla deze op.
 
 ## <a name="delete-agreements"></a>Overeenkomsten verwijderen
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het hoofdmenu van Azure **alle services**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het hoofd menu van Azure **alle services**.
 
-1. Typ 'integration' als filter in het zoekvak. Selecteer deze resource in de resultaten: **Integratieaccounts**
+1. Voer in het zoekvak ' Integration ' in als uw filter. Selecteer in de resultaten deze resource: **integratie accounts**
 
-1. Onder **integratieaccounts**, selecteert u het integratieaccount met de overeenkomst die u wilt verwijderen.
+1. Onder **integratie accounts**selecteert u het integratie account met de overeenkomst die u wilt verwijderen.
 
-1. In het rechterdeelvenster onder **onderdelen**, kiest u de **overeenkomsten** tegel.
+1. Kies in het rechterdeel venster onder **onderdelen**de tegel **overeenkomsten** .
 
-1. Onder **overeenkomsten**, selecteert u uw overeenkomst en kies **verwijderen**.
+1. Onder **overeenkomsten**selecteert u uw overeenkomst en kiest u **verwijderen**.
 
-1. Bevestig dat u wilt verwijderen van de geselecteerde overeenkomst.
+1. Bevestig dat u de geselecteerde overeenkomst wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [AS2-berichten uitwisselen](logic-apps-enterprise-integration-as2.md)
 * [EDIFACT-berichten uitwisselen](logic-apps-enterprise-integration-edifact.md)
-* [Exchange X12-berichten](logic-apps-enterprise-integration-x12.md)
+* [X12-berichten uitwisselen](logic-apps-enterprise-integration-x12.md)

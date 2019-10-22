@@ -1,6 +1,6 @@
 ---
-title: Beheren van metagegevens van integratie-account artefacten - Azure Logic Apps | Microsoft Docs
-description: Toevoegen of artefact metagegevens ophalen van integratieaccounts in Azure Logic Apps met Enterprise Integration Pack
+title: Meta gegevens van integratie account artefacten beheren-Azure Logic Apps
+description: Meta gegevens voor artefacten toevoegen of ophalen uit integratie accounts in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,103 +8,102 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
-ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8e2daf1de9223766c8cec835f7718007a8cf309
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846134"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679979"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Metagegevens van artefacten in integratieaccounts met Azure Logic Apps en Enterprise Integration Pack beheren
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Meta gegevens van artefacten beheren in integratie accounts met Azure Logic Apps en Enterprise Integration Pack
 
-U kunt aangepaste metagegevens voor artefacten in integratieaccounts definiëren en deze metagegevens ophalen tijdens runtime voor uw logische app te gebruiken. Bijvoorbeeld, kunt u opgeven metagegevens voor artefacten, zoals partners, overeenkomsten, schema's en kaarten - metagegevens voor alle opslaan met behulp van sleutel / waarde-paren. 
+U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accounts en die meta gegevens ophalen tijdens runtime voor de logische app die u wilt gebruiken. U kunt bijvoorbeeld meta gegevens opgeven voor artefacten, zoals partners, overeenkomsten, schema's en kaarten. alle meta gegevens worden opgeslagen met sleutel-waardeparen. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, <a href="https://azure.microsoft.com/free/" target="_blank">meld u dan aan voor een gratis Azure-account</a>.
 
-* Een eenvoudige [integratieaccount](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) waarvoor de artefacten waar u wilt toevoegen van metagegevens, bijvoorbeeld: 
+* Een basis [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met de artefacten waaraan u meta gegevens wilt toevoegen, bijvoorbeeld: 
 
   * [Partner](logic-apps-enterprise-integration-partners.md)
-  * [Agreement](logic-apps-enterprise-integration-agreements.md)
-  * [schema](logic-apps-enterprise-integration-schemas.md)
-  * [Kaart](logic-apps-enterprise-integration-maps.md)
+  * [Licentie](logic-apps-enterprise-integration-agreements.md)
+  * [Schema](logic-apps-enterprise-integration-schemas.md)
+  * [Diagram](logic-apps-enterprise-integration-maps.md)
 
-* Een logische app die gekoppeld aan de metagegevens van de integratie-account en artefact dat u wilt gebruiken. Als uw logische app niet is al gekoppeld, krijgt u informatie [logische apps koppelen aan integratieaccounts](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
+* Een logische app die is gekoppeld aan het integratie account en artefact meta gegevens die u wilt gebruiken. Als uw logische app nog niet is gekoppeld, leert u [hoe u logische apps kunt koppelen aan integratie accounts](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
-  Als u een logische app nog niet hebt, krijgt u informatie [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
-  Voeg de trigger en acties die u gebruiken wilt voor het beheren van metagegevens van artefacten. Of, als u wilt alleen dingen uitproberen, zoals een trigger toevoegen **aanvragen** of **HTTP** aan uw logische app.
+  Als u nog geen logische app hebt, leert u [hoe u logische apps kunt maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Voeg de trigger en acties toe die u wilt gebruiken voor het beheren van meta gegevens van artefacten. Als u alleen maar wilt proberen, voegt u een trigger zoals een **aanvraag** of **http** toe aan uw logische app.
 
-## <a name="add-metadata-to-artifacts"></a>Metagegevens voor artefacten toevoegen
+## <a name="add-metadata-to-artifacts"></a>Meta gegevens toevoegen aan artefacten
 
-1. Gebruik de referenties van uw Azure-account om u aan melden bij het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Zoek en open uw integratieaccount.
+1. Gebruik de referenties van uw Azure-account om u aan melden bij het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Zoek en open uw integratie account.
 
-1. Selecteer het artefact waar u wilt toevoegen, metagegevens en kies **bewerken**. Voer de details van de metagegevens voor dit artefact, bijvoorbeeld:
+1. Selecteer het artefact waaraan u meta gegevens wilt toevoegen en kies **bewerken**. Voer de meta gegevens gegevens voor dat artefact in, bijvoorbeeld:
 
-   ![Metagegevens invoeren](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
+   ![Meta gegevens invoeren](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
 1. Als u klaar bent, kiest u **Done**.
 
-1. U kunt deze metagegevens bekijken in de definitie van JavaScript Object Notation (JSON) voor het integratieaccount **bewerken as JSON** zodat de JSON-editor wordt geopend: 
+1. Als u deze meta gegevens wilt weer geven in de definitie van de JavaScript Object Notation (JSON) voor het integratie account, kiest u **bewerken als JSON** zodat de JSON-editor wordt geopend: 
 
-   ![JSON voor de metagegevens van de partner](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
+   ![JSON voor partner-meta gegevens](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
-## <a name="get-artifact-metadata"></a>Ophalen van metagegevens van artefacten
+## <a name="get-artifact-metadata"></a>Meta gegevens van artefact ophalen
 
-1. Open de logische app die gekoppeld aan de integratieaccount dat u wilt dat in de Azure-portal. 
+1. Open in de Azure Portal de logische app die is gekoppeld aan het gewenste integratie account. 
 
-1. In de Logic App Designer, als u de stap voor het ophalen van metagegevens in de laatste actie of trigger in de werkstroom toevoegt, kiest u **nieuwe stap** > **een actie toevoegen**. 
+1. Als u in de ontwerp functie voor logische apps de stap voor het ophalen van meta gegevens onder de trigger of laatste actie in de werk stroom toevoegt, kiest u **nieuwe stap**  > **een actie toe te voegen**. 
 
-1. Voer in het zoekvak ' integratieaccount'. Kies **Alle** onder het zoekvak. Selecteer deze actie uit de lijst met acties: **Integratie van zoeken naar een artefact - integratie-Account**
+1. Voer in het zoekvak ' integratie account ' in. Kies **Alle** onder het zoekvak. Selecteer in de lijst acties deze actie: **integratie account artefact opzoeken-integratie account**
 
-   ![Selecteer "Integratie zoeken naar een artefact"](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
+   ![Selecteer integratie account artefact opzoeken](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
-1. Geef deze informatie voor het artefact die u wilt zoeken:
+1. Geef deze informatie op voor het artefact dat u wilt zoeken:
 
-   | Eigenschap | Vereist | Value | Description | 
+   | Eigenschap | Verplicht | Waarde | Beschrijving | 
    |----------|---------|-------|-------------| 
-   | **Artefacttype** | Ja | **Schema**, **kaart**, **Partner**, **overeenkomst**, of een aangepast type | Het type voor het artefact dat u wilt | 
-   | **Naam van het assemblyartefact** | Ja | <*naam van het assemblyartefact*> | De naam van het artefact dat u wilt | 
+   | **Type artefact** | Ja | **Schema**, **kaart**, **partner**, **overeenkomst**of aangepast type | Het type voor het gewenste artefact | 
+   | **Artefact naam** | Ja | <*artefact-naam* > | De naam voor het gewenste artefact | 
    ||| 
 
-   Stel bijvoorbeeld dat u wilt ophalen van de metagegevens voor een trading partner artefact:
+   Stel dat u de meta gegevens wilt ophalen voor het artefact van een handels partner:
 
-   ![Artefacttype selecteert en voer de naam van het assemblyartefact](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
+   ![Type artefact selecteren en artefact naam invoeren](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
 
-1. Voeg de actie die u wilt gebruiken voor het verwerken van metagegevens, bijvoorbeeld:
+1. Voeg de actie toe die u wilt voor het verwerken van de meta gegevens, bijvoorbeeld:
 
-   1. Onder de **zoeken naar een artefact integratie** actie, kiest u **volgende stap**, en selecteer **een actie toevoegen**. 
+   1. Kies onder de **Zoek actie integratie account artefacten** **volgende stap**en selecteer **een actie toevoegen**. 
 
-   1. Voer in het zoekvak 'http'. Kies onder het zoekvak **dient te worden**, en selecteer deze actie: **HTTP - HTTP**
+   1. Voer in het zoekvak ' http ' in. Kies in het zoekvak **ingebouwde modules**en selecteer deze actie: **http-http**
 
       ![HTTP-actie toevoegen](media/logic-apps-enterprise-integration-metadata/http-action.png)
 
-   1. Geef informatie voor de metagegevens van artefacten die u wilt beheren. 
+   1. Geef informatie op over de meta gegevens voor artefacten die u wilt beheren. 
 
-      Stel bijvoorbeeld dat u wilt de `routingUrl` metagegevens die eerder in dit onderwerp wordt toegevoegd. Hier volgen de eigenschapswaarden die u kunt opgeven: 
+      Stel dat u de `routingUrl` meta gegevens wilt ophalen die eerder in dit onderwerp worden toegevoegd. Dit zijn de waarden van de eigenschap die u kunt opgeven: 
 
-      | Eigenschap | Vereist | Value | Description | 
+      | Eigenschap | Verplicht | Waarde | Beschrijving | 
       |----------|----------|-------|-------------| 
-      | **Methode** | Ja | <*operation-to-run*> | De HTTP-bewerking uit te voeren op het artefact. Deze actie HTTP gebruikt bijvoorbeeld de **ophalen** methode. | 
-      | **URI** | Ja | <*metadata-location*> | Toegang krijgen tot de `routingUrl` metagegevens waarde van het artefact die u hebt opgehaald, kunt u een expressie, bijvoorbeeld: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Headers** | Nee | <*header-values*> | Een koptekst wordt de uitvoer van de trigger die u wilt doorgeven aan de HTTP-actie. Bijvoorbeeld, om door te geven van de trigger `headers` eigenschapswaarde: u kunt een expressie, bijvoorbeeld: <p>`@triggeroutputs()['headers']` | 
-      | **Hoofdtekst** | Nee | <*body-content*> | Alle andere inhoud die u wilt doorgeven aan de HTTP-actie `body` eigenschap. In dit voorbeeld geeft van het artefact `properties` waarden in de HTTP-actie: <p>1. Klik in de **hoofdtekst** eigenschap, zodat de lijst met dynamische inhoud wordt weergegeven. Als er geen eigenschappen wordt weergegeven, kiest u **meer**. <br>2. Uit de lijst met dynamische inhoud, onder **zoeken naar een artefact integratie**, selecteer **eigenschappen**. | 
+      | **Methode** | Ja | <*bewerking uitvoeren* > | De HTTP-bewerking die op het artefact moet worden uitgevoerd. Deze HTTP-actie maakt bijvoorbeeld gebruik van de **Get** -methode. | 
+      | **URI** | Ja | < *-locatie van meta gegevens* > | Als u toegang wilt krijgen tot de `routingUrl` meta gegevens waarde uit het artefact dat u hebt opgehaald, kunt u een expressie gebruiken, bijvoorbeeld: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Headers** | Nee | <*header-waarden* > | Eventuele header-uitvoer van de trigger die u wilt door geven aan de HTTP-actie. Als u bijvoorbeeld de waarde van de trigger `headers` wilt door geven: u kunt een expressie gebruiken, bijvoorbeeld: <p>`@triggeroutputs()['headers']` | 
+      | **Hoofdtekst** | Nee | <*tekst-inhoud* > | Alle andere inhoud die u wilt door geven via de eigenschap `body` van de HTTP-actie. In dit voor beeld worden de `properties` waarden van het artefact in de HTTP-actie door gegeven: <p>1. Klik in de eigenschap **Body** zodat de lijst met dynamische inhoud wordt weer gegeven. Als er geen eigenschappen worden weer gegeven, kiest u **meer weer geven**. <br>2. Selecteer in de lijst met dynamische inhoud onder **integratie account artefact opzoeken**de optie **Eigenschappen**. | 
       |||| 
 
       Bijvoorbeeld:
 
-      ![Geef waarden en expressies voor HTTP-actie](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
+      ![Waarden en expressies opgeven voor HTTP-actie](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 
-   1. Om te controleren of de informatie die u hebt opgegeven voor de HTTP-actie, JSON-definitie van uw logische app weergeven. Kies op de werkbalk Logic App Designer **codeweergave** , zodat de JSON-definitie van de app wordt weergegeven, bijvoorbeeld:
+   1. Als u de informatie die u hebt ingevoerd voor de HTTP-actie wilt controleren, bekijkt u de JSON-definitie van uw logische app. Kies op de werk balk van de Logic app-ontwerp functie de **code weergave** zodat de JSON-definitie van de app wordt weer gegeven, bijvoorbeeld:
 
       ![JSON-definitie van logische app](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
 
-      Nadat u naar de ontwerper van logische App overschakelt, eventuele expressies die u hebt gebruikt, worden weergegeven omgezet, bijvoorbeeld:
+      Nadat u bent teruggeschakeld naar de ontwerp functie voor logische apps, worden alle expressies die u nu hebt gebruikt, omgezet zoals:
 
-      ![Opgelost expressies in Logic App Designer](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
+      ![Opgeloste expressies in Logic app Designer](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over de overeenkomsten](logic-apps-enterprise-integration-agreements.md)
+* [Meer informatie over overeenkomsten](logic-apps-enterprise-integration-agreements.md)

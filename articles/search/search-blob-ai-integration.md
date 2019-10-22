@@ -1,5 +1,5 @@
 ---
-title: AI gebruiken voor het begrijpen van BLOB-gegevens
+title: AI gebruiken voor het begrijpen van Blob Storage-gegevens
 titleSuffix: Azure Search
 description: Voeg semantische, verwerking van natuurlijke taal en afbeeldings analyse toe aan Azure-blobs met behulp van een AI-pijp lijn in Azure Search.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529375"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678423"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>AI gebruiken voor het begrijpen van BLOB-gegevens
+# <a name="use-ai-to-understand-blob-storage-data"></a>AI gebruiken voor het begrijpen van Blob Storage-gegevens
 
 Gegevens in Azure Blob Storage zijn vaak een verscheidenheid aan ongestructureerde inhoud zoals afbeeldingen, lange tekst, Pdf's en Office-documenten. Door gebruik te maken van de AI-mogelijkheden in Azure Search, kunt u op verschillende manieren waardevolle informatie uit blobs begrijpen en extra heren. Voor beelden van het Toep assen van AI op blob-inhoud zijn:
 
@@ -112,7 +112,8 @@ Een verrijkt document aan het einde van de pijp lijn wijkt af van de oorspronkel
 
 U kunt veel meer doen met AI-verrijking om optimaal gebruik te maken van uw gegevens in Azure Storage, waaronder het combi neren van Cognitive Services op verschillende manieren, en het ontwerpen van aangepaste vaardig heden voor gevallen waarin u geen ervaring hebt met de cognitieve service voor het scenario. Meer informatie vindt u op de onderstaande koppelingen.
 
-> [!div class="nextstepaction"]
-> [Overzicht van AI-verrijking](cognitive-search-concept-intro.md) 
-> [een vaardig heden maken](cognitive-search-defining-skillset.md)
-> [kaart knooppunten in een aantekening structuur](cognitive-search-output-field-mapping.md)
++ [Het uploaden, downloaden en vermelden van blobs met de Azure Portal (Azure Blob-opslag)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Een BLOB-indexer instellen (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Overzicht van AI-verrijking (Azure Search)](cognitive-search-concept-intro.md) 
++ [Een vaardig heden maken (Azure Search)](cognitive-search-defining-skillset.md)
++ [Knoop punten toewijzen in een aantekening structuur (Azure Search)](cognitive-search-output-field-mapping.md)

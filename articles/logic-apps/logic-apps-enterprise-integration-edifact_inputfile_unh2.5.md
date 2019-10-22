@@ -1,6 +1,6 @@
 ---
-title: EDIFACT-berichten met UNH 2.5 segements - Azure Logic Apps verwerken | Microsoft Docs
-description: EDIFACT-documenten met UNH2.5-segmenten in Azure Logic Apps met Enterprise Integration Pack oplossen
+title: UNH 2,5-segmenten in EDIFACT-berichten-Azure Logic Apps
+description: EDIFACT-berichten oplossen met UNH 2.5-segmenten in Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,45 +8,62 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.openlocfilehash: 926c9ebe8675d8b50d4544be813ae0b15492ae35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60681653"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679929"
 ---
-# <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT-documenten met UNH2.5-segmenten in Azure Logic Apps
+# <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT documenten met UNH 2.5-segmenten in Azure Logic Apps verwerken
 
-Wanneer UNH2.5 aanwezig in het EDIFACT-document is, wordt deze gebruikt voor het opzoeken van het schema. 
+Als er een UNH 2.5-segment bestaat in een EDIFACT-document, wordt het segment gebruikt voor het opzoeken van het schema. In dit voor beeld van een EDIFACT-bericht wordt het veld UNH bijvoorbeeld `EAN008`:
 
-Voorbeeld: Het veld UNH **EAN008** in het EDIFACT-bericht  
-UNH + SSDD1 + ORDERS: D: 03B: ONGEDAAN MAKEN:**EAN008**'  
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
-Stappen voor het afhandelen van het bericht 
-1. Het schema bijwerken
-2. Controleer de instellingen van de overeenkomst  
+Voer de volgende stappen uit om dit bericht af te handelen:
+
+1. Het schema bijwerken.
+
+1. Controleer de instellingen van de overeenkomst.
 
 ## <a name="update-the-schema"></a>Het schema bijwerken
-Voor het verwerken van het bericht, moet u een schema met de naam van het hoofdknooppunt UNH2.5 implementeren.  Voor een voorbeeld gegeven, de naam van het schema-hoofdmap zou worden **EFACT_D03B_ORDERS_EAN008**  
 
-Voor elke D03B_ORDERS met een andere UNH2.5-segment, zou u moet een afzonderlijk schema implementeren.  
+Als u het bericht wilt verwerken, moet u een schema implementeren dat de naam van het UNH 2.5-hoofd knooppunt bevat. De naam van het schema root voor het UNH veld voor beeld wordt bijvoorbeeld `EFACT_D03B_ORDERS_EAN008`. Voor elke `D03B_ORDERS` met een ander UNH 2.5-segment moet u een afzonderlijk schema implementeren.
 
-## <a name="add-schema-to-the-edifact-agreement"></a>Schema toevoegen aan de EDIFACT-overeenkomst
-### <a name="edifact-decode"></a>EDIFACT-decodering
-Als u wilt het binnenkomende bericht decoderen, configureert u het schema in het EDIFACT overeenkomst ontvangstinstellingen
-1. Het schema toevoegen aan het integratieaccount    
-2. Configureren van het schema in het EDIFACT-overeenkomst ontvangen instellingen. 
-3. Selecteer de EDIFACT-overeenkomst en klik op **bewerken as JSON**.  UNH2.5-waarde toevoegen in de overeenkomst ontvangen **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
+## <a name="add-schema-to-edifact-agreement"></a>Schema toevoegen aan EDIFACT-overeenkomst
 
-### <a name="edifact-encode"></a>EDIFACT-codering
-Als u wilt het binnenkomende bericht coderen, configureert u het schema in de verzendinstellingen van de EDIFACT-overeenkomst
-1. Het schema toevoegen aan het integratieaccount    
-2. Configureer het schema in de verzendinstellingen van de EDIFACT-overeenkomst. 
-3. Selecteer de EDIFACT-overeenkomst en klik op **bewerken as JSON**.  UNH2.5-waarde toevoegen in de overeenkomst verzenden **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
+### <a name="edifact-decode"></a>EDIFACT decoderen
+
+Als u het binnenkomende bericht wilt decoderen, moet u het schema instellen in de instellingen voor het ontvangen van de EDIFACT-overeenkomst:
+
+1. Open uw integratie account in de [Azure Portal](https://portal.azure.com).
+
+1. Voeg het schema toe aan uw integratie account.
+
+1. Configureer het schema in de receive-instellingen van de EDIFACT-overeenkomst.
+
+1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de `schemaReferences` sectie van de ontvangst overeenkomst:
+
+   ![UNH 2.5 toevoegen om overeenkomst te ontvangen](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
+
+### <a name="edifact-encode"></a>EDIFACT-code ring
+
+Als u het binnenkomende bericht wilt coderen, configureert u het schema in de EDIFACT-overeenkomst instellingen verzenden
+
+1. Open uw integratie account in de [Azure Portal](https://portal.azure.com).
+
+1. Voeg het schema toe aan uw integratie account.
+
+1. Configureer het schema in de instellingen voor verzenden van de EDIFACT-overeenkomst.
+
+1. Selecteer EDIFACT Agreement en klik op **bewerken als JSON**.  UNH 2.5-waarde toevoegen in de overeenkomst **SchemaReferences** verzenden
+
+1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de sectie `schemaReferences` van de gebruiksrecht overeenkomst:
+
+   ![UNH 2.5 toevoegen aan het verzenden van een overeenkomst](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over de integratie-account overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md "meer informatie over enterprise integration-overeenkomsten")  
+
+* Meer informatie over [integratie-account overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md)

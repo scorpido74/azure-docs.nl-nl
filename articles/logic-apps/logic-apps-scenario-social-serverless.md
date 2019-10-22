@@ -1,5 +1,5 @@
 ---
-title: Serverloze scenario-het dash board klanten inzichten maken met Azure-Services | Microsoft Docs
+title: Het dash board voor klant inzichten maken-Azure Logic Apps
 description: Het beheren van feedback van klanten, gegevens van sociale media en meer door het maken van een dash board van klanten met Azure Logic Apps en Azure Functions
 services: logic-apps
 ms.service: logic-apps
@@ -7,17 +7,16 @@ ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c9c5cf9c56f2e22faa973c983c6fd81733119daa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164867"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680110"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Het streaming-dash board voor klanten inzichten maken met Azure Logic Apps en Azure Functions
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Maak een streaming-dash board voor klanten inzichten met Azure Logic Apps en Azure Functions
 
 Azure biedt [serverloze](https://azure.microsoft.com/solutions/serverless/) hulpprogram ma's waarmee u snel apps kunt bouwen en hosten in de Cloud, zonder dat u rekening moet houden met de infra structuur. In deze zelf studie kunt u een dash board maken dat de feedback van klanten activeert, de feedback met machine learning analyseert en inzichten publiceert naar een bron, zoals Power BI of Azure Data Lake.
 
@@ -60,10 +59,10 @@ Als u de sentiment achter een bepaalde tekst wilt detecteren, kunt u [Azure Cogn
 
 Nadat u de Tweet-gegevens en inzichten over de Tweet hebt opgehaald, kunt u nu verschillende andere relevante connectors en de bijbehorende acties gebruiken:
 
-* **Power bi-rijen toevoegen aan streaming gegevensset**: Inkomende Tweets weer geven op een Power BI-dash board.
-* **Azure data Lake-bestand toevoegen**: Voeg klant gegevens toe aan een Azure Data Lake gegevensset die in analyse taken moet worden meegenomen.
+* **Power bi-rijen toevoegen aan streaming-gegevensset**: binnenkomende tweets op een Power bi dash board weer geven.
+* **Azure data Lake-bestand**toevoegen: Voeg klant gegevens toe aan een Azure data Lake-gegevensset die in analyse taken moet worden meegenomen.
 * **SQL-rijen toevoegen**: Sla gegevens op in een Data Base om deze later op te halen.
-* **Toegestane vertraging-bericht verzenden**: Een vertragings kanaal op de hoogte stellen over negatieve feedback die mogelijk actie vereist.
+* **Toegestane vertraging-bericht verzenden**: een vertragings kanaal melden over negatieve feedback waarvoor mogelijk actie is vereist.
 
 U kunt ook een Azure-functie maken, zodat u aangepaste verwerking voor uw gegevens kunt uitvoeren. 
 

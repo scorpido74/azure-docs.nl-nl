@@ -1,5 +1,5 @@
 ---
-title: Logische app-resources verplaatsen tussen abonnementen, resource groepen of regio's-Azure Logic Apps
+title: Logische apps verplaatsen tussen abonnementen, resource groepen of regio's-Azure Logic Apps
 description: Logische apps of integratie accounts migreren naar andere Azure-abonnementen, resource groepen of locaties (regio's)
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737496"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679111"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logische app-resources migreren naar andere Azure-abonnementen, resource groepen of regio's
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logische app-resources verplaatsen naar andere Azure-abonnementen, resource groepen of regio's
 
 Als u uw logische app of gerelateerde resources wilt verplaatsen naar een ander Azure-abonnement, een resource groep of een andere regio, hebt u verschillende manieren om deze taken uit te voeren, zoals de Azure Portal, Azure PowerShell, Azure CLI en REST API. Lees de volgende overwegingen voordat u resources verplaatst: 
 
@@ -40,7 +40,7 @@ Als u een resource, zoals een logische app of een integratie account, wilt verpl
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)de logische app-resource die u wilt verplaatsen en selecteer deze.
 
-1. Op de overzichts pagina van de resource, naast **abonnement**, selecteert u de **wijzigings** koppeling.
+1. Op de **overzichts** pagina van de resource, naast **abonnement**, selecteert u de **wijzigings** koppeling.
 
 1. Selecteer op de pagina **resources verplaatsen** de logische app-resource en eventuele gerelateerde resources die u wilt verplaatsen.
 
@@ -82,12 +82,12 @@ Wanneer u een logische app naar een andere regio wilt verplaatsen, zijn uw optie
 
 Zie de volgende onderwerpen voor meer informatie over implementatie sjablonen voor Logic apps:
 
-* [Krijgt Implementatie voor Azure Logic Apps automatiseren door gebruik te maken van Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Uw logische app zoeken, openen en downloaden van de Azure Portal in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Azure Resource Manager sjablonen maken voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Azure Resource Manager sjablonen voor Azure Logic Apps implementeren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Gerelateerde resources
+### <a name="related-resources"></a>Gerelateerde bronnen
 
 Sommige Azure-resources, zoals on-premises gegevens gateway resources in azure, kunnen bestaan in een regio die verschilt van de Logic apps die gebruikmaken van deze resources. Andere Azure-resources, zoals gekoppelde integratie accounts, moeten zich echter in dezelfde regio bevinden als uw logische apps. Zorg er op basis van uw scenario voor dat uw Logic apps toegang hebben tot de resources die door uw apps in dezelfde regio worden verwacht.
 

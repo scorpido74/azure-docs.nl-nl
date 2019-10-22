@@ -1,6 +1,6 @@
 ---
-title: Berichten verzenden en ontvangen met Azure Service Bus-Azure Logic Apps
-description: Enter prise Cloud Messa ging instellen met behulp van Azure Service Bus en Azure Logic Apps
+title: Berichten uitwisselen met Azure Service Bus-Azure Logic Apps
+description: Berichten verzenden en ontvangen met behulp van Azure Service Bus in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,15 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 tags: connectors
-ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120970"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679186"
 ---
-# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps met Azure Service Bus
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
 Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) -connector kunt u geautomatiseerde taken en werk stromen maken waarmee gegevens worden overgedragen, zoals verkoop-en inkoop orders, journalen en voorraad verplaatsingen tussen toepassingen voor uw organisatie. Met de connector worden berichten niet alleen bewaakt, verzonden en beheerd, maar worden ook acties uitgevoerd met wacht rijen, sessies, onderwerpen, abonnementen, enzovoort, bijvoorbeeld:
 
@@ -49,7 +48,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -64,7 +63,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
       ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Als u wilt controleren of uw Connection String is gekoppeld aan uw service bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de `EntityPath`Connection String voor de  para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
+   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de `EntityPath`  parameter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger toevoegen
 
@@ -162,4 +161,4 @@ De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een ser
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

@@ -1,23 +1,18 @@
 ---
 title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | Microsoft Docs
 description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor analyse van gebruikers gedrag voor uw ASP.NET-website, die on-premises of in azure wordt gehost.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 73f62ff8c95fae694a43df48aa99b696fb05d131
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 05/08/2019
+ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916262"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677678"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
@@ -34,18 +29,18 @@ Als u Application Insights wilt toevoegen aan uw ASP.NET-website, moet u het vol
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="ide"></a>Stap 1: De Application Insights SDK toevoegen
+## <a name="ide"></a> Stap 1: de Application Insights-SDK toevoegen
 
 > [!IMPORTANT]
 > De scherm afbeeldingen in dit voor beeld zijn gebaseerd op Visual Studio 2017 versie 15.9.9 en hoger. De ervaring om Application Insights toe te voegen, is afhankelijk van zowel de versie van Visual Studio als het sjabloon type ASP.NET. Oudere versies kunnen alternatieve tekst bevatten, zoals "Configure Application Insights".
 
-Klik met de rechter muisknop op de naam van uw web-app in het Solution Explorer en kies **toevoegen** > **Application Insights Telemetry**
+Klik met de rechter muisknop op de naam van uw web-app in de Solution Explorer en kies  >  **toevoegen** **Application Insights Telemetry**
 
 ![Schermopname van Solution Explorer waarin Application Insights is gemarkeerd](./media/asp-net/add-telemetry-new.png)
 
 (Afhankelijk van de Application Insights-SDK-versie wordt u mogelijk gevraagd om een upgrade uit te voeren naar de meest recente SDK-versie. Als u hierom wordt gevraagd, selecteert u **SDK bijwerken**.)
 
-![Afdruk Er is een nieuwe versie van de micro soft Application Insights SDK beschikbaar. SDK bijwerken is gemarkeerd](./media/asp-net/0002-update-sdk.png)
+![Schermopname: Er is een nieuwe versie van Microsoft Application Insights-SDK beschikbaar. SDK bijwerken is gemarkeerd](./media/asp-net/0002-update-sdk.png)
 
 Application Insights-configuratiescherm:
 
@@ -59,20 +54,20 @@ Als u een resourcegroep of locatie wilt instellen voor het opslaan van uw gegeve
 
 ![Schermopname van de pagina Uw app registreren bij Application Insights](./media/asp-net/00005-register-ed.png)
 
- Selecteer **project** > **Manage NuGet** > **packages Bron: nuget.org** > Controleer of u de laatste stabiele versie van de Application Insights SDK hebt.
+ Selecteer **Project**  > **NuGet-pakketten te beheren**  > **pakket Bron: nuget.org** > Controleer of u de laatste stabiele versie van de Application Insights SDK hebt.
 
  Er wordt telemetrie verzonden naar [Azure Portal](https://portal.azure.com), zowel tijdens de foutopsporing als na het publiceren van de app.
 > [!NOTE]
 > Als u geen telemetrie naar de portal wilt verzenden tijdens de foutopsporing, voegt u de Application Insights SDK toe aan de app, maar configureert u geen resource in de portal. U kunt de telemetrie in Visual Studio bekijken tijdens de foutopsporing. U kunt later terugkeren naar deze configuratiepagina, of u kunt wachten tot de app is geïmplementeerd en [telemetrie inschakelen tijdens runtime](../../azure-monitor/app/monitor-performance-live-website-now.md).
 
-## <a name="run"></a>Stap 2: Uw app uitvoeren
+## <a name="run"></a> Stap 2: uw app uitvoeren
 Voer uw app uit met F5. Open verschillende pagina's om telemetrie te genereren.
 
 In Visual Studio ziet u het aantal gebeurtenissen dat is vastgelegd in een logboek.
 
 ![Schermopname van Visual Studio. Tijdens het opsporen van fouten wordt de knop Application Insights weergegeven.](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>Stap 3: Uw telemetrie weer geven
+## <a name="step-3-see-your-telemetry"></a>Stap 3: uw telemetrie weergeven
 U ziet uw telemetrie in Visual Studio of in de Application Insights-webportal. Zoek telemetrie in Visual Studio om fouten in de app op te sporen. Bewaak de prestaties en het gebruik in de webportal wanneer het systeem live is. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>De telemetrie bekijken in Visual Studio
@@ -101,7 +96,7 @@ De portal wordt geopend met een weergave van de telemetrie van uw app.
 
 Klik in de portal op een tegel of grafiek om meer details te bekijken.
 
-## <a name="step-4-publish-your-app"></a>Stap 4: Uw app publiceren
+## <a name="step-4-publish-your-app"></a>Stap 4: uw app publiceren
 Publiceer uw app op de IIS-server of op Azure. Bekijk de livestream met metrische gegevens in [Live Metrics Stream](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) om te controleren of alles goed werkt.
 
 Uw telemetrie bouwt op in de Application Insights Portal, waar u metrische gegevens kunt controleren, uw telemetrie doorzoekt. U kunt ook de krachtige [Kusto-query taal](/azure/kusto/query/) gebruiken om het gebruik en de prestaties te analyseren of om specifieke gebeurtenissen te zoeken.
@@ -150,8 +145,8 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 
 ### <a name="alerts"></a>Waarschuwingen
 
-* [Beschikbaarheids testen](../../azure-monitor/app/monitor-web-app-availability.md): Maak tests om ervoor te zorgen dat uw site zichtbaar is op het web.
-* [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): Deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
+* [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md): maak tests om ervoor te zorgen dat uw site zichtbaar is op internet.
+* [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
 * [Metrische waarschuwingen](../../azure-monitor/app/alerts.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
 
 ### <a name="automation"></a>Automation
