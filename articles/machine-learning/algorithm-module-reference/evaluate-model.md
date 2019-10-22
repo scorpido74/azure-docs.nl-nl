@@ -1,5 +1,5 @@
 ---
-title: 'Model evalueren: Module verwijzing'
+title: 'Model evalueren: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module evaluate model in Azure Machine Learning service om de nauw keurigheid van een getraind model te meten.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128854"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693808"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -30,7 +30,7 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 
 > [!TIP]
-> Als u geen ervaring hebt met het model, raden we u aan de video serie door Dr. Stephen Elston, als onderdeel van de [machine learning cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
+> Als u geen ervaring hebt met het model, kunt u het beste de video serie door Dr. Stephen Elston als onderdeel van de [machine learning cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
 
 
 Er zijn drie manieren om de module **Evaluate model** te gebruiken:
@@ -44,11 +44,11 @@ Er zijn drie manieren om de module **Evaluate model** te gebruiken:
 Als u een model wilt evalueren, moet u een gegevensset verbinden die een set van invoer kolommen en scores bevat.  Als er geen andere gegevens beschikbaar zijn, kunt u de oorspronkelijke gegevensset gebruiken.
 
 1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) met de invoer van een **evaluatie model**. 
-2. Klik op **model module evalueren** en voer het experiment uit om de evaluatie scores te genereren.
+2. Klik op **model module evalueren** en voer de pijp lijn uit om de evaluatie scores te genereren.
 
 ## <a name="use-testing-data"></a>Test gegevens gebruiken
 
-Een veelvoorkomend scenario in machine learning is het scheiden van uw oorspronkelijke gegevensset in trainings-en test gegevens sets, [](./split-data.md) met behulp van de gesplitste module of de [partitie-en voorbeeld](./partition-and-sample.md) module. 
+Een veelvoorkomend scenario in machine learning is het scheiden van uw oorspronkelijke gegevensset in trainings-en test gegevens sets, met behulp van de [gesplitste](./split-data.md) module of de [partitie-en voorbeeld](./partition-and-sample.md) module. 
 
 1. Verbind de Score van de **gescoorde gegevensset** van het [score model](score-model.md) met de invoer van een **evaluatie model**. 
 2. Verbind de uitvoer van de module voor gesplitste gegevens die de test gegevens bevat naar de rechter invoer van het **Evalueer model**.
@@ -66,7 +66,7 @@ Deze functie is handig omdat u de resultaten van twee verschillende modellen op 
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt:
+Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt het volgende doen:
 
 + Sla de resultaten op als een gegevensset, zodat u gemakkelijker kunt analyseren met andere hulpprogram ma's
 + Een visualisatie in de interface genereren
@@ -76,13 +76,13 @@ Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in
 
 De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee cluster modellen die zijn gebouwd op dezelfde gegevens, maar met verschillende para meters.  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![AML&#95;-Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
 Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer u scores van twee regressie modellen of twee classificatie modellen hebt vergeleken. De gehele presentatie is echter hetzelfde. 
 
 ## <a name="metrics"></a>Metrische gegevens
 
-In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het evaluate- **model**:
+In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model**:
 
 + [classificatie modellen](#bkmk_classification)
 + [regressie modellen](#bkmk_regression)

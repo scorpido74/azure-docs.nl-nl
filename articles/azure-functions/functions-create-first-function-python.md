@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 03b8e12d63ba84b4e20d7263f1c2ecb8d912936d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203138"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693353"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Een door HTTP geactiveerde functie maken in azure
 
@@ -26,7 +26,7 @@ Dit artikel is de eerste van twee python-Quick starts voor Azure Functions. Nada
 
 Voordat u begint, moet u het volgende doen:
 
-+ Installeer [python 3.6. x](https://www.python.org/downloads/).
++ [Python 3.6.8](https://www.python.org/downloads/)installeren. Deze versie van python wordt gecontroleerd met functies. 3,7 en latere versies worden nog niet ondersteund.
 
 + Installeer [Azure functions core tools](./functions-run-local.md#v2) versie 2.7.1575 of een latere versie.
 
@@ -59,7 +59,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-Nu u de virtuele omgeving hebt geactiveerd, voert u de resterende opdrachten uit. Voer `deactivate`uit om te profiteren van de virtuele omgeving.
+Nu u de virtuele omgeving hebt geactiveerd, voert u de resterende opdrachten uit. Als u van de virtuele omgeving wilt profiteren, voert u `deactivate` uit.
 
 ## <a name="create-a-local-functions-project"></a>Een project met lokale functies maken
 
@@ -101,11 +101,11 @@ Een functie toevoegen aan het nieuwe project.
 
 Met deze opdrachten maakt u een submap met de naam _http trigger_. Het bevat de volgende bestanden:
 
-* *Function. json*: configuratie bestand dat de functie, trigger en andere bindingen definieert. U ziet dat in dit bestand de waarde voor `scriptFile` verwijst naar het bestand met de functie en de `bindings` matrix definieert de aanroep-en bindingen.
+* *Function. json*: configuratie bestand dat de functie, trigger en andere bindingen definieert. U ziet dat in dit bestand de waarde voor `scriptFile` verwijst naar het bestand met de functie en de `bindings`-matrix definieert de aanroep-en bindingen.
 
-    Elke binding vereist een richting, type en een unieke naam. De http-trigger heeft een invoer binding van [`httpTrigger`](functions-bindings-http-webhook.md#trigger) het type en de uitvoer [`http`](functions-bindings-http-webhook.md#output)binding van het type.
+    Elke binding vereist een richting, type en een unieke naam. De HTTP-trigger heeft een invoer binding van het type [`httpTrigger`](functions-bindings-http-webhook.md#trigger) en de uitvoer binding van het type [`http`](functions-bindings-http-webhook.md#output).
 
-* *init.py\_: script bestand dat uw door http geactiveerde functie is.\_ \_ \_* U ziet dat dit script een standaard `main()`waarde heeft. HTTP-gegevens van de trigger worden door gegeven aan de `req` functie `binding parameter`met behulp van de naam. De `req`, die is gedefinieerd in function. json, is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* *\_ \_init \_ \_. py*: script bestand dat uw door http geactiveerde functie is. U ziet dat dit script een standaard `main()` heeft. HTTP-gegevens van de trigger worden door gegeven aan de functie met behulp van de `req` met de naam `binding parameter`. De `req`, die is gedefinieerd in function. json, is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Het retour object, gedefinieerd als `$return` in *Function. json*, is een instantie van de [klasse Azure. functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure functions HTTP-triggers en-bindingen](functions-bindings-http-webhook.md)voor meer informatie.
 
@@ -169,10 +169,10 @@ Nu u de functie lokaal hebt uitgevoerd, kunt u de functie-app en andere vereiste
 
 Een functie-app biedt een omgeving voor het uitvoeren van de functie code. U kunt er functies mee groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen.
 
-Voer de volgende opdracht uit. Vervang `<APP_NAME>` door een unieke naam voor de functie-app. Vervang `<STORAGE_NAME>` door de naam van een opslag account. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. Deze naam moet uniek zijn in alle apps in Azure.
+Voer de volgende opdracht uit. Vervang `<APP_NAME>` door een unieke naam voor de functie-app. Vervang `<STORAGE_NAME>` door de naam van het opslag account. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. Deze naam moet uniek zijn in alle apps in Azure.
 
 > [!NOTE]
-> U kunt geen Linux-en Windows-apps hosten in dezelfde resource groep. Als u een bestaande resource groep hebt met `myResourceGroup` de naam met een Windows-functie-app of web-app, moet u een andere resource groep gebruiken.
+> U kunt geen Linux-en Windows-apps hosten in dezelfde resource groep. Als u een bestaande resource groep hebt met de naam `myResourceGroup` met een Windows-functie-app of web-app, moet u een andere resource groep gebruiken.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
@@ -192,7 +192,7 @@ Nadat u de functie-app in azure hebt gemaakt, kunt u de opdracht [func Azure fun
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Met `--build remote` de optie bouwt u uw python-project op afstand in azure van de bestanden in het implementatie pakket. 
+Met de optie `--build remote` bouwt u uw python-project op afstand in azure van de bestanden in het implementatie pakket. 
 
 U ziet uitvoer die vergelijkbaar is met het volgende bericht. Het is hier afgekapt, zodat u het kunt lezen:
 
@@ -210,7 +210,7 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-U kunt de `Invoke url` waarde voor uw `HttpTrigger` en gebruiken om de functie in azure te controleren. De URL bevat een `code` query teken reeks waarde die uw functie sleutel is, waardoor het voor anderen moeilijk is om het eind punt van de http-trigger aan te roepen in Azure.
+U kunt de `Invoke url` waarde voor uw `HttpTrigger` kopiëren en gebruiken om de functie in azure te controleren. De URL bevat een `code` query teken reeks waarde die uw functie sleutel, waardoor het voor anderen moeilijk is om het eind punt van de HTTP-trigger aan te roepen in Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens hand matig invoeren: Module verwijzing'
+title: 'Gegevens hand matig invoeren: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module gegevens hand matig invoeren in Azure Machine Learning service om een kleine gegevensset te maken door waarden te typen. De gegevensset kan meerdere kolommen bevatten.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128844"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693165"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
 
@@ -32,7 +32,7 @@ Deze module kan handig zijn in scenario's zoals deze:
 
 ## <a name="enter-data-manually"></a>Gegevens handmatig invoeren 
   
-1.  Voeg de module [gegevens hand matig invoeren](./enter-data-manually.md) toe aan uw experiment. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in azure machine learning. 
+1.  Voeg de module [gegevens hand matig invoeren](./enter-data-manually.md) toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in azure machine learning. 
   
 2.  Selecteer een van de volgende opties voor **DataFormat**. Deze opties bepalen hoe de gegevens die u opgeeft, moeten worden geparseerd. De vereisten voor elke indeling verschillen aanzienlijk, dus zorg ervoor dat u de verwante onderwerpen leest.  
   
@@ -48,21 +48,21 @@ Deze module kan handig zijn in scenario's zoals deze:
   
 3.  Klik in het tekstvak **Data** om te beginnen met het invoeren van gegevens. Voor de volgende indelingen is speciale aandacht vereist:  
   
-    - **CSV**:  Als u meerdere kolommen wilt maken, plakt u een door komma's gescheiden tekst of typt u meerdere kolommen met komma's tussen velden.
+    - **CSV**: als u meerdere kolommen wilt maken, plakt u een door komma's gescheiden tekst of typt u meerdere kolommen met komma's tussen velden.
   
         Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
   
         Als u deze optie uitschakelt, worden de kolommen namen, Kol1, col2, enzovoort, gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
   
-    - **TSV**: Als u meerdere kolommen wilt maken, plakt u een door tabs gescheiden tekst of typt u meerdere kolommen met tabs tussen velden.  
+    - **TSV**: als u meerdere kolommen wilt maken, plakt u een door tabs gescheiden tekst of typt u meerdere kolommen met tabs tussen velden.  
   
         Als u de optie **HasHeader** selecteert, kunt u de eerste rij met waarden gebruiken als de kolomkop.  
   
         Als u deze optie uitschakelt, worden de kolommen namen, Kol1, col2, enzovoort, gebruikt. U kunt later kolom namen toevoegen of wijzigen met behulp van [meta gegevens bewerken](./edit-metadata.md).  
   
-    -   **ARFF**:  Plakken in een bestaand ARFF-indelings bestand. Als u waarden rechtstreeks typt, moet u de optionele header en de vereiste kenmerk velden toevoegen aan het begin van de gegevens. 
+    -   **ARFF**: plakken in een bestaand ARFF-indelings bestand. Als u waarden rechtstreeks typt, moet u de optionele header en de vereiste kenmerk velden toevoegen aan het begin van de gegevens. 
     
-        De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou zijn `SampleText`.
+        De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou worden `SampleText`.
     
         ```text
         % Title: SampleText.ARFF  
@@ -99,7 +99,7 @@ Deze module kan handig zijn in scenario's zoals deze:
   
 5.  Klik met de rechter muisknop op de module en selecteer **uit te voeren selectie** voor het parseren van de gegevens en laad deze in uw werk ruimte als een gegevensset.  
   
-     Als u de gegevensset wilt weer geven, klikt u opde uitvoer poort en selecteert u visualiseren.  
+     Als u de gegevensset wilt weer geven, klikt u op de uitvoer poort en selecteert u **visualiseren**.  
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

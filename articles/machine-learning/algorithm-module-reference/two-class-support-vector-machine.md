@@ -1,5 +1,5 @@
 ---
-title: 'Vector computer met twee klassen ondersteuning: Module verwijzing'
+title: '2-klasse support vector machine: module verwijzing'
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de computer module voor **ondersteuning van twee klassen** in azure machine learning service om een model te maken dat is gebaseerd op het algoritme van de ondersteunings vector machine.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128310"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692608"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van twee klassen
 
@@ -38,11 +38,11 @@ Voor de voor spelling wijst het SVM-algoritme nieuwe voor beelden toe aan één 
 
 Voor dit model type wordt aanbevolen dat u de gegevensset normaliseert voordat u deze gebruikt om de classificatie te trainen.
   
-1.  Voeg de **machine module met twee klasse-** ondersteunings vectoren toe aan uw experiment.  
+1.  Voeg de **machine module met twee klasse-ondersteunings vectoren** toe aan uw pijp lijn.  
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
+    -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
 
 3.  Voor **aantal herhalingen**typt u een getal dat het aantal iteraties aanduidt dat wordt gebruikt bij het bouwen van het model.  
   
@@ -52,7 +52,7 @@ Voor dit model type wordt aanbevolen dat u de gegevensset normaliseert voordat u
   
      Deze regularisatie-coëfficiënt kan worden gebruikt om het model af te stemmen. Grotere waarden bestraffen complexere modellen.  
   
-5.  Selecteer de optie voor het normaliseren van **functies**als u functies vóór de training wilt normaliseren.
+5.  Selecteer de optie voor het **normaliseren van functies**als u functies vóór de training wilt normaliseren.
   
      Als u normalisatie toepast voordat de training wordt toegepast, worden gegevens punten gecentreerd op het gemiddelde en geschaald om één eenheid van standaard afwijking te hebben.
   
@@ -67,13 +67,13 @@ Voor dit model type wordt aanbevolen dat u de gegevensset normaliseert voordat u
     -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .
   
 
-10. Voer het experiment uit.
+10. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training, kliktu met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u visualiseren.
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u **visualiseren**.
 
 + Als u de getrainde modellen wilt gebruiken om voor spellingen te doen, verbindt u het getrainde model met de module [score model](score-model.md) .
 

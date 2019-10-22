@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265829"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692178"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een cognitieve Zoek pijplijn
 
 Een [cognitieve Zoek pijp lijn](cognitive-search-concept-intro.md) voor het indexeren in azure Search kan worden samengesteld op basis van [vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) die u persoonlijk maakt en toevoegt aan de pijp lijn. In dit artikel leert u hoe u een aangepaste vaardigheid maakt waarmee een interface wordt weer gegeven, zodat deze kan worden opgenomen in een cognitieve Zoek pijplijn. 
 
-Het bouwen van een aangepaste vaardigheid biedt een manier om trans formaties die uniek zijn voor uw inhoud, in te voegen. Een aangepaste vaardigheid wordt onafhankelijk uitgevoerd, waarbij de gewenste verrijkings stap wordt toegepast. U kunt bijvoorbeeld veld-specifieke aangepaste entiteiten definiëren en aangepaste classificatie modellen bouwen om onderscheid te maken tussen zakelijke en financiële contracten en documenten, of u kunt een vaardigheid voor spraak herkenning toevoegen om diep gaande geluids bestanden voor relevante inhoud te bereiken. Voor een stapsgewijs voor beeld, Zie [voor beeld: Een aangepaste vaardigheid maken voor cognitieve Zoek](cognitive-search-create-custom-skill-example.md)opdrachten.
+Het bouwen van een aangepaste vaardigheid biedt een manier om trans formaties die uniek zijn voor uw inhoud, in te voegen. Een aangepaste vaardigheid wordt onafhankelijk uitgevoerd, waarbij de gewenste verrijkings stap wordt toegepast. U kunt bijvoorbeeld veld-specifieke aangepaste entiteiten definiëren en aangepaste classificatie modellen bouwen om onderscheid te maken tussen zakelijke en financiële contracten en documenten, of u kunt een vaardigheid voor spraak herkenning toevoegen om diep gaande geluids bestanden voor relevante inhoud te bereiken. Voor een stapsgewijs voor beeld raadpleegt [u voor beeld: een aangepaste vaardigheid maken voor cognitieve Zoek opdrachten](cognitive-search-create-custom-skill-example.md).
 
  Welke aangepaste capaciteit u nodig hebt, er is een eenvoudige en heldere interface voor het koppelen van een aangepaste vaardigheid aan de rest van de verrijkings pijplijn. De enige vereiste voor insluiting in een [vaardig heden](cognitive-search-defining-skillset.md) is de mogelijkheid om invoer te accepteren en uitvoer te verzenden op manieren die kunnen worden gebruikt binnen de vaardig heden als geheel. De focus van dit artikel bevindt zich in de invoer-en uitvoer indelingen die de verrijkings pijplijn nodig heeft.
 
@@ -36,7 +36,7 @@ Aangepaste vaardigheids eindpunten voor WebAPI op standaard time-out als ze geen
 
 Momenteel is het enige mechanisme voor interactie met een aangepaste vaardigheid via een web API-interface. De Web-API moet voldoen aan de vereisten die in deze sectie worden beschreven.
 
-### <a name="1--web-api-input-format"></a>1.  Invoer indeling voor web-API
+### <a name="1--web-api-input-format"></a>1. Web-API-invoer indeling
 
 De Web-API moet een matrix accepteren met records die moeten worden verwerkt. Elke record moet een ' eigenschappen verzameling ' bevatten die de invoer is van uw web-API. 
 
@@ -81,7 +81,7 @@ Als u het voor beeld meer wilt doen, moet uw web-API aanvragen verwachten die er
 ```
 In werkelijkheid kan uw service worden aangeroepen met honderden of duizenden records in plaats van alleen de drie die hier worden weer gegeven.
 
-### <a name="2-web-api-output-format"></a>2. Indeling van de Web-API-uitvoer
+### <a name="2-web-api-output-format"></a>2. Web API-uitvoer indeling
 
 De indeling van de uitvoer is een set records met een *RecordID*en een eigenschappen verzameling 
 
@@ -154,7 +154,8 @@ Wanneer u een web API-verrijker maakt, kunt u HTTP-headers en-para meters beschr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ [Voorbeeld: Een aangepaste vaardigheid maken voor cognitieve zoek acties](cognitive-search-create-custom-skill-example.md)
++ [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://aka.ms/powerskills)
++ [Voor beeld: een aangepaste vaardigheid maken voor cognitieve zoek acties](cognitive-search-create-custom-skill-example.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

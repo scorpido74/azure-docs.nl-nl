@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999940"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692933"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -38,9 +38,9 @@ Verken en bereid gegevens op, Train en test modellen en implementeer ze met uitg
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning"></a>Wat kan ik doen met Azure Machine Learning?
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Wat kan ik doen met de Azure Machine Learning-service?
 
-Gebruik de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure machine learning PYTHON SDK</a> met open source Python-pakketten, of gebruik de [visuele interface (preview)](ui-tutorial-automobile-price-train-score.md) om in een Azure machine learning-werkruimte zeer nauw keurige machine learning en diep gaande modellen te bouwen en te trainen.
+Gebruik de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure machine learning PYTHON SDK</a> met open source Python-pakketten, of gebruik de [visuele interface (preview)](ui-tutorial-automobile-price-train-score.md) om een zeer nauw keurige machine learning en diep gaande modellen te bouwen en te trainen in een Azure machine learning service Werk ruimte.
 
 U kunt kiezen uit veel machine learning onderdelen die beschikbaar zijn in open source Python-pakketten, zoals <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-Learn</a>, <a href="https://www.tensorflow.org" target="_blank">tensor flow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>en <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -54,11 +54,11 @@ U kunt [model training en-aanpassing ook automatiseren](tutorial-auto-train-mode
 
 ### <a name="ui-based-low-code-experience"></a>Op de gebruikers interface gebaseerde, ervaring met weinig code
 
-Voor code-Free training kunt u het volgende proberen:
+Voor code-gratis training en implementatie kunt u het volgende proberen:
 
 + Het maken van [automatische ml-experimenten](tutorial-first-experiment-automated-ml.md) in de gebruiks vriendelijke interface.
 + Het [experimenteren met slepen en neerzetten in de visuele interface](ui-tutorial-automobile-price-train-score.md).
-  ![Visuele interface voor Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
+  ![Visual-interface voor Azure Machine Learning ](media/overview-what-is-azure-ml/visual-interface.png)
 
 
 
@@ -90,17 +90,22 @@ Hier volgt een snelle vergelijking.
 || Machine Learning Studio | Azure Machine Learning:<br/>Visuele interface|
 |---| --- | --- |
 || Algemeen beschikbaar (GA) | In preview|
+|Interface slepen en neerzetten| Ja | Ja|
+|Probeer| Schaal (10 GB training data Limit) | Schalen met Compute target|
 |Modules voor Interface| Allerlei | Initiële set populaire modules|
-|Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning compute, GPU of CPU.<br/>(Andere reken processen die worden ondersteund in SDK)|
-|Doelen voor implementatie compute| De indeling van de oorspronkelijke webservice, niet aanpasbaar | Beveiligings opties voor ondernemingen & Azure Kubernetes-service. <br/>([Andere reken](how-to-deploy-and-where.md) processen die worden ondersteund in SDK) |
-|Automatische model training en afstemming tuning | Nee | Nog niet in de visuele interface. <br/> (Ondersteund op de lands pagina SDK en Azure Portal/Workspace.) |
+|Doelen van de trainings compute| Eigen reken doel, alleen CPU|AML Compute (GPU/CPU)<br/> Notebook-VM's |
+|Berekenings doelen afstellen| De indeling van de oorspronkelijke webservice, niet aanpasbaar | Azure Kubernetes-service (realtime deinterferentie) <br/>AML-Compute (batch dezicht) |
+|ML-pijp lijn| Niet ondersteund | Pijplijn ontwerpen <br/> gepubliceerde pijp lijn <br/> Pijplijn eindpunt <br/> [Meer informatie over ML-pijp lijn](concept-ml-pipelines.md)|
+|ML OPS| Basis model beheer en-implementatie | Configureer bare implementatie, model-en pijplijn versie beheer|
+|Model| Eigen indeling. Kan niet worden gebruikt buiten Studio | De standaard indeling, verschillende zijn afhankelijk van de trainings taak|
+|Automatische model training en afstemming tuning | Nee | Nog niet in de visuele interface. <br/> (Ondersteund in de python-SDK en de landings pagina voor de werk ruimte.) |
 
-Probeer de Visual Interface (preview) uit met [de zelf studie: Prijs voor auto Mobile voor speld met](ui-tutorial-automobile-price-train-score.md)de visuele interface.
+Probeer de Visual Interface (preview) uit met [de zelf studie: prijs van auto Mobile met de visuele interface](ui-tutorial-automobile-price-train-score.md).
 
 > [!NOTE]
 > Modellen die zijn gemaakt in Studio, kunnen niet worden geïmplementeerd of beheerd door Azure Machine Learning. Modellen die zijn gemaakt en geïmplementeerd in de service Visual Interface kunnen echter worden beheerd via de werk ruimte Azure Machine Learning.
 
-## <a name="free-trial"></a>Gratis proefversie
+## <a name="free-trial"></a>Gratis versie
 
 Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
