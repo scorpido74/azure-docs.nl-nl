@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164021"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Quickstart: Maak een Azure Database for PostgreSQL-grootschalige (Citus) (preview) in de Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Quick Start: een Azure Database for PostgreSQL-grootschalige (Citus) (preview) maken in de Azure Portal
 
 Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze Quick start ziet u hoe u een Citus-Server groep (Azure Database for PostgreSQL-grootschalige) (preview) maakt met behulp van de Azure Portal. U bekijkt gedistribueerde gegevens: sharding-tabellen tussen knoop punten, opname van voorbeeld gegevens en uitvoeren van query's die worden uitgevoerd op meerdere knoop punten.
 
@@ -62,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-Het `payload` veld van `github_events` bevat een JSONB-gegevens type. JSONB is het JSON-gegevens type in binaire vorm in post gres. Het gegevens type maakt het eenvoudig om een flexibel schema in één kolom op te slaan.
+Het `payload` veld van `github_events` heeft een JSONB-gegevens type. JSONB is het JSON-gegevens type in binaire vorm in post gres. Het gegevens type maakt het eenvoudig om een flexibel schema in één kolom op te slaan.
 
 Post gres kan een `GIN` index voor dit type maken, waarmee elke sleutel en waarde erin wordt geïndexeerd. Met een index wordt het snel en eenvoudig om de payload te doorzoeken met verschillende voor waarden. We gaan nu een aantal indexen maken voordat we onze gegevens laden. In psql:
 
@@ -102,7 +102,7 @@ Nu is het tijd voor het leuke deel, waarbij sommige query's werkelijk worden uit
 SELECT count(*) from github_events;
 ```
 
-Dat werkte goed. We gaan terug naar die combi natie van aggregatie in een bit, maar we kijken nu naar een aantal andere query's. In de kolom `payload` JSONB is een goede hoeveelheid gegevens beschikbaar, maar deze is afhankelijk van het gebeurtenis type. `PushEvent`gebeurtenissen bevatten een grootte die het aantal unieke door voeringen voor de push bevat. We kunnen deze gebruiken om het totale aantal door voeringen per uur te vinden:
+Dat werkte goed. We gaan terug naar die combi natie van aggregatie in een bit, maar we kijken nu naar een aantal andere query's. In de JSONB-`payload` kolom bevinden zich een goede hoeveelheid gegevens, maar deze is afhankelijk van het gebeurtenis type. `PushEvent` gebeurtenissen bevatten een grootte die het aantal unieke door voeringen voor de push bevat. We kunnen deze gebruiken om het totale aantal door voeringen per uur te vinden:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Tot dusver hebben de query's alleen betrekking op\_de GitHub-gebeurtenissen, maar we kunnen deze informatie combi\_neren met github-gebruikers. Omdat we zowel gebruikers als gebeurtenissen op dezelfde id (`user_id`) Shard, worden de rijen van beide tabellen met overeenkomende gebruikers-id's op dezelfde database knooppunten [geplaatst](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) en kunnen ze eenvoudig worden gekoppeld.
+Tot nu toe hebben de query's alleen betrekking op de GitHub-\_events, maar we kunnen deze informatie combi neren met github \_users. Omdat we zowel gebruikers als gebeurtenissen in dezelfde id (`user_id`) Shard, worden de rijen van beide tabellen met overeenkomende gebruikers-Id's op dezelfde database knooppunten [geplaatst](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) en kunnen ze eenvoudig worden gekoppeld.
 
-Als we eraan deel `user_id`nemen, kunnen grootschalige de uitvoering van de samen voeging naar Shards pushen om parallel te worden uitgevoerd op worker-knoop punten. Laten we bijvoorbeeld de gebruikers vinden die het grootste aantal opslag plaatsen hebben gemaakt:
+Als we deel nemen aan `user_id`, kan grootschalige de uitvoering van de samen voeging naar Shards pushen om parallel te worden uitgevoerd op worker-knoop punten. Laten we bijvoorbeeld de gebruikers vinden die het grootste aantal opslag plaatsen hebben gemaakt:
 
 ```sql
 SELECT gu.login, count(*)

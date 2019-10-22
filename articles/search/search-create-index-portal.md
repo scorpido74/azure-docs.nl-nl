@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: heidist
 ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71937266"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Een Azure Search-index maken in de portal
@@ -27,7 +27,7 @@ De index ontwerper is slechts één benadering voor het maken van een index. U k
 
 2. Klik op de koppeling **index toevoegen** in de opdracht balk boven aan de pagina.
 
-   ![Index koppeling toevoegen op de opdracht balk](media/search-create-index-portal/add-index.png "index koppeling toevoegen op de opdracht balk")
+   ![Index koppeling toevoegen in de opdracht balk](media/search-create-index-portal/add-index.png "Index koppeling toevoegen in de opdracht balk")
 
 3. Geef uw Azure Search-index een naam. Er wordt naar index namen verwezen in indexerings-en query bewerkingen. De naam van de index wordt een onderdeel van de eindpunt-URL die wordt gebruikt om verbinding te maken met de index en om HTTP-aanvragen in de REST API voor Azure Search te verzenden.
 
@@ -49,7 +49,7 @@ De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens
 
     API-documentatie voor Azure Search bevat voorbeelden van code met een eenvoudige index *hotels*. In de onderstaande scherm afbeelding ziet u de index definitie, inclusief de Franse taal analyse die tijdens de index definitie is opgegeven, die u als een Oefen oefening in de portal kunt maken.
 
-    (media/search-create-index-portal/field-definitions.png "Demo") -index voor hotels- ![demo index]
+    ![Demo-index van hotels](media/search-create-index-portal/field-definitions.png "Demo-index van hotels")
 
 1. Wanneer u klaar bent, klikt u op **maken** om de index op te slaan en te maken.
 
@@ -65,7 +65,7 @@ Tekenreeksvelden zijn vaak gemarkeerd als **Doorzoekbaar** en **Ophalen mogelijk
 
 Veldkenmerken bepalen hoe een veld wordt gebruikt, bijvoorbeeld of het wordt gebruikt voor zoeken in volledige tekst, facetnavigatie, sorteerbewerkingen, enzovoort. In de volgende tabel wordt elk kenmerk beschreven.
 
-|Kenmerk|Description|  
+|Kenmerk|Beschrijving|  
 |---------------|-----------------|  
 |**doorzoekbaar**|Zoeken in volledige tekst mogelijk, onderworpen aan lexicale analyse, zoals het afbreken van woorden tijdens het indexeren. Als u een doorzoekbaar veld instelt op een waarde als 'zonnige dag', wordt de waarde intern gesplitst in de afzonderlijke tokens 'zonnige' en 'dag'. Zie [Hoe zoeken in de volledige tekst werkt](search-lucene-query-architecture.md) voor meer informatie.|  
 |**filteren mogelijk**|Hier wordt naar verwezen in **$filter**-query's. Bij filterbare velden van het type `Edm.String` of `Collection(Edm.String)` worden woorden niet afgebroken, dus vergelijkingen gelden alleen voor exacte overeenkomsten. Als u zo'n veld bijvoorbeeld instelt op 'zonnige dag', worden er met `$filter=f eq 'sunny'` geen overeenkomsten gevonden, maar met `$filter=f eq 'sunny day'` wel. |  
@@ -78,7 +78,7 @@ Veldkenmerken bepalen hoe een veld wordt gebruikt, bijvoorbeeld of het wordt geb
 
 Nadat u een Azure Search-index hebt gemaakt, kunt u doorgaan met de volgende stap: [het uploaden van doorzoekbare gegevens in de index](search-what-is-data-import.md).
 
-U kunt ook een [diep gaande blik op indexen](search-what-is-an-index.md)maken. Naast de Veldenverzameling bevat een index ook analyses, suggesties, scoreprofielen en CORS-instellingen. De portal biedt pagina's met tabbladen voor het definiëren van de meest voorkomende elementen: Velden, analyse functies en suggesties. Als u andere elementen wilt maken of wijzigen, kunt u de REST API of de .NET SDK gebruiken.
+U kunt ook een [diep gaande blik op indexen](search-what-is-an-index.md)maken. Naast de Veldenverzameling bevat een index ook analyses, suggesties, scoreprofielen en CORS-instellingen. De portal biedt tabbladen voor het definiëren van de meest voorkomende elementen: velden, analyses en suggesties. Als u andere elementen wilt maken of wijzigen, kunt u de REST API of de .NET SDK gebruiken.
 
 ## <a name="see-also"></a>Zie ook
 

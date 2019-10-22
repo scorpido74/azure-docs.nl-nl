@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
 ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68976507"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Zelfstudie: Gegevens streamen naar Azure Databricks met behulp van Event Hubs
@@ -59,7 +59,7 @@ U kunt aan deze vereisten voldoen via de stappen in het artikel [Een Azure Event
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
@@ -67,11 +67,11 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 1. Selecteer in Azure Portal **Een resource maken** > **Gegevens en analyses** > **Azure Databricks**.
 
-    ![Databricks in Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks in Azure Portal")
+    ![Databricks op Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks op Azure Portal")
 
 3. Geef bij **Azure Databricks Service** de waarden op voor het maken van een Databricks-werkruimte.
 
-    ![Een Azure Databricks-werkruimte maken](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
+    ![Een Azure Databricks-werk ruimte maken](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
 
     Geef de volgende waarden op:
 
@@ -87,7 +87,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 4. Het duurt enkele minuten om het account te maken. Tijdens het maken van het account wordt rechts in de portal de tegel **Implementatie verzenden voor Azure Databricks** weergegeven. Mogelijk moet u op uw dashboard naar rechts scrollen om de tegel te zien. Bovenaan het scherm wordt ook een voortgangsbalk weergegeven. U kunt beide gebieden bekijken voor de voortgang.
 
-    ![Tegel Databricks-implementatie](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Tegel Databricks-implementatie")
+    ![Tegel implementatie van Databricks](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Tegel implementatie van Databricks")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
@@ -95,11 +95,11 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Cluster**.
 
-    ![Databricks in Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Databricks in Azure")
+    ![Databricks op Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
+    ![Een Databricks Spark-cluster maken in azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
 
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
@@ -121,13 +121,13 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
-    ![Gegevens voor Twitter-toepassing](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Details van Twitter-toepassing")
 
-    ![Gegevens voor Twitter-toepassing](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Details van Twitter-toepassing")
 
 3. Selecteer op de pagina toepassing het tabblad **sleutels en tokens** en kopieer de waarden voor de **CONSUMer-API-sleutel** en de **geheime sleutel**van de consument-API. Selecteer ook **maken** onder **toegangs token en geheim toegangs token** om de toegangs tokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
-    ![Gegevens voor Twitter-toepassing](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Gegevens voor Twitter-toepassing")
+    ![Details van Twitter-toepassing](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Details van Twitter-toepassing")
 
 Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt deze waarden later in de zelfstudie nodig.
 
@@ -167,11 +167,11 @@ In deze sectie kunt u twee notitieblokken in de Databricks-werkruimte maken met 
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitieblok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
 2. Voer in het dialoogvenster **Notitieblok maken** als naam **SendTweetsToEventHub** in, selecteer **Scala** als taal en selecteer het Apache Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitieblok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Een notitieblok maken in Databricks")
+    ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Een notitie blok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -182,7 +182,7 @@ In deze sectie kunt u twee notitieblokken in de Databricks-werkruimte maken met 
 Plak in het notitieblok **SendTweetsToEventHub** de volgende code en vervang de tijdelijke aanduidingen door waarden voor uw Event Hubs-naamruimte en Twitter-toepassing die u eerder hebt gemaakt. Dit notitieblok streamt tweets met het sleutelwoord 'Azure' in realtime naar Event Hubs.
 
 > [!NOTE]
-> De Twitter-API heeft bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html)voor de aanvraag. Als u niet tevreden bent met de standaard frequentie beperking in Twitter API, kunt u in dit voor beeld tekst inhoud genereren zonder Twitter API te gebruiken. Hiervoor stelt u variabele **Data Source** in in `test` plaats van `twitter` en vult u de lijst **testSource** met de voorkeurs test invoer.
+> De Twitter-API heeft bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html)voor de aanvraag. Als u niet tevreden bent met de standaard frequentie beperking in Twitter API, kunt u in dit voor beeld tekst inhoud genereren zonder Twitter API te gebruiken. Als u dit wilt doen, stelt u variabele **Data Source** in op `test` in plaats van `twitter` en vult u de lijst **testSource** met voorkeurs test invoer.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -411,12 +411,12 @@ Dat is alles. Met behulp van Azure Databricks hebt u gegevens naar Azure Event H
 
 Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Dit doet u door vanuit de Azure Databricks-werkruimte in het linkerdeelvenster **Clusters** te selecteren. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatingsteken onder de kolom **Acties** en selecteert u het **beëindigingspictogram**.
 
-![Een Databricks-cluster stopzetten](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
+![Een Databricks-cluster stoppen](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
 Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-werkruimte maken
