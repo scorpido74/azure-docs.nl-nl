@@ -9,8 +9,10 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Een beheerd domein maken
+    - name: Een eenvoudig beheerd domein maken
       href: tutorial-create-instance.md
+    - name: Het virtuele netwerk voor apps configureren
+      href: tutorial-configure-networking.md
     - name: Deelnemen aan domeinen van een Windows Server-VM
       href: join-windows-vm.md
     - name: Beheerhulpprogramma's installeren
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: Wachtwoord-hashsynchronisatie configureren
       href: tutorial-configure-password-hash-sync.md
+    - name: Een geavanceerd beheerd domein maken
+      href: tutorial-create-instance-advanced.md
 - name: Voorbeelden
   items:
     - name: Een beheerd domein maken met Azure PowerShell

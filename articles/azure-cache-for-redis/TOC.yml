@@ -28,19 +28,17 @@
     - name: Voorbeelden voor Azure Cache voor Redis
       href: cache-redis-samples.md
     - name: Azure PowerShell
-      href: cache-howto-manage-redis-cache-powershell.md
+      href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure-CLI
       href: cli-samples.md
 - name: Concepten
   items:
-    - name: Beste praktijken
-      items:
-        - name: Best practices voor Azure Cache voor Redis
-          href: cache-best-practices.md
-        - name: Best practices van Azure Architecture voor caching
-          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-    - name: Uitleg over failover en patching
+    - name: Aanbevolen procedures
+      href: cache-best-practices.md
+    - name: Failover en patching
       href: cache-failover.md
+    - name: Best practices voor architectuur voor caching
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Handleidingen
   items:
     - name: Plannen
@@ -58,19 +56,25 @@
     - name: Automatiseren
       items:
         - name: Implementeren en beheren met Azure PowerShell
-          href: cache-howto-manage-redis-cache-powershell.md
+          href: cache-how-to-manage-redis-cache-powershell.md
         - name: Implementeren en beheren met Azure CLI
           href: cli-samples.md
         - name: Azure Cache voor Redis inrichten
           href: cache-redis-cache-arm-provision.md
         - name: Een web-app inrichten met Azure Cache voor Redis
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Met ASP.NET integreren
+    - name: Integreren met toepassing
       items:
-        - name: Leverancier sessiestatus
-          href: cache-aspnet-session-state-provider.md
-        - name: Cacheprovider voor uitvoer
-          href: cache-aspnet-output-cache-provider.md
+        - name: ASP.NET
+          items:
+            - name: Sessiestatus leverancier gebruiken
+              href: cache-aspnet-session-state-provider.md
+            - name: Cacheprovider voor uitvoer gebruiken
+              href: cache-aspnet-output-cache-provider.md
+        - name: Java Spring
+          items:
+            - name: Spring Boot-initialisatie gebruiken
+              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Beheren
       items:
         - name: Configureren in Azure Portal
@@ -85,24 +89,28 @@
           href: 'cache-administration.md#schedule-updates'
         - name: Toegang tot redis-cli.exe configureren
           href: cache-how-to-redis-cli-tool.md
-    - name: Controleren en problemen oplossen
+    - name: Controleren
       items:
         - name: Bewaken in Azure Portal
           href: cache-how-to-monitor.md
-        - name: Cacheproblemen oplossen
-          href: cache-how-to-troubleshoot.md
         - name: Waarschuwingen instellen voor uitzonderingen
           href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: Problemen vaststellen en oplossen
+      items:
+        - name: Problemen met Redis-server oplossen
+          href: cache-how-to-troubleshoot-server.md
+        - name: Problemen met Redis-client oplossen
+          href: cache-how-to-troubleshoot-client.md
+        - name: Problemen met time-outs oplossen
+          href: cache-how-to-troubleshoot-timeouts.md
+        - name: Problemen met gegevensverlies oplossen
+          href: cache-how-to-troubleshoot-data-loss.md
     - name: Schalen
       items:
         - name: Bijwerken naar een andere grootte en laag
           href: cache-how-to-scale.md
         - name: Redis-cluster gebruiken om in/uit te schalen
           href: cache-how-to-premium-clustering.md
-    - name: Integreren met Spring Boot
-      items:
-        - name: Een app voor Spring Boot-initialisatie gebruiken met Azure Cache voor Redis
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden

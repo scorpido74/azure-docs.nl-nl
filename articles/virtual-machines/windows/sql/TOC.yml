@@ -64,9 +64,9 @@
           href: virtual-machines-windows-ps-sql-create.md
     - name: Registreren bij de resourceprovider
       href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Licentiemodel voor virtuele SQL-machine wijzigen
+    - name: Licentiemodel wijzigen
       href: virtual-machines-windows-sql-ahb.md
-    - name: Versie van SQL Server wijzigen
+    - name: Editie wijzigen
       href: virtual-machines-windows-sql-change-edition.md
     - name: Migreren
       items:
@@ -103,7 +103,7 @@
             - name: Met Storage Spaces Direct
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: Met Premium-bestandsshare
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell
