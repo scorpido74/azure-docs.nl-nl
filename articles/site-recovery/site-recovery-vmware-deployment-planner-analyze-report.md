@@ -1,20 +1,20 @@
 ---
-title: Rapport van de Azure Site Recovery Deployment Planner voor herstel na noodgevallen van VMware naar Azure analyseren | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u kunt het rapport dat is gegenereerd door de Azure Site Recovery Deployment Planner voor noodherstel van VMware naar Azure te analyseren.
+title: Analyseer het Azure Site Recovery Deployment Planner rapport voor nood herstel van VMware naar Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u het door de Azure Site Recovery Deployment Planner voor VMware nood herstel naar Azure gegenereerde rapport kunt analyseren.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472491"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618758"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Rapport van de Azure Site Recovery-Implementatieplanner voor VMware naar Azure een noodgeval analyseren
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Azure Site Recovery Deployment Planner rapport voor VMware-nood herstel naar Azure
 
 Het gegenereerde Microsoft Excel-rapport bevat de volgende bladen:
 ## <a name="on-premises-summary"></a>Samenvatting on-premises
@@ -22,28 +22,25 @@ Het werkblad Samenvatting on-premises biedt een overzicht van de geprofileerde V
 
 ![Samenvatting van de on-premises van VMware-omgeving](media/site-recovery-vmware-deployment-planner-analyze-report/on-premises-summary-v2a.png)
 
-**Begindatum** en **einddatum**: De begin- en einddatums van de profileringsgegevens die in aanmerking komen voor het genereren van rapporten. De begindatum is standaard de datum waarop de profilering start en de einddatum de datum waarop de profilering stopt. Dit kunnen de waarden voor StartDate en EndDate zijn als het rapport met deze parameters wordt gegenereerd.
+**Begin datum** en **eind datum**: De begin-en eind datum van de profilerings gegevens die worden overwogen voor het genereren van rapporten. De begindatum is standaard de datum waarop de profilering start en de einddatum de datum waarop de profilering stopt. Dit kunnen de waarden voor StartDate en EndDate zijn als het rapport met deze parameters wordt gegenereerd.
 
-**Totale aantal dagen van profilering**: Het totale aantal dagen van profilering tussen de begin- en einddatum waarvoor het rapport wordt gegenereerd.
+**Totaal aantal dagen van profilering**: Het totale aantal dagen van profile ring tussen de begin-en eind datum waarvoor het rapport wordt gegenereerd.
 
-**Aantal compatibele virtuele machines**: Het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het vereiste aantal opslagaccounts, Microsoft Azure-kernen, configuratieservers en aanvullende processervers wordt berekend.
+**Aantal compatibele virtuele machines**: Het totale aantal compatibele virtuele machines waarvoor de vereiste netwerk bandbreedte, het vereiste aantal opslag accounts, Microsoft Azure kernen, configuratie servers en aanvullende proces servers wordt berekend.
 
-**Totale aantal schijven voor alle compatibele virtuele machines**: Het nummer dat wordt gebruikt als een van de invoerwaarden om het aantal configuratieservers en aanvullende processervers dat moet worden gebruikt in de implementatie te bepalen.
+**Totaal aantal schijven voor alle compatibele virtuele machines**: Het getal dat als een van de invoer wordt gebruikt om het aantal configuratie servers en aanvullende proces servers te bepalen dat in de implementatie moet worden gebruikt.
 
-**Gemiddeld aantal schijven per compatibele virtuele machine**: Het gemiddelde aantal schijven voor alle compatibele virtuele machines is berekend.
+**Gemiddeld aantal schijven per compatibele virtuele machine**: Het gemiddelde aantal schijven dat voor alle compatibele virtuele machines is berekend.
 
-**Gemiddelde schijfgrootte (GB)** : De gemiddelde schijfgrootte die voor alle compatibele virtuele machines is berekend.
+**Gemiddelde schijf grootte (GB)** : De gemiddelde schijf grootte die voor alle compatibele virtuele machines is berekend.
 
-**Gewenste RPO (minuten)** : Ofwel de standaard herstelpunt of de waarde die de tijd van het rapport kunt u schatten van de vereiste bandbreedte voor de parameter 'DesiredRPO' wordt doorgegeven.
+**Gewenste RPO (minuten)** : De standaard Recovery Point Objective of de waarde die is door gegeven voor de para meter DesiredRPO op het moment dat het rapport wordt gegenereerd om de vereiste band breedte te schatten.
 
-**Gewenste bandbreedte (Mbps)** : De waarde die u voor de parameter 'Bandwidth' hebt doorgegeven op het moment van het rapport haalbare RPO in te schatten.
+**Gewenste band breedte (Mbps)** : De waarde die u hebt opgegeven voor de para meter ' band breedte ' op het moment dat het rapport wordt gegenereerd om de haal bare RPO te ramen.
 
-**Waargenomen typisch gegevensverloop per dag (GB)** : Het gemiddelde gegevensverloop dat voor alle profileringsdagen is vastgesteld. Dit aantal wordt gebruikt als een van de invoerwaarden om het aantal configuratieservers en aanvullende processenservers te bepalen dat in de implementatie moet worden gebruikt.
+**Geconstateerd gemiddeld gegevens verloop per dag (GB)** : Het gemiddelde gegevens verloop dat voor alle profilerings dagen wordt waargenomen. Dit aantal wordt gebruikt als een van de invoerwaarden om het aantal configuratieservers en aanvullende processenservers te bepalen dat in de implementatie moet worden gebruikt.
 
 ## <a name="recommendations"></a>Aanbevelingen
-
->[!Note]
->Bij het repliceren van rechtstreeks naar beheerde schijven, negeert u de aanbeveling voor het aantal opslagaccounts.
 
 De aanbevelingen voor het eigenschappenvenster van de VMware naar Azure rapport heeft de volgende gegevens aan de hand van de geselecteerde gewenste RPO:
 
@@ -52,33 +49,33 @@ De aanbevelingen voor het eigenschappenvenster van de VMware naar Azure rapport 
 ### <a name="profiled-data"></a>Geprofileerde gegevens
 ![De weergave met geprofileerde gegevens in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
 
-**Periode geprofileerde gegevens**: De periode gedurende welke de profilering is uitgevoerd. Standaard gebruikt het hulpprogramma voor de berekening alle geprofileerde gegevens, tenzij het rapport wordt gegenereerd voor een bepaalde periode (tijdens het genereren van het rapport zijn dan waarden opgegeven voor StartDate en EndDate).
+**Geprofilerde gegevens periode**: De periode waarin de profile ring is uitgevoerd. Standaard gebruikt het hulpprogramma voor de berekening alle geprofileerde gegevens, tenzij het rapport wordt gegenereerd voor een bepaalde periode (tijdens het genereren van het rapport zijn dan waarden opgegeven voor StartDate en EndDate).
 
-**De naam van server**: De naam of IP-adres van de VMware vCenter of ESXi-host waarvoor een VM-rapport wordt gegenereerd.
+**Server naam**: De naam of het IP-adres van de VMware vCenter of ESXi-host waarvan de Vm's worden gegenereerd.
 
-**Gewenste RPO**: Het beoogde herstelpunt voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u tijdens het genereren van het rapport de parameter *DesiredRPOinMin* hebt gebruikt, wordt de betreffende waarde weergegeven in deze vervolgkeuzelijst.
+**Gewenste RPO**: De Recovery Point Objective voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u tijdens het genereren van het rapport de parameter *DesiredRPOinMin* hebt gebruikt, wordt de betreffende waarde weergegeven in deze vervolgkeuzelijst.
 
 ### <a name="profiling-overview"></a>Overzicht van profilering
 
 ![Resultaten van profilering in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
 
-**Totaal aantal geprofileerde virtuele Machines**: Het totale aantal virtuele machines waarvan de geprofileerde gegevens beschikbaar is. Als het bestand dat is opgegeven bij VMListFile namen van virtuele machines bevat die niet zijn geprofileerd, worden deze virtuele machines niet meegenomen in het rapport en uitgesloten van het totale aantal geprofileerde virtuele machines.
+**Totaal aantal geVirtual Machineseerde bestanden**: Het totale aantal virtuele machines waarvan de geprofilerde gegevens beschikbaar zijn. Als het bestand dat is opgegeven bij VMListFile namen van virtuele machines bevat die niet zijn geprofileerd, worden deze virtuele machines niet meegenomen in het rapport en uitgesloten van het totale aantal geprofileerde virtuele machines.
 
-**Compatibele virtuele Machines**: Het aantal virtuele machines die op Azure met behulp van Site Recovery kan worden beveiligd. Dit is het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het aantal opslagaccounts, het aantal Azure-kerngeheugens, en het aantal configuratieservers en aanvullende processervers wordt berekend. De details van elke compatibele virtuele machine zijn beschikbaar in de sectie 'Compatibele VM's'.
+**Compatibel virtual machines**: Het aantal virtuele machines dat kan worden beveiligd met Azure met behulp van Site Recovery. Dit is het totale aantal compatibele virtuele machines waarvoor de vereiste netwerkbandbreedte, het aantal opslagaccounts, het aantal Azure-kerngeheugens, en het aantal configuratieservers en aanvullende processervers wordt berekend. De details van elke compatibele virtuele machine zijn beschikbaar in de sectie 'Compatibele VM's'.
 
-**Niet-compatibele virtuele Machines**: Het aantal geprofileerde virtuele machines die niet compatibel is met beveiliging met Site Recovery. De redenen voor incompatibiliteit worden vermeld in de sectie 'Niet-compatibele VM's'. Als het bestand dat is opgegeven bij VMListFile namen bevat van virtuele machines die niet zijn geprofileerd, worden die virtuele machines uitgesloten van het aantal niet-compatibele virtuele machines. Deze virtuele machines worden weergegeven als 'Gegevens niet gevonden' aan het einde van de sectie 'Niet-compatibele VM's'.
+**Incompatibele virtual machines**: Het aantal geprofilerde virtuele machines dat niet compatibel is voor beveiliging met Site Recovery. De redenen voor incompatibiliteit worden vermeld in de sectie 'Niet-compatibele VM's'. Als het bestand dat is opgegeven bij VMListFile namen bevat van virtuele machines die niet zijn geprofileerd, worden die virtuele machines uitgesloten van het aantal niet-compatibele virtuele machines. Deze virtuele machines worden weergegeven als 'Gegevens niet gevonden' aan het einde van de sectie 'Niet-compatibele VM's'.
 
-**Gewenste RPO**: Uw gewenste herstelpunt objective, in minuten. Het rapport wordt gegenereerd voor drie RPO-waarden: 15 (standaard), 30 en 60 minuten. De aanbeveling voor bandbreedte in het rapport wordt gewijzigd op basis van uw selectie in de vervolgkeuzelijst Gewenste RPO in de rechterbovenhoek van het blad. Als u het rapport hebt gegenereerd met een aangepaste waarde voor de parameter  *-DesiredRPO*, wordt deze aangepaste waarde als standaardwaarde weergegeven in de vervolgkeuzelijst Gewenste RPO.
+**Gewenste RPO**: De gewenste Recovery Point Objective, in minuten. Het rapport wordt gegenereerd voor drie RPO-waarden: 15 (standaard), 30 en 60 minuten. De aanbeveling voor bandbreedte in het rapport wordt gewijzigd op basis van uw selectie in de vervolgkeuzelijst Gewenste RPO in de rechterbovenhoek van het blad. Als u het rapport hebt gegenereerd met een aangepaste waarde voor de parameter  *-DesiredRPO*, wordt deze aangepaste waarde als standaardwaarde weergegeven in de vervolgkeuzelijst Gewenste RPO.
 
 ### <a name="required-network-bandwidth-mbps"></a>Vereiste netwerkbandbreedte (Mbps)
 
 ![Vereiste netwerkbandbreedte in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
 
-**Om te voldoen aan de RPO 100 procent van de tijd:** De aanbevolen bandbreedte in Mbps die moet worden toegewezen om te voldoen aan uw gewenste RPO 100 procent van de tijd. Deze bandbreedte moet worden toegewezen voor onveranderlijke replicatie van verschillen bij al uw compatibele virtuele machines om eventuele RPO-schendingen te voorkomen.
+**Voldoen aan RPO 100 procent van de tijd:** De aanbevolen band breedte in Mbps die moet worden toegewezen om te voldoen aan de gewenste RPO 100 procent van de tijd. Deze bandbreedte moet worden toegewezen voor onveranderlijke replicatie van verschillen bij al uw compatibele virtuele machines om eventuele RPO-schendingen te voorkomen.
 
-**Om te voldoen aan de RPO 90 procent van de tijd**: Vanwege een breedbandverbinding of om een andere reden, als u de bandbreedte die nodig zijn om te voldoen aan uw gewenste RPO 100 procent van de tijd niet instellen kunt u aan de slag met een lagere bandbreedte-instelling die in uw gewenste RPO 90 procent van de tijd voorzien kan. Voor inzicht in de gevolgen van het instellen van deze lagere bandbreedte bevat het rapport een wat-als-analyse van het aantal en de duur van de RPO-schendingen die u kunt verwachten.
+**Voldoen aan RPO 90 procent van de tijd**: Vanwege breedband prijzen of om een andere reden kunt u, als u de band breedte die nodig is om te voldoen aan uw gewenste RPO 100 procent van de tijd niet instellen, een lagere band breedte instellen die kan voldoen aan uw gewenste RPO 90 procent van de tijd. Voor inzicht in de gevolgen van het instellen van deze lagere bandbreedte bevat het rapport een wat-als-analyse van het aantal en de duur van de RPO-schendingen die u kunt verwachten.
 
-**Behaalde doorvoer:** De doorvoer van de server waarop u de GetThroughput-opdracht hebt uitgevoerd naar de Microsoft Azure-regio waar het opslagaccount zich bevindt. Deze waarde geeft het geschatte niveau aan dat kan worden behaald als u de compatibele virtuele machines beveiligt met Site Recovery, op voorwaarde dat de kenmerken voor opslag en netwerk van uw configuratieserver of processerver hetzelfde blijven als die van de server waarop u het hulpprogramma hebt uitgevoerd.
+**Behaalde door Voer:** De door Voer van de server waarop u de GetThroughput-opdracht hebt uitgevoerd naar de Microsoft Azure regio waar het opslag account zich bevindt. Deze waarde geeft het geschatte niveau aan dat kan worden behaald als u de compatibele virtuele machines beveiligt met Site Recovery, op voorwaarde dat de kenmerken voor opslag en netwerk van uw configuratieserver of processerver hetzelfde blijven als die van de server waarop u het hulpprogramma hebt uitgevoerd.
 
 Voor replicatie moet u de aanbevolen bandbreedte gebruiken om de RPO 100 procent van de tijd te halen. Als u na het instellen van de bandbreedte geen toename ziet in de gerapporteerde behaalde doorvoer, doet u het volgende:
 
@@ -95,7 +92,7 @@ Als u het hulpprogramma uitvoert op een configuratieserver of processerver die a
 Voor alle Enterprise-implementaties van Site Recovery wordt het gebruik van [ExpressRoute](https://aka.ms/expressroute) aanbevolen.
 
 ### <a name="required-storage-accounts"></a>Vereiste opslagaccounts
-De volgende grafiek geeft het totale aantal opslagaccounts aan (Standard Storage en Premium Storage) dat is vereist voor het beveiligen van alle compatibele virtuele machines. Zie de sectie 'VM-opslagplaatsing' voor meer informatie over welk opslagaccount u moet gebruiken voor elke virtuele machine.
+De volgende grafiek geeft het totale aantal opslagaccounts aan (Standard Storage en Premium Storage) dat is vereist voor het beveiligen van alle compatibele virtuele machines. Zie de sectie 'VM-opslagplaatsing' voor meer informatie over welk opslagaccount u moet gebruiken voor elke virtuele machine. Als u v 2.5 van Deployment Planner gebruikt, wordt in deze aanbeveling alleen het aantal standaard cache opslag accounts weer gegeven dat nodig is voor replicatie, omdat de gegevens rechtstreeks naar Managed Disks worden geschreven.
 
 ![Vereiste opslagaccounts in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -133,13 +130,13 @@ De samenvatting helpt u bij het begrijpen van de kosten die u nodig hebt om te b
 
 U kunt de kosten maandelijks of jaarlijks weergeven. Meer informatie over [ondersteunde doelregio's](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) en [ondersteunde valuta's](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Kosten per onderdelen** de totale kosten voor Noodherstel zijn onderverdeeld in vier onderdelen: COMPUTE, opslag, netwerk en Azure Site Recovery-licentiekosten. De kosten worden berekend op basis van het verbruik dat zal plaatsvinden tijdens de replicatie, en bij Noodherstel de tijd voor de rekensnelheid, opslag (premium en standard), de ExpressRoute/VPN die is geconfigureerd tussen de lokale site en Azure, en Azure Site Recovery-licentie.
+**Kosten per onderdelen** De totale hoeveelheid DR-kosten is onderverdeeld in vier onderdelen: Kosten voor reken-, opslag-, netwerk-en Azure Site Recovery licenties. De kosten worden berekend op basis van het verbruik dat zal plaatsvinden tijdens de replicatie, en bij Noodherstel de tijd voor de rekensnelheid, opslag (premium en standard), de ExpressRoute/VPN die is geconfigureerd tussen de lokale site en Azure, en Azure Site Recovery-licentie.
 
 **Kosten per statussen** De kosten voor een totaal noodherstel (DR) zijn is gebaseerd op twee verschillende statussen: Replicatie en Noodherstel.
 
-**Replicatiekosten**:  De kosten die zullen worden gemaakt tijdens de replicatie. Dit dekt de kosten van opslag, netwerk en de Azure Site Recovery-licentie.
+**Replicatie kosten**:  De kosten die worden gemaakt tijdens de replicatie. Dit dekt de kosten van opslag, netwerk en de Azure Site Recovery-licentie.
 
-**Kosten voor DR-oefeningen**: De kosten die zullen worden gemaakt tijdens testfailovers. Azure Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve virtuele machines.
+**Dr-analyse kosten**: De kosten die worden gemaakt tijdens de testfailover. Azure Site Recovery laat virtuele machines draaien tijdens de testfailover. De details voor DR-kosten zijn de kosten voor de berekenings- en opslagkosten van de actieve virtuele machines.
 
 **Azure-opslagkosten per maand-jaar** Dit toont de totale opslagkosten die zullen worden gemaakt voor premium en standard-opslag voor replicatie en details voor DR.
 U vindt een gedetailleerde kostenanalyse per virtuele machine op het werkblad [Kostenraming](site-recovery-vmware-deployment-planner-cost-estimation.md).
@@ -160,30 +157,28 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 ## <a name="vm-storage-placement"></a>VM-opslagplaatsing
 
 >[!Note]
->Bij het repliceren van rechtstreeks naar beheerde schijven, hoeft u geen zorgen te hoeven maken over het aantal opslagaccounts. Voor opslag, gebruikt u alleen de aanbeveling op type opslag (Standard of Premium). Hetzelfde type is van toepassing op beheerde schijven.
+>Deployment Planner v 2.5 wordt de opslag locatie aanbevolen voor machines die rechtstreeks naar beheerde schijven zullen worden gerepliceerd.
 
 ![VM-opslagplaatsing](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Type schijfopslag**: Ofwel een standard- of premium storage-account dat wordt gebruikt voor het repliceren van alle bijbehorende virtuele machines die worden vermeld de **te plaatsen VM's** kolom.
+**Replicatie opslag type**: Een standaard-of Premium-schijf, die wordt gebruikt voor het repliceren van alle bijbehorende virtuele machines die worden vermeld in de kolom **vm's die moeten worden geplaatst** .
 
-**Voorgestelde voorvoegsel**: De voorgestelde voorvoegsel van drie tekens die kan worden gebruikt voor het benoemen van het storage-account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
+**Type logboek opslag account**: Alle replicatie logboeken worden opgeslagen in een Standard-opslag account.
 
-**Voorgestelde accountnaam**: De naam van opslagaccount na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
+**Aanbevolen voor voegsel voor opslag account**: Het voorgestelde voor voegsel van drie tekens dat kan worden gebruikt voor het benoemen van het cache-opslag account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
 
-**Logboekopslagaccount**: Alle replicatielogboeken worden opgeslagen in een standard storage-account. In het geval van virtuele machines die repliceren naar een Premium Storage-account moet u een extra opslagaccount van het type Standard instellen voor het opslaan van logboeken. Eén Standard-account voor het opslaan van logboeken kan worden gebruikt door meerdere Premium-opslagaccounts voor replicatie. Virtuele machines die worden gerepliceerd naar een Standard-opslagaccount gebruiken hetzelfde account voor het opslaan van logboeken.
+**Voorgestelde account naam voor logboek**: De naam van het opslag account na het toevoegen van het voorgestelde voor voegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
 
-**Voorgestelde Logboekaccountnaam**: Logboekaccountnaam van uw opslagaccount na toevoeging van het voorgestelde voorvoegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
+**Plaatsing samenvatting**: Een samen vatting van de schijven die nodig zijn voor beveiligde virtuele machines per opslag type. Het bevat het totale aantal Vm's, de totale ingerichte grootte op alle schijven en het totale aantal schijven.
 
-**Plaatsing samenvatting**: Een overzicht van het totale aantal virtuele machines de belasting van het storage-account op het moment van replicatie en failover of testfailover. Hier ziet u het totale aantal virtuele machines dat is toegewezen aan het opslagaccount, de totale lezen/schrijven-IOPS voor alle virtuele machines die in dit opslagaccount worden geplaatst, totale schrijven-IOPS (replicatie), totale ingestelde grootte voor alle schijven en het totale aantal schijven.
-
-**Te plaatsen virtuele Machines**: Een lijst van alle virtuele machines die moeten worden geplaatst in het opgegeven opslagaccount voor optimale prestaties en het gebruik.
+**Virtual machines locatie**: Een lijst met alle virtuele machines die op het opgegeven opslag account moeten worden geplaatst voor optimale prestaties en gebruik.
 
 ## <a name="compatible-vms"></a>Compatibele VM's
 ![Excel-werkblad met compatibele VM's](media/site-recovery-vmware-deployment-planner-analyze-report/compatible-vms-v2a.png)
 
-**VM-naam**: De VM-naam of IP-adres dat wordt gebruikt in het bestand VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
+**VM-naam**: De naam of het IP-adres van de virtuele machine die wordt gebruikt in de VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: Waarden zijn **Ja** en **Ja**\*. **Ja** \* is bedoeld voor gevallen waarin de virtuele machine een geschikt is voor [premium SSD's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
+**VM-compatibiliteit**: De waarden zijn **Ja** en **Ja**\*. Ja\* is voor exemplaren waarin de virtuele machine geschikt is voor Premium- [ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15
 * 256 GB tot 512 GB is een P20.
@@ -193,40 +188,38 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 Als de kenmerken van de workload van een schijf overeenkomen met de categorie P20 of P30, maar de schijf op grond van de grootte ervan aan een lagere categorie schijftype voor Premium Storage wordt gekoppeld, markeert het hulpprogramma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
-**Opslagtype**: Standard of premium.
+**Opslag type**: Standard of Premium.
 
-**Voorgestelde voorvoegsel**: Het voorvoegsel van drie tekens storage-account.
+**Asrseeddisk (beheerde schijf) gemaakt voor replicatie**: De naam van de schijf die wordt gemaakt wanneer u replicatie inschakelt. De gegevens en de bijbehorende moment opnamen worden opgeslagen in Azure.
 
-**Storage-Account**: De naam die gebruikmaakt van het voorvoegsel van de voorgestelde storage-account.
+**Piek waarde voor R/W IOPS (met groei factor)** : De piek-IOPS voor lezen/schrijven op de schijf (standaard het 95e percentiel), met inbegrip van de toekomstige groei factor (standaard 30 procent). De totale IOPS voor lezen/schrijven van een virtuele machine is niet altijd de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven van de virtuele machine. De piek-IOPS voor lezen/schrijven van de virtuele machine is namelijk de piek van de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven voor elke minuut van de profileringsperiode.
 
-**R/W IOPS (met groeifactor) pieken**: De piek werkbelasting IOPS voor lezen/schrijven op de schijf (de standaardwaarde is 95e percentiel), met inbegrip van de toekomstige groeifactor (standaard is 30 procent). De totale IOPS voor lezen/schrijven van een virtuele machine is niet altijd de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven van de virtuele machine. De piek-IOPS voor lezen/schrijven van de virtuele machine is namelijk de piek van de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven voor elke minuut van de profileringsperiode.
+**Piek gegevens verloop in Mbps (met groei factor)** : Het piek verloop op de schijf (standaard het 95e percentiel), met inbegrip van de toekomstige groei factor (standaard 30 procent). Houd er rekening mee dat de totale gegevensverloopwaarde van de virtuele machine niet altijd de som is van het gegevensverloop van de afzonderlijke schijven van de virtuele machine. De piekwaarde voor het gegevensverloop van de virtuele machine is namelijk de piek van de som van het gegevensverloop van de individuele schijven voor elke minuut van de profileringsperiode.
 
-**Piek voor Gegevensverloop in Mbps (met groeifactor)** : Het piekverloop op de schijf (de standaardwaarde is 95e percentiel), met inbegrip van de toekomstige groeifactor (standaard is 30 procent). Houd er rekening mee dat de totale gegevensverloopwaarde van de virtuele machine niet altijd de som is van het gegevensverloop van de afzonderlijke schijven van de virtuele machine. De piekwaarde voor het gegevensverloop van de virtuele machine is namelijk de piek van de som van het gegevensverloop van de individuele schijven voor elke minuut van de profileringsperiode.
+**Grootte van Azure VM**: De ideale toegewezen grootte van de virtuele machine van Azure Cloud Services voor deze on-premises VM. De toewijzing is gebaseerd op het geheugen, het aantal schijven/kerngeheugens/NIC’s en de IOPS voor lezen/schrijven van de on-premises virtuele machine. De aanbeveling is altijd de laagste Azure VM-grootte die overeenkomt met alle kenmerken van de on-premises virtuele machine.
 
-**Azure VM-grootte**: De ideale toegewezen grootte voor virtuele machines van Azure Cloud Services voor deze on-premises virtuele machine. De toewijzing is gebaseerd op het geheugen, het aantal schijven/kerngeheugens/NIC’s en de IOPS voor lezen/schrijven van de on-premises virtuele machine. De aanbeveling is altijd de laagste Azure VM-grootte die overeenkomt met alle kenmerken van de on-premises virtuele machine.
+**Aantal schijven**: Het totale aantal virtuele-machine schijven (Vmdk's) op de VM.
 
-**Aantal schijven**: Het totale aantal schijven (vmdk's) van virtuele machines op de virtuele machine.
-
-**Schijfgrootte (GB)** : De totale ingestelde grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
+**Schijf grootte (GB)** : De totale installatie grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
 
 **Kernen**: Het aantal CPU-kernen op de virtuele machine.
 
 **Geheugen (MB)** : Het RAM-geheugen op de virtuele machine.
 
-**NIC's**: Het aantal NIC's op de virtuele machine.
+**Nic's**: Het aantal Nic's op de virtuele machine.
 
-**Opstarttype**: Opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.  Op dit moment biedt Azure Site Recovery ondersteuning voor Windows Server EFI-VM's (Windows Server 2012, 2012 R2 en 2016), als het aantal partities in de opstartschijf minder is dan 4 en de opstartsector 512 bytes groot is. Als u EFI-VM's wilt beveiligen, moet Azure Site Recovery Mobility Service versie 9.13 of hoger zijn. Alleen failover wordt ondersteund voor EFI-VM's. Failback wordt niet ondersteund.  
+**Opstart type**: Opstart type van de virtuele machine. Dit kan BIOS of EFI zijn.  Op dit moment biedt Azure Site Recovery ondersteuning voor Windows Server EFI-VM's (Windows Server 2012, 2012 R2 en 2016), als het aantal partities in de opstartschijf minder is dan 4 en de opstartsector 512 bytes groot is. Als u EFI-VM's wilt beveiligen, moet Azure Site Recovery Mobility Service versie 9.13 of hoger zijn. Alleen failover wordt ondersteund voor EFI-VM's. Failback wordt niet ondersteund.  
 
-**Type besturingssysteem**: Het is type besturingssysteem van de virtuele machine. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.  
+**Type besturings systeem**: Het is het type besturings systeem van de virtuele machine. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.  
 
 ## <a name="incompatible-vms"></a>Niet-compatibele VM's
 
 ![Excel-werkblad met niet-compatibele VM's
 ](media/site-recovery-vmware-deployment-planner-analyze-report/incompatible-vms-v2a.png)
 
-**VM-naam**: De VM-naam of IP-adres dat wordt gebruikt in het bestand VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de VMDK's die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
+**VM-naam**: De naam of het IP-adres van de virtuele machine die wordt gebruikt in de VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de VMDK's die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: Geeft aan waarom de virtuele machine is niet compatibel voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
+**VM-compatibiliteit**: Hiermee wordt aangegeven waarom de opgegeven virtuele machine niet compatibel is voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
 
 * De schijf is groter dan 4095 GB. Azure Storage biedt momenteel geen ondersteuning voor gegevensschijven groter dan 4095 GB.
 
@@ -238,7 +231,7 @@ Als de kenmerken van de workload van een schijf overeenkomen met de categorie P2
 
 * De bron-IOPS is groter dan de ondersteunde IOPS-limiet voor opslag van 80.000 per schijf.
 
-* Het gemiddelde gegevensverloop overschrijdt de ondersteunde Site Recovery-limiet voor gegevensverloop van 10 MB/s voor de gemiddelde IO-grootte voor de schijf.
+* Het gemiddelde gegevens verloop overschrijdt de ondersteunde Site Recovery gegevens verloop limiet van 20 MB/s voor de gemiddelde I/O-grootte voor de schijf.
 
 * Het gemiddelde gegevensverloop overschrijdt de ondersteunde Site Recovery-limiet voor gegevensverloop van 25 MB/s voor de gemiddelde IO-grootte voor de VM (som van het verloop van alle schijven).
 
@@ -251,23 +244,23 @@ Als de kenmerken van de workload van een schijf overeenkomen met de categorie P2
 * Totaal gegevensverloop per dag overschrijdt het ondersteunde verloop per daglimiet van 2 TB per processerver.
 
 
-**R/W IOPS (met groeifactor) pieken**: De piekworkload-IOPS op de schijf (de standaardwaarde is 95e percentiel), met inbegrip van de toekomstige groeifactor (standaard is 30 procent). De totale IOPS voor lezen/schrijven van een virtuele machine is niet altijd de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven van de virtuele machine. De piek-IOPS voor lezen/schrijven van de virtuele machine is namelijk de piek van de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven voor elke minuut van de profileringsperiode.
+**Piek waarde voor R/W IOPS (met groei factor)** : De piek IOPS van de werk belasting op de schijf (standaard het 95e percentiel), met inbegrip van de toekomstige groei factor (standaard 30 procent). De totale IOPS voor lezen/schrijven van een virtuele machine is niet altijd de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven van de virtuele machine. De piek-IOPS voor lezen/schrijven van de virtuele machine is namelijk de piek van de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven voor elke minuut van de profileringsperiode.
 
-**Piek voor Gegevensverloop in Mbps (met groeifactor)** : Het piekverloop op de schijf (standaard het 95e percentiel) met inbegrip van de toekomstige groeifactor (standaard 30%). Houd er rekening mee dat de totale gegevensverloopwaarde van de virtuele machine niet altijd de som is van het gegevensverloop van de afzonderlijke schijven van de virtuele machine. De piekwaarde voor het gegevensverloop van de virtuele machine is namelijk de piek van de som van het gegevensverloop van de individuele schijven voor elke minuut van de profileringsperiode.
+**Piek gegevens verloop in Mbps (met groei factor)** : Het piek verloop op de schijf (standaard 95e percentiel) met inbegrip van de toekomstige groei factor (standaard 30 procent). Houd er rekening mee dat de totale gegevensverloopwaarde van de virtuele machine niet altijd de som is van het gegevensverloop van de afzonderlijke schijven van de virtuele machine. De piekwaarde voor het gegevensverloop van de virtuele machine is namelijk de piek van de som van het gegevensverloop van de individuele schijven voor elke minuut van de profileringsperiode.
 
-**Aantal schijven**: Het totale aantal vmdk's op de virtuele machine.
+**Aantal schijven**: Het totale aantal Vmdk's op de virtuele machine.
 
-**Schijfgrootte (GB)** : De totale ingestelde grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
+**Schijf grootte (GB)** : De totale installatie grootte van alle schijven van de virtuele machine. Het hulpprogramma toont ook de schijfgrootte voor de afzonderlijke schijven in de virtuele machine.
 
 **Kernen**: Het aantal CPU-kernen op de virtuele machine.
 
 **Geheugen (MB)** : De hoeveelheid RAM-geheugen op de virtuele machine.
 
-**NIC's**: Het aantal NIC's op de virtuele machine.
+**Nic's**: Het aantal Nic's op de virtuele machine.
 
-**Opstarttype**: Opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.  Op dit moment biedt Azure Site Recovery ondersteuning voor Windows Server EFI-VM's (Windows Server 2012, 2012 R2 en 2016), als het aantal partities in de opstartschijf minder is dan 4 en de opstartsector 512 bytes groot is. Als u EFI-VM's wilt beveiligen, moet Azure Site Recovery Mobility Service versie 9.13 of hoger zijn. Alleen failover wordt ondersteund voor EFI-VM's. Failback wordt niet ondersteund.
+**Opstart type**: Opstart type van de virtuele machine. Dit kan BIOS of EFI zijn.  Op dit moment biedt Azure Site Recovery ondersteuning voor Windows Server EFI-VM's (Windows Server 2012, 2012 R2 en 2016), als het aantal partities in de opstartschijf minder is dan 4 en de opstartsector 512 bytes groot is. Als u EFI-VM's wilt beveiligen, moet Azure Site Recovery Mobility Service versie 9.13 of hoger zijn. Alleen failover wordt ondersteund voor EFI-VM's. Failback wordt niet ondersteund.
 
-**Type besturingssysteem**:  Het is type besturingssysteem van de virtuele machine. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.
+**Type besturings systeem**:  Het is het type besturings systeem van de virtuele machine. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-limieten
 De volgende tabel bevat de Azure Site Recovery-limieten. Deze limieten zijn gebaseerd op onze tests, maar dekken niet alle mogelijke toepassings-I/O-combinaties. De werkelijke resultaten kunnen variëren op basis van uw toepassings-I/O-combinatie. Voor optimale resultaten, zelfs na het plannen van de implementatie, is het altijd beter om toepassingen uitgebreid te testen met behulp van een testfailover. Zo krijgt u een nauwkeurig inzicht in de prestaties van de applicatie.

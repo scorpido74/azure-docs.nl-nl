@@ -195,7 +195,7 @@ U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het defi
 
 Volg de instructies in [computers verbinden zonder Internet toegang](../azure-monitor/platform/gateway.md) voor het configureren van computers die geen toegang tot internet hebben.
 
-## <a name="view-update-assessments"></a>Update-evaluaties weer geven
+## <a name="view-update-assessments"></a>Update-evaluaties bekijken
 
 Selecteer in uw Automation-account **updatebeheer** om de status van uw computers weer te geven.
 

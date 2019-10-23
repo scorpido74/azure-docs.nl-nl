@@ -1,5 +1,5 @@
 ---
-title: Importeren uit Azure SQL Database
+title: Importeren vanuit een Azure SQL Database
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module gegevens importeren in Azure Machine Learning Visual Interface voor het ophalen van gegevens uit een Azure SQL Database.
 services: machine-learning
@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72694608"
 ---
-# <a name="import-from-azure-sql-database"></a>Importeren uit Azure SQL Database
+# <a name="import-from-azure-sql-database"></a>Importeren vanuit een Azure SQL Database
 
 In dit artikel wordt beschreven hoe u de module [gegevens importeren](import-data.md) in azure machine learning Visual Interface kunt gebruiken om gegevens op te halen uit een Azure SQL database.  
 

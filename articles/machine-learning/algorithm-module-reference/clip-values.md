@@ -1,5 +1,5 @@
 ---
-title: Clip waarden
+title: Waarden inperken
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module voor clip waarden in Azure Machine Learning-service om uitbijters te detecteren en de waarden ervan te knippen of te vervangen.
 services: machine-learning
@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72694738"
 ---
-# <a name="clip-values"></a>Clip waarden
+# <a name="clip-values"></a>Waarden inperken
 
 In dit artikel wordt een module van Azure Machine Learning visuele interface beschreven.
 
