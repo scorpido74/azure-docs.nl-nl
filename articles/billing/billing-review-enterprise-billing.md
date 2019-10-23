@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 3ff1a119ed87c8bffff227679bec41bc653c0c42
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 47668169841cc2b180995808349487cefed02391
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718777"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754304"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Facturering van Enterprise-enrollment controleren met behulp van REST API's
 
@@ -78,7 +78,7 @@ Statuscode 200 (OK) wordt geretourneerd bij een geslaagd antwoord dat een lijst 
 }
 ```  
 
-Dit voorbeeld is ingekort; zie [Get usage details for a billing account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) (Gebruiksgegevens ophalen voor een factureringsaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
+Dit voorbeeld is ingekort; zie [Get usage details for a billing account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een factureringsaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
 ## <a name="department-billing"></a>Afdelingsfacturering 
 
@@ -134,7 +134,7 @@ In het volgende voorbeeld ziet u de uitvoer van de REST API voor de afdeling `12
 }
 ```  
 
-Dit voorbeeld is ingekort; zie [Get usage details for a department](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) (Gebruiksgegevens ophalen voor een afdeling) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
+Dit voorbeeld is ingekort; zie [Get usage details for a department](/rest/api/consumption/usagedetails/list#departmentusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een afdeling) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
 ## <a name="enrollment-account-billing"></a>Facturering van inschrijvingsaccount
 
@@ -187,7 +187,7 @@ In het volgende voorbeeld ziet u de uitvoer van de REST API voor de Enterprise-e
 }
 ``` 
 
-Dit voorbeeld is ingekort; zie [Get usage details for an enrollment account](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) (Gebruiksgegevens ophalen voor een enrollmentaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
+Dit voorbeeld is ingekort; zie [Get usage details for an enrollment account](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een enrollmentaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
 ## <a name="next-steps"></a>Volgende stappen 
 - Bekijk [Overzicht van Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
