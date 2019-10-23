@@ -98,13 +98,13 @@
     - name: Problemen vaststellen en oplossen
       items:
         - name: Problemen met Redis-server oplossen
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Problemen met Redis-client oplossen
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: Problemen met time-outs oplossen
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: Problemen met gegevensverlies oplossen
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: Schalen
       items:
         - name: Bijwerken naar een andere grootte en laag

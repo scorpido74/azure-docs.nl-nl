@@ -3,10 +3,6 @@
 - name: Architectuur en ontwerp
   href: overview.md
   expanded: false
-  items: null
-- name: Architectuur en ontwerp
-  href: overview.md
-  expanded: false
   items:
     - name: Gedeelde verantwoordelijkheid in de cloud
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure-beveiligingsservices
   href: services-technologies.md
-- name: Technische overzichten
-  href: overviews.md
 - name: Aanbevolen procedures
   href: best-practices-and-patterns.md
 - name: Resources
   items:
     - name: Ingebouwde beveiligingsmaatregelen
       href: security-controls.md
-    - name: MVP-programma voor Azure-beveiliging
-      href: mvp.md
     - name: Adviezen voor cyberbeveiliging
       href: cyber-services.md
     - name: Een ondersteuningsticket voor een beveiligingsgebeurtenis maken
