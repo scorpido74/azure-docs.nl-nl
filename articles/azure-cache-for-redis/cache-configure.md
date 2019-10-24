@@ -1,6 +1,6 @@
 ---
-title: Over het configureren van Azure Cache voor Redis | Microsoft Docs
-description: De standaard Redis-configuratie voor Azure Cache voor Redis begrijpen en informatie over het configureren van uw Azure-Cache voor instanties van Redis
+title: Azure-cache configureren voor redis | Microsoft Docs
+description: Inzicht in de standaard redis-configuratie voor Azure cache voor redis en meer informatie over het configureren van uw Azure-cache voor redis-instanties
 services: cache
 documentationcenter: na
 author: yegu-ms
@@ -14,292 +14,292 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554495"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756801"
 ---
-# <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache voor Redis configureren
-Dit onderwerp beschrijft de configuraties die beschikbaar zijn voor uw Azure-Cache voor instanties van Redis. Dit onderwerp bevat ook de Redis-server standaardconfiguratie voor Azure Cache voor instanties van Redis.
+# <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
+In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
 
 > [!NOTE]
-> Zie voor meer informatie over het configureren en gebruiken premium-functies voor caching [persistentie configureren](cache-how-to-premium-persistence.md), [clustering configureren](cache-how-to-premium-clustering.md), en [ondersteuning voor virtuele netwerken configureren ](cache-how-to-premium-vnet.md).
+> Zie voor meer informatie over het configureren en gebruiken van Premium-cache functies, [persistentie configureren](cache-how-to-premium-persistence.md), [clustering configureren](cache-how-to-premium-clustering.md)en [Virtual Network ondersteuning configureren](cache-how-to-premium-vnet.md).
 > 
 > 
 
-## <a name="configure-azure-cache-for-redis-settings"></a>Azure Cache voor Redis-instellingen configureren
+## <a name="configure-azure-cache-for-redis-settings"></a>Azure-cache voor redis-instellingen configureren
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Cache voor Redis-instellingen worden bekeken en geconfigureerd op de **Azure Cache voor Redis** blade met behulp van de **Resourcemenu**.
+Azure cache voor redis-instellingen worden weer gegeven en geconfigureerd op de Blade **Azure-cache voor redis** met behulp van het **resource menu**.
 
-![Azure Cache voor Redis-instellingen](./media/cache-configure/redis-cache-settings.png)
+![Azure cache voor redis-instellingen](./media/cache-configure/redis-cache-settings.png)
 
-U kunt bekijken en configureren van de volgende instellingen met behulp van de **Resourcemenu**.
+U kunt de volgende instellingen weer geven en configureren met behulp van het **resource menu**.
 
 * [Overzicht](#overview)
 * [Activiteitenlogboek](#activity-log)
-* [Toegangsbeheer (IAM)](#access-control-iam)
+* [Toegangs beheer (IAM)](#access-control-iam)
 * [Tags](#tags)
 * [Problemen vaststellen en oplossen](#diagnose-and-solve-problems)
 * [Instellingen](#settings)
-    * [Toegangssleutels](#access-keys)
+    * [Toegangs sleutels](#access-keys)
     * [Geavanceerde instellingen](#advanced-settings)
-    * [Azure Cache voor Redis-Advisor](#azure-cache-for-redis-advisor)
+    * [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
     * [Schalen](#scale)
-    * [Redis-clusters](#cluster-size)
+    * [Grootte van redis-cluster](#cluster-size)
     * [Redis-gegevenspersistentie](#redis-data-persistence)
     * [Updates plannen](#schedule-updates)
     * [Geo-replicatie](#geo-replication)
     * [Virtueel netwerk](#virtual-network)
     * [Firewall](#firewall)
     * [Eigenschappen](#properties)
-    * [Locks](#locks)
-    * [Automatiseringsscript](#automation-script)
+    * [Vergren delingen](#locks)
+    * [Automatiserings script](#automation-script)
 * Beheer
     * [Gegevens importeren](#importexport)
     * [Gegevens exporteren](#importexport)
     * [Opnieuw opstarten](#reboot)
 * [Controle](#monitoring)
-    * [Metrische redis-gegevens](#redis-metrics)
-    * [Waarschuwingsregels](#alert-rules)
+    * [Metrische gegevens van redis](#redis-metrics)
+    * [Waarschuwings regels](#alert-rules)
     * [Diagnostics](#diagnostics)
-* Ondersteuning en probleemoplossing van instellingen
-    * [Resourcestatus](#resource-health)
-    * [Nieuwe ondersteuningsaanvraag](#new-support-request)
+* Ondersteuning voor het oplossen van problemen met instellingen &
+    * [Resource status](#resource-health)
+    * [Nieuwe ondersteunings aanvraag](#new-support-request)
 
 
 ## <a name="overview"></a>Overzicht
 
-**Overzicht** vindt u basisinformatie over uw cache, zoals naam, poort, prijzen laag en geselecteerde cache metrische gegevens.
+**Overzicht** geeft u algemene informatie over uw cache, zoals naam, poorten, prijs categorie en geselecteerde cache-metrische gegevens.
 
 ### <a name="activity-log"></a>Activiteitenlogboek
 
-Klik op **activiteitenlogboek** om acties die worden uitgevoerd op uw cache weer te geven. U kunt ook filters gebruiken om uit te vouwen in deze weergave zodanig dat andere resources. Zie voor meer informatie over het werken met auditlogboeken [bewerkingen controleren met Resource Manager](../azure-resource-manager/resource-group-audit.md). Zie voor meer informatie over het bewaken van Azure Cache voor Redis-gebeurtenissen [bewerkingen en waarschuwingen](cache-how-to-monitor.md#operations-and-alerts).
+Klik op **activiteiten logboek** om de acties weer te geven die zijn uitgevoerd op uw cache. U kunt ook filteren gebruiken om deze weer gave uit te breiden tot ook andere resources. Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/resource-group-audit.md)voor meer informatie over het werken met audit Logboeken. Zie [bewerkingen en waarschuwingen](cache-how-to-monitor.md#operations-and-alerts)voor meer informatie over het bewaken van Azure cache voor redis-gebeurtenissen.
 
-### <a name="access-control-iam"></a>Toegangsbeheer (IAM)
+### <a name="access-control-iam"></a>Toegangs beheer (IAM)
 
-De **toegangsbeheer (IAM)** sectie biedt ondersteuning voor op rollen gebaseerd toegangsbeheer (RBAC) in Azure portal. Deze configuratie helpt organisaties bij het voldoen aan hun vereisten voor gegevenstoegang management eenvoudig en nauwkeurig. Zie voor meer informatie, [rollen gebaseerd toegangsbeheer in Azure portal](../role-based-access-control/role-assignments-portal.md).
+De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie op [rollen gebaseerd toegangs beheer in de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
 ### <a name="tags"></a>Tags
 
-De **Tags** sectie helpt u uw resources te organiseren. Zie voor meer informatie, [met tags voor het ordenen van uw Azure-resources](../azure-resource-manager/resource-group-using-tags.md).
+De sectie **Tags** helpt u bij het organiseren van uw resources. Zie [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md) voor meer informatie.
 
 
 ### <a name="diagnose-and-solve-problems"></a>Problemen vaststellen en oplossen
 
-Klik op **vaststellen en oplossen van problemen met** worden opgegeven met veelvoorkomende problemen en strategieën voor het oplossen ervan.
+Klik op **problemen vaststellen en oplossen** om te voorzien in veelvoorkomende problemen en strategieën voor het oplossen ervan.
 
 
 
 ## <a name="settings"></a>Instellingen
-De **instellingen** sectie kunt u toegang tot en configureer de volgende instellingen voor uw cache.
+De sectie **instellingen** biedt u de mogelijkheid om de volgende instellingen voor uw cache te openen en te configureren.
 
-* [Toegangssleutels](#access-keys)
+* [Toegangs sleutels](#access-keys)
 * [Geavanceerde instellingen](#advanced-settings)
-* [Azure Cache voor Redis-Advisor](#azure-cache-for-redis-advisor)
+* [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
 * [Schalen](#scale)
-* [Redis-clusters](#cluster-size)
+* [Grootte van redis-cluster](#cluster-size)
 * [Redis-gegevenspersistentie](#redis-data-persistence)
 * [Updates plannen](#schedule-updates)
 * [Geo-replicatie](#geo-replication)
 * [Virtueel netwerk](#virtual-network)
 * [Firewall](#firewall)
 * [Eigenschappen](#properties)
-* [Locks](#locks)
-* [Automatiseringsscript](#automation-script)
+* [Vergren delingen](#locks)
+* [Automatiserings script](#automation-script)
 
 
 
 ### <a name="access-keys"></a>Toegangssleutels
-Klik op **toegangssleutels** te bekijken of genereren van de toegangssleutels voor uw cache. Deze sleutels worden gebruikt door de clients die verbinding maken met uw cache.
+Klik op **toegangs sleutels** om de toegangs sleutels voor uw cache weer te geven of opnieuw te genereren. Deze sleutels worden gebruikt door de clients die verbinding maken met uw cache.
 
-![Azure voor toegangssleutels voor Redis-Cache](./media/cache-configure/redis-cache-manage-keys.png)
+![Azure-cache voor redis-toegangs sleutels](./media/cache-configure/redis-cache-manage-keys.png)
 
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
-De volgende instellingen zijn geconfigureerd op de **geavanceerde instellingen** blade.
+De volgende instellingen worden geconfigureerd op de Blade **Geavanceerde instellingen** .
 
-* [Toegangspoorten](#access-ports)
-* [Beleid voor geheugen](#memory-policies)
-* [Keyspace-meldingen (geavanceerde instellingen)](#keyspace-notifications-advanced-settings)
+* [Toegangs poorten](#access-ports)
+* [Geheugen beleid](#memory-policies)
+* [Meldingen voor de beschik bare ruimte (geavanceerde instellingen)](#keyspace-notifications-advanced-settings)
 
-#### <a name="access-ports"></a>Toegangspoorten
-Voor nieuwe caches is niet-SSL-toegang standaard uitgeschakeld. Als de poort zonder SSL-beveiliging, klikt u op **Nee** voor **toestaan alleen toegang met SSL** op de **geavanceerde instellingen** blade en klik vervolgens op **opslaan**.
+#### <a name="access-ports"></a>Toegangs poorten
+Voor nieuwe caches is niet-SSL-toegang standaard uitgeschakeld. Als u de niet-SSL-poort wilt inschakelen, klikt u op **Nee** voor **alleen toegang via SSL toestaan** op de Blade **Geavanceerde instellingen** en klikt u vervolgens op **Opslaan**.
 
 > [!NOTE]
-> SSL-toegang tot Azure-Cache voor Redis biedt standaard ondersteuning voor TLS 1.0. De minimaal ondersteunde TLS-versie kan worden verhoogd tot TLS 1.2, indien gewenst met behulp van de **minimale TLS-versie** vervolgkeuzelijst op de **geavanceerde instellingen** blade en klik vervolgens op **opslaan**.
+> SSL-toegang tot Azure cache voor redis biedt standaard ondersteuning voor TLS 1,0. De mini maal ondersteunde TLS-versie kan worden verhoogd tot TLS 1,2, indien gewenst, met behulp van de vervolg keuzelijst **minimale TLS-versie** op de Blade **Geavanceerde instellingen** en klik vervolgens op **Opslaan**.
 
-![Azure Cache voor Redis-poorten](./media/cache-configure/redis-cache-access-ports.png)
+![Azure-cache voor redis-toegangs poorten](./media/cache-configure/redis-cache-access-ports.png)
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
-#### <a name="memory-policies"></a>Beleid voor geheugen
-De **Maxmemory-beleid**, **maxmemory-gereserveerde**, en **maxfragmentationmemory gereserveerd** instellingen op de **geavanceerde instellingen** Blade de geheugen-beleid voor de cache configureren.
+#### <a name="memory-policies"></a>Geheugen beleid
+De instellingen voor **Maxmemory-beleid**, **Maxmemory-reserved**en **maxfragmentationmemory-reserved** op de Blade **Geavanceerde instellingen** configureren het geheugen beleid voor de cache.
 
-![Azure Cache voor Redis Maxmemory-beleid](./media/cache-configure/redis-cache-maxmemory-policy.png)
+![Azure-cache voor redis Maxmemory-beleid](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-**Maxmemory-beleid** configureert u het verwijderingsbeleid voor de cache en kunt u kiezen uit de volgende beleidsregels voor taakverwijdering:
+Met **Maxmemory-beleid** configureert u het verwijderings beleid voor de cache en kunt u kiezen uit het volgende verwijderings beleid:
 
-* `volatile-lru` -Dit is het standaardbeleid voor verwijdering.
+* `volatile-lru`: dit is het standaard beleid voor verwijdering.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
 * `volatile-ttl`
 * `noeviction`
 
-Voor meer informatie over `maxmemory` beleid, Zie [verwijderingsbeleid](https://redis.io/topics/lru-cache#eviction-policies).
+Zie [verwijderings beleid](https://redis.io/topics/lru-cache#eviction-policies)voor meer informatie over `maxmemory`-beleid.
 
-De **maxmemory-gereserveerde** instelling configureert u de hoeveelheid geheugen in MB, die is gereserveerd voor niet-cache-bewerkingen, zoals replicatie tijdens de failover. Deze waarde instelt, kunt u een consistente gebruikerservaring van de Redis-server hebben wanneer de belasting varieert. Deze waarde moet hoger zijn voor workloads die zijn geschreven zware worden ingesteld. Wanneer het geheugen is gereserveerd voor dergelijke bewerkingen plaatsvindt, is het niet beschikbaar voor de opslag van gegevens in de cache.
+De instelling **maxmemory-gereserveerde** configureert de hoeveelheid geheugen (in MB) die is gereserveerd voor niet-cache bewerkingen, zoals replicatie tijdens failover. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer uw belasting varieert. Deze waarde moet hoger worden ingesteld voor werk belastingen die zijn geschreven. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
-De **maxfragmentationmemory gereserveerd** instelling configureert u de hoeveelheid geheugen in MB die is gereserveerd voor fragmentatie van het geheugen. Deze waarde in te stellen, kunt u een consistente gebruikerservaring van de Redis-server hebben als de cache vol is of bijna vol is en de fragmentatie van de verhouding hoog is. Wanneer het geheugen is gereserveerd voor dergelijke bewerkingen plaatsvindt, is het niet beschikbaar voor de opslag van gegevens in de cache.
+De instelling **maxfragmentationmemory-gereserveerde** configureert de hoeveelheid geheugen in MB die is gereserveerd voor geheugen fragmentatie. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer de cache vol is of bijna vol is en de fragmentatie verhouding hoog is. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
-Eén ding te overwegen bij het kiezen van een nieuwe waarde voor de reservering van geheugen (**maxmemory-gereserveerde** of **maxfragmentationmemory gereserveerd**) is deze wijziging kan invloed van een cache die al wordt uitgevoerd met grote hoeveelheden gegevens. Als u een cache van 53 GB met 49 GB aan gegevens en vervolgens wijzigt u de waarde van de reservering in 8 GB, wordt deze wijziging bijvoorbeeld de maximale hoeveelheid beschikbaar geheugen voor het systeem op 45 GB verwijderen. Als uw huidige `used_memory` of uw `used_memory_rss` waarden hoger is dan de nieuwe limiet van 45 GB zijn, en vervolgens het systeem heeft onbeschikbaar maken van gegevens tot beide `used_memory` en `used_memory_rss` hieronder 45 GB zijn. Verwijdering kan de fragmentatie van de belasting en het geheugen van de server vergroten. Voor meer informatie over cache metrische gegevens zoals `used_memory` en `used_memory_rss`, Zie [beschikbare metrische gegevens en rapportage van intervallen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
-
-> [!IMPORTANT]
-> De **maxmemory-gereserveerde** en **maxfragmentationmemory gereserveerd** instellingen zijn alleen beschikbaar voor Standard en Premium-caches.
-> 
-> 
-
-#### <a name="keyspace-notifications-advanced-settings"></a>Keyspace-meldingen (geavanceerde instellingen)
-Redis keyspace-meldingen zijn geconfigureerd op de **geavanceerde instellingen** blade. Keyspace-kennisgevingen kunnen clients meldingen ontvangen wanneer bepaalde gebeurtenissen optreden.
-
-![Geavanceerde instellingen van Azure Redis-Cache](./media/cache-configure/redis-cache-advanced-settings.png)
+Een ding waarmee u rekening moet houden bij het kiezen van een nieuwe waarde voor geheugen reservering (**maxmemory** of **maxfragmentationmemory-** Reserved), is de manier waarop deze wijziging van invloed kan zijn op een cache die al wordt uitgevoerd met grote hoeveel heden gegevens. Als u bijvoorbeeld een cache van 53 GB met gegevens van 49 GB hebt, wijzigt u de reserverings waarde in 8 GB. deze wijziging zal de Maxi maal beschik bare hoeveelheid geheugen voor het systeem verlagen tot 45 GB. Als uw huidige `used_memory` of uw `used_memory_rss` waarden hoger zijn dan de nieuwe limiet van 45 GB, dan moet het systeem gegevens verwijderen totdat de `used_memory` en `used_memory_rss` lager zijn dan 45 GB. Verwijderen kan de belasting van de server en de geheugen fragmentatie verhogen. Zie [beschik bare metrische gegevens en rapportage-intervallen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)voor meer informatie over de cache-metrische gegevens, zoals `used_memory` en `used_memory_rss`.
 
 > [!IMPORTANT]
-> Keyspace-meldingen en de **op de hoogte stellen-keyspace-gebeurtenissen** instelling zijn alleen beschikbaar voor Standard en Premium-caches.
+> De instellingen voor **maxmemory** en **maxfragmentationmemory-reserve** ring zijn alleen beschikbaar voor de standaard-en Premium-caches.
 > 
 > 
 
-Zie voor meer informatie, [Keyspace-meldingen Redis](https://redis.io/topics/notifications). Zie voor een voorbeeld van code, de [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) -bestand in de [Hallo wereld](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) voorbeeld.
+#### <a name="keyspace-notifications-advanced-settings"></a>Meldingen voor de beschik bare ruimte (geavanceerde instellingen)
+Redis moeten worden geconfigureerd op de Blade **Geavanceerde instellingen** . Met deze meldingen kunnen clients meldingen ontvangen wanneer bepaalde gebeurtenissen optreden.
+
+![Azure cache voor geavanceerde instellingen voor redis](./media/cache-configure/redis-cache-advanced-settings.png)
+
+> [!IMPORTANT]
+> De instellingen voor het instellen van de gebeurtenis-ruimte en de instelling voor de **bericht-** Keys-fout ruimte zijn alleen beschikbaar voor de standaard-en Premium-caches.
+> 
+> 
+
+Zie [redis-meldingen](https://redis.io/topics/notifications)voor meer informatie. Zie het [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) -bestand in het [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) -voor beeld voor een voorbeeld code.
 
 
 <a name="recommendations"></a>
-## <a name="azure-cache-for-redis-advisor"></a>Azure Cache voor Redis-Advisor
-De **Azure Cache voor Advisor Redis** blade aanbevelingen voor uw cache wordt weergegeven. Tijdens normale bewerkingen, worden geen aanbevelingen weergegeven. 
+## <a name="azure-cache-for-redis-advisor"></a>Azure-cache voor redis Advisor
+In de Blade **Azure cache voor redis Advisor** worden aanbevelingen voor uw cache weer gegeven. Tijdens normale bewerkingen worden er geen aanbevelingen weer gegeven. 
 
 ![Aanbevelingen](./media/cache-configure/redis-cache-no-recommendations.png)
 
-Als geen voorwaarden tijdens de bewerkingen van uw cache zoals hoog geheugengebruik, de bandbreedte van het netwerk of de belasting van de server optreden, een waarschuwing wordt weergegeven op de **Azure Cache voor Redis** blade.
+Als er omstandigheden optreden tijdens de bewerkingen van uw cache, zoals intensief geheugen gebruik, netwerk bandbreedte of server belasting, wordt er een waarschuwing weer gegeven op de Blade **Azure-cache voor redis** .
 
 ![Aanbevelingen](./media/cache-configure/redis-cache-recommendations-alert.png)
 
-Meer informatie vindt u op de **aanbevelingen** blade.
+Meer informatie vindt u op de Blade **aanbevelingen** .
 
 ![Aanbevelingen](./media/cache-configure/redis-cache-recommendations.png)
 
-U kunt deze metrische gegevens controleren op de [Controlegrafieken](cache-how-to-monitor.md#monitoring-charts) en [gebruik grafieken](cache-how-to-monitor.md#usage-charts) secties van de **Azure Cache voor Redis** blade.
+U kunt deze metrische gegevens bewaken in de secties [controle grafieken](cache-how-to-monitor.md#monitoring-charts) en [gebruiks grafieken](cache-how-to-monitor.md#usage-charts) van de Blade **Azure-cache voor redis** .
 
-Elke prijscategorie heeft verschillende beperkingen voor clientverbindingen, het geheugen en bandbreedte. Als uw cache nadert de maximale capaciteit voor deze metrische gegevens gedurende een langere periode tijd wordt opgelost, wordt een aanbeveling gemaakt. Voor meer informatie over de metrische gegevens en -beperkingen gecontroleerd door de **aanbevelingen** hulpprogramma, raadpleegt u de volgende tabel:
+Elke prijs categorie heeft verschillende limieten voor client verbindingen, geheugen en band breedte. Als uw cache de maximale capaciteit voor deze metrische gegevens gedurende een langere periode nadert, wordt er een aanbeveling gemaakt. Zie de volgende tabel voor meer informatie over de metrische gegevens en limieten die door het hulp programma **aanbevelingen** worden gecontroleerd:
 
-| Azure Cache voor Redis metrische gegevens | Meer informatie |
+| Azure-cache voor redis-metriek | Meer informatie |
 | --- | --- |
-| Gebruik van netwerkbandbreedte |[Prestaties van de cache - beschikbare bandbreedte](cache-faq.md#cache-performance) |
-| Verbonden clients |[Standaard Redis-serverconfiguratie - maxclients](#maxclients) |
-| Belasting van de server |[Gebruik grafieken - Redis-Serververmogen](cache-how-to-monitor.md#usage-charts) |
-| Geheugengebruik |[Prestaties van de cache - grootte](cache-faq.md#cache-performance) |
+| Gebruik van netwerk bandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
+| Verbonden clients |[Standaard redis-server configuratie-MaxClients](#maxclients) |
+| Server belasting |[Gebruiks grafieken-redis-server belasting](cache-how-to-monitor.md#usage-charts) |
+| Geheugen gebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
 
-Als u uw cache bijwerken, klikt u op **nu een upgrade uitvoeren** de prijscategorie wijzigen en [schaal](#scale) uw cache. Zie voor meer informatie over het kiezen van een prijscategorie [welke Azure Cache voor Redis-aanbieding en de grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Schalen
-Klik op **schaal** weergeven of wijzigen van de prijscategorie voor uw cache. Zie voor meer informatie over het omhoog schalen [hoe Scale Azure Cache voor Redis](cache-how-to-scale.md).
+### <a name="scale"></a>Schaal
+Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijzigen. Zie [Azure-cache schalen voor redis](cache-how-to-scale.md)voor meer informatie over schalen.
 
-![Azure Cache voor Redis prijscategorie](./media/cache-configure/pricing-tier.png)
+![Azure cache voor redis-prijs categorie](./media/cache-configure/pricing-tier.png)
 
 <a name="cluster-size"></a>
 
-### <a name="redis-cluster-size"></a>Redis-clusters
-Klik op **(PREVIEW) Redis clustergrootte** te wijzigen van de grootte van het cluster voor een actieve premium-cache met clustering is ingeschakeld.
+### <a name="redis-cluster-size"></a>Grootte van redis-cluster
+Klik **(preview) redis-cluster grootte** om de cluster grootte te wijzigen voor een actieve Premium-cache waarbij Clustering is ingeschakeld.
 
 > [!NOTE]
-> Houd er rekening mee dat de Azure-Cache voor Premium-laag Redis is vrijgegeven voor algemene beschikbaarheid, de clustergrootte Redis-functie momenteel in preview is.
+> Houd er rekening mee dat als de Azure-cache voor de Premium-laag van redis is uitgebracht voor algemene Beschik baarheid, de functie redis cluster size momenteel in preview is.
 > 
 > 
 
-![Redis-clusters](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Grootte van redis-cluster](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-Gebruik de schuifregelaar om de clustergrootte, of typ een getal tussen 1 en 10 in de **aantal Shards** tekstvak en klik op **OK** om op te slaan.
+Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u een getal tussen 1 en 10 in het tekstvak **Shard aantal** en klikt u op **OK** om op te slaan.
 
 > [!IMPORTANT]
-> Redis-clustering is alleen beschikbaar voor Premium-caches. Zie voor meer informatie, [configureren voor een Premium Azure Cache voor Redis clustering](cache-how-to-premium-clustering.md).
+> Redis-Clustering is alleen beschikbaar voor Premium-caches. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
 > 
 > 
 
 
 ### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
-Klik op **Redis-gegevenspersistentie** als u wilt inschakelen, uitschakelen of persistentie van gegevens voor uw premium-cache configureren. Azure Redis-Cache met behulp van Redis-persistentie biedt [RDB persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klik op **redis gegevens persistentie** om de gegevens persistentie voor uw Premium-cache in te scha kelen of uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
-Zie voor meer informatie, [persistentie voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-persistence.md).
+Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
 
 
 > [!IMPORTANT]
-> Redis-gegevenspersistentie is alleen beschikbaar voor Premium-caches.
+> Redis-gegevens persistentie is alleen beschikbaar voor Premium-caches.
 > 
 > 
 
 ### <a name="schedule-updates"></a>Updates plannen
-De **updates plannen** blade kunt u om een onderhoudsvenster voor updates van de Redis-server voor uw cache toe te wijzen. 
+Op de Blade **updates plannen** kunt u een onderhouds venster voor redis-server updates voor uw cache aanwijzen. 
 
 > [!IMPORTANT]
-> Het onderhoudsvenster is alleen van toepassing op server-updates, Redis en niet voor alle Azure-updates of updates voor het besturingssysteem van de virtuele machines die als host de cache fungeren.
+> Het onderhouds venster is alleen van toepassing op redis-server updates en niet op Azure-updates of updates voor het besturings systeem van de virtuele machines die de cache hosten.
 > 
 > 
 
 ![Updates plannen](./media/cache-configure/redis-schedule-updates.png)
 
-Als u een onderhoudsvenster, controleert u de gewenste dagen en geef de begintijd van onderhoud-venster voor elke dag en op **OK**. De duur van het onderhoudsvenster is ingesteld op UTC.
+Als u een onderhouds venster wilt opgeven, controleert u de gewenste dagen en geeft u het onderhouds venster voor elke dag op en klikt u op **OK**. De tijd van het onderhouds venster is UTC.
 
 > [!IMPORTANT]
-> De **updates plannen** functionaliteit is alleen beschikbaar voor Premium-laag-caches. Zie voor meer informatie en instructies [Azure Cache voor het beheer van de Redis - updates plannen](cache-administration.md#schedule-updates).
+> De functionaliteit voor het **plannen van updates** is alleen beschikbaar voor Premium-laag caches. Zie voor meer informatie en instructies [Azure cache voor redis-beheer-updates plannen](cache-administration.md#schedule-updates).
 > 
 > 
 
 ### <a name="geo-replication"></a>Geo-replicatie
 
-De **Geo-replicatie** blade biedt een mechanisme voor het koppelen van twee Premium-laag Azure Cache voor instanties van Redis. Een cache is ingesteld als de primaire gekoppelde cache, en de andere als de gekoppelde secundaire cache. De gekoppelde secundaire cache wordt alleen-lezen en gegevens geschreven naar de primaire cache gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt voor het repliceren van een cache Azure-regio's.
+De Blade **geo-replicatie** biedt een mechanisme voor het koppelen van twee Premium-laag Azure-cache voor redis-exemplaren. Eén cache wordt aangeduid als de primaire gekoppelde cache en de andere als de secundaire gekoppelde cache. De secundaire gekoppelde cache wordt alleen-lezen en de gegevens die naar de primaire cache worden geschreven, worden gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt om een cache te repliceren tussen Azure-regio's.
 
 > [!IMPORTANT]
-> **Geo-replicatie** is alleen beschikbaar voor Premium-laag-caches. Zie voor meer informatie en instructies [Geo-replicatie configureren voor Azure Cache voor Redis](cache-how-to-geo-replication.md).
+> **Geo-replicatie** is alleen beschikbaar voor Premium-laag caches. Zie [geo-replicatie voor Azure cache configureren voor redis](cache-how-to-geo-replication.md)voor meer informatie en instructies.
 > 
 > 
 
 ### <a name="virtual-network"></a>Virtueel netwerk
-De **Virtueelnetwerk** sectie kunt u de instellingen van het virtuele netwerk voor uw cache kunt configureren. Voor informatie over het maken van een premium-cache met VNET ondersteunen en de instellingen worden bijgewerkt, Zie [ondersteuning voor het virtuele netwerk configureren voor een Premium Azure Cache voor Redis](cache-how-to-premium-vnet.md).
+Met de sectie **Virtual Network** kunt u de instellingen van het virtuele netwerk voor uw cache configureren. Zie [Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie over het maken van een Premium-cache met VNET-ondersteuning en het bijwerken van de instellingen.
 
 > [!IMPORTANT]
-> Instellingen voor virtuele netwerken zijn alleen beschikbaar voor premium-caches die zijn geconfigureerd met VNET-ondersteuning tijdens het maken van de cache. 
+> De instellingen voor het virtuele netwerk zijn alleen beschikbaar voor Premium-caches die zijn geconfigureerd met VNET-ondersteuning tijdens het maken van de cache. 
 > 
 > 
 
 ### <a name="firewall"></a>Firewall
 
-Configuratie van de firewall-regels is beschikbaar voor alle Azure-Cache voor Redis-lagen.
+De configuratie van de firewall regels is beschikbaar voor alle Azure-cache voor redis-lagen.
 
-Klik op **Firewall** wilt weergeven en configureren van de firewallregels voor de cache.
+Klik op **firewall** om firewall regels voor cache weer te geven en te configureren.
 
 ![Firewall](./media/cache-configure/redis-firewall-rules.png)
 
-U kunt de firewall-regels met een begin- en IP-adresbereik opgeven. Wanneer de firewall-regels zijn geconfigureerd, worden alleen clientverbindingen van het opgegeven IP-adresbereiken worden verbonden met de cache. Wanneer een firewallregel wordt opgeslagen, is er een korte vertraging voordat de regel is van kracht. Deze vertraging is meestal minder dan één minuut.
+U kunt Firewall regels met een begin-en eind-IP-adres bereik opgeven. Wanneer de firewall regels zijn geconfigureerd, kunnen alleen client verbindingen van de opgegeven IP-adresbereiken verbinding maken met de cache. Wanneer een firewall regel wordt opgeslagen, is er een korte vertraging voordat de regel effectief is. Deze vertraging is doorgaans minder dan een minuut.
 
 > [!IMPORTANT]
-> Verbindingen van Azure Cache voor Redis bewakingssystemen zijn altijd toegestaan, zelfs als er firewallregels zijn geconfigureerd.
+> Verbindingen van Azure cache voor redis-bewakings systemen zijn altijd toegestaan, zelfs als de firewall regels zijn geconfigureerd.
 > 
 > 
 
-### <a name="properties"></a>Properties
-Klik op **eigenschappen** om informatie over de cache, met inbegrip van de cache-eindpunt en de poorten te bekijken.
+### <a name="properties"></a>Eigenschappen
+Klik op **Eigenschappen** om informatie over uw cache weer te geven, met inbegrip van het cache-eind punt en de poorten.
 
-![Azure Cache voor Redis-eigenschappen](./media/cache-configure/redis-cache-properties.png)
+![Azure cache voor redis-eigenschappen](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>Vergrendelingen
-De **Hiermee vergrendelt u** sectie kunt u een abonnement, resourcegroep of resource om te voorkomen dat andere gebruikers in uw organisatie per ongeluk verwijderen of aanpassen van kritieke resources vergrendelen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+Met de sectie **vergren** delen kunt u een abonnement, een resource groep of een resource om te voor komen dat andere gebruikers in uw organisatie per ongeluk essentiële bronnen verwijderen of wijzigen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Automatiseringsscript
+### <a name="automation-script"></a>Automatiserings script
 
-Klik op **automatiseringsscript** te exporteren van een sjabloon van uw geïmplementeerde resources voor toekomstige implementaties. Zie voor meer informatie over het werken met sjablonen [resources implementeren met Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-template-deploy.md).
+Klik op **Automation script** om een sjabloon van uw geïmplementeerde resources te bouwen en exporteren voor toekomstige implementaties. Zie [resources implementeren met Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie over het werken met sjablonen.
 
-## <a name="administration-settings"></a>Instellingen voor beheer
-De instellingen in de **beheer** sectie kunt u de volgende beheertaken uitvoeren voor uw cache. 
+## <a name="administration-settings"></a>Beheer instellingen
+Met de instellingen in de sectie **beheer** kunt u de volgende beheer taken voor uw cache uitvoeren. 
 
 ![Beheer](./media/cache-configure/redis-cache-administration.png)
 
@@ -308,214 +308,214 @@ De instellingen in de **beheer** sectie kunt u de volgende beheertaken uitvoeren
 * [Opnieuw opstarten](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
-Import/Export is een Azure-Cache voor Redis gegevensbewerking voor het beheer, zodat u kunt importeren en exporteren van gegevens in de cache door te importeren en exporteren van een Azure-Cache voor de momentopname Redis-Database (RDB) van een premium-cache naar een pagina-blobs in een Azure Storage-Account. Import/Export kunt u migreren tussen verschillende Azure-Cache voor instanties van Redis of vullen van de cache met gegevens voor het gebruik.
+### <a name="importexport"></a>Import/export
+Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens in de cache kunt importeren en exporteren door een Azure-cache voor een redis-data base (RDB)-moment opname te importeren en exporteren van een Premium-cache naar een pagina-Blob in een Azure Storage-account. Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor redis-exemplaren of de cache vullen met gegevens voor gebruik.
 
-Invoer kan worden gebruikt om Redis compatibele RDB-bestanden vanaf een willekeurige Redis-server die wordt uitgevoerd in een cloud of de omgeving, met inbegrip van Redis die worden uitgevoerd op Linux, Windows of elke andere cloudprovider, zoals Amazon Web Services en andere. Importeren van gegevens is een eenvoudige manier om te maken van een cache met vooraf ingevulde gegevens. Tijdens het importproces Azure voor Redis-Cache laadt de RDB-bestanden van Azure storage in het geheugen en voegt vervolgens de sleutels in de cache.
+Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van elke redis-server die in een wille keurige Cloud of omgeving wordt uitgevoerd, waaronder redis die wordt uitgevoerd op Linux, Windows of een Cloud provider zoals Amazon Web Services en anderen. Het importeren van gegevens is een eenvoudige manier om een cache met vooraf gevulde gegevens te maken. Tijdens het import proces laadt Azure cache voor redis de RDB-bestanden vanuit Azure Storage in het geheugen en voegt vervolgens de sleutels in de cache in.
 
-Export kunt u de gegevens die zijn opgeslagen in Azure Cache voor Redis-Redis compatibele RDB-bestanden exporteren. U kunt deze functie gebruiken om gegevens te verplaatsen van een Azure-Cache voor Redis-exemplaar naar een andere of naar een andere Redis-server. Tijdens het exportproces een tijdelijke bestand wordt gemaakt op de virtuele machine die als host fungeert voor de Azure-Cache voor Redis-server-exemplaar en het bestand is geüpload naar de aangewezen storage-account. Wanneer de exportbewerking is voltooid met de status geslaagd of mislukt, wordt het tijdelijke bestand verwijderd.
+Met exporteren kunt u de gegevens die zijn opgeslagen in azure cache exporteren voor redis naar redis-compatibele RDB-bestanden. U kunt deze functie gebruiken om gegevens van één Azure-cache te verplaatsen voor een redis-exemplaar naar een ander of een andere redis-server. Tijdens het export proces wordt er een tijdelijk bestand gemaakt op de virtuele machine die als host fungeert voor de Azure-cache voor redis server-exemplaar, en wordt het bestand geüpload naar het aangewezen opslag account. Wanneer de export bewerking is voltooid met de status geslaagd of mislukt, wordt het tijdelijke bestand verwijderd.
 
 > [!IMPORTANT]
-> Import/Export is alleen beschikbaar voor Premium-laag-caches. Zie voor meer informatie en instructies [importeren en exporteren van gegevens in Azure-Cache voor Redis](cache-how-to-import-export-data.md).
+> Import/export is alleen beschikbaar voor Premium-laag caches. Zie [gegevens importeren en exporteren in azure-cache voor redis](cache-how-to-import-export-data.md)voor meer informatie en instructies.
 > 
 > 
 
 ### <a name="reboot"></a>Opnieuw opstarten
-De **opnieuw opstarten** blade kunt u de knooppunten van uw cache opnieuw opstarten. Deze mogelijkheid opnieuw opstarten, kunt u uw testtoepassing voor tolerantie als er een storing van een cacheknooppunt.
+Op de Blade **opnieuw opstarten** kunt u de knoop punten van de cache opnieuw opstarten. Met deze mogelijkheid voor opnieuw opstarten kunt u uw toepassing testen op tolerantie als er een fout optreedt in een cache knooppunt.
 
 ![Opnieuw opstarten](./media/cache-configure/redis-cache-reboot.png)
 
-Als u een premium-cache hebt met clustering is ingeschakeld, kunt u selecteren welke shards van de cache op te starten.
+Als u een Premium-cache met clustering hebt ingeschakeld, kunt u selecteren welke Shards de cache moet worden opgestart.
 
 ![Opnieuw opstarten](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Een of meer knooppunten van uw cache opnieuw opstarten, selecteer de gewenste knooppunten en klikt u op **opnieuw opstarten**. Als u een premium-cache hebt met clustering is ingeschakeld, selecteert u de shards die opnieuw op en klik vervolgens op **opnieuw opstarten**. Na een paar minuten weer de geselecteerde knooppunten opnieuw opstarten, en zijn online een paar minuten later opnieuw.
+Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u de gewenste knoop punten en klikt u op **opnieuw opstarten**. Als u een Premium-cache met clustering hebt ingeschakeld, selecteert u de Shard (s) om opnieuw op te starten en klikt u vervolgens op **opnieuw opstarten**. Na een paar minuten worden de geselecteerde knoop punten opnieuw opgestart en zijn ze een paar minuten later weer online.
 
 > [!IMPORTANT]
-> Opnieuw opstarten is nu beschikbaar voor alle Prijscategorieën. Zie voor meer informatie en instructies [Azure Cache voor het beheer van de Redis - opnieuw opstarten](cache-administration.md#reboot).
+> Opnieuw opstarten is nu beschikbaar voor alle prijs categorieën. Zie voor meer informatie en instructies [Azure cache voor redis Administration-reboot](cache-administration.md#reboot).
 > 
 > 
 
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
-De **bewaking** sectie kunt u configureren diagnose en controle voor uw Azure-Cache voor Redis. Zie voor meer informatie over Azure Cache voor Redis-controle en diagnostiek, [Azure Cache controleren voor Redis](cache-how-to-monitor.md).
+In de sectie **bewaking** kunt u Diagnostische gegevens en bewaking configureren voor uw Azure-cache voor redis. Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informatie over Azure cache voor redis-controle en-diagnose.
 
-![Diagnostiek](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
 
-* [Metrische redis-gegevens](#redis-metrics)
-* [Waarschuwingsregels](#alert-rules)
+* [Metrische gegevens van redis](#redis-metrics)
+* [Waarschuwings regels](#alert-rules)
 * [Diagnostics](#diagnostics)
 
-### <a name="redis-metrics"></a>Metrische redis-gegevens
-Klik op **metrische Redis** naar [Bekijk metrische gegevens](cache-how-to-monitor.md#view-cache-metrics) voor uw cache.
+### <a name="redis-metrics"></a>Metrische gegevens van redis
+Klik op **redis metrische gegevens** om de [metrische gegevens](cache-how-to-monitor.md#view-cache-metrics) voor uw cache weer te geven.
 
 ### <a name="alert-rules"></a>Waarschuwingsregels
 
-Klik op **waarschuwingsregels** waarschuwingen op basis van Azure Cache voor Redis metrische gegevens configureren. Zie voor meer informatie, [waarschuwingen](cache-how-to-monitor.md#alerts).
+Klik op **waarschuwings regels** om waarschuwingen te configureren op basis van Azure cache voor redis metrische gegevens. Zie [waarschuwingen](cache-how-to-monitor.md#alerts)voor meer informatie.
 
-### <a name="diagnostics"></a>Diagnostiek
+### <a name="diagnostics"></a>Diagnostics
 
-Metrische cache-gegevens in Azure Monitor zijn standaard [30 dagen bewaard](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u wilt uw cache metrische gegevens langer dan 30 dagen behouden, klikt u op **diagnostische gegevens** naar [configureren van het opslagaccount](cache-how-to-monitor.md#export-cache-metrics) gebruikt voor het opslaan van cache diagnostische gegevens.
+Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache gegevens langer dan 30 dagen wilt behouden, klikt u op **diagnose** om [het opslag account te configureren](cache-how-to-monitor.md#export-cache-metrics) dat wordt gebruikt voor het opslaan van de diagnostische gegevens van de cache.
 
 >[!NOTE]
->Naast het archiveren van uw cache metrische gegevens naar de opslag, kunt u ook [ze naar een Event hub streamen of ze verzenden naar de logboeken van Azure Monitor](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+>Naast het archiveren van uw cache-metrische gegevens naar opslag, kunt u [ze ook streamen naar een event hub of naar Azure monitor-logboeken verzenden](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 >
 >
 
-## <a name="support--troubleshooting-settings"></a>Ondersteuning en probleemoplossing van instellingen
-De instellingen in de **ondersteuning en probleemoplossing** sectie u voorzien van opties voor het oplossen van problemen met uw cache.
+## <a name="support--troubleshooting-settings"></a>Ondersteuning voor het oplossen van problemen met instellingen &
+De instellingen in de sectie **ondersteuning en probleem oplossing** bieden u opties voor het oplossen van problemen met uw cache.
 
-![Ondersteuning en probleemoplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Ondersteuning en probleem oplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [Resourcestatus](#resource-health)
-* [Nieuwe ondersteuningsaanvraag](#new-support-request)
+* [Resource status](#resource-health)
+* [Nieuwe ondersteunings aanvraag](#new-support-request)
 
-### <a name="resource-health"></a>Status van resources
-**Resourcestatus** wordt de resource gecontroleerd en wordt aangegeven of deze wordt uitgevoerd zoals verwacht. Zie voor meer informatie over de Azure Resource health-service, [overzicht van Azure Resource health](../resource-health/resource-health-overview.md).
+### <a name="resource-health"></a>Bronnenstatus
+De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt uitgevoerd zoals verwacht. Zie [overzicht van Azure resource Health](../resource-health/resource-health-overview.md)voor meer informatie over de Azure resource Health-Service.
 
 > [!NOTE]
-> Resource health is momenteel niet om te rapporteren over de status van Azure Cache voor Redis-exemplaren die worden gehost in een virtueel netwerk. Zie voor meer informatie, [, werken alle functies van de cache bij het hosten van een cache in een VNET?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> Resource Health kan momenteel niet rapporteren over de status van Azure-cache voor redis-exemplaren die worden gehost in een virtueel netwerk. Zie [alle cache functies werken bij het hosten van een cache in een VNET](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet) voor meer informatie.
 > 
 > 
 
 ### <a name="new-support-request"></a>Nieuw ondersteuningsverzoek
-Klik op **nieuwe ondersteuningsaanvraag** om een ondersteuningsaanvraag voor uw cache te openen.
+Klik op **nieuwe ondersteunings aanvraag** om een ondersteunings aanvraag voor uw cache te openen.
 
 
 
 
 
-## <a name="default-redis-server-configuration"></a>Standaardconfiguratie voor Redis-server
-Nieuwe Azure-Cache voor Redis-exemplaren zijn geconfigureerd met de volgende waarden van standaard Redis-configuratie:
+## <a name="default-redis-server-configuration"></a>Standaard configuratie van de redis-server
+Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende standaard instellingen voor redis-configuratie:
 
 > [!NOTE]
-> De instellingen in deze sectie kunnen niet worden gewijzigd met behulp van de `StackExchange.Redis.IServer.ConfigSet` methode. Als deze methode wordt aangeroepen met een van de opdrachten in deze sectie, wordt er een vergelijkbaar met het volgende voorbeeld uitzondering gegenereerd:  
+> De instellingen in deze sectie kunnen niet worden gewijzigd met behulp van de `StackExchange.Redis.IServer.ConfigSet` methode. Als deze methode wordt aangeroepen met een van de opdrachten in deze sectie, wordt een uitzonde ring gegenereerd die lijkt op het volgende voor beeld:  
 > 
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 > 
-> Alle waarden die kunnen worden geconfigureerd, zoals **max-geheugen-policy**, kunnen worden geconfigureerd via de Azure portal of beheer via de opdrachtregel-hulpprogramma's zoals Azure CLI of PowerShell.
+> Alle waarden die kunnen worden geconfigureerd, zoals **Max-Memory-Policy**, kunnen worden geconfigureerd via de Azure portal of opdracht regel beheer Programma's zoals Azure CLI of Power shell.
 > 
 > 
 
-| Instelling | Standaardwaarde | Description |
+| Instelling | Standaardwaarde | Beschrijving |
 | --- | --- | --- |
-| `databases` |16 |Het standaardnummer van databases is 16, maar u kunt een ander nummer op basis van de prijscategorie configureren. <sup>1</sup> de standaarddatabase DB 0 is, kunt u een ander account op een per verbinding uit te voeren met `connection.GetDatabase(dbid)` waar `dbid` is een getal tussen `0` en `databases - 1`. |
-| `maxclients` |Afhankelijk van de prijscategorie<sup>2</sup> |Deze waarde is het maximum aantal verbonden clients toegestaan op hetzelfde moment. Zodra de limiet is bereikt gesloten Redis alle nieuwe verbindingen, een 'maximum aantal clients bereikt'-fout. |
-| `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe Redis wat u selecteert wilt verwijderen wanneer `maxmemory` (de grootte van de cache die u hebt geselecteerd tijdens het maken van de cache-aanbieding) is bereikt. Met Azure Cache voor Redis de standaardinstelling is `volatile-lru`, waarbij de sleutels worden verwijderd met een vervaldatum instellen met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in Azure portal. Zie voor meer informatie, [geheugen beleid](#memory-policies). |
-| `maxmemory-samples` |3 |Zijn redelijk algoritmen in plaats van exacte algoritmen te besparen, LRU- en minimale TTL-algoritmen. Redis standaard drie sleutels controles en aanbiedingen die minder recent is gebruikt. |
-| `lua-time-limit` |5,000 |Maximale uitvoeringstijd van een Lua-script in milliseconden. Als de maximum uitvoeringstijd is bereikt, wordt Redis registreert dat een script nog steeds uitgevoerd na de maximale toegestane tijd wordt, en begint met de antwoorden op query's met een fout. |
-| `lua-event-limit` |500 |Maximale grootte van de wachtrij script. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten van client uitvoer buffer kunnen worden gebruikt om af te dwingen ontkoppeling van clients die niet van gegevens van de server snel genoeg om een bepaalde reden lezen zijn (een veelvoorkomende reden is dat een Pub/Sub-client zo snel mogelijk de publisher kunt maken ze berichten kan niet gebruiken). Zie voor meer informatie, [ https://redis.io/topics/clients ](https://redis.io/topics/clients). |
+| `databases` |16 |Het standaard aantal data bases is 16, maar u kunt een ander getal configureren op basis van de prijs categorie. <sup>1</sup> de standaard database is db 0, u kunt een andere maken per verbinding met `connection.GetDatabase(dbid)` waarbij `dbid` een getal tussen `0` en `databases - 1` is. |
+| `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
+| `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru`, waarmee de sleutels met een verlopende set met een LRU-algoritme worden verwijderd. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
+| `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
+| `lua-time-limit` |5\.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
+| `lua-event-limit` |500 |Maximale grootte van script gebeurtenis wachtrij. |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie [https://redis.io/topics/clients](https://redis.io/topics/clients)voor meer informatie. |
 
 <a name="databases"></a>
-<sup>1</sup>de limiet voor `databases` verschilt voor elke Azure-Cache voor Redis prijscategorie en bij het maken van cache kan worden ingesteld. Als er geen `databases` instelling is opgegeven tijdens het maken van de cache, de standaardwaarde is 16.
+<sup>1</sup>de limiet voor `databases` verschilt per Azure-cache voor redis prijs categorie en kan worden ingesteld tijdens het maken van de cache. Als er geen `databases` instelling wordt opgegeven tijdens het maken van de cache, is de standaard waarde 16.
 
-* Basic en Standard-caches
-  * C0 (250 MB)-cache - maximaal 16 databases
-  * C1 (1 GB)-cache - maximaal 16 databases
-  * C2 (2,5 GB)-cache - maximaal 16 databases
-  * C3 (6 GB)-cache - maximaal 16 databases
-  * C4 (13 GB)-cache - maximaal 32 databases
-  * C5 (26 GB)-cache - maximaal 48 databases
-  * C6 (53 GB)-cache - maximaal 64 databases
+* Basic-en Standard-caches
+  * C0 (250 MB) cache-Maxi maal 16 data bases
+  * C1 (1 GB) cache-Maxi maal 16 data bases
+  * C2 (2,5 GB) cache-Maxi maal 16 data bases
+  * C3 (6 GB) cache-Maxi maal 16 data bases
+  * C4 (13 GB) cache-Maxi maal 32 data bases
+  * C5 (26 GB) cache-Maxi maal 48 data bases
+  * C6 (53 GB) cache-up-to-64-data bases
 * Premium-caches
-  * P1 (6 GB - 60 GB), maximaal 16 databases
-  * P2 (13 GB - 130 GB), maximaal 32 databases
-  * P3 (26 GB - 260 GB), maximaal 48 databases
-  * P4 (53 GB - 530 GB), maximaal 64 databases
-  * Alle premium-caches met Redis-cluster ingeschakeld - Redis-cluster biedt alleen ondersteuning voor gebruik van 0-database zodat de `databases` beperken voor elke premium-cache met Redis-cluster ingeschakeld is in feite 1 en de [Selecteer](https://redis.io/commands/select) opdracht is niet toegestaan. Zie voor meer informatie, [heb ik wijzigingen aanbrengen in mijn clienttoepassing voor het gebruik van clustering nodig?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * P1 (6 GB-60 GB)-Maxi maal 16 data bases
+  * P2 (13 GB-130 GB)-Maxi maal 32 data bases
+  * P3 (26 GB-260 GB)-Maxi maal 48 data bases
+  * P4 (53 GB-530 GB)-Maxi maal 64 data bases
+  * Alle Premium-caches met redis-cluster enabled-redis cluster ondersteunt alleen het gebruik van data base 0, dus de `databases` limiet voor een Premium-cache waarvoor redis-cluster is ingeschakeld, is in feite 1 en de [selectie](https://redis.io/commands/select) opdracht is niet toegestaan. Zie voor meer informatie [moet ik wijzigingen aanbrengen in mijn client toepassing voor het gebruik van clusters?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Zie voor meer informatie over databases [wat zijn Redis-databases?](cache-faq.md#what-are-redis-databases)
+Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor meer informatie over data bases.
 
 > [!NOTE]
-> De `databases` instelling kan worden geconfigureerd tijdens de cache maken en alleen met behulp van PowerShell, CLI of andere clients beheren. Voor een voorbeeld van het configureren van `databases` tijdens het maken van de cache met behulp van PowerShell, Zie [New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
+> De instelling `databases` kan alleen worden geconfigureerd tijdens het maken van de cache en alleen Power shell, CLI of andere management-clients gebruiken. Zie [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)voor een voor beeld van het configureren van `databases` tijdens het maken van een cache met behulp van Power shell.
 > 
 > 
 
 <a name="maxclients"></a>
-<sup>2</sup> `maxclients` verschilt voor elke Azure-Cache voor Redis prijscategorie.
+<sup>2</sup> `maxclients` verschilt voor elke Azure-cache voor redis prijs categorie.
 
-* Basic en Standard-caches
-  * C0 (250 MB)-cache - maximaal 256-verbindingen
-  * C1 (1 GB)-cache - maximaal 1000 verbindingen
-  * C2 (2,5 GB)-cache - maximaal 2000 verbindingen
-  * C3 (6 GB)-cache - maximaal 5.000 verbindingen
-  * C4 (13 GB)-cache - maximaal 10.000 verbindingen
-  * C5 (26 GB)-cache - maximaal 15.000 verbindingen
-  * C6 (53 GB)-cache - maximaal 20.000-verbindingen
+* Basic-en Standard-caches
+  * C0 (250 MB) cache-Maxi maal 256 verbindingen
+  * C1 (1 GB) cache-Maxi maal 1.000 verbindingen
+  * C2 (2,5 GB) cache-Maxi maal 2.000 verbindingen
+  * C3 (6 GB) cache-Maxi maal 5.000 verbindingen
+  * C4 (13 GB) cache-Maxi maal 10.000 verbindingen
+  * C5 (26 GB) cache-Maxi maal 15.000 verbindingen
+  * C6 (53 GB) cache-Maxi maal 20.000 verbindingen
 * Premium-caches
-  * P1 (6 GB - 60 GB), maximaal 7.500 verbindingen
-  * P2 (13 GB - 130 GB), maximaal 15.000 verbindingen
-  * P3 (26 GB - 260 GB), maximaal 30.000 verbindingen
-  * P4 (53 GB - 530 GB), maximaal 40.000 verbindingen
+  * P1 (6 GB-60 GB)-Maxi maal 7.500 verbindingen
+  * P2 (13 GB-130 GB)-Maxi maal 15.000 verbindingen
+  * P3 (26 GB-260 GB)-Maxi maal 30.000 verbindingen
+  * P4 (53 GB-530 GB)-tot 40.000 verbindingen
 
 > [!NOTE]
-> Kunt u elke grootte van cache *tot* een bepaald aantal verbindingen, elke verbinding met Redis is overhead die ermee verbonden zijn. Een voorbeeld van dergelijke overhead zou CPU- en geheugengebruik als gevolg van TLS/SSL-codering zijn. De limiet voor maximum aantal verbindingen voor een opgegeven cachegrootte wordt ervan uitgegaan dat een licht geladen cache. Als laden uit verbinding overhead *plus* laden uit clientbewerkingen groter is dan de capaciteit voor het systeem, de cache kan consistentieproblemen capaciteit, zelfs als u hebt de limiet voor verbindingen voor de huidige cachegrootte niet overschreden.
+> Hoewel elke grootte van de cache een bepaald aantal *verbindingen toestaat,* is er aan elke verbinding met redis overhead gekoppeld. Een voor beeld van een dergelijke overhead is het CPU-en geheugen gebruik als gevolg van TLS/SSL-versleuteling. Voor de maximum verbindings limiet voor een bepaalde cache grootte wordt uitgegaan van een licht geladen cache. Als de belasting van de verbindings overhead *plus* de belasting van client bewerkingen de capaciteit voor het systeem overschrijdt, kan de cache capaciteits problemen ondervinden, zelfs als u de verbindings limiet voor de huidige cache grootte niet overschrijdt.
 > 
 > 
 
 
 
-## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redis-opdrachten niet ondersteund in Azure Cache voor Redis
+## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redis-opdrachten die niet worden ondersteund in azure cache voor redis
 > [!IMPORTANT]
-> Omdat de configuratie en beheer van Azure Cache voor instanties van Redis wordt beheerd door Microsoft, worden de volgende opdrachten zijn uitgeschakeld. Als u probeert om aan te roepen ze, ontvangt u een foutbericht weergegeven die vergelijkbaar is met `"(error) ERR unknown command"`.
+> Omdat de configuratie en het beheer van Azure cache voor redis-exemplaren door micro soft worden beheerd, worden de volgende opdrachten uitgeschakeld. Als u deze probeert aan te roepen, wordt er een fout bericht weer gegeven dat vergelijkbaar is met `"(error) ERR unknown command"`.
 > 
 > * BGREWRITEAOF
 > * BGSAVE
-> * CONFIGURATIE
-> * DEBUG
-> * MIGREREN
+> * CONFIGURATIES
+> * FOUT opsporing
+> * MIGRAT
 > * OPSLAAN
-> * AFSLUITEN
+> * MATIG
 > * SLAVEOF
-> * CLUSTER - schrijven zijn uitgeschakeld, maar alleen-lezen Cluster opdrachten zijn toegestaan.
+> * CLUSTER-schrijf opdrachten in het cluster zijn uitgeschakeld, maar alleen-lezen cluster opdrachten zijn toegestaan.
 > 
 > 
 
-Zie voor meer informatie over Redis-opdrachten [ https://redis.io/commands ](https://redis.io/commands).
+Zie [https://redis.io/commands](https://redis.io/commands)voor meer informatie over redis-opdrachten.
 
 ## <a name="redis-console"></a>Redis-console
-Kunt u veilig opdrachten uitgeven met uw Azure-Cache voor instanties van Redis met behulp van de **Redis-Console**, die beschikbaar is in de Azure-portal voor alle cachelagen.
+U kunt met behulp van de **redis-console**, die beschikbaar is in de Azure portal voor alle cache-lagen, veilig opdrachten verzenden naar uw Azure-cache voor redis-instanties.
 
 > [!IMPORTANT]
-> - De Redis-Console werkt niet met [VNET](cache-how-to-premium-vnet.md). Wanneer uw cache deel van een VNET uitmaakt, kan alleen clients in het VNET toegang krijgen tot de cache. Omdat Redis-Console wordt uitgevoerd in uw lokale browser, die zich buiten het VNET, wordt er geen verbinding met uw cache.
-> - Niet alle Redis-opdrachten worden ondersteund in Azure-Cache voor Redis. Voor een lijst van Redis-opdrachten die zijn uitgeschakeld voor Azure Cache voor Redis, Zie de vorige [Redis-opdrachten niet ondersteund in Azure Cache voor Redis](#redis-commands-not-supported-in-azure-cache-for-redis) sectie. Zie voor meer informatie over Redis-opdrachten [ https://redis.io/commands ](https://redis.io/commands).
+> - De redis-console werkt niet met [VNET](cache-how-to-premium-vnet.md). Wanneer uw cache deel uitmaakt van een VNET, hebben alleen clients in het VNET toegang tot de cache. Omdat de redis-console wordt uitgevoerd in uw lokale browser, die zich buiten het VNET bevindt, kan er geen verbinding worden gemaakt met uw cache.
+> - Niet alle redis-opdrachten worden ondersteund in azure cache voor redis. Zie de vorige [redis-opdrachten die niet worden ondersteund in azure cache for redis](#redis-commands-not-supported-in-azure-cache-for-redis) voor een lijst met redis-opdrachten die zijn uitgeschakeld voor Azure-cache voor redis. Zie [https://redis.io/commands](https://redis.io/commands)voor meer informatie over redis-opdrachten.
 > 
 > 
 
-Voor toegang tot de Redis-Console, klikt u op **Console** uit de **Azure Cache voor Redis** blade.
+Om toegang te krijgen tot de redis-console, klikt u op **console** in de Blade **Azure-cache voor redis** .
 
 ![Redis-console](./media/cache-configure/redis-console-menu.png)
 
-Typ de gewenste opdracht in de console voor het uitgeven van opdrachten op basis van uw cache-exemplaar.
+Typ de gewenste opdracht in de-console om opdrachten uit te voeren voor uw cache-exemplaar.
 
 ![Redis-console](./media/cache-configure/redis-console.png)
 
 
-### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Met behulp van de Redis-Console met een geclusterde premium-cache
+### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>De redis-console gebruiken met een Premium geclusterde cache
 
-Wanneer de cache met behulp van de Redis-Console met een premium worden geclusterd, kunt u opdrachten geven aan een enkele shard van de cache. Als u wilt een opdracht geven voor een specifieke shard, eerst verbinding maken met de gewenste shard door erop te klikken op de kiezer shard.
+Wanneer u de redis-console gebruikt met een Premium geclusterde cache, kunt u opdrachten uitgeven aan één Shard van de cache. Als u een opdracht wilt uitgeven voor een specifieke Shard, moet u eerst verbinding maken met de gewenste Shard door erop te klikken in de Shard-kiezer.
 
 ![Redis-console](./media/cache-configure/redis-console-premium-cluster.png)
 
-Als u probeert te krijgen tot een sleutel die is opgeslagen in een andere shard dan de verbonden shard, ontvangt u een foutbericht weergegeven die vergelijkbaar is met het volgende bericht:
+Als u probeert toegang te krijgen tot een sleutel die is opgeslagen in een andere Shard dan de verbonden Shard, wordt een fout bericht weer gegeven dat vergelijkbaar is met het volgende bericht:
 
 ```
 shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-In het vorige voorbeeld shard 1 wordt de geselecteerde shard, maar `myKey` bevindt zich in de shard 0, zoals aangegeven door de `(shard 0)` gedeelte van het foutbericht. In dit voorbeeld, voor toegang tot `myKey`shard met behulp van de shard-kiezer 0, en selecteer de gewenste opdracht.
+In het vorige voor beeld is Shard 1 de geselecteerde Shard, maar `myKey` bevindt zich in Shard 0, zoals wordt aangegeven door het `(shard 0)` gedeelte van het fout bericht. In dit voor beeld, om toegang te krijgen tot `myKey`, selecteert u Shard 0 met de Shard-kiezer en geeft u vervolgens de gewenste opdracht op.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Uw cache verplaatsen naar een nieuw abonnement
 U kunt uw cache verplaatsen naar een nieuw abonnement door te klikken op **verplaatsen**.
 
-![Azure Cache voor Redis verplaatsen](./media/cache-configure/redis-cache-move.png)
+![Azure-cache verplaatsen voor redis](./media/cache-configure/redis-cache-move.png)
 
-Zie voor meer informatie over het verplaatsen van resources van een resourcegroep naar een andere en van één abonnement naar een andere [resources verplaatsen naar een nieuwe resourcegroep of abonnement](../azure-resource-manager/resource-group-move-resources.md).
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor informatie over het verplaatsen van resources van de ene resource groep naar een andere en van het ene naar het andere abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor meer informatie over het werken met Redis-opdrachten [hoe kan ik Redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)
+* Zie voor meer informatie over het werken met redis-opdrachten [Hoe kan ik redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)
 

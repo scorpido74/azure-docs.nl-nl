@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168602"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750360"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
 
@@ -101,7 +101,7 @@ Hieronder vindt u aanvullende en nuttige SAP op SUSE-gerelateerde koppelingen:
 
 Hieronder vindt u SAP-ondersteunings opmerkingen die van toepassing zijn op het implementeren van SAP HANA op SLES 12:
 
-- [SAP-ondersteunings Opmerking #1944799: SAP HANA richt lijnen voor de installatie van het besturings systeem SLES](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [SAP-ondersteunings Opmerking #1944799: SAP HANA richt lijnen voor de installatie van het besturings systeem SLES](http://service.sap.com/sap/support/notes/1944799)
 - [SAP-ondersteuning Opmerking #2205917: SAP HANA data base aanbevolen instellingen voor het besturings systeem voor SLES 12 voor SAP-toepassingen](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP-ondersteuning Opmerking #1984787 – SUSE Linux Enterprise Server 12: installatie notities](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP-ondersteuning Opmerking #171356: SAP-software op Linux: algemene informatie](https://launchpad.support.sap.com/#/notes/1984787)
@@ -125,7 +125,7 @@ Hieronder vindt u SAP-ondersteunings opmerkingen die van toepassing zijn op het 
 
 ### <a name="time-synchronization"></a>Tijd synchronisatie
 
-SAP-toepassingen die zijn gebouwd op basis van de SAP NetWeaver-architectuur, zijn gevoelig voor tijd verschillen voor de verschillende onderdelen waaruit het SAP-systeem bestaat. SAP ABAP Short dumps met de fout titel van ZDATE @ no__t-0LARGE @ no__t-1TIME @ no__t-2DIFF zijn waarschijnlijk bekend. Dat komt doordat deze korte dumps worden weer gegeven wanneer de systeem tijd van de verschillende servers of Vm's te ver uit elkaar liggen.
+SAP-toepassingen die zijn gebouwd op basis van de SAP NetWeaver-architectuur, zijn gevoelig voor tijd verschillen voor de verschillende onderdelen waaruit het SAP-systeem bestaat. SAP ABAP Short dumps met de fout titel van ZDATE \_LARGE \_TIME \_DIFF waarschijnlijk bekend zijn. Dat komt doordat deze korte dumps worden weer gegeven wanneer de systeem tijd van de verschillende servers of Vm's te ver uit elkaar liggen.
 
 Voor SAP HANA op Azure (grote instanties), is de tijd synchronisatie die wordt uitgevoerd in azure niet van toepassing op de reken eenheden van de grote instantie stempels. Deze synchronisatie is niet van toepassing op het uitvoeren van SAP-toepassingen in systeem eigen Azure-Vm's, omdat Azure zeker weet dat de tijd van het systeem correct is gesynchroniseerd. 
 
@@ -152,8 +152,8 @@ De naam conventies van de opslag volumes worden weer gegeven in de volgende tabe
 
 | Opslag gebruik | Naam van koppeling | Volume naam | 
 | --- | --- | ---|
-| HANA-gegevens | /hana/data/SID/mnt0000 @ no__t-0m > | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-logboek | /hana/log/SID/mnt0000 @ no__t-0m > | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-gegevens | /hana/data/SID/mnt0000 \<m > | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-logboek | /hana/log/SID/mnt0000 \<m > | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-logboek back-up | /hana/log/backups | Opslag-IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA gedeeld | /hana/shared/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/gedeeld |
 | usr/sap | /usr/sap/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |

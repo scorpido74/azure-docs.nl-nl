@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529112"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750327"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netwerk bandbreedte van virtuele machine
 
@@ -54,7 +54,7 @@ Voor gegevens overdracht tussen eind punten is het maken van verschillende strom
 
 ## <a name="flow-limits-and-recommendations"></a>Stroom limieten en aanbevelingen
 
-Vandaag ondersteunt de Azure-netwerk stack 250.000 totale netwerk stromen met goede prestaties voor Vm's met meer dan 8 CPU-kernen en het totale aantal stromen in 100.000 met goede prestaties voor Vm's met minder dan 8 CPU-kernen. In de meeste gevallen worden de netwerk prestaties op de juiste wijze verslechterd voor extra stromen tot een vaste limiet van 1M van 1 MB, 500.000 inkomend en 500.000 uitgaand, waarna de extra stromen worden verwijderd.
+Vandaag ondersteunt de Azure-netwerk stack 250.000 totale netwerk stromen met goede prestaties voor Vm's met meer dan 8 CPU-kernen en het totale aantal stromen in 100.000 met goede prestaties voor Vm's met minder dan 8 CPU-kernen. In de meeste gevallen worden de netwerk prestaties op de juiste wijze gedegradeerd voor extra stromen tot een vaste limiet van 500.000 totale stromen, 250.000 inkomend en 250.000 uitgaand, waarna de extra stromen worden verwijderd.
 
 ||Vm's met < 8 CPU-kernen|Vm's met 8 en CPU-kernen|
 |---|---|---|

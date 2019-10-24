@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: be1b23991a8dc4d8f29e961e33ba97153d8c5355
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485836"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755834"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: Een apparaatfirmware-updateproces implementeren
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: een apparaatfirmware-updateproces implementeren
 
 Mogelijk moet u de firmware bijwerken op de apparaten die zijn aangesloten op uw IoT-hub. Bijvoorbeeld als u nieuwe functies aan de firmware wilt toevoegen of beveiligingspatches toepassen. In veel IoT-scenario's is het onpraktisch om apparaten fysiek te bezoeken en handmatig firmware-updates toe te passen. Deze zelfstudie laat zien hoe u het firmware-updateproces op afstand kunt starten en bewaken via een back-endtoepassing die is aangesloten op uw hub.
 
@@ -41,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U moet Node.js v10.x.x of hoger op uw ontwikkelcomputer.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
 
 U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -policy-name service -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -186,7 +186,7 @@ De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en benad
 
 ![Back-endtoepassing](./media/tutorial-firmware-update/BackEnd2.png)
 
-Omdat apparaatconfiguraties automatisch uitgevoerd tijdens het maken en vervolgens om de vijf minuten ziet u mogelijk niet elke status bijwerken verzonden naar de back-endtoepassing. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
+Omdat automatische apparaatconfiguratie op het moment van maken en vervolgens om de vijf minuten wordt uitgevoerd, ziet u mogelijk niet elke status update die naar de back-end-toepassing is verzonden. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
 
 ![Configuratie weergeven in portal](./media/tutorial-firmware-update/portalview.png)
 

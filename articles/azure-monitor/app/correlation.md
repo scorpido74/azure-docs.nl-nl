@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678176"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755355"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -214,6 +214,82 @@ De [gegevens model specificatie Opentracering](https://opentracing.io/) en Appli
 Zie het [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie. 
 
 Zie voor definities van opentracerings concepten de opentracerings [specificatie](https://github.com/opentracing/specification/blob/master/specification.md) en [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetrie-correlatie in opentellingen python
+
+De opentellingen python volgt de `OpenTracing` hierboven beschreven gegevens model specificaties. Het ondersteunt ook de [W3C-tracering-context](https://w3c.github.io/trace-context/) zonder dat er een configuratie nodig is.
+
+### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
+
+Met opentellingen python worden de kopteksten van de W3C-tracerings context van binnenkomende aanvragen gecorreleerd naar de reeksen die worden gegenereerd op basis van de aanvragen. Met opentellingen wordt dit automatisch gedaan met integraties voor populaire Web Application Frameworks, zoals `flask`, `django` en `pyramid`. De kopteksten van de W3C-traceer context moeten eenvoudigweg worden gevuld met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)en met de aanvraag worden verzonden. Hieronder ziet u een voor beeld `flask` toepassing die dit demonstreert.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Hiermee wordt een voorbeeld toepassing `flask` op de lokale computer uitgevoerd en wordt geluisterd naar poort `8080`. Om de tracerings context te correleren, sturen we een aanvraag naar het eind punt. In dit voor beeld kunnen we een `curl`-opdracht gebruiken.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+Als u de indeling van de koptekst van de [tracerings context](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bekijkt, wordt de volgende informatie afgeleid: `version`: `00` 
+ `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`: `00f067aa0ba902b7` 
+ 0: 1
+
+Als we kijken naar de aanvraag vermelding die naar Azure Monitor is verzonden, kunnen we de velden zien die zijn ingevuld met de traceer header-informatie.
+
+![Scherm afbeelding van aanvraag-telemetrie in Logboeken (analyse) met traceer kopregel velden gemarkeerd in het rood vak](./media/opencensus-python/0011-correlation.png)
+
+Het veld `id` heeft de indeling `<trace-id>.<span-id>`, waarbij de `trace-id` wordt opgehaald uit de trace-header die in de aanvraag is door gegeven en het `span-id` een gegenereerde 8-bytes matrix is voor deze periode. 
+
+Het veld `operation_ParentId` heeft de indeling `<trace-id>.<parent-id>`, waarbij zowel de `trace-id` als de `parent-id` worden opgehaald uit de trace-header die in de aanvraag is door gegeven.
+
+### <a name="logs-correlation"></a>Logboeken correlatie
+
+Met opentellingen python wordt correlatie van Logboeken toegestaan door logboek records te verrijken met traceer-ID, reeks-ID en steekproef vlag. Dit wordt gedaan door de integratie van de opentellings [logboek registratie](https://pypi.org/project/opencensus-ext-logging/)te installeren. De volgende kenmerken worden toegevoegd aan python `LogRecord`s: `traceId`, `spanId` en `traceSampled`. Houd er rekening mee dat dit alleen van kracht is voor logboeken die zijn gemaakt na de integratie.
+Hieronder ziet u een voor beeld van een toepassing die dit vertoont.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Wanneer deze code wordt uitgevoerd, worden de volgende opties weer geven in de-console:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Houd er rekening mee dat er een spanId aanwezig is voor het logboek bericht dat zich binnen het bereik bevindt. Dit is de spanId die hoort bij de reeks met de naam `hello`.
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetrie-correlatie in .NET
 

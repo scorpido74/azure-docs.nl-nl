@@ -6,21 +6,21 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38b0f4463c2188f0b2da6ebb1b57d08af69b41f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947329"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756449"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol activeren in Privileged Identity Management
 
@@ -31,9 +31,9 @@ Privileged Identity Management in Azure Active Directory (Azure AD) biedt nu ond
 
 ## <a name="activate-a-role"></a>Een rol activeren
 
-Wanneer u een aangepaste Azure AD-rol moet activeren, kunt u de activering aanvragen door de optie mijn rollen navigatie in PIM te selecteren.
+Wanneer u een aangepaste Azure AD-rol moet activeren, kunt u de activering aanvragen door de optie mijn rollen navigatie in Privileged Identity Management te selecteren.
 
-1. Aanmelden bij [de Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [de Azure Portal](https://portal.azure.com).
 1. Open Azure AD- [privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart).
 
 1. Selecteer **aangepaste Azure AD-rollen** om een lijst weer te geven met de aangepaste roltoewijzingen in azure AD.

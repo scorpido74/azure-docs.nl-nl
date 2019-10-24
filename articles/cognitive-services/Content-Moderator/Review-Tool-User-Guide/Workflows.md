@@ -3,25 +3,25 @@ title: Definieer en gebruik inhouds werk stromen via het hulp programma voor beo
 titleSuffix: Azure Cognitive Services
 description: U kunt de Azure Content Moderator Workflow Designer gebruiken om aangepaste werk stromen en drempel waarden te definiëren op basis van uw inhouds beleid.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: sajagtap
-ms.openlocfilehash: ca223735e64e5499313872ba0508bfb0d8ec7ed2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882699"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754244"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Toezicht werk stromen definiëren en gebruiken
 
 In deze hand leiding leert u hoe u [werk stromen](../review-api.md#workflows) kunt instellen en gebruiken op de website van het [controle programma](https://contentmoderator.cognitive.microsoft.com) . Werk stromen zijn op de cloud gebaseerde aangepaste filters die u kunt gebruiken om inhoud efficiënter af te handelen. Werk stromen kunnen verbinding maken met verschillende services om inhoud op verschillende manieren te filteren en vervolgens de juiste actie ondernemen. In deze hand leiding wordt beschreven hoe u de Content Moderator connector (die standaard is opgenomen) kunt gebruiken om inhoud te filteren en mensen beoordelingen in te stellen in een typisch toezicht scenario.
 
-## <a name="create-a-new-workflow"></a>Een nieuwe werkstroom maken
+## <a name="create-a-new-workflow"></a>Een nieuwe werk stroom maken
 
 Ga naar het [hulp programma content moderator controle](https://contentmoderator.cognitive.microsoft.com/) en meld u aan. Op het tabblad **instellingen** selecteert u **werk stromen**.
 
@@ -41,7 +41,7 @@ Geef een naam op voor uw werk stroom, voer een beschrijving in en kies of de wer
 
 In het volgende scherm gaat u naar de sectie **als** . Kies **voor waarde**in het bovenste vervolg keuzemenu. Zo kunt u de voor waarde configureren waaronder de werk stroom actie moet ondernemen. Als u meerdere voor waarden wilt gebruiken, kiest u in plaats daarvan **combi natie** . 
 
-Selecteer vervolgens een connector. In dit voor beeld wordt **Content moderator**gebruikt. Afhankelijk van de connector die u kiest, krijgt u verschillende opties voor gegevens uitvoer. Zie de [](./configure.md#connectors) sectie connectors in de instellingen handleiding voor het hulp programma voor meer informatie over het instellen van andere connectors.
+Selecteer vervolgens een connector. In dit voor beeld wordt **Content moderator**gebruikt. Afhankelijk van de connector die u kiest, krijgt u verschillende opties voor gegevens uitvoer. Zie de sectie [connectors](./configure.md#connectors) in de instellingen handleiding voor het hulp programma voor meer informatie over het instellen van andere connectors.
 
 ![Werk stroom connector selecteren](images/image-workflow-connect-to.PNG)
 

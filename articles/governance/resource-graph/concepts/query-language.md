@@ -3,15 +3,15 @@ title: Meer informatie over de query taal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389767"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755922"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -30,7 +30,7 @@ Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgesl
 |Resource grafiek tabellen |Beschrijving |
 |---|---|
 |Bronnen |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
-|ResourceContainers |Bevat de resource typen abonnement (@no__t 0) en resource groep (`Microsoft.Resources/subscriptions/resourcegroups`) en gegevens. |
+|ResourceContainers |Inclusief een abonnement (in Preview--`Microsoft.Resources/subscriptions`) en resource groep (`Microsoft.Resources/subscriptions/resourcegroups`) en gegevens. |
 |AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement`. |
 |SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security`. |
 
@@ -51,8 +51,8 @@ Met de volgende query wordt een complexere gebruik van `join` weer gegeven. Met 
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
@@ -83,14 +83,14 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 |[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
 |[Houd](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` |
 |[Boven](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
-|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[ @ no__t-3 `inner` @ no__t-5 @ no__t-6 @ no__t-7 \[ @ no__t-9_kolom_naam 1 _tabel_. De limiet van 3 `union` poten in één query. Het oplossen van fuzzy-tabellen `union`-poot is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
+|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[_kolom_ _naam `withsource=` tabel_. De limiet van 3 `union` poten in één query. Het oplossen van fuzzy-tabellen `union`-poot is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
 |[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Escape tekens
 
 Sommige eigenschapnamen, zoals de namen die een `.` of `$` bevatten, moeten in de query worden verpakt of worden geescaped of de naam van de eigenschap wordt onjuist geïnterpreteerd en levert niet de verwachte resultaten op.
 
-- `.`: verpakken de naam van de eigenschap als volgt: `['propertyname.withaperiod']`
+- de naam van de eigenschap `.`: `['propertyname.withaperiod']`
   
   Voorbeeld query waarmee de eigenschap _odata. type_wordt geterugloopd:
 
@@ -100,7 +100,7 @@ Sommige eigenschapnamen, zoals de namen die een `.` of `$` bevatten, moeten in d
 
 - `$`: het teken in de naam van de eigenschap Escape. Welk escape teken wordt gebruikt, is afhankelijk van de resource grafiek van de shell wordt uitgevoerd vanaf.
 
-  - **bash** -  @ no__t-2
+  - **bash**  -  `\`
 
     Voorbeeld query waarmee de eigenschap _\$Type_ in bash wordt geescapet:
 
@@ -110,7 +110,7 @@ Sommige eigenschapnamen, zoals de namen die een `.` of `$` bevatten, moeten in d
 
   - **cmd** : laat het `$`-teken onescape.
 
-  - **Power shell**- -  @ no__t-2
+  - **Power shell** - -  ``` ` ```
 
     Voorbeeld query waarmee de eigenschap _\$Type_ in Power shell wordt overgeslagen:
 

@@ -1,23 +1,23 @@
 ---
 title: Partitioneren in Azure Cosmos DB
 description: Overzicht van partitionering in Azure Cosmos DB.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717557"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753249"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitioneren in Azure Cosmos DB
 
 Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities*. Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
 
-Een container bevat bijvoorbeeld items. Elk item heeft een unieke waarde voor de `UserID` eigenschap. Als `UserID` fungeert als de partitie sleutel voor de items in de container en er 1.000 unieke `UserID` waarden zijn, worden er voor de container 1.000 logische partities gemaakt.
+Een container bevat bijvoorbeeld items. Elk item heeft een unieke waarde voor de eigenschap `UserID`. Als `UserID` fungeert als de partitie sleutel voor de items in de container en er 1.000 unieke `UserID` waarden zijn, worden er voor de container 1.000 logische partities gemaakt.
 
 Naast een partitie sleutel die de logische partitie van het item bepaalt, heeft elk item in een container een *item-id* (uniek binnen een logische partitie). Als de partitie sleutel en de item-ID worden gecombineerd, wordt de *index*van het item gemaakt, waarmee het item op unieke wijze wordt geïdentificeerd.
 

@@ -14,49 +14,49 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804530"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756316"
 ---
-# <a name="start-using-pim"></a>Beginnen met PIM
+# <a name="start-using-privileged-identity-management"></a>Aan de slag met Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u toegang beheren, controleren en bewaken in uw organisatie. Dit bereik is inclusief toegang tot Azure-resources, Azure AD en andere Microsoft-onlineservices, zoals Office 365 en Microsoft Intune.
+Met Privileged Identity Management (PIM) kunt u de toegang in uw Azure Active Directory Azure AD-organisatie beheren, controleren en controleren. Dit bereik omvat toegang tot Azure-resources, Azure AD en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune.
 
-In dit artikel wordt beschreven hoe u met behulp van PIM kunt inschakelen en aan de slag kunt.
+In dit artikel wordt beschreven hoe u Privileged Identity Management kunt inschakelen en aan de slag kunt gaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u PIM wilt gebruiken, hebt u een van de volgende licenties nodig:
+Als u Privileged Identity Management wilt gebruiken, hebt u een van de volgende licenties nodig:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Zie [licentie vereisten voor het gebruik van Pim](subscription-requirements.md)voor meer informatie.
+Zie [licentie vereisten voor het gebruik van privileged Identity Management](subscription-requirements.md)voor meer informatie.
 
 ## <a name="first-person-to-use-pim"></a>Eerste persoon die PIM moet gebruiken
 
-Als u de eerste persoon van PIM in uw directory bent, krijgt u automatisch de rollen beheerder [beveiligings beheerder](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) en [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) in de Directory. Alleen bevoegde beheerdersrol kunnen toewijzingen van Azure AD-rollen van gebruikers beheren. Daarnaast kunt u ervoor kiezen om de [beveiligings wizard](pim-security-wizard.md) uit te voeren die u door de eerste detectie-en toewijzings ervaring leidt.
+Als u de eerste persoon bent die Privileged Identity Management in uw directory moet gebruiken, worden automatisch de rollen [beveiligings beheerder](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) en [bevoegde rol beheerder](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) in de Directory toegewezen. Alleen bevoegde beheerdersrol kunnen toewijzingen van Azure AD-rollen van gebruikers beheren. Daarnaast kunt u ervoor kiezen om de [beveiligings wizard](pim-security-wizard.md) uit te voeren die u door de eerste detectie-en toewijzings ervaring leidt.
 
 ## <a name="enable-pim"></a>PIM inschakelen
 
-Als u PIM in uw Directory wilt gaan gebruiken, moet u eerst PIM inschakelen.
+Als u Privileged Identity Management in uw Directory wilt gaan gebruiken, moet u Privileged Identity Management eerst inschakelen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder van uw Directory.
 
-    U moet een globale beheerder zijn met een organisatie account (bijvoorbeeld @yourdomain.com), geen Microsoft-account ( @outlook.combijvoorbeeld), om PIM in te scha kelen voor een directory.
+    U moet een globale beheerder zijn met een organisatie account (bijvoorbeeld @yourdomain.com), niet een Microsoft-account (bijvoorbeeld @outlook.com) om Privileged Identity Management in te scha kelen voor een map.
 
 1. Klik op **alle services** en zoek de **Azure AD privileged Identity Management** -service.
 
     ![Azure AD Privileged Identity Management in alle services](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Klik om de PIM-Quick Start te openen.
+1. Klik om de Privileged Identity Management Quick Start te openen.
 
 1. Klik in de lijst op **toestemming voor PIM**.
 
-    ![Toestemming voor PIM om PIM in te scha kelen](./media/pim-getting-started/consent-pim.png)
+    ![Toestemming geven Privileged Identity Management om Privileged Identity Management in te scha kelen](./media/pim-getting-started/consent-pim.png)
 
 1. Klik op **Mijn identiteit verifiëren** om uw identiteit te verifiëren met Azure MFA. U wordt gevraagd een account te kiezen.
 
@@ -72,37 +72,37 @@ Als u PIM in uw Directory wilt gaan gebruiken, moet u eerst PIM inschakelen.
 
 1. Zodra u het verificatie proces hebt voltooid, klikt u op de knop **toestemming** .
 
-1. In het bericht dat wordt weer gegeven, klikt u op **Ja** om toestemming te geven aan de PIM-service.
+1. In het bericht dat wordt weer gegeven, klikt u op **Ja** om toestemming te geven aan de privileged Identity Management-service.
 
-    ![Bericht instemmen met PIM voor het volt ooien van het toestemming proces](./media/pim-getting-started/consent-pim-message.png)
+    ![Toestemming geven Privileged Identity Management bericht voor het volt ooien van het toestemming proces](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>PIM registreren voor Azure AD-rollen
 
-Zodra u PIM hebt ingeschakeld voor uw directory, moet u PIM registreren om Azure AD-rollen te beheren.
+Zodra u Privileged Identity Management voor uw adres lijst hebt ingeschakeld, moet u zich registreren Privileged Identity Management om Azure AD-rollen te beheren.
 
 1. Open **Azure AD privileged Identity Management**.
 
 1. Klik op **Azure AD-rollen**.
 
-    ![PIM registreren voor Azure AD-rollen](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+    ![Privileged Identity Management voor Azure AD-rollen registreren](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
 1. Klik op **registreren**.
 
-1. In het bericht dat wordt weer gegeven, klikt u op **Ja** om PIM te registreren voor het beheren van Azure AD-rollen.
+1. In het bericht dat wordt weer gegeven, klikt u op **Ja** om u te registreren PRIVILEGED Identity Management Azure AD-rollen te beheren.
 
-    ![PIM registreren voor Azure AD-rollen bericht](./media/pim-getting-started/sign-up-pim-message.png)
+    ![Privileged Identity Management registreren voor Azure AD-rollen bericht](./media/pim-getting-started/sign-up-pim-message.png)
 
     Wanneer de registratie is voltooid, worden de Azure AD-opties ingeschakeld. Mogelijk moet u de portal vernieuwen.
 
-    Zie [Azure-resources detecteren om te beheren in PIM](pim-resource-roles-discover-resources.md)voor informatie over het detecteren en selecteren van de Azure-resources die u wilt beveiligen met Pim.
+    Voor informatie over het detecteren en selecteren van de Azure-resources die u wilt beveiligen met Privileged Identity Management raadpleegt [u Azure-resources detecteren om te beheren in privileged Identity Management](pim-resource-roles-discover-resources.md).
 
 ## <a name="navigate-to-your-tasks"></a>Navigeer naar uw taken
 
-Zodra PIM is ingesteld, kunt u uw identiteits beheer taken uitvoeren.
+Zodra Privileged Identity Management is ingesteld, kunt u uw identiteits beheer taken starten.
 
-![Navigatie venster in PIM waarin taken en beheer opties worden weer gegeven](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigatie venster in Privileged Identity Management taken weer geven en opties beheren](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Taak + beheren | Description |
+| Taak + beheren | Beschrijving |
 | --- | --- |
 | **Mijn rollen**  | Geeft een lijst weer met in aanmerking komende en actieve rollen die aan u zijn toegewezen. Hier kunt u alle in aanmerking komende toegewezen rollen activeren. |
 | **Mijn aanvragen** | Hiermee worden de in behandeling zijnde aanvragen voor het activeren van in aanmerking komende roltoewijzingen weer gegeven. |
@@ -113,25 +113,25 @@ Zodra PIM is ingesteld, kunt u uw identiteits beheer taken uitvoeren.
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>Een PIM-tegel toevoegen aan het dash board
 
-U kunt het eenvoudig maken van PIM door een PIM-tegel toe te voegen aan uw Azure Portal-dash board.
+U kunt het openen van Privileged Identity Management eenvoudiger maken door een Privileged Identity Management tegel toe te voegen aan uw Azure Portal dash board.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Klik op **alle services** en zoek de **Azure AD privileged Identity Management** -service.
 
     ![Azure AD Privileged Identity Management in alle services](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Klik om de PIM-Quick Start te openen.
+1. Klik om de Privileged Identity Management Quick Start te openen.
 
-1. Schakel de **Blade vastmaken aan dash board** in om de PIM-Blade aan het dash board vast te maken.
+1. Schakel de **Blade vastmaken aan dash board** in om de blade privileged Identity Management Snelstartgids aan het dash board vast te maken.
 
-    ![Pictogram punaise om PIM-Blade aan het dash board vast te maken](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Pictogram punaise om Privileged Identity Management Blade aan het dash board vast te maken](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     In het Azure-dash board ziet u een tegel zoals deze:
 
-    ![De tegel PIM Quick Start op het dash board](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Tegel Privileged Identity Management Snelstartgids op het dash board](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-rollen toewijzen in PIM](pim-how-to-add-role-to-user.md)
-- [Azure-resources ontdekken voor beheer in PIM](pim-resource-roles-discover-resources.md)
+- [Azure AD-rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Azure-resources ontdekken om te beheren in Privileged Identity Management](pim-resource-roles-discover-resources.md)

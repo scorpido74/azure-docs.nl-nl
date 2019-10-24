@@ -1,23 +1,23 @@
 ---
-title: 'Quickstart: Tekstinhoud analyseren in C# - Content Moderator'
+title: 'Snelstartgids: tekst inhoud in C# -content moderator analyseren'
 titleSuffix: Azure Cognitive Services
 description: Tekst inhoud voor verschillende aanstootgevende materialen analyseren met behulp van de Content Moderator SDK voor .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.author: pafarley
+ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001438"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757231"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Quickstart: Tekstinhoud op ongewenst materiaal analyseren in C#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Snelstart: tekstinhoud op ongewenst materiaal analyseren in C#
 
 In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met de [Content Moderator SDK voor .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). U leert hoe u op termen gebaseerde filtering en classificatie van tekst inhoud kunt uitvoeren met het oog op het beheer van potentieel aanstootgevend materiaal.
 
@@ -87,7 +87,7 @@ Als u meer wilt weten over wat deze bewerkingen doen, volgt u de koppeling in de
 Het programma schrijft JSON-tekenreeksgegevens naar het bestand _TextModerationOutput.txt_. De voorbeeldtekst die wordt gebruikt in deze snelstart geeft de volgende uitvoer:
 
 ```json
-Autocorrect typos, check for matching terms, PII, and classify.
+Autocorrect typos, check for matching terms, check for personal data, and classify.
 {
 "OriginalText": "\"Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).\"",
 "NormalizedText": "\" Is this a garbage or crap email abide@ abed. com, phone: 6657789887, IP: 255. 255. 255. 255, 1 Microsoft Way, Redmond, WA 98052. These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 0800 820 3300. Also, 999-99-9999 looks like a social security number ( SSN) . \"",

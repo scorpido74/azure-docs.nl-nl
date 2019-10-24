@@ -4,31 +4,31 @@ description: Een aangepaste Azure AD-rol toewijzen voor toewijzings Privileged I
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947336"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756365"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol toewijzen in Privileged Identity Management
 
 In dit artikel leest u hoe u Privileged Identity Management (PIM) kunt gebruiken voor het maken van just-in-time-en tijdgebonden toewijzing aan aangepaste rollen die zijn gemaakt voor het beheren van toepassingen in de beheer ervaring van Azure Active Directory (Azure AD).
 
 - Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
-- Als u nog geen Privileged Identity Management hebt gebruikt, kunt u aan de slag [met behulp van Pim](pim-getting-started.md)meer informatie.
-- Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om PIM te beheren](pim-how-to-give-access-to-pim.md).
+- Als u nog geen Privileged Identity Management hebt gebruikt, kunt u aan de slag [met privileged Identity Management](pim-getting-started.md)meer informatie.
+- Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
 > Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt het beheer van rollen uitgevoerd in de ingebouwde functie-ervaring.
@@ -71,7 +71,7 @@ Privileged Identity Management kunt aangepaste rollen beheren die u kunt maken i
 1. Als het selectie vakje **permanent** is ingeschakeld en beschikbaar is (afhankelijk van rolinstellingen), kunt u opgeven of de toewijzing permanent is. Schakel het selectie vakje in om de toewijzing permanent in aanmerking te laten komen of permanent toe te wijzen. Schakel het selectie vakje uit om de duur van een toewijzing op te geven.
 1. Als u de nieuwe roltoewijzing wilt maken, klikt u op **Opslaan** en vervolgens op **toevoegen**. Er wordt een melding weer gegeven van de status van het toewijzings proces.
 
-Als u de roltoewijzing wilt controleren, selecteert u in een openstaande rol de optie **toewijzingen** > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
+Als u de roltoewijzing wilt controleren, selecteert u in een open rol **toewijzingen**  > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
 
  ![Controleren of de roltoewijzing wordt weer gegeven als in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

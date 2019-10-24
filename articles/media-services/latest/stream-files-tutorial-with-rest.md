@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675655"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750253"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
 
@@ -94,11 +94,12 @@ Kloon een GitHub-opslagplaats die de Postman verzameling en -omgevingsbestanden 
 In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en maken van URL's zodat uw bestand kan worden gestreamd. In het bijzonder worden de volgende aanvragen verzonden:
 
 1. Azure AD-token verkrijgen voor service-principal-verificatie
+1. Een streaming-eind punt starten
 2. Een uitvoeractivum maken
-3. Een **transformatie** maken
-4. Een **taak** maken
-5. Een **streaming-locator** te maken
-6. Toont paden van de **streaming-locator**
+3. Een transformatie maken
+4. Een taak maken
+5. Een streaming-locator maken
+6. Paden van de streaming-Locator weer geven
 
 > [!Note]
 >  In deze zelfstudie wordt ervan uitgegaan dat u alle resources maakt met unieke namen.  
@@ -118,6 +119,33 @@ In deze sectie verzenden we aanvragen die relevant zijn voor het coderen en make
 4. Het antwoord bevat de token en stelt de omgevingsvariabele AccessToken in op de tokenwaarde. Klik op het tabblad **Tests** voor de code waarmee AccessToken wordt ingesteld. 
 
     ![AAD-token verkrijgen](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+
+### <a name="start-a-streaming-endpoint"></a>Een streaming-eind punt starten
+
+Als u streaming wilt inschakelen, moet u eerst het [streaming-eind punt](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) starten van waaruit u de video wilt streamen.
+
+> [!NOTE]
+> U wordt alleen gefactureerd wanneer uw streaming-eind punt de status actief heeft.
+
+1. Selecteer in het linkerdeel venster van de Postman-app "streaming en live".
+2. Selecteer vervolgens ' Start StreamingEndpoint '.
+3. Druk op **Verzenden**.
+
+    * De volgende **post** -bewerking wordt verzonden:
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * Als de aanvraag is voltooid, wordt de `Status: 202 Accepted` geretourneerd.
+
+        Deze status betekent dat de aanvraag is geaccepteerd voor verwerking. de verwerking is echter niet voltooid. U kunt een query uitvoeren voor de bewerkings status op basis van de waarde in de `Azure-AsyncOperation`-antwoord header.
+
+        Met de volgende GET-bewerking wordt bijvoorbeeld de status van de bewerking geretourneerd:
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        In het artikel [asynchrone Azure-bewerkingen bijhouden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
 
 ### <a name="create-an-output-asset"></a>Een uitvoeractivum maken
 

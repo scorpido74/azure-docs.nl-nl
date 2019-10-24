@@ -1,17 +1,17 @@
 ---
 title: De aanvraag eenheden en kosten voor het uitvoeren van query's in Azure Cosmos DB optimaliseren
 description: Meer informatie over het evalueren van de kosten voor aanvraag eenheden voor een query en het optimaliseren van de query in termen van prestaties en kosten.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717007"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753292"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Query kosten optimaliseren in Azure Cosmos DB
 
@@ -27,13 +27,13 @@ Query's in Azure Cosmos DB meestal worden besteld van snelst/meest efficiënte n
 
 * Query zonder filters.
 
-Query's waarmee gegevens van een of meer partities worden gelezen, hebben een hogere latentie en nemen een hoger aantal aanvraag eenheden in beslag. Omdat elke partitie automatische indexering voor alle eigenschappen heeft, kan de query efficiënt vanuit de index worden bediend. U kunt query's die gebruikmaken van meerdere partities sneller maken met behulp van de parallelle opties. Zie voor meer informatie over partitionering en partitiesleutels [partitionering in Azure Cosmos DB](partitioning-overview.md).
+Query's waarmee gegevens van een of meer partities worden gelezen, hebben een hogere latentie en nemen een hoger aantal aanvraag eenheden in beslag. Omdat elke partitie automatische indexering voor alle eigenschappen heeft, kan de query efficiënt vanuit de index worden bediend. U kunt query's die gebruikmaken van meerdere partities sneller maken met behulp van de parallelle opties. Zie [partitioneren in azure Cosmos DB](partitioning-overview.md)voor meer informatie over partitioneren en partitie sleutels.
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>De kosten voor aanvraag eenheden voor een query evalueren
 
 Zodra u enkele gegevens in uw Azure Cosmos-containers hebt opgeslagen, kunt u de Data Explorer in de Azure Portal gebruiken om uw query's te maken en uit te voeren. U kunt de kosten van de query's ook ophalen met behulp van Data Explorer. Deze methode geeft u een idee van de werkelijke kosten die worden betrokken bij typische query's en bewerkingen die uw systeem ondersteunt.
 
-U kunt de kosten van query's ook programmatisch ophalen met behulp van de Sdk's. Als u de overhead van elke bewerking wilt meten, zoals maken, bijwerken of verwijderen, `x-ms-request-charge` moet u de koptekst controleren bij gebruik van rest API. Als u .net of de Java SDK gebruikt, is de `RequestCharge` eigenschap de equivalente eigenschap om de aanvraag kosten op te halen en deze eigenschap is aanwezig in de ResourceResponse of FeedResponse.
+U kunt de kosten van query's ook programmatisch ophalen met behulp van de Sdk's. Als u de overhead van elke bewerking wilt meten, zoals maken, bijwerken of verwijderen, controleert u de `x-ms-request-charge`-header wanneer u REST API gebruikt. Als u .NET of de Java-SDK gebruikt, is de eigenschap `RequestCharge` de equivalente eigenschap om de aanvraag kosten op te halen en deze eigenschap is aanwezig in de ResourceResponse of FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 

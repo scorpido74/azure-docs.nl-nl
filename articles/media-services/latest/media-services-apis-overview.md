@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025633"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750206"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -75,7 +75,7 @@ Namen van Azure Media Services v3-resources (bijvoorbeeld activa, taken, transfo
 
 Namen van Media Services-resources mogen niet de volgende tekens bevatten: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', enkele aanhalingstekens of besturingstekens. Alle andere tekens zijn toegestaan. De maximale lengte van een resourcenaam is 260 tekens. 
 
-Zie [Naamvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamconventies](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) voor meer informatie over Azure Resource Manager-naamgeving.
+Zie voor meer informatie over naamgeving voor Azure Resource Manager: [Naamgevingsvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamgevingsconventies](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Namen van bestanden/blobs in een Asset
 
@@ -108,6 +108,8 @@ Media Services heeft de volgende langlopende bewerkingen:
 
 Bij een geslaagde verzen ding van een lange bewerking ontvangt u een ' 202 geaccepteerd ' en moet er worden gecontroleerd of de bewerking is voltooid met de geretourneerde bewerkings-ID.
 
+In het artikel [asynchrone Azure-bewerkingen bijhouden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
+
 Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live gebeurtenis of een van de bijbehorende live-uitvoer bewerkingen. Eenmaal gestart, moet een langlopende bewerking worden voltooid voordat een volgende langlopende bewerking wordt gestart op dezelfde LiveEvent of aan de gekoppelde live uitvoer. Voor Live-gebeurtenissen met meerdere Live outputs moet u wachten op het volt ooien van een langlopende bewerking op één live uitvoer voordat een langlopende bewerking wordt geactiveerd op een andere live uitvoer. 
 
 ## <a name="sdks"></a>SDK's
@@ -117,7 +119,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 
 |SDK|Referentie|
 |---|---|
-|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
+|[.NET-SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
 |[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-ref](https://aka.ms/ams-v3-python-ref)|
 |[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-ref](https://aka.ms/ams-v3-nodejs-ref)| 
@@ -145,7 +147,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="see-also"></a>Zie ook
 
-[Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

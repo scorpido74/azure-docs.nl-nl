@@ -3,19 +3,19 @@ title: Video-inhoud analyseren voor aanstootgevend materiaal C# in-content moder
 titleSuffix: Azure Cognitive Services
 description: Video-inhoud analyseren voor verschillende aanstootgevende materialen met behulp van de Content Moderator SDK voor .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564312"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755241"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Video-inhoud analyseren voor aanstootgevend materiaal inC#
 
@@ -40,7 +40,7 @@ Ga naar het nieuwe AMS-abonnement in de Azure Portal en selecteer **API-toegang*
 
 Selecteer in het gedeelte **Azure AD-App** de optie **nieuwe maken** en geef uw nieuwe Azure AD-toepassings registratie een naam (bijvoorbeeld ' VideoModADApp '). Klik op **Opslaan** en wacht enkele minuten totdat de toepassing is geconfigureerd. Vervolgens ziet u de nieuwe app-registratie in het gedeelte **Azure AD-App** van de pagina.
 
-Selecteer de registratie van uw app en klik op de knop **toepassing beheren** hieronder. Noteer de waarde in het veld **toepassings-id** . u hebt dit later nodig. Selecteer **instellingen** > **sleutels**en voer een beschrijving in voor een nieuwe sleutel (bijvoorbeeld ' VideoModKey '). Klik op **Opslaan**en noteer de nieuwe sleutel waarde. Kopieer deze teken reeks en sla deze op een veilige plek op.
+Selecteer de registratie van uw app en klik op de knop **toepassing beheren** hieronder. Noteer de waarde in het veld **toepassings-id** . u hebt dit later nodig. Selecteer **instellingen**  > **sleutels**en voer een beschrijving in voor een nieuwe sleutel (bijvoorbeeld ' VideoModKey '). Klik op **Opslaan**en noteer de nieuwe sleutel waarde. Kopieer deze teken reeks en sla deze op een veilige plek op.
 
 Zie [aan de slag met Azure AD-verificatie](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)voor een gedetailleerder overzicht van het bovenstaande proces.
 
@@ -57,7 +57,7 @@ De Azure Media Services Explorer is een gebruikers vriendelijke frontend voor AM
 1. Maak in Visual Studio een nieuw **console-app-project (.NET Framework)** en noem het **VideoModeration**. 
 1. Als uw oplossing nog meer projecten bevat, selecteert u deze als het enkele opstartproject.
 1. Download de vereiste NuGet-pakketten. Klik met de rechtermuisknop op uw project in Solution Explorer en selecteer **NuGet-pakketten beheren**. Zoek en installeer vervolgens de volgende pakketten:
-    - windowsazure.mediaservices
+    - windowsazure. Media Services
     - windowsazure. Media Services. Extensions
 
 ## <a name="add-video-moderation-code"></a>Code voor video toezicht toevoegen
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Resource verwijzingen instellen
 
-Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden bevatten de gegevens die nodig zijn om verbinding te maken met uw AMS-abonnement. Vul deze in met de waarden die u in de bovenstaande stappen hebt ontvangen. Houd er `CLIENT_ID` rekening mee dat de waarde van de **toepassings-id** van uw `CLIENT_SECRET` Azure AD-app is en de waarde is van de ' VideoModKey ' die u hebt gemaakt voor die app.
+Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden bevatten de gegevens die nodig zijn om verbinding te maken met uw AMS-abonnement. Vul deze in met de waarden die u in de bovenstaande stappen hebt ontvangen. Houd er rekening mee dat `CLIENT_ID` de waarde voor de **toepassings-id** van uw Azure AD-app is en `CLIENT_SECRET` de waarde is van de ' VideoModKey ' die u hebt gemaakt voor die app.
 
 ```csharp
 // declare constants and globals
@@ -118,7 +118,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Als u een lokaal video bestand (het eenvoudigste geval) wilt gebruiken, voegt u het toe aan het project en voert u het `INPUT_FILE` pad in als de waarde (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory).
+Als u een lokaal video bestand (het meest eenvoudige geval) wilt gebruiken, voegt u het toe aan het project en voert u het pad in als de `INPUT_FILE` waarde (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory).
 
 U moet ook het bestand voor de _vooraf ingestelde. json_ in de huidige map maken en gebruiken om een versie nummer op te geven. Bijvoorbeeld:
 
@@ -359,7 +359,7 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 }
 ```
 
-### <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
+### <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
 
 Analyseer het JSON-antwoord nadat de taak voor inhouds toezicht is voltooid. Deze bestaat uit de volgende elementen:
 
@@ -369,10 +369,10 @@ Analyseer het JSON-antwoord nadat de taak voor inhouds toezicht is voltooid. Dez
 - **Start**, **duration**, **totalDuration**en **Time Stamp** bevinden zich in ' Ticks '. Delen door **tijd schaal** om het getal in seconden op te halen.
  
 > [!NOTE]
-> - `adultScore`vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
-> - `racyScore`vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel voor stel of rijp kan worden beschouwd.
-> - `adultScore`en `racyScore` tussen 0 en 1 liggen. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Dit voor beeld is afhankelijk van een statistisch model in plaats van hand matige gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
-> - `reviewRecommended`is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
+> - `adultScore` staat voor de potentiële aanwezigheids-en Voorspellings Score van inhoud die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
+> - `racyScore` staat voor de potentiële aanwezigheids-en Voorspellings Score van inhoud die in bepaalde situaties als seksueel voor stel of rijp kan worden beschouwd.
+> - `adultScore` en `racyScore` tussen 0 en 1 liggen. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Dit voor beeld is afhankelijk van een statistisch model in plaats van hand matige gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
+> - `reviewRecommended` is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
 
 ```json
 {
@@ -430,7 +430,7 @@ Analyseer het JSON-antwoord nadat de taak voor inhouds toezicht is voltooid. Dez
 
 Meer informatie over het genereren van [video beoordelingen](video-reviews-quickstart-dotnet.md) uit uw toezicht uitvoer.
 
-U [](video-transcript-moderation-review-tutorial-dotnet.md) kunt de transcriptie van uw video beoordelingen toevoegen.
+U kunt de [transcriptie](video-transcript-moderation-review-tutorial-dotnet.md) van uw video beoordelingen toevoegen.
 
 Bekijk de gedetailleerde zelf studie over het bouwen van een [volledige video-en transcriptie oplossing](video-transcript-moderation-review-tutorial-dotnet.md).
 

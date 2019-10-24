@@ -1,17 +1,17 @@
 ---
 title: Partitioneren en horizon taal schalen in Azure Cosmos DB
 description: Meer informatie over de werking van partitionering in Azure Cosmos DB, het configureren van partitionering en partitie sleutels en het kiezen van de juiste partitie sleutel voor uw toepassing.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616799"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754913"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitioneren en horizon taal schalen in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ In dit artikel worden fysieke en logische partities in Azure Cosmos DB uitgelegd
 
 ## <a name="logical-partitions"></a>Logische partities
 
-Een logische partitie bestaat uit een set items die dezelfde partitie sleutel hebben. Zo kunt u in een container waarin alle items een `City` eigenschap bevatten, gebruiken `City` als de partitie sleutel voor de container. Groepen van items waarvoor specifieke waarden zijn opgegeven `City`voor, `London`zoals, `Paris`en `NYC`, vormen afzonderlijke logische partities. U hoeft zich geen zorgen te maken over het verwijderen van een partitie wanneer de onderliggende gegevens worden verwijderd.
+Een logische partitie bestaat uit een set items die dezelfde partitie sleutel hebben. Zo kunt u in een container waarin alle items een `City` eigenschap bevatten, `City` als de partitie sleutel voor de container gebruiken. Groepen van items met specifieke waarden voor `City`, zoals `London`, `Paris` en `NYC`, vormen verschillende logische partities. U hoeft zich geen zorgen te maken over het verwijderen van een partitie wanneer de onderliggende gegevens worden verwijderd.
 
 In Azure Cosmos DB is een container de basis eenheid van schaal baarheid. Gegevens die worden toegevoegd aan de container en de door Voer die u in de container inricht, worden automatisch (horizon taal) gepartitioneerd over een set logische partities. Gegevens en door voer worden gepartitioneerd op basis van de partitie sleutel die u opgeeft voor de Azure Cosmos-container. Zie [een Azure Cosmos-container maken](how-to-create-container.md)voor meer informatie.
 

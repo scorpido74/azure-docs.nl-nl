@@ -3,19 +3,19 @@ title: Recensies, werk stromen en taken concepten-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over beoordelingen, werk stromen en taken
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565544"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757298"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
 
@@ -27,15 +27,15 @@ Bij een beoordeling wordt inhoud geüpload naar het hulp programma beoordeling e
 
 ![De website voor het controleren van het hulp programma open in een browser op het tabblad controleren](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Raadpleeg de [hand leiding](./review-tool-user-guide/review-moderated-images.md) voor het beoordelings programma om te beginnen met het maken van recensies of raadpleeg de [rest API gids](./try-review-api-review.md) voor informatie over hoe u dit kunt doen.
+Raadpleeg de [hand leiding voor het beoordelings programma](./review-tool-user-guide/review-moderated-images.md) om te beginnen met het maken van recensies of raadpleeg de [rest API gids](./try-review-api-review.md) voor informatie over hoe u dit kunt doen.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Werkstromen
 
 Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud. Werk stromen kunnen verbinding maken met verschillende services om inhoud op verschillende manieren te filteren en vervolgens de juiste actie ondernemen. Met de Content Moderator-connector kunt u met een werk stroom automatisch toezicht Tags Toep assen en beoordelingen maken met verzonden inhoud.
 
 ### <a name="view-workflows"></a>Werk stromen weer geven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen** > **werk stromen**.
+Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  > **werk stromen**.
 
 ![Standaardwerk stroom](images/default-workflow-listed.PNG)
 

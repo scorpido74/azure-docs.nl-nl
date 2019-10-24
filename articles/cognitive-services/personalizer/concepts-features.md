@@ -1,5 +1,5 @@
 ---
-title: 'Functies: Actie en context-persoonlijker'
+title: 'Functies: actie en context-persoonlijker'
 titleSuffix: Azure Cognitive Services
 description: Personaler maakt gebruik van functies, informatie over acties en context, om betere suggesties te stellen. Functies kunnen zeer algemeen of specifiek voor een item zijn.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989086"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756110"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
@@ -26,7 +26,7 @@ Personaler maakt gebruik van **functies**. Dit is informatie over de **huidige c
 U hebt bijvoorbeeld een **functie** over:
 
 * De _gebruiker_ , zoals een `Sports_Shopper`. Dit mag geen afzonderlijke gebruikers-ID zijn. 
-* De _inhoud_ , bijvoorbeeld als een video een `Documentary`, een `Movie`of een `TV Series`is, of een retail-item beschikbaar is in de Store.
+* De _inhoud_ zoals als een video een `Documentary`, een `Movie` of een `TV Series` is, of of een retail-item beschikbaar is in de Store.
 * De _huidige_ tijds periode, zoals de dag van de week.
 
 Personaler schrijft, beperkt of corrigeert de functies die u kunt verzenden voor acties en context:
@@ -43,8 +43,8 @@ Personaler ondersteunt functies van het type teken reeks, numeriek en Booleaanse
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Hoe de keuze van het functie type is van invloed op Machine Learning in Personaler
 
-* **Teken reeksen**: Voor teken reeks typen maakt elke combi natie van sleutel en waarde nieuwe gewichten in het model Personaler machine learning. 
-* **Numeriek**: U moet numerieke waarden gebruiken wanneer het getal proportioneel van invloed moet zijn op het personalisatie resultaat. Dit is een zeer afhankelijk scenario. In een vereenvoudigd voor beeld bijvoorbeeld: bij het personaliseren van een retail-ervaring kan NumberOfPetsOwned een functie zijn die numeriek is als u wilt dat mensen met 2 of 3 huis dieren twee keer zo veel mogelijk van invloed op het persoonlijke resultaat hebben of drie keer per. Functies die zijn gebaseerd op numerieke eenheden, maar waarbij de betekenis niet lineair is, zoals leeftijd, Tempe ratuur of persoons hoogte, worden het beste gecodeerd als teken reeksen en de functie kwaliteit kan meestal worden verbeterd door gebruik te maken van bereiken. Leeftijd kan bijvoorbeeld worden gecodeerd als ' leeftijd ': ' 0-5 ', ' leeftijd ': ' 6-10 ', enzovoort.
+* **Teken reeksen**: voor teken reeks typen maakt elke combi natie van sleutel en waarde nieuwe gewichten in het model personaler machine learning. 
+* **Numeriek**: u moet numerieke waarden gebruiken wanneer het getal proportioneel van invloed moet zijn op het personalisatie resultaat. Dit is een zeer afhankelijk scenario. In een vereenvoudigd voor beeld bijvoorbeeld: bij het personaliseren van een retail-ervaring kan NumberOfPetsOwned een functie zijn die numeriek is als u wilt dat mensen met 2 of 3 huis dieren twee keer zo veel mogelijk van invloed op het persoonlijke resultaat hebben of drie keer per. Functies die zijn gebaseerd op numerieke eenheden, maar waarbij de betekenis niet lineair is, zoals leeftijd, Tempe ratuur of persoons hoogte, worden het beste gecodeerd als teken reeksen en de functie kwaliteit kan meestal worden verbeterd door gebruik te maken van bereiken. Leeftijd kan bijvoorbeeld worden gecodeerd als ' leeftijd ': ' 0-5 ', ' leeftijd ': ' 6-10 ', enzovoort.
 * **Booleaanse** waarden die zijn verzonden met de waarde ' false ' fungeren alsof ze niet had zijn verzonden.
 
 Functies die niet aanwezig zijn, moeten worden wegge laten uit de aanvraag. Vermijd het verzenden van functies met een null-waarde, omdat deze wordt verwerkt als bestaande en met de waarde ' null ' bij het trainen van het model.
@@ -56,12 +56,12 @@ Personaler neemt functies die zijn ingedeeld in naam ruimten. U kunt in uw toepa
 Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt door toepassingen:
 
 * User_Profile_from_CRM
-* Time
+* Tijd
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Weer
+* Meteorologische
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,7 @@ Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt d
 U kunt functie naam ruimten volgen volgens uw eigen conventies, zolang ze geldige JSON-sleutels zijn. Naam ruimten worden gebruikt om functies in verschillende sets te organiseren en om dubbel zinnigheid te maken met vergelijk bare namen. U kunt naam ruimten beschouwen als een voor voegsel die wordt toegevoegd aan functie namen. Naam ruimten kunnen niet worden genest.
 
 
-In de volgende JSON, `user` `state`, en `device` zijn functie naam ruimten. Opmerking voor open bare Preview: We raden u op dit moment ten zeerste aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. `user`Bijvoorbeeld ,`s`, en`device` begin met`u`,, en .`d` `state` Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
+In de volgende JSON zijn `user`, `state` en `device` functie naam ruimten. Opmerking voor open bare Preview: we raden u momenteel aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. Bijvoorbeeld `user`, `state` en `device` beginnen met `u`, `s` en `d`. Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
 
 JSON-objecten kunnen geneste JSON-objecten en eenvoudige eigenschappen/waarden bevatten. Een matrix kan alleen worden opgenomen als de matrix items getallen zijn. 
 
@@ -97,6 +97,13 @@ JSON-objecten kunnen geneste JSON-objecten en eenvoudige eigenschappen/waarden b
     ]
 }
 ```
+
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Beperkingen in teken sets voor naam ruimten
+
+De teken reeks die u gebruikt voor het benoemen van de naam ruimte moet voldoen aan enkele beperkingen: 
+* Dit kan niet Unicode zijn.
+* U kunt sommige van de afdruk bare symbolen gebruiken met codes < 256 voor de namen van de naam ruimte. 
+* U kunt geen symbolen gebruiken met codes < 32 (niet afdruk bare), 32 (spatie), 58 (dubbele punt), 124 (pijp) en 126 – 140.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Functie sets effectiever maken voor persoonlijker
 
@@ -168,7 +175,7 @@ De acties die u naar de positie-API verzendt, zijn afhankelijk van wat u probeer
 
 Hier volgen enkele voorbeelden:
 
-|Doel|Action|
+|Doel|Bewerking|
 |--|--|
 |Personaliseer welk artikel op een nieuws website is gemarkeerd.|Elke actie is een mogelijk nieuws artikel.|
 |Optimaliseer de plaatsing van advertenties op een website.|Elke actie is een indeling of regels voor het maken van een indeling voor de advertenties (bijvoorbeeld bovenaan, kleine afbeeldingen, grote afbeeldingen).|
@@ -194,7 +201,7 @@ Functies van acties kunnen doorgaans afkomstig zijn van Content Management Syste
 
 In sommige gevallen zijn er acties die u niet wilt weer geven voor gebruikers. De beste manier om te voor komen dat een actie wordt geclassificeerd als een bovenste, is deze niet in de actie lijst opnemen in de positie-API in de eerste plaats.
 
-In sommige gevallen kan het alleen later in uw bedrijfs logica worden bepaald als een resulterende _actie_ van een absolute API-aanroep moet worden weer gegeven aan een gebruiker. In deze gevallen moet u inactieve _gebeurtenissen_gebruiken.
+In sommige gevallen kan het alleen later in uw bedrijfs logica worden bepaald als een resulterende _actie_ van een absolute API-aanroep moet worden weer gegeven aan een gebruiker. In deze gevallen moet u _inactieve gebeurtenissen_gebruiken.
 
 ## <a name="json-format-for-actions"></a>JSON-indeling voor acties
 

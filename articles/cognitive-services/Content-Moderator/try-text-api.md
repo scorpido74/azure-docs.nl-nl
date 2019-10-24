@@ -3,19 +3,19 @@ title: Gemiddelde tekst met behulp van de API voor tekst toezicht-Content Modera
 titleSuffix: Azure Cognitive Services
 description: 'Test: tekst toezicht testen met behulp van de tekst toezicht-API in de online-console.'
 services: cognitive-services
-author: sanjeev3
-ms.author: sajagtap
+author: PatrickFarley
+ms.author: pafarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561189"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754203"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Tekst met gemiddelde van de API-console
 
@@ -46,17 +46,17 @@ Voor **open API-test console**selecteert u de regio die uw locatie het meest bes
 Selecteer de query parameters die u wilt gebruiken in het tekst scherm. Voor dit voor beeld gebruikt u de standaard waarde voor **taal**. U kunt deze waarde ook leeg laten, omdat de waarschijnlijke taal door de bewerking automatisch wordt gedetecteerd als onderdeel van de uitvoering.
 
 > [!NOTE]
-> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
+> Wijs `eng` toe of laat de para meter leeg om de **door de computer** ondersteunde **classificatie** -informatie te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
 >
-> Gebruik  de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) van de ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
+> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
 Selecteer **waar**voor **auto correctie**, **PII**en **classificeren (preview)** . Laat het veld **ListID** leeg.
 
   ![Query parameters voor de console tekst scherm](images/text-api-console-inputs.PNG)
 
-### <a name="content-type"></a>Inhoudstype
+### <a name="content-type"></a>Inhouds type
 
-Selecteer bij **inhouds type**het type inhoud dat u wilt scherm. Voor dit voor beeld gebruikt u het standaard type **tekst/** onbewerkte inhoud. Voer in het vak **OCP-APIM-Subscription-Key** uw abonnements sleutel in.
+Selecteer bij **inhouds type**het type inhoud dat u wilt scherm. Voor dit voor beeld gebruikt u het standaard type **tekst/onbewerkte** inhoud. Voer in het vak **OCP-APIM-Subscription-Key** uw abonnements sleutel in.
 
 ### <a name="sample-text-to-scan"></a>Te scannen voorbeeld tekst
 

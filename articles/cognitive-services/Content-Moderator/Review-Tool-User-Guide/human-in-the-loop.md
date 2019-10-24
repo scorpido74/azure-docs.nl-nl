@@ -3,19 +3,19 @@ title: Meer informatie over het evalueren van hulp middelen-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het hulp programma Content Moderator beoordeling, een website die een combi natie van een gecombineerde AI-en Human Review-inspanning coördineert.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.author: sajagtap
-ms.openlocfilehash: 7f20b9c824045ac2f8c13df3ed8f776195de611a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564510"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754233"
 ---
 # <a name="content-moderator-review-tool"></a>Hulp programma Content Moderator beoordeling
 
@@ -39,11 +39,11 @@ Als u het [hulp programma voor controle](https://contentmoderator.cognitive.micr
 
 Op het tabblad **dash board** ziet u belang rijke metrische gegevens voor inhouds beoordelingen die in het hulp programma worden uitgevoerd. Bekijk het totale aantal, de volledige en de in behandeling zijnde Beoordelingen voor afbeeldings-, tekst-en video-inhoud. U kunt ook de uitsplitsing van gebruikers en teams met voltooide beoordelingen bekijken, evenals de moderator Tags die zijn toegepast.
 
-![Dashboard weergeven](images/0-dashboard.png)
+![Bekijk het dashboard](images/0-dashboard.png)
 
 ## <a name="review-tool-credentials"></a>Referenties van het controle programma
 
-Wanneer u zich aanmeldt met het [hulp programma voor controle](https://contentmoderator.cognitive.microsoft.com), wordt u gevraagd een Azure-regio voor uw account te selecteren. Dit komt doordat het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) een gratis proef versie genereert voor Azure content moderator Services. u hebt deze sleutel nodig om toegang te krijgen tot een van de services van een REST-aanroep of client-SDK. U kunt de URL van uw sleutel en API-eind punt weer geven door **instellingen** > **referenties**te selecteren.
+Wanneer u zich aanmeldt met het [hulp programma voor controle](https://contentmoderator.cognitive.microsoft.com), wordt u gevraagd een Azure-regio voor uw account te selecteren. Dit komt doordat het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) een gratis proef versie genereert voor Azure content moderator Services. u hebt deze sleutel nodig om toegang te krijgen tot een van de services van een REST-aanroep of client-SDK. U kunt de URL van uw sleutel en API-eind punt weer geven door **instellingen**  > **referenties**te selecteren.
 
 ![Content Moderator referenties](images/settings-6-credentials.png)
 

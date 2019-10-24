@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 5a6ed66efa0f73f957c3acb048136a5328f9c264
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995254"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750168"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Toegang tot Azure-resources beheren met RBAC en Azure PowerShell
 
@@ -401,11 +401,11 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Remove access
+## <a name="remove-access"></a>Toegang intrekken
 
 Als u de toegang wilt verwijderen, verwijdert u in RBAC een roltoewijzing met behulp van [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
-In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *Alain\@example.com* -gebruiker voor de resource groep *Pharma-Sales* verwijderd:
+In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *Alain \@example. com* -gebruiker in de resource groep *Pharma-Sales* verwijderd:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -423,10 +423,10 @@ In het volgende voor beeld wordt de < role_name >-rol verwijderd uit < object_id
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Als het volgende fout bericht wordt weer gegeven: "De opgegeven informatie is niet toegewezen aan een roltoewijzing", zorg ervoor dat u ook de `-Scope` para meters of `-ResourceGroupName` opgeeft. Zie [problemen met RBAC voor Azure-resources oplossen](troubleshooting.md#role-assignments-without-a-security-principal)voor meer informatie.
+Als u het volgende fout bericht wordt weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing ', moet u ook de `-Scope`-of `-ResourceGroupName`-para meters opgeven. Zie [problemen met RBAC voor Azure-resources oplossen](troubleshooting.md#role-assignments-with-unknown-security-principal)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Resources beheren met Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

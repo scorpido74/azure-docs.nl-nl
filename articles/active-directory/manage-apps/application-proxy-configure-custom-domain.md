@@ -1,6 +1,6 @@
 ---
-title: Aangepaste domeinen in Azure AD-toepassingsproxy | Microsoft Docs
-description: Aangepaste domeinen in Azure AD-toepassingsproxy beheren zodat de URL voor de app hetzelfde is, ongeacht waar uw gebruikers toegang toe.
+title: Aangepaste domeinen in azure AD-toepassingsproxy | Microsoft Docs
+description: Aangepaste domeinen configureren en beheren in azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,85 +11,136 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 10/16/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390780"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756529"
 ---
-# <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Werken met aangepaste domeinen in Azure AD-toepassingsproxy
+# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
-Wanneer u een toepassing via Azure Active Directory Application Proxy publiceert, maakt u een externe URL voor uw gebruikers kunnen raadplegen wanneer ze extern werken. Deze URL wordt het standaarddomein *yourtenant.msappproxy.net*. Bijvoorbeeld, als u gepubliceerd een app met de naam van de kosten en uw tenant is met de naam Contoso, bedragen de externe URL `https://expenses-contoso.msappproxy.net`. Als u uw eigen domeinnaam gebruiken wilt, moet u een aangepast domein voor uw toepassing configureren. 
+Wanneer u een toepassing publiceert via Azure Active Directory-toepassingsproxy, maakt u een externe URL voor uw gebruikers. Met deze URL wordt het standaard domein *yourtenant.msappproxy.net*opgehaald. Als u bijvoorbeeld een app met de naam *uitgaven* in uw Tenant met de naam *Contoso*publiceert, is de externe URL *https: \//expenses-contoso.msappproxy.net*. Als u uw eigen domein naam wilt gebruiken in plaats van *msappproxy.net*, kunt u een aangepast domein voor uw toepassing configureren. 
 
-U wordt aangeraden dat instellen van aangepaste domeinen voor uw toepassingen zo veel mogelijk. De voordelen van aangepaste domeinen zijn onder andere:
+## <a name="benefits-of-custom-domains"></a>Voor delen van aangepaste domeinen
 
-- Uw gebruikers toegang krijgen tot de toepassing met dezelfde URL, of ze binnen of buiten uw netwerk werken.
-- Als al uw toepassingen dezelfde interne en externe URL's, hebben koppelingen in een toepassing die naar een andere verwijzen er nog steeds werken, zelfs buiten het bedrijfsnetwerk. 
-- U bepaalt uw huisstijl en de URL's die u wilt maken. 
+Het is een goed idee om waar mogelijk aangepaste domeinen voor uw apps in te stellen. Enkele redenen voor het gebruik van aangepaste domeinen zijn:
 
+- Koppelingen tussen apps werken zelfs buiten het bedrijfs netwerk. Zonder een aangepast domein geldt dat als uw app hardcoded interne koppelingen naar doelen buiten de toepassings proxy heeft, de koppelingen niet extern kunnen worden omgezet. Als uw interne en externe Url's hetzelfde zijn, kunt u dit probleem vermijden. Als u geen aangepaste domeinen kunt gebruiken, raadpleegt u [hardcoded koppelingen omleiden voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy](../application-proxy-link-translation.md) voor andere manieren om dit probleem op te lossen. 
+  
+- Uw gebruikers hebben een gemakkelijke ervaring, omdat ze naar de app kunnen gaan met dezelfde URL binnen of buiten uw netwerk. Ze hoeven geen andere interne en externe Url's te leren of hun huidige locatie bij te houden. 
 
-## <a name="configure-a-custom-domain"></a>Een aangepast domein configureren
+- U kunt uw huis stijl beheren en de gewenste Url's maken. Een aangepast domein kan helpen het vertrouwen van uw gebruikers te bouwen, omdat gebruikers een vertrouwde naam zien en gebruiken in plaats van *msappproxy.net*.
 
-### <a name="prerequisites"></a>Vereisten
+- Sommige configuraties werken alleen met aangepaste domeinen. U hebt bijvoorbeeld aangepaste domeinen nodig voor apps die gebruikmaken van Security Assertion Markup Language (SAML), bijvoorbeeld wanneer u Active Directory Federation Services (AD FS) gebruikt, maar geen gebruik kunt maken van WS-Federation. Zie [werken met claim bewuste apps in Application proxy](application-proxy-configure-for-claims-aware-applications.md)voor meer informatie. 
 
-Voordat u een aangepast domein configureren, zorg ervoor dat u de volgende vereisten voorbereid hebt: 
-- Een [geverifieerd domein is toegevoegd aan Azure Active Directory](../fundamentals/add-custom-domain.md).
-- Een aangepaste certificaat voor het domein, in de vorm van een PFX-bestand.
-- Een on-premises app [gepubliceerd via toepassingsproxy](application-proxy-add-on-premises-application.md).
+Als u niet in staat bent om de interne en externe Url's overeenkomen, is het niet zo belang rijk dat u aangepaste domeinen gebruikt, maar u kunt nog steeds profiteren van de andere voor delen. 
 
-### <a name="configure-your-custom-domain"></a>Uw aangepaste domein configureren
+## <a name="dns-configuration-options"></a>Opties voor DNS-configuratie
 
-Wanneer u deze drie vereisten klaar hebt, volgt u deze stappen voor het instellen van uw aangepaste domein:
+Er zijn verschillende opties voor het instellen van uw DNS-configuratie, afhankelijk van uw vereisten:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Navigeer naar **Azure Active Directory** > **bedrijfstoepassingen** > **alle toepassingen** en kies de app die u wilt beheren.
-3. Selecteer **toepassingsproxy**. 
-4. Gebruik de vervolgkeuzelijst om uw aangepaste domein in het veld externe URL. Als u uw domein in de lijst niet ziet, nog niet klikt u vervolgens deze is geverifieerd nog. 
-5. Selecteer **opslaan**
-5. De **certificaat** veld dat is uitgeschakeld wordt ingeschakeld. Dit veld selecteert. 
+### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>Dezelfde interne en externe URL, verschillend intern en extern gedrag 
 
-   ![Klik hier om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
+Als u niet wilt dat uw interne gebruikers worden omgeleid via de toepassings proxy, kunt u een *Split-DNS-server*instellen. Een gesplitste DNS-infra structuur stuurt interne hosts naar een interne domein naam server en externe hosts naar een externe domein naam server, voor naam omzetting. 
 
-   Als u al een certificaat voor dit domein hebt geüpload, geeft de certificaatinformatie weer in het veld van het certificaat. 
+![Gesplitste DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
-6. Het PFX-certificaat uploaden en voer het wachtwoord voor het certificaat. 
-7. Selecteer **opslaan** uw wijzigingen op te slaan. 
-8. Voeg een [DNS-record](../../dns/dns-operations-recordsets-portal.md) die de nieuwe externe URL wordt omgeleid naar het domein msappproxy.net.
-9. Controleer of de DNS-record correct is geconfigureerd met behulp van de [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) opdracht om te zien of uw externe URL bereikbaar is en of het domein msapproxy.net wordt weer gegeven als een alias.
+### <a name="different-internal-and-external-urls"></a>Verschillende interne en externe Url's 
 
->[!TIP] 
->U moet slechts één certificaat per aangepast domein uploaden. Wanneer u een certificaat hebt geüpload, kunt u het aangepaste domein kiezen wanneer u een nieuwe app publiceren en geen extra configuratie, met uitzondering van de DNS-record. 
+Als de interne en externe Url's verschillend zijn, hoeft u geen split-gedrag te configureren, omdat gebruikers routering wordt bepaald door de URL. In dit geval wijzigt u alleen de externe DNS en stuurt u de externe URL naar het eind punt van de toepassings proxy. 
 
-## <a name="manage-certificates"></a>Certificaten beheren
+Wanneer u een aangepast domein voor een externe URL selecteert, wordt in een informatie balk de CNAME-vermelding weer gegeven die u moet toevoegen aan de externe DNS-provider. U kunt deze informatie altijd weer geven door naar de pagina **toepassings proxy** van de app te gaan.
 
-### <a name="certificate-format"></a>De indeling van certificaat
-Er is geen beperking voor het certificaat handtekening-methoden. Alle worden Elliptic Curve Cryptography (ECC), SAN Subject Alternative Name () en andere algemene typen certificaten ondersteund. 
+## <a name="set-up-and-use-custom-domains"></a>Aangepaste domeinen instellen en gebruiken
 
-U kunt een certificaat met jokertekens gebruiken, zolang het jokerteken komt overeen met de gewenste externe URL.
+Als u een on-premises app wilt configureren voor het gebruik van een aangepast domein, hebt u een geverifieerd Azure Active Directory aangepast domein, een PFX-certificaat voor het aangepaste domein en een on-premises app die moet worden geconfigureerd. 
 
-Het certificaat moet de persoonlijke sleutel bevatten.
+### <a name="create-and-verify-a-custom-domain"></a>Een aangepast domein maken en verifiëren
 
-Certificaten die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) kunnen worden gebruikt als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan worden gebruikt om deze certificaten te implementeren op beheerde apparaten. Voor niet-beheerde apparaten moeten deze certificaten hand matig worden geïnstalleerd.
+Een aangepast domein maken en verifiëren:
 
-### <a name="changing-the-domain"></a>Wijzigen van het domein
-Alle geverifieerde domeinen worden weergegeven in de vervolgkeuzelijst voor de externe URL voor uw toepassing. Als u wilt wijzigen van het domein, moet u alleen dat veld voor de toepassing bijwerken. Als het domein dat u wilt dat zich niet in de lijst [toe te voegen als een geverifieerd domein](../fundamentals/add-custom-domain.md). Als u een domein dat niet beschikken over een bijbehorende certificaat nog, volgt u stap 5-7 om toe te voegen van het certificaat selecteren. Controleer vervolgens of dat u de DNS-record om te leiden van de nieuwe externe URL bijwerken. 
+1. Selecteer in Azure Active Directory **aangepaste domein namen** in het linkernavigatievenster en selecteer vervolgens **aangepast domein toevoegen**. 
+1. Voer de naam van uw aangepaste domein in en selecteer **domein toevoegen**. 
+1. Kopieer op de pagina domein de TXT-record gegevens voor uw domein. 
+1. Ga naar uw domein registratie service en maak een nieuwe TXT-record voor uw domein op basis van de gekopieerde DNS-gegevens.
+1. Nadat u het domein hebt geregistreerd, selecteert u op de pagina van het domein in Azure Active Directory **verifiëren**. Zodra de domein status is **geverifieerd**, kunt u het domein gebruiken voor al uw Azure AD-configuraties, inclusief toepassings proxy. 
+
+Zie [uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory Portal](../fundamentals/add-custom-domain.md)voor meer gedetailleerde instructies.
+
+### <a name="configure-an-app-to-use-a-custom-domain"></a>Een app configureren voor het gebruik van een aangepast domein
+
+Uw app publiceren via een toepassings proxy met een aangepast domein:
+
+1. Selecteer voor een nieuwe app in Azure Active Directory **Enter prise-toepassingen** in het linkernavigatievenster, selecteer **nieuwe toepassing**en selecteer vervolgens **on-premises toepassing**. 
+   
+   Voor een app die al in **bedrijfs toepassingen**is, selecteert u deze in de lijst en selecteert u vervolgens **toepassings proxy** in de linkernavigatiebalk. 
+
+1. Voer op de pagina **toepassings proxy** in het veld **interne URL** de interne URL voor uw app in. 
+   
+1. In het veld **externe URL** gaat u naar de lijst en selecteert u het aangepaste domein dat u wilt gebruiken.
+   
+1. Selecteer **Opslaan**.
+   
+   ![Aangepast domein selecteren](./media/application-proxy-configure-custom-domain/application-proxy.png)
+   
+1. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** . 
+   
+   ![Klik om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
+   
+1. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten.
+   
+   ![Certificaat uploaden](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
+   
+   > [!TIP] 
+   > Een aangepast domein heeft het certificaat alleen eenmaal geüpload. Daarna wordt het geüploade certificaat automatisch toegepast wanneer u het aangepaste domein gebruikt voor andere apps.
+   
+1. Als u een certificaat hebt toegevoegd, selecteert u op de pagina **toepassings proxy** **Opslaan**. 
+   
+1. In de informatie balk op de pagina **toepassings proxy** noteert u de CNAME-vermelding die u moet toevoegen aan uw DNS-zone. 
+   
+   ![CNAME DNS-vermelding toevoegen](./media/application-proxy-configure-custom-domain/dns-info.png)
+   
+1. Volg de instructies in [DNS-records en-record sets beheren met behulp van de Azure Portal](../../dns/dns-operations-recordsets-portal.md) om een DNS-record toe te voegen waarmee de nieuwe externe URL wordt omgeleid naar het domein *msappproxy.net* .
+   
+1. Als u wilt controleren of de DNS-record correct is geconfigureerd, gebruikt u de [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) opdracht om te bevestigen dat uw externe URL bereikbaar is en het domein *msapproxy.net* wordt weer gegeven als een alias.
+
+Uw toepassing is nu ingesteld voor het gebruik van het aangepaste domein. Zorg ervoor dat u gebruikers toewijst aan uw toepassing voordat u deze test of uitgeeft. 
+
+Als u het domein voor een app wilt wijzigen, selecteert u een ander domein in de vervolg keuzelijst in **externe URL** op de pagina **toepassings proxy** van de app. Upload een certificaat voor het bijgewerkte domein, indien nodig, en werk de DNS-record bij. Als u het aangepaste domein dat u wilt in de vervolg keuzelijst in de **externe URL**niet ziet, wordt het mogelijk niet gecontroleerd.
+
+Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in azure Active Directory](application-proxy-add-on-premises-application.md)voor meer gedetailleerde instructies voor de toepassings proxy.
+
+## <a name="certificates-for-custom-domains"></a>Certificaten voor aangepaste domeinen
+
+Met een certificaat maakt u de beveiligde SSL-verbinding voor uw aangepaste domein. 
+
+### <a name="certificate-formats"></a>Certificaat indelingen
+
+U moet een PFX-certificaat gebruiken om ervoor te zorgen dat alle vereiste tussenliggende certificaten zijn opgenomen. Het certificaat moet de persoonlijke sleutel bevatten.
+
+Er is geen beperking voor de handtekening methoden van het certificaat. Elliptische curve cryptography (ECC), alternatieve naam voor onderwerp (SAN) en andere algemene certificaat typen worden ondersteund. 
+
+U kunt Joker certificaten gebruiken zolang het Joker teken overeenkomt met de externe URL. U moet joker tekens gebruiken voor [toepassingen met Joker](application-proxy-wildcard.md)tekens. Als u het certificaat wilt gebruiken om ook toegang te krijgen tot subdomeinen, moet u de joker tekens subdomein toevoegen als alternatieve namen voor het onderwerp in hetzelfde certificaat. Een certificaat voor *\*. Adventure-Works.com* werkt bijvoorbeeld niet voor *\*. apps.adventure-works.com* tenzij u *\*. apps.Adventure-Works.com* toevoegt als alternatieve naam voor het onderwerp. 
+
+U kunt certificaten gebruiken die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan deze certificaten implementeren op beheerde apparaten. Voor niet-beheerde apparaten moet u deze certificaten hand matig installeren.
+
+Het is geen goed idee om een persoonlijke basis certificerings instantie te gebruiken. De persoonlijke basis-CA moet ook worden gepusht naar client computers, waarmee veel uitdagingen worden geïntroduceerd. 
 
 ### <a name="certificate-management"></a>Certificaatbeheer
-U kunt hetzelfde certificaat gebruiken voor meerdere toepassingen, tenzij de toepassingen die een externe host delen. 
 
-U ontvangt een waarschuwing wanneer een certificaat is verlopen, waarin u een ander certificaat via de portal uploaden. Als het certificaat is ingetrokken, kunnen uw gebruikers een beveiligingswaarschuwing zien bij het openen van de toepassing. We uitvoeren geen intrekkingscontroles voor certificaten.  Voor het bijwerken van het certificaat voor een bepaalde toepassing, gaat u naar de toepassing en stappen 5 tot en met 7 om aangepaste domeinen voor gepubliceerde toepassingen voor het uploaden van een nieuw certificaat te configureren. Als het oude certificaat niet wordt gebruikt door andere toepassingen, wordt deze automatisch verwijderd. 
+Alle certificaat beheer gaat via de afzonderlijke toepassings pagina's. Ga naar de **toepassings proxy** pagina van de toepassing om toegang te krijgen tot het veld **certificaat** .
 
-Alle Certificaatbeheer is momenteel door afzonderlijke toepassing's daarom voor het beheren van certificaten in de context van de desbetreffende toepassingen. 
+U kunt hetzelfde certificaat gebruiken voor meerdere toepassingen. Als een geüpload certificaat werkt met een andere toepassing, wordt het automatisch toegepast. U wordt niet gevraagd om het opnieuw te uploaden wanneer u de app toevoegt of configureert. 
+
+Wanneer een certificaat verloopt, wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een ander certificaat te uploaden. Als het certificaat wordt ingetrokken, zien uw gebruikers mogelijk een beveiligings waarschuwing bij het openen van de app. Als u het certificaat voor een app wilt bijwerken, gaat u naar de pagina **toepassings proxy** voor de app, selecteert u **certificaat**en uploadt u een nieuw certificaat. Als het oude certificaat niet door andere apps wordt gebruikt, wordt het automatisch verwijderd. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md) naar uw gepubliceerde apps met Azure AD-verificatie.
-* [Schakel voorwaardelijke toegang](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) tot uw gepubliceerde apps in.
-* [Uw aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
-
+* [Schakel eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md) in voor uw gepubliceerde apps met Azure AD-verificatie.
+* [Schakel voorwaardelijke toegang](../conditional-access/technical-reference.md#cloud-apps-assignments) tot uw gepubliceerde apps in.
 

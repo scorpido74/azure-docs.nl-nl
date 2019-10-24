@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512356"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756193"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -203,7 +203,7 @@ U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server Vm's waarop *de IaaS-* uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om te downgradeen: u moet de resource van de resource provider van de SQL-VM verwijderen met behulp van de Azure Portal en zich opnieuw registreren bij de resource provider van de SQL-VM. 
+SQL Server Vm's waarop *de IaaS-* uitbrei ding is geïnstalleerd, kunnen de modus naar _volledig_ bijwerken met behulp van de Azure Portal. SQL Server Vm's in de modus voor _niet-agents_ kunnen worden bijgewerkt naar _volledig_ nadat het besturings systeem is bijgewerkt naar Windows 2008 R2 of hoger. Het is niet mogelijk om dit te downgradeen: u moet de registratie van de SQL Server VM bij de resource provider van de SQL-VM [ongedaan maken](#unregister-vm-from-resource-provider) door de SQL-VM-resource te verwijderen en opnieuw te registreren bij de resource provider van de SQL-VM. 
 
 De agent modus bijwerken naar Full: 
 
@@ -281,6 +281,49 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 ---
 
+## <a name="unregister-vm-from-resource-provider"></a>De registratie van de virtuele machine bij de resource provider ongedaan maken 
+
+Als u de registratie van uw SQL Server-VM bij de resource provider van de SQL-VM ongedaan wilt maken, verwijdert u de virtuele SQL-machine *resource* met de Azure portal of Azure cli. Als u de *resource* van de virtuele SQL-machine verwijdert, wordt de SQL Server VM niet verwijderd. Wees echter voorzichtig en volg de stappen om de virtuele machine per ongeluk te verwijderen bij het verwijderen van de *resource*. 
+
+Het ongedaan maken van de registratie van de SQL-VM met de resource provider van de SQL-VM is nood zakelijk om de beheer modus te verlagen van de volledige. 
+
+### <a name="azure-portal"></a>Azure Portal
+
+Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machine bij de resource provider ongedaan te maken met behulp van de Azure Portal:
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Ga naar de SQL Server VM-resource. 
+  
+   ![Resource van virtuele SQL-machines](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+
+1. Selecteer **Verwijderen**. 
+
+   ![SQL-VM-resource provider verwijderen](media/virtual-machines-windows-sql-register-with-rp/delete-sql-vm-resource-provider.png)
+
+1. Typ de naam van de virtuele SQL-machine en **Schakel het selectie vakje naast de virtuele machine uit**.
+
+   ![SQL-VM-resource provider verwijderen](media/virtual-machines-windows-sql-register-with-rp/confirm-delete-of-resource-uncheck-box.png)
+
+   >[!WARNING]
+   > Als u het selectie vakje naast de naam van de virtuele machine uitschakelt, wordt de virtuele machine volledig *verwijderd* . Schakel het selectie vakje uit als u de registratie van de SQL Server VM van de resource provider ongedaan wilt maken, maar *de werkelijke virtuele machine niet wilt verwijderen*. 
+
+1. Selecteer **verwijderen** om het verwijderen van de *bron*van de virtuele SQL-machine te bevestigen en niet de SQL Server virtuele machine. 
+
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Als u de registratie van uw SQL Server virtuele machine van de resource provider met Azure CLI ongedaan wilt maken, gebruikt u de opdracht [AZ SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Hiermee wordt de SQL Server virtuele machine *bron* verwijderd, maar wordt de virtuele machine niet verwijderd. 
+
+
+```azurecli-interactive
+   az sql vm delete 
+     --name <SQL VM resource name> |
+     --resource-group <Resource group name> |
+     --yes 
+```
+
+
+
 ## <a name="remarks"></a>Opmerkingen
 
 - De resource provider van de SQL-VM ondersteunt alleen SQL Server Vm's die via Azure Resource Manager zijn geïmplementeerd. SQL Server Vm's die via het klassieke model zijn geïmplementeerd, worden niet ondersteund. 
@@ -353,7 +396,7 @@ Ja. Het bijwerken van de beheer baarheids modus van Lightweight naar Full wordt 
 
 Nee. Het downgradeen van de SQL Server IaaS-extensie modus wordt niet ondersteund. De beheer baarheids modus kan niet worden gedowngraded van de volledige modus naar de modus Lightweight of no-agent, en kan niet worden gedowngraded van de modus voor niet-agent naar de No-modus. 
 
-Als u de beheer baarheids modus wilt wijzigen van volledig beheer, verwijdert u de resource van micro soft. SqlVirtualMachine en registreert u de SQL Server VM opnieuw bij de resource provider van de SQL-VM.
+Als u de beheer baarheids modus wilt wijzigen van de volledige beheer baarheid, verwijdert u de [registratie](#unregister-vm-from-resource-provider) van de SQL Server virtuele machine van de resource provider van SQL Server door de SQL Server *resource* te verwijderen en de SQL Server VM opnieuw te registreren met de resource provider van de SQL-VM opnieuw in een andere beheer modus.
 
 **Kan ik bij de Azure Portal van de resource provider van de SQL-VM registreren?**
 

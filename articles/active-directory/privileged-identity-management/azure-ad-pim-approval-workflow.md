@@ -4,11 +4,11 @@ description: Meer informatie over het goed keuren of weigeren van aanvragen voor
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -16,24 +16,24 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a8d373a7e6edeaefd933e4f8ec8ee11e3c14ee
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804037"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756430"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Aanvragen voor Azure AD-rollen in PIM goed keuren of weigeren
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Aanvragen voor Azure AD-rollen in Privileged Identity Management goed keuren of weigeren
 
 Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u rollen configureren voor het vereisen van goed keuring voor activering en een of meer gebruikers of groepen kiezen als gedelegeerde goed keurders. Gedelegeerde goed keurders hebben 24 uur nodig om aanvragen goed te keuren. Als een aanvraag niet binnen 24 uur wordt goedgekeurd, moet de in aanmerking komende gebruiker een nieuwe aanvraag opnieuw indienen. Het venster goedkeurings tijd 24 uur kan niet worden geconfigureerd.
 
 Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
 
-## <a name="view-pending-requests"></a>De aanvragen in de wachtrij weergeven
+## <a name="view-pending-requests"></a>In behandeling zijnde aanvragen weer geven
 
-Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in PIM.
+Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
@@ -77,5 +77,5 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [E-mail meldingen in PIM](pim-email-notifications.md)
-- [Aanvragen voor Azure-resource rollen in PIM goed keuren of weigeren](pim-resource-roles-approval-workflow.md)
+- [E-mail meldingen in Privileged Identity Management](pim-email-notifications.md)
+- [Aanvragen voor Azure-resource rollen in Privileged Identity Management goed keuren of weigeren](pim-resource-roles-approval-workflow.md)

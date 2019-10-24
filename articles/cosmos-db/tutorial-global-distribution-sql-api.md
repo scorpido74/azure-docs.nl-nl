@@ -1,18 +1,18 @@
 ---
 title: Zelfstudie voor het instellen van wereldwijde distributie met Azure Cosmos DB met behulp van de SQL-API
 description: Lees hoe u wereldwijde distributie met Azure Cosmos DB kunt instellen met behulp van de SQL-API.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 07/15/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234602"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756828"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Wereldwijde distributie van Azure Cosmos DB instellen met behulp van de SQL-API
 
@@ -47,7 +47,7 @@ Als de eigenschap PreferredLocations niet is ingesteld, worden alle aanvragen ve
 ## <a name="net-sdk"></a>.NET SDK
 De SDK kan worden gebruikt zonder codewijzigingen. In dit geval stuurt de SDK alle lees- en schrijfbewerkingen automatisch door naar de huidige schrijfregio.
 
-In versie 1.8 en hoger van de .NET SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor de eigenschap Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Deze eigenschap is van het type Verzameling `<string>`, die een lijst met regionamen moet bevatten. De tekenreekswaarden zijn opgemaakt volgens de kolom regionaam op de [Azure-regio's][regions] pagina, zonder spaties vóór of na de eerste en laatste teken respectievelijk.
+In versie 1.8 en hoger van de .NET SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor de eigenschap Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Deze eigenschap is van het type Verzameling `<string>`, die een lijst met regionamen moet bevatten. De teken reeks waarden worden opgemaakt volgens de kolom regio naam op de pagina [Azure-regio's][regions] , zonder spaties voor of achter het eerste en laatste teken.
 
 De huidige eindpunten voor schrijven en lezen zijn beschikbaar in respectievelijk DocumentClient.WriteEndpoint en DocumentClient.ReadEndpoint.
 
@@ -78,11 +78,11 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/java script
 
 De SDK kan worden gebruikt zonder codewijzigingen. In dit geval stuurt de SDK alle lees- en schrijfbewerkingen automatisch door naar de huidige schrijfregio.
 
-In versie 1.8 en hoger van elke SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor een nieuwe eigenschap, DocumentClient.ConnectionPolicy.PreferredLocations genaamd. Deze parameter is een matrix van tekenreeksen die een lijst met regionamen verwerkt. De namen zijn opgemaakt volgens de kolom regionaam op de [Azure-regio's][regions] pagina. U kunt ook gebruikmaken van de vooraf gedefinieerde constanten in het object AzureDocuments.Regions
+In versie 1.8 en hoger van elke SDK heeft de ConnectionPolicy-parameter voor de DocumentClient-constructor een nieuwe eigenschap, DocumentClient.ConnectionPolicy.PreferredLocations genaamd. Deze parameter is een matrix van tekenreeksen die een lijst met regionamen verwerkt. De namen worden opgemaakt volgens de kolom regio naam op de pagina [Azure-regio's][regions] . U kunt ook gebruikmaken van de vooraf gedefinieerde constanten in het object AzureDocuments.Regions
 
 De huidige eindpunten voor schrijven en lezen zijn beschikbaar in respectievelijk DocumentClient.getWriteEndpoint en DocumentClient.getReadEndpoint.
 
@@ -91,7 +91,7 @@ De huidige eindpunten voor schrijven en lezen zijn beschikbaar in respectievelij
 >
 >
 
-Hieronder ziet u een codevoorbeeld voor Node.js/Javascript.
+Hieronder vindt u een code voorbeeld voor node. js/java script.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -109,7 +109,7 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 
 ## <a name="python-sdk"></a>Python-SDK
 
-De volgende code laat zien hoe voorkeurslocaties instellen met behulp van de Python-SDK:
+De volgende code laat zien hoe u voorkeurs locaties kunt instellen met behulp van de python-SDK:
 
 ```python
 
@@ -119,9 +119,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>V2 Java SDK
+## <a name="java-v2-sdk"></a>Java v2 SDK
 
-De volgende code laat zien hoe voorkeurslocaties instellen met behulp van de Java SDK:
+De volgende code laat zien hoe u voorkeurs locaties kunt instellen met behulp van de Java SDK:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263694"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756618"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure-cache beheren voor redis
 In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieuw opstarten](#reboot) en het [plannen van updates](#schedule-updates) voor uw Azure-cache voor redis-exemplaren.
@@ -71,7 +71,7 @@ Als u de **Master** -en **Slave** -knoop punten opnieuw opstart, kunnen alle geg
 Als u slechts één van de knoop punten opnieuw opstart, gaan de gegevens doorgaans verloren, maar is deze nog steeds aanwezig. Als bijvoorbeeld het hoofd knooppunt opnieuw wordt opgestart en er een cache-schrijf bewerking wordt uitgevoerd, gaan de gegevens uit de cache-schrijf bewerking verloren. Een ander scenario voor gegevens verlies is dat als u één knoop punt opnieuw opstart en het andere knoop punt wordt uitgevoerd als gevolg van een fout op hetzelfde moment. Zie [Wat is er gebeurd met mijn gegevens in redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) voor meer informatie over mogelijke oorzaken voor gegevens verlies.
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan ik mijn cache opnieuw opstarten met Power shell, CLI of andere beheer hulpprogramma's?
-Ja, voor Power shell-instructies Zie [een Azure-cache opnieuw opstarten voor redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+Ja, voor Power shell-instructies Zie [een Azure-cache opnieuw opstarten voor redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
 ## <a name="schedule-updates"></a>Updates plannen
 Op de Blade **updates plannen** kunt u een onderhouds venster voor uw cache-exemplaar aanwijzen. Wanneer het onderhouds venster is opgegeven, worden er redis-server updates gemaakt tijdens dit venster. 

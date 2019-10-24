@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096229"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755399"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium-abonnement (preview-versie)
 
@@ -31,7 +31,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-In dit voor beeld vervangt `<RESOURCE_GROUP>` u door de resource groep `<PLAN_NAME>` en met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>` ](#regions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt `--is-linux` , neemt u de optie op.
+In dit voor beeld moet u `<RESOURCE_GROUP>` vervangen door de resource groep en `<PLAN_NAME>` met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>`](#regions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt, neemt u de optie `--is-linux` op.
 
 Met het plan dat u hebt gemaakt, kunt u [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) gebruiken om uw functie-app te maken. In de portal worden zowel het abonnement als de app tegelijkertijd gemaakt. 
 
@@ -45,7 +45,7 @@ Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement w
 
 In het Premium-abonnement kunt u uw app vooraf laten opwarmen op een opgegeven aantal exemplaren, tot aan de minimale plan grootte.  Met vooraf gewarmde instanties kunt u een app vooraf schalen voor een hoge belasting. Wanneer de app wordt geschaald, wordt deze voor het eerst geschaald naar de vooraf gewarmde instanties. Aanvullende instanties blijven in de voor bereiding van de volgende schaal bewerking direct in de buffer worden geplaatst en warme. Door een buffer van vooraf gewarmde instanties te hebben, kunt u de latentie van koude start effectief vermijden.  Voor bereide instanties is een functie van het Premium-abonnement en u moet ten minste één instantie actief houden en op elk moment dat het abonnement actief is.
 
-U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor uitschalen te selecteren. In het venster functie-app bewerken zijn vooraf gewarmde exemplaren specifiek voor die app, maar de minimum-en maximum exemplaren zijn van toepassing op uw hele abonnement.
+U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn vooraf gewarmde exemplaren specifiek voor die app, maar de minimum-en maximum exemplaren zijn van toepassing op uw hele abonnement.
 
 ![Instellingen voor Elastic Scale](./media/functions-premium-plan/scale-out.png)
 
@@ -82,7 +82,7 @@ Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal e
 
 Als uw app exemplaren vereist die groter zijn dan de grootte van uw abonnement, kan deze worden uitgeschaald totdat het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet, terwijl de minimale plan exemplaren gegarandeerd zijn voor uw app.
 
-U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor uitschalen te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
+U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
 
 U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 
@@ -94,38 +94,46 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  Er worden kosten in rekening gebracht voor het totale aantal kernen en het geheugen dat per seconde wordt verbruikt.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
 
-|SKU|Kerngeheugens|Geheugen|Storage|
+|SKU|Cores|Geheugen|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14GB|250 GB|
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Regio's
 
 Hieronder ziet u de regio's die momenteel worden ondersteund voor de open bare preview van elk besturings systeem.
 
 |Regio| Windows | Linux |
 |--| -- | -- |
-|Australië - oost| ✔ | |
-|Australië - zuidoost | ✔ | ✔ |
-|Canada - midden| ✔ |  |
-|US - centraal| ✔ |  |
+|Australië - centraal| ✔ * | |
+|Australië - centraal 2| ✔ * | |
+|Australië Oost| ✔ | |
+|Australië Zuidoost | ✔ | ✔ |
+|Brazilië - Zuid| ✔ * * |  |
+|Canada-Midden| ✔ |  |
+|VS - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
-|East US | | ✔ |
-|US - oost 2| ✔ |  |
+|VS - oost | ✔ | ✔ |
+|VS - oost 2| ✔ |  |
 |Frankrijk - centraal| ✔ |  |
-|Japan - oost|  | ✔ |
-|Japan - west| ✔ | |
+|Japan - Oost| ✔ | ✔ |
+|Japan - West| ✔ | |
 |Korea - centraal| ✔ |  |
-|US - noord-centraal| ✔ |  |
+|VS - noord-centraal| ✔ |  |
 |Europa - noord| ✔ | ✔ |
-|US - zuid-centraal| ✔ |  |
+|VS - zuid-centraal| ✔ |  |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔ |
-|Verenigd Koninkrijk West| ✔ |  |
-|Europa -west| ✔ | ✔ |
+|VK - zuid| ✔ | |
+|VK - west| ✔ |  |
+|Europa - west| ✔ | ✔ |
 |India - west| ✔ |  |
-|US - west| ✔ | ✔ |
+|VS - west| ✔ | ✔ |
+
+\* Maxi maal uitschalen Maxi maal 20 exemplaren
+
+\* * Maxi maal uitschalen beperkt tot 60 exemplaren
 
 ## <a name="known-issues"></a>Bekende problemen
 

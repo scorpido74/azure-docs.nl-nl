@@ -1,23 +1,23 @@
 ---
-title: 'Quickstart: Afbeeldingsinhoud analyseren op ongewenst materiaal in C# - Content Moderator'
+title: 'Quick Start: afbeeldingen analyseren voor ongewenste inhoud C# in-content moderator'
 titleSuffix: Azure Cognitive Services
 description: Afbeeldings inhoud voor verschillende aanstootgevende materialen analyseren met behulp van de Content Moderator SDK voor .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: pafarley
+ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946236"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757306"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Quickstart: Afbeeldingen analyseren voor ongewenste inhoud inC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Quick Start: afbeeldingen analyseren voor aanstootgevende inhoud inC#
 
 In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met de [Content Moderator SDK voor .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). U leert hoe u kunt scannen op inhoud voor volwassenen of ongepaste, Extraheer bare tekst en menselijke gezichten met het oog op het beheer van potentieel aanstootgevend materiaal.
 
@@ -60,7 +60,7 @@ Voeg de volgende code toe aan het bestand *Program.cs* om een Content Moderator-
 
 ### <a name="set-up-input-and-output-targets"></a>Invoer- en uitvoerdoelen instellen
 
-Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_ . Deze velden geven de bestanden voor de inhoud van de invoer installatie kopie en de uitvoer van JSON-inhoud.
+Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden geven de bestanden voor de inhoud van de invoer installatie kopie en de uitvoer van JSON-inhoud.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
@@ -92,7 +92,7 @@ Voeg de volgende code toe aan de methode **Main** in de klasse **App**. Met deze
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 
-Het programma schrijft JSON-tekenreeksgegevens naar het bestand _TextModerationOutput.json_ . De voorbeeldafbeeldingen die in deze snelstart worden gebruikt, geven de volgende uitvoer. Elke afbeelding heeft verschillende secties voor `ImageModeration`, `FaceDetection`en `TextDetection`, die overeenkomen met de drie API-aanroepen in uw **EvaluateImage** -methode.
+Het programma schrijft JSON-tekenreeksgegevens naar het bestand _TextModerationOutput.json_. De voorbeeldafbeeldingen die in deze snelstart worden gebruikt, geven de volgende uitvoer. Elke afbeelding heeft verschillende secties voor `ImageModeration`, `FaceDetection` en `TextDetection`, die overeenkomen met de drie API-aanroepen in uw **EvaluateImage** -methode.
 
 ```json
 [{

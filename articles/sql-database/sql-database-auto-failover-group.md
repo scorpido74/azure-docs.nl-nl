@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/09/2019
-ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
-ms.translationtype: MT
+ms.date: 10/21/2019
+ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249322"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750475"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -80,11 +80,11 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Listener voor lezen/schrijven van failover-groep**
 
-  Een DNS CNAME-record die verwijst naar de URL van de huidige primaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de SQL-workload voor lezen en schrijven kan transparant opnieuw verbinding maken met de primaire data base wanneer de primaire wijzigingen na een failover worden uitgevoerd. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.database.windows.net`. Wanneer de failovergroep is gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.database.windows.net`.
+  Een DNS CNAME-record die verwijst naar de URL van de huidige primaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de SQL-workload voor lezen en schrijven kan transparant opnieuw verbinding maken met de primaire data base wanneer de primaire wijzigingen na een failover worden uitgevoerd. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.database.windows.net`. Wanneer de failovergroep wordt gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.database.windows.net`.
 
 - **Listener voor alleen-lezen van failover-groep**
 
-  Een DNS CNAME-record die verwijst naar de alleen-lezen listener die verwijst naar de URL van de secundaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de alleen-lezen SQL-workload kan transparant worden verbonden met de secundaire met behulp van de opgegeven taakverdelings regels. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.database.windows.net`. Wanneer de failovergroep is gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.secondary.database.windows.net`.
+  Een DNS CNAME-record die verwijst naar de alleen-lezen listener die verwijst naar de URL van de secundaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de alleen-lezen SQL-workload kan transparant worden verbonden met de secundaire met behulp van de opgegeven taakverdelings regels. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.database.windows.net`. Wanneer de failovergroep wordt gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.secondary.database.windows.net`.
 
 - **Beleid voor automatische failover**
 
@@ -148,6 +148,9 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
 - **Een of meer failover-groepen gebruiken om failover van meerdere data bases te beheren**
 
   Er kunnen een of meer failover-groepen worden gemaakt tussen twee servers in verschillende regio's (primaire en secundaire servers). Elke groep kan een of meer data bases bevatten die als een eenheid worden hersteld in het geval dat alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. De groep failover maakt geo-secundaire data base met dezelfde service doelstelling als de primaire. Als u een bestaande geo-replicatie relatie aan de failovergroep toevoegt, zorg er dan voor dat de geo-Secondary is geconfigureerd met dezelfde servicelaag en reken grootte als de primaire.
+  
+  > [!IMPORTANT]
+  > Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools.
 
 - **Listener voor read-write gebruiken voor OLTP-workload**
 
@@ -214,7 +217,7 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
 - **Listener voor read-write gebruiken voor OLTP-workload**
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.zone_id.database.windows.net` als de URL van de server en worden de verbindingen automatisch omgeleid naar de primaire. Deze URL wordt niet gewijzigd na de failover. De failover omvat het bijwerken van de DNS-record, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd. Omdat het secundaire exemplaar de DNS-zone met de primaire share deelt, kan de client toepassing opnieuw verbinding maken met het certificaat met behulp van dezelfde SAN-certificaten.
+  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.zone_id.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. De failover omvat het bijwerken van de DNS-record, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd. Omdat het secundaire exemplaar de DNS-zone met de primaire share deelt, kan de client toepassing opnieuw verbinding maken met het certificaat met behulp van dezelfde SAN-certificaten.
 
 - **Rechtstreeks verbinding maken met geo-gerepliceerd secundair voor alleen-lezen query's**
 
@@ -306,10 +309,10 @@ Deze volg orde wordt aangeraden om het probleem te voor komen waarbij de secunda
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Het verlies van kritieke gegevens voor komen
 
-Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Aanroepende `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync` ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
+Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Het aanroepen van `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync` ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging die wordt veroorzaakt door een procedure aanroep van @no__t 0 kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
+> `sp_wait_for_database_copy_sync` voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging veroorzaakt door een `sp_wait_for_database_copy_sync` procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Failover-groepen en herstel naar een bepaald tijdstip
 
