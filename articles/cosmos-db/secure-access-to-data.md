@@ -1,17 +1,17 @@
 ---
 title: Meer informatie over het beveiligen van toegang tot gegevens in Azure Cosmos DB
 description: Meer informatie over toegangs beheer concepten in Azure Cosmos DB, waaronder hoofd sleutels, alleen-lezen sleutels, gebruikers en machtigingen.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616676"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753177"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Dit artikel bevat een overzicht van het beveiligen van de toegang tot gegevens d
 
 Azure Cosmos DB gebruikt twee typen sleutels om gebruikers te verifiëren en toegang te bieden tot de gegevens en bronnen van de gebruiker. 
 
-|Sleuteltype|Resources|
+|Type sleutel|Bronnen|
 |---|---|
 |[Hoofd sleutels](#master-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
 |[Bron tokens](#resource-tokens)|Gebruikt voor toepassings resources: containers, documenten, bijlagen, opgeslagen procedures, triggers en Udf's|
@@ -128,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Een Cosmos DB machtigings resource is gekoppeld aan een Cosmos DB gebruiker.  Elke gebruiker kan nul of meer Cosmos DB machtigingen bevatten.  Een machtigings bron biedt toegang tot een beveiligings token dat de gebruiker nodig heeft om toegang te krijgen tot een specifieke toepassings bron.
 Er zijn twee toegangs niveaus beschikbaar die kunnen worden gegeven door een machtigings Bron:
 
-* Hele De gebruiker heeft volledige machtigingen voor de resource.
-* Wie De gebruiker kan alleen de inhoud van de resource lezen, maar kan geen schrijf-, bijwerk-of verwijderings bewerkingen uitvoeren op de resource.
+* Alle: de gebruiker heeft volledige machtigingen voor de resource.
+* Lezen: de gebruiker kan alleen de inhoud van de resource lezen, maar kan geen schrijf-, bijwerk-of verwijderings bewerkingen uitvoeren op de resource.
 
 > [!NOTE]
 > Om Cosmos DB opgeslagen procedures uit te voeren, moet de gebruiker beschikken over de machtiging all voor de container waarin de opgeslagen procedure wordt uitgevoerd.
@@ -193,5 +193,5 @@ Azure Cosmos DB kunt u zoeken, selecteren, wijzigen en verwijderen van persoonli
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Cosmos DB voor meer informatie over Cosmos-database beveiliging: Database beveiliging](database-security.md).
+* Zie [Cosmos DB: data base Security](database-security.md)voor meer informatie over de beveiliging van Cosmos-data bases.
 * Zie [Access Control op Azure Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB autorisatie tokens.

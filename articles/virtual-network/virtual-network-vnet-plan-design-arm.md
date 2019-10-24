@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168518"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756117"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
 
@@ -107,13 +107,13 @@ Resources in één virtueel netwerk kunnen de namen van resources in een gekoppe
 
 ## <a name="permissions"></a>Machtigingen
 
-Azure maakt gebruik [van op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) naar bronnen. Machtigingen worden toegewezen aan een [bereik](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) in de volgende hiërarchie: abonnement, beheer groep, resource groep en individuele resource. Zie [uw resources organiseren](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over de hiërarchie. Als u wilt werken met virtuele netwerken van Azure en alle bijbehorende mogelijkheden zoals peering, netwerk beveiligings groepen, service-eind punten en route tabellen, kunt u leden van uw organisatie toewijzen aan de ingebouwde [eigenaar](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)of [ Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rollen van het netwerk en vervolgens de rol toewijzen aan het juiste bereik. Als u specifieke machtigingen wilt toewijzen voor een subset van virtuele netwerk mogelijkheden, maakt u een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en wijst u de specifieke machtigingen toe die zijn vereist voor [virtuele netwerken](manage-virtual-network.md#permissions), [subnetten en service-eind punten](virtual-network-manage-subnet.md#permissions), [netwerk interfaces ](virtual-network-network-interface.md#permissions), [peering](virtual-network-manage-peering.md#permissions), [netwerk-en toepassings beveiligings groepen](manage-network-security-group.md#permissions)of [routerings tabellen](manage-route-table.md#permissions) naar de rol.
+Azure maakt gebruik [van op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) naar bronnen. Machtigingen worden toegewezen aan een [bereik](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) in de volgende hiërarchie: beheer groep, abonnement, resource groep en afzonderlijke resource. Zie [uw resources organiseren](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over de hiërarchie. Als u wilt werken met virtuele netwerken van Azure en alle bijbehorende mogelijkheden zoals peering, netwerk beveiligings groepen, service-eind punten en route tabellen, kunt u leden van uw organisatie toewijzen aan de ingebouwde [eigenaar](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)of [ Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rollen van het netwerk en vervolgens de rol toewijzen aan het juiste bereik. Als u specifieke machtigingen wilt toewijzen voor een subset van virtuele netwerk mogelijkheden, maakt u een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en wijst u de specifieke machtigingen toe die zijn vereist voor [virtuele netwerken](manage-virtual-network.md#permissions), [subnetten en service-eind punten](virtual-network-manage-subnet.md#permissions), [netwerk interfaces ](virtual-network-network-interface.md#permissions), [peering](virtual-network-manage-peering.md#permissions), [netwerk-en toepassings beveiligings groepen](manage-network-security-group.md#permissions)of [routerings tabellen](manage-route-table.md#permissions) naar de rol.
 
 ## <a name="policy"></a>Beleid
 
 Met Azure Policy kunt u beleids definities maken, toewijzen en beheren. Met beleids definities worden verschillende regels voor uw resources afgedwongen, zodat de resources niet blijven voldoen aan de standaarden van uw organisatie en service overeenkomsten. Azure Policy voert een evaluatie uit van uw resources, waarbij wordt gescand op resources die niet compatibel zijn met de beleids definities die u hebt. U kunt bijvoorbeeld een beleid definiëren en Toep assen waarmee u alleen virtuele netwerken in een specifieke resource groep of regio kunt maken. Een ander beleid kan vereisen dat aan elk subnet een netwerk beveiligings groep is gekoppeld. De beleids regels worden vervolgens geëvalueerd wanneer u resources maakt en bijwerkt.
 
-Beleids regels worden toegepast op de volgende hiërarchie: abonnement, beheer groep en resource groep. Meer informatie over [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of het implementeren van voor beelden van [beleids sjablonen](policy-samples.md) voor virtuele netwerken.
+Beleids regels worden toegepast op de volgende hiërarchie: beheer groep, abonnement en resource groep. Meer informatie over [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of het implementeren van voor beelden van [beleids sjablonen](policy-samples.md) voor virtuele netwerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

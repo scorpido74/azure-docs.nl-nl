@@ -1,5 +1,5 @@
 ---
-title: Een CoreOS-VM toevoegen aan Azure AD Domain Services | Microsoft Docs '
+title: Een CoreOS-VM toevoegen aan Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over het configureren en toevoegen van een CoreOS-virtuele machine aan een Azure AD Domain Services beheerd domein.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/14/2019
 ms.author: iainfou
-ms.openlocfilehash: c0c298a9aa0b9d46ec2c7510cdb5c3ba1c8c84af
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4cdc2fff05270a296d9c4c9151f73cadeb2a1cfc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075552"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754380"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Een virtuele CoreOS-machine toevoegen aan een Azure AD Domain Services beheerd domein
 
@@ -43,7 +43,7 @@ Als u een bestaande virtuele machine met CoreOS Linux in azure hebt, kunt u er v
 Als u een virtuele machine met CoreOS Linux wilt maken of een test-VM wilt maken voor gebruik met dit artikel, kunt u een van de volgende methoden gebruiken:
 
 * [Azure-portal](../virtual-machines/linux/quick-create-portal.md)
-* [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
+* [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 Wanneer u de virtuele machine maakt, moet u aandacht best Eden aan de instellingen voor virtueel netwerk om ervoor te zorgen dat de virtuele machine kan communiceren met het door Azure AD DS beheerde domein:
@@ -72,7 +72,7 @@ Werk deze namen bij met uw eigen waarden:
 127.0.0.1 coreos coreos.contoso.com
 ```
 
-Als u klaar bent, slaat u het *hosts* -bestand `:wq` op en sluit u het af met de opdracht van de editor.
+Als u klaar bent, slaat u het *hosts* -bestand op en sluit u het af met de `:wq` opdracht van de editor.
 
 ## <a name="configure-the-sssd-service"></a>De SSSD-service configureren
 
@@ -122,7 +122,7 @@ krb5_realm = CONTOSO.COM
 
 Als het SSSD-configuratie bestand is bijgewerkt, voegt u de virtuele machine nu toe aan het beheerde domein.
 
-1. Gebruik eerst de `adcli info` opdracht om te controleren of u informatie kunt zien over het door Azure AD DS beheerde domein. In het volgende voor beeld wordt informatie opgehaald voor het domein *CONTOSO.com*. Geef in alle hoofd letters uw eigen Azure AD DS beheerde domein naam op:
+1. Gebruik eerst de `adcli info`-opdracht om te controleren of u informatie kunt bekijken over het door Azure AD DS beheerde domein. In het volgende voor beeld wordt informatie opgehaald voor het domein *CONTOSO.com*. Geef in alle hoofd letters uw eigen Azure AD DS beheerde domein naam op:
 
     ```console
     sudo adcli info CONTOSO.COM
@@ -130,19 +130,19 @@ Als het SSSD-configuratie bestand is bijgewerkt, voegt u de virtuele machine nu 
 
    Als de `adcli info` opdracht uw door Azure AD DS beheerde domein niet kan vinden, raadpleegt u de volgende stappen voor probleem oplossing:
 
-    * Zorg ervoor dat het domein bereikbaar is vanaf de VM. Probeer `ping contoso.com` te zien of er een positief antwoord wordt geretourneerd.
+    * Zorg ervoor dat het domein bereikbaar is vanaf de VM. Probeer `ping contoso.com` om te zien of een positief antwoord wordt geretourneerd.
     * Controleer of de virtuele machine is geïmplementeerd op hetzelfde of een peered virtueel netwerk waarin het beheerde domein van Azure AD DS beschikbaar is.
     * Controleer of de DNS-server instellingen voor het virtuele netwerk zijn bijgewerkt zodat ze verwijzen naar de domein controllers van het door Azure AD DS beheerde domein.
 
-1. Voeg nu de virtuele machine toe aan de Azure AD DS beheerde domein `adcli join` met behulp van de opdracht. Geef een gebruiker op die deel uitmaakt van de groep *Aad DC-Administrators* . Voeg, indien nodig, [een gebruikers account toe aan een groep in azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Voeg nu de virtuele machine toe aan de Azure AD DS beheerde domein met behulp van de `adcli join` opdracht. Geef een gebruiker op die deel uitmaakt van de groep *Aad DC-Administrators* . Voeg, indien nodig, [een gebruikers account toe aan een groep in azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    De Azure AD DS Managed domain name moet in alle hoofd letters worden ingevoerd. In het volgende voor beeld wordt het account `contosoadmin@contoso.com` met de naam gebruikt voor het initialiseren van Kerberos. Voer uw eigen gebruikers account in dat lid is van de groep *Aad DC-Administrators* .
+    De Azure AD DS Managed domain name moet in alle hoofd letters worden ingevoerd. In het volgende voor beeld wordt het account met de naam `contosoadmin@contoso.com` gebruikt voor het initialiseren van Kerberos. Voer uw eigen gebruikers account in dat lid is van de groep *Aad DC-Administrators* .
 
     ```console
     sudo adcli join -D CONTOSO.COM -U contosoadmin@CONTOSO.COM -K /etc/krb5.keytab -H coreos.contoso.com -N coreos
     ```
 
-    De `adcli join` opdracht retourneert geen informatie wanneer de virtuele machine is toegevoegd aan het beheerde domein van Azure AD DS.
+    De `adcli join` opdracht retourneert geen informatie wanneer de virtuele machine is toegevoegd aan het door Azure AD DS beheerde domein.
 
 1. Start de SSSD-service om de configuratie van het domein aan te passen:
   
@@ -154,7 +154,7 @@ Als het SSSD-configuratie bestand is bijgewerkt, voegt u de virtuele machine nu 
 
 Start een nieuwe SSH-verbinding met een domein gebruikers account om te controleren of de virtuele machine is toegevoegd aan het beheerde Azure AD DS-domein. Bevestig dat er een basismap is gemaakt en dat groepslid maatschap van het domein wordt toegepast.
 
-1. Maak een nieuwe SSH-verbinding vanuit uw-console. Gebruik een domein account dat deel uitmaakt van het beheerde domein `ssh -l` met behulp van `contosoadmin@contoso.com` de opdracht, zoals en voer vervolgens het adres van uw virtuele machine in, bijvoorbeeld *coreos.contoso.com*. Als u de Azure Cloud Shell gebruikt, gebruikt u het open bare IP-adres van de virtuele machine in plaats van de interne DNS-naam.
+1. Maak een nieuwe SSH-verbinding vanuit uw-console. Gebruik een domein account dat deel uitmaakt van het beheerde domein met behulp van de opdracht `ssh -l`, zoals `contosoadmin@contoso.com` en voer vervolgens het adres van uw virtuele machine in, bijvoorbeeld *coreos.contoso.com*. Als u de Azure Cloud Shell gebruikt, gebruikt u het open bare IP-adres van de virtuele machine in plaats van de interne DNS-naam.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com coreos.contoso.com

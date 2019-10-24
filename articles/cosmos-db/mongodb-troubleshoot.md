@@ -1,32 +1,33 @@
 ---
-title: Veelvoorkomende problemen oplossen in Azure Cosmos DB-API voor Mongodb
-description: Dit document worden beschreven van de manieren om het oplossen van algemene problemen aangetroffen in Azure Cosmos DB-API voor MongoDB.
+title: Veelvoorkomende fouten in de API van Azure Cosmos DB voor Mongo DB oplossen
+description: Dit document bevat informatie over de manieren om veelvoorkomende problemen op te lossen die zijn opgetreden in de API van Azure Cosmos DB voor MongoDB.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: roaror
-ms.openlocfilehash: 5b3d3993a497240c1ea18f0fcf852c0e834f6e79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece975fa37e500b1c160210684a0cb46e719c48b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735704"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754958"
 ---
-# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Oplossen van veelvoorkomende problemen in Azure Cosmos DB-API voor MongoDB
+# <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Veelvoorkomende problemen met de API van Azure Cosmos DB voor MongoDB oplossen
 
-Azure Cosmos DB implementeert de wire-protocollen van veelvoorkomende NoSQL-databases, met inbegrip van MongoDB. Vanwege de wire-protocol-implementatie, kunt u transparant werken met Azure Cosmos DB met behulp van de bestaande client-SDK's, stuurprogramma's en hulpprogramma's die met NoSQL-databases werken. Azure Cosmos DB maakt geen gebruik van alle broncode van de databases voor het ontwikkelen van wire-compatibele API's voor een van de NoSQL-databases. Een MongoDB-clientstuurprogramma die werkt met de versies wire-protocol kan verbinding maken met Azure Cosmos DB.
+Azure Cosmos DB implementeert de Wire-protocollen van algemene NoSQL-data bases, waaronder MongoDB. Als gevolg van de implementatie van het wire-protocol, kunt u op transparante wijze communiceren met Azure Cosmos DB door gebruik te maken van de bestaande client-Sdk's, stuur Programma's en hulpprogram ma's die werken met NoSQL-data bases. Azure Cosmos DB maakt geen gebruik van een bron code van de data bases voor het bieden van Wire-compatibele Api's voor een van de NoSQL-data bases. Elk MongoDB-client stuur programma dat inzicht heeft in de wire-protocol versies kan verbinding maken met Azure Cosmos DB.
 
-Azure Cosmos DB-API voor MongoDB is compatibel met 3.2 versie van de MongoDB wire-protocol (de standaardoperators voor query's en onderdelen die zijn toegevoegd in versie 3.4 zijn momenteel beschikbaar als preview), maar er zijn bepaalde aangepaste foutcodes die overeenkomen met de Azure Cosmos DB specifieke fouten. In dit artikel wordt uitgelegd voor verschillende fouten, foutcodes en de stappen voor het oplossen van deze fouten.
+Hoewel de API van Azure Cosmos DB voor MongoDB compatibel is met 3,2-versie van het wire-protocol van MongoDB (de query operators en functies die zijn toegevoegd in versie 3,4 zijn momenteel beschikbaar als preview), zijn er enkele aangepaste fout codes die overeenkomen met Azure Cosmos DB specifieke fouten. In dit artikel worden verschillende fouten, fout codes en de stappen beschreven om deze fouten op te lossen.
 
 ## <a name="common-errors-and-solutions"></a>Veelvoorkomende fouten en oplossingen
 
-| Fout               | Code  | Description  | Oplossing  |
+| Fout               | Coderen  | Beschrijving  | Oplossing  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Het totale aantal aanvraageenheden verbruikt meer is dan de frequentie van de ingerichte aanvraageenheid voor de verzameling en is beperkt. | Houd rekening met schaal de doorvoer die is toegewezen aan een container of een set van containers in Azure portal of u kunt de bewerking opnieuw. |
-| ExceededMemoryLimit | 16501 | Als een service met meerdere tenants, heeft de bewerking van de client geheugen toegewezen overschreden. | Verklein het bereik van de bewerking door meer beperkende querycriteria of neem contact op met ondersteuning van de [Azure-portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Voorbeeld: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| Problemen met de versie van de MongoDB kabel | - | De oudere versies van de MongoDB-stuurprogramma's kan niet voor het detecteren van de naam van de Azure Cosmos-account in de verbindingsreeksen worden. | Toevoeg- *appName = @**accountName** @*  aan het einde van uw Cosmos DB-API voor MongoDB-verbindingsreeks, waar ***accountName*** is de naam van uw Cosmos DB-account . |
+| TooManyRequests     | 16500 | Het totale aantal verbruikte aanvraag eenheden is hoger dan de ingerichte aanvraag-eenheids snelheid voor de verzameling en is beperkt. | Overweeg de door Voer die is toegewezen aan een container of een set containers te schalen vanuit de Azure Portal of probeer de bewerking opnieuw uit te voeren. |
+| ExceededMemoryLimit | 16501 | Als multi tenant service heeft de bewerking de geheugen toewijzing van de client overschreden. | Verklein het bereik van de bewerking via meer beperkende query criteria of neem contact op met de ondersteuning van de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Voorbeeld: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+| Het pad naar de index dat overeenkomt met het opgegeven order-by-item is uitgesloten/de order by-query heeft geen overeenkomende samengestelde index waaruit het kan worden geleverd. | 2 | De query vraagt een sortering op een veld dat niet is geïndexeerd. | Maak een overeenkomende index (of samengestelde index) voor de sorteer query die wordt geprobeerd. |
+| Problemen met MongoDB-bedradings versies | - | De oudere versies van MongoDB-Stuur Programma's kunnen de naam van het Azure Cosmos-account in de verbindings reeksen niet detecteren. | Append *AppName = @**AccountName**@* aan het einde van de API van uw Cosmos DB voor MongoDb Connection String, waarbij ***AccountName*** uw Cosmos DB account naam is. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,63 +1,63 @@
 ---
-title: Versleuteling-at-rest in Azure Cosmos DB
-description: Meer informatie over hoe Azure Cosmos DB biedt versleuteling van data-at-rest en hoe deze is geïmplementeerd.
-author: rimman
+title: Versleuteling van de rest in Azure Cosmos DB
+description: Meer informatie over het Azure Cosmos DB versleutelen van gegevens in rust en hoe deze worden geïmplementeerd.
+author: markjbrown
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f406f008e2c377b39deb8d151855ce7315616701
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616855"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755092"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Gegevens versleuteling in Azure Cosmos DB 
 
-Versleuteling-at-rest is een woordgroep die vaak naar de versleuteling van gegevens op niet-vluchtig opslagapparaten, verwijst zoals Solid-State stations (SSD's) en harde schijven (HDD's). Cosmos DB slaat de bijbehorende primaire databases op SSD's. De mediabijlagen en back-ups worden opgeslagen in Azure Blob-opslag wordt gewoonlijk ondersteund door HDD. Met het uitbrengen van versleuteling-at-rest voor Cosmos DB, zijn alle databases, mediabijlagen en back-ups worden gecodeerd. Uw gegevens nu in transit versleuteld (via het netwerk) en at-rest (niet-vluchtig opslag), geeft u end-to-end versleuteling.
+Versleuteling op rest is een zin die doorgaans verwijst naar de versleuteling van gegevens op niet-vluchtige opslag apparaten, zoals Solid-state drives (Ssd's) en harde schijven (Hdd's). Cosmos DB zijn de primaire data bases opgeslagen op Ssd's. De media bijlagen en back-ups worden opgeslagen in Azure Blob-opslag, waarvan een back-up wordt gemaakt door Hdd's. Met de release van versleuteling in rust voor Cosmos DB, worden al uw data bases, media bijlagen en back-ups versleuteld. Uw gegevens zijn nu versleuteld in door Voer (via het netwerk) en op rest (niet-vluchtige opslag), waardoor u end-to-end-versleuteling krijgt.
 
-Als een PaaS-service, Cosmos DB heel eenvoudig te gebruiken is. Omdat alle gebruikersgegevens zijn opgeslagen in Cosmos DB is versleuteld in rust en transport, hebt u geen geen actie te ondernemen. Een andere manier om dit is dat versleuteling-at-rest 'op' standaard is. Er zijn geen besturingselementen om te schakelen in- of uitschakelen. Azure Cosmos DB maakt gebruik van AES-256-versleuteling voor alle regio's waar het account wordt uitgevoerd. We bieden deze functie terwijl we doorgaan om te voldoen aan onze [beschikbaarheid en prestaties van SLA's](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Als PaaS-service is Cosmos DB heel eenvoudig te gebruiken. Omdat alle gebruikers gegevens die zijn opgeslagen in Cosmos DB, zijn versleuteld op rest en in Trans Port, hoeft u geen actie te ondernemen. Een andere manier om dit te doen is dat versleuteling op rest standaard is. Er zijn geen besturings elementen om deze in of uit te scha kelen. Azure Cosmos DB maakt gebruik van AES-256-versleuteling voor alle regio's waar het account wordt uitgevoerd. We bieden deze functie terwijl we kunnen voldoen aan onze [Beschik baarheid en prestaties](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
-## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementatie van versleuteling-at-rest voor Azure Cosmos DB
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementatie van versleuteling in rust voor Azure Cosmos DB
 
-Versleuteling-at-rest wordt geïmplementeerd met behulp van diverse beveiligingstechnologieën, met inbegrip van beveiligde opslag van clustersleutels systemen, versleutelde netwerken en cryptografische API's. Systemen die ontsleutelen en te verwerken gegevens heeft om te communiceren met systemen die sleutels beheren. Het diagram toont hoe de opslag van versleutelde gegevens en het beheer van de sleutels worden gescheiden. 
+Versleuteling op rest wordt geïmplementeerd met behulp van een aantal beveiligings technologieën, waaronder systemen voor beveiligde sleutel opslag, versleutelde netwerken en cryptografische Api's. Systemen die gegevens ontsleutelen en verwerken, moeten communiceren met systemen die sleutels beheren. In het diagram ziet u hoe de opslag van versleutelde gegevens en het beheer van sleutels wordt gescheiden. 
 
 ![Diagram ontwerpen](./media/database-encryption-at-rest/design-diagram.png)
 
-De basisprincipes van een gebruikersaanvraag is als volgt:
-- Het gebruikersaccount van de database gereed is gemaakt en storage-sleutels worden opgehaald via een aanvraag bij de Resourceprovider van de Management-Service.
-- Een gebruiker maakt een verbinding met Cosmos DB via HTTPS/beveiligde transport. (Als de SDK's abstract de details.)
-- De gebruiker verzendt een JSON-document via het eerder gemaakte beveiligde verbinding worden opgeslagen.
-- Het JSON-document is geïndexeerd, tenzij de gebruiker heeft uitgeschakeld indexeren.
-- Zowel de JSON-document en index de gegevens worden geschreven naar beveiligde opslag.
-- Gegevens worden regelmatig lezen van de beveiligde opslag en back-ups op de Azure versleutelde Blob Store.
+De basis stroom van een gebruikers aanvraag is als volgt:
+- Het account van de gebruikers database wordt gereed gemaakt en opslag sleutels worden opgehaald via een aanvraag aan de provider van de Management service-resource.
+- Een gebruiker maakt een verbinding met Cosmos DB via HTTPS/beveiligd Trans Port. (De Sdk's abstracten de details.)
+- De gebruiker verzendt een JSON-document dat wordt opgeslagen via de eerder gemaakte beveiligde verbinding.
+- Het JSON-document wordt geïndexeerd tenzij de gebruiker de indexering heeft uitgeschakeld.
+- Zowel het JSON-document als de index gegevens worden naar beveiligde opslag geschreven.
+- Periodiek worden gegevens uit de beveiligde opslag gelezen en wordt er een back-up gemaakt naar het versleutelde BLOB-archief van Azure.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>V: Hoeveel meer heeft Azure Storage kosten als Storage Service Encryption is ingeschakeld?
-A: Er zijn geen extra kosten.
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>V: Hoeveel kost meer Azure Storage kosten als Storage Service Encryption is ingeschakeld?
+A: er zijn geen extra kosten.
 
-### <a name="q-who-manages-the-encryption-keys"></a>V: Wie beheert de versleutelings sleutels?
-A: De sleutels worden beheerd door micro soft.
+### <a name="q-who-manages-the-encryption-keys"></a>V: wie beheert de versleutelings sleutels?
+A: de sleutels worden beheerd door micro soft.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>V: Hoe vaak worden de versleutelings sleutels gedraaid?
-A: Micro soft heeft een aantal interne richt lijnen voor de rotatie van de versleutelings sleutel, die Cosmos DB volgt. De specifieke richtlijnen zijn niet gepubliceerd. Microsoft publiceren de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), die wordt gezien als een subset van de interne richtlijnen en aanbevolen procedures voor nuttig is voor ontwikkelaars.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>V: hoe vaak versleutelings sleutels zijn gedraaid?
+A: micro soft heeft een aantal interne richt lijnen voor het draaien van de versleutelings sleutel, die Cosmos DB volgt. De specifieke richt lijnen worden niet gepubliceerd. Micro soft publiceert de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), die wordt beschouwd als een subset van interne richt lijnen en heeft nuttige aanbevolen procedures voor ontwikkel aars.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>V: Kan ik mijn eigen versleutelings sleutels gebruiken?
-A: Cosmos DB is een PaaS-service en we hebben er hard aan gewerkt om de service eenvoudig te gebruiken. Ons opgevallen dat deze vraag is vaak gevraagd als een proxy-vraag voor het voldoen aan een nalevingsvereiste zoals PCI-DSS. We hebben als onderdeel van het bouwen van deze functie, met naleving auditors om ervoor te zorgen dat klanten die gebruikmaken van Cosmos DB aan hun eisen voldoen zonder de noodzaak om te sleutels zelf beheren.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>V: kan ik mijn eigen versleutelings sleutels gebruiken?
+A: Cosmos DB is een PaaS-service en wij hebben er hard aan gewerkt om de service gebruiks vriendelijk te blijven gebruiken. We hebben opgemerkt dat deze vraag vaak wordt gevraagd als een proxy vraag voor het voldoen aan een nalevings vereiste zoals PCI-DSS. Als onderdeel van het samen stellen van deze functie hebben we nagegaan dat klanten die Cosmos DB gebruiken, voldoen aan hun vereisten zonder dat ze zelf sleutels hoeven te beheren.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>V: In welke regio's is versleuteling ingeschakeld?
-A: Voor alle Azure Cosmos DB regio's is versleuteling ingeschakeld voor alle gebruikers gegevens.
+### <a name="q-what-regions-have-encryption-turned-on"></a>V: voor welke regio's is versleuteling ingeschakeld?
+A: voor alle Azure Cosmos DB regio's is versleuteling ingeschakeld voor alle gebruikers gegevens.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>V: Is versleuteling van invloed op de duur van de prestatie latentie en door Voer?
-A: Er is geen invloed op of wijzigingen in de functie voor het uitvoeren van prestaties, nu de versleuteling bij rest is ingeschakeld voor alle bestaande en nieuwe accounts. U kunt meer lezen over de [SLA voor Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) pagina om te bekijken van de meest recente garanties.
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>V: heeft versleuteling invloed op de prestatie latentie en door Voer-Sla's?
+A: er is geen invloed op of wijzigingen in de functie voor het uitvoeren van prestaties, nu de versleuteling bij rest is ingeschakeld voor alle bestaande en nieuwe accounts. Meer informatie vindt u op de pagina [Sla voor Cosmos DB voor](https://azure.microsoft.com/support/legal/sla/cosmos-db) de meest recente garanties.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>V: Ondersteunt de lokale emulator versleuteling op rest?
-A: De emulator is een zelfstandig hulp programma voor ontwikkelen en testen en maakt geen gebruik van de services voor sleutel beheer die door de beheerde Cosmos DB-service worden gebruikt. Onze aanbeveling is het inschakelen van BitLocker op stations waar u gevoelige emulator testgegevens opslaat. De [emulator biedt ondersteuning voor het wijzigen van de standaardgegevensmap](local-emulator.md) of via een bekende locatie.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>V: de lokale emulator ondersteunt versleuteling op rest?
+A: de emulator is een zelfstandig hulp programma voor ontwikkelen en testen en maakt geen gebruik van de services voor sleutel beheer die door de beheerde Cosmos DB-service worden gebruikt. Onze aanbeveling is om BitLocker in te scha kelen op stations waar u gevoelige emulator test gegevens opslaat. De [emulator ondersteunt het wijzigen van de standaardmap voor gegevens](local-emulator.md) en het gebruik van een bekende locatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Azure Cosmos data base Security](database-security.md)(Engelstalig) voor een overzicht van Cosmos DB beveiliging en de nieuwste verbeteringen.
-Zie voor meer informatie over Microsoft-certificeringen, de [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).
+Zie de [Vertrouwenscentrum van Azure](https://azure.microsoft.com/support/trust-center/)voor meer informatie over micro soft-certificeringen.

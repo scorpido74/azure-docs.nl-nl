@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883406"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750159"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Controleer de publicatie status van uw aanbieding voor commerciële Marketplace
 
@@ -26,7 +26,7 @@ Voor elke aanbieding moet een van de volgende status indicatoren worden weer geg
 | **Publicatie wordt uitgevoerd** | De aanbieding/het plan werkt in de stappen van het publicatie proces. |
 | **Aandacht vereist** | Er is een kritiek probleem ontdekt tijdens de certificering door micro soft of een van de publicatie stappen. |
 | **Preview** | De aanbieding is gecertificeerd door micro soft en wacht nu op een definitieve verificatie door de uitgever. Selecteer Live gaan om de aanbieding Live te maken. |
-| **Live** | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
+| **Galerie** | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
 | **Verkopen in behandeling voor stoppen** | De uitgever heeft ' stoppen met verkopen ' in de aanbieding of het abonnement geselecteerd, maar de actie is nog niet voltooid. |
 | **Niet beschikbaar in Marketplace** | Een eerder gepubliceerde aanbieding/plan in Marketplace is verwijderd. |
 
@@ -106,7 +106,7 @@ Tijdens de stap **voor het maken** van de preview-fase maken we een versie van u
 
 In deze stap ontvangt u een e-mail met een aanvraag voor u om uw Preview-voor beeld te controleren en goed te keuren voordat u de laatste stap publiceert.
 
-Als u hebt geselecteerd om uw aanbieding via micro soft te verkopen, kunt u de aanschaf en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens de goedkeurings fase van dit voor beeld. Uw aanbieding is nog niet beschikbaar in de pubic Marketplace. Zodra u deze preview hebt getest en goedgekeurd, moet u **Go-Live** selecteren in het dash board overzicht van de [**aanbieding**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
+Als u hebt geselecteerd om uw aanbieding via micro soft te verkopen, kunt u de aanschaf en implementatie van uw aanbieding testen om ervoor te zorgen dat deze aan uw vereisten voldoet tijdens de goedkeurings fase van dit voor beeld. Uw aanbieding is nog niet beschikbaar in de open bare Marketplace. Zodra u deze preview hebt getest en goedgekeurd, moet u **Go-Live** selecteren in het dash board overzicht van de [**aanbieding**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 
 Als u tijdens deze preview-fase wijzigingen in de aanbieding wilt aanbrengen, kunt u een nieuwe preview-versie bewerken en opnieuw indienen. Zie het artikel [bestaande Marketplace-aanbiedingen bijwerken](#update-existing-marketplace-offers) voor meer informatie over meer wijzigingen.
 

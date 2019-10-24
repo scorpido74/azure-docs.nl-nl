@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550286"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756551"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het Azure Maps kaart besturings element gebruiken
 
@@ -44,6 +44,12 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
     <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > Type script definities kunnen worden geïmporteerd in uw toepassing door het volgende toe te voegen:
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, voegt u het volgende `<style>`-element toe aan het element `<head>`.
 
@@ -102,6 +108,8 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </script>
     ```
 
+    [Hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)vindt u een lijst met voor beelden van de integratie van Azure Active Directory (Aad) met Azure Maps. 
+    
     Zie voor meer informatie de [verificatie met Azure Maps](azure-maps-authentication.md) document.
 
 6. U kunt eventueel de volgende metatag elementen toevoegen aan het hoofd van de pagina:
@@ -222,3 +230,8 @@ Meer gegevens toevoegen aan uw kaart:
 
 > [!div class="nextstepaction"]
 > [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+Zie voor een lijst met voor beelden die laten zien hoe u Azure Active Directory (AAD) integreert met Azure Maps:
+
+> [!div class="nextstepaction"]
+> [Voor beelden van AAD-verificatie](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

@@ -10,14 +10,14 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710128"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756036"
 ---
-# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: Architectuur en concepten
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
 Meer informatie over de architectuur, concepten en werk stromen voor Azure Machine Learning. De belangrijkste onderdelen van de service en de algemene werk stroom voor het gebruik van de service worden weer gegeven in het volgende diagram:
 
@@ -29,8 +29,8 @@ De werk stroom voor het machine learning model volgt doorgaans deze reeks:
 
 1. **Leerling**
     + Ontwikkel machine learning trainings scripts in **python** of met de visuele interface.
-    + Maken en configureren van een **compute-doel**.
-    + **Verzenden van de scripts** naar de geconfigureerde compute-doel om uit te voeren in die omgeving. Tijdens de training kunnen de scripts lezen uit of schrijven naar de **gegevens opslag**. En de uitvoerings records worden opgeslagen als **uitgevoerd** in de **werk ruimte** en gegroepeerd onder **experimenten**.
+    + Een **reken doel**maken en configureren.
+    + **Verzend de scripts** naar het geconfigureerde Compute-doel om in die omgeving uit te voeren. Tijdens de training kunnen de scripts lezen uit of schrijven naar de **gegevens opslag**. En de uitvoerings records worden opgeslagen als **uitgevoerd** in de **werk ruimte** en gegroepeerd onder **experimenten**.
 
 1. **Pakket** -nadat een bevredigende uitvoering is gevonden, registreert u het persistente model in het **model register**.
 
@@ -62,26 +62,26 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 + <a href="#experiments">Experimenten</a>
 + <a href="#github-tracking-and-integration">Git-tracking</a>
 + <a href="#iot-module-deployments">IoT-modules</a>
-+ <a href="#logging">Logging</a>
++ <a href="#logging">Userenv</a>
 + <a href="#ml-pipelines">ML-pijp lijnen</a>
-+ <a href="#models">Models</a>
-+ <a href="#runs">Uitvoeren</a>
++ <a href="#models">Basis</a>
++ <a href="#runs">Uitvoeringsrun</a>
 + <a href="#run-configurations">Configuratie uitvoeren</a>
 + <a href="#snapshots">Snapshot</a>
 + <a href="#training-scripts">Trainings script</a>
 + <a href="#web-service-deployments">Webservices</a>
-+ <a href="#workspaces">Workspace</a>
++ <a href="#workspaces">Werk ruimte</a>
 
 ### <a name="activities"></a>Activiteiten
 
-Een activiteit vertegenwoordigt een langdurige bewerking. De volgende bewerkingen zijn voorbeelden van activiteiten:
+Een activiteit vertegenwoordigt een langlopende bewerking. De volgende bewerkingen zijn voor beelden van activiteiten:
 
-* Maken of verwijderen van een compute-doel
-* Een script uitgevoerd op een compute-doel
+* Een reken doel maken of verwijderen
+* Een script uitvoeren op een compute-doel
 
 Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgang van deze bewerkingen eenvoudig kunt bewaken.
 
-### <a name="compute-targets"></a>COMPUTE-doelen
+### <a name="compute-targets"></a>Compute-doelen
 
 Met een [reken doel](concept-compute-target.md) kunt u de reken resource opgeven waarin u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn. Met Compute-doelen kunt u uw reken omgeving eenvoudig wijzigen zonder uw code te wijzigen.
 
@@ -89,9 +89,9 @@ Meer informatie over de [beschik bare reken doelen voor training en implementati
 
 ### <a name="datasets-and-datastores"></a>Gegevens sets en gegevens opslag
 
-**Azure machine learning gegevens sets** (preview) maakt het gemakkelijker om uw gegevens te benaderen en ermee te werken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
+Met **Azure machine learning gegevens sets** (preview) kunt u eenvoudig toegang krijgen tot uw gegevens en deze gebruiken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
 
-Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het `from_delimited_files()` gebruik `to_pandas_dataframe()`van of.
+Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het gebruik van `from_delimited_files()` of `to_pandas_dataframe()`.
 
 Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)voor meer voor beelden met behulp van gegevens sets.
 
@@ -142,23 +142,24 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ### <a name="experiments"></a>Experimenten
 
-Een experiment is een groepering van veel uitvoeringen van een opgegeven script. Altijd hoort bij een werkruimte. Wanneer u een uitvoering verzendt, kunt u de naam van een experiment opgeven. Informatie voor de uitvoering wordt onder dit experiment opgeslagen. Als u een uitvoering verzendt en een experimentnaam opgeeft die niet bestaat, wordt automatisch een nieuw experiment met de zojuist opgegeven naam gemaakt.
+Een experiment is een groepering van veel uitvoeringen van een opgegeven script. Deze behoort altijd tot een werk ruimte. Wanneer u een uitvoering verzendt, geeft u een naam op voor het experiment. Informatie over de uitvoering is opgeslagen onder dat experiment. Als u een uitvoering verzendt en een experimentnaam opgeeft die niet bestaat, wordt automatisch een nieuw experiment met de zojuist opgegeven naam gemaakt.
 
-Zie [zelf studie voor een voor beeld van het gebruik van een experiment: Train uw eerste model](tutorial-1st-experiment-sdk-train.md).
+Zie [zelf studie: uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)voor een voor beeld van het gebruik van een experiment.
 
 
 ### <a name="github-tracking-and-integration"></a>GitHub bijhouden en integreren
 
-Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. De huidige doorvoer-ID voor de opslag plaats wordt bijvoorbeeld vastgelegd als onderdeel van de geschiedenis. Dit werkt met uitvoeringen die zijn verzonden met behulp van een Estimator, ML-pijp lijn of script uitvoering. Het werkt ook voor uitvoeringen die zijn verzonden vanuit de SDK of Machine Learning CLI.
+Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Dit werkt met uitvoeringen die zijn verzonden met behulp van een Estimator, ML-pijp lijn of script uitvoering. Het werkt ook voor uitvoeringen die zijn verzonden vanuit de SDK of Machine Learning CLI.
 
+Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
 
 ### <a name="logging"></a>Logboekregistratie
 
 Wanneer u uw oplossing ontwikkelt, gebruikt u de Azure Machine Learning python-SDK in uw python-script om wille keurige gegevens te registreren. Na de uitvoering voert u een query uit op de metrische gegevens om te bepalen of de uitvoering het model heeft geproduceerd dat u wilt implementeren.
 
-### <a name="ml-pipelines"></a>ML-pijplijnen
+### <a name="ml-pipelines"></a>ML-pijp lijnen
 
-U gebruikt machine learning pijp lijnen voor het maken en beheren van werk stromen die samen een machine learning fasen opdoen. Een pijp lijn kan bijvoorbeeld bestaan uit gegevens voorbereiding, model training, model implementatie en fase ring/scores. Elke fase kan meerdere stappen, die kan worden uitgevoerd zonder toezicht in diverse compute-doelen omvatten. 
+U gebruikt machine learning pijp lijnen voor het maken en beheren van werk stromen die samen een machine learning fasen opdoen. Een pijp lijn kan bijvoorbeeld bestaan uit gegevens voorbereiding, model training, model implementatie en fase ring/scores. Elke fase kan meerdere stappen omvatten, die elk zonder toezicht kunnen worden uitgevoerd in verschillende reken doelen. 
 
 U kunt de stappen van de pijp lijn herbruikbaresen en uitvoeren zonder de volgende stappen uit te voeren als de uitvoer van de stap niet is gewijzigd. U kunt bijvoorbeeld een model opnieuw trainen zonder de stappen voor het voorbereiden van de kosten voor het opnieuw uitvoeren van gegevens als de gegevens niet zijn gewijzigd. Door pijp lijnen kunnen gegevens wetenschappers ook samen werken terwijl ze werken op verschillende gebieden van een machine learning werk stroom.
 
@@ -166,17 +167,17 @@ Zie [pijp lijnen en Azure machine learning](concept-ml-pipelines.md)voor meer in
 
 ### <a name="models"></a>Modellen
 
-De eenvoudigste is een model een stukje code dat een invoer en uitvoer wordt geproduceerd. Het maken van een machine learning-model omvat het selecteren van een algoritme, voorzien van deze gegevens en afstemmen van hyperparameters. Training is een iteratief proces dat een getraind model produceert, wat het model hebt geleerd tijdens de training ingekapseld.
+Een model is de eenvoudigste is een stukje code dat een invoer maakt en uitvoer produceert. Het maken van een machine learning model bestaat uit het selecteren van een algoritme, het leveren van gegevens en het afstemmen van Hyper parameters. Training is een iteratief proces dat een getraind model produceert dat het model dat u tijdens het trainings proces hebt geleerd.
 
-Een model wordt geproduceerd door een uitvoering in Azure Machine Learning. U kunt ook een model gebruiken dat is getraind buiten Azure Machine Learning. U kunt een model registreren in een Azure Machine Learning-werk ruimte.
+Een model wordt gemaakt door een uitvoering in Azure Machine Learning. U kunt ook een model gebruiken dat is getraind buiten Azure Machine Learning. U kunt een model registreren in een Azure Machine Learning-werk ruimte.
 
 Azure Machine Learning is Framework neutraal. Wanneer u een model maakt, kunt u een populair machine learning Framework gebruiken, zoals Scikit-learn, XGBoost, PyTorch, tensor flow en Chainer.
 
-Zie [zelf studie voor een voor beeld van een model trainen met Scikit-Learn en een Estimator: Train een afbeeldings classificatie model met](tutorial-train-models-with-aml.md)Azure machine learning.
+Voor een voor beeld van een model trainen met Scikit-Learn en een Estimator, Zie [zelf studie: een classificatie model voor een installatie kopie trainen met Azure machine learning](tutorial-train-models-with-aml.md).
 
 Het **model register** houdt alle modellen in uw Azure machine learning-werk ruimte bij.
 
-Modellen worden aangeduid met de naam en versie. Telkens wanneer u een model met dezelfde naam registreert als een bestaande, wordt ervan uitgegaan dat het een nieuwe versie is. De versie wordt verhoogd en het nieuwe model wordt geregistreerd onder dezelfde naam.
+Modellen worden geïdentificeerd op naam en versie. Telkens wanneer u een model met dezelfde naam registreert als een bestaande, wordt ervan uitgegaan dat het een nieuwe versie is. De versie wordt verhoogd en het nieuwe model wordt geregistreerd onder dezelfde naam.
 
 Wanneer u het model registreert, kunt u extra labels voor meta gegevens opgeven en vervolgens de tags gebruiken wanneer u naar modellen zoekt.
 
@@ -195,9 +196,9 @@ Een uitvoering is één uitvoering van een trainings script. Azure Machine Learn
 * Meta gegevens over de uitvoering (tijds tempel, duur, enzovoort)
 * Metrische gegevens die door het script worden geregistreerd
 * Uitvoer bestanden die door het experiment worden verzameld of expliciet door u worden geüpload
-* Een momentopname van de map waarin uw scripts, voordat de uitvoering
+* Een moment opname van de map die uw scripts bevat vóór de uitvoering
 
-U produceert een uitvoering wanneer u een script voor het trainen van een model verzendt. Een uitvoering kan nul of meer onderliggende uitvoeringen hebben. De uitvoering op het hoogste niveau kan bijvoorbeeld twee onderliggende uitvoeringen hebben, waarvan elk een eigen onderliggend item kan hebben.
+U produceert een uitvoering wanneer u een script voor het trainen van een model verzendt. Een run kan nul of meer onderliggende uitvoeringen hebben. De uitvoering op het hoogste niveau kan bijvoorbeeld twee onderliggende uitvoeringen hebben, waarvan elk een eigen onderliggend item kan hebben.
 
 ### <a name="run-configurations"></a>Configuraties uitvoeren
 
@@ -208,16 +209,16 @@ Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map met 
 Zie bijvoorbeeld configuraties [selecteren en een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
 ### <a name="snapshots"></a>Momentopnamen
 
-Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning worden ook het zip-bestand opgeslagen als een momentopname als onderdeel van de record die uitvoeren. Iedereen met toegang tot de werkruimte kan een uitvoerregistratie bladeren en downloaden van de momentopname.
+Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning slaat het zip-bestand ook als een moment opname op als onderdeel van de uitvoerings record. Iedereen met toegang tot de werk ruimte kan bladeren in een uitvoerings record en de moment opname downloaden.
 
 > [!NOTE]
 > Als u wilt voor komen dat er onnodige bestanden in de moment opname worden opgenomen, maakt u een ignore-bestand (. gitignore of. amlignore). Plaats dit bestand in de map met moment opnamen en voeg de bestands namen toe die u wilt negeren. Het. amlignore-bestand gebruikt dezelfde [syntaxis en patronen als het. gitignore-bestand](https://git-scm.com/docs/gitignore). Als beide bestanden bestaan, heeft het. amlignore-bestand voor rang.
 
-### <a name="training-scripts"></a>Trainingsscripts
+### <a name="training-scripts"></a>Trainings scripts
 
-Als u wilt een model te trainen, moet u de map waarin het trainingsscript en de bijbehorende bestanden opgeven. U kunt ook een naam voor het experiment opgeven, die wordt gebruikt voor het opslaan van informatie die wordt verzameld tijdens de training. Tijdens de training wordt de hele Directory gekopieerd naar de trainings omgeving (Compute target) en het script dat is opgegeven door de uitvoerings configuratie wordt gestart. Een momentopname van de map worden ook opgeslagen onder het experiment in de werkruimte.
+Als u een model wilt trainen, geeft u de map op die het trainings script en de bijbehorende bestanden bevat. U kunt ook een naam voor het experiment opgeven, die wordt gebruikt voor het opslaan van informatie die wordt verzameld tijdens de training. Tijdens de training wordt de hele Directory gekopieerd naar de trainings omgeving (Compute target) en het script dat is opgegeven door de uitvoerings configuratie wordt gestart. Een moment opname van de map wordt ook opgeslagen onder het experiment in de werk ruimte.
 
-Zie [Zelfstudie: Train een afbeeldings classificatie model met](tutorial-train-models-with-aml.md)Azure machine learning.
+Zie [zelf studie: een classificatie model voor een installatie kopie trainen met Azure machine learning](tutorial-train-models-with-aml.md)voor een voor beeld.
 
 ### <a name="workspaces"></a>Werkruimten
 
@@ -229,5 +230,5 @@ Zie [Zelfstudie: Train een afbeeldings classificatie model met](tutorial-train-m
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 * [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
-* [Zelfstudie (deel 1): een model trainen](tutorial-train-models-with-aml.md)
+* [Een Azure Machine Learning-werk ruimte maken](how-to-manage-workspace.md)
+* [Zelf studie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

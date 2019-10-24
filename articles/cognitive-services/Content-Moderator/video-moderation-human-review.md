@@ -3,19 +3,19 @@ title: Video toezicht met menselijke beoordeling-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Met machine ondersteunde video toezicht en hulpprogram ma's voor menselijke beoordeling naar ongepaste inhoud
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561167"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754157"
 ---
 # <a name="video-moderation-with-human-review"></a>Video toezicht met menselijke beoordeling
 
@@ -25,7 +25,7 @@ Gebruik Content Moderator door de machine ondersteunde [video toezicht](video-mo
 
 De door de machine ondersteunde video classificatie is behaald met afbeeldingen getrainde modellen of modellen die zijn getraind. In tegens telling tot video classificaties die zijn getraind, wordt de video classificatie voor volwassenen en ongepaste van micro soft getraind met Video's. Deze methode resulteert in een beter resultaat van kwaliteit.
 
-## <a name="shot-detection"></a>Opnamedetectie
+## <a name="shot-detection"></a>Opname detectie
 
 Bij het uitvoeren van de classificatie Details helpt aanvullende video-informatie over meer flexibiliteit bij het analyseren van Video's. In plaats van alleen de frames uit te voeren, biedt de video moderator service van micro soft ook informatie over het niveau van de opname. U hebt nu de mogelijkheid om uw Video's op het niveau van de afbeelding en het frame niveau te analyseren.
 

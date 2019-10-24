@@ -3,19 +3,19 @@ title: Video beoordelingen maken met behulp van .NET-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: In dit artikel vindt u informatie en code voorbeelden waarmee u snel aan de slag kunt gaan met C# behulp van de content moderator SDK met om video beoordelingen te maken.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5a0d462f08e88ae4d26e1c684cfaf772910d2220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: ca5322aa78a4fd3018d961a5d31c618cf10bf156
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242851"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757152"
 ---
 # <a name="create-video-reviews-using-net"></a>Video beoordelingen maken met .NET
 
@@ -165,7 +165,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 **CreateVideoReviews** heeft de volgende vereiste para meters:
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn. 
 1. De naam van uw Content Moderator team.
-1. Een **IList @ no__t-1CreateVideoReviewsBodyItem >-** object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
+1. Een **IList-\<CreateVideoReviewsBodyItem >** -object. Elk **CreateVideoReviewsBodyItem** -object vertegenwoordigt een video-beoordeling. Deze Quick Start maakt één beoordeling per keer.
 
 **CreateVideoReviewsBodyItem** heeft verschillende eigenschappen. U kunt ten minste de volgende eigenschappen instellen:
 - **Inhoud**. De URL van de video die moet worden gecontroleerd.
@@ -173,7 +173,7 @@ Maak een video beoordeling met **ContentModeratorClient. revisies. CreateVideoRe
 - **Status**. Stel de waarde in op ' unpublished '. Als u deze niet instelt, wordt de standaard waarde ' in behandeling ' gebruikt, wat betekent dat de video beoordeling wordt gepubliceerd en de beoordeling van de mens in behandeling is. Zodra een video controle is gepubliceerd, kunt u geen video frames, transcripten of afschrift resultaten meer toevoegen.
 
 > [!NOTE]
-> **CreateVideoReviews** retourneert een IList @ no__t-1string >. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** . 
+> **CreateVideoReviews** retourneert een IList \<string >. Elk van deze teken reeksen bevat een ID voor een video beoordeling. Deze Id's zijn GUID'S en zijn niet hetzelfde als de waarde van de eigenschap **ContentId** . 
 
 Voeg de volgende methode definitie toe aan de naam ruimte VideoReviews, het programma class.
 
@@ -223,18 +223,18 @@ U voegt video frames toe aan een video beoordeling met **ContentModeratorClient.
 1. Een teken reeks die een MIME-type bevat, dat ' application/json ' moet zijn.
 1. De naam van uw Content Moderator team.
 1. De ID van de video controle die door **CreateVideoReviews**wordt geretourneerd.
-1. Een **IList @ no__t-1VideoFrameBodyItem >-** object. Elk **VideoFrameBodyItem** -object vertegenwoordigt een video frame.
+1. Een **IList\<VideoFrameBodyItem >** -object. Elk **VideoFrameBodyItem** -object vertegenwoordigt een video frame.
 
 **VideoFrameBodyItem** heeft de volgende eigenschappen:
 - **Tijds tempel**. Een teken reeks die, in seconden, de tijd in de video van waaruit het video frame is gemaakt.
 - **FrameImage**. De URL van het video frame.
-- **Meta gegevens**. Een IList @ no__t-0VideoFrameBodyItemMetadataItem >. **VideoFrameBodyItemMetadataItem** is gewoon een sleutel/waarde-paar. Geldige sleutels zijn onder andere:
+- **Meta gegevens**. Een IList\<VideoFrameBodyItemMetadataItem >. **VideoFrameBodyItemMetadataItem** is gewoon een sleutel/waarde-paar. Geldige sleutels zijn onder andere:
 - **reviewRecommended**. Waar als een menselijke beoordeling van het video frame wordt aanbevolen.
 - **adultScore**. Een waarde tussen 0 en 1 waarmee de ernst van inhoud voor volwassenen in het video frame wordt geclassificeerd.
 - **a**. Waar als de video inhoud voor volwassenen bevat.
 - **racyScore**. Een waarde tussen 0 en 1 waarmee de ernst van de ongepaste-inhoud in het video frame wordt geclassificeerd.
 - **r**. Waar als het video frame ongepaste inhoud bevat.
-- **ReviewerResultTags**. Een IList @ no__t-0VideoFrameBodyItemReviewerResultTagsItem >. **VideoFrameBodyItemReviewerResultTagsItem** is gewoon een sleutel/waarde-paar. Een toepassing kan deze tags gebruiken om video frames te organiseren.
+- **ReviewerResultTags**. Een IList\<VideoFrameBodyItemReviewerResultTagsItem >. **VideoFrameBodyItemReviewerResultTagsItem** is gewoon een sleutel/waarde-paar. Een toepassing kan deze tags gebruiken om video frames te organiseren.
 
 > [!NOTE]
 > Deze Quick Start genereert wille keurige waarden voor de eigenschappen **adultScore** en **racyScore** . In een productie toepassing zou u deze waarden verkrijgen van de [video-moderator service](video-moderation-api.md), geïmplementeerd als een Azure media-service.

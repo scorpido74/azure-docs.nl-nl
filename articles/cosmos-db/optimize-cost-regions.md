@@ -1,31 +1,31 @@
 ---
 title: Optimaliseer de kosten voor implementaties met meerdere regio's in Azure Cosmos DB
 description: In dit artikel wordt uitgelegd hoe u de kosten van implementaties met meerdere regio's in Azure Cosmos DB kunt beheren.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rimman
-ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667597"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753307"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>De kosten voor meerdere regio's optimaliseren in Azure Cosmos DB
 
-U kunt op elk gewenst moment regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account. De door u geconfigureerde door Voer voor verschillende Azure Cosmos-data bases en containers is gereserveerd in elke regio die aan uw account is gekoppeld. Als de door Voer is ingericht per uur, is dat de som van ru/s die is geconfigureerd voor alle data bases en containers voor uw `T` Azure Cosmos-account, en het aantal Azure-regio's dat `N`aan uw database account is gekoppeld, en vervolgens het totaal de ingerichte door Voer voor uw Cosmos-account voor een gegeven uur is gelijk aan:
+U kunt op elk moment regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account. De door u geconfigureerde door Voer voor verschillende Azure Cosmos-data bases en containers is gereserveerd in elke regio die aan uw account is gekoppeld. Als de door Voer is ingericht per uur, is dat de som van RU/s die is geconfigureerd voor alle data bases en containers voor uw Azure Cosmos-account is `T` en het aantal Azure-regio's dat aan uw database account is gekoppeld, `N`is, en het totaal de ingerichte door Voer voor uw Cosmos-account voor een gegeven uur is gelijk aan:
 
-1. `T x N RU/s`Als uw Azure Cosmos-account is geconfigureerd met één schrijf regio. 
+1. `T x N RU/s` als uw Azure Cosmos-account is geconfigureerd met één schrijf regio. 
 
-1. `T x (N+1) RU/s`Als uw Azure Cosmos-account is geconfigureerd met alle regio's die schrijf bewerkingen kunnen verwerken. 
+1. `T x (N+1) RU/s` als uw Azure Cosmos-account is geconfigureerd met alle regio's die schrijf bewerkingen kunnen verwerken. 
 
 Ingerichte door Voer met enkele schrijf regio kosten $0.008/uur per 100 RU/s en ingerichte door Voer met meerdere Beschrijf bare regio's kosten $0,016/per uur per 100 RU/s. Zie Azure Cosmos DB- [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie.
 
 ## <a name="costs-for-multiple-write-regions"></a>Kosten voor meerdere schrijf regio's
 
-In een systeem met meerdere masters neemt het net beschik bare RUs voor schrijf `N` bewerkingen tijden `N` toe, waarbij het aantal schrijf regio's is. In tegens telling tot de schrijf bewerkingen van één regio is elke regio nu schrijfbaar en moet er conflicten worden opgelost. De hoeveelheid werk belasting voor schrijvers is toegenomen. Van het kosten plannings punt van de weer gave `M` , voor het wereld wijd uitvoeren van ru/s voor schrijf bewerkingen, `RUs` moet u M inrichten op een container-of database niveau. U kunt vervolgens zoveel regio's toevoegen als u wilt en deze gebruiken voor schrijf bewerkingen voor het uitvoeren `M` van de wereld wijde schrijf bewerkingen van ru. 
+In een systeem met meerdere masters neemt het net beschik bare RUs voor schrijf bewerkingen `N` tijden toe waarin `N` het aantal schrijf regio's is. In tegens telling tot de schrijf bewerkingen van één regio is elke regio nu schrijfbaar en moet er conflicten worden opgelost. De hoeveelheid werk belasting voor schrijvers is toegenomen. Vanuit het plannings punt van de kosten om `M` RU/s wereld wijde schrijf bewerkingen uit te voeren, moet u het `RUs` inrichten op een container-of database niveau. U kunt vervolgens zoveel regio's toevoegen als u wilt en deze gebruiken voor schrijf bewerkingen om `M` RU van wereld wijde schrijf bewerkingen uit te voeren. 
 
 ### <a name="example"></a>Voorbeeld
 

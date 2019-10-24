@@ -3,19 +3,19 @@ title: Afbeeldings toezicht-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik Content Moderator de door de machine gesteunde afbeeldings controle en het hulp programma voor het inchecken van de werk nemer naar gematige installatie kopieën voor inhoud voor volwassenen en ongepaste.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564903"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757340"
 ---
 # <a name="learn-image-moderation-concepts"></a>Concepten van afbeeldings toezicht leren
 
@@ -143,7 +143,7 @@ Voor beeld extractie:
 
 Gebruik het [hulp programma content moderator beoordeling](Review-Tool-User-Guide/human-in-the-loop.md) en de bijbehorende API om de controle resultaten en-inhoud in de beoordeling voor uw menselijke moderators te laten weer geven. Ze bekijken de door de machine toegewezen tags en bevestigen hun definitieve beslissingen.
 
-![Beoordeling van afbeelding voor menselijke beoordelaars](images/moderation-reviews-quickstart-dotnet.PNG)
+![Beoordeling van afbeeldingen voor menselijke moderators](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 

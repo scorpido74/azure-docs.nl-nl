@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Azure AD-toepassingsproxy implementeren | Microsoft Docs'
+title: Azure AD-toepassingsproxy implementeren voor Azure AD Domain Services | Microsoft Docs
 description: Azure-AD-toepassingsproxy op Azure Active Directory Domain Services beheerde domeinen gebruiken
 services: active-directory-ds
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613021"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754406"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD-toepassingsproxy implementeren op een Azure AD Domain Services beheerd domein
 Azure Active Directory (AD)-toepassings proxy helpt u externe werk nemers te ondersteunen door on-premises toepassingen te publiceren voor toegang via internet. Met Azure AD Domain Services kunt u nu oudere toepassingen die on-premises worden uitgevoerd, verplaatsen naar Azure-infrastructuur services. U kunt deze toepassingen vervolgens publiceren met behulp van de Azure-AD-toepassingsproxy om veilige externe toegang te bieden aan gebruikers in uw organisatie.
 
-Als u geen ervaring hebt met Azure AD-toepassingsproxy, kunt u meer informatie over deze functie vinden in het volgende artikel: [Veilige externe toegang bieden tot on-premises toepassingen](../active-directory/manage-apps/application-proxy.md).
+Als u geen ervaring hebt met Azure AD-toepassingsproxy, kunt u meer informatie over deze functie vinden in het volgende artikel: [veilige externe toegang bieden tot on-premises toepassingen](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -73,7 +73,7 @@ Eerder hebt u een virtuele Windows Server-machine ingericht en gekoppeld aan het
     ![Voor waarden accepteren voor installatie](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Tijdens de installatie wordt u gevraagd de connector te registreren bij de toepassings proxy van uw Azure AD-adres lijst.
    * Geef uw **Azure AD-toepassings beheerders referenties**op. De Tenant van de toepassings beheerder kan afwijken van uw Microsoft Azure referenties.
-   * Het beheerders account dat wordt gebruikt om de connector te registreren, moet behoren tot dezelfde map waar u de Application proxy-service hebt ingeschakeld. Als het domein van de Tenant bijvoorbeeld contoso.com is, moet de beheerder of admin@contoso.com een andere geldige alias in dat domein zijn.
+   * Het beheerders account dat wordt gebruikt om de connector te registreren, moet behoren tot dezelfde map waar u de Application proxy-service hebt ingeschakeld. Als het Tenant domein bijvoorbeeld contoso.com is, moet de beheerder worden admin@contoso.com of een andere geldige alias in dat domein.
    * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de server waarop u de connector installeert, wordt het registratie scherm mogelijk geblokkeerd. Volg de instructies in het fout bericht om toegang toe te staan. Zorg ervoor dat de verbeterde beveiliging van Internet Explorer is uitgeschakeld.
    * Zie [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Engelstalig) als de registratie van de connector niet lukt.
 

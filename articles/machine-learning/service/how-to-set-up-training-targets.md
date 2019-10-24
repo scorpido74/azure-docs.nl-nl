@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244440"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755972"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 
@@ -106,7 +106,7 @@ U kunt op aanvraag een Azure Machine Learning Compute-omgeving maken wanneer u e
 Tijdens runtime kunt u Azure Machine Learning Compute als een reken doel maken. De berekening wordt automatisch gemaakt voor de uitvoering. De berekening wordt automatisch verwijderd zodra de uitvoering is voltooid. 
 
 > [!NOTE]
-> Als u het maximum aantal knoop punten wilt opgeven dat moet worden gebruikt, stelt u normaal gesp roken `node_count` in op het aantal knoop punten. Er is momenteel (04/04/2019) een bug waarmee wordt voor komen dat dit werkt. Als tijdelijke oplossing gebruikt u de eigenschap `amlcompute._cluster_max_node_count` van de configuratie run. Bijvoorbeeld `run_config.amlcompute._cluster_max_node_count = 5`.
+> Als u het maximum aantal knoop punten wilt opgeven dat moet worden gebruikt, stelt u `node_count` in op het aantal knoop punten. Er is momenteel (04/04/2019) een bug waarmee wordt voor komen dat dit werkt. Als tijdelijke oplossing gebruikt u de eigenschap `amlcompute._cluster_max_node_count` van de configuratie run. Bijvoorbeeld `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Het maken van Azure Machine Learning Compute is momenteel beschikbaar als preview-versie. Gebruik niet maken op basis van de uitvoering als u gebruikmaakt van automatische afstemming-afstemming of geautomatiseerde machine learning. Als u afstemming-tuning of geautomatiseerde machine learning wilt gebruiken, maakt u in plaats daarvan een [persistent reken](#persistent) doel.
@@ -295,7 +295,7 @@ Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stap
  
 1. Selecteer __berekenen__onder __toepassingen__.
 
-    [@no__t-tabblad Compute-1View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [tabblad Compute![weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Een reken doel maken
 
@@ -499,7 +499,7 @@ Zie [de referentie documentatie](reference-azure-machine-learning-cli.md)voor me
 
 ## <a name="git-tracking-and-integration"></a>Git-tracking en-integratie
 
-Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. De huidige doorvoer-ID voor de opslag plaats wordt bijvoorbeeld vastgelegd als onderdeel van de geschiedenis.
+Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
 
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 
