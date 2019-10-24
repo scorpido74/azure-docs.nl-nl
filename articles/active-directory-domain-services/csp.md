@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services voor Azure Cloud solution providers | Microsoft Docs
+title: Azure AD Domain Services voor Cloud solution providers | Microsoft Docs
 description: Azure Active Directory Domain Services voor Azure Cloud solution providers.
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612965"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754442"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services voor Azure Cloud Solution Providers (CSP)
 In dit artikel wordt uitgelegd hoe u Azure AD Domain Services kunt gebruiken in een Azure CSP-abonnement.
@@ -74,7 +74,7 @@ De volgende belang rijke overwegingen zijn van toepassing wanneer u een beheerd 
 
 * **CSP-beheerders kunnen een beheerd domein inrichten met hun referenties:** Azure AD Domain Services ondersteunt Azure CSP-abonnementen. Daarom kunnen gebruikers die deel uitmaken van de groep Administrator-agents van een CSP-partner, een nieuw Azure AD Domain Services beheerd domein inrichten.
 
-* **Met Csp's kunnen scripts worden gemaakt van nieuwe beheerde domeinen voor hun klanten met behulp van Power shell:** Zie [Azure AD Domain Services inschakelen met behulp van Power shell](powershell-create-instance.md) voor meer informatie.
+* **Met csp's kunnen scripts worden gemaakt van nieuwe beheerde domeinen voor hun klanten met behulp van Power shell:** Zie [Azure AD Domain Services inschakelen met behulp van Power shell](powershell-create-instance.md) voor meer informatie.
 
 * **CSP-beheerders kunnen geen voortdurende beheer taken uitvoeren op het beheerde domein met behulp van hun referenties:** CSP-beheerder gebruikers kunnen geen routine beheer taken uitvoeren binnen het beheerde domein met hun referenties. Deze gebruikers zijn extern voor de Azure AD-Directory van de klant en hun referenties zijn niet beschikbaar in de Azure AD-adres lijst van de klant. Daarom heeft Azure AD Domain Services geen toegang tot de Kerberos-en NTLM-wachtwoord-hashes voor deze gebruikers. Als gevolg hiervan kunnen dergelijke gebruikers niet worden geverifieerd op Azure AD Domain Services beheerde domeinen.
 
@@ -83,7 +83,7 @@ De volgende belang rijke overwegingen zijn van toepassing wanneer u een beheerd 
   > U kunt zich niet aanmelden bij het beheerde domein met behulp van de referenties van de CSP-beheer gebruiker. Gebruik de referenties van een gebruikers account dat deel uitmaakt van de Azure AD-Directory van de klant. U hebt deze referenties nodig voor taken zoals het toevoegen van virtuele machines aan het beheerde domein, het beheren van DNS, het beheren van groepsbeleid, enzovoort.
   >
 
-* **Het gebruikers account dat is gemaakt voor doorlopend beheer moet worden toegevoegd aan de groep AAD DC-Administrators:** De groep AAD DC-Administrators heeft bevoegdheden om bepaalde gedelegeerde beheer taken uit te voeren op het beheerde domein. Deze taken omvatten het configureren van DNS, het maken van organisatie-eenheden, het beheren van groeps beleid, enzovoort. Voor een CSP-partner om dergelijke taken uit te voeren op een beheerd domein, moet een gebruikers account worden gemaakt in de Azure AD-adres lijst van de klant. De referenties voor dit account moeten worden gedeeld met de beheerders agents van de CSP-partner. Daarnaast moet dit gebruikers account worden toegevoegd aan de groep AAD DC Administrators om configuratie taken op het beheerde domein in te scha kelen die kunnen worden uitgevoerd met dit gebruikers account.
+* **Het gebruikers account dat is gemaakt voor doorlopend beheer moet worden toegevoegd aan de groep Aad DC-Administrators:** De groep AAD DC-Administrators heeft bevoegdheden om bepaalde gedelegeerde beheer taken uit te voeren op het beheerde domein. Deze taken omvatten het configureren van DNS, het maken van organisatie-eenheden, het beheren van groeps beleid, enzovoort. Voor een CSP-partner om dergelijke taken uit te voeren op een beheerd domein, moet een gebruikers account worden gemaakt in de Azure AD-adres lijst van de klant. De referenties voor dit account moeten worden gedeeld met de beheerders agents van de CSP-partner. Daarnaast moet dit gebruikers account worden toegevoegd aan de groep AAD DC Administrators om configuratie taken op het beheerde domein in te scha kelen die kunnen worden uitgevoerd met dit gebruikers account.
 
 
 ## <a name="next-steps"></a>Volgende stappen

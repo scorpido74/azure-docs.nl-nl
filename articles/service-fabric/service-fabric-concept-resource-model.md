@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390082"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752308"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Wat is het resource model van de Service Fabric-toepassing?
 Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces van toepassingsregistratie, -inrichting en -implementatie kan in één stap worden uitgevoerd. Dit is de best practice voor het beheren van de levenscyclus van toepassingen in uw cluster. Bekijk de [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)voor meer informatie.
@@ -41,8 +41,14 @@ Voor het implementeren van een toepassing vanuit een resource manager-sjabloon i
 ![Maak een opslagaccount][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Opslag account configureren 
-Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade **blobs** en klik op de knop **container toevoegen** . Voeg een nieuwe container met open bare BLOB-toegangs niveau toe.
-   
+Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade **blobs** en klik op de knop **container toevoegen** . Resources in uw cluster kunnen worden beveiligd door het open bare toegangs niveau in te stellen op privé. Toegang kan op verschillende manieren worden verleend:
+* [Toegang verlenen tot blobs en wacht rijen met Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC in de Azure-portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Toegang delegeren met een Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ Voor dit voor beeld gaan we anonieme lees toegang voor blobs blijven gebruiken.
+
 ![Blob maken][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Fase toepassing in een opslag account
@@ -51,10 +57,10 @@ Voordat de toepassing kan worden geïmplementeerd, moet deze worden klaargezet i
 1. Klik in Visual Studio met de rechter muisknop op het project stem en selecteer pakket.   
 ![Pakket toepassing][PackageApplication]  
 2. Open de **.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug** -map die zojuist is gemaakt en post de inhoud naar een bestand met de naam **stem. zip** , zodat de ApplicationManifest. XML zich in de hoofdmap van het zip-bestand bevindt.  
-![Zip toepassing @ no__t-1  
+![Zip toepassing ][ZipApplication]  
 3. Wijzig de extensie van. zip in **. sfpkg**.
 4. Klik in de Azure Portal in de **app** -container van uw opslag account op **uploaden** en upload **stemmen. sfpkg**.  
-![Upload app-pakket @ no__t-1
+App-pakket voor ![Upload ][UploadAppPkg]
 
 De toepassing is nu gefaseerd. U kunt nu de Azure Resource Manager-sjabloon maken om de toepassing te implementeren.      
    

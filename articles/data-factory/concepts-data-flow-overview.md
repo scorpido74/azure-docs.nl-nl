@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679127"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754717"
 ---
-# <a name="what-are-mapping-data-flows"></a>Wat zijn gegevens stromen toewijzen?
+# <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
 Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen die gebruikmaken van geschaalde Spark-clusters. Gegevens stroom activiteiten kunnen worden uitgevoerd via bestaande Data Factory plannings-, beheer-, stroom-en bewakings mogelijkheden.
 
@@ -39,6 +39,38 @@ Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste b
 In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
 
 ![Geval](media/data-flow/canvas2.png "Geval")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Eigenschappen van gegevens stroom voor Azure Integration runtime
+
+![Knop fout opsporing](media/data-flow/debugbutton.png "Knop fout opsporing")
+
+Wanneer u begint met het werken met gegevens stromen in ADF, moet u de schakel optie "fout opsporing" inschakelen voor gegevens stromen boven aan de gebruikers interface van de browser. Hiermee wordt een Azure Databricks cluster weer gegeven dat moet worden gebruikt voor interactieve fout opsporing, gegevens voorvertoningen en uitvoeringen van de fout opsporing voor de pijp lijn. U kunt de grootte van het gebruikte cluster instellen door een aangepaste [Azure Integration runtime](concepts-integration-runtime.md)te kiezen. De foutopsporingssessie kan Maxi maal 60 minuten na de laatste gegevens preview of de laatste probleemoplossings pijplijn worden uitgevoerd.
+
+Wanneer u uw pijp lijnen operationeel maken met gegevens stroom activiteiten, worden de Azure Integration Runtime die is gekoppeld aan de [activiteit](control-flow-execute-data-flow-activity.md) in de eigenschap ' uitvoeren op ' gebruikt.
+
+De standaard Azure Integration Runtime is een klein 4-core cluster met één knoop punt dat is bedoeld om gegevens te bekijken en snel probleemoplossings pijplijnen uit te voeren op minimale kosten. Stel een grotere Azure IR configuratie in als u bewerkingen uitvoert voor grote gegevens sets.
+
+U kunt de ADF de opdracht geven om een groep cluster resources (Vm's) te onderhouden door een TTL in te stellen in de Azure IR eigenschappen van de gegevens stroom. Dit leidt tot een snellere taak uitvoering voor volgende activiteiten.
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration runtime en data flow-strategieën
+
+##### <a name="execute-data-flows-in-parallel"></a>Gegevens stromen parallel uitvoeren
+
+Als u gegevens stromen in een pijp lijn parallel uitvoert, worden in ADF afzonderlijke Azure Databricks clusters voor elke uitvoering van de activiteit gedraaid op basis van de instellingen in uw Azure Integration Runtime die aan elke activiteit zijn gekoppeld. Als u parallelle uitvoeringen wilt ontwerpen in ADF-pijp lijnen, voegt u uw gegevens stroom activiteiten toe zonder prioriteits beperkingen in de gebruikers interface.
+
+Van deze drie opties wordt deze optie waarschijnlijk in de kortste tijd uitgevoerd. Elke parallelle gegevens stroom wordt echter op hetzelfde moment uitgevoerd op afzonderlijke clusters, zodat de volg orde van gebeurtenissen niet-deterministisch is.
+
+##### <a name="overload-single-data-flow"></a>Overbelasting van één gegevens stroom
+
+Als u al uw logica in één gegevens stroom plaatst, wordt ADF in dezelfde taak uitvoerings context uitgevoerd op een enkel Spark-cluster exemplaar.
+
+Deze optie kan mogelijk lastiger zijn om te volgen en problemen op te lossen, omdat uw bedrijfs regels en bedrijfs logica samen worden Jumble. Deze optie biedt ook veel herbruikbaarheid.
+
+##### <a name="execute-data-flows-serially"></a>Gegevens stromen serieel uitvoeren
+
+Als u uw activiteiten voor gegevens stromen in serieel in de pijp lijn uitvoert en u een TTL hebt ingesteld voor de Azure IR configuratie, worden de reken resources (Vm's) die het resultaat zijn van latere uitvoerings tijden, opnieuw gebruikt. Er wordt nog steeds een nieuwe Spark-context voor elke uitvoering ontvangen.
+
+Van deze drie opties zal dit de langste tijd duren om end-to-end uit te voeren. Dit biedt echter een duidelijke schei ding van logische bewerkingen in elke stap van de gegevens stroom.
 
 ### <a name="configuration-panel"></a>Configuratie paneel
 

@@ -1,23 +1,23 @@
 ---
-title: 'Quickstart: Probeer Content Moderator op het Web-Content Moderator'
+title: 'Snelstartgids: Probeer Content Moderator op het Web-Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start gebruikt u het hulp programma online Content Moderator beoordeling om de basis functionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564438"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757369"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Quickstart: Probeer Content Moderator op Internet
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstartgids: Probeer Content Moderator op Internet
 
 In deze Quick Start gebruikt u het hulp programma online Content Moderator beoordeling om de basis functionaliteit van Content Moderator te testen zonder dat u code hoeft te schrijven. Als u deze service sneller wilt integreren in uw app, raadpleegt u de andere Quick starts in het gedeelte [volgende stappen](#next-steps) .
 
@@ -50,7 +50,7 @@ Verzend uw inhoud voor toezicht. Intern roept het beoordelings programma de toez
 
 Controleer de toegepaste toezicht Tags. U kunt zien welke tags zijn toegepast op uw inhoud en wat de score in elke categorie heeft. Zie de onderwerpen over [afbeelding](image-moderation-api.md), [tekst](text-moderation-api.md)en [video](video-moderation-api.md) toezicht voor meer informatie over wat de verschillende inhouds Tags aangeven.
 
-![Resultaten controleren](images/reviewresults_text.png)
+![Resultaat controleren](images/reviewresults_text.png)
 
 In een project kunnen u of uw beoordelings team deze tags wijzigen of meer Tags toevoegen als dat nodig is. U verzendt deze wijzigingen met de knop **volgende** . Als uw zakelijke toepassing de moderator-Api's aanroept, wordt de gelabelde inhoud hier in de wachtrij geplaatst, zodat deze kan worden gecontroleerd door de teams van de menselijke beoordeling. Met deze aanpak kunt u snel grote volumes met inhoud bekijken.
 

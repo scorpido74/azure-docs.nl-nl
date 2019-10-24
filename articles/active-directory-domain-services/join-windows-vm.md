@@ -1,5 +1,5 @@
 ---
-title: Een Windows Server-VM toevoegen aan een beheerd domein | Microsoft Docs '
+title: Een Windows Server-VM toevoegen aan een beheerd domein | Microsoft Docs
 description: In deze zelf studie leert u hoe u een virtuele Windows Server-machine kunt toevoegen aan een Azure Active Directory Domain Services beheerd domein.
 author: iainfoulds
 manager: daveba
@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172030"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754363"
 ---
-# <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelfstudie: Een virtuele Windows Server-machine toevoegen aan een beheerd domein
+# <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelf studie: een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
 Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP, Kerberos/NTLM-verificatie die volledig compatibel is met Windows Server Active Directory. Met een door Azure AD DS beheerd domein, kunt u domein lidmaatschaps functies en-beheer bieden voor virtuele machines (Vm's) in Azure. In deze zelf studie leert u hoe u een virtuele Windows Server-machine maakt en deze koppelt aan een door Azure AD DS beheerd domein.
 
@@ -39,7 +39,7 @@ Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
     * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
-* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
+* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
     * Zorg ervoor dat Azure AD Connect wachtwoord-hash synchronisatie of selfservice voor wachtwoord herstel is uitgevoerd zodat het account zich kan aanmelden bij Azure AD DS beheerd domein.
 
 Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u naar de sectie om [de VM toe te voegen aan het beheerde domein van Azure AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
@@ -63,7 +63,7 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
 
     | Parameter            | Voorgestelde waarde   |
     |----------------------|-------------------|
-    | Resource group       | Selecteer of maak een resource groep, zoals *myResourceGroup* |
+    | Resourcegroep       | Selecteer of maak een resource groep, zoals *myResourceGroup* |
     | Naam van de virtuele machine | Voer een naam in voor de virtuele machine, zoals *myVM* |
     | Regio               | Kies de regio waarin u uw virtuele machine wilt maken, zoals *VS-Oost* |
     | Gebruikersnaam             | Voer een gebruikers naam in voor het lokale beheerders account dat u op de virtuele machine wilt maken, zoals *azureuser* |
@@ -77,14 +77,14 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
 
     Onder **open bare binnenkomende poorten**selecteert u de optie voor het **toestaan van geselecteerde poorten**. Kies in de vervolg keuzelijst voor **Selecteer binnenkomende poorten**de optie *RDP*.
 
-5. Wanneer u klaar bent **, selecteert u volgende: Schijven**.
-6. Kies in de vervolg keuzelijst voor het **schijf type van het besturings systeem** *Standard-SSD*en selecteer **vervolgens volgende: Netwerken**.
+5. Wanneer u klaar bent, selecteert u **volgende: schijven**.
+6. Kies in de vervolg keuzelijst voor het **schijf type van het besturings systeem** *Standard-SSD*en selecteer vervolgens **volgende: netwerken**.
 7. Uw virtuele machine moet verbinding maken met een subnet van het virtuele netwerk van Azure dat kan communiceren met het subnet waarin uw Azure AD DS beheerde domein is geïmplementeerd. U kunt het beste een beheerd domein van Azure AD DS implementeren in een eigen toegewezen subnet. Implementeer uw virtuele machine niet in hetzelfde subnet als uw Azure AD DS beheerd domein.
 
     Er zijn twee hoofd manieren om uw virtuele machine te implementeren en verbinding te maken met een geschikt subnet van het virtuele netwerk:
     
     * Maak een of selecteer een bestaand subnet in hetzelfde virtuele netwerk als uw Azure AD DS beheerde domein wordt geïmplementeerd.
-    * Selecteer een subnet in een virtueel Azure-netwerk dat is verbonden met [Azure Virtual Network][vnet-peering]-peering.
+    * Selecteer een subnet in een virtueel Azure-netwerk dat is verbonden met [Azure Virtual Network-peering][vnet-peering].
     
     Als u een subnet van een virtueel netwerk selecteert dat niet is verbonden met het subnet voor uw Azure AD DS-exemplaar, kunt u de VM niet toevoegen aan het beheerde domein. Voor deze zelf studie maken we een nieuw subnet in het virtuele Azure-netwerk.
 
@@ -137,12 +137,12 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
 
     ![Opgeven welke Azure AD DS beheerde domein moet worden toegevoegd](./media/join-windows-vm/join-domain.png)
 
-1. Voer de domein referenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van de groep *Azure AD DC* -Administrators. Alleen leden van deze groep hebben bevoegdheden om computers te koppelen aan het Azure AD DS beheerde domein. Account referenties kunnen op een van de volgende manieren worden opgegeven:
+1. Voer de domein referenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* . Alleen leden van deze groep hebben bevoegdheden om computers te koppelen aan het Azure AD DS beheerde domein. Account referenties kunnen op een van de volgende manieren worden opgegeven:
 
-    * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de user principal name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Zo zou het UPN-achtervoegsel van de gebruiker *contosoadmin* zijn `contosoadmin@contoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
+    * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de User Principal Name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Het UPN-achtervoegsel van de *contosoadmin* van de gebruiker wordt bijvoorbeeld `contosoadmin@contoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
         * Als het UPN-voor voegsel van een gebruiker lang is, zoals *deehasareallylongname*, kan de *SAMAccountName* automatisch worden gegenereerd.
         * Als meerdere gebruikers hetzelfde UPN-voor voegsel hebben in uw Azure AD-Tenant, zoals *Dee*, kan de *SAMAccountName* -indeling automatisch worden gegenereerd.
-    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld zijn `CONTOSO\contosoadmin`.
+    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld `CONTOSO\contosoadmin` zijn.
 
 1. Het duurt een paar seconden om lid te worden van het door Azure AD DS beheerde domein. Wanneer dit is voltooid, ontvangt u het volgende bericht:
 
@@ -153,7 +153,7 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
 1. Start de VM opnieuw op om het proces te volt ooien om lid te worden van het Azure AD DS beheerde domein.
 
 > [!TIP]
-> U kunt een virtuele machine met behulp van Power shell aan een domein toevoegen met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het *CONTOSO* -domein toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC* -Administrators:
+> U kunt een virtuele machine met behulp van Power shell aan een domein toevoegen met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het *CONTOSO* -domein toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* :
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
 >
@@ -167,7 +167,7 @@ In de volgende zelf studie gebruikt u deze virtuele machine van Windows Server o
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>De virtuele machine loskoppelen van Azure AD DS beheerde domein
 
-Als u de virtuele machine uit de Azure AD DS beheerde domein wilt verwijderen, volgt u de stappen opnieuw om [de VM aan een domein toe](#join-the-vm-to-the-azure-ad-ds-managed-domain)te voegen. In plaats van aan het beheerde domein van Azure AD DS te koppelen, kiest u om lid te worden van een werk groep, zoals de *standaardwerk groep*. Nadat de VM opnieuw is opgestart, wordt het computer object verwijderd uit het door Azure AD DS beheerde domein.
+Als u de virtuele machine uit de Azure AD DS beheerde domein wilt verwijderen, volgt u de stappen opnieuw om [de VM aan een domein toe te voegen](#join-the-vm-to-the-azure-ad-ds-managed-domain). In plaats van aan het beheerde domein van Azure AD DS te koppelen, kiest u om lid te worden van een werk groep, zoals de *standaardwerk groep*. Nadat de VM opnieuw is opgestart, wordt het computer object verwijderd uit het door Azure AD DS beheerde domein.
 
 Als u [de virtuele machine verwijdert](#delete-the-vm) zonder lid te worden van het domein, blijft een zwevend computer object in azure AD DS.
 
@@ -193,17 +193,17 @@ Als u deze virtuele machine van Windows Server niet gaat gebruiken, verwijdert u
 
 De virtuele machine van Windows Server moet worden toegevoegd aan het Azure AD DS beheerde domein, op dezelfde manier als een vaste on-premises computer zou worden toegevoegd aan een Active Directory Domain Services domein. Als de virtuele machine van Windows Server geen lid kan worden van het beheerde domein van Azure AD DS, wordt hiermee aangegeven dat er een probleem is met de connectiviteit of met betrekking tot referenties. Raadpleeg de volgende secties voor probleem oplossing om lid te worden van het beheerde domein.
 
-### <a name="connectivity-issues"></a>Connectiviteitsproblemen
+### <a name="connectivity-issues"></a>Verbindingsproblemen
 
 Als er geen prompt wordt weer gegeven waarin wordt gevraagd om referenties om lid te worden van het domein, is er een probleem met de verbinding. De virtuele machine kan het door Azure AD DS beheerde domein niet bereiken op het virtuele netwerk.
 
 Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windows Server-VM opnieuw aan het beheerde domein toe te voegen.
 
 * Controleer of de virtuele machine is verbonden met hetzelfde virtuele netwerk als Azure AD DS is ingeschakeld of een peered netwerk verbinding heeft.
-* Voer een ping uit voor de DNS-domein naam van het beheerde domein `ping contoso.com`, zoals.
+* Voer een ping uit voor de DNS-domein naam van het beheerde domein, zoals `ping contoso.com`.
     * Als de ping-aanvraag mislukt, probeert u de IP-adressen voor het beheerde domein te pingen, zoals `ping 10.0.0.4`. Het IP-adres voor uw omgeving wordt weer gegeven op de pagina *Eigenschappen* wanneer u de Azure AD DS beheerde domein selecteert in de lijst met Azure-resources.
     * Als u het IP-adres, maar niet het domein, kunt pingen, is het mogelijk dat DNS onjuist is geconfigureerd. Controleer of de IP-adressen van het beheerde domein zijn geconfigureerd als DNS-servers voor het virtuele netwerk.
-* Probeer de cache van de DNS-resolver van de virtuele machine te leegmaken `ipconfig /flushdns` met behulp van de opdracht.
+* Probeer de cache van de DNS-resolver op de virtuele machine leeg te maken met behulp van de `ipconfig /flushdns` opdracht.
 
 ### <a name="credentials-related-issues"></a>Problemen met betrekking tot referenties
 
@@ -212,13 +212,13 @@ Als er een prompt wordt weer gegeven waarin wordt gevraagd om referenties om lid
 Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windows Server-VM opnieuw aan het beheerde domein toe te voegen.
 
 * Zorg ervoor dat het gebruikers account dat u opgeeft, deel uitmaakt van de groep *Aad DC Administrators* .
-* Gebruik de UPN-indeling om referenties op te geven, `contosoadmin@contoso.onmicrosoft.com`zoals. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
+* Gebruik de UPN-indeling om referenties op te geven, zoals `contosoadmin@contoso.onmicrosoft.com`. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 * Controleer of u [wachtwoord synchronisatie hebt ingeschakeld][password-sync] voor uw beheerde domein. Zonder deze configuratie stap zijn de vereiste wacht woord-hashes niet aanwezig in de Azure AD DS beheerde domein om uw aanmeldings poging correct te verifiëren.
 * Wacht tot de wachtwoord synchronisatie is voltooid. Wanneer het wacht woord van een gebruikers account wordt gewijzigd, wordt met een automatische achtergrond synchronisatie vanuit Azure AD het wacht woord in azure AD DS bijgewerkt. Het duurt enige tijd voordat het wacht woord beschikbaar is voor gebruik door een domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Windows Server-VM maken

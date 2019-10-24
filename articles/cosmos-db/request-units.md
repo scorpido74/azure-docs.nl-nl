@@ -1,17 +1,17 @@
 ---
 title: Aanvraag eenheden en door Voer in Azure Cosmos DB
 description: Meer informatie over het opgeven en ramen van vereisten voor aanvraag eenheden in Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.openlocfilehash: a1143f912d894c1219de05b03a2338dc4e5bdc5f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6e5d95a47261445e3031f55368f4e2cd8e2830a7
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467659"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754870"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Aanvraag eenheden in Azure Cosmos DB
 
@@ -33,24 +33,24 @@ U voorziet het aantal RUs voor uw toepassing per seconde op basis van een interv
 
 U kunt de door Voer op twee verschillende granulariteit inrichten: 
 
-* **Containers**: Zie voor meer informatie [door Voer in te richten op een Azure Cosmos-container](how-to-provision-container-throughput.md).
-* **Data bases**: Zie voor meer informatie [door Voer in te richten op een Azure Cosmos-data base](how-to-provision-database-throughput.md).
+* **Containers**: Zie [door Voer inrichten op een Azure Cosmos-container](how-to-provision-container-throughput.md)voor meer informatie.
+* **Data bases**: Zie [door Voer inrichten voor een Azure Cosmos-data base](how-to-provision-database-throughput.md)voor meer informatie.
 
 ## <a name="request-unit-considerations"></a>Overwegingen voor aanvraag eenheden
 
 Bij het schatten van het aantal RUs per seconde voor het inrichten, moet u rekening houden met de volgende factoren:
 
-* **Item grootte**: Naarmate de grootte van een item toeneemt, neemt het aantal dat wordt gebruikt voor het lezen of schrijven van het item ook toe.
+* **Item grootte**: als de grootte van een item toeneemt, neemt het aantal dat is gebruikt voor het lezen of schrijven van het item ook toe.
 
-* **Items indexeren**: Elk item wordt standaard automatisch geïndexeerd. Minder RUs wordt verbruikt als u ervoor kiest om een aantal van uw items in een container niet te indexeren.
+* **Item Indexering**: standaard wordt elk item automatisch geïndexeerd. Minder RUs wordt verbruikt als u ervoor kiest om een aantal van uw items in een container niet te indexeren.
 
-* **Aantal item eigenschappen**: Ervan uitgaande dat de standaard indexering op alle eigenschappen is ingesteld, wordt het aantal verbruikte RUs voor het schrijven van een item verhoogd naarmate het aantal eigenschappen van het item toeneemt.
+* **Aantal item eigenschappen**: aangenomen dat de standaard indexering op alle eigenschappen is ingesteld, wordt het aantal verbruikte RUs voor het schrijven van een item verhoogd naarmate het aantal item eigenschappen toeneemt.
 
-* **Geïndexeerde eigenschappen**: Een index beleid op elke container bepaalt welke eigenschappen standaard worden geïndexeerd. Als u het RU-verbruik voor schrijf bewerkingen wilt verminderen, beperkt u het aantal geïndexeerde eigenschappen.
+* **Geïndexeerde eigenschappen**: in een index beleid voor elke container wordt bepaald welke eigenschappen standaard worden geïndexeerd. Als u het RU-verbruik voor schrijf bewerkingen wilt verminderen, beperkt u het aantal geïndexeerde eigenschappen.
 
-* **Gegevens consistentie**: De sterke en gebonden consistentie niveaus voor veroudering worden ongeveer twee keer meer gebruikt tijdens het uitvoeren van Lees bewerkingen in vergelijking met die van andere beperkte consistentie niveaus.
+* **Gegevens consistentie**: de sterke en gebonden consistentie niveaus voor veroudering worden ongeveer twee keer meer gebruikt tijdens het uitvoeren van Lees bewerkingen in vergelijking met die van andere beperkte consistentie niveaus.
 
-* **Query patronen**: De complexiteit van een query is van invloed op het aantal verbruikte RUs voor een bewerking. Factoren die van invloed zijn op de kosten van query bewerkingen zijn onder andere: 
+* **Query patronen**: de complexiteit van een query is van invloed op het aantal verbruikte RUs voor een bewerking. Factoren die van invloed zijn op de kosten van query bewerkingen zijn onder andere: 
     
     - Het aantal query resultaten
     - Het aantal predikaten
@@ -62,7 +62,7 @@ Bij het schatten van het aantal RUs per seconde voor het inrichten, moet u reken
 
   Azure Cosmos DB garandeert dat dezelfde query op dezelfde gegevens altijd hetzelfde aantal RUs voor herhaalde uitvoeringen kost.
 
-* **Script gebruik**: Net als bij query's gebruiken opgeslagen procedures en triggers RUs op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer bij het ontwikkelen van uw toepassing de [koptekst van de aanvraag lading](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) om meer inzicht te krijgen in de hoeveelheid ru-capaciteit die door elke bewerking wordt verbruikt.
+* **Script gebruik**: net als bij query's, worden voor opgeslagen procedures en triggers RUs gebruikt op basis van de complexiteit van de bewerkingen die worden uitgevoerd. Controleer bij het ontwikkelen van uw toepassing de [koptekst van de aanvraag lading](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) om meer inzicht te krijgen in de hoeveelheid ru-capaciteit die door elke bewerking wordt verbruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -75,4 +75,4 @@ Bij het schatten van het aantal RUs per seconde voor het inrichten, moet u reken
 * Meer informatie over het [optimaliseren van ingerichte doorvoer kosten in azure Cosmos DB](optimize-cost-throughput.md).
 * Meer informatie over het [optimaliseren van de kosten voor lezen en schrijven in azure Cosmos DB](optimize-cost-reads-writes.md).
 * Meer informatie over het [optimaliseren van query kosten in azure Cosmos DB](optimize-cost-queries.md).
-* Meer informatie over het [gebruik van metrische gegevens voor](use-metrics.md)het bewaken van de door voer.
+* Meer informatie over het [gebruik van metrische gegevens voor het bewaken van de door Voer](use-metrics.md).

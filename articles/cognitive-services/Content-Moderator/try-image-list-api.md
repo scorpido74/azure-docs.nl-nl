@@ -3,19 +3,19 @@ title: Gemiddelde afbeeldingen met aangepaste lijsten en de API-console-Content 
 titleSuffix: Azure Content Moderator
 description: U kunt de lijst beheer-API in azure Content Moderator gebruiken om aangepaste lijsten met installatie kopieën te maken.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564357"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757195"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Gemiddeld met aangepaste installatie kopie lijsten in de API-console
 
@@ -42,7 +42,7 @@ Voordat u de API in de online console kunt testen, moet u uw abonnements sleutel
 
 Nadat u wijzigingen in een lijst met installatie kopieën hebt aangebracht, moet u de index vernieuwen zodat wijzigingen worden opgenomen in toekomstige scans. Deze stap is vergelijkbaar met de manier waarop een zoek machine op het bureau blad (indien ingeschakeld) of een zoek machine op Internet de index doorlopend vernieuwt om nieuwe bestanden of pagina's te bevatten.
 
-1. Selecteer in de [installatie kopie lijst beheer-API-verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)in het menu links de optie afbeeldings **lijsten**en selecteer vervolgens **zoek index vernieuwen**.
+1. Selecteer in de [installatie kopie lijst beheer-API-verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)in het menu links de optie **afbeeldings lijsten**en selecteer vervolgens **zoek index vernieuwen**.
 
    De **lijst met installatie kopieën-zoek index pagina vernieuwen** wordt geopend.
 
@@ -147,7 +147,7 @@ In ons voor beeld is de lijst-ID **58953**, de waarde voor **ContentSource**. De
 
 U kunt de naam en beschrijving van een lijst bewerken en meta gegevens items toevoegen.
 
-1. Selecteer in de [installatie kopie lijst beheer-API-verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)in het menu links de optie afbeeldings **lijsten**en selecteer vervolgens **Details bijwerken**. 
+1. Selecteer in de [installatie kopie lijst beheer-API-verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)in het menu links de optie **afbeeldings lijsten**en selecteer vervolgens **Details bijwerken**. 
 
    De **lijst met installatie kopieën-pagina Details bijwerken** wordt geopend.
 

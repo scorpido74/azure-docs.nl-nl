@@ -1,7 +1,7 @@
 ---
 title: Git-integratie voor Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe Azure Machine Learning integreert met een lokale Git-opslag plaats.
+description: Meer informatie over hoe Azure Machine Learning integreert met een lokale Git-opslag plaats. Bij het verzenden van een trainings uitvoering vanuit een lokale map die een Git-opslag plaats is, wordt informatie over opslag plaats, vertakking en huidige door Voer bijgehouden als onderdeel van de uitvoering.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553650"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756017"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -92,5 +92,4 @@ Zie voor meer informatie de documentatie van [AZ ml run](https://docs.microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie: modellen trainen met Azure machine learning](tutorial-train-models-with-aml.md)voor een overzicht van het trainen van Azure machine learning in Visual Studio code.
-* Zie de zelf studie over het gebruik van de [python Hello-wereld](https://code.visualstudio.com/docs/Python/Python-tutorial)voor een overzicht van het lokaal bewerken, uitvoeren en fout opsporing van code.
+* [Reken doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md)

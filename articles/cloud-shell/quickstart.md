@@ -1,25 +1,21 @@
 ---
-title: Azure Cloud Shell Snelstartgids | Microsoft Docs
-description: Quick start voor Azure Cloud Shell
-services: ''
-documentationcenter: ''
+title: Azure Cloud Shell Snelstartgids-bash
+description: Meer informatie over het gebruik van de bash-opdracht regel in uw browser met Azure Cloud Shell.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741990"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757401"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Quick start voor bash in Azure Cloud Shell
 
@@ -39,7 +35,7 @@ Dit document bevat informatie over het gebruik van bash in Azure Cloud Shell in 
 > U wordt in elke sessie automatisch geverifieerd voor Azure CLI.
 
 ### <a name="select-the-bash-environment"></a>De bash omgeving selecteren
-Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell venster `Bash`wordt vermeld. <br>
+Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell venster `Bash`. <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Uw abonnement instellen
@@ -62,7 +58,7 @@ Maak een nieuwe resource groep in Westus met de naam ' MyRG '.
 az group create --location westus --name MyRG
 ```
 
-### <a name="create-a-linux-vm"></a>Een Linux-VM maken
+### <a name="create-a-linux-vm"></a>Een Linux VM maken
 Maak een Ubuntu-VM in de nieuwe resource groep. Met de Azure CLI worden SSH-sleutels gemaakt en wordt de virtuele machine ingesteld. <br>
 
 ```azurecli-interactive
@@ -70,16 +66,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Met `--generate-ssh-keys` het gebruik van Azure cli kunt u open bare en persoonlijke sleutels maken en instellen in `$Home` uw VM en Directory. Standaard sleutels worden in Cloud shell geplaatst op `/home/<user>/.ssh/id_rsa` en. `/home/<user>/.ssh/id_rsa.pub` De `.ssh` map wordt opgeslagen in de bestands share van 5 GB die wordt gebruikt om de installatie kopie `$Home`te behouden.
+> Het gebruik van `--generate-ssh-keys` geeft Azure CLI de opdracht om open bare en persoonlijke sleutels te maken en in te stellen in uw virtuele machine en `$Home` map. Standaard sleutels worden in Cloud Shell op `/home/<user>/.ssh/id_rsa` en `/home/<user>/.ssh/id_rsa.pub` geplaatst. Uw `.ssh` map is opgeslagen in de afbeelding van de bestands share van 5 GB die wordt gebruikt om `$Home` persistent te maken.
 
-Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt inUser@Azure:Cloud shell ($).
+Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud Shell ($ User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH in uw virtuele Linux-machine
 1. Zoek de naam van uw virtuele machine in de zoek balk Azure Portal.
 2. Klik op verbinding maken om de naam van uw virtuele machine en het open bare IP-adres op te halen. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. SSH in uw virtuele machine met `ssh` de Cmd.
+3. SSH in uw virtuele machine met de `ssh` cmd.
    ```
    ssh username@ipaddress
    ```

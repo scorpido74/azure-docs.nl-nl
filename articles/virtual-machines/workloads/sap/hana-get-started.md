@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Hand matige installatie van SAP HANA met één exemplaar op Azure Virtual Machines | Microsoft Docs'
+title: 'Snelstartgids: hand matige installatie van single-instance SAP HANA op Azure Virtual Machines | Microsoft Docs'
 description: Snelstartgids voor het hand matig installeren van SAP HANA met één exemplaar op Azure Virtual Machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100050"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750367"
 ---
-# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Quickstart: Hand matige installatie van SAP HANA met één exemplaar op Azure Virtual Machines
+# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Snelstartgids: hand matige installatie van single-instance SAP HANA op Azure Virtual Machines
 ## <a name="introduction"></a>Inleiding
 Deze hand leiding helpt u bij het instellen van een single-instance SAP HANA op Azure Virtual Machines wanneer u SAP NetWeaver 7,5 en SAP HANA 1,0 SP12 hand matig installeert. Deze hand leiding is gericht op het implementeren van SAP HANA op Azure. De SAP-documentatie wordt niet vervangen. 
 
@@ -50,7 +50,7 @@ Zie [SAP Hana hoge Beschik baarheid voor Azure virtual machines](https://docs.mi
 
 Als u een SAP HANA exemplaar of S/4HANA-of BW/4HANA-systeem snel wilt implementeren, kunt u overwegen om de [SAP Cloud Appliance Library](https://cal.sap.com)te gebruiken. In [deze hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)vindt u documentatie over het implementeren van een S/4HANA-systeem via de SAP Cloud Appliance Library op Azure. U hebt alleen een Azure-abonnement nodig en een SAP-gebruiker die kan worden geregistreerd met de SAP Cloud Appliance Library.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 ### <a name="sap-hana-backup"></a>SAP HANA back-up
 Zie voor informatie over het maken van een back-up van SAP HANA-data bases op virtuele machines van Azure:
 * [Back-upgids voor SAP Hana op Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -61,19 +61,19 @@ Zie voor informatie over het maken van een back-up van SAP HANA-data bases op vi
 Zie [SAP S/4HANA of BW/4HANA implementeren op Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)voor meer informatie over het gebruik van de SAP Cloud Appliance Library voor het implementeren van S/4HANA of BW/4HANA.
 
 ### <a name="sap-hana-supported-operating-systems"></a>Door SAP HANA ondersteunde besturings systemen
-Voor informatie over door SAP Hana ondersteunde besturings systemen raadpleegt [u SAP Note 2235581-SAP Hana: Ondersteunde besturings systemen](https://launchpad.support.sap.com/#/notes/2235581/E). Azure Vm's bieden alleen ondersteuning voor een subset van deze besturings systemen. De volgende besturings systemen worden ondersteund voor de implementatie van SAP HANA op Azure: 
+Voor informatie over door SAP HANA ondersteunde besturings systemen raadpleegt u [SAP Note 2235581-SAP Hana: ondersteunde besturings systemen](https://launchpad.support.sap.com/#/notes/2235581/E). Azure Vm's bieden alleen ondersteuning voor een subset van deze besturings systemen. De volgende besturings systemen worden ondersteund voor de implementatie van SAP HANA op Azure: 
 
 * SUSE Linux Enterprise Server 12. x
-* Red Hat Enterprise Linux 7,2
+* Red Hat Enterprise Linux 7.2
 
 Zie voor aanvullende SAP-documentatie over SAP HANA en verschillende Linux-besturings systemen:
 
-* [SAP-Opmerking 171356: SAP-software op Linux: Algemene informatie](https://launchpad.support.sap.com/#/notes/1984787).
-* [SAP-Opmerking 1944799: SAP HANA richt lijnen voor de installatie](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)van het besturings systeem SLES.
-* [SAP-Opmerking 2205917: SAP HANA DB aanbevolen instellingen voor het besturings systeem voor SLES 12](https://launchpad.support.sap.com/#/notes/2205917/E)voor SAP-toepassingen.
-* [SAP-Opmerking 1391070: Linux-UUID](https://launchpad.support.sap.com/#/notes/1391070)-oplossingen.
-* [SAP-Opmerking 2009879: SAP HANA richtlijnen voor Red Hat Enterprise Linux besturings systeem](https://launchpad.support.sap.com/#/notes/2009879)(RHEL).
-* [SAP-Opmerking 2292690: SAP HANA DB: Aanbevolen instellingen voor het besturings systeem](https://launchpad.support.sap.com/#/notes/2292690/E)voor RHEL 7.
+* [SAP-opmerking 171356: SAP-software op Linux: algemene informatie](https://launchpad.support.sap.com/#/notes/1984787).
+* [SAP-opmerking 1944799: SAP Hana richt lijnen voor de installatie van het besturings systeem SLES](http://service.sap.com/sap/support/notes/1944799).
+* [SAP Note 2205917: SAP Hana DB aanbevolen besturingssysteem instellingen voor SLES 12 voor SAP-toepassingen](https://launchpad.support.sap.com/#/notes/2205917/E).
+* [SAP-opmerking 1391070: Linux-uuid-oplossingen](https://launchpad.support.sap.com/#/notes/1391070).
+* [SAP Note 2009879: SAP Hana Guidelines for Red Hat Enterprise Linux (RHEL)-besturings systeem](https://launchpad.support.sap.com/#/notes/2009879).
+* [SAP-opmerking 2292690: SAP Hana DB: aanbevolen besturingssysteem instellingen voor RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E).
 
 ### <a name="sap-monitoring-in-azure"></a>SAP-bewaking in azure
 Voor informatie over SAP-bewaking in Azure:
@@ -85,7 +85,7 @@ Voor informatie over SAP-bewaking in Azure:
 ### <a name="azure-vm-types"></a>Azure VM-typen
 Azure VM-typen en SAP-ondersteunde werkbelasting scenario's die worden gebruikt met SAP HANA, worden beschreven in [SAP Certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
 
-Azure VM-typen die zijn gecertificeerd door SAP voor SAP NetWeaver of de S/4HANA-toepassingslaag worden beschreven [in SAP Note 1928533: SAP-toepassingen op Azure: Ondersteunde producten en typen](https://launchpad.support.sap.com/#/notes/1928533/E)Azure VM.
+Azure VM-typen die zijn gecertificeerd door SAP voor SAP NetWeaver of de S/4HANA-toepassingslaag worden beschreven in [SAP Note 1928533: SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen](https://launchpad.support.sap.com/#/notes/1928533/E).
 
 > [!NOTE]
 > SAP-Linux-Azure-integratie wordt alleen ondersteund op Azure Resource Manager en niet op het klassieke implementatie model. 
@@ -93,7 +93,7 @@ Azure VM-typen die zijn gecertificeerd door SAP voor SAP NetWeaver of de S/4HANA
 ## <a name="manual-installation-of-sap-hana"></a>Hand matige installatie van SAP HANA
 
 > [!IMPORTANT]
-> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor deze VM-typen kan worden opgezocht in [SAP Hana gecertificeerde IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)-platformen. Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met door SAP HANA ondersteunde versies van besturings systemen voor het specifieke VM-type op te halen. Voor het voor beeld in dit document hebben we een SLES-besturingssysteem versie (SUSE Linux Enterprise Server) gebruikt die niet wordt ondersteund door SAP voor SAP HANA op Vm's uit de M-serie.
+> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor deze VM-typen kan worden opgezocht in [SAP Hana gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met door SAP HANA ondersteunde versies van besturings systemen voor het specifieke VM-type op te halen. Voor het voor beeld in dit document hebben we een SLES-besturingssysteem versie (SUSE Linux Enterprise Server) gebruikt die niet wordt ondersteund door SAP voor SAP HANA op Vm's uit de M-serie.
 >
 
 In deze hand leiding wordt beschreven hoe u SAP HANA op twee verschillende manieren hand matig op Azure-Vm's installeert:
@@ -180,15 +180,15 @@ Afhankelijk van het soort probleem worden patches ingedeeld op categorie en erns
 - Optioneel
 - Functie
 - Document
-- Yast
+- yast
 
 Veelgebruikte waarden voor ernst zijn:
 
 - Kritiek
 - Belangrijk
-- Matig
+- Gemiddeld
 - Laag
-- Niet opgegeven
+- Opgegeven
 
 De **Zypper** -opdracht zoekt alleen naar de updates die zijn vereist voor de geïnstalleerde pakketten. U kunt bijvoorbeeld de volgende opdracht gebruiken:
 
@@ -235,13 +235,13 @@ In de test omgeving zijn twee standaard opslag schijven van Azure gekoppeld aan 
 ### <a name="kernel-parameters"></a>Kernel-para meters
 Voor SAP HANA zijn specifieke instellingen voor de Linux-kernel vereist. Deze kernel-instellingen maken geen deel uit van de standaard installatie kopieën van Azure Gallery en moeten hand matig worden ingesteld. Afhankelijk van of u SUSE of Red Hat gebruikt, kunnen de para meters anders zijn. De SAP-opmerkingen die in de lijst staan, geven eerder informatie over deze para meters. In de weer gegeven scherm opnamen is SUSE Linux 12 SP1 gebruikt. 
 
-SLES for SAP-toepassingen 12 algemene Beschik baarheid en SLES voor SAP-toepassingen 12 SP1 hebben een nieuw hulp programma, afgesteld **-adm**, waarmee het oude **sapconf** -hulp programma wordt vervangen. Er is een speciaal SAP HANA profiel beschikbaar voor afgestemd **-adm**. Als u het systeem voor SAP HANA wilt afstemmen, voert u het volgende profiel in als hoofd gebruiker:
+SLES for SAP-toepassingen 12 algemene Beschik baarheid en SLES voor SAP-toepassingen 12 SP1 hebben een nieuw hulp programma, afgesteld **-adm**, waarmee het oude **sapconf** -hulp programma wordt vervangen. Er is een speciaal SAP HANA profiel beschikbaar voor **afgestemd-adm**. Als u het systeem voor SAP HANA wilt afstemmen, voert u het volgende profiel in als hoofd gebruiker:
 
    `tuned-adm profile sap-hana`
 
-Zie de [SuSE-documentatie over afgestemde-adm](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)voor meer informatie over afgestemde **-adm**.
+Zie de [SuSE-documentatie over afgestemde-adm](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)voor meer informatie over **afgestemde-adm**.
 
-In de volgende scherm afbeelding ziet u hoe afgestemd **-adm** de `transparent_hugepage` waarden `numa_balancing` en volgens de vereiste SAP Hana instellingen heeft gewijzigd:
+In de volgende scherm afbeelding ziet u hoe afgesteld **-adm** de `transparent_hugepage` en `numa_balancing` waarden heeft gewijzigd op basis van de vereiste SAP Hana instellingen:
 
 ![Het afgestemde-adm-hulp programma wijzigt waarden volgens de vereiste SAP HANA instellingen](./media/hana-get-started/image005.jpg)
 
@@ -251,7 +251,7 @@ In de volgende scherm afbeelding ziet u hoe de kernel-instellingen zijn gewijzig
 
 ![De kernel-instellingen zijn gewijzigd in het configuratie bestand en gecompileerd met behulp van grub2-mkconfig](./media/hana-get-started/image006.jpg)
 
-Een andere mogelijkheid is om de instellingen te wijzigen met behulp van YaST en de instellingen voor de**kernel-para meters** van de **opstart lader** > :
+Een andere mogelijkheid is om de instellingen te wijzigen met behulp van YaST en de **opstart lader**  >  instellingen voor**kernel-para meters** :
 
 ![Het tabblad Instellingen voor kernel-para meters in YaST-opstart laad programma](./media/hana-get-started/image007.jpg)
 
@@ -321,12 +321,12 @@ Als u een Windows-achtergrond hebt, kunt u eenvoudig een grafisch bureau blad re
 
    `check /var/run` 
 
-   `xrdp.pid`Zoeken. Als u het hebt gevonden, verwijdert u deze en probeert u het opnieuw.
+   Zoek naar `xrdp.pid`. Als u het hebt gevonden, verwijdert u deze en probeert u het opnieuw.
 
 ### <a name="start-sap-mc"></a>SAP MC starten
 Nadat u het GNOME-bureau blad hebt geïnstalleerd, start u de op Java-gebaseerde SAP MC vanuit Firefox. Als de service wordt uitgevoerd in een Azure SLES 12/SLES voor SAP-toepassingen 12 VM, wordt er mogelijk een fout weer gegeven. De fout treedt op vanwege de ontbrekende Java-browser-invoeg toepassing.
 
-De URL voor het starten van SAP MC `<server>:5<instance_number>13`is.
+De URL voor het starten van SAP MC is `<server>:5<instance_number>13`.
 
 Zie [de web-gebaseerde SAP-beheer console starten](https://help.sap.com/saphelp_nwce10/helpdata/en/48/6b7c6178dc4f93e10000000a42189d/frameset.htm)voor meer informatie.
 
@@ -350,7 +350,7 @@ Zie voor meer informatie over een soortgelijk probleem met openjdk op openSUSE d
 ## <a name="manual-installation-of-sap-hana-swpm"></a>Hand matige installatie van SAP HANA: SWPM
 In de reeks scherm afbeeldingen in deze sectie ziet u de belangrijkste stappen voor het installeren van SAP NetWeaver 7,5 en SAP HANA SP12 wanneer u SWPM gebruikt met SAPinst. Als onderdeel van een installatie van NetWeaver 7,5 kan de HANA-data base ook als één exemplaar worden geïnstalleerd met SWPM.
 
-In een voor beeld van een test omgeving hebben we één ABAP-app server (Advanced Business Application Programming) geïnstalleerd. Zoals weer gegeven in de volgende scherm afbeelding, hebben we de optie gedistribueerde **systeem** gebruikt voor het installeren van de ASCS-en primaire toepassings server exemplaren in één Azure-VM. We hebben SAP HANA als het database systeem gebruikt in een andere Azure-VM.
+In een voor beeld van een test omgeving hebben we één ABAP-app server (Advanced Business Application Programming) geïnstalleerd. Zoals weer gegeven in de volgende scherm afbeelding, hebben we de optie **gedistribueerde systeem** gebruikt voor het installeren van de ASCS-en primaire toepassings server exemplaren in één Azure-VM. We hebben SAP HANA als het database systeem gebruikt in een andere Azure-VM.
 
 ![ASCS en primaire toepassings server instanties geïnstalleerd met behulp van de gedistribueerde systeem optie](./media/hana-get-started/image012.jpg)
 
@@ -419,7 +419,7 @@ Zie voor meer informatie over het HANA HDBLCM-hulp programma:
 * [SAP Hana levenscyclus beheer hulpprogramma's](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
 * [SAP Hana server-installatie en-update handleiding](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-U wilt problemen voor komen met een standaard instelling voor groeps- `\<HANA SID\>adm user`id's voor de, die wordt gemaakt door het HDBLCM-hulp programma. Voordat u SAP Hana installeert via HDBLCM, definieert u een nieuwe groep `sapsys` met de naam met `1001`groeps-id:
+U wilt problemen voor komen met een standaard instelling voor de groeps-ID voor de `\<HANA SID\>adm user`, die wordt gemaakt door het HDBLCM-hulp programma. Voordat u SAP HANA installeert via HDBLCM, definieert u een nieuwe groep met de naam `sapsys` met behulp van groeps-ID `1001`:
 
 ![Nieuwe groep "sapsys" die is gedefinieerd met behulp van groeps-ID 1001](./media/hana-get-started/image030.jpg)
 
@@ -432,13 +432,13 @@ Op de volgende scherm afbeelding ziet u alle belang rijke opties die u eerder he
 > [!IMPORTANT]
 > Directory's met de naam voor HANA-logboeken en-gegevens volumes en het installatiepad, dat in dit voor beeld/Hana/Shared is, en/usr/sap mogen geen deel uitmaken van het hoofd bestands systeem. Deze mappen maken deel uit van de Azure-gegevens schijven die zijn gekoppeld aan de virtuele machine. Zie de sectie schijf installatie voor meer informatie. 
 
-Deze methode helpt voor komen dat het hoofd bestandssysteem bijna vol is. U ziet dat de Hana-systeem beheerder gebruikers `1005` -id heeft en deel `sapsys` uitmaakt van de `1001`groep, met id, die is gedefinieerd vóór de installatie.
+Deze methode helpt voor komen dat het hoofd bestandssysteem bijna vol is. U ziet dat de HANA-systeem beheerder gebruikers-ID heeft `1005` en deel uitmaakt van de `sapsys` groep met de ID `1001` die is gedefinieerd vóór de installatie.
 
 ![Lijst met alle belang rijke SAP HANA onderdelen die eerder zijn geselecteerd](./media/hana-get-started/image032.jpg)
 
-Controleer de `\<HANA SID\>adm user` gegevens in de/etc/passwd-map. Zoek naar `azdadm`, zoals wordt weer gegeven in de volgende scherm afbeelding:
+Controleer de `\<HANA SID\>adm user` gegevens in de map/etc/passwd. Zoek naar `azdadm`, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Hana \<Hana sid\>adm gebruikers gegevens die worden weer gegeven in de map/etc/passwd](./media/hana-get-started/image033.jpg)
+![HANA \<HANA SID \>adm gebruikers gegevens die worden weer gegeven in de map/etc/passwd](./media/hana-get-started/image033.jpg)
 
 Nadat u SAP HANA hebt geïnstalleerd met behulp van HDBLCM, ziet u de bestands structuur in SAP HANA Studio, zoals wordt weer gegeven in de volgende scherm afbeelding. Het SAPABAP1-schema, dat alle SAP NetWeaver-tabellen bevat, is nog niet beschikbaar.
 

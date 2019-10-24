@@ -1,21 +1,21 @@
 ---
 title: Tekst toezicht-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Tekst toezicht gebruiken voor mogelijke ongewenste tekst, PII en aangepaste lijsten met termen.
+description: Tekst toezicht gebruiken voor mogelijke ongewenste tekst, persoonlijke gegevens en aangepaste lijsten met termen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564382"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757238"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
@@ -34,7 +34,7 @@ De service respons bevat de volgende informatie:
 
 ## <a name="profanity"></a>Scheld woorden
 
-Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie (`Index`) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
+Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie (`Index`) in de oorspronkelijke tekst. De `ListId` in de volgende JSON van het voor beeld verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
     "Terms": [
     {
@@ -45,9 +45,9 @@ Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)o
     }
 
 > [!NOTE]
-> Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
+> Wijs `eng` toe of laat de para meter leeg om de **door de computer** ondersteunde **classificatie** -informatie te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
 >
-> Gebruik  de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) van de ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
+> Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
 ## <a name="classification"></a>Classificatie
 
@@ -70,15 +70,15 @@ In de volgende extractie in de JSON-analyse wordt een voorbeeld uitvoer weer geg
 
 ### <a name="explanation"></a>Uitleg
 
-- `Category1`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
-- `Category2`verwijst naar de mogelijke aanwezigheid van een taal die in bepaalde situaties kan worden beschouwd als expliciet of verouderd.
-- `Category3`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als aanstootgevend kan worden beschouwd.
-- `Score`ligt tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Deze functie is afhankelijk van een statistisch model in plaats van hand matig gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
-- `ReviewRecommended`is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
+- `Category1` verwijst naar mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
+- `Category2` verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel voor stel kan worden beschouwd.
+- `Category3` verwijst naar mogelijke aanwezigheid van taal die in bepaalde situaties als aanstootgevend kan worden beschouwd.
+- `Score` ligt tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Deze functie is afhankelijk van een statistisch model in plaats van hand matig gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
+- `ReviewRecommended` is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
 
 ## <a name="personal-data"></a>Persoons gegevens
 
-De PII-functie detecteert de mogelijke aanwezigheid van deze gegevens:
+De functie persoonlijke gegevens detecteert de mogelijke aanwezigheid van deze gegevens:
 
 - E-mailadres
 - Post adres van de Verenigde Staten
@@ -89,51 +89,68 @@ De PII-functie detecteert de mogelijke aanwezigheid van deze gegevens:
 
 In het volgende voor beeld ziet u een voor beeld van een antwoord:
 
-    "PII": {
-        "Email": [{
-            "Detected": "abcdef@abcd.com",
-            "SubType": "Regular",
-            "Text": "abcdef@abcd.com",
-            "Index": 32
-            }],
-        "IPA": [{
-            "SubType": "IPV4",
-            "Text": "255.255.255.255",
-            "Index": 72
-            }],
-        "Phone": [{
-            "CountryCode": "US",
-            "Text": "6657789887",
-            "Index": 56
-            }, {
-            "CountryCode": "US",
-            "Text": "870 608 4000",
-            "Index": 212
-            }, {
-            "CountryCode": "UK",
-            "Text": "+44 870 608 4000",
-            "Index": 208
-            }, {
-            "CountryCode": "UK",
-            "Text": "0344 800 2400",
-            "Index": 228
-            }, {
-            "CountryCode": "UK",
-            "Text": "0800 820 3300",
-            "Index": 245
-            }],
-        "Address": [{
-            "Text": "1 Microsoft Way, Redmond, WA 98052",
-            "Index": 89
-            }],
-        "SSN": [{
-            "Text": "999999999",
-            "Index": 56
-            }, {
-            "Text": "999-99-9999",
-            "Index": 267
-            }]
-        }
+```json
+"PII":{ 
+  "Email":[ 
+    { 
+      "Detected":"abcdef@abcd.com",
+      "SubType":"Regular",
+      "Text":"abcdef@abcd.com",
+      "Index":32
+    }
+  ],
+  "IPA":[ 
+    { 
+      "SubType":"IPV4",
+      "Text":"255.255.255.255",
+      "Index":72
+    }
+  ],
+  "Phone":[ 
+    { 
+      "CountryCode":"US",
+      "Text":"6657789887",
+      "Index":56
+    },
+    { 
+      "CountryCode":"US",
+      "Text":"870 608 4000",
+      "Index":212
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"+44 870 608 4000",
+      "Index":208
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0344 800 2400",
+      "Index":228
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0800 820 3300",
+      "Index":245
+    }
+  ],
+  "Address":[ 
+    { 
+      "Text":"1 Microsoft Way, Redmond, WA 98052",
+      "Index":89
+    }
+  ],
+  "SSN":[ 
+    { 
+      "Text":"999999999",
+      "Index":56
+    },
+    { 
+      "Text":"999-99-9999",
+      "Index":267
+    }
+  ]
+}
+```
 
 ## <a name="auto-correction"></a>Automatische correctie
 

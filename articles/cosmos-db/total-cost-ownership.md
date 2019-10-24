@@ -1,22 +1,22 @@
 ---
 title: Totale eigendoms kosten (TCO) met Azure Cosmos DB
 description: In dit artikel worden de total cost of ownership van Azure Cosmos DB met IaaS en on-premises data bases vergeleken
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 911f5fa9985fc5e34f758dfb739d84521f91f5c0
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716923"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754793"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
 
-Azure Cosmos DB is ontworpen met de fijn gekorrelde multitenancy en de resource governance. Met dit ontwerp kunnen Azure Cosmos DB beduidend lagere kosten worden toegepast en kunnen gebruikers besparen. Momenteel Azure Cosmos DB ondersteunt meer dan 280 klant werkbelastingen op één computer, waarbij de dichtheid voortdurend toeneemt, en duizenden klant werkbelastingen binnen een cluster. Hiermee worden de replica's van de workloads van klanten op verschillende computers in een cluster en tussen meerdere clusters binnen een Data Center gebalanceerd. Zie [Azure Cosmos DB voor meer informatie: De grens van wereld wijd gedistribueerde data bases](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)te pushen. Vanwege resource-governance, multitenancy en systeem eigen integratie met de rest van Azure-infra structuur, is Azure Cosmos DB gemiddeld 4 tot 6 keer goed koper dan MongoDB, Cassandra of andere OSS NoSQL die op IaaS wordt uitgevoerd en tot wel tien keer goed koper dan de data base machines die on-premises worden uitgevoerd. Zie het artikel over [de totale kosten van (niet) eigendom van een NoSQL data base-Cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Azure Cosmos DB is ontworpen met de fijn gekorrelde multitenancy en de resource governance. Met dit ontwerp kunnen Azure Cosmos DB beduidend lagere kosten worden toegepast en kunnen gebruikers besparen. Momenteel Azure Cosmos DB ondersteunt meer dan 280 klant werkbelastingen op één computer, waarbij de dichtheid voortdurend toeneemt, en duizenden klant werkbelastingen binnen een cluster. Hiermee worden de replica's van de workloads van klanten op verschillende computers in een cluster en tussen meerdere clusters binnen een Data Center gebalanceerd. Ga voor meer informatie naar [Azure Cosmos DB: de grens van wereld wijd gedistribueerde data bases te pushen](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Vanwege resource-governance, multitenancy en systeem eigen integratie met de rest van Azure-infra structuur, is Azure Cosmos DB gemiddeld 4 tot 6 keer goed koper dan MongoDB, Cassandra of andere OSS NoSQL die op IaaS wordt uitgevoerd en tot wel tien keer goed koper dan de data base machines die on-premises worden uitgevoerd. Zie het artikel over [de totale kosten van (niet) eigendom van een NoSQL data base-Cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 De OSS NoSQL-database oplossingen, zoals Apache Cassandra, MongoDB, HBase, engines zijn ontworpen voor on-premises. Als een beheerde service wordt aangeboden, zijn ze gelijk aan een resource manager-sjabloon met een Tenant database voor het beheren van de ingerichte clusters en bewakings ondersteuning. Voor OSS NoSQL-architecturen zijn aanzienlijke operationele overhead nodig en de expertise kan moeilijk en kostbaar zijn. Azure Cosmos DB is daarentegen een volledig beheerde Cloud service, waarmee ontwikkel aars zich kunnen richten op bedrijfs innovatie in plaats van de infra structuur van de data base te beheren en onderhouden. 
 
@@ -44,7 +44,7 @@ Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om 
 
 * **Maakt gebruik van gecombineerde valuta voor diverse werk belastingen:** In tegens telling tot alternatieve aanbiedingen hoeft u in Azure Cosmos DB geen werk belastingen te segmenteren, bijvoorbeeld in lees-en schrijf bewerkingen. Of het inrichten van een door Voer voor een type werk belasting dat lees doorvoer snelheid heeft versus schrijf doorvoer. In Azure Cosmos DB is ingerichte door Voer gereserveerd met behulp van een uniforme en genormaliseerde valuta in termen van aanvraag eenheden of RU/sec. Azure Cosmos DB dwingt u geen prioriteit toe aan uw workloads, kunt u de capaciteits planning of het betalen van elk type capaciteit toewijzen Split. Met deze aanpak kunt u eenvoudig dezelfde RU/s uitwisselen tussen verschillende bewerkingen en werkbelasting typen.
 
-* **U hoeft geen Vm's in te richten om te schalen:** Voor de meeste operationele data bases moet u met grote virtuele machines werken om te voor komen dat er ruis bij de neighbors en voor het losse beheer van resources is, als u wilt schalen. Dit brengt de belasting en de vooraf-toezeg ging van de kosten voor de klanten met zich mee. Met Azure Cosmos DB kunt u klein beginnen en de omvang van de grootschalige werk belastingen naadloos uitbreiden en zonder enige downtime of gevolgen voor de beschik baarheid van gegevens.
+* **U hoeft geen vm's in te richten om te schalen:** Voor de meeste operationele data bases moet u met grote virtuele machines werken om te voor komen dat er ruis bij de neighbors en voor het losse beheer van resources is, als u wilt schalen. Dit brengt de belasting en de vooraf-toezeg ging van de kosten voor de klanten met zich mee. Met Azure Cosmos DB kunt u klein beginnen en de omvang van de grootschalige werk belastingen naadloos uitbreiden en zonder enige downtime of gevolgen voor de beschik baarheid van gegevens.
 
 * **U kunt ingerichte door Voer voor een maximum limiet gebruiken:** Door de grond slag van subcore-multiplexing in Azure Cosmos DB, kunt u de ingerichte door Voer overmatigen tot een grotere mate dan IaaS-gehoste opties of aanbiedingen van derden. Deze methode bespaart veel meer dan de alternatieve oplossingen.
 

@@ -3,19 +3,19 @@ title: Beheer werk stromen definiëren met de REST API-console-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: U kunt de Azure Content Moderator Review-Api's gebruiken om aangepaste werk stromen en drempel waarden te definiëren op basis van uw inhouds beleid.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: cb93cf1b7a5338058c6f2d93b4bb27f60286882e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881213"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754186"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Toezicht werk stromen definiëren en gebruiken (REST)
 
@@ -35,15 +35,15 @@ Als u een werk stroom wilt maken of bijwerken, gaat u naar de pagina **[werk str
 
 Voer waarden in voor **team**, **werk stroomnaam**en **OCP-APIM-Subscription-Key**:
 
-- **team**: De team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met referenties van het controle programma).
-- **werk stroomnaam**: De naam van een nieuwe werk stroom die u wilt toevoegen (of een bestaande naam als u een bestaande werk stroom wilt bijwerken).
-- **Ocp-Apim-Subscription-Key**: Uw Content Moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
+- **team**: de team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met de referenties van het controle programma).
+- **workflowactie**: de naam van een nieuwe werk stroom die u wilt toevoegen (of een bestaande naam als u een bestaande werk stroom wilt bijwerken).
+- **OCP-APIM-abonnements sleutel**: uw content moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
 
 ![Werk stroom: query parameters en kopteksten voor console maken of bijwerken](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>Een werk stroom definitie invoeren
 
-1. Bewerk het **vak hoofd tekst** van de aanvraag om de JSON-aanvraag in te voeren met Details `Image` voor `Text`de **Beschrijving** en het **type** (of).
+1. Bewerk het vak **hoofd tekst** van de aanvraag om de JSON-aanvraag in te voeren met Details voor de **Beschrijving** en het **type** (`Image` of `Text`).
 2. Voor **expressie**kopieert u de standaard JSON-expressie voor de werk stroom. De uiteindelijke JSON-teken reeks moet er als volgt uitzien:
 
 ```json
@@ -80,11 +80,11 @@ Voer waarden in voor **team**, **werk stroomnaam**en **OCP-APIM-Subscription-Key
 
 ### <a name="submit-your-request"></a>Uw aanvraag verzenden
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt het vak **antwoord inhoud** weer `true`gegeven.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** `true` weer gegeven.
 
 ### <a name="examine-the-new-workflow"></a>De nieuwe werk stroom controleren
 
-In het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/)selecteert u **instellingen** > **werk stromen**. De nieuwe werk stroom wordt weer gegeven in de lijst.
+Selecteer in het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) **instellingen**  > **werk stromen**. De nieuwe werk stroom wordt weer gegeven in de lijst.
 
 ![Lijst met hulpprogram ma's voor beoordeling van werk stromen](images/workflow-console-new-workflow.PNG)
 
@@ -98,11 +98,11 @@ Als u details over een bestaande werk stroom wilt ophalen, gaat u naar de pagina
 
 ![Werk stroom-selectie van regio ophalen](images/test-drive-region.png)
 
-Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Controleer of deze keer de naam van een bestaande werk stroom is.
+Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Controleer of deze keer de naam van een **bestaande werk stroom is.**
 
 ![Query parameters en kopteksten ophalen](images/workflow-get-default.PNG)
 
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** en wordt `200 OK`in het vak **reactie inhoud** de werk stroom weer gegeven in JSON-indeling, zoals in het volgende voor beeld:
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** de werk stroom weer gegeven in JSON-indeling, zoals in het volgende voor beeld:
 
 ```json
 {

@@ -1,17 +1,17 @@
 ---
 title: De opslag kosten in Azure Cosmos DB optimaliseren
 description: In dit artikel wordt uitgelegd hoe u opslag kosten beheert voor de gegevens die zijn opgeslagen in Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615007"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754950"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>De opslag kosten in Azure Cosmos DB optimaliseren
 
@@ -39,7 +39,7 @@ Als u uitgebreide media typen wilt opslaan, bijvoorbeeld Video's, afbeeldingen e
 
 ## <a name="check-storage-consumed"></a>Verbruikte opslag controleren
 
-Om het opslag verbruik van een Azure Cosmos-container te controleren, kunt u een Head uitvoeren of aanvragen ophalen voor de container en de `x-ms-request-quota` en de `x-ms-request-usage` kopteksten controleren. Als u werkt met de .NET SDK, kunt u ook de eigenschappen [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))en [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) gebruiken om de gebruikte opslag ruimte op te halen.
+Om het opslag verbruik van een Azure Cosmos-container te controleren, kunt u een HEAD of GET-aanvraag uitvoeren op de container en de `x-ms-request-quota` en de `x-ms-request-usage`-headers controleren. Als u werkt met de .NET SDK, kunt u ook de eigenschappen [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))en [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) gebruiken om de gebruikte opslag ruimte op te halen.
 
 ## <a name="using-sdk"></a>SDK gebruiken
 

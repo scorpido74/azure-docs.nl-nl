@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030320"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755906"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight
 
@@ -70,7 +70,7 @@ Zodra de beheerde identiteit is gemaakt en de juiste rol heeft gekregen, kan de 
 ## <a name="networking-considerations"></a>Aandachtspunten voor netwerken
 
 > [!NOTE]  
-> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Zie [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)voor meer informatie.
+> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Zie [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network)voor meer informatie.
 
 Nadat u Azure AD-DS hebt ingeschakeld, wordt een lokale Domain Name Service (DNS)-server uitgevoerd op de AD-Virtual Machines (Vm's). Configureer uw Azure AD-DS-Virtual Network (VNET) voor het gebruik van deze aangepaste DNS-servers. Als u de juiste IP-adressen wilt vinden, selecteert u **Eigenschappen** onder de categorie **beheren** en bekijkt u de IP-adressen onder **IP-adres op Virtual Network**.
 
@@ -82,7 +82,7 @@ Wijzig de configuratie van de DNS-servers in azure AD-DS VNET voor gebruik van d
 
 Het is eenvoudiger om zowel het Azure AD-DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u van plan bent verschillende VNETs te gebruiken, moet u deze virtuele netwerken peeren zodat de domein controller zichtbaar is voor virtuele machines van HDI. Zie [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie. 
 
-Nadat de VNETs zijn gekoppeld, configureert u de HDInsight VNET voor het gebruik van een aangepaste DNS-server en voert u de persoonlijke Ip's van Azure AD-DS in als de DNS-server adressen. Wanneer beide VNETs dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld `contoso.com` is, wordt na deze stap `ping contoso.com` omgezet naar het juiste Azure AD-DS-IP-adres.
+Nadat de VNETs zijn gekoppeld, configureert u de HDInsight VNET voor het gebruik van een aangepaste DNS-server en voert u de persoonlijke Ip's van Azure AD-DS in als de DNS-server adressen. Wanneer beide VNETs dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld `contoso.com` na deze stap, moet `ping contoso.com` worden omgezet naar de juiste Azure AD-DS-IP.
 
 ![Aangepaste DNS-servers configureren voor gepeerde VNET](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
@@ -108,9 +108,9 @@ Wanneer u een HDInsight-cluster met ESP maakt, moet u de volgende para meters op
 
 - **Gebruiker van Cluster beheerder**: Kies een beheerder voor uw cluster uit uw gesynchroniseerde Azure AD-DS. Dit domein account moet al worden gesynchroniseerd en beschikbaar zijn in azure AD-DS.
 
-- **Cluster toegangs groepen**: De beveiligings groepen waarvan u de gebruikers wilt synchroniseren en toegang tot het cluster wilt, moeten beschikbaar zijn in azure AD-DS. Bijvoorbeeld HiveUsers-groep. Zie [een groep maken en leden toevoegen in azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie.
+- **Cluster toegangs groepen**: de beveiligings groepen waarvan de gebruikers die u wilt synchroniseren en toegang tot het cluster, moeten beschikbaar zijn in azure AD-DS. Bijvoorbeeld HiveUsers-groep. Zie [een groep maken en leden toevoegen in azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie.
 
-- **URL VAN LDAPS**: Een voorbeeld is `ldaps://contoso.com:636`.
+- **URL van LDAPS**: een voor beeld is `ldaps://contoso.com:636`.
 
 De beheerde identiteit die u hebt gemaakt, kunt u kiezen in vanuit de door de gebruiker toegewezen vervolg keuzelijst beheerde identiteit bij het maken van een nieuw cluster.
 

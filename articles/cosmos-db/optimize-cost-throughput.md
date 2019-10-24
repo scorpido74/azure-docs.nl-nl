@@ -1,17 +1,17 @@
 ---
 title: De doorvoer kosten optimaliseren in Azure Cosmos DB
 description: In dit artikel wordt uitgelegd hoe u doorvoer kosten optimaliseert voor de gegevens die zijn opgeslagen in Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: rimman
-ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020113"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753270"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Ingerichte doorvoer kosten optimaliseren in Azure Cosmos DB
 
@@ -25,7 +25,7 @@ U kunt de door Voer inrichten voor data bases of containers en elke strategie ka
 
 * Als u de door Voer inricht voor een Data Base, kunnen alle containers, bijvoorbeeld verzamelingen/tabellen/grafieken binnen die data base, de door Voer delen op basis van de belasting. De door Voer die is gereserveerd op database niveau, wordt ongelijk gedeeld, afhankelijk van de werk belasting voor een specifieke set containers.
 
-* Als u de door Voer voor een container inricht, wordt de door Voer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitie sleutel is van cruciaal belang voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie [](partitioning-overview.md) artikelen partitioneren en [horizon taal schalen](partition-data.md) voor meer informatie.
+* Als u de door Voer voor een container inricht, wordt de door Voer gegarandeerd voor die container, ondersteund door de SLA. De keuze van een logische partitie sleutel is van cruciaal belang voor een gelijkmatige verdeling van de belasting over alle logische partities van een container. Zie artikelen [partitioneren](partitioning-overview.md) en [horizon taal schalen](partition-data.md) voor meer informatie.
 
 Hier volgen enkele richt lijnen voor het kiezen van een ingerichte doorvoer strategie:
 
@@ -56,16 +56,16 @@ Zoals in de volgende tabel wordt weer gegeven, is afhankelijk van de keuze van d
 |API|Configureer voor **gedeelde** door Voer |Voor **specifieke** door Voer configureren |
 |----|----|----|
 |SQL-API|Database|Container|
-|Azure Cosmos DB-API voor MongoDB|Database|Collection|
-|Cassandra-API|Keyspace|Tabel|
-|Gremlin-API|Databaseaccount|Graph|
-|Tabel-API|Databaseaccount|Tabel|
+|Azure Cosmos DB-API voor MongoDB|Database|Verzameling|
+|Cassandra-API|Keys Pace|Tabel|
+|Gremlin-API|Database account|Grafiek|
+|Tabel-API|Database account|Tabel|
 
 Door de door Voer op verschillende niveaus in te richten, kunt u uw kosten optimaliseren op basis van de kenmerken van uw werk belasting. Zoals eerder vermeld, kunt u programmatisch en op elk gewenst moment uw ingerichte door Voer verg Roten of verkleinen voor afzonderlijke container (s) of gezamenlijk over een set containers. Door de door voer te verg Roten of verkleinen als uw werk belasting wordt gewijzigd, betaalt u alleen voor de door u geconfigureerde door voer. Als uw container of een set containers wordt gedistribueerd over meerdere regio's, wordt de door u geconfigureerde door Voer voor de container of een set containers gegarandeerd in alle regio's beschikbaar gesteld.
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optimaliseren met frequentie-uw aanvragen beperken
 
-Voor workloads die niet gevoelig zijn voor latentie, kunt u minder door Voer inrichten en de toepassing de snelheids beperking laten afhandelen wanneer de werkelijke door Voer de ingerichte door Voer overschrijdt. De server preventief de aanvraag met `RequestRateTooLarge` (http-status code 429) en retourneert de `x-ms-retry-after-ms` header die de hoeveelheid tijd, in milliseconden, aangeeft dat de gebruiker moet wachten voordat de aanvraag opnieuw wordt uitgevoerd. 
+Voor workloads die niet gevoelig zijn voor latentie, kunt u minder door Voer inrichten en de toepassing de snelheids beperking laten afhandelen wanneer de werkelijke door Voer de ingerichte door Voer overschrijdt. De server preventief de aanvraag met `RequestRateTooLarge` te beëindigen (HTTP-status code 429) en retourneert de `x-ms-retry-after-ms` header geeft aan hoeveel tijd, in milliseconden, de gebruiker moet wachten voordat de aanvraag opnieuw wordt uitgevoerd. 
 
 ```html
 HTTP Status 429, 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 De systeem eigen Sdk's (.NET/.NET core, Java, node. js en python) ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 
-Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen dat momenteel is ingesteld op 9 mogelijk niet voldoende. In dat geval genereert de client een `DocumentClientException` met de status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen op het Connection Policy-exemplaar. Standaard wordt de met `DocumentClientException` de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
+Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen dat momenteel is ingesteld op 9 mogelijk niet voldoende. In dat geval genereert de client een `DocumentClientException` met status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen voor het Connection Policy-exemplaar. Standaard wordt de `DocumentClientException` met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
 
@@ -139,7 +139,7 @@ U kunt de volgende stappen gebruiken om de ingerichte door Voer voor een nieuwe 
 
 2. Het is raadzaam om de containers met een hogere door voer te maken dan verwacht en vervolgens naar behoefte te schalen. 
 
-3. Het is raadzaam een van de systeem eigen Azure Cosmos DB Sdk's te gebruiken om te profiteren van automatische nieuwe pogingen wanneer aanvragen een beperkt aantal zijn. Als u werkt met een platform dat niet wordt ondersteund en gebruikmaakt van de rest API van Cosmos DB, implementeert u uw eigen beleid `x-ms-retry-after-ms` voor opnieuw proberen met behulp van de header. 
+3. Het is raadzaam een van de systeem eigen Azure Cosmos DB Sdk's te gebruiken om te profiteren van automatische nieuwe pogingen wanneer aanvragen een beperkt aantal zijn. Als u werkt met een platform dat niet wordt ondersteund en gebruikmaakt van de REST API van Cosmos DB, implementeert u uw eigen beleid voor opnieuw proberen met behulp van de `x-ms-retry-after-ms`-header. 
 
 4. Zorg ervoor dat uw toepassings code de situatie op de juiste wijze ondersteunt wanneer alle pogingen mislukken. 
 

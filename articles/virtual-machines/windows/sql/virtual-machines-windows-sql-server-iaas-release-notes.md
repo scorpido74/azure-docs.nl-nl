@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300096"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757467"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 
@@ -29,10 +29,10 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | Gewijzigde | Details |
 | --- | --- |
 | **Opslag Configuratie geoptimaliseerd voor prestaties** | U kunt nu [uw opslag configuratie volledig aanpassen](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) bij het maken van een nieuwe SQL Server VM. |
-| **Premium-bestands share voor FCI** | U kunt nu een failover-cluster exemplaar maken met behulp van [Premium-bestands share](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) in plaats van de oorspronkelijke methode van [opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
+| **Premium-bestands share voor FCI** | U kunt nu een failover-cluster exemplaar maken met behulp van een [Premium-bestands share](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) in plaats van de oorspronkelijke methode van [opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
 | &nbsp; | &nbsp; |
 
-## <a name="august-2019"></a>2019 augustus
+## <a name="august-2019"></a>Augustus 2019
 
 | Gewijzigde | Details |
 | --- | --- |
@@ -40,7 +40,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | &nbsp; | &nbsp; |
 
 
-## <a name="july-2019"></a>2019 juli
+## <a name="july-2019"></a>Juli 2019
 
 
 | Gewijzigde | Details |
@@ -77,7 +77,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | &nbsp; | &nbsp; |
 
 
-## <a name="march-2019"></a>2019 maart
+## <a name="march-2019"></a>Maart 2019
 
 | Gewijzigde | Details |
 | --- | --- |

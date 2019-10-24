@@ -1,19 +1,19 @@
 ---
 title: Werken met de bibliotheek voor het wijzigen van de feed-processor in Azure Cosmos DB
 description: Met behulp van de Azure Cosmos DB Change feed processor-bibliotheek.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073694"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757033"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>De invoer processor wijzigen in Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ We kijken naar een voor beeld in het volgende diagram om meer inzicht te krijgen
 
 ## <a name="implementing-the-change-feed-processor"></a>De processor voor de wijzigings feed implementeren
 
-Het gegeven punt is altijd de bewaakte container, van een `Container` instantie die u `GetChangeFeedProcessorBuilder`aanroept:
+Het gegeven punt is altijd de bewaakte container, van een `Container` exemplaar dat u aanroept `GetChangeFeedProcessorBuilder`:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,16 +49,16 @@ Een voor beeld van een gemachtigde is:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Ten slotte definieert u een naam voor dit processor exemplaar `WithInstanceName` met en dit is de container waarin de lease `WithLeaseContainer`status moet worden onderhouden.
+Ten slotte definieert u een naam voor dit processor exemplaar met `WithInstanceName` en dat is de container voor het onderhouden van de lease status met `WithLeaseContainer`.
 
-Met `Build` aanroepen krijgt u het processor exemplaar dat u kunt starten door `StartAsync`aan te roepen.
+Aanroepende `Build` geeft u het processor exemplaar dat u kunt starten door het aanroepen van `StartAsync`.
 
 ## <a name="processing-life-cycle"></a>Levens cyclus verwerken
 
 De normale levens cyclus van een exemplaar van een host is:
 
 1. Lees de wijzigings feed.
-1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde `WithPollInterval` hoeveelheid tijd (aanpasbaar met in de opbouw functie) en gaat u naar #1.
+1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde hoeveelheid tijd (aanpasbaar met `WithPollInterval` in de opbouw functie) en gaat u naar #1.
 1. Als er wijzigingen zijn, stuurt u deze naar de **gemachtigde**.
 1. Wanneer de gemachtigde de verwerking van de wijzigingen **heeft**voltooid, werkt u de lease Store bij met het meest recente verwerkte punt in de tijd en gaat u naar #1.
 
@@ -72,7 +72,7 @@ Zoals vermeld tijdens de introductie, kan de wijzigings verwerkings processor de
 
 1. Alle exemplaren moeten dezelfde configuratie voor de lease container hebben.
 1. Alle exemplaren moeten dezelfde werk stroom naam hebben.
-1. Elk exemplaar moet een andere exemplaar naam (`WithInstanceName`) hebben.
+1. Elk exemplaar moet een andere exemplaar naam hebben (`WithInstanceName`).
 
 Als deze drie voor waarden van toepassing zijn, wordt met behulp van een even distributie algoritme alle leases in de lease-container gedistribueerd op alle actieve instanties en parallelliseren compute. Een lease kan alleen eigendom zijn van één exemplaar op een bepaald moment, waardoor het maximum aantal exemplaren gelijk is aan het aantal leases.
 
@@ -84,7 +84,7 @@ Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan
 
 Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens verplaatsing in en buiten Cosmos containers altijd RUs gebruikt. Er worden kosten in rekening gebracht voor RUs dat wordt gebruikt door de lease-container.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

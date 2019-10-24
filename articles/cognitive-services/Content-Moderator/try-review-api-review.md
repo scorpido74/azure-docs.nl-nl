@@ -3,19 +3,19 @@ title: Toezicht beoordelingen maken met REST API-console-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik de Azure Content Moderator Review-Api's om afbeeldings-of tekst beoordelingen te maken voor menselijke toezicht.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882349"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757144"
 ---
 # <a name="create-human-reviews-rest"></a>Menselijke beoordelingen maken (REST)
 
@@ -33,19 +33,19 @@ Als u een beoordeling wilt maken, gaat u naar de pagina voor het maken van API *
 
 ### <a name="enter-rest-call-parameters"></a>REST Call-para meters invoeren
 
-Voer waarden invoor teamnaam en **OCP-APIM-Subscription-Key**:
+Voer waarden in voor **teamnaam**en **OCP-APIM-Subscription-Key**:
 
-- **teamnaam**: De team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met referenties van het controle programma).
-- **Ocp-Apim-Subscription-Key**: Uw Content Moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
+- **team**naam: de team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met de referenties van het controle programma).
+- **OCP-APIM-abonnements sleutel**: uw content moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
 
 ### <a name="enter-a-review-definition"></a>Voer een beoordelings definitie in
 
 Bewerk het vak **hoofd tekst** van de aanvraag om de JSON-aanvraag in te voeren met de volgende velden:
 
-- **Meta gegevens**: Aangepaste sleutel-waardeparen die moeten worden geretourneerd naar uw call back-eind punt. Als de sleutel een korte code is die in het beoordelings [programma](https://contentmoderator.cognitive.microsoft.com)is gedefinieerd, wordt deze weer gegeven als een tag.
-- **Inhoud**: In het geval van afbeeldings-en video-inhoud is dit een URL-teken reeks die verwijst naar de inhoud. Voor tekst inhoud is dit de werkelijke tekst teken reeks.
-- **ContentId**: Een teken reeks met aangepaste ID. Deze teken reeks wordt door gegeven aan de API en geretourneerd door de retour aanroep. Het is handig om interne id's of meta gegevens te koppelen aan de resultaten van een toezicht taak.
-- **CallbackEndpoint**: Beschrijving De URL voor het ontvangen van Terugbel informatie wanneer de controle is voltooid.
+- **Meta gegevens**: aangepaste sleutel-waardeparen die moeten worden geretourneerd naar uw call back-eind punt. Als de sleutel een korte code is die in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com)is gedefinieerd, wordt deze weer gegeven als een tag.
+- **Inhoud**: in het geval van afbeeldings-en video-inhoud is dit een URL-teken reeks die verwijst naar de inhoud. Voor tekst inhoud is dit de werkelijke tekst teken reeks.
+- **ContentId**: een aangepaste ID-teken reeks. Deze teken reeks wordt door gegeven aan de API en geretourneerd door de retour aanroep. Het is handig om interne id's of meta gegevens te koppelen aan de resultaten van een toezicht taak.
+- **CallbackEndpoint**: (optioneel) de URL voor het ontvangen van Terugbel informatie wanneer de controle is voltooid.
 
 De standaard tekst van de aanvraag bevat voor beelden van de verschillende soorten beoordelingen die u kunt maken:
 
@@ -129,13 +129,13 @@ De standaard tekst van de aanvraag bevat voor beelden van de verschillende soort
 
 ### <a name="submit-your-request"></a>Uw aanvraag verzenden
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt in het vak **antwoord inhoud** een id voor de beoordeling weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** een id voor de beoordeling weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
 
 ![Beoordeling: inhoud van het dialoog venster voor het maken van een console-antwoord wordt weer gegeven](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Bekijk de nieuwe beoordeling
 
-Selecteer in het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com)de optie**afbeeldings**/**tekst**/**video** **bekijken** > (afhankelijk van de inhoud die u hebt gebruikt). De inhoud die u hebt geüpload, moet worden weer gegeven, gereed voor menselijke beoordeling.
+Selecteer in het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com) > **afbeelding** **controleren** /**tekst** /**video** (afhankelijk van de inhoud die u hebt gebruikt). De inhoud die u hebt geüpload, moet worden weer gegeven, gereed voor menselijke beoordeling.
 
 ![De afbeelding van een voetbal bekijken](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor 
 
 ![Beoordeling: maken van resultaten van console ophalen](images/test-drive-review-3.PNG)
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord status** en in het vak met de **antwoord inhoud** de details van de controle in JSON-indeling, zoals in het volgende:
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** `200 OK` en worden de details van de controle in JSON-indeling weer gegeven in het vak met de **reactie-inhoud** , zoals in het volgende voor beeld:
 
 ```json
 {  
@@ -186,9 +186,9 @@ Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord 
 
 Noteer de volgende velden in het antwoord:
 
-- **status**
-- **reviewerResultTags**: Dit wordt weer gegeven als labels hand matig zijn toegevoegd door het team voor menselijke beoordeling (weer gegeven het **CreatedBy** -veld).
-- **meta gegevens**: Hier ziet u de tags die in eerste instantie werden toegevoegd aan de beoordeling voordat het personeels team wijzigingen heeft aangebracht.
+- **hebben**
+- **reviewerResultTags**: dit wordt weer gegeven als labels hand matig zijn toegevoegd door het team voor menselijke beoordeling (weer gegeven het **CreatedBy** -veld).
+- **meta gegevens**: hier ziet u de tags die in eerste instantie werden toegevoegd aan de beoordeling voordat het personeels team wijzigingen heeft aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

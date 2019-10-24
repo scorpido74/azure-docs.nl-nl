@@ -3,19 +3,19 @@ title: Gematige installatie kopieën met de API-console-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik de afbeeldings toezicht-API in azure Content Moderator voor het initiëren van scan-en revisie werk stromen voor afbeeldings inhoud.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561254"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757210"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Gematige installatie kopieën van de API-console
 
@@ -54,7 +54,7 @@ Voordat u de API in de online console kunt testen, moet u uw abonnements sleutel
 
    ![Afbeelding uitproberen-test-en voorwaarde bepaling van de console evalueren](images/try-image-api-3.PNG)
 
-## <a name="face-detection"></a>Gezichtsdetectie
+## <a name="face-detection"></a>Gezichtsherkenning
 
 U kunt de afbeeldings toezicht-API gebruiken om gezichten te vinden in een afbeelding. Deze optie kan nuttig zijn wanneer u privacy-problemen hebt en u wilt voor komen dat een specifiek gezicht wordt gepost op uw platform. 
 

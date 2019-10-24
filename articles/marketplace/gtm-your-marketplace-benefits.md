@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962700"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752373"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -41,10 +41,10 @@ Gedetailleerde beschrijvingen van alle programma voordelen vindt u in het [Marke
 De stappen om aan de slag te gaan zijn eenvoudig:
 
 1. Publiceer een aanbieding in Microsoft AppSource of op Azure Marketplace.
-2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden info@company.com naar aliassen, zoals vaak verloren gaan.
+2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden naar aliassen, zoals info@company.com vaak verloren gaan.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket https://aka.ms/marketplacepublishersupport genereren op.
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupport een ondersteunings ticket genereren.
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 
@@ -60,7 +60,10 @@ Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplac
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-beloningen voor Transact-partners
 
-Wanneer u live met uw behandel bare aanbieding in azure Marketplace of Microsoft AppSource, kunt u toegang krijgen tot extra voor delen terwijl u uw gefactureerde verkoop transacties via de commerciële Marketplace verg root. 
+Wanneer u met uw transactable-aanbieding in azure Marketplace of Microsoft AppSource, kunt u toegang krijgen tot extra voor delen wanneer u uw gefactureerde verkoop transacties of stoelen die via de commerciële Marketplace worden verkocht, hebt uitgebreid. 
+
+>[!Note]
+>De drempel voor de verkochte seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2020.
 
 Deze voor delen zijn ontworpen om u te ondersteunen in marketing-, verkoop-en technische activiteiten en helpt u bij het verkrijgen van meer bezoekers, het ontvangen van meer leads en het converteren van meer bedrijven.
 
@@ -71,6 +74,8 @@ Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen eng
 ![Verkoop voordelen](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Technische voordelen](./media/marketplace-publishers-guide/technical-benefit.png)
+
+de drempel waarde voor de verkoop van \* seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2020.
 
 Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 

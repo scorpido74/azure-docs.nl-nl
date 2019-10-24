@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675173"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755519"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Overzicht van Azure App Service diagnostische gegevens
 
@@ -92,7 +92,7 @@ Diagnostische Hulpprogram Ma's bevatten meer geavanceerde diagnostische hulpprog
 
 ### <a name="proactive-cpu-monitoring"></a>Proactieve CPU-bewaking
 
-Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden. Zie voor meer informatie [problemen met uw CPU oplossen voordat deze optreden](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden.
+Proactieve CPU-bewaking biedt u een eenvoudige, proactieve manier om een actie uit te voeren wanneer uw app of een onderliggend proces voor uw app hoge CPU-bronnen verbruikt. U kunt uw eigen drempel waarden voor de CPU instellen om een hoog CPU-probleem tijdelijk op te lossen totdat de echte oorzaak van het onverwachte probleem wordt gevonden. Zie voor meer informatie [problemen met uw CPU oplossen voordat deze optreden](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proactieve CPU-bewaking](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
