@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
 description: Meer informatie over het maken van resource tokens en het gebruik ervan om toegang te krijgen tot de Graph-data base.
-author: olignat
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
-ms.author: olignat
-ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105021"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756071"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
 
@@ -95,7 +95,7 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Limiet
 
-Met één Gremlin-account kunt u een onbeperkt aantal tokens uitgeven. U kunt echter Maxi maal 100 tokens gelijktijdig gebruiken binnen één uur. Als een toepassing de token limiet per uur overschrijdt, wordt een verificatie aanvraag geweigerd en wordt het volgende fout bericht weer gegeven: De toegestane limiet voor de resource token van 100 is overschreden en kan gelijktijdig worden gebruikt. Het is niet mogelijk actieve verbindingen die gebruikmaken van specifieke tokens te sluiten om sleuven voor nieuwe tokens vrij te maken. De Azure Cosmos DB Gremlin data base-engine houdt tijdens het uur direct vóór de verificatie aanvraag unieke tokens bij.
+Met één Gremlin-account kunt u een onbeperkt aantal tokens uitgeven. U kunt echter Maxi maal 100 tokens gelijktijdig gebruiken binnen één uur. Als een toepassing de token limiet per uur overschrijdt, wordt een verificatie aanvraag geweigerd en wordt het volgende fout bericht weer gegeven: overschrijding van de toegestane limiet voor de resource token van 100 die gelijktijdig kan worden gebruikt. Het is niet mogelijk actieve verbindingen die gebruikmaken van specifieke tokens te sluiten om sleuven voor nieuwe tokens vrij te maken. De Azure Cosmos DB Gremlin data base-engine houdt tijdens het uur direct vóór de verificatie aanvraag unieke tokens bij.
 
 ## <a name="permission"></a>Machtiging
 
