@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 84753f2c3ab19a0cc9d72ef8ce5011dfc8e5a8da
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f3d5aaaf57387ae4ccefdfe8ec22435f03b2452f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121199"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757543"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Quickstart: Blobs uploaden, downloaden, en lijst met de Azure-portal
+# <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Snelstart: Blobs uploaden, downloaden en vermelden met Azure Portal
 
 In deze snelstartgids leert u hoe u [Azure Portal](https://portal.azure.com/) gebruikt om een container te maken in Azure Storage, en om blok-blobs in deze container te uploaden en te downloaden.
 
@@ -28,10 +28,10 @@ In deze snelstartgids leert u hoe u [Azure Portal](https://portal.azure.com/) ge
 Als u een container wilt maken in Azure Portal, volgt u deze stappen:
 
 1. Navigeer naar het nieuwe opslagaccount in Azure Portal.
-2. Schuif in het linkermenu voor het opslagaccount naar de sectie **Blob service**. Selecteer vervolgens **Blobs**.
+2. Schuif in het menu links voor het opslag account naar de sectie **BLOB service** en selecteer vervolgens **containers**.
 3. Selecteer de knop **+ Container**.
 4. Typ een naam voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de namen van containers en blobs.
-5. Stel het niveau van openbare toegang tot de container in. Het standaardniveau is **Persoonlijk (geen anonieme toegang)**.
+5. Stel het niveau van openbare toegang tot de container in. Het standaardniveau is **Persoonlijk (geen anonieme toegang)** .
 6. Selecteer **OK** om de container te maken.
 
     ![Schermopname van het maken van een container in Azure Portal](media/storage-quickstart-blobs-portal/create-container.png)
@@ -67,7 +67,7 @@ Ga als volgt te werk om de container te verwijderen:
 
 1. Navigeer in Azure Portal naar de lijst met containers in uw opslagaccount.
 2. Selecteer de container die u wilt verwijderen.
-3. Klik op de knop **Meer** (**...** ) en selecteer **Verwijderen**.
+3. Klik op de knop **Meer** ( **...** ) en selecteer **Verwijderen**.
 4. Bevestig dat u de container wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen

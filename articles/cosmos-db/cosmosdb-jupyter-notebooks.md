@@ -4,14 +4,14 @@ description: Meer informatie over hoe u de ingebouwde ondersteuning voor Jupyter
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
-author: rimman
-ms.author: rimman
-ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309555"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756965"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Azure Portal Jupyter Notebook-ervaring in systeem eigen integreert in azure Cosm
 
 Jupyter-notebooks werden oorspronkelijk ontwikkeld voor data Science-toepassingen die zijn geschreven in Python, R. Ze kunnen echter op verschillende manieren worden gebruikt voor verschillende soorten projecten, zoals:
 
-* ***Gegevens visualisaties:** Met Jupyter-notebooks kunt u gegevens visualiseren in de vorm van een gedeeld notitie blok dat een aantal gegevens sets als een afbeelding weergeeft. Met Jupyter notebook kunt u visualisaties ontwerpen, ze delen en interactieve wijzigingen in de gedeelde code en gegevensset toestaan.
+* ***gegevens visualisaties:** Jupyter-notebooks bieden u de mogelijkheid om gegevens in de vorm van een gedeeld notitie blok te visualiseren waarmee een aantal gegevens sets als een afbeelding wordt weer gegeven. Met Jupyter notebook kunt u visualisaties ontwerpen, ze delen en interactieve wijzigingen in de gedeelde code en gegevensset toestaan.
 
 * **Code delen:** Services zoals GitHub bieden manieren om code te delen, maar ze zijn grotendeels niet-interactief. Met een Jupyter-notebook kunt u code weer geven, deze uitvoeren en de resultaten rechtstreeks in het Azure Portal weer geven.
 
@@ -48,11 +48,11 @@ Jupyter-notebooks kunnen diverse soorten onderdelen bevatten, die zijn ingedeeld
 
 * **Code en uitvoer:** Jupyter-notebooks ondersteunen python-code. De resultaten van de uitgevoerde code worden direct na de code blokken weer gegeven en de code blokken kunnen in elke gewenste volg orde meerdere keren worden uitgevoerd.
 
-* **Visualisaties** Afbeeldingen en grafieken kunnen worden gegenereerd op basis van de code, met behulp van modules als matplotlib, plots of bokeh. Net als bij de uitvoer worden deze visualisaties weer gegeven naast de code die ze genereert.
+* **Visualisaties:** Afbeeldingen en grafieken kunnen worden gegenereerd op basis van de code, met behulp van modules als matplotlib, plots of bokeh. Net als bij de uitvoer worden deze visualisaties weer gegeven naast de code die ze genereert.
 
-* **Multi Media** Omdat Jupyter notebook is gebaseerd op de webtechnologie, kunnen alle typen multi media worden weer gegeven die op een webpagina worden ondersteund. U kunt deze toevoegen aan een notitie blok als HTML-elementen of u kunt deze via een programma genereren met `IPython.display` behulp van de module.
+* **Multi media:** Omdat Jupyter notebook is gebaseerd op de webtechnologie, kunnen alle typen multi media worden weer gegeven die op een webpagina worden ondersteund. U kunt deze toevoegen aan een notitie blok als HTML-elementen of u kunt deze via een programma genereren met behulp van de module `IPython.display`.
 
-* **Gegevens** Gegevens uit Azure Cosmos-containers en resultaten van de query's kunnen programmatisch in een Jupyter-notebook worden geïmporteerd. Bijvoorbeeld door code in het notitie blok op te nemen om de gegevens op te vragen met behulp van een van de Cosmos DB Api's of de systeem eigen ingebouwde Apache Spark.
+* **Gegevens:** Gegevens uit Azure Cosmos-containers en resultaten van de query's kunnen programmatisch in een Jupyter-notebook worden geïmporteerd. Bijvoorbeeld door code in het notitie blok op te nemen om de gegevens op te vragen met behulp van een van de Cosmos DB Api's of de systeem eigen ingebouwde Apache Spark.
 
 ## <a name="next-steps"></a>Volgende stappen
 

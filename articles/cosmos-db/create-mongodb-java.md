@@ -1,22 +1,22 @@
 ---
-title: 'Quickstart: Een web-app maken met behulp van de Azure API voor Mongo DB en Java SDK-Azure Cosmos DB'
+title: 'Snelstartgids: een web-app maken met behulp van de Azure API voor Mongo DB en Java SDK-Azure Cosmos DB'
 description: Biedt een voorbeeld van Java-code dat u kunt gebruiken om met de API van Azure Cosmos DB voor MongoDB verbinding te maken met gegevens en er query's op uit te voeren.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: bfded407790d01d65feec0b6e069c23739064e97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965393"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756925"
 ---
-# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quickstart: Een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quick Start: een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

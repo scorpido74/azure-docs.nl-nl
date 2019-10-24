@@ -3,15 +3,15 @@ title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe de Azure resource Graph-service complexe query's van resources op schaal mogelijk maakt.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/06/2019
+ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976821"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755875"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Overzicht van de service Azure resource Graph
 
@@ -25,7 +25,7 @@ Azure resource Graph is een service in azure die is ontworpen om Azure Resource 
 In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 > [!NOTE]
-> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie ' alle resources ' en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview)van Azure Policy 
+> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie voor alle resources en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview) van de Azure Policy 
 > _Visual diff_. Het is ontworpen om klanten te helpen grootschalige omgevingen te beheren.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
@@ -34,7 +34,7 @@ In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 Azure Resource Manager ondersteunt momenteel query's over basis resource velden, met name resource naam, ID, type, resource groep, abonnement en locatie. Resource Manager biedt ook voorzieningen voor het aanroepen van afzonderlijke resource providers voor gedetailleerde eigenschappen per resource per keer.
 
-Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/complete-mode-deletion.md) . Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
+Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/complete-mode-deletion.md) . Meer resource typen vindt u in de gerelateerde [resource grafiek tabellen](./concepts/query-language.md#resource-graph-tables). Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
 
 Met Azure resource Graph kunt u het volgende doen:
 
@@ -45,6 +45,9 @@ Met Azure resource Graph kunt u het volgende doen:
 
 Wanneer een Azure-resource wordt bijgewerkt, wordt de resource grafiek gewaarschuwd door de Resource Manager van de wijziging.
 De resource grafiek werkt vervolgens de data base bij. Resource grafiek is ook een regel matige _volledige scan_. Deze scan zorgt ervoor dat de gegevens van de resource grafiek actueel zijn als er gemiste meldingen of wanneer een bron buiten Resource Manager wordt bijgewerkt.
+
+> [!NOTE]
+> Resource grafiek maakt gebruik van een `GET` naar de laatste niet-preview-API van elke resource provider voor het verzamelen van eigenschappen en waarden. Als gevolg hiervan is de verwachte eigenschap mogelijk niet beschikbaar. In sommige gevallen is de gebruikte API-versie onderdrukt om meer actuele of veelgebruikte eigenschappen te bieden in de resultaten. Zie de [API-versie weer geven voor elk](./samples/advanced.md#apiversion) voor beeld van een resource type voor een volledige lijst in uw omgeving.
 
 ## <a name="the-query-language"></a>De querytaal
 
@@ -65,15 +68,15 @@ Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschi
 Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de query resultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als bij het aanroepen van [resource groepen-lijst](/rest/api/resources/resourcegroups/list) \- u resource groepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn.
 Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
 
-## <a name="throttling"></a>Beperken
+## <a name="throttling"></a>Beperking
 
 Als gratis service worden query's naar resource grafiek beperkt om de beste ervaring en reactie tijd te bieden voor alle klanten. Als uw organisatie de resource Graph API wil gebruiken voor grootschalige en frequente query's, gebruikt u de feedback van de portal op de pagina van de [resource Graph-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
 Geef uw zakelijke case op en schakel het selectie vakje ' micro soft kan uw feedback per e-mail verzenden ' in om contact met u op te nemen.
 
 Resource grafiek beperkt query's op het niveau van de gebruiker. Het service-antwoord bevat de volgende HTTP-headers:
 
-- `x-ms-user-quota-remaining` (int): Het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
-- `x-ms-user-quota-resets-after` (UU: mm: SS): De tijds duur totdat het quotum verbruik van een gebruiker opnieuw wordt ingesteld
+- `x-ms-user-quota-remaining` (int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
+- `x-ms-user-quota-resets-after` (UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld
 
 Zie de [richt lijnen voor beperkte aanvragen](./concepts/guidance-for-throttled-requests.md)voor meer informatie.
 
@@ -84,7 +87,7 @@ Met Azure resource Graph Explorer, onderdeel van Azure Portal, kunt u resource G
 Resource grafiek ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en meer. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van resource grafiek met:
 
 - [Azure Portal en resource grafiek Verkenner](first-query-portal.md) 
-- [Azure-CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Volgende stappen
