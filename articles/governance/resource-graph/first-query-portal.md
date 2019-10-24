@@ -3,15 +3,15 @@ title: Voer uw eerste query uit met Azure resource Graph Explorer
 description: Dit artikel begeleidt u stapsgewijs door de stappen voor het uitvoeren van uw eerste query vanuit Azure Portal met behulp van Azure resource Graph Explorer.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387609"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752150"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer
 
@@ -45,7 +45,10 @@ Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat er
 
 ### <a name="schema-browser"></a>Schema browser
 
-De schema browser bevindt zich in het linkerdeel venster van de resource Graph Explorer. Deze lijst met resources bevat alle _resource typen_ van Azure-resources die beide worden ondersteund door Azure resource Graph en die zich bevinden in een Tenant waartoe u toegang hebt. Als u een resource type of subeigenschappen uitbreidt, worden onderliggende eigenschappen weer gegeven die kunnen worden gebruikt om een resource grafiek query te maken. Als u het resource type selecteert, wordt `where type =="<resource type>"` geplaatst in het query venster. Als u een van de onderliggende eigenschappen selecteert, wordt `where <propertyName> == "INSERT_VALUE_HERE"` toegevoegd aan het query-venster. De schema browser is een uitstekende manier om eigenschappen te ontdekken voor gebruik in query's. Zorg ervoor dat u _Insert @ no__t-1VALUE @ no__t-2HERE_ vervangt door uw eigen waarde, door de query aan te passen met voor waarden, Opera tors en functies om uw beoogde resultaten te behalen.
+De schema browser bevindt zich in het linkerdeel venster van de resource Graph Explorer. Deze lijst met resources bevat alle _resource typen_ van Azure-resources die beide worden ondersteund door Azure resource Graph en die zich bevinden in een Tenant waartoe u toegang hebt. Als u een resource type of subeigenschappen uitbreidt, worden onderliggende eigenschappen weer gegeven die kunnen worden gebruikt om een resource grafiek query te maken.
+
+Als u het resource type selecteert, wordt `where type =="<resource type>"` geplaatst in het query venster. Als u een van de onderliggende eigenschappen selecteert, wordt `where <propertyName> == "INSERT_VALUE_HERE"` toegevoegd aan het query-vak.
+De schema browser is een uitstekende manier om eigenschappen te ontdekken voor gebruik in query's. Vervang _\_VALUE invoegen \_HERE_ met uw eigen waarde, pas de query aan met voor waarden, Opera tors en functies om uw beoogde resultaten te behalen.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Een grafiek maken op basis van de resource grafiek query
 
@@ -88,11 +91,11 @@ Als u voor beelden van resource Graph-query's en hoe resource Graph Explorer kan
 
 - [Resource grafiek Verkenner-voorbeeld dashboard #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Example-afbeelding voor voorbeeld dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [afbeelding ![Example voor voorbeeld dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Resource grafiek Verkenner-voorbeeld Dashboard #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Example-afbeelding voor voorbeeld Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [afbeelding ![Example voor voorbeeld Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Het aantal en de grafieken in het bovenstaande voor beeld van Dashboard afbeeldingen zijn afhankelijk van uw Azure-omgeving.
