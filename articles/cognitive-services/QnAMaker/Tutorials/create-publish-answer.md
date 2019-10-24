@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Maken, publiceren, beantwoorden QnA Maker'
+title: 'Zelf studie: maken, publiceren, beantwoorden QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: In deze REST-zelfstudie gaat u via een programma een kennisdatabase maken en publiceren, en vervolgens een vraag uit de knowledge base beantwoorden.
 services: cognitive-services
@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d13bce3c1cafd20b311aa882d3a32101c1833ba5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802827"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555505"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Zelfstudie: C# gebruiken, een knowledge base maken en vervolgens een vraag beantwoorden
 
 In deze zelfstudie gaat u via een programma een KB (knowledge base) maken en publiceren, en vervolgens een klantvraag beantwoorden met de knowledge base. 
 
 > [!div class="checklist"]
-> * Een kennisdatabase maken 
+> * Een knowledge base maken 
 > * Status voor maken controleren
 > * De knowledge base trainen en publiceren
 > * Eindpuntgegevens ophalen
@@ -156,9 +156,9 @@ In de volgende tabel wordt getoond hoe de gegevens worden gebruikt om de URI sam
 
 Het _primaire eindpunt_ wordt doorgegeven als header om de aanvraag te verifiëren voor het genereren van een antwoord:
 
-|Headernaam|Koptekstwaarde|
+|Headernaam|Headerwaarde|
 |--|--|
-|Authorization|`Endpoint` + **primaire eindpunt**<br>Voorbeeld: `Endpoint xxxxxxx`<br>Let op de ruimte tussen de tekst van `Endpoint` en de waarde van het primaire eindpunt. 
+|Autorisatie|`Endpoint` + **primaire eindpunt**<br>Voorbeeld: `Endpoint xxxxxxx`<br>Let op de ruimte tussen de tekst van `Endpoint` en de waarde van het primaire eindpunt. 
 
 De juiste JSON moet worden doorgegeven via de hoofdtekst van de aanvraag:
 
@@ -169,7 +169,7 @@ De juiste JSON moet worden doorgegeven via de hoofdtekst van de aanvraag:
 ```
 
 ## <a name="get-kb-details"></a>KB-details ophalen
-Voeg de volgende methode toe om de KB-details op te halen. Deze details bevatten de resource naam van de KB, ook wel `hostName` in de volgende JSON. De resource naam is de naam van de QnA Maker resource die u hebt ingevoerd bij het maken van de QnA Maker resource. 
+Voeg de volgende methode toe om de KB-details op te halen. Deze details bevatten de resource naam van de KB, die `hostName` in de volgende JSON wordt genoemd. De resource naam is de naam van de QnA Maker resource die u hebt ingevoerd bij het maken van de QnA Maker resource. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 
@@ -215,6 +215,13 @@ Voeg de volgende methode toe om een antwoord te krijgen op de vraag van de gebru
 
 [!code-csharp[Get Answer](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=290-315 "Get Answer")]
 
+Als u het antwoord op alleen vragen wilt beperken, voegt u de eigenschap `[rankerType](Learn more about [rankerType](../concepts/best-practices.md#choosing-ranker-type).
+)` toe aan de hoofd tekst, bijvoorbeeld: 
+
+```csharp
+request.Content = new StringContent("{question:'" + question + "', rankerType:'QuestionOnly'}", Encoding.UTF8, "application/json"); 
+```
+
 Met deze API-aanroep wordt een JSON-antwoord geretourneerd: 
 
 ```JSON
@@ -248,4 +255,4 @@ Zodra de knowledge base is gemaakt, kunt u deze weergeven in de QnA Maker-portal
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Naslaginformatie over REST-API voor QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
