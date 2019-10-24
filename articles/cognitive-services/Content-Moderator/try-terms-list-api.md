@@ -3,19 +3,19 @@ title: Gemiddelde tekst met aangepaste termen lijsten-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik de lijst beheer-API om aangepaste lijsten met termen te maken voor gebruik met de API voor tekst toezicht.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564395"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755269"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Gemiddeld met aangepaste termen lijsten in de API-console
 

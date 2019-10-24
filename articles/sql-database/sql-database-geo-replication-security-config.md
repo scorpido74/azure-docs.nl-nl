@@ -1,6 +1,6 @@
 ---
-title: Configureren van Azure SQL Database-beveiliging voor herstel na noodgevallen | Microsoft Docs
-description: Meer informatie over de beveiligingsoverwegingen voor het configureren en beheren van de beveiliging na het terugzetten van een database of een failover naar een secundaire server.
+title: Azure SQL Database beveiliging configureren voor nood herstel | Microsoft Docs
+description: Meer informatie over de beveiligings overwegingen voor het configureren en beheren van beveiliging na het herstellen van een Data Base of een failover naar een secundaire server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,95 +10,94 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 8a2a2fffa9ed3a4dae3c0768291b7585be4bfc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690838"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568129"
 ---
-# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Configureren en beheren van Azure SQL Database-beveiliging voor geografisch herstel en failover
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database beveiliging configureren en beheren voor geo-herstel of failover
 
-In dit artikel beschrijft de verificatievereisten voor het configureren en beheren van [actieve geo-replicatie](sql-database-active-geo-replication.md) en [automatische failovergroepen](sql-database-auto-failover-group.md). Het biedt ook de stappen die nodig zijn voor het instellen van de gebruikerstoegang tot de secundaire database. Ten slotte wordt ook beschreven hoe u nadat u hebt gebruikt voor toegang tot de herstelde database [geo-herstel](sql-database-recovery-using-backups.md#geo-restore). Zie voor meer informatie over opties voor Systeemherstel [overzicht voor zakelijke continuïteit](sql-database-business-continuity.md).
+In dit artikel worden de verificatie vereisten beschreven voor het configureren en beheren van [actieve geo-replicatie](sql-database-active-geo-replication.md) en [groepen met automatische failover](sql-database-auto-failover-group.md). Het bevat ook de vereiste stappen voor het instellen van gebruikers toegang tot de secundaire data base. Ten slotte wordt ook beschreven hoe u toegang tot de herstelde data base inschakelt nadat u [geo-herstel](sql-database-recovery-using-backups.md#geo-restore)hebt gebruikt. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md)voor meer informatie over herstel opties.
 
-## <a name="disaster-recovery-with-contained-users"></a>Herstel na noodgeval met ingesloten gebruikers
+## <a name="disaster-recovery-with-contained-users"></a>Herstel na nood geval met Inge sloten gebruikers
 
-In tegenstelling tot traditionele gebruikers, die moeten worden toegewezen aan aanmeldingen in de database master, een contained-gebruiker volledig beheerd door de database zelf. Dit heeft twee voordelen. De gebruikers kunnen blijven verbinding maken met de nieuwe primaire database of de database hersteld met behulp van geo-herstel zonder extra configuratie, omdat de database de gebruikers beheert in de noodherstelscenario. Er zijn ook potentiële schaalbaarheids- en prestatievoordelen van deze configuratie vanuit het oogpunt van de aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](https://msdn.microsoft.com/library/ff929188.aspx) voor meer informatie.
+In tegens telling tot traditionele gebruikers, die moeten worden toegewezen aan aanmeldingen in de hoofd database, wordt een Inge sloten gebruiker volledig beheerd door de data base zelf. Dit heeft twee voor delen. In het scenario voor herstel na nood gevallen kunnen de gebruikers blijven verbinding maken met de nieuwe primaire data base of de data base die is hersteld met behulp van geo-Restore zonder aanvullende configuratie, omdat de gebruikers door de Data Base worden beheerd. Er zijn ook mogelijke mogelijkheden voor schaal baarheid en prestaties van deze configuratie vanuit een aanmeldings perspectief. Zie [Ingesloten databasegebruikers: een draagbare database maken](https://msdn.microsoft.com/library/ff929188.aspx) voor meer informatie.
 
-De belangrijkste afweging is dat het proces van het herstel na noodgevallen op schaal beheren moeilijker. Wanneer er meerdere databases met dezelfde aanmeldingsnaam gebruiken, onderhouden van de referenties in meerdere databases met behulp van ingesloten gebruikers mogelijk negatief maken de voordelen van ingesloten gebruikers. Bijvoorbeeld: het wachtwoordbeleid van de rotatie heeft wijzigingen consequent worden aangebracht in meerdere databases in plaats van het wijzigen van het wachtwoord voor de aanmelding eenmaal in de database master. Om deze reden, hebt u meerdere databases die gebruikmaken van dezelfde gebruikersnaam en wachtwoord, wordt met behulp van ingesloten gebruikers niet aanbevolen.
+De belangrijkste afweging is dat het beheer van herstel na nood gevallen een lastigere uitbreider is. Wanneer u meerdere data bases hebt die dezelfde aanmelding gebruiken, kan het onderhouden van de referenties met Inge sloten gebruikers in meerdere data bases leiden tot de voor delen van opgenomen gebruikers. Het beleid voor het roteren van wacht woorden vereist bijvoorbeeld dat wijzigingen consistent worden aangebracht in meerdere data bases in plaats van het wacht woord voor de aanmelding eenmaal in de hoofd database te wijzigen. Als u meerdere data bases hebt die dezelfde gebruikers naam en hetzelfde wacht woord gebruiken, wordt het gebruik van Inge sloten gebruikers niet aanbevolen.
 
-## <a name="how-to-configure-logins-and-users"></a>Het configureren van aanmeldingen en gebruikers
+## <a name="how-to-configure-logins-and-users"></a>Aanmeldingen en gebruikers configureren
 
-Als u aanmeldingen en gebruikers (in plaats van ingesloten gebruikers), moet u extra stappen om ervoor te zorgen dat de dezelfde aanmeldingen aanwezig zijn in de database master uitvoeren. De volgende secties beschrijven de stappen die betrokken zijn en aanvullende overwegingen.
+Als u aanmeldingen en gebruikers (in plaats van opgenomen gebruikers) gebruikt, moet u extra stappen uitvoeren om ervoor te zorgen dat dezelfde aanmeldingen aanwezig zijn in de data base Master. In de volgende secties vindt u een overzicht van de stappen en aanvullende overwegingen.
 
   >[!NOTE]
-  > Het is ook mogelijk met gebruik van Azure Active Directory (AAD)-aanmeldingen voor het beheren van uw databases. Zie voor meer informatie, [Azure SQL-aanmeldingen en gebruikers](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+  > Het is ook mogelijk om de aanmeldingen van Azure Active Directory (AAD) te gebruiken voor het beheren van uw data bases. Zie [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)-aanmeldingen en-gebruikers voor meer informatie.
 
-### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Gebruikerstoegang tot een secundaire of herstelde database instellen
+### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Gebruikers toegang instellen voor een secundaire of herstelde data base
 
-In de volgorde voor de secundaire database kan worden gebruikt als een secundaire database alleen-lezen en om te controleren of de juiste toegang tot de nieuwe primaire database of de database hersteld met behulp van geo-restore, moet de database master van de doelserver de juiste beveiliging hebben. configuratie aanwezig zijn vóór het herstel.
+De secundaire data base kan alleen worden gebruikt als een secundaire data base met het kenmerk alleen-lezen, en om ervoor te zorgen dat de data base van de doel server met behulp van geo-Restore goed toegankelijk is voor de nieuwe primaire data base. de configuratie is aanwezig vóór het herstel.
 
 De specifieke machtigingen voor elke stap worden verderop in dit onderwerp beschreven.
 
-Voorbereiden van de gebruikerstoegang tot een secundaire geo-replicatie moet worden uitgevoerd als onderdeel configureert van geo-replicatie. Voorbereiden van de gebruikerstoegang tot de databases geografisch herstellen moet worden uitgevoerd op elk gewenst moment wanneer de oorspronkelijke server online is (bijvoorbeeld als onderdeel van de DR-oefening).
+Het voorbereiden van de gebruikers toegang tot een secundaire geo-replicatie moet worden uitgevoerd als onderdeel van het configureren van geo-replicatie. Het voorbereiden van de gebruikers toegang tot de geo-teruggezette data bases moet op elk gewenst moment worden uitgevoerd wanneer de oorspronkelijke server online is (bijvoorbeeld als onderdeel van de DR-analyse).
 
 > [!NOTE]
-> Als u een failover of geo-herstel naar een server waarop geen correct geconfigureerde aanmeldingen, toegang tot deze beperkt tot het serverbeheerdersaccount worden.
+> Als u een failover wilt uitvoeren of geo-herstellen naar een server die niet de juiste geconfigureerde aanmeldingen heeft, wordt de toegang tot deze beperkt tot het account van de server beheerder.
 
-Instellen van aanmeldingen op de doelserver bestaat uit drie stappen worden hieronder beschreven:
+Het instellen van aanmeldingen op de doel server omvat drie stappen die hieronder worden beschreven:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Aanmeldingen met toegang tot de primaire database te bepalen
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Aanmeldingen met toegang tot de primaire data base bepalen
 
-De eerste stap van het proces is om te bepalen welke aanmeldingen op de doelserver moeten worden gedupliceerd. Dit wordt bereikt met een combinatie van een SELECT-instructies, één in de logische hoofddatabase op de bronserver en één in de primaire database zelf.
+De eerste stap van het proces is om te bepalen welke aanmeldingen moeten worden gedupliceerd op de doel server. Dit wordt bereikt met een paar SELECT-instructies, een in de logische hoofd database op de bron server en een van de primaire data base zelf.
 
-Alleen de serverbeheerder of een lid van de **LoginManager** serverfunctie kunt bepalen de aanmeldingen op de bronserver met de volgende SELECT-instructie.
+Alleen de server beheerder of een lid van de **rol Login Manager** -serverrol kan de aanmeldingen op de bron server bepalen met de volgende SELECT-instructie.
 
     SELECT [name], [sid]
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Alleen een lid van de databaserol db_owner, dbo-gebruiker of serverbeheerder, kan alle van de database-gebruiker-principals in de primaire database bepalen.
+Alleen een lid van de databaserol db_owner, de dbo-gebruiker of de server beheerder kan alle data base-gebruikers principals in de primaire data base bepalen.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. De beveiligings-id vinden voor de aanmeldingen in stap 1 hebt geïdentificeerd
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zoek de SID voor de aanmeldingen die u in stap 1 hebt geïdentificeerd
 
-Door het vergelijken van de uitvoer van de query's uit de vorige sectie en die overeenkomt met de SID's worden gemaakt, kunt u de aanmelding op serverniveau toewijzen aan een gebruiker van database. Aanmeldingen die een databasegebruiker met een overeenkomende SID hebben hebben gebruikerstoegang tot deze database als die databasegebruiker principal.
+Door de uitvoer van de query's uit de vorige sectie te vergelijken en te voldoen aan de Sid's, kunt u de aanmelding van de server toewijzen aan de database gebruiker. Aanmeldingen met een database gebruiker met een overeenkomende SID hebben gebruikers toegang tot die data base als de gebruikers-principal van de data base.
 
-De volgende query kan worden gebruikt om alle van de gebruikersprincipals en hun SID's in een database te bekijken. Alleen een lid van de rol of de server-beheerder voor de database voor db_owner kan deze query kunt uitvoeren.
+De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's in een-Data Base weer te geven. Deze query kan alleen worden uitgevoerd door een lid van de databaserol db_owner of de server beheerder.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> De **INFORMATION_SCHEMA** en **sys** gebruikers hebben *NULL* SID's, en de **Gast** SID is **0x00**. De **dbo** SID kan beginnen met *0x01060000000001648000000000048454*, als de maker van de database de serverbeheerder in plaats van een lid van is **DbManager**.
+> De **INFORMATION_SCHEMA** -en **sys** -gebruikers hebben *Null* -sid's en de **gast** -sid is **0x00**. De **dbo** -sid kan beginnen met *0x01060000000001648000000000048454*, als de maker van de data base de server beheerder is in plaats van een lid van **DbManager**.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. De aanmeldingen maken op de doelserver
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. De aanmeldingen maken op de doel server
 
-De laatste stap is het gaat u naar de doelserver of servers en de aanmeldingen met de juiste beveiligings-id's te genereren. De syntaxis van de basic is als volgt.
+De laatste stap is om naar de doel server of servers te gaan en de aanmeldingen te genereren met de juiste Sid's. De basis syntaxis is als volgt.
 
     CREATE LOGIN [<login name>]
     WITH PASSWORD = <login password>,
     SID = <desired login SID>
 
 > [!NOTE]
-> Als u wilt dat gebruikerstoegang verlenen tot de secundaire server, maar niet naar de primaire, u dat doen kunt door het wijzigen van de gebruikersaanmelding op de primaire server met behulp van de volgende syntaxis.
+> Als u gebruikers toegang wilt verlenen tot de secundaire, maar niet tot de primaire, kunt u dit doen door de gebruikers aanmelding op de primaire server te wijzigen met de volgende syntaxis.
 >
 > ```sql
 > ALTER LOGIN <login name> DISABLE
 > ```
 >
-> SCHAKEL verandert niet het wachtwoord, zodat u deze altijd inschakelen kunt indien nodig.
+> Als u uitschakelen inschakelt, wordt het wacht woord niet gewijzigd, zodat u het altijd kunt inschakelen als dat nodig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het beheren van toegang tot databases en aanmeldingen [SQL Database-beveiliging: Beheren van toegang en meld u aan de databasebeveiliging](sql-database-manage-logins.md).
-* Zie voor meer informatie over ingesloten databasegebruikers [ingesloten databasegebruikers - waardoor Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx).
-* Zie voor meer informatie over actieve geo-replicatie, [actieve geo-replicatie](sql-database-active-geo-replication.md).
-* Zie voor meer informatie over automatische failover-groepen, [automatische failovergroepen](sql-database-auto-failover-group.md).
-* Zie voor meer informatie over het gebruik van geo-herstel [geo-herstel](sql-database-recovery-using-backups.md#geo-restore)
+* Zie [SQL database Security: voor meer informatie over het beheren van toegang tot data bases en aanmeldingen. Toegang tot data bases en](sql-database-manage-logins.md)aanmeldings beveiliging beheren.
+* Zie [Inge sloten database gebruikers-uw data base draagbaar maken](https://msdn.microsoft.com/library/ff929188.aspx)voor meer informatie over Inge sloten database gebruikers.
+* Zie [actieve geo-replicatie](sql-database-active-geo-replication.md)voor meer informatie over actieve geo-replicatie.
+* Zie [groepen met automatische failover](sql-database-auto-failover-group.md)voor meer informatie over groepen met automatische failover.
+* Zie [geo-Restore](sql-database-recovery-using-backups.md#geo-restore) voor meer informatie over het gebruik van geo-Restore

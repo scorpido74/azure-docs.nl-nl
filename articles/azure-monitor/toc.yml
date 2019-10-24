@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: Gegevens analyseren met logboekquery's
                   href: insights/vminsights-log-search.md
+                - name: Dependency Agent upgraden
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: Bewaking uitschakelen
                   href: insights/vminsights-optout.md
             - name: Oplossing voor capaciteit en prestaties

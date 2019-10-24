@@ -1,6 +1,6 @@
 ---
-title: StorSimple Device Manager-service implementeren | Microsoft Docs
-description: Uitleg over het maken en verwijderen van de StorSimple Device Manager-service in Azure portal en wordt beschreven hoe u voor het beheren van de serviceregistratiesleutel.
+title: StorSimple Apparaatbeheer-service implementeren | Microsoft Docs
+description: Hierin wordt uitgelegd hoe u de StorSimple-Apparaatbeheer-service in de Azure Portal maakt en verwijdert, en wordt beschreven hoe u de service registratie sleutel beheert.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -12,114 +12,117 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2016
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f6e5b606caa661429a3c4d4a53e2021d57730aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116944"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516680"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>De StorSimple Device Manager-service voor StorSimple Virtual Array implementeren
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service voor de virtuele StorSimple-matrix implementeren
+
 ## <a name="overview"></a>Overzicht
 
-De StorSimple Device Manager-service wordt uitgevoerd in Microsoft Azure en verbindt met meerdere StorSimple-apparaten. Nadat u de service hebt gemaakt, kunt u deze kunt gebruiken voor het beheren van de apparaten uit de Microsoft Azure portal wordt uitgevoerd in een browser. Hiermee kunt u voor het bewaken van alle apparaten die zijn verbonden met de StorSimple Device Manager-service vanaf een centrale locatie, waardoor de administratieve overhead worden geminimaliseerd.
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-De algemene taken met betrekking tot een StorSimple Device Manager-service zijn:
+De StorSimple-Apparaatbeheer-service wordt uitgevoerd in Microsoft Azure en er wordt verbinding gemaakt met meerdere StorSimple-apparaten. Nadat u de service hebt gemaakt, kunt u deze gebruiken om de apparaten te beheren vanuit de Microsoft Azure-portal die in een browser wordt uitgevoerd. Hiermee kunt u alle apparaten bewaken die zijn verbonden met de StorSimple-Apparaatbeheer service vanaf één centrale locatie, waardoor de administratieve belasting wordt geminimaliseerd.
+
+De algemene taken die betrekking hebben op een StorSimple-Apparaatbeheer service zijn:
 
 * Een service maken
 * Een service verwijderen
 * De serviceregistratiesleutel ophalen
-* De serviceregistratiesleutel opnieuw genereren
+* De service registratie sleutel opnieuw genereren
 
-Deze zelfstudie wordt beschreven hoe u elk van de voorgaande taken uitvoert. De informatie in dit artikel is alleen van toepassing op virtuele StorSimple-matrices. Voor meer informatie over de StorSimple 8000-serie, gaat u naar [implementeren van een StorSimple Manager-service](storsimple-manage-service.md).
+In deze zelf studie wordt beschreven hoe u elk van de voor gaande taken uitvoert. De informatie in dit artikel is alleen van toepassing op virtuele StorSimple-matrices. Ga voor meer informatie over de StorSimple 8000-serie naar [Deploy a StorSimple Manager service](storsimple-manage-service.md).
 
 ## <a name="create-a-service"></a>Een service maken
 
-Voor het maken van een service, moet u beschikken over:
+Als u een service wilt maken, moet u het volgende hebben:
 
 * Een abonnement met een Enterprise Agreement
-* Een actieve Microsoft Azure storage-account
-* De informatie die wordt gebruikt voor toegangsbeheer
+* Een actief Microsoft Azure Storage-account
+* De facturerings gegevens die worden gebruikt voor toegangs beheer
 
-U kunt ook kiezen voor het genereren van een storage-account wanneer u de service maakt.
+U kunt er ook voor kiezen om een opslag account te genereren wanneer u de service maakt.
 
-Een enkele service kunt meerdere apparaten beheren. Een apparaat kan niet echter meerdere services omvatten. Een grote onderneming kan meerdere exemplaren van de service te werken met verschillende abonnementen, organisaties, of zelfs implementatie locaties hebben.
+Eén service kan meerdere apparaten beheren. Een apparaat kan echter niet meerdere services omvatten. Een grote onderneming kan meerdere service-exemplaren gebruiken om te werken met verschillende abonnementen, organisaties of zelfs implementatie locaties.
 
 > [!NOTE]
-> U moet afzonderlijke exemplaren van StorSimple Device Manager-service voor het beheer van apparaten uit de StorSimple 8000-serie en virtuele StorSimple-matrices.
+> U hebt afzonderlijke instanties van StorSimple Apparaatbeheer service nodig voor het beheren van StorSimple 8000 Series-apparaten en StorSimple virtuele matrices.
 
 
-Voer de volgende stappen uit voor het maken van een service.
+Voer de volgende stappen uit om een service te maken.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 ## <a name="delete-a-service"></a>Een service verwijderen
 
-Voordat u een service verwijdert, controleert u dat er zijn geen verbonden apparaten worden gebruikt. Als de service gebruikt wordt, schakelt u de verbonden apparaten. De bewerking uitschakelen wordt de verbinding tussen het apparaat en de service-Server, maar behouden de apparaatgegevens in de cloud.
+Voordat u een service verwijdert, moet u ervoor zorgen dat er geen aangesloten apparaten worden gebruikt. Als de service wordt gebruikt, deactiveert u de verbonden apparaten. Met de bewerking deactiveren wordt de verbinding tussen het apparaat en de service verbroken, maar blijven de apparaatgegevens in de Cloud behouden.
 
 > [!IMPORTANT]
-> Nadat een service is verwijderd, de bewerking kan niet ongedaan worden gemaakt. Een apparaat dat is met de service moet worden de fabrieksinstellingen herstellen voordat deze kan worden gebruikt met een andere service. In dit scenario wordt gaan de lokale gegevens op het apparaat, evenals de configuratie, verloren.
+> De bewerking kan niet ongedaan worden gemaakt nadat een service is verwijderd. Elk apparaat dat de service gebruikt, moet de fabrieks instellingen herstellen voordat het kan worden gebruikt met een andere service. In dit scenario gaan de lokale gegevens op het apparaat, evenals de configuratie, verloren.
  
 
-Voer de volgende stappen uit als een service wilt verwijderen.
+Voer de volgende stappen uit om een service te verwijderen.
 
-#### <a name="to-delete-a-service"></a>Verwijderen van een service
+#### <a name="to-delete-a-service"></a>Een service verwijderen
 
-1. Ga naar **Alle resources**. Zoeken naar uw StorSimple Device Manager-service. Selecteer de service die u wilt verwijderen.
+1. Ga naar **Alle resources**. Zoek naar uw StorSimple-Apparaatbeheer service. Selecteer de service die u wilt verwijderen.
    
-    ![Selecteer service verwijderen](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Ga naar uw servicedashboard om te controleren of er zijn geen apparaten die zijn verbonden met de service. Als er geen apparaten geregistreerd bij deze service, ziet u ook een banner weergegeven aan het effect. Klik op **Verwijderen**.
+    ![Selecteer de service die u wilt verwijderen](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
+2. Ga naar uw service dashboard om te controleren of er geen apparaten zijn verbonden met de service. Als er geen apparaten zijn geregistreerd bij deze service, wordt er ook een banner bericht weer gegeven voor het effect. Klik op **Verwijderen**.
    
     ![Service verwijderen](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
-3. Wanneer u hierom wordt gevraagd om bevestiging, klikt u op **Ja** in het bevestigingsbericht. 
+3. Wanneer u om bevestiging wordt gevraagd, klikt u op **Ja** in het bevestigings bericht. 
    
-    ![Service verwijderen bevestigen](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
-4. Het duurt een paar minuten voor de service moet worden verwijderd. Nadat de service is verwijderd, krijgt u bericht.
+    ![Verwijderen van service bevestigen](./media/storsimple-virtual-array-manage-service/deleteservice4.png)
+4. Het kan enkele minuten duren voordat de service is verwijderd. Zodra de service is verwijderd, wordt u hiervan op de hoogte gebracht.
    
-    ![Geslaagde verwijdering](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
+    ![Het verwijderen van de service is voltooid](./media/storsimple-virtual-array-manage-service/deleteservice6.png)
 
-De lijst met services wordt vernieuwd.
+De lijst met Services wordt vernieuwd.
 
- ![Bijgewerkte lijst met services](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
+ ![Bijgewerkte lijst met Services](./media/storsimple-virtual-array-manage-service/deleteservice7.png)
 
 ## <a name="get-the-service-registration-key"></a>De serviceregistratiesleutel ophalen
-Nadat u een service hebt gemaakt, moet u uw StorSimple-apparaat registreren bij de service. Voor het registreren van uw eerste StorSimple-apparaat, moet u de serviceregistratiesleutel. Om extra apparaten registreren met een bestaande StorSimple-service, moet u de registratiesleutel zowel de versleutelingssleutel voor servicegegevens (die wordt gegenereerd op het eerste apparaat tijdens de registratie). Zie voor meer informatie over de versleutelingssleutel voor servicegegevens [StorSimple security](storsimple-security.md). U kunt de registratiesleutel krijgen door de toegang tot de **sleutels** blade voor uw service.
+Nadat u een service hebt gemaakt, moet u uw StorSimple-apparaat registreren bij de service. Als u uw eerste StorSimple-apparaat wilt registreren, hebt u de service registratie sleutel nodig. Als u extra apparaten wilt registreren met een bestaande StorSimple-service, hebt u zowel de registratie sleutel als de versleutelings sleutel voor service gegevens nodig (die tijdens de registratie wordt gegenereerd op het eerste apparaat). Zie [StorSimple Security](storsimple-security.md)(Engelstalig) voor meer informatie over de versleutelings sleutel voor service gegevens. U kunt de registratie sleutel ophalen door de Blade **sleutels** voor uw service te openen.
 
-De volgende stappen uitvoeren om de serviceregistratiesleutel ophalen.
+Voer de volgende stappen uit om de service registratie sleutel op te halen.
 
-#### <a name="to-get-the-service-registration-key"></a>De serviceregistratiesleutel ophalen
-1. In de **StorSimple Device Manager** blade, Ga naar **Management &gt;**  **sleutels**.
+#### <a name="to-get-the-service-registration-key"></a>De service registratie sleutel ophalen
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;**  **sleutels**.
    
    ![De blade Sleutels](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. In de **sleutels** blade een serviceregistratiesleutel wordt weergegeven. Kopieer de registratiesleutel die met behulp van het pictogram voor kopiëren. 
+2. Op de Blade **sleutels** wordt een service registratie sleutel weer gegeven. Kopieer de registratie sleutel met behulp van het Kopieer pictogram. 
 
-Houd de serviceregistratiesleutel op een veilige locatie. U moet deze sleutel, evenals de versleutelingssleutel voor servicegegevens, extra apparaten registreren bij deze service. Nadat u de serviceregistratiesleutel, moet u uw apparaat via de Windows PowerShell voor StorSimple-interface te configureren.
+Behoud de service registratie sleutel op een veilige locatie. U hebt deze sleutel nodig, evenals de versleutelings sleutel voor service gegevens, om extra apparaten te registreren bij deze service. Nadat u de service registratie sleutel hebt verkregen, moet u uw apparaat configureren via de Windows PowerShell voor StorSimple-interface.
 
-## <a name="regenerate-the-service-registration-key"></a>De serviceregistratiesleutel opnieuw genereren
-U moet een serviceregistratiesleutel opnieuw genereren als u bent verplicht om uit te voeren rouleren van de sleutel of als de lijst met servicebeheerders is gewijzigd. Wanneer u de sleutel opnieuw genereert, wordt de nieuwe sleutel alleen gebruikt voor latere apparaten registreren. De apparaten die al zijn geregistreerd, worden niet beïnvloed door dit proces.
+## <a name="regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
+Als u een sleutel rotatie moet uitvoeren of als de lijst met service beheerders is gewijzigd, moet u een service registratie sleutel opnieuw genereren. Wanneer u de sleutel opnieuw genereert, wordt de nieuwe sleutel alleen gebruikt voor het registreren van volgende apparaten. De apparaten die al zijn geregistreerd, worden niet beïnvloed door dit proces.
 
-De volgende stappen uitvoeren om een serviceregistratiesleutel opnieuw genereren.
+Voer de volgende stappen uit om een service registratie sleutel opnieuw te genereren.
 
-#### <a name="to-regenerate-the-service-registration-key"></a>De serviceregistratiesleutel opnieuw genereren
-1. In de **StorSimple Device Manager** blade, Ga naar **Management &gt;**  **sleutels**.
+#### <a name="to-regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
+1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt;**  **sleutels**.
    
    ![De blade Sleutels](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. In de **sleutels** blade, klikt u op **opnieuw genereren**.
+2. Klik op de Blade **sleutels** op **opnieuw genereren**.
    
-   ![Klik op sleutel opnieuw genereren](./media/storsimple-virtual-array-manage-service/getregkey5.png)
-3. In de **serviceregistratiesleutel opnieuw genereren** blade, Controleer de actie vereist als de sleutels zijn opnieuw gegenereerd. De volgende apparaten die zijn geregistreerd bij deze service gebruikt de nieuwe registratiesleutel. Klik op **opnieuw genereren** om te bevestigen. U krijgt bericht wanneer de registratie voltooid is.
+   ![Klik op opnieuw genereren](./media/storsimple-virtual-array-manage-service/getregkey5.png)
+3. Controleer op de Blade **service registratie sleutel opnieuw genereren** de actie die vereist is wanneer de sleutels opnieuw worden gegenereerd. Op alle volgende apparaten die zijn geregistreerd bij deze service wordt de nieuwe registratie sleutel gebruikt. Klik op **opnieuw genereren** om te bevestigen. U wordt gewaarschuwd nadat de registratie is voltooid.
    
-   ![Controleer of de sleutel opnieuw genereren](./media/storsimple-virtual-array-manage-service/getregkey3.png)
-4. Een nieuwe serviceregistratiesleutel wordt weergegeven.
+   ![Sleutel opnieuw genereren bevestigen](./media/storsimple-virtual-array-manage-service/getregkey3.png)
+4. Er wordt een nieuwe service registratie sleutel weer gegeven.
    
-    ![Controleer of de sleutel opnieuw genereren](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Sleutel opnieuw genereren bevestigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
-   Kopieer deze sleutel en bewaar het voor het registreren van nieuwe apparaten met deze service.
+   Kopieer deze sleutel en sla deze op voor het registreren van nieuwe apparaten bij deze service.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [aan de slag](storsimple-virtual-array-deploy1-portal-prep.md) met een StorSimple Virtual Array.
-* Meer informatie over het [beheren van uw StorSimple-apparaat](storsimple-ova-web-ui-admin.md).
+* Meer informatie over hoe u aan de [slag kunt gaan](storsimple-virtual-array-deploy1-portal-prep.md) met een StorSimple-virtuele matrix.
+* Meer informatie over [het beheren van uw StorSimple-apparaat](storsimple-ova-web-ui-admin.md).
 

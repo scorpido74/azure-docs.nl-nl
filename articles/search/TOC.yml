@@ -1,20 +1,24 @@
-- name: Documentatie voor Azure Search
+- name: Documentatie voor Azure Cognitive Search
   href: index.yml
 - name: Overzicht
-  items:
-    - name: Wat is Azure Search?
-      href: search-what-is-azure-search.md
-- name: Snelstartgidsen
   expanded: true
+  items:
+    - name: Wat is Azure Cognitive Search?
+      href: search-what-is-azure-search.md
+    - name: Nieuwe functies
+      href: whats-new.md
+- name: Snelstartgidsen
   items:
     - name: Een service maken
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Een index maken en gebruiken
+        - name: Een zoekindex maken
           href: search-get-started-portal.md
-        - name: Verrijken met cognitieve zoekopdrachten (AI)
+        - name: Een cognitieve-vaardighedenset maken
           href: cognitive-search-quickstart-blob.md
+        - name: Een Knowledge Store maken
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Zoekopdracht in volledige tekst
       href: search-lucene-query-architecture.md
-    - name: Cognitive Search
+    - name: AI-verrijking
       href: cognitive-search-concept-intro.md
     - name: Vaardighedensets
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Projecties
       href: knowledge-store-projection-overview.md
+    - name: Incrementele indexering
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Handleidingen
   items:
     - name: Planning
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Velden toewijzen
           href: search-indexer-field-mappings.md
+        - name: Incrementele indexering
+          href: search-howto-incremental-index.md
         - name: Verbinding maken met beheerd SQL-exemplaar
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Verbinding maken met SQL Server-VM's
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Knowledge Store (preview)
           items:
-            - name: Een kennisarchief maken in de Azure-portal
-              href: knowledge-store-create-portal.md
             - name: Maken met behulp van REST en Postman
               href: knowledge-store-create-rest.md
             - name: Weergeven met Storage Explorer

@@ -1,7 +1,7 @@
 ---
-title: Het gebruik van API-aanroepen met een model Conversatiecursist - Microsoft Cognitive Services | Microsoft Docs
+title: API-aanroepen gebruiken met een Conversation Learner model-Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Informatie over het gebruik van API-aanroepen met een Conversatiecursist-model.
+description: Meer informatie over het gebruik van API-aanroepen met een Conversation Learner model.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,92 +10,93 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389940"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703914"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>API-aanroepen naar een model Conversatiecursist toevoegen
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>API-aanroepen toevoegen aan een Conversation Learner model
 
-In deze zelfstudie laat zien hoe API-aanroepen aan uw model toevoegen. API-aanroepen zijn functies die u definieert en schrijven in uw Bot, en welke Conversatiecursist kunt aanroepen.
+In deze zelf studie ziet u hoe u API-aanroepen toevoegt aan uw model. API-aanroepen zijn functies die u in uw bot definieert en schrijft en die Conversation Learner kunnen aanroepen.
 
 ## <a name="video"></a>Video
 
-[![Zelfstudie Preview-API-aanroepen](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
+[![Preview van zelf studie voor API-aanroepen](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
 
 ## <a name="requirements"></a>Vereisten
-Deze zelfstudie vereist dat de bot 'tutorialAPICalls.ts' wordt uitgevoerd.
+Voor deze zelf studie moet de bot ' tutorialAPICalls. TS ' worden uitgevoerd.
 
     npm run tutorial-api-calls
 
 ## <a name="details"></a>Details
 
-- API-aanroepen kunnen lezen en bewerken van entiteiten.
-- API-aanroepen hebben toegang tot het geheugen manager-object.
-- API-aanroepen kunnen duren voordat de argumenten.
+- API-aanroepen kunnen entiteiten lezen en bewerken.
+- API-aanroepen hebben toegang tot het object geheugen beheer.
+- API-aanroepen kunnen argumenten hebben.
 
-### <a name="open-the-demo"></a>Open de demo
+### <a name="open-the-demo"></a>De demo openen
 
-In de web-UI, klik op "Zelfstudies importeren" en selecteer het model met de naam '-zelfstudie-14-APICalls'.
+Klik in de webgebruikersinterface op zelf studies importeren en selecteer het model met de naam ' zelf studie-14-APICalls '.
 
 ### <a name="entities"></a>Entiteiten
 
-We hebben een entiteit hebt gedefinieerd in het Model met de naam `number`.
+Er is één entiteit gedefinieerd in het model met `number`de naam.
 
 ![](../media/tutorial12_entities.PNG)
 
 ### <a name="api-calls"></a>API-aanroepen
-De code voor de API-aanroepen is gedefinieerd in het bestand: `C:\<installedpath>\src\demos\tutorialAPICalls.ts`.
+De code voor de API-aanroepen wordt gedefinieerd in het volgende `C:\<installedpath>\src\demos\tutorialAPICalls.ts`bestand:.
 
 ![](../media/tutorial12_apicalls.PNG)
 
-- De `RandomGreeting` callback retourneert een willekeurig begroeting gedefinieerd in de `greeting` matrix.
-- De `Multiply` terugbellen wordt Vermenigvuldigt twee getallen die zijn doorgegeven door de actie die deze en retourneert een resultaat die kan worden weergegeven in de gebruikersinterface.
-    - U ziet dat geheugenbeheer is het eerste argument. 
-    - U ziet dat de callbacks API duren meerdere invoergegevens, in dit geval voordat kunnen `num1string` en `num2string`.
-- De `ClearEntities` callback wist de numerieke entiteit zodat de gebruiker kan een ander nummer invoeren. 
-    - Ziet u hoe de API-aanroepen entiteiten kunnen bewerken.
+- De `RandomGreeting` call back retourneert een wille keurige begroeting die is gedefinieerd in de `greeting` matrix.
+- De `Multiply` retour aanroep vermenigvuldigt twee getallen die worden door gegeven door de actie die deze aanroept en retourneert een resultaat dat kan worden weer gegeven in de gebruikers interface.
+    - U ziet dat geheugen beheer het eerste argument is. 
+    - U ziet dat API-call backs meerdere invoer kunnen hebben, `num1string` in `num2string`dit geval en.
+- Met `ClearEntities` de call back wordt de nummer entiteit gewist, zodat de gebruiker een ander getal kan invoeren. 
+    - Illustreert hoe API-aanroepen entiteiten kunnen manipuleren.
 
 ### <a name="actions"></a>Acties
-We hebt vier acties gemaakt. Drie van deze 'Niet-Wait' API acties, met de vierde is een 'Tekst'-actie die de gebruiker wordt gevraagd een vraag die vergelijkbaar is met wat we hebben gezien in de andere zelfstudies. Om te zien hoe elk wordt gemaakt op de volgende handelingen uit:
-1. In het linkerdeelvenster klikt u op 'Acties' en klik op een van de vier acties die worden vermeld in het raster.
-2. U ziet de waarden van elk veld in het formulier dat verschijnt.
-3. U ziet dat de `Refresh` knop naast de API-veld.
-    - Als we het stoppen van de Bot en wijzigen naar de API's terwijl de UI-pagina is, kunt u op de `Refresh` om de meest recente wijzigingen.
+We hebben vier acties gemaakt. Drie van deze zijn de API-acties zonder wacht tijd, met de vierde, een actie ' tekst ' die de gebruiker vraagt een vraag te zien die vergelijkbaar is met wat we in andere zelf studies hebben gezien. Ga als volgt te werk om te zien hoe elk is gemaakt:
+1. Klik in het linkerdeel venster op acties en klik vervolgens op een van de vier acties die in het raster worden weer gegeven.
+2. Let op de waarden van elk veld in het formulier dat wordt weer gegeven.
+3. U ziet `Refresh` de knop naast het veld API.
+    - Als we de bot zouden stoppen en de api's moeten worden gewijzigd terwijl de pagina met de gebruikers interface actief is, kunt u klikken `Refresh` op de knop om de laatste wijzigingen op te halen.
 
 ![](../media/tutorial12_actions.PNG)
 
 #### <a name="clearentities-multiply-and-randomgreeting"></a>ClearEntities, vermenigvuldigen en RandomGreeting
-Alle drie van de volgende acties zijn API-Type. Ze allemaal zijn afhankelijk van de API-callback-functies uit te voeren werk mogelijk retourneert een waarde die moet worden weergegeven voor de gebruiker.
+Deze drie acties zijn het API-type. Ze zijn afhankelijk van de API call back-functies voor het uitvoeren van een werk en retour neren mogelijk een waarde die aan de gebruiker wordt gepresenteerd.
 
 #### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Welk nummer wilt u vermenigvuldigen met 12"
-Dit is de actie 'Tekst' en deze gewoon een kwestie van de gebruiker wordt gevraagd. Terwijl deze actie geen daadwerkelijk interactie met een van de callbacks API hebben, wordt de gebruiker om te reageren met een getal dat in het geheugen van een entiteit die vervolgens kan worden gebruikt door de actie gaat 'Vermenigvuldigen', die maakt gebruik van een van de API-callbacks gevraagd.
+Dit is de actie tekst en er wordt een vraag van de gebruiker gesteld. Hoewel deze actie niet daad werkelijk communiceert met een van de API-retour aanroepen, wordt de gebruiker gevraagd om te reageren met een getal dat naar het geheugen van een entiteit gaat, dat vervolgens kan worden gebruikt door de actie ' vermenigvuldigen ', waarbij een van de API-aanroepen wordt gebruikt.
 
 
-### <a name="train-dialog"></a>Train Dialog
+### <a name="train-dialog"></a>Dialoog venster trainen
 
-We nemen een dialoogvenster"Training'.
+Laten we een ' trainings venster ' door lopen.
 
-1. Klik in het linkerdeelvenster op `Train Dialogs`, dan zal de `New Train Dialog` knop.
-2. Type "Hallo".
+1. Klik in het linkerdeel venster op `Train Dialogs`en klik vervolgens `New Train Dialog` op de knop.
+2. Typ "Hallo".
 3. Klik op de knop `Score Actions`.
 4. Selecteer `RandomGreeting`. 
-    - Hiermee wordt de willekeurige begroeting API-aanroep uitgevoerd.
-    - Dit wordt niet wachten op een reactie van gebruiker.
+    - Hiermee wordt de API-aanroep voor wille keurige begroeting uitgevoerd.
+    - Hiermee wordt niet gewacht op een reactie van de gebruiker.
 5. Selecteer `What number to do you want to multiply by 12?`
-6. Typ een getal, een getal en alleen een getal.
-    - U ziet dat het nummer van uw is automatisch gelabeld als de `number` entiteit.
+6. Typ een getal, een wille keurig getal en alleen een getal.
+    - U ziet dat uw nummer automatisch als de `number` entiteit is gelabeld.
 7. Klik op de knop `Score Actions`.
 8. Selecteer de `Multiply` actie.
-    - U ziet het resultaat van de vermenigvuldiging van 12.
-    - U ziet dat het geheugen bevat nog steeds de waarde die u hebt ingevoerd voor `number`
+    - Let op het resultaat van de vermenigvuldiging met 12.
+    - U ziet dat het geheugen nog steeds de waarde bevat die u hebt opgegeven voor`number`
 9. Selecteer de `ClearEntities` actie.
-    - U ziet dat de entiteit waarde voor de `number` is verwijderd uit het geheugen.
+    - U ziet dat de entiteits `number` waarde voor is gewist uit het geheugen.
 10. Klik op de knop `Save`.
 
-U hebt nu gezien hoe API callbacks, registreren hun algemene patronen en het definiëren van de argumenten en waarden en entiteiten in deze koppelen.
+U hebt nu gezien hoe u API-retour aanroepen, hun algemene patronen kunt registreren en hoe u argumenten kunt definiëren en waarden en entiteiten kunt koppelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

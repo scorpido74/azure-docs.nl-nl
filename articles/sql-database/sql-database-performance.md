@@ -1,6 +1,6 @@
 ---
-title: Prestaties - Azure SQL Database bewaken en verbeteren | Microsoft Docs
-description: De Azure SQL Database biedt prestaties hulpprogramma's waarmee u gebieden geïdentificeerd die u kunnen de huidige queryprestaties verbeteren.
+title: Prestaties bewaken en verbeteren-Azure SQL Database | Microsoft Docs
+description: De Azure SQL Database biedt prestatie hulpprogramma's waarmee u gebieden kunt identificeren die de huidige prestaties van de query kunnen verbeteren.
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
@@ -9,74 +9,73 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39a100c487588fb717c642036c7713150a95e047
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584797"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567074"
 ---
 # <a name="monitor-and-improve-performance"></a>Prestaties bewaken en verbeteren
 
-Azure SQL Database geeft mogelijke problemen in uw database en wordt aanbevolen acties die prestaties van uw workload verbeteren kunnen door intelligente acties en aanbevelingen te geven.
+Azure SQL Database identificeert mogelijke problemen in uw data base en raadt acties aan waarmee de prestaties van uw werk belasting kunnen worden verbeterd door intelligente afstemmings acties en aanbevelingen te bieden.
 
-Als u wilt controleren van de databaseprestaties van uw, gebruikt u de **prestaties** tegel op de pagina overzicht en navigeer naar "Ondersteuning en probleemoplossing" sectie:
+Als u de prestaties van uw Data Base wilt bekijken, gebruikt u de tegel **prestaties** op de pagina overzicht of gaat u naar de sectie ondersteuning en probleem oplossing:
 
-   ![Prestaties weergeven](./media/sql-database-performance/entries.png)
+   ![Prestaties weer geven](./media/sql-database-performance/entries.png)
 
-In de "Ondersteuning en probleemoplossing" sectie, kunt u de volgende pagina's:
+In de sectie ondersteuning en probleem oplossing kunt u de volgende pagina's gebruiken:
 
 
-1. [Prestatieoverzicht](#performance-overview) voor het bewaken van prestaties van uw database. 
-2. [Aanbevelingen voor prestaties](#performance-recommendations) vinden aanbevelingen voor prestaties die prestaties van uw workload kunnen verbeteren.
-3. [Query Performance Insight](#query-performance-insight) bovenste die veel resources verbruiken van query's te vinden.
-4. [Automatisch afstemmen](#automatic-tuning) zodat Azure SQL Database de database automatisch te optimaliseren.
+1. [Overzicht van prestaties](#performance-overview) voor het bewaken van de prestaties van uw data base. 
+2. [Prestatie aanbevelingen](#performance-recommendations) voor het vinden van prestatie aanbevelingen waarmee de prestaties van uw werk belasting kunnen worden verbeterd.
+3. [Query Performance Insight](#query-performance-insight) om de belangrijkste query's in de resource te vinden.
+4. [Automatisch afstemmen](#automatic-tuning) om uw data base automatisch Azure SQL database te optimaliseren.
 
-## <a name="performance-overview"></a>Prestatieoverzicht
+## <a name="performance-overview"></a>Overzicht van prestaties
 
-In deze weergave bevat een samenvatting van de databaseprestaties van uw, en helpt u bij het afstemmen van prestaties en oplossen van problemen. 
+Deze weer gave biedt een overzicht van de prestaties van uw data base en helpt u bij het afstemmen van prestaties en het oplossen van problemen. 
 
 ![Prestaties](./media/sql-database-performance/performance.png)
 
-* De **aanbevelingen** tegel bevat een verdeling van de aanbevelingen voor uw database voor het afstemmen (drie belangrijkste aanbevelingen worden weergegeven of er meer zijn). Op deze tegel klikt, gaat u naar  **[aanbevelingen voor prestaties](#performance-recommendations)** . 
-* De **Afstemmingsactiviteit** tegel bevat een samenvatting van de actieve en voltooide acties voor uw database afstemmen, zodat u snel inzicht krijgt in de geschiedenis van het afstemmen van de activiteit. Op deze tegel klikt, wordt u gaat naar de volledige geschiedenis-weergave afstemmen voor uw database.
-* De **automatisch afstemmen** tegel toont de [configuratie voor automatisch afstemmen](sql-database-automatic-tuning-enable.md) voor uw database (de opties die automatisch worden toegepast op uw database afstemmen). Op deze tegel klikt, opent u het dialoogvenster van de configuratie van automation.
-* De **databasequery's** tegel staat een overzicht van de prestaties van query's voor uw database (totale DTU-gebruik en boven die veel resources verbruiken query's). Op deze tegel klikt, gaat u naar  **[Query Performance Insight](#query-performance-insight)** .
+* De tegel **aanbevelingen** biedt een overzicht van de aanbevelingen voor het afstemmen van uw data base (de eerste drie aanbevelingen worden weer gegeven als er meer zijn). Als u op deze tegel klikt, gaat u naar **[aanbevelingen voor prestaties](#performance-recommendations)** . 
+* De tegel **activiteit afstemmen** biedt een samen vatting van de lopende en voltooide afstemmings acties voor uw data base, waarmee u een kort overzicht krijgt van de geschiedenis van de afstemmings activiteit. Als u op deze tegel klikt, gaat u naar de weer gave volledige afstemmings geschiedenis voor uw data base.
+* De tegel **automatisch afstemmen** toont de [configuratie voor automatisch afstemmen](sql-database-automatic-tuning-enable.md) van uw data base (afstemmings opties die automatisch worden toegepast op uw data base). Als u op deze tegel klikt, wordt het dialoog venster automatiserings configuratie geopend.
+* De tegel **database query's** bevat een samen vatting van de query prestaties voor uw data base (algemeen DTU-gebruik en meest voorkomende query's in de resource). Als u op deze tegel klikt, gaat u **[query Performance Insight](#query-performance-insight)** .
 
-## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
+## <a name="performance-recommendations"></a>Prestatieaanbevelingen
 
-Deze pagina vindt u intelligente [aanbevelingen voor het afstemmen](sql-database-advisor.md) die prestaties van uw database kunt verbeteren. De volgende typen aanbevelingen worden weergegeven op deze pagina:
+Deze pagina biedt intelligente [afstemmings aanbevelingen](sql-database-advisor.md) waarmee de prestaties van uw data base kunnen worden verbeterd. De volgende typen aanbevelingen worden op deze pagina weer gegeven:
 
-* Aanbevelingen over welke indexen te maken of te verwijderen.
-* Aanbevelingen als schema problemen worden geïdentificeerd in de database.
-* Aanbevelingen wanneer query's van geparameteriseerde query's profiteren kunnen.
+* Aanbevelingen voor het maken of verwijderen van indexen.
+* Aanbevelingen voor het identificeren van schema problemen in de-data base.
+* Aanbevelingen wanneer query's kunnen profiteren van query's met para meters.
 
 ![Prestaties](./media/sql-database-performance/recommendations.png)
 
-U vindt hier ook volledige geschiedenis van het afstemmen van de acties die zijn toegepast in het verleden.
+U kunt ook de volledige geschiedenis van afstemmings acties vinden die in het verleden zijn toegepast.
 
-Meer informatie over het vinden van een item voor toepassen aanbevelingen voor prestaties in [zoeken en toepassen van aanbevelingen voor prestaties](sql-database-advisor-portal.md) artikel.
+Meer informatie over het vinden van aanbevelingen voor het Toep assen van prestaties in het artikel over het [zoeken naar en Toep](sql-database-advisor-portal.md) assen van aanbevelingen.
 
-## <a name="automatic-tuning"></a>Automatisch instellen
+## <a name="automatic-tuning"></a>Automatisch afstemmen
 
-Azure SQL-databases kunnen automatisch afstemmen van prestaties van de database door toe te passen [aanbevelingen voor prestaties](sql-database-advisor.md). Voor meer informatie lezen [automatisch afstemmen artikel](sql-database-automatic-tuning.md). Als u wilt inschakelen, lezen [het inschakelen van automatisch afstemmen](sql-database-automatic-tuning-enable.md).
+Azure SQL-data bases kunnen de prestaties van de data base automatisch afstemmen door [prestatie aanbevelingen](sql-database-advisor.md)toe te passen. Lees voor meer informatie het [artikel automatisch afstemmen](sql-database-automatic-tuning.md). Lees [hoe u automatisch afstemmen](sql-database-automatic-tuning-enable.md)inschakelt om het in te scha kelen.
 
-## <a name="query-performance-insight"></a>Inzicht in queryprestaties
+## <a name="query-performance-insight"></a>Query Performance Insight
 
-[Query Performance Insight](sql-database-query-performance.md) kunt u minder tijd door het oplossen van prestaties van de database door te geven:
+Met [query Performance Insight](sql-database-query-performance.md) kunt u minder tijd best Eden aan het oplossen van problemen met database prestaties door het volgende te bieden:
 
-* Beter inzicht in het gebruik van de resources (DTU) databases. 
-* De hoogste CPU-verbruik van query's die mogelijk kunnen worden afgestemd voor betere prestaties. 
+* Dieper inzicht in uw data bases Resource-verbruik (DTU). 
+* Het belangrijkste CPU-verbruik van query's, die mogelijk kunnen worden afgestemd op betere prestaties. 
 * De mogelijkheid om in te zoomen op de details van een query. 
 
-  ![van Prestatiedashboard](./media/sql-database-query-performance/performance.png)
+  ![prestatie dashboard](./media/sql-database-query-performance/performance.png)
 
-Meer informatie over deze pagina vinden in het artikel  **[Query Performance Insight gebruiken](sql-database-query-performance.md)** .
+Meer informatie over deze pagina vindt u in het artikel **[query Performance Insight gebruiken](sql-database-query-performance.md)** .
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Richtlijnen voor prestaties van Azure SQL-Database voor individuele databases](sql-database-performance-guidance.md)
+* [Azure SQL Database richt lijnen voor prestaties voor afzonderlijke data bases](sql-database-performance-guidance.md)
 * [Wanneer moet een elastische pool worden gebruikt?](sql-database-elastic-pool-guidance.md)
 

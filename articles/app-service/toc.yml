@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: Implementeren vanuit lokale Git
               href: deploy-local-git.md
+            - name: Implementeren met GitHub Actions
+              href: deploy-github-actions.md
             - name: Implementeren met sjabloon
               href: deploy-complex-application-predictably.md
         - name: Implementatiereferenties instellen

@@ -3,7 +3,7 @@ title: Een bestaande app snel implementeren in een Azure Service Fabric-cluster
 description: Een Azure Service Fabric-cluster gebruiken voor het hosten van een bestaande Node.js-toepassing met Visual Studio.
 services: service-fabric
 documentationcenter: nodejs
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 6cf9594e6e1db3e163d25843b1fec0c0ff98c250
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428227"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592444"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Een Node.js-toepassing hosten in Azure Service Fabric
 
@@ -29,9 +29,9 @@ In deze snelstartgids wordt uitgelegd hoe u een bestaande toepassing (Node.js in
 
 Voordat u begint, zorgt u ervoor dat u [uw ontwikkelingsomgeving hebt ingesteld](service-fabric-get-started.md). Dit omvat het installeren van de Service Fabric SDK en Visual Studio 2019 of 2015.
 
-U moet ook beschikken over een bestaande Node.js-toepassing voor implementatie. Deze snelstartgids maakt gebruik van een eenvoudige Node.js-website die [hier][download-sample] kan worden gedownload. Pak dit bestand uit in de map `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\` nadat u het project in de volgende stap hebt gemaakt.
+U moet ook beschikken over een bestaande Node.js-toepassing voor implementatie. Deze Snelstartgids maakt gebruik van een eenvoudige node. js-website die [hier][download-sample]kan worden gedownload. Pak dit bestand uit in de map `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\` nadat u het project in de volgende stap hebt gemaakt.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][create-account] aan.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account][create-account] aan.
 
 ## <a name="create-the-service"></a>De service maken
 
@@ -66,7 +66,7 @@ Druk op **OK**.
 
 Visual Studio maakt het toepassingsproject en het actorserviceproject en geeft deze weer in Solution Explorer.
 
-Het toepassingsproject (**MyGuestApp**) bevat geen code rechtstreeks. Het project verwijst naar een reeks serviceprojecten. Het bevat ook drie andere typen inhoud:
+Het toepassings project (**MyGuestApp**) bevat geen directe code. Het project verwijst naar een set service projecten. Het bevat ook drie andere typen inhoud:
 
 * **Profielen publiceren**  
 Hulpprogrammavoorkeuren voor verschillende omgevingen.
@@ -83,7 +83,7 @@ Zie [Aan de slag met Reliable Services](service-fabric-reliable-services-quick-s
 
 De voorbeeld-Node.js-app die we implementeren gebruikt poort **80** en we moeten Service Fabric doorgeven dat deze poort open moet zijn.
 
-Open het bestand **ServiceManifest.xml** in het project. Aan de onderkant van het manifest, er is een `<Resources> \ <Endpoints>` met een vermelding die al gedefinieerd. Wijzig deze vermelding om `Port`, `Protocol` en `Type` toe te voegen. 
+Open het bestand **ServiceManifest.xml** in het project. Onder aan het manifest is er al een `<Resources> \ <Endpoints>` met een vermelding gedefinieerd. Wijzig deze vermelding om `Port`, `Protocol` en `Type` toe te voegen. 
 
 ```xml
   <Resources>
@@ -98,7 +98,7 @@ Open het bestand **ServiceManifest.xml** in het project. Aan de onderkant van he
 
 ## <a name="deploy-to-azure"></a>Implementeren in Azure
 
-Als u druk op **F5** en voer het project, dit wordt geïmplementeerd voor het lokale cluster. Echter, we gaan in plaats daarvan implementeren in Azure.
+Als u op **F5** drukt en het project uitvoert, wordt het geïmplementeerd naar het lokale cluster. Echter, we gaan in plaats daarvan implementeren in Azure.
 
 Klik met de rechtermuisknop op het project en kies **Publiceren...** Er wordt een dialoogvenster geopend waarin u kunt aangeven dat u naar Azure wilt publiceren.
 
@@ -106,9 +106,9 @@ Klik met de rechtermuisknop op het project en kies **Publiceren...** Er wordt ee
 
 Selecteer het doelprofiel **PublishProfiles\Cloud.xml**.
 
-Kies een Azure-account waarnaar u wilt implementeren als u dit nog niet hebt gedaan. Als u er nog geen hebt, [meldt u zich er voor een aan][create-account].
+Kies een Azure-account waarnaar u wilt implementeren als u dit nog niet hebt gedaan. Als u nog geen account hebt, [meldt u zich aan voor één][create-account].
 
-Selecteer onder **Verbindingseindpunt** het Service Fabric-cluster waarin u wilt implementeren. Als u niet hebt, selecteert u **&lt;nieuw Cluster maken... &gt;** waarmee u opent een browservenster naar de Azure-portal. Zie [Een cluster maken in de portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) voor meer informatie. 
+Selecteer onder **Verbindingseindpunt** het Service Fabric-cluster waarin u wilt implementeren. Als u er nog geen hebt, selecteert **&lt;u nieuw cluster maken... Hiermee&gt;** opent u het browser venster voor de Azure Portal. Zie [Een cluster maken in de portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) voor meer informatie. 
 
 Wanneer u de Service Fabric-cluster maakt, zorg er dan voor dat u de **Aangepaste eindpunten** instelt op **80**.
 
@@ -130,11 +130,11 @@ Controleer de overzichtsblade van het serviceadres. Gebruik de domeinnaam van de
 
 ![Overzichtsblade van Service Fabric in Azure Portal][overview]
 
-Navigeer naar dit adres u ziet, de `HELLO WORLD` antwoord.
+Navigeer naar dit adres waar u het `HELLO WORLD` antwoord ziet.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 
-Vergeet niet alle resources die u hebt gemaakt voor deze snelstartgids verwijderen als u kosten in voor deze resources gebracht rekening.
+Vergeet niet om alle resources te verwijderen die u voor deze Quick Start hebt gemaakt, omdat er kosten in rekening worden gebracht voor deze resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over [door gast uitvoerbare bestanden](service-fabric-guest-executables-introduction.md).

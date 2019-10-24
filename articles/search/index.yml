@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Documentatie voor Azure Search
+title: Documentatie voor Azure Cognitive Search
 summary: Zoek in de cloud naar persoonlijke, heterogene inhoud, met opties voor AI-verrijking als uw inhoud ongestructureerd is of niet in onbewerkte vorm kan worden gevonden.
 metadata:
-  title: Documentatie voor Azure Search
+  title: Documentatie voor Azure Cognitive Search
   description: Zoek in de cloud naar persoonlijke, heterogene inhoud, met opties voor AI-verrijking als uw inhoud ongestructureerd is of niet in onbewerkte vorm kan worden gevonden.
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
-  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.openlocfilehash: 5bf7ec2b629fc765ef5c6393b042b608a48ec804
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/17/2019
-  ms.locfileid: "72529445"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790061"
 landingContent:
-- title: Over Azure Search
+- title: Over Cognitive Search
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure Search?
+    - text: Wat is Azure Cognitive Search?
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: Hoe zoeken in de volledige tekst werkt in Azure Search
+    - text: Hoe zoeken in de volledige tekst werkt in Cognitive Search
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: Wat is Azure Search (1 min 27 sec)
+    - text: Wat is Cognitive Search? (1 min. 27 sec.)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: Aan de slag
   linkLists:
@@ -42,9 +42,13 @@ landingContent:
       url: search-get-started-portal.md
     - text: Een verrijkingspijplijn maken
       url: cognitive-search-quickstart-blob.md
+  - linkListType: tutorial
+    links:
+    - text: Een app maken
+      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Inleiding tot Azure Search
+    - text: Inleiding tot Azure Cognitive Search
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: Gebruiken met blobopslag
   linkLists:
@@ -72,10 +76,6 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Uit Blob-opslag indexeren
-      url: search-howto-indexing-azure-blob-storage.md
-    - text: JSON-blobs indexeren
-      url: search-howto-index-json-blobs.md
     - text: Uit Azure SQL Database indexeren
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Uit Cosmos DB-gegevens indexeren
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Wat is cognitief zoeken?
+    - text: AI-verrijkingspijplijn
       url: cognitive-search-concept-intro.md
     - text: Vaardighedensets
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: Vooraf gedefinieerde vaardigheden
+    - text: Ingebouwde vaardigheden
       url: cognitive-search-predefined-skills.md
 - title: Uw gegevens opvragen
   linkLists:

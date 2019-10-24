@@ -1,6 +1,6 @@
 ---
-title: XTP-In-memory-opslag controleren | Microsoft Docs
-description: Schatting en monitor XTP-In-memory-opslag gebruiken, capaciteit; capaciteit fout 41823 oplossen
+title: XTP in-Memory-opslag controleren | Microsoft Docs
+description: XTP in-Memory gebruiken om te schatten en te controleren, capaciteit; capaciteits fout 41823 oplossen
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,55 +10,54 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035719"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567987"
 ---
-# <a name="monitor-in-memory-oltp-storage"></a>Monitor In-Memory OLTP-opslag
+# <a name="monitor-in-memory-oltp-storage"></a>OLTP-opslag in het geheugen controleren
 
-Bij het gebruik van [In-Memory OLTP](sql-database-in-memory.md), gegevens in tabellen geoptimaliseerd voor geheugen en tabelvariabelen zich bevindt in de In-Memory OLTP-opslag. Elke servicelaag Premium en bedrijfskritiek heeft een maximale grootte van de In-Memory OLTP-opslag. Zie [DTU gebaseerde resourcelimieten - individuele database](sql-database-dtu-resource-limits-single-databases.md), [DTU gebaseerde resourcelimieten - elastische pools](sql-database-dtu-resource-limits-elastic-pools.md),[vCore gebaseerde resourcelimieten - individuele databases](sql-database-vcore-resource-limits-single-databases.md) en [vCore gebaseerde resourcelimieten - elastische pools](sql-database-vcore-resource-limits-elastic-pools.md).
+Bij gebruik [van in-Memory OLTP](sql-database-in-memory.md)worden gegevens in tabellen die zijn geoptimaliseerd voor geheugen en tabel variabelen bevinden zich in de OLTP-opslag in het geheugen. Elke Premium-en Bedrijfskritiek-servicelaag heeft een maximale in-Memory OLTP-opslag grootte. Zie [op DTU gebaseerde resource limieten-één data base](sql-database-dtu-resource-limits-single-databases.md), [op DTU gebaseerde resource limieten: elastische Pools](sql-database-dtu-resource-limits-elastic-pools.md),[vCore resource limieten-individuele data bases](sql-database-vcore-resource-limits-single-databases.md) en [vCore resource limieten: elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Zodra deze limiet wordt overschreden, invoeg- en bewerkingen kunnen mislukken met fout 41823 voor individuele databases en de fout 41840 voor elastische pools. Op dat moment moet u ofwel gegevens vrij geheugen, of upgraden van de servicelaag of compute van de grootte van uw database te verwijderen.
+Wanneer deze limiet wordt overschreden, worden INSERT-en update-bewerkingen mogelijk mislukt met fout 41823 voor afzonderlijke data bases en fout 41840 voor elastische Pools. Op dat moment moet u gegevens verwijderen om geheugen vrij te maken of de servicelaag of reken grootte van uw data base upgraden.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bepalen of gegevens binnen de limiet van In-Memory OLTP-opslag passen
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bepalen of gegevens binnen de OLTP-opslag limiet van het geheugen passen
 
-Bepaal de limieten van de opslag van de verschillende Servicelagen. Zie [DTU gebaseerde resourcelimieten - individuele database](sql-database-dtu-resource-limits-single-databases.md), [DTU gebaseerde resourcelimieten - elastische pools](sql-database-dtu-resource-limits-elastic-pools.md),[vCore gebaseerde resourcelimieten - individuele databases](sql-database-vcore-resource-limits-single-databases.md) en [vCore gebaseerde resourcelimieten - elastische pools](sql-database-vcore-resource-limits-elastic-pools.md).
+Bepaal de opslag limieten van de verschillende service lagen. Zie [op DTU gebaseerde resource limieten-één data base](sql-database-dtu-resource-limits-single-databases.md), [op DTU gebaseerde resource limieten: elastische Pools](sql-database-dtu-resource-limits-elastic-pools.md),[vCore resource limieten-individuele data bases](sql-database-vcore-resource-limits-single-databases.md) en [vCore resource limieten: elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Schatten van de geheugenvereisten voor een tabel geoptimaliseerd voor geheugen-works voor SQL Server dezelfde manier als dit wordt in Azure SQL Database. Een aantal duren om te controleren dat artikel op [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+Het schatten van geheugen vereisten voor een tabel die is geoptimaliseerd voor geheugen werkt op dezelfde SQL Server manier als in Azure SQL Database. Neem een paar minuten de tijd om het artikel op [MSDN](https://msdn.microsoft.com/library/dn282389.aspx)te controleren.
 
-Tabel en variabele tabelrijen, evenals indexen, tellen mee voor de grootte van de maximale gebruiker. Daarnaast moet ALTER TABLE voldoende ruimte voor het maken van een nieuwe versie van de hele tabel en indexen.
+Tabel-en tabel variabele rijen, evenals indexen, tellen bij de maximale grootte van de gebruikers gegevens. Daarnaast heeft ALTER TABLE voldoende ruimte nodig om een nieuwe versie van de volledige tabel en de bijbehorende indexen te maken.
 
 ## <a name="monitoring-and-alerting"></a>Bewaking en waarschuwingen
-U kunt In-memory-opslag gebruiken als een percentage van de opslaglimiet bewaken voor uw compute-grootte in de [Azure-portal](https://portal.azure.com/): 
+U kunt in-Memory opslag gebruiken als percentage van de opslag limiet voor de berekenings grootte in de [Azure Portal](https://portal.azure.com/): 
 
-1. Zoek het gebruik van resources op de blade Database en klik op bewerken.
-2. Selecteer de metriek `In-Memory OLTP Storage percentage`.
-3. Als u wilt een waarschuwing toevoegen, klikt u op de het gebruik van resources wordt geopend de blade met metrische gegevens, en klik vervolgens op waarschuwing toevoegen.
+1. Ga op de Blade Data Base naar het vak resource gebruik en klik op bewerken.
+2. Selecteer de metrische `In-Memory OLTP Storage percentage`gegevens.
+3. Als u een waarschuwing wilt toevoegen, klikt u op het vak resource gebruik om de Blade metrische gegevens te openen en klikt u vervolgens op waarschuwing toevoegen.
 
-Of gebruik de volgende query uit om het gebruik van de opslag In-memory weer te geven:
+U kunt ook de volgende query gebruiken om het gebruik van de opslag in het geheugen weer te geven:
 
 ```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 ```
 
-## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Out-van-In-Memory OLTP-opslagsituaties - fouten 41823 en 41840 corrigeren
+## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Problemen met OLTP-opslag in het geheugen corrigeren-fouten 41823 en 41840
 
-Bereikt de opslaglimiet In-Memory OLTP in de databaseresultaten van uw in invoegen, bijwerken, wijzigen en bewerkingen is mislukt met foutbericht 41823 (voor individuele databases) of fout 41840 (voor elastische pools) maken. Beide fouten leiden tot de actieve transactie om af te breken.
+Zoek naar de OLTP-opslag limiet in het geheugen in uw data base resulteert in INSERT-, UPDATE-, ALTER-en CREATE-bewerkingen die mislukken met het fout bericht 41823 (voor afzonderlijke data bases) of fout 41840 (voor elastische Pools). Beide fouten zorgen ervoor dat de actieve trans actie wordt afgebroken.
 
-Foutberichten 41823 en 41840 geven aan dat de tabellen geoptimaliseerd voor geheugen en de tabelvariabelen voor de in de database of de groep van toepassingen de maximale grootte van de In-Memory OLTP-opslag hebt bereikt.
+Fout berichten 41823 en 41840 geven aan dat de door het geheugen geoptimaliseerde tabellen en tabel variabelen in de data base of pool de maximale OLTP-opslag grootte in het geheugen hebben bereikt.
 
-Deze fout, ofwel oplossen:
+Om deze fout op te lossen, kunt u het volgende doen:
 
-* Gegevens verwijderen uit de tabellen geoptimaliseerd voor geheugen, mogelijk offloading van de gegevens naar de traditionele, schijfgebaseerde tabellen. of,
-* De servicelaag upgraden naar een met voldoende opslag in het geheugen voor de gegevens die u wilt behouden in tabellen geoptimaliseerd voor geheugen.
+* Verwijder gegevens uit de tabellen die zijn geoptimaliseerd voor geheugen, waardoor het mogelijk is om de gegevens te offloaden naar traditionele, op schijven gebaseerde tabellen. of
+* Voer een upgrade uit van de servicelaag met voldoende in-Memory opslag voor de gegevens die u nodig hebt om in geheugen geoptimaliseerde tabellen te bewaren.
 
 > [!NOTE] 
-> In zeldzame gevallen kunnen fouten 41823 en 41840 zijn tijdelijke, wat betekent dat er voldoende beschikbare In-Memory OLTP-opslag, en opnieuw wordt geprobeerd de bewerking is geslaagd. Daarom wordt aangeraden beide monitor de totale beschikbare In-Memory OLTP-opslag en als eerste aangetroffen fout 41823 of 41840 opnieuw uit te voeren. Zie voor meer informatie over de logica voor opnieuw proberen, [opsporing van conflicten en logica voor opnieuw proberen met In-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> In zeldzame gevallen kunnen fouten 41823 en 41840 tijdelijk zijn, wat betekent dat er voldoende beschik bare OLTP-opslag in het geheugen beschikbaar is en dat de bewerking opnieuw wordt uitgevoerd. Daarom raden we u aan om de algemeen beschik bare OLTP-opslag in het geheugen te bewaken en opnieuw te proberen wanneer de fout 41823 of 41840 voor het eerst optreedt. Zie [conflict detectie en poging logica met in-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)voor meer informatie over de logica voor opnieuw proberen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor richtlijnen voor bewaking, [Azure SQL Database controleren met dynamic management views](sql-database-monitoring-with-dmvs.md).
+Zie [Azure SQL database bewaken met dynamische beheer weergaven](sql-database-monitoring-with-dmvs.md)voor controle-instructies.

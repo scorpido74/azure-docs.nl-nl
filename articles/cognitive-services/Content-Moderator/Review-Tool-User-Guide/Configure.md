@@ -3,19 +3,19 @@ title: Instellingen voor het revisie programma configureren-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik het beoordelings programma om uw team, tags, connectors, werk stromen en referenties voor Content Moderator te configureren of op te halen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882726"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757438"
 ---
 # <a name="configure-the-review-tool"></a>Het beoordelingsprogramma configureren
 
@@ -25,7 +25,7 @@ Het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.co
 
 ## <a name="manage-team-and-subteams"></a>Team en subteams beheren
 
-Op het tabblad **team** kunt u uw team leden en subteamnen&mdash;groepen van gebruikers beheren die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
+Op het tabblad **team** kunt u uw team en subteams beheren &mdash;groups van gebruikers die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
 
 ![Team instellingen voor het hulp programma bekijken](images/settings-2-team.png)
 
@@ -35,7 +35,7 @@ In deze sectie wordt uitgelegd hoe u subteamsen maakt en snel Recensies toewijst
 
 ### <a name="create-a-subteam"></a>Een subteam maken
 
-Ga naar de sectie subteams en klik op **subteam toevoegen**. Voer de naam van uw subteam in het dialoog venster in en klik op **Opslaan**.
+Ga naar de sectie **subteams** en klik op **subteam toevoegen**. Voer de naam van uw subteam in het dialoog venster in en klik op **Opslaan**.
 
 ![Naam van subteam](images/1-Teams-2.PNG)
 
@@ -64,9 +64,9 @@ Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteam
 
 ![Scha kelen tussen subteams](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Labels
+## <a name="tags"></a>Tags
 
-Op het tabblad **labels** kunt u&mdash;naast de twee standaard markeringen**isadult** (**a**) en **isracy** (**r**) aangepaste toezicht Tags definiëren. Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
+Op het tabblad **labels** kunt u aangepaste toezicht Tags definiëren naast de twee standaard markeringen voor toezicht &mdash;**isadult** (**a**) en **isracy** (**r**). Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
 
 ![De weer gave Tags, inclusief de selectie vakjes ' is zichtbaar '](images/tags-4-disable.png)
 
@@ -75,8 +75,8 @@ Op het tabblad **labels** kunt u&mdash;naast de twee standaard markeringen**isad
 Als u een nieuwe tag wilt maken, moet u een korte code, naam en beschrijving in de desbetreffende velden invoeren.
 
 - **Korte code**: Voer een code van twee letters in voor de tag. Voor beeld: **CB**
-- **Naam**: Voer in kleine letters zonder spaties een korte en beschrijvende label naam in. Voor beeld: **isbullying**.
-- **Beschrijving**: (optioneel) Voer een beschrijving in van het type inhoud dat door de tag wordt doel. Voorbeeld: **Afbeeldingen of instanties van Cyber Bullying**.
+- **Naam**: Voer een korte en beschrijvende label naam in in kleine letters zonder spaties. Voor beeld: **isbullying**.
+- **Beschrijving**: (optioneel) Voer een beschrijving in van het type inhoud dat door de tag wordt doel. Voor beeld: **afbeeldingen of instanties van Cyber Bullying**.
 
 Klik op **toevoegen** om een tag toe te voegen en klik op **Opslaan** wanneer u klaar bent met het maken van tags.
 
@@ -88,14 +88,14 @@ U kunt aangepaste tags verwijderen door het prullenbak pictogram naast hun verme
 
 ## <a name="connectors"></a>Connectors
 
-Op het tabblad connectors kunt u uw connectors beheren. Dit zijn service-specifieke invoeg toepassingen die inhoud op verschillende manieren kunnen verwerken als onderdeel van [werk stromen](../review-api.md#workflows)voor inhoud.
+Op het tabblad **connectors** kunt u uw connectors beheren. Dit zijn service-specifieke invoeg toepassingen die inhoud op verschillende manieren kunnen verwerken als onderdeel van [werk stromen](../review-api.md#workflows)voor inhoud.
 
-De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als volwassene of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, op voor waarde dat u referenties voor de respectieve services hebt (om [Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview) bijvoorbeeld de face-API-connector te gebruiken).
+De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, op voor waarde dat u referenties voor de respectieve services hebt (om [Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview) bijvoorbeeld de face-API-connector te gebruiken).
 
 Het [hulp programma voor beoordeling](./human-in-the-loop.md) bevat de volgende connectors:
 
-- Emotion-API (preview-versie)
-- Face-API
+- Emotion-API
+- Face API
 - PhotoDNA-Cloud service
 - Tekstanalyse-API
 
@@ -105,7 +105,7 @@ Als u een connector wilt toevoegen (en deze beschikbaar wilt maken voor gebruik 
 
 ![Instellingen voor Content Moderator connectors](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Werkstromen
 
 Op het tabblad **werk stromen** kunt u uw [werk stromen](../review-api.md#workflows)beheren. Werk stromen zijn Cloud filters voor inhoud en ze werken met connectors om inhoud op verschillende manieren te sorteren en de juiste acties uit te voeren. Hier kunt u uw werk stromen definiëren, bewerken en testen. Zie [werk stromen definiëren en gebruiken](Workflows.md) voor richt lijnen voor informatie over hoe u dit doet.
 
@@ -125,7 +125,7 @@ Als u een [Content moderator resource](https://ms.portal.azure.com/#create/Micro
 
 ![Content Moderator sleutels in de Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Ga op het tabblad controle van het [hulp programma](https://contentmoderator.cognitive.microsoft.com)naar het deel venster **werk stroom instellingen** , selecteer **bewerken**en plak uw sleutel in het veld **OCP-APIM-Subscription-Key** . Nu gebruiken werk stromen die de toezicht-Api's aanroepen, uw Azure-referentie.
+Ga op het tabblad controle **van het** [hulp programma](https://contentmoderator.cognitive.microsoft.com)naar het deel venster **werk stroom instellingen** , selecteer **bewerken**en plak uw sleutel in het veld **OCP-APIM-Subscription-Key** . Nu gebruiken werk stromen die de toezicht-Api's aanroepen, uw Azure-referentie.
 
 > [!NOTE]
 > De andere twee velden in het deel venster **werk stroom instellingen** zijn voor aangepaste termen en lijsten met installatie kopieën. Raadpleeg de hand leidingen voor [aangepaste voor waarden](../try-terms-list-api.md) of [aangepaste afbeeldingen](../try-image-list-api.md) voor meer informatie.

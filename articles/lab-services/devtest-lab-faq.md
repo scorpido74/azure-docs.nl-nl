@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318107"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565337"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
 
-## <a name="blog-post"></a>Blog bericht
+## <a name="blog-post"></a>Blogpost
 Onze DevTest Labs-team blog is vanaf 20 maart 2019 buiten gebruik gesteld. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Waar kan ik de onderdelen updates nu volgen?
@@ -46,7 +46,7 @@ Onze Twitter-ingang:[@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen helpen om een antwoord te vinden.
 
-- Plaats een vraag aan het einde van deze veelgestelde vragen. Neem contact op met het Azure cache-team en andere leden van de community over dit artikel.
+- Plaats een vraag aan het einde van deze veelgestelde vragen. 
 - Als u een breder publiek wilt bereiken, plaatst u een vraag op het [MSDN-forum van Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Neem contact op met het Azure DevTest Labs team en andere leden van de community.
 - Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure DevTest Labs gebruikers stem](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 

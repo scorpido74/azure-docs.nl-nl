@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309514"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Azure Container Registry gebruiken als een helm-opslag plaats voor uw toepassings grafieken
@@ -31,7 +31,7 @@ In dit artikel leest u hoe u een helm-grafiek opslagplaats kunt gebruiken die is
 Als u de stappen in dit artikel wilt uitvoeren, moet aan de volgende vereisten worden voldaan:
 
 - **Azure container Registry** : een container register maken in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
-- **Helm client versie 2.11.0 (geen RC-versie) of later** -Voer `helm version` uit om uw huidige versie te vinden. U hebt ook een helm-server (Tiller) nodig die is geïnitialiseerd in een Kubernetes-cluster. Als dat nodig is, kunt u [een Azure Kubernetes-service cluster][aks-quickstart]. For more information on how to install and upgrade Helm, see [Installing Helm][helm-install]maken.
+- **Helm client versie 2.11.0 (geen RC-versie) of later** -Voer `helm version` uit om uw huidige versie te vinden. U hebt ook een helm-server (Tiller) nodig die is geïnitialiseerd in een Kubernetes-cluster. Als dat nodig is, kunt u [een Azure Kubernetes-service cluster maken][aks-quickstart]. Zie Installing [helm][helm-install](Engelstalig) voor meer informatie over het installeren en upgraden van helm.
 - **Azure CLI-versie 2.0.46 of hoger** : `az --version` Voer uit om de versie te vinden. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="add-a-repository-to-helm-client"></a>Een opslag plaats toevoegen aan de helm-client
@@ -124,7 +124,7 @@ az acr helm list
 
 ## <a name="show-information-for-a-helm-chart"></a>Informatie voor een helm-grafiek weer geven
 
-Als u informatie wilt weer geven voor een specifieke grafiek in de opslag plaats, kunt u de gewone helm-client opnieuw gebruiken. Als u informatie wilt weer geven voor de grafiek met `helm inspect`de naam WordPress, gebruikt u.
+Als u informatie wilt weer geven voor een specifieke grafiek in de opslag plaats, kunt u de gewone helm-client opnieuw gebruiken. Als u informatie wilt weer geven voorde grafiek met `helm inspect`de naam WordPress, gebruikt u.
 
 ```console
 helm inspect <acrName>/wordpress

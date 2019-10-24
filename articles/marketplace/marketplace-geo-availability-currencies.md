@@ -1,24 +1,24 @@
 ---
-title: Geografische beschikbaarheid en ondersteuning voor de | Azure
-description: Geografische beschikbaarheid in Azure Marketplace en AppSource
+title: Geografische Beschik baarheid en valuta ondersteuning | Azure
+description: Geografische Beschik baarheid in azure Marketplace en AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938261"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619966"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Geografische beschikbaarheid en ondersteuning
+# <a name="geographic-availability-and-currency-support"></a>Geografische Beschik baarheid en valuta ondersteuning
 
-Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedefinieerd door de klant factuuradres en transacties 17 valuta's kunnen worden uitgevoerd. De tabel hieronder worden elke ondersteunde geografische locatie, de [ISO 3166 twee cijfers alpha code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), en de toegewezen valuta.
+Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geografies zoals gedefinieerd door het factuur adres van de klant, en trans acties kunnen worden uitgevoerd in 17 valuta's. De volgende tabel bevat een lijst met de ondersteunde geografische locatie, de bijbehorende [ISO 3166 2-digits-code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
 
-|   De naam van het land/regio               |   ISO-2   |   Valuta   |
+|   Naam van land/regio               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | Afghanistan                         | AF        | USD          |
 | Albanië                             | AL        | USD          |
@@ -26,7 +26,7 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentinië                           | AR        | USD          |
-| Armenië                             | AM        | USD          |
+| Armenië                             | a.m.        | USD          |
 | Australië                           | AU        | AUD          |
 | Oostenrijk                             | AT        | EUR          |
 | Azerbeidzjan                          | AZ        | USD          |
@@ -38,7 +38,7 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Belize                              | BZ        | USD          |
 | Bermuda                             | BM        | USD          |
 | Bolivia                             | BO        | USD          |
-| Bosnië en Herzegovina              | BA        | USD          |
+| Bosnië-Herzegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
 | Brazilië                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
@@ -46,15 +46,15 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Kameroen                            | CM        | USD          |
 | Canada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
-| Kaaimaneilanden                      | KY        | USD          |
+| Caymaneilanden                      | KY        | USD          |
 | Chili                               | CL        | USD          |
 | Colombia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
-| Ivoorkust                       | CI        | USD          |
-| Kroatië                             | HR        | EUR          |
+| Cote d'Ivoire                       | CI        | USD          |
+| Kroatië (Hrvatska)                             | HR        | EUR          |
 | Curaçao                             | CW        | USD          |
 | Cyprus                              | CY        | EUR          |
-| Tsjechië                      | CZ        | EUR          |
+| Tsjechische Republiek                      | CZ        | EUR          |
 | Denemarken                             | DK        | DKK          |
 | Dominicaanse Republiek                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -62,11 +62,11 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | El Salvador                         | SV        | USD          |
 | Estland                             | EE        | EUR          |
 | Ethiopië                            | ET        | USD          |
-| Faeröer                       | FO        | DKK          |
+| Faröer                       | FO        | DKK          |
 | Fiji                                | FJ        | AUD          |
 | Finland                             | FI        | EUR          |
 | Frankrijk                              | FR        | EUR          |
-| Georgië                             | GE        | USD          |
+| Georgia                             | GE        | USD          |
 | Duitsland                             | DE        | EUR          |
 | Ghana                               | GH        | USD          |
 | Griekenland                              | GR        | EUR          |
@@ -76,17 +76,17 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Hongarije                             | HU        | EUR          |
 | IJsland                             | IS        | EUR          |
 | India                               | IN        | INR          |
-| Indonesië                           | Id        | USD          |
+| Indonesië                           | id        | USD          |
 | Irak                                | IQ        | USD          |
 | Ierland                             | IE        | EUR          |
 | Israël                              | IL        | USD          |
-| Italië                               | IT        | EUR          |
+| Italië                               | it        | EUR          |
 | Jamaica                             | JM        | USD          |
 | Japan                               | JP        | JPY          |
 | Jordanië                              | JO        | USD          |
 | Kazachstan                          | KZ        | USD          |
 | Kenia                               | KE        | USD          |
-| Korea (South)                       | KR        | KRW          |
+| Korea (Zuid)                       | KR        | KRW          |
 | Koeweit                              | KW        | USD          |
 | Kirgizië                          | KG        | USD          |
 | Letland                              | LV        | EUR          |
@@ -96,7 +96,7 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Litouwen                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
 | Macau SAR                           | MO        | USD          |
-| Noord Macedonië                     | MK        | USD          |
+| Noord-Macedonië                     | MK        | USD          |
 | Maleisië                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -104,9 +104,9 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Moldavië                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
 | Mongolië                            | MN        | USD          |
-| Montenegro                          | ME        | USD          |
+| Montenegro                          | VERVOLG        | USD          |
 | Marokko                             | MA        | USD          |
-| Namibië                             | N.V.T.        | USD          |
+| Namibië                             | N.v.t.        | USD          |
 | Nepal                               | NP        | USD          |
 | Nederland                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |
@@ -122,13 +122,13 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Filipijnen                         | PH        | USD          |
 | Polen                              | PL        | EUR          |
 | Portugal                            | PT        | EUR          |
-| Puerto Rico                         | PR        | USD          |
+| Porto Rico                         | PR        | USD          |
 | Qatar                               | QA        | USD          |
 | Roemenië                             | RO        | EUR          |
 | Rusland                              | RU        | RUB          |
 | Rwanda                              | RW        | USD          |
 | Saint Kitts en Nevis               | KN        | USD          |
-| Saoedi-Arabië                        | SA        | USD          |
+| Saudi-Arabië                        | SA        | USD          |
 | Senegal                             | SN        | USD          |
 | Servië                              | RS        | USD          |
 | Singapore                           | SG        | USD          |
@@ -140,16 +140,16 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Zweden                              | SE        | SEK          |
 | Zwitserland                         | CH        | CHF          |
 | Taiwan                              | TW        | TWD          |
-| Tadzjikistan                          | TJ        | USD          |
+| Tadzjkistan                          | TJ        | USD          |
 | Tanzania                            | TZ        | USD          |
 | Thailand                            | TH        | USD          |
 | Trinidad en Tobago                 | TT        | USD          |
 | Tunesië                             | TN        | USD          |
 | Turkije                              | TR        | USD          |
 | Turkmenistan                        | TM        | USD          |
-| Vaticaanstad (Vaticaanstad)             | EVALUATIE VAN BEVEILIGINGSPROBLEMEN        | EUR          |
+| Vaticaan stad (Heilige stoel)             | V        | EUR          |
 | Amerikaanse Maagdeneilanden | VI        | USD          |
-| Oeganda                              | UG        | USD          |
+| Uganda                              | UG        | USD          |
 | Oekraïne                             | UA        | USD          |
 | Verenigde Arabische Emiraten                | AE        | USD          |
 | Verenigd Koninkrijk                      | GB        | GBP          |
@@ -158,9 +158,9 @@ Azure Marketplace-aanbiedingen kunnen worden gekocht in 141 regio's, zoals gedef
 | Oezbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | YE        | USD          |
+| Jemen                               | TEZAM        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Voor klanten in Brazilië gebruikt de Marketplace via Cloud Solution Providers (CSP) USD.
+\*Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.

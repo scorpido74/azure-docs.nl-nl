@@ -1,6 +1,6 @@
 ---
-title: Richtlijnen voor het voorbeeld in de SQL-Database-app met meerdere tenants - Wingtip SaaS | Microsoft Docs
-description: Biedt instructies en richtlijnen voor het installeren en uitvoeren van meerdere tenants met de voorbeeldtoepassing die gebruikmaakt van Azure SQL Database, de Wingtip Tickets SaaS-voorbeeld.
+title: Richt lijnen voor het SQL Database voor beeld van een multi tenant-app-Wingtip SaaS | Microsoft Docs
+description: Bevat stappen en richt lijnen voor het installeren en uitvoeren van de voor beeld-multi tenant toepassing die gebruikmaakt van Azure SQL Database, het SaaS-voor beeld van Wingtip tickets.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,63 +10,62 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326251"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570068"
 ---
-# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Algemene richtlijnen voor het werken met Wingtip Tickets voorbeeld-SaaS-apps
+# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Algemene richt lijnen voor het werken met Wingtip tickets voor beelden van SaaS-apps
 
-In dit artikel bevat algemene richtlijnen voor het uitvoeren van de Wingtip Tickets voorbeeld van SaaS-toepassingen die gebruikmaken van Azure SQL Database. 
+Dit artikel bevat algemene richt lijnen voor het uitvoeren van de voor beelden van de SaaS-toepassingen van Wingtip tickets die gebruikmaken van Azure SQL Database. 
 
-## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Downloaden en de blokkering opheffen van de Wingtip Tickets SaaS-scripts
+## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>De SaaS-scripts van de Wingtip tickets downloaden en de blok kering opheffen
 
-Uitvoerbare inhoud (scripts, dll's) mogelijk geblokkeerd door Windows als zip-bestanden worden gedownload vanuit een externe bron en uitgepakt. Bij het uitpakken van de scripts in een zip-bestand, **Volg de stappen hieronder om de blokkering van het ZIP-bestand voor het uitpakken van**. Dit zorgt ervoor dat de scripts mogen worden uitgevoerd.
+Uitvoer bare inhoud (scripts, dll's) wordt mogelijk door Windows geblokkeerd wanneer zip-bestanden worden gedownload vanaf een externe bron en geëxtraheerd. Wanneer u de scripts uit een zip-bestand uitpakt, **volgt u de onderstaande stappen om het zip-bestand te deblokkeren voordat het wordt geëxtraheerd**. Dit zorgt ervoor dat de scripts mogen worden uitgevoerd.
 
-1. Blader naar de Wingtip Tickets SaaS GitHub-opslagplaats voor de database tenants patroon dat u wilt verkennen: 
+1. Blader naar de Wingtip tickets SaaS GitHub opslag plaats voor het data base-pacht patroon dat u wilt verkennen: 
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klik op **klonen of downloaden**.
-3. Klik op **zip downloaden** en sla het bestand.
-4. Met de rechtermuisknop op het zip-bestand en selecteer **eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslagplaats. (ex.) _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. Op de **algemene** tabblad **opheffen van blokkeringen**.
+3. Klik op **zip downloaden** en sla het bestand op.
+4. Klik met de rechter muisknop op het zip-bestand en selecteer **Eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslag plaats. kade. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**.
 6. Klik op **OK**.
-7. Pak de bestanden.
+7. Pak de bestanden uit.
 
-Scripts bevinden zich in de *... \\Learning Modules* map.
+De scripts bevinden zich in de *.. Map\\learning modules* .
 
 
-## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Werken met de Wingtip Tickets PowerShell-scripts
+## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Werken met de Power shell-scripts voor Wingtip tickets
 
-U haalt het meeste uit het voorbeeld moet u Duik in de geleverde scripts. Gebruik onderbrekingspunten en doorloop de scripts uitvoeren en controleren hoe de verschillende SaaS-patronen worden geïmplementeerd. Om eenvoudig de geleverde scripts en modules voor het beste begrijpen, wordt u aangeraden de [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+Als u het voor beeld optimaal wilt benutten, moet u zich in de meegeleverde scripts voordoen. Gebruik onderbrekings punten en bestudeer de scripts wanneer ze worden uitgevoerd en onderzoek hoe de verschillende SaaS-patronen worden geïmplementeerd. We raden u aan de [Power shell-ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)te gebruiken om eenvoudig de meegeleverde scripts en modules voor de beste uitleg te door lopen.
 
-### <a name="update-the-configuration-file-for-your-deployment"></a>Het configuratiebestand voor uw implementatie bijwerken
+### <a name="update-the-configuration-file-for-your-deployment"></a>Het configuratie bestand voor uw implementatie bijwerken
 
-Bewerk de **UserConfig.psm1** -bestand met de resource-groep en gebruiker de waarde die u hebt ingesteld tijdens de implementatie:
+Bewerk het bestand **userconfig. psm1** met de resource groep en gebruikers waarde die u tijdens de implementatie hebt ingesteld:
 
-1. Open de *PowerShell ISE* en laden... \\Learning Modules\\*UserConfig.psm1* 
-2. Update *ResourceGroupName* en *naam* met de specifieke waarden voor uw implementatie (op regel 10 en 11 alleen).
-3. De wijzigingen niet opslaan.
+1. Open de *Power shell-ISE* en laad... Learning modules\\*userconfig. psm1* \\ 
+2. *ResourceGroupName* en *naam* bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
+3. Sla de wijzigingen op.
 
-Instellen van deze waarden hier gewoon zorgt ervoor dat u niet met deze implementatie-specifieke waarden in elk script bijwerken.
+Als u deze waarden hier instelt, hoeft u deze specifieke implementatie waarden in elk script niet bij te werken.
 
-### <a name="execute-the-scripts-by-pressing-f5"></a>De scripts uit te voeren door op F5 te drukken
+### <a name="execute-the-scripts-by-pressing-f5"></a>Voer de scripts uit door op F5 te drukken
 
-Verschillende scripts maken gebruik *$PSScriptRoot* om te navigeren van mappen, en *$PSScriptRoot* wordt pas geëvalueerd wanneer scripts worden uitgevoerd door te drukken **F5**.  Markeren en uitvoeren van een selectie (**F8**) kan fouten veroorzaken, dus druk op **F5** wanneer het uitvoeren van scripts.
+Verschillende scripts gebruiken *$PSScriptRoot* om door mappen te navigeren en *$PSScriptRoot* wordt alleen geëvalueerd wanneer scripts worden uitgevoerd door op **F5**te drukken.  Als u een selectie markeert en uitvoert (**F8**) kan dit leiden tot fouten, dus druk op **F5** bij het uitvoeren van scripts.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Doorloop de scripts stapsgewijs om de implementatie te kunnen bekijken
 
-De beste manier om te begrijpen van de scripts is door het stapsgewijs zien wat ze doen. Bekijk de opgenomen **Demo -** scripts die een eenvoudige werkstroom op hoog niveau volgen. De **Demo -** scripts tonen de stappen die nodig zijn voor elke taak, dus Stel onderbrekingspunten en inzoomen dieper in de afzonderlijke aanroepen voor implementatie-informatie voor de verschillende SaaS-patronen.
+De beste manier om de scripts te begrijpen, is door ze stapsgewijs te door lopen om te zien wat ze doen. Bekijk de meegeleverde **demo** scripts waarmee u een werk stroom op hoog niveau kunt volgen. De **demo** scripts tonen de stappen die nodig zijn om elke taak uit te voeren, dus stel onderbrekings punten in en zoom dieper in op de afzonderlijke aanroepen om de implementatie Details voor de verschillende SaaS-patronen te bekijken.
 
-Tips voor het verkennen en PowerShell-scripts doorlopen:
+Tips voor het verkennen en stapsgewijs door lopen van Power shell-scripts:
 
-- Open **Demo -** scripts in PowerShell ISE.
-- Uitvoeren of doorgaan met **F5** (met behulp van **F8** wordt niet aanbevolen omdat *$PSScriptRoot* wordt niet geëvalueerd wanneer selecties van een script wordt uitgevoerd).
+- Open **demo-** scripts in de Power shell ISE.
+- Uitvoeren of door gaan met **F5** (het gebruik van **F8** wordt niet aanbevolen omdat *$PSScriptRoot* niet wordt geëvalueerd bij het uitvoeren van selecties van een script).
 - Plaats onderbrekingspunten door op een regel te klikken of een regel te selecteren en op **F9** te drukken.
 - Stap over een functie of scriptaanroep heen met **F10**.
 - Stap in een functie of scriptaanroep met **F11**.
@@ -75,48 +74,48 @@ Tips voor het verkennen en PowerShell-scripts doorlopen:
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Bekijk het databaseschema en voer SQL-query’s uit met SSMS
 
-Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) verbinding kunt maken en blader door de toepassingsservers en -databases.
+Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken en te bladeren door de toepassings servers en data bases.
 
-De implementatie heeft in eerste instantie tenants en SQL Database-catalogusservers kunt koppelen aan. De naamgeving van de servers, is afhankelijk van het patroon voor tenants in de database (Zie hieronder voor meer informatie). 
+De implementatie heeft in eerste instantie tenants en catalogus SQL Database servers waarmee verbinding moet worden gemaakt. De naam van de servers is afhankelijk van het data base-pacht patroon (zie hieronder voor specifieke informatie). 
 
-   - **Zelfstandige toepassing:** servers voor elke tenant (ex.) *contosoconcerthall -&lt;gebruiker&gt;*  server) en *catalogus-sa -&lt;gebruiker&gt;*
-   - **Per tenant-database:** *tenants1-dpt -&lt;gebruiker&gt;*  en *catalogus-dpt -&lt;gebruiker&gt;*  servers
-   - **Multitenant-database:** *tenants1-mt -&lt;gebruiker&gt;*  en *catalogus-mt -&lt;gebruiker&gt;*  servers
+   - **Zelfstandige toepassing:** servers voor elke Tenant (bijvoorbeeld *contosoconcerthall-&lt;gebruikers&gt;*  server) en *catalogus-sa-&lt;gebruiker&gt;*
+   - **Data Base per Tenant:** *tenants1-dpt-&lt;gebruikers&gt;*  -en *catalogus-dpt&lt;-&gt; gebruikers* servers
+   - **Multi tenant-Data Base:** *tenants1-MT-&lt;User&gt;*  and *Catalog-MT-&lt;gebruikers&gt;*  servers
 
-Een geslaagde demo-verbinding, zodat alle servers hebben een [firewallregel](sql-database-firewall-configure.md) zodat alle IP-adressen via.
+Om ervoor te zorgen dat de demo verbinding is geslaagd, hebben alle servers een [firewall regel](sql-database-firewall-configure.md) voor het toestaan van alle IP-adressen via.
 
 
-1. Open *SSMS* en maak verbinding met de tenants. Naam van de server, is afhankelijk van de database tenants patroon dat u hebt geselecteerd (Zie hieronder voor meer informatie):
-    - **Zelfstandige toepassing:** servers van afzonderlijke tenants (ex.) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
-    - **Per tenant-database:** *tenants1-dpt -&lt;gebruiker&gt;. database.windows.net*
-    - **Multitenant-database:** *tenants1-mt -&lt;gebruiker&gt;. database.windows.net* 
+1. Open *SSMS* en maak verbinding met de tenants. De server naam is afhankelijk van het patroon van de data base dat u hebt geselecteerd (zie hieronder voor specifieke informatie):
+    - **Zelfstandige toepassing:** servers van afzonderlijke tenants (bv. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
+    - **Data Base per Tenant:** *tenants1-dpt-&lt;User&gt;. database.Windows.net*
+    - **Multi tenant-Data Base:** *tenants1-MT-&lt;User&gt;. database.Windows.net* 
 2. Klik op **Verbinding maken**  > **Database-engine...** :
 
    ![catalogusserver](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Referenties voor demo zijn: Aanmelding = *developer*, wachtwoord = *P\@ssword1*
+3. De referenties van de demo zijn: Login = *ontwikkelaar*, wacht woord *=\@P ssword1*
 
-    De onderstaande afbeelding ziet u de aanmelding voor de *per tenant-Database* patroon. 
+    In de onderstaande afbeelding ziet u de aanmeldings gegevens voor de *Data Base per Tenant* patroon. 
     ![verbinding](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
-4. Herhaal stappen 2-3 en maak verbinding met de catalog-server (Zie hieronder voor specifieke servernamen op basis van de database tenants patroon geselecteerd)
-    - **Zelfstandige toepassing:** *catalogus-sa -&lt;gebruiker&gt;. database.windows.net*
-    - **Per tenant-database:** *catalogus-dpt -&lt;gebruiker&gt;. database.windows.net*
-    - **Multitenant-database:** *catalogus-mt -&lt;gebruiker&gt;. database.windows.net*
+4. Herhaal de stappen 2-3 en maak verbinding met de catalogus server (zie hieronder voor specifieke server namen op basis van het patroon voor de data base-pacht geselecteerd)
+    - **Zelfstandige toepassing:** *Catalog-sa-&lt;User&gt;. database.Windows.net*
+    - **Data Base per Tenant:** *Catalog-dpt-&lt;User&gt;. database.Windows.net*
+    - **Multi tenant-Data Base:** *Catalog-MT-&lt;User&gt;. database.Windows.net*
 
 
-De verbinding is geslaagd ziet u alle servers. Uw lijst met databases mogelijk verschillen, afhankelijk van de tenants die u hebt ingericht.
+Nadat u verbinding hebt gemaakt, ziet u alle servers. De lijst met data bases kan afwijken, afhankelijk van de tenants die u hebt ingericht.
 
-De onderstaande afbeelding ziet u het logboek in voor de *per tenant-Database* patroon.
+In de onderstaande afbeelding ziet u het logboek voor de *Data Base per Tenant* patroon.
 
 ![objectverkenner](media/saas-tenancy-wingtip-app-guidance-tips/object-explorer.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [De Wingtip Tickets zelfstandige SaaS-toepassing implementeren](saas-standaloneapp-get-started-deploy.md)
-- [De Wingtip Tickets SaaS-Database per Tenant-toepassing implementeren](saas-dbpertenant-get-started-deploy.md)
-- [De toepassing Wingtip Tickets SaaS multitenant-Database implementeren](saas-multitenantdb-get-started-deploy.md)
+- [De zelfstandige SaaS-toepassing Wingtip tickets implementeren](saas-standaloneapp-get-started-deploy.md)
+- [De SaaS-data base van Wingtip tickets per Tenant toepassing implementeren](saas-dbpertenant-get-started-deploy.md)
+- [De Wingtip tickets SaaS-toepassing voor meerdere tenants implementeren](saas-multitenantdb-get-started-deploy.md)
 

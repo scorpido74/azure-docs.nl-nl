@@ -1,6 +1,6 @@
 ---
-title: Welkom bij Wingtips app - Azure SQL Database | Microsoft Docs
-description: Meer informatie over database tenants modellen en het voorbeeld Wingtips SaaS-toepassing voor Azure SQL Database in de cloudomgeving.
+title: Welkom bij Wingtips app-Azure SQL Database | Microsoft Docs
+description: Meer informatie over data base-pacht modellen en over de voor beeld-Wingtips SaaS-toepassing voor Azure SQL Database in de cloud omgeving.
 keywords: zelfstudie sql-database
 services: sql-database
 ms.service: sql-database
@@ -11,72 +11,71 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 963d7d44ef3ef77604fc5a9faac479a9e4c91ee6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487360"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570101"
 ---
-# <a name="the-wingtip-tickets-saas-application"></a>De Wingtip Tickets SaaS-toepassing
+# <a name="the-wingtip-tickets-saas-application"></a>De SaaS-toepassing Wingtip tickets
 
-Dezelfde *Wingtip Tickets* SaaS-toepassing is geïmplementeerd in elk van de drie voorbeelden. De app is een eenvoudige gebeurtenis aanbieding en ticketing SaaS-app die gericht is op kleine venues - theaters, stadions, enzovoort. Elke venue is een tenant van de app en de eigen gegevens: venue details, een lijst met gebeurtenissen, klanten, ticket orders, enzovoort.  De app, samen met de management scripts en zelfstudies, brengt een end-to-end SaaS-scenario. Dit omvat inrichting tenants, controleren en beheren van prestaties, Schemabeheer, en cross-tenant-rapportage en analyse.
+Dezelfde *Wingtip tickets* SaaS-toepassing wordt in elk van de drie steek proeven geïmplementeerd. De app is een eenvoudige gebeurtenis vermelding en ticketing SaaS-app die gericht is op kleine locaties, theaters, klaveren enzovoort. Elke locatie is een Tenant van de app en heeft zijn eigen gegevens: locatie Details, lijsten met gebeurtenissen, klanten, ticket orders, enzovoort.  De app, samen met de beheer scripts en zelf studies, demonstreert een end-to-end SaaS-scenario. Dit omvat het inrichten van tenants, het bewaken en beheren van prestaties, schema beheer en het rapporteren van multi tenants en analyses.
 
-## <a name="three-saas-application-and-tenancy-patterns"></a>Drie beheerpatronen voor SaaS-toepassing en tenants
+## <a name="three-saas-application-and-tenancy-patterns"></a>Drie SaaS-toepassingen en pacht patronen
 
-Er zijn drie versies van de app beschikbaar. elk gaat een andere database tenants patroon in op Azure SQL Database.  De eerste maakt gebruik van een zelfstandige toepassing per tenant met een eigen database. De tweede maakt gebruik van een app met meerdere tenants met een database per tenant. Het derde voorbeeld wordt een app met meerdere tenants met shard multitenant-databases.
+Er zijn drie versies van de app beschikbaar; elke verkennen een ander data base-pacht patroon op Azure SQL Database.  De eerste gebruikt een zelfstandige toepassing per Tenant met een eigen data base. De tweede maakt gebruik van een multi tenant-app met een Data Base per Tenant. Het derde voor beeld maakt gebruik van een multi tenant-app met Shard multi tenant-data bases.
 
-![Drie tenants patronen][image-three-tenancy-patterns]
+![Drie pacht patronen][image-three-tenancy-patterns]
 
- Elk voorbeeld bevat de toepassingscode, plus management scripts en zelfstudies die een reeks ontwerp- en -patronen Verken.  Elk voorbeeld wordt geïmplementeerd in minder die vijf minuten.  Alle drie mag geïmplementeerde side-by-side zodat u de verschillen in ontwerp en beheer kunt vergelijken.
+ Elk voor beeld bevat de toepassings code plus beheer scripts en zelf studies die een bereik van ontwerp-en beheer patronen verkennen.  Elk voor beeld implementeert in minder dan vijf minuten.  Alle drie kunnen naast elkaar worden geïmplementeerd, zodat u de verschillen in het ontwerp en het beheer kunt vergelijken.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Zelfstandige toepassing per tenant-patroon
+## <a name="standalone-application-per-tenant-pattern"></a>Zelfstandige toepassing per Tenant patroon
 
-De zelfstandige app per tenant patroon maakt gebruik van een toepassing met één tenant met een database voor elke tenant. Van elke tenant-app, met inbegrip van de database ervan, wordt geïmplementeerd in een afzonderlijke Azure-resourcegroep. De resourcegroep kan worden geïmplementeerd in het abonnement van de serviceprovider of van de tenant-abonnement en beheerd door de provider voor andere gebruikers van de tenant. De zelfstandige app per tenant patroon biedt de grootste isolatie van tenants, maar is doorgaans het meest duur omdat er geen mogelijkheid om resources tussen meerdere tenants te delen.  Dit patroon is zeer geschikt voor toepassingen die mogelijk meer complexe en die zijn geïmplementeerd naar een kleiner aantal tenants.  Bij implementaties op een zelfstandige de app kan worden aangepast voor elke tenant eenvoudiger dan in andere patronen.  
+De zelfstandige app per Tenant patroon gebruikt één Tenant toepassing met een Data Base voor elke Tenant. De app van elke Tenant, met inbegrip van de bijbehorende data base, wordt geïmplementeerd in een afzonderlijke Azure-resource groep. De resource groep kan worden geïmplementeerd in het abonnement van de service provider of het abonnement van de Tenant en worden beheerd door de provider namens de tenants. De zelfstandige app per Tenant patroon biedt de grootste isolatie van tenants, maar is doorgaans de duur van het delen van resources tussen meerdere tenants.  Dit patroon is zeer geschikt voor toepassingen die ingewik kelder zijn en die worden geïmplementeerd op kleinere aantallen tenants.  Met zelfstandige implementaties kan de app gemakkelijker worden aangepast voor elke Tenant dan bij andere patronen.  
 
-Bekijk de [zelfstudies] [ docs-tutorials-for-wingtip-sa] en de code op GitHub [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-sa] en code op github [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
-## <a name="database-per-tenant-pattern"></a>Database per tenant-patroon
+## <a name="database-per-tenant-pattern"></a>Data base per Tenant patroon
 
-De database per tenant patroon is met ingang van serviceproviders die betrokken zijn bij de isolatie van tenants en wilt een gecentraliseerde service waarmee u rendabele gebruik van gedeelde resources uit te voeren. Een database wordt gemaakt voor elke locatie, of de tenant en alle databases worden centraal beheerd. Databases kunnen worden gehost in elastische pools voor rendabele en eenvoudig prestatiebeheer, die gebruikmaakt van de patronen onvoorspelbare werkbelasting van de tenants. Een catalogusdatabase bevat de toewijzing tussen tenants en de bijbehorende databases. Deze toewijzing wordt beheerd met behulp van de beheerfuncties van de shard-kaart van de [elastische Database-clientbibliotheek](sql-database-elastic-database-client-library.md), waarmee u efficiënt beheer van de toepassing.
+De data base per Tenant patroon is van kracht voor service providers die zich bij Tenant isolatie bevinden en willen een gecentraliseerde service uitvoeren die de kosten efficiënt gebruik van gedeelde resources mogelijk maakt. Er wordt een Data Base gemaakt voor elke locatie of Tenant, en alle data bases worden centraal beheerd. Data bases kunnen worden gehost in elastische Pools om rendabel en eenvoudig beheer van prestaties te bieden, die gebruikmaken van de onvoorspelbare werkbelasting patronen van de tenants. Een catalogus database bevat de toewijzing tussen tenants en hun data bases. Deze toewijzing wordt beheerd met behulp van de Shard-kaart beheer functies van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md), die efficiënt verbindings beheer biedt voor de toepassing.
 
-Bekijk de [zelfstudies] [ docs-tutorials-for-wingtip-dpt] en de code op GitHub [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-dpt] en code op github [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
-## <a name="sharded-multi-tenant-database-pattern"></a>Patroon shard multitenant-database
+## <a name="sharded-multi-tenant-database-pattern"></a>Patroon van Shard multi tenant-data base
 
-Databases van meerdere tenants zijn met ingang van serviceproviders lagere kosten per tenant en oké met verminderde tenantisolatie op zoek. Dit patroon maakt het mogelijk grote aantallen tenants verpakken in een individuele database, waardoor de kosten-per-tenant. Bijna oneindige schaalbaarheid mogelijk is met sharding is de tenants voor meerdere databases. Een catalogusdatabase toegewezen tenants aan databases.  
+Multi tenant-data bases zijn effectief voor service providers die op zoek zijn naar lagere kosten per Tenant en kunnen goed werken met beperkte Tenant isolatie. Met dit patroon kan een groot aantal tenants in een afzonderlijke Data Base worden verpakt, waardoor de kosten per Tenant lager zijn. De bijna oneindige schaal is mogelijk door de tenants in meerdere data bases te sharding. Een catalogus database wijst tenants toe aan data bases.  
 
-Dit patroon kan ook een *hybride* model waarin u kunt optimaliseren voor kosten met meerdere tenants in een database of optimaliseren voor isolatie met één tenant in hun eigen database. De keuze kan worden gemaakt op basis van het tenant-per-tenant, hetzij als de tenant ingericht of hoger, zonder gevolgen voor de toepassing is.  Dit model kan effectief worden gebruikt wanneer groepen van tenants moeten anders worden behandeld. Lage kosten tenants kunnen bijvoorbeeld worden toegewezen aan gedeelde databases, terwijl premium-tenants kunnen worden toegewezen aan hun eigen databases. 
+Dit patroon biedt ook een *hybride* model waarin u kunt optimaliseren voor kosten met meerdere tenants in een Data Base, of om te optimaliseren voor isolatie met één Tenant in hun eigen data base. De keuze kan per Tenant worden gemaakt, hetzij wanneer de Tenant is ingericht of op een later tijdstip, zonder dat dit van invloed is op de toepassing.  Dit model kan effectief worden gebruikt wanneer groepen tenants anders moeten worden behandeld. Er kunnen bijvoorbeeld goedkope tenants worden toegewezen aan gedeelde data bases, terwijl Premium-tenants kunnen worden toegewezen aan hun eigen data bases. 
 
-Bekijk de [zelfstudies] [ docs-tutorials-for-wingtip-mt] en de code op GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Bekijk de [zelf studies][docs-tutorials-for-wingtip-mt] en code op github [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>Volgende stappen
 
 #### <a name="conceptual-descriptions"></a>Conceptuele beschrijvingen
 
-- Een meer gedetailleerde uitleg van de tenants toepassingspatronen is beschikbaar op [multitenant SaaS-patronen voor tenants database][saas-tenancy-app-design-patterns-md]
+- Een meer gedetailleerde uitleg van de toepassingsman-patronen is beschikbaar in [multi tenant SaaS data base pacht-patronen][saas-tenancy-app-design-patterns-md]
 
-#### <a name="tutorials-and-code"></a>Zelfstudies en code
+#### <a name="tutorials-and-code"></a>Zelf studies en code
 
-- Zelfstandige app per tenant:
-    - [Zelfstudies voor zelfstandige app][docs-tutorials-for-wingtip-sa].
-    - [Code voor zelfstandige app op GitHub][github-code-for-wingtip-sa].
+- Zelfstandige app per Tenant:
+    - [Zelf studies voor zelfstandige app][docs-tutorials-for-wingtip-sa].
+    - [Code voor zelfstandige app op github][github-code-for-wingtip-sa].
 
-- Database per tenant:
-    - [Zelfstudies voor database per tenant][docs-tutorials-for-wingtip-dpt].
-    - [Code voor de database per tenant op GitHub][github-code-for-wingtip-dpt].
+- Data base per Tenant:
+    - [Zelf studies voor data base per Tenant][docs-tutorials-for-wingtip-dpt].
+    - [Code voor de data base per Tenant op github][github-code-for-wingtip-dpt].
 
-- Een shard met meerdere tenants:
-    - [Zelfstudies voor multitenant shard][docs-tutorials-for-wingtip-mt].
-    - [Code voor shard met meerdere tenants, op GitHub][github-code-for-wingtip-mt].
+- Shard multi tenant:
+    - [Zelf studies voor Shard multi tenant][docs-tutorials-for-wingtip-mt].
+    - [Code voor Shard multi-tenant op github][github-code-for-wingtip-mt].
 
 
 
 <!-- Image references. -->
 
-[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Drie tenants patronen."
+[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Drie pacht-patronen."
 
 <!-- Docs.ms.com references. -->
 

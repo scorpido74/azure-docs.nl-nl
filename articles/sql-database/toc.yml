@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Een beheerd exemplaar aan een failovergroep toevoegen
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: On-premises gebruikers en groepen migreren
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: Concepten
       items:
         - name: Beheer API-referentiemateriaal

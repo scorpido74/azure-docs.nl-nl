@@ -1,9 +1,9 @@
 ---
-title: Een bestaand uitvoerbaar bestand implementeren naar Azure Service Fabric | Microsoft Docs
-description: Informatie over het verpakken van een bestaande toepassing als gast uitvoerbare bestanden, zodat deze kan worden geïmplementeerd in een Service Fabric-cluster.
+title: Een bestaand uitvoerbaar bestand implementeren in azure Service Fabric | Microsoft Docs
+description: Meer informatie over het inpakken van een bestaande toepassing als een uitvoerbaar gast bestand, zodat het kan worden geïmplementeerd in een Service Fabric cluster.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,86 +13,86 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: aljo
-ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393532"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599662"
 ---
-# <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakket maken en implementeren van een bestaand uitvoerbaar bestand naar Service Fabric
-Bij het verpakken van een bestaand uitvoerbaar bestand als een [Gast kan worden uitgevoerd](service-fabric-guest-executables-introduction.md), kunt u ofwel een Visual Studio-projectsjabloon gebruiken of [handmatig maken van het toepassingspakket](#manually). Met behulp van Visual Studio, worden de toepassing pakketstructuur en de manifest-bestanden door de nieuwe projectsjabloon, maken voor u gemaakt.
+# <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric
+Als u een bestaand uitvoerbaar bestand inpakt als uitvoerbaar [gast bestand](service-fabric-guest-executables-introduction.md), kunt u kiezen of u een Visual Studio-project sjabloon wilt gebruiken of dat u [het toepassings pakket hand matig wilt maken](#manually). Met Visual Studio worden de structuur van het toepassings pakket en de manifest bestanden gemaakt door de nieuwe project sjabloon voor u.
 
 > [!TIP]
-> De eenvoudigste manier om het inpakken van een bestaande Windows uitvoerbare bestand in een service is het gebruik van Visual Studio en op Linux gebruiken Yeoman
+> De eenvoudigste manier om een bestaand Windows-uitvoerbaar bestand te verpakken in een-service is door Visual Studio en Linux te gebruiken voor het gebruik van Yeoman
 >
 
-## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Visual Studio gebruiken om te verpakken en implementeren van een bestaand uitvoerbaar bestand
-Visual Studio biedt een Service Fabric-servicesjabloon om u te helpen bij het implementeren van een door gasten uitvoerbare bestanden in een Service Fabric-cluster.
+## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Visual Studio gebruiken om een bestaand uitvoerbaar bestand te verpakken en te implementeren
+Visual Studio biedt een Service Fabric service sjabloon waarmee u een uitvoerbaar gast bestand kunt implementeren in een Service Fabric-cluster.
 
-1. Kies **bestand** > **nieuw Project**, en maak een Service Fabric-toepassing.
-2. Kies **Gast kan worden uitgevoerd** als de servicesjabloon.
-3. Klik op **Bladeren** voor het selecteren van de map met het uitvoerbare bestand en vul in de rest van de parameters voor het maken van de service.
-   * *Gedrag Codepakket code*. Kan worden ingesteld om te kopiëren van de inhoud van de map aan de Visual Studio-Project, dit is handig als het uitvoerbare bestand niet verandert. Als u verwacht het uitvoerbare bestand dat te wijzigen en de mogelijkheid om op te halen nieuwe builds dynamisch wilt, kunt u in plaats daarvan een koppeling naar de map. U kunt de gekoppelde mappen gebruiken bij het maken van het project voor een toepassing in Visual Studio. Deze koppelingen naar de bronlocatie van binnen het project, waardoor het mogelijk dat u bij het bijwerken van de door gasten uitvoerbare bestanden in de bron-doel. Deze updates worden onderdeel van het toepassingspakket op build.
-   * *Programma* Hiermee geeft u het uitvoerbare bestand dat moet worden uitgevoerd om de service te starten.
-   * *Argumenten* Hiermee geeft u de argumenten die moeten worden doorgegeven aan het uitvoerbare bestand. Een lijst met parameters met argumenten kan zijn.
-   * *WorkingFolder* Hiermee geeft u de werkmap voor het proces dat moet worden gestart. U kunt drie waarden opgeven:
-     * `CodeBase` Hiermee geeft u aan dat de werkmap moet worden ingesteld op de codemap in het toepassingspakket is gaan (`Code` map die wordt weergegeven in de structuur van het vorige bestand).
-     * `CodePackage` Hiermee geeft u aan dat de werkmap moet worden ingesteld op de hoofdmap van het toepassingspakket is gaan (`GuestService1Pkg` wordt weergegeven in de structuur van het vorige bestand).
-     * `Work` Hiermee geeft u op dat de bestanden worden geplaatst in een submap met de naam werk.
+1. Kies **bestand** > **Nieuw project**en maak een service Fabric-toepassing.
+2. Kies **uitvoer bare gast** als service sjabloon.
+3. Klik op **Bladeren** om de map met het uitvoer bare bestand te selecteren en vul de overige para meters in om de service te maken.
+   * *Gedrag van code pakket*. Kan zo worden ingesteld dat alle inhoud van uw map naar het Visual Studio-project wordt gekopieerd. Dit is handig als het uitvoer bare bestand niet wordt gewijzigd. Als u verwacht dat het uitvoer bare bestand wordt gewijzigd en u de mogelijkheid wilt bieden om nieuwe builds dynamisch op te halen, kunt u in plaats daarvan een koppeling naar de map maken. U kunt gekoppelde mappen gebruiken bij het maken van het toepassings project in Visual Studio. Dit is een koppeling naar de bron locatie vanuit het project, zodat u het uitvoer bare gast bestand kunt bijwerken in de bron bestemming. Deze updates worden onderdeel van het toepassings pakket bij het bouwen.
+   * Het *programma* geeft het uitvoer bare bestand op dat moet worden uitgevoerd om de service te starten.
+   * *Argumenten* Hiermee geeft u de argumenten op die moeten worden door gegeven aan het uitvoer bare bestand. Dit kan een lijst met para meters met argumenten zijn.
+   * *WorkingFolder* Hiermee geeft u de werkmap op voor het proces dat wordt gestart. U kunt drie waarden opgeven:
+     * `CodeBase`geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket (`Code` map die in de voor gaande bestands structuur wordt weer gegeven).
+     * `CodePackage`Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket (`GuestService1Pkg` Zie de voor gaande bestands structuur).
+     * `Work`Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
 4. Geef de service een naam en klik op **OK**.
-5. Als uw service heeft een eindpunt voor communicatie nodig, kunt u nu het protocol, de poort en het type toevoegen aan het bestand ServiceManifest.xml. Bijvoorbeeld: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
-6. U kunt nu het pakket en publiceren van actie op basis van uw lokale cluster door het opsporen van fouten in de oplossing in Visual Studio. Wanneer u klaar bent, kunt u de toepassing in een extern cluster publiceren of Controleer in de oplossing voor broncodebeheer.
-7. Lezen [controleren van de toepassing wordt uitgevoerd](#check-your-running-application) voor informatie over het weergeven van de Gast uitvoerbare service die wordt uitgevoerd in Service Fabric Explorer.
+5. Als uw service een eind punt voor communicatie nodig heeft, kunt u nu het Protocol, de poort en het type toevoegen aan het bestand ServiceManifest. XML. Bijvoorbeeld: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+6. U kunt nu de pakket-en publicatie actie voor uw lokale cluster gebruiken door de oplossing in Visual Studio te debuggen. Wanneer u klaar bent, kunt u de toepassing publiceren naar een extern cluster of de oplossing inchecken voor broncode beheer.
+7. Lees [uw actieve toepassing controleren](#check-your-running-application) om te zien hoe u de uitvoer bare gast service kunt weer geven die wordt uitgevoerd in service Fabric Explorer.
 
-Zie voor een overzicht voorbeeld [uw eerste Gast uitvoerbare toepassing maken met Visual Studio](quickstart-guest-app.md).
+Zie [uw eerste uitvoer bare gast toepassing maken met Visual Studio](quickstart-guest-app.md)voor een voorbeeld scenario.
 
-## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Gebruik van Yeoman pakket en de implementatie van een bestaand uitvoerbaar bestand op Linux
+## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Yeoman gebruiken om een bestaand uitvoerbaar bestand in Linux te verpakken en te implementeren
 
-De procedure voor het maken en implementeren van een door gasten uitvoerbare bestanden in Linux is hetzelfde als bij het implementeren van een csharp of java-toepassing.
+De procedure voor het maken en implementeren van een uitvoerbaar gast bestand op Linux is hetzelfde als het implementeren van een csharp-of Java-toepassing.
 
 1. Typ in een terminal `yo azuresfguest`.
 2. Geef uw toepassing een naam.
-3. Noem uw service en geef de details op zoals pad van het uitvoerbare bestand en de toepassing moet worden aangeroepen met parameters.
+3. Noem uw service en geef de details op, inclusief het pad van het uitvoer bare bestand en de para meters die moeten worden aangeroepen met.
 
-Yeoman maakt een toepassingspakket met de juiste toepassing en -manifestbestanden samen met het installeren en verwijderen van scripts.
+Yeoman maakt een toepassings pakket met de juiste toepassings-en manifest bestanden samen met scripts voor installeren en verwijderen.
 
 <a id="manually"></a>
 
-## <a name="manually-package-and-deploy-an-existing-executable"></a>Handmatig verpakken en implementeren van een bestaand uitvoerbaar bestand
-Het proces van het inpakken van handmatig een Gast kan worden uitgevoerd, is gebaseerd op de volgende algemene stappen:
+## <a name="manually-package-and-deploy-an-existing-executable"></a>Een bestaand uitvoerbaar pakket hand matig inpakken en implementeren
+Het proces van het hand matig uitpakken van een gast uitvoer bare bestand is gebaseerd op de volgende algemene stappen:
 
-1. De mapstructuur pakket maken.
-2. De code en configuratiebestanden van de toepassing toevoegen.
-3. Bewerk het manifestbestand van de service.
-4. Bewerk het manifestbestand van de toepassing.
+1. Maak de mapstructuur van het pakket.
+2. Voeg de code-en configuratie bestanden van de toepassing toe.
+3. Bewerk het bestand met de service manifest.
+4. Bewerk het manifest bestand van de toepassing.
 
 <!--
 >[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
 -->
 
-### <a name="create-the-package-directory-structure"></a>De mapstructuur pakket maken
-U kunt beginnen met het maken van de directory-structuur, zoals beschreven in [inpakken van een Azure Service Fabric-toepassing](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
+### <a name="create-the-package-directory-structure"></a>De mapstructuur van het pakket maken
+U kunt beginnen met het maken van de mapstructuur, zoals beschreven in [een Azure service Fabric-app inpakken](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
 
-### <a name="add-the-applications-code-and-configuration-files"></a>De code en configuratiebestanden van de toepassing toevoegen
-Nadat u de mapstructuur hebt gemaakt, kunt u de code van de toepassing en configuratiebestanden onder de code en config-mappen toevoegen. U kunt ook extra mappen of submappen onder de code of configuratieversie mappen maken.
+### <a name="add-the-applications-code-and-configuration-files"></a>De code-en configuratie bestanden van de toepassing toevoegen
+Nadat u de mapstructuur hebt gemaakt, kunt u de code-en configuratie bestanden van de toepassing toevoegen aan de code-en configuratie mappen. U kunt ook aanvullende directory's of submappen maken onder de code of de configuratie mappen.
 
-Service Fabric biedt een `xcopy` van de inhoud van de hoofdmap van toepassing, zodat er geen vooraf gedefinieerde structuur te gebruiken dan het maken van de twee bovenste directory's, code en -instellingen. (U kunt kiezen verschillende namen als u wilt. Meer informatie vindt u in de volgende sectie.)
+Service Fabric voert een `xcopy` van de inhoud uit van de hoofdmap van de toepassing, dus er is geen vooraf gedefinieerde structuur voor het maken van twee meest populaire directory's, code en instellingen. (U kunt desgewenst verschillende namen kiezen. Meer informatie vindt u in de volgende sectie.)
 
 > [!NOTE]
-> Zorg ervoor dat u alle bestanden en afhankelijkheden die de toepassing nodig heeft. Service Fabric kopieert de inhoud van het toepassingspakket op alle knooppunten in het cluster waar services van de toepassing gaat worden geïmplementeerd. Het pakket bevat de code die de toepassing nodig heeft om uit te voeren. Niet wordt ervan uitgegaan dat er al de afhankelijkheden zijn geïnstalleerd.
+> Zorg ervoor dat u alle bestanden en afhankelijkheden opneemt die de toepassing nodig heeft. Service Fabric kopieert de inhoud van het toepassings pakket op alle knoop punten in het cluster waar de services van de toepassing zullen worden geïmplementeerd. Het pakket moet alle code bevatten die de toepassing nodig heeft om uit te voeren. Ga er niet van uit dat de afhankelijkheden al zijn geïnstalleerd.
 >
 >
 
-### <a name="edit-the-service-manifest-file"></a>Het service manifest-bestand bewerken
-De volgende stap is het bewerken van het manifestbestand van de service met de volgende informatie:
+### <a name="edit-the-service-manifest-file"></a>Het service manifest bestand bewerken
+De volgende stap is het bewerken van het service manifest bestand voor het toevoegen van de volgende gegevens:
 
-* De naam van het type van de service. Dit is een ID die gebruikmaakt van Service Fabric om een service te identificeren.
-* De opdracht gebruiken om te starten van de toepassing (ExeHost).
-* Elk script dat worden uitgevoerd moet voor het instellen van de toepassing (SetupEntrypoint).
+* De naam van het Service type. Dit is een ID die Service Fabric gebruikt voor het identificeren van een service.
+* De opdracht die moet worden gebruikt om de toepassing te starten (ExeHost).
+* Elk script dat moet worden uitgevoerd om de toepassing in te stellen (SetupEntrypoint).
 
-Hier volgt een voorbeeld van een `ServiceManifest.xml` bestand:
+Hier volgt een voor beeld van een `ServiceManifest.xml` bestand:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -122,7 +122,7 @@ Hier volgt een voorbeeld van een `ServiceManifest.xml` bestand:
 </ServiceManifest>
 ```
 
-De volgende secties gaat over de verschillende onderdelen van het bestand dat u nodig hebt om bij te werken.
+De volgende secties gaan over de verschillende onderdelen van het bestand dat u moet bijwerken.
 
 #### <a name="update-servicetypes"></a>ServiceTypes bijwerken
 ```xml
@@ -131,17 +131,17 @@ De volgende secties gaat over de verschillende onderdelen van het bestand dat u 
 </ServiceTypes>
 ```
 
-* U kunt een willekeurige naam die u wilt gebruiken voor kiezen `ServiceTypeName`. De waarde wordt gebruikt de `ApplicationManifest.xml` bestand om de service te identificeren.
-* Geef `UseImplicitHost="true"`. Dit kenmerk wordt Service Fabric aan dat de service is gebaseerd op een zelfstandige app, zodat alle Service Fabric-behoeften te doen als een proces te starten en de status controleren.
+* U kunt elke gewenste naam kiezen voor `ServiceTypeName`. De waarde wordt in het `ApplicationManifest.xml` bestand gebruikt om de service te identificeren.
+* Opgeven `UseImplicitHost="true"`. Met dit kenmerk wordt Service Fabric dat de service is gebaseerd op een zelfvoorziene app, dus alle Service Fabric moeten worden gestart om het te kunnen starten en de status ervan te controleren.
 
-#### <a name="update-codepackage"></a>CodePackage bijwerken
-Het element CodePackage Hiermee geeft u de locatie (en -versie) van de code van de service.
+#### <a name="update-codepackage"></a>Code package bijwerken
+Het code package-element geeft de locatie (en versie) van de code van de service op.
 
 ```xml
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-De `Name` element wordt gebruikt om op te geven van de naam van de map in het toepassingspakket met de code van de service. `CodePackage` heeft ook de `version` kenmerk. Dit kan worden gebruikt om op te geven van de versie van de code en kan ook worden gebruikt om upgradecode van de service met behulp van de application lifecycle management-infrastructuur in Service Fabric.
+Het `Name` element wordt gebruikt om de naam op te geven van de map in het toepassings pakket met de code van de service. `CodePackage`heeft ook het `version` kenmerk. Dit kan worden gebruikt om de versie van de code op te geven, en kan ook worden gebruikt om de code van de service bij te werken met behulp van de infra structuur voor toepassings levenscyclus beheer in Service Fabric.
 
 #### <a name="optional-update-setupentrypoint"></a>Optioneel: SetupEntrypoint bijwerken
 ```xml
@@ -151,13 +151,13 @@ De `Name` element wordt gebruikt om op te geven van de naam van de map in het to
    </ExeHost>
 </SetupEntryPoint>
 ```
-Het element SetupEntryPoint wordt gebruikt om op te geven van een uitvoerbaar bestand of batch-bestand dat moet worden uitgevoerd voordat de code van de service wordt gestart. Dit is een optionele stap zodat deze niet hoeft te worden opgenomen als er geen initialisatie vereist. De SetupEntryPoint wordt uitgevoerd telkens wanneer de service opnieuw is gestart.
+Het element SetupEntryPoint wordt gebruikt om een uitvoerbaar of batch bestand op te geven dat moet worden uitgevoerd voordat de code van de service wordt gestart. Het is een optionele stap, dus deze hoeft niet te worden opgenomen als er geen initialisatie vereist is. De SetupEntryPoint wordt uitgevoerd telkens wanneer de service opnieuw wordt gestart.
 
-Er is slechts één SetupEntryPoint zodat installatiescripts worden gegroepeerd in een één batch-bestand moeten als de installatie van de toepassing meerdere scripts vereist. Elk type bestand kan worden uitgevoerd door de SetupEntryPoint: uitvoerbare bestanden, batch-bestanden en PowerShell-cmdlets. Zie voor meer informatie, [SetupEntryPoint configureren](service-fabric-application-runas-security.md).
+Er is slechts één SetupEntryPoint, dus installatie scripts moeten worden gegroepeerd in één batch bestand als voor de installatie van de toepassing meerdere scripts zijn vereist. De SetupEntryPoint kan elk type bestand uitvoeren: uitvoer bare bestanden, batch bestanden en Power shell-cmdlets. Zie [Configure SetupEntryPoint](service-fabric-application-runas-security.md)(Engelstalig) voor meer informatie.
 
-In het voorgaande voorbeeld de wordt uitgevoerd een batchbestand met de naam van de SetupEntryPoint `LaunchConfig.cmd` die bevindt zich in de `scripts` submap van de codemap (ervan uitgaande dat het element WorkingFolder is ingesteld op CodeBase).
+In het vorige voor beeld voert de SetupEntryPoint een batch-bestand `LaunchConfig.cmd` uit dat is aangeroepen in `scripts` de submap van de map code (ervan uitgaande dat het element WorkingFolder is ingesteld op code base).
 
-#### <a name="update-entrypoint"></a>Update EntryPoint
+#### <a name="update-entrypoint"></a>Entry point bijwerken
 ```xml
 <EntryPoint>
   <ExeHost>
@@ -168,42 +168,42 @@ In het voorgaande voorbeeld de wordt uitgevoerd een batchbestand met de naam van
 </EntryPoint>
 ```
 
-De `EntryPoint` element in het manifestbestand van de service wordt gebruikt om op te geven over het starten van de service.
+Het `EntryPoint` element in het service manifest bestand wordt gebruikt om op te geven hoe de service moet worden gestart.
 
-De `ExeHost` element Hiermee geeft u het uitvoerbare bestand (en de argumenten) die moet worden gebruikt voor het starten van de service. U kunt eventueel toevoegen de `IsExternalExecutable="true"` kenmerk te `ExeHost` om aan te geven dat het programma een externe uitvoerbaar bestand buiten het codepakket. Bijvoorbeeld `<ExeHost IsExternalExecutable="true">`.
+Het `ExeHost` element geeft het uitvoer bare bestand (en de argumenten) op dat moet worden gebruikt om de service te starten. U kunt het `IsExternalExecutable="true"` kenmerk eventueel toevoegen aan `ExeHost` om aan te geven dat het programma een extern uitvoerbaar bestand is dat buiten het code pakket is. Bijvoorbeeld `<ExeHost IsExternalExecutable="true">`.
 
-* `Program` Hiermee geeft u de naam van het uitvoerbare bestand dat de service moet worden gestart.
-* `Arguments` Hiermee geeft u de argumenten die moeten worden doorgegeven aan het uitvoerbare bestand. Een lijst met parameters met argumenten kan zijn.
-* `WorkingFolder` Hiermee geeft u de werkmap voor het proces dat moet worden gestart. U kunt drie waarden opgeven:
-  * `CodeBase` Hiermee geeft u aan dat de werkmap moet worden ingesteld op de codemap in het toepassingspakket is gaan (`Code` Active directory in de structuur van het vorige bestand).
-  * `CodePackage` Hiermee geeft u aan dat de werkmap moet worden ingesteld op de hoofdmap van het toepassingspakket is gaan (`GuestService1Pkg` in de structuur van het vorige bestand).
-    * `Work` Hiermee geeft u op dat de bestanden worden geplaatst in een submap met de naam werk.
+* `Program`Hiermee geeft u de naam van het uitvoer bare bestand op waarmee de service moet worden gestart.
+* `Arguments`Hiermee geeft u de argumenten op die moeten worden door gegeven aan het uitvoer bare bestand. Dit kan een lijst met para meters met argumenten zijn.
+* `WorkingFolder`Hiermee geeft u de werkmap op voor het proces dat wordt gestart. U kunt drie waarden opgeven:
+  * `CodeBase`geeft aan dat de werkmap wordt ingesteld op de code Directory in het toepassings pakket (`Code` map in de voor gaande bestands structuur).
+  * `CodePackage`Hiermee geeft u op dat de werkmap wordt ingesteld op de hoofdmap van het toepassings pakket (`GuestService1Pkg` in de voor gaande bestands structuur).
+    * `Work`Hiermee geeft u op dat de bestanden in een submap met de naam werk worden geplaatst.
 
-De WorkingFolder is handig om de juiste werkmap zo instellen dat relatieve paden kunnen worden gebruikt door de toepassing of de initialisatie van scripts.
+De WorkingFolder is handig om de juiste werkmap in te stellen, zodat relatieve paden kunnen worden gebruikt door de toepassing of initialisatie scripts.
 
-#### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Bijwerken van eindpunten en registreren bij Naming-Service voor communicatie
+#### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Eind punten bijwerken en registreren bij Naming Service voor communicatie
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />
 </Endpoints>
 
 ```
-In het voorgaande voorbeeld wordt de `Endpoint` element Hiermee geeft u de eindpunten die de toepassing kan luisteren. In dit voorbeeld wordt de Node.js-toepassing luistert naar http op poort 3000.
+In het vorige voor beeld bevat `Endpoint` het element de eind punten waarop de toepassing kan Luis teren. In dit voor beeld luistert de node. js-toepassing op http op poort 3000.
 
-Bovendien kunt u vragen over Service Fabric dit eindpunt publiceren naar de Naming-Service, zodat het adres van het eindpunt bij deze service kunnen u andere services detecteren. Hiermee kunt u communiceren tussen services die uitvoerbare gastbestanden.
-Adres van het gepubliceerde eindpunt heeft de vorm `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme` en `PathSuffix` optionele kenmerken zijn. `IPAddressOrFQDN` de IP-adres of de volledig gekwalificeerde domeinnaam van het knooppunt op dit uitvoerbare bestand wordt geplaatst en wordt berekend voor u.
+Daarnaast kunt u Service Fabric vragen om dit eind punt te publiceren naar de Naming Service, zodat andere services het eindpunt adres naar deze service kunnen detecteren. Zo kunt u communiceren tussen services die gast-uitvoer bare bestanden zijn.
+Het gepubliceerde eindpunt adres is van het formulier `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme`en `PathSuffix` zijn optionele kenmerken. `IPAddressOrFQDN`is het IP-adres of de Fully Qualified Domain Name van het knoop punt waarop dit uitvoer bare bestand wordt geplaatst, waarna het wordt berekend voor u.
 
-In het volgende voorbeeld, wanneer de service is geïmplementeerd, in Service Fabric Explorer ziet u een eindpunt die vergelijkbaar is met `http://10.1.4.92:3000/myapp/` gepubliceerd voor de service-exemplaar. Of als dit een lokale computer is, ziet u `http://localhost:3000/myapp/`.
+In het volgende voor beeld, wanneer de service is geïmplementeerd, wordt in service Fabric Explorer een eind punt weer `http://10.1.4.92:3000/myapp/` gegeven dat vergelijkbaar is met gepubliceerd voor het service-exemplaar. Of als dit een lokale computer is, ziet `http://localhost:3000/myapp/`u.
 
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
-U kunt deze adressen met [omgekeerde proxy](service-fabric-reverseproxy.md) voor de communicatie tussen services.
+U kunt deze adressen gebruiken met [omgekeerde proxy](service-fabric-reverseproxy.md) om te communiceren tussen services.
 
-### <a name="edit-the-application-manifest-file"></a>Het manifestbestand van de toepassing bewerken
-Nadat u hebt geconfigureerd de `Servicemanifest.xml` -bestand, moet u de wijzigingen aanbrengen aan de `ApplicationManifest.xml` bestand om ervoor te zorgen dat de juiste servicetype en de naam worden gebruikt.
+### <a name="edit-the-application-manifest-file"></a>Het manifest bestand van de toepassing bewerken
+Nadat u het `Servicemanifest.xml` bestand hebt geconfigureerd, moet u enkele wijzigingen aanbrengen in het `ApplicationManifest.xml` bestand om ervoor te zorgen dat het juiste service type en deze naam worden gebruikt.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -215,7 +215,7 @@ Nadat u hebt geconfigureerd de `Servicemanifest.xml` -bestand, moet u de wijzigi
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
-In de `ServiceManifestImport` -element, kunt u een of meer services die u wilt opnemen in de app. Services zijn waarnaar wordt verwezen met `ServiceManifestName`, dat aangeeft dat de naam van de map waar de `ServiceManifest.xml` -bestand zich bevindt.
+In het `ServiceManifestImport` -element kunt u een of meer services opgeven die u wilt toevoegen in de app. Er wordt verwezen naar `ServiceManifestName`Services, waarmee de naam van de map wordt opgegeven waarin het `ServiceManifest.xml` bestand zich bevindt.
 
 ```xml
 <ServiceManifestImport>
@@ -223,12 +223,12 @@ In de `ServiceManifestImport` -element, kunt u een of meer services die u wilt o
 </ServiceManifestImport>
 ```
 
-## <a name="set-up-logging"></a>Logboekregistratie instellen
-Voor gasten uitvoerbare bestanden is het handig om te kunnen zien consolelogboeken om erachter te komen als de toepassing en configuratie van scripts voor eventuele fouten weergegeven.
-Console-omleiding kan worden geconfigureerd de `ServiceManifest.xml` bestand met behulp van de `ConsoleRedirection` element.
+## <a name="set-up-logging"></a>Logboek registratie instellen
+Voor uitvoer bare gast bestanden is het handig om console logboeken te bekijken om te achterhalen of er fouten in de toepassings-en configuratie scripts worden weer gegeven.
+Console-omleiding kan worden geconfigureerd in het `ServiceManifest.xml` bestand met behulp van het `ConsoleRedirection` -element.
 
 > [!WARNING]
-> Gebruik nooit het beleid voor console-omleiding in een toepassing die is geïmplementeerd in een productieomgeving omdat dit kan invloed hebben op de failover van de toepassing. *Alleen* Gebruik deze optie voor lokale ontwikkeling en foutopsporing.  
+> Gebruik nooit het beleid voor omleiding van console in een toepassing die in productie is geïmplementeerd, omdat dit van invloed kan zijn op de failover van de toepassing. Gebruik dit *alleen* voor lokale ontwikkeling en fout opsporing.  
 >
 >
 
@@ -243,16 +243,16 @@ Console-omleiding kan worden geconfigureerd de `ServiceManifest.xml` bestand met
 </EntryPoint>
 ```
 
-`ConsoleRedirection` kan worden gebruikt om te leiden van de console-uitvoer (stdout en stderr) naar een werkmap. Dit biedt de mogelijkheid om te controleren of dat er geen fouten zijn opgetreden tijdens de installatie of de uitvoering van de toepassing in de Service Fabric-cluster.
+`ConsoleRedirection`kan worden gebruikt om de console-uitvoer (stdout en stderr) om te leiden naar een werkmap. Dit biedt de mogelijkheid om te controleren of er geen fouten zijn tijdens het instellen of uitvoeren van de toepassing in het Service Fabric cluster.
 
-`FileRetentionCount` bepaalt hoeveel bestanden worden opgeslagen in de werkmap. Een waarde van 5, betekent bijvoorbeeld dat de logboekbestanden voor de vorige vijf uitvoeringen zijn opgeslagen in de werkmap.
+`FileRetentionCount`Hiermee wordt bepaald hoeveel bestanden worden opgeslagen in de werkmap. Een waarde van 5 betekent bijvoorbeeld dat de logboek bestanden voor de voor gaande vijf uitvoeringen worden opgeslagen in de werkmap.
 
-`FileMaxSizeInKb` Hiermee geeft u de maximale grootte van de logboekbestanden.
+`FileMaxSizeInKb`Hiermee geeft u de maximale grootte van de logboek bestanden.
 
-Logboekbestanden worden opgeslagen in een van de service werken mappen. Service Fabric Explorer om te bepalen welk knooppunt de service gebruiken om te bepalen waar de bestanden zich bevinden op wordt uitgevoerd en welke werkmap wordt gebruikt. Dit proces wordt verderop in dit artikel beschreven.
+Logboek bestanden worden opgeslagen in een van de werk mappen van de service. Om te bepalen waar de bestanden zich bevinden, gebruikt u Service Fabric Explorer om te bepalen op welk knoop punt de service wordt uitgevoerd en welke werkmap wordt gebruikt. Dit proces wordt verderop in dit artikel besproken.
 
 ## <a name="deployment"></a>Implementatie
-De laatste stap is het [Implementeer uw toepassing](service-fabric-deploy-remove-applications.md). De volgende PowerShell-script laat zien hoe het implementeren van uw toepassing op het lokale ontwikkelingscluster en start een nieuwe Service Fabric-service.
+De laatste stap is het [implementeren van uw toepassing](service-fabric-deploy-remove-applications.md). Het volgende Power shell-script laat zien hoe u uw toepassing implementeert in het lokale ontwikkel cluster en een nieuwe Service Fabric-service start.
 
 ```powershell
 
@@ -271,35 +271,35 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> [Comprimeren van het pakket](service-fabric-package-apps.md#compress-a-package) voordat u kopieert naar de installatiekopieopslag als het pakket grote is of veel bestanden. Lees meer [hier](service-fabric-deploy-remove-applications.md#upload-the-application-package).
+> [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën als het pakket groot is of veel bestanden bevat. Meer informatie [vindt u hier](service-fabric-deploy-remove-applications.md#upload-the-application-package).
 >
 
-Een Service Fabric-service kan worden geïmplementeerd in verschillende 'configuraties." Bijvoorbeeld, deze kan worden geïmplementeerd als één of meerdere instanties, of deze zodanig dat er een exemplaar van de service op elk knooppunt van de Service Fabric-cluster wordt kan worden geïmplementeerd.
+Een Service Fabric-service kan in verschillende configuraties worden geïmplementeerd. Het kan bijvoorbeeld worden geïmplementeerd als één of meerdere instanties, of het kan zodanig worden geïmplementeerd dat er één exemplaar van de service op elk knoop punt van het Service Fabric cluster is.
 
-De `InstanceCount` parameter van de `New-ServiceFabricService` cmdlet wordt gebruikt om op te geven hoeveel exemplaren van de service moeten worden gestart in de Service Fabric-cluster. U kunt instellen dat de `InstanceCount` waarde, afhankelijk van het type van de toepassing die u implementeert. De twee meest voorkomende scenario's zijn:
+De `InstanceCount` para meter van `New-ServiceFabricService` de cmdlet wordt gebruikt om op te geven hoeveel exemplaren van de service in het service Fabric cluster moeten worden gestart. U kunt de `InstanceCount` waarde instellen, afhankelijk van het type toepassing dat u implementeert. De twee meest voorkomende scenario's zijn:
 
-* `InstanceCount = "1"`. In dit geval wordt slechts één exemplaar van de service geïmplementeerd in het cluster. Service-Fabric scheduler bepaalt welk knooppunt de service zal worden geïmplementeerd op.
-* `InstanceCount ="-1"`. In dit geval is één exemplaar van de service op elk knooppunt in het Service Fabric-cluster geïmplementeerd. Het resultaat heeft één (en slechts één) exemplaar van de service voor elk knooppunt in het cluster.
+* `InstanceCount = "1"`. In dit geval wordt slechts één exemplaar van de service geïmplementeerd in het cluster. De Planner van Service Fabric bepaalt op welk knoop punt de service wordt geïmplementeerd.
+* `InstanceCount ="-1"`. In dit geval wordt één exemplaar van de service geïmplementeerd op elk knoop punt in het Service Fabric cluster. Het resultaat heeft één (en slechts één) exemplaar van de service voor elk knoop punt in het cluster.
 
-Dit is een nuttig configuratie voor de front-end-toepassingen (bijvoorbeeld, een REST-eindpunt), omdat clienttoepassingen moeten 'connect' met een van de knooppunten in het cluster om het eindpunt te gebruiken. Deze configuratie kan ook worden gebruikt wanneer u bijvoorbeeld alle knooppunten van de Service Fabric-cluster zijn verbonden met een load balancer. -Clientverkeer kan vervolgens worden verdeeld over de service die wordt uitgevoerd op alle knooppunten in het cluster.
+Dit is een handige configuratie voor front-end toepassingen (bijvoorbeeld een REST-eind punt), omdat client toepassingen verbinding moeten maken met een van de knoop punten in het cluster om het eind punt te gebruiken. Deze configuratie kan ook worden gebruikt wanneer bijvoorbeeld alle knoop punten van het Service Fabric cluster zijn verbonden met een load balancer. Client verkeer kan vervolgens worden gedistribueerd over de service die wordt uitgevoerd op alle knoop punten in het cluster.
 
-## <a name="check-your-running-application"></a>Controleer de toepassing wordt uitgevoerd
-Identificeer in Service Fabric Explorer het knooppunt waar de service wordt uitgevoerd. In dit voorbeeld wordt deze uitgevoerd op knooppunt1:
+## <a name="check-your-running-application"></a>Uw actieve toepassing controleren
+In Service Fabric Explorer identificeert u het knoop punt waar de service wordt uitgevoerd. In dit voor beeld wordt het uitgevoerd op Knooppunt1:
 
-![Knooppunt waarop de service wordt uitgevoerd](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
+![Knoop punt waarop Service wordt uitgevoerd](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
-Als u naar het knooppunt en blader naar de toepassing, ziet u de essentiële knooppunt-informatie, met inbegrip van de locatie op schijf.
+Als u naar het knoop punt navigeert en naar de toepassing bladert, ziet u de essentiële knooppunt informatie, met inbegrip van de locatie op schijf.
 
 ![Locatie op schijf](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Als u naar de map via Server Explorer bladert, kunt u de werkmap en van de service logboekmap vinden, zoals wordt weergegeven in de volgende schermafbeelding: 
+Als u naar de Directory bladert met behulp van Server Explorer, kunt u de werkmap en de logboekmap van de service vinden, zoals wordt weer gegeven in de volgende scherm afbeelding: 
 
-![Locatie van logboekbestand](./media/service-fabric-deploy-existing-app/loglocation.png)
+![Locatie van het logboek](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe kunnen worden verpakt een Gast kan worden uitgevoerd en deze implementeren in Service Fabric. Zie de volgende artikelen voor gerelateerde informatie en taken.
+In dit artikel hebt u geleerd hoe u een uitvoerbaar gast bestand kunt inpakken en implementeren op Service Fabric. Raadpleeg de volgende artikelen voor gerelateerde informatie en taken.
 
-* [Voorbeeld voor het verpakken en implementeren van een Gast kan worden uitgevoerd](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), met inbegrip van een koppeling naar de voorlopige versie van het hulpprogramma verpakking
-* [Voorbeeld van twee Gast uitvoerbare bestanden (C# en nodejs) communiceren via de Naming-service met behulp van REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), met inbegrip van een koppeling naar de Prerelease van het verpakkings programma
+* [Voor beeld van twee gast uitvoerC# bare bestanden (en nodejs) die communiceren via de naamgevings service met rest](https://github.com/Azure-Samples/service-fabric-containers)
 * [Meerdere toepassingen implementeren die door gasten kunnen worden uitgevoerd](service-fabric-deploy-multiple-apps.md)
-* [Uw eerste Service Fabric-toepassing met Visual Studio maken](service-fabric-tutorial-create-dotnet-app.md)
+* [Uw eerste Service Fabric-toepassing maken met Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

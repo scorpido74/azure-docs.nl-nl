@@ -3,19 +3,19 @@ title: Gebruik moderators taken met de REST API-console-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Gebruik de taak bewerkingen van de beoordelings-API om end-to-end taken voor het beheer van inhoud te initiëren voor afbeeldings-of tekst inhoud in azure Content Moderator.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880051"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755286"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Toezicht taken definiëren en gebruiken (REST)
 
@@ -36,22 +36,22 @@ Als u een toezicht taak wilt maken, gaat u naar de [taak-API-](https://westus2.d
 
 Voer de volgende waarden in om de REST-aanroep te maken:
 
-- **teamnaam**: De team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met referenties van het controle programma).
-- **Content type**: Dit kan ' afbeelding ', ' tekst ' of ' video ' zijn.
-- **ContentId**: Een teken reeks met aangepaste ID. Deze teken reeks wordt door gegeven aan de API en geretourneerd door de retour aanroep. Het is handig om interne id's of meta gegevens te koppelen aan de resultaten van een toezicht taak.
-- **Werk stroomnaam**: De naam van de werk stroom die u eerder hebt gemaakt (of ' standaard ' voor de standaardwerk stroom).
-- **CallbackEndpoint**: Beschrijving De URL voor het ontvangen van Terugbel informatie wanneer de controle is voltooid.
-- **Ocp-Apim-Subscription-Key**: Uw Content Moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
+- **team**naam: de team-ID die u hebt gemaakt bij het instellen van het account voor het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com/) (gevonden in het veld **id** op het scherm met de referenties van het controle programma).
+- **Content type**: dit kan ' afbeelding ', ' tekst ' of ' video ' zijn.
+- **ContentId**: een aangepaste ID-teken reeks. Deze teken reeks wordt door gegeven aan de API en geretourneerd door de retour aanroep. Het is handig om interne id's of meta gegevens te koppelen aan de resultaten van een toezicht taak.
+- **Workflowactie**: de naam van de werk stroom die u eerder hebt gemaakt (of ' standaard ' voor de standaardwerk stroom).
+- **CallbackEndpoint**: (optioneel) de URL voor het ontvangen van Terugbel informatie wanneer de controle is voltooid.
+- **OCP-APIM-abonnements sleutel**: uw content moderator sleutel. U vindt dit op het tabblad **instellingen** van het [hulp programma voor beoordeling](https://contentmoderator.cognitive.microsoft.com).
 
 ### <a name="fill-in-the-request-body"></a>Vul de hoofd tekst van de aanvraag in
 
-De hoofd tekst van uw REST-aanroep bevat één veld, **ContentValue**. Plak de inhoud van de onbewerkte tekst als u toezicht houdt op tekst, of voer een afbeelding of video-URL in als u de afbeelding/video wilt beelementen. U kunt de volgende voorbeeld afbeeldings-URL gebruiken:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+De hoofd tekst van uw REST-aanroep bevat één veld, **ContentValue**. Plak de inhoud van de onbewerkte tekst als u toezicht houdt op tekst, of voer een afbeelding of video-URL in als u de afbeelding/video wilt beelementen. U kunt de volgende URL van de voor beeld-afbeelding gebruiken: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![Taak: console-query parameters, kopteksten en hoofd tekst van aanvraag maken](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>Uw aanvraag verzenden
 
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt in het vak **antwoord inhoud** een id voor de taak weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** een id voor de taak weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
 
 ![Beoordeling: inhoud van het dialoog venster voor het maken van een console-antwoord wordt weer gegeven](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Als u de status en Details van een actieve of voltooide taak wilt ophalen, gaat 
 
 ![Taak-regio selectie ophalen](images/test-drive-region.png)
 
-Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke id die u hebt ontvangen tijdens het maken van de taak. Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord status** en wordt de taak in de JSON-indeling weer gegeven in het vak met de **antwoord inhoud** , zoals in het volgende voor beeld:
+Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke id die u hebt ontvangen tijdens het maken van de taak. Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en wordt in het vak met de **reactie inhoud** de taak in JSON-indeling weer gegeven, zoals in het volgende voor beeld:
 
 ```json
 {  
@@ -115,7 +115,7 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor 
 
 ### <a name="examine-the-new-reviews"></a>Bekijk de nieuwe beoordeling (en)
 
-Als uw inhouds taak heeft geresulteerd in het maken van een beoordeling, kunt u deze weer geven in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com). Selecteer > **afbeeldings** **tekst** **video** bekijken (afhankelijk van de inhoud die u hebt gebruikt).// De inhoud moet worden weer gegeven, gereed voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en Voorspellings gegevens heeft beoordeeld en een beslissing van definitieve controle indient, verzendt de taak-API al deze informatie naar het opgegeven eind punt eind punt van de aanroep.
+Als uw inhouds taak heeft geresulteerd in het maken van een beoordeling, kunt u deze weer geven in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com). Selecteer  > **afbeelding** **bekijken** /**tekst** /**video** (afhankelijk van de inhoud die u hebt gebruikt). De inhoud moet worden weer gegeven, gereed voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en Voorspellings gegevens heeft beoordeeld en een beslissing van definitieve controle indient, verzendt de taak-API al deze informatie naar het opgegeven eind punt eind punt van de aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

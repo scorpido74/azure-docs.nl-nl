@@ -1,6 +1,6 @@
 ---
-title: Gegevensafhankelijke routering met Azure SQL Database | Microsoft Docs
-description: Over het gebruik van de klasse ShardMapManager in .NET-apps voor gegevensafhankelijke routering, een functie van de shard-databases in Azure SQL Database
+title: Gegevens afhankelijke route ring met Azure SQL Database | Microsoft Docs
+description: De ShardMapManager-klasse gebruiken in .NET-Apps voor gegevens afhankelijke route ring, een functie van Shard-data bases in Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,33 +10,32 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584961"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568492"
 ---
-# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Gegevensafhankelijke routering om te routeren van een query naar de juiste database gebruiken
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Gegevens afhankelijke route ring gebruiken om een query naar de juiste data base te routeren
 
-**Gegevensafhankelijke routering** is de mogelijkheid om de gegevens in een query gebruiken voor het routeren van de aanvraag met een juiste database. Gegevens-afhankelijke routering is een fundamenteel patroon bij het werken met shard-databases. De context van de aanvraag kan ook worden gebruikt voor het routeren van de aanvraag, met name als de sharding-sleutel geen deel uit van de query maakt. Elke specifieke query of een transactie in een toepassing met behulp van gegevensafhankelijke routering is beperkt tot één database per aanvraag te openen. Voor de Azure SQL Database Elastic-hulpprogramma's, deze routering wordt uitgevoerd met de **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) klasse.
+**Gegevens afhankelijke route ring** is de mogelijkheid om de gegevens in een query te gebruiken om de aanvraag naar een geschikte data base te routeren. Gegevens afhankelijke route ring is een fundamenteel patroon bij het werken met Shard-data bases. De aanvraag context kan ook worden gebruikt voor het routeren van de aanvraag, met name als de sharding-sleutel geen deel uitmaakt van de query. Elke specifieke query of trans actie in een toepassing die gebruikmaakt van gegevens afhankelijke route ring is beperkt tot het openen van één data base per aanvraag. Voor de Azure SQL Database elastische hulpprogram ma's wordt deze route ring uitgevoerd met de klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
-De toepassing hoeft niet te volgen verschillende tekenreeksen voor databaseverbindingen of DB-locaties die zijn gekoppeld aan verschillende delen van gegevens in de shard-omgeving. In plaats daarvan de [Shard-Toewijzingsbeheer](sql-database-elastic-scale-shard-map-management.md) verbindingen naar de juiste databases wanneer dat nodig is, wordt geopend op basis van de gegevens in de shard-toewijzing en de waarde van de sharding-sleutel die het doel van de aanvraag van de toepassing. De sleutel is doorgaans de *customer_id*, *tenant_id*, *date_key*, of enige andere specifieke id die is een fundamenteel parameter van de aanvraag van de database.
+De toepassing hoeft geen verschillende verbindings reeksen of DB-locaties te volgen die zijn gekoppeld aan verschillende gegevens segmenten in de Shard omgeving. In plaats daarvan opent [Shard-toewijzings beheer](sql-database-elastic-scale-shard-map-management.md) verbindingen met de juiste data bases wanneer dit nodig is, op basis van de gegevens in de Shard-toewijzing en de waarde van de sharding-sleutel die het doel is van de aanvraag van de toepassing. De sleutel is doorgaans de *Customer_ID*, *tenant_id*, *date_key*of een andere specifieke id die een fundamentele para meter van de database aanvraag is.
 
-Zie voor meer informatie, [schalen van SQL Server met gegevensafhankelijke routering](https://technet.microsoft.com/library/cc966448.aspx).
+Zie [Uitschalen SQL Server met gegevens afhankelijke route ring](https://technet.microsoft.com/library/cc966448.aspx)voor meer informatie.
 
-## <a name="download-the-client-library"></a>Downloaden van de clientbibliotheek
+## <a name="download-the-client-library"></a>De client bibliotheek downloaden
 
 Downloaden:
 
-* De Java-versie van de bibliotheek, Zie [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* De .NET-versie van de bibliotheek, Zie [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+* De Java-versie van de-bibliotheek, Zie [maven Central repository](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)(Engelstalig).
+* Zie [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)voor de .net-versie van de bibliotheek.
 
-## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Met behulp van een ShardMapManager in een toepassing voor gegevensafhankelijke routering
+## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Een ShardMapManager gebruiken in een gegevens afhankelijke routerings toepassing
 
-Toepassingen moeten exemplaar maken van de **ShardMapManager** tijdens de initialisatie met behulp van de aanroep factory **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). In dit voorbeeld wordt zowel een **ShardMapManager** en een specifieke **ShardMap** die deze bevat worden geïnitialiseerd. In dit voorbeeld ziet u de GetSqlShardMapManager en GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) methoden.
+Toepassingen moeten de **ShardMapManager** tijdens de initialisatie instantiëren met behulp van de Factory Call **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). In dit voor beeld worden zowel een **ShardMapManager** als een specifieke **ShardMap** die het bevat, geïnitialiseerd. In dit voor beeld worden de methoden GetSqlShardMapManager en GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.net](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) weer gegeven.
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -48,13 +47,13 @@ ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnection
 RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap"); 
 ```
 
-### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Laagste bevoegdheden referenties kan gebruiken voor het ophalen van de shard-toewijzing
+### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>De laagste bevoegdheids referenties gebruiken voor het ophalen van de Shard-toewijzing
 
-Als een toepassing niet de shard-toewijzing zelf bewerken is, de referenties die worden gebruikt in de fabrieksmethode alleen-lezen machtigingen moeten hebben op de **globale Shard-toewijzing** database. Deze referenties zijn doorgaans verschillend van de referenties die worden gebruikt voor het openen van verbindingen met de shard-Toewijzingsbeheer van. Zie ook [referenties gebruikt voor toegang tot de clientbibliotheek voor Elastic Database](sql-database-elastic-scale-manage-credentials.md).
+Als een toepassing de Shard-kaart zelf niet bewerkt, moeten de referenties die in de fabrieks methode worden gebruikt, alleen-lezen-machtigingen hebben voor de data base van de **globale Shard-toewijzing** . Deze referenties verschillen meestal van referenties die worden gebruikt voor het openen van verbindingen met het Shard-toewijzings beheer. Zie ook [de referenties die worden gebruikt voor toegang tot de Elastic database-client bibliotheek](sql-database-elastic-scale-manage-credentials.md).
 
-## <a name="call-the-openconnectionforkey-method"></a>Roep de methode OpenConnectionForKey
+## <a name="call-the-openconnectionforkey-method"></a>De methode OpenConnectionForKey aanroepen
 
-De **ShardMap.OpenConnectionForKey methode** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) retourneert een verbinding gereed is voor het uitgeven van opdrachten met de juiste database op basis van de waarde van de **sleutel** parameter. Shard-gegevens opgeslagen in de cache in de toepassing door de **ShardMapManager**, zodat deze aanvragen gaat het meestal niet zoeken in de database op basis van doen om de **globale Shard-toewijzing** database.
+De **methode ShardMap. OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) retourneert een verbinding die gereed is voor het uitgeven van opdrachten aan de juiste data base op basis van de waarde van de **sleutel** parameter. Shard-gegevens worden in de cache opgeslagen door de **ShardMapManager**, dus voor deze aanvragen is het niet mogelijk om een database zoekactie te maken op basis van de **globale Shard** -toewijzings database.
 
 ```Java
 // Syntax:
@@ -66,15 +65,15 @@ public Connection openConnectionForKey(Object key, String connectionString, Conn
 public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionString, ConnectionOptions options)
 ```
 
-* De **sleutel** parameter wordt gebruikt als een lookup-sleutel in de shard-toewijzing te bepalen van de juiste database voor de aanvraag.
-* De **connectionString** wordt gebruikt om door te geven alleen de gebruikersreferenties voor de gewenste verbinding. Er is geen databasenaam of de servernaam is opgenomen in deze *connectionString* omdat de methode de database en de server met bepaalt de **ShardMap**.
-* De **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) moet worden ingesteld op **ConnectionOptions.Validate** als een omgeving waar de mei voor shard-kaarten wijzigings- en rijen kunnen verplaatsen naar andere databases als gevolg van bewerkingen voor splitsen of samenvoegen. Deze validatie betreft een korte query naar de lokale shard-toewijzing op de doel-database (en niet naar de globale shard-toewijzing) voordat de verbinding aan de toepassing wordt geleverd.
+* De **sleutel** parameter wordt gebruikt als opzoek sleutel in de Shard-toewijzing om de juiste Data Base voor de aanvraag te bepalen.
+* De **Connections Tring** wordt gebruikt om alleen de gebruikers referenties voor de gewenste verbinding door te geven. Er is geen database naam of server naam in deze *Connections Tring* opgenomen, aangezien de methode de data base en de server bepaalt met behulp van de **ShardMap**.
+* De **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) moet worden ingesteld op **connectionOptions. validate** als een omgeving waar Shard Maps kan veranderen en rijen kunnen worden verplaatst naar andere data bases als gevolg van een split-of samenvoeg bewerking. Deze validatie omvat een korte query voor de lokale Shard-toewijzing in de doel database (niet op de globale Shard-toewijzing) voordat de verbinding aan de toepassing wordt geleverd.
 
-Als de validatie op basis van de lokale shard-toewijzing is mislukt (waarmee wordt aangegeven dat de cache onjuist is), de globale shard-toewijzing voor het verkrijgen van de nieuwe juiste waarde voor de zoekopdracht, bijwerken van de cache en verkrijgen en retourneren van verbinding met de juiste database query uitgevoerd op de Shard-Toewijzingsbeheer .
+Als de validatie van de lokale Shard-toewijzing mislukt (hetgeen aangeeft dat de cache onjuist is), stuurt de Shard-toewijzings beheer de globale Shard-toewijzing om de nieuwe juiste waarde voor de zoek actie te verkrijgen, de cache bij te werken en de juiste database verbinding te verkrijgen en te retour neren .
 
-Gebruik **ConnectionOptions.None** alleen wanneer wijzigingen voor shard-toewijzing wordt niet verwacht terwijl een toepassing online is. In dat geval de waarden in de cache altijd alleen correct kunnen worden aangenomen en de extra traject validatie-aanroep naar de doeldatabase veilig kan worden overgeslagen. Dat vermindert databaseverkeer. De **connectionOptions** kan ook worden ingesteld via een waarde in een configuratiebestand om aan te geven of sharding wijzigingen worden verwacht of niet tijdens een bepaalde periode.  
+Gebruik **ConnectionOptions. none** alleen wanneer er wijzigingen in de Shard-toewijzing worden verwacht terwijl een toepassing online is. In dat geval kunnen de in de cache opgeslagen waarden worden verondersteld dat ze altijd juist zijn en dat de extra round-trip validatie oproep naar de doel database veilig kan worden overgeslagen. Die het database verkeer reduceert. De **connectionOptions** kan ook worden ingesteld via een waarde in een configuratie bestand om aan te geven of er gedurende een bepaalde periode sharding-wijzigingen worden verwacht of niet.  
 
-In dit voorbeeld wordt de waarde van een geheel getal met sleutel **CustomerID**, met een **ShardMap** object met de naam **customerShardMap**.  
+In dit voor beeld wordt de waarde van een integer-sleutel **CustomerID**gebruikt met behulp van een **ShardMap** -object met de naam **customerShardMap**.  
 
 ```Java
 int customerId = 12345;
@@ -110,17 +109,17 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 }  
 ```
 
-De **OpenConnectionForKey** methode retourneert een nieuwe al open verbinding met de juiste database. Verbindingen gebruikt op deze manier kunnen nog steeds profiteren van groepsgewijze verbinding.
+De methode **OpenConnectionForKey** retourneert een nieuwe verbinding die al is geopend met de juiste data base. Verbindingen die op deze manier worden gebruikt, blijven optimaal profiteren van groepsgewijze verbindingen.
 
-De **OpenConnectionForKeyAsync methode** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) is ook beschikbaar als uw toepassing gebruik asynchrone programmering.
+De **methode OpenConnectionForKeyAsync** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) is ook beschikbaar als uw toepassing gebruik maakt van asynchrone programmering.
 
-## <a name="integrating-with-transient-fault-handling"></a>Integreren met afhandeling van tijdelijke fouten
+## <a name="integrating-with-transient-fault-handling"></a>Integreren met tijdelijke fout afhandeling
 
-Er is een best practice bij het ontwikkelen van toepassingen voor toegang in de cloud om ervoor te zorgen dat tijdelijke fouten zijn opgepikt door de app en dat de bewerkingen worden niet opnieuw geprobeerd meerdere keren voordat er een fout. Tijdelijke fouten afhandelen voor cloud-toepassingen is besproken in de afhandeling van tijdelijke fouten ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
+Een best practice in het ontwikkelen van toepassingen voor gegevens toegang in de Cloud is om ervoor te zorgen dat tijdelijke fouten worden onderschept door de app, en dat de bewerkingen meerdere keren opnieuw worden geprobeerd voordat een fout optreedt. Tijdelijke fout afhandeling voor Cloud toepassingen wordt beschreven op tijdelijke fout afhandeling ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.net](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
 
-Afhandeling van tijdelijke fouten kan op een natuurlijke manier worden gecombineerd met het patroon gegevensafhankelijke routering. De belangrijkste vereiste is om opnieuw te proberen de volledige gegevens toegang aanvraag met inbegrip van de **met behulp van** blokkeren die de gegevensafhankelijke routering verbinding hebt verkregen. Het vorige voorbeeld kan als volgt worden herschreven.
+Tijdelijke fout afhandeling kan natuurlijk worden gecombineerd met het gegevensafhankelijk routerings patroon. De belangrijkste vereiste is om de volledige aanvraag voor gegevens toegang opnieuw uit te voeren, met inbegrip van het blok **gebruiken** dat de gegevens afhankelijke routerings verbinding heeft verkregen. Het vorige voor beeld kan als volgt worden herschreven.
 
-### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Voorbeeld: gegevensafhankelijke routering met afhandeling van tijdelijke fouten
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Voor beeld: gegevens afhankelijke route ring met tijdelijke fout afhandeling
 
 ```Java
 int customerId = 12345;
@@ -169,14 +168,14 @@ Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
 });
 ```
 
-Pakketten die nodig zijn voor het implementeren van de afhandeling van tijdelijke fouten worden automatisch gedownload als u de voorbeeldtoepassing voor elastische database maken.
+Pakketten die nodig zijn voor het implementeren van tijdelijke fout afhandeling, worden automatisch gedownload wanneer u de voorbeeld toepassing voor Elastic data base bouwt.
 
 ## <a name="transactional-consistency"></a>Transactionele consistentie
 
-Transactionele eigenschappen worden gegarandeerd voor alle bewerkingen die lokaal op een shard. Bijvoorbeeld, uitvoeren van transacties die zijn verzonden via gegevensafhankelijke routering binnen het bereik van de shard doel voor de verbinding. Op dit moment geen functionaliteit voor het opnemen van meerdere verbindingen in een transactie zijn en er zijn daarom geen transactionele garanties met betrekking tot bewerkingen die worden uitgevoerd in verschillende shards.
+Transactionele eigenschappen worden gegarandeerd voor alle bewerkingen lokaal naar een Shard. Trans acties die worden verzonden via gegevens afhankelijke route ring, worden bijvoorbeeld uitgevoerd binnen het bereik van de doel-Shard voor de verbinding. Op dit moment zijn er geen mogelijkheden voor het inschrijven van meerdere verbindingen in een trans actie. Daarom zijn er geen transactionele garanties voor bewerkingen die worden uitgevoerd op Shards.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een shard los te koppelen of te koppelen van een shard, Zie [problemen van shardtoewijzingen met de RecoveryManager-klasse](sql-database-elastic-database-recovery-manager.md)
+Als u een Shard wilt ontkoppelen of een Shard opnieuw wilt koppelen, raadpleegt u [de toewijzingen oplossen-klasse gebruiken om Shard-kaart problemen op te lossen](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
