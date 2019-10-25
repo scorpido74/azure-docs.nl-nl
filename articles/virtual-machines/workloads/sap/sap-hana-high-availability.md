@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5632ccf6c9b9cb67d169c5b60f1adefd85b576b8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078390"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791646"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server
 
@@ -86,8 +86,8 @@ SAP HANA is geïnstalleerd op twee virtuele machines voor een hoge Beschik baarh
 Bij de installatie van de SAP HANA-systeem replicatie worden een specifieke virtuele hostnaam en een virtueel IP-adres gebruikt. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. De volgende lijst bevat de configuratie van de load balancer:
 
 * Front-end-configuratie: IP-adres 10.0.0.13 voor HN1-db
-* Configuratie van back-end: Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van HANA-systeem replicatie
-* Test poort: Poort 62503
+* Back-end-configuratie: verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van HANA-systeem replicatie
+* Poort testen: poort 62503
 * Taakverdelings regels: 30313 TCP, 30315 TCP, 30317 TCP
 
 ## <a name="deploy-for-linux"></a>Implementeren voor Linux
@@ -104,20 +104,20 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
     De database sjabloon maakt alleen de taakverdelings regels voor een Data Base. De geconvergeerde sjabloon maakt ook de regels voor taak verdeling voor een exemplaar van ASCS/SCS en ERS (alleen voor Linux). Als u van plan bent om een SAP NetWeaver-systeem te installeren en u het ASCS/SCS-exemplaar op dezelfde computers wilt installeren, gebruikt u de [geconvergeerde sjabloon][template-converged].
 
 1. Voer de volgende para meters in:
-    - **SAP-systeem-id**: Voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als een voor voegsel voor de resources die worden geïmplementeerd.
-    - **Stack type**: (Deze para meter is alleen van toepassing als u de geconvergeerde sjabloon gebruikt.) Selecteer het stack type SAP net-Weaver.
+    - **SAP-systeem-id**: Voer de SAP-systeem-id in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als een voor voegsel voor de resources die worden geïmplementeerd.
+    - **Stack type**: (deze para meter is alleen van toepassing als u de geconvergeerde sjabloon gebruikt.) Selecteer het stack type SAP net-Weaver.
     - **Type besturings systeem**: Selecteer een van de Linux-distributies. Selecteer voor dit voor beeld **SLES 12**.
     - **Db-type**: Selecteer **Hana**.
-    - **SAP-systeem grootte**: Voer het aantal SAP'S in dat het nieuwe systeem gaat bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
+    - **SAP-systeem grootte**: Voer het aantal sap's in dat het nieuwe systeem moet bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
     - **Systeem beschikbaarheid**: Selecteer **ha**.
-    - **Gebruikers naam en wacht woord**beheerder: Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
-    - **Nieuw of bestaand subnet**: Hiermee wordt bepaald of een nieuw virtueel netwerk en subnet moeten worden gemaakt of dat er een bestaand subnet moet worden gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-    - **Subnet-id**: Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id is doorgaans hetzelfde **als\</Subscriptions/-abonnements-\<id > naam van de\</resourceGroups/-resource groep >/providers/Microsoft.Network/virtualNetworks/naam van het virtuele netwerk >/subnets/\<de naam van het subnet >** .
+    - **Gebruikers naam en wacht woord**beheerder: er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
+    - **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet moet worden gemaakt of dat er een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
+    - **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als **/subscriptions/\<abonnement-id >/resourceGroups/\<resource groeps naam >/providers/Microsoft.Network/virtualNetworks/\<naam van het virtuele netwerk >/subnets/\<naam van het subnet >** .
 
 ### <a name="manual-deployment"></a>Hand matige implementatie
 
 > [!IMPORTANT]
-> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor die apparaten kunnen worden opgezocht in [SAP Hana gecertificeerde IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)-platformen. Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met SAP HANA ondersteunde versies van het besturings systeem te verkrijgen voor het specifieke VM-type
+> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor die apparaten kunnen worden opgezocht in [SAP Hana gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met SAP HANA ondersteunde versies van het besturings systeem te verkrijgen voor het specifieke VM-type
 >  
 
 1. Maak een resourcegroep.
@@ -163,8 +163,8 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
    1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**15).
    1. Selecteer het front-end-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-** front-end).
    1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**15 in.
-   1. Verhoog de **time-out** voor inactiviteit tot 30 minuten.
-   1. Zorg ervoor dat u **zwevende IP-adressen**inschakelt.
+   1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+   1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
    1. Selecteer **OK**.
    1. Herhaal deze stappen voor poort 3**03**17.
 
@@ -174,8 +174,8 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
    1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**13).
    1. Selecteer het front-end-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-** front-end).
    1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**13 in.
-   1. Verhoog de **time-out** voor inactiviteit tot 30 minuten.
-   1. Zorg ervoor dat u **zwevende IP-adressen**inschakelt.
+   1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+   1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
    1. Selecteer **OK**.
    1. Herhaal deze stappen voor poort 3**03**14.
 
@@ -185,8 +185,8 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
    1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld Hana-lb-3**03**40).
    1. Selecteer het frontend-IP-adres, de back-endadresgroep en de status test die u eerder hebt gemaakt (bijvoorbeeld **Hana-front-end**).
    1. Zorg ervoor dat het **protocol** is ingesteld op **TCP**en voer poort 3**03**40 in.
-   1. Verhoog de **time-out** voor inactiviteit tot 30 minuten.
-   1. Zorg ervoor dat u **zwevende IP-adressen**inschakelt.
+   1. Verhoog de **time-out voor inactiviteit** tot 30 minuten.
+   1. Zorg ervoor dat u **zwevende IP-adressen inschakelt**.
    1. Selecteer **OK**.
    1. Herhaal deze stappen voor de poorten 3**03**41 en 3**03**42.
 
@@ -203,9 +203,9 @@ Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server
 ## <a name="install-sap-hana"></a>SAP HANA installeren
 
 Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
-- **[A]** : De stap is van toepassing op alle knoop punten.
-- **[1]** : De stap is alleen van toepassing op knoop punt 1.
-- **[2]** : De stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
+- **[A]** : de stap is van toepassing op alle knoop punten.
+- **[1]** : de stap is alleen van toepassing op knoop punt 1.
+- **[2]** : de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
 1. **[A]** de schijf indeling instellen: **Logical Volume Manager (LVM)** .
 
@@ -237,7 +237,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Maak de logische volumes. Er wordt een lineair volume gemaakt wanneer u `lvcreate` zonder de `-i` switch gebruikt. We raden u aan een striped volume te maken voor betere I/O-prestaties, `-i` waarbij het argument het nummer van het onderliggende fysieke volume moet zijn. In dit document worden twee fysieke volumes gebruikt voor het gegevens volume, dus is het `-i` argument switch ingesteld op **2**. Er wordt één fysiek volume gebruikt voor het logboek volume, dus `-i` er wordt geen schakelaar expliciet gebruikt. Gebruik de `-i` switch en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, elk logboek of gedeelde volumes.
+   Maak de logische volumes. Er wordt een lineair volume gemaakt wanneer u `lvcreate` gebruikt zonder de schakel optie `-i`. We raden u aan een striped volume te maken voor betere I/O-prestaties, waarbij het argument `-i` het nummer van het onderliggende fysieke volume moet zijn. In dit document worden twee fysieke volumes gebruikt voor het gegevens volume. Daarom wordt het argument `-i` switch ingesteld op **2**. Er wordt één fysiek volume gebruikt voor het logboek volume, dus er wordt geen `-i` switch expliciet gebruikt. Gebruik de `-i` switch en stel deze in op het nummer van het onderliggende fysieke volume wanneer u meer dan één fysiek volume gebruikt voor elke gegevens, elk logboek of gedeelde volumes.
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -256,12 +256,12 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
    sudo blkid
    </code></pre>
 
-   Vermeldingen `fstab` maken voor de drie logische volumes:       
+   Maak `fstab` vermeldingen voor de drie logische volumes:       
 
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Voeg de volgende regel toe aan `/etc/fstab` het bestand:      
+   Voeg de volgende regel toe aan het `/etc/fstab`-bestand:      
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
@@ -273,7 +273,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** de schijf indeling instellen: **Gewone schijven**.
+1. **[A]** de schijf indeling instellen: **platte schijven**.
 
    Voor demo systemen kunt u uw HANA-gegevens en-logboek bestanden op één schijf plaatsen. Maak een partitie op/dev/disk/Azure/SCSI1/lun0 en Format teer deze met xfs:
 
@@ -319,28 +319,28 @@ Als u SAP HANA systeem replicatie wilt installeren, volgt u hoofd stuk 4 van de 
 
 1. **[A]** Voer het **hdblcm** -programma uit vanaf de Hana-DVD. Voer de volgende waarden in bij de prompt:
    * Installatie kiezen: Voer **1**in.
-   * Aanvullende onderdelen voor installatie selecteren: Voer **1**in.
+   * Selecteer extra onderdelen voor installatie: Voer **1**in.
    * Voer het installatiepad [/Hana/Shared] in: Selecteer ENTER.
    * Voer de naam van de lokale host [..] in: Selecteer ENTER.
    * Wilt u extra hosts toevoegen aan het systeem? (j/n) [n]: Selecteer ENTER.
-   * SAP HANA systeem-ID invoeren: Voer de SID van HANA in, bijvoorbeeld: **HN1**.
-   * Voer het exemplaar nummer in [00]: Voer het HANA-exemplaar nummer in. Voer **03** in als u de Azure-sjabloon hebt gebruikt of als u de sectie hand matige implementatie in dit artikel hebt gevolgd.
+   * Voer SAP HANA systeem-ID in: Voer de SID van HANA in, bijvoorbeeld: **HN1**.
+   * Voer het exemplaar nummer [00] in: Voer het HANA-exemplaar nummer in. Voer **03** in als u de Azure-sjabloon hebt gebruikt of als u de sectie hand matige implementatie in dit artikel hebt gevolgd.
    * Database modus selecteren/index invoeren [1]: Selecteer ENTER.
    * Systeem gebruik selecteren/index invoeren [4]: Selecteer de waarde voor het systeem gebruik.
-   * Voer de locatie van de gegevens volumes in [/hana/data/HN1]: Selecteer ENTER.
+   * Voer de locatie van de gegevens volumes [/hana/data/HN1] in: Selecteer ENTER.
    * Locatie van logboek volumes invoeren [/hana/log/HN1]: Selecteer ENTER.
    * Maximale geheugen toewijzing beperken? [n]: Selecteer ENTER.
    * Voer de hostnaam van het certificaat in voor de host... [...]: Selecteer ENTER.
-   * Voer het wacht woord voor de SAP host agent gebruiker (sapadm) in: Voer het gebruikers wachtwoord van de Hosta Gent in.
-   * Bevestig het wacht woord van de SAP host agent gebruiker (sapadm): Geef het wacht woord van de Hosta Gent gebruiker opnieuw op om te bevestigen.
-   * Voer het wacht woord voor de systeem beheerder (hdbadm) in: Voer het wacht woord voor de systeem beheerder in.
+   * Voer het wacht woord voor de gebruiker van de SAP host agent (sapadm) in: Voer het wacht woord van de Hosta Gent in.
+   * Bevestig het wacht woord van de gebruiker van de SAP-Hosta Gent (sapadm): Voer het wacht woord van de Hosta Gent in om het te bevestigen
+   * Voer het wacht woord voor de systeem beheerder (hdbadm) in: Voer het beheerders wachtwoord voor het systeem in.
    * Wacht woord van systeem beheerder (hdbadm) bevestigen: Voer het wacht woord van de systeem beheerder nogmaals in om dit te bevestigen.
    * Voer de basismap van de systeem beheerder in [/usr/sap/HN1/home]: Selecteer ENTER.
    * Voer aanmeldings shell van systeem beheerder in [/bin/sh]: Selecteer ENTER.
    * Voer de gebruikers-ID van de systeem beheerder in [1001]: Selecteer ENTER.
    * ID van gebruikers groep opgeven (sapsys) [79]: Selecteer ENTER.
    * Voer het wacht woord voor de database gebruiker (systeem) in: Voer het wacht woord voor de database gebruiker in.
-   * Wacht woord van database gebruiker (systeem) bevestigen: Voer het wacht woord van de database gebruiker opnieuw in om dit te bevestigen.
+   * Wacht woord van database gebruiker (systeem) bevestigen: Voer het wacht woord voor de database gebruiker opnieuw in om dit te bevestigen.
    * Systeem opnieuw opstarten nadat de computer opnieuw is opgestart? [n]: Selecteer ENTER.
    * Wilt u door gaan? (j/n): Valideer de samen vatting. Voer **y** in om door te gaan.
 
@@ -355,22 +355,22 @@ Als u SAP HANA systeem replicatie wilt installeren, volgt u hoofd stuk 4 van de 
 
 Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-* **[A]** : De stap is van toepassing op alle knoop punten.
-* **[1]** : De stap is alleen van toepassing op knoop punt 1.
-* **[2]** : De stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
+* **[A]** : de stap is van toepassing op alle knoop punten.
+* **[1]** : de stap is alleen van toepassing op knoop punt 1.
+* **[2]** : de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
 1. **[1]** de Tenant database maken.
 
    Als u SAP HANA 2,0 of MDC gebruikt, maakt u een Tenant database voor uw SAP net-Weaver-systeem. Vervang **NW1** door de sid van uw SAP-systeem.
 
-   Voer de volgende opdracht uit als <\>hanasid adm:
+   Voer de volgende opdracht uit als < hanasid\>adm:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** systeem replicatie op het eerste knoop punt configureren:
 
-   Maak een back-up van de\>data bases als < hanasid adm:
+   Maak een back-up van de data bases als < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -390,7 +390,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
 1. **[2]** systeem replicatie op het tweede knoop punt configureren:
     
-   Registreer het tweede knoop punt om de systeem replicatie te starten. Voer de volgende opdracht uit als <\>hanasid adm:
+   Registreer het tweede knoop punt om de systeem replicatie te starten. Voer de volgende opdracht uit als < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -400,9 +400,9 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
 Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
 
-* **[A]** : De stap is van toepassing op alle knoop punten.
-* **[1]** : De stap is alleen van toepassing op knoop punt 1.
-* **[2]** : De stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
+* **[A]** : de stap is van toepassing op alle knoop punten.
+* **[1]** : de stap is alleen van toepassing op knoop punt 1.
+* **[2]** : de stap is alleen van toepassing op knoop punt 2 van het pacemaker-cluster.
 
 1. **[1]** de vereiste gebruikers maken.
 
@@ -472,6 +472,10 @@ sudo crm configure clone cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> rsc_SAPHana
 
 Maak vervolgens de HANA-resources:
 
+> [!IMPORTANT]
+> Recente tests hebben getoonde situaties, waarbij netcat niet meer reageert op aanvragen als gevolg van achterstand en de beperking van het verwerken van slechts één verbinding. De netcat-resource stopt met Luis teren naar de Azure Load Balancer-aanvragen en het zwevende IP-adres is niet meer beschikbaar.  
+> Voor bestaande pacemaker-clusters is het raadzaam om netcat te vervangen door socat, waarbij u de instructies in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128)kunt volgen. Houd er rekening mee dat voor de wijziging korte uitval tijd nodig is.  
+
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
 sudo crm configure primitive rsc_SAPHana_<b>HN1</b>_HDB<b>03</b> ocf:suse:SAPHana \
@@ -495,7 +499,7 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   params ip="<b>10.0.0.13</b>"
 
 sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> anything \
-  params binfile="/usr/bin/nc" cmdline_options="-l -k 625<b>03</b>" \
+  params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:625<b>03</b>,backlog=10,fork,reuseaddr /dev/null" \
   op monitor timeout=20s interval=10 depth=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
@@ -559,7 +563,7 @@ U kunt het knoop punt SAP HANA Master migreren door de volgende opdracht uit te 
 <pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
 </code></pre>
 
-Als u deze `AUTOMATED_REGISTER="false"`reeks opdrachten instelt, moet de SAP Hana hoofd knooppunt en de groep met het virtuele IP-adres naar HN1-db-1 worden gemigreerd.
+Als u `AUTOMATED_REGISTER="false"`instelt, moet deze reeks opdrachten het SAP HANA hoofd knooppunt en de groep die het virtuele IP-adres bevat, migreren naar HN1-db-1.
 
 Zodra de migratie is voltooid, ziet de crm_mon-r-uitvoer er als volgt uit:
 
@@ -628,9 +632,9 @@ U kunt de installatie van de Azure omheinings agent testen door de netwerk inter
 </code></pre>
 
 Afhankelijk van de cluster configuratie moet de virtuele machine nu opnieuw worden opgestart of gestopt.
-Als u de `stonith-action` instelling instelt op uit, wordt de virtuele machine gestopt en worden de resources gemigreerd naar de actieve virtuele machine.
+Als u de instelling `stonith-action` instelt op uit, wordt de virtuele machine gestopt en worden de resources gemigreerd naar de actieve virtuele machine.
 
-Nadat u de virtuele machine opnieuw hebt gestart, kan de SAP HANA resource niet worden gestart als secundaire als `AUTOMATED_REGISTER="false"`u deze instelt. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
+Nadat u de virtuele machine opnieuw hebt gestart, kan de SAP HANA resource niet worden gestart als secundaire als u `AUTOMATED_REGISTER="false"`instelt. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -663,12 +667,12 @@ Cluster knooppunt HN1-DB-0 moet opnieuw worden opgestart. De pacemaker-service w
 
 ### <a name="test-a-manual-failover"></a>Een hand matige failover testen
 
-U kunt een hand matige failover testen door de `pacemaker` service op het knoop punt HN1-DB-0 te stoppen:
+U kunt een hand matige failover testen door de `pacemaker`-service op het knoop punt HN1-DB-0 te stoppen:
 
 <pre><code>service pacemaker stop
 </code></pre>
 
-Na de failover kunt u de service opnieuw starten. Als u instelt `AUTOMATED_REGISTER="false"`, kan de SAP Hana resource op het knoop punt HN1-DB-0 niet worden gestart als secundair. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
+Na de failover kunt u de service opnieuw starten. Als u `AUTOMATED_REGISTER="false"`instelt, kan de SAP HANA resource op het knoop punt HN1-DB-0 niet als secundair worden gestart. In dit geval configureert u het HANA-exemplaar als secundair door de volgende opdracht uit te voeren:
 
 <pre><code>service pacemaker start
 su - <b>hn1</b>adm
@@ -685,16 +689,16 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 ### <a name="suse-tests"></a>SUSE-tests
 
 > [!IMPORTANT]
-> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor die apparaten kunnen worden opgezocht in [SAP Hana gecertificeerde IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)-platformen. Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met SAP HANA ondersteunde versies van het besturings systeem te verkrijgen voor het specifieke VM-type
+> Zorg ervoor dat het besturings systeem dat u selecteert, SAP gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. De lijst met SAP HANA gecertificeerde VM-typen en versies van het besturings systeem voor die apparaten kunnen worden opgezocht in [SAP Hana gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Zorg ervoor dat u in de details van het opgegeven VM-type klikt om de volledige lijst met SAP HANA ondersteunde versies van het besturings systeem te verkrijgen voor het specifieke VM-type
 
 Voer alle test cases uit die worden vermeld in het scenario SAP HANA SR-geoptimaliseerde prestaties of de SAP HANA SR cost Optimization scenario, afhankelijk van uw use-case. U kunt de hand leidingen vinden op de [pagina SLES for SAP Best practices][sles-for-sap-bp].
 
 De volgende tests zijn een kopie van de test beschrijvingen van het SAP HANA SR-prestatie geoptimaliseerde scenario SUSE Linux Enterprise Server voor de hand leiding voor SAP-toepassingen 12 SP1. Lees voor een actuele versie altijd ook de hand leiding zelf. Zorg er altijd voor dat HANA synchroon is voordat u de test start en Controleer ook of de pacemaker-configuratie juist is.
 
 In de volgende test beschrijvingen wordt aangenomen dat PREFER_SITE_TAKEOVER = "True" en AUTOMATED_REGISTER = "false" zijn.
-OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd en zijn afhankelijk van de afsluit status van de voor gaande tests.
+Opmerking: de volgende tests zijn ontworpen om sequentieel te worden uitgevoerd en zijn afhankelijk van de afsluit status van de voor gaande tests.
 
-1. TEST 1: PRIMAIRE DATA BASE OP KNOOP PUNT 1 STOPPEN
+1. TEST 1: DE PRIMAIRE DATA BASE OP HET KNOOP PUNT 1 STOPPEN
 
    Resource status voordat u begint met testen:
 
@@ -708,7 +712,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-DB-0:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-DB-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -735,7 +739,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. TEST 2: PRIMAIRE DATA BASE OP KNOOP PUNT 2 STOPPEN
+1. TEST 2: DE PRIMAIRE DATA BASE OP KNOOP PUNT 2 STOPPEN
 
    Resource status voordat u begint met testen:
 
@@ -749,7 +753,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-db-1:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -790,7 +794,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-DB-0:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-DB-0:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -817,7 +821,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. TEST 4: CRASH PRIMARY DATA BASE OP KNOOP PUNT 2
+1. TEST 4: CRASH PRIMARY DATA BASE ON NODE 2
 
    Resource status voordat u begint met testen:
 
@@ -831,7 +835,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-db-1:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -858,7 +862,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. TEST 5: KNOOP PUNT VOOR VASTLOPENDE PRIMAIRE SITE (KNOOP PUNT 1)
+1. TEST 5: VASTLOPEND PRIMAIR SITE KNOOPPUNT (KNOOP PUNT 1)
 
    Resource status voordat u begint met testen:
 
@@ -909,7 +913,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. TEST 6: UITLOPEND SECUNDAIR SITE KNOOPPUNT (KNOOP PUNT 2)
+1. TEST 6: ONDERLIGGEND SECUNDAIR SITE KNOOPPUNT (KNOOP PUNT 2)
 
    Resource status voordat u begint met testen:
 
@@ -974,7 +978,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-db-1:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1011,7 +1015,7 @@ OPMERKING: De volgende tests zijn ontworpen om sequentieel te worden uitgevoerd 
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   Voer de volgende opdrachten uit als <\>hanasid adm op het knoop punt HN1-db-1:
+   Voer de volgende opdrachten uit als < hanasid\>adm op het knoop punt HN1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
