@@ -1,23 +1,18 @@
 ---
 title: Java-traceer logboeken verkennen in Azure-toepassing Insights | Microsoft Docs
 description: Log4J-of logback-traceringen zoeken in Application Insights
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/18/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.date: 05/18/2019
+ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038150"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819337"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
 Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw traceer logboeken automatisch laten verzenden naar Application Insights waar u ze kunt verkennen en doorzoeken.
@@ -27,7 +22,7 @@ Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw trace
 
 ## <a name="using-the-application-insights-java-agent"></a>De Application Insights Java-Agent gebruiken
 
-U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie in het bestand `AI-Agent.xml` in te scha kelen:
+U kunt de Application Insights Java-agent zo configureren dat uw logboeken automatisch worden vastgelegd door de functie in het `AI-Agent.xml`-bestand in te scha kelen:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -68,7 +63,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -81,7 +76,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -106,13 +101,13 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -125,7 +120,7 @@ Volg de richt lijnen om Application Insights Java SDK hand matig te installeren,
 | --- | --- | --- |
 | Logback |[Logback-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v 2.0 |[Log4J v2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Log4j v 1.2 |[Log4J v 1.2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Voeg de toevoegder toe aan uw Framework voor logboek registratie
@@ -144,7 +139,7 @@ Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code 
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -160,7 +155,7 @@ Als u wilt beginnen met het ophalen van traceringen, voegt u het relevante code 
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 

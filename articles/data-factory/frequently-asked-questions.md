@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387067"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880144"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
@@ -178,34 +176,21 @@ Ja. Een uitvoer van de activiteit kan worden gebruikt in een volgende activiteit
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hoe kan ik worden Null-waarden in een uitvoer van een activiteit zonder problemen verwerkt? 
 U kunt de `@coalesce`-construct in de expressies gebruiken om null-waarden correct te verwerken. 
 
-## <a name="mapping-data-flows"></a>Gegevens stromen toewijzen
-
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Welke Data Factory versie moet ik gebruiken om gegevens stromen te maken?
-Gebruik de versie van Data Factory v2 om gegevens stromen te maken.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Ik was een vorige klant van een persoonlijk voor beeld die gegevens stromen gebruikt en ik heb de preview-versie van Data Factory v2 voor gegevens stromen gebruikt.
-Deze versie is nu verouderd. Gebruik Data Factory v2 voor gegevens stromen.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Wat is er veranderd van de persoonlijke preview-versie naar een beperkte open bare Preview voor gegevens stromen?
-U hoeft niet langer uw eigen Azure Databricks-clusters te maken. Data Factory beheert het maken van clusters en het afscheuren ervan. BLOB-gegevens sets en Azure Data Lake Storage Gen2 gegevens sets worden onderverdeeld in gescheiden tekst en Apache Parquet-gegevens sets. U kunt nog steeds Data Lake Storage Gen2-en Blob-opslag gebruiken om deze bestanden op te slaan. Gebruik de juiste gekoppelde service voor deze opslag engines.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Kan ik mijn persoonlijke preview-fabrieken migreren naar Data Factory v2?
-
-Ja. [Volg de instructies](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
+## <a name="mapping-data-flows"></a>Toewijzing gegevensstromen
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Ik heb hulp nodig bij het oplossen van problemen met de gegevens stroom logica. Welke informatie heb ik nodig om hulp te krijgen?
 
-Wanneer micro soft Help of probleem oplossing biedt voor gegevens stromen, kunt u het DSL-code plan opgeven. Voer de volgende stappen uit om dit te doen:
+Wanneer micro soft Help of probleem oplossing biedt voor gegevens stromen, kunt u het script voor de gegevens stroom opgeven. Dit is het code-behind script uit de gegevens stroom grafiek. Open uw gegevens stroom vanuit de ADF-gebruikers interface en klik vervolgens op de knop ' script ' in de rechter bovenhoek. Kopieer en plak dit script of sla het op in een tekst bestand.
 
-1. Selecteer in de ontwerp functie voor gegevens stromen **code** in de rechter bovenhoek. Hiermee wordt de bewerkte JSON-code voor de gegevens stroom weer gegeven.
-2. Selecteer in de code weergave de optie **plan** in de rechter bovenhoek. Met deze wissel knop wordt overgeschakeld van JSON naar het bestand met de indeling alleen-lezen van DSL.
-3. Kopieer en plak dit script of sla het op in een tekst bestand.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Hoe kan ik toegang tot gegevens met behulp van de andere typen van 80-gegevensset in Data Factory?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Hoe kan ik toegang tot gegevens met behulp van de andere typen van 90-gegevensset in Data Factory?
 
 Met de functie voor het toewijzen van gegevens stroom kunnen op dit moment Azure SQL Database, Azure SQL Data Warehouse, tekst bestanden met scheidings tekens worden gescheiden van Azure Blob-opslag of Azure Data Lake Storage Gen2, en Parquet bestanden van Blob Storage of Data Lake Storage Gen2 systeem eigen voor bron en Sink. 
 
 Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connectors en voer vervolgens een gegevens stroom activiteit uit om gegevens te transformeren nadat deze is klaargezet. Uw pijp lijn wordt bijvoorbeeld eerst gekopieerd naar de Blob-opslag en vervolgens gebruikt een gegevens stroom activiteit een gegevensset in de bron om die gegevens te transformeren.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Is de zelf-hostende Integration runtime beschikbaar voor gegevens stromen?
+
+Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activiteit kunt gebruiken om gegevens te verkrijgen of te verplaatsen naar en van on-premises of op virtuele machines gebaseerde gegevens bronnen en Sinks. Faseer de gegevens eerst met een kopie, vervolgens de gegevens stroom voor trans formatie en vervolgens een volgende kopie als u de getransformeerde gegevens terug naar de on-premises opslag wilt verplaatsen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende zelf studies voor stapsgewijze instructies voor het maken van een data factory:

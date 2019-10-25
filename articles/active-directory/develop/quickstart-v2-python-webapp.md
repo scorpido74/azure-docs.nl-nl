@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 241935afa023162a35559cd3c46206efa7a7835f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240186"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817123"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
@@ -100,15 +100,17 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 1. Open het bestand **app_config. py** , dat u kunt vinden in de hoofdmap en vervang door het volgende code fragment:
 
 ```python
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 CLIENT_ID = "Enter_the_Application_Id_here"
+CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
 > Waar:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
-> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u hebt gemaakt in **Certificaten & geheimen** voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Tenant_Name_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
 
 #### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
@@ -122,6 +124,25 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 
    ```Shell
    python app.py
+   ```
+   > [!IMPORTANT]
+   > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [deze instructies](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)voor meer informatie over het gebruik van een certificaat.
+
+   ## <a name="more-information"></a>Meer informatie
+
+   ### <a name="getting-msal"></a>MSAL ophalen
+   MSAL is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform.
+   U kunt MSAL python toevoegen aan uw toepassing met behulp van PIP.
+
+   ```Shell
+   pip install msal
+   ```
+
+   ### <a name="msal-initialization"></a>MSAL initialiseren
+   U kunt de verwijzing toevoegen aan MSAL python door de volgende code toe te voegen aan de bovenkant van het bestand waarin u MSAL gaat gebruiken:
+
+   ```Python
+   import msal
    ```
 
 ## <a name="next-steps"></a>Volgende stappen

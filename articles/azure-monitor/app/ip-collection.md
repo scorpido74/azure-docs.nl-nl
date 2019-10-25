@@ -1,21 +1,18 @@
 ---
 title: Verzameling van Azure-toepassing Insights-IP-adressen | Microsoft Docs
 description: Meer informatie over hoe IP-adressen en geolocatie worden verwerkt met Azure-toepassing Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 09/11/2019
+ms.openlocfilehash: bee3e24739aa560a43960143d1a18c30ec1ce160
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916164"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819447"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 
@@ -25,10 +22,10 @@ In dit artikel wordt uitgelegd hoe geolocatie lookup en IP-adres afhandeling pla
 
 IP-adressen worden standaard tijdelijk verzameld, maar niet opgeslagen in Application Insights. Het basis proces is als volgt:
 
-IP-adressen worden verzonden naar Application Insights als onderdeel van telemetriegegevens. Bij het bereiken van het opname-eind punt in azure wordt het IP-adres gebruikt voor het uitvoeren van een geolocatie lookup met [GeoLite2 van Maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/). De resultaten van deze zoek actie worden gebruikt voor het invullen van `client_City`de `client_StateOrProvince`volgende `client_CountryOrRegion`velden,,,. Op dit punt wordt het IP-adres verwijderd en `0.0.0.0` naar het `client_IP` veld geschreven.
+IP-adressen worden verzonden naar Application Insights als onderdeel van telemetriegegevens. Bij het bereiken van het opname-eind punt in azure wordt het IP-adres gebruikt voor het uitvoeren van een geolocatie lookup met [GeoLite2 van Maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/). De resultaten van deze zoek actie worden gebruikt om de volgende velden in te vullen `client_City`, `client_StateOrProvince``client_CountryOrRegion`. Op dit moment wordt het IP-adres verwijderd en worden `0.0.0.0` naar het veld `client_IP` geschreven.
 
-* Browser-telemetrie: Het IP-adres van de afzender wordt tijdelijk verzameld. Het IP-adres wordt berekend door het opname-eind punt.
-* Server-telemetrie: Het IP-adres van de client wordt tijdelijk door de module Application Insights verzameld. Als `X-Forwarded-For` is ingesteld, wordt deze niet verzameld.
+* Browser-telemetrie: het IP-adres van de afzender wordt tijdelijk verzameld. Het IP-adres wordt berekend door het opname-eind punt.
+* Server-telemetrie: de Application Insights module verzamelt tijdelijk het client-IP-adres. Het wordt niet verzameld als `X-Forwarded-For` is ingesteld.
 
 Dit gedrag is inherent aan het ontwerp om onnodig verzamelen van persoons gegevens te voor komen. Als dat mogelijk is, kunt u het verzamelen van persoons gegevens het beste vermijden. 
 
@@ -38,7 +35,7 @@ Hoewel het standaard gedrag is om het verzamelen van persoons gegevens te minima
 
 ## <a name="storing-ip-address-data"></a>IP-adres gegevens opslaan
 
-Als u de IP-verzameling en-opslag wilt `DisableIpMasking` inschakelen, moet u de eigenschap van het onderdeel `true`Application Insights instellen op. Deze eigenschap kan worden ingesteld via Azure Resource Manager sjablonen of door de REST API aan te roepen. 
+Als u de IP-verzameling en-opslag wilt inschakelen, moet u de eigenschap `DisableIpMasking` van het onderdeel Application Insights instellen op `true`. Deze eigenschap kan worden ingesteld via Azure Resource Manager sjablonen of door de REST API aan te roepen. 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
@@ -66,7 +63,7 @@ Als u de IP-verzameling en-opslag wilt `DisableIpMasking` inschakelen, moet u de
 
 Als u het gedrag voor een enkele Application Insights resource alleen hoeft te wijzigen, kunt u dit het beste doen via de Azure Portal.  
 
-1. Ga naar de sjabloon voor het**exporteren** van Application Insights-Resources >- **instellingen** >  
+1. Ga naar de Application Insights Bron > **instellingen** > **sjabloon exporteren** 
 
     ![Sjabloon exporteren](media/ip-collection/export-template.png)
 
@@ -83,9 +80,9 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
     ![In de scherm afbeelding wordt een komma toegevoegd na ' IbizaAIExtension ' en een nieuwe regel toegevoegd onder ' DisableIpMasking ': True](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Als er een fout optreedt met de volgende tekst: **_De resource groep bevindt zich op een locatie die niet wordt ondersteund door een of meer resources in de sjabloon. Kies een andere resource groep._** Selecteer tijdelijk een andere resource groep in de vervolg keuzelijst en selecteer vervolgens de oorspronkelijke resource groep om de fout op te lossen.
+    > Als er een fout optreedt met de melding:  **_de resource groep bevindt zich op een locatie die niet wordt ondersteund door een of meer resources in de sjabloon. Kies een andere resource groep._** Selecteer tijdelijk een andere resource groep in de vervolg keuzelijst en selecteer vervolgens de oorspronkelijke resource groep om de fout op te lossen.
 
-5. Selecteer **Ik ga akkoord** > met**aankopen**. 
+5. Selecteer **Ik ga akkoord** > **kopen**. 
 
     ![Sjabloon bewerken](media/ip-collection/purchase.png)
 
@@ -93,7 +90,7 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
 
 6. Zodra de implementatie is voltooid, worden nieuwe telemetriegegevens vastgelegd.
 
-    Als u een sjabloon opnieuw wilt selecteren en bewerken, zou u alleen de standaard sjabloon zien en de zojuist toegevoegde eigenschap en de bijbehorende waarde niet zien. Als u geen IP-adres gegevens ziet en wilt bevestigen dat `"DisableIpMasking": true` deze is ingesteld. Voer de volgende Power shell uit: (Vervang `Fabrikam-dev` door de naam van de juiste resource en resource groep.)
+    Als u een sjabloon opnieuw wilt selecteren en bewerken, zou u alleen de standaard sjabloon zien en de zojuist toegevoegde eigenschap en de bijbehorende waarde niet zien. Als u geen IP-adres gegevens ziet en wilt bevestigen dat `"DisableIpMasking": true` is ingesteld. Voer de volgende Power shell uit: (Vervang `Fabrikam-dev` door de naam van de juiste resource en resource groep.)
     
     ```powershell
     # If you aren't using the cloud shell you will need to connect to your Azure account
@@ -102,7 +99,7 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
     $AppInsights.Properties
     ```
     
-    Er wordt een lijst met eigenschappen geretourneerd als resultaat. Een van de eigenschappen moet worden `DisableIpMasking: true`gelezen. Als u de Power shell uitvoert voordat u de nieuwe eigenschap met Azure Resource Manager implementeert, bestaat de eigenschap niet.
+    Er wordt een lijst met eigenschappen geretourneerd als resultaat. Een van de eigenschappen moet `DisableIpMasking: true`lezen. Als u de Power shell uitvoert voordat u de nieuwe eigenschap met Azure Resource Manager implementeert, bestaat de eigenschap niet.
 
 ### <a name="rest-api"></a>Rest API
 
@@ -127,7 +124,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Initialisatie functie voor telemetrie
 
-Als u een flexibeler alternatief nodig hebt `DisableIpMasking` dan voor het vastleggen van alle of een deel van de IP-adressen, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) gebruiken om het hele IP-adres of een deel van een aangepast veld te kopiëren. 
+Als u een flexibeler alternatief nodig hebt dan `DisableIpMasking` om alle of een deel van de IP-adressen vast te leggen, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) gebruiken om alle of een deel van het IP-adres naar een aangepast veld te kopiëren. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -155,7 +152,7 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> Als u geen toegang hebt tot `ISupportProperties`, controleert u of u de laatste stabiele versie van de Application Insights SDK uitvoert. `ISupportProperties`zijn bedoeld voor hoge kardinaliteit waarden, maar `GlobalProperties` zijn geschikter voor lage kardinaliteit waarden, zoals regio naam, omgevings naam, enzovoort. 
+> Als u geen toegang hebt tot `ISupportProperties`, controleert u of u de laatste stabiele versie van de Application Insights SDK uitvoert. `ISupportProperties` zijn bedoeld voor hoge kardinaliteit waarden, terwijl `GlobalProperties` geschikter zijn voor waarden met weinig kardinaliteit, zoals regio naam, omgevings naam, enzovoort. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Schakel de initialisatie functie voor telemetrie in voor. ASP.NET
 
@@ -208,9 +205,9 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 In tegens telling tot de Sdk's aan de server zijde berekent de Java script SDK aan de client zijde geen IP-adres. Standaard wordt de berekening van IP-adressen voor telemetrie aan de client zijde uitgevoerd op het opname-eind punt in azure bij de ontvangst van telemetrie. Dit betekent dat als u client gegevens naar een proxy verzendt en vervolgens doorstuurt naar het opname-eind punt, het IP-adres van de proxy wordt weer gegeven in de berekening van het IP-adres en niet de client. Als er geen proxy wordt gebruikt, mag dit geen probleem zijn.
 
-Als u het IP-adres rechtstreeks aan de client zijde wilt berekenen, moet u uw eigen aangepaste logica toevoegen om deze berekening uit te voeren en het resultaat gebruiken om het `ai.location.ip` label in te stellen. Wanneer `ai.location.ip` is ingesteld, wordt de berekening van het IP-adres niet uitgevoerd door het opname-eind punt en wordt het opgegeven IP-adres geaccepteerd en gebruikt voor het uitvoeren van de geo-zoek opdracht. In dit scenario wordt het IP-adres standaard nog steeds nul. 
+Als u het IP-adres rechtstreeks aan de client zijde wilt berekenen, moet u uw eigen aangepaste logica toevoegen om deze berekening uit te voeren en het resultaat gebruiken om de `ai.location.ip`-tag in te stellen. Als `ai.location.ip` is ingesteld, wordt de berekening van het IP-adres niet uitgevoerd door het opname-eind punt en wordt het opgegeven IP-adres geaccepteerd en gebruikt voor het uitvoeren van de geo-zoek opdracht. In dit scenario wordt het IP-adres standaard nog steeds nul. 
 
-Als u het volledige IP-adres wilt behouden dat is berekend op basis van uw aangepaste logica, kunt u een telemetrie-initialisatie functie gebruiken waarmee `ai.location.ip` u de IP-adres gegevens die u hebt ingevoerd, kopieert naar een afzonderlijk aangepast veld. Maar in tegens telling tot de Sdk's aan de server zijde, zonder afhankelijk te zijn van bibliotheken van derden of uw eigen aangepaste IP-verzamelings logica op de client, wordt het IP-adres voor u niet door de SDK aan de client zijde berekend.    
+Als u het volledige IP-adres wilt behouden dat is berekend op basis van uw aangepaste logica, kunt u een telemetrie-initialisatie functie gebruiken waarmee de IP-adres gegevens die u in `ai.location.ip` hebt ingevoerd, naar een afzonderlijk aangepast veld worden gekopieerd. Maar in tegens telling tot de Sdk's aan de server zijde, zonder afhankelijk te zijn van bibliotheken van derden of uw eigen aangepaste IP-verzamelings logica op de client, wordt het IP-adres voor u niet door de SDK aan de client zijde berekend.    
 
 
 ```javascript
@@ -236,10 +233,10 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-Nieuwe IP-adressen moeten worden weer gegeven `customDimensions_client-ip` in de kolom. De standaard `client-ip` kolom bevat nog steeds 4 octetten of wordt alleen de eerste drie octetten weer gegeven, afhankelijk van hoe u de IP-adres verzameling op onderdeel niveau hebt geconfigureerd. Als u lokaal test na de implementatie van de telemetrie-initialisatie functie en de waarde `customDimensions_client-ip` die `::1` u ziet, is dit het verwachte gedrag. `::1`Hiermee wordt het loop back-adres in IPv6 aangeduid. Dit komt overeen met `127.0.01` in IPv4 en is het resultaat dat u ziet wanneer u van localhost test.
+Nieuwe IP-adressen moeten worden weer gegeven in de kolom `customDimensions_client-ip`. De standaard `client-ip` kolom heeft nog steeds een waarde van 4 octetten of de eerste drie octetten worden alleen weer gegeven, afhankelijk van hoe u de IP-adres verzameling op onderdeel niveau hebt geconfigureerd. Als u lokaal test na de implementatie van de telemetrie-initialisatie functie en de waarde die u ziet voor `customDimensions_client-ip` is `::1` dit is het verwachte gedrag. `::1` vertegenwoordigt het loop back-adres in IPv6. Het is gelijk aan `127.0.01` in IPv4. het resultaat is dat u tijdens het testen van localhost te zien krijgt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [verzamelen van persoonlijke gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) in Application Insights.
 
-* Meer informatie over hoe [IP-adres verzameling](https://apmtips.com/blog/2016/07/05/client-ip-address/) in Application Insights werkt. (Dit is een oudere externe blog post, geschreven door een van onze technici. Het huidige standaard gedrag waarbij het IP-adres wordt vastgelegd `0.0.0.0`, wordt voorgezet, maar het gaat in op meer gedetailleerde informatie over de mechanismen van de ingebouwde `ClientIpHeaderTelemetryInitializer`.)
+* Meer informatie over hoe [IP-adres verzameling](https://apmtips.com/blog/2016/07/05/client-ip-address/) in Application Insights werkt. (Dit is een oudere externe blog post, geschreven door een van onze technici. Het huidige standaard gedrag waarbij het IP-adres wordt vastgelegd als `0.0.0.0`, wordt voorgezet, maar het wordt uitgebreid naar de mechanismen van de ingebouwde `ClientIpHeaderTelemetryInitializer`.)

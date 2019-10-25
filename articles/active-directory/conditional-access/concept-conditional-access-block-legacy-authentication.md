@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453054"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819740"
 ---
 # <a name="blocking-legacy-authentication"></a>Verouderde verificatie blok keren
  
@@ -33,9 +33,11 @@ Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst b
 
 1. Navigeer naar het Azure Portal > Azure Active Directory > aanmeldingen.
 1. Voeg de kolom client-app toe als deze niet wordt weer gegeven door te klikken op de kolommen > client-app.
-1. Filter op client-app > andere clients en klik op Toep assen.
+1. Filteren op client app > Controleer alle andere client opties die worden weer gegeven en klik op Toep assen.
+1. Filter op status > geslaagd en klik op Toep assen. 
+1. Breid het datum bereik uit, indien nodig, met behulp van het datum filter.
 
-Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld client-app onder het tabblad basis informatie wordt aangegeven welk verouderde verificatie protocol is gebruikt. In deze logboeken wordt aangegeven welke gebruikers nog steeds afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatie aanvragen uit te voeren. Voor gebruikers die niet in deze logboeken worden weer gegeven en worden bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het basislijn beleid in: verouderde verificatie blok keren voor deze gebruikers.
+Door te filteren worden alleen geslaagde aanmeldings pogingen weer gegeven die zijn gemaakt door de geselecteerde verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In de kolom client-app of het veld client-app onder het tabblad basis informatie nadat u een afzonderlijke rij gegevens selecteert, wordt aangegeven welk verouderde verificatie protocol is gebruikt. In deze logboeken wordt aangegeven welke gebruikers nog steeds afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatie aanvragen uit te voeren. Voor gebruikers die niet in deze logboeken worden weer gegeven en worden bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het basislijn beleid in: verouderde verificatie blok keren voor deze gebruikers.
 
 ## <a name="moving-away-from-legacy-authentication"></a>Van verouderde authenticatie weggooien 
 
@@ -47,8 +49,8 @@ Deze sectie bevat een stapsgewijze overzicht van het bijwerken van uw omgeving n
 
 De eerste stap bij het inschakelen van moderne verificatie is dat uw Directory ondersteuning biedt voor moderne verificatie. Moderne authenticatie is standaard ingeschakeld voor mappen die zijn gemaakt op of na 1 augustus 2017. Als uw map vóór deze datum is gemaakt, moet u de volgende stappen gebruiken om moderne verificatie voor uw directory hand matig in te scha kelen:
 
-1. Controleer of uw directory al ondersteuning biedt voor moderne verificatie door het uitvoeren van @ no__t-0 @ no__t-1from de [Skype voor bedrijven online Power shell-module](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Als uw opdracht een leeg @ no__t-0 @ no__t-1property retourneert, wordt moderne verificatie uitgeschakeld. Werk de instelling bij om moderne authenticatie in te scha kelen met behulp van @ no__t-0. Als uw @ no__t-0 @ no__t-1property een vermelding bevat, bent u klaar om te gaan.
+1. Controleer of uw directory al ondersteuning biedt voor moderne verificatie door `Get-CsOAuthConfiguration` uit te voeren vanuit de [Skype voor bedrijven online Power shell-module](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
+1. Als uw opdracht een lege `OAuthServers`- eigenschap retourneert, wordt moderne verificatie uitgeschakeld. Werk de instelling bij om moderne verificatie in te scha kelen met behulp van `Set-CsOAuthConfiguration`. Als uw `OAuthServers` eigenschap een item bevat, kunt u aan de slag.
 
 Zorg ervoor dat u deze stap uitvoert voordat u verdergaat. Het is essentieel dat uw Directory configuraties eerst worden gewijzigd omdat ze bepalen welk protocol door alle Office-clients wordt gebruikt. Zelfs als u Office-clients gebruikt die moderne authenticatie ondersteunen, wordt standaard verouderde protocollen gebruikt als moderne verificatie is uitgeschakeld voor uw Directory.
 

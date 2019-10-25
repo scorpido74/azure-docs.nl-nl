@@ -1,24 +1,19 @@
 ---
 title: Slimme detectie-prestatie afwijkingen | Microsoft Docs
 description: Application Insights voert een slimme analyse uit van de telemetrie van uw app en waarschuwt u mogelijke problemen. Deze functie hoeft niet te worden ingesteld.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867712"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820563"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Slimme detectie-prestatie afwijkingen
 
@@ -30,7 +25,7 @@ Voor deze functie is geen speciale configuratie vereist, behalve het configurere
 
 Application Insights heeft gedetecteerd dat de prestaties van uw toepassing op een van de volgende manieren worden verslechterd:
 
-* **Reactie tijd** -degradatie: uw app reageert op aanvragen langzamer dan deze is gebruikt voor. De wijziging is mogelijk snel geweest, bijvoorbeeld omdat er sprake was van een regressie in uw nieuwste implementatie. Het is ook mogelijk dat de computer geleidelijk kan worden veroorzaakt door een geheugenlek. 
+* **Reactie tijd-degradatie** : uw app reageert op aanvragen langzamer dan deze is gebruikt voor. De wijziging is mogelijk snel geweest, bijvoorbeeld omdat er sprake was van een regressie in uw nieuwste implementatie. Het is ook mogelijk dat de computer geleidelijk kan worden veroorzaakt door een geheugenlek. 
 * Afname van de **afhankelijkheids duur** : uw app maakt aanroepen van een rest API, data base of andere afhankelijkheid. De afhankelijkheid reageert trager dan wordt gebruikt.
 * **Langzaam prestatie patroon** : uw app lijkt een prestatie probleem te hebben dat slechts enkele aanvragen beïnvloedt. Zo worden pagina's bijvoorbeeld langzamer geladen voor een type browser dan andere. of aanvragen worden langzamer van een bepaalde server bediend. Momenteel bekijken onze algoritmen de pagina laad tijden, reactie tijden van aanvragen en reactie tijden voor afhankelijkheden.  
 
@@ -41,7 +36,7 @@ Slimme detectie vereist ten minste 8 dagen telemetrie op een werkbaar volume om 
 
 Nee, een melding betekent niet dat uw app een probleem heeft. Het is slechts een suggestie voor iets dat u misschien nauwkeuriger moet bekijken.
 
-## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
+## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
 
 De meldingen bevatten diagnostische gegevens. Hier volgt een voorbeeld:
 
@@ -52,17 +47,17 @@ De meldingen bevatten diagnostische gegevens. Hier volgt een voorbeeld:
 2. **Bereik**. Is het probleem van invloed op alle verkeer of alleen op sommige pagina's? Is het beperkt tot bepaalde browsers of locaties? Deze informatie kan worden opgehaald uit de melding.
 3. **Diagnose**. Vaak wordt de aard van het probleem voorgesteld door de diagnostische gegevens in de melding. Als de reactie tijd bijvoorbeeld langzaam verloopt wanneer het aanvraag aantal hoog is, wordt er een suggestie voor uw server of afhankelijkheden overbelast. 
 
-    Als dat niet het geval is, opent u de Blade prestaties in Application Insights. Daar vindt u profilerings [](profiler.md) gegevens. Als er uitzonde ringen worden gegenereerd, kunt u ook de [fout opsporing voor de moment opname](../../azure-monitor/app/snapshot-debugger.md)proberen.
+    Als dat niet het geval is, opent u de Blade prestaties in Application Insights. Daar vindt u [profilerings](profiler.md) gegevens. Als er uitzonde ringen worden gegenereerd, kunt u ook de [fout opsporing voor de moment opname](../../azure-monitor/app/snapshot-debugger.md)proberen.
 
 
 
 ## <a name="configure-email-notifications"></a>E-mail meldingen configureren
 
-Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar personen die een [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) hebben en [de toegang tot](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) het abonnement waartoe de Application Insights-bron zich bevindt, bewaken. Als u dit wilt wijzigen, klikt u in de e-mail melding op **configureren** of opent u instellingen voor slimme detectie in Application Insights. 
+Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar personen die een [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) hebben en de toegang tot het abonnement waartoe de Application Insights-bron zich bevindt, [bewaken.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) Als u dit wilt wijzigen, klikt u in de e-mail melding op **configureren** of opent u instellingen voor slimme detectie in Application Insights. 
   
   ![Instellingen voor slimme detectie](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * U kunt de koppeling voor **afmelden** in het e-mail bericht voor slimme detectie gebruiken om te stoppen met het ontvangen van e-mail meldingen.
+  * U kunt de koppeling voor **Afmelden** in het e-mail bericht voor slimme detectie gebruiken om te stoppen met het ontvangen van e-mail meldingen.
 
 E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties zijn beperkt tot één e-mail per dag per Application Insights resource. Het e-mail bericht wordt alleen verzonden als er ten minste één nieuw probleem op die dag is gedetecteerd. U krijgt geen herhalingen van een bericht. 
 
@@ -109,14 +104,14 @@ Waar is het probleem? Reageert de server traag, is de pagina erg lang, of heeft 
 Open de Blade metric voor browsers. De gesegmenteerde weer gave van de laad tijd van een browser pagina geeft aan waar de tijd naartoe gaat. 
 
 * Als de **aanvraag tijd** hoog is, reageert de server langzaam of de aanvraag is een bericht dat veel gegevens bevat. Bekijk de [metrische gegevens voor prestaties](../../azure-monitor/app/web-monitor-performance.md#metrics) om reactie tijden te onderzoeken.
-* Stel het [bijhouden](../../azure-monitor/app/asp-net-dependencies.md) van afhankelijkheden in om te zien of de vertraging wordt veroorzaakt door externe services of uw data base.
+* Stel het [bijhouden van afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) in om te zien of de vertraging wordt veroorzaakt door externe services of uw data base.
 * Als **antwoord wordt ontvangen** , zijn uw pagina en de afhankelijke onderdelen: Java script, CSS, afbeeldingen enzovoort (maar niet asynchroon geladen gegevens) lang. Stel een [beschikbaarheids test](../../azure-monitor/app/monitor-web-app-availability.md)in en zorg ervoor dat u de optie voor het laden van afhankelijke onderdelen hebt ingesteld. Wanneer u een aantal resultaten krijgt, opent u de details van een resultaat en vouwt u het uit om de laad tijden van verschillende bestanden weer te geven.
 * De hoge **client verwerkings tijd** voor komt dat scripts langzaam worden uitgevoerd. Als dit niet het geval is, kunt u een timing code toevoegen en de tijden in trackMetric-aanroepen verzenden.
 
 ### <a name="improve-slow-pages"></a>Langzame pagina's verbeteren
 Er is een webvol met advies over het verbeteren van uw server reacties en pagina laad tijden, dus we proberen deze niet hier te herhalen. Hier volgen enkele tips die u waarschijnlijk al kent, zodat u op de hoogte bent:
 
-* Langzaam laden vanwege grote bestanden: Laad de scripts en andere onderdelen asynchroon. Gebruik script bundeling. Splits de hoofd pagina in widgets die de gegevens afzonderlijk laden. Geen gewone oude HTML voor lange tabellen verzenden: gebruik een script om de gegevens als JSON of een andere compacte indeling aan te vragen en vul vervolgens de tabel in. Er zijn fantastische kaders om u hierbij te helpen. (Ze omvatten ook grote scripts, uiteraard.)
+* Langzaam laden vanwege grote bestanden: de scripts en andere onderdelen asynchroon laden. Gebruik script bundeling. Splits de hoofd pagina in widgets die de gegevens afzonderlijk laden. Geen gewone oude HTML voor lange tabellen verzenden: gebruik een script om de gegevens als JSON of een andere compacte indeling aan te vragen en vul vervolgens de tabel in. Er zijn fantastische kaders om u hierbij te helpen. (Ze omvatten ook grote scripts, uiteraard.)
 * Langzame server afhankelijkheden: Houd rekening met de geografische locaties van uw onderdelen. Als u bijvoorbeeld Azure gebruikt, zorg er dan voor dat de webserver en de data base zich in dezelfde regio bevinden. Halen query's meer informatie dan ze nodig hebben? Wordt de Help in de cache geplaatst of in batch verwerking?
 * Capaciteits problemen: Bekijk de metrische gegevens van de server van de reactie tijden en het aantal aanvragen. Als de reactie tijden piek onevenredig zijn met pieken in het aantal aanvragen, is het waarschijnlijk dat uw servers worden uitgerekt.
 

@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
-ms.date: 07/25/2018
-ms.openlocfilehash: 86d32726280cce12888f125c65254a7b02166704
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 10/23/2019
+ms.openlocfilehash: 9b4ceb144408e0ac1886aa3a7e0e0f48ac4baba3
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60641242"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881953"
 ---
 # <a name="azure-and-jenkins"></a>Azure en Jenkins
 
@@ -29,15 +29,15 @@ Host Jenkins in Azure om de automatisering van uw build te centraliseren en de s
 - [Virtuele machines van Azure](/azure/virtual-machines/linux/overview). Zie onze [zelfstudie](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) om een Jenkins-exemplaar te maken op een VM.
 - Raadpleeg de [instructies](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) voor het uitvoeren van een Kubernetes-cluster in [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Controleren en beheren van uw Azure-Jenkins implementeren met [logboeken van Azure Monitor](/azure/log-analytics/log-analytics-overview) en de [Azure CLI](/cli/azure).
+Bewaak en beheer uw Azure Jenkins-implementatie met behulp van [Azure monitor-logboeken](/azure/log-analytics/log-analytics-overview) en de [Azure cli](/cli/azure).
 
 ## <a name="scale-your-build-automation-on-demand"></a>Automatisering van uw build schalen op aanvraag
 
-Voeg buildagents toe aan een bestaande Jenkins-implementatie om de capaciteit van uw Jenkins-build te schalen als het aantal builds groeit en de complexiteit van taken en pijplijnen toeneemt. U kunt deze buildagents uitvoeren op virtuele machines van Azure door gebruik te maken van de [invoegtoepassing Azure VM-agents](jenkins-azure-vm-agents.md). Zie onze [zelfstudie](/azure/jenkins/jenkins-azure-vm-agents) voor meer details.
+Voeg buildagents toe aan een bestaande Jenkins-implementatie om de capaciteit van uw Jenkins-build te schalen als het aantal builds groeit en de complexiteit van taken en pijplijnen toeneemt. U kunt deze build-agents uitvoeren op virtuele machines van Azure met behulp van de [Azure VM agents-invoeg toepassing](jenkins-azure-vm-agents.md). Zie onze [zelfstudie](/azure/jenkins/jenkins-azure-vm-agents) voor meer details.
 
 Zodra Jenkins-taken en -pijplijnen zijn geconfigureerd voor gebruik met een [Azure-service-principal](/azure/azure-resource-manager/resource-group-overview), kunnen deze referenties worden gebruikt om:
 
-- Buildartefacten veilig op te slaan en te archiveren in [Azure Storage](/azure/storage/common/storage-introduction) met behulp van de [invoegtoepassing Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) voor meer informatie.
+- U kunt het bouwen van artefacten veilig opslaan en archiveren in [Azure Storage](/azure/storage/common/storage-introduction) met behulp van de [Azure Storage-invoeg toepassing](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) voor meer informatie.
 - Beheer en configureer Azure-resources met [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Uw code implementeren in Azure-services

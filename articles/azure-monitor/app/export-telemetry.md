@@ -1,23 +1,18 @@
 ---
 title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft Docs
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516952"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819556"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren uit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
@@ -37,7 +32,7 @@ Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang m
 
 Continue export **biedt geen ondersteuning** voor de volgende functies/configuraties van Azure Storage:
 
-* Gebruik van [VNET/Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) -firewalls in combi natie met Azure Blob Storage.
+* Gebruik van [VNET/Azure Storage-firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in combi natie met Azure Blob Storage.
 
 * [Onveranderbare opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) voor Azure Blob Storage.
 
@@ -82,7 +77,7 @@ Gegevens die zijn verwijderd door middel van [steek proeven](../../azure-monitor
 
 Andere berekende metrische gegevens worden niet opgenomen. We exporteren bijvoorbeeld geen gemiddeld CPU-gebruik, maar we exporteren de ruwe telemetrie waarvan het gemiddelde wordt berekend.
 
-De gegevens bevatten ook de resultaten van alle [beschik](../../azure-monitor/app/monitor-web-app-availability.md) bare-webtesten die u hebt ingesteld.
+De gegevens bevatten ook de resultaten van alle [beschik bare-webtesten](../../azure-monitor/app/monitor-web-app-availability.md) die u hebt ingesteld.
 
 > [!NOTE]
 > **Proef.** Als uw toepassing veel gegevens verzendt, kan de bemonsterings functie worden gebruikt en kan slechts een fractie van de gegenereerde telemetrie worden verzonden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
@@ -90,9 +85,9 @@ De gegevens bevatten ook de resultaten van alle [beschik](../../azure-monitor/ap
 >
 
 ## <a name="get"></a>De gegevens controleren
-U kunt de opslag direct in de portal inspecteren. Klik op Start in het meest linkse menu, waar u ' Azure-Services ' selecteert, selecteer **opslag accounts**, selecteer de naam van het opslag account op de pagina overzicht Selecteer blobs onder Services en selecteer ten slotte de container naam.
+U kunt de opslag direct in de portal inspecteren. Klik op Start in het meest linkse menu, waar u ' Azure-Services ' selecteert, selecteer **opslag accounts**, selecteer de naam van het opslag account op de pagina overzicht Selecteer **blobs** onder Services en selecteer ten slotte de container naam.
 
-Als u Azure Storage wilt controleren in Visual Studio, opent u **weer gave**, **Cloud Explorer**. (Als u die menu opdracht niet hebt, moet u de Azure SDK installeren: Open het dialoog venster **New Project** , vouw C#Visual/Cloud uit en kies **Get Microsoft Azure SDK voor .net**.)
+Als u Azure Storage wilt controleren in Visual Studio, opent u **weer gave**, **Cloud Explorer**. (Als u deze menu opdracht niet hebt, moet u de Azure SDK installeren: Open het dialoog venster **New Project** , vouw Visual C#/Cloud uit en kies **Get Microsoft Azure SDK voor .net**.)
 
 Wanneer u uw BLOB-archief opent, ziet u een container met een set BLOB-bestanden. De URI van elk bestand dat is afgeleid van uw Application Insights resource naam, de bijbehorende instrumentatie sleutel, telemetrie-type/datum/tijd. (De resource naam is allemaal kleine letters en de instrumentatie sleutel laat streepjes.)
 
@@ -106,8 +101,8 @@ Dit is de vorm van het pad:
 
 Waar
 
-* `blobCreationTimeUtc`is tijd waarop blob is gemaakt in de interne staging-opslag
-* `blobDeliveryTimeUtc`is de tijd waarop BLOB wordt gekopieerd naar de export doel opslag
+* `blobCreationTimeUtc` is tijd waarop blob is gemaakt in de interne staging-opslag
+* `blobDeliveryTimeUtc` is de tijd waarop de BLOB wordt gekopieerd naar de export doel opslag
 
 ## <a name="format"></a>Gegevens indeling
 * Elke blob is een tekst bestand dat meerdere \n-gescheiden rijen bevat. Het bevat de telemetrie die gedurende een periode van ongeveer een halve minuut is verwerkt.
@@ -185,7 +180,7 @@ Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdin
   * Daarnaast worden er voor toepassingen met veel verkeer extra partitie-eenheden toegewezen. In dit geval maakt elke eenheid elke minuut een blob.
 * *Ik heb de sleutel opnieuw gegenereerd voor mijn opslag of de naam van de container gewijzigd en nu werkt de export niet.*
 
-    Bewerk de export en open het tabblad Export bestemming. Wijzig dezelfde opslag als voorheen, en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
+    Bewerk de export en open het tabblad uitvoer bestemming. Wijzig dezelfde opslag als voorheen en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
 * *Kan ik het exporteren onderbreken?*
 
     Ja. Klik op uitschakelen.

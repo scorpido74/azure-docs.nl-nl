@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671315"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882569"
 ---
 # <a name="azure-storage-account-overview"></a>Overzicht van Azure Storage-account
 
@@ -29,10 +29,10 @@ Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer in
 
 V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd. V2-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
-- Blobs (alle typen: Blok keren, toevoegen, pagina)
+- Blobs (alle typen: blok keren, toevoegen, pagina)
 - Bestanden
-- Disks
-- Wachtrijen
+- Schijven
+- Queues
 - Tabellen
 
 > [!NOTE]
@@ -44,12 +44,12 @@ V2-opslag accounts voor algemeen gebruik bieden meerdere toegangs lagen voor het
 
 ### <a name="general-purpose-v1-accounts"></a>V1-accounts voor algemeen gebruik
 
-V1-accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-services, maar hebben mogelijk niet de nieuwste functies of de laagste prijzen per gigabyte. V1-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
+V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-services, maar hebben mogelijk niet de nieuwste functies of de laagste prijzen per gigabyte. V1-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
 - Blobs (alle typen)
 - Bestanden
-- Disks
-- Wachtrijen
+- Schijven
+- Queues
 - Tabellen
 
 In de meeste gevallen worden v2-accounts voor algemeen gebruik aanbevolen voor de volgende scenario's:
@@ -60,17 +60,19 @@ In de meeste gevallen worden v2-accounts voor algemeen gebruik aanbevolen voor d
 
 * U gebruikt een versie van de [REST API voor Storage Services](https://msdn.microsoft.com/library/azure/dd894041.aspx) die ouder is dan 2014-02-14 of een clientbibliotheek met een lagere versie dan 4.x en u uw toepassing niet kunt upgraden.
 
-### <a name="block-blob-storage-accounts"></a>Blob Storage-accounts blok keren
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-accounts
 
-Een blok-Blob Storage-account is een gespecialiseerd opslag account voor het opslaan van ongestructureerde object gegevens als blok-blobs. Dit type opslag account ondersteunt blok-blobs en toevoeg-blobs, maar niet pagina-blobs, tabellen of wacht rijen.
+Een BlockBlobStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan van ongestructureerde object gegevens als blok-blobs en het maken van Premium-blok-blobs. Dit type opslag account ondersteunt blok-blobs en toevoeg-blobs, maar niet pagina-blobs, tabellen of wacht rijen.
 
-Vergeleken met v2-en Blob Storage-accounts voor algemeen gebruik, blok-Blob Storage-accounts bieden een lage en consistente latentie en hogere transactie tarieven.
+Vergeleken met v2-en BlobStorage-accounts voor algemeen gebruik bieden BlockBlobStorage-accounts een lage en consistente latentie en hogere transactie tarieven.
 
-Het blok keren van Blob Storage-accounts biedt momenteel geen ondersteuning voor het maken van lagen op dynamische, koele of archief toegangs lagen.
+BlockBlobStorage-accounts bieden momenteel geen ondersteuning voor het maken van lagen op dynamische, koele of archief toegangs lagen.
 
-### <a name="filestorage-storage-accounts"></a>FileStorage-opslag accounts
+### <a name="filestorage-accounts"></a>FileStorage-accounts
 
-Een FileStorage-opslag account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. FileStorage-opslag accounts bieden unieke, specifieke prestatie kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
+Een FileStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. Dit type opslag account ondersteunt bestanden, maar geen blok-blobs, toevoeg-blobs, pagina-blobs, tabellen of wacht rijen. 
+
+FileStorage-accounts bieden unieke prestatie gerichte kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
 
 ## <a name="naming-storage-accounts"></a>Naamgeving van opslag accounts
 
@@ -86,7 +88,7 @@ Opslag accounts voor algemeen gebruik kunnen worden geconfigureerd voor een van 
 * Een standaard prestatie niveau voor het opslaan van blobs, bestanden, tabellen, wacht rijen en schijven van virtuele machines van Azure.
 * Een Premium-prestatie-laag voor het opslaan van niet-beheerde schijven van virtuele machines.
 
-Blok-Blob-opslag accounts bieden een Premium-prestatie niveau voor het opslaan van blok-blobs en toevoeg-blobs.
+BlockBlobStorage-opslag accounts bieden een Premium-prestatie-laag voor het opslaan van blok-blobs en toevoeg-blobs.
 
 FileStorage-opslag accounts bieden een Premium-prestatie niveau voor Azure-bestands shares.
 
@@ -186,5 +188,5 @@ De import/export-service kan ook worden gebruikt om gegevens over te dragen van 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een Azure-opslag account voor algemeen gebruik.
-* Zie [een blok-Blob-opslag account maken](../blobs/storage-blob-create-account-block-blob.md)voor meer informatie over het maken van een blok-Blob-opslag account.
+* Zie [een blok-Blob-opslag account maken](../blobs/storage-blob-create-account-block-blob.md)voor meer informatie over het maken van een BlockBlobStorage-account.
 * Zie [Azure Storage-accounts beheren](storage-account-manage.md)voor meer informatie over het beheren of verwijderen van een bestaand opslag account.

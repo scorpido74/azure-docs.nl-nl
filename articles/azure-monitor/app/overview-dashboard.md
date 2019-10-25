@@ -1,68 +1,63 @@
 ---
-title: Een Dashboard met Azure Application Insights | Microsoft Docs
-description: Toepassingen bewaken met Azure Application Insights en een Dashboard-functionaliteit.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Overzichts dashboard voor Azure-toepassing Insights | Microsoft Docs
+description: Bewaak toepassingen met Azure-toepassing inzicht en overzicht dashboard functionaliteit.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/03/2019
+ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497155"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819150"
 ---
-# <a name="application-insights-overview-dashboard"></a>Application Insights een dashboard
+# <a name="application-insights-overview-dashboard"></a>Application Insights-overzichts dashboard
 
-Application Insights heeft altijd beschikbaar voor een overzicht overzichtsvenster voor een snelle, in een oogopslag beoordeling van de status en prestaties van uw toepassing. Een dashboard met de nieuwe biedt een snellere meer flexibele ervaring.
+Application Insights heeft altijd een overzichts venster weer gegeven waarmee u de status en prestaties van uw toepassing snel, in één oogopslag kunt beoordelen. Het nieuwe overzichts dashboard biedt een snellere, flexibeler ervaring.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Hoe test ik de nieuwe ervaring uit?
+## <a name="how-do-i-test-out-the-new-experience"></a>Hoe kan ik de nieuwe ervaring testen?
 
-Een dashboard met de nieuwe start nu standaard:
+Het nieuwe overzichts dashboard wordt nu standaard gestart:
 
-![Overzicht voorbeeldvenster](./media/overview-dashboard/overview.png)
+![Voorbeeld venster Overzicht](./media/overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Betere prestaties
 
-Selectie van het tijdsbereik is vereenvoudigd naar een eenvoudige interface met één klik.
+De selectie van het tijds bereik is vereenvoudigd tot een eenvoudige interface met één klik.
 
 ![Tijdsbereik](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-Algehele zijn prestaties aanzienlijk toegenomen. U hebt één klik toegang tot populaire functies zoals **zoeken** en **Analytics**. Elke dynamisch bijwerken van de KPI-tegel standaard biedt inzicht in de bijbehorende Application Insights-functies. Kunnen geen aanvragen selecteren voor meer informatie over **fouten** onder de **onderzoeken** header:
+De algehele prestaties zijn aanzienlijk verhoogd. U hebt één klik toegang tot populaire functies, zoals **zoeken** en **analyses**. Elke standaard KPI-tegel die dynamisch wordt bijgewerkt, biedt inzicht in de bijbehorende Application Insights-functies. Voor meer informatie over mislukte aanvragen selecteert u **fouten** in de kop van de **onderzoek** :
 
 ![Fouten](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Toepassingsdashboard
 
-Toepassingsdashboard maakt gebruik van de bestaande dashboardtechnologie binnen Azure om te voorzien in een volledig aanpasbare één deelvenster weergave van de status van de toepassing en de prestaties.
+Toepassings dashboard maakt gebruik van de bestaande dash board-technologie in azure om een volledig aanpas bare weer gave van uw toepassings status en-prestaties te bieden.
 
-Voor toegang tot de standaard dashboard Selecteer _Toepassingsdashboard_ in de linkerbovenhoek.
+Als u het standaard dashboard wilt openen, selecteert u _toepassings dashboard_ in de linkerbovenhoek.
 
 ![Dashboardweergave](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
-Als dit de eerste keer toegang tot het dashboard, wordt een standaardweergave gestart:
+Als dit de eerste keer is dat u het dash board opent, wordt er een standaard weergave geopend:
 
 ![Dashboardweergave](./media/overview-dashboard/0001-dashboard.png)
 
-U kunt de standaardweergave houden als u wilt dat dit. Of u kunt ook toevoegen en verwijderen vanuit het dashboard om te aan te passen aan de behoeften van uw team.
+U kunt de standaard weergave gebruiken als u dat wilt. U kunt ook toevoegen en verwijderen uit het dash board om het beste te voldoen aan de behoeften van uw team.
 
 > [!NOTE]
-> Alle gebruikers met toegang tot de Application Insights-resource delen dezelfde toepassing dashboard-ervaring. Wijzigingen die zijn aangebracht door een gebruiker wordt gewijzigd, de weergave voor alle gebruikers.
+> Alle gebruikers met toegang tot de Application Insights resource delen dezelfde toepassings dashboard ervaring. Wijzigingen die door een gebruiker zijn aangebracht, wijzigen de weer gave voor alle gebruikers.
 
-Ga terug naar het overzicht-ervaring hoeft te selecteren:
+Als u terug wilt gaan naar de overzichts ervaring, selecteert u:
 
-![Overzicht-knop](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
+![Knop overzicht](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u selecteert **tegelinstellingen configureren** en stel een aangepast tijdsbereik dat overschrijdt 31 dagen in uw dashboard niet langer dan 31 dagen van gegevens, zelfs met de standaard-bewaarperiode van 90 dagen worden weergegeven. Er is momenteel geen oplossing voor dit gedrag.
+Als u **tegel instellingen configureren** selecteert en een aangepast tijds bereik van meer dan 31 dagen instelt, wordt uw dash board niet meer dan 31 dagen aan gegevens weer gegeven, zelfs met de standaard Bewaar periode van 90 dagen. Er is momenteel geen oplossing voor dit gedrag.
 
 ## <a name="next-steps"></a>Volgende stappen
 

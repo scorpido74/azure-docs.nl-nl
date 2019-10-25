@@ -1,45 +1,41 @@
 ---
-title: Profileren van ASP.NET Core Azure Linux-web-apps met Application Insights Profiler | Microsoft Docs
-description: Een conceptueel overzicht en een stapsgewijze zelfstudie over het gebruik van Application Insights Profiler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler | Microsoft Docs
+description: Een conceptueel overzicht en stapsgewijze zelf studie over het gebruik van Application Insights Profiler.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/23/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: a300aa066bdef40c4768ac5e278537aec1a8b3b7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306485"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820551"
 ---
-# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profileren van ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
+# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
 Deze functie is momenteel beschikbaar als preview-product.
 
-Ontdek hoeveel tijd is besteed in elke methode van uw live webtoepassing wanneer u [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze handleiding bevat stapsgewijze instructies over hoe de Profiler-traces voor ASP.NET Core-Linux WebApps kunnen worden verzameld.
+Ontdek hoeveel tijd wordt besteed aan elke methode van uw Live Web-app wanneer u [Application Insights](../../azure-monitor/app/app-insights-overview.md)gebruikt. Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze hand leiding bevat stapsgewijze instructies voor het verzamelen van de profilerings traceringen voor ASP.NET Core Linux-web-apps.
 
-Nadat u alle stappen hebt voltooid, kan uw app Profiler-traceringen, zoals de traceringen die worden weergegeven in de afbeelding te verzamelen. In dit voorbeeld wordt de Profiler-tracering geeft aan dat een bepaalde webaanvraag trage vanwege tijd wachten. De *snelpad* in de code die de app wordt traag is gemarkeerd met een pictogram vuur. De **over** methode in de **HomeController** sectie de web-app is vertraagd omdat het aanroepen van de methode de **Thread.Sleep** functie.
+Nadat u deze procedure hebt voltooid, kan uw app profilerings traceringen verzamelen zoals de traceringen die in de installatie kopie worden weer gegeven. In dit voor beeld geeft de profilerings tracering aan dat een bepaalde webaanvraag langzaam is omdat er wacht tijd wordt besteed. Het *warme pad* in de code waarmee de app wordt vertraagd, is gemarkeerd met een vlam pictogram. De methode **about** in het gedeelte **HomeController** vertraagt de web-app omdat de methode de **thread. slaapstandmodus** oproept.
 
-![Profiler-traceringen](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Profiler traceringen](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Vereisten
-De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Linux en Mac-ontwikkeling:
+De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Windows, Linux en Mac:
 
-* Installeer de [.NET Core SDK 2.1.2 of hoger](https://dotnet.microsoft.com/download/archives).
-* Git installeren door de instructies op [aan de slag - installeren van Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Installeer [.net core SDK 2.1.2 of hoger](https://dotnet.microsoft.com/download/archives).
+* Installeer Git door de instructies in aan de slag [-git installeren](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)te volgen.
 
 ## <a name="set-up-the-project-locally"></a>Het project lokaal instellen
 
-1. Open een opdrachtpromptvenster op uw computer. De volgende instructies werken voor alle omgevingen voor Windows, Linux en Mac-ontwikkeling.
+1. Open een opdracht prompt venster op de computer. De volgende instructies werken voor alle ontwikkel omgevingen van Windows, Linux en Mac.
 
-1. Een ASP.NET Core MVC-webtoepassing maken:
+1. Maak een ASP.NET Core MVC-webtoepassing:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
@@ -47,7 +43,7 @@ De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Lin
 
 1. Wijzig de werkmap in de hoofdmap voor het project.
 
-1. NuGet-pakket voor het verzamelen van de Profiler-traceringen toevoegen:
+1. Voeg het NuGet-pakket toe voor het verzamelen van de profilerings traceringen:
 
     ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
@@ -62,7 +58,7 @@ De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Lin
             .UseStartup<Startup>();
     ```
     
-1. Inschakelen van Profiler in Startup.cs:
+1. Profiler inschakelen in Startup.cs:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -72,7 +68,7 @@ De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Lin
     }
     ```
 
-1. Toevoegen van een regel met code in de **HomeController.cs** sectie willekeurige vertraging een paar seconden:
+1. Voeg in de sectie **HomeController.cs** een regel code toe om enkele seconden een wille keurige vertraging uit te stellen:
 
     ```csharp
         using System.Threading;
@@ -87,7 +83,7 @@ De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Lin
             }
     ```
 
-1. Opslaan en uw wijzigingen aan in de lokale opslagplaats:
+1. Sla uw wijzigingen op in de lokale opslag plaats en voer deze in:
 
     ```
         git init
@@ -95,43 +91,43 @@ De volgende instructies zijn van toepassing op alle omgevingen voor Windows, Lin
         git commit -m "first commit"
     ```
 
-## <a name="create-the-linux-web-app-to-host-your-project"></a>De Linux-web-app voor het hosten van uw project maken
+## <a name="create-the-linux-web-app-to-host-your-project"></a>De Linux-web-app maken om uw project te hosten
 
-1. De web-app-omgeving maken met behulp van App Service op Linux:
+1. Maak de web app-omgeving met behulp van App Service op Linux:
 
     ![De Linux-web-app maken](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
 
-2. Maak de referenties voor implementatie:
+2. De implementatie referenties maken:
 
     > [!NOTE]
-    > Noteer het wachtwoord voor later gebruik bij het implementeren van uw web-app.
+    > Neem uw wacht woord op om het later te gebruiken bij het implementeren van uw web-app.
 
-    ![De referenties voor implementatie maken](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
+    ![De implementatie referenties maken](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
 
-3. Kies de implementatie-opties. Instellen van een lokale Git-opslagplaats in de web-app door de instructies in de Azure portal. Een Git-opslagplaats wordt automatisch gemaakt.
+3. Kies de implementatie opties. Stel een lokale Git-opslag plaats in de web-app in met behulp van de instructies op de Azure Portal. Er wordt automatisch een Git-opslag plaats gemaakt.
 
-    ![De Git-opslagplaats instellen](./media/profiler-aspnetcore-linux/setup-git-repo.png)
+    ![De Git-opslag plaats instellen](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Zie voor meer implementatieopties, [in dit artikel](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+Raadpleeg [dit artikel](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)voor meer implementatie opties.
 
 ## <a name="deploy-your-project"></a>Uw project implementeren
 
-1. Blader naar de hoofdmap voor uw project in het opdrachtpromptvenster. Toevoegen van een externe Git-opslagplaats om te verwijzen naar de opslagplaats op App Service:
+1. Blader in het opdracht prompt venster naar de hoofdmap van uw project. Voeg een Git externe opslag plaats toe om te verwijzen naar de opslag plaats op App Service:
 
     ```
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * Gebruik de **gebruikersnaam** die u voor het maken van de referenties voor implementatie gebruikt.
-    * Gebruik de **appnaam** dat u gebruikt de web-app maken met behulp van App Service op Linux.
+    * Gebruik de **gebruikers naam** die u hebt gebruikt voor het maken van de implementatie referenties.
+    * Gebruik de **naam** van de app die u hebt gebruikt om de web-app te maken met behulp van app service op Linux.
 
-2. Het project implementeren door simpelweg de wijzigingen naar Azure te pushen:
+2. Implementeer het project door de wijzigingen naar Azure te pushen:
 
     ```
     git push azure master
     ```
 
-Hier ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld:
+De uitvoer ziet er ongeveer als volgt uit:
 
     ```
     Counting objects: 9, done.
@@ -154,33 +150,33 @@ Hier ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld:
 
     ```
 
-## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights voor het bewaken van uw web-apps toevoegen
+## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights toevoegen om uw web-apps te bewaken
 
-1. [Maak een Application Insights-resource](./../../azure-monitor/app/create-new-resource.md ).
+1. [Een Application Insights-resource maken](./../../azure-monitor/app/create-new-resource.md ).
 
-2. Kopieer de **iKey** waarde van de Application Insights-resource en stel de volgende instellingen in uw web-apps:
+2. Kopieer de waarde **iKey** van de resource Application Insights en stel de volgende instellingen in uw web-apps in:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
     ```
 
-    Wanneer de app-instellingen worden gewijzigd, wordt de site automatisch opnieuw opgestart. Nadat de nieuwe instellingen worden toegepast, voert u de Profiler onmiddellijk voor twee minuten. Vervolgens wordt de Profiler gedurende twee minuten om het uur uitgevoerd.
+    Wanneer de app-instellingen worden gewijzigd, wordt de site automatisch opnieuw opgestart. Nadat de nieuwe instellingen zijn toegepast, wordt de Profiler onmiddellijk twee minuten uitgevoerd. De Profiler wordt vervolgens elk uur twee minuten uitgevoerd.
 
-3. Bepaald verkeer naar uw website genereren. U kunt netwerkverkeer genereren door het vernieuwen van de site **over** pagina een paar keer.
+3. Genereer een deel van het verkeer naar uw website. U kunt verkeer genereren door de site **over** een paar keer te vernieuwen.
 
-4. De gebeurtenissen die moeten worden twee tot vijf minuten wachten tot cumulatieve naar Application Insights.
+4. Wacht twee tot vijf minuten totdat de gebeurtenissen worden geaggregeerd naar Application Insights.
 
-5. Blader naar de Application Insights **prestaties** deelvenster in de Azure-portal. U kunt de Profiler-traceringen in de rechterbenedenhoek van het deelvenster weergeven.
+5. Blader naar het deel venster Application Insights **prestaties** in de Azure Portal. U kunt de Profiler-traceringen weer geven rechtsonder in het deel venster.
 
-    ![Profiler-traceringen weergeven](./media/profiler-aspnetcore-linux/view-traces.png)
+    ![Profiler traceringen weer geven](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>De knop nu profiel werkt niet voor Linux-Profiler
-De Linux-versie van de App Insights profiler biedt nog geen ondersteuning op aanvraag profilering nu gebruik van het profiel knop.
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>De knop profiel nu werkt niet voor Linux Profiler
+De Linux-versie van de app Insights Profiler biedt nog geen ondersteuning voor het profileren van aanvragen op aanvraag met behulp van de knop profiel nu.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u aangepaste containers die worden gehost in Azure App Service gebruiken, volgt u de instructies in [ Service Profiler inschakelen voor een beperkte ASP.NET Core-toepassing](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) Application Insights Profiler inschakelen.
+Als u aangepaste containers gebruikt die worden gehost door Azure App Service, volgt u de instructies in [enable service Profiler for a ASP.net core toepassing in een container](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) om Application Insights Profiler in te scha kelen.
 
-Rapport eventuele problemen of suggesties voor de Application Insights-GitHub-opslagplaats: [ApplicationInsights-Profiler-AspNetCore: Problemen met](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Meld eventuele problemen of suggesties voor de Application Insights GitHub-opslag plaats: [ApplicationInsights-Profiler-AspNetCore: issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

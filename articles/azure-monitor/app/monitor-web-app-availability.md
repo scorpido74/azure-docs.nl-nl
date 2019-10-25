@@ -1,23 +1,19 @@
 ---
 title: De beschikbaarheid en reactiesnelheid van een website bewaken | Microsoft Docs
 description: Stel webtests in Application Insights in. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812208"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819296"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -30,8 +26,8 @@ U kunt beschikbaarheidstests instellen voor alle HTTP- en HTTPS-eindpunten die t
 Er zijn drie soorten beschikbaarheids tests:
 
 * [URL-pingtest](#create-a-url-ping-test): een eenvoudige test die u in Azure Portal kunt instellen.
-* [Webtest met meerdere stappen](availability-multistep.md): Een registratie van een reeks webaanvragen, die u kunt afspelen om complexe scenario's te testen. Webtests met meerdere stappen worden gemaakt in Visual Studio Enter prise en geüpload naar de portal voor uitvoering.
-* [Aangepaste beschikbaarheids testen](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Als u besluit een aangepaste toepassing te maken om beschikbaarheids tests uit te voeren, kunt u de `TrackAvailability()`-methode gebruiken om de resultaten naar Application Insights te verzenden.
+* [Webtest met meerdere stappen](availability-multistep.md): een opname van een reeks webaanvragen, die kunnen worden afgespeeld om complexe scenario's te testen. Webtests met meerdere stappen worden gemaakt in Visual Studio Enter prise en geüpload naar de portal voor uitvoering.
+* [Aangepaste beschikbaarheids testen](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): als u besluit een aangepaste toepassing te maken om beschikbaarheids tests uit te voeren, kan de `TrackAvailability()` methode worden gebruikt om de resultaten naar Application Insights te verzenden.
 
 **U kunt Maxi maal 100 beschik bare beschikbaarheids tests maken per Application Insights resource.**
 
@@ -39,7 +35,7 @@ Er zijn drie soorten beschikbaarheids tests:
 
 Als u een beschikbaarheids test wilt maken, moet u eerst een Application Insights resource maken. Als u al een resource hebt gemaakt, gaat u door naar de volgende sectie om [een URL-ping-test te maken](#create-a-url-ping-test).
 
-Selecteer in de Azure Portal **een resource** > maken**Ontwikkelhulpprogramma's** > **Application Insights** en [Maak een Application Insights-resource](create-new-resource.md).
+Selecteer in de Azure Portal **een resource maken** > **Ontwikkelhulpprogramma's** > **Application Insights** en [Maak een Application Insights resource](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>Een URL-pingtest aanmaken
 
@@ -64,7 +60,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 > [!NOTE]
 > We raden u ten zeerste aan te testen vanaf meerdere locaties met **Mini maal vijf locaties**. Dit is om te voor komen dat er valse waarschuwingen optreden die kunnen leiden tot tijdelijke problemen met een specifieke locatie. Daarnaast hebben we vastgesteld dat de optimale configuratie het **aantal test locaties moet hebben dat gelijk is aan de drempel waarde voor de waarschuwings locatie + 2**.
 
-### <a name="success-criteria"></a>Succescriteria
+### <a name="success-criteria"></a>Criteria voor geslaagde pogingen
 
 |Instelling| Uitleg
 |----|----|----|
@@ -78,7 +74,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel = waarde voor **waarschuwings locaties** **aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie**  = **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="see-your-availability-test-results"></a>De resultaten van de beschikbaarheidstest bekijken
 
@@ -123,8 +119,8 @@ Klik op de rij met de uitzonde ring om de details van de uitzonde ring aan de se
 
 Naast de onbewerkte resultaten kunt u ook twee belang rijke metrische gegevens over beschik baarheid in [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)bekijken:
 
-1. Availability Percentage van de tests die zijn geslaagd, in alle test uitvoeringen.
-2. Test duur: Gemiddelde test duur in alle test uitvoeringen.
+1. Beschikbaarheid: percentage van de tests die zijn geslaagd, bekeken over alle testuitvoeringen.
+2. Testduur: gemiddelde testduur van alle testuitvoeringen.
 
 ## <a name="automation"></a>Automation
 

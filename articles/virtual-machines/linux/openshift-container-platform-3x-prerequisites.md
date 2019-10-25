@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392668"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882402"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene vereisten voor het implementeren van open Shift container platform 3,11 in azure
 
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 Service-Principal maken:
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-Als u Windows gebruikt, moet u ```az group show --name openshiftrg --query id``` uitvoeren en de uitvoer gebruiken in plaats van $scope.
+Sla de uitvoer van de opdracht op en gebruik in plaats van $scope in de volgende opdracht
 
-Noteer de eigenschap appId die wordt geretourneerd door de opdracht:
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+Noteer de eigenschap appId en het wacht woord die worden geretourneerd door de opdracht:
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ Noteer de eigenschap appId die wordt geretourneerd door de opdracht:
 }
 ```
  > [!WARNING] 
- > Zorg ervoor dat u een beveiligd wacht woord maakt. Volg de richtlijnen in [Azure AD password rules and restrictions](/azure/active-directory/active-directory-passwords-policy) (Regels en beperkingen voor wachtwoorden in Azure AD).
+ > Zorg ervoor dat u het beveiligde wacht woord noteert omdat het niet mogelijk is om dit wacht woord opnieuw op te halen.
 
 Zie [een Azure-service-principal maken met Azure cli](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)voor meer informatie over service-principals.
 

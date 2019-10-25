@@ -1,27 +1,22 @@
 ---
 title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
-services: application-insights
-documentationcenter: nodejs
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/14/2019
+ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255290"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820721"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw back-endservices en onderdelen na de implementatie, kunt u snel prestatieproblemen en andere problemen te detecteren en. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
+[Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw back-end-services en-onderdelen na de implementatie, om u te helpen de prestaties en andere problemen snel te detecteren en te onderzoeken. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
@@ -35,7 +30,7 @@ Voltooi de volgende taken om de bewaking voor een app of service in te stellen.
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u [een gratis nieuw abonnement aanvragen][azure-free-offer]. Als uw organisatie al een Azure-abonnement heeft, kan een beheerder [deze instructies][add-aad-user] volgen om u eraan toe te voegen.
+Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of [een nieuwe gratis versie aanschaffen][azure-free-offer]. Als uw organisatie al een Azure-abonnement heeft, kan een beheerder [deze instructies][add-aad-user] volgen om u toe te voegen.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
@@ -44,7 +39,7 @@ Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u
 ### <a name="resource"></a> Een Application Insights-resource instellen
 
 
-1. Meld u aan bij [Azure Portal][portal].
+1. Meld u aan bij de [Azure-portal][portal].
 2. Selecteer **Een resource maken** > **Hulpprogramma's voor ontwikkelaars** > **Application Insights**. De resource bevat een eindpunt voor het ontvangen van telemetriegegevens, opslag voor deze gegevens, opgeslagen rapporten en dashboards, regel- en waarschuwingsconfiguratie en meer.
 
 3. Selecteer op de pagina voor het maken van de resource in het vak **Toepassingstype** de optie **Node.js-toepassing**. Het apptype bepaalt de standaardashboards en -rapporten die worden gemaakt. (elke Application Insights-resource kan gegevens verzamelen vanuit elke taal en elk platform.)
@@ -83,7 +78,7 @@ Neem de SKD op in de app zodat gegevens kunnen worden verzameld.
 
 Met de SDK wordt automatisch telemetrische informatie verzameld over de Node.js-runtime en over een aantal algemene modules van derden. Gebruik de toepassing om een aantal van deze gegevens te genereren.
 
-Ga vervolgen in [Azure Portal][portal] naar de Application Insights-resource die u hebt gemaakt. Zoek in de **Overzichtstijdlijn** naar de eerste gegevenspunten. Selecteer verschillende onderdelen in de grafieken om meer gedetailleerde gegevens te zien.
+Ga vervolgens naar de Application Insights resource die u eerder hebt gemaakt in de [Azure Portal][portal] . Zoek in de **Overzichtstijdlijn** naar de eerste gegevenspunten. Selecteer verschillende onderdelen in de grafieken om meer gedetailleerde gegevens te zien.
 
 Selecteer de knop **Toepassingskaart** om de gedetecteerde topologie voor te app weer te geven. Selecteer onderdelen in de kaart voor meer informatie.
 
@@ -93,7 +88,7 @@ Selecteer in de sectie **ONDERZOEKEN** de andere beschikbare weergaven voor info
 
 ![Sectie onderzoeken](./media/nodejs/007-investigate-pane.png)
 
-#### <a name="no-data"></a>Zijn er geen gegevens?
+#### <a name="no-data"></a>Geen gegevens?
 
 Er kan vertraging optreden voordat items worden weergegeven in de portal omdat met de SDK gegevens in batches worden geplaatst voor verzending. Als u geen gegevens ziet in de resource, kunt u de volgende oplossingen proberen:
 

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595578"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819811"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Een nieuwe Dynamics 365 Business Central-aanbieding maken
 
@@ -101,7 +101,7 @@ Selecteer mini maal één en Maxi maal drie categorieën. deze worden gebruikt o
 
 ### <a name="industry"></a>Industrie
 
-U kunt desgewenst Maxi maal twee branches selecteren om uw aanbieding in de Marketplace te categoriseren. Als uw aanbieding niet specifiek is voor een branche, laat u deze sectie leeg. Neem contact op met de manier waarop uw aanbod de geselecteerde branches in de beschrijving van de aanbieding ondersteunt. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-versie
 

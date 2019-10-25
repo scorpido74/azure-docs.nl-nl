@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596518"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882446"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Sink-trans formatie voor een gegevens stroom
 
@@ -53,8 +53,8 @@ Selecteer **schema valideren** om de sink te laten mislukken als het schema word
 
 Selecteer **de map wissen** om de inhoud van de map Sink af te kappen voordat u de doel bestanden in die doelmap schrijft.
 
-## <a name="rule-based-mapping"></a>Toewijzing op basis van een regel
-Wanneer u automatische toewijzing uitschakelt, hebt u de mogelijkheid om een op kolom gebaseerde toewijzing (vaste toewijzing) of toewijzing op basis van een regel toe te voegen. Met op regels gebaseerde toewijzing kunt u expressies met patroon matching schrijven. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Vaste toewijzing versus op regels gebaseerde toewijzing
+Wanneer u automatische toewijzing uitschakelt, hebt u de mogelijkheid om een op kolom gebaseerde toewijzing (vaste toewijzing) of toewijzing op basis van een regel toe te voegen. Met op regels gebaseerde toewijzing kunt u expressies met patroon overeenkomsten schrijven, terwijl vaste toewijzing logische en fysieke kolom namen toewijst.
 
 ![Toewijzing op basis van een regel](media/data-flow/rules4.png "Toewijzing op basis van een regel")
 
@@ -65,6 +65,12 @@ Meer informatie over patroon vergelijking vindt u in de documentatie van het [ko
 U kunt ook reguliere expressie patronen invoeren wanneer u op basis van een regel vergelijking gebruikt door de rij uit te vouwen en een reguliere expressie op te geven naast ' naam overeenkomsten: '.
 
 ![Regex-toewijzing](media/data-flow/scdt1g4.png "Regex-toewijzing")
+
+Een eenvoudig algemeen voor beeld voor een op regels gebaseerde toewijzing versus vaste toewijzing is het geval dat u alle binnenkomende velden wilt toewijzen aan dezelfde naam in uw doel. In het geval van vaste toewijzingen zou u elke afzonderlijke kolom in de tabel vermelden. Voor toewijzing op basis van een regel hebt u één regel waarmee alle velden met ```true()``` worden toegewezen aan dezelfde binnenkomende veld naam die door ```$$```wordt weer gegeven.
+
+### <a name="sink-association-with-dataset"></a>Sink-koppeling met gegevensset
+
+De gegevensset die u voor uw Sink selecteert, heeft mogelijk een schema dat niet is gedefinieerd in de definitie van de gegevensset. Als er geen schema is gedefinieerd, moet u schema-drift toestaan. Wanneer u een vaste toewijzing hebt gedefinieerd, blijft de toewijzing van logische naar fysieke naam aanwezig in de Sink-trans formatie. Als u de schema definitie van de gegevensset wijzigt, wordt uw Sink-toewijzing mogelijk verbroken. Als u dit wilt voor komen, gebruikt u toewijzing op basis van een regel. Op regels gebaseerde toewijzingen worden gegeneraliseerd, wat inhoudt dat schema wijzigingen in uw gegevensset de toewijzing niet zullen verstoren.
 
 ## <a name="file-name-options"></a>Opties voor bestands namen
 

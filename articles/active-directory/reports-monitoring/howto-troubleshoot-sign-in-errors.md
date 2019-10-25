@@ -1,5 +1,5 @@
 ---
-title: Aanmeldings fouten oplossen met behulp van Azure Active Directory-rapporten | Microsoft Docs
+title: Problemen oplossen met rapporten over het registreren van fouten | Microsoft Docs
 description: Meer informatie over het oplossen van aanmeldings fouten met behulp van Azure Active Directory-rapporten in de Azure Portal
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988172"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819709"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Procedure: Fouten bij het aanmelden oplossen met behulp van Azure Active Directory-rapporten
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Procedure: problemen met aanmelden oplossen met behulp van Azure Active Directory-rapporten
 
 Met het [aanmeld rapport](concept-sign-ins.md) in azure Active Directory (Azure AD) kunt u antwoorden vinden op vragen over het beheren van de toegang tot de toepassingen in uw organisatie, waaronder:
 
@@ -45,7 +45,7 @@ U hebt de volgende zaken nodig:
 2. Selecteer **Azure Active Directory** en selecteer in de sectie **Controle** de optie **Aanmeldingen**. 
 3. Gebruik de meegeleverde filters om de fout te verfijnen, hetzij door de gebruikers naam of object-id of de datum van de toepassing. Selecteer bovendien **fout** in de vervolg keuzelijst **status** om alleen de mislukte aanmeldingen weer te geven. 
 
-    ![Filterresultaten](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![Resultaten filteren](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
 4. Identificeer de mislukte aanmelding die u wilt onderzoeken. Selecteer deze optie om het venster met aanvullende details te openen met meer informatie over de mislukte aanmelding. Noteer de **fout code voor aanmelding** en de **reden**van de fout. 
 
@@ -53,11 +53,11 @@ U hebt de volgende zaken nodig:
         
 5. U kunt deze informatie ook vinden op het tabblad **probleem oplossing en ondersteuning** in het detail venster.
 
-    ![Probleemoplossing en ondersteuning](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
+    ![Problemen oplossen en ondersteuning](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
 6. De reden van de fout is een beschrijving van de fout. In het bovenstaande scenario is de reden van de fout bijvoorbeeld een **Ongeldige gebruikers naam of wacht woord of een ongeldige on-premises gebruikers naam of wacht woord**. De oplossing is om gewoon opnieuw aan te melden met de juiste gebruikers naam en wacht woord.
 
-7. U kunt aanvullende informatie krijgen, inclusief ideeën voor herstel, door te zoeken naar de fout code **50126** in dit voor beeld, in de [Naslag Gids voor fout codes](reference-sign-ins-error-codes.md)voor aanmeldingen. 
+7. U kunt aanvullende informatie krijgen, inclusief ideeën voor herstel, door te zoeken naar de fout code **50126** in dit voor beeld, in de [Naslag Gids voor fout codes voor aanmeldingen](reference-sign-ins-error-codes.md). 
 
 8. Als dat niet het geval is, of als het probleem zich blijft voordoen ondanks de aanbevolen actie, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) volgens de stappen op het tabblad **probleem oplossing en ondersteuning** . 
 

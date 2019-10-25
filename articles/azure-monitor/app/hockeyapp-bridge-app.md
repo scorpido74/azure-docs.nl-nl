@@ -1,72 +1,67 @@
 ---
-title: HockeyApp-gegevens in Azure Application Insights verkennen | Microsoft Docs
-description: Analyseer gebruik en prestaties van uw Azure-app met Application Insights.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: HockeyApp-gegevens verkennen in Azure-toepassing Insights | Microsoft Docs
+description: Analyseer het gebruik en de prestaties van uw Azure-app met Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/30/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/30/2017
+ms.openlocfilehash: b14cd38a1db6804a00883ded0b38511fa46c3a52
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898682"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819580"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>HockeyApp-gegevens in Application Insights verkennen
 
 > [!NOTE]
-> HockeyApp is niet meer beschikbaar voor nieuwe toepassingen. Bestaande implementaties van HockeyApp blijven werken. Visual Studio App Center is nu de aanbevolen service van Microsoft voor het bewaken van de nieuwe mobiele apps. [Meer informatie over het instellen van uw apps met App Center en Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
+> HockeyApp is niet langer beschikbaar voor nieuwe toepassingen. Bestaande HockeyApp-implementaties blijven werken. Visual Studio App Center is nu de aanbevolen service van micro soft voor het bewaken van nieuwe mobiele apps. [Meer informatie over het instellen van uw apps met app Center en Application Insights](../../azure-monitor/learn/mobile-center-quickstart.md).
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) is een service voor het bewaken van live-desktop- en mobiele apps. U kunt van HockeyApp, aangepaste verzenden en traceren van telemetrie naar-gebruik controleren en te helpen bij het diagnoseproces (naast het ophalen van crashgegevens). Deze stroom van telemetrie kan worden opgevraagd met de krachtige [Analytics](../../azure-monitor/app/analytics.md) functie van [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Bovendien kunt u [exporteren van de aangepaste en traceren van telemetrie](export-telemetry.md). Als u wilt deze functies inschakelt, moet u een brug die aangepaste HockeyApp-gegevens naar Application Insights doorstuurt instellen.
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) is een service voor het bewaken van Live bureau blad-en mobiele apps. Vanuit HockeyApp kunt u aangepaste en tracering telemetrie verzenden om het gebruik te bewaken en te helpen bij diagnose (naast het verkrijgen van crash gegevens). Deze stroom van telemetrie kan worden opgevraagd met behulp van de krachtige [analyse](../../azure-monitor/app/analytics.md) functie van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Daarnaast kunt u [de aangepaste en telemetrie tracering exporteren](export-telemetry.md). Als u deze functies wilt inschakelen, stelt u een brug in waarmee HockeyApp aangepaste gegevens worden doorgestuurd naar Application Insights.
 
-## <a name="the-hockeyapp-bridge-app"></a>De HockeyApp-Bridge-app
-De HockeyApp-Bridge-App is de kern-functie waarmee u uw aangepaste HockeyApp en in Application Insights-tracetelemetrie via de functies voor analyse en continue Export. Aangepaste en tracering gebeurtenissen die worden verzameld door HockeyApp na het maken van de HockeyApp-Bridge-App toegankelijk is van deze functies. Laten we zien hoe u voor het instellen van een van deze brug-Apps.
+## <a name="the-hockeyapp-bridge-app"></a>De HockeyApp Bridge-app
+De HockeyApp Bridge-app is de belangrijkste functie waarmee u uw aangepaste HockeyApp-en tracerings-telemetrie kunt openen in Application Insights via de functies voor analyse en doorlopend exporteren. Aangepaste en tracerings gebeurtenissen die door HockeyApp worden verzameld nadat de app HockeyApp Bridge is gemaakt, zijn toegankelijk vanuit deze functies. Laten we eens kijken hoe u een van deze Bridge-apps kunt instellen.
 
-Open in HockeyApp, accountinstellingen, [API-Tokens](https://rink.hockeyapp.net/manage/auth_tokens). Een nieuw token maken of een bestaande resourcegroep gebruiken. De minimale rechten vereist zijn 'alleen-lezen'. Neemt een kopie van de API-token.
+Open in HockeyApp account instellingen, [API-tokens](https://rink.hockeyapp.net/manage/auth_tokens). Maak een nieuw token of hergebruik een bestaande. De mini maal vereiste rechten zijn ' alleen-lezen '. Neem een kopie van het API-token.
 
-![Een HockeyApp-API-token ophalen](./media/hockeyapp-bridge-app/01.png)
+![Een HockeyApp-API-Token ophalen](./media/hockeyapp-bridge-app/01.png)
 
-Open de Microsoft Azure portal en [maken van een Application Insights-resource](../../azure-monitor/app/create-new-resource.md ). Toepassingstype ingesteld op 'HockeyApp bridge-toepassing':
+Open de Microsoft Azure-portal en [Maak een Application Insights resource](../../azure-monitor/app/create-new-resource.md ). Stel het toepassings type in op ' HockeyApp Bridge Application ':
 
-![Nieuwe Application Insights-resource](./media/hockeyapp-bridge-app/02.png)
+![Nieuwe Application Insights resource](./media/hockeyapp-bridge-app/02.png)
 
-U hoeft om in te stellen van een naam - dit wordt automatisch ingesteld vanuit de HockeyApp-naam.
+U hoeft geen naam in te stellen: deze wordt automatisch ingesteld op basis van de naam van de HockeyApp.
 
-De HockeyApp-bridge-velden worden weergegeven. 
+De HockeyApp-brug velden worden weer gegeven. 
 
-![Brug velden invoeren](./media/hockeyapp-bridge-app/03.png)
+![Bridge-velden invoeren](./media/hockeyapp-bridge-app/03.png)
 
-Voer de HockeyApp-token dat u eerder hebt genoteerd. Deze actie wordt de 'HockeyApp-toepassing' in het vervolgkeuzemenu met al uw HockeyApp-toepassingen. Selecteer de gewenste en voltooi de rest van de velden. 
+Voer het HockeyApp-token in dat u eerder hebt genoteerd. Met deze actie wordt het vervolg keuzemenu ' HockeyApp Application ' gevuld met al uw HockeyApp-toepassingen. Selecteer het item dat u wilt gebruiken en voltooi de rest van de velden. 
 
 Open de nieuwe resource. 
 
-Houd er rekening mee dat de gegevens, enige tijd duren om te beginnen stromen.
+Houd er rekening mee dat de gegevens even duren om te beginnen met stromen.
 
-![Application Insights-resource wachten op gegevens](./media/hockeyapp-bridge-app/04.png)
+![Application Insights resource die wacht op gegevens](./media/hockeyapp-bridge-app/04.png)
 
-Dat is alles. Aangepaste en gegevens traceren die zijn verzameld in uw app HockeyApp geïnstrumenteerd vanaf dit punt is nu ook beschikbaar in de functies voor analyse en continue Export van Application Insights.
+Dat is alles. Aangepaste en traceer gegevens die vanaf dit punt zijn verzameld in uw app met HockeyApp-instrumentatie, zijn nu ook beschikbaar in de functies voor analyse en doorlopend exporteren van Application Insights.
 
-Laten we even Bekijk elk van deze functies nu beschikbaar voor u.
+Laten we elk van deze functies bekijken die nu voor u beschikbaar zijn.
 
 ## <a name="analytics"></a>Analyse
-Analytics is een krachtig hulpprogramma voor ad-hoc uitvoeren van query's van uw gegevens, zodat u kunt vaststellen en uw telemetrie analyseren en snel hoofdoorzaken en patronen te ontdekken.
+Analytics is een krachtig hulp middel voor het uitvoeren van query's op uw gegevens, zodat u uw telemetrie kunt vaststellen en analyseren en snel hoofd oorzaken en patronen kunt ontdekken.
 
 ![Analyse](./media/hockeyapp-bridge-app/05.png)
 
 * [Meer informatie over Analytics](../../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>Continue export
-Continue Export kunt u uw gegevens exporteren naar een Azure Blob Storage-container. Dit is zeer nuttig als u nodig hebt voor uw gegevens langer duurt dan de bewaarperiode liggen die momenteel worden aangeboden door Application Insights. U kunt houden de gegevens in blob-opslag, in een SQL-Database, of uw favoriete oplossing voor gegevensopslag te verwerken.
+Met doorlopend exporteren kunt u uw gegevens exporteren naar een Azure Blob Storage-container. Dit is handig als u uw gegevens langer wilt bewaren dan de retentie periode die momenteel wordt aangeboden door Application Insights. U kunt de gegevens in Blob Storage bewaren, deze verwerken in een SQL Database of uw voorkeurs oplossing voor gegevens opslag.
 
-[Meer informatie over de continue Export](export-telemetry.md)
+[Meer informatie over continue export](export-telemetry.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Analyse van toepassing op uw gegevens](../../azure-monitor/log-query/get-started-portal.md)
+* [Analyses Toep assen op uw gegevens](../../azure-monitor/log-query/get-started-portal.md)
 

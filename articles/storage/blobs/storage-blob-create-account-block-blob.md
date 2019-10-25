@@ -1,6 +1,6 @@
 ---
-title: Maak een block blob storage-account - Azure Storage | Microsoft Docs
-description: Laat zien hoe een Azure block blob storage-account maken met premium-prestatiekenmerken.
+title: Een Block Blob Storage-account maken-Azure Storage | Microsoft Docs
+description: Laat zien hoe u een Azure BlockBlobStorage-account met Premium-prestatie kenmerken maakt.
 author: tamram
 services: storage
 ms.service: storage
@@ -8,72 +8,71 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1df1d5180d951e7a720ec82c548438892a47a426
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141004"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881868"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Een blok-blob-opslagaccount maken
+# <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
-Het accounttype van block blob storage kunt u het maken van blok-blobs met premium-prestatiekenmerken. Dit type opslagaccount dat is geoptimaliseerd voor workloads met hoge transacties tarieven of waarvoor tijden met zeer snelle toegang. In dit artikel laat zien hoe een block blob storage-account maken met behulp van de Azure-portal, Azure CLI of Azure PowerShell.
+Met het soort BlockBlobStorage-account kunt u blok-blobs maken met Premium-prestatie kenmerken. Dit type opslag account is geoptimaliseerd voor workloads met hoge transactie tarieven of voor zeer snelle toegangs tijden. In dit artikel wordt beschreven hoe u een BlockBlobStorage-account maakt met behulp van de Azure Portal, de Azure CLI of Azure PowerShell.
 
-Zie voor meer informatie over block blob storage-accounts, [overzicht van Azure storage-account](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Zie [overzicht van Azure-opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-account-overview)voor meer informatie over BlockBlobStorage-accounts.
 
-## <a name="create-account-in-the-azure-portal"></a>Account maken in Azure portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azure Portal:
 
-Als u wilt een block blob storage-account maken in Azure portal, de volgende stappen uit:
+1. Selecteer in de Azure Portal **alle services** > de **opslag** categorie > **opslag accounts**.
 
-1. Selecteer in de Azure portal, **alle services** > de **opslag** categorie > **opslagaccounts**.
+1. Selecteer onder **opslag accounts**de optie **toevoegen**.
 
-1. Onder **opslagaccounts**, selecteer **toevoegen**.
+1. Selecteer in het veld **abonnement** het abonnement waarin u het opslag account wilt maken.
 
-1. In de **abonnement** veld, selecteert u het abonnement waarin u wilt maken van het storage-account.
+1. Selecteer in het veld **resource groep** een bestaande resource groep of selecteer **nieuwe maken**en voer een naam in voor de nieuwe resource groep.
 
-1. In de **resourcegroep** veld, selecteert u een bestaande resourcegroep of **nieuw**, en voer een naam voor de nieuwe resourcegroep.
+1. Voer in het veld **naam van opslag account** een naam in voor het account. Houd rekening met de volgende richt lijnen:
 
-1. In de **opslagaccountnaam** en voer een naam voor het account. Houd rekening met de volgende richtlijnen:
+   - De naam moet uniek zijn binnen Azure.
+   - De naam moet tussen de 3 en 24 tekens lang zijn.
+   - De naam mag alleen cijfers en kleine letters bevatten.
 
-   - De naam moet uniek zijn in Azure.
-   - De naam moet tussen 3 en 24 tekens lang zijn.
-   - De naam mag alleen cijfers en kleine letters bestaan.
+1. Selecteer in het veld **locatie** een locatie voor het opslag account of gebruik de standaard locatie.
 
-1. In de **locatie** veld, selecteer een locatie voor het opslagaccount of gebruik de standaardlocatie.
+1. Configureer voor de rest van de instellingen het volgende:
 
-1. Voor de rest van de instellingen, het volgende configureren:
-
-   |Veld     |Value  |
+   |Veld     |Waarde  |
    |---------|---------|
    |**Prestaties**    |  Selecteer **Premium**.   |
    |**Type account**    | Selecteer **BlockBlobStorage**.      |
-   |**Replicatie**    |  Laat de standaardinstelling van **lokaal redundante opslag (LRS)** .      |
+   |**Replicatie**    |  Behoud de standaard instelling van **lokaal redundante opslag (LRS)** .      |
 
-   ![Portal UI te maken van een block blob storage-account bevat](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
+   ![Geeft een portal-gebruikers interface weer voor het maken van een blok-Blob-opslag account](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Selecteer **bekijken + maken** om te controleren van de instellingen voor het opslagaccount.
+1. Selecteer **controleren + maken** om de instellingen voor het opslag account te controleren.
 
 1. Selecteer **Maken**.
 
-## <a name="create-account-using-azure-powershell"></a>Met behulp van PowerShell voor Azure-account maken
+## <a name="azure-powershelltabazure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-1. Open een verhoogde Windows PowerShell-sessie (als administrator uitvoeren).
+1. Open een Windows Power shell-sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 
-1. Voer de volgende opdracht uit om te controleren of de nieuwste versie van de `Az` PowerShell-module is geïnstalleerd.
+1. Voer de volgende opdracht uit om te controleren of de meest recente versie van de `Az` Power shell-module is geïnstalleerd.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Open een nieuwe PowerShell-console en meld u aan met uw Azure-account.
+1. Open een nieuwe Power shell-console en meld u aan met uw Azure-account.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. Indien nodig, maakt u een nieuwe resourcegroep. Vervang de waarden in offertes, en voer de volgende opdracht uit.
+1. Maak indien nodig een nieuwe resource groep. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -81,7 +80,7 @@ Als u wilt een block blob storage-account maken in Azure portal, de volgende sta
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Maak de block blob storage-account. Vervang de waarden in offertes, en voer de volgende opdracht uit.
+1. Maak het BlockBlobStorage-account. Vervang de waarden in aanhalings tekens en voer de volgende opdracht uit.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -91,17 +90,17 @@ Als u wilt een block blob storage-account maken in Azure portal, de volgende sta
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="create-account-using-azure-cli"></a>Account maken met Azure CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Voor het maken van een blok-blob-account met behulp van de Azure CLI, moet u eerst de Azure CLI-versie installeren. 2.0.46 of een latere versie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+Als u een account voor een blok-BLOB wilt maken met behulp van de Azure CLI, moet u eerst Azure CLI v installeren. 2.0.46 of een latere versie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
-1. Aanmelden bij uw Azure-abonnement.
+1. Meld u aan bij uw Azure-abonnement.
 
    ```azurecli
    az login
    ```
 
-1. Indien nodig, maakt u een nieuwe resourcegroep. Vervang de waarden tussen vierkante haken (inclusief de punthaken) en voer de volgende opdracht uit.
+1. Maak indien nodig een nieuwe resource groep. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
 
    ```azurecli
    az group create \
@@ -109,7 +108,7 @@ Voor het maken van een blok-blob-account met behulp van de Azure CLI, moet u eer
     --location "<location>"
    ```
 
-1. Maak de block blob storage-account. Vervang de waarden tussen vierkante haken (inclusief de punthaken) en voer de volgende opdracht uit.
+1. Maak het BlockBlobStorage-account. Vervang de waarden tussen vier Kante haken (inclusief de accolades) en voer de volgende opdracht uit.
 
    ```azurecli
    az storage account create \

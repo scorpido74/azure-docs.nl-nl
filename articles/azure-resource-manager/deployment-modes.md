@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of in
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258966"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881644"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
@@ -21,7 +21,9 @@ Voor beide modi probeert Resource Manager alle resources te maken die zijn opgeg
 
 ## <a name="complete-mode"></a>Volledige modus
 
-In de volledige modus **verwijdert** Resource Manager resources die voor komen in de resource groep, maar die niet zijn opgegeven in de sjabloon. Resources die zijn opgegeven in de sjabloon, maar die niet zijn geïmplementeerd omdat een [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, worden niet verwijderd.
+In de volledige modus **verwijdert** Resource Manager resources die voor komen in de resource groep, maar die niet zijn opgegeven in de sjabloon.
+
+Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI verwijdert u de resource.
 
 Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](resource-group-create-multiple.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
 
@@ -45,7 +47,7 @@ Als de resource groep is [vergrendeld](resource-group-lock-resources.md), worden
 
 In de incrementele modus blijven Resource Manager **ongewijzigde** resources die voor komen in de resource groep, maar niet in de sjabloon opgegeven.
 
-Wanneer u echter een bestaande resource in de incrementele modus implementeert, is het resultaat een andere. Geef alle eigenschappen voor de resource op, niet alleen voor de resources die u wilt bijwerken. Een veelvoorkomende misverstand is om te denken dat eigenschappen die niet zijn opgegeven, ongewijzigd blijven. Als u bepaalde eigenschappen niet opgeeft, wordt de update door Resource Manager geïnterpreteerd als het overschrijven van die waarden.
+Wanneer u echter een bestaande resource in de incrementele modus implementeert, is het resultaat een andere. Geef alle eigenschappen voor de resource op, niet alleen voor de resources die u wilt bijwerken. Een veelvoorkomende misverstand is om te denken dat eigenschappen die niet worden opgegeven, ongewijzigd blijven. Als u bepaalde eigenschappen niet opgeeft, wordt de update door Resource Manager geïnterpreteerd als het overschrijven van die waarden.
 
 ## <a name="example-result"></a>Voorbeeld resultaat
 
@@ -78,7 +80,7 @@ Wanneer de implementatie is geïmplementeerd in de modus **voltooid** , wordt br
 
 ## <a name="set-deployment-mode"></a>Implementatie modus instellen
 
-Als u de implementatie modus wilt instellen bij het implementeren met Power `Mode` shell, gebruikt u de para meter.
+Als u de implementatie modus wilt instellen tijdens de implementatie met Power shell, gebruikt u de para meter `Mode`.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -88,7 +90,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Als u de implementatie modus wilt instellen wanneer u met Azure cli implementeert, gebruikt u de `mode` para meter.
+Als u de implementatie modus wilt instellen tijdens de implementatie met Azure CLI, gebruikt u de para meter `mode`.
 
 ```azurecli-interactive
 az group deployment create \

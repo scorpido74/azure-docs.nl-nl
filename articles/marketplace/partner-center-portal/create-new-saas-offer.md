@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376292"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819821"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -178,7 +178,8 @@ Selecteer **Opslaan** na het volt ooien van deze velden.
 Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
 
 ### <a name="industry"></a>Industrie
-Selecteer Maxi maal twee (2) industrieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Als uw aanbieding niet specifiek is voor een branche, selecteert u er geen. Neem contact op met de manier waarop uw aanbieding de geselecteerde branches in de beschrijving van de aanbieding ondersteunt. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-versie
 Dit is een optioneel veld dat in de AppSource Marketplace wordt gebruikt om het versie nummer van uw aanbieding te identificeren. 
@@ -285,16 +286,16 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
     Dit is een tekst regel. <br> Dit is een tekst regel die wordt gestart op een nieuwe regel. <br><br> Dit is een regel waarmee twee regels worden gestart. 
 
-1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende tags @no__t 0 toe aan het begin en het einde van de tekst. 
+1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende `<H*></H*>`-tags toe aan het begin en het einde van de tekst. 
 
     **Voor beeld**:
 
-    `<h1>`This is Kop 1 @ no__t-1 <br>
-    `<h2>`This is Kop 2 @ no__t-1 <br>
-    `<h3>`This is kop 3 @ no__t-1 <br>
-    `<h4>`This is kop 4 @ no__t-1 <br>
-    `<h5>`This is kop 5 @ no__t-1 <br>
-    `<h6>`This is kop 6 @ no__t-1 
+    `<h1>`dit is Kop 1`</h1>` <br>
+    `<h2>`dit is Kop 2`</h2>` <br>
+    `<h3>`dit is kop 3`</h3>` <br>
+    `<h4>`dit is kop 4`</h4>` <br>
+    `<h5>`dit is koptekst 5`</h5>` <br>
+    `<h6>`dit is kop 6`</h6>` 
 
     Het bovenstaande ziet er als volgt uit:
 

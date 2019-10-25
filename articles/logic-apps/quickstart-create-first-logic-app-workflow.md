@@ -1,6 +1,6 @@
 ---
-title: Uw eerste werk stroom-Azure Logic Apps maken en automatiseren
-description: 'Quick Start: uw eerste geautomatiseerde taak of werk stroom maken met behulp van Azure Logic Apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration)'
+title: Uw eerste geautomatiseerde werk stroom maken-Azure Logic Apps
+description: 'Snelstartgids: uw eerste geautomatiseerde taak bouwen met behulp van Azure Logic Apps voor systeem integratie en EAI-oplossingen (Enter prise Application Integration)'
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,13 +10,13 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/20/2019
-ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/20/2019
+ms.openlocfilehash: 246bd7935bf5aaaae569e589e4efa0ea7d39c90a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679147"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821156"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Snelstart: maak uw eerste geautomatiseerde werkstroom met Azure Logic Apps - Azure-portal
 
@@ -34,9 +34,13 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 
-1. Selecteer in het hoofd menu van Azure **een resource maken** > -**integratie** > **Logic-app**.
+1. Ga naar de start pagina van Azure en selecteer **Logic apps**in het zoekvak.
 
-   ![Logische app maken - Azure Portal](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
+   ![Zoek en selecteer ' Logic Apps '](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+
+1. Selecteer op de pagina **Logic apps** **toevoegen**.
+
+   ![Nieuwe logische app toevoegen](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. Onder **Logische app maken** geeft u informatie op over uw logische app zoals hier wordt weergegeven. Wanneer u klaar bent, selecteert u **maken**.
 
@@ -69,7 +73,7 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
 1. Selecteer in de ontwerp functie voor logische apps, onder het zoekvak, de optie **alle**.
 
-1. Typ ' RSS ' in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd-RSS**
+1. Typ `rss` in het zoekvak. Selecteer in de lijst triggers deze trigger: **Wanneer een item in de feed wordt gepubliceerd**
 
    ![De trigger ' wanneer een feed-item wordt gepubliceerd ' selecteren](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -104,7 +108,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) waa
 
 1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**.
 
-1. Voer in het zoekvak ' een e-mail verzenden ' in. Selecteer in de lijst met acties de actie 'een e-mail verzenden' voor de gewenste e-mailprovider.
+1. Typ `send an email` in het zoekvak. Selecteer in de lijst met acties de actie 'een e-mail verzenden' voor de gewenste e-mailprovider.
 
    ![Selecteer de actie ' een e-mail verzenden ' voor Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -121,7 +125,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) waa
 
       Negeer voorlopig de lijst **Dynamische inhoud toevoegen** die wordt weergegeven. Wanneer u in bepaalde invoervakken klikt, wordt deze lijst geopend met alle beschikbare parameters uit de vorige stap die u als invoer in uw werkstroom kunt opnemen.
 
-   1. Voer in het vak **Onderwerp** deze tekst met een afsluitende spatie in: ```New RSS item:```
+   1. Voer in het vak **Onderwerp** deze tekst met een afsluitende spatie in: `New RSS item: `
 
       ![Voer in de eigenschap onderwerp uw e-mail onderwerp in](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
@@ -170,16 +174,12 @@ Als u dit voorbeeld niet meer nodig hebt, verwijdert u de resourcegroep die uw l
 
    ![Resource groep zoeken, selecteren en verwijderen](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Voer de naam van de resource groep in als bevestiging en selecteer **verwijderen**.
+1. Wanneer het bevestigings venster wordt weer gegeven, voert u de naam van de resource groep in en selecteert u **verwijderen**.
 
    ![Selecteer verwijderen om het verwijderen te bevestigen](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd. Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen.
-
-## <a name="get-support"></a>Krijg ondersteuning
-
-Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

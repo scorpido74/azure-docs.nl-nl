@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854600"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882640"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-logboek registratie
 
@@ -53,12 +53,12 @@ Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte a
 
 ## <a name="how-logs-are-stored"></a>Hoe logboeken worden opgeslagen
 
-Alle logboeken worden opgeslagen in blok-blobs in een `$logs`container met de naam, die automatisch wordt gemaakt wanneer Opslaganalyse is ingeschakeld voor een opslag account. De `$logs` container bevindt zich in de BLOB-naam ruimte van het opslag account `http://<accountname>.blob.core.windows.net/$logs`, bijvoorbeeld:. Deze container kan niet worden verwijderd als Opslaganalyse is ingeschakeld, maar de inhoud ervan kan worden verwijderd. Als u het hulp programma voor het bladeren door opslag gebruikt om rechtstreeks naar de container te navigeren, worden alle blobs weer gegeven die uw logboek gegevens bevatten.
+Alle logboeken worden opgeslagen in blok-blobs in een container met de naam `$logs`, die automatisch wordt gemaakt wanneer Opslaganalyse is ingeschakeld voor een opslag account. De `$logs`-container bevindt zich in de BLOB-naam ruimte van het opslag account, bijvoorbeeld: `http://<accountname>.blob.core.windows.net/$logs`. Deze container kan niet worden verwijderd als Opslaganalyse is ingeschakeld, maar de inhoud ervan kan worden verwijderd. Als u het hulp programma voor het bladeren door opslag gebruikt om rechtstreeks naar de container te navigeren, worden alle blobs weer gegeven die uw logboek gegevens bevatten.
 
 > [!NOTE]
->  De `$logs` container wordt niet weer gegeven wanneer een container vermelding wordt uitgevoerd, zoals de bewerking lijst containers. Deze moet rechtstreeks worden geopend. U kunt bijvoorbeeld de bewerking lijst-blobs gebruiken om toegang te krijgen tot de blobs `$logs` in de container.
+>  De `$logs` container wordt niet weer gegeven wanneer een container vermelding wordt uitgevoerd, zoals de bewerking lijst containers. Deze moet rechtstreeks worden geopend. U kunt bijvoorbeeld de bewerking lijst-blobs gebruiken om toegang te krijgen tot de blobs in de `$logs`-container.
 
-Wanneer aanvragen worden geregistreerd, worden de tussenliggende resultaten door Opslaganalyse geüpload als blokken. Deze blokken worden regel matig door Opslaganalyse doorgevoerd en beschikbaar gemaakt als een blob. Het kan tot een uur duren voordat de logboek gegevens worden weer gegeven in de blobs in de container **$logs** , omdat de frequentie waarmee de logboek schrijvers worden leeg gemaakt door de opslag service. Er kunnen dubbele records bestaan voor logboeken die in hetzelfde uur zijn gemaakt. U kunt bepalen of een record een duplicaat is door de **aanvraag** -en bewerkings nummer te controleren.
+Wanneer aanvragen worden geregistreerd, worden de tussenliggende resultaten door Opslaganalyse geüpload als blokken. Deze blokken worden regel matig door Opslaganalyse doorgevoerd en beschikbaar gemaakt als een blob. Het kan tot een uur duren voordat de logboek gegevens worden weer gegeven in de blobs in de container **$logs** , omdat de frequentie waarmee de logboek schrijvers worden leeg gemaakt door de opslag service. Er kunnen dubbele records bestaan voor logboeken die in hetzelfde uur zijn gemaakt. U kunt bepalen of een record een duplicaat is door de **aanvraag** -en **bewerkings** nummer te controleren.
 
 Als u een groot aantal logboek gegevens met meerdere bestanden per uur hebt, kunt u de BLOB-meta gegevens gebruiken om te bepalen welke gegevens het logboek bevat door de BLOB-meta gegevens velden te controleren. Dit is ook handig omdat er soms vertraging kan optreden terwijl er gegevens naar de logboek bestanden worden geschreven: de BLOB-meta gegevens geven een nauw keurigere indicatie van de blob-inhoud dan de naam van de blob.
 
@@ -78,7 +78,7 @@ Met de meeste hulpprogram ma's voor opslag navigatie kunt u de meta gegevens van
  }  
  ```  
 
-Zie het inventariseren van [BLOB-resources](https://msdn.microsoft.com/library/azure/hh452233.aspx) en [het instellen en ophalen van eigenschappen en meta gegevens voor BLOB-resources](https://msdn.microsoft.com/library/azure/dd179404.aspx)voor meer informatie over het programmatisch weer geven van blobs.  
+Zie het [inventariseren van BLOB-resources](https://msdn.microsoft.com/library/azure/hh452233.aspx) en [het instellen en ophalen van eigenschappen en meta gegevens voor BLOB-resources](https://msdn.microsoft.com/library/azure/dd179404.aspx)voor meer informatie over het programmatisch weer geven van blobs.  
 
 ### <a name="log-naming-conventions"></a>Naamgevings regels vastleggen
 
@@ -88,14 +88,14 @@ Zie het inventariseren van [BLOB-resources](https://msdn.microsoft.com/library/a
 
  In de volgende tabel wordt elk kenmerk in de logboek naam beschreven:
 
-|Kenmerk|Description|
+|Kenmerk|Beschrijving|
 |---------------|-----------------|
-|`<service-name>`|De naam van de opslag service. Bijvoorbeeld: `blob`, `table`, of`queue`|
+|`<service-name>`|De naam van de opslag service. Bijvoorbeeld: `blob`, `table`of `queue`|
 |`YYYY`|Het jaar van vier cijfers voor het logboek. Bijvoorbeeld: `2011`|
 |`MM`|De maand met twee cijfers voor het logboek. Bijvoorbeeld: `07`|
 |`DD`|De twee cijfer dagen voor het logboek. Bijvoorbeeld: `31`|
 |`hh`|Het twee cijferige uur waarmee het begin uur voor de logboeken wordt aangegeven, in UTC-notatie van 24 uur. Bijvoorbeeld: `18`|
-|`mm`|Het nummer van twee cijfers dat de begin minuut voor de logboeken aangeeft. **Opmerking:**  Deze waarde wordt niet ondersteund in de huidige versie van Opslaganalyse en de waarde ervan is altijd `00`.|
+|`mm`|Het nummer van twee cijfers dat de begin minuut voor de logboeken aangeeft. **Opmerking:**  Deze waarde wordt niet ondersteund in de huidige versie van Opslaganalyse en de waarde ervan wordt altijd `00`.|
 |`<counter>`|Een teller op basis van nul met zes cijfers waarmee het aantal logboek-blobs wordt aangegeven dat is gegenereerd voor de opslag service in een uur tijds periode. Deze teller begint bij `000000`. Bijvoorbeeld: `000001`|
 
  Hier volgt een volledige naam voor een voor beeld van een logboek waarin de bovenstaande voor beelden worden gecombineerd:
@@ -106,17 +106,17 @@ Zie het inventariseren van [BLOB-resources](https://msdn.microsoft.com/library/a
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Wanneer een opslag aanvraag wordt geregistreerd, komt de resulterende logboek naam overeen met het uur wanneer de aangevraagde bewerking is voltooid. Als een GetBlob-aanvraag bijvoorbeeld is voltooid op 6:17.30 op 7/31/2011, wordt het logboek met het volgende voor voegsel geschreven:`blob/2011/07/31/1800/`
+ Wanneer een opslag aanvraag wordt geregistreerd, komt de resulterende logboek naam overeen met het uur wanneer de aangevraagde bewerking is voltooid. Als een GetBlob-aanvraag bijvoorbeeld is voltooid op 6:17.30 op 7/31/2011, wordt het logboek met het volgende voor voegsel geschreven: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Meta gegevens van logboek
 
  Alle logboek-blobs worden opgeslagen met meta gegevens die kunnen worden gebruikt om te identificeren welke logboek registratie gegevens de BLOB bevat. In de volgende tabel wordt elk meta gegevens kenmerk beschreven:
 
-|Kenmerk|Description|
+|Kenmerk|Beschrijving|
 |---------------|-----------------|
-|`LogType`|Hierin wordt beschreven of het logboek informatie bevat die betrekking heeft op lees-, schrijf-of verwijder bewerkingen. Deze waarde kan één type of een combi natie van alle drie zijn, gescheiden door komma's.<br /><br /> Voorbeeld 1: `write`<br /><br /> Voorbeeld 2: `read,write`<br /><br /> Voor beeld 3:`read,write,delete`|
-|`StartTime`|De vroegste tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:21:46Z`|
-|`EndTime`|De meest recente tijd van een vermelding in het logboek, in de vorm `YYYY-MM-DDThh:mm:ssZ`van. Bijvoorbeeld: `2011-07-31T18:22:09Z`|
+|`LogType`|Hierin wordt beschreven of het logboek informatie bevat die betrekking heeft op lees-, schrijf-of verwijder bewerkingen. Deze waarde kan één type of een combi natie van alle drie zijn, gescheiden door komma's.<br /><br /> Voor beeld 1: `write`<br /><br /> Voor beeld 2: `read,write`<br /><br /> Voor beeld 3: `read,write,delete`|
+|`StartTime`|De vroegste tijd van een vermelding in het logboek, in de vorm van `YYYY-MM-DDThh:mm:ssZ`. Bijvoorbeeld: `2011-07-31T18:21:46Z`|
+|`EndTime`|De meest recente tijd van een vermelding in het logboek, in de vorm van `YYYY-MM-DDThh:mm:ssZ`. Bijvoorbeeld: `2011-07-31T18:22:09Z`|
 |`LogVersion`|De versie van de logboek indeling.|
 
  De volgende lijst geeft een overzicht van de volledige voor beelden van meta gegevens aan de hand
@@ -154,7 +154,7 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations rea
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
- Voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt, raadpleegt u: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+ Zie voor informatie over het configureren van de Azure PowerShell-cmdlets voor het werken met uw Azure-abonnement en het selecteren van het standaard opslag account dat moet worden gebruikt: [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Opslag logboek registratie via een programma inschakelen  
 
@@ -179,7 +179,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ## <a name="download-storage-logging-log-data"></a>Logboek gegevens van opslag logboeken downloaden
 
- Als u uw logboek gegevens wilt bekijken en analyseren, moet u de blobs downloaden die de logboek gegevens bevatten die u wilt raadplegen op een lokale computer. Veel hulpprogram ma's voor opslag bladeren maken het mogelijk om blobs te downloaden vanuit uw opslag account. u kunt ook het Azure Storage team-opdracht regel programma Azure Copy (**AzCopy**) gebruiken om uw logboek gegevens te downloaden.  
+ Als u uw logboek gegevens wilt bekijken en analyseren, moet u de blobs downloaden die de logboek gegevens bevatten die u wilt raadplegen op een lokale computer. Veel hulpprogram ma's voor opslag bladeren maken het mogelijk om blobs te downloaden vanuit uw opslag account. u kunt ook het Azure Storage team dat is voorzien van het opdracht regel programma Azure copy tool [AzCopy](storage-use-azcopy-v10.md) gebruiken om uw logboek gegevens te downloaden.  
 
  Om ervoor te zorgen dat u de logboek gegevens downloadt die u interesseert en om te voor komen dat dezelfde logboek gegevens meermaals worden gedownload:  
 
@@ -187,20 +187,17 @@ queueClient.SetServiceProperties(serviceProperties);
 
 -   Gebruik de meta gegevens op de blobs met logboek gegevens om de specifieke periode te identificeren waarvoor de BLOB logboek gegevens bevat om de exacte BLOB te identificeren die u moet downloaden.  
 
-> [!NOTE]
->  AzCopy maakt deel uit van de Azure SDK, maar u kunt altijd de nieuwste versie downloaden [https://aka.ms/AzCopy](https://aka.ms/AzCopy)van. AzCopy wordt standaard geïnstalleerd in de map **C:\Program Files (x86) \Microsoft SDKs\Windows Azure\AzCopy**en u moet deze map toevoegen aan uw pad voordat u het hulp programma probeert uit te voeren in een opdracht prompt of Power shell-venster.  
+Om aan de slag te gaan met AzCopy raadpleegt u aan de [slag met AzCopy](storage-use-azcopy-v10.md) 
 
- In het volgende voor beeld ziet u hoe u de logboek gegevens voor de wachtrij service kunt downloaden voor de uren, te beginnen bij 09 uur, 10 uur en 11 uur op twintig mei 2014. De **/s** para meter zorgt ervoor dat AzCopy een lokale mapstructuur bouwt op basis van de datums en tijden in de namen van logboek bestanden. de **/v** -para meter zorgt ervoor dat AzCopy uitgebreide uitvoer produceert. de **/y** -para meter zorgt ervoor dat AzCopy lokale bestanden overschrijft. Vervang **< yourstorageaccount\>**  door de naam van uw opslag account en vervang **< yourstoragekey\>**  door de sleutel van uw opslag account.  
+In het volgende voor beeld ziet u hoe u de logboek gegevens voor de wachtrij service kunt downloaden voor de uren, te beginnen bij 09 uur, 10 uur en 11 uur op twintig mei 2014.
 
 ```
-AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
-```  
+azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
+```
 
- AzCopy heeft ook enkele nuttige para meters die bepalen hoe het tijdstip van de laatste wijziging wordt ingesteld op de bestanden die worden gedownload en of er bestanden moeten worden gedownload die ouder of nieuwer zijn dan alle bestanden die al op uw lokale computer aanwezig zijn. U kunt deze ook uitvoeren in de modus voor opnieuw starten. Raadpleeg de Help voor meer informatie door het uitvoeren van de **AzCopy/?** cmd.  
+Zie [specifieke bestanden downloaden](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
 
- Zie het blog bericht [Windows Azure Storage logboek registratie voor een voor beeld van hoe u uw logboek gegevens programmatisch kunt downloaden: Logboeken gebruiken om opslag aanvragen](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) bij te houden en te zoeken naar het woord ' DumpLogs ' op de pagina.  
-
- Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die veel hulpprogram ma's voor logboek registratie kunnen parseren, waaronder micro soft Message Analyzer (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
+Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die veel hulpprogram ma's voor logboek registratie kunnen parseren, waaronder micro soft Message Analyzer (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

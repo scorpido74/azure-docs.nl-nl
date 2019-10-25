@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory logboeken streamen naar SumoLogic met behulp van Azure Monitor | Microsoft Docs
+title: Stream-logboeken naar SumoLogic met behulp van Azure Monitor | Microsoft Docs
 description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met behulp van Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1645415a8cfd86b142c25dc145c60e8b986d1013
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 70c3b72ab650eb506dfaac378e10a7170b8f041d
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989746"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819751"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-logboeken integreren met SumoLogic met behulp van Azure Monitor
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u Azure Active Directory (Azure AD)-logboeken integre
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze functie te gebruiken:
-* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het streamen van [uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * Een SumoLogic-abonnement met eenmalige aanmelding.
 
 ## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Stappen voor het integreren van Azure AD-logboeken met SumoLogic 

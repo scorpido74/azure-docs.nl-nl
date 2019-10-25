@@ -1,17 +1,17 @@
 ---
 title: Inleiding tot Azure Cosmos DB
 description: Lees hier alles over Azure Cosmos DB. Deze wereldwijd gedistribueerde database met meerdere modellen is gebouwd voor lage latentie, elastische schaalbaarheid, hoge beschikbaarheid en voor het bieden van systeemeigen ondersteuning voor NoSQL-gegevens.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/01/2019
-ms.author: rimman
-ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 10/23/2019
+ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240691"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882180"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -24,22 +24,17 @@ U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosm
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/)
 
-U kunt ook het [Cosmos DB Boots trap programma](https://azurecosmosdb.github.io/CosmosBootstrap/) gebruiken om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen. Wanneer u zich aanmeldt voor dit programma, worden de Azure Cosmos DB engineers toegewezen om u te helpen bij het project. ze kunnen u helpen bij het migreren van uw gegevens naar Azure Cosmos DB of bij het bouwen van nieuwe apps op Azure Cosmos DB.
-
-> [!div class="nextstepaction"]
-> [Registreren voor het Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)
-
 ![Azure Cosmos DB is de service van Microsoft voor wereldwijd gedistribueerde databases met mogelijkheden voor elastisch uitschalen, een gegarandeerde lage latentie, vijf consistentiemodellen en uitgebreide, gegarandeerde SLA's](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-### <a name="turnkey-global-distribution"></a>Kant-en-klare wereldwijde distributie
+### <a name="turnkey-global-distribution"></a>Kant en klare wereldwijde distributie
 
 Met Cosmos DB bent u in staat om wereldwijd zeer responsieve en maximaal beschikbare toepassingen te bouwen. Cosmos DB worden uw gegevens op transparante wijze gerepliceerd waar uw gebruikers zich bevinden, zodat uw gebruikers kunnen communiceren met een replica van de gegevens die er het dichtst bij staan.
 
 Met Cosmos DB kunt u op elk gewenst moment met een klik op een knop elke willekeurige Azure-regio aan uw Cosmos-account toevoegen of eruit verwijderen. Cosmos DB worden uw gegevens naadloos gerepliceerd naar alle regio's die zijn gekoppeld aan uw Cosmos-account terwijl uw toepassing Maxi maal beschikbaar blijft, dankzij de mogelijkheden voor *meerdere multihoming* van de service. Zie het artikel [Wereldwijde distributie](distribute-data-globally.md) voor meer informatie.
 
-### <a name="always-on"></a>Altijd aan
+### <a name="always-on"></a>Altijd beschikbaar
 
 In het kader van een diep gaande integratie met Azure-infra structuur en [transparante replicatie van meerdere masters](global-dist-under-the-hood.md)biedt Cosmos DB [99,999% hoge Beschik baarheid](high-availability.md) voor zowel lees-als schrijf bewerkingen. Cosmos DB biedt u ook de mogelijkheid om via een programma (of via de portal) de regionale failover van uw Cosmos-account aan te roepen. Met deze functie kunt u ervoor zorgen dat uw toepassing is ontworpen voor failover in het geval van regionale nood gevallen.
 
@@ -53,7 +48,7 @@ Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij h
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme [afweging te maken tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie opties](consistency-levels.md) - te bieden,*sterk*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* — voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
+Wanneer u wereld wijd gedistribueerde toepassingen in Cosmos DB bouwt, hoeft u geen extreme [afweging te maken tussen consistentie, Beschik baarheid, latentie en door Voer](consistency-levels-tradeoffs.md). Het replicatie protocol voor meerdere masters van Cosmos DB is zorgvuldig ontworpen om [vijf goed gedefinieerde consistentie opties](consistency-levels.md) te bieden - *sterke*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijk* : voor een intuïtief programmeer model met lage latentie en hoge Beschik baarheid voor uw wereld wijd gedistribueerde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 

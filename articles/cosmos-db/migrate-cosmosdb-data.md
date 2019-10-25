@@ -5,25 +5,20 @@ author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648902"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880208"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
-Azure Cosmos DB kunnen terabytes aan gegevens opslaan. U kunt een grootschalige gegevens migratie uitvoeren om de werk belasting van uw productie naar Azure Cosmos DB te verplaatsen. In dit artikel worden de uitdagingen beschreven voor het verplaatsen van grootschalige gegevens naar Azure Cosmos DB en wordt u uitgebreid naar het hulp programma dat u helpt bij de uitdagingen en het migreren van gegevens naar Azure Cosmos DB. In dit geval studie heeft de klant de Cosmos DB SQL-API gebruikt.  
+Azure Cosmos DB kan terabytes aan gegevens opslaan. U kunt een grootschalige gegevensmigratie uitvoeren om de werkbelasting van uw productie naar Azure Cosmos DB te verplaatsen. In dit artikel worden de uitdagingen beschreven voor het verplaatsen van grootschalige gegevens naar Azure Cosmos DB en wordt u uitgebreid naar het hulp programma dat u helpt bij de uitdagingen en het migreren van gegevens naar Azure Cosmos DB. In dit geval studie heeft de klant de Cosmos DB SQL-API gebruikt.  
 
 Voordat u de volledige werk belasting naar Azure Cosmos DB migreert, kunt u een subset van gegevens migreren om enkele van de aspecten te valideren, zoals de partitie sleutel keuze, query prestaties en gegevens modellering. Nadat u het testen van het concept hebt gevalideerd, kunt u de gehele werk belasting naar Azure Cosmos DB verplaatsen.  
-
-U kunt ook het [Cosmos DB Boots trap programma](https://azurecosmosdb.github.io/CosmosBootstrap/) gebruiken om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen. Als onderdeel van dit programma worden technici van het Azure Cosmos DB-team toegewezen aan uw project en helpt u uw gegevens naar Azure Cosmos DB te migreren. Klik op de onderstaande knop om u aan te melden voor het Cosmos DB Boots trap-programma:
-
-> [!div class="nextstepaction"]
-> [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Hulpprogram ma's voor gegevens migratie 
 
@@ -33,11 +28,11 @@ Azure Cosmos DB migratie strategieën op dit moment verschillen op basis van de 
 
 De bestaande hulpprogram ma's voor het migreren van gegevens naar Azure Cosmos DB hebben enkele beperkingen die bijzonder duidelijk worden op grote schaal bewerkingen:
 
- * **Beperkte mogelijkheden**voor uitschalen: Om terabytes aan gegevens zo snel mogelijk naar Azure Cosmos DB te migreren en de volledige ingerichte door Voer effectief te verbruiken, moeten de migratie-clients voor onbepaalde tijd kunnen schalen.  
+ * **Beperkte mogelijkheden voor uitschalen**: om terabytes aan gegevens zo snel mogelijk naar Azure Cosmos DB te migreren en de volledige ingerichte door Voer effectief te verbruiken, moeten de migratie-clients voor onbepaalde tijd kunnen uitschalen.  
 
-* **Geen voortgang van bijhouden en controleren**: Het is belang rijk om de voortgang van de migratie bij te houden en te controleren op het moment dat grote gegevens sets worden gemigreerd. Anders moet elke fout die tijdens de migratie optreedt, de migratie stoppen en moet u het proces helemaal opnieuw starten. Het is niet productief om het hele migratie proces opnieuw te starten wanneer 99% van de service al is voltooid.  
+* **Geen voortgang van bijhouden en controleren**: het is belang rijk om de voortgang van de migratie bij te houden en te controleren op het moment dat u grote gegevens sets migreert. Anders moet elke fout die tijdens de migratie optreedt, de migratie stoppen en moet u het proces helemaal opnieuw starten. Het is niet productief om het hele migratie proces opnieuw te starten wanneer 99% van de service al is voltooid.  
 
-* **Geen wachtrij met onbestelbare berichten**: In grote gegevens sets kunnen er in sommige gevallen problemen optreden met delen van de bron gegevens. Daarnaast kunnen er tijdelijke problemen zijn met de client of het netwerk. Een van deze gevallen zou ertoe kunnen leiden dat de volledige migratie niet kan worden uitgevoerd. Hoewel de meeste migratie hulpprogramma's robuuste pogingen bieden die zich tegen tijdelijke problemen beschermen, is het niet altijd voldoende. Als er bijvoorbeeld minder dan 0,01% van de brongegevens documenten groter is dan 2 MB, wordt het schrijven van het document in Azure Cosmos DB mislukt. In het ideale geval is het handig voor het migratie programma om deze ' mislukte ' documenten op te slaan in een andere wachtrij met onbestelbare berichten. Dit kan worden verwerkt na de migratie. 
+* **Geen wachtrij met onbestelbare berichten**: in grote gegevens sets kunnen er in sommige gevallen problemen optreden met delen van de bron gegevens. Daarnaast kunnen er tijdelijke problemen zijn met de client of het netwerk. Een van deze gevallen zou ertoe kunnen leiden dat de volledige migratie niet kan worden uitgevoerd. Hoewel de meeste migratie hulpprogramma's robuuste pogingen bieden die zich tegen tijdelijke problemen beschermen, is het niet altijd voldoende. Als er bijvoorbeeld minder dan 0,01% van de brongegevens documenten groter is dan 2 MB, wordt het schrijven van het document in Azure Cosmos DB mislukt. In het ideale geval is het handig voor het migratie programma om deze ' mislukte ' documenten op te slaan in een andere wachtrij met onbestelbare berichten. Dit kan worden verwerkt na de migratie. 
 
 Veel van deze beperkingen worden vastgesteld voor hulpprogram ma's zoals Azure Data Factory, Azure Data Migration Services. 
 
@@ -154,10 +149,7 @@ Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos 
 
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
 * De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
 * Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties. 
-* Gebruik het [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/) om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen.
-
-> [!div class="nextstepaction"]
-> [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)

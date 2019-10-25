@@ -1,24 +1,19 @@
 ---
 title: Instellingen voor detectie van Azure-toepassing Insights-regel configureren met Azure Resource Manager sjablonen | Microsoft Docs
 description: Beheer en configuratie automatiseren van Azure-toepassing Insights-regels voor slimme detectie met Azure Resource Manager sjablonen
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193717"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818831"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
@@ -29,7 +24,7 @@ Deze methode kan worden gebruikt bij het implementeren van nieuwe Application In
 
 U kunt de volgende instellingen configureren voor een regel voor Slimme detectie:
 - Als de regel is ingeschakeld (de standaard waarde is **waar**.)
-- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) van het abonnement en bij het bewaken van [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
+- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) van het abonnement en bij het [bewaken van Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
 - Aanvullende e-mail ontvangers die een melding moeten ontvangen wanneer een detectie wordt gevonden.
     -  De e-mail configuratie is niet beschikbaar voor slimme detectie regels die als _Preview_zijn gemarkeerd.
 
@@ -153,7 +148,7 @@ Deze Azure Resource Manager sjabloon demonstreert het configureren van een waars
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -178,15 +173,15 @@ Deze Azure Resource Manager sjabloon demonstreert het configureren van een waars
 Hieronder ziet u een tabel met namen van Slimme detectie regels zoals ze worden weer gegeven in de portal, samen met hun interne namen, die moeten worden gebruikt in de sjabloon Azure Resource Manager.
 
 > [!NOTE]
-> Slimme detectie regels die als _Preview_ zijn gemarkeerd, bieden geen ondersteuning voor e-mail meldingen. Daarom kunt u de ingeschakelde eigenschap alleen instellen voor deze regels. 
+> Slimme detectie regels die als _Preview_ zijn gemarkeerd, bieden geen ondersteuning voor e-mail meldingen. Daarom kunt u de _ingeschakelde_ eigenschap alleen instellen voor deze regels. 
 
 | Naam van Azure Portal regel | Interne naam
 |:---|:---|
-| Langzame paginalaadtijd | slowpageloadtime |
-| Langzame reactietijd voor de server | slowserverresponsetime |
+| Langzame laad tijd van pagina's | slowpageloadtime |
+| Trage reactie tijd van server | slowserverresponsetime |
 | Lange duur van de afhankelijkheid | longdependencyduration |
-| Degradatie van de serverreactietijd | degradationinserverresponsetime |
-| Degradatie van afhankelijkheidsduur | degradationindependencyduration |
+| Degradatie van de reactie tijd van de server | degradationinserverresponsetime |
+| Degradatie van afhankelijkheids duur | degradationindependencyduration |
 | Degradatie van de verhouding van de ernst van de tracering (preview-versie) | extension_traceseveritydetector |
 | Uitzonderings volume met een abnormale toename (preview-versie) | extension_exceptionchangeextension |
 | Mogelijke geheugenlek gedetecteerd (preview-versie) | extension_memoryleakextension |

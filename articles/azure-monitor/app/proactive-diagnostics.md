@@ -1,73 +1,68 @@
 ---
-title: Slimme detectie in Azure Application Insights | Microsoft Docs
-description: Application Insights voert een automatische grondige analyse van uw app-Telemetrie en waarschuwt u mogelijke problemen.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Slimme detectie in Azure-toepassing Insights | Microsoft Docs
+description: Application Insights voert een automatische diep gaande analyse van uw app-telemetrie uit en waarschuwt u mogelijke problemen.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/07/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.date: 02/07/2019
+ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465903"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818810"
 ---
 # <a name="smart-detection-in-application-insights"></a>Slimme detectie in Application Insights
- Slimme detectie waarschuwt automatisch u van mogelijke prestatieproblemen en afwijkende fouten in uw webtoepassing. Het voert proactieve analyse van de telemetrie die uw app naar verzendt [Application Insights](../../azure-monitor/app/app-insights-overview.md). Als er een plotselinge toename van de foutpercentages of abnormale patronen in de prestaties van de client of server is, krijgt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing zoveel telemetrie verzendt.
+ Slimme detectie waarschuwt automatisch mogelijke prestatie problemen en fout afwijkingen in uw webtoepassing. Er wordt proactieve analyse uitgevoerd van de telemetrie die uw app naar [Application Insights](../../azure-monitor/app/app-insights-overview.md)verzendt. Als er sprake is van een plotselinge toename van de fout frequentie of abnormale patronen in de prestaties van de client of server, ontvangt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing voldoende telemetrie verzendt.
 
-U kunt toegang tot de detecties die zijn uitgegeven door Slimme detectie van de e-mailberichten ontvangt u, en van de blade voor slimme detectie.
+U hebt toegang tot de detecties die zijn uitgegeven door slimme detectie, zowel van het e-mail bericht dat u ontvangt, als op de Blade Slimme detectie.
 
-## <a name="review-your-smart-detections"></a>Controleer uw Slimme detectie
-U kunt detectie op twee manieren detecteren:
+## <a name="review-your-smart-detections"></a>Uw slimme detecties controleren
+U kunt detecties op twee manieren detecteren:
 
-* **U ontvangt een e-mailbericht** van Application Insights. Hier volgt een voorbeeld:
+* **U ontvangt een e-mail** van Application Insights. Hier volgt een typisch voor beeld:
   
-    ![E-mailmelding](./media/proactive-diagnostics/03.png)
+    ![E-mail waarschuwing](./media/proactive-diagnostics/03.png)
   
-    Klik op de grote knop om meer details in de portal.
-* **De blade voor slimme detectie** in Application Insights. Selecteer **Slimme detectie** onder de **onderzoeken** menu voor een overzicht van recente detecties.
+    Klik op de knop Big om meer details te openen in de portal.
+* **De Blade Slimme detectie** in Application Insights. Selecteer **Slimme detectie** onder het menu **onderzoeken** om een lijst met recente detecties weer te geven.
 
-![Recente detecties weergeven](./media/proactive-diagnostics/04.png)
+![Recente detecties weer geven](./media/proactive-diagnostics/04.png)
 
-Selecteer een detectie om de details te bekijken.
+Selecteer een detectie om de details ervan weer te geven.
 
 ## <a name="what-problems-are-detected"></a>Welke problemen worden gedetecteerd?
-Slimme detectie detecteert en waarschuwt over tal van problemen, zoals:
+Slimme detectie detecteert en waarschuwt over diverse problemen, zoals:
 
-* [Slimme detectie: afwijkende fouten](../../azure-monitor/app/proactive-failure-diagnostics.md). We gebruiken voor machine learning om in te stellen de verwachte frequentie van mislukte aanvragen voor uw app, correleren met belasting en andere factoren. Als het aantal fouten buiten de verwachte envelop gaat, sturen we een waarschuwing.
-* [Slimme detectie: afwijkende prestaties](../../azure-monitor/app/proactive-performance-diagnostics.md). U vooraf meldingen krijgt als de reactietijd van een duur van de bewerking of een afhankelijkheid is steeds trager wordt vergeleken met de historische basislijn of als we een afwijkende patroon in de reactietijd of laadtijd van browserpagina identificeren.   
-* Algemene degradations en problemen, zoals [traceren slechtere](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [geheugenlek](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [abnormaal stijging van het volume van de uitzonderingen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) en [Security antipatronen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* [Slimme detectie-fout afwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md). We gebruiken machine learning om het verwachte aantal mislukte aanvragen voor uw app in te stellen en te correleren met belasting en andere factoren. Als het uitval aantal buiten de verwachte envelop komt, verzenden we een waarschuwing.
+* [Slimme detectie: prestatie afwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md). U ontvangt meldingen als de reactie tijd van een bewerking of afhankelijkheids duur verloopt ten opzichte van de historische basis lijn of als we een afwijkend patroon identificeren in reactie tijd of pagina laadtijd.   
+* Algemene degradatie en problemen, zoals [traceer slechtere](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [geheugenlek,](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak) [abnormale toename van het volume van de uitzonde ring](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) en [anti-patronen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
-(De help-koppelingen in elke melding gaat u naar de relevante artikelen.)
+(De Help-koppelingen in elke melding nemen u naar de relevante artikelen.)
 
-## <a name="smart-detection-email-notifications"></a>E-mailmeldingen voor slimme detectie
+## <a name="smart-detection-email-notifications"></a>E-mail meldingen voor slimme detectie
 
-Alle regels voor slimme detectie, met uitzondering van regels die zijn gemarkeerd als _preview_, zijn standaard geconfigureerd voor e-mailmeldingen verzenden wanneer detecties worden gevonden.
+Alle regels voor slimme detectie, met uitzonde ring van regels die als _Preview_zijn gemarkeerd, worden standaard geconfigureerd voor het verzenden van e-mail meldingen wanneer detecties worden gevonden.
 
-Configureren van e-mailmeldingen voor een specifieke regel voor slimme detectie kan worden gedaan door het openen van de Slimme detectie **instellingen** blade en selecteren van de regel, dat wordt geopend met de **regel bewerken** blade.
+Het configureren van e-mail meldingen voor een specifieke detectie regel kan worden uitgevoerd door de Blade Slimme detectie- **instellingen** te openen en de regel te selecteren, waarmee de Blade **regel bewerken** wordt geopend.
 
-U kunt ook kunt u de configuratie met behulp van Azure Resource Manager-sjablonen. [Regels voor slimme detectie van Application Insights beheren met behulp van Azure Resource Manager-sjablonen Zie](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) voor meer informatie.
+U kunt de configuratie ook wijzigen met Azure Resource Manager sjablonen. [Zie Application Insights Slimme detectie regels beheren met behulp van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) voor meer informatie.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Volgende stappen
-Deze diagnostische hulpprogramma's kunnen u de telemetrie van uw app controleren:
+Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecteren:
 
-* [Metric explorer](../../azure-monitor/app/metrics-explorer.md)
-* [Search explorer](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics - krachtige querytaal](../../azure-monitor/log-query/get-started-portal.md)
+* [Metrische Explorer](../../azure-monitor/app/metrics-explorer.md)
+* [Zoek Verkenner](../../azure-monitor/app/diagnostic-search.md)
+* [Analyse-krachtige query taal](../../azure-monitor/log-query/get-started-portal.md)
 
-Slimme detectie is volledig automatisch. Maar misschien u graag enkele meer waarschuwingen instellen?
+Slimme detectie is volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Handmatig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
-* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) 
+* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
+* [Webtests voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) 
 

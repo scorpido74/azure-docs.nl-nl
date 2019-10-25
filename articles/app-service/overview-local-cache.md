@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097650"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819662"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
@@ -64,9 +64,9 @@ U kunt de lokale cache configureren met behulp van een combi natie van gereserve
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale cache configureren met behulp van de Azure Portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+U schakelt lokale cache per web-app in met behulp van deze app-instelling: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![App-instellingen Azure Portal: Lokale cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![App-instellingen Azure Portal: lokale cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
 ### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Lokale cache configureren met behulp van Azure Resource Manager
 <a name="Configure-Local-Cache-ARM"></a>
@@ -93,25 +93,26 @@ U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSI
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>De instelling grootte in lokale cache wijzigen
-De grootte van de lokale cache is standaard **300 MB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`om deze limiet te verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
+De grootte van de lokale cache is standaard **1 GB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`als u deze limiet wilt verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Aanbevolen procedures voor het gebruik van App Service lokale cache
 U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [staging Environment](../app-service/deploy-staging-slots.md) .
 
-* Voeg de *plak* app- `WEBSITE_LOCAL_CACHE_OPTION` instelling met de `Always` waarde toe aan uw **productie** sleuf. Als u gebruikt `WEBSITE_LOCAL_CACHE_SIZEINMB`, voegt u deze ook als een plak instelling toe aan uw productie sleuf.
+* Voeg de *plak* app-instelling `WEBSITE_LOCAL_CACHE_OPTION` met de waarde `Always` toe aan uw **productie** sleuf. Als u `WEBSITE_LOCAL_CACHE_SIZEINMB`gebruikt, voegt u deze ook als een plak instelling toe aan uw productie sleuf.
 * Maak een **staging** -sleuf en publiceer deze naar uw staging-sleuf. Normaal gesp roken stelt u de staging-sleuf niet in voor het gebruik van een lokale cache om een naadloze implementatie van de levens cyclus voor fase ring mogelijk te maken als u de voor delen van de lokale cache voor de productie site ontvangt.
 * Test uw site op basis van uw staging-sleuf.  
 * Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
 * Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
 ## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
 Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien of mijn site is overgeschakeld naar het gebruik van een lokale cache?
-Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele `WEBSITE_LOCALCACHE_READY`voor de werk proces omgeving controleren. Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
+Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele voor de werk proces omgeving controleren `WEBSITE_LOCALCACHE_READY`. Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Hoe komt dat?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Waarom?
 Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de laatste wijzigingen op te halen. Wilt u geen wijzigingen publiceren naar een productie site? Zie de sleuf opties in het gedeelte eerder best practices.
 
 ### <a name="where-are-my-logs"></a>Waar bevinden zich mijn logboeken?

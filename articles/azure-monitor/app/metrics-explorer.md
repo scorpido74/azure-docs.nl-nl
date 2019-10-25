@@ -1,210 +1,205 @@
 ---
-title: Metrische gegevens in Azure Application Insights verkennen | Microsoft Docs
-description: Over het interpreteren van grafieken op metric explorer en metric explorer blades aanpassen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Metrische gegevens verkennen in Azure-toepassing inzichten | Microsoft Docs
+description: Grafieken in metrische Explorer interpreteren en metrische Explorer-Blades aanpassen.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700709"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820786"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Metrische gegevens in Application Insights verkennen
-Metrische gegevens in [Application Insights] [ start] zijn gemeten waarden en aantallen gebeurtenissen die worden verzonden in telemetrie van uw toepassing. Ze helpen u prestatieproblemen detecteren en bekijk de trends in hoe uw toepassing wordt gebruikt. Er is een breed scala aan standaard metrische gegevens en u kunt ook uw eigen aangepaste metrische gegevens en gebeurtenissen maken.
+Metrische gegevens in [Application Insights][start] worden gemeten waarden en aantallen gebeurtenissen die worden verzonden via telemetrie van uw toepassing. Ze helpen prestatie problemen te detecteren en trends te bekijken in de manier waarop uw toepassing wordt gebruikt. Er is een breed scala aan standaard waarden en u kunt ook uw eigen aangepaste metrische gegevens en gebeurtenissen maken.
 
 > [!NOTE]
-> Dit artikel beschrijft de ervaring in de klassieke metrics explorer die momenteel is afgeschaft en zal uiteindelijk buiten gebruik worden gesteld. We raden u aan te checken, wordt de nieuwe ervaring die wordt beschreven in [in dit artikel](../platform/metrics-charts.md).
+> In dit artikel wordt de klassieke metrische Explorer-ervaring beschreven die momenteel is afgeschaft en zal uiteindelijk buiten gebruik worden gesteld. We raden u aan de nieuwe ervaring die in [dit artikel](../platform/metrics-charts.md)wordt beschreven, te controleren.
 
-Aantal metrische gegevens en gebeurtenissen worden weergegeven in de grafieken van de geaggregeerde waarden zoals totalen, gemiddelden of aantal.
+Metrische gegevens en aantal gebeurtenissen worden weer gegeven in grafieken van geaggregeerde waarden, zoals sommen, gemiddelden of tellingen.
 
-Hier volgt een voorbeeld reeks grafieken:
+Hier volgt een voor beeld van een set grafieken:
 
 ![](./media/metrics-explorer/01-overview.png)
 
-U vindt grafieken met metrische gegevens overal in de Application Insights-portal. In de meeste gevallen kan worden aangepast en u kunt meer grafieken toevoegen aan de blade. Klik op de blade overzicht door naar meer gedetailleerde grafieken (waarvoor titels, zoals 'Servers'), of klik op **Metrics Explorer** om een nieuwe blade waar u aangepaste grafieken kunt maken te openen.
+U kunt overal in de Application Insights Portal metrische grafieken vinden. In de meeste gevallen kunnen ze worden aangepast en kunt u meer grafieken toevoegen aan de Blade. Klik op de Blade overzicht op door te gaan naar meer gedetailleerde grafieken (die functies als "servers" hebben) of klik op **Metrics Explorer** om een nieuwe Blade te openen waar u aangepaste grafieken kunt maken.
 
 ## <a name="time-range"></a>Tijdsbereik
-U kunt het tijdsbereik wordt gedekt door de diagrammen of rasters op een blade wijzigen.
+U kunt het tijds bereik dat wordt gedekt door de grafieken of rasters op een Blade wijzigen.
 
-![Open de overzichtsblade van uw toepassing in Azure portal](./media/metrics-explorer/03-range.png)
+![Open de Blade overzicht van uw toepassing in de Azure Portal](./media/metrics-explorer/03-range.png)
 
-Als u bepaalde gegevens die nog niet is werden verwacht, klikt u op vernieuwen. Grafieken vernieuwd met intervallen, maar de intervallen zijn langer voor grotere tijdsbereik. Het kan even gegevens binnenkomen via de pijplijn analyse naar een diagram.
+Als u bepaalde gegevens verwacht die nog niet zijn verschenen, klikt u op vernieuwen. Grafieken worden op intervallen vernieuwd, maar de intervallen zijn langer voor grotere Peri Oden. Het kan even duren voordat gegevens via de analyse pijplijn naar een grafiek worden gestuurd.
 
-Als u wilt inzoomen op een deel van een diagram, sleept u erboven:
+Als u wilt inzoomen op een grafiek, sleept u de muis aanwijzer over het volgende:
 
-![Sleep in het gedeelte van een grafiek.](./media/metrics-explorer/12-drag.png)
+![Sleep over een deel van een grafiek.](./media/metrics-explorer/12-drag.png)
 
-Klik op de knop Zoomen ongedaan maken om te herstellen.
+Klik op de knop Zoomen ongedaan maken om deze te herstellen.
 
-## <a name="granularity-and-point-values"></a>Waarden granulariteit en punt
-De muisaanwijzer boven de grafiek om de waarden van de metrische gegevens op dat moment weer te geven.
+## <a name="granularity-and-point-values"></a>Granulatie-en punt waarden
+Beweeg de muis aanwijzer over het diagram om de waarden van de metrische gegevens op dat punt weer te geven.
 
-![Beweeg de muisaanwijzer over een grafiek](./media/metrics-explorer/02-focus.png)
+![Beweeg de muis aanwijzer over een grafiek](./media/metrics-explorer/02-focus.png)
 
-De waarde van de metrische gegevens op een bepaald tijdstip wordt geaggregeerd in het voorgaande steekproefinterval.
+De waarde van de metriek op een bepaald punt wordt geaggregeerd over het voorafgaande steekproef interval.
 
-De controle-interval of 'granulariteit' wordt weergegeven aan de bovenkant van de blade.
+Het steekproef interval of ' granulariteit ' wordt boven aan de Blade weer gegeven.
 
-![De koptekst van een blade.](./media/metrics-explorer/11-grain.png)
+![De koptekst van een Blade.](./media/metrics-explorer/11-grain.png)
 
-U kunt de granulatie in de blade van de bereik tijd aanpassen:
+U kunt de granulariteit aanpassen op de Blade tijd bereik:
 
-![De koptekst van een blade.](./media/metrics-explorer/grain.png)
+![De koptekst van een Blade.](./media/metrics-explorer/grain.png)
 
-De granulariteit die beschikbaar zijn, is afhankelijk van het tijdsbereik dat u selecteert. De expliciete granulaties zijn alternatieven voor de 'automatisch' granulariteit voor het tijdsbereik.
+De granulaties die beschikbaar zijn, zijn afhankelijk van het tijds bereik dat u selecteert. De exacte granulariteit is alternatieven voor de ' automatische ' granulatie voor het tijds bereik.
 
 
-## <a name="editing-charts-and-grids"></a>Bewerken van grafieken en rasters
-Een nieuwe grafiek toevoegen aan de blade:
+## <a name="editing-charts-and-grids"></a>Grafieken en rasters bewerken
+Een nieuwe grafiek toevoegen aan de Blade:
 
 ![Kies in Metrics Explorer grafiek toevoegen](./media/metrics-explorer/04-add.png)
 
-Selecteer **bewerken** op een bestaande of nieuwe grafiek bewerken wat er wordt weergegeven:
+Selecteer **bewerken** in een bestaand of nieuw diagram om te bewerken wat er wordt weer gegeven:
 
-![Selecteer een of meer waarden](./media/metrics-explorer/08-select.png)
+![Selecteer een of meer metrische gegevens](./media/metrics-explorer/08-select.png)
 
-Hoewel er gelden beperkingen over de combinaties die samen kunnen worden weergegeven, kunt u meer dan één metrische gegevens weergeven in een grafiek. Als u een waarde kiezen, zijn sommige van de andere uitgeschakeld.
+U kunt meer dan één metrische gegevens weer geven in een grafiek, hoewel er beperkingen zijn voor de combi naties die samen kunnen worden weer gegeven. Zodra u één metrische gegevens kiest, worden sommige van de andere uitgeschakeld.
 
-Als u gecodeerd [aangepaste metrische gegevens] [ track] in uw app (aanroepen naar TrackMetric en TrackEvent) ze worden hier vermeld.
+Als u [aangepaste metrische gegevens][track] in uw app hebt gecodeerd (aanroepen naar TrackMetric en track event), worden deze hier weer gegeven.
 
 ## <a name="segment-your-data"></a>Uw gegevens segmenteren
-U kunt bijvoorbeeld een metrische waarde door de eigenschap - splitsen als u wilt vergelijken van paginaweergaven op clients met verschillende besturingssystemen.
+U kunt een metriek splitsen op eigenschap, bijvoorbeeld om pagina weergaven te vergelijken op clients met verschillende besturings systemen.
 
-Selecteer een grafiek of het raster, Ga voor de groepering en kies een eigenschap te groeperen op:
+Selecteer een grafiek of raster, schakel over op groeperen en kies een eigenschap om te groeperen op:
 
-![Selecteer groepering op set en selecteer vervolgens een eigenschap in Group By](./media/metrics-explorer/15-segment.png)
+![Selecteer groeperen op en stel vervolgens een eigenschap in Group by in op](./media/metrics-explorer/15-segment.png)
 
 > [!NOTE]
-> Wanneer u groepen gebruikt, geef de oppervlakte en staafdiagram typen een gestapelde weer te geven. Dit is geschikt waar de aggregatiemethode som is. Maar waar het samenvoegingstype gemiddelde is, kiest u de Line- of Grid weergeven-typen.
+> Wanneer u groepering gebruikt, bieden de vlak-en staaf grafiek typen een gestapelde weer gave. Dit is geschikt wanneer de aggregatie methode sum is. Maar wanneer het aggregatie type gemiddelde is, kiest u de weergave typen lijn of raster.
 >
 >
 
-Als u gecodeerd [aangepaste metrische gegevens] [ track] in uw app en ze eigenschapswaarden bevatten, u kunt de eigenschap selecteren in de lijst.
+Als u [aangepaste metrische gegevens][track] in uw app hebt gecodeerd en deze eigenschaps waarden bevatten, kunt u de eigenschap in de lijst selecteren.
 
-Is de grafiek te klein voor de gesegmenteerde gegevens? De hoogte aanpassen:
+Is de grafiek te klein voor gesegmenteerde gegevens? De hoogte aanpassen:
 
-![Stel de schuifregelaar](./media/metrics-explorer/18-height.png)
+![De schuif regelaar aanpassen](./media/metrics-explorer/18-height.png)
 
-## <a name="aggregation-types"></a>Aggregatietypen
-De legenda aan de zijkant standaard meestal de geaggregeerde waarden worden weergegeven gedurende de periode van de grafiek. Als u de muisaanwijzer op de grafiek, geeft deze de waarde op dat moment.
+## <a name="aggregation-types"></a>Aggregatie typen
+De legenda aan de zijkant bevat normaal gesp roken standaard de cumulatieve waarde over de periode van de grafiek. Als u de muis aanwijzer boven de grafiek houdt, wordt de waarde op dat punt weer gegeven.
 
-Elk gegevenspunt in de grafiek is een statistische functie van de gegevenswaarden in de voorgaande steekproefinterval of "granulariteit" ontvangen. De granulatie wordt weergegeven aan de bovenkant van de blade en is afhankelijk van de algehele tijdschaal van de grafiek.
+Elk gegevens punt in de grafiek is een aggregatie van de gegevens waarden die in het voor gaande steekproef interval of ' granulatie ' zijn ontvangen. De granulariteit wordt boven aan de Blade weer gegeven en is afhankelijk van de totale tijd schaal van de grafiek.
 
-Metrische gegevens kunnen worden geaggregeerd op verschillende manieren:
+Metrische gegevens kunnen op verschillende manieren worden geaggregeerd:
 
-* **Aantal** is een aantal van de gebeurtenissen ontvangen in het controle-interval. Het wordt gebruikt voor gebeurtenissen, zoals aanvragen. Verschillen in de hoogte van de grafiek geeft variaties in de snelheid waarmee de gebeurtenissen plaatsvinden. Maar houd er rekening mee dat de numerieke waarde wordt gewijzigd wanneer u de controle-interval wijzigen.
-* **Som** is de som van de waarden van alle gegevenspunten die worden ontvangen via het controle-interval of de periode van de grafiek.
-* **Gemiddelde** de som deelt door het aantal gegevenspunten ontvangen over het interval.
-* **De unieke** aantallen worden gebruikt voor het aantal gebruikers en accounts. Via het controle-interval, of de periode van de grafiek ziet de afbeelding u het aantal verschillende gebruikers in die tijd weergegeven.
-* **%** -percentage versies van elke aggregatie worden alleen gebruikt met gesegmenteerde grafieken. Het totaal wordt altijd tot 100% en de grafiek toont de relatieve bijdrage van de verschillende onderdelen van een totaal.
+* **Count** is een telling van de gebeurtenissen die worden ontvangen in het steekproef interval. Dit wordt gebruikt voor gebeurtenissen zoals aanvragen. Variaties in de hoogte van de grafiek duiden op de snelheid waarmee de gebeurtenissen plaatsvinden. Maar houd er rekening mee dat de numerieke waarde verandert wanneer u het steekproef interval wijzigt.
+* Met **Sum** worden de waarden van alle gegevens punten die zijn ontvangen over het steekproef interval of de periode van de grafiek opgeteld.
+* Met **gemiddelde** wordt de som verdeeld op basis van het aantal gegevens punten dat over het interval wordt ontvangen.
+* **Unieke** aantallen worden gebruikt voor het aantal gebruikers en accounts. Over het steekproef interval, of over de periode van de grafiek, toont de afbeelding het aantal verschillende gebruikers dat in die tijd wordt weer gegeven.
+* **%** -percentage versies van elke aggregatie worden alleen gebruikt voor gesegmenteerde grafieken. Het totaal voegt altijd Maxi maal 100% toe en de grafiek toont de relatieve bijdrage van verschillende onderdelen van een totaal.
 
     ![Percentage aggregatie](./media/metrics-explorer/percentage-aggregation.png)
 
-### <a name="change-the-aggregation-type"></a>Het aggregatietype wijzigen
+### <a name="change-the-aggregation-type"></a>Het aggregatie type wijzigen
 
-![De grafiek bewerken en selecteer vervolgens aggregatie](./media/metrics-explorer/05-aggregation.png)
+![Bewerk het diagram en selecteer vervolgens aggregatie](./media/metrics-explorer/05-aggregation.png)
 
-De standaardmethode voor elke waarde wordt weergegeven wanneer u een nieuwe grafiek maakt of wanneer alle metrische gegevens zijn uitgeschakeld:
+De standaard methode voor elke metriek wordt weer gegeven wanneer u een nieuwe grafiek maakt of wanneer alle metrische gegevens zijn opheffen:
 
-![Schakel alle metrische gegevens om te zien van de standaardinstellingen](./media/metrics-explorer/06-total.png)
+![De selectie van alle metrische gegevens opheffen om de standaard waarden weer te geven](./media/metrics-explorer/06-total.png)
 
-## <a name="pin-y-axis"></a>Pincode y-as 
-Y-as waarden vanaf nul tot maximale waarden in het gegevensbereik, zodat een visuele representatie van quantum van de waarden worden standaard een grafiek weergegeven. Maar in sommige gevallen meer dan het quantum mogelijk interessant om te kleine wijzigingen in waarden visueel te controleren. De y-as variëren voor aanpassingen, zoals dit gebruik bewerkingsfunctie om de waarde voor y-as minimum of maximum op de gewenste plek vast te maken.
-Klik op 'Instellingen voor geavanceerde' selectievakje in om de instellingen van de y-as-bereik
+## <a name="pin-y-axis"></a>Y-as vastmaken 
+Standaard toont een grafiek waarden van de Y-as, te beginnen met nul tot maximum waarden in het gegevens bereik, om een visuele representatie van Quantum van de waarden te geven. Maar in sommige gevallen kan het nuttig zijn om kleine wijzigingen in waarden visueel te controleren. Voor aanpassingen zoals dit gebruikt u de functie voor het bewerken van het bereik van de Y-as om de minimum-of maximum waarde van de Y-as vast te maken op de gewenste plaats.
+Klik op geavanceerde instellingen selectie vakje om de instellingen voor het bereik van de Y-as weer te geven
 
-![Klik op Geavanceerde instellingen, selecteer Aangepast bereik en min-max-waarden opgeven](./media/metrics-explorer/y-axis-range.png)
+![Klik op geavanceerde instellingen, selecteer aangepast bereik en geef minimale maximum waarden op](./media/metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>Uw gegevens filteren
-Om te zien alleen de metrische gegevens voor een geselecteerde set met eigenschapswaarden:
+Om alleen de metrische gegevens voor een geselecteerde set eigenschaps waarden weer te geven:
 
-![Klik op Filter, vouwt u een eigenschap en enkele waarden controleren](./media/metrics-explorer/19-filter.png)
+![Klik op filter, vouw een eigenschap uit en controleer enkele waarden](./media/metrics-explorer/19-filter.png)
 
-Als u niet alle waarden voor een bepaalde eigenschap selecteert, is hetzelfde als wanneer u ze allemaal: Er is geen filter voor die eigenschap.
+Als u geen waarden voor een bepaalde eigenschap selecteert, is het hetzelfde als het selecteren van deze allemaal: er is geen filter voor die eigenschap.
 
-U ziet de aantallen gebeurtenissen samen met de waarde van elke eigenschap. Wanneer u de waarden van één eigenschap selecteert, wordt het aantal naast andere eigenschapswaarden worden aangepast.
+Let op het aantal gebeurtenissen naast elke eigenschaps waarde. Wanneer u waarden van één eigenschap selecteert, worden de aantallen naast andere eigenschaps waarden aangepast.
 
-Filters toepassen op alle grafieken uit een blad. Als u wilt dat verschillende filters toegepast op verschillende grafieken, maken en opslaan van verschillende metrische gegevens blades. Als u wilt, kunt u diagrammen uit verschillende blades aan het dashboard kunt vastmaken, zodat u ze naast elkaar kunt zien.
+Filters zijn van toepassing op alle grafieken op een Blade. Als u verschillende filters wilt Toep assen op verschillende grafieken, maakt u verschillende Blades met metrische gegevens en slaat u deze op. Als u wilt, kunt u grafieken van verschillende Blades vastmaken aan het dash board, zodat u ze naast elkaar kunt zien.
 
-### <a name="remove-bot-and-web-test-traffic"></a>Verwijderen van bot- en web-test-verkeer
-Gebruik het filter **daadwerkelijk of synthetisch verkeer** en Controleer **echte**.
+### <a name="remove-bot-and-web-test-traffic"></a>Bot en web-test verkeer verwijderen
+Gebruik het filter **werkelijk of synthetisch verkeer** en controleer **real**.
 
 U kunt ook filteren op **bron van synthetisch verkeer**.
 
-### <a name="to-add-properties-to-the-filter-list"></a>Eigenschappen toevoegen aan de lijst met filters
-Wilt u de telemetrie voor een categorie van uw eigen keuze filteren? Bijvoorbeeld, misschien u delen van uw gebruikers in verschillende categorieën, en u wilt dat uw gegevens segmenteren op deze categorieën.
+### <a name="to-add-properties-to-the-filter-list"></a>Eigenschappen toevoegen aan de filter lijst
+Wilt u telemetrie filteren op een categorie van uw eigen keuze? U kunt bijvoorbeeld uw gebruikers verdelen over verschillende categorieën en u wilt uw gegevens segmenteren op basis van deze categorieën.
 
-[Maak uw eigen eigenschap](../../azure-monitor/app/api-custom-events-metrics.md#properties). Stel deze een [telemetrische Initializer](../../azure-monitor/app/api-custom-events-metrics.md#defaults) zodat deze worden weergegeven in alle telemetrie - met inbegrip van de telemetrie die is verzonden door andere SDK-modules.
+[Maak uw eigen eigenschap](../../azure-monitor/app/api-custom-events-metrics.md#properties). Stel deze in een [telemetrie-initialisatie functie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) in zodat deze wordt weer gegeven in alle telemetrie, inclusief de standaard-telemetrie die wordt verzonden door verschillende SDK-modules.
 
-## <a name="edit-the-chart-type"></a>Type van de grafiek bewerken
-U ziet dat u tussen rasters en grafieken schakelen kunt:
+## <a name="edit-the-chart-type"></a>Het grafiek type bewerken
+U ziet dat u kunt scha kelen tussen rasters en grafieken:
 
-![Selecteer een raster of diagram en kies vervolgens een grafiektype](./media/metrics-explorer/16-chart-grid.png)
+![Selecteer een raster of grafiek en kies vervolgens een grafiek type](./media/metrics-explorer/16-chart-grid.png)
 
-## <a name="save-your-metrics-blade"></a>De blade met metrische gegevens opslaan
-Als u andere grafieken hebt gemaakt, slaat u ze als een favoriet. U kunt kiezen of om deze te delen met andere teamleden, als u een organisatie-account.
+## <a name="save-your-metrics-blade"></a>De Blade metrische gegevens opslaan
+Wanneer u een aantal grafieken hebt gemaakt, slaat u ze op als favoriet. U kunt kiezen of u deze wilt delen met andere team leden, als u een organisatie-account gebruikt.
 
-![Kies aan uw Favorieten toevoegen](./media/metrics-explorer/21-favorite-save.png)
+![Kies een favoriet](./media/metrics-explorer/21-favorite-save.png)
 
-Om te zien van de blade opnieuw **Ga naar de overzichtsblade** en Favorieten openen:
+Als u de Blade opnieuw wilt weer geven, **gaat u naar de Blade overzicht** en opent u favorieten:
 
-![Kies in de blade overzicht Favorieten](./media/metrics-explorer/22-favorite-get.png)
+![Kies op de Blade overzicht de optie Favorieten](./media/metrics-explorer/22-favorite-get.png)
 
-Als u bij het opslaan van relatief tijdsbereik, wordt de blade met de meest recente metrische gegevens worden bijgewerkt. Als u een absoluut tijdsbereik kiest, wordt deze telkens dezelfde gegevens weergeven.
+Als u tijdens het opslaan een relatief tijds bereik hebt gekozen, wordt de Blade bijgewerkt met de meest recente metrische gegevens. Als u een absoluut tijds bereik hebt gekozen, worden dezelfde gegevens elke keer weer gegeven.
 
-## <a name="reset-the-blade"></a>De blade opnieuw instellen
-Als u een blade bewerken, maar vervolgens u wilt teruggaan naar de oorspronkelijke set opgeslagen, klikt u op opnieuw instellen.
+## <a name="reset-the-blade"></a>De Blade opnieuw instellen
+Als u een Blade bewerkt, maar u wilt teruggaan naar de oorspronkelijke opgeslagen set, klikt u op opnieuw instellen.
 
-![In de knoppen aan de bovenkant van Metric Explorer](./media/metrics-explorer/17-reset.png)
+![In de knoppen boven aan metrische Explorer](./media/metrics-explorer/17-reset.png)
 
-## <a name="live-metrics-stream"></a>Live metrische-gegevensstroom
+## <a name="live-metrics-stream"></a>Live metrische gegevens stroom
 
-Voor een nog veel meer onmiddellijk een overzicht van uw telemetrie, opent u [Live Stream](live-stream.md). De meeste metrische gegevens over duren enkele minuten worden weergegeven, omdat het proces van aggregatie. Daarentegen, zijn live metrische gegevens geoptimaliseerd voor lage latentie. 
+Open [Live Stream](live-stream.md)voor een veel meer directe weer gave van uw telemetrie. De meeste metrische gegevens duren een paar minuten om te worden weer gegeven, vanwege het aggregatie proces. Dynamische metrische gegevens worden daarentegen geoptimaliseerd voor een lage latentie. 
 
 ## <a name="set-alerts"></a>Waarschuwingen instellen
-Om te worden geïnformeerd via e-mail van ongebruikelijke waarden van elke meetwaarde, moet u een waarschuwing toevoegen. U kunt toekennen aan het e-mailbericht verzenden naar de accountbeheerders, of specifieke e-mailadressen.
+Voeg een waarschuwing toe om een melding te ontvangen van een e-mail bericht van ongebruikelijke waarden van een wille keurige waarde. U kunt kiezen of u het e-mail bericht wilt verzenden naar de account beheerders of naar specifieke e-mail adressen.
 
-![Kies in Metrics Explorer waarschuwingsregels, waarschuwing toevoegen](./media/metrics-explorer/appinsights-413setMetricAlert.png)
+![Kies in Metrics Explorer waarschuwings regels, waarschuwing toevoegen](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
-[Meer informatie over waarschuwingen][alerts].
+Meer [informatie over waarschuwingen][alerts].
 
 
 ## <a name="continuous-export"></a>Continuous Export
-Als u gegevens continu exporteren wilt, zodat u deze extern kan verwerken, kunt u overwegen [continue export](../../azure-monitor/app/export-telemetry.md).
+Als u gegevens continu wilt exporteren, zodat u deze extern kunt verwerken, kunt u overwegen [continue export](../../azure-monitor/app/export-telemetry.md)te gebruiken.
 
 ### <a name="power-bi"></a>Power BI
-Als u nog uitgebreider weergaven van uw gegevens wilt, kunt u [exporteren naar Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Als u zelfs rijkere weer gaven van uw gegevens wilt, kunt u [exporteren naar Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analyse
-[Analytics](../../azure-monitor/app/analytics.md) is een veelzijdiger manier voor het analyseren van uw telemetrie met behulp van een krachtige querytaal. Gebruik deze optie als u wilt combineren, berekenen van resultaten van metrische gegevens of een grondig onderzoek van de recente prestaties van uw app uitvoeren. 
+[Analytics](../../azure-monitor/app/analytics.md) is een veelzijdigere manier om uw telemetrie te analyseren met behulp van een krachtige query taal. Gebruik deze functie als u resultaten wilt combi neren of berekenen op basis van metrische gegevens, of als u een uitgebreid onderzoek wilt doen naar de recente prestaties van uw app. 
 
-In een grafiek met metrische gegevens, kunt u het pictogram Analytics rechtstreeks naar de equivalente Analytics-query.
+U kunt vanuit een metrische grafiek op het analyse pictogram klikken om rechtstreeks naar de overeenkomende analyse query te gaan.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-*Ik zie niet alle gegevens in de grafiek.*
+*Ik zie geen gegevens in mijn grafiek.*
 
-* Filters toepassen op de grafieken op de blade. Zorg ervoor dat u een filter op dat niet van toepassing op alle gegevens op een andere is niet ingesteld terwijl u te op één grafiek focussen bent.
+* Filters zijn van toepassing op alle grafieken op de Blade. Zorg ervoor dat, terwijl u zich in de ene grafiek bevindt, geen filter is ingesteld waarmee alle gegevens op een andere worden uitgesloten.
 
-    Als u wilt andere filters instellen op de verschillende grafieken, ze in verschillende blades maken, deze opslaan als afzonderlijke Favorieten. Als u wilt, kunt u deze vastmaken aan het dashboard zodat u ze naast elkaar kunt zien.
-* Als u een grafiek op een eigenschap die is niet gedefinieerd in de metriek groepeert, wordt er niets in de grafiek. Wist u 'groeperen op', of kies een eigenschap verschillende groepeerniveaus.
-* Prestatiegegevens (CPU, IO-snelheid, enzovoort) is beschikbaar voor Java-web-services, Windows-bureaublad-apps, [IIS web-apps en services als u statusmonitor installeert](../../azure-monitor/app/monitor-performance-live-website-now.md), en [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Het is niet beschikbaar voor Azure websites.
+    Als u verschillende filters op verschillende grafieken wilt instellen, maakt u deze op verschillende Blades en slaat u ze op als afzonderlijke favorieten. Als u wilt, kunt u deze vastmaken aan het dash board, zodat u ze naast elkaar kunt zien.
+* Als u een grafiek groepeert op basis van een eigenschap die niet op de metriek is gedefinieerd, is er niets in de grafiek. Probeer Group by te wissen of kies een andere groeperings eigenschap.
+* Prestatie gegevens (CPU, i/o-snelheid, enzovoort) zijn beschikbaar voor Java-webservices, Windows-bureau blad-apps, [IIS-Web-apps en-services als u status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md)en [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md)installeert. Het is niet beschikbaar voor Azure websites.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Bewaking met Application Insights wordt gebruikt](../../azure-monitor/app/usage-overview.md)
-* [Met behulp van diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)
+* [Gebruik controleren met Application Insights](../../azure-monitor/app/usage-overview.md)
+* [Diagnostische Zoek opdrachten gebruiken](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 

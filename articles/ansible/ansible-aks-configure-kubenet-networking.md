@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242164"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881529"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: kubenet-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
@@ -107,16 +107,16 @@ Sla het volgende playbook op als `aks.yml`:
 
 Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
-- Gebruik de module `azure_rm_aks_version` om de ondersteunde versie te vinden.
-- De `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
-- De `network_profile` definieert de eigenschappen voor de kubenet-netwerk-invoeg toepassing.
+- Gebruik `azure_rm_aks_version` module om de ondersteunde versie te vinden.
+- Het `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
+- De `network_profile` definieert de eigenschappen voor de kubenet-netwerk invoeg toepassing.
 - De `service_cidr` wordt gebruikt voor het toewijzen van interne services in het AKS-cluster aan een IP-adres. Dit IP-adres bereik moet een adres ruimte zijn die niet ergens anders in uw netwerk wordt gebruikt. 
-- Het `dns_service_ip`-adres moet het adres '. 10 ' zijn van het IP-adres bereik van uw service.
+- Het `dns_service_ip` adres moet het adres '. 10 ' zijn van het IP-adres bereik van uw service.
 - De `pod_cidr` moet een grote adres ruimte zijn die elders niet in uw netwerk omgeving wordt gebruikt. Het adres bereik moet groot genoeg zijn voor het aantal knoop punten dat u naar verwachting omhoog wilt schalen. U kunt dit adres bereik niet wijzigen wanneer het cluster is geïmplementeerd.
 - Het IP-adres bereik van Pod wordt gebruikt om een/24-adres ruimte toe te wijzen aan elk knoop punt in het cluster. In het volgende voor beeld wijst de `pod_cidr` van 192.168.0.0/16 het eerste knoop punt 192.168.0.0/24, het tweede knoop punt 192.168.1.0/24 en het derde knoop punt 192.168.2.0/24 toe.
 - Naarmate het cluster wordt geschaald of bijgewerkt, blijft Azure een IP-adres bereik van pod toewijzen aan elk nieuw knoop punt.
 - De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
-- De waarden `client_id` en `client_secret` worden geladen van `~/.azure/credentials`. Dit is het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
+- De waarden `client_id` en `client_secret` worden geladen vanuit `~/.azure/credentials`, het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -162,7 +162,7 @@ Sla de volgende Playbook op als `associate.yml`.
 Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
 - De `node_resource_group` is de naam van de resource groep waarin de AKS-knoop punten worden gemaakt.
-- De `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
+- Het `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
 
 
 ## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
@@ -212,7 +212,7 @@ Sla het volgende playbook op als `aks-kubenet.yml`:
 
 Breng de volgende wijzigingen aan in de sectie `vars`:
 
-- Wijzig de waarde van de `aksansibletest` voor de `resource_group`-sleutel in de naam van de resource groep.
+- Wijzig de `aksansibletest` waarde voor de `resource_group` sleutel in de naam van de resource groep.
 - Voor de `name`-sleutel wijzigt u de `aksansibletest`-waarde in uw AKS-naam.
 - Voor de `Location`-sleutel wijzigt u de `eastus`-waarde in de locatie van de resource groep.
 

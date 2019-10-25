@@ -4,16 +4,16 @@ description: Dit artikel bevat een verzameling AzCopy-voorbeeld opdrachten die u
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c65c6b3f6f186e7821ff402eea4494fa60e9c370
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598070"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817041"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -31,6 +31,9 @@ Zie het artikel aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy te
 > Bijvoorbeeld: `'https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>'`.
 
 ## <a name="create-a-container"></a>Een container maken
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 U kunt de opdracht [azcopy](storage-ref-azcopy-make.md) maken gebruiken om een container te creëren. In de voor beelden in deze sectie wordt een container met de naam `mycontainer` gemaakt.
 
@@ -54,10 +57,10 @@ Deze sectie bevat de volgende voor beelden:
 > * De inhoud van een map uploaden 
 > * Specifieke bestanden uploaden
 
-> [!NOTE]
-> De MD5-hash-code van het bestand wordt niet automatisch door AzCopy berekend en opgeslagen. Als u dit wilt doen, voegt u de vlag `--put-md5` toe aan elke Kopieer opdracht. Op die manier berekent AzCopy een MD5-hash voor gedownloade gegevens en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap `Content-md5` van de BLOB overeenkomt met de berekende hash, wanneer de BLOB wordt gedownload.
-
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documentatie.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 ### <a name="upload-a-file"></a>Bestand uploaden
 
@@ -122,7 +125,6 @@ In dit voor beeld stuurt AzCopy de map `C:\myDirectory\photos` en het bestand `C
 
 U kunt ook bestanden uitsluiten met behulp van de optie `--exclude-path`. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-
 #### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
 Gebruik de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht met de optie `--include-pattern`. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met behulp van een semicolin (`;`). 
@@ -153,6 +155,9 @@ Deze sectie bevat de volgende voor beelden:
 > Als de waarde van de eigenschap `Content-md5` van een BLOB een hash bevat, wordt in AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap `Content-md5` van de BLOB overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load tenzij u dit gedrag overschrijft door `--check-md5=NoCheck` of `--check-md5=LogOnly` toe te voegen aan de Kopieer opdracht.
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documentatie.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 ### <a name="download-a-file"></a>Bestand downloaden
 
@@ -242,6 +247,9 @@ Deze sectie bevat de volgende voor beelden:
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documentatie.
 
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>Een BLOB kopiëren naar een ander opslag account
 
 |    |     |
@@ -285,6 +293,9 @@ Als u de vlag `--delete-destination` instelt op `true` AzCopy, worden bestanden 
 > Als u onbedoeld verwijderen wilt voor komen, moet u ervoor zorgen dat u de functie voor [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) inschakelt voordat u de vlag `--delete-destination=prompt|true` gebruikt.
 
 Zie [azcopy Sync](storage-ref-azcopy-sync.md)(Engelstalig) voor gedetailleerde naslag documentatie.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Een container met wijzigingen in een lokaal bestands systeem bijwerken
 

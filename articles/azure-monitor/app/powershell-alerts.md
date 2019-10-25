@@ -1,45 +1,40 @@
 ---
-title: Powershell gebruiken voor het instellen van waarschuwingen in Application Insights | Microsoft Docs
-description: Configuratie van Application Insights om op te halen e-mailberichten over metrische wijzigingen automatiseren.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Power shell gebruiken om waarschuwingen in te stellen in Application Insights | Microsoft Docs
+description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/31/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/31/2016
+ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130980"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819087"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U kunt de configuratie van automatiseren [waarschuwingen](../../azure-monitor/app/alerts.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md).
+U kunt de configuratie van [waarschuwingen](../../azure-monitor/app/alerts.md) in [Application Insights](../../azure-monitor/app/app-insights-overview.md)automatiseren.
 
-Bovendien kunt u [webhooks voor het automatiseren van reacties op een waarschuwing instellen](../../azure-monitor/platform/alerts-webhooks.md).
+Daarnaast kunt u [webhooks instellen om uw reactie op een waarschuwing te automatiseren](../../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
-> Als u maken van resources en waarschuwingen op hetzelfde moment wilt, kunt u overwegen [met een Azure Resource Manager-sjabloon](powershell.md).
+> Als u op hetzelfde moment resources en waarschuwingen wilt maken, kunt u overwegen [een Azure Resource Manager sjabloon te gebruiken](powershell.md).
 
 ## <a name="one-time-setup"></a>Eenmalige installatie
-Als u PowerShell met uw Azure-abonnement voordat u dit nog niet hebt gebruikt:
+Als u Power shell nog niet eerder hebt gebruikt met uw Azure-abonnement:
 
-Installeer de Azure Powershell-module op de computer waar u de scripts uit te voeren.
+Installeer de Azure Power shell-module op de computer waarop u de scripts wilt uitvoeren.
 
-* Installeer [Microsoft Web Platform Installer (versie 5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
-* Gebruik het Microsoft Azure Powershell installeren
+* Installeer het [installatie programma voor het micro soft-webplatform (V5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
+* Gebruiken om Microsoft Azure Power shell te installeren
 
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
-Open Azure PowerShell en [verbinding maken met uw abonnement](/powershell/azure/overview):
+Start Azure PowerShell en [Maak verbinding met uw abonnement](/powershell/azure/overview):
 
 ```powershell
 
@@ -47,7 +42,7 @@ Open Azure PowerShell en [verbinding maken met uw abonnement](/powershell/azure/
 ```
 
 
-## <a name="get-alerts"></a>Waarschuwingen ontvangen
+## <a name="get-alerts"></a>Waarschuwingen ophalen
     Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>Waarschuwing toevoegen
@@ -65,10 +60,10 @@ Open Azure PowerShell en [verbinding maken met uw abonnement](/powershell/azure/
 
 
 
-## <a name="example-1"></a>Voorbeeld 1
-Stuur mij een e-mail als reactie op HTTP-aanvragen, meer dan 5 minuten, gemiddelde van de server langzamer dan 1 seconde is. Mijn Application Insights-resource IceCreamWebApp wordt genoemd, en het is in de resourcegroep Fabrikam. Ik ben de eigenaar van het Azure-abonnement.
+## <a name="example-1"></a>Voor beeld 1
+Stuur mij een e-mail als het antwoord van de server op HTTP-aanvragen, gemiddeld meer dan vijf minuten, lager is dan 1 seconde. Mijn Application Insights resource wordt IceCreamWebApp genoemd en bevindt zich in de resource groep fabrikam. Ik ben de eigenaar van het Azure-abonnement.
 
-De GUID is de abonnements-ID (niet de instrumentatiesleutel van de toepassing).
+De GUID is de abonnements-ID (niet de instrumentatie sleutel van de toepassing).
 
     Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -81,8 +76,8 @@ De GUID is de abonnements-ID (niet de instrumentatiesleutel van de toepassing).
      -SendEmailToServiceOwners `
      -Location "East US" -RuleType Metric
 
-## <a name="example-2"></a>Voorbeeld 2
-Ik heb een toepassing die ik gebruik [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) voor het rapporteren van een metrische waarde met de naam "salesPerHour." Stuur dat een e-mail naar Mijn collega's als "salesPerHour" lager dan 100 komt, gemiddelde meer dan 24 uur.
+## <a name="example-2"></a>Voor beeld 2
+Ik heb een toepassing waarin ik [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) gebruik om een metrische waarde met de naam ' salesPerHour ' te rapporteren. Een e-mail verzenden naar mijn collega's als "salesPerHour" onder 100 daalt, gemiddeld meer dan 24 uur.
 
     Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -95,48 +90,48 @@ Ik heb een toepassing die ik gebruik [TrackMetric()](../../azure-monitor/app/api
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Dezelfde regel kan worden gebruikt voor de metrische gegevens gerapporteerd met behulp van de [meting parameter](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere bijhouden aanroep zoals TrackEvent of trackPageView.
+Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
 
 ## <a name="metric-names"></a>Metrische namen
-| Naam van de meetwaarde | De schermnaam van het | Description |
+| Metrische naam | Scherm naam | Beschrijving |
 | --- | --- | --- |
-| `basicExceptionBrowser.count` |Browseruitzonderingen |Het aantal niet-onderschepte uitzonderingen in de browser. |
-| `basicExceptionServer.count` |Uitzonderingen voor servers |Aantal onverwerkte uitzonderingen in de app. |
-| `clientPerformance.clientProcess.value` |Verwerkingstijd client |Tijd tussen ontvangst van de laatste byte van een document totdat de DOM wordt geladen. Asynchrone aanvragen kunnen nog worden verwerkt. |
-| `clientPerformance.networkConnection.value` |Pagina-netwerkverbindingstijd voor laden |Tijd voor de browser verbinding maken met het netwerk. Kan zijn ingesteld op 0 als in de cache. |
-| `clientPerformance.receiveRequest.value` |Reactietijd voor ontvangen |Tijd tussen de browser aanvraag te verzenden naar het begint met het antwoord kan ontvangen. |
-| `clientPerformance.sendRequest.value` |Verzoektijd voor verzenden |Tijd die door de browser om aanvraag te verzenden. |
-| `clientPerformance.total.value` |Laadtijd van browserpagina |Tijd vanaf gebruikersaanvraag totdat DOM, opmaakmodellen, scripts en installatiekopieën worden geladen. |
-| `performanceCounter.available_bytes.value` |Beschikbaar geheugen |Fysiek geheugen is onmiddellijk beschikbaar voor een proces of voor systeemgebruik. |
-| `performanceCounter.io_data_bytes_per_sec.value` |I/o-snelheid proces |Totaal aantal bytes per seconde gelezen en geschreven naar bestanden, netwerk en apparaten. |
-| `performanceCounter.number_of_exceps_thrown_per_sec.value` |aantal uitzonderingen |Uitzonderingen per seconde. |
-| `performanceCounter.percentage_processor_time.value` |Proces CPU |Het percentage verstreken tijd van alle procesthreads is gebruikt door de processor instructies voor het proces van toepassingen. |
-| `performanceCounter.percentage_processor_total.value` |Tijd van processor |Het percentage tijd dat de processor aan niet-inactieve threads spendeert. |
-| `performanceCounter.process_private_bytes.value` |Proceseigen bytes |Geheugen exclusief toegewezen aan de processen van de bewaakte toepassing. |
-| `performanceCounter.request_execution_time.value` |Uitvoeringstijd voor ASP.NET-aanvraag |Uitvoeringstijd van de meest recente aanvraag. |
-| `performanceCounter.requests_in_application_queue.value` |ASP.NET aanvragen in wachtrij voor uitvoering |De lengte van de wachtrij voor toepassingsaanvragen. |
-| `performanceCounter.requests_per_sec.value` |Snelheid van aanvragen voor ASP.NET |Snelheid van alle aanvragen naar de toepassing per seconde van ASP.NET. |
-| `remoteDependencyFailed.durationMetric.count` |Afhankelijkheidsfouten |Het aantal mislukte aanroepen van de server-toepassing naar externe bronnen. |
-| `request.duration` |Serverreactietijd |Tijd tussen een HTTP-aanvraag ontvangen en verzenden van de reactie is voltooid. |
-| `request.rate` |Snelheid van aanvragen |Snelheid van alle aanvragen naar de toepassing per seconde. |
-| `requestFailed.count` |Mislukte aanvragen |Aantal HTTP-aanvragen dat heeft geresulteerd in een responscode > = 400 |
-| `view.count` |Paginaweergaven |Het aantal aanvragen van clientgebruikers voor webpagina's. Synthetisch verkeer is gefilterd. |
-| {uw eigen aangepaste metrische naam} |{De naam van de meetwaarde} |De waarde van de metrische gegevens die zijn gerapporteerd door [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) of in de [metingen parameter van de aanroep van een tracering](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| `basicExceptionBrowser.count` |Browseruitzonderingen |Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd. |
+| `basicExceptionServer.count` |Server uitzonderingen |Aantal niet-verwerkte uitzonde ringen die door de app worden gegenereerd |
+| `clientPerformance.clientProcess.value` |Verwerkings tijd van client |Tijd tussen het ontvangen van de laatste byte van een document totdat de DOM is geladen. Asynchrone aanvragen kunnen nog steeds worden verwerkt. |
+| `clientPerformance.networkConnection.value` |Netwerk verbindings tijd voor laden van pagina |De tijd die de browser nodig heeft om verbinding te maken met het netwerk. Kan 0 zijn als de cache is opgeslagen. |
+| `clientPerformance.receiveRequest.value` |Reactie tijd van ontvangst |Tijd tussen de verzen ding van de browser om te beginnen met het ontvangen van het antwoord. |
+| `clientPerformance.sendRequest.value` |Aanvraag tijd verzenden |De tijd die nodig is voor het verzenden van een aanvraag door de browser. |
+| `clientPerformance.total.value` |Laad tijd van browser pagina |Tijd van de gebruikers aanvraag totdat DOM, opmaak modellen, scripts en installatie kopieën worden geladen. |
+| `performanceCounter.available_bytes.value` |Beschikbaar geheugen |Fysiek geheugen dat direct beschikbaar is voor een proces of voor systeem gebruik. |
+| `performanceCounter.io_data_bytes_per_sec.value` |I/o-frequentie van processen |Totaal aantal in bestanden, netwerk en apparaten gelezen en geschreven bytes per seconde. |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |Uitzonderings frequentie |Uitzonde ringen die per seconde worden gegenereerd. |
+| `performanceCounter.percentage_processor_time.value` |CPU verwerken |Het percentage verstreken tijd van alle proces threads dat door de processor wordt gebruikt voor het uitvoeren van instructies voor het proces toepassingen. |
+| `performanceCounter.percentage_processor_total.value` |Processor tijd |Het percentage tijd dat de processor spendeert aan niet-inactieve threads. |
+| `performanceCounter.process_private_bytes.value` |Privé-bytes verwerken |Geheugen dat exclusief wordt toegewezen aan de processen van de bewaakte toepassing. |
+| `performanceCounter.request_execution_time.value` |Uitvoerings tijd van de ASP.NET-aanvraag |Uitvoerings tijd van de meest recente aanvraag. |
+| `performanceCounter.requests_in_application_queue.value` |ASP.NET aanvragen in uitvoerings wachtrij |Lengte van de wachtrij voor toepassings aanvragen. |
+| `performanceCounter.requests_per_sec.value` |Frequentie van ASP.NET-aanvragen |Het aantal aanvragen voor de toepassing per seconde van ASP.NET. |
+| `remoteDependencyFailed.durationMetric.count` |Afhankelijkheids fouten |Aantal mislukte aanroepen van de server toepassing naar externe bronnen. |
+| `request.duration` |Server reactietijd |Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord. |
+| `request.rate` |Aanvraag frequentie |Het aantal aanvragen per seconde voor de toepassing. |
+| `requestFailed.count` |Mislukte aanvragen |Aantal HTTP-aanvragen dat heeft geresulteerd in een reactie code > = 400 |
+| `view.count` |Pagina weergaven |Aantal client gebruikers aanvragen voor een webpagina. Synthetisch verkeer wordt gefilterd. |
+| {uw aangepaste metrische naam} |{Uw metrische naam} |Uw metrische waarde die wordt gerapporteerd door [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) of in de [meet parameter van een tracerings aanroep](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
-De metrische gegevens worden verzonden door de verschillende telemetrie-modules:
+De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 
-| Metrische groep | Collector-module |
+| Metrische groep | Verzamel module |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>weergeven |[Browser JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[Prestaties](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>weergeven |[Browser-Java script](../../azure-monitor/app/javascript.md) |
+| Performance Counter |[Prestaties](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Afhankelijkheid](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| -aanvraag<br/>requestFailed |[Serveraanvraag](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| schot<br/>requestFailed |[Server aanvraag](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooks
-U kunt [automatiseren van reacties op een waarschuwing](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze wanneer een waarschuwing wordt gegenereerd.
+U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
 ## <a name="see-also"></a>Zie ook
 * [Script voor het configureren van Application Insights](powershell-script-create-resource.md)
-* [Application Insights en test bronnen op het web maken met sjablonen](powershell.md)
-* [Automatiseren met Microsoft Azure Diagnostics naar Application Insights koppelen](powershell-azure-diagnostics.md)
+* [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
+* [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)
 * [Uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md)

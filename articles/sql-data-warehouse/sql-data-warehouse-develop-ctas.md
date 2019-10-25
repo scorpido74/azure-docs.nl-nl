@@ -11,22 +11,22 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 1b4ccd7742f8a84eec2d63a86e1387733d4c1864
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e347287a6d77cdc947a79ca497fdb2ffe83ad1bc
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479685"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882473"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE als SELECT (CTAS) in Azure SQL Data Warehouse
 
 In dit artikel wordt de CREATE TABLE als SELECT (CTAS) T-SQL-instructie in Azure SQL Data Warehouse uitgelegd voor het ontwikkelen van oplossingen. Het artikel bevat ook code voorbeelden.
 
-## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
+## <a name="create-table-as-select"></a>CREATE TABLE ALS SELECTEREN
 
 De instructie [create table as select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) is een van de belangrijkste T-SQL-functies die beschikbaar zijn. CTAS is een parallelle bewerking waarmee een nieuwe tabel wordt gemaakt op basis van de uitvoer van een SELECT-instructie. CTAS is de eenvoudigste en snelste manier om gegevens in een tabel met één opdracht te maken en in te voegen.
 
-## <a name="selectinto-vs-ctas"></a>SELECTEREN... IN VS. CTAS
+## <a name="selectinto-vs-ctas"></a>SELECTEREN... INTO versus CTAS
 
 CTAS is een meer aanpas bare versie van de [optie Select... INTO](/sql/t-sql/queries/select-into-clause-transact-sql) -instructie.
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-SELECTEREN... IN kunt u de distributie methode of het index type niet wijzigen als onderdeel van de bewerking. U maakt `[dbo].[FactInternetSales_new]` met behulp van het standaard distributie type van ROUND_ROBIN en de standaard tabel structuur van een geclusterde column store-index.
+SELECTEREN... IN kunt u de distributie methode of het index type niet wijzigen als onderdeel van de bewerking. U maakt `[dbo].[FactInternetSales_new]` met behulp van het standaard distributie type van ROUND_ROBIN en de standaard tabel structuur van een geclusterde column Store-INDEX.
 
 Met CTAS kunt u daarentegen zowel de distributie van de tabel gegevens als het tabel structuur type opgeven. Het vorige voor beeld converteren naar CTAS:
 
@@ -46,13 +46,12 @@ Met CTAS kunt u daarentegen zowel de distributie van de tabel gegevens als het t
 CREATE TABLE [dbo].[FactInternetSales_new]
 WITH
 (
-    DISTRIBUTION = ROUND_ROBIN
-   ,CLUSTERED COLUMNSTORE INDEX
+ DISTRIBUTION = ROUND_ROBIN
+ ,CLUSTERED COLUMNSTORE INDEX
 )
 AS
 SELECT  *
-FROM    [dbo].[FactInternetSales]
-;
+FROM    [dbo].[FactInternetSales];
 ```
 
 > [!NOTE]
@@ -62,7 +61,7 @@ FROM    [dbo].[FactInternetSales]
 
 Een van de meest voorkomende toepassingen van CTAS is het maken van een kopie van een tabel, zodat de DDL kan worden gewijzigd. Stel dat u de tabel oorspronkelijk hebt gemaakt als `ROUND_ROBIN`en nu wilt wijzigen in een tabel die wordt gedistribueerd op basis van een kolom. CTAS is hoe u de kolom distributie wijzigt. U kunt CTAS ook gebruiken om partitionering, indexering of kolom typen te wijzigen.
 
-Stel dat u deze tabel hebt gemaakt met behulp van het standaard distributie `ROUND_ROBIN`type van en niet een distributie kolom opgeeft `CREATE TABLE`in de.
+Stel dat u deze tabel hebt gemaakt met behulp van het standaard distributie type van `ROUND_ROBIN`, zonder een distributie kolom op te geven in de `CREATE TABLE`.
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -89,11 +88,10 @@ CREATE TABLE FactInternetSales
     TaxAmt money NOT NULL,
     Freight money NOT NULL,
     CarrierTrackingNumber nvarchar(25),
-    CustomerPONumber nvarchar(25)
-);
+    CustomerPONumber nvarchar(25));
 ```
 
-Nu u een nieuwe kopie van deze tabel wilt maken, met een `Clustered Columnstore Index`, zodat u kunt profiteren van de prestaties van geclusterde column Store-tabellen. U wilt deze tabel ook distribueren op `ProductKey`, omdat u verwacht dat u deelneemt aan deze kolom en u wilt voor komen dat gegevens worden verplaatst tijdens het samen voegen met. `ProductKey` Ten slotte wilt u ook partities toevoegen op `OrderDateKey`, zodat u snel oude gegevens kunt verwijderen door oude partities neer te zetten. Dit is de CTAS-instructie, waarmee u uw oude tabel kopieert naar een nieuwe tabel.
+Nu u een nieuwe kopie van deze tabel wilt maken, met een `Clustered Columnstore Index`, zodat u kunt profiteren van de prestaties van geclusterde column Store-tabellen. U wilt deze tabel ook op `ProductKey`distribueren, omdat u verwacht dat u deelneemt aan deze kolom en wilt voor komen dat gegevens worden verplaatst tijdens het samen voegen van `ProductKey`. Ten slotte wilt u ook partitioneren toevoegen op `OrderDateKey`, zodat u snel oude gegevens kunt verwijderen door oude partities neer te zetten. Dit is de CTAS-instructie, waarmee u uw oude tabel kopieert naar een nieuwe tabel.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -142,15 +140,14 @@ Stel dat u deze tabel moet bijwerken:
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
-(    [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
-,    [CalendarYear]                    SMALLINT        NOT NULL
-,    [TotalSalesAmount]                MONEY            NOT NULL
+( [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
+, [CalendarYear]                    SMALLINT        NOT NULL
+, [TotalSalesAmount]                MONEY            NOT NULL
 )
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-)
-;
+);
 ```
 
 De oorspronkelijke query heeft mogelijk iets als in dit voor beeld bekeken:
@@ -160,9 +157,9 @@ UPDATE    acs
 SET        [TotalSalesAmount] = [fis].[TotalSalesAmount]
 FROM    [dbo].[AnnualCategorySales]     AS acs
 JOIN    (
-        SELECT    [EnglishProductCategoryName]
-        ,        [CalendarYear]
-        ,        SUM([SalesAmount])                AS [TotalSalesAmount]
+        SELECT [EnglishProductCategoryName]
+        , [CalendarYear]
+        , SUM([SalesAmount])                AS [TotalSalesAmount]
         FROM    [dbo].[FactInternetSales]        AS s
         JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
         JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
@@ -174,11 +171,10 @@ JOIN    (
         ,        [CalendarYear]
         ) AS fis
 ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
-AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
-;
+AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse ondersteunt geen ANSI-samen voegingen `FROM` in de component `UPDATE` van een-instructie, zodat u het vorige voor beeld niet kunt gebruiken zonder het te wijzigen.
+SQL Data Warehouse ondersteunt geen ANSI-samen voegingen in de `FROM`-component van een `UPDATE`-instructie, zodat u het vorige voor beeld niet kunt gebruiken zonder het te wijzigen.
 
 U kunt een combi natie van een CTAS en een impliciete koppeling gebruiken om het vorige voor beeld te vervangen:
 
@@ -187,38 +183,34 @@ U kunt een combi natie van een CTAS en een impliciete koppeling gebruiken om het
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)    AS [EnglishProductCategoryName]
-,        ISNULL(CAST([CalendarYear] AS SMALLINT),0)                         AS [CalendarYear]
-,        ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)                        AS [TotalSalesAmount]
+SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0) AS [EnglishProductCategoryName]
+, ISNULL(CAST([CalendarYear] AS SMALLINT),0)  AS [CalendarYear]
+, ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)  AS [TotalSalesAmount]
 FROM    [dbo].[FactInternetSales]        AS s
 JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
 JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
 JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
 JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
 WHERE     [CalendarYear] = 2004
-GROUP BY
-        [EnglishProductCategoryName]
-,        [CalendarYear]
-;
+GROUP BY [EnglishProductCategoryName]
+, [CalendarYear];
 
 -- Use an implicit join to perform the update
 UPDATE  AnnualCategorySales
 SET     AnnualCategorySales.TotalSalesAmount = CTAS_ACS.TotalSalesAmount
 FROM    CTAS_acs
 WHERE   CTAS_acs.[EnglishProductCategoryName] = AnnualCategorySales.[EnglishProductCategoryName]
-AND     CTAS_acs.[CalendarYear]               = AnnualCategorySales.[CalendarYear]
-;
+AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 
 --Drop the interim table
-DROP TABLE CTAS_acs
-;
+DROP TABLE CTAS_acs;
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Vervanging van ANSI-lidmaatschap voor Delete-instructies
 
-Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS `DELETE` , met name voor instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt omdat SQL Data Warehouse geen ondersteuning biedt voor ANSI-samen `FROM` voegingen in `DELETE` de component van een-instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
+Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS, met name voor `DELETE`-instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt omdat SQL Data Warehouse geen ondersteuning biedt voor ANSI-samen voegingen in de `FROM`-component van een `DELETE`-instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
 
-Hier volgt een voor beeld van een geconverteerde `DELETE` instructie:
+Hier volgt een voor beeld van een geconverteerde `DELETE`-instructie:
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -227,23 +219,22 @@ WITH
 ,   CLUSTERED INDEX (ProductKey)
 )
 AS -- Select Data you want to keep
-SELECT     p.ProductKey
-,          p.EnglishProductName
-,          p.Color
-FROM       dbo.DimProduct p
+SELECT p.ProductKey
+, p.EnglishProductName
+,  p.Color
+FROM  dbo.DimProduct p
 RIGHT JOIN dbo.stg_DimProduct s
-ON         p.ProductKey = s.ProductKey
-;
+ON p.ProductKey = s.ProductKey;
 
-RENAME OBJECT dbo.DimProduct        TO DimProduct_old;
+RENAME OBJECT dbo.DimProduct TO DimProduct_old;
 RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Instructies voor samen voegen vervangen
 
-U kunt merge-instructies, ten minste een deel, vervangen door CTAS te gebruiken. U kunt de `INSERT` en de `UPDATE` in één instructie combi neren. Alle verwijderde records moeten worden beperkt van de `SELECT` instructie om de resultaten weg te laten.
+U kunt merge-instructies, ten minste een deel, vervangen door CTAS te gebruiken. U kunt de `INSERT` en de `UPDATE` combi neren in één instructie. Verwijderde records moeten worden beperkt van de `SELECT`-instructie om de resultaten weg te laten.
 
-Het volgende voor beeld is voor `UPSERT`een:
+Het volgende voor beeld is voor een `UPSERT`:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -253,22 +244,21 @@ WITH
 )
 AS
 -- New rows and new versions of rows
-SELECT      s.[ProductKey]
-,           s.[EnglishProductName]
-,           s.[Color]
+SELECT s.[ProductKey]
+, s.[EnglishProductName]
+, s.[Color]
 FROM      dbo.[stg_DimProduct] AS s
 UNION ALL  
 -- Keep rows that are not being touched
 SELECT      p.[ProductKey]
-,           p.[EnglishProductName]
-,           p.[Color]
+, p.[EnglishProductName]
+, p.[Color]
 FROM      dbo.[DimProduct] AS p
 WHERE NOT EXISTS
 (   SELECT  *
     FROM    [dbo].[stg_DimProduct] s
     WHERE   s.[ProductKey] = p.[ProductKey]
-)
-;
+);
 
 RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
 RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
@@ -288,8 +278,7 @@ CREATE TABLE result
 WITH (DISTRIBUTION = ROUND_ROBIN)
 
 INSERT INTO result
-SELECT @d*@f
-;
+SELECT @d*@f;
 ```
 
 U kunt denken dat u deze code moet migreren naar CTAS en dat u de juiste. Er is echter een verborgen probleem.
@@ -298,14 +287,12 @@ De volgende code levert niet hetzelfde resultaat op:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
-;
+, @f float(24)    = 85.455;
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT @d*@f as result
-;
+SELECT @d*@f as result;
 ```
 
 U ziet dat de kolom ' result ' het gegevens type en de waarden voor nulwaarden van de expressie doorstuurt. Het gegevens type voorwaarts kan leiden tot subtiele afwijkingen in waarden als u niet voorzichtig bent.
@@ -314,12 +301,10 @@ Probeer dit voor beeld:
 
 ```sql
 SELECT result,result*@d
-from result
-;
+from result;
 
 SELECT result,result*@d
-from ctas_r
-;
+from ctas_r;
 ```
 
 De opgeslagen waarde voor resultaat wijkt af van. Als de persistente waarde in de kolom resultaat wordt gebruikt in andere expressies, wordt de fout nog steeds belang rijker.
@@ -337,7 +322,7 @@ In het volgende voor beeld ziet u hoe u de code kunt herstellen:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
-,       @f float(24)    = 85.455
+, @f float(24)    = 85.455
 
 CREATE TABLE ctas_r
 WITH (DISTRIBUTION = ROUND_ROBIN)
@@ -361,11 +346,11 @@ Het waarborgen van de integriteit van uw berekeningen is ook belang rijk voor he
 CREATE TABLE [dbo].[Sales]
 (
     [date]      INT     NOT NULL
-,   [product]   INT     NOT NULL
-,   [store]     INT     NOT NULL
-,   [quantity]  INT     NOT NULL
-,   [price]     MONEY   NOT NULL
-,   [amount]    MONEY   NOT NULL
+, [product]   INT     NOT NULL
+, [store]     INT     NOT NULL
+, [quantity]  INT     NOT NULL
+, [price]     MONEY   NOT NULL
+, [amount]    MONEY   NOT NULL
 )
 WITH
 (   DISTRIBUTION = HASH([product])
@@ -374,8 +359,7 @@ WITH
                     ,20030101,20040101,20050101
                     )
                 )
-)
-;
+);
 ```
 
 Het veld amount is echter een berekende expressie. Het maakt geen deel uit van de bron gegevens.
@@ -385,8 +369,8 @@ Als u de gepartitioneerde gegevensset wilt maken, kunt u de volgende code gebrui
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
@@ -400,29 +384,28 @@ SELECT
 ,   [price]
 ,   [quantity]*[price]  AS [amount]
 FROM [stg].[source]
-OPTION (LABEL = 'CTAS : Partition IN table : Create')
-;
+OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-De query zou perfect goed worden uitgevoerd. Het probleem treedt op wanneer u de partitie-switch probeert uit te voeren. De tabel definities komen niet overeen. Om ervoor te zorgen dat de tabel definities overeenkomen, wijzigt u `ISNULL` de CTAS om een functie toe te voegen om het kenmerk null-waarde van de kolom te behouden.
+De query zou perfect goed worden uitgevoerd. Het probleem treedt op wanneer u de partitie-switch probeert uit te voeren. De tabel definities komen niet overeen. Om ervoor te zorgen dat de tabel definities overeenkomen, wijzigt u de CTAS om een `ISNULL` functie toe te voegen om het kenmerk null-waarde van de kolom te behouden.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
 WITH
-(   DISTRIBUTION = HASH([product])
-,   PARTITION   (   [date] RANGE RIGHT FOR VALUES
+( DISTRIBUTION = HASH([product])
+, PARTITION   (   [date] RANGE RIGHT FOR VALUES
                     (20000101,20010101
                     )
                 )
 )
 AS
 SELECT
-    [date]
-,   [product]
-,   [store]
-,   [quantity]
-,   [price]   
-,   ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
+  [date]
+, [product]
+, [store]
+, [quantity]
+, [price]   
+, ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
 FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```

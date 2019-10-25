@@ -1,61 +1,57 @@
 ---
-title: Prestaties en belasting testen met Azure Application Insights | Microsoft Docs
-description: Instellen van prestaties en load tests met Azure Application Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Prestaties en belasting testen met Azure-toepassing Insights | Microsoft Docs
+description: Prestatie-en belasting tests instellen met Azure-toepassing Insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 55d743e32f6db0828317d3764a97bcb35b104dad
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9c86b69239bed1a15c754ce28232b97e8439942b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819102"
 ---
 # <a name="performance-testing"></a>Prestaties testen
 
 > [!NOTE]
-> De service voor belastingtests cloud-gebaseerde is afgeschaft. Meer informatie over de afschaffing, de beschikbaarheid van services en andere services kan worden gevonden [hier](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
+> De Cloud service voor belasting tests is afgeschaft. Meer informatie over de afschaffing, de beschik baarheid van de service en alternatieve Services vindt u [hier](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
 
-Application Insights kunt u voor het genereren van belastingstests voor uw websites. Zoals [beschikbaarheidstests](monitor-web-app-availability.md), kunt u een eenvoudige aanvragen verzenden of [meervoudige aanvragen](availability-multistep.md) van Azure WebTest-agents over de hele wereld. Prestatietests kunnen u maximaal 20.000 gelijktijdige gebruikers te simuleren voor tot 60 minuten.
+Met Application Insights kunt u belasting tests voor uw websites genereren. Net als bij [beschikbaarheids tests](monitor-web-app-availability.md)kunt u basis aanvragen of [aanvragen voor meerdere stappen](availability-multistep.md) verzenden van Azure test agents over de hele wereld. Met prestatie tests kunt u Maxi maal 20.000 gelijktijdige gebruikers gedurende Maxi maal 60 minuten simuleren.
 
 ## <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
-Als u wilt maken van een prestatietest, moet u eerst een Application Insights-resource maken. Een resource verder met de volgende sectie als u al hebt gemaakt.
+Als u een prestatie test wilt maken, moet u eerst een Application Insights resource maken. Als u al een resource hebt gemaakt, gaat u door naar de volgende sectie.
 
-Selecteer in de Azure-portal **een resource maken** > **hulpprogramma's voor ontwikkelaars** > **Application Insights** en maak een Application Insights de bron.
+Selecteer in de Azure Portal **een resource maken** > **Ontwikkelhulpprogramma's** > **Application Insights** en maak een Application Insights resource.
 
-## <a name="configure-performance-testing"></a>Prestatietesten configureren
+## <a name="configure-performance-testing"></a>Prestatie testen configureren
 
-Als dit is de eerste keer is het maken van prestaties testen Selecteer **organisatie ingesteld** en kiest u een Azure DevOps-organisatie moet de bron voor uw prestaties te testen.
+Als dit de eerste keer is dat u de prestatie test maakt, selecteert u **organisatie instellen** en kiest u een Azure DevOps-organisatie als bron voor uw prestatie testen.
 
-Onder **configureren**, gaat u naar **prestatietests** en klikt u op **nieuw** te maken van een test.
+Ga onder **configureren**naar **prestatie testen** en klik op **Nieuw** om een test te maken.
 
 ![Vul in elk geval de URL van uw website in](./media/performance-testing/new-performance-test.png)
 
-Voor het maken van een eenvoudige prestatietest selecteert u het testtype **handmatig testen** en vul de gewenste instellingen voor de test.
+Als u een basis prestatie test wilt maken, selecteert u een test type **hand matig testen** en vult u de gewenste instellingen voor de test in.
 
-|Instelling| Maximumwaarde
+|Instelling| Maximum waarde
 |----------|------------|
-| Gebruikersbelasting | 20,000 |
+| Gebruikers belasting | 20.000 |
 | Duur (minuten)  | 60 |  
 
 Nadat de test is gemaakt, klikt u op **test uitvoeren**.
 
-Zodra de test voltooid is, ziet u de resultaten die op de onderstaande resultaten lijken:
+Zodra de test is voltooid, worden de resultaten weer gegeven die er ongeveer als volgt uitzien:
 
 ![Testresultaten](./media/performance-testing/test-results.png)
 
-## <a name="configure-visual-studio-web-test"></a>Visual Studio-WebTest configureren
+## <a name="configure-visual-studio-web-test"></a>Visual Studio Web Test configureren
 
-Application Insights testfunctionaliteit geavanceerde prestaties zijn gebaseerd op Visual Studio-prestaties en belasting testen projecten.
+Application Insights geavanceerde functies voor prestatie testen zijn gebouwd op het hoogste niveau van Visual Studio-prestaties en het laden van test projecten.
 
 ![Visual Studio ](./media/performance-testing/visual-studio-test.png)
 

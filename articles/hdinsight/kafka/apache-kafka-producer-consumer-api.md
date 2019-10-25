@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446402"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817795"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka
 
@@ -33,11 +33,11 @@ Meer informatie over de [Producer-API](https://kafka.apache.org/documentation/#p
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Apache Kafka in HDInsight 3.6. Zie voor meer informatie over het maken van een Kafka op HDInsight-cluster, [beginnen met Apache Kafka in HDInsight](apache-kafka-get-started.md).
+* Apache Kafka op HDInsight 3,6. Zie [beginnen met Apache Kafka op hdinsight](apache-kafka-get-started.md)voor meer informatie over het maken van een Kafka in hdinsight-cluster.
 
-* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks) of een equivalent, zoals OpenJDK.
+* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks) of een equivalent, zoals openjdk.
 
-* [Apache Maven](https://maven.apache.org/download.cgi) goed [geïnstalleerd](https://maven.apache.org/install.html) op basis van Apache.  Maven is een project maken voor Java-projecten.
+* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -45,10 +45,10 @@ Meer informatie over de [Producer-API](https://kafka.apache.org/documentation/#p
 
 De voorbeeldtoepassing bevindt zich op [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started), in de submap `Producer-Consumer`. De toepassing bestaat hoofdzakelijk uit vier bestanden:
 
-* `pom.xml`: met dit bestand worden de projectafhankelijkheden, de Java-versie en de pakketmethoden gedefinieerd.
-* `Producer.java`: met dit bestand worden willekeurige zinnen naar Kafka verzonden met behulp van de Producer-API.
+* `pom.xml`: dit bestand definieert de projectafhankelijkheden, de Java-versie en de pakketmethoden.
+* `Producer.java`: dit bestand verstuurt willekeurige zinnen naar Kafka met behulp van de Producer-API.
 * `Consumer.java`: dit bestand gebruikt de Consumer-API om gegevens te lezen uit Kafka en deze te verzenden naar STDOUT.
-* `Run.java`: de opdrachtregelinterface die wordt gebruikt voor het uitvoeren van de Producer- en Consumer-code.
+* `Run.java`: de opdrachtregelinterface ie wordt gebruikt voor het uitvoeren van de Producer- en Consumer-code.
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -59,22 +59,22 @@ Belangrijke aandachtspunten voor het bestand `pom.xml`:
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
     De vermelding `${kafka.version}` wordt gedeclareerd in de sectie `<properties>..</properties>` van `pom.xml`, en wordt geconfigureerd voor de Kafka-versie van het HDInsight-cluster.
 
-* Invoegtoepassingen: de Maven-invoegtoepassingen bieden diverse mogelijkheden. In dit project worden de volgende plugins of invoegtoepassingen gebruikt:
+* Plugins: de Maven-plugins bieden diverse mogelijkheden. In dit project worden de volgende plugins of invoegtoepassingen gebruikt:
 
     * `maven-compiler-plugin`: wordt gebruikt om de Java-versie die wordt gebruikt door het project in te stellen op 8. Dit is de versie van Java die door HDInsight 3.6 wordt gebruikt.
     * `maven-shade-plugin`: wordt gebruikt voor het genereren van een uber jar die deze toepassing bevat, evenals eventuele afhankelijkheden. Dit bestand wordt ook gebruikt om het toegangspunt van de toepassing in te stellen, zodat u het Jar-bestand rechtstreeks kunt uitvoeren, dus zonder de hoofdklasse op te geven.
 
 ### <a name="producerjava"></a>Producer.java
 
-De producer communiceert met de Kafka-brokerhosts (werkknooppunten) en verzendt gegevens naar een Kafka-onderwerp. Het volgende codefragment is afkomstig uit de [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) -bestand uit de [GitHub-opslagplaats](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) en laat zien hoe de producent-eigenschappen in te stellen:
+De producer communiceert met de Kafka-brokerhosts (werkknooppunten) en verzendt gegevens naar een Kafka-onderwerp. Het volgende code fragment is afkomstig uit het bestand [producer. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) uit de [github-opslag plaats](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) en laat zien hoe u de eigenschappen van de producer kunt instellen:
 
 ```java
 Properties properties = new Properties();
@@ -112,13 +112,13 @@ In deze code is de Consumer-API geconfigureerd voor het lezen vanaf het begin va
 
 ### <a name="runjava"></a>Run.java
 
-De [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) bestand biedt een opdrachtregelinterface die wordt uitgevoerd op de producent of de consument code. U moet de gegevens van de Kafka-brokerhost opgeven als een parameter. U kunt eventueel een groep-ID-waarde, die wordt gebruikt door het consumerproces opnemen. Als u meerdere consumentexemplaren met behulp van dezelfde groep-ID maakt, worden ze lezen van het onderwerp Verdeel de belasting.
+Het [Run. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) -bestand biedt een opdracht regel interface die de producent-of Consumer code uitvoert. U moet de gegevens van de Kafka-brokerhost opgeven als een parameter. U kunt eventueel een groeps-ID-waarde toevoegen die door het Consumer proces wordt gebruikt. Als u meerdere consumenten instanties maakt met behulp van dezelfde groeps-ID, wordt er taak verdeling in het onderwerp.
 
 ## <a name="build-and-deploy-the-example"></a>Het voorbeeld compileren en implementeren
 
-1. Downloaden en uitpakken van de voorbeelden van [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Down load en pak de voor beelden uit [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Instellen van uw huidige map naar de locatie van de `hdinsight-kafka-java-get-started\Producer-Consumer` directory en gebruik de volgende opdracht uit:
+2. Stel de huidige map in op de locatie van de `hdinsight-kafka-java-get-started\Producer-Consumer` map en gebruik de volgende opdracht:
 
     ```cmd
     mvn clean package
@@ -126,7 +126,7 @@ De [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/
 
     Met deze opdracht maakt u een directory met de naam `target`, die een bestand met de naam `kafka-producer-consumer-1.0-SNAPSHOT.jar` bevat.
 
-3. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Voer de volgende opdracht om te kopiëren de `kafka-producer-consumer-1.0-SNAPSHOT.jar` bestand met uw HDInsight-cluster. Voer het wachtwoord van de SSH-gebruiker in wanneer hierom wordt gevraagd.
+3. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Voer de volgende opdracht in om het `kafka-producer-consumer-1.0-SNAPSHOT.jar` bestand naar uw HDInsight-cluster te kopiëren. Voer het wachtwoord van de SSH-gebruiker in wanneer hierom wordt gevraagd.
 
     ```cmd
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
@@ -134,53 +134,54 @@ De [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/
 
 ## <a id="run"></a>Het voorbeeld uitvoeren
 
-1. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Open een SSH-verbinding met het cluster, met de volgende opdracht. Voer het wachtwoord voor het SSH-gebruikersaccount in wanneer hierom wordt gevraagd.
+1. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Open een SSH-verbinding met het cluster door de volgende opdracht in te voeren. Voer het wachtwoord voor het SSH-gebruikersaccount in wanneer hierom wordt gevraagd.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Installeer [jq](https://stedolan.github.io/jq/), een opdrachtregelprogramma JSON-processor. Van de SSH-verbinding openen, voert u de volgende opdracht uit om te installeren `jq`:
+1. Installeer [JQ](https://stedolan.github.io/jq/), een JSON-processor op de opdracht regel. Voer in de open SSH-verbinding de volgende opdracht in om `jq`te installeren:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Omgevingsvariabelen instellen. Vervang `PASSWORD` en `CLUSTERNAME` naam respectievelijk met het wachtwoord voor clusteraanmelding en cluster, voert u de opdracht:
+1. Wachtwoord variabele instellen. Vervang `PASSWORD` door het wacht woord voor cluster aanmelding en voer vervolgens de opdracht in:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. De naam van cluster extract correct-indeling. De werkelijke behuizing van de naam van het cluster is mogelijk anders dan u verwacht, afhankelijk van hoe het cluster is gemaakt. Met deze opdracht wordt het werkelijke hoofdlettergebruik verkrijgen, opslaan in een variabele en vervolgens de naam van de juiste omhuld en de naam die u eerder hebt opgegeven, worden weergegeven. Voer de volgende opdracht in:
+1. Haal de juiste cluster naam op. De daad werkelijke behuizing van de cluster naam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt. Met deze opdracht wordt de daad werkelijke behuizing opgehaald en opgeslagen in een variabele. Voer de volgende opdracht in:
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > Als u dit proces van buiten het cluster uitvoert, is er een andere procedure voor het opslaan van de cluster naam. Haal de cluster naam op in kleine letters van de Azure Portal. Vervang vervolgens de cluster naam voor `<clustername>` in de volgende opdracht en voer deze uit: `export clusterName='<clustername>'`.  
 
-5. Als u de Kafka-broker-hosts en de Apache Zookeeper-hosts, gebruikt u de volgende opdracht uit:
+1. Gebruik de volgende opdracht om de Kafka Broker-hosts op te halen:
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-6. Kafka-onderwerp maken `myTest`, met de volgende opdracht:
+    > [!Note]  
+    > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari.
+
+1. Maak het onderwerp Kafka, `myTest`door de volgende opdracht in te voeren:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
     ```
 
-7. Gebruik de volgende opdracht om de Producer-API uit te voeren en gegevens te schrijven naar het onderwerp:
+1. Gebruik de volgende opdracht om de Producer-API uit te voeren en gegevens te schrijven naar het onderwerp:
 
     ```bash
     java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
     ```
 
-8. Als dit proces is voltooid, gebruikt u de volgende opdracht om gegevens uit het onderwerp te lezen:
+1. Als dit proces is voltooid, gebruikt u de volgende opdracht om gegevens uit het onderwerp te lezen:
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
@@ -188,7 +189,7 @@ De [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/
 
     De gelezen records worden weergegeven, samen met een telling van de records.
 
-9. Gebruik __Ctrl + C__ om de consument af te sluiten.
+1. Gebruik __Ctrl + C__ om de consument af te sluiten.
 
 ### <a name="multiple-consumers"></a>Meerdere consumenten
 
@@ -210,14 +211,14 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Deze opdracht gebruikt `tmux` om de terminal op te splitsen in twee kolommen. In elke kolom wordt een Consumer gestart, met dezelfde waarde voor de groeps-id. Als de Consumers klaar zijn met lezen, ziet u dat ieder Consumer slechts een deel van de records heeft gelezen. Gebruik __Ctrl + C__ twee keer om af te sluiten `tmux`.
+Deze opdracht gebruikt `tmux` om de terminal op te splitsen in twee kolommen. In elke kolom wordt een Consumer gestart, met dezelfde waarde voor de groeps-id. Als de Consumers klaar zijn met lezen, ziet u dat ieder Consumer slechts een deel van de records heeft gelezen. Gebruik __CTRL + C__ twee keer om `tmux`af te sluiten.
 
 Gebruik door clients binnen dezelfde groep wordt verwerkt door de partities voor het onderwerp. Het eerder gemaakte onderwerp `test` uit dit codevoorbeeld heeft acht partities. Als u acht Consumers start, leest elke Consumer records uit één partitie van het onderwerp.
 
 > [!IMPORTANT]  
 > Een consumentengroep kan niet meer consumentexemplaren dan partities bevatten. In dit voorbeeld kan één consumentengroep maximaal acht consumenten bevatten, omdat het onderwerp dit aantal partities heeft. U kunt ook meerdere consumentengroepen hebben, waarvan elke groep niet meer dan acht consumenten bevat.
 
-Records worden in Kafka opgeslagen in de volgorde waarin deze worden ontvangen binnen een partitie. Als u records *binnen een partitie* op volgorde wilt leveren, maakt u een consumentengroep waarvan het aantal consumentexemplaren gelijk is aan het aantal partities. Als u records *binnen het onderwerp* op volgorde wilt leveren, maakt u een consumentengroep met slechts één consumentexemplaar.
+Records die zijn opgeslagen in Kafka, worden opgeslagen in de volg orde waarin ze worden ontvangen in een partitie. Als u records *binnen een partitie* op volgorde wilt leveren, maakt u een consumentengroep waarvan het aantal consumentexemplaren gelijk is aan het aantal partities. Als u records *binnen het onderwerp* op volgorde wilt leveren, maakt u een consumentengroep met slechts één consumentexemplaar.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,23 +1,18 @@
 ---
 title: Problemen met Application Insights in een Java-webproject oplossen
 description: 'Probleemoplossings handleiding: Live java-apps bewaken met Application Insights.'
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 03/14/2019
+ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742184"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820798"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
@@ -25,17 +20,17 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 ## <a name="build-errors"></a>Build-fouten
 **Bij een eclips-of IntelliJ-idee wordt bij het toevoegen van de Application Insights SDK via maven of Gradle de validatie fouten build of checksum weer geven.**
 
-* Als het afhankelijkheids `<version>` element een patroon met Joker tekens gebruikt (bijvoorbeeld Maven of (Gradle) `version:'2.0.+'`), probeer in plaats daarvan `2.0.1`een specifieke versie op te geven. `<version>[2.0,)</version>` Zie de [release opmerkingen](https://github.com/Microsoft/ApplicationInsights-Java/releases) voor de meest recente versie.
+* Als het afhankelijkheids `<version>` element gebruikmaakt van een patroon met Joker tekens (bijvoorbeeld (Maven) `<version>[2.0,)</version>` of (Gradle) `version:'2.0.+'`), kunt u een specifieke versie opgeven in plaats van `2.0.1`. Zie de [release opmerkingen](https://github.com/Microsoft/ApplicationInsights-Java/releases) voor de meest recente versie.
 
 ## <a name="no-data"></a>Geen gegevens
 **Ik heb Application Insights toegevoegd en mijn app uitgevoerd, maar ik heb nooit gegevens in de portal gezien.**
 
 * Wacht een minuut en klik op vernieuwen. De grafieken worden regel matig vernieuwd, maar u kunt ook hand matig vernieuwen. Het Vernieuwings interval is afhankelijk van het tijds bereik van de grafiek.
 * Controleer of u een instrumentatie sleutel hebt gedefinieerd in het bestand ApplicationInsights. XML (in de map resources in uw project) of is geconfigureerd als omgevings variabele.
-* Controleer of er zich geen `<DisableTelemetry>true</DisableTelemetry>` knoop punt in het XML-bestand bevindt.
+* Controleer of er geen `<DisableTelemetry>true</DisableTelemetry>` knoop punt in het XML-bestand staat.
 * In uw firewall moet u mogelijk TCP-poorten 80 en 443 voor uitgaand verkeer naar dc.services.visualstudio.com openen. Bekijk de [volledige lijst met Firewall uitzonderingen](../../azure-monitor/app/ip-addresses.md)
 * Ga in het Microsoft Azure start bord naar de kaart status van de service. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
-* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een `<SDKLogger />` element toe te voegen onder het hoofd knooppunt in het bestand ApplicationInsights. XML (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: INFO/waarschuwing/fout voor verdachte Logboeken. 
+* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een `<SDKLogger />`-element toe te voegen onder het hoofd knooppunt in het bestand ApplicationInsights. XML (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
 * Controleer of het juiste ApplicationInsights. XML-bestand is geladen door de Java-SDK door te kijken naar de uitvoer berichten van de console voor een configuratie bestand is gevonden.
 * Als het configuratie bestand niet wordt gevonden, controleert u de uitvoer berichten om te zien waar het configuratie bestand wordt doorzocht en zorgt u ervoor dat de ApplicationInsights. XML zich op een van deze zoek locaties bevindt. Als vuist regel kunt u het configuratie bestand in de buurt van de Application Insights SDK-potten plaatsen. Bijvoorbeeld: in Tomcat is dit de map WEB-INF/classes. Tijdens de ontwikkeling kunt u ApplicationInsights. XML in de map resources van uw webproject plaatsen.
 * Raadpleeg ook de [pagina met github-problemen](https://github.com/Microsoft/ApplicationInsights-Java/issues) voor bekende problemen met de SDK.
@@ -80,7 +75,7 @@ In code:
     config.setTrackingIsDisabled(true);
 ```
 
-**of**
+**Of**
 
 Werk ApplicationInsights. XML bij (in de map resources in uw project). Voeg het volgende toe onder het hoofd knooppunt:
 
@@ -103,9 +98,9 @@ Met behulp van de XML-methode moet u de toepassing opnieuw opstarten wanneer u d
 
 **Hoe kan ik zien wat de SDK doet?**
 
-Meer informatie over wat er gebeurt in de API, voegt u toe `<SDKLogger/>` onder het hoofd knooppunt van het configuratie bestand ApplicationInsights. XML.
+Als u meer informatie wilt over wat er gebeurt in de API, voegt u `<SDKLogger/>` toe onder het hoofd knooppunt van het configuratie bestand ApplicationInsights. XML.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
 
 U kunt de logboeken ook een instructie geven om uit te voeren naar een bestand:
 
@@ -119,7 +114,7 @@ U kunt de logboeken ook een instructie geven om uit te voeren naar een bestand:
 
 ### <a name="spring-boot-starter"></a>Spring boot starter
 
-Voeg het volgende toe aan het `application.properties` bestand om de SDK-logboek registratie in te scha kelen met veer boot-apps met behulp van de Application Insights Spring boot Starter:
+Voeg het volgende toe aan het `application.properties`-bestand om de SDK-logboek registratie in te scha kelen met de veer boot-apps met behulp van de Application Insights Spring boot Starter:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -177,16 +172,16 @@ Ja, de server kan via het open bare internet telemetrie verzenden naar de Applic
 
 In uw firewall moet u mogelijk TCP-poorten 80 en 443 openen voor uitgaand verkeer naar dc.services.visualstudio.com en f5.services.visualstudio.com.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevens bewaren
 **Hoe lang worden gegevens in de portal bewaard? Is het veilig?**
 
 Zie [gegevens retentie en privacy][data].
 
 ## <a name="debug-logging"></a>Logboek registratie van fouten
-Application Insights gebruikt `org.apache.http`. Dit wordt verplaatst binnen Application Insights core-potten onder de `com.microsoft.applicationinsights.core.dependencies.http`naam ruimte. Hierdoor kunnen Application Insights scenario's afhandelen waarbij verschillende versies van dezelfde `org.apache.http` versie bestaan in één code basis.
+Application Insights gebruikt `org.apache.http`. Dit wordt verplaatst binnen Application Insights core-potten onder de naam ruimte `com.microsoft.applicationinsights.core.dependencies.http`. Hierdoor kunnen Application Insights scenario's afhandelen waarbij verschillende versies van dezelfde `org.apache.http` bestaan in één code basis.
 
 >[!NOTE]
->Als u logboek registratie van fout opsporing inschakelt voor alle naam ruimten in de app, worden alle modules uitgevoerd, inclusief `org.apache.http` een andere naam. `com.microsoft.applicationinsights.core.dependencies.http` Application Insights kan geen filtering Toep assen op deze aanroepen omdat de logboek aanroep wordt gemaakt door de Apache-bibliotheek. Logboek registratie van fout opsporing produceert een aanzienlijke hoeveelheid logboek gegevens en wordt niet aanbevolen voor live productie-exemplaren.
+>Als u logboek registratie van fout opsporing inschakelt voor alle naam ruimten in de app, worden alle modules uitgevoerd, met inbegrip van `org.apache.http` de naam van `com.microsoft.applicationinsights.core.dependencies.http`. Application Insights kan geen filtering Toep assen op deze aanroepen omdat de logboek aanroep wordt gemaakt door de Apache-bibliotheek. Logboek registratie van fout opsporing produceert een aanzienlijke hoeveelheid logboek gegevens en wordt niet aanbevolen voor live productie-exemplaren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -198,7 +193,7 @@ Application Insights gebruikt `org.apache.http`. Dit wordt verplaatst binnen App
 * [Code schrijven om het gebruik van uw app bij te houden][track]
 * [Diagnostische logboeken vastleggen][javalogs]
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Een probleem in GitHub bestand oplossen](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

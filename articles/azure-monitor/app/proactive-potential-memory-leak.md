@@ -1,38 +1,33 @@
 ---
-title: Slimme detectie - mogelijk geheugenlekkage gedetecteerd door Azure Application Insights | Microsoft Docs
-description: Toepassingen met Azure Application Insights voor mogelijke geheugenlekken controleren.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 'Slimme detectie: er is een mogelijke geheugenlek gedetecteerd door Azure-toepassing Insights | Microsoft Docs'
+description: Bewaak toepassingen met Azure-toepassing inzichten voor mogelijke geheugen lekkages.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/12/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: e430b1e976ac26f7320b28d50dd39923066cfa41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/12/2017
+ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306340"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818805"
 ---
-# <a name="memory-leak-detection-preview"></a>Detectie van geheugen-geheugenlek (preview)
+# <a name="memory-leak-detection-preview"></a>Detectie van geheugenlek (preview-versie)
 
-Application Insights automatisch analyseert het geheugengebruik van elk proces in uw toepassing, en kunt u gewaarschuwd over mogelijke geheugenlekken of de toegenomen geheugengebruik.
+Application Insights analyseert automatisch het geheugen verbruik van elk proces in uw toepassing en kan u waarschuwen over mogelijke geheugen lekken of een groter geheugen gebruik.
 
-Deze functie is vereist geen speciale configuratie dan [configureren van prestatiemeteritems](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) voor uw app. Deze is actief wanneer uw app voldoende geheugen prestaties tellers telemetrie (bijvoorbeeld, privé-Bytes genereert).
+Voor deze functie is geen speciale configuratie vereist, behalve het [configureren van prestatie meter items](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) voor uw app. Het is actief wanneer uw app voldoende geheugen prestatie meter items telemetrie (bijvoorbeeld persoonlijke bytes) genereert.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type melding voor slimme detectie krijgen?
-Een typische melding volgt een consistente toename in het geheugenverbruik gedurende een lange periode, in een of meer processen en/of een of meer machines die deel van uw toepassing uitmaken. Machine learning-algoritmen worden gebruikt voor het detecteren van toegenomen geheugengebruik die overeenkomt met het patroon van een geheugenlek.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
+Een typische melding volgt een consistente toename van het geheugen verbruik gedurende een lange periode, in een of meer processen en/of een of meer machines, die deel uitmaken van uw toepassing. Machine learning-algoritmen worden gebruikt voor het detecteren van een groter geheugen verbruik dat overeenkomt met het patroon van een geheugenlek.
 
-## <a name="does-my-app-really-have-a-problem"></a>Beschikt over mijn app echt een probleem?
-Nee, een melding betekent niet dat uw app beslist een probleem is. Hoewel geheugen geheugenlek patronen duiden meestal op een toepassingsprobleem, deze patronen kunnen zijn voor uw specifieke proces, of een natuurlijke zakelijke reden kunnen zijn, en kunnen worden genegeerd.
+## <a name="does-my-app-really-have-a-problem"></a>Heeft mijn app echt een probleem?
+Nee, een melding betekent niet dat uw app een probleem heeft. Hoewel er in het geval van geheugen lekken meestal een toepassings probleem duiden, kunnen deze patronen typisch zijn voor uw specifieke proces, of kunnen ze natuurlijk zakelijke rechtvaardiging hebben en kunnen ze worden genegeerd.
 
-## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
-De meldingen betreffen: diagnostische gegevens voor de ondersteuning in het analyseproces diagnostische:
-1. **Sorteren.** De melding ziet u de hoeveelheid geheugen (in GB) verhogen en de periode waarin het geheugen is toegenomen. Hiermee kunt u een prioriteit toewijzen aan het probleem.
-2. **De scope.** Het aantal machines werd het patroon van geheugen geheugenlek gehost? Het aantal uitzonderingen zijn geactiveerd tijdens de mogelijk geheugenlekkage? Deze gegevens kan worden opgehaald van de melding.
-3. **Diagnose.** De detectie bevat het patroon geheugen geheugenlek, geheugengebruik van het proces na verloop van tijd weergeven. U kunt ook de verwante items en rapporten koppelen aan de ondersteunende informatie om u te helpen meer vaststellen van het probleem.
+## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
+De meldingen bevatten diagnostische gegevens voor ondersteuning bij het diagnostische analyse proces:
+1. **Sorteren.** In de melding ziet u de hoeveelheid geheugen toename (in GB) en het tijds bereik waarin het geheugen is toegenomen. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Hoeveel computers hebben het geheugen lekkage patroon vertoond? Hoeveel uitzonde ringen zijn er geactiveerd tijdens het mogelijke geheugenlek? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** De detectie bevat het geheugen lekkage patroon, waarbij het geheugen gebruik van het proces gedurende een periode wordt weer gegeven. U kunt ook de koppeling Verwante items en rapporten met ondersteunende informatie gebruiken om u te helpen het probleem verder te onderzoeken.

@@ -1,41 +1,37 @@
 ---
-title: Azure Application Insights-telemetrie in uw Java-web-app filteren | Microsoft Docs
-description: Verminder Telemetrisch verkeer gefilterd op de gebeurtenissen die u niet wilt bewaken.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure-toepassing Insights-telemetrie in uw Java-Web-app filteren | Microsoft Docs
+description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoeft te bewaken, te filteren.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 3/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9cf939b241da01be55c1b2ba5f00a5131ab94c06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 3/14/2019
+ms.openlocfilehash: de2a7c73b87254a6fd2e6c5dc942a9c93d28c2d4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061157"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819356"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>Filteren van telemetrie in uw Java-web-app
+# <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
 
-Filters bieden een manier om te selecteren van de telemetrie die uw [Java-web-app wordt verzonden naar Application Insights](java-get-started.md). Er zijn enkele out-of-the-box-filters die u kunt gebruiken en u kunt ook uw eigen aangepaste filters schrijven.
+Filters bieden een manier om de telemetrie te selecteren die uw [Java-Web-app naar Application Insights verzendt](java-get-started.md). Er zijn een aantal out-of-the-box filters die u kunt gebruiken, en u kunt ook uw eigen aangepaste filters schrijven.
 
-De out-of-the-box-filters zijn onder andere:
+De out-of-the-box filters zijn:
 
-* Ernst traceerniveau
-* Specifieke URL's, trefwoorden of responscodes
-* Snel op netwerkaanvragen - dat wil zeggen, aanvragen waarop uw app heeft gereageerd op snel
-* Namen van de specifieke gebeurtenis
+* Ernst niveau van tracering
+* Specifieke Url's, tref woorden of antwoord codes
+* Snelle reacties-dat wil zeggen, aanvragen waarop uw app snel heeft gereageerd
+* Specifieke gebeurtenis namen
 
 > [!NOTE]
-> Filters scheeftrekken de metrische gegevens van uw app. U kunt bijvoorbeeld besluiten dat een filter te verwijderen van snelle responstijden om te kunnen vaststellen trage reacties, wordt ingesteld. Maar u moet zich op de hoogte dat de gemiddelde reactietijden gerapporteerd door Application Insights vervolgens lager dan de waarde true snelheid zijn en het aantal aanvragen kleiner dan het werkelijke aantal is.
-> Als dit een probleem is, gebruikt u [steekproeven](../../azure-monitor/app/sampling.md) in plaats daarvan.
+> Filters scheefen de metrische gegevens van uw app. U kunt bijvoorbeeld bepalen dat u bij het vaststellen van langzame reacties een filter wilt instellen om snelle reactie tijden te negeren. Maar u moet er rekening mee houden dat de gemiddelde reactie tijd die wordt gerapporteerd door Application Insights lager is dan de werkelijke snelheid en dat het aantal aanvragen kleiner is dan het werkelijke aantal.
+> Als dit een probleem is, gebruikt u in plaats daarvan [steek proeven](../../azure-monitor/app/sampling.md) .
 
 ## <a name="setting-filters"></a>Filters instellen
 
-Voeg ApplicationInsights.xml, een `TelemetryProcessors` sectie zoals in dit voorbeeld:
+Voeg in ApplicationInsights. XML een `TelemetryProcessors` sectie toe, zoals in dit voor beeld:
 
 
 ```XML
@@ -88,11 +84,11 @@ Voeg ApplicationInsights.xml, een `TelemetryProcessors` sectie zoals in dit voor
 
 
 
-[Inspecteer de volledige set van processors die zijn ingebouwd](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Inspecteer de volledige set ingebouwde processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
-## <a name="built-in-filters"></a>Als u ingebouwde filters
+## <a name="built-in-filters"></a>Ingebouwde filters
 
-### <a name="metric-telemetry-filter"></a>Metrische telemetrie filteren
+### <a name="metric-telemetry-filter"></a>Filter metrische telemetrie
 
 ```XML
 
@@ -101,10 +97,10 @@ Voeg ApplicationInsights.xml, een `TelemetryProcessors` sectie zoals in dit voor
            </Processor>
 ```
 
-* `NotNeeded` -Met door komma's gescheiden lijst met namen van aangepaste metrische gegevens.
+* `NotNeeded`-door Komma's gescheiden lijst met aangepaste metrische namen.
 
 
-### <a name="page-view-telemetry-filter"></a>Telemetrie van paginaweergaven filter
+### <a name="page-view-telemetry-filter"></a>Telemetrie-filter pagina weergave
 
 ```XML
 
@@ -115,12 +111,12 @@ Voeg ApplicationInsights.xml, een `TelemetryProcessors` sectie zoals in dit voor
            </Processor>
 ```
 
-* `DurationThresholdInMS` -Duur verwijst naar de tijd die nodig om de pagina te laden. Als deze optie is ingesteld, worden pagina's die sneller dan de opgegeven tijd geladen niet gerapporteerd.
-* `NotNeededNames` -Met door komma's gescheiden lijst met paginanamen.
-* `NotNeededUrls` -Met door komma's gescheiden lijst met URL-fragmenten. Bijvoorbeeld, `"home"` gefilterd op alle pagina's met "home" in de URL.
+* `DurationThresholdInMS`-duur verwijst naar de tijd die nodig is om de pagina te laden. Als deze instelling is ingesteld, worden pagina's die sneller zijn geladen dan deze keer niet gerapporteerd.
+* `NotNeededNames`-door Komma's gescheiden lijst met pagina namen.
+* `NotNeededUrls`-door Komma's gescheiden lijst met URL-fragmenten. `"home"` filtert bijvoorbeeld alle pagina's met ' Home ' in de URL.
 
 
-### <a name="request-telemetry-filter"></a>Telemetrie filteren aanvragen
+### <a name="request-telemetry-filter"></a>Telemetrie-filter aanvragen
 
 
 ```XML
@@ -134,9 +130,9 @@ Voeg ApplicationInsights.xml, een `TelemetryProcessors` sectie zoals in dit voor
 
 
 
-### <a name="synthetic-source-filter"></a>Synthetische bronfilter
+### <a name="synthetic-source-filter"></a>Synthetisch bron filter
 
-Alle telemetrie met waarden in de eigenschap SyntheticSource gefilterd. Het gaat hierbij om aanvragen van bots, spiders en beschikbaarheidstests.
+Filtert alle telemetrie die waarden hebben in de eigenschap SyntheticSource. Dit zijn onder andere aanvragen van bots, spiders en beschikbaarheids testen.
 
 Telemetrie voor alle synthetische aanvragen filteren:
 
@@ -146,7 +142,7 @@ Telemetrie voor alle synthetische aanvragen filteren:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Telemetrie voor specifieke synthetische bronnen filteren:
+Telemetrie filteren op specifieke synthetische bronnen:
 
 
 ```XML
@@ -156,11 +152,11 @@ Telemetrie voor specifieke synthetische bronnen filteren:
            </Processor>
 ```
 
-* `NotNeeded` -Met door komma's gescheiden lijst met namen van synthetische gegevensbronnen.
+* `NotNeeded`-door Komma's gescheiden lijst met synthetische bron namen.
 
-### <a name="telemetry-event-filter"></a>Gebeurtenisfilter voor telemetrie
+### <a name="telemetry-event-filter"></a>Telemetrie-gebeurtenis Filter
 
-Aangepaste gebeurtenissen gefilterd (met behulp van het logboek geregistreerd [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
+Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -171,12 +167,12 @@ Aangepaste gebeurtenissen gefilterd (met behulp van het logboek geregistreerd [T
 ```
 
 
-* `NotNeededNames` -Met door komma's gescheiden lijst met gebeurtenisnamen.
+* `NotNeededNames`-door Komma's gescheiden lijst met gebeurtenis namen.
 
 
-### <a name="trace-telemetry-filter"></a>Tracering telemetrie filteren
+### <a name="trace-telemetry-filter"></a>Telemetrie-filter traceren
 
-Logtraceringen-filters (met behulp van het logboek geregistreerd [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) of een [logboekregistratie framework collector](java-trace-logs.md)).
+Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) of een [logboek registratie van de Framework-logging](java-trace-logs.md)).
 
 ```XML
 
@@ -185,20 +181,20 @@ Logtraceringen-filters (met behulp van het logboek geregistreerd [TrackTrace()](
            </Processor>
 ```
 
-* `FromSeverityLevel` Geldige waarden zijn:
-  *  UIT; alle traces filteren
-  *  TRACE - er wordt geen filtering. gelijk aan het traceringsniveau
-  *  INFO - uitfilteren traceerniveau
-  *  Waarschuwing - Filter TRACE en informatie
-  *  Fout - uitfilteren waarschuwen, gegevens, TRACERING
-  *  KRITIEKE - filter om alle essentiële
+* `FromSeverityLevel` geldige waarden zijn:
+  *  ALLE traceringen uit het filter uitschakelen
+  *  TRACERen: geen filters. is gelijk aan traceer niveau
+  *  INFO-traceer niveau uitfilteren
+  *  WAARSCHUWEN-TRACERing en informatie filteren
+  *  FOUT-filter voor waarschuwing, INFO, TRACERing
+  *  KRITIEK: alle alle maar essentiële filters uitfilteren
 
 
 ## <a name="custom-filters"></a>Aangepaste filters
 
-### <a name="1-code-your-filter"></a>1. Code van uw filter
+### <a name="1-code-your-filter"></a>1. de code van uw filter
 
-Maak een klasse die wordt geïmplementeerd in uw code `TelemetryProcessor`:
+Maak in uw code een klasse die `TelemetryProcessor`implementeert:
 
 ```Java
 
@@ -235,9 +231,9 @@ Maak een klasse die wordt geïmplementeerd in uw code `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Het filter in het configuratiebestand aanroepen
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. aanroepen van het filter in het configuratie bestand
 
-In ApplicationInsights.xml:
+In ApplicationInsights. XML:
 
 ```XML
 
@@ -254,9 +250,9 @@ In ApplicationInsights.xml:
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. Het filter (Java Spring) aanroepen
+### <a name="3-invoke-your-filter-java-spring"></a>3. het filter aanroepen (Java-lente)
 
-Voor toepassingen op basis van de Spring-framework, moeten u aangepaste telemetrie-processors in uw klasse hoofdtoepassing geregistreerd als een bean. Vervolgens worden deze autowired wanneer de toepassing wordt gestart.
+Voor toepassingen op basis van het lente-Framework moeten aangepaste telemetrie-processors als een bonen worden geregistreerd in uw hoofd toepassings klasse. Ze worden vervolgens automatisch bekabeld wanneer de toepassing wordt gestart.
 
 ```Java
 @Bean
@@ -265,15 +261,15 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-U moet maken van uw eigen filterparameters in `application.properties` en gebruikmaken van de Spring Boot externalized configuratie framework als u wilt deze parameters doorgeven in uw aangepast filter. 
+U moet uw eigen filter parameters maken in `application.properties` en gebruikmaken van het externe configuratie raamwerk met lente opstarten om deze para meters door te geven aan uw aangepaste filter. 
 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 *Mijn filter werkt niet.*
 
-* Controleer dat u geldige parameterwaarden hebt opgegeven. Bijvoorbeeld, de duur moeten gehele getallen zijn. Ongeldige waarden zorgt ervoor dat het filter moet worden genegeerd. Als uw aangepaste filter een uitzondering van een constructor of set-methode genereert, wordt dit genegeerd.
+* Controleer of u geldige parameter waarden hebt ingevoerd. Bijvoorbeeld, de duur moet een geheel getal zijn. Ongeldige waarden zorgen ervoor dat het filter wordt genegeerd. Als uw aangepaste filter een uitzonde ring genereert van een constructor of set-methode, wordt deze genegeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Sampling](../../azure-monitor/app/sampling.md) -steekproeven als alternatief die heeft niet de metrische gegevens over scheeftrekken overwegen.
+* [Bemonsteren](../../azure-monitor/app/sampling.md) : beschouw de steek proeven als een alternatief die uw metrische gegevens niet scheef stelt.

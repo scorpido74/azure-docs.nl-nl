@@ -4,15 +4,15 @@ description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gege
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675863"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882499"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -58,6 +58,8 @@ Als u een lijst met opdrachten wilt zien, typt u `azcopy -h` en drukt u vervolge
 Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht op (bijvoorbeeld: `azcopy list -h`).
 
 ![Inline-Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+Zie [azcopy](storage-ref-azcopy.md) voor gedetailleerde Naslag informatie voor elke opdracht en opdracht parameter.
 
 > [!NOTE] 
 > Als eigenaar van uw Azure Storage-account, worden er niet automatisch machtigingen toegewezen voor toegang tot gegevens. Voordat u iets kunt doen met AzCopy, moet u bepalen hoe u autorisatie referenties voor de opslag service opgeeft. 

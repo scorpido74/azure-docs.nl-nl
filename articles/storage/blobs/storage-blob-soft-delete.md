@@ -5,27 +5,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 253f42080d7c0eab2f7b3cfc5de3d4462f63c738
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f53bf023346c4f494de5ab50e8beb185d9f97c91
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673399"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882661"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Zacht verwijderen voor Azure Storage-blobs
+
 Azure Storage biedt nu een tijdelijke verwijdering voor blob-objecten, zodat u uw gegevens eenvoudiger kunt herstellen wanneer deze foutief wordt gewijzigd of verwijderd door een toepassing of een andere gebruiker van het opslag account.
 
-## <a name="how-does-it-work"></a>Hoe werkt het?
-Wanneer u deze optie inschakelt, kunt u met zacht verwijderen uw gegevens opslaan en herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. Deze beveiliging wordt uitgebreid naar BLOB-gegevens die worden gewist als gevolg van een overschrijving.
+## <a name="how-soft-delete-works"></a>Hoe zacht verwijderen werkt
+
+Wanneer deze optie is ingeschakeld, kunt u met zacht verwijderen uw gegevens opslaan en herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. Deze beveiliging wordt uitgebreid naar BLOB-gegevens die worden gewist als gevolg van een overschrijving.
 
 Wanneer gegevens worden verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. Als zacht verwijderen is ingeschakeld en u gegevens overschrijft, wordt een voorlopig verwijderde moment opname gegenereerd om de status van de overschreven gegevens op te slaan. Voorlopig verwijderde objecten zijn onzichtbaar, tenzij expliciet wordt vermeld. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens worden hersteld, configureren voordat deze permanent verlopen.
 
-Zacht verwijderen is achterwaarts compatibel. u hoeft geen wijzigingen aan te brengen in uw toepassingen om te profiteren van de beveiligingen die door deze functie worden geboden. Met [gegevens herstel](#recovery) wordt echter een nieuwe **undelete BLOB** API geïntroduceerd.
+Zacht verwijderen is achterwaarts compatibel, dus u hoeft geen wijzigingen aan te brengen in uw toepassingen om te profiteren van de beveiligingen die deze functie biedt. Met [gegevens herstel](#recovery) wordt echter een nieuwe **undelete BLOB** API geïntroduceerd.
 
 ### <a name="configuration-settings"></a>Configuratie-instellingen
+
 Wanneer u een nieuw account maakt, is zacht verwijderen standaard uitgeschakeld. Voorlopig verwijderen is standaard uitgeschakeld voor bestaande opslag accounts. U kunt de functie op elk gewenst moment in-of uitschakelen tijdens de levens duur van een opslag account.
 
 Als de functie is uitgeschakeld, hebt u nog steeds toegang tot de dynamische, verwijderde gegevens en wordt ervan uitgegaan dat de gegevens die worden verwijderd, zijn opgeslagen toen de functie werd ingeschakeld. Wanneer u zacht verwijderen inschakelt, moet u ook de Bewaar periode configureren.
@@ -35,13 +38,14 @@ De retentie periode geeft de hoeveelheid tijd aan dat de gegevens die door zacht
 U kunt de tijdelijke Bewaar periode voor verwijderen op elk gewenst moment wijzigen. Een bijgewerkte Bewaar periode geldt alleen voor recentelijk verwijderde gegevens. Eerder verwijderde gegevens verlopen op basis van de Bewaar periode die is geconfigureerd tijdens het verwijderen van de gegevens. Het verwijderen van een voorlopig verwijderd object heeft geen invloed op de verloop tijd.
 
 ### <a name="saving-deleted-data"></a>Verwijderde gegevens worden opgeslagen
+
 Met zacht verwijderen worden uw gegevens in veel gevallen bewaard, waarbij blobs of BLOB-moment opnamen worden verwijderd of overschreven.
 
 Wanneer een BLOB wordt overschreven met behulp van **put-BLOB**, **put**-blok, **put-blok lijst** of- **BLOB kopiëren** een moment opname van de status van de BLOB voordat de schrijf bewerking wordt uitgevoerd, wordt automatisch gegenereerd. Deze moment opname is een voorlopig verwijderde moment opname. het is onzichtbaar, tenzij tijdelijke verwijderde objecten expliciet worden weer gegeven. Zie de sectie [herstel](#recovery) voor meer informatie over het weer geven van zachte verwijderde objecten.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-*Soft verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als B0 wordt overschreven met B1, wordt er een voorlopig verwijderde moment opname van B0 gegenereerd. Als B1 wordt overschreven met B2, wordt een voorlopig verwijderde moment opname van B1 gegenereerd.*
+*Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als B0 wordt overschreven met B1, wordt er een voorlopig verwijderde moment opname van B0 gegenereerd. Als B1 wordt overschreven met B2, wordt er een voorlopig verwijderde moment opname van B1 gegenereerd.*
 
 > [!NOTE]  
 > Bij zacht verwijderen wordt de beveiliging van de overschrijving voor kopieer bewerkingen alleen geboden wanneer deze is ingeschakeld voor het account van de doel-blob.
@@ -53,13 +57,13 @@ Wanneer **Delete BLOB** wordt aangeroepen voor een moment opname, wordt die mome
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Soft verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als **moment opname-BLOB** wordt aangeroepen, wordt B0 een moment opname en B1 de actieve status van de blob. Wanneer de B0-moment opname wordt verwijderd, wordt deze gemarkeerd als zacht verwijderd.*
+*Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als **moment opname-BLOB** wordt aangeroepen, wordt B0 een moment opname en B1 de actieve status van de blob. Wanneer de B0-moment opname wordt verwijderd, wordt deze als zacht verwijderd gemarkeerd.*
 
 Wanneer **Delete BLOB** wordt aangeroepen op een basis-BLOB (een blob die niet zelf een moment opname is), wordt die BLOB gemarkeerd als zacht verwijderd. Consistent met het vorige gedrag: het aanroepen van **Delete BLOB** op een blob met actieve moment opnamen retourneert een fout. Als u **Delete BLOB** aanroept voor een blob met tijdelijke verwijderde moment opnamen, wordt er geen fout geretourneerd. U kunt nog steeds een BLOB en alle bijbehorende moment opnamen in één bewerking verwijderen wanneer de functie voor voorlopig verwijderen is ingeschakeld. Hiermee markeert u de basis-Blob en moment opnamen als zacht verwijderd.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Soft verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt een **Delete BLOB** -aanroep gemaakt om B2 en alle bijbehorende moment opnamen te verwijderen. De actieve blob, B2 en alle bijbehorende moment opnamen zijn gemarkeerd als zacht verwijderd.*
+*Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt een **Delete BLOB** -aanroep gemaakt om B2 en alle bijbehorende moment opnamen te verwijderen. De actieve blob, B2 en alle bijbehorende moment opnamen zijn gemarkeerd als zacht verwijderd.*
 
 > [!NOTE]  
 > Wanneer een zachte verwijderde BLOB wordt overschreven, wordt er automatisch een voorlopig verwijderde moment opname van de status van de BLOB vóór de schrijf bewerking gegenereerd. De nieuwe BLOB neemt de laag over van de overschreven blob.
@@ -68,7 +72,7 @@ Met zacht verwijderen worden uw gegevens niet opgeslagen in gevallen waarin cont
 
 De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijderen is ingeschakeld:
 
-| REST API bewerking | Resourcetype | Description | Wijziging in gedrag |
+| REST API bewerking | Resourcetype | Beschrijving | Wijziging in gedrag |
 |--------------------|---------------|-------------|--------------------|
 | [Verwijderen](/rest/api/storagerp/StorageAccounts/Delete) | Account | Hiermee verwijdert u het opslag account, inclusief alle containers en blobs die het bevat.                           | Geen wijziging. Containers en blobs in het verwijderde account kunnen niet worden hersteld. |
 | [Container verwijderen](/rest/api/storageservices/delete-container) | Container | Hiermee verwijdert u de container, inclusief alle blobs die deze bevat. | Geen wijziging. Blobs in de verwijderde container kunnen niet worden hersteld. |
@@ -85,18 +89,20 @@ De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijde
 Het is belang rijk om te zien dat het aanroepen van "pagina plaatsen" voor het overschrijven of wissen van de bereiken van een pagina-BLOB niet automatisch moment opnamen genereert. Virtuele-machine schijven worden ondersteund door pagina-blobs en de **put-pagina** gebruiken om gegevens te schrijven.
 
 ### <a name="recovery"></a>Herstel
-Om het herstel van verwijderde gegevens gemakkelijker te maken, hebben we een nieuwe API voor het verwijderen van een BLOB geïntroduceerd. Als u de API undelete aanroept op een voorlopig verwijderde basis-blob, worden deze hersteld en worden alle gekoppelde tijdelijke verwijderde moment opnamen als actief. Als u de API undelete aanroept op een actieve basis-blob, worden alle gekoppelde tijdelijke verwijderde moment opnamen als actief hersteld. Wanneer moment opnamen als actief worden teruggezet, zien ze eruit als door de gebruiker gegenereerde moment opnamen. de basis-BLOB wordt niet overschreven.
 
-Als u een BLOB wilt herstellen naar een specifieke voorlopig verwijderde moment opname, kunt u de **BLOB undelete** aanroepen op de basis-blob. Vervolgens kunt u de moment opname kopiëren over de nu actieve blob. U kunt de moment opname ook kopiëren naar een nieuwe blob.
+Bij het aanroepen van de bewerking voor het [ongedaan](/rest/api/storageservices/undelete-blob) maken van de BLOB voor een voorlopig verwijderde basis-BLOB worden deze hersteld en alle gekoppelde tijdelijke verwijderde moment opnamen als actief. Als de `Undelete Blob`-bewerking wordt aangeroepen op een actieve basis-blob, worden alle gekoppelde tijdelijke verwijderde moment opnamen als actief hersteld. Wanneer moment opnamen als actief worden teruggezet, zien ze eruit als door de gebruiker gegenereerde moment opnamen. de basis-BLOB wordt niet overschreven.
+
+Als u een BLOB wilt herstellen naar een specifieke voorlopig verwijderde moment opname, kunt u `Undelete Blob` aanroepen op de basis-blob. Vervolgens kunt u de moment opname kopiëren over de nu actieve blob. U kunt de moment opname ook kopiëren naar een nieuwe blob.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Soft verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt de **verwijdering van BLOB ongedaan** gemaakt op BLOB B, waardoor de basis-blob, B1 en alle bijbehorende moment opnamen, hier net als actief, wordt hersteld. In de tweede stap wordt B0 gekopieerd over de basis-blob. Met deze Kopieer bewerking wordt een voorlopig verwijderde moment opname van B1 gegenereerd.*
+*Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt de **verwijdering van BLOB ongedaan** gemaakt op BLOB B, waardoor de basis-blob, B1 en alle bijbehorende moment opnamen, hier net als actief, wordt hersteld. In de tweede stap wordt B0 gekopieerd over de basis-blob. Met deze Kopieer bewerking wordt een voorlopig verwijderde moment opname van B1 gegenereerd.*
 
 Als u de voorlopig verwijderde blobs en BLOB-moment opnamen wilt weer geven, kunt u ervoor kiezen om verwijderde gegevens in **lijst-blobs**op te nemen. U kunt ervoor kiezen om alleen voorlopig verwijderde basis-blobs weer te geven, of om ook te voorzien in voorlopig verwijderde BLOB-moment opnamen. Voor alle voorlopig verwijderde gegevens kunt u de tijd bekijken waarop de gegevens zijn verwijderd, evenals het aantal dagen voordat de gegevens permanent verlopen.
 
 ### <a name="example"></a>Voorbeeld
-Hieronder volgt de uitvoer van de console van een .NET-script dat uploadt, overschrijft, moment opnamen, verwijderen en terugzetten van een blob met de naam "HelloWorld" wanneer het uitvoeren van de opdracht zacht verwijderen is ingeschakeld:
+
+Hieronder vindt u de console-uitvoer van een .NET-script dat uploadt, overschrijft, moment opnamen, verwijderen en terugzetten van een blob met de naam *HelloWorld* wanneer zacht verwijderen is ingeschakeld:
 
 ```bash
 Upload:
@@ -131,16 +137,21 @@ Copy a snapshot over the base blob:
 Zie de sectie [volgende stappen](#next-steps) voor een verwijzing naar de toepassing die deze uitvoer heeft geproduceerd.
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
+
 Alle voorlopig verwijderde gegevens worden gefactureerd tegen hetzelfde aantal als actieve gegevens. Er worden geen kosten in rekening gebracht voor gegevens die permanent worden verwijderd na de geconfigureerde Bewaar periode. Zie meer [informatie over hoe moment opnamen worden samengevoegd](storage-blob-snapshots.md)voor een diep gaande kennis van moment opnamen en hoe ze kosten samen voegen.
 
-U wordt niet gefactureerd voor de trans acties die betrekking hebben op het automatisch genereren van moment opnamen. U wordt gefactureerd voor het **ongedaan** maken van BLOB-trans acties bij het aantal schrijf bewerkingen.
+U wordt niet gefactureerd voor de trans acties die betrekking hebben op het automatisch genereren van moment opnamen. Er worden kosten in rekening gebracht voor het **verwijderen van BLOB** -trans acties tegen de snelheid voor schrijf bewerkingen.
 
 Bekijk de [pagina met prijzen voor azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over de prijzen voor Azure Blob Storage in het algemeen.
 
 Wanneer u voorlopig verwijderen voor het eerst inschakelt, kunt u het beste een kleine Bewaar periode gebruiken om beter te begrijpen hoe de functie van invloed is op uw factuur.
 
-## <a name="quickstart"></a>Quick Start
-### <a name="azure-portal"></a>Azure Portal
+## <a name="get-started"></a>Aan de slag
+
+De volgende stappen laten zien hoe u aan de slag gaat met zacht verwijderen.
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
 Als u zacht verwijderen wilt inschakelen, navigeert u naar de optie voor **voorlopig verwijderen** onder **BLOB-service**. Klik vervolgens op **ingeschakeld** en voer het aantal dagen in waarvoor u de verwijderde gegevens wilt behouden.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
@@ -169,7 +180,7 @@ Wanneer u de moment opnamen van een BLOB hebt verwijderd, kunt u op **niveau ver
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -187,6 +198,7 @@ $MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Als u blobs wilt herstellen die per ongeluk zijn verwijderd, roept u verwijderen ongedaan maken op deze blobs. Houd er rekening mee dat bij het aanroepen van **undelete BLOB**, zowel op actieve als Soft verwijderde blobs, alle gekoppelde tijdelijke verwijderde moment opnamen worden hersteld als actief. In het volgende voor beeld wordt de verwijdering van alle voorlopig verwijderde en actieve blobs in een container ongedaan gemaakt:
+
 ```powershell
 # Create a context by specifying storage account name and key
 $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
@@ -205,7 +217,8 @@ Gebruik de volgende opdracht om het huidige Bewaar beleid voor voorlopig verwijd
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-### <a name="azure-cli"></a>Azure-CLI 
+# <a name="clitabazure-cli"></a>[CLI](#tab/azure-CLI)
+
 Als u zacht verwijderen wilt inschakelen, werkt u de service-eigenschappen van een BLOB-client bij:
 
 ```azurecli-interactive
@@ -218,7 +231,8 @@ Als u wilt controleren of zacht verwijderen is ingeschakeld, gebruikt u de volge
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-### <a name="python-client-library"></a>Python-client bibliotheek
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
 Als u zacht verwijderen wilt inschakelen, werkt u de service-eigenschappen van een BLOB-client bij:
 
 ```python
@@ -235,7 +249,8 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-### <a name="net-client-library"></a>.NET-client bibliotheek
+# <a name="nettabnet"></a>[.NET](#tab/net)
+
 Als u zacht verwijderen wilt inschakelen, werkt u de service-eigenschappen van een BLOB-client bij:
 
 ```csharp
@@ -276,50 +291,70 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
+---
+
 ## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Zijn er speciale overwegingen voor het gebruik van zacht verwijderen?
-Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, wordt het aangeraden om voorlopig verwijderen in te scha kelen. Het inschakelen van zacht verwijderen voor vaak overschreven gegevens kan leiden tot hogere kosten voor opslag capaciteit en een grotere latentie bij het weer geven van blobs. U kunt dit verhelpen door de vaak overschreven gegevens op te slaan in een afzonderlijk opslag account waarbij de regel matig verwijderen is uitgeschakeld. 
+
+Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een andere gebruiker van het opslag account, wordt het inschakelen van de functie voor voorlopig verwijderen aanbevolen. Het inschakelen van zacht verwijderen voor vaak overschreven gegevens kan leiden tot hogere kosten voor opslag capaciteit en een grotere latentie bij het weer geven van blobs. U kunt deze extra kosten verlagen door de vaak overschreven gegevens op te slaan in een afzonderlijk opslag account, waar zacht verwijderen is uitgeschakeld. 
 
 ## <a name="faq"></a>Veelgestelde vragen
-**Voor welke opslag typen kan ik zacht verwijderen gebruiken?**  
+
+### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Voor welke opslag Services kan ik zacht verwijderen gebruiken?
+
 Op dit moment is voorlopig verwijderen alleen beschikbaar voor Blob-opslag (object).
 
-**Is zacht verwijderen beschikbaar voor alle typen opslag accounts?**  
-Ja, voorlopig verwijderen is beschikbaar voor Blob Storage-accounts en voor blobs in algemeen gebruik (zowel GPv1 als GPv2)-opslag accounts. Dit geldt voor zowel Standard-als Premium-accounts. Zacht verwijderen is niet beschikbaar voor beheerde schijven.
+### <a name="is-soft-delete-available-for-all-storage-account-types"></a>Is zacht verwijderen beschikbaar voor alle typen opslag accounts?
 
-**Is zacht verwijderen beschikbaar voor alle opslag lagen?**  
+Ja, voorlopig verwijderen is beschikbaar voor Blob Storage-accounts en voor blobs in algemeen gebruik (zowel GPv1 als GPv2)-opslag accounts. Standaard-en Premium-account typen worden ondersteund. Zacht verwijderen is beschikbaar voor niet-beheerde schijven, wat pagina-blobs zijn onder de kaften. Zacht verwijderen is niet beschikbaar voor beheerde schijven.
+
+### <a name="is-soft-delete-available-for-all-storage-tiers"></a>Is zacht verwijderen beschikbaar voor alle opslag lagen?
+
 Ja, zacht verwijderen is beschikbaar voor alle opslag lagen, waaronder hot, cool en Archive. Zacht verwijderen biedt echter geen beveiliging tegen overschrijven voor blobs in de opslaglaag.
 
-**Kan ik de API set BLOB-laag gebruiken om blobs laag te maken met tijdelijke verwijderde moment opnamen?**  
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Kan ik de API set BLOB-laag gebruiken om blobs laag te maken met tijdelijke verwijderde moment opnamen?
+
 Ja. De voorlopig verwijderde moment opnamen blijven in de oorspronkelijke laag, maar de basis-BLOB wordt verplaatst naar de nieuwe laag. 
 
-**Premium-opslag accounts hebben een limiet van 100 voor de BLOB-moment opname. Zijn er voorlopig verwijderde moment opnamen in de buurt van deze limiet?**  
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Premium Storage-accounts hebben een limiet van 100 voor de BLOB-moment opname. Zijn er voorlopig verwijderde moment opnamen in de buurt van deze limiet?
+
 Nee, tijdelijke verwijderde moment opnamen tellen niet mee aan deze limiet.
 
-**Kan ik zacht verwijderen inschakelen voor bestaande opslag accounts?**  
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>Kan ik zacht verwijderen inschakelen voor bestaande opslag accounts?
+
 Ja, zacht verwijderen kan worden geconfigureerd voor zowel bestaande als nieuwe opslag accounts.
 
-**Als ik een hele account of container Verwijder waarvoor Soft zacht verwijderen is ingeschakeld, worden alle bijbehorende blobs opgeslagen?**  
-Nee, als u een hele account of container verwijdert, worden alle gekoppelde blobs definitief verwijderd. Als u wilt weten hoe u een opslag account kunt beveiligen tegen onbedoeld verwijderen, raadpleegt u het Azure Resource Manager artikel [resources vergren delen om onverwachte wijzigingen te voor komen](../../azure-resource-manager/resource-group-lock-resources.md).
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Als ik een hele account of container Verwijder waarvoor Soft zacht verwijderen is ingeschakeld, worden alle bijbehorende blobs opgeslagen?
 
-**Kan ik de metrische gegevens voor de capaciteit weer geven voor verwijderde data?**  
-Zacht verwijderde gegevens worden opgenomen als onderdeel van de totale capaciteit van de opslag account. Raadpleeg het [Opslaganalyse](../common/storage-analytics.md) -artikel voor meer informatie over het volgen en bewaken van opslag capaciteit.
+Nee, als u een hele account of container verwijdert, worden alle gekoppelde blobs definitief verwijderd. Zie [resources vergren delen om onverwachte wijzigingen te voor komen](../../azure-resource-manager/resource-group-lock-resources.md)voor meer informatie over het beveiligen van een opslag account tegen onbedoeld verwijderen.
 
-**Als ik zacht verwijderen uitschakel, kan ik dan nog steeds toegang krijgen tot dynamische, verwijderde gegevens?**  
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kan ik de metrische gegevens voor de capaciteit weer geven voor verwijderde data?
+
+Zacht verwijderde gegevens worden opgenomen als onderdeel van de totale capaciteit van de opslag account. Zie [Opslaganalyse](../common/storage-analytics.md)voor meer informatie over het volgen en bewaken van opslag capaciteit.
+
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>Als ik zacht verwijderen uitschakel, kan ik dan nog steeds toegang krijgen tot dynamische, verwijderde gegevens?
+
 Ja, u kunt nog steeds toegang krijgen tot onverlopen dynamische, verwijderde gegevens wanneer de functie voor dynamisch verwijderen is uitgeschakeld.
 
-**Kan ik voorlopig verwijderde moment opnamen van mijn BLOB lezen en kopiëren?**  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Kan ik voorlopig verwijderde moment opnamen van mijn BLOB lezen en kopiëren?  
+
 Ja, maar u moet eerst undelete aanroepen op de blob.
 
-**Is zacht verwijderen beschikbaar voor alle typen blobs?**  
+### <a name="is-soft-delete-available-for-all-blob-types"></a>Is zacht verwijderen beschikbaar voor alle typen blobs?
+
 Ja, voorlopig verwijderen is beschikbaar voor blok-blobs, toevoeg-blobs en pagina-blobs.
 
-**Is er een tijdelijke verwijdering beschikbaar voor virtuele machine-schijven?**  
-Zacht verwijderen is beschikbaar voor zowel Premium als standaard niet-beheerde schijven. Met voorlopig verwijderen kunt u alleen gegevens herstellen die zijn verwijderd door **BLOB verwijderen**, **BLOB plaatsen**, **blokkerings lijst** **plaatsen** en **BLOB kopiëren**. Gegevens die worden overschreven door een aanroep naar de **put-pagina** , kunnen niet worden hersteld.
+### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Is er een tijdelijke verwijdering beschikbaar voor virtuele machine-schijven?  
 
-**Moet ik mijn bestaande toepassingen wijzigen voor het gebruik van zacht verwijderen?**  
-Het is mogelijk om te profiteren van de functie voor voorlopig verwijderen, ongeacht de API-versie die u gebruikt. Om voorlopig verwijderde blobs en BLOB-moment opnamen weer te geven en te herstellen, moet u versie 2017-07-29 van de [Storage services-rest API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) of hoger gebruiken. Over het algemeen raden wij u altijd aan de meest recente versie te gebruiken, ongeacht of u deze functie gebruikt.
+Zacht verwijderen is beschikbaar voor zowel Premium als standaard niet-beheerde schijven. Dit zijn pagina-blobs onder de kaften. Met voorlopig verwijderen kunt u alleen gegevens herstellen die zijn verwijderd door **BLOB verwijderen**, **BLOB plaatsen**, **blokkerings lijst**plaatsen, **blok keren** en BLOB-bewerkingen **kopiëren** . Gegevens die worden overschreven door een aanroep naar de **put-pagina** , kunnen niet worden hersteld.
+
+Een virtuele machine van Azure schrijft naar een niet-beheerde schijf met behulp van aanroepen om de **pagina te plaatsen**. met de opdracht voorlopig verwijderen kunt u schrijf bewerkingen naar een niet-beheerde schijf van een Azure-VM ongedaan maken.
+
+### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Moet ik mijn bestaande toepassingen wijzigen voor het gebruik van zacht verwijderen?
+
+Het is mogelijk om te profiteren van de functie voor voorlopig verwijderen, ongeacht de API-versie die u gebruikt. Om voorlopig verwijderde blobs en BLOB-moment opnamen weer te geven en te herstellen, moet u versie 2017-07-29 van de [Storage services-rest API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) of hoger gebruiken. Micro soft adviseert altijd de nieuwste versie van de Azure Storage-API te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [.NET-voorbeeld code](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [REST API BLOB-service](/rest/api/storageservices/blob-service-rest-api)
 * [Replicatie Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

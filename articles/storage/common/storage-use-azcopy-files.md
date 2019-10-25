@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6f6c656bee9d271942e74f8116e64aeb47d68d5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: b141677e60705dc4176630ee7fd195ae03bba842
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757529"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816937"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en File Storage 
 
@@ -23,6 +23,9 @@ Voordat u begint, raadpleegt u het artikel aan de [slag met AzCopy](storage-use-
 ## <a name="create-file-shares"></a>Bestands shares maken
 
 U kunt de [azcopy](storage-ref-azcopy-make.md) maken om een bestands share te maken. In het voor beeld in deze sectie wordt een bestands share met de naam `myfileshare` gemaakt.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 |    |     |
 |--------|-----------|
@@ -47,6 +50,9 @@ Deze sectie bevat de volgende voor beelden:
 > De MD5-hash-code van het bestand wordt niet automatisch door AzCopy berekend en opgeslagen. Als u dit wilt doen, voegt u de vlag `--put-md5` toe aan elke Kopieer opdracht. Op die manier wordt, wanneer het bestand wordt gedownload, AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap `Content-md5` van het bestand overeenkomt met de berekende hash.
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documenten.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 ### <a name="upload-a-file"></a>Bestand uploaden
 
@@ -133,6 +139,9 @@ Deze sectie bevat de volgende voor beelden:
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documenten.
 
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+
 ### <a name="download-a-file"></a>Bestand downloaden
 
 |    |     |
@@ -207,6 +216,9 @@ Deze sectie bevat de volgende voor beelden:
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documentatie.
 
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+
 ### <a name="copy-a-file-to-another-storage-account"></a>Een bestand kopiëren naar een ander opslag account
 
 |    |     |
@@ -247,6 +259,9 @@ Met de opdracht [Sync](storage-ref-azcopy-sync.md) worden bestands namen en tijd
 Als u de vlag `--delete-destination` instelt op `true` AzCopy, worden bestanden verwijderd zonder dat u een prompt hoeft te geven. Als u wilt dat er een prompt wordt weer gegeven voordat AzCopy een bestand verwijdert, stelt u de vlag `--delete-destination` in op `prompt`.
 
 Zie [azcopy Sync](storage-ref-azcopy-sync.md)(Engelstalig) voor gedetailleerde naslag documentatie.
+
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Een bestands share bijwerken met wijzigingen in een andere bestands share
 

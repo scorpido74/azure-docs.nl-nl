@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4a8a8d7f6004ac32aeb7ce2b8cbffeca9ddf0079
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595540"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816979"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Een nieuwe aanbieding voor Dynamics 365 for Operations maken
 
@@ -102,7 +102,7 @@ Selecteer mini maal één en Maxi maal drie categorieën. Deze worden gebruikt o
 
 ### <a name="industry"></a>Industrie
 
-U kunt desgewenst Maxi maal twee branches selecteren om uw aanbieding in de Marketplace te categoriseren. Als uw aanbieding niet specifiek is voor een branche, laat u deze sectie leeg. Neem contact op met de manier waarop uw aanbod de geselecteerde branches in de beschrijving van de aanbieding ondersteunt. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-versie
 

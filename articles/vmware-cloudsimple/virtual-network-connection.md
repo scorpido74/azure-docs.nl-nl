@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2e2195c61acbf39b40a7659335afff78ac03cb4b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563058"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881431"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Virtueel Azure-netwerk verbinden met CloudSimple met behulp van ExpressRoute
 
@@ -23,22 +23,29 @@ U kunt uw particuliere cloud netwerk uitbreiden naar uw virtuele Azure-netwerk e
 
 Een autorisatie sleutel is vereist voor de ExpressRoute-verbinding tussen uw Privécloud en het virtuele Azure-netwerk. Als u een sleutel wilt verkrijgen, moet u een ticket indienen met <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">ondersteuning</a>.  Gebruik de volgende informatie in de aanvraag:
 
-* Type probleem: **Documentatie**
-* Abonnement: **Het abonnement selecteren waarop de CloudSimple-service is geïmplementeerd**
+* Probleem type: **technisch**
+* Abonnement: **Selecteer het abonnement waarin de CloudSimple-service is geïmplementeerd**
 * Service: **VMware-oplossing per CloudSimple**
-* Probleem type: **Service aanvraag**
-* Subtype van probleem: **Autorisatie sleutel voor Azure VNET-verbinding**
-* Houder: **Aanvraag voor autorisatie sleutel voor Azure VNET-verbinding**
+* Probleem type: **service aanvraag**
+* Subtype van het probleem: **autorisatie sleutel voor Azure VNET-verbinding**
+* Subject: **aanvraag voor autorisatie sleutel voor Azure VNET-verbinding**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Informatie over peering voor Azure Virtual Network verkrijgen voor CloudSimple-verbinding
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Informatie over peering ophalen van CloudSimple Portal
 
-Als u de verbinding wilt instellen, moet u een koppeling tot stand brengen tussen het virtuele netwerk van Azure en uw CloudSimple-omgeving.  Als onderdeel van de procedure moet u de URI en autorisatie sleutel van het peer circuit opgeven. Haal de URI en autorisatie sleutel op uit de [CloudSimple-Portal](access-cloudsimple-portal.md).  Selecteer **netwerk** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**. Of selecteer **account** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**.
+Als u de verbinding wilt instellen, moet u een verbinding tot stand brengen tussen een virtueel Azure-netwerk en uw CloudSimple-omgeving.  Als onderdeel van de procedure moet u de URI en autorisatie sleutel van het peer circuit opgeven. Haal de URI en autorisatie sleutel op uit de [CloudSimple-Portal](access-cloudsimple-portal.md).  Selecteer **netwerk** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**. Of selecteer **account** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**.
 
-Let op de Kopieer pictogrammen voor de URI van het peer circuit en voor de autorisatie sleutel voor elk van de regio's. Voor elke Privécloud die u wilt verbinden:
+Kopieer de URI van het peer circuit en voor de autorisatie sleutel voor elk van de regio's met behulp van het *Kopieer* pictogram. Voor elke CloudSimple-regio die u wilt verbinden:
 
-* Klik op **kopiëren** om de URI te kopiëren. Plak deze in een bestand waar het kan worden toegevoegd aan de Azure Portal.  
-* Klik op **kopiëren** om de autorisatie sleutel te kopiëren en deze ook in het bestand te plakken.
+1. Klik op **kopiëren** om de URI te kopiëren. Plak deze in een bestand waar het kan worden toegevoegd aan de Azure Portal.  
+2. Klik op **kopiëren** om de autorisatie sleutel te kopiëren en deze ook in het bestand te plakken.
 
-![Virtual Network verbindings pagina](media/network-virt-conn-page.png)
+Kopieer de autorisatie sleutel en de URI van het peer circuit met de status **beschikbaar** .  De **gebruikte** status geeft aan dat de sleutel al is gebruikt voor het maken van een virtuele netwerk verbinding.
+
+![Virtual Network verbindings pagina](media/virtual-network-connection.png)
 
 Zie [uw CloudSimple Private Cloud Environment verbinden met het virtuele Azure-netwerk met behulp van ExpressRoute](azure-expressroute-connection.md)voor meer informatie over het instellen van het virtuele netwerk van Azure op CloudSimple.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Virtuele Azure-netwerk verbinding met Privécloud](azure-expressroute-connection.md)
+* [Verbinding maken met een on-premises netwerk met behulp van Azure ExpressRoute](on-premises-connection.md)

@@ -1,39 +1,34 @@
 ---
-title: 'Slimme detectie: afwijkende toename van uitzonderingen, in Azure Application Insights | Microsoft Docs'
-description: Toepassingsuitzonderingen met Azure Application Insights voor ongebruikelijke patronen van uitzonderingen bewaken.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 'Slimme detectie: ongewone toename in het uitzonderings volume, in Azure-toepassing inzichten | Microsoft Docs'
+description: Bewaak toepassings uitzonderingen met Azure-toepassing Insights voor ongebruikelijke patronen in het uitzonderings volume.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/08/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a6e7e8e01ccb623a3ff340c318c9c238c919cb38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/08/2017
+ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61298581"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820601"
 ---
-# <a name="abnormal-rise-in-exception-volume-preview"></a>Abnormale toename van uitzonderingen (preview)
+# <a name="abnormal-rise-in-exception-volume-preview"></a>Uitzonderings volume met een abnormale toename (preview-versie)
 
-Application Insights automatisch analyseert de uitzonderingen in uw toepassing, en kunt u gewaarschuwd over ongebruikelijke patronen in uw uitzonderingstelemetrie.
+Application Insights analyseert automatisch de uitzonde ringen die in uw toepassing worden gegenereerd en kunnen u waarschuwen over ongebruikelijke patronen in de telemetrie van de uitzonde ring.
 
-Deze functie is vereist geen speciale configuratie dan [uitzondering rapportage configureren](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) voor uw app. Deze is actief wanneer uw app zoveel uitzonderingstelemetrie genereert.
+Voor deze functie is geen speciale configuratie vereist, anders dan het [configureren van uitzonderings rapportage](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) voor uw app. Het is actief wanneer uw app voldoende uitzonderings-telemetrie genereert.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type melding voor slimme detectie krijgen?
-U kunt dit type melding krijgen als uw app een afwijkende toename van het aantal uitzonderingen van een bepaald type gedurende een dag ten opzichte van een basislijn berekend voor de afgelopen zeven dagen vertoont is.
-Machine learning-algoritmen worden gebruikt voor het detecteren van de toename van het aantal uitzonderingen, daarbij rekening houdend met een natuurlijke groei van het toepassingsgebruik van uw.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
+Dit type melding kan worden weer geven als uw app een abnormale toename van het aantal uitzonde ringen van een specifiek type gedurende een dag vertoont, vergeleken met een basis lijn die in de afgelopen zeven dagen is berekend.
+Machine learning-algoritmen worden gebruikt voor het detecteren van de toename van het aantal uitzonde ringen, waarbij rekening wordt gehouden met een natuurlijke groei in het gebruik van uw toepassing.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Beschikt over mijn app absoluut een probleem?
-Nee, een melding betekent niet dat uw app beslist een probleem is. Hoewel een uitzonderlijk groot aantal uitzonderingen duidt meestal op een toepassingsprobleem, kunnen deze uitzonderingen goedaardige en verwerkt door uw toepassing correct zijn.
+## <a name="does-my-app-definitely-have-a-problem"></a>Heeft mijn app een probleem?
+Nee, een melding betekent niet dat uw app een probleem heeft. Hoewel een uitzonderlijk aantal uitzonde ringen meestal duidt op een probleem met een toepassing, kunnen deze uitzonde ringen goed aardig zijn en correct worden verwerkt door uw toepassing.
 
-## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
-De meldingen betreffen: diagnostische gegevens voor de ondersteuning in het proces van diagnostische gegevens:
-1. **Sorteren.** De melding ziet u hoeveel gebruikers of het aantal aanvragen worden beïnvloed. Hiermee kunt u een prioriteit toewijzen aan het probleem.
-2. **De scope.** Het probleem invloed heeft op al het verkeer of slechts enkele bewerking? Deze gegevens kan worden opgehaald van de melding.
-3. **Diagnose.** De detectie bevat informatie over de methode die de uitzondering is opgetreden, evenals het uitzonderingstype. U kunt ook de verwante items en rapporten koppelen aan de ondersteunende informatie om u te helpen meer vaststellen van het probleem.
+## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
+De meldingen bevatten diagnostische gegevens voor ondersteuning bij het diagnose proces:
+1. **Sorteren.** In de melding ziet u hoeveel gebruikers of hoeveel aanvragen er worden beïnvloed. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Is het probleem van invloed op al het verkeer of alleen een bepaalde bewerking? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** De detectie bevat informatie over de methode van waaruit de uitzonde ring is opgetreden, evenals het type uitzonde ring. U kunt ook de koppeling Verwante items en rapporten met ondersteunende informatie gebruiken om u te helpen het probleem verder te onderzoeken.

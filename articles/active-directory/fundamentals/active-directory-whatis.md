@@ -1,5 +1,5 @@
 ---
-title: What is Azure Active Directory? (Engelstalig) -Azure Active Directory | Microsoft Docs
+title: Wat is Azure Active Directory? - Azure Active Directory | Microsoft Azure
 description: Overzicht en conceptuele informatie over Azure Active Directory, waaronder terminologie, de beschik bare licenties en een lijst met bijbehorende functies met koppelingen voor meer informatie.
 services: active-directory
 author: msaburnley
@@ -10,14 +10,14 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942794"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880499"
 ---
-# <a name="what-is-azure-active-directory"></a>What is Azure Active Directory? (Engelstalig)
+# <a name="what-is-azure-active-directory"></a>Wat is Azure Active Directory?
 
 Azure Active Directory (Azure AD) is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft, waarmee uw werk nemers zich kunnen aanmelden en toegang hebben tot resources in:
 
@@ -52,19 +52,19 @@ Als u uw Azure AD-implementatie wilt verbeteren, kunt u ook betaalde mogelijkhed
 
 - **Azure Active Directory Premium P1.** Naast de gratis functies biedt P1 ook toegang tot zowel on-premises als cloud resources. P1 biedt tevens ondersteuning voor geavanceerd beheer, zoals dynamische groepen, selfservice voor groepsbeheer, Microsoft Identity Manager (een on-premises pakket voor identiteits- en toegangsbeheer) en cloudfuncties voor terugschrijven, die selfservice voor wachtwoordherstel voor on-premises gebruikers mogelijk maken.
 
-- **Azure Active Directory Premium P2.** Naast de gratis en P1-functies biedt P2 ook [Azure Active Directory Identity Protection](../identity-protection/enable.md) om op Risico's gebaseerde voorwaardelijke toegang te bieden tot uw apps en essentiële Bedrijfs gegevens en [privileged Identity Management](../privileged-identity-management/pim-getting-started.md) om te ontdekken, beheerders en hun toegang tot bronnen beperken en controleren en zo nodig just-in-time-toegang bieden.
+- **Azure Active Directory Premium P2.** Naast de gratis en P1-functies biedt P2 ook [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) om op Risico's gebaseerde voorwaardelijke toegang te bieden tot uw apps en essentiële Bedrijfs gegevens en [privileged Identity Management](../privileged-identity-management/pim-getting-started.md) om te ontdekken, beheerders en hun toegang tot bronnen beperken en controleren en zo nodig just-in-time-toegang bieden.
 
 - **Functielicenties met Betalen per gebruik.** U kunt ook aanvullende functielicenties krijgen, zoals Azure Active Directory Business-to-Customer (B2C). Met B2C kunt u identiteits- en toegangsbeheeroplossingen bieden voor klantgerichte apps. Voor meer informatie raadpleegt u de [documentatie over Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Meer informatie over het koppelen van een Azure-abonnement aan Azure AD is te vinden in [Procedure: Een Azure-abonnement koppelen of toevoegen aan Azure Active Directory](active-directory-how-subscriptions-associated-directory.md); meer informatie over het toewijzen van licenties aan uw gebruikers is te vinden in [Procedure: Azure Active Directory-licenties toewijzen of verwijderen](license-users-groups.md).
+Voor meer informatie over het koppelen van een Azure-abonnement aan Azure AD, raadpleegt u [Procedure: een Azure-abonnement koppelen of toevoegen aan Azure Active Directory](active-directory-how-subscriptions-associated-directory.md). Voor meer informatie over het toewijzen van licenties aan uw gebruikers, raadpleegt u [Procedure: licenties voor Azure Active Directory toewijzen of verwijderen](license-users-groups.md).
 
 ## <a name="terminology"></a>Terminologie
 
 Als u meer inzicht wilt krijgen in azure AD en de bijbehorende documentatie, raden we u aan de volgende voor waarden te bekijken.
 
-|Term of concept|Description|
+|Term of concept|Beschrijving|
 |---------------|-----------|
-|Identiteit| Een ding dat kan worden geauthenticeerd. Een identiteit kan een gebruiker met een gebruikers naam en wacht woord zijn. Identiteiten omvatten ook toepassingen of andere servers waarvoor verificatie mogelijk is vereist via geheime sleutels of certificaten.|
+|Identity| Een ding dat kan worden geauthenticeerd. Een identiteit kan een gebruiker met een gebruikers naam en wacht woord zijn. Identiteiten omvatten ook toepassingen of andere servers waarvoor verificatie mogelijk is vereist via geheime sleutels of certificaten.|
 |Account| Een identiteit waaraan gegevens zijn gekoppeld. U kunt geen account zonder een identiteit hebben.|
 |Azure AD-account| Een identiteit die wordt gemaakt via Azure AD of een andere cloudservice van Microsoft, bijvoorbeeld Office 365. Identiteiten worden opgeslagen in Azure AD en zijn toegankelijk voor de cloudservice-abonnementen van de organisatie. Dit account wordt ook wel een werk- of schoolaccount genoemd.|
 |Azure-abonnement| Dit wordt gebruikt voor de betaling van Azure-cloudservices. U kunt zo veel abonnementen hebben als u wilt. Ze zijn gekoppeld aan uw creditcard.|
@@ -83,10 +83,10 @@ Als u meer inzicht wilt krijgen in azure AD en de bijbehorende documentatie, rad
 
 Nadat u uw Azure AD-licentie hebt gekozen, krijgt u toegang tot sommige of alle van de volgende functies voor uw organisatie:
 
-|Categorie|Description|
+|Category|Beschrijving|
 |-------|-----------|
 |Toepassingsbeheer|Beheer uw apps in de cloud of on-premises met de toepassingsproxy, eenmalige aanmelding, de portal My Apps (ook wel Toegangsvenster genoemd) en SaaS-apps (Software als een dienst). Zie [Beveiligde externe toegang bieden voor on-premises toepassingen](../manage-apps/application-proxy.md) en [Documentatie over toepassingsbeheer](../manage-apps/index.yml) voor meer informatie.|
-|Authentication|In Azure Active Directory kunt u selfservice voor wachtwoordherstel, Multi-Factor Authentication, een aangepaste lijst met verboden wachtwoorden en slimme vergrendeling beheren. Zie [Documentatie voor Azure AD-verificatie](../authentication/index.yml) voor meer informatie.|
+|Verificatie|In Azure Active Directory kunt u selfservice voor wachtwoordherstel, Multi-Factor Authentication, een aangepaste lijst met verboden wachtwoorden en slimme vergrendeling beheren. Zie [Documentatie voor Azure AD-verificatie](../authentication/index.yml) voor meer informatie.|
 |Business-to-business (B2B)|U beheert gastgebruikers en externe partners, terwijl u de controle houdt over uw eigen zakelijke gegevens. Zie [Documentatie over Azure Active Directory B2B](../b2b/index.yml) voor meer informatie.|
 |Business-to-customer (B2C)|U kunt aanpassen en controleren hoe uw gebruikers zich registreren, zich aanmelden en hun profielen beheren als ze uw apps gebruiken. Voor meer informatie raadpleegt u de [documentatie over Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Voorwaardelijke toegang|Beheer de toegang tot uw cloud-apps. Zie [Documentatie over voorwaardelijke toegang voor Azure AD](../conditional-access/index.yml) voor meer informatie.|
@@ -95,7 +95,7 @@ Nadat u uw Azure AD-licentie hebt gekozen, krijgt u toegang tot sommige of alle 
 |Domeinservices|Voeg virtuele Azure-machines toe aan een domein zonder gebruik te maken van domeincontrollers. Zie [Documentatie voor Azure AD Domain Services](../../active-directory-domain-services/index.yml) voor meer informatie.|
 |Zakelijke gebruikers|Beheer het toewijzen van licenties, de toegang tot apps en het instellen van gedelegeerden met behulp van groepen en beheerdersrollen. Zie [Documentatie voor Azure Active Directory-gebruikersbeheer](../users-groups-roles/index.yml) voor meer informatie.|
 |Hybride identiteit|Gebruik Azure Active Directory Connect en Connect Health om één gebruikersidentiteit te bieden voor verificatie en autorisatie van alle resources, ongeacht de locatie (cloud of on-premises). Zie [Documentatie voor hybride identiteit](../hybrid/index.yml) voor meer informatie.|
-|Identiteitsbeheer|Beheer de identiteit van uw organisatie via besturingselementen voor werknemers, zakelijke partners, leveranciers, service en app-toegang. U kunt ook toegangsbeoordelingen uitvoeren. Zie [Documentatie over Azure AD Identity Governance](../governance/identity-governance-overview.md) en [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md) voor meer informatie.|
+|Identity Governance|Beheer de identiteit van uw organisatie via besturingselementen voor werknemers, zakelijke partners, leveranciers, service en app-toegang. U kunt ook toegangsbeoordelingen uitvoeren. Zie [Documentatie over Azure AD Identity Governance](../governance/identity-governance-overview.md) en [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md) voor meer informatie.|
 |Identiteitsbeveiliging|Detecteer potentiële beveiligingsproblemen die de identiteiten van uw organisatie treffen; configureer beleid om te reageren op verdachte activiteiten en neem vervolgens gepaste actie om de problemen op te lossen. Zie [Azure AD-identiteitsbeveiliging](../identity-protection/index.yml) voor meer informatie.|
 |Beheerde identiteiten voor Azure-resources|Voorzie uw Azure-services van een automatisch beheerde identiteit in Azure AD die elke door Azure Ad ondersteunde verificatieservice kan verifiëren, inclusief Key Vault. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../managed-identities-azure-resources/overview.md) voor meer informatie.|
 |Privileged Identity Management (PIM)|Beheer, controleer en bewaak de toegang binnen uw organisatie. Deze functie omvat toegang tot resources in azure AD en Azure, en andere online services van micro soft, zoals Office 365 of intune. Zie [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml) voor meer informatie.|

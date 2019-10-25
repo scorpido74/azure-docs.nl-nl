@@ -1,40 +1,35 @@
 ---
-title: 'Slimme detectie: prestatievermindering in trace ernst verhouding, in Azure Application Insights | Microsoft Docs'
-description: Toepassingstraceringen met Azure Application Insights voor ongewone patronen in tracetelemetrie bewaken.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Slimme detectie-degradatie van de verhouding van de ernst van de tracering in Azure-toepassing inzichten | Microsoft Docs
+description: Bewaak toepassings traceringen met Azure-toepassing inzichten voor ongebruikelijke patronen in telemetrie traceren.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/27/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/27/2017
+ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306391"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820541"
 ---
-# <a name="degradation-in-trace-severity-ratio-preview"></a>Degradatie traceren ernst breedteverhouding (preview)
+# <a name="degradation-in-trace-severity-ratio-preview"></a>Degradatie van de verhouding van de ernst van de tracering (preview-versie)
 
-Traceringen worden veel gebruikt in toepassingen, zoals ze het verhaal vertellen te van wat er achter de schermen gebeurt. Wanneer er iets fout gaat, bieden traceringen cruciale inzicht in de volgorde van gebeurtenissen die leiden naar de ongewenste status. Traceringen worden doorgaans ongestructureerde, maar er is één ding dat concrete invulling te geven kan worden geleerd van hen de ernst op. In van een toepassing onveranderlijke, verwachten we de verhouding tussen "tot" traceringen (*Info* en *uitgebreid*) en 'slechte' traces (*waarschuwing*, *fout*, en *kritieke*) blijft stabiel. Verondersteld wordt dat 'slechte' traceringen op gezette tijden tot op zekere hoogte een aantal oorzaken hebben gebeuren kunnen (bijvoorbeeld problemen tijdelijk afwijkende netwerkverbinding). Maar wanneer een echt probleem groeien begint, het meestal als een toename in de verhouding van 'slechte' traceringen vs "tot" traceringen manifesten. Application Insights Slimme detectie automatisch analyseert de traceringen vastgelegd door uw toepassing, en kunt u gewaarschuwd over ongebruikelijke patronen in de ernst van de tracetelemetrie van uw.
+Traceringen worden veel gebruikt in toepassingen, omdat ze het verhaal van wat er achter de schermen gebeurt. Wanneer er iets mis gaat, bieden traceringen cruciaal inzicht in de volg orde van gebeurtenissen waardoor de status niet kan worden gewenst. Terwijl traceringen over het algemeen niet worden gestructureerd, is er een ding die u op concrete wijze kunt onderscheiden: hun ernst niveau. In de stationaire status van een toepassing verwachten we dat de verhouding tussen ' goede ' traceringen (*info* en *uitgebreid*) en ' slechte ' traceringen (*waarschuwing*, *fout*en *kritiek*) stabiel blijft. De veronderstelling is dat "slechte" traceringen regel matig op een bepaald gebied worden uitgevoerd als gevolg van een aantal redenen (tijdelijke netwerk problemen voor instantie). Maar wanneer een echt probleem groeit, wordt het doorgaans als een verhoging van het relatieve aandeel van ' slechte ' traceringen versus ' goede ' traceringen genoemd. Application Insights Slimme detectie analyseert automatisch de traceringen die door uw toepassing worden vastgelegd en kunnen u een waarschuwing krijgen over ongebruikelijke patronen in de ernst van de telemetrie van de tracering.
 
-Deze functie is vereist geen speciale instellingen, dan traceerlogboekregistratie voor uw app configureren (informatie over het configureren van een trace log-listener voor [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) of [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Deze is actief wanneer uw app zoveel uitzonderingstelemetrie genereert.
+Voor deze functie is geen speciale configuratie vereist, behalve het configureren van traceer logboek registratie voor uw app (zie een listener voor traceer logboeken configureren voor [.net](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) of [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Het is actief wanneer uw app voldoende uitzonderings-telemetrie genereert.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type melding voor slimme detectie krijgen?
-U kunt dit type melding krijgen als de verhouding tussen "tot" traceringen (traceringen die zijn geregistreerd met een niveau van *Info* of *uitgebreid*) en 'slechte' traces (traceringen die zijn geregistreerd met een niveau van *waarschuwing*, *Fout*, of *onherstelbare fout*) is vernederen in een specifieke dag, vergeleken met een basislijn berekend voor de afgelopen zeven dagen.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
+Dit type melding kan worden weer gegeven als de verhouding tussen ' goede ' traceringen (traceringen die zijn geregistreerd met een niveau van *info* of *uitgebreid*) en ' slechte ' traceringen (traceringen die zijn vastgelegd met een *waarschuwings*niveau, *fout*of *onherstelbare*) worden verminderd met een specifieke dag, vergeleken met de basis lijn die is berekend over de afgelopen zeven dagen.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Beschikt over mijn app absoluut een probleem?
-Nee, een melding betekent niet dat uw app beslist een probleem is. Hoewel een verslechtering van de in de verhouding tussen 'goede' en 'slechte' traceringen op een toepassingsprobleem wijzen kan, is het mogelijk dat deze wijziging in verhouding goedaardige. Bijvoorbeeld, de toename mogelijk vanwege een nieuwe stroom in de toepassing meer 'slechte' traceringen dan de bestaande stromen genereren).
+## <a name="does-my-app-definitely-have-a-problem"></a>Heeft mijn app een probleem?
+Nee, een melding betekent niet dat uw app een probleem heeft. Hoewel een vermindering van de verhouding tussen ' goede ' en ' slechte ' traceringen kan duiden op een toepassings probleem, kan deze wijziging in verhouding mogelijk onschadelijk zijn. De toename kan bijvoorbeeld worden veroorzaakt door een nieuwe stroom in de toepassing die meer ' slechte ' traceringen dan bestaande stromen verzendt.
 
-## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
-De meldingen betreffen: diagnostische gegevens voor de ondersteuning in het proces van diagnostische gegevens:
-1. **Sorteren.** De melding ziet u hoe veel bewerkingen worden beïnvloed. Hiermee kunt u een prioriteit toewijzen aan het probleem.
-2. **De scope.** Het probleem invloed heeft op al het verkeer of slechts enkele bewerking? Deze gegevens kan worden opgehaald van de melding.
-3. **Diagnose.** U kunt de verwante items en rapporten koppelen aan de ondersteunende informatie om u te helpen meer vaststellen van het probleem.
+## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
+De meldingen bevatten diagnostische gegevens voor ondersteuning bij het diagnose proces:
+1. **Sorteren.** In de melding ziet u hoeveel bewerkingen worden beïnvloed. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Is het probleem van invloed op al het verkeer of alleen een bepaalde bewerking? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** U kunt de gerelateerde items en rapporten koppelen aan ondersteunende informatie, om u te helpen bij het oplossen van het probleem.
 
 

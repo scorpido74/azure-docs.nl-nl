@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten | Microsoft Docs
+title: Azure Monitor werkmappen voor rapporten | Microsoft Docs
 description: Meer informatie over het gebruik van Azure Monitor werkmappen voor Azure Active Directory rapporten.
 services: active-directory
 author: cawrites
@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255658"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819714"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 

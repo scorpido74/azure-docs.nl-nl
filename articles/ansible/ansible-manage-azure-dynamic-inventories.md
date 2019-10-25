@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241580"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881509"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Zelf studie: dynamische voor raden van uw Azure-resources configureren met behulp van Ansible
 
@@ -71,11 +71,20 @@ Ansible kan worden gebruikt om voorraadinformatie uit verschillende bronnen ((wa
 
 U kunt [tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) met behulp van door de gebruiker gedefinieerde categorieën. 
 
+### <a name="using-ansible-version--28"></a>Ansible-versie < 2,8 gebruiken
 Voer de volgende opdracht [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) in om de virtuele machine `ansible-inventory-test-vm1` met de sleutel `nginx` te taggen:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
+
+### <a name="using-ansible-version--28"></a>Ansible-versie > = 2,8 gebruiken
+Voer de volgende opdracht [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) in om de virtuele machine `ansible-inventory-test-vm1` met de sleutel `Ansible=nginx` te taggen:
+
+```azurecli-interactive
+az resource tag --tags Ansible=nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+```
+
 ## <a name="generate-a-dynamic-inventory"></a>Een dynamische voorraad genereren
 
 Zodra u uw virtuele machines hebt gedefinieerd (en getagd), is het tijd om de dynamische voorraad te genereren.
@@ -121,13 +130,17 @@ Ansible biedt een python-script met de naam [azure_rm. py](https://github.com/an
 
 Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py). De volgende stappen helpen u bij het gebruik van de invoeg toepassing:
 
-1. Voor de inventarisatie-invoeg toepassing is een configuratie bestand vereist. Het configuratie bestand moet eindigen op `azure_rm` en een uitbrei ding hebben van `yml` of `yaml`. Voor dit voor beeld van deze zelf studie slaat u de volgende Playbook op als `myazure_rm.yml`:
+1. Voor de inventarisatie-invoeg toepassing is een configuratie bestand vereist. Het configuratie bestand moet eindigen op `azure_rm` en een uitbrei ding van `yml` of `yaml`hebben. Voor dit voor beeld van deze zelf studie slaat u de volgende Playbook op als `myazure_rm.yml`:
 
     ```yml
-    plugin: azure_rm
-    include_vm_resource_groups:
-    - ansible-inventory-test-rg
-    auth_source: auto
+        plugin: azure_rm
+        include_vm_resource_groups:
+        - ansible-inventory-test-rg
+        auth_source: auto
+    
+        keyed_groups:
+        - prefix: tag
+          key: tags
     ```
 
 1. Voer de volgende opdracht uit om virtuele machines in de resource groep te pingen:
@@ -156,33 +169,49 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
     ```
 
 ## <a name="enable-the-vm-tag"></a>De VM-tag inschakelen
-Zodra u een tag hebt ingesteld, moet u dat label inschakelen. Een manier om een tag in te scha kelen, is door de tag te exporteren naar een omgevings variabele `AZURE_TAGS` via de `export` opdracht:
 
-```azurecli-interactive
-export AZURE_TAGS=nginx
-```
+### <a name="if-youre-using-ansible--28"></a>Als u Ansible < 2,8 gebruikt,
 
-- Als u Ansible < 2,8 gebruikt, voert u de volgende opdracht uit:
+- Zodra u een tag hebt ingesteld, moet u dat label inschakelen. Een manier om een tag in te scha kelen, is door de tag te exporteren naar een omgevings variabele `AZURE_TAGS` via de `export` opdracht:
+
+    ```azurecli-interactive
+    export AZURE_TAGS=nginx
+    ```
+    
+- Voer de volgende opdracht uit:
 
     ```bash
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping
     ```
+    
+    Nu ziet u slechts één virtuele machine (het label waarvan de tag overeenkomt met de waarde die is geëxporteerd naar de omgevings variabele `AZURE_TAGS`):
 
-- Als u Ansible > = 2,8 gebruikt, voert u de volgende opdracht uit:
-  
-    ```bash
-    ansible all -m ping -i ./myazure_rm.yml
+    ```Output
+       ansible-inventory-test-vm1 | SUCCESS => {
+        "changed": false,
+        "failed": false,
+        "ping": "pong"
+    }
     ```
 
-Nu ziet u slechts één virtuele machine (het label waarvan de tag overeenkomt met de waarde die is geëxporteerd naar de omgevings variabele @no__t 0):
+### <a name="if-youre-using-ansible---28"></a>Als u gebruikmaakt van Ansible > = 2,8
 
-```Output
-ansible-inventory-test-vm1 | SUCCESS => {
-    "changed": false,
-    "failed": false,
-    "ping": "pong"
-}
-```
+- Voer de opdracht uit `ansible-inventory -i myazure_rm.yml --graph` om de volgende uitvoer op te halen:
+
+    ```Output
+        @all:
+          |--@tag_Ansible_nginx:
+          |  |--ansible-inventory-test-vm1_9e2f
+          |--@ungrouped:
+          |  |--ansible-inventory-test-vm2_7ba9
+    ```
+
+- U kunt ook de volgende opdracht uitvoeren om de verbinding met de nginx-VM te testen:
+  
+    ```bash
+    ansible -i ./myazure_rm.yml -m ping tag_Ansible_nginx
+    ```
+
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Nginx instellen op de getagde virtuele machine
 
@@ -197,19 +226,19 @@ Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met su
 1. Plak de volgende voorbeeldcode in de editor:
 
     ```yml
-    ---
-    - name: Install and start Nginx on an Azure virtual machine
-      hosts: all
-      become: yes
-      tasks:
-      - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
-
-      handlers:
-        - name: start nginx
-          service: name=nginx state=started
+        ---
+        - name: Install and start Nginx on an Azure virtual machine
+          hosts: all
+          become: yes
+          tasks:
+          - name: install nginx
+            apt: pkg=nginx state=installed
+            notify:
+            - start nginx
+    
+          handlers:
+            - name: start nginx
+              service: name=nginx state=started
     ```
 
 1. Sla het bestand op en sluit de editor af.
@@ -218,15 +247,15 @@ Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met su
 
    - Ansible < 2,8:
 
-    ```bash
-    ansible-playbook -i azure_rm.py nginx.yml
-    ```
+     ```bash
+     ansible-playbook -i azure_rm.py nginx.yml
+     ```
 
    - Ansible > = 2,8:
 
-    ```bash
-     ansible-playbook  -i ./myazure_rm.yml  nginx.yml
-    ```
+     ```bash
+     ansible-playbook  -i ./myazure_rm.yml  nginx.yml --limit=tag_Ansible_nginx
+     ```
 
 1. Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
@@ -276,7 +305,7 @@ In deze sectie wordt één techniek geïllustreerd om te testen of Nginx op uw v
 
 1. Klik op de toetscombinatie `<Ctrl>D` om de SSH-sessie te verbreken.
 
-1. Als u de voor gaande stappen voor de virtuele machine van @no__t 0 levert, wordt een informatief bericht weer gegeven waarin wordt aangegeven waar u nginx kunt ophalen (wat impliceert dat u dit op dit moment niet hebt geïnstalleerd):
+1. Als u de voor gaande stappen voor de `ansible-inventory-test-vm2` virtuele machine uitvoert, wordt een informatief bericht weer gegeven waarin wordt aangegeven waar u nginx kunt ophalen (wat impliceert dat u dit op dit moment niet hebt geïnstalleerd):
 
     ```Output
     tom@ansible-inventory-test-vm2:~$ nginx -v

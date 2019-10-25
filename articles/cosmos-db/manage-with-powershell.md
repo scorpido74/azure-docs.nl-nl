@@ -4,15 +4,15 @@ description: Gebruik Azure Power shell om uw Azure Cosmos DB accounts, data base
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 08/05/2019
+ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5d8ff6177b4f9f397b40f50a9cc65f74460f02
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815886"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882110"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL-API-resources beheren met Power shell
 
@@ -26,8 +26,8 @@ Voor meerdere platform beheer van Azure Cosmos DB kunt u [Azure cli](manage-with
 
 Volg de instructies in het [installeren en configureren van Azure PowerShell][powershell-install-configure] om uw Azure-account in Power shell te installeren en u aan te melden.
 
-* Als u wilt de volgende opdrachten uitvoeren zonder bevestiging van de gebruiker, toevoegen de `-Force` vlag aan de opdracht.
-* De volgende opdrachten worden synchroon.
+* Als u de volgende opdrachten wilt uitvoeren zonder dat de gebruiker om bevestiging wordt gevraagd, voegt u de vlag `-Force` toe aan de opdracht.
+* De volgende opdrachten zijn synchroon.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-accounts
 
@@ -78,11 +78,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* `$accountName`De naam voor het Azure Cosmos-account. Moet kleine letters, alfanumerieke tekens en het teken '-' en tussen de 3 en 31 tekens bevatten.
-* `$location`De locatie voor de Azure Cosmos-account bron.
-* `$locations`De replica regio's voor het database account. Er moet één schrijf regio per database account zijn met een failover-prioriteits waarde van 0.
-* `$consistencyPolicy`Het standaard consistentie niveau van het Azure Cosmos-account. Zie voor meer informatie, [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md).
-* `$CosmosDBProperties`De eigenschaps waarden die zijn door gegeven aan de provider van het Cosmos DB Azure Resource Manager om het account in te richten.
+* `$accountName` de naam voor het Azure Cosmos-account. Moet kleine letters, alfanumerieke tekens en het teken '-' en tussen de 3 en 31 tekens bevatten.
+* `$location` de locatie voor de resource van het Azure Cosmos-account.
+* `$locations` de replica regio's voor het database account. Er moet één schrijf regio per database account zijn met een failover-prioriteits waarde van 0.
+* `$consistencyPolicy` het standaard consistentie niveau van het Azure Cosmos-account. Zie [consistentie niveaus in azure Cosmos DB](consistency-levels.md)voor meer informatie.
+* `$CosmosDBProperties` de eigenschaps waarden die zijn door gegeven aan de provider van Cosmos DB Azure Resource Manager om het account in te richten.
 
 Azure Cosmos-accounts kunnen worden geconfigureerd met IP-firewall en Virtual Network Service-eind punten. Zie [Configure IP firewall](how-to-configure-firewall.md)(Engelstalig) voor meer informatie over het configureren van de IP-firewall voor Azure Cosmos db.  Zie [toegang vanaf virtuele netwerken configureren](how-to-configure-vnet-service-endpoint.md)voor meer informatie over het inschakelen van service-eind punten voor Azure Cosmos db.
 
@@ -122,7 +122,7 @@ Met deze opdracht kunt u de eigenschappen van uw Azure Cosmos-database account b
 * Multi-Master inschakelen
 
 > [!NOTE]
-> U kunt geen regio's `locations` tegelijkertijd toevoegen of verwijderen en andere eigenschappen wijzigen voor een Azure Cosmos-account. Het wijzigen van regio's moet worden uitgevoerd als een afzonderlijke bewerking dan een andere wijziging in de account bron.
+> U kunt niet tegelijkertijd regio's toevoegen of verwijderen `locations` en andere eigenschappen wijzigen voor een Azure Cosmos-account. Het wijzigen van regio's moet worden uitgevoerd als een afzonderlijke bewerking dan een andere wijziging in de account bron.
 > [!NOTE]
 > Met deze opdracht kunt u regio's toevoegen en verwijderen, maar kunt u geen failover-prioriteiten wijzigen of een hand matige failover starten. Zie [failover-prioriteit wijzigen](#modify-failover-priority) en [hand matige failover activeren](#trigger-manual-failover).
 
@@ -223,7 +223,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 In het volgende voor beeld wordt beschreven hoe u [Azure-resource Tags][azure-resource-tags] instelt voor een Azure Cosmos-account.
 
 > [!NOTE]
-> Met deze opdracht kan worden gecombineerd met de opdrachten maken of bijwerken door toe te voegen de `-Tags` markering op in de bijbehorende parameter.
+> Deze opdracht kan worden gecombineerd met de opdrachten Create of update door de vlag `-Tags` toe te voegen aan de bijbehorende para meter.
 
 ```azurepowershell-interactive
 # Update tags for an Azure Cosmos Account
@@ -241,9 +241,9 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -Tags $tags
 ```
 
-### <a id="list-keys"></a> Een lijst met Accountsleutels
+### <a id="list-keys"></a>Lijst met account sleutels
 
-Wanneer u een Azure Cosmos DB-account maakt, genereert de service twee master toegangssleutels die kunnen worden gebruikt voor verificatie wanneer het Azure Cosmos DB-account wordt geopend. Door twee toegangssleutels, kunt Azure Cosmos DB u de sleutels zonder onderbreking naar uw Azure Cosmos DB-account opnieuw genereren. Alleen-lezensleutels voor het verifiëren van alleen-lezen bewerkingen zijn ook beschikbaar. Er zijn twee sleutels voor lezen / schrijven (primaire en secundaire) en twee sleutels voor alleen-lezen (primaire en secundaire).
+Wanneer u een Azure Cosmos DB account maakt, genereert de service twee hoofd toegangs sleutels die kunnen worden gebruikt voor verificatie wanneer het Azure Cosmos DB-account wordt geopend. Met behulp van twee toegangs sleutels kunt Azure Cosmos DB de sleutels opnieuw genereren zonder onderbreking van uw Azure Cosmos DB-account. Alleen-lezen sleutels voor verificatie van alleen-lezen-bewerkingen zijn ook beschikbaar. Er zijn twee sleutels voor lezen/schrijven (primair en secundair) en twee alleen-lezen sleutels (primair en secundair).
 
 ```azurepowershell-interactive
 # List keys for an Azure Cosmos Account
@@ -255,12 +255,13 @@ $keys = Invoke-AzResourceAction -Action listKeys `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
     -ResourceGroupName $resourceGroupName -Name $accountName
 
-Select-Object $keys
+Write-Host "PrimaryKey =" $keys.primaryMasterKey
+Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
-### <a id="list-connection-strings"></a> Lijst met verbindingsreeksen
+### <a id="list-connection-strings"></a>Verbindings reeksen weer geven
 
-Voor MongoDB-accounts, kan de verbindingsreeks voor uw MongoDB-app verbinden met account van de database worden opgehaald met de volgende opdracht.
+Voor MongoDB-accounts kan de connection string voor het verbinden van uw MongoDB-app met het database account worden opgehaald met behulp van de volgende opdracht.
 
 ```azurepowershell-interactive
 # List connection strings for an Azure Cosmos Account
@@ -319,10 +320,10 @@ Set-AzResource -ResourceType $resourceType `
 
 Voor accounts die zijn geconfigureerd met automatische failover, kunt u de volg orde wijzigen waarin Cosmos secundaire replica's naar primair promo veren, anders is de primaire replica niet meer beschikbaar.
 
-In het onderstaande voor beeld wordt aangenomen dat de prioriteit van `West US 2 = 0`de `East US 2 = 1`huidige `South Central US = 2`failover,,,,.
+In het onderstaande voor beeld wordt ervan uitgegaan dat de huidige failover-prioriteit `West US 2 = 0`, `East US 2 = 1``South Central US = 2`is.
 
 > [!CAUTION]
-> Als `locationName` u `failoverPriority=0` wijzigt voor, wordt een hand matige failover geactiveerd voor een Azure Cosmos-account. Bij eventuele andere wijzigingen van de prioriteit wordt geen failover geactiveerd.
+> Als `locationName` voor `failoverPriority=0` wordt gewijzigd, wordt een hand matige failover geactiveerd voor een Azure Cosmos-account. Bij eventuele andere wijzigingen van de prioriteit wordt geen failover geactiveerd.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -348,12 +349,12 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
 ### <a id="trigger-manual-failover"></a>Hand matige failover activeren
 
-Voor accounts die zijn geconfigureerd met een hand matige failover, kunt u een secundaire replica failover en promo veren `failoverPriority=0`naar primair door te wijzigen in. Deze bewerking kan worden gebruikt om een nood herstel analyse te initiëren om planning voor nood herstel te testen.
+Voor accounts die zijn geconfigureerd met hand matige failover, kunt u een secundaire replica failover en promo veren naar de primaire replicatie door te wijzigen in `failoverPriority=0`. Deze bewerking kan worden gebruikt om een nood herstel analyse te initiëren om planning voor nood herstel te testen.
 
-In het onderstaande voor beeld wordt ervan uitgegaan dat het account een huidige `West US 2 = 0` failover `East US 2 = 1` -prioriteit heeft en de regio's spiegelt.
+In het onderstaande voor beeld wordt ervan uitgegaan dat het account een huidige failover-prioriteit van `West US 2 = 0` heeft en `East US 2 = 1` en de regio's spiegelt.
 
 > [!CAUTION]
-> Als `locationName` u `failoverPriority=0` wijzigt voor, wordt een hand matige failover geactiveerd voor een Azure Cosmos-account. Bij elke andere wijziging van de prioriteit wordt een failover niet geactiveerd.
+> Als `locationName` voor `failoverPriority=0` wordt gewijzigd, wordt een hand matige failover geactiveerd voor een Azure Cosmos-account. Bij elke andere wijziging van de prioriteit wordt een failover niet geactiveerd.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -697,7 +698,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 
 ### <a id="create-container-lww"></a>Een Azure Cosmos-container maken met conflict oplossing
 
-Als u een beleid voor conflict oplossing wilt maken voor het gebruik van `"mode"="custom"` een opgeslagen procedure, stelt u het pad voor de oplossing in en `"conflictResolutionPath"="myResolverStoredProcedure"`stelt u dit in als de naam van de opgeslagen procedure. Als u alle conflicten naar de ConflictsFeed wilt schrijven en afzonderlijk wilt `"mode"="custom"` afhandelen, stelt u`"conflictResolutionPath"=""`
+Als u een beleid voor conflict oplossing wilt maken voor het gebruik van een opgeslagen procedure, stelt u `"mode"="custom"` in en stelt u het pad voor de oplossing in als de naam van de opgeslagen procedure, `"conflictResolutionPath"="myResolverStoredProcedure"`. Als u alle conflicten naar de ConflictsFeed wilt schrijven en afzonderlijk wilt afhandelen, stelt u `"mode"="custom"` en `"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy

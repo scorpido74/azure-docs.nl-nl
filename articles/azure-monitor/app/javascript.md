@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights voor JavaScript-web-apps | Microsoft Docs
 description: Verzamel tellingen van het aantal paginaweergaven en sessies, webclientgegevens en gebruikspatronen. Detecteer uitzonderingen en prestatieproblemen in JavaScript-webpagina's.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430208"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819379"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -50,7 +45,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Installatie op basis van een fragment
 
-Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Dit moet bij voor keur het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd. Als u een razendsnelle server-app gebruikt, voegt u het fragment boven aan het bestand `_Host.cshtml` toe in de sectie `<head>`.
+Als uw app geen gebruik maakt van NPM, kunt u uw webpagina's rechtstreeks met Application Insights door middel van het plakken van dit fragment boven aan de pagina's. Dit moet bij voor keur het eerste script in uw `<head>` sectie zijn, zodat alle mogelijke problemen met al uw afhankelijkheden kunnen worden gecontroleerd. Als u een razendsnelle server-app gebruikt, voegt u het fragment toe boven aan het bestand `_Host.cshtml` in de sectie `<head>`.
 
 ```html
 <script type="text/javascript">
@@ -178,7 +173,7 @@ Selecteer **browser** en kies vervolgens **fouten** of **prestaties**.
 
 ### <a name="analytics"></a>Analyse 
 
-Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door de `client_Type == "Browser"`-instructie `where` toe te voegen, worden alleen gegevens van de Java script-SDK weer gegeven en worden de telemetrie aan de server zijde die door andere Sdk's is verzameld, uitgesloten.
+Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door een `where`-verklaring van `client_Type == "Browser"`toe te voegen, ziet u alleen gegevens van de Java script-SDK en alle telemetrie aan de server zijde die door andere Sdk's zijn verzameld, worden uitgesloten.
  
 ```kusto
 // average pageView duration by name
@@ -219,7 +214,7 @@ Voor voor beelden van uitvoer bare raadpleegt u [Application Insights java scrip
 Belang rijke wijzigingen in de SDK v2-versie:
 - Als u betere API-hand tekeningen wilt toestaan, zijn een aantal van de API-aanroepen, zoals trackPageView, trackException bijgewerkt. Uitvoeren in IE8 of lagere versies van de browser wordt niet ondersteund.
 - De telemetrie-envelop heeft veld naam-en structuur wijzigingen door gegevens schema-updates.
-- @No__t-0 is verplaatst naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id` @ no__t-1 @ no__t-2)
+- De `context.operation` is verplaatst naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id` --> `telemetryTrace.traceID`)
   - Als u de huidige pagina weergave-ID hand matig wilt vernieuwen (bijvoorbeeld in SPA-apps), kunt u dit doen met `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
 Als u de huidige Application Insights PRODUCTION SDK (1.0.20) gebruikt en wilt zien of de nieuwe SDK in runtime werkt, werkt u de URL bij, afhankelijk van het huidige scenario voor het laden van de SDK.

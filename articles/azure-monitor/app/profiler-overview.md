@@ -1,23 +1,19 @@
 ---
 title: Profileer productie toepassingen in azure met Application Insights Profiler | Microsoft Docs
 description: Identificeer het warme pad in uw webserver code met een profilerings versie met weinig footprint.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338081"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820516"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profileer productie toepassingen in azure met Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler inschakelen voor uw toepassing
@@ -48,10 +44,10 @@ Selecteer een voor beeld om een code verdeling weer te geven van de tijd die is 
 
 In Trace Explorer wordt de volgende informatie weer gegeven:
 
-* **Dynamisch pad weer geven**: Hiermee opent u het grootste Leaf-knoop punt of ten minste iets wat er is gesloten. In de meeste gevallen is dit knoop punt bijna een prestatie knelpunt.
-* **Label**: De naam van de functie of gebeurtenis. De boom structuur bevat een combi natie van code en gebeurtenissen, zoals SQL-en HTTP-gebeurtenissen. De eerste gebeurtenis vertegenwoordigt de totale duur van de aanvraag.
-* **Verstreken**: Het tijds interval tussen het begin van de bewerking en het einde van de bewerking.
-* **Wanneer**: Het tijdstip waarop de functie of gebeurtenis werd uitgevoerd ten opzichte van andere functies.
+* **Hete pad weer geven**: Hiermee opent u het grootste Leaf-knoop punt of ten minste iets wat er is gesloten. In de meeste gevallen is dit knoop punt bijna een prestatie knelpunt.
+* **Label**: de naam van de functie of gebeurtenis. De boom structuur bevat een combi natie van code en gebeurtenissen, zoals SQL-en HTTP-gebeurtenissen. De eerste gebeurtenis vertegenwoordigt de totale duur van de aanvraag.
+* **Verstreken**: het tijds interval tussen het begin van de bewerking en het einde van de bewerking.
+* **Wanneer**: de tijd waarop de functie of gebeurtenis werd uitgevoerd ten opzichte van andere functies.
 
 ## <a name="how-to-read-performance-data"></a>Prestatie gegevens lezen
 
@@ -59,9 +55,9 @@ Micro soft service Profiler maakt gebruik van een combi natie van bemonsterings 
 
 De aanroep stack die wordt weer gegeven in de tijdlijn weergave, is het resultaat van de steek proef en instrumentatie. Omdat elk voor beeld de volledige aanroep stack van de thread vastlegt, bevat het code van Microsoft .NET Framework en van andere frameworks waarnaar u verwijst.
 
-### <a id="jitnewobj"></a>Object toewijzing (CLR) JIT @ no__t-1New of CLR! JIT @ no__t-2Newarr1)
+### <a id="jitnewobj"></a>Object toewijzing (CLR) JIT\_nieuwe of CLR! JIT\_Newarr1)
 
-**CLR! JIT @ no__t-1New** en **CLR! JIT @ no__t-3Newarr1** zijn hulp functies in .NET Framework die geheugen van een beheerde heap toewijzen. **CLR! JIT @ no__t-1New** wordt aangeroepen wanneer een object wordt toegewezen. **CLR! JIT @ no__t-1Newarr1** wordt aangeroepen wanneer een object matrix wordt toegewezen. Deze twee functies zijn doorgaans snel en nemen relatief weinig tijd in beslag. Als **CLR! JIT @ no__t-1New** of **CLR! JIT @ no__t-3Newarr1** neemt veel tijd in uw tijd lijn, de code kan vele objecten toewijzen en aanzienlijke hoeveel heden geheugen gebruiken.
+**CLR! JIT-\_nieuw** en **CLR! JIT\_Newarr1** zijn hulp functies in .NET Framework die geheugen van een beheerde heap toewijzen. **CLR! JIT-\_nieuw** wordt aangeroepen wanneer een object wordt toegewezen. **CLR! JIT\_Newarr1** wordt aangeroepen wanneer een object matrix wordt toegewezen. Deze twee functies zijn doorgaans snel en nemen relatief weinig tijd in beslag. Als **CLR! JIT\_nieuwe** of **CLR! JIT\_Newarr1** in uw tijd lijn veel tijd in beslag neemt, kan de code veel objecten toewijzen en aanzienlijke hoeveel heden geheugen gebruiken.
 
 ### <a id="theprestub"></a>De code wordt geladen (CLR! ThePreStub)
 
@@ -69,9 +65,9 @@ De aanroep stack die wordt weer gegeven in de tijdlijn weergave, is het resultaa
 
 Als **CLR! ThePreStub** neemt een lange tijd in beslag voor een aanvraag, de aanvraag is de eerste om die methode uit te voeren. De tijd voor het laden van .NET Framework de eerste methode is aanzienlijk. U kunt overwegen een opwarm-proces te gebruiken dat het gedeelte van de code uitvoert voordat uw gebruikers er toegang tot hebben, of u kunt overwegen om de systeem eigen image generator (Ngen. exe) uit te voeren in uw assembly's.
 
-### <a id="lockcontention"></a>Conflicten vergren delen (CLR! JITutil @ no__t-1MonContention of CLR! JITutil\_MonEnterWorker)
+### <a id="lockcontention"></a>Conflicten vergren delen (CLR! JITutil\_MonContention of CLR! JITutil\_MonEnterWorker)
 
-**CLR! JITutil @ no__t-1MonContention** of **CLR! JITutil @ no__t-3MonEnterWorker** geeft aan dat de huidige thread wacht totdat een vergren deling wordt vrijgegeven. Deze tekst wordt vaak weer gegeven wanneer u een C# **Lock** -instructie uitvoert, de monitor aanroept **. Voer** de methode in of roep een methode aan met het kenmerk **MethodImplOptions. Synchronized** . Vergrendelings conflicten treedt doorgaans op wanneer thread _a_ een vergren deling ophaalt en thread _B_ probeert dezelfde vergren deling te verkrijgen voordat thread _a_ deze uitgeeft.
+**CLR! JITutil\_MonContention** of **CLR! JITutil\_MonEnterWorker** geeft aan dat de huidige thread wacht totdat een vergren deling wordt vrijgegeven. Deze tekst wordt vaak weer gegeven wanneer u een C# **Lock** -instructie uitvoert, de monitor aanroept **. Voer** de methode in of roep een methode aan met het kenmerk **MethodImplOptions. Synchronized** . Vergrendelings conflicten treedt doorgaans op wanneer thread _a_ een vergren deling ophaalt en thread _B_ probeert dezelfde vergren deling te verkrijgen voordat thread _a_ deze uitgeeft.
 
 ### <a id="ngencold"></a>Code laden ([koude])
 
@@ -87,15 +83,15 @@ Methoden zoals **httpclient maakt. Send** geven aan dat de code wacht tot een HT
 
 Methoden zoals **SqlCommand. Execute** geven aan dat de code wacht tot de database bewerking is voltooid.
 
-### <a id="await"></a>Wachten (in afwachting @ no__t-1TIME)
+### <a id="await"></a>Wachten (nog\_tijd)
 
-**AWAIT @ no__t-1TIME** geeft aan dat de code wacht tot een andere taak is voltooid. Deze vertraging treedt meestal op met C# de instructie **AWAIT** . Wanneer de C# **code een ogen**blik geduld, wordt de thread ontslagen en wordt de besturing teruggegeven aan de thread groep. er is geen thread **die wacht totdat de bewerking** is voltooid. De thread die de **wacht** tijd ' geblokkeerd ' had, is echter in afwachting van het volt ooien van de bewerking. De instructie **AWAIT @ no__t-1TIME** geeft de geblokkeerde tijd aan die wacht totdat de taak is voltooid.
+In **Afwachting\_tijd** geeft aan dat de code wacht tot een andere taak is voltooid. Deze vertraging treedt meestal op met C# de instructie **AWAIT** . Wanneer de C# **code een ogen**blik geduld, wordt de thread ontslagen en wordt de besturing teruggegeven aan de thread groep. er is geen thread **die wacht totdat de bewerking** is voltooid. De thread die de **wacht** tijd ' geblokkeerd ' had, is echter in afwachting van het volt ooien van de bewerking. De instructie **AWAIT\_time** geeft de geblokkeerde tijd aan die wacht totdat de taak is voltooid.
 
 ### <a id="block"></a>Geblokkeerde tijd
 
 **BLOCKED_TIME** geeft aan dat de code wacht totdat een andere resource beschikbaar is. Het kan bijvoorbeeld wachten op een synchronisatie object, voor een thread die beschikbaar is of voor het volt ooien van een aanvraag.
 
-### <a name="unmanaged-async"></a>Niet-beheerd asynchroon
+### <a name="unmanaged-async"></a>Niet-beheerde async
 
 .NET Framework verzendt ETW-gebeurtenissen en geeft activiteit-id's door aan tussen threads zodat asynchrone aanroepen kunnen worden getraceerd tussen threads. Niet-beheerde code (systeem eigen code) en sommige oudere stijlen van asynchrone code ontbreken deze gebeurtenissen en activiteit-id's, waardoor de Profiler niet kan zien welke thread en welke functies op de thread worden uitgevoerd. Dit is het label ' niet-beheerde async ' in de aanroep stack. Als u het ETW-bestand downloadt, kunt u [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) gebruiken om meer inzicht te krijgen in wat er gebeurt.
 
