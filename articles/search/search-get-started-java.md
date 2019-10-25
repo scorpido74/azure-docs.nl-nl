@@ -1,22 +1,22 @@
 ---
-title: "Quick Start: een zoek index maken in Java met REST-Api's-Azure Search"
-description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van Java en de Azure Search REST-Api's.
+title: "Snelstartgids: een zoek index maken in Java met behulp van REST-Api's"
+titleSuffix: Azure Cognitive Search
+description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met Java en de Azure Cognitive Search REST-Api's.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166250"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792804"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Snelstartgids: een Azure Search-index maken in Java met behulp van REST-Api's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in Java met behulp van REST-Api's
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166250"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Maak een Java-Console toepassing die een Azure search-index maakt, laadt en opvraagt met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)en de rest API van de [Azure Search-service](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de volledige toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Maak een Java-Console toepassing die een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)en de [rest API Azure Cognitive Search](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de volledige toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -38,13 +38,13 @@ We hebben de volgende software en services gebruikt om dit voor beeld te bouwen 
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voor elke aanvraag. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voor elke aanvraag. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
@@ -133,9 +133,9 @@ Begin met het openen van het IntelliJ-idee en het instellen van een nieuw projec
 ### <a name="set-up-the-project-structure"></a>De project structuur instellen
 
 1. Selecteer **bestand** > **project structuur**.
-1. Selecteer **modules**en vouw de bron structuur uit om toegang te krijgen tot de inhoud van de map `src` @ no__t-2 @ no__t-3.
-1. Voeg in de `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4-map `app` en `service` mappen toe. Als u dit wilt doen, selecteert u de map `java`, drukt u op ALT + INSERT en voert u de naam van de map in.
-1. Voeg in de `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4-map `app` en `service` mappen toe.
+1. Selecteer **modules**en vouw de bron structuur uit om toegang te krijgen tot de inhoud van de `src` >  map`main`.
+1. Voeg in de map `src` >  `main` > `java` de mappen `app` en `service` toe. Als u dit wilt doen, selecteert u de map `java`, drukt u op ALT + INSERT en voert u de naam van de map in.
+1. Voeg in de map `src` >  `main` >`resources` de mappen `app` en `service` toe.
 
     Wanneer u klaar bent, moet de project structuur eruitzien zoals in de volgende afbeelding.
 
@@ -143,9 +143,9 @@ Begin met het openen van het IntelliJ-idee en het instellen van een nieuw projec
 
 1. Klik op **OK** om het venster te sluiten.
 
-### <a name="add-azure-search-service-information"></a>Informatie over Azure Search-service toevoegen
+### <a name="add-azure-cognitive-search-service-information"></a>Informatie over Azure Cognitive Search-service toevoegen
 
-1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7-map en voeg een `config.properties`-bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
+1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` >  `main` >`resources` > map en voeg een`app` bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
 
 1. Kopieer de volgende instellingen naar het nieuwe bestand en vervang `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` en `<YOUR-QUERY-KEY>` door de naam en sleutels van uw service. Als uw service-eind punt `https://mydemo.search.windows.net` is, is de naam van de service ' mydemo '.
 
@@ -159,7 +159,7 @@ Begin met het openen van het IntelliJ-idee en het instellen van een nieuw projec
 
 ### <a name="add-the-main-method"></a>De methode Main toevoegen
 
-1. In de `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 map, voegt u een `App`-klasse toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **Java-klasse**en voert u vervolgens de naam van de klasse in.
+1. Voeg een`java`klasse toe aan de `src` >  `main` >  > `app` map. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **Java-klasse**en voert u vervolgens de naam van de klasse in.
 1. Open de klasse `App` en vervang de inhoud door de volgende code. Deze code bevat de `main`-methode. 
 
     De niet-genoteerde code leest de para meters van de zoek service en gebruikt deze om een exemplaar van de Search-serviceclient te maken. De client code van de zoek service wordt toegevoegd aan de volgende sectie.
@@ -258,8 +258,8 @@ Begin met het openen van het IntelliJ-idee en het instellen van een nieuw projec
 
 ### <a name="add-the-http-operations"></a>De HTTP-bewerkingen toevoegen
 
-1. In de `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 map, voegt u een @ no__t-7-klasse toe. Als u dit wilt doen, selecteert u de map `service`, drukt u op ALT + INSERT, selecteert u **Java-klasse**en voert u vervolgens de naam van de klasse in.
-1. Open de klasse `SearchServiceClient` en vervang de inhoud door de volgende code. Deze code geeft de HTTP-bewerkingen die nodig zijn om de Azure Search REST API te gebruiken. Aanvullende methoden voor het maken van een index, het uploaden van documenten en het uitvoeren van query's op de index worden toegevoegd in een latere sectie.
+1. Voeg een`java`klasse toe aan de `src` >  `main` >  > `service` map. Als u dit wilt doen, selecteert u de map `service`, drukt u op ALT + INSERT, selecteert u **Java-klasse**en voert u vervolgens de naam van de klasse in.
+1. Open de klasse `SearchServiceClient` en vervang de inhoud door de volgende code. Deze code geeft de HTTP-bewerkingen die nodig zijn om de Azure Cognitive Search REST API te gebruiken. Aanvullende methoden voor het maken van een index, het uploaden van documenten en het uitvoeren van query's op de index worden toegevoegd in een latere sectie.
 
     ```java
     package main.java.service;
@@ -374,7 +374,8 @@ Begin met het openen van het IntelliJ-idee en het instellen van een nieuw projec
 
     ![Structuur van projectmap](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. Open het **maven** -programma venster en voer dit maven doel uit: `verify exec:java` @ no__t-2 @ No__t-3Execute maven doel: Ga naar exec: Java @ no__t-4
+1. Open het **maven** -programma venster en voer dit maven doel uit: `verify exec:java`
+![maven uitvoeren: Controleer exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 Wanneer de verwerking is voltooid, zoekt u een bericht over een GESLAAGDe BUILD, gevolgd door een afsluit code van nul (0).
 
@@ -382,7 +383,7 @@ Wanneer de verwerking is voltooid, zoekt u een bericht over een GESLAAGDe BUILD,
 
 De index voor de hotels bevat eenvoudige velden en één complex veld. Voor beelden van een eenvoudig veld zijn "naam Hotel" of "Beschrijving". Het veld ' adres ' is een complex veld omdat het subvelden bevat, zoals "straat" en "City". In deze Quick Start wordt de index definitie opgegeven met JSON.
 
-1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7-map en voeg een `index.json`-bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
+1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` >  `main` >`resources` > map en voeg een`service` bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
 
 1. Open het bestand `index.json` en voeg de volgende index definitie in.
 
@@ -511,9 +512,9 @@ De index voor de hotels bevat eenvoudige velden en één complex veld. Voor beel
 
     De naam van de index is "Hotels-Quick Start". Kenmerken voor de index velden bepalen hoe de geïndexeerde gegevens kunnen worden doorzocht in een toepassing. Het kenmerk `IsSearchable` moet bijvoorbeeld worden toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. Zie [velden verzamelings-en veld kenmerken](search-what-is-an-index.md#fields-collection)voor meer informatie over kenmerken.
     
-    In het veld `Description` in deze index wordt de optionele eigenschap `analyzer` gebruikt om de standaard taal analyse voor lucene te vervangen. Het veld `Description_fr` maakt gebruik van de Franse lucene Analyzer `fr.lucene` omdat de Franse tekst wordt opgeslagen. De `Description` maakt gebruik van de optionele taal analyse en. lucene van micro soft. Zie voor meer informatie over analyse functies [analyseren voor tekst verwerking in azure Search](search-analyzers.md).
+    In het veld `Description` in deze index wordt de optionele eigenschap `analyzer` gebruikt om de standaard taal analyse voor lucene te vervangen. In het veld `Description_fr` wordt gebruikgemaakt van de Franse lucene Analyzer-`fr.lucene`, omdat er Franse tekst wordt opgeslagen. De `Description` maakt gebruik van de optionele taal analyse en. lucene van micro soft. Zie voor meer informatie over analyse functies [voor het verwerken van tekst in Azure Cognitive Search](search-analyzers.md).
 
-1. Voeg de volgende code toe aan de klasse `SearchServiceClient`. Deze methoden bouwen Azure Search-Url's voor REST-services die een index maken en verwijderen en die bepalen of een index bestaat. De methoden maken ook de HTTP-aanvraag.
+1. Voeg de volgende code toe aan de klasse `SearchServiceClient`. Deze methoden bouwen Azure Cognitive Search REST service-Url's die een index maken en verwijderen, en bepalen of een index bestaat. De methoden maken ook de HTTP-aanvraag.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -569,7 +570,7 @@ De index voor de hotels bevat eenvoudige velden en één complex veld. Voor beel
     
 ## <a name="2---load-documents"></a>2-documenten laden
 
-1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7-map en voeg een `hotels.json`-bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
+1. Vouw in het **project** venster de bron structuur uit om toegang te krijgen tot de `src` >  `main` >`resources` > map en voeg een`service` bestand toe. Als u dit wilt doen, selecteert u de map `app`, drukt u op ALT + INSERT, selecteert u **bestand**en voert u de bestands naam in.
 1. Voeg de volgende Hotel documenten in het bestand in.
 
     ```json
@@ -693,9 +694,9 @@ De index voor de hotels bevat eenvoudige velden en één complex veld. Voor beel
 
 Nu u de documenten in de hotels hebt geladen, kunt u zoek query's maken voor toegang tot de hotels-gegevens.
 
-1. Voeg de volgende code toe aan de klasse `SearchServiceClient`. Deze code bouwt Azure Search-Url's voor REST-services om de geïndexeerde gegevens te doorzoeken en de zoek resultaten af te afdrukken.
+1. Voeg de volgende code toe aan de klasse `SearchServiceClient`. Deze code bouwt Azure Cognitive Search-Url's voor REST-services om de geïndexeerde gegevens te doorzoeken en de zoek resultaten af te afdrukken.
 
-    Met de klasse `SearchOptions` en de `createSearchOptions` kunt u een subset opgeven van de beschik bare Azure Search REST API Query opties. Zie [zoeken naar documenten (Azure Search Service rest API)](/rest/api/searchservice/search-documents)voor meer informatie over de rest API Query opties.
+    Met de `SearchOptions` klasse en de `createSearchOptions` methode kunt u een subset opgeven van de beschik bare Azure Cognitive Search REST API-Query opties. Zie [documenten zoeken (Azure Cognitive Search rest API)](/rest/api/searchservice/search-documents)voor meer informatie over de rest API Query opties.
 
     De `SearchPlus`-methode maakt de zoek query-URL, maakt de zoek opdracht en drukt de resultaten vervolgens naar de-console. 
 
@@ -810,7 +811,7 @@ Nu u de documenten in de hotels hebt geladen, kunt u zoek query's maken voor toe
 
 
 
-    Er zijn twee [manieren om te voldoen aan de voor waarden in een query](search-query-overview.md#types-of-queries): zoeken in volledige tekst en filters. Een zoek opdracht in volledige tekst zoekt naar een of meer voor waarden in @no__t velden in uw index. Een filter is een booleaanse expressie die wordt geëvalueerd ten opzichte van `IsFilterable` velden in een index. U kunt zoeken in volledige tekst en filters samen of afzonderlijk gebruiken.
+    Er zijn twee [manieren om te voldoen aan de voor waarden in een query](search-query-overview.md#types-of-queries): zoeken in volledige tekst en filters. Een zoek opdracht in volledige tekst zoekt naar een of meer voor waarden in `IsSearchable` velden in uw index. Een filter is een booleaanse expressie die wordt geëvalueerd ten opzichte van `IsFilterable` velden in een index. U kunt zoeken in volledige tekst en filters samen of afzonderlijk gebruiken.
 
 1. Open het **maven** -programma venster en voer dit maven doel uit: `verify exec:java`
 

@@ -1,5 +1,6 @@
 ---
-title: Omleidings-Uri's gebruiken met de micro soft-verificatie bibliotheek | Micro soft Identity-platform
+title: Omleidings-Uri's gebruiken met de micro soft-verificatie bibliotheek
+titleSuffix: Microsoft identity platform
 description: Meer informatie over de verschillen tussen de micro soft-verificatie bibliotheek voor ObjectiveC (MSAL voor iOS en macOS) en de Azure AD-verificatie bibliotheek voor ObjectiveC (ADAL. ObjC) en hoe u ertussen kunt migreren.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: jak
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a84ea0acc165b236e2dbe17e62a84269a16eedb9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b78906a03eb9dc96fb58dea4ceabff953f2a3e4f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269326"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803781"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Omleidings-Uri's gebruiken met de micro soft-verificatie bibliotheek voor iOS en macOS
 
@@ -47,7 +48,7 @@ Op basis van de volgende registratie van de toepassing in de Azure Portal:
     Client ID: ABCDE-12345 (this is a single client ID)
     RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
 
-App1 gebruikt redirect `msauth.com.contoso.app1://auth` `msauth.com.contoso.app2://auth` App2 maakt gebruik van App3`msauth.com.contoso.app1://auth`
+App1 maakt gebruik van Redirect `msauth.com.contoso.app1://auth` App2 gebruikt `msauth.com.contoso.app2://auth` App3 gebruikt `msauth.com.contoso.app1://auth`
 
 ### <a name="migrating-from-adal-to-msal"></a>Migreren van ADAL naar MSAL
 
@@ -55,13 +56,13 @@ Bij het migreren van code die de Azure AD-verificatie bibliotheek (ADAL) heeft g
 
 ## <a name="msal-redirect-uri-format-requirements"></a>Vereisten voor MSAL-omleidings-URI-indeling
 
-* De MSAL-omleidings-URI moet de vorm hebben`<scheme>://host`
+* De MSAL-omleidings-URI moet de vorm `<scheme>://host`
 
-    Waar `<scheme>` is een unieke teken reeks waarmee uw app wordt geïdentificeerd. Het is voornamelijk gebaseerd op de bundel-id van uw toepassing om uniekheid te garanderen. Als de bundel-id van uw app bijvoorbeeld is, `com.contoso.myapp`is de omleidings-URI in de vorm `msauth.com.contoso.myapp://auth`:.
+    Waarbij `<scheme>` een unieke teken reeks is waarmee uw app wordt geïdentificeerd. Het is voornamelijk gebaseerd op de bundel-id van uw toepassing om uniekheid te garanderen. Als de bundel-ID van uw app bijvoorbeeld is `com.contoso.myapp`, heeft de omleidings-URI de volgende vorm: `msauth.com.contoso.myapp://auth`.
 
-    Als u migreert vanaf ADAL, heeft de omleidings-URI waarschijnlijk deze indeling `<scheme>://[Your_Bundle_Id]`:, `scheme` waar is een unieke teken reeks. Deze indeling blijft werken wanneer u MSAL gebruikt.
+    Als u migreert vanaf ADAL, heeft de omleidings-URI waarschijnlijk de volgende indeling: `<scheme>://[Your_Bundle_Id]`, waarbij `scheme` een unieke teken reeks is. Deze indeling blijft werken wanneer u MSAL gebruikt.
 
-* `<scheme>`moeten worden geregistreerd in de info. plist van uw app `CFBundleURLTypes > CFBundleURLSchemes`onder.  In dit voor beeld is info. plist geopend als bron code:
+* `<scheme>` moeten worden geregistreerd in de info. plist van uw app onder `CFBundleURLTypes > CFBundleURLSchemes`.  In dit voor beeld is info. plist geopend als bron code:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -78,11 +79,11 @@ Bij het migreren van code die de Azure AD-verificatie bibliotheek (ADAL) heeft g
 
 MSAL controleert of de omleidings-URI correct wordt geregistreerd en retourneert een fout als dat niet het geval is.
     
-* Als u universele koppelingen wilt gebruiken als omleidings-URI, `<scheme>` moet de `https` moeten en niet worden gedeclareerd in `CFBundleURLSchemes`. In plaats daarvan configureert u de app en het domein per Apple-instructies in [universele koppelingen voor ontwikkel aars](https://developer.apple.com/ios/universal-links/) en `MSALPublicClientApplication` roept u de `handleMSALResponse:sourceApplication:` methode op wanneer uw toepassing wordt geopend via een universele koppeling.
+* Als u universele koppelingen wilt gebruiken als omleidings-URI, moet de `<scheme>` `https` zijn en niet hoeven te worden gedeclareerd in `CFBundleURLSchemes`. In plaats daarvan configureert u de app en het domein per Apple-instructies in [universele koppelingen voor ontwikkel aars](https://developer.apple.com/ios/universal-links/) en roept u de `handleMSALResponse:sourceApplication:` methode van `MSALPublicClientApplication` aan wanneer uw toepassing wordt geopend via een universele koppeling.
 
 ## <a name="use-a-custom-redirect-uri"></a>Een aangepaste omleidings-URI gebruiken
 
-Als u een aangepaste omleidings-URI `redirectUri` wilt gebruiken `MSALPublicClientApplicationConfig` , geeft u de para `MSALPublicClientApplication` meter door en geeft u dat object door aan wanneer u het object initialiseert. Als de omleidings-URI ongeldig is, wordt de `nil` initialisatie functie geretourneerd `redirectURIError`en wordt er aanvullende informatie ingesteld.  Bijvoorbeeld:
+Als u een aangepaste omleidings-URI wilt gebruiken, geeft u de para meter `redirectUri` door aan `MSALPublicClientApplicationConfig` en geeft u dat object door aan `MSALPublicClientApplication` wanneer u het object initialiseert. Als de omleidings-URI ongeldig is, retourneert de initialisatie functie `nil` en wordt de `redirectURIError`ingesteld met aanvullende informatie.  Bijvoorbeeld:
 
 Doel-C:
 
@@ -114,7 +115,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>De gebeurtenis URL geopend verwerken
 
-Uw toepassing moet MSAL aanroepen wanneer deze een reactie ontvangt via URL-schema's of universele koppelingen. Roep de `handleMSALResponse:sourceApplication:` methode van `MSALPublicClientApplication` toe wanneer uw toepassing wordt geopend. Hier volgt een voor beeld van aangepaste schema's:
+Uw toepassing moet MSAL aanroepen wanneer deze een reactie ontvangt via URL-schema's of universele koppelingen. Roep de `handleMSALResponse:sourceApplication:` methode van `MSALPublicClientApplication` aan wanneer uw toepassing wordt geopend. Hier volgt een voor beeld van aangepaste schema's:
 
 Doel-C:
 

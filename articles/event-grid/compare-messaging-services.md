@@ -1,20 +1,20 @@
 ---
-title: Vergelijking Azure-berichten - Event Grid, Event Hubs, Service Bus
+title: Azure-berichtenservices vergelijken
 description: Beschrijft de drie berichtenservices van - Azure Event Grid, Event Hubs en Service Bus. Geeft een aanbeveling over welke service voor verschillende scenario's het meest geschikt is.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
+ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60826273"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790291"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Kiezen tussen berichtenservices van Azure - Event Grid, Event Hubs en Service Bus
 
@@ -58,7 +58,7 @@ Event Grid is in grote mate geïntegreerd met Azure-services en kan worden geïn
 
 Event Grid biedt ondersteuning voor plaatsing in wachtrij voor onbestelbare berichten voor gebeurtenissen die niet zijn bezorgd bij een eindpunt.
 
-Het heeft de volgende kenmerken:
+Deze functie heeft de volgende kenmerken:
 
 * dynamisch schaalbaar
 * lage kosten
@@ -69,7 +69,7 @@ Het heeft de volgende kenmerken:
 
 Azure Event Hubs is een Big Data-pijplijn. Het vereenvoudigt het vastleggen, bewaren en opnieuw afspelen van telemetrie- en gebeurtenisstroomgegevens. De gegevens kunnen afkomstig zijn van veel gelijktijdige bronnen. Dankzij Event Hubs kunnen telemetrie- en gebeurtenisgegevens beschikbaar worden gesteld aan diverse stroomverwerkingsinfrastructuren en analyseservices. De gegevens zijn beschikbaar als gegevensstromen of gebundelde gebeurtenisbatches. Deze service biedt één oplossing waarmee u snel gegevens kunt ophalen voor realtime verwerking, maar ook voor het herhaaldelijk afspelen van opgeslagen onbewerkte gegevens. Hiermee kunnen de streaminggegevens voor verwerking en analyse worden vastgelegd in een bestand.
 
-Het heeft de volgende kenmerken:
+Deze functie heeft de volgende kenmerken:
 
 * lage latentie
 * kan miljoenen gebeurtenissen per seconde ontvangen en verwerken
@@ -81,7 +81,7 @@ Service Bus is bedoeld voor traditionele bedrijfstoepassingen. Deze bedrijfstoep
 
 Service Bus is een Brokered Messaging-systeem. Het slaat berichten op in een 'broker' (bijvoorbeeld een wachtrij) tot de ontvangende partij gereed is om ze te ontvangen.
 
-Het heeft de volgende kenmerken:
+Deze functie heeft de volgende kenmerken:
 
 * betrouwbare asynchrone levering van berichten (enterprise messaging als een service) waarvoor polling is vereist
 * geavanceerde berichtfuncties, zoals FIFO, batchverwerking/sessies, transacties, verwerking van onbestelbare berichten, tijdelijke controle, doorsturen en filteren en detectie van duplicaten

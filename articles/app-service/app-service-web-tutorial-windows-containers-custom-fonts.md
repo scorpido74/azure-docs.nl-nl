@@ -10,15 +10,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 10/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071504"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787315"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Een ASP.NET-app migreren naar Azure App Service met behulp van een Windows-container (preview)
 
@@ -35,7 +35,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
     - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
-    - Voeg de werkbelastingen toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.
+    - Voeg de workloads toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.
 
 ## <a name="set-up-the-app-locally"></a>De app lokaal instellen
 
@@ -54,7 +54,7 @@ Navigeer in Windows Verkenner naar _custom-font-win-container-master/CustomFontS
 
 Dit lettertype is openbaar beschikbaar via [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great).
 
-### <a name="run-the-app"></a>De app uitvoeren
+### <a name="run-the-app"></a>De app kunt uitvoeren
 
 Open het bestand *custom-font-win-container/CustomFontSample.sln* in Visual Studio. 
 
@@ -90,6 +90,10 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een eenvoudig script waarmee het lettertype wordt geïnstalleerd. U vindt een complexere versie van het script in het [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
+> [!NOTE]
+> Als u de Windows-container lokaal wilt testen, controleert u of docker is gestart op de lokale computer.
+>
+
 ## <a name="publish-to-azure-container-registry"></a>Publiceren naar Azure Container Registry
 
 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) kan uw afbeeldingen opslaan voor containerimplementaties. U kunt App Service configureren voor het gebruik van installatiekopieën die worden gehost in Azure Container Registry.
@@ -121,7 +125,7 @@ Configureer het nieuwe containerregister op basis van de voorgestelde waarden in
 |**DNS-voorvoegsel**| Behoud de gegenereerde registernaam of wijzig deze in een andere unieke naam. |  |
 |**Resourcegroep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK**. |  |
 |**SKU**| Basic | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
-|**Registerlocatie**| Europa -west | |
+|**Registerlocatie**| Europa - west | |
 
 ![Azure Container Registry configureren](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
@@ -131,31 +135,38 @@ Er wordt een terminalvenster geopend waarin de voortgang van het implementeren v
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 
 Selecteer in het menu links **Create a resource** (een resource maken) > **Web** > **Web App for Containers**.
 
-### <a name="configure-the-new-web-app"></a>De nieuwe web-app configureren
+### <a name="configure-app-basics"></a>Basis beginselen van apps configureren
 
-Configureer de instellingen in de interface volgens de volgende tabel:
+Configureer op het tabblad **basis beginselen** de instellingen volgens de volgende tabel en klik vervolgens op **volgende: docker**.
 
 | Instelling  | Voorgestelde waarde | Voor meer informatie |
 | ----------------- | ------------ | ----|
-|**Naam van app**| Typ een unieke naam. | De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is. |
-|**Resourcegroep**| Selecteer **Bestaande gebruiken** en typ **myResourceGroup**. |  |
-|**Besturingssysteem**| Windows (preview) | |
+|**Abonnement**| Controleer of het juiste abonnement is geselecteerd. |  |
+|**Resourcegroep**| Selecteer **nieuwe maken**, typ **myResourceGroup**en klik op **OK**. |  |
+|**Naam**| Typ een unieke naam. | De URL van de web-app is `http://<app-name>.azurewebsites.net`, waarbij `<app-name>` de naam van uw app is. |
+|**Publiceren**| Docker-container | |
+|**Besturingssysteem**| Windows | |
+|**Regio**| Europa - west | |
+|**Windows-abonnement**| Selecteer **nieuwe maken**, typ **myAppServicePlan**en klik op **OK**. | |
 
-### <a name="configure-app-service-plan"></a>App Service-plan configureren
+Het tabblad **basis beginselen** moet er als volgt uitzien:
 
-Klik op **App Service plan/Location** > **Create new** (nieuwe maken). Geef het nieuwe abonnement een naam, selecteer **Europa - west** als de locatie en klik op **OK**.
+![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-service-plan.png)
+### <a name="configure-windows-container"></a>Windows-container configureren
 
-### <a name="configure-container"></a>Container configureren
+Configureer op het tabblad **docker** de aangepaste Windows-container, zoals wordt weer gegeven in de volgende tabel, en selecteer vervolgens **controleren + maken**.
 
-Klik op **Configure container** > **Azure Container Registry**. Selecteer het register, de installatiekopie en de tag die u eerder hebt gemaakt in [Publish to Azure Container Registry](#publish-to-azure-container-registry) en klik op **OK**.
-
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-container.png)
+| Instelling  | Voorgestelde waarde |
+| ----------------- | ------------ |
+|**Bron van installatie kopie**| Azure-container register |
+|**Registersubsleutel**| Selecteer [het REGI ster dat u eerder hebt gemaakt](#publish-to-azure-container-registry). |
+|**Installatiekopie**| customfontsample |
+|**Tag**| nieuwste |
 
 ### <a name="complete-app-creation"></a>De app voltooien
 
@@ -183,9 +194,9 @@ Wacht een paar minuten en probeer het opnieuw, totdat u de startpagina krijgt me
 
 ## <a name="see-container-start-up-logs"></a>Logboeken voor opstarten van containers bekijken
 
-Het kan enige tijd duren voordat de Windows-container is geladen. Als u de voortgang wilt bekijken, gaat u naar de volgende URL en vervangt u *\<app_name>* door de naam van de app.
+Het kan enige tijd duren voordat de Windows-container is geladen. Als u de voortgang wilt bekijken, gaat u naar de volgende URL door *\<app-naam >* te vervangen door de naam van uw app.
 ```
-https://<app_name>.scm.azurewebsites.net/api/logstream
+https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
 
 De gestreamde logboeken zien er ongeveer als volgt uit:

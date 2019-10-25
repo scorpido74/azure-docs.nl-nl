@@ -1,54 +1,53 @@
 ---
-title: 'Quickstart: Een Azure Search-service maken in de portal - Azure Search'
-description: Een Azure Search-resource inrichten in de Microsoft Azure-portal-portal. Resourcegroepen, regio's en de SKU of prijscategorie kiezen.
+title: 'Snelstartgids: een Azure Cognitive Search-service maken in de portal'
+titleSuffix: Azure Cognitive Search
+description: Een AzureCognitive-Zoek resource inrichten in de Azure Portal. Resourcegroepen, regio's en de SKU of prijscategorie kiezen.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 483810f89ea4bbb3a68e616929bd7d752c4d509f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883849"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792442"
 ---
-# <a name="quickstart-create-an-azure-search-service-in-the-portal"></a>Quickstart: Een Azure Search-service maken in de portal
+# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snelstartgids: een Azure Cognitive Search-service maken in de portal
 
-Azure Search is een zelfstandige resource die wordt gebruikt voor het toevoegen van een zoekervaring aan aangepaste apps. Hoewel Azure Search eenvoudig integreert met andere Azure-Services, kunt u het ook gebruiken als zelfstandig onderdeel, of het integreren met apps op netwerk servers, of met software die wordt uitgevoerd op andere Cloud platforms.
+Azure Cognitive Search is een zelfstandige resource die wordt gebruikt om een zoek ervaring in aangepaste apps te koppelen. Hoewel Azure Cognitive Search eenvoudig kan worden geïntegreerd met andere Azure-Services, kunt u het ook gebruiken als zelfstandig onderdeel of het integreren met apps op netwerk servers, of met software die wordt uitgevoerd op andere Cloud platforms.
 
-Dit artikel bevat meer informatie over hoe u een Azure Search-resource in [Azure Portal](https://portal.azure.com/) kunt maken.
+In dit artikel leert u hoe u een Azure Cognitive Search-resource maakt in de [Azure Portal](https://portal.azure.com/).
 
 [![GIF-animatie](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.com/resources/templates/101-azure-search-create/) van Azure Resource Manager. Zie [Azure Search beheren met PowerShell](search-manage-powershell.md) voor hulp om aan de slag te gaan.
+Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.com/resources/templates/101-azure-search-create/) van Azure Resource Manager. Zie [Azure Cognitive Search beheren met Power shell](search-manage-powershell.md)voor hulp bij het aan de slag.
 
 ## <a name="subscribe-free-or-paid"></a>Abonneren (gratis of betaald)
 
-[Maak een gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) en gebruik gratis tegoed om betaalde Azure-services uit te proberen. Nadat u het tegoed hebt opgemaakt, kunt u het account houden en de gratis Azure-services, zoals Websites, blijven gebruiken. Er wordt nooit geld van uw creditcard afgeschreven, tenzij u uw instellingen zelf wijzigt en expliciet aangeeft dat u wilt betalen.
+[Maak een gratis Azure-account](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) en gebruik gratis tegoed om betaalde Azure-services uit te proberen. Nadat u het tegoed hebt opgemaakt, kunt u het account houden en de gratis Azure-services, zoals Websites, blijven gebruiken. Er worden nooit kosten in rekening gebracht bij uw creditcard tenzij u de instellingen expliciet wijzigt en aangeeft dat u wilt betalen.
 
 U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). Als u een MSDN-abonnement hebt, ontvangt u elke maand tegoeden die u voor betaalde Azure-services kunt gebruiken. 
 
-## <a name="find-azure-search"></a>Azure Search vinden
+## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search zoeken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op het plusteken (+ Resource maken) in de linkerbovenhoek.
-3. Gebruik de zoekbalk om te zoeken naar 'Azure Search' of ga naar de resource via **Web** > **Azure Search**.
+3. Gebruik de zoek balk om ' Azure Cognitive Search ' te vinden of navigeer naar de resource via **Web** > **Azure Cognitive Search**.
 
-![Naar een Azure Search-resource navigeren](./media/search-create-service-portal/find-search3.png "Navigatiepad naar Azure Search")
+![Navigeer naar een Azure Cognitive Search-resource](./media/search-create-service-portal/find-search3.png "Het navigatiepad naar Azure Cognitive Search")
 
-## <a name="select-a-subscription"></a>Selecteer een abonnement
+## <a name="select-a-subscription"></a>Een abonnement selecteren
 
-Als u meer dan één abonnement hebt, moet u er één kiezen dat ook services voor gegevensopslag of File Storage-services biedt. Azure Search kunnen Azure Table-en Blob-opslag, SQL Database en Azure Cosmos DB voor indexering automatisch detecteren via [*Indexeer functies*](search-indexer-overview.md), maar alleen voor services onder hetzelfde abonnement.
+Als u meer dan één abonnement hebt, moet u er één kiezen dat ook services voor gegevensopslag of File Storage-services biedt. Azure Cognitive Search kunnen Azure Table-en Blob-opslag, SQL Database en Azure Cosmos DB voor indexering automatisch detecteren via [*Indexeer functies*](search-indexer-overview.md), maar alleen voor services onder hetzelfde abonnement.
 
 ## <a name="set-a-resource-group"></a>Een resource groep instellen
 
-Een resource groep is vereist en is handig voor het beheren van resources, met inbegrip van kosten beheer. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
+Een resource groep is vereist en is handig voor het beheren van resources, met inbegrip van kosten beheer. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Cognitive Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
 
-Als u resources niet in één groep combineert of als bestaande resourcegroepen resources bevatten die worden gebruikt in oplossingen waartussen geen verband bestaat, maakt u een nieuwe resourcegroep voor uw Azure Search-resource. 
+Als u resources niet in één groep combineert of als bestaande resource groepen zijn gevuld met resources die worden gebruikt in niet-gerelateerde oplossingen, maakt u een nieuwe resource groep voor uw Azure Cognitive Search-resource. 
 
 Wanneer u de service gebruikt, kunt u de huidige en geschatte kosten bijhouden (zoals weer gegeven in de scherm opname) of omlaag schuiven om de kosten voor afzonderlijke resources weer te geven.
 
@@ -59,7 +58,7 @@ Wanneer u de service gebruikt, kunt u de huidige en geschatte kosten bijhouden (
 
 ## <a name="name-the-service"></a>Naam van de service
 
-Geef in de details van het exemplaar een service naam op in het veld **URL** . De naam maakt deel uit van het URL-eind punt waartegen API-aanroepen worden uitgegeven: `https://your-service-name.search.windows.net`. Als u bijvoorbeeld wilt dat het eindpunt `https://myservice.search.windows.net` wordt, voert u `myservice` in.
+Geef in de details van het exemplaar een service naam op in het veld **URL** . De naam maakt deel uit van het URL-eind punt waarmee API-aanroepen worden uitgegeven: `https://your-service-name.search.windows.net`. Als u bijvoorbeeld wilt dat het eindpunt `https://myservice.search.windows.net` wordt, voert u `myservice` in.
 
 Vereisten voor servicenaam:
 
@@ -70,22 +69,22 @@ Vereisten voor servicenaam:
 * Zorg ervoor dat er nergens twee opeenvolgende streepjes (--) staan
 
 > [!TIP]
-> Als u denkt dat u meerdere services gaat gebruiken, is het raadzaam om de regio (of locatie) in de service naam op te nemen als een naamgevings Conventie. Services binnen dezelfde regio kunnen zonder kosten worden uitgewisseld, dus als Azure Search zich in VS West bevindt en u andere services hebt in het VS-West, `mysearchservice-westus` kunt u met een naam op de pagina eigenschappen een reis opslaan in een bestand met de informatie over het combi neren of koppelen van resources.
+> Als u denkt dat u meerdere services gaat gebruiken, is het raadzaam om de regio (of locatie) in de service naam op te nemen als een naamgevings Conventie. Services binnen dezelfde regio kunnen zonder kosten worden uitgewisseld. als Azure Cognitive Search zich in VS West bevindt en u andere services ook in VS West hebt, kunt u met een naam zoals `mysearchservice-westus` u een reis naar de pagina eigenschappen besparen wanneer u bepaalt hoe u resources wilt combi neren of koppelen.
 
-## <a name="choose-a-location"></a>Locatie kiezen
+## <a name="choose-a-location"></a>Een locatie kiezen
 
-Azure Search kan als Azure-service worden gehost in datacenters over de hele wereld. De lijst met ondersteunde regio's kunt u vinden op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/search/). 
+Als Azure-service kunnen Azure Cognitive Search worden gehost in data centers over de hele wereld. De lijst met ondersteunde regio's kunt u vinden op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/search/). 
 
-U kunt de bandbreedte kosten minimaliseren of vermijden door dezelfde locatie voor meerdere services te kiezen. Als u bijvoorbeeld gegevens indexeert die door een andere Azure-service zijn verschaft (Azure Storage, Azure Cosmos DB, Azure SQL Database), voor komt u dat de Azure Search service in dezelfde regio bandbreedte kosten (er worden geen kosten in rekening gebracht voor uitgaande gegevens wanneer de services zich bevinden). dezelfde regio).
+U kunt de bandbreedte kosten minimaliseren of vermijden door dezelfde locatie voor meerdere services te kiezen. Als u bijvoorbeeld gegevens indexeert die door een andere Azure-service zijn verschaft (Azure Storage, Azure Cosmos DB, Azure SQL Database), voor komt u dat de Azure Cognitive Search-service in dezelfde regio bandbreedte kosten (er worden geen kosten in rekening gebracht voor uitgaande gegevens wanneer Services bevinden zich in dezelfde regio).
 
-Daarnaast kunt u, als u verrijkingen van cognitieve Zoek opdrachten AI gebruikt, uw service maken in dezelfde regio als uw Cognitive Services-resource. *De co-locatie van Azure Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
+Daarnaast kunt u, als u verrijkingen van cognitieve Zoek opdrachten AI gebruikt, uw service maken in dezelfde regio als uw Cognitive Services-resource. *De co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
 
 > [!Note]
 > Centraal-India is momenteel niet beschikbaar voor nieuwe services. Voor services die zich al in Centraal-India bevinden, kunt u opschalen zonder beperkingen en wordt uw service volledig ondersteund in die regio. De beperking voor deze regio is tijdelijk en beperkt tot alleen nieuwe services. Deze notitie wordt verwijderd wanneer de beperking niet meer van toepassing is.
 
 ## <a name="choose-a-pricing-tier-sku"></a>Een prijs categorie kiezen (SKU)
 
-[Azure Search wordt momenteel aangeboden in verschillende prijscategorieën](https://azure.microsoft.com/pricing/details/search/): Gratis, Basic of Standard. Elke categorie heeft eigen [capaciteiten en limieten](search-limits-quotas-capacity.md). Raadpleeg [Choose a pricing tier or SKU](search-sku-tier.md) (Een prijscategorie of SKU kiezen) voor hulp.
+[Azure Cognitive Search wordt momenteel aangeboden in meerdere prijs categorieën](https://azure.microsoft.com/pricing/details/search/): gratis, basis en standaard. Elke categorie heeft eigen [capaciteiten en limieten](search-limits-quotas-capacity.md). Raadpleeg [Choose a pricing tier or SKU](search-sku-tier.md) (Een prijscategorie of SKU kiezen) voor hulp.
 
 Basic en Standard zijn de meest voorkomende opties voor productie werkbelastingen, maar de meeste klanten beginnen met de gratis service. De belangrijkste verschillen tussen lagen zijn de partitie grootte en de snelheid, en limieten voor het aantal objecten dat u kunt maken.
 
@@ -109,13 +108,13 @@ Tenzij u de portal gebruikt, moet u op programmeer niveau toegang tot uw nieuwe 
 
 2. Selecteer **Sleutels** in het navigatiedeelvenster links en kopieer een van de beheersleutels (deze zijn equivalent). API-beheersleutels voor beheerders zijn vereist voor het maken, bijwerken en verwijderen van objecten in uw service.
 
-   ![Overzichtspagina met URL-eindpunt](./media/search-create-service-portal/get-url-key.png "URL-eindpunt en andere details van de service")
+   ![Service overzicht pagina met URL-eind punt](./media/search-create-service-portal/get-url-key.png "URL-eind punt en andere service Details")
 
-Een eindpunt en sleutel zijn niet nodig voor op de portal gebaseerde taken. De portal is al gekoppeld aan uw Azure Search-resource met beheerdersrechten. Begin met [Quick start voor een portal-overzicht: Een Azure Search-index maken in de](search-get-started-portal.md)Portal.
+Een eindpunt en sleutel zijn niet nodig voor op de portal gebaseerde taken. De portal is al gekoppeld aan uw Azure Cognitive Search-resource met beheerders rechten. Voor een portal-overzicht begint u met [Quick Start: een Azure Cognitive search-index maken in de portal](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Uw service schalen
 
-Nadat uw service is geconfigureerd, kunt u deze schalen, zodat de service aan uw behoeften voldoet. Als u de Standard-laag voor uw Azure Search-service hebt gekozen, kunt u uw service in twee dimensies schalen: replica's en partities. Als u had gekozen voor de categorie Basic, had u alleen replica's kunnen toevoegen. Als u had gekozen voor de gratis service, had u niet kunnen schalen.
+Nadat uw service is geconfigureerd, kunt u deze schalen, zodat de service aan uw behoeften voldoet. Als u de Standard-laag voor uw Azure Cognitive Search-service hebt gekozen, kunt u uw service in twee dimensies schalen: replica's en partities. Als u had gekozen voor de categorie Basic, had u alleen replica's kunnen toevoegen. Als u had gekozen voor de gratis service, had u niet kunnen schalen.
 
 ***Partities*** zorgen ervoor dat uw service meer documenten bewaart en meer documenten doorzoekt.
 
@@ -137,22 +136,22 @@ Als u resources toevoegt, wordt uw maandfactuur hoger. Met de [prijscalculator](
 
 ## <a name="when-to-add-a-second-service"></a>Wanneer u een tweede service moet toevoegen
 
-De meeste klanten gebruiken maar één service die geconfigureerd is voor de categorie die de [juiste balans voor resources](search-sku-tier.md) biedt. Eén service kan meerdere indexen hosten, afhankelijk van de [maximale limieten van de door u geselecteerde categorie](search-capacity-planning.md), en alle indexen zijn van elkaar geïsoleerd. In Azure Search kunnen aanvragen alleen worden gericht aan één index, waardoor de kans dat er per ongeluk of opzettelijk gegevens worden opgehaald uit andere indexen in dezelfde service, wordt geminimaliseerd.
+De meeste klanten gebruiken maar één service die geconfigureerd is voor de categorie die de [juiste balans voor resources](search-sku-tier.md) biedt. Eén service kan meerdere indexen hosten, afhankelijk van de [maximale limieten van de door u geselecteerde categorie](search-capacity-planning.md), en alle indexen zijn van elkaar geïsoleerd. In azure Cognitive Search kunnen aanvragen alleen worden omgeleid naar één index, zodat de kans op onbedoelde of opzettelijke gegevens uit andere indexen in dezelfde service wordt geminimaliseerd.
 
 Hoewel de meeste klanten slechts één service gebruiken, kan serviceredundantie nodig zijn als de volgende operationele vereisten gelden:
 
-* Herstel na noodgevallen (onderbreking datacentrum). Azure Search biedt geen onmiddellijke failover in geval van een storing. Raadpleeg voor aanbevelingen en richtlijnen [Servicebeheer](search-manage.md).
+* Herstel na noodgevallen (onderbreking datacentrum). Azure Cognitive Search biedt geen directe failover in het geval van een storing. Raadpleeg voor aanbevelingen en richtlijnen [Servicebeheer](search-manage.md).
 * Uit uw onderzoek naar multitenancymodellering blijkt dat een ontwerp met meerdere services optimaal is. Raadpleeg voor meer informatie [Ontwerp voor multitenancy](search-modeling-multitenant-saas-applications.md).
-* Voor globaal geïmplementeerde toepassingen kan het nodig zijn dat u een exemplaar van Azure Search in meerdere regio's plaatst om de latentie van het internationale verkeer in uw toepassing te minimaliseren.
+* Voor globaal geïmplementeerde toepassingen kunt u een exemplaar van Azure Cognitive Search in meerdere regio's vereisen om de latentie van het internationale verkeer van uw toepassing te minimaliseren.
 
 > [!NOTE]
-> In Azure Search kunt u indexering en query bewerkingen niet scheiden. Daarom zou u nooit meerdere services voor gescheiden werk belastingen maken. Een query wordt altijd uitgevoerd op de service waarin de index is gemaakt (u kunt niet een index in een service maken en vervolgens naar een andere service kopiëren).
+> In azure Cognitive Search kunt u indexering en query bewerkingen niet scheiden. Daarom zou u nooit meerdere services voor gescheiden werk belastingen maken. Een query wordt altijd uitgevoerd op de service waarin de index is gemaakt (u kunt niet een index in een service maken en vervolgens naar een andere service kopiëren).
 
-Een tweede service is niet vereist voor hoge beschikbaarheid. Hoge beschikbaarheid voor query's wordt bereikt wanneer u twee of meer replica's in dezelfde service gebruikt. Replica-updates zijn sequentieel, wat betekent dat er ten minste één operationeel is wanneer er een service-update wordt geïmplementeerd. Voor meer informatie over uptime raadpleegt u [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Een tweede service is niet vereist voor hoge beschikbaarheid. Hoge beschikbaarheid voor query's wordt bereikt wanneer u twee of meer replica's in dezelfde service gebruikt. Replica-updates zijn opeenvolgend, wat betekent dat er ten minste één operationeel is wanneer een service-update wordt geïmplementeerd. Zie [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/)voor meer informatie over uptime.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een Azure Search-service hebt ingericht, kunt u in de portal verdergaan met het maken van uw eerste index.
+Nadat u een Azure Cognitive Search-service hebt ingericht, kunt u door gaan in de portal om uw eerste index te maken.
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een Azure Search-index maken in de portal](search-get-started-portal.md)
+> [Snelstartgids: een Azure Cognitive Search-index maken in de portal](search-get-started-portal.md)

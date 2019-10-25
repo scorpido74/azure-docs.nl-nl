@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274158"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791534"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon
 
@@ -31,7 +31,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
@@ -43,7 +43,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van de Re
 
 2. Geef de vereiste waarden op voor het maken van uw Azure-Databricks-werkruimte
 
-   ![Azure Databricks-werkruimte maken met behulp van een Azure Resource Manager-sjabloon](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Databricks-werkruimte maken met behulp van een Azure Resource Manager-sjabloon")
+   ![Azure Databricks werk ruimte maken met behulp van een Azure Resource Manager sjabloon](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Databricks werk ruimte maken met behulp van een Azure Resource Manager sjabloon")
 
    Geef de volgende waarden op:
 
@@ -59,7 +59,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van de Re
 
 4. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werkruimte wordt rechts in de portal de tegel **Implementatie verzenden voor Azure Databricks** weergegeven. Mogelijk moet u op uw dashboard naar rechts scrollen om de tegel te zien. Bovenaan het scherm wordt ook een voortgangsbalk weergegeven. U kunt beide gebieden bekijken voor de voortgang.
 
-   ![Tegel Databricks-implementatie](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Tegel Databricks-implementatie")
+   ![Tegel implementatie van Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Tegel implementatie van Databricks")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
@@ -67,11 +67,11 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van de Re
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Cluster**.
 
-   ![Databricks in Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Databricks in Azure")
+   ![Databricks op Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-   ![Een Databricks Spark-cluster maken in Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
+   ![Een Databricks Spark-cluster maken in azure](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
 
    Accepteer alle andere standaardwaarden, anders dan de volgende:
 
@@ -95,11 +95,11 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
 
 1. Klik in het linkerdeelvenster op **Werkruimte**. Klik in de vervolgkeuzelijst **Werkruimte** op **Maken** en klik vervolgens op **Notitieblok**.
 
-   ![Een notitieblok maken in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Een notitieblok maken in Databricks")
+   ![Een notitie blok maken in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Een notitie blok maken in Databricks")
 
 2. Voer in het dialoogvenster **Notitieblok maken** een naam in, selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-   ![Een notitieblok maken in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Een notitieblok maken in Databricks")
+   ![Een notitie blok maken in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Een notitie blok maken in Databricks")
 
    Klik op **Maken**.
 
@@ -153,17 +153,17 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
 
 6. U ziet uitvoer in tabelvorm zoals weergegeven in de volgende schermafbeelding (alleen bepaalde kolommen worden weergegeven):
 
-   ![Voorbeeld-JSON-gegevens](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "Voorbeeld JSON-gegevens")
+   ![Voor beeld van JSON-gegevens](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "Voor beeld van JSON-gegevens")
 
    Naast andere gegevens wordt in de voorbeeldgegevens ook het geslacht van de doelgroep van een radiokanaal vastgelegd (kolomnaam **geslacht**) en of het om een gratis dan wel betaald abonnement gaat (kolomnaam **niveau**).
 
 7. U gaat nu een visuele weergave van deze gegevens maken om voor elk geslacht te zien kunnen hoeveel gebruikers een gratis account hebben en hoeveel een betaald. Klik onder in de tabel met uitvoer op het pictogram voor het **staafdiagram** en klik vervolgens op **Tekenopties**.
 
-   ![Staafdiagram maken](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Staafdiagram maken")
+   ![Staaf diagram maken](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Staaf diagram maken")
 
 8. In **Tekening aanpassen** sleept en zet u de waarden neer zoals in de schermafbeelding wordt weergegeven.
 
-   ![Staafdiagram aanpassen](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Staafdiagram aanpassen")
+   ![Staaf diagram aanpassen](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Staaf diagram aanpassen")
 
    * Stel **Sleutels** in op **geslacht**.
    * Stel **Reeksgroeperingen** in op **niveau**.
@@ -174,13 +174,13 @@ Voer de volgende taken uit om een notitieblok in Databricks te maken. Configuree
 
 9. De uitvoer toont de visuele weergave zoals de volgende schermafbeelding laat zien:
 
-   ![Staafdiagram aanpassen](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Staafdiagram aanpassen")
+   ![Staaf diagram aanpassen](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Staaf diagram aanpassen")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Nadat u het artikel hebt doorgenomen, kunt u het cluster beëindigen. Dit doet u door vanuit de Azure Databricks-werkruimte in het linkerdeelvenster **Clusters** te selecteren. Voor het cluster dat u wilt beëindigen, plaatst u de cursor op het weglatingsteken onder de kolom **Acties** en selecteert u het **beëindigingspictogram**.
 
-![Een Databricks-cluster stopzetten](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
+![Een Databricks-cluster stoppen](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
 Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 

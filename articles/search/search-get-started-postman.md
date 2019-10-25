@@ -1,22 +1,22 @@
 ---
-title: "Snelstartgids: een zoek index in postman maken met REST-Api's-Azure Search"
-description: Meer informatie over het aanroepen van de Azure Search REST-Api's met behulp van Postman en voorbeeld gegevens en definities.
+title: "Snelstartgids: een zoek index in postman maken met REST-Api's"
+titleSuffix: Azure Cognitive Search
+description: Meer informatie over het aanroepen van de Azure Cognitive Search REST-Api's met behulp van Postman en voorbeeld gegevens en definities.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72176041"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792290"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Quick Start: een Azure Search-index maken in postman met REST-Api's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Quick Start: een Azure Cognitive Search-index maken in postman met REST-Api's
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "72176041"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Een van de eenvoudigste manieren om de [Azure Search rest api's](https://docs.microsoft.com/rest/api/searchservice) te verkennen, is het gebruik van Postman of een ander hulp programma voor webtests om HTTP-aanvragen te formuleren en de antwoorden te controleren. Met de juiste hulpmiddelen en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
+Een van de eenvoudigste manieren om de [Azure COGNITIVE Search rest api's](https://docs.microsoft.com/rest/api/searchservice) te verkennen, is postman of een ander hulp programma voor het testen van HTTP-aanvragen formuleren en de reacties controleren. Met de juiste hulpmiddelen en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
 
 In dit artikel wordt uitgelegd hoe u aanvragen interactief kunt formuleren. U kunt ook [een postman-verzameling downloaden en importeren](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) om vooraf gedefinieerde aanvragen te gebruiken.
 
@@ -35,13 +35,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start. 
 
-+ [Postman desktop-app](https://www.getpostman.com/) wordt gebruikt voor het verzenden van aanvragen naar Azure Search.
++ [Postman desktop-app](https://www.getpostman.com/) wordt gebruikt voor het verzenden van aanvragen naar Azure Cognitive Search.
 
-+ [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
@@ -51,9 +51,9 @@ REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel n
 
 Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
-## <a name="connect-to-azure-search"></a>Verbinding maken met Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
 
-In deze sectie gebruikt u het webprogramma van de keuze om verbindingen met Azure Search in te stellen. Elk hulp programma bewaart informatie over de aanvraag header voor de sessie, wat betekent dat u slechts één keer de API-sleutel en het inhouds type hoeft in te voeren.
+In deze sectie gebruikt u het webprogramma van keuze om verbindingen met Azure Cognitive Search in te stellen. Elk hulp programma bewaart informatie over de aanvraag header voor de sessie, wat betekent dat u slechts één keer de API-sleutel en het inhouds type hoeft in te voeren.
 
 Voor beide hulp middelen moet u een opdracht kiezen (GET, POST, PUT enzovoort), een URL-eind punt opgeven en voor sommige taken JSON opgeven in de hoofd tekst van de aanvraag. Vervang de naam van de zoek service (uw-zoek service naam) door een geldige waarde. Voeg `$select=name` toe om alleen de naam van elke index te retour neren. 
 
@@ -61,18 +61,18 @@ Voor beide hulp middelen moet u een opdracht kiezen (GET, POST, PUT enzovoort), 
 
 Let op het HTTPS-voor voegsel, de naam van de service, de naam van een object (in dit geval de index verzameling) en de [API-versie](search-api-versions.md). De API-Version is een vereiste, kleine letter reeks die is opgegeven als `?api-version=2019-05-06` voor de huidige versie. API-versies worden regel matig bijgewerkt. Als u de API-versie toevoegt aan elke aanvraag, kunt u precies bepalen welke versie wordt gebruikt.  
 
-De samen stelling van de aanvraag header bevat twee elementen, inhouds type, plus de API-sleutel die wordt gebruikt om te verifiëren bij Azure Search. Vervang de API-sleutel van de beheerder (uw-AZURE-SEARCH-ADMIN-API-sleutel) door een geldige waarde. 
+De samen stelling van de aanvraag header bevat twee elementen, inhouds type en de API-sleutel die wordt gebruikt om te verifiëren bij Azure Cognitive Search. Vervang de API-sleutel van de beheerder (uw-AZURE-SEARCH-ADMIN-API-sleutel) door een geldige waarde. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-In postman een aanvraag formuleren die eruitziet als de volgende scherm afbeelding. Kies **ophalen** als werk woord, geef de URL op en klik op **verzenden**. Met deze opdracht wordt verbinding gemaakt met Azure Search, wordt de verzameling indexen gelezen en wordt de HTTP-status code 200 geretourneerd op een geslaagde verbinding. Als uw service al indexen heeft, bevat het antwoord ook index definities.
+In postman een aanvraag formuleren die eruitziet als de volgende scherm afbeelding. Kies **ophalen** als werk woord, geef de URL op en klik op **verzenden**. Met deze opdracht wordt verbinding gemaakt met Azure Cognitive Search, wordt de verzameling indexen gelezen en wordt de HTTP-status code 200 op een geslaagde verbinding geretourneerd. Als uw service al indexen heeft, bevat het antwoord ook index definities.
 
 ![URL en header van Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header van Postman-aanvraag")
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-In Azure Search maakt u doorgaans de index voordat u deze met gegevens laadt. De [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt voor deze taak gebruikt. 
+In azure Cognitive Search maakt u doorgaans de index voordat u deze met gegevens laadt. De [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt voor deze taak gebruikt. 
 
 De URL is uitgebreid met de naam van de `hotels`-index.
 
@@ -126,7 +126,7 @@ Wanneer u deze aanvraag indient, krijgt u een HTTP 201-respons om aan te geven d
 
 ## <a name="2---load-documents"></a>2-documenten laden
 
-De index maken en de index vullen zijn afzonderlijke stappen. In Azure Search bevat de index alle doorzoekbare gegevens die u kunt aanleveren als JSON-documenten. De [rest API voor het toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wordt voor deze taak gebruikt. 
+De index maken en de index vullen zijn afzonderlijke stappen. In azure Cognitive Search bevat de index alle Doorzoek bare gegevens, die u als JSON-documenten kunt opgeven. De [rest API voor het toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wordt voor deze taak gebruikt. 
 
 De URL wordt uitgebreid met de `docs`-verzamelingen en de `index`-bewerking.
 
@@ -301,4 +301,4 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 Nu u weet hoe u kern taken moet uitvoeren, kunt u door gaan met aanvullende REST API-aanroepen voor meer geavanceerde functies, zoals indexers of [het instellen van een cognitieve Zoek pijplijn](cognitive-search-tutorial-blob.md). Voor de volgende stap wordt u aangeraden de volgende koppeling te volgen:
 
 > [!div class="nextstepaction"]
-> [REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in Azure Search](search-semi-structured-data.md)
+> [REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search](search-semi-structured-data.md)

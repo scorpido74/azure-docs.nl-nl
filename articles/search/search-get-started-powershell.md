@@ -1,22 +1,22 @@
 ---
-title: "Quickstart: Een zoek index maken in Power shell met REST-Api's-Azure Search"
-description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van de invoke-RestMethod van Power shell en de REST API van de Azure Search.
-ms.date: 09/10/2019
-author: heidisteen
+title: "Snelstartgids: een zoek index maken in Power shell met REST Api's"
+titleSuffix: Azure Cognitive Search
+description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van de invoke-RestMethod van Power shell en de Azure Cognitive Search REST API.
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881715"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792257"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Quickstart: Een Azure Search-index maken in Power shell met REST Api's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in Power shell met REST Api's
 > [!div class="op_single_selector"]
 > * [Power shell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "70881715"
 > * [Portal](search-create-index-portal.md)
 > 
 
-In dit artikel wordt stapsgewijs uitgelegd hoe u een Azure Search index maakt, laadt en doorzoekt met behulp van Power shell en de [Azure Search rest api's](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u Power shell-opdrachten interactief uitvoert. U kunt ook [een Power shell-script downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) waarmee dezelfde bewerkingen worden uitgevoerd.
+In dit artikel wordt stapsgewijs uitgelegd hoe u een Azure Cognitive Search-index maakt, laadt en doorzoekt met behulp van Power shell en de [azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u Power shell-opdrachten interactief uitvoert. U kunt ook [een Power shell-script downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) waarmee dezelfde bewerkingen worden uitgevoerd.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -35,21 +35,21 @@ De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start.
 
 + [Power shell 5,1 of hoger](https://github.com/PowerShell/PowerShell), met [invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) voor sequentiële en interactieve stappen.
 
-+ [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+2. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
 Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
-## <a name="connect-to-azure-search"></a>Verbinding maken met Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
 
 1. Maak in Power shell een **$headers** -object om het inhouds type en de API-sleutel op te slaan. Vervang de API-sleutel van de beheerder (uw-beheer-API-sleutel) door een sleutel die geldig is voor uw zoek service. U hoeft deze header alleen eenmaal in te stellen voor de duur van de sessie, maar u kunt deze ook aan elke aanvraag toevoegen. 
 
@@ -87,7 +87,7 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
 
 Tenzij u de portal gebruikt, moet er een index op de service bestaan voordat u gegevens kunt laden. Met deze stap wordt de index gedefinieerd en naar de service gepusht. De [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt gebruikt voor deze stap.
 
-Vereiste elementen van een index bevatten een naam en een verzameling velden. De verzameling velden definieert de structuur van een *document*. Elk veld heeft een naam, type en kenmerken die bepalen hoe het wordt gebruikt (bijvoorbeeld of het in volledige tekst kan worden doorzocht, kan worden gefilterd of kunnen worden opgehaald in Zoek resultaten). Binnen een index moet een van de velden van het `Edm.String` type worden aangewezen als de *sleutel* voor document identiteit.
+Vereiste elementen van een index bevatten een naam en een verzameling velden. De verzameling velden definieert de structuur van een *document*. Elk veld heeft een naam, type en kenmerken die bepalen hoe het wordt gebruikt (bijvoorbeeld of het in volledige tekst kan worden doorzocht, kan worden gefilterd of kunnen worden opgehaald in Zoek resultaten). Binnen een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor document identiteit.
 
 Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder worden weer gegeven. Het is een subset van een grotere [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die wordt gebruikt in andere scenario's. Deze Quick start is in deze Snelstartgids bijgesneden.
 
@@ -183,7 +183,7 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
 
 1. Plak dit voor beeld in Power shell om een **$Body** -object te maken met de documenten die u wilt uploaden. 
 
-    Deze aanvraag bevat twee volledige en één gedeeltelijke record. In de gedeeltelijke record ziet u dat u onvolledige documenten kunt uploaden. De `@search.action` para meter geeft aan hoe indexering is voltooid. Geldige waarden zijn upload, Merge, mergeOrUpload en DELETE. Met het gedrag mergeOrUpload maakt u een nieuw document voor hotelId = 3, of werkt u de inhoud bij als deze al bestaat.
+    Deze aanvraag bevat twee volledige en één gedeeltelijke record. In de gedeeltelijke record ziet u dat u onvolledige documenten kunt uploaden. De para meter `@search.action` geeft aan hoe het indexeren is voltooid. Geldige waarden zijn upload, Merge, mergeOrUpload en DELETE. Met het gedrag mergeOrUpload maakt u een nieuw document voor hotelId = 3, of werkt u de inhoud bij als deze al bestaat.
 
     ```powershell
     $body = @"
@@ -319,11 +319,11 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
 
 In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van de [Search-documenten-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Zorg ervoor dat u enkele aanhalings tekens gebruikt in de zoek $urls. Query reeksen bevatten **$** tekens en u kunt weglaten om ze te ontsluiten als de hele teken reeks tussen enkele aanhalings tekens is geplaatst.
+Zorg ervoor dat u enkele aanhalings tekens gebruikt in de zoek $urls. Query reeksen bevatten **$** tekens en u kunt weglaten als u deze weglaat als de hele teken reeks tussen enkele aanhalingen wordt geplaatst.
 
 1. Stel het eind punt in op de verzameling *Hotels-Quick* start docs en voeg een **Zoek** parameter toe om in een query reeks door te geven. 
   
-   Met deze teken reeks wordt een lege zoek opdracht uitgevoerd (Search = *), waarbij een niet-gerangte lijst wordt geretourneerd (zoek score = 1,0) aan wille keurige documenten. Azure Search retourneert standaard 50 overeenkomsten per keer. Als gestructureerd retourneert deze query een volledige document structuur en-waarden. Voeg **$Count = True** toe om een telling van alle documenten in de resultaten op te halen.
+   Met deze teken reeks wordt een lege zoek opdracht uitgevoerd (Search = *), waarbij een niet-gerangte lijst wordt geretourneerd (zoek score = 1,0) aan wille keurige documenten. Azure Cognitive Search retourneert standaard 50 overeenkomsten per keer. Als gestructureerd retourneert deze query een volledige document structuur en-waarden. Voeg **$Count = True** toe om een telling van alle documenten in de resultaten op te halen.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u Power shell gebruikt voor het door lopen van de basis werk stroom voor het maken en openen van inhoud in Azure Search. Met de concepten in het oog wordt u aangeraden over te stappen op geavanceerdere scenario's, zoals indexeren vanuit Azure-gegevens bronnen;
+In deze Quick Start hebt u Power shell gebruikt voor het door lopen van de basis werk stroom voor het maken en openen van inhoud in azure Cognitive Search. Met de concepten in het oog wordt u aangeraden over te stappen op geavanceerdere scenario's, zoals indexeren vanuit Azure-gegevens bronnen;
 
 > [!div class="nextstepaction"]
-> [REST zelf studie: Semi-gestructureerde gegevens (JSON-blobs) indexeren en doorzoeken in Azure Search](search-semi-structured-data.md)
+> [REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search](search-semi-structured-data.md)

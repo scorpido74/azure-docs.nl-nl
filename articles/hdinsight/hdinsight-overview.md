@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71076401"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791181"
 ---
 # <a name="what-is-azure-hdinsight"></a>Wat is Azure HDInsight?
 
@@ -86,7 +86,7 @@ HDInsight omvat specifieke clustertypen en opties voor clusteraanpassing, zoals 
 |[Apache Spark](https://spark.apache.org/)|Een opensourcekader voor parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor de analyse van big data te verbeteren. Zie [Wat is Apache Spark in HDInsight?](./spark/apache-spark-overview.md).|
 |[Apache HBase](https://hbase.apache.org/)|Een NoSQL-database gebouwd op Hadoop. Deze biedt willekeurige toegang en sterke consistentie voor grote hoeveelheden (mogelijk miljarden rijen bij miljoenen kolommen) ongestructureerde en semi-gestructureerde gegevens. Zie [Wat is HBase in HDInsight?](./hbase/apache-hbase-overview.md)|
 |[ML Services](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Een server voor de hosting van websites en het beheren van parallelle, gedistribueerde R-processen. Het biedt gegevenswetenschappers, statistici en R-programmeurs on-demand toegang tot schaalbare, gedistribueerde analysemethoden in HDInsight. Zie [Overzicht van ML Services in HDInsight](./r-server/r-server-overview.md).|
-|[Apache Storm](https://storm.incubator.apache.org/)|Een gedistribueerd, realtime berekeningssysteem voor het snel verwerken van grote gegevensstromen. Storm wordt aangeboden als beheerd cluster in HDInsight. Zie [Realtime-sensorgegevens analyseren met Storm en Hadoop](./storm/apache-storm-sensor-data-analysis.md).|
+|[Apache Storm](https://storm.incubator.apache.org/)|Een gedistribueerd, realtime berekeningssysteem voor het snel verwerken van grote gegevensstromen. Storm wordt aangeboden als beheerd cluster in HDInsight. Zie [Realtime-sensorgegevens analyseren met Storm en Hadoop](/azure/hdinsight/storm/apache-storm-overview).|
 |[Apache-interactieve query](https://cwiki.apache.org/confluence/display/Hive/LLAP)|Caching in geheugen voor interactieve en snellere Hive-query's. Zie [Interactive Query gebruiken in HDInsight](./interactive-query/apache-interactive-query-get-started.md).|
 |[Apache Kafka](https://kafka.apache.org/)|Een opensourceplatform dat wordt gebruikt voor het bouwen van pijplijnen en toepassingen voor het streamen van gegevens. Kafka biedt ook berichtenwachtrijfunctionaliteit waarmee u gegevensstromen kunt publiceren en zich kunt abonneren op gegevensstromen. Zie [Inleiding tot Apache Kafka in HDInsight](./kafka/apache-kafka-introduction.md).|
 

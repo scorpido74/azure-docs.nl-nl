@@ -1,20 +1,20 @@
 ---
 title: 'Quick Start: een node. js MongoDB-app verbinden met Azure Cosmos DB'
 description: In deze snelstartgids wordt beschreven hoe u een bestaande MongoDB-app die is geschreven in Node.js verbindt met Azure Cosmos DB.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b9cadbf35680953058bd38d7db26a6e6c684836b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327297"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792178"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Snelstartgids: een bestaande MongoDB node. js-web-app migreren naar Azure Cosmos DB 
 
@@ -55,7 +55,7 @@ Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen. Deze voor
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Open een git-terminalvenster, bijvoorbeeld git bash, en gebruik de `cd`-opdracht om naar de nieuwe map te gaan voor het installeren van de voorbeeld-app.
@@ -179,10 +179,10 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>De sleutel ophalen
 
-U hebt de databasesleutel nodig om verbinding te kunnen maken met een Cosmos-database. Gebruik de opdracht [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) om de primaire sleutel op te halen.
+U hebt de databasesleutel nodig om verbinding te kunnen maken met een Cosmos-database. Gebruik de opdracht [AZ cosmosdb Keys List](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) om de primaire sleutel op te halen.
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
 De Azure CLI voert informatie uit die lijkt op het volgende voorbeeld. 

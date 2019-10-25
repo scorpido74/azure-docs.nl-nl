@@ -1,101 +1,100 @@
 ---
-title: Een kennis archief maken in de Azure Portal-Azure Search
-description: Maak een Azure Search kennis Archief voor persistentie van verrijkingen van de cognitieve Zoek pijplijn met behulp van de wizard gegevens importeren in de Azure Portal.
+title: Een kennis archief maken in de Azure Portal
+titleSuffix: Azure Cognitive Search
+description: Gebruik de wizard gegevens importeren om een kennis archief te maken voor persistente, verrijkte inhoud. Verbinding maken met een kennis Archief voor analyse van andere apps of verrijkte inhoud verzenden naar downstream-processen.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: d714e913d5e03233ed3ffcaaebca6eb989a56bd7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265197"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790038"
 ---
-# <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Een Azure Search kennis archief maken in de Azure Portal
+# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search-kennis archief maken in de Azure Portal
 
 > [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
+> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. Zowel de Azure Portal als de [zoek rest API versie 2019-05-06-preview](search-api-preview.md) bieden deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 
-Het kennis archief is een functie in Azure Search die de uitvoer van een AI-verrijkings pijplijn persistent maakt voor latere analyses of andere downstream-verwerking. Een AI-verrijkte pijp lijn accepteert afbeeldings bestanden of ongestructureerde tekst bestanden, indexeert deze met behulp van Azure Search, maakt AI-verrijkingen van Cognitive Services (zoals afbeeldings analyse en natuurlijke taal verwerking) en slaat de resultaten op in een kennis archief in azure opslagpad. U kunt vervolgens hulpprogram ma's als Power BI of Storage Explorer gebruiken om het kennis archief te verkennen.
+Het kennis archief is een functie van Azure Cognitive Search die de uitvoer van een cognitieve vaardig heden-pijp lijn voor volgende analyses of downstream-verwerking persistent maakt. 
 
-In dit artikel gebruikt u de wizard gegevens importeren op de Azure Portal om AI-verrijkingen op te nemen, te indexeren en toe te passen op een aantal functionerings gesprekken met hotels. De Hotel beoordelingen worden geïmporteerd in Azure-blog opslag en de resultaten worden opgeslagen als een Knowledge Store in azure Table Storage.
+Een pijp lijn accepteert installatie kopieën en ongestructureerde tekst als onbewerkte inhoud, past AI toe op Cognitive Services (zoals afbeeldingen en natuurlijke taal verwerking) en maakt verrijkte inhoud (nieuwe structuren en informatie) als uitvoer. Een van de fysieke artefacten die zijn gemaakt door een pijp lijn is een [kennis archief](knowledge-store-concept-intro.md)dat u kunt openen via hulpprogram ma's voor het analyseren en verkennen van inhoud.
 
-Nadat u het kennis archief hebt gemaakt, kunt u meer informatie over toegang tot dit kennis archief krijgen met behulp van Storage Explorer of Power BI.
+In deze Quick Start combineert u services en gegevens in de Azure-Cloud om een kennis archief te maken. Zodra alles aanwezig is, voert u de wizard **gegevens importeren** in de portal uit om het allemaal samen te halen. Het eind resultaat is oorspronkelijke en AI-gegenereerde inhoud die u kunt weer geven in de portal ([Storage Explorer](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Vereisten
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-+ [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
+## <a name="create-services-and-load-data"></a>Services maken en gegevens laden
 
-+ [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) om de voorbeeld gegevens en het kennis archief op te slaan. Uw opslag account moet dezelfde locatie gebruiken (zoals US-WEas uw Azure Search-service en het *account type* moet *StorageV2 (standaard versie v2)* of *opslag (algemeen gebruik v1)* zijn.
+Deze Snelstartgids maakt gebruik van Azure Cognitive Search, Azure Blob Storage en [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. 
 
-## <a name="load-the-data"></a>De gegevens laden
+Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen getikt om gratis Maxi maal 20 trans acties dagelijks te kunnen uitvoeren wanneer deze vanuit Azure Cognitive Search worden aangeroepen. Zolang u de door u geleverde voorbeeld gegevens gebruikt, kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
 
-Laadt het het CSV-bestand van het Hotel in Azure Blob-opslag, zodat het toegankelijk is voor een Azure Search indexer en door de AI-verrijkings pijplijn kan worden ingevoerd.
+1. [Down load HotelReviews_Free. CSV](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Deze gegevens zijn gegevens van een hotel beoordeling die zijn opgeslagen in een CSV-bestand (afkomstig van Kaggle.com) en bevat 19 delen van klanten feedback over één hotel. 
 
-### <a name="create-an-azure-blob-container-with-the-data"></a>Een Azure Blob-container maken met de gegevens
+1. [Een Azure Storage-account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [een bestaand account vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage voor zowel de onbewerkte inhoud die u wilt importeren als het kennis archief dat het eind resultaat heeft.
 
-1. [Down load de gegevens voor de Hotel beoordeling die zijn opgeslagen in een CSV-bestand (HotelReviews_Free. CSV)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Deze gegevens zijn afkomstig van Kaggle.com en bevatten feedback van klanten over hotels.
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com)en navigeer naar uw Azure Storage-account.
-1. [Een BLOB-container maken](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) Als u dit wilt doen, klikt u in de linkernavigatiebalk voor uw opslag account op **blobs**en klikt u vervolgens op **+ container** op de opdracht balk.
-1. Voer`hotel-reviews`in voor de nieuwe container **naam**.
-1. Selecteer een **openbaar toegangs niveau**. We hebben de standaard waarde gebruikt.
-1. Klik op **OK** om de Azure Blob-container te maken.
-1. Open de nieuwe `hotels-review` container, klik op **uploaden**en selecteer het bestand **HotelReviews-Free. CSV** dat u in de eerste stap hebt gedownload.
+   Er zijn twee vereisten voor dit account:
+
+   + Kies dezelfde regio als Azure Cognitive Search. 
+   
+   + Kies het account type StorageV2 (algemeen gebruik v2). 
+
+1. Open de pagina's van de BLOB Services en maak een container.  
+
+1. Klik op **Uploaden**.
 
     ![De gegevens uploaden](media/knowledge-store-create-portal/upload-command-bar.png "De Hotels-beoordelingen uploaden")
 
-1. Klik op **uploaden** om het CSV-bestand te importeren in Azure Blob Storage. De nieuwe container wordt weer gegeven.
+1. Selecteer het bestand **HotelReviews-Free. CSV** dat u in de eerste stap hebt gedownload.
 
     ![De Azure Blob-container maken](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "De Azure Blob-container maken")
 
-### <a name="get-the-azure-storage-account-connection-string"></a>Het Azure Storage-account ophalen connection string
+1. U bent bijna klaar met deze resource, maar voordat u deze pagina's verlaat, gebruikt u een koppeling in het navigatie deel venster aan de linkerkant om de pagina **toegangs sleutels** te openen. Een connection string ophalen om gegevens op te halen uit de Blob-opslag. Een connection string ziet er ongeveer uit zoals in het volgende voor beeld: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. Navigeer in de portal naar uw Azure Storage-account.
-1. Klik op **toegangs sleutels**in het linkernavigatievenster van de service.
-1. Kopieer de *verbindings reeks*onder **sleutel 1**en sla deze op. De teken reeks begint `DefaultEndpointsProtocol=https`met. De naam en sleutel van uw opslag account zijn Inge sloten in de teken reeks. Bewaar deze teken reeks handig. U hebt deze nodig in de volgende stappen.
+1. [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder hetzelfde abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
-## <a name="create-and-run-ai-enrichments"></a>AI-verrijkingen maken en uitvoeren
+U bent nu klaar om door te gaan met de wizard gegevens importeren.
 
-Gebruik de wizard gegevens importeren om het kennis archief te maken. Maakt u een gegevens bron, kiest u verrijkingen, configureert u een kennis archief en een index en voert u uit.
+## <a name="run-the-import-data-wizard"></a>De wizard gegevens importeren uitvoeren
 
-### <a name="start-the-import-data-wizard"></a>De wizard Gegevens importeren starten
+Klik op de pagina overzicht van de zoek service op **gegevens importeren** op de opdracht balk om een kennis archief in vier stappen te maken.
 
-1. [Zoek uw zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)op het Azure Portal.
+  ![Opdracht Gegevens importeren](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-1. Klik op **gegevens importeren** op de opdracht balk om de wizard Importeren te starten.
+### <a name="step-1-create-a-data-source"></a>Stap 1: een gegevensbron maken
 
-### <a name="connect-to-your-data-import-data-wizard"></a>Verbinding maken met uw gegevens (wizard gegevens importeren)
-
-In deze stap van de wizard maakt u een gegevens bron van de Azure-Blob met uw Hotels-gegevens.
-
-1. Selecteer in de lijst **gegevens bron** de optie **Azure Blob Storage**.
-1. Voer`hotel-reviews-ds`in bij **naam**.
+1. In **Verbinden met uw gegevens** kiest u **Azure Blob Storage** en selecteert u het account dat en de container die u hebt gemaakt. 
+1. Voer `hotel-reviews-ds`in voor de **naam**.
 1. Voor de **modus voor parseren**selecteert u **tekst met scheidings tekens**en selecteert u vervolgens de **eerste regel bevat selectie vakje voor koptekst** . Controleer of het **scheidings teken** een komma (,) is.
 1. Voer de **verbindings reeks** voor de opslag service in die u in een vorige stap hebt opgeslagen.
-1. Voer`hotel-reviews`in bij **container naam**.
-1. Klik op **Next: Cognitieve zoek opdracht toevoegen (optioneel**).
+1. Voer `hotel-reviews`in bij **container naam**.
+1. Klik op **volgende: AI-verrijking toevoegen (optioneel)** .
 
       ![Een gegevens bron object maken](media/knowledge-store-create-portal/hotel-reviews-ds.png "Een gegevens bron object maken")
 
-## <a name="add-cognitive-search-import-data-wizard"></a>Cognitieve zoek opdracht toevoegen (wizard gegevens importeren)
+1. Ga door naar de volgende pagina.
 
-In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijkingen. Met de vaardig heden die in dit voor beeld worden gebruikt, worden sleutel zinnen geëxtraheerd en worden de taal-en sentiment gedetecteerd. Deze verrijkingen worden "geprojecteerd" in een kennis archief als Azure-tabellen.
+### <a name="step-2-add-cognitive-skills"></a>Stap 2: cognitieve vaardigheden toevoegen
+
+In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijkingen. Met de vaardig heden die in dit voor beeld worden gebruikt, worden sleutel zinnen geëxtraheerd en worden de taal-en sentiment gedetecteerd. In een latere stap worden deze verrijkingen "geprojecteerd" in een kennis archief als Azure-tabellen.
 
 1. Vouw **Cognitive Services toevoegen**uit. **Gratis (beperkte verrijkingen)** is standaard geselecteerd. U kunt deze resource gebruiken omdat het aantal records in HotelReviews-Free. CSV 19 is en deze gratis resource Maxi maal 20 trans acties per dag toestaat.
-1. Vouw **verrijkingen toevoegen**uit.
-1. Voer`hotel-reviews-ss`in bij naam van de **kwalificatieset**.
-1. Selecteer voor **Bron gegevens veld** * *reviews_text*.
+1. Vouw **cognitieve vaardig heden toevoegen**uit.
+1. Voer `hotel-reviews-ss`in voor de naam van de **vakkennisset**.
+1. Selecteer voor **Bron gegevens veld****reviews_text*.
 1. Selecteer voor uitgebreid **granulatie niveau**de optie **pagina's (segmenten van 5000 tekens)**
 1. Selecteer deze cognitieve vaardig heden:
     + **Sleuteltermen extraheren**
     + **Taal detecteren**
     + **Sentiment detecteren**
 
-      ![Een vaardig heden maken](media/knowledge-store-create-portal/hotel-reviews-ss.png "Een vaardig heden maken")
+      ![Een vaardig heden maken](media/knowledge-store-create-portal/hotel-reviews-ss.png "Een set vaardigheden maken")
 
 1. Vouw **verrijkingen in het kennis archief**uit.
 1. Voer de **verbindings reeks voor het opslag account** in die u in een vorige stap hebt opgeslagen.
@@ -106,48 +105,47 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 
     ![Kennis archief configureren](media/knowledge-store-create-portal/hotel-reviews-ks.png "Kennis archief configureren")
 
-1. Klik op **Next: Doel index**aanpassen.
+1. Ga door naar de volgende pagina.
 
-### <a name="import-data-import-data-wizard"></a>Gegevens importeren (wizard gegevens importeren)
+### <a name="step-3-configure-the-index"></a>Stap 3: de index configureren
 
 In deze wizardstap gaat u een index configureren voor optionele Zoek opdrachten in volledige tekst. De wizard maakt een voor beeld van de gegevens bron voor het afleiden van velden en gegevens typen. U hoeft alleen de kenmerken voor het gewenste gedrag te selecteren. Als u bijvoorbeeld het kenmerk **ophalenable** krijgt, kan de zoek service een veld waarde Retour neren terwijl **Zoeken in** volledige tekst in het veld wordt ingeschakeld.
 
-1. Voer`hotel-reviews-idx`bij **index naam**in.
+1. Voer `hotel-reviews-idx`in bij **index naam**.
 1. Voor kenmerken selecteert u de volgende opties:
     + Selecteer **ophalen** mogelijk voor alle velden.
-    + Selecteer **filterbaar** en **facetable** voor deze velden: *Sentiment*, *taal*, *woordgroepen*
+    + Selecteer **filterbaar** en **facetable** voor deze velden: *sentiment*, *taal*, *woordgroepen*
     + Selecteer **Doorzoek** bare waarden voor deze velden: *plaats*, *naam*, *reviews_text*, *taal*, *woordgroepen*
 
     De index moet er ongeveer uitzien als de volgende afbeelding. Omdat de lijst lang is, zijn niet alle velden zichtbaar in de afbeelding.
 
     ![Een index configureren](media/knowledge-store-create-portal/hotel-reviews-idx.png "Een index configureren")
 
-1. Klik op **Next: Maak een Indexeer functie**.
+1. Ga door naar de volgende pagina.
 
-### <a name="create-an-indexer"></a>Een indexeerfunctie maken
+### <a name="step-4-configure-the-indexer"></a>Stap 4: de indexeerfunctie configureren
 
 In deze wizard stap gaat u een Indexeer functie configureren die de gegevens bron, vaardig heden en de index die u in de vorige wizard hebt gedefinieerd, ophaalt.
 
-1. Voer`hotel-reviews-idxr`in bij **naam**.
+1. Voer bij **naam**`hotel-reviews-idxr`in.
 1. Voor **schema**, behoud **de standaard instelling**.
 1. Klik op **verzenden** om de Indexeer functie uit te voeren. Gegevens extractie, indexering, toepassing van cognitieve vaardig heden gebeurt allemaal in deze stap.
 
-### <a name="monitor-the-notifications-queue-for-status"></a>De meldingen wachtrij voor status controleren
+## <a name="monitor-status"></a>Monitor status
 
-1. Controleer in het Azure Portal het activiteiten logboek voor meldingen op een klikable **Azure Search meldings** status koppeling. Het kan enkele minuten duren voordat de uitvoering is voltooid.
+Het indexeren van cognitieve vaardig heden neemt langer af dan typische indexering op basis van tekst. De lijst van de indexeerfunctie moet door de wizard worden geopend op de overzichtspagina, zodat u de voortgang kunt volgen. Voor zelfnavigatie gaat u naar de overzichtspagina en klikt u op **Indexeerfuncties**.
+
+In de Azure Portal kunt u ook het activiteiten logboek van meldingen controleren op een klikable **Azure Cognitive Search meldings** status koppeling. Het kan enkele minuten duren voordat de uitvoering is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw gegevens hebt verrijkt met behulp van cognitieve Services en de resultaten in een kennis archief hebt geprojecteerd, kunt u Storage Explorer of Power BI gebruiken om uw verrijkte gegevensset te verkennen.
+Nu u uw gegevens hebt verrijkt met Cognitive Services en de resultaten in een kennis archief hebt geprojecteerd, kunt u Storage Explorer of Power BI gebruiken om uw verrijkte gegevensset te verkennen.
 
-Zie de volgende walkthrough voor meer informatie over het verkennen van dit kennis archief met behulp van Storage Explorer.
+U kunt inhoud in Storage Explorer weer geven of een stap verder nemen met Power BI om inzicht te krijgen via visualisatie.
 
 > [!div class="nextstepaction"]
 > [Weer geven met Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [verbinding maken met Power bi](knowledge-store-connect-power-bi.md)
 
-Zie de volgende walkthrough voor meer informatie over het verbinden van dit kennis archief met Power BI.
-
-> [!div class="nextstepaction"]
-> [Verbinden met Power BI](knowledge-store-connect-power-bi.md)
-
-Als u deze oefening wilt herhalen of een andere AI-verrijkings scenario wilt uitproberen, verwijdert u de *idxr* indexer. Als u de Indexeer functie verwijdert, wordt de gratis dagelijkse transactie teller weer ingesteld op nul.
+> [!Tip]
+> Als u deze oefening wilt herhalen of een andere AI-verrijkings scenario wilt uitproberen, verwijdert u de *idxr* indexer. Als u de Indexeer functie verwijdert, wordt de gratis dagelijkse transactie teller weer ingesteld op nul voor Cognitive Services verwerking.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0540d8a83a8dc1da9bc763bce0b30463889cfe90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915046"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800035"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Wat is Apache Storm in Azure HDInsight?
 
@@ -24,23 +24,23 @@ ms.locfileid: "70915046"
 
 Storm op HDInsight biedt de volgende functies:
 
-* __99% Service Level Agreement (Sla) op Storm-uptime__: Zie [SLA-informatie voor HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) voor meer informatie.
+* __99% Service Level Agreement (SLA) op Storm uptime__: zie voor meer informatie het document [SLA-gegevens voor HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * Ondersteunt de mogelijkheid om eenvoudig aanpassingen te implementeren door tijdens of na het maken van een Storm-cluster scripts voor dat cluster uit te voeren. Zie [HDInsight-clusters aanpassen met scriptacties](../hdinsight-hadoop-customize-cluster-linux.md) voor meer informatie.
 
-* **Oplossingen maken in meerdere talen**: U kunt Storm-onderdelen schrijven in de taal van uw keuze, bijvoorbeeld in Java, C# of Python.
+* **Oplossingen maken in meerdere talen**: u kunt Storm-onderdelen schrijven in de taal van uw keuze, bijvoorbeeld in Java, C# of Python.
 
     * Integreert Visual Studio met HDInsight voor het ontwikkelen, beheren en controleren van C#-topologieën. Zie [C# Storm-topologieën met de hulpprogramma's van HDInsight voor Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md) voor meer informatie.
 
     * Biedt ondersteuning voor de Trident Java-interface. U kunt Storm-topologieën maken die ondersteuning bieden voor een eenmalige verwerking van berichten, transactionele DataStore-persistentie en een aantal algemene Stream Analytics-bewerkingen.
 
-* **Dynamisch schalen**: U kunt werkknooppunten toevoegen of verwijderen zonder de actieve Storm-topologieën te beïnvloeden.
+* **Dynamische schaalbaarheid**: u kunt werkknooppunten toevoegen of verwijderen zonder de actieve Storm-topologieën te beïnvloeden.
 
     * U moet de lopende topologieën deactiveren en reactiveren om te profiteren van de nieuwe knooppunten die zijn toegevoegd via vergroten/verkleinen.
 
-* **Streaming-pijp lijnen maken met meerdere Azure-Services**: Storm op HDInsight kan worden geïntegreerd met andere Azure-Services, zoals Event Hubs, SQL Database, Azure Storage en Azure Data Lake Storage.
+* **Streaming-pijp lijnen maken met meerdere Azure-Services**: Storm op HDInsight kan worden geïntegreerd met andere Azure-Services, zoals Event Hubs, SQL Database, Azure Storage en Azure data Lake Storage.
 
-    Zie [gebeurtenissen van Event hubs verwerken met Apache Storm op HDInsight](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)voor een voorbeeld oplossing die kan worden geïntegreerd met Azure-Services.
+    Zie [gebeurtenissen van Event hubs verwerken met Apache Storm op HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)voor een voorbeeld oplossing die kan worden geïntegreerd met Azure-Services.
 
 Zie [deze Engelstalige site](https://storm.apache.org/documentation/Powered-By.html) voor een lijst met bedrijven die Apache Storm gebruiken voor hun oplossingen voor realtime analyse.
 
@@ -72,31 +72,31 @@ U kunt in enkele minuten een nieuw Storm-cluster op HDInsight maken. Zie [Apache
 
 ## <a name="ease-of-use"></a>Gebruiksgemak
 
-* __SSH-connectiviteit (Secure Shell)__ : Met SSH kunt u via internet toegang krijgen tot de hoofd knooppunten van uw Storm-cluster. U kunt opdrachten rechtstreeks op het cluster uitvoeren met behulp van SSH.
+* __SSH-connectiviteit (Secure Shell)__ : u hebt via internet toegang tot de hoofdknooppunten van het Storm-cluster met behulp van SSH. U kunt opdrachten rechtstreeks op het cluster uitvoeren met behulp van SSH.
 
   Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
-* __Webconnectiviteit__: Alle HDInsight-clusters bieden de Ambari-webgebruikersinterface. Met de Ambare-webgebruikersinterface kunt u eenvoudig services op het cluster controleren, configureren en beheren. Storm-clusters bieden ook de Storm-gebruikersinterface. Met behulp van de Storm-gebruikersinterface kunt u actieve Storm-topologieën controleren en beheren vanuit de browser.
+* __Webconnectiviteit__: alle HDInsight-clusters bieden de Ambari-webgebruikersinterface. Met de Ambare-webgebruikersinterface kunt u eenvoudig services op het cluster controleren, configureren en beheren. Storm-clusters bieden ook de Storm-gebruikersinterface. Met behulp van de Storm-gebruikersinterface kunt u actieve Storm-topologieën controleren en beheren vanuit de browser.
 
   Zie [HDInsight beheren met de Web-UI van Apache Ambari](../hdinsight-hadoop-manage-ambari.md) en [controleren en beheren met behulp van de Apache Storm UI](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui) -documenten voor meer informatie.
 
-* __Azure PowerShell en klassieke Azure-cli__: Power shell en klassieke CLI bieden beide opdracht regel Programma's die u vanuit uw client systeem kunt gebruiken om te werken met HDInsight en andere Azure-Services.
+* __Azure PowerShell en Azure Classic cli__: Power shell en klassieke cli bieden beide opdracht regel Programma's die u vanuit uw client systeem kunt gebruiken om te werken met HDInsight en andere Azure-Services.
 
-* __Visual Studio-integratie__: Azure Data Lake-Hulpprogram Ma's voor Visual Studio bevatten project sjablonen C# voor het maken van Storm-topologieën met behulp van het SCP.NET-Framework. Data Lake Tools biedt ook hulpprogramma's voor het implementeren, bewaken en beheren van oplossingen met Storm op HDInsight.
+* __Visual Studio-integratie__: Azure data Lake-hulpprogram Ma's voor Visual Studio bevatten project C# sjablonen voor het maken van Storm-topologieën met behulp van het SCP.NET-Framework. Data Lake Tools biedt ook hulpprogramma's voor het implementeren, bewaken en beheren van oplossingen met Storm op HDInsight.
 
   Zie [C# Storm-topologieën met de hulpprogramma's van HDInsight voor Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md) voor meer informatie.
 
 ## <a name="integration-with-other-azure-services"></a>Integratie met andere Azure-services
 
-* __Azure data Lake Storage__: Zie [Azure data Lake Storage gebruiken met Apache Storm op HDInsight](apache-storm-write-data-lake-store.md)voor een voor beeld van het gebruik van data Lake Storage met een storm-cluster.
+* __Azure data Lake Storage__: Zie [Azure Data Lake Storage gebruiken met Apache Storm op HDInsight](apache-storm-write-data-lake-store.md)voor een voor beeld van het gebruik van data Lake Storage met een storm-cluster.
 
-* __Event hubs__: Zie de volgende voor beelden voor een voor beeld van het gebruik van Event Hubs met een storm-cluster:
+* __Azure Event Hubs__: raadpleeg de volgende voorbeelden voor een voorbeeld van het gebruik van Event Hubs met een Storm-cluster:
 
-    * [Process events from Azure Event Hubs met Apache Storm op HDInsight (Java) gebeurtenissen](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
+    * [Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-    * [Verwerken van gebeurtenissen uit Azure Event Hubs met Apache Storm op HDInsight (C#)](apache-storm-develop-csharp-event-hub-topology.md)
+    * [Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL database__, __Cosmos DB__, __Event hubs__en __HBase__: Voor beelden van sjabloon zijn opgenomen in de Data Lake-Hulpprogram Ma's voor Visual Studio. Zie [een C# topologie ontwikkelen voor Apache Storm op HDInsight](apache-storm-develop-csharp-visual-studio-topology.md)voor meer informatie.
+* __SQL-Database__, __Cosmos DB__, __Event Hubs__ en __HBase__: in de Data Lake-hulpmiddelen voor Visual Studio zijn sjabloonvoorbeelden opgenomen. Zie [een C# topologie ontwikkelen voor Apache Storm op HDInsight](apache-storm-develop-csharp-visual-studio-topology.md)voor meer informatie.
 
 ## <a name="support"></a>Ondersteuning
 

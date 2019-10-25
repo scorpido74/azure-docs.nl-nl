@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Meer informatie over cognitieve Zoek AI-verrijking in Azure Portal-Azure Search'
+title: 'Snelstartgids: meer informatie over cognitieve Zoek AI-verrijking in Azure Portal-Azure Search'
 description: Gegevens extractie, natuurlijke taal en vaardig heden voor afbeeldings verwerking in een Azure Search indexerings Portal, met behulp van de Azure Portal en de voorbeeld gegevens.
 manager: nitinme
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 11c58a891a730c57aae3500911741623dde5d51b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265889"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809668"
 ---
-# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Quickstart: Een AI-verrijkings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Quick Start: een AI-verrijkings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
 
 Azure Search kan worden geïntegreerd met [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), het toevoegen van inhoud, het door voeren van een natuurlijke taal (NLP) en de vaardig heden van installatie kopieën aan een Azure Search Indexing-pijp lijn, waardoor er geen Doorzoek bare of ongestructureerde inhoud meer kan worden doorzocht. 
 
@@ -62,7 +62,7 @@ Ga terug naar de dashboardpagina van de Azure Search-service en klik in de opdra
 
   ![Opdracht Gegevens importeren](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
+### <a name="step-1-create-a-data-source"></a>Stap 1: een gegevensbron maken
 
 In **Verbinden met uw gegevens** kiest u **Azure Blob Storage** en selecteert u het account dat en de container die u hebt gemaakt. Geef een naam op voor de gegevensbron en gebruik standaardwaarden voor de rest. 
 
@@ -72,7 +72,7 @@ Ga door naar de volgende pagina.
 
   ![De knop volgende pagina voor Cognitive Search](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
-### <a name="step-2-add-cognitive-skills"></a>Stap 2: Cognitieve vaardigheden toevoegen
+### <a name="step-2-add-cognitive-skills"></a>Stap 2: cognitieve vaardigheden toevoegen
 
 Voeg vervolgens verrijkingsstappen toevoegen aan de pijplijn voor indexering. Als u geen Cognitive Services-resource hebt, kunt u zich aanmelden voor een gratis versie met twintig transacties per dag. Omdat de voorbeeldgegevens uit veertien bestanden bestaan, verbruikt u met het uitvoeren van deze wizard een groot deel van uw dagelijkse toewijzing.
 
@@ -93,7 +93,7 @@ Voeg vervolgens verrijkingsstappen toevoegen aan de pijplijn voor indexering. Al
 > [!NOTE]
 > Vaardigheden voor verwerking van natuurlijke taal werken met behulp van tekstinhoud in de set voorbeeldgegevens. Omdat we geen OCR-optie hebben geselecteerd, worden de JPEG- en PNG-bestanden die worden gevonden in de set voorbeeldgegevens niet verwerkt in deze snelstart. 
 
-### <a name="step-3-configure-the-index"></a>Stap 3: De index configureren
+### <a name="step-3-configure-the-index"></a>Stap 3: de index configureren
 
 De wizard kan gewoonlijk een standaardindex afleiden. U kunt in deze stap het gegenereerde indexschema bekijken en desgewenst instellingen wijzigen. Hieronder ziet u de standaardindex die voor de demoset Blobgegevens is gemaakt.
 
@@ -117,7 +117,7 @@ Ga door naar de volgende pagina.
 
   ![Volgende pagina Indexeerfunctie maken](media/cognitive-search-quickstart-blob/next-button-create-indexer.png)
 
-### <a name="step-4-configure-the-indexer"></a>Stap 4: De indexeerfunctie configureren
+### <a name="step-4-configure-the-indexer"></a>Stap 4: de indexeerfunctie configureren
 
 De indexeerfunctie is een belangrijke resource die het indexeerproces aandrijft. Hiermee specificeert u de naam van de gegevensbron, een doelindex en de uitvoerfrequentie. Het eindresultaat van de wizard **Gegevens importeren** is altijd een indexeerfunctie die u herhaaldelijk kunt uitvoeren.
 
@@ -145,7 +145,7 @@ Nadat er een index is gemaakt, kunt u query's uitvoeren om documenten te retourn
 
 1. Selecteer bovenaan **Index wijzigen** om de index die u hebt gemaakt te selecteren.
 
-1. Voer een zoekopdracht in om een query op de index toe te passen, zoals `search=Microsoft&searchFields=organizations`.
+1. Voer een zoekopdracht in om een query op de index toe te passen, zoals `search=Microsoft&searchFields=Organizations`.
 
 Resultaten worden in JSON geretourneerd, wat uitgebreid en moeilijk te lezen kan zijn, met name in grote documenten die afkomstig zijn van Azure-blobs. Als u niet eenvoudig resultaten kunt scannen, gebruikt u CTRL+F om in documenten te zoeken. Voor deze query kunt u in de JSON zoeken naar specifieke voorwaarden. 
 
@@ -184,4 +184,4 @@ Afhankelijk van hoe u de Cognitive Services-resource hebt ingericht, kunt u expe
 U kunt ook de voorbeeldgegevens en de services die u hebt gemaakt opnieuw gebruiken in de volgende zelfstudie om meer te weten te komen over het programmatisch uitvoeren van dezelfde taken. 
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: De REST API's voor cognitief zoeken gebruiken](cognitive-search-tutorial-blob.md)
+> [Zelfstudie: de REST API's voor cognitief zoeken gebruiken](cognitive-search-tutorial-blob.md)
