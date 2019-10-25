@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310607"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793986"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
 
@@ -23,7 +23,7 @@ De Azure Container Registry-service ondersteunt een set Azure-rollen die verschi
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Eigenaar | X | X | X | X | X | X |  |  
 | Inzender | X | X | X |  X | X | X |  |  
-| Lezer | X |  |  |  |  |  |  |
+| Lezer | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
@@ -35,7 +35,7 @@ Telkens wanneer machtigingen worden toegepast, moet een best practice de meeste 
 
 ### <a name="cicd-solutions"></a>CI/CD-oplossingen
 
-Wanneer u `docker build` opdrachten van CI/cd-oplossingen automatiseert, `docker push` hebt u mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de functie **AcrPush** toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
+Wanneer u `docker build` opdrachten van CI/CD-oplossingen automatiseert, hebt u `docker push` mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de functie **AcrPush** toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
 
 ### <a name="container-host-nodes"></a>Container knooppunten
 
@@ -43,11 +43,11 @@ Knoop punten waarop uw containers worden uitgevoerd, hebben ook de rol **AcrPull
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio code docker-extensie
 
-Voor hulpprogram ma's zoals de Visual Studio code docker- [extensie](https://code.visualstudio.com/docs/azure/docker)is aanvullende toegang tot de bron provider vereist om de beschik bare Azure-container registers weer te geven. Geef in dit geval uw gebruikers toegang tot de rol **lezer** of **Inzender** . Deze rollen bieden `docker pull`, `docker push`, `az acr list` ,enanderemogelijkheden.`az acr build` 
+Voor hulpprogram ma's zoals de Visual Studio code [docker-extensie](https://code.visualstudio.com/docs/azure/docker)is aanvullende toegang tot de bron provider vereist om de beschik bare Azure-container registers weer te geven. Geef in dit geval uw gebruikers toegang tot de rol **lezer** of **Inzender** . Deze rollen staan `docker pull`, `docker push`, `az acr list`, `az acr build`en andere mogelijkheden toe. 
 
 ## <a name="access-resource-manager"></a>Toegang tot Resource Manager
 
-Azure Resource Manager toegang is vereist voor de Azure Portal en het register beheer met de [Azure cli](/cli/azure/). Als u bijvoorbeeld een lijst met registers wilt ophalen met behulp van de `az acr list` opdracht, moet u deze machtiging instellen. 
+Azure Resource Manager toegang is vereist voor de Azure Portal en het register beheer met de [Azure cli](/cli/azure/). Als u bijvoorbeeld een lijst met registers wilt ophalen met behulp van de `az acr list` opdracht, moet u deze machtigingenset hebben. 
 
 ## <a name="create-and-delete-registry"></a>REGI ster maken en verwijderen
 
@@ -55,11 +55,11 @@ De mogelijkheid om Azure-container registers te maken en verwijderen.
 
 ## <a name="push-image"></a>Push-installatie kopie
 
-De mogelijkheid om `docker push` een installatie kopie te plaatsen of een ander [ondersteund artefact](container-registry-image-formats.md) , zoals een helm-diagram, naar een REGI ster te pushen. [Verificatie](container-registry-authentication.md) met het REGI ster vereist met behulp van de geautoriseerde identiteit. 
+De mogelijkheid om een installatie kopie te `docker push` of een ander [ondersteund artefact](container-registry-image-formats.md) , zoals een helm-diagram, naar een REGI ster te pushen. [Verificatie](container-registry-authentication.md) met het REGI ster vereist met behulp van de geautoriseerde identiteit. 
 
 ## <a name="pull-image"></a>Pull-afbeelding
 
-De mogelijkheid om `docker pull` een niet-quarantaine installatie kopie te maken of een ander [ondersteund artefact](container-registry-image-formats.md) , zoals een helm-diagram, op te halen uit een REGI ster. [Verificatie](container-registry-authentication.md) met het REGI ster vereist met behulp van de geautoriseerde identiteit.
+De mogelijkheid om een niet-in quarantaine geplaatste installatie kopie te `docker pull` of een ander [ondersteund artefact](container-registry-image-formats.md) , zoals een helm-diagram, op te halen uit een REGI ster. [Verificatie](container-registry-authentication.md) met het REGI ster vereist met behulp van de geautoriseerde identiteit.
 
 ## <a name="delete-image-data"></a>Afbeeldings gegevens verwijderen
 

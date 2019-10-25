@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 28478f38df6ba6ea356626cc36c23ad498fc1f47
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692259"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792634"
 ---
-Een pijp lijn wordt uitgevoerd op een compute-doel, een reken resource die aan uw werk ruimte is gekoppeld.  Wanneer u een compute-doel hebt gemaakt, kunt u het opnieuw gebruiken voor toekomstige uitvoeringen.
+Een pijp lijn wordt uitgevoerd op een compute-doel dat een reken resource is die aan uw werk ruimte is gekoppeld. Wanneer u een compute-doel hebt gemaakt, kunt u het opnieuw gebruiken voor toekomstige uitvoeringen.
 
 1. Selecteer **uitvoeren** boven aan het canvas om de pijp lijn uit te voeren.
 
@@ -36,6 +36,9 @@ Een pijp lijn wordt uitgevoerd op een compute-doel, een reken resource die aan u
 1. Selecteer **Uitvoeren**.
 
 1. Selecteer in het dialoog venster **pijplijn uitvoering instellen** **+ Nieuw experiment** voor het **experiment**
+
+    > [!NOTE]
+    > Experimenten groeperen gelijksoortige pijp lijnen worden uitgevoerd. Als u een pijp lijn meerdere keren uitvoert, kunt u hetzelfde experiment selecteren voor opeenvolgende uitvoeringen.
 
     * Voer een beschrijvende **naam** voor het experiment in
 

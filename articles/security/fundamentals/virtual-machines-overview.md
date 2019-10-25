@@ -4,7 +4,7 @@ description: Dit artikel bevat een overzicht van de belangrijkste Azure-beveilig
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828560"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792623"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
 Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die kunnen worden gebruikt met virtuele machines.
@@ -45,22 +45,10 @@ Micro soft antimalware voor Azure Cloud Services en Virtual Machines is een real
 
 Micro soft antimalware voor Azure is een oplossing voor toepassingen en Tenant omgevingen met één agent. Het is ontworpen om op de achtergrond te worden uitgevoerd zonder menselijke tussen komst. U kunt beveiliging implementeren op basis van de behoeften van uw toepassings werkbelastingen, met een basis beveiliging van standaard instellingen of geavanceerde aangepaste configuratie, waaronder bewaking van anti-malware.
 
-Wanneer u micro soft antimalware voor Azure implementeert en inschakelt, zijn de volgende kern functies beschikbaar:
-
-* **Real-time beveiliging**: Controleert de activiteit in Cloud Services en op Virtual Machines om het uitvoeren van schadelijke software te detecteren en te blok keren.
-* **Geplande scan**: Voert regel matig gerichte scans uit voor het detecteren van malware, waaronder actieve Program ma's.
-* **Herstel van malware**: Onderneemt automatisch actie over gedetecteerde malware, zoals het verwijderen of in quarantaine van schadelijke bestanden en het opschonen van schadelijke Register vermeldingen.
-* **Handtekening updates**: Installeert automatisch de nieuwste beveiligings handtekeningen (virus definities) om ervoor te zorgen dat de beveiliging up-to-date is op een vooraf bepaalde frequentie.
-* **Updates voor antimalware-engine**: Werkt automatisch de micro soft antimalware voor Azure-engine bij.
-* **Updates van het antimalware-platform**: Hiermee wordt het micro soft antimalware voor Azure-platform automatisch bijgewerkt.
-* **Actieve beveiliging**: Hiermee worden de telemetriegegevens van de telemetrie naar Azure gerapporteerd over gedetecteerde bedreigingen en verdachte bronnen om snel te kunnen reageren. Hiermee wordt de levering in realtime synchrone hand tekeningen via het micro soft Active Protection-systeem (MAPS) ingeschakeld.
-* Voor **beelden van rapportages**: Voorziet en rapporteert voor beelden aan de micro soft antimalware voor Azure-service om de service te verfijnen en probleem oplossing in te scha kelen.
-* **Uitsluitingen**: Hiermee kunnen toepassings-en service beheerders bepaalde bestanden, processen en stations zodanig configureren dat ze worden uitgesloten van beveiliging en worden gescand op prestaties en andere redenen.
-* **Verzameling van antimalware-gebeurtenissen**: Registreert de status van de antimalware-service, verdachte activiteiten en herstel bewerkingen die zijn uitgevoerd in het gebeurtenis logboek van het besturings systeem en verzamelt deze in uw Azure Storage-account.
+Meer informatie over [micro soft antimalware voor Azure](antimalware.md) en de belangrijkste beschik bare functies.
 
 Meer informatie over antimalware-software om uw virtuele machines te beschermen:
 
-* [Micro soft antimalware voor Azure Cloud Services en Virtual Machines](antimalware.md)
 * [Deploying Antimalware Solutions on Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/) (Antimalware-oplossingen implementeren op virtuele machines van Azure)
 * [Trend Micro diepe Security als een service op een Windows-VM installeren en configureren](/azure/virtual-machines/windows/classic/install-trend)
 * [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](/azure/virtual-machines/windows/classic/install-symantec)
@@ -102,7 +90,7 @@ De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versl
 Meer informatie:
 
 * [Azure Disk Encryption voor IaaS-Vm's](/azure/security/azure-security-disk-encryption-overview)
-* [Snelstart: Een Windows IaaS-VM versleutelen met Azure PowerShell @ no__t-0
+* [Snelstartgids: een Windows IaaS-VM met Azure PowerShell versleutelen](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Back-up van virtuele machine
 
@@ -119,11 +107,11 @@ Een belang rijk onderdeel van de BCDR-strategie van uw organisatie is het bepale
 
 Site Recovery:
 
-* **Vereenvoudigt uw BCDR-strategie**: Site Recovery maakt het eenvoudig om replicatie, failover en herstel van meerdere werk belastingen en apps vanaf één locatie te verwerken. Site Recovery organiseert de replicatie en failover, maar onderschept geen toepassings gegevens of bevat er informatie over.
-* **Voorziet in flexibele replicatie**: Met Site Recovery kunt u workloads repliceren die worden uitgevoerd op virtuele Hyper-V-machines, virtuele VMware-machines en fysieke Windows/Linux-servers.
-* **Biedt ondersteuning voor failover en herstel**: Site Recovery voorziet in testfailover voor het ondersteunen van herstel na nood gevallen zonder dat dit van invloed is op productie omgevingen. Bovendien kunt u bij verwachte uitval geplande failovers uitvoeren zonder gegevensverlies, en bij onverwachte noodsituaties ongeplande failovers met minimaal gegevensverlies (afhankelijk van de replicatiefrequentie). Na een failover kunt u weer een failback uitvoeren naar uw primaire sites. De herstelplannen van Site Recovery kunnen scripts en Azure Automation-werkmappen bevatten, zodat u failovers en het herstel van toepassingen met meerdere lagen naar behoefte kunt aanpassen.
-* **Elimineert secundaire data centers**: U kunt repliceren naar een secundaire on-premises site of naar Azure. Als u Azure als doel gebruikt voor herstel na nood gevallen, elimineert u de kosten en complexiteit van het onderhouden van een secundaire site. Gerepliceerde gegevens worden opgeslagen in Azure Storage.
-* Kan worden **geïntegreerd met bestaande BCDR-technologieën**: Site Recovery partners met de BCDR-functies van andere toepassingen. U kunt bijvoorbeeld Site Recovery gebruiken om de SQL Server back-end van zakelijke workloads te helpen beveiligen. Dit omvat systeem eigen ondersteuning voor SQL Server altijd aan om de failover van beschikbaarheids groepen te beheren.
+* **Vereenvoudigt uw BCDR-strategie**: site Recovery maakt het eenvoudig om de replicatie, failover en het herstel van meerdere werk belastingen en apps vanaf één locatie te verwerken. Site Recovery organiseert de replicatie en failover, maar onderschept geen toepassings gegevens of bevat er informatie over.
+* **Voorziet in flexibele replicatie**: door site Recovery te gebruiken, kunt u workloads repliceren die worden uitgevoerd op virtuele Hyper-V-machines, virtuele VMware-machines en fysieke Windows/Linux-servers.
+* **Biedt ondersteuning voor failover en herstel**: site Recovery voorziet in testfailover voor het ondersteunen van herstel na nood gevallen zonder dat dit van invloed is op productie omgevingen. Bovendien kunt u bij verwachte uitval geplande failovers uitvoeren zonder gegevensverlies, en bij onverwachte noodsituaties ongeplande failovers met minimaal gegevensverlies (afhankelijk van de replicatiefrequentie). Na een failover kunt u weer een failback uitvoeren naar uw primaire sites. De herstelplannen van Site Recovery kunnen scripts en Azure Automation-werkmappen bevatten, zodat u failovers en het herstel van toepassingen met meerdere lagen naar behoefte kunt aanpassen.
+* **Elimineert secundaire data centers**: u kunt repliceren naar een secundaire on-premises site of naar Azure. Als u Azure als doel gebruikt voor herstel na nood gevallen, elimineert u de kosten en complexiteit van het onderhouden van een secundaire site. Gerepliceerde gegevens worden opgeslagen in Azure Storage.
+* Kan worden **geïntegreerd met bestaande BCDR-technologieën**: site Recovery partners met de BCDR-functies van andere toepassingen. U kunt bijvoorbeeld Site Recovery gebruiken om de SQL Server back-end van zakelijke workloads te helpen beveiligen. Dit omvat systeem eigen ondersteuning voor SQL Server altijd aan om de failover van beschikbaarheids groepen te beheren.
 
 Meer informatie:
 
@@ -164,14 +152,14 @@ Azure Virtual Machines is gecertificeerd voor FISMA, FedRAMP, HIPAA, PCI DSS Lev
 
 Meer informatie:
 
-* vertrouwens centrum van [Microsoft: Compatibiliteit @ no__t-0
-* [Trusted-Cloud: Microsoft Azure beveiliging, privacy en naleving @ no__t-0
+* [Vertrouwens centrum van micro soft: naleving](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [Vertrouwde Cloud: Microsoft Azure beveiliging, privacy en naleving](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Vertrouwelijk computing
 
 Hoewel vertrouwelijke computing geen technisch onderdeel is van de beveiliging van de virtuele machine, behoort het onderwerp van de beveiliging van de virtuele machine tot het hogere niveau van "Compute"-beveiliging. Vertrouwelijk computing behoort tot de categorie "Compute"-beveiliging.
 
-Vertrouwelijk computing zorgt ervoor dat wanneer gegevens ' in de helder ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE, ook wel bekend als een enclave), een voor beeld van de afbeelding hieronder.  
+Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving https://en.wikipedia.org/wiki/Trusted_execution_environment (ook wel een enclave genoemd), waarvan een voor beeld wordt weer gegeven in de onderstaande afbeelding.  
 
 TEEs zorgt ervoor dat er geen manier is om gegevens of de bewerkingen in de buiten kant weer te geven, zelfs met een fout opsporingsprogramma. Ze kunnen er ook voor zorgen dat alleen geautoriseerde code toegang heeft tot gegevens. Als de code wordt gewijzigd of gewijzigd, worden de bewerkingen geweigerd en wordt de omgeving uitgeschakeld. De TEE dwingt deze beveiligingen af tijdens het uitvoeren van code in het bestand.
 
@@ -179,3 +167,7 @@ Meer informatie:
 
 * [Introductie van Azure vertrouwelijk computing](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure vertrouwelijk computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over [aanbevolen beveiligings procedures](iaas.md) voor vm's en besturings systemen.

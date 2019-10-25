@@ -1,5 +1,6 @@
 ---
-title: Verschillen tussen MSAL. js en ADAL. js | Azure
+title: Verschillen tussen MSAL. js en ADAL. js
+titleSuffix: Microsoft identity platform
 description: Meer informatie over de verschillen tussen de micro soft-verificatie bibliotheek voor Java script (MSAL. js) en de Azure AD-verificatie bibliotheek voor Java script (ADAL. js) en hoe u kunt kiezen welke u wilt gebruiken.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429941"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803169"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Verschillen tussen MSAL JS en ADAL JS
 
@@ -59,9 +60,9 @@ In v 2.0 kunnen gebruikers zich met behulp van de instantie `https://login.micro
 
     v 2.0-protocol gebruikt scopes in plaats van resource in de aanvragen. Met andere woorden, als uw toepassing tokens moet aanvragen met machtigingen voor een resource zoals MS Graph, is het verschil in waarden die worden door gegeven aan de bibliotheek methoden als volgt:
 
-    v 1.0: resource = https @ no__t-0//Graph. micro soft. com
+    v 1.0: resource = https\://graph.microsoft.com
 
-    v 2.0: Scope = https @ no__t-0//Graph. micro soft. com/user. Read
+    v 2.0: Scope = https\://graph.microsoft.com/User.Read
 
     U kunt bereiken voor elke resource-API aanvragen met behulp van de URI van de API in deze indeling: appidURI/Scope bijvoorbeeld: https: \//mytenant. onmicrosoft. com/myapi/API. Read
 

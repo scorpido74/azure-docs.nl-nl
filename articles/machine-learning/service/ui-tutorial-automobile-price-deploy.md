@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693011"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792681"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Zelf studie: een machine learning model implementeren met de visuele interface
 
@@ -40,7 +40,7 @@ Als u uw pijp lijn wilt implementeren, moet u het volgende doen:
 
 1. Selecteer aan de bovenkant van het pijp lijn-canvas de optie **pijp lijn maken**  > **realtime-pijp lijn** .
 
-    Wanneer u **voorspellende pijp lijn maken**selecteert, gebeuren er diverse dingen:
+    Wanneer u de **pijp lijn**voor het maken van een devan-interferentie selecteert, gebeurt het volgende:
     
     * Het getrainde model wordt opgeslagen als een module **gegevensset** in het palet van de module. U kunt het vinden onder **mijn gegevens sets**.
     * Modules worden, zoals **Train model** en **gesplitste gegevens**, verwijderd die zijn gebruikt voor de training.
@@ -97,7 +97,7 @@ Wanneer de inrichting van uw AKS-service is voltooid, gaat u terug naar de real-
 
 1. Selecteer **Implementeren**.
 
-    [! Scherm afbeelding die laat zien hoe u een nieuw realtime-eind punt kunt instellen](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Scherm afbeelding die laat zien hoe u een nieuw real-time eind punt instelt](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
     Wanneer de implementatie is voltooid, wordt er een melding weer gegeven boven het canvas. Dit kan enkele minuten duren.
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773226"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784819"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor co-sell in Partner Center
 
@@ -35,11 +35,11 @@ Selecteer uw aanbiedings type:
 | Apparaat | Een aanbieding waarbij u hardware van een apparaatfabrikant bouwt of verkoopt. |
 | IP | Apps of andere auteurs rechtelijk beschermde materialen waarvoor het gebruik van de klant in licentie is gegeven. Bijvoorbeeld: een CRM-programma dat on-premises kan worden gelicentieerd en geïnstalleerd. |
 | Service | Praktische kennis voor een specifiek eenmalig project, vaak geleverd via consultants. Bijvoorbeeld: het instellen van een klanten database voor een-client (waarbij de client na levering verantwoordelijk is voor de uitvoering van de data base). |
-| Beheerde service | Praktijk gerichte expertise voor een Cloud project, meestal op doorlopende basis. Bijvoorbeeld: Bieden van een platform en hulpprogram ma's voor het uitvoeren van een online database, met doorlopend beheer van de beheerde service provider. |
+| Beheerde service | Praktijk gerichte expertise voor een Cloud project, meestal op doorlopende basis. Bijvoorbeeld: bieden een platform en hulpprogram ma's voor het uitvoeren van een online-data base, met doorlopend beheer van de beheerde service provider. |
 
 ## <a name="solution-areas"></a>Oplossings gebieden
 
-U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding.  Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, `Ctrl` gebruikt u de sleutel (op Windows) of de opdracht toets (op Mac OS).
+U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding.  Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, gebruikt u de `Ctrl` sleutel (op Windows) of de opdracht toets (op Mac OS).
 
 Oplossings gebieden helpen u bij het bepalen van de scenario's die uw aanbieding is ontworpen om te voldoen aan het doel.
 
@@ -65,17 +65,17 @@ Dit document bevat richt lijnen voor de verschillende rollen voor partners en ho
 
 U kunt ook uw bestaande lijst met contact personen van een aanbieding exporteren en vervolgens wijzigingen aanbrengen in dat bestand.
 
-* *Naam (vereist)* : De naam van de contact persoon.
-* *E-mail adres (vereist)* : Het e-mail adres van de contact persoon.
-* *Taak titel (vereist)* : Taak titel.
-* *Rol (vereist)* : Gebruik een van de volgende rollen in dit veld in de sjabloon.
+* *Naam (vereist)* : de naam van de contact persoon.
+* *E-mail adres (vereist)* : het e-mail adres van de contact persoon.
+* *Taak titel (vereist)* : functie titel.
+* *Rol (vereist)* : gebruik een van de volgende rollen in dit veld in de sjabloon.
 
     | **Rol**    | **Beschrijving**  |
     | :------------------- | :-------------------|
-    | *Partner marketing* | Deze rol is gericht op het marketing van uw oplossing en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
-    | *Partner verkoop* | Deze rol is gericht op het verkopen van uw oplossing en samen werking met verkopen met micro soft verkoop teams en Channel wederverkopers. Voor oplossingen voor co-verkoop geeft u ten minste één partner verkoop contactpersoon per regio op waarin u klaar wilt zijn voor samen verkopen. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |
-    | *Technische verkoop partner* | Ondersteunt technische architectuur-en implementatie overwegingen tijdens de verkoop cyclus, de integratie na verkoop en implementaties. |
-    | *Klant succes Manager van de partner* | Biedt doorgaans ondersteuning voor klanten die na de implementatie profiteren, om hen te helpen het meeste uit uw oplossing te halen en de footprint binnen de organisatie van de klant te verg Roten. |
+    | *:::no-loc text="Partner marketing":::* | Deze rol is gericht op het marketing van uw oplossing en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
+    | *:::no-loc text="Partner sales":::* | Deze rol is gericht op het verkopen van uw oplossing en samen werking met verkopen met micro soft verkoop teams en Channel wederverkopers. Voor oplossingen voor co-verkoop geeft u ten minste één partner verkoop contactpersoon per regio op waarin u klaar wilt zijn voor samen verkopen. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |
+    | *:::no-loc text="Partner technical sales":::* | Ondersteunt technische architectuur-en implementatie overwegingen tijdens de verkoop cyclus, de integratie na verkoop en implementaties. |
+    | *:::no-loc text="Partner customer success manager":::* | Biedt doorgaans ondersteuning voor klanten die na de implementatie profiteren, om hen te helpen het meeste uit uw oplossing te halen en de footprint binnen de organisatie van de klant te verg Roten. |
 
 * *Landen/regio's (vereist):*  Gebruik bij het invullen van de sjabloon de [land-/regiocodes van twee letters zoals vermeld](./commercial-marketplace-co-sell-countries.md). Als de contact persoon alle landen/regio's omvat, gebruikt u de drie letter code ' OOO '. Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee letter codes gescheiden door een komma in (Voer bijvoorbeeld ' US, CA, FR ' in de sjabloon in).
 

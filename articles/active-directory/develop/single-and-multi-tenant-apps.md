@@ -1,6 +1,7 @@
 ---
-title: Apps voor één of meerdere tenants in Azure Active Directory
-description: Meer informatie over de functies en de verschillen tussen één tenant en multitenant-apps in Azure AD.
+title: Apps met één en meerdere tenants in Azure Active Directory
+titleSuffix: Microsoft identity platform
+description: Meer informatie over de functies en verschillen tussen apps met één Tenant en meerdere tenants in azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,39 +18,39 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111070"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803646"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Tenants in Azure Active Directory
+# <a name="tenancy-in-azure-active-directory"></a>Pacht in Azure Active Directory
 
-Azure Active Directory (Azure AD) organiseert objecten, zoals gebruikers en apps in groepen met de naam *tenants*. Tenants kunnen een beheerder beleid instellen voor gebruikers binnen de organisatie en de apps die de organisatie eigenaar is van om te voldoen aan de beveiligings- en gebruiksbeleid. 
+Azure Active Directory (Azure AD) organiseert objecten als gebruikers en apps in groepen genaamd *tenants*. Met tenants kan een beheerder beleid instellen voor de gebruikers binnen de organisatie en de apps die de organisatie bezit om te voldoen aan hun beveiligings-en operationeel beleid. 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Wie kan zich aanmelden bij uw app?
 
-Als het gaat om het ontwikkelen van apps, ontwikkelaars kunnen kiezen hun app configureren voor één tenant of meerdere tenants worden tijdens de appregistratie in de [Azure-portal](https://portal.azure.com).
-* Apps met één tenant zijn alleen beschikbaar in de tenant die ze in, ook wel bekend als hun starttenant zijn geregistreerd.
-* Apps met meerdere tenants zijn beschikbaar voor gebruikers in hun starttenant en andere tenants.
+Wanneer het gaat om apps te ontwikkelen, kunnen ontwikkel aars ervoor kiezen om de app te configureren voor een enkele Tenant of een multi tenant tijdens de registratie van de app in de [Azure Portal](https://portal.azure.com).
+* Apps met één Tenant zijn alleen beschikbaar in de Tenant waarin ze zijn geregistreerd, ook wel bekend als hun thuis Tenant.
+* Multi tenant-apps zijn beschikbaar voor gebruikers in hun thuis Tenant en andere tenants.
 
-U kunt uw app om te worden van één tenant of meerdere tenants door in te stellen de doelgroep als volgt configureren in de Azure-portal.
+In de Azure Portal kunt u uw app configureren als één Tenant of multi tenant door de doel groep als volgt in te stellen.
 
-| Doelgroep | Eén/meerdere-tenant | Wie zich kan aanmelden | 
+| Doelgroep | Eén/meerdere tenants | Wie kan zich aanmelden | 
 |----------|--------| ---------|
-| Accounts in deze map alleen | Eén tenant | Alle gebruikers- en gastaccounts in uw directory kunnen u uw toepassing of de API gebruiken.<br>*Gebruik deze optie als uw doelgroep intern voor uw organisatie is.* |
-| Accounts in een Azure AD-directory | Multitenant | Alle gebruikers en gasten met een werk- of schoolaccount van Microsoft kunnen u uw toepassing of de API gebruiken. Dit omvat scholen en bedrijven die gebruikmaken van Office 365.<br>*Gebruik deze optie als de doelgroep bestaat uit bedrijf of onderwijsinstelling klanten.* |
-| Accounts in een Azure AD-directory en persoonlijke Microsoft-accounts (zoals Skype, Xbox, Outlook.com) | Multitenant | Alle gebruikers met een werk- of school- of persoonlijk Microsoft-account kunnen gebruiken voor uw toepassing of de API. Het bevat scholen en bedrijven die gebruikmaken van Office 365, evenals persoonlijke accounts die worden gebruikt om aan te melden bij services als Xbox en Skype.<br>*Gebruik deze optie om het doel van de uitgebreide set Microsoft-accounts.* | 
+| Alleen accounts in deze map | Eén tenant | Alle gebruikers-en Gast accounts in uw Directory kunnen uw toepassing of API gebruiken.<br>*Gebruik deze optie als uw doel groep intern is voor uw organisatie.* |
+| Accounts in een Azure AD-Directory | Multitenant | Alle gebruikers en gasten met een werk-of school account van micro soft kunnen uw toepassing of API gebruiken. Dit omvat scholen en bedrijven die gebruikmaken van Office 365.<br>*Gebruik deze optie als uw doel groep zakelijke of educatieve klanten zijn.* |
+| Accounts in een Azure AD-adres lijst en persoonlijke micro soft-accounts (zoals Skype, Xbox, Outlook.com) | Multitenant | Alle gebruikers met een werk-of school account of een persoonlijk Microsoft-account kunnen uw toepassing of API gebruiken. Het omvat scholen en bedrijven die gebruikmaken van Office 365 en persoonlijke accounts die worden gebruikt om zich aan te melden bij services zoals Xbox en Skype.<br>*Gebruik deze optie om de breedste set micro soft-accounts te bereiken.* | 
 
-## <a name="best-practices-for-multi-tenant-apps"></a>Aanbevolen procedures voor apps met meerdere tenants
+## <a name="best-practices-for-multi-tenant-apps"></a>Aanbevolen procedures voor multi tenant-apps
 
-Het bouwen van geweldige apps met meerdere tenants kan lastig zijn vanwege het aantal verschillende beleidsregels die IT-beheerders in hun tenants instellen kunnen. Als u ervoor kiest om een multitenant-app te maken, volgt u deze aanbevolen procedures:
+Het bouwen van fantastische multi tenant-apps kan lastig zijn vanwege het aantal verschillende beleids regels dat IT-beheerders kunnen instellen in hun tenants. Als u ervoor kiest een multi tenant-app te bouwen, volgt u deze aanbevolen procedures:
 
-* Test uw app in een tenant die is geconfigureerd [beleid voor voorwaardelijke toegang](conditional-access-dev-guide.md).
-* Ga als volgt het principe van minimale gebruikerstoegang om ervoor te zorgen dat uw app alleen aanvragen machtigingen die daadwerkelijk nodig. Voorkomen dat de machtigingen die toestemming van een beheerder vereisen als gebruikers mogelijk niet verkrijgen van uw app helemaal in sommige organisaties aanvragen. 
-* Bieden de juiste namen en beschrijvingen voor alle machtigingen die u beschikbaar als onderdeel van uw app maakt. Hierdoor kunnen gebruikers en beheerders weten wat ze ermee akkoord dat wanneer ze proberen om het gebruik van uw app-API's. Zie voor meer informatie, de aanbevolen procedures-sectie in de [handleiding machtigingen](v1-permissions-and-consent.md).
+* Test uw app in een Tenant met geconfigureerde [beleids regels voor voorwaardelijke toegang](conditional-access-dev-guide.md).
+* Volg het principe van minimale gebruikers toegang om ervoor te zorgen dat uw app alleen machtigingen aanvraagt die daad werkelijk nodig is. Vermijd het aanvragen van machtigingen waarvoor een beheerders toestemming is vereist, waardoor gebruikers uw app helemaal niet in sommige organisaties kunnen verkrijgen. 
+* Geef de juiste namen en beschrijvingen op voor de machtigingen die u beschikbaar maakt als onderdeel van uw app. Op deze manier kunnen gebruikers en beheerders weten wat ze ermee instemmen wanneer ze de Api's van uw app proberen te gebruiken. Zie de sectie best practices in de [hand leiding voor machtigingen](v1-permissions-and-consent.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Het converteren van een app voor meerdere tenants worden](howto-convert-app-to-be-multi-tenant.md)
+* [Een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)

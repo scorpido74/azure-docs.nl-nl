@@ -1,67 +1,57 @@
 ---
 title: Ondersteunde talen in Azure Functions
-description: Informatie over welke talen worden ondersteund (GA) en die zijn experimenteel of in de Preview-versie.
-services: functions
-documentationcenter: na
+description: Meer informatie over welke talen worden ondersteund (GA) en wat experimentele of in Preview zijn.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148832"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802455"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Ondersteunde talen in Azure Functions
 
-In dit artikel wordt uitgelegd in dat de niveaus van ondersteuning geboden voor talen die u met Azure Functions gebruiken kunt.
+Dit artikel bevat informatie over de ondersteunings niveaus voor talen die u kunt gebruiken met Azure Functions.
 
-## <a name="levels-of-support"></a>Ondersteuningsniveaus
+## <a name="levels-of-support"></a>Ondersteunings niveaus
 
-Er zijn drie niveaus van ondersteuning:
+Er zijn drie ondersteunings niveaus:
 
-* **Algemeen beschikbaar (GA)** : volledig ondersteund en goedgekeurd voor gebruik in productieomgevingen.
-* **Preview-versie** - nog niet ondersteund, maar wordt verwacht dat de status van de algemene beschikbaarheid in de toekomst te bereiken.
-* **Experimentele** : niet ondersteund en kan worden afgeschaft in de toekomst; bieden geen garantie voor uiteindelijke voorlopige versie of de status van de algemene beschikbaarheid.
+* **Algemeen beschikbaar (ga)** : volledig ondersteund en goedgekeurd voor productie gebruik.
+* **Preview** -wordt nog niet ondersteund, maar wordt naar verwachting in de toekomst bereikt.
+* **Experimenteel** -niet ondersteund en kan in de toekomst worden afgebroken; geen garantie voor de uiteindelijke preview-of GA-status.
 
-## <a name="languages-in-runtime-1x-and-2x"></a>Talen in runtime 1.x en 2.x
+## <a name="languages-by-runtime-version"></a>Talen per runtime versie 
 
-[Twee versies van de Azure Functions-runtime](functions-versions.md) beschikbaar zijn. De volgende tabel ziet u welke talen worden ondersteund in elke runtimeversie.
+Er zijn [twee versies van de Azure functions runtime](functions-versions.md) beschikbaar. In de volgende tabel ziet u welke talen worden ondersteund in elke runtime versie.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 ### <a name="experimental-languages"></a>Experimentele talen
 
-De experimentele talen in versie 1.x niet goed worden geschaald en bieden geen ondersteuning voor alle bindingen.
+De experimentele talen in versie 1. x worden niet goed geschaald en bieden geen ondersteuning voor alle bindingen.
 
-Gebruik geen experimentele functies voor alles wat u afhankelijk zijn, omdat er geen officiële ondersteuning voor hen is. Kwesties moeten niet worden geopend voor problemen met experimentele talen. 
+Gebruik geen experimentele functies voor alles wat u vertrouwt, aangezien er geen officiële ondersteuning voor hen is. Ondersteunings cases mogen niet worden geopend voor problemen met experimentele talen. 
 
-De runtime versie 2.x biedt geen ondersteuning voor experimentele talen. Ondersteuning voor nieuwe talen wordt toegevoegd wanneer de taal kan worden ondersteund in de productieomgeving. 
+De runtime van versie 2. x biedt geen ondersteuning voor experimentele talen. Ondersteuning voor nieuwe talen wordt alleen toegevoegd wanneer de taal in productie kan worden ondersteund. 
 
-### <a name="language-extensibility"></a>Taal-uitbreidbaarheid
+### <a name="language-extensibility"></a>Taal uitbreid baarheid
 
-De runtime 2.x is ontworpen om u te bieden [taal uitbreidbaarheid](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). De talen van de JavaScript en Java in de runtime 2.x zijn gebouwd met deze uitbreidbaarheid.
+Met ingang van versie 2. x is de runtime ontworpen om [taal uitbreid baarheid](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)aan te bieden. De Java script-en Java-talen in de 2. x-runtime zijn gebouwd met deze uitbrei ding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over hoe u een van de algemene beschikbaarheid of preview talen in Azure Functions, raadpleegt u de volgende bronnen:
+Raadpleeg de volgende bronnen voor meer informatie over het ontwikkelen van functies in de ondersteunde talen:
 
-> [!div class="nextstepaction"]
-> [C#](functions-reference-csharp.md)
-
-> [!div class="nextstepaction"]
-> [F#](functions-reference-fsharp.md)
-
-> [!div class="nextstepaction"]
-> [JavaScript](functions-reference-node.md)
-
-> [!div class="nextstepaction"]
-> [Java](functions-reference-java.md)
-
-> [!div class="nextstepaction"]
-> [Python](functions-reference-python.md)
++ [C#Naslag informatie over Class Library-ontwikkel aars](functions-dotnet-class-library.md)
++ [C#Naslag informatie over script ontwikkelaars](functions-reference-csharp.md)
++ [Naslag informatie voor Java-Ontwikkel aars](functions-reference-java.md)
++ [Naslag informatie over Java script-ontwikkel aars](functions-reference-node.md)
++ [Naslag informatie over Power shell-ontwikkel aars](functions-reference-powershell.md)
++ [Naslag informatie voor python-ontwikkel aars](functions-reference-python.md)
++ [Naslag informatie voor type script-ontwikkel aars](functions-reference-node.md#typescript)

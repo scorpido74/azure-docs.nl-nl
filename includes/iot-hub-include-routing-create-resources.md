@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176654"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808818"
 ---
-## <a name="create-base-resources"></a>Basis-resources maken
+## <a name="create-base-resources"></a>Basis bronnen maken
 
-Voordat u om de routering van berichten configureren kunt, moet u een IoT-hub, een storage-account en een Service Bus-wachtrij maken. Deze resources kunnen worden gemaakt met een van de vier artikelen die beschikbaar zijn voor deze zelfstudie, deel 1: de Azure CLI, Azure PowerShell, Azure portal of een Azure Resource Manager-sjabloon.
+Voordat u de bericht routering kunt configureren, moet u een IoT-hub, een opslag account en een Service Bus wachtrij maken. Deze resources kunnen worden gemaakt met behulp van een van de vier artikelen die beschikbaar zijn voor deel 1 van deze zelf studie: de Azure Portal, een Azure Resource Manager sjabloon, de Azure CLI of Azure PowerShell.
 
-Gebruik dezelfde resourcegroep en -locatie voor alle resources. Klik aan het einde, kunt u alle resources in één stap door de resourcegroep te verwijderen.
+Gebruik dezelfde resourcegroep en -locatie voor alle resources. Aan het einde kunt u alle resources in één stap verwijderen door de resource groep te verwijderen.
 
-De volgende secties beschrijven de stappen om te worden uitgevoerd.
+Hieronder vindt u een overzicht van de stappen die moeten worden uitgevoerd in de volgende secties: 
 
 1. Maak een [resourcegroep](../articles/azure-resource-manager/resource-group-overview.md).
 
@@ -35,4 +35,4 @@ De volgende secties beschrijven de stappen om te worden uitgevoerd.
 
 4. Maak een Service Bus-naamruimte en -wachtrij.
 
-5. Maak een apparaat-id voor het gesimuleerde apparaat dat berichten naar uw hub verzendt. Sla de sleutel op voor de testfase. (Als u een Resource Manager-sjabloon maakt, wordt dit gedaan na de implementatie van de sjabloon.)
+5. Maak een apparaat-id voor het gesimuleerde apparaat dat berichten naar uw hub verzendt. Sla de sleutel op voor de testfase. (Als u een resource manager-sjabloon maakt, wordt dit gedaan na het implementeren van de sjabloon.)

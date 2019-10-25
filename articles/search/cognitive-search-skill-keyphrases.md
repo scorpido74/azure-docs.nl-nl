@@ -1,20 +1,19 @@
 ---
-title: Sleutel woordgroep extractie functie voor cognitieve Zoek vaardigheid-Azure Search
-description: Evalueert ongestructureerde tekst en retourneert voor elke record een lijst met sleutel zinnen in een Azure Search verrijkings pijplijn.
-services: search
+title: Sleuteltermextractie cognitieve vaardigheid
+titleSuffix: Azure Cognitive Search
+description: Hiermee wordt ongestructureerde tekst geëvalueerd en voor elke record een lijst met sleutel zinnen in een AI-pijp lijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: luisca
-ms.openlocfilehash: ffaa2afbfa12770168cb5a92b7022addc039f0fb
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265784"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791979"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Sleuteltermextractie cognitieve vaardigheid
 
@@ -23,31 +22,31 @@ Met de **Sleuteltermextractie** vaardigheid wordt ongestructureerde tekst geëva
 Deze mogelijkheid is handig als u snel de belangrijkste pratende punten in de record moet identificeren. Als er bijvoorbeeld een invoer tekst is, is de levens middelen Delicious en zijn er fantastische mede werkers. de service retourneert "voedsel" en "fantastische mede werkers".
 
 > [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in Azure Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
+> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met Azure Search prijzen](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.KeyPhraseExtractionSkill 
+Micro soft. skills. Text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Para meters zijn hoofdletter gevoelig.
 
-| Invoer                | Description |
+| Invoer                | Beschrijving |
 |---------------------|-------------|
 | defaultLanguageCode | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven.  Als de standaard taal code niet wordt opgegeven, wordt Engels (en) gebruikt als de standaard taal code. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
 | maxKeyPhraseCount   | Beschrijving Het maximum aantal sleutel zinnen dat moet worden geproduceerd. |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer     | Description |
+| Invoer     | Beschrijving |
 |--------------------|-------------|
-| text | De tekst die moet worden geanalyseerd.|
+| tekst | De tekst die moet worden geanalyseerd.|
 | languageCode  |  Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, wordt de standaardtaal code gebruikt voor het analyseren van de records. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) weer geven|
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
@@ -123,5 +122,5 @@ Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens 
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md)
++ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

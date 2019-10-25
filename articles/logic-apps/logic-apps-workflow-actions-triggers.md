@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679877"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799424"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -132,7 +132,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name* > | Tekenreeks | De naam voor de trigger | 
+| <*APIConnection_trigger_name*> | Tekenreeks | De naam voor de trigger | 
 | <*naam* van de verbinding > | Tekenreeks | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
 | <*methode-type* > | Tekenreeks | De HTTP-methode voor communicatie met de beheerde API: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
 | < *-API: bewerking* > | Tekenreeks | De API-bewerking die moet worden aangeroepen | 
@@ -273,19 +273,21 @@ Deze trigger definitie wordt geabonneerd op de Office 365 Outlook-API, bevat een
 
 ### <a name="http-trigger"></a>HTTP-trigger
 
-Met deze trigger wordt het opgegeven eind punt gecontroleerd of pollt dit op basis van het opgegeven terugkeer patroon. Het antwoord van het eind punt bepaalt of de werk stroom wordt uitgevoerd.
+Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op basis van het opgegeven terugkeer patroon. De trigger controleert vervolgens het antwoord om te bepalen of de werk stroom wordt uitgevoerd.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ Met deze trigger wordt het opgegeven eind punt gecontroleerd of pollt dit op bas
 
 *Vereist*
 
-| Waarde | Type | Beschrijving | 
-|-------|------|-------------| 
-| <*methode-type* > | Tekenreeks | De HTTP-methode die moet worden gebruikt voor het pollen van het opgegeven eind punt: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
-| < *-eind punt-URL* > | Tekenreeks | De HTTP-of HTTPS-URL voor het eind punt dat moet worden gecontroleerd <p>Maximale teken reeks grootte: 2 KB | 
-| <*tijds eenheid* > | Tekenreeks | De tijds eenheid die aangeeft hoe vaak de trigger wordt geactiveerd: ' Second ', ' minuut ', ' uur ', ' dag ', ' week ', ' maand ' | 
-| <*aantal tijds eenheden* > | Geheel getal | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden </br>-Dag: 1-500 dagen </br>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
-|||| 
+| Eigenschap | Waarde | Type | Beschrijving |
+|----------|-------|------|-------------|
+| `method` | <*methode-type* > | Tekenreeks | De methode die moet worden gebruikt voor het verzenden van de uitgaande aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' |
+| `uri` | <*http-of-https-eind punt-URL* > | Tekenreeks | De URL van het HTTP-of HTTPS-eind punt waarnaar u de uitgaande aanvraag wilt verzenden. Maximale teken reeks grootte: 2 KB <p>Voor een Azure-service of-resource bevat deze URI-syntaxis de resource-ID en het pad naar de resource die u wilt openen. |
+| `frequency` | <*tijds eenheid* > | Tekenreeks | De tijds eenheid die aangeeft hoe vaak de trigger wordt geactiveerd: ' Second ', ' minuut ', ' uur ', ' dag ', ' week ', ' maand ' |
+| `interval` | <*aantal tijds eenheden* > | Geheel getal | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden </br>-Dag: 1-500 dagen </br>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. |
+|||||
 
 *Beschrijving*
 
-| Waarde | Type | Beschrijving | 
-|-------|------|-------------| 
-| <*header-inhouds* > | JSON-object | De headers die met de aanvraag moeten worden verzonden <p>Als u bijvoorbeeld de taal en het type voor een aanvraag wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*tekst-inhoud* > | Tekenreeks | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag | 
-| <*Authentication-methode* > | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). Behalve scheduler wordt de eigenschap `authority` ondersteund. Als u niets opgeeft, wordt de standaard waarde `https://login.windows.net`, maar u kunt een andere waarde gebruiken, bijvoorbeeld `https://login.windows\-ppe.net`. |
-| <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. |  
- *query-para meters* > < | JSON-object | Alle query parameters die met de aanvraag moeten worden meegenomen <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanvraag. | 
-| <*Max-uitvoeringen* > | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
-| <*Max-uitvoeringen-wachtrij* > | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
-| <*bewerking-optie* > | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. | 
-|||| 
+| Eigenschap | Waarde | Type | Beschrijving |
+|----------|-------|------|-------------|
+| `headers` | <*header-inhouds* > | JSON-object | Alle kopteksten die u moet toevoegen met de aanvraag <p>Als u bijvoorbeeld de taal en het type wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | *query-para meters* > < | JSON-object | Alle query parameters die u moet gebruiken in de aanvraag <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanvraag. |
+| `body` | <*tekst-inhoud* > | JSON-object | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag |
+| `authentication` | <*Authentication-Type-en-Property-waarden*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. Behalve scheduler wordt de eigenschap `authority` ondersteund. Als u niets opgeeft, wordt de standaard waarde `https://management.azure.com/`, maar u kunt een andere waarde gebruiken. |
+| `retryPolicy` > `type` | <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. |
+| `runs` | <*Max-uitvoeringen* > | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*Max-uitvoeringen-wachtrij* > | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
+| `operationOptions` | <*bewerking-optie* > | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. |
+|||||
 
 *Uitvoer*
 
@@ -374,7 +376,7 @@ Het gedrag van de trigger is afhankelijk van de secties die u gebruikt of weglaa
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ Het gedrag van de trigger is afhankelijk van de secties die u gebruikt of weglaa
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ Sommige waarden, zoals <*methode*>, zijn beschikbaar voor de objecten `"subscrib
 | <*methode-type* > | Tekenreeks | De HTTP-methode die moet worden gebruikt voor de annulerings aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
 | <-*eind punt-afmelden: URL* > | Tekenreeks | De eind punt-URL waarnaar de annulerings aanvraag moet worden verzonden | 
 | <*tekst-inhoud* > | Tekenreeks | Bericht inhoud die in het abonnement of de annulerings aanvraag moet worden verzonden | 
-| <*Authentication-methode* > | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). |
+| <*Authentication-type*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. |
 | <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
 | <*Max-uitvoeringen* > | Geheel getal | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*Max-uitvoeringen-wachtrij* > | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
@@ -950,7 +952,7 @@ Met deze actie wordt een abonnements aanvraag via HTTP verzonden naar een eind p
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +962,7 @@ Met deze actie wordt een abonnements aanvraag via HTTP verzonden naar een eind p
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +988,7 @@ Sommige waarden, zoals <*methode*>, zijn beschikbaar voor de objecten `"subscrib
 | < *-API-afmelden: URL* > | Tekenreeks | De URI die moet worden gebruikt voor het afmelden van de API | 
 | <*header-inhouds* > | JSON-object | Alle headers die in de aanvraag moeten worden verzonden <p>U kunt bijvoorbeeld de taal en het type van een aanvraag instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*tekst-inhoud* > | JSON-object | Bericht inhoud die in de aanvraag moet worden verzonden | 
-| <*Authentication-methode* > | JSON-object | De methode die de aanvraag gebruikt voor verificatie. Zie voor meer informatie [scheduler outbound Authentication](../scheduler/scheduler-outbound-authentication.md)(Engelstalig). |
+| <*Authentication-type*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. |
 | <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
 | *query-para meters* > < | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanroep. | 
 | <*andere actie-specifiek-invoer-eigenschappen* > | JSON-object | Andere invoer eigenschappen die van toepassing zijn op deze specifieke actie | 
@@ -1105,9 +1107,9 @@ Met deze actie wordt code uitgevoerd die de naam van de logische app ophaalt en 
 
 *Voor beeld 2*
 
-Met deze actie wordt code uitgevoerd in een logische app die wordt geactiveerd wanneer een nieuwe e-mail binnenkomt in een Office 365 Outlook-account. De logische app maakt ook gebruik van een e-mail actie voor het verzenden van goed keuring die de inhoud van de ontvangen e-mail samen met een aanvraag voor goed keuring doorstuurt. 
+Met deze actie wordt code uitgevoerd in een logische app die wordt geactiveerd wanneer een nieuwe e-mail binnenkomt in een Office 365 Outlook-account. De logische app maakt ook gebruik van een e-mail actie voor het verzenden van goed keuring die de inhoud van de ontvangen e-mail samen met een aanvraag voor goed keuring doorstuurt.
 
-De code extraheert e-mail adressen uit de `Body` eigenschap van de trigger en retourneert deze e-mail adressen samen met de waarde van de `SelectedOption` eigenschap van de goedkeurings actie. De actie bevat expliciet de actie goed keuring e-mail verzenden als een afhankelijkheid in de `explicitDependencies`  >  `actions` kenmerk.
+De code extraheert de e-mail adressen uit de `Body` eigenschap van de trigger en retourneert de adressen samen met de waarde van de `SelectedOption` eigenschap van de goedkeurings actie. De actie bevat expliciet de actie goed keuring e-mail verzenden als een afhankelijkheid in de `explicitDependencies`  >  `actions` kenmerk.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1208,21 @@ Met deze actie definitie wordt de eerder gemaakte functie ' GetProductID ' aange
 
 ### <a name="http-action"></a>HTTP-actie
 
-Met deze actie wordt een aanvraag verzonden naar het opgegeven eind punt en wordt het antwoord gecontroleerd om te bepalen of de werk stroom moet worden uitgevoerd. 
+Met deze actie wordt een aanvraag verzonden naar het opgegeven HTTP-of HTTPS-eind punt en wordt de reactie gecontroleerd om te bepalen of de werk stroom wordt uitgevoerd.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1230,24 @@ Met deze actie wordt een aanvraag verzonden naar het opgegeven eind punt en word
 
 *Vereist*
 
-| Waarde | Type | Beschrijving | 
-|-------|------|-------------| 
-| <*methode-type* > | Tekenreeks | De methode die moet worden gebruikt voor het verzenden van de aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' | 
-| <*http-of-https-eind punt-URL* > | Tekenreeks | Het HTTP-of HTTPS-eind punt dat moet worden aangeroepen. Maximale teken reeks grootte: 2 KB | 
-|||| 
+| Eigenschap | Waarde | Type | Beschrijving |
+|----------|-------|------|-------------|
+| `method` | <*methode-type* > | Tekenreeks | De methode die moet worden gebruikt voor het verzenden van de uitgaande aanvraag: ' GET ', ' PUT ', ' POST ', ' PATCH ' of ' DELETE ' |
+| `uri` | <*http-of-https-eind punt-URL* > | Tekenreeks | De URL van het HTTP-of HTTPS-eind punt waarnaar u de uitgaande aanvraag wilt verzenden. Maximale teken reeks grootte: 2 KB <p>Voor een Azure-service of-resource bevat deze URI-syntaxis de resource-ID en het pad naar de resource die u wilt openen. |
+|||||
 
 *Beschrijving*
 
-| Waarde | Type | Beschrijving | 
-|-------|------|-------------| 
-| <*header-inhouds* > | JSON-object | Alle headers die met de aanvraag moeten worden verzonden <p>Als u bijvoorbeeld de taal en het type wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*tekst-inhoud* > | JSON-object | Bericht inhoud die in de aanvraag moet worden verzonden | 
-| <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
-| *query-para meters* > < | JSON-object | Alle query parameters die met de aanvraag moeten worden meegenomen <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanroep. | 
-| <*andere actie-specifiek-invoer-eigenschappen* > | JSON-object | Andere invoer eigenschappen die van toepassing zijn op deze specifieke actie | 
-| <*andere actie-specifieke eigenschappen* > | JSON-object | Andere eigenschappen die van toepassing zijn op deze specifieke actie | 
-|||| 
+| Eigenschap | Waarde | Type | Beschrijving |
+|----------|-------|------|-------------|
+| `headers` | <*header-inhouds* > | JSON-object | Alle kopteksten die u moet toevoegen met de aanvraag <p>Als u bijvoorbeeld de taal en het type wilt instellen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | *query-para meters* > < | JSON-object | Alle query parameters die u moet gebruiken in de aanvraag <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanroep. |
+| `body` | <*tekst-inhoud* > | JSON-object | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag |
+| `authentication` | <*Authentication-Type-en-Property-waarden*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. Behalve scheduler wordt de eigenschap `authority` ondersteund. Als u niets opgeeft, wordt de standaard waarde `https://management.azure.com/`, maar u kunt een andere waarde gebruiken. |
+| `retryPolicy` > `type` | <*opnieuw proberen* > | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. |
+| <*andere actie-specifiek-invoer-eigenschappen* > | <*invoer eigenschap*> | JSON-object | Andere invoer eigenschappen die van toepassing zijn op deze specifieke actie |
+| <*andere actie-specifieke eigenschappen* > | <*eigenschap-waarde*> | JSON-object | Andere eigenschappen die van toepassing zijn op deze specifieke actie |
+|||||
 
 *Voorbeeld*
 
@@ -2665,134 +2675,11 @@ Voor een definitie van een enkele Logic-app is het aantal acties dat elke 5 minu
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>HTTP-triggers en-acties verifiëren
+## <a name="authenticate-triggers-and-actions"></a>Triggers en acties verifiëren
 
-HTTP-eind punten ondersteunen verschillende soorten verificatie. U kunt verificatie voor deze HTTP-triggers en acties instellen:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP-webhook](../connectors/connectors-native-webhook.md)
-
-Dit zijn de soorten verificatie die u kunt instellen:
-
-* [Basisverificatie](#basic-authentication)
-* [Verificatie van client certificaten](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth-verificatie](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Zorg ervoor dat u alle gevoelige informatie beveiligt die door de werk stroom definitie van de logische app wordt verwerkt. Gebruik beveiligde para meters en codeer gegevens als dat nodig is. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het gebruiken en beveiligen van para meters.
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Basisverificatie
-
-Voor [basis verificatie](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) met behulp van Azure Active Directory kan uw trigger of actie definitie een `authentication` JSON-object bevatten, dat de eigenschappen bevat die zijn opgegeven in de volgende tabel. Als u tijdens runtime toegang wilt krijgen tot parameter waarden, kunt u de `@parameters('parameterName')` expressie gebruiken, die wordt gegeven door de taal van de [werk stroom definitie](https://aka.ms/logicappsdocs). 
-
-| Eigenschap | Verplicht | Waarde | Beschrijving | 
-|----------|----------|-------|-------------| 
-| **type** | Ja | Hoofd | Het te gebruiken verificatie type, dat hier ' Basic ' is | 
-| **gebruikers** | Ja | "@parameters (' userNameParam ')" | De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
-| **wacht woord** | Ja | "@parameters (' passwordParam ')" | Het wacht woord voor het verifiëren van de toegang tot het eind punt van de doel service |
-||||| 
-
-In dit voor beeld wordt de HTTP-actie definitie `Basic`-verificatie opgegeven in de sectie `authentication`. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het gebruiken en beveiligen van para meters.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Zorg ervoor dat u alle gevoelige informatie beveiligt die door de werk stroom definitie van de logische app wordt verwerkt. Gebruik beveiligde para meters en codeer gegevens als dat nodig is. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters.
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>Verificatie van client certificaten
-
-Voor [verificatie op basis van certificaten](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) met behulp van Azure Active Directory kan uw trigger of actie definitie een `authentication` JSON-object bevatten, dat de eigenschappen bevat die zijn opgegeven in de volgende tabel. Als u tijdens runtime toegang wilt krijgen tot parameter waarden, kunt u de `@parameters('parameterName')` expressie gebruiken, die wordt gegeven door de taal van de [werk stroom definitie](https://aka.ms/logicappsdocs). Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor het aantal client certificaten dat u kunt gebruiken.
-
-| Eigenschap | Verplicht | Waarde | Beschrijving |
-|----------|----------|-------|-------------|
-| **type** | Ja | ClientCertificate | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
-| **pfx** | Ja | "@parameters (' pfxParam ') | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
-| **wacht woord** | Ja | "@parameters (' passwordParam ')" | Het wacht woord voor toegang tot het PFX-bestand |
-||||| 
-
-In dit voor beeld wordt de HTTP-actie definitie `ClientCertificate`-verificatie opgegeven in de sectie `authentication`. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het gebruiken en beveiligen van para meters.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Zorg ervoor dat u alle gevoelige informatie beveiligt die door de werk stroom definitie van de logische app wordt verwerkt. Gebruik beveiligde para meters en codeer gegevens als dat nodig is. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters.
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>OAuth-verificatie Azure Active Directory (AD)
-
-Voor [Azure AD OAuth-verificatie](../active-directory/develop/authentication-scenarios.md)kan uw trigger of actie definitie een `authentication` JSON-object bevatten, dat de eigenschappen bevat die zijn opgegeven in de volgende tabel. Als u tijdens runtime toegang wilt krijgen tot parameter waarden, kunt u de `@parameters('parameterName')` expressie gebruiken, die wordt gegeven door de taal van de [werk stroom definitie](https://aka.ms/logicappsdocs).
-
-| Eigenschap | Verplicht | Waarde | Beschrijving |
-|----------|----------|-------|-------------|
-| **type** | Ja | `ActiveDirectoryOAuth` | Het te gebruiken verificatie type, dat wil zeggen ' ActiveDirectoryOAuth ' voor Azure AD OAuth |
-| **provider** | Nee | <*URL-voor-Authority-token-verlener* > | De URL voor de instantie die het verificatie token levert |
-| **tenant** | Ja | *Tenant-id* van < > | De Tenant-ID voor de Azure AD-Tenant |
-| **gericht** | Ja | < > voor de goed keuring van*resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
-| **clientId** | Ja | <*client-ID* > | De client-ID voor de app die autorisatie aanvraagt |
-| **credentialType** | Ja | "Certificaat" of "geheim" | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in uw onderliggende definitie, maar bepaalt de vereiste para meters voor het referentie type. |
-| **pfx** | Ja, alleen voor het referentie type ' certificaat ' | "@parameters (' pfxParam ') | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
-| **wacht woord** | Ja, alleen voor het referentie type ' certificaat ' | "@parameters (' passwordParam ')" | Het wacht woord voor toegang tot het PFX-bestand |
-| **secret** | Ja, alleen voor het referentie type ' geheim ' | "@parameters (' secretParam ')" | Het client geheim voor het aanvragen van autorisatie |
-|||||
-
-In dit voor beeld van de HTTP-actie definitie geeft de sectie `authentication` `ActiveDirectoryOAuth`-verificatie en het referentie type ' geheim ' op. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het gebruiken en beveiligen van para meters.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Zorg ervoor dat u alle gevoelige informatie beveiligt die door de werk stroom definitie van de logische app wordt verwerkt. Gebruik beveiligde para meters en codeer gegevens als dat nodig is. Zie [uw logische app beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters.
+HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op basis van de trigger of actie die u gebruikt om uitgaande aanroepen of aanvragen voor toegang tot deze eind punten te maken, kunt u kiezen uit verschillende bereiken van verificatie typen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,6 @@
 ---
-title: Pagina opnieuw laden voor komen (micro soft-verificatie bibliotheek voor Java script) | Azure
+title: Pagina opnieuw laden voor komen (micro soft-verificatie bibliotheek voor Java script)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het voor komen van het opnieuw laden van pagina's bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,29 +18,29 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532833"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803101"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Pagina opnieuw laden voor komen bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van MSAL. js
-Micro soft Authentication Library voor Java script (MSAL. js) `iframe` gebruikt verborgen elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die is opgegeven in de token aanvraag (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die `redirect_uri` overeenkomt met de `iframe`geladen in de. Normaal gesp roken `redirect_uri` is de app de hoofd pagina, waardoor deze opnieuw wordt geladen.
+Micro soft Authentication Library voor Java script (MSAL. js) gebruikt verborgen `iframe` elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die is opgegeven in de token aanvraag (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die overeenkomt met de `redirect_uri` geladen in de `iframe`. Normaal gesp roken is de `redirect_uri` van de app de hoofd pagina, waardoor deze opnieuw wordt geladen.
 
-Als er in andere gevallen verificatie is vereist voor het navigeren naar de hoofd pagina van de app, kan dit `iframe` leiden tot `X-Frame-Options: deny` geneste elementen of fouten.
+Als er in andere gevallen verificatie is vereist voor het navigeren naar de hoofd pagina van de app, kan dit leiden tot geneste `iframe` elementen of `X-Frame-Options: deny` fout.
 
-Omdat MSAL. js de 302 die is uitgegeven door Azure ad niet kan negeren en is vereist voor het verwerken van het geretourneerde `redirect_uri` token, kan niet worden `iframe`voor komen dat het wordt geladen in de.
+Omdat MSAL. js de 302 die is uitgegeven door Azure AD niet kan negeren en is vereist voor het verwerken van het geretourneerde token, kan niet worden voor komen dat de `redirect_uri` geladen in de `iframe`.
 
 Volg deze tijdelijke oplossingen om te voor komen dat de volledige app opnieuw wordt geladen of andere fouten die zijn veroorzaakt door dit probleem.
 
 ## <a name="specify-different-html-for-the-iframe"></a>Geef een andere HTML-code voor het iframe op
 
-Stel de `redirect_uri` eigenschap in op de configuratie van een eenvoudige pagina waarvoor geen verificatie is vereist. U moet ervoor zorgen dat deze overeenkomt met de `redirect_uri` registratie in azure Portal. Dit heeft geen invloed op de aanmeldings ervaring van de gebruiker, omdat MSAL de start pagina opslaat wanneer het aanmeldings proces door de gebruiker wordt gestart en teruggeleid naar de exacte locatie nadat de aanmelding is voltooid.
+Stel de eigenschap `redirect_uri` op de configuratie in op een eenvoudige pagina waarvoor geen verificatie is vereist. U moet ervoor zorgen dat deze overeenkomt met de `redirect_uri` die zijn geregistreerd in Azure Portal. Dit heeft geen invloed op de aanmeldings ervaring van de gebruiker, omdat MSAL de start pagina opslaat wanneer het aanmeldings proces door de gebruiker wordt gestart en teruggeleid naar de exacte locatie nadat de aanmelding is voltooid.
 
 ## <a name="initialization-in-your-main-app-file"></a>Initialisatie in het hoofd bestand van de app
 
-Als uw app zodanig is gestructureerd dat er één centraal Java script-bestand is dat de initialisatie, route ring en andere zaken van de app definieert, kunt u uw app-modules voorwaardelijk laden op basis van het feit of `iframe` de app in een of niet wordt geladen. Bijvoorbeeld:
+Als uw app zodanig is gestructureerd dat er één centraal Java script-bestand is dat de initialisatie, route ring en andere zaken van de app definieert, kunt u uw app-modules voorwaardelijk laden op basis van het feit of de app wordt geladen in een `iframe` of niet. Bijvoorbeeld:
 
 In AngularJS: app. js
 

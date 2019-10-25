@@ -1,24 +1,23 @@
 ---
-title: Veelvoorkomende fouten en waarschuwingen-Azure Search
-description: In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens een AI-verrijking in Azure Search.
-services: search
-manager: heidist
+title: Veelvoorkomende fouten en waarschuwingen
+titleSuffix: Azure Cognitive Search
+description: In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens AI-verrijking in azure Cognitive Search.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553607"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787979"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in Azure Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in azure Cognitive Search
 
-In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens een AI-verrijking in Azure Search.
+In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens AI-verrijking in azure Cognitive Search.
 
 ## <a name="errors"></a>Fouten
 Het indexeren stopt wanneer het aantal fouten groter is dan [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -210,3 +209,14 @@ Als u ervoor wilt zorgen dat alle tekst wordt geanalyseerd, kunt u overwegen om 
 
 ### <a name="web-api-skill-response-contains-warnings"></a>Het reactie Web API-vaardigheid bevat waarschuwingen
 Indexeer functie kan een vaardigheid uitvoeren in de vaardig heden, maar het antwoord van de Web API-aanvraag heeft aangegeven dat er waarschuwingen zijn tijdens de uitvoering. Bekijk de waarschuwingen om te begrijpen hoe uw gegevens worden beïnvloed en of actie moet worden ondernomen.
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>De huidige configuratie van de Indexeer functie biedt geen ondersteuning voor incrementele voortgang
+Deze waarschuwing treedt alleen op voor Cosmos DB gegevens bronnen.
+
+Incrementele voortgang tijdens het indexeren zorgt ervoor dat als de uitvoering van de Indexeer functie wordt onderbroken door tijdelijke fouten of limiet voor uitvoerings tijd, de Indexeer functie kan ophalen waar de volgende keer wordt uitgevoerd, in plaats van de volledige verzameling helemaal opnieuw te indexeren. Dit is vooral belang rijk bij het indexeren van grote verzamelingen.
+
+De mogelijkheid om een onvoltooide indexerings taak te hervatten, wordt gepredikd met documenten die zijn geordend op basis van de `_ts` kolom. De Indexeer functie maakt gebruik van de tijds tempel om te bepalen welk document er volgende moet worden opgehaald. Als de `_ts` kolom ontbreekt of als de Indexeer functie niet kan bepalen of er een aangepaste query wordt gesorteerd, wordt de Indexeer functie gestart om te starten. deze waarschuwing wordt weer gegeven.
+
+Het is mogelijk om dit gedrag te negeren, waardoor er incrementele voortgang wordt gemaakt en deze waarschuwing wordt onderdrukt met behulp van de configuratie-eigenschap `assumeOrderByHighWatermarkColumn`.
+
+[Meer informatie over Cosmos DB incrementele voortgang en aangepaste query's.](https://go.microsoft.com/fwlink/?linkid=2099593)

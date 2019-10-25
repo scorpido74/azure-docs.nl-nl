@@ -1,22 +1,22 @@
 ---
-title: Power shell-scripts met AZ. Search module-Azure Search
-description: Een Azure Search-service maken en configureren met Power shell. U kunt een service omhoog of omlaag schalen, beheer en query-API-sleutels beheren en systeem informatie opvragen.
-author: HeidiSteen
+title: Power shell-scripts met de module AZ. Search
+titleSuffix: Azure Cognitive Search
+description: Een Azure Cognitive Search-service maken en configureren met Power shell. U kunt een service omhoog of omlaag schalen, beheer-en query-API-sleutels beheren en query's uitvoeren op systeem gegevens.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331248"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793547"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Uw Azure Search-service beheren met Power shell
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331248"
 > * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)-> 
 
-U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Search te maken en te configureren. De **AZ. Search** -module breidt Azure PowerShell] uit met volledige pariteit van de [REST Api's van Azure Search Management](https://docs.microsoft.com/rest/api/searchmanagement). Met Azure PowerShell en **AZ. Search**kunt u de volgende taken uitvoeren:
+U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De **AZ. Search** -module breidt Azure PowerShell] uit met volledige pariteit van de [rest api's voor Azure Cognitive Search Management](https://docs.microsoft.com/rest/api/searchmanagement). Met Azure PowerShell en **AZ. Search**kunt u de volgende taken uitvoeren:
 
 > [!div class="checklist"]
 > * [Alle zoek services in uw abonnement weer geven](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Alle Azure Search Services in uw abonnement weer geven
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Alle Azure Cognitive Search Services in uw abonnement weer geven
 
 De volgende opdrachten zijn afkomstig van [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), die informatie over bestaande resources en services retour neren die al zijn ingericht in uw abonnement. Als u niet weet hoeveel Zoek Services al zijn gemaakt, retour neren deze opdrachten die informatie en bespaart u een reis naar de portal.
 
@@ -201,7 +201,7 @@ U kunt slechts één keer opnieuw genereren, opgegeven als de sleutel `primary` 
 
 Zoals u zou verwachten, zullen aanvragen die gebruikmaken van de oude sleutel, mislukken als u sleutels opnieuw genereert zonder de client code bij te werken. Door alle nieuwe sleutels te genereren, wordt uw service niet permanent vergrendeld en hebt u nog steeds toegang tot de service via de portal. Nadat u de primaire en secundaire sleutels opnieuw hebt gegenereerd, kunt u de client code bijwerken voor het gebruik van de nieuwe sleutels en bewerkingen worden hervat.
 
-De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven om Azure Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, hetzij `primary` of `secondary`. 
+De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven voor Azure Cognitive Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, hetzij `primary` of `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Query sleutels maken of verwijderen
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) wordt gebruikt om query- [API-sleutels](search-security-api-keys.md) te maken voor alleen-lezen toegang van client-apps naar een Azure search-index. Query sleutels worden gebruikt om te verifiëren bij een specifieke index om Zoek resultaten op te halen. Query sleutels geven geen alleen-lezen toegang tot andere items in de service, zoals een index, gegevens bron of Indexeer functie.
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) wordt gebruikt voor het maken van query- [API-sleutels](search-security-api-keys.md) voor alleen-lezen toegang vanuit client-apps naar een Azure Cognitive search-index. Query sleutels worden gebruikt om te verifiëren bij een specifieke index om Zoek resultaten op te halen. Query sleutels geven geen alleen-lezen toegang tot andere items in de service, zoals een index, gegevens bron of Indexeer functie.
 
-U kunt geen sleutel opgeven om Azure Search te gebruiken. De API-sleutels worden gegenereerd door de service.
+U kunt geen sleutel opgeven voor Azure Cognitive Search te gebruiken. De API-sleutels worden gegenereerd door de service.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Bouw een [index](search-what-is-an-index.md), [Zoek een query op een index](search-query-overview.md) met behulp van de portal, rest-API'S of de .NET SDK.
 
-* [Een Azure Search index maken in de Azure Portal](search-create-index-portal.md)
+* [Een Azure Cognitive Search-index maken in de Azure Portal](search-create-index-portal.md)
 * [Een Indexeer functie instellen voor het laden van gegevens uit andere services](search-indexer-overview.md)
-* [Query's uitvoeren op een Azure Search index met behulp van Search Explorer in de Azure Portal](search-explorer.md)
-* [Azure Search in .NET gebruiken.](search-howto-dotnet-sdk.md)
+* [Query's uitvoeren op een Azure Cognitive Search-index met behulp van Search Explorer in de Azure Portal](search-explorer.md)
+* [Azure Cognitive Search gebruiken in .NET](search-howto-dotnet-sdk.md)

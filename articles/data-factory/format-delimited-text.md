@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a545617c9e93a9a5fd0a34acc1dd5e2825917b62
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fb836b44ebd567f0ce1c833ca523b1c199ed9c9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387678"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785984"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
 
@@ -29,11 +29,11 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | Eigenschap         | Beschrijving                                                  | Verplicht |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **DelimitedText**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`.  | Ja      |
 | columnDelimiter  | De teken (s) die worden gebruikt voor het scheiden van kolommen in een bestand. Op dit moment wordt het scheidings teken voor meerdere tekens alleen ondersteund voor de toewijzing van gegevens stroom, maar niet voor het kopiëren van de activiteit. <br>De standaard waarde is **komma `,`** , wanneer het kolom scheidings teken is gedefinieerd als lege reeks, wat geen scheidings teken is, wordt de hele regel als één kolom beschouwd. | Nee       |
 | rowDelimiter     | Het afzonderlijke teken of ' \r\n ' die wordt gebruikt om rijen in een bestand te scheiden.<br>De standaard waarde is een van de volgende waarden **voor lezen: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij** het toewijzen van gegevens stroom en de Kopieer activiteit respectievelijk. <br>Als `rowDelimiter` is ingesteld op geen scheidings teken (lege string), moet de `columnDelimiter` worden ingesteld als geen scheidings teken (lege teken reeks), wat betekent dat de gehele inhoud als één waarde wordt behandeld. | Nee       |
-| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"`. <br>@No__t-0 kan geen lege teken reeks zijn voor toewijzing van gegevens stroom. <br>Als `quoteChar` is gedefinieerd als lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarden worden opgenomen, en `escapeChar` wordt gebruikt om het kolom scheidings teken en zichzelf te verescapenen. | Nee       |
-| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back slash `\`** . <br>@No__t-0 kan geen lege teken reeks zijn voor toewijzing van gegevens stroom. <br/>Als `escapeChar` als lege teken reeks is gedefinieerd, moet de `quoteChar` ook als lege teken reeks worden ingesteld, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | Nee       |
+| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"`. <br>`quoteChar` kan geen lege teken reeks zijn voor het toewijzen van gegevens stroom. <br>Als `quoteChar` is gedefinieerd als lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarden worden opgenomen, en `escapeChar` wordt gebruikt om het kolom scheidings teken en zichzelf te verescapenen. | Nee       |
+| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back slash `\`** . <br>`escapeChar` kan geen lege teken reeks zijn voor het toewijzen van gegevens stroom. <br/>Als `escapeChar` als lege teken reeks is gedefinieerd, moet de `quoteChar` ook als lege teken reeks worden ingesteld, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | Nee       |
 | firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij moet worden behandeld/gemaakt als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard). | Nee       |
 | nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | Nee       |
 | encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' US-ASCII "," UTF-7 "," BIG5 "," EUC-JP "," EUC-KR "," GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 ', ' WINDOWS-1253 ', ' WINDOWS-1254 ', ' WINDOWS-1255 ', ' WINDOWS-1256 ', ' WINDOWS-1257 ', ' WINDOWS-1258 '.<br>Opmerking toewijzing gegevens stroom ondersteunt geen UTF-7-code ring. | Nee       |
@@ -73,13 +73,13 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="delimited-text-as-source"></a>Tekst met scheidings tekens als bron 
 
-De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*SOURCE @ no__t-2*** .
+De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
 | Eigenschap       | Beschrijving                                                  | Verplicht |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSource**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . | Nee       |
-| storeSettings  | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
+| storeSettings  | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. | Nee       |
 
 Ondersteunde **Lees instellingen voor tekst met scheidings tekens** onder `formatSettings`:
 
@@ -90,13 +90,13 @@ Ondersteunde **Lees instellingen voor tekst met scheidings tekens** onder `forma
 
 ### <a name="delimited-text-as-sink"></a>Tekst met scheidings tekens als Sink
 
-De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink @ no__t-2*** .
+De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
 | Eigenschap       | Beschrijving                                                  | Verplicht |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |          |
-| storeSettings  | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
+| storeSettings  | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`.  | Nee       |
 
 Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens** onder `formatSettings`:
 

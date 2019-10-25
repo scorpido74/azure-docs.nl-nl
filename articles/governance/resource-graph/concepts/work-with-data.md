@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387599"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800180"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-In de [rest API](/rest/api/azureresourcegraph/resources/resources)is het besturings element **$Top** en maakt het deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)is het besturings element **$Top** en maakt het deel uit van **QueryRequestOptions**.
 
 Het besturings element dat het _meest beperkend_ is, wint. Als uw query bijvoorbeeld gebruikmaakt van de Opera tors **Top** of **Limit** en vervolgens meer records zou opleveren dan **eerst**, zijn de geretourneerde maximum records dus gelijk aan het **eerst**. Als **Top** of **Limit** kleiner is dan **eerst**, zou de opgehaalde recordset de kleinere waarde zijn die wordt geconfigureerd met **boven** of **limiet**.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-In de [rest API](/rest/api/azureresourcegraph/resources/resources)is het besturings element **$Skip** en maakt het deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)is het besturings element **$Skip** en maakt het deel uit van **QueryRequestOptions**.
 
 ## <a name="paging-results"></a>Resultaten pagineren
 
-Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** biedt waarden om aan te geven dat een resultatenset is opgesplitst: **resultTruncated** en **$skipToken**.
+Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** biedt waarden om aan te geven dat een resultatenset is opgesplitst: **resultTruncated** en **$skipToken**.
 **resultTruncated** is een Booleaanse waarde die de Consumer informeert als er geen aanvullende records worden geretourneerd in het antwoord. Deze voor waarde kan ook worden geïdentificeerd wanneer de eigenschap **Count** kleiner is dan de eigenschap **totalRecords** . **totalRecords** definieert het aantal records dat overeenkomt met de query.
 
 Als **resultTruncated** is ingesteld op **True**, wordt de eigenschap **$skipToken** in de reactie. Deze waarde wordt gebruikt met dezelfde query-en abonnements waarden om de volgende set records op te halen die overeenkomen met de query.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > De query moet het veld **id** **projecteren** om de paginering te kunnen uitvoeren. Als deze ontbreekt in de query, bevat het antwoord niet de **$skipToken**.
 
-Zie de [query volgende pagina](/rest/api/azureresourcegraph/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
+Zie de [query volgende pagina](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
 
 ## <a name="formatting-results"></a>Resultaten van de opmaak
 

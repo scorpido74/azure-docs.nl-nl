@@ -1,22 +1,23 @@
 ---
-title: Azure SQL Managed instance-verbinding voor zoek indexen-Azure Search
-description: Schakel openbaar eind punt in om verbindingen met SQL Managed instances van een Indexeer functie op Azure Search toe te staan.
-author: vl8163264128
+title: Azure SQL Managed instance-verbinding voor zoek indexering
+titleSuffix: Azure Cognitive Search
+description: Schakel openbaar eind punt in om verbindingen met SQL Managed instances toe te staan vanuit een Indexeer functie op Azure Cognitive Search.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/01/2019
+author: vl8163264128
 ms.author: victliu
-ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186673"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792156"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Search Indexeer functie configureren voor een beheerd exemplaar van SQL
-Zoals beschreven in het [verbinden van Azure SQL database naar Azure Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), wordt het maken van Indexeer functies voor **SQL Managed instances** ondersteund door Azure Search via het open bare eind punt.
+# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren in een door SQL beheerd exemplaar
+
+Zoals beschreven in het [verbinden van Azure SQL database met Azure Cognitive Search met behulp van Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), het maken van Indexeer functies voor **SQL Managed instances** wordt door Azure Cognitive Search via het open bare eind punt ondersteund.
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>Een door Azure SQL beheerd exemplaar maken met een openbaar eind punt
 Maak een SQL-beheerd exemplaar met de optie **openbaar eind punt inschakelen** geselecteerd.
@@ -24,7 +25,7 @@ Maak een SQL-beheerd exemplaar met de optie **openbaar eind punt inschakelen** g
    ![Openbaar eind punt inschakelen](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Openbaar eind punt inschakelen")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Open bare eind punt van Azure SQL Managed instance inschakelen
-U kunt ook open bare eind punten inschakelen op een bestaand exemplaarvan SQL Managed in het**open bare endpoint** > voor **beveiliging** > van het**virtuele netwerk** > .
+U kunt ook open bare eind punten inschakelen op een bestaand SQL beheerd exemplaar onder **beveiliging** > **virtueel netwerk** > **open bare eind punt** > **in te scha kelen**.
 
    ![Openbaar eind punt inschakelen](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Openbaar eind punt inschakelen")
 
@@ -36,7 +37,7 @@ Controleer of de netwerk beveiligings groep de juiste **regels voor binnenkomend
 ## <a name="get-public-endpoint-connection-string"></a>connection string van open bare eind punten ophalen
 Zorg ervoor dat u de connection string gebruikt voor het **open bare eind punt** (poort 3342, niet poort 1433).
 
-   ![Connection String van open bare eind punten](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "Connection String van open bare eind punten")
+   ![connection string van open bare eind punten](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "connection string van open bare eind punten")
 
 ## <a name="next-steps"></a>Volgende stappen
-Met configuratie uit de weg kunt u nu een door SQL beheerd exemplaar opgeven als de gegevens bron voor een Azure Search Indexeer functie met behulp van de portal of REST API. Zie [Azure SQL database verbinding maken met Azure Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) voor meer informatie.
+Met configuratie uit de weg kunt u nu een door SQL beheerd exemplaar opgeven als de gegevens bron voor een Azure Cognitive Search Indexeer functie met behulp van de portal of REST API. Zie [verbinding maken tussen Azure SQL database en Azure Cognitive Search met behulp van Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) voor meer informatie.

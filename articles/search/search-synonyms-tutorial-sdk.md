@@ -1,26 +1,25 @@
 ---
-title: C# Voor beeld van synoniemen-Azure Search
-description: In dit C# voor beeld leert u hoe u de synoniemen functie kunt toevoegen aan een index in azure Search. Een synoniemenkaart is een lijst met equivalente termen. Voor velden met ondersteuning voor synoniemen worden query's uitgebreid met de door de gebruiker opgegeven term en alle gerelateerde synoniemen.
+title: Synoniemen C# voorbeeld
+titleSuffix: Azure Cognitive Search
+description: In dit C# voor beeld leert u hoe u de synoniemen functie kunt toevoegen aan een index in azure Cognitive Search. Een synoniemenkaart is een lijst met equivalente termen. Voor velden met ondersteuning voor synoniemen worden query's uitgebreid met de door de gebruiker opgegeven term en alle gerelateerde synoniemen.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647757"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794237"
 ---
-# <a name="example-add-synonyms-for-azure-search-in-c"></a>Voorbeeld: Synoniemen toevoegen voor Azure Search in C#
+# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Voor beeld: synoniemen voor Azure Cognitive Search toevoegen inC#
 
 Met synoniemen breidt u een query uit door termen te gebruiken die semantisch overeenkomen met de ingevoerde term. Mogelijk wilt u bijvoorbeeld dat met 'auto' ook documenten worden geretourneerd met de termen 'voertuig' of 'cabrio'. 
 
-In Azure Search worden synoniemen gedefinieerd in een *synoniementoewijzing* op basis van *toewijzingsregels* waarmee equivalente termen worden gekoppeld. In dit voor beeld worden de essentiële stappen beschreven voor het toevoegen en gebruiken van synoniemen met een bestaande index. In deze zelfstudie leert u procedures om het volgende te doen:
+In azure Cognitive Search worden synoniemen gedefinieerd in een *synoniemen toewijzing*via *toewijzings regels* die gelijkwaardige voor waarden koppelen. In dit voor beeld worden de essentiële stappen beschreven voor het toevoegen en gebruiken van synoniemen met een bestaande index. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Maak een synoniemen toewijzing met behulp van de [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) -klasse. 
@@ -28,7 +27,7 @@ In Azure Search worden synoniemen gedefinieerd in een *synoniementoewijzing* op 
 
 U kunt een veld met synoniemen uitvoeren zoals u dat normaal zou doen. Er is geen aanvullende query syntaxis vereist voor toegang tot synoniemen.
 
-U kunt meerdere synoniementoewijzingen maken en deze als algemene serviceresource beschikbaar maken voor alle indexen. Daarna kunt u op veldniveau aangeven welke u wilt gebruiken. Bij het uitvoeren van query's doorzoekt Azure Search niet alleen een index, maar wordt er ook in een synoniementoewijzing gekeken als er een is opgegeven in de velden die voor de query zijn gebruikt.
+U kunt meerdere synoniementoewijzingen maken en deze als algemene serviceresource beschikbaar maken voor alle indexen. Daarna kunt u op veldniveau aangeven welke u wilt gebruiken. Op het moment dat een index wordt doorzocht, voert Azure Cognitive Search een zoek opdracht in een synoniemen kaart uit, als er een is opgegeven voor velden die worden gebruikt in de query.
 
 > [!NOTE]
 > Synoniemen kunnen worden gemaakt via een programma, maar niet in de portal. Als u graag Azure Portal-ondersteuning voor synoniemen wilt, kunt u hieronder feedback verzenden via [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
@@ -38,9 +37,9 @@ U kunt meerdere synoniementoewijzingen maken en deze als algemene serviceresourc
 Voor de zelfstudie gelden de volgende vereisten:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Search-service](search-create-service-portal.md)
+* [Azure Cognitive Search-service](search-create-service-portal.md)
 * [Microsoft.Azure.Search .NET-bibliotheek](https://aka.ms/search-sdk)
-* [Weten hoe u Azure Search gebruikt via een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Overzicht
 
@@ -78,7 +77,7 @@ Met 'voor en na'-query's wordt de meerwaarde van synoniemen aangetoond. In dit v
       Console.ReadKey();
   }
 ```
-De stappen voor het maken en vullen van de voorbeeldindex worden uitgelegd in [Azure Search gebruiken via een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+De stappen voor het maken en vullen van de voor beeld-index worden uitgelegd in [het gebruik van Azure Cognitive Search van een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ## <a name="before-queries"></a>'Voor'-query's
 
@@ -129,7 +128,7 @@ U kunt synoniemen op basis van twee stappen inschakelen. Als eerste definieert e
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   Een synoniemtoewijzing moet voldoen aan de standaard-open-source-indeling `solr`. De indeling wordt in de sectie `Apache Solr synonym format` uitgelegd in [Synoniemen in Azure Search](search-synonyms.md).
+   Een synoniemtoewijzing moet voldoen aan de standaard-open-source-indeling `solr`. De indeling wordt uitgelegd in [synoniemen in Azure Cognitive Search](search-synonyms.md) onder de sectie `Apache Solr synonym format`.
 
 2. Configureer doorzoekbare velden voor het gebruik van de synoniemtoewijzing in de indexdefinitie. In `EnableSynonymsInHotelsIndex` worden synoniemen ingeschakeld voor twee velden (`category` en `tags`) door de eigenschap `synonymMaps` in te stellen op de naam van de zojuist geüploade synoniemtoewijzing.
    ```csharp
@@ -170,11 +169,11 @@ U vindt de volledige broncode van de voorbeeldtoepassing die in deze walkthrough
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om na een voor beeld op te schonen is door de resource groep te verwijderen die de Azure Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. De naam van de resourcegroep staat in de portal op de pagina Overzicht van de Azure Search-service.
+De snelste manier om na een voor beeld op te schonen is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van Azure Cognitive Search service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit voor beeld wordt de functie synoniemen in C# code gedemonstreerd voor het maken en plaatsen van toewijzings regels en roept u vervolgens de synoniemen toewijzing aan in een query. Aanvullende informatie vindt u in de referentiedocumentatie voor de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) en [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
-> [Synoniemen gebruiken in Azure Search](search-synonyms.md)
+> [Synoniemen gebruiken in azure Cognitive Search](search-synonyms.md)

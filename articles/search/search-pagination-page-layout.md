@@ -1,31 +1,29 @@
 ---
-title: Werken met zoek resultaten-Azure Search
-description: Structuur en sorteer de zoek resultaten, haal een document telling op en voeg inhouds navigatie toe aan Zoek resultaten in Azure Search.
-author: HeidiSteen
+title: Werken met zoek resultaten
+titleSuffix: Azure Cognitive Search
+description: Structuur en sorteer de zoek resultaten, haal een document telling op en voeg inhouds navigatie toe aan Zoek resultaten in azure Cognitive Search.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: ''
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647711"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793457"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Werken met zoek resultaten in Azure Search
-Dit artikel bevat richt lijnen voor het implementeren van standaard elementen van een pagina met zoek resultaten, zoals het totale aantal, het ophalen van documenten, het sorteren van orders en navigatie. Pagina-gerelateerde opties die gegevens of informatie bijdragen aan uw zoek resultaten, worden opgegeven via de [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) die naar uw Azure Search-service worden verzonden. 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
+Dit artikel bevat richt lijnen voor het implementeren van standaard elementen van een pagina met zoek resultaten, zoals het totale aantal, het ophalen van documenten, het sorteren van orders en navigatie. Pagina opties die gegevens of informatie aan uw zoek resultaten bijdragen, worden opgegeven via de [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) aanvragen die naar uw Azure Cognitive Search-service worden verzonden. 
 
 In de REST API bestaan aanvragen uit een GET-opdracht, een pad en een query parameter die de service op de hoogte stellen van wat er wordt gevraagd en hoe u het antwoord kunt formuleren. In de .NET SDK is de equivalente API de [DocumentSearchResult-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Enkele voor beelden van code zijn een web-front-end-interface, die u hier kunt vinden: De demo-app en [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)van [New York City-taken](https://azjobsdemo.azurewebsites.net/) .
+Enkele voor beelden van code zijn een web-front-end-interface, die u hier kunt vinden: [New York City taken demo app](https://azjobsdemo.azurewebsites.net/) and [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Een geldige aanvraag bevat een aantal elementen, zoals een service-URL en pad, HTTP-term `api-version`, enzovoort. Voor het kortings merk zijn de voor beelden verwijderd om alleen de syntaxis te markeren die relevant is voor de paginering. Zie [Azure Search service rest](https://docs.microsoft.com/rest/api/searchservice)(Engelstalig) voor meer informatie over de aanvraag syntaxis.
+> Een geldige aanvraag bevat een aantal elementen, zoals een service-URL en pad, HTTP-term `api-version`, enzovoort. Voor het kortings merk zijn de voor beelden verwijderd om alleen de syntaxis te markeren die relevant is voor de paginering. Zie voor meer informatie over de aanvraag syntaxis [Azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice).
 >
 
 ## <a name="total-hits-and-page-counts"></a>Totaal aantal treffers en pagina aantallen
@@ -34,7 +32,7 @@ Het totale aantal resultaten dat door een query wordt geretourneerd, wordt weer 
 
 ![][1]
 
-In azure Search gebruikt u de `$count`para meters, `$skip` `$top`, en om deze waarden te retour neren. In het volgende voor beeld ziet u een voorbeeld aanvraag voor het totale aantal treffers in een index met de naam `@odata.count`' online-Catalog ', geretourneerd als:
+In azure Cognitive Search gebruikt u de para meters `$count`, `$top`en `$skip` om deze waarden te retour neren. In het volgende voor beeld ziet u een voorbeeld aanvraag voor het totale aantal treffers in een index met de naam ' online-Catalog ', geretourneerd als `@odata.count`:
 
     GET /indexes/online-catalog/docs?$count=true
 
@@ -42,7 +40,7 @@ Documenten ophalen in groepen van 15 en ook de totale treffers weer geven, begin
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-Paginating-resultaten vereisen `$top` beide `$skip`en, `$top` waar geeft aan hoeveel items in een batch moeten worden geretourneerd `$skip` en geeft aan hoeveel items moeten worden overgeslagen. In het volgende voor beeld toont elke pagina de volgende 15 items, aangegeven door de incrementele sprongen in de `$skip` para meter.
+Voor Paginating-resultaten zijn zowel `$top` als `$skip`vereist, waarbij `$top` specificeert hoeveel items in een batch moeten worden geretourneerd en `$skip` geeft aan hoeveel items moeten worden overgeslagen. In het volgende voor beeld toont elke pagina de volgende 15 items, aangegeven door de incrementele sprongen in de para meter `$skip`.
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
@@ -50,13 +48,13 @@ Paginating-resultaten vereisen `$top` beide `$skip`en, `$top` waar geeft aan hoe
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Indeling
+## <a name="layout"></a>Layout
 
 Op een pagina met zoek resultaten wilt u mogelijk een miniatuur afbeelding, een subset van velden en een koppeling naar een volledige product pagina weer geven.
 
  ![][2]
 
-In azure Search gebruikt `$select` u en een [Zoek opdracht-API-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents) om deze ervaring te implementeren.
+In azure Cognitive Search gebruikt u `$select` en een [Search API-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents) om deze ervaring te implementeren.
 
 Een subset van velden voor een tegel indeling retour neren:
 
@@ -64,7 +62,7 @@ Een subset van velden voor een tegel indeling retour neren:
 
 Afbeeldingen en media bestanden kunnen niet rechtstreeks worden doorzocht en moeten worden opgeslagen in een ander opslag platform, zoals Azure Blob Storage, om de kosten te verlagen. In de index en documenten definieert u een veld waarin het URL-adres van de externe inhoud wordt opgeslagen. U kunt vervolgens het veld gebruiken als verwijzing naar een afbeelding. De URL naar de afbeelding moet in het document staan.
 
-Als u een product beschrijvings pagina voor een geonclick gebeurtenis wilt ophalen, gebruikt u [opzoek document](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) voor het door geven van de sleutel van het document dat moet worden opgehaald. Het gegevens type van de sleutel is `Edm.String`. In dit voor beeld is dit *246810*.
+Als u een product beschrijvings pagina voor een **geonclick** gebeurtenis wilt ophalen, gebruikt u [opzoek document](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) voor het door geven van de sleutel van het document dat moet worden opgehaald. Het gegevens type van de sleutel is `Edm.String`. In dit voor beeld is dit *246810*.
 
     GET /indexes/online-catalog/docs/246810
 
@@ -74,7 +72,7 @@ Sorteer orders vaak standaard voor relevantie, maar het is gebruikelijk om alter
 
  ![][3]
 
-In azure Search is sorteren gebaseerd op de `$orderby` expressie, voor alle velden die zijn geïndexeerd als `"Sortable": true.` een `$orderby` -component is een OData-expressie. Zie de [syntaxis van de OData-expressie voor filters en order-by-componenten](query-odata-filter-orderby-syntax.md)voor meer informatie over de syntaxis.
+In azure Cognitive Search is sorteren gebaseerd op de `$orderby`-expressie, voor alle velden die zijn geïndexeerd als `"Sortable": true.` een `$orderby`-component een OData-expressie is. Zie de [syntaxis van de OData-expressie voor filters en order-by-componenten](query-odata-filter-orderby-syntax.md)voor meer informatie over de syntaxis.
 
 Relevantie wordt sterk geassocieerd met Score profielen. U kunt de standaard Score gebruiken, die afhankelijk is van tekst analyse en statistische gegevens om de volg orde van alle resultaten te rangschikken, met hogere scores naar documenten met meer of betere overeenkomsten voor een zoek term.
 
@@ -92,7 +90,7 @@ U maakt een methode die de geselecteerde sorteer optie als invoer accepteert en 
 
 ## <a name="faceted-navigation"></a>Facetnavigatie
 
-Zoek navigatie is gebruikelijk op een resultaten pagina die zich vaak aan de zijkant of boven aan een pagina bevindt. In Azure Search heeft facet navigatie een zelfgestuurde zoek opdracht op basis van vooraf gedefinieerde filters. Zie [facet navigatie in azure Search](search-faceted-navigation.md) voor meer informatie.
+Zoek navigatie is gebruikelijk op een resultaten pagina die zich vaak aan de zijkant of boven aan een pagina bevindt. In azure Cognitive Search biedt facet navigatie een zelfgestuurde zoek functie op basis van vooraf gedefinieerde filters. Zie [facet navigatie in Azure Cognitive Search](search-faceted-navigation.md) voor meer informatie.
 
 ## <a name="filters-at-the-page-level"></a>Filters op pagina niveau
 
@@ -102,14 +100,14 @@ U kunt een filter met of zonder een zoek expressie verzenden. Met de volgende aa
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-Zie [zoeken naar documenten (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor meer `$filter` informatie over expressies.
+Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor meer informatie over `$filter`-expressies.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Azure Search-service REST API](https://docs.microsoft.com/rest/api/searchservice)
+- [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice)
 - [Index bewerkingen](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 - [Document bewerkingen](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Facet navigatie in Azure Search](search-faceted-navigation.md)
+- [Facet navigatie in azure Cognitive Search](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

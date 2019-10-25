@@ -1,31 +1,31 @@
 ---
-title: Indexeer functies plannen-Azure Search
-description: Azure Search Indexeer functies plannen om inhoud periodiek of op een bepaald tijdstip te indexeren.
-ms.date: 05/31/2019
+title: Indexeer functies plannen
+titleSuffix: Azure Cognitive Search
+description: Plan Azure Cognitive Search Indexeer functies om inhoud periodiek of op een bepaald tijdstip te indexeren.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533623"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793698"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Indexeer functies voor Azure Search plannen
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexeer functies plannen in azure Cognitive Search
+
 Een Indexeer functie wordt normaal gesp roken eenmaal uitgevoerd, direct nadat deze is gemaakt. U kunt het opnieuw uitvoeren op aanvraag met behulp van de portal, de REST API of de .NET SDK. U kunt ook een Indexeer functie zo configureren dat deze regel matig wordt uitgevoerd volgens een planning.
 
 Een aantal situaties waarin de planning van de Indexeer functie nuttig is:
 
-* De bron gegevens worden na verloop van tijd gewijzigd en u wilt dat de gewijzigde gegevens automatisch worden verwerkt door de Azure Search Indexeer functies.
+* De bron gegevens worden na verloop van tijd gewijzigd en u wilt dat de gewijzigde gegevens automatisch worden verwerkt door de Indexeer functies van Azure Cognitive Search.
 * De index wordt gevuld met meerdere gegevens bronnen en u wilt er zeker van zijn dat de Indexeer functies op verschillende tijdstippen worden uitgevoerd om conflicten te verminderen.
-* De bron gegevens zijn erg groot en u wilt de verwerking van de Indexeer functie gedurende een periode spreiden. Zie voor meer informatie over het indexeren van grote hoeveel heden gegevens [grote gegevens sets indexeren in azure Search](search-howto-large-index.md).
+* De bron gegevens zijn erg groot en u wilt de verwerking van de Indexeer functie gedurende een periode spreiden. Zie voor meer informatie over het indexeren van grote hoeveel heden gegevens [grote gegevens sets indexeren in Azure Cognitive Search](search-howto-large-index.md).
 
-De scheduler is een ingebouwde functie van Azure Search. U kunt geen externe planner gebruiken om Zoek Indexeer functies te beheren.
+De scheduler is een ingebouwde functie van Azure Cognitive Search. U kunt geen externe planner gebruiken om Zoek Indexeer functies te beheren.
 
 ## <a name="define-schedule-properties"></a>Schema-eigenschappen definiëren
 
@@ -88,7 +88,7 @@ U kunt op elk gewenst moment een Indexeer functie op aanvraag uitvoeren met de a
 
 ## <a name="schedule-using-the-net-sdk"></a>Plannen met behulp van de .NET SDK
 
-U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
+U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Cognitive Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
 
 In het C# volgende voor beeld wordt een Indexeer functie gemaakt met behulp van een vooraf gedefinieerde gegevens bron en index en wordt het schema ingesteld op elke dag om de 30 minuten vanaf nu:
 

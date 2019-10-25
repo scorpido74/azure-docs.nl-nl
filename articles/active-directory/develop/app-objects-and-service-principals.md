@@ -1,5 +1,6 @@
 ---
 title: Toepassings-en Service-Principal-objecten in Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Meer informatie over de relatie tussen toepassings-en Service-Principal-objecten in Azure Active Directory.
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853308"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803435"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Toepassings-en Service-Principal-objecten in Azure Active Directory
 
@@ -43,7 +44,7 @@ Een [OAuth 2,0-autorisatie](developer-glossary.md#authorization-grant) toewijzin
 
 In de volgende secties ziet u hoe het Azure AD-toepassings model een toepassing vertegenwoordigt tijdens de ontwerp fase en runtime.
 
-## <a name="application-registration"></a>Toepassingsregistratie
+## <a name="application-registration"></a>Een toepassing registreren
 
 Wanneer u een Azure AD-toepassing registreert in de [Azure Portal][AZURE-Portal], worden er twee objecten gemaakt in uw Azure AD-Tenant:
 
@@ -87,7 +88,7 @@ In het volgende diagram ziet u de relatie tussen het toepassings object van een 
 
 In dit voorbeeld scenario:
 
-| Stap | Description |
+| Stap | Beschrijving |
 |------|-------------|
 | 1    | Is het proces van het maken van de toepassing en Service-Principal-objecten in de thuis Tenant van de toepassing. |
 | 2    | Wanneer Contoso en fabrikam beheerders toestemming geven, wordt een Service-Principal-object gemaakt in de Azure AD-Tenant van het bedrijf en worden de machtigingen toegewezen die de beheerder heeft verleend. Houd er ook rekening mee dat de HR-app kan worden geconfigureerd/ontworpen om toestemming door gebruikers voor individueel gebruik toe te staan. |
@@ -96,8 +97,8 @@ In dit voorbeeld scenario:
 ## <a name="next-steps"></a>Volgende stappen
 
 - U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om de toepassing en Service-Principal-objecten op te vragen.
-- U kunt toegang krijgen tot het toepassings object van een toepassing met behulp van de Microsoft Graph-API, de manifest-editor [van de Azure Portal][AZURE-Portal] of [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)-cmdlets, zoals wordt vertegenwoordigd door de entiteit van de OData- [toepassing][MS-Graph-App-Entity].
-- U kunt toegang krijgen tot het Service-Principal-object van een toepassing via de Microsoft Graph-API of [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)-cmdlets, zoals wordt aangegeven door de OData [ServicePrincipal-entiteit][MS-Graph-Sp-Entity].
+- U kunt toegang krijgen tot het toepassings object van een toepassing met behulp van de Microsoft Graph-API, de manifest-editor [van de Azure Portal][AZURE-Portal] of [Azure AD Power shell-cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), zoals wordt vertegenwoordigd door de entiteit van de OData- [toepassing][MS-Graph-App-Entity].
+- U kunt toegang krijgen tot het Service-Principal-object van een toepassing via de Microsoft Graph-API of [Azure AD Power shell-cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), zoals wordt aangegeven door de OData [ServicePrincipal-entiteit][MS-Graph-Sp-Entity].
 
 <!--Image references-->
 

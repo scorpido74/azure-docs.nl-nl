@@ -1,27 +1,27 @@
 ---
-title: 'Voor beeld: facetten met meerdere niveaus-Azure Search'
+title: 'Voor beeld: facetten met meerdere niveaus'
+titleSuffix: Azure Cognitive Search
 description: Meer informatie over het bouwen van facet structuren voor taxonomieën op meerdere niveaus, het maken van een geneste navigatie structuur die u op toepassings pagina's kunt invoegen.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274087"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792947"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Voor beeld: facetten met meerdere niveaus in Azure Search
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Voor beeld: facetten met meerdere niveaus in azure Cognitive Search
 
-Azure Search-schema's bieden geen expliciete ondersteuning voor taxonomie categorieën met meerdere niveaus, maar u kunt ze benaderen door inhoud te bewerken voordat u de indexeert en vervolgens een speciale verwerking toe te passen op de resultaten. 
+Azure Cognitive Search-schema's bieden geen expliciete ondersteuning voor taxonomie categorieën met meerdere niveaus, maar u kunt deze wel benaderen door inhoud te bewerken voordat u de indexeert en vervolgens een speciale verwerking toe te passen op de resultaten. 
 
 ## <a name="start-with-the-data"></a>Beginnen met de gegevens
 
-Het voor beeld in dit artikel is gebaseerd op een voor gaande voor beeld, [de AdventureWorks-inventarisatie database model leren](search-example-adventureworks-modeling.md)om te demonstreren op meerdere niveaus in azure Search.
+Het voor beeld in dit artikel is gebaseerd op een voor gaande voor beeld, [de AdventureWorks-inventarisatie database model leren](search-example-adventureworks-modeling.md)om te demonstreren op meerdere niveaus in azure Cognitive Search.
 
 AdventureWorks heeft een eenvoudige taxonomie op twee niveaus met een bovenliggende/onderliggende relatie. Voor taxonomie diepten met een vaste lengte van deze structuur kunt u een eenvoudige SQL-samenvoegings query gebruiken om de taxonomie te groeperen:
 
@@ -39,7 +39,7 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indexeren naar een verzamelings veld
 
-Maak in de index die deze structuur bevat, een **verzameling (EDM. String)** in het Azure Search schema om deze gegevens op te slaan. Zorg er ook voor dat veld kenmerken kunnen worden doorzocht, gefilterd, facetbaar en ophalen.
+Maak in de index die deze structuur bevat, een **verzameling (EDM. String)** in het Azure Cognitive Search-schema voor het opslaan van deze gegevens en zorg ervoor dat veld kenmerken doorzoekbaar, filterbaar, facetable en ophalen kunnen bevatten.
 
 Wanneer u inhoud indexeert die verwijst naar een specifieke taxonomie categorie, verzendt u de taxonomie als een matrix met tekst van elk niveau van de taxonomie. Indien een entiteit bijvoorbeeld `ProductCategoryId = 5 (Mountain Bikes)`, dient u het veld in te dienen als `[ "Bikes", "Bikes|Mountain Bikes"]`
 
@@ -99,4 +99,4 @@ Deze techniek wordt geschaald voor complexere scenario's, zoals diepere taxonomi
 
 ## <a name="see-also"></a>Zie ook
 
-[Voor beeld: de AdventureWorks-inventarisatie database voor Azure Search model leren](search-example-adventureworks-modeling.md)
+[Voor beeld: de AdventureWorks-inventarisatie database voor Azure Cognitive Search model leren](search-example-adventureworks-modeling.md)

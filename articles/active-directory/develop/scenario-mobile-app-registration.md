@@ -1,5 +1,6 @@
 ---
-title: Mobiele app die web-Api's aanroept-code configuratie van de app | Micro soft Identity-platform
+title: Mobiele app die web-Api's aanroept-de code configuratie van de app
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (de code configuratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413595"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803735"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Mobiele app die web-Api's aanroept-app-registratie
 
@@ -52,25 +53,25 @@ Met deze ervaring kan uw app gebruikmaken van eenmalige aanmelding (SSO) via de 
 
 Houd er rekening mee dat er een preview-ervaring is in de portal voor app-registratie om u te helpen de brokered antwoord-URI te berekenen voor iOS-en Android-toepassingen:
 
-1. Kies in de app-registratie **verificatie** en selectie **try-out de nieuwe ervaring**
-   ![-installatie kopie](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. Kies in de app-registratie **verificatie** en selectie **try-out voor de nieuwe ervaring**
+   ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. **Platform**
-   installatie![kopie toevoegen selecteren](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+2. Selecteer **platform
+   toevoegen**![installatie kopie](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Wanneer de lijst met platformen wordt ondersteund, selecteert u **IOS**
-   ![-installatie kopie](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+3. Wanneer de lijst met platformen wordt ondersteund, selecteert u **IOS** -
+   ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Voer de gewenste bundel-id in en druk vervolgens op installatie kopie **registreren**
-   ![](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+4. Voer de gewenste bundel-ID in en druk vervolgens op **REGI ster**
+   ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. De omleidings-URI wordt voor u berekend.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. De aanbevolen indeling is als volgt:
 
-- ***IOS***: `msauth.<BUNDLE_ID>://auth` (bijvoorbeeld "msauth. com. uwbedrijf. appName://auth")
-- ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- ***IOS***: `msauth.<BUNDLE_ID>://auth` (bijvoorbeeld ' msauth. com. uwbedrijf. appName://auth ')
+- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - De hash van de Android-hand tekening kan worden gegenereerd met de release-of fout opsporings sleutels via de opdracht van het hulp programma.
 
 ### <a name="username-password"></a>Gebruikers naam wacht woord

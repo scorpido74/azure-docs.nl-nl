@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 04753ca4c9b14d7ccc265cfcf971b3fd63c861ae
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 11cd90da1b1ca85893dbdad2ced191326af51238
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72384165"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793876"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -56,8 +56,9 @@ Classificatie | Regressie | Tijd reeks prognose
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [Classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [Lineaire classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
-[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||[Automatische ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|||ForecastTCN
 
 Gebruik de para meter `task` in de constructor `AutoMLConfig` om uw type experiment op te geven.
 
@@ -70,28 +71,24 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Gegevens bron en-indeling
 
-Automatische machine learning ondersteunt gegevens die zich op uw lokale bureau blad of in de cloud bevinden, zoals Azure Blob Storage. De gegevens kunnen worden gelezen in een Panda data frame of een Azure Machine Learning-gegevensset. De volgende code voorbeelden laten zien hoe u de gegevens in deze indelingen opslaat. Meer [informatie over datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+Automatische machine learning ondersteunt gegevens die zich op uw lokale bureau blad of in de cloud bevinden, zoals Azure Blob Storage. De gegevens kunnen worden gelezen in een **Panda data frame** of een **Azure machine learning TabularDataset**.  Meer [informatie over datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+
+Vereisten voor trainings gegevens:
+- Gegevens moeten in tabel vorm zijn.
+- De waarde die u wilt voors pellen, doel kolom, moet in de gegevens zijn.
+
+De volgende code voorbeelden laten zien hoe u de gegevens in deze indelingen opslaat.
 
 * TabularDataset
+  ```python
+  from azureml.core.dataset import Dataset
+  
+  tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
+  train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
+  label = "Label"
+  ```
+
 * Panda data frame
-
->[!Important]
-> Vereisten voor trainings gegevens:
->* Gegevens moeten in tabel vorm zijn.
->* De waarde die u wilt voors pellen (doel kolom), moet aanwezig zijn in de gegevens.
-
-Voorbeelden:
-
-* TabularDataset
-```python
-    from azureml.core.dataset import Dataset
-
-    tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
-    train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
-    label = "Label"
-```
-
-*   Panda data frame
 
     ```python
     import pandas as pd
@@ -117,11 +114,11 @@ U kunt afzonderlijke trein-en validatie sets rechtstreeks in de `AutoMLConfig`-c
 
 ### <a name="k-folds-cross-validation"></a>Kruis validatie: K-vouwen
 
-Gebruik de instelling `n_cross_validations` om het aantal Kruis validaties op te geven. De set met trainings gegevens wordt wille keurig gesplitst in `n_cross_validations` vouwen van gelijke grootte. Tijdens elke Kruis validatie ronde wordt een van de vouwen gebruikt voor de validatie van het model dat is getraind op de resterende vouwen. Dit proces wordt herhaald voor `n_cross_validations`-afrondingen totdat elke vouw als validatieset wordt gebruikt. De gemiddelde scores voor alle `n_cross_validations` rondingen worden gerapporteerd en het bijbehorende model wordt opnieuw getraind op de hele set trainings gegevens.
+Gebruik `n_cross_validations` instelling om het aantal Kruis validaties op te geven. De training gegevensset wordt wille keurig gesplitst in `n_cross_validations` vouwen van gelijke grootte. Tijdens elke Kruis validatie ronde wordt een van de vouwen gebruikt voor de validatie van het model dat is getraind op de resterende vouwen. Dit proces wordt herhaald om `n_cross_validations` af te ronden totdat elke vouw als validatieset wordt gebruikt. De gemiddelde scores voor alle `n_cross_validations` rondingen worden gerapporteerd en het bijbehorende model wordt opnieuw getraind op de hele set trainings gegevens.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo-Kruis validatie (herhaalde, wille keurige subsampling)
 
-Gebruik `validation_size` om het percentage van de trainings gegevensset op te geven die moet worden gebruikt voor validatie, en gebruik `n_cross_validations` om het aantal Kruis validaties op te geven. Tijdens elke Kruis validatie ronde wordt een subset van grootte `validation_size` wille keurig geselecteerd voor validatie van het model dat is getraind voor de resterende gegevens. Ten slotte wordt de gemiddelde score over alle `n_cross_validations` rondes gerapporteerd en het bijbehorende model wordt opnieuw getraind op de hele set met trainings gegevens. Monte Carlo wordt niet ondersteund voor time series-prognoses.
+Gebruik `validation_size` om het percentage van de trainings gegevensset op te geven die moet worden gebruikt voor validatie, en gebruik `n_cross_validations` om het aantal Kruis validaties op te geven. Tijdens elke Kruis validatie ronde wordt een subset van grootte `validation_size` wille keurig geselecteerd voor validatie van het model dat is getraind voor de resterende gegevens. Ten slotte worden de gemiddelde scores voor alle `n_cross_validations` rondingen gerapporteerd en wordt het bijbehorende model opnieuw getraind op de hele set met trainings gegevens. Monte Carlo wordt niet ondersteund voor time series-prognoses.
 
 ### <a name="custom-validation-dataset"></a>Gegevensset voor aangepaste validatie
 
@@ -174,7 +171,7 @@ Voorbeelden zijn:
         n_cross_validations=5)
     ```
 
-De drie verschillende para meters voor @no__t 0 (het derde taak type is `forecasting` en maakt gebruik van dezelfde algoritme groep als `regression` taken) bepalen welke lijst met modellen moet worden toegepast. Gebruik de para meters `whitelist` of `blacklist` om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
+De drie verschillende `task` parameter waarden (het derde taak type is `forecasting`en gebruikt dezelfde algoritme groep als `regression` taken) om te bepalen welke lijst met modellen moet worden toegepast. Gebruik de para meters `whitelist` of `blacklist` om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [klasse SupportedModels](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primaire metriek
 De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
@@ -243,7 +240,7 @@ Ensemble-modellen zijn standaard ingeschakeld en worden weer gegeven als de laat
 Er zijn meerdere standaard argumenten die kunnen worden gegeven als `kwargs` in een `AutoMLConfig`-object om het standaard gedrag van de stack-ensemble te wijzigen.
 
 * `stack_meta_learner_type`: de meta-leerer is een model dat is getraind op de uitvoer van de afzonderlijke heterogene modellen. Standaard-meta informatie is `LogisticRegression` voor classificatie taken (of `LogisticRegressionCV` als kruis validatie is ingeschakeld) en `ElasticNet` voor regressie/prognose van taken (of `ElasticNetCV` als kruis validatie is ingeschakeld). Deze para meter kan een van de volgende teken reeksen zijn: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` of `LinearRegression`.
-* `stack_meta_learner_train_percentage`: geeft het aandeel van de Trainingsset (bij het kiezen van trein en validatie type training) aan dat moet worden gereserveerd voor de training van de meta-informatieer. De standaard waarde is `0.2`.
+* `stack_meta_learner_train_percentage`: Hiermee geeft u het aandeel van de Trainingsset (bij het kiezen van trein en validatie type training) op die moet worden gereserveerd voor de training van de meta-informatieer. De standaard waarde is `0.2`.
 * `stack_meta_learner_kwargs`: optionele para meters die moeten worden door gegeven aan de initialisatie functie van de meta-informatieer. Deze para meters en parameter typen spie gelen die van de bijbehorende model-constructor en worden doorgestuurd naar de model-constructor.
 
 De volgende code toont een voor beeld van het opgeven van een aangepast ensemble-gedrag in een `AutoMLConfig`-object.
@@ -272,7 +269,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Een ensemble-training is standaard ingeschakeld, maar kan worden uitgeschakeld met behulp van de para meters `enable_voting_ensemble` en `enable_stack_ensemble`.
+Een ensemble-training is standaard ingeschakeld, maar kan worden uitgeschakeld met behulp van de `enable_voting_ensemble` en `enable_stack_ensemble` Booleaanse para meters.
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -311,14 +308,14 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >Afhankelijkheden worden eerst op een nieuwe computer geïnstalleerd.  Het kan tot tien minuten duren voordat uitvoer wordt weer gegeven.
->Als `show_output` wordt ingesteld op `True`, wordt de uitvoer weer gegeven op de-console.
+>Het instellen van `show_output` op `True` resultaten in uitvoer die worden weer gegeven op de-console.
 
 ### <a name="exit-criteria"></a>Afsluit criteria
 Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
 1. Geen criteria: als u geen afsluit parameters definieert, wordt het experiment voortgezet totdat er geen verdere voortgang wordt gemaakt op uw primaire metriek.
-1. Aantal iteraties: u definieert het aantal iteraties voor het uitvoeren van het experiment. U kunt eventueel `iteration_timeout_minutes` toevoegen om een tijds limiet in minuten per iteratie te definiëren.
+1. Aantal iteraties: u definieert het aantal iteraties voor het uitvoeren van het experiment. U kunt eventueel `iteration_timeout_minutes` toevoegen om een tijds limiet in minuten per herhaling te definiëren.
 1. Afsluiten na een periode: door `experiment_timeout_minutes` in uw instellingen te gebruiken, kunt u opgeven hoelang in minuten een experiment moet worden uitgevoerd.
-1. Afsluiten nadat een score is bereikt: wanneer u `experiment_exit_score` gebruikt, wordt het experiment voltooid nadat een primaire meet Score is bereikt.
+1. Afsluiten nadat een score is bereikt: als u `experiment_exit_score` gebruikt, wordt het experiment voltooid nadat een primaire meet Score is bereikt.
 
 ### <a name="explore-model-metrics"></a>Model statistieken verkennen
 
@@ -350,7 +347,7 @@ Bekijk dit voor beeld:
 
 Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Bekijk [dit voor beeld van een notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-+ API 1: `get_engineered_feature_names()` retourneert een lijst met functie namen van het Engineer.
++ API 1: `get_engineered_feature_names()` retourneert een lijst met de namen van de functies van de functie.
 
   Gebruik:
   ```python
@@ -475,7 +472,7 @@ Met geautomatiseerde machine learning kunt u het belang van de functie begrijpen
 
 Er zijn twee manieren om het belang van de functie te genereren.
 
-*   Zodra een experiment is voltooid, kunt u voor elke iteratie `explain_model`-methode gebruiken.
+*   Zodra een experiment is voltooid, kunt u bij elke wille keurige herhaling `explain_model` methode gebruiken.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -492,7 +489,7 @@ Er zijn twee manieren om het belang van de functie te genereren.
     print(per_class_summary)
     ```
 
-*   Als u de prioriteit van de functie voor alle iteraties wilt weer geven, stelt u de vlag `model_explainability` in op `True` in AutoMLConfig.
+*   Als u het belang van de functie voor alle iteraties wilt weer geven, stelt u `model_explainability` vlag in op `True` in AutoMLConfig.
 
     ```python
     automl_config = AutoMLConfig(task='classification',

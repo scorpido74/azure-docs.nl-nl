@@ -1,13 +1,13 @@
 ---
-title: Taal analysen toevoegen-Azure Search
-description: Meertalige tekst analyse in meerdere talen voor niet-Engelse query's en indexen in Azure Search.
-ms.date: 02/14/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Taal analyse functies toevoegen aan teken reeks velden in een index
+titleSuffix: Azure Cognitive Search
+description: Meertalige tekst analyse in meerdere talen voor niet-Engelse query's en indexen in azure Cognitive Search.
+manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e54fa449e0ed7f3208d9924b69946c6598a00444
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648813"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790141"
 ---
-# <a name="add-language-analyzers-to-an-azure-search-index"></a>Taal analyse functies toevoegen aan een Azure Search-index
+# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan een Azure Cognitive Search-index
 
 Een *taal analyse* is een specifiek type [tekst analyse](search-analyzers.md) dat lexicale analyses uitvoert met behulp van de taal kundige regels van de doel taal. Elk doorzoekbaar veld heeft een eigenschap **Analyzer** . Als uw index vertaalde teken reeksen bevat, zoals afzonderlijke velden voor Engelse en Chinese tekst, kunt u taal analysen opgeven voor elk veld om toegang te krijgen tot de uitgebreide taal mogelijkheden van die analyse functies.  
 
-Azure Search ondersteunt 35-analyse functies die worden ondersteund door Lucene, en 50-analyse functies die worden ondersteund door een eigen micro soft-technologie voor natuurlijke taal verwerking die wordt gebruikt in Office en Bing.
+Azure Cognitive Search ondersteunt 35-analyse functies die worden ondersteund door Lucene, en 50-analyse functies die worden ondersteund door een eigen micro soft-technologie voor natuurlijke taal verwerking die wordt gebruikt in Office en Bing.
 
 ## <a name="comparing-analyzers"></a>Analyse functies vergelijken
 
@@ -52,7 +52,7 @@ Taal analysen worden gebruikt als-is. Voor elk veld in de index definitie kunt u
 
 Gebruik de para meter **searchFields** om op te geven in welke taal specifiek veld moet worden gezocht in uw query's. U kunt query voorbeelden bekijken die de eigenschap Analyzer in [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents)bevatten. 
 
-Zie [Create index &#40;Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over eigenschappen van de index. Zie voor meer informatie over analyse in Azure Search [analyseren in azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
+Zie [Create index &#40;Azure Cognitive Search rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over eigenschappen van de index. Zie voor meer informatie over het analyseren van Azure Cognitive Search analyse functies [in azure Cognitive Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
 <a name="language-analyzer-list"></a>
 
@@ -61,67 +61,68 @@ Zie [Create index &#40;Azure Search service rest API&#41;](https://docs.microsof
 
 |Taal|Naam van micro soft Analyzer|Naam van Lucene Analyzer|  
 |--------------|-----------------------------|--------------------------|  
-|Arabisch|ar.microsoft|AR. lucene|  
+|Arabisch|AR. micro soft|AR. lucene|  
 |Armeens||HY. lucene|  
-|Bengalees|bn.microsoft||  
-|Baskisch||eu.lucene|  
-|Bulgaars|bg.microsoft|bg.lucene|  
-|Catalaans|ca.microsoft|ca.lucene|  
-|Vereenvoudigd Chinees|zh-Hans.microsoft|zh-Hans.lucene|  
-|Traditioneel Chinees|zh-Hant.microsoft|zh-Hant.lucene|  
-|Kroatisch|hr.microsoft||  
-|Tsjechisch|cs.microsoft|cs.lucene|  
-|Deens|da.microsoft|da.lucene|  
-|Nederlands|nl.microsoft|nl.lucene|  
-|Engels|en.microsoft|en. lucene|  
-|Estisch|et.microsoft||  
-|Fins|fi.microsoft|fi.lucene|  
-|Frans|fr.microsoft|fr. lucene|  
-|Galicisch||gl.lucene|  
-|Duits|de.microsoft|de.lucene|  
-|Grieks|el.microsoft|el.lucene|  
-|Gujarati|gu.microsoft||  
-|Hebreeuws|he.microsoft||  
-|Hindi|hi.microsoft|hi.lucene|  
-|Hongaars|hu.microsoft|hu.lucene|  
-|IJslands|is.microsoft||  
-|Indonesisch (Bahasa)|id.microsoft|id.lucene|  
-|Iers||ga.lucene|  
-|Italiaans|it.microsoft|it.lucene|  
-|Japans|ja.microsoft|ja.lucene|  
-|Kanarees|kn.microsoft||  
-|Koreaans|ko.microsoft|ko.lucene|  
-|Lets|lv.microsoft|lv.lucene|  
-|Litouws|lt.microsoft||  
-|Malayalam|ml.microsoft||  
-|Maleis (Latijns)|ms.microsoft||  
-|Marathi|mr.microsoft||  
-|Noors|nb.microsoft|no.lucene|  
-|Perzisch||fa.lucene|  
-|Pools|pl.microsoft|pl.lucene|  
-|Portugees (Brazilië)|pt-Br.microsoft|pt-br. lucene|  
-|Portugees (Portugal)|pt-Pt.microsoft|pt-Pt.lucene|  
-|Punjabi|pa.microsoft||  
-|Roemeens|ro.microsoft|ro.lucene|  
-|Russisch|ru.microsoft|ru.lucene|  
+|Bengalese|bn. micro soft||  
+|Baskisch||EU. lucene|  
+|Bulgaars|bg. micro soft|bg. lucene|  
+|Catalaans|ca. micro soft|ca. lucene|  
+|Vereenvoudigd Chinees|zh-Hans. micro soft|zh-Hans. lucene|  
+|Traditioneel Chinees|zh-hant. micro soft|zh-hant. lucene|  
+|Kroatisch|HR. micro soft||  
+|Tsjechisch|CS. micro soft|CS. lucene|  
+|Deens|da. micro soft|da. lucene|  
+|Nederlands|nl. micro soft|nl. lucene|  
+|Nederlands|en. micro soft|en. lucene|  
+|Estisch|et. micro soft||  
+|Fins|fi. micro soft|fi. lucene|  
+|Frans|fr. micro soft|fr. lucene|  
+|Galicisch||gl. lucene|  
+|Duits|de. micro soft|de. lucene|  
+|Grieks|El. micro soft|El. lucene|  
+|Gujarati|Gu. micro soft||  
+|Hebreeuws|he. micro soft||  
+|Hindi|Hallo. micro soft|Hallo. lucene|  
+|Hongaars|hu. micro soft|hu. lucene|  
+|IJslands|is. micro soft||  
+|Indonesisch (Bahasa)|id. micro soft|id. lucene|  
+|Iers||Ga. lucene|  
+|Italiaans|it. micro soft|it. lucene|  
+|Japans|Ja. micro soft|Ja. lucene|  
+|Kannada|kn. micro soft||  
+|Koreaans|ko. micro soft|ko. lucene|  
+|Lets|LV. micro soft|LV. lucene|  
+|Litouws|lt. micro soft||  
+|Malajalam|ml. micro soft||  
+|Maleis (Latijns)|MS. micro soft||  
+|Marathi|Mr. micro soft||  
+|Noors|NB. micro soft|No. lucene|  
+|Perzisch||FA. lucene|  
+|Pools|pl. micro soft|pl. lucene|  
+|Portugees (Brazilië)|pt-br. micro soft|pt-br. lucene|  
+|Portugees (Portugal)|pt-pt. micro soft|pt-pt. lucene|  
+|Punjabi|pa. micro soft||  
+|Roemeens|ro. micro soft|ro. lucene|  
+|Russisch|ru. micro soft|ru. lucene|  
 |Servisch (Cyrillisch)|SR-Cyrillisch. micro soft||  
-|Servisch (Latijns)|sr-latin.microsoft||  
-|Slowaaks|sk.microsoft||  
-|Sloveens|sl.microsoft||  
-|Spaans|es.microsoft|es. lucene|  
-|Zweeds|sv.microsoft|sv.lucene|  
-|Tamil|ta.microsoft||  
-|Telugu|te.microsoft||  
+|Servisch (Latijns)|SR-Latijn. micro soft||  
+|Slowaaks|SK. micro soft||  
+|Sloveens|SL. micro soft||  
+|Spaans|es. micro soft|es. lucene|  
+|Zweeds|SV. micro soft|SV. lucene|  
+|Tamil|ta. micro soft||  
+|Telugu|te. micro soft||  
 |Thais|th. micro soft|th. lucene|  
-|Turks|tr.microsoft|tr. lucene|  
-|Oekraïens|uk.microsoft||  
-|Urdu|ur.microsoft||  
-|Vietnamees|vi.microsoft||  
+|Turks|tr. micro soft|tr. lucene|  
+|Oekraïens|UK. micro soft||  
+|Urdu|uw. micro soft||  
+|Vietnamees|VI. micro soft||  
 
  Alle analyse functies met namen die zijn gekoppeld aan **lucene** , worden aangedreven door [de taal Analyseers van Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
 ## <a name="see-also"></a>Zie ook  
- [Index &#40;Azure Search service rest API maken&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
- [Klasse Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
- [Video: module 7 van Azure Search MVA-presentatie](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07).  
+
++ [Index &#40;van Azure Cognitive Search rest API maken&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+
++ [Klasse Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 

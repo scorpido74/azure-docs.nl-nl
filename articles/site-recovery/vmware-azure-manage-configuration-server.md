@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250106"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791823"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor VMware VM beheren
 
@@ -20,6 +20,10 @@ U stelt een on-premises configuratie server in wanneer u [Azure site Recovery](s
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="update-windows-license"></a>Windows-licentie bijwerken
+
+De licentie die is opgenomen in de OVF-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Voor niet-onderbroken gebruik moet u Windows activeren met een aangeschafte licentie. Licentie-update kan worden uitgevoerd via een zelfstandige sleutel of met de standaard KMS-sleutel. Richt lijnen is beschikbaar op de [DISM Windows-opdracht regel voor het uitvoeren van besturings systemen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). Als u sleutels wilt verkrijgen, raadpleegt u de [KMS-client instellen](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys).
 
 ## <a name="access-configuration-server"></a>Toegangs configuratie server
 
@@ -68,7 +72,7 @@ Als u het toevoegen van referenties tijdens de OVF-implementatie van de configur
 
 1. Nadat u [zich hebt aangemeld](#access-configuration-server), selecteert u referenties voor **virtuele machines beheren**.
 2. Klik op **referenties voor virtuele machines toevoegen**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-Mobility-referenties](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Voer de nieuwe referenties in en klik op **toevoegen**.
 
 U kunt ook referenties toevoegen via CSPSConfigtool. exe.
@@ -96,7 +100,7 @@ Met de sjabloon Open Virtualization Format (OVF) wordt de VM van de configuratie
 Als dat nodig is, kunt u de configuratie server opnieuw registreren in dezelfde kluis. Als u beschikt over een extra proces Server computer, moet u naast de standaard proces server die wordt uitgevoerd op de computer van de configuratie server, beide computers opnieuw registreren.
 
 
-1. Open > site Recovery-**infrastructuur** > **configuratie servers** **beheren**in de kluis.
+1. Open in de kluis > Site Recovery- **infra structuur** **beheren** > **configuratie servers**.
 2. In **servers**selecteert u **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 3. Meld u aan bij de computer met de configuratie server.
 4. Open **cspsconfigtool. exe**in **%ProgramData%\ASR\home\svsystems\bin**.
@@ -149,18 +153,18 @@ Koppelingen naar update pakketten voor het uitvoeren van een upgrade naar alle v
 
 Voer als volgt een upgrade uit voor de server:
 
-1. Ga in de kluis naar**configuratie servers**voor**site Recovery-infra structuur** >  **beheren** > .
+1. Ga in de kluis naar > Site Recovery- **infra structuur** **beheren** > **configuratie servers**.
 2. Als er een update beschikbaar is, wordt er een koppeling weer gegeven in de kolom **Agent versie** >.
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Down load het installatie bestand voor de update naar de configuratie server.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dubbel klik om het installatie programma uit te voeren.
 5. Het installatie programma detecteert de huidige versie die op de computer wordt uitgevoerd. Klik op **Ja** om de upgrade te starten.
 6. Wanneer de upgrade is voltooid, wordt de server configuratie gevalideerd.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Klik op **volt ooien** om het installatie programma te sluiten.
 8. Raadpleeg onze [upgrade-richt lijnen](https://aka.ms/asr_vmware_upgrades)om de rest van de site Recovery onderdelen bij te werken.
@@ -183,7 +187,7 @@ Voer het installatie bestand als volgt uit:
 
 ### <a name="parameters"></a>Parameters
 
-|Parameternaam| type | Description| Waarden|
+|Parameternaam| Type | Beschrijving| Waarden|
 |-|-|-|-|
 | /ServerMode|Verplicht|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
 |/InstallLocation|Verplicht|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
@@ -287,14 +291,10 @@ Voor implementaties van de configuratie server vóór 2016 mei is certificaat ve
 
 ## <a name="refresh-configuration-server"></a>Configuratie server vernieuwen
 
-1. Ga in het Azure Portal naar **Recovery Services kluis** > **site Recovery infra structuur** > **beheren** > **voor VMware & configuratie van fysieke machines** >  **Servers**
+1. Ga in het Azure Portal naar **Recovery Services kluis** >  > **site Recovery infra structuur** te **beheren** > **voor VMware &** **configuratie servers**
 2. Klik op de configuratie server die u wilt vernieuwen.
 3. Klik op de Blade met details van de gekozen configuratie server op **meer** > **server vernieuwen**.
 4. Controleer de voortgang van de taak onder **Recovery Services kluis** > **bewaking** > **site Recovery taken**.
-
-## <a name="update-windows-license"></a>Windows-licentie bijwerken
-
-De licentie die is opgenomen in de OVF-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Voor niet-onderbroken gebruik moet u Windows activeren met een aangeschafte licentie.
 
 ## <a name="failback-requirements"></a>Vereisten voor failback
 

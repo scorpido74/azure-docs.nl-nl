@@ -1,5 +1,6 @@
 ---
-title: SAML-token claims aanpassen voor zakelijke apps in azure AD | Microsoft Docs
+title: SAML-token claims aanpassen voor zakelijke apps in azure AD
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het aanpassen van de claims die zijn uitgegeven in het SAML-token voor zakelijke toepassingen in azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240235"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803456"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 

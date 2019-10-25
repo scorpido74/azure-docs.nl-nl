@@ -1,6 +1,7 @@
 ---
-title: Eenmalige aanmelding (Microsoft Authentication Library voor JavaScript) | Azure
-description: Meer informatie over het bouwen van eenmalige aanmelding-ervaringen met behulp van de Microsoft Authentication Library voor JavaScript (MSAL.js).
+title: Eenmalige aanmelding (micro soft-verificatie bibliotheek voor Java script)
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het bouwen van eenmalige aanmelding met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,24 +18,24 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f102307256852ac92616c7fb707e0e2739e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f1b79e1694d759682833bf6022dbc9cd0a0977f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544136"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802999"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Eenmalige aanmelding met MSAL.js
 
-Eenmalige aanmelding (SSO) kunnen gebruikers eenmaal zijn referenties invoeren om te melden bij en zorg dat u een sessie die kan worden hergebruikt voor meerdere toepassingen zonder opnieuw te verifiëren. Dit biedt een naadloze ervaring voor de gebruiker en vermindert de herhaalde vragen om referenties.
+Met eenmalige aanmelding (SSO) kunnen gebruikers hun referenties eenmaal invoeren om zich aan te melden en een sessie tot stand te brengen die opnieuw kan worden gebruikt in meerdere toepassingen zonder dat ze opnieuw moeten worden geverifieerd. Dit biedt een naadloze ervaring voor de gebruiker en vermindert de herhaalde prompts voor referenties.
 
-Azure AD biedt mogelijkheden voor eenmalige aanmelding tot toepassingen door in te stellen van een sessiecookie wanneer de eerste keer door de gebruiker wordt geverifieerd. De bibliotheek MSAL.js zorgt ervoor dat toepassingen gebruikmaken van dit in een aantal manieren.
+Azure AD biedt SSO-mogelijkheden voor toepassingen door een sessie cookie in te stellen wanneer de gebruiker de eerste keer verifieert. Met de MSAL. JS-bibliotheek kunnen toepassingen op een paar manieren gebruikmaken van deze.
 
-## <a name="sso-between-browser-tabs"></a>Eenmalige aanmelding tussen tabbladen in browser
+## <a name="sso-between-browser-tabs"></a>SSO tussen browser tabbladen
 
-Wanneer uw toepassing geopend in meerdere tabbladen is en u zich eerst bij de gebruiker op een tabblad aanmelden, wordt de gebruiker ook ondertekend in op de andere tabbladen zonder dat u wordt gevraagd. MSAL.js slaat de ID-token voor de gebruiker in de browser `localStorage` en wordt de gebruiker zich aanmeldt bij de toepassing op de andere geopende tabbladen.
+Wanneer uw toepassing is geopend op meerdere tabbladen en u zich voor het eerst aanmeldt op een tabblad, wordt de gebruiker ook aangemeld op de andere tabbladen zonder dat daarom wordt gevraagd. MSAL. js slaat de ID-token voor de gebruiker op in de browser `localStorage` en wordt de gebruiker bij de toepassing ondertekend op de andere geopende tabbladen.
 
-Gebruikt standaard MSAL.js `sessionStorage` die staat niet toe dat de sessie worden gedeeld tussen tabbladen. Als u eenmalige aanmelding tussen tabbladen, zorg ervoor dat om in te stellen de `cacheLocation` in MSAL.js te `localStorage` zoals hieronder wordt weergegeven.
+MSAL. js maakt standaard gebruik van `sessionStorage` waardoor de sessie niet tussen tabbladen kan worden gedeeld. Als u SSO tussen tabbladen wilt ophalen, moet u de `cacheLocation` in MSAL. js instellen op `localStorage` zoals hieronder wordt weer gegeven.
 
 ```javascript
 const config = {
@@ -49,27 +50,27 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-## <a name="sso-between-apps"></a>Eenmalige aanmelding tussen apps
+## <a name="sso-between-apps"></a>SSO tussen apps
 
-Wanneer een gebruiker zich verifieert, wordt een sessiecookie ingesteld op de Azure AD-domein in de browser. MSAL.js, is afhankelijk van deze sessiecookie voor eenmalige aanmelding voor de gebruiker tussen verschillende toepassingen. MSAL.js worden ook de ID-tokens en tokens voor toegang van de gebruiker in de browser-opslag per toepassingsdomein opgeslagen. Als gevolg hiervan wordt het gedrag van eenmalige aanmelding varieert voor verschillende aanvragen:  
+Wanneer een gebruiker zich verifieert, wordt een sessie cookie ingesteld op het Azure AD-domein in de browser. MSAL. js is afhankelijk van deze sessie cookie om eenmalige aanmelding te bieden voor de gebruiker tussen verschillende toepassingen. MSAL. js slaat ook de ID-tokens en toegangs tokens van de gebruiker op in de browser opslag per toepassings domein. Als gevolg hiervan varieert het SSO-gedrag voor verschillende gevallen:  
 
-### <a name="applications-on-the-same-domain"></a>Toepassingen op hetzelfde domein
+### <a name="applications-on-the-same-domain"></a>Toepassingen in hetzelfde domein
 
-Wanneer toepassingen worden gehost in hetzelfde domein, wordt de gebruiker één keer zich kunt aanmelden bij een app en vervolgens geverifieerd naar de andere apps zonder ernaar te vragen. MSAL.js maakt gebruik van de tokens in de cache opgeslagen voor de gebruiker op het domein bieden van eenmalige aanmelding.
+Wanneer toepassingen worden gehost op hetzelfde domein, kan de gebruiker zich eenmaal aanmelden bij een app en vervolgens worden geverifieerd naar de andere apps zonder dat hiervoor een prompt wordt gevraagd. MSAL. js maakt gebruik van de tokens die in de cache worden opgeslagen voor de gebruiker op het domein om eenmalige aanmelding te bieden.
 
 ### <a name="applications-on-different-domain"></a>Toepassingen op een ander domein
 
-Wanneer toepassingen worden gehost in verschillende domeinen bevinden, kunnen niet de tokens in de cache op een domein worden geopend door MSAL.js in domein B.
+Wanneer toepassingen worden gehost in verschillende domeinen, is de tokens in het cache geheugen van domein A niet toegankelijk via MSAL. js in domein B.
 
-Dit betekent dat wanneer gebruikers bent aangemeld bij het domein een navigeren naar een toepassing op domein B, ze worden omgeleid of gevraagd of u met de Azure AD-pagina. Omdat Azure AD nog steeds de sessiecookie van de gebruiker heeft, wordt de gebruiker wordt aangemeld en moeten ze niet de referenties opnieuw invoeren. Als de gebruiker meerdere gebruikersaccounts in een sessie met Azure AD heeft, wordt de gebruiker gevraagd om op te halen van het relevante account zich aanmelden met.
+Dit betekent dat wanneer gebruikers zich hebben aangemeld op domein A naar een toepassing in het domein B navigeert, ze worden omgeleid of wordt gevraagd met de pagina Azure AD. Omdat Azure AD de cookie van de gebruikers sessie nog steeds heeft, wordt de gebruiker aangemeld en hoeven de referenties niet opnieuw te worden opgegeven. Als de gebruiker meerdere gebruikers accounts heeft in een sessie met Azure AD, wordt de gebruiker gevraagd het betreffende account te kiezen om zich aan te melden.
 
-### <a name="automatically-select-account-on-azure-ad"></a>Selecteer automatisch-account in Azure AD
+### <a name="automatically-select-account-on-azure-ad"></a>Automatisch accounts selecteren in azure AD
 
-In bepaalde gevallen is de toepassing toegang heeft tot de context van de verificatie van de gebruiker en wil de Azure AD-account selectie prompt voorkomen wanneer meerdere accounts worden aangemeld.  Dit kan een aantal verschillende manieren worden gedaan:
+In bepaalde gevallen heeft de toepassing toegang tot de verificatie context van de gebruiker en wil de Azure AD-account selectie prompt voor komen wanneer er meerdere accounts zijn aangemeld.  Dit kan op verschillende manieren worden gedaan:
 
-**Met behulp van de sessie-ID (SID)**
+**Sessie-ID (SID) gebruiken**
 
-Sessie-ID is een [optionele claim](active-directory-optional-claims.md) die kan worden geconfigureerd in de ID-tokens. Deze claim kan de toepassing om te identificeren van de gebruiker Azure AD-sessie die onafhankelijk van de accountnaam van de gebruiker of gebruikersnaam. U kunt de beveiligings-id doorgeven in de parameters van de aanvraag naar de `acquireTokenSilent` aanroepen. Hierdoor kunnen Azure AD om de Accountselectie over te slaan. Beveiligings-id is gekoppeld aan de sessiecookie en wordt niet overschreden door de browser contexten.
+Sessie-ID is een [optionele claim](active-directory-optional-claims.md) die kan worden geconfigureerd in de id-tokens. Met deze claim kan de toepassing de Azure AD-sessie van de gebruiker identificeren onafhankelijk van de account naam of gebruikers naam van de gebruiker. U kunt de SID in de aanvraag parameters door geven aan de aanroep van `acquireTokenSilent`. Hierdoor kan Azure AD de account selectie overs Laan. SID is gebonden aan de sessie cookie en biedt geen verdere browser contexten.
 
 ```javascript
 var request = {
@@ -86,12 +87,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> Beveiligings-id kan alleen worden gebruikt met verificatie op de achtergrond van aanvragen van `acquireTokenSilent` in MSAL.js aanroepen.
-U vindt de stappen voor het configureren van optionele claims in het toepassingsmanifest [hier](active-directory-optional-claims.md).
+> SID kan alleen worden gebruikt met Silent verificatie aanvragen die zijn gedaan door `acquireTokenSilent` aanroep in MSAL. js.
+[Hier](active-directory-optional-claims.md)vindt u de stappen voor het configureren van optionele claims in het manifest van uw toepassing.
 
-**Met behulp van aanmelding Hint**
+**Aanmeldings Hint gebruiken**
 
-Als u geen SID claim geconfigureerd of nodig hebt om het account wordt gevraagd een selectie in interactieve authentication-oproepen over te slaan, kunt u doen door op te geven een `login_hint` in de aanvraagparameters en eventueel een `domain_hint` als `extraQueryParameters` in de MSAL.js interactieve methoden (`loginPopup`, `loginRedirect`, `acquireTokenPopup` en `acquireTokenRedirect`). Bijvoorbeeld:
+Als u geen SID-claim hebt geconfigureerd of de account selectie prompt wilt overs laan in interactieve verificatie aanroepen, kunt u dit doen door een `login_hint` op te geven in de aanvraag parameters en eventueel een `domain_hint` als `extraQueryParameters` in de interactieve methoden MSAL. js (@no __t_3_, `loginRedirect`, `acquireTokenPopup` en `acquireTokenRedirect`). Bijvoorbeeld:
 
 ```javascript
 var request = {
@@ -103,28 +104,28 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-U kunt de waarden voor login_hint en domain_hint krijgen door het lezen van de claims geretourneerd in het ID-token voor de gebruiker.
+U kunt de waarden voor login_hint en domain_hint ophalen door de claims te lezen die zijn geretourneerd in het ID-token voor de gebruiker.
 
-* **loginHint** moet worden ingesteld op de `preferred_username` claim in het ID-token.
+* **loginHint** moet worden ingesteld op de `preferred_username` claim in het id-token.
 
-* **domain_hint** alleen is vereist om te worden doorgegeven bij het gebruik van de/Common instantie. De domeinhint wordt bepaald door de tenant ID(tid).  Als de `tid` claim in het ID-token is `9188040d-6c67-4c5b-b112-36a304b66dad` consumenten is. Anders wordt deze organisaties.
+* **domain_hint** moet alleen worden door gegeven wanneer de/veelvoorkomende-instantie wordt gebruikt. De domein Hint wordt bepaald door de Tenant-ID (TID).  Als de `tid` claim in het ID-token is `9188040d-6c67-4c5b-b112-36a304b66dad` is deze consument. Anders is het organisaties.
 
-Lezen [hier](v2-oauth2-implicit-grant-flow.md) voor meer informatie over de waarden voor de hint van aanmelding en een geheugensteun voor domein.
+Lees [hier](v2-oauth2-implicit-grant-flow.md) meer informatie over de waarden voor aanmeldings hint en domein hint.
 
 > [!Note]
-> U kunt geen beveiligings-id en login_hint doorgeven op hetzelfde moment. Dit leidt foutbericht.
+> U kunt SID en login_hint niet tegelijkertijd door geven. Dit resulteert in een fout melding.
 
-## <a name="sso-without-msaljs-login"></a>Eenmalige aanmelding zonder MSAL.js aanmelding
+## <a name="sso-without-msaljs-login"></a>SSO zonder MSAL. js-aanmelding
 
-Standaard vereist MSAL.js dat een aanmeldingsmethode wordt aangeroepen voor het maken van de context van een gebruiker voor het ophalen van tokens voor API's. Aangezien aanmeldingsmethoden interactieve, ziet de gebruiker een prompt.
+MSAL. js vereist standaard dat een aanmeldings methode wordt aangeroepen om een gebruikers context te maken voordat tokens voor Api's worden opgehaald. Aangezien de aanmeldings methoden interactief zijn, ziet de gebruiker een prompt.
 
-Er zijn bepaalde gevallen waarin toepassingen toegang tot de context van de geverifieerde gebruiker hebben of de ID-token dat door middel van verificatie in een andere toepassing heeft gestart en u wilt gebruikmaken van eenmalige aanmelding te verkrijgen van tokens zonder het eerst aanmelden via MSAL.js.
+Er zijn bepaalde gevallen waarin toepassingen toegang hebben tot de context van de geverifieerde gebruiker of ID-token via authenticatie die is gestart in een andere toepassing en SSO wilt gebruiken om tokens te verkrijgen zonder u eerst aan te melden via MSAL. js.
 
-Een voorbeeld hiervan is: Een gebruiker is aangemeld bij een bovenliggende-webtoepassing die als host fungeert voor een andere JavaScript-toepassing die wordt uitgevoerd als een invoegtoepassing of -invoegtoepassing.
+Een voor beeld hiervan is: een gebruiker is aangemeld bij een bovenliggende webtoepassing die als host fungeert voor een andere Java script-toepassing die wordt uitgevoerd als een invoeg toepassing of invoeg toepassing.
 
 De SSO-ervaring in dit scenario kan als volgt worden bereikt:
 
-Geeft de `sid` indien beschikbaar (of `login_hint` en eventueel `domain_hint`) als parameters voor de MSAL.js aanvragen `acquireTokenSilent` aanroepen als volgt:
+Geef de `sid` indien beschikbaar (of `login_hint` en eventueel `domain_hint`) als aanvraag parameters aan de aanroep MSAL. js `acquireTokenSilent` als volgt:
 
 ```javascript
 var request = {
@@ -141,11 +142,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>Eenmalige aanmelding in ADAL.js MSAL.js update
+## <a name="sso-in-adaljs-to-msaljs-update"></a>SSO in ADAL. js naar MSAL. js update
 
-MSAL.js zorgt voor functiepariteit met ADAL.js voor scenario's Azure AD-verificatie. De migratie van ADAL.js naar MSAL.js om eenvoudig te maken en om te voorkomen dat u wordt gevraagd uw gebruikers zich opnieuw aanmelden, de bibliotheek leest de ID-token van de gebruikerssessie ADAL.js cache en naadloos meldt zich aan de gebruiker in MSAL.js.  
+MSAL. js brengt functie pariteit met ADAL. js voor Azure AD-verificatie scenario's. Als u de migratie van ADAL. js naar MSAL. js eenvoudig wilt maken en u wilt voor komen dat gebruikers zich opnieuw aanmelden, leest de bibliotheek het ID-token dat de gebruikers sessie vertegenwoordigt in ADAL. js-cache en worden de gebruikers naadloos ondertekend in MSAL. js.  
 
-Als u wilt profiteren van het gedrag van eenmalige aanmelding (SSO) bij het bijwerken van ADAL.js, moet u ervoor dat de bibliotheken `localStorage` voor het opslaan van tokens. Stel de `cacheLocation` naar `localStorage` in de configuratie van zowel de MSAL.js en de ADAL.js tijdens de initialisatie als volgt te werk:
+Als u gebruik wilt maken van het gedrag van eenmalige aanmelding (SSO) bij het bijwerken vanuit ADAL. js, moet u ervoor zorgen dat de bibliotheken `localStorage` gebruiken voor cache-tokens. Stel de `cacheLocation` in op `localStorage` in de configuratie MSAL. js en ADAL. js bij initialisatie als volgt:
 
 
 ```javascript
@@ -171,8 +172,8 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-Nadat deze is geconfigureerd, worden MSAL.js kan de status van de cache van de geverifieerde gebruiker in ADAL.js lezen en dat bieden van eenmalige aanmelding in MSAL.js te gebruiken.
+Zodra deze is geconfigureerd, kan MSAL. js de status van de geverifieerde gebruiker in ADAL. js lezen en gebruiken om SSO in MSAL. js op te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [eenmalige aanmelding-sessie en levensduur van vernieuwingstoken](active-directory-configurable-token-lifetimes.md) waarden in Azure AD.
+Meer informatie over de waarden voor [eenmalige aanmelding en levens duur van tokens](active-directory-configurable-token-lifetimes.md) in azure AD.

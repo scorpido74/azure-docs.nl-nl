@@ -1,22 +1,21 @@
 ---
-title: Tekst samen voegen cognitieve Zoek vaardigheid-Azure Search
-description: Tekst van een verzameling velden samen voegen in één geconsolideerd veld. Gebruik deze cognitieve vaardigheid in een Azure Search verrijkings pijplijn.
-services: search
+title: Cognitieve vaardigheid van tekst samen voegen
+titleSuffix: Azure Cognitive Search
+description: Tekst van een verzameling velden samen voegen in één geconsolideerd veld. Gebruik deze cognitieve vaardigheid in een AI-pijp lijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265261"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791846"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Cognitieve vaardigheid van tekst samen voegen
+#   <a name="text-merge-cognitive-skill"></a>Cognitieve vaardigheid van tekst samen voegen
 
 Met de functie **tekst samen voegen** wordt tekst van een verzameling velden in één veld geconsolideerd. 
 
@@ -24,16 +23,16 @@ Met de functie **tekst samen voegen** wordt tekst van een verzameling velden in 
 > Deze vaardigheid is niet gebonden aan een Cognitive Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet nog steeds [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md)om de optie **gratis** resource te overschrijven, waardoor u een klein aantal dagelijkse verrijkingen per dag beperkt.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Micro soft. skills. Text. MergeSkill
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Para meters zijn hoofdletter gevoelig.
 
-| Parameternaam     | Description |
+| Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| insertPreTag  | De teken reeks die voor elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt `""`u de waarde in op.  |
-| insertPostTag | De teken reeks die na elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt `""`u de waarde in op.  |
+| insertPreTag  | De teken reeks die voor elke invoeging moet worden opgenomen. De standaard waarde is `" "`. Als u de ruimte wilt weglaten, stelt u de waarde in op `""`.  |
+| insertPostTag | De teken reeks die na elke invoeging moet worden opgenomen. De standaard waarde is `" "`. Als u de ruimte wilt weglaten, stelt u de waarde in op `""`.  |
 
 
 ##  <a name="sample-input"></a>Voorbeeld invoer
@@ -56,7 +55,7 @@ Een JSON-document dat bruikbare invoer voor deze vaardigheid biedt, kan zijn:
 ```
 
 ##  <a name="sample-output"></a>Voorbeelduitvoer
-In dit voor beeld ziet u de uitvoer van de vorige invoer, ervan uitgaande dat de `" "`insertPreTag is ingesteld op en *insertPostTag* is ingesteld op `""`. 
+In dit voor beeld ziet u de uitvoer van de vorige invoer, ervan uitgaande dat de *insertPreTag* is ingesteld op `" "`en *insertPostTag* is ingesteld op `""`. 
 
 ```json
 {
@@ -143,6 +142,6 @@ In het bovenstaande voor beeld wordt ervan uitgegaan dat er een veld met genorma
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md)
++ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Indexeer functie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

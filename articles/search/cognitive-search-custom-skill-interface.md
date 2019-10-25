@@ -1,25 +1,25 @@
 ---
-title: Interface definitie voor aangepaste vaardig heden in cognitieve zoek opdracht-Azure Search
-description: Aangepaste interface voor het extra heren van gegevens voor webapi-aangepaste vaardigheid in de cognitieve Zoek pijplijn in Azure Search.
+title: Interface definitie voor aangepaste vaardig heden
+titleSuffix: Azure Cognitive Search
+description: Aangepaste interface voor het uitpakken van gegevens voor aangepaste web-API-vaardig heden in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692178"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787548"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een cognitieve Zoek pijplijn
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een Azure Cognitive Search-verrijkings pijplijn
 
-Een [cognitieve Zoek pijp lijn](cognitive-search-concept-intro.md) voor het indexeren in azure Search kan worden samengesteld op basis van [vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) die u persoonlijk maakt en toevoegt aan de pijp lijn. In dit artikel leert u hoe u een aangepaste vaardigheid maakt waarmee een interface wordt weer gegeven, zodat deze kan worden opgenomen in een cognitieve Zoek pijplijn. 
+Een [verrijkings pijplijn](cognitive-search-concept-intro.md) in azure Cognitive Search kan worden samengesteld op basis van [ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) die u persoonlijk maakt en toevoegt aan de pijp lijn. In dit artikel leert u hoe u een aangepaste vaardigheid maakt waarmee een interface wordt weer gegeven, zodat deze kan worden opgenomen in een AI-verrijkings pijplijn. 
 
-Het bouwen van een aangepaste vaardigheid biedt een manier om trans formaties die uniek zijn voor uw inhoud, in te voegen. Een aangepaste vaardigheid wordt onafhankelijk uitgevoerd, waarbij de gewenste verrijkings stap wordt toegepast. U kunt bijvoorbeeld veld-specifieke aangepaste entiteiten definiëren en aangepaste classificatie modellen bouwen om onderscheid te maken tussen zakelijke en financiële contracten en documenten, of u kunt een vaardigheid voor spraak herkenning toevoegen om diep gaande geluids bestanden voor relevante inhoud te bereiken. Voor een stapsgewijs voor beeld raadpleegt [u voor beeld: een aangepaste vaardigheid maken voor cognitieve Zoek opdrachten](cognitive-search-create-custom-skill-example.md).
+Het bouwen van een aangepaste vaardigheid biedt een manier om trans formaties die uniek zijn voor uw inhoud, in te voegen. Een aangepaste vaardigheid wordt onafhankelijk uitgevoerd, waarbij de gewenste verrijkings stap wordt toegepast. U kunt bijvoorbeeld veld-specifieke aangepaste entiteiten definiëren en aangepaste classificatie modellen bouwen om onderscheid te maken tussen zakelijke en financiële contracten en documenten, of u kunt een vaardigheid voor spraak herkenning toevoegen om diep gaande geluids bestanden voor relevante inhoud te bereiken. Voor een stapsgewijs voor beeld raadpleegt [u voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md).
 
  Welke aangepaste capaciteit u nodig hebt, er is een eenvoudige en heldere interface voor het koppelen van een aangepaste vaardigheid aan de rest van de verrijkings pijplijn. De enige vereiste voor insluiting in een [vaardig heden](cognitive-search-defining-skillset.md) is de mogelijkheid om invoer te accepteren en uitvoer te verzenden op manieren die kunnen worden gebruikt binnen de vaardig heden als geheel. De focus van dit artikel bevindt zich in de invoer-en uitvoer indelingen die de verrijkings pijplijn nodig heeft.
 

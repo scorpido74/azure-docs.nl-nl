@@ -1,5 +1,6 @@
 ---
-title: Webbrowsers in micro soft-verificatie bibliotheek voor .NET | Azure
+title: Webbrowsers in micro soft-verificatie bibliotheek voor .NET
+titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532498"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802688"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Webbrowsers gebruiken in MSAL.NET
 Webbrowsers zijn vereist voor interactieve verificatie. Standaard ondersteunt MSAL.NET de [systeem webbrowser](#system-web-browser-on-xamarinios-xamarinandroid) op Xamarin. IOS en Xamarin. Android. [U kunt echter ook de Inge sloten webbrowser inschakelen](#enable-embedded-webviews-on-ios-and-android) , afhankelijk van uw vereisten (UX, eenmalige aanmelding (SSO), beveiliging) in [Xamarin. IOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) en [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) -apps. En u kunt zelfs [dynamisch kiezen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) welke webbrowser u wilt gebruiken op basis van de aanwezigheid van Chrome of een browser die aangepaste Chrome-tabbladen in Android ondersteunt. MSAL.NET biedt alleen ondersteuning voor de systeem browser in .NET core desktop-toepassingen.
@@ -42,13 +43,13 @@ Het is belang rijk om te begrijpen dat bij het interactief ophalen van een token
 
 ### <a name="embedded-vs-system-web-ui"></a>Inge sloten versus systeemweb-UI
 
-MSAL.NET is een multi Framework-bibliotheek en heeft Framework-specifieke code voor het hosten van een browser in een besturings element in de gebruikers interface (bijvoorbeeld op de klassieke versie van .net maakt gebruik van WinForms, op Xamarin wordt gebruikgemaakt van systeem eigen mobiele besturings elementen, enzovoort). Dit besturings element wordt `embedded` de Web-UI genoemd. Daarnaast kunt u met MSAL.NET ook de besturingssysteem browser starten.
+MSAL.NET is een multi Framework-bibliotheek en heeft Framework-specifieke code voor het hosten van een browser in een besturings element in de gebruikers interface (bijvoorbeeld op de klassieke versie van .net maakt gebruik van WinForms, op Xamarin wordt gebruikgemaakt van systeem eigen mobiele besturings elementen, enzovoort). Dit besturings element wordt `embedded` web-gebruikers interface genoemd. Daarnaast kunt u met MSAL.NET ook de besturingssysteem browser starten.
 
-Over het algemeen is het raadzaam om de standaard waarde van het platform te gebruiken. Dit is doorgaans de systeem browser. De systeem browser is beter dan de gebruikers die zich hebben aangemeld. Als u dit gedrag moet wijzigen, gebruikt u`WithUseEmbeddedWebView(bool)`
+Over het algemeen is het raadzaam om de standaard waarde van het platform te gebruiken. Dit is doorgaans de systeem browser. De systeem browser is beter dan de gebruikers die zich hebben aangemeld. Als u dit gedrag wilt wijzigen, gebruikt u `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>In een oogopslag
+### <a name="at-a-glance"></a>Een overzicht
 
-| Framework        | Geïntegreerde | Systeem | Standaard |
+| Regelgevings        | Geïntegreerde | Systeem | Standaard |
 | ------------- |-------------| -----| ----- |
 | .NET-klassiek     | Ja | Ja ^ | Geïntegreerde |
 | .NET Core     | Nee | Ja ^ | Systeem |
@@ -58,7 +59,7 @@ Over het algemeen is het raadzaam om de standaard waarde van het platform te geb
 | Xamarin.iOS | Ja | Ja  | Systeem |
 | Xamarin. Mac| Ja | Nee | Geïntegreerde |
 
-^ Vereist http://localhost de omleidings-URI
+^ Vereist de omleidings-URI http://localhost
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Systeem webbrowser op Xamarin. iOS, Xamarin. Android
 
@@ -77,15 +78,15 @@ await pca.AcquireTokenInteractive(s_scopes)
          .WithUseEmbeddedWebView(false)
 ```
 
-MSAL.NET kan niet detecteren of de gebruiker naar een andere locatie navigeert of dat de browser wordt gesloten. Apps die gebruikmaken van deze techniek worden aanbevolen om een time- `CancellationToken`out (via) te definiëren. We raden u aan een time-out van ten minste enkele minuten in te voeren om rekening te houden met gevallen waarin de gebruiker wordt gevraagd om het wacht woord te wijzigen of multi-factor Authentication uit te voeren.
+MSAL.NET kan niet detecteren of de gebruiker naar een andere locatie navigeert of dat de browser wordt gesloten. Apps die gebruikmaken van deze techniek worden aanbevolen om een time-out (via `CancellationToken`) te definiëren. We raden u aan een time-out van ten minste enkele minuten in te voeren om rekening te houden met gevallen waarin de gebruiker wordt gevraagd om het wacht woord te wijzigen of multi-factor Authentication uit te voeren.
 
 ### <a name="how-to-use-the-default-os-browser"></a>De standaard browser van het besturings systeem gebruiken
 
-MSAL.net moet Luis teren `http://localhost:port` en de code onderscheppen die door Aad wordt verzonden wanneer de verificatie van de gebruiker plaatsvindt (Zie [autorisatie code](v2-oauth2-auth-code-flow.md) voor meer informatie)
+MSAL.NET moet Luis teren naar `http://localhost:port` en de code die AAD verzendt, onderscheppen wanneer de verificatie van de gebruiker plaatsvindt (Zie [autorisatie code](v2-oauth2-auth-code-flow.md) voor meer informatie)
 
 De systeem browser inschakelen:
 
-1. Configureer `http://localhost` tijdens de app-registratie als een omleidings-URI (momenteel niet ondersteund door B2C)
+1. Configureer tijdens de registratie van de app `http://localhost` als omleidings-URI (momenteel niet ondersteund door B2C)
 2. Wanneer u uw PublicClientApplication bouwt, geeft u deze omleidings-URI op:
 
 ```csharp
@@ -97,12 +98,12 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 ```
 
 > [!Note]
-> Als u configureert `http://localhost`, wordt intern MSAL.net een wille keurige open poort gevonden en gebruikt.
+> Als u `http://localhost`configureert, wordt intern MSAL.NET een wille keurige open poort gevonden en gebruikt.
 
 ### <a name="linux-and-mac"></a>Linux en MAC
 
-In Linux opent MSAL.NET de standaard besturingssysteem browser met het hulp programma xdg-open. Als u problemen wilt oplossen, voert u het hulp programma uit vanaf een Terminal bijvoorbeeld`xdg-open "https://www.bing.com"`  
-De browser wordt geopend op Mac door aan te roepen`open <url>`
+In Linux opent MSAL.NET de standaard besturingssysteem browser met het hulp programma xdg-open. Als u problemen wilt oplossen, voert u het hulp programma uit vanaf een Terminal bijvoorbeeld `xdg-open "https://www.bing.com"`  
+Op Mac wordt de browser geopend door het aanroepen van `open <url>`
 
 ### <a name="customizing-the-experience"></a>De ervaring aanpassen
 
@@ -152,7 +153,7 @@ Er zijn enkele visuele verschillen tussen de Inge sloten webweergave en de syste
 
 **Interactief aanmelden met MSAL.NET met behulp van de Inge sloten webweergave:**
 
-![geïntegreerde](media/msal-net-web-browsers/embedded-webview.png)
+![Geïntegreerde](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interactief aanmelden met MSAL.NET met behulp van de systeem browser:**
 
@@ -163,7 +164,7 @@ Er zijn enkele visuele verschillen tussen de Inge sloten webweergave en de syste
 Als ontwikkelaar met behulp van MSAL.NET hebt u verschillende opties voor het weer geven van het interactieve dialoog venster van STS:
 
 - **Systeem browser.** De systeem browser is standaard ingesteld in de-bibliotheek. Als u Android gebruikt, lees dan [systeem browsers](msal-net-system-browser-android-considerations.md) voor specifieke informatie over welke browsers voor verificatie worden ondersteund. Wanneer u de systeem browser gebruikt in Android, raden we aan dat het apparaat een browser heeft die aangepaste Chrome-tabbladen ondersteunt.  Anders kan de verificatie mislukken.
-- **Inge sloten webweergave.** De opbouw functie voor para meters bevat een `AcquireTokenInteractively` methode voor het gebruik `WithUseEmbeddedWebView()` van een Inge sloten webweergave in MSAL.net.
+- **Inge sloten webweergave.** Als u alleen een Inge sloten Webweergave wilt gebruiken in MSAL.NET, bevat de opbouw functie voor de `AcquireTokenInteractively` para meters een `WithUseEmbeddedWebView()` methode.
 
     iOS
 
@@ -174,7 +175,7 @@ Als ontwikkelaar met behulp van MSAL.NET hebt u verschillende opties voor het we
                     .ExecuteAsync();
     ```
 
-    Android:
+    Android
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -185,7 +186,7 @@ Als ontwikkelaar met behulp van MSAL.NET hebt u verschillende opties voor het we
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Kiezen tussen Inge sloten webbrowser of systeem browser op Xamarin. iOS
 
-In uw IOS- `AppDelegate.cs` app kunt u de `ParentWindow` to `null`initialiseren. Het wordt niet gebruikt in iOS
+In de iOS-app kunt u in `AppDelegate.cs` de `ParentWindow` initialiseren `null`. Het wordt niet gebruikt in iOS
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
@@ -193,13 +194,13 @@ App.ParentWindow = null; // no UI parent on iOS
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Kiezen tussen Inge sloten webbrowser of systeem browser op Xamarin. Android
 
-In uw Android-app kunt `MainActivity.cs` u in de bovenliggende activiteit instellen, zodat het verificatie resultaat weer wordt hersteld:
+In uw Android-app kunt u in `MainActivity.cs` de bovenliggende activiteit instellen, zodat het verificatie resultaat weer wordt hersteld:
 
 ```csharp
  App.ParentWindow = this;
 ```
 
-Klik vervolgens in `MainPage.xaml.cs`het:
+In de `MainPage.xaml.cs`:
 
 ```csharp
 authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
@@ -210,11 +211,11 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>De aanwezigheid van aangepaste tabbladen op Xamarin. Android detecteren
 
-Als u de systeem webbrowser wilt gebruiken om eenmalige aanmelding in te scha kelen voor de apps die worden uitgevoerd in de browser, maar wel voor de gebruikers ervaring voor Android-apparaten zonder browser met ondersteuning voor aangepaste tabbladen, hebt u de mogelijkheid om `IsSystemWebViewAvailable()` de methode aan te roepen in < c 2 > `IPublicClientApplication` . Deze methode retourneert `true` als de PackageManager aangepaste tabbladen detecteert `false` en als deze niet op het apparaat worden gedetecteerd.
+Als u de systeem webbrowser wilt gebruiken om eenmalige aanmelding in te scha kelen voor de apps die worden uitgevoerd in de browser, maar wel voor de gebruikers ervaring voor Android-apparaten die geen browser met ondersteuning voor aangepaste tabbladen hebben, kunt u kiezen of u de `IsSystemWebViewAvailable()` methode aanroept in `IPublicClientApplication`. Deze methode retourneert `true` als de PackageManager aangepaste tabbladen en `false` detecteert als deze niet op het apparaat worden gedetecteerd.
 
 Op basis van de waarde die is geretourneerd door deze methode en uw vereisten kunt u een beslissing nemen:
 
-- U kunt een aangepast fout bericht retour neren aan de gebruiker. Bijvoorbeeld: "Installeer Chrome om door te gaan met verificatie"-of-
+- U kunt een aangepast fout bericht retour neren aan de gebruiker. Bijvoorbeeld: ' Installeer Chrome om door te gaan met verificatie '-of-
 - U kunt terugvallen op de Inge sloten optie webweergave en de gebruikers interface starten als een Inge sloten webweergave.
 
 De volgende code toont de Inge sloten optie webweergave:

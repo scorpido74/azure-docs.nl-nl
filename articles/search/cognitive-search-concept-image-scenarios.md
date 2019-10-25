@@ -1,26 +1,25 @@
 ---
-title: Tekst uit afbeeldingen verwerken en extra heren in cognitieve zoek opdracht-Azure Search
-description: Verwerken en extra heren tekst en andere informatie uit afbeeldingen in cognitieve Zoek pijplijnen in Azure Search.
-services: search
+title: Tekst uit afbeeldingen in een verrijkings pijplijn verwerken en extra heren
+titleSuffix: Azure Cognitive Search
+description: Verwerk en extraheer tekst en andere informatie uit afbeeldingen in azure Cognitive Search-pijp lijnen.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265856"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787742"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in cognitieve Zoek scenario's
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in AI-verrijkings scenario's
 
-Cognitieve Zoek opdrachten hebben verschillende mogelijkheden voor het werken met afbeeldingen en afbeeldings bestanden. Tijdens het kraken van documenten kunt u de para meter *imageAction* gebruiken om tekst te extra heren uit Foto's of afbeeldingen met alfanumerieke tekst, zoals het woord ' Stop ' in een stop teken. Andere scenario's zijn onder andere het genereren van een tekst weergave van een afbeelding, zoals ' Dandelion ' voor een foto van een Dandelion of de kleur geel. U kunt ook meta gegevens over de afbeelding extra heren, zoals de grootte.
+Azure Cognitive Search heeft verschillende mogelijkheden voor het werken met afbeeldingen en afbeeldings bestanden. Tijdens het kraken van documenten kunt u de para meter *imageAction* gebruiken om tekst te extra heren uit Foto's of afbeeldingen met alfanumerieke tekst, zoals het woord ' Stop ' in een stop teken. Andere scenario's zijn onder andere het genereren van een tekst weergave van een afbeelding, zoals ' Dandelion ' voor een foto van een Dandelion of de kleur geel. U kunt ook meta gegevens over de afbeelding extra heren, zoals de grootte.
 
-In dit artikel vindt u meer informatie over de verwerking van afbeeldingen en richt lijnen voor het werken met afbeeldingen in een cognitieve Zoek pijplijn.
+In dit artikel wordt de afbeeldings verwerking beschreven en vindt u richt lijnen voor het werken met afbeeldingen in een AI-verrijkings pijplijn.
 
 <a name="get-normalized-images"></a>
 
@@ -30,16 +29,16 @@ Als onderdeel van het kraken van documenten zijn er een nieuwe set indexer confi
 
 U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die over installatie kopieën lopen, verwachten genormaliseerde installatie kopieën. Voor het inschakelen van installatie kopie normalisatie voor een Indexeer functie moet een vakkennisset aan die Indexeer functie worden gekoppeld.
 
-| Configuratie parameter | Description |
+| Configuratie parameter | Beschrijving |
 |--------------------|-------------|
-| imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix van genormaliseerde installatie kopieën te genereren, waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven met één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het veld *normalized_images* . <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
+| imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix te genereren van genormaliseerde installatie kopieën waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven in één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het veld *normalized_images* . <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
 |  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000. | 
 |  normalizedImageMaxHeight | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000.|
 
 > [!NOTE]
 > Als u de eigenschap *imageAction* op een andere waarde dan ' geen ' instelt, kunt u de eigenschap *parsingMode* niet instellen op een andere waarde dan default.  U kunt slechts een van deze twee eigenschappen instellen op een niet-standaard waarde in de configuratie van de Indexeer functie.
 
-Stel de para meter parsingMode `json` in op (om elke BLOB als één document te indexeren `jsonArray` ) of (als uw blobs JSON-matrices bevatten en u wilt dat elk element van een matrix als een afzonderlijk document wordt behandeld).
+Stel de para meter **parsingMode** in op `json` (om elke BLOB als één document te indexeren) of `jsonArray` (als uw blobs JSON-matrices bevatten en u wilt dat elk element van een matrix als een afzonderlijk document wordt behandeld).
 
 De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximum limiet verhoogt, kan de verwerking op grotere afbeeldingen mislukken, afhankelijk van de definitie van uw vaardig heden en de taal van de documenten. 
 
@@ -61,9 +60,9 @@ U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs
 
 Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat het nieuwe *normalized_images* -veld een matrix met installatie kopieën. Elke afbeelding is een complex type met de volgende leden:
 
-| Onderdeel van installatie kopie       | Description                             |
+| Onderdeel van installatie kopie       | Beschrijving                             |
 |--------------------|-----------------------------------------|
-| data               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
+| gegevens               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
 | Breedte              | Breedte van de genormaliseerde afbeelding in pixels. |
 | Hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
 | originalWidth      | De oorspronkelijke breedte van de afbeelding vóór normalisatie. |
@@ -92,7 +91,7 @@ Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat h
 
 Er zijn twee ingebouwde cognitieve vaardig heden die afbeeldingen als invoer maken: [OCR](cognitive-search-skill-ocr.md) en [afbeeldings analyse](cognitive-search-skill-image-analysis.md). 
 
-Momenteel werken deze vaardig heden alleen met installatie kopieën die zijn gegenereerd op basis van de stap voor het kraken van het document. Als zodanig is de enige invoer die wordt `"/document/normalized_images"`ondersteund.
+Momenteel werken deze vaardig heden alleen met installatie kopieën die zijn gegenereerd op basis van de stap voor het kraken van het document. Als zodanig is de enige invoer die wordt ondersteund `"/document/normalized_images"`.
 
 ### <a name="image-analysis-skill"></a>Vaardigheid van afbeeldings analyse
 
@@ -107,7 +106,7 @@ De [OCR-vaardigheid](cognitive-search-skill-ocr.md) extraheert tekst uit afbeeld
 Een veelvoorkomend scenario bestaat uit het maken van een enkele teken reeks met alle bestands inhoud, tekst-en afbeeldings oorsprong, door de volgende stappen uit te voeren:  
 
 1. [Normalized_images extra heren](#get-normalized-images)
-1. De OCR-vaardigheid uitvoeren `"/document/normalized_images"` met als invoer
+1. De OCR-vaardigheid uitvoeren met `"/document/normalized_images"` als invoer
 1. De tekst weergave van deze afbeeldingen samen voegen met de onbewerkte tekst uit het bestand. U kunt de [tekst samenvoegings](cognitive-search-skill-textmerger.md) vaardigheid gebruiken om beide tekst segmenten samen te voegen tot één grote teken reeks.
 
 In het volgende voor beeld wordt een *merged_text* -veld gemaakt met daarin de tekstuele inhoud van uw document. Het bevat ook de OCRed-tekst van elk van de Inge sloten afbeeldingen. 

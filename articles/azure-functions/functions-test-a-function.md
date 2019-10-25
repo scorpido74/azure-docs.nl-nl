@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 250d470e2450820f57720e0e1a6d274291cf162c
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596844"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809626"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -309,7 +309,8 @@ module.exports = {
     IsPastDue: false
 };
 ```
-Deze module implementeert de eigenschap `IsPastDue` op standaard als een valse Timer-instantie.
+
+Deze module implementeert de eigenschap `IsPastDue` op standaard als een valse Timer-instantie. Timer configuraties zoals NCRONTAB-expressies zijn hier niet vereist omdat de test harnas de functie rechtstreeks aanroept om het resultaat te testen.
 
 Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger*te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index. test. js**en voegt u de volgende code toe:
 

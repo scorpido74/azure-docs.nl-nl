@@ -1,29 +1,28 @@
 ---
-title: Voer een upgrade uit naar de Azure Search .NET SDK versie 10-Azure Search
+title: Een upgrade uitvoeren naar Azure Search .NET SDK versie 10
+titleSuffix: Azure Cognitive Search
 description: Code migreren naar de Azure Search .NET SDK versie 10 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
-author: arv100kri
 manager: nitinme
-services: search
-ms.service: search
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: arjagann
-ms.custom: seodec2018
-ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182364"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793039"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Upgrade uitvoeren naar de Azure Search .NET SDK versie 10
+# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 10
 
 Als u versie 9,0 of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 10.
 
 Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
-Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar hetzelfde functionaliteits niveau als de meest recente versie van de REST API `2019-05-06`versie. In gevallen waarin een wijziging bestaande code verbreekt, wordt u begeleid bij de [stappen die nodig zijn om het probleem op te lossen](#UpgradeSteps).
+Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar hetzelfde functionaliteits niveau als de meest recente versie van de REST API versie `2019-05-06`. In gevallen waarin een wijziging bestaande code verbreekt, wordt u begeleid bij de [stappen die nodig zijn om het probleem op te lossen](#UpgradeSteps).
 
 > [!NOTE]
 > Als u versie 8,0-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 9 en vervolgens een upgrade uitvoeren naar versie 10. Zie [upgraden naar de Azure Search .NET SDK versie 9](search-dotnet-sdk-migration-version-9.md) voor instructies.
@@ -33,22 +32,22 @@ Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Wat is er nieuw in versie 10
-Versie 10 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare`2019-05-06`versie van de Azure Search rest API () met de volgende updates:
+Versie 10 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API (`2019-05-06`) met deze updates:
 
 * Introductie van twee nieuwe vaardig heden- [voorwaardelijke](cognitive-search-skill-conditional.md) vaardig heden en [tekst vertalingen](cognitive-search-skill-text-translation.md).
-* [Shaper](cognitive-search-skill-shaper.md) -vaardigheids invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
+* [Shaper-vaardigheids](cognitive-search-skill-shaper.md) invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
 * Toevoeging van twee nieuwe [veld toewijzings functies](search-indexer-field-mappings.md):
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* In bepaalde gevallen kunnen fouten en waarschuwingen die worden weer gegeven in de [uitvoerings status van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) extra informatie bevatten over fout opsporing. `IndexerExecutionResult`is bijgewerkt om dit gedrag weer te geven.
-* Afzonderlijke vaardig heden die zijn [](cognitive-search-defining-skillset.md) gedefinieerd binnen een vakkennisset kunnen eventueel worden geïdentificeerd door `name` een eigenschap op te geven.
-* `ServiceLimits`toont de limieten voor [complexe typen](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) en `IndexerExecutionInfo` toont de relevante limieten/quota's voor de Indexeer functie.
+* In bepaalde gevallen kunnen fouten en waarschuwingen die worden weer gegeven in de [uitvoerings status van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) extra informatie bevatten over fout opsporing. `IndexerExecutionResult` is bijgewerkt om dit gedrag weer te geven.
+* Afzonderlijke vaardig heden die zijn gedefinieerd binnen een [vakkennisset](cognitive-search-defining-skillset.md) kunnen eventueel worden geïdentificeerd door een `name` eigenschap op te geven.
+* `ServiceLimits` toont de limieten voor [complexe typen](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) en `IndexerExecutionInfo` toont de relevante limieten of quota's voor de Indexeer functie.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
 
-1. Werk uw NuGet-verwijzing `Microsoft.Azure.Search` bij voor het gebruik van de NuGet Package Manager-console of klik met de rechter muisknop op uw project verwijzingen en selecteer vervolgens NuGet-pakketten beheren... in Visual Studio.
+1. Werk uw NuGet-referentie voor `Microsoft.Azure.Search` met behulp van de NuGet Package Manager-console of door met de rechter muisknop op uw project verwijzingen te klikken en NuGet-pakketten beheren te selecteren... in Visual Studio.
 
 2. Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. 
 
@@ -69,9 +68,9 @@ Er zijn verschillende belang rijke wijzigingen in versie 10 waarvoor code wijzig
 
 De definitie van de [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) is onjuist opgegeven in versie 9 en ouder. 
 
-Het model `WebApiSkill` dat is `HttpHeaders` opgegeven als een object eigenschap die een woorden boek _bevat_ . Als u een vaardig heden maakt `WebApiSkill` die op deze manier zijn gebouwd, wordt een uitzonde ring veroorzaakt, omdat het rest API de aanvraag zou beschouwen als een ongeldige indeling. Dit probleem is opgelost door **een woordenboek eigenschap op het hoogste niveau** in het `WebApiSkill` model zelf te maken `HttpHeaders` , die als een geldige aanvraag van de rest API wordt beschouwd.
+Het model voor `WebApiSkill` opgegeven `HttpHeaders` als een object eigenschap die een woorden boek _bevat_ . Het maken van een vaardig heden met een `WebApiSkill` die op deze manier zijn gemaakt, resulteert in een uitzonde ring omdat de aanvraag in de REST API zou worden beschouwd als een ongeldige indeling. Dit probleem is opgelost door `HttpHeaders` **een woordenboek eigenschap op het hoogste niveau** in te stellen op het `WebApiSkill` model zelf, dat wordt beschouwd als een geldige aanvraag van de rest API.
 
-Als u bijvoorbeeld eerder hebt geprobeerd een exemplaar van een `WebApiSkill` te maken, doet u het volgende:
+Als u bijvoorbeeld eerder hebt geprobeerd een `WebApiSkill` als volgt te instantiëren:
 
 ```csharp
 
@@ -110,12 +109,12 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>Shaper-vaardigheid staat geneste context consolidatie toe
 
-Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging in te scha kelen `InputFieldMappingEntry` , zijn we gewijzigd zodat deze kan worden geïnstantieerd door alleen `Source` een eigenschap op te geven `SourceContext` , `Inputs` of zowel de als-eigenschappen.
+Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging mogelijk te maken, hebben we `InputFieldMappingEntry` aangepast zodat deze kan worden geïnstantieerd door alleen een `Source` eigenschap of de eigenschappen `SourceContext` en `Inputs` op te geven.
 
 Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit betekent:
 
-- Het is `InputFieldMappingEntry` niet toegestaan `Source` om een geïnitialiseerde te maken.
-- Het maken `InputFieldMappingEntry` van een `SourceContext` waar `Inputs` alleen en is geïnitialiseerd, is geldig.
+- Het maken van een `InputFieldMappingEntry` waarbij alleen `Source` is geïnitialiseerd, is geldig.
+- Er wordt een `InputFieldMappingEntry` gemaakt waarbij alleen `SourceContext` en `Inputs` zijn geïnitialiseerd.
 - Alle andere Combi Naties waarbij deze drie eigenschappen zijn betrokken, zijn ongeldig.
 
 Als u besluit het gebruik van deze nieuwe mogelijkheid te maken, moet u ervoor zorgen dat al uw clients zijn bijgewerkt met versie 10 eerst voordat u die wijziging uitvoerde. Anders is het mogelijk dat een update door een client (met behulp van een oudere versie van de SDK) naar de shaper-vaardigheid kan leiden tot validatie fouten.
@@ -140,24 +139,24 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`wordt toegewezen aan een `#1`naam `WebApiSkill` , `#2`wordttoegewezen, wordt toegewezen, `ShaperSkill` enzovoort.`#3`
+aan `SentimentSkill` wordt een naam `#1`toegewezen, `WebApiSkill` wordt toegewezen `#2`, `ShaperSkill` is toegewezen `#3`, enzovoort.
 
-Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam, moet u ervoor zorgen dat alle exemplaren van uw clients eerst worden bijgewerkt naar versie 10 van de SDK. Anders is het mogelijk dat een client die gebruikmaakt van een oudere versie van de SDK, `null` de `Name` eigenschap van een vaardigheid zou kunnen gebruiken, waardoor de client terugvalt op het standaard naamgevings schema.
+Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam, moet u ervoor zorgen dat alle exemplaren van uw clients eerst worden bijgewerkt naar versie 10 van de SDK. Het is ook mogelijk dat een client die gebruikmaakt van een oudere versie van de SDK, de eigenschap `Name` van een vaardigheid kan `null`, waardoor de client terugvalt op het standaard naamgevings schema.
 
 ## <a name="details-about-errors-and-warnings"></a>Details over fouten en waarschuwingen
 
-`ItemError`en `ItemWarning` modellen waarmee details van fouten en waarschuwingen (respectievelijk) die zich voordoen tijdens een uitvoering van de Indexeer functie zijn gewijzigd, zodat er drie nieuwe eigenschappen zijn met het doel om te helpen bij het opsporen van fouten in de Indexeer functie. Deze eigenschappen zijn:
+`ItemError`-en `ItemWarning` modellen die gegevens over fouten en waarschuwingen (respectievelijk) die optreden tijdens het uitvoeren van een Indexeer functie, zijn gewijzigd, zodat er drie nieuwe eigenschappen zijn met de doel stelling voor het opsporen van fouten in de Indexeer functie. Deze eigenschappen zijn:
 
-- `Name`: De naam van de bron waarvan de fout afkomstig is. Het kan bijvoorbeeld verwijzen naar een bepaalde vaardigheid in de gekoppelde vaardig heden.
-- `Details`: Meer uitgebreide informatie over de fout of waarschuwing.
-- `DocumentationLink`: Een koppeling naar een gids voor probleem oplossing voor de specifieke fout of waarschuwing.
+- `Name`: de naam van de bron waarvan de fout afkomstig is. Het kan bijvoorbeeld verwijzen naar een bepaalde vaardigheid in de gekoppelde vaardig heden.
+- `Details`: meer uitgebreide details over de fout of waarschuwing.
+- `DocumentationLink`: een koppeling naar een gids voor probleem oplossing voor de specifieke fout of waarschuwing.
 
 > [!NOTE]
 > We zijn begonnen met het structureren van onze fouten en waarschuwingen om deze nuttige informatie waar mogelijk op te nemen. Er wordt aan gewerkt om ervoor te zorgen dat voor alle fouten en waarschuwingen deze Details aanwezig zijn, maar dat er een onderhanden werk wordt uitgevoerd en deze aanvullende details mogelijk niet altijd worden ingevuld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Wijzigingen in de shaper-vaardigheid hebben de meest mogelijke gevolgen voor nieuwe of bestaande code. Als volgende stap moet u het volgende voor beeld bekijken waarin de invoer structuur wordt geïllustreerd: [Voor beeld van de JSON-definitie van shaper](cognitive-search-skill-shaper.md)
-- Ga door naar de [hand leiding Inleiding tot cognitieve zoek functie](cognitive-search-concept-intro.md).
-- We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Search] '.
+- Wijzigingen in de shaper-vaardigheid hebben de meest mogelijke gevolgen voor nieuwe of bestaande code. Als volgende stap moet u het volgende voor beeld bekijken waarin de invoer structuur wordt geïllustreerd: [voor beeld van een shaper skill JSON-definitie](cognitive-search-skill-shaper.md)
+- Ga naar het [overzicht van AI-verrijking](cognitive-search-concept-intro.md).
+- We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Cognitive Search] '.
 

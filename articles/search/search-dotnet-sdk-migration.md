@@ -1,23 +1,22 @@
 ---
-title: Upgrade uitvoeren naar de Azure Search .NET SDK versie 3-Azure Search
+title: Een upgrade uitvoeren naar Azure Search .NET SDK versie 3
+titleSuffix: Azure Cognitive Search
 description: Code migreren naar de Azure Search .NET SDK versie 3 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: cab0da93bbea117c216969faf2f1e194e16d675f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183218"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792987"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Een upgrade uitvoeren naar de Azure Search .NET SDK versie 3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 3
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -46,13 +45,13 @@ Versie 3 van de Azure Search .NET SDK streeft naar de meest recente, algemeen be
 * Ondersteuning voor [azure Blob Storage](search-howto-indexing-azure-blob-storage.md) en [Azure Table Storage](search-howto-indexing-azure-tables.md) Indexer
 * Aanpassing van Indexeer functie via [veld Toewijzingen](search-indexer-field-mappings.md)
 * ETags-ondersteuning voor het inschakelen van veilig gelijktijdig bijwerken van index definities, Indexeer functies en gegevens bronnen
-* Ondersteuning voor het samen stellen van index veld definities declaratief door uw model klasse te verf raaien `FieldBuilder` en de nieuwe klasse te gebruiken.
+* Ondersteuning voor het samen stellen van index veld definities declaratief door uw model klasse te verf raaien en de nieuwe `FieldBuilder`-klasse te gebruiken.
 * Ondersteuning voor .NET core en .NET Portable profile 111
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
-Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
+U moet eerst uw NuGet-referentie voor `Microsoft.Azure.Search` bijwerken met behulp van de NuGet Package Manager-console of door met de rechter muisknop op uw project verwijzingen te klikken en NuGet-pakketten beheren te selecteren... in Visual Studio.
 
 Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
@@ -62,7 +61,7 @@ Als uw build mislukt, ziet u een build-fout als de volgende:
 
 De volgende stap is het oplossen van deze build-fout. Zie belang rijke [wijzigingen in versie 3](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze kunt oplossen.
 
-Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `IndexingParameters.Base64EncodeKeys` , wordt er een waarschuwing weer gegeven met de tekst`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `IndexingParameters.Base64EncodeKeys`, wordt er een waarschuwing weer gegeven met de tekst `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Wanneer u opgebouwde fouten hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 3](#WhatsNew).
 
@@ -72,7 +71,7 @@ Wanneer u opgebouwde fouten hebt opgelost, kunt u wijzigingen aanbrengen in uw t
 Er is een klein aantal belang rijke wijzigingen in versie 3 waarvoor code wijzigingen nodig zijn naast het opnieuw samen stellen van uw toepassing.
 
 ### <a name="indexesgetclient-return-type"></a>Indexes. GetClient retour type
-De `Indexes.GetClient` methode heeft een nieuw retour type. Voorheen werd deze geretourneerd `SearchIndexClient`, maar dit is `ISearchIndexClient` gewijzigd in versie 2,0-Preview en deze wijziging gaat naar versie 3. Dit is ter ondersteuning van klanten die de `GetClient` methode voor eenheids testen willen intrekken door een model implementatie van `ISearchIndexClient`te retour neren.
+De methode `Indexes.GetClient` heeft een nieuw retour type. Voorheen werd `SearchIndexClient`geretourneerd, maar dit is gewijzigd in `ISearchIndexClient` in versie 2,0-Preview en deze wijziging gaat naar versie 3. Dit is ter ondersteuning van klanten die de `GetClient` methode voor eenheids tests willen afwijzen door een model implementatie van `ISearchIndexClient`te retour neren.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -88,7 +87,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 ### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analyzer, data type en andere zijn niet meer impliciet geconverteerd naar teken reeksen
-Er zijn veel typen in de Azure Search .NET SDK die zijn afgeleid van `ExtensibleEnum`. Voorheen werden deze typen allemaal impliciet geconverteerd naar type `string`. Er is echter een bug ontdekt in de `Object.Equals` implementatie voor deze klassen en het herstellen van de fout die vereist is om deze impliciete conversie uit te scha kelen. Expliciete omzetting `string` naar is nog steeds toegestaan.
+Er zijn veel typen in de Azure Search .NET SDK die zijn afgeleid van `ExtensibleEnum`. Voorheen waren deze typen allemaal impliciet omgezet naar type `string`. Er is echter een bug ontdekt in de `Object.Equals`-implementatie voor deze klassen en de fout die vereist is voor het uitschakelen van deze impliciete conversie te herstellen. Expliciete conversie naar `string` is nog steeds toegestaan.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -131,9 +130,9 @@ index.Analyzers = new Analyzer[]
 
 Mogelijk worden er compilatie fouten weer gegeven met betrekking tot methoden of eigenschappen die als verouderd zijn gemarkeerd in versie 2,0-Preview en vervolgens worden verwijderd in versie 3. Als u dergelijke fouten tegen komt, kunt u deze als volgt oplossen:
 
-- Als u deze constructor gebruikt: `ScoringParameter(string name, string value)`, gebruikt u deze in plaats daarvan:`ScoringParameter(string name, IEnumerable<string> values)`
-- Als u de `ScoringParameter.Value` eigenschap gebruikt, gebruikt u in `ScoringParameter.Values` plaats daarvan de `ToString` eigenschap of de-methode.
-- Als u de `SearchRequestOptions.RequestId` eigenschap hebt gebruikt, gebruikt u `ClientRequestId` in plaats daarvan de eigenschap.
+- Als u deze constructor gebruikt: `ScoringParameter(string name, string value)`, gebruikt u deze in plaats daarvan: `ScoringParameter(string name, IEnumerable<string> values)`
+- Als u de eigenschap `ScoringParameter.Value` gebruikt, moet u in plaats daarvan de eigenschap `ScoringParameter.Values` of de methode `ToString` gebruiken.
+- Als u de eigenschap `SearchRequestOptions.RequestId` hebt gebruikt, gebruikt u in plaats daarvan de eigenschap `ClientRequestId`.
 
 ### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 
@@ -143,7 +142,7 @@ Als u een upgrade uitvoert van versie 2,0-Preview naar versie 3, moet u er reken
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Als uw toepassing een vaste afhankelijkheid van deze functies heeft, kunt u niet upgraden naar versie 3 van de Azure Search .NET SDK. U kunt versie 2,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet**wordt aangeraden. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
+Als uw toepassing een vaste afhankelijkheid van deze functies heeft, kunt u niet upgraden naar versie 3 van de Azure Search .NET SDK. U kunt versie 2,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet wordt aangeraden**. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
 
 ## <a name="conclusion"></a>Conclusie
 Als u meer informatie wilt over het gebruik van de Azure Search .NET SDK, raadpleegt u de [.net How-to](search-howto-dotnet-sdk.md).

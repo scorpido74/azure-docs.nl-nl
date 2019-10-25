@@ -1,5 +1,6 @@
 ---
-title: Logboek registratie in micro soft Authentication Library (MSAL)-toepassingen | Azure
+title: Logboek registratie in MSAL-toepassingen (micro soft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over logboek registratie in micro soft Authentication Library (MSAL)-toepassingen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 87102e3ea71695006e465d1becad0f2ece2a426b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678037"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802970"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
 
@@ -32,10 +33,10 @@ Apps van micro soft Authentication Library (MSAL) genereren logboek berichten di
 
 MSAL biedt verschillende detail niveaus voor logboek registratie:
 
-- Fout: Geeft aan dat er iets is overgegaan en dat er een fout is gegenereerd. Gebruiken voor fout opsporing en het identificeren van problemen.
-- Waarschuwing: Er is niet noodzakelijkerwijs een fout of een fout opgetreden, maar is bedoeld voor diagnostische gegevens en het lokaliseren van problemen.
-- Valuta MSAL registreert gebeurtenissen die bedoeld zijn voor informatie die niet nood zakelijk is bedoeld voor fout opsporing.
-- uitgebreide Standaard. MSAL registreert de volledige details van het gedrag van de tape wisselaar.
+- Fout: geeft aan dat er iets is overgegaan en dat er een fout is gegenereerd. Gebruiken voor fout opsporing en het identificeren van problemen.
+- Waarschuwing: er is niet noodzakelijkerwijs een fout of een fout opgetreden, maar is bedoeld voor diagnostische gegevens en het lokaliseren van problemen.
+- Info: MSAL registreert gebeurtenissen die bedoeld zijn voor informatie die niet nood zakelijk is bedoeld voor fout opsporing.
+- Uitgebreid: standaard. MSAL registreert de volledige details van het gedrag van de tape wisselaar.
 
 ## <a name="personal-and-organizational-data"></a>Persoonlijke en organisatie gegevens
 
@@ -46,11 +47,11 @@ Standaard worden in de MSAL-logger geen zeer gevoelige persoonlijke of bedrijfs 
  > [!NOTE]
  > Zie de [MSAL.net-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) voor voor beelden van MSAL.net-logboek registratie en meer.
 
-In MSAL 3. x wordt logboek registratie per toepassing ingesteld bij het maken van de `.WithLogging` app met behulp van de opbouw functie voor Builder. Deze methode accepteert optionele para meters:
+In MSAL 3. x wordt logboek registratie per toepassing ingesteld bij het maken van de app met behulp van de functie voor het wijzigen van de `.WithLogging` Builder. Deze methode accepteert optionele para meters:
 
 - met `Level` kunt u bepalen welk registratie niveau u wilt. Als u deze instelt op fouten, worden er alleen fouten opgehaald
-- met `PiiLoggingEnabled` kunt u persoonlijke en bedrijfs gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens registreert.
-- `LogCallback` wordt ingesteld op een gemachtigde die de logboek registratie doet. Als `PiiLoggingEnabled` waar is, ontvangt deze methode de berichten twee keer: wanneer de para meter `containsPii` gelijk is aan False en het bericht zonder persoons gegevens, en een tweede keer waarbij de para meter `containsPii` gelijk is aan True en het bericht persoonlijke gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+- met `PiiLoggingEnabled` kunt u persoonlijke en organisatie gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens registreert.
+- `LogCallback` is ingesteld op een gemachtigde die de logboek registratie doet. Als `PiiLoggingEnabled` waar is, ontvangt deze methode de berichten twee keer: eenmaal met de para meter `containsPii` is ingesteld op False en het bericht zonder persoons gegevens, en een tweede keer met de `containsPii` para meter is ingesteld op True en het bericht kan persoons gegevens bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
 - `DefaultLoggingEnabled` schakelt de standaard logboek registratie in voor het platform. De standaard instelling is False. Als u deze instelt op True, wordt gebeurtenis tracering gebruikt in Desktop/UWP-toepassingen, NSLog op iOS en logcat op Android.
 
 ```csharp
@@ -84,10 +85,10 @@ class Program
 
 Schakel logboek registratie in bij het maken van een app door het maken van een logboek registratie. De retour aanroep heeft de volgende para meters:
 
-- `tag` is een teken reeks die door de bibliotheek wordt door gegeven aan de retour aanroep. Het is gekoppeld aan de logboek vermelding en kan worden gebruikt om logboek registratie berichten te sorteren.
-- met `logLevel` kunt u bepalen welk registratie niveau u wilt. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info` en `Verbose`.
+- `tag` is een teken reeks die door de bibliotheek wordt door gegeven aan de call back. Het is gekoppeld aan de logboek vermelding en kan worden gebruikt om logboek registratie berichten te sorteren.
+- met `logLevel` kunt u bepalen welk registratie niveau u wilt. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info`en `Verbose`.
 - `message` is de inhoud van de logboek vermelding.
-- `containsPII` geeft aan of berichten met persoonlijke gegevens of organisatie gegevens worden geregistreerd. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Als `containsPII` `true` is, ontvangt deze methode de berichten twee keer: eenmaal met de para meter `containsPII` ingesteld op `false` en de `message` zonder persoonlijke gegevens, en een tweede keer waarbij de para meter `containsPii` is ingesteld op `true` en het bericht mogelijk persoonlijke gegevens bevat. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+- `containsPII` geeft aan of berichten met persoonlijke gegevens of organisatie gegevens worden geregistreerd. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Als `containsPII` is `true`, ontvangt deze methode de berichten twee keer: eenmaal met de para meter `containsPII` ingesteld op `false` en de `message` zonder persoonlijke gegevens, en een tweede keer waarbij de `containsPii` para meter is ingesteld op `true` en het bericht bevat mogelijk persoons gegevens. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
 
 ```java
 private StringBuilder mLogs;
@@ -126,9 +127,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Schakel logboek registratie in MSAL. js in door een traceer object door te geven tijdens de configuratie voor het maken van een `UserAgentApplication`-exemplaar. Dit logger object heeft de volgende eigenschappen:
 
 - `localCallback`: een call back-instantie die kan worden geleverd door de ontwikkelaar om logboeken op een aangepaste manier te gebruiken en publiceren. Implementeer de localCallback-methode, afhankelijk van hoe u logboeken wilt omleiden.
-- `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info` en `Verbose`. De standaardwaarde is `Info`.
+- `level` (optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info`en `Verbose`. De standaardwaarde is `Info`.
 - `piiLoggingEnabled` (optioneel): als deze optie is ingesteld op waar, worden persoonlijke en organisatie gegevens vastgelegd in een logboek. Standaard is dit false, zodat uw toepassing geen persoonlijke gegevens kan registreren. Persoonlijke gegevens logboeken worden nooit geschreven naar de standaard uitvoer, zoals console, Logcat of NSLog.
-- `correlationId`(optioneel): een unieke id, die wordt gebruikt om de aanvraag toe te wijzen met het antwoord op fout opsporing. De standaard instelling is RFC4122-versie 4 GUID (128 bits).
+- `correlationId` (optioneel): een unieke id, die wordt gebruikt om de aanvraag toe te wijzen met het antwoord op fout opsporing. De standaard instelling is RFC4122-versie 4 GUID (128 bits).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -188,7 +189,7 @@ Objective-C
     }];
 ```
 
-SWIFT
+Swift
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -216,7 +217,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = YES;
 MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 ```
 
-SWIFT
+Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -231,11 +232,11 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Gebruik een van de volgende waarden om het logboek registratie niveau in te stellen wanneer u zich aanmeldt met behulp van MSAL voor iOS en macOS:
 
-|Niveau  |Description |
+|Niveau  |Beschrijving |
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
-| `MSALLogLevelWarning` | Waarschuwingen |
+| `MSALLogLevelWarning` | Berichten |
 | `MSALLogLevelInfo` |  Bibliotheek ingangs punten, met para meters en verschillende sleutel hanger bewerkingen |
 |`MSALLogLevelVerbose`     |  API-tracering       |
 
@@ -246,14 +247,14 @@ Objective-C
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
  ```
  
- SWIFT
+ Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
 
 ### <a name="log-message-format"></a>Indeling van logboek bericht
 
-Het bericht gedeelte van MSAL-logboek berichten heeft de indeling`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+Het bericht gedeelte van MSAL-logboek berichten heeft de indeling van `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
 Bijvoorbeeld:
 

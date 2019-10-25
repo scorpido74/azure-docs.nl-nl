@@ -1,22 +1,24 @@
 ---
-title: Architectuur voor IoT-beveiliging
-description: IoT-architectuur beveiligingsrichtlijnen en overwegingen
+title: IoT-beveiligings architectuur
+description: Richt lijnen en overwegingen voor IoT-beveiligings architectuur
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: a356c068a54833d66bdc600ad3caeb21e49ea815
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bf00bbc614f9fc46a983405800d4136e65c9de05
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626564"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789109"
 ---
+# <a name="internet-of-things-iot-security-architecture"></a>Internet of Things-beveiligings architectuur (IoT)
+
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie voor meer informatie over het beveiligen van een oplossing die zijn gemaakt door een IoT-oplossingsversnellers, [uw IoT-implementatie beveiligen](iot-security-deployment.md).
+Zie [uw IOT-implementatie beveiligen](iot-security-deployment.md)voor meer informatie over het beveiligen van een oplossing die is gemaakt met een IOT-oplossings versneller.
 
-Meer informatie over beveiliging in IoT Hub [beheren van toegang tot IoT Hub](../iot-hub/iot-hub-devguide-security.md) in de Ontwikkelaarshandleiding voor IoT Hub.
+Meer informatie over IoT Hub beveiliging in het [beheren van toegang tot IOT hub](../iot-hub/iot-hub-devguide-security.md) in de ontwikkelaars handleiding voor IOT hub.

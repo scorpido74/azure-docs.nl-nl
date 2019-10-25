@@ -1,5 +1,6 @@
 ---
-title: Beveiligde web-API-app-code configuratie | Azure
+title: Beveiligde web-API-app-code configuratie
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een beveiligde web-API en het configureren van de code van uw toepassing.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,20 +17,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562326"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803697"
 ---
-# <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: Codeconfiguratie
+# <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
 Als u de code voor de beveiligde web-API wilt configureren, moet u weten wat Api's als beveiligd definieert, hoe u een Bearer-token configureert en hoe u het token valideert.
 
 ## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Wat definieert ASP.NET/ASP.NET core-Api's als beveiligd?
 
-Net als web-apps zijn de ASP.NET/ASP.net core-web-api's beveiligd omdat hun controller acties worden voorafgegaan door het `[Authorize]` -kenmerk. Daarom kunnen de controller acties alleen worden aangeroepen als de API wordt aangeroepen met een identiteit die is geautoriseerd.
+Net als web-apps zijn de ASP.NET/ASP.NET core-web-Api's beveiligd omdat hun controller acties worden voorafgegaan door het kenmerk `[Authorize]`. Daarom kunnen de controller acties alleen worden aangeroepen als de API wordt aangeroepen met een identiteit die is geautoriseerd.
 
 Houd rekening met de volgende vragen:
 
@@ -61,7 +62,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 In deze sectie wordt beschreven hoe u een Bearer-token configureert.
 
-### <a name="config-file"></a>Configuratiebestand
+### <a name="config-file"></a>Configuratie bestand
 
 ```Json
 {
@@ -91,7 +92,7 @@ In deze sectie wordt beschreven hoe u een Bearer-token configureert.
 
 ### <a name="code-initialization"></a>Code-initialisatie
 
-Wanneer een app wordt aangeroepen voor een controller actie die een `[Authorize]` kenmerk bevat, kijkt ASP.NET/ASP.net core naar het Bearer-token in de autorisatie-header van de aanroep aanvraag en wordt het toegangs token geëxtraheerd. Het token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, waarmee micro soft Identity model-extensies voor .NET worden aangeroepen.
+Wanneer een app wordt aangeroepen voor een controller actie die een `[Authorize]` kenmerk bevat, kijkt ASP.NET/ASP.NET core naar het Bearer-token in de autorisatie-header van de aanroep aanvraag en wordt het toegangs token geëxtraheerd. Het token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, waarmee micro soft Identity model-extensies voor .NET worden aangeroepen.
 
 In ASP.NET Core wordt deze middleware geïnitialiseerd in het Startup.cs-bestand:
 
@@ -129,7 +130,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Token validatie
 
-De JwtBearer-middleware, zoals de OpenID Connect Connect middleware in web apps, is gericht `TokenValidationParameters` op om het token te valideren. Het token wordt gedecodeerd (indien nodig), de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
+De JwtBearer-middleware, zoals de OpenID Connect Connect middleware in web apps, wordt door `TokenValidationParameters` omgeleid om het token te valideren. Het token wordt gedecodeerd (indien nodig), de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
 
 - Het is bedoeld voor de Web-API (publiek).
 - Het is uitgegeven voor een app die de Web-API (sub) mag aanroepen.
@@ -141,20 +142,20 @@ Er kunnen ook speciale validaties zijn. Het is bijvoorbeeld mogelijk om te contr
 
 ### <a name="validators"></a>Controles
 
-De validatie stappen worden vastgelegd in validators, die allemaal zijn opgenomen in de [micro soft Identity model Extensions voor .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) open-source-bibliotheek, in één bron bestand: [Micro soft. Identity model. tokens/validators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+De validatie stappen worden vastgelegd in validators, die allemaal zijn opgenomen in de [micro soft Identity model Extensions voor .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) open-source-bibliotheek, in één bron bestand: [micro soft. Identity model. tokens/validators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
 De validatie functies worden in deze tabel beschreven:
 
-| Validator | Description |
+| Validator | Beschrijving |
 |---------|---------|
 | `ValidateAudience` | Zorgt ervoor dat het token voor de toepassing is die het token valideert (voor mij). |
 | `ValidateIssuer` | Hiermee zorgt u ervoor dat het token is uitgegeven door een vertrouwde STS (van iemand die ik vertrouwt). |
 | `ValidateIssuerSigningKey` | Zorgt ervoor dat de toepassing die het token valideert, de sleutel vertrouwt die is gebruikt voor het ondertekenen van het token. (Speciaal geval waarbij de sleutel is inge sloten in het token. Doorgaans niet vereist.) |
-| `ValidateLifetime` | Hiermee zorgt u ervoor dat het token nog (of al) geldig is. Met de validatie functie wordt gecontroleerd of de levens duur`notbefore` van `expires` het token (en de claims) binnen het bereik valt. |
+| `ValidateLifetime` | Hiermee zorgt u ervoor dat het token nog (of al) geldig is. Met de validatie functie wordt gecontroleerd of de levens duur van het token (`notbefore` en `expires` claims) binnen het bereik valt. |
 | `ValidateSignature` | Hiermee wordt gegarandeerd dat er niet met het token is geknoeid. |
 | `ValidateTokenReplay` | Hiermee zorgt u ervoor dat het token niet opnieuw is afgespeeld. (Speciaal geval voor sommige eenmalige-protocol gebruiken.) |
 
-De validators zijn allemaal gekoppeld aan eigenschappen van de `TokenValidationParameters` klasse, die zelf zijn geïnitialiseerd vanuit de ASP.NET/ASP.net-kern configuratie. In de meeste gevallen hoeft u de para meters niet te wijzigen. Er is één uitzonde ring, voor apps die geen afzonderlijke tenants zijn. (Dat wil zeggen: Web-apps die gebruikers accepteren van een organisatie of van persoonlijke micro soft-accounts.) In dit geval moet de uitgever worden gevalideerd.
+De validatie functies zijn alle gekoppeld aan eigenschappen van de klasse `TokenValidationParameters`, die zelf zijn geïnitialiseerd vanuit de ASP.NET/ASP.NET-basis configuratie. In de meeste gevallen hoeft u de para meters niet te wijzigen. Er is één uitzonde ring, voor apps die geen afzonderlijke tenants zijn. (Dat wil zeggen: Web-apps die gebruikers accepteren van een organisatie of van persoonlijke micro soft-accounts.) In dit geval moet de uitgever worden gevalideerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

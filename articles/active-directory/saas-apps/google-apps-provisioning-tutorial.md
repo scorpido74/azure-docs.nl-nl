@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0187d17f8210800aef1c68def0614ce26913e09a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555035"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802196"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -32,7 +32,7 @@ Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden 
 > [!NOTE]
 > De G suite-connector is onlangs bijgewerkt op oktober 2019. De volgende wijzigingen zijn aangebracht in de G suite-connector:
 - Er is ondersteuning toegevoegd voor aanvullende gebruikers-en groeps kenmerken van G suite. 
-- De namen van de doel kenmerken van G suite zijn bijgewerkt zodat deze overeenkomen met wat [hier]()is gedefinieerd.
+- De namen van de doel kenmerken van G suite zijn bijgewerkt zodat deze overeenkomen met wat [hier](/azure/active-directory/manage-apps/customize-application-attributes)is gedefinieerd.
 - De standaard kenmerk toewijzingen zijn bijgewerkt.
 
 ## <a name="prerequisites"></a>Vereisten

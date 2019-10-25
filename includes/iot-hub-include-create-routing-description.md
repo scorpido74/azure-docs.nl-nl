@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b640a3cb9382ad72bb48e06c6a7074c96409e2e4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a5747912a18b8406cabd03c9823e3f6fe6898a6
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176656"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808873"
 ---
 <!-- description of message routing used in the Azure CLI, PowerShell, and RM routing articles.-->
 
-U gaat berichten naar andere resources doorsturen op basis van eigenschappen die door het gesimuleerde apparaat aan het bericht zijn gekoppeld. Berichten die niet aangepast zijn doorgestuurd, worden verzonden naar het standaardeindpunt (berichten/gebeurtenissen). In de volgende zelfstudie berichten verzenden naar de IoT-Hub en deze doorgestuurd naar de andere bestemmingen te zien.
+U gaat berichten naar andere resources doorsturen op basis van eigenschappen die door het gesimuleerde apparaat aan het bericht zijn gekoppeld. Berichten die niet aangepast zijn doorgestuurd, worden verzonden naar het standaardeindpunt (berichten/gebeurtenissen). In de volgende zelf studie stuurt u berichten naar de IoT Hub en bekijkt u de route naar de verschillende bestemmingen.
 
-|value |Resultaat|
+|Waarde |Resultaat|
 |------|------|
 |niveau = 'opslag' |Schrijf naar Azure Storage.|
 |niveau = 'kritiek' |Schrijf naar een Service Bus-wachtrij. Een logische app haalt het bericht op uit de wachtrij en gebruikt Office 365 om het bericht via e-mail te versturen.|
 |standaardinstelling |Geef deze gegevens weer met Power BI.|
 
-De eerste stap is het instellen van het eindpunt waarop de gegevens worden gerouteerd. De tweede stap is het instellen van de bericht-route die gebruikmaakt van dit eindpunt. Na het instellen van de routering, kunt u de eindpunten en het berichtroutes weergeven in de portal.
+De eerste stap is het instellen van het eind punt waarnaar de gegevens worden doorgestuurd. De tweede stap is het instellen van de bericht route die gebruikmaakt van dat eind punt. Nadat u de route ring hebt ingesteld, kunt u de eind punten en bericht routes weer geven in de portal.

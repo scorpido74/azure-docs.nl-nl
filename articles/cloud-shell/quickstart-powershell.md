@@ -1,25 +1,20 @@
 ---
-title: Azure Cloud Shell Snelstartgids | Microsoft Docs
-description: Quick start voor Azure Cloud Shell
-services: Azure
-documentationcenter: ''
+title: Azure Cloud Shell Snelstartgids-Power shell
+description: Meer informatie over het gebruik van Power shell in uw browser met Azure Cloud Shell.
 author: maertendmsft
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: damaerte
-ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224553"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791600"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Snelstartgids voor Power shell in Azure Cloud Shell
 
@@ -28,15 +23,13 @@ Dit document bevat informatie over het gebruik van Power shell in Cloud Shell in
 > [!NOTE]
 > Er is ook een [bash in azure Cloud shell](quickstart.md) Quick Start beschikbaar.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="start-cloud-shell"></a>Cloud Shell starten
 
 1. Klik op **Cloud shell** knop in de bovenste navigatie balk van de Azure Portal
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. Selecteer de Power shell-omgeving in de vervolg keuzelijst en u zich in azure Drive bevindt`(Azure:)`
+2. Selecteer de Power shell-omgeving in de vervolg keuzelijst en u zich in azure station be`(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -62,13 +55,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ## <a name="navigate-azure-resources"></a>Navigeren door Azure-resources
 
- 1. Alle abonnementen van `Azure` een station weer geven
+ 1. Al uw abonnementen van `Azure` station weer geven
 
     ```azurepowershell-interactive
     PS Azure:\> dir
     ```
 
- 2. `cd`naar uw voorkeurs abonnement
+ 2. `cd` uw voorkeurs abonnement
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -77,7 +70,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
  3. Al uw Azure-resources weer geven onder het huidige abonnement
 
-    Typ `dir` om meerdere weer gaven van uw Azure-resources weer te geven.
+    Typ `dir` om meerdere weer gaven van uw Azure-resources te vermelden.
 
     ```azurepowershell-interactive
     PS Azure:\MySubscriptionName> dir
@@ -95,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>AllResources weer geven
 
-Typ `dir` onder`AllResources` Directory om uw Azure-resources weer te geven.
+Typ `dir` onder `AllResources` Directory om uw Azure-resources weer te geven.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
@@ -103,7 +96,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
 ### <a name="explore-resource-groups"></a>Resource groepen verkennen
 
- U kunt naar de `ResourceGroups` map en binnen een specifieke resource groep gaan om virtuele machines te vinden.
+ U kunt naar de `ResourceGroups`-map en binnen een specifieke resource groep gaan om virtuele machines te vinden.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -121,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> U ziet dat de tweede keer dat u typt `dir`, de Cloud shell de items veel sneller kan weer geven.
+> U zult merken dat de tweede keer dat u `dir`typt, de items veel sneller worden weer gegeven in de Cloud Shell.
 > Dit komt doordat de onderliggende items in de cache worden opgeslagen voor een betere gebruikers ervaring.
-U kunt echter altijd gebruiken `dir -Force` om nieuwe gegevens op te halen.
+U kunt `dir -Force` echter altijd gebruiken om nieuwe gegevens op te halen.
 
 ### <a name="navigate-storage-resources"></a>Navigeren in opslag resources
 
-Door in de `StorageAccounts` Directory in te voeren, kunt u eenvoudig al uw opslag resources navigeren
+Door in te voeren in de `StorageAccounts` Directory, kunt u eenvoudig al uw opslag resources navigeren
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -163,7 +156,7 @@ Mode  Name
 
 ### <a name="interact-with-virtual-machines"></a>Interactie met virtuele machines
 
-U kunt alle virtuele machines vinden onder het huidige abonnement via `VirtualMachines` de Directory.
+U kunt alle virtuele machines vinden onder het huidige abonnement via `VirtualMachines` Directory.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\VirtualMachines> dir
@@ -183,14 +176,14 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  > [!WARNING]
  > Raadpleeg het [oplossen van het externe beheer van virtuele Azure-machines](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
-  `Invoke-AzVMCommand` Als u een VM-MyVM1 hebt, kunt u een Power shell-script blok aanroepen op de externe computer.
+  Als u een VM hebt, MyVM1, gaan we `Invoke-AzVMCommand` gebruiken om een Power shell-script blok op de externe computer aan te roepen.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  U kunt ook eerst naar de map informatie gaan en het `Invoke-AzVMCommand` volgende uitvoeren.
+  U kunt ook eerst naar de map informatie gaan en `Invoke-AzVMCommand` als volgt uitvoeren.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -213,13 +206,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 #### <a name="interactively-log-on-to-a-remote-vm"></a>Interactief aanmelden bij een externe virtuele machine
 
-U kunt gebruiken `Enter-AzVM` om zich interactief aan te melden bij een VM die wordt uitgevoerd in Azure.
+U kunt `Enter-AzVM` gebruiken om u interactief aan te melden bij een VM die wordt uitgevoerd in Azure.
 
   ```azurepowershell-interactive
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-U kunt ook naar de map `VirtualMachines` gaan en het volgende `Enter-AzVM` uitvoeren
+U kunt ook eerst naar de `VirtualMachines` Directory gaan en `Enter-AzVM` als volgt uitvoeren
 
   ```azurepowershell-interactive
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
@@ -227,7 +220,7 @@ U kunt ook naar de map `VirtualMachines` gaan en het volgende `Enter-AzVM` uitvo
 
 ### <a name="discover-webapps"></a>Webapps detecteren
 
-Door in de `WebApps` Directory in te voeren, kunt u eenvoudig navigeren in uw web apps-resources
+Door in te voeren in de `WebApps` Directory, kunt u eenvoudig navigeren in uw web apps-resources
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -261,16 +254,16 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-Als u via SSH wilt verifiëren bij servers of vm's, genereert u het persoonlijke sleutel paar openbaar-persoonlijk in Cloud shell en publiceert `authorized_keys` u de open bare sleutel naar op `/home/user/.ssh/authorized_keys`de externe computer, zoals.
+Als u via SSH een verificatie wilt uitvoeren voor servers of Vm's, genereert u het persoonlijke persoonlijk sleutel paar in Cloud Shell en publiceert u de open bare sleutel naar `authorized_keys` op de externe computer, zoals `/home/user/.ssh/authorized_keys`.
 
 > [!NOTE]
-> U kunt privé-en open bare SSH- `ssh-keygen` sleutels maken met en `$env:USERPROFILE\.ssh` publiceren in Cloud shell.
+> U kunt privé-en open bare SSH-sleutels maken met `ssh-keygen` en deze publiceren naar `$env:USERPROFILE\.ssh` in Cloud Shell.
 
 ### <a name="using-ssh"></a>SSH gebruiken
 
 Volg de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) om een nieuwe VM-configuratie te maken met behulp van Azure PowerShell-cmdlets.
-`New-AzVM` Voordat u zich aanmeldt om de implementatie te starten, moet u de open bare SSH-sleutel toevoegen aan de VM-configuratie.
-De zojuist gemaakte virtuele machine bevat de open bare sleutel op `~\.ssh\authorized_keys` de locatie en schakelt daarom de SSH-sessie met referentie-gratis in voor de virtuele machine.
+Voordat u bij `New-AzVM` aanroept om de implementatie te starten, moet u de open bare SSH-sleutel toevoegen aan de VM-configuratie.
+De zojuist gemaakte virtuele machine bevat de open bare sleutel op de locatie van de `~\.ssh\authorized_keys`, waardoor de SSH-sessie met referentie-gratis wordt ingeschakeld voor de virtuele machine.
 
 ```azurepowershell-interactive
 # Create VM config object - $vmConfig using instructions on linked page above
@@ -291,23 +284,23 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>Beschik bare opdrachten weer geven
 
-Onder `Azure` station typt `Get-AzCommand` u om context afhankelijke Azure-opdrachten op te halen.
+Typ `Get-AzCommand` onder `Azure` station om context afhankelijke Azure-opdrachten op te halen.
 
-U kunt ook altijd gebruiken `Get-Command *az* -Module Az.*` om te zien wat de beschik bare Azure-opdrachten zijn.
+U kunt ook altijd `Get-Command *az* -Module Az.*` gebruiken om de beschik bare Azure-opdrachten te vinden.
 
 ## <a name="install-custom-modules"></a>Aangepaste modules installeren
 
-U kunt uitvoeren `Install-Module` om modules van de [PowerShell Gallery][gallery]te installeren.
+U kunt `Install-Module` uitvoeren om modules van de [PowerShell Gallery][gallery]te installeren.
 
 ## <a name="get-help"></a>Get-Help
 
-Typ `Get-Help` om informatie over Power shell op te halen in azure Cloud shell.
+Typ `Get-Help` om informatie over Power shell op te halen in Azure Cloud Shell.
 
 ```azurepowershell-interactive
 Get-Help
 ```
 
-Voor een specifieke opdracht kunt u nog steeds `Get-Help` , gevolgd door een cmdlet.
+Voor een specifieke opdracht kunt u nog steeds `Get-Help` volgen, gevolgd door een cmdlet.
 
 ```azurepowershell-interactive
 Get-Help Get-AzVM
@@ -315,7 +308,7 @@ Get-Help Get-AzVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Azure Files gebruiken om uw gegevens op te slaan
 
-U kunt een script maken, zeggen `helloworld.ps1`en opslaan op uw `clouddrive` om het te gebruiken in shell-sessies.
+U kunt een script maken, `helloworld.ps1`zeggen en dit opslaan op uw `clouddrive` om het te gebruiken voor alle shell-sessies.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -328,12 +321,12 @@ code .\helloworld.ps1
 Hello World!
 ```
 
-De volgende keer dat u Power shell gebruikt in Cloud shell `helloworld.ps1` , bestaat het bestand in `$HOME\clouddrive` de map die uw Azure Files share koppelt.
+De volgende keer dat u Power shell in Cloud Shell gebruikt, bestaat het `helloworld.ps1`-bestand in de `$HOME\clouddrive` map die uw Azure Files-share koppelt.
 
 ## <a name="use-custom-profile"></a>Aangepast profiel gebruiken
 
-U kunt uw Power shell-omgeving aanpassen door een Power shell- `profile.ps1` Profiel (en) te maken (of `Microsoft.PowerShell_profile.ps1`).
-Sla het bestand `$profile.CurrentUserAllHosts` op onder `$profile.CurrentUserAllHosts`(of), zodat het in elke Power shell in Cloud shell-sessie kan worden geladen.
+U kunt uw Power shell-omgeving aanpassen door een Power shell-Profiel (en)-`profile.ps1` (of `Microsoft.PowerShell_profile.ps1`) te maken.
+Sla het bestand op onder `$profile.CurrentUserAllHosts` (of `$profile.CurrentUserAllHosts`), zodat het in elke Power shell in Cloud Shell-sessie kan worden geladen.
 
 Raadpleeg [over profielen voor meer][profile]informatie over het maken van een profiel.
 

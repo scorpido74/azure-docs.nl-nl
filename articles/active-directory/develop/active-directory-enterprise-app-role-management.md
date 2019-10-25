@@ -1,5 +1,6 @@
 ---
-title: De functie claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen in azure AD | Microsoft Docs
+title: De functie claim voor bedrijfs toepassingen in azure AD configureren
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van de rol claim die is uitgegeven in het SAML-token voor zakelijke toepassingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207189"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803492"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: De functie claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
 
 Door Azure Active Directory (Azure AD) te gebruiken, kunt u het claim type voor de rol claim aanpassen in het antwoord token dat u ontvangt nadat u een app hebt geautoriseerd.
 
@@ -80,7 +81,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Graph Explorer in het dialoog venster met de query voor het ophalen van service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -194,7 +195,7 @@ Voer de volgende stappen uit om een bestaande rol bij te werken:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer in het dialoog venster met de query voor het ophalen van service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -232,7 +233,7 @@ Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer in het dialoog venster met de query voor het ophalen van de lijst met Service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 

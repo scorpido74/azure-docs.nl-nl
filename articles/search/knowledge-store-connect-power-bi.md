@@ -1,23 +1,24 @@
 ---
-title: Verbinding maken met een kennis archief met Power BI-Azure Search
-description: Verbind een Azure Search kennis archief met Power BI voor analyse en onderzoek.
+title: Verbinding maken met een kennis archief met Power BI
+titleSuffix: Azure Cognitive Search
+description: Verbind een Azure Cognitive Search Knowledge Store met Power BI voor analyse en onderzoek.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265654"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790074"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
 
 > [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
+> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Cognitive Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkennen met behulp van Power Query in de Power BI Desktop-app. Zie [een kennis archief maken in azure Portal](knowledge-store-create-portal.md)voor het maken van het voor beeld van het kennis archief dat in dit scenario wordt gebruikt.
 
@@ -33,19 +34,19 @@ In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkenn
 
 1. Selecteer in het venster **gegevens ophalen** de optie **Azure**en selecteer vervolgens **Azure Table Storage**.
 
-1. Klik op**Verbinden**.
+1. Klik op **Verbinden**.
 
 1. Voer bij **account naam of-URL**de naam in van uw Azure Storage account (de volledige URL wordt voor u gemaakt).
 
 1. Als u hierom wordt gevraagd, voert u de sleutel voor het opslag account in.
 
-1. Selecteer de tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages* . Deze tabellen zijn Azure Table-projecties van het Hotel bekijkt voorbeeld gegevens en omvatten de verrijkingen van de cognitieve service die waren geselecteerd toen het kennis archief werd gemaakt.
+1. Selecteer de tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages* . Deze tabellen zijn Azure Table-projecties van het Hotel bekijkt voorbeeld gegevens en bevatten de AI-verrijkingen die zijn geselecteerd toen het kennis archief werd gemaakt.
 
 1. Klik op **laden**.
 
 1. Klik op het bovenste lint op **Query's bewerken** om de **Power query editor**te openen.
 
-   ![Power query openen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power query openen")
+   ![Power Query openen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query openen")
 
 1. Selecteer *hotelReviewsSsDocument*en verwijder vervolgens de kolommen *PartitionKey*, *RowKey*en *Time Stamp* . 
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: de9fd8c7cd9470a7ccc9136d1eac91fe373fe03c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693376"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787305"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -50,7 +50,7 @@ RAM | 16 GB
 Aantal schijven | 3 schijven<br/><br/> Schijven bevatten de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar station voor failback.
 Beschik bare schijf ruimte | 600 GB aan ruimte voor de cache van de proces server.
 Beschik bare schijf ruimte | 600 GB aan ruimte voor het Bewaar station.
-Besturingssysteem  | Windows Server 2012 R2 of Windows Server 2016 met bureaublad ervaring |
+Besturingssysteem  | Windows Server 2012 R2 of Windows Server 2016 met bureaublad ervaring <br/><br> Als u van plan bent het ingebouwde hoofd doel van dit apparaat te gebruiken voor failback, moet u ervoor zorgen dat de versie van het besturings systeem gelijk is aan of hoger is dan de gerepliceerde items.|
 Landinstelling van het besturingssysteem | Engels (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor de configuratie Server versie [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger. 
 Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V. 

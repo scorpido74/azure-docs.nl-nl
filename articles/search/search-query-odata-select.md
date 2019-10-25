@@ -1,13 +1,13 @@
 ---
-title: OData-Azure Search selecteren
-description: Naslag informatie voor de OData-taal voor Select-syntaxis in Azure Search query's.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Verwijzing naar OData selecteren
+titleSuffix: Azure Cognitive Search
+description: Naslag informatie voor de OData-taal voor Select-syntaxis in azure Cognitive Search query's.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647875"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793252"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>OData-$select syntaxis in Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-$select syntaxis in azure Cognitive Search
 
- U kunt de [OData- **$Select** para meter](query-odata-filter-orderby-syntax.md) gebruiken om te kiezen welke velden moeten worden meegenomen in de zoek resultaten van Azure Search. In dit artikel wordt de syntaxis van **$Select** uitvoerig beschreven. Zie [How to use with the Search Results in azure Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$Select** bij het presen teren van zoek resultaten.
+ U kunt de [OData- **$Select** para meter](query-odata-filter-orderby-syntax.md) gebruiken om te kiezen welke velden u wilt toevoegen aan de zoek resultaten van Azure Cognitive Search. In dit artikel wordt de syntaxis van **$Select** uitvoerig beschreven. Zie [How to work with Search Results in Azure Cognitive Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$Select** bij het presen teren van zoek resultaten.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -45,23 +45,23 @@ field_path ::= identifier('/'identifier)*
 Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
+> Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
 De para meter **$Select** is beschikbaar in twee vormen:
 
-1. Een enkele ster (`*`), waarmee wordt aangegeven dat alle ophaalbaar velden moeten worden geretourneerd, of
+1. Eén ster (`*`), waarmee wordt aangegeven dat alle ophaalbaar velden moeten worden geretourneerd, of
 1. Een door komma's gescheiden lijst met veld paden, waarmee wordt aangegeven welke velden moeten worden geretourneerd.
 
 Wanneer u het tweede formulier gebruikt, mag u alleen ophalen bare velden in de lijst opgeven.
 
-Als u een complex veld vermeldt zonder de subvelden expliciet op te geven, worden alle subvelden die kunnen worden opgehaald, opgenomen in de resultatenset van de query. Stel bijvoorbeeld `Address` dat uw index een veld bevat met `Street`, `City`en `Country` subvelden die allemaal kunnen worden opgehaald. Als u in `Address` **$Select**opgeeft, worden in de query resultaten alle drie subvelden weer geven.
+Als u een complex veld vermeldt zonder de subvelden expliciet op te geven, worden alle subvelden die kunnen worden opgehaald, opgenomen in de resultatenset van de query. Stel bijvoorbeeld dat uw index een `Address` veld bevat met `Street`, `City`en `Country` subvelden die allemaal kunnen worden opgehaald. Als u `Address` opgeeft in **$Select**, bevatten de query resultaten alle drie de subvelden.
 
 ## <a name="examples"></a>Voorbeelden
 
-Neem de `HotelId`velden `HotelName`, en `Rating` op het hoogste niveau in de resultaten op, evenals het `City` subveld van `Address`:
+Neem de `HotelId`, `HotelName`en `Rating` velden op het hoogste niveau in de resultaten op, evenals het subveld `City` van `Address`:
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ Een voor beeld van een resultaat kan er als volgt uitzien:
 }
 ```
 
-Neem het `HotelName` veld op het hoogste niveau in de resultaten op, evenals alle subvelden van `Address`, en de `Type` `BaseRate` subvelden van elk object in de `Rooms` verzameling:
+Neem het `HotelName` veld op het hoogste niveau in de resultaten op, evenals alle subvelden van `Address`en de subvelden `Type` en `BaseRate` van elk object in de `Rooms` verzameling:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -110,7 +110,7 @@ Een voor beeld van een resultaat kan er als volgt uitzien:
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Werken met zoek resultaten in Azure Search](search-pagination-page-layout.md)
-- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Werken met zoek resultaten in azure Cognitive Search](search-pagination-page-layout.md)
+- [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Zoeken in &#40;documenten Azure Cognitive Search rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

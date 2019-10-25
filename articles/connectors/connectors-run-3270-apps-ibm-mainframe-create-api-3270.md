@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met 3270-apps op IBM-mainframes met Azure-Azure Logic Apps
+title: Verbinding maken met 3270-apps op IBM-mainframes-Azure Logic Apps
 description: Met behulp van Azure Logic Apps en IBM 3270-connector integreert u 3270 op het scherm gestuurde apps met Azure.
 services: logic-apps
 ms.service: logic-apps
@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050668"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787575"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Op het scherm gestuurde apps op IBM-mainframes 3270 integreren met Azure met behulp van Azure Logic Apps en IBM 3270-connector
 
@@ -46,7 +46,7 @@ Nadat u het bestand met meta gegevens hebt gegenereerd vanuit het ontwerp hulppr
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aanbevolen: Een [integratie service omgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
+* Aanbevolen: een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
   U kunt deze omgeving selecteren als de locatie voor het maken en uitvoeren van uw logische app. Een ISE biedt toegang vanuit uw logische app tot resources die zijn beveiligd in azure Virtual Networks.
 
@@ -78,20 +78,20 @@ De enige vereiste is [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framewo
 
 In een 3270 scherm-app zijn de schermen en gegevens velden uniek voor uw scenario's, zodat de 3270-connector deze informatie nodig heeft over uw app, die u als meta gegevens kunt opgeven. Deze meta gegevens bevatten informatie over het identificeren en herkennen van uw logische app. hierin wordt beschreven hoe u kunt navigeren tussen schermen, waar u gegevens kunt invoeren en waar u resultaten kunt verwachten. Als u deze meta gegevens wilt opgeven en genereren, gebruikt u het hulp programma 3270 design, dat u doorloopt in deze specifieke *modi*, of in fasen, zoals verderop in meer details wordt beschreven:
 
-* **Vastleggen**: In deze modus legt u de schermen vast die nodig zijn voor het volt ooien van een specifieke taak met uw mainframe-app, zoals het ophalen van een bank saldo.
+* **Vastleggen**: in deze modus legt u de schermen vast die nodig zijn voor het volt ooien van een specifieke taak met uw mainframe-app, zoals het ophalen van een bank saldo.
 
-* **Navigatie**: In deze modus geeft u het plan of pad op voor het navigeren door de schermen van uw mainframe-app voor de specifieke taak.
+* **Navigatie**: in deze modus geeft u het plan of pad op voor het navigeren door de schermen van uw mainframe-app voor de specifieke taak.
 
-* **Methoden**: In deze modus definieert u de methode, bijvoorbeeld `GetBalance`, die het pad naar het scherm navigatie beschrijft. U kiest ook de velden op elk scherm die de invoer-en uitvoer parameters van de methode worden.
+* **Methoden**: in deze modus definieert u de methode, bijvoorbeeld `GetBalance`, die het pad naar het scherm navigatie beschrijft. U kiest ook de velden op elk scherm die de invoer-en uitvoer parameters van de methode worden.
 
 ### <a name="unsupported-elements"></a>Niet-ondersteunde elementen
 
 Het ontwerp hulpprogramma biedt geen ondersteuning voor deze elementen:
 
-* Gedeeltelijke IBM Basic mapping-ondersteuning (BMS): Als u een BMS-kaart importeert, worden de definities van gedeeltelijke schermen door het ontwerp programma genegeerd.
-* In/uit-para meters: U kunt in/uit-para meters niet definiëren.
-* Menu verwerking: Niet ondersteund tijdens preview
-* Matrix verwerking: Niet ondersteund tijdens preview
+* Gedeeltelijke IBM Basic mapping-ondersteuning (BMS): als u een BMS-kaart importeert, negeert het ontwerp hulpprogramma gedeeltelijke scherm definities.
+* In/uit-para meters: u kunt in/uit-para meters niet definiëren.
+* Menu verwerking: wordt niet ondersteund tijdens de preview-versie
+* Matrix verwerking: wordt niet ondersteund tijdens de preview-versie
 
 <a name="capture-screens"></a>
 
@@ -139,12 +139,12 @@ Wanneer u klaar bent met het selecteren van de herkennings velden, gaat u naar d
 
 Als u de connector wilt navigeren en onderscheid wilt maken tussen schermen, zoekt u meestal unieke tekst op een scherm dat u kunt gebruiken als een id tussen de vastgelegde schermen. Voor herhaalde schermen hebt u mogelijk meer identificatie methoden nodig. Stel bijvoorbeeld dat u twee schermen hebt die er hetzelfde uitzien, met een scherm dat een geldige waarde retourneert, terwijl het andere scherm een fout bericht retourneert.
 
-In het ontwerp programma kunt u herkennings *kenmerken*toevoegen, bijvoorbeeld een scherm titel zoals ' account saldo ophalen ', met behulp van de editor voor scherm herkenning. Als u een vervorkend pad hebt en beide vertakkingen hetzelfde scherm retour neren, maar met andere resultaten, hebt u andere herkennings kenmerken nodig. Tijdens runtime gebruikt de connector deze kenmerken voor het bepalen van de huidige vertakking en Fork. Dit zijn de voor waarden die u kunt gebruiken:
+In het ontwerp programma kunt u *herkennings kenmerken*toevoegen, bijvoorbeeld een scherm titel zoals ' account saldo ophalen ', met behulp van de editor voor scherm herkenning. Als u een vervorkend pad hebt en beide vertakkingen hetzelfde scherm retour neren, maar met andere resultaten, hebt u andere herkennings kenmerken nodig. Tijdens runtime gebruikt de connector deze kenmerken voor het bepalen van de huidige vertakking en Fork. Dit zijn de voor waarden die u kunt gebruiken:
 
-* Specifieke waarde: Deze waarde komt overeen met de opgegeven teken reeks op de opgegeven locatie.
-* GEEN specifieke waarde: Deze waarde komt niet overeen met de opgegeven teken reeks op de opgegeven locatie.
-* Gelaten Dit veld is leeg.
-* NIET leeg: Dit veld is niet leeg.
+* Specifieke waarde: deze waarde komt overeen met de opgegeven teken reeks op de opgegeven locatie.
+* GEEN specifieke waarde: deze waarde komt niet overeen met de opgegeven teken reeks op de opgegeven locatie.
+* Empty: dit veld is leeg.
+* Niet leeg: dit veld is niet leeg.
 
 Zie het [Navigatie plan voor het voor beeld](#example-plan) verderop in dit onderwerp voor meer informatie.
 
@@ -152,7 +152,7 @@ Zie het [Navigatie plan voor het voor beeld](#example-plan) verderop in dit onde
 
 ## <a name="define-navigation-plans"></a>Navigatie plannen definiëren
 
-In deze modus definieert u de stroom of stappen voor het navigeren door de schermen van uw mainframe-app voor uw specifieke taak. Het kan bijvoorbeeld voor komen dat u meer dan één pad hebt dat uw app kan ondernemen, waarbij de ene pad het juiste resultaat geeft, terwijl het andere pad een fout veroorzaakt. Geef voor elk scherm de toetsaanslagen op die nodig zijn voor het verplaatsen naar het volgende scherm, `CICSPROD <enter>`zoals.
+In deze modus definieert u de stroom of stappen voor het navigeren door de schermen van uw mainframe-app voor uw specifieke taak. Het kan bijvoorbeeld voor komen dat u meer dan één pad hebt dat uw app kan ondernemen, waarbij de ene pad het juiste resultaat geeft, terwijl het andere pad een fout veroorzaakt. Geef voor elk scherm de toetsaanslagen op die nodig zijn om naar het volgende scherm te gaan, zoals `CICSPROD <enter>`.
 
 > [!TIP]
 > Als u verschillende taken automatiseert die gebruikmaken van hetzelfde scherm verbinding maken en verbinding verbreken, biedt het ontwerp programma speciale plan typen voor verbinding maken en verbinding verbreken. Wanneer u deze plannen definieert, kunt u ze toevoegen aan het begin en het einde van het navigatie plan.
@@ -183,7 +183,7 @@ In deze modus definieert u de stroom of stappen voor het navigeren door de scher
 
 1. Voer onder **nieuwe plan naam kiezen**een naam in voor uw abonnement. Selecteer in de lijst **type** het plan type:
 
-   | Type abonnement | Description |
+   | Type abonnement | Beschrijving |
    |-----------|-------------|
    | **Host** | Voor zelfstandige of gecombineerde abonnementen |
    | **Verbinding maken** | Voor Connect-Abonnementen |
@@ -219,11 +219,11 @@ In dit voor beeld voert u een CICS-trans actie met de naam ' WBGB ' uit met de v
 
 Stel dat u deze stappen herhaalt, maar u voert onjuiste gegevens in zodat u het scherm kunt vastleggen waarin de fout wordt weer gegeven. Dit zijn de schermen die u vastlegt:
 
-* MSG-10
+* BERICHT-10
 * CICS-Welkom
 * Leeg
-* WBGB_1 (input)
-* WBGB_2 (error)
+* WBGB_1 (invoer)
+* WBGB_2 (fout)
 * Empty_1
 * MSG-10_1
 
@@ -245,7 +245,7 @@ Hoewel veel schermen hier unieke namen krijgen, zijn sommige schermen hetzelfde 
 
   ![Gecombineerd plan](./media/connectors-create-api-3270/combined-plan.png)
 
-#### <a name="example-identify-repeated-screens"></a>Voorbeeld: Herhaalde schermen identificeren
+#### <a name="example-identify-repeated-screens"></a>Voor beeld: herhaalde schermen identificeren
 
 Als u de connector wilt navigeren en onderscheid wilt maken tussen schermen, zoekt u meestal unieke tekst op een scherm dat u kunt gebruiken als een id in de vastgelegde schermen. Voor herhaalde schermen hebt u mogelijk meer identificatie methoden nodig. Het voorbeeld plan bevat een Fork waar u schermen kunt krijgen die er ongeveer uit zien. Het ene scherm retourneert een account saldo, terwijl het andere scherm een fout bericht retourneert.
 
@@ -292,8 +292,8 @@ In deze modus definieert u een methode die is gekoppeld aan uw navigatie plan. V
    | Naam van eigenschap | Mogelijke waarden | 
    |---------------|-----------------|
    | **Gegevens type** | Byte, datum en tijd, decimaal, int, lang, kort, teken reeks |
-   | **De techniek voor veld opvulling** | Para meters ondersteunen deze typen opvullingen, waarbij zo nodig lege waarden worden gevuld: <p><p>- **Type**: Voer tekens opeenvolgend in het veld in. <p>- **Opvulling**: Vervang de inhoud van het veld door tekens en vul zo nodig lege waarden in. <p>- **EraseEofType**: Wis het veld en voer vervolgens de tekens opeenvolgend in het veld in. |
-   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **Datum tijd**: De teken reeks voor datum notatie wordt gevolgd door de [aangepaste notatie teken reeksen voor .net-datums en-tijden](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` gebruikt bijvoorbeeld de notatie teken reeks `MM/dd/yyyy`. <p>- **Decimaal**: De teken reeks voor decimale notatie maakt gebruik van de [COBOL-component Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Het getal `100.35` gebruikt bijvoorbeeld de notatie teken reeks `999V99`. |
+   | **De techniek voor veld opvulling** | Para meters ondersteunen deze typen opvullingen, waarbij zo nodig lege waarden worden gevuld: <p><p>- **type**: Voer tekens opeenvolgend in het veld in. <p>- **opvulling**: Vervang de inhoud van het veld door tekens en vul zo nodig lege waarden in. <p>- **EraseEofType**: wis het veld en voer de tekens vervolgens opeenvolgend in het veld in. |
+   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **DateTime**: de notatie teken reeks voor [datum en tijd volgt de notatie teken reeksen voor .net-aangepaste datums en tijden](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` bijvoorbeeld de notatie teken reeks gebruikt `MM/dd/yyyy`. <p>- **decimaal**: de teken reeks voor decimale notatie maakt gebruik van de [COBOL-component](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Bijvoorbeeld: het getal `100.35` gebruikt de notatie teken reeks `999V99`. |
    |||
 
 ## <a name="save-and-view-metadata"></a>Meta gegevens opslaan en weer geven
@@ -350,7 +350,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen en selecteer vervolgens **een actie toevoegen**. 
 
-1. Kies in het zoekvak de optie **onderneming**. Voer in het zoekvak ' 3270 ' in als uw filter. Selecteer in de lijst acties deze actie: **Voert een mainframe-programma uit via een TN3270-verbinding**
+1. Kies in het zoekvak de optie **onderneming**. Voer in het zoekvak ' 3270 ' in als uw filter. Selecteer in de lijst acties deze actie: **voert een mainframe-programma uit via een TN3270-verbinding**
 
    ![Actie 3270 selecteren](./media/connectors-create-api-3270/select-3270-action.png)
 
@@ -359,16 +359,16 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Als er nog geen verbinding bestaat, geeft u de benodigde informatie voor de verbinding op en kiest u **maken**.
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Verbindingsnaam** | Ja | <*verbindings naam*> | De naam voor de verbinding |
-   | **Integratie account-ID** | Ja | <*integratie-account-naam*> | De naam van uw integratie account |
-   | **SAS-URL van integratie account** | Ja | <*integration-account-SAS-URL*> | De URL van de Shared Access Signature (SAS) van uw integratie account, die u kunt genereren op basis van de instellingen van uw integratie account in de Azure Portal. <p>1. Selecteer in het menu integratie account onder **instellingen**de optie **URL**voor terugbellen. <br>2. Kopieer in het rechterdeel venster de waarde voor de **gegenereerde call back-URL** . |
-   | **Server** | Ja | <*TN3270-server-name*> | De server naam voor uw TN3270-service |
-   | **Poort** | Nee | <*TN3270-server-port*> | De poort die wordt gebruikt door uw TN3270-Server. Als dit veld leeg blijft, wordt `23` de connector als de standaard waarde gebruikt. |
+   | **Verbindingsnaam** | Ja | <*naam* van de verbinding > | De naam voor de verbinding |
+   | **Integratie account-ID** | Ja | <*Integration-account-name* > | De naam van uw integratie account |
+   | **SAS-URL van integratie account** | Ja | <*Integration-account-SAS-URL*> | De URL van de Shared Access Signature (SAS) van uw integratie account, die u kunt genereren op basis van de instellingen van uw integratie account in de Azure Portal. <p>1. Selecteer in het menu van het integratie account onder **instellingen**de optie **URL voor terugbellen**. <br>2. Kopieer in het rechterdeel venster de waarde voor de **gegenereerde call back-URL** . |
+   | **Server** | Ja | <*TN3270-Server naam*> | De server naam voor uw TN3270-service |
+   | **Poort** | Nee | <*TN3270-Server-poort*> | De poort die wordt gebruikt door uw TN3270-Server. Als dit veld leeg blijft, gebruikt de connector `23` als de standaard waarde. |
    | **Apparaattype** | Nee | <*IBM-Terminal model*> | De naam of het nummer van het model voor de IBM-Terminal dat moet worden geëmuleerd. Als dit veld leeg blijft, gebruikt de connector standaard waarden. |
-   | **Code tabel** | Nee | <*code-page-number*> | Het nummer van de code pagina voor de host. Als dit veld leeg blijft, wordt `37` de connector als de standaard waarde gebruikt. |
-   | **Naam van logische eenheid** | Nee | <*logical-unit-name*> | De naam van de specifieke logische eenheid die moet worden aangevraagd vanaf de host |
+   | **Code tabel** | Nee | <*code-pagina nummer*> | Het nummer van de code pagina voor de host. Als dit veld leeg blijft, gebruikt de connector `37` als de standaard waarde. |
+   | **Naam van logische eenheid** | Nee | <> voor de naam van de *logische eenheid* | De naam van de specifieke logische eenheid die moet worden aangevraagd vanaf de host |
    | **SSL inschakelen?** | Nee | In-of uitschakelen | SSL-versleuteling inschakelen of uitschakelen. |
    | **SSL-certificaat van host valideren?** | Nee | In-of uitschakelen | De validatie van het server certificaat in-of uitschakelen. |
    ||||
@@ -379,10 +379,10 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Geef de benodigde informatie op voor de actie:
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Hidx-naam** | Ja | <*HIDX-bestands naam*> | Selecteer het 3270-HIDX-bestand dat u wilt gebruiken. |
-   | **Methode naam** | Ja | <*methode-naam*> | Selecteer de methode in het HIDX-bestand dat u wilt gebruiken. Nadat u een methode hebt geselecteerd, wordt de lijst **nieuwe para meter toevoegen** weer gegeven, zodat u para meters kunt selecteren voor gebruik met deze methode. |
+   | **Methode naam** | Ja | <*methode: naam*> | Selecteer de methode in het HIDX-bestand dat u wilt gebruiken. Nadat u een methode hebt geselecteerd, wordt de lijst **nieuwe para meter toevoegen** weer gegeven, zodat u para meters kunt selecteren voor gebruik met deze methode. |
    ||||
 
    Bijvoorbeeld:
@@ -393,7 +393,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
    **De methode selecteren**
 
-   ![Een methode selecteren](./media/connectors-create-api-3270/select-method.png)
+   ![Methode selecteren](./media/connectors-create-api-3270/select-method.png)
 
    **De para meters selecteren**
 
@@ -406,7 +406,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Als u de invoer en uitvoer voor elke stap wilt bekijken, vouwt u deze stap uit.
 
-1. Als u de uitvoer wilt bekijken, kiest u onbewerkte **uitvoer weer geven**.
+1. Als u de uitvoer wilt bekijken, kiest u **onbewerkte uitvoer weer geven**.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
@@ -414,4 +414,4 @@ Raadpleeg de [referentie pagina van de connector](/connectors/si3270/)voor techn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

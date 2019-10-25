@@ -1,5 +1,6 @@
 ---
-title: Configuratie van client toepassing (micro soft-verificatie bibliotheek) | Azure
+title: Configuratie van client toepassing (micro soft-verificatie bibliotheek)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over de configuratie opties voor open bare client-en vertrouwelijke client toepassingen in de micro soft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,21 +18,21 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd90ef858fbcd2cfa418a2d7e58975cfa959705
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678100"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803184"
 ---
 # <a name="application-configuration-options"></a>Configuratie opties voor toepassingen
 
 In uw code initialiseert u een nieuwe open bare of vertrouwelijke client toepassing (of User-agent voor MSAL. js) om tokens te verifiëren en te verkrijgen. U kunt een aantal configuratie opties instellen wanneer u de client-app in micro soft Authentication Library (MSAL) initialiseert. Deze opties zijn onderverdeeld in twee groepen:
 
 - Registratie opties, waaronder:
-    - [Instantie](#authority) (samengesteld uit het ID-provider [exemplaar](#cloud-instance) en de aanmeldings [doel groep](#application-audience) voor de app en mogelijk de Tenant-id).
+    - [Instantie](#authority) (bestaande uit het ID-provider [exemplaar](#cloud-instance) en het [publiek](#application-audience) voor de app, en mogelijk met de Tenant-id).
     - [Client-id](#client-id).
-    - Omleidings- [URI](#redirect-uri).
+    - [Omleidings-URI](#redirect-uri).
     - [Client geheim](#client-secret) (voor vertrouwelijke client toepassingen).
 - [Opties voor logboek registratie](#logging), waaronder logboek niveau, controle van persoons gegevens en de naam van het onderdeel met behulp van de-bibliotheek.
 
@@ -39,9 +40,9 @@ In uw code initialiseert u een nieuwe open bare of vertrouwelijke client toepass
 
 De instantie is een URL die een directory aangeeft waarvan MSAL tokens kan aanvragen. Algemene instanties zijn:
 
-- https\://login.microsoftonline.com/\<Tenant\>/, waarbij &lt;Tenant&gt; de Tenant-id is van de Azure Active Directory (Azure AD)-Tenant of een domein dat is gekoppeld aan deze Azure AD-Tenant. Wordt alleen gebruikt om gebruikers van een specifieke organisatie te ondertekenen.
+- https\://login.microsoftonline.com/\<Tenant\>/, waarbij &lt;Tenant&gt; de Tenant-ID is van de Azure Active Directory-Tenant (Azure AD) of een domein dat is gekoppeld aan deze Azure AD-Tenant. Wordt alleen gebruikt om gebruikers van een specifieke organisatie te ondertekenen.
 - https\://login.microsoftonline.com/common/. Wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts of persoonlijke micro soft-accounts.
-- https\://login.microsoftonline.com/Organizations/. Wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts.
+- https\://login.microsoftonline.com/organizations/. Wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts.
 - https\://login.microsoftonline.com/consumers/. Wordt gebruikt voor het aanmelden van gebruikers met alleen persoonlijke micro soft-accounts (voorheen bekend als Windows Live ID-accounts).
 
 De instelling van de autoriteit moet consistent zijn met wat is gedeclareerd in de portal voor toepassings registratie.
@@ -63,11 +64,11 @@ Het exemplaar en de doel groep kunnen worden samengevoegd en als de URL van de a
 
 ## <a name="cloud-instance"></a>Cloud exemplaar
 
-Het *exemplaar* wordt gebruikt om op te geven of uw app gebruikers ondertekent vanuit de open bare Azure-Cloud of van nationale Clouds. Met behulp van MSAL in uw code kunt u het Azure Cloud-exemplaar instellen met behulp van een opsomming of door de URL door te geven aan `Instance` het [National Cloud-exemplaar](authentication-national-cloud.md#azure-ad-authentication-endpoints) als het lid (als u het weet).
+Het *exemplaar* wordt gebruikt om op te geven of uw app gebruikers ondertekent vanuit de open bare Azure-Cloud of van nationale Clouds. Met MSAL in uw code kunt u het Azure Cloud-exemplaar instellen met behulp van een opsomming of door de URL door te geven aan het [National Cloud-exemplaar](authentication-national-cloud.md#azure-ad-authentication-endpoints) als het `Instance`-lid (als u het weet).
 
-MSAL.net genereert een expliciete uitzonde ring `Instance` als `AzureCloudInstance` beide en zijn opgegeven.
+MSAL.NET genereert een expliciete uitzonde ring als zowel `Instance` als `AzureCloudInstance` zijn opgegeven.
 
-Als u geen exemplaar opgeeft, wordt de app in het open bare Azure-Cloud exemplaar (het exemplaar van `https://login.onmicrosoftonline.com`de URL) gericht.
+Als u geen exemplaar opgeeft, wordt in uw app het open bare Azure-Cloud exemplaar (het exemplaar van URL `https://login.onmicrosoftonline.com`) gericht.
 
 ## <a name="application-audience"></a>Toepassings doelgroep
 
@@ -83,21 +84,21 @@ Door MSAL in uw code te gebruiken, geeft u de doel groep op met behulp van een v
   - Een GUID (de ID van uw Azure AD-exemplaar) voor toepassingen met één Tenant
   - Een domein naam die is gekoppeld aan uw Azure AD-exemplaar (ook voor toepassingen met één Tenant)
 - Een van deze tijdelijke aanduidingen als Tenant-ID in plaats van de inventarisatie van de Azure AD-instantie doelgroep:
-    - `organizations`voor een multi tenant-toepassing
-    - `consumers`gebruikers alleen met hun persoonlijke accounts aanmelden
-    - `common`gebruikers aanmelden met hun werk-en school account of hun persoonlijke micro soft-accounts
+    - `organizations` voor een multi tenant-toepassing
+    - `consumers` om gebruikers alleen met hun persoonlijke accounts aan te melden
+    - `common` om gebruikers aan te melden met hun werk-en school account of hun persoonlijke micro soft-accounts
 
 MSAL genereert een zinvolle uitzonde ring als u zowel de Azure AD-instantie doelgroep als de Tenant-ID opgeeft.
 
-Als u geen doel groep opgeeft, zal uw app Azure AD en persoonlijke micro soft-accounts als doel groep richten. (Dat wil zeggen dat het zich bevindt `common` alsof het is opgegeven.)
+Als u geen doel groep opgeeft, zal uw app Azure AD en persoonlijke micro soft-accounts als doel groep richten. (Dat wil zeggen dat het zich gedraagt alsof `common` zijn opgegeven.)
 
 ### <a name="effective-audience"></a>Doel groep
 
-De doel groep voor uw toepassing is het minimum (als er een snij punt is) van de doel groep die u in uw app hebt ingesteld en de doel groep die is opgegeven in de app-registratie. Met de [app-registraties](https://aka.ms/appregistrations) -ervaring kunt u de doel groep (de ondersteunde account typen) voor de app opgeven. Zie voor meer informatie [Snelstart: Registreer een toepassing met het micro soft Identity](quickstart-register-app.md)-platform.
+De doel groep voor uw toepassing is het minimum (als er een snij punt is) van de doel groep die u in uw app hebt ingesteld en de doel groep die is opgegeven in de app-registratie. Met de [app-registraties](https://aka.ms/appregistrations) -ervaring kunt u de doel groep (de ondersteunde account typen) voor de app opgeven. Zie [Quick Start: een toepassing registreren bij het micro soft Identity-platform](quickstart-register-app.md)voor meer informatie.
 
 Op dit moment kunt u een app alleen voor het aanmelden van gebruikers met persoonlijke micro soft-accounts krijgen door beide instellingen te configureren:
-- Stel de app-registratie doelgroep `Work and school accounts and personal accounts`in op.
-- Stel de doel groep in uw code/configuratie `AadAuthorityAudience.PersonalMicrosoftAccount` in op `TenantID` (of = ' consumenten ').
+- Stel de app-registratie doelgroep in op `Work and school accounts and personal accounts`.
+- Stel de doel groep in uw code/configuratie in op `AadAuthorityAudience.PersonalMicrosoftAccount` (of `TenantID` = "consumenten").
 
 ## <a name="client-id"></a>Client-id
 
@@ -110,7 +111,7 @@ De omleidings-URI is de URI waarnaar de ID-provider de beveiligings tokens terug
 ### <a name="redirect-uri-for-public-client-apps"></a>Omleidings-URI voor open bare client-apps
 
 Als u een open bare client-app-ontwikkelaar bent die gebruikmaakt van MSAL:
-- U wilt gebruiken `.WithDefaultRedirectUri()` in Desktop-of UWP-toepassingen (MSAL.net 4.1 +). Met deze methode wordt de eigenschap omleidings-URI van de open bare client toepassing ingesteld op de aanbevolen standaard omleidings-URI voor open bare client toepassingen. 
+- U wilt `.WithDefaultRedirectUri()` gebruiken in Desktop-of UWP-toepassingen (MSAL.NET 4.1 +). Met deze methode wordt de eigenschap omleidings-URI van de open bare client toepassing ingesteld op de aanbevolen standaard omleidings-URI voor open bare client toepassingen. 
 
   Platform  | Omleidings-URI  
   ---------  | --------------
@@ -118,16 +119,16 @@ Als u een open bare client-app-ontwikkelaar bent die gebruikmaakt van MSAL:
   UWP | waarde van `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Hiermee wordt SSO met de browser ingeschakeld door de waarde in te stellen op het resultaat van WebAuthenticationBroker. GetCurrentApplicationCallbackUri () die u moet registreren
   .NET Core | `https://localhost`. Op deze manier kan de gebruiker de systeem browser voor interactieve verificatie gebruiken, omdat .NET Core op het moment geen gebruikers interface voor de Inge sloten webweergave heeft.
 
-- U hoeft geen omleidings-URI toe te voegen als u een Xamarin Android-en IOS-toepassing bouwt die geen ondersteuning biedt voor Broker ( `msal{ClientId}://auth` de omleidings-URI wordt automatisch ingesteld op voor Xamarin Android en IOS
+- U hoeft geen omleidings-URI toe te voegen als u een Xamarin Android-en iOS-toepassing bouwt die geen ondersteuning biedt voor Broker (de omleidings-URI wordt automatisch ingesteld op `msal{ClientId}://auth` voor Xamarin Android en iOS
 
 - U moet de omleidings-URI configureren in [app-registraties](https://aka.ms/appregistrations):
 
    ![Omleidings-URI in App-registraties](media/msal-client-application-configuration/redirect-uri.png)
 
-U kunt de omleidings-URI onderdrukken `RedirectUri` met behulp van de eigenschap (bijvoorbeeld als u Brokers gebruikt). Hier volgen enkele voor beelden van omleidings-Uri's voor dat scenario:
+U kunt de omleidings-URI onderdrukken met behulp van de eigenschap `RedirectUri` (bijvoorbeeld als u Brokers gebruikt). Hier volgen enkele voor beelden van omleidings-Uri's voor dat scenario:
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
-- `RedirectUriOnIos`= $ "msauth. {Bundel. ID}://auth ";
+- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.Identity.client.sample";
+- `RedirectUriOnIos` = $ "msauth. {Bundel. ID}://auth ";
 
 Zie [IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.net naar MSAL.net](msal-net-migration-ios-broker.md) en [de Broker op Ios](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)gebruiken voor meer informatie over IOS.
 Zie [brokered auth in Android](brokered-auth.md)voor meer informatie over Android.
@@ -138,7 +139,7 @@ Voor web-apps is de omleidings-URI (of antwoord-URI) de URI die door Azure AD wo
 
 Voor daemon-apps hoeft u geen omleidings-URI op te geven.
 
-## <a name="client-secret"></a>Geheim van client
+## <a name="client-secret"></a>Clientgeheim
 
 Met deze optie geeft u het client geheim op voor de vertrouwelijke client-app. Dit geheim (app-wacht woord) wordt geleverd door de portal voor toepassings registratie of geleverd aan Azure AD tijdens de registratie van de app met Power shell AzureAD, Power shell AzureRM of Azure CLI.
 
@@ -148,5 +149,5 @@ Met de andere configuratie opties kunt u logboek registratie en probleem oplossi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [instantiëren van client toepassingen](msal-net-initializing-client-applications.md)met behulp van MSAL.net.
+Meer informatie over het [instantiëren van client toepassingen met behulp van MSAL.net](msal-net-initializing-client-applications.md).
 Meer informatie over het [instantiëren van client toepassingen met behulp van MSAL. js](msal-js-initializing-client-applications.md).

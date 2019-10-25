@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67983672"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802443"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -24,7 +24,7 @@ Als u een Windows-apparaat wilt beheren, moet u lid zijn van de lokale groep Adm
 
 In dit artikel wordt uitgelegd hoe de update van het lidmaatschap werkt en hoe u deze kunt aanpassen tijdens een Azure AD-deelname. De inhoud van dit artikel is niet van toepassing op een **hybride** Azure AD-deelname.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Wanneer u een Windows-apparaat met Azure AD verbindt met een Azure AD-deelname, voegt Azure AD de volgende beveiligings principes toe aan de lokale groep Administrators op het apparaat:
 
@@ -79,8 +79,8 @@ Vanaf de **Windows 10 1709** -release kunt u deze taak uitvoeren vanuit **Instel
  
 Daarnaast kunt u ook gebruikers toevoegen met behulp van de opdracht prompt:
 
-- Als uw Tenant gebruikers zijn gesynchroniseerd vanuit een on-premises Active Directory `net localgroup administrators /add "Contoso\username"`, gebruikt u.
-- Als uw Tenant gebruikers zijn gemaakt in azure AD, gebruikt u`net localgroup administrators /add "AzureAD\UserUpn"`
+- Als uw Tenant gebruikers zijn gesynchroniseerd vanuit een on-premises Active Directory, gebruikt u `net localgroup administrators /add "Contoso\username"`.
+- Als uw Tenant gebruikers zijn gemaakt in azure AD, gebruikt u `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Overwegingen 
 

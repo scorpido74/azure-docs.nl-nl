@@ -1,25 +1,24 @@
 ---
-title: De status en resultaten van de Indexeer functie controleren-Azure Search
-description: De status, voortgang en resultaten van Azure Search Indexeer functies in de Azure Portal bewaken met behulp van de REST API of de .NET SDK.
-ms.date: 06/28/2019
-author: RobDixon22
+title: De status en resultaten van de Indexeer functie controleren
+titleSuffix: Azure Cognitive Search
+description: De status, voortgang en resultaten van Azure Cognitive Search Indexeer functies in de Azure Portal bewaken met behulp van de REST API of de .NET SDK.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533701"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793789"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search Indexeer functie-status en-resultaten controleren
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search Indexeer functie-status en-resultaten controleren
 
-Azure Search biedt status-en controle gegevens over de huidige en historische uitvoeringen van elke Indexeer functie.
+Azure Cognitive Search biedt status-en controle gegevens over de huidige en historische uitvoeringen van elke Indexeer functie.
 
 De controle van de Indexeer functie is handig wanneer u het volgende wilt doen:
 
@@ -75,7 +74,7 @@ Als er tijdens de uitvoering Documentspecifieke problemen zijn, worden deze weer
 
 Waarschuwingen zijn gebruikelijk met bepaalde typen Indexeer functies en geven niet altijd een probleem aan. Bijvoorbeeld Indexeer functies die gebruikmaken van cognitieve Services kunnen waarschuwingen rapporteren wanneer afbeeldings-of PDF-bestanden geen tekst bevatten die moeten worden verwerkt.
 
-Zie problemen [met algemene Indexeer functies oplossen in azure Search](search-indexer-troubleshooting.md)voor meer informatie over het onderzoeken van fouten en waarschuwingen voor Indexeer functies.
+Zie problemen [met algemene Indexeer functies in Azure Cognitive Search oplossen](search-indexer-troubleshooting.md)voor meer informatie over het onderzoeken van fouten en waarschuwingen voor Indexeer functies.
 
 <a name="restapi"></a>
 
@@ -128,7 +127,7 @@ Zie [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-ind
 
 ## <a name="monitor-using-the-net-sdk"></a>Controleren met behulp van de .NET SDK
 
-U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
+U kunt het schema voor een Indexeer functie definiëren met behulp van de Azure Cognitive Search .NET SDK. Hiertoe neemt u de eigenschap **schema** op wanneer u een Indexeer functie maakt of bijwerkt.
 
 In het C# volgende voor beeld wordt informatie over de status van een Indexeer functie en de resultaten van de meest recente (of doorlopende) uitvoering naar de-console geschreven.
 

@@ -1,22 +1,21 @@
 ---
-title: RBAC-rollen instellen voor Azure-beheerders toegang in de portal-Azure Search
-description: Op rollen gebaseerd beheer (RBAC) in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Search beheer.
-author: HeidiSteen
+title: RBAC-rollen instellen voor Azure-beheerders toegang in de portal
+titleSuffix: Azure Cognitive Search
+description: Op rollen gebaseerd beheer (RBAC) in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Cognitive Search management.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 04/05/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 924d2529e3477c299d4a90c076fe9e6c8faf11f3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 321aabb26d5929f7587dd61e7d4059701f7ad526
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647397"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794329"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>RBAC-rollen instellen voor beheerders toegang
+# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-rollen instellen voor beheerders toegang tot Azure Cognitive Search
 
 Azure biedt een [globaal autorisatie model op basis van rollen](../role-based-access-control/role-assignments-portal.md) voor alle services die worden beheerd via de portal-of Resource Manager-api's. De rollen eigenaar, bijdrager en lezer bepalen het *Service beheer* niveau voor Active Directory gebruikers, groepen en beveiligings-principals die aan elke rol zijn toegewezen. 
 
@@ -25,9 +24,9 @@ Azure biedt een [globaal autorisatie model op basis van rollen](../role-based-ac
 
 ## <a name="management-tasks-by-role"></a>Beheer taken per rol
 
-Voor Azure Search zijn rollen gekoppeld aan machtigings niveaus die ondersteuning bieden voor de volgende beheer taken:
+Voor Azure Cognitive Search zijn rollen gekoppeld aan machtigings niveaus die ondersteuning bieden voor de volgende beheer taken:
 
-| Role | Taak |
+| Rol | Taak |
 | --- | --- |
 | Eigenaar |Maak of verwijder de service of een object op de service, inclusief de API-sleutels, indexen, Indexeer functies, Indexeer gegevens bronnen en de planningen voor de Indexeer functie.<p>Bekijk de status van de service, inclusief aantallen en opslag grootte.<p>Een rollidmaatschap toevoegen of verwijderen (alleen een eigenaar kan het lidmaatschap van een rol beheren).<p>Abonnements beheerders en service-eigen aren hebben automatisch lidmaatschap van de rol eigen aren. |
 | Inzender |Hetzelfde toegangs niveau als eigenaar, min RBAC-functie beheer. Een inzender kan bijvoorbeeld objecten maken of verwijderen, of de [API-sleutels](search-security-api-keys.md)weer geven en opnieuw genereren, maar kan geen rollidmaatschap wijzigen. |
@@ -39,5 +38,5 @@ Rollen verlenen geen toegangs rechten voor het service-eind punt. Zoek service b
 ## <a name="see-also"></a>Zie ook
 
 + [Beheren met PowerShell](search-manage-powershell.md) 
-+ [Prestaties en optimalisatie in Azure Search](search-performance-optimization.md)
++ [Prestaties en optimalisatie in azure Cognitive Search](search-performance-optimization.md)
 + [Ga aan de slag met Access Control op basis van rollen in de Azure Portal](../role-based-access-control/overview.md).

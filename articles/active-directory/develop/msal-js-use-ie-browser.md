@@ -1,6 +1,7 @@
 ---
-title: Gebruik Internet Explorer (Microsoft Authentication Library voor JavaScript) | Azure
-description: Meer informatie over het gebruik van de Microsoft Authentication Library voor JavaScript (MSAL.js) met Internet Explorer-browser.
+title: Internet Explorer (micro soft-verificatie bibliotheek voor Java script) gebruiken
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het gebruik van de micro soft-verificatie bibliotheek voor Java script (MSAL. js) met de Internet Explorer-browser.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,45 +18,45 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf8c84120f4c90d3943cfc31ffbf9aafcec0ba3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c79717b00cd9a4b5da00496bf2f1822f7f77032
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873913"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802987"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Bekende problemen in Internet Explorer en Microsoft Edge browsers met MSAL.js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Bekende problemen met Internet Explorer en micro soft Edge-browsers met MSAL. js
 
-Microsoft Authentication Library voor JavaScript (MSAL.js) is gegenereerd voor [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) zodat het kan worden uitgevoerd in Internet Explorer. Er zijn echter enkele dingen weten.
+Micro soft-verificatie bibliotheek voor Java script (MSAL. js) wordt gegenereerd voor [Java script-ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , zodat deze kan worden uitgevoerd in Internet Explorer. Er zijn echter enkele dingen die u moet weten.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Een app uitvoeren in Internet Explorer
-Als u van plan bent MSAL.js te gebruiken in toepassingen die kunnen worden uitgevoerd in Internet Explorer, moet u een verwijzing naar een promise kód Pro toevoegen voordat u het script MSAL.js ernaar verwijst.
+Als u van plan bent MSAL. js te gebruiken in toepassingen die kunnen worden uitgevoerd in Internet Explorer, moet u een verwijzing naar een poly-toevoegen voordat u verwijst naar het script MSAL. js.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
 ```
 
-Dit komt doordat JavaScript beloften biedt geen systeemeigen ondersteuning voor Internet Explorer.
+Dit komt omdat Internet Explorer geen systeem eigen ondersteuning biedt voor Java script-beloftes.
 
-## <a name="debugging-an-application-running-in-internet-explorer"></a>Foutopsporing in een toepassing die wordt uitgevoerd in Internet Explorer
+## <a name="debugging-an-application-running-in-internet-explorer"></a>Fout opsporing in een toepassing die wordt uitgevoerd in Internet Explorer
 
-### <a name="running-in-production"></a>Wordt uitgevoerd in de productieomgeving
-Normaal gesproken implementeren van uw toepassing naar productie (bijvoorbeeld in een Azure-Web-apps) werkt prima, voor zover dat de eindgebruiker pop-ups heeft geaccepteerd. We hebben het met Internet Explorer 11 getest.
+### <a name="running-in-production"></a>Uitvoeren in productie
+Het implementeren van uw toepassing naar productie (bijvoorbeeld in azure web apps) werkt normaal, vooropgesteld dat de eind gebruiker pop-ups heeft geaccepteerd. We hebben het getest met Internet Explorer 11.
 
-### <a name="running-locally"></a>Lokaal worden uitgevoerd
-Als u wilt uitvoeren en fouten opsporen in lokaal uw toepassing in Internet Explorer wordt uitgevoerd, moet u rekening houden met de volgende overwegingen (wordt ervan uitgegaan dat u wilt uitvoeren van uw toepassing als *http://localhost:1234* ):
+### <a name="running-locally"></a>Lokaal uitvoeren
+Als u lokaal wilt uitvoeren en fouten wilt opsporen in uw toepassing die in Internet Explorer wordt uitgevoerd, moet u rekening houden met de volgende overwegingen (Stel dat u uw toepassing wilt uitvoeren als *http://localhost:1234* ):
 
-- Internet Explorer is een beveiligingsmechanisme met de naam 'beveiligde modus', waarmee wordt voorkomen dat MSAL.js correct werkt. Tussen de symptomen nadat u zich hebt aangemeld, de pagina kan worden omgeleid naar http://localhost:1234/null.
+- Internet Explorer heeft een beveiligings mechanisme met de naam ' beveiligde modus ', waarmee wordt voor komen dat MSAL. js goed werkt. Nadat u zich hebt aangemeld, kunt u onder de symptomen de pagina omleiden naar http://localhost:1234/null.
 
-- Als u fouten opsporen in uw toepassing lokaal wilt uitvoeren, moet u deze 'beveiligde modus' uitschakelen. Voor deze:
+- Als u uw toepassing lokaal wilt uitvoeren en fouten wilt opsporen, moet u deze beveiligde modus uitschakelen. Voor dit:
 
-    1. Klik op Internet Explorer **extra** (het tandwielpictogram).
-    1. Selecteer **Internetopties** en vervolgens de **Security** tabblad.
-    1. Klik op de **Internet** zone en schakel het selectievakje **beveiligde modus inschakelen (vereist opnieuw opstarten van Internet Explorer)** . Internet Explorer wordt gewaarschuwd dat de computer niet meer is beveiligd. Klik op **OK**.
+    1. Klik op **Hulpprogram ma's** voor Internet Explorer (het tandwiel pictogram).
+    1. Selecteer **Internet opties** en klik vervolgens op het tabblad **beveiliging** .
+    1. Klik op de zone **Internet** en Schakel **beveiligde modus inschakelen uit (hiervoor moet Internet Explorer opnieuw worden gestart)** . Internet Explorer waarschuwt dat uw computer niet meer is beveiligd. Klik op **OK**.
     1. Start Internet Explorer opnieuw.
-    1. Uitvoeren en fouten opsporen in uw toepassing.
+    1. Uw toepassing uitvoeren en fouten opsporen.
 
-Wanneer u klaar bent, herstelt u de instellingen voor Internet Explorer.  Selecteer **instellingen** -> **Internetopties** -> **Security** -> **alle zones op het standaardniveauinstellen**.
+Wanneer u klaar bent, herstelt u de beveiligings instellingen van Internet Explorer.  Selecteer **instellingen** -> **Internet opties** -> **beveiliging** -> **alle zones op standaard niveau instellen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [bekende problemen bij het gebruik van MSAL.js in Internet Explorer](msal-js-use-ie-browser.md).
+Meer informatie over [bekende problemen bij het gebruik van MSAL. js in Internet Explorer](msal-js-use-ie-browser.md).

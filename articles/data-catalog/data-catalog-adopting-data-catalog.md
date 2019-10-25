@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734681"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801875"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Aanpak en proces voor het overstappen op Azure Data Catalog
 
@@ -125,7 +125,7 @@ Zie voor meer informatie over het hulpprogramma voor de registratie van gegevens
 Als onderdeel van het proefproject maakt Nancy’s team ook gebruik van gegevensbronnen die worden beschreven in een Excel-werkmap, die wordt onderhouden door David en zijn collega's. Omdat andere teams in de onderneming ook Excel-werkmappen gebruiken om gegevensbronnen te beschrijven, besluit het IT-team tot het maken van een hulpprogramma om de Excel-werkmap te migreren naar Data Catalog. Door bestaande aantekeningen te importeren met de REST API van Data Catalog, kan het proefteam een volledige gegevenscatalogus maken, die bestaat uit metagegevens die uit de gegevensbronnen zijn geëxtraheerd met behulp van het hulpprogramma voor registratie van gegevensbronnen. Deze gegevens bevatten ook de informatie die eerder is gedocumenteerd door gegevensproducenten en -gebruikers. Het team hoeft de gegevens dus niet handmatig opnieuw in te voeren. Wanneer de gegevenscatalogus van de onderneming groeit, kan de organisatie het hulpprogramma voor de registratie van algemene gegevensbronnen gebruiken, alsmede de API van Data Catalog voor aangepaste bronnen en ongewone scenario's.
 
 > [!NOTE]
-> We hebben een voorbeeldprogramma geschreven dat gebruik maakt van de API van **Azure Data Catalog** API om een Excel-werkmap te migreren naar Data Catalog. Voor informatie over de API van Data Catalog en het voorbeeldprogramma, kunt u [De voorbeeldcode van de Ad Hoc-werkmap downloaden](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) en de documentatie van de [REST API van Azure Data Catalog](/rest/api/datacatalog/) lezen.
+> We hebben een voorbeeldprogramma geschreven dat gebruik maakt van de API van **Azure Data Catalog** API om een Excel-werkmap te migreren naar Data Catalog. Voor informatie over de API van Data Catalog en het voorbeeldprogramma, kunt u [De voorbeeldcode van de Ad Hoc-werkmap downloaden](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets) en de documentatie van de [REST API van Azure Data Catalog](/rest/api/datacatalog/) lezen.
 
 Nadat het proefproject is ingevoerd, is het tijd om uw overstapplan voor Data Catalog uit te voeren.
 

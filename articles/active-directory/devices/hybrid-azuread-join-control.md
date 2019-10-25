@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851779"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809220"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname
 
@@ -42,7 +42,7 @@ Gebruik de Active Directory Services Interfaces editor (ADSI bewerken) om de SCP
 
 1. Start de **ADSI** -module voor het bewerken van het bureau blad van en het beheer werkstation of een domein controller als een ondernemings beheerder.
 1. Maak verbinding met de **configuratie naamgevings context** van uw domein.
-1. Blader naar **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = apparaatregistratie configureren**
+1. Blader naar **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = Configuratie van apparaatregistratie**
 1. Klik met de rechter muisknop op het blad object onder **CN = Configuratie van apparaatregistratie** en selecteer **Eigenschappen**
    1. Selecteer **tref woorden** in het venster **kenmerk editor** en klik op **bewerken**
    1. Selecteer de waarden van **azureADId** en **azureADName** (een voor een tegelijk) en klik op **verwijderen**
@@ -55,24 +55,24 @@ Gebruik het volgende voor beeld om een groepsbeleid-object (GPO) te maken om een
 
 1. Open een groepsbeleid-beheer console en maak een nieuw groepsbeleid-object in uw domein.
    1. Geef een naam op voor het nieuwe groeps beleidsobject dat u hebt gemaakt (bijvoorbeeld ClientSideSCP).
-1. Bewerk het groeps beleidsobject en zoek het volgende pad: > **Voor keuren**voor > computer configuratie**REGI ster** **Windows-instellingen** > 
-1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw** > **register item**
+1. Bewerk het groeps beleidsobject en zoek het volgende pad: **computer configuratie** > **voor keuren** > **Windows-instellingen** > **REGI ster**
+1. Klik met de rechter muisknop op het REGI ster en selecteer **nieuw** > **register item**
    1. Configureer op het tabblad **Algemeen** de volgende instellingen:
-      1. Actie: **Update**
-      1. Onderdelen **HKEY_LOCAL_MACHINE**
+      1. Actie: **bijwerken**
+      1. Hive: **HKEY_LOCAL_MACHINE**
       1. Sleutelpad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Waardenaam: **TenantId**
       1. Waardetype: **REG_SZ**
-      1. Waardegegevens: De GUID of **Directory-id** van uw Azure AD-exemplaar (deze waarde is te vinden in de **Azure Portal** > **Azure Active Directory** > **Eigenschappen** > **Directory-id**)
+      1. Waardegegevens: de GUID of **Directory-id** van uw Azure AD-exemplaar (deze waarde is te vinden in de **Azure Portal** > **Azure Active Directory** > **Eigenschappen** > **Directory-id**)
    1. Klik op **OK**
-1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw** > **register item**
+1. Klik met de rechter muisknop op het REGI ster en selecteer **nieuw** > **register item**
    1. Configureer op het tabblad **Algemeen** de volgende instellingen:
-      1. Actie: **Update**
-      1. Onderdelen **HKEY_LOCAL_MACHINE**
+      1. Actie: **bijwerken**
+      1. Hive: **HKEY_LOCAL_MACHINE**
       1. Sleutelpad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. Waardenaam: **TenantName**
+      1. Waardenaam: **Tenant** naam
       1. Waardetype: **REG_SZ**
-      1. Waardegegevens: De geverifieerde **domein naam** als u een federatieve omgeving gebruikt, zoals AD FS. Uw geverifieerde **domein naam** of uw onmicrosoft.com- `contoso.onmicrosoft.com` domein naam bijvoorbeeld als u een beheerde omgeving gebruikt
+      1. Waardegegevens: uw geverifieerde **domein naam** als u een federatieve omgeving gebruikt, zoals AD FS. Uw geverifieerde **domein naam** of uw onmicrosoft.com-domein naam bijvoorbeeld `contoso.onmicrosoft.com` als u een beheerde omgeving gebruikt
    1. Klik op **OK**
 1. De editor voor het zojuist gemaakte groeps beleidsobject sluiten
 1. Koppel het zojuist gemaakte groeps beleidsobject aan de gewenste organisatie-eenheid met computers die lid zijn van een domein en die deel uitmaken van uw geïmplementeerde implementatie populatie
@@ -82,7 +82,7 @@ Gebruik het volgende voor beeld om een groepsbeleid-object (GPO) te maken om een
 Als u AD FS gebruikt, moet u eerst SCP aan de client zijde configureren met behulp van de bovenstaande instructies, maar het groeps beleidsobject koppelen aan uw AD FS-servers. Het SCP-object definieert de bron van de autoriteit voor object apparaatobject. Het kan on-premises of Azure AD zijn. Wanneer dit is geconfigureerd voor AD FS, wordt de bron voor object apparaten ingesteld als Azure AD.
 
 > [!NOTE]
-> Als u het SCP aan client zijde op uw AD FS-servers niet configureert, wordt de bron voor apparaat-id's als on-premises beschouwd en AD FS begint na een bepaalde periode of de objecten van de on-premises map worden verwijderd.
+> Als u het SCP aan client zijde op uw AD FS-servers niet configureert, wordt de bron voor apparaat-id's als on-premises beschouwd en als u het apparaat terugschrijft, wordt AD FS gestart met het verwijderen van Device-objecten uit de on-premises geregistreerde container van het apparaat na een vastgestelde periode.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Gecontroleerde validatie van hybride Azure AD-deelname op Windows-apparaten op het lagere niveau
 

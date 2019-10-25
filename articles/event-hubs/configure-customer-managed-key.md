@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260875"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809379"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -28,10 +28,10 @@ Het inschakelen van de functie BYOK is een eenmalige installatie procedure voor 
 
 U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/key-vault-overview.md) voor meer informatie over Azure Key Vault.
 
-In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Zie voor meer informatie over het maken van een sleutel kluis met behulp van de Azure Portal [] Snelstartgids: Stel een geheim in en haal het op uit Azure Key Vault met behulp van de Azure Portal] (.. /key-vault/quick-create-portal.md).
+In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Voor het gebruik van door de klant beheerde sleutels met Azure Event Hubs moet de sleutel kluis twee vereiste eigenschappen hebben geconfigureerd. Dit zijn:  **Zacht verwijderen** en **niet wissen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
+> Voor het gebruik van door de klant beheerde sleutels met Azure Event Hubs moet de sleutel kluis twee vereiste eigenschappen hebben geconfigureerd. Dit zijn: **voorlopig verwijderen** en **niet opschonen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
@@ -101,20 +101,20 @@ Volg deze stappen om Logboeken in te scha kelen voor door de klant beheerde sleu
 
     ![Selecteer door de klant beheerde sleutel gebruikers Logboeken](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Logboek-schema 
-Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende tabel. 
+## <a name="log-schema"></a>Logboek schema 
+Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON). Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende tabel. 
 
-| Name | Description |
+| Naam | Beschrijving |
 | ---- | ----------- | 
-| Taaknaam | Beschrijving van de taak die is mislukt. |
+| TaskName | Beschrijving van de taak die is mislukt. |
 | ActivityId | Interne ID die wordt gebruikt voor tracering. |
 | category | Hiermee wordt de classificatie van de taak gedefinieerd. Als de sleutel van uw sleutel kluis bijvoorbeeld wordt uitgeschakeld, zou dit een informatie categorie zijn, of als een sleutel niet kan worden teruggedraaid, kan dit onder een fout vallen. |
 | resourceId | Resource-ID Azure Resource Manager |
-| KeyVault | Volledige naam van de sleutel kluis. |
-| key | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
-| version | De versie van de sleutel die wordt gebruikt. |
-| operation | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
-| code | De code die aan de bewerking is gekoppeld. Voorbeeld: Fout code, 404 betekent dat de sleutel niet is gevonden. |
+| keyVault | Volledige naam van de sleutel kluis. |
+| sleutel | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
+| versie | De versie van de sleutel die wordt gebruikt. |
+| Schijf | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
+| Gecodeerd | De code die aan de bewerking is gekoppeld. Voor beeld: fout code, 404 betekent dat de sleutel niet is gevonden. |
 | message | Elk fout bericht dat is gekoppeld aan de bewerking |
 
 Hier volgt een voor beeld van het logboek voor een door de klant beheerde sleutel:
@@ -154,7 +154,7 @@ Schakel als best practice altijd Logboeken in, zoals wordt weer gegeven in de vo
 
 Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleuteling is ingeschakeld.
 
-| Action | Foutcode | Resulterende status van gegevens |
+| Bewerking | Foutcode | Resulterende status van gegevens |
 | ------ | ---------- | ----------------------- | 
 | De machtiging voor het verpakken/uitpakken van een sleutel kluis verwijderen | 403 |    Niet toegankelijk |
 | Het lidmaatschap van AAD-rollen verwijderen uit een AAD-principal die de machtiging voor terugloop/uitpakken heeft gekregen | 403 |  Niet toegankelijk |

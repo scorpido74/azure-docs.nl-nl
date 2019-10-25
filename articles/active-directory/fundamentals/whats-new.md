@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 4e732e62afcc7af0a2b90d7c525a6de5e65195aa
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532833"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809235"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` in het pictogram van de ![RSS feed-lezer ](./media/whats-new/feed-icon-16x16.png) feed-lezer.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` in uw ![pictogram RSS-feed lezer](./media/whats-new/feed-icon-16x16.png) feed-lezer.
 
 Azure AD ontvangt voortdurend verbeteringen. Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
 
@@ -55,13 +55,13 @@ Zie de [referentie documentatie voor API voor risico detectie](https://aka.ms/Ri
 
 ## <a name="september-2019"></a>September 2019
 
-### <a name="deprecation-of-the-power-bi-content-packs"></a>Afschaffing van de Power BI inhouds pakketten
+### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Plannen voor wijziging: afschaffing van de Power BI inhouds pakketten
 
-**Type:** Keur  
+**Type:** Plan voor wijziging  
 **Service categorie:** Rapporteren  
 **Product mogelijkheden:** & Rapportage controleren
 
-Power BI is het afnemen van inhouds pakketten uit hun archief en vanaf **1 oktober 2019**wordt het Azure AD Power bi-inhouds pakket niet meer ondersteund. Klanten die het inhouds pakket momenteel gebruiken, kunnen het blijven gebruiken, ook al zijn de onderliggende Api's oudere versies. Als alternatief voor dit inhouds pakket kunt u Azure AD-werkmappen (gebouwd op Log Analytics) gebruiken om inzicht te krijgen in uw Azure AD-gerelateerde services.
+Vanaf 1 oktober 2019 worden alle inhouds pakketten, inclusief het Azure AD Power BI-inhouds pakket, door Power BI af te nemen. Als alternatief voor dit inhouds pakket kunt u Azure AD-werkmappen gebruiken om inzicht te krijgen in uw Azure AD-gerelateerde services. Er zijn extra werkmappen beschikbaar, waaronder werkmappen over beleids regels voor voorwaardelijke toegang in de modus alleen rapport, inzichten op basis van apps en meer.
 
 Zie [Azure monitor werkmappen gebruiken voor Azure Active Directory-rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)voor meer informatie over de werkmappen. Voor meer informatie over de afschaffing van de inhouds pakketten raadpleegt u het blog bericht [Power bi sjabloon apps voor algemene Beschik baarheid aankondigen](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
 
@@ -192,18 +192,6 @@ Vanaf 1 juli 2019 heeft micro soft de MFA-server voor nieuwe implementaties gest
 ---
 
 ## <a name="august-2019"></a>Augustus 2019
-
-### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Plannen voor wijziging: afschaffing van de Power BI inhouds pakketten
-
-**Type:** Plan voor wijziging  
-**Service categorie:** Rapporteren  
-**Product mogelijkheden:** & Rapportage controleren
-
-Vanaf 1 oktober 2019 worden alle inhouds pakketten, inclusief het Azure AD Power BI-inhouds pakket, door Power BI af te nemen. Als alternatief voor dit inhouds pakket kunt u Azure AD-werkmappen gebruiken om inzicht te krijgen in uw Azure AD-gerelateerde services. Er zijn extra werkmappen beschikbaar, waaronder werkmappen over beleids regels voor voorwaardelijke toegang in de modus alleen rapport, inzichten op basis van apps en meer.
-
-Zie [Azure monitor werkmappen gebruiken voor Azure Active Directory-rapporten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)voor meer informatie over de werkmappen. Voor meer informatie over de afschaffing van de inhouds pakketten raadpleegt u het blog bericht [Power bi sjabloon apps voor algemene Beschik baarheid aankondigen](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
-
----
 
 ### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>Uitgebreide zoek-, filter-en sorteer bewerkingen voor groepen zijn beschikbaar in de Azure AD-Portal (open bare preview)
 

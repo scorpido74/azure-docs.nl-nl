@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162420"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808465"
 ---
 # <a name="combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens (preview-versie)
 
@@ -34,9 +34,12 @@ Registratie van gegevens over gecombineerde beveiliging van Azure AD is momentee
 |     |
 
 > [!IMPORTANT]
-> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar te [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gaan.
+> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com)te gaan.
 
-Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u aan `?lng=<language>` het einde van de URL toevoegen, waarbij `<language>` de code is van de taal die u wilt weer geven.
+> [!NOTE] 
+> Er wordt mogelijk een fout bericht weer gegeven wanneer u probeert toegang te krijgen tot de optie beveiligings gegevens. Bijvoorbeeld, we kunnen u niet aanmelden. In dit geval moet u bevestigen dat u geen configuratie-of groeps beleidsobject hebt waarmee cookies van derden in de webbrowser worden geblokkeerd. 
+
+Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u `?lng=<language>` toevoegen aan het einde van de URL, waarbij `<language>` de code is van de taal die u wilt weer geven.
 
 ![SSPR of andere methoden voor beveiligings verificatie instellen](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -48,11 +51,11 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ja (Maxi maal 5) | Nee | Ja |
 | Andere verificator-app | Ja (Maxi maal 5) | Nee | Ja |
-| Hardwaretoken | Nee | Nee | Ja |
-| Phone | Ja | Ja | Ja |
-| Alternatief telefoonnummer | Ja | Ja | Ja |
-| Telefoon (werk) | Nee | Nee | Nee |
-| Email | Ja | Ja | Ja |
+| Hardware-token | Nee | Nee | Ja |
+| Telefoon | Ja | Ja | Ja |
+| Alternatief telefoon nummer | Ja | Ja | Ja |
+| Office Phone | Nee | Nee | Nee |
+| E-mail | Ja | Ja | Ja |
 | Beveiligingsvragen | Ja | Nee | Ja |
 | App-wachtwoorden | Ja | Nee | Ja |
 
@@ -84,11 +87,11 @@ Gecombineerde registratie respecteert zowel Multi-Factor Authentication als SSPR
 
 Hier volgen enkele scenario's waarin gebruikers mogelijk wordt gevraagd om de beveiligings gegevens te registreren of te vernieuwen:
 
-- Registratie Multi-Factor Authentication afgedwongen via identiteits beveiliging: Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- Multi-Factor Authentication registratie wordt afgedwongen via Multi-Factor Authentication per gebruiker: Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- Registratie van Multi-Factor Authentication afgedwongen via voorwaardelijke toegang of ander beleid: Gebruikers worden gevraagd zich te registreren wanneer ze een resource gebruiken die Multi-Factor Authentication vereist. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- SSPR registratie afgedwongen: Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren alleen SSPR-methoden.
-- SSPR vernieuwing afgedwongen: Gebruikers moeten hun beveiligings gegevens controleren met een interval dat door de beheerder is ingesteld. Gebruikers worden weer gegeven met hun informatie en kunnen de huidige gegevens bevestigen of zo nodig wijzigingen aanbrengen.
+- Multi-Factor Authentication registratie afgedwongen via identiteits beveiliging: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- Multi-Factor Authentication registratie wordt afgedwongen via Multi-Factor Authentication per gebruiker: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- Multi-Factor Authentication registratie wordt afgedwongen via voorwaardelijke toegang of ander beleid: gebruikers worden gevraagd zich te registreren wanneer ze een resource gebruiken waarvoor Multi-Factor Authentication is vereist. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- SSPR registratie afgedwongen: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren alleen SSPR-methoden.
+- SSPR vernieuwen afgedwongen: gebruikers moeten hun beveiligings gegevens controleren met een interval dat door de beheerder is ingesteld. Gebruikers worden weer gegeven met hun informatie en kunnen de huidige gegevens bevestigen of zo nodig wijzigingen aanbrengen.
 
 Wanneer registratie wordt afgedwongen, worden gebruikers weer gegeven het minimale aantal methoden dat nodig is om te voldoen aan de Multi-Factor Authentication-en SSPR-beleids regels, van de meeste tot minst veilig.
 
@@ -109,7 +112,7 @@ Als het SSPR-beleid vereist dat gebruikers hun beveiligings gegevens met regel m
 
 ### <a name="manage-mode"></a>Beheer modus
 
-Gebruikers hebben toegang tot de beheer modus door [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) te gaan naar of door in mijn profiel **beveiligings gegevens** te selecteren. Van daaruit kunnen gebruikers methoden toevoegen, bestaande methoden verwijderen of wijzigen, de standaard methode wijzigen en nog veel meer.
+Gebruikers hebben toegang tot de modus beheer door naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) te gaan of door **beveiligings gegevens** van mijn profiel te selecteren. Van daaruit kunnen gebruikers methoden toevoegen, bestaande methoden verwijderen of wijzigen, de standaard methode wijzigen en nog veel meer.
 
 ## <a name="key-usage-scenarios"></a>Scenario's voor het gebruik van sleutels
 
@@ -123,7 +126,7 @@ Een gebruiker heeft niet alle vereiste beveiligings gegevens ingesteld en gaat n
 
 Een beheerder heeft de registratie niet afgedwongen.
 
-Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat [https://myprofile.microsoft.com](https://myprofile.microsoft.com)naar. De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
+Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com). De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
 
 ### <a name="delete-security-info-from-my-profile"></a>Beveiligings gegevens uit mijn profiel verwijderen
 
@@ -131,7 +134,7 @@ Een gebruiker die eerder ten minste één methode heeft ingesteld, gaat naar [ht
 
 ### <a name="change-the-default-method-from-my-profile"></a>De standaard methode van mijn profiel wijzigen
 
-Een gebruiker die eerder ten minste één methode heeft ingesteld die kan worden gebruikt voor Multi-Factor Authentication [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)naar. De gebruiker wijzigt de huidige standaard methode in een andere standaard methode. Wanneer u klaar bent, ziet de gebruiker de nieuwe standaard methode op de pagina beveiligings gegevens.
+Een gebruiker die eerder ten minste één methode heeft ingesteld die kan worden gebruikt voor Multi-Factor Authentication navigeert naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). De gebruiker wijzigt de huidige standaard methode in een andere standaard methode. Wanneer u klaar bent, ziet de gebruiker de nieuwe standaard methode op de pagina beveiligings gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

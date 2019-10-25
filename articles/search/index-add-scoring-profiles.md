@@ -1,13 +1,13 @@
 ---
-title: Score profielen toevoegen aan een zoek index-Azure Search
-description: Verhoog de zoek positie scores voor Azure Search Zoek resultaten door Score profielen toe te voegen.
-ms.date: 05/02/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Score profielen toevoegen om relevante documenten in Zoek resultaten te stimuleren
+titleSuffix: Azure Cognitive Search
+description: Verhoog de zoek positie scores voor Azure Cognitive Search resultaten door Score profielen toe te voegen.
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 547cd318a922e242198e1d2aee6806f73a16bd64
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2b92f8031a0d35696447f8ab796d24c504d57457
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648868"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790125"
 ---
-# <a name="add-scoring-profiles-to-an-azure-search-index"></a>Score profielen toevoegen aan een Azure Search index
+# <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Score profielen toevoegen aan een Azure Cognitive Search-index
 
   Score verwijst naar de berekening van een *Zoek Score* voor elk item dat wordt geretourneerd in de zoek resultaten. De score is een indicatie van de relevantie van een item in de context van de huidige Zoek bewerking. Hoe hoger de score, hoe relevant het item. In Zoek resultaten worden items gerangschikt van hoog naar laag, op basis van de zoek scores die voor elk item worden berekend.  
 
- Azure Search gebruikt standaard score voor het berekenen van een eerste score, maar u kunt de berekening aanpassen via een *Score profiel*. Score profielen geven u meer controle over de rang schikking van items in Zoek resultaten. U kunt bijvoorbeeld items verhogen op basis van hun omzet potentieel, nieuwere items promoten of mogelijk objecten verhogen die in de voor Raad te lang zijn.  
+ In azure Cognitive Search wordt gebruikgemaakt van de standaard score voor het berekenen van een eerste score, maar u kunt de berekening aanpassen via een *Score profiel*. Score profielen geven u meer controle over de rang schikking van items in Zoek resultaten. U kunt bijvoorbeeld items verhogen op basis van hun omzet potentieel, nieuwere items promoten of mogelijk objecten verhogen die in de voor Raad te lang zijn.  
 
  Een score profiel maakt deel uit van de definitie van de index, die bestaat uit gewogen velden, functies en para meters.  
 
- Het volgende voor beeld toont een eenvoudig profiel met de naam ' Geo ' om u een idee te geven van hoe een score profiel eruit ziet. Hiermee worden items met de zoek term in het veld naam **Hotel** verhoogd. De `distance` functie wordt ook gebruikt om te voor komen dat items binnen tien kilo meter van de huidige locatie. Als iemand zoekt op de term ' Inn ' en ' Inn ' zich in de naam van het hotel bevinden, worden documenten die hotels bevatten met ' Inn ' binnen een RADIUS van 10 KM van de huidige locatie hoger weer gegeven in de zoek resultaten.  
+ Het volgende voor beeld toont een eenvoudig profiel met de naam ' Geo ' om u een idee te geven van hoe een score profiel eruit ziet. Hiermee worden items met de zoek term in het veld naam **Hotel** verhoogd. Er wordt ook gebruikgemaakt van de functie `distance` om te voor komen dat items binnen tien kilo meter van de huidige locatie. Als iemand zoekt op de term ' Inn ' en ' Inn ' zich in de naam van het hotel bevinden, worden documenten die hotels bevatten met ' Inn ' binnen een RADIUS van 10 KM van de huidige locatie hoger weer gegeven in de zoek resultaten.  
 
 
 ```  
@@ -69,14 +69,14 @@ ms.locfileid: "69648868"
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
- Met deze query wordt gezocht naar de term ' Inn ' en wordt de huidige locatie door gegeven. U ziet dat deze query andere para meters bevat `scoringParameter`, zoals. Query parameters worden beschreven in [Zoeken in &#40;documenten Azure Search service&#41;rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
+ Met deze query wordt gezocht naar de term ' Inn ' en wordt de huidige locatie door gegeven. U ziet dat deze query andere para meters bevat, zoals `scoringParameter`. Query parameters worden beschreven in [Zoeken in &#40;documenten Azure Cognitive Search&#41;rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).  
 
  Klik op [voor beeld](#bkmk_ex) om een gedetailleerdere voor beeld van een score profiel te bekijken.  
 
 ## <a name="what-is-default-scoring"></a>Wat is standaard Score?  
- Score berekent een zoek score voor elk item in een gerangschikte resultatenset. Aan elk item in een zoek resultatenset wordt een zoek Score toegewezen en vervolgens het hoogste niveau van de laagste waarde. Items met de hogere scores worden geretourneerd naar de toepassing. Standaard wordt de bovenste 50 geretourneerd, maar u kunt de `$top` para meter gebruiken om een kleiner of groter aantal items te retour neren (Maxi maal 1000 in één antwoord).  
+ Score berekent een zoek score voor elk item in een gerangschikte resultatenset. Aan elk item in een zoek resultatenset wordt een zoek Score toegewezen en vervolgens het hoogste niveau van de laagste waarde. Items met de hogere scores worden geretourneerd naar de toepassing. Standaard worden de bovenste 50 geretourneerd, maar u kunt de para meter `$top` gebruiken om een kleiner of groter aantal items te retour neren (Maxi maal 1000 in één antwoord).  
 
-De zoek score wordt berekend op basis van de statistische eigenschappen van de gegevens en de query. Azure Search zoekt documenten die de zoek termen bevatten in de query reeks (sommige of alle, afhankelijk van `searchMode`), om te voor komen dat documenten met veel exemplaren van de zoek term worden gevonden. De zoek score gaat zelfs hoger omhoog als de term zelden voor komt in de gegevens index, maar gebruikelijk is binnen het document. De basis voor deze aanpak voor het berekenen van de relevantie is de [IDF TF-](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) of term frequentie-inverse document frequentie.  
+De zoek score wordt berekend op basis van de statistische eigenschappen van de gegevens en de query. Azure Cognitive Search zoekt documenten die de zoek termen bevatten in de query reeks (sommige of alle), afhankelijk van `searchMode`), om te voor komen dat documenten met veel exemplaren van de zoek term worden gevonden. De zoek score gaat zelfs hoger omhoog als de term zelden voor komt in de gegevens index, maar gebruikelijk is binnen het document. De basis voor deze aanpak voor het berekenen van de relevantie is de [IDF TF-](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) of term frequentie-inverse document frequentie.  
 
  Ervan uitgaande dat er geen aangepaste sortering is, worden de resultaten vervolgens gerangschikt op de zoek Score voordat ze worden geretourneerd naar de aanroepende toepassing. Als $top niet is opgegeven, worden 50 items met de hoogste Zoek Score geretourneerd.  
 
@@ -85,12 +85,12 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 ## <a name="when-to-use-custom-scoring"></a>Wanneer moet u aangepaste Score gebruiken?  
  U moet een of meer Score profielen maken wanneer het standaard gedrag van de positie niet ver genoeg in de buurt komt van uw bedrijfs doelstellingen. U kunt bijvoorbeeld bepalen dat de relevantie van de zoek actie moet worden aangeraden aan nieuw toegevoegde items. Op dezelfde manier kunt u een veld hebben dat winst marge bevat, of een ander veld dat de potentiële omzet aangeeft. Het verhogen van treffers die voor delen voor uw bedrijf bieden, kan een belang rijke factor zijn bij het kiezen van Score profielen.  
 
- Volg orde op basis van relevancy wordt ook geïmplementeerd via Score profielen. Bekijk de pagina's met zoek resultaten die u in het verleden hebt gebruikt, waarmee u kunt sorteren op prijs, datum, waardering of relevantie. In Azure Search kunnen Score profielen de optie ' relevantie ' kiezen. De definitie van relevantie wordt bepaald door u, een predikaat voor zakelijke doel stellingen en het type Zoek ervaring dat u wilt leveren.  
+ Volg orde op basis van relevancy wordt ook geïmplementeerd via Score profielen. Bekijk de pagina's met zoek resultaten die u in het verleden hebt gebruikt, waarmee u kunt sorteren op prijs, datum, waardering of relevantie. In azure Cognitive Search worden met Score profielen de optie relevantie gestationeerd. De definitie van relevantie wordt bepaald door u, een predikaat voor zakelijke doel stellingen en het type Zoek ervaring dat u wilt leveren.  
 
 ##  <a name="bkmk_ex"></a>Hierbij  
  Zoals eerder vermeld, wordt aangepaste Score geïmplementeerd via een of meer Score profielen die in een index schema zijn gedefinieerd.  
 
- In dit voor beeld wordt het schema van een index met twee score`boostGenre`profielen `newAndHighlyRated`(,) weer gegeven. Elke query op basis van deze index die een van beide profielen als een query parameter bevat, gebruikt het profiel voor het beoordelen van de resultatenset.  
+ In dit voor beeld wordt het schema van een index met twee Score profielen (`boostGenre`, `newAndHighlyRated`) weer gegeven. Elke query op basis van deze index die een van beide profielen als een query parameter bevat, gebruikt het profiel voor het beoordelen van de resultatenset.  
 
 ```  
 {  
@@ -162,16 +162,16 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
  Begin met de [sjabloon](#bkmk_template) die in dit onderwerp wordt beschreven.  
 
- Geef een naam op. Score profielen zijn optioneel, maar als u er een toevoegt, is de naam vereist. Zorg ervoor dat u de naam conventies voor velden volgt (begint met een letter, Vermijd speciale tekens en gereserveerde woorden). Zie de [naamgevings regels &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige lijst.  
+ Geef een naam op. Score profielen zijn optioneel, maar als u er een toevoegt, is de naam vereist. Zorg ervoor dat u de naam conventies voor velden volgt (begint met een letter, Vermijd speciale tekens en gereserveerde woorden). Zie de [naamgevings &#40;regels&#41; Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige lijst.  
 
  De hoofd tekst van het Score profiel wordt samengesteld op basis van de gewogen velden en functies.  
 
 |||  
 |-|-|  
-|**Gewicht**|Geef naam/waarde-paren op waarmee een relatief gewicht wordt toegewezen aan een veld. In het [voor beeld](#bkmk_ex)zijn de velden albumTitle, genre en kunstenaarnaam respectievelijk 1,5, 5 en 2. Waarom is het genre nog veel hoger dan het andere? Als de zoek opdracht wordt uitgevoerd op gegevens die enigszins homo geen zijn (zoals in het geval van ' genre `musicstoreindex`' in de), moet u mogelijk een grotere afwijking hebben in de relatieve gewichten. In de `musicstoreindex`' Rock ' wordt bijvoorbeeld weer gegeven als een genre en in beschrijvingen van genres die identiek zijn. Als u een genre beschrijving van genre wilt hebben, heeft het veld genre een veel hoger relatief gewicht nodig.|  
-|**Functies**|Wordt gebruikt wanneer aanvullende berekeningen zijn vereist voor specifieke contexten. Geldige waarden zijn `freshness` `magnitude` ,`distance`, en. `tag` Elke functie heeft para meters die uniek zijn.<br /><br /> -   `freshness`moet worden gebruikt als u wilt verhogen hoe nieuw of oud een item is. Deze functie kan alleen worden gebruikt met `datetime` velden (EDM. DataTimeOffset). U ziet `boostingDuration` dat het kenmerk alleen wordt gebruikt `freshness` in combi natie met de functie.<br />-   `magnitude`moet worden gebruikt als u wilt verhogen op basis van de maximale of lage waarde van een getal. Scenario's waarbij deze functie wordt aangeroepen, zijn onder andere versterking van winst marge, hoogste prijs, laagste prijs of aantal down loads. Deze functie kan alleen worden gebruikt met dubbele en gehele velden.<br />     Voor de `magnitude` functie kunt u het bereik, hoog naar laag, terugdraaien als u het omgekeerde patroon wilt gebruiken (bijvoorbeeld om minder geprijsde items meer dan hogere items te verhogen). Op basis van een prijs bereik van $100 tot $1, stelt `boostingRangeStart` u 100 en `boostingRangeEnd` op 1 in om de items met een lagere prijs te verhogen.<br />-   `distance`moet worden gebruikt als u wilt verhogen op basis van nabijheid of geografische locatie. Deze functie kan alleen worden gebruikt met `Edm.GeographyPoint` velden.<br />-   `tag`moet worden gebruikt als u de algemene labels tussen documenten en zoek query's wilt verhogen. Deze functie kan alleen worden gebruikt met `Edm.String` en `Collection(Edm.String)` -velden.<br /><br /> **Regels voor het gebruik van functies**<br /><br /> Het functie type`freshness`( `magnitude`, `distance`,) `tag` moet kleine letters zijn.<br /><br /> Functies mogen geen null of lege waarden bevatten. Als u veld naam opneemt, moet u deze instellen op iets.<br /><br /> Functions kan alleen worden toegepast op filter bare velden. Zie [Create index &#40;Azure Search service rest API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over filter bare velden.<br /><br /> Functions kan alleen worden toegepast op velden die zijn gedefinieerd in de verzameling velden van een index.|  
+|**Gewicht**|Geef naam/waarde-paren op waarmee een relatief gewicht wordt toegewezen aan een veld. In het [voor beeld](#bkmk_ex)zijn de velden albumTitle, genre en kunstenaarnaam respectievelijk 1,5, 5 en 2. Waarom is het genre nog veel hoger dan het andere? Als de zoek opdracht wordt uitgevoerd op gegevens die enigszins homo geen zijn (zoals ' genre ' in de `musicstoreindex`), moet u mogelijk een grotere afwijking in het relatieve gewicht hebben. In de `musicstoreindex`wordt bijvoorbeeld ' Rock ' weer gegeven als een genre en in beschrijvingen van genres die exact zijn aangeduid. Als u een genre beschrijving van genre wilt hebben, heeft het veld genre een veel hoger relatief gewicht nodig.|  
+|**Functies**|Wordt gebruikt wanneer aanvullende berekeningen zijn vereist voor specifieke contexten. Geldige waarden zijn `freshness`, `magnitude`, `distance`en `tag`. Elke functie heeft para meters die uniek zijn.<br /><br /> -   `freshness` moet worden gebruikt als u wilt verhogen hoe nieuw of oud een item is. Deze functie kan alleen worden gebruikt met `datetime` velden (EDM. DataTimeOffset). U ziet dat het kenmerk `boostingDuration` alleen wordt gebruikt in combi natie met de functie `freshness`.<br />-   `magnitude` moet worden gebruikt als u wilt verhogen op basis van de maximale of lage waarde van een getal. Scenario's waarbij deze functie wordt aangeroepen, zijn onder andere versterking van winst marge, hoogste prijs, laagste prijs of aantal down loads. Deze functie kan alleen worden gebruikt met dubbele en gehele velden.<br />     Voor de functie `magnitude` kunt u het bereik, hoog naar laag, terugdraaien als u het omgekeerde patroon wilt gebruiken (bijvoorbeeld om minder geprijsde items meer dan hogere items te verhogen). Op basis van een prijs bereik van $100 tot $1, stelt u `boostingRangeStart` op 100 en `boostingRangeEnd` op 1 om de items met een lagere prijs te verhogen.<br />-   `distance` moet worden gebruikt als u wilt verhogen op nabijheid of geografische locatie. Deze functie kan alleen worden gebruikt met `Edm.GeographyPoint` velden.<br />-   `tag` moet worden gebruikt als u de algemene labels tussen documenten en zoek query's wilt verhogen. Deze functie kan alleen worden gebruikt met `Edm.String`-en `Collection(Edm.String)` velden.<br /><br /> **Regels voor het gebruik van functies**<br /><br /> Het functie type (`freshness`, `magnitude`, `distance`) `tag` moet een kleine letter zijn.<br /><br /> Functies mogen geen null of lege waarden bevatten. Als u veld naam opneemt, moet u deze instellen op iets.<br /><br /> Functions kan alleen worden toegepast op filter bare velden. Zie [Create index &#40;Azure Cognitive Search rest API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over filter bare velden.<br /><br /> Functions kan alleen worden toegepast op velden die zijn gedefinieerd in de verzameling velden van een index.|  
 
- Nadat de index is gedefinieerd, bouwt u de index op door het index schema te uploaden, gevolgd door documenten. Zie [index &#40;maken Azure Search service rest API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) en [ &#40;documenten Azure Search service-rest API&#41; toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) voor instructies voor deze bewerkingen. Zodra de index is gemaakt, moet u een functioneel Score profiel hebben dat geschikt is voor uw Zoek gegevens.  
+ Nadat de index is gedefinieerd, bouwt u de index op door het index schema te uploaden, gevolgd door documenten. Zie [Create index &#40;Azure Cognitive Search rest API&#41; ](https://docs.microsoft.com/rest/api/searchservice/create-index) en [documenten &#40;toevoegen, bijwerken of verwijderen in azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) voor instructies voor deze bewerkingen. Zodra de index is gemaakt, moet u een functioneel Score profiel hebben dat geschikt is voor uw Zoek gegevens.  
 
 ##  <a name="bkmk_template"></a>Sjabloon  
  In deze sectie worden de syntaxis en sjabloon voor Score profielen weer gegeven. Raadpleeg [index Attributes Reference](#bkmk_indexref) in de volgende sectie voor beschrijvingen van de kenmerken.  
@@ -232,7 +232,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 > [!NOTE]  
 >  Een score functie kan alleen worden toegepast op velden die kunnen worden gefilterd.  
 
-|Kenmerk|Description|  
+|Kenmerk|Beschrijving|  
 |---------------|-----------------|  
 |`Name`|Vereist. Dit is de naam van het Score profiel. Het volgt dezelfde naam conventies van een veld. De naam moet beginnen met een letter, mag geen punten, dubbele punten of @ symbolen bevatten en mag niet beginnen met de zin ' azureSearch ' (hoofdletter gevoelig).|  
 |`Text`|Bevat de eigenschap Weights.|  
@@ -242,19 +242,19 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 |`Boost`|Vereist voor Score functies. Een positief getal dat wordt gebruikt als vermenigvuldiger voor de onbewerkte Score. De waarde mag niet gelijk zijn aan 1.|  
 |`Fieldname`|Vereist voor Score functies. Een score functie kan alleen worden toegepast op velden die deel uitmaken van de veld verzameling van de index en die kunnen worden gefilterd. Daarnaast introduceert elk functie type extra beperkingen (de versheid wordt gebruikt met datum-en tijd velden, een grootte met gehele getallen of dubbele velden en de afstand met locatie velden). U kunt slechts één veld per functie definitie opgeven. Als u bijvoorbeeld twee keer in hetzelfde profiel een bepaalde grootte wilt gebruiken, moet u twee definities per veld hebben.|  
 |`Interpolation`|Vereist voor Score functies. Definieert de helling waarvoor de score wordt verhoogd van het begin van het bereik tot het einde van het bereik. Geldige waarden zijn onder andere lineair (standaard), constante, kwadratisch en logaritmisch. Zie [interpolatie instellen](#bkmk_interpolation) voor meer informatie.|  
-|`magnitude`|De functie magnitude wordt gebruikt om de classificaties te wijzigen op basis van het bereik van waarden voor een numeriek veld. Enkele van de meest voorkomende gebruiks voorbeelden hiervan zijn:<br /><br /> -   **Ster classificaties:** Wijzig de score op basis van de waarde in het veld ster waardering. Wanneer twee items relevant zijn, wordt het item met de hogere classificatie eerst weer gegeven.<br />-   **Iets** Wanneer twee documenten relevant zijn, kan een detail handelaar documenten met hogere marges eerst stimuleren.<br />-   **Klik op aantal:** Voor toepassingen die volgen op acties door te klikken, kunt u de grootte gebruiken om items te verhogen die meestal het grootste verkeer krijgen.<br />-   **Download aantallen:** Voor toepassingen die down loads volgen, kunt u met de functie magnitude items met de meeste down loads verhogen.|  
-|`magnitude` &#124; `boostingRangeStart`|Hiermee wordt de begin waarde ingesteld van het bereik waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 1 zijn. Voor marges van meer dan 50% zou dit 50 zijn.|  
-|`magnitude` &#124; `boostingRangeEnd`|Hiermee wordt de eind waarde van het bereik ingesteld waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 4 zijn.|  
-|`magnitude` &#124; `constantBoostBeyondRange`|Geldige waarden zijn True of False (standaard). Als deze optie is ingesteld op True, blijft de volledige boost van toepassing op documenten met een waarde voor het doel veld die hoger is dan het bovenste einde van het bereik. Indien onwaar, wordt de boost van deze functie niet toegepast op documenten met een waarde voor het doel veld die buiten het bereik valt.|  
-|`freshness`|De functie versheids score wordt gebruikt om de classificatie scores voor items te wijzigen op `DateTimeOffset` basis van waarden in velden. Een item met een recentere datum kan bijvoorbeeld hoger zijn dan oudere items.<br /><br /> Het is ook mogelijk om items zoals Agenda gebeurtenissen te rangschikken met toekomstige datums, zodat items die dichter bij de huidige aanwezig zijn, hoger kunnen worden gerangschikt dan items in de toekomst.<br /><br /> In de huidige service release wordt één einde van het bereik vastgesteld op de huidige tijd. De andere kant is een tijd in het verleden op basis van `boostingDuration`de. Gebruik een negatieve `boostingDuration`waarde om een reeks keren in de toekomst te stimuleren.<br /><br /> De snelheid waarmee de versterking van een maximum-en minimum bereik wordt bepaald door de interpolatie die wordt toegepast op het Score Profiel (Zie de afbeelding hieronder). Als u de verg Roten factor wilt omkeren, kiest u een boost factor kleiner dan 1.|  
-|`freshness` &#124; `boostingDuration`|Hiermee stelt u een verval periode in waarna versterking van een bepaald document wordt gestopt. Zie [set boostingDuration](#bkmk_boostdur) in de volgende sectie voor de syntaxis en voor beelden.|  
-|`distance`|De functie voor afstands bepaling wordt gebruikt om de Score van documenten te beïnvloeden op basis van hoe dicht of ten opzichte van de geografische locatie van een referentie. De referentie locatie wordt gegeven als onderdeel van de query in een para meter (met `scoringParameterquery` de teken reeks optie) als een Lon-argument.|  
-|`distance` &#124; `referencePointParameter`|Een para meter die moet worden door gegeven in query's die als referentie locatie moeten worden gebruikt. `scoringParameter`is een query parameter. Zie [zoeken naar &#40;documenten Azure Search service&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
-|`distance` &#124; `boostingDistance`|Een getal dat de afstand in kilo meters aangeeft van de referentie locatie waar het Boosting-bereik eindigt.|  
-|`tag`|De tag Score functie wordt gebruikt om de Score van documenten te beïnvloeden op basis van tags in documenten en zoek query's. Documenten met een gemeen schappelijke label met de zoek query worden verhoogd. De labels voor de zoek query worden als een score parameter in elk zoek aanvraag gegeven (met de `scoringParameterquery` optie teken reeks).|  
-|`tag` &#124; `tagsParameter`|Een para meter die in query's moet worden door gegeven om labels voor een bepaalde aanvraag op te geven. `scoringParameter`is een query parameter. Zie [zoeken naar &#40;documenten Azure Search service&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
+|`magnitude`|De functie magnitude wordt gebruikt om de classificaties te wijzigen op basis van het bereik van waarden voor een numeriek veld. Enkele van de meest voorkomende gebruiks voorbeelden hiervan zijn:<br /><br /> -   **ster waardering:** Wijzig de score op basis van de waarde in het veld ster waardering. Wanneer twee items relevant zijn, wordt het item met de hogere classificatie eerst weer gegeven.<br />-   **marge:** wanneer twee documenten relevant zijn, kan een detail handelaar documenten met hogere marges eerst stimuleren.<br />-   **klikt u op aantallen:** voor toepassingen die volgen op acties voor producten of pagina's, kunt u de grootte gebruiken om items te verhogen die meestal het grootste verkeer krijgen.<br />aantal -   - **down loads:** voor toepassingen die down loads volgen, kunt u met de functie magnitude items verhogen die de meeste down loads hebben.|  
+|`magnitude` &#124;`boostingRangeStart`|Hiermee wordt de begin waarde ingesteld van het bereik waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 1 zijn. Voor marges van meer dan 50% zou dit 50 zijn.|  
+|`magnitude` &#124;`boostingRangeEnd`|Hiermee wordt de eind waarde van het bereik ingesteld waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 4 zijn.|  
+|`magnitude` &#124;`constantBoostBeyondRange`|Geldige waarden zijn True of False (standaard). Als deze optie is ingesteld op True, blijft de volledige boost van toepassing op documenten met een waarde voor het doel veld die hoger is dan het bovenste einde van het bereik. Indien onwaar, wordt de boost van deze functie niet toegepast op documenten met een waarde voor het doel veld die buiten het bereik valt.|  
+|`freshness`|De functie versheids score wordt gebruikt om de classificatie scores voor items te wijzigen op basis van waarden in `DateTimeOffset` velden. Een item met een recentere datum kan bijvoorbeeld hoger zijn dan oudere items.<br /><br /> Het is ook mogelijk om items zoals Agenda gebeurtenissen te rangschikken met toekomstige datums, zodat items die dichter bij de huidige aanwezig zijn, hoger kunnen worden gerangschikt dan items in de toekomst.<br /><br /> In de huidige service release wordt één einde van het bereik vastgesteld op de huidige tijd. De andere kant is een tijd in het verleden op basis van de `boostingDuration`. Gebruik een negatieve `boostingDuration`om een aantal malen in de toekomst te stimuleren.<br /><br /> De snelheid waarmee de versterking van een maximum-en minimum bereik wordt bepaald door de interpolatie die wordt toegepast op het Score Profiel (Zie de afbeelding hieronder). Als u de verg Roten factor wilt omkeren, kiest u een boost factor kleiner dan 1.|  
+|`freshness` &#124;`boostingDuration`|Hiermee stelt u een verval periode in waarna versterking van een bepaald document wordt gestopt. Zie [set boostingDuration](#bkmk_boostdur) in de volgende sectie voor de syntaxis en voor beelden.|  
+|`distance`|De functie voor afstands bepaling wordt gebruikt om de Score van documenten te beïnvloeden op basis van hoe dicht of ten opzichte van de geografische locatie van een referentie. De referentie locatie wordt gegeven als onderdeel van de query in een para meter (met de optie `scoringParameterquery` teken reeks) als een Lon, lat-argument.|  
+|`distance` &#124;`referencePointParameter`|Een para meter die moet worden door gegeven in query's die als referentie locatie moeten worden gebruikt. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
+|`distance` &#124;`boostingDistance`|Een getal dat de afstand in kilo meters aangeeft van de referentie locatie waar het Boosting-bereik eindigt.|  
+|`tag`|De tag Score functie wordt gebruikt om de Score van documenten te beïnvloeden op basis van tags in documenten en zoek query's. Documenten met een gemeen schappelijke label met de zoek query worden verhoogd. De labels voor de zoek query worden als een score parameter in elke zoek opdracht gegeven (met behulp van de optie voor de `scoringParameterquery` reeks).|  
+|`tag` &#124;`tagsParameter`|Een para meter die in query's moet worden door gegeven om labels voor een bepaalde aanvraag op te geven. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
 |`functionAggregation`|Optioneel. Is alleen van toepassing wanneer de functies zijn opgegeven. Geldige waarden zijn: Sum (standaard), Average, minimum, maximum en firstMatching. Een zoek Score is één waarde die wordt berekend op basis van meerdere variabelen, met inbegrip van meerdere functies. Dit kenmerk geeft aan hoe de boosts van alle functies worden gecombineerd tot één statistische boost die vervolgens wordt toegepast op de basis document Score. De basis score is gebaseerd op de waarde [TF-IDF](http://www.tfidf.com/) die is berekend op basis van het document en de zoek query.|  
-|`defaultScoringProfile`|Bij het uitvoeren van een zoek opdracht als er geen score profiel is opgegeven, wordt de standaard Score gebruikt ([TF-IDF](http://www.tfidf.com/) only).<br /><br /> Een standaard naam voor het Score profiel kan hier worden ingesteld, waardoor Azure Search dat profiel te gebruiken wanneer er geen specifiek profiel is opgegeven in de zoek opdracht.|  
+|`defaultScoringProfile`|Bij het uitvoeren van een zoek opdracht als er geen score profiel is opgegeven, wordt de standaard Score gebruikt ([TF-IDF](http://www.tfidf.com/) only).<br /><br /> Een standaard naam voor het Score profiel kan hier worden ingesteld, waardoor Azure Cognitive Search dat profiel gebruiken wanneer er geen specifiek profiel is opgegeven in de zoek opdracht.|  
 
 ##  <a name="bkmk_interpolation"></a>Interpolatie instellen  
  Met interpolatie kunt u de vorm instellen van de helling die wordt gebruikt voor scores. Omdat score hoog naar laag is, is de helling altijd afnemen, maar de interpolatie bepaalt de curve van de neerwaartse helling. De volgende interpolatie kunnen worden gebruikt:  
@@ -269,22 +269,22 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
  ![Constante, lineaire, kwadratische, log10-lijnen in de grafiek](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
 ##  <a name="bkmk_boostdur"></a>BoostingDuration instellen  
- `boostingDuration`is een kenmerk van de `freshness` functie. U gebruikt deze om een verval periode in te stellen waarna versterking van een bepaald document wordt gestopt. Als u bijvoorbeeld een product lijn of merk voor een promotie periode van tien dagen wilt verhogen, geeft u de periode van 10 dagen op als ' P10D ' voor deze documenten.  
+ `boostingDuration` is een kenmerk van de functie `freshness`. U gebruikt deze om een verval periode in te stellen waarna versterking van een bepaald document wordt gestopt. Als u bijvoorbeeld een product lijn of merk voor een promotie periode van tien dagen wilt verhogen, geeft u de periode van 10 dagen op als ' P10D ' voor deze documenten.  
 
- `boostingDuration`moet zijn opgemaakt als een XSD ' dayTimeDuration-waarde (een beperkte subset van een ISO 8601 duration-waarde). Het patroon hiervoor is: "P [nD] [T [nH] [nM] [nS]]".  
+ `boostingDuration` moet zijn opgemaakt als een XSD ' dayTimeDuration-waarde (een beperkte subset van een ISO 8601 duration-waarde). Het patroon hiervoor is: "P [nD] [T [nH] [nM] [nS]]".  
 
  De volgende tabel bevat enkele voor beelden.  
 
-|Duration|boostingDuration|  
+|Duur|boostingDuration|  
 |--------------|----------------------|  
 |1 dag|"P1D"|  
 |2 dagen en 12 uur|"P2DT12H"|  
 |15 minuten|"PT15M"|  
-|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M6.334S"|  
+|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M 6.334 S"|  
 
- Zie [voor meer voor beelden XML-schema: Gegevens typen (W3.org-website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
+ Zie [XML-schema: data types (w3.org-website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)voor meer voor beelden.  
 
 ## <a name="see-also"></a>Zie ook  
- [Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Index &#40;Azure Search service rest API maken&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ [REST  van Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/)  
+ Een [index &#40;maken voor Azure&#41; Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
+ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

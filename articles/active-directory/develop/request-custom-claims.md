@@ -1,5 +1,6 @@
 ---
-title: Aangepaste claims aanvragen met MSAL voor iOS en macOS | Micro soft Identity-platform
+title: Aangepaste claims aanvragen met MSAL voor iOS en macOS
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het aanvragen van aangepaste claims.
 services: active-directory
 documentationcenter: ''
@@ -17,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268984"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802588"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Procedure: Aangepaste claims aanvragen met MSAL voor iOS en macOS
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Procedure: aangepaste claims aanvragen met MSAL voor iOS en macOS
 
 Met OpenID Connect Connect kunt u optioneel het retour neren van afzonderlijke claims aanvragen van het user info-eind punt en/of in het ID-token. Een claim aanvraag wordt weer gegeven als een JSON-object dat een lijst met aangevraagde claims bevat. Zie [OpenID Connect Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) voor meer informatie.
 
-Met de micro soft Authentication Library (MSAL) voor iOS en macOS kunt u specifieke claims aanvragen in zowel interactieve als Silent-verwervings scenario's. Dit doet u door de `claimsRequest` para meter.
+Met de micro soft Authentication Library (MSAL) voor iOS en macOS kunt u specifieke claims aanvragen in zowel interactieve als Silent-verwervings scenario's. Dit doet u door de para meter `claimsRequest`.
 
 Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 
@@ -36,9 +37,9 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 - Specifieke combi Naties van de standaard claims aanvragen die niet kunnen worden opgegeven met scopes voor uw toepassing. Als een toegangs token bijvoorbeeld wordt afgewezen als gevolg van ontbrekende claims, kan de toepassing de ontbrekende claims aanvragen met behulp van MSAL.
 
 > [!NOTE]
-> Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk dat u `claimsRequest` alleen para meters opgeeft wanneer er aanvullende claims nodig zijn (in `claimsRequest` plaats van altijd dezelfde para meter te verstrekken in elke API-aanroep van MSAL).
+> Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk om alleen `claimsRequest` para meter op te geven wanneer er aanvullende claims nodig zijn (in plaats van altijd dezelfde `claimsRequest`-para meter in elke API-aanroep van MSAL te leveren).
 
-`claimsRequest`kan worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters`:
+`claimsRequest` kunnen worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters`:
 
 ```objc
 /*!
@@ -54,7 +55,7 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 
 @end
 ```
-`MSALClaimsRequest`kan worden samengesteld op basis van een NSStringe weer gave van een JSON-claim aanvraag. 
+`MSALClaimsRequest` kan worden samengesteld uit een NSStringe weer gave van een JSON-claim aanvraag. 
 
 Doel-C:
 
@@ -103,7 +104,7 @@ do {
 
 
 
-`MSALClaimsRequest`moet vervolgens worden ingesteld in de token parameters en worden opgegeven aan een van de MSAL-Api's voor het ophalen van tokens:
+`MSALClaimsRequest` moet vervolgens worden ingesteld in de token parameters en worden opgegeven voor een van de MSAL-Api's voor het ophalen van tokens:
 
 Doel-C:
 

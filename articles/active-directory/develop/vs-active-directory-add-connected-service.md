@@ -1,5 +1,5 @@
 ---
-title: Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
+title: Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio | Azure
 description: Een Azure Active Directory toevoegen met behulp van het dialoog venster verbonden services van Visual Studio toevoegen
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802471"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
 
@@ -46,7 +46,7 @@ Op dit moment biedt de Active Directory verbonden service geen ondersteuning voo
 
     ![Introductie pagina](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Selecteer op de pagina **eenmalige aanmelding** een domein in de vervolg keuzelijst **domein** . De lijst bevat alle domeinen die toegankelijk zijn voor de accounts die worden vermeld in het dialoog venster account instellingen van Visual Studio (**instellingen voor bestands > account...** ). Als alternatief kunt u een domein naam invoeren als u deze niet hebt gevonden, zoals `mydomain.onmicrosoft.com`. U kunt de optie kiezen om een Azure Active Directory-app te maken of de instellingen van een bestaande Azure Active Directory-app te gebruiken. Selecteer **volgende** als u klaar bent.
+1. Selecteer op de pagina **eenmalige aanmelding** een domein in de vervolg keuzelijst **domein** . De lijst bevat alle domeinen die toegankelijk zijn voor de accounts die worden vermeld in het dialoog venster account instellingen van Visual Studio (**instellingen voor bestands > account...** ). Als alternatief kunt u een domein naam invoeren als u deze niet hebt gevonden, bijvoorbeeld `mydomain.onmicrosoft.com`. U kunt de optie kiezen om een Azure Active Directory-app te maken of de instellingen van een bestaande Azure Active Directory-app te gebruiken. Selecteer **volgende** als u klaar bent.
 
     ![Pagina met eenmalige aanmelding](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301722"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801858"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET (preview-versie)
 
@@ -120,7 +120,7 @@ We kunnen de entiteit teller bijvoorbeeld zodanig wijzigen dat een indeling word
 Op klassen gebaseerde entiteiten kunnen rechtstreeks worden geopend, met behulp van expliciete teken reeks namen voor de entiteit en de bijbehorende bewerkingen. Hieronder vindt u enkele voor beelden. Zie de discussie over het [openen van entiteiten](durable-functions-entities.md#accessing-entities)voor een diep gaande uitleg van de onderliggende concepten (zoals signalen versus aanroepen). 
 
 > [!NOTE]
-> Waar mogelijk wordt u aangeraden om [toegang te krijgen tot entiteiten via interfaces](), omdat deze meer type controle biedt.
+> Waar mogelijk wordt u aangeraden om [toegang te krijgen tot entiteiten via interfaces](#accessing-entities-through-interfaces), omdat deze meer type controle biedt.
 
 ### <a name="example-client-signals-entity"></a>Voor beeld: entiteit client signalen
 
@@ -314,9 +314,9 @@ public class User
 
 In het bovenstaande voor beeld hebben we gekozen om verschillende kenmerken op te nemen om de onderliggende serialisatie meer zichtbaar te maken:
 - We maken aantekeningen op de klasse met `[JsonObject(MemberSerialization.OptIn)]` om ons eraan te herinneren dat de klasse serialiseerbaar moet zijn en om alleen leden te blijven die expliciet zijn gemarkeerd als JSON-eigenschappen.
--  We geven aantekeningen aan de velden die moeten worden bewaard met `[JsonProperty("name")]` om ons eraan te herinneren dat een veld deel uitmaakt van de persistente entiteits status en de naam van de eigenschap die moet worden gebruikt in de JSON-weer gave.
+-  We geven aantekeningen aan de velden die moeten worden vastgehouden met `[JsonProperty("name")]` om eraan te herinneren dat een veld deel uitmaakt van de persistente entiteits status en om de naam van de eigenschap die in de JSON-weer gave moet worden gebruikt te specificeren.
 
-Deze kenmerken zijn echter niet vereist. andere conventies of kenmerken zijn toegestaan zolang ze met Json.NET werken. Eén kan bijvoorbeeld `[DataContract]` kenmerken of helemaal geen kenmerken gebruiken:
+Deze kenmerken zijn echter niet vereist. andere conventies of kenmerken zijn toegestaan zolang ze met Json.NET werken. Een voor beeld: een kan `[DataContract]` kenmerken of helemaal geen kenmerken gebruiken.
 
 ```csharp
 [DataContract]

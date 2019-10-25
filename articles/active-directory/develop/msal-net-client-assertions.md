@@ -1,5 +1,6 @@
 ---
-title: Client verklaringen in micro soft-verificatie bibliotheek voor .NET | Azure
+title: Client verklaringen in micro soft-verificatie bibliotheek voor .NET
+titleSuffix: Microsoft identity platform
 description: Meer informatie over ondertekende client verklaringen ondersteuning voor vertrouwelijke client toepassingen in micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442507"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802846"
 ---
 # <a name="confidential-client-assertions"></a>Verklaringen van vertrouwelijke client
 Om hun identiteit te bewijzen, wisselen vertrouwelijke client toepassingen een geheim uit met Azure AD. Het geheim kan het volgende zijn:
@@ -50,14 +51,14 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 De claims die worden verwacht door Azure AD zijn:
 
-Claim type | Value | Description
+Claim type | Waarde | Beschrijving
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
-geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
-iss | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De "ISS"-waarde is een hoofdletter gevoelige teken reeks met een StringOrURI-waarde. [RFC 7519, sectie 4.1.1]
+AUD | https://login.microsoftonline.com/{tenantId}/v2.0 | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
+Geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
+ISS | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De "ISS"-waarde is een hoofdletter gevoelige teken reeks met een StringOrURI-waarde. [RFC 7519, sectie 4.1.1]
 jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De claim ' JTI ' kan worden gebruikt om te voor komen dat de JWT opnieuw wordt afgespeeld. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7]
-nbf | Do jun 27 2019 14:54:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5]
-sub | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT. De claims in een JWT hebben doorgaans instructies over het onderwerp. De onderwerpwaarde moet worden ingesteld op lokaal uniek in de context van de verlener of wereld wijd uniek zijn. De Zie [RFC 7519, rubriek 4.1.2]
+NBF | Do jun 27 2019 14:54:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5]
+chronische | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT. De claims in een JWT hebben doorgaans instructies over het onderwerp. De onderwerpwaarde moet worden ingesteld op lokaal uniek in de context van de verlener of wereld wijd uniek zijn. De Zie [RFC 7519, rubriek 4.1.2]
 
 Hier volgt een voor beeld van het aanwijzen van deze claims:
 
@@ -135,7 +136,7 @@ string GetAssertion()
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Er wordt standaard een ondertekende bevestiging geproduceerd met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden. Hier volgt een code fragment waarmee u dit kunt doen.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` maakt standaard een ondertekende bevestiging met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden. Hier volgt een code fragment waarmee u dit kunt doen.
 
 ```CSharp
 string ipAddress = "192.168.1.2";
@@ -150,4 +151,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Als een van de claims in de door u opgegeven woorden lijst hetzelfde is als een van de verplichte claims, wordt de waarde van de extra claim in rekening gebracht. Hiermee worden de claims overschreven die worden berekend door MSAL.NET.
 
-Als u uw eigen claims wilt opgeven, met inbegrip `false` van de verplichte claims die door Azure AD worden verwacht, geeft u de `mergeWithDefaultClaims` para meter door.
+Als u uw eigen claims wilt opgeven, met inbegrip van de verplichte claims die door Azure AD worden verwacht, geeft u `false` door voor de para meter `mergeWithDefaultClaims`.

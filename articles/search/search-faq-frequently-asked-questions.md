@@ -1,42 +1,41 @@
 ---
-title: Veelgestelde vragen (FAQ)-Azure Search
-description: Krijg antwoorden op veelgestelde vragen over Microsoft Azure Search Service, een in de Cloud gehoste zoek service op Microsoft Azure.
-author: HeidiSteen
+title: Veelgestelde vragen
+titleSuffix: Azure Cognitive Search
+description: Krijg antwoorden op veelgestelde vragen over Microsoft Azure Cognitive Search-service, een in de Cloud gehoste zoek service op Microsoft Azure.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/03/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719892"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792916"
 ---
-# <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search-Veelgestelde vragen (FAQ)
+# <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Search
 
- Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot Azure Search.
+ Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario's met betrekking tot Azure Cognitive Search.
 
 ## <a name="platform"></a>Platform
 
-### <a name="how-is-azure-search-different-from-full-text-search-in-my-dbms"></a>Hoe wijkt Azure Search af van zoek opdrachten in volledige tekst in mijn DBMS?
+### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Hoe verschilt Azure Cognitive Search van zoeken in volledige tekst in mijn DBMS?
 
-Azure Search ondersteunt meerdere gegevens bronnen, een [taal kundige analyse voor veel talen](https://docs.microsoft.com/rest/api/searchservice/language-support), [aangepaste analyse voor interessante en ongebruikelijke gegevens invoer](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), besturings elementen voor het zoeken van de rang schikking via [Score profielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)en gebruikers ervaring-functies zoals typeahead, treffers markeren en facet navigatie. Het bevat ook andere functies, zoals synoniemen en uitgebreide query syntaxis, maar dit zijn doorgaans geen onderscheid tussen functies.
+Azure Cognitive Search ondersteunt meerdere gegevens bronnen, een [taal kundige analyse voor veel talen](https://docs.microsoft.com/rest/api/searchservice/language-support), [aangepaste analyse voor interessante en ongebruikelijke gegevens invoer](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), besturings elementen voor het zoeken van de rang schikking via [Score profielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)en gebruikers ervaring functies zoals typeahead, het markeren van treffers en facet navigatie. Het bevat ook andere functies, zoals synoniemen en uitgebreide query syntaxis, maar dit zijn doorgaans geen onderscheid tussen functies.
 
-### <a name="what-is-the-difference-between-azure-search-and-elasticsearch"></a>Wat is het verschil tussen Azure Search en Elasticsearch?
+### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Wat is het verschil tussen Azure Cognitive Search en Elasticsearch?
 
-Bij het vergelijken van zoek technologieën vragen klanten regel matig om specifieke informatie over de manier waarop Azure Search vergelijkt met Elasticsearch. Klanten die Azure Search over Elasticsearch voor hun zoek toepassings projecten kiezen, doen dit meestal omdat we een belang rijke taak makkelijker hebben gemaakt of de ingebouwde integratie met andere micro soft-technologieën nodig hebben:
+Bij het vergelijken van zoek technologieën vragen klanten regel matig om specifieke informatie over de manier waarop Azure Cognitive Search vergelijkt met Elasticsearch. Klanten die Azure Cognitive Search via Elasticsearch voor hun zoek toepassings projecten kiezen, doen dit meestal omdat we een belang rijke taak makkelijker hebben gemaakt of de ingebouwde integratie met andere micro soft-technologieën nodig hebben:
 
-+ Azure Search is een volledig beheerde Cloud service met 99,9% Service Level Agreements (SLA) bij het inrichten met voldoende redundantie (2 replica's voor lees toegang, drie replica's voor lezen/schrijven).
++ Azure Cognitive Search is een volledig beheerde Cloud service met 99,9% Service Level Agreements (SLA) bij het inrichten met voldoende redundantie (2 replica's voor lees toegang, drie replica's voor lezen/schrijven).
 + De [natuurlijke taal-processors](https://docs.microsoft.com/rest/api/searchservice/language-support) van micro soft bieden toonaangevende taal analyse van de rand.  
-+ [Azure Search Indexeer functies](search-indexer-overview.md) kunnen een groot aantal Azure-gegevens bronnen verkennen voor initiële en incrementele indexering.
++ [Azure Cognitive Search Indexeer functies](search-indexer-overview.md) kunnen een groot aantal Azure-gegevens bronnen verkennen voor initiële en incrementele indexering.
 + Als u snelle reacties op schommelingen in query-of indexerings volumes nodig hebt, kunt u [Schuif regelaars](search-manage.md#scale-up-or-down) gebruiken in de Azure portal of een [Power shell-script](search-manage-powershell.md)uitvoeren, zodat u het Shard-beheer rechtstreeks omzeilt.  
 + Beoordelings- [en afstemmings functies](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) bieden de mogelijkheid om te zorgen voor zoek positie scores dan wat de zoek machine alleen kan bieden.
 
-### <a name="can-i-pause-azure-search-service-and-stop-billing"></a>Kan ik Azure Search service onderbreken en de facturering stoppen?
+### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Kan ik de Azure Cognitive Search-service onderbreken en de facturering stoppen?
 
 U kunt de service niet onderbreken. Reken-en opslag resources worden toegewezen voor exclusief gebruik wanneer de service wordt gemaakt. Het is niet mogelijk om deze resources op aanvraag vrij te geven en te claimen.
 
@@ -48,21 +47,21 @@ Tijdens de ontwikkelings fase wilt u mogelijk de index verplaatsen tussen de zoe
 
 U kunt ook een back-up maken van een index momentopname naar bestanden die kunnen worden gebruikt om deze later te herstellen. 
 
-U kunt al deze dingen doen met behulp van de voorbeeld code **index-Backup-Restore** in deze [Azure Search .net-voorbeeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples). 
+U kunt al deze dingen doen met behulp van de voorbeeld code **index-Backup-Restore** in deze [Azure Cognitive Search .net-voorbeeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples). 
 
-U kunt ook op elk gewenst moment [een index definitie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index) met behulp van de Azure Search rest API.
+U kunt ook op elk gewenst moment [een index definitie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index) met behulp van de REST API Azure Cognitive Search.
 
 Er is momenteel geen ingebouwde index voor het uitpakken, maken van een moment opname of het herstellen van back-ups in de Azure Portal. We gaan echter overwegen de functionaliteit voor back-up en herstel toe te voegen in een toekomstige release. Als u de ondersteuning voor deze functie wilt weer geven, moet u een stem op de [gebruikers stem](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)casten.
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Kan ik mijn index of service herstellen nadat deze is verwijderd?
 
-Nee, als u een Azure Search index of service verwijdert, kan deze niet worden hersteld. Wanneer u een Azure Search service verwijdert, worden alle indexen in de service permanent verwijderd. Als u een Azure-resource groep verwijdert die een of meer Azure Search Services bevat, worden alle services permanent verwijderd.  
+Nee, als u een Azure Cognitive Search-index of-service verwijdert, kan deze niet worden hersteld. Wanneer u een Azure Cognitive Search-service verwijdert, worden alle indexen in de service permanent verwijderd. Als u een Azure-resource groep verwijdert die een of meer Azure Cognitive Search Services bevat, worden alle services permanent verwijderd.  
 
 Als u resources zoals indexen, Indexeer functies, gegevens bronnen en vaardig heden opnieuw wilt maken, moet u ze opnieuw maken op basis van code. 
 
 Als u een index opnieuw wilt maken, moet u de gegevens van externe bronnen opnieuw indexeren. Daarom is het raadzaam om een hoofd kopie of een back-up van de oorspronkelijke gegevens in een ander gegevens archief, zoals Azure SQL Database of Cosmos DB, te bewaren.
 
-Als alternatief kunt u de voorbeeld code **index-Backup-Restore** gebruiken in deze [Azure Search .net-voorbeeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples) om een back-up te maken van een index definitie en een moment opname van de index naar een reeks json-bestanden. Later kunt u het hulp programma en de bestanden gebruiken om de index, indien nodig, te herstellen.  
+Als alternatief kunt u de voorbeeld code **index-Backup-Restore** in deze [Azure Cognitive Search .net](https://github.com/Azure-Samples/azure-search-dotnet-samples) -voor beeld-opslag plaats gebruiken om een back-up te maken van een index definitie en index MOMENTOPNAME naar een reeks json-bestanden. Later kunt u het hulp programma en de bestanden gebruiken om de index, indien nodig, te herstellen.  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Kan ik indexeren vanuit SQL database replica's (van toepassing op [Azure SQL database Indexeer functies](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
@@ -86,11 +85,11 @@ Joker tekens, fuzzy-en regex-query's worden echter niet geanalyseerd zoals norma
 
 ### <a name="my-wildcard-searches-are-slow"></a>Mijn Zoek opdrachten met Joker tekens zijn langzaam.
 
-De meeste zoek query's met Joker tekens, zoals voor voegsel, fuzzy en regex, worden intern herschreven met overeenkomende voor waarden in de zoek index. Deze extra verwerking van het scannen van de zoek index wordt toegevoegd aan de latentie. Uitgebreide zoek query's, zoals `a*`, bijvoorbeeld die waarschijnlijk worden herschreven, kunnen erg traag zijn. Voor het uitvoeren van zoek opdrachten met Joker tekens kunt u een [aangepaste analyse functie](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiëren.
+De meeste zoek query's met Joker tekens, zoals voor voegsel, fuzzy en regex, worden intern herschreven met overeenkomende voor waarden in de zoek index. Deze extra verwerking van het scannen van de zoek index wordt toegevoegd aan de latentie. Uitgebreide zoek query's, zoals `a*` bijvoorbeeld, die waarschijnlijk worden herschreven met veel termen, kunnen erg traag zijn. Voor het uitvoeren van zoek opdrachten met Joker tekens kunt u een [aangepaste analyse functie](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiëren.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Waarom rangschikt de zoek opdracht een constante of gelijke Score van 1,0 voor elke treffer?
 
-Standaard worden Zoek resultaten gescoord op basis van de [statistische eigenschappen van overeenkomende voor waarden](search-lucene-query-architecture.md#stage-4-scoring)en in de resultatenset van hoog naar laag geordend. Sommige query typen (joker tekens, voor voegsel, regex) bijdragen altijd een constante score naar de algehele document Score. Dit gedrag is standaard. Azure Search maakt een constante Score om overeenkomsten te toestaan die zijn gevonden via de query uitbreiding, zonder dat dit van invloed is op de rang schikking.
+Standaard worden Zoek resultaten gescoord op basis van de [statistische eigenschappen van overeenkomende voor waarden](search-lucene-query-architecture.md#stage-4-scoring)en in de resultatenset van hoog naar laag geordend. Sommige query typen (joker tekens, voor voegsel, regex) bijdragen altijd een constante score naar de algehele document Score. Dit gedrag is standaard. Azure Cognitive Search maakt een constante Score om overeenkomsten te toestaan die zijn gevonden via query expansie om te worden opgenomen in de resultaten, zonder dat dit van invloed is op de rang schikking.
 
 Stel bijvoorbeeld dat een invoer van ' Tour * ' in een zoek opdracht met Joker tekens resulteert in ' rond leidingen ', ' Tourettes ' en ' Tourmaline '. Gezien de aard van deze resultaten is er geen enkele manier om redelijkerwijs te afleiden welke termen waardevoler zijn dan andere. Daarom negeren we de term frequenties wanneer de Score resulteert in query's van het type Joker teken, voor voegsel en regex. Zoek resultaten op basis van een gedeeltelijke invoer krijgen een constante Score om bias te voor komen op mogelijke onverwachte overeenkomsten.
 
@@ -98,7 +97,7 @@ Stel bijvoorbeeld dat een invoer van ' Tour * ' in een zoek opdracht met Joker t
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Wat is de beste benadering voor het implementeren van gelokaliseerde zoek acties?
 
-De meeste klanten kiezen voor een verzameling specifieke velden wanneer het gaat om verschillende land instellingen (talen) in dezelfde index te ondersteunen. Met taalspecifieke velden kunt u een geschikte analyse toewijzen. U kunt bijvoorbeeld de micro soft-Franse analyse toewijzen aan een veld met Franse teken reeksen. Het vereenvoudigt het filteren. Als u weet dat er een query op een fr-FR pagina wordt gestart, kunt u de zoek resultaten beperken tot dit veld. U kunt ook een [Score profiel](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) maken om het veld een groter relatief gewicht te geven. Azure Search ondersteunt meer dan [50 taal analyse](https://docs.microsoft.com/azure/search/search-language-support) functies om uit te kiezen.
+De meeste klanten kiezen voor een verzameling specifieke velden wanneer het gaat om verschillende land instellingen (talen) in dezelfde index te ondersteunen. Met taalspecifieke velden kunt u een geschikte analyse toewijzen. U kunt bijvoorbeeld de micro soft-Franse analyse toewijzen aan een veld met Franse teken reeksen. Het vereenvoudigt het filteren. Als u weet dat er een query op een fr-FR pagina wordt gestart, kunt u de zoek resultaten beperken tot dit veld. U kunt ook een [Score profiel](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) maken om het veld een groter relatief gewicht te geven. Azure Cognitive Search ondersteunt meer dan [50 taal analyse](https://docs.microsoft.com/azure/search/search-language-support) functies om uit te kiezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -106,6 +105,6 @@ Is uw vraag over een ontbrekend onderdeel of functionaliteit? Vraag de functie a
 
 ## <a name="see-also"></a>Zie ook
 
- [StackOverflow: Azure Search @ no__t-0 @ no__t-1  
- [De manier waarop zoeken in volledige tekst werkt in Azure Search](search-lucene-query-architecture.md)  
- [Wat is Azure Search?](search-what-is-azure-search.md)
+ [Stack overflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [Hoe zoeken in volledige tekst werkt in azure Cognitive Search](search-lucene-query-architecture.md)  
+ [Wat is Azure Cognitive Search?](search-what-is-azure-search.md)

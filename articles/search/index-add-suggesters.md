@@ -1,13 +1,13 @@
 ---
-title: Typeahead-query's toevoegen aan een index-Azure Search
-description: Schakel Type-Ahead query acties in Azure Search in door Voorst Ellen te maken en aanvragen te formuleren waarmee automatisch aanvullen of automatische suggestieve query termen worden aangeroepen.
-ms.date: 09/30/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Typeahead-query's toevoegen aan een index
+titleSuffix: Azure Cognitive Search
+description: Schakel Type-Ahead query acties in azure Cognitive Search in door Voorst Ellen te maken en aanvragen te formuleren waarmee automatisch aanvullen of automatische suggesties worden aangeroepen.
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,24 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d3f934bea5df821e51a4747170af4f7efd1eaacc
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790104"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Suggesties toevoegen aan een index voor typeahead in Azure Search
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Suggesties toevoegen aan een index voor typeahead in azure Cognitive Search
 
-In Azure Search is de functionaliteit ' zoeken naar het type ' of typeahead gebaseerd op een **suggestie voor suggesties** die u toevoegt aan een [zoek index](search-what-is-an-index.md). Het is een lijst met een of meer velden waarvoor u wilt dat typeahead is ingeschakeld.
+In azure Cognitive Search is de functionaliteit ' Search-as-u-type ' of typeahead gebaseerd op een **suggestie voor suggesties** die u toevoegt aan een [zoek index](search-what-is-an-index.md). Het is een lijst met een of meer velden waarvoor u wilt dat typeahead is ingeschakeld.
 
 Een suggestie biedt ondersteuning voor twee typeahead varianten: *automatisch aanvullen*, waarmee de door u getypte term of woord groep wordt voltooid en *suggesties* die een korte lijst van overeenkomende documenten retour neren.  
 
 De volgende scherm afbeelding, van de [eerste app maken in C# voor](tutorial-csharp-type-ahead-and-suggestions.md) beeld, illustreert typeahead. Automatisch aanvullen is van plan wat de gebruiker kan typen in het zoekvak. De werkelijke invoer is ' TW ', die automatisch wordt voltooid met ' in ', waarbij een ' dubbele ' wordt opgelost als de zoek term voor potentiële klanten. Suggesties worden weer gegeven in de vervolg keuzelijst. Voor suggesties kunt u elk deel van een document belichten dat het beste het resultaat beschrijft. In dit voor beeld zijn de suggesties namen van hotels. 
 
-![Visuele vergelijking van automatisch aanvullen en voorgestelde query's](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Visual vergelijking van automatisch aanvullen en voorgestelde query's")
+![Visuele vergelijking van automatisch aanvullen en voorgestelde query's](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Visuele vergelijking van automatisch aanvullen en voorgestelde query's")
 
-Voor het implementeren van deze gedragingen in Azure Search is er een index-en query onderdeel. 
+Als u dit gedrag wilt implementeren in azure Cognitive Search, is er een index-en query onderdeel. 
 
 + Voeg in de index een suggestie toe aan een index. U kunt de portal, [rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)gebruiken. De rest van dit artikel is gericht op het maken van een suggestie. 
 
@@ -54,7 +54,7 @@ Als u een suggestie wilt maken, voegt u er een toe aan een index schema. U kunt 
 
 Het beste moment om een suggestie te maken, is wanneer u ook de veld definitie zelf maakt.
 
-Als u probeert een suggestie te maken met behulp van bestaande velden, wordt deze niet door de API toegestaan. Als gedeeltelijke voor waarden in twee of meer teken combinaties worden getokend op basis van hele voor waarden, wordt er tijdens het indexeren een typeahead-tekst gemaakt. Gezien dat bestaande velden al zijn getokend, moet u de index opnieuw samen stellen als u deze wilt toevoegen aan een suggestie. Zie [een Azure search index opnieuw samen stellen](search-howto-reindex.md)voor meer informatie over het opnieuw indexeren.
+Als u probeert een suggestie te maken met behulp van bestaande velden, wordt deze niet door de API toegestaan. Als gedeeltelijke voor waarden in twee of meer teken combinaties worden getokend op basis van hele voor waarden, wordt er tijdens het indexeren een typeahead-tekst gemaakt. Gezien dat bestaande velden al zijn getokend, moet u de index opnieuw samen stellen als u deze wilt toevoegen aan een suggestie. Zie [een Azure Cognitive search-index opnieuw samen stellen](search-howto-reindex.md)voor meer informatie over het opnieuw indexeren.
 
 ### <a name="create-using-the-rest-api"></a>Maken met behulp van de REST API
 
@@ -105,15 +105,15 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ### <a name="property-reference"></a>Eigenschappen referentie
 
-|Eigenschap      |Description      |
+|Eigenschap      |Beschrijving      |
 |--------------|-----------------|
 |`name`        |De naam van de suggestie.|
 |`searchMode`  |De strategie die wordt gebruikt om te zoeken naar kandidaten zinsdelen. De enige modus die momenteel wordt ondersteund, is `analyzingInfixMatching`, waarmee u in het begin of in het midden van zinnen flexibele overeenkomende woord groepen uitvoert.|
-|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en `Collection(Edm.String)` zijn. Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zijn (geen aangepaste analyse functie).<p/>Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
+|`sourceFields`|Een lijst met een of meer velden die de bron van de inhoud voor suggesties zijn. Velden moeten van het type `Edm.String` en `Collection(Edm.String)`zijn. Als er een analyse programma is opgegeven in het veld, moet dit een named Analyzer van [deze lijst](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) zijn (geen aangepaste analyse functie).<p/>Geef als best practice alleen de velden op die aan een verwacht en passend antwoord worden uitgeleend, of het nu gaat om een voltooide teken reeks in een zoek balk of vervolg keuzelijst.<p/>De naam van een hotel is een goede kandidaat omdat deze precisie heeft. Uitgebreide velden, zoals beschrijvingen en opmerkingen, zijn te dicht bij. Zo zijn herhalende velden, zoals categorieën en tags, minder effectief. In de voor beelden bevatten we ' categorie ' om aan te tonen dat u meerdere velden kunt bevatten. |
 
 ### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Analyse beperkingen voor sourceFields in een suggestie
 
-Azure Search analyseert de veld inhoud om query's op afzonderlijke voor waarden mogelijk te maken. Voorst Ellen moeten voor voegsels worden geïndexeerd naast de volledige voor waarden. dit vereist extra analyse over de bron velden. Aangepaste analyse configuraties kunnen elk van de verschillende tokenizers en filters combi neren, vaak op manieren die het maken van de Voorst Ellen van de voor voegsels zouden veroorzaken. Daarom kan Azure Search voor komen dat velden met aangepaste analyse functies in een suggestie worden opgenomen.
+De inhoud van het veld wordt door Azure Cognitive Search geanalyseerd zodat er query's kunnen worden uitgevoerd op afzonderlijke voor waarden. Voorst Ellen moeten voor voegsels worden geïndexeerd naast de volledige voor waarden. dit vereist extra analyse over de bron velden. Aangepaste analyse configuraties kunnen elk van de verschillende tokenizers en filters combi neren, vaak op manieren die het maken van de Voorst Ellen van de voor voegsels zouden veroorzaken. Daarom voor komt Azure Cognitive Search dat velden met aangepaste analyse functies in een suggestie worden opgenomen.
 
 > [!NOTE] 
 >  Als u de bovenstaande beperking wilt omzeilen, gebruikt u twee afzonderlijke velden voor dezelfde inhoud. Hiermee kan een van de velden een suggestie bieden, terwijl de andere kan worden ingesteld met een aangepaste analyse configuratie.
@@ -140,7 +140,7 @@ Als een suggestie niet in de index is gedefinieerd, mislukt de aanroep van autom
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-+ [Uw eerste app maken in C# het voor](tutorial-csharp-type-ahead-and-suggestions.md) beeld laat zien hoe u een suggestie kunt doen over een nieuwe constructie, aanbevolen query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld wordt uitgevoerd op een sandbox Azure Search-service en maakt gebruik van een vooraf geladen Hotels-index. u hoeft alleen op F5 te drukken om de toepassing uit te voeren. Er is geen abonnement of aanmelding vereist.
++ [Uw eerste app maken in C# het voor](tutorial-csharp-type-ahead-and-suggestions.md) beeld laat zien hoe u een suggestie kunt doen over een nieuwe constructie, aanbevolen query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld wordt uitgevoerd op een sandbox Azure Cognitive Search-service en maakt gebruik van een vooraf geladen Hotels-index. u hoeft alleen op F5 te drukken om de toepassing uit te voeren. Er is geen abonnement of aanmelding vereist.
 
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) is een ouder voor beeld dat C# zowel als Java-code bevat. Er wordt ook gedemonstreerd hoe u een suggestie maakt, suggesties voor query's, automatisch aanvullen en facet navigatie. Dit code voorbeeld maakt gebruik van de gehoste [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -voorbeeld gegevens. 
 

@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Internet of Things (IoT)-implementatie beveiligen | Microsoft Docs
-description: Dit artikel wordt uitgelegd hoe u uw Azure-IoT-implementatie beveiligen
+title: Uw Azure Internet of Things-implementatie (IoT) beveiligen | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u uw Azure IoT-implementatie kunt beveiligen
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,15 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 13ed08cee53ac9aa0d22506ba63e1365784a2205
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d2581f8b5299fd23524c1bff9494ac0ad623ad0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66023448"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793093"
 ---
+# <a name="secure-your-internet-of-things-iot-deployment"></a>De implementatie van uw Internet of Things (IoT) beveiligen
+
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
 ## <a name="see-also"></a>Zie ook
 
-Meer informatie over beveiliging in IoT Hub [beheren van toegang tot IoT Hub](../iot-hub/iot-hub-devguide-security.md) in de Ontwikkelaarshandleiding voor IoT Hub. 
+Meer informatie over IoT Hub beveiliging in het [beheren van toegang tot IOT hub](../iot-hub/iot-hub-devguide-security.md) in de ontwikkelaars handleiding voor IOT hub. 

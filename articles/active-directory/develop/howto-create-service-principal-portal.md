@@ -1,5 +1,6 @@
 ---
-title: Een identiteit maken voor de Azure-app in de portal | Microsoft Docs
+title: Een identiteit maken voor de Azure-app in de portal
+titleSuffix: Microsoft identity platform
 description: Hierin wordt beschreven hoe u een nieuwe Azure Active Directory toepassing en Service-Principal maakt die kunnen worden gebruikt met het op rollen gebaseerd toegangs beheer in Azure Resource Manager om de toegang tot bronnen te beheren.
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324725"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803324"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -126,7 +127,7 @@ Houd er rekening mee dat u extra machtigingen moet configureren voor bronnen waa
 1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.  
 1. Selecteer **toegangs beleid toevoegen**en selecteer vervolgens de sleutel, het geheim en de certificaat machtigingen die u uw toepassing wilt verlenen.  Selecteer de service-principal die u eerder hebt gemaakt.
 1. Selecteer **toevoegen** om het toegangs beleid toe te voegen en **Sla** vervolgens op om uw wijzigingen door te voeren.
-    ![Add-toegangs beleid @ no__t-1
+    toegangs beleid ![toevoegen](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 

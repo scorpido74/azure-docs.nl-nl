@@ -1,6 +1,6 @@
 ---
-title: De bronomgeving instellen voor VMware naar Azure-replicatie met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u uw on-premises-omgeving instellen voor virtuele VMware-machines repliceren naar Azure met Azure Site Recovery.
+title: De bron omgeving voor VMware naar Azure-replicatie instellen met Azure Site Recovery | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u uw on-premises omgeving instelt voor het repliceren van virtuele VMware-machines naar Azure met Azure Site Recovery.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723423"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791780"
 ---
-# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>De bronomgeving instellen voor VMware naar Azure-replicatie
+# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>De bron omgeving instellen voor de replicatie van VMware naar Azure
 
-Dit artikel wordt beschreven hoe u voor het instellen van uw bronomgeving on-premises virtuele VMware-machines repliceren naar Azure. Dit omvat stappen voor het selecteren van de replicatiescenario, instellen van een on-premises machine als de Site Recovery-configuratieserver en automatisch detecteren van on-premises VM's. 
+In dit artikel wordt beschreven hoe u de on-premises bedrijfs omgeving instelt voor het repliceren van virtuele VMware-machines naar Azure. Het artikel bevat stappen voor het selecteren van het replicatie scenario, het instellen van een on-premises computer als de Site Recovery configuratie server en het automatisch detecteren van on-premises Vm's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het artikel wordt ervan uitgegaan dat u al hebt:
+In het artikel wordt ervan uitgegaan dat u al hebt:
 
-- Uw implementatie met behulp van geplande [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md). Zo kunt u voldoende bandbreedte, op basis van uw dagelijkse gegevens wijzigen, om te voldoen aan uw gewenste beoogde herstelpunt (RPO) toewijzen.
-- [Instellen van resources](tutorial-prepare-azure.md) in de [Azure-portal](https://portal.azure.com).
-- [Instellen van on-premises VMware](vmware-azure-tutorial-prepare-on-premises.md), met inbegrip van een specifiek account voor automatische detectie.
+- Uw implementatie is gepland met behulp van [Azure site Recovery Deployment planner](site-recovery-deployment-planner.md). Zo kunt u voldoende band breedte toewijzen op basis van uw dagelijkse gegevens wijzigings frequentie om te voldoen aan uw gewenste Recovery Point Objective (RPO).
+- [Stel resources](tutorial-prepare-azure.md) in het [Azure Portal](https://portal.azure.com)in.
+- [On-premises VMware instellen](vmware-azure-tutorial-prepare-on-premises.md), met inbegrip van een toegewezen account voor automatische detectie.
 
-## <a name="choose-your-protection-goals"></a>Uw beveiligingsdoelstellingen kiezen
+## <a name="choose-your-protection-goals"></a>Uw beveiligings doelen kiezen
 
 1. Selecteer de naam van de kluis in **Recovery Services-kluizen**. We gebruiken **ContosoVMVault** voor dit scenario.
 2. Selecteer in **Aan de slag** Site Recovery. Selecteer vervolgens **Infrastructuur voorbereiden**.
@@ -35,54 +35,54 @@ Het artikel wordt ervan uitgegaan dat u al hebt:
 4. In **Waarnaartoe wilt u de machines repliceren** selecteert u **Naar Azure**.
 5. In **Zijn de machines gevirtualiseerd** selecteert **Ja, met VMware vSphere Hypervisor**. Selecteer vervolgens **OK**.
 
-## <a name="set-up-the-configuration-server"></a>Instellen van de configuratieserver
+## <a name="set-up-the-configuration-server"></a>De configuratie server instellen
 
-U kunt de configuratieserver instellen als een on-premises virtuele VMware-machine via een sjabloon van de Open Virtualization-toepassing (OVA). [Meer informatie](concepts-vmware-to-azure-architecture.md) over de onderdelen die worden geïnstalleerd op de VMware-VM.
+U kunt de configuratie server instellen als een on-premises virtuele VMware-machine via een eicellen-sjabloon (open Virtualization Application). Meer [informatie](concepts-vmware-to-azure-architecture.md) over de onderdelen die worden geïnstalleerd op de virtuele VMWare-machine.
 
-1. Meer informatie over de [vereisten](vmware-azure-deploy-configuration-server.md#prerequisites) voor implementatie van configuratieserver.
-2. [Controleer capaciteit](vmware-azure-deploy-configuration-server.md#capacity-planning) voor implementatie.
-3. [Download](vmware-azure-deploy-configuration-server.md#download-the-template) en [importeren](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) het OVA-sjabloon voor het instellen van een on-premises virtuele VMware-machine waarop de configuratieserver wordt uitgevoerd. De licentie die is opgegeven met de sjabloon is een evaluatielicentie en is geldig gedurende 180 dagen. Na deze periode klant nodig heeft om de windows met een licentie voor geleverde te activeren.
-4. Schakel op de VMware-VM, en [registreren](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) in de Recovery Services-kluis.
+1. Meer informatie over de [vereisten](vmware-azure-deploy-configuration-server.md#prerequisites) voor de implementatie van de configuratie server.
+2. [Controleer de capaciteits nummers](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) voor de implementatie.
+3. [Down load](vmware-azure-deploy-configuration-server.md#download-the-template) en [Importeer](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) de eicellen-sjabloon voor het instellen van een on-premises VMware-VM waarop de configuratie server wordt uitgevoerd. De licentie die is opgenomen in de sjabloon is een evaluatie licentie en is 180 dagen geldig. Na deze periode moet de klant de Windows activeren met een aangeschafte licentie.
+4. Schakel de VMware-VM in en [Registreer deze](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) in de Recovery Services kluis.
 
-## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery-uitsluitingen van antivirusprogramma 's
+## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Uitsluitingen van mappen Azure Site Recovery van antivirus programma
 
-### <a name="if-antivirus-software-is-active-on-source-machine"></a>Als er antivirussoftware is actief op de bronmachine
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>Als antivirus software actief is op de bron machine
 
-Als de bronmachine heeft een actieve antivirusprogramma's, kan de installatiemap moet worden uitgesloten. Dus uitgesloten map *C:\ProgramData\ASR\agent* voor goede replicatie.
+Als er een antivirus software op de bron machine actief is, moet de installatiemap worden uitgesloten. Sluit daarom map *C:\ProgramData\ASR\agent* voor een soepele replicatie uit.
 
-### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Als de antivirussoftware op de configuratieserver actief is
+### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Als antivirus software actief is op de configuratie server
 
-De volgende mappen van antivirussoftware voor goede replicatie en om te voorkomen dat problemen met de netwerkverbinding uitsluiten
+De volgende mappen uitsluiten van antivirus software voor soepele replicatie en verbindings problemen voor komen
 
-- C:\Program Files\Microsoft Azure Recovery Services-Agent.
-- C:\Program Files\Microsoft Azure Site Recovery Provider
+- C:\Program Files\Microsoft Azure Recovery Services-agent.
+- C:\Program Files\Microsoft Azure Site Recovery provider
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
-- C:\Program Files\Microsoft Azure Site Recovery fout verzameling Tool 
+- Hulp programma C:\Program Files\Microsoft Azure Site Recovery-fout verzameling 
   - C:\thirdparty
-  - C:\Temp
+  - Map
   - C:\strawberry
   - C:\ProgramData\MySQL
-  - C:\Program Files (x86)\MySQL
+  - C:\Program Files (x86) \MySQL
   - C:\ProgramData\ASR
   - C:\ProgramData\Microsoft Azure Site Recovery
   - C:\ProgramData\ASRLogs
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Installatiemap van ASR. Bijvoorbeeld: E:\Program bestanden (x86) \Microsoft Azure Site Recovery
+  - Installatiemap van Site Recovery Server. Bijvoorbeeld: E:\Program-bestanden (x86) \Microsoft Azure Site Recovery
 
-### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Als er antivirussoftware is actief op scale-out server/Master Target verwerken
+### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Als antivirus software actief is op scale-out proces server/Master doel
 
-De volgende mappen van antivirussoftware uitsluiten
+Volgende mappen uitsluiten van antivirus software
 
-1. C:\Program Files\Microsoft Azure Recovery Services Agent
+1. C:\Program Files\Microsoft Azure Recovery Services-agent
 2. C:\ProgramData\ASR
 3. C:\ProgramData\ASRLogs
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. ASR load balanced proces de installatiemap van, voorbeeld: C:\Program Files (x86) \Microsoft Azure Site Recovery
+7. Azure Site Recovery-installatiemap voor de proces server met taak verdeling, voor beeld: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[De doelomgeving instellen](./vmware-azure-set-up-target.md) 
+[Uw doel omgeving instellen](./vmware-azure-set-up-target.md) 

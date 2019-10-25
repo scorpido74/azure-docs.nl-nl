@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555224"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809453"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
 
@@ -157,12 +157,12 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 De functie map in Azure Monitor voor VM's haalt gegevens op uit de micro soft-afhankelijkheids agent. De afhankelijkheids agent is afhankelijk van de Log Analytics-agent voor de verbinding met Log Analytics. Daarom moet op uw systeem de Log Analytics-agent zijn geïnstalleerd en geconfigureerd met de afhankelijkheids agent.
 
-Of u Azure Monitor voor VM's voor één virtuele Azure-machine inschakelt of u de implementatie methode op schaal gebruikt, gebruikt u de Azure VM dependency agent-extensie om de agent te installeren als onderdeel van de ervaring.
+Of u Azure Monitor voor VM's voor één virtuele Azure-machine inschakelt of u de implementatie methode op schaal gebruikt, gebruikt u de Azure VM dependency agent-extensie voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) of [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) om de agent te installeren als onderdeel van de ervaring.
 
 >[!NOTE]
 >De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
 
-In een hybride omgeving kunt u de afhankelijkheids agent hand matig downloaden en installeren. Als uw Vm's buiten Azure worden gehost, gebruikt u een automatische implementatie methode.
+In een hybride omgeving kunt u de afhankelijkheids agent hand matig downloaden en installeren of een geautomatiseerde methode gebruiken.
 
 De volgende tabel beschrijft de verbonden bronnen die de kaart functie ondersteunt in een hybride omgeving.
 

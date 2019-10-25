@@ -1,5 +1,6 @@
 ---
-title: Fouten en uitzonde ringen (MSAL) | Micro soft Identity-platform
+title: Fouten en uitzonde ringen (MSAL)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het afhandelen van fouten en uitzonde ringen, voorwaardelijke toegang en claim uitdagingen in MSAL-toepassingen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 09/08/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: cc5139cb4d463b88f21b0c7a2c7e0383abdb9e1f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982771"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803118"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-uitzonde ringen en-fouten verwerken
 
@@ -39,20 +40,20 @@ Tijdens het aansturen van een stille of interactieve token kunnen apps tijdens d
 
 De volledige lijst met fouten wordt vermeld in [MSALError Enum](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128).
 
-Alle MSAL-gegenereerde fouten worden geretourneerd met een `MSALErrorDomain`-domein. 
+Alle MSAL-gegenereerde fouten worden geretourneerd met `MSALErrorDomain` domein. 
 
-Voor systeem fouten retourneert MSAL de oorspronkelijke `NSError` uit de systeem-API. Als bijvoorbeeld het verkrijgen van tokens mislukt vanwege een gebrek aan netwerk connectiviteit, retourneert MSAL een fout met het domein `NSURLErrorDomain` en `NSURLErrorNotConnectedToInternet`.
+Voor systeem fouten retourneert MSAL de oorspronkelijke `NSError` van de systeem-API. Als bijvoorbeeld het verkrijgen van tokens mislukt vanwege een gebrek aan netwerk connectiviteit, retourneert MSAL een fout met de `NSURLErrorDomain` domein en `NSURLErrorNotConnectedToInternet` code.
 
 U wordt aangeraden ten minste de volgende twee MSAL-fouten aan de client zijde te verwerken:
 
-- `MSALErrorInteractionRequired`: De gebruiker moet een interactieve aanvraag uitvoeren. Er zijn veel voor waarden die kunnen leiden tot deze fout, zoals een verlopen verificatie sessie of de nood zaak van aanvullende authenticatie vereisten. Roep de MSAL Interactive token Acquisition-API aan om te herstellen. 
+- `MSALErrorInteractionRequired`: de gebruiker moet een interactieve aanvraag uitvoeren. Er zijn veel voor waarden die kunnen leiden tot deze fout, zoals een verlopen verificatie sessie of de nood zaak van aanvullende authenticatie vereisten. Roep de MSAL Interactive token Acquisition-API aan om te herstellen. 
 
-- `MSALErrorServerDeclinedScopes`: Sommige of alle bereiken zijn afgewezen. Bepaal of u wilt door gaan met alleen de toegekende bereiken of stop het aanmeldings proces.
+- `MSALErrorServerDeclinedScopes`: sommige of alle bereiken zijn afgewezen. Bepaal of u wilt door gaan met alleen de toegekende bereiken of stop het aanmeldings proces.
 
 > [!NOTE]
-> De Enum-waarde van @no__t 0 mag alleen worden gebruikt voor naslag informatie en fout opsporing. Probeer deze fouten niet automatisch af te handelen tijdens runtime. Als uw app een van de fouten tegen komt die onder `MSALInternalError` vallen, wilt u mogelijk een algemeen gebruiker gericht bericht weer geven waarin wordt uitgelegd wat er is gebeurd.
+> De Enum van de `MSALInternalError` mag alleen worden gebruikt voor naslag informatie en fout opsporing. Probeer deze fouten niet automatisch af te handelen tijdens runtime. Als uw app een van de fouten tegen komt die onder `MSALInternalError`vallen, wilt u mogelijk een algemeen bericht van de gebruiker weer geven waarin wordt uitgelegd wat er is gebeurd.
 
-@No__t-0 betekent bijvoorbeeld dat de gebruiker de verificatie niet heeft voltooid en hand matig is teruggekeerd naar de app. In dit geval moet uw app een algemeen fout bericht weer geven waarin wordt uitgelegd dat de verificatie is voltooid en er wordt voorgesteld dat ze opnieuw proberen te verifiëren.
+`MSALInternalErrorBrokerResponseNotReceived` betekent bijvoorbeeld dat de gebruiker de verificatie niet heeft voltooid en hand matig is teruggekeerd naar de app. In dit geval moet uw app een algemeen fout bericht weer geven waarin wordt uitgelegd dat de verificatie is voltooid en er wordt voorgesteld dat ze opnieuw proberen te verifiëren.
 
 De volgende voorbeeld code van doel-C demonstreert de aanbevolen procedures voor het verwerken van enkele veelvoorkomende fout situaties:
 
@@ -162,7 +163,7 @@ Objective-C
                              completionBlock:completionBlock];
 ```
 
-SWIFT
+Swift
 ```swift
     let interactiveParameters: MSALInteractiveTokenParameters = ...
     let silentParameters: MSALSilentTokenParameters = ...
@@ -243,7 +244,7 @@ SWIFT
 
 ## <a name="net-exceptions"></a>.NET-uitzonde ringen
 
-Bij het verwerken van uitzonde ringen kunt u het uitzonderings type zelf en het lid `ErrorCode` gebruiken om onderscheid te maken tussen uitzonde ringen. `ErrorCode`-waarden zijn constanten van het type [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
+Bij het verwerken van uitzonde ringen kunt u het uitzonderings type zelf en het `ErrorCode` lid gebruiken om onderscheid te maken tussen uitzonde ringen. `ErrorCode` waarden zijn constanten van het type [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
 U kunt ook een kijkje geven in de velden [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)en [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
@@ -255,24 +256,24 @@ Hier volgen enkele veelvoorkomende uitzonde ringen die mogelijk worden gegeneree
 
 | Uitzondering | Foutcode | Oplossing|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: De gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met de ID {appId} met de naam {appName}. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource.| U moet eerst de toestemming van de gebruiker ophalen. Als u geen .NET Core gebruikt (die geen Web-UI heeft), roept u (eenmaal) aan `AcquireTokeninteractive`. Als u .NET Core gebruikt of als u geen `AcquireTokenInteractive` wilt, kan de gebruiker naar een URL navigeren om toestemming te geven: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. `AcquireTokenInteractive` aanroepen: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: De gebruiker is verplicht multi-factor Authentication (MFA) te gebruiken.| Er is geen beperking. Als MFA is geconfigureerd voor uw Tenant en Azure Active Directory (AAD) besluiten om deze af te dwingen, moet u een interactieve stroom terugvallen, zoals `AcquireTokenInteractive` of `AcquireTokenByDeviceCode`.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: Het toekennings type wordt niet ondersteund via de */veelvoorkomende* -of */consumers* -eind punten. Gebruik het */organizations* -of Tenant-specifieke eind punt. U hebt */veelvoorkomende*gebruikt.| Zoals uitgelegd in het bericht van Azure AD, moet de instantie een Tenant of anderszins */organizations*hebben.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: De aanvraag tekst moet de volgende para meter bevatten: `client_secret or client_assertion`.| Deze uitzonde ring kan worden gegenereerd als uw toepassing niet is geregistreerd als een open bare client toepassing in azure AD. Bewerk in het Azure Portal het manifest voor uw toepassing en stel `allowPublicClient` in op `true`. |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Kan de aangemelde gebruiker niet identificeren| De bibliotheek kan geen query uitvoeren op de huidige aangemelde gebruiker van Windows of deze gebruiker is niet opgenomen in AD of AAD. Beperking 1: Controleer op UWP of de toepassing de volgende mogelijkheden heeft: Ondernemings verificatie, particuliere netwerken (client en server), informatie over gebruikers accounts. Beperking 2: Implementeer uw eigen logica voor het ophalen van de gebruikers naam (bijvoorbeeld john@contoso.com) en gebruik het `AcquireTokenByIntegratedWindowsAuth`-formulier dat de gebruikers naam gebruikt.|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Deze methode is afhankelijk van een protocol dat wordt weer gegeven door Active Directory (AD). Als een gebruiker is gemaakt in Azure Active Directory zonder een AD-back-up (' beheerde ' gebruiker), mislukt deze methode. Gebruikers die zijn gemaakt in AD en die worden ondersteund door AAD (' federatieve ' gebruikers), kunnen profiteren van deze niet-interactieve verificatie methode. Risico beperking Interactieve verificatie gebruiken.|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met de ID {appId} met de naam {appName}. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource.| U moet eerst de toestemming van de gebruiker ophalen. Als u geen .NET Core gebruikt (die geen Web-UI heeft), roept u (maar eenmaal) aan `AcquireTokeninteractive`. Als u .NET Core gebruikt of een `AcquireTokenInteractive`wilt uitvoeren, kan de gebruiker naar een URL navigeren om toestemming te geven: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. `AcquireTokenInteractive`aanroepen: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: de gebruiker is verplicht multi-factor Authentication (MFA) te gebruiken.| Er is geen beperking. Als MFA is geconfigureerd voor uw Tenant en Azure Active Directory (AAD) besluit dit af te dwingen, moet u een interactieve stroom, zoals `AcquireTokenInteractive` of `AcquireTokenByDeviceCode`, terugvallen.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: het toekennings type wordt niet ondersteund via de */veelvoorkomende* -of */consumers* -eind punten. Gebruik het */organizations* -of Tenant-specifieke eind punt. U hebt */veelvoorkomende*gebruikt.| Zoals uitgelegd in het bericht van Azure AD, moet de instantie een Tenant of anderszins */organizations*hebben.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: de hoofd tekst van de aanvraag moet de volgende para meter bevatten: `client_secret or client_assertion`.| Deze uitzonde ring kan worden gegenereerd als uw toepassing niet is geregistreerd als een open bare client toepassing in azure AD. Bewerk in het Azure Portal het manifest voor uw toepassing en stel `allowPublicClient` in op `true`. |
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: de aangemelde gebruiker kan niet worden geïdentificeerd| De bibliotheek kan geen query uitvoeren op de huidige aangemelde gebruiker van Windows of deze gebruiker is niet opgenomen in AD of AAD. Beperking 1: Controleer op UWP of de toepassing de volgende mogelijkheden heeft: ondernemings verificatie, particuliere netwerken (client en server), informatie over gebruikers accounts. Risico beperking 2: Implementeer uw eigen logica voor het ophalen van de gebruikers naam (bijvoorbeeld john@contoso.com) en gebruik het `AcquireTokenByIntegratedWindowsAuth` formulier dat de gebruikers naam gebruikt.|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Deze methode is afhankelijk van een protocol dat wordt weer gegeven door Active Directory (AD). Als een gebruiker is gemaakt in Azure Active Directory zonder een AD-back-up (' beheerde ' gebruiker), mislukt deze methode. Gebruikers die zijn gemaakt in AD en die worden ondersteund door AAD (' federatieve ' gebruikers), kunnen profiteren van deze niet-interactieve verificatie methode. Risico beperking: interactieve verificatie gebruiken.|
 
 ### `MsalUiRequiredException`
 
-Een van de algemene status codes die door MSAL.NET worden geretourneerd bij het aanroepen van `AcquireTokenSilent()`, is `MsalError.InvalidGrantError`. Deze status code betekent dat de toepassing de verificatie bibliotheek opnieuw moet aanroepen, maar in de interactieve modus (AcquireTokenInteractive of AcquireTokenByDeviceCodeFlow voor open bare client toepassingen en een uitdaging in web-apps). Dit komt doordat er aanvullende gebruikers interactie is vereist voordat het verificatie token kan worden uitgegeven.
+Een van de algemene status codes die door MSAL.NET worden geretourneerd bij het aanroepen van `AcquireTokenSilent()` is `MsalError.InvalidGrantError`. Deze status code betekent dat de toepassing de verificatie bibliotheek opnieuw moet aanroepen, maar in de interactieve modus (AcquireTokenInteractive of AcquireTokenByDeviceCodeFlow voor open bare client toepassingen en een uitdaging in web-apps). Dit komt doordat er aanvullende gebruikers interactie is vereist voordat het verificatie token kan worden uitgegeven.
 
-De meeste tijd wanneer `AcquireTokenSilent` mislukt, komt doordat de token cache geen tokens bevat die overeenkomen met uw aanvraag. Toegangs tokens verlopen in één uur en `AcquireTokenSilent` probeert een nieuwe op te halen op basis van een vernieuwings token (in OAuth2-voor waarden is dit de stroom voor het vernieuwen van het token). Deze stroom kan om verschillende redenen ook mislukken, bijvoorbeeld als een Tenant beheerder strengere aanmeldings beleidsregels configureert. 
+De meeste tijd wanneer `AcquireTokenSilent` mislukt, is dat omdat de token cache geen tokens bevat die overeenkomen met uw aanvraag. Toegangs tokens verlopen in één uur en `AcquireTokenSilent` probeert een nieuwe op te halen op basis van een vernieuwings token (in OAuth2-voor waarden is dit de stroom ' token vernieuwen '). Deze stroom kan om verschillende redenen ook mislukken, bijvoorbeeld als een Tenant beheerder strengere aanmeldings beleidsregels configureert. 
 
 De interactie is gericht op het uitvoeren van een actie door de gebruiker. Sommige van deze voor waarden zijn gemakkelijk te oplossen (bijvoorbeeld het accepteren van gebruiks voorwaarden met één klik), en sommige kunnen niet worden omgezet met de huidige configuratie (de computer in kwestie moet bijvoorbeeld verbinding maken met een specifiek bedrijfs netwerk). Sommige gebruikers helpen bij het instellen van multi-factor Authentication of het installeren van Microsoft Authenticator op het apparaat.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>inventarisatie van classificatie van @no__t 0
+### <a name="msaluirequiredexception-classification-enumeration"></a>opsomming van `MsalUiRequiredException` classificatie
 
-In MSAL wordt een `Classification`-veld weer gegeven, dat u kunt lezen om een betere gebruikers ervaring te bieden, bijvoorbeeld om de gebruiker te laten weten dat het wacht woord is verlopen of dat ze toestemming moeten geven om sommige resources te gebruiken. De ondersteunde waarden maken deel uit van de Enum van @no__t 0:
+In MSAL wordt een `Classification` veld weer gegeven, dat u kunt lezen om een betere gebruikers ervaring te bieden, bijvoorbeeld om de gebruiker te laten weten dat het wacht woord is verlopen of dat ze toestemming moeten geven om sommige resources te gebruiken. De ondersteunde waarden maken deel uit van de `UiRequiredExceptionClassification` Enum:
 
 | Classificatie    | Betekenis           | Aanbevolen verwerking |
 |-------------------|-------------------|----------------------|
@@ -371,17 +372,17 @@ Door de fout klasse uit te breiden, hebt u toegang tot de volgende eigenschappen
 
 De volgende fout typen zijn beschikbaar:
 
-- `AuthError`: De basis fout klasse voor de MSAL. JS-bibliotheek, die ook wordt gebruikt voor onverwachte fouten.
+- `AuthError`: basis fout klasse voor de bibliotheek MSAL. js, ook gebruikt voor onverwachte fouten.
 
-- `ClientAuthError`: Fout klasse, die een probleem met client verificatie aanduidt. De meeste fouten die afkomstig zijn uit de-bibliotheek, zijn ClientAuthErrors. Deze fouten zijn het gevolg van dingen zoals het aanroepen van een aanmeldings methode wanneer de aanmelding al wordt uitgevoerd, de gebruiker annuleert de aanmelding, enzovoort.
+- `ClientAuthError`: fout klasse, die een probleem met client verificatie aanduidt. De meeste fouten die afkomstig zijn uit de-bibliotheek, zijn ClientAuthErrors. Deze fouten zijn het gevolg van dingen zoals het aanroepen van een aanmeldings methode wanneer de aanmelding al wordt uitgevoerd, de gebruiker annuleert de aanmelding, enzovoort.
 
-- `ClientConfigurationError`: Fout klasse, breidt `ClientAuthError` uit voordat aanvragen worden gedaan wanneer de opgegeven gebruikers configuratie parameters ongeldig of ontbrekend zijn.
+- `ClientConfigurationError`: fout klasse, wordt uitgebreid `ClientAuthError` gegenereerd voordat aanvragen worden gedaan wanneer de opgegeven gebruikers configuratie parameters onjuist zijn of ontbreken.
 
-- `ServerError`: Fout klasse, vertegenwoordigt de fout teken reeksen die door de verificatie server worden verzonden. Dit kunnen fouten zijn, zoals ongeldige aanvraag indelingen of para meters, of andere fouten die voor komen dat de server de gebruiker verifieert of autoriseert.
+- `ServerError`: fout klasse, vertegenwoordigt de fout teken reeksen die door de verificatie server worden verzonden. Dit kunnen fouten zijn, zoals ongeldige aanvraag indelingen of para meters, of andere fouten die voor komen dat de server de gebruiker verifieert of autoriseert.
 
-- `InteractionRequiredAuthError`: Fout klasse, breidt `ServerError` uit om Server fouten aan te duiden, die een interactieve aanroep vereisen. Deze fout wordt gegenereerd door `acquireTokenSilent` als de gebruiker moet communiceren met de server om referenties of toestemming te geven voor verificatie/autorisatie. Fout codes zijn `"interaction_required"`, `"login_required"` en `"consent_required"`.
+- `InteractionRequiredAuthError`: fout klasse, breidt `ServerError` uit om Server fouten aan te duiden, die een interactieve aanroep vereisen. Deze fout wordt gegenereerd door `acquireTokenSilent` als de gebruiker moet communiceren met de server om referenties of toestemming te geven voor verificatie/autorisatie. Fout codes zijn `"interaction_required"`, `"login_required"`en `"consent_required"`.
 
-Voor het afhandelen van fouten in verificatie stromen met omleidings methoden (`loginRedirect`, `acquireTokenRedirect`), moet u de retour aanroep registreren, die wordt aangeroepen met geslaagde of mislukte aan@no__t meldingen als volgt:
+Voor het afhandelen van fouten in verificatie stromen met omleidings methoden (`loginRedirect`, `acquireTokenRedirect`) moet u de call back registreren. deze wordt aangeroepen met geslaagde of mislukte aanmeldingen na de omleiding met behulp van de methode `handleRedirectCallback()` als volgt:
 
 ```javascript
 function authCallback(error, response) {
@@ -395,7 +396,7 @@ myMSALObj.handleRedirectCallback(authCallback);
 myMSALObj.acquireTokenRedirect(request);
 ```
 
-De methoden voor het weer geven van pop-upervaring (`loginPopup`, `acquireTokenPopup`) retour nering, zodat u het Promise-patroon (. then en. Catch) kunt gebruiken om ze te verwerken zoals wordt getoond:
+De methoden voor het weer geven van pop-upervaring (`loginPopup`, `acquireTokenPopup`) zijn beloofd, zodat u het Promise-patroon (. then en. Catch) kunt gebruiken voor het afhandelen van het volgende:
 
 ```javascript
 myMSALObj.acquireTokenPopup(request).then(
@@ -408,7 +409,7 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>Interactie vereist, fouten
 
-Er wordt een fout geretourneerd wanneer u een niet-interactieve methode voor het verkrijgen van een token wilt gebruiken, zoals `acquireTokenSilent`, maar MSAL niet op de achtergrond kan worden uitgevoerd.
+Er wordt een fout bericht weer gegeven wanneer u probeert een niet-interactieve methode te gebruiken voor het verkrijgen van een token, zoals `acquireTokenSilent`, maar MSAL kan niet op de achtergrond worden uitgevoerd.
 
 Mogelijke oorzaken zijn:
 
@@ -444,15 +445,15 @@ Wanneer tokens op de achtergrond worden opgehaald, kan uw toepassing fouten ontv
 
 Het patroon voor het afhandelen van deze fout is het interactief verkrijgen van een token met behulp van MSAL. Bij het interactief ophalen van een token wordt de gebruiker gevraagd om te voldoen aan het vereiste beleid voor voorwaardelijke toegang.
 
-In bepaalde gevallen bij het aanroepen van een API waarvoor voorwaardelijke toegang is vereist, kunt u een claim Challenge ontvangen in de fout van de API. Als het beleid voor voorwaardelijke toegang bijvoorbeeld een beheerd apparaat (intune) moet hebben, is de fout als [AADSTS53000: Uw apparaat moet worden beheerd om toegang te krijgen tot deze resource @ no__t-0 of iets dergelijks. In dit geval kunt u de claims door geven in de aanroep van het Acquire-token, zodat de gebruiker wordt gevraagd om te voldoen aan het juiste beleid.
+In bepaalde gevallen bij het aanroepen van een API waarvoor voorwaardelijke toegang is vereist, kunt u een claim Challenge ontvangen in de fout van de API. Als het beleid voor voorwaardelijke toegang een beheerd apparaat (intune) heeft, is de fout bijvoorbeeld [AADSTS53000: uw apparaat moet worden beheerd om toegang te krijgen tot deze bron](reference-aadsts-error-codes.md) of iets dergelijks. In dit geval kunt u de claims door geven in de aanroep van het Acquire-token, zodat de gebruiker wordt gevraagd om te voldoen aan het juiste beleid.
 
 ### <a name="net"></a>.NET
 
 Bij het aanroepen van een API waarvoor voorwaardelijke toegang is vereist vanuit MSAL.NET, moet uw toepassing de uitzonde ringen voor claim controle afhandelen. Dit wordt weer gegeven als een [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) waarbij de eigenschap [claims](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) niet leeg is.
 
-Als u de claim Challenge wilt afhandelen, moet u de methode `.WithClaim()` van de klasse `PublicClientApplicationBuilder` gebruiken.
+Als u de claim Challenge wilt afhandelen, moet u de methode `.WithClaim()` van de `PublicClientApplicationBuilder`-klasse gebruiken.
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 Wanneer tokens op de achtergrond worden opgehaald (met behulp van `acquireTokenSilent`) met behulp van MSAL. js, kan uw toepassing fouten ontvangen wanneer een [Challenge voor voorwaardelijke toegang](conditional-access-dev-guide.md) , zoals MFA-beleid, is vereist voor een API die u probeert te openen.
 
@@ -477,7 +478,7 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 
 Als u het token interactief aanschaft, wordt de gebruiker gevraagd om te voldoen aan het vereiste beleid voor voorwaardelijke toegang.
 
-Wanneer u een API aanroept waarvoor voorwaardelijke toegang is vereist, kunt u een claim Challenge ontvangen in de fout van de API. In dit geval kunt u de geretourneerde claims in de fout door geven aan het veld `claimsRequest` van de klasse `AuthenticationParameters.ts` om aan het juiste beleid te voldoen. 
+Wanneer u een API aanroept waarvoor voorwaardelijke toegang is vereist, kunt u een claim Challenge ontvangen in de fout van de API. In dit geval kunt u de geretourneerde claims in de fout door geven aan het `claimsRequest` veld van de `AuthenticationParameters.ts`-klasse om aan het juiste beleid te voldoen. 
 
 Zie [aanvullende claims aanvragen](active-directory-optional-claims.md) voor meer informatie.
 
@@ -499,11 +500,11 @@ MSAL.NET implementeert een eenvoudig mechanisme voor opnieuw proberen voor foute
 
 ### <a name="http-429"></a>HTTP 429
 
-Wanneer de service token server (STS) is overbelast met te veel aanvragen, wordt HTTP-fout 429 geretourneerd met een hint over hoe lang tot u het opnieuw kunt proberen in het antwoord veld `Retry-After`.
+Wanneer de service token server (STS) is overbelast met te veel aanvragen, wordt HTTP-fout 429 geretourneerd met een hint over hoe lang totdat u opnieuw kunt proberen in het antwoord veld `Retry-After`.
 
 ### <a name="net"></a>.NET
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) -opper vlakken `System.Net.Http.Headers.HttpResponseHeaders` als eigenschap `namedHeaders`. U kunt aanvullende informatie uit de fout code gebruiken om de betrouw baarheid van uw toepassingen te verbeteren. In het geval dat wordt beschreven, kunt u de `RetryAfterproperty` (van het type `RetryConditionHeaderValue`) gebruiken en berekenen wanneer u het opnieuw wilt proberen.
+[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) -opper vlakken `System.Net.Http.Headers.HttpResponseHeaders` als een eigenschaps `namedHeaders`. U kunt aanvullende informatie uit de fout code gebruiken om de betrouw baarheid van uw toepassingen te verbeteren. In het geval dat wordt beschreven, kunt u de `RetryAfterproperty` (van het type `RetryConditionHeaderValue`) gebruiken en berekenen wanneer u het opnieuw wilt proberen.
 
 Hier volgt een voor beeld van een daemon-toepassing met behulp van de client referenties flow. U kunt dit aanpassen aan een van de methoden voor het verkrijgen van een token.
 

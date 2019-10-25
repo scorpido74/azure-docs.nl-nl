@@ -5,15 +5,15 @@ description: Voeg semantische, verwerking van natuurlijke taal en afbeeldings an
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678423"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792477"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>AI gebruiken voor het begrijpen van Blob Storage-gegevens
 
@@ -68,7 +68,7 @@ AI-verrijking verwijst naar modules die naar patronen of kenmerken zoeken en voe
 
 In Azure Search zijn *vaardig heden* de afzonderlijke onderdelen van AI-verwerking die u zelfstandig kunt gebruiken of in combi natie met andere vaardig heden. 
 
-+ Ingebouwde vaardig heden worden ondersteund door Cognitive Services, met afbeeldings analyse op basis van Computer Vision en de verwerking van natuurlijke taal op basis van Text Analytics. U kunt de volledige lijst met ingebouwde vaardig heden bekijken in [vooraf gedefinieerde vaardig heden voor inhouds verrijking](cognitive-search-predefined-skills.md).
++ Ingebouwde vaardig heden worden ondersteund door Cognitive Services, met afbeeldings analyse op basis van Computer Vision en de verwerking van natuurlijke taal op basis van Text Analytics. Zie [ingebouwde vaardig heden voor inhouds verrijking](cognitive-search-predefined-skills.md)voor de volledige lijst.
 
 + Aangepaste vaardig heden zijn aangepaste code, verpakt in een [interface definitie](cognitive-search-custom-skill-interface.md) waarmee integratie kan worden geïntegreerd in de pijp lijn. In klant oplossingen is het gebruikelijk om beide te gebruiken met aangepaste vaardig heden, AI-modules van derden of van derden.
 

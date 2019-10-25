@@ -1,26 +1,26 @@
 ---
-title: Uw eigen herstel na noodgevallen bouwen voor aangepaste onderwerpen in Azure Event Grid | Microsoft Docs
-description: Overleef regionale storingen om Azure Event Grid verbonden te houden.
+title: Herstel na nood gevallen voor aangepaste onderwerpen in Azure Event Grid
+description: Meer informatie over de regionale uitval om Azure Event Grid te blijven verbinden.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/16/2019
+ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305079"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790284"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Bouw uw eigen herstel na noodgevallen voor aangepaste in Event Grid-onderwerpen
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Bouw uw eigen herstel na nood gevallen voor aangepaste onderwerpen in Event Grid
 Herstel na noodgevallen is gericht op het herstellen van een ernstig verlies van de functionaliteit van de toepassing. In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een bepaalde regio niet goed functioneert.
 
 In deze zelfstudie leert u hoe u een actief-passief-failover-architectuur voor aangepaste onderwerpen in Event Grid maakt. U bereikt failover door uw onderwerpen en abonnementen voor twee regio's te spiegelen en vervolgens failover te beheren als een onderwerp niet meer in orde is. In deze zelfstudie wordt door de architectuur op alle verkeer failover toegepast. Bij deze instelling is het belangrijk te weten dat gebeurtenissen die al actief zijn, pas worden hersteld als de verdachte regio weer in orde is.
 
 > [!NOTE]
-> Event Grid ondersteunt nu automatische geo-noodherstel (GeoDR) op de server. Als u meer controle over de failoverproces wilt, kunt u nog steeds aan de clientzijde disaster recovery logica implementeren. Zie voor meer informatie over automatische GeoDR [serverzijde geo-noodherstel in Azure Event Grid](geo-disaster-recovery.md).
+> Event Grid ondersteunt nu automatisch geo-nood herstel (GeoDR) op de server. U kunt de logica voor nood herstel op de client nog steeds implementeren als u meer controle wilt over het failoverproces. Zie [geo-nood herstel aan de server zijde in azure Event grid](geo-disaster-recovery.md)voor meer informatie over automatische GeoDR.
 
 ## <a name="create-a-message-endpoint"></a>Het eindpunt van een bericht maken
 
@@ -46,7 +46,7 @@ Schrijf deze URL op, want u hebt deze later nodig.
 
 Maak eerst twee Event Grid-onderwerpen. Deze onderwerpen fungeren als primaire en secundaire onderwerp. Uw gebeurtenissen stromen standaard door uw primaire onderwerp. Bij uitval van service in de primaire regio, neemt het secundaire onderwerp het over.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 1. Ga naar de linkerbovenhoek van het Azure-hoofdmenu, kies **Alle services** > zoek naar **Event Grid** > selecteer **Event Grid-onderwerpen**.
 
@@ -93,7 +93,7 @@ U hebt nu een regionaal redundant paar onderwerpen en abonnementen ingesteld. U 
 
 ### <a name="basic-client-side-implementation"></a>Eenvoudige implementatie aan de clientzijde
 
-De volgende voorbeeldcode wordt een eenvoudige .NET-uitgever die altijd probeert eerst publiceren naar uw primaire onderwerp. Als dit niet lukt, wordt er failover uitgevoerd naar het secundaire onderwerp. In beide gevallen wordt ook de status-API van het andere onderwerp gecontroleerd door een GET uit te voeren op `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Een onderwerp dat in orde is, reageert altijd met **200 OK** als er een GET wordt uitgevoerd op het **/api/health**-eindpunt.
+De volgende voorbeeld code is een eenvoudige .NET-uitgever die altijd eerst probeert te publiceren naar uw primaire onderwerp. Als dit niet lukt, wordt er failover uitgevoerd naar het secundaire onderwerp. In beide gevallen wordt ook de status-API van het andere onderwerp gecontroleerd door een GET uit te voeren op `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Een onderwerp dat in orde is, reageert altijd met **200 OK** als er een GET wordt uitgevoerd op het **/api/health**-eindpunt.
 
 ```csharp
 using System;
@@ -186,7 +186,7 @@ namespace EventGridFailoverPublisher
 }
 ```
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het
 
 Nu alle onderdelen op hun plaats staan, kunt u de implementatie van de failover testen. Voer het bovenstaande voorbeeld uit in Visual Studio Code of in uw favoriete omgeving. Vervang de volgende vier waarden door de eindpunten en sleutels van uw onderwerpen:
 

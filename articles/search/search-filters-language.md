@@ -1,25 +1,23 @@
 ---
-title: Taal filters voor inhoud in meerdere talen in een zoek index-Azure Search
+title: Taal filters voor inhoud in meerdere talen in een zoek index
+titleSuffix: Azure Cognitive Search
 description: Filter criteria voor het ondersteunen van zoeken in meerdere talen, het bereik van query's uitvoeren op taalspecifieke velden.
-author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649871"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792873"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Filteren op taal in Azure Search 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filteren op taal in azure Cognitive Search 
 
-Een belang rijke vereiste in een meertalige Zoek toepassing is de mogelijkheid om de resultaten in de eigen taal van de gebruiker te doorzoeken en op te halen. In Azure Search, een manier om te voldoen aan de taal vereisten van een meertalige app is het maken van een reeks velden die zijn toegewezen aan het opslaan van teken reeksen in een specifieke taal, en vervolgens de zoek opdracht voor volledige tekst beperken tot deze velden op de query tijd.
+Een belang rijke vereiste in een meertalige Zoek toepassing is de mogelijkheid om de resultaten in de eigen taal van de gebruiker te doorzoeken en op te halen. In azure Cognitive Search, een manier om te voldoen aan de taal vereisten van een meertalige app, is het maken van een reeks velden die zijn toegewezen aan het opslaan van teken reeksen in een specifieke taal, en vervolgens de zoek opdracht voor volledige tekst beperken tot deze velden op de query tijd.
 
 Query parameters op de aanvraag worden gebruikt om de zoek bewerking te bereiken en de resultaten te verkorten van alle velden die geen inhoud bieden die compatibel is met de zoek ervaring die u wilt leveren.
 
@@ -28,11 +26,11 @@ Query parameters op de aanvraag worden gebruikt om de zoek bewerking te bereiken
 | **searchFields** | Hiermee beperkt u het zoeken in volledige tekst in de lijst met benoemde velden. |
 | **$select** | Hiermee verkleint u het antwoord op alleen de velden die u opgeeft. Standaard worden alle ophaalbaar velden geretourneerd. Met de para meter **$Select** kunt u kiezen welke items u wilt retour neren. |
 
-Het succes van deze techniek scharniert op de integriteit van de veld inhoud. Azure Search converteert geen teken reeksen of voert geen taal detectie uit. U moet ervoor zorgen dat velden de door u verwachte teken reeksen bevatten.
+Het succes van deze techniek scharniert op de integriteit van de veld inhoud. Azure Cognitive Search converteert geen teken reeksen of voert geen taal detectie uit. U moet ervoor zorgen dat velden de door u verwachte teken reeksen bevatten.
 
 ## <a name="define-fields-for-content-in-different-languages"></a>Velden definiëren voor inhoud in verschillende talen
 
-In Azure Search worden query's gericht op één index. Ontwikkel aars die taalspecifieke teken reeksen willen opgeven in één zoek opdracht, definiëren meestal specifieke velden voor het opslaan van de waarden: Eén veld voor Engelse teken reeksen, een voor Frans, enzovoort. 
+In azure Cognitive Search worden query's gericht op één index. Ontwikkel aars die taalspecifieke teken reeksen willen opgeven in één zoek opdracht, definiëren meestal specifieke velden voor het opslaan van de waarden: Eén veld voor Engelse teken reeksen, een voor Frans, enzovoort. 
 
 In onze voor beelden, met inbegrip van het voor [beeld](search-get-started-portal.md) van het onroerend goed, hebt u mogelijk de veld definities gezien die vergelijkbaar zijn met de volgende scherm afbeelding. In dit voor beeld ziet u de taal analyse toewijzingen voor de velden in deze index. Velden met teken reeksen worden beter in Zoek opdrachten in volledige tekst uitgevoerd wanneer ze zijn gekoppeld aan een Analyzer die is ontworpen om de taal kundige regels van de doel taal te verwerken.
 
@@ -64,8 +62,8 @@ parameters =
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Filters in Azure Search](search-filters.md)
++ [Filters in azure Cognitive Search](search-filters.md)
 + [Taalanalyse](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [De manier waarop zoeken in volledige tekst werkt in Azure Search](search-lucene-query-architecture.md)
++ [Hoe zoeken in volledige tekst werkt in azure Cognitive Search](search-lucene-query-architecture.md)
 + [Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

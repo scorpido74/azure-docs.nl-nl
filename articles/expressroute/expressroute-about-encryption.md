@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244145"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788698"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-versleuteling
  
@@ -31,7 +31,7 @@ Nee. Als MACsec is geconfigureerd en er een niet-overeenkomende sleutel optreedt
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Schakelt MACsec in op ExpressRoute directe prestaties van het netwerk verminderen?
 MACsec-versleuteling en-ontsleuteling vindt plaats in hardware op de routers die we gebruiken. Er is geen invloed op de prestaties van onze kant. Neem echter contact op met de leverancier van het netwerk voor de apparaten die u gebruikt en controleer of MACsec prestatie implicatie heeft.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>welke coderings suites worden ondersteund voor versleuteling?
-We ondersteunen AES128 (GCM – AES – 128) en AES256 (GCM – AES – 256).
+AES128 en AES256 worden ondersteund.
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Veelgestelde vragen over end-to-end-versleuteling per IPsec
 IPsec is een [IETF-standaard](https://tools.ietf.org/html/rfc6071). De gegevens worden versleuteld op het niveau van de Internet Protocol (IP) of netwerklaag 3. U kunt IPsec gebruiken voor het versleutelen van een end-to-end-verbinding tussen uw on-premises netwerk en uw virtuele netwerk (VNET) in Azure. Zie andere veelgestelde vragen hieronder.

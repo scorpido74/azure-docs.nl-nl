@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915256"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800069"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)
 
 Meer informatie over het werken met Azure Event Hubs van [Apache Storm](https://storm.apache.org/) op HDInsight. In dit document wordt C# een storm-topologie gebruikt voor het lezen en schrijven van gegevens van Event hubs
 
 > [!NOTE]  
-> Zie [gebeurtenissen verwerken vanuit Azure Event hubs met Apache Storm op HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)voor een Java-versie van dit project.
+> Zie [gebeurtenissen verwerken vanuit Azure Event hubs met Apache Storm op HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)voor een Java-versie van dit project.
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -44,17 +44,17 @@ C#topologieën moeten ook .NET 4,5-doel hebben.
 
 ## <a name="how-to-work-with-event-hubs"></a>Werken met Event Hubs
 
-Micro soft biedt een set Java-onderdelen die kunnen worden gebruikt om te communiceren met Event Hubs vanuit een storm-topologie. U vindt het bestand met het Java-archief (JAR) dat een met HDInsight 3,6 compatibele versie van deze [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)onderdelen bevat op.
+Micro soft biedt een set Java-onderdelen die kunnen worden gebruikt om te communiceren met Event Hubs vanuit een storm-topologie. U vindt het bestand met het Java-archief (JAR) dat een met HDInsight 3,6 compatibele versie van deze onderdelen bevat op [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 > [!IMPORTANT]  
 > Hoewel de onderdelen in Java zijn geschreven, kunt u ze eenvoudig vanuit een C# topologie gebruiken.
 
 De volgende onderdelen worden gebruikt in dit voor beeld:
 
-* __EventHubSpout__: Hiermee worden gegevens uit Event Hubs gelezen.
-* __EventHubBolt__: Schrijft gegevens naar Event Hubs.
-* __EventHubSpoutConfig__: Wordt gebruikt om EventHubSpout te configureren.
-* __EventHubBoltConfig__: Wordt gebruikt om EventHubBolt te configureren.
+* __EventHubSpout__: gegevens uit Event hubs worden gelezen.
+* __EventHubBolt__: schrijft gegevens naar Event hubs.
+* __EventHubSpoutConfig__: wordt gebruikt voor het configureren van EventHubSpout.
+* __EventHubBoltConfig__: wordt gebruikt voor het configureren van EventHubBolt.
 
 ### <a name="example-spout-usage"></a>Voor beeld van Spout-gebruik
 
@@ -125,9 +125,9 @@ U kunt een volledige versie downloaden van het project dat in dit artikel is gem
 
 ## <a name="download-the-event-hubs-components"></a>De Event Hubs-onderdelen downloaden
 
-Down load het Event Hubs Spout-en- [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)bout-onderdeel van.
+Down load het Event Hubs Spout-en-bout-onderdeel van [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
-Maak een map met `eventhubspout`de naam en sla het bestand op in de map.
+Maak een map met de naam `eventhubspout`en sla het bestand op in de map.
 
 ## <a name="configure-event-hubs"></a>Event Hubs configureren
 
@@ -135,10 +135,10 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 1. Nadat de Event Hub is gemaakt, bekijkt u de instellingen voor **EventHub** in de Azure Portal en selecteert u **beleid voor gedeelde toegang**. Selecteer **+ toevoegen** om het volgende beleid toe te voegen:
 
-   | Name | Machtigingen |
+   | Naam | Machtigingen |
    | --- | --- |
-   | schrijver |Verzenden |
-   | lezer |Luisteren |
+   | Writer |Verzenden |
+   | gelezen |Luisteren |
 
     ![Scherm afbeelding van het venster toegangs beleid delen](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -152,7 +152,7 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 3. Open het bestand **app. config** in het project **EventHubWriter** . Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
 
-   | Sleutel | Value |
+   | Sleutel | Waarde |
    | --- | --- |
    | EventHubPolicyName |Writer (als u een andere naam voor het beleid met de machtiging *verzenden* hebt gebruikt, gebruikt u dit in plaats daarvan.) |
    | EventHubPolicyKey |De sleutel voor het Writer-beleid. |
@@ -168,7 +168,7 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 2. Open het bestand **app. config** voor de **EventHubReader**. Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
 
-   | Sleutel | Value |
+   | Sleutel | Waarde |
    | --- | --- |
    | EventHubPolicyName |lezer (als u een andere naam voor het beleid hebt gebruikt met de machtiging *Luis teren* , moet u deze gebruiken.) |
    | EventHubPolicyKey |De sleutel voor het Lees beleid. |

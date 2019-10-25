@@ -1,29 +1,29 @@
 ---
-title: Indexeer functies voor het verkennen van gegevens bronnen tijdens het indexeren-Azure Search
-description: Azure SQL-database, Azure Cosmos DB of Azure Storage verkennen om doorzoekbare gegevens op te halen en een Azure Search-index te vullen.
-author: HeidiSteen
+title: Indexeer functies voor het verkennen van gegevens bronnen tijdens het indexeren
+titleSuffix: Azure Cognitive Search
+description: Verken Azure SQL database, Azure Cosmos DB of Azure Storage om Doorzoek bare gegevens op te halen en een Azure Cognitive Search-index te vullen.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5e5d43909dc0e65c12c053515ba534ce5cfa121f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376385"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793663"
 ---
-# <a name="indexers-in-azure-search"></a>Indexeerfuncties in Azure Search
+# <a name="indexers-in-azure-cognitive-search"></a>Indexeer functies in azure Cognitive Search
 
-Een *Indexeer functie* in azure Search is een crawler die Doorzoek bare gegevens en meta gegevens ophaalt uit een externe Azure-gegevens bron en een index vult op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron. Deze methode wordt ook wel ' pull model ' genoemd, omdat de service gegevens ophaalt zonder dat u code hoeft te schrijven waarmee gegevens worden toegevoegd aan een index.
+Een *Indexeer functie* in azure Cognitive Search is een crawler die Doorzoek bare gegevens en meta gegevens ophaalt uit een externe Azure-gegevens bron en een index vult op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron. Deze methode wordt ook wel ' pull model ' genoemd, omdat de service gegevens ophaalt zonder dat u code hoeft te schrijven waarmee gegevens worden toegevoegd aan een index.
 
 Indexeer functies zijn gebaseerd op gegevens bron typen of-platformen, met afzonderlijke Indexeer functies voor SQL Server op Azure, Cosmos DB, Azure Table Storage en Blob Storage. Blob Storage-Indexeer functies hebben aanvullende eigenschappen die specifiek zijn voor BLOB-inhouds typen.
 
 U kunt een indexeerfunctie gebruiken voor de opname van gegevens of een combinatie van technieken gebruiken, waaronder een indexeerfunctie voor het laden van slechts enkele velden in de index.
 
-U kunt op aanvraag Indexeer functies of een periodiek schema voor gegevens vernieuwing uitvoeren dat wordt uitgevoerd op elke vijf minuten. Als u vaker updates wilt uitvoeren, hebt u een pushmodel nodig dat tegelijkertijd gegevens in Azure Search en uw externe gegevensbron bijwerkt.
+U kunt op aanvraag Indexeer functies of een periodiek schema voor gegevens vernieuwing uitvoeren dat wordt uitgevoerd op elke vijf minuten. Voor frequentere updates is een push model vereist waarmee gelijktijdig gegevens worden bijgewerkt in zowel Azure Cognitive Search als uw externe gegevens bron.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Strategieën voor het maken en beheren van indexeerfuncties
 
@@ -61,13 +61,13 @@ Met een Indexeer functie wordt een gegevens bron verbinding opgehaald van een *g
 Gegevensbronnen worden geconfigureerd en onafhankelijk van de indexeerfuncties beheerd die gebruikmaken van de gegevensbronnen. Dit betekent dat een gegevensbron door meerdere indexeerfuncties kan worden gebruikt om tegelijkertijd meer dan één index te laden.
 
 ### <a name="step-2-create-an-index"></a>Stap 2: een index maken
-Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname van gegevens, maar het maken van een index behoort hier niet toe. Een vereiste is dat u een vooraf gedefinieerde index moet hebben met velden die overeenkomen met de velden in uw externe gegevensbron. Velden moeten overeenkomen met de naam en het gegevens type. Zie [Create a index (Azure Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) of [index class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)(Engelstalig) voor meer informatie over het structureren van een index. Zie [Veldtoewijzingen in Azure Search-indexeerfuncties](search-indexer-field-mappings.md) voor hulp bij veldkoppelingen.
+Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname van gegevens, maar het maken van een index behoort hier niet toe. Een vereiste is dat u een vooraf gedefinieerde index moet hebben met velden die overeenkomen met de velden in uw externe gegevensbron. Velden moeten overeenkomen met de naam en het gegevens type. Zie [Create a index (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) of [index class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)(Engelstalig) voor meer informatie over het structureren van een index. Zie [veld toewijzingen in Azure Cognitive Search-Indexeer functies](search-indexer-field-mappings.md)voor hulp bij veld koppelingen.
 
 > [!Tip]
 > Hoewel indexeerfuncties een index niet voor u kunnen genereren, kan de wizard **Gegevens importeren** in de portal helpen. In de meeste gevallen kan de wizard een indexschema afleiden uit bestaande metagegevens in de bron, met een voorlopig indexschema dat u kunt bewerken terwijl de wizard actief is. Als de index eenmaal is aangemaakt op de service, blijven verdere bewerkingen in de portal meestal beperkt tot het toevoegen van nieuwe velden. Overweeg de wizard voor het maken, maar niet voor het herzien van een index. Doorloop het [Portaloverzicht](search-get-started-portal.md) om aan de slag te gaan.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: de indexeerfunctie maken en plannen
-De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Een indexeerfunctie maken (Azure Search REST API)) voor meer informatie over het structureren van een indexeerfunctie.
+De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Indexeer functie maken (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)voor meer informatie over het structureren van een Indexeer functie.
 
 <a id="RunIndexer"></a>
 
@@ -130,5 +130,5 @@ Nu u het uitgangspunt hebt begrepen, is de volgende stap de vereisten en taken t
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Indexeren van CSV-blobs met de indexeerfunctie Azure Search Blob](search-howto-index-csv-blobs.md)
-* [Indexeren van JSON-blobs met de indexeerfunctie Azure Search Blob](search-howto-index-json-blobs.md)
+* [CSV-blobs indexeren met de Azure Cognitive Search BLOB-Indexer](search-howto-index-csv-blobs.md)
+* [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)

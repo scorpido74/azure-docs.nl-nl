@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241175"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808969"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -185,7 +185,7 @@ Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juist
 
 * Dubbele aanhalings tekens zijn optioneel tenzij de waarde een teken reeks is.
 * Teken reeks-en regex-bewerkingen zijn niet hoofdletter gevoelig.
-* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens worden voorafgegaan door het \`-teken, bijvoorbeeld User. Department-EQ \` "Sales @ no__t-2" is de juiste syntaxis als "Sales" de waarde is.
+* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens worden geescapet met behulp van het \` teken, bijvoorbeeld User. Department-EQ \`"Sales\`" is de juiste syntaxis als "Sales" de waarde is.
 * U kunt ook null-controles uitvoeren, waarbij null als waarde wordt gebruikt, bijvoorbeeld `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Gebruik van Null-waarden
@@ -279,11 +279,11 @@ Met de volgende expressie worden alle gebruikers geselecteerd die een service pl
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het onderstrepings teken (@no__t 0) gebruiken
+### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het onderstrepings teken (\_) gebruiken
 
-De syntaxis van het onderstrepings teken (@no__t 0) komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
+De onderstrepings tekens (\_) komen overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
 
-Hier volgt een voor beeld van het gebruik van het onderstrepings teken (\_) in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
+Hier volgt een voor beeld van het gebruik van het onderstrepings teken (\_) in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -379,8 +379,10 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  enrollmentProfileName | Apple-inschrijvings profiel voor apparaten, registratie van apparaten-bedrijfs apparaat-id's (Android-kiosk) of Windows auto pilot-profiel naam | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | waar onwaar | (Device. isRooted-EQ True)
  managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
+ organizationalUnit | een geldige on-premises organisatie-eenheid (OE) | (Device. organizationalUnit-bevat "laptop")
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ devicePhysicalIds | een teken reeks waarde die wordt gebruikt door auto pilot, zoals alle auto pilot-apparaten, OrderID of PurchaseOrderID  | (Device. devicePhysicalIDs-wille keurige _-bevat "[ZTDId]") (Device. devicePhysicalIds-wille keurige _-EQ "[OrderID]: 179887111881") (Device. devicePhysicalIds-wille keurige _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
 
 > [!Note]  

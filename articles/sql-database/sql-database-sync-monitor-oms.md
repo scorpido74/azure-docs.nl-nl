@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d1461a1bb026d478d51a5f79cc02b34172524db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566416"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791759"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL Data Sync controleren met Azure Monitor-logboeken 
 
@@ -37,7 +37,7 @@ Het is niet meer nodig om de logboeken van elke synchronisatie groep afzonderlij
 
 ## <a name="automated-email-notifications"></a>Automatische e-mail meldingen
 
-U hoeft het logboek niet meer hand matig te controleren in de Azure Portal of via Power shell of de REST API. Met [Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)-Logboeken kunt u waarschuwingen maken die rechtstreeks naar de e-mail adressen van de mensen gaan die ze moeten zien wanneer er een fout optreedt.
+U hoeft het logboek niet meer hand matig te controleren in de Azure Portal of via Power shell of de REST API. Met [Azure monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)kunt u waarschuwingen maken die rechtstreeks naar de e-mail adressen van de mensen gaan die ze moeten zien wanneer er een fout optreedt.
 
 ![E-mail meldingen voor gegevens synchronisatie](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
@@ -67,7 +67,7 @@ Zorg ervoor dat u de volgende zaken hebt ingesteld:
 
 -   Een Azure Automation-account
 
--   Log Analytics-werkruimte
+-   Log Analytics werk ruimte
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Power shell-Runbook om SQL Data Sync-logboek op te halen 
 
@@ -83,7 +83,7 @@ Zie [mijn eerste Power shell-runbook](https://docs.microsoft.com/azure/automatio
 
 3.  Selecteer **een bestaand Runbook importeren**.
 
-4.  Gebruik het opgegeven `DataSyncLogPowerShellRunbook` bestand onder **Runbook file**. Stel het **type Runbook** in `PowerShell`op als. Geef een naam op voor het runbook.
+4.  Gebruik het opgegeven `DataSyncLogPowerShellRunbook` bestand onder **Runbook file**. Stel het **type Runbook** in als `PowerShell`. Geef een naam op voor het runbook.
 
 5.  Selecteer **Maken**. U hebt nu een runbook.
 
@@ -91,7 +91,7 @@ Zie [mijn eerste Power shell-runbook](https://docs.microsoft.com/azure/automatio
 
 7.  Selecteer **een variabele toevoegen** op de pagina variabelen. Maak een variabele om de laatste uitvoerings tijd voor het runbook op te slaan. Als u meerdere runbooks hebt, hebt u één variabele nodig voor elk runbook.
 
-8.  Stel de naam van de `DataSyncLogLastUpdatedTime` variabele in en stel het type in op DateTime.
+8.  Stel de naam van de variabele in als `DataSyncLogLastUpdatedTime` en stel het type in op DateTime.
 
 9.  Selecteer het runbook en klik op de knop bewerken boven aan de pagina.
 
@@ -137,7 +137,7 @@ Ga als volgt te werk om een waarschuwing te maken die gebruikmaakt van Azure Mon
 
 2.  Maak een query om de fouten en waarschuwingen te selecteren op basis van de synchronisatie groep binnen het interval dat u hebt geselecteerd. Bijvoorbeeld:
 
-    `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
+    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
 3.  Nadat de query is uitgevoerd, selecteert u de Bell met de **melding waarschuwing**.
 
@@ -185,9 +185,9 @@ Ga als volgt te werk om de weer gave Azure Monitor te configureren:
 
 In de meeste gevallen is deze oplossing gratis.
 
-**Azure Automation:** Er zijn mogelijk kosten verbonden aan het Azure Automation-account, afhankelijk van uw gebruik. De eerste 500 minuten van de taak uitvoerings tijd per maand zijn gratis. In de meeste gevallen wordt deze oplossing waarschijnlijk minder dan 500 minuten per maand gebruikt. Als u kosten wilt voor komen, moet u het runbook plannen om te worden uitgevoerd met een interval van twee uur of langer. Zie [prijzen](https://azure.microsoft.com/pricing/details/automation/)van Automation voor meer informatie.
+**Azure Automation:** Er zijn mogelijk kosten verbonden aan het Azure Automation-account, afhankelijk van uw gebruik. De eerste 500 minuten van de taak uitvoerings tijd per maand zijn gratis. In de meeste gevallen wordt deze oplossing waarschijnlijk minder dan 500 minuten per maand gebruikt. Als u kosten wilt voor komen, moet u het runbook plannen om te worden uitgevoerd met een interval van twee uur of langer. Zie [prijzen van Automation](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
 
-**Azure Monitor logboeken:** Er zijn mogelijk kosten verbonden aan Azure Monitor logboeken, afhankelijk van uw gebruik. De laag gratis bevat 500 MB aan opgenomen gegevens per dag. In de meeste gevallen wordt deze oplossing naar verwachting kleiner dan 500 MB per dag. Als u het gebruik wilt verkleinen, gebruikt u het filter voor fout filters dat is opgenomen in het runbook. Als u meer dan 500 MB per dag gebruikt, moet u upgraden naar de betaalde laag om te voor komen dat het risico van analyse wordt gestopt wanneer de beperking wordt bereikt. Zie de [prijzen van Azure monitor](https://azure.microsoft.com/pricing/details/log-analytics/)-logboeken voor meer informatie.
+**Azure monitor logboeken:** Er zijn mogelijk kosten verbonden aan Azure Monitor logboeken, afhankelijk van uw gebruik. De laag gratis bevat 500 MB aan opgenomen gegevens per dag. In de meeste gevallen wordt deze oplossing naar verwachting kleiner dan 500 MB per dag. Als u het gebruik wilt verkleinen, gebruikt u het filter voor fout filters dat is opgenomen in het runbook. Als u meer dan 500 MB per dag gebruikt, moet u upgraden naar de betaalde laag om te voor komen dat het risico van analyse wordt gestopt wanneer de beperking wordt bereikt. Zie de [prijzen van Azure monitor-logboeken](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
@@ -202,7 +202,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)

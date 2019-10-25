@@ -1,37 +1,35 @@
 ---
-title: Synoniemen voor het uitbreiden van query's via een zoek index-Azure Search
-description: Maak een synoniemen toewijzing om het bereik van een zoek query op een Azure Search index uit te breiden. Het bereik is uitgebreid met gelijkwaardige termen die u in een lijst opgeeft.
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: Synoniemen voor het uitbreiden van query's via een zoek index
+titleSuffix: Azure Cognitive Search
+description: Maak een synoniemen toewijzing om het bereik van een zoek query op een Azure Cognitive Search-index uit te breiden. Het bereik is uitgebreid met gelijkwaardige termen die u in een lijst opgeeft.
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331183"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794229"
 ---
-# <a name="synonyms-in-azure-search"></a>Synoniemen in Azure Search
+# <a name="synonyms-in-azure-cognitive-search"></a>Synoniemen in azure Cognitive Search
 
 Synoniemen in zoek machines koppelen gelijkwaardige termen waarmee impliciet het bereik van een query wordt uitgebreid, zonder dat de gebruiker daad werkelijk de term hoeft op te geven. Op basis van de term "hond" en synoniemen van "Canine" en "Puppy" worden documenten met "hond", "Canine" of "Puppy" bijvoorbeeld binnen het bereik van de query weer gegeven.
 
-In Azure Search wordt de uitbrei ding van synoniemen uitgevoerd op het moment van de query. U kunt synoniemen toevoegen aan een service zonder onderbreking van bestaande bewerkingen. U kunt een eigenschap **synonymMaps** toevoegen aan een veld definitie zonder de index opnieuw op te bouwen.
+In azure Cognitive Search wordt de uitbrei ding van synoniemen uitgevoerd op het moment van de query. U kunt synoniemen toevoegen aan een service zonder onderbreking van bestaande bewerkingen. U kunt een eigenschap **synonymMaps** toevoegen aan een veld definitie zonder de index opnieuw op te bouwen.
 
 ## <a name="create-synonyms"></a>Synoniemen maken
 
-Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om [postman](search-get-started-postman.md) en formulering van aanvragen te gebruiken met behulp van deze API: [Create synoniem Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Voor C# ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure Search C#met ](search-synonyms-tutorial-sdk.md).
+Er is geen portal ondersteuning voor het maken van synoniemen, maar u kunt de REST API of .NET SDK gebruiken. Om aan de slag te gaan met REST, raden we u aan om [postman](search-get-started-postman.md) en formulering van aanvragen te gebruiken met behulp van deze API: [Create synoniem Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Voor C# ontwikkel aars kunt u aan de slag met [synoniemen toevoegen in azure cognitieve zoeken C#met ](search-synonyms-tutorial-sdk.md).
 
 Als u gebruikmaakt van door de [klant beheerde sleutels](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde, kunt u die beveiliging ook Toep assen op de inhoud van uw synoniemen kaart.
 
 ## <a name="use-synonyms"></a>Synoniemen gebruiken
 
-In Azure Search is de ondersteuning voor synoniemen gebaseerd op synoniemen die u definieert en uploadt naar uw service. Deze kaarten vormen een onafhankelijke resource (zoals indexen of gegevens bronnen) en kunnen worden gebruikt door elk doorzoekbaar veld in een index in uw zoek service.
+In azure Cognitive Search is de ondersteuning voor synoniemen gebaseerd op synoniemen die u definieert en uploadt naar uw service. Deze kaarten vormen een onafhankelijke resource (zoals indexen of gegevens bronnen) en kunnen worden gebruikt door elk doorzoekbaar veld in een index in uw zoek service.
 
 Synoniemen en indexen worden onafhankelijk bewaard. Wanneer u een synoniemen kaart definieert en uploadt naar uw service, kunt u de synoniemen functie inschakelen voor een veld door een nieuwe eigenschap met de naam **synonymMaps** in de veld definitie toe te voegen. Het maken, bijwerken en verwijderen van een synoniemen kaart is altijd een hele document bewerking, wat betekent dat u geen incrementele delen van de synoniemen kaart kunt maken, bijwerken of verwijderen. Als u zelfs één vermelding wilt bijwerken, moet u het opnieuw laden.
 

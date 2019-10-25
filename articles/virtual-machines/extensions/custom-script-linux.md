@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174041"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789961"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 2 van Azure met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -33,12 +33,12 @@ Er zijn twee aangepaste Linux-script uitbreidingen:
 * Versie 1: micro soft. OSTCExtensions. CustomScriptForLinux
 * Versie 2: micro soft. Azure. Extensions. CustomScript
 
-Schakel de nieuwe en bestaande implementaties uit om in plaats daarvan de nieuwe versie 2 te gebruiken. De nieuwe versie is bedoeld als vervanging van een vervolg keuzelijst. Daarom is de migratie zo eenvoudig als het wijzigen van de naam en versie, u hoeft de configuratie van de extensie niet te wijzigen.
+Schakel de nieuwe en bestaande implementaties uit om in plaats daarvan de nieuwe versie 2 te gebruiken. De nieuwe versie is bedoeld als kant-en-klare vervanging. Voor de migratie hoeft u slechts de naam en versie te wijzigen. De configuratie van de extensie hoeft niet te worden gewijzigd.
 
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De aangepaste script extensie voor Linux wordt uitgevoerd op de extensie die wordt ondersteund door de extensie van het besturings systeem. Zie dit [artikel](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)voor meer informatie.
+De aangepaste script extensie voor Linux wordt uitgevoerd op de extensie die wordt ondersteund door de extensie van het besturings systeem. Zie dit [artikel](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie.
 
 ### <a name="script-location"></a>Locatie van script
 
@@ -55,7 +55,7 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Zorg ervoor dat de scripts geen gebruikers invoer vereisen wanneer ze worden uitgevoerd.
 * Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
 * Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
-* Hebt u een script dat een herstart veroorzaakt? Installeer dan toepassingen en voer scripts uit etc. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
+* Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
 * De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
 * Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken. 
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
@@ -70,7 +70,7 @@ De configuratie van de aangepaste script extensie bevat dingen als de script loc
 
 U kunt gevoelige gegevens in een beveiligde configuratie opslaan, die zijn versleuteld en alleen worden ontsleuteld in de virtuele machine. De beveiligde configuratie is handig wanneer de uitvoering-opdracht geheimen bevat zoals een wacht woord.
 
-Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de instellingen voor beveiligde extensies. Azure-VM-extensie beveiligde instellingsgegevens versleuteld en alleen op de virtuele doelmachine worden ontsleuteld.
+Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de instellingen voor beveiligde extensies. De beveiligde instellings gegevens voor de Azure VM-extensie zijn versleuteld en worden alleen ontsleuteld op de virtuele doel machine.
 
 ```json
 {
@@ -104,29 +104,29 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 }
 ```
 
-### <a name="property-values"></a>Waarden van eigenschappen
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde / voorbeeld | Gegevenstype | 
+| Naam | Waarde/voor beeld | Gegevenstype | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft.Compute.Extensions | string |
+| Uitgever | Micro soft. compute. Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
 | commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix (bijvoorbeeld) | false | boolean |
-| timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
+| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
+| skipDos2Unix (bijvoorbeeld) | onwaar | booleaans |
+| tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | string |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
 * `skipDos2Unix`: (optioneel, Booleaans) overs Laan dos2unix conversie van bestands-Url's of script bestanden op basis van een script.
-* `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een nieuwe uitvoering van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
+* `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een nieuwe uitvoering van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
   * `commandToExecute`: (**vereist** als script niet is ingesteld, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld in plaats daarvan als uw opdracht geheimen bevat zoals wacht woorden.
 * `script`: (**vereist** als commandToExecute niet is ingesteld, String) een met base64 gecodeerd (en optioneel gzip'ed) script dat wordt uitgevoerd door/bin/sh.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
-* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten `fileUris` alle url's voor Azure-blobs zijn.
+* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten alle `fileUris` Url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 
 
@@ -143,9 +143,9 @@ Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele m
 
 De standaard waarde is False, wat betekent dat de dos2unix-conversie **wordt** uitgevoerd.
 
-Met de vorige versie van CustomScript, micro soft. OSTCExtensions. CustomScriptForLinux, worden DOS-bestanden automatisch geconverteerd naar UNIX- `\r\n` bestanden `\n`door te vertalen naar. Deze vertaling bestaat nog en is standaard ingeschakeld. Deze conversie wordt toegepast op alle bestanden die zijn gedownload van fileUris of de script instelling op basis van een van de volgende criteria.
+Met de vorige versie van CustomScript, micro soft. OSTCExtensions. CustomScriptForLinux, worden DOS-bestanden automatisch geconverteerd naar UNIX-bestanden door `\r\n` te vertalen naar `\n`. Deze vertaling bestaat nog en is standaard ingeschakeld. Deze conversie wordt toegepast op alle bestanden die zijn gedownload van fileUris of de script instelling op basis van een van de volgende criteria.
 
-* Als de uitbrei ding een `.sh`van `.txt` `.py`is,, `.pl` of wordt geconverteerd. De script instelling komt altijd overeen met deze criteria, omdat ervan wordt uitgegaan dat een script wordt uitgevoerd met/bin/sh, en dat wordt opgeslagen als script.sh op de virtuele machine.
+* Als de extensie een van `.sh`, `.txt`, `.py`of `.pl`, wordt deze geconverteerd. De script instelling komt altijd overeen met deze criteria, omdat ervan wordt uitgegaan dat een script wordt uitgevoerd met/bin/sh, en dat wordt opgeslagen als script.sh op de virtuele machine.
 * Als het bestand begint met `#!`.
 
 De dos2unix-conversie kan worden overgeslagen door de skipDos2Unix in te stellen op True.
@@ -201,7 +201,7 @@ CustomScript maakt gebruik van de volgende algoritme om een script uit te voeren
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon. Een voorbeeld sjabloon met de aangepaste script extensie vindt u hier, [github](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon. Een voorbeeld sjabloon met de aangepaste script extensie vindt u hier, [github](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -235,7 +235,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
 >[!NOTE]
 >Deze eigenschaps namen zijn hoofdletter gevoelig. Als u implementatie problemen wilt voor komen, gebruikt u de namen zoals hier wordt weer gegeven.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 Wanneer u Azure CLI gebruikt om de aangepaste script extensie uit te voeren, moet u een configuratie bestand of-bestanden maken. U moet mini maal ' commandToExecute ' hebben.
 
 ```azurecli
@@ -329,7 +329,7 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze `stdout` map `stderr` en in bestanden.
+Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze map in `stdout` en `stderr`-bestanden.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/

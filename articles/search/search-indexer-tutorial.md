@@ -1,27 +1,27 @@
 ---
-title: C#Vind Index gegevens uit Azure SQL-data bases-Azure Search
-description: Een C# code voorbeeld waarin wordt getoond hoe u verbinding maakt met Azure SQL database, Doorzoek bare gegevens ophaalt en laadt in een Azure search index.
-author: HeidiSteen
+title: 'C#Zelf studie: index gegevens uit Azure SQL-data bases'
+titleSuffix: Azure Cognitive Search
+description: C#code voorbeeld toont hoe u verbinding maakt met Azure SQL database, Doorzoek bare gegevens uitpakt en laadt in een Azure Cognitive Search-index.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327180"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793608"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Vind Een Azure SQL-database verkennen met de indexeerfuncties van Azure Search
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#Zelf studie: een Azure SQL database verkennen met Azure Cognitive Search Indexeer functies
 
-Meer informatie over hoe u een Indexeer functie kunt configureren voor het extra heren van Doorzoek bare gegevens uit een Azure-voor beeld-SQL database. [Indexeerfuncties](search-indexer-overview.md) zijn onderdelen van Azure Search die externe gegevensbronnen verkennen en een [zoekindex](search-what-is-an-index.md) vullen met inhoud. Van alle Indexeer functies is de Indexeer functie voor Azure SQL Database het meest gebruikte. 
+Meer informatie over hoe u een Indexeer functie kunt configureren voor het extra heren van Doorzoek bare gegevens uit een Azure-voor beeld-SQL database. [Indexeer functies](search-indexer-overview.md) zijn een onderdeel van Azure Cognitive Search voor het verkennen van externe gegevens bronnen, het vullen van een [zoek index](search-what-is-an-index.md) met inhoud. Van alle Indexeer functies is de Indexeer functie voor Azure SQL Database het meest gebruikte. 
 
 Een goede vaardigheid in het configureren van indexeerfuncties is nuttig omdat dit de hoeveelheid code die u moet schrijven en onderhouden vereenvoudigt. In plaats van een schemacompatibele JSON-gegevensset voor te bereiden en te pushen, kunt u een indexeerfunctie koppelen aan een gegevensbron en de indexeerfunctie gegevens laten ophalen en in een index plaatsen. U kunt de indexeerfunctie eventueel uitvoeren volgens een terugkerend schema om zo wijzigingen in de onderliggende gegevensbron op te halen.
 
-In deze zelf studie gebruikt u de [Azure Search .net-client bibliotheken](https://aka.ms/search-sdk) en een .net core-console toepassing om de volgende taken uit te voeren:
+In deze zelf studie gebruikt u de [Azure Cognitive Search .net-client bibliotheken](https://aka.ms/search-sdk) en een .net core-console toepassing om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Informatie over de zoekservice toevoegen aan toepassingsinstellingen
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start. 
 
-[Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
+[Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
 
 [Azure SQL database](https://azure.microsoft.com/services/sql-database/) slaat de externe gegevens bron op die door een Indexeer functie wordt gebruikt. De voorbeeldoplossing biedt een SQL-gegevensbestand om de tabel te maken. De stappen voor het maken van de service en de Data Base zijn opgenomen in deze zelf studie.
 
@@ -46,15 +46,15 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 [Azure-samples/Search-DotNet-Getting-Started](https://github.com/Azure-Samples/search-dotnet-getting-started) biedt de voorbeeld oplossing die zich bevindt in de GitHub-opslag plaats van Azure samples. Down load de oplossing en pak deze uit. Oplossingen zijn standaard alleen-lezen. Klik met de rechter muisknop op de oplossing en schakel het kenmerk alleen-lezen uit zodat u bestanden kunt wijzigen.
 
 > [!Note]
-> Als u de gratis Azure Search-service gebruikt, bent u beperkt tot drie indexen, drie indexeerfuncties en drie gegevensbronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Zorg ervoor dat uw service voldoende ruimte heeft voor de nieuwe resources.
+> Als u de gratis Azure Cognitive Search-service gebruikt, bent u beperkt tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Zorg ervoor dat uw service voldoende ruimte heeft voor de nieuwe resources.
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
@@ -67,7 +67,7 @@ Verbindingsgegevens voor benodigde services worden opgegeven in het bestand **ap
 
 1. Open **appSettings. json** in Solution Explorer zodat u elke instelling kunt invullen.  
 
-De eerste twee vermeldingen die u nu kunt invullen, met behulp van de URL en de beheer sleutels voor uw Azure Search service. Op basis van een eind punt van `https://mydemo.search.windows.net`, is de te bieden service naam `mydemo`.
+De eerste twee vermeldingen die u nu kunt invullen, met behulp van de URL en de beheer sleutels voor uw Azure Cognitive Search-service. Op basis van een eind punt van `https://mydemo.search.windows.net`is de te bieden service naam `mydemo`.
 
 ```json
 {
@@ -81,7 +81,7 @@ Voor de laatste invoer is een bestaande data base vereist. U maakt deze in de vo
 
 ## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
 
-In deze stap maakt u een externe gegevensbron die een indexeerfunctie kan verkennen. U kunt de Azure-portal en het bestand *hotels.sql* uit het voorbeeld gebruiken om de gegevensset in Azure SQL Database te maken. Azure Search gebruikt platte rijensets, zoals de sets die worden gegenereerd op basis van een weergave of query. Het SQL-bestand in de voorbeeldoplossing maakt en vult één tabel.
+In deze stap maakt u een externe gegevensbron die een indexeerfunctie kan verkennen. U kunt de Azure-portal en het bestand *hotels.sql* uit het voorbeeld gebruiken om de gegevensset in Azure SQL Database te maken. Azure Cognitive Search verbruikt samengevoegde rijen sets, zoals een die is gegenereerd op basis van een weer gave of query. Het SQL-bestand in de voorbeeldoplossing maakt en vult één tabel.
 
 In de volgende oefening wordt ervan uitgegaan dat er geen bestaande server of database is en u maakt beide in stap 2. Als u een bestaande resource hebt, kunt u de tabel hotels er desgewenst aan toevoegen vanaf stap 4.
 
@@ -159,7 +159,7 @@ In deze zelfstudie haalt de indexeerfunctie gegevens op uit één gegevensbron. 
 
 Het hoofd programma bevat logica voor het maken van een-client, een index, een gegevens bron en een Indexeer functie. De code controleert op en verwijdert bestaande resources met dezelfde naam, waarbij ervan wordt uitgegaan dat u dit programma meerdere keren uitvoert.
 
-Het gegevens bron object is geconfigureerd met instellingen die specifiek zijn voor Azure SQL database-resources, inclusief [incrementele indexering](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) voor het gebruik van de ingebouwde functie voor het [detecteren van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeeld database van de demo in Azure SQL heeft een kolom ' voorlopig verwijderen ' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de data base, verwijdert de Indexeer functie het bijbehorende document uit de Azure Search index.
+Het gegevens bron object is geconfigureerd met instellingen die specifiek zijn voor Azure SQL database-resources, inclusief [incrementele indexering](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) voor het gebruik van de ingebouwde functie voor het [detecteren van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) van Azure SQL. De voorbeeld database van de demo in Azure SQL heeft een kolom ' voorlopig verwijderen ' met de naam **IsDeleted**. Als deze kolom is ingesteld op True in de data base, verwijdert de Indexeer functie het bijbehorende document uit de Azure Cognitive Search-index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -261,7 +261,7 @@ Alle indexeerfuncties, inclusief de functie die u zojuist via programmacode hebt
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om op te schonen na een zelfstudie is de resourcegroep met de Azure Search-service te verwijderen. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. De naam van de resourcegroep staat in de portal op de pagina Overzicht van de Azure Search-service.
+De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van Azure Cognitive Search service.
 
 ## <a name="next-steps"></a>Volgende stappen
 

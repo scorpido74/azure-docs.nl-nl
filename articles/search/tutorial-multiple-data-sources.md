@@ -1,27 +1,27 @@
 ---
-title: 'C#Zelf studie: meerdere gegevens bronnen indexeren-Azure Search'
-description: Meer informatie over het importeren van gegevens uit meerdere gegevens bronnen naar een enkele Azure Search-index.
-author: RobDixon22
+title: 'C#Zelf studie: meerdere gegevens bronnen indexeren'
+titleSuffix: Azure Cognitive Search
+description: Meer informatie over het importeren van gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 06/21/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70241836"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786488"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Search-index combi neren
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index combi neren
 
-Azure Search kunt gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één gecombineerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
+Met Azure Cognitive Search kunt u gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één gecombineerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
 
 In deze zelf studie wordt beschreven hoe u Hotel gegevens van een Azure Cosmos DB gegevens bron indexeert en samen voegen met details van Hotel kamers die vanuit Azure Blob Storage-documenten worden getrokken. Het resultaat is een gecombineerde zoek index voor hotels met complexe gegevens typen.
 
-In deze zelf C#studie wordt gebruikgemaakt van de .NET-SDK voor Azure Search en de Azure Portal om de volgende taken uit te voeren:
+In deze zelf C#studie wordt gebruikgemaakt van de .NET-SDK voor Azure Cognitive Search en de Azure Portal om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Voorbeeld gegevens uploaden en gegevens bronnen maken
@@ -34,7 +34,7 @@ In deze zelf C#studie wordt gebruikgemaakt van de .NET-SDK voor Azure Search en 
 
 De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start. 
 
-- [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
+- [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
 
 - [Maak een Azure Cosmos DB account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de gegevens van het voorbeeld Hotel.
 
@@ -46,7 +46,7 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 
 1. Ga naar de voorbeeld opslagplaats op GitHub: [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Selecteer **klonen of downloaden** en maak uw persoonlijke lokale kopie van de opslag plaats.
-1. Open Visual Studio en installeer het Microsoft Azure Search NuGet-pakket, als dit nog niet is geïnstalleerd. Selecteer in het menu **extra** de optie **NuGet package manager** en klik vervolgens **op NuGet-pakketten beheren voor oplossing...** . Selecteer het tabblad **Bladeren** en typ ' Azure Search ' in het zoekvak. Installeer **micro soft. Azure. Search** wanneer deze wordt weer gegeven in de lijst (versie 9.0.1 of hoger). U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
+1. Open Visual Studio en installeer het Microsoft Azure Cognitive Search NuGet-pakket, als dit nog niet is geïnstalleerd. Selecteer in het menu **extra** de optie **NuGet package manager** en klik vervolgens **op NuGet-pakketten beheren voor oplossing...** . Zoek en Installeer **micro soft. Azure. Search** (versie 9.0.1 of hoger) op het tabblad **Bladeren** . U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
 
     ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -54,7 +54,7 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-Als u wilt communiceren met uw Azure Search-service, hebt u de service-URL en een toegangs sleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service-URL en een toegangs sleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
@@ -121,17 +121,17 @@ Verbindings gegevens voor de Search-service en de gegevens bronnen worden opgege
 }
 ```
 
-De eerste twee vermeldingen gebruiken de URL en de beheer sleutels voor uw Azure Search service. Op basis van een eind punt van `https://mydemo.search.windows.net`, bijvoorbeeld de service naam die u opgeeft, is `mydemo`.
+De eerste twee vermeldingen gebruiken de URL en de beheer sleutels voor uw Azure Cognitive Search-service. Op basis van een eind punt van `https://mydemo.search.windows.net`, bijvoorbeeld de service naam die u opgeeft, is `mydemo`.
 
 De volgende vermeldingen geven account namen en connection string informatie op voor de Azure Blob Storage en Azure Cosmos DB gegevens bronnen.
 
 ### <a name="identify-the-document-key"></a>De document sleutel identificeren
 
-In Azure Search wordt in het sleutel veld elke document in de index uniek aangeduid. Elke zoek index moet precies één sleutel veld van het type `Edm.String` hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+In azure Cognitive Search is het sleutel veld een unieke identificatie voor elk document in de index. Elke zoek index moet precies één sleutel veld van het type `Edm.String` hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
 Wanneer u gegevens uit meerdere gegevens bronnen indexeert, moet elke waarde van de gegevens bron sleutel worden toegewezen aan hetzelfde sleutel veld in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een zinvolle document sleutel voor uw index te identificeren en ervoor te zorgen dat deze zich in elke gegevens bron bevindt.
 
-Azure Search Indexeer functies kunnen veld toewijzingen gebruiken voor het wijzigen van de naam en het opnieuw opmaken van gegevens velden tijdens het indexerings proces, zodat de bron gegevens naar het juiste index veld kunnen worden omgeleid.
+Azure Cognitive Search Indexeer functies kunnen veld toewijzingen gebruiken om de gegevens velden tijdens het indexerings proces een andere naam te geven en te Format teren, zodat de bron gegevens naar het juiste index veld kunnen worden omgeleid.
 
 In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **HotelId**genoemd. Maar in de JSON-BLOB-bestanden voor de hotel kamers heet de Hotel-id de naam **id**. Dit wordt door het programma verwerkt door het veld **id** van de blobs te koppelen aan het sleutel veld **HotelId** in de index.
 
@@ -143,7 +143,7 @@ In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **Hote
 Zodra de gegevens en configuratie-instellingen zijn geïmplementeerd, moet het voorbeeld programma in **AzureSearchMultipleDataSources. SLN** klaar zijn om te worden gemaakt en uitgevoerd.
 
 Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
-* Hiermee maakt u een nieuwe Azure Search index op basis van de gegevens C# structuur van de klasse hotel (die ook verwijst naar de adres-en room-klassen).
+* Hiermee maakt u een nieuwe Azure Cognitive Search-index op basis van de C# gegevens structuur van de klasse hotel (die ook verwijst naar de adres-en room-klassen).
 * Hiermee maakt u een Azure Cosmos DB gegevens bron en een Indexeer functie waarmee Azure Cosmos DB gegevens worden toegewezen aan index velden.
 * Hiermee wordt de Azure Cosmos DB Indexeer functie uitgevoerd om Hotel gegevens te laden.
 * Hiermee maakt u een Azure Blob Storage-gegevens bron en een Indexeer functie waarmee JSON BLOB-gegevens worden toegewezen aan index velden.
@@ -152,11 +152,11 @@ Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
  Voordat u het programma uitvoert, moet u een paar minuten duren om de code en de definities van de index en de Indexeer functie voor dit voor beeld te bestuderen. De relevante code staat in twee bestanden:
 
   + **Hotel.cs** bevat het schema dat de index definieert
-  + **Program.cs** bevat functies voor het maken van de Azure search index, gegevens bronnen en indexeringen en het laden van de gecombineerde resultaten in de index.
+  + **Program.cs** bevat functies voor het maken van de Azure Cognitive search-index, gegevens bronnen en indexeringen en het laden van de gecombineerde resultaten in de index.
 
 ### <a name="define-the-index"></a>De index definiëren
 
-In dit voorbeeld programma wordt de .NET SDK gebruikt om een Azure Search index te definiëren en te maken. Het maakt gebruik van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) -klasse om een index structuur te genereren C# op basis van een gegevens model klasse.
+In dit voorbeeld programma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Het maakt gebruik van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) -klasse om een index structuur te genereren C# op basis van een gegevens model klasse.
 
 Het gegevens model wordt gedefinieerd door de klasse hotel, dat ook verwijzingen bevat naar het adres en de room-klassen. De FieldBuilder zoomt uit op meerdere klassen definities om een complexe gegevens structuur voor de index te genereren. Tags voor meta gegevens worden gebruikt voor het definiëren van de kenmerken van elk veld, zoals of het doorzoekbaar of sorteerbaar is.
 
@@ -336,22 +336,22 @@ U kunt de gevulde zoek index verkennen nadat het programma is uitgevoerd, met be
 
 Open in Azure Portal de pagina **overzicht** van de zoek service en zoek de index **Hotel-ruimtes-voor beeld** in de lijst **indexen** .
 
-  ![Lijst met Azure Search indexen](media/tutorial-multiple-data-sources/index-list.png "Lijst met Azure Search indexen")
+  ![Lijst met Azure Cognitive Search-indexen](media/tutorial-multiple-data-sources/index-list.png "Lijst met Azure Cognitive Search-indexen")
 
 Klik op de index Hotel-ruimtes-voor beeld in de lijst. U ziet een Search Explorer-interface voor de index. Voer een query in voor een term zoals "luxe". Er wordt ten minste één document in de resultaten weer gegeven. in dit document moet een lijst met room-objecten in de ruimten van de kamers staan.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om op te schonen na een zelfstudie is de resourcegroep met de Azure Search-service te verwijderen. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van de Azure Search-service.
+De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van de Azure Cognitive Search-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSON-blobs. Als uw bron gegevens JSON-inhoud bevatten, kunt u deze opties bekijken om te zien wat het beste werkt voor uw scenario.
 
 > [!div class="nextstepaction"]
-> [JSON-blobs indexeren met de indexeerfunctie van Azure Search Blob](search-howto-index-json-blobs.md)
+> [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)
 
-U kunt gestructureerde index gegevens uit een gegevens bron uitbreiden met cognitieve verrijkte gegevens van ongestructureerde blobs of volledige-tekst inhoud. De volgende zelf studie laat zien hoe u Cognitive Services in combi natie met Azure Search kunt gebruiken met behulp van de .NET SDK.
+U kunt gestructureerde index gegevens uit een gegevens bron uitbreiden met cognitieve verrijkte gegevens van ongestructureerde blobs of volledige-tekst inhoud. In de volgende zelf studie ziet u hoe u Cognitive Services in combi natie met Azure Cognitive Search kunt gebruiken met behulp van de .NET SDK.
 
 > [!div class="nextstepaction"]
-> [Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn](cognitive-search-tutorial-blob-dotnet.md)
+> [Cognitive Services-API's aanroepen in een Azure Cognitive Search Indexing-pijp lijn](cognitive-search-tutorial-blob-dotnet.md)

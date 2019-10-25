@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331965"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792356"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -28,7 +28,7 @@ Configuratie server moet worden ingesteld als een Maxi maal beschik bare VMware-
 
 ## <a name="prerequisites"></a>Vereisten
 
-De minimale hardwarevereisten voor een configuratie server worden in de volgende tabel samenvatten.
+De minimale hardwarevereisten voor een configuratie server worden in de volgende secties samenvatten.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ De minimale hardwarevereisten voor een configuratie server worden in de volgende
 U hebt een gebruiker met **een van de volgende** machtigingen ingesteld in AAD (Azure Active Directory) om de configuratie server te registreren bij Azure site Recovery Services.
 
 1. De gebruiker moet de rol ' toepassings ontwikkelaar ' hebben om een toepassing te maken.
-   1. Meld u aan bij Azure Portal om te verifiëren</br>
-   1. Ga naar Azure Active Directory >-rollen en-beheerders</br>
-   1. Controleer of de rol ' toepassings ontwikkelaar ' is toegewezen aan de gebruiker. Als dat niet het geval is, gebruik dan een gebruiker met deze machtiging of neem contact op met [de beheerder om de machtiging in te scha kelen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Meld u aan bij Azure Portal om te verifiëren</br>
+    - Ga naar Azure Active Directory >-rollen en-beheerders</br>
+    - Controleer of de rol ' toepassings ontwikkelaar ' is toegewezen aan de gebruiker. Als dat niet het geval is, gebruik dan een gebruiker met deze machtiging of neem contact op met [de beheerder om de machtiging in te scha kelen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
-1. Als de rol ' toepassings ontwikkelaar ' niet kan worden toegewezen, moet u ervoor zorgen dat de vlag ' gebruiker kan toepassing registreren ' is ingesteld op True als de gebruiker een identiteit wil maken. Om bovenstaande machtigingen in te scha kelen,
-   1. Meld u aan bij Azure Portal
-   1. Ga naar Azure Active Directory > gebruikers instellingen
-   1. Onder * * App-registraties "kunnen gebruikers toepassingen registreren" worden gekozen als "ja".
+2. Als de rol ' toepassings ontwikkelaar ' niet kan worden toegewezen, moet u ervoor zorgen dat de vlag ' gebruiker kan toepassing registreren ' is ingesteld op True als de gebruiker een identiteit wil maken. Om bovenstaande machtigingen in te scha kelen,
+    - Meld u aan bij Azure Portal
+    - Ga naar Azure Active Directory > gebruikers instellingen
+    - Onder * * App-registraties "kunnen gebruikers toepassingen registreren" worden gekozen als "ja".
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federation Services (ADFS) wordt **niet ondersteund**. Gebruik een account dat wordt beheerd via [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
-
-## <a name="capacity-planning"></a>Capaciteitsplanning
-
-De grootte vereisten voor de configuratie server zijn afhankelijk van de mogelijke gegevens wijzigings frequentie. Gebruik deze tabel als richt lijn.
-
-| **VERBRUIK** | **Geheugenmetabase** | **Schijf grootte van cache** | **Gegevens wijzigings frequentie** | **Beveiligde machines** |
-| --- | --- | --- | --- | --- |
-| 8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) |16 GB |300 GB |500 GB of minder |Repliceren van minder dan 100 machines. |
-| 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) |18 GB |600 GB |500 GB tot 1 TB |100-150 machines repliceren. |
-| 16 Vcpu's (2 sockets * 8 kernen \@ 2,5 GHz) |32 GB |1 TB |1 TB tot 2 TB |150-200 machines repliceren. |
-
-Als u meer dan één virtuele VMware-machine repliceert, lees dan de [overwegingen voor capaciteits planning](site-recovery-plan-capacity-vmware.md). Voer het [hulp programma Deployment planner](site-recovery-deployment-planner.md) voor VMware-replicatie uit.
 
 ## <a name="download-the-template"></a>De sjabloon downloaden
 
@@ -149,7 +137,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 ## <a name="upgrade-the-configuration-server"></a>De configuratie Server upgraden
 
-Volg deze [stappen](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)om de configuratie server bij te werken naar de meest recente versie. Klik [hier](service-updates-how-to.md)voor meer informatie over het upgraden van alle site Recovery onderdelen.
+Volg deze [stappen](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)om de configuratie server bij te werken naar de meest recente versie. Ga naar [service-update beheer](service-updates-how-to.md)voor gedetailleerde instructies voor het upgraden van alle site Recovery onderdelen.
 
 ## <a name="manage-the-configuration-server"></a>De configuratieserver beheren
 
@@ -157,9 +145,9 @@ Zorg ervoor dat het IP-adres van de configuratie server niet verandert nadat de 
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-1. Hoe lang is de licentie op de configuratie server die via OVF is geïmplementeerd, geldig? Wat gebeurt er als ik de licentie niet opnieuw Activeer?
+1. Hoe lang is de licentie die is ingevoerd op de configuratie server die via OVF is geïmplementeerd, geldig? Wat gebeurt er als ik de licentie niet opnieuw Activeer?
 
-    De licentie voor de eicellen-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Voordat het verloopt, moet u de licentie activeren. Dit kan ook leiden tot het veelvuldig afsluiten van de configuratie server en de replicatie activiteiten daardoor belemmeren.
+    De licentie voor de eicellen-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Voordat het verloopt, moet u de licentie activeren. Anders kan de configuratie server worden afgesloten en kan dit leiden tot replicatie activiteiten. Raadpleeg het artikel over het beheren van de [Configuratie Server licentie](vmware-azure-manage-configuration-server.md#update-windows-license)voor meer informatie.
 
 2. Kan ik de virtuele machine, waarbij de configuratie server is geïnstalleerd, voor verschillende doel einden gebruiken?
 

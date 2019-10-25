@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596647"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802042"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -30,10 +30,10 @@ CSP-partners gebruiken Cost Management voor het volgende:
 - Schakel het Azure Resource Manager-beleid in dat klanten toegang biedt tot Cost Management gegevens. Klanten kunnen gegevens over verbruiks kosten weer geven voor hun abonnementen met [betalen naar](https://azure.microsoft.com/pricing/calculator/)gebruik-tarieven.
 
 Hier volgt een voor beeld van de kosten voor alle klanten.
-![Example de kosten voor alle klanten worden weer gegeven ](./media/get-started-partners/customer-costs1.png)
+![voor beeld van de kosten voor alle klanten](./media/get-started-partners/customer-costs1.png)
 
 Hier volgt een voor beeld van de kosten voor één klant.
-![Example met de kosten voor één klant ](./media/get-started-partners/customer-costs2.png)
+![voor beeld van de kosten voor één klant](./media/get-started-partners/customer-costs2.png)
 
 Alle functionaliteit die beschikbaar is in Azure Cost Management is ook beschikbaar met REST Api's. Gebruik de Api's om kosten beheer taken te automatiseren.
 
@@ -83,7 +83,7 @@ Op dit moment is de facturerings valuta van de klant de standaard valuta bij het
 Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebruiken het bereik om budgetten in te stellen in de facturerings valuta voor de volgende items:
 
 - Specifieke gefilterde factuur
-- Gebruikers
+- Klant
 - Abonnement
 - Resourcegroep
 - Bron
@@ -101,7 +101,7 @@ Het bereik van de klant bevat geen klanten die zich op de huidige CSP-aanbieding
 
 Alleen gebruikers met de rol van **globale beheerder** en **beheerder** kunnen kosten voor facturerings accounts, facturerings profielen en klanten rechtstreeks in de Azure-Tenant van de partner beheren en weer geven. Zie [gebruikers rollen en machtigingen toewijzen](/partner-center/permissions-overview)voor meer informatie over de functies van het partner centrum.
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>Kosten beheer inschakelen in de Tenant van de klant
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Kosten beheer inschakelen in de Tenant van de klant
 
 Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn opvolgd voor een klant overeenkomst van micro soft. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten bekijken die worden berekend op basis van betalen naar gebruik-tarieven. Kosten worden weer gegeven in de facturerings valuta van de klant voor het verbruikte gebruik van het abonnement en de resource groepen van het RBAC.
 
@@ -122,7 +122,7 @@ Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weer geven.
 Klik onder **instellingen**op **beleid**.
 
 Het huidige beleid voor de zichtbaarheid van kosten wordt weer gegeven voor **Azure-gebruiks** kosten die zijn gekoppeld aan de abonnementen voor de geselecteerde klant.
-![Policy zodat klanten betalen per gebruik-kosten kunnen weer geven ](./media/get-started-partners/cost-management-billing-policies.png)
+![beleid waarmee klanten kosten voor betalen per gebruik kunnen weer geven](./media/get-started-partners/cost-management-billing-policies.png)
 
 Wanneer het beleid is ingesteld op **Nee**, is Azure Cost Management niet beschikbaar voor abonnements gebruikers die zijn gekoppeld aan de klant. Tenzij deze is ingeschakeld door een partner, wordt het beleid voor kosten zichtbaarheid standaard uitgeschakeld voor alle gebruikers van het abonnement.
 

@@ -1,23 +1,23 @@
 ---
-title: Een Azure Search-index maken in Azure Portal-Azure Search
-description: Meer informatie over het maken van een index voor Azure Search met behulp van een ingebouwde portal-index ontwerper.
+title: Een Azure Cognitive Search-index in Azure Portal maken
+titleSuffix: Azure Cognitive Search
+description: Meer informatie over het maken van een index voor Azure Cognitive Search met behulp van een ingebouwde portal index Designer.
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71937266"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792444"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>Een Azure Search-index maken in de portal
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>Een Azure Cognitive Search-index maken in de portal
 
-Azure Search bevat een ingebouwde index ontwerper in de portal die nuttig is voor prototypen of het maken van een [zoek index](search-what-is-an-index.md) die wordt gehost op uw Azure Search-service. Het hulp programma wordt gebruikt voor het bouwen van een schema. Wanneer u de definitie opslaat, wordt een lege index volledig weer gegeven in Azure Search. Hoe u het laadt met Doorzoek bare inhoud, is voor u.
+Azure Cognitive Search bevat een ingebouwde index ontwerper in de portal die nuttig is voor prototypen of het maken van een [zoek index](search-what-is-an-index.md) die wordt gehost op uw Azure Cognitive Search-service. Het hulp programma wordt gebruikt voor het bouwen van een schema. Wanneer u de definitie opslaat, wordt een lege index volledig weer gegeven in azure Cognitive Search. Hoe u het laadt met Doorzoek bare inhoud, is voor u.
 
 De index ontwerper is slechts één benadering voor het maken van een index. U kunt ook een index maken en laden met behulp van de [wizard gegevens importeren](search-get-started-portal.md). De wizard werkt alleen met indexen die deze zelf maakt. Via een programma kunt u een index maken met behulp van de [.net](search-create-index-dotnet.md) -of [rest](search-create-index-rest-api.md) -api's.
 
@@ -29,7 +29,7 @@ De index ontwerper is slechts één benadering voor het maken van een index. U k
 
    ![Index koppeling toevoegen in de opdracht balk](media/search-create-index-portal/add-index.png "Index koppeling toevoegen in de opdracht balk")
 
-3. Geef uw Azure Search-index een naam. Er wordt naar index namen verwezen in indexerings-en query bewerkingen. De naam van de index wordt een onderdeel van de eindpunt-URL die wordt gebruikt om verbinding te maken met de index en om HTTP-aanvragen in de REST API voor Azure Search te verzenden.
+3. Geef een naam op voor uw Azure Cognitive Search-index. Er wordt naar index namen verwezen in indexerings-en query bewerkingen. De naam van de index wordt onderdeel van de eind punt-URL die wordt gebruikt voor verbindingen met de index en voor het verzenden van HTTP-aanvragen in de Azure Cognitive Search REST API.
 
    * Begin met een letter.
    * Gebruik alleen kleine letters, cijfers of streepjes (-).
@@ -43,11 +43,11 @@ De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens
 
 1. Als inkomende gegevens hiërarchisch zijn, moet uw schema [complexe typen](search-howto-complex-data-types.md) bevatten die de geneste structuren vertegenwoordigen. De ingebouwde voor beeld-gegevensset, hotels, illustreert complexe typen met behulp van een adres (bevat meerdere subvelden) die een een-op-een-relatie hebben met elk Hotel, en een verzameling van ruimten die complexe verzamelingen bevatten, waarbij meerdere kamers aan elk hotel zijn gekoppeld. 
 
-1. Geef een *sleutel* veld op van het type EDM. String. Voor elke Azure Search-index is een sleutelveld verplicht en het moet een tekenreeks zijn. De waarden voor dit veld moeten elk document uniek identificeren. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Als uw collectie Fields bijvoorbeeld *Hotel-id*bevat, kiest u dat voor uw sleutel. 
+1. Geef een *sleutel* veld op van het type EDM. String. Een sleutel veld is verplicht voor elke Azure Cognitive Search-index en moet een teken reeks zijn. De waarden voor dit veld moeten elk document uniek identificeren. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Als uw collectie Fields bijvoorbeeld *Hotel-id*bevat, kiest u dat voor uw sleutel. 
 
 1. Stel kenmerken in voor elk veld. De index Designer sluit alle kenmerken uit die ongeldig zijn voor het gegevens type, maar worden niet voorgesteld wat moet worden opgenomen. Lees de instructies in de volgende sectie voor meer informatie over de kenmerken van.
 
-    API-documentatie voor Azure Search bevat voorbeelden van code met een eenvoudige index *hotels*. In de onderstaande scherm afbeelding ziet u de index definitie, inclusief de Franse taal analyse die tijdens de index definitie is opgegeven, die u als een Oefen oefening in de portal kunt maken.
+    De documentatie voor Azure Cognitive Search API bevat code voorbeelden met een eenvoudige index voor *Hotels* . In de onderstaande scherm afbeelding ziet u de index definitie, inclusief de Franse taal analyse die tijdens de index definitie is opgegeven, die u als een Oefen oefening in de portal kunt maken.
 
     ![Demo-index van hotels](media/search-create-index-portal/field-definitions.png "Demo-index van hotels")
 
@@ -76,7 +76,7 @@ Veldkenmerken bepalen hoe een veld wordt gebruikt, bijvoorbeeld of het wordt geb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een Azure Search-index hebt gemaakt, kunt u doorgaan met de volgende stap: [het uploaden van doorzoekbare gegevens in de index](search-what-is-data-import.md).
+Nadat u een Azure Cognitive Search-index hebt gemaakt, kunt u door gaan naar de volgende stap: [Doorzoek bare gegevens uploaden naar de index](search-what-is-data-import.md).
 
 U kunt ook een [diep gaande blik op indexen](search-what-is-an-index.md)maken. Naast de Veldenverzameling bevat een index ook analyses, suggesties, scoreprofielen en CORS-instellingen. De portal biedt tabbladen voor het definiëren van de meest voorkomende elementen: velden, analyses en suggesties. Als u andere elementen wilt maken of wijzigen, kunt u de REST API of de .NET SDK gebruiken.
 

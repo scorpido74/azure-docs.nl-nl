@@ -1,5 +1,6 @@
 ---
-title: Beveiligde web-API-overzicht | Azure
+title: Beveiligde web-API-overzicht
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een beveiligde web-API (overzicht).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +16,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bd4b84cc7542714f6db45c12c4b5b13a7fb449
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 64418138f9eff61cc94a57be4dc5e2625e5fdebb
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852584"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803682"
 ---
-# <a name="scenario-protected-web-api"></a>Scenario: Beveiligde web-API
+# <a name="scenario-protected-web-api"></a>Scenario: beveiligde web-API
 
 In dit scenario laten we u zien hoe u een web-API beschikbaar maakt en hoe u deze kunt beveiligen zodat alleen geverifieerde gebruikers toegang hebben tot de API. U wilt geverifieerde gebruikers met zowel werk-als school accounts of persoonlijke micro soft-accounts inschakelen om uw web-API te gebruiken.
 

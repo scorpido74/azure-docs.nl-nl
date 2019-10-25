@@ -1,5 +1,6 @@
 ---
-title: Eenmalige aanmelding configureren in macOS en iOS | Micro soft Identity-platform
+title: Eenmalige aanmelding configureren in macOS en iOS
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van eenmalige aanmelding (SSO) in macOS en iOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268932"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802485"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: Eenmalige aanmelding configureren in macOS en iOS
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: SSO configureren in macOS en iOS
 
 De micro soft Authentication Library (MSAL) voor macOS en iOS ondersteunt eenmalige aanmelding (SSO) tussen macOS/iOS-apps en-browsers. In dit artikel worden de volgende SSO-scenario's behandeld:
 
@@ -71,7 +72,7 @@ Voor het micro soft Identity-platform om te weten welke toepassingen tokens kunn
 
 De manier waarop het micro soft Identity-platform voor apps die gebruikmaken van dezelfde toepassings-ID, wordt door de **omleidings-uri's**verteld. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Bijvoorbeeld:
 
-App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth`App2 omleidings-URI: `msauth.com.contoso.mytestapp2://auth`App3 omleidings-URI:`msauth.com.contoso.mytestapp3://auth`
+App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth` App2 omleidings-URI: `msauth.com.contoso.mytestapp2://auth` App3 omleidings-URI: `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > De indeling van omleidings-uri's moet compatibel zijn met de indeling MSAL ondersteunt, die wordt beschreven in de [vereisten voor MSAL omleidings-URI-indeling](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -80,7 +81,7 @@ App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth`App2 omleidings-URI: 
 
 Raadpleeg het artikel ' [functies toevoegen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) ' van Apple om het delen van sleutel hanger in te scha kelen. Het is belang rijk dat u bepaalt wat u wilt dat uw sleutel keten wordt aangeroepen en voeg die mogelijkheid toe aan alle toepassingen die bij SSO betrokken zullen worden.
 
-Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlements.plist` bestand in de projectmap dat iets als dit voor beeld bevat:
+Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlements.plist` bestand in de projectmap dat iets als in dit voor beeld bevat:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlement
 </plist>
 ```
 
-Wanneer u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent voor het gebruik van SSO `MSALPublicClientApplication` , configureert u met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
+Zodra u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te gebruiken, moet u `MSALPublicClientApplication` configureren met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
 
 Doel-C:
 
@@ -137,7 +138,7 @@ MSAL biedt ondersteuning voor brokered-verificatie met Microsoft Authenticator. 
 
 Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van een verificatie Broker voor uw app:
 
-1. Registreer een Broker-compatibele omleidings-URI-indeling voor de toepassing in de info. plist van uw app. De indeling van de Broker-compatibele `msauth.<app.bundle.id>://auth`omleidings-URI is. Vervang ' < app. bundel. id > ' ' door de bundel-ID van uw toepassing. Bijvoorbeeld:
+1. Registreer een Broker-compatibele omleidings-URI-indeling voor de toepassing in de info. plist van uw app. De indeling van de Broker-compatibele omleidings-URI is `msauth.<app.bundle.id>://auth`. Vervang ' < app. bundel. id > ' ' door de bundel-ID van uw toepassing. Bijvoorbeeld:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +147,7 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     </array>
     ```
 
-1. Voeg volgende schema's toe aan de info. plist van uw `LSApplicationQueriesSchemes`app onder:
+1. Voeg volgende schema's toe aan de info. plist van uw app onder `LSApplicationQueriesSchemes`:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -156,7 +157,7 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     </array>
     ```
 
-1. Voeg het volgende toe aan `AppDelegate.m` het bestand voor het afhandelen van retour aanroepen:
+1. Voeg het volgende toe aan uw `AppDelegate.m`-bestand voor het afhandelen van retour aanroepen:
 
     Doel-C:
     
@@ -175,7 +176,7 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     }
     ```
     
-**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-Call `SceneDelegate` back in het bestand plaatsen.
+**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-call back in het `SceneDelegate`-bestand plaatsen.
 Als u zowel UISceneDelegate als UIApplicationDelegate voor compatibiliteit met oudere iOS-versies ondersteunt, moet MSAL call back in beide bestanden worden geplaatst.
 
 Doel-C:

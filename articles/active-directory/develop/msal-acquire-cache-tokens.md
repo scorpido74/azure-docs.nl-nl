@@ -1,5 +1,6 @@
 ---
-title: Tokens beheren (micro soft-verificatie bibliotheek) | Azure
+title: Tokens beheren (micro soft-verificatie bibliotheek)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het verkrijgen en caching van tokens met behulp van de micro soft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532900"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803300"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Tokens verkrijgen en cachen met behulp van MSAL
 Met [toegangs tokens](access-tokens.md) kunnen clients veilig Web-api's aanroepen die worden beveiligd door Azure. Er zijn veel manieren om een token te verkrijgen met behulp van micro soft Authentication Library (MSAL). Voor sommige manieren is interactie van de gebruiker vereist via een webbrowser. Voor sommige gebruikers interacties is geen interactie van de gebruiker vereist. Over het algemeen is het mogelijk om een token te verkrijgen, afhankelijk van of de toepassing een open bare-client toepassing (desktop-of mobiele app) of een vertrouwelijke client toepassing (Web-app, Web-API of daemon-toepassing, zoals een Windows-service) is.
@@ -39,23 +40,23 @@ Voor een aantal MSAL-Acquire-token methoden is een *bereik* parameter vereist. D
 Het is ook mogelijk in MSAL om toegang te krijgen tot v 1.0-resources. Lees voor meer informatie [bereiken voor een v 1.0-toepassing](msal-v1-app-scopes.md).
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Specifieke bereiken voor een web-API aanvragen
-Wanneer uw toepassing tokens met specifieke machtigingen voor een resource-API moet aanvragen, moet u de scopes met de App-ID-URI van de API door geven in de onderstaande notatie:  *&lt;app-&gt;id-URI/&lt;-bereik&gt;*
+Als uw toepassing tokens met specifieke machtigingen voor een resource-API moet aanvragen, moet u de scopes met de App-ID-URI van de API door geven in de onderstaande notatie: *&lt;App-ID-uri&gt;/&lt;bereik&gt;*
 
-Bijvoorbeeld bereiken voor de Microsoft Graph-API:`https://graph.microsoft.com/User.Read`
+Bijvoorbeeld bereiken voor Microsoft Graph-API: `https://graph.microsoft.com/User.Read`
 
-Of bijvoorbeeld bereiken voor een aangepaste web-API:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Of bijvoorbeeld bereiken voor een aangepaste web-API: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Voor de Microsoft Graph-API wordt alleen een bereik waarde `user.read` toegewezen aan `https://graph.microsoft.com/User.Read` indeling en kan deze door elkaar worden gebruikt.
+Voor de Microsoft Graph-API wordt alleen een bereik waarde `user.read` toegewezen aan `https://graph.microsoft.com/User.Read` indeling en kan door elkaar worden gebruikt.
 
 > [!NOTE]
-> Bepaalde web-api's, zoals Azure Resource Manager- https://management.core.windows.net/) API (verwacht een navolgende '/' in de claim van de doel groep (AUD) van het toegangs token. In dit geval is het belang rijk om het bereik door te https://management.core.windows.net//user_impersonation geven als (Let op de dubbele slash), zodat het token geldig is in de API.
+> Bepaalde web-Api's, zoals Azure Resource Manager-API (https://management.core.windows.net/) verwachten een navolgende '/' in de claim van de doel groep (AUD) van het toegangs token. In dit geval is het belang rijk om het bereik door te geven als https://management.core.windows.net//user_impersonation (Let op de dubbele slash), zodat het token geldig is in de API.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Dynamische bereiken aanvragen voor incrementele toestemming
 Wanneer u toepassingen bouwt met behulp van v 1.0, moest u de volledige set machtigingen (statische bereiken) registreren die de gebruiker nodig heeft om toestemming te geven op het moment van de aanmelding. In v 2.0 kunt u indien nodig aanvullende machtigingen aanvragen met de para meter bereik. Deze worden dynamische bereiken genoemd en bieden de gebruiker de mogelijkheid om incrementele toestemming te bieden voor scopes.
 
 U kunt de gebruiker bijvoorbeeld eerst aanmelden en de toegang weigeren. Later kunt u hen de mogelijkheid geven om de agenda van de gebruiker te lezen door het kalender bereik aan te vragen bij de methoden voor het verkrijgen van een token en de toestemming van de gebruiker te verkrijgen.
 
-Bijvoorbeeld: `https://graph.microsoft.com/User.Read` en`https://graph.microsoft.com/Calendar.Read`
+Bijvoorbeeld: `https://graph.microsoft.com/User.Read` en `https://graph.microsoft.com/Calendar.Read`
 
 ## <a name="acquiring-tokens-silently-from-the-cache"></a>Tokens op de achtergrond verkrijgen (vanuit de cache)
 MSAL onderhoudt een token cache (of twee caches voor vertrouwelijke client toepassingen) en slaat een token op in de cache nadat het is verkregen.  In veel gevallen probeert het op de achtergrond ophalen van een token een andere token te verkrijgen met meer scopes op basis van een token in de cache. Het is ook mogelijk om een token te vernieuwen wanneer het bijna is verlopen (omdat de token cache ook een vernieuwings token bevat).
@@ -102,4 +103,4 @@ Als uw client een toegangs token aanvraagt, retourneert Azure AD ook een verific
 - De unieke ID voor de gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het afhandelen van [fouten en uitzonde ringen](msal-handling-exceptions.md). 
+Meer informatie over het [afhandelen van fouten en uitzonde ringen](msal-handling-exceptions.md). 

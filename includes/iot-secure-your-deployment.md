@@ -8,109 +8,107 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e696db3ad452152f6478701876b7760d7fed355b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176691"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793089"
 ---
-# <a name="secure-your-internet-of-things-iot-deployment"></a>Uw Internet of Things (IoT)-implementatie beveiligen
+Dit artikel bevat het volgende detail niveau voor het beveiligen van de IoT-infra structuur (Azure IoT-based Internet of Things). Het bevat koppelingen naar details over het implementatie niveau voor het configureren en implementeren van elk onderdeel. Het biedt ook vergelijkingen en keuzes tussen verschillende concurrerende methoden.
 
-Dit artikel bevat het volgende niveau van de gegevens voor het beveiligen van de infrastructuur op basis van Azure IoT-Internet of Things (IoT). Deze koppelingen naar gedetailleerde implementatiegegevens voor het configureren en implementeren van elk onderdeel. Het biedt ook vergelijkingen en keuzes te bieden tussen verschillende concurrerende methoden.
+Het beveiligen van de Azure IoT-implementatie kan worden onderverdeeld in de volgende drie beveiligings gebieden:
 
-Beveiligen van de Azure IoT-implementatie kan worden onderverdeeld in de volgende aspecten van de drie beveiliging:
+* **Beveiliging van apparaten**: het IOT-apparaat wordt beveiligd terwijl het in de natuur wordt geïmplementeerd.
 
-* **Apparaatbeveiliging**: De beveiliging van de IoT-apparaat terwijl deze wordt geïmplementeerd tijdens het gebruik.
+* **Verbindings beveiliging**: ervoor zorgen dat alle gegevens die worden verzonden tussen het IOT-apparaat en het IOT Hub vertrouwelijk zijn en een onrecht matige proef.
 
-* **Verbindingsbeveiliging**: Ervoor te zorgen dat alle gegevens die worden verzonden tussen de IoT-apparaat en IoT Hub is vertrouwelijk en fraudebestendig.
+* **Cloud beveiliging**: biedt een manier om gegevens te beveiligen terwijl deze door lopen, en wordt opgeslagen in de Cloud.
 
-* **Cloud Security**: Biedt een manier om gegevens te beveiligen terwijl deze doorloopt, en wordt opgeslagen in de cloud.
+![Drie beveiligings gebieden](./media/iot-secure-your-deployment/overview.png)
 
-![Drie aspecten van de beveiliging](./media/iot-secure-your-deployment/overview.png)
+## <a name="secure-device-provisioning-and-authentication"></a>Inrichting en verificatie van het apparaat beveiligen
 
-## <a name="secure-device-provisioning-and-authentication"></a>Beveiligde apparaten inrichten en verificatie
+De IoT-oplossings Accelerators beveiligen IoT-apparaten met behulp van de volgende twee methoden:
 
-De IoT-oplossingsversnellers beveiligde IoT-apparaten met behulp van de volgende twee methoden:
+* Door een unieke identiteits sleutel (beveiligings tokens) op te geven voor elk apparaat, dat door het apparaat kan worden gebruikt om te communiceren met de IoT Hub.
 
-* Door een unieke id-sleutel (beveiligingstokens) voor elk apparaat, die door het apparaat kan worden gebruikt om te communiceren met de IoT-Hub.
+* Door gebruik te maken van een op apparaat [X. 509-certificaat](https://www.itu.int/rec/T-REC-X.509-201210-S) en een persoonlijke sleutel om het apparaat te verifiëren bij de IOT hub. Deze verificatie methode zorgt ervoor dat de persoonlijke sleutel op het apparaat op elk gewenst moment niet bekend is op het apparaat, waardoor er een hoger beveiligings niveau is.
 
-* Met behulp van een apparaat op [X.509-certificaat](https://www.itu.int/rec/T-REC-X.509-201210-S) en de persoonlijke sleutel als een manier om het apparaat naar de IoT Hub te verifiëren. Deze verificatiemethode zorgt ervoor dat de persoonlijke sleutel op het apparaat niet bekend is buiten het apparaat op elk gewenst moment een hoger niveau van beveiliging bieden.
-
-De methode security token biedt verificatie voor elke aanroep van het apparaat naar IoT Hub door te koppelen van de symmetrische sleutel aan elke aanroep. Op basis van X.509-verificatie kunnen verificatie van een IoT-apparaat op de fysieke laag als onderdeel van de TLS-verbinding tot stand brengen. De methode op basis van security-token kan worden gebruikt zonder de X.509-verificatie een minder veilige patroon is. De keuze tussen de twee methoden is voornamelijk afhankelijk van hoe veilig apparaat verificatie moet worden en beschikbaarheid van beveiligde opslag op het apparaat (voor het veilig opslaan van de persoonlijke sleutel).
+De beveiligings token methode biedt verificatie voor elke aanroep van het apparaat naar IoT Hub door de symmetrische sleutel aan elke aanroep te koppelen. Met X. 509-verificatie is verificatie van een IoT-apparaat op de fysieke laag mogelijk als onderdeel van de TLS-verbinding tot stand brengen. De methode op basis van het beveiligings token kan worden gebruikt zonder de X. 509-verificatie, een minder veilig patroon. De keuze tussen de twee methoden wordt voornamelijk bepaald door de manier waarop de verificatie van het apparaat beveiligd moet zijn, en beschik baarheid van beveiligde opslag op het apparaat (om de persoonlijke sleutel veilig op te slaan).
 
 ## <a name="iot-hub-security-tokens"></a>Beveiligingstokens van IoT Hub
 
-IoT Hub maakt gebruik van beveiligingstokens om apparaten en services om te voorkomen dat sleutels verzenden via het netwerk te verifiëren. Bovendien zijn beveiligingstokens beperkt in de geldigheid van de tijd en het bereik. Azure IoT SDK's automatisch genereren van tokens zonder speciale configuratie. Sommige scenario's, moeten echter de gebruiker te genereren en beveiligingstokens rechtstreeks gebruiken. Deze scenario's omvatten het direct gebruik van de oppervlakken MQTT-, AMQP- of HTTP- of de implementatie van het patroon van de service voor beveiligingstokens.
+IoT Hub maakt gebruik van beveiligings tokens om apparaten en services te verifiëren om te voor komen dat sleutels in het netwerk worden verzonden. Daarnaast worden beveiligings tokens beperkt in de geldigheid van de tijd en het bereik. Azure IoT Sdk's genereren automatisch tokens zonder dat hiervoor speciale configuratie is vereist. In sommige gevallen moet de gebruiker echter de beveiligings tokens rechtstreeks genereren en gebruiken. Deze scenario's zijn onder andere het directe gebruik van de MQTT-, AMQP-of HTTP-Opper vlakken, of de implementatie van het token service-patroon.
 
-Meer informatie over de structuur van het beveiligingstoken en het gebruik ervan kunnen worden gevonden in de volgende artikelen:
+Meer informatie over de structuur van het beveiligings token en het gebruik ervan vindt u in de volgende artikelen:
 
-* [Token beveiligingsstructuur](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [Structuur van beveiligings token](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
 
-* [Met behulp van SAS-tokens als een apparaat](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
+* [SAS-tokens gebruiken als apparaat](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
 
-Elke IoT-Hub is een [id-register](../articles/iot-hub/iot-hub-devguide-identity-registry.md) die kunnen worden gebruikt per apparaat om resources te maken in de service, zoals een wachtrij met berichten die onderweg zijn cloud-naar-apparaat, en voor toegang tot het apparaat gerichte eindpunten. De id-register van IoT Hub biedt een veilige opslag van apparaat-id's en sleutels voor een oplossing. Persoon of groepen van apparaat-id's kunnen worden toegevoegd aan een lijst met toegestane of een lijst met geblokkeerde websites volledige controle over toegang tot het apparaat inschakelen. De volgende artikelen vindt u meer informatie over de structuur van de id-register en de ondersteunde bewerkingen.
+Elk IoT Hub heeft een [identiteits register](../articles/iot-hub/iot-hub-devguide-identity-registry.md) dat kan worden gebruikt voor het maken van resources per apparaat in de service, zoals een wachtrij met in-Flight Cloud-naar-apparaat-berichten, en om toegang tot de op het apparaat gerichte eind punten toe te staan. Het IoT Hub identiteits register biedt beveiligde opslag van apparaat-id's en beveiligings sleutels voor een oplossing. Individuele identiteiten of groepen met apparaat-id's kunnen worden toegevoegd aan een lijst met toegestane apparaten of aan een blokkerings lijst, waardoor de toegang tot het apparaat volledig kan worden beheerd. De volgende artikelen bevatten meer informatie over de structuur van het identiteits register en de ondersteunde bewerkingen.
 
-[IoT Hub biedt ondersteuning voor protocollen, zoals MQTT, AMQP en HTTP-](../articles//iot-hub/iot-hub-devguide-security.md). Elk van deze protocollen beveiligingstokens van de IoT-apparaat naar IoT Hub anders gebruikt:
+[IOT hub ondersteunt protocollen zoals MQTT, AMQP en http](../articles//iot-hub/iot-hub-devguide-security.md). Elk van deze protocollen gebruikt beveiligings tokens van het IoT-apparaat om een andere IoT Hub:
 
-* AMQP: SASL zonder opmaak en beveiliging op basis van Claims voor AMQP (`{policyName}@sas.root.{iothubName}` met IoT hub op serverniveau tokens. `{deviceId}` met behulp van tokens binnen het bereik van apparaat).
+* AMQP: SASL PLAIN en AMQP op claims gebaseerde beveiliging (`{policyName}@sas.root.{iothubName}` met tokens op IoT hub-niveau, `{deviceId}` met tokens voor het bereik van het apparaat).
 
-* MQTT: Maakt gebruik van CONNECT pakket `{deviceId}` als de `{ClientId}`, `{IoThubhostname}/{deviceId}` in de **gebruikersnaam** veld en een SAS-token in de **wachtwoord** veld.
+* MQTT: het CONNECT-pakket maakt gebruik van `{deviceId}` als de `{ClientId}`, `{IoThubhostname}/{deviceId}` in het veld **username** en een SAS-token in het veld **wacht woord** .
 
-* HTTP: Er is een geldig token in de aanvraagheader autorisatie.
+* HTTP: er bevindt zich een geldig token in de header van de autorisatie aanvraag.
 
-ID-register van IoT Hub kan worden gebruikt voor het configureren van per apparaat beveiligingsreferenties en toegangscontrole. Echter, als een IoT-oplossing heeft al een aanzienlijke investering een [aangepast apparaat-id-register en/of verificatie schema](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication), deze kan worden geïntegreerd in een bestaande infrastructuur met IoT Hub met het maken van een service voor beveiligingstokens.
+IoT Hub identiteits register kan worden gebruikt voor het configureren van beveiligings referenties per apparaat en toegangs beheer. Als een IoT-oplossing al een aanzienlijke investering in een [aangepast REGI ster voor apparaat-id en/of verificatie schema](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)heeft, kan deze echter worden geïntegreerd in een bestaande infra structuur met IOT hub door een token service te maken.
 
-### <a name="x509-certificate-based-device-authentication"></a>Verificatie van X.509-apparaat op basis van certificaten
+### <a name="x509-certificate-based-device-authentication"></a>X. 509-verificatie op basis van een certificaat
 
-Het gebruik van een [X.509-certificaat op basis van apparaat](../articles/iot-hub/iot-hub-devguide-security.md) en een bijbehorende persoonlijke en openbare sleutelpaar kunt u aanvullende verificatie bij de fysieke laag. De persoonlijke sleutel veilig opgeslagen in het apparaat en kan niet worden gedetecteerd buiten het apparaat. Het X.509-certificaat bevat informatie over het apparaat, zoals de apparaat-ID en andere organisatie-gegevens. Een handtekening van het certificaat wordt gegenereerd met behulp van de persoonlijke sleutel.
+Het gebruik van een [op apparaten gebaseerd X. 509-certificaat](../articles/iot-hub/iot-hub-devguide-security.md) en het bijbehorende persoonlijke en open bare sleutel paar maakt extra verificatie op de fysieke laag mogelijk. De persoonlijke sleutel wordt veilig opgeslagen in het apparaat en kan niet worden gedetecteerd buiten het apparaat. Het X. 509-certificaat bevat informatie over het apparaat, zoals de apparaat-ID en andere details van de organisatie. Er wordt een hand tekening van het certificaat gegenereerd met behulp van de persoonlijke sleutel.
 
-Inrichten werkstroom op hoog niveau apparaat:
+Inrichtings stroom op hoog niveau:
 
-* Een op een fysiek apparaat – apparaat-id en/of X.509-certificaat dat is gekoppeld aan het apparaat tijdens de productie- of bedrijf stellen apparaat-id koppelen.
+* Koppel een id aan een fysiek apparaat: apparaat-id en/of X. 509-certificaat dat is gekoppeld aan het apparaat tijdens de fabricage van het apparaat of de provisie.
 
-* Maak een bijbehorende vermelding in de identiteit in IoT Hub-apparaat-id en bijbehorende apparaatgegevens in de id-register van IoT Hub.
+* Maak een corresponderende id-vermelding in IoT Hub: apparaat-id en bijbehorende apparaatgegevens in het IoT Hub identiteits register.
 
-* Vingerafdruk van het x.509-certificaat veilig opslaan in IoT Hub-identiteitsregister.
+* U kunt de vinger afdruk van X. 509-certificaat veilig opslaan in het REGI ster van IoT Hub identiteit.
 
-### <a name="root-certificate-on-device"></a>Basiscertificaat op apparaat
+### <a name="root-certificate-on-device"></a>Basis certificaat op het apparaat
 
-De IoT-apparaat verifieert tijdens het maken van een beveiligde TLS-verbinding met IoT Hub, IoT-Hub met behulp van een basiscertificaat dat deel uitmaakt van de apparaat-SDK. Voor de client voor C SDK het certificaat bevindt zich onder de map '\\c\\certificaten ' onder de hoofdmap van de opslagplaats. Hoewel deze basiscertificaten lange levensduur hebben, ze nog steeds mogelijk verlopen of worden ingetrokken. Als er geen manier voor het bijwerken van het certificaat op het apparaat, kan het apparaat mogelijk niet vervolgens verbinding maken met de IoT-Hub (of een andere cloudservice). Een manier om bij te werken van het basiscertificaat zodra de IoT-apparaat daadwerkelijk is geïmplementeerd met verkleint dit risico.
+Tijdens het tot stand brengen van een beveiligde TLS-verbinding met IoT Hub, verifieert het IoT-apparaat IoT Hub met behulp van een basis certificaat dat deel uitmaakt van de SDK van het apparaat. Het certificaat bevindt zich in de map "\\C\\-certificaten" in de hoofdmap van het opslag plaats voor de C client-SDK. Hoewel deze basis certificaten lang worden bewaard, kunnen ze nog steeds verlopen of worden ingetrokken. Als het certificaat op het apparaat niet kan worden bijgewerkt, is het mogelijk dat het apparaat niet meer kan worden verbonden met de IoT Hub (of een andere Cloud service). Een manier om het basis certificaat bij te werken wanneer het IoT-apparaat effectief wordt geïmplementeerd, vermindert dit risico.
 
-## <a name="securing-the-connection"></a>Beveiligen van de verbinding
+## <a name="securing-the-connection"></a>De verbinding beveiligen
 
-Internet-verbinding tussen de IoT-apparaat en IoT-Hub is beveiligd met behulp van de standaard Transport Layer Security (TLS). Azure IoT ondersteunt [TLS 1.2](https://tools.ietf.org/html/rfc5246), TLS 1.1 en TLS 1.0 in de aangegeven volgorde. Ondersteuning voor TLS 1.0 wordt aangeboden voor achterwaartse compatibiliteit alleen. Gebruik van TLS 1.2, indien mogelijk, omdat het de meeste beveiliging biedt.
+Internet verbinding tussen het IoT-apparaat en het IoT Hub wordt beveiligd met de standaard Transport Layer Security (TLS). Azure IoT ondersteunt [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 en TLS 1,0, in deze volg orde. Ondersteuning voor TLS 1,0 wordt alleen geboden voor compatibiliteit met eerdere versies. Gebruik, indien mogelijk, TLS 1,2, omdat deze de meeste beveiliging biedt.
 
-## <a name="securing-the-cloud"></a>De cloud beveiligen
+## <a name="securing-the-cloud"></a>De Cloud beveiligen
 
-Azure IoT Hub kunnen definitie van [toegangsbeheerbeleid](../articles/iot-hub/iot-hub-devguide-security.md) voor elke beveiligingssleutel. Hierbij de volgende set machtigingen voor toegang verlenen tot elk van de IoT Hub-eindpunten. Machtigingen beperken de toegang tot een IoT-Hub op basis van functionaliteit.
+Azure IoT Hub maakt definitie van [beleid voor toegangs beheer](../articles/iot-hub/iot-hub-devguide-security.md) voor elke beveiligings sleutel mogelijk. Hierbij wordt gebruikgemaakt van de volgende set machtigingen om toegang te verlenen aan elk van de eind punten van de IoT Hub. Machtigingen beperken de toegang tot een IoT Hub op basis van de functionaliteit.
 
-* **RegistryRead**. Verleent leestoegang tot het id-register. Zie voor meer informatie, [id-register](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryRead**. Hiermee wordt lees toegang verleend aan het identiteits register. Zie [identiteits register](../articles/iot-hub/iot-hub-devguide-identity-registry.md)voor meer informatie.
 
-* **RegistryReadWrite**. Verleent lezen en schrijven naar het id-register. Zie voor meer informatie, [id-register](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryReadWrite**. Hiermee wordt lees-en schrijf toegang verleend aan het identiteits register. Zie [identiteits register](../articles/iot-hub/iot-hub-devguide-identity-registry.md)voor meer informatie.
 
-* **ServiceConnect**. Verleent toegang tot de cloud service gerichte communicatie en -eindpunten worden gecontroleerd. Bijvoorbeeld, er een machtiging verleend voor back-end cloudservices apparaat-naar-cloud-berichten ontvangen, cloud-naar-apparaat-berichten verzenden en ophalen van de bijbehorende delivery-bevestigingen.
+* **ServiceConnect**. Verleent toegang tot Cloud service gerichte communicatie en bewakings eindpunten. Hiermee wordt bijvoorbeeld een machtiging verleend aan back-end-Cloud Services om apparaat-naar-Cloud-berichten te ontvangen, Cloud-naar-apparaat-berichten te verzenden en de bijbehorende bezorgings bevestigingen op te halen.
 
-* **DeviceConnect**. Verleent toegang tot apparaat gerichte eindpunten. Bijvoorbeeld, verleent deze machtiging voor het apparaat-naar-cloud-berichten verzenden en ontvangen van berichten van cloud-naar-apparaat. Deze machtiging wordt gebruikt door apparaten.
+* **DeviceConnect**. Hiermee wordt toegang verleend aan aan het apparaat gerichte eind punten. Het geeft bijvoorbeeld toestemming om apparaat-naar-Cloud-berichten te verzenden en Cloud-naar-apparaat-berichten te ontvangen. Deze machtiging wordt gebruikt door apparaten.
 
-Er zijn twee manieren om op te halen **DeviceConnect** machtigingen met IoT Hub met [beveiligingstokens](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): met behulp van een apparaat-id-sleutel of een gedeelde toegangssleutel. Bovendien is het belangrijk te weten dat alle functionaliteit die toegankelijk is vanaf apparaten wordt weergegeven op de eindpunten met het voorvoegsel standaard `/devices/{deviceId}`.
+Er zijn twee manieren om **DeviceConnect** -machtigingen te verkrijgen met IOT hub met [beveiligings tokens](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): met behulp van een apparaat-id-sleutel of een gedeelde toegangs sleutel. Daarnaast is het belang rijk te weten dat alle functies die toegankelijk zijn vanaf apparaten, worden weer gegeven in het ontwerp van eind punten met voor voegsel `/devices/{deviceId}`.
 
-[Onderdelen van de service kunnen alleen genereren voor beveiligingstokens](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) met behulp van gedeelde toegangsbeleid dat de juiste machtigingen te verlenen.
+[Service onderdelen kunnen alleen beveiligings tokens genereren](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) met behulp van het beleid voor gedeelde toegang, waarbij de juiste machtigingen worden verleend.
 
-Azure IoT Hub en andere services die deel van de oplossing uitmaken kunnen beheer van gebruikers met behulp van de Azure Active Directory.
+Azure IoT Hub en andere services die deel kunnen uitmaken van de oplossing, kunnen het beheer van gebruikers met behulp van de Azure Active Directory toestaan.
 
-Gegevens die worden verwerkt door Azure IoT Hub kan worden gebruikt door verschillende services zoals Azure Stream Analytics en Azure blob-opslag. Deze services verlenen management toegang. Meer informatie over deze services en de beschikbare opties:
+Gegevens die worden opgenomen door Azure IoT Hub kunnen worden gebruikt door diverse services, zoals Azure Stream Analytics en Azure Blob-opslag. Met deze services is toegang tot het beheer mogelijk. Meer informatie over deze services en beschik bare opties:
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Een schaalbare, volledig geïndexeerd databaseservice voor de semi-gestructureerde gegevens die worden beheerd metagegevens voor de apparaten die u, zoals kenmerken, configuratie en de eigenschappen voor beveiliging inricht. Azure Cosmos DB biedt hoge prestaties en hoge doorvoer verwerkt, schema-agnostische indexering van gegevens en een geavanceerde SQL-QueryInterface.
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): een schaal bare, volledig geïndexeerde database service voor semi-gestructureerde gegevens die meta gegevens beheert voor de apparaten die u voorziet, zoals kenmerken, configuratie en beveiligings eigenschappen. Azure Cosmos DB biedt verwerkings processen met hoge prestaties en hoge door Voer, neutraal indexering van gegevens en een geavanceerde SQL-query interface.
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Realtime-verwerking in de cloud waarmee u snel ontwikkelen en implementeren van een goedkope analyseoplossing realtime inzichten kunt van apparaten, sensoren, infrastructuur en toepassingen. De gegevens uit deze volledig beheerde service kan worden geschaald naar een volume behoud van hoge doorvoer, lage latentie en tolerantie.
+* [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/): realtime stroom verwerking in de Cloud waarmee u snel een goedkope analyse oplossing kunt ontwikkelen en implementeren om realtime inzichten te verkrijgen op basis van apparaten, Sens oren, infra structuur en toepassingen. De gegevens van deze volledig beheerde service kunnen naar elk volume worden geschaald, terwijl toch hoge door Voer, lage latentie en tolerantie wordt bereikt.
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): Een cloudplatform voor het bouwen van krachtige web- en mobiele apps die verbinding met gegevens waar dan ook maken; in de cloud of on-premises. Aansprekende mobiele apps bouwen voor iOS, Android en Windows. Integreren met uw Software as a Service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit met tientallen cloudgebaseerde services en zakelijke toepassingen. Coderen in uw favoriete taal en IDE (.NET, Node.js, PHP, Python of Java) sneller dan ooit webtoepassingen en API's bouwen.
+* [Azure-app Services](https://azure.microsoft.com/services/app-service/): een Cloud platform voor het bouwen van krachtige web-en mobiele apps die overal verbinding maken met gegevens. in de Cloud of on-premises. Aansprekende mobiele apps bouwen voor iOS, Android en Windows. Integreer met uw software als een service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit tot tien tallen Cloud Services en zakelijke toepassingen. Code in uw favoriete taal en IDE (.NET, node. js, PHP, python of Java) om sneller dan ooit web-apps en Api's te bouwen.
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): De functie logische Apps van Azure App Service kunt uw IoT-oplossing met uw bestaande line-of-business-systemen integreren en automatiseren van werkstroomprocessen worden uitgevoerd. Logic Apps kan ontwikkelaars werkstromen ontwerpen die na een trigger worden gestart en voer vervolgens een reeks stappen, regels en acties die gebruikmaken van krachtige connectors om te integreren in uw bedrijfsprocessen. Logic Apps biedt out-of-the-box verbinding met een uitgebreid ecosysteem van SaaS, op basis van cloud en on-premises toepassingen.
+* [Logic apps](https://azure.microsoft.com/services/app-service/logic/): de Logic apps functie van Azure app service helpt uw IOT-oplossing te integreren met uw bestaande line-of-Business-systemen en om werk stroom processen te automatiseren. Met Logic Apps kunnen ontwikkel aars werk stromen ontwerpen die beginnen met een trigger en vervolgens een reeks stappen uitvoeren: regels en acties die gebruikmaken van krachtige connectors om te integreren met uw bedrijfs processen. Logic Apps biedt kant-en-klare connectiviteit met een aanzienlijk ecosysteem van SaaS-, Cloud-en on-premises toepassingen.
 
-* [Azure Blob-opslag](https://azure.microsoft.com/services/storage/): Betrouwbare, betaalbare cloudopslag voor de gegevens die uw apparaten naar de cloud verzenden.
+* [Azure Blob-opslag](https://azure.microsoft.com/services/storage/): betrouw bare, voordelige Cloud opslag voor de gegevens die uw apparaten naar de Cloud verzenden.
 
 ## <a name="conclusion"></a>Conclusie
 
-Dit artikel bevat de gedetailleerde gegevens voor het ontwerpen en implementeren van een IoT-infrastructuur met behulp van Azure IoT overzicht van de uitvoering. Configureren van elk onderdeel om te worden beveiligd, is de sleutel bij het beveiligen van de algemene IoT-infrastructuur. De ontwerpkeuzes die beschikbaar zijn in Azure IoT een bepaalde mate van flexibiliteit en keuze; elke keuze hebben echter invloed op de beveiliging. Het verdient aanbeveling dat elk van deze opties worden geëvalueerd via een evaluatie van de risico's / kosten.
+In dit artikel vindt u een overzicht van de details van het implementatie niveau voor het ontwerpen en implementeren van een IoT-infra structuur met Azure IoT. Het configureren van elk onderdeel dat moet worden beveiligd is essentieel bij het beveiligen van de algemene IoT-infra structuur. De ontwerp mogelijkheden die beschikbaar zijn in azure IoT bieden een zekere mate van flexibiliteit en keuze. elke keuze kan echter gevolgen hebben voor de beveiliging. Het is raadzaam om elk van deze opties te evalueren door middel van een risico/kosten beoordeling.

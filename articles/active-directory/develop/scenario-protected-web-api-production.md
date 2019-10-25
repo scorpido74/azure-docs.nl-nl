@@ -1,6 +1,7 @@
 ---
-title: Beveiligde Web-API - verplaatsen naar productie | Azure
-description: Meer informatie over het bouwen van een beveiligde Web-API (verplaatsen naar productie).
+title: 'Beveiligde web-API: verplaatsen naar productie'
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het bouwen van een beveiligde web-API (verplaatsen naar productie).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +16,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833115"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802517"
 ---
-# <a name="protected-web-api---move-to-production"></a>Beveiligde web-API - verplaatsen naar productie
+# <a name="protected-web-api---move-to-production"></a>Beveiligde web-API: verplaatsen naar productie
 
-Nu u weet hoe u uw web-API beveiligen, hier is hoe u het kunt verplaatsen naar productie.
+Nu u weet hoe u uw web-API moet beveiligen, kunt u deze naar productie verplaatsen.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het aanroepen van downstream API's:
+Meer informatie over het aanroepen van downstream-Api's:
 
 > [!div class="nextstepaction"]
-> [Scenario - Web-API-aanroepen downstream API 's](scenario-web-api-call-api-overview.md)
+> [Scenario: Web API roept downstream API'S aan](scenario-web-api-call-api-overview.md)
 
-Meer informatie met zelfstudies en voorbeelden:
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core web API zelfstudie](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+Meer informatie met zelf studies en voor beelden:
 
 > [!div class="nextstepaction"]
-> [ASP.NET web API-voorbeeld](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [Zelf studie voor de Web-API ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Web API-voor beeld](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

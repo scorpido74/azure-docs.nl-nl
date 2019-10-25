@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170302"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790840"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Problemen met algemene prestaties voor de virtuele machine van Azure in Linux of Windows oplossen
 
-In dit artikel worden algemene problemen met de prestaties van virtuele machines (VM) beschreven door te controleren en knel punten te observeren en mogelijke problemen op te lossen.
+In dit artikel worden algemene problemen met de prestaties van virtuele machines (VM) beschreven door te controleren en knel punten te observeren en mogelijke problemen op te lossen. Naast de bewaking kunt u ook Perfinsights gebruiken, waarmee u een rapport kunt maken met aanbevolen procedures en de belangrijkste knel punten rondom i/o/CPU/memory. Perfinsights is beschikbaar voor zowel [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) -als [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) -vm's in Azure.
+
+In dit artikel wordt beschreven hoe u bewaking gebruikt om prestatie knelpunten te diagnosticeren.
 
 ## <a name="enabling-monitoring"></a>Bewaking inschakelen
 
@@ -34,32 +36,55 @@ Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee word
  
 ### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Diagnostische gegevens over virtuele machines inschakelen via micro soft Azure Portal
 
-Als u Diagnostische gegevens over de virtuele machine wilt inschakelen, gaat u naar de virtuele machine, klikt u op **instellingen**en vervolgens op **Diagnostische gegevens**.
+Diagnostische gegevens over virtuele machines inschakelen:
 
-![Klik op instellingen en vervolgens op diagnostische gegevens](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
- 
+1. Ga naar de VM
+2. Klik op **Diagnostische instellingen**
+3. Selecteer het opslag account en klik op **bewaking op gast niveau inschakelen**.
+
+   ![Klik op instellingen en vervolgens op diagnostische gegevens](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+
+U kunt het opslag account dat wordt gebruikt voor Diagnostische instellingen op het tabblad **agent** onder **Diagnostische instellingen**controleren.
+
+![Opslag account controleren](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+
 ### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Diagnostische gegevens over het opslag account inschakelen via Azure Portal
 
-Bepaal eerst welk opslag account (of welke accounts) uw virtuele machine gebruikt door de virtuele machine te selecteren. Klik op **instellingen**en klik vervolgens op **schijven**:
+Opslag is een belang rijke laag wanneer we de IO-prestaties voor een virtuele machine in azure willen analyseren. Voor metrische gegevens over opslag moeten we diagnostische gegevens inschakelen als een extra stap. Dit kan ook worden ingeschakeld als we alleen de opslag items willen analyseren.
 
-![Klik op instellingen en vervolgens op schijven](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+1. Bepaal welk opslag account (of welke accounts) uw virtuele machine gebruikt door de virtuele machine te selecteren. Klik op **instellingen**en klik vervolgens op **schijven**:
 
-Ga in de portal naar het opslag account (of de accounts) voor de virtuele machine en werk de volgende stappen uit:
+   ![Klik op instellingen en vervolgens op schijven](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-![Metrische gegevens van BLOB selecteren](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
- 
-1. Selecteer **alle instellingen**.
-2. Schakel diagnostische gegevens in.
-3. Selecteer *metrische gegevens voor *BLOB** * en stel Bewaar periode in op **30** dagen.
-4. Sla de wijzigingen op.
+2. Ga in de portal naar het opslag account (of de accounts) voor de virtuele machine en werk de volgende stappen uit:
+
+   1. Klik op overzicht voor het opslag account dat u hebt gevonden met de bovenstaande stap.
+   2. Standaard waarden worden weer gegeven. 
+
+    ![Standaard waarden](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+
+3. Klik op een van de metrische gegevens. hier wordt een andere Blade weer gegeven met meer opties voor het configureren en toevoegen van metrische gegevens.
+
+   ![Metrische gegevens toevoegen](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+
+Als u deze opties wilt configureren:
+
+1.  Selecteer **Metrische gegevens**.
+2.  Selecteer de **resource** (opslag account).
+3.  De **naam ruimte** selecteren
+4.  Selecteer **metrische gegevens**.
+5.  Selecteer het type **aggregatie**
+6.  U kunt deze weer gave vastmaken aan het dash board.
 
 ## <a name="observing-bottlenecks"></a>Knel punten naachten
+
+Zodra het eerste installatie proces voor de benodigde metrische gegevens is uitgevoerd en post de diagnostische gegevens voor de virtuele machine en het gerelateerde opslag account inschakelt, kunnen we naar analyse fase schuiven.
 
 ### <a name="accessing-the-monitoring"></a>Toegang tot de bewaking
 
 Selecteer de virtuele Azure-machine die u wilt onderzoeken en selecteer **bewaking**.
 
-![Bewaking selecteren](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+![Bewaking selecteren](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
 ### <a name="timelines-of-observation"></a>Waarnemings lijnen
 
@@ -67,7 +92,7 @@ Controleer uw gegevens om te bepalen of u knel punten in de resource hebt. Als u
 
 ### <a name="check-for-cpu-bottleneck"></a>Controleren op CPU-knel punt
 
-![Controleren op CPU-knel punt](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+![Controleren op CPU-knel punt](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. Bewerk de grafiek.
 2. Stel het tijds bereik in.
@@ -94,6 +119,8 @@ Als uw toepassing of proces niet wordt uitgevoerd op het juiste prestatie niveau
 * Meer informatie over het probleem – Zoek de toepassing/het proces en los deze problemen op.
 
 Als u de virtuele machine hebt verhoogd en de CPU nog 95% wordt uitgevoerd, bepaalt u of deze instelling betere prestaties of een hogere doorvoer snelheid voor toepassingen biedt dan een acceptabel niveau. Als dat niet het geval is, kunt u de afzonderlijke application\process. oplossen
+
+U kunt Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) gebruiken om te analyseren welk proces het CPU-verbruik benadert. 
 
 ## <a name="check-for-memory-bottleneck"></a>Controleren op geheugen knelpunt
 
@@ -124,9 +151,13 @@ Voer een van de volgende taken uit om het hoge geheugen gebruik op te lossen:
 
 Als u na een upgrade naar een grotere virtuele machine hebt ontdekt, weet u zeker dat u nog steeds constante stabiele toename hebt tot 100%, de toepassing/het proces identificeren en problemen oplossen.
 
+U kunt Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) gebruiken om te analyseren welk proces het geheugen verbruikt. 
+
 ## <a name="check-for-disk-bottleneck"></a>Controleren op schijf knelpunt
 
 Als u het opslag subsysteem voor de virtuele machine wilt controleren, controleert u de diagnostische gegevens op het niveau van de Azure-VM met behulp van de items in de diagnostische gegevens van de VM en de diagnostische gegevens over het opslag account.
+
+Voor binnen een VM-specifieke probleem oplossing kunt u Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)gebruiken. Dit kan helpen bij het analyseren van het proces waarmee de io wordt bestuurd. 
 
 Houd er rekening mee dat er geen items zijn voor zone redundante en Premium Storage accounts. Verhoog een ondersteunings aanvraag voor problemen die betrekking hebben op deze prestatie meter items.
 
@@ -134,7 +165,7 @@ Houd er rekening mee dat er geen items zijn voor zone redundante en Premium Stor
 
 Als u aan de onderstaande items wilt werken, gaat u naar het opslag account voor de virtuele machine in de portal:
 
-![Diagnostische gegevens over opslag accounts weer geven in bewaking](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+![Diagnostische gegevens over opslag accounts weer geven in bewaking](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
 1. Bewerk de bewakings grafiek.
 2. Stel het tijds bereik in.
@@ -175,6 +206,10 @@ Met deze metriek kunt u niet zien welke BLOB de beperking veroorzaakt en welke d
 
 Als u wilt weten of u de limiet voor IOPS hebt bereikt, gaat u naar de diagnostische gegevens van het opslag account en controleert 20000 u de TotalRequests. Identificeer een wijziging in het patroon, ongeacht of u de limiet voor het eerst ziet, of of deze limiet op een bepaald moment plaatsvindt.
 
+Met nieuwe schijf aanbiedingen onder standaard opslag kunnen de limieten voor IOPS en door Voer verschillen, maar de cumulatieve limiet van het standaard opslag account is 20000 IOPS (Premium Storage heeft verschillende limieten op het niveau van de account of schijf). Meer informatie over de verschillende standaard aanbiedingen voor opslag schijven en per schijf limiet:
+
+* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+
 #### <a name="references"></a>Naslaginformatie
 
 * [Schaalbaarheids doelen voor schijven van virtuele machines](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
@@ -187,7 +222,9 @@ Controleer de TotalIngress en de TotalEgress op basis van de limieten voor inkom
 
 Controleer de doorvoer limieten van de Vhd's die zijn gekoppeld aan de virtuele machine. De metrische gegevens schijf voor de virtuele machine toevoegen Lees-en schrijf bewerkingen.
 
-Elke VHD kan Maxi maal 60 MB/s ondersteunen (IOPS worden niet per VHD weer gegeven). Bekijk de gegevens om te zien of u de limieten hebt bereikt van gecombineerde door Voer van de VHD (s) op VM-niveau met behulp van de lees-en schrijf bewerking van de virtuele machine. vervolgens optimaliseert u de configuratie van de VM-opslag om eerdere VHD-limieten te schalen.
+Nieuwe schijf aanbiedingen onder standaard opslag hebben verschillende IOPS-en doorvoer limieten (IOPS worden niet per VHD weer gegeven). Bekijk de gegevens om te zien of u de limieten hebt bereikt van gecombineerde door Voer van de VHD (s) op VM-niveau met behulp van de lees-en schrijf bewerking van de virtuele machine. vervolgens optimaliseert u de configuratie van de VM-opslag om eerdere VHD-limieten te schalen. Meer informatie over de verschillende standaard aanbiedingen voor opslag schijven en per schijf limiet:
+
+* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Hoog schijf gebruik/herstel van de latentie
 

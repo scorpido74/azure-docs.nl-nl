@@ -1,5 +1,5 @@
 ---
-title: Beheerde identiteiten voor Azure-resources met Azure Service Bus | Microsoft Docs
+title: Beheerde identiteiten voor Azure-resources met Service Bus
 description: Beheerde identiteiten gebruiken voor Azure-resources met Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299647"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793155"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
-[Identiteiten voor een Azure-resources beheerd](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie die u kunt maken van een veilige identiteit die is gekoppeld aan de implementatie waarmee uw toepassingscode wordt uitgevoerd. Daarna kunt u die identiteit koppelen met access-control-rollen die aangepaste machtigingen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
+[Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een functie van meerdere Azure waarmee u een beveiligde identiteit kunt maken die is gekoppeld aan de implementatie waaronder uw toepassings code wordt uitgevoerd. U kunt deze identiteit vervolgens koppelen aan de toegangs beheer rollen die aangepaste machtigingen verlenen om toegang te krijgen tot specifieke Azure-resources die uw toepassing nodig heeft.
 
-Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U hoeft niet voor het opslaan en toegang tot sleutels in uw toepassingscode of de configuratie voor de identiteit zelf, of voor de resources die u nodig hebt om toegang te beveiligen. Een Service Bus client-app die wordt uitgevoerd in een Azure App Service toepassing of op een virtuele machine met ingeschakelde beheerde entiteiten voor Azure-bronnen ondersteuning, hoeft geen SAS-regels en sleutels of andere toegangs tokens te verwerken. De client-app heeft alleen het eindpunt adres van de Service Bus Messa ging-naam ruimte nodig. Wanneer de app verbinding maakt, Service Bus de context van de beheerde entiteit koppelen aan de client in een bewerking die verderop in dit artikel wordt weer gegeven. Zodra deze is gekoppeld aan een beheerde identiteit, kan uw Service Bus-client alle geautoriseerde bewerkingen uitvoeren. Autorisatie wordt verleend door een beheerde entiteit te koppelen aan Service Bus rollen. 
+Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U hoeft geen toegangs sleutels op te slaan en te beveiligen in uw toepassings code of configuratie, hetzij voor de identiteit zelf, hetzij voor de resources die u nodig hebt. Een Service Bus client-app die wordt uitgevoerd in een Azure App Service toepassing of op een virtuele machine met ingeschakelde beheerde entiteiten voor Azure-bronnen ondersteuning, hoeft geen SAS-regels en sleutels of andere toegangs tokens te verwerken. De client-app heeft alleen het eindpunt adres van de Service Bus Messa ging-naam ruimte nodig. Wanneer de app verbinding maakt, Service Bus de context van de beheerde entiteit koppelen aan de client in een bewerking die verderop in dit artikel wordt weer gegeven. Zodra deze is gekoppeld aan een beheerde identiteit, kan uw Service Bus-client alle geautoriseerde bewerkingen uitvoeren. Autorisatie wordt verleend door een beheerde entiteit te koppelen aan Service Bus rollen. 
 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een token is `https://servicebus.azure.net`.
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. 
@@ -46,16 +46,16 @@ Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verl
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Ingebouwde RBAC-rollen voor Azure Service Bus
 Voor Azure Service Bus is het beheer van naam ruimten en alle gerelateerde resources via de Azure Portal en de Azure Resource Management-API al beveiligd met behulp van het RBAC-model ( *op rollen gebaseerd toegangs beheer* ). Azure biedt de onderstaande ingebouwde RBAC-rollen voor het verlenen van toegang tot een Service Bus naam ruimte:
 
-- [Azure Service Bus gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Hiermee wordt gegevens toegang tot Service Bus naam ruimte en de bijbehorende entiteiten (wacht rijen, onderwerpen, abonnementen en filters) ingeschakeld
-- [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de bijbehorende entiteiten.
-- [Azure Service Bus gegevens ontvanger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Gebruik deze rol om toegang te krijgen tot Service Bus naam ruimte en de bijbehorende entiteiten. 
+- [Azure Service Bus gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Hiermee wordt gegevens toegang tot Service Bus naam ruimte en de entiteiten (wacht rijen, onderwerpen, abonnementen en filters) ingeschakeld
+- [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de entiteiten.
+- [Azure Service Bus gegevens ontvanger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): gebruik deze rol om toegang te krijgen tot Service Bus naam ruimte en de bijbehorende entiteiten. 
 
 ## <a name="resource-scope"></a>Bron bereik 
 Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
 In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service Bus resources kunt bereiken, te beginnen met het smalle bereik:
 
-- **Wachtrij**, **onderwerp**of **abonnement**: De roltoewijzing is van toepassing op de specifieke Service Bus entiteit. Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van gebruikers/groepen/beheerde identiteiten aan Service Bus RBAC-rollen op abonnements niveau. Hier volgt een voor beeld van het gebruik van de Azure CLI-opdracht: [AZ-Role-Assignment-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) om een identiteit toe te wijzen aan een service bus RBAC-rol: 
+- **Wachtrij**, **onderwerp**of **abonnement**: roltoewijzing is van toepassing op de specifieke service bus entiteit. Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van gebruikers/groepen/beheerde identiteiten aan Service Bus RBAC-rollen op abonnements niveau. Hier volgt een voor beeld van het gebruik van de Azure CLI-opdracht: [AZ-Role-Assignment-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) om een identiteit toe te wijzen aan een service bus RBAC-rol: 
 
     ```azurecli
     az role assignment create \
@@ -63,9 +63,9 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service 
         --assignee $assignee_id \
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
-- **Naam ruimte service bus**: Roltoewijzing omvat de volledige topologie van Service Bus onder de naam ruimte en aan de Consumer-groep die eraan is gekoppeld.
-- **Resourcegroep**: De roltoewijzing is van toepassing op alle Service Bus resources onder de resource groep.
-- **Abonnement**: De roltoewijzing is van toepassing op alle Service Bus resources in alle resource groepen in het abonnement.
+- **Service Bus naam ruimte**: roltoewijzing omvat de volledige topologie van service bus onder de naam ruimte en aan de Consumer groep die eraan is gekoppeld.
+- **Resource groep**: roltoewijzing is van toepassing op alle service bus resources onder de resource groep.
+- **Abonnement**: roltoewijzing is van toepassing op alle service bus resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
 > Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
@@ -77,7 +77,7 @@ Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Service B
 
 - [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-- [Azure-CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Client bibliotheken Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -124,17 +124,17 @@ Als u een rol aan een Service Bus naam ruimte wilt toewijzen, gaat u naar de naa
 
 Zodra u de rol hebt toegewezen, heeft de webtoepassing toegang tot de Service Bus entiteiten onder het gedefinieerde bereik. 
 
-### <a name="run-the-app"></a>De app uitvoeren
+### <a name="run-the-app"></a>De app kunt uitvoeren
 
 Wijzig nu de standaard pagina van de ASP.NET-toepassing die u hebt gemaakt. U kunt de code van de webtoepassing van [deze github-opslag plaats](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)gebruiken.  
 
 De pagina default. aspx is uw landings pagina. De code vindt u in het Default.aspx.cs-bestand. Het resultaat is een minimale webtoepassing met enkele invoer velden en met de knoppen **verzenden** en **ontvangen** die verbinding maken met Service Bus om berichten te verzenden of te ontvangen.
 
-Houd er rekening mee hoe de [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) -object is geïnitialiseerd. In plaats van de tokenprovider Shared Access Token (SAS), de code maakt u een token-provider voor de beheerde identiteit met de `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` aanroepen. Er zijn dus geen geheimen om te behouden en te gebruiken. De stroom van de beheerde identiteits context naar Service Bus en de autorisatie-Handshake worden automatisch verwerkt door de token provider. Het is een eenvoudiger model dan het gebruik van SAS.
+U ziet hoe het [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) -object wordt geïnitialiseerd. In plaats van de SAS-token provider (Shared Access token) te gebruiken, maakt de code een token provider voor de beheerde identiteit met de aanroep van `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();`. Er zijn dus geen geheimen om te behouden en te gebruiken. De stroom van de beheerde identiteits context naar Service Bus en de autorisatie-Handshake worden automatisch verwerkt door de token provider. Het is een eenvoudiger model dan het gebruik van SAS.
 
-Nadat u deze wijzigingen aanbrengt, publiceren en de toepassing wordt uitgevoerd. U kunt eenvoudig de juiste publicatie gegevens verkrijgen door een publicatie profiel te downloaden en vervolgens te importeren in Visual Studio:
+Nadat u deze wijzigingen hebt aangebracht, publiceert u de toepassing en voert u deze uit. U kunt eenvoudig de juiste publicatie gegevens verkrijgen door een publicatie profiel te downloaden en vervolgens te importeren in Visual Studio:
 
-![Publicatieprofiel ophalen](./media/service-bus-managed-service-identity/msi3.png)
+![Publicatie profiel ophalen](./media/service-bus-managed-service-identity/msi3.png)
  
 Als u berichten wilt verzenden of ontvangen, voert u de naam van de naam ruimte en de naam van de entiteit die u hebt gemaakt in. Klik vervolgens op **verzenden** of **ontvangen**.
 

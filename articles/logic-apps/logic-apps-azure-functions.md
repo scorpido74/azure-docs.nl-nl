@@ -1,79 +1,79 @@
 ---
-title: Toevoegen en Azure functions aanroepen vanuit Azure Logic Apps
-description: Toevoegen en Azure functions uitvoeren vanuit logische apps
+title: Azure functions toevoegen en aanroepen vanuit Azure Logic Apps
+description: Azure functions toevoegen en uitvoeren vanuit Logic apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 524b927ec0966199c51cdee93e920d7b847139ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495114"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799730"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions aanroepen vanuit Azure Logic Apps
 
-Wanneer u uitvoeren van code dat een specifieke taak in uw logische apps wilt uitvoert, kunt u uw eigen functie maken met behulp van [Azure Functions](../azure-functions/functions-overview.md). Deze service helpt u bij het maken van Node.js, C#, en F# functies, zodat u hoeft te maken van een volledige app of infrastructuur code uit te voeren. U kunt ook [logische apps aanroepen in Azure functions](#call-logic-app). Azure Functions biedt serverloze computing in de cloud en is handig voor het uitvoeren van taken, zoals deze voorbeelden:
+Als u code wilt uitvoeren waarmee een specifieke taak wordt uitgevoerd in uw Logic apps, kunt u uw eigen functie maken met behulp van [Azure functions](../azure-functions/functions-overview.md). Met deze service kunt u node. js, C#en F# functies maken, zodat u geen volledige app of infra structuur hoeft te bouwen om code uit te voeren. U kunt ook [Logic apps aanroepen vanuit Azure functions](#call-logic-app). Azure Functions biedt serverloze computers in de Cloud en is handig voor het uitvoeren van taken zoals deze voor beelden:
 
-* Breid uw logische app gedrag met Node.js of C#-functies.
-* Uitvoeren van berekeningen in uw werkstroom voor logische Apps.
-* Geavanceerde opmaak toepassen of compute-velden in uw logische apps.
+* Breid het gedrag van uw logische app uit met functies in node. C#JS of.
+* Voer berekeningen uit in de werk stroom van uw logische app.
+* Geavanceerde opmaak of reken velden Toep assen in uw Logic apps.
 
-Als u wilt codefragmenten uitvoeren zonder te maken van Azure functions, informatie over hoe u [toevoegen en uitvoeren van Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md).
+Als u code fragmenten wilt uitvoeren zonder Azure functions te maken, leert u hoe u [inline code kunt toevoegen en uitvoeren](../logic-apps/logic-apps-add-run-inline-code.md).
 
 > [!NOTE]
-> Integratie tussen Azure-functies en Logic Apps op dit moment werkt niet met sleuven ingeschakeld.
+> Integratie tussen Logic Apps en Azure Functions werkt momenteel niet met sleuven ingeschakeld.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een Azure-functie-app, dat een container voor Azure functions, samen met uw Azure-functie is. Als u een functie-app geen [maakt u eerst uw functie-app](../azure-functions/functions-create-first-azure-function.md). U kunt vervolgens maken uw functie buiten uw logische app in de Azure-portal of [van binnen uw logische app](#create-function-designer) in Logic App Designer.
+* Een Azure-functie-app, een container voor Azure functions, samen met uw Azure-functie. Als u geen functie-app hebt, moet u [eerst uw functie-app maken](../azure-functions/functions-create-first-azure-function.md). U kunt de functie vervolgens buiten uw logische app maken in de Azure Portal, of [vanuit uw logische](#create-function-designer) app in de ontwerp functie voor logische apps.
 
-* Als u werkt met logic apps, dezelfde vereisten zijn van toepassing met de functie-apps en functies ongeacht of deze bestaande of nieuwe:
+* Wanneer u werkt met Logic apps, gelden dezelfde vereisten voor functie-apps en-functies, ongeacht of ze al dan niet bestaande of nieuw zijn:
 
-  * Uw functie-app en de logische app moeten hetzelfde Azure-abonnement gebruiken.
+  * De functie-app en de logische app moeten gebruikmaken van hetzelfde Azure-abonnement.
 
-  * Nieuwe functie-apps moeten de .NET- of JavaScript gebruiken als de runtimestack. Wanneer u een nieuwe functie aan bestaande functie-apps toevoegen, kunt u een selecteren C# of JavaScript.
+  * Nieuwe functie-apps moeten .NET of Java script als runtime stack gebruiken. Wanneer u een nieuwe functie toevoegt aan de C# bestaande functie-apps, kunt u of Java script selecteren.
 
-  * Uw functie maakt gebruik van de **HTTP-trigger** sjabloon.
+  * De functie maakt gebruik van de **http-trigger** sjabloon.
 
-    De HTTP-trigger-sjabloon kunt accepteren inhoud waarvoor `application/json` type van uw logische app. Wanneer u een Azure-functie aan uw logische app toevoegt, toont de ontwerper van logische App aangepaste functies die zijn gemaakt met deze sjabloon binnen uw Azure-abonnement.
+    De sjabloon voor de HTTP-trigger kan inhoud accepteren die `application/json` type van uw logische app. Wanneer u een Azure-functie aan uw logische app toevoegt, worden in de Logic app Designer aangepaste functies weer gegeven die zijn gemaakt op basis van deze sjabloon binnen uw Azure-abonnement.
 
-  * De functie aangepaste routes niet gebruiken tenzij u hebt gedefinieerd een [OpenAPI-definitie](../azure-functions/functions-openapi-definition.md) (voorheen bekend als een [Swagger-bestand](https://swagger.io/)).
+  * De functie gebruikt geen aangepaste routes tenzij u een OpenAPI- [definitie](../azure-functions/functions-openapi-definition.md) (voorheen een [Swagger-bestand](https://swagger.io/)genoemd) hebt gedefinieerd.
 
-  * Hebt u een OpenAPI-definitie voor uw functie, de ontwerper van logische Apps biedt een uitgebreidere ervaring wanneer u werkt met parameters van de functie. Voordat uw logische app kunt vinden en toegang tot functies met OpenAPI-definities [instellen van uw functie-app door de volgende stappen](#function-swagger).
+  * Als u een OpenAPI-definitie voor uw functie hebt, biedt de Logic Apps Designer u een rijkere ervaring wanneer u werkt met functie parameters. [Stel uw functie-app in met behulp van de volgende stappen](#function-swagger)voordat u met de logische app functies met OpenAPI-definities kunt vinden en gebruiken.
 
-* De logische app waaraan u wilt toevoegen van de functie, met inbegrip van een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) als de eerste stap in uw logische app
+* De logische app waaraan u de functie wilt toevoegen, inclusief een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) als de eerste stap in uw logische app
 
-  Voordat u de acties die worden uitgevoerd van functies toevoegen kunt, wordt uw logische app moet beginnen met een trigger. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Voordat u acties kunt toevoegen die functies uitvoeren, moet uw logische app beginnen met een trigger. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="function-swagger"></a>
 
-## <a name="find-functions-that-have-openapi-descriptions"></a>Functies met OpenAPI beschrijvingen vinden
+## <a name="find-functions-that-have-openapi-descriptions"></a>Functies met OpenAPI-beschrijvingen zoeken
 
-Voor een rijkere ervaring wanneer u met parameters van de functie in de ontwerper van logische Apps werkt [een OpenAPI-definitie genereren](../azure-functions/functions-openapi-definition.md), voorheen bekend als een [Swagger-bestand](https://swagger.io/), voor uw functie. Voor het instellen van uw functie-app, zodat uw logische app kunt vinden en gebruiken van functies met Swagger beschrijvingen, als volgt te werk:
+[Genereer](../azure-functions/functions-openapi-definition.md)voor uw functie een OpenAPI-definitie, voorheen bekend als een [Swagger-bestand](https://swagger.io/), voor een uitgebreide ervaring wanneer u werkt met functie parameters in de Logic apps Designer. Ga als volgt te werk om uw functie-app in te stellen zodat uw logische app functies met Swagger-beschrijvingen kan vinden en gebruiken:
 
-1. Zorg ervoor dat uw functie-app actief wordt uitgevoerd.
+1. Zorg ervoor dat de functie-app actief is.
 
-1. In uw functie-app instellen [Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zodat alle oorsprongen zijn toegestaan door de volgende stappen:
+1. Stel in de functie-app [Cross-Origin Resource Sharing (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) in zodat alle oorsprongen zijn toegestaan door de volgende stappen uit te voeren:
 
-   1. Uit de **functie-Apps** , selecteert u de functie-app. Selecteer in het rechter deelvenster **platformfuncties** > **CORS**.
+   1. Selecteer de functie-app in de lijst **functie-apps** . Selecteer in het rechterdeel venster **platform functies** > **CORS**.
 
-      ![Selecteer uw functie-app > 'Platformfuncties' > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+      ![Selecteer de functie-app > platform functies > CORS](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. Onder **CORS**, toevoegen van het sterretje ( **`*`** ) jokertekens teken, maar alle andere oorsprongen verwijderen in de lijst en kies **opslaan**.
+   1. Voeg onder **CORS**het Joker teken asterisk ( **`*`** ) toe, maar verwijder alle andere oorsprongen uit de lijst en selecteer **Opslaan**.
 
-      ![Stel ' CORS * voor het jokerteken ' * '](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+      ![' CORS * ' instellen op het Joker teken ' * '](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
-## <a name="access-property-values-inside-http-requests"></a>Toegang tot eigenschapswaarden in HTTP-aanvragen
+## <a name="access-property-values-inside-http-requests"></a>Eigenschaps waarden in HTTP-aanvragen openen
 
-Webhook-functies kunnen accepteren van HTTP-aanvragen als invoer en deze aanvragen doorsturen naar andere functies. Bijvoorbeeld, hoewel de Logic Apps heeft [functies waarmee u datum-/ tijdwaarden converteren](../logic-apps/workflow-definition-language-functions-reference.md), in dit eenvoudige voorbeeld JavaScript-functie laat zien hoe u toegang hebt tot een eigenschap in een Aanvraagobject voor de die wordt doorgegeven aan de functie en bewerkingen uitvoeren op de waarde van die eigenschap. Voor toegang tot de eigenschappen in objecten, in dit voorbeeld wordt de [punt (.)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors):
+Webhook-functies kunnen HTTP-aanvragen accepteren als invoer en de aanvragen door geven aan andere functies. Hoewel Logic Apps bijvoorbeeld [functies heeft waarmee datetime-waarden worden geconverteerd](../logic-apps/workflow-definition-language-functions-reference.md), laat deze basis voorbeeld functie Java script zien hoe u toegang hebt tot een eigenschap binnen een aanvraag object dat wordt door gegeven aan de functie en bewerkingen uitvoert op die eigenschaps waarde. In dit voor beeld wordt gebruikgemaakt van de [operator punt (.)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Property_accessors)om toegang te krijgen tot eigenschappen binnen objecten:
 
 ```javascript
 function convertToDateString(request, response){
@@ -84,119 +84,235 @@ function convertToDateString(request, response){
 }
 ```
 
-Dit is wat er gebeurt binnen deze functie:
+Wat gebeurt er in deze functie:
 
-1. Hiermee maakt u de functie een `data` variabele en wijst de `body` object binnen de `request` object naar die variabele. De functie maakt gebruik van de punt (.) om te verwijzen naar de `body` object binnen de `request` object:
+1. De functie maakt een `data` variabele en wijst het `body` object in het `request`-object toe aan die variabele. De functie maakt gebruik van de operator punt (.) om te verwijzen naar het `body`-object in het `request`-object:
 
    ```javascript
    var data = request.body;
    ```
 
-1. De functie hebben nu toegang tot de `date` eigenschap via de `data` variabele en converteren naar die eigenschapswaarde van het type datum/tijd naar DateString type door het aanroepen van de `ToDateString()` functie. De functie ook retourneert het resultaat via de `body` eigenschap in het antwoord van de functie:
+1. De functie heeft nu toegang tot de eigenschap `date` via de `data`-variabele en converteert die eigenschaps waarde van DateTime-type naar DateString-type door de functie `ToDateString()` aan te roepen. De functie retourneert ook het resultaat via de eigenschap `body` in het antwoord van de functie:
 
    ```javascript
    body: data.date.ToDateString();
    ```
 
-Nu dat u uw Azure-functie hebt gemaakt, volgt u de stappen voor het [functies toevoegen aan logische apps](#add-function-logic-app).
+Nu u uw Azure-functie hebt gemaakt, volgt u de stappen voor het [toevoegen van functies aan Logic apps](#add-function-logic-app).
 
 <a name="create-function-designer"></a>
 
-## <a name="create-functions-inside-logic-apps"></a>Functies in logische apps maken
+## <a name="create-functions-inside-logic-apps"></a>Functies in Logic apps maken
 
-Voordat u een Azure-functie binnen uw logische app met behulp van de Logic App Designer vanaf maken kunt, moet u eerst een Azure-functie-app, dat een container voor uw functies is hebben. Als u een functie-app niet hebt, maakt u eerst die functie-app. Zie [uw eerste functie maken in Azure portal](../azure-functions/functions-create-first-azure-function.md).
+Voordat u een Azure-functie kunt maken vanuit uw logische app met behulp van de ontwerp functie voor logische apps, moet u eerst een Azure function-app hebben. Dit is een container voor uw functies. Als u geen functie-app hebt, moet u eerst die functie-app maken. Zie [uw eerste functie maken in de Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
-1. In de [Azure-portal](https://portal.azure.com), opent u uw logische app in Logic App Designer.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Het maken en uw functie toevoegen, volg de stappen die van toepassing op uw scenario is:
+1. Volg de stap die van toepassing is op uw scenario om uw functie te maken en toe te voegen:
 
-   * Kies onder de laatste stap in uw logic app-werkstroom, **nieuwe stap**.
+   * Selecteer in de laatste stap van de werk stroom van uw logische app de optie **nieuwe stap**.
 
-   * Tussen bestaande stappen in uw logic app-werkstroom Beweeg de muis over de pijl, kies de plusknop (+) Meld u aan en selecteer vervolgens **een actie toevoegen**.
+   * Beweeg tussen de bestaande stappen in de werk stroom van uw logische app de muis aanwijzer over de pijl, selecteer het plus teken (+) en selecteer vervolgens **een actie toevoegen**.
 
-1. Typ 'azure functions' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Een Azure-functie kiezen - Azure Functions**
+1. Voer in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties deze actie: **een Azure-functie kiezen**
 
-   ![Zoek 'Azure functions'](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![' Azure functions ' zoeken](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. Selecteer uw functie-app in de functie App-lijst. Nadat de lijst met acties wordt geopend, selecteert u deze actie: **Azure Functions - maken nieuwe functie**
+1. Selecteer de functie-app in de lijst functie-apps. Nadat de lijst met acties wordt geopend, selecteert u deze actie: **nieuwe functie maken**
 
-   ![Selecteer uw functie-app](./media/logic-apps-azure-functions/select-function-app-create-function.png)
+   ![De functie-app selecteren](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
-1. In de editor van de definitie van functie door uw functie te definiëren:
+1. Definieer uw functie in de editor van de functie definitie:
 
-   1. In de **functienaam** Geef een naam voor uw functie.
+   1. Geef in het vak **functie naam** een naam op voor de functie.
 
-   1. In de **Code** Voeg uw code wordt de functiesjabloon voor de, inclusief de respons en de nettolading die u wilt dat aan uw logische app geretourneerd nadat de functie is voltooid.
+   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid.
 
       ![Uw functie definiëren](./media/logic-apps-azure-functions/function-definition.png)
 
-      In de code van de sjabloon wordt de  *`context` object* verwijst naar het bericht dat uw logische app via verzendt de **aanvraagtekst** veld in een latere stap. Toegang krijgen tot de `context` van het object eigenschappen uit binnen uw functie, gebruik de volgende syntaxis:
+      In de code van de sjabloon verwijst het *`context`-object* naar het bericht dat door de logische app wordt verzonden via het veld **hoofd tekst** van de aanvraag in een latere stap. Gebruik de volgende syntaxis om de eigenschappen van het `context`-object vanuit uw functie te openen:
 
       `context.body.<property-name>`
 
-      Bijvoorbeeld, om te verwijzen naar de `content` eigenschap binnen de `context` object, gebruik de volgende syntaxis: 
+      Als u bijvoorbeeld wilt verwijzen naar de eigenschap `content` binnen het object `context`, gebruikt u de volgende syntaxis:
 
       `context.body.content`
 
-      De sjablooncode bevat ook een `input` -variabele, waarmee de waarde van slaat de `data` parameter zodat uw functie bewerkingen op deze waarde kunt uitvoeren. In JavaScript-functies, de `data` variabele is ook een snelkoppeling voor `context.body`.
+      De sjabloon code bevat ook een `input` variabele, die de waarde van de para meter `data` opslaat, zodat uw functie bewerkingen op die waarde kan uitvoeren. In Java script-functies is de variabele `data` ook een snelkoppeling voor `context.body`.
 
       > [!NOTE]
-      > De `body` hier van toepassing op de `context` object en is niet hetzelfde als de **hoofdtekst** -token van een actie-uitvoer, die u mogelijk ook worden doorgegeven in uw functie.
+      > De eigenschap `body` is hier van toepassing op het `context`-object en is niet hetzelfde als het **hoofdtekst** token van de uitvoer van een actie. Dit kan ook worden door gegeven aan de functie.
 
-   1. Wanneer u klaar bent, kiest u **Maken**.
+   1. Als u gereed bent, selecteert u **Maken**.
 
-1. In de **aanvraagtekst** geeft u de functie de invoer van, die moet worden opgemaakt als een JavaScript Object Notation (JSON)-object.
+1. Geef in het vak **hoofd tekst** van de aanvraag de invoer van uw functie op die moet worden opgemaakt als een JavaScript object NOTATION (JSON)-object.
 
-   Deze invoer is de *context-object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u klikt op de **aanvraagtekst** veld, de lijst met dynamische inhoud wordt weergegeven, zodat u tokens voor uitvoer uit de vorige stappen selecteren kunt. In dit voorbeeld geeft aan dat de nettolading van de context een eigenschap met de naam bevat `content` waarvoor de **van** token de waarde van de e-mailtrigger:
+   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een eigenschap bevat met de naam `content` die de waarde **van het van** -token van de e-mail trigger heeft.
 
-   !["Aanvraagtekst" voorbeeld - context-object nettolading](./media/logic-apps-azure-functions/function-request-body-example.png)
+   ![Voor beeld van een hoofd tekst van aanvraag-context object Payload](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Hier het context-object is niet cast-conversie uitvoeren als een tekenreeks, zodat de inhoud van het object rechtstreeks naar de JSON-nettolading wordt toegevoegd. Als het context-object niet is een JSON-token dat wordt doorgegeven van een tekenreeks, een JSON-object of een JSON-matrix, krijgt u echter een fout. Als dit voorbeeld gebruikt de **ontvangen** token in plaats daarvan, u kunt casten het context-object als een tekenreeks door dubbele aanhalingstekens toe te voegen:  
+   Hier wordt het context object niet als een teken reeks gecast, zodat de inhoud van het object rechtstreeks aan de JSON-nettolading wordt toegevoegd. Wanneer het context object echter geen JSON-token is dat een teken reeks, een JSON-object of een JSON-matrix doorgeeft, krijgt u een fout melding. Als in dit voor beeld in plaats daarvan het token **ontvangend** wordt gebruikt, kunt u het context object converteren als een teken reeks door dubbele aanhalings tekens toe te voegen.
 
-   ![CAST-object als tekenreeks](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
+   ![Object casten als teken reeks](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Geef andere details, zoals de methode voor het gebruik, aanvraagheaders of queryparameters, opent u de **toevoegen van nieuwe parameter** lijst en selecteer de opties die u wilt gebruiken.
+1. Als u andere details wilt opgeven, zoals de methode voor gebruik, aanvraag headers of query parameters, of verificatie, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste opties. Voor verificatie zijn uw opties afhankelijk van de geselecteerde functie. Zie [verificatie inschakelen voor Azure functions](#enable-authentication-functions).
 
 <a name="add-function-logic-app"></a>
 
-## <a name="add-existing-functions-to-logic-apps"></a>Bestaande functies toevoegen aan logische apps
+## <a name="add-existing-functions-to-logic-apps"></a>Bestaande functies toevoegen aan Logic apps
 
-U kunt voor het aanroepen van bestaande Azure-functies van uw logische apps, Azure functions, zoals een andere actie toevoegen in de Logic App Designer.
+Als u bestaande Azure-functies wilt aanroepen vanuit uw Logic apps, kunt u Azure functions, zoals elke andere actie, toevoegen in de ontwerp functie van de logische app.
 
-1. In de [Azure-portal](https://portal.azure.com), opent u uw logische app in Logic App Designer.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Kies onder de stap waarin u wilt toevoegen van de functie, **nieuwe stap**, en selecteer **een actie toevoegen**.
+1. Selecteer **nieuwe stap**onder de stap waar u de functie wilt toevoegen.
 
-1. Typ 'azure functions' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Een Azure-functie kiezen - Azure Functions**
+1. Voer onder **Kies een actie**in het zoekvak ' Azure functions ' in als uw filter. Selecteer in de lijst acties deze actie: **een Azure-functie kiezen**
 
-   ![Zoek 'Azure functions'](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![' Azure functions ' zoeken](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. Selecteer uw functie-app in de functie App-lijst. Nadat de functielijst met wordt weergegeven, selecteert u uw functie.
+1. Selecteer de functie-app in de lijst functie-apps. Nadat de lijst met functies wordt weer gegeven, selecteert u de functie.
 
-   ![Selecteer uw functie-app en de Azure-functie](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![De functie-app en Azure function selecteren](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   Voor functies die API-definities (Swagger beschrijvingen) hebben en [instellen zodat uw logische app kan vinden en toegang deze functies tot](#function-swagger), kunt u **Swagger-acties**:
+   Voor functies met API-definities (Swagger-beschrijvingen) en die zijn [ingesteld zodat uw logische app deze functies kan vinden en gebruiken](#function-swagger), kunt u **Swagger-acties**selecteren.
 
-   ![Selecteer uw functie-app, 'Swagger-acties' ', en uw Azure-functie](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![Selecteer uw functie-app, "Swagger-acties" en uw Azure-functie](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-1. In de **aanvraagtekst** geeft u de functie de invoer van, die moet worden opgemaakt als een JavaScript Object Notation (JSON)-object.
+1. Geef in het vak **hoofd tekst** van de aanvraag de invoer van uw functie op die moet worden opgemaakt als een JavaScript object NOTATION (JSON)-object.
 
-   Deze invoer is de *context-object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u klikt op de **aanvraagtekst** veld, de lijst met dynamische inhoud wordt weergegeven, zodat u tokens voor uitvoer uit de vorige stappen selecteren kunt. In dit voorbeeld geeft aan dat de nettolading van de context een eigenschap met de naam bevat `content` waarvoor de **van** token de waarde van de e-mailtrigger:
+   Deze invoer is het *context object* of het bericht dat uw logische app naar uw functie verzendt. Wanneer u in het veld **hoofd tekst van aanvraag** klikt, wordt de lijst met dynamische inhoud weer gegeven, zodat u tokens kunt selecteren voor uitvoer van de vorige stappen. In dit voor beeld wordt aangegeven dat de context Payload een eigenschap bevat met de naam `content` die de waarde **van het van** -token van de e-mail trigger heeft.
 
-   !["Aanvraagtekst" voorbeeld - context-object nettolading](./media/logic-apps-azure-functions/function-request-body-example.png)
+   ![Voor beeld van een hoofd tekst van aanvraag-context object Payload](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Hier het context-object is niet cast-conversie uitvoeren als een tekenreeks, zodat de inhoud van het object rechtstreeks naar de JSON-nettolading wordt toegevoegd. Als het context-object niet is een JSON-token dat wordt doorgegeven van een tekenreeks, een JSON-object of een JSON-matrix, krijgt u echter een fout. Als dit voorbeeld gebruikt de **ontvangen** token in plaats daarvan, u kunt casten het context-object als een tekenreeks door dubbele aanhalingstekens toe te voegen:
+   Hier wordt het context object niet als een teken reeks gecast, zodat de inhoud van het object rechtstreeks aan de JSON-nettolading wordt toegevoegd. Wanneer het context object echter geen JSON-token is dat een teken reeks, een JSON-object of een JSON-matrix doorgeeft, krijgt u een fout melding. Als in dit voor beeld in plaats daarvan het token **ontvangen** is gebruikt, kunt u het context object als een teken reeks casten door dubbele aanhalings tekens toe te voegen:
 
-   ![CAST-object als tekenreeks](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
+   ![Object casten als teken reeks](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Geef andere details, zoals de methode voor het gebruik, aanvraagheaders of queryparameters, opent u de **toevoegen van nieuwe parameter** lijst en selecteer de opties die u wilt gebruiken.
+1. Als u andere details wilt opgeven, zoals de methode voor het gebruik, aanvraag headers, query parameters of verificatie, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste opties. Voor verificatie zijn uw opties afhankelijk van de geselecteerde functie. Zie [verificatie inschakelen in azure functions](#enable-authentication-functions).
 
 <a name="call-logic-app"></a>
 
 ## <a name="call-logic-apps-from-azure-functions"></a>Logische apps aanroepen vanuit Azure functions
 
-Als u wilt voor het activeren van een logische app uit in een Azure-functie, worden de logische app moet beginnen met een trigger die een aanroepbare eindpunt biedt. Bijvoorbeeld, kun u de logische app met de **HTTP**, **aanvragen**, **Azure Queues**, of **Event Grid** trigger. Binnen de functie een HTTP POST-aanvraag verzenden naar de URL van de trigger en bevatten de nettolading die u wilt dat deze logische app te verwerken. Zie voor meer informatie, [aanroepen, trigger of nesten van logische apps](../logic-apps/logic-apps-http-endpoint.md).
+Wanneer u een logische app vanuit een Azure-functie wilt activeren, moet de logische app beginnen met een trigger die een aanroepbaar eind punt biedt. U kunt bijvoorbeeld de logische app starten met de trigger **http**, **aanvragen**, **Azure queues**of **Event grid** . Verzend in uw functie een HTTP POST-aanvraag naar de URL van de trigger en voeg de payload toe die de logische app moet verwerken. Zie [Logic apps aanroepen, activeren of nesten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
+
+<a name="enable-authentication-functions"></a>
+
+## <a name="enable-authentication-for-azure-functions"></a>Verificatie inschakelen voor Azure functions
+
+Voor het verifiëren van toegang tot resources in andere Azure Active Directory (Azure AD)-tenants zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
+Als u uw logische app instelt voor het gebruik van de door het systeem toegewezen beheerde identiteit, kunnen de Azure functions in uw logische app ook dezelfde identiteit voor verificatie gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatie ondersteuning voor Azure functions in Logic apps.
+
+Voer de volgende stappen uit om de door het systeem toegewezen identiteit in te stellen en te gebruiken met uw functie:
+
+1. Schakel de door het systeem toegewezen identiteit in voor uw logische app en stel de toegang van die identiteit in op de doel bron. Zie [toegang tot Azure-resources verifiëren door beheerde identiteiten te gebruiken in azure Logic apps](../logic-apps/create-managed-service-identity.md).
+
+1. Schakel de volgende stappen uit in uw Azure-functie en-functie-app:
+
+   * [Anonieme verificatie instellen in uw functie](#set-authentication-function-app)
+   * [Azure AD-verificatie instellen in uw functie-app](#set-azure-ad-authentication)
+
+<a name="set-authentication-function-app"></a>
+
+### <a name="set-up-anonymous-authentication-in-your-function"></a>Anonieme verificatie instellen in uw functie
+
+Als u de door het systeem toegewezen identiteit van uw logische app in uw Azure-functie wilt gebruiken, stelt u het verificatie niveau van uw functie in op anoniem. Anders genereert uw logische app de fout ' onjuiste aanvraag '.
+
+1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze. Deze stappen gebruiken ' FabrikamFunctionApp ' als de voor beeld-functie-app.
+
+1. Selecteer **platform functies**in het deel venster functie-app. Onder **ontwikkelingsprogram ma's**selecteert u **geavanceerde hulp middelen (kudu)** .
+
+   ![Geavanceerde hulp middelen voor kudu openen](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
+
+1. Selecteer op de titel balk van de kudu-website in het menu **debug console** de optie **cmd**.
+
+   ![Selecteer de optie ' CMD ' in het menu Debug console](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
+
+1. Nadat de volgende pagina wordt weer gegeven, selecteert u in de mappen lijst **site** > **wwwroot** > *uw-functie*. Deze stappen gebruiken ' FabrikamAzureFunction ' als voorbeeld functie.
+
+   ![Selecteer ' site ' > ' wwwroot ' > uw functie](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
+
+1. Open het `function.json` bestand om het te bewerken.
+
+   ![Klik op bewerken voor het bestand function. json](./media/logic-apps-azure-functions/edit-function-json-file.png)
+
+1. Controleer in het `bindings`-object of de eigenschap `authLevel` bestaat. Als de eigenschap bestaat, stelt u de waarde van de eigenschap in op `anonymous`. Als dat niet het geval is, voegt u die eigenschap toe en stelt u de waarde in.
+
+   ![De eigenschap authLevel toevoegen en instellen op anoniem](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
+
+1. Wanneer u klaar bent, slaat u de instellingen op en gaat u verder met de volgende sectie.
+
+<a name="set-azure-ad-authentication"></a>
+
+### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>Azure AD-verificatie instellen voor uw functie-app
+
+Voordat u met deze taak begint, zoekt en plaatst u deze waarden voor later gebruik:
+
+* De object-ID die wordt gegenereerd voor de door het systeem toegewezen identiteit die uw logische app vertegenwoordigt
+
+  * Als u deze object-ID wilt genereren, moet u de door [het systeem toegewezen identiteit van uw logische app inschakelen](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
+
+  * Als u deze object-ID niet wilt vinden, opent u de logische app in de ontwerp functie voor logische apps. Selecteer onder **instellingen**in het menu van de logische app de optie **identiteit** > **systeem is toegewezen**.
+
+* De Directory-ID voor uw Tenant in Azure Active Directory (Azure AD)
+
+  Als u de Directory-ID van uw Tenant wilt ophalen, kunt u de [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Power shell-opdracht uitvoeren. Of voer de volgende stappen uit in het Azure Portal:
+
+  1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze.
+
+  1. Zoek en selecteer uw Azure AD-Tenant. Deze stappen gebruiken ' fabrikam ' als voor beeld-Tenant.
+
+  1. Klik in het menu van de Tenant onder **beheren**op **Eigenschappen**.
+
+  1. Kopieer de Directory-ID van uw Tenant, bijvoorbeeld en sla deze ID op voor later gebruik.
+
+     ![De Directory-ID van de Azure AD-Tenant zoeken en kopiëren](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
+
+* De resource-ID voor de doel resource waartoe u toegang wilt krijgen
+
+  * Als u deze resource-Id's wilt vinden, controleert u de [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
+  > [!IMPORTANT]
+  > Deze resource-ID moet exact overeenkomen met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes.
+
+  Deze resource-ID is ook dezelfde waarde die u later in de eigenschap **doel groep** gebruikt bij het [instellen van uw functie actie om de door het systeem toegewezen identiteit te gebruiken](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
+
+U bent nu klaar om Azure AD-verificatie in te stellen voor uw functie-app.
+
+1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze.
+
+1. Selecteer **platform functies**in het deel venster functie-app. Onder **netwerken**selecteert u **verificatie/autorisatie**.
+
+   ![Instellingen voor verificatie en autorisatie weer geven](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
+
+1. Wijzig de **app service verificatie** -instelling in **op aan**. Selecteer in de lijst **actie die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** de optie **Aanmelden met Azure Active Directory**. Selecteer **Azure Active Directory**onder **verificatie providers**.
+
+   ![Verificatie met Azure AD inschakelen](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
+
+1. Voer de volgende stappen uit in het deel venster **instellingen van Azure Active Directory** :
+
+   1. Stel de **beheer modus** in op **Geavanceerd**.
+
+   1. Voer in de eigenschap **client-id** de object-id in voor de door het systeem toegewezen identiteit van uw logische app.
+
+   1. Voer in de URL-eigenschap van de **Uitgever** de `https://sts.windows.net/` URL in en voeg de Directory-id van uw Azure AD-Tenant toe.
+
+      `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
+
+   1. Voer in de eigenschap **toegestane token doel groepen** de resource-id in voor de doel resource die u wilt openen.
+
+      Deze resource-ID is dezelfde waarde die u later in de eigenschap **doel groep** gebruikt bij het [instellen van uw functie actie om de door het systeem toegewezen identiteit te gebruiken](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
+
+   Uw versie ziet er op dit moment ongeveer als volgt uit:
+
+   ![Verificatie-instellingen Azure Active Directory](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
+
+1. Wanneer u gereed bent, selecteert u **OK**.
+
+1. Ga terug naar de ontwerp functie voor logische apps en volg de [stappen om toegang te verifiëren met de beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over [Logic apps connectors](../connectors/apis-list.md)

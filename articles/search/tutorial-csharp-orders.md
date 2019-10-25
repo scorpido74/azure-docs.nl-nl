@@ -1,24 +1,25 @@
 ---
-title: C#zelf studie over het ordenen van resultaten-Azure Search
-description: Deze zelf studie bouwt voort op het project Zoek resultaten pagineren-Azure Search om de volg orde van de zoek resultaten toe te voegen. Meer informatie over het best Ellen van resultaten voor een primaire eigenschap en voor resultaten met dezelfde primaire eigenschap, hoe u de resultaten van een secundaire eigenschap kunt ordenen. Tot slot leert u hoe u resultaten kunt ordenen op basis van een score profiel.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#zelf studie over het ordenen van resultaten
+titleSuffix: Azure Cognitive Search
+description: In deze zelf studie wordt gebruikgemaakt van het project Zoek resultaten pagineren-Azure Cognitive Search om de volg orde van de zoek resultaten toe te voegen. Meer informatie over het best Ellen van resultaten voor een primaire eigenschap en voor resultaten met dezelfde primaire eigenschap, hoe u de resultaten van een secundaire eigenschap kunt ordenen. Tot slot leert u hoe u resultaten kunt ordenen op basis van een score profiel.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327652"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794054"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#vind De resultaten sorteren-Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#zelf studie: de resultaten best Ellen-Azure Cognitive Search
 
 Tot dat moment in onze reeks zelf studies worden resultaten geretourneerd en weer gegeven in een standaard volgorde. Dit kan de volg orde zijn waarin de gegevens zich bevinden, of er is mogelijk een standaard _Score profiel_ gedefinieerd, dat wordt gebruikt wanneer er geen para meters voor de volg orde worden opgegeven. In deze zelf studie gaan we naar de volg orde van de resultaten op basis van een primaire eigenschap en vervolgens voor resultaten die dezelfde primaire eigenschap hebben, de volg orde van de selectie op een secundaire eigenschap. Als alternatief voor het rangschikken op basis van numerieke waarden ziet u in het laatste voor beeld hoe u kunt sorteren op basis van een aangepast Score profiel. We gaan ook iets dieper in op de weer gave van _complexe typen_.
 
-Als u de geretourneerde resultaten eenvoudig wilt vergelijken, wordt dit project gebaseerd op het oneindig terugkerende project dat uC# in de zelf studie [ hebt gemaakt: Zoek resultaten pagineren-Azure Search @ no__t-0 zelf studie.
+Als u de geretourneerde resultaten eenvoudig wilt vergelijken, wordt dit project gebaseerd op het oneindige Blader project dat in de [ C# zelf studie is gemaakt: Zoek resultaten pagineren-Azure Cognitive Search-](tutorial-csharp-paging.md) zelf studie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-Beschikken over de oneindige schuif versie van deC# [ zelf studie: Paginering van zoek resultaten: Azure Search @ no__t-0 project actief. Dit project kan uw eigen versie zijn of installeren vanaf GitHub: [Maak de eerste app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Beschikken over de oneindige schuif versie van de [ C# zelf studie: Zoek resultaten pagineren-Azure Cognitive Search](tutorial-csharp-paging.md) project actief. Dit project kan uw eigen versie zijn of installeren vanaf GitHub: [Maak eerst een app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Resultaten van de order op basis van één eigenschap
 
@@ -127,7 +128,7 @@ Het is niet nodig om een van de modellen te wijzigen om de volg orde in te scha 
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Open de weer gave (index. cshtml) en vervang de rendering-lus ( **&lt;!--de Hotel gegevens weer geven.--&gt;** ) met de volgende code.
+5. Open de weer gave (index. cshtml) en vervang de rendering-lus ( **&lt;!--de Hotel gegevens weer geven&gt;** ) met de volgende code.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -435,7 +436,7 @@ Om resultaten weer te geven op basis van de geografische afstand, zijn verschill
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Hoewel de resultaten door Azure Search zijn geretourneerd met behulp van een filter voor afstand, wordt de berekende afstand tussen de gegevens en het opgegeven punt _niet_ geretourneerd. De waarde in de weer gave of de controller opnieuw berekenen als u deze wilt weer geven in de resultaten.
+3. Hoewel de resultaten door Azure Cognitive Search worden geretourneerd met behulp van een afstands filter, wordt de berekende afstand tussen de gegevens en het opgegeven punt _niet_ geretourneerd. De waarde in de weer gave of de controller opnieuw berekenen als u deze wilt weer geven in de resultaten.
 
     Met de volgende code wordt de afstand tussen twee Lat/Lon-punten berekend.
 
@@ -465,7 +466,7 @@ Om resultaten weer te geven op basis van de geografische afstand, zijn verschill
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Resultaten sorteren op basis van een score profiel
 
-De voor beelden in de zelf studie laten zien hoe u de volg orde van de numerieke waarden (waardering, datum van renovatie, geografische afstand ) kunt best Ellen. Sommige Zoek opdrachten en sommige gegevens zijn echter niet geschikt voor een eenvoudige vergelijking tussen twee gegevens elementen. Azure Search omvat het concept van _scores_. _Score profielen_ kunnen worden opgegeven voor een set gegevens die kan worden gebruikt om complexere en kwalitatieve vergelijkingen te bieden, die het meest waardevol moeten zijn wanneer u gegevens op basis van tekst vergelijkt om te bepalen welke u als eerste moet worden weer gegeven.
+De voor beelden in de zelf studie laten zien hoe u de volg orde van de numerieke waarden (waardering, datum van renovatie, geografische afstand ) kunt best Ellen. Sommige Zoek opdrachten en sommige gegevens zijn echter niet geschikt voor een eenvoudige vergelijking tussen twee gegevens elementen. Azure Cognitive Search omvat het concept van _scores_. _Score profielen_ kunnen worden opgegeven voor een set gegevens die kan worden gebruikt om complexere en kwalitatieve vergelijkingen te bieden, die het meest waardevol moeten zijn wanneer u gegevens op basis van tekst vergelijkt om te bepalen welke u als eerste moet worden weer gegeven.
 
 Score profielen worden niet door gebruikers gedefinieerd, maar doorgaans door beheerders van een gegevensset. Er zijn verschillende Score profielen ingesteld voor de hotels-gegevens. Laten we eens kijken hoe een score profiel is gedefinieerd en probeer vervolgens code te schrijven om erop te zoeken.
 
@@ -543,7 +544,7 @@ Laten we eens kijken naar drie voor beelden van Score profielen _en bepalen hoe 
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Code toevoegen aan de weer gave om profielen te vergelijken
 
-1. Open het bestand index. cshtml en vervang de sectie &lt;body @ no__t-1 door de volgende code.
+1. Open het bestand index. cshtml en vervang de sectie &lt;Body&gt; door de volgende code.
 
     ```cs
     <body>
@@ -955,9 +956,9 @@ Laten we eens kijken naar drie voor beelden van Score profielen _en bepalen hoe 
 
 4. Probeer het profiel ' op renovated datum/beoordeling ' om te zien of u de verwachte waarde krijgt. Alleen onlangs gerenovatedeerde hotels moeten een _nieuwe_ verbetering hebben.
 
-### <a name="resources"></a>Resources
+### <a name="resources"></a>Bronnen
 
-Zie voor meer informatie de volgende [Score profielen toevoegen aan een Azure search index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Zie voor meer informatie de volgende [Score profielen toevoegen aan een Azure Cognitive search-index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Opgedane kennis
 
@@ -971,6 +972,6 @@ Houd rekening met de volgende Takeaways van dit project:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt deze reeks C# zelf studies voltooid. u moet waardevolle kennis van de Azure Search-api's hebben opgedaan.
+U hebt deze reeks C# zelf studies voltooid. u moet waardevolle kennis van de Azure Cognitive Search-api's hebben opgedaan.
 
-Voor verdere Naslag informatie en zelf studies kunt u overwegen [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)te bladeren of de andere zelf studies in de [Azure Search documentatie](https://docs.microsoft.com/azure/search/).
+Voor verdere Naslag informatie en zelf studies kunt u overwegen [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)te bladeren of de andere zelf studies in de [documentatie van Azure Cognitive Search](https://docs.microsoft.com/azure/search/).

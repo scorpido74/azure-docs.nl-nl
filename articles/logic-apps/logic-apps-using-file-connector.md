@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met on-premises - Azure Logic Apps-bestandssystemen
-description: Automatiseren van taken en werkstromen die verbinding met on-premises bestandssystemen met de File System-connector via de on-premises gegevensgateway in Azure Logic Apps maken
+title: Verbinding maken met bestands systemen on-premises-Azure Logic Apps
+description: Taken en werk stromen automatiseren die verbinding maken met on-premises bestands systemen met de bestandssysteem connector via de on-premises gegevens gateway in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,94 +9,94 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 5a6a57fb05d59e70df13f6800c8fa7bf87df91c6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295910"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799702"
 ---
-# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestandssystemen met Azure Logic Apps
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestands systemen met Azure Logic Apps
 
-Met de File System-connector en Azure Logic Apps, kunt u geautomatiseerde taken en werkstromen die maken en beheren van bestanden op een on-premises-bestand delen, bijvoorbeeld:  
+Met de bestandssysteem connector en Azure Logic Apps kunt u geautomatiseerde taken en werk stromen maken om bestanden te maken en te beheren op een on-premises bestands share, bijvoorbeeld:  
 
-- Maken, ophalen, toevoegen, bijwerken en verwijderen van bestanden.
-- Lijst van bestanden in mappen of hoofdmappen.
-- Inhoud van bestanden en metagegevens ophalen.
+- Bestanden maken, ophalen, toevoegen, bijwerken en verwijderen.
+- Bestanden in mappen of hoofd mappen weer geven.
+- Bestands inhoud en meta gegevens ophalen.
 
-Dit artikel wordt beschreven hoe u kunt verbinding maken met een on-premises bestandssysteem zoals is beschreven in dit voorbeeldscenario: een bestand dat geüpload naar Dropbox naar een bestandsshare kopiëren en vervolgens een e-mail verzenden. Veilig verbinding maken en toegang tot on-premises systemen, logic apps gebruikt de [on-premises gegevensgateway](../logic-apps/logic-apps-gateway-connection.md). Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Connector-specifieke technische informatie, Zie de [File System-connector reference](/connectors/filesystem/).
+In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises bestands systeem, zoals wordt beschreven in dit voorbeeld scenario: Kopieer een bestand dat is geüpload naar Dropbox naar een bestands share en verzend vervolgens een e-mail bericht. Logic apps gebruiken de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md)om veilig verbinding te maken en toegang te krijgen tot on-premises systemen. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md). Zie Naslag informatie over de [File System-connector](/connectors/filesystem/)voor connector-specifieke technische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Voordat u logische apps met on-premises systemen, zoals uw bestand system-server verbinden kunt, moet u [installeren en instellen van een on-premises gegevensgateway](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u opgeven voor het gebruik van de gatewayinstallatie, wanneer u de bestand system-verbinding van uw logische app maakt.
+* Voordat u logische apps kunt verbinden met on-premises systemen zoals uw bestandssysteem server, moet u [een on-premises gegevens gateway installeren en instellen](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u opgeven dat u de gateway-installatie wilt gebruiken wanneer u de bestandssysteem verbinding maakt vanuit uw logische app.
 
-* Een [Dropbox-account](https://www.dropbox.com/), waarmee u gratis kunt aanmelden. Referenties voor uw account zijn nodig voor het maken van een verbinding tussen uw logische app en uw Dropbox-account.
+* Een [Dropbox-account](https://www.dropbox.com/), dat u gratis kunt registreren. Uw account referenties zijn nodig voor het maken van een verbinding tussen uw logische app en uw Dropbox-account.
 
-* Toegang tot de computer waarop het bestandssysteem dat u wilt gebruiken. Bijvoorbeeld, als u de data gateway op dezelfde computer als uw bestandssysteem installeert, moet u referenties van het account voor die computer.
+* Toegang tot de computer met het bestands systeem dat u wilt gebruiken. Als u bijvoorbeeld de gegevens gateway op dezelfde computer installeert als uw bestands systeem, hebt u de account referenties voor die computer nodig.
 
-* Een e-mailaccount van een provider die wordt ondersteund door Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
+* Een e-mail account van een provider die wordt ondersteund door Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). In dit voorbeeld moet u een lege, logische app.
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor dit voor beeld hebt u een lege logische app nodig.
 
 ## <a name="add-trigger"></a>Trigger toevoegen
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Typ 'dropbox' als filter in het zoekvak. Selecteer deze trigger uit de lijst met triggers: **Wanneer een bestand wordt gemaakt**
+1. Voer in het zoekvak ' Dropbox ' in als uw filter. Selecteer in de lijst triggers deze trigger: **Wanneer een bestand wordt gemaakt**
 
    ![Dropbox-trigger selecteren](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-1. Meld u aan met uw referenties voor Dropbox-account en verleent toegang tot uw gegevens Dropbox voor Azure Logic Apps.
+1. Meld u aan met de referenties van uw Dropbox-account en machtig toegang tot uw Dropbox-gegevens voor Azure Logic Apps.
 
-1. Geef de vereiste gegevens voor de trigger.
+1. Geef de vereiste informatie op voor de trigger.
 
    ![Dropbox-trigger](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
 ## <a name="add-actions"></a>Acties toevoegen
 
-1. Kies onder de trigger **volgende stap**. Typ 'file system' als filter in het zoekvak. Selecteer deze actie uit de lijst met acties: **Bestand maken**
+1. Kies **volgende stap**onder de trigger. Voer in het zoekvak ' bestands systeem ' in als uw filter. Selecteer in de lijst acties deze actie: **bestand maken**
 
-   ![Bestandssysteem connector vinden](media/logic-apps-using-file-connector/find-file-system-action.png)
+   ![Bestandssysteem connector zoeken](media/logic-apps-using-file-connector/find-file-system-action.png)
 
-1. Als u nog een verbinding naar uw bestandssysteem hebt, wordt u gevraagd om een verbinding te maken.
+1. Als u nog geen verbinding hebt met uw bestands systeem, wordt u gevraagd om een verbinding te maken.
 
    ![Verbinding maken](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Eigenschap | Vereist | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    | -------- | -------- | ----- | ----------- |
-   | **Verbindingsnaam** | Ja | <*naam van de verbinding*> | De naam die u wilt gebruiken voor de verbinding |
-   | **Hoofdmap** | Ja | <*hoofdmap mapnaam*> | De hoofdmap van het bestandssysteem, bijvoorbeeld, als u uw on-premises gegevensgateway, zoals een lokale map geïnstalleerd op de computer waarop de on-premises gegevensgateway is geïnstalleerd, of de map voor een netwerkshare die toegang hebben tot de computer. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de belangrijkste bovenliggende map, dat wordt gebruikt om relatieve paden voor alle bestand gerelateerde acties. |
-   | **Verificatietype** | Nee | <*auth-type*> | Het type verificatie dat uw bestandssysteem, bijvoorbeeld gebruikt **Windows** |
-   | **Gebruikersnaam** | Ja | <*domein*>\\<*gebruikersnaam*> | De gebruikersnaam voor de computer waar u uw bestandssysteem hebt |
-   | **Wachtwoord** | Ja | <*uw wachtwoord*> | Het wachtwoord voor de computer waar u uw bestandssysteem hebt |
-   | **gateway** | Ja | <*installed-gateway-name*> | De naam voor uw eerder geïnstalleerde gateway |
+   | **Verbindingsnaam** | Ja | <*naam* van de verbinding > | De naam die u voor de verbinding wilt hebben |
+   | **Hoofdmap** | Ja | <*root-mapnaam*> | De hoofdmap voor uw bestands systeem, bijvoorbeeld als u de on-premises gegevens gateway hebt geïnstalleerd, zoals een lokale map op de computer waarop de on-premises gegevens gateway is geïnstalleerd, of de map voor een netwerk share waartoe de computer toegang heeft. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de bovenliggende map, die wordt gebruikt voor relatieve paden voor alle bestand-gerelateerde acties. |
+   | **Verificatie type** | Nee | <*Authentication-type*> | Het type verificatie dat door het bestands systeem wordt gebruikt, bijvoorbeeld **Windows** |
+   | **Gebruikersnaam** | Ja | <*domein*>\\<*gebruikers naam*> | De gebruikers naam van de computer waarop u het bestands systeem hebt |
+   | **Wachtwoord** | Ja | <*uw> voor uw wacht woord* | Het wacht woord voor de computer waarop u het bestands systeem hebt |
+   | **#b0** | Ja | <*geïnstalleerd-gateway naam*> | De naam voor de eerder geïnstalleerde gateway |
    |||||
 
 1. Wanneer u klaar bent, kiest u **Maken**.
 
-   Logic Apps configureert en test de verbinding, ervoor te zorgen dat de verbinding naar behoren werkt. Als de verbinding correct is ingesteld, wordt er opties weergegeven voor de actie die u eerder hebt geselecteerd.
+   Logic Apps configureert en test uw verbinding, zodat u zeker weet dat de verbinding goed werkt. Als de verbinding correct is ingesteld, worden er opties weer gegeven voor de actie die u eerder hebt geselecteerd.
 
-1. In de **bestand maken** actie, geef de details op voor het kopiëren van bestanden van Dropbox naar de hoofdmap van uw on-premises bestandsshare. Uitvoer toevoegen uit de vorige stappen, klikt u in de vakken en beschikbare velden selecteren wanneer u de lijst met dynamische inhoud wordt weergegeven.
+1. Geef in de actie **bestand maken** de details op voor het kopiëren van bestanden van Dropbox naar de hoofdmap in uw on-premises bestands share. Als u uitvoer van de vorige stappen wilt toevoegen, klikt u in de vakken en selecteert u uit de beschik bare velden wanneer de lijst met dynamische inhoud wordt weer gegeven.
 
-   ![Actie voor bestanden maken](media/logic-apps-using-file-connector/create-file-filled.png)
+   ![Bestands actie maken](media/logic-apps-using-file-connector/create-file-filled.png)
 
-1. Nu een Outlook-actie waarmee een e-mailbericht wordt verzonden, zodat de juiste gebruikers over het nieuwe bestand weten toevoegen. Voer de ontvangers, de titel en de hoofdtekst van het e-mailbericht. Voor het testen, kunt u uw eigen e-mailadres.
+1. Voeg nu een Outlook-actie toe waarmee een e-mail bericht wordt verzonden, zodat de juiste gebruikers over het nieuwe bestand weten. Voer de ontvangers, de titel en de hoofd tekst van het e-mail bericht in. Voor het testen kunt u uw eigen e-mail adres gebruiken.
 
    ![Actie e-mail verzenden](media/logic-apps-using-file-connector/send-email.png)
 
-1. Sla uw logische app op. Test uw app door een bestand uploaden naar Dropbox.
+1. Sla uw logische app op. Test uw app door een bestand te uploaden naar Dropbox.
 
-   Uw logische app moet het bestand kopiëren naar uw on-premises-bestandsshare en de ontvangers een e-mailbericht verzenden over het gekopieerde bestand.
+   Uw logische app moet het bestand naar uw on-premises bestands share kopiëren en de ontvangers een e-mail sturen over het gekopieerde bestand.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/fileconnector/).
+Raadpleeg de [referentie pagina](/connectors/fileconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [verbinding maken met on-premises gegevens](../logic-apps/logic-apps-gateway-connection.md) 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over het [maken van verbinding met on-premises gegevens](../logic-apps/logic-apps-gateway-connection.md) 
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

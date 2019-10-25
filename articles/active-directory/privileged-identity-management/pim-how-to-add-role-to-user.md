@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5ad03e69df4ca03d58bba98b912ade354f90042e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554307"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809212"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -38,25 +38,25 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
     Als u nog geen Privileged Identity Management in de Azure Portal hebt gestart, gaat u naar aan de slag [met privileged Identity Management](pim-getting-started.md).
 
-1. Klik op **Azure AD-rollen**.
+1. Selecteer **Azure AD-rollen**.
 
-1. Klik op **functies** of **leden**.
+1. Selecteer **functies** of **leden**.
 
     ![De menu opties voor Azure AD-rollen met rollen en leden gemarkeerd](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Klik op **lid toevoegen** om beheerde leden toevoegen te openen.
+1. Selecteer **lid toevoegen** om beheerde leden toevoegen te openen.
 
-1. Klik op **een rol selecteren**, klik op een rol die u wilt beheren en klik vervolgens op **selecteren**.
+1. Selecteer **een rol selecteren**, selecteer een rol die u wilt beheren en selecteer vervolgens **selecteren**.
 
     ![Een rollen paneel met Azure AD-rollen selecteren](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Klik op **leden selecteren**, selecteer de gebruikers die u aan de rol wilt toewijzen en klik vervolgens op **selecteren**.
+1. Selecteer **leden selecteren**, selecteer de gebruikers die u aan de rol wilt toewijzen en selecteer vervolgens **selecteren**.
 
     ![Deel venster leden selecteren waar u een gebruiker kunt selecteren](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. Klik in beheerde leden toevoegen op **OK** om de gebruiker toe te voegen aan de rol.
+1. Selecteer in beheerde leden toevoegen de optie **OK** om de gebruiker aan de rol toe te voegen.
 
-1. Klik in de lijst met rollen op de rol die u zojuist hebt toegewezen om de lijst met leden weer te geven.
+1. Selecteer in de lijst met rollen de rol die u zojuist hebt toegewezen om de lijst met leden weer te geven.
 
      Wanneer de rol wordt toegewezen, wordt de gebruiker die u hebt geselecteerd, weer gegeven in de lijst met leden die in **aanmerking komt** voor de rol.
 
@@ -72,15 +72,15 @@ Standaard zijn nieuwe gebruikers alleen in aanmerking voor een Azure AD-beheerde
 
 1. Open **Azure AD privileged Identity Management**.
 
-1. Klik op **Azure AD-rollen**.
+1. Selecteer **Azure AD-rollen**.
 
-1. Klik op **leden**.
+1. Selecteer **leden**.
 
     ![Azure AD-rollen: leden lijst met de status van de functie en de activering](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Klik op een **in aanmerking komende** rol die u permanent wilt maken.
+1. Selecteer een **in aanmerking komende** rol die u permanent wilt maken.
 
-1. Klik op **meer** en klik vervolgens op **machtiging maken**.
+1. Selecteer **meer** en selecteer vervolgens **machtiging maken**.
 
     ![Deel venster met een gebruiker die in aanmerking komt voor een rol met de meer menu opties open](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
@@ -116,7 +116,9 @@ Volg deze stappen om een specifieke gebruiker te verwijderen uit een Azure AD-be
 
 ## <a name="authorization-error-when-assigning-roles"></a>Autorisatie fout bij het toewijzen van rollen
 
-Als u onlangs Privileged Identity Management hebt ingeschakeld voor een Azure-abonnement en er een autorisatie fout optreedt wanneer u een gebruiker wilt maken die in aanmerking komt voor een Azure AD-beheerdersrol, kan dit zijn omdat de MS-PIM-Service-Principal nog niet over de juiste bevoegdheden. Voor het toewijzen van rollen moet de MS-PIM-service-principal worden toegewezen aan de [rol van beheerder voor gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) in toegangs beheer op basis van rollen voor toegang tot Azure-bronnen (in plaats van Azure AD-beheer rollen). In plaats van te wachten totdat MS-PIM is toegewezen aan de rol beheerder van gebruikers toegang, kunt u deze hand matig toewijzen.
+Scenario: als actieve eigenaar of beheerder van de gebruikers toegang voor een Azure-resource, kunt u uw resource in Privileged Identity Management zien, maar kunt u geen acties uitvoeren zoals het maken van een in aanmerking komende toewijzing of het weer geven van een lijst met roltoewijzingen uit de pagina overzicht van resources. Een van deze acties resulteert in een autorisatie fout.
+
+Voor het toewijzen van rollen moet de MS-PIM-service-principal worden toegewezen aan de [rol van beheerder voor gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) in toegangs beheer op basis van rollen voor toegang tot Azure-bronnen (in plaats van Azure AD-beheer rollen). In plaats van te wachten totdat MS-PIM is toegewezen aan de rol beheerder van gebruikers toegang, kunt u deze hand matig toewijzen.
 
 Met de volgende stappen wordt de rol gebruikers toegang beheerder toegewezen aan de MS-PIM-service-principal voor een abonnement.
 
@@ -147,7 +149,6 @@ Met de volgende stappen wordt de rol gebruikers toegang beheerder toegewezen aan
    Na enkele ogen blikken is de MS-PIM-Service-Principal toegewezen aan de rol van beheerder voor gebruikers toegang op het abonnements bereik.
 
    ![Blade toegangs beheer (IAM) met de toewijzing van de rol beheerder van gebruikers toegang voor MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 952bcb85484e885d45876de1e4cf3326db0a146a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693392"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786066"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -163,7 +163,7 @@ Windows Update kunnen worden gewijzigd door verschillende register sleutels, waa
 
 ### <a name="resolution"></a>Resolutie
 
-Controleer de register sleutels die worden vermeld onder [Automatische updates configureren door het REGI ster en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry) [register sleutels te bewerken die worden gebruikt voor het beheren van de herstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) om ervoor te zorgen dat uw computers correct zijn geconfigureerd.
+Controleer de register sleutels die worden vermeld onder [Automatische updates configureren door het REGI ster en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) [register sleutels te bewerken die worden gebruikt voor het beheren van de herstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) om ervoor te zorgen dat uw computers correct zijn geconfigureerd.
 
 ## <a name="failed-to-start"></a>Scenario: in een update-implementatie wordt weer gegeven dat het starten van de computer is mislukt
 
@@ -334,7 +334,7 @@ U kunt de [Windows Update probleemoplossings](https://support.microsoft.com/help
 > [!NOTE]
 > De documentatie van de [Windows Update-probleemoplossings](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) functie geeft aan dat deze is voor gebruik op Windows-clients, maar ook werkt op Windows Server.
 
-## <a name="scenario-update-run-returns-failed-status"></a>Scenario: de update-uitvoering retourneert de status failed
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Scenario: de update-uitvoering retourneert de status failed (Linux)
 
 ### <a name="issue"></a>Probleem
 
@@ -367,7 +367,7 @@ Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het
 ### <a name="machines-dont-install-updates"></a>Computers installeren geen updates
 
 * Voer de updates rechtstreeks op de machine uit. Als de computer de updates niet kan Toep assen, raadpleegt u de [lijst met mogelijke fouten in de hand leiding voor het oplossen van problemen](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
-* Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management).
+* Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet weer gegeven als beschikbaar op mijn computers
 

@@ -1,5 +1,6 @@
 ---
-title: Browsers en webweergaven aanpassen | Micro soft Identity-platform
+title: Browsers en WebView aanpassen
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het aanpassen van de browser ervaring die wordt gebruikt door MSAL voor iOS en macOS voor het aanmelden van gebruikers
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264196"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803373"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: browsers en webweergaven voor iOS/macOS aanpassen
 

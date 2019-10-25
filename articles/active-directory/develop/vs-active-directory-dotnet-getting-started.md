@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure AD in Visual Studio .NET MVC-projecten
+title: Aan de slag met Azure AD in Visual Studio .NET MVC-projecten | Azure
 description: Aan de slag met Azure Active Directory in .NET MVC-projecten na het maken van verbinding met of het maken van een Azure AD met behulp van Visual Studio Connected Services
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852027"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803608"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Aan de slag met Azure Active Directory (ASP.NET MVC-projecten)
 
@@ -31,11 +31,11 @@ Zie [Wat is er gebeurd met mijn MVC-project?](vs-active-directory-dotnet-what-ha
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Verificatie vereisen voor toegang tot controllers
 
-Alle controllers in uw project zijn voorzien van het `[Authorize]` kenmerk. Voor dit kenmerk moet de gebruiker worden geverifieerd voordat ze toegang krijgen tot deze controllers. Als u wilt toestaan dat de controller anoniem wordt geopend, verwijdert u dit kenmerk van de controller. Als u de machtigingen op een meer gedetailleerd niveau wilt instellen, past u het kenmerk toe op elke methode waarvoor autorisatie is vereist in plaats van het toe te passen op de klasse controller.
+Alle controllers in uw project zijn voorzien van het kenmerk `[Authorize]`. Voor dit kenmerk moet de gebruiker worden geverifieerd voordat ze toegang krijgen tot deze controllers. Als u wilt toestaan dat de controller anoniem wordt geopend, verwijdert u dit kenmerk van de controller. Als u de machtigingen op een meer gedetailleerd niveau wilt instellen, past u het kenmerk toe op elke methode waarvoor autorisatie is vereist in plaats van het toe te passen op de klasse controller.
 
 ## <a name="adding-signin--signout-controls"></a>Besturings elementen voor aanmelden/afmelden toevoegen
 
-Als u de besturings elementen voor aanmelden/afmelden wilt toevoegen aan uw weer `_LoginPartial.cshtml` gave, kunt u de gedeeltelijke weer gave gebruiken om de functionaliteit toe te voegen aan een van uw weer gaven. Hier volgt een voor beeld van de functionaliteit die is toegevoegd `_Layout.cshtml` aan de standaard weergave. (Let op het laatste element in de div met Class-navigatie balk-samen vouwen):
+Als u de besturings elementen voor aanmelden/afmelden wilt toevoegen aan uw weer gave, kunt u de `_LoginPartial.cshtml` gedeeltelijke weer gave gebruiken om de functionaliteit toe te voegen aan een van uw weer gaven. Hier volgt een voor beeld van de functionaliteit die is toegevoegd aan de standaard weer gave `_Layout.cshtml`. (Let op het laatste element in de div met Class-navigatie balk-samen vouwen):
 
 ```html
 <!DOCTYPE html>

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: c5aa7af1ca6f4fe0768add47d2037d797e4ef99b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613245"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801952"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Geavanceerde encoding-werkstromen maken met Workflow Designer  
 ## <a name="overview"></a>Overzicht
@@ -37,7 +37,7 @@ Voor beelden van werk stromen die u kunt maken zijn:
 Dit hulp programma kan ook worden gebruikt om een van onze [gepubliceerde werk stromen](media-services-workflow-designer.md#existing_workflows)te wijzigen. 
 
 > [!NOTE]
-> Neem contact op mepd@microsoft.commet om uw exemplaar van het Workflow Designer-hulp programma te verkrijgen.
+> Neem contact op met mepd@microsoft.comom uw exemplaar van het Workflow Designer-hulp programma te verkrijgen.
 
 Zodra een werk stroom bestand is gemaakt, kan het worden geüpload als een Asset en vervolgens worden gebruikt voor het coderen van media bestanden. Zie [geavanceerde code ring met Media Encoder Premium workflow](media-services-encode-with-premium-workflow.md)voor meer informatie over het coderen met **Media Encoder Premium workflow** met behulp van **.net**.
 
@@ -79,6 +79,10 @@ Video over dag 3:
 > 
 > 
 
+## <a name="need-help"></a>Hebt u hulp nodig?
+
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+
 ## <a name="next-step"></a>Volgende stap
 Media Services-leertrajecten bekijken.
 
@@ -86,8 +90,6 @@ Media Services-leertrajecten bekijken.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-Als u ondersteuning nodig hebt of vragen hebt over het maken van aangepaste werk stromen in het hulp programma voor werk mepd@microsoft.comstroom ontwerp, stuurt u een e-mail naar. Gebruik de Engelse taal wanneer u uw e-mail bericht schrijft.
 
 ## <a name="see-also"></a>Zie ook
 [Trainings Video's voor Azure Premium encoder Workflow Designer](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)

@@ -1,5 +1,6 @@
 ---
-title: Identiteit voor Azure-app maken met PowerShell | Microsoft Docs
+title: Identiteit voor Azure-app maken met Power shell
+titleSuffix: Microsoft identity platform
 description: Hierin wordt beschreven hoe u met Azure PowerShell een Azure Active Directory-toepassing en service-principal maakt en toegang tot resources verleent via toegangsbeheer op basis van rollen. Het laat zien hoe u de toepassing verifieert met een certificaat.
 services: active-directory
 documentationcenter: na
@@ -17,12 +18,12 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295457"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803816"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Procedure: Azure PowerShell gebruiken om een service-principal te maken met een certificaat
 

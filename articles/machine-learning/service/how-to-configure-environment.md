@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598428"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804148"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving configureren voor Azure Machine Learning
 
@@ -305,7 +305,7 @@ Gebruik deze instellingen:
 | Instelling |Van toepassing op| Waarde |
 |----|---|---|
 | Clusternaam |altijd| yourclustername |
-| Databricks Runtime |altijd| Een niet-ML runtime (niet-ML 4. x, 5. x) |
+| Databricks Runtime |altijd|Niet-ML runtime 6,0 (scala 2,11, Spark 2.4.3) |
 | Python-versie |altijd| 3 |
 | IT |altijd| 2 of hoger |
 | VM-typen worker-knoop punt <br>(bepaalt het maximum aantal gelijktijdige iteraties) |Geautomatiseerde machine learning<br>alleen| Voorkeurs-VM geoptimaliseerd voor geheugen |
@@ -346,14 +346,17 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
 
 Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
 
-SDK voor Databricks **_zonder_** geautomatiseerde machine learning ![Azure machine learning SDK voor Databricks ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK voor Databricks **_zonder_** geautomatiseerde machine learning ![Azure machine learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK voor Databricks **met** geautomatiseerde machine learning ![SDK met geautomatiseerde machine learning geïnstalleerd op Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
+SDK voor Databricks **met** geautomatiseerde machine learning ![SDK met geautomatiseerde machine learning geïnstalleerd op Databricks](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Beginnen met verkennen
 
 Uitproberen:
 + Er zijn veel voorbeeld notitieblokken beschikbaar, **maar alleen [deze voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) werken met Azure Databricks.**
+
++ Importeer deze voor beelden rechtstreeks vanuit uw werk ruimte. Zie hieronder: ![Selecteer importeren](media/how-to-configure-environment/azure-db-screenshot.png)
+![import paneel](media/how-to-configure-environment/azure-db-import.png)
 
 + Meer informatie over het [maken van een pijp lijn met Databricks als de trainings Compute](how-to-create-your-first-pipeline.md).
 
@@ -371,7 +374,7 @@ Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK verte
 
 Dit JSON-bestand moet zich in de mapstructuur bevinden die uw python-scripts of Jupyter-notebooks bevat. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map.
 
-Gebruik `ws=Workspace.from_config()` om dit bestand uit uw code te gebruiken. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
+Gebruik `ws=Workspace.from_config()`om dit bestand uit uw code te gebruiken. Met deze code worden de gegevens uit het bestand geladen en wordt verbinding gemaakt met uw werk ruimte.
 
 U kunt het configuratie bestand op drie manieren maken:
 

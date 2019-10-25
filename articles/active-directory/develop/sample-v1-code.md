@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374114"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809297"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory code voorbeelden (v 1.0-eind punt)
 
@@ -81,7 +81,7 @@ De volgende voor beelden illustreren open bare client toepassingen (deskto/pmobi
 
 Client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph | Hiermee wordt een ASP.NET-of ASP.NET Core 2. x-Web-API aangeroepen
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Bureau blad (WPF)           | ![In deze afbeelding wordt het .NETC# /logo weer gegeven](media/sample-v2-code/logo_NET.png)  | Interactief | Onderdeel van [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [DotNet-systeem eigen-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-hand matige-JWT-validatie](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Bureau blad (WPF)           | ![In deze afbeelding wordt het .NETC# /logo weer gegeven](media/sample-v2-code/logo_NET.png)  | Interactief | Onderdeel van [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [DotNet-systeem eigen-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-hand matige-JWT-validatie](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobiel (UWP)            | .![Deze afbeelding toont de .NET-C#/UWP](media/sample-v2-code/logo_Windows.png)   | Interactief | [DotNet-systeem eigen-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Dit voor beeld maakt gebruik van [WAM](/windows/uwp/security/web-account-manager), niet [ADAL.net](https://aka.ms/adalnet)|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-toepassing met behulp van ADAL.net om één Tenant Web-API aan te roepen) </p> [DotNet-webapi-multi tenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-toepassing met ADAL.net voor het aanroepen van een web-API met meerdere tenants)|
 Mobiel (Android, iOS, UWP)   | ![Deze afbeelding toont de .NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interactief | [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobiel (Android)           | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo_Android.png) | Interactief |   [Android](https://github.com/Azure-Samples/active-directory-android) |

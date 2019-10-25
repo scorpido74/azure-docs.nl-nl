@@ -1,5 +1,6 @@
 ---
 title: Hoe en waarom toepassingen worden toegevoegd aan Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Wat betekent het voor een toepassing die wordt toegevoegd aan Azure AD en hoe worden deze daar weer geven?
 services: active-directory
 documentationcenter: ''
@@ -18,23 +19,23 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835387"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803449"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
 Er zijn twee representaties van toepassingen in azure AD: 
 * [Toepassings objecten](app-objects-and-service-principals.md#application-object) -hoewel er [uitzonde ringen](#notes-and-exceptions)zijn, kunnen toepassings objecten worden beschouwd als de definitie van een toepassing.
-* [Service](app-objects-and-service-principals.md#service-principal-object) -principals: kan worden beschouwd als een exemplaar van een toepassing. Service-principals verwijzen doorgaans naar een toepassings object en er kan naar één toepassings object worden verwezen door meerdere service-principals in directory's.
+* [Service-principals](app-objects-and-service-principals.md#service-principal-object) : kan worden beschouwd als een exemplaar van een toepassing. Service-principals verwijzen doorgaans naar een toepassings object en er kan naar één toepassings object worden verwezen door meerdere service-principals in directory's.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Wat zijn toepassings objecten en waar komen ze vandaan?
 U kunt [toepassings objecten](app-objects-and-service-principals.md#application-object) in de Azure portal beheren via de [app registraties](https://aka.ms/appregistrations) . Toepassings objecten beschrijven de toepassing naar Azure AD en kunnen worden beschouwd als de definitie van de toepassing, zodat de service kan weten hoe tokens moeten worden uitgegeven aan de toepassing op basis van de instellingen ervan. Het toepassings object bevinden zich alleen in de basismap, zelfs als dit een multi tenant-toepassing is die service-principals in andere mappen ondersteunt. Het toepassings object kan bestaan uit een van de volgende (evenals aanvullende informatie die hier niet wordt vermeld):
 * Naam, logo en uitgever
-* Omleidings-URI's
+* Omleidings-Uri's
 * Geheimen (symmetrische en/of asymmetrische sleutels die worden gebruikt voor het verifiëren van de toepassing)
 * API-afhankelijkheden (OAuth)
 * Gepubliceerde Api's/bronnen/bereiken (OAuth)
@@ -51,7 +52,7 @@ Toepassings objecten kunnen worden gemaakt via meerdere paden, waaronder:
 * Veel andere onderdelen, inclusief verschillende ontwikkel ervaringen in Azure en in API Explorer-ervaringen op ontwikkel centrums
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Wat zijn service-principals en waar komen ze vandaan?
-U kunt de [service](app-objects-and-service-principals.md#service-principal-object) -principals in de Azure portal beheren via de ervaring van [bedrijfs toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Service-principals zijn datgene wat een toepassing is die verbinding maakt met Azure AD en kan worden beschouwd als het exemplaar van de toepassing in uw Directory. Voor een bepaalde toepassing kan het Maxi maal één toepassings object hebben (dat is geregistreerd in een ' Home ' Directory) en een of meer Service Principal-objecten die exemplaren van de toepassing vertegenwoordigen in elke map waarin deze wordt uitgevoerd. 
+U kunt de [service-principals](app-objects-and-service-principals.md#service-principal-object) in de Azure portal beheren via de ervaring van [bedrijfs toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Service-principals zijn datgene wat een toepassing is die verbinding maakt met Azure AD en kan worden beschouwd als het exemplaar van de toepassing in uw Directory. Voor een bepaalde toepassing kan het Maxi maal één toepassings object hebben (dat is geregistreerd in een ' Home ' Directory) en een of meer Service Principal-objecten die exemplaren van de toepassing vertegenwoordigen in elke map waarin deze wordt uitgevoerd. 
 
 De service-principal kan het volgende omvatten:
 
@@ -104,8 +105,8 @@ Toepassingen die u zelf toevoegt (wordt weer gegeven als **app (uw)** in het dia
   * Claim transformatie regels
   * Kenmerk toewijzingen (gebruikers inrichten)
 * Raadpleeg de documentatie van Azure AD Graph REST API Reference voor meer informatie over de Service-Principal en toepassings objecten:
-  * [Toepassing](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Service Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Modules](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Service-Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Waarom kunnen toepassingen worden geïntegreerd met Azure AD?
 
@@ -137,7 +138,7 @@ Als u nog steeds wilt voor komen dat gebruikers in uw Directory toepassingen reg
 
 * Om te voor komen dat gebruikers namens hun eigen naam worden gezonden:
   1. Ga in het Azure Portal naar de sectie [gebruikers instellingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) onder bedrijfs toepassingen.
-  2. Wijzigings **gebruikers kunnen toestemming geven voor apps die toegang hebben tot Bedrijfs gegevens namens hun naam** .
+  2. Wijzigings **gebruikers kunnen toestemming geven voor apps die toegang hebben tot Bedrijfs gegevens namens hun naam** **.**
      
      > [!NOTE]
      > Als u besluit de toestemming van de gebruiker uit te scha kelen, moet een beheerder toestemming geven voor een nieuwe toepassing die een gebruiker nodig heeft om te worden gebruikt.

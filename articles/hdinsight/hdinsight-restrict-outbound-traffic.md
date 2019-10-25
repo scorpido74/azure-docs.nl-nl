@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 39a7e78085f297838a028489de23c1991b6d672f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693437"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789794"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall (preview-versie)
 
@@ -151,7 +151,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Het integreren van uw Azure Firewall met Azure Monitor-Logboeken is handig wanneer u voor het eerst van een toepassing werkt wanneer u niet op de hoogte bent van alle toepassings afhankelijkheden. U kunt meer informatie over Azure Monitor logboeken van het [analyseren van logboek gegevens in azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Zie [Dit](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) document voor meer informatie over de schaal limieten van Azure firewall en het verhogen van de aanvraag.
+Zie [Dit](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) document of Raadpleeg de [Veelgestelde vragen](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq)voor meer informatie over de schaal limieten van Azure firewall en het aanvragen van verg Roten. 
 
 ## <a name="access-to-the-cluster"></a>Toegang tot het cluster
 Nadat de firewall is geïnstalleerd, kunt u het interne eind punt (`https://<clustername>-int.azurehdinsight.net`) gebruiken om toegang te krijgen tot de Ambari van binnen het VNET. 

@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure multi-factor Authentication-Azure Active Directory
-description: Veelgestelde vragen en antwoorden met betrekking tot Azure multi-factor Authentication.
+title: Veelgestelde vragen over Azure Multi-Factor Authentication-Azure Active Directory
+description: Veelgestelde vragen en antwoorden met betrekking tot Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,41 +11,41 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68811826"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808108"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure multi-factor Authentication
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure Multi-Factor Authentication
 
-Deze veelgestelde vragen antwoorden op veelgestelde vragen over Azure multi-factor Authentication en het gebruik van de multi-factor Authentication-service. Het is onderverdeeld in vragen over de service in het algemeen, facturerings modellen, gebruikers ervaringen en probleem oplossing.
+In deze veelgestelde vragen vindt u antwoorden op veelgestelde vragen over Azure Multi-Factor Authentication en het gebruik van de Multi-Factor Authentication-service. Het is onderverdeeld in vragen over de service in het algemeen, facturerings modellen, gebruikers ervaringen en probleem oplossing.
 
 ## <a name="general"></a>Algemeen
 
-**V: Hoe worden gebruikers gegevens verwerkt door de Azure multi-factor Authentication-Server?**
+**V: hoe worden gebruikers gegevens door Azure Multi-Factor Authentication-server verwerkt?**
 
-Met de multi-factor Authentication-Server worden gebruikers gegevens alleen opgeslagen op de on-premises servers. In de cloud worden geen permanente gebruikersgegevens opgeslagen. Wanneer de gebruiker verificatie in twee stappen uitvoert, verzendt multi-factor Authentication-Server gegevens naar de Azure multi-factor Authentication-Cloud service voor verificatie. De communicatie tussen de multi-factor Authentication-Server en de multi-factor Authentication-Cloud service maakt gebruik van Secure Sockets Layer (SSL) of Transport Layer Security (TLS) via poort 443 uitgaand.
+Met Multi-Factor Authentication-server worden gebruikers gegevens alleen opgeslagen op de on-premises servers. In de cloud worden geen permanente gebruikersgegevens opgeslagen. Wanneer de gebruiker verificatie in twee stappen uitvoert, verzendt Multi-Factor Authentication-server gegevens naar de Azure Multi-Factor Authentication-Cloud service voor verificatie. De communicatie tussen Multi-Factor Authentication-server en de Multi-Factor Authentication-Cloud service maakt gebruik van Secure Sockets Layer (SSL) of Transport Layer Security (TLS) via poort 443 uitgaand.
 
 Wanneer verificatie aanvragen worden verzonden naar de Cloud service, worden gegevens verzameld voor verificatie-en gebruiks rapporten. De volgende gegevens velden zijn opgenomen in verificatie Logboeken in twee stappen:
 
-* **Unieke id** (gebruikers naam of on-premises multi-factor Authentication-Server-ID)
-* **Voor-en achternaam** Beschrijving
-* **E-mail adres** Beschrijving
-* **Telefoon nummer** (bij gebruik van een spraak oproep of SMS-verificatie)
-* **Token van apparaat** (als u de verificatie van mobiele apps gebruikt)
+* **Unieke id** (gebruikers naam of on-premises multi-factor Authentication-Server-id)
+* **Voor-en achternaam** (optioneel)
+* **E-mail adres** (optioneel)
+* **Telefoon nummer** (wanneer u een spraak oproep of SMS-verificatie gebruikt)
+* **Apparaat-token** (bij gebruik van verificatie van mobiele apps)
 * **Verificatie modus**
 * **Verificatie resultaat**
-* **Naam van de multi-factor Authentication-Server**
-* **Multi-factor Authentication-Server-IP**
+* **Multi-Factor Authentication-server naam**
+* **Multi-Factor Authentication-server IP-adres**
 * **Client-IP** (indien beschikbaar)
 
-De optionele velden kunnen worden geconfigureerd in de multi-factor Authentication-Server.
+De optionele velden kunnen worden geconfigureerd in Multi-Factor Authentication-server.
 
 Het verificatie resultaat (geslaagd of geweigerd) en de reden als het is geweigerd, wordt opgeslagen met de verificatie gegevens. Deze gegevens zijn beschikbaar in verificatie-en gebruiks rapporten.
 
-**V: Welke SMS-korte codes worden gebruikt voor het verzenden van SMS-berichten naar mijn gebruikers?**
+**V: welke SMS-korte codes worden gebruikt voor het verzenden van SMS-berichten naar mijn gebruikers?**
 
 In de Verenigde Staten gebruikt micro soft de volgende korte SMS-codes:
 
@@ -59,39 +59,39 @@ In Canada gebruikt micro soft de volgende korte SMS-codes:
    * 759731 
    * 673801
 
-Micro soft biedt geen garantie voor het leveren van consistente en op spraak gebaseerde multi-factor Authentication-prompt met hetzelfde nummer. In het belang van onze gebruikers mag micro soft op elk gewenst moment korte codes toevoegen of verwijderen, aangezien we route aanpassingen aanbrengen om de levering van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
+Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Multi-Factor Authentication op hetzelfde nummer. In het belang van onze gebruikers mag micro soft op elk gewenst moment korte codes toevoegen of verwijderen, aangezien we route aanpassingen aanbrengen om de levering van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
 
 ## <a name="billing"></a>Billing
 
-De meeste facturerings vragen kunnen worden beantwoord door te verwijzen naar de [pagina met prijzen voor multi-factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) of de documentatie over het [ophalen van Azure multi-factor Authentication](concept-mfa-licensing.md).
+U kunt de meeste facturerings vragen beantwoorden door te verwijzen naar de [pagina met multi-factor Authentication prijzen](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) of de documentatie over het [verkrijgen van Azure multi-factor Authentication](concept-mfa-licensing.md).
 
-**V: Zijn mijn organisatie in rekening gebracht voor het verzenden van telefoon gesprekken en SMS-berichten die worden gebruikt voor verificatie?**
+**V: is mijn organisatie in rekening gebracht voor het verzenden van telefoon gesprekken en SMS-berichten die worden gebruikt voor verificatie?**
 
-Nee, er worden geen kosten in rekening gebracht voor afzonderlijke telefoon gesprekken of SMS-berichten die naar gebruikers worden verzonden via Azure multi-factor Authentication. Als u een MFA-provider per verificatie gebruikt, worden er kosten in rekening gebracht voor elke authenticatie, maar niet voor de gebruikte methode.
+Nee, er worden geen kosten in rekening gebracht voor afzonderlijke telefoon gesprekken of SMS-berichten die worden verzonden naar gebruikers via Azure Multi-Factor Authentication. Als u een MFA-provider per verificatie gebruikt, worden er kosten in rekening gebracht voor elke authenticatie, maar niet voor de gebruikte methode.
 
 Uw gebruikers worden mogelijk in rekening gebracht voor de telefoon gesprekken of SMS-berichten die ze ontvangen, op basis van hun persoonlijke telefoon service.
 
-**V: Factureert het facturerings model per gebruiker voor alle ingeschakelde gebruikers, of alleen voor de gebruikers die een verificatie in twee stappen hebben uitgevoerd?**
+**V: factureert het facturerings model per gebruiker voor alle ingeschakelde gebruikers, of alleen voor de gebruikers die een verificatie in twee stappen hebben uitgevoerd?**
 
-De facturering is gebaseerd op het aantal gebruikers dat is geconfigureerd voor het gebruik van multi-factor Authentication, ongeacht of er een maand verificatie met twee stappen is uitgevoerd.
+De facturering is gebaseerd op het aantal gebruikers dat is geconfigureerd voor het gebruik van Multi-Factor Authentication, ongeacht of ze een maand verificatie in twee stappen hebben uitgevoerd.
 
-**V: Hoe werkt de facturering voor multi-factor Authentication?**
+**V: Hoe werkt Multi-Factor Authentication facturering?**
 
 Wanneer u een MFA-provider per gebruiker of per verificatie maakt, wordt het Azure-abonnement van uw organisatie maandelijks gefactureerd op basis van het gebruik. Dit facturerings model is vergelijkbaar met hoe Azure factureert voor gebruik van virtuele machines en websites.
 
-Wanneer u een abonnement voor Azure multi-factor Authentication aanschaft, betaalt uw organisatie alleen de jaarlijkse licentie kosten voor elke gebruiker. MFA-licenties en Office 365-, Azure AD Premium-of Enterprise Mobility + Security bundels worden op deze manier gefactureerd. 
+Wanneer u een abonnement voor Azure Multi-Factor Authentication koopt, betaalt uw organisatie alleen de jaarlijkse licentie kosten voor elke gebruiker. MFA-licenties en Office 365-, Azure AD Premium-of Enterprise Mobility + Security bundels worden op deze manier gefactureerd. 
 
-Meer informatie over uw opties in [Azure multi-factor Authentication ophalen](concept-mfa-licensing.md).
+Meer informatie over uw opties [voor het verkrijgen van Azure multi-factor Authentication](concept-mfa-licensing.md).
 
-**V: Is er een gratis versie van Azure multi-factor Authentication?**
+**V: is er een gratis versie van Azure Multi-Factor Authentication?**
 
 In sommige gevallen Ja.
 
-Multi-factor Authentication voor Azure-beheerders biedt gratis een subset van Azure MFA-functies voor toegang tot micro soft onlineservices, met inbegrip van de [Azure Portal](https://portal.azure.com) en [Microsoft 365 beheer centrum](https://admin.microsoft.com). Deze aanbieding is alleen van toepassing op globale beheerders in Azure Active Directory exemplaren die niet beschikken over de volledige versie van Azure MFA via een MFA-licentie, een bundel of een zelfstandige provider op basis van verbruik. Als uw beheerders de gratis versie gebruiken en u vervolgens een volledige versie van Azure MFA aanschaft, worden alle globale beheerders automatisch uitgebreid naar de betaalde versie.
+Multi-Factor Authentication voor Azure-beheerders bieden gratis een subset van Azure MFA-functies voor toegang tot micro soft onlineservices, met inbegrip van de [Azure Portal](https://portal.azure.com) en [Microsoft 365 beheer centrum](https://admin.microsoft.com). Deze aanbieding is alleen van toepassing op globale beheerders in Azure Active Directory exemplaren die niet beschikken over de volledige versie van Azure MFA via een MFA-licentie, een bundel of een zelfstandige provider op basis van verbruik. Als uw beheerders de gratis versie gebruiken en u vervolgens een volledige versie van Azure MFA aanschaft, worden alle globale beheerders automatisch uitgebreid naar de betaalde versie.
 
-Multi-factor Authentication voor Office 365-gebruikers biedt een subset van Azure MFA-functies zonder kosten voor toegang tot Office 365-Services, waaronder Exchange Online en share point online. Deze aanbieding is van toepassing op gebruikers aan wie een Office 365-licentie is toegewezen, wanneer het bijbehorende exemplaar van Azure Active Directory niet de volledige versie van Azure MFA heeft via een MFA-licentie, een bundel of een zelfstandige provider op basis van verbruik.
+Multi-Factor Authentication voor Office 365-gebruikers bieden een subset van Azure MFA-functies zonder kosten voor toegang tot Office 365-Services, waaronder Exchange Online en share point online. Deze aanbieding is van toepassing op gebruikers aan wie een Office 365-licentie is toegewezen, wanneer het bijbehorende exemplaar van Azure Active Directory niet de volledige versie van Azure MFA heeft via een MFA-licentie, een bundel of een zelfstandige provider op basis van verbruik.
 
-**V: Kan mijn organisatie op elk gewenst moment scha kelen tussen een facturerings model per gebruiker en per verificatie?**
+**V: kan mijn organisatie op elk gewenst moment scha kelen tussen een facturerings model per gebruiker en per verificatie?**
 
 Als uw organisatie MFA aanschaft als zelfstandige service met facturering op basis van verbruik, kiest u een facturerings model wanneer u een MFA-provider maakt. U kunt het facturerings model niet wijzigen nadat een MFA-provider is gemaakt. 
 
@@ -99,23 +99,23 @@ Als uw MFA-provider *niet* is gekoppeld aan een Azure AD-Tenant of als u de nieu
 
 Meer informatie over MFA-providers vindt u in [aan de slag met een Azure multi-factor Authentication-provider](concept-mfa-authprovider.md).
 
-**V: Kan mijn organisatie op elk gewenst moment scha kelen tussen op verbruik gebaseerde facturering en abonnementen (een model op basis van een licentie)?**
+**V: kan mijn organisatie op elk gewenst moment scha kelen tussen op verbruik gebaseerde facturering en abonnementen (een model op basis van een licentie)?**
 
 In sommige gevallen Ja.
 
-Als uw Directory een Azure multi-factor Authentication-provider *per gebruiker* heeft, kunt u MFA-licenties toevoegen. Gebruikers met licenties worden niet meegeteld in de facturering op basis van verbruik per gebruiker. Gebruikers zonder licenties kunnen nog steeds worden ingeschakeld voor MFA via de MFA-provider. Als u licenties aanschaft en toewijst voor alle gebruikers die zijn geconfigureerd voor het gebruik van multi-factor Authentication, kunt u de Azure multi-factor Authentication-provider verwijderen. U kunt altijd een andere MFA-provider per gebruiker maken als u in de toekomst meer gebruikers dan licenties hebt.
+Als uw Directory een Azure Multi-Factor Authentication provider *per gebruiker* heeft, kunt u MFA-licenties toevoegen. Gebruikers met licenties worden niet meegeteld in de facturering op basis van verbruik per gebruiker. Gebruikers zonder licenties kunnen nog steeds worden ingeschakeld voor MFA via de MFA-provider. Als u licenties aanschaft en toewijst voor alle gebruikers die zijn geconfigureerd voor het gebruik van Multi-Factor Authentication, kunt u de Azure Multi-Factor Authentication-provider verwijderen. U kunt altijd een andere MFA-provider per gebruiker maken als u in de toekomst meer gebruikers dan licenties hebt.
 
-Als uw Directory een Azure multi-factor Authentication-provider *per verificatie* heeft, wordt u altijd gefactureerd voor elke verificatie, zolang de MFA-provider is gekoppeld aan uw abonnement. U kunt MFA-licenties toewijzen aan gebruikers, maar u wordt nog steeds gefactureerd voor elke verificatie aanvraag in twee stappen, ongeacht of deze afkomstig is van iemand met een MFA-licentie die is toegewezen of niet.
+Als uw Directory een Azure Multi-Factor Authentication provider *per verificatie* heeft, wordt u altijd gefactureerd voor elke verificatie, zolang de MFA-provider is gekoppeld aan uw abonnement. U kunt MFA-licenties toewijzen aan gebruikers, maar u wordt nog steeds gefactureerd voor elke verificatie aanvraag in twee stappen, ongeacht of deze afkomstig is van iemand met een MFA-licentie die is toegewezen of niet.
 
-**V: Moet mijn organisatie identiteiten gebruiken en synchroniseren voor het gebruik van Azure multi-factor Authentication?**
+**V: is mijn organisatie in staat om identiteiten te gebruiken en te synchroniseren om Azure Multi-Factor Authentication te gebruiken?**
 
-Als uw organisatie gebruikmaakt van een facturerings model op basis van verbruik, is Azure Active Directory optioneel, maar niet vereist. Als uw MFA-provider niet is gekoppeld aan een Azure AD-Tenant, kunt u de Azure multi-factor Authentication-server alleen on-premises implementeren.
+Als uw organisatie gebruikmaakt van een facturerings model op basis van verbruik, is Azure Active Directory optioneel, maar niet vereist. Als uw MFA-provider niet is gekoppeld aan een Azure AD-Tenant, kunt u Azure Multi-Factor Authentication-server alleen on-premises implementeren.
 
 Azure Active Directory is vereist voor het licentie model, omdat licenties worden toegevoegd aan de Azure AD-Tenant wanneer u deze aanschaft en toewijst aan gebruikers in de Directory.
 
 ## <a name="manage-and-support-user-accounts"></a>Gebruikers accounts beheren en ondersteunen
 
-**V: Wat moet ik vertellen dat mijn gebruikers doen als ze geen antwoord op hun telefoon ontvangen?**
+**V: wat moet ik vertellen dat mijn gebruikers doen als ze geen antwoord op hun telefoon ontvangen?**
 
 Laat uw gebruikers vijf keer over vijf minuten proberen om een telefoon gesprek of SMS voor verificatie te ontvangen. Micro soft gebruikt meerdere providers voor het leveren van aanroepen en SMS-berichten. Als dit niet werkt, opent u een ondersteunings aanvraag van micro soft om verder te gaan met het oplossen van problemen.
 
@@ -123,15 +123,15 @@ Als de bovenstaande stappen niet werken, is het niet mogelijk dat al uw gebruike
 
 U kunt uw gebruikers laten wijzen naar de [gids voor probleem oplossing voor eind gebruikers](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
 
-**V: Wat moet ik doen als een van mijn gebruikers geen toegang kan krijgen tot hun account?**
+**V: wat moet ik doen als een van mijn gebruikers geen toegang kan krijgen tot hun account?**
 
 U kunt het account van de gebruiker opnieuw instellen door het registratie proces opnieuw door te voeren. Meer informatie over [het beheren van gebruikers-en apparaatinstellingen met Azure multi-factor Authentication in de Cloud](howto-mfa-userdevicesettings.md).
 
-**V: Wat moet ik doen als een van mijn gebruikers een telefoon kwijtraakt die app-wacht woorden gebruikt?**
+**V: wat moet ik doen als een van mijn gebruikers een telefoon kwijtraakt die app-wacht woorden gebruikt?**
 
 Verwijder alle app-wacht woorden van de gebruiker om onbevoegde toegang te voor komen. Nadat de gebruiker een vervangend apparaat heeft, kunnen de wacht woorden opnieuw worden gemaakt. Meer informatie over [het beheren van gebruikers-en apparaatinstellingen met Azure multi-factor Authentication in de Cloud](howto-mfa-userdevicesettings.md).
 
-**V: Wat gebeurt er als een gebruiker zich niet kan aanmelden bij niet-browser-apps?**
+**V: wat gebeurt er als een gebruiker zich niet kan aanmelden bij niet-browser-apps?**
 
 Als uw organisatie nog steeds verouderde clients gebruikt en u [het gebruik van app-wacht woorden hebt toegestaan](howto-mfa-mfasettings.md#app-passwords), kunnen uw gebruikers zich niet aanmelden bij deze verouderde clients met hun gebruikers naam en wacht woord. In plaats daarvan moeten ze [app-wacht woorden instellen](../user-help/multi-factor-authentication-end-user-app-passwords.md). Uw gebruikers moeten hun aanmeldings gegevens wissen (verwijderen), de app opnieuw starten en u vervolgens aanmelden met de gebruikers naam en het *app-wacht woord* in plaats van het normale wacht woord.
 
@@ -142,15 +142,15 @@ Als uw organisatie geen verouderde clients heeft, mag u uw gebruikers niet toest
 >
 > App-wacht woorden zijn alleen nodig voor apps die moderne authenticatie niet ondersteunen. Office 2013-clients ondersteunen moderne verificatie protocollen, maar moeten worden geconfigureerd. Moderne verificatie is nu beschikbaar voor elke klant die de update van 2015 maart of hoger voor Office 2013 uitvoert. Zie het blog bericht [Updated Office 365 moderne authenticatie](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)voor meer informatie.
 
-**V: Mijn gebruikers zeggen dat ze het tekst bericht soms niet ontvangen of dat ze reageren op tekst berichten in twee richtingen, maar dat er een time-out optreedt voor de verificatie.**
+**V: mijn gebruikers zeggen dat ze het SMS-bericht soms niet ontvangen of dat ze reageren op tekst berichten in twee richtingen, maar dat er een time-out optreedt voor de verificatie.**
 
 Het leveren van SMS-berichten en de ontvangst van antwoorden in twee richtings SM'S worden niet gegarandeerd omdat er niet-instel bare factoren zijn die van invloed kunnen zijn op de betrouw baarheid van de service. Deze factoren zijn onder andere het doel land/de regio, de mobiele telefoon provider en de signaal sterkte.
 
-Als uw gebruikers vaak problemen ondervinden met het betrouw bare ontvangen van SMS-berichten, kunt u ze vertellen dat ze de mobiele app of de telefoon gesprek methode moeten gebruiken. De mobiele app kan meldingen ontvangen via mobiele en Wi-Fi-verbindingen. Daarnaast kan de mobiele app verificatie codes genereren, zelfs wanneer het apparaat helemaal geen signaal heeft. De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)en [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
+Als uw gebruikers vaak problemen ondervinden met het betrouw bare ontvangen van SMS-berichten, kunt u ze vertellen dat ze de mobiele app of de telefoon gesprek methode moeten gebruiken. De mobiele app kan meldingen ontvangen via mobiele en Wi-Fi-verbindingen. Daarnaast kan de mobiele app verificatie codes genereren, zelfs wanneer het apparaat helemaal geen signaal heeft. De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)en [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 Als u tekst berichten moet gebruiken, raden we u aan om in een eenrichtings-SMS te gebruiken in plaats van twee richtings SM'S wanneer dat mogelijk is. Eenrichtings-SMS is betrouwbaarder en Hiermee wordt voor komen dat gebruikers algemene SMS-kosten in rekening worden gebracht bij het beantwoorden van een SMS-bericht dat is verzonden vanuit een ander land/regio.
 
-**V: Kan ik de hoeveelheid tijd wijzigen die gebruikers nodig hebben om de verificatie code van een SMS-bericht in te voeren voordat het systeem time-out heeft?**
+**V: kan ik de hoeveelheid tijd wijzigen die gebruikers nodig hebben om de verificatie code van een SMS-bericht in te voeren voordat het systeem time-out heeft?**
 
 In sommige gevallen moet u Ja. 
 
@@ -166,26 +166,26 @@ Voor twee richtings-SMS-servers met Azure MFA-server kunt u de time-outinstellin
 
 U kunt de time-outinstelling niet configureren voor SMS-eenrichtings verificatie met Azure MFA in de Cloud (met inbegrip van de AD FS adapter of de Network Policy Server extensie). Azure AD slaat de verificatie code voor 180 seconden op. 
 
-**V: Kan ik hardware-tokens gebruiken met de Azure multi-factor Authentication-Server?**
+**V: kan ik hardware-tokens gebruiken met Azure Multi-Factor Authentication-server?**
 
-Als u Azure multi-factor Authentication-Server gebruikt, kunt u open-time-tokens (op basis van OATH), eenmalige wacht woorden (mobiele TOTP) van derden importeren en deze vervolgens gebruiken voor verificatie in twee stappen.
+Als u Azure Multi-Factor Authentication-server gebruikt, kunt u open-time-mobiele TOTP (OATH, one-time password) van derden importeren en deze vervolgens gebruiken voor verificatie in twee stappen.
 
-U kunt ActiveIdentity-tokens gebruiken die OATH mobiele TOTP-tokens zijn als u de geheime sleutel in een CSV-bestand plaatst en op de Azure multi-factor Authentication-server importeert. U kunt OATH-tokens gebruiken met Active Directory Federation Services (ADFS), op formulieren gebaseerde verificatie van Internet Information Server (IIS) en externe verificatie Dial-in User Service (RADIUS) zolang het client systeem de gebruikers invoer kan accepteren.
+U kunt ActiveIdentity-tokens gebruiken die OATH mobiele TOTP-tokens zijn als u de geheime sleutel in een CSV-bestand plaatst en naar Azure Multi-Factor Authentication-server importeert. U kunt OATH-tokens gebruiken met Active Directory Federation Services (ADFS), op formulieren gebaseerde verificatie van Internet Information Server (IIS) en Remote Authentication Dial-In User Service (RADIUS) zolang het client systeem de invoer van de gebruiker kan accepteren.
 
 U kunt OATH mobiele TOTP-tokens van derden importeren met de volgende indelingen:  
 
 - Portable symmetrische-sleutel container (PSKC)  
 - CSV als het bestand een serie nummer, een geheime sleutel in de basis-32-indeling en een tijds interval bevat  
 
-**V: Kan ik de Azure multi-factor Authentication-Server gebruiken voor het beveiligen van Terminal Services?**
+**V: kan ik Azure Multi-Factor Authentication-server gebruiken om Terminal Services te beveiligen?**
 
 Ja, maar als u Windows Server 2012 R2 of hoger gebruikt, kunt u alleen Terminal Services beveiligen met behulp van Extern bureaublad-gateway (RD-gateway).
 
-Wijzigingen in de beveiliging in Windows Server 2012 R2 gewijzigd hoe Azure multi-factor Authentication-Server verbinding maakt met het beveiligings pakket voor de lokale beveiligings autoriteit (LSA) in Windows Server 2012 en eerdere versies. Voor versies van Terminal Services in Windows Server 2012 of eerder kunt u [een toepassing beveiligen met Windows-verificatie](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure). Als u Windows Server 2012 R2 gebruikt, hebt u RD-gateway nodig.
+Wijzigingen in de beveiliging in Windows Server 2012 R2 gewijzigd hoe Azure Multi-Factor Authentication-server verbinding maakt met het LSA-beveiligings pakket (lokale beveiligings autoriteit) in Windows Server 2012 en eerdere versies. Voor versies van Terminal Services in Windows Server 2012 of eerder kunt u [een toepassing beveiligen met Windows-verificatie](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure). Als u Windows Server 2012 R2 gebruikt, hebt u RD-gateway nodig.
 
-**V: Ik heb een beller-ID geconfigureerd in MFA-server, maar mijn gebruikers ontvangen nog steeds multi-factor Authentication-oproepen van een anonieme aanroeper.**
+**V: Ik heb een beller-ID geconfigureerd in MFA-server, maar mijn gebruikers ontvangen nog steeds Multi-Factor Authentication aanroepen van een anonieme aanroeper.**
 
-Wanneer multi-factor Authentication-aanroepen via het open bare telefoonnet werk worden geplaatst, worden ze soms gerouteerd via een transporteur die geen beller-ID ondersteunt. Als gevolg hiervan is de beller-ID niet gegarandeerd, zelfs al wordt deze door het multi-factor Authentication-systeem altijd verzonden.
+Wanneer Multi-Factor Authentication aanroepen via het open bare telefoonnet werk worden geplaatst, worden ze soms doorgestuurd via een transporteur die geen beller-ID ondersteunt. Als gevolg hiervan is de beller-ID niet gegarandeerd, zelfs al wordt deze door het Multi-Factor Authentication-systeem altijd verzonden.
 
 **V: Waarom worden mijn gebruikers gevraagd om hun beveiligings gegevens te registreren?**
 Er zijn verschillende redenen waarom gebruikers kunnen worden gevraagd om hun beveiligings gegevens te registreren:
@@ -200,7 +200,7 @@ Er zijn verschillende redenen waarom gebruikers kunnen worden gevraagd om hun be
 
 ## <a name="errors"></a>Fouten
 
-**V: Wat moeten gebruikers doen als het fout bericht ' verificatie aanvraag is niet voor een geactiveerd account ' wordt weer gegeven bij het gebruik van meldingen voor mobiele apps?**
+**V: wat moeten gebruikers doen als ze een fout bericht ' verificatie aanvraag is niet voor een geactiveerd account ' zien wanneer ze mobiele app-meldingen gebruiken?**
 
 Laat ze deze procedure volgen om hun account uit de mobiele app te verwijderen en voeg het vervolgens opnieuw toe:
 
@@ -209,7 +209,7 @@ Laat ze deze procedure volgen om hun account uit de mobiele app te verwijderen e
 3. Verwijder het bestaande account uit de mobiele app.
 4. Klik op **configureren**en volg de instructies voor het opnieuw configureren van de mobiele app.
 
-**V: Wat moeten gebruikers doen als ze een 0x800434D4L-fout bericht zien wanneer ze zich aanmelden bij een niet-browser toepassing?**
+**V: wat moeten gebruikers doen als ze een 0x800434D4L-fout bericht zien wanneer ze zich aanmelden bij een niet-browser toepassing?**
 
 De 0x800434D4L-fout treedt op wanneer u zich probeert aan te melden bij een niet-browser toepassing, die is geïnstalleerd op een lokale computer en niet werkt met accounts waarvoor verificatie in twee stappen is vereist.
 

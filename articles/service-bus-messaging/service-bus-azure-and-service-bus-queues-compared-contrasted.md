@@ -1,5 +1,5 @@
 ---
-title: Azure Storage wacht rijen en Service Bus wacht rijen vergeleken en met contrast | Microsoft Docs
+title: Azure Storage-wacht rijen en Service Bus wachtrijen vergelijken
 description: Analyseer verschillen en overeenkomsten tussen twee typen wacht rijen die door Azure worden aangeboden.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376334"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792688"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Opslag wachtrijen en Service Bus wacht rijen-vergeleken en daarentegen
-In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: Opslag wachtrijen en wacht rijen voor Service Bus. U kunt deze informatie gebruiken om de verschillende technologieën te vergelijken en tegen elkaar af te zetten zodat u een weloverwogen beslissing kunt nemen en de oplossing kiest die beste voldoet aan uw behoeften.
+In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: opslag wachtrijen en Service Bus wacht rijen. U kunt deze informatie gebruiken om de verschillende technologieën te vergelijken en tegen elkaar af te zetten zodat u een weloverwogen beslissing kunt nemen en de oplossing kiest die beste voldoet aan uw behoeften.
 
 ## <a name="introduction"></a>Inleiding
-Azure ondersteunt twee typen wachtrij mechanismen: **Opslag wachtrijen** en **wacht rijen voor service bus**.
+Azure ondersteunt twee typen wachtrij mechanismen: **opslag wachtrijen** en **wacht rijen voor service bus**.
 
 **Opslag wachtrijen**, die deel uitmaken van de [Azure-opslag](https://azure.microsoft.com/services/storage/) infrastructuur, bieden een eenvoudige, op rest gebaseerde interface voor get/put/Peek, die betrouw bare, permanente berichten binnen en tussen services biedt.
 
@@ -67,7 +67,7 @@ De tabellen in de volgende secties bieden een logische groepering van wachtrij f
 ## <a name="foundational-capabilities"></a>Basis mogelijkheden
 In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opslag wachtrijen en Service Bus-wacht rijen vergeleken.
 
-| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Garantie best Ellen |**Nee** <br/><br>Zie de eerste opmerking in de sectie ' aanvullende informatie ' voor meer informatie.</br> |**Ja, eerst-in-first-out (FIFO)**<br/><br>(door het gebruik van Messa ging-sessies) |
 | Leverings garantie |**Mini maal één keer** |**Mini maal één keer** (met behulp van de PeekLock-ontvangst modus-dit is de standaard instelling) <br/><br/>**Mini maal één keer** (met behulp van de ReceiveAndDelete-ontvangst modus) <br/> <br/> Meer informatie over verschillende [ontvangst modi](service-bus-queues-topics-subscriptions.md#receive-modes)  |
@@ -76,7 +76,7 @@ In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opsl
 | Push-stijl-API |**Nee** |**Ja**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) -en **OnMessage** -sessies .net API. |
 | Ontvangst modus |**& Lease bekijken** |**& Vergrendeling bekijken**<br/><br/>**Ontvangen & verwijderen** |
 | Modus voor exclusieve toegang |**Op basis van lease** |**Op basis van vergren deling** |
-| Duur van de lease en vergren deling |**30 seconden (standaard)**<br/><br/>**7 dagen (Maxi maal)** (U kunt een bericht lease vernieuwen of vrijgeven met behulp van de [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) -API.) |**60 seconden (standaard)**<br/><br/>U kunt een bericht vergrendeling vernieuwen met behulp van de [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) -API. |
+| Duur van de lease en vergren deling |**30 seconden (standaard)**<br/><br/>**7 dagen (Maxi maal)** (u kunt een bericht lease vernieuwen of vrijgeven met behulp van de [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) -API.) |**60 seconden (standaard)**<br/><br/>U kunt een bericht vergrendeling vernieuwen met behulp van de [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) -API. |
 | Precisie van lease/vergren deling |**Bericht niveau**<br/><br/>(elk bericht kan een andere time-outwaarde hebben, die vervolgens naar behoefte kan worden bijgewerkt tijdens het verwerken van het bericht met behulp van de [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) -API) |**Wachtrij niveau**<br/><br/>(elke wachtrij heeft een vergrendelings precisie die is toegepast op alle berichten, maar u kunt de vergren deling vernieuwen met behulp van de [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) -API.) |
 | Batch ontvangen |**Ja**<br/><br/>(expliciet opgeven van het aantal berichten bij het ophalen van berichten, Maxi maal 32 berichten) |**Ja**<br/><br/>(impliciet het inschakelen van een eigenschap vooraf ophalen of expliciet door het gebruik van trans acties) |
 | Batch-verzen ding |**Nee** |**Ja**<br/><br/>(door het gebruik van trans acties of batch verwerking aan client zijde) |
@@ -99,7 +99,7 @@ In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opsl
 ## <a name="advanced-capabilities"></a>Geavanceerde mogelijkheden
 In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Service Bus wachtrijen vergeleken.
 
-| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Geplande bezorging |**Ja** |**Ja** |
 | Automatische onbestelbare berichten |**Nee** |**Ja** |
@@ -107,7 +107,7 @@ In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Ser
 | Ondersteuning voor verontreinigd bericht |**Ja** |**Ja** |
 | In-place update |**Ja** |**Ja** |
 | Transactie logboek aan de server zijde |**Ja** |**Nee** |
-| Metrische gegevens over opslag |**Ja**<br/><br/>**Minuut metrieken**: voorziet in realtime metrische gegevens voor beschik BAARHEID, TPS, API-oproep aantallen, fout aantallen en meer, in realtime (geaggregeerd per minuut en gerapporteerd binnen een paar minuten vanaf wat zojuist in de productie is opgetreden. Zie [informatie over Opslaganalyse metrische](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)gegevens voor meer informatie. |**Ja**<br/><br/>(bulk query's door het aanroepen van [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
+| Metrische opslag gegevens |**Ja**<br/><br/>**Minuut metrieken**: voorziet in realtime metrische gegevens voor beschik BAARHEID, TPS, API-oproep aantallen, fout aantallen en meer, in realtime (geaggregeerd per minuut en gerapporteerd binnen een paar minuten vanaf wat zojuist in de productie is opgetreden. Zie [informatie over Opslaganalyse metrische](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)gegevens voor meer informatie. |**Ja**<br/><br/>(bulk query's door het aanroepen van [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
 | Statusbeheer |**Nee** |**Ja**<br/><br/>[Micro soft. ServiceBus. Messa ging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [ Micro soft. ServiceBus. Messa ging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Bericht automatisch door sturen |**Nee** |**Ja** |
 | Wachtrij functie leegmaken |**Ja** |**Nee** |
@@ -130,12 +130,12 @@ In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Ser
 ## <a name="capacity-and-quotas"></a>Capaciteit en quota's
 In deze sectie worden opslag wachtrijen en Service Bus wachtrijen vergeleken met het perspectief van de [capaciteit en quota's](service-bus-quotas.md) die van toepassing kunnen zijn.
 
-| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Maximale wachtrij grootte |**500 TB**<br/><br/>(beperkt tot een [capaciteit van één opslag account](../storage/common/storage-introduction.md#queue-storage)) |**1 GB tot 80 GB**<br/><br/>(gedefinieerd bij het maken van een wachtrij en het [inschakelen van partitionering](service-bus-partitioning.md) – Zie de sectie ' aanvullende informatie ') |
-| Maximale berichtgrootte |**64 kB**<br/><br/>(48 KB wanneer **Base64** -code ring wordt gebruikt)<br/><br/>Azure ondersteunt grote berichten door wacht rijen en blobs te combi neren. op die wijze kunt u Maxi maal 200 GB voor één item in de wachtrij plaatsen. |**256 KB** of **1 MB**<br/><br/>(inclusief header en hoofd tekst, maximum grootte van header: 64 KB).<br/><br/>Is afhankelijk [van de servicelaag](service-bus-premium-messaging.md). |
-| Maximale bericht-TTL |**Oneindig** (vanaf API-versie 2017-07-27) |**TimeSpan.Max** |
-| Maximum aantal wacht rijen |**Onbeperkt** |**10,000**<br/><br/>(per service naam ruimte) |
+| Maximale bericht grootte |**64 kB**<br/><br/>(48 KB wanneer **Base64** -code ring wordt gebruikt)<br/><br/>Azure ondersteunt grote berichten door wacht rijen en blobs te combi neren. op die wijze kunt u Maxi maal 200 GB voor één item in de wachtrij plaatsen. |**256 KB** of **1 MB**<br/><br/>(inclusief header en hoofd tekst, maximale header grootte: 64 KB).<br/><br/>Is afhankelijk [van de servicelaag](service-bus-premium-messaging.md). |
+| Maximale bericht-TTL |**Oneindig** (vanaf API-versie 2017-07-27) |**Time span. Max** |
+| Maximum aantal wacht rijen |**Onbeperkt** |**10.000**<br/><br/>(per service naam ruimte) |
 | Maximum aantal gelijktijdige clients |**Onbeperkt** |**Onbeperkt**<br/><br/>(100 gelijktijdige verbindings limiet geldt alleen voor communicatie op basis van TCP-protocol) |
 
 ### <a name="additional-information"></a>Aanvullende informatie
@@ -149,7 +149,7 @@ In deze sectie worden opslag wachtrijen en Service Bus wachtrijen vergeleken met
 ## <a name="management-and-operations"></a>Beheer en bewerkingen
 In deze sectie worden de beheer functies van opslag wachtrijen en Service Bus wachtrijen vergeleken.
 
-| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Beheer Protocol |**REST over HTTP/HTTPS** |**REST over HTTPS** |
 | Runtime-Protocol |**REST over HTTP/HTTPS** |**REST over HTTPS**<br/><br/>**AMQP 1,0 Standard (TCP met TLS)** |
@@ -173,9 +173,9 @@ In deze sectie worden de beheer functies van opslag wachtrijen en Service Bus wa
 ## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 In deze sectie worden de verificatie-en autorisatie functies beschreven die worden ondersteund door opslag wachtrijen en Service Bus wachtrijen.
 
-| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
-| Authentication |**Symmetrische sleutel** |**Symmetrische sleutel** |
+| Verificatie |**Symmetrische sleutel** |**Symmetrische sleutel** |
 | Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |GEBASEERD |
 | Federatie van ID-provider |**Nee** |**Ja** |
 

@@ -1,61 +1,74 @@
 ---
-title: Kolom patronen in Azure Data Factory gegevens stromen toewijzen
-description: Gegeneraliseerde gegevens transformatie patronen maken met behulp van Azure Data Factory kolom patronen in de toewijzing van gegevens stromen
+title: Kolom patronen in de gegevens stroom van Azure Data Factory toewijzing
+description: Gegeneraliseerde gegevens transformatie patronen maken met behulp van kolom patronen in Azure Data Factory gegevens stromen toewijzen
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/21/2019
+ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388010"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789849"
 ---
-# <a name="mapping-data-flows-column-patterns"></a>Kolom patronen voor gegevens stromen toewijzen
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Kolom patronen gebruiken bij het toewijzen van gegevens stroom
 
+Met verschillende toewijzings gegevensstroom transformaties kunt u verwijzen naar sjabloon kolommen op basis van patronen in plaats van in code vastgelegde kolom namen. Deze overeenkomst wordt ook wel *kolom patronen*genoemd. U kunt patronen definiëren die overeenkomen met kolommen op basis van naam, gegevens type, stroom of positie, in plaats van exacte veld namen te vereisen. Er zijn twee scenario's waarin kolom patronen handig zijn:
 
+* Als binnenkomende bron velden vaak veranderen, zoals het wijzigen van kolommen in tekst bestanden of NoSQL-data bases. Dit scenario wordt schema- [drift](concepts-data-flow-schema-drift.md)genoemd.
+* Als u een gemeen schappelijke bewerking wilt uitvoeren op een grote groep kolommen. Bijvoorbeeld wilt dat elke kolom met ' Total ' in een dubbele waarde wordt omgezet in de kolom naam.
 
-Verschillende Azure Data Factory gegevensstroom transformaties ondersteunen het idee van ' column patronen ', zodat u sjabloon kolommen kunt maken op basis van patronen in plaats van in code vastgelegde kolom namen. U kunt deze functie in de opbouw functie voor expressies gebruiken om patronen te definiëren die overeenkomen met kolommen voor trans formatie in plaats van exacte, specifieke veld namen te vereisen. Patronen zijn nuttig als inkomende bron velden vaak veranderen, met name in het geval van het wijzigen van kolommen in tekst bestanden of NoSQL-data bases. Dit probleem wordt ook wel ' schema drift ' genoemd.
+Kolom patronen zijn momenteel beschikbaar in de afgeleide kolom, aggregatie, selecteren en Sink-trans formaties.
 
-De verwerking van het flexibele schema is momenteel gevonden in de afgeleide kolom en de geaggregeerde trans formaties en de trans formaties Select en Sink als toewijzing op basis van een regel.
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Kolom patronen in afgeleide kolom en aggregatie
+
+Als u een kolom patroon wilt toevoegen in een afgeleide kolom of het tabblad aggregaties van een statistische trans formatie, klikt u op het plus pictogram rechts van een bestaande kolom. Selecteer **kolom patroon toevoegen**. 
+
+![kolom patronen](media/data-flow/columnpattern.png "Kolompatronen")
+
+Gebruik de [expressie Builder](concepts-data-flow-expression-builder.md) om de match-voor waarde in te voeren. Maak een Boole-expressie die overeenkomt met kolommen op basis van de `name`, `type`, `stream`en `position` van de kolom. Het patroon is van invloed op een kolom, die is geplaatste of gedefinieerd, waarbij de voor waarde waar retourneert.
+
+De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waarden van de betrokken kolommen op. Gebruik `$$` om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak linker expressie definieert u de naam en de rechter expressie Box definieert de waarde.
 
 ![kolom patronen](media/data-flow/columnpattern2.png "Kolompatronen")
 
-## <a name="column-patterns"></a>Kolompatronen
-Kolom patronen zijn handig voor het afhandelen van zowel schema-en algemene scenario's. Het is een goed idee om de kolom naam niet volledig te kennen. U kunt overeenkomen met de kolom naam en kolom gegevens type en een expressie maken voor trans formatie waarmee deze bewerking wordt uitgevoerd voor elk veld in de gegevens stroom dat overeenkomt met uw `name` @ no__t-1 @ no__t-2-patronen.
+Het bovenstaande kolom patroon komt overeen met elke kolom van het type Double en maakt één geaggregeerde kolom per overeenkomst. De naam van de nieuwe kolom is de naam van de overeenkomende kolom die wordt samengevoegd met _Totaal. De waarde van de nieuwe kolom is de afgeronde, geaggregeerde som van de bestaande dubbele waarde.
 
-Wanneer u een expressie toevoegt aan een trans formatie die patronen accepteert, kiest u kolom patroon toevoegen. Kolom patronen kunnen schema-drift kolom matching-patronen.
+Als u wilt controleren of uw overeenkomende voor waarde juist is, kunt u het uitvoer schema van gedefinieerde kolommen valideren in het tabblad **controleren** of een moment opname van de gegevens op het tabblad **voor het voor beeld van gegevens** ophalen. 
 
-Bij het bouwen van sjabloon kolom patronen gebruikt u `$$` in de expressie om een verwijzing naar elk overeenkomend veld van de invoer gegevens stroom weer te geven.
+![kolom patronen](media/data-flow/columnpattern3.png "Kolompatronen")
 
-Als u een van de regex-functies van Expression Builder wilt gebruiken, kunt u vervolgens $1, $2, $3 gebruiken... om te verwijzen naar de Subpatronen die overeenkomen met uw regex-expressie.
+## <a name="rule-based-mapping-in-select-and-sink"></a>Toewijzing op basis van een regel in SELECT en Sink
 
-Een voor beeld van een scenario met een kolom patroon is het gebruik van SUM met een reeks inkomende velden. De cumulatieve som-berekeningen bevinden zich in de geaggregeerde trans formatie. U kunt vervolgens SUM gebruiken bij elke overeenkomst met veld typen die ' Integer ' overeenkomen en vervolgens $ $ gebruiken om te verwijzen naar elke overeenkomst in uw expressie.
+Bij het toewijzen van kolommen in de bron en het selecteren van trans formaties, kunt u een vaste toewijzing of op regels gebaseerde toewijzingen toevoegen. Als u het schema van uw gegevens kent en wilt verwachten dat specifieke kolommen van de bron-gegevensset altijd overeenkomen met specifieke statische namen, gebruikt u vaste toewijzing. Als u werkt met flexibele schema's, gebruikt u toewijzing op basis van regels om een patroon overeenkomst te maken op basis van de `name`, `type`, `stream`en `position` kolommen. U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. 
 
-## <a name="match-columns"></a>Kolommen vergelijken
-![type kolom patroon](media/data-flow/pattern2.png "Patroon typen")
-
-Als u patronen wilt bouwen op basis van kolommen, kunt u overeenkomen met de kolom naam, het type, de stroom of de positie en een combi natie hiervan gebruiken met expressie functies en reguliere expressies.
-
-![kolom positie](media/data-flow/position.png "Kolom positie")
-
-## <a name="rule-based-mapping"></a>Toewijzing op basis van een regel
-Bij het toewijzen van kolommen in de bron en het selecteren van trans formaties, hebt u de mogelijkheid om "vaste toewijzing" of "op regels gebaseerde toewijzing" te kiezen. Wanneer u het schema van uw gegevens kent en wilt verwachten dat er specifieke kolommen van de bron-gegevensset worden gevonden die altijd overeenkomen met specifieke statische namen, kunt u vaste toewijzing gebruiken. Maar wanneer u met flexibele schema's werkt, gebruikt u toewijzing op basis van een regel. U kunt een patroon overeenkomst samen stellen met de regels die hierboven worden beschreven.
+Als u een op een regel gebaseerde toewijzing wilt toevoegen, klikt u op **toewijzing toevoegen** en selecteert u **toewijzing op basis van een regel**.
 
 ![toewijzing op basis van een regel](media/data-flow/rule2.png "Toewijzing op basis van een regel")
 
-Bouw uw regels met de opbouw functie voor expressies. Uw expressies retour neren een Booleaanse waarde naar match columns (true) of kolommen uitsluiten (false).
+Voer in het vak linker expressie de voor waarde Boole match in. Geef in het vak rechter expressie op aan welke overeenkomende kolom wordt toegewezen. Gebruik `$$` om te verwijzen naar de bestaande naam van het overeenkomende veld.
 
-## <a name="pattern-matching-special-columns"></a>Patroon overeenkomende speciale kolommen
+Als u op het pictogram met de pijl omlaag klikt, kunt u een regex-toewijzings voorwaarde opgeven.
 
-* `$$` wordt omgezet in de naam van elk match tijdens de ontwerp fase in de foutopsporingsmodus en tijdens de uitvoering.
+Klik op het bril pictogram naast een op een regel gebaseerde toewijzing om te zien welke gedefinieerde kolommen worden vergeleken en waaraan ze zijn toegewezen.
+
+![toewijzing op basis van een regel](media/data-flow/rule1.png "Toewijzing op basis van een regel")
+
+In het bovenstaande voor beeld worden twee op regels gebaseerde toewijzingen gemaakt. In de eerste plaats worden alle kolommen met de naam ' Movie ' gebruikt en worden ze toegewezen aan hun bestaande waarden. De tweede regel gebruikt regex om alle kolommen die beginnen met ' Movie ' te vergelijken en ze toe te wijzen aan kolom ' movieId '.
+
+Als uw regel resulteert in meerdere identieke toewijzingen, schakelt u **dubbele invoer overs Laan** of **dubbele uitvoer overs Laan** om duplicaten te voor komen.
+
+## <a name="pattern-matching-expression-values"></a>Patroon waarden die overeenkomen met de expressie.
+
+* `$$` wordt omgezet naar de naam of waarde van elk match tijdens runtime
 * `name` staat voor de naam van elke binnenkomende kolom
 * `type` staat voor het gegevens type van elke binnenkomende kolom
 * `stream` staat voor de naam die is gekoppeld aan elke stroom of trans formatie in uw stroom
 * `position` is de volg orde van de kolommen in uw gegevens stroom
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de [taal](https://aka.ms/dataflowexpressions) van de ADF-toewijzings gegevens voor gegevens transformaties
+* Meer informatie over de data flow- [expressie](data-flow-expression-functions.md) van de toewijzings gegevens voor gegevens transformaties
 * Kolom patronen in de [sink-trans formatie](data-flow-sink.md) gebruiken en [trans formatie selecteren](data-flow-select.md) met toewijzing op basis van een regel

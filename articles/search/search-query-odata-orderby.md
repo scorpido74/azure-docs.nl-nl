@@ -1,13 +1,13 @@
 ---
-title: OData-order-by-verwijzing-Azure Search
-description: Naslag informatie voor de OData-taal voor order-op-syntaxis in Azure Search query's.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData-order-by-verwijzing
+titleSuffix: Azure Cognitive Search
+description: Naslag informatie voor de OData-taal voor order-op-syntaxis in azure Cognitive Search query's.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647545"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793308"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>OData-$orderby syntaxis in Azure Search
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-$orderby syntaxis in azure Cognitive Search
 
- U kunt de [OData- **$OrderBy** para meter](query-odata-filter-orderby-syntax.md) gebruiken om een aangepaste sorteer volgorde voor zoek resultaten in azure Search toe te passen. In dit artikel wordt de syntaxis van **$OrderBy** uitvoerig beschreven. Zie [How to use with the Search Results in azure Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$OrderBy** bij het presen teren van zoek resultaten.
+ U kunt de [OData- **$OrderBy** para meter](query-odata-filter-orderby-syntax.md) gebruiken om een aangepaste sorteer volgorde voor zoek resultaten in azure Cognitive Search toe te passen. In dit artikel wordt de syntaxis van **$OrderBy** uitvoerig beschreven. Zie [How to work with Search Results in Azure Cognitive Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$OrderBy** bij het presen teren van zoek resultaten.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -45,20 +45,20 @@ sortable_function ::= geo_distance_call | 'search.score()'
 Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
+> Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Elke component heeft Sorteer criteria, eventueel gevolgd door een sorteer richting (`asc` voor oplopend of `desc` aflopend). Als u geen richting opgeeft, wordt de standaard waarde Oplopend. De sorteer criteria kunnen het pad van een `sortable` veld zijn of een aanroep van de [`geo.distance`](search-query-odata-geo-spatial-functions.md) -of [`search.score`](search-query-odata-search-score-function.md) -functies.
+Elke component heeft Sorteer criteria, eventueel gevolgd door een sorteer richting (`asc` voor oplopende of `desc` voor aflopende volg orde). Als u geen richting opgeeft, wordt de standaard waarde Oplopend. De sorteer criteria kunnen het pad van een `sortable` veld zijn of een aanroep van de [`geo.distance`](search-query-odata-geo-spatial-functions.md) of de [`search.score`](search-query-odata-search-score-function.md) -functies.
 
-Als meerdere documenten dezelfde Sorteer criteria hebben en de functie `search.score` niet wordt gebruikt (bijvoorbeeld als u op een numeriek `Rating` veld sorteert en drie documenten met een classificatie van vier), worden de punten door de document Score in aflopende volg orde afgebroken. Wanneer de document scores hetzelfde zijn (bijvoorbeeld wanneer er geen zoek opdracht voor volledige tekst in de aanvraag is opgegeven), is de relatieve volg orde van de gekoppelde documenten onbepaald.
+Als meerdere documenten dezelfde Sorteer criteria hebben en de functie `search.score` niet wordt gebruikt (bijvoorbeeld als u op een numeriek `Rating` veld sorteert en drie documenten een classificatie van 4 hebben), worden de punten door de document Score in aflopende volg orde afgebroken. Wanneer de document scores hetzelfde zijn (bijvoorbeeld wanneer er geen zoek opdracht voor volledige tekst in de aanvraag is opgegeven), is de relatieve volg orde van de gekoppelde documenten onbepaald.
 
-U kunt meerdere Sorteer criteria opgeven. De volg orde van expressies bepaalt de uiteindelijke sorteer volgorde. Als u bijvoorbeeld aflopend op Score wilt sorteren, gevolgd door classificatie, zou de syntaxis `$orderby=search.score() desc,Rating desc`zijn.
+U kunt meerdere Sorteer criteria opgeven. De volg orde van expressies bepaalt de uiteindelijke sorteer volgorde. Als u bijvoorbeeld aflopend op Score wilt sorteren, gevolgd door classificatie, wordt de syntaxis `$orderby=search.score() desc,Rating desc`.
 
-De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, `Edm.GeographyPoint` van het type zijn en `sortable`het moet ook zijn.
+De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, van het type `Edm.GeographyPoint` zijn en moet het ook worden `sortable`.
 
-De syntaxis voor `search.score` in **$OrderBy** is `search.score()`. De functie `search.score` voert geen para meters uit.
+De syntaxis voor `search.score` in **$OrderBy** is `search.score()`. De functie `search.score` heeft geen para meters.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -80,7 +80,7 @@ Sorteer hotels in aflopende volg orde door te zoeken. Score en waardering en ver
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Werken met zoek resultaten in Azure Search](search-pagination-page-layout.md)
-- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Werken met zoek resultaten in azure Cognitive Search](search-pagination-page-layout.md)
+- [Overzicht van de OData-expressie taal voor Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Zoeken in &#40;documenten Azure Cognitive Search rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

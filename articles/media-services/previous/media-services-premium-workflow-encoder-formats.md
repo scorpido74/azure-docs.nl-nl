@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015042"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792590"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow indelingen en codecs
 
 > [!NOTE]
-> Voor Premium encoder-vragen kunt mepd@microsoft.comu e-mail verzenden.
-> 
 > Media Encoder Premium Workflow media processor die in dit onderwerp wordt besproken, is niet beschikbaar in China. 
 
 Dit document bevat een lijst met invoer-en uitvoer bestands indelingen en-codecs die worden ondersteund door de open bare preview-versie van het coderings programma **Media Encoder Premium workflow** .
@@ -42,7 +40,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die door d
 
 ### <a name="input-containerfile-formats"></a>Invoer van container/bestands indelingen
 
-* Adobe® Flash® F4V
+* F4V van Adobe® Flash®
 * MXF/SMPTE 377M
 * GXF
 * MPEG-2-transport stromen
@@ -70,7 +68,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die door d
 * AAC (AAC-LC, AAC-HE en AAC-HEv2; tot 5,1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
-* Windows Media Audio
+* Windows Media-Audio
 * WAV/PCM
 
 ## <a id="output_format"></a>Uitvoer indelingen en codecs Media Encoder Premium Workflow
@@ -79,7 +77,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die worden
 
 ### <a name="output-containerfile-formats"></a>Uitvoer container/bestands indelingen
 
-* Adobe® Flash® F4V
+* F4V van Adobe® Flash®
 * MXF (OP1a, XDCAM en AS02)
 * DPP (inclusief AS11)
 * GXF
@@ -100,8 +98,6 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die worden
 * JPEG-miniatuur maken
 * HEVC (H. 265; 8-bits en 10-bits, hoofd-en hoofd-10-profiel)
 
-  Ondersteuning voor HDR 10 is beschikbaar in bepaalde scenario's. Neem contact mepd@microsoft.com op met voor meer informatie
-
 
 ### <a name="output-audio-codecs"></a>Audio-codecs voor uitvoer
 
@@ -111,7 +107,7 @@ In de volgende sectie worden de codecs en bestands indelingen vermeld die worden
 * AAC (AAC-LC, AAC-HE en AAC-HEv2; tot 5,1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
-* Windows Media Audio
+* Windows Media-Audio
 
 >[!NOTE]
 >Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
@@ -141,6 +137,9 @@ Bij uitvoer zijn de volgende opties beschikbaar:
 
 Als uw invoer video geen ondertiteling bevat, bevat het uitvoer activum nog een leeg TTML-bestand. 
 
+## <a name="need-help"></a>Hebt u hulp nodig?
+
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

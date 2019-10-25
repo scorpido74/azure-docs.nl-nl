@@ -1,22 +1,21 @@
 ---
-title: Shaper cognitieve Zoek vaardigheid-Azure Search
-description: Haal meta gegevens en gestructureerde informatie op uit ongestructureerde gegevens en vorm deze als een complex type in een Azure Search verrijkings pijplijn.
-services: search
+title: Shaper cognitieve vaardigheid
+titleSuffix: Azure Cognitive Search
+description: Haal meta gegevens en gestructureerde informatie op uit ongestructureerde gegevens en vorm deze als een complex type in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265353"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791878"
 ---
-#   <a name="shaper-cognitive-skill"></a>Shaper cognitieve vaardigheid
+# <a name="shaper-cognitive-skill"></a>Shaper cognitieve vaardigheid
 
 De **shaper** -vaardigheid consolideert diverse invoer in een [complex type](search-howto-complex-data-types.md) waarnaar later in de verrijkings pijplijn kan worden verwezen. Met de **shaper** -vaardigheid kunt u in wezen een structuur maken, de naam van de leden van die structuur definiëren en waarden aan elk lid toewijzen. Voor beelden van geconsolideerde velden die handig zijn in zoek scenario's zijn onder andere het combi neren van een voor-en achternaam in één structuur, plaats en provincie in één structuur, of naam en geboorte datum in één structuur om unieke identiteiten te bepalen.
 
@@ -28,11 +27,11 @@ De uitvoer naam is altijd "uitvoer". Intern kan de pijp lijn een andere naam toe
 > De **shaper** -vaardigheid is niet gebonden aan een COGNITIVE Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet nog steeds [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md)om de optie **gratis** resource te overschrijven, waardoor u een klein aantal dagelijkse verrijkingen per dag beperkt.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ShaperSkill
+Micro soft. skills. util. ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenario 1: complexe typen
 
-Overweeg een scenario waarin u een structuur wilt maken met de naam *analyzedText* die twee leden bevat: respectievelijk *Text* en *sentiment*. In een Azure Search index wordt een veld dat kan worden doorzocht, een *complex type* genoemd. het wordt vaak gemaakt wanneer bron gegevens een bijbehorende complexe structuur hebben die hieraan toewijst.
+Overweeg een scenario waarin u een structuur wilt maken met de naam *analyzedText* die twee leden bevat: respectievelijk *Text* en *sentiment*. In een index wordt een doorzoekbaar veld dat uit meerdere delen bestaat een *complex type* genoemd. het wordt vaak gemaakt wanneer bron gegevens een overeenkomende complexe structuur hebben die hieraan wordt toegewezen.
 
 Een andere benadering voor het maken van complexe typen is echter via de **shaper** -vaardigheid. Door deze vaardigheid op te nemen in een vaardig heden, kunnen de in-Memory bewerkingen tijdens de kwalificatieset-verwerking gegevensshapes uitvoeren met geneste structuren, die vervolgens kunnen worden toegewezen aan een complex type in uw index. 
 
@@ -110,7 +109,7 @@ Een binnenkomend JSON-document dat bruikbare invoer biedt voor deze **shaper** -
 
 ### <a name="skill-output"></a>Vaardigheids uitvoer
 
-De **shaper** -vaardigheid genereert een nieuw element met de naam *analyzedText* met de gecombineerde elementen van *Text* en *sentiment*. Deze uitvoer voldoet aan het index schema. Het wordt geïmporteerd en geïndexeerd in een Azure Search index.
+De **shaper** -vaardigheid genereert een nieuw element met de naam *analyzedText* met de gecombineerde elementen van *Text* en *sentiment*. Deze uitvoer voldoet aan het index schema. Het wordt geïmporteerd en geïndexeerd in een Azure Cognitive Search-index.
 
 ```json
 {
@@ -249,8 +248,8 @@ In dit geval maakt de **shaper** een complex type. Deze structuur bevindt zich i
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md)
++ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Complexe typen gebruiken](search-howto-complex-data-types.md)
-+ [Overzicht van kennis winkels](knowledge-store-concept-intro.md)
++ [Kennis archief (preview-versie)](knowledge-store-concept-intro.md)
 + [Aan de slag met kennis archief](knowledge-store-howto.md)

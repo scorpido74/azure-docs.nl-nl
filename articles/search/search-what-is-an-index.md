@@ -1,26 +1,25 @@
 ---
-title: Een index definitie en concepten maken-Azure Search
-description: Inleiding tot index termen en concepten in Azure Search, inclusief onderdeel onderdelen en fysieke structuur.
-author: HeidiSteen
+title: Een index definitie en concepten maken
+titleSuffix: Azure Cognitive Search
+description: Inleiding tot index termen en concepten in azure Cognitive Search, inclusief onderdeel onderdelen en fysieke structuur.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69647373"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794198"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Een Basic-index maken in Azure Search
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Een Basic-index maken in azure Cognitive Search
 
-In Azure Search is een *index* een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en zoek opdrachten in de volledige tekst van een Azure Search-service. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
+In azure Cognitive Search is een *index* een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en zoek opdrachten in de volledige tekst van een Azure Cognitive Search-service. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
 
-Wanneer u een index toevoegt of uploadt, maakt Azure Search fysieke structuren op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's verzendt naar Azure Search, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt *indexering* of gegevens opname genoemd.
+Wanneer u een index toevoegt of uploadt, worden in azure Cognitive Search fysieke structuren gemaakt op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's naar Azure Cognitive Search verzendt, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt *indexering* of gegevens opname genoemd.
 
 U kunt een index maken in de portal, [rest API](search-create-index-rest-api.md)of [.NET SDK](search-create-index-dotnet.md).
 
@@ -40,7 +39,7 @@ Het bereiken van het juiste index ontwerp wordt doorgaans bereikt via meerdere i
 
    U schakelt op dit punt over op code gebaseerde aanpak. De portal is niet geschikt voor herhaling omdat u geen index kunt bewerken die al is gemaakt. U kunt postman gebruiken en REST voor de resterende taken.
 
-4. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief.
+4. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Cognitive Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief.
 
 5. Zoek uw index op, Bekijk de resultaten en herhaal verder naar het index schema totdat u begint met de resultaten die u verwacht. U kunt [**Search Explorer**](search-explorer.md) of postman gebruiken om de index op te vragen.
 
@@ -52,7 +51,7 @@ Code, in plaats van een portal-benadering, wordt aanbevolen voor iteratief ontwe
 
 ## <a name="components-of-an-index"></a>Onderdelen van een index
 
-Schematisch, een Azure Search index bestaat uit de volgende elementen. 
+Schematisch, een Azure Cognitive Search index bestaat uit de volgende elementen. 
 
 De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoring-profiles), [analyse](#analyzers) functies met onderdeel onderdelen ter ondersteuning van aanpassings-, [CORS](#cors) -en [versleutelings sleutel](#encryption-key) opties.
 
@@ -157,7 +156,7 @@ Bij het definiëren van het schema moet u de naam, het type en de kenmerken van 
 | *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Een punt voor een geografische locatie op de wereld. |
 
-Gedetailleerdere informatie over ondersteunde Azure-Search[-gegevenstypen vindt u hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Hier vindt u meer gedetailleerde informatie over de [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)van Azure Cognitive Search.
 
 ### <a name="index-attributes"></a>Index kenmerken
 
@@ -190,7 +189,7 @@ Hoewel deze index varianten kunst matig zijn, kunnen we ernaar verwijzen naar ee
 Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan indexen die alleen zoeken in volledige tekst ondersteunen. De reden hiervoor is dat filter-en sorteer query op exacte overeenkomsten, zodat documenten intact worden opgeslagen. In tegens telling tot Doorzoek bare velden die ondersteuning bieden voor volledige tekst en fuzzy Search, worden omgekeerde indexen gebruikt. deze worden gevuld met tokens met een sleutel die minder ruimte in beslag neemt dan hele documenten.
 
 > [!Note]
-> Opslag architectuur wordt beschouwd als een implementatie details van Azure Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
+> Opslag architectuur wordt beschouwd als een implementatie details van Azure Cognitive Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
 
 ## <a name="suggesters"></a>Suggesties
 Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde woord groepen. 
@@ -205,7 +204,7 @@ Een standaard Score profiel werkt achter de schermen om een zoek score te bereke
 
 ## <a name="analyzers"></a>Analyses
 
-Het element analyse functies stelt de naam in van de taal analyse die moet worden gebruikt voor het veld. Zie voor meer informatie over het bereik van analyse functies die voor u beschikbaar zijn, [analyses toevoegen aan een Azure search-index](search-analyzers.md). Analyseerers kunnen alleen worden gebruikt met Doorzoek bare velden. Zodra de analyse functie is toegewezen aan een veld, kan deze niet meer worden gewijzigd, tenzij u de index opnieuw opbouwt.
+Het element analyse functies stelt de naam in van de taal analyse die moet worden gebruikt voor het veld. Zie [analyse functies toevoegen aan een Azure Cognitive search-index](search-analyzers.md)voor meer informatie over het aanbod dat voor u beschikbaar is. Analyseerers kunnen alleen worden gebruikt met Doorzoek bare velden. Zodra de analyse functie is toegewezen aan een veld, kan deze niet meer worden gewijzigd, tenzij u de index opnieuw opbouwt.
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ De volgende opties kunnen worden ingesteld voor CORS:
 
 ## <a name="encryption-key"></a>Versleutelings sleutel
 
-Hoewel alle Azure Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in azure Search](search-security-manage-encryption-keys.md)voor meer informatie.
+Hoewel alle Azure Cognitive Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

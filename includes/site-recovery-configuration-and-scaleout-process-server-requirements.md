@@ -9,57 +9,74 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 0156ab3acd2f4c629b0263356f61c22e62b424d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568313"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792329"
 ---
-**Configuratieproces/server-vereisten**
+**Vereisten voor de configuratie/proces server**
+
+
+## <a name="hardware-requirements"></a>Hardwarevereisten
 
 **Onderdeel** | **Vereiste** 
 --- | ---
-**HARDWARE-INSTELLINGEN** | 
-CPU-kernen | 8 
+Cpu-cores | 8 
 RAM | 16 GB
-Aantal schijven | 3, met inbegrip van de OS-schijf, cacheschijf proces en bewaarstation voor failback 
-Vrije schijfruimte (cache van de processerver) | 600 GB
-Vrije schijfruimte (bewaarschijf) | 600 GB
+Aantal schijven | 3, met inbegrip van de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar station voor failback 
+Vrije schijf ruimte (cache van proces server) | 600 GB
+Vrije schijf ruimte (Bewaar schijf) | 600 GB
  | 
-**INSTELLINGEN VOOR SOFTWARE** | 
+
+## <a name="software-requirements"></a>Softwarevereisten
+
+**Onderdeel** | **Vereiste** 
+--- | ---
 Besturingssysteem | Windows Server 2012 R2 <br> Windows Server 2016
 Landinstelling van het besturingssysteem | Engels (en-us)
-Windows Server-functies | Deze rollen niet worden ingeschakeld: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
-Groepsbeleid | Geen groepsbeleid voor deze inschakelen: <br> -Toegang tot de opdrachtprompt voorkomen. <br> -Toegang tot registerbewerkingsprogramma's voorkomen. <br> -Logica vertrouwen voor bestandsbijlagen. <br> -Uitvoering van Script inschakelen. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Er zijn geen bestaande standaardwebsite <br> -Er zijn geen bestaande website/toepassing luistert op poort 443 <br>-Inschakelen [anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Inschakelen [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) instelling 
+Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
+Groeps beleid | Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen. <br> -Toegang tot register bewerkings Programma's verhinderen. <br> -Logica vertrouwen voor bestands bijlagen. <br> -Schakel uitvoering van script in. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Geen vooraf bestaande standaard website <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443 <br>- [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen 
 | 
-**NETWERKINSTELLINGEN** | 
+
+## <a name="network-requirements"></a>Netwerkvereisten
+
+**Onderdeel** | **Vereiste** 
+--- | --- 
 Type IP-adres | Statisch 
 Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport) 
-Type NIC | VMXNET3 (als de configuratieserver een VMware-VM is)
+NIC-type | VMXNET3 (als de configuratie server een VMware-VM is)
  |
-**Toegang tot Internet** (de server moet toegang hebben tot de volgende URL's - rechtstreeks of via proxy):|
-\*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevensoverdracht en coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevensoverdracht en coördinatie
-\*.blob.core.windows.net | Gebruikt voor toegang tot opslagaccount waarin de gerepliceerde gegevens
-\*.hypervrecoverymanager.windowsazure.com | Gebruikt voor bewerkingen en coördinatie
-https:\//management.azure.com | Gebruikt voor bewerkingen en coördinatie 
-*.services.visualstudio.com | Gebruikt voor andere doeleinden telemetrie (dit is optioneel)
+**Internet toegang** (de server moet rechtstreeks of via proxy toegang hebben tot de volgende url's):|
+\*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
+\*.hypervrecoverymanager.windowsazure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie 
+*.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF instellen moet toegang hebben tot deze URL's. Ze worden gebruikt voor toegangsbeheer en identiteitsbeheer door Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL om downloaden te voltooien. </br> In enkele regio's, kan het downloaden van het opnieuw gerichte naar de URL van CDN zijn. Zorg ervoor dat de CDN-URL ook opgenomen in de whitelist is, indien nodig.
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\/-login.live.com </li><li> https:\/-graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\/-www.live.com </li><li> https:\/-www.microsoft.com </li></ul> | OVF-configuratie moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https:\/-dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Om de MySQL-down load te volt ooien. </br> In slechts enkele regio's kan de down load worden omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook white list is, indien nodig.
 |
-**SOFTWARE TE INSTALLEREN** | 
-VMware vSphere PowerCLI | [PowerCLI versie 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als de configuratieserver wordt uitgevoerd op een VMware-VM.
-MYSQL | MySQL moet worden geïnstalleerd. U kunt ook handmatig installeren of Site Recovery kunt u deze installeren. (Raadpleeg [-instellingen configureren](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) voor meer informatie)
 
-**Configuratie-/ processerver formaat vereisten**
+## <a name="required-software"></a>Vereiste software
 
-**CPU** | **Geheugen** | **Cacheschijf** | **Veranderingssnelheid van gegevens** | **Gerepliceerde machines**
+**Onderdeel** | **Vereiste** 
+--- | ---
+VMware vSphere PowerCLI | [PowerCLI versie 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als de configuratie server wordt uitgevoerd op een virtuele VMWare-machine.
+MYSQL | MySQL moet worden geïnstalleerd. U kunt hand matig installeren of Site Recovery het installeren. (Zie [instellingen configureren](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) voor meer informatie)
+
+## <a name="sizing-and-capacity-requirements"></a>Grootte-en capaciteits vereisten
+
+De volgende tabel bevat een overzicht van de capaciteits vereisten voor de configuratie server. Als u meerdere virtuele VMware-machines repliceert, moet u de [overwegingen voor capaciteits planning](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) controleren en het [Azure site Recovery Deployment planner-hulp programma](../articles/site-recovery/site-recovery-deployment-planner.md)uitvoeren.
+
+
+**VERBRUIK** | **Geheugenmetabase** | **Cache schijf** | **Gegevens wijzigings frequentie** | **Gerepliceerde machines**
 --- | --- | --- | --- | ---
-8 vcpu 's<br/><br/> 2-sockets * 4 kernen \@ 2,5 GHz | 16GB | 300 GB | 500 GB of minder | < 100 machines
-12 vcpu 's<br/><br/> 2 socks * 6 kernen \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150-machines
-16 vcpu 's<br/><br/> socks 2 * 8 kernen \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 -200-machines
+8 Vcpu's<br/><br/> 2 sockets * 4 kern geheugens \@ 2,5 GHz | 16 GB | 300 GB | 500 GB of minder | < 100-machines
+12 Vcpu's<br/><br/> 2 SOCKS * 6 kernen \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 tot 150 computers
+16 Vcpu's<br/><br/> 2 SOCKS * 8 kern geheugens \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 computers
 

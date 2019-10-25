@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory-toestemmingsframework
-description: Meer informatie over het toestemmingsframework in Azure Active Directory en hoe u het gemakkelijk om meerdere tenants web en native client-toepassingen te ontwikkelen.
+title: Azure Active Directory-instemming raamwerk
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het toestemming raamwerk in Azure Active Directory en hoe u hiermee eenvoudig multi tenant-webtoepassingen en native client toepassingen kunt ontwikkelen.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,56 +18,56 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: af5b60901e57392aaea504f96572801a878d707c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482938"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803861"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-toestemmingsframework
+# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-instemming raamwerk
 
-Het toestemmingsframework Azure Active Directory (Azure AD) kunt eenvoudig meerdere tenants web- en native clienttoepassingen ontwikkelen. Deze toepassingen kunnen aanmelden door gebruikersaccounts van een Azure AD-tenant die anders is dan het account waar de toepassing is geregistreerd. Ze kunnen ook nodig voor toegang tot web-API's, zoals de Microsoft Graph-API (voor Azure AD, Intune, en services in Office 365) en andere Microsoft-services-API's, naast uw eigen web-API's.
+Met het toestemming raamwerk van Azure Active Directory (Azure AD) kunt u eenvoudig multi tenant-webtoepassingen en native client toepassingen ontwikkelen. Met deze toepassingen kunt u zich aanmelden via gebruikers accounts van een Azure AD-Tenant die afwijkt van het item waarin de toepassing is geregistreerd. Daarnaast moeten ze ook toegang hebben tot Web-Api's, zoals de Microsoft Graph-API (voor toegang tot Azure AD, intune en services in Office 365) en andere Api's van micro soft-Services, naast uw eigen web-Api's.
 
-Het framework is gebaseerd op een gebruiker of beheerder toestemming verlenen tot een toepassing die wordt gevraagd om te worden geregistreerd in de directory, waarbij toegang tot directorygegevens. Bijvoorbeeld, als een web-clienttoepassing moet agenda om informatie te lezen over de gebruiker van Office 365, is die gebruiker vereist voor het eerst toestemming geven voor de clienttoepassing. Nadat toestemming is opgegeven, wordt de clienttoepassing kan de Microsoft Graph-API aanroepen namens de gebruiker en gebruik van de agenda-informatie, indien nodig worden. De [Microsoft Graph API](https://developer.microsoft.com/graph) biedt toegang tot gegevens in Office 365 (zoals agenda's en berichten van Exchange, sites en -lijsten van SharePoint, OneDrive, van OneNote-notitieblokken, taken Planner en werkmappen van documenten Excel), evenals de gebruikers en groepen van Azure AD en andere objecten van meer Microsoft-cloudservices.
+Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming geeft voor een toepassing die wordt gevraagd om te worden geregistreerd in hun Directory, die mogelijk toegang tot Directory gegevens kan hebben. Als een webclient toepassing bijvoorbeeld agenda gegevens van Office 365 moet lezen, moet die gebruiker eerst toestemming geven voor de client toepassing. Nadat toestemming is gegeven, kan de client toepassing de Microsoft Graph-API namens de gebruiker aanroepen en de agenda gegevens naar behoefte gebruiken. De [Microsoft Graph-API](https://developer.microsoft.com/graph) biedt toegang tot gegevens in Office 365 (zoals agenda's en berichten van Exchange, sites en lijsten vanuit share point, documenten uit OneDrive, notitie blokken van OneNote, taken uit planner en werkmappen vanuit Excel), evenals gebruikers en groepen van Azure AD en andere gegevens objecten uit meer micro soft-Cloud Services.
 
-Het toestemmingsframework is gebouwd op OAuth 2.0 en de verschillende stromen, zoals code verlenen en de client referenties voor autorisatie verlenen, met behulp van openbare of vertrouwelijke clients. Met behulp van OAuth 2.0, maakt Azure AD het mogelijk te veel verschillende typen clienttoepassingen, zoals op een telefoon, tablet, server of een web-App bouwen en toegang krijgen tot de vereiste resources.
+Het toestemming raamwerk is gebaseerd op OAuth 2,0 en de verschillende stromen, zoals autorisatie code toekenning en client referenties verlenen, met behulp van open bare of vertrouwelijke clients. Met behulp van OAuth 2,0 kunt u met Azure AD veel verschillende soorten client toepassingen bouwen, zoals op een telefoon, Tablet, server of webtoepassing, en toegang krijgen tot de vereiste bronnen.
 
-Zie voor meer informatie over het gebruik van het toestemmingsframework met OAuth 2.0-autorisatietoekenningen [toegang verlenen aan webtoepassingen die gebruikmaken van OAuth 2.0 en Azure AD](v1-protocols-oauth-code.md) en [Verificatiescenario's voor Azure AD](authentication-scenarios.md). Zie voor informatie over het ophalen van geautoriseerde toegang tot Office 365 via Microsoft Graph [verificatie van apps met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v1-protocols-oauth-code.md) -en [verificatie SCENARIO'S voor Azure AD](authentication-scenarios.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
 
-## <a name="consent-experience---an-example"></a>Toestemming-ervaring - voorbeeld
+## <a name="consent-experience---an-example"></a>Bestemmings ervaring-een voor beeld
 
-De volgende stappen laten zien hoe de toestemming werkt ervaren voor zowel de ontwikkelaar van de toepassing en de gebruiker.
+In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de ontwikkelaar van de toepassing als de gebruiker.
 
-1. Stel dat u hebt een web-clienttoepassing die nodig zijn om aan te vragen van specifieke machtigingen voor toegang tot een resource/API. Leert u hoe u deze configuratie in de volgende sectie, maar in feite de Azure-portal wordt gebruikt om te declareren machtigingsaanvragen tijdens de configuratie. Net als andere configuratie-instellingen worden ze onderdeel van de Azure AD-registratie van de toepassing:
+1. Stel dat u een webclient-toepassing hebt waarvoor specifieke machtigingen moeten worden aangevraagd om toegang te krijgen tot een resource/API. In de volgende sectie leert u hoe u deze configuratie kunt uitvoeren, maar in feite wordt de Azure Portal gebruikt voor het declareren van machtigings aanvragen op de configuratie tijd. Net als andere configuratie-instellingen worden ze onderdeel van de Azure AD-registratie van de toepassing:
 
     ![Machtigingen voor andere toepassingen](./media/consent-framework/permissions.png)
 
-1. Houd rekening met dat van uw toepassing machtigingen zijn bijgewerkt, de toepassing wordt uitgevoerd en een gebruiker is gebruikt voor de eerste keer. Eerst de toepassing moet een autorisatiecode ophalen uit Azure AD `/authorize` eindpunt. De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
+1. Houd er rekening mee dat de machtigingen van uw toepassing zijn bijgewerkt, dat de toepassing wordt uitgevoerd en dat een gebruiker deze voor de eerste keer gebruikt. Ten eerste moet de toepassing een autorisatie code verkrijgen van het `/authorize`-eind punt van Azure AD. De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
 
-1. Als de gebruiker nog niet is geverifieerd, Azure AD van `/authorize` eindpunt vraagt de gebruiker zich aanmeldt.
+1. Als de gebruiker nog niet is geverifieerd, wordt de gebruiker door het `/authorize`-eind punt van Azure AD gevraagd zich aan te melden.
 
-    ![Gebruiker of beheerder aanmelden bij Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Gebruiker of beheerder meldt zich aan bij Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
-1. Nadat de gebruiker is aangemeld, wordt Azure AD te bepalen of de gebruiker moet een instemmingspagina weergegeven. Hierbij wordt gecontroleerd of de gebruiker (of de beheerder in de organisatie) de toepassing al toestemming heeft gegeven. Als toestemming nog niet is gedaan, wordt Azure AD de gebruiker om toestemming wordt gevraagd en geeft de vereiste machtigingen die nodig is om te werken. De reeks machtigingen die worden weergegeven in het dialoogvenster overeenkomen met de die u hebt geselecteerd de **overgedragen machtigingen** in Azure portal.
+1. Nadat de gebruiker zich heeft aangemeld, wordt door Azure AD bepaald of de gebruiker een toestemming pagina moet worden weer gegeven. Hierbij wordt gecontroleerd of de gebruiker (of de beheerder in de organisatie) de toepassing al toestemming heeft gegeven. Als er nog geen toestemming is verleend, wordt de gebruiker door Azure AD om toestemming gevraagd en worden de vereiste machtigingen weer gegeven die moeten worden gebruikt. De set machtigingen die worden weer gegeven in het dialoog venster voor toestemming, komt overeen met de opties die zijn geselecteerd in de **gedelegeerde machtigingen** in de Azure Portal.
 
-    ![Toont een voorbeeld van machtigingen weergegeven in het dialoogvenster](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Toont een voor beeld van machtigingen die worden weer gegeven in het dialoog venster voor toestemming](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
-1. Nadat de gebruiker toestemming verleent, wordt een autorisatiecode voor uw toepassing, die wordt ingewisseld voor een toegangstoken verkrijgen en vernieuwen van het token geretourneerd. Zie voor meer informatie over deze stroom, [Web-API-app-type](web-api.md).
+1. Nadat de gebruiker toestemming verleent, wordt er een autorisatie code geretourneerd naar uw toepassing, die wordt ingewisseld om een toegangs token en een vernieuwings token te verkrijgen. Zie [Web API app type](web-api.md)voor meer informatie over deze stroom.
 
-1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van een beheerder voorkomt u het dialoogvenster worden weergegeven voor elke gebruiker in de tenant en kan worden uitgevoerd in de [Azure-portal](https://portal.azure.com) door gebruikers met de beheerdersrol. Als u wilt weten welke beheerder rollen toestemming voor gedelegeerde machtigingen geven kunnen, Zie [rol beheerdersmachtigingen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
 
-    **Als u wilt toestemming geven voor een app, de overgedragen machtigingen**
+    **Toestemming geven aan de gedelegeerde machtigingen van een app**
 
-   1. Ga naar de **API-machtigingen** pagina voor uw toepassing
-   1. Klik op de **verlenen van toestemming van een beheerder** knop.
+   1. Ga naar de pagina **API-machtigingen** voor uw toepassing
+   1. Klik op de knop **toestemming beheerder verlenen** .
 
-      ![Machtigingen verlenen voor expliciete beheerderstoestemming](./media/consent-framework/grant-consent.png)
+      ![Machtigingen verlenen voor expliciete beheerders toestemming](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > Expliciete verleent toestemming met behulp van de **machtigingen verlenen** knop is momenteel vereist voor toepassingen met één pagina (SPA) die gebruikmaken van ADAL.js. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
+   > Het verlenen van expliciete toestemming met de knop **machtigingen verlenen** is momenteel vereist voor toepassingen met één pagina (Spa) die gebruikmaken van ADAL. js. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [het converteren van een app voor meerdere tenants worden](howto-convert-app-to-be-multi-tenant.md)
-* Lees voor meer diepgang [hoe toestemming op het niveau van de OAuth 2.0-protocol wordt ondersteund tijdens de toewijzingsstroom voor autorisatie.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+* Zie [een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)
+* Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)

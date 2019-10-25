@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595102"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803986"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Een VHD uploaden naar Azure met behulp van Azure CLI
 
@@ -29,7 +29,7 @@ Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaa
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
 - Een VHD-bestand lokaal opgeslagen
-- Als u van plan bent om een VHD te uploaden vanaf pem: een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
+- Als u van plan bent om een VHD te uploaden van on-premises: een VHD die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u uw schijf koppelen aan een virtuele machine en het gebruik ervan starten.
+Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u de schijf als een [gegevens schijf koppelen aan een bestaande virtuele machine](add-disk.md) of [de schijf koppelen aan een virtuele machine als een besturingssysteem schijf](upload-vhd.md#create-the-vm), om een nieuwe virtuele machine te maken. 
 
-Zie ons artikel over het onderwerp: [een schijf toevoegen aan een virtuele Linux-machine](add-disk.md)voor meer informatie over het koppelen van een schijf aan een virtuele machine.

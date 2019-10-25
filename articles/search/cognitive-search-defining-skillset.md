@@ -1,25 +1,25 @@
 ---
-title: Een vakkennisset maken in een cognitieve Zoek pijplijn-Azure Search
-description: Definieer de gegevens extractie, de verwerking van natuurlijke taal of de analyse van installatie kopieën om gestructureerde gegevens uit uw gegevens te verrijken en te extra heren voor gebruik in Azure Search.
+title: Een vakkennisset maken in een verrijkings pijplijn
+titleSuffix: Azure Cognitive Search
+description: Definieer de gegevens extractie, de verwerking van natuurlijke taal of de analyse van installatie kopieën om gestructureerde gegevens uit uw gegevens te verrijken en te extra heren voor gebruik in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265515"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787474"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Een vakkennisset maken in een verrijkings pijplijn
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
-Met de cognitieve zoek functie worden gegevens geëxtraheerd en verrijkt om deze doorzoekbaar te maken in Azure Search. De stappen voor het ophalen en verrijken van informatie worden geadviseerd, gecombineerd tot een *vaardig* *heden waarnaar*wordt verwezen tijdens het indexeren. Een vaardig heden kan [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) of aangepaste vaardig heden gebruiken (Zie [voor beeld: een aangepaste vaardigheid maken voor cognitieve Zoek opdrachten](cognitive-search-create-custom-skill-example.md) voor meer informatie).
+AI-verrijking extraheert en verrijkt gegevens om deze doorzoekbaar te maken in azure Cognitive Search. De stappen voor het ophalen en verrijken van informatie worden geadviseerd, gecombineerd tot een *vaardig* *heden waarnaar*wordt verwezen tijdens het indexeren. Een vaardig heden kan [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) of aangepaste vaardig heden gebruiken (Zie [bijvoorbeeld: een aangepaste vaardigheid maken in een AI-verrijkings pijplijn](cognitive-search-create-custom-skill-example.md) voor meer informatie).
 
-In dit artikel leert u hoe u een verrijkings pijplijn kunt maken voor de vaardig heden die u wilt gebruiken. Een vakkennisset is gekoppeld aan een Azure Search [indexer](search-indexer-overview.md). Een deel van het pijplijn ontwerp, dat in dit artikel wordt besproken, is de vaardig heden zelf maken. 
+In dit artikel leert u hoe u een verrijkings pijplijn kunt maken voor de vaardig heden die u wilt gebruiken. Een vakkennisset is gekoppeld aan een Azure Cognitive Search [indexer](search-indexer-overview.md). Een deel van het pijplijn ontwerp, dat in dit artikel wordt besproken, is de vaardig heden zelf maken. 
 
 > [!NOTE]
 > Een ander deel van het pijplijn ontwerp is het opgeven van een Indexeer functie die in de [volgende stap](#next-step)wordt besproken. Een Indexeer functie definitie bevat een verwijzing naar de vaardig heden, plus veld toewijzingen die worden gebruikt voor het verbinden van invoer in uitvoer in de doel index.
@@ -45,10 +45,10 @@ Het volgende diagram illustreert een hypothetische verrijkings pijplijn:
 ![Een hypothetische verrijkings pijplijn](media/cognitive-search-defining-skillset/sample-skillset.png "Een hypothetische verrijkings pijplijn")
 
 
-Zodra u een getrouw beeld hebt van wat u in de pijp lijn wilt, kunt u de vaardig heden die deze stappen bieden, uitdrukken. In de meeste gevallen wordt de vaardig heden weer gegeven wanneer u de definitie van de Indexeer functie uploadt naar Azure Search. Voor meer informatie over het uploaden van uw Indexeer functie raadpleegt u de [documentatie bij de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Zodra u een getrouw beeld hebt van wat u in de pijp lijn wilt, kunt u de vaardig heden die deze stappen bieden, uitdrukken. De vaardig heden worden functioneel weer gegeven wanneer u de definitie van de Indexeer functie uploadt naar Azure Cognitive Search. Voor meer informatie over het uploaden van uw Indexeer functie raadpleegt u de [documentatie bij de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-In het diagram wordt de stap voor het kraken van het *document* automatisch uitgevoerd. Azure Search weet eigenlijk hoe u bekende bestanden opent en een *inhouds* veld maakt met daarin de tekst die uit elk document is geëxtraheerd. De witte vakken zijn ingebouwde verrijkers en het gestippelde Bing Entity Search vak vertegenwoordigt een aangepaste verrijker die u maakt. Zoals u ziet, bevat de vakkennisset drie vaardig heden.
+In het diagram wordt de stap voor het kraken van het *document* automatisch uitgevoerd. In feite weet Azure Cognitive Search hoe u bekende bestanden opent en een *inhouds* veld maakt met daarin de tekst die uit elk document is geëxtraheerd. De witte vakken zijn ingebouwde verrijkers en het gestippelde Bing Entity Search vak vertegenwoordigt een aangepaste verrijker die u maakt. Zoals u ziet, bevat de vakkennisset drie vaardig heden.
 
 ## <a name="skillset-definition-in-rest"></a>De definitie van de vaardig heden in REST
 
@@ -243,11 +243,11 @@ Een waarschijnlijk resultaat is een gegenereerde structuur die vergelijkbaar is 
 
 ![Voorbeeld uitvoer structuur](media/cognitive-search-defining-skillset/enriched-doc.png "Voorbeeld uitvoer structuur")
 
-Tot nu toe is deze structuur alleen intern, alleen-geheugen en alleen gebruikt in Azure Search indexen. Het toevoegen van een kennis archief biedt een manier om vormige verrijkingen op te slaan voor gebruik buiten de zoek opdracht.
+Tot nu toe is deze structuur alleen intern, alleen geheugen en alleen gebruikt in azure Cognitive Search-indexen. Het toevoegen van een kennis archief biedt een manier om vormige verrijkingen op te slaan voor gebruik buiten de zoek opdracht.
 
 ## <a name="add-a-knowledge-store"></a>Een kennis archief toevoegen
 
-[Knowledge Store](knowledge-store-concept-intro.md) is een preview-functie in azure Search om uw verrijkte document op te slaan. Een kennis archief dat u maakt, ondersteund door een Azure Storage-account, is de opslag plaats waar uw verrijkte gegevens worden gelandd. 
+[Knowledge Store](knowledge-store-concept-intro.md) is een preview-functie in azure Cognitive Search om uw verrijkte document op te slaan. Een kennis archief dat u maakt, ondersteund door een Azure Storage-account, is de opslag plaats waar uw verrijkte gegevens worden gelandd. 
 
 Een definitie van een kennis archief wordt toegevoegd aan een vaardig heden. Zie [How to start with Knowledge Store](knowledge-store-howto.md)(Engelstalig) voor een overzicht van het gehele proces.
 

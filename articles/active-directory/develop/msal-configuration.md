@@ -1,5 +1,6 @@
 ---
-title: Meer informatie over het Android micro soft Authentication Library (MSAL)-configuratie bestand | Azure
+title: Informatie over het configuratie bestand van de Android micro soft Authentication Library (MSAL)
+titleSuffix: Microsoft identity platform
 description: Een overzicht van het configuratie bestand van de Android micro soft Authentication Library (MSAL), dat de configuratie van een toepassing vertegenwoordigt in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2851adf14f5ccaec576a325cefcef8523be03bc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679748"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803154"
 ---
 # <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android micro soft Authentication Library (MSAL)-configuratie bestand
 
@@ -34,14 +35,14 @@ In dit artikel vindt u meer informatie over de verschillende instellingen in het
 
 ### <a name="general-settings"></a>Algemene instellingen
 
-| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype | Verplicht | Opmerkingen |
 |-----------|------------|-------------|-------|
 | `client_id` | Tekenreeks | Ja | De client-ID van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Tekenreeks | Ja | De omleidings-URI van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `authorities` | Lijst @ no__t-0Authority > | Nee | De lijst met instanties die uw app nodig heeft |
+| `authorities` | \<instantie > weer geven | Nee | De lijst met instanties die uw app nodig heeft |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Nee | Mogelijke waarden: `DEFAULT`, `BROWSER`, `WEBVIEW` |
-| `http` | HttpConfiguration | Nee | @No__t-0 `connect_timeout` en `read_timeout` configureren |
-| `logging` | LoggingConfiguration | Nee | Hiermee geeft u het detail niveau voor logboek registratie op. Optionele configuraties zijn: `pii_enabled`, die een Booleaanse waarde in beslag neemt, en `log_level`, die `ERROR`, `WARNING`, `INFO` of `VERBOSE` gebruikt. |
+| `http` | HttpConfiguration | Nee | `HttpUrlConnection` `connect_timeout` en `read_timeout` configureren |
+| `logging` | LoggingConfiguration | Nee | Hiermee geeft u het detail niveau voor logboek registratie op. Optionele configuraties zijn onder andere: `pii_enabled`, die een Booleaanse waarde in beslag neemt, en `log_level`, waarmee `ERROR`, `WARNING`, `INFO`of `VERBOSE`worden uitgevoerd. |
 
 ### <a name="client_id"></a>client_id
 
@@ -90,59 +91,59 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>AAD Authority & doel groep toewijzen aan micro soft Identity platform-eind punten
 
-| type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Opmerkingen |
+| Type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Opmerkingen |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | https://login.microsoftonline.com/common | `common` is een Tenant alias voor waar het account zich bevindt. Zoals een specifieke Azure Active Directory Tenant of het Microsoft-account systeem. |
 | AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | Alleen accounts die aanwezig zijn in contoso.com kunnen een token verkrijgen. Elk geverifieerd domein of de Tenant-GUID kan worden gebruikt als Tenant-ID. |
 | AAD | AzureADMultipleOrgs | | | https://login.microsoftonline.com/organizations | Alleen Azure Active Directory accounts kunnen met dit eind punt worden gebruikt. Micro soft-accounts kunnen lid zijn van organisaties. Voor het verkrijgen van een token met behulp van een Microsoft-account voor een resource in een organisatie, geeft u de Tenant van de organisatie op waarvan u het token wilt maken. |
 | AAD | PersonalMicrosoftAccount | | | https://login.microsoftonline.com/consumers | Alleen micro soft-accounts kunnen dit eind punt gebruiken. |
-| B2C | | | Bekijk het resulterende eind punt | https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/ | Alleen accounts die aanwezig zijn in de contoso.onmicrosoft.com-Tenant kunnen een token verkrijgen. In dit voor beeld is het B2C-beleid onderdeel van het URL-pad van de instantie. |
+| Business to consumer | | | Bekijk het resulterende eind punt | https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/ | Alleen accounts die aanwezig zijn in de contoso.onmicrosoft.com-Tenant kunnen een token verkrijgen. In dit voor beeld is het B2C-beleid onderdeel van het URL-pad van de instantie. |
 
 > [!NOTE]
 > Verificatie van de certificerings instantie kan niet worden ingeschakeld en uitgeschakeld in MSAL.
 > Instanties zijn bekend als de ontwikkelaar die is opgegeven via configuratie of bekend bij micro soft via meta gegevens.
-> Als MSAL een aanvraag voor een token bij een onbekende instantie ontvangt, wordt een `MsalClientException` van het type `UnknownAuthority`-resultaten.
+> Als MSAL een aanvraag voor een token naar een onbekende instantie ontvangt, wordt een `MsalClientException` van het type `UnknownAuthority` resultaten.
 
 #### <a name="authority-properties"></a>Instantie-eigenschappen
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Verplicht | Opmerkingen |
 |-----------|-------------|-----------|--------|
 | `type` | Tekenreeks | Ja | Komt overeen met de doel groep of het account type van uw app-doelen. Mogelijke waarden: `AAD`, `B2C` |
-| `audience` | Object | Nee | Is alleen van toepassing wanneer type = `AAD`. Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
-| `authority_url` | Tekenreeks | Ja | Alleen vereist wanneer type = `B2C`. Hiermee geeft u de CA-URL of het beleid dat door uw app moet worden gebruikt  |
-| `default` | boolean | Ja | Er is één `"default":true` vereist wanneer een of meer instanties zijn opgegeven. |
+| `audience` | Object | Nee | Is alleen van toepassing wanneer type =`AAD`. Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
+| `authority_url` | Tekenreeks | Ja | Alleen vereist wanneer type =`B2C`. Hiermee geeft u de CA-URL of het beleid dat door uw app moet worden gebruikt  |
+| `default` | booleaans | Ja | Er is één `"default":true` vereist wanneer een of meer instanties zijn opgegeven. |
 
 #### <a name="audience-properties"></a>Eigenschappen van doel groep
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Verplicht | Opmerkingen |
 |-----------|-------------|------------|-------|
 | `type` | Tekenreeks | Ja | Hiermee geeft u de doel groep op die uw app wil richten. Mogelijke waarden: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
-| `tenant_id` | Tekenreeks | Ja | Alleen vereist als `"type":"AzureADMyOrg"` is. Optioneel voor andere `type`-waarden. Dit kan een Tenant domein zijn, zoals `contoso.com`, of een Tenant-ID, zoals `72f988bf-86f1-41af-91ab-2d7cd011db46`) |
+| `tenant_id` | Tekenreeks | Ja | Alleen vereist als `"type":"AzureADMyOrg"`. Optioneel voor andere `type` waarden. Dit kan een Tenant domein zijn, zoals `contoso.com`, of een Tenant-ID, zoals `72f988bf-86f1-41af-91ab-2d7cd011db46`) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
 Hiermee wordt aangegeven of een Inge sloten webweergave of de standaard browser op het apparaat moet worden gebruikt bij het aanmelden bij een account of het machtigen van toegang tot een bron.
 
 Mogelijke waarden:
-- `DEFAULT`: Geeft de voor keur aan de systeem browser. Maakt gebruik van de Inge sloten webweergave als er geen browser beschikbaar is op het apparaat.
-- `WEBVIEW`: Gebruik de Inge sloten webweergave.
-- `BROWSER`: Maakt gebruik van de standaard browser op het apparaat.
+- `DEFAULT`: geeft de voor keur aan de systeem browser. Maakt gebruik van de Inge sloten webweergave als er geen browser beschikbaar is op het apparaat.
+- `WEBVIEW`: gebruik de Inge sloten webweergave.
+- `BROWSER`: gebruikt de standaard browser op het apparaat.
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-Geef `true` op voor clients die ondersteuning bieden voor meerdere nationale Clouds. Het micro soft Identity-platform wordt vervolgens automatisch omgeleid naar de juiste nationale Cloud tijdens autorisatie en het aflossen van het token. U kunt de nationale cloud van het aangemelde account bepalen door de instantie te controleren die aan de `AuthenticationResult` is gekoppeld. Houd er rekening mee dat de `AuthenticationResult` niet het nationale Cloud eindpunt adres levert van de resource waarvoor u een token aanvraagt.
+Geef `true`op voor clients die ondersteuning bieden voor meerdere nationale Clouds. Het micro soft Identity-platform wordt vervolgens automatisch omgeleid naar de juiste nationale Cloud tijdens autorisatie en het aflossen van het token. U kunt de nationale cloud van het aangemelde account bepalen door de instantie te controleren die aan de `AuthenticationResult`is gekoppeld. Houd er rekening mee dat de `AuthenticationResult` niet het nationale Cloud eindpunt adres biedt van de resource waarvoor u een token aanvraagt.
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-Een Booleaanse waarde die aangeeft of u gebruikmaakt van een door micro soft Identity Broker compatibele in-Broker omleidings-URI. Stel deze waarde in op `false` als u de Broker niet in uw app wilt gebruiken.
+Een Booleaanse waarde die aangeeft of u gebruikmaakt van een door micro soft Identity Broker compatibele in-Broker omleidings-URI. Stel deze in op `false` als u de Broker niet in uw app wilt gebruiken.
 
 Als u de AAD-instantie met de doel groep hebt ingesteld op `"MicrosoftPersonalAccount"`, wordt de Broker niet gebruikt.
 
-### <a name="http"></a>HTTP
+### <a name="http"></a>http
 
 Algemene instellingen voor HTTP-time-outs configureren, zoals:
 
-| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype | Verplicht | Opmerkingen |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | Nee | Tijd in milliseconden |
 | `read_timeout` | int | Nee | Tijd in milliseconden |
@@ -151,20 +152,20 @@ Algemene instellingen voor HTTP-time-outs configureren, zoals:
 
 De volgende algemene instellingen zijn voor logboek registratie:
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Verplicht | Opmerkingen |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | Nee | Of persoons gegevens moeten worden geverzendd |
-| `log_level`   | boolean | Nee | Welke logboek berichten moeten worden uitgevoerd |
-| `logcat_enabled` | boolean | Nee | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
+| `pii_enabled`  | booleaans | Nee | Of persoons gegevens moeten worden geverzendd |
+| `log_level`   | booleaans | Nee | Welke logboek berichten moeten worden uitgevoerd |
+| `logcat_enabled` | booleaans | Nee | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
 
 ### <a name="account_mode"></a>account_mode
 
 Hiermee geeft u op hoeveel accounts in uw app tegelijk kunnen worden gebruikt. De mogelijke waarden zijn:
 
-- `MULTIPLE` (standaard instelling)
+- `MULTIPLE` (standaard)
 - `SINGLE`
 
-Als u een `PublicClientApplication` bouwt met een account modus die niet overeenkomt met deze instelling, resulteert dit in een uitzonde ring.
+Het maken van een `PublicClientApplication` het gebruik van een account modus die niet overeenkomt met deze instelling, resulteert in een uitzonde ring.
 
 Zie voor meer informatie over de verschillen tussen enkele en meerdere accounts [apps met één en meerdere accounts](single-multi-account.md).
 
@@ -345,7 +346,7 @@ In het volgende voor beeld ziet u een basis configuratie met de client-ID, omlei
 ## <a name="how-to-use-a-configuration-file"></a>Een configuratie bestand gebruiken
 
 1. Een configuratie bestand maken. Het is raadzaam om uw aangepaste configuratie bestand te maken in `res/raw/auth_config.json`. Maar u kunt het overal waar u maar wilt.
-2. Vertel MSAL waar de configuratie moet worden gezocht wanneer u de `PublicClientApplication` bouwt. Bijvoorbeeld:
+2. Vertel MSAL waar u de configuratie moet zoeken wanneer u de `PublicClientApplication`bouwt. Bijvoorbeeld:
 
    ```java
    //On Worker Thread

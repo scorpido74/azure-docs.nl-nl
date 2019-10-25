@@ -1,29 +1,29 @@
 ---
-title: Facet navigatie implementeren in een categorie hiërarchie-Azure Search
-description: Voeg facet navigatie toe aan toepassingen die worden geïntegreerd met Azure Search, een in de Cloud gehoste zoek service op Microsoft Azure.
-author: HeidiSteen
+title: Facet navigatie implementeren in een categorie hiërarchie
+titleSuffix: Azure Cognitive Search
+description: Voeg facet navigatie toe aan toepassingen die worden geïntegreerd met Azure Cognitive Search, een in de Cloud gehoste zoek service op Microsoft Azure.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f1847eae1ee7db90f36072e2e832bd6fec9c2caa
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69649899"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792927"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Facetnavigatie implementeren in Azure Search
+# <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
+
 Facet navigatie is een filter mechanisme dat zelf gestuurde DrillDown-navigatie biedt in zoek toepassingen. De term ' facet navigatie ' is mogelijk onbekend, maar u hebt deze waarschijnlijk al eerder gebruikt. Zoals in het volgende voor beeld wordt getoond, is facet navigatie niets meer dan de categorieën die worden gebruikt om de resultaten te filteren.
 
- ![Demo van Azure Search-taak Portal](media/search-faceted-navigation/azure-search-faceting-example.png "Demo van Azure Search-taak Portal")
+ ![Demo van Azure Cognitive Search-taak Portal](media/search-faceted-navigation/azure-search-faceting-example.png "Demo van Azure Cognitive Search-taak Portal")
 
 Facet navigatie is een alternatief invoer punt om te zoeken. Het biedt een handig alternatief om complexe Zoek expressies hand matig te typen. Facetten kunnen u helpen bij het vinden van wat u zoekt, terwijl u er zeker van bent dat u geen nul resultaten krijgt. Als ontwikkelaar kunt u met facetten de meest nuttige zoek criteria voor het navigeren door uw zoek index weer geven. In online retail toepassingen is facet navigatie vaak gebaseerd op merken, afdelingen (schoenen en kinderen), grootte, prijs, populariteit en Beoordelingen. 
 
-De implementatie van de facet navigatie wijkt af van de verschillende Zoek technologieën. In Azure Search is facet navigatie gebaseerd op de query tijd, met behulp van velden die u eerder in uw schema hebt kenmerken.
+De implementatie van de facet navigatie wijkt af van de verschillende Zoek technologieën. In azure Cognitive Search is facet navigatie gebaseerd op de query tijd, met behulp van velden die u eerder in uw schema hebt kenmerken.
 
 -   In de query's die uw toepassing bouwt, moet een query *facet query parameters* verzenden om de beschik bare facet filter waarden voor die document resultaten te verkrijgen.
 
@@ -34,7 +34,7 @@ Bij het ontwikkelen van uw toepassing is het schrijven van code voor het maken v
 ## <a name="sample-code-and-demo"></a>Voorbeeld code en demo
 In dit artikel wordt een portal voor taak zoekopdrachten als voor beeld gebruikt. Het voor beeld wordt geïmplementeerd als een ASP.NET MVC-toepassing.
 
--   Bekijk en test de werk demonstratie online in [Azure Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
+-   Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -47,13 +47,13 @@ De zoek ervaring voor facet navigatie is iteratief, dus laten we het eerst weten
 
 Het begin punt is een toepassings pagina die facet navigatie biedt, die meestal in de omtrek wordt geplaatst. Facet navigatie is vaak een boom structuur, met selectie vakjes voor elke waarde of klik bare tekst. 
 
-1. Met een query die naar Azure Search wordt verzonden, wordt de facet navigatie structuur via een of meer facet query parameters opgegeven. De query kan bijvoorbeeld `facet=Rating` bevatten, bijvoorbeeld met een `:values` of `:sort` optie om de presentatie verder te verfijnen.
+1. Met een query die wordt verzonden naar Azure Cognitive Search wordt de facet navigatie structuur opgegeven via een of meer facet query parameters. De query kan bijvoorbeeld `facet=Rating` bevatten, bijvoorbeeld met een `:values` of `:sort` optie om de presentatie verder te verfijnen.
 2. De presentatielaag geeft een zoek pagina weer met facet navigatie, met behulp van de facetten die zijn opgegeven in de aanvraag.
 3. Gezien een facet navigatie structuur die classificatie bevat, klikt u op 4 om aan te geven dat alleen producten met een classificatie van 4 of hoger moeten worden weer gegeven. 
 4. Als antwoord verzendt de toepassing een query die `$filter=Rating ge 4` bevat 
 5. De laag van de presentatie werkt de pagina bij, met een beperkte resultatenset, die alleen de items bevat die voldoen aan de nieuwe criteria (in dit geval de producten met de waarde 4 en up).
 
-Een facet is een query parameter, maar verwar het niet met query-invoer. Het wordt nooit gebruikt als selectie criterium in een query. U kunt in plaats daarvan facet query parameters beschouwen als invoer voor de navigatie structuur die in het antwoord wordt weer gegeven. Voor elke facet query parameter die u opgeeft, wordt door Azure Search geëvalueerd hoeveel documenten de gedeeltelijke resultaten voor elke facet waarde hebben.
+Een facet is een query parameter, maar verwar het niet met query-invoer. Het wordt nooit gebruikt als selectie criterium in een query. U kunt in plaats daarvan facet query parameters beschouwen als invoer voor de navigatie structuur die in het antwoord wordt weer gegeven. Voor elke facet query parameter die u opgeeft, wordt door Azure Cognitive Search geëvalueerd hoeveel documenten de gedeeltelijke resultaten voor elke facet waarde hebben.
 
 Let op de `$filter` in stap 4. Het filter is een belang rijk aspect van facet navigatie. Hoewel facetten en filters onafhankelijk zijn in de API, hebt u beide nodig om de ervaring te leveren die u wilt bieden. 
 
@@ -63,7 +63,7 @@ In toepassings code moet het patroon de facet query parameters gebruiken om de f
 
 ### <a name="query-basics"></a>Basis informatie over query's
 
-In Azure Search wordt een aanvraag opgegeven via een of meer query parameters (Zie [documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor een beschrijving van elk van beide). Geen van de query parameters is vereist, maar u moet ten minste één om een query geldig te maken.
+In azure Cognitive Search wordt een aanvraag opgegeven via een of meer query parameters (Zie [documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor een beschrijving van elk van beide). Geen van de query parameters is vereist, maar u moet ten minste één om een query geldig te maken.
 
 Nauw keurigheid, gezien als de mogelijkheid om irrelevante treffers te filteren, wordt bereikt door middel van een of beide van de volgende expressies:
 
@@ -89,17 +89,17 @@ In toepassingen die facet navigatie bevatten, moet u ervoor zorgen dat elke gebr
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>Een facet navigatie-app bouwen
-U implementeert facet navigatie met Azure Search in de code van uw toepassing die de zoek aanvraag bouwt. De facet navigatie is afhankelijk van elementen in het schema dat u eerder hebt gedefinieerd.
+U implementeert facet navigatie met Azure Cognitive Search in de code van uw toepassing die de zoek aanvraag bouwt. De facet navigatie is afhankelijk van elementen in het schema dat u eerder hebt gedefinieerd.
 
 Vooraf gedefinieerd in uw zoek index is het `Facetable [true|false]` index kenmerk, ingesteld op geselecteerde velden om het gebruik in een facet navigatie structuur in of uit te scha kelen. Zonder `"Facetable" = true` kan een veld niet worden gebruikt in facet navigatie.
 
-De presentatielaag in uw code biedt de gebruikers ervaring. Het moet een lijst zijn met de onderdelen van de facet navigatie, zoals de labels, waarden, selectie vakjes en de telling. Het Azure Search REST API is platform neutraal, dus gebruik de taal en het platform dat u wilt. Het is belang rijk dat u UI-elementen opneemt die incrementeel vernieuwen ondersteunen, met de bijgewerkte status van de gebruikers interface, terwijl elk extra facet wordt geselecteerd. 
+De presentatielaag in uw code biedt de gebruikers ervaring. Het moet een lijst zijn met de onderdelen van de facet navigatie, zoals de labels, waarden, selectie vakjes en de telling. De Azure Cognitive Search REST API is platform neutraal. gebruik dus elke taal en elk platform dat u wilt. Het is belang rijk dat u UI-elementen opneemt die incrementeel vernieuwen ondersteunen, met de bijgewerkte status van de gebruikers interface, terwijl elk extra facet wordt geselecteerd. 
 
 Tijdens het uitvoeren van de query wordt met de code van de toepassing een aanvraag gemaakt met `facet=[string]`, een aanvraag parameter waarmee het veld kan worden gefacett door. Een query kan meerdere facetten hebben, zoals `&facet=color&facet=category&facet=rating`, die elk van elkaar gescheiden door een ampersand teken (&).
 
 Toepassings code moet ook een `$filter` expressie maken voor het afhandelen van de klik gebeurtenissen in facet navigatie. Een `$filter` reduceert de zoek resultaten met behulp van de facet waarde als filter criterium.
 
-Azure Search retourneert de zoek resultaten op basis van een of meer voor waarden die u invoert, samen met updates voor de facet navigatie structuur. In Azure Search is facet navigatie een constructie met één niveau, met facet waarden en aantallen van het aantal resultaten dat voor elk item is gevonden.
+Azure Cognitive Search retourneert de zoek resultaten op basis van een of meer voor waarden die u invoert, samen met updates voor de facet navigatie structuur. In azure Cognitive Search is facet navigatie een constructie met één niveau, met facet waarden en aantallen van het aantal resultaten dat voor elk item is gevonden.
 
 In de volgende secties ziet u hoe u elk onderdeel kunt bouwen.
 
@@ -167,7 +167,7 @@ Als u van de presentatielaag terugkeert, kunt u aan de slag met vereisten die mo
 
 In termen van facet navigatie wordt in uw web-of toepassings pagina de facet navigatie structuur weer gegeven, wordt de gebruikers invoer op de pagina gedetecteerd en worden de gewijzigde elementen ingevoegd. 
 
-Voor webtoepassingen wordt AJAX doorgaans gebruikt in de presentatielaag, omdat u hiermee incrementele wijzigingen kunt vernieuwen. U kunt ook ASP.NET MVC of een ander visualisatie platform gebruiken dat verbinding kan maken met een Azure Search-service via HTTP. De voorbeeld toepassing waarnaar wordt verwezen in dit artikel--de **Azure Search Job Portal-demo** – gebeurt als een ASP.NET MVC-toepassing.
+Voor webtoepassingen wordt AJAX doorgaans gebruikt in de presentatielaag, omdat u hiermee incrementele wijzigingen kunt vernieuwen. U kunt ook ASP.NET MVC of een ander visualisatie platform gebruiken dat verbinding kan maken met een Azure Cognitive Search-service via HTTP. De voorbeeld toepassing waarnaar wordt verwezen in dit artikel--de demo van de **Azure Cognitive Search-taak Portal** – gebeurt als een ASP.NET MVC-toepassing.
 
 In het voor beeld is facet navigatie ingebouwd in de pagina met zoek resultaten. In het volgende voor beeld uit het `index.cshtml`-bestand van de voorbeeld toepassing ziet u de statische HTML-structuur voor het weer geven van facet navigatie op de pagina met zoek resultaten. De lijst met facetten wordt dynamisch gebouwd of opnieuw opgebouwd wanneer u een zoek term verzendt, of u kunt een facet selecteren of wissen.
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst worden opgegeven met `count:<integer>`, `sort:<>`, `interval:<integer>` en `values:<list>`. Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
+Een facet query-para meter is ingesteld op een veld en afhankelijk van het gegevens type, kan door komma's gescheiden lijst worden opgegeven met `count:<integer>`, `sort:<>`, `interval:<integer>` en `values:<list>`. Een lijst met waarden wordt ondersteund voor numerieke gegevens bij het instellen van bereiken. Zie [zoeken naar documenten (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor gebruiks gegevens.
 
 Naast de facetten moet de aanvraag die is geformuleerd door uw toepassing ook filters maken om de set met kandidaten documenten te beperken op basis van de selectie van een facet waarde. Voor een fiets winkel biedt facet navigatie aanwijzingen voor vragen, zoals *welke kleuren, fabrikanten en soorten fietsen er beschikbaar zijn?* . Het filteren van antwoorden op vragen *, zoals de exacte fietsen rood, Mountain Bikes, in dit prijs bereik?* . Wanneer u op ' rood ' klikt om aan te geven dat alleen rode producten moeten worden weer gegeven, bevat de volgende query die door de toepassing wordt verzonden `$filter=Color eq ‘Red’`.
 
@@ -260,7 +260,7 @@ Alleen voor numerieke en datum/tijd-waarden kunt u expliciet waarden instellen v
 
 **Standaard kunt u slechts één niveau van facet navigatie hebben** 
 
-Zoals genoteerd, is er geen rechtstreekse ondersteuning voor het nesten van facetten in een hiërarchie. Facet navigatie in Azure Search ondersteunt standaard slechts één filter niveau. Er zijn echter tijdelijke oplossingen. U kunt een hiërarchische facet structuur in een `Collection(Edm.String)` versleutelen met één toegangs punt per hiërarchie. Het implementeren van deze tijdelijke oplossing valt buiten het bereik van dit artikel. 
+Zoals genoteerd, is er geen rechtstreekse ondersteuning voor het nesten van facetten in een hiërarchie. Facet navigatie in azure Cognitive Search ondersteunt standaard slechts één filter niveau. Er zijn echter tijdelijke oplossingen. U kunt een hiërarchische facet structuur in een `Collection(Edm.String)` versleutelen met één toegangs punt per hiërarchie. Het implementeren van deze tijdelijke oplossing valt buiten het bereik van dit artikel. 
 
 ### <a name="querying-tips"></a>Query's uitvoeren op tips
 **Velden valideren**
@@ -302,7 +302,7 @@ Voor elk facet veld in de navigatie structuur geldt een standaard limiet van 10 
 Let op het onderscheid tussen facet resultaten en zoek resultaten. Zoek resultaten zijn alle documenten die overeenkomen met de query. Facet resultaten zijn de overeenkomsten voor elke facet waarde. In het voor beeld omvatten Zoek resultaten plaats namen die niet voor komen in de facet classificatie lijst (5 in ons voor beeld). Resultaten die worden gefilterd via facet navigatie, worden zichtbaar wanneer u facetten wist of andere facetten kiezen naast plaats. 
 
 > [!NOTE]
-> Het bespreken van `count` als er meer dan één type verwarrend kan zijn. De volgende tabel bevat een korte samen vatting van hoe de term wordt gebruikt in Azure Search-API, voorbeeld code en documentatie. 
+> Het bespreken van `count` als er meer dan één type verwarrend kan zijn. De volgende tabel bevat een korte samen vatting van hoe de term wordt gebruikt in azure Cognitive Search API, voorbeeld code en documentatie. 
 
 * `@colorFacet.count`<br/>
   In presentatie code ziet u een aantal para meters in het facet, dat wordt gebruikt om het aantal facet resultaten weer te geven. In facet resultaten geeft het aantal documenten aan dat overeenkomt met de facet term of het bereik.
@@ -317,7 +317,7 @@ Wanneer u een filter aan een facet query toevoegt, wilt u mogelijk de facet inst
 
 **Zorg ervoor dat u nauw keurige facet aantallen krijgt**
 
-Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in azure Search (forum bericht)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenkomen met de resultaten sets (Zie [facet navigatie in Azure Cognitive Search (forum bericht)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
 
 De facet aantallen kunnen onnauwkeurig zijn als gevolg van de sharding-architectuur. Elke zoek index heeft meerdere Shards en elke Shard rapporteert de bovenste N facetten per document telling, die vervolgens in één resultaat wordt gecombineerd. Als sommige Shards veel overeenkomende waarden hebben, terwijl anderen minder hebben, is het mogelijk dat sommige facet waarden ontbreken of worden ondergeteld in de resultaten.
 
@@ -326,14 +326,14 @@ Hoewel dit gedrag op elk gewenst moment kan worden gewijzigd, kunt u dit problee
 ### <a name="user-interface-tips"></a>Tips voor de gebruikers interface
 **Labels voor elk veld in de facet navigatie toevoegen**
 
-Labels worden meestal gedefinieerd in de HTML of het formulier (`index.cshtml` in de voorbeeld toepassing). Er is geen API in Azure Search voor facet navigatie labels of andere meta gegevens.
+Labels worden meestal gedefinieerd in de HTML of het formulier (`index.cshtml` in de voorbeeld toepassing). Er is geen API in azure Cognitive Search voor facet navigatie labels of andere meta gegevens.
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filteren op basis van een bereik
-Facet overschrijding van bereik waarden is een algemene vereiste voor het zoeken van toepassingen. Bereiken worden ondersteund voor numerieke gegevens en datum/tijd-waarden. Meer informatie over elke benadering vindt u in [zoekende documenten (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Facet overschrijding van bereik waarden is een algemene vereiste voor het zoeken van toepassingen. Bereiken worden ondersteund voor numerieke gegevens en datum/tijd-waarden. Meer informatie over elke benadering vindt u in [documenten zoeken (Azure Cognitive Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
-Azure Search vereenvoudigt bereik constructie door twee benaderingen te bieden voor het berekenen van een bereik. Voor beide benaderingen maakt Azure Search de juiste bereiken aan de opgegeven invoer. Als u bijvoorbeeld de bereik waarden 10 | 20 | 30 opgeeft, worden er automatisch bereiken van 0-10, 10-20, 20-30 gemaakt. Uw toepassing kan eventueel alle intervallen verwijderen die leeg zijn. 
+Azure Cognitive Search vereenvoudigt de bereik constructie door twee benaderingen te bieden voor het berekenen van een bereik. Voor beide benaderingen maakt Azure Cognitive Search de juiste bereiken op basis van de invoer die u hebt opgegeven. Als u bijvoorbeeld de bereik waarden 10 | 20 | 30 opgeeft, worden er automatisch bereiken van 0-10, 10-20, 20-30 gemaakt. Uw toepassing kan eventueel alle intervallen verwijderen die leeg zijn. 
 
 **Benadering 1: de para meter interval gebruiken**  
 Als u prijs facetten in $10 stappen wilt instellen, geeft u het volgende op: `&facet=price,interval:10`
@@ -347,7 +347,7 @@ Als u een facet bereik wilt opgeven zoals in de vorige scherm afbeelding, gebrui
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-Elk bereik is gebouwd op basis van 0 als uitgangs punt, een waarde uit de lijst als een eind punt en wordt vervolgens bijgesneden van het vorige bereik om discrete intervallen te maken. Azure Search doet dit als onderdeel van facet navigatie. U hoeft geen code te schrijven voor het structureren van elk interval.
+Elk bereik is gebouwd op basis van 0 als uitgangs punt, een waarde uit de lijst als een eind punt en wordt vervolgens bijgesneden van het vorige bereik om discrete intervallen te maken. Azure Cognitive Search doet dit als onderdeel van facet navigatie. U hoeft geen code te schrijven voor het structureren van elk interval.
 
 ### <a name="build-a-filter-for-a-range"></a>Een filter maken voor een bereik
 Als u documenten wilt filteren op basis van een bereik dat u hebt geselecteerd, kunt u de operator `"ge"` en `"lt"` filter gebruiken in een expressie met twee delen waarmee de eind punten van het bereik worden gedefinieerd. Als u bijvoorbeeld het bereik 10-25 voor een `listPrice` veld kiest, wordt het filter `$filter=listPrice ge 10 and listPrice lt 25`. In de voorbeeld code gebruikt de filter expressie **priceFrom** -en **priceTo** -para meters om de eind punten in te stellen. 
@@ -359,19 +359,19 @@ Als u documenten wilt filteren op basis van een bereik dat u hebt geselecteerd, 
 ## <a name="filter-based-on-distance"></a>Filteren op basis van afstand
 Het is gebruikelijk om filters te zien die u helpen bij het kiezen van een Store, restaurant of doel op basis van de nabijheid van uw huidige locatie. Hoewel dit type filter eruit kan zien als facet navigatie, is het een filter. Dit wordt hier vermeld voor degenen die specifiek op zoek zijn naar het implementatie advies voor het desbetreffende ontwerp probleem.
 
-Er zijn twee georuimtelijke functies in Azure Search, **geo. Distance** en **geo. intersects**.
+Er zijn twee georuimtelijke functies in azure Cognitive Search, **geo. Distance** en **geo. intersects**.
 
 * De functie **geo. Distance** retourneert de afstand in kilo meters tussen twee punten. Een punt is een veld en een ander is een constante die wordt door gegeven als onderdeel van het filter. 
 * De functie **geo. intersects** retourneert True als een bepaald punt zich in een bepaalde veelhoek bevindt. Het punt is een veld en de veelhoek wordt opgegeven als een constante lijst met coördinaten die worden door gegeven als onderdeel van het filter.
 
-U kunt filter voorbeelden vinden in de [OData-expressie syntaxis (Azure Search)](query-odata-filter-orderby-syntax.md).
+U kunt filter voorbeelden vinden in de [OData-expressie syntaxis (Azure Cognitive Search)](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>Probeer de demo
-De demo van de Azure Search-taak Portal bevat de voor beelden waarnaar in dit artikel wordt verwezen.
+De demo van de Azure Cognitive Search Job Portal bevat de voor beelden waarnaar in dit artikel wordt verwezen.
 
--   Bekijk en test de werk demonstratie online in [Azure Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
+-   Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
 
 -   Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -396,7 +396,7 @@ Bekijk bij het werken met zoek resultaten de URL voor wijzigingen in de bouw van
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Meer informatie
-Bekijk [Azure Search diep gaande](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Bij 45:25 is er een demo over het implementeren van facetten.
+Bekijk [Azure Cognitive Search diep gaande](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Bij 45:25 is er een demo over het implementeren van facetten.
 
 Voor meer informatie over ontwerp principes voor facet navigatie raden wij de volgende koppelingen aan:
 

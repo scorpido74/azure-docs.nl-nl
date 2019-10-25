@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949785"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800208"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Verbinding maken met en verifiëren met Api's
 
@@ -28,11 +28,11 @@ Om een toepassing of service met Azure Active Directory te integreren, moet een 
 
 Er worden [vijf primaire toepassings scenario's](../active-directory/develop/v2-app-types.md) ondersteund door Azure AD:
 
-* Toepassing met één pagina (SPA): Een gebruiker moet zich aanmelden bij een toepassing met één pagina die wordt beveiligd door Azure AD.
-* Webbrowser voor webtoepassing: Een gebruiker moet zich aanmelden bij een webtoepassing die wordt beveiligd door Azure AD.
-* Systeem eigen toepassing op Web-API: Een systeem eigen toepassing die wordt uitgevoerd op een telefoon, tablet of PC moet een gebruiker verifiëren om bronnen te verkrijgen van een web-API die wordt beveiligd door Azure AD.
-* Webtoepassing voor web-API: Een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
-* Daemon of server toepassing op Web-API: Een daemon-toepassing of een server toepassing zonder webgebruikersinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
+* Toepassing met één pagina (SPA): een gebruiker moet zich aanmelden bij een toepassing met één pagina die wordt beveiligd door Azure AD.
+* Webbrowser naar Web Application: een gebruiker moet zich aanmelden bij een webtoepassing die wordt beveiligd door Azure AD.
+* Systeem eigen toepassing op Web-API: een systeem eigen toepassing die wordt uitgevoerd op een telefoon, tablet of PC moet een gebruiker verifiëren om bronnen te verkrijgen van een web-API die wordt beveiligd door Azure AD.
+* Web Application to Web API: een webtoepassing moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
+* Daemon of server toepassing op Web-API: een daemon-toepassing of een server toepassing zonder webgebruikersinterface moet resources ophalen van een web-API die wordt beveiligd door Azure AD.
 
 > [!IMPORTANT]
 > Azure Digital Apparaatdubbels ondersteunt de volgende verificatie bibliotheken:
@@ -49,7 +49,7 @@ Wanneer ontwikkel aars oplossingen voor digitale Apparaatdubbels ontwikkelen, ma
 
 1. Het aangeschafte token wordt vervolgens gebruikt voor verificatie met of aanroepen van Api's die verder downstream worden gebruikt met behulp van de namens-stroom
 
-Zie [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)namens stroom voor instructies over het indelen van de namens-stroom. U kunt ook code voorbeelden bekijken in [het aanroepen van een stroomafwaartse Web-API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+Zie [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)namens stroom voor instructies over het indelen van de namens-stroom. U kunt ook code voorbeelden bekijken in [het aanroepen van een stroomafwaartse Web-API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="next-steps"></a>Volgende stappen
 

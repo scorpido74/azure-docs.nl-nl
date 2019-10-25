@@ -1,31 +1,30 @@
 ---
-title: Afgeschafte cognitieve vaardig heden-Azure Search
-description: Deze pagina bevat een lijst met cognitieve Zoek vaardigheden die als verouderd worden beschouwd en niet in de nabije toekomst wordt ondersteund.
-services: search
+title: Afgeschafte cognitieve vaardig heden
+titleSuffix: Azure Cognitive Search
+description: Deze pagina bevat een lijst met cognitieve vaardig heden die als verouderd worden beschouwd en wordt niet meer ondersteund in de nabije toekomst in azure Cognitive Search vaardig heden.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265440"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792023"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>Afgeschafte vaardig heden voor de cognitieve zoek functie
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Afgeschafte cognitieve vaardig heden in azure Cognitive Search
 
 In dit document worden cognitieve vaardig heden beschreven die als afgeschaft worden beschouwd. Gebruik de volgende hand leiding voor de inhoud:
 
-* Vaardigheids naam: De naam van de vaardigheid die wordt afgeschaft, wordt toegewezen aan het @odata.type kenmerk.
-* Laatst beschik bare API-versie: De laatste versie van de open bare API van Azure Search waarmee vaardig heden met de bijbehorende afgeschafte vaardig heden kunnen worden gemaakt/bijgewerkt.
-* Einde van de ondersteuning: De laatste dag waarna de bijbehorende vaardigheid wordt beschouwd als niet-ondersteund. Eerder gemaakte vaardig heden moet nog steeds blijven functioneren, maar gebruikers worden aanbevolen een gedeprecieerde vaardigheid te migreren.
-* Vereisten Migratie traject vooruit om een ondersteunde vaardigheid te gebruiken. Gebruikers wordt aangeraden de aanbevelingen te volgen om ondersteuning te blijven ontvangen.
+* Vaardigheids naam: de naam van de vaardigheid die wordt afgeschaft, die wordt toegewezen aan het kenmerk @odata.type.
+* Laatst beschik bare API-versie: de laatste versie van de Azure Cognitive Search open bare API waarmee vaardig heden met de bijbehorende afgeschafte vaardig heden kunnen worden gemaakt/bijgewerkt.
+* Einde van de ondersteuning: de laatste dag waarna de bijbehorende vaardigheid als niet-ondersteund wordt beschouwd. Eerder gemaakte vaardig heden moet nog steeds blijven functioneren, maar gebruikers worden aanbevolen een gedeprecieerde vaardigheid te migreren.
+* Aanbevelingen: migratie traject vooruit om een ondersteunde vaardigheid te gebruiken. Gebruikers wordt aangeraden de aanbevelingen te volgen om ondersteuning te blijven ontvangen.
 
-## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
+## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Micro soft. skills. Text. NamedEntityRecognitionSkill
 
 ### <a name="last-available-api-version"></a>Laatst beschik bare API-versie
 
@@ -42,13 +41,13 @@ Gebruik in plaats daarvan [micro soft. skills. Text. EntityRecognitionSkill](cog
 Als u wilt migreren naar de [kwalificatie voor entiteits herkenning](cognitive-search-skill-entity-recognition.md), moet u een of meer van de volgende wijzigingen door voeren in uw vaardigheids definitie. U kunt de vaardigheids definitie bijwerken met behulp van de [Update-vaardigheidset-API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
-> Momenteel wordt de betrouwbaarheids score als concept niet ondersteund. De `minimumPrecision` para meter bevindt zich op de `EntityRecognitionSkill` voor toekomstig gebruik en voor achterwaartse compatibiliteit.
+> Momenteel wordt de betrouwbaarheids score als concept niet ondersteund. De para meter `minimumPrecision` bestaat op de `EntityRecognitionSkill` voor toekomstig gebruik en voor achterwaartse compatibiliteit.
 
-1. *(Vereist)* Wijzig de `@odata.type` `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` vanin.`"#Microsoft.Skills.Text.EntityRecognitionSkill"`
+1. *(Vereist)* Wijzig de `@odata.type` van `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` in `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 
-2. *(Optioneel)* Als u de `entities` uitvoer maakt, gebruikt u de `namedEntities` complexe verzamelings uitvoer van de `EntityRecognitionSkill` in plaats daarvan. U kunt de `targetName` in de vaardigheids definitie gebruiken om deze toe te wijzen aan een `entities`aantekening met de naam.
+2. *(Optioneel)* Als u de `entities` uitvoer maakt, gebruikt u in plaats daarvan de `namedEntities` complexe verzamelings uitvoer van de `EntityRecognitionSkill`. U kunt de `targetName` in de vaardigheids definitie gebruiken om deze toe te wijzen aan een aantekening met de naam `entities`.
 
-3. *(Optioneel)* Als u de `categories`niet expliciet opgeeft, kan de `EntityRecognitionSkill` retour waarde van een ander type categorieën worden geretourneerd, behalve die van `NamedEntityRecognitionSkill`de. Als dit gedrag niet gewenst is, moet u de `categories` para meter expliciet instellen op. `["Person", "Location", "Organization"]`
+3. *(Optioneel)* Als u de `categories`niet expliciet opgeeft, kan de `EntityRecognitionSkill` een ander type categorie als resultaat geven dan de categorieën die door de `NamedEntityRecognitionSkill`worden ondersteund. Als dit gedrag niet gewenst is, moet u de para meter `categories` expliciet instellen op `["Person", "Location", "Organization"]`.
 
     _Voor beelden van migratie definities_
 
@@ -148,6 +147,6 @@ Als u wilt migreren naar de [kwalificatie voor entiteits herkenning](cognitive-s
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Vooraf gedefinieerde vaardig heden](cognitive-search-predefined-skills.md)
++ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Vaardigheid van entiteits herkenning](cognitive-search-skill-entity-recognition.md)

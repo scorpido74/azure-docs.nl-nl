@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ae1792d9ef3f07ef7258451be79b587692a1694
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177654"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809437"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -94,7 +94,7 @@ Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om ee
 
 1. Ga naar **alle resources**, zoek naar **Service Desk (YourWorkspaceName)** .
 2. Klik onder **gegevens bronnen voor werk ruimte** in het linkerdeel venster op **ITSM-verbindingen**.
-   ![ITSM-verbindingen @ no__t-1
+   ![ITSM-verbindingen](media/itsmc-overview/itsm-connections.png)
 
    Op deze pagina wordt de lijst met verbindingen weer gegeven.
 3. Klik op **verbinding toevoegen**.
@@ -297,7 +297,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 2. Als gegevens van ServiceNow niet worden gesynchroniseerd met Log Analytics, moet u ervoor zorgen dat het ServiceNow-exemplaar niet in de slaap stand staat. ServiceNow dev-instanties gaan soms naar de slaap stand als deze gedurende een lange periode niet actief zijn. Anders meldt u het probleem.
 3. Als Log Analytics waarschuwingen wordt geactiveerd, maar er geen werk items worden gemaakt in ITSM product of configuratie-items niet zijn gemaakt/gekoppeld aan werk items of voor andere algemene informatie, kijkt u op de volgende locaties:
    -  ITSMC: de oplossing toont een samen vatting van verbindingen/werk items/computers, enzovoort. Klik op de tegel met de status van de **connector**, waarmee u de **Zoek opdracht kunt vastleggen** in een logboek met de relevante query. Bekijk de logboek records met LogType_S als fout voor meer informatie.
-   - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie direct met behulp van de query `*`ServiceDeskLog_CL @ no__t-2.
+   - **Zoek pagina voor logboeken** : Bekijk de fout/gerelateerde informatie direct met behulp van de query `*`ServiceDeskLog_CL`*`.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Problemen met de implementatie van Service Manager web-app oplossen
 1.  In het geval van problemen met de implementatie van web-apps, moet u ervoor zorgen dat u voldoende machtigingen hebt in het abonnement dat wordt vermeld voor het maken/implementeren van resources.

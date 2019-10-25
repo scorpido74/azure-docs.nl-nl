@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937440"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802193"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Ondersteuningsmatrix voor Hyper-V-evaluatie en -migratie
 
@@ -29,8 +29,6 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele Hyper-
 **On-premises virtuele Hyper-V-machines evalueren** | [Stel](tutorial-prepare-hyper-v.md) uw eerste beoordeling in.<br/><br/> [Voer](scale-hyper-v-assessment.md) een grootschalige evaluatie uit.
 **Hyper-V-VM's migreren naar Azure** | [Probeer](tutorial-migrate-hyper-v.md) de migratie naar Azure uit te proberen.
 
-Migratie van Hyper-V-servers die met System Center Virtual Machine Manager (VMM) worden beheerd, wordt niet ondersteund door Azure Migrate server migratie.
-
 ## <a name="azure-migrate-projects"></a>Azure Migrate projecten
 
 **Ondersteuning** | **Details**
@@ -41,16 +39,16 @@ Geografie | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel
 
   **Geografie** | **Opslag locatie van meta gegevens**
   --- | ---
-  Azure Government | VS (overheid) - Virginia
-  Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
+  Azure Government | US Gov - Virginia
+  Azië-Pacific | Azië Azië-oost of Zuidoost
   Australië | Australië-oost of Australië-zuidoost
-  Brazilië | Brazilië - zuid
+  Brazilië | Brazilië - Zuid
   Canada | Canada-centraal of Canada-oost
   Europa | Europa - noord of Europa - west
   Frankrijk | Frankrijk - centraal
   India | Centraal-India of India-zuid
   Japan |  Japan-Oost of Japan-West
-  Zuid-Korea | Korea-centraal of Korea-zuid
+  Korea | Korea-centraal of Korea-zuid
   Verenigd Koninkrijk | UK-zuid of UK-west
   Verenigde Staten | VS-midden, VS-West 2
 
@@ -107,7 +105,7 @@ Voor het beoordelen van Vm's heeft het Azure Migrate-apparaat Internet verbindin
 --- | ---
 *.portal.azure.com | Navigeren naar de Azure Portal
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
+*.microsoftonline.com <br/> *. microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 management.azure.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 dc.services.visualstudio.com | Logboekregistratie en bewaking
 *.vault.azure.net | Geheimen in Azure Key Vault beheren bij de communicatie tussen het apparaat en de service.
@@ -120,9 +118,9 @@ https://download.microsoft.com/download/* | Down loads van de micro soft-downloa
 
 De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
-**Apparaatconfiguratie** | **verbinding**
+**Apparaatconfiguratie** | **Verbinding**
 --- | ---
-**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Uitgaande verbindingen op de poorten 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Uitgaande verbindingen op de poorten 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Hyper-V-host/cluster** | Binnenkomende verbindingen op WinRM-poorten 5985 (HTTP) en 5986 (HTTPS) voor het ophalen van meta gegevens over de configuratie en prestaties van de virtuele Hyper-V-machines met behulp van een Common Information Model (CIM)-sessie.
 
 ## <a name="migration-limitations"></a>Migratie-beperkingen
@@ -143,7 +141,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machine
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure. |
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op elke Hyper-V-VM die u wilt beoordelen. |
 | **Integratie Services**       | [Hyper-V-integratie Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) moeten worden uitgevoerd op vm's die u controleert, om informatie over het besturings systeem vast te leggen. |
-| **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor de volgende besturings systemen:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Voor andere besturings systemen moet u hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
+| **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor de volgende besturings systemen:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Voor andere besturings systemen moet u hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
 | **Linux-opstart**                 | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken. |
 | **UEFI-opstart**                  | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.
   |
@@ -152,7 +150,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machine
 | **Versleutelde schijven/volumes**    | Niet ondersteund voor migratie. |
 | **RDM/passthrough-schijven**      | Niet ondersteund voor migratie. |
 | **Gedeelde schijf** | Vm's die gebruikmaken van gedeelde schijven, worden niet ondersteund voor migratie.
-| **NFS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
+| **NBS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
 | **SCSI**                      | Vm's met iSCSI-doelen worden niet ondersteund voor migratie.
 | **Doel schijf**                | U kunt alleen migreren naar Azure-Vm's met Managed disks. |
 | **Ipconfiguration** | Wordt niet ondersteund.
@@ -180,7 +178,7 @@ time.windows.com | Hiermee wordt de tijd synchronisatie tussen systeem en Global
 
 De volgende tabel bevat een overzicht van de poort vereisten op Hyper-V-hosts en virtuele machines voor de migratie van Vm's.
 
-**Apparaatconfiguratie** | **verbinding**
+**Apparaatconfiguratie** | **Verbinding**
 --- | ---
 Hyper-V-hosts/Vm's | Uitgaande verbindingen op HTTPS-poort 443 voor het verzenden van VM-replicatie gegevens naar Azure Migrate.
 

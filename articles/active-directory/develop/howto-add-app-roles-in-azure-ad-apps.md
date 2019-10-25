@@ -1,6 +1,7 @@
 ---
-title: Het toevoegen van app-rollen in uw Azure Active Directory-geregistreerde toepassing en deze ontvangen in het token
-description: Informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd bij Azure Active Directory, gebruikers en groepen toewijzen aan deze rollen en ontvangen ze op in de `roles` claim in het token.
+title: App-functies toevoegen in uw door Azure Active Directory geregistreerde app en ontvangen in het token
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd in Azure Active Directory, gebruikers en groepen toewijzen aan deze rollen en ze ontvangen in de `roles` claim in het token.
 services: active-directory
 documentationcenter: ''
 author: kkrishna
@@ -17,52 +18,52 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299145"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803353"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: App-rollen in uw toepassing toevoegen en deze ontvangen in het token
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
-Op rollen gebaseerd toegangsbeheer (RBAC) is een populaire mechanisme om af te dwingen autorisatie in toepassingen. Wanneer u RBAC gebruikt, verleent een beheerder machtigingen aan rollen, en niet naar afzonderlijke gebruikers of groepen. De beheerder kan vervolgens rollen toewijzen aan verschillende gebruikers en groepen om te bepalen wie toegang tot welke inhoud en functionaliteit heeft.
+Op rollen gebaseerd toegangs beheer (RBAC) is een populair mechanisme voor het afdwingen van autorisatie in toepassingen. Wanneer u RBAC gebruikt, verleent een beheerder machtigingen aan rollen en niet aan afzonderlijke gebruikers of groepen. De beheerder kan vervolgens rollen toewijzen aan verschillende gebruikers en groepen om te bepalen wie toegang heeft tot de inhoud en functionaliteit.
 
-Met RBAC met toepassingsrollen en de rol van Claims, kunnen ontwikkelaars veilig afdwingen autorisatie in hun apps zonder veel moeite op te geven.
+Met RBAC met toepassings rollen en claim claims kunnen ontwikkel aars veilig autorisaties in hun apps afdwingen met weinig moeite op hun eigen onderdeel.
 
-Een andere benadering is het gebruik van Azure AD-groepen en Claims van de groep, zoals wordt weergegeven in [WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet). Azure AD-groepen en rollen van toepassing zijn geen sluiten elkaar wederzijds uit; ze kunnen worden gebruikt in combinatie voor nog betere korrelig toegangsbeheer.
+Een andere benadering is het gebruik van Azure AD-groepen en-groepclaims, zoals wordt weer gegeven in [webapp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet). Azure AD-groepen en toepassings rollen zijn op geen enkele manier onderling uitsluiten; ze kunnen samen worden gebruikt om nog nauw keuriger toegangs beheer te bieden.
 
-## <a name="declare-roles-for-an-application"></a>Functies voor een toepassing declareren
+## <a name="declare-roles-for-an-application"></a>Rollen voor een toepassing declareren
 
-De rollen voor deze toepassing zijn gedefinieerd in de [Azure-portal](https://portal.azure.com) in manifest van de registratie van de toepassing.  Wanneer een gebruiker zich bij de App aanmeldt, Azure AD verzendt een `roles` claim voor elke rol die de gebruiker afzonderlijk zijn verleend aan de gebruiker en hun groepslidmaatschap.  Toewijzing van gebruikers en groepen aan rollen kan worden gedaan via de gebruikersinterface van de portal of programmatisch met [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
+Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.azure.com) in het registratie manifest van de toepassing.  Wanneer een gebruiker zich aanmeldt bij de toepassing, verzendt Azure AD een `roles` claim voor elke rol die de gebruiker afzonderlijk heeft verleend aan de gebruiker en aan het groepslid maatschap.  De toewijzing van gebruikers en groepen aan rollen kan worden uitgevoerd via de gebruikers interface van de portal of via een programma met behulp van [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
 
-### <a name="declare-app-roles-using-azure-portal"></a>App-rollen met behulp van Azure portal declareren
+### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Op de bovenste balk, selecteert u uw account en vervolgens **schakelen tussen mappen**.
-1. Zodra de **map + abonnement** deelvenster wordt geopend, kies de Active Directory-tenant waar u wilt registreren van uw toepassing uit de **Favorieten** of **alle mappen**lijst.
-1. Selecteer **alle services** in het navigatievenster aan de linkerkant, en kies **Azure Active Directory**.
-1. In de **Azure Active Directory** venster **App-registraties** om een lijst met al uw toepassingen weer te geven.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer uw account in de bovenste balk en **Schakel vervolgens over naar de map**.
+1. Zodra het deel venster voor het **adres lijst** en-abonnement wordt geopend, kiest u de Active Directory Tenant waar u uw toepassing wilt registreren in de lijst **Favorieten** of **alle directory's** .
+1. Selecteer **alle services** in het Linkernavigatie-navigatie venster en kies **Azure Active Directory**.
+1. Selecteer in het deel venster Azure Active Directory **app-registraties** om een lijst met al uw toepassingen weer te geven.
 
-     Als u de toepassing die u wilt dat hier weergegeven niet ziet, gebruikt u de verschillende filters aan de bovenkant van de **App-registraties** lijst om te beperken van de lijst of blader naar uw toepassing in de lijst.
+     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **app-registraties** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
 
-1. Selecteer de toepassing die u wilt definiëren, app-rollen in.
-1. Selecteer in de blade voor uw toepassing, **Manifest**.
-1. Het app-manifest bewerken door te zoeken op de `appRoles` instellen en het toevoegen van alle rollen in uw toepassing.
+1. Selecteer de toepassing waarvoor u de app-rollen wilt definiëren.
+1. Selecteer in de Blade voor uw toepassing **manifest**.
+1. Bewerk het app-manifest door de `appRoles`-instelling te vinden en alle toepassings rollen toe te voegen.
 
      > [!NOTE]
-     > Elke app roldefinitie in dit manifest moet een andere geldige GUID voor de `id` eigenschap. 
+     > Elke app-roldefinitie in dit manifest moet een andere geldige GUID hebben voor de eigenschap `id`. 
      > 
-     > De `value` eigenschap van de definitie van elke app-rol moet exact overeenkomen met de tekenreeksen die worden gebruikt in de code in de toepassing. De `value` eigenschap mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout opgetreden bij het opslaan van het manifest.
+     > De eigenschap `value` van elke definitie van een app-functie moet exact overeenkomen met de teken reeksen die worden gebruikt in de code in de toepassing. De eigenschap `value` mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout melding wanneer u het manifest opslaat.
      
-1. Sla het manifest.
+1. Sla het manifest op.
 
 ### <a name="examples"></a>Voorbeelden
 
-Het volgende voorbeeld wordt de `appRoles` die u kunt toewijzen aan `users`.
+In het volgende voor beeld ziet u de `appRoles` die u aan `users`kunt toewijzen.
 
 > [!NOTE]
->De `id` moet een unieke GUID.
+>De `id` moet een unieke GUID zijn.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -84,7 +85,7 @@ Het volgende voorbeeld wordt de `appRoles` die u kunt toewijzen aan `users`.
 > [!NOTE]
 >De `displayName` mag geen spaties bevatten.
 
-U kunt app-rollen definiëren met doel- `users`, `applications`, of beide. Wanneer deze beschikbaar op `applications`, app-rollen worden weergegeven als de machtigingen van de toepassing in de **vereiste machtigingen** blade. Het volgende voorbeeld ziet u een app-rol die is gericht op een `Application`.
+U kunt app-rollen definiëren om `users`, `applications`of beide te richten. Wanneer de `applications`beschikbaar zijn, worden de app-rollen weer gegeven als toepassings machtigingen op de Blade **vereiste machtigingen** . In het volgende voor beeld ziet u een app-rol die is gericht op een `Application`.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -103,35 +104,35 @@ U kunt app-rollen definiëren met doel- `users`, `applications`, of beide. Wanne
 "availableToOtherTenants": false,
 ```
 
-De limieten die het toepassingsmanifest is van invloed op het aantal rollen die zijn gedefinieerd. Ze hebben in detail is beschreven op de [manifest limieten](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) pagina.
+Het aantal gedefinieerde rollen heeft gevolgen voor de limieten die het toepassings manifest heeft. Deze zijn uitvoerig besproken op de pagina [manifest limieten](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) .
 
 ### <a name="assign-users-and-groups-to-roles"></a>Gebruikers en groepen toewijzen aan rollen
 
-Wanneer u app-rollen in uw toepassing hebt toegevoegd, kunt u gebruikers en groepen toewijzen aan deze rollen.
+Wanneer u app-rollen hebt toegevoegd in uw toepassing, kunt u gebruikers en groepen toewijzen aan deze rollen.
 
-1. In de **Azure Active Directory** venster **bedrijfstoepassingen** uit de **Azure Active Directory** navigatiemenu links.
+1. Selecteer in het deel venster Azure Active Directory **bedrijfs toepassingen** in het navigatie menu **Azure Active Directory** links.
 1. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-     Als u de toepassing die u wilt dat hier weergegeven niet ziet, gebruikt u de verschillende filters aan de bovenkant van de **alle toepassingen** lijst om te beperken van de lijst of blader naar uw toepassing in de lijst.
+     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **alle toepassingen** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
 
-1. Selecteer de toepassing waarin u wilt dat gebruikers of beveiligingsgroep toewijzen aan rollen.
-1. Selecteer de **gebruikers en groepen** deelvenster in het navigatiemenu aan de van de toepassing.
-1. Aan de bovenkant van de **gebruikers en groepen** in de lijst met de **gebruiker toevoegen** te openen de **toevoegen toewijzing** deelvenster.
-1. Selecteer de **gebruikers en groepen** selector vanaf de **toevoegen toewijzing** deelvenster.
+1. Selecteer de toepassing waarin u gebruikers of beveiligings groep aan rollen wilt toewijzen.
+1. Selecteer het deel venster **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
+1. Klik boven aan de lijst **gebruikers en groepen** op de knop **gebruiker toevoegen** om het deel venster **toewijzing toevoegen** te openen.
+1. Selecteer de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-     Een lijst met gebruikers en beveiligingsgroepen worden weergegeven, samen met een tekstvak Zoeken naar en zoeken naar een bepaalde gebruiker of groep. Dit scherm kunt u meerdere gebruikers en groepen selecteren in een go.
+     Er wordt een lijst met gebruikers en beveiligings groepen weer gegeven samen met een tekstvak om te zoeken en een bepaalde gebruiker of groep te zoeken. In dit scherm kunt u meerdere gebruikers en groepen tegelijk selecteren.
 
-1. Wanneer u klaar bent de gebruikers en groepen selecteren, drukt u op de **Selecteer** knop onderaan om te verplaatsen naar het volgende gedeelte.
-1. Kies de **rol selecteren** selector vanaf de **toewijzing toevoegen** deelvenster. De rollen die zijn gedeclareerd als eerder in het app-manifest worden weergegeven.
-1. Kies een rol en druk op de **Selecteer** knop.
-1. Druk op de **toewijzen** knop onder aan het voltooien van de toewijzingen van gebruikers en groepen naar de app.
-1. Bevestig dat de gebruikers en groepen die u hebt toegevoegd worden weergegeven in de bijgewerkte **gebruikers en groepen** lijst.
+1. Wanneer u klaar bent met het selecteren van de gebruikers en groepen, klikt u op de knop **selecteren** aan de onderkant om naar het volgende deel te gaan.
+1. Kies de selector **selecteren** in het deel venster **toewijzing toevoegen** . Alle eerder in het app-manifest gedeclareerde rollen worden weer gegeven.
+1. Kies een rol en druk op de knop **selecteren** .
+1. Druk op de knop **toewijzen** aan de onderkant om de toewijzingen van gebruikers en groepen aan de app te volt ooien.
+1. Controleer of de gebruikers en groepen die u hebt toegevoegd, worden weer gegeven in de lijst met bijgewerkte **gebruikers en groepen** .
 
 ## <a name="more-information"></a>Meer informatie
 
-- [Autorisatie in een web-app met behulp van Azure AD-toepassingsrollen &amp; rolclaims (voorbeeld)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-roleclaims/)
-- [Met behulp van beveiligingsgroepen en toepassingsrollen in uw apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
-- [Azure Active Directory, nu met groepclaims en toepassingsrollen](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
-- [Azure Active Directory-app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
-- [AAD-toegangstokens](access-tokens.md)
-- [AAD `id_tokens`](id-tokens.md)
+- [Autorisatie in een web-app met behulp van Azure AD-toepassings rollen &amp; rol claims (voor beeld)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Beveiligings groepen en toepassings rollen gebruiken in uw apps (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Azure Active Directory, nu met groeps claims en toepassings rollen](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
+- [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [AAD-toegangs tokens](access-tokens.md)
+- [AAD-`id_tokens`](id-tokens.md)

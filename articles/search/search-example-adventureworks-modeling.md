@@ -1,23 +1,23 @@
 ---
-title: 'Voorbeeld: De AdventureWorks-inventarisatie database model leren Azure Search'
-description: Meer informatie over het model leren van relationele gegevens, het transformeren ervan naar een platte gegevensset, voor het indexeren en zoeken in volledige tekst in Azure Search.
+title: 'Voor beeld: de AdventureWorks-inventarisatie database model leren'
+titleSuffix: Azure Cognitive Search
+description: Meer informatie over het model leren van relationele gegevens, het transformeren ervan naar een platte gegevensset, voor het indexeren en zoeken in volledige tekst in azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274039"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792995"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Voorbeeld: De AdventureWorks Inventory data base model leren voor Azure Search
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Voor beeld: de AdventureWorks-inventarisatie database voor Azure Cognitive Search model leren
 
-Azure Search een samengevoegde rijenset geaccepteerd als invoer voor de [pijp lijn voor het indexeren (gegevens opname)](search-what-is-an-index.md). Als uw bron gegevens afkomstig zijn uit een relationele data base van SQL Server, ziet u in dit artikel één benadering voor het maken van een samengevoegde rijenset vóór het indexeren, met behulp van de AdventureWorks-voorbeeld database als voor beeld.
+Azure Cognitive Search accepteert een samengevoegde rijenset als invoer voor de [pijp lijn voor het indexeren (gegevens opname)](search-what-is-an-index.md). Als uw bron gegevens afkomstig zijn uit een relationele data base van SQL Server, ziet u in dit artikel één benadering voor het maken van een samengevoegde rijenset vóór het indexeren, met behulp van de AdventureWorks-voorbeeld database als voor beeld.
 
 ## <a name="about-adventureworks"></a>Over AdventureWorks
 
@@ -43,7 +43,7 @@ Het oplossen van dit probleem is niet zo eenvoudig als het verplaatsen van de do
 
 ## <a name="use-a-collection-data-type"></a>Een verzamelings gegevens type gebruiken
 
-De "juiste aanpak" is het gebruik van een zoek schema-functie die geen directe parallelle in het database model heeft: **Verzameling (EDM. String)** . Deze construct wordt gedefinieerd in het Azure Search-index schema. Een verzamelings gegevens type wordt gebruikt wanneer u een lijst met afzonderlijke teken reeksen moet vertegenwoordigen in plaats van een zeer lange teken reeks (één). Als u Tags of tref woorden hebt, gebruikt u een verzamelings gegevens type voor dit veld.
+De "juiste aanpak" is het gebruik van een zoek schema-functie die geen directe parallelle in het database model: **verzameling (EDM. String)** heeft. Deze construct wordt gedefinieerd in het Azure Cognitive Search-index schema. Een verzamelings gegevens type wordt gebruikt wanneer u een lijst met afzonderlijke teken reeksen moet vertegenwoordigen in plaats van een zeer lange teken reeks (één). Als u Tags of tref woorden hebt, gebruikt u een verzamelings gegevens type voor dit veld.
 
 Door index velden met meerdere waarden te definiëren voor de **verzameling (EDM. String)** voor "kleur", "grootte" en "afbeelding", wordt de aanvullende informatie bewaard voor facetten en filters zonder de index te vervuilen met dubbele vermeldingen. Op dezelfde manier kunt u statistische functies Toep assen op de numerieke product velden, waarbij u **minListPrice** in plaats van elke product- **listPrice**indexeert.
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Voorbeeld: Facet-taxonomieën op meerdere niveaus in Azure Search](search-example-adventureworks-multilevel-faceting.md)
+> [Voor beeld: facet-taxonomieën op meerdere niveaus in azure Cognitive Search](search-example-adventureworks-multilevel-faceting.md)

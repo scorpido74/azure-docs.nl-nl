@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 3852531615418ffe5397295bc194de34139d6e81
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692324"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792658"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Zelf studie: prijs van auto Mobile voors pellen met de visuele interface
 
@@ -40,15 +40,15 @@ In [deel twee](ui-tutorial-automobile-price-deploy.md) van de zelf studie leert 
 
 ## <a name="create-a-new-pipeline"></a>Een nieuwe pijp lijn maken
 
-Met Azure Machine Learning pijp lijnen worden meerdere stappen voor het verwerken van afhankelijke gegevens in één resource ingedeeld. Met pijp lijnen kunt u complexe machine learning werk stromen in projecten en gebruikers organiseren, beheren en hergebruiken. Als u een Azure Machine Learning pijp lijn wilt maken, hebt u een Azure Machine Learning service-werk ruimte nodig. In deze sectie leert u hoe u deze resources kunt maken.
+Met Azure Machine Learning pijp lijnen worden meerdere, afhankelijke machine learning en gegevens verwerkings stappen in één resource ingedeeld. Met pijp lijnen kunt u complexe machine learning werk stromen in projecten en gebruikers organiseren, beheren en hergebruiken. Als u een Azure Machine Learning pijp lijn wilt maken, hebt u een Azure Machine Learning service-werk ruimte nodig. In deze sectie leert u hoe u deze resources kunt maken.
 
 ### <a name="create-a-new-workspace"></a>Een nieuwe werk ruimte maken
 
-Als u een Azure Machine Learning-werk ruimte hebt, gaat u verder met de volgende sectie.
+Als u een werk ruimte van Azure Machine Learning service hebt, gaat u naar de volgende sectie.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-a-pipeline"></a>Een pijplijn maken
+### <a name="create-the-pipeline"></a>Maak de pijplijn
 
 1. Meld u aan bij [ml.Azure.com](https://ml.azure.com) en selecteer de werk ruimte waarmee u wilt werken.
 
@@ -56,7 +56,7 @@ Als u een Azure Machine Learning-werk ruimte hebt, gaat u verder met de volgende
 
     ![Scherm afbeelding van de Visual-werk ruimte met weer gave van toegang tot de visuele interface](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. Selecteer **lege pijp lijn**.
+1. Selecteer **eenvoudig te gebruiken vooraf gedefinieerde modules**.
 
 1. Selecteer de standaard pijplijn naam **pijp lijn gemaakt-aan** aan de bovenkant van het canvas en wijzig deze in iets wat nuttig is. Bijvoorbeeld **' prijs voorspelling voor auto Mobile '** . De naam hoeft niet uniek te zijn.
 
@@ -69,32 +69,6 @@ De visuele interface bevat verschillende voorbeeld gegevens sets waarmee u kunt 
 1. Selecteer de gegevensset, **prijs gegevens auto Mobile (onbewerkt)** en sleep deze naar het canvas.
 
    ![Gegevens naar canvas slepen](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
-
-1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
-
-1. Klik en sleep de module **kolommen in gegevensset selecteren** op het canvas. Verwijder de module onder de module DataSet.
-
-1. Verbind de gegevensset die u eerder hebt toegevoegd aan de module **select columns in dataset** door te klikken en slepen. Sleep vanuit de uitvoer poort van de gegevensset, de kleine cirkel aan de onderkant van de gegevensset op het canvas, naar de invoer poort van **geselecteerde kolommen in gegevensset**, die de kleine cirkel boven aan de module vormt.
-
-    > [!TIP]
-    > U maakt een stroom met gegevens via uw pijp lijn wanneer u de uitvoer poort van een module verbindt met een andere invoer poort.
-    >
-
-    ![Modules verbinden](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Selecteer de module **select columns in dataset** .
-
-1. Selecteer in het deel venster **Eigenschappen** rechts van het canvas de optie **kolom bewerken**.
-
-    Selecteer in het dialoog venster **kolommen selecteren** **alle kolommen** en voeg **alle onderdelen**toe.
-
-1. Selecteer op de rechter benedenhoek de optie **Opslaan** om de kolom kiezer te sluiten.
-
-### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
-
-Klik op elk gewenst moment op de uitvoer poort van een gegevensset of module om te zien hoe de gegevens eruitzien op dat punt in de gegevens stroom. Als het tabblad **uitvoer** niet wordt weer gegeven, moet u eerst de pijp lijn uitvoeren.
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 ### <a name="visualize-the-data"></a>De gegevens visualiseren
 
@@ -114,30 +88,23 @@ U kunt de gegevens visualiseren om inzicht te krijgen in de gegevensset die u ga
 
 ## <a name="prepare-data"></a>Gegevens voorbereiden
 
-Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk hebt u enkele ontbrekende waarden gezien tijdens het visualiseren van de gegevensset. Deze ontbrekende waarden moeten worden opgeschoond, zodat de gegevens correct kunnen worden geanalyseerd. U verwijdert rijen met ontbrekende waarden.
+Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk hebt u enkele ontbrekende waarden gezien tijdens het visualiseren van de gegevensset. Deze ontbrekende waarden moeten worden opgeschoond, zodat de gegevens correct kunnen worden geanalyseerd. U verwijdert kolommen met veel ontbrekende waarden en verwijdert afzonderlijke rijen met ontbrekende waarden.
 
-1. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
+### <a name="remove-a-column"></a>Een kolom verwijderen
+
+Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In deze gegevensset ontbreken de **genormaliseerde-verliezen** kolom veel waarden, dus sluit die kolom van het model af.
+
+1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
 
 1. Klik en sleep de module **kolommen in gegevensset selecteren** op het canvas. Verwijder de module onder de module DataSet.
 
 1. Verbind de gegevensset die u eerder hebt toegevoegd aan de module **select columns in dataset** door te klikken en slepen. Sleep vanuit de uitvoer poort van de gegevensset, de kleine cirkel aan de onderkant van de gegevensset op het canvas, naar de invoer poort van **geselecteerde kolommen in gegevensset**, die de kleine cirkel boven aan de module vormt.
 
+    > [!TIP]
+    > U maakt een stroom met gegevens via uw pijp lijn wanneer u de uitvoer poort van een module verbindt met een andere invoer poort.
+    >
+
     ![Modules verbinden](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Selecteer de module **select columns in dataset** .
-
-1. Selecteer in het deel venster **Eigenschappen** rechts van het canvas de optie **kolom bewerken**.
-
-    Selecteer in het dialoog venster **kolommen selecteren** **alle kolommen** en voeg **alle onderdelen**toe.
-
-1. Selecteer op de rechter benedenhoek de optie **Opslaan** om de kolom kiezer te sluiten.
-
-> [!TIP]
-> Het schoonmaken van de ontbrekende waarden van invoer gegevens is een vereiste voor het gebruik van de meeste modules in de visuele interface.
-
-### <a name="remove-column"></a>Kolom verwijderen
-
-Wanneer u een model traint, moet u iets doen over de ontbrekende gegevens. In deze gegevensset heeft de kolom **genormaliseerde-verliezen** een groot aantal ontbrekende waarden, dus sluit die kolom af van het model.
 
 1. Selecteer de module **select columns in dataset** .
 
@@ -162,6 +129,9 @@ Wanneer u een model traint, moet u iets doen over de ontbrekende gegevens. In de
 ### <a name="clean-missing-data"></a>Ontbrekende gegevens opschonen
 
 Uw gegevensset heeft nog steeds ontbrekende waarden na het verwijderen van de kolom **normald-verliezen** . U kunt de resterende ontbrekende gegevens verwijderen met de module **clean Missing Data** .
+
+> [!TIP]
+> Het schoonmaken van de ontbrekende waarden van invoer gegevens is een vereiste voor het gebruik van de meeste modules in de visuele interface.
 
 1. Typ **clean** in het zoekvak om de module **clean Missing Data** te vinden.
 
@@ -286,7 +256,7 @@ In deel één van deze zelf studie hebt u de volgende stappen uitgevoerd:
 * Het model is getraind
 * Het model wordt gescoord en geëvalueerd
 
-In deel twee leert u hoe u uw model implementeert als een pijplijn eindpunt.
+In deel twee leert u hoe u uw model implementeert als een real-time-eind punt.
 
 > [!div class="nextstepaction"]
 > [Door gaan met de implementatie van modellen](ui-tutorial-automobile-price-deploy.md)
