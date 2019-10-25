@@ -3,65 +3,49 @@
 - name: Overzicht
   items:
     - name: Wat is Azure AD Identity Protection?
-      href: overview.md
-- name: Snelstartgidsen
-  items:
-    - name: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: Concepten
   expanded: false
   items:
-    - name: Wat zijn beveiligingsproblemen?
-      href: vulnerabilities.md
-    - name: Wat zijn meldingen?
-      href: notifications.md
-    - name: Wat is uw aanmeldingservaring?
-      href: flows.md
+    - name: Beveiligingsoverzicht
+      href: concept-identity-protection-security-overview.md
+    - name: Wat zijn risico's?
+      href: concept-identity-protection-risks.md
+    - name: Identiteitsbeveiligingbeleid
+      href: concept-identity-protection-policies.md
+    - name: Wat is de aanmeldingservaring?
+      href: concept-identity-protection-user-experience.md
     - name: Identiteitsbeveiliging en B2B-gebruikers
       href: concept-identity-protection-b2b.md
 - name: Handleidingen
   expanded: true
   items:
-    - name: Identiteitsbeveiliging
+    - name: Meldingen configureren
+      href: howto-identity-protection-configure-notifications.md
+    - name: Beleidsconfiguratie
       items:
-        - name: Azure AD Identity Protection inschakelen
-          href: enable.md
         - name: Het beleid voor MFA-registratie configureren
-          href: howto-mfa-policy.md
-        - name: Het beleid voor aanmeldingsrisico’s configureren
-          href: howto-sign-in-risk-policy.md
-        - name: Het beleid voor gebruikersrisico’s configureren
-          href: howto-user-risk-policy.md
-        - name: Actieve risicodetectie sluiten
-          href: howto-close-active-risk-events.md
-        - name: Gebruikers deblokkeren
-          href: howto-unblock-user.md
-        - name: Risicodetectie simuleren
-          href: playbook.md
-        - name: Veelgestelde vragen
-          href: faqs.md
-    - name: Identiteitsbeveiliging (vernieuwd)
-      items:
-        - name: Overzicht
-          href: overview-v2.md
-        - name: Beveiligingsoverzicht
-          href: security-overview.md
-        - name: Risico onderzoeken
-          href: howto-investigate-risk.md
-        - name: Feedback geven over risicodetectie
-          href: howto-provide-risk-event-feedback.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: Gebruikersrisicobeleid configureren
-          href: howto-configure-risk-policies.md
-        - name: Veelgestelde vragen en bekende problemen
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: Risicodetectie simuleren
+      href: howto-identity-protection-simulate-risk.md
+    - name: Onderzoeken en herstellen
+      items:
+        - name: Risico onderzoeken
+          href: howto-identity-protection-investigate-risk.md
+        - name: Risicodetectie herstellen en deblokkeren
+          href: howto-identity-protection-remediate-unblock.md
+        - name: De Microsoft Graph API gebruiken
+          href: howto-identity-protection-graph-api.md
+    - name: Feedback geven over risicodetectie
+      href: howto-identity-protection-risk-feedback.md
+    - name: Veelgestelde vragen
+      href: troubleshooting-identity-protection-faq.md
 - name: Naslaginformatie
   items:
-    - name: De Microsoft Graph API gebruiken
-      href: graph-get-started.md
-    - name: Risicodetectie
-      href: risk-events-reference.md
     - name: Woordenlijst
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: Resources
   items:
     - name: Azure-feedbackforum
