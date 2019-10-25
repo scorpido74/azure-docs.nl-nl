@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d0968ddedb36ab7fb4ee515ef1d20a177d4d59fe
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013704"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820987"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Een IPv6-toepassing met dubbele stack implementeren in het virtuele netwerk van Azure-CLI (preview)
 
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u voor deze Snelstartgids gebruikmaken van Azure CLI versie 2.0.49 of hoger. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) voor installatie- of upgrade-informatie.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de IPv6-functie voor virtuele netwerken van Azure wilt gebruiken, moet u uw abonnement als volgt configureren met Azure PowerShell:
+Als u de IPv6-functie voor virtuele netwerken van Azure wilt gebruiken, moet u uw abonnement als volgt configureren met behulp van Azure CLI:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -53,7 +53,7 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Voordat u een virtueel netwerk met twee stacks kunt maken, moet u een resource groep maken met [AZ Group Create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myRGDualStack* gemaakt op de locatie *eastus* :
+Voordat u een virtueel netwerk met twee stacks kunt maken, moet u een resource groep maken met [AZ Group Create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *DsResourceGroup01* gemaakt op de locatie *eastus* :
 
 ```azurecli
 az group create \
@@ -62,7 +62,7 @@ az group create \
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Open bare IPv4-en IPv6-adressen maken voor load balancer
-Als u toegang wilt krijgen tot uw IPv4-en IPv6-eind punten op internet, hebt u open bare IPv4-en IPv6-adressen voor de load balancer nodig. Maak een openbaar IP-adres met [az network public-ip create](/cli/azure/network/public-ip). In het volgende voor beeld wordt het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *myRGDualStack* :
+Als u toegang wilt krijgen tot uw IPv4-en IPv6-eind punten op internet, hebt u open bare IPv4-en IPv6-adressen voor de load balancer nodig. Maak een openbaar IP-adres met [az network public-ip create](/cli/azure/network/public-ip). In het volgende voor beeld wordt het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *DsResourceGroup01* :
 
 ```azurecli
 # Create an IPV4 IP address
@@ -266,7 +266,7 @@ az network nsg rule create \
 ```
 
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 Maak een virtueel netwerk met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *dsVNET* met subnetten *dsSubNET_v4* en *dsSubNET_v6*:
 
@@ -369,7 +369,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
 U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
 1. Voer in de zoek balk van de portal *dsVnet*in.
-2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de overzichts pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*.
+2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*.
 
   ![Virtueel IPv6-netwerk met dubbele stack in azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
@@ -382,7 +382,7 @@ U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure
 U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, de VM en alle gerelateerde resources te verwijderen wanneer u ze niet meer nodig hebt.
 
 ```azurecli
- az group delete --name DsRG1
+ az group delete --name DsResourceGroup01
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

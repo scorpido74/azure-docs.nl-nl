@@ -1,49 +1,44 @@
 ---
-title: Bewaken van prestaties van een Java-web-apps, op Linux - Azure | Microsoft Docs
-description: Uitgebreide bewaking van toepassingsprestaties van Java-website met de invoegtoepassing verzamelde voor Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Prestaties van Java-Web-apps op Linux bewaken-Azure | Microsoft Docs
+description: Uitgebreide bewaking van de toepassings prestaties van uw Java-website met de verzamelde-invoeg toepassing voor Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c6e947dfed3169f346f43ab08225056815e8b487
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/14/2019
+ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061192"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817147"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: Linux-prestatiegegevens in Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
 
 
-Om te verkennen van metrische gegevens voor prestaties Linux-systeem in [Application Insights](../../azure-monitor/app/app-insights-overview.md), installeer [verzamelde](https://collectd.org/), samen met de bijbehorende Application Insights-invoegtoepassing. Deze open-source-oplossing worden verschillende systeem- en statistische gegevens verzameld.
+Als u de metrische gegevens voor Linux-systeem prestaties in [Application Insights](../../azure-monitor/app/app-insights-overview.md)wilt verkennen, installeert u [verzamelde](https://collectd.org/)samen met de Application Insights-invoeg toepassing. Deze open source-oplossing verzamelt diverse systeem-en netwerk statistieken.
 
-Doorgaans gebruikt u verzamelde als u al hebt [uw Java-webservice met Application Insights geïnstrumenteerd][java]. Dit biedt u meer gegevens u helpen bij het verbeteren van de prestaties van uw app of problemen diagnosticeren. 
+Normaal gesp roken gebruikt u verzamelde als u [uw Java-webservice al hebt instrumenteert met Application Insights][java]. Het biedt u meer gegevens om u te helpen bij het verbeteren van de prestaties van uw app of het vaststellen van problemen. 
 
-## <a name="get-your-instrumentation-key"></a>De instrumentatiesleutel ophalen
-In de [Microsoft Azure portal](https://portal.azure.com), open de [Application Insights](../../azure-monitor/app/app-insights-overview.md) resource waar u de gegevens worden weergegeven. (Of [Maak een nieuwe resource](../../azure-monitor/app/create-new-resource.md ).)
+## <a name="get-your-instrumentation-key"></a>De instrumentatie sleutel ophalen
+Open in de [Microsoft Azure-Portal](https://portal.azure.com)de [Application Insights](../../azure-monitor/app/app-insights-overview.md) resource waar u de gegevens wilt weer geven. (Of [Maak een nieuwe resource](../../azure-monitor/app/create-new-resource.md ).)
 
-Neemt een kopie van de instrumentatiesleutel die de resource.
+Neem een kopie van de instrumentatie sleutel, die de resource identificeert.
 
-![Door alles bladeren, opent u de bron en klik vervolgens in de vervolgkeuzelijst Essentials Selecteer en kopieer de Instrumentatiesleutel](./media/java-collectd/instrumentation-key-001.png)
+![Blader naar iedereen, open uw resource en kopieer de instrumentatie sleutel in de vervolg keuzelijst Essentials.](./media/java-collectd/instrumentation-key-001.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Verzamelde en de invoegtoepassing installeren
-Op uw Linux-server-machines:
+## <a name="install-collectd-and-the-plug-in"></a>Verzamelde en de invoeg toepassing installeren
+Op uw Linux-Server computers:
 
-1. Installeer [verzamelde](https://collectd.org/) versie 5.4.0 of hoger.
-2. Download de [Application Insights verzamelde schrijver invoegtoepassing](https://aka.ms/aijavasdk). Houd er rekening mee het versienummer.
-3. Kopieer de invoegtoepassing JAR in `/usr/share/collectd/java`.
-4. Bewerken `/etc/collectd/collectd.conf`:
-   * Zorg ervoor dat [de Java-invoegtoepassing](https://collectd.org/wiki/index.php/Plugin:Java) is ingeschakeld.
-   * De JVMArg voor de java.class.path om op te nemen van de volgende JAR bijwerken. Update het versienummer overeenkomen met de naam die u hebt gedownload:
+1. Installeer [verzamelde](https://collectd.org/) -versie 5.4.0 of hoger.
+2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://aka.ms/aijavasdk). Noteer het versie nummer.
+3. Kopieer de invoeg toepassing JAR naar `/usr/share/collectd/java`.
+4. `/etc/collectd/collectd.conf`bewerken:
+   * Zorg ervoor dat [de Java-invoeg toepassing](https://collectd.org/wiki/index.php/Plugin:Java) is ingeschakeld.
+   * Werk de JVMArg voor Java. class. Path bij om het volgende JAR op te laten. Het versie nummer bijwerken zodat dit overeenkomt met de naam die u hebt gedownload:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Dit fragment met behulp van de Instrumentatiesleutel van uw resource toevoegen:
+   * Voeg dit fragment toe met behulp van de instrumentatie sleutel van uw resource:
 
 ```XML
 
@@ -53,7 +48,7 @@ Op uw Linux-server-machines:
      </Plugin>
 ```
 
-Hier maakt deel uit van een voorbeeld-configuratiebestand:
+Hier volgt een voor beeld van een configuratie bestand:
 
 ```XML
 
@@ -86,47 +81,47 @@ Hier maakt deel uit van een voorbeeld-configuratiebestand:
     ...
 ```
 
-Configureer andere [verzamelde invoegtoepassingen](https://collectd.org/wiki/index.php/Table_of_Plugins), dat kan verschillende gegevens verzamelen uit verschillende bronnen.
+Andere [verzamelde-invoeg toepassingen](https://collectd.org/wiki/index.php/Table_of_Plugins)configureren, waarmee verschillende gegevens uit verschillende bronnen kunnen worden verzameld.
 
-Opnieuw opstarten van verzamelde volgens de [handmatige](https://collectd.org/wiki/index.php/First_steps).
+Start verzamelde opnieuw op volgens de [hand leiding](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>De gegevens in Application Insights weergeven
-Open in uw Application Insights-resource [metrische gegevens en grafieken toevoegen][metrics], de metrische gegevens die u wilt zien van de aangepaste categorie selecteren.
+## <a name="view-the-data-in-application-insights"></a>De gegevens in Application Insights weer geven
+Open in uw Application Insights resource [metrische gegevens en Voeg grafieken toe][metrics]om de metrische gegevens te selecteren die u wilt weer geven in de aangepaste categorie.
 
-Standaard worden de metrische gegevens worden samengevoegd voor alle hostmachines waarvan de metrische gegevens zijn verzameld. Als u wilt weergeven van de metrische gegevens per host, op de blade grafiek, schakelt u groeperen en kies vervolgens te groeperen op verzamelde-Host.
+Standaard worden de metrische gegevens geaggregeerd op alle hostcomputers waarvan de metrische gegevens zijn verzameld. Als u de metrische gegevens per host wilt weer geven, schakelt u op de Blade diagram Details groeperen in en kiest u vervolgens groeperen op verzamelde-host.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Uploaden van specifieke statistieken uitsluiten
-Standaard verzendt de Application Insights-invoegtoepassing voor alle gegevens die door alle ingeschakelde verzamelde lezen invoegtoepassingen worden verzameld. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Het uploaden van specifieke statistieken uitsluiten
+Standaard verzendt de Application Insights-invoeg toepassing alle gegevens die worden verzameld door alle ingeschakelde invoeg toepassingen voor verzamelde. 
 
-Gegevens uitsluiten van specifieke invoegtoepassingen of gegevensbronnen:
+Gegevens uitsluiten van specifieke invoeg toepassingen of gegevens bronnen:
 
-* Het configuratiebestand bewerken. 
-* In `<Plugin ApplicationInsightsWriter>`, voeg richtlijn regels als volgt toe:
+* Bewerk het configuratie bestand. 
+* Voeg in `<Plugin ApplicationInsightsWriter>`instructie regels als volgt toe:
 
-| Richtlijn | Effect |
+| Richt | Effect |
 | --- | --- |
-| `Exclude disk` |Uitsluiten van alle gegevens die zijn verzameld door de `disk` invoegtoepassing |
-| `Exclude disk:read,write` |Uitsluiten van de bronnen die met de naam `read` en `write` uit de `disk` invoegtoepassing. |
+| `Exclude disk` |Alle gegevens uitsluiten die zijn verzameld door de `disk`-invoeg toepassing |
+| `Exclude disk:read,write` |Sluit de bronnen met de naam `read` en `write` uit van de `disk`-invoeg toepassing. |
 
-Afzonderlijke richtlijnen met een nieuwe regel.
+Afzonderlijke instructies met een nieuwe regel.
 
 ## <a name="problems"></a>Problemen?
-*Ik zie niet de gegevens in de portal*
+*Ik zie geen gegevens in de portal*
 
-* Open [zoeken] [ diagnostic] om te zien als de ruwe gebeurtenissen zijn ontvangen. Soms duurt langer in metrics explorer worden weergegeven.
-* U moet mogelijk [instellen van firewalluitzonderingen voor uitgaande gegevens](../../azure-monitor/app/ip-addresses.md)
-* Tracering inschakelen in de Application Insights-invoegtoepassing. Voeg deze regel in `<Plugin ApplicationInsightsWriter>`:
+* Open [zoeken][diagnostic] om te zien of de onbewerkte gebeurtenissen zijn aangekomen. Soms duurt het langer om weer te geven in Metrics Explorer.
+* Mogelijk moet u [firewall-uitzonde ringen voor uitgaande gegevens instellen](../../azure-monitor/app/ip-addresses.md)
+* Schakel tracering in de Application Insights-invoeg toepassing in. Deze regel toevoegen in `<Plugin ApplicationInsightsWriter>`:
   * `SDKLogger true`
-* Open een terminal en verzamelde starten in de uitgebreide modus, om te zien van problemen met die het rapport is:
+* Open een Terminal en start verzamelde in de uitgebreide modus om te zien welke problemen er worden gerapporteerd:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Bekend probleem
 
-De invoegtoepassing Application Insights schrijven is niet compatibel met bepaalde invoegtoepassingen lezen. Sommige invoegtoepassingen verzenden soms "NaN" waar de Application Insights-invoegtoepassing wordt verwacht een getal met drijvende komma dat.
+De Application Insights write-invoeg toepassing is niet compatibel met bepaalde invoeg toepassingen voor lezen. Sommige invoeg toepassingen verzenden soms ' NaN ' waarbij de Application Insights-invoeg toepassing een getal met drijvende komma verwacht.
 
-Probleem: Het logboek verzamelde bevat fouten die zijn 'AI:... SyntaxError: Onverwacht token N".
+Symptoom: het verzamelde-logboek bevat fouten met ' AI:... SyntaxError: onverwacht token N.
 
-Tijdelijke oplossing: Gegevens die zijn verzameld door de probleem-invoegtoepassingen schrijven uitsluiten. 
+Tijdelijke oplossing: Sluit de gegevens die door het probleem zijn verzameld, uit. 
 
 <!--Link references-->
 

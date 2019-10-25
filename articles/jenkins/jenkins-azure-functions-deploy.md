@@ -1,28 +1,28 @@
 ---
-title: Implementeren in Azure Functions met behulp van de invoegtoepassing Jenkins Azure Functions
-description: Informatie over het implementeren in Azure Functions met behulp van de invoegtoepassing Jenkins Azure Functions
+title: Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
+description: Meer informatie over het implementeren van Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
 ms.service: jenkins
 keywords: jenkins, azure, devops, java, azure functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815731"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882042"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Implementeren in Azure Functions met behulp van de invoegtoepassing Jenkins Azure Functions
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
 
-[Azure Functions](/azure/azure-functions/) is een ‘serverloze’ rekenservice. Met Azure Functions kunt u op aanvraag code uitvoeren zonder infrastructuur te hoeven inrichten of beheren. In deze zelfstudie leert u hoe u een Java-functie implementeert in Azure Functions met de invoegtoepassing Azure Functions.
+[Azure Functions](/azure/azure-functions/) is een ‘serverloze’ rekenservice. Met Azure Functions kunt u op aanvraag code uitvoeren zonder infrastructuur te hoeven inrichten of beheren. In deze zelf studie ziet u hoe u een Java-functie implementeert om Azure Functions met behulp van de Azure Functions-invoeg toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
-- **Jenkins-server**: Als u geen Jenkins-server hebt geïnstalleerd, raadpleegt u het artikel [Een Jenkins-server maken in Azure](./install-jenkins-solution-template.md).
+- **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- **Jenkins-server**: als u nog geen Jenkins-server hebt geïnstalleerd, raadpleegt u het artikel [een Jenkins-server maken in azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
   > De voor dit artikel gebruikte broncode bevindt zich in de [opslagplaats Visual Studio China van GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
@@ -76,8 +76,8 @@ In de volgende stappen wordt uitgelegd hoe de Jenkins-server wordt voorbereid:
 
 1. Installeer de volgende invoegtoepassingen in het Jenkins-dashboard:
 
-    - Invoegtoepassing Azure Functions
-    - Invoegtoepassing EnvInject
+    - Azure Functions-invoeg toepassing
+    - EnvInject-invoeg toepassing
 
 1. Voor Jenkins is een Azure-service-principal vereist voor het verifiëren en openen van Azure-resources. Zie [Deploy to Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) (Implementeren in Azure App Service) voor stapsgewijze instructies.
 

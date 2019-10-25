@@ -1,23 +1,22 @@
 ---
 title: Azure Functions-netwerk opties
 description: Een overzicht van alle beschik bare netwerk opties in Azure Functions
-services: functions
 author: alexkarcher-msft
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bf5ce8da2ce62a5da821588c8f635bbab04dd3c1
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690829"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881576"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
-In dit artikel worden de netwerk functies beschreven die beschikbaar zijn via de hosting opties voor Azure Functions. Alle volgende netwerk opties bieden u de mogelijkheid om toegang te krijgen tot bronnen zonder Internet routeerbaar-adressen te gebruiken, of de Internet toegang beperken tot een functie-app. 
+In dit artikel worden de netwerk functies beschreven die beschikbaar zijn via de hosting opties voor Azure Functions. Alle volgende netwerk opties bieden u de mogelijkheid om toegang te krijgen tot bronnen zonder Internet routeerbaar-adressen te gebruiken, of de Internet toegang beperken tot een functie-app.
 
 De hosting modellen hebben verschillende niveaus van netwerk isolatie beschikbaar. Als u de juiste optie kiest, kunt u voldoen aan de vereisten voor netwerk isolatie.
 
@@ -39,7 +38,6 @@ U kunt functie-apps op verschillende manieren hosten:
 |[Hybride verbindingen](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
-
 ## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
 
 U kunt IP-beperkingen gebruiken voor het definiëren van een lijst met door prioriteiten geordende IP-adressen die geen toegang hebben tot uw app. De lijst kan IPv4-en IPv6-adressen bevatten. Wanneer er een of meer vermeldingen zijn, bevindt zich een impliciete ' weigeren ' aan het einde van de lijst. IP-beperkingen werken met alle opties voor het hosten van functies.
@@ -51,8 +49,9 @@ Zie [Azure app service beperkingen voor statische toegang](../app-service/app-se
 
 ## <a name="private-site-access"></a>Toegang tot privésite
 
-Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals vanuit een virtueel Azure-netwerk. 
-* Toegang tot de persoonlijke site is beschikbaar in de [Premium](./functions-premium-plan.md), [verbruik], (functies-scale. MD # verbruiks plan) en [app service plan](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd. 
+Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals vanuit een virtueel Azure-netwerk.
+
+* Toegang tot de persoonlijke site is beschikbaar in het [Premium](./functions-premium-plan.md)-, [verbruiks](functions-scale.md#consumption-plan) -en [app service plan](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd.
     * Service-eind punten kunnen per app worden geconfigureerd onder platform functies > netwerk > toegangs beperkingen configureren > regel toevoegen. Virtuele netwerken kunnen nu worden geselecteerd als het type van een regel.
     * Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md) voor meer informatie.
         * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
@@ -64,14 +63,14 @@ Met virtuele netwerk integratie kan uw functie-app toegang krijgen tot bronnen i
 
 U kunt virtuele netwerk integratie gebruiken om toegang te verlenen van apps tot data bases en webservices die worden uitgevoerd in uw virtuele netwerk. Met de integratie van virtuele netwerken hoeft u geen openbaar eind punt beschikbaar te maken voor toepassingen op uw VM. U kunt in plaats daarvan de persoonlijke en niet-Internet Routeer bare adressen gebruiken.
 
-Er zijn twee vormen voor de integratie functie voor virtuele netwerken
+Er zijn twee soorten integratie van virtuele netwerken:
 
-1. Regionale virtuele netwerk integratie maakt integratie mogelijk met virtuele netwerken in dezelfde regio. Deze vorm van de functie vereist een subnet in een virtueel netwerk in dezelfde regio. Deze functie is nog steeds beschikbaar als preview, maar wordt wel ondersteund voor werk belastingen voor de Windows-app-productie met enkele aanvullende voor waarden die hieronder zijn vermeld.
-2. Gateway vereiste virtuele netwerk integratie maakt integratie mogelijk met virtuele netwerken in externe regio's of met klassieke virtuele netwerken. Voor deze versie van de functie is een Virtual Network-gateway in uw VNet geïmplementeerd. Dit is de punt-naar-site-VPN-functie en wordt alleen ondersteund met Windows-apps.
++ **Regionale virtuele netwerk integratie (preview)** : maakt integratie mogelijk met virtuele netwerken in dezelfde regio. Voor dit type integratie is een subnet in een virtueel netwerk in dezelfde regio vereist. Deze functie bevindt zich nog in de preview-versie, maar wordt wel ondersteund voor functie-apps die worden uitgevoerd in Windows, met de hieronder vermelde aanvullende opmerkingen.
++ **Gateway vereist virtuele netwerk integratie**: maakt integratie mogelijk met virtuele netwerken in externe regio's of met klassieke virtuele netwerken. Voor dit type integratie is een Virtual Network-gateway in uw VNet geïmplementeerd. Dit is een punt-naar-site-VPN-functie, die alleen wordt ondersteund voor functie-apps die worden uitgevoerd op Windows.
 
-Een app kan slechts één vorm van de VNet-integratie functie tegelijk gebruiken. De vraag is vervolgens welke functie u moet gebruiken. U kunt voor een groot aantal dingen gebruiken. De Clear verschillen zijn als volgt:
+Een app kan slechts één type VNet-integratie functie tegelijk gebruiken. Hoewel beide scenario's nuttig zijn, wordt in de volgende tabel aangegeven waar elke moet worden gebruikt:
 
-| Probleem  | Oplossing | 
+| Probleem  | Oplossing |
 |----------|----------|
 | U wilt een RFC 1918-adres bereiken (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in dezelfde regio | regionale VNet-integratie |
 | U wilt bronnen bereiken in een klassiek VNet of een VNet in een andere regio | vereiste VNet-integratie voor gateway |
@@ -93,10 +92,11 @@ De VNet-integratie functie:
 Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
 
 * Koppelen van een schijf
-* AD-integratie 
+* AD-integratie
 * NetBios
 
 Virtuele netwerk integratie in functions maakt gebruik van een gedeelde infra structuur met App Service web-apps. Zie voor meer informatie over de twee typen integratie van virtuele netwerken:
+
 * [Regionale VNET-integratie](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Vereiste VNet-integratie voor gateway](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
@@ -104,7 +104,7 @@ Zie voor meer informatie over het gebruik van virtuele netwerk integratie [een f
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>Verbinding maken met beveiligde bronnen van service-eind punten
 
-> [!note] 
+> [!NOTE]
 > Het kan tot 12 uur duren voordat nieuwe service-eind punten beschikbaar zijn voor uw functie-app nadat u de toegangs beperkingen voor de downstream-resource hebt geconfigureerd. Gedurende deze tijd is de resource volledig niet beschikbaar voor uw app.
 
 Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Services beperken tot een virtueel netwerk met behulp van service-eind punten. Vervolgens moet u uw functie-app met dat virtuele netwerk integreren om toegang te krijgen tot de resource. Deze configuratie wordt ondersteund op alle abonnementen die ondersteuning bieden voor de integratie van virtuele netwerken.
@@ -112,10 +112,11 @@ Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Service
 [Meer informatie over de service-eind punten van Virtual Network vindt u hier.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+
 Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. Het is momenteel niet mogelijk om beperkingen voor het virtuele netwerk voor dit account te gebruiken. Als u een service-eind punt voor een virtueel netwerk configureert op het opslag account dat u gebruikt voor uw functie-app, wordt uw app verbroken.
 
 [Lees hier meer over de vereisten voor opslag accounts.](./functions-create-function-app-portal.md#storage-account-requirements
-) 
+)
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
 
@@ -140,6 +141,7 @@ Uitgaande IP-beperkingen zijn alleen beschikbaar voor functies die zijn geïmple
 Wanneer u een functie-app in een Premium-abonnement integreert of App Service plan met een virtueel netwerk, kan de app nog steeds uitgaande oproepen naar Internet maken.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over netwerken en Azure Functions: 
 
 * [Volg de zelf studie over het aan de slag gaan met virtuele netwerk integratie](./functions-create-vnet.md)

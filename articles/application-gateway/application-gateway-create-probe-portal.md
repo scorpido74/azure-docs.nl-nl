@@ -1,5 +1,5 @@
 ---
-title: Een aangepaste probe-Azure-toepassing-gateway maken-Azure Portal | Microsoft Docs
+title: Een aangepaste test-Azure-toepassing-gateway maken-Azure Portal | Microsoft Docs
 description: Meer informatie over het maken van een aangepaste test voor Application Gateway met behulp van de portal
 services: application-gateway
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 10/14/2019
 ms.author: victorh
-ms.openlocfilehash: b92b9d953b6dd941b8b5f445ad64059f557c2980
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 18799d928f7239eea311aa39159bfa0b5416ca1a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061793"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821076"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Een aangepaste test maken voor Application Gateway met behulp van de portal
 
@@ -29,40 +29,93 @@ ms.locfileid: "70061793"
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-In dit artikel voegt u een aangepaste test toe aan een bestaande toepassings gateway via de Azure Portal. Aangepaste tests zijn handig voor toepassingen met een specifieke status controle pagina of voor toepassingen die geen geslaagde reactie op de standaard webtoepassing bieden.
+In dit artikel voegt u een aangepaste status test toe aan een bestaande toepassings gateway via de Azure Portal. Azure-toepassing gateway controleert de status van de resources in de back-end-pool met behulp van de status controles.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Als u nog geen toepassings gateway hebt, gaat u naar [een Application Gateway maken](application-gateway-create-gateway-portal.md) om een toepassings gateway te maken waarmee u kunt werken.
 
-## <a name="createprobe"></a>De test maken
+## <a name="create-probe-for-application-gateway-v2-sku"></a>Test maken voor de SKU van Application Gateway v2
 
-Tests worden in een proces in twee stappen geconfigureerd via de portal. De eerste stap is het maken van de test. In de tweede stap voegt u de test toe aan de back-end-http-instellingen van de toepassings gateway.
+Tests worden in een proces in twee stappen geconfigureerd via de portal. De eerste stap is het invoeren van de waarden die nodig zijn voor de test configuratie. In de tweede stap test u de backend-status met behulp van deze test configuratie en slaat u de test op. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+### <a name="createprobe"></a>Test eigenschappen invoeren
 
-1. Klik in het deel venster favorieten Azure Portal op alle resources. Klik in de Blade alle resources op de toepassings gateway. Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in de filter op naam... voor eenvoudige toegang tot de toepassingsgateway.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
 
-1. Klik op **tests** en klik op de knop **toevoegen** om een test toe te voegen.
+2. Klik in het deel venster favorieten Azure Portal op alle resources. Klik in de Blade alle resources op de toepassings gateway. Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in de filter op naam... voor eenvoudige toegang tot de toepassingsgateway.
 
-   ![Blade test toevoegen met ingevulde gegevens][1]
+3. Selecteer **status controles** en selecteer **toevoegen** om een nieuwe status test toe te voegen.
 
-1. Vul op de Blade **status test toevoegen** de vereiste informatie voor de test in en klik op **OK**wanneer u klaar bent.
+   ![Nieuwe test toevoegen][4]
+
+4. Vul op de pagina **status test toevoegen** de vereiste informatie voor de test in en klik op **OK**als u klaar bent.
 
    |**Instelling** | **Waarde** | **Details**|
    |---|---|---|
-   |**Name**|customProbe|Deze waarde is een beschrijvende naam voor de test die toegankelijk is in de portal.|
-   |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test.|
-   |**Host**|dat wil zeggen contoso.com|Deze waarde is de hostnaam die wordt gebruikt voor de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host.|
-   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http:\//contoso.com alleen '/' |
+   |**Naam**|customProbe|Deze waarde is een beschrijvende naam die wordt gegeven aan de test die toegankelijk is in de portal.|
+   |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
+   |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
+   |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Voor het standaardpad van http:\/-contoso.com gebruik dan '/' |
    |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
-   |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is.|
-   |**Drempel waarde voor onjuiste status**|3|Aantal mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+   |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
+|**Drempel waarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+   |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**HTTP-instellingen**|selectie uit vervolg keuzelijst|De test wordt gekoppeld aan de HTTP-instelling (en) die u hier selecteert, waardoor de status van de back-end-groep die is gekoppeld aan de geselecteerde HTTP-instelling wordt gecontroleerd. Het gebruikt de poort voor de test aanvraag, zoals die wordt gebruikt in de geselecteerde HTTP-instelling. U kunt alleen die HTTP-instellingen kiezen die niet zijn gekoppeld aan een andere aangepaste test. <br>Houd er rekening mee dat alleen deze HTTP-instellingen beschikbaar zijn voor koppelingen die hetzelfde protocol hebben als het protocol dat is gekozen in deze test configuratie en dezelfde status hebben als de *naam van de gekozen host van de back-end-HTTP-instelling* .|
+   
+   > [!IMPORTANT]
+   > Met de test wordt de status van de back-end alleen gecontroleerd wanneer deze is gekoppeld aan een of meer HTTP-instellingen. Hiermee worden de back-endservers gecontroleerd van de back-endservers die zijn gekoppeld aan de HTTP-instelling (en) waaraan deze test is gekoppeld. De test aanvraag wordt verzonden naar http://(hostnaam):(poort van httpsetting)/urlPath.
+
+### <a name="test-backend-health-with-the-probe"></a>De status van de back-end testen met de test
+
+Nadat u de eigenschappen van de test hebt ingevoerd, kunt u de status van de back-end-bronnen testen om te controleren of de test configuratie juist is en of de back-end-resources werken zoals verwacht.
+
+1. Selecteer **testen** en noteer het resultaat van de test. De toepassings gateway test de status van alle back-endservers in de back-endservers die zijn gekoppeld aan de HTTP-instelling (en) die voor deze test worden gebruikt. 
+
+   ![Status van backend testen][5]
+
+2. Als er niet-stateful back-endservers zijn, controleert u de kolom **Details** om de reden voor de slechte status van de resource te begrijpen. Als de bron slecht is gemarkeerd als gevolg van een onjuiste test configuratie, selecteert u de koppeling **Ga terug naar probe** en bewerkt u de test configuratie. Als de bron niet is gemarkeerd vanwege een probleem met de back-end, lost u de problemen met de back-end-bron op en test u vervolgens de back-end opnieuw door de koppeling **Ga terug naar test te** selecteren en **test**te selecteren.
+
+   > [!NOTE]
+   > U kunt ervoor kiezen om de test op te slaan, zelfs met een beschadigde back-end-bron, maar dit wordt niet aanbevolen. Dit komt doordat de Application Gateway deze backend-bronnen verwijdert uit de back-end-groep, waarvan wordt vastgesteld dat de test niet in orde is. Als er geen in orde zijnde resources in een back-end-groep zijn, hebt u geen toegang tot uw toepassing en krijgt u een 502-fout.
+
+   ![Test resultaat weer geven][6]
+
+3. Selecteer **toevoegen** om de test op te slaan. 
+
+## <a name="create-probe-for-application-gateway-v1-sku"></a>Test maken voor Application Gateway v1-SKU
+
+Tests worden in een proces in twee stappen geconfigureerd via de portal. De eerste stap is het maken van de test. In de tweede stap voegt u de test toe aan de back-end-http-instellingen van de toepassings gateway.
+
+### <a name="createprobe"></a>De test maken
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+
+2. Selecteer **alle resources**in het deel venster favorieten Azure Portal. Selecteer de toepassings gateway op de pagina **alle resources** . Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in de filter op naam... voor eenvoudige toegang tot de toepassingsgateway.
+
+3. Selecteer **tests** en selecteer **toevoegen** om een test toe te voegen.
+
+   ![Blade test toevoegen met ingevulde gegevens][1]
+
+4. Vul op de Blade **status test toevoegen** de vereiste informatie voor de test in en klik op **OK**als u klaar bent.
+
+   |**Instelling** | **Waarde** | **Details**|
+   |---|---|---|
+   |**Naam**|customProbe|Deze waarde is een beschrijvende naam die wordt gegeven aan de test die toegankelijk is in de portal.|
+   |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
+   |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
+   |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Voor het standaardpad van http:\/-contoso.com gebruik dan '/' |
+   |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
+   |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
+|**Drempel waarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+   |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
    > De hostnaam is niet hetzelfde als de naam van de server. Deze waarde is de naam van de virtuele host die wordt uitgevoerd op de toepassings server. De test wordt verzonden naar http://(hostnaam):(poort van httpsetting)/urlPath
 
-## <a name="add-probe-to-the-gateway"></a>Test toevoegen aan de gateway
+### <a name="add-probe-to-the-gateway"></a>Test toevoegen aan de gateway
 
 Nu de test is gemaakt, is het tijd om deze toe te voegen aan de gateway. De test instellingen worden ingesteld op de back-end-http-instellingen van de toepassings gateway.
 
@@ -70,15 +123,15 @@ Nu de test is gemaakt, is het tijd om deze toe te voegen aan de gateway. De test
 
    ![venster https-instellingen][2]
 
-1. Schakel op de Blade **appGatewayBackEndHttpSettings** -instellingen het selectie vakje **aangepaste test gebruiken** in en kies de test die u hebt gemaakt in de sectie [de test maken](#createprobe) in de vervolg keuzelijst **aangepaste test** .
+2. Schakel op de pagina **appGatewayBackEndHttpSettings** -instellingen het selectie vakje **aangepaste test gebruiken** in en kies de test die u hebt gemaakt in het gedeelte [de test maken](#createprobe) in de vervolg keuzelijst **aangepaste test** .
    Wanneer u klaar bent, klikt u op **Opslaan** en worden de instellingen toegepast.
-
-De standaard test controleert de standaard toegang tot de webtoepassing. Nu u een aangepaste test hebt gemaakt, gebruikt de toepassings gateway het aangepaste pad dat is gedefinieerd om de status van de back-endservers te controleren. Op basis van de criteria die zijn gedefinieerd, controleert de toepassings gateway het pad dat is opgegeven in de test. Als de aanroep van host: poort/pad geen HTTP 200-399-status antwoord retourneert, wordt de server uit de rotatie gehaald nadat de drempel waarde voor een onjuiste status is bereikt. Er wordt door probing geblijfd op het beschadigde exemplaar om te bepalen wanneer het weer in orde is. Zodra het exemplaar is toegevoegd aan een goede Server groep, begint het verkeer opnieuw naar het proces en wordt het door de gebruiker opgegeven interval op de normale wijze door gegeven aan het proces.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [SSL-offload configureren](application-gateway-ssl-portal.md) voor meer informatie over het configureren van SSL-offloading met Azure-toepassing gateway
+Bekijk de status van de back-end-bronnen zoals bepaald door de test met behulp van de [status weergave back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health).
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
-
+[4]: ./media/application-gateway-create-probe-portal/figure4.png
+[5]: ./media/application-gateway-create-probe-portal/figure5.png
+[6]: ./media/application-gateway-create-probe-portal/figure6.png

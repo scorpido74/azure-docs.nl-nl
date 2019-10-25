@@ -1,6 +1,6 @@
 ---
-title: Status van de Azure Import/Export-taken bekijken | Microsoft Docs
-description: Informatie over het weergeven van de status van Import/Export-taken en de stations die worden gebruikt.
+title: De status van Azure import/export-taken weer geven | Microsoft Docs
+description: Meer informatie over het weer geven van de status van import/export-taken en de gebruikte stations.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,76 +8,76 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478018"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821440"
 ---
-# <a name="view-the-status-of-azure-importexport-jobs"></a>De status van de Azure Import/Export-taken weergeven
+# <a name="view-the-status-of-azure-importexport-jobs"></a>De status van Azure import/export-taken weer geven
 
-In dit artikel bevat informatie over hoe u de status van het station en de taak voor de Azure Import/Export-taken weergeven. Azure Import/Export-service wordt gebruikt om veilig grote hoeveelheden gegevens overdragen naar Azure-Blobs en Azure Files. De service wordt ook gebruikt voor het exporteren van gegevens uit Azure Blob storage.  
+Dit artikel bevat informatie over het weer geven van de status van het station en de taak voor Azure import/export-taken. Azure import/export-service wordt gebruikt voor het veilig overdragen van grote hoeveel heden gegevens naar Azure-blobs en Azure Files. De service wordt ook gebruikt voor het exporteren van gegevens uit Azure Blob-opslag.  
 
-## <a name="view-job-and-drive-status"></a>Status van de taak en het station weergeven
-U kunt de status van de importbewerking volgen of taken exporteren vanuit Azure portal. Klik op de **Import/Export** tabblad. Een lijst van uw taken wordt weergegeven op de pagina.
+## <a name="view-job-and-drive-status"></a>Taak en de status van het station weer geven
+U kunt de status van uw import-of export taken volgen vanuit het Azure Portal. Klik op het tabblad **importeren/exporteren** . Er wordt een lijst met taken op de pagina weer gegeven.
 
-![Status van de taak weergeven](./media/storage-import-export-service/jobstate.png)
+![Taak status weer geven](./media/storage-import-export-service/jobstate.png)
 
 ## <a name="view-job-status"></a>Taakstatus weergeven
 
-U ziet een van de volgende status van een taak, afhankelijk van waar de schijf zich in het proces bevindt.
+U ziet een van de volgende taak statussen, afhankelijk van waar uw station zich in het proces bevindt.
 
-| De Status van taak | Description |
+| Taak status | Beschrijving |
 |:--- |:--- |
-| Maken | Nadat een taak is gemaakt, de status is ingesteld op **maken**. Terwijl de taak wordt de **maken** staat, wordt de Import/Export-service wordt ervan uitgegaan dat de schijven niet zijn verzonden naar het datacenter. Een taak kan in deze status blijven tot twee weken, waarna deze worden automatisch verwijderd door de service. |
-| Verzending | Nadat u het pakket te verzenden, moet u de controle-informatie in de Azure-portal bijwerken.  Hiermee schakelt u de taak in **verzending** staat. De taak blijft in de **verzending** staat voor maximaal twee weken. 
-| Ontvangen | Nadat alle stations zijn ontvangen in het datacenter, de taakstatus is ingesteld op **ontvangen**. |
-| Overdragen | Nadat ten minste één station is begonnen verwerking, de taakstatus is ingesteld op **overdragen**. Ga voor meer informatie naar [station Staten](#view-drive-status). |
-| Verpakking | Nadat alle stations verwerking is voltooid, de taak wordt geplaatst **verpakking** status totdat de schijven terug naar u worden verzonden. |
-| Voltooid | Nadat alle stations worden verzonden naar u, als de taak is voltooid zonder fouten, wordt de taak ingesteld op **voltooid**. De taak wordt automatisch verwijderd na 90 dagen in de **voltooid** staat. |
-| Gesloten | Nadat alle stations worden verzonden naar u, als er fouten tijdens de verwerking van de taak zijn, de taak is ingesteld op **gesloten**. De taak wordt automatisch verwijderd na 90 dagen in de **gesloten** staat. |
+| Maken | Nadat een taak is gemaakt, wordt de status ingesteld op **maken**. Hoewel de taak de status **bezig met maken** heeft, wordt ervan uitgegaan dat de-import/export-service niet is verzonden naar het Data Center. Een taak kan Maxi maal twee weken in deze status blijven, waarna deze automatisch door de service wordt verwijderd. |
+| Back | Nadat u het pakket hebt verzonden, moet u de tracerings gegevens in het Azure Portal bijwerken.  Hiermee wordt de **Verzend** status van de taak hersteld. De taak blijft in de **Verzend** status voor Maxi maal twee weken. 
+| Ontvangen | Nadat alle stations in het Data Center zijn ontvangen, wordt de status van de taak ingesteld op **ontvangen**. |
+| Geboekt | Als ten minste één station wordt verwerkt, wordt de taak status ingesteld op **overdragen**. Ga naar de status van het [station](#view-drive-status)voor meer informatie. |
+| Verpakking | Nadat de verwerking van alle stations is voltooid, wordt de taak in de **verpakkings** status geplaatst totdat de stations naar u worden teruggestuurd. |
+| Voltooid | Als de taak is voltooid zonder fouten, wordt de taak ingesteld op **voltooid**nadat alle stations naar u zijn teruggestuurd. De taak wordt automatisch verwijderd na 90 dagen met de status **voltooid** . |
+| wegen | Als er tijdens de verwerking van de taak fouten optreden, wordt de taak ingesteld op **gesloten**nadat alle stations naar u zijn verzonden. De taak wordt automatisch verwijderd na 90 dagen met de status **gesloten** . |
 
 ## <a name="view-drive-status"></a>Status van station weergeven
 
-De volgende tabel beschrijft de levenscyclus van een afzonderlijke station als het overgangen via een taak importeren of exporteren. De huidige status van elke schijf in een taak wordt weergegeven in de Azure-portal.
+In de volgende tabel wordt de levens cyclus van een afzonderlijk station beschreven tijdens de overgang naar een import-of export taak. De huidige status van elke schijf in een taak wordt weer gegeven in de Azure Portal.
 
-De volgende tabel beschrijft elke status die elke schijf in een taak kan passeren.
+In de volgende tabel wordt elke status beschreven waarin elke schijf van een taak kan passeren.
 
-| Status van station | Description |
+| Status van station | Beschrijving |
 |:--- |:--- |
-| Opgegeven | Voor een importtaak wanneer de taak wordt gemaakt in Azure portal, wordt de initiële status voor een station is **opgegeven**. Voor een exporttaak bekijken, omdat er geen station is opgegeven wanneer de taak is gemaakt, wordt de status van de eerste schijf is **ontvangen**. |
-| Ontvangen | Het station verandert in de **ontvangen** status wanneer de Import/Export-service de stations die zijn ontvangen van het transportbedrijf voor een importtaak heeft verwerkt. Voor een exporttaak bekijken, de status van de eerste schijf is de **ontvangen** staat. |
-| NeverReceived | Het station wordt verplaatst naar de **NeverReceived** status wanneer het pakket voor een taak wordt ontvangen, maar het pakket niet het station bevat. Een station wordt ook in deze staat verplaatst als dit twee weken is, omdat de service heeft de verzendinformatie ontvangen, maar het pakket nog niet in het datacenter ontvangen is. |
-| Overdragen | Een station wordt verplaatst naar de **overdragen** status wanneer begint de service gegevens uit het station overdragen naar Azure Storage. |
-| Voltooid | Een station wordt verplaatst naar de **voltooid** status wanneer de service is de gegevens zonder fouten is overgedragen.
-| CompletedMoreInfo | Een station wordt verplaatst naar de **CompletedMoreInfo** status wanneer de service enkele problemen is opgetreden tijdens het kopiëren van gegevens van of naar het station. De informatie kan bestaan uit fouten, waarschuwingen of informatieve berichten over het overschrijven van blobs.
-| ShippedBack | Een station wordt verplaatst naar de **ShippedBack** status wanneer deze vanuit het datacenter terug naar het retouradres is verzonden. |
+| Opgegeven | Voor een import taak wordt de begin status voor een station **opgegeven**wanneer de taak wordt gemaakt op basis van de Azure Portal. Voor een export taak, omdat er geen station is opgegeven wanneer de taak wordt gemaakt, wordt de eerste status van het station **ontvangen**. |
+| Ontvangen | De schijf wordt overgezet naar de status **ontvangen** wanneer de import/export-service de stations heeft verwerkt die zijn ontvangen van het verzend bedrijf voor een import taak. Voor een export taak is de eerste status van het station de status **ontvangen** . |
+| NeverReceived | Het station wordt verplaatst naar de **NeverReceived** -status wanneer het pakket voor een taak arriveert, maar het-pakket het station niet bevat. Een station verplaatst ook de status als het twee weken geleden is sinds de service de verzend gegevens heeft ontvangen, maar het pakket nog niet is aangekomen op het Data Center. |
+| Geboekt | Een station wordt verplaatst naar de **overdrachts** status wanneer de service begint met het overdragen van gegevens van het station naar Azure Storage. |
+| Voltooid | Een station wordt verplaatst naar de status **voltooid** wanneer de service alle gegevens zonder fouten heeft overgebracht.
+| CompletedMoreInfo | Een station wordt verplaatst naar de **CompletedMoreInfo** -status wanneer de service enkele problemen heeft ondervonden bij het kopiëren van gegevens van of naar het station. De informatie kan fouten, waarschuwingen of informatieve berichten bevatten over het overschrijven van blobs.
+| ShippedBack | Een station wordt verplaatst naar de status **ShippedBack** wanneer het is verzonden van het Data Center terug naar het retour adres. |
 
-Deze installatiekopie vanuit Azure portal wordt de status van het station van de taak voor een voorbeeld weergegeven:
+In deze installatie kopie van de Azure Portal wordt de status van het station van een voorbeeld taak weer gegeven:
 
-![Status van station weergeven](./media/storage-import-export-service/drivestate.png)
+![Status van station weer geven](./media/storage-import-export-service/drivestate.png)
 
-De volgende tabel beschrijft de statussen van de fout station en de acties die voor elke status.
+In de volgende tabel worden de fout statussen van het station en de acties voor elke status beschreven.
 
-| Status van station | Gebeurtenis | Oplossing / volgende stap |
+| Status van station | Gebeurtenis | Oplossing/volgende stap |
 |:--- |:--- |:--- |
-| NeverReceived | Een station dat is gemarkeerd als **NeverReceived** (omdat deze niet is ontvangen als onderdeel van de verzending van de taak) binnenkomt in een andere verzending. | Het operationele team verplaatst het station **ontvangen**. |
-| N/A | Een schijf die geen deel uitmaakt van een taak wordt ontvangen in het datacenter als onderdeel van een andere taak. | Het station is gemarkeerd als een extra station en aan u wordt geretourneerd wanneer de taak die is gekoppeld aan het oorspronkelijke pakket is voltooid. |
+| NeverReceived | Een station dat is gemarkeerd als **NeverReceived** (omdat het niet is ontvangen als onderdeel van de verzen ding van de taak) arriveert bij een andere verzen ding. | Het operations-team verplaatst het station naar **ontvangen**. |
+| N/A | Een station dat geen deel uitmaakt van een taak, arriveert bij het Data Center als onderdeel van een andere taak. | Het station is gemarkeerd als een extra station en wordt aan u geretourneerd wanneer de taak die aan het oorspronkelijke pakket is gekoppeld, is voltooid. |
 
-## <a name="time-to-process-job"></a>Tijd voor het procestaak
-De hoeveelheid tijd die nodig is voor het verwerken van een import-/ exporttaak varieert op basis van een aantal factoren zoals:
+## <a name="time-to-process-job"></a>Taak voor het verwerken van tijd
+De hoeveelheid tijd die nodig is voor het verwerken van een import/export-taak is afhankelijk van een aantal factoren, zoals:
 
--  Verzendtijd
--  Laden in het datacenter
--  Type taak en de grootte van de gegevens worden gekopieerd
--  Het aantal schijven in een taak. 
+-  Verzend tijd
+-  Laden in het Data Center
+-  Taak type en grootte van de gegevens die worden gekopieerd
+-  Aantal schijven in een taak. 
 
-Import/Export-service beschikt niet over een SLA, maar de service streeft ernaar voor het voltooien van de kopie in 7 tot en met 10 dagen nadat de schijven zijn ontvangen. Naast de status geplaatst in Azure Portal, kan de REST-API's worden gebruikt voor het bijhouden van de voortgang van de taak. Het percentage voltooid-parameter in de [lijst met taken](/previous-versions/azure/dn529083(v=azure.100)) API-bewerkingsaanroep bevat het percentage exemplaar wordt uitgevoerd.
+Import/export-service heeft geen SLA, maar de service streeft naar het volt ooien van de kopie in 7 tot 10 dagen nadat de schijven zijn ontvangen. Naast de status die in azure Portal is gepubliceerd, kunnen REST Api's worden gebruikt om de voortgang van de taak bij te houden. De para meter percentage voltooid in de API-aanroep van de [lijst Jobs](/previous-versions/azure/dn529083(v=azure.100)) bevat de voortgang van het percentage kopiëren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Instellen van het hulpprogramma WAImportExport](storage-import-export-tool-how-to.md)
-* [Gegevens overdragen met AzCopy-opdrachtregelprogramma](storage-use-azcopy.md)
-* [Voorbeeld van Azure Import Export REST-API](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Het hulp programma WAImportExport instellen](storage-import-export-tool-how-to.md)
+* [Gegevens overdragen met AzCopy-opdracht regel programma](storage-use-azcopy.md)
+* [Voor beeld van Azure import-export REST API](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

@@ -1,7 +1,7 @@
 ---
 title: Machine learning CLI-extensie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de Azure Machine Learning CLI-extensie voor de Azure CLI. De Azure-CLI is een opdrachtregelprogramma voor meerdere platformen die u kunt werken met resources in de Azure-cloud. Met de Machine Learning extensie kunt u werken met Azure Machine Learning.
+description: Meer informatie over de Azure Machine Learning CLI-extensie voor de Azure CLI. De Azure CLI is een platformoverschrijdende opdracht regel programma waarmee u kunt werken met resources in de Azure-Cloud. Met de Machine Learning extensie kunt u werken met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 08/20/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997085"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819864"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>De CLI-uitbrei ding voor Azure Machine Learning gebruiken
 
-De CLI van Azure Machine Learning is een uitbreiding van de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdrachtregelinterface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met Azure Machine Learning. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
+De Azure Machine Learning CLI is een uitbrei ding van [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), een platformoverschrijdende opdracht regel interface voor het Azure-platform. Deze uitbrei ding bevat opdrachten voor het werken met Azure Machine Learning. Zo kunt u uw machine learning activiteiten automatiseren. De volgende lijst bevat enkele voor beelden van acties die u kunt uitvoeren met de CLI-extensie:
 
-+ Uitvoeren van experimenten voor het maken van machine learning-modellen
++ Experimenten uitvoeren om machine learning modellen te maken
 
-+ Machine learning-modellen voor het gebruik van de klant registreren
++ machine learning modellen registreren voor klant gebruik
 
-+ Verpakken, implementeren en bijhouden van de levenscyclus van machine learning-modellen
++ De levens cyclus van uw machine learning modellen inpakken, implementeren en bijhouden
 
-De CLI is geen vervanging voor de SDK van Azure Machine Learning. Het is een aanvullend hulp programma dat is geoptimaliseerd voor het verwerken van zeer geparametriseerde taken die goed zijn afgestemd op automatisering.
+De CLI is geen vervanging voor de Azure Machine Learning SDK. Het is een aanvullend hulp programma dat is geoptimaliseerd voor het verwerken van zeer geparametriseerde taken die goed zijn afgestemd op automatisering.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor het gebruik van de CLI, moet u een Azure-abonnement hebben. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ## <a name="full-reference-docs"></a>Volledige referentie documenten
 
@@ -42,7 +42,7 @@ Zoek de [volledige referentie documenten voor de extensie Azure-cli-ml van Azure
 
 ## <a name="install-the-extension"></a>De extensie installeren
 
-Gebruik de volgende opdracht voor het installeren van de Machine Learning CLI-extensie:
+Als u de Machine Learning CLI-extensie wilt installeren, gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -51,9 +51,9 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Voorbeeld bestanden die u kunt gebruiken met de onderstaande opdrachten, vindt u [hier](https://aka.ms/azml-deploy-cloud).
 
-Wanneer u hierom wordt gevraagd, selecteert u `y` voor het installeren van de extensie.
+Wanneer u hierom wordt gevraagd, selecteert u `y` om de uitbrei ding te installeren.
 
-Om te controleren of de extensie is geïnstalleerd, gebruikt u de volgende opdracht uit om een lijst met ML-specifieke subopdrachten weer te geven:
+Als u wilt controleren of de extensie is geïnstalleerd, gebruikt u de volgende opdracht om een lijst met ML-specifieke subopdrachten weer te geven:
 
 ```azurecli-interactive
 az ml -h
@@ -68,9 +68,9 @@ az extension update -n azure-cli-ml
 ```
 
 
-## <a name="remove-the-extension"></a>Verwijder de extensie
+## <a name="remove-the-extension"></a>De extensie verwijderen
 
-Als u wilt verwijderen van de CLI-extensie, gebruik de volgende opdracht:
+Als u de CLI-extensie wilt verwijderen, gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az extension remove -n azure-cli-ml
@@ -78,7 +78,7 @@ az extension remove -n azure-cli-ml
 
 ## <a name="resource-management"></a>Resourcebeheer
 
-De volgende opdrachten laten zien hoe u de CLI gebruiken voor het beheren van resources die worden gebruikt door Azure Machine Learning.
+De volgende opdrachten laten zien hoe u de CLI gebruikt om resources te beheren die worden gebruikt door Azure Machine Learning.
 
 + Als u er nog geen hebt, maakt u een resource groep:
 
@@ -100,7 +100,7 @@ De volgende opdrachten laten zien hoe u de CLI gebruiken voor het beheren van re
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Met deze opdracht maakt `.azureml` u een submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json` bestand dat wordt gebruikt om te communiceren met uw Azure machine learning-werk ruimte.
+    Met deze opdracht maakt u een submap `.azureml` die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json`-bestand dat wordt gebruikt om te communiceren met uw Azure Machine Learning-werk ruimte.
 
     Zie voor meer informatie [AZ ml map attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -138,14 +138,14 @@ De volgende opdrachten laten zien hoe u de CLI gebruiken voor het beheren van re
 
 ## <a id="experiments"></a>Experimenten uitvoeren
 
-* Start een uitvoering van uw experiment. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand \*(de tekst voor. runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
+* Start een uitvoering van uw experiment. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand (de tekst vóór \*. runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > Met `az ml folder attach` de opdracht wordt `.azureml` een submap gemaakt die twee voor beelden van runconfig-bestanden bevat. 
+    > Met de `az ml folder attach` opdracht maakt u een `.azureml`-submap, die twee voor beelden van runconfig-bestanden bevat. 
     >
     > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
     >
@@ -197,11 +197,45 @@ De volgende opdrachten laten zien hoe u Azure Machine Learning [omgevingen](how-
 
     Zie [AZ ml Environment down load](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)(Engelstalig) voor meer informatie.
 
+## <a name="ml-pipeline-management"></a>ML pijplijn beheer
+
+De volgende opdrachten laten zien hoe u met machine learning pijp lijnen kunt werken:
+
++ Een machine learning-pijp lijn maken:
+
+    ```azurecli-interactive
+    az ml pipeline create -n mypipeline -y mypipeline.yml
+    ```
+
+    Zie voor meer informatie [AZ ml pijp lijn Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create).
+
+    Zie [machine learning-pijp lijnen definiëren in YAML](reference-pipeline-yaml.md)voor meer informatie over het yaml-bestand van de pijp lijn.
+
++ Een pijp lijn uitvoeren:
+
+    ```azurecli-interactive
+    az ml run submit-pipeline -n myexperiment -y mypipeline.yml
+    ```
+
+    Zie voor meer informatie [AZ ml run-pipeline](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-pipeline).
+
+    Zie [machine learning-pijp lijnen definiëren in YAML](reference-pipeline-yaml.md)voor meer informatie over het yaml-bestand van de pijp lijn.
+
++ Een pijp lijn plannen:
+
+    ```azurecli-interactive
+    az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
+    ```
+
+    Zie voor meer informatie [AZ ml pijp lijn Create-Schedule](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create-schedule).
+
+    Zie [machine learning-pijp lijnen definiëren in YAML](reference-pipeline-yaml.md#schedules)voor meer informatie over het yaml-bestand van de pipeline-planning.
+
 ## <a name="model-registration-profiling-deployment"></a>Model registratie, profile ring, implementatie
 
-De volgende opdrachten laten zien hoe u een getraind model registreert en implementeert u deze vervolgens als een productieservice:
+De volgende opdrachten laten zien hoe u een getraind model kunt registreren en vervolgens als een productie service kunt implementeren:
 
-+ Registreer een model met Azure Machine Learning:
++ Een model registreren bij Azure Machine Learning:
 
     ```azurecli-interactive
     az ml model register -n mymodel -p sklearn_regression_model.pkl

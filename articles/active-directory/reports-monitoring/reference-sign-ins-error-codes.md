@@ -1,5 +1,5 @@
 ---
-title: Foutcodes voor aanmeldactiviteitenrapporten in Azure Active Directory Portal | Microsoft Docs
+title: Fout codes in de Azure Active Directory Portal | Microsoft Docs
 description: Naslaginformatie over foutcodes voor aanmeldactiviteitenrapporten.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383178"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820870"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -38,22 +38,22 @@ Wanneer een aanmelding mislukt, wordt een fout code weer geven die overeenkomt m
 
 Navigeer naar het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) in de [Azure Portal](https://portal.azure.com).
 
-![Aanmeldingsactiviteit](./media/reference-sign-ins-error-codes/61.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/reference-sign-ins-error-codes/61.png "Aanmeldingsactiviteit")
 
 Filter het rapport om alle mislukte aanmeldingen weer te geven door het selectie vakje **fout** te selecteren in de vervolg keuzelijst voor de **aanmeldings status** .
 
-![Aanmeldingsactiviteit](./media/reference-sign-ins-error-codes/06.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/reference-sign-ins-error-codes/06.png "Aanmeldingsactiviteit")
 
-Als u een item in de gefilterde **lijst selecteert, worden de gegevens van de activiteit geopend:**  De Blade aanmeldingen. Deze weer gave bevat aanvullende informatie over de mislukte aanmeld gebeurtenis, inclusief de **fout code** voor het aanmelden en de reden van de **fout**.
+Als u een item in de gefilterde lijst selecteert, worden de gegevens van de activiteit: de Blade **aanmeldingen** geopend. Deze weer gave bevat aanvullende informatie over de mislukte aanmeld gebeurtenis, inclusief de **fout code** voor het aanmelden en de reden van de **fout**.
 
-![Aanmeldingsactiviteit](./media/reference-sign-ins-error-codes/05.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/reference-sign-ins-error-codes/05.png "Aanmeldingsactiviteit")
 
 U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp van de [rapportage-API](concept-reporting-api.md).
 
 ## <a name="error-codes"></a>Foutcodes
 
 
-|Fout|Description|
+|Fout|Beschrijving|
 |---|---|
 |16000|Dit is een intern implementatie detail en geen fout voorwaarde. U kunt deze referentie negeren.|
 |20001|Er is een probleem met uw federatieve id-provider. Neem contact op met uw IDP om dit probleem op te lossen.|
@@ -71,7 +71,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50007|Het partnerversleutelingscertificaat is niet gevonden voor deze toepassing. [Open een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) bij micro soft om dit probleem te verhelpen.|
 |50008|SAML-verklaring ontbreekt of is niet juist geconfigureerd in het token. Neem contact op met uw federatieprovider.|
 |50010|Validatie van de doelgroep-URI voor de toepassing is mislukt, omdat er geen tokendoelgroepen zijn geconfigureerd. Neem contact op met de eigenaar van de toepassing voor oplossing.|
-|50011|Het antwoordadres ontbreekt, is onjuist geconfigureerd of komt niet overeen met de antwoordadressen die voor de toepassing zijn geconfigureerd. Probeer de oplossing die wordt [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application)vermeld op. Neem contact op met de eigenaar van de toepassing of de toepassings beheerder als het probleem zich blijft voordoen.|
+|50011|Het antwoordadres ontbreekt, is onjuist geconfigureerd of komt niet overeen met de antwoordadressen die voor de toepassing zijn geconfigureerd. Probeer de oplossing die wordt weer gegeven op [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Neem contact op met de eigenaar van de toepassing of de toepassings beheerder als het probleem zich blijft voordoen.|
 |50012| Dit is een algemeen fout bericht dat aangeeft dat de verificatie is mislukt. Dit kan gebeuren om redenen zoals ontbrekende of ongeldige referenties of claims in de aanvraag. Zorg ervoor dat de aanvraag wordt verzonden met de juiste referenties en claims. |
 |50013|De bevestiging is om verschillende redenen ongeldig. De uitgever van het token komt bijvoorbeeld niet overeen met de API-versie binnen het geldige tijds bereik, het token is verlopen of misvormd of het vernieuwings token in de bevestiging is geen primair vernieuwings token.|
 |50017|Validatie van certificaat is mislukt om de volgende redenen:<ul><li>Kan uitgiftecertificaat niet vinden in de lijst met vertrouwde certificaten</li><li>Verwacht CrlSegment kan niet worden gevonden</li><li>Kan uitgiftecertificaat niet vinden in de lijst met vertrouwde certificaten</li><li>Delta CRL-distributiepunt is geconfigureerd zonder een bijbehorend CRL-distributiepunt</li><li>Kan geen geldige CRL-segmenten ophalen als gevolg van time-outprobleem</li><li>Kan CRL niet downloaden</li></ul>Neem contact op met de Tenant beheerder.|
@@ -137,7 +137,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |53002|De gebruikte toepassing is geen goedgekeurde toepassing voor voorwaardelijke toegang. Gebruiker moet een van de apps uit de lijst met goedgekeurde toepassingen gebruiken om toegang te krijgen.|
 |53003|De toegang is geblokkeerd vanwege het beleid voor voorwaardelijke toegang.|
 |53004|Gebruiker moet multi-factor authentication-registratieproces voltooien om toegang te krijgen tot deze inhoud. Gebruiker moet zich registreren voor multi-factor authentication.|
-|65001|Toepassing X heeft geen toegangsmachtiging voor toepassing Y of de machtiging is ingetrokken. Of de gebruiker of beheerder heeft niet toegestaan dat de toepassing wordt gebruikt met id X. Stuur een interactieve autorisatieaanvraag voor deze gebruiker en resource. Of de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met ID X. Verzend een autorisatie aanvraag naar uw Tenant beheerder om namens de app te handelen: Y voor resource: Z.|
+|65001|Toepassing X heeft geen toegangsmachtiging voor toepassing Y of de machtiging is ingetrokken. Of de gebruiker of beheerder heeft niet toegestaan dat de toepassing wordt gebruikt met id X. Stuur een interactieve autorisatieaanvraag voor deze gebruiker en resource. Of de gebruiker of beheerder heeft niet toegestaan dat de toepassing wordt gebruikt met id X. Stuur een autorisatieaanvraag naar uw tenant-beheerder uit naam van toepassing Y voor resource Z.|
 |65004|Gebruiker heeft geweigerd toestemming te geven app-toegang. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
 |65005|De voor de toepassing vereiste resourcetoegangslijst bevat geen toepassingen die kunnen worden gedetecteerd door de resource, de clienttoepassing heeft toegang aangevraagd tot een resource die niet is opgegeven in de vereiste resourcetoegangslijst, de Graph-service heeft een onjuiste aanvraag geretourneerd of de resource is niet gevonden. Als de toepassing SAML ondersteunt, hebt u mogelijk de toepassing met de verkeerde id (entiteit) geconfigureerd. Probeer de oplossing voor SAML via de koppeling hieronder: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|Ongeldige toekenning om de volgende redenen:<ul><li>Aangevraagde SAML 2.0-verklaring heeft een ongeldige bevestigingsmethode voor onderwerpen</li><li>App OnBehalfOf flow wordt niet ondersteund op V2</li><li>Primaire vernieuwingstoken is niet ondertekend met sessiesleutel</li><li>Ongeldig extern vernieuwingstoken</li><li>Het verlenen van toegang is verkregen voor een andere tenant.</li></ul>|
@@ -162,15 +162,15 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |75011|Verificatiemethode waarmee de gebruiker is geverifieerd met de service komt niet overeen met aangevraagd verificatiemethode. Neem contact op met de eigenaar van de toepassing.|
 |75016|SAML2-verificatieverzoek heeft ongeldige NameIdPolicy. Neem contact op met de eigenaar van de toepassing.|
 |80001|Verificatieagent kan geen verbinding maken met Active Directory. Zorg ervoor dat de verificatie-agent is geïnstalleerd op een apparaat met domeindeelname met zicht op een DC die de aanmelding van de gebruiker kan regelen.|
-|80002|Interne fout. Time-out bij wachtwoordvalidatie. We kunnen de verificatieaanvraag niet verzenden naar de interne hybride identiteitsservice. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout.|
+|80002|Interne fout. Er is een time-out opgetreden voor wachtwoord validatie aanvraag. De verificatie aanvraag kan niet naar de interne Hybrid Identity-service worden verzonden. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout.|
 |80003|Ongeldig antwoord ontvangen door de verificatieagent. Er is een onbekende fout opgetreden tijdens een verificatiepoging op basis van on-premises Active Directory. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout.|
-|80005|Verificatie-agent: Er is een onbekende fout opgetreden tijdens het verwerken van het antwoord van de verificatie agent. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout.|
+|80005|Verificatieagent: er is een onbekende fout opgetreden tijdens het verwerken van het antwoord van de verificatieagent. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout.|
 |80007|Verificatieagent kan wachtwoord van gebruiker niet verifiëren.|
 |80010|Verificatieagent kan wachtwoord niet ontsleutelen. |
 |80011|Verificatieagent kan versleutelingssleutel niet ophalen.|
 |80012|De gebruikers hebben geprobeerd zich aan te melden buiten het toegestane aantal uren (dit is opgegeven in AD).|
 |80013|De verificatiepoging kan niet worden voltooid vanwege tijdverschil tussen de computer met de verificatieagent en AD. Los het probleem met tijdsynchronisatie op|
-|80014|Time-out van verificatieagent [Open een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) met de fout code, correlatie-id en datum-tijd om meer informatie over deze fout te krijgen.|
+|80014|Time-out van verificatie agent. [Open een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) met de fout code, correlatie-id en datum-tijd om meer informatie over deze fout te krijgen.|
 |81001|Kerberos-ticket van de gebruiker is te groot. Dit kan gebeuren als de gebruiker te veel groepen heeft en het Kerberos-ticket dus te veel groepslidmaatschappen bevat. Reduceer het aantal groepslidmaatschappen van de gebruiker en probeer het opnieuw.|
 |81005|Verificatie pakket wordt niet ondersteund.|
 |81007|De Tenant is niet ingeschakeld voor naadloze SSO.|

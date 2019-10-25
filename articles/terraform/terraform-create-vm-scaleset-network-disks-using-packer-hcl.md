@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173478"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882512"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Een virtuele Azure-machineschaalset maken van een aangepaste Packer-installatiekopie met behulp van Terraform
 
@@ -42,9 +42,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Maak drie nieuwe bestanden in een lege map met de volgende namen:
 
-- `variables.tf` : Dit bestand bevat de waarden van de variabelen die in de sjabloon worden gebruikt.
-- `output.tf` : In dit bestand worden de instellingen beschreven die na de implementatie worden weer gegeven.
-- `vmss.tf` : Dit bestand bevat de code van de infra structuur die u implementeert.
+- `variables.tf`: dit bestand bevat de waarden van de variabelen die in de sjabloon worden gebruikt.
+- `output.tf`: in dit bestand worden de instellingen beschreven die na de implementatie worden weer gegeven.
+- `vmss.tf`: dit bestand bevat de code van de infra structuur die u implementeert.
 
 ##  <a name="create-the-variables"></a>De variabelen maken 
 
@@ -145,7 +145,7 @@ Initialiseer de Terraform-omgeving door de volgende opdracht uit te voeren in de
 terraform init 
 ```
  
-De invoegtoepassingen van de provider worden vanuit het Terraform-register gedownload naar de map `.terraform` in de directory waar u de opdracht hebt uitgevoerd.
+De provider invoeg toepassingen worden gedownload van het terraform-REGI ster in de map `.terraform` in de directory waarin u de opdracht hebt uitgevoerd.
 
 Voer de volgende opdracht uit om de infrastructuur in Azure te implementeren.
 

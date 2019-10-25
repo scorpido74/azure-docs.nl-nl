@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015462"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881770"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
+
+> [!IMPORTANT]
+> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
+
 ## <a name="overview"></a>Overzicht
 Met de **Azure media face detector** media processor (MP) kunt u het aantal bewegingen en de inschakeling van de publieks-en reactie activiteiten via gezichts uitdrukkingen tellen, bijhouden en meten. Deze service bevat twee functies: 
 
@@ -76,7 +80,7 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 ```
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Description |
+| Kenmerk naam | Beschrijving |
 | --- | --- |
 | Modus |Snelle verwerkings snelheid, maar minder nauw keurig (standaard).|
 
@@ -151,9 +155,9 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Description |
+| Kenmerk naam | Beschrijving |
 | --- | --- |
-| Modus |Aanhoudende Alleen gezichts detectie.<br/>PerFaceEmotion: Retour Emotion onafhankelijk voor elke gezichts detectie.<br/>AggregateEmotion: Gemiddelde Emotion-waarden retour neren voor alle gezichten in het kader. |
+| Modus |Gezichten: alleen gezichts detectie.<br/>PerFaceEmotion: retourneert Emotion onafhankelijk voor elke gezichts detectie.<br/>AggregateEmotion: gemiddelde Emotion-waarden retour neren voor alle gezichten in het kader. |
 | AggregateEmotionWindowMs |Gebruiken als de AggregateEmotion-modus is geselecteerd. Hiermee geeft u de lengte van de video op die wordt gebruikt voor het produceren van elk samengeteld resultaat, in milliseconden. |
 | AggregateEmotionIntervalMs |Gebruiken als de AggregateEmotion-modus is geselecteerd. Hiermee geeft u op met welke frequentie statistische resultaten moeten worden geproduceerd. |
 
@@ -162,8 +166,8 @@ Hieronder vindt u de aanbevolen waarden voor het aggregatie venster en de interv
 
 || Standaard waarden (s) | Max. (n) | Min (en) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| AggregateEmotionIntervalMs |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-uitvoer
 JSON-uitvoer voor cumulatieve Emotion (afgekapt):
@@ -520,7 +524,7 @@ namespace FaceDetection
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)

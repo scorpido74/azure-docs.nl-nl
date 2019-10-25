@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240799"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882240"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Verbinding maken met gegevens van Azure AD Identity Protection
 
@@ -37,7 +37,7 @@ U kunt Logboeken van [Azure AD Identity Protection](https://docs.microsoft.com/a
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Verbinding maken met Azure AD Identity Protection
 
-Als u Azure AD Identity Protection al hebt, controleert u of deze is [ingeschakeld in uw netwerk](../active-directory/identity-protection/enable.md).
+Als u Azure AD Identity Protection al hebt, controleert u of deze is [ingeschakeld in uw netwerk](../active-directory/identity-protection/overview-identity-protection.md).
 Als Azure AD Identity Protection is geïmplementeerd en gegevens ophaalt, kunnen de waarschuwings gegevens eenvoudig worden gestreamd naar Azure Sentinel.
 
 

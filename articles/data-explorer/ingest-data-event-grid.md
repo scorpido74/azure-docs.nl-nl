@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028378"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881552"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobs opnemen in azure Data Explorer door zich te abonneren op Event Grid meldingen
 
@@ -43,7 +43,7 @@ In dit artikel leert u hoe u een [Azure Event grid](/azure/event-grid/overview) 
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Name | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
+    | Naam | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
     | Gebeurtenisschema | *Event Grid schema* | Het schema dat moet worden gebruikt voor het event grid. |
     | Onderwerptype | *Opslagaccount* | Het type Event Grid-onderwerp. |
     | Onderwerpresource | *gridteststorage* | De naam van uw opslagaccount. |
@@ -53,7 +53,7 @@ In dit artikel leert u hoe u een [Azure Event grid](/azure/event-grid/overview) 
     | Eindpunt | *test-hub* | De Event Hub die u hebt gemaakt. |
     | | |
 
-1. Selecteer het tabblad **Extra functies** als u bestanden uit een specifieke container wilt bijhouden. Stel de filters voor de meldingen als volgt in:
+1. Selecteer het tabblad **filters** als u bestanden van een bepaalde container wilt bijhouden. Stel de filters voor de meldingen als volgt in:
     * **Onderwerp begint met** veld is het *letterlijke* voor voegsel van de BLOB-container. Wanneer het toegepaste patroon *startsWith*is, kan het meerdere containers omvatten. Er zijn geen jokertekens zijn toegestaan.
      Het veld *moet* als volgt zijn ingesteld: *`/blobServices/default/containers/`* [container-voorvoegsel]
     * Het veld **Onderwerp eindigt met** veld is het *letterlijke* achtervoegsel van de blob. Er zijn geen jokertekens zijn toegestaan.
@@ -94,7 +94,7 @@ Maak nu verbinding met de Event Grid vanuit Azure Data Explorer, zodat gegevens 
 
     ![Gegevensopname](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1.  Selecteer het verbindings type: **BLOB Storage**.
+1.  Selecteer het verbindings type: **Blob Storage**.
 
 1. Vul het formulier in met de volgende gegevens en selecteer **maken**.
 
@@ -106,7 +106,7 @@ Maak nu verbinding met de Event Grid vanuit Azure Data Explorer, zodat gegevens 
     |---|---|---|
     | Naam van gegevensverbinding | *test-hub-connection* | De naam van de verbinding die u wilt maken in azure Data Explorer.|
     | Abonnement van opslagaccount | Uw abonnements-id | Het abonnements-id waarin uw opslagaccount zich bevindt.|
-    | Storage-account | *gridteststorage* | De naam van het opslag account dat u eerder hebt gemaakt.|
+    | Opslagaccount | *gridteststorage* | De naam van het opslag account dat u eerder hebt gemaakt.|
     | Event Grid | *test-grid-connection* | De naam van het gebeurtenis raster dat u hebt gemaakt. |
     | Event Hub-naam | *test-hub* | De Event Hub die u hebt gemaakt. Dit veld wordt automatisch ingevuld wanneer u een event grid kiest. |
     | Consumentengroep | *test-group* | De consumenten groep die is gedefinieerd in de Event Hub die u hebt gemaakt. |
@@ -117,7 +117,7 @@ Maak nu verbinding met de Event Grid vanuit Azure Data Explorer, zodat gegevens 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **TestDatabase**. |
-    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. Ondersteunde compressie opties: Zip en GZip |
+    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV en TXT. Ondersteunde compressie opties: zip en GZip |
     | Toewijzen van kolommen | *TestMapping* | De toewijzing die u hebt gemaakt in **TestDatabase** en waarmee die binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen van **TestTable**.|
     | | |
     

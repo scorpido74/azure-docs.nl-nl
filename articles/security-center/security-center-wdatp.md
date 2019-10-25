@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028076"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819883"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -28,19 +28,19 @@ Met deze wijziging komen uitgebreide mogelijkheden voor EDR (Endpoint Detection 
 
 Wanneer u micro soft Defender ATP gebruikt, krijgt u het volgende:
 
-- **Geavanceerde detectie sensors voor na inbreuk**: Micro soft Defender ATP Sens oren voor Windows-servers verzamelen een grote reeks gedrags signalen.
+- **Geavanceerde detectie Sens oren**: micro soft Defender ATP Sens oren voor Windows-servers verzamelen een grote reeks gedrags signalen.
 
-- **Detectie van op de cloud gebaseerde post-inbreuken op basis van analyses**: Micro soft Defender ATP wordt snel aangepast aan veranderende bedreigingen. Het maakt gebruik van geavanceerde analyses en big data. Micro soft Defender ATP wordt versterkt door de kracht van de Intelligent Security Graph met signalen over Windows, Azure en Office om onbekende bedreigingen te detecteren. Het biedt actie bare waarschuwingen en stelt u in staat snel te reageren.
+- In de **cloud gebaseerde post-inbreuk detectie op basis van analyses**: micro soft Defender ATP wordt snel aangepast aan veranderende bedreigingen. Het maakt gebruik van geavanceerde analyses en big data. Micro soft Defender ATP wordt versterkt door de kracht van de Intelligent Security Graph met signalen over Windows, Azure en Office om onbekende bedreigingen te detecteren. Het biedt actie bare waarschuwingen en stelt u in staat snel te reageren.
 
-- **Bedreigings informatie**: Micro soft Defender ATP genereert waarschuwingen wanneer deze hulpprogram ma's, technieken en procedures voor aanvallers identificeren. Het maakt gebruik van gegevens die zijn gegenereerd door micro soft Threat jagers en beveiligings teams, uitgebreid door Intelligence van partners.
+- **Bedreigings informatie**: micro soft Defender ATP genereert waarschuwingen wanneer de aanvaller hulpprogram ma's, technieken en procedures identificeert. Het maakt gebruik van gegevens die zijn gegenereerd door micro soft Threat jagers en beveiligings teams, uitgebreid door Intelligence van partners.
 
 De volgende mogelijkheden zijn nu beschikbaar in Azure Security Center:
 
-- **Automatische onboarding**: De micro soft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die worden voorAzure Security Centerd.
+- **Automatische**voor bereiding: de micro soft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die worden uitgevoerd voor Azure Security Center.
 
-- **Eén glas venster**: In de Azure Security Center-console worden micro soft Defender ATP-waarschuwingen weer gegeven.
+- **Eén venster glas**: de Azure Security Center-console geeft micro soft Defender ATP-waarschuwingen weer.
 
-- **Gedetailleerd onderzoek**van de computer: Azure Security Center klanten kunnen de micro soft Defender ATP-console gebruiken om een gedetailleerd onderzoek uit te voeren om het bereik van een schending te ontdekken.
+- **Gedetailleerd computer onderzoek**: Azure Security Center klanten kunnen de micro soft Defender ATP-console gebruiken om een gedetailleerd onderzoek uit te voeren om het bereik van een schending te ontdekken.
 
 ![Azure Security Center, een lijst met waarschuwingen en algemene informatie over elke waarschuwing weer geven](media/security-center-wdatp/image1.png)
 
@@ -50,7 +50,7 @@ Gebruik micro soft Defender ATP om verder te onderzoeken. Micro soft Defender AT
 
 ## <a name="platform-support"></a>Platformondersteuning
 
-Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016-, 2012 R2-en 2008 R2 SP1-besturings systemen in een standaard service-abonnement.
+Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1, voor virtuele machines van Azure hebt u een Standard-laag abonnement en voor niet-Azure-Vm's hebt u alleen een Standard-laag op het niveau van de werk ruimte nodig.
 
 > [!NOTE]
 > Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt automatisch een micro soft Defender ATP-Tenant gemaakt en worden de micro soft Defender ATP-gegevens standaard in Europa opgeslagen. Als u uw gegevens naar een andere locatie wilt verplaatsen, moet u contact opnemen met Microsoft Ondersteuning om de Tenant opnieuw in te stellen. Het gebruik van de server eindpunt bewaking die gebruikmaakt van deze integratie is uitgeschakeld voor Office 365 GCC-klanten.
@@ -114,6 +114,6 @@ Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Platforms en functies die worden ondersteund door Azure Security Center](security-center-os-coverage.md)
-- [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): Meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
-- [Aanbevelingen voor beveiliging in azure Security Center beheren](security-center-recommendations.md): Meer informatie over hoe u met aanbevelingen uw Azure-resources kunt beveiligen.
-- [Beveiligings status controleren in azure Security Center](security-center-monitoring.md): Meer informatie over het controleren van de status van uw Azure-resources.
+- [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
+- [Aanbevelingen voor beveiliging in azure Security Center](security-center-recommendations.md): Ontdek hoe aanbevelingen u helpen uw Azure-resources te beveiligen.
+- [Beveiligingsstatus controleren in Azure Security Center](security-center-monitoring.md): meer informatie over het controleren van de status van uw Azure-resources.

@@ -1,5 +1,5 @@
 ---
-title: De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken | Microsoft Docs
+title: De weer gaven van log Analytics installeren en gebruiken | Microsoft Docs
 description: Meer informatie over het installeren en gebruiken van de log Analytics-weer gaven voor Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,19 +17,19 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989794"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820908"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken
 
 Met de weer gaven van de Azure Active Directory log Analytics kunt u de Azure AD-activiteiten logboeken analyseren en doorzoeken in uw Azure AD-Tenant. Azure AD-activiteiten logboeken zijn onder andere:
 
-* Audit logboeken: Het [rapport activiteiten van controle logboeken](concept-audit-logs.md) geeft u toegang tot de geschiedenis van elke taak die wordt uitgevoerd in uw Tenant.
-* Aanmeld logboeken: Met het [rapport aanmeldings activiteit](concept-sign-ins.md)kunt u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de audit Logboeken.
+* Audit logboeken: in het [activiteiten rapport van controle logboeken](concept-audit-logs.md) krijgt u toegang tot de geschiedenis van elke taak die wordt uitgevoerd in uw Tenant.
+* Aanmeld logboeken: met het [rapport aanmeldings activiteit](concept-sign-ins.md)kunt u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de audit Logboeken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,15 +51,15 @@ Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
 
 2. Zodra u zich in de werk ruimte bevindt, selecteert u **werkruimte samenvatting**. De volgende drie weer gaven moeten worden weer gegeven:
 
-    * **Inrichtings gebeurtenissen van Azure ad-account**: Deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en inrichtings fouten, het aantal gebruikers dat is bijgewerkt en de mislukte update en het aantal gebruikers dat is ingericht en de bijbehorende fouten.    
-    * **Gebeurtenissen**voor aanmeldingen: In deze weer gave ziet u de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
+    * **Gebeurtenissen voor het inrichten van Azure AD-accounts**: deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en het bijwerken van fouten en het aantal gebruikers de inrichting en bijbehorende fouten worden ongedaan gemaakt.    
+    * **Gebeurtenissen voor aanmeldingen**: deze weer gave bevat de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
 
 3. Selecteer een van deze weer gaven om naar de afzonderlijke rapporten te gaan. U kunt ook waarschuwingen instellen voor een van de rapport parameters. Laten we bijvoorbeeld een waarschuwing instellen voor elke keer dat er een fout is opgetreden bij het aanmelden. Als u dit wilt doen, selecteert u eerst de weer gave voor de **aanmeldings gebeurtenissen** , selecteert u **aanmeldings fouten in een tijd** rapport en selecteert u vervolgens **Analytics** om de pagina Details te openen, met de daad werkelijke query achter het rapport. 
 
     ![Details](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken logica niet &lt;gedefinieerd&gt; is** in het gedeelte **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout voordoet, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens **gereed**. 
+4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken is &lt;logica niet gedefinieerd&gt;** onder de sectie **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout **voordoet**, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens gereed. 
 
     ![Signaallogica configureren](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

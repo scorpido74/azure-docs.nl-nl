@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750191"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819764"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
@@ -29,7 +29,7 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 ## <a name="problems-with-rbac-role-assignments"></a>Problemen met RBAC-roltoewijzingen
 
 - Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** omdat de optie toewijzing toevoegen  > **rol toevoegen** is uitgeschakeld of omdat **u de** machtigings fout ' de client met object-id ' krijgt, niet autorisatie voor het uitvoeren van actie ", Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging `Microsoft.Authorization/roleAssignments/write` heeft, zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
-- Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen verminderen door rollen toe te wijzen aan groepen. Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement.
+- Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen verminderen door rollen toe te wijzen aan groepen. Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. De limiet voor het aantal roltoewijzingen is vast en kan niet worden verhoogd.
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
 

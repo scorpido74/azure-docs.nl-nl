@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667137"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881315"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identiteitsbeveiliging en B2B-gebruikers
 
@@ -33,9 +33,9 @@ De gebruikers Risico's voor B2B-samenwerkings gebruikers worden geëvalueerd in 
 
 Er zijn beperkingen in de implementatie van identiteits beveiliging voor B2B-samenwerkings gebruikers in een resource directory, omdat hun identiteit in hun eigen basismap is bestaande. De belangrijkste beperkingen zijn als volgt:
 
-- Als een gast gebruiker het beleid voor gebruikers Risico's voor identiteits beveiliging activeert om het wacht woord opnieuw in te stellen, wordt deze geblokkeerd. Dit blok wordt veroorzaakt door het onvermogen om wacht woorden opnieuw in te stellen in de resource directory.
-- Gast gebruikers worden niet weer gegeven in het rapport Risk ante gebruikers. Dit verlies van zicht baarheid wordt veroorzaakt door de risico-evaluatie in de basismap van de B2B-gebruiker.
-- Beheerders kunnen een Risk ante B2B-samenwerkings gebruiker niet uit de Resource Directory verwijderen of herstellen. Dit verlies van functionaliteit wordt veroorzaakt door beheerders in de map resource die geen toegang hebben tot de basismap van de B2B-gebruiker.
+- Als een gast gebruiker het beleid voor gebruikers Risico's voor identiteits beveiliging activeert om het wacht woord opnieuw in te stellen, **wordt deze geblokkeerd**. Dit blok wordt veroorzaakt door het onvermogen om wacht woorden opnieuw in te stellen in de resource directory.
+- **Gast gebruikers worden niet weer gegeven in het rapport Risk ante gebruikers**. Dit verlies van zicht baarheid wordt veroorzaakt door de risico-evaluatie in de basismap van de B2B-gebruiker.
+- Beheerders **kunnen een Risk ante B2B-samenwerkings gebruiker niet** uit de Resource Directory verwijderen of herstellen. Dit verlies van functionaliteit wordt veroorzaakt door beheerders in de map resource die geen toegang hebben tot de basismap van de B2B-gebruiker.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Waarom kan ik geen risico volle B2B-samenwerkings gebruikers in mijn map herstellen?
 
@@ -54,4 +54,3 @@ Met uitzonde ring van B2B-gebruikers uit het op risico gebaseerd beleid voor voo
 Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 
 - [Wat is Azure AD B2B-samenwerking?](../b2b/what-is-b2b.md)
-- [Wat is voorwaardelijke toegang?](../conditional-access/overview.md)

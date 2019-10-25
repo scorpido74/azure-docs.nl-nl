@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274102"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821381"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Gegevens van Amazon S3-buckets kopiëren met behulp van AzCopy
 
@@ -53,6 +53,9 @@ AzCopy maakt gebruik [van de API put van URL](https://docs.microsoft.com/rest/ap
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-product. Als u besluit om gegevens van uw S3-buckets te verwijderen na een Kopieer bewerking, controleert u of de gegevens correct zijn gekopieerd naar uw opslag account voordat u de gegevens verwijdert.
 
+> [!TIP]
+> De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+
 ### <a name="copy-an-object"></a>Een object kopiëren
 
 |    |     |
@@ -65,7 +68,7 @@ AzCopy maakt gebruik [van de API put van URL](https://docs.microsoft.com/rest/ap
 >
 > U kunt ook virtuele Url's voor gehoste stijlen gebruiken (bijvoorbeeld: `http://bucket.s3.amazonaws.com`). 
 >
-> Zie [virtual hosting of buckets] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) ) voor meer informatie over virtuele hosting van buckets.
+> Zie [virtuele hosting van buckets]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) voor meer informatie over virtuele hosting van buckets.
 
 ### <a name="copy-a-directory"></a>Een map kopiëren
 
@@ -123,11 +126,11 @@ AzCopy voert de volgende stappen uit:
 
 1. Ongeldige tekens vervangen door _.
 
-2. De teken reeks `rename_` toevoegen aan het begin van een nieuwe geldige sleutel.
+2. Voegt de teken reeks `rename_` toe aan het begin van een nieuwe geldige sleutel.
 
    Deze sleutel wordt gebruikt om de oorspronkelijke meta gegevens **waarde**op te slaan.
 
-3. De teken reeks `rename_key_` toevoegen aan het begin van een nieuwe geldige sleutel.
+3. Voegt de teken reeks `rename_key_` toe aan het begin van een nieuwe geldige sleutel.
    Deze sleutel wordt gebruikt om de oorspronkelijke ongeldige **sleutel**van de meta gegevens op te slaan.
    U kunt deze sleutel gebruiken om de meta gegevens in azure Side te herstellen omdat de meta gegevens sleutel wordt behouden als een waarde in de Blob Storage-service.
 

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Share Azure ruimtelijke ankers sessies en apparaten | Microsoft Docs
-description: In deze zelfstudie leert u hoe u Azure ruimtelijke anker-id's tussen Android/iOS-apparaten in Unity met een back-end-service delen.
+title: Zelf studie-Azure spatiale ankers delen in sessies en apparaten | Microsoft Docs
+description: In deze zelf studie leert u hoe u Azure ruimtelijk-anker-id's tussen Android-en iOS-apparaten in unit met een back-end-service kunt delen.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,20 +8,20 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 734e1d08413867a438270660fa97bb8c5737e087
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135380"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882307"
 ---
-# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Zelfstudie: Share Azure ruimtelijke ankers sessies en apparaten
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Zelf studie: ruimtelijke Azure-ankers delen in sessies en apparaten
 
-In deze zelfstudie leert u hoe u [Azure ruimtelijke ankers](../overview.md) ankers maken tijdens één sessie en ga vervolgens naar deze op hetzelfde apparaat of een ander account. Deze dezelfde ankers kunnen ook worden gevonden door meerdere apparaten op dezelfde plaats en op hetzelfde moment.
+In deze zelf studie leert u hoe u met behulp van [Azure spatiale ankers](../overview.md) maakt ankers tijdens één sessie en deze vervolgens kunt vinden op hetzelfde apparaat of op een andere locatie. Deze ankers kunnen ook op dezelfde locatie en tegelijkertijd op meerdere apparaten worden gevonden.
 
 ![Persistentie](./media/persistence.gif)
 
-Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een app die kan worden geïmplementeerd op twee of meer apparaten. Azure Spatial Anchors dat door één exemplaar is gemaakt, kan worden gedeeld met andere.
+Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een app die kan worden geïmplementeerd op twee of meer apparaten. Azure Spatial Anchors dat door één exemplaar is gemaakt, kan worden gedeeld met andere.
 
 U leert het volgende:
 
@@ -34,19 +34,59 @@ U leert het volgende:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Houd er rekening mee dat, hoewel u in deze zelfstudie gebruik zult maken van Unity en een ASP.NET Core-web-app, dit alleen een voorbeeld is om te laten zien hoe het delen van Azure Spatial Anchor-id's naar andere apparaten werkt. U kunt andere talen en technologieën voor back-end gebruiken om de hetzelfde doel te bereiken. De ASP.NET Core-web-app die wordt gebruikt in deze zelfstudie heeft bovendien een afhankelijkheid van .NET Core 2.2 SDK. Het werkt goed op reguliere Azure-web-apps (Windows), maar werkt momenteel niet in Azure-web-apps voor Linux.
+Houd er rekening mee dat, hoewel u in deze zelfstudie gebruik zult maken van Unity en een ASP.NET Core-web-app, dit alleen een voorbeeld is om te laten zien hoe het delen van Azure Spatial Anchor-id's naar andere apparaten werkt. U kunt andere talen en back-end-technologieën gebruiken om hetzelfde doel te krijgen. De ASP.NET Core-web-app die wordt gebruikt in deze zelfstudie heeft bovendien een afhankelijkheid van .NET Core 2.2 SDK. Het werkt goed op reguliere Azure-web-apps (Windows), maar werkt momenteel niet in Azure-web-apps voor Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-the-unity-sample-project"></a>Download het voorbeeldproject Unity
+## <a name="download-the-sample-project"></a>Het voorbeeld project downloaden
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Uw Sharing Anchor-service implementeren
 
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+
 Open Visual Studio en open het project in de map `Sharing\SharingServiceSample`.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
+
+## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+
+U moet een resource groep en een App Service plan maken voordat u de service in VS code implementeert.
+
+### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+
+Navigeer naar het <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> en meld u aan bij uw Azure-abonnement.
+
+### <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+[!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
+
+Selecteer **Nieuw** naast **Resourcegroep**.
+
+Geef de resourcegroep de naam **myResourceGroup** en selecteer **OK**.
+
+### <a name="create-an-app-service-plan"></a>Een App Service-plan maken
+
+[!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
+
+Selecteer bij **Hostingabonnement** **Nieuw**.
+
+Gebruik in het dialoog venster **hosting plan configureren** de volgende instellingen:
+
+| Instelling | Voorgestelde waarde | Beschrijving |
+|-|-|-|
+|App Service-plan| MySharingServicePlan | De naam van het App Service-plan. |
+| Locatie | VS - west | Het datacenter waar de web-app wordt gehost. |
+| Grootte | Gratis | De [prijs categorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) die de hosting functies bepaalt. |
+
+Selecteer **OK**.
+
+Open Visual Studio code en open het project in de map `Sharing\SharingServiceSample`. Volg <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">deze zelf studie</a> om de service voor delen te implementeren met Visual Studio code. U kunt de stappen volgen die worden gestart vanuit de sectie ' openen met Visual Studio code '. Maak geen ander MVC-project zoals uitgelegd in de bovenstaande stap, zoals u al het project hebt dat moet worden geïmplementeerd en gepubliceerd: de SharingServiceSample.
+
+---
+
+## <a name="deploy-the-sample-app"></a>De voor beeld-app implementeren
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
@@ -56,7 +96,8 @@ Open Visual Studio en open het project in de map `Sharing\SharingServiceSample`.
 
 In deze zelfstudie hebt u een ASP.NET Core-web-app in Azure geïmplementeerd en vervolgens geconfigureerd en een Unity-app geïmplementeerd. U hebt Spatial Anchors met de app gemaakt en gedeeld met andere apparaten met behulp van uw ASP.NET Core-web-app.
 
-Voor meer informatie over het verbeteren van uw Web-App van ASP.NET Core, zodat het Azure Cosmos DB gebruikt voor het opslaan van uw gedeelde ruimtelijke anker-id's, gaat u naar de volgende zelfstudie. Azure Cosmos DB, persistentie krijgt tot uw Web-App van ASP.NET Core. Als dit dus uw app Maak vandaag nog een anker en dagen later terugkeren om opnieuw te zoeken met behulp van het anker-id die zijn opgeslagen in uw web-app te kunnen worden.
+U kunt uw ASP.NET Core web-app verbeteren zodat deze Azure Cosmos DB gebruikt om de opslag van de gedeelde ruimtelijk-anker-id's te behouden. Door Azure Cosmos DB ondersteuning toe te voegen, kan uw ASP.NET Core-web-app vandaag nog een anker maken en later terugkeren om het opnieuw te kunnen vinden met behulp van de anker-id die is opgeslagen in uw web-app.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Azure Cosmos DB naar Store ankers gebruiken](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Azure Cosmo DB gebruiken om ankers op te slaan](./tutorial-use-cosmos-db-to-store-anchors.md)
+

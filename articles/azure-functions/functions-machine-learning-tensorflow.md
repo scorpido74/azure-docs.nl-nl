@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677890"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817456"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
 
@@ -114,7 +114,7 @@ func new --language python --template HttpTrigger --name classify
 
 Er wordt een nieuwe map met de naam *classificering* gemaakt, die twee bestanden bevat.
 
-- *\_ \_init \_ \_. py*: een bestand voor de hoofd functie
+- *\_\_init\_\_. py*: een bestand voor de hoofd functie
 - *Function. json*: een bestand met een beschrijving van de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen
 
 ### <a name="run-the-function"></a>De functie uitvoeren
@@ -179,7 +179,7 @@ Controleer of *classificeren* nu een bestand met de naam *predict.py*bevat.
 De helper-bibliotheek heeft enkele afhankelijkheden die moeten worden geïnstalleerd. Open *Start/requirements. txt* in de editor en voeg de volgende afhankelijkheden toe aan het bestand.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```
@@ -200,7 +200,7 @@ Raadpleeg de [Azure functions python-ontwikkelaars handleiding](functions-refere
 
 ## <a name="update-function-to-run-predictions"></a>De functie update voor het uitvoeren van voor spellingen
 
-Open *classificatie/\_ \_init \_ \_. py* in de editor. Importeer de bibliotheek voor voors *pellen* die u eerder hebt toegevoegd aan dezelfde map. Voeg de volgende `import`-instructies toe onder de andere invoer die al in het bestand voor komt.
+Open *classificatie/\_\_init\_\_. py* in de editor. Importeer de bibliotheek voor voors *pellen* die u eerder hebt toegevoegd aan dezelfde map. Voeg de volgende `import`-instructies toe onder de andere invoer die al in het bestand voor komt.
 
 ```python
 import json

@@ -1,143 +1,138 @@
 ---
-title: Hoe kan ik... in Azure Application Insights | Microsoft Docs
-description: Veelgestelde vragen over het in Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Hoe kan ik... in Azure-toepassing inzichten | Microsoft Docs
+description: Veelgestelde vragen in Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/04/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 04/04/2017
+ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795516"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817363"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
-## <a name="get-an-email-when-"></a>Ontvang een e-mail wanneer...
-### <a name="email-if-my-site-goes-down"></a>E-mailbericht als Mijn site uitvalt
-Stel een [beschikbaarheid van WebTest](../../azure-monitor/app/monitor-web-app-availability.md).
+## <a name="get-an-email-when-"></a>Een e-mail ontvangen wanneer...
+### <a name="email-if-my-site-goes-down"></a>E-mail als mijn site uitvalt
+Stel een [Beschik baarheid-webtest](../../azure-monitor/app/monitor-web-app-availability.md)in.
 
-### <a name="email-if-my-site-is-overloaded"></a>E-als Mijn site is overbelast
-Stel een [waarschuwing](../../azure-monitor/app/alerts.md) op **serverreactietijd**. Een drempelwaarde tussen 1 en 2 seconden moet werken.
+### <a name="email-if-my-site-is-overloaded"></a>E-mail als mijn site overbelast is
+Stel een [waarschuwing](../../azure-monitor/app/alerts.md) in voor de **reactie tijd**van de server. Een drempel waarde tussen 1 en 2 seconden zou moeten werken.
 
 ![](./media/how-do-i/030-server.png)
 
-Uw app kan tekenen van stam ook weergeven door te retourneren van foutcodes. Een melding instellen op **mislukte aanvragen**.
+Uw app kan ook tekenen van een stam weer geven door fout codes te retour neren. Stel een waarschuwing in voor **mislukte aanvragen**.
 
-Als u een melding instellen wilt op **serveruitzonderingen**, u moet doen [enkele aanvullende instellingen](../../azure-monitor/app/asp-net-exceptions.md) om te kunnen gegevens bekijken.
+Als u een waarschuwing voor **Server uitzonderingen**wilt instellen, moet u mogelijk [Extra Setup](../../azure-monitor/app/asp-net-exceptions.md) uitvoeren om gegevens te bekijken.
 
-### <a name="email-on-exceptions"></a>E-uitzonderingen op
-1. [Uitzonderingencontrole instellen](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Een melding instellen](../../azure-monitor/app/alerts.md) aantal metrische gegevens van de uitzondering
+### <a name="email-on-exceptions"></a>E-mail op uitzonde ringen
+1. [Uitzonderings bewaking instellen](../../azure-monitor/app/asp-net-exceptions.md)
+2. [Een waarschuwing instellen](../../azure-monitor/app/alerts.md) voor de metriek van het aantal uitzonde ringen
 
-### <a name="email-on-an-event-in-my-app"></a>E-mail verzenden bij een gebeurtenis in mijn app
-Stel dat u wilt een e-mail ontvangen wanneer een specifieke gebeurtenis zich voordoet. Application Insights biedt geen deze faciliteit rechtstreeks, maar kan het [verzenden van een waarschuwing wanneer een metriek een drempelwaarde](../../azure-monitor/app/alerts.md).
+### <a name="email-on-an-event-in-my-app"></a>E-mail voor een gebeurtenis in mijn app
+Stel dat u een e-mail bericht wilt ontvangen wanneer er een specifieke gebeurtenis plaatsvindt. Application Insights biedt deze functie niet rechtstreeks, maar kan wel [een waarschuwing verzenden wanneer een metriek een drempel waarde overschrijdt](../../azure-monitor/app/alerts.md).
 
-Meldingen kunnen worden ingesteld op [aangepaste metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), maar geen aangepaste gebeurtenissen. De code schrijven om een metrische waarde vergroten wanneer de gebeurtenis zich voordoet:
+Waarschuwingen kunnen worden ingesteld op [aangepaste metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), maar geen aangepaste gebeurtenissen. Schrijf wat code om een metrische waarde te verg Roten wanneer de gebeurtenis zich voordoet:
 
     telemetry.TrackMetric("Alarm", 10);
 
-Of:
+of
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
     telemetry.TrackEvent("status", null, measurements);
 
-Aangezien de waarschuwingen hebben twee statussen, hebt u een lage waarde verzenden wanneer u rekening houden met de waarschuwing is beëindigd:
+Omdat waarschuwingen twee statussen hebben, moet u een lage waarde verzenden wanneer u de waarschuwing moet hebben beëindigd:
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Maak een grafiek in [metric explorer](../../azure-monitor/app/metrics-explorer.md) om te zien van uw waarschuwingen:
+Maak een grafiek in [metrische Explorer](../../azure-monitor/app/metrics-explorer.md) om uw wekker te bekijken:
 
 ![](./media/how-do-i/010-alarm.png)
 
-Stel nu een waarschuwing geactiveerd wanneer er een mid waarde de metrische gegevens de honderd gedurende een korte periode:
+Stel nu een waarschuwing in die wordt geactiveerd wanneer de metriek boven een mid-waarde voor een korte periode komt:
 
 ![](./media/how-do-i/020-threshold.png)
 
-De gemiddelde periode tot het minimum instellen.
+Stel de gemiddelde periode in op het minimum.
 
-U ontvangt e-mailberichten wanneer de metriek honderd en lager dan de drempelwaarde.
+U ontvangt e-mail berichten wanneer de metriek boven en onder de drempel waarde komt.
 
 Enkele punten om in overweging te nemen:
 
-* Een waarschuwing heeft twee statussen ('waarschuwing', 'gezond'). De status wordt geëvalueerd wanneer een metrische waarde wordt ontvangen.
-* Een e-mailbericht wordt verzonden, alleen wanneer de status verandert. Dit is waarom u hebt voor het verzenden van beide hoge en lage waarde metrische gegevens.
-* Om te evalueren de waarschuwing, wordt het gemiddelde genomen van de ontvangen waarden in de voorafgaande periode. Dit gebeurt telkens wanneer een metrische waarde wordt ontvangen, zodat e-mailberichten vaker dan de ingestelde periode kunnen worden verzonden.
-* Omdat e-mailberichten worden verzonden, zowel op 'waarschuwing', 'gezond', is het raadzaam om te overwegen overweegt u opnieuw het eindresultaat gebeurtenis als een voorwaarde voor twee statussen. Bijvoorbeeld, in plaats van een gebeurtenis 'taak voltooid' hebben een voorwaarde 'taak wordt uitgevoerd' waarop u e-mailberichten aan het begin en einde van een taak ophalen.
+* Een waarschuwing heeft twee statussen ("waarschuwing" en "in orde"). De status wordt alleen geëvalueerd wanneer een metriek wordt ontvangen.
+* Er wordt alleen een e-mail bericht verzonden wanneer de status wordt gewijzigd. Daarom moet u zowel hoge als lage waarde-metrische gegevens verzenden.
+* Als u de waarschuwing wilt evalueren, wordt het gemiddelde van de ontvangen waarden in de voor gaande periode genomen. Dit gebeurt elke keer dat er een metriek wordt ontvangen, zodat e-mail berichten vaker kunnen worden verzonden dan de periode die u hebt ingesteld.
+* Omdat e-mail berichten beide op ' alert ' en ' in orde ' worden verzonden, kunt u de eenmalige gebeurtenis beschouwen als een voor waarde met twee status waarden. Een voor beeld: in plaats van de gebeurtenis ' taak voltooid ', een ' taak wordt uitgevoerd ', waarbij u e-mail berichten ontvangt aan het begin en einde van een taak.
 
 ### <a name="set-up-alerts-automatically"></a>Waarschuwingen automatisch instellen
-[PowerShell gebruiken voor het maken van nieuwe waarschuwingen](../../azure-monitor/app/alerts.md#automation)
+[Power shell gebruiken voor het maken van nieuwe waarschuwingen](../../azure-monitor/app/alerts.md#automation)
 
-## <a name="use-powershell-to-manage-application-insights"></a>PowerShell gebruiken voor het beheren van Application Insights
+## <a name="use-powershell-to-manage-application-insights"></a>Power shell gebruiken voor het beheren van Application Insights
 * [Nieuwe resources maken](../../azure-monitor/app/powershell-script-create-resource.md)
 * [Nieuwe waarschuwingen maken](../../azure-monitor/app/alerts.md#automation)
 
-## <a name="separate-telemetry-from-different-versions"></a>Afzonderlijke telemetrie van verschillende versies
+## <a name="separate-telemetry-from-different-versions"></a>Telemetrie scheiden van verschillende versies
 
-* Meerdere rollen in een app: Gebruik één Application Insights-resource en filtert u op [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Het scheiden van ontwikkelings-, test- en release-versies: Gebruik verschillende Application Insights-resources. De instrumentatiesleutels uit web.config pikken. [Meer informatie](../../azure-monitor/app/separate-resources.md)
-* Melden van build-versie: Voegt u de eigenschap met een telemetrische initializer. [Meer informatie](../../azure-monitor/app/separate-resources.md)
+* Meerdere rollen in een app: gebruik één Application Insights resource en filter op [cloud_Rolename](../../azure-monitor/app/app-map.md).
+* Ontwikkelings-, test-en release versies scheiden: verschillende Application Insights bronnen gebruiken. Haal de instrumentatie sleutels op uit web. config. [Meer informatie](../../azure-monitor/app/separate-resources.md)
+* Versie rapportage-builds: Voeg een eigenschap toe met behulp van een telemetrie-initialisatie functie. [Meer informatie](../../azure-monitor/app/separate-resources.md)
 
-## <a name="monitor-backend-servers-and-desktop-apps"></a>Back-endservers en bureaublad-apps bewaken
+## <a name="monitor-backend-servers-and-desktop-apps"></a>Back-endservers en desktop-apps bewaken
 [Gebruik de Windows Server SDK-module](../../azure-monitor/app/windows-desktop.md).
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
-#### <a name="dashboard-with-metrics-from-multiple-apps"></a>Dashboard met metrische gegevens van meerdere apps
-* In [Metric Explorer](../../azure-monitor/app/metrics-explorer.md), uw grafiek aanpassen en sla deze op als een favoriet. Deze vastmaken aan het Azure-dashboard.
+#### <a name="dashboard-with-metrics-from-multiple-apps"></a>Dash board met metrische gegevens van meerdere apps
+* Pas in de [metrische Explorer](../../azure-monitor/app/metrics-explorer.md)de grafiek aan en sla deze op als favoriet. Vastmaken aan het Azure-dash board.
 
-#### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dashboard met gegevens uit andere bronnen en Application Insights
-* [Telemetrie exporteren naar Power BI](../../azure-monitor/app/export-power-bi.md ).
+#### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dash board met gegevens uit andere bronnen en Application Insights
+* [Telemetrie exporteren naar Power bi](../../azure-monitor/app/export-power-bi.md ).
 
-of
+Of
 
-* SharePoint gebruiken als uw dashboard, het weergeven van gegevens in de SharePoint-webonderdelen. [Continue export en Stream Analytics gebruiken om te exporteren naar SQL](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  PowerView gebruiken om te controleren van de database en een SharePoint-webonderdeel voor PowerView maken.
+* Gebruik share point als uw dash board, waarmee gegevens worden weer gegeven in share point-webonderdelen. [Continue export en stream Analytics gebruiken om naar SQL te exporteren](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  Gebruik Power View om de data base te onderzoeken en een share point-webonderdeel te maken voor Power View.
 
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>Anonieme of geverifieerde gebruikers filteren
-Als uw gebruikers zich aanmelden, kunt u instellen de [geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users). (Het gebeurt niet automatisch.)
+Als uw gebruikers zich aanmelden, kunt u de [geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)instellen. (Dit gebeurt niet automatisch.)
 
 U kunt vervolgens het volgende doen:
 
-* Zoeken naar specifieke gebruikers-id 's
+* Zoeken naar specifieke gebruikers-id's
 
 ![](./media/how-do-i/110-search.png)
 
-* Metrische gegevens voor de anonieme of geverifieerde gebruikers filteren
+* De metrische gegevens filteren op anonieme of geverifieerde gebruikers
 
 ![](./media/how-do-i/115-metrics.png)
 
-## <a name="modify-property-names-or-values"></a>Wijzig waarden of namen van eigenschappen
-Maak een [filter](../../azure-monitor/app/api-filtering-sampling.md#filtering). Hiermee kunt u wijzigen of telemetrie filteren voordat deze wordt verzonden vanuit uw app naar Application Insights.
+## <a name="modify-property-names-or-values"></a>Eigenschaps namen of-waarden wijzigen
+Een [filter](../../azure-monitor/app/api-filtering-sampling.md#filtering)maken. Hiermee kunt u de telemetrie wijzigen of filteren voordat deze vanuit uw app naar Application Insights wordt verzonden.
 
-## <a name="list-specific-users-and-their-usage"></a>Lijst met specifieke gebruikers en hun gebruik
-Als u alleen wilt [zoeken naar specifieke gebruikers](#search-specific-users), kunt u instellen de [geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users).
+## <a name="list-specific-users-and-their-usage"></a>Specifieke gebruikers en hun gebruik weer geven
+Als u alleen [specifieke gebruikers wilt zoeken](#search-specific-users), kunt u de [geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)instellen.
 
-Als u een lijst van gebruikers met gegevens, zoals welke pagina's wilt ze bekijken of hoe vaak deze zich aanmeldt, hebt u twee opties:
+Als u een lijst met gebruikers wilt met gegevens, zoals op welke pagina's ze worden weer gegeven of hoe vaak ze zich aanmelden, hebt u twee opties:
 
-* [Geverifieerde gebruikers-id van verzameling](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), [exporteren naar een database](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) en geschikt hulpprogramma's gebruiken voor het analyseren van uw gebruikersgegevens bevat.
-* Als u slechts een klein aantal gebruikers hebt, aangepaste gebeurtenissen of metrische gegevens, met behulp van de gegevens van belang als de naam van de metrische waarde of een gebeurtenis en het instellen van de gebruikers-id als een eigenschap verzenden. Voor het analyseren van paginaweergaven, vervangt u de standaard JavaScript trackPageView-aanroep. Gebruiken voor het analyseren van telemetrie aan de serverzijde van de server, een telemetrische initializer toe te voegen de gebruikers-id aan alle servertelemetrie. Vervolgens kunt u metrische gegevens filteren en te segmenteren en zoekopdrachten op de gebruikers-id.
+* [Stel een geverifieerde gebruikers-id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) [in, exporteer naar een Data Base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) en gebruik geschikte hulpprogram ma's om uw gebruikers gegevens daar te analyseren.
+* Als u slechts een klein aantal gebruikers hebt, kunt u aangepaste gebeurtenissen of metrische gegevens verzenden met behulp van de informatie die van belang is als metrische waarde of gebeurtenis naam en de gebruikers-id instellen als een eigenschap. Als u pagina weergaven wilt analyseren, vervangt u de standaard Java script trackPageView-aanroep. Als u telemetrie aan de server zijde wilt analyseren, gebruikt u de initialisatie functie voor telemetrie om de gebruikers-id toe te voegen aan alle server-telemetrie. Vervolgens kunt u metrische gegevens filteren en segmenteren en zoeken op de gebruikers-id.
 
-## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Verkeer beperken op mijn app naar Application Insights
-* In [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), alle modules die u niet nodig hebt, zoals de prestaties teller collector uitschakelen.
-* Gebruik [Sampling en filteren](../../azure-monitor/app/api-filtering-sampling.md) bij de SDK.
-* Beperk het aantal Ajax-aanroepen die zijn gerapporteerd voor de weergave van elke pagina in uw webpagina's. In het codefragment script na `instrumentationKey:...` , invoegen: `,maxAjaxCallsPerView:3` (of een geschikt aantal).
-* Als u [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), de statistische functie van batches van metrische waarden berekent voordat het resultaat wordt verzonden. Er is een overbelasting van TrackMetric() dat voor die.
+## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Het verkeer van mijn app naar Application Insights verminderen
+* Schakel in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)alle modules uit die u niet nodig hebt, zoals de prestatie meter item verzamelaar.
+* Gebruik [steek proeven en filters](../../azure-monitor/app/api-filtering-sampling.md) bij de SDK.
+* In uw webpagina's kunt u het aantal Ajax-aanroepen dat voor elke pagina weergave wordt gerapporteerd, beperken. In het script fragment na `instrumentationKey:...`, insert: `,maxAjaxCallsPerView:3` (of een geschikt getal).
+* Als u [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)gebruikt, moet u de aggregatie van batches met metrische waarden berekenen voordat u het resultaat verzendt. Er is een overbelasting van TrackMetric () waarmee dit wordt geboden.
 
-Meer informatie over [prijzen en quota voor](../../azure-monitor/app/pricing.md).
+Meer informatie over [prijzen en quota's](../../azure-monitor/app/pricing.md).
 
 ## <a name="disable-telemetry"></a>Telemetrie uitschakelen
-Naar **dynamisch stoppen en starten** het verzamelen en verzenden van telemetrie van de server:
+Om het verzamelen en verzenden van telemetrie van de server **dynamisch te stoppen en te starten** :
 
-### <a name="aspnet-classic-applications"></a>Klassiek ASP.NET-toepassingen
+### <a name="aspnet-classic-applications"></a>Klassieke ASP.NET-toepassingen
 
 ```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
@@ -146,27 +141,27 @@ Naar **dynamisch stoppen en starten** het verzamelen en verzenden van telemetrie
 ```
 
 ### <a name="other-applications"></a>Andere toepassingen
-Het wordt afgeraden om te gebruiken `TelemetryConfiguration.Active` singleton-console of ASP.NET Core-toepassingen.
-Als u hebt gemaakt `TelemetryConfiguration` zelf - instantie instellen `DisableTelemetry` naar `true`.
+Het is niet raadzaam om `TelemetryConfiguration.Active` Singleton te gebruiken op console-of ASP.NET Core-toepassingen.
+Als u zelf `TelemetryConfiguration` exemplaar hebt gemaakt, stelt u `DisableTelemetry` in op `true`.
 
-Voor ASP.NET Core-toepassingen u toegang hebben tot `TelemetryConfiguration` instantie met [ASP.NET Core-afhankelijkheidsinjectie](/aspnet/core/fundamentals/dependency-injection/). Raadpleeg voor meer informatie in [Application Insights voor ASP.NET Core-toepassingen](../../azure-monitor/app/asp-net-core.md) artikel.
+Voor ASP.NET Core-toepassingen kunt u `TelemetryConfiguration` exemplaar openen met behulp van [ASP.net core afhankelijkheids injectie](/aspnet/core/fundamentals/dependency-injection/). Meer informatie vindt u in [ApplicationInsights for ASP.net core applications](../../azure-monitor/app/asp-net-core.md) -artikel.
 
-## <a name="disable-selected-standard-collectors"></a>Geselecteerde standard collectors uitschakelen
-U kunt standard collectors (bijvoorbeeld, prestatiemeteritems, HTTP-aanvragen of afhankelijkheden) uitschakelen
+## <a name="disable-selected-standard-collectors"></a>Geselecteerde standaard verzamelaars uitschakelen
+U kunt standaard verzamelaars uitschakelen (bijvoorbeeld prestatie meter items, HTTP-aanvragen of afhankelijkheden)
 
-* **ASP.NET-toepassingen** - verwijderen of de relevante regels in commentaar [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
-* **ASP.NET Core-toepassingen** -telemetrie modules configuratieopties in Volg [Application Insights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+* **ASP.NET-toepassingen** : de relevante regels in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) verwijderen of er opmerkingen van maken
+* **ASP.net core toepassingen** : configuratie opties voor telemetrie-modules volgen in [ApplicationInsights ASP.net core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
-## <a name="view-system-performance-counters"></a>Systeemprestatiemeteritems weergeven
-Tussen de metrische gegevens die u in metrics explorer weergeven kunt zijn een set van systeem prestatiemeteritems. Er is een vooraf gedefinieerde blade met de titel **Servers** die meerdere wordt weergegeven.
+## <a name="view-system-performance-counters"></a>Systeem prestatie meter items weer geven
+De metrische gegevens die u kunt weer geven in Metrics Explorer zijn een set systeem prestatie meter items. Er is een vooraf gedefinieerde Blade met de titel **servers** die verschillende hiervan worden weer gegeven.
 
-![Open uw Application Insights-resource en klik op de Servers](./media/how-do-i/121-servers.png)
+![Open uw Application Insights-resource en klik op servers](./media/how-do-i/121-servers.png)
 
-### <a name="if-you-see-no-performance-counter-data"></a>Als er geen gegevens van prestatiemeteritems
-* **IIS-server** op uw computer of op een virtuele machine. [Installeer statusmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md).
-* **Azure-website** -prestatiemeteritems nog niet ondersteund. Er zijn verschillende metrische gegevens u als een standaard deel uitmaken van het Azure-website van het Configuratiescherm krijgt.
-* **UNIX-server** - [Installeer collectd](../../azure-monitor/app/java-collectd.md)
+### <a name="if-you-see-no-performance-counter-data"></a>Als er geen prestatie meter gegevens worden weer gegeven
+* **IIS-server** op uw eigen computer of op een virtuele machine. [Installeer status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md).
+* **Azure-website** : er worden nog geen prestatie meters ondersteund. Er zijn diverse metrische gegevens die u kunt ophalen als standaard onderdeel van het configuratie scherm van Azure web site.
+* **UNIX-server** - [verzamelde installeren](../../azure-monitor/app/java-collectd.md)
 
-### <a name="to-display-more-performance-counters"></a>Om meer prestatiemeteritems weer te geven
-* Eerste, [toevoegen van een nieuwe grafiek](../../azure-monitor/app/metrics-explorer.md) en kijk of het item in de basic die we bieden.
-* Als dit niet het geval is, [het item toevoegen aan de set die worden verzameld door de prestatiemeteritemmodule](../../azure-monitor/app/performance-counters.md).
+### <a name="to-display-more-performance-counters"></a>Meer prestatie meter items weer geven
+* Voeg eerst [een nieuwe grafiek toe](../../azure-monitor/app/metrics-explorer.md) en kijk of de teller zich in de Basic-Set bevindt die wij bieden.
+* Als dat niet het geval is, [voegt u de teller toe aan de set die wordt verzameld door de module prestatie meter items](../../azure-monitor/app/performance-counters.md).

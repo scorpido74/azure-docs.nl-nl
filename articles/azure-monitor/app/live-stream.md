@@ -1,26 +1,21 @@
 ---
 title: Live Metrics Stream met aangepaste metrische gegevens en diagnostische gegevens in Azure-toepassing inzichten | Microsoft Docs
 description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en stel problemen vast met een live feed van fouten, traceringen en gebeurtenissen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d85688d297eb0df00e71f388b2a3350eabe5f6d5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012740"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817196"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Controleren & diagnose met een latentie van 1 seconde
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
 Test het opvallende hart van uw Live, in-productie webtoepassing met behulp van Live Metrics Stream van [Application Insights](../../azure-monitor/app/app-insights-overview.md). Selecteer en filter metrische gegevens en prestatie meter items die u in realtime wilt bekijken, zonder dat u uw service hoeft te verstoren. Inspecteer stack traceringen van voor beelden van mislukte aanvragen en uitzonde ringen. Samen met [Profiler](../../azure-monitor/app/profiler.md)is het [fout opsporingsprogramma voor moment opnamen](../../azure-monitor/app/snapshot-debugger.md). Live Metrics Stream biedt een krachtig en niet-invasief diagnostisch hulp programma voor uw Live website.
 
@@ -34,7 +29,7 @@ Met Live Metrics Stream kunt u het volgende doen:
 * Bewaak elk Windows-prestatie meter item Live.
 * U kunt eenvoudig een server identificeren die problemen ondervindt en alle KPI/live-feed filteren op alleen die server.
 
-[![Video Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[video van![Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
 Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Functions-, Java-en node. js-apps.
 
@@ -52,9 +47,9 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 ### <a name="nodejs"></a>Node.js
 
-Als u live metrieken met node. js wilt gebruiken, moet u bijwerken naar versie 1,30 of hoger van de SDK. Dynamische metrische gegevens worden standaard uitgeschakeld in de node. js-SDK. Als u live metrische gegevens wilt `setSendLiveMetrics(true)` inschakelen, voegt u de [configuratie methoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) toe tijdens het initialiseren van de SDK.
+Als u live metrieken met node. js wilt gebruiken, moet u bijwerken naar versie 1,30 of hoger van de SDK. Dynamische metrische gegevens worden standaard uitgeschakeld in de node. js-SDK. Als u live metrics wilt inschakelen, voegt u `setSendLiveMetrics(true)` toe aan uw [configuratie methoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) tijdens het initialiseren van de SDK.
 
-### <a name="no-data-check-your-server-firewall"></a>Zijn er geen gegevens? Controleer de firewall van uw server
+### <a name="no-data-check-your-server-firewall"></a>Geen gegevens? Controleer de firewall van uw server
 
 Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers. 
 
@@ -65,8 +60,8 @@ Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monito
 |Latentie|Gegevens die binnen één seconde worden weer gegeven|Geaggregeerd over minuten|
 |Geen Bewaar periode|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Op aanvraag|Gegevens worden gestreamd tijdens het openen van Live metrieken|Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
-|Free|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
-|Steekproeven|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [](../../azure-monitor/app/api-filtering-sampling.md) bemonsterd|
+|Gratis|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
+|Sampling|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
 |Besturings kanaal|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie in één richting, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
@@ -85,7 +80,7 @@ Naast Application Insights telemetrie, kunt u ook elk prestatie meter item van W
 
 Live-metrische gegevens worden op twee punten geaggregeerd: lokaal op elke server en vervolgens op alle servers. U kunt de standaard instelling wijzigen door andere opties te selecteren in de vervolg keuzelijsten.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Voor beeld-telemetrie: Aangepaste Live diagnostische gebeurtenissen
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Voor beeld-telemetrie: aangepaste Live diagnostische gebeurtenissen
 De live feed van gebeurtenissen toont standaard voor beelden van mislukte aanvragen en afhankelijkheids aanroepen, uitzonde ringen, gebeurtenissen en traceringen. Klik op het filter pictogram om de toegepaste criteria op elk gewenst moment weer te geven. 
 
 ![Standaard live-feed](./media/live-stream/live-stream-eventsdefault.png)
@@ -94,7 +89,7 @@ Net als bij metrische gegevens kunt u wille keurige criteria opgeven voor elk va
 
 ![Aangepaste live-feed](./media/live-stream/live-stream-events.png)
 
-Opmerking: Gebruik op dit moment voor op uitzonderings bericht gebaseerde criteria het buitenste uitzonderings bericht. In het vorige voor beeld kunt u de onschadelijke uitzonde ring filteren met een intern uitzonderings bericht (de ' <--' scheidings teken) ' de client heeft de verbinding verbroken '. Gebruik een bericht dat niet de criteria ' fout bij het lezen van aanvragen van inhoud ' bevat.
+Opmerking: op dit moment kunt u voor op berichten gebaseerde criteria het buitenste uitzonderings bericht gebruiken. In het vorige voor beeld kunt u de onschadelijke uitzonde ring filteren met een intern uitzonderings bericht (de ' <--' scheidings teken) ' de client heeft de verbinding verbroken '. Gebruik een bericht dat niet de criteria ' fout bij het lezen van aanvragen van inhoud ' bevat.
 
 Bekijk de details van een item in de live feed door erop te klikken. U kunt de feed onderbreken door te klikken op **onderbreken** of omlaag schuiven of op een item te klikken. Live feed wordt hervat wanneer u weer naar boven schuift of door te klikken op het item van items die worden verzameld terwijl het is onderbroken.
 
@@ -172,7 +167,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 Voor Azure function-apps (v2) die het kanaal beveiligen met een API-sleutel kan worden uitgevoerd met een omgevings variabele. 
 
-Maak een API-sleutel vanuit uw Application Insights-resource en ga naar **Toepassings instellingen** voor uw functie-app. Selecteer **nieuwe instelling toevoegen** en voer een naam `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde in die overeenkomt met uw API-sleutel.
+Maak een API-sleutel vanuit uw Application Insights-resource en ga naar **Toepassings instellingen** voor uw functie-app. Selecteer **nieuwe instelling toevoegen** en voer een naam in voor `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde die overeenkomt met uw API-sleutel.
 
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (vereist Application Insights ASP.NET Core SDK 2.3.0-bèta of hoger)
 
@@ -200,7 +195,7 @@ Als u echter alle verbonden servers herkent en vertrouwt, kunt u de aangepaste f
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt een andere IP-adres dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
+Geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt een andere IP-adres dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
 
 
 

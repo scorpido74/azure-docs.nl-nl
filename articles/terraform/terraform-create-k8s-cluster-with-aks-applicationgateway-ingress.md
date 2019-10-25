@@ -8,13 +8,13 @@ author: tomarcher
 manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 82cee1e5c93eb21fa8db29985d26fe75bde970d2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244811"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882592"
 ---
 # <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Een Application Gateway ingangs controller maken in azure Kubernetes service
 
@@ -475,11 +475,11 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
 
 1. Sla het bestand op en sluit de editor af.
 
-De code die in deze sectie wordt weer gegeven, stelt de naam in van het cluster, de locatie en de resource_group_name. De `dns_prefix`-waarde, die deel uitmaakt van de Fully Qualified Domain Name (FQDN) die wordt gebruikt voor toegang tot het cluster, is ingesteld.
+De code die in deze sectie wordt weer gegeven, stelt de naam in van het cluster, de locatie en de resource_group_name. De `dns_prefix` waarde: die deel uitmaakt van de Fully Qualified Domain Name (FQDN) die wordt gebruikt voor toegang tot het cluster, is ingesteld.
 
-Met de record @no__t 0 kunt u de instellingen configureren waarmee u zich via SSH kunt aanmelden bij de worker-knoop punten.
+Met de `linux_profile` record kunt u de instellingen configureren waarmee het aanmelden bij de worker-knoop punten wordt ingeschakeld via SSH.
 
-Met AKS betaalt u alleen voor de werkknooppunten. De `agent_pool_profile`-record configureert de Details voor deze worker-knoop punten. De `agent_pool_profile record` bevat het aantal worker-knoop punten dat moet worden gemaakt en het type worker-knoop punten. Als u het cluster in de toekomst omhoog of omlaag wilt schalen, wijzigt u de waarde voor @no__t 0 in deze record.
+Met AKS betaalt u alleen voor de werkknooppunten. Met de `agent_pool_profile` record configureert u de Details voor deze worker-knoop punten. Het `agent_pool_profile record` bevat het aantal worker-knoop punten dat moet worden gemaakt en het type worker-knoop punten. Als u het cluster in de toekomst omhoog of omlaag wilt schalen, wijzigt u de `count` waarde in deze record.
 
 ## <a name="create-a-terraform-output-file"></a>Een Terraform-uitvoerbestand maken
 
@@ -568,7 +568,7 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    Met de opdracht `terraform init` geeft u de status weer van het initialiseren van de back-end en providerinvoegtoepassing:
+    De `terraform init` opdracht geeft het succes van het initialiseren van de back-end-en provider-invoeg toepassing:
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform init'](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
@@ -737,10 +737,10 @@ De code in deze sectie maakt gebruik van [helm](/azure/aks/kubernetes-helm) -Kub
     - `armAuth.secretJSON`: alleen nodig wanneer het geheim type van de Service-Principal is gekozen (als `armAuth.type` is ingesteld op `servicePrincipal`).
 
     Opmerkingen bij de sleutel:
-    - De waarde voor @no__t 0 wordt gemaakt in het terraform-script en kan worden gevonden door de volgende handelingen uit te voeren: `echo "$(terraform output identity_client_id)"`.
-    - De waarde voor @no__t 0 wordt gemaakt in het terraform-script en kan worden gevonden door de volgende handelingen uit te voeren: `echo "$(terraform output identity_resource_id)"`.
+    - De `identityResourceID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_client_id)"`.
+    - De `identityClientID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_resource_id)"`.
     - De `<resource-group>`-waarde is de resource groep van uw app-gateway.
-    - De waarde voor @no__t 0 is de naam van de gemaakte identiteit.
+    - De `<identity-name>` waarde is de naam van de gemaakte identiteit.
     - Alle identiteiten voor een bepaald abonnement kunnen worden weer gegeven met behulp van: `az identity list`.
 
 1. Installeer het Application Gateway ingangs controller pakket:

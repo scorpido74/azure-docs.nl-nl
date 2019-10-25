@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: 9661bfe9c3b10a31a962767debbe3d7e58bf4fa3
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173492"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882534"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Een Kubernetes-cluster maken met Azure Kubernetes Service en Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) beheert uw gehoste Kubernetes-omgeving en zorgt dat de implementatie en het beheer van toepassingen in containers snel en eenvoudig zijn en geen kennis over het beheer van containers vereisen. Het verlicht ook de last van actieve bewerkingen en onderhoud door inrichten, upgraden en bronnen op aanvraag schalen mogelijk te maken, zonder uw toepassingen offline te brengen.
@@ -28,13 +28,13 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert bij het maken van ee
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform configureren**: Volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Azure-service-principal**: volg de aanwijzingen in de sectie **De service-principal maken** in het artikel [Een Azure-service-principal maken met de Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Noteer de waarden voor appId, displayName, password en tenant.
+- **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName, password en tenant.
 
-## <a name="create-the-directory-structure"></a>De mapstructuur maken
+## <a name="create-the-directory-structure"></a>De directorystructuur maken
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
 1. Blader naar [Azure Portal](https://portal.azure.com).
@@ -55,7 +55,7 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     mkdir terraform-aks-k8s
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd terraform-aks-k8s
@@ -336,7 +336,7 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    Met de opdracht `terraform init` geeft u de status weer van het initialiseren van de back-end en providerinvoegtoepassing:
+    De `terraform init` opdracht geeft het succes van het initialiseren van de back-end-en provider-invoeg toepassing:
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform init'](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
@@ -357,7 +357,7 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform plan'](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Voer de opdracht `terraform apply` uit om het plan voor het maken van het Kubernetes-cluster toe te passen. Het proces voor het maken van een Kubernetes-cluster kan enige minuten duren, waardoor er een time-out kan optreden voor de Cloud Shell-sessie. Als er een time-out optreedt voor de Cloud Shell-sessie, kunt u de stappen in de sectie 'Herstellen na een time-out van Cloud Shell' volgen zodat u de zelfstudie kunt voltooien.
+1. Voer de opdracht `terraform apply` uit om het plan voor het maken van het Kubernetes-cluster toe te passen. Het proces voor het maken van een Kubernetes-cluster kan enkele minuten duren, wat resulteert in de time-out van de Cloud Shell-sessie. Als er een time-out optreedt voor de Cloud Shell-sessie, kunt u de stappen in het gedeelte ' herstellen vanaf een Cloud Shell-out ' volgen om de zelf studie te volt ooien.
 
     ```bash
     terraform apply out.plan
@@ -417,9 +417,9 @@ U kunt het gemaakte cluster controleren met de Kubernetes-hulpprogramma's.
 Toen het AKS-cluster werd gemaakt, werd controleren ingeschakeld om metrische gegevens over de status van de clusterknooppunten en -pods vast te leggen. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar. Zie [Status van Azure Kubernetes Service controleren](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) voor meer informatie over het controleren van de status van de container.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u Terraform en AKS gebruikt om een Kubernetes-cluster te maken. Hier volgen enkele aanvullende resources met meer informatie over Terraform in Azure: 
+In dit artikel hebt u geleerd hoe u Terraform en AKS gebruikt om een Kubernetes-cluster te maken. Hier volgen een aantal aanvullende resources voor meer informatie over Terraform in Azure: 
 
  [Terraform Hub in Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure-documentatie voor providers](https://aka.ms/terraform)  
- [Terraform Azure-gegevensbron voor providers](https://aka.ms/tfgit)  
+ [Documentatie Terraform Azure-provider](https://aka.ms/terraform)  
+ [Bron Terraform Azure-provider](https://aka.ms/tfgit)  
  [Terraform Azure-modules](https://aka.ms/tfmodules)

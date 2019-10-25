@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376923"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887758"
 ---
 De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepaste onderwerpen, *niet* voor gebeurtenis domeinen.
 
-| Resource | Limiet |
+| Bron | Limiet |
 | --- | --- |
 | Aangepaste onderwerpen per Azure-abonnement | 100 |
 | Gebeurtenis abonnementen per onderwerp | 500 |
@@ -27,10 +27,11 @@ De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepa
 
 De volgende limieten gelden alleen voor gebeurtenis domeinen.
 
-| Resource | Limiet |
+| Bron | Limiet |
 | --- | --- |
-| Onderwerpen per gebeurtenis domein | 1\.000 tijdens de open bare preview |
-| Gebeurtenis abonnementen per onderwerp binnen een domein | 50 tijdens de open bare preview |
-| Gebeurtenis abonnementen voor domein bereik | 50 tijdens de open bare preview |
-| Publicatie frequentie voor een gebeurtenis domein (ingangs punt) | 5\.000 gebeurtenissen per seconde tijdens de open bare preview |
+| Onderwerpen per gebeurtenis domein | 100.000 |
+| Gebeurtenis abonnementen per onderwerp binnen een domein | 500 |
+| Gebeurtenis abonnementen voor domein bereik | 50 |
+| Publicatie frequentie voor een gebeurtenis domein (ingangs punt) | 5\.000 gebeurtenissen per seconde |
 | Aanvragen publiceren | 250 per seconde |
+| Gebeurtenis domeinen per Azure-abonnement | 100 |

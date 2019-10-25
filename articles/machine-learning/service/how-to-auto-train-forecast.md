@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436626"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819849"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
@@ -34,6 +34,27 @@ Deze methode, in tegens telling tot de methoden van de klassieke tijd reeks, hee
 U kunt [configureren](#config) hoe ver in de toekomst de prognose moet worden uitgebreid (de prognose horizon), evenals lags en meer. Automatische ML leert een enkelvoudig, maar vaak intern vertakkings model voor alle items in de gegevensset en de voor spellingen Horizons. Er zijn meer gegevens beschikbaar voor het schatten van model parameters en generalisatie naar onzichtbaar serie.
 
 Functies die zijn geëxtraheerd uit de trainings gegevens spelen een kritieke rol. En, automatische MILLILITERs voert standaard stappen voor voor verwerking uit en genereert extra functies voor de tijdreeks om seizoensgebonden effecten vast te leggen en de voorspellende nauw keurigheid te maximaliseren.
+
+## <a name="time-series-and-deep-learning-models"></a>Time-series en diepe leer modellen
+
+
+Automatische ML biedt gebruikers zowel systeem eigen time-series als diepe leer modellen als onderdeel van het aanbevelings systeem. Deze informatie is onder andere:
++ Prophet
++ Automatische ARIMA
++ ForecastTCN
+
+Met de grondige training van automatische ML kunt u Univariate-en multidimensionale tijdreeks gegevens voors pellen.
+
+Uitgebreide leer modellen hebben drie ingebouwde capbailities:
+1. Ze kunnen leren van wille keurige toewijzingen van invoer naar uitvoer
+1. Ze ondersteunen meerdere invoer en uitvoer
+1. Ze kunnen automatisch patronen extra heren in invoer gegevens die meer dan lange reeksen overschrijden
+
+Door grotere gegevens te krijgen, kunnen diepe leer modellen, zoals gedurende ' ForecasTCN ', de scores van het resulterende model verbeteren. 
+
+Systeem eigen time series-informatie wordt ook verschaft als onderdeel van automatische MILLILITERs. Prophet werkt het beste met een tijd reeks met krachtige seizoensgebonden effecten en verschillende seizoenen historische gegevens. Prophet is nauw keurig & snelle, robuuste uitbijters, ontbrekende gegevens en dramatische wijzigingen in uw tijd reeks. 
+
+AutoRegressive Integrated zwevend gemiddelde (ARIMA) is een populaire statistische methode voor time series-prognoses. Deze methode voor het maken van prognoses wordt vaak gebruikt in scenario's voor de korte termijn prognose waarbij gegevens het bewijs van trends, zoals cycli, kunnen onvoorspelbaar en moeilijk te model leren. Automatische ARIMA transformeert uw gegevens naar stationaire gegevens om consistente, betrouw bare resultaten te ontvangen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,7 +77,7 @@ Het belangrijkste verschil tussen een prognose taak type en een regressie taak t
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Deze gegevensset is een eenvoudig voor beeld van dagelijkse verkoop gegevens voor een bedrijf met twee verschillende winkels, A en B. Daarnaast is er een functie voor `week_of_year` waarmee het model wekelijks kan worden gedetecteerd. Het veld `day_datetime` vertegenwoordigt een schone tijd reeks met een dagelijkse frequentie en het veld `sales_quantity` is de doel kolom voor het uitvoeren van voor spellingen. Lees de gegevens in een Panda data frame en gebruik vervolgens de functie `to_datetime` om ervoor te zorgen dat de tijd reeks een `datetime`-type is.
+Deze gegevensset is een eenvoudig voor beeld van dagelijkse verkoop gegevens voor een bedrijf met twee verschillende winkels, A en B. Daarnaast is er een functie voor `week_of_year` waarmee het model wekelijks kan worden gedetecteerd. Het veld `day_datetime` vertegenwoordigt een schone tijd reeks met een dagelijkse frequentie en het veld `sales_quantity` is de doel kolom voor het uitvoeren van voor spellingen. Lees de gegevens in een Panda data frame en gebruik vervolgens de functie `to_datetime` om ervoor te zorgen dat de tijd reeks een `datetime` type is.
 
 ```python
 import pandas as pd
@@ -64,7 +85,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-In dit geval worden de gegevens al oplopend gesorteerd op basis van het tijd veld `day_datetime`. Wanneer u echter een experiment instelt, moet u ervoor zorgen dat de gewenste tijd kolom in oplopende volg orde wordt gesorteerd om een geldige tijd reeks te maken. Ga ervan uit dat de gegevens 1.000 records bevatten en maak een deterministische splitsing in de gegevens voor het maken van trainings-en test gegevens sets. Zoek de naam van de label kolom en stel deze in op label. In dit voor beeld wordt het label `sales_quantity`. Scheid vervolgens het veld label van `test_data` om de `test_target`-set te maken.
+In dit geval worden de gegevens al oplopend gesorteerd op basis van het tijd veld `day_datetime`. Wanneer u echter een experiment instelt, moet u ervoor zorgen dat de gewenste tijd kolom in oplopende volg orde wordt gesorteerd om een geldige tijd reeks te maken. Ga ervan uit dat de gegevens 1.000 records bevatten en maak een deterministische splitsing in de gegevens voor het maken van trainings-en test gegevens sets. Zoek de naam van de label kolom en stel deze in op label. In dit voor beeld wordt het label `sales_quantity`. Scheid het veld label vervolgens van `test_data` om de `test_target`set te maken.
 
 ```python
 train_data = data.iloc[:950]
@@ -101,7 +122,7 @@ Het `AutoMLConfig`-object definieert de instellingen en gegevens die nodig zijn 
 
 Raadpleeg de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) voor meer informatie.
 
-Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het veld `day_datetime` in de gegevensset. Definieer de para meter `grain_column_names` om ervoor te zorgen dat **twee afzonderlijke time-series groepen** voor de gegevens worden gemaakt. een voor Store A en B. tot slot stelt u de `max_horizon` in op 50 om te voors pellen op de hele testset. Stel een prognose venster in op 10 Peri Oden met `target_rolling_window_size` en geef een enkele vertraging op voor de doel waarden voor twee Peri Oden vóór de para meter `target_lags`.
+Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het `day_datetime` veld in de gegevensset. Definieer de para meter `grain_column_names` om ervoor te zorgen dat **twee afzonderlijke time-series groepen** voor de gegevens worden gemaakt. een voor Store A en B. tot slot stelt u de `max_horizon` in op 50 om te voors pellen op de hele testset. Stel een prognose venster in op 10 Peri Oden met `target_rolling_window_size`en geef een enkele vertraging op voor de doel waarden voor twee Peri Oden vóór de para meter `target_lags`.
 
 ```python
 time_series_settings = {
@@ -117,7 +138,7 @@ time_series_settings = {
 > [!NOTE]
 > Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
 
-Als u de `grain_column_names` in het code fragment hierboven definieert, worden er twee afzonderlijke AutoML gemaakt, ook wel meerdere tijd reeksen genoemd. Als er geen korrel is gedefinieerd, wordt ervan uitgegaan dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over eenmalige time-series.
+Als u de `grain_column_names` in het bovenstaande code fragment definieert, maakt AutoML twee afzonderlijke tijdreeks groepen, ook wel bekend als meerdere tijd reeksen. Als er geen korrel is gedefinieerd, wordt ervan uitgegaan dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over eenmalige time-series.
 
 Maak nu een standaard `AutoMLConfig`-object, geef het taak type `forecasting` op en verzend het experiment. Wanneer het model is voltooid, haalt u de best mogelijke run-iteratie op.
 
@@ -173,9 +194,9 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-U kunt ook de functie `forecast()` gebruiken in plaats van `predict()`, zodat de specificaties van voor spellingen kunnen worden gestart. In het volgende voor beeld vervangt u eerst alle waarden in `y_pred` door `NaN`. In dit geval wordt de oorsprong van de prognose aan het einde van de trainings gegevens weer gegeven, omdat deze normaal gesp roken zou zijn bij het gebruik van `predict()`. Als u echter alleen de tweede helft van `y_pred` vervangen door `NaN`, zou de functie de numerieke waarden in de eerste helft ongewijzigd laten, maar de `NaN`-waarden in de tweede helft worden geforecastd. De functie retourneert zowel de voorspelde waarden als de uitgelijnde functies.
+U kunt ook de functie `forecast()` gebruiken in plaats van `predict()`, zodat de specificaties van voor spellingen kunnen worden gestart. In het volgende voor beeld vervangt u eerst alle waarden in `y_pred` door `NaN`. In dit geval wordt de oorsprong van de prognose aan het einde van de trainings gegevens weer gegeven, omdat deze normaal gesp roken zou zijn bij het gebruik van `predict()`. Als u echter alleen de tweede helft van `y_pred` met `NaN`hebt vervangen, zou de functie de numerieke waarden in de eerste helft ongewijzigd laten, maar de `NaN` waarden in de tweede helft worden geforecastd. De functie retourneert zowel de voorspelde waarden als de uitgelijnde functies.
 
-U kunt ook de para meter `forecast_destination` in de functie `forecast()` gebruiken om waarden te ramen tot een opgegeven datum.
+U kunt ook de para meter `forecast_destination` gebruiken in de functie `forecast()` om waarden te ramen tot een opgegeven datum.
 
 ```python
 label_query = test_labels.copy().astype(np.float)
@@ -184,7 +205,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Bereken RMSE (root mean Error) tussen de werkelijke waarden @no__t 0 en de geraamde waarden in `predict_labels`.
+Bereken RMSE (root mean Error) tussen de `actual_labels` werkelijke waarden en de geraamde waarden in `predict_labels`.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -194,7 +215,7 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-Nu de algehele model nauwkeurigheid is vastgesteld, is de volgende stap het model te gebruiken voor het voors pellen van onbekende toekomstige waarden. Geef een gegevensset op in dezelfde indeling als de testset `test_data`, maar met toekomstige datetimes en de resulterende Voorspellings is de voorspelde waarden voor elke stap van de tijds reeks. Stel dat de laatste tijdreeks records in de gegevensset 12/31/2018 zijn. Voor een prognose van de vraag voor de volgende dag (of zoveel Peri Oden als u nodig hebt om een prognose te maken, < = `max_horizon`), maakt u één tijdreeks record voor elke Store voor 01/01/2019.
+Nu de algehele model nauwkeurigheid is vastgesteld, is de volgende stap het model te gebruiken voor het voors pellen van onbekende toekomstige waarden. Geef een gegevensset op in dezelfde indeling als de testset `test_data`, maar met toekomstige datum-en tijd waarden en de resulterende Voorspellings is de voorspelde waarde voor elke stap van de tijds reeks. Stel dat de laatste tijdreeks records in de gegevensset 12/31/2018 zijn. Voor een prognose van de vraag voor de volgende dag (of zoveel Peri Oden als u nodig hebt om een prognose te maken, < = `max_horizon`), maakt u één tijdreeks record voor elke Store voor 01/01/2019.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory activiteiten logboeken analyseren met behulp van Azure Monitor-logboeken | Microsoft Docs
+title: Activiteiten logboeken analyseren met Azure Monitor-logboeken | Microsoft Docs
 description: Meer informatie over het analyseren van Azure Active Directory activiteiten logboeken met behulp van Azure Monitor-logboeken
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255620"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820963"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken
 
@@ -61,7 +61,7 @@ De logboeken worden gepusht naar de **audit logs bevat** -en **SigninLogs** -tab
 1. Selecteer in de standaard query weergave in de vorige sectie **schema** en vouw de werk ruimte uit. 
 
 2. Vouw de sectie **logboek beheer** uit en vouw vervolgens **audit logs bevat** of **SignInLogs** uit om het logboek schema weer te geven.
-    ![Audit-logboeken @ no__t-1 ![Signin-logboeken @ no__t-3
+    ![audit logboeken](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![signin-logboeken](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Query's uitvoeren op de activiteiten logboeken van Azure AD
 

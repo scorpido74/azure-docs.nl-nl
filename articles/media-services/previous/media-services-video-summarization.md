@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015985"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881698"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
+
+> [!IMPORTANT]
+> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
+
 ## <a name="overview"></a>Overzicht
 Met de **Azure Media video thumbnails** media processor (MP) kunt u een samen vatting maken van een video die nuttig is voor klanten die alleen een samen vatting van een lange video willen bekijken. Klanten willen bijvoorbeeld een korte ' samen vattings video ' zien wanneer ze op een miniatuur bewegen. Door de para meters van **Azure Media video thumbnails** te wijzigen via een vooraf ingestelde configuratie, kunt u de krachtige opname-en samenvoegings technologie van MP gebruiken om algorithmically een beschrijvende subclip te genereren.  
 
@@ -54,17 +58,17 @@ Wanneer u een miniatuur van een video met **Azure Media video thumbnails**maakt,
 
 Op dit moment kunt u de volgende para meters wijzigen:
 
-| Param | Description |
+| Param | Beschrijving |
 | --- | --- |
-| outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: Waar of ONWAAR. De standaard waarde is True. |
-| fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: Waar of ONWAAR.  De standaard waarde is True. |
+| outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: True of false. De standaard waarde is True. |
+| fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: True of false.  De standaard waarde is True. |
 | maxMotionThumbnailDurationInSecs |Een geheel getal dat aangeeft hoe lang de volledige resulterende video moet zijn.  De standaard waarde is afhankelijk van de oorspronkelijke duur van de video. |
 
 In de volgende tabel wordt de standaard duur beschreven, wanneer **maxMotionThumbnailInSecs** niet wordt gebruikt.
 
 |  |  |  |
 | --- | --- | --- |
-| Videoduur |d < 3 min |3 min < d < 15 minuten |
+| Video duur |d < 3 min. |3 min < d < 15 minuten |
 | Miniatuur duur |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |
 
 De volgende JSON-sets beschik bare para meters.
@@ -285,7 +289,7 @@ Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinfo
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

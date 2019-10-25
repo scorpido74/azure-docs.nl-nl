@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678242"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817384"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
 
@@ -34,38 +34,12 @@ Om de vereiste voor de test hulpprogramma's te vinden. Start het **Visual Studio
 > [!NOTE]
 > Voor webtests met meerdere stappen gelden aanvullende kosten. Raadpleeg de [officiële prijs handleiding](https://azure.microsoft.com/pricing/details/application-insights/)voor meer informatie.
 
-## <a name="record-a-multi-step-web-test"></a>Een webtest met meerdere stappen opnemen
+## <a name="record-a-multi-step-web-test"></a>Een webtest met meerdere stappen opnemen 
 
-Als u een test met meerdere stappen wilt maken, neemt u het scenario op met Visual Studio Enterprise en uploadt u vervolgens de opname naar Application Insights. Application Insights speelt het scenario af met ingestelde intervallen en controleert het antwoord.
+> [!WARNING]
+> Het gebruik van de meervoudige-stap recorder wordt niet meer aanbevolen. De recorder is ontwikkeld voor statische HTML-pagina's met eenvoudige interacties en biedt geen functionele ervaring voor moderne webpagina's.
 
-> [!IMPORTANT]
-> * U kunt in uw tests geen gecodeerde functies of lussen gebruiken. De test moet volledig zijn opgenomen in het .webtest-script. U kunt echter wel standaard-invoegtoepassingen gebruiken.
-> * Alleen Engelse tekens worden ondersteund in de webtest met meerdere stappen. Als u Visual Studio in andere talen gebruikt, werkt u het definitiebestand van de webtest bij om niet-Engelse tekens te vertalen of uit te sluiten.
-
-Gebruik Visual Studio Enterprise om een websessie op te nemen.
-
-1. Maak een test project voor webprestaties en belasting. **Bestands**  > **Nieuw**  > **project**  > **visuele C#**   > **test**
-
-    ![Visual Studio nieuw project-gebruikers interface](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Open het `.webtest`-bestand en start de opname.
-
-    ![Gebruikers interface voor het opnemen van de Visual Studio-test](./media/availability-multistep/open-web-test.png)
-
-3. Klik door de stappen die door de test moeten worden gesimuleerd als onderdeel van de opname.
-
-    ![Gebruikers interface voor opnemen van browser](./media/availability-multistep/record.png)
-
-4. Bewerk de test als volgt:
-
-    * Voeg validaties toe om de ontvangen tekst en reactiecodes te controleren.
-    * Verwijder alle uneccesary-interacties. U kunt ook afhankelijke aanvragen voor afbeeldingen verwijderen of tracking-sites toevoegen die niet relevant zijn voor u om uw test te laten slagen.
-    
-    Denk eraan dat u het test script alleen kunt bewerken: u kunt aangepaste code toevoegen of andere webtests aanroepen. Voeg geen lussen toe aan de test. U kunt standaardinvoegtoepassingen voor webtest gebruiken.
-
-5. Voer de test uit in Visual Studio om te valideren en controleer of deze werkt.
-
-    De webtestrunner opent een webbrowser en herhaalt de acties die u hebt opgenomen. Controleer of alles werkt zoals verwacht.
+Raadpleeg de [officiële documentatie voor Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)voor hulp bij het maken van Visual Studio-webtests.
 
 ## <a name="upload-the-web-test"></a>De webtest uploaden
 
@@ -96,7 +70,7 @@ Gebruik Visual Studio Enterprise om een websessie op te nemen.
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
 |**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie**  = **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
-## <a name="advanced-configuration"></a>Geavanceerde configuratie
+## <a name="configuration"></a>Configuratie
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Tijd en wille keurige getallen koppelen aan uw test
 
