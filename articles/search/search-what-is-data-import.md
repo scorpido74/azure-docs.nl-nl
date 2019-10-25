@@ -1,33 +1,32 @@
 ---
-title: Gegevens importeren voor het opnemen van gegevens in een zoek index-Azure Search
-description: Gegevens vullen en uploaden naar een index in Azure Search van externe gegevens bronnen.
-author: HeidiSteen
+title: Gegevens importeren voor het opnemen van gegevens in een zoek index
+titleSuffix: Azure Cognitive Search
+description: Gegevens vullen en uploaden naar een index in azure Cognitive Search van externe gegevens bronnen.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a05291012bcf44b1a07d9b451eef1302862b2fce
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647336"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794162"
 ---
-# <a name="data-import-overview---azure-search"></a>Overzicht van het importeren van gegevens-Azure Search
+# <a name="data-import-overview---azure-cognitive-search"></a>Overzicht van het importeren van gegevens-Azure Cognitive Search
 
-In Azure Search voeren query's uit over uw inhoud die is geladen in en opgeslagen in een [zoek index](search-what-is-an-index.md). In dit artikel worden de twee basis benaderingen besproken voor het vullen van een index: *Push* uw gegevens in de index via een programma, of wijs een [Azure Search indexer](search-indexer-overview.md) bij een ondersteunde gegevens bron in om de gegevens op te *halen* .
+In azure Cognitive Search query's uitvoeren over uw inhoud geladen en opgeslagen in een [zoek index](search-what-is-an-index.md). In dit artikel worden de twee basis benaderingen besproken voor het vullen van een index: *Push* uw gegevens in de index via een programma, of wijs een [Azure Cognitive Search Indexeer functie](search-indexer-overview.md) op een ondersteunde gegevens bron om de gegevens op te *halen* .
 
-Met beide benaderingen is het doel om gegevens van een externe gegevens bron te *laden* in een Azure search index. Met Azure Search kunt u een lege index maken, maar totdat u er gegevens naar wilt pushen of verzamelen, is het niet mogelijk om een query uit te voeren.
+Met beide benaderingen is het doel om gegevens van een externe gegevens bron te *laden* in een Azure Cognitive search-index. Met Azure Cognitive Search kunt u een lege index maken, maar totdat u er gegevens naar wilt pushen of verzamelen, is het niet mogelijk om query's uit te voeren.
 
 ## <a name="pushing-data-to-an-index"></a>Gegevens naar een index pushen
-Het pushmodel, dat wordt gebruikt voor het programmatisch verzenden van uw gegevens naar Azure Search, is de meest flexibele methode. Ten eerste heeft dit model geen beperkingen met betrekking tot het gegevensbrontype. Alle gegevenssets die bestaan uit JSON-documenten kunnen naar een Azure Search-index worden gepusht. Hierbij wordt ervan uitgegaan dat elk document in de gegevensset velden toewijst aan velden die in uw indexschema zijn gedefinieerd. Ten tweede heeft dit model geen beperkingen met betrekking tot de frequentie van de uitvoering. U kunt wijzigingen naar een index pushen zo vaak als u wilt. Voor toepassingen die een zeer lage latentie vereisen (bijvoorbeeld als zoekopdrachten gesynchroniseerd moeten zijn met dynamische inventarisatiedatabases) is het pushmodel de enige mogelijkheid.
+Het push-model dat wordt gebruikt om uw gegevens via een programma naar Azure Cognitive Search te verzenden, is de meest flexibele benadering. Ten eerste heeft dit model geen beperkingen met betrekking tot het gegevensbrontype. Een gegevensset die bestaat uit JSON-documenten kan worden gepusht naar een Azure Cognitive Search-index, ervan uitgaande dat elk document in de gegevensset velden bevat die zijn toegewezen aan velden die in uw index schema zijn gedefinieerd. Ten tweede heeft dit model geen beperkingen met betrekking tot de frequentie van de uitvoering. U kunt wijzigingen naar een index pushen zo vaak als u wilt. Voor toepassingen die een zeer lage latentie vereisen (bijvoorbeeld als zoekopdrachten gesynchroniseerd moeten zijn met dynamische inventarisatiedatabases) is het pushmodel de enige mogelijkheid.
 
-Deze aanpak is flexibeler dan het pull-model, omdat u documenten afzonderlijk of in batches kunt uploaden (maximaal 1000 per batch of 16 MB, afhankelijk van waar de limiet ligt). Met het pushmodel kunt u documenten uploaden naar Azure Search, ongeacht waar uw gegevens zich bevinden.
+Deze aanpak is flexibeler dan het pull-model, omdat u documenten afzonderlijk of in batches kunt uploaden (maximaal 1000 per batch of 16 MB, afhankelijk van waar de limiet ligt). Het push-model biedt u ook de mogelijkheid om documenten te uploaden naar Azure Cognitive Search, ongeacht waar uw gegevens zich bevindt.
 
-### <a name="how-to-push-data-to-an-azure-search-index"></a>Gegevens naar een Azure Search-index pushen
+### <a name="how-to-push-data-to-an-azure-cognitive-search-index"></a>Gegevens pushen naar een Azure Cognitive Search-index
 
 U kunt de volgende API's gebruiken om één of meerdere documenten in een index te laden:
 
@@ -36,7 +35,7 @@ U kunt de volgende API's gebruiken om één of meerdere documenten in een index 
 
 Er is momenteel geen ondersteuning voor het pushen van gegevens via de portal.
 
-Voor een inleiding tot elke methodologie raadpleegt [u Quick Start: Een Azure search-index maken met](search-create-index-rest-api.md) behulp van Power shell of [ C# Quick Start: Maak een Azure Search-index met behulp van .NET SDK](search-get-started-dotnet.md).
+Voor een inleiding tot elke methodologie raadpleegt u [Quick Start: een Azure Cognitive search-index maken met behulp van Power shell](search-create-index-rest-api.md) of [ C# Quick Start: een Azure Cognitive search-index maken met behulp van .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,15 +43,15 @@ Voor een inleiding tot elke methodologie raadpleegt [u Quick Start: Een Azure se
 
 U kunt het type indexerings actie per document bepalen, waarbij u opgeeft of het document volledig moet worden geüpload, wordt samengevoegd met de bestaande document inhoud of verwijderd.
 
-Geef in het REST API HTTP POST-aanvragen met JSON-aanvraag instanties door aan de eind punt-URL van uw Azure Search-index. Elk JSON-object in de matrix ' value ' bevat de sleutel van het document en geeft aan of een indexerings actie document inhoud toevoegt, bijwerkt of verwijdert. Zie [documenten laden](search-get-started-dotnet.md#load-documents)voor een voor beeld van een code.
+Geef in het REST API HTTP POST-aanvragen met JSON-aanvraag instanties op de eind punt-URL van uw Azure Cognitive Search-index. Elk JSON-object in de matrix ' value ' bevat de sleutel van het document en geeft aan of een indexerings actie document inhoud toevoegt, bijwerkt of verwijdert. Zie [documenten laden](search-get-started-dotnet.md#load-documents)voor een voor beeld van een code.
 
-In de .NET SDK kunt u uw gegevens inpakken in `IndexBatch` een-object. `IndexBatch` Een`IndexAction` verzameling objecten die elk een document bevat en een eigenschap die aangeeft Azure Search welke actie moet worden uitgevoerd op dat document. Zie [ C# Quick](search-get-started-dotnet.md)start voor een code voorbeeld.
+In de .NET SDK kunt u uw gegevens inpakken in een `IndexBatch`-object. Een `IndexBatch` bevat een verzameling `IndexAction` objecten, elk met een document en een eigenschap die aan Azure Cognitive Search vertelt dat de actie moet worden uitgevoerd op dat document. Zie [ C# Quick](search-get-started-dotnet.md)start voor een code voorbeeld.
 
 
-| @search.action | Description | Vereiste velden voor elk document | Opmerkingen |
+| @search.action | Beschrijving | Vereiste velden voor elk document | Opmerkingen |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Een `upload`-actie is vergelijkbaar met een "upsert", waarbij het document wordt ingevoegd als het nieuw is en wordt bijgewerkt/vervangen als het al bestaat. |sleutel, plus andere velden die u wilt definiëren |Tijdens het bijwerken/vervangen van een bestaand document wordt elk veld dat niet is opgegeven in de aanvraag ingesteld op `null`. Dit gebeurt zelfs als het veld eerder is ingesteld op een niet-null-waarde. |
-| `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK bevat dit velden van het type `DataType.Collection(DataType.String)`. In de REST API omvat dit velden van het type `Collection(Edm.String)`. Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags` `["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
+| `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK zijn dit onder andere velden van het type `DataType.Collection(DataType.String)`. In de REST API omvat dit velden van het type `Collection(Edm.String)`. Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags` `["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
 | `mergeOrUpload` |Deze bewerking gedraagt zich als `merge` wanneer een document met de opgegeven sleutel al in de index bestaat. Als het document niet bestaat, gedraagt deze bewerking zich als `upload` met een nieuw document. |sleutel, plus andere velden die u wilt definiëren |- |
 | `delete` |Het opgegeven document wordt uit de index verwijderd. |alleen sleutel |Alle andere velden worden genegeerd. Als u een afzonderlijk veld uit een document wilt verwijderen, gebruikt u `merge` en stelt u het veld expliciet in op null. |
 
@@ -71,7 +70,7 @@ De indeling voor POST is hetzelfde, maar met alleen de api-versie in de queryree
 
 
 ## <a name="pulling-data-into-an-index"></a>Gegevens in een index ophalen
-Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens automatisch naar uw index. In Azure Search is deze mogelijkheid geïmplementeerd via *indexeerfuncties*, die momenteel beschikbaar zijn voor de volgende platforms:
+Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens automatisch naar uw index. In azure Cognitive Search is deze mogelijkheid geïmplementeerd via *Indexeer functies*, die momenteel beschikbaar zijn voor deze platformen:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
@@ -81,18 +80,18 @@ Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens autom
 Indexeerfuncties verbinden een index met een gegevensbron (meestal een tabel, weergave of equivalente structuur) en wijzen bronvelden toe aan equivalente velden in de index. Tijdens de uitvoering wordt de rijenset automatisch omgezet naar JSON en in de opgegeven index geladen. Alle indexeerfuncties ondersteunen planning. U kunt dus opgeven hoe vaak de gegevens moeten worden vernieuwd. Met de meeste indexeerfuncties kunt u wijzigingen bijhouden als dit door de gegevensbron wordt ondersteund. Als u naast het herkennen van nieuwe documenten, wijzigingen en verwijderingen in een bestaand document bijhoudt, hoeft u de gegevens in een index via indexeerfuncties niet actief bij te houden. 
 
 
-### <a name="how-to-pull-data-into-an-azure-search-index"></a>Gegevens in een Azure Search-index ophalen
+### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Gegevens ophalen in een Azure Cognitive Search-index
 
 Functionaliteit van de indexeerfunctie wordt weergegeven in [Azure Portal](search-import-data-portal.md), de [REST API](/rest/api/searchservice/Indexer-operations) en de [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions). 
 
-Een voordeel van het gebruik van de portal is dat Azure Search meestal een standaardindexschema voor u kan genereren door de metagegevens van de brongegevensset te lezen. U kunt de gegenereerde index wijzigen totdat de index wordt verwerkt. Daarna zijn alleen schemabewerkingen toegestaan waarvoor de index niet opnieuw gegenereerd hoeft te worden. Als de wijzigingen die u doorvoert, rechtstreeks invloed hebben op het schema, moet u de index opnieuw opbouwen. 
+Een voor deel van het gebruik van de portal is dat Azure Cognitive Search meestal een standaard index schema voor u kan genereren door de meta gegevens van de bron-gegevensset te lezen. U kunt de gegenereerde index wijzigen totdat de index wordt verwerkt. Daarna zijn alleen schemabewerkingen toegestaan waarvoor de index niet opnieuw gegenereerd hoeft te worden. Als de wijzigingen die u doorvoert, rechtstreeks invloed hebben op het schema, moet u de index opnieuw opbouwen. 
 
 ## <a name="verify-data-import-with-search-explorer"></a>Gegevens import controleren met Search Explorer
 
 Een snelle manier om een voor spelling controle uit te voeren op het uploaden van documenten is het gebruik van **Search Explorer** in de portal. Met de explorer kunt u gegevens uit een index opvragen zonder code te schrijven. De zoekervaring is gebaseerd op standaardinstellingen, zoals de [eenvoudige syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) en de standaard-queryparameter [searchMode](/rest/api/searchservice/search-documents). Resultaten worden geretourneerd in JSON, zodat u het hele document kunt inspecteren.
 
 > [!TIP]
-> Tal van [Azure Search-codevoorbeelden](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) bevatten ingesloten of kant-en-klare gegevenssets, zodat u gemakkelijk aan de slag kunt gaan. De portal bevat ook een voorbeeldindexeerfunctie en een gegevensbron, bestaande uit een kleine vastgoedgegevensset ('realestate-us-sample'). Wanneer u de vooraf geconfigureerde Indexeer functie uitvoert op de voorbeeld gegevens bron, wordt er een index gemaakt en geladen met documenten die vervolgens kunnen worden opgevraagd in Search Explorer of door de code die u schrijft.
+> Talloze [Azure Cognitive Search-code voorbeelden](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zijn Inge sloten of gemakkelijk beschik bare gegevens sets, zodat u snel aan de slag kunt gaan. De portal bevat ook een voorbeeldindexeerfunctie en een gegevensbron, bestaande uit een kleine vastgoedgegevensset ('realestate-us-sample'). Wanneer u de vooraf geconfigureerde Indexeer functie uitvoert op de voorbeeld gegevens bron, wordt er een index gemaakt en geladen met documenten die vervolgens kunnen worden opgevraagd in Search Explorer of door de code die u schrijft.
 
 ## <a name="see-also"></a>Zie ook
 

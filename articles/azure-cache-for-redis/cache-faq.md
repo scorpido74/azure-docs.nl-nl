@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315996"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785843"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -73,7 +73,7 @@ De volgende veelgestelde vragen hebben betrekking op basis concepten en vragen o
 * [Prestatie overwegingen rond verbindingen](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Veelgestelde vragen over bewaking en probleem oplossing
-In deze sectie vindt u veelgestelde vragen over veelvoorkomende controles en oplossingen voor probleem oplossing. Zie voor meer informatie over het controleren en oplossen van problemen met uw Azure-cache voor redis-instanties [Azure cache bewaken voor redis](cache-how-to-monitor.md) en [het oplossen van problemen met Azure cache voor redis](cache-how-to-troubleshoot.md).
+In deze sectie vindt u veelgestelde vragen over veelvoorkomende controles en oplossingen voor probleem oplossing. Zie voor meer informatie over het controleren en oplossen van problemen met uw Azure-cache voor redis-instanties [Azure cache bewaken voor redis](cache-how-to-monitor.md) en de verschillende richt lijnen voor probleem oplossing.
 
 * [Hoe kan ik de status en prestaties van mijn cache controleren?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [Waarom kan ik time-outs bekijken?](#why-am-i-seeing-timeouts)
@@ -104,23 +104,23 @@ Elke Azure-cache voor redis biedt verschillende opties voor **grootte**, **band 
 
 Hier volgen enkele aandachtspunten voor het kiezen van een cache aanbieding.
 
-* **Geheugen**: De lagen Basic en Standard bieden 250 MB – 53 GB. De Premium-laag biedt tot 1,2 TB (als een cluster) of 120 GB (niet-geclusterd). Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
-* **Netwerk prestaties**: Als u een werk belasting hebt waarvoor hoge door Voer is vereist, biedt de Premium-laag meer band breedte dan Standard of Basic. Daarnaast hebben grotere caches in elke laag meer band breedte vanwege de onderliggende virtuele machine die als host fungeert voor de cache. Zie de [volgende tabel](#cache-performance)voor meer informatie.
-* **Door Voer**: De Premium-laag biedt de Maxi maal beschik bare door voer. Als de cache server of client de bandbreedte limiet bereikt, ontvangt u mogelijk time-outs aan de client zijde. Zie de volgende tabel voor meer informatie.
+* **Geheugen**: de lagen basis en standaard bieden 250 MB – 53 GB. De Premium-laag biedt tot 1,2 TB (als een cluster) of 120 GB (niet-geclusterd). Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
+* **Netwerk prestaties**: als u een werk belasting hebt waarvoor hoge door Voer is vereist, biedt de Premium-laag meer band breedte dan Standard of Basic. Daarnaast hebben grotere caches in elke laag meer band breedte vanwege de onderliggende virtuele machine die als host fungeert voor de cache. Zie de [volgende tabel](#cache-performance)voor meer informatie.
+* **Door Voer**: de Premium-laag biedt de Maxi maal beschik bare door voer. Als de cache server of client de bandbreedte limiet bereikt, ontvangt u mogelijk time-outs aan de client zijde. Zie de volgende tabel voor meer informatie.
 * **Hoge Beschik baarheid/Sla**: Azure cache voor redis garandeert dat een Standard/Premium-cache ten minste 99,9% van de tijd beschikbaar is. Zie voor meer informatie over onze SLA [Azure cache for redis prijzen](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eind punten. De SLA heeft geen betrekking op beveiliging tegen verlies van gegevens. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten.
-* **Redis gegevens persistentie**: Met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infra structuur kunnen leiden tot mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure-cache voor redis biedt de opties RDB en AOF (binnenkort beschikbaar) in redis-persistentie. Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
-* **Redis-cluster**: Als u caches wilt maken die groter zijn dan 120 GB of als u gegevens wilt Shard op meerdere redis-knoop punten, kunt u redis clustering gebruiken, die beschikbaar is in de laag Premium. Elk knoop punt bestaat uit een primair/replica-cache paar voor maximale Beschik baarheid. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
-* **Verbeterde beveiliging en netwerk isolatie**: De implementatie van Azure Virtual Network (VNET) biedt verbeterde beveiliging en isolatie voor uw Azure-cache voor redis, evenals subnetten, Toegangs beheer beleid en andere functies om de toegang verder te beperken. Zie [Virtual Network-ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie.
-* **Redis configureren**: In zowel de Standard-als de Premium-laag kunt u redis voor de meldingen van de primaire ruimte configureren.
-* **Maximum aantal client verbindingen**: De Premium-laag biedt het maximum aantal clients dat verbinding kan maken met redis, met een groter aantal verbindingen voor grotere caches. Bij clustering wordt het aantal beschik bare verbindingen voor een geclusterde cache niet verhoogd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
-* **Toegewezen kern geheugen voor redis-server**: In de laag Premium hebben alle cache grootten een toegewezen kern voor redis. In de lagen basis en standaard hebben de C1-grootte en het bovenstaande een toegewezen kern voor redis-server.
+* **Redis-gegevens persistentie**: met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infra structuur kunnen leiden tot mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure-cache voor redis biedt de opties RDB en AOF (binnenkort beschikbaar) in redis-persistentie. Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
+* **Redis-cluster**: als u caches wilt maken die groter zijn dan 120 GB of als u gegevens wilt Shard tussen meerdere redis-knoop punten, kunt u redis clustering gebruiken, die beschikbaar is in de laag Premium. Elk knoop punt bestaat uit een primair/replica-cache paar voor maximale Beschik baarheid. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
+* **Verbeterde beveiliging en netwerk isolatie**: Azure Virtual Network (VNET)-implementatie biedt verbeterde beveiliging en isolatie voor uw Azure-cache voor redis, evenals subnetten, beleid voor toegangs beheer en andere functies om de toegang verder te beperken. Zie [Virtual Network-ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie.
+* **Redis configureren**: in de standaard-en Premium-laag kunt u redis configureren voor de meldingen van de opdracht regel.
+* **Maximum aantal client verbindingen**: de Premium-laag biedt het maximum aantal clients dat verbinding kan maken met redis, met een groter aantal verbindingen voor grotere caches. Bij clustering wordt het aantal beschik bare verbindingen voor een geclusterde cache niet verhoogd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
+* **Toegewezen kern geheugen voor redis-server**: in de Premium-laag zijn alle cache grootten een toegewezen kern voor redis. In de lagen basis en standaard hebben de C1-grootte en het bovenstaande een toegewezen kern voor redis-server.
 * **Redis is een enkele thread** , waardoor meer dan twee kernen geen extra voor deel bieden ten opzichte van twee kernen, maar grotere VM-grootten hebben meestal meer band breedte dan kleinere grootten. Als de cache server of-client de bandbreedte limiet bereikt, ontvangt u time-outs aan de client zijde.
-* **Prestatie verbeteringen**: Caches in de Premium-laag worden geïmplementeerd op hardware met snellere processors, waardoor betere prestaties in vergelijking met de basis-of standaard-laag worden verbeterd. Premium-laag caches hebben een hogere door Voer en een lagere latentie.
+* **Prestatie verbeteringen**: caches in de Premium-laag worden geïmplementeerd op hardware met snellere processors, waardoor betere prestaties in vergelijking met de basis-of standaard-laag worden verbeterd. Premium-laag caches hebben een hogere door Voer en een lagere latentie.
 
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure cache voor redis-prestaties
-De volgende tabel bevat de maximum waarden voor de band breedte tijdens het testen van verschillende groottes van de `redis-benchmark.exe` standaard-en Premium-caches met behulp van een IaaS-VM op basis van de Azure-cache voor redis-eind punt. Voor SSL-door Voer wordt redis-Bench Mark gebruikt met stunnel om verbinding te maken met het Azure-cache geheugen voor redis-eind punten.
+De volgende tabel bevat de maximum waarden voor de band breedte die zijn waargenomen tijdens het testen van verschillende groottes van de standaard-en Premium-caches met `redis-benchmark.exe` van een IaaS-VM met de Azure-cache voor redis-eind punt. Voor SSL-door Voer wordt redis-Bench Mark gebruikt met stunnel om verbinding te maken met het Azure-cache geheugen voor redis-eind punten.
 
 >[!NOTE] 
 >Deze waarden zijn niet gegarandeerd en er is geen SLA voor deze getallen, maar het moet gebruikelijk zijn. U moet de test uw eigen toepassing laden om de juiste cache grootte voor uw toepassing te bepalen.
@@ -133,24 +133,24 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 * Met redis clustering neemt de door Voer lineair toe als u het aantal Shards (knoop punten) in het cluster verhoogt. Als u bijvoorbeeld een P4-cluster van 10 Shards maakt, is de beschik bare door Voer 400.000 * 10 = 4.000.000 RPS.
 * De door Voer voor grotere sleutel grootten is hoger in de Premium-laag, vergeleken met de Standard-laag.
 
-| Prijscategorie | Size | CPU-kernen | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
+| Prijscategorie | Grootte | Cpu-cores | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
 | --- | --- | --- | --- | --- | --- |
 | **Standaard cache grootten** | | |**Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aantal aanvragen per seconde (RPS) niet-SSL** |**SSL-aanvragen per seconde (RPS)** |
-| C0 | 250 MB | Gedeeld | 100 / 12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 1      | 500 / 62.5  |  38.000 |  20.720 |
-| C2 | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1000/125  | 100,000 |  90,000 |
-| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55.000 |
-| C5 |  26 GB | 4      | 1,000 / 125 | 102.000 |  93.000 |
-| C6 |  53 GB | 8      | 2,000 / 250 | 126.000 | 120,000 |
+| C0 | 250 MB | Gedeeld | 100/12,5  |  15.000 |   7\.500 |
+| C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
+| C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
+| C3 |   6 GB | 4      | 1000/125  | 100.000 |  90.000 |
+| C4 |  13 GB | 2      | 500/62,5  |  60.000 |  55.000 |
+| C5 |  26 GB | 4      | 1\.000/125 | 102.000 |  93.000 |
+| C6 |  53 GB | 8      | 2\.000/250 | 126.000 | 120.000 |
 | **Premium-cache grootten** | |**CPU-kernen per Shard** | **Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aanvragen per seconde (RPS) niet-SSL, per Shard** |**SSL-aanvragen per seconde (RPS) per Shard** |
-| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172.000 |
-| P2 |  13 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
-| P3 |  26 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
-| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373.000 |
-| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373.000 |
+| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
+| P2 |  13 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P3 |  26 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P4 |  53 GB |  8 | 6\.000/750   | 400,000 | 373.000 |
+| P5 | 120 GB | 20 | 6\.000/750   | 400,000 | 373.000 |
 
-Voor instructies voor het instellen van stunnel of het downloaden van de redis `redis-benchmark.exe`-hulpprogram ma's, zoals, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
+Voor instructies voor het instellen van stunnel of het downloaden van de redis-hulpprogram ma's, zoals `redis-benchmark.exe`, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
 <a name="cache-region"></a>
 
@@ -167,10 +167,10 @@ Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China
 
 | Cloud   | DNS-achtervoegsel voor redis            |
 |---------|---------------------------------|
-| Public  | *.redis.cache.windows.net       |
-| VS (overheid)  | *.redis.cache.usgovcloudapi.net |
-| Duitsland | *.redis.cache.cloudapi.de       |
-| China   | *.redis.cache.chinacloudapi.cn  |
+| Public  | *. redis.cache.windows.net       |
+| Amerikaanse overheid  | *. redis.cache.usgovcloudapi.net |
+| Duitsland | *. redis.cache.cloudapi.de       |
+| China   | *. redis.cache.chinacloudapi.cn  |
 
 Zie de volgende koppelingen voor meer informatie over overwegingen bij het gebruik van Azure cache voor redis met andere Clouds.
 
@@ -178,14 +178,14 @@ Zie de volgende koppelingen voor meer informatie over overwegingen bij het gebru
 - [Azure China 21Vianet Cloud-Azure cache voor redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)
 
-Zie [verbinding maken met andere Clouds-Azure cache voor redis Power shell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)voor meer informatie over het gebruik van Azure cache voor redis met Power shell in azure Government Cloud, Azure China 21Vianet-cloud en Microsoft Azure Duitsland.
+Zie [verbinding maken met andere Clouds-Azure cache voor redis Power shell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)voor meer informatie over het gebruik van Azure cache voor redis met Power shell in azure Government Cloud, Azure China 21Vianet-cloud en Microsoft Azure Duitsland.
 
 <a name="cache-configuration"></a>
 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Wat doen de configuratie opties voor stack Exchange. redis?
 Stack Exchange. redis heeft veel opties. In deze sectie vindt u enkele van de algemene instellingen. Zie [stack Exchange. redis-configuratie](https://stackexchange.github.io/StackExchange.Redis/Configuration)voor meer gedetailleerde informatie over de opties voor stack Exchange. redis.
 
-| ConfigurationOptions | Description | Aanbeveling |
+| ConfigurationOptions | Beschrijving | Aanbeveling |
 | --- | --- | --- |
 | AbortOnConnectFail |Als deze eigenschap is ingesteld op True, wordt er geen verbinding gemaakt na een netwerk fout. |Stel deze waarde in op False en laat stack Exchange. redis automatisch opnieuw verbinding maken. |
 | ConnectRetry |Het aantal keren dat verbindings pogingen moeten worden herhaald tijdens de eerste verbinding. |Raadpleeg de volgende opmerkingen voor hulp. |
@@ -197,18 +197,19 @@ Meestal zijn de standaard waarden van de client voldoende. U kunt de opties aanp
   * De algemene richt lijnen voor ConnectRetry en ConnectTimeout zijn snel en opnieuw proberen. Deze richt lijnen zijn gebaseerd op uw werk belasting en hoe lang het duurt voordat uw client een redis-opdracht verzendt en een antwoord ontvangt.
   * Laat stack Exchange. redis automatisch opnieuw verbinding maken in plaats van de verbindings status te controleren en zelf verbinding te maken. **Vermijd het gebruik van de eigenschap ConnectionMultiplexer. IsConnected**.
   * Snowballing: soms is het mogelijk dat u een probleem ondervindt waarbij u het opnieuw probeert en de nieuwe pogingen Snowball en nooit herstellen. Als snowballing zich voordoet, kunt u het beste een exponentiële uitstel-algoritme gebruiken, zoals beschreven in [algemene richt lijnen voor opnieuw proberen](../best-practices-retry-general.md) die worden gepubliceerd door de micro soft-patronen & practices-groep.
+  
 * **Time-outwaarden**
   * Denk aan uw werk belasting en stel de waarden dienovereenkomstig in. Als u grote waarden opslaat, stelt u de time-out in op een hogere waarde.
-  * Stel `AbortOnConnectFail` deze waarde in op False en laat stack Exchange. redis opnieuw verbinding maken.
+  * Stel `AbortOnConnectFail` in op False en laat stack Exchange. redis opnieuw verbinding maken.
   * Gebruik één ConnectionMultiplexer-exemplaar voor de toepassing. U kunt een LazyConnection gebruiken om één exemplaar te maken dat wordt geretourneerd door een eigenschap Connection, zoals wordt weer gegeven in [verbinding maken met de cache met behulp van de klasse ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-  * Stel de `ConnectionMultiplexer.ClientName` eigenschap in op een unieke naam voor het app-exemplaar voor diagnostische doel einden.
+  * Stel de eigenschap `ConnectionMultiplexer.ClientName` in op de unieke naam van een app-exemplaar voor diagnostische doel einden.
   * Gebruik meerdere `ConnectionMultiplexer` instanties voor aangepaste werk belastingen.
       * U kunt dit model volgen als uw toepassing variërend wordt geladen. Bijvoorbeeld:
       * U kunt één multiplexer voor het omgaan met grote sleutels.
       * U kunt één multiplexer voor het omgaan met kleine sleutels hebben.
       * U kunt verschillende waarden instellen voor verbindingstime-outs en pogings logica voor elke ConnectionMultiplexer die u gebruikt.
-      * Stel de `ClientName` eigenschap in op elke multiplexer om te helpen met diagnostische gegevens.
-      * Deze richt lijnen kunnen leiden tot meer gestroomlijnde `ConnectionMultiplexer`latentie per.
+      * Stel de eigenschap `ClientName` van elke multiplexer in om te helpen met diagnostische gegevens.
+      * Deze richt lijnen kunnen leiden tot meer gestroomlijnde latentie per `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Welke Azure-cache voor redis-clients kan ik gebruiken?
 Een van de fantastische dingen over redis is dat er veel clients zijn die veel verschillende ontwikkelings talen ondersteunen. Zie [redis-clients](https://redis.io/clients)voor een actuele lijst met clients. Zie [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en de artikelen in de inhouds opgave voor meer zelf studies over verschillende talen en clients.
@@ -247,11 +248,11 @@ U kunt elk van de opdrachten die worden weer gegeven op [redis opdrachten](https
 * Als u een Standard-of Premium-cache hebt, kunt u redis-opdrachten uitvoeren met behulp van de [redis-console](cache-configure.md#redis-console). De redis-console biedt een veilige manier om redis-opdrachten uit te voeren in de Azure Portal.
 * U kunt ook de redis-opdracht regel Programma's gebruiken. Als u deze wilt gebruiken, voert u de volgende stappen uit:
 * Down load de [redis-opdracht regel Programma's](https://github.com/MSOpenTech/redis/releases/).
-* Verbinding maken met de cache `redis-cli.exe`met behulp van. Pass het cache-eind punt met behulp van de-h-switch en de sleutel met-a zoals wordt weer gegeven in het volgende voor beeld:
+* Maak verbinding met de cache met behulp van `redis-cli.exe`. Pass het cache-eind punt met behulp van de-h-switch en de sleutel met-a zoals wordt weer gegeven in het volgende voor beeld:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> De opdracht regel Programma's voor redis werken niet met de SSL-poort, maar u kunt een hulp programma `stunnel` gebruiken om de hulpprogram ma's veilig te verbinden met de SSL-poort door de instructies in het [opdracht regel programma redis te gebruiken met Azure cache for redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) artikel .
+> De opdracht regel Programma's voor redis werken niet met de SSL-poort, maar u kunt een hulp programma zoals `stunnel` gebruiken om veilig verbinding te maken met de hulpprogram ma's met de SSL-poort door de instructies te volgen in het [opdracht regel programma redis gebruiken met Azure cache for redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) .
 >
 >
 
@@ -263,14 +264,14 @@ Microsoft Azure Cache voor Redis is gebaseerd op de populaire open source Azure 
 Omdat elke client verschilt, is er niet één gecentraliseerde klassen verwijzing op MSDN en houdt elke client zijn eigen referentie documentatie bij. Naast de referentie documentatie zijn er verschillende zelf studies die laten zien hoe u aan de slag gaat met Azure cache voor redis met behulp van verschillende talen en cache-clients. Voor toegang tot deze zelf studies raadpleegt u [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en de artikelen in de inhouds opgave op hetzelfde niveau.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Kan ik Azure cache gebruiken voor redis als een PHP-sessie cache?
-Ja, als u Azure cache voor redis wilt gebruiken als een PHP-sessie cache, geeft u de connection string op voor uw Azure `session.save_path`-cache voor redis-instantie in.
+Ja, als u Azure cache voor redis wilt gebruiken als een PHP-sessie cache, geeft u de connection string op in uw Azure-cache voor redis-exemplaar in `session.save_path`.
 
 > [!IMPORTANT]
 > Wanneer u Azure cache gebruikt voor redis als een PHP-sessie cache, moet u de URL coderen die wordt gebruikt om verbinding te maken met de cache, zoals wordt weer gegeven in het volgende voor beeld:
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Als de sleutel geen URL-code ring heeft, ontvangt u mogelijk een uitzonde ring met een bericht zoals:`Failed to parse session.save_path`
+> Als de sleutel geen URL-code ring heeft, ontvangt u mogelijk een uitzonde ring met een bericht als: `Failed to parse session.save_path`
 >
 >
 
@@ -296,7 +297,7 @@ Redis server biedt geen systeem eigen ondersteuning voor SSL, maar Azure cache v
 >
 >
 
-Redis-hulpprogram ma's `redis-cli` zoals niet werken met de SSL-poort, maar u kunt een hulp programma `stunnel` gebruiken om de hulpprogram ma's veilig te verbinden met de SSL-poort door de instructies te volgen in de aankondiging van de [ASP.net-sessie status provider voor redis preview-release ](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blog bericht.
+Redis-hulpprogram ma's zoals `redis-cli` werken niet met de SSL-poort, maar u kunt een hulp programma zoals `stunnel` gebruiken om een beveiligde verbinding te maken tussen de hulpprogram ma's en de SSL-poort door de aanwijzingen in de aankondiging van de [ASP.net-sessie status provider voor redis preview-versie](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) te volgen. Verzenden.
 
 Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
@@ -306,12 +307,12 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 * [Prestaties testen](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>Best practices voor stack Exchange. redis
-* Stel `AbortConnect` deze waarde in op False en laat de ConnectionMultiplexer automatisch opnieuw verbinding maken. [Zie hier voor meer informatie](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Stel `AbortConnect` in op False en laat de ConnectionMultiplexer automatisch opnieuw verbinding maken. [Zie hier voor meer informatie](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
 * De ConnectionMultiplexer opnieuw gebruiken: Maak geen nieuwe voor elke aanvraag. Het `Lazy<ConnectionMultiplexer>` patroon dat [hier wordt weer gegeven](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) , wordt aanbevolen.
 * Redis werkt het beste met kleinere waarden. u kunt dus grotere gegevens in meerdere sleutels afzetten. In [deze redis-discussie](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)wordt 100 kB als groot beschouwd. Lees [dit artikel](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) voor een voor beeld van een probleem dat kan worden veroorzaakt door grote waarden.
 * Configureer de [instellingen van uw thread pool](#important-details-about-threadpool-growth) om time-outs te voor komen.
 * Gebruik ten minste de standaard connectTimeout van 5 seconden. Dit interval geeft stack Exchange. redis voldoende tijd om de verbinding te herstellen in het geval van een netwerk Blip.
-* Houd rekening met de prestatie kosten die zijn gekoppeld aan de verschillende bewerkingen die u uitvoert. De `KEYS` opdracht is bijvoorbeeld een O (n) bewerking en moet worden vermeden. De [redis.io-site](https://redis.io/commands/) bevat details over de tijd complexiteit voor elke bewerking die wordt ondersteund. Klik op elke opdracht om de complexiteit van elke bewerking weer te geven.
+* Houd rekening met de prestatie kosten die zijn gekoppeld aan de verschillende bewerkingen die u uitvoert. Zo is de `KEYS` opdracht een O (n)-bewerking en moet worden vermeden. De [redis.io-site](https://redis.io/commands/) bevat details over de tijd complexiteit voor elke bewerking die wordt ondersteund. Klik op elke opdracht om de complexiteit van elke bewerking weer te geven.
 
 #### <a name="configuration-and-concepts"></a>Configuratie en concepten
 * Gebruik de standaard-of Premium-laag voor productie systemen. De laag basis is een systeem met één knoop punt zonder gegevens replicatie en geen SLA. Gebruik ook ten minste een C1-cache. C0-caches worden doorgaans gebruikt voor eenvoudige ontwikkel-en test scenario's.
@@ -319,7 +320,7 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 * Ontwikkel uw systeem zodat het verbinding problemen kan verwerken [vanwege patches en failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Prestaties testen
-* Begin met `redis-benchmark.exe` om een mogelijke door voer te krijgen voordat u uw eigen prestatie tests schrijft. Omdat `redis-benchmark` SSL niet wordt ondersteund, moet u [de niet-SSL-poort inschakelen via de Azure Portal](cache-configure.md#access-ports) voordat u de test uitvoert. Zie [Hoe kan ik Bench Mark en de prestaties van mijn cache testen](#how-can-i-benchmark-and-test-the-performance-of-my-cache) voor voor beelden.
+* Begin met `redis-benchmark.exe` om een mogelijke door voer te krijgen voordat u uw eigen prestatie tests schrijft. Omdat `redis-benchmark` geen ondersteuning biedt voor SSL, moet u [de niet-SSL-poort via de Azure Portal inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert. Zie [Hoe kan ik Bench Mark en de prestaties van mijn cache testen](#how-can-i-benchmark-and-test-the-performance-of-my-cache) voor voor beelden.
 * De client-VM die wordt gebruikt voor het testen moet zich in dezelfde regio bevinden als uw Azure-cache voor redis-exemplaar.
 * We raden u aan om een dv2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten moeten bieden.
 * Zorg ervoor dat uw client-VM die u kiest, ten minste zoveel computer-en bandbreedte capaciteit heeft als de cache die u wilt testen.
@@ -350,7 +351,7 @@ De volgende opdrachten bieden een voor beeld van het gebruik van redis-benchmark
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * Test aanvragen voor het ophalen van pijp lijnen met een payload van 1 KB.
-  OPMERKING: Voer eerst de SET-test hierboven uit om de cache te vullen
+  Opmerking: Voer de SET-test hierboven eerst uit om de cache in te vullen
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
@@ -359,7 +360,7 @@ De volgende opdrachten bieden een voor beeld van het gebruik van redis-benchmark
 ### <a name="important-details-about-threadpool-growth"></a>Belang rijke informatie over de groei van de thread pool
 De CLR-thread pool heeft twee soorten threads: "worker" en "I/O-voltooiings poort" (IOCP).
 
-* Worker-threads worden gebruikt voor zaken zoals `Task.Run(…)`het verwerken `ThreadPool.QueueUserWorkItem(…)` van de-of-methoden. Deze threads worden ook gebruikt door verschillende onderdelen in de CLR wanneer het werk moet plaatsvinden op een achtergrond thread.
+* Werk threads worden gebruikt voor zaken als het verwerken van de `Task.Run(…)`-of `ThreadPool.QueueUserWorkItem(…)`-methoden. Deze threads worden ook gebruikt door verschillende onderdelen in de CLR wanneer het werk moet plaatsvinden op een achtergrond thread.
 * IOCP-threads worden gebruikt wanneer asynchrone IO plaatsvindt, bijvoorbeeld bij het lezen van het netwerk.
 
 De thread pool biedt nieuwe werkthreads of I/O-voltooiings threads op aanvraag (zonder enige beperking) totdat de instelling ' minimum ' voor elk type thread wordt bereikt. Standaard is het minimum aantal threads ingesteld op het aantal processors op een systeem.
@@ -405,10 +406,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)** .
 
-* Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de configuratie-instelling `<processModel>` [ *minIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het configuratie- `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` element in `Machine.config`, meestal bevindt zich op . **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
+* Het is ook mogelijk om de instelling van het minimale aantal threads op te geven met behulp van de [configuratie-instelling *MinIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het element `<processModel>` configuratie in `Machine.config`, meestal bevindt zich op `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
 
   > [!NOTE]
-  > De waarde die is opgegeven in dit configuratie-element is een instelling *per kern* . Als u bijvoorbeeld een computer met vier kernen hebt en u wilt dat uw *minIoThreads* -instelling 200 tijdens runtime, gebruikt `<processModel minIoThreads="50"/>`u.
+  > De waarde die is opgegeven in dit configuratie-element is een instelling *per kern* . Als u bijvoorbeeld een computer met vier kernen hebt en u wilt dat uw *minIoThreads* -instelling 200 tijdens runtime, gebruikt u `<processModel minIoThreads="50"/>`.
   >
 
 <a name="server-gc"></a>
@@ -443,7 +444,7 @@ Met deze hulpprogram ma's kunt u de status van uw Azure-cache bewaken voor redis
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>Waarom kan ik time-outs bekijken?
-Time-outs doen zich voor op de client die u gebruikt om te praten met redis. Wanneer een opdracht wordt verzonden naar de redis-server, wordt de opdracht in de wachtrij geplaatst en wordt de redis-server uiteindelijk de opdracht verzameld en wordt deze uitgevoerd. De client kan echter een time-out hebben tijdens dit proces en als er een uitzonde ring optreedt op de aanroepende zijde. Zie [problemen met](cache-how-to-troubleshoot.md#client-side-troubleshooting) de time-out op de client en [stack Exchange. redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)voor meer informatie over het oplossen van problemen met time-outs.
+Time-outs doen zich voor op de client die u gebruikt om te praten met redis. Wanneer een opdracht wordt verzonden naar de redis-server, wordt de opdracht in de wachtrij geplaatst en wordt de redis-server uiteindelijk de opdracht verzameld en wordt deze uitgevoerd. De client kan echter een time-out hebben tijdens dit proces en als er een uitzonde ring optreedt op de aanroepende zijde. Zie [problemen met](cache-troubleshoot-client.md) de time-out op de client en [stack Exchange. redis](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)voor meer informatie over het oplossen van problemen met time-outs.
 
 <a name="cache-disconnect"></a>
 

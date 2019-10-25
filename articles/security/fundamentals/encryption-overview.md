@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003943"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804038"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -51,15 +51,15 @@ Met versleuteling aan de client zijde hebben Cloud serviceproviders geen toegang
 
 De drie versleutelings modellen aan de server zijde bieden verschillende kenmerken voor sleutel beheer, die u op basis van uw vereisten kunt kiezen:
 
-- Door **service beheerde sleutels**: Biedt een combi natie van controle en gebruiks gemak met lage overhead.
+- Door **service beheerde sleutels**: biedt een combi natie van beheer en gebruiks gemak met lage overhead.
 
-- Door de **klant beheerde sleutels**: Biedt u de controle over de sleutels, waaronder het meenemen van uw eigen sleutels (BYOK), of u kunt nieuwe bestanden genereren.
+- Door de **klant beheerde sleutels**: geeft u de controle over de sleutels, waaronder het meebrengen van uw eigen sleutels (BYOK), of u kunt er nieuwe toevoegen.
 
-- Door **service beheerde sleutels in door de klant beheerde hardware**: Hiermee kunt u sleutels beheren in uw eigen opslag plaats, buiten micro soft Control. Dit kenmerk wordt een host uw eigen sleutel (HYOK) genoemd. Configuratie is echter complex en de meeste Azure-Services bieden geen ondersteuning voor dit model.
+- Door **service beheerde sleutels in door de klant beheerde hardware**: Hiermee kunt u sleutels in uw eigen opslag plaats beheren, buiten micro soft Control. Dit kenmerk wordt een host uw eigen sleutel (HYOK) genoemd. Configuratie is echter complex en de meeste Azure-Services bieden geen ondersteuning voor dit model.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk Encryption](/azure/security/azure-security-disk-encryption), die gebruikmaakt van [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) -technologie en Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) om zowel de besturingssysteem schijven als gegevens schijven te beveiligen met volledige versleuteling van het volume.
+U kunt virtuele Windows-en Linux-machines beveiligen met behulp van [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), die gebruikmaakt van [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) -technologie en Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) om zowel de besturingssysteem schijven als gegevens schijven te beveiligen met volledige versleuteling van het volume.
 
 Versleutelings sleutels en geheimen worden beveiligd in uw [Azure Key Vault-abonnement](../../key-vault/key-vault-overview.md). Met de Azure Backup-Service kunt u back-ups maken en terugzetten van versleutelde virtuele machines (Vm's) die gebruikmaken van de KEK-configuratie (Key Encryption Key).
 
@@ -79,7 +79,7 @@ Zie [Windows Azure Storage 8.3.0](https://www.nuget.org/packages/WindowsAzure.St
 
 Wanneer u versleuteling aan de client zijde gebruikt met Key Vault, worden uw gegevens versleuteld met een eenmalige symmetrische inhouds versleutelings sleutel (CEK) die wordt gegenereerd door de Azure Storage client-SDK. De CEK wordt versleuteld met een sleutel versleutelings sleutel (KEK), die een symmetrische sleutel of een asymmetrisch sleutel paar kan zijn. U kunt het lokaal beheren of opslaan in Key Vault. De versleutelde gegevens worden vervolgens geüpload naar Azure Storage.
 
-Zie [zelf studie voor meer informatie over versleuteling aan de client zijde met Key Vault en aan de slag met instructies. Versleutelen en ontsleutelen blobs in](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)Azure Storage met behulp van Key Vault.
+Zie [zelf studie: Azure Storage blobs versleutelen en ontsleutelen met behulp van Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)voor meer informatie over versleuteling aan de client zijde met Key Vault en aan de slag met instructies.
 
 Ten slotte kunt u ook de Azure Storage-client bibliotheek voor Java gebruiken om versleuteling aan de client zijde uit te voeren voordat u gegevens uploadt naar Azure Storage en om de gegevens te ontsleutelen wanneer u deze naar de client downloadt. Deze bibliotheek ondersteunt ook integratie met [Key Vault](https://azure.microsoft.com/services/key-vault/) voor sleutel beheer van het opslag account.
 
@@ -105,7 +105,7 @@ CLE heeft ingebouwde functies die u kunt gebruiken voor het versleutelen van geg
 
 ### <a name="cosmos-db-database-encryption"></a>Database versleuteling Cosmos DB
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) is de wereld wijd gedistribueerde, multi-model data base van micro soft. Gebruikers gegevens die zijn opgeslagen in Cosmos DB in niet-vluchtige opslag (Solid-state drives) worden standaard versleuteld. Er zijn geen besturings elementen om deze in of uit te scha kelen. Versleuteling-at-rest wordt geïmplementeerd met behulp van diverse beveiligingstechnologieën, met inbegrip van beveiligde opslag van clustersleutels systemen, versleutelde netwerken en cryptografische API's. Versleutelings sleutels worden beheerd door micro soft en worden geroteerd volgens de interne richt lijnen van micro soft.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) is de wereld wijd gedistribueerde, multi-model data base van micro soft. Gebruikers gegevens die zijn opgeslagen in Cosmos DB in niet-vluchtige opslag (Solid-state drives) worden standaard versleuteld. Er zijn geen besturings elementen om deze in of uit te scha kelen. Versleuteling op rest wordt geïmplementeerd met behulp van een aantal beveiligings technologieën, waaronder systemen voor beveiligde sleutel opslag, versleutelde netwerken en cryptografische Api's. Versleutelings sleutels worden beheerd door micro soft en worden geroteerd volgens de interne richt lijnen van micro soft.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>At-rest-versleuteling in Data Lake
 
@@ -173,7 +173,7 @@ Zie voor meer informatie over punt-naar-site-VPN-verbindingen met virtuele Azure
 
 [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van certificerings verificatie: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
-[Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van verificatie via certificaat: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+[Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van certificaat verificatie: Power shell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="site-to-site-vpns"></a>Site-naar-site-Vpn's 
 

@@ -1,30 +1,29 @@
 ---
-title: 'REST zelf studie: Semi-strutured gegevens in JSON-blobs indexeren-Azure Search'
-description: Meer informatie over het indexeren en doorzoeken van semi-gestructureerde Azure JSON-blobs met Azure Search REST Api's en postman.
-author: HeidiSteen
+title: 'REST zelf studie: semi-strutured gegevens in JSON-blobs indexeren'
+titleSuffix: Azure Cognitive Search
+description: Meer informatie over het indexeren en doorzoeken van semi-gestructureerde Azure JSON-blobs met behulp van Azure Cognitive Search REST Api's en postman.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: cb9c97efd62a56ad0eac49956f11fb422a448194
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 569289a2d750f96423bd03ac82cb9e33f893ee15
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647862"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794291"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST zelf studie: Semi-gestructureerde gegevens (JSON-blobs) indexeren en doorzoeken in Azure Search
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search
 
-Azure Search kunt JSON-documenten en-matrices indexeren in Azure Blob-opslag met behulp van een [Indexeer functie](search-indexer-overview.md) die het lezen van semi-gestructureerde gegevens kent. Semi-gestructureerde gegevens bevatten labels of markeringen die inhoud in de gegevens scheiden. Het verschil tussen ongestructureerde gegevens, dat volledig kan worden geïndexeerd, en formeel gestructureerde gegevens die voldoen aan een gegevens model, zoals een relationeel database schema, wordt gesplitst, dat per veld kan worden geïndexeerd.
+Azure Cognitive Search kan JSON-documenten en-matrices indexeren in Azure Blob-opslag met behulp van een [Indexeer functie](search-indexer-overview.md) die het lezen van semi-gestructureerde gegevens kent. Semi-gestructureerde gegevens bevatten labels of markeringen die inhoud in de gegevens scheiden. Het verschil tussen ongestructureerde gegevens, dat volledig kan worden geïndexeerd, en formeel gestructureerde gegevens die voldoen aan een gegevens model, zoals een relationeel database schema, wordt gesplitst, dat per veld kan worden geïndexeerd.
 
-In deze zelf studie gebruikt u de [Azure Search rest-api's](https://docs.microsoft.com/rest/api/searchservice/) en een rest-client om de volgende taken uit te voeren:
+In deze zelf studie gebruikt u de [Azure COGNITIVE Search rest api's](https://docs.microsoft.com/rest/api/searchservice/) en een rest-client om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * Een Azure Search-gegevensbron configureren voor een Azure-blobcontainer
-> * Een Azure Search index maken die Doorzoek bare inhoud bevat
+> * Een Azure Cognitive Search-gegevens bron configureren voor een Azure Blob-container
+> * Een Azure Cognitive Search-index maken die Doorzoek bare inhoud bevat
 > * Een Indexeer functie configureren en uitvoeren om de container te lezen en Doorzoek bare inhoud uit Azure Blob-opslag te halen
 > * De index doorzoeken die u zojuist hebt gemaakt
 
@@ -32,21 +31,21 @@ In deze zelf studie gebruikt u de [Azure Search rest-api's](https://docs.microso
 
 De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start. 
 
-[Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service. 
+[Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service. 
 
 [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens.
 
-[Postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Search.
+[Postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Cognitive Search.
 
 [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) bevat de gegevens die in deze zelf studie worden gebruikt. Down load en pak dit bestand uit naar een eigen map. De gegevens zijn afkomstig uit [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), GECONVERTEERD naar JSON voor deze zelf studie.
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
 ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
@@ -54,7 +53,7 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
 
 ## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
 
@@ -70,7 +69,7 @@ Nadat de upload is voltooid, worden de bestanden weergegeven in hun eigen submap
 
 ## <a name="set-up-postman"></a>Postman instellen
 
-Start Postman en stel een HTTP-aanvraag in. Als u niet bekend bent met dit hulp programma, raadpleegt u [Azure Search rest-Api's verkennen met behulp van Postman](search-get-started-postman.md).
+Start Postman en stel een HTTP-aanvraag in. Als u niet bekend bent met dit hulp programma, raadpleegt u [Azure COGNITIVE Search rest-Api's verkennen met behulp van Postman](search-get-started-postman.md).
 
 De aanvraag methode voor elke aanroep in deze zelf studie is **post**. De headersleutels zijn 'Content-type' en 'api-key'. De waarden van de headersleutels zijn respectievelijk 'application/json' en 'admin key' (admin key is een tijdelijke aanduiding voor de primaire sleutel van uw zoekopdracht). In de hoofdtekst plaatst u de werkelijke inhoud van uw aanroep. Afhankelijk van de client die u gebruikt, kunnen er enkele variaties zijn op de manier waarop u uw query samenstelt, maar dit zijn de basisprincipes.
 
@@ -78,13 +77,13 @@ De aanvraag methode voor elke aanroep in deze zelf studie is **post**. De header
 
 We gebruiken Postman om drie API-aanroepen te doen naar uw zoekservice; voor het maken van een gegevensbron, een index en een indexeerfunctie. De gegevensbron bevat een verwijzing naar uw opslagaccount en uw JSON-gegevens. Uw zoekservice maakt de verbinding tijdens het laden van de gegevens.
 
-In query reeksen moeten een API-versie worden opgegeven en elke aanroep moet een **201-gemaakt**retour neren. De algemeen beschik bare API-versie voor het gebruik van `2019-05-06`JSON-matrices is.
+In query reeksen moeten een API-versie worden opgegeven en elke aanroep moet een **201-gemaakt**retour neren. De algemeen beschik bare API-versie voor het gebruik van JSON-matrices is `2019-05-06`.
 
 Voer de volgende drie API-aanroepen uit vanuit de REST-client.
 
 ## <a name="create-a-data-source"></a>Een gegevensbron maken
 
-Met de [API Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)wordt een Azure Search-object gemaakt waarmee wordt opgegeven welke gegevens moeten worden geïndexeerd.
+Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)wordt een Azure Cognitive Search-object gemaakt waarmee wordt opgegeven welke gegevens moeten worden geïndexeerd.
 
 Het eindpunt van deze aanroep is `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice. 
 
@@ -92,7 +91,7 @@ Voor deze aanroep moet de aanvraag tekst de naam van uw opslag account, de sleut
 
   ![Semi-gestructureerde zoekopdracht](media/search-semi-structured-data/storagekeys.png)
 
-Zorg ervoor dat u `[storage account name]`, `[storage account key]`en `[blob container name]` in de hoofd tekst van uw oproep vervangt voordat u de oproep uitvoert.
+Vervang `[storage account name]`, `[storage account key]`en `[blob container name]` in de hoofd tekst van uw oproep voordat u de oproep uitvoert.
 
 ```json
 {
@@ -127,7 +126,7 @@ Het antwoord moet er als volgt uitzien:
 
 ## <a name="create-an-index"></a>Een index maken
     
-De tweede aanroep is [Create Index API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), waarmee een Azure search index wordt gemaakt waarmee alle Doorzoek bare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
+De tweede aanroep is [Create Index API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), waarmee een Azure Cognitive search-index wordt gemaakt waarmee alle Doorzoek bare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
 
 De URL voor deze aanroep is `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice.
 
@@ -286,11 +285,11 @@ De parameter `$filter` werkt alleen met metagegevens die bij het maken van de in
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om op te schonen na een zelfstudie is de resourcegroep met de Azure Search-service te verwijderen. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. De naam van de resourcegroep staat in de portal op de pagina Overzicht van de Azure Search-service.
+De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van Azure Cognitive Search service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSON-blobs. Bekijk en test de verschillende opties als volgende stap om te zien wat het beste werkt voor uw scenario.
 
 > [!div class="nextstepaction"]
-> [JSON-blobs indexeren met Azure Search BLOB-Indexer](search-howto-index-json-blobs.md)
+> [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)

@@ -1,27 +1,27 @@
 ---
-title: Verrijkte invoer velden voor cognitieve Zoek opdrachten toewijzen aan uitvoer velden-Azure Search
-description: Haal en verrijkende brongegevens velden op en wijs deze toe aan uitvoer velden in een Azure Search index.
+title: AI-verrijkte invoer velden toewijzen aan uitvoer velden
+titleSuffix: Azure Cognitive Search
+description: Haal en verrijkende brongegevens velden op en wijs deze toe aan uitvoer velden in een Azure Cognitive Search-index.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 77f378f4e0c4a8e4827523e244f7b18c2a9ba336
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265507"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792105"
 ---
-# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Verrijkte velden toewijzen aan een Doorzoek bare index
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
 
 In dit artikel leert u hoe u verrijkte invoer velden kunt toewijzen aan uitvoer velden in een Doorzoek bare index. Zodra u [een vaardig heden hebt gedefinieerd](cognitive-search-defining-skillset.md), moet u de uitvoer velden toewijzen van alle vaardig heden waarmee waarden rechtstreeks worden bijgedragen aan een bepaald veld in uw zoek index. Veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.
 
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
-Als u velden wilt toewijzen `outputFieldMappings` , voegt u deze toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
+Als u velden wilt toewijzen, voegt u `outputFieldMappings` toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -64,7 +64,7 @@ De hoofd tekst van de aanvraag is als volgt gestructureerd:
 ```
 Stel voor elke toewijzing van het uitvoer veld de naam van het verrijkte veld (sourceFieldName) en de naam van het veld in waarnaar wordt verwezen in de index (targetFieldName).
 
-Het pad in een sourceFieldName kan bestaan uit één element of meerdere elementen. In het bovenstaande ```/document/content/sentiment``` voor beeld vertegenwoordigt een enkele numerieke waarde, terwijl ```/document/content/organizations/*/description``` verschillende beschrijvingen van de organisatie worden aangeduid. Als er meerdere elementen zijn, worden deze ' afgevlakt ' in een matrix die elk van de elementen bevat. In het ```/document/content/organizations/*/description``` voor beeld worden de gegevens in het veld *beschrijvingen* als een vlakke matrix met beschrijvingen weer gegeven voordat de indexering wordt geïndexeerd:
+Het pad in een sourceFieldName kan bestaan uit één element of meerdere elementen. In het bovenstaande voor beeld vertegenwoordigt ```/document/content/sentiment``` een enkele numerieke waarde, terwijl ```/document/content/organizations/*/description``` verschillende beschrijvingen van de organisatie vertegenwoordigt. Als er meerdere elementen zijn, worden deze ' afgevlakt ' in een matrix die elk van de elementen bevat. In het ```/document/content/organizations/*/description```e voor beeld worden de gegevens in het veld *beschrijvingen* als een vlakke matrix met beschrijvingen weer gegeven voordat de indexering wordt geïndexeerd:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
@@ -72,4 +72,4 @@ Het pad in een sourceFieldName kan bestaan uit één element of meerdere element
 ## <a name="next-steps"></a>Volgende stappen
 Zodra u uw verrijkte velden aan Doorzoek bare velden hebt toegewezen, kunt u de veld kenmerken voor elk van de Doorzoek bare velden instellen [als onderdeel van de definitie van de index](search-what-is-an-index.md).
 
-Zie [veld toewijzingen in azure Search-Indexeer functies](search-indexer-field-mappings.md)voor meer informatie over veld toewijzing.
+Zie [veld toewijzingen in Azure Cognitive Search-Indexeer functies](search-indexer-field-mappings.md)voor meer informatie over het toewijzen van velden.

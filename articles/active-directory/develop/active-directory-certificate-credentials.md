@@ -1,5 +1,6 @@
 ---
-title: Certificaat referenties in azure AD | Microsoft Docs
+title: Certificaat referenties in azure AD
+titleSuffix: Microsoft identity platform
 description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven
 services: active-directory
 documentationcenter: .net
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835471"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803536"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certificaat referenties voor toepassings verificatie
 
@@ -46,14 +47,14 @@ Als u de bewering wilt berekenen, kunt u een van de vele [JSON Web token](https:
 
 | Parameter |  Opmerkingen |
 | --- | --- |
-| `aud` | Gericht Moet  **https://login.microsoftonline.com/ *tenant_Id*/oauth2/token zijn** |
+| `aud` | Doel groep: moet **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
 | `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt.|
 | `iss` | Verlener: moet de client_id (toepassings-ID van de client service) |
 | `jti` | GUID: de JWT-ID |
 | `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat het token is uitgegeven. |
-| `sub` | Houder: Als voor `iss`moet de client_id (toepassings-id van de client service) |
+| `sub` | Onderwerp: als voor `iss`, moet de client_id (toepassings-ID van de client service) zijn. |
 
-### <a name="signature"></a>Handtekening
+### <a name="signature"></a>ondertekening
 
 De hand tekening wordt berekend met het Toep assen van het certificaat, zoals beschreven in de [JSON Web token RFC7519-specificatie](https://tools.ietf.org/html/rfc7519)
 
@@ -100,7 +101,7 @@ U kunt de certificaat referentie koppelen aan de client toepassing in azure AD v
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **certificaten & geheimen**. 
 2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
   Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven. 
 
 ### <a name="updating-the-application-manifest"></a>Het toepassings manifest bijwerken
@@ -110,7 +111,7 @@ Als u een certificaat hebt, moet u het volgende berekenen:
 - `$base64Thumbprint`, dit is de base64-code ring van de certificaat-hash
 - `$base64Value`, dit is de base64-code ring van de onbewerkte gegevens van het certificaat
 
-U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de`$keyId`toepassing ().
+U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de toepassing (`$keyId`).
 
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **manifest** om het toepassings manifest te openen.
@@ -129,8 +130,8 @@ In de registratie van de Azure-app voor de client toepassing:
    ```
 3. Sla de wijzigingen op in het manifest van de toepassing en upload het manifest vervolgens naar Azure AD. 
 
-   De `keyCredentials` eigenschap is meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
+   De eigenschap `keyCredentials` heeft meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
    
 ## <a name="code-sample"></a>Codevoorbeeld
 
-Het code voorbeeld voor het [verifiëren van Azure AD in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) met behulp van `New-SelfSignedCertificate` de Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.
+Het code voorbeeld voor het [verifiëren van Azure AD in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.

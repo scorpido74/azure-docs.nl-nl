@@ -1,49 +1,48 @@
 ---
-title: Beveiligings filters voor het verkleinen van resultaten-Azure Search
-description: Toegangs beheer voor Azure Search inhoud met behulp van beveiligings filters en gebruikers identiteiten.
-ms.service: search
-ms.topic: conceptual
-services: search
-ms.date: 05/02/2019
+title: Beveiligings filters voor het verkleinen van resultaten
+titleSuffix: Azure Cognitive Search
+description: Toegangs beheer op Azure Cognitive Search inhoud met behulp van beveiligings filters en gebruikers identiteiten.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
-ms.custom: seodec2018
-ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186485"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794268"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>Beveiligings filters voor het verkleinen van de resultaten in Azure Search
+# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Beveiligings filters voor het verkleinen van de resultaten in azure Cognitive Search
 
-U kunt beveiligings filters toep assen om Zoek resultaten in Azure Search te knippen op basis van de identiteit van de gebruiker. Deze Zoek ervaring vereist meestal het vergelijken van de identiteit van degene die de zoek opdracht vraagt naar een veld met de principes die machtigingen hebben voor het document. Wanneer een overeenkomst wordt gevonden, heeft de gebruiker of principal (zoals een groep of rol) toegang tot dat document.
+U kunt beveiligings filters toep assen om Zoek resultaten in azure Cognitive Search te knippen op basis van de identiteit van de gebruiker. Deze Zoek ervaring vereist meestal het vergelijken van de identiteit van degene die de zoek opdracht vraagt naar een veld met de principes die machtigingen hebben voor het document. Wanneer een overeenkomst wordt gevonden, heeft de gebruiker of principal (zoals een groep of rol) toegang tot dat document.
 
-Een manier om beveiligings filtering te waarborgen, is een gecompliceerde schei ding van gelijkheids `Id eq 'id1' or Id eq 'id2'`expressies: bijvoorbeeld, enzovoort. Deze benadering is fout gevoelig en moeilijk te onderhouden, en in gevallen waarin de lijst honderden of duizenden waarden bevat, wordt de reactie tijd van query's in veel seconden vertraagd. 
+Een manier om beveiligings filters te bezorgen, is een gecompliceerde schei ding van gelijkheids expressies: bijvoorbeeld `Id eq 'id1' or Id eq 'id2'`, enzovoort. Deze benadering is fout gevoelig en moeilijk te onderhouden, en in gevallen waarin de lijst honderden of duizenden waarden bevat, wordt de reactie tijd van query's in veel seconden vertraagd. 
 
-Een eenvoudiger en sneller benadering is de `search.in` functie. Als u gebruikt `search.in(Id, 'id1, id2, ...')` in plaats van een gelijkheids expressie, kunt u een reactie tijd van sub seconden verwachten.
+Een eenvoudiger en sneller benadering is de functie `search.in`. Als u `search.in(Id, 'id1, id2, ...')` gebruikt in plaats van een gelijkheids expressie, kunt u een reactie tijd van sub seconden verwachten.
 
 In dit artikel wordt beschreven hoe u beveiligings filtering kunt uitvoeren met behulp van de volgende stappen:
 > [!div class="checklist"]
 > * Een veld maken dat de principal-id's bevat 
 > * Bestaande documenten pushen of bijwerken met de relevante Principal-id's
-> * Een zoek opdracht uitgeven met `search.in``filter`
+> * Een zoek opdracht uitgeven met `search.in` `filter`
 
 >[!NOTE]
 > Het proces voor het ophalen van de principal-id's wordt niet behandeld in dit document. U ontvangt dit van uw identiteits service provider.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Search-service](https://docs.microsoft.com/azure/search/search-create-service-portal)en [Azure search index](https://docs.microsoft.com/azure/search/search-create-index-portal)hebt.  
+In dit artikel wordt ervan uitgegaan dat u een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Cognitive Search-service](https://docs.microsoft.com/azure/search/search-create-service-portal)en [Azure Cognitive search index](https://docs.microsoft.com/azure/search/search-create-index-portal)hebt.  
 
 ## <a name="create-security-field"></a>Beveiligings veld maken
 
 Uw documenten moeten een veld bevatten waarin wordt aangegeven welke groepen toegang hebben. Deze informatie wordt het filter criterium waarmee documenten worden geselecteerd of afgewezen in de resultatenset die wordt geretourneerd naar de verlener.
 We gaan ervan uit dat we een index van beveiligde bestanden hebben en dat elk bestand toegankelijk is voor een andere set gebruikers.
-1. Voeg een `group_ids` veld toe (u kunt hier een wille keurige naam kiezen) als een. `Collection(Edm.String)` Zorg ervoor dat het veld een `filterable` kenmerk heeft `true` ingesteld zodat de zoek resultaten worden gefilterd op basis van de toegang die de gebruiker heeft. Als u bijvoorbeeld het `group_ids` veld instelt op `["group_id1, group_id2"]` voor het document met `file_name` ' secured_file_b ', hebben alleen gebruikers die deel uitmaken van groeps-id's ' group_id1 ' of ' group_id2 ' Lees toegang tot het bestand.
-   Zorg ervoor dat het kenmerk `retrievable` van het veld is `false` ingesteld op zodat het niet wordt geretourneerd als onderdeel van de zoek opdracht.
-2. U kunt `file_id` ook `file_name` velden toevoegen voor dit voor beeld.  
+1. Voeg veld `group_ids` toe (u kunt hier een wille keurige naam kiezen) als `Collection(Edm.String)`. Zorg ervoor dat in het veld een `filterable` kenmerk is ingesteld op `true`, zodat de zoek resultaten worden gefilterd op basis van de toegang die de gebruiker heeft. Als u bijvoorbeeld het `group_ids` veld instelt op `["group_id1, group_id2"]` voor het document met `file_name` ' secured_file_b ', hebben alleen gebruikers die deel uitmaken van groeps-id's ' group_id1 ' of ' group_id2 ' Lees toegang tot het bestand.
+   Zorg ervoor dat het `retrievable` kenmerk van het veld is ingesteld op `false`, zodat het niet wordt geretourneerd als onderdeel van de zoek opdracht.
+2. Voeg ook `file_id`-en `file_name` velden toe voor dit voor beeld.  
 
 ```JSON
 {
@@ -93,7 +92,7 @@ Geef in de hoofd tekst van de aanvraag de inhoud van uw documenten op:
 }
 ```
 
-Als u een bestaand document wilt bijwerken met de lijst met groepen, kunt u de `merge` actie of `mergeOrUpload` gebruiken:
+Als u een bestaand document wilt bijwerken met de lijst met groepen, kunt u de actie `merge` of `mergeOrUpload` gebruiken:
 
 ```JSON
 {
@@ -111,9 +110,9 @@ Voor gedetailleerde informatie over het toevoegen of bijwerken van documenten, k
    
 ## <a name="apply-the-security-filter"></a>Het beveiligings filter Toep assen
 
-Als u documenten wilt knippen op basis `group_ids` van toegang, moet u een zoek opdracht geven met `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` een filter, waarbij ' group_id1, group_id2,... ' zijn de groepen waartoe de uitgever van de zoek aanvraag behoort.
-Dit filter komt overeen met alle documenten waarvoor `group_ids` het veld een van de opgegeven id's bevat.
-Voor volledige informatie over het zoeken van documenten met Azure Search, kunt u [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents)lezen.
+Als u documenten wilt knippen op basis van `group_ids` toegang, moet u een zoek opdracht met een `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filter geven, waarbij ' group_id1, group_id2,... ' zijn de groepen waartoe de uitgever van de zoek aanvraag behoort.
+Dit filter komt overeen met alle documenten waarvoor het `group_ids` veld een van de opgegeven id's bevat.
+Voor volledige informatie over het zoeken van documenten met Azure Cognitive Search, kunt u [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents)lezen.
 Houd er rekening mee dat in dit voor beeld wordt uitgelegd hoe u met een POST-aanvraag naar documenten zoekt.
 
 De HTTP POST-aanvraag uitgeven:
@@ -132,7 +131,7 @@ Geef het filter op in de hoofd tekst van de aanvraag:
 }
 ```
 
-U moet de documenten weer `group_ids` geven met ' group_id1 ' of ' group_id2 '. Met andere woorden, u krijgt de documenten waarmee de uitgever van de aanvraag Lees toegang heeft.
+U moet de documenten weer geven als `group_ids` ' group_id1 ' of ' group_id2 ' bevat. Met andere woorden, u krijgt de documenten waarmee de uitgever van de aanvraag Lees toegang heeft.
 
 ```JSON
 {
@@ -152,10 +151,10 @@ U moet de documenten weer `group_ids` geven met ' group_id1 ' of ' group_id2 '. 
 ```
 ## <a name="conclusion"></a>Conclusie
 
-Zo kunt u resultaten filteren op basis van de gebruikers-id en `search.in()` Azure Search functie. U kunt deze functie gebruiken om te voldoen aan principe-id's waarmee de gebruiker die de aanvraag heeft ingediend, overeenkomt met de principal-id's die zijn gekoppeld aan elk doel document. Wanneer een zoek opdracht wordt verwerkt, filtert de functie de `search.in` Zoek resultaten op waarvoor geen van de principals van de gebruiker lees toegang heeft. De principal-id's kunnen dingen vertegenwoordigen, zoals beveiligings groepen, rollen of zelfs de eigen identiteit van de gebruiker.
+Zo kunt u resultaten filteren op basis van gebruikers-id en Azure Cognitive Search `search.in()` functie. U kunt deze functie gebruiken om te voldoen aan principe-id's waarmee de gebruiker die de aanvraag heeft ingediend, overeenkomt met de principal-id's die zijn gekoppeld aan elk doel document. Wanneer een zoek aanvraag wordt verwerkt, filtert de functie `search.in` de zoek resultaten op waarvoor geen van de principals van de gebruiker lees toegang heeft. De principal-id's kunnen dingen vertegenwoordigen, zoals beveiligings groepen, rollen of zelfs de eigen identiteit van de gebruiker.
  
 ## <a name="see-also"></a>Zie ook
 
-+ [Active Directory toegangs beheer op basis van een id met behulp van Azure Search filters](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filters in Azure Search](search-filters.md)
-+ [Gegevens beveiliging en toegangs beheer in Azure Search bewerkingen](search-security-overview.md)
++ [Active Directory toegangs beheer op basis van een id met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search-with-aad.md)
++ [Filters in azure Cognitive Search](search-filters.md)
++ [Gegevens beveiliging en toegangs beheer in azure Cognitive Search bewerkingen](search-security-overview.md)

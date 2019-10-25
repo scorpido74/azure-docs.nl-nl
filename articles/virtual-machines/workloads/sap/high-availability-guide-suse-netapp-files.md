@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213263"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791738"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -78,7 +78,7 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 * SAP Note [2243692][2243692] bevat informatie over SAP-licentie verlening op Linux in Azure.
 * SAP Note [1984787][1984787] bevat algemene informatie over SuSE Linux Enterprise Server 12.
 * SAP Note [1999351][1999351] bevat extra informatie over probleem oplossing voor de uitgebreide bewakings extensie van Azure voor SAP.
-* SAP Community-wiki]https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) (heeft alle vereiste SAP-notities voor Linux.
+* WIKI voor SAP-Community's] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) heeft alle vereiste SAP-notities voor Linux.
 * [Azure Virtual Machines planning en implementatie voor SAP op Linux][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP op Linux][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
@@ -136,7 +136,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
 
-Voor SAP NetWeaver is gedeelde opslag vereist voor de map Trans Port en het profiel.  Voordat u doorgaat met de installatie van de Azure NetApp-infra structuur, moet u vertrouwd raken met de [Azure NetApp files-documentatie][anf-azure-doc]. Controleer of de geselecteerde Azure-regio Azure NetApp Files bevat. De volgende koppeling toont de beschik baarheid van Azure NetApp Files per Azure-regio: [Beschik baarheid Azure NetApp files per Azure-regio][anf-avail-matrix].
+Voor SAP NetWeaver is gedeelde opslag vereist voor de map Trans Port en het profiel.  Voordat u doorgaat met de installatie van de Azure NetApp-infra structuur, moet u vertrouwd raken met de [Azure NetApp files-documentatie][anf-azure-doc]. Controleer of de geselecteerde Azure-regio Azure NetApp Files bevat. De volgende koppeling toont de beschik baarheid van Azure NetApp Files per Azure-regio: [Azure NetApp files Beschik baarheid per Azure-regio][anf-avail-matrix].
 
 Azure NetApp-bestanden zijn beschikbaar in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Voordat u Azure NetApp Files implementeert, moet u onboarding aanvragen bij Azure NetApp Files, volgens de [instructies registreren voor Azure NetApp files][anf-register]. 
 
@@ -255,7 +255,7 @@ Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server
 
 ### <a name="installation"></a>Installatie
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
 1. **[A]** SuSE-connector installeren
 
@@ -304,15 +304,15 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-3. **[A]**  Omzetten van de hostnaam instellen
+3. **[A]** omzetting van hostnaam van installatie
 
-   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
+   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen   
+   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving   
 
    <pre><code>
    # IP address of cluster node 1
@@ -363,7 +363,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    > [!NOTE]
    > Momenteel Azure NetApp Files ondersteunt alleen NFSv3. Laat de switch nfsvers = 3 achterwege.
    
-   Opnieuw `autofs` opstarten om de nieuwe shares te koppelen
+   Start `autofs` opnieuw op om de nieuwe shares te koppelen
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -393,6 +393,10 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 1. **[1]** Maak een virtuele IP-bron en een status test voor het ASCS-exemplaar
 
+   > [!IMPORTANT]
+   > Recente tests hebben getoonde situaties, waarbij netcat niet meer reageert op aanvragen als gevolg van achterstand en de beperking van het verwerken van slechts één verbinding. De netcat-resource stopt met Luis teren naar de Azure Load Balancer-aanvragen en het zwevende IP-adres is niet meer beschikbaar.  
+   > Voor bestaande pacemaker-clusters is het raadzaam om netcat te vervangen door socat, waarbij u de instructies in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128)kunt volgen. Houd er rekening mee dat voor de wijziging korte uitval tijd nodig is.  
+
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    
    sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
@@ -405,7 +409,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
@@ -460,10 +464,10 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>01</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
@@ -658,9 +662,9 @@ In de stappen onderstaande wordt ervan uitgegaan dat u de toepassings server ins
 De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de voor-en aas, **[P]** -alleen van toepassing op pas of **[S]** -alleen van toepassing op aas.
 
 
-1. **[A]**  Besturingssysteem configureren
+1. **[A]** besturings systeem configureren
 
-   Reduceer de grootte van de vervuilde cache. Zie voor meer informatie, [laag schrijfvaardigheden op SLES 11/12 servers met grote RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Verklein de omvang van de gewijzigde cache. Zie [lage schrijf prestaties op SLES 11/12-servers met grote hoeveel heden RAM-geheugen](https://www.suse.com/support/kb/doc/?id=7010287)voor meer informatie.
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -669,16 +673,16 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
-   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
+   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
+   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
@@ -732,7 +736,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
-   Opnieuw `autofs` opstarten om de nieuwe shares te koppelen
+   Start `autofs` opnieuw op om de nieuwe shares te koppelen
 
    <pre><code>
    sudo systemctl enable autofs
@@ -757,7 +761,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Opnieuw `autofs` opstarten om de nieuwe shares te koppelen
+   Start `autofs` opnieuw op om de nieuwe shares te koppelen
 
    <pre><code>
    sudo systemctl enable autofs
@@ -843,7 +847,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
 
 1. HAGetFailoverConfig, HACheckConfig en HACheckFailoverConfig testen
 
-   Voer de volgende opdrachten uit \<als sapsid > adm op het knoop punt waar de ASCS-instantie momenteel wordt uitgevoerd. Als de opdrachten mislukken: Onvoldoende geheugen. dit wordt mogelijk veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
+   Voer de volgende opdrachten uit als \<sapsid > adm op het knoop punt waar de ASCS-instantie momenteel wordt uitgevoerd. Als de opdrachten mislukken met een fout: onvoldoende geheugen, kan dit worden veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -939,7 +943,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-3. Test HAFailoverToNode
+3. HAFailoverToNode testen
 
    Resource status voordat u begint met testen:
 
@@ -957,7 +961,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Voer de volgende opdrachten uit \<als sapsid > adm om de ASCS-instantie te migreren.
+   Voer de volgende opdrachten uit als \<sapsid > adm om de ASCS-instantie te migreren.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1085,7 +1089,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Maak een vergren deling in de wachtrij door bijvoorbeeld een gebruiker in trans actie su01 te bewerken. Voer de volgende opdrachten uit als <\>sapsid adm op het knoop punt waarop het ASCS-exemplaar wordt uitgevoerd. Met de opdrachten wordt het ASCS-exemplaar gestopt en opnieuw gestart. Als u de architectuur voor de bewaarde server 1 gebruikt, wordt de beplaatsings vergrendeling naar verwachting verloren gegaan tijdens deze test. Als u de architectuur van Server 2 in plaats van gebruikt, wordt de in de wachtrij bewaard. 
+   Maak een vergren deling in de wachtrij door bijvoorbeeld een gebruiker in trans actie su01 te bewerken. Voer de volgende opdrachten uit als < sapsid\>adm op het knoop punt waarop het ASCS-exemplaar wordt uitgevoerd. Met de opdrachten wordt het ASCS-exemplaar gestopt en opnieuw gestart. Als u de architectuur voor de bewaarde server 1 gebruikt, wordt de beplaatsings vergrendeling naar verwachting verloren gegaan tijdens deze test. Als u de architectuur van Server 2 in plaats van gebruikt, wordt de in de wachtrij bewaard. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1231,7 +1235,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Als u de opdracht slechts eenmaal uitvoert, `sapstart` wordt het proces opnieuw gestart. Als u dit vaak genoeg uitvoert, `sapstart` wordt het proces niet opnieuw gestart en wordt de bron gestopt. Voer de volgende opdrachten uit als root om de resource status van het ERS-exemplaar na de test op te schonen.
+   Als u de opdracht slechts één keer uitvoert, wordt het proces door `sapstart` opnieuw gestart. Als u deze regel matig uitvoert, wordt het proces niet opnieuw opgestart met `sapstart` en wordt de bron gestopt. Voer de volgende opdrachten uit als root om de resource status van het ERS-exemplaar na de test op te schonen.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

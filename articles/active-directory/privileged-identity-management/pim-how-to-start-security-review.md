@@ -10,26 +10,26 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804379"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809037"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>Een toegangs beoordeling van Azure AD-rollen maken in PIM
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Een toegangs beoordeling maken van Azure AD-rollen in Privileged Identity Management
 
-Toegang tot bevoegde Azure AD-rollen voor werk nemers verandert in de loop van de tijd. Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, moet u de toegang regel matig controleren. U kunt Azure Active Directory (Azure AD) Privileged Identity Management (PIM) gebruiken om toegangs beoordelingen te maken voor beschermde Azure AD-rollen. U kunt ook terugkerende toegangs beoordelingen configureren die automatisch worden uitgevoerd.
+De vereisten voor gebruikers om toegang te krijgen tot bevoegde Azure Active Directory-rollen (Azure AD) kunnen na verloop van tijd veranderen. Om het risico te verminderen dat is gekoppeld aan verouderde roltoewijzingen, moet u de toegang regel matig controleren. U kunt Azure AD Privileged Identity Management (PIM) gebruiken om toegangs beoordelingen te maken voor beschermde Azure AD-rollen. U kunt ook terugkerende toegangs beoordelingen configureren die automatisch worden uitgevoerd.
 
 In dit artikel wordt beschreven hoe u een of meer toegangs beoordelingen maakt voor beschermde Azure AD-rollen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Beheerder van geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Beheerder van geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Toegangs beoordelingen openen
 
@@ -37,19 +37,17 @@ In dit artikel wordt beschreven hoe u een of meer toegangs beoordelingen maakt v
 
 1. Open **Azure AD privileged Identity Management**.
 
-1. Klik in het menu links op **Azure AD-rollen** en klik vervolgens op **toegangs beoordelingen**.
+1. Selecteer in het menu links de optie **Azure AD-rollen** en selecteer vervolgens **toegangs beoordelingen**.
 
-1. Klik onder beheren op **toegangs beoordelingen**.
+1. Selecteer onder beheren de optie **toegangs beoordelingen**.
 
     ![Azure AD-rollen: lijst met toegangs beoordelingen waarin de status van alle beoordelingen wordt weer gegeven](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>De toegangs beoordeling starten
 
-Zodra u de instellingen voor een toegangs beoordeling hebt opgegeven, klikt u op **Start**. De toegangs beoordeling wordt weer gegeven in de lijst met een indicator van de status.
+Nadat u de instellingen voor een toegangs beoordeling hebt opgegeven, selecteert u **starten**. De toegangs beoordeling wordt weer gegeven in de lijst met een indicator van de status.
 
 ![Lijst met toegangs beoordelingen waarin de status van de gestarte beoordelingen wordt weer gegeven](./media/pim-how-to-start-security-review/access-reviews-list.png)
 

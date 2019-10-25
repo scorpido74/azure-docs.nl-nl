@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331065"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791808"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Machines opnieuw beveiligen en failback naar een on-premises site na een failover naar Azure
 
@@ -34,6 +34,7 @@ Als u een sjabloon hebt gebruikt om uw virtuele machines te maken, moet u ervoor
 - Als een vCenter-Server de virtuele machines beheert waarvoor u een failback wilt uitvoeren, moet u ervoor zorgen dat u over de [vereiste machtigingen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) beschikt voor de detectie van Vm's op vCenter-servers.
 - Verwijder moment opnamen op de hoofddoel server voordat u opnieuw beveiligt. Als moment opnamen aanwezig zijn op het on-premises hoofd doel of op de virtuele machine, mislukt de beveiliging. De moment opnamen op de virtuele machine worden automatisch samengevoegd tijdens een taak voor opnieuw beveiligen.
 - Alle virtuele machines van een replicatie groep moeten van hetzelfde type besturings systeem (alle Windows of alle Linux) zijn. Een replicatie groep met gemengde besturings systemen wordt momenteel niet ondersteund voor opnieuw beveiligen en failback naar on-premises. Dit komt doordat het hoofd doel van hetzelfde besturings systeem als de virtuele machine moet zijn. Alle virtuele machines van een replicatie groep moeten hetzelfde hoofd doel hebben. 
+- Het hoofd doel moet dezelfde of een hogere versie van het besturings systeem hebben dan de versies van het besturings systeem van de gerepliceerde items.
 - Een configuratie server is on-premises vereist wanneer er een failback wordt uitgevoerd. Tijdens het failback moet de virtuele machine aanwezig zijn in de data base van de configuratie server. Anders mislukt de failback. Zorg ervoor dat u regel matig geplande back-ups maakt van uw configuratie server. Als er een nood geval is, herstelt u de server met hetzelfde IP-adres, zodat failback werkt. 
 - Voor het opnieuw beveiligen en failback is een site-naar-site (S2S) VPN-of ExpressRoute-peering vereist om gegevens te repliceren. Geef het netwerk op zodat de virtuele machines waarvoor failover is uitgevoerd in azure, de on-premises configuratie server kunnen bereiken. U moet een proces server implementeren in het Azure-netwerk van de virtuele machine (s) waarvoor failover is uitgevoerd. Deze proces server moet ook kunnen communiceren met de on-premises configuratie server en de hoofddoel server.
 - Als de IP-adressen van gerepliceerde items op failover worden bewaard, moeten er een S2S-of ExpressRoute-verbinding tot stand worden gebracht tussen virtuele Azure-machines en de failback-NIC van de configuratie server. Houd er rekening mee dat voor het bewaren van IP-adressen twee Nic's moeten worden geconfigureerd voor de connectiviteit van de bron machines en één voor Azure-failback-connectiviteit. Dit is om te voor komen dat de adresbereiken van de bron en failover van virtuele machines overlappen.

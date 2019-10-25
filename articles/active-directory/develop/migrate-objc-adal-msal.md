@@ -1,6 +1,7 @@
 ---
 let application: MSALPublicClientApplication!
-title: Apps migreren naar MSAL. ObjectiveC | Micro soft Identity-platform
+title: Apps migreren naar MSAL. ObjectiveC
+titleSuffix: Microsoft identity platform
 description: Meer informatie over de verschillen tussen de micro soft-verificatie bibliotheek voor ObjectiveC (MSAL voor iOS en macOS) en de Azure AD-verificatie bibliotheek voor ObjectiveC (ADAL. ObjC) en hoe u migreert naar MSAL voor iOS en macOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcceec31785b3d8ebc6d9566e7d2eba857d792ef
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269023"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803269"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Toepassingen migreren naar MSAL voor iOS en macOS
 
@@ -58,13 +59,13 @@ De MSAL open bare API weerspiegelt enkele belang rijke verschillen tussen Azure 
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication in plaats van ADAuthenticationContext
 
-`ADAuthenticationContext`is het eerste object dat een ADAL-app maakt. Dit vertegenwoordigt een exemplaar van ADAL. Apps maken een nieuw exemplaar van `ADAuthenticationContext` voor elke combi natie van Azure Active Directory Cloud en Tenant (Authority). `ADAuthenticationContext` Dit kan ook worden gebruikt voor het ophalen van tokens voor meerdere open bare client toepassingen.
+`ADAuthenticationContext` is het eerste object dat een ADAL-app maakt. Dit vertegenwoordigt een exemplaar van ADAL. Apps maken een nieuw exemplaar van `ADAuthenticationContext` voor elke combi natie van Azure Active Directory Cloud en Tenant (Authority). Hetzelfde `ADAuthenticationContext` kan worden gebruikt voor het ophalen van tokens voor meerdere open bare client toepassingen.
 
-In MSAL is de belangrijkste interactie via een object `MSALPublicClientApplication` , dat is gemodelleerd na een [OAuth 2,0 open bare client](https://tools.ietf.org/html/rfc6749#section-2.1). Eén exemplaar van `MSALPublicClientApplication` kan worden gebruikt om te communiceren met meerdere Aad-Clouds en tenants, zonder dat er voor elke instantie een nieuw exemplaar hoeft te worden gemaakt. Voor de meeste apps is `MSALPublicClientApplication` één instantie voldoende.
+In MSAL is de belangrijkste interactie via een `MSALPublicClientApplication`-object, dat is gemodelleerd na de [open bare OAuth 2,0-client](https://tools.ietf.org/html/rfc6749#section-2.1). Eén exemplaar van `MSALPublicClientApplication` kan worden gebruikt om te communiceren met meerdere AAD-Clouds en tenants, zonder dat er voor elke instantie een nieuw exemplaar hoeft te worden gemaakt. Voor de meeste apps is een `MSALPublicClientApplication`-exemplaar voldoende.
 
 ### <a name="scopes-instead-of-resources"></a>Bereiken in plaats van resources
 
-In ADAL moest een app een *resource* -id opgeven, zoals `https://graph.microsoft.com` het verkrijgen van tokens uit het Azure Active Directory v 1.0-eind punt. Een resource kan een aantal bereiken of oAuth2Permissions in het app-manifest definiëren dat deze begrijpt. Deze toegestane client-apps voor het aanvragen van tokens van die bron voor een bepaalde set bereiken die vooraf zijn gedefinieerd tijdens de app-registratie.
+In ADAL moest een app een *resource* -id opgeven, zoals `https://graph.microsoft.com` voor het verkrijgen van tokens uit het Azure Active Directory v 1.0-eind punt. Een resource kan een aantal bereiken of oAuth2Permissions in het app-manifest definiëren dat deze begrijpt. Deze toegestane client-apps voor het aanvragen van tokens van die bron voor een bepaalde set bereiken die vooraf zijn gedefinieerd tijdens de app-registratie.
 
 In MSAL, in plaats van één resource-id, bieden apps een set scopes per aanvraag. Een bereik is een resource-id gevolgd door een machtigings naam in de vorm van de bron/machtiging. Bijvoorbeeld: `https://graph.microsoft.com/user.read`
 
@@ -74,53 +75,53 @@ Er zijn twee manieren om bereiken in MSAL te bieden:
 
     `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
-    In dit geval vraagt de app de `directory.read` machtigingen en `directory.write` aan. De gebruiker wordt gevraagd om toestemming te geven voor die machtigingen als ze nog niet vóór deze app hebben ingestemd. De toepassing kan ook aanvullende machtigingen ontvangen die de gebruiker al heeft ingestemd voor de toepassing. De gebruiker wordt alleen gevraagd om toestemming te geven voor nieuwe machtigingen of machtigingen die nog niet zijn toegekend.
+    In dit geval vraagt de app de `directory.read`-en `directory.write` machtigingen. De gebruiker wordt gevraagd om toestemming te geven voor die machtigingen als ze nog niet vóór deze app hebben ingestemd. De toepassing kan ook aanvullende machtigingen ontvangen die de gebruiker al heeft ingestemd voor de toepassing. De gebruiker wordt alleen gevraagd om toestemming te geven voor nieuwe machtigingen of machtigingen die nog niet zijn toegekend.
 
 * Het `/.default` bereik.
 
-Dit is het ingebouwde bereik voor elke toepassing. Dit verwijst naar de statische lijst met machtigingen die zijn geconfigureerd tijdens het registreren van de toepassing. Het gedrag ervan is vergelijkbaar met dat `resource`van. Dit kan handig zijn wanneer u de migratie uitvoert om ervoor te zorgen dat een vergelijk bare reeks bereiken en gebruikers ervaring wordt behouden.
+Dit is het ingebouwde bereik voor elke toepassing. Dit verwijst naar de statische lijst met machtigingen die zijn geconfigureerd tijdens het registreren van de toepassing. Het gedrag is vergelijkbaar met dat van `resource`. Dit kan handig zijn wanneer u de migratie uitvoert om ervoor te zorgen dat een vergelijk bare reeks bereiken en gebruikers ervaring wordt behouden.
 
-Als u het `/.default` bereik wilt gebruiken `/.default` , voegt u toe aan de resource-id. Bijvoorbeeld: `https://graph.microsoft.com/.default`. Als uw resource eindigt met een schuine`/`streep (), moet u `/.default`nog steeds toevoegen, met inbegrip van de voorloop back slash, wat resulteert in een bereik`//`met een dubbele slash ().
+Als u het bereik `/.default` wilt gebruiken, voegt u `/.default` toe aan de resource-id. Bijvoorbeeld: `https://graph.microsoft.com/.default`. Als uw resource eindigt met een schuine streep (`/`), moet u nog steeds `/.default`toevoegen, met inbegrip van de voorloop back slash, wat resulteert in een bereik met een dubbele slash (`//`).
 
 U kunt [hier](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) meer informatie lezen over het gebruik van het bereik '/.default '
 
 ### <a name="supporting-different-webview-types--browsers"></a>Ondersteuning voor verschillende webweergave typen & browsers
 
-ADAL biedt alleen ondersteuning voor UIWebView/WKWebView voor iOS en de webweergave voor macOS. MSAL voor IOS ondersteunt meer opties voor het weer geven van webinhoud wanneer u een autorisatie code aanvraagt en niet langer ondersteunt `UIWebView`; waarmee de gebruikers ervaring en beveiliging kunnen worden verbeterd.
+ADAL biedt alleen ondersteuning voor UIWebView/WKWebView voor iOS en de webweergave voor macOS. MSAL voor iOS ondersteunt meer opties voor het weer geven van webinhoud wanneer u een autorisatie code aanvraagt en niet langer `UIWebView`ondersteunt. waarmee de gebruikers ervaring en beveiliging kan worden verbeterd.
 
 MSAL op iOS maakt standaard gebruik van [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), het webonderdeel Apple raadt voor verificatie op Ios 12 +-apparaten. Het biedt voor delen van eenmalige aanmelding (SSO) via het delen van cookies tussen apps en de Safari-browser.
 
 U kunt ervoor kiezen om een ander webonderdeel te gebruiken, afhankelijk van de app-vereisten en de ervaring van de eind gebruiker die u wilt. Zie [ondersteunde webweergave typen](customize-webviews.md) voor meer opties.
 
-Bij de migratie van ADAL naar MSAL, `WKWebView` biedt de gebruikers ervaring die het meest overeenkomt met ADAL op Ios en macOS. U wordt aangeraden om, `ASWebAuthenticationSession` indien mogelijk, te migreren naar op Ios. Voor macOS raden we u aan om te `WKWebView`gebruiken.
+Bij de migratie van ADAL naar MSAL biedt `WKWebView` de gebruikers ervaring die het meest overeenkomt met ADAL op iOS en macOS. U wordt aangeraden om, indien mogelijk, te migreren naar `ASWebAuthenticationSession` op iOS. Voor macOS raden we u aan `WKWebView`te gebruiken.
 
 ### <a name="account-management-api-differences"></a>Verschillen in de API voor account beheer
 
-Wanneer u de ADAL-methoden `acquireToken()` aanroept of `acquireTokenSilent()`, ontvangt `ADUserInformation` u een object met een lijst met claims `id_token` van de die het account vertegenwoordigt dat wordt geverifieerd. Retourneert daarnaast een `userId` op basis van de `upn` claim. `ADUserInformation` Na de eerste aanschaf van een interactief token, verwacht ADAL `userId` dat ontwikkel aars in alle Silent-aanroepen kunnen voorzien.
+Wanneer u de ADAL-methoden aanroept `acquireToken()` of `acquireTokenSilent()`, ontvangt u een `ADUserInformation`-object met een lijst met claims van de `id_token` die het account vertegenwoordigt dat wordt geauthenticeerd. Daarnaast retourneert `ADUserInformation` een `userId` op basis van de `upn` claim. Na de eerste aanschaf van een interactief token, verwacht ADAL ontwikkel aars om `userId` te bieden in alle Silent-aanroepen.
 
 ADAL biedt geen API om bekende gebruikers identiteiten op te halen. Het is afhankelijk van de app voor het opslaan en beheren van deze accounts.
 
 MSAL biedt een set Api's voor het weer geven van alle accounts die bekend zijn bij MSAL, zonder dat u een token hoeft op te halen.
 
-Net als ADAL retourneert MSAL account gegevens die een lijst met claims van de `id_token`bevatten. Het maakt deel uit van `MSALAccount` het object binnen `MSALResult` het object.
+Net als ADAL retourneert MSAL account gegevens die een lijst met claims van de `id_token`bevatten. Het maakt deel uit van het `MSALAccount`-object in het `MSALResult`-object.
 
 MSAL biedt een set Api's voor het verwijderen van accounts, waardoor de verwijderde accounts ontoegankelijk zijn voor de app. Nadat het account is verwijderd, wordt de gebruiker in latere aanvragen voor token overname gevraagd om een interactief token te verkrijgen. Het verwijderen van accounts is alleen van toepassing op de client toepassing die deze heeft gestart en verwijdert het account niet uit de andere apps die worden uitgevoerd op het apparaat of in de systeem browser. Dit zorgt ervoor dat de gebruiker op het apparaat blijft beschikken over een SSO-ervaring, zelfs na het afmelden van een afzonderlijke app.
 
-Daarnaast retourneert MSAL ook een account-id die kan worden gebruikt om een token later op de achtergrond aan te vragen. De account-id (toegankelijk via `identifier` de eigenschap in het `MSALAccount` object) kan echter niet worden uitgesteld en u kunt niet aannemen in welke indeling deze zich bevindt en u wilt deze niet meer interpreteren of parseren.
+Daarnaast retourneert MSAL ook een account-id die kan worden gebruikt om een token later op de achtergrond aan te vragen. De account-id (toegankelijk via `identifier` eigenschap in het `MSALAccount`-object) kan echter niet worden uitgesteld en u kunt niet aannemen in welke indeling deze zich bevindt en of u deze wilt interpreteren of parseren.
 
 ### <a name="migrating-the-account-cache"></a>De account cache migreren
 
-Bij het `userId`migreren van ADAL slaan apps normaal ADAL, die niet de `identifier` vereiste zijn voor MSAL. Als een eenmalige migratie stap kan een app een query uitvoeren op een MSAL-account met behulp van de gebruikers-id van ADAL met de volgende API:
+Bij de migratie van ADAL slaan apps doorgaans de `userId`van ADAL op, waarvoor niet de `identifier` is vereist door MSAL. Als een eenmalige migratie stap kan een app een query uitvoeren op een MSAL-account met behulp van de gebruikers-id van ADAL met de volgende API:
 
 `- (nullable MSALAccount *)accountForUsername:(nonnull NSString *)username error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
 Met deze API wordt de cache van zowel MSAL als ADAL gelezen om het account te vinden via ADAL userId (UPN).
 
-Als het account wordt gevonden, moet de ontwikkelaar het account gebruiken voor het op de achtergrond ophalen van het token. Bij de eerste aanschaf van een Silent-token wordt het account effectief bijgewerkt en de ontwikkelaar krijgt een MSAL-compatibele account-id in`identifier`het MSAL-resultaat (). Daarna moet u alleen `identifier` worden gebruikt voor account lookups met behulp van de volgende API:
+Als het account wordt gevonden, moet de ontwikkelaar het account gebruiken voor het op de achtergrond ophalen van het token. Bij de eerste aanschaf van een Silent-token wordt het account effectief bijgewerkt en krijgt de ontwikkelaar een MSAL-compatibele account-id in het MSAL-resultaat (`identifier`). Daarna moet u alleen `identifier` gebruiken voor het opzoeken van accounts met behulp van de volgende API:
 
 `- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-Hoewel het mogelijk is om ADAL `userId` te blijven gebruiken voor alle bewerkingen in MSAL, omdat `userId` deze is gebaseerd op UPN, gelden er meerdere beperkingen die leiden tot een onjuiste gebruikers ervaring. Als de UPN bijvoorbeeld wijzigt, moet de gebruiker zich opnieuw aanmelden. We raden aan dat alle apps het niet-bewerkte `identifier` account gebruiken voor alle bewerkingen.
+Hoewel het mogelijk is om de `userId` van ADAL te blijven gebruiken voor alle bewerkingen in MSAL, omdat `userId` is gebaseerd op UPN, is het onderhevig aan meerdere beperkingen die leiden tot een onjuiste gebruikers ervaring. Als de UPN bijvoorbeeld wijzigt, moet de gebruiker zich opnieuw aanmelden. We raden aan dat alle apps het niet-bewerkte account `identifier` voor alle bewerkingen gebruiken.
 
 Meer informatie over de [cache status migratie](sso-between-adal-msal-apps-macos-ios.md).
 
@@ -128,18 +129,18 @@ Meer informatie over de [cache status migratie](sso-between-adal-msal-apps-macos
 
 MSAL introduceert een aantal wijzigingen bij het ophalen van tokens-aanroepen:
 
-* Net als ADAL `acquireTokenSilent` resulteert altijd in een Silent-aanvraag.
-* In tegens telling `acquireToken` tot ADAL, worden met de gebruikers interface of de Microsoft Authenticator-app altijd resultaten weer gegeven. Afhankelijk van de SSO-status in webweergave/Microsoft Authenticator, kan de gebruiker worden gevraagd om zijn of haar referenties in te voeren.
-* In ADAL `acquireToken` wordt met `AD_PROMPT_AUTO` de eerste poging om het token te verkrijgen, en wordt alleen de gebruikers interface weer gegeven als de Silent-aanvraag is mislukt. In MSAL kan deze logica worden bereikt door eerst te roepen `acquireTokenSilent` en alleen aan `acquireToken` te roepen als Silent Acquisition niet kan worden uitgevoerd. Hierdoor kunnen ontwikkel aars de gebruikers ervaring aanpassen voordat ze de interactieve aanschaf van het token starten.
+* Net als ADAL resulteert `acquireTokenSilent` altijd in een Silent-aanvraag.
+* In tegens telling tot ADAL, `acquireToken` de gebruikers interface in de webweergave of de Microsoft Authenticator-app altijd worden uitgevoerd. Afhankelijk van de SSO-status in webweergave/Microsoft Authenticator, kan de gebruiker worden gevraagd om zijn of haar referenties in te voeren.
+* In ADAL wordt `acquireToken` met `AD_PROMPT_AUTO` eerst geprobeerd om de tokens te verkrijgen en wordt alleen de gebruikers interface weer gegeven als de Silent-aanvraag is mislukt. In MSAL kan deze logica worden bereikt door eerst `acquireTokenSilent` aan te roepen en alleen `acquireToken` aan te roepen als Silent Acquisition niet kan worden uitgevoerd. Hierdoor kunnen ontwikkel aars de gebruikers ervaring aanpassen voordat ze de interactieve aanschaf van het token starten.
 
 ### <a name="error-handling-differences"></a>Verschillen in fout afhandeling
 
 MSAL biedt meer duidelijkheid over fouten die kunnen worden verwerkt door uw app en die door de gebruiker moeten worden uitgevoerd. Er is een beperkt aantal fouten dat door de ontwikkelaar moet worden afgehandeld:
 
-* `MSALErrorInteractionRequired`: De gebruiker moet een interactieve aanvraag uitvoeren. Dit kan verschillende oorzaken hebben, zoals een verlopen verificatie sessie, het beleid voor voorwaardelijke toegang is gewijzigd, een vernieuwings token is verlopen of ingetrokken, er zijn geen geldige tokens in de cache, enzovoort.
-* `MSALErrorServerDeclinedScopes`: De aanvraag is niet volledig voltooid en sommige bereiken hebben geen toegang gekregen. Dit kan worden veroorzaakt door een gebruiker die toestemming weigert voor een of meer scopes.
+* `MSALErrorInteractionRequired`: de gebruiker moet een interactieve aanvraag uitvoeren. Dit kan verschillende oorzaken hebben, zoals een verlopen verificatie sessie, het beleid voor voorwaardelijke toegang is gewijzigd, een vernieuwings token is verlopen of ingetrokken, er zijn geen geldige tokens in de cache, enzovoort.
+* `MSALErrorServerDeclinedScopes`: de aanvraag is niet volledig voltooid en sommige bereiken hebben geen toegang gekregen. Dit kan worden veroorzaakt door een gebruiker die toestemming weigert voor een of meer scopes.
 
-Het verwerken van alle andere fouten in de [ `MSALError` lijst](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) is optioneel. U kunt de informatie in deze fouten gebruiken om de gebruikers ervaring te verbeteren.
+Het afhandelen van alle andere fouten in de [`MSALError` lijst](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) is optioneel. U kunt de informatie in deze fouten gebruiken om de gebruikers ervaring te verbeteren.
 
 Zie [uitzonde ringen en fouten afhandelen met MSAL](msal-handling-exceptions.md) voor meer informatie over het afhandelen van MSAL-fouten.
 
@@ -149,9 +150,9 @@ MSAL, te beginnen met versie 0.3.0, biedt ondersteuning voor brokered-verificati
 
 Om Broker in te scha kelen voor uw toepassing:
 
-1. Registreer een Broker-indeling die compatibel is met een omleidings-URI voor de toepassing. De indeling van de Broker-compatibele `msauth.<app.bundle.id>://auth`omleidings-URI is. Vervang `<app.bundle.id>` door de bundel-id van uw toepassing. Als u migreert van ADAL en uw toepassing al als Broker geschikt is, hoeft u niets meer te doen. Uw vorige omleidings-URI is volledig compatibel met MSAL. u kunt dus door gaan naar stap 3.
+1. Registreer een Broker-indeling die compatibel is met een omleidings-URI voor de toepassing. De indeling van de Broker-compatibele omleidings-URI is `msauth.<app.bundle.id>://auth`. Vervang `<app.bundle.id>` door de bundel-ID van uw toepassing. Als u migreert van ADAL en uw toepassing al als Broker geschikt is, hoeft u niets meer te doen. Uw vorige omleidings-URI is volledig compatibel met MSAL. u kunt dus door gaan naar stap 3.
 
-2. Voeg het omleidings-URI-schema van uw toepassing toe aan het bestand info. plist. Voor de standaard MSAL-omleidings-URI `msauth.<app.bundle.id>`is de indeling. Bijvoorbeeld:
+2. Voeg het omleidings-URI-schema van uw toepassing toe aan het bestand info. plist. Voor de standaard-MSAL-omleidings-URI is de indeling `msauth.<app.bundle.id>`. Bijvoorbeeld:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -170,7 +171,7 @@ Om Broker in te scha kelen voor uw toepassing:
     </array>
     ```
 
-4. Voeg het volgende toe aan het bestand AppDelegate. m voor het afhandelen van retour aanroepen: Doel-C:
+4. Voeg het volgende toe aan het bestand AppDelegate. m voor het afhandelen van retour aanroepen: objectief-C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -189,7 +190,7 @@ Om Broker in te scha kelen voor uw toepassing:
 
 ### <a name="business-to-business-b2b"></a>Business to Business (B2B)
 
-In ADAL maakt u afzonderlijke exemplaren van `ADAuthenticationContext` voor elke Tenant waarvoor de app tokens aanvraagt. Dit is niet langer een vereiste in MSAL. In MSAL kunt u een enkele instantie van `MSALPublicClientApplication` maken en gebruiken voor elke Aad-Cloud en organisatie door een andere instantie op te geven voor acquireToken-en acquireTokenSilent-aanroepen.
+In ADAL maakt u afzonderlijke exemplaren van `ADAuthenticationContext` voor elke Tenant waarvoor de app tokens aanvraagt. Dit is niet langer een vereiste in MSAL. In MSAL kunt u één exemplaar van `MSALPublicClientApplication` maken en deze gebruiken voor elke AAD-Cloud en organisatie door een andere instantie op te geven voor acquireToken-en acquireTokenSilent-aanroepen.
 
 ## <a name="sso-in-partnership-with-other-sdks"></a>Eenmalige aanmelding in partnerschap met andere Sdk's
 
@@ -207,7 +208,7 @@ MSAL kan op macOS een eenmalige aanmelding uitvoeren met andere MSAL voor iOS-en
 
 MSAL op iOS biedt ook ondersteuning voor twee andere typen SSO:
 
-* Eenmalige aanmelding via de webbrowser. MSAL voor IOS biedt `ASWebAuthenticationSession`ondersteuning voor SSO via cookies die worden gedeeld tussen andere apps op het apparaat en met name de Safari-browser.
+* Eenmalige aanmelding via de webbrowser. MSAL voor iOS ondersteunt `ASWebAuthenticationSession`, waarmee SSO wordt geboden via cookies die worden gedeeld tussen andere apps op het apparaat en met name de Safari-browser.
 * Eenmalige aanmelding via een verificatie Broker. Op een iOS-apparaat Microsoft Authenticator fungeren als de verificatie Broker. Het kan beleid voor voorwaardelijke toegang volgen, zoals het vereisen van een compatibel apparaat, en eenmalige aanmelding bieden voor geregistreerde apparaten. MSAL Sdk's die beginnen met versie 0.3.0 ondersteunen standaard een Broker.
 
 ## <a name="intune-mam-sdk"></a>InTune MAM SDK
@@ -229,9 +230,9 @@ De ADAL-en MSAL-samen werking tussen meerdere toepassingen wordt volledig onders
 
 U hoeft uw bestaande AAD-toepassing niet te wijzigen om over te scha kelen naar MSAL en AAD-accounts in te scha kelen. Als uw ADAL-toepassing echter geen brokered-verificatie ondersteunt, moet u een nieuwe omleidings-URI voor de toepassing registreren voordat u kunt overschakelen naar MSAL.
 
-De omleidings-URI moet de volgende `msauth.<app.bundle.id>://auth`indeling hebben:. Vervang `<app.bundle.id>` door de bundel-id van uw toepassing. Geef de omleidings-URI op in de [Azure Portal](https://aka.ms/MobileAppReg).
+De omleidings-URI moet de volgende indeling hebben: `msauth.<app.bundle.id>://auth`. Vervang `<app.bundle.id>` door de bundel-ID van uw toepassing. Geef de omleidings-URI op in de [Azure Portal](https://aka.ms/MobileAppReg).
 
-Alleen voor iOS, ter ondersteuning van op certificaten gebaseerde verificatie, moet een extra omleidings-URI worden geregistreerd in uw toepassing en de Azure Portal in de `msauth://code/<broker-redirect-uri-in-url-encoded-form>`volgende indeling:. Bijvoorbeeld: `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+Alleen voor iOS, ter ondersteuning van op certificaten gebaseerde verificatie, moet een extra omleidings-URI worden geregistreerd in uw toepassing en de Azure Portal in de volgende indeling: `msauth://code/<broker-redirect-uri-in-url-encoded-form>`. Bijvoorbeeld: `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
 We raden aan dat alle apps beide omleidings-Uri's registreren.
 
@@ -245,7 +246,7 @@ U kunt de MSAL-SDK toevoegen aan uw app met behulp van uw favoriete pakket behee
 
 ### <a name="update-your-apps-infoplist-file"></a>Het bestand info. plist van uw app bijwerken
 
-Voeg voor alleen iOS het omleidings-URI-schema van uw toepassing toe aan het bestand info. plist. Voor ADAL Broker-compatibele apps moet deze al aanwezig zijn. Het standaard-URI-schema voor MSAL omleiding heeft de `msauth.<app.bundle.id>`volgende indeling:.  
+Voeg voor alleen iOS het omleidings-URI-schema van uw toepassing toe aan het bestand info. plist. Voor ADAL Broker-compatibele apps moet deze al aanwezig zijn. Het standaard-URI-schema voor MSAL omleiding heeft de volgende indeling: `msauth.<app.bundle.id>`.  
 
 ```xml
 <key>CFBundleURLSchemes</key>
@@ -254,7 +255,7 @@ Voeg voor alleen iOS het omleidings-URI-schema van uw toepassing toe aan het bes
 </array>
 ```
 
-Voeg volgende schema's toe aan de info. plist van uw `LSApplicationQueriesSchemes`app onder.
+Voeg volgende schema's toe aan de info. plist van uw app onder `LSApplicationQueriesSchemes`.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -285,7 +286,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-Call `SceneDelegate` back in het bestand plaatsen.
+**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-call back in het `SceneDelegate`-bestand plaatsen.
 Als u zowel UISceneDelegate als UIApplicationDelegate voor compatibiliteit met oudere iOS-versies ondersteunt, moet MSAL call back in beide bestanden worden geplaatst.
 
 Doel-C:
@@ -326,12 +327,12 @@ MSAL slaat standaard de tokens van uw app op in de iOS-of macOS-sleutel hanger.
 
 Het in cache opslaan van tokens inschakelen:
 1. Zorg ervoor dat uw toepassing correct is ondertekend
-2. Ga naar het **tabblad** > Xcode-project instellingen > mogelijkheden het**delen van sleutel hanger inschakelen**
-3. Klik **+** en voer een vermelding voor de **sleutel keten groep** in: 3. a voor IOS, Voer `com.microsoft.adalcache` 3. b in voor macOS ENTER`com.microsoft.identity.universalstorage`
+2. Ga naar het tabblad Xcode-project instellingen > **mogelijkheden** > het **delen van sleutel hanger inschakelen**
+3. Klik op **+** en voer een van de volgende **sleutel keten groepen** in: 3. a voor IOS, voer `com.microsoft.adalcache` 3. b in voor macOS Enter `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>MSALPublicClientApplication maken en overschakelen naar de acquireToken-en acquireTokeSilent-aanroepen
 
-U kunt maken `MSALPublicClientApplication` met de volgende code:
+U kunt `MSALPublicClientApplication` maken met de volgende code:
 
 Doel-C:
 
@@ -407,7 +408,7 @@ do {
 
 
 
-Als er een account wordt gevonden, roept u `acquireTokenSilent` de MSAL-API aan:
+Als er een account wordt gevonden, roept u de MSAL-`acquireTokenSilent`-API aan:
 
 Doel-C:
 

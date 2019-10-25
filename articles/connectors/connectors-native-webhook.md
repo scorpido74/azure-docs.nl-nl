@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264338"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804258"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
 
@@ -75,7 +75,7 @@ Deze ingebouwde trigger registreert een call back-URL met de opgegeven service e
 
 1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
 
-   Zie [HTTP-triggers en-acties verifiëren](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)voor meer informatie over de beschik bare verificatie typen voor http-webhooks.
+   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
 
 1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
@@ -111,7 +111,7 @@ Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service gere
 
 1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
 
-   Zie [HTTP-triggers en-acties verifiëren](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)voor meer informatie over de beschik bare verificatie typen voor http-webhooks.
+   Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
 
 1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 

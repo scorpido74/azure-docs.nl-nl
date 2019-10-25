@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051442"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808408"
 ---
 # <a name="what-are-authentication-methods"></a>Wat zijn verificatiemethoden?
 
@@ -33,7 +33,7 @@ Micro soft raadt beheerders ten zeerste aan dat gebruikers meer dan het minimale
 | E-mailadres | Alleen SSPR |
 | Microsoft Authenticator-app | MFA en SSPR |
 | OATH-hardware-token | Open bare Preview voor MFA en SSPR |
-| SMS | MFA en SSPR |
+| Sms | MFA en SSPR |
 | Spraakoproep | MFA en SSPR |
 | App-wachtwoorden | Alleen in bepaalde gevallen MFA |
 
@@ -41,7 +41,7 @@ Micro soft raadt beheerders ten zeerste aan dat gebruikers meer dan het minimale
 
 |     |
 | --- |
-| OATH-hardware-tokens voor MFA en SSPR zijn open bare preview-functies van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -previews voor meer informatie over Previews|
+| OATH-hardware-tokens voor MFA en SSPR zijn open bare preview-functies van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
 |     |
 
 ## <a name="password"></a>Wachtwoord
@@ -98,7 +98,7 @@ Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi n
 
 Alle vooraf gedefinieerde beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Office 365-talen op basis van de browser land instelling van de gebruiker.
 
-### <a name="custom-security-questions"></a>Aangepaste beveiligingsvragen
+### <a name="custom-security-questions"></a>Aangepaste beveiligings vragen
 
 Aangepaste beveiligings vragen zijn niet gelokaliseerd. Alle aangepaste vragen worden weer gegeven in dezelfde taal als die in de gebruikers interface voor beheer, zelfs als de browser land instelling van de gebruiker verschillend is. Als u gelokaliseerde vragen nodig hebt, moet u de vooraf gedefinieerde vragen gebruiken.
 
@@ -123,10 +123,10 @@ Micro soft adviseert het gebruik van een e-mail account waarvoor het Azure AD-wa
 
 De Microsoft Authenticator-app biedt een extra beveiligings niveau voor uw Azure AD-werk-of school account of uw Microsoft-account.
 
-De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) en [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
+De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) en [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 > [!NOTE]
-> Gebruikers kunnen hun mobiele app niet registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel. In plaats daarvan kunnen gebruikers hun mobiele app registreren [https://aka.ms/mfasetup](https://aka.ms/mfasetup) op of in de preview-versie van [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)de registratie van beveiligings gegevens op.
+> Gebruikers kunnen hun mobiele app niet registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel. In plaats daarvan kunnen gebruikers hun mobiele app registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) of in de preview-versie van de registratie van beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
 ### <a name="notification-through-mobile-app"></a>Melding via mobiele app
@@ -144,7 +144,7 @@ Als u het gebruik van beide meldingen via de mobiele app en de verificatie code 
 > [!NOTE]
 > Als uw organisatie mede werkers heeft in of reist naar China, werkt de **melding via de mobiele app** -methode op **Android-apparaten** niet in dat land. Alternatieve methoden moeten beschikbaar worden gemaakt voor deze gebruikers.
 
-### <a name="verification-code-from-mobile-app"></a>Verificatiecode via mobiele app
+### <a name="verification-code-from-mobile-app"></a>Verificatie code uit de mobiele app
 
 De Microsoft Authenticator-app of andere apps van derden kunnen worden gebruikt als een software token voor het genereren van een OATH-verificatie code. Nadat u uw gebruikers naam en wacht woord hebt ingevoerd, voert u de code die door de app is opgegeven, in het aanmeldings scherm in. De verificatie code biedt een tweede vorm van verificatie.
 
@@ -160,7 +160,7 @@ OATH is een open standaard die aangeeft hoe OTP-codes (one-time password) worden
 
 ![OATH-tokens uploaden naar de Blade van de MFA-server OATH-tokens](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
-OATH-hardware-tokens worden ondersteund als onderdeel van een open bare preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -previews voor meer informatie over Previews
+OATH-hardware-tokens worden ondersteund als onderdeel van een open bare preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews
 
 Wanneer de tokens zijn verkregen, moeten ze worden geüpload in een CSV-bestand (Comma-Separated Values), met inbegrip van de UPN, het serie nummer, de geheime sleutel, het tijds interval, de fabrikant en het model, zoals in het voor beeld hieronder wordt weer gegeven.
 
@@ -172,7 +172,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 > [!NOTE]
 > Zorg ervoor dat u de rij met koppen in het CSV-bestand opneemt, zoals hierboven wordt weer gegeven.
 
-Als een beheerder zich heeft geformatteerd als een CSV-bestand, kan deze zich vervolgens aanmelden bij de Azure Portal en naar **Azure Active Directory**, **MFA-server**, **OATH**-TOKENs gaan en het resulterende CSV-bestand uploaden.
+Als een beheerder zich heeft geformatteerd als een CSV-bestand, kan deze zich vervolgens aanmelden bij de Azure Portal en naar **Azure Active Directory**, **MFA-server**, **OATH-tokens**gaan en het resulterende CSV-bestand uploaden.
 
 Afhankelijk van de grootte van het CSV-bestand kan het enkele minuten duren voordat het proces is uitgevoerd. Klik op de knop **vernieuwen** om de huidige status op te halen. Als het bestand fouten bevat, kunt u een CSV-bestand downloaden met een lijst met fouten die u kunt oplossen.
 
@@ -180,13 +180,13 @@ Zodra er fouten zijn opgelost, kan de beheerder elke sleutel activeren door te k
 
 Gebruikers kunnen een combi natie hebben van Maxi maal vijf OATH-hardware-tokens of verificator-toepassingen, zoals de Microsoft Authenticator-app die op elk gewenst moment is geconfigureerd voor gebruik.
 
-## <a name="phone-options"></a>Telefoonopties
+## <a name="phone-options"></a>Telefoon opties
 
-### <a name="mobile-phone"></a>Telefoon (mobiel)
+### <a name="mobile-phone"></a>Mobiele telefoon
 
 Er zijn twee opties beschikbaar voor gebruikers met mobiele telefoons.
 
-Als gebruikers niet willen dat hun mobiele telefoon nummer wordt weer gegeven in de adres lijst, maar ze nog steeds willen gebruiken voor het opnieuw instellen van wacht woorden, moeten beheerders deze niet in de adres lijst invullen. Gebruikers moeten hun kenmerk voor authenticatie via de [registratie portal voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup)invullen. Beheerders kunnen deze informatie zien in het profiel van de gebruiker, maar ze worden niet elders gepubliceerd.
+Als gebruikers niet willen dat hun mobiele telefoon nummer wordt weer gegeven in de adres lijst, maar ze nog steeds willen gebruiken voor het opnieuw instellen van wacht woorden, moeten beheerders deze niet in de adres lijst invullen. Gebruikers moeten hun kenmerk voor **authenticatie** via de [registratie portal voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup)invullen. Beheerders kunnen deze informatie zien in het profiel van de gebruiker, maar ze worden niet elders gepubliceerd.
 
 Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld + 1 4255551234.
 
@@ -201,14 +201,14 @@ Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Mult
 
 Er wordt een SMS-bericht verzonden naar het mobiele telefoon nummer met een verificatie code. Voer de verificatie code in die is opgegeven in de aanmeldings interface om door te gaan.
 
-#### <a name="phone-call"></a>Telefoonoproep
+#### <a name="phone-call"></a>Telefoon oproep
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Vraag de oproep af en druk op # in het telefoon blok om te verifiëren
 
 > [!IMPORTANT]
 > Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
 
-### <a name="office-phone"></a>Telefoon (werk)
+### <a name="office-phone"></a>Office Phone
 
 Er wordt een automatische telefoon oproep gedaan naar het telefoon nummer dat u opgeeft. Beantwoord het gesprek en druk op # in het telefoon blok om te verifiëren.
 
@@ -243,7 +243,7 @@ Algemene problemen met betrekking tot verificatie methoden met behulp van een te
 * Defecte telecommunicatie providers (geen telefoon invoer gevonden, ontbrekende DTMF-Toon problemen, geblokkeerde beller-ID op meerdere apparaten of geblokkeerde SMS-computers op meerdere apparaten)
    * Micro soft gebruikt meerdere telecom providers om telefoon gesprekken en SMS-berichten voor verificatie te routeren. Als een van de bovenstaande problemen wordt weer gegeven, kan een gebruiker de methode ten minste 5 keer binnen vijf minuten gebruiken en de gegevens van die gebruiker beschikbaar hebben als u contact opneemt met micro soft ondersteuning.
 
-## <a name="app-passwords"></a>Appwachtwoorden
+## <a name="app-passwords"></a>App-wacht woorden
 
 Bepaalde niet-browser-apps ondersteunen multi-factor Authentication niet, als een gebruiker is ingeschakeld voor multi-factor Authentication en probeert om niet-browser-apps te gebruiken, kunnen ze niet worden geverifieerd. Met een app-wacht woord kunnen gebruikers blijven verifiëren
 

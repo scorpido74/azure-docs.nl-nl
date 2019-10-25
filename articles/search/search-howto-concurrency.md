@@ -1,29 +1,28 @@
 ---
-title: Gelijktijdige schrijf bewerkingen naar resources beheren-Azure Search
-description: Gebruik optimistische gelijktijdigheid om te voor komen dat er bij het bijwerken of verwijderen van Azure Search indexen, Indexeer functies en gegevens bronnen Mid-Air botsingen worden vermeden.
-author: HeidiSteen
+title: Gelijktijdige schrijf bewerkingen naar resources beheren
+titleSuffix: Azure Cognitive Search
+description: Gebruik optimistische gelijktijdigheid om te voor komen dat er Mid-Air botsingen worden opgevolgd voor updates of verwijderingen van Azure Cognitive Search indexen, Indexeer functies en gegevens bronnen.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656725"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792221"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Gelijktijdigheid beheren in Azure Search
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Gelijktijdigheid beheren in azure Cognitive Search
 
-Bij het beheren van Azure Search resources, zoals indexen en gegevens bronnen, is het belang rijk om bronnen veilig bij te werken, met name als bronnen gelijktijdig worden geopend door verschillende onderdelen van uw toepassing. Wanneer twee clients gelijktijdig een resource bijwerken zonder coördinatie, zijn race voorwaarden mogelijk. Azure Search biedt een *optimistisch gelijktijdigheids model*om dit te voor komen. Er zijn geen vergren delingen op een resource. In plaats daarvan is er een ETag voor elke resource waarmee de resource versie wordt geïdentificeerd, zodat u aanvragen kunt bezorgen die onbedoelde overschrijvingen voor komen.
+Bij het beheren van Azure Cognitive Search resources, zoals indexen en gegevens bronnen, is het belang rijk om bronnen veilig bij te werken, met name als bronnen gelijktijdig worden geopend door verschillende onderdelen van uw toepassing. Wanneer twee clients gelijktijdig een resource bijwerken zonder coördinatie, zijn race voorwaarden mogelijk. Om dit te voor komen, biedt Azure Cognitive Search een *optimistisch gelijktijdigheids model*. Er zijn geen vergren delingen op een resource. In plaats daarvan is er een ETag voor elke resource waarmee de resource versie wordt geïdentificeerd, zodat u aanvragen kunt bezorgen die onbedoelde overschrijvingen voor komen.
 
 > [!Tip]
-> Conceptuele code in een [voorbeeld C# oplossing](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) legt uit hoe gelijktijdigheids beheer werkt in azure Search. De code maakt voor waarden die gelijktijdigheids beheer aanroepen. Lees het [onderstaande code fragment](#samplecode) is waarschijnlijk voldoende voor de meeste ontwikkel aars, maar als u het wilt uitvoeren, bewerkt u appSettings. json om de service naam en een beheer-API-sleutel toe te voegen. Op basis van de service `http://myservice.search.windows.net`-URL van is `myservice`de service naam.
+> Conceptuele code in een [voorbeeld C# oplossing](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) legt uit hoe Gelijktijdigheids beheer werkt in azure Cognitive Search. De code maakt voor waarden die gelijktijdigheids beheer aanroepen. Lees het [onderstaande code fragment](#samplecode) is waarschijnlijk voldoende voor de meeste ontwikkel aars, maar als u het wilt uitvoeren, bewerkt u appSettings. json om de service naam en een beheer-API-sleutel toe te voegen. Als een service-URL van `http://myservice.search.windows.net`, is de naam van de service `myservice`.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Optimistische gelijktijdigheid wordt geïmplementeerd via controle van toegangs voorwaarden in API-aanroepen die schrijven naar indexen, Indexeer functies, gegevens bronnen en synonymMap-resources.
 
@@ -32,7 +31,7 @@ Alle resources hebben een [*entity tag (ETAG)* ](https://en.wikipedia.org/wiki/H
 + De REST API gebruikt een [ETAG](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) op de aanvraag header.
 + De .NET SDK stelt de ETag in via een accessCondition-object, waarbij de [if-match | If-match-geen-header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) voor de resource. Elk object dat wordt overgenomen van [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) heeft een accessCondition-object.
 
-Telkens wanneer u een resource bijwerkt, wordt de ETag automatisch gewijzigd. Wanneer u gelijktijdigheids beheer implementeert, hoeft u alleen maar een voor waarde voor de update aanvraag te plaatsen waarvoor de externe resource dezelfde ETag moet hebben als de kopie van de resource die u op de client hebt gewijzigd. Als een gelijktijdig proces de externe resource al heeft gewijzigd, komt de ETag niet overeen met de voor waarde en mislukt de aanvraag met HTTP 412. Als u de .NET SDK gebruikt, wordt dit manifest als een `CloudException` locatie waar de `IsAccessConditionFailed()` extensie methode True retourneert.
+Telkens wanneer u een resource bijwerkt, wordt de ETag automatisch gewijzigd. Wanneer u gelijktijdigheids beheer implementeert, hoeft u alleen maar een voor waarde voor de update aanvraag te plaatsen waarvoor de externe resource dezelfde ETag moet hebben als de kopie van de resource die u op de client hebt gewijzigd. Als een gelijktijdig proces de externe resource al heeft gewijzigd, komt de ETag niet overeen met de voor waarde en mislukt de aanvraag met HTTP 412. Als u de .NET SDK gebruikt, wordt dit manifest als `CloudException` waarbij de `IsAccessConditionFailed()` extensie methode True retourneert.
 
 > [!Note]
 > Er is slechts één mechanisme voor gelijktijdigheid. Deze wordt altijd gebruikt, ongeacht welke API wordt gebruikt voor resource-updates.
@@ -51,7 +50,7 @@ De volgende code toont accessCondition controles op belang rijke update bewerkin
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ De volgende code toont accessCondition controles op belang rijke update bewerkin
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ De volgende code toont accessCondition controles op belang rijke update bewerkin
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,7 +169,7 @@ De volgende code toont accessCondition controles op belang rijke update bewerkin
 
 Een ontwerp patroon voor de implementatie van optimistische gelijktijdigheid moet een lus bevatten die de controle van de toegangs voorwaarde opnieuw probeert, een test voor de toegangs voorwaarde en eventueel een bijgewerkte bron ophalen voordat de wijzigingen opnieuw moeten worden toegepast.
 
-Dit code fragment illustreert de toevoeging van een synonymMap aan een index die al bestaat. Deze code is afkomstig uit [het C# synoniem voor beeld voor Azure Search](search-synonyms-tutorial-sdk.md).
+Dit code fragment illustreert de toevoeging van een synonymMap aan een index die al bestaat. Deze code is afkomstig uit [het C# synoniem voor beeld voor Azure Cognitive Search](search-synonyms-tutorial-sdk.md).
 
 Met het fragment wordt de index "Hotels" opgehaald, de object versie wordt gecontroleerd op een update bewerking, wordt een uitzonde ring gegenereerd als de voor waarde is mislukt en wordt de bewerking vervolgens opnieuw geprobeerd (Maxi maal drie keer), te beginnen met het ophalen van index van de server om de meest recente versie te verkrijgen.
 
@@ -217,6 +216,6 @@ Wijzig een van de volgende voor beelden om ETags-of AccessCondition-objecten op 
 
 ## <a name="see-also"></a>Zie ook
 
-[Algemene HTTP-aanvraag en antwoord headers](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[index bewerkingen (rest API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Algemene HTTP-aanvraag-en antwoord headers](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP-status codes
+-](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [index bewerkingen (rest API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

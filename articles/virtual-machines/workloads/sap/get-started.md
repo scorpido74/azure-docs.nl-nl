@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/16/2019
+ms.date: 10/21/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99e3cbc157817321e41a273b2bcf31128d71db18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b857ea5380fb13f8c8b1ff30b9dd9d8b6c723c2
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431027"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809676"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,7 +120,10 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
-- 10/16/2019: verbroken koppelingen herstellen in [back-up en herstellen](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-backup-restore)
+- 10/22/2019: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge Beschik baarheid voor SAP NetWeaver op azure vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Hoge beschik BAARHEID voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [hoge Beschik baarheid van IBM Db2 LUW op Azure-vm's in Suse Linux Enterprise Server met pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), en [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) voor de detectie beveiliging van Azure Load Balancer
+- De sectie en koptekst van de sectie ANF wijzigen in [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- 10/21/2019: release van [SAP Hana uitschalen met stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- 10/16/2019: verbroken koppelingen herstellen in [back-up en herstellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)
 - 10/16/2019: Wijzig het minimale aanbevolen besturings systeem van SLES 12 SP3 in SLES 12 SP4 in [hoge Beschik baarheid van IBM DB2 LUW op Azure-vm's op SuSE Linux Enterprise Server met pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)
 - 10/11/2019: wijzigingen in de configuratie van ultra Disk Storage en de introductie van ANF in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: wijziging in grafische afbeeldingen van [Azure proximity-plaatsings groepen voor een optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om meer duidelijkheid te krijgen
@@ -129,8 +132,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 - 09/17/2019: wijziging in de hand leiding voor planning en implementatie van NetWeaver om de voor waarden van de VM-extensie voor SAP samen te voegen  
 - 08/22/2019: wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) voor het bijwerken van de url's voor het maken van aangepaste rollen  
 - 08/16/2019: wijzigingen in het [instellen van pacemaker op Red Hat Enterprise Linux in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) om klanten eraan te herinneren de acties in de aangepaste rol bij te werken, als een update naar de nieuwe versie van de Azure Fence-agent wordt uitgevoerd  
-- 08/15/2019: wijzigingen in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om de algemene Beschik baarheid van ultra disk (voorheen Ultra-SSD) weer te geven
-- 08/01/2019: wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om wijzigingen te integreren die specifiek zijn voor SLES 15 
+- 08/15/2019: wijzigingen in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om de algemene Beschik baarheid van ultra disk (voorheen Ultra-SSD) weer te geven
+- 08/01/2019: wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om wijzigingen te integreren die specifiek zijn voor SLES 15 
 - 07/23/2019: wijzigingen in [cluster een SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een bestands share in azure](sap-high-availability-guide-wsfc-file-share.md) om ondersteuning te geven voor opslag ruimte Direct door Azure site Recovery Services
 - 07/14/2019: release van [Azure proximity-plaatsings groepen voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md)
 - 07/11/2019: wijzigingen in diverse documenten met betrekking tot HANA grote instanties om revisie 4 van HANA grote instanties te behandelen

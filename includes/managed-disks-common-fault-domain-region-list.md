@@ -4,25 +4,25 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 984b6aed6ae1b36432b932afb7d0f9dfb0b2dc15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72247101"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72783559"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Aantal foutdomeinen per regio
 
 | Regio              | Maximum aantal foutdomeinen  |
 |---------------------|-------------------------|
-| US - oost             | 3                       |
-| US - oost 2           | 3                       |
-| US - west             | 3                       |
-| US - west 2           | 2                       |
-| US - centraal          | 3                       |
-| US - noord-centraal    | 3                       |
-| US - zuid-centraal    | 3                       |
-| US - west-centraal     | 2                       |
+| VS - oost             | 3                       |
+| VS - oost 2           | 3                       |
+| VS - west             | 3                       |
+| VS - west 2           | 2                       |
+| VS - centraal          | 3                       |
+| VS - noord-centraal    | 3                       |
+| VS - zuid-centraal    | 3                       |
+| VS - west-centraal     | 2                       |
 | Canada-Midden      | 3                       |
 | Canada-Oost         | 2                       |
 |                     |                         |
@@ -46,16 +46,16 @@ ms.locfileid: "72247101"
 | China - oost 2        | 2                       |
 | China - noord         | 2                       |
 | China - noord 2       | 2                       |
-|
+|                     |                         |
 | Australië Oost      | 2                       |
 | Australië Zuidoost | 2                       |
-| Australië, midden   | 2                       |
-| Australië, midden 2 | 2                       |
+| Australië - centraal   | 2                       |
+| Australië - centraal 2 | 2                       |
 |                     |                         |
 | Brazilië - Zuid        | 2                       |
 |                     |                         |
-| Verenigde Staten (Overheid Virginia)     | 2                       |
-| VS (overheid) - Texas        | 2                       |
-| VS (overheid) - Arizona      | 2                       |
-| VS DoD - centraal      | 2                       |
-| Verenigde Staten (Defensie oost)         | 2                       |
+| US Gov - Virginia     | 2                       |
+| US Gov - Texas        | 2                       |
+| US Gov - Arizona      | 2                       |
+| US DoD - centraal      | 2                       |
+| US DoD - oost         | 2                       |

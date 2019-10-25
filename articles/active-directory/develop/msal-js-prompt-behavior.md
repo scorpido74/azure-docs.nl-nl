@@ -1,6 +1,7 @@
 ---
-title: Vragen gedrag in interactieve aanvragen (Microsoft Authentication Library voor JavaScript) | Azure
-description: Meer informatie over het gedrag van de vragen in interactieve aanroepen met behulp van de Microsoft Authentication Library voor JavaScript (MSAL.js) aan te passen.
+title: Vraag gedrag in interactieve aanvragen (micro soft-verificatie bibliotheek voor Java script)
+titleSuffix: Microsoft identity platform
+description: Meer informatie over het aanpassen van prompt gedrag in interactieve aanroepen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,20 +18,20 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0d736345f312f1a1d6f8f029b41429a3e5f0a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42d6c4415a3eeb28c999d95b838c6dd7c0f6e606
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544272"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803026"
 ---
-# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Gedrag vragen in MSAL.js interactieve aanvragen
+# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Vraag gedrag in interactieve aanvragen van MSAL. js
 
-Wanneer een gebruiker heeft gemaakt van een actief Azure AD-sessie met meerdere gebruikersaccounts, wordt de Azure AD-aanmeldingspagina standaard de gebruiker gevraagd een account selecteren voordat u doorgaat met het aanmelden. Een account selecteren als er slechts één geverifieerde sessie met Azure AD-ervaring zichtbaar niet voor gebruikers.
+Wanneer een gebruiker een actieve Azure AD-sessie met meerdere gebruikers accounts heeft gemaakt, wordt de gebruiker door de aanmeldings pagina van Azure AD standaard gevraagd een account te selecteren voordat u zich aanmeldt. Gebruikers zien geen account selectie-ervaring als er slechts één geverifieerde sessie is met Azure AD.
 
-De MSAL.js-bibliotheek (te beginnen in v0.2.4) verzendt geen een aanvraagpromptparameter tijdens de interactieve aanvragen (`loginRedirect`, `loginPopup`, `acquireTokenRedirect` en `acquireTokenPopup`), en alle gedrag vragen daarmee niet wordt afgedwongen. Voor op de achtergrond token aanvragen met behulp van de `acquireTokenSilent` methode, MSAL.js geeft een prompt parameter is ingesteld op `none`.
+De MSAL. JS-bibliotheek (vanaf v 0.2.4) verzendt geen prompt parameter tijdens de interactieve aanvragen (`loginRedirect`, `loginPopup`, `acquireTokenRedirect` en `acquireTokenPopup`), en dwingt daardoor geen vraag gedrag af. Voor Silent token aanvragen met behulp van de `acquireTokenSilent` methode stuurt MSAL. js een prompt parameter ingesteld op `none`.
 
-U kunt het gedrag van de vragen voor de interactieve aanvragen door de instelling voor de parameter prompt in de parameters van de aanvraag doorgegeven aan de methoden op basis van uw toepassingsscenario, beheren. Bijvoorbeeld, als u wilt aanroepen van de ervaring van de selectie van account:
+Op basis van uw toepassings scenario kunt u het prompt gedrag voor de interactieve aanvragen bepalen door de para meter prompt in te stellen in de aanvraag parameters die aan de methoden zijn door gegeven. Als u bijvoorbeeld de account selectie wilt aanroepen:
 
 ```javascript
 var request = {
@@ -42,16 +43,16 @@ userAgentApplication.loginRedirect(request);
 ```
 
 
-De volgende vragen waarden kunnen worden doorgegeven bij het verifiëren met Azure AD:
+De volgende prompt waarden kunnen worden door gegeven bij de verificatie met Azure AD:
 
-**Aanmelding:** Deze waarde wordt de gebruiker referenties invoert op de verificatieaanvraag forceren.
+**aanmelding:** Met deze waarde wordt de gebruiker gedwongen om referenties in te voeren voor de verificatie aanvraag.
 
-**select_account:** Deze waarde wordt voorzien van de gebruiker een selectie ervaring met alle accounts in de sessie.
+**select_account:** Met deze waarde krijgt de gebruiker een account selectie-ervaring met een lijst met alle accounts in de sessie.
 
-**toestemming geven:** Deze waarde roept de dialoog van de OAuth-toestemming waarmee gebruikers machtigen om de app.
+**toestemming:** Met deze waarde wordt het dialoog venster OAuth-toestemming aangeroepen waarmee gebruikers machtigingen voor de app kunnen verlenen.
 
-**Geen:** Deze waarde zorgt ervoor dat de gebruiker een interactieve prompt niet te zien. Het verdient aanbeveling niet moeten worden doorgegeven van deze waarde aan interactieve methoden in MSAL.js omdat het kan onverwacht gedrag. Gebruik in plaats daarvan de `acquireTokenSilent` methode om te bereiken op de achtergrond aanroepen.
+**geen:** Met deze waarde wordt ervoor gezorgd dat de gebruiker geen interactieve prompt ziet. U kunt deze waarde het beste niet door geven aan interactieve methoden in MSAL. js, omdat deze mogelijk onverwachte gedragingen heeft. Gebruik in plaats daarvan de `acquireTokenSilent` methode voor het bezorgen van Silent-aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de `prompt` parameter in de [impliciete goedkeuring voor OAuth 2.0](v2-oauth2-implicit-grant-flow.md) protocol welke MSAL.js-bibliotheek wordt gebruikt.
+Lees meer over de para meter `prompt` in het [OAuth 2,0 impliciet Grant](v2-oauth2-implicit-grant-flow.md) -protocol dat wordt gebruikt door de MSAL. JS-bibliotheek.

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 60127a8aebaf45969ba78a65676093210ea6de78
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828189"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804217"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informatie over MSP-partners voor Azure-netwerken
 
@@ -26,7 +26,7 @@ Klanten kunnen MSP-Managed Services-aanbiedingen kopen op de Azure Marketplace o
 
 ## <a name="msp"></a>MSP-partners voor Azure Networking
 
-Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud netwerk services die worden aangeboden door Azure Networking MSP-partners. Als uw Cloud Network Services-partner niet wordt vermeld in de onderstaande sectie, laat u de provider contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail ManagedVirtualWAN@microsoft.comte verzenden naar. 
+Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud netwerk services die worden aangeboden door Azure Networking MSP-partners. Als uw Cloud Network Services-partner niet wordt vermeld in de onderstaande sectie, laat u de provider contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail naar ManagedVirtualWAN@microsoft.comte sturen. 
 
 [ANT groep UK](https://www.ans.co.uk/)
 
@@ -38,7 +38,7 @@ Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud n
 
 [Equinix](https://www.equinix.com/)
 
-[InterCloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
+[InterCloud](https://intercloud.com/partners/get-to-azure-via-expressroute/)
 
 [IIJ](https://www.iij.ad.jp/biz/cloudex/)
 

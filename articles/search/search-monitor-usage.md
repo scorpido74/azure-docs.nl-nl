@@ -1,24 +1,24 @@
 ---
-title: De metrische gegevens van het resource gebruik en de query voor een zoek service bewaken-Azure Search
-description: Schakel logboek registratie in, haal de metrische gegevens van de query activiteit, het resource gebruik en andere systeemgegevens van een Azure Search-service op.
-author: HeidiSteen
+title: Metrische gegevens over resource gebruik en query bewaken
+titleSuffix: Azure Cognitive Search
+description: Schakel logboek registratie in, Bekijk metrische gegevens over de query activiteit, het resource gebruik en andere systeem data van een Azure Cognitive Search-service.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331218"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793491"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Resource verbruik en query activiteit in Azure Search bewaken
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Resource verbruik en query activiteit bewaken in azure Cognitive Search
 
-U kunt op de pagina overzicht van uw Azure Search-service systeem gegevens weer geven over resource gebruik, metrische gegevens opvragen en hoeveel quota beschikbaar zijn voor het maken van meer indexen, Indexeer functies en gegevens bronnen. U kunt ook de portal gebruiken om log Analytics te configureren of een andere resource die wordt gebruikt voor permanente gegevens verzameling. 
+Op de pagina overzicht van de Azure Cognitive Search-service kunt u systeem gegevens weer geven over resource gebruik, metrische gegevens opvragen en hoeveel quota beschikbaar zijn voor het maken van meer indexen, Indexeer functies en gegevens bronnen. U kunt ook de portal gebruiken om log Analytics te configureren of een andere resource die wordt gebruikt voor permanente gegevens verzameling. 
 
 Het instellen van Logboeken is handig voor zelf diagnose en het behouden van de operationele geschiedenis. Intern bestaan er voor een korte periode een logboek op de back-end, voldoende voor onderzoek en analyse als u een ondersteunings ticket hebt. Als u de controle over en toegang wilt hebben tot logboek gegevens, moet u een van de oplossingen instellen die in dit artikel worden beschreven.
 
@@ -52,7 +52,7 @@ Voor taken in de service, zoals het maken van een index of het verwijderen van e
 
 ## <a name="add-on-monitoring-solutions"></a>Bewakings oplossingen voor invoeg toepassingen
 
-Azure Search slaat geen gegevens buiten de beheerde objecten op, wat betekent dat logboek gegevens extern moeten worden opgeslagen. U kunt de onderstaande resources configureren als u logboek gegevens persistent wilt maken. 
+Azure Cognitive Search slaat geen gegevens buiten de beheerde objecten op, wat betekent dat logboek gegevens extern moeten worden opgeslagen. U kunt de onderstaande resources configureren als u logboek gegevens persistent wilt maken. 
 
 De volgende tabel vergelijkt de opties voor het opslaan van Logboeken en het toevoegen van uitgebreide bewaking van service bewerkingen en het uitvoeren van query's op werk belastingen via Application Insights.
 
@@ -64,17 +64,17 @@ De volgende tabel vergelijkt de opties voor het opslaan van Logboeken en het toe
 
 Zowel de Azure Monitor-Logboeken als de Blob-opslag zijn beschikbaar als gratis service, zodat u ze gratis kunt uitproberen voor de levens duur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van de toepassings gegevens onder bepaalde limieten ligt (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
 
-In de volgende sectie wordt stapsgewijs uitgelegd hoe u Azure Blob Storage inschakelt en gebruikt om logboek gegevens te verzamelen en te openen die zijn gemaakt door Azure Search bewerkingen.
+In de volgende sectie wordt stapsgewijs uitgelegd hoe u Azure Blob Storage inschakelt en gebruikt om logboek gegevens te verzamelen en te openen die zijn gemaakt door Azure Cognitive Search bewerkingen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
-Logboek registratie voor indexerings-en query-workloads is standaard uitgeschakeld en is afhankelijk van oplossingen voor het vastleggen van de infra structuur en de lange termijn externe opslag. De enige persistente gegevens in Azure Search zijn de objecten die worden gemaakt en beheerd, waardoor logboeken ergens anders moeten worden opgeslagen.
+Logboek registratie voor indexerings-en query-workloads is standaard uitgeschakeld en is afhankelijk van oplossingen voor het vastleggen van de infra structuur en de lange termijn externe opslag. De enige persistente gegevens in azure Cognitive Search zijn zelf de objecten die worden gemaakt en beheerd, waardoor logboeken ergens anders moeten worden opgeslagen.
 
 In deze sectie leert u hoe u Blob Storage kunt gebruiken voor het opslaan van vastgelegde gebeurtenissen en metrische gegevens.
 
-1. [Maak een opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) als u er nog geen hebt. U kunt deze in dezelfde resource groep plaatsen als Azure Search om het later eenvoudig op te schonen als u alle resources die in deze oefening worden gebruikt wilt verwijderen.
+1. [Maak een opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) als u er nog geen hebt. U kunt deze in dezelfde resource groep als Azure Cognitive Search plaatsen om het later eenvoudig op te schonen als u alle resources die in deze oefening worden gebruikt wilt verwijderen.
 
-   Uw opslag account moet zich in dezelfde regio bevinden als Azure Search.
+   Uw opslag account moet zich in dezelfde regio bevinden als Azure Cognitive Search.
 
 2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **bewaking inschakelen**.
 
@@ -158,14 +158,14 @@ U kunt een JSON-editor gebruiken om het logboek bestand weer te geven. Als u er 
 
 1. Open uw opslag account in Azure Portal. 
 
-2. Klik in het navigatie deel venster aan de linkerkant op **blobs**. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
+2. Klik in het navigatie deel venster aan de linkerkant op **blobs**. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Cognitive Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
 
 3. Klik op omlaag in de maphiërarchie totdat het JSON-bestand is bereikt.  Gebruik het context menu om het bestand te downloaden.
 
 Zodra het bestand is gedownload, opent u het in een JSON-editor om de inhoud weer te geven.
 
 ## <a name="use-system-apis"></a>Systeem-Api's gebruiken
-Zowel de Azure Search REST API als de .NET SDK bieden programmatische toegang tot metrische gegevens van services, index-en indexerings informatie en document tellingen.
+Zowel de Azure Cognitive Search REST API als de .NET SDK bieden programmatische toegang tot metrische gegevens van services, index-en indexerings informatie en document tellingen.
 
 * [Statistieken van services ophalen](/rest/api/searchservice/get-service-statistics)
 * [Index statistieken ophalen](/rest/api/searchservice/get-index-statistics)

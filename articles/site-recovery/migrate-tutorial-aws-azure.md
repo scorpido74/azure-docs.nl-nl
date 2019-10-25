@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984987"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789392"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
@@ -33,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 
 > [!NOTE]
-    > U kunt nu de Azure Migrate-service gebruiken om AWS-exemplaren naar Azure te migreren. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
+> U kunt nu de Azure Migrate-service gebruiken om AWS-exemplaren naar Azure te migreren. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Vereisten
 - Zorg ervoor dat de VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Ondersteunde versies zijn onder andere: 
@@ -59,7 +59,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet een aantal resources gereed hebben in Azure voor gebruik op de gemigreerde EC2-instanties. Het gaat hier om een opslagaccount, een kluis en een virtueel netwerk.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. Azure-VM's worden gemaakt vanuit de opslag wanneer u een failover van on-premises naar Azure uitvoert.
 
@@ -122,11 +122,11 @@ Selecteer op de pagina **Beveiligingsdoel** de volgende waarden:
 
 Wanneer u gereed bent, selecteert u **OK** om naar de volgende sectie te gaan.
 
-### <a name="2-select-deployment-planning"></a>2: Implementatieplanning selecteren
+### <a name="2-select-deployment-planning"></a>2: implementatie planning selecteren
 
 Selecteer in **Hebt u de implementatieplanning uitgevoerd?** de optie **Dat doe ik later**. Selecteer vervolgens **OK**.
 
-### <a name="3-prepare-source"></a>3: Bron voorbereiden
+### <a name="3-prepare-source"></a>3: bron voorbereiden
 
 Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
 
@@ -138,7 +138,7 @@ Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
 
     1. Selecteer onder **Voordat u begint** de optie **De configuratieserver en processerver installeren**. Selecteer vervolgens **Volgende**.
     2. Selecteer in **Softwarelicentie van derden** de optie **Ik ga akkoord met de licentieovereenkomst van de derde partij**, en selecteer vervolgens **Volgende**.
-    3. Selecteer in **Registratie** de optie **Bladeren** en ga naar de locatie waar u het registratiesleutelbestand voor de kluis hebt opgeslagen. Selecteer **Volgende**.
+    3. Selecteer in **Registratie** de optie **Bladeren** en ga naar de locatie waar u het registratiesleutelbestand voor de kluis hebt opgeslagen. Selecteer **Next**.
     4. Selecteer in **Internetinstellingen** de optie **Rechtstreeks verbinding maken met Azure Site Recovery zonder proxyserver**. Selecteer vervolgens **Volgende**.
     5. Op de pagina **Controle op vereisten** worden controles voor verschillende items uitgevoerd. Wanneer dit is voltooid, selecteert u **Volgende**.
     6. Geef in **MySQL-configuratie** de vereiste wachtwoorden op. Selecteer vervolgens **Volgende**.
@@ -149,9 +149,9 @@ Selecteer op de pagina **Bron voorbereiden** de optie **+ Configuratieserver**.
     11. Bij **Voortgang van de installatie** ziet u informatie over hoe de installatie vordert. Wanneer dit is voltooid, selecteert u **Voltooien**. Er wordt een venster weergegeven met daarin een bericht over opnieuw opstarten. Selecteer **OK**. Vervolgens wordt een bericht weergegeven over de wachtwoordzin voor de configuratieserververbinding. Kopieer de wachtwoordzin naar het klembord en sla deze ergens veilig op.
 6. Voer cspsconfigtool.exe uit op de VM om een of meer beheeraccounts op de configuratieserver te maken. Zorg ervoor dat de beheeraccounts beheerdersmachtigingen hebben voor de EC2-instanties die u wilt migreren.
 
-Wanneer u klaar bent met het instellen van de configuratieserver, gaat u terug naar de portal en selecteert u de server die u zojuist hebt gemaakt als **configuratieserver**. Selecteer **OK** om naar 3: Doel voorbereiden te gaan.
+Wanneer u klaar bent met het instellen van de configuratieserver, gaat u terug naar de portal en selecteert u de server die u zojuist hebt gemaakt als **configuratieserver**. Selecteer **OK** om verder te gaan met stap 3: Doel voorbereiden.
 
-### <a name="4-prepare-target"></a>4: Doel voorbereiden
+### <a name="4-prepare-target"></a>4: doel voorbereiden
 
 In deze sectie voert u gegevens in over de resources die u eerder in deze zelfstudie hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).
 
@@ -160,7 +160,7 @@ In deze sectie voert u gegevens in over de resources die u eerder in deze zelfst
 3. Met Site Recovery wordt gecontroleerd of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt. Als het goed is, zijn dit de resources die u eerder in deze zelfstudie hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).
 4. Wanneer u gereed bent, selecteert u **OK**.
 
-### <a name="5-prepare-replication-settings"></a>5: Replicatie-instellingen voorbereiden
+### <a name="5-prepare-replication-settings"></a>5: replicatie-instellingen voorbereiden
 
 Voordat u replicatie kunt inschakelen, moet u replicatiebeleid maken.
 
@@ -230,7 +230,7 @@ Voer de testfailover uit in de portal:
 1. Ga op de pagina voor uw kluis naar **Beveiligde items** > **Gerepliceerde Items**. Selecteer de VM en selecteer vervolgens **Testfailover**.
 2. Selecteer een herstelpunt om voor de failover te gebruiken:
     - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt met Site Recovery. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er sprake is van een lage RTO (Recovery Time Objective).
-    - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM's naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
+    - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
     - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer in **Failover testen** het Azure-doelnetwerk waarmee de virtuele Azure-machines moeten worden verbonden nadat de failover heeft plaatsgevonden. Dit moet het netwerk zijn dat u hebt gemaakt in [Azure-resources voorbereiden](#prepare-azure-resources).

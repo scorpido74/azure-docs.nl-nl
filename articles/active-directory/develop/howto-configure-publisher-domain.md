@@ -1,5 +1,6 @@
 ---
-title: Het domein van de uitgever van een toepassing configureren | Azure
+title: Het domein van de uitgever van een toepassing configureren
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van het domein van de uitgever van een toepassing om gebruikers te laten weten waar hun gegevens worden verzonden.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257932"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803347"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Procedure: Het Uitgever domein van een toepassing (preview-versie) configureren
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Procedure: het domein van de uitgever van een toepassing (preview-versie) configureren
 
 Het domein van de uitgever van een toepassing wordt weer gegeven aan gebruikers op de [toestemming prompt van de toepassing](application-consent-experience.md) om gebruikers te laten weten waar hun gegevens worden verzonden. Multi tenant-toepassingen die na 21 mei 2019 zijn geregistreerd en die geen Publisher-domein hebben, worden weer gegeven als niet- **geverifieerd**. Toepassingen met meerdere tenants zijn toepassingen die ondersteuning bieden voor accounts buiten één organisatie Directory. u kunt bijvoorbeeld alle Azure AD-accounts ondersteunen of alle Azure AD-accounts en persoonlijke micro soft-accounts ondersteunen.
 
@@ -38,7 +39,7 @@ De volgende tabel bevat een overzicht van het standaard gedrag van de domein waa
 
 | Door tenants geverifieerde domeinen | Standaard waarde van het uitgevers domein |
 |-------------------------|----------------------------|
-| null | null |
+| Null | Null |
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (primair) | domain2.com |
 
@@ -69,13 +70,13 @@ Voer de volgende stappen uit om het Uitgever domein van uw app in te stellen.
    - Selecteer **een domein configureren** als u nog geen domein hebt geconfigureerd.
    - Selecteer **domein bijwerken** als er al een domein is geconfigureerd.
 
-Als uw app is geregistreerd in een Tenant, ziet u twee tabbladen waaruit u kunt kiezen: **Selecteer een geverifieerd domein** en **Controleer een nieuw domein**.
+Als uw app is geregistreerd in een Tenant, worden er twee tabbladen weer geven waaruit u kunt kiezen: **Selecteer een geverifieerd domein** en **Controleer of er een nieuw domein**is.
 
 Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een nieuw domein voor uw toepassing te controleren.
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Een nieuw domein voor uw app verifiëren
 
-1. Maak een bestand met `microsoft-identity-association.json` de naam en plak het volgende JSON-code fragment.
+1. Maak een bestand met de naam `microsoft-identity-association.json` en plak het volgende JSON-code fragment.
 
    ```json
    {
@@ -98,7 +99,7 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 - Als uw Tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolg keuzelijst **Selecteer een geverifieerd domein** .
 
 >[!Note]
-> De verwachte header content-type die moet worden geretourneerd, is `application/json`. Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
+> De verwachte header content-type die moet worden geretourneerd, is `application/json`. U ontvangt mogelijk een fout melding zoals hieronder wordt weer gegeven als u iets anders gebruikt, zoals `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

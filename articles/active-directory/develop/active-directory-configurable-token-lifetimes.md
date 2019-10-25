@@ -1,5 +1,6 @@
 ---
-title: Configureer bare levens duur van tokens in Azure Active Directory | Microsoft Docs
+title: Configureer bare levens duur van tokens in Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het instellen van de levens duur voor tokens die zijn uitgegeven door Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024442"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809302"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
@@ -44,11 +45,19 @@ U kunt een beleid instellen als het standaard beleid voor uw organisatie. Het be
 
 ## <a name="token-types"></a>Token typen
 
-U kunt beleid voor levens duur van tokens instellen voor vernieuwings tokens, toegangs tokens, sessie tokens en ID-tokens.
+U kunt beleid voor levens duur van tokens instellen voor vernieuwings tokens, toegangs tokens, SAML-tokens, sessie tokens en ID-tokens.
 
 ### <a name="access-tokens"></a>Toegangstokens
 
 Clients gebruiken toegangs tokens om toegang te krijgen tot een beveiligde bron. Een toegangs token kan alleen worden gebruikt voor een specifieke combi natie van gebruiker, client en resource. Toegangs tokens kunnen niet worden ingetrokken en zijn geldig tot de verval datum. Een kwaadwillende actor die een toegangs token heeft verkregen, kan deze gebruiken voor een omvang van de levens duur. Het aanpassen van de levens duur van een toegangs token is een afweging tussen het verbeteren van de systeem prestaties en het verg Roten van de hoeveelheid tijd die de client toegang behoudt nadat het gebruikers account is uitgeschakeld. De systeem prestaties zijn verbeterd door het aantal keren dat een client een nieuw toegangs token moet verkrijgen te verminderen.  De standaard waarde is 1 uur-na 1 uur moet de client het vernieuwings token gebruiken om (meestal op de achtergrond) een nieuw vernieuwings token en toegangs token te verkrijgen. 
+
+### <a name="saml-tokens"></a>SAML-tokens
+
+SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory.  Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation.    De standaard levensduur van het token is 1 uur. Na en toepassingen perspectief de geldigheids periode van het token wordt opgegeven door de NotOnOrAfter-waarde van de < voor waarden... > element in het token.  Na de geldigheids periode van het token moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
+
+De waarde van NotOnOrAfter kan worden gewijzigd met behulp van de para meter AccessTokenLifetime in een TokenLifetimePolicy.  Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
+
+Houd er rekening mee dat de bevestiging van de NotOnOrAfter die is opgegeven in het <SubjectConfirmationData>-element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
 
 ### <a name="refresh-tokens"></a>Tokens vernieuwen
 
@@ -57,7 +66,7 @@ Wanneer een client een toegangs token verkrijgt om toegang te krijgen tot een be
 Het is belang rijk om onderscheid te maken tussen vertrouwelijke clients en open bare clients, omdat dit van invloed is op hoe lang vernieuwings tokens kunnen worden gebruikt. Zie [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1)voor meer informatie over verschillende typen clients.
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Levens duur van tokens met vertrouwelijke client vernieuwings tokens
-Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, is de standaard levensduur van vernieuwings tokens die aan deze stromen worden verleend `until-revoked`, kan niet worden gewijzigd met behulp van beleid en wordt niet ingetrokken bij het opnieuw instellen van het wacht woord.
+Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, is de standaard levensduur van vernieuwings tokens die aan deze stromen worden verleend, `until-revoked`, kan niet worden gewijzigd met behulp van beleid en wordt niet ingetrokken voor het opnieuw instellen van het wacht woord.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Levens duur van tokens met open bare client vernieuwings tokens
 
@@ -83,20 +92,20 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | --- | --- | --- | --- | --- | --- |
 | Levens duur van toegangs token |AccessTokenLifetime<sup>2</sup> |Toegangs tokens, ID-tokens, SAML2-tokens |1 uur |10 minuten |1 dag |
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
-| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
+| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
-* <sup>2</sup> Als u de micro soft teams-webclient wilt gebruiken, is het raadzaam om AccessTokenLifetime in te stellen op meer dan 15 minuten voor de micro soft-teams.
+* <sup>2</sup> Om ervoor te zorgen dat de webclient van micro soft teams werkt, wordt aanbevolen om AccessTokenLifetime meer dan 15 minuten te houden voor micro soft-teams.
 
 ### <a name="exceptions"></a>Uitzonderingen
 | Eigenschap | Alleen | Standaard |
 | --- | --- | --- |
 | De maximale leeftijd van het vernieuwings token (uitgegeven voor federatieve gebruikers met onvoldoende intrekkings gegevens<sup>1</sup>) |Tokens vernieuwen (uitgegeven voor federatieve gebruikers met onvoldoende intrekkings gegevens<sup>1</sup>) |12 uur |
 | De maximale inactieve tijd voor het vernieuwen van het token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |90 dagen |
-| Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-revoked |
+| Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-ingetrokken |
 
 * <sup>1</sup> Federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen dit korte maximum leeftijd omdat AAD niet kan verifiëren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds goed zijn  Draag. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
 
@@ -112,12 +121,12 @@ Zie [Application and Service Principal Objects in azure Active Directory](app-ob
 
 De geldigheid van een token wordt geëvalueerd op het moment dat het token wordt gebruikt. Het beleid met de hoogste prioriteit voor de toepassing die wordt geopend, treedt in werking.
 
-Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden `80.00:30:00` zijn.  De voor loop-D kan worden verwijderd als de waarde nul is, dus 90 minuten zou `00:90:00` zijn.  
+Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [span](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten worden `80.00:30:00`.  De voorloop D kan worden verwijderd als de waarde nul is, dus 90 minuten `00:90:00`.  
 
 > [!NOTE]
 > Hier volgt een voorbeeld scenario.
 >
-> Een gebruiker wil toegang tot twee webtoepassingen: Webtoepassing A en Web Application B.
+> Een gebruiker wil toegang tot twee webtoepassingen: Web Application A en Web Application B.
 > 
 > Elementen
 > * Beide webtoepassingen bevinden zich in dezelfde bovenliggende organisatie.
@@ -137,56 +146,56 @@ Alle TimeSpans die hier worden gebruikt, zijn ingedeeld C# op basis van het [spa
 
 ## <a name="configurable-policy-property-details"></a>Details van Configureer bare beleids eigenschap
 ### <a name="access-token-lifetime"></a>Levens duur van toegangs token
-**Tekenreeksexpressie** AccessTokenLifetime
+**Teken reeks:** AccessTokenLifetime
 
-**Alleen** Toegangs tokens, ID-tokens
+**Van invloed op:** Toegangs tokens, ID-tokens, SAML-tokens
 
-**Overzicht** Dit beleid bepaalt hoe lang de toegangs-en ID-tokens voor deze bron worden beschouwd als geldig. Het verminderen van de eigenschap levens duur van het toegangs token vermindert het risico dat een toegangs token of ID-token gedurende lange tijd wordt gebruikt door een schadelijke actor. (Deze tokens kunnen niet worden ingetrokken.) De afweging is dat de prestaties nadelig worden beïnvloed, omdat de tokens vaker moeten worden vervangen.
+**Samen vatting:** Dit beleid bepaalt hoe lang de toegangs-en ID-tokens voor deze bron worden beschouwd als geldig. Het verminderen van de eigenschap levens duur van het toegangs token vermindert het risico dat een toegangs token of ID-token gedurende lange tijd wordt gebruikt door een schadelijke actor. (Deze tokens kunnen niet worden ingetrokken.) De afweging is dat de prestaties nadelig worden beïnvloed, omdat de tokens vaker moeten worden vervangen.
 
 ### <a name="refresh-token-max-inactive-time"></a>Maximum aantal inactieve tijd voor het vernieuwen van token
-**Tekenreeksexpressie** MaxInactiveTime
+**Teken reeks:** MaxInactiveTime
 
-**Alleen** Tokens vernieuwen
+**Van invloed op:** Tokens vernieuwen
 
-**Overzicht** Dit beleid bepaalt hoe oud een vernieuwings token kan zijn voordat een client deze niet meer kan gebruiken om een nieuw toegangs-en vernieuwings token paar op te halen wanneer er wordt geprobeerd toegang te krijgen tot deze bron. Omdat een nieuw vernieuwings token meestal wordt geretourneerd wanneer een vernieuwings token wordt gebruikt, voor komt dit beleid dat toegang wordt verkregen als de client toegang tot een bron probeert te krijgen met behulp van het huidige vernieuwings token tijdens de opgegeven periode.
+**Samen vatting:** Dit beleid bepaalt hoe oud een vernieuwings token kan zijn voordat een client deze niet meer kan gebruiken om een nieuw toegangs-en vernieuwings token paar op te halen wanneer er wordt geprobeerd toegang te krijgen tot deze bron. Omdat een nieuw vernieuwings token meestal wordt geretourneerd wanneer een vernieuwings token wordt gebruikt, voor komt dit beleid dat toegang wordt verkregen als de client toegang tot een bron probeert te krijgen met behulp van het huidige vernieuwings token tijdens de opgegeven periode.
 
 Dit beleid dwingt gebruikers die niet actief zijn geweest op hun client om opnieuw te verifiëren om een nieuw vernieuwings token op te halen.
 
 De eigenschap Max. voor het vernieuwings token van de inactieve tijd moet worden ingesteld op een lagere waarde dan de maximale leeftijd van het token met één factor en de maximale leeftijds eigenschappen voor multi-factor Refresh-tokens.
 
 ### <a name="single-factor-refresh-token-max-age"></a>Maximum leeftijd van het token voor eenmalige vernieuwing
-**Tekenreeksexpressie** MaxAgeSingleFactor
+**Teken reeks:** MaxAgeSingleFactor
 
-**Alleen** Tokens vernieuwen
+**Van invloed op:** Tokens vernieuwen
 
-**Overzicht** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van slechts één factor. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment wordt de gebruiker gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
+**Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van slechts één factor. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment wordt de gebruiker gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of kleiner is dan de maximale leeftijds eigenschap van de multi-factor Refresh-token.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Maximum leeftijd van multi-factor Refresh-token
-**Tekenreeksexpressie** MaxAgeMultiFactor
+**Teken reeks:** MaxAgeMultiFactor
 
-**Alleen** Tokens vernieuwen
+**Van invloed op:** Tokens vernieuwen
 
-**Overzicht** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van meerdere factoren. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment worden gebruikers gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
+**Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van meerdere factoren. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment worden gebruikers gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token voor het vernieuwen van één factor.
 
 ### <a name="single-factor-session-token-max-age"></a>Maximum leeftijd van het token voor één factor-sessie
-**Tekenreeksexpressie** MaxAgeSessionSingleFactor
+**Teken reeks:** MaxAgeSessionSingleFactor
 
-**Alleen** Sessie tokens (permanent en niet permanent)
+**Van invloed op:** Sessie tokens (permanent en niet permanent)
 
-**Overzicht** Dit beleid bepaalt hoe lang een gebruiker een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen nadat deze de laatste keer is geverifieerd met behulp van slechts één factor. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
+**Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen nadat deze de laatste keer is geverifieerd met behulp van slechts één factor. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of kleiner is dan de maximale leeftijds eigenschap voor het multi-factor-sessie token.
 
 ### <a name="multi-factor-session-token-max-age"></a>Maximale leeftijds duur multi-factor Session-token
-**Tekenreeksexpressie** MaxAgeSessionMultiFactor
+**Teken reeks:** MaxAgeSessionMultiFactor
 
-**Alleen** Sessie tokens (permanent en niet permanent)
+**Van invloed op:** Sessie tokens (permanent en niet permanent)
 
-**Overzicht** Dit beleid bepaalt hoe lang een gebruiker met behulp van meerdere factoren een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
+**Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker met behulp van meerdere factoren een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token met één factor-sessie.
 
@@ -210,7 +219,7 @@ In de volgende voor beelden maakt, bijwerkt, koppelt en verwijdert u beleid voor
 Voer de volgende stappen uit om aan de slag te gaan:
 
 1. Down load de nieuwste [open bare preview-versie van Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Voer de `Connect`-opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
+2. Voer de `Connect` opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -222,7 +231,7 @@ Voer de volgende stappen uit om aan de slag te gaan:
     Get-AzureADPolicy
     ```
 
-### <a name="example-manage-an-organizations-default-policy"></a>Voorbeeld: Het standaard beleid van een organisatie beheren
+### <a name="example-manage-an-organizations-default-policy"></a>Voor beeld: het standaard beleid van een organisatie beheren
 In dit voor beeld maakt u een beleid waarmee uw gebruikers zich minder vaak kunnen aanmelden in uw hele organisatie. Als u dit wilt doen, maakt u een beleid voor de levens duur van tokens voor het vernieuwen van tokens die in uw organisatie worden toegepast. Het beleid wordt toegepast op elke toepassing in uw organisatie en op elke service-principal waarvoor nog geen beleid is ingesteld.
 
 1. Maak een beleid voor levens duur van tokens.
@@ -259,7 +268,7 @@ In dit voor beeld maakt u een beleid waarmee uw gebruikers zich minder vaak kunn
     Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-### <a name="example-create-a-policy-for-web-sign-in"></a>Voorbeeld: Een beleid maken voor aanmelden via het web
+### <a name="example-create-a-policy-for-web-sign-in"></a>Voor beeld: een beleid maken voor aanmelden via Internet
 
 In dit voor beeld maakt u een beleid waarmee gebruikers vaker moeten worden geverifieerd in uw web-app. Met dit beleid wordt de levens duur van de toegangs-ID-tokens en de maximale leeftijd van een multi-factor-sessie token ingesteld op de service-principal van uw web-app.
 
@@ -293,7 +302,7 @@ In dit voor beeld maakt u een beleid waarmee gebruikers vaker moeten worden geve
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Voorbeeld: Een beleid maken voor een systeem eigen app die een web-API aanroept
+### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Voor beeld: een beleid maken voor een systeem eigen app die een web-API aanroept
 In dit voor beeld maakt u een beleid dat vereist dat gebruikers minder vaak verifiëren. Het beleid verlengt ook de hoeveelheid tijd die een gebruiker inactief mag zijn voordat de gebruiker opnieuw moet worden geverifieerd. Het beleid wordt toegepast op de Web-API. Wanneer de systeem eigen app de Web-API als bron aanvraagt, wordt dit beleid toegepast.
 
 1. Maak een beleid voor levens duur van tokens.
@@ -322,7 +331,7 @@ In dit voor beeld maakt u een beleid dat vereist dat gebruikers minder vaak veri
     Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
     ```
 
-### <a name="example-manage-an-advanced-policy"></a>Voorbeeld: Een geavanceerd beleid beheren
+### <a name="example-manage-an-advanced-policy"></a>Voor beeld: een geavanceerd beleid beheren
 In dit voor beeld maakt u een paar beleids regels om te leren hoe het prioriteits systeem werkt. U leert ook hoe u meerdere beleids regels beheert die op verschillende objecten worden toegepast.
 
 1. Maak een beleid voor levens duur van tokens.
@@ -383,7 +392,7 @@ Hiermee maakt u een nieuw beleid.
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |Matrix van stringified JSON die alle regels van het beleid bevat. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
@@ -400,7 +409,7 @@ Hiermee haalt u alle Azure AD-beleids regels of een opgegeven beleid op.
 Get-AzureADPolicy
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [Optioneel] |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 
@@ -413,7 +422,7 @@ Hiermee worden alle apps en service-principals opgehaald die zijn gekoppeld aan 
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 
@@ -426,7 +435,7 @@ Hiermee wordt een bestaand beleid bijgewerkt.
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
@@ -444,7 +453,7 @@ Hiermee verwijdert u het opgegeven beleid.
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. | `-Id <ObjectId of Policy>` |
 
@@ -460,7 +469,7 @@ Hiermee wordt het opgegeven beleid gekoppeld aan een toepassing.
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ObjectId** van het beleid. | `-RefObjectId <ObjectId of Policy>` |
@@ -474,7 +483,7 @@ Hiermee wordt het beleid opgehaald dat is toegewezen aan een toepassing.
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 
@@ -487,7 +496,7 @@ Hiermee verwijdert u een beleid van een toepassing.
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ObjectId** van het beleid. | `-PolicyId <ObjectId of Policy>` |
@@ -504,7 +513,7 @@ Hiermee wordt het opgegeven beleid gekoppeld aan een service-principal.
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ObjectId** van het beleid. | `-RefObjectId <ObjectId of Policy>` |
@@ -518,7 +527,7 @@ Hiermee wordt een beleid opgehaald dat is gekoppeld aan de opgegeven service-pri
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 
@@ -531,7 +540,7 @@ Hiermee verwijdert u het beleid van de opgegeven service-principal.
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| Parameters | Description | Voorbeeld |
+| Parameters | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ObjectId** van het beleid. | `-PolicyId <ObjectId of Policy>` |

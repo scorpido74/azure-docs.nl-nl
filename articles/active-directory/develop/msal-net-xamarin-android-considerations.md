@@ -1,5 +1,6 @@
 ---
-title: Xamarin Android-overwegingen (micro soft Authentication Library voor .NET) | Azure
+title: Xamarin Android-overwegingen (micro soft Authentication Library voor .NET)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532472"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802647"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifieke overwegingen met MSAL.NET
 In dit artikel worden specifieke overwegingen beschreven voor het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
@@ -58,7 +59,7 @@ var pca = PublicClientApplicationBuilder
 
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Controleren of het besturings element terugkeert naar MSAL zodra het interactieve deel van de verificatie stroom is beëindigd
-In Android moet `OnActivityResult` u de methode `Activity` van en aanroepen van de methode SetAuthenticationContinuationEventArgs van de klasse AuthenticationContinuationHelper MSAL.
+Op Android moet u de `OnActivityResult` methode van de `Activity` overschrijven en de methode SetAuthenticationContinuationEventArgs van de klasse AuthenticationContinuationHelper MSAL aanroepen.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -113,9 +114,9 @@ Als u deze problemen wilt oplossen, moet u het volgende doen:
 - Als u vanaf de opdracht regel bouwt, kunt u ook/m verwijderen uit de opdracht als u deze gebruikt.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Fout: De naam ' AuthenticationContinuationHelper ' bestaat niet in de huidige context
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Fout: de naam ' AuthenticationContinuationHelper ' bestaat niet in de huidige context
 
-Dit komt waarschijnlijk doordat Visual Studio het bestand Android. csproj * niet correct heeft bijgewerkt. Soms bevat de  **\<HintPath >** bestandspad onjuist netstandard13 in plaats van **monoandroid90**.
+Dit komt waarschijnlijk doordat Visual Studio het bestand Android. csproj * niet correct heeft bijgewerkt. Soms bevat de **\<HintPath >** bestandspad onjuist netstandard13 in plaats van **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -128,6 +129,6 @@ Dit komt waarschijnlijk doordat Visual Studio het bestand Android. csproj * niet
 
 Meer informatie en voor beelden vindt u in de para graaf met [specifieke Android-overwegingen](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) van het volgende voor beeld README.MD-bestand:
 
-| Voorbeeld | Platform | Description |
+| Voorbeeld | Platform | Beschrijving |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL kunt gebruiken om MSA en Azure AD te verifiëren via het AADD v 2.0-eind punt en toegang te krijgen tot de Microsoft Graph met het resulterende token. <br>![Topologie](media/msal-net-xamarin-android-considerations/topology.png) |

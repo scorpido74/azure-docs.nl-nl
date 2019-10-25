@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428077"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783786"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -341,11 +341,15 @@ De volgende items worden voorafgegaan door een van beide:
 - **[2]** : alleen van toepassing op knoop punt 2
 
 **[A]** vereisten voor pacemaker-configuratie:
-1. Sluit beide database servers met gebruikers-DB2 @ no__t-0sid > met db2stop.
-1. Wijzig de shell-omgeving voor DB2 @ no__t-0sid > gebruiker in */bin/ksh*. U wordt aangeraden het YaST-hulp programma te gebruiken. 
+1. Sluit beide database servers met gebruikers-DB2\<sid-> met db2stop.
+1. Wijzig de shell-omgeving voor de DB2\<sid > gebruiker in */bin/ksh*. U wordt aangeraden het YaST-hulp programma te gebruiken. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-configuratie
+
+> [!IMPORTANT]
+> Recente tests hebben getoonde situaties, waarbij netcat niet meer reageert op aanvragen als gevolg van achterstand en de beperking van het verwerken van slechts één verbinding. De netcat-resource stopt met Luis teren naar de Azure Load Balancer-aanvragen en het zwevende IP-adres is niet meer beschikbaar.  
+> Voor bestaande pacemaker-clusters is het raadzaam om netcat te vervangen door socat, waarbij u de instructies in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128)kunt volgen. Houd er rekening mee dat voor de wijziging korte uitval tijd nodig is.  
 
 **[1]** IBM Db2 HADR-specifieke pacemaker-configuratie:
 <pre><code># Put Pacemaker into maintenance mode
@@ -371,7 +375,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
 
 # Configure probe port for Azure load Balancer
 sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
+        params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>62500</b>,backlog=10,fork,reuseaddr /dev/null" \
         op monitor timeout="20s" interval="10" depth="0"
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
@@ -558,7 +562,7 @@ De oorspronkelijke status in een SAP-systeem wordt beschreven in trans actie DBA
 > Voordat u met de test begint, moet u ervoor zorgen dat:
 > * Pacemaker heeft geen mislukte acties (CRM-status).
 > * Er zijn geen locatie beperkingen (resten van de migratie test)
-> * De synchronisatie van IBM Db2 HADR werkt. Controleren met gebruikers-DB2 @ no__t-0sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * De synchronisatie van IBM Db2 HADR werkt. Controleren met de sid van de gebruikers-DB2-\< <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migreer het knoop punt waarop de primaire Db2-data base wordt uitgevoerd door de volgende opdracht uit te voeren:
@@ -593,7 +597,7 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **CRM resource migrate \<res_name > \<host >:** Maakt locatie beperkingen en kan problemen veroorzaken met overname
-- **CRM-resource clear \<res_name >** : Hiermee wist u locatie beperkingen
+- **CRM-resource gewist \<res_name >** : locatie beperkingen wissen
 - **CRM resource cleanup \<res_name >** : Hiermee wist u alle fouten van de resource
 
 ### <a name="test-the-fencing-agent"></a>De omheinings agent testen
@@ -767,7 +771,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Als gebruiker DB2 @ no__t-0sid > opdracht db2stop uitvoeren:
+Als User DB2\<sid > opdracht db2stop uitvoeren:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

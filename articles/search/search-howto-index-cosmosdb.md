@@ -1,50 +1,48 @@
 ---
-title: Een Azure Cosmos DB gegevens bron indexeren-Azure Search
-description: Verken een Azure Cosmos DB gegevens bron en opname gegevens in een index met Zoek opdrachten in volledige tekst in Azure Search. Indexeer functies automatiseren gegevens opname voor geselecteerde gegevens bronnen, zoals Azure Cosmos DB.
-ms.date: 05/02/2019
+title: Een Azure Cosmos DB gegevens bron indexeren
+titleSuffix: Azure Cognitive Search
+description: Verken een Azure Cosmos DB gegevens bron en opname gegevens in een index met Zoek opdrachten in volledige tekst in azure Cognitive Search. Indexeer functies automatiseren gegevens opname voor geselecteerde gegevens bronnen, zoals Azure Cosmos DB.
 author: mgottein
 manager: nitinme
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: f0224905f8d3872aca9055a77c8182cb2cac67cb
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69656698"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793811"
 ---
-# <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Cosmos DB indexeren met een Azure Search Indexeer functie
-
+# <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB gegevens indexeren met behulp van een Indexeer functie in azure Cognitive Search 
 
 > [!Note]
 > Ondersteuning voor MongoDB-API is beschikbaar als preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 >
 > SQL API is algemeen beschikbaar.
 
-In dit artikel wordt beschreven hoe u een Azure Cosmos DB [Indexeer functie](search-indexer-overview.md) configureert om inhoud te extra heren en deze te doorzoeken in azure Search. Met deze werk stroom wordt een Azure Search index gemaakt en wordt deze geladen met bestaande tekst die is geëxtraheerd uit Azure Cosmos DB. 
+In dit artikel wordt beschreven hoe u een Azure Cosmos DB [Indexeer functie](search-indexer-overview.md) configureert om inhoud te extra heren en deze te doorzoeken in azure Cognitive Search. Met deze werk stroom wordt een Azure Cognitive Search-index gemaakt en wordt deze geladen met bestaande tekst die is geëxtraheerd uit Azure Cosmos DB. 
 
-Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmos DB indexering](https://docs.microsoft.com/azure/cosmos-db/index-overview) en [Azure Search indexeren](search-what-is-an-index.md) verschillende bewerkingen zijn, die uniek zijn voor elke service. Voordat u begint Azure Search indexeren, moet uw Azure Cosmos DB-data base al bestaan en gegevens bevatten.
+Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmos DB indexering](https://docs.microsoft.com/azure/cosmos-db/index-overview) en [Azure Cognitive Search indexeren](search-what-is-an-index.md) verschillende bewerkingen zijn, uniek zijn voor elke service. Voordat u begint met het indexeren van Azure Cognitive Search, moet uw Azure Cosmos DB-data base al bestaan en gegevens bevatten.
 
-U kunt de [Portal](#cosmos-indexer-portal), rest-api's of .NET SDK gebruiken om Cosmos-inhoud te indexeren. Met de Cosmos DB Indexeer functie in Azure Search kunt u [Azure Cosmos-items](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) die toegankelijk zijn via deze protocollen verkennen:
+U kunt de [Portal](#cosmos-indexer-portal), rest-api's of .NET SDK gebruiken om Cosmos-inhoud te indexeren. Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos-items](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) die toegankelijk zijn via deze protocollen verkennen:
 
 * [SQL-API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [MongoDB-API (preview-versie)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
-> Gebruikers stem heeft bestaande items voor aanvullende API-ondersteuning. U kunt een stem casten voor de Cosmos-Api's die u wilt weer geven die worden ondersteund in Azure Search: [Table-API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra-API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
+> Gebruikers stem heeft bestaande items voor aanvullende API-ondersteuning. U kunt een stem casten voor de Cosmos-Api's die u wilt weer geven die worden ondersteund in azure Cognitive Search: [Table-API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra-API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
 >
 
 <a name="cosmos-indexer-portal"></a>
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 
-De eenvoudigste methode voor het indexeren van Azure Cosmos-items is het gebruik van een wizard in de [Azure Portal](https://portal.azure.com/). Door gegevens te bemonsteren en meta gegevens te lezen in de container, kunt u met de wizard [**gegevens importeren**](search-import-data-portal.md) in azure Search een standaard index maken, bron velden toewijzen aan doel index velden en de index in één bewerking laden. Afhankelijk van de grootte en complexiteit van de bron gegevens, kunt u in slechts enkele minuten een werk index voor het doorzoeken van de volledige tekst hebben.
+De eenvoudigste methode voor het indexeren van Azure Cosmos-items is het gebruik van een wizard in de [Azure Portal](https://portal.azure.com/). Door gegevens te bemonsteren en meta gegevens te lezen in de container, kunt u de wizard [**gegevens importeren**](search-import-data-portal.md) in azure Cognitive Search een standaard index maken, bron velden toewijzen aan doel index velden en de index in één bewerking laden. Afhankelijk van de grootte en complexiteit van de bron gegevens, kunt u in slechts enkele minuten een werk index voor het doorzoeken van de volledige tekst hebben.
 
-U wordt aangeraden hetzelfde Azure-abonnement te gebruiken voor zowel Azure Search als Azure Cosmos DB, bij voor keur in dezelfde regio.
+U wordt aangeraden hetzelfde Azure-abonnement te gebruiken voor zowel Azure Cognitive Search als Azure Cosmos DB, bij voor keur in dezelfde regio.
 
 ### <a name="1---prepare-source-data"></a>1: Bron gegevens voorbereiden
 
@@ -54,7 +52,7 @@ Zorg ervoor dat uw Cosmos DB-data base gegevens bevat. Met de [wizard gegevens i
 
 ### <a name="2---start-import-data-wizard"></a>2-wizard gegevens importeren starten
 
-U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk op de pagina Azure Search service, of door te klikken op **toevoegen Azure Search** in het gedeelte **instellingen** van het navigatie deel venster van uw opslag account.
+U kunt [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk op de pagina Azure Cognitive Search service of door te klikken op **Azure toevoegen Cognitive Search** in het gedeelte **instellingen** van het navigatie deel venster van uw opslag account.
 
    ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
@@ -79,11 +77,11 @@ Op de **gegevens bron** pagina moet de bron **Cosmos DB**zijn, met de volgende s
 
 ### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4-de pagina cognitieve zoek opdracht toevoegen in de wizard overs Laan
 
-Het is niet nodig om cognitieve vaardig heden toe te voegen voor het importeren van documenten. U moet deze stap overs Laan, tenzij u een specifieke nood zaak hebt om [Cognitive Services-API's en trans formaties](cognitive-search-concept-intro.md) aan uw indexerings pijplijn toe te voegen.
+Het is niet nodig om cognitieve vaardig heden toe te voegen voor het importeren van documenten. Tenzij u een specifieke behoefte hebt om [AI-verrijking toe te voegen](cognitive-search-concept-intro.md) aan uw indexerings pijplijn, moet u deze stap overs Laan.
 
 Als u de stap wilt overs Laan, gaat u eerst naar de volgende pagina.
 
-   ![De knop volgende pagina voor Cognitive Search](media/search-get-started-portal/next-button-add-cog-search.png)
+   ![Knop volgende pagina voor het toevoegen van vaardig heden](media/search-get-started-portal/next-button-add-cog-search.png)
 
 Vanaf deze pagina kunt u verdergaan met het aanpassen van de index.
 
@@ -103,9 +101,9 @@ Neem even de tijd om uw selecties te controleren. Nadat u de wizard hebt uitgevo
 
 ### <a name="6---create-indexer"></a>6-Indexeer functie maken
 
-Volledig opgegeven, maakt de wizard drie afzonderlijke objecten in uw zoek service. Een gegevens bron object en Index object worden opgeslagen als benoemde resources in uw Azure Search-service. Met de laatste stap maakt u een Indexeer functie-object. Als u de Indexeer functie een naam geeft, kan deze bestaan als een zelfstandige resource, die u onafhankelijk van het index-en gegevens bron object kunt plannen en beheren, gemaakt in dezelfde wizard reeks.
+Volledig opgegeven, maakt de wizard drie afzonderlijke objecten in uw zoek service. Een gegevens bron object en Index object worden opgeslagen als benoemde resources in uw Azure Cognitive Search-service. Met de laatste stap maakt u een Indexeer functie-object. Als u de Indexeer functie een naam geeft, kan deze bestaan als een zelfstandige resource, die u onafhankelijk van het index-en gegevens bron object kunt plannen en beheren, gemaakt in dezelfde wizard reeks.
 
-Als u niet bekend bent met Indexeer functies, is een *Indexeer functie* een resource in azure Search die een externe gegevens bron verkent voor Doorzoek bare inhoud. De uitvoer van de wizard **gegevens importeren** is een Indexeer functie waarmee uw Cosmos DB gegevens bron wordt verkend, Doorzoek bare inhoud wordt geëxtraheerd en geïmporteerd in een index op Azure Search.
+Als u niet bekend bent met Indexeer functies, is een *Indexeer functie* een resource in azure Cognitive Search die een externe gegevens bron verkent voor Doorzoek bare inhoud. De uitvoer van de wizard **gegevens importeren** is een Indexeer functie waarmee uw Cosmos DB gegevens bron wordt verkend, Doorzoek bare inhoud wordt geëxtraheerd en geïmporteerd in een index op Azure Cognitive Search.
 
 De volgende scherm afbeelding toont de standaard configuratie van de Indexeer functie. U kunt overschakelen naar een **keer** als u de Indexeer functie één keer wilt uitvoeren. Klik op **verzenden** om de wizard uit te voeren en alle objecten te maken. Indexering begint onmiddellijk.
 
@@ -122,28 +120,28 @@ Wanneer het indexeren is voltooid, kunt u [Search Explorer](search-explorer.md) 
 
 ## <a name="use-rest-apis"></a>REST-API's gebruiken
 
-U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volgen van een werk stroom die uit drie delen is gemeen schappelijk voor alle Indexeer functies in Azure Search: Maak een gegevens bron, maak een index en maak een Indexeer functie. Gegevens extractie vanuit Cosmos-opslag vindt plaats wanneer u de aanvraag voor het maken van een index verzendt. Nadat deze aanvraag is voltooid, hebt u een query die kan worden geïndexeerd. 
+U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volgen van een werk stroom die uit drie delen is gemeen schappelijk voor alle Indexeer functies in azure Cognitive Search: een gegevens bron maken, een index maken, een Indexeer functie maken. Gegevens extractie vanuit Cosmos-opslag vindt plaats wanneer u de aanvraag voor het maken van een index verzendt. Nadat deze aanvraag is voltooid, hebt u een query die kan worden geïndexeerd. 
 
 Als u MongoDB evalueert, moet u de REST `api-version=2019-05-06-Preview` gebruiken om de gegevens bron te maken.
 
-In uw Cosmos DB-account kunt u kiezen of u wilt dat de verzameling automatisch alle documenten indexeert. Standaard worden alle documenten automatisch geïndexeerd, maar u kunt automatisch indexeren uitschakelen. Wanneer het indexeren is uitgeschakeld, kunnen documenten alleen worden geopend via hun eigen koppelingen of door query's met behulp van de document-ID. Azure Search moet Cosmos DB automatische indexering zijn ingeschakeld in de verzameling die door Azure Search wordt geïndexeerd. 
+In uw Cosmos DB-account kunt u kiezen of u wilt dat de verzameling automatisch alle documenten indexeert. Standaard worden alle documenten automatisch geïndexeerd, maar u kunt automatisch indexeren uitschakelen. Wanneer het indexeren is uitgeschakeld, kunnen documenten alleen worden geopend via hun eigen koppelingen of door query's met behulp van de document-ID. Voor Azure Cognitive Search moet Cosmos DB automatische indexering zijn ingeschakeld in de verzameling die wordt geïndexeerd door Azure Cognitive Search. 
 
 > [!WARNING]
-> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb`. Met ingang van API-versie **2019-05-06** worden de Azure Search-api's en-Portal alleen ondersteund door de `cosmosdb` syntaxis zoals in dit artikel wordt genoemd. Dit betekent dat het gegevens bron type moet `cosmosdb` als u verbinding wilt maken met een Cosmos DB-eind punt.
+> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb`. Met ingang van API-versie **2019-05-06** worden de Azure Cognitive Search-api's en-Portal alleen ondersteund door de `cosmosdb` syntaxis zoals in dit artikel wordt genoemd. Dit betekent dat het gegevens bron type moet `cosmosdb` als u verbinding wilt maken met een Cosmos DB-eind punt.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-invoer voor de aanvraag samen stellen
 
-Voor elke aanvraag moet u de service naam en de beheerders sleutel voor Azure Search (in de kop POST) en de naam en sleutel van het opslag account voor de Blob-opslag opgeven. U kunt [postman](search-get-started-postman.md) gebruiken om HTTP-aanvragen naar Azure Search te verzenden.
+Voor elke aanvraag moet u de service naam en de beheerders sleutel voor Azure Cognitive Search (in de kop POST) en de naam en sleutel van het opslag account voor de Blob-opslag opgeven. U kunt [postman](search-get-started-postman.md) gebruiken om HTTP-aanvragen te verzenden naar Azure Cognitive Search.
 
 Kopieer de volgende vier waarden naar Klad blok, zodat u ze in een aanvraag kunt plakken:
 
-+ Naam van Azure Search-service
-+ Beheerder sleutel Azure Search
++ Naam van Azure Cognitive Search-service
++ Azure Cognitive Search-beheer sleutel
 + Cosmos DB connection string
 
 U kunt deze waarden vinden in de portal:
 
-1. Kopieer de URL van de zoek service op de pagina overzicht van de portal pagina's voor Azure Search.
+1. Kopieer de URL van de zoek service op de pagina overzicht van de portal pagina's voor Azure Cognitive Search.
 
 2. Klik in het navigatie deel venster links op **sleutels** en kopieer vervolgens de primaire of secundaire sleutel (ze zijn equivalent).
 
@@ -178,8 +176,8 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 |---------|-------------|
 | **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
 |**type**| Vereist. Moet `cosmosdb` zijn. |
-|**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Search uw Azure Cosmos DB-Data Base niet indexeren.|
-| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat Azure Search kan indexeren.<br/>Query's worden niet ondersteund voor MongoDB-verzamelingen. |
+|**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Cognitive Search uw Azure Cosmos DB-Data Base niet indexeren.|
+| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor MongoDB-verzamelingen. |
 | **dataChangeDetectionPolicy** | Aanbevelingen. Zie de sectie [gewijzigde documenten indexeren](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Optioneel. Zie het gedeelte [verwijderde documenten indexeren](#DataDeletionDetectionPolicy) .|
 
@@ -222,7 +220,7 @@ Query voor het afvlakken van matrices:
 
 ### <a name="3---create-a-target-search-index"></a>3-een doel index voor zoeken maken 
 
-[Maak een doel-Azure search index](/rest/api/searchservice/create-index) als u er nog geen hebt. In het volgende voor beeld wordt een index gemaakt met het veld ID en beschrijving:
+[Maak een doel-Azure-Cognitive search index](/rest/api/searchservice/create-index) als u er nog geen hebt. In het volgende voor beeld wordt een index gemaakt met het veld ID en beschrijving:
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -248,11 +246,11 @@ Query voor het afvlakken van matrices:
 Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron-JSON-documenten of de uitvoer van uw aangepaste query projectie.
 
 > [!NOTE]
-> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB de `_rid` eigenschap, die Azure Search automatisch wordt gewijzigd in `rid` omdat veld namen niet met een undescore-teken kunnen worden gestart. Azure Cosmos DB `_rid` waarden bevatten ook tekens die ongeldig zijn in Azure Search sleutels. Daarom zijn de `_rid`-waarden base64-gecodeerd.
+> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB de `_rid` eigenschap, die door Azure Cognitive Search automatisch wordt gewijzigd in `rid` omdat veld namen niet met een undescore-teken kunnen worden gestart. Azure Cosmos DB `_rid` waarden bevatten ook tekens die ongeldig zijn in azure Cognitive Search sleutels. Daarom zijn de `_rid`-waarden base64-gecodeerd.
 > 
-> Voor MongoDB-verzamelingen wordt de naam van de eigenschap `_id` door Azure Search automatisch gewijzigd in `doc_id`.  
+> Voor MongoDB-verzamelingen wordt de naam van de eigenschap `_id` door Azure Cognitive Search automatisch gewijzigd in `doc_id`.  
 
-### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Toewijzing tussen JSON-gegevens typen en Azure Search gegevens typen
+### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Toewijzing tussen JSON-gegevens typen en Azure Cognitive Search-gegevens typen
 | JSON-gegevens type | Compatibele doel veld typen voor index |
 | --- | --- |
 | BOOL |EDM. Boolean, EDM. String |
@@ -283,7 +281,7 @@ Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingeste
 
 Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer)voor meer informatie over het maken van Indexeer functie-API.
 
-Zie [Indexeer functies plannen voor Azure Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van Indexeer functie schema's.
+Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
 ## <a name="use-net"></a>.NET gebruiken
 
@@ -315,9 +313,9 @@ Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap `_ts` wo
 
 Incrementele voortgang tijdens het indexeren zorgt ervoor dat als de uitvoering van de Indexeer functie wordt onderbroken door tijdelijke fouten of limiet voor uitvoerings tijd, de Indexeer functie kan ophalen waar de volgende keer wordt uitgevoerd, in plaats van de volledige verzameling helemaal opnieuw te indexeren. Dit is vooral belang rijk bij het indexeren van grote verzamelingen. 
 
-Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de resultaten door de query worden gesorteerd op de `_ts` kolom. Zo kunt u periodiek controleren of Azure Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
+Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de resultaten door de query worden gesorteerd op de `_ts` kolom. Zo kunt u periodiek controleren of Azure Cognitive Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
 
-In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts`-component bevat, kan Azure Search mogelijk niet afleiden dat de query wordt gesorteerd door de `_ts`. U kunt Azure Search dat de resultaten worden gesorteerd met behulp van de `assumeOrderByHighWaterMarkColumn` configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
+In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts`-component bevat, kan de Azure-Cognitive Search niet afleiden dat de query wordt gesorteerd door de `_ts`. U kunt de Azure Cognitive Search vertellen dat de resultaten worden besteld met behulp van de `assumeOrderByHighWaterMarkColumn`-configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
 
     {
      ... other indexer definition properties
@@ -365,7 +363,7 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
 
 ## <a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB integreert met Azure Search met behulp van een Indexeer functie.
+Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
-* Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Search.
+* Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

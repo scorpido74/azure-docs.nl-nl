@@ -1,5 +1,6 @@
 ---
-title: Huisstijlrichtlijnen voor apps | Microsoft Docs
+title: Huisstijlrichtlijnen voor apps
+titleSuffix: Microsoft identity platform
 description: Een uitgebreide handleiding voor bronnen voor ontwikkelaars voor Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70053245"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803877"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
 
@@ -60,7 +61,7 @@ In een eerdere versie van deze richtlijnen raadden we aan een pictogram van een 
 
 Uw app heeft misschien aparte paden voor registratie en aanmelding, en de volgende secties bieden visuele begeleiding voor beide scenario’s.
 
-**Als uw app registratie door eindgebruikers ondersteunt (bijvoorbeeld voor een gratis proefversie of freemium-model)** : U ziet een knop **Aanmelden** waarmee gebruikers via hun werkaccount of persoonlijk account toegang krijgen tot uw app. De eerste keer dat ze toegang tot uw app verkrijgen, toont Azure AD een instemmingsprompt.
+**Als uw app eindgebruikersregistratie ondersteunt (bijvoorbeeld voor een gratis proefversie of freemium-model)** : U kunt een knop **Aanmelden** tonen waarmee gebruikers toegang tot uw app kunnen verkrijgen met hun werkaccount of persoonlijke account. De eerste keer dat ze toegang tot uw app verkrijgen, toont Azure AD een instemmingsprompt.
 
 **Als uw app toestemmingen nodig heeft die alleen beheerders kunnen verlenen, of als uw app organisatielicenties nodig heeft**: Scheid beheerdersdownload van gebruikersaanmelding. Met de knop **Download deze app** worden beheerders naar de aanmeldingspagina geleid, waarna ze worden gevraagd toestemming te verlenen namens gebruikers in hun organisatie. Dit heeft het extra voordeel dat instemmingsprompts voor eindgebruikers naar uw app worden onderdrukt.
 
@@ -74,7 +75,7 @@ Nadat beheerders toestemming hebben verleend voor uw app, kunnen ze ervoor kieze
 
 We raden u echter aan verklarende tekst te schrijven in plaats van op knoppen te vertrouwen. Bijvoorbeeld:
 
-> *Als u Office 365 of andere zakelijke services van Microsoft al gebruikt, kunt u <naam_van_uw_app> toegang verlenen tot de gegevens van uw organisatie. Zo kunnen uw gebruikers toegang tot <naam_van_uw_app> verkrijgen met hun bestaande werkaccount.*
+> *Als u Office 365 of een andere bedrijfs service van micro soft al gebruikt, kunt u < your_app_name > toegang verlenen tot de gegevens van uw organisatie. Hiermee kunnen uw gebruikers toegang krijgen tot < your_app_name > met hun bestaande werk accounts.*
 
 Als u het officiële Microsoft-logo wilt downloaden voor gebruik in uw app, klikt u met de rechtermuisknop op het logo dat u wilt gebruiken en slaat u het op naar uw computer.
 

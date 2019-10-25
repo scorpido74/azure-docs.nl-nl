@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162333"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809645"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen om query's te bewaken en de prestaties van de werk belasting te verbeteren
 
@@ -103,6 +103,12 @@ Meer over T-SQL-opties voor het configureren van automatisch afstemmen vindt u i
 ## <a name="disabled-by-the-system"></a>Uitgeschakeld door het systeem
 
 Automatisch afstemmen bewaken alle acties die ze in de Data Base uitvoeren. in sommige gevallen kan het bepalen dat automatisch afstemmen niet goed kan worden uitgevoerd op de data base. In deze situatie wordt de afstemmings optie uitgeschakeld door het systeem. In de meeste gevallen gebeurt dit omdat query Store niet is ingeschakeld of de status alleen-lezen heeft voor een specifieke data base.
+
+## <a name="permissions"></a>Machtigingen
+
+Als automatische afstemming is Azure-functie, moet u de ingebouwde RBAC-rollen van Azure gebruiken om het te gebruiken. Het gebruik van alleen SQL-verificatie is niet voldoende om de functie uit Azure Portal te gebruiken.
+
+Als u automatisch afstemmen wilt gebruiken, is de mini maal vereiste machtiging voor het verlenen aan de gebruiker de ingebouwde rol van de [SQL DB-Inzender](../role-based-access-control/built-in-roles.md#sql-db-contributor) voor Azure. U kunt ook overwegen om hogere bevoegdheden te gebruiken, zoals SQL Server Inzender, Inzender en eigenaar.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>E-mail meldingen automatisch afstemmen configureren
 

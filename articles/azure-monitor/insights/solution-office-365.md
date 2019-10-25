@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553954"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793869"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -69,7 +69,10 @@ Van uw Office 365-abonnement:
 
 - Gebruikers naam: e-mail adres van een Administrator-account.
 - Tenant-ID: unieke ID voor Office 365-abonnement.
-- Client-ID: teken reeks van 16 tekens die de Office 365-client vertegenwoordigt.
+
+De volgende informatie moet worden verzameld tijdens het maken en configureren van Office 365-toepassing in Azure Active Directory:
+
+- Toepassings-ID (client): 16 tekens teken reeks die de Office 365-client vertegenwoordigt.
 - Client geheim: versleutelde teken reeks die nodig is voor authenticatie.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Een Office 365-toepassing maken in Azure Active Directory
@@ -87,6 +90,9 @@ De eerste stap is het maken van een toepassing in Azure Active Directory dat de 
 1. Klik op **registreren** en valideer de toepassings gegevens.
 
     ![Geregistreerde app](media/solution-office-365/registered-app.png)
+
+1. Sla de toepassings-ID op in samen met de rest van de gegevens die eerder zijn verzameld.
+
 
 ### <a name="configure-application-for-office-365"></a>Toepassing voor Office 365 configureren
 
@@ -117,7 +123,7 @@ De eerste stap is het maken van een toepassing in Azure Active Directory dat de 
     ![Sleutels](media/solution-office-365/secret.png)
  
 1. Typ een **Beschrijving** en **duur** voor de nieuwe sleutel.
-1. Klik op **toevoegen** en kopieer de **waarde** die wordt gegenereerd.
+1. Klik op **toevoegen** en sla de **waarde** die is gegenereerd als het client geheim samen met de rest van de gegevens die eerder zijn verzameld.
 
     ![Sleutels](media/solution-office-365/keys.png)
 
@@ -188,7 +194,12 @@ Als u het beheerders account voor de eerste keer wilt inschakelen, moet u een ad
     
     ![toestemming van de beheerder](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> U wordt mogelijk omgeleid naar een pagina die niet bestaat. Beschouw het als een succes.
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Abonneren op Log Analytics werk ruimte
+
+De laatste stap is het abonneren van de toepassing op uw Log Analytics-werk ruimte. U kunt dit ook doen met een Power shell-script.
 
 De laatste stap is het abonneren van de toepassing op uw Log Analytics-werk ruimte. U kunt dit ook doen met een Power shell-script.
 
@@ -236,18 +247,20 @@ De laatste stap is het abonneren van de toepassing op uw Log Analytics-werk ruim
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -271,7 +284,7 @@ De laatste stap is het abonneren van de toepassing op uw Log Analytics-werk ruim
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -315,7 +328,7 @@ De laatste stap is het abonneren van de toepassing op uw Log Analytics-werk ruim
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -509,7 +522,7 @@ Het kan enkele uren duren voordat gegevens worden verzameld. Zodra het verzamele
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Wanneer u de Office 365-oplossing aan uw Log Analytics-werk ruimte toevoegt, wordt de tegel **office 365** toegevoegd aan uw dash board. Deze tegel toont het aantal computers in uw omgeving, evenals een grafische voorstelling hiervan, en de bijbehorende updatenaleving.<br><br>
-Tegel voor ![Office 365-samen vatting ](media/solution-office-365/tile.png)  
+![Office 365-overzichts tegel](media/solution-office-365/tile.png)  
 
 Klik op de tegel **office 365** om het **Office 365** -dash board te openen.
 

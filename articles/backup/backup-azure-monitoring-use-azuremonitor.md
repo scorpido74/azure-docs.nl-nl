@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528188"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792844"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -29,7 +29,7 @@ Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](ba
 ## <a name="using-log-analytics-workspace"></a>Log Analytics werkruimte gebruiken
 
 > [!NOTE]
-> Gegevens van back-ups van virtuele Azure-machines, de Azure Backup-Agent, System Center Data Protection Manager, SQL-back-ups in azure Vm's en Azure Files share back-ups worden gepompt naar de Log Analytics-werk ruimte via Diagnostische instellingen.
+> Gegevens van back-ups van virtuele Azure-machines, de Azure Backup-Agent, System Center Data Protection Manager, SQL-back-ups in azure Vm's en Azure Files share back-ups worden gepompt naar de Log Analytics-werk ruimte via Diagnostische instellingen. Ondersteuning voor Microsoft Azure Backup-Server (MABS) wordt binnenkort toegevoegd
 
 Als u op schaal wilt bewaken/rapporteren, hebt u de mogelijkheden van twee Azure-Services nodig. *Diagnostische instellingen* verzenden gegevens van meerdere Azure Resource Manager resources naar een andere resource. *Log Analytics* genereert aangepaste waarschuwingen waarbij u actie groepen kunt gebruiken om andere meldings kanalen te definiëren.
 

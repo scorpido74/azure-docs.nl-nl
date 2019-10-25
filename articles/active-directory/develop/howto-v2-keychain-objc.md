@@ -1,5 +1,6 @@
 ---
-title: Sleutel hanger configureren | Micro soft Identity-platform
+title: Sleutelketen configureren
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van sleutel ketens, zodat uw app tokens in de sleutel hanger kan opslaan in de cache.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264181"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803804"
 ---
 # <a name="configure-keychain"></a>Sleutelketen configureren
 

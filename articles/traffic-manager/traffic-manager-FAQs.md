@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511015"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784832"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -59,7 +59,7 @@ Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kan ik Traffic Manager gebruiken met de domein naam ' Blot '?
 
-Ja. Zie Configure a [alias record voor ondersteuning van Apex-domein namen met Traffic Manager](../dns/tutorial-alias-tm.md)voor meer informatie over het maken van een alias record voor uw domein naam Apex om te verwijzen naar een Azure Traffic Manager-profiel.
+Ja. Zie [Configure a alias record voor ondersteuning van Apex-domein namen met Traffic Manager](../dns/tutorial-alias-tm.md)voor meer informatie over het maken van een alias record voor uw domein naam Apex om te verwijzen naar een Azure Traffic Manager-profiel.
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Houdt Traffic Manager rekening met het subnet van de client wanneer DNS-query's worden verwerkt? 
 
@@ -172,7 +172,7 @@ U kunt het maximum aantal eind punten opgeven dat moet worden geretourneerd en m
 
 We kunnen niet garanderen dat dezelfde set van eind punten wordt geretourneerd in elke query. Dit wordt ook beïnvloed door het feit dat een aantal van de eind punten mogelijk niet in orde is op het moment dat ze niet worden opgenomen in het antwoord
 
-## <a name="real-user-measurements"></a>Real-user-metingen
+## <a name="real-user-measurements"></a>Real User Measurements
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Wat zijn de voor delen van het gebruik van Real-user-metingen?
 
@@ -252,7 +252,7 @@ Nee, u hoeft geen onderdelen aan de server zijde op Azure te hosten om Real-user
 
 Zoals vermeld in het vorige antwoord, worden de Server onderdelen van Real-user-metingen eigendom en beheerd door Azure. Dit betekent dat uw Azure-bandbreedte gebruik niet wordt verhoogd omdat u Real-user-metingen gebruikt. Dit omvat geen bandbreedte gebruik buiten de Azure-kosten. We beperken de band breedte die wordt gebruikt door slechts één pixel afbeelding te downloaden om de latentie naar een Azure-regio te meten. 
 
-## <a name="traffic-view"></a>Verkeersweergave
+## <a name="traffic-view"></a>Traffic View
 
 ### <a name="what-does-traffic-view-do"></a>Wat doet Verkeersweergave?
 
@@ -326,7 +326,7 @@ Normaal gesp roken wordt Traffic Manager gebruikt voor het omleiden van verkeer 
 
 Azure-eind punten die zijn gekoppeld aan een Traffic Manager profiel, worden bijgehouden met hun resource-Id's. Wanneer een Azure-resource die wordt gebruikt als een eind punt (bijvoorbeeld een openbaar IP-adres, een klassieke Cloud service, WebApp of een ander Traffic Manager profiel dat op een geneste manier wordt gebruikt) wordt verplaatst naar een andere resource groep of een ander abonnement, wordt de resource-ID gewijzigd. In dit scenario moet u het Traffic Manager-profiel momenteel bijwerken door eerst de eind punten te verwijderen en vervolgens opnieuw aan het profiel toe te voegen.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Eindpunt bewaking Traffic Manager
+## <a name="traffic-manager-endpoint-monitoring"></a>Eindpuntbewaking in Traffic Manager
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Is het Traffic Managerbaar voor problemen met Azure-regio's?
 
@@ -345,7 +345,7 @@ Azure Resource Manager vereist dat alle resource groepen een locatie opgeven, wa
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hoe kan ik de huidige status van elk eind punt bepalen?
 
-De huidige bewakings status van elk eind punt, naast het algehele profiel, wordt weer gegeven in de Azure Portal. Deze informatie is ook beschikbaar via de verkeers monitor [rest API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [Power shell](https://docs.microsoft.com/powershell/module/az.trafficmanager)-cmdlets en [platformoverschrijdende Azure cli](../cli-install-nodejs.md).
+De huidige bewakings status van elk eind punt, naast het algehele profiel, wordt weer gegeven in de Azure Portal. Deze informatie is ook beschikbaar via de verkeers monitor [rest API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager)en [platformoverschrijdende Azure cli](../cli-install-nodejs.md).
 
 U kunt Azure Monitor ook gebruiken om de status van uw eind punten bij te houden en een visuele weer gave ervan te bekijken. Zie de [documentatie van Azure monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)voor meer informatie over het gebruik van Azure monitor.
 
@@ -382,25 +382,25 @@ Wanneer een query wordt ontvangen voor een profiel, zoekt Traffic Manager eerst 
 
 Voor profielen met een andere routerings methode dan meerdere waarden:
 
-|Binnenkomende query aanvraag|    Eindpunttype|  Antwoord gegeven|
+|Binnenkomende query aanvraag|    Type eind punt|  Antwoord gegeven|
 |--|--|--|
 |IEDERE |  A/AAAA/CNAME |  Doel eindpunt| 
-|G |    A / CNAME | Doel eindpunt|
-|G |    AAAA |  GEEN GEGEVENS |
+|A |    A/CNAME | Doel eindpunt|
+|A |    AAAA |  Geen gegevens |
 |AAAA | AAAA/CNAME |  Doel eindpunt|
-|AAAA | G | GEEN GEGEVENS |
+|AAAA | A | Geen gegevens |
 |CNAME |    CNAME | Doel eindpunt|
-|CNAME  |A/AAAA | GEEN GEGEVENS |
+|CNAME  |A/AAAA | Geen gegevens |
 |
 
 Voor profielen waarvoor een routerings methode is ingesteld op meerdere waarden:
 
-|Binnenkomende query aanvraag|    Eindpunttype | Antwoord gegeven|
+|Binnenkomende query aanvraag|    Type eind punt | Antwoord gegeven|
 |--|--|--|
 |IEDERE |  Combi natie van A en AAAA | Doel eindpunten|
-|G |    Combi natie van A en AAAA | Alleen doel eindpunten van het type A|
+|A |    Combi natie van A en AAAA | Alleen doel eindpunten van het type A|
 |AAAA   |Combi natie van A en AAAA|     Alleen doel eindpunten van het type AAAA|
-|CNAME |    Combi natie van A en AAAA | GEEN GEGEVENS |
+|CNAME |    Combi natie van A en AAAA | Geen gegevens |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kan ik een profiel gebruiken met door IPv4/IPv6 geadresseerde eind punten in een genest profiel?
 
@@ -416,7 +416,10 @@ Ja. U kunt TCP opgeven als controle protocol en Traffic Manager kan een TCP-verb
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Welke specifieke antwoorden zijn vereist van het eind punt bij het gebruik van TCP-bewaking?
 
-Wanneer TCP-bewaking wordt gebruikt, start Traffic Manager een drieweg TCP-handshake door een SYN-aanvraag te verzenden naar het eind punt op de opgegeven poort. Vervolgens wordt gewacht tot een bepaalde tijd (zoals opgegeven in de time-outinstellingen) voor een reactie van het eind punt. Als het eind punt reageert op de SYN-aanvraag met een SYN-ACK-reactie binnen de time-outperiode die is opgegeven in de controle-instellingen, wordt dat eind punt als gezond beschouwd. Als het SYN-ACK-antwoord wordt ontvangen, wordt de verbinding door de Traffic Manager opnieuw ingesteld door een eerste reactie te sturen.
+Wanneer TCP-bewaking wordt gebruikt, start Traffic Manager een drieweg TCP-handshake door een SYN-aanvraag te verzenden naar het eind punt op de opgegeven poort. Vervolgens wordt gewacht op een SYN-ACK-reactie van het eind punt voor een bepaalde tijd (opgegeven in de time-outinstellingen).
+
+- Als er een SYN-ACK-antwoord wordt ontvangen binnen de time-outperiode die is opgegeven in de controle-instellingen, wordt dat eind punt als gezond beschouwd. Een FIN of FIN-ACK is het verwachte antwoord van de Traffic Manager wanneer het regel matig een socket beëindigt.
+- Als een SYN-ACK-antwoord wordt ontvangen na de opgegeven time-out, reageert de Traffic Manager met een eerste om de verbinding opnieuw in te stellen.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Hoe snel Traffic Manager kan ik mijn gebruikers weghalen uit een beschadigd eind punt?
 
@@ -477,8 +480,8 @@ Er zijn geen negatieve prijs gevolgen voor het gebruik van geneste profielen.
 
 Traffic Manager facturering heeft twee onderdelen: status controles van eind punten en miljoenen DNS-query's
 
-* Status controles van het eind punt: Er worden geen kosten in rekening gebracht voor een onderliggend profiel wanneer het is geconfigureerd als een eind punt in een bovenliggend profiel. De controle van de eind punten in het onderliggende profiel wordt op de gebruikelijke manier gefactureerd.
-* DNS-query's: Elke query wordt slechts één keer geteld. Een query op basis van een bovenliggend profiel dat een eind punt uit een onderliggend profiel retourneert, wordt alleen voor het bovenliggende profiel geteld.
+* Status controles van het eind punt: er worden geen kosten in rekening gebracht voor een onderliggend profiel wanneer het is geconfigureerd als een eind punt in een bovenliggend profiel. De controle van de eind punten in het onderliggende profiel wordt op de gebruikelijke manier gefactureerd.
+* DNS-query's: elke query wordt slechts één keer geteld. Een query op basis van een bovenliggend profiel dat een eind punt uit een onderliggend profiel retourneert, wordt alleen voor het bovenliggende profiel geteld.
 
 Zie de pagina met prijzen voor [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/)voor meer informatie.
 
@@ -496,13 +499,13 @@ In de volgende tabel wordt het gedrag van Traffic Manager status controles voor 
 
 | Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
 | --- | --- | --- |
-| Geblokkeerd. Het onderliggende profiel is uitgeschakeld. |Gestopt |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
+| Geblokkeerd. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |
-| Online. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
+| Aanschaffen. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
 | CheckingEndpoints. Ten minste één onderliggend profiel voor een onderliggend knoop punt is ' CheckingEndpoint '. Er zijn geen eind punten ' online ' of ' verslechterd ' |Hetzelfde als hierboven. | |
-| Inactieve. Alle eind punten van een onderliggend profiel zijn uitgeschakeld of gestopt of dit profiel heeft geen eind punten. |Gestopt | |
+| Inactieve. Alle eind punten van een onderliggend profiel zijn uitgeschakeld of gestopt of dit profiel heeft geen eind punten. |Stopped | |
 
 ## <a name="next-steps"></a>Volgende stappen:
 
 - Meer informatie over Traffic Manager [endpoint-bewaking en automatische failover](../traffic-manager/traffic-manager-monitoring.md).
-- Meer informatie over methoden voor het routeren van Traffic Manager [verkeer](../traffic-manager/traffic-manager-routing-methods.md).
+- Meer informatie over methoden voor het [routeren](../traffic-manager/traffic-manager-routing-methods.md)van Traffic Manager verkeer.

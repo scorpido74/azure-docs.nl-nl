@@ -1,7 +1,7 @@
 ---
-title: Met Storm oplossen met behulp van Azure HDInsight
-description: Vind antwoorden op veelgestelde vragen over het gebruik van Apache Storm met Azure HDInsight.
-keywords: HDInsight, Storm, veelgestelde vragen over Azure, problemen oplossen handleiding worden veelvoorkomende problemen
+title: Problemen met Storm oplossen met behulp van Azure HDInsight
+description: Krijg antwoorden op veelgestelde vragen over het gebruik van Apache Storm met Azure HDInsight.
+keywords: Azure HDInsight, Storm, veelgestelde vragen, gids voor probleem oplossing, veelvoorkomende problemen
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,163 +9,163 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70030c9014e83984b2cd493ba0d3b2a36180feb3
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575065"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800005"
 ---
-# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Apache Storm oplossen met behulp van Azure HDInsight
+# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problemen met Apache Storm oplossen met behulp van Azure HDInsight
 
-Meer informatie over de meest voorkomende problemen en hun oplossingen voor het werken met [Apache Storm](https://storm.apache.org/) nettoladingen in [Apache Ambari](https://ambari.apache.org/).
+Meer informatie over de belangrijkste problemen en hun oplossingen voor het werken met [Apache Storm](https://storm.apache.org/) Payloads in [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hoe krijg ik toegang tot de Storm-gebruikersinterface op een cluster?
+## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hoe kan ik toegang tot de Storm-gebruikers interface in een cluster?
 
-U hebt twee opties om de Storm-gebruikersinterface vanuit een browser te openen:
+U hebt twee opties voor het openen van de Storm-gebruikers interface vanuit een browser:
 
 ### <a name="apache-ambari-ui"></a>Apache Ambari-gebruikers interface
 
-1. Ga naar de Ambari-dashboard.
-2. Selecteer in de lijst met services, **Storm**.
-3. In de **snelkoppelingen** in het menu **Storm-gebruikersinterface**.
+1. Ga naar het Ambari-dash board.
+2. Selecteer **Storm**in de lijst met Services.
+3. Selecteer in het menu **snelle koppelingen** **Storm-gebruikers interface**.
 
 ### <a name="direct-link"></a>Directe koppeling
 
-U kunt toegang tot de Storm-gebruikersinterface op de volgende URL:
+U kunt de Storm-gebruikers interface openen via de volgende URL:
 
 `https://<cluster DNS name>/stormui`
 
 Voorbeeld: `https://stormcluster.azurehdinsight.net/stormui`
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hoe ik Storm event hub spout controlepunt gegevens van één topologie overbrengen naar een andere?
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hoe kan ik overboeking Storm Event Hub Spout van de ene topologie naar een andere?
 
-Bij het ontwikkelen van topologieën die uit Azure Event Hubs gelezen met behulp van de HDInsight Storm event hub spout JAR-bestand, moet u een topologie met dezelfde naam op een nieuw cluster implementeren. Echter, moet u de gegevens van de controlepunten die doorgevoerd naar is bewaren [Apache ZooKeeper](https://zookeeper.apache.org/) op het oude cluster.
+Wanneer u topologieën ontwikkelt die vanuit Azure Event Hubs worden gelezen met behulp van het bestand HDInsight Storm Event Hub Spout. jar, moet u een topologie met dezelfde naam in een nieuw cluster implementeren. U moet echter de controlepunt gegevens bewaren die zijn vastgelegd voor [Apache ZooKeeper](https://zookeeper.apache.org/) op het oude cluster.
 
-### <a name="where-checkpoint-data-is-stored"></a>Waar controlepuntgegevens worden opgeslagen
+### <a name="where-checkpoint-data-is-stored"></a>Waar worden controlepunt gegevens opgeslagen?
 
-Controlepuntgegevens voor verschuiving is opgeslagen door de event hub spout in ZooKeeper in twee paden van de hoofdmap:
+Controlepunt gegevens voor offsets worden opgeslagen door de Event Hub spout in ZooKeeper in twee hoofd paden:
 
-- Niet-transactionele Spout-controle punten `/eventhubspout`worden opgeslagen in.
+- Niet-transactionele Spout-controle punten worden opgeslagen in `/eventhubspout`.
 
-- Transactionele Spout-controlepunt gegevens worden `/transactional`opgeslagen in.
+- Transactionele Spout-controlepunt gegevens worden opgeslagen in `/transactional`.
 
 ### <a name="how-to-restore"></a>Herstellen
 
-Als u de scripts en -bibliotheken die u gebruikt om te exporteren van gegevens buiten ZooKeeper en importeer de gegevens terug naar ZooKeeper met een nieuwe naam, Zie [HDInsight Storm-voorbeelden](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
+Als u de scripts en bibliotheken wilt ophalen die u gebruikt voor het exporteren van gegevens uit ZooKeeper, en vervolgens de gegevens opnieuw wilt importeren in ZooKeeper met een nieuwe naam, raadpleegt u [voor beelden van HDInsight Storm](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
-De bibliotheekmap heeft JAR-bestanden met de implementatie voor de bewerking voor exporteren/importeren. De bash-map bevat een voorbeeldscript dat laat zien hoe u gegevens uit de ZooKeeper-server op het oude cluster exporteren en vervolgens importeren naar de ZooKeeper-server op het nieuwe cluster.
+De map lib heeft jar-bestanden die de implementatie voor de bewerking exporteren/importeren bevatten. De map bash bevat een voorbeeld script dat laat zien hoe u gegevens exporteert van de ZooKeeper-server op het oude cluster en vervolgens weer kunt importeren in de ZooKeeper-server op het nieuwe cluster.
 
-Voer de [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) script uit de ZooKeeper-knooppunten om te exporteren en vervolgens gegevens te importeren. Het script bijwerken naar de juiste versie van Hortonworks Data Platform (HDP). (We werken op het maken van deze scripts algemene in HDInsight. Algemene scripts kunnen uitvoeren op elk knooppunt in het cluster zonder wijzigingen door de gebruiker.)
+Voer het [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) -script uit van de ZooKeeper-knoop punten om gegevens te exporteren en vervolgens te importeren. Werk het script bij naar de juiste HDP-versie (Hortonworks data platform). (We werken eraan om deze scripts Gene riek in HDInsight te maken. Algemene scripts kunnen vanuit elk knoop punt op het cluster worden uitgevoerd zonder dat de gebruiker hiervoor hoeft te wijzigen.)
 
 De export opdracht schrijft de meta gegevens naar een Apache Hadoop Distributed File System (HDFS) (in Azure Blob Storage of Azure Data Lake Storage) op een locatie die u hebt ingesteld.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="export-offset-metadata"></a>Offset metagegevens exporteren
+#### <a name="export-offset-metadata"></a>Meta gegevens van verschuiving exporteren
 
-1. SSH gebruiken om te gaan naar de ZooKeeper-cluster op het cluster waaruit het controlepunt offset moet worden geëxporteerd.
-2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om `/stormmetadta/zkdata` ZooKeeper offset-gegevens te exporteren naar het HDFS-pad:
+1. Gebruik SSH om naar het ZooKeeper-cluster op het cluster te gaan waarvan de offset van het controle punt moet worden geëxporteerd.
+2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset-gegevens te exporteren naar het `/stormmetadta/zkdata` HDFS-pad:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
     ```
 
-#### <a name="import-offset-metadata"></a>Offset metagegevens importeren
+#### <a name="import-offset-metadata"></a>Meta gegevens van verschuiving importeren
 
-1. SSH gebruiken om te gaan naar de ZooKeeper-cluster op het cluster waaruit het controlepunt offset moet worden geïmporteerd.
-2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset `/stormmetadata/zkdata` gegevens van het HDFS-pad naar de ZooKeeper-server op het doel cluster te importeren:
+1. Gebruik SSH om naar het ZooKeeper-cluster op het cluster te gaan waarvan de offset van het controle punt moet worden geïmporteerd.
+2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset gegevens te importeren van het pad HDFS `/stormmetadata/zkdata` naar de ZooKeeper-server op het doel cluster:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
     ```
 
-#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Offset metagegevens verwijderen zodat topologieën kunnen verwerken van gegevens vanaf het begin of in een timestamp die de gebruiker ervoor kiest starten
+#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Verwijder de meta gegevens van verschuiving zodat topologieën kunnen beginnen met het verwerken van gegevens vanaf het begin of van een tijds tempel die de gebruiker kiest
 
-1. SSH gebruiken om te gaan naar de ZooKeeper-cluster op het cluster waaruit het controlepunt offset moet worden verwijderd.
-2. Voer de volgende opdracht (na het bijwerken van de tekenreeks van de versie van de HDP) om alle offset ZooKeeper-gegevens in het huidige cluster te verwijderen:
+1. Gebruik SSH om naar het ZooKeeper-cluster op het cluster te gaan waarvan de offset van het controle punt moet worden verwijderd.
+2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om alle ZooKeeper offset-gegevens in het huidige cluster te verwijderen:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hoe vind ik binaire Storm-bestanden op een cluster?
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hoe kan ik de binaire Storm-bestanden op een cluster vinden?
 
-De binaire Storm-bestanden voor de huidige HDP `/usr/hdp/current/storm-client`-stack bevinden zich in. De locatie is hetzelfde voor hoofdknooppunten en voor worker-knooppunten.
+De binaire Storm-bestanden voor de huidige HDP-stack bevinden zich in `/usr/hdp/current/storm-client`. De locatie is hetzelfde voor hoofd knooppunten en voor worker-knoop punten.
 
-Er zijn mogelijk meerdere binaire bestanden voor specifieke HDP-versies in/usr/HDP (bijvoorbeeld `/usr/hdp/2.5.0.1233/storm`). De `/usr/hdp/current/storm-client` map is symlinked naar de meest recente versie die op het cluster wordt uitgevoerd.
+Er zijn mogelijk meerdere binaire bestanden voor specifieke HDP-versies in/usr/HDP (bijvoorbeeld `/usr/hdp/2.5.0.1233/storm`). De map `/usr/hdp/current/storm-client` is symlinked naar de meest recente versie die op het cluster wordt uitgevoerd.
 
-Zie [verbinding maken met een HDInsight-cluster](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) met behulp van SSH en [Apache Storm](https://storm.apache.org/)voor meer informatie.
+Zie [verbinding maken met een HDInsight-cluster met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) en [Apache Storm](https://storm.apache.org/)voor meer informatie.
 
-## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hoe bepaal ik de topologie van de implementatie van een Storm-cluster?
+## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hoe kan ik de implementatie topologie van een storm-cluster bepalen?
 
-Bepaal eerst alle onderdelen die zijn geïnstalleerd met HDInsight Storm. Een Storm-cluster bestaat uit vier categorieën van knooppunt:
+Identificeer eerst alle onderdelen die zijn geïnstalleerd met HDInsight Storm. Een storm-cluster bestaat uit vier knooppunt Categorieën:
 
-* Gateway-knooppunten
+* Gateway knooppunten
 * Hoofdknooppunten
-* ZooKeeper-knooppunten
-* Worker-knooppunten
+* ZooKeeper-knoop punten
+* Werkknooppunten
 
-### <a name="gateway-nodes"></a>Gateway-knooppunten
+### <a name="gateway-nodes"></a>Gateway knooppunten
 
-Een gateway-knooppunt is een gateway en de reverse proxyservice waarmee u openbare toegang tot een actieve Ambari management-service. Ook verwerkt deze Ambari selectie van leider.
+Een gateway-knoop punt is een gateway en reverse-proxy service die open bare toegang tot een actieve Ambari-beheer service mogelijk maakt. Ook wordt de Ambarie Leader-verkiezing afgehandeld.
 
 ### <a name="head-nodes"></a>Hoofdknooppunten
 
-Storm-hoofdknooppunten, voer de volgende services:
+Storm-hoofd knooppunten voeren de volgende services uit:
 * Nimbus
 * Ambari-server
-* Metrische gegevens voor Ambari-server
-* Ambari metrische gegevens verzamelen
+* Ambari Metrics-server
+* Ambari metrische gegevens verzamelaar
  
-### <a name="zookeeper-nodes"></a>ZooKeeper-knooppunten
+### <a name="zookeeper-nodes"></a>ZooKeeper-knoop punten
 
-HDInsight wordt geleverd met een ZooKeeper-quorum drie knooppunten. De grootte van het quorum is vast en kan niet opnieuw worden geconfigureerd.
+HDInsight wordt geleverd met een ZooKeeper-quorum van drie knoop punten. De quorum grootte is vast en kan niet opnieuw worden geconfigureerd.
 
-Storm-services in het cluster zijn geconfigureerd voor het gebruik van automatisch de ZooKeeper-quorum.
+Storm Services in het cluster zijn geconfigureerd om automatisch het ZooKeeper-quorum te gebruiken.
 
-### <a name="worker-nodes"></a>Worker-knooppunten
+### <a name="worker-nodes"></a>Werkknooppunten
 
-Storm worker-knooppunten uitvoeren van de volgende services:
+Storm-worker-knoop punten voeren de volgende services uit:
 * Supervisor
-* Werknemer Java virtual machines (JVMs), voor het actieve topologieën
+* Werk nemers van Java virtual machines (JVMs) voor het uitvoeren van topologieën
 * Ambari-agent
 
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hoe vind ik de binaire Storm event hub spout-bestanden voor ontwikkeling?
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hoe kan ik Event Hub binaire bestanden voor het ontwikkelen van Spout niet vinden?
 
-Zie de volgende bronnen voor meer informatie over het gebruik van Storm event hub spout JAR-bestanden met uw topologie.
+Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Storm Event Hub Spout. jar-bestanden met uw topologie.
 
-### <a name="java-based-topology"></a>Op basis van een Java-topologie
+### <a name="java-based-topology"></a>Op Java gebaseerde topologie
 
-[Process events from Azure Event Hubs met Apache Storm op HDInsight (Java) gebeurtenissen](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#-topologie (Mono op Storm voor HDInsight 3.4 + Linux-clusters) op basis van
+### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C#gebaseerde topologie (mono op HDInsight 3.4 en Linux Storm-clusters)
 
-[Verwerken van gebeurtenissen uit Azure Event Hubs met Apache Storm op HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
-### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Meest recente Apache Storm event hub spout binaire bestanden voor HDInsight 3.5 + Linux Storm-clusters
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Nieuwste Apache Storm Event Hub Spout binaire bestanden voor HDInsight 3.5-en Linux Storm-clusters
 
 Zie het [Leesmij-bestand voor MVN-opslag plaats](https://github.com/hdinsight/mvn-repo/blob/master/README.md)voor meer informatie over het gebruik van de nieuwste Storm Event hub Spout die werkt met HDInsight 3.5-en Linux Storm-clusters.
 
-### <a name="source-code-examples"></a>Bron-codevoorbeelden
+### <a name="source-code-examples"></a>Voor beelden van bron code
 
-Zie [voorbeelden](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) van lezen en schrijven uit Azure Event Hub met behulp van een Apache Storm-topologie (geschreven in Java) op een Azure HDInsight-cluster.
+Zie [voor beelden](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) van het lezen en schrijven van Azure Event hub met behulp van een Apache Storm topologie (geschreven in Java) op een Azure HDInsight-cluster.
 
-## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hoe vind ik de Storm Log4J-2-configuratiebestanden op clusters?
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Hoe kan ik wilt u Storm Log4J 2 configuratie bestanden in clusters vinden?
 
-Om te identificeren [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) configuratiebestanden voor Storm-services.
+[Apache Log4j 2](https://logging.apache.org/log4j/2.x/) -configuratie bestanden voor Storm-Services identificeren.
 
-### <a name="on-head-nodes"></a>Op de hoofdknooppunten
+### <a name="on-head-nodes"></a>Op hoofd knooppunten
 
-De configuratie van `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`de Nimbus log4j wordt gelezen.
+De configuratie van de Nimbus Log4J wordt gelezen uit `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
 
-### <a name="on-worker-nodes"></a>Op de worker-knooppunten
+### <a name="on-worker-nodes"></a>Op worker-knoop punten
 
-De configuratie van `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`de Super Visor log4j wordt gelezen.
+De configuratie van de Super Visor Log4J wordt gelezen uit `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
 
-Het configuratie bestand van `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`de worker-log4j wordt gelezen.
+Het configuratie bestand van de worker-Log4J wordt gelezen uit `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`.
 
-Vindt`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+Voor beelden: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -174,6 +174,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure-account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

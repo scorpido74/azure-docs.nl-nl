@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e26cf5ede2c8884719152b6d35f1b41eb092eda6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071807"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791885"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybride verbindingen #
 
@@ -28,7 +28,7 @@ Hybride verbindingen is zowel een service in azure als een functie in Azure App 
 In App Service kan Hybride verbindingen worden gebruikt voor toegang tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. Er is geen alternatieve mogelijkheid om toegang te krijgen tot uw toepassing. De hybride verbinding wordt gebruikt in App Service en is afgestemd op één combi natie van TCP-host en poort. Dit betekent dat het hybride verbindings eindpunt zich op elk besturings systeem en elke toepassing kan bevinden, mits u een TCP-Luister poort opent. Met de functie Hybride verbindingen weet u niet of u weet wat het toepassings protocol is of wat u opent. Het biedt simpelweg netwerk toegang.  
 
 
-## <a name="how-it-works"></a>Hoe werkt het? ##
+## <a name="how-it-works"></a>Het werkt als volgt ##
 De functie Hybride verbindingen bestaat uit twee uitgaande oproepen voor Azure Service Bus door sturen. Er is een verbinding van een bibliotheek op de host waarop uw app wordt uitgevoerd in App Service. Er is ook een verbinding tussen Hybrid Connection Manager (HCM) en Service Bus Relay. De HCM is een Relay-service die u implementeert in het netwerk dat als host fungeert voor de bron waartoe u toegang wilt krijgen. 
 
 Via de twee gekoppelde verbindingen heeft uw app een TCP-tunnel naar een vaste host: poort combinatie aan de andere kant van de HCM. De verbinding maakt gebruik van TLS 1,2 voor beveiliging en SAS-sleutels (Shared Access Signature) voor verificatie en autorisatie.    
@@ -38,7 +38,7 @@ Via de twee gekoppelde verbindingen heeft uw app een TCP-tunnel naar een vaste h
 Als uw app een DNS-aanvraag maakt die overeenkomt met een geconfigureerd hybride verbindings eindpunt, wordt het uitgaande TCP-verkeer omgeleid via de hybride verbinding.  
 
 > [!NOTE]
-> Dit betekent dat u altijd een DNS-naam moet gebruiken voor uw hybride verbinding. Sommige client software voert geen DNS-zoek opdracht uit als het eind punt in plaats daarvan een IP-adres gebruikt.
+> Dit betekent dat u altijd een DNS-naam moet gebruiken voor uw hybride verbinding. Sommige client software voert geen DNS-zoek opdracht uit als het eind punt in plaats daarvan een IP-adres gebruikt. 
 >
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Voor delen van hybride verbinding App Service ###
@@ -63,9 +63,12 @@ Wat u niet kunt doen met Hybride verbindingen zijn onder andere:
 - Ondersteuning voor LDAP, omdat hiervoor UDP vereist is.
 - Ondersteuning Active Directory, omdat u geen domein kunt toevoegen aan een App Service-werk nemer.
 
+### <a name="prerequisites"></a>Vereisten ###
+ - Windows app service is vereist. Het is alleen beschikbaar in Windows.  
+
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Hybride verbindingen toevoegen en maken in uw app ##
 
-Als u een hybride verbinding wilt maken, gaat u naar de [Azure Portal][portal] en selecteert u uw app. Selecteer **netwerken** > **Configureer uw hybride verbindings**eindpunten. Hier ziet u de Hybride verbindingen die zijn geconfigureerd voor uw app.  
+Als u een hybride verbinding wilt maken, gaat u naar de [Azure Portal][portal] en selecteert u uw app. Selecteer **netwerk** > **uw hybride verbindings eindpunten te configureren**. Hier ziet u de Hybride verbindingen die zijn geconfigureerd voor uw app.  
 
 ![Scherm opname van de lijst met hybride verbindingen][2]
 
@@ -122,7 +125,7 @@ Naast de vereiste van een App Service plan SKU, zijn er extra kosten verbonden a
 
 ## <a name="hybrid-connection-manager"></a>Hybrid Connection Manager ##
 
-De functie Hybride verbindingen vereist een relay-agent in het netwerk dat als host fungeert voor uw hybride verbindings eindpunt. Deze relay-agent wordt de Hybrid Connection Manager (HCM) genoemd. Als u HCM wilt downloaden, selecteert u vanuit uw app in het [Azure Portal][portal] **netwerken** > **uw hybride verbindings-eind punten configureren**.  
+De functie Hybride verbindingen vereist een relay-agent in het netwerk dat als host fungeert voor uw hybride verbindings eindpunt. Deze relay-agent wordt de Hybrid Connection Manager (HCM) genoemd. Als u HCM wilt downloaden, selecteert u in de [Azure Portal][portal] **netwerk** > **uw hybride verbindings-eind punten configureren**in uw app.  
 
 Dit hulp programma kan worden uitgevoerd op Windows Server 2012 en hoger. De HCM wordt uitgevoerd als een service en maakt verbinding met het uitgaande verkeer naar Azure Relay op poort 443.  
 
@@ -136,12 +139,12 @@ Een of meer Hybride verbindingen toevoegen aan uw HCM:
 
 1. Start de HCM-gebruikers interface.
 2. Selecteer **een andere hybride verbinding configureren**.
-![Scherm opname van nieuwe Hybride verbindingen configureren][8]
+![scherm opname van nieuwe Hybride verbindingen configureren][8]
 
 1. Meld u aan met uw Azure-account om uw Hybride verbindingen beschikbaar te stellen voor uw abonnementen. De HCM blijft uw Azure-account verder gebruiken dan dat. 
 1. Kies een abonnement.
 1. Selecteer het Hybride verbindingen dat u door de HCM wilt laten door sturen.
-![Scherm opname van Hybride verbindingen][9]
+Scherm opname van Hybride verbindingen ![][9]
 
 1. Selecteer **Opslaan**.
 
@@ -169,7 +172,7 @@ Als u wilt dat iemand buiten uw abonnement als host voor een HCM-exemplaar voor 
 
 ![Een hybride verbinding hand matig toevoegen][11]
 
-### <a name="upgrade"></a>Upgrade ###
+### <a name="upgrade"></a>Upgraden ###
 
 De Hybrid Connection Manager bevatten periodieke updates om problemen op te lossen of verbeteringen aan te brengen. Wanneer er upgrades worden uitgebracht, wordt een pop-upvenster weer gegeven in de HCM-gebruikers interface. Wanneer de upgrade wordt toegepast, worden de wijzigingen toegepast en wordt de HCM opnieuw gestart. 
 

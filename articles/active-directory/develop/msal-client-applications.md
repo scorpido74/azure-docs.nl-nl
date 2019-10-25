@@ -1,5 +1,6 @@
 ---
-title: Client toepassingen (micro soft-verificatie bibliotheek) | Azure
+title: Client toepassingen (micro soft-verificatie bibliotheek)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over open bare client-en vertrouwelijke client toepassingen in de micro soft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 76c57d3a13f9f03fa635c6c9425e2049e2a2c885
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69532975"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803213"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Open bare client-en vertrouwelijke client toepassingen
 Micro soft Authentication Library (MSAL) definieert twee typen clients: open bare clients en vertrouwelijke clients. De twee client typen zijn herkenbaar aan de mogelijkheid om veilig te verifiëren met de autorisatie server en de vertrouwelijkheid van hun client referenties te hand haven. Azure AD Authentication Library (ADAL) gebruikt daarentegen de zogenaamde *verificatie context* (een verbinding met Azure AD).
@@ -30,12 +31,12 @@ Micro soft Authentication Library (MSAL) definieert twee typen clients: open bar
 - **Vertrouwelijke client toepassingen** zijn apps die worden uitgevoerd op servers (Web apps, Web API-apps of zelfs service/daemon-apps). Ze worden beschouwd als moeilijk te benaderen en daarom kan een toepassings geheim worden bewaard. Vertrouwelijke clients kunnen configuratie-en tijd geheimen bevatten. Elk exemplaar van de client heeft een afzonderlijke configuratie (inclusief client-ID en client geheim). Deze waarden zijn moeilijk te extra heren voor eind gebruikers. Een web-app is de meest voorkomende vertrouwelijke client. De client-ID wordt weer gegeven via de webbrowser, maar het geheim wordt alleen door gegeven in het back-upkanaal en nooit rechtstreeks zichtbaar.
 
     Vertrouwelijke client-apps: <BR>
-    ![Web app ](media/msal-client-applications/web-app.png) ![Web API ](media/msal-client-applications/web-api.png) ![Daemon/service ](media/msal-client-applications/daemon-service.png)
+    ![web-app](media/msal-client-applications/web-app.png) ![Web-API](media/msal-client-applications/web-api.png) ![daemon/service](media/msal-client-applications/daemon-service.png)
 
 - **Open bare client toepassingen** zijn apps die worden uitgevoerd op apparaten of desktop computers of in een webbrowser. Ze worden niet vertrouwd om toepassings geheimen veilig te blijven, zodat ze alleen toegang hebben tot Web-Api's namens de gebruiker. (Alleen open bare client stromen worden ondersteund.) Open bare clients kunnen geen configuratie-tijd geheimen bevatten, zodat ze geen client geheimen hebben.
 
     Open bare client-apps: <BR>
-    ![Desktop app ](media/msal-client-applications/desktop-app.png) ![Browserless API ](media/msal-client-applications/browserless-app.png) ![Mobile app ](media/msal-client-applications/mobile-app.png)
+    ![bureau blad-app](media/msal-client-applications/desktop-app.png) ![Browserloze API](media/msal-client-applications/browserless-app.png) ![mobiele app](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
 > In MSAL. js bevindt zich geen schei ding van open bare en vertrouwelijke client-apps.  MSAL. js vertegenwoordigt client-apps als apps op basis van gebruikers agent, open bare clients waarin de client code wordt uitgevoerd in een gebruikers agent zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is.

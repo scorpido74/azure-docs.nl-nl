@@ -1,5 +1,6 @@
 ---
-title: Universeel Windows-platform overwegingen (micro soft Authentication Library voor .NET) | Azure
+title: Universeel Windows-platform overwegingen (micro soft Authentication Library voor .NET)
+titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Universeel Windows-platform met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 27a41ad084d21c7623011b5678fb84ed27d68325
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532488"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802661"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Universeel Windows-platform-specifieke overwegingen met MSAL.NET
 In UWP moet u rekening houden met verschillende overwegingen bij het gebruik van MSAL.NET.
 
 ## <a name="the-usecorporatenetwork-property"></a>De eigenschap UseCorporateNetwork
-In het WinRT-platform `PublicClientApplication` heeft de volgende Boole- ``UseCorporateNetwork``eigenschap. Met deze eigenschap kunnen win 8.1-en UWP-toepassingen profiteren van geïntegreerde Windows-authenticatie (en dus SSO waarbij de gebruiker zich aanmeldt met het besturings systeem) als de gebruiker is aangemeld met een account in een federatieve Azure AD-Tenant. Wanneer u deze eigenschap instelt, maakt MSAL.NET gebruik van WAB (Web authentication Broker).
+In het WinRT-platform heeft `PublicClientApplication` de volgende Booleaanse eigenschap ``UseCorporateNetwork``. Met deze eigenschap kunnen win 8.1-en UWP-toepassingen profiteren van geïntegreerde Windows-authenticatie (en dus SSO waarbij de gebruiker zich aanmeldt met het besturings systeem) als de gebruiker is aangemeld met een account in een federatieve Azure AD-Tenant. Wanneer u deze eigenschap instelt, maakt MSAL.NET gebruik van WAB (Web authentication Broker).
 
 > [!IMPORTANT]
 > Als u deze eigenschap instelt op True, wordt ervan uitgegaan dat de ontwikkelaar van de toepassing geïntegreerde Windows-authenticatie (IWA) in de toepassing heeft ingeschakeld. Voor dit:
-> - Schakel in ``Package.appxmanifest`` de toepassing voor uw UWP op het tabblad **mogelijkheden** de volgende mogelijkheden in:
+> - In de ``Package.appxmanifest`` voor uw UWP-toepassing schakelt u op het tabblad **mogelijkheden** de volgende mogelijkheden in:
 >   - Ondernemings verificatie
 >   - Particuliere netwerken (client & Server)
 >   - Gedeeld gebruikers certificaat
@@ -67,7 +68,7 @@ Zie voor meer informatie [Web authentication Broker-Fiddler](https://docs.micros
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie vindt u in de volgende voor beelden:
 
-Voorbeeld | Platform | Description 
+Voorbeeld | Platform | Beschrijving 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Een Universeel Windows-platform-client toepassing met behulp van msal.net, die toegang heeft tot de Microsoft Graph voor een gebruiker die is geverifieerd met het Azure AD v 2.0-eind punt. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-DotNet-native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Een Universeel Windows-platform-client toepassing met behulp van msal.net, die toegang heeft tot de Microsoft Graph voor een gebruiker die is geverifieerd met het Azure AD v 2.0-eind punt. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL kunt gebruiken om MSA en Azure AD te verifiëren via het AAD v 2.0-eind punt en toegang te krijgen tot de Microsoft Graph met het resulterende token. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

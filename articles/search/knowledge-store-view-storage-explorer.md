@@ -1,23 +1,24 @@
 ---
-title: Een kennis archief met Storage Explorer-Azure Search weer geven
-description: Bekijk en analyseer een Azure Search kennis archief met de Storage Explorer van Azure Portal.
+title: Een kennis archief met Storage Explorer weer geven
+titleSuffix: Azure Cognitive Search
+description: Bekijk en analyseer een Azure Cognitive Search Knowledge Store met de Storage Explorer van Azure Portal.
+manager: nitinme
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265607"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789978"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kennis archief met Storage Explorer weer geven
 
 > [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
+> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Cognitive Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkennen met behulp van Storage Explorer in de Azure Portal. Zie [een kennis archief maken in azure Portal](knowledge-store-create-portal.md)voor het maken van het voor beeld van het kennis archief dat in dit scenario wordt gebruikt.
 

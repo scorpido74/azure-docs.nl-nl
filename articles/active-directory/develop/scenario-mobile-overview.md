@@ -1,5 +1,6 @@
 ---
-title: Mobiele app die web-Api's aanroept-overzicht | Micro soft Identity-platform
+title: Mobiele app die web-Api's aanroept-overzicht
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (overzicht)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f67f063ab374dec8bac3905ea46f1dfa9d8ed1fb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852595"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803756"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: Mobiele toepassing die web-Api's aanroept
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenario: mobiele toepassing die web-Api's aanroept
 
 Lees alles wat u nodig hebt om een mobiele app te bouwen die web-Api's aanroept.
 
@@ -36,11 +37,11 @@ Lees alles wat u nodig hebt om een mobiele app te bouwen die web-Api's aanroept.
 Maak uw eerste mobiele toepassing en probeer een Snelstartgids uit te proberen.
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Android-app](./quickstart-v2-android.md)
+> [Snelstartgids: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Android-app](./quickstart-v2-android.md)
 >
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een iOS-app](./quickstart-v2-ios.md)
+> [Snelstartgids: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een iOS-app](./quickstart-v2-ios.md)
 >
-> [Snelstart: Een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Xamarin iOS & Android-app](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een Xamarin iOS & Android-app](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>Overzicht
 
@@ -50,9 +51,9 @@ Een persoonlijke, naadloze gebruikers ervaring is essentieel voor mobiele apps. 
 
 Overwegingen voor mobiele apps:
 
-- **Gebruikers ervaring is sleutel**: Gebruikers toestaan om de waarde van uw app te zien voordat hij of zij zich aanmeldt en alleen de vereiste machtigingen aanvragen.
-- **Ondersteuning voor alle gebruikers configuraties**: Veel mobiele zakelijke gebruikers bevinden zich onder voorwaardelijke toegang en nalevings beleid voor apparaten. Zorg ervoor dat u deze belang rijke scenario's ondersteunt.
-- **Eenmalige aanmelding (SSO) implementeren**: MSAL en micro soft Identity platform maken het inschakelen van eenmalige aanmelding eenvoudig via de browser van het apparaat of de Microsoft Authenticator (en Intune-bedrijfsportal op Android).
+- **Gebruikers ervaring is sleutel**: Hiermee staat u gebruikers toe de waarde van uw app te zien voordat hij of zij zich aanmeldt en vraagt u alleen de vereiste machtigingen op.
+- **Ondersteuning voor alle gebruikers configuraties**: veel mobiele zakelijke gebruikers bevinden zich onder voorwaardelijke toegang en nalevings beleid voor apparaten. Zorg ervoor dat u deze belang rijke scenario's ondersteunt.
+- **Eenmalige aanmelding (SSO) implementeren**: MSAL en micro soft Identity platform maken het mogelijk om eenmalige aanmelding in te scha kelen via de browser van het apparaat of de Microsoft Authenticator (en intune-bedrijfsportal op Android).
 
 ## <a name="specifics"></a>Opsporingsgegevens
 

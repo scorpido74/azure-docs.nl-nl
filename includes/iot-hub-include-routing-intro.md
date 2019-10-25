@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271510"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808822"
 ---
-[Berichtroutering](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) kunnen verzenden van telemetriegegevens van uw IoT-apparaten aan ingebouwde Event Hub-compatibele eindpunten of aangepaste eindpunten, zoals blob storage, Service Bus-wachtrijen, Service Bus-onderwerpen en Event Hubs. Voor het configureren van aangepaste berichtroutering, maakt u [routering query's](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) om aan te passen van de route die overeenkomt met een bepaalde voorwaarde. Zodra u deze hebt ingesteld, worden de inkomende gegevens automatisch door de IoT Hub doorgestuurd naar de eindpunten. Als een bericht niet overeenkomt met een van de gedefinieerde routering query's, wordt deze doorgestuurd naar het standaardeindpunt.
+Met [bericht routering](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) kunnen telemetriegegevens van uw IOT-apparaten worden verzonden naar ingebouwde Event hub-compatibele eind punten of aangepaste eind punten, zoals BLOB storage, service bus wachtrijen, service bus onderwerpen en Event hubs. Als u aangepaste bericht routering wilt configureren, maakt u [routerings query's](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) om de route aan te passen die overeenkomt met een bepaalde voor waarde. Zodra u deze hebt ingesteld, worden de inkomende gegevens automatisch door de IoT Hub doorgestuurd naar de eindpunten. Als een bericht niet overeenkomt met een van de gedefinieerde routerings query's, wordt het doorgestuurd naar het standaard eindpunt.
 
-In deze zelfstudie 2-onderdeel leert u hoe u kunt instellen en gebruiken van deze aangepaste routering query's met IoT Hub. Routeren van berichten van een IoT-apparaat op een van meerdere eindpunten, met inbegrip van de blob-opslag en een Service Bus-wachtrij. Berichten naar de Service Bus-wachtrij worden opgehaald door een logische App en via e-mail verzonden. Berichten waarop geen aangepaste berichtroutering gedefinieerd zijn verzonden naar het standaardeindpunt worden opgehaald door Azure Stream Analytics en weergegeven in een Power BI-visualisatie.
+In deze tweedelige zelf studie leert u hoe u deze aangepaste routerings query's kunt instellen en gebruiken met IoT Hub. U stuurt berichten van een IoT-apparaat naar een van de verschillende eind punten, met inbegrip van Blob-opslag en een Service Bus wachtrij. Berichten naar de Service Bus wachtrij worden door een logische app opgehaald en via e-mail verzonden. Berichten waarvoor geen aangepaste bericht routering is gedefinieerd, worden verzonden naar het standaard eindpunt, vervolgens opgehaald door Azure Stream Analytics en weer gegeven in een Power BI visualisatie.
 
-Volledige delen 1 en 2 van deze zelfstudie moet u de volgende taken uitgevoerd:
+Als u de onderdelen 1 en 2 van deze zelf studie wilt volt ooien, voert u de volgende taken uit:
 
-**Deel i Resources maken en instellen op Routering van berichten**
+**Deel I: resources maken, bericht routering instellen**
 > [!div class="checklist"]
-> * De resources--een IoT-hub, een storage-account, een Service Bus-wachtrij en een gesimuleerd apparaat maken. Dit kan worden gedaan met behulp van de portal, de Azure CLI, Azure PowerShell of een Azure Resource Manager-sjabloon.
-> * De eindpunten en berichtroutes in IoT Hub configureren voor de storage-account en Service Bus-wachtrij.
+> * Maak de resources--een IoT-hub, een opslag account, een Service Bus wachtrij en een gesimuleerd apparaat. U kunt dit doen met behulp van de Azure Portal, een Azure Resource Manager sjabloon, de Azure CLI of Azure PowerShell.
+> * Configureer de eind punten en bericht routes in IoT Hub voor het opslag account en de Service Bus wachtrij.
 
-**Deel II: Berichten verzenden naar de hub, gerouteerde resultaten weergeven**
+**Deel II: berichten verzenden naar de hub, gerouteerde resultaten weer geven**
 > [!div class="checklist"]
 > * Maak een logische app die wordt geactiveerd en een e-mailbericht verzendt wanneer een bericht wordt toegevoegd aan de Service Bus-wachtrij.
 > * Download een app die een IoT-apparaat aanzet tot het verzenden van berichten naar de hub voor de verschillende routeringsopties en voer deze uit.
@@ -38,13 +38,13 @@ Volledige delen 1 en 2 van deze zelfstudie moet u de volgende taken uitgevoerd:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Deel 1 van deze zelfstudie:
+* Voor deel 1 van deze zelf studie:
   - U hebt een abonnement op Azure nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-* Deel 2 van deze zelfstudie:
-  - U moet voltooide deel 1 van deze zelfstudie hebt en de resources zijn nog steeds beschikbaar.
+* Voor deel 2 van deze zelf studie:
+  - U moet deel 1 van deze zelf studie hebben voltooid. de resources zijn nog steeds beschikbaar.
   - Installeer [Visual Studio](https://www.visualstudio.com/).
-  - Een Power BI-account voor het analyseren van de Stream Analytics van het standaardeindpunt. ([Probeer Power BI gratis uit](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Een Office 365-account voor het verzenden van melding via e-mail.
+  - Toegang hebben tot een Power BI-account om de stream Analytics van het standaard eindpunt te analyseren. ([Probeer Power BI gratis uit](https://app.powerbi.com/signupredirect?pbi_source=web).)
+  - Een Office 365-account hebben voor het verzenden van e-mail berichten.
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

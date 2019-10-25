@@ -1,5 +1,6 @@
 ---
-title: Micro soft Authentication Library (MSAL) voor iOS-& macOS | Azure
+title: Micro soft Authentication Library (MSAL) voor iOS & macOS
+titleSuffix: Microsoft identity platform
 description: Hierin worden de verschillen in het gebruik van micro soft Authentication Library (MSAL) tussen iOS en macOS beschreven.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb6e55e83412535f29284db48fb37fd514b35d4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 090f4eaea292c7122db2427ce8730df815506fc0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269010"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803146"
 ---
-# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Micro soft-verificatie bibliotheek voor iOS-en macOS-verschillen
+# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Verschillen tussen de Microsoft-verificatiebibliotheek voor iOS en macOS
 
 In dit artikel worden de verschillen in functionaliteit tussen de micro soft Authentication Library (MSAL) voor iOS en macOS beschreven.
 
@@ -37,7 +38,7 @@ MSAL voor macOS is een subset van de functionaliteit die beschikbaar is voor iOS
 
 MSAL voor macOS biedt geen ondersteuning voor:
 
-- verschillende browser typen `ASWebAuthenticationSession`, zoals, `SFAuthenticationSession`, `SFSafariViewController`,.
+- verschillende browser typen, zoals `ASWebAuthenticationSession`, `SFAuthenticationSession``SFSafariViewController`.
 - brokered authenticatie via Microsoft Authenticator-app wordt niet ondersteund voor macOS.
 
 Het delen van sleutel Hangers tussen apps van dezelfde uitgever is beperkter dan macOS 10,14 en eerder. Gebruik [toegangs beheer lijsten](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) om de paden op te geven naar de apps die de sleutel hanger moeten delen. De gebruiker kan extra aanvragen voor sleutel hanger bekijken.

@@ -7,28 +7,27 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336844"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786985"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelfstudie: Een Azure Active Directory Domain Services-exemplaar maken en configureren
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren
 
 Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP, Kerberos/NTLM-verificatie die volledig compatibel is met Windows Server Active Directory. U gebruikt deze domein Services zonder zelf domein controllers te implementeren, beheren en repareren. Azure AD DS integreert met uw bestaande Azure AD-Tenant. Met deze integratie kunnen gebruikers zich aanmelden met hun bedrijfs referenties, en kunt u bestaande groepen en gebruikers accounts gebruiken om de toegang tot bronnen te beveiligen.
 
-Deze zelf studie laat zien hoe u een Azure AD DS-exemplaar maakt en configureert met behulp van de Azure Portal.
+U kunt een beheerd domein maken met behulp van standaard configuratie opties voor netwerken en synchronisatie, of [deze instellingen hand matig definiëren][tutorial-create-instance-advanced]. In deze zelf studie ziet u hoe u standaard opties kunt gebruiken om een Azure AD DS-exemplaar te maken en te configureren met behulp van de Azure Portal.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * DNS-en virtuele netwerk instellingen configureren voor een beheerd domein
+> * Informatie over DNS-vereisten voor een beheerd domein
 > * Een Azure AD DS-exemplaar maken
-> * Gebruikers met beheerders rechten toevoegen aan domein beheer
-> * Synchronisatie van wachtwoordhashes inschakelen
+> * Wachtwoord-hashsynchronisatie inschakelen
 
 Als u nog geen abonnement op Azure hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
@@ -52,13 +51,15 @@ Hoewel het niet vereist is voor Azure AD DS, is het raadzaam om [selfservice voo
 
 In deze zelf studie maakt en configureert u het Azure AD DS-exemplaar met behulp van de Azure Portal. Meld u eerst aan bij de [Azure Portal](https://portal.azure.com)om aan de slag te gaan.
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>Een exemplaar maken en basis instellingen configureren
+## <a name="create-an-instance"></a>Een instantie maken
 
 Voer de volgende stappen uit om de wizard **Azure AD Domain Services inschakelen** te starten:
 
 1. Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken**.
 1. Voer *domein Services* in de zoek balk in en kies *Azure AD Domain Services* in de zoek suggesties.
 1. Selecteer op de pagina Azure AD Domain Services **maken**. De wizard **Azure AD Domain Services inschakelen** wordt gestart.
+1. Selecteer het Azure- **abonnement** waarin u het beheerde domein wilt maken.
+1. Selecteer de **resource groep** waarvan het beheerde domein deel moet uitmaken. Maak een **nieuwe** resource groep of selecteer een bestaande.
 
 Wanneer u een exemplaar van Azure AD DS maakt, geeft u een DNS-naam op. Er zijn enkele aandachtspunten bij het kiezen van deze DNS-naam:
 
@@ -86,80 +87,28 @@ De volgende DNS-naam beperkingen zijn ook van toepassing:
 Vul de velden in het venster *basis beginselen* van het Azure Portal in om een Azure AD DS-exemplaar te maken:
 
 1. Voer een **DNS-domein naam** in voor uw beheerde domein, waarbij rekening wordt gehouden met de vorige punten.
-1. Selecteer het Azure- **abonnement** waarin u het beheerde domein wilt maken.
-1. Selecteer de **resource groep** waarvan het beheerde domein deel moet uitmaken. Maak een **nieuwe** resource groep of selecteer een bestaande.
 1. Kies de Azure- **locatie** waar het beheerde domein moet worden gemaakt.
-1. Klik op **OK** om door te gaan naar de sectie **netwerk** .
 
-![Basis instellingen voor een Azure AD Domain Services-exemplaar configureren](./media/tutorial-create-instance/basics-window.png)
+    ![Basis instellingen voor een Azure AD Domain Services-exemplaar configureren](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>Het virtuele netwerk maken en configureren
+Als u snel een door Azure AD DS beheerd domein wilt maken, kunt u op **revisie + maken** klikken om aanvullende standaard configuratie opties te accepteren. De volgende standaard waarden worden geconfigureerd wanneer u deze Maak optie kiest:
 
-Als u verbinding wilt maken, hebt u een virtueel Azure-netwerk en een toegewezen subnet nodig. Azure AD DS is ingeschakeld in dit subnet van het virtuele netwerk. In deze zelf studie maakt u een virtueel netwerk, maar u kunt er in plaats daarvan voor kiezen om een bestaand virtueel netwerk te gebruiken. Bij beide benaderingen moet u een toegewezen subnet maken voor gebruik door Azure AD DS.
+* Hiermee maakt u een virtueel netwerk met de naam *aadds-vnet* dat gebruikmaakt van het IP-adres bereik van *10.0.1.0/24*.
+* Hiermee maakt u een subnet met de naam *aadds-subnet* met het IP-adres bereik *10.0.1.0/24*.
+* Synchroniseert *alle* gebruikers van Azure AD in het door Azure AD DS beheerde domein.
 
-Enkele aandachtspunten voor dit toegewezen subnet van het virtuele netwerk bevatten de volgende gebieden:
+1. Selecteer **controleren + maken** om deze standaard configuratie opties te accepteren.
 
-* Het adres bereik van het subnet moet ten minste 3-5 beschik bare IP-adressen bevatten ter ondersteuning van de Azure AD DS-resources.
-* Selecteer niet het subnet van de *Gateway* voor het implementeren van Azure AD DS. Het wordt niet ondersteund voor het implementeren van Azure-AD DS in een *Gateway* -subnet.
-* Implementeer geen andere virtuele machines in het subnet. Toepassingen en Vm's gebruiken vaak netwerk beveiligings groepen om de connectiviteit te beveiligen. Door deze werk belastingen uit te voeren in een afzonderlijk subnet kunt u deze netwerk beveiligings groepen Toep assen zonder de verbinding met uw beheerde domein te onderbreken.
-* U kunt uw beheerde domein niet naar een ander virtueel netwerk verplaatsen nadat u Azure AD DS hebt ingeschakeld.
+## <a name="deploy-the-managed-domain"></a>Het beheerde domein implementeren
 
-Zie [netwerk overwegingen voor Azure Active Directory Domain Services][network-considerations]voor meer informatie over het plannen en configureren van het virtuele netwerk.
+Controleer op de pagina **samen vatting** van de wizard de configuratie-instellingen voor het beheerde domein. U kunt terugkeren naar elke stap van de wizard om wijzigingen aan te brengen. Als u een Azure AD DS beheerd domein op een consistente manier opnieuw wilt implementeren in een andere Azure AD-Tenant met behulp van deze configuratie opties, kunt u ook **een sjabloon voor Automation downloaden**.
 
-Vul de velden in het venster *netwerk* als volgt in:
-
-1. Kies in het venster **netwerk** de optie **virtueel netwerk selecteren**.
-1. Voor deze zelf studie kiest u voor het maken van een **Nieuw** virtueel netwerk voor het implementeren van Azure-AD DS in.
-1. Voer een naam in voor het virtuele netwerk, bijvoorbeeld *myVnet*, en geef een adres bereik op, bijvoorbeeld *10.1.0.0/16*.
-1. Maak een toegewezen subnet met een duidelijke naam, zoals *DomainServices*. Geef een adres bereik op, bijvoorbeeld *10.1.0.0/24*.
-
-    ![Een virtueel netwerk en een subnet maken voor gebruik met Azure AD Domain Services](./media/tutorial-create-instance/create-vnet.png)
-
-    Zorg ervoor dat u een adres bereik kiest dat binnen uw privé-IP-adres bereik valt. IP-adresbereiken die zich in de open bare adres ruimte bevinden, veroorzaken fouten in azure AD DS.
-
-    > [!TIP]
-    > Op de pagina **virtueel netwerk kiezen** worden de bestaande virtuele netwerken weer gegeven die horen bij de resource groep en de Azure-locatie die u eerder hebt geselecteerd. U moet [een toegewezen subnet maken][create-dedicated-subnet] voordat u Azure AD DS implementeert.
-
-1. Wanneer het virtuele netwerk en het subnet zijn gemaakt, moet het subnet automatisch worden geselecteerd, zoals *DomainServices*. U kunt in plaats daarvan een ander bestaand subnet kiezen dat deel uitmaakt van het geselecteerde virtuele netwerk:
-
-    ![Kies het toegewezen subnet in het virtuele netwerk](./media/tutorial-create-instance/choose-subnet.png)
-
-1. Selecteer **OK** om de configuratie van het virtuele netwerk te bevestigen.
-
-## <a name="configure-an-administrative-group"></a>Een beheer groep configureren
-
-Een speciale beheer groep met de naam *Aad DC-Administrators* wordt gebruikt voor het beheer van het Azure AD DS-domein. Aan leden van deze groep worden beheerders machtigingen verleend op Vm's die zijn gekoppeld aan het beheerde domein. Op Vm's die lid zijn van een domein, wordt deze groep toegevoegd aan de lokale groep Administrators. Leden van deze groep kunnen ook Extern bureaublad gebruiken om extern verbinding te maken met virtuele machines die lid zijn van een domein.
-
-U hebt geen machtigingen voor *domein Administrator* of *ondernemings Administrator* voor een beheerd domein met Azure AD DS. Deze machtigingen zijn gereserveerd door de service en worden niet beschikbaar gesteld voor gebruikers binnen de Tenant. In plaats daarvan kunt u met de groep *Aad DC-Administrators* bepaalde geprivilegieerde bewerkingen uitvoeren. Deze bewerkingen omvatten het toevoegen van computers aan het domein, die deel uitmaken van de beheer groep op Vm's die lid zijn van een domein en het configureren van groepsbeleid.
-
-De wizard maakt automatisch de groep *Aad DC-Administrators* in uw Azure AD-adres lijst. Als u een bestaande groep met deze naam in uw Azure AD-adres lijst hebt, wordt deze groep door de wizard geselecteerd. U kunt ervoor kiezen om tijdens het implementatie proces extra gebruikers toe te voegen aan deze groep *Aad DC-Administrators* . Deze stappen kunnen later worden uitgevoerd.
-
-1. Om extra gebruikers toe te voegen aan deze groep *Aad DC-Administrators* , selecteert u **groepslid maatschap beheren**.
-1. Selecteer de knop **leden toevoegen** , zoek naar en selecteer gebruikers in uw Azure AD-adres lijst. Zoek bijvoorbeeld naar uw eigen account en voeg deze toe aan de groep *Aad DC-Administrators* .
-
-    ![Groepslid maatschap van de groep AAD DC-Administrators configureren](./media/tutorial-create-instance/admin-group.png)
-
-1. Wanneer u gereed bent, selecteert u **OK**.
-
-## <a name="configure-synchronization"></a>Synchronisatie configureren
-
-Met Azure AD DS kunt u *alle* gebruikers en groepen synchroniseren die beschikbaar zijn in azure AD of een synchronisatie met een *bereik* van alleen specifieke groepen. Als u ervoor kiest om *alle* gebruikers en groepen te synchroniseren, kunt u er later niet voor kiezen om alleen een synchronisatie met een bereik uit te voeren. Zie [Azure AD Domain Services scoped Synchronization][scoped-sync](Engelstalig) voor meer informatie over het bereik van synchronisatie.
-
-1. Voor deze zelf studie kiest u voor het synchroniseren van **alle** gebruikers en groepen. Deze synchronisatie keuze is de standaard optie.
-
-    ![Een volledige synchronisatie uitvoeren van gebruikers en groepen vanuit Azure AD](./media/tutorial-create-instance/sync-all.png)
-
-1. Selecteer **OK**.
-
-## <a name="deploy-your-managed-domain"></a>Uw beheerde domein implementeren
-
-Controleer op de pagina **samen vatting** van de wizard de configuratie-instellingen voor het beheerde domein. U kunt terugkeren naar elke stap van de wizard om wijzigingen aan te brengen.
-
-1. Selecteer **OK**om het beheerde domein te maken.
+1. Selecteer **maken**om het beheerde domein te maken. Er wordt een opmerking weer gegeven dat bepaalde configuratie opties, zoals de DNS-naam of het virtuele netwerk, niet kunnen worden gewijzigd nadat de beheerde Azure-AD DS is gemaakt. Selecteer **OK**om door te gaan.
 1. Het proces van het inrichten van uw beheerde domein kan tot een uur duren. Er wordt een melding weer gegeven in de portal die de voortgang van de implementatie van uw Azure-AD DS weergeeft. Selecteer de melding om de gedetailleerde voortgang van de implementatie te bekijken.
 
     ![Melding in de Azure Portal van de implementatie die wordt uitgevoerd](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. De pagina wordt geladen met updates voor het implementatie proces, met inbegrip van het maken van nieuwe resources in uw Directory.
 1. Selecteer uw resource groep, zoals *myResourceGroup*, en kies vervolgens uw Azure AD DS-exemplaar in de lijst met Azure-resources, zoals *contoso.com*. Op het tabblad **overzicht** ziet u dat het beheerde domein momenteel wordt *geïmplementeerd*. U kunt het beheerde domein pas configureren als het volledig is ingericht.
 
     ![Status van domein Services tijdens de inrichtings status](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Controleer op de pagina **samen vatting** van de wizard de configuratie-instelli
 
     ![Domain Services-status nadat deze is ingericht](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Tijdens het inrichtings proces maakt Azure AD DS twee bedrijfs toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* in uw Directory. Deze zakelijke toepassingen zijn nodig voor de service van uw beheerde domein. Het is essentieel dat deze toepassingen op elk gewenst moment niet worden verwijderd.
+We richten Azure AD Domain Services op de Azure Active Directory-Tenant en de Azure AD Domain Services resource voor de service worden gemaakt binnen het bijbehorende Azure-abonnement. Tijdens het inrichtings proces maakt Azure AD DS twee zakelijke toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* in uw Azure Active Directory-exemplaar waarin u Azure hebt ingeschakeld AD Domain Services. Deze zakelijke toepassingen zijn nodig voor de service van uw beheerde domein.  Het is essentieel dat deze toepassingen op elk gewenst moment niet worden verwijderd.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>DNS-instellingen bijwerken voor het virtuele Azure-netwerk
 
@@ -203,33 +152,34 @@ Voordat een gebruiker het wacht woord opnieuw kan instellen, moet de Azure AD-Te
 
 Als u het wacht woord voor een alleen-Cloud gebruiker wilt wijzigen, moet de gebruiker de volgende stappen uitvoeren:
 
-1. Ga naar de pagina Azure AD-toegangs venster [https://myapps.microsoft.com](https://myapps.microsoft.com)op.
+1. Ga naar de pagina Azure AD-toegangs venster op [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. Selecteer in de rechter bovenhoek uw naam en kies vervolgens **profiel** in de vervolg keuzelijst.
 
     ![Selecteer het profiel](./media/tutorial-create-instance/select-profile.png)
 
 1. Selecteer op de pagina **profiel** de optie **wacht woord wijzigen**.
 1. Voer uw bestaande (oude) wacht woord in op de pagina **wacht woord wijzigen** , voer een nieuw wacht woord in en bevestig dit.
-1. Selecteer **indienen**.
+1. Selecteer **Indienen**.
 
 Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord hebt gewijzigd zodat het kan worden gebruikt in azure AD DS en u kunt zich aanmelden bij computers die zijn gekoppeld aan het beheerde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * DNS-en virtuele netwerk instellingen configureren voor een beheerd domein
+> * Informatie over DNS-vereisten voor een beheerd domein
 > * Een Azure AD DS-exemplaar maken
 > * Gebruikers met beheerders rechten toevoegen aan domein beheer
 > * Gebruikers accounts inschakelen voor Azure AD DS en wacht woord-hashes genereren
 
-Als u dit beheerde domein in actie wilt zien, maakt u een virtuele machine en voegt u deze toe aan het domein.
+Voordat u een domein toevoegt aan Vm's en toepassingen implementeert die gebruikmaken van het door Azure AD DS beheerde domein, configureert u een virtueel Azure-netwerk voor werk belastingen van toepassingen.
 
 > [!div class="nextstepaction"]
-> [Een virtuele machine met Windows Server toevoegen aan uw beheerde domein](join-windows-vm.md)
+> [Virtuele Azure-netwerken configureren voor werk belastingen van toepassingen om uw beheerde domein te gebruiken](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

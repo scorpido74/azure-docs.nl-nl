@@ -1,18 +1,18 @@
 ---
-title: Grote sets met onderwerpen beheren in Azure Event Grid met gebeurtenis domeinen
+title: Gebeurtenissen publiceren met gebeurtenis domeinen met Azure Event Grid
 description: Laat zien hoe u grote sets met onderwerpen beheert in Azure Event Grid en gebeurtenissen hierop publiceert met behulp van gebeurtenis domeinen.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 9d7cef35ef6d1138b037f7c520f21bee86567aa8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/22/2019
+ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842579"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786544"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
 
@@ -35,7 +35,7 @@ Zie voor meer informatie over gebeurtenis domeinen [begrijpen gebeurtenis domein
 
 Als u grote sets met onderwerpen wilt beheren, maakt u een gebeurtenis domein.
 
-# <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -78,16 +78,16 @@ Het maken is voltooid met de volgende waarden:
 }
 ```
 
-Let op `endpoint` de `id` en de vereisten die nodig zijn voor het beheren van het domein en het publiceren van gebeurtenissen.
+Let op de `endpoint` en `id` wanneer dit nodig is voor het beheren van het domein en het publiceren van gebeurtenissen.
 
 ## <a name="manage-access-to-topics"></a>Toegang tot onderwerpen beheren
 
 Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). De roltoewijzing maakt gebruik van op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
 
-Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)`, waarmee u abonnementen kunt maken en verwijderen, en `EventGrid EventSubscription Reader (Preview)`waarmee u alleen gebeurtenis abonnementen kunt weer geven.
+Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)`, waarmee abonnementen kunnen worden gemaakt en verwijderd, en `EventGrid EventSubscription Reader (Preview)`, waarmee alleen gebeurtenis abonnementen kunnen worden weer gegeven.
 
-# <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
-De volgende Azure cli-opdracht `alice@contoso.com` beperkt het maken en verwijderen van gebeurtenis abonnementen alleen `demotopic1`in het onderwerp:
+# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+De volgende Azure CLI-opdracht beperkt `alice@contoso.com` om alleen gebeurtenis abonnementen te maken en te verwijderen in het onderwerp `demotopic1`:
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,7 +97,7 @@ az role assignment create \
 ```
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-De volgende Power shell- `alice@contoso.com` opdracht is beperkt tot het maken en verwijderen van `demotopic1`alleen gebeurtenis abonnementen in het onderwerp:
+De volgende Power shell-opdracht beperkt `alice@contoso.com` voor het maken en verwijderen van alleen gebeurtenis abonnementen in het onderwerp `demotopic1`:
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -113,11 +113,11 @@ Zie voor meer informatie over het beheren van toegang voor Event Grid-bewerkinge
 
 De Event Grid-Service maakt en beheert automatisch het bijbehorende onderwerp in een domein op basis van de aanroep voor het maken van een gebeurtenis abonnement voor een domein onderwerp. Er is geen afzonderlijke stap voor het maken van een onderwerp in een domein. Op dezelfde manier wordt het onderwerp ook verwijderd wanneer het laatste gebeurtenis abonnement voor een onderwerp wordt verwijderd.
 
-Abonneren op een onderwerp in een domein is hetzelfde als abonneren op een andere Azure-resource. Geef voor de bron Resource-ID de gebeurtenis domein-ID op die wordt geretourneerd bij het maken van het domein. Als u het onderwerp wilt opgeven waarop u zich wilt abonneren `/topics/<my-topic>` , voegt u toe aan het einde van de bron resource-id. Als u een gebeurtenis abonnement voor een domein scope wilt maken dat alle gebeurtenissen in het domein ontvangt, geeft u de gebeurtenis domein-ID op zonder onderwerpen op te geven.
+Abonneren op een onderwerp in een domein is hetzelfde als abonneren op een andere Azure-resource. Geef voor de bron Resource-ID de gebeurtenis domein-ID op die wordt geretourneerd bij het maken van het domein. Als u het onderwerp wilt opgeven waarop u zich wilt abonneren, voegt u `/topics/<my-topic>` toe aan het einde van de bron Resource-ID. Als u een gebeurtenis abonnement voor een domein scope wilt maken dat alle gebeurtenissen in het domein ontvangt, geeft u de gebeurtenis domein-ID op zonder onderwerpen op te geven.
 
 Normaal gesp roken maakt de gebruiker aan wie u toegang hebt verleend in de voor gaande sectie het abonnement. U kunt dit artikel vereenvoudigen door het abonnement te maken. 
 
-# <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -137,7 +137,7 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Als u een eind punt nodig hebt om uw gebeurtenissen te abonneren op, kunt u altijd een [vooraf gemaakte web-app](https://github.com/Azure-Samples/azure-event-grid-viewer) implementeren waarin de binnenkomende gebeurtenissen worden weer gegeven. U kunt uw evenementen verzenden naar uw test website op `https://<your-site-name>.azurewebsites.net/api/updates`.
+Als u een eind punt nodig hebt om uw gebeurtenissen te abonneren op, kunt u altijd een [vooraf gemaakte web-app](https://github.com/Azure-Samples/azure-event-grid-viewer) implementeren waarin de binnenkomende gebeurtenissen worden weer gegeven. U kunt uw evenementen op `https://<your-site-name>.azurewebsites.net/api/updates`verzenden naar uw test website.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -146,7 +146,7 @@ Machtigingen die zijn ingesteld voor een onderwerp worden opgeslagen in Azure Ac
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Gebeurtenissen publiceren naar een Event Grid domein
 
-Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publiceren naar een aangepast onderwerp](./post-to-custom-topic.md). In plaats van naar het aangepaste onderwerp te publiceren, publiceert u echter alle gebeurtenissen naar het domein eindpunt. In de gegevens van de JSON-gebeurtenis geeft u het onderwerp op waarnaar u de gebeurtenissen wilt laten gaan. De volgende matrix met gebeurtenissen zou ertoe leiden dat de `"id": "1111"` gebeurtenis met `demotopic1` het onderwerp en `"id": "2222"` de gebeurtenis met zou worden `demotopic2`verzonden naar het onderwerp:
+Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publiceren naar een aangepast onderwerp](./post-to-custom-topic.md). In plaats van naar het aangepaste onderwerp te publiceren, publiceert u echter alle gebeurtenissen naar het domein eindpunt. In de gegevens van de JSON-gebeurtenis geeft u het onderwerp op waarnaar u de gebeurtenissen wilt laten gaan. De volgende matrix met gebeurtenissen zou leiden tot een gebeurtenis met `"id": "1111"` onderwerp `demotopic1` terwijl de gebeurtenis met `"id": "2222"` naar het onderwerp wordt verzonden `demotopic2`:
 
 ```json
 [{
@@ -175,7 +175,7 @@ Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publicer
 }]
 ```
 
-# <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
+# <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
 Als u het domein eindpunt wilt ophalen met Azure CLI, gebruikt u
 
 ```azurecli-interactive

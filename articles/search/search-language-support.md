@@ -1,25 +1,25 @@
 ---
-title: Meerdere talen indexeren voor niet-Engelse Zoek query's-Azure Search
-description: Azure Search ondersteunt 56 talen, met taal analyse functies van Lucene en natuurlijke taal verwerkings technologie van micro soft.
-author: yahnoosh
+title: Meerdere talen indexeren voor niet-Engelse Zoek query's
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search ondersteunt 56 talen, met taal analyse functies van Lucene en natuurlijke taal verwerkings technologie van micro soft.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+author: yahnoosh
 ms.author: jlembicz
-ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186556"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793593"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Een index maken voor meerdere talen in Azure Search
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Een index maken voor meerdere talen in azure Cognitive Search
 
 Indexen kunnen velden bevatten met inhoud uit meerdere talen, zoals het maken van afzonderlijke velden voor taalspecifieke teken reeksen. Voor de beste resultaten tijdens het indexeren en opvragen van query's, wijst u een taal analyse toe die de juiste taal regels biedt. 
 
-Azure Search biedt een groot aantal taal analyse functies van zowel Lucene als micro soft dat kan worden toegewezen aan afzonderlijke velden met behulp van de eigenschap Analyzer. U kunt ook een taal analyse opgeven in de portal, zoals beschreven in dit artikel.
+Azure Cognitive Search biedt een groot aantal taal analyse functies van zowel Lucene als micro soft dat kan worden toegewezen aan afzonderlijke velden met behulp van de eigenschap Analyzer. U kunt ook een taal analyse opgeven in de portal, zoals beschreven in dit artikel.
 
 ## <a name="add-analyzers-to-fields"></a>Analyse functies toevoegen aan velden
 
@@ -34,7 +34,7 @@ Er wordt een taal analyse opgegeven wanneer een veld wordt gemaakt. Voor het toe
 
 ![Taal analyseers toewijzen tijdens veld definitie](media/search-language-support/select-analyzer.png "Taal analyseers toewijzen tijdens veld definitie")
 
-In alle Doorzoek bare velden wordt standaard de [standaard-lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) gebruikt. de taal neutraal. Als u de volledige lijst met ondersteunde analyse functies wilt bekijken, raadpleegt [u taal analysen toevoegen aan een Azure search-index](index-add-language-analyzers.md).
+In alle Doorzoek bare velden wordt standaard de [standaard-lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) gebruikt. de taal neutraal. Als u de volledige lijst met ondersteunde analyse functies wilt bekijken, raadpleegt [u taal analysen toevoegen aan een Azure Cognitive search-index](index-add-language-analyzers.md).
 
 In de portal zijn analyse functies bedoeld om te worden gebruikt als-is. Als u aanpassingen of een specifieke configuratie van filters en tokenizers nodig hebt, moet u [een aangepaste Analyzer](index-add-custom-analyzers.md) in code maken. De portal biedt geen ondersteuning voor het selecteren of configureren van aangepaste analyse functies.
 
@@ -65,4 +65,4 @@ Soms is de taal van de agent waarmee een query wordt uitgegeven niet bekend. in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een .NET-ontwikkelaar bent, kunt u taal analyse functies configureren met behulp van de [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) en de eigenschap [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 
+Als u een .NET-ontwikkelaar bent, kunt u taal analyse functies configureren met behulp van de [Azure Cognitive Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) en de eigenschap [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) . 

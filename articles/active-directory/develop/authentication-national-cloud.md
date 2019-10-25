@@ -1,5 +1,6 @@
 ---
 title: Verificatie met behulp van Azure Active Directory in nationale Clouds
+titleSuffix: Microsoft identity platform
 description: Meer informatie over app-registratie en verificatie-eind punten voor nationale Clouds.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135860"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803880"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -64,8 +65,8 @@ De volgende tabel bevat de basis-Url's voor de Azure AD-eind punten die worden g
 
 U kunt aanvragen indienen bij de autorisatie-of Token-eind punten van Azure AD met behulp van de juiste regiospecifieke basis-URL. Bijvoorbeeld voor Azure Duitsland:
 
-  - Het gebruikelijke eind punt `https://login.microsoftonline.de/common/oauth2/authorize`voor autorisatie is.
-  - Token common-eind `https://login.microsoftonline.de/common/oauth2/token`punt is.
+  - Het gemeen schappelijke eind punt voor autorisatie is `https://login.microsoftonline.de/common/oauth2/authorize`.
+  - Het token common endpoint is `https://login.microsoftonline.de/common/oauth2/token`.
 
 Vervang voor toepassingen met één Tenant "common" in de vorige Url's door uw Tenant-ID of-naam. Een voorbeeld is `https://login.microsoftonline.de/contoso.com`.
 

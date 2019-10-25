@@ -1,5 +1,6 @@
 ---
-title: Problemen met MSAL voor doel-C-problemen oplossen | Micro soft Identity-platform
+title: Problemen met MSAL voor objectieve C oplossen
+titleSuffix: Microsoft identity platform
 description: Meer informatie over diverse problemen met het gebruik van SSL-certificaten met de MSAL. Doel-C-bibliotheek.
 services: active-directory
 documentationcenter: ''
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268906"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803668"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Procedure: Problemen met MSAL voor iOS-en macOS SSL oplossen
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Procedure: problemen oplossen met MSAL voor iOS-en macOS SSL-problemen
 
 In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden tijdens het gebruik [van de micro soft Authentication Library (MSAL) voor IOS en macOS](reference-v2-libraries.md)
 
 ## <a name="network-issues"></a>Netwerkproblemen
 
-**Fout-1200**: "Er is een SSL-fout opgetreden en een beveiligde verbinding met de server kan niet worden gemaakt."
+**Fout-1200**: er is een SSL-fout opgetreden en een beveiligde verbinding met de server kan niet worden gemaakt.
 
-Deze fout betekent dat de verbinding niet is beveiligd. Deze gebeurtenis treedt op wanneer een certificaat ongeldig is. Raadpleeg `NSURLErrorFailingURLErrorKey` de`userInfo` woorden lijst van het fout object voor meer informatie, waaronder welke server de SSL-controle mislukt.
+Deze fout betekent dat de verbinding niet is beveiligd. Deze gebeurtenis treedt op wanneer een certificaat ongeldig is. Raadpleeg `NSURLErrorFailingURLErrorKey` in de woorden lijst `userInfo` van het fout object voor meer informatie, waaronder welke server de SSL-controle mislukt.
 
 Deze fout is afkomstig uit de netwerk bibliotheek van Apple. Een volledige lijst met NSURL-fout codes bevindt zich in NSURLError. h in de macOS-en iOS-Sdk's. Zie [URL-systeem fout codes laden](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)voor meer informatie over deze fout.
 
