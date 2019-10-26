@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264432"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931572"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Snelstartgids: client bibliotheek voor formulier herkenning voor .NET
 
@@ -43,7 +43,7 @@ Gebruik de Form Recognizer-client bibliotheek voor .NET voor het volgende:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `FORM_RECOGNIZER_KEY`.
+Nadat u een sleutel van het proef abonnement of de resource hebt ontvangen, moet u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt, respectievelijk met de naam `FORM_RECOGNIZER_KEY` en `FORM_RECOGNIZER_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
 
@@ -120,7 +120,6 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fo
 
 Voordat u een methode definieert, voegt u de volgende variabele definities toe boven aan de **programma** klasse. U moet een aantal van de variabelen zelf invullen. 
 
-* U kunt de waarde van het eind punt van uw service vinden in de sectie **overzicht** van de Azure Portal. 
 * Als u de SAS-URL voor uw trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Als u een voorbeeld formulier nodig hebt om te analyseren, kunt u een van de bestanden in de map **test** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken. Deze hand leiding maakt alleen gebruik van PDF-formulieren.
 

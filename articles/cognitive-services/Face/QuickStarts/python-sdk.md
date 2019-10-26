@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176138"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935877"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Snelstartgids: Face client-bibliotheek voor python
 
@@ -29,7 +29,7 @@ Gebruik de face client-bibliotheek voor python voor het volgende:
 * Gezichten verifiëren
 * Een moment opname maken voor gegevens migratie
 
-[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | -voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [package (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | -voor[beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u
  
 ### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
-Maak bijvoorbeeld een nieuw python-script @ no__t-0*QuickStart-file.py*. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
+Maak een nieuw python-script&mdash;*QuickStart-file.py*, bijvoorbeeld. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -254,7 +254,7 @@ De rest van de momentopname bewerkingen worden uitgevoerd binnen een asynchrone 
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
 
-1. Gebruik opnieuw de `wait_for_operation`-functie om de ID op te vragen totdat de bewerking is voltooid.
+1. Gebruik opnieuw de `wait_for_operation` functie om de ID op te vragen totdat de bewerking is voltooid.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
 

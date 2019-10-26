@@ -1,19 +1,19 @@
 ---
-title: Informatie over het compatibiliteitsniveau voor Azure Stream Analytics-taken
-description: Informatie over het instellen van een compatibiliteitsniveau voor een Azure Stream Analytics-taak en belangrijke wijzigingen in de meest recente compatibiliteitsniveau
+title: Compatibiliteits niveaus Azure Stream Analytics
+description: Meer informatie over het instellen van een compatibiliteits niveau voor een Azure Stream Analytics-taak en belang rijke wijzigingen in het meest recente compatibiliteits niveau
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173244"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925629"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteitsniveau voor Azure Stream Analytics-taken
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteits niveau voor Azure Stream Analytics taken
 
 In dit artikel wordt de optie compatibiliteits niveau in Azure Stream Analytics beschreven. Stream Analytics is een beheerde service, met normale onderdelen updates en prestatie verbeteringen. De meeste runtime-updates van de service worden automatisch beschikbaar gesteld aan eind gebruikers. 
 
@@ -21,7 +21,7 @@ Een aantal nieuwe functies in de service kan echter een grote wijziging veroorza
 
 ## <a name="choose-a-compatibility-level"></a>Een compatibiliteits niveau kiezen
 
-Compatibiliteitsniveau bepaalt het runtimegedrag van een stream analytics-taak. 
+Compatibiliteits niveau bepaalt het runtime gedrag van een stream Analytics-taak. 
 
 Azure Stream Analytics ondersteunt momenteel drie compatibiliteits niveaus:
 
@@ -40,14 +40,14 @@ U kunt het compatibiliteits niveau instellen voor een Stream Analytics taak in h
 Het compatibiliteits niveau van de taak in het Azure Portal bijwerken:
 
 1. Gebruik de [Azure Portal](https://portal.azure.com) om naar uw stream Analytics-taak te zoeken.
-2. **Stop** de taak voordat u het compatibiliteits niveau bijwerkt. U kunt het compatibiliteitsniveau niet bijwerken als de taak actief is is.
+2. **Stop** de taak voordat u het compatibiliteits niveau bijwerkt. Als uw taak wordt uitgevoerd, kunt u het compatibiliteits niveau niet bijwerken.
 3. Onder de kop **configureren** selecteert u **compatibiliteits niveau**.
 4. Kies de gewenste waarde voor het compatibiliteits niveau.
 5. Selecteer onder aan de pagina **Opslaan** .
 
-![Compatibiliteitsniveau van Stream Analytics in Azure portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Compatibiliteits niveau Stream Analytics in Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Wanneer u het compatibiliteitsniveau bijwerkt, wordt de taak met de syntaxis die overeenkomt met het geselecteerde compatibiliteitsniveau gevalideerd door de T-SQL-compiler.
+Wanneer u het compatibiliteits niveau bijwerkt, valideert de T-SQL-compiler de taak met de syntaxis die overeenkomt met het geselecteerde compatibiliteits niveau.
 
 ## <a name="compatibility-level-12-preview"></a>Compatibiliteits niveau 1,2 (preview-versie)
 
@@ -81,7 +81,7 @@ Het gedrag van de upsert wordt *ingevoegd of vervangen*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>Date time offset bij het schrijven naar SQL-uitvoer
 
-**Eerdere niveaus:** [Date Time offset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) -typen zijn aangepast aan UTC.
+**Eerdere niveaus:** [Date Time offset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) types zijn aangepast aan UTC.
 
 **niveau van 1,2:** Date time offset wordt niet meer aangepast.
 
@@ -101,9 +101,9 @@ Het gedrag van de upsert wordt *ingevoegd of vervangen*.
 
 **Eerdere niveaus:** Er is geen strikte validatie van functie voorvoegsels.
 
-**niveau van 1,2:** Azure Stream Analytics heeft een strikte validatie van functie voorvoegsels. Als u een voor voegsel toevoegt aan een ingebouwde functie, treedt er een fout op. Wordt bijvoorbeeld`myprefix.ABS(…)` niet ondersteund.
+**niveau van 1,2:** Azure Stream Analytics heeft een strikte validatie van functie voorvoegsels. Als u een voor voegsel toevoegt aan een ingebouwde functie, treedt er een fout op. `myprefix.ABS(…)` wordt bijvoorbeeld niet ondersteund.
 
-Het toevoegen van een voor voegsel aan ingebouwde aggregaties resulteert ook in een fout. Wordt bijvoorbeeld `myprefix.SUM(…)` niet ondersteund.
+Het toevoegen van een voor voegsel aan ingebouwde aggregaties resulteert ook in een fout. `myprefix.SUM(…)` wordt bijvoorbeeld niet ondersteund.
 
 Als u het voor voegsel ' System ' gebruikt voor door de gebruiker gedefinieerde functies, treedt er een fout op.
 
@@ -115,7 +115,7 @@ Als u het voor voegsel ' System ' gebruikt voor door de gebruiker gedefinieerde 
 
 ## <a name="compatibility-level-11"></a>Compatibiliteits niveau 1,1
 
-De volgende belangrijke wijzigingen zijn geïntroduceerd in compatibiliteitsniveau 1.1 van:
+De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits niveau 1,1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-indeling
 
@@ -132,21 +132,21 @@ De volgende belangrijke wijzigingen zijn geïntroduceerd in compatibiliteitsnive
 **niveau 1,1:** hoofdletter gevoeligheid is persistent voor veld namen wanneer deze worden verwerkt door de Azure stream Analytics-engine.
 
 > [!NOTE]
-> Permanente hoofdlettergevoeligheid is nog niet beschikbaar voor Stream Analytics-taken die worden gehost met behulp van Edge-omgeving. Als gevolg hiervan, worden alle veldnamen geconverteerd naar kleine letters, als de taak voor edge-apparaten wordt gehost.
+> Het persistent maken van cases is nog niet beschikbaar voor stream Analytics-taken die worden gehost door de Edge-omgeving. Als gevolg hiervan worden alle veld namen omgezet in kleine letters als uw taak wordt gehost aan de rand.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**niveau van 1,0:** CREATE TABLE opdracht heeft geen gebeurtenissen gefilterd met NaN (geen-a-number). Bijvoorbeeld oneindig, -oneindig) in een FLOAT-kolom typt, omdat deze buiten het bereik beschreven voor deze getallen zijn.
+**niveau van 1,0:** CREATE TABLE opdracht heeft geen gebeurtenissen gefilterd met NaN (geen-a-number). Bijvoorbeeld oneindig,-oneindig) in een FLOAT-kolom Type omdat deze buiten het gedocumenteerde bereik voor deze getallen vallen.
 
-**niveau van 1,1:** Met CREATE TABLE kunt u een sterk schema opgeven. De Stream Analytics-engine valideert dat de gegevens aan dit schema voldoen. De opdracht kunt u gebeurtenissen met NaN waarden filteren met dit model.
+**niveau van 1,1:** Met CREATE TABLE kunt u een sterk schema opgeven. De Stream Analytics-engine valideert dat de gegevens voldoen aan dit schema. Met dit model kan de opdracht gebeurtenissen filteren met NaN-waarden.
 
 ### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatische conversie voor datetime-teken reeksen uitschakelen in JSON
 
 **niveau van 1,0:** Met de JSON-parser worden teken reeks waarden met datum/tijd/zone-informatie automatisch geconverteerd naar DateTime-type en vervolgens geconverteerd naar UTC. Dit gedrag heeft geleid tot verlies van informatie over de tijd zone.
 
-**niveau van 1,1:** Er zijn niet meer automatisch conversie van teken reeks waarden met datum/tijd/zone-informatie naar het type DateTime. Als gevolg hiervan, wordt informatie over de tijdzone bewaard.
+**niveau van 1,1:** Er zijn niet meer automatisch conversie van teken reeks waarden met datum/tijd/zone-informatie naar het type DateTime. Als gevolg hiervan wordt informatie over de tijd zone bewaard.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Stream Analytics-invoer oplossen](stream-analytics-troubleshoot-input.md)
+* [Problemen met Azure Stream Analytics invoer oplossen](stream-analytics-troubleshoot-input.md)
 * [Resource status Stream Analytics](stream-analytics-resource-health.md)

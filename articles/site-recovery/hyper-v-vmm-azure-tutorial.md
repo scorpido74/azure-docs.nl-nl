@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59e6bbbca982d428d4e590cb647f186e1c3fec3a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813770"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933826"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Herstel na nood gevallen instellen voor on-premises virtuele Hyper-V-machines in VMM-Clouds naar Azure
 
@@ -31,6 +31,10 @@ In deze zelfstudie leert u het volgende:
 
 > [!NOTE]
 > Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg de artikelen in de sectie **instructies** van de site Recovery- [documentatie](https://docs.microsoft.com/azure/site-recovery)voor gedetailleerde instructies.
+
+> [!WARNING]
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -63,7 +67,7 @@ Wanneer u de bron omgeving instelt, installeert u de Azure Site Recovery provide
 1. Selecteer **bron**in **infra structuur voorbereiden**.
 2. Selecteer in **bron voorbereiden**de optie **+ VMM** om een VMM-server toe te voegen. Controleer in **Server toevoegen**of **System Center VMM-server** wordt weergegeven bij **Servertype**.
 3. Down load het installatie programma voor de provider van de Microsoft Azure-Site Recovery.
-4. Download de kluisregistratiesleutel. U hebt deze sleutel nodig wanneer u de provider-installatie uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
+4. Download de registratiesleutel voor de kluis. U hebt deze sleutel nodig wanneer u de provider-installatie uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 5. Down load het installatie programma voor de Microsoft Azure Recovery Services-agent.
 
     ![Provider, registratie sleutel en agent downloaden](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
@@ -101,7 +105,7 @@ Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -
 
 ## <a name="configure-network-mapping"></a>Netwerktoewijzing configureren
 
-1. Selecteer in site Recovery**netwerk**toewijzing van **infrastructuur** >  > netwerk toewijzingen het pictogram **+ netwerk toewijzing** .
+1. Selecteer in **site Recovery infrastructuur** > **netwerk toewijzingen** > **netwerk toewijzing**het pictogram **+ netwerk toewijzing** .
 2. Selecteer in **netwerk toewijzing toevoegen**de Bron-VMM-server. Selecteer **Azure** als doel.
 3. Controleer na het uitvoeren van een failover het abonnement en het implementatiemodel.
 4. Selecteer in **bron netwerk**het on-premises bron-VM-netwerk.
@@ -111,7 +115,7 @@ Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen
 
-1. Selecteer**replicatie-instellingen** >  > voor infra structuur voorbereiden **+ maken en koppelen**.
+1. Selecteer **infra structuur voorbereiden** > **replicatie-instellingen** >  **+ maken en koppelen**.
 2. Geef in **Beleid maken en koppelen** een beleidsnaam op. We gebruiken **ContosoReplicationPolicy**.
 3. Wijzig de standaard instellingen en selecteer **OK**.
     - De **Kopieer frequentie** geeft aan dat er na de initiële replicatie Delta gegevens elke vijf minuten worden gerepliceerd.

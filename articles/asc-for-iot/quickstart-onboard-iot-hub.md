@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 45eaa6d4c66c9ec8e25d728fb70f389912a00793
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551589"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928437"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Snelstartgids: onboard Azure Security Center voor IoT-service in IoT Hub
 
@@ -43,13 +43,7 @@ Dit artikel bevat een uitleg over het inschakelen van de Azure Security Center v
 Beveiliging op uw IoT Hub inschakelen: 
 
 1. Open uw **IOT hub** in azure Portal. 
-1. Klik in het menu **beveiliging** op **Beveilig uw IOT-oplossing**.
-1. Schakel het selectie vakje inschakelen als standaard **in** . 
-1. Selecteer uw log Analytics-werk ruimte.
-1. Geef uw Log Analytics werkruimte Details op. 
-   - Kies voor het inschakelen van een **dubbele verzameling** door de **dubbele verzameling** **in-/uitschakelen te**laten staan.
-   - Kies voor het opslaan van **onbewerkte gebeurtenissen** naast de standaard gegevens typen opslag door de **beveiligings gebeurtenissen voor onbewerkte apparaten** in log Analytics op te slaan. Wijzig de **Onbewerkte gebeurtenis** **in**-/uitschakelen. 
-    
+1. Klik in het menu **beveiliging** op **Beveilig uw IOT-oplossing**.    
 1. Klik op **Opslaan**. 
 
 Gefeliciteerd! Het inschakelen van Azure Security Center voor IoT op uw IoT Hub is voltooid. 

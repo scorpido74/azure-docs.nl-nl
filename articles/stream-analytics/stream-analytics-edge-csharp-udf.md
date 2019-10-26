@@ -1,5 +1,5 @@
 ---
-title: Door C# de gebruiker gedefinieerde functies schrijven voor Azure stream Analytics Edge-taken in Visual Studio (preview)
+title: Door C# de gebruiker gedefinieerde functies schrijven voor Azure stream Analytics Edge-taken
 description: Informatie over het schrijven van door de gebruiker gedefinieerde C#-functies voor Stream Analytics Edge-taken in Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2ddb5f6c57c49b33c992b13f38c969cbc5e91225
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173315"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925624"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Zelfstudie: Een door de gebruiker gedefinieerde C#-functie schrijven voor een Azure Stream Analytics Edge-taak (preview)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Zelf studie: een C# door de gebruiker gedefinieerde functie schrijven voor Azure stream Analytics Edge-taak (preview-versie)
 
-Met door de gebruiker gedefinieerde C#-functies (UDF’s) die zijn gemaakt in Visual Studio kunt u de Azure Stream Analytics-querytaal uitbreiden met uw eigen functies. U kunt bestaande code (inclusief DLL-bestanden) opnieuw gebruiken en wiskundige of complexe logica gebruiken met C#. Er zijn drie manieren waarop UDF's kunnen worden geïmplementeerd: CodeBehind-bestanden in een Stream Analytics-project, UDF's in een lokaal C#-project of UDF's van een bestaand pakket van een opslagaccount. In deze zelfstudie wordt de CodeBehind-methode gebruikt om een eenvoudige C#-functie te implementeren. De UDF-functie voor Stream Analytics Edge-taken is momenteel in de preview-fase en moet niet worden gebruikt voor productieworkloads.
+Met door de gebruiker gedefinieerde C#-functies (UDF’s) die zijn gemaakt in Visual Studio kunt u de Azure Stream Analytics-querytaal uitbreiden met uw eigen functies. U kunt bestaande code (inclusief DLL-bestanden) opnieuw gebruiken en wiskundige of complexe logica gebruiken met C#. Er zijn drie manieren om UDF’s te implementeren: CodeBehind-bestanden in een Stream Analytics-project, UDF's in een lokaal C#-project of UDF's van een bestaand pakket van een opslagaccount. In deze zelfstudie wordt de CodeBehind-methode gebruikt om een eenvoudige C#-functie te implementeren. De UDF-functie voor Stream Analytics Edge-taken is momenteel in de preview-fase en moet niet worden gebruikt voor productieworkloads.
 
 In deze zelfstudie leert u het volgende:
 
@@ -62,7 +62,7 @@ De container die u maakt, wordt gebruikt voor het opslaan van het gecompileerde 
     |**Instelling**  |**Voorgestelde waarde**  |
     |---------|---------|
     |Assembly-bron  |  Lokale projectverwijzing of CodeBehind   |
-    |Resource  |  Kies gegevens van het huidige account   |
+    |Bron  |  Kies gegevens van het huidige account   |
     |Abonnement  |  Kies uw abonnement.   |
     |Opslagaccount  |  Kies uw opslagaccount.   |
     |Container  |  Kies de container die u hebt gemaakt in uw opslagaccount.   |

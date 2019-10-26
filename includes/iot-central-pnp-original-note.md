@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f3a3f2dd90e467a4ea0cbac05e176888ec5414e3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c386343ff8f5608931aca4a6f46ae09a92082a35
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878045"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929580"
 ---
 > [!NOTE]
-> U bekijkt momenteel de documentatie van IoT Central *Preview-functies* . Ga naar [Wat is Azure IOT Central?](../articles/iot-central/overview-iot-central.md)voor een overzicht van de oorspronkelijke documentatie.
+> U bekijkt momenteel de documentatie van IoT Central *Preview-functies* . Ga naar [Wat is Azure IOT Central?](../articles/iot-central/core/overview-iot-central.md)voor een overzicht van de oorspronkelijke documentatie.

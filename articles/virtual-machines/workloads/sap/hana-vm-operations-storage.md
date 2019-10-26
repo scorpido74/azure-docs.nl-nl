@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750344"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934920"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -40,7 +40,7 @@ De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag t
 
 - Azure Premium-SSD-/Hana/log moet worden opgeslagen in de cache van Azure [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Het/Hana/data-volume kan worden geplaatst op Premium-SSD zonder Azure Write Accelerator of op een ultra schijf
 - Azure Ultra Disk ten minste voor het/Hana/log-volume. Het/Hana/data-volume kan op een van beide Premium-SSD worden geplaatst zonder Azure Write Accelerator of om sneller opnieuw opstarten te krijgen, Ultra Disk
-- **NFS v 4.1** -volumes boven op Azure NetApp files voor/Hana/Log **en** /Hana/data
+- **NFS v 4.1** -volumes boven op Azure NetApp files voor/Hana/Log **en** /Hana/data. Het volume van/Hana/Shared kan het NFS v3-of NFS v 4.1-protocol gebruiken. Het protocol NFS v 4.1 is verplicht voor/Hana/data en/Hana/logboek volumes.
 
 Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om/Hana/data in te stellen op Premium Storage en/Hana/log kunnen op ultra Disk-opslag worden geplaatst om de vereiste lage latentie te verkrijgen. Het wordt echter niet aanbevolen NFS-volumes te combi neren voor bijvoorbeeld/Hana/data en een van de andere gecertificeerde opslag typen voor/Hana/log te gebruiken
 
@@ -230,10 +230,10 @@ In deze configuratie kunt u de/Hana/data-en/Hana/log-volumes op dezelfde schijf.
 M416xx_v2 VM-typen zijn nog niet voor het publiek beschikbaar gemaakt door micro soft. De vermelde waarden zijn bedoeld als uitgangs punt en moeten worden geëvalueerd op basis van de werkelijke vereisten. Het voor deel van Azure Ultra disk is dat de waarden voor IOPS en door Voer kunnen worden aangepast zonder de nood zaak om de virtuele machine af te sluiten of de werk belasting die op het systeem wordt toegepast, te onderbreken.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>NFS v 4.1-volumes op Azure NetApp Files
-Azure NetApp Files biedt native NFS-shares die kunnen worden gebruikt voor/Hana/Shared-,/Hana/data-en/Hana/log-volumes. Voor het gebruik van ANF op basis van NFS-shares voor deze volumes is het gebruik van het v 4.1 NFS-protocol vereist. het NFS-protocol v3 wordt niet ondersteund voor het gebruik van HANA-gerelateerde volumes bij het baseren van de shares op ANF. 
+Azure NetApp Files biedt native NFS-shares die kunnen worden gebruikt voor/Hana/Shared-,/Hana/data-en/Hana/log-volumes. Voor het gebruik van ANF op basis van NFS-shares voor de/Hana/data-en/Hana/log-volumes is het gebruik van het v 4.1 NFS-protocol vereist. Het NFS-protocol v3 wordt niet ondersteund voor het gebruik van/Hana/data-en/Hana/log-volumes bij het baseren van de shares op ANF. 
 
 > [!IMPORTANT]
-> het NFS v3-protocol dat is geïmplementeerd op Azure NetApp Files, wordt niet ondersteund voor/Hana/Shared,/Hana/data en/Hana/log
+> Het NFS v3-protocol dat is geïmplementeerd op Azure NetApp Files, wordt niet ondersteund voor/Hana/data en/Hana/log. Het gebruik van de NFS 4,1 is verplicht voor/Hana/data-en/Hana/log-volumes van een functie punt van weer gave. Overwegende dat voor het/Hana/Shared-volume de NFS v3 of het protocol NFS v 4.1 kan worden gebruikt vanuit een functie punt van weer gave.
 
 ### <a name="important-considerations"></a>Belang rijke overwegingen
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver en de SAP HANA:
@@ -270,21 +270,21 @@ De [Azure NetApp files doorvoer limieten](https://docs.microsoft.com/azure/azure
 
 Om te voldoen aan de vereisten voor de minimale door Voer van SAP voor gegevens en Logboeken, en volgens de richt lijnen voor `/hana/shared`, zien de aanbevolen grootten er als volgt uit:
 
-| Volume | Grootte<br /> Laag Premium Storage | Grootte<br /> Ultra Storage-laag |
+| Volume | Grootte<br /> Laag Premium Storage | Grootte<br /> Ultra Storage-laag | Ondersteund NFS-protocol |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB |
-| /hana/data | 6,3 TiB | 3,2 TiB |
-| /hana/shared | Max (512 GB, 1xRAM) per 4 worker-knoop punten | Max (512 GB, 1xRAM) per 4 worker-knoop punten |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
+| /hana/shared | Max (512 GB, 1xRAM) per 4 worker-knoop punten | Max (512 GB, 1xRAM) per 4 worker-knoop punten | v3 of v 4.1 |
 
 De configuratie van de SAP HANA voor de indeling die in dit artikel wordt weer gegeven, met behulp van Azure NetApp Files Ultra Storage-laag, ziet er als volgt uit:
 
-| Volume | Grootte<br /> Ultra Storage-laag |
+| Volume | Grootte<br /> Ultra Storage-laag | Ondersteund NFS-protocol |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3,2 TiB |
-| /hana/data/mnt00002 | 3,2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
+| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
+| /hana/shared | 2 TiB | v3 of v 4.1 |
 
 > [!NOTE]
 > De aanbevelingen voor het Azure NetApp Files formaat dat hier wordt beschreven, zijn bedoeld om te voldoen aan de minimale vereisten SAP houdt bij hun infrastructuur providers. In echte klant implementaties en werkbelasting scenario's, die mogelijk niet voldoende zijn. U kunt deze aanbevelingen als uitgangs punt gebruiken en aanpassen op basis van de vereisten van uw specifieke werk belasting.  

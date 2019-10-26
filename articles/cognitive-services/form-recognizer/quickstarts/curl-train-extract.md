@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264377"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931283"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul
 
@@ -38,7 +38,7 @@ Eerst hebt u een set trainings gegevens in een Azure Storage BLOB nodig. U moet 
 
 Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de **Train** API aan door de volgende krul opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
 1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
@@ -87,13 +87,13 @@ U ontvangt een reactie van `200 (Success)` met de volgende JSON-uitvoer:
 }
 ```
 
-Let op de waarde voor @no__t 0. U hebt deze nodig in de volgende stappen.
+Let op de waarde van `"modelId"`. U hebt deze nodig in de volgende stappen.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Sleutel-waardeparen en tabellen uit formulieren extra heren
 
 Vervolgens analyseert u een document en extraheert u sleutel-waardeparen en-tabellen. Roep het **model-analyse-** API aan door de krul opdracht uit te voeren die volgt. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen van het formulier Recognizer-abonnement.
 1. Vervang `<modelID>` door de model-ID die u in de vorige sectie hebt ontvangen.
 1. Vervang `<path to your form>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF). Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
 1. Vervang `<file type>` door het bestands type. Ondersteunde typen: `application/pdf`, `image/jpeg`, `image/png`.

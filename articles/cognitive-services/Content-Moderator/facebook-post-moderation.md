@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Gemiddeld Facebook-inhoud-Content Moderator'
+title: 'Zelf studie: gematigde Facebook-inhoud-Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie leert u hoe u met behulp van machine learning en Content Moderator berichten en opmerkingen voor Facebook kunt controleren.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564940"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936009"
 ---
-# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Zelfstudie: Gematige Facebook-berichten en-opdrachten met Azure Content Moderator
+# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Zelf studie: gematige Facebook-berichten en-opdrachten met Azure Content Moderator
 
 In deze zelf studie leert u hoe u Azure Content Moderator kunt gebruiken om de berichten en opmerkingen op een Facebook-pagina te lezen. Facebook verzendt de inhoud die wordt Gepost door bezoekers naar de Content Moderator-service. Vervolgens worden de inhoud door uw Content Moderator-werk stromen gepubliceerd of worden er in het beoordelings programma beoordelingen gemaakt, afhankelijk van de scores en drempel waarden van de inhoud. Raadpleeg de [video Build 2017-demo](https://channel9.msdn.com/Events/Build/2017/T6033) voor een werkend voor beeld van dit scenario.
 
@@ -68,11 +68,11 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
 1. Ga naar de zojuist gemaakte functie-app.
 1. Ga in de app naar het tabblad **platform functies** en selecteer **configuratie**. Selecteer in de sectie **Toepassings instellingen** van de volgende pagina de optie **nieuwe toepassing** om de volgende sleutel/waarde-paren toe te voegen:
     
-    | Naam van app-instelling | value   | 
+    | Naam van app-instelling | waarde   | 
     | -------------------- |-------------|
     | cm:TeamId   | De id van het Content Moderator-team  | 
     | cm:SubscriptionKey | Uw abonnementssleutel voor Content Moderator: zie [Referenties](review-tool-user-guide/credentials.md) |
-    | cm:Region | De naam van uw Content Moderator-regio, zonder de spaties. |
+    | cm:Region | De naam van uw Content Moderator-regio, zonder de spaties. U kunt dit vinden in het veld **locatie** van het tabblad **overzicht** van uw Azure-resource.|
     | cm:ImageWorkflow | De naam van de werkstroom om uit te voeren voor afbeeldingen |
     | cm:TextWorkflow | De naam van de werkstroom om uit te voeren voor tekst |
     | cm:CallbackEndpoint | De URL voor de CMListener-functie-app die u later in deze hand leiding gaat maken |
@@ -81,13 +81,13 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
 
     Klik boven aan de pagina op de knop **Opslaan** .
 
-1. Ga terug naar het tabblad **platform functies** . Gebruik de **+** knop in het linkerdeel venster om het deel venster **nieuwe functie** weer te geven. De functie die u gaat maken, ontvangt gebeurtenissen van Facebook.
+1. Ga terug naar het tabblad **platform functies** . Gebruik de knop **+** in het linkerdeel venster om het **nieuwe functie** deel venster weer te geven. De functie die u gaat maken, ontvangt gebeurtenissen van Facebook.
 
     ![Azure Functions deel venster met de knop functie toevoegen gemarkeerd.](images/new-function.png)
 
     1. Klik op de tegel met de melding **http-trigger**.
     1. Voer de naam **FBListener** in. Stel **Autorisatieniveau** in op **Functie**.
-    1. Klik op **Create**.
+    1. Klik op **Maken**.
     1. Vervang de inhoud van het **Run. CSX** door de inhoud van **FbListener/run. CSX**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -108,7 +108,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
     1. Klik op **My Apps**.
     1. Voeg een nieuw app toe.
     1. Geef deze een naam
-    1. Webhooks selecteren **-> instellen**
+    1. **Webhooks selecteren-> instellen**
     1. Selecteer **pagina** in het vervolg keuzemenu en selecteer **Abonneren op dit object**
     1. Geef **FBListener Url** op als de Callback URL en het **Verify Token** dat u hebt geconfigureerd onder **Function App Settings**
     1. Als u zich hebt geabonneerd, bladert u omlaag naar de feed en selecteert u **subscribe**.
@@ -144,7 +144,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/) en voer de volgende 
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Werk deze omgevingsvariabelen bij:
     
-        | Sleutel | Value   | 
+        | Sleutel | Waarde   | 
         | -------------------- |-------------|
         | appId   | Voeg hier de id van uw Facebook-app in  | 
         | appSecret | Voeg hier het geheim van uw Facebook-app in | 

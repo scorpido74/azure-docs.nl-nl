@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376251"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933883"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
 
@@ -83,11 +83,11 @@ De volgende stappen laten zien hoe u de virtuele machine voorbereidt voor het ve
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>De kluis in een wille keurige regio maken, met uitzonde ring van de bron regio
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-1. Selecteer **een resource** > **beheer hulpprogramma's** > maken**back-up en site Recovery**.
+1. Selecteer **een resource maken** > - **beheer Hulpprogramma's** > **back-up en site Recovery**.
 1. Bij **Naam** geeft u de beschrijvende naam **ContosoVMVault** op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak de resource groep **ContosoRG**.
 1. Geef een Azure-regio op. Zie geografische Beschik baarheid in [Azure site Recovery prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/)om de ondersteunde regio's te controleren.
-1. Selecteer in **Recovery Services kluizen** **overzicht** > **ContosoVMVault** >  **+ repliceren**.
+1. Selecteer in **Recovery Services kluizen** **overzicht** > **ContosoVMVault** > **en repliceren**.
 1. Bij **Bron** selecteert u **Azure**.
 1. Bij **Bronlocatie** selecteert u de Azure-bronregio waar uw VM’s momenteel worden uitgevoerd.
 1. Selecteer het Resource Manager-implementatiemodel. Selecteer vervolgens het **Bronabonnement** en de **Bronresourcegroep**.
@@ -99,7 +99,7 @@ Site Recovery haalt een lijst op met de virtuele machines die zijn gekoppeld aan
 
 1. Selecteer in de volgende stap de virtuele machine die u wilt verplaatsen en selecteer vervolgens **OK**.
 1. Selecteer in **instellingen** **herstel na nood gevallen**.
-1. Selecteer in**doel regio**voor **nood herstel** > configureren de doel regio waarnaar u wilt repliceren.
+1. Selecteer in **nood herstel configureren** > **doel regio**de doel regio waarnaar u wilt repliceren.
 1. Accepteer voor deze zelfstudie de overige standaardinstellingen.
 1. Selecteer **Replicatie inschakelen**. Met deze stap wordt een taak gestart om replicatie in te scha kelen voor de virtuele machine.
 
@@ -115,7 +115,7 @@ De volgende stappen laten zien hoe u de overstap naar de doel regio kunt uitvoer
 4. Nadat de taak is voltooid, controleert u of de virtuele machine wordt weer gegeven in de Azure-doel regio zoals verwacht.
 
 
-## <a name="discard"></a>Verwijderen 
+## <a name="discard"></a>Hierdoor 
 
 Als u de verplaatste virtuele machine hebt gecontroleerd en wilt wijzigen in het herstel punt, of als u terug wilt gaan naar een vorig punt, selecteert u in de **gerepliceerde items**de virtuele machine > **wijzigings punt**. Deze stap biedt u de mogelijkheid om een ander herstel punt en failover naar die ene te specificeren. 
 

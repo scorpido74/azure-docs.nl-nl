@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44f72df28191d02a6d320671e0173eb1306e0c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845691"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933871"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Herstel na noodgevallen instellen voor on-premises Hyper-V-VM's naar Azure
 
@@ -31,6 +31,10 @@ In deze zelfstudie leert u het volgende:
 
 > [!NOTE]
 > Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg de artikelen in de sectie **instructies** van de site Recovery- [documentatie](https://docs.microsoft.com/azure/site-recovery)voor gedetailleerde instructies.
+
+> [!WARNING]
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -68,13 +72,13 @@ Als u de bron omgeving wilt instellen, maakt u een Hyper-V-site en voegt u de Hy
 
     ![Hyper-V-site](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
-4. Nadat de site is gemaakt, in stap 1 van **bron** > **voorbereiden: Selecteer Hyper-V-** site en selecteer de site die u hebt gemaakt.
+4. Nadat de site is gemaakt, klikt u in **bron voorbereiden** > **stap 1: Hyper-V-site selecteren**en selecteert u de site die u hebt gemaakt.
 5. Selecteer **+ Hyper-V-Server**.
 
     ![Hyper-V-server](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Down load het installatie programma voor de provider van de Microsoft Azure-Site Recovery.
-7. Download de kluisregistratiesleutel. U hebt deze sleutel nodig om de provider te installeren. De sleutel blijft vijf dagen na het genereren ervan geldig.
+7. Download de registratiesleutel voor de kluis. U hebt deze sleutel nodig om de provider te installeren. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
     ![Provider en registratie sleutel downloaden](./media/hyper-v-azure-tutorial/download.png)
     
@@ -121,7 +125,7 @@ Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen
 
-1. Selecteer**replicatie-instellingen** >  > voor infra structuur voorbereiden **+ maken en koppelen**.
+1. Selecteer **infra structuur voorbereiden** > **replicatie-instellingen** >  **+ maken en koppelen**.
 2. Geef in **Beleid maken en koppelen** een beleidsnaam op. We gebruiken **ContosoReplicationPolicy**.
 3. Voor deze zelf studie houden we de standaard instellingen in:
     - De **Kopieer frequentie** geeft aan hoe vaak de Delta gegevens (na de initiële replicatie) worden gerepliceerd. De standaard frequentie is om de vijf minuten.
@@ -130,7 +134,7 @@ Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -
     - **Start tijd van de initiële replicatie** geeft aan dat de initiële replicatie onmiddellijk wordt gestart.
 4. Nadat het beleid is gemaakt, selecteert u **OK**. Wanneer u een nieuw beleid maakt, wordt dit automatisch gekoppeld aan de opgegeven Hyper-V-site. In onze zelf studie is dat **ContosoHyperVSite**.
 
-    ![Replicatiebeleid](./media/hyper-v-azure-tutorial/replication-policy.png)
+    ![Beleid voor replicatie](./media/hyper-v-azure-tutorial/replication-policy.png)
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 

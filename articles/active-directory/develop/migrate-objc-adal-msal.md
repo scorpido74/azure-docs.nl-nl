@@ -19,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803269"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934866"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Toepassingen migreren naar MSAL voor iOS en macOS
 
@@ -73,7 +73,7 @@ Er zijn twee manieren om bereiken in MSAL te bieden:
 
 * Geef een lijst op met alle machtigingen die nodig zijn voor uw apps. Bijvoorbeeld: 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     In dit geval vraagt de app de `directory.read`-en `directory.write` machtigingen. De gebruiker wordt gevraagd om toestemming te geven voor die machtigingen als ze nog niet vóór deze app hebben ingestemd. De toepassing kan ook aanvullende machtigingen ontvangen die de gebruiker al heeft ingestemd voor de toepassing. De gebruiker wordt alleen gevraagd om toestemming te geven voor nieuwe machtigingen of machtigingen die nog niet zijn toegekend.
 

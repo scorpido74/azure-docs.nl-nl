@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598784"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933916"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Zelfstudie: Windows-containers controleren op Service Fabric met behulp van Azure Monitor-logboeken
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Zelf studie: Windows-containers controleren op Service Fabric met behulp van Azure Monitor-logboeken
 
 Dit is deel drie van een zelf studie. u wordt begeleid bij het instellen van Azure Monitor logboeken voor het bewaken van uw Windows-containers die op Service Fabric zijn ingedeeld.
 
@@ -186,7 +186,7 @@ Breng de volgende wijzigingen in *template.json* aan:
     },
     ```
 
-[Hier](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) vindt u een voorbeeldsjabloon (gebruikt in deel één van deze zelfstudie) die al deze wijzigingen bevat en die u zo nodig kunt raadplegen. Dankzij deze wijzigingen wordt er een Log Analytics-werkruimte aan de resourcegroep toegevoegd. De werkruimte wordt geconfigureerd zodat Service Fabric-platformgebeurtenissen kunnen worden opgehaald uit de opslagtabellen die met de [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-agent zijn geconfigureerd. De Log Analytics-agent (MMA) is ook aan elk knooppunt in het cluster toegevoegd als een extensie van de virtuele machine. Dit betekent dat als het cluster wordt geschaald, de agent automatisch op elke machine wordt geconfigureerd en aan dezelfde werkruimte gekoppeld.
+[Hier](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json) vindt u een voorbeeldsjabloon (gebruikt in deel één van deze zelfstudie) die al deze wijzigingen bevat en die u zo nodig kunt raadplegen. Dankzij deze wijzigingen wordt er een Log Analytics-werkruimte aan de resourcegroep toegevoegd. De werkruimte wordt geconfigureerd zodat Service Fabric-platformgebeurtenissen kunnen worden opgehaald uit de opslagtabellen die met de [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-agent zijn geconfigureerd. De Log Analytics-agent (MMA) is ook aan elk knooppunt in het cluster toegevoegd als een extensie van de virtuele machine. Dit betekent dat als het cluster wordt geschaald, de agent automatisch op elke machine wordt geconfigureerd en aan dezelfde werkruimte gekoppeld.
 
 Implementeer de sjabloon met de nieuwe wijzigingen om het huidige cluster bij te werken. Wanneer dit is voltooid, ziet u de log Analytics-resources in uw resource groep. Als het cluster klaar is, implementeert u er de containertoepassing in. In de volgende stap, wordt het bewaken van de containers ingesteld.
 
@@ -233,7 +233,7 @@ Hierna komt u terecht in de Log Analytics-werkruimte, waar u uw oplossingen kunt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Azure Monitor-logboeken configureren voor uw Service Fabric cluster
@@ -242,7 +242,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 
 Nu u bewaking hebt ingesteld voor uw containertoepassing, kunt u het volgende doen:
 
-* Azure Monitor-logboeken instellen voor een Linux-cluster, volgens soort gelijke stappen als hierboven. Raadpleeg [Deze sjabloon](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) om wijzigingen in de Resource Manager-sjabloon aan te brengen.
+* Azure Monitor-logboeken instellen voor een Linux-cluster, volgens soort gelijke stappen als hierboven. Raadpleeg [Deze sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) om wijzigingen in de Resource Manager-sjabloon aan te brengen.
 * Configureer Azure Monitor Logboeken om [automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) in te stellen voor detectie en diagnose.
 * De lijst met [aanbevolen prestatiemeteritems](service-fabric-diagnostics-event-generation-perf.md) van Service Fabric onderzoeken om deze voor uw clusters te configureren.
 * U kunt vertrouwd raken met de [Zoek-en query](../log-analytics/log-analytics-log-searches.md) functies die beschikbaar worden gesteld als onderdeel van Azure monitor Logboeken.

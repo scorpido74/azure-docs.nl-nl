@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 834447d15336fcd6d56f2979113aaef7e22ecb8f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173259"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934302"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Snelstartgids: een Azure Stream Analytics-taak maken met behulp van Visual Studio
 
 Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren met Azure Stream Analytics-tools voor Visual Studio. De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
 
@@ -22,7 +22,7 @@ Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 * Installeer Visual Studio 2019, Visual Studio 2015 of Visual Studio 2013 update 4. Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund.
 
@@ -32,7 +32,7 @@ Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren
 
 Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden die later worden geconfigureerd als de taakinvoer. Voltooi de volgende stappen om de invoergegevens voor te bereiden die zijn vereist voor de taak:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **Een resource maken** > **Internet of Things** > **IoT Hub**.
 
@@ -40,14 +40,14 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
    
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Subscription  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
+   |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
+   |Resourcegroep   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
    |Regio  |  \<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\> | Selecteer een geografische locatie waar u de IoT-hub kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is. |
    |Naam van de IoT-hub  | MyASAIoTHub  |   Selecteer een naam voor de IoT-hub.   |
 
    ![Een IoT Hub maken](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. Selecteer **Volgende: Grootte instellen en schaal aanpassen**.
+4. Selecteer **Volgende: grootte instellen en schaal aanpassen**.
 
 5. Kies uw **prijs- en schaalcategorie**. Selecteer voor deze quickstart de categorie **F1 - Gratis** als deze nog beschikbaar is voor uw abonnement. Als de categorie Gratis niet beschikbaar is, kiest u de laagste beschikbare categorie. Zie [Prijsinformatie IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/) voor meer informatie.
 
@@ -111,10 +111,10 @@ Let op de elementen die zijn opgenomen in een Azure Stream Analytics-project.
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**   |
    |---------|---------|---------|
    |Invoeralias  |  Invoer   |  Voer een unieke naam in voor de invoer van de taak.   |
-   |Brontype   |  Gegevensstroom |  Kies de juiste invoerbron: Gegevensstroom of Verwijzingsgegevens.   |
-   |Source  |  IoT Hub |  Kies de juiste invoerbron.   |
-   |Resource  | Kies gegevensbron van het huidige account | Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
-   |Subscription  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met de IoT-hub die u hebt gemaakt.   |
+   |Brontype   |  Gegevensstroom |  Kies de juiste invoerbron: gegevensstroom of referentiegegevens.   |
+   |Bron  |  IoT Hub |  Kies de juiste invoerbron.   |
+   |Bron  | Kies gegevensbron van het huidige account | Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
+   |Abonnement  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met de IoT-hub die u hebt gemaakt.   |
    |IoT Hub  |  MyASAIoTHub   |  Kies uw IoT-hub, of voer de naam ervan in. Namen van IoT-hubs worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.   |
    
 3. De andere opties kunnen de standaardwaarden behouden. Selecteer **Opslaan** om de instellingen op te slaan.  
@@ -129,13 +129,13 @@ Let op de elementen die zijn opgenomen in een Azure Stream Analytics-project.
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**   |
    |---------|---------|---------|
-   |Uitvoeralias  |  Output   |  Voer een unieke naam in voor de uitvoer van de taak.   |
-   |Sink   |  Blob-opslag |  Kies de juiste sink.    |
-   |Resource  |  Gegevensbroninstellingen handmatig opgeven |  Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
-   |Subscription  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt.   |
+   |Uitvoeralias  |  Uitvoer   |  Voer een unieke naam in voor de uitvoer van de taak.   |
+   |Sink   |  Blobopslag |  Kies de juiste sink.    |
+   |Bron  |  Gegevensbroninstellingen handmatig opgeven |  Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
+   |Abonnement  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt.   |
    |Opslagaccount  |  asaquickstartstorage   |  Kies of typ de naam van het opslagaccount. Namen van opslagaccounts worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.   |
    |Container  |  container1   |  Selecteer de bestaande container die u in uw opslagaccount hebt gemaakt.   |
-   |Padpatroon  |  uitvoer   |  Voer de naam in van een bestandspad dat in de container moet worden gemaakt.   |
+   |Padpatroon  |  output   |  Voer de naam in van een bestandspad dat in de container moet worden gemaakt.   |
    
 3. De andere opties kunnen de standaardwaarden behouden. Selecteer **Opslaan** om de instellingen op te slaan.  
 

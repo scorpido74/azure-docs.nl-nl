@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059262"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933265"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-voorbeelden voor Azure SQL Database
 
@@ -41,6 +41,7 @@ De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor 
 | [PowerShell gebruiken voor het configureren van actieve geo-replicatie voor een Azure SQL-pooldatabase](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit PowerShell-script wordt actieve geo-replicatie geconfigureerd voor een Azure SQL-database in een elastische SQL-pool en wordt overgeschakeld naar de secundaire replica. |
 |**Een failovergroep configureren**||
 | [Een failovergroep configureren voor één data base](scripts/sql-database-add-single-db-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Met dit Power shell-script maakt u een Data Base en een failovergroep, voegt u de data base toe aan de failovergroep en voert u een failover uit naar de secundaire server. | 
+| [Een failovergroep voor een elastische pool configureren](scripts/sql-database-add-elastic-pool-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Met dit Power shell-script maakt u een Data Base, voegt u deze toe aan een elastische pool, voegt u de elastische pool toe aan de failovergroep en voert u een failover uit naar de secundaire server. | 
 |**Een individuele database en een elastische pool schalen**||
 | [Een individuele database schalen](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Met dit PowerShell-script worden de prestatiemetrieken gecontroleerd van een Azure SQL-database, waarna de database naar een grotere rekenkracht wordt geschaald en er een waarschuwingsregel voor een van de prestatiemetrieken wordt gemaakt. |
 | [Een elastische pool schalen](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Met dit PowerShell-script worden de prestatiemetrieken gecontroleerd van een elastische pool van Azure SQL Database, waarna de database naar een grotere rekenkracht wordt geschaald en er een waarschuwingsregel voor een van de prestatiemetrieken wordt gemaakt. |
@@ -70,12 +71,14 @@ De volgende tabel bevat links naar Azure PowerShell-voorbeeldscripts voor Azure 
 | [Data base herstellen naar een beheerd exemplaar in een andere geografische regio](scripts/sql-managed-instance-restore-geo-backup.md) | Dit Power shell-script maakt een back-up van de ene data base en zet deze terug in een andere regio. Dit wordt ook wel het scenario voor herstel na nood gevallen met geo-herstel. |
 | **Transparent Data Encryption (TDE) configureren**||
 | [Transparent Data Encryption beheren in een beheerd exemplaar met behulp van uw eigen sleutel uit Azure Key Vault](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Dit PowerShell-script configureert Transparant Data Encryption (TDE) in een Bring Your Own Key-scenario voor een beheerd exemplaar van Azure SQL, met behulp van een sleutel uit Azure Key Vault|
+|**Een failovergroep configureren**||
+| [Een failovergroep voor een beheerd exemplaar configureren](scripts/sql-database-add-managed-instance-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Met dit Power shell-script maakt u twee beheerde instanties, voegt u deze toe aan een failovergroep en test u vervolgens de failover van het primaire beheerde exemplaar naar het secundaire beheerde exemplaar. | 
 |||
 
 Meer informatie over de [Managed Instance Azure PowerShell API](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).
 
 ---
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 De voor beelden die op deze pagina worden weer gegeven, gebruiken de [Azure SQL database-cmdlets](/powershell/module/az.sql/) voor het maken en beheren van Azure SQL-resources. Aanvullende cmdlets voor het uitvoeren van query's en het uitvoeren van veel database taken bevinden zich in de [sqlserver](/powershell/module/sqlserver/) -module. Zie [SQL Server Power shell](/sql/powershell/sql-server-powershell/)(Engelstalig) voor meer informatie.

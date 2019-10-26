@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430307"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934381"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview)
 
@@ -121,6 +121,7 @@ Bekijk de volgende voor waarden om het rechten beheer en de bijbehorende documen
 | Resource type | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
 | resource functie | Een verzameling machtigingen die zijn gekoppeld aan een resource. |
 | Resource Directory | Een map met een of meer resources die moeten worden gedeeld. |
+| verbonden organisatie | Een externe Azure AD-Directory of-domein waarmee u een relatie hebt. |
 | toegewezen gebruikers | Een toewijzing van een toegangs pakket aan een gebruiker, zodat de gebruiker alle resource rollen van dat toegangs pakket heeft. |
 | Kunt | Het proces van het beschikbaar maken van een toegangs pakket voor gebruikers om aan te vragen. |
 

@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708083"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933937"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische update van de Mobility-service in azure-naar-Azure-replicatie
 
@@ -53,8 +53,8 @@ Wanneer u replicatie voor een virtuele machine inschakelt [vanuit de VM-weer gav
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>De instellingen voor het bijwerken van de extensie in de kluis in-/uitschakelen
 
-1. Ga in de kluis naar**site Recovery-infra structuur** **beheren** > .
-2. Schakel onder voor de update-instellingen **van de Azure virtual machines** > -**extensie**de optie **site Recovery toestaan om te beheren** in of uit. Als u hand matig wilt beheren, schakelt u deze uit. 
+1. Ga in de kluis naar > Site Recovery- **infra structuur** **beheren** .
+2. Schakel onder voor de **Update-instellingen**van de extensie **Azure virtual machines** > de optie **site Recovery toestaan om te beheren** in of uit. Als u hand matig wilt beheren, schakelt u deze uit. 
 3. Selecteer **Opslaan**.
 
 ![Instellingen voor extensie-updates](./media/azure-to-azure-autoupdate/vault-toggle.png)
@@ -66,7 +66,8 @@ Wanneer u replicatie voor een virtuele machine inschakelt [vanuit de VM-weer gav
 > [!Note]
 > Een van beide opties waarschuwt u voor het Automation-account dat wordt gebruikt voor het beheren van updates. Als u deze functie voor de eerste keer gebruikt in een kluis, wordt standaard een nieuw Automation-account gemaakt. U kunt de instelling ook aanpassen en een bestaand Automation-account kiezen. Alle volgende replicaties inschakelen in dezelfde kluis maken gebruik van het eerder gemaakte abonnement. Momenteel worden in de vervolg keuzelijst alleen Automation-accounts weer geven die zich in dezelfde resource groep bevinden als de kluis.  
 
-Voor een aangepast Automation-account gebruikt u het volgende script:
+> [!IMPORTANT]
+> Het onderstaande script moet worden uitgevoerd in de context van een Automation-account voor een aangepast Automation-account, het volgende script gebruiken:
 
 ```azurepowershell
 param(
@@ -505,7 +506,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Updates hand matig beheren
 
-1. Als er nieuwe updates zijn voor de Mobility-service die is geïnstalleerd op uw Vm's, ziet u de volgende melding: ' Er is een nieuwe update voor de site Recovery-replicatie agent beschikbaar. Klik om te installeren
+1. Als er nieuwe updates zijn voor de Mobility-service die is geïnstalleerd op uw Vm's, ziet u de volgende melding: "er is een nieuwe Site Recovery update voor de replicatie agent beschikbaar. Klik om te installeren
 
      ![Venster gerepliceerde items](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 2. Selecteer de melding om de pagina VM selecteren te openen.
@@ -520,7 +521,7 @@ Als er een probleem is met de automatische updates, wordt er een fout melding we
 
 Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelvoorkomende fouten en aanbevolen acties:
 
-- **Fout**: U hebt geen machtigingen om een Uitvoeren als-account voor Azure (service-principal) te maken en de rol Inzender aan de service-principal toe te wijzen.
+- **Fout**: u hebt geen machtigingen om een uitvoeren als-account voor Azure (Service-Principal) te maken en de rol Inzender toe te kennen aan de Service-Principal.
 
    **Aanbevolen actie**: Zorg ervoor dat het aangemelde account is toegewezen als Inzender en probeer het opnieuw. Raadpleeg de sectie vereiste machtigingen in [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot bronnen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) voor meer informatie over het toewijzen van machtigingen.
  
@@ -528,17 +529,17 @@ Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelv
 
    ![Knop Site Recovery service herstellen in instellingen voor extensie-updates](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Fout**: Het uitvoeren als-account heeft geen machtiging voor toegang tot de Recovery Services-resource.
+- **Fout**: het run as-account heeft geen machtiging voor toegang tot de Recovery Services-resource.
 
     **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Of zorg ervoor dat de Azure Active Directory toepassing Automation uitvoeren als-account toegang heeft tot de Recovery Services-resource.
 
-- **Fout**: Run as-account is niet gevonden. Een van deze is verwijderd of niet gemaakt: Azure Active Directory toepassing, Service-Principal, rol, Automation-certificaat Asset, Automation-verbindings element, of de vinger afdruk is niet identiek aan het certificaat en de verbinding. 
+- **Fout**: het run as-account is niet gevonden. Een van deze is verwijderd of niet gemaakt: Azure Active Directory toepassing, Service-Principal, rol, Automation-certificaat Asset, Automation-verbindings element, of de vinger afdruk is niet identiek aan het certificaat en de verbinding. 
 
     **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Fout**: Het uitvoeren als-certificaat van Azure dat wordt gebruikt door het Automation-account is bijna verlopen. 
+-  **Fout**: het uitvoeren als-certificaat van Azure dat wordt gebruikt door het Automation-account is bijna verlopen. 
 
-    Het zelfondertekende certificaat dat voor het run as-account is gemaakt, verloopt één jaar na de aanmaak datum. U kunt het certificaat op elk gewenst moment vernieuwen voordat het verloopt. Als u zich hebt geregistreerd voor e-mail meldingen, ontvangt u ook e-mails wanneer een actie is vereist aan uw zijde. Deze fout wordt 2 maanden vóór de verval datum weer gegeven en wordt gewijzigd in een kritieke fout als het certificaat is verlopen. Zodra het certificaat is verlopen, werkt automatisch bijwerken niet meer. u kunt hetzelfde vernieuwen.
+    Het zelfondertekende certificaat dat voor het run as-account is gemaakt, verloopt één jaar na de aanmaak datum. U kunt het certificaat op elk gewenst moment vernieuwen voordat het verloopt. Als u zich hebt geregistreerd voor e-mail meldingen, ontvangt u ook e-mails wanneer een actie is vereist aan uw zijde. Deze fout wordt weer gegeven twee maanden vóór de verval datum en wordt gewijzigd in een kritieke fout als het certificaat is verlopen. Zodra het certificaat is verlopen, werkt automatisch bijwerken pas nadat u dit hebt vernieuwd.
 
    **Aanbevolen actie**: Klik op herstellen en vervolgens op certificaat vernieuwen om dit probleem op te lossen.
     

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699207"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926537"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files oplossen in Linux
 
 In dit artikel vindt u algemene problemen die betrekking hebben op Azure Files wanneer u verbinding maakt vanaf Linux-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. 
 
-Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)-shares. De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
+Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Kan geen verbinding maken met een Azure-bestands share of deze koppelen
 
@@ -31,13 +31,13 @@ Veelvoorkomende oorzaken van dit probleem zijn:
 |   | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
 | --- | :---: | :---: |
 | Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7+ | 7.5 + |
-| CentOS | 7+ |  7.5 + |
+| RHEL | 7 + | 7.5 + |
+| CentOS | 7 + |  7.5 + |
 | Debian | 8 + |   |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
-- CIFS-hulpprogram ma's (CFS-hulppr.) zijn niet geïnstalleerd op de client.
+- CIFS-hulpprogram ma's (CIFS-hulppr.) zijn niet geïnstalleerd op de client.
 - De minimale versie van SMB/CIFS, 2,1, is niet geïnstalleerd op de client.
 - SMB 3,0-versleuteling wordt niet ondersteund op de client. De voor gaande tabel bevat een lijst met Linux-distributies die ondersteuning bieden voor het koppelen van on-premises en meerdere regio's met behulp van versleuteling. Voor andere distributies zijn kernel 4.11 en hogere versies vereist.
 - U probeert verbinding te maken met een opslag account via TCP-poort 445, wat niet wordt ondersteund.
@@ -54,9 +54,9 @@ Om het probleem op te lossen, gebruikt u het [hulp programma voor probleem oplos
 * Verzamelt de diagnostische traceringen.
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>Koppelfout(13): Toegang geweigerd, wanneer u een Azure-bestandsshare koppelt
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>"Koppelings fout (13): de machtiging is geweigerd" wanneer u een Azure-bestands share koppelt
 
-### <a name="cause-1-unencrypted-communication-channel"></a>Oorzaak 1: Niet-versleuteld communicatie kanaal
+### <a name="cause-1-unencrypted-communication-channel"></a>Oorzaak 1: niet-versleuteld communicatie kanaal
 
 Verbindingen met Azure-bestandsshares worden uit veiligheidsoverwegingen geblokkeerd als het communicatiekanaal niet is versleuteld en als de verbindingspoging niet is ondernomen vanuit hetzelfde datacenter als waar de Azure-bestandsshares zich bevinden. Niet-versleutelde verbindingen binnen hetzelfde datacenter kunnen ook worden geblokkeerd als de instelling [Veilige overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld in het opslagaccount. Er wordt alleen een versleuteld communicatiekanaal geboden als het clientbesturingssysteem van de gebruiker ondersteuning biedt voor SMB-versleuteling.
 
@@ -67,7 +67,7 @@ Zie [Vereisten voor het koppelen van een Azure-bestandsshare met Linux en het ci
 1. Verbinding maken vanaf een client die ondersteuning biedt voor SMB-versleuteling of verbinding maken vanaf een virtuele machine in hetzelfde Data Center als het Azure-opslag account dat wordt gebruikt voor de Azure-bestands share.
 2. Controleer of de instelling [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is uitgeschakeld op het opslag account als de client geen SMB-versleuteling ondersteunt.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: Het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account 
 
 Als er regels voor het VNET (virtueel netwerk) of de firewall zijn geconfigureerd in het opslagaccount, wordt netwerkverkeer de toegang geweigerd, tenzij het IP-adres van de client of het virtuele netwerk toegang heeft.
 
@@ -107,18 +107,18 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
     - Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
     - Als u CP of DD met parallel gebruikt, kan de Kopieer snelheid worden verbeterd. het aantal threads is afhankelijk van de use-case en de werk belasting. De volgende voor beelden gebruiken zes: 
     - CP-voor beeld (CP gebruikt de standaard blok grootte van het bestands systeem als segment grootte): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
-    - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
+    - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open source-hulpprogram ma's van derden, zoals:
         - [GNU parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) : Hiermee worden bestanden gesorteerd en verpakt in partities.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) : maakt gebruik van Fpart en een kopieer programma om meerdere instanties te starten voor het migreren van gegevens van src_dir naar dst_url.
         - [Meerdere](https://github.com/pkolano/mutil) multi-threaded CP en md5sum op basis van GNU coreutils.
-- Door de bestands grootte vooraf in te stellen, in plaats van elke schrijf bewerking uit te voeren, helpt u de Kopieer snelheid te verbeteren in scenario's waarin de bestands grootte bekend is. Als uitbrei ding van schrijf bewerkingen moet worden vermeden, kunt u een `truncate - size <size><file>` doel bestands grootte instellen met behulp van de opdracht. `dd if=<source> of=<target> bs=1M conv=notrunc`Daarna wordt een bron bestand gekopieerd zonder dat de grootte van het doel bestand herhaaldelijk moet worden bijgewerkt. U kunt bijvoorbeeld de grootte van het doel bestand instellen voor elk bestand dat u wilt kopiëren (ervan uitgaande dat er een share is gekoppeld onder/mnt/share):
+- Door de bestands grootte vooraf in te stellen, in plaats van elke schrijf bewerking uit te voeren, helpt u de Kopieer snelheid te verbeteren in scenario's waarin de bestands grootte bekend is. Als uitbrei ding van schrijf bewerkingen moet worden vermeden, kunt u de grootte van een doel bestand instellen met `truncate - size <size><file>` opdracht. Daarna wordt met `dd if=<source> of=<target> bs=1M conv=notrunc`opdracht een bron bestand gekopieerd zonder dat de grootte van het doel bestand herhaaldelijk moet worden bijgewerkt. U kunt bijvoorbeeld de grootte van het doel bestand instellen voor elk bestand dat u wilt kopiëren (ervan uitgaande dat er een share is gekoppeld onder/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
-    - en vervolgens bestanden kopiëren zonder parallelle schrijf bewerkingen uit te breiden:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
+    - en vervolgens bestanden kopiëren zonder parallelle schrijf bewerkingen uit te breiden: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>'Koppelfout (115): Bewerking wordt nu uitgevoerd', wanneer u Azure Files koppelt met behulp van SMB 3.0
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>"Mount-fout (115): bewerking wordt nu uitgevoerd" wanneer u Azure Files koppelt met behulp van SMB 3,0
 
 ### <a name="cause"></a>Oorzaak
 
@@ -138,13 +138,13 @@ Wanneer u naar een Azure-bestands share in de portal bladert, wordt mogelijk de 
 Autorisatiefout  
 U hebt geen toegang
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 1: Uw gebruikers account heeft geen toegang tot het opslag account
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 1: uw gebruikers account heeft geen toegang tot het opslag account
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
 Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)voor meer informatie.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: Het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
@@ -170,7 +170,7 @@ Als de SMB-clients alle geopende ingangen hebben gesloten en het probleem blijft
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Trage prestaties op een Azure-bestands share die is gekoppeld op een Linux-VM
 
-### <a name="cause-1-caching"></a>Oorzaak 1: Caching
+### <a name="cause-1-caching"></a>Oorzaak 1: opslaan in cache
 
 Een mogelijke oorzaak van trage prestaties is het opslaan in de cache uitgeschakeld. Caching kan nuttig zijn als u een bestand herhaaldelijk opent, anders kan het een overhead zijn. Controleer of u de cache gebruikt voordat u deze uitschakelt.
 
@@ -192,7 +192,7 @@ U kunt ook controleren of de juiste opties worden gebruikt door de opdracht **su
 
 Als de optie **cache = strikt** of **serverino** niet aanwezig is, ontkoppelen en koppelen Azure files opnieuw door de koppelings opdracht uit te voeren vanuit de [documentatie](../storage-how-to-use-files-linux.md). Controleer vervolgens of de **bestand/etc/fstab** -vermelding de juiste opties heeft.
 
-### <a name="cause-2-throttling"></a>Oorzaak 2: Beperken
+### <a name="cause-2-throttling"></a>Oorzaak 2: beperking
 
 Het is mogelijk dat u beperking ondervindt en dat uw aanvragen naar een wachtrij worden verzonden. U kunt dit controleren door gebruik te maken van [Azure Storage metrische gegevens in azure monitor](../common/storage-metrics-in-azure-monitor.md).
 
@@ -218,22 +218,22 @@ De gebruiker van het opslag account gebruiken voor het kopiëren van de bestande
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: geen toegang tot&lt;'&gt;Path ': Invoer-en uitvoer fout
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: geen toegang tot&lt;pad&gt;: invoer/uitvoer fout
 
 Wanneer u bestanden in een Azure-bestands share probeert weer te geven met behulp van de opdracht ls, loopt de opdracht vast wanneer er bestanden worden weer gegeven. U krijgt de volgende fout:
 
-**ls: geen toegang tot&lt;'&gt;Path ': Invoer-en uitvoer fout**
+**ls: geen toegang tot&lt;pad&gt;: invoer/uitvoer fout**
 
 
 ### <a name="solution"></a>Oplossing
 Voer een upgrade uit voor de Linux-kernel naar de volgende versies met een oplossing voor dit probleem:
 
-- 4.4.87+
-- 4.9.48+
-- 4.12.11+
+- 4.4.87 +
+- 4.9.48 +
+- 4.12.11 +
 - Alle versies die groter zijn dan of gelijk zijn aan 4,13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Kan geen symbolische koppelingen maken-ln: kan geen symbolische koppeling maken ': Bewerking niet ondersteund
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Kan geen symbolische koppelingen maken-ln: kan geen symbolische koppeling maken ': de bewerking wordt niet ondersteund
 
 ### <a name="cause"></a>Oorzaak
 Het koppelen van Azure-bestands shares op Linux met behulp van CIFS biedt standaard geen ondersteuning voor symbolische koppelingen (symlinks). Dit ziet er als volgt uit:
@@ -261,7 +261,7 @@ U kunt vervolgens symlinks maken zoals aanbevolen op de [wiki](https://wiki.samb
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 <a id="error112"></a>
-## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>'Koppelfout (112): De host is niet beschikbaar vanwege een time-out voor het opnieuw verbinden
+## <a name="mount-error112-host-is-down-because-of-a-reconnection-time-out"></a>"Mount-fout (112): host is niet beschikbaar" vanwege een time-out voor het opnieuw verbinden
 
 Een koppelfout 112 treedt op de Linux-client op wanneer de client gedurende lange tijd inactief is. Na een lange tijd van inactiviteit wordt de verbinding met de client verbroken en treedt er een time-out op.  
 
@@ -278,8 +278,8 @@ Dit probleem met opnieuw verbinden in de Linux-kernel is nu opgelost als onderde
 
 - [Opnieuw verbinden herstellen om de nieuwe verbinding voor de SMB3-sessie niet uit te stellen lang nadat de socket opnieuw is verbonden](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Echoservice onmiddellijk aanroepen nadat de socket opnieuw is verbonden](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: Mogelijke geheugenbeschadiging herstellen tijdens opnieuw verbinden](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
-- [CIFS: Mogelijke dubbele vergrendeling van mutex herstellen tijdens het opnieuw verbinden (voor kernel v4.9 en hoger)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
+- [CIFS: een mogelijke geheugen beschadiging corrigeren tijdens opnieuw verbinding maken](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: een mogelijke dubbele vergren deling van mutex herstellen tijdens opnieuw verbinding maken (voor kernel v 4.9 en hoger)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Deze wijzigingen zijn mogelijk nog niet doorgevoerd in alle Linux-distributies. Deze oplossing en andere oplossingen voor opnieuw verbinden vindt u in de sectie [Minimum aanbevolen versies met bijbehorende mogelijkheden voor koppelen (SMB-versie 2.1 versus SMB-versie 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) van het artikel [Azure Files gebruiken met Linux](storage-how-to-use-files-linux.md). U kunt deze oplossing verkrijgen door een upgrade uit te voeren naar een van de aanbevolen kernelversies.
 
@@ -289,6 +289,6 @@ U kunt dit probleem omzeilen door een harde koppeling op te geven. Met een harde
 
 Als u geen upgrade kunt uitvoeren naar de nieuwste kernelversies, kunt u dit probleem omzeilen door een bestand in de Azure-bestandsshare te bewaren waarnaar u elke 30 seconden, of minder, schrijft. Dit moet een schrijfbewerking zijn, zoals het herschrijven van de aanmaakdatum of wijzigingsdatum van het bestand. Anders ontvangt u wellicht de resultaten die in de cache zijn opgeslagen, en wordt het opnieuw verbinden mogelijk niet geactiveerd.
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

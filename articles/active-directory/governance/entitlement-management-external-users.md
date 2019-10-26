@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527112"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934393"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Toegang tot externe gebruikers beheren in azure AD-rechts beheer (preview-versie)
 
@@ -50,11 +50,13 @@ Het volgende diagram en de stappen bieden een overzicht van hoe externe gebruike
 
 ![Diagram van de levens cyclus van externe gebruikers](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. U [voegt een verbonden organisatie toe](entitlement-management-organization.md) voor de Azure AD-Directory of het domein waarmee u wilt samen werken.
+
 1. U maakt een toegangs pakket in uw directory met een beleid [voor gebruikers die niet in uw directory](entitlement-management-access-package-create.md#for-users-not-in-your-directory)zijn opgenomen.
 
 1. U stuurt een [koppeling naar mijn Access-Portal](entitlement-management-access-package-settings.md) naar uw contact persoon op de externe organisatie die ze kunnen delen met hun gebruikers om het toegangs pakket aan te vragen.
 
-1. Een externe gebruiker (**aanvrager A** in dit voor beeld) gebruikt de Portal-koppeling van mijn toegang om toegang tot het toegangs pakket aan te [vragen](entitlement-management-request-access.md) .
+1. Een externe gebruiker (**aanvrager A** in dit voor beeld) gebruikt de Portal-koppeling van mijn toegang om toegang tot het toegangs pakket aan te [vragen](entitlement-management-request-access.md) . De manier waarop de gebruiker zich aanmeldt, is afhankelijk van het verificatie type van de Directory of het domein dat in de verbonden organisatie is gedefinieerd.
 
 1. Een fiatteur [keurt de aanvraag goed](entitlement-management-request-approve.md) (of de aanvraag wordt automatisch goedgekeurd).
 
@@ -116,6 +118,6 @@ U kunt deze instelling ook wijzigen nadat u de catalogus hebt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Een verbonden organisatie toevoegen](entitlement-management-organization.md)
 - [Voor gebruikers die niet in uw Directory voor komt](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
-- [Overdracht en rollen](entitlement-management-delegate.md)

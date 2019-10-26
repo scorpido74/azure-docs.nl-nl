@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858985"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935397"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play preview?
 
@@ -26,7 +26,7 @@ Met IoT Plug en Play Preview kunnen ontwikkel aars van oplossingen apparaten met
 
 U kunt interfaces hergebruiken over hulp modellen voor apparaten om samen werking eenvoudiger te maken en de ontwikkeling te versnellen.
 
-Om IoT Plug en Play naadloos te laten werken met [Azure Digital apparaatdubbels](../digital-twins/about-digital-twins.md), wordt het IOT Plug en Play-schema gedefinieerd met behulp van de [Digital-taal voor dubbele definitie (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT Plug en Play en de DTDL zijn geopend voor de community en micro soft is van de samen werking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, waarmee u eenvoudiger kunt aannemen tussen services en hulp middelen. Daarnaast zijn er geen extra kosten verbonden aan het gebruik van IoT Plug en Play en DTDL. De standaard tarieven voor [azure IOT hub](../iot-hub/about-iot-hub.md), [Azure IOT Central](../iot-central/overview-iot-central.md)en andere Azure-Services blijven hetzelfde.
+Om IoT Plug en Play naadloos te laten werken met [Azure Digital apparaatdubbels](../digital-twins/about-digital-twins.md), wordt het IOT Plug en Play-schema gedefinieerd met behulp van de [Digital-taal voor dubbele definitie (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT Plug en Play en de DTDL zijn geopend voor de community en micro soft is van de samen werking met klanten, partners en de branche. Beide zijn gebaseerd op open W3C-standaarden, zoals JSON-LD en RDF, waarmee u eenvoudiger kunt aannemen tussen services en hulp middelen. Daarnaast zijn er geen extra kosten verbonden aan het gebruik van IoT Plug en Play en DTDL. De standaard tarieven voor [azure IOT hub](../iot-hub/about-iot-hub.md), [Azure IOT Central](../iot-central/core/overview-iot-central.md)en andere Azure-Services blijven hetzelfde.
 
 Oplossingen op basis van IoT Hub of IoT Central kunnen profiteren van IoT Plug en Play.
 
@@ -37,7 +37,7 @@ Dit artikel geeft een overzicht van:
 - Het ontwikkelen van een IoT-Device-toepassing die ondersteuning biedt voor IoT Plug en Play.
 - Een IoT Plug en Play-apparaat certificeren en publiceren naar de [certificerings instantie voor IOT-apparaten](https://catalog.azureiotsolutions.com/).
 
-## <a name="user-roles"></a>Gebruikersrollen
+## <a name="user-roles"></a>Gebruikers rollen
 
 IoT Plug en Play is handig voor twee typen ontwikkel aars:
 
@@ -48,7 +48,7 @@ IoT Plug en Play is handig voor twee typen ontwikkel aars:
 
 Als oplossings ontwikkelaar kunt u een IoT-oplossing in de Cloud ontwikkelen die gebruikmaakt van IoT Plug en Play-apparaten. U kunt een van de volgende Azure-Services gebruiken:
 
-- [IOT Central](../iot-central/overview-iot-central.md) -een volledig beheerde IOT-software-as-a-service-oplossing waarmee u eenvoudig producten kunt maken die de fysieke en digitale werelden verbinden.
+- [IOT Central](../iot-central/core/overview-iot-central.md) -een volledig beheerde IOT-software-as-a-service-oplossing waarmee u eenvoudig producten kunt maken die de fysieke en digitale werelden verbinden.
 - [IOT hub](../iot-hub/about-iot-hub.md) : een beheerde Cloud service die fungeert als een Message hub voor beveiligde, bidirectionele communicatie tussen uw IOT-toepassing en uw apparaten.
 
 U vindt IoT Plug en Play-apparaten met behulp van de Azure Certified voor IoT-apparaat Catalog. Elk IoT Plug en Play-apparaat in de catalogus is gevalideerd en heeft een functionaliteits model voor apparaten. Bekijk het mogelijkheidsprofiel om inzicht te krijgen in de functionaliteit van het apparaat of gebruik het voor het simuleren van het apparaat in azure IoT Central.

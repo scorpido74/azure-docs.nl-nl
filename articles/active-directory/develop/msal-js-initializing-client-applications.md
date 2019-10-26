@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24d9d79bf34325ec033b6ae6847579fa51769ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c4cd3e2ab18c05c8adfda1a54ea4f7820916eab5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803082"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934892"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL. js
 In dit artikel wordt beschreven hoe u de micro soft-verificatie bibliotheek voor Java script (MSAL. js) initialiseert met een exemplaar van een toepassing van een gebruikers agent. De toepassing van de gebruikers agent is een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -91,6 +91,7 @@ export type SystemOptions = {
     logger?: Logger;
     loadFrameTimeout?: number;
     tokenRenewalOffsetSeconds?: number;
+    navigateFrameWait?: number;
 };
 
 // Developer App Environment Support
@@ -139,6 +140,8 @@ Hieronder ziet u de totale set Configureer bare opties die momenteel worden onde
 - **loadFrameTimeout**: optioneel.  Het aantal milliseconden van inactiviteit voordat een reactie van het vernieuwen van tokens van Azure AD moet worden beschouwd als een time-out. De standaard waarde is zes seconden.
 
 - **tokenRenewalOffsetSeconds**: optioneel. Het aantal milliseconden waarmee het vernieuwings venster wordt ingesteld voor het vernieuwen van het token vóór de verval datum. De standaard waarde is 300 milliseconden.
+
+- **navigateFrameWait**: optioneel. Het aantal milliseconden waarmee de wacht tijd wordt ingesteld voordat verborgen iframes naar het doel worden genavigeerd. De standaard waarde is 500 milliseconden.
 
 Deze zijn alleen van toepassing op door gegeven in de MSAL-hoek wrapper-bibliotheek:
 - **unprotectedResources**: optioneel.  Matrix van Uri's die niet-beveiligde resources zijn. MSAL koppelt geen token aan uitgaande aanvragen die deze URI hebben. De standaard instelling is `null`.

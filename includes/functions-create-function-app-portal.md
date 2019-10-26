@@ -5,40 +5,67 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/05/2019
+ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 460199c1958e3bb22148624b9f013eadbb707bd2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3204387a8e0920d2a7196edbad229bf811a9ba0a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564357"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958542"
 ---
-1. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal en selecteer vervolgens **reken** > **functie-app**.
+1. Open de Azure Portal vanuit [https://portal.azure.com](https://portal.azure.com)
 
-    ![Een functie-app maken in Azure Portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
+1. Selecteer de knop **een resource maken**
 
-2. Gebruik voor de functie-app de instellingen die in de tabel onder de afbeelding zijn opgegeven.
+    ![Resource maken](./media/functions-create-function-app-portal/function-app-create-resource.png)
 
-    ![Instellingen voor nieuwe functie-apps definiëren](./media/functions-create-function-app-portal/function-app-create-flow2.png)
+1. Selecteer **reken** > **functie-app**.
 
-    | Instelling      | Voorgestelde waarde  | Description                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **Naam van app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
-    | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. | 
-    | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-    | **Besturingssysteem** | Windows | De beschik bare taal opties zijn afhankelijk van het besturings systeem van de functie-app. Python vereist bijvoorbeeld Linux. |
-    | **[Hostingplan](../articles/azure-functions/functions-scale.md)** | Verbruiksabonnement | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **Verbruiksabonnement** worden resources dynamisch toegevoegd zoals door uw functies wordt vereist. Met hosten [zonder server](https://azure.microsoft.com/overview/serverless-computing/) betaalt u alleen voor de tijd dat uw functies actief zijn. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../articles/azure-functions/functions-scale.md) beheren.  |
-    | **Location** | Europa -west | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
+    ![Een functie-app maken in Azure Portal](./media/functions-create-function-app-portal/function-app-create-start.png)
+
+1. Gebruik voor de functie-app de instellingen die in de tabel onder de afbeelding zijn opgegeven.
+
+    ![Basisbeginselen](./media/functions-create-function-app-portal/function-app-create-basics.png)
+
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
+    | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
+    | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9`en `-`.  |
+    |**Publiceren**| Coderen | Optie voor het publiceren van code bestanden of een docker-container. |
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
-    | **[Opslag](../articles/storage/common/storage-quickstart-create-account.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Regio**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
+
+    Selecteer de knop **volgende: hosten >** .
+
+1. Voer de volgende instellingen in voor hosting.
+
+    ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
+
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
+    | **[Opslagaccount](../articles/storage/common/storage-quickstart-create-account.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Besturingssysteem**| Voor keur besturings systeem | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
+    | **[Fonds](../articles/azure-functions/functions-scale.md)** | Verbruiksabonnement | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **Verbruiksabonnement** worden resources dynamisch toegevoegd zoals door uw functies wordt vereist. Met hosten [zonder server](https://azure.microsoft.com/overview/serverless-computing/) betaalt u alleen voor de tijd dat uw functies actief zijn. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../articles/azure-functions/functions-scale.md) beheren.  |
+
+    Selecteer de knop **volgende: bewaking >** .
+
+1. Voer de volgende instellingen in voor bewaking.
+
+    ![Controleren](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+
+    | Instelling      | Voorgestelde waarde  | Beschrijving |
+    | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Standaard | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te breiden, kunt u de **nieuwe resource naam** wijzigen of een andere **locatie** in een [Azure-regio](https://azure.microsoft.com/global-infrastructure/geographies/) kiezen waar u uw gegevens wilt opslaan. |
 
-3. Selecteer **Maken** om de functie-app in te richten en te implementeren.
+    Selecteer **controleren + maken** om de selecties van de app-configuratie te controleren.
 
-4. Selecteer het meldingspictogram in de rechterbovenhoek van de portal en zoek het bericht **Implementatie voltooid**.
+1. Selecteer **Maken** om de functie-app in te richten en te implementeren.
 
-    ![Instellingen voor nieuwe functie-apps definiëren](./media/functions-create-function-app-portal/function-app-create-notification.png)
+1. Selecteer het meldingspictogram in de rechterbovenhoek van de portal en zoek het bericht **Implementatie voltooid**.
 
-5. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.
+    ![Implementatiemelding](./media/functions-create-function-app-portal/function-app-create-notification2.png)
+
+1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.

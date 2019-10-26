@@ -1,6 +1,6 @@
 ---
-title: Stream Analytics Edge-taken in Azure Stream Analytics-hulpprogramma's voor Visual Studio
-description: In dit artikel wordt beschreven hoe u schrijven, fouten opsporen en uw Stream Analytics op IoT Edge taken maken met de Stream Analytics-hulpprogramma's voor Visual Studio.
+title: Azure Stream Analytics Edge-taken in Visual Studio
+description: In dit artikel wordt beschreven hoe u uw Stream Analytics op IoT Edge taken kunt schrijven, opsporen en maken met behulp van de Stream Analytics-hulpprogram ma's voor Visual Studio.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,70 +9,70 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329965"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925031"
 ---
-# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-taken met behulp van Visual Studio-hulpprogramma's ontwikkelen
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools
 
-In deze zelfstudie leert u hoe u Stream Analytics-hulpprogramma's voor Visual Studio. Leert u hoe u schrijven, fouten opsporen en uw Stream Analytics Edge-taken maken. Nadat u maken en testen van de taak, gaat u naar de Azure portal om te implementeren op uw apparaten. 
+In deze zelf studie leert u hoe u Stream Analytics-hulpprogram ma's voor Visual Studio kunt gebruiken. U leert hoe u uw Stream Analytics Edge-taken kunt schrijven, opsporen en maken. Nadat u de taak hebt gemaakt en getest, kunt u naar de Azure Portal gaan om deze te implementeren op uw apparaten. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet de volgende vereisten om deze zelfstudie te voltooien:
+U hebt de volgende vereisten nodig om deze zelf studie te volt ooien:
 
-* Installeer [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/), of [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326). Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. Express-editie wordt niet ondersteund.  
+* Installeer [Visual studio 2019](https://visualstudio.microsoft.com/downloads/), [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/)of [Visual Studio 2013 update 4](https://www.microsoft.com/download/details.aspx?id=45326). Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund.  
 
-* Ga als volgt de [installatie-instructies](stream-analytics-tools-for-visual-studio-edge-jobs.md) Stream Analytics-hulpprogramma's voor Visual Studio installeren.
+* Volg de [installatie-instructies](stream-analytics-tools-for-visual-studio-edge-jobs.md) om stream Analytics-hulpprogram Ma's voor Visual Studio te installeren.
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Een Stream Analytics Edge-project maken 
 
-Selecteer in Visual Studio, **bestand** > **nieuw** > **Project**. Navigeer naar de **sjablonen** lijst aan de linkerkant > Vouw **Azure Stream Analytics** > **Stream Analytics Edge**  >   **Azure Stream Analytics Edge-toepassing**. Geef een naam voor uw project en selecteer op de naam, locatie en oplossing **OK**.
+Selecteer in Visual Studio **File** > **New** > **project**. Ga naar de lijst **sjablonen** aan de linkerkant > **Azure stream Analytics** > **Stream Analytics Edge** > Edge- **toepassing**uit te breiden. Geef een naam, locatie en oplossings naam op voor uw project en selecteer **OK**.
 
-![Nieuwe Stream Analytics Edge-project in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
+![Nieuw Stream Analytics Edge-project in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
-Nadat het project wordt gemaakt, gaat u naar de **Solution Explorer** om de mappenhiërarchie weer te geven.
+Nadat het project is gemaakt, gaat u naar de **Solution Explorer** om de mappen hiërarchie weer te geven.
 
-![Solution explorer-weergave van Stream Analytics Edge-taak](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![De weer gave Solution Explorer van Stream Analytics Edge-taak](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
-## <a name="choose-the-correct-subscription"></a>Kies het juiste abonnement
+## <a name="choose-the-correct-subscription"></a>Het juiste abonnement kiezen
 
-1. Vanuit uw Visual Studio **weergave** in het menu **Server Explorer**.  
+1. Selecteer in het menu **beeld** van Visual Studio **Server Explorer**.  
 
-2. Klik met de rechtermuisknop op **Azure** > Selecteer **verbinding maken met Microsoft Azure-abonnement** > en meld u aan met uw Azure-account.
+2. Klik met de rechter muisknop op **Azure** > Selecteer **verbinding maken met Microsoft Azure abonnement** > en meld u vervolgens aan met uw Azure-account.
 
-## <a name="define-inputs"></a>Invoer definiëren
+## <a name="define-inputs"></a>Invoer opgeven
 
-1. Uit de **Solution Explorer**, vouw de **invoer** knooppunt ziet u een invoer met de naam **EdgeInput.json**. Dubbelklik om de instellingen ervan weer te geven.  
+1. Vouw in het **Solution Explorer**het knoop punt **invoer** uit om een invoer met de naam **EdgeInput. json**weer te geven. Dubbel klik om de instellingen weer te geven.  
 
-2. Brontype ingesteld op **gegevens Stream**. Bron wordt ingesteld op **Edge Hub**, gebeurtenis serialisatie-indeling naar **Json**, en coderen naar **UTF8**. (Optioneel) u kunt de naam van de **invoer Alias**, laten we dit zo voor dit voorbeeld. Als u de naam van de ingevoerde alias, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan.  
-   ![Stream Analytics-taak invoer-configuratie](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
+2. Bron type instellen op **gegevens stroom**. Stel vervolgens bron-naar- **Edge-hub**, serialisatie-indeling voor gebeurtenissen in op **JSON**en code ring naar **utf8**. U kunt desgewenst de naam van de **invoer alias**wijzigen. laten we dit voor beeld laten staan. Als u de naam van de invoer alias wijzigt, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan.  
+   ![Stream Analytics taak invoer configuratie](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
 ## <a name="define-outputs"></a>Uitvoer definiëren
 
-1. Uit de **Solution Explorer**, vouw de **uitvoer** knooppunt ziet u uitvoer met de naam **EdgeOutput.json**. Dubbelklik om de instellingen ervan weer te geven.  
+1. Vouw in het **Solution Explorer**het knoop punt **uitvoer** uit om een uitvoer met de naam **EdgeOutput. json**weer te geven. Dubbel klik om de instellingen weer te geven.  
 
-2. Zorg ervoor dat u het instellen van Sink selecteren **Edge Hub**, serialisatie-indeling voor gebeurtenissen ingesteld op **Json**, stel coderen naar **UTF8**, en stel de indeling van **matrix**. (Optioneel) u kunt de naam van de **uitvoeralias**, laten we dit zo voor dit voorbeeld. Als u de naam van de uitvoeralias, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan. 
-   ![Stream Analytics job output-configuratie](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
+2. Zorg ervoor dat sink is ingesteld op Select **Edge hub**, stel de indeling van de gebeurtenis serialisatie in op **JSON**, stel encoding in op **utf8**en stel format **array**in. U kunt desgewenst de naam van de **uitvoer alias**wijzigen. laten we dit voor beeld laten staan. Als u de naam van de uitvoer alias wijzigt, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan. 
+   ![configuratie van Stream Analytics taak uitvoer](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>De transformatiequery definiëren
 
-Stream Analytics-taken geïmplementeerd in de Stream Analytics IoT Edge ondersteunen de meeste [: referentie voor querytaal voor Stream Analytics](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). De volgende bewerkingen worden niet echter nog ondersteund voor Stream Analytics Edge-taken: 
+Stream Analytics taken die in de Stream Analytics IoT Edge omgevingen zijn geïmplementeerd, ondersteunen de meeste [Stream Analytics query taal verwijzing](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). De volgende bewerkingen worden echter nog niet ondersteund voor Stream Analytics Edge-taken: 
 
 
 |**Categorie**  | **Opdracht**  |
 |---------|---------|
-|Andere operatoren | <ul><li>PARTITION BY</li><li>TIJDSTEMPEL DOOR VIA</li><li>JavaScript UDF</li><li>Gebruiker gedefinieerde aggregaties (UDA)</li><li>GetMetadataPropertyValue</li><li>Met behulp van meer dan 14 combinaties in één stap</li></ul>   |
+|Andere opera tors | <ul><li>PARTITIONEREN OP</li><li>TIME STAMP MET MEER DAN</li><li>Java script UDF</li><li>Door de gebruiker gedefinieerde aggregaties (UDA)</li><li>GetMetadataPropertyValue</li><li>Meer dan 14 statistische functies gebruiken in één stap</li></ul>   |
 
-Wanneer u een Stream Analytics Edge-taak in de portal maakt, waarschuwt de compiler automatisch u als u een ondersteunde operator niet gebruikt.
+Wanneer u een Stream Analytics Edge-taak maakt in de portal, wordt u door de compiler automatisch gewaarschuwd als u geen ondersteunde operator gebruikt.
 
-Vanuit uw Visual Studio, kunt u de volgende transformatiequery definiëren in de query-editor (**script.asaql bestand**)
+Definieer in uw Visual Studio de volgende transformatie query in de query-editor (**script. asaql-bestand**)
 
 ```sql
 SELECT * INTO EdgeOutput
@@ -81,47 +81,47 @@ FROM EdgeInput
 
 ## <a name="test-the-job-locally"></a>De taak lokaal testen
 
-Als u wilt testen van de query moet u lokaal de voorbeeldgegevens uploaden. U kunt voorbeeldgegevens krijgen door het downloaden van de registratie van de [GitHub-opslagplaats](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) en sla deze op uw lokale computer. 
+Als u de query lokaal wilt testen, moet u de voorbeeld gegevens uploaden. U kunt voorbeeld gegevens ophalen door registratie gegevens uit de [github-opslag plaats](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) te downloaden en op te slaan op uw lokale computer. 
 
-1. Als u wilt uploaden voorbeeldgegevens, klik met de rechtermuisknop op **EdgeInput.json** -bestand en kies **lokale invoer toevoegen**  
+1. Als u voorbeeld gegevens wilt uploaden, klikt u met de rechter muisknop op **EdgeInput. json** -bestand en kiest u **lokale invoer toevoegen**  
 
-2. In het pop-upvenster > **Bladeren** de voorbeeldgegevens uit het lokale pad > Selecteer **opslaan**.
-   ![Lokale invoer configuratie in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
+2. In het pop-upvenster > **Bladeren door** de voorbeeld gegevens uit uw lokale pad > Selecteer **Opslaan**.
+   ![lokale invoer configuratie in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. Een bestand met de naam **local_EdgeInput.json** wordt automatisch toegevoegd aan de map invoer.  
-4. u kunt deze lokaal uitvoeren of verzenden naar Azure. Als u wilt testen van de query, selecteert u **lokaal uitvoeren**.  
-   ![Stream Analytics-taak opties voor het uitvoeren in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
+3. Een bestand met de naam **local_EdgeInput. json** wordt automatisch toegevoegd aan de map met invoer gegevens.  
+4. U kunt de toepassing lokaal uitvoeren of naar Azure verzenden. Als u de query wilt testen, selecteert u **lokaal uitvoeren**.  
+   ![Stream Analytics opties voor het uitvoeren van taken in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
-5. Het opdrachtpromptvenster toont de status van de taak. Wanneer de taak is uitgevoerd, maakt een map die als '2018-02-23-11-31-42 eruitziet' in het pad voor de project 'Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42'. Navigeer naar het pad om de resultaten in de lokale map weer te geven:
+5. In het opdracht prompt venster wordt de status van de taak weer gegeven. Wanneer de taak wordt uitgevoerd, wordt er een map gemaakt met de naam ' 2018-02-23-11-31-42 ' in het pad naar de projectmap ' Visual Studio 2015 \ Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42 '. Navigeer naar het mappad om de resultaten in de lokale map weer te geven:
 
-   U kunt ook aanmelden bij de Azure-portal en controleer of de taak is gemaakt. 
+   U kunt zich ook aanmelden bij de Azure Portal en controleren of de taak is gemaakt. 
 
-   ![Stream Analytics-taak resultaat-map](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-job-result-folder.png)
+   ![Map met Stream Analytics-taak resultaat](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-job-result-folder.png)
 
-## <a name="submit-the-job-to-azure"></a>Verzenden van de taak naar Azure
+## <a name="submit-the-job-to-azure"></a>De taak naar Azure verzenden
 
-1. Voordat u de taak naar Azure verzenden, moet u verbinding met uw Azure-abonnement. Open **Server Explorer** > Klik met de rechtermuisknop op **Azure** > **verbinding maken met Microsoft Azure-abonnement** > aanmelden bij uw Azure-abonnement.  
+1. Voordat u de taak naar Azure verzendt, moet u verbinding maken met uw Azure-abonnement. Open **Server Explorer** > Klik met de rechter muisknop op **Azure** > **verbinding maken met Microsoft Azure abonnement** > Meld u aan bij uw Azure-abonnement.  
 
-2. Als u wilt verzenden van de taak naar Azure, gaat u naar de query-editor > Selecteer **verzenden naar Azure**.  
+2. Als u de taak wilt verzenden naar Azure, gaat u naar de query-editor > selecteert **u verzenden naar Azure**.  
 
-3. Er wordt een pop-upvenster geopend. Kies een bestaande Stream Analytics Edge-taak bijwerken of een nieuwe maken. Wanneer u een bestaande taak bijwerken, taakconfiguratie, in dit scenario wordt vervangen, publiceert u een nieuwe taak. Selecteer **een nieuwe Azure Stream Analytics-taak maken** > Voer een naam voor uw taak iets zoals **MyASAEdgeJob** > Kies de vereiste **abonnement**, **Resourcegroep**, en **locatie** > Selecteer **indienen**.
+3. Er wordt een pop-upvenster geopend. Kies ervoor om een bestaande Stream Analytics Edge-taak bij te werken of een nieuwe te maken. Wanneer u een bestaande taak bijwerkt, wordt alle taak configuratie vervangen. in dit scenario publiceert u een nieuwe taak. Selecteer **een nieuwe Azure stream Analytics taak maken** > Voer een naam in voor uw taak, zoals **MyASAEdgeJob** > Kies het vereiste **abonnement**, de **resource groep**en de **locatie** > Selecteer **indienen**.
 
    ![Stream Analytics-taak verzenden naar Azure vanuit Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
-   Nu is uw Stream Analytics Edge-taak gemaakt. U kunt verwijzen naar de [taken uitvoeren in IoT Edge-zelfstudie](stream-analytics-edge.md) voor informatie over het implementeren op uw apparaten. 
+   Uw Stream Analytics Edge-taak is nu gemaakt. U kunt de [zelf studie taken uitvoeren op IOT Edge](stream-analytics-edge.md) raadplegen voor informatie over hoe u deze kunt implementeren op uw apparaten. 
 
-## <a name="manage-the-job"></a>Beheren van de taak 
+## <a name="manage-the-job"></a>De taak beheren 
 
-U kunt de status van de taak en het taakdiagram in Server Explorer bekijken. Van **Stream Analytics** in **Server Explorer**, vouw het abonnement en de resourcegroep waar u de Stream Analytics Edge-taak hebt geïmplementeerd. U kunt de MyASAEdgejob met de status bekijken **gemaakt**. Vouw het taakknooppunt van uw uit en dubbelklik erop om de taakweergave te openen.
+U kunt de status van de taak en het taak diagram weer geven vanuit de Server Explorer. Vouw vanuit **Stream Analytics** in **Server Explorer**het abonnement en de resource groep uit waar u de taak stream Analytics Edge hebt geïmplementeerd. U kunt de MyASAEdgejob bekijken met de status **gemaakt**. Vouw uw taak knooppunt uit en dubbel klik erop om de taak weergave te openen.
 
-![Beheeropties voor server explorer-taak](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
+![Opties voor taak beheer in Server Explorer](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  
-Het venster taak biedt u bewerkingen zoals het vernieuwen van de taak, de taak wordt verwijderd en de taak te openen vanuit Azure portal.
+Het venster taak weergave bevat bewerkingen zoals het vernieuwen van de taak, het verwijderen van de taak en het openen van de taak vanuit Azure Portal.
 
-![Taakdiagram en andere opties in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
+![Taak diagram en andere opties in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over Azure IoT Edge](../iot-edge/about-iot-edge.md)
-* [ASA on IoT Edge-zelfstudie](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Zelf studie voor IoT Edge van ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Feedback verzenden naar het team met behulp van deze enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

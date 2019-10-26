@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: E-commerce-productafbeeldingen beheren - Content Moderator'
+title: 'Zelf studie: software matige installatie kopieën van e-commerce-Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Stel een toepassing in om product afbeeldingen met opgegeven labels te analyseren en te classificeren (met behulp van Azure Computer Vision en Custom Vision). Label ongewenste afbeeldingen die verder moeten worden gecontroleerd (met behulp van Azure Content Moderator).
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564914"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936035"
 ---
-# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelfstudie: E-commerce-productafbeeldingen beheren met Azure Content Moderator
+# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelf studie: software matige installatie kopieën van e-commerce met Azure Content Moderator
 
 In deze zelf studie leert u hoe u Azure Cognitive Services, met inbegrip van Content Moderator, kunt gebruiken om product afbeeldingen te classificeren en te vertragen voor een e-commerce scenario. U gebruikt Computer Vision en Custom Vision voor het Toep assen van tags (labels) op afbeeldingen en vervolgens maakt u een team beoordeling, waarin u de op de machine learning gebaseerde technologieën van Content Moderator combineert met mede beoordelings teams om een intelligent toezicht systeem te bieden.
 
@@ -65,7 +65,9 @@ In deze zelf studie worden drie cognitieve Services gebruikt. Daarom zijn drie o
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-U moet de `___Key` velden bijwerken met de waarden van uw abonnements sleutels (u gaat `CustomVisionKey` later aan de slag). `___Uri` mogelijk moet u de velden wijzigen zodat deze de juiste regio-id's bevatten. Voer in het gedeelte `YOURTEAMID` van het veld `ReviewUri` de id in van het beoordelingsteam dat u eerder hebt gemaakt. U vult het laatste deel van het `CustomVisionUri` veld later in.
+U moet de `___Key` velden bijwerken met de waarden van uw abonnements sleutels en u moet de `___Uri` velden wijzigen in de juiste eindpunt-Url's (u krijgt de Custom Vision sleutel en het eind punt later op). U kunt deze waarden vinden op de tabbladen **Quick Start** van elke Azure-resource. Voer in het gedeelte `YOURTEAMID` van het veld `ReviewUri` de id in van het beoordelingsteam dat u eerder hebt gemaakt. U vult het laatste deel van het `CustomVisionUri` veld later in.
+
+[!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="primary-method-calls"></a>Aanroepen van primaire methode
 
@@ -91,7 +93,7 @@ Bekijk nu de methode **EvaluateCustomVisionTags**, waarmee de daadwerkelijke pro
 
 ![Webpagina van Custom Vision met trainingsafbeeldingen van pennen, speelgoed en vlaggen](images/tutorial-ecommerce-custom-vision.PNG)
 
-Zodra u de classificatie hebt getraind, haalt u de Voorspellings sleutel en de eind punt-URL van de prediction op (Zie [de URL en de Voorspellings sleutel ophalen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) als u hulp nodig hebt bij `CustomVisionKey` het `CustomVisionUri` ophalen van deze waarden), en u kunt ze aan uw en velden toewijzen. De methode gebruikt deze waarden om query's uit te voeren op de classificatie. Als de classificatie een of meer van de aangepaste tags vindt in de afbeelding, worden de bijbehorende waarden in de matrix **ReviewTags** ingesteld op **True**.
+Zodra u de classificatie hebt getraind, haalt u de Voorspellings sleutel en de eind punt-URL voor de prediction op (Zie [de URL en de Voorspellings sleutel ophalen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) als u hulp nodig hebt bij het ophalen van deze waarden), en u kunt ze aan uw `CustomVisionKey` en `CustomVisionUri` velden toewijzen. De methode gebruikt deze waarden om query's uit te voeren op de classificatie. Als de classificatie een of meer van de aangepaste tags vindt in de afbeelding, worden de bijbehorende waarden in de matrix **ReviewTags** ingesteld op **True**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

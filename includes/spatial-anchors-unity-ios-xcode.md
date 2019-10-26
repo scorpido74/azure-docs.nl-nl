@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562485"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933483"
 ---
 Selecteer **Build**. In het dialoog venster dat wordt geopend, selecteert u een map waarnaar u het Xcode-project wilt exporteren.
 
@@ -26,14 +26,14 @@ Voer in de geëxporteerde Xcode-projectmap deze opdracht uit in de terminal om d
 pod install --repo-update
 ```
 
-U kunt nu openen `Unity-iPhone.xcworkspace` om het project te openen in Xcode:
+U kunt `Unity-iPhone.xcworkspace` nu openen om het project in Xcode te openen:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Als er een `library not found for -lPods-Unity-iPhone` fout wordt weer gegeven, hebt u `.xcodeproj` waarschijnlijk het bestand in `.xcworkspace` plaats van het bestand geopend. 
+> Zie de stappen voor het oplossen van [problemen als u](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) CocoaPod problemen ondervindt na een upgrade naar macOS Catalina (10,15).
 
 Selecteer het knoop punt hoofd **eenheid van iPhone** om de project instellingen weer te geven en selecteer vervolgens het tabblad **Algemeen** .
 
@@ -50,3 +50,6 @@ Verbind het iOS-apparaat met de Mac en stel het **actieve schema** in voor uw iO
 Selecteer **Build and then run the current scheme** (Het huidige schema compileren en uitvoeren).
 
 ![Implementeren en uitvoeren](./media/spatial-anchors-unity/deploy-run.png)
+
+> [!NOTE]
+> Als er een `library not found for -lPods-Unity-iPhone` fout wordt weer gegeven, hebt u waarschijnlijk het `.xcodeproj` bestand in plaats van het `.xcworkspace` bestand geopend.

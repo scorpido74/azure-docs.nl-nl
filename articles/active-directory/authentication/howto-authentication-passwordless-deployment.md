@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453132"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933120"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Een authenticatie-implementatie met een wacht woord volt ooien
 
@@ -185,7 +185,7 @@ Hieronder ziet u voor beelden van test cases voor verificatie zonder wacht woord
 | De gebruiker kan zich aanmelden met FIDO2-apparaat (1809) | De gebruiker kan de beveiligings sleutel selecteren in het aanmeld venster en zich aanmelden. |
 | De gebruiker kan een FIDO2-apparaat registreren (1903) | Gebruiker kan FIDO2-apparaat registreren bij instellingen > Accounts > aanmeldings opties > beveiligings sleutel |
 | De gebruiker kan het FIDO2-apparaat opnieuw instellen (1903) | Gebruiker kan FIDO2-apparaat opnieuw instellen bij instellingen > Accounts > aanmeldings opties > beveiligings sleutel |
-| De gebruiker kan zich aanmelden met FIDO2-apparaat (1809) | De gebruiker kan de beveiligings sleutel selecteren in het aanmeld venster en zich aanmelden. |
+| De gebruiker kan zich aanmelden met FIDO2-apparaat (1903) | De gebruiker kan de beveiligings sleutel selecteren in het aanmeld venster en zich aanmelden. |
 
 **Wacht woord-FIDO aanmelden bij Azure AD web apps**
 

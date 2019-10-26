@@ -1,17 +1,17 @@
 ---
-title: Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer (preview-versie)
+title: BLOB-uitvoer verifiëren met beheerde identiteits Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om uw Azure Stream Analytics-taak te verifiëren voor Azure Blob Storage-uitvoer.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 2bde1e8556fb1255e27595630e061f6b80870ce1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4215dc85da6d507b08f23cf248044ea807fe5319
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278692"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935139"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer (preview-versie)
 
@@ -25,7 +25,7 @@ Dit artikel laat u zien hoe u beheerde identiteit voor de BLOB-uitvoer (en) van 
 
    ![Stream Analytics beheerde identiteit configureren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
 
-2. Selecteer in het venster uitvoer eigenschappen van de Azure Blob Storage-uitvoer Sink de vervolg keuzelijst authenticatie modus en kies **beheerde identiteit**. Zie voor meer informatie over de andere uitvoer eigenschappen [inzicht in de uitvoer van Azure stream Analytics](./stream-analytics-define-outputs.md). Wanneer u klaar bent, klikt u op **opslaan**.
+2. Selecteer in het venster uitvoer eigenschappen van de Azure Blob Storage-uitvoer Sink de vervolg keuzelijst authenticatie modus en kies **beheerde identiteit**. Zie voor meer informatie over de andere uitvoer eigenschappen [inzicht in de uitvoer van Azure stream Analytics](./stream-analytics-define-outputs.md). Wanneer u klaar bent, klikt u op **Opslaan**.
 
    ![Azure Blob Storage-uitvoer configureren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -216,7 +216,7 @@ Voer de volgende opdracht uit met behulp van de Azure CLI om toegang te krijgen 
 
 ## <a name="enable-vnet-access"></a>VNET-toegang inschakelen
 
-Bij het configureren van firewalls **en virtuele netwerken**van uw opslag account kunt u optioneel netwerk verkeer van andere vertrouwde micro soft-Services toestaan. Wanneer Stream Analytics verifieert met behulp van beheerde identiteit, geeft het bewijs dat de aanvraag afkomstig is van een vertrouwde service. Hieronder vindt u instructies om deze VNET-toegangs uitzondering in te scha kelen.
+Bij het configureren van **firewalls en virtuele netwerken**van uw opslag account kunt u optioneel netwerk verkeer van andere vertrouwde micro soft-Services toestaan. Wanneer Stream Analytics verifieert met behulp van beheerde identiteit, geeft het bewijs dat de aanvraag afkomstig is van een vertrouwde service. Hieronder vindt u instructies om deze VNET-toegangs uitzondering in te scha kelen.
 
 1.  Ga naar het deel venster firewalls en virtuele netwerken in het configuratie venster van het opslag account.
 2.  Zorg ervoor dat de optie ' vertrouwde micro soft-Services voor toegang tot dit opslag account toestaan ' is ingeschakeld.
@@ -237,5 +237,5 @@ Hieronder vindt u de huidige beperkingen van deze functie:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inzicht in de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Meer informatie over de uitvoer van Azure Stream Analytics](./stream-analytics-define-outputs.md)
 * [Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)

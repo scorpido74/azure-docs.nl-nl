@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389520"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934625"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Een nieuw toegangs pakket maken in azure AD-rechts beheer (preview-versie)
 
@@ -68,9 +68,9 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
 
 1. Klik in het linkermenu op **toegangs pakketten**.
 
-    ![Het beheer van rechten in het Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. Klik op **nieuw toegangs pakket**.
+
+    ![Het beheer van rechten in het Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Basisbeginselen
 
@@ -104,7 +104,7 @@ Op het tabblad **resource rollen** selecteert u de resources die u wilt toevoege
 
     Als u het toegangs pakket maakt in een bestaande catalogus, kunt u alle resources selecteren die zich al in de catalogus bevinden zonder dat hiervoor eigenaar van is.
 
-    Als u een globale beheerder, een gebruikers beheerder of een catalogus eigenaar bent, hebt u de extra optie om resources te selecteren waarvan u eigenaar bent die nog niet in de catalogus staan. Als u resources selecteert die zich momenteel niet in de geselecteerde catalogus bekomen, worden deze resources ook toegevoegd aan de catalogus zodat andere catalogus beheerders toegangs pakketten met kunnen maken. Als u alleen resources wilt selecteren die zich momenteel in de geselecteerde catalogus bevinden, schakelt u het selectie vakje **alleen bekijken** boven in het venster pan selecteren in.
+    Als u een globale beheerder, een gebruikers beheerder of een catalogus eigenaar bent, hebt u de extra optie om resources te selecteren waarvan u eigenaar bent die nog niet in de catalogus staan. Als u resources selecteert die zich momenteel niet in de geselecteerde catalogus bekomen, worden deze resources ook toegevoegd aan de catalogus zodat andere catalogus beheerders toegangs pakketten met kunnen maken. Als u alleen resources wilt selecteren die zich momenteel in de geselecteerde catalogus bevinden, schakelt u het selectie vakje **alleen bekijken** boven in het deel venster selecteren in.
 
 1. Wanneer u de resources hebt geselecteerd, selecteert u in de lijst met **rollen** de rol die gebruikers moeten worden toegewezen aan de resource.
 
@@ -118,7 +118,7 @@ Op het tabblad **aanvragen** maakt u het eerste beleid om op te geven wie het to
 
 ![Tabblad toegang tot pakket-aanvragen](./media/entitlement-management-access-package-create/requests.png)
 
-Voer de stappen uit in een van de volgende secties.
+Afhankelijk van wie u dit toegangs pakket wilt kunnen aanvragen, voert u de stappen uit in een van de volgende secties.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

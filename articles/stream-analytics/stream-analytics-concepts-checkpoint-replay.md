@@ -1,6 +1,6 @@
 ---
-title: Controlepunt en herhaling recovery concepten van de taak die u in Azure Stream Analytics
-description: Dit artikel wordt beschreven controlepunt en herhaling recovery concepten van de taak die u in Azure Stream Analytics.
+title: Het controle punt en de concepten van herstel na opnieuw afspelen in Azure Stream Analytics
+description: In dit artikel wordt het controle punt beschreven en worden de concepten voor taak herstel opnieuw afgespeeld in Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,67 +9,67 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26d8d8248c9dcc57edaaa4a90f87071ee61a70ce
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61361877"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935032"
 ---
-# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Controlepunt en herhaling concepten in Azure Stream Analytics-taken
-In dit artikel beschrijft de interne controlepunt en herhaling concepten in Azure Stream Analytics en de impact die hebben voor herstel van de taak. Telkens wanneer wordt een Stream Analytics-taak wordt uitgevoerd, informatie over de status bijgehouden intern. Deze informatie over de status wordt opgeslagen in een controlepunt periodiek. De checkpoint-informatie wordt gebruikt voor herstel van de taak in sommige scenario's als een taak is mislukt of een upgrade optreedt. In andere gevallen kan het controlepunt kan niet worden gebruikt voor herstel en een replay nodig is.
+# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Controle punten en concepten voor opnieuw afspelen in Azure Stream Analytics taken
+In dit artikel worden het interne controle punt en de concepten voor het opnieuw afspelen van Azure Stream Analytics beschreven en de invloed hiervan op de taak herstel. Telkens wanneer een Stream Analytics taak wordt uitgevoerd, wordt de status informatie intern onderhouden. Deze status informatie wordt periodiek opgeslagen in een controle punt. In sommige gevallen wordt de controlepunt informatie gebruikt voor taak herstel als een taak fout of een upgrade optreedt. In andere gevallen kan het controle punt niet worden gebruikt voor herstel, en moet er een herhaling worden uitgevoerd.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Stateful querylogica in de tijdelijke elementen
-Een van de unieke mogelijkheid van Azure Stream Analytics-taak is stateful verwerking, zoals statische functies in vensters, tijdelijke joins en tijdelijke analytische functies uit te voeren. Elk van deze operators blijft informatie over de status wanneer de taak wordt uitgevoerd. De maximale venstergrootte voor deze query-elementen is zeven dagen. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Stateful query logica in tijdelijke elementen
+Een van de unieke mogelijkheden van Azure Stream Analytics taak is het uitvoeren van stateful verwerking, zoals venster aggregaties, tijdelijke samen voegingen en tijdelijke analytische functies. Elk van deze opera tors houdt status informatie bij het uitvoeren van de taak. De maximale venster grootte voor deze query-elementen is zeven dagen. 
 
-Het concept tijdelijk venster wordt weergegeven in de verschillende elementen van de Stream Analytics-query:
-1. Statistische functies in vensters, (groep door van Tumbling, Hopping plaatsvindt, en schuiven windows)
+Het tijdelijke venster-concept wordt in verschillende Stream Analytics query-elementen weer gegeven:
+1. Statistische functies in Vensters (groeperen op basis van Tumblingvenstertriggers, verspringen en schuivende Vensters)
 
-2. Tijdelijke joins (lid worden met DATEDIFF)
+2. Tijdelijke samen voegingen (samen voegen met DATEDIFF)
 
-3. Tijdelijke analytische functies (ISFIRST, LAST en LAG met LIMIT DURATION)
+3. Tijdelijke analytische functies (ISFIRST, LAST en LAG met de limiet duur)
 
 
-## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Taak herstel na een storing op knooppunt, met inbegrip van de upgrade van besturingssysteem
-Telkens wanneer die een Stream Analytics-taak wordt uitgevoerd, is intern deze uitgebreid om te werken op meerdere worker-knooppunten. Status van elke worker-knooppunt wordt gecontroleerd om de paar minuten, waarmee het systeem herstellen als er een fout optreedt.
+## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Taak herstel van knooppunt fout, inclusief upgrade van het besturings systeem
+Telkens wanneer een Stream Analytics taak wordt uitgevoerd, wordt intern deze geschaald naar werk op meerdere werk knooppunten. De status van elke worker-knoop punt is elke paar minuten, waardoor het systeem kan worden hersteld als er een fout optreedt.
 
-Soms een bepaald worker-knooppunt kan mislukken of de upgrade van een besturingssysteem kan optreden voordat die worker-knooppunt. Als u wilt herstellen automatisch, Stream Analytics een nieuw knooppunt in orde krijgt en de voorafgaande worker-knooppunt is hersteld vanaf het laatste controlepunt. Als u wilt doorgaan met het werk, is een kleine hoeveelheid opnieuw afspelen die nodig zijn voor het herstellen van de status van de tijd wanneer het controlepunt wordt ingesteld. De kloof terugzetten is meestal slechts een paar minuten. Wanneer er onvoldoende Streaming-eenheden zijn geselecteerd voor de taak, moet de herhaling snel worden uitgevoerd. 
+Het kan gebeuren dat een gegeven werk knooppunt mislukt of dat er een upgrade van het besturings systeem voor dat werk knooppunt kan worden uitgevoerd. Om automatisch te herstellen, verkrijgt Stream Analytics een nieuw gezonden knoop punt en wordt de status van het vorige werk knooppunt hersteld vanuit het meest recente beschik bare controle punt. Als u het werk wilt hervatten, is een kleine hoeveelheid herhaling nodig om de status te herstellen vanaf het moment dat het controle punt wordt gemaakt. Normaal gesp roken is de herstel hiaat slechts een paar minuten. Wanneer er voldoende streaming-eenheden zijn geselecteerd voor de taak, moet de herhaling snel worden voltooid. 
 
-In een volledig parallelle query is de tijd die nodig zijn om dingen die na een storing voor een worker-knooppunt in verhouding met:
+In een volledig parallelle query is de tijd die nodig is om na een storing van een werk knooppunt te worden opgedeeld in verhouding te staan tot:
 
-[de snelheid van de invoer] x [de lengte van de tussenruimte] / [nummer van het verwerken van partities]
+[de invoer gebeurtenis frequentie] x [de lengte van de tussen ruimte]/[aantal verwerkings partities]
 
-Als u ooit flink wat verwerkingstaken vertraging vanwege een storing op knooppunt observeren en OS-upgrade, Overweeg de query volledig parallel en schalen van de taak voor het toewijzen van meer Streaming-eenheden. Zie voor meer informatie, [schalen van een Azure Stream Analytics-taak voor een betere doorvoer](stream-analytics-scale-jobs.md).
+Als u ooit aanzienlijke verwerkings vertraging onderneemt vanwege een storing in het knoop punt en de upgrade van het besturings systeem, kunt u overwegen de query volledig parallel te maken en de taak te schalen om meer streaming-eenheden toe te wijzen Zie [een Azure stream Analytics taak schalen om de door voer te verg Roten](stream-analytics-scale-jobs.md)voor meer informatie.
 
-Huidige Stream Analytics biedt een rapport niet weergegeven wanneer dit soort herstelproces plaatsvindt.
+Met de huidige Stream Analytics wordt geen rapport weer gegeven wanneer dit soort herstel proces plaatsvindt.
 
-## <a name="job-recovery-from-a-service-upgrade"></a>Herstel van de taak van een service-upgrade 
-Microsoft worden af en toe bijgewerkt voor de binaire bestanden die worden uitgevoerd van de Stream Analytics-taken in de Azure-service. Bij deze tijden taken die worden uitgevoerd voor de gebruikers zijn bijgewerkt naar een nieuwere versie en de taak wordt automatisch opnieuw opgestart. 
+## <a name="job-recovery-from-a-service-upgrade"></a>Taak herstel van een service-upgrade 
+Micro soft werkt af en toe de binaire bestanden die de Stream Analytics-taken uitvoeren in de Azure-service. Op dat moment worden de taken van gebruikers die worden uitgevoerd naar een nieuwere versie bijgewerkt en wordt de taak automatisch opnieuw gestart. 
 
-De herstel-controlepunt-indeling wordt op dit moment niet behouden tussen upgrades. De status van de streaming-query moet als gevolg hiervan worden hersteld met techniek opnieuw afspelen. Als u wilt toestaan dat de Stream Analytics-taken voor de replay van de exacte dezelfde invoer van voordat het is belangrijk om in te stellen het bewaarbeleid voor de brongegevens die moeten ten minste het venster-grootten in uw query. Niet doet, kan leiden tot onjuiste of gedeeltelijke resultaten tijdens de upgrade van de service, omdat de brongegevens niet moeten worden bewaard klein genoeg om op te nemen van de volledige venstergrootte.
+Op dit moment wordt de indeling van het herstel controlepunt niet bewaard tussen upgrades. Als gevolg hiervan moet de status van de streaming-query volledig worden hersteld met behulp van de replay-techniek. Als u wilt toestaan dat Stream Analytics-taken exact dezelfde invoer van tevoren herhalen, is het belang rijk om het Bewaar beleid voor de bron gegevens in te stellen op ten minste de venster grootten in uw query. Als u dit niet doet, kan dit leiden tot onjuiste of gedeeltelijke resultaten tijdens de upgrade van de service, omdat de bron gegevens mogelijk niet voldoende lang genoeg zijn om de volledige venster grootte toe te voegen.
 
-De hoeveelheid opnieuw afspelen nodig is in het algemeen, evenredig aan de grootte van het venster vermenigvuldigd met de gemiddelde snelheid van gebeurtenissen. Als voorbeelden, voor een taak met een invoer-snelheid van 1000 gebeurtenissen per seconde, een groter is dan een uur venstergrootte wordt beschouwd als de grootte van een grote opnieuw afspelen. Maximaal één uur van de gegevens mogelijk worden opnieuw verwerkt om te initialiseren van de status, zodat deze volledig maken kunt en de juiste resultaten, wat kunnen leiden tot vertraagd uitvoer (Er is geen uitvoer) gedurende een langere periode. Query's met geen windows- of andere tijdelijke operators, zoals `JOIN` of `LAG`, nul opnieuw afspelen zou hebben.
+Over het algemeen geldt dat de hoeveelheid opnieuw afspelen evenredig is met de grootte van het venster vermenigvuldigd met het gemiddelde gebeurtenis percentage. Een voor beeld: voor een taak met een invoer frequentie van 1000 gebeurtenissen per seconde, wordt een venster grootte van meer dan één uur beschouwd als een grote replay grootte. Het kan Maxi maal één uur duren voordat de gegevens opnieuw worden verwerkt om de status te initialiseren, zodat deze volledige en juiste resultaten kan veroorzaken. Dit kan leiden tot een vertraagde uitvoer (geen uitvoer) gedurende een langere periode. Query's zonder Windows of andere tijdelijke Opera Tors, zoals `JOIN` of `LAG`, hebben nul replay.
 
-## <a name="estimate-replay-catch-up-time"></a>Raming replay achterstallige tijd
-Voor een schatting van de lengte van de vertraging is vanwege een upgrade van een service, kunt u deze techniek volgen:
+## <a name="estimate-replay-catch-up-time"></a>Indruk tijd van raming voor replay
+Als u de lengte van de vertraging wilt schatten als gevolg van een service-upgrade, kunt u deze techniek volgen:
 
-1. De invoer Event Hub met voldoende gegevens voor de grootste venstergrootte in uw query, verwachte gebeurtenis tarief worden geladen. De gebeurtenissen tijdstempels moet dicht bij de kloktijd gedurende die periode als als het een live invoer feed is. Hebt u een venster 3 dagen in uw query, gebeurtenissen verzenden naar Event Hub voor drie dagen en doorgaan met het verzenden van gebeurtenissen. 
+1. Laad de invoer Event hub met voldoende gegevens om de grootste venster grootte in uw query te bedekken, op basis van het verwachte aantal gebeurtenissen. De tijds tempel van de gebeurtenissen moet dicht bij de klok tijd van de wand binnen die periode liggen, alsof het een live invoer feed is. Als u bijvoorbeeld een venster van drie dagen hebt in uw query, verzendt u gebeurtenissen drie dagen naar Event hub en gaat u door met het verzenden van gebeurtenissen. 
 
-2. Start de taak met behulp van **nu** als de begintijd. 
+2. Start de taak **nu** op het moment van de begin tijd. 
 
-3. Meten van de tijd tussen de begin- en wanneer de eerste uitvoer wordt gegenereerd. De tijd is ruwe hoeveel vertraging die de taak in tijdens de upgrade van een service gebracht rekening.
+3. De tijd meten tussen de begin tijd en de eerste uitvoer die wordt gegenereerd. De tijd is de hoeveelheid vertraging die de taak zou opleveren tijdens een service-upgrade.
 
-4. Als de vertraging te lang is, probeert u voor het partitioneren van de taak en verhogen aantal SUs, zodat de belasting op meer knooppunten wordt verdeeld. U kunt ook Verklein de grootte van het venster in de query en voert u verdere aggregatie of andere stateful-verwerking op de uitvoer die wordt geproduceerd door de Stream Analytics-taak in de downstream-sink (bijvoorbeeld met behulp van Azure SQL database).
+4. Als de vertraging te lang is, probeert u de taak te partitioneren en het aantal SUs te verhogen. de belasting wordt dus naar meer knoop punten verdeeld. U kunt ook de venster grootten in uw query verkleinen en verdere aggregatie of andere stateful verwerking uitvoeren op de uitvoer die wordt geproduceerd door de Stream Analytics-taak in de stroomafwaartse Sink (bijvoorbeeld met behulp van Azure SQL database).
 
-Voor algemene service stabiliteit is tijdens de upgrade van essentiële taken kritiek taken, kunt u de uitvoering van dubbele taken in de gekoppelde Azure-regio's. Zie voor meer informatie, [garantie Stream Analytics-taak betrouwbaarheid tijdens het bijwerken van de service](stream-analytics-job-reliability.md).
+Voor algemene service stabiliteits bezorgdheid tijdens de upgrade van essentiële taken kunt u overwegen dubbele taken uit te voeren in gekoppelde Azure-regio's. Zie voor meer informatie [garantie stream Analytics taak betrouw baarheid tijdens service-updates](stream-analytics-job-reliability.md).
 
-## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Taak herstel vanaf een door de gebruiker geïnitieerde stoppen en starten
-De Query-syntaxis voor een streaming-taak bewerken, of om aan te passen van invoer en uitvoer, moet de taak stoppen om de wijzigingen aanbrengen en het ontwerp van de taak een upgrade uitvoert. In dergelijke scenario's wanneer een gebruiker de streaming-taak gestopt en opnieuw starten is de recovery-scenario vergelijkbaar met service-upgrade. 
+## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Taak herstel van een door de gebruiker geïnitieerde stoppen en starten
+Als u de query syntaxis wilt bewerken voor een streaming-taak of als u invoer en uitvoer wilt aanpassen, moet de taak worden gestopt om de wijzigingen aan te brengen en het taak ontwerp bij te werken. Wanneer een gebruiker de streaming-taak stopt en opnieuw start, is het herstel scenario vergelijkbaar met de service-upgrade. 
 
-Controlepuntgegevens kan niet worden gebruikt voor een door de gebruiker geïnitieerde taak opnieuw starten. Voor een schatting van de vertraging van uitvoer tijdens het opnieuw opstarten, gebruikt u dezelfde procedure zoals beschreven in de vorige sectie en vergelijkbare risicobeperking van toepassing als de vertraging te lang is.
+Controlepunt gegevens kunnen niet worden gebruikt voor een door de gebruiker geïnitieerde taak opnieuw starten. Als u de uitvoer vertraging tijdens een dergelijke herstart wilt schatten, gebruikt u dezelfde procedure zoals beschreven in de vorige sectie en past u vergelijk bare beperkingen toe als de vertraging te lang is.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over de betrouwbaarheid en schaalbaarheid:
-- [Zelfstudie: Waarschuwingen instellen voor Azure Stream Analytics-taken](stream-analytics-set-up-alerts.md)
-- [Een Azure Stream Analytics-taak voor een betere doorvoer schalen](stream-analytics-scale-jobs.md)
-- [Betrouwbaarheid van de Stream Analytics-taken te garanderen tijdens de service-updates](stream-analytics-job-reliability.md)
+Zie de volgende artikelen voor meer informatie over betrouw baarheid en schaal baarheid:
+- [Zelf studie: waarschuwingen instellen voor Azure Stream Analytics taken](stream-analytics-set-up-alerts.md)
+- [Een Azure Stream Analytics taak schalen om de door voer te verhogen](stream-analytics-scale-jobs.md)
+- [Betrouw baarheid Stream Analytics-taak garanderen tijdens service-updates](stream-analytics-job-reliability.md)

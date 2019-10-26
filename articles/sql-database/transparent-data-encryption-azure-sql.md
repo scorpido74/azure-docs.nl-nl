@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b63a8c9defdf154f35a847f29182b49ff94ff3a6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061934"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933207"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparante gegevens versleuteling voor SQL Database en Data Warehouse
 
@@ -42,7 +42,7 @@ Micro soft verplaatst en beheert ook de sleutels naar behoefte voor geo-replicat
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Door de klant beheerde transparante gegevens versleuteling-Bring Your Own Key
 
-[TDe met door de klant beheerde sleutels in azure Key Vault](transparent-data-encryption-byok-azure-sql.md) kunt de database versleutelings sleutel (dek) versleutelen met een door de klant beheerde asymmetrische sleutel met de naam TDe Protector.  Dit wordt ook in het algemeen aangeduid als Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption. In het BYOK-scenario wordt de TDE-Protector opgeslagen in een door de klant eigendom en beheerd [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), het op de cloud gebaseerde externe sleutel beheer systeem van Azure. De TDE-Protector kan worden [gegenereerd door de sleutel kluis of worden overgebracht naar de sleutel kluis](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) van een on-PREMISes HSM-apparaat. De TDE-DEK, die is opgeslagen op de opstart pagina van een Data Base, wordt versleuteld en ontsleuteld door de TDE-Protector, die is opgeslagen in Azure Key Vault en de sleutel kluis nooit verlaat.  Aan SQL Database moeten machtigingen worden verleend om de DEK te ontsleutelen en te versleutelen. Als machtigingen van de logische SQL-Server aan de sleutel kluis zijn ingetrokken, is een Data Base niet toegankelijk en worden alle gegevens versleuteld. Voor Azure SQL Database wordt de TDE-Protector ingesteld op het niveau van de logische SQL-Server en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) (BYOK-functie in Preview) wordt de TDe-Protector ingesteld op het niveau van de instantie en overgenomen door alle versleutelde data bases op dat exemplaar. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
+[TDe met door de klant beheerde sleutels in azure Key Vault](transparent-data-encryption-byok-azure-sql.md) kunt de database versleutelings sleutel (dek) versleutelen met een door de klant beheerde asymmetrische sleutel met de naam TDe Protector.  Dit wordt ook in het algemeen aangeduid als Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption. In het BYOK-scenario wordt de TDE-Protector opgeslagen in een door de klant eigendom en beheerd [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), het op de cloud gebaseerde externe sleutel beheer systeem van Azure. De TDE-Protector kan worden [gegenereerd door de sleutel kluis of worden overgebracht naar de sleutel kluis](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) van een on-PREMISes HSM-apparaat. De TDE-DEK, die is opgeslagen op de opstart pagina van een Data Base, wordt versleuteld en ontsleuteld door de TDE-Protector, die is opgeslagen in Azure Key Vault en de sleutel kluis nooit verlaat.  Aan SQL Database moeten machtigingen worden verleend om de DEK te ontsleutelen en te versleutelen. Als machtigingen van de logische SQL-Server aan de sleutel kluis zijn ingetrokken, is een Data Base niet toegankelijk en worden alle gegevens versleuteld. Voor Azure SQL Database wordt de TDE-Protector ingesteld op het niveau van de logische SQL-Server en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) (BYOK-functie in Preview) wordt de TDe-Protector ingesteld op het niveau van de instantie en overgenomen door alle *versleutelde* data bases op dat exemplaar. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
 Met TDE met Azure Key Vault-integratie kunnen gebruikers belang rijke beheer taken beheren, zoals het draaien van sleutels, sleutel kluis machtigingen, sleutel back-ups en het inschakelen van controle/rapportage op alle TDE-beveiligingen met behulp van Azure Key Vault functionaliteit. Key Vault biedt centraal sleutel beheer, maakt gebruik van nauw bewakende Hsm's (Hardware Security modules) en stelt schei ding van taken mogelijk te maken tussen het beheer van sleutels en gegevens om te voldoen aan de naleving van beveiligings beleid.
 Zie [transparent Data Encryption with Azure Key Vault voor meer informatie over transparante gegevens versleuteling met Azure Key Vault Integration (Bring your own Key-ondersteuning) voor Azure SQL database, een beheerd exemplaar van SQL (BYOK-functie in Preview) en Data Warehouse. integratie](transparent-data-encryption-byok-azure-sql.md).
@@ -69,7 +69,10 @@ Als het BACPAC-bestand bijvoorbeeld wordt geëxporteerd vanuit een on-premises S
 
 De enige uitzonde ring is wanneer u exporteert naar en van een SQL database. Transparante gegevens versleuteling is ingeschakeld in de nieuwe Data Base, maar het BACPAC-bestand zelf is nog steeds niet versleuteld.
 
-## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>Transparante gegevens versleuteling beheren in de Azure Portal
+
+## <a name="manage-transparent-data-encryption"></a>Transparante gegevens versleuteling beheren
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Transparante gegevens versleuteling beheren in de Azure Portal.
 
 Als u transparante gegevens versleuteling wilt configureren via de Azure Portal, moet u zijn verbonden als Azure-eigenaar, Inzender of SQL Security Manager.
 
@@ -81,7 +84,8 @@ U stelt de transparante gegevens versleutelings hoofd sleutel, ook wel de transp
 
 ![Transparante gegevens versleuteling met Bring Your Own Key-ondersteuning](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-## <a name="manage-transparent-data-encryption-by-using-powershell"></a>Transparante gegevens versleuteling beheren met Power shell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Transparante gegevens versleuteling beheren met behulp van Power shell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -93,7 +97,7 @@ Als u transparante gegevens versleuteling wilt configureren via Power shell, moe
 
 Gebruik de volgende cmdlets voor Azure SQL Database en het Data Warehouse:
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Hiermee wordt de transparante gegevens versleuteling voor een data base in-of uitgeschakeld|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Hiermee wordt de transparante status van gegevens versleuteling opgehaald voor een Data Base |
@@ -108,25 +112,27 @@ Gebruik de volgende cmdlets voor Azure SQL Database en het Data Warehouse:
 > [!IMPORTANT]
 > Voor Azure SQL Managed instance gebruikt u de T-SQL [ALTER data base](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) -opdracht om transparante gegevens versleuteling in en uit te scha kelen op een database niveau en voor [beeld Power shell-script](transparent-data-encryption-byok-azure-sql-configure.md) voor het beheren van transparante gegevens versleuteling op een exemplaar niveau te controleren.
 
-## <a name="manage-transparent-data-encryption-by-using-transact-sql"></a>Transparante gegevens versleuteling beheren met behulp van Transact-SQL
+# <a name="transact-sqltabazure-transactsql"></a>[Transact-SQL](#tab/azure-TransactSQL)
+Transparante gegevens versleuteling beheren met behulp van Transact-SQL.
 
 Maak verbinding met de data base met behulp van een aanmelding die een beheerder of lid is van de rol **DBManager** in de hoofd database.
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 | [ALTER data base (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | VERSLEUTELING instellen in-of uitschakelen voor het versleutelen of ontsleutelen van een Data Base |
-| [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van een Data Base en de bijbehorende versleutelings sleutels voor de data base |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van elk data warehouse-knoop punt en de bijbehorende data base-versleutelings sleutels |
+| [sys. DM _database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van een Data Base en de bijbehorende versleutelings sleutels voor de data base |
+| [sys. DM _pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Retourneert informatie over de versleutelings status van elk data warehouse-knoop punt en de bijbehorende data base-versleutelings sleutels |
 |  | |
 
 U kunt niet overstappen op de transparante beveiliging van gegevens versleuteling naar een sleutel van Key Vault met behulp van Transact-SQL. Gebruik Power shell of de Azure Portal.
 
-## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>Transparante gegevens versleuteling beheren met behulp van de REST API
+# <a name="rest-apitabazure-restapi"></a>[REST API](#tab/azure-RESTAPI)
+Transparante gegevens versleuteling beheren met behulp van de REST API.
 
 Als u transparante gegevens versleuteling wilt configureren via de REST API, moet u zijn verbonden als Azure-eigenaar, Inzender of SQL Security Manager.
 Gebruik de volgende reeks opdrachten voor Azure SQL Database en het Data Warehouse:
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 |[Server maken of bijwerken](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Hiermee wordt een Azure Active Directory identiteit toegevoegd aan een SQL Server-exemplaar (wordt gebruikt om toegang te verlenen aan Key Vault)|
 |[Server sleutel maken of bijwerken](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Voegt een Key Vault sleutel toe aan een SQL Server-exemplaar|

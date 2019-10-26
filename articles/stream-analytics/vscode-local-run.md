@@ -1,17 +1,17 @@
 ---
-title: Azure Stream Analytics query's lokaal testen met Visual Studio code (preview)
+title: Azure Stream Analytics query's testen met Visual Studio code
 description: In dit artikel wordt beschreven hoe u query's lokaal test met Azure Stream Analytics-Hulpprogram Ma's voor Visual Studio code.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673029"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924978"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Stream Analytics query's lokaal testen met Visual Studio code
 
@@ -27,7 +27,7 @@ Gebruik deze [Quick](quick-create-vs-code.md) start om te leren hoe u met Visual
 
 U kunt de Azure Stream Analytics extensie voor Visual Studio code gebruiken om uw Stream Analytics-taken lokaal te testen met voorbeeld gegevens.
 
-1. Wanneer u de Stream Analytics taak hebt gemaakt, gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Vervolgens typt en selecteert u **ASA: Invoer @ no__t-0 toevoegen.
+1. Wanneer u de Stream Analytics taak hebt gemaakt, gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Typ en selecteer vervolgens **ASA: invoer toevoegen**.
 
     ![ASA-invoer toevoegen in Visual Studio code](./media/vscode-local-run/add-input.png)
 

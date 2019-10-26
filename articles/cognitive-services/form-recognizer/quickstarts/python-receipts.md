@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Ontvangst gegevens ophalen met behulp van python-formulier herkenner'
+title: 'Snelstartgids: ontvangst gegevens ophalen met behulp van python-formulier herkenner'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start gebruikt u de formulier Recognizer REST API met python om gegevens te extra heren uit installatie kopieën van verkoop ontvangsten.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073751"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931268"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met python
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met python
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python om relevante informatie in verkoop ontvangsten te extra heren en te identificeren.
 
@@ -36,7 +36,7 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **analyseren** van de ontvangst aan met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
 1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
 1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
@@ -70,7 +70,7 @@ Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor he
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-receipts.py`.
 
-U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de bewerking op te vragen en de analyse resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks `operations/` na de bewerkings-id.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de bewerking op te vragen en de analyse resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks na `operations/` de bewerkings-ID.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -104,7 +104,7 @@ while True:
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Met het script worden reacties op de console afgedrukt totdat de analyse bewerking is voltooid. Vervolgens worden de geëxtraheerde tekst gegevens in JSON-indeling afgedrukt. Het `"recognitionResults"` veld bevat elke regel tekst die is geëxtraheerd uit de ontvangst en het `"understandingResults"` veld bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst.
+Met het script worden reacties op de console afgedrukt totdat de analyse bewerking is voltooid. Vervolgens worden de geëxtraheerde tekst gegevens in JSON-indeling afgedrukt. Het veld `"recognitionResults"` bevat elke regel tekst die is geëxtraheerd uit de ontvangst en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst.
 
 Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is inge kort voor de Lees baarheid.
 

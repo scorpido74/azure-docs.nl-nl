@@ -1,5 +1,5 @@
 ---
-title: .NET-standaard functies ontwikkelen voor Azure Stream Analytics Edge-taken (preview-versie)
+title: .NET-standaard functies ontwikkelen voor Azure Stream Analytics Edge-taken
 description: Meer informatie over het ontwikkelen van door de gebruiker gedefinieerde .NET-functies voor Azure Stream Analytics taken met behulp van CodeBehind, een bestaand pakket of een lokaal project.
 services: stream-analytics
 author: mamccrea
@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 287ee2d84ea3d5c6f1568edb1636191f509681e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: cdfe4d2ccc39385b4020f60905b12c4683b1758c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901620"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935025"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics Edge-taken (preview-versie)
 

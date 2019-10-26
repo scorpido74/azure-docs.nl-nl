@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 13b0952f38fb0c8c922be415f782b3a0a0861729
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757306"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931739"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Quick Start: afbeeldingen analyseren voor aanstootgevende inhoud inC#
 
@@ -25,7 +25,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een abonnementssleutel voor Content Moderator. Volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Content Moderator en uw sleutel op te halen.
+- Een abonnementssleutel voor Content Moderator. Volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op content moderator. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt-URL, respectievelijk met de naam `CONTENT_MODERATOR_SUBSCRIPTION_KEY` en `CONTENT_MODERATOR_ENDPOINT`.
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/)
 
 
@@ -49,20 +49,20 @@ Vervolgens kopieert en plakt u de code uit deze handleiding in uw project om een
 
 Voeg aan het begin van het bestand *Program.cs* de volgende `using`-instructies toe.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe aan het bestand *Program.cs* om een Content Moderator-clientprovider voor uw abonnement te maken. Voeg de code toe naast de klasse **Program**, in dezelfde naamruimte. U moet de velden **AzureRegion** en **CMSubscriptionKey** bijwerken met de waarden van uw regio-id en de abonnementssleutel.
+Voeg de volgende code toe aan het bestand *Program.cs* om een Content Moderator-clientprovider voor uw abonnement te maken. Voeg de klasse toe naast de klasse **Program** , in dezelfde naam ruimte. U moet de velden **AzureBaseURL** en **CMSubscriptionKey** bijwerken met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Invoer- en uitvoerdoelen instellen
 
 Voeg de volgende statische velden toe aan de klasse **Program** in _Program.cs_. Deze velden geven de bestanden voor de inhoud van de invoer installatie kopie en de uitvoer van JSON-inhoud.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 U moet het invoer bestand *ImageFiles. txt* maken en het bijbehorende pad dienovereenkomstig bijwerken (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory). Open _ImageFiles.txt_ en voeg de URL's van de te beheren afbeeldingen toe. In deze snelstart worden de volgende URL's als voorbeeldinvoer gebruikt.
 
@@ -75,20 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Voeg de volgende code toe aan *Program.cs*, naast de klasse **Program** in dezelfde naamruimte. U gebruikt een exemplaar van deze klasse om de toezichtresultaten voor alle geëvalueerde afbeeldingen vast te leggen.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_dataclass)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>De methode voor de evaluatie van de afbeelding definiëren
 
 Voeg de volgende methode toe aan de klasse **Program**. Met deze methode wordt één afbeelding op drie verschillende manieren geëvalueerd en worden de resultaten van de evaluatie geretourneerd. Als u meer wilt weten over wat deze afzonderlijke bewerkingen doen, volgt u de koppeling in de sectie [Volgende stappen](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_evaluate)]
 
 ### <a name="load-the-input-images"></a>De invoerafbeeldingen laden
 
 Voeg de volgende code toe aan de methode **Main** in de klasse **App**. Met deze code wordt het programma zo ingesteld dat evaluatie gegevens worden opgehaald voor elke afbeeldings-URL in het invoer bestand. Daarna worden deze gegevens naar één uitvoerbestand geschreven.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
 

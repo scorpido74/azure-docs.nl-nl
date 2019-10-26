@@ -1,6 +1,6 @@
 ---
-title: Configureerbare drempelwaarde op basis van regels in Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u van referentiegegevens voor een oplossing voor waarschuwingen met configureerbare drempelwaarde op basis van regels in Azure Stream Analytics.
+title: Configureer bare regels op basis van drempel waarden in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u referentie gegevens gebruikt voor het bezorgen van een waarschuwings oplossing met geconfigureerde regels voor drempel waarden in Azure Stream Analytics.
 services: stream-analytics
 author: zhongc
 ms.author: zhongc
@@ -9,43 +9,43 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fd21f411093e22b2b1dc5afd6da9cb26db6ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761723"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934264"
 ---
-# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Verwerken configureerbare drempelwaarde-regels in Azure Stream Analytics
-In dit artikel wordt beschreven hoe u van referentiegegevens voor een waarschuwingen oplossing die gebruikmaakt van configureerbare regels op basis van een drempelwaarde in Azure Stream Analytics.
+# <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Configureer bare op drempel waarden gebaseerde regels verwerken in Azure Stream Analytics
+In dit artikel wordt beschreven hoe u referentie gegevens gebruikt voor het bezorgen van een waarschuwings oplossing die gebruikmaakt van Configureer bare regels op basis van drempel waarden in Azure Stream Analytics.
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Scenario: Waarschuwingen op basis van aanpasbare regel drempelwaarden
-U moet mogelijk een waarschuwing geproduceerd als uitvoer als een bepaalde waarde hebt bereikt van het binnenkomende gestreamde gebeurtenissen, of als een geaggregeerde waarde op basis van de binnenkomende gestreamde gebeurtenissen een bepaalde drempelwaarde overschrijdt. Het eenvoudig voor het instellen van een Stream Analytics-query die in vergelijking met een statische drempelwaarde die is vastgesteld en vooraf ingestelde waarde. Een vaste drempelwaarde kan worden vastgelegd in de streaming-querysyntaxis met behulp van eenvoudige numerieke vergelijkingen (groter is dan, kleiner dan en gelijkheid).
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>Scenario: waarschuwingen op basis van drempel waarden voor aanpas bare regels
+Mogelijk moet u een waarschuwing maken als uitvoer wanneer binnenkomende gestreamde gebeurtenissen een bepaalde waarde hebben bereikt of wanneer een geaggregeerde waarde op basis van de binnenkomende gestreamde gebeurtenissen een bepaalde drempel overschrijdt. Het is eenvoudig om een Stream Analytics query in te stellen waarmee de waarde wordt vergeleken met een statische en vooraf vastgestelde drempel. Een vaste drempel waarde kan worden vastgelegd in de query syntaxis voor streamen met behulp van eenvoudige numerieke vergelijkingen (groter dan, kleiner dan en gelijk aan).
 
-In sommige gevallen moeten de drempelwaarden zijn eenvoudiger kunnen worden geconfigureerd zonder het bewerken van de querysyntaxis van de elke keer dat een waarde voor drempel wordt gewijzigd. In andere gevallen moet u mogelijk talloze apparaten of gebruikers die zijn verwerkt door de dezelfde query aan elk van deze met een verschillende drempelwaarden op elk type apparaat. 
+In sommige gevallen moeten de drempel waarden eenvoudiger kunnen worden geconfigureerd zonder de query syntaxis te bewerken telkens wanneer een drempel waarde wordt gewijzigd. In andere gevallen hebt u mogelijk talloze apparaten of gebruikers nodig die door dezelfde query worden verwerkt, waarbij elk daarvan een andere drempel waarde heeft op elk type apparaat. 
 
-Dit patroon kan worden gebruikt om dynamisch drempels, selectief kiezen welk type apparaat dat de drempelwaarde wordt toegepast door te filteren de invoergegevens en selectief kiezen welke velden u wilt opnemen in de uitvoer.
+Dit patroon kan worden gebruikt om drempel waarden dynamisch te configureren, selectief te kiezen welk type apparaat de drempel waarde toepast door de invoer gegevens te filteren en selectief te kiezen welke velden in de uitvoer moeten worden meegenomen.
 
-## <a name="recommended-design-pattern"></a>Aanbevolen ontwerp
-Gebruik een referentie-invoer voor gegevens naar een Stream Analytics-taak als een opzoeken van de drempelwaarden:
-- De drempelwaarden Store in de referentiegegevens, één waarde per sleutel.
-- De invoer gebeurtenissen van streaming gegevens toevoegen aan de referentiegegevens op de sleutelkolom.
-- De versleutelde waarde van de referentiegegevens gebruiken als de drempelwaarde.
+## <a name="recommended-design-pattern"></a>Aanbevolen ontwerp patroon
+Gebruik een invoer voor referentie gegevens naar een Stream Analytics taak als zoek opdracht van de drempel waarden voor waarschuwingen:
+- Sla de drempel waarden op in de referentie gegevens, één waarde per sleutel.
+- Voeg de streaming-gegevens invoer gebeurtenissen toe aan de referentie gegevens in de sleutel kolom.
+- Gebruik de waarde van het sleutel veld van de referentie gegevens als drempel waarde.
 
-## <a name="example-data-and-query"></a>Van de voorbeeldgegevens en query's uitvoeren
-In het voorbeeld worden de waarschuwingen worden gegenereerd wanneer de statistische functie van de gegevens streaming van apparaten in een minuut lang venster overeenkomt met de vastgelegde waarden in de regel die is opgegeven als referentiegegevens.
+## <a name="example-data-and-query"></a>Voorbeeld gegevens en query's
+In het voor beeld worden waarschuwingen gegenereerd wanneer de samen voeging van gegevens stromen in van apparaten in een minuut-lang-venster overeenkomt met de opgegeven waarden in de regel die als referentie gegevens wordt verstrekt.
 
-In de query voor elk apparaat-id en elke metricName onder de apparaat-id, kunt u configureren van 0 tot 5 dimensies voor GROUP BY. Alleen de gebeurtenissen met de overeenkomende filterwaarden zijn gegroepeerd. Eenmaal gegroepeerd, worden statistische functies in vensters, Min, Max, Gem, berekend over een tumblingvenster 60 seconden. Filters op de geaggregeerde waarden worden vervolgens berekend volgens de geconfigureerde drempelwaarde in de verwijzing voor het genereren van de waarschuwing uitvoergebeurtenis.
+In de query, voor elk deviceId en elke metrische waarde onder het apparaat-id, kunt u van 0 tot 5 dimensies instellen op GROUP BY. Alleen de gebeurtenissen met de bijbehorende filter waarden worden gegroepeerd. Eenmaal gegroepeerde aggregaties van min, Max, Gem, worden berekend op basis van een tumblingvenstertriggers-venster van 60 seconden. Filters voor de geaggregeerde waarden worden vervolgens berekend op basis van de geconfigureerde drempel waarde in de verwijzing om de uitvoer gebeurtenis voor waarschuwingen te genereren.
 
-Als voorbeeld wordt ervan uitgegaan er is een Stream Analytics-taak waarvoor een verwijzing invoer met de naam **regels**, en het streamen van gegevensinvoer met de naam **metrische gegevens**. 
+Stel dat er een Stream Analytics-taak is met een referentie gegevens invoer met de naam **regels**en de gegevens invoer streamen met de naam **Metrics**. 
 
-## <a name="reference-data"></a>Referentiegegevens
-De referentiegegevens voor dit voorbeeld laat zien hoe een regel op basis van een drempelwaarde kan worden weergegeven. Een JSON-bestand bevat de referentiegegevens en wordt opgeslagen in Azure blob-opslag en die blob storage-container wordt gebruikt als een verwijzing invoer met de naam **regels**. U kunt deze JSON-bestand overschrijven en de regelconfiguratie vervangen als de tijd verstrijkt, zonder te stoppen of starten van de streaming-taak.
+## <a name="reference-data"></a>Referentie gegevens
+In dit voor beeld wordt uitgelegd hoe een regel op basis van een drempel waarde kan worden weer gegeven. Een JSON-bestand bevat de referentie gegevens en wordt opgeslagen in Azure Blob Storage en die Blob Storage-container wordt gebruikt als referentie gegevens invoer met de naam **regels**. U kunt dit JSON-bestand overschrijven en de regel configuratie vervangen wanneer de tijd verloopt, zonder de streaming-taak te stoppen of te starten.
 
-- De voorbeeldregel wordt gebruikt voor een aanpasbare waarschuwing wanneer CPU overschrijdt (gemiddelde is groter dan of gelijk aan) de waarde `90` procent. De `value` veld kan worden geconfigureerd als nodig is.
-- U ziet de regel is een **operator** veld, die wordt dynamisch geïnterpreteerd in de query-syntaxis later `AVGGREATEROREQUAL`. 
-- De regel filtert de gegevens op een bepaalde dimensie-sleutel `2` met waarde `C1`. Andere velden zijn lege tekenreeks is, waarmee wordt aangegeven dat niet de invoerstroom van die gebeurtenis velden filteren. U kan extra CPU-regels instellen voor het filteren van andere velden indien nodig.
-- Niet alle kolommen zijn moeten worden opgenomen in de waarschuwing uitvoergebeurtenis. In dit geval `includedDim` sleutel nummer `2` is ingeschakeld op `TRUE` om weer te geven dat Veldnummer 2 van de gegevens van de gebeurtenis in de stroom worden opgenomen in de uitvoergebeurtenissen die in aanmerking komend. De andere velden zijn niet opgenomen in de uitvoer van de waarschuwing, maar de lijst met velden kan worden aangepast.
+- De voorbeeld regel wordt gebruikt om een aanpas bare waarschuwing weer te geven wanneer de CPU groter is dan of gelijk is aan de waarde `90` percentage. Het `value` veld kan zo nodig worden geconfigureerd.
+- U ziet dat de regel een **operator** veld heeft, die dynamisch wordt geïnterpreteerd in de query syntaxis later op `AVGGREATEROREQUAL`. 
+- De regel filtert de gegevens op een bepaalde dimensie sleutel `2` met waarde `C1`. Andere velden zijn een lege teken reeks, waarmee wordt aangegeven dat de invoer stroom niet moet worden gefilterd op die gebeurtenis velden. U kunt extra CPU-regels instellen voor het filteren van andere overeenkomende velden als dat nodig is.
+- Niet alle kolommen moeten worden opgenomen in de uitvoer waarschuwings gebeurtenis. In dit geval wordt `includedDim` sleutel nummer `2` ingeschakeld `TRUE` om aan te geven dat veld nummer 2 van gebeurtenis gegevens in de stroom wordt opgenomen in de in aanmerking komende uitvoer gebeurtenissen. De andere velden zijn niet opgenomen in de uitvoer van de waarschuwing, maar de lijst met velden kan worden aangepast.
 
 
 ```json
@@ -73,8 +73,8 @@ De referentiegegevens voor dit voorbeeld laat zien hoe een regel op basis van ee
 }
 ```
 
-## <a name="example-streaming-query"></a>Voorbeeldquery voor streaming
-In dit voorbeeld van de Stream Analytics-query lid wordt van de **regels** verwijzen naar gegevens uit het voorbeeld hierboven, naar een invoerstroom van gegevens met de naam **metrische gegevens**.
+## <a name="example-streaming-query"></a>Voor beeld van streaming-query
+In dit voor beeld Stream Analytics query worden toegevoegd aan de referentie gegevens van de **regel** uit het bovenstaande voor beeld naar een invoer stroom met de naam **metrische**gegevens.
 
 ```sql
 WITH transformedInput AS
@@ -134,14 +134,14 @@ HAVING
     )
 ```
 
-## <a name="example-streaming-input-event-data"></a>Voorbeeld van invoer streaminggegevens
-In dit voorbeeld-JSON-gegevens vertegenwoordigt de **metrische gegevens** invoergegevens die wordt gebruikt in de bovenstaande streaming query. 
+## <a name="example-streaming-input-event-data"></a>Voor beeld van gegevens stromen invoer gebeurtenissen
+In dit voor beeld wordt gebruikgemaakt van de **metrische** invoer gegevens die worden gebruikt in de bovenstaande streaming-query. 
 
-- Drie voorbeelden van gebeurtenissen worden weergegeven binnen het interval van 1 minuut, waarde `T14:50`. 
+- Drie voorbeeld gebeurtenissen worden weer gegeven binnen de time span van 1 minuut, waarde `T14:50`. 
 - Alle drie hebben dezelfde `deviceId` waarde `978648`.
-- De metrische waarden van CPU variëren in elke gebeurtenis `98`, `95`, `80` respectievelijk. Alleen de eerste twee voorbeelden van gebeurtenissen langer zijn dan de CPU-waarschuwingsregel tot stand gebracht in de regel.
-- Het veld includeDim in de waarschuwingsregel is nummer sleutel 2. De bijbehorende sleutel 2-veld in de voorbeeld-gebeurtenissen met de naam `NodeName`. De gebeurtenissen voorbeeld van de drie waarden hebben `N024`, `N024`, en `N014` respectievelijk. In de uitvoer ziet u alleen het knooppunt `N024` is de enige gegevens die overeenkomt met de waarschuwingscriteria van hoge CPU. `N014` voldoet niet aan de hoge CPU-drempelwaarde.
-- De waarschuwingsregel is geconfigureerd met een `filter` alleen op het nummer van 2, die overeenkomt met de `cluster` veld in de voorbeeldgebeurtenissen. De drie voorbeeld van alle gebeurtenissen hebben die waarde `C1` en overeenkomen met de filtercriteria.
+- De waarden voor de CPU-waarde verschillen per gebeurtenis, `98`, `95``80` respectievelijk. Alleen de eerste twee voorbeeld gebeurtenissen overschrijden de CPU-waarschuwings regel die in de regel is vastgelegd.
+- Het veld includeDim in de waarschuwings regel is sleutel nummer 2. Het bijbehorende veld sleutel 2 in de voorbeeld gebeurtenissen heeft de naam `NodeName`. De drie voorbeeld gebeurtenissen bevatten respectievelijk waarden `N024`, `N024`en `N014`. In de uitvoer ziet u alleen het knoop punt `N024` als dat de enige gegevens is die overeenkomen met de waarschuwings criteria voor hoge CPU. `N014` voldoet niet aan de hoge CPU-drempel.
+- De waarschuwings regel is geconfigureerd met een `filter` alleen op sleutel nummer 2, dat overeenkomt met het veld `cluster` in de voorbeeld gebeurtenissen. De drie voorbeeld gebeurtenissen hebben alle waarde `C1` en voldoen aan de filter criteria.
 
 ```json
 {
@@ -284,8 +284,8 @@ In dit voorbeeld-JSON-gegevens vertegenwoordigt de **metrische gegevens** invoer
 }
 ```
 
-## <a name="example-output"></a>Voorbeeld van uitvoer
-In dit voorbeeld van uitvoer in JSON-gegevens bevat één waarschuwing gebeurtenis is gemaakt op basis van de CPU-drempel regel gedefinieerd in de referentiegegevens. De uitvoergebeurtenis bevat de naam van de waarschuwing, evenals de samengevoegde (gemiddelde, min, max) van de velden beschouwd. De gegevens van de uitvoer-gebeurtenis bevat belangrijke Veldnummer 2 `NodeName` waarde `N024` vanwege de regelconfiguratie. (De JSON is gewijzigd om weer te geven regeleinden voor de leesbaarheid.)
+## <a name="example-output"></a>Voorbeeld uitvoer
+In dit voor beeld wordt een enkele waarschuwings gebeurtenis geproduceerd op basis van de CPU-drempel regel die is gedefinieerd in de referentie gegevens. De gebeurtenis output bevat de naam van de waarschuwing en de geaggregeerde (gemiddelde, min, Max) van de overwogen velden. De gegevens van de uitvoer gebeurtenis omvatten veld sleutel nummer 2 `NodeName` waarde `N024` als gevolg van de configuratie van de regel. (De JSON is gewijzigd om regel einden weer te geven voor de Lees baarheid.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

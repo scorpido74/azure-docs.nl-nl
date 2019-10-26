@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Verificatie inschakelen in een toepassing met één pagina-Azure Active Directory B2C'
+title: 'Zelf studie: verificatie inschakelen in een toepassing met één pagina-Azure Active Directory B2C'
 description: Meer informatie over het gebruik van Azure Active Directory B2C om gebruikers aanmelding te bieden voor een toepassing met één pagina (Java script).
 services: active-directory-b2c
 author: mmacy
@@ -10,16 +10,16 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672923"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931369"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Zelfstudie: Verificatie inschakelen in een toepassing met één pagina met behulp van Azure Active Directory B2C (Azure AD B2C)
+# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Zelf studie: verificatie inschakelen in een toepassing met één pagina met behulp van Azure Active Directory B2C (Azure AD B2C)
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
@@ -48,7 +48,7 @@ Daarnaast hebt u het volgende nodig in uw lokale ontwikkel omgeving:
 
 In de tweede zelf studie die u als onderdeel van de vereisten hebt voltooid, hebt u een webtoepassing geregistreerd in Azure AD B2C. Om te communiceren met het voorbeeld in deze zelfstudie, moet u een omleidings-URI toevoegen aan de toepassing in Azure AD B2C.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Selecteer **alle services** in de linkerbovenhoek van de Azure Portal, zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
@@ -70,7 +70,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Nu u het voor beeld hebt verkregen, werkt u de code bij met de naam van uw Azure AD B2C Tenant en de toepassings-ID die u in een eerdere stap hebt vastgelegd.
 
-1. Open het `index.html` bestand in de hoofdmap van de voorbeeld Directory.
+1. Open het `index.html`-bestand in de hoofdmap van de map met het voor beeld.
 1. In de `msalConfig` definitie wijzigt u de **clientId** -waarde met de toepassings-id die u in een eerdere stap hebt vastgelegd. Werk vervolgens de URI-waarde van de **CA** bij met de naam van de Azure AD B2C Tenant. Werk de URI ook bij met de naam van de stroom voor het registreren en aanmelden van de gebruiker die u hebt gemaakt in een van de vereisten (bijvoorbeeld *B2C_1_signupsignin1*).
 
     ```javascript
@@ -87,7 +87,7 @@ Nu u het voor beeld hebt verkregen, werkt u de code bij met de naam van uw Azure
     };
     ```
 
-    De naam van de gebruikersstroom die in deze zelfstudie wordt gebruikt, is **B2C_1_signupsignin1**. Als u een andere gebruikers stroom naam gebruikt, geeft u die naam op in `authority` de waarde.
+    De naam van de gebruikersstroom die in deze zelfstudie wordt gebruikt, is **B2C_1_signupsignin1**. Als u een andere gebruikers stroom naam gebruikt, geeft u die naam op in de waarde `authority`.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
@@ -115,6 +115,9 @@ Het voorbeeld biedt ondersteuning voor registratie, aanmelding, het bewerken van
 
 ### <a name="sign-up-using-an-email-address"></a>Aanmelden met een e-mailadres
 
+> [!WARNING]
+> Nadat u zich hebt aangemeld of aangemeld, ziet u mogelijk een [fout bericht over onvoldoende machtigingen](#error-insufficient-permissions). Als gevolg van de huidige implementatie van het code voorbeeld, wordt deze fout verwacht. Dit probleem wordt opgelost in een toekomstige versie van het code voorbeeld, op het moment dat deze waarschuwing wordt verwijderd.
+
 1. Selecteer **Aanmelden** om de *B2C_1_signupsignin1* -gebruikers stroom te initiëren die u in een eerdere stap hebt opgegeven.
 1. Azure AD B2C toont een aanmeldingspagina met een koppeling voor registratie. Omdat u nog geen account hebt, selecteert u de koppeling **nu registreren** .
 1. Tijdens de aanmeldingswerkstroom wordt een pagina weergegeven waarmee de identiteit wordt opgehaald en gecontroleerd van de gebruiker die een e-mailadres heeft gebruikt. Tijdens de aanmeldingswerkstroom worden ook het wachtwoord van de gebruiker en de aangevraagde kenmerken opgehaald die in de gebruikersstroom zijn gedefinieerd.
@@ -131,7 +134,7 @@ U kunt nu uw e-mail adres en wacht woord gebruiken om u aan te melden bij de toe
 
 ### <a name="error-insufficient-permissions"></a>Fout: onvoldoende machtigingen
 
-Nadat u zich hebt aangemeld, wordt er een fout met onvoldoende machtigingen weer gegeven in de app. dit wordt **verwacht**:
+Nadat u zich hebt aangemeld, kan de toepassing een fout melding over onvoldoende machtigingen retour neren:
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
@@ -139,7 +142,7 @@ Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
 Timestamp: 2019-07-20 22:17:27Z
 ```
 
-U ontvangt deze fout omdat de webtoepassing probeert toegang te krijgen tot een web-API die wordt beveiligd door de demo Directory *fabrikamb2c*. Omdat uw toegangs token alleen geldig is voor uw Azure AD-adres lijst, is de API-aanroep daarom niet toegestaan.
+U ontvangt deze fout omdat de webtoepassing probeert toegang te krijgen tot een web-API die wordt beveiligd door de demo Directory *fabrikamb2c*. Omdat uw toegangs token alleen geldig is voor uw Azure AD-adres lijst, is de API-aanroep niet toegestaan.
 
 U kunt deze fout oplossen door door te gaan naar de volgende zelf studie in de reeks (Zie [volgende stappen](#next-steps)) om een beveiligde web-API te maken voor uw Directory.
 
@@ -155,4 +158,4 @@ In dit artikel hebt u het volgende geleerd:
 Ga nu verder met de volgende zelf studie in de reeks om toegang te verlenen tot een beveiligde web-API van de beveiligd-wachtwoord verificatie:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Toegang verlenen tot een ASP.NET Core Web-API van een beveiligd-wachtwoord verificatie met behulp van Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)
+> [Zelf studie: toegang verlenen tot een ASP.NET Core Web-API van een beveiligd-wachtwoord verificatie met behulp van Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)

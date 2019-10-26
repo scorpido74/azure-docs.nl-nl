@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics| Microsoft Docs '
+title: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
 description: In deze zelfstudie voert u geavanceerde querymechanismen uit met door de gebruiker gedefinieerde JavaScript-functies
 services: stream-analytics
 author: rodrigoamicrosoft
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329368"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935005"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
  
@@ -46,16 +46,16 @@ Hier volgen enkele dingen die u met een door de gebruiker gedefinieerde JavaScri
 Hoewel functies als **Date.GetDate()** of **Math.random()** niet zijn geblokkeerd in de definitie van functies, kunt u ze beter niet gebruiken. Deze functies resulteren **niet** telkens wanneer u ze aanroept hetzelfde resultaat. Bovendien houdt de Azure Stream Analytics-service geen logboek bij van functieaanroepen en de geretourneerde resultaten. Als een functie verschillende resultaten voor dezelfde gebeurtenissen retourneert, wordt herhaalbaarheid niet gegarandeerd wanneer een taak door u of door de Stream Analytics-service opnieuw wordt gestart.
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Een door de gebruiker gedefinieerde JavaScript-functie toevoegen in Azure Portal
-Volg deze stappen voor het maken van een eenvoudige gebruiker gedefinieerde JavaScript-functie onder een bestaande Stream Analytics-taak:
+Voer de volgende stappen uit om een door de gebruiker gedefinieerde Java script-functie te maken onder een bestaande Stream Analytics-taak:
 
 > [!NOTE]
-> Deze stappen werken op de Stream Analytics-taken die is geconfigureerd om te worden uitgevoerd in de cloud. Als uw Stream Analytics-taak is geconfigureerd om te worden uitgevoerd op Azure IoT Edge, in plaats daarvan gebruikt u Visual Studio en [schrijven met behulp van de gebruiker gedefinieerde functie C# ](stream-analytics-edge-csharp-udf.md).
+> Deze stappen werken aan de Stream Analytics taken die zijn geconfigureerd om te worden uitgevoerd in de Cloud. Als uw Stream Analytics-taak is geconfigureerd om te worden uitgevoerd op Azure IoT Edge, gebruikt u in plaats daarvan Visual Studio en [schrijft C#u de door de gebruiker gedefinieerde functie met ](stream-analytics-edge-csharp-udf.md).
 
 1.  Zoek uw Stream Analytics-taak in Azure Portal.
 
-2. Onder de **taaktopologie** kop, selecteer **functies**. Er wordt een lege functielijst weergegeven.
+2. Selecteer **functies**onder de kop **taak topologie** . Er wordt een lege functielijst weergegeven.
 
-3.  Voor het maken van een nieuwe, door de gebruiker gedefinieerde functie selecteert **+ toevoegen**.
+3.  Als u een nieuwe door de gebruiker gedefinieerde functie wilt maken, selecteert u **+ toevoegen**.
 
 4.  Selecteer in de blade **Nieuwe functie** bij **Functietype** de optie **JavaScript**. In de editor wordt een standaardfunctiesjabloon weergegeven.
 
@@ -73,7 +73,7 @@ Volg deze stappen voor het maken van een eenvoudige gebruiker gedefinieerde Java
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Een door de gebruiker gedefinieerde JavaScript-functie in een query aanroepen
 
-1. In de query-editor, onder de **taaktopologie** kop, selecteer **Query**.
+1. Selecteer in de query-editor onder de kop **taak topologie** de optie **query**.
 2.  Bewerk de query en roep de door de gebruiker gedefinieerde functie als volgt aan:
 
     ```SQL
@@ -100,9 +100,9 @@ Er zijn verschillen in de typen die de querytaal van Stream Analytics en JavaScr
 Stream Analytics | Javascript
 --- | ---
 bigint | Number (In JavaScript kunnen alleen gehele getallen tot exact 2^53 worden weergegeven)
-DateTime | Date (JavaScript ondersteunt alleen milliseconden)
+Datum/tijd | Date (JavaScript ondersteunt alleen milliseconden)
 double | Aantal
-nvarchar(MAX) | String
+nvarchar(MAX) | Tekenreeks
 Record | Object
 Matrix | Matrix
 NULL | Null
@@ -114,14 +114,14 @@ Hier volgen JavaScript-naar-Stream Analytics-conversies:
 Javascript | Stream Analytics
 --- | ---
 Aantal | Bigint (als het een rond getal tussen long.MinValue en long.MaxValue is; anders is het double)
-Date | DateTime
-String | nvarchar(MAX)
+Datum | Datum/tijd
+Tekenreeks | nvarchar(MAX)
 Object | Record
 Matrix | Matrix
 Null, niet gedefinieerd | NULL
 Elk ander type (bijvoorbeeld een functie of fout) | Niet ondersteund (resulteert in een runtime-fout)
 
-JavaScript-taal is hoofdlettergevoelig en hoofdlettergebruik van de velden van het object in JavaScript-code moet overeenkomen met het hoofdlettergebruik van de velden in de binnenkomende gegevens. Houd er rekening mee dat taken met compatibiliteitsniveau 1.0 velden uit SQL SELECT-instructie naar kleine letters worden geconverteerd. Velden uit de SELECT-instructie heeft met compatibiliteitsniveau 1.1 en hoger, het hetzelfde hoofdlettergebruik zoals opgegeven in de SQL-query.
+Java script-taal is hoofdletter gevoelig en behuizing van de object velden in Java script-code moeten overeenkomen met de behuizing van de velden in de binnenkomende gegevens. Houd er rekening mee dat taken met compatibiliteits niveau 1,0 velden van SQL SELECT-instructie worden geconverteerd naar kleine letters. Onder compatibiliteits niveau 1,1 en hoger, hebben velden uit de SELECT-instructie hetzelfde hoofdletter gebruik dat is opgegeven in de SQL-query.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 JavaScript-runtime-fouten worden beschouwd als onherstelbaar en worden weergegeven via het activiteitenlogboek. U haalt het logboek op door in Azure Portal naar uw project te gaan en **Activiteitenlogboek** te selecteren.
@@ -160,7 +160,7 @@ Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep,
 1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt.  
 2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 Meer hulp vindt u mogelijk op het [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen

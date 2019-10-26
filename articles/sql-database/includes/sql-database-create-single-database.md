@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098964"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933243"
 ---
 In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
 
@@ -31,19 +31,19 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
 
 3. Typ of selecteer de volgende waarden in het gedeelte **Project Details** van het tabblad **basis beginselen** :
 
-   - **Abonnement**: Selecteer het juiste abonnement in de vervolgkeuzelijst als deze niet wordt weergegeven.
-   - **Resourcegroep**: Selecteer **nieuwe maken**, type `myResourceGroup`en selecteer **OK**.
+   - **Abonnement**: vervolg keuzelijst en selecteer het juiste abonnement als dit nog niet wordt weer gegeven.
+   - **Resource groep**: Selecteer **nieuwe maken**, typ `myResourceGroup`en selecteer **OK**.
 
      ![Tabblad Nieuw SQL database-basis](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. Typ of selecteer de volgende waarden in de sectie **database Details** :
 
-   - **Databasenaam**: Voer `mySampleDatabase` in.
+   - **Database naam**: Voer `mySampleDatabase`in.
    - **Server**: Selecteer **nieuwe maken**, voer de volgende waarden in en selecteer **selecteren**.
-       - **Servernaam**: Typ `mysqlserver`; en een aantal getallen voor uniekheid.
-       - **Aanmeldgegevens van serverbeheerder**: Typ `azureuser`.
-       - **Wachtwoord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-       - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `West US`.
+       - **Server naam**: Typ `mysqlserver`; samen met enkele getallen voor uniekheid.
+       - **Aanmelding van de server beheerder**: type `azureuser`.
+       - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
+       - **Locatie**: Kies een locatie in de vervolg keuzelijst, bijvoorbeeld `West US`.
 
          ![Nieuwe server](../media/sql-database-get-started-portal/new-server.png)
 
@@ -51,7 +51,7 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
       > Vergeet niet de aanmeldgegevens en het wachtwoord van de server te noteren zodat u zich bij de server en databases voor deze en andere quickstarts kunt aanmelden. Als u uw aanmeldgegevens of wachtwoord vergeet, kunt u de aanmeldnaam ophalen of het wachtwoord opnieuw instellen op de pagina **SQL Server**. U kunt de pagina **SQL Server** openen door de servernaam te selecteren op de **Overzichtspagina** van de database nadat u de database hebt gemaakt.
 
    - **Elastische SQL-pool wilt gebruiken**: Selecteer de optie **Nee** .
-   - **Reken-en opslag**: Selecteer **Data Base configureren**. 
+   - **Compute + Storage**: Selecteer **Data Base configureren**. 
 
      ![SQL Database Details](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
@@ -142,7 +142,16 @@ Maak uw resource groep en één data base met behulp van Power shell.
    $database
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+In dit gedeelte van het artikel worden de volgende Power shell-cmdlets gebruikt:
+
+| Opdracht | Opmerkingen |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Maak uw resource groep en één data base met behulp van AZ CLI.
 
@@ -207,5 +216,16 @@ Maak uw resource groep en één data base met behulp van AZ CLI.
       --family Gen5 \
       --capacity 2
    ```
+
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+
+| Opdracht | Opmerkingen |
+|---|---|
+| [AZ-account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. | 
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
+| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewall regels van een server. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een Data Base. | 
+
 
 ---

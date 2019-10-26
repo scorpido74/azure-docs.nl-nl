@@ -1,6 +1,6 @@
 ---
-title: Begrijpen en aanpassen van Streaming-eenheden in Azure Stream Analytics
-description: Dit artikel beschrijft de instelling van de Streaming-eenheden en andere factoren die invloed hebben op prestaties in Azure Stream Analytics.
+title: Streaming-eenheden in Azure Stream Analytics
+description: In dit artikel worden de instellingen voor streaming-eenheden en andere factoren beschreven die van invloed zijn op de prestaties in Azure Stream Analytics.
 services: stream-analytics
 author: JSeb225
 ms.author: jeanb
@@ -9,75 +9,75 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a4811da398fde869d8eb5457db11a592006c59a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329345"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934272"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Begrijpen en aanpassen van Streaming-eenheden
+# <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
-Streaming-eenheden (su's) vertegenwoordigt de computerbronnen die zijn toegewezen voor het uitvoeren van een Stream Analytics-taak. Hoe hoger het aantal streaming-eenheden, hoe meer CPU- en geheugenresources worden toegewezen voor uw taak. Deze capaciteit kunt die u zich op de querylogica richten en de noodzaak voor het beheren van de hardware voor het uitvoeren van uw Stream Analytics-taak tijdig samenvattingen.
+Streaming-eenheden (SUs) vertegenwoordigt de computer resources die zijn toegewezen om een Stream Analytics taak uit te voeren. Hoe hoger het aantal streaming-eenheden, hoe meer CPU- en geheugenresources worden toegewezen voor uw taak. Met deze capaciteit kunt u zich richten op de query logica en abstracten de behoefte aan het beheer van de hardware om uw Stream Analytics-taak tijdig uit te voeren.
 
-Om verwerking met lage latentie te bereiken, voeren Azure Stream Analytics-taken alle verwerking in het geheugen uit. Bij het uitvoeren van onvoldoende geheugen, mislukt de streaming-taak. Als gevolg hiervan voor een productietaak is het belangrijk een streamingtaak Resourcegebruik te bewaken en zorg ervoor dat er voldoende resources toegewezen om te voorkomen dat de 24/7-taken.
+Om verwerking met lage latentie te bereiken, voeren Azure Stream Analytics-taken alle verwerking in het geheugen uit. Als er onvoldoende geheugen beschikbaar is, mislukt de streaming-taak. Als gevolg hiervan is het belang rijk om voor een productie taak het resource gebruik van een streaming-taak te controleren en ervoor te zorgen dat er voldoende resources zijn toegewezen om te zorgen dat de taken met 24/7 worden uitgevoerd.
 
-De SU % gebruik metrische gegevens, die varieert van 0% tot 100%, wordt het geheugengebruik van uw workload beschreven. Deze waarde is voor een streaming-taak met minimale voetafdruk, meestal tussen 10 tot 20%. Als gebruikspercentage voor laag is en invoergebeurtenissen ophalen nog moeten worden uitgevoerd, moet uw workload waarschijnlijk meer rekenresources, waarvoor u het aantal SUs te verhogen. Het is raadzaam om te houden van de metriek SU dan 80% ter compensatie van af en toe pieken. Microsoft raadt aan om een waarschuwing instellen op 80% SU-gebruik metrische gegevens om te voorkomen dat bronuitputting. Zie [Zelfstudie: Waarschuwingen instellen voor Azure Stream Analytics-taken](stream-analytics-set-up-alerts.md).
+De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschrijft het geheugen verbruik van uw workload. Voor een streaming-taak met minimale footprint is deze metriek meestal tussen 10% en 20%. Als het gebruik van het SU-percentage laag is en de invoer gebeurtenissen een achterstand krijgen, vereist uw werk belasting waarschijnlijk meer reken resources, waardoor u het aantal SUs moet verhogen. Het is het beste om de SU-metriek onder 80% te hand haven voor incidentele pieken. Micro soft raadt u aan om een waarschuwing in te stellen voor de metriek van 80% SU-gebruik om te voor komen dat de resource wordt uitgeput Zie [zelf studie: waarschuwingen instellen voor Azure stream Analytics taken](stream-analytics-set-up-alerts.md)voor meer informatie.
 
-## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics Streaming-eenheden (su's) configureren
+## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics streaming-eenheden configureren (SUs)
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Zoek de Stream Analytics-taak die u wilt schalen en open het in de lijst met resources. 
+2. Zoek in de lijst met resources de Stream Analytics-taak die u wilt schalen en open deze. 
 
-3. In de pagina van de taak, onder de **configureren** kop, selecteer **schaal**. 
+3. Selecteer op de pagina taak onder de kop **configureren** de optie **schalen**. 
 
-    ![Azure portal taakconfiguratie van Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
+    ![Configuratie van Stream Analytics taak Azure Portal][img.stream.analytics.preview.portal.settings.scale]
     
-4. Gebruik de schuifregelaar om in te stellen de su's voor de taak. U ziet dat u beperkt tot specifieke SU-instellingen bent. 
+4. Gebruik de schuif regelaar om de SUs voor de taak in te stellen. U ziet dat u beperkt bent tot specifieke SU-instellingen. 
 
-## <a name="monitor-job-performance"></a>Prestaties van de taak controleren
-Met behulp van de Azure-portal, kunt u de doorvoer van een taak volgen:
+## <a name="monitor-job-performance"></a>Taak prestaties bewaken
+Met behulp van de Azure Portal kunt u de door Voer van een taak volgen:
 
-![Bewaken van Azure Stream Analytics-taken][img.stream.analytics.monitor.job]
+![Taken Azure Stream Analytics bewaken][img.stream.analytics.monitor.job]
 
-Bereken de verwachte doorvoer van de werkbelasting. Als de doorvoer kleiner is dan verwacht, de invoerpartitie af te stemmen, afstemmen van de query en su's toevoegen aan uw taak.
+Bereken de verwachte door Voer van de werk belasting. Als de door Voer kleiner is dan verwacht, het afstemmen van de invoer partitie, het afstemmen van de query en het toevoegen van SUs aan uw taak.
 
-## <a name="how-many-sus-are-required-for-a-job"></a>Hoeveel su's zijn vereist voor een taak?
+## <a name="how-many-sus-are-required-for-a-job"></a>Hoeveel SUs zijn vereist voor een taak?
 
-Het aantal vereiste su's voor een bepaalde taak kiezen, is afhankelijk van de partitieconfiguratie voor de invoer en de query die gedefinieerd in de taak. De **schaal** op de pagina kunt u het juiste aantal su's instellen. Er is een aanbevolen procedure om toe te wijzen meer SUs dan nodig is. De Stream Analytics-verwerkingsengine is geoptimaliseerd voor latentie en doorvoer leiden bij het toewijzen van extra geheugen.
+Het kiezen van het aantal vereiste SUs voor een bepaalde taak is afhankelijk van de partitie configuratie voor de invoer en de query die in de taak is gedefinieerd. Op de **schaal** pagina kunt u het juiste aantal SUs instellen. Het is een best practice om meer SUs toe te wijzen dan nodig is. De Stream Analytics verwerkings engine optimaliseert voor latentie en door voer tegen de kosten van het toewijzen van extra geheugen.
 
-In het algemeen is de aanbevolen procedure is om te beginnen met 6 su's voor query's die geen gebruik **PARTITION BY**. Vervolgens kunt u de positie sweet bepalen met behulp van een methode voor vallen en opstaan waarin u het aantal SUs wijzigen nadat u representatieve hoeveelheden gegevens doorgeven en het SU-% gebruik metrische gegevens bekijkt. Het maximum aantal streamingeenheden dat kan worden gebruikt door een Stream Analytics-taak is afhankelijk van het aantal stappen in de query die is gedefinieerd voor de taak en het aantal partities in elke stap. U kunt meer informatie over de limieten [hier](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
+Over het algemeen is het best practice te beginnen met 6 SUs voor query's waarvoor geen **partitie**wordt gebruikt. Bepaal vervolgens het zoete punt met behulp van een proef versie en fout methode waarbij u het aantal SUs wijzigt nadat u de representatieve hoeveelheid gegevens hebt door gegeven en de metrische kosten voor het gebruik van% kunt controleren. Het maximum aantal streaming-eenheden dat door een Stream Analytics taak kan worden gebruikt, is afhankelijk van het aantal stappen in de query die is gedefinieerd voor de taak en het aantal partities in elke stap. Meer informatie over de limieten vindt u [hier](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Zie voor meer informatie over het kiezen van het juiste aantal su's op deze pagina: [Schalen van Azure Stream Analytics-taken voor een betere doorvoer](stream-analytics-scale-jobs.md)
+Ga voor meer informatie over het kiezen van het juiste aantal SUs naar deze pagina: [schaal Azure stream Analytics taken om de door voer te verhogen](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Hoeveel su's zijn vereist voor een bepaalde taak is afhankelijk van de partitieconfiguratie voor de invoer en de query die is opgegeven voor de taak. U kunt maximaal uw quotum in su's voor een taak selecteren. Elk Azure-abonnement heeft standaard een quotum van maximaal 500 su's voor alle analytics-taken in een bepaalde regio. Als u wilt verhogen su's voor uw abonnementen buiten dit quotum, neem contact op met [Microsoft Support](https://support.microsoft.com). Geldige waarden voor su's per taak zijn 1, 3, 6, en in stappen van 6.
+> U kunt kiezen hoeveel SUs vereist is voor een bepaalde taak, afhankelijk van de partitie configuratie voor de invoer en voor de query die is gedefinieerd voor de taak. U kunt voor een taak Maxi maal uw quotum in SUs selecteren. Elk Azure-abonnement heeft standaard een quotum van Maxi maal 500 SUs voor alle analyse taken in een bepaalde regio. Neem contact op met [Microsoft ondersteuning](https://support.microsoft.com)om SUs te verhogen voor uw abonnementen buiten dit quotum. Geldige waarden voor SUs per taak zijn 1, 3, 6 en Maxi maal 6.
 
-## <a name="factors-that-increase-su-utilization"></a>Factoren die gebruikspercentage voor verhogen 
+## <a name="factors-that-increase-su-utilization"></a>Factoren die het gebruik van SU% verhogen 
 
-Tijdelijke (tijdgebaseerde) query-elementen zijn de kernset aan stateful operators geleverd door Stream Analytics. Stream Analytics beheert de status van deze bewerkingen intern namens gebruiker, door het beheer van geheugenverbruik, plaatsen van controlepunten voor tolerantie en herstel van de status tijdens upgrades van de service. Hoewel de Stream Analytics wordt volledig beheerd voor de Staten, zijn er een aantal aanbevolen werkwijzen besproken waarmee gebruikers rekening moeten houden.
+Tijdelijke (tijd georiënteerde) query-elementen zijn de belangrijkste set stateful Opera tors van Stream Analytics. Stream Analytics beheert de status van deze bewerkingen intern namens de gebruiker door het geheugen gebruik te beheren, de controle punten voor tolerantie te beheersen en status herstel tijdens service-upgrades. Hoewel Stream Analytics de statussen volledig beheert, zijn er een aantal best practice aanbevelingen waarmee gebruikers rekening moeten houden.
 
-Houd er rekening mee dat een taak met de logica van complexe query gebruikspercentage voor hoge hebben kan, zelfs wanneer deze niet voortdurend invoergebeurtenissen ontvangt. Dit kan gebeuren wanneer een plotselinge piek in de invoer- en gebeurtenissen. De taak kan blijven onderhouden van de status in het geheugen als de query complex is.
+Houd er rekening mee dat een taak met complexe query logica mogelijk een hoog SU%-gebruik kan hebben, zelfs wanneer er niet continu invoer gebeurtenissen worden ontvangen. Dit kan gebeuren na een onverwachte piek in de invoer-en uitvoer gebeurtenissen. De taak kan de status in het geheugen blijven behouden als de query complex is.
 
-Gebruikspercentage kan plotseling verwijderen op 0 voor een korte periode voordat binnenkort terug naar de verwachte niveaus. Dit gebeurt vanwege tijdelijke fouten of door systeem gestarte upgrades worden uitgevoerd. Het aantal streaming-eenheden te verhogen voor een taak geen voor SU-% gebruik gevolgen kan als de query niet is [volledig parallelle](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
+Het gebruik van% voor een korte periode kan plotseling tot 0 worden terugvallen voordat u terugkeert naar de verwachte niveaus. Dit gebeurt als gevolg van tijdelijke fouten of door het systeem geïnitieerde upgrades. Het verhogen van het aantal streaming-eenheden voor een taak vermindert mogelijk het gebruik van SU% als uw query niet [volledig parallel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)is.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Stateful querylogica in de tijdelijke elementen
-Een van de unieke mogelijkheid van Azure Stream Analytics-taak is stateful verwerking, zoals statische functies in vensters, tijdelijke joins en tijdelijke analytische functies uit te voeren. Elk van deze operators houdt de statusinformatie. De maximale venstergrootte voor deze query-elementen is zeven dagen. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Stateful query logica in tijdelijke elementen
+Een van de unieke mogelijkheden van Azure Stream Analytics taak is het uitvoeren van stateful verwerking, zoals venster aggregaties, tijdelijke samen voegingen en tijdelijke analytische functies. Elk van deze opera tors houdt status informatie. De maximale venster grootte voor deze query-elementen is zeven dagen. 
 
-Het concept tijdelijk venster wordt weergegeven in de verschillende elementen van de Stream Analytics-query:
-1. Statistische functies in vensters: GROEP door van Tumbling, Hopping plaatsvindt, en schuiven windows
+Het tijdelijke venster-concept wordt in verschillende Stream Analytics query-elementen weer gegeven:
+1. Statistische functies in Vensters: groeperen op Tumblingvenstertriggers, verspringen en schuif Vensters
 
-2. Tijdelijke joins: ONTMOET DATEDIFF-functie
+2. Tijdelijke samen voegingen: samen voegen met de functie DATEDIFF
 
-3. Tijdelijke analytische functies: ISFIRST, LAST en LAG met LIMIT DURATION
+3. Tijdelijke analyse functies: ISFIRST, LAST en LAG met de limiet duur
 
-De volgende factoren van invloed zijn op het geheugen dat wordt gebruikt (deel van het streaming-eenheden metrische gegevens) door Stream Analytics-taken:
+De volgende factoren beïnvloeden het geheugen dat wordt gebruikt (onderdeel van metrische gegevens van streaming-eenheden) door Stream Analytics taken:
 
-## <a name="windowed-aggregates"></a>Statistische functies in vensters
-Het verbruikte geheugen (grootte van de gebruikersstatus) voor een in vensters statistische functie is niet altijd rechtstreeks in verhouding met de-venstergrootte. In plaats daarvan is het verbruikte geheugen evenredig aan de kardinaliteit van de gegevens of het aantal groepen in elke tijdvenster.
+## <a name="windowed-aggregates"></a>Statistische functies in Vensters
+Het verbruikte geheugen (status grootte) voor een statistische functie voor een venster is niet altijd direct evenredig met de grootte van het venster. In plaats daarvan is het geheugen dat wordt verbruikt evenredig met de kardinaliteit van de gegevens of het aantal groepen in elk tijd venster.
 
 
-Bijvoorbeeld, in de volgende query, het aantal die zijn gekoppeld aan `clusterid` is de kardinaliteit van de query. 
+In de volgende query is het nummer dat is gekoppeld aan `clusterid` bijvoorbeeld de kardinaliteit van de query. 
 
    ```sql
    SELECT count(*)
@@ -85,7 +85,7 @@ Bijvoorbeeld, in de volgende query, het aantal die zijn gekoppeld aan `clusterid
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Om te kunnen oplossen van problemen veroorzaakt door hoge kardinaliteit in de vorige query, stuurt u gebeurtenissen naar Event Hub gepartitioneerd op basis van `clusterid`, en scale-out van de query doordat het systeem voor het verwerken van elke invoer partitie afzonderlijk met **partitie DOOR** zoals wordt weergegeven in het voorbeeld hieronder:
+Om problemen te verhelpen die door hoge kardinaliteit in de vorige query zijn veroorzaakt, kunt u gebeurtenissen verzenden naar Event hub gepartitioneerd door `clusterid`en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp **van partitie** . in het voor beeld hieronder:
 
    ```sql
    SELECT count(*) 
@@ -93,14 +93,14 @@ Om te kunnen oplossen van problemen veroorzaakt door hoge kardinaliteit in de vo
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan, het aantal `clusterid` waarden op elk knooppunt wordt verminderd waardoor de kardinaliteit van de groep met operator. 
+Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan wordt het aantal `clusterid`-waarden dat in elk knoop punt binnenkomt, kleiner, waardoor de kardinaliteit van de Group by-operator wordt verminderd. 
 
-Event Hub-partities moeten worden gepartitioneerd op de groepering-toets om te voorkomen dat de noodzaak voor een verkleiningsstap. Zie voor meer informatie, [Event Hubs-overzicht](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Event hub-partities moeten worden gepartitioneerd door de groeperings sleutel om te voor komen dat een stap hoeft te worden verkleind. Zie [Event hubs Overview](../event-hubs/event-hubs-what-is-event-hubs.md)voor meer informatie. 
 
-## <a name="temporal-joins"></a>Tijdelijke joins
-Het verbruikte geheugen (grootte van de gebruikersstatus) van een tijdelijke join staat in verhouding met het aantal gebeurtenissen in de tijdelijke Verjaardag zaal van de join, dit is de snelheid van invoer vermenigvuldigen met de grootte van de ruimte verjaardag. Met andere woorden, is het geheugen die wordt gebruikt door samenvoegingen evenredig met het tijdsbereik voor DateDiff vermenigvuldigd met gemiddelde snelheid van gebeurtenissen.
+## <a name="temporal-joins"></a>Tijdelijke samen voegingen
+Het gebruikte geheugen (de grootte van de status) van een tijdelijke samen voeging is evenredig met het aantal gebeurtenissen in de tijdelijke wiggle ruimte van de samen voeging. Dit is een gebeurtenis invoer frequentie vermenigvuldigd met de grootte van de wiggle-ruimte. Met andere woorden, het geheugen dat door samen voegingen wordt gebruikt, is evenredig met het tijd bereik van DateDiff vermenigvuldigd op basis van het gemiddelde gebeurtenis aantal.
 
-Het aantal niet-overeenkomende gebeurtenissen in de join van invloed zijn op het geheugengebruik voor de query. Met de volgende query wordt gezocht naar advertentieweergaven waarmee klikken worden gegenereerd:
+Het aantal niet-overeenkomende gebeurtenissen in de samen voeging is van invloed op het geheugen gebruik voor de query. Met de volgende query wordt gezocht naar advertentieweergaven waarmee klikken worden gegenereerd:
 
    ```sql
    SELECT clicks.id
@@ -108,9 +108,9 @@ Het aantal niet-overeenkomende gebeurtenissen in de join van invloed zijn op het
    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
    ```
 
-In dit voorbeeld is het mogelijk dat veel advertenties worden weergegeven en weinig mensen erop klikken en deze vereist is dat alle gebeurtenissen in het tijdvenster. Het verbruikte geheugen is gerelateerd aan de venstergrootte en de snelheid waarmee gebeurtenissen elkaar opvolgen. 
+In dit voor beeld is het mogelijk dat er veel advertenties worden weer gegeven en dat er slechts enkele mensen op de reclame klikken. het is vereist dat alle gebeurtenissen in het tijd venster bewaard blijven. Het verbruikte geheugen is gerelateerd aan de venstergrootte en de snelheid waarmee gebeurtenissen elkaar opvolgen. 
 
-Om dit te verhelpen, kunt u gebeurtenissen verzenden naar Event Hub gepartitioneerd op basis van de join-sleutels (id in dit geval) en scale-out van de query doordat het systeem voor het verwerken van elke invoer partitie afzonderlijk met **PARTITION BY** zoals wordt weergegeven:
+Om dit op te lossen, moet u gebeurtenissen verzenden naar Event hub die is gepartitioneerd door de koppelings sleutels (id in dit geval) en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp **van partitie** , zoals wordt weer gegeven:
 
    ```sql
    SELECT clicks.id
@@ -119,34 +119,34 @@ Om dit te verhelpen, kunt u gebeurtenissen verzenden naar Event Hub gepartitione
    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
    ```
 
-Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan is het aantal gebeurtenissen op elk knooppunt verminderd waardoor de grootte van de status in het venster lid worden bewaard. 
+Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan wordt het aantal gebeurtenissen in elk knoop punt verminderd, waardoor de grootte van de status die in het deel venster toevoegen wordt bewaard, kleiner wordt. 
 
-## <a name="temporal-analytic-functions"></a>Tijdelijke analytische functies
-Het verbruikte geheugen (grootte van de gebruikersstatus) van een tijdelijke analytische functie is evenredig met de snelheid van vermenigvuldigen door de duur. De hoeveelheid geheugen die worden gebruikt door de analytische functies is niet in verhouding met de grootte van het venster, maar in plaats daarvan partitioneren het aantal in elke periode.
+## <a name="temporal-analytic-functions"></a>Tijdelijke analyse functies
+Het verbruikte geheugen (status grootte) van een tijdelijke analytische functie is evenredig met de gebeurtenis frequentie vermenigvuldigd met de duur. Het geheugen dat wordt gebruikt door de analytische functies, is niet evenredig met de venster grootte, maar in elk tijd venster wordt het aantal partities in de meeste gevallen gepartitioneerd.
 
-Het herstel is vergelijkbaar met tijdelijke join. U kunt schalen om de query via **PARTITION BY**. 
+Het herstel is vergelijkbaar met een tijdelijke samen voeging. U kunt de query uitschalen met behulp **van Partition by**. 
 
-## <a name="out-of-order-buffer"></a>Niet-geordende buffer 
-Gebruiker kan de niet-geordende buffergrootte configureren in het geval van deelvenster configuratie het bestellen. De buffer wordt gebruikt voor het opslaan van invoer voor de duur van het venster en volgorde. De grootte van de buffer is evenredig aan de snelheid van invoer vermenigvuldigen door het formaat van het niet de juiste volgorde. De standaardgrootte van het venster is 0. 
+## <a name="out-of-order-buffer"></a>Buffer buiten bestelling 
+Gebruiker kan de maximale buffer grootte configureren in het configuratie venster voor gebeurtenis ordening. De buffer wordt gebruikt om invoer voor de duur van het venster te bewaren en de volg orde te wijzigen. De grootte van de buffer is evenredig met de invoer frequentie van de gebeurtenis, vermenigvuldigd met de grootte van het buitenste volg orde venster. De standaard venster grootte is 0. 
 
-Als u wilt herstellen overloop van de buffer niet de juiste volgorde, de schaal vergroten met behulp van query **PARTITION BY**. Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan is het aantal gebeurtenissen op elk knooppunt verminderd waardoor het aantal gebeurtenissen in de buffer voor opnieuw ordenen. 
+Als u een overloop van de out-of-order buffer wilt herstellen, kunt u de query uitbreiden met behulp van **Partition by**. Wanneer de query is gepartitioneerd, wordt deze verspreid over verschillende knooppunten. Als gevolg hiervan wordt het aantal gebeurtenissen in elk knoop punt verminderd, waardoor het aantal gebeurtenissen in elke bestel buffer kleiner wordt. 
 
 ## <a name="input-partition-count"></a>Aantal invoer partities 
-Elke invoer partitie van een taak die de invoer heeft een buffer. Het grotere aantal invoer partities, de meer resource wordt de taak verbruikt. Voor elke streaming-eenheid, kan Azure Stream Analytics verwerken van ongeveer 1 MB/s van invoer. U kunt daarom optimaliseren door die overeenkomt met het nummer van Stream Analytics streaming-eenheden met het aantal partities in uw Event Hub. 
+Elke invoer partitie van een taak invoer heeft een buffer. Hoe groter het aantal invoer partities, hoe meer resources de taak verbruikt. Voor elke streaming-eenheid kan Azure Stream Analytics ongeveer 1 MB/s aan invoer verwerken. Daarom kunt u optimaliseren door het aantal Stream Analytics streaming-eenheden te vergelijken met het aantal partities in de Event hub. 
 
-Een taak die is geconfigureerd met één streaming-eenheid is meestal voldoende voor een Event Hub met twee partities (dit is het minimale aantal voor Event Hub). Als de Event Hub meer partities heeft, worden uw Stream Analytics-taak meer bronnen verbruikt, maar niet per se maakt gebruik van de extra doorvoer is geleverd door de Event Hub. 
+Normaal gesp roken is een taak die is geconfigureerd met één streaming-eenheid voldoende voor een event hub met twee partities (de minimale waarde voor Event hub). Als de Event hub meer partities heeft, verbruikt uw Stream Analytics-taak meer resources, maar hoeft de extra door Voer van Event hub niet noodzakelijkerwijs te worden gebruikt. 
 
-Voor een taak met 6 streaming-eenheden, moet u 4 of 8 partities van de Event Hub. Vermijd echter te veel onnodige partities omdat dat ervoor zorgt overmatig gebruik van resources dat. Bijvoorbeeld, een Event Hub met 16 partities of groter zijn in een Stream Analytics-taak waarvoor 1 streaming-eenheid. 
+Voor een taak met 6 streaming-eenheden hebt u mogelijk 4 of 8 partities nodig van de Event hub. Vermijd echter dat er te veel onnodige partities zijn, omdat dit een overmatig gebruik van resources veroorzaakt. Bijvoorbeeld een event hub met 16 partities of groter in een Stream Analytics-taak met 1 streaming-eenheid. 
 
-## <a name="reference-data"></a>Referentiegegevens 
-Referentiegegevens in ASA worden geladen in het geheugen voor het snel opzoeken. Met de huidige implementatie houdt elke join-bewerking met referentiegegevens een kopie van de referentiegegevens in het geheugen, zelfs als u meerdere keren bij de dezelfde referentiegegevens. Voor query's met **PARTITION BY**, elke partitie heeft een kopie van de referentiegegevens, zodat de partities volledig elkaar zijn losgekoppeld zijn. Met het effect vermenigvuldiger ontvangt geheugengebruik snel zeer hoog als u bij referentiegegevens meerdere keren met meerdere partities.  
+## <a name="reference-data"></a>Referentie gegevens 
+Referentie gegevens in ASA worden in het geheugen geladen voor snel opzoeken. Met de huidige implementatie houdt elke samenvoegings bewerking met referentie gegevens een kopie van de referentie gegevens in het geheugen bij, zelfs als u meerdere keren met dezelfde referentie gegevens samenvoegt. Voor query's met een **partitie door**heeft elke partitie een kopie van de referentie gegevens, waardoor de partities volledig zijn losgekoppeld. Met het vermenigvuldigings effect kan het geheugen gebruik snel zeer hoog worden als u met meerdere partities meerdere keren met referentie gegevens werkt.  
 
-### <a name="use-of-udf-functions"></a>Gebruik van de UDF-functies
-Wanneer u een UDF-functie toevoegt, worden de JavaScript-runtime in Azure Stream Analytics in geheugen geladen. Dit heeft invloed op de % SU.
+### <a name="use-of-udf-functions"></a>Gebruik van UDF-functies
+Wanneer u een UDF-functie toevoegt, wordt Azure Stream Analytics de Java Script-runtime in het geheugen geladen. Dit is van invloed op de SU%.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Worden opgestart query's maken in Azure Stream Analytics](stream-analytics-parallelization.md)
-* [Schalen van Azure Stream Analytics-taken voor een betere doorvoer](stream-analytics-scale-jobs.md)
+* [Kan worden opgestart-query's maken in Azure Stream Analytics](stream-analytics-parallelization.md)
+* [Azure Stream Analytics taken schalen om de door voer te verhogen](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

@@ -1,5 +1,5 @@
 ---
-title: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure DevOps
+title: Azure Stream Analytics-taken implementeren met CI/CD en Azure DevOps
 description: In dit artikel wordt beschreven hoe u een Stream Analytics-taak met CI/CD implementeert met behulp van Azure DevOps Services.
 services: stream-analytics
 author: su-jie
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e05e4eab8bd3c307334b62df00dc03e56ce60ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60762844"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925068"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure Pipelines
 This tutorial descriIn deze zelfstudie wordt beschreven hoe u continue integratie en implementatie instelt voor een Azure Stream Analytics-taak met behulp van Azure Pipelines. 
@@ -83,7 +83,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     
     ![Triggerstatus voor continue integratie inschakelen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. Builds worden ook getriggerd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds**.  Als u hebt gecontroleerd dat de build correct wordt uitgevoerd, moet u een release-pijplijn definiëren waarmee uw toepassing in een cluster wordt geïmplementeerd. Klik met de rechtermuisknop op het beletselteken naast uw build-pijplijn en selecteer **Edit**.
+4. Builds worden ook getriggerd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, moet u een release pijplijn definiëren die uw toepassing implementeert in een cluster. Klik met de rechtermuisknop op het beletselteken naast uw build-pijplijn en selecteer **Edit**.
 
 5.  Voer in **Tasks** "Hosted" in als de **Agent queue**.
     
@@ -120,7 +120,7 @@ Open een webbrowser en navigeer naar het project dat u zojuist hebt gemaakt in [
     |Abonnement  |  Kies uw abonnement.   |
     |Bewerking  |  Resourcegroep maken of bijwerken   |
     |Resourcegroep  |  Voer een resourcegroepnaam in.   |
-    |Template  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project]. JobTemplate.json   |
+    |Sjabloon  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project]. JobTemplate.json   |
     |Sjabloonparameters  | [Uw oplossingspad] \bin\Debug\Deploy\\[Naam van uw project].JobTemplate.parameters.json   |
     |Sjabloonparameters overschrijven  | Typ de sjabloonparameters die u wilt overschrijven in het tekstvak. Bijvoorbeeld: –storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre). Deze eigenschap is optioneel, maar er treden fouten op in uw build als belangrijke parameters worden niet overschreven.    |
     

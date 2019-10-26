@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ec1baa8797935b76963025f82d6c7df43a2a7d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264401"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931561"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quick Start: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met python
 
@@ -108,13 +108,13 @@ U ontvangt een antwoord van `200 (Success)` met de volgende JSON-uitvoer:
 }
 ```
 
-Let op de waarde voor @no__t 0. U hebt deze nodig voor de volgende stappen.
+Let op de waarde van `"modelId"`. U hebt deze nodig voor de volgende stappen.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Sleutel-waardeparen en tabellen uit formulieren extra heren
 
 Vervolgens analyseert u een document en extraheert u sleutel-waardeparen en-tabellen. Roep het **model-analyse-** API aan door het python-script uit te voeren dat volgt. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
 1. Vervang `<path to your form>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF). Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
 1. Vervang `<modelID>` door de model-ID die u in de vorige sectie hebt ontvangen.
 1. Vervang `<file type>` door het bestands type. Ondersteunde typen: `application/pdf`, `image/jpeg`, `image/png`.

@@ -1,6 +1,6 @@
 ---
-title: Application Proxy cookie-instellingen - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory (Azure AD) toegangs- en sessiebeleid cookies heeft voor toegang tot on-premises toepassingen via de toepassingsproxy. In dit artikel vindt u informatie over het gebruik en de cookie-instellingen configureren.
+title: Cookie-instellingen voor toepassings proxy-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) heeft toegang en sessie cookies voor toegang tot on-premises toepassingen via toepassings proxy. In dit artikel vindt u informatie over het gebruik en de configuratie van de cookie-instellingen.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,64 +12,76 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5f1b41e345caafdc465872c948be76c31d55e8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825748"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928863"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory
 
-Azure Active Directory (Azure AD) toegangs- en sessiebeleid cookies heeft voor toegang tot on-premises toepassingen via de toepassingsproxy. Meer informatie over het gebruik van de toepassingsproxy cookie-instellingen. 
+Azure Active Directory (Azure AD) heeft toegang en sessie cookies voor toegang tot on-premises toepassingen via toepassings proxy. Meer informatie over het gebruik van de cookie-instellingen van de toepassings proxy. 
 
 ## <a name="what-are-the-cookie-settings"></a>Wat zijn de cookie-instellingen?
 
-[Toepassingsproxy](application-proxy.md) maakt gebruik van de volgende toegangs- en sessiebeleid cookie-instellingen.
+[Toepassings proxy](application-proxy.md) gebruikt de volgende instellingen voor toegang en sessie cookies.
 
-| Cookie-instelling | Standaard | Description | Aanbevelingen |
+| Cookie-instelling | Standaard | Beschrijving | Aanbevelingen |
 | -------------- | ------- | ----------- | --------------- |
-| Alleen HTTP-Cookie gebruiken | **Nee** | **Ja** kunt toepassingsproxy om op te nemen van de vlag HTTPOnly in HTTP-antwoordheaders. Met deze markering biedt extra voordelen met beveiliging, bijvoorbeeld het uitvoeren van scripts aan de clientzijde (CSS) kopiëren of aanpassen van de cookies die voorkomt dat.<br></br><br></br>Voordat we de alleen-HTTP-instelling wordt ondersteund, worden de Application Proxy versleuteld en cookies verzonden via een beveiligde SSL-kanaal om te beveiligen tegen wijziging. | Gebruik **Ja** vanwege de aanvullende beveiligingsvoordelen.<br></br><br></br>Gebruik **geen** voor clients of Gebruikeragents die toegang tot de sessiecookie nodig hebben. Gebruik bijvoorbeeld **geen** voor een RDP- of MTSC client die verbinding met een extern bureaublad-Gateway-server via de toepassingsproxy maakt.|
-| Beveiligde cookies gebruiken | **Nee** | **Ja** Application Proxy om op te nemen van de Secure kunt vlag in HTTP-antwoordheaders. Beveiligde Cookies verbetert de beveiliging door het verzenden van cookies via een veilig TLS-kanaal, zoals HTTPS. Dit voorkomt dat cookies waargenomen door onbevoegden vanwege de overdracht van de cookie in niet-versleutelde tekst. | Gebruik **Ja** vanwege de aanvullende beveiligingsvoordelen.|
-| Permanente cookies gebruiken | **Nee** | **Ja** kunt toepassingsproxy om in te stellen de toegang-cookies niet verlopen wanneer de webbrowser wordt gesloten. De persistentie duurt totdat het toegangstoken is verlopen, of de gebruiker de permanente cookies voor het handmatig verwijdert. | Gebruik **Nee** vanwege de beveiligingsrisico's die zijn gekoppeld aan om geverifieerde gebruikers te houden.<br></br><br></br>Het is raadzaam alleen met behulp van **Ja** voor oudere toepassingen die cookies tussen processen niet delen. Het is beter om uw toepassing bijwerken voor het verwerken van delen cookies tussen processen in plaats van het gebruik van permanente cookies. Bijvoorbeeld, moet u mogelijk permanente cookies toestaan dat een gebruiker naar het Office-documenten openen in Verkenner-weergave van een SharePoint-site. Zonder permanente cookies worden met deze bewerking kan mislukken als de cookies die toegang niet worden gedeeld tussen de browser, het explorer-proces en de Office-proces. |
+| Cookie met alleen HTTP gebruiken | **Nee** | Met **Ja** kan toepassings proxy de vlag HTTPOnly in http-antwoord headers bevatten. Deze vlag biedt bijvoorbeeld extra beveiligings voordelen, waardoor het voor komt dat de cookies worden gekopieerd of gewijzigd door client scripts.<br></br><br></br>Voordat we de instelling alleen HTTP-instellingen hebben ondersteund, versleutelde en verzonden toepassings proxy-cookies via een beveiligd SSL-kanaal om te beveiligen tegen wijzigingen. | Gebruik **Ja** vanwege de extra beveiligings voordelen.<br></br><br></br>Gebruik **Nee** voor clients of gebruikers agenten waarvoor toegang tot de sessie cookie is vereist. Gebruik bijvoorbeeld **Nee** voor een RDP-of MTSC-client die via toepassings proxy verbinding maakt met een extern bureaublad-gateway server.|
+| Beveiligde cookie gebruiken | **Nee** | Met **Ja** kan toepassings proxy de beveiligde vlag in http-antwoord headers bevatten. Beveiligde cookies verbeteren de beveiliging door het verzenden van cookies via een TLS-kanaal, zoals HTTPS. Zo wordt voor komen dat cookies door onbevoegden worden waargenomen als gevolg van het verzenden van de cookie als Lees bare tekst. | Gebruik **Ja** vanwege de extra beveiligings voordelen.|
+| Permanente cookie gebruiken | **Nee** | Met **Ja** kan de toepassings proxy de toegangs cookies instellen op niet verlopen wanneer de webbrowser is gesloten. De persistentie loopt door totdat het toegangs token is verlopen of totdat de gebruiker de permanente cookies hand matig verwijdert. | Gebruik **Nee** als gevolg van het beveiligings risico dat is gekoppeld aan het houden van geverifieerde gebruikers.<br></br><br></br>We raden u aan alleen **Ja** te gebruiken voor oudere toepassingen die geen cookies tussen processen kunnen delen. Het is beter om uw toepassing bij te werken voor het afhandelen van het delen van cookies tussen processen in plaats van permanente cookies te gebruiken. Zo hebt u mogelijk permanente cookies nodig om een gebruiker toe te staan Office-documenten in de Verkenner-weer gave te openen vanaf een share point-site. Zonder permanente cookies kan deze bewerking mislukken als de toegangs cookies niet worden gedeeld tussen de browser, het Explorer-proces en het Office-proces. |
 
-## <a name="set-the-cookie-settings---azure-portal"></a>Stel de cookie-instellingen - Azure portal
-Om in te stellen de cookie-instellingen met behulp van de Azure-portal:
+## <a name="samesite-cookies"></a>SameSite cookies
+Vanaf versie [Chrome 80](https://support.google.com/chrome/a/answer/7679408?hl=en) en uiteindelijk in browsers die gebruikmaken [van chroom](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html), worden cookies waarbij het kenmerk [SameSite](https://web.dev/samesite-cookies-explained) niet wordt opgegeven, behandeld alsof ze zijn ingesteld op **SameSite = slordig**. Het kenmerk SameSite declareert hoe cookies moeten worden beperkt tot een context van dezelfde site. Wanneer deze waarde is ingesteld op slordig, wordt de cookie alleen verzonden naar dezelfde site aanvragen of navigatie op het hoogste niveau. Toepassings proxy vereist echter dat deze cookies worden bewaard in de context van derden, zodat gebruikers tijdens hun sessie op de juiste wijze kunnen worden aangemeld. Als gevolg hiervan worden de toegangs-en sessie cookies van de toepassings proxy bijgewerkt om nadelige gevolgen van deze wijziging te voor komen. De updates zijn onder andere:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
-2. Navigeer naar **Azure Active Directory** > **bedrijfstoepassingen** > **alle toepassingen**.
-3. Selecteer de toepassing waarvoor u wilt een cookie is ingeschakeld.
-4. Klik op **toepassingsproxy**.
-5. Onder **extra instellingen**, de cookie instelt op **Ja** of **Nee**.
-6. Klik op **opslaan** de wijzigingen worden toegepast. 
+* Het kenmerk **SameSite** in te stellen op **geen**: Hiermee staat u toegang tot de toepassings proxy-en sessie cookies in de context van derden goed te verzenden.
+* Instelling van **beveiligde cookie gebruiken** als standaard instelling **gebruiken.** Chrome vereist ook dat de cookies de beveiligde vlag opgeven of worden geweigerd. Deze wijziging is van toepassing op alle bestaande toepassingen die zijn gepubliceerd via toepassings proxy. Houd er rekening mee dat toepassings proxy-toegangs cookies altijd zijn ingesteld op beveiligd en alleen via HTTPS worden verzonden. Deze wijziging is alleen van toepassing op de sessie cookies.
 
-## <a name="view-current-cookie-settings---powershell"></a>Huidige cookie-instellingen - PowerShell weergeven
+Deze wijzigingen in toepassings proxy cookies worden in de loop van de volgende weken vóór de release datum van het Chrome 80 geïmplementeerd.
 
-Als de huidige cookie-instellingen voor de toepassing weergeven, gebruikt u deze PowerShell-opdracht:  
+Als uw back-endtoepassing cookies heeft die beschikbaar moeten zijn in een context van derden, moet u er ook voor kiezen om uw toepassing expliciet in te stellen op het gebruik van SameSite = none voor deze cookies. Toepassings proxy vertaalt de set-cookie header naar de bijbehorende URL'S en respecteert de instellingen voor deze cookies die worden ingesteld door de back-end-toepassing.
+
+
+
+## <a name="set-the-cookie-settings---azure-portal"></a>De cookie-instellingen instellen-Azure Portal
+De cookie-instellingen instellen met behulp van de Azure Portal:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen** > **alle toepassingen**.
+3. Selecteer de toepassing waarvoor u een cookie-instelling wilt inschakelen.
+4. Klik op **toepassings proxy**.
+5. Stel onder **extra instellingen**de instelling cookie in op **Ja** of **Nee**.
+6. Klik op **Opslaan** om uw wijzigingen toe te passen. 
+
+## <a name="view-current-cookie-settings---powershell"></a>Huidige cookie-instellingen weer geven-Power shell
+
+Als u de huidige cookie-instellingen voor de toepassing wilt bekijken, gebruikt u deze Power shell-opdracht:  
 
 ```powershell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## <a name="set-cookie-settings---powershell"></a>Cookie-instellingen - PowerShell instellen
+## <a name="set-cookie-settings---powershell"></a>Cookie-instellingen instellen-Power shell
 
-In de volgende PowerShell-opdrachten, ```<ObjectId>``` de object-id van de toepassing is. 
+In de volgende Power shell-opdrachten is ```<ObjectId>``` de ObjectId van de toepassing. 
 
-**Alleen HTTP-Cookie** 
+**Cookie met alleen http** 
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
-**Secure Cookie**
+**Beveiligde cookie**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Permanente Cookies**
+**Permanente cookies**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 
