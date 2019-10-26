@@ -1,24 +1,22 @@
 ---
 title: Open tellingen bijhouden met Azure-toepassing inzichten | Microsoft Docs
 description: Biedt instructies voor het integreren van opentellingen met de lokale doorstuur server en Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990307"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819281"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Gedistribueerde traceringen van Go verzamelen (preview-versie)
 
-Application Insights ondersteunt nu gedistribueerde tracering van Go-toepassingen [](https://opencensus.io) via integratie met opentellingen en onze nieuwe [lokale doorstuur server](./opencensus-local-forwarder.md). Dit artikel begeleidt u stapsgewijs door het proces voor het instellen van opentellingen voor Go en het ophalen van uw tracerings gegevens naar Application Insights.
+Application Insights ondersteunt nu gedistribueerde tracering van Go-toepassingen via integratie met [Opentellingen](https://opencensus.io) en onze nieuwe [lokale doorstuur server](./opencensus-local-forwarder.md). Dit artikel begeleidt u stapsgewijs door het proces voor het instellen van opentellingen voor Go en het ophalen van uw tracerings gegevens naar Application Insights.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,13 +28,13 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Application Insights resource maken
 
 Eerst moet u een Application Insights resource maken waarmee een instrumentatie sleutel (Ikey) wordt gegenereerd. De iKey wordt vervolgens gebruikt om de lokale doorstuur server te configureren voor het verzenden van gedistribueerde traceringen van uw open-telling-toepassing naar Application Insights.   
 
-1. Selecteer **een resource** > maken**Ontwikkelhulpprogramma's** > **Application Insights**.
+1. Selecteer **een resource maken** > **Ontwikkelhulpprogramma's** > **Application Insights**.
 
    ![Application Insights-resource toevoegen](./media/opencensus-Go/0001-create-resource.png)
 
@@ -47,11 +45,11 @@ Eerst moet u een Application Insights resource maken waarmee een instrumentatie 
 
     | Instellingen        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
+   | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost |
-   | **Location** | East US | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
-2. Klik op **Create**.
+2. Klik op **Maken**.
 
 ## <a name="configure-local-forwarder"></a>Lokale doorstuur server configureren
 
@@ -59,7 +57,7 @@ Eerst moet u een Application Insights resource maken waarmee een instrumentatie 
 
    ![Scherm opname van instrumentatie sleutel](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Bewerk het `LocalForwarder.config` bestand en voeg de instrumentatie sleutel toe. Als u de instructies in de [vereisten](./opencensus-local-forwarder.md) van het bestand hebt gevolgd, bevindt het zich op`C:\LF-WindowsServiceHost`
+2. Bewerk uw `LocalForwarder.config`-bestand en voeg uw instrumentatie sleutel toe. Als u de instructies in de [vereisten](./opencensus-local-forwarder.md) van het bestand hebt gevolgd, bevindt het zich op `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,11 +184,11 @@ Eerst moet u een Application Insights resource maken waarmee een instrumentatie 
         }
      ```
 
-3. Zodra de eenvoudige Go-app wordt uitgevoerd, `http://localhost:50030`gaat u naar. Bij elke vernieuwing van de browser wordt de tekst "Hallo wereld" gegenereerd, vergezeld van overeenkomende gegevens die door de lokale doorstuur server worden opgehaald.
+3. Zodra de eenvoudige Go-app wordt uitgevoerd, gaat u naar `http://localhost:50030`. Bij elke vernieuwing van de browser wordt de tekst "Hallo wereld" gegenereerd, vergezeld van overeenkomende gegevens die door de lokale doorstuur server worden opgehaald.
 
-4. Als u wilt bevestigen dat de **lokale doorstuur server** de traceringen ophaalt, `LocalForwarder.config` controleert u het bestand. Als u de stappen in de [vereiste](https://docs.microsoft.com/azure/application-insights/local-forwarder)hebt gevolgd, bevindt deze zich `C:\LF-WindowsServiceHost`in.
+4. Controleer het `LocalForwarder.config` bestand om te bevestigen dat de **lokale doorstuur server** de traceringen ophaalt. Als u de stappen in de [vereiste](https://docs.microsoft.com/azure/application-insights/local-forwarder)hebt gevolgd, bevindt deze zich in `C:\LF-WindowsServiceHost`.
 
-    In de onderstaande afbeelding van het logboek bestand kunt u zien dat u voorafgaand aan het uitvoeren van het tweede script waarin we een `OpenCensus input BatchesReceived` exporteur hebben toegevoegd 0 is. Zodra we begonnen hebben met het uitvoeren `BatchesReceived` van het bijgewerkte script dat is verhoogd naar het aantal ingevoerde waarden:
+    In de onderstaande afbeelding van het logboek bestand kunt u zien dat u voorafgaand aan het uitvoeren van het tweede script waarin we een export functie hebben toegevoegd `OpenCensus input BatchesReceived` 0 is. Zodra het bijgewerkte script is gestart `BatchesReceived` verhoogd naar het aantal ingevoerde waarden:
     
     ![Nieuw App Insights-resourceformulier](./media/opencensus-go/0004-batches-received.png)
 
@@ -200,7 +198,7 @@ Eerst moet u een Application Insights resource maken waarmee een instrumentatie 
 
    ![Scherm opname van het deel venster overzicht met een live metrieke stroom die is geselecteerd in het rode vak](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Als u de tweede go-app opnieuw uitvoert en de browser voor `http://localhost:50030`hebt vernieuwd, worden er Live Trace-gegevens weer gegeven terwijl deze arriveren in Application Insights van de lokale doorstuur server.
+2. Als u de tweede go-app opnieuw uitvoert en de browser voor `http://localhost:50030`wilt vernieuwen, worden er Live Trace-gegevens weer gegeven terwijl deze binnenkomen in Application Insights van de lokale doorstuur server.
 
    ![Scherm afbeelding van een live metrieke stroom met prestatie gegevens die worden weer gegeven](./media/opencensus-go/0006-stream.png)
 

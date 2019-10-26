@@ -1,6 +1,6 @@
 ---
-title: Beleid voor voorwaardelijke toegang in Azure Active Directory plannen | Microsoft Docs
-description: In dit artikel leert u hoe u het beleid voor voorwaardelijke toegang voor Azure Active Directory plannen.
+title: Beleid voor voorwaardelijke toegang plannen in Azure Active Directory | Microsoft Docs
+description: In dit artikel leert u hoe u beleids regels voor voorwaardelijke toegang kunt plannen voor Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,226 +11,226 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655501"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880263"
 ---
-# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Procedure: De implementatie van voorwaardelijke toegang in Azure Active Directory plannen
+# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Procedure: de implementatie van voorwaardelijke toegang plannen in Azure Active Directory
 
-Plannen van uw implementatie van voorwaardelijke toegang is van essentieel belang om ervoor te zorgen dat u de strategie van de vereiste toegang voor apps en resources in uw organisatie bereiken. Het merendeel van uw moment tijdens de planningsfase van uw implementatie te ontwerpen van de verschillende beleidsregels die u nodig hebt om te verlenen of Blokkeer de toegang tot uw gebruikers in de voorwaarden die u kiest. Dit document worden de stappen beschreven die u nemen moet voor het implementeren van veilige en efficiënte beleid voor voorwaardelijke toegang. Voordat u begint, zorg ervoor dat u begrijpt hoe [voorwaardelijke toegang](overview.md) werkt en wanneer u deze moet gebruiken.
+Het plannen van de implementatie van voorwaardelijke toegang is van cruciaal belang om ervoor te zorgen dat u beschikt over de vereiste toegangs strategie voor apps en resources in uw organisatie. Besteed uw tijd aan de plannings fase van uw implementatie om de verschillende beleids regels te ontwerpen die u nodig hebt om de toegang tot uw gebruikers te verlenen of blok keren onder de voor waarden die u kiest. In dit document worden de stappen beschreven die u moet uitvoeren om een veilig en effectief beleid voor voorwaardelijke toegang te implementeren. Voordat u begint, moet u weten hoe [voorwaardelijke toegang](overview.md) werkt en wanneer u deze moet gebruiken.
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
-Voorwaardelijke toegang beschouwen als een framework waarmee u toegang tot de apps en resources, in plaats van een zelfstandige functie van uw organisatie beheren. Sommige instellingen voor voorwaardelijke toegang vereist als gevolg daarvan kunnen extra functies worden geconfigureerd. Bijvoorbeeld, u kunt een beleid configureren dat op een specifieke reageert [niveau van aanmeldingsrisico](../identity-protection/howto-sign-in-risk-policy.md#what-is-the-sign-in-risk-policy). Een beleid dat is gebaseerd op een niveau voor aanmeldingsrisico vereist echter [Azure Active Directory identity protection](../identity-protection/overview.md) zijn ingeschakeld.
+U kunt voorwaardelijke toegang beschouwen als een framework waarmee u de toegang tot de apps en resources van uw organisatie, in plaats van een zelfstandige functie, beheert. Daarom moeten voor sommige instellingen voor voorwaardelijke toegang aanvullende functies worden geconfigureerd. U kunt bijvoorbeeld een beleid configureren dat reageert op een specifiek [risico niveau voor aanmelding](../identity-protection/howto-identity-protection-configure-risk-policies.md). Een beleid dat is gebaseerd op een risico niveau voor aanmelden vereist echter dat [Azure Active Directory identiteits beveiliging](../identity-protection/overview-identity-protection.md) is ingeschakeld.
 
-Als aanvullende functies vereist zijn, moet u mogelijk ook verwante licenties ophalen. Voor voorwaardelijke toegang is een functie van Azure AD Premium P1, moet identiteitsbeveiliging bijvoorbeeld een Azure AD Premium P2-licentie.
+Als aanvullende functies vereist zijn, moet u mogelijk ook gerelateerde licenties ophalen. Hoewel voorwaardelijke toegang bijvoorbeeld Azure AD Premium P1-functie is, is voor identiteits beveiliging een Azure AD Premium P2-licentie vereist.
 
-Er zijn twee soorten beleid voor voorwaardelijke toegang: basislijn- en standard. Een [Basisbeleid](baseline-protection.md) is een vooraf gedefinieerd beleid voor voorwaardelijke toegang. Het doel van dit beleid is om ervoor te zorgen dat u ten minste het niveau van de basislijn van de beveiliging is ingeschakeld hebt. Basislijn-beleid. Basislijn-beleidsregels zijn beschikbaar in alle edities van Azure AD en bieden alleen beperkte aanpassingsopties. Als een scenario meer flexibiliteit vereist, dient u het beleid van de basislijn en implementeren van uw vereisten in een aangepast beleid voor standard.
+Er zijn twee soorten beleids regels voor voorwaardelijke toegang: basis lijn en standaard. Een [basislijn beleid](baseline-protection.md) is een vooraf gedefinieerd beleid voor voorwaardelijke toegang. Het doel van dit beleid is ervoor te zorgen dat u ten minste het basis niveau voor beveiliging hebt ingeschakeld. Basislijn beleidsregels. Basislijn beleids regels zijn beschikbaar in alle versies van Azure AD en bieden alleen beperkte aanpassings opties. Als voor een scenario meer flexibiliteit is vereist, schakelt u het basislijn beleid uit en implementeert u uw vereisten in een aangepast standaard beleid.
 
-In een standard beleid voor voorwaardelijke toegang, kunt u alle instellingen voor het aanpassen van het beleid aan uw bedrijfsvereisten aanpassen. Standaardbeleid voor nodig een Azure AD Premium P1-licentie.
+In een standaard beleid voor voorwaardelijke toegang kunt u alle instellingen aanpassen om het beleid aan te passen aan uw bedrijfs vereisten. Voor het standaard beleid is een Azure AD Premium P1-licentie vereist.
 
-## <a name="draft-policies"></a>Concept-beleid
+## <a name="draft-policies"></a>Concept beleid
 
-Azure Active Directory voor voorwaardelijke toegang kunt u de beveiliging van uw cloud-apps naar een nieuw niveau te brengen. In dit nieuwe niveau, is hoe u toegang hebt tot een cloud-app gebaseerd op een dynamische beleidsevaluatie in plaats van een statische access-configuratie. Met beleid voor voorwaardelijke toegang, definieert u een antwoord (**hiervoor**) aan een voorwaarde toegang (**wanneer dit gebeurt**).
+Met Azure Active Directory voorwaardelijke toegang kunt u de beveiliging van uw Cloud-apps naar een nieuw niveau. In dit nieuwe niveau is het mogelijk om toegang te krijgen tot een Cloud-app op basis van een dynamische beleids evaluatie in plaats van een statische toegangs configuratie. Met een beleid voor voorwaardelijke toegang definieert u een antwoord (**doe dit**) aan een toegangs voorwaarde (**wanneer dit gebeurt**).
 
-![Reden en het antwoord](./media/plan-conditional-access/10.png)
+![Reden en antwoord](./media/plan-conditional-access/10.png)
 
-Elk beleid voor voorwaardelijke toegang die u wilt implementeren met behulp van deze planning model definiëren. De planning oefening:
+Definieer elk beleid voor voorwaardelijke toegang dat u wilt implementeren met dit plannings model. De plannings oefening:
 
-- Helpt u bij overzicht van de antwoorden en voorwaarden voor elk beleid.
-- De resultaten in een goed gedocumenteerde catalogus van de beleid voor voorwaardelijke toegang voor uw organisatie. 
+- Helpt u bij het samen vatting van de reacties en voor waarden voor elk beleid.
+- Resulteert in een catalogus met een goed gedocumenteerde beleids regel voor voorwaardelijke toegang voor uw organisatie. 
 
-U kunt uw catalogus gebruiken om te beoordelen of de implementatie van uw beleid de bedrijfsbehoeften van uw organisatie weerspiegelt. 
+U kunt uw catalogus gebruiken om te beoordelen of uw beleids implementatie aansluit op de bedrijfs vereisten van uw organisatie. 
 
-Gebruik de volgende voorbeeldsjabloon om te maken van beleid voor voorwaardelijke toegang voor uw organisatie:
+Gebruik de volgende voorbeeld sjabloon voor het maken van beleid voor voorwaardelijke toegang voor uw organisatie:
 
-|Wanneer *dit* gebeurt:|Voer *dit*:|
+|Als *Dit* gebeurt:|Ga vervolgens *als volgt te werk:*|
 |-|-|
-|Een poging tot toegang is gemaakt:<br>-Voor een cloud-app *<br>: als u gebruikers en groepen*<br>Met behulp van:<br>-Voorwaarde 1 (bijvoorbeeld buiten het bedrijfsnetwerk)<br>-Voorwaarde 2 (bijvoorbeeld apparaatplatformen)|Toegang tot de toepassing blokkeren|
-|Een poging tot toegang is gemaakt:<br>-Voor een cloud-app *<br>: als u gebruikers en groepen*<br>Met behulp van:<br>-Voorwaarde 1 (bijvoorbeeld buiten het bedrijfsnetwerk)<br>-Voorwaarde 2 (bijvoorbeeld apparaatplatformen)|Verlenen van toegang met (en):<br>-Vereiste 1 (bijvoorbeeld, MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatnaleving)|
-|Een poging tot toegang is gemaakt:<br>-Voor een cloud-app *<br>: als u gebruikers en groepen*<br>Met behulp van:<br>-Voorwaarde 1 (bijvoorbeeld buiten het bedrijfsnetwerk)<br>-Voorwaarde 2 (bijvoorbeeld apparaatplatformen)|Verlenen van toegang met (of):<br>-Vereiste 1 (bijvoorbeeld, MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatnaleving)|
+|Er wordt een toegangs poging gedaan:<br>-Naar een Cloud-app *<br>-door gebruikers en groepen*<br>Basis<br>-Voor waarde 1 (bijvoorbeeld buiten Corp-netwerk)<br>-Voor waarde 2 (bijvoorbeeld platformen)|Toegang tot de toepassing blok keren|
+|Er wordt een toegangs poging gedaan:<br>-Naar een Cloud-app *<br>-door gebruikers en groepen*<br>Basis<br>-Voor waarde 1 (bijvoorbeeld buiten Corp-netwerk)<br>-Voor waarde 2 (bijvoorbeeld platformen)|Toegang verlenen met (en):<br>-Vereiste 1 (bijvoorbeeld MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatcompatibiliteit)|
+|Er wordt een toegangs poging gedaan:<br>-Naar een Cloud-app *<br>-door gebruikers en groepen*<br>Basis<br>-Voor waarde 1 (bijvoorbeeld buiten Corp-netwerk)<br>-Voor waarde 2 (bijvoorbeeld platformen)|Toegang verlenen met (of):<br>-Vereiste 1 (bijvoorbeeld MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatcompatibiliteit)|
 
-Ten minste **wanneer dit gebeurt** definieert de principal (**die**) die probeert te krijgen tot een cloud-app (**wat**). Indien nodig, kunt u ook opnemen **hoe** een poging tot toegang wordt uitgevoerd. Voorwaardelijke toegang, de elementen die definiëren in het wie, wat, hoe voorwaarden worden genoemd. Zie voor meer informatie, [wat zijn de voorwaarden in Azure Active Directory voor voorwaardelijke toegang?](conditions.md) 
+**Als dit het geval** is, definieert u ten minste de principal (**wie**) die probeert toegang te krijgen tot een Cloud-app (**wat**). Als dat nodig is, kunt u ook **zien hoe** een toegangs poging wordt uitgevoerd. In voorwaardelijke toegang, de elementen die de wie, wat en hoe bekend zijn als voor waarden definiëren. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](conditions.md) voor meer informatie. 
 
-Met **voert u deze**, definieert u het antwoord van uw beleid aan een voorwaarde voor toegang. Uw reactie, kunt u blokkeren of verlenen van toegang met aanvullende vereisten, bijvoorbeeld: multi-factor authentication (MFA). Zie voor een volledig overzicht [wat toegang zijn besturingselementen in Azure Active Directory voor voorwaardelijke toegang?](controls.md)  
+**Vervolgens**definieert u de reactie van uw beleid op een toegangs voorwaarde. In uw antwoord blokkeert of verleent u toegang met aanvullende vereisten, bijvoorbeeld multi-factor Authentication (MFA). Zie [Wat is Access controls in azure Active Directory voorwaardelijke toegang?](controls.md) voor een volledig overzicht.  
 
-De combinatie van voorwaarden met de besturingselementen voor toegang vertegenwoordigt een beleid voor voorwaardelijke toegang.
+De combi natie van voor waarden van uw toegangs beheer vertegenwoordigt een beleid voor voorwaardelijke toegang.
 
-![Reden en het antwoord](./media/plan-conditional-access/51.png)
+![Reden en antwoord](./media/plan-conditional-access/51.png)
 
-Zie voor meer informatie, [wat is vereist voor het maken van een beleid werkt](best-practices.md#whats-required-to-make-a-policy-work).
+Zie [Wat is vereist om een beleid te maken](best-practices.md#whats-required-to-make-a-policy-work)voor meer informatie.
 
-Op dit moment is het een goed moment om te bepalen wat een naamgevingsnorm voor uw beleid. De naamgevingsnorm helpt u bij het zoeken van beleid en hun doel te begrijpen zonder deze te openen in de Azure-beheerportal. Naam van uw beleid om weer te geven:
+Op dit moment is het een goed idee om een naamgevings standaard voor uw beleid te kiezen. De naamgevings standaard helpt u bij het vinden van beleids regels en het begrijpen van het doel ervan zonder ze te openen in de Azure-beheer Portal. Geef een naam op voor het beleid dat u wilt weer geven:
 
-- Een volgnummer
-- De cloud-app die is van toepassing op
+- Een Volg nummer
+- De Cloud-app waarop deze van toepassing is
 - Het antwoord
-- Die van toepassing op
-- Als deze van toepassing is (indien van toepassing)
+- Wie is van toepassing op
+- Wanneer dit van toepassing is (indien van toepassing)
  
-![Naamgevingsnorm](./media/plan-conditional-access/11.png)
+![Naamgevings standaard](./media/plan-conditional-access/11.png)
 
-Terwijl een beschrijvende naam u helpt bij het bewaren van een overzicht van de implementatie van voorwaardelijke toegang, is het volgnummer is handig als u nodig hebt om te verwijzen naar een beleid in een gesprek. Bijvoorbeeld, als u een andere beheerder op de telefoon praten, kunt u vragen deze open beleid EM063 voor het oplossen van een probleem.
+Hoewel een beschrijvende naam u helpt een overzicht van de implementatie van voorwaardelijke toegang te blijven gebruiken, is het Volg nummer nuttig als u moet verwijzen naar een beleid in een gesprek. Als u bijvoorbeeld een andere beheerder op de telefoon spreekt, kunt u hen vragen om het beleid EM063 te openen om een probleem op te lossen.
 
-Bijvoorbeeld, statussen de naam van de volgende dat het beleid MFA vereist voor de gebruikers op de externe netwerken met behulp van de app CRP Dynamics marketing:
+De volgende naam geeft bijvoorbeeld aan dat het beleid MFA vereist voor de marketing van gebruikers op externe netwerken met behulp van de Dynamics CRP-app:
 
 `CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
-Naast uw actieve beleidsregels kunt u wordt aangeraden ook implementeren uitgeschakeld beleid die als secundaire fungeren [besturingselementen in onderbreking/EMS-scenario's voor flexibele toegang](../authentication/concept-resilient-controls.md). Uw naamgevingsnorm voor het beleid voor onvoorziene gebeurtenissen moet een paar meer items bevatten: 
+Naast uw actieve beleid is het raadzaam om ook uitgeschakelde beleids regels te implementeren die fungeren als secundaire, [flexibele toegangs controles in storingen/nood scenario's](../authentication/concept-resilient-controls.md). De naamgevings standaard voor het beleid voor nood gevallen moet een aantal meer items bevatten: 
 
-- `ENABLE IN EMERGENCY` aan het begin naar de naam van de opvallen tussen de andere beleidsregels.
-- De naam van een onderbreking van die deze moet worden toegepast.
-- Een bestellen volgnummer om de beheerder om te weten in welke volgorde beleid moeten worden ingeschakeld. 
+- `ENABLE IN EMERGENCY` aan het begin om de naam onder het andere beleid te laten opvallen.
+- De naam van de onderbreking moet van toepassing zijn op.
+- Een Volg nummer van een volg orde om de beheerder te helpen weten in welke volg orde het order beleid moet worden ingeschakeld. 
 
-De naam van de volgende geeft bijvoorbeeld aan dat dit beleid het eerste beleid uit vier die moet u is als er een onderbreking van de MFA inschakelen:
+De volgende naam geeft bijvoorbeeld aan dat dit beleid het eerste beleid is van vier u moet inschakelen als er sprake is van een MFA-onderbreking:
 
 `EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
 
-## <a name="plan-policies"></a>Beleidsregels plant
+## <a name="plan-policies"></a>Beleid plannen
 
-Bij het plannen van uw oplossing van het beleid voor voorwaardelijke toegang te beoordelen of u maken van beleid wilt voor het bereiken van de volgende resultaten. 
+Bepaal bij het plannen van de oplossing voor het beleid voor voorwaardelijke toegang of u beleid moet maken om de volgende resultaten te verkrijgen. 
 
-### <a name="block-access"></a>Toegang blokkeren
+### <a name="block-access"></a>Toegang blok keren
 
-De optie voor het blokkeren van toegang tot krachtige is omdat deze:
+De optie voor het blok keren van de toegang is krachtig omdat:
 
-- Alle toewijzingen voor een gebruiker trumps
-- De stroom moet worden geblokkeerd dat de hele organisatie van de aan te melden bij uw tenant heeft
+- Troeft alle andere toewijzingen voor een gebruiker
+- Biedt de kracht om uw hele organisatie te blok keren om u aan te melden bij uw Tenant
  
-Als u wilt dat de toegang voor alle gebruikers geblokkeerd, moet u ten minste één gebruiker (meestal Noodtoegang-accounts) uitsluiten van het beleid. Zie voor meer informatie, [gebruikers en groepen selecteren](block-legacy-authentication.md#select-users-and-cloud-apps).  
+Als u toegang wilt blok keren voor alle gebruikers, moet u ten minste één gebruiker (doorgaans toegangs accounts voor nood gevallen) uitsluiten van het beleid. Zie [gebruikers en groepen selecteren](block-legacy-authentication.md#select-users-and-cloud-apps)voor meer informatie.  
 
 ### <a name="require-mfa"></a>MFA vereisen
 
-Ter vereenvoudiging van de aanmeldingservaring van uw gebruikers, is het raadzaam om toe te staan dat ze zich aanmelden bij uw cloud-apps met behulp van een gebruikersnaam en wachtwoord. Normaal gesproken zijn er echter ten minste enkele scenario's waarvoor u wordt aangeraden om te vereisen een sterkere vorm van verificatie-account. Met beleid voor voorwaardelijke toegang, kunt u de vereiste voor MFA om bepaalde scenario's te beperken. 
+Als u de aanmeldings ervaring van uw gebruikers wilt vereenvoudigen, kunt u hen toestaan om zich met een gebruikers naam en wacht woord aan te melden bij uw Cloud-apps. Normaal gesp roken zijn er echter ten minste enkele scenario's waarvoor het aanbeveling verdient een sterkere vorm van account verificatie te vereisen. Met een beleid voor voorwaardelijke toegang kunt u de vereiste voor MFA beperken tot bepaalde scenario's. 
 
-Algemene scenario's om MFA te vereisen zijn toegang:
+Algemene use cases om MFA te vereisen is toegang:
 
 - [Door beheerders](howto-baseline-protect-administrators.md)
-- [Tot bepaalde apps](app-based-mfa.md) 
-- [Van netwerklocaties, u niet vertrouwt](untrusted-networks.md).
+- [Naar specifieke apps](app-based-mfa.md) 
+- [Vanaf netwerk locaties vertrouwt u niet](untrusted-networks.md).
 
-### <a name="respond-to-potentially-compromised-accounts"></a>Reageren op mogelijk verdachte accounts
+### <a name="respond-to-potentially-compromised-accounts"></a>Reageren op mogelijk gemanipuleerde accounts
 
-U kunt automatische antwoorden voor aanmeldingen vanaf mogelijk verdachte identiteiten implementeren met beleid voor voorwaardelijke toegang. De kans dat een account is aangetast, uitgedrukt in de vorm van risiconiveaus. Er zijn twee risiconiveaus berekend door identity protection: aanmeldingsrisico en gebruikersrisico. Voor het implementeren van een reactie op een aanmeldingsrisico, hebt u twee opties:
+Met beleid voor voorwaardelijke toegang kunt u automatische antwoorden op aanmeldingen implementeren van mogelijk aangetast identiteiten. De kans dat een account is aangetast, wordt uitgedrukt in de vorm van risico niveaus. Er zijn twee risico niveaus berekend door identiteits beveiliging: aanmeldings risico en gebruikers risico. Als u een reactie op een aanmeldings risico wilt implementeren, hebt u twee opties:
 
-- [De voorwaarde voor aanmeldingsrisico](conditions.md#sign-in-risk) in beleid voor voorwaardelijke toegang
-- [Het beleid voor aanmeldingsrisico](../identity-protection/howto-sign-in-risk-policy.md) in identiteitsbeveiliging 
+- [De voor waarde voor aanmeldings risico in het beleid voor](conditions.md#sign-in-risk) voorwaardelijke toegang
+- [Het aanmeldings risico beleid](../identity-protection/howto-sign-in-risk-policy.md) voor identiteits beveiliging 
 
-Het aanmeldingsrisico als voorwaarde adressering verdient de voorkeur omdat dit u meer opties voor het aanpassen biedt.
+Het adresseren van het aanmeldings risico als voor waarde is de voorkeurs methode omdat u meer aanpassings opties hebt.
 
-Het risiconiveau van de gebruiker is alleen beschikbaar als [beleid voor gebruikersrisico's](../identity-protection/howto-user-risk-policy.md) in identity protection. 
+Het gebruikers risico niveau is alleen beschikbaar als [beleid voor gebruikers Risico's](../identity-protection/howto-user-risk-policy.md) in identiteits beveiliging. 
 
-Zie voor meer informatie, [wat is Azure Active Directory Identity Protection?](../identity-protection/overview.md) 
+Zie [Wat is Azure Active Directory Identity Protection?](../identity-protection/overview.md) voor meer informatie. 
 
 ### <a name="require-managed-devices"></a>Beheerde apparaten vereisen
 
-De toename van ondersteunde apparaten voor toegang tot uw cloudresources kunt u de productiviteit van uw gebruikers verbeteren. Aan de andere kant wilt u waarschijnlijk geen bepaalde resources in uw omgeving om te worden geopend vanaf apparaten met een onbekende beveiligingsniveau. Voor de betrokken resources, moet u vereisen dat gebruikers hebben alleen toegang met behulp van een beheerd apparaat. Zie voor meer informatie, [hoe u beheerde apparaten vereist voor toegang tot cloud-Apps met voorwaardelijke toegang](require-managed-devices.md). 
+De verspreiding van ondersteunde apparaten om toegang te krijgen tot uw Cloud bronnen helpt u bij het verbeteren van de productiviteit van uw gebruikers. Op de gespiegelde zijde wilt u waarschijnlijk niet dat bepaalde resources in uw omgeving toegankelijk zijn voor apparaten met een onbekend beveiligings niveau. Voor de betrokken resources moet u vereisen dat gebruikers alleen toegang hebben tot ze via een beheerd apparaat. Zie voor meer informatie [beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang](require-managed-devices.md). 
 
 ### <a name="require-approved-client-apps"></a>Goedgekeurde client-apps vereisen
 
-Een van de eerste beslissingen die u maken wilt voor uw eigen apparaten meebrengen (BYOD)-scenario's, is de noodzaak voor het beheren van het hele apparaat of alleen de gegevens erop. Uw werknemers gebruiken mobiele apparaten voor zowel privé- als werktaken. Terwijl te zorgen dat uw werknemers productief zijn kan, wilt u ook om te voorkomen dat gegevens verloren gaan. Met voorwaardelijke toegang van Azure Active Directory (Azure AD), kunt u de toegang beperken tot uw cloud-apps op goedgekeurde client-apps die uw bedrijfsgegevens kunnen beveiligen. Zie voor meer informatie, [goedgekeurde client-apps vereisen voor toegang tot cloud-Apps met voorwaardelijke toegang](app-based-conditional-access.md).
+Een van de eerste beslissingen die u moet nemen voor het nemen van uw eigen apparaten (BYOD), is of u nu het hele apparaat moet beheren of alleen de gegevens erop. Uw werk nemers gebruiken mobiele apparaten voor zowel privé-als werk taken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd. Zie voor meer informatie [goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Verouderde verificatie blokkeren
 
-Azure AD biedt ondersteuning voor diverse van de meest gebruikte verificatie en autorisatie protocollen, waaronder oudere authentication. Hoe kunt u voorkomen dat apps met behulp van verouderde verificatie van toegang tot resources van uw tenant? De aanbeveling is om te blokkeren dat ze alleen met een beleid voor voorwaardelijke toegang. Indien nodig, kunt u alleen bepaalde gebruikers en specifieke netwerklocaties apps die zijn gebaseerd op verouderde verificatie gebruiken. Zie voor meer informatie, [verouderde verificatie met Azure AD met voorwaardelijke toegang blokkeren](block-legacy-authentication.md).
+Azure AD biedt ondersteuning voor een aantal van de meest gebruikte verificatie-en autorisatie protocollen, inclusief verouderde verificatie. Hoe kunt u voor komen dat apps die verouderde verificatie gebruiken, toegang krijgen tot de resources van uw Tenant? De aanbeveling is om ze alleen te blok keren met een beleid voor voorwaardelijke toegang. Als dat nodig is, kunt u alleen bepaalde gebruikers en specifieke netwerk locaties gebruiken voor het gebruik van apps die zijn gebaseerd op verouderde verificatie. Zie voor meer informatie [verouderde verificatie blok keren voor Azure AD met voorwaardelijke toegang](block-legacy-authentication.md).
 
-## <a name="test-your-policy"></a>Het beleid testen
+## <a name="test-your-policy"></a>Uw beleid testen
 
-Voordat u een beleid implementeren naar productie, moet u testen om te controleren of deze werkt zoals verwacht, is.
+Voordat u een beleid in productie uitrollen, moet u controleren of het werkt zoals verwacht.
 
-1. Testgebruikers maken
-1. Een testplan maken
+1. Test gebruikers maken
+1. Een test plan maken
 1. Het beleid configureren
 1. Een gesimuleerde aanmelding evalueren
-1. Het beleid testen
+1. Uw beleid testen
 1. Opschonen
 
-### <a name="create-test-users"></a>Testgebruikers maken
+### <a name="create-test-users"></a>Test gebruikers maken
 
-Als u wilt testen van een beleid, een set van gebruikers die vergelijkbaar is met de gebruikers in uw omgeving te maken. Testgebruikers maken, kunt u controleren of uw beleidsregels werken zoals verwacht voordat u gevolgen hebben voor echte gebruikers en hun toegang tot apps en resources worden mogelijk onderbroken. 
+Als u een beleid wilt testen, maakt u een set gebruikers die vergelijkbaar is met de gebruikers in uw omgeving. Door test gebruikers te maken, kunt u controleren of uw beleid werkt zoals verwacht voordat u van invloed is op echte gebruikers en de toegang tot apps en resources mogelijk verstoort. 
 
-Sommige organisaties hebben test tenants voor dit doel. Echter, kan het lastig zijn om alle voorwaarden en apps in een testtenant voor het testen van het resultaat van een beleid volledig opnieuw te maken. 
+Sommige organisaties hebben test tenants voor dit doel einde. Het kan echter lastig zijn om alle voor waarden en apps in een test Tenant opnieuw te maken om het resultaat van een beleid volledig te testen. 
 
-### <a name="create-a-test-plan"></a>Een testplan maken
+### <a name="create-a-test-plan"></a>Een test plan maken
 
-De test-abonnement is belangrijk dat u hebt een vergelijking tussen de verwachte resultaten en de werkelijke resultaten. U moet altijd een verwachting voordat u iets test hebben. De volgende tabel geeft een overzicht van voorbeeld Testscenario's. Pas de scenario's en de verwachte resultaten op basis van hoe uw CA-beleid zijn geconfigureerd.
+Het test plan is belang rijk voor een vergelijking tussen de verwachte resultaten en de werkelijke resultaten. U moet altijd een verwachting hebben voordat u iets kunt testen. De volgende tabel geeft een overzicht van voor beelden van test cases. Pas de scenario's en verwachte resultaten aan op basis van de configuratie van uw CA-beleid.
 
 |Beleid |Scenario |Verwacht resultaat | Resultaat |
 |---|---|---|---|
-|[Vereis MFA bij inactiviteit](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Gemachtigde gebruiker zich in *App* terwijl op een vertrouwde locatie bevindt / werken|Gebruiker is niet gevraagd om MFA| |
-|[Vereis MFA bij inactiviteit](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Gemachtigde gebruiker zich in *App* terwijl niet op een vertrouwde locatie bevindt / werken|Gebruiker wordt gevraagd naar MFA en kan zich aanmelden met succes| |
-|[MFA vereisen (voor de beheerder)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globale beheerder zich aanmeldt bij *App*|Beheerder wordt gevraagd naar MFA| |
-|[Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Gebruiker zich aanmeldt bij *App* met behulp van een [Tor-browser](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Beheerder wordt gevraagd naar MFA| |
-|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Gemachtigde gebruiker wil zich aanmelden vanaf een geautoriseerd apparaat|Toegang verleend| |
-|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Pogingen van de gebruiker zich aanmeldt vanaf een niet-gemachtigd apparaat geautoriseerd|Toegang geblokkeerd| |
-|[Wijzigen van wachtwoorden voor riskante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Gemachtigde gebruiker probeert zich aanmelden met gestolen referenties (hoog risico zich aanmelden)|Gebruiker wordt gevraagd om wachtwoord te wijzigen of de toegang is geblokkeerd op basis van uw beleid| |
+|[MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* op een vertrouwde locatie/werk|Gebruiker wordt niet gevraagd om MFA| |
+|[MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Geautoriseerde gebruiker meldt zich aan bij de *app* , maar niet op een vertrouwde locatie/werk|De gebruiker wordt gevraagd om te MFA en kan zich aanmelden| |
+|[MFA vereisen (voor beheerder)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|De globale beheerder meldt zich aan bij de *app*|Beheerder wordt gevraagd om te MFA| |
+|[Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Gebruiker meldt zich aan bij de *app* met een [Tor-Browser](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)|Beheerder wordt gevraagd om te MFA| |
+|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat|Toegang verleend| |
+|[Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat|Toegang geblokkeerd| |
+|[Wachtwoord wijziging voor Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)|De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid| |
 
 ### <a name="configure-the-policy"></a>Het beleid configureren
 
-Beheren van beleid voor voorwaardelijke toegang is een handmatige taak. U kunt in één centrale locatie - de pagina met voorwaardelijk beleid voor voorwaardelijke toegang beheren in de Azure-portal. Een beginpunt voor de pagina voor voorwaardelijke toegang is de **Security** sectie de **Active Directory** navigatiedeelvenster. 
+Het beheren van beleid voor voorwaardelijke toegang is een hand matige taak. In de Azure Portal kunt u uw beleid voor voorwaardelijke toegang beheren op één centrale locatie: de pagina voor voorwaardelijke toegang. Een ingangs punt naar de pagina voorwaardelijke toegang is de sectie **beveiliging** in het navigatie deel venster **Active Directory** . 
 
 ![Voorwaardelijke toegang](media/plan-conditional-access/03.png)
 
-Als u wilt meer informatie over het maken van beleid voor voorwaardelijke toegang, Zie [MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang](app-based-mfa.md). In deze snelstartgids helpt u bij:
+Als u meer wilt weten over het maken van beleid voor voorwaardelijke toegang, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md). Deze Snelstartgids helpt u bij het volgende:
 
-- Vertrouwd raken met de gebruikersinterface.
-- Krijg een eerste indruk van de werking van voorwaardelijke toegang. 
+- Vertrouwd raken met de gebruikers interface.
+- Profiteer van de eerste indruk van de werking van voorwaardelijke toegang. 
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelding evalueren
 
-Nu dat u uw beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weet of deze werkt zoals verwacht. Als een eerste stap gebruikt u de voorwaardelijke toegang [wat gebeurt er als beleid hulpprogramma](what-if-tool.md) voor het simuleren van een aanmelding van uw testgebruiker. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.
+Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de functie voor voorwaardelijke toegang [Wat als-beleid](what-if-tool.md) voor het simuleren van een aanmelding van uw test gebruiker. Met de simulatie wordt de impact van deze aanmelding op uw beleid geschat en wordt een simulatierapport gegenereerd.
 
 >[!NOTE]
-> Hoewel een gesimuleerde uitvoeren u indruk van de impact is van een beleid voor voorwaardelijke toegang geeft, is het geen vervanging voor een werkelijke testuitvoering.
+> Hoewel een gesimuleerde uitvoering u indruk geeft van de impact van het beleid voor voorwaardelijke toegang, wordt een daad werkelijk uitgevoerde test niet vervangen.
 
-### <a name="test-your-policy"></a>Het beleid testen
+### <a name="test-your-policy"></a>Uw beleid testen
 
-Testcases volgens uw testplan uitvoeren. In deze stap maakt uitvoeren u via een end-to-end-test van elk beleid voor uw testgebruikers om ervoor te zorgen dat elk beleid correct werkt. Gebruik de scenario's voor het uitvoeren van elke test hierboven hebt gemaakt.
+Voer test cases uit op basis van uw test plan. In deze stap voert u een end-to-end-test uit voor elk beleid voor uw test gebruikers om ervoor te zorgen dat elk beleid correct functioneert. Gebruik de scenario's die hierboven zijn gemaakt om elke test uit te voeren.
 
-Het is belangrijk om ervoor te zorgen dat u de uitsluitingscriteria voor van een beleid voor de test. U kunt bijvoorbeeld een gebruiker of groep uitsluiten van een beleid dat MFA vereist. Test of de uitgesloten gebruikers wordt gevraagd voor MFA, omdat de combinatie van ander beleid MFA voor gebruikers vereisen kunt.
+Het is belang rijk om ervoor te zorgen dat u de uitsluitings criteria van een beleid test. U kunt bijvoorbeeld een gebruiker of groep uitsluiten van een beleid waarvoor MFA vereist is. Test of de uitgesloten gebruikers om MFA wordt gevraagd, omdat de combi natie van andere beleids regels mogelijk MFA vereist voor die gebruikers.
 
 ### <a name="cleanup"></a>Opschonen
 
-De procedure opschonen bestaat uit de volgende stappen uit:
+De opschoon procedure bestaat uit de volgende stappen:
 
-1. Het beleid uitschakelen.
+1. Schakel het beleid uit.
 1. Verwijder de toegewezen gebruikers en groepen.
-1. Verwijder de testgebruikers.  
+1. De test gebruikers verwijderen.  
 
 ## <a name="move-to-production"></a>Verplaatsen naar productie
 
-Wanneer er nieuwe beleidsregels zijn gereed voor uw omgeving, kunt u deze in fasen implementeren:
+Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, implementeert u deze in fasen:
 
-- Interne wijziging communicatie bieden aan eindgebruikers.
-- Beginnen met een klein aantal gebruikers en controleer of dat het beleid werkt zoals verwacht.
-- Wanneer u een beleid om op te nemen meer gebruikers wilt uitbreiden, blijven uitsluiten van alle beheerders. Met uitzondering van beheerders, zorgt u ervoor dat iemand nog steeds toegang tot een beleid heeft als een wijziging vereist is.
-- Alleen als dit is vereist, moet u een beleid toepassen op alle gebruikers.
+- Bied interne wijzigings communicatie aan eind gebruikers aan.
+- Begin met een kleine groep gebruikers en controleer of het beleid zich gedraagt zoals verwacht.
+- Wanneer u een beleid uitbreidt om meer gebruikers op te nemen, moet u alle beheerders blijven uitsluiten. Met uitzonde ring van beheerders weet u zeker dat iemand nog steeds toegang tot een beleid heeft als een wijziging is vereist.
+- Pas een beleid toe op alle gebruikers als dat nodig is.
 
-Als een best practice, ten minste één gebruikersaccount maken dat is:
+Als best practice moet u ten minste één gebruikers account maken dat:
 
-- Toegewezen aan het beheer van beleid
-- Uitgesloten van alle beleidsregels voor uw
+- Toegewezen aan beleids beheer
+- Uitgesloten van al uw beleids regels
 
-## <a name="rollback-steps"></a>Terugdraaien van de stappen
+## <a name="rollback-steps"></a>Stappen voor ongedaan maken
 
-Als u uw zojuist geïmplementeerde beleid terugdraaien wilt, gebruikt u een of meer van de volgende opties om terug te draaien:
+Als u de zojuist geïmplementeerde beleids regels wilt terugdraaien, gebruikt u een of meer van de volgende opties om terug te draaien:
 
-1. **Het beleid uitschakelen** -uitschakelen van een beleid zorgt ervoor dat het is niet van toepassing wanneer een gebruiker probeert aan te melden. U kunt altijd terugkomen en het beleid in te schakelen wanneer u wilt gebruiken.
+1. Als u **het beleid** uitschakelt, wordt het beleid niet toegepast wanneer een gebruiker zich probeert aan te melden. U kunt altijd terugkomen en het beleid inschakelen wanneer u het wilt gebruiken.
 
-   ![Beleid uitschakelen](media/plan-conditional-access/07.png)
+   ![beleid uitschakelen](media/plan-conditional-access/07.png)
 
-1. **Uitsluiten van een gebruiker / groep van een beleid** -als een gebruiker geen toegang tot de app is, kunt u kiezen om uit te sluiten van de gebruiker van het beleid
+1. **Een gebruiker of groep uitsluiten van een beleid** : als een gebruiker geen toegang kan krijgen tot de app, kunt u ervoor kiezen om de gebruiker uit te sluiten van het beleid
 
    ![Exluce gebruikers](media/plan-conditional-access/08.png)
 
    > [!NOTE]
-   > Deze optie moet worden gebruikt in spaarzaam, alleen in situaties waar de gebruiker vertrouwd wordt. De gebruiker moet zo snel mogelijk terug aan het beleid of de groep worden toegevoegd.
+   > Deze optie moet spaarzaam worden gebruikt, alleen in situaties waarin de gebruiker wordt vertrouwd. De gebruiker moet zo snel mogelijk worden toegevoegd aan het beleid of de groep.
 
-1. **Verwijder het beleid** : als het beleid niet langer vereist is, verwijderen.
+1. **Het beleid verwijderen** : als het beleid niet meer nodig is, verwijdert u het.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [documentatie voor Azure AD voor voorwaardelijke toegang](index.yml) voor een overzicht van de beschikbare informatie.
+Bekijk de [documentatie voor voorwaardelijke toegang van Azure AD](index.yml) voor een overzicht van de beschik bare informatie.
