@@ -1,81 +1,77 @@
 ---
-title: Profileer live Azure App Service-apps met Application Insights | Microsoft Docs
-description: Profileer live-apps in Azure App Service met Application Insights Profiler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Live Azure App Service-apps profileren met Application Insights | Microsoft Docs
+description: Profileer Live apps op Azure App Service met Application Insights Profiler.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 71a8a0e268c1b264a0a1a7f955f310bfddc830d2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439942"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899941"
 ---
-# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profileer live Azure App Service-apps met Application Insights
+# <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Live Azure App Service-apps met Application Insights profiel
 
-U kunt uitvoeren Profiler op ASP.NET en ASP.NET Core-apps die worden uitgevoerd op Azure App Service met behulp van basis-servicelaag of hoger. Inschakelen van Profiler in Linux is momenteel alleen mogelijk via [deze methode](profiler-aspnetcore-linux.md).
+U kunt Profiler uitvoeren op ASP.NET en ASP.NET Core apps die worden uitgevoerd op Azure App Service met de Basic-servicelaag of hoger. Het inschakelen van Profiler op Linux is momenteel alleen mogelijk via [deze methode](profiler-aspnetcore-linux.md).
 
-## <a id="installation"></a> Profiler inschakelen voor uw app
-Als u wilt Profiler inschakelen voor een app, volg de onderstaande instructies. Als u een ander type Azure-service uitvoert, vindt hier u instructies voor het inschakelen van Profiler op andere ondersteunde platforms:
+## <a id="installation"></a>Profiler voor uw app inschakelen
+Als u Profiler voor een app wilt inschakelen, volgt u de onderstaande instructies. Als u een ander type Azure-service gebruikt, zijn hier instructies voor het inschakelen van Profiler op andere ondersteunde platforms:
 * [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric-toepassingen](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Service Fabric toepassingen](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuele machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler is vooraf geïnstalleerd als onderdeel van de runtime van de App-Services. De onderstaande stappen wordt beschreven hoe inschakelt voor uw App Service. Volg deze stappen, zelfs als u de App Insights-SDK hebt opgenomen in uw toepassing tijdens het opbouwen.
+Application Insights Profiler wordt vooraf geïnstalleerd als onderdeel van de App Services runtime. In de onderstaande stappen ziet u hoe u deze functie inschakelt voor uw App Service. Volg deze stappen, zelfs als u de app Insights-SDK in uw toepassing hebt opgenomen tijdens het bouwen.
 
-1. Schakel 'Always On'-instelling voor uw appservice. U kunt de instelling op de pagina configuratie van uw App Service onder algemene instellingen bijwerken.
-1. Ga naar de **App Services** deelvenster in de Azure-portal.
-1. Navigeer naar **instellingen > Application Insights** deelvenster.
+1. Schakel de instelling altijd on in voor uw app service. U kunt de instelling op de pagina configuratie van uw App Service onder algemene instellingen bijwerken.
+1. Ga naar het deel venster **app Services** in het Azure Portal.
+1. Navigeer naar **instellingen >** deel venster Application Insights.
 
-   ![App Insights inschakelen in App Services-portal](./media/profiler/AppInsights-AppServices.png)
+   ![App Insights inschakelen op App Services portal](./media/profiler/AppInsights-AppServices.png)
 
-1. Ofwel de instructies in het deelvenster te maken van een nieuwe resource of Selecteer een bestaande App Insights-resource voor het bewaken van uw app. Controleer ook of de Profiler is **op**. Als uw Application Insights-resource in een ander abonnement vanuit uw App Service is, kunt u deze pagina niet gebruiken voor het configureren van Application Insights. U kunt nog steeds dit handmatig doen dat door het maken van de vereiste app-instellingen handmatig. [De volgende sectie bevat instructies voor het handmatig inschakelen van Profiler.](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. Volg de instructies in het deel venster om een nieuwe resource te maken of selecteer een bestaande app Insights-resource om uw app te controleren. Zorg er ook voor dat de Profiler is **ingeschakeld**. Als uw Application Insights-bron zich in een ander abonnement van uw App Service bevindt, kunt u deze pagina niet gebruiken om Application Insights te configureren. U kunt dit nog steeds hand matig doen door de benodigde app-instellingen hand matig te maken. [In de volgende sectie vindt u instructies voor het hand matig inschakelen van Profiler.](#enable-profiler-manually-or-with-azure-resource-manager) 
 
-   ![App Insights-site-extensie toevoegen][Enablement UI]
+   ![App Insights-site-uitbrei ding toevoegen][Enablement UI]
 
-1. Profiler is nu ingeschakeld met behulp van een App-instelling van de App-Services.
+1. Profiler is nu ingeschakeld met een App Services app-instelling.
 
     ![App-instelling voor Profiler][profiler-app-setting]
 
-## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>Inschakelen van Profiler handmatig of met Azure Resource Manager
-Application Insights Profiler kan worden ingeschakeld door het maken van appinstellingen voor uw Azure App Service. De pagina met de bovenstaande opties wordt deze appinstellingen voor u gemaakt. Maar u kunt het maken van deze instellingen met behulp van een sjabloon of op andere wijze automatiseren. Deze instellingen ook werken als uw Application Insights-resource in een ander abonnement van uw Azure App Service is.
-Dit zijn de instellingen die nodig zijn voor de profiler inschakelen:
+## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>Profiler hand matig of met Azure Resource Manager inschakelen
+Application Insights Profiler kan worden ingeschakeld door app-instellingen voor uw Azure App Service te maken. De pagina met de hierboven weer gegeven opties maakt deze app-instellingen voor u. Maar u kunt het maken van deze instellingen automatiseren met een sjabloon of op een andere manier. Deze instellingen werken ook als uw Application Insights-resource zich in een ander abonnement bevindt dan uw Azure App Service.
+Dit zijn de instellingen die nodig zijn om de Profiler in te scha kelen:
 
-|App-instelling    | Value    |
+|App-instelling    | Waarde    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey voor uw Application Insights-resource    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-|DiagnosticServices_EXTENSION_VERSION | ~3 |
+|DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-U kunt deze waarden met behulp van instellen [Azure Resource Manager-sjablonen](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+U kunt deze waarden instellen met behulp van [Azure Resource Manager sjablonen](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure Power shell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [Azure cli](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>Profiler handmatig inschakelen voor andere clouds
+### <a name="enabling-profiler-for-other-clouds-manually"></a>Profiler hand matig inschakelen voor andere Clouds
 
-Als u de profiler voor andere clouds inschakelen wilt, kunt u de onderstaande app-instellingen.
+Als u de Profiler voor andere Clouds wilt inschakelen, kunt u de onderstaande app-instellingen gebruiken.
 
-|App-instelling    | US Government waarden| China-cloud |   
+|App-instelling    | Amerikaanse overheids waarden| China-cloud |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | https://agent.serviceprofiler.azure.us    | https://profiler.applicationinsights.azure.cn |
 |ApplicationInsightsEndpoint | https://dc.applicationinsights.us | https://dc.applicationinsights.azure.cn |
 
 ## <a name="disable-profiler"></a>Profiler uitschakelen
 
-Profiler voor een individuele app-exemplaar, onder opnieuw te starten of stoppen **-webtaken**, gaat u naar de app-resource. Als u wilt verwijderen van Profiler, gaat u naar **extensies**.
+Als u Profiler wilt stoppen of opnieuw wilt opstarten voor een exemplaar van een afzonderlijke app, gaat u naar de app-resource onder **webjobs**. Als u Profiler wilt verwijderen, gaat u naar **extensies**.
 
-![Profiler uitschakelen voor een webtaak][disable-profiler-webjob]
+![Profiler voor een Webtaak uitschakelen][disable-profiler-webjob]
 
-Het is raadzaam dat u hebt ingeschakeld op al uw apps voor het detecteren van eventuele prestatieproblemen zo vroeg mogelijk Profiler.
+U wordt aangeraden profilering in te scha kelen voor al uw apps om prestatie problemen zo snel mogelijk op te sporen.
 
-De Profiler-bestanden kunnen worden verwijderd wanneer het gebruik van web Deploy voor het implementeren van wijzigingen naar uw webtoepassing. U kunt voorkomen dat de verwijdering door uit te sluiten van de map App_Data worden verwijderd tijdens de implementatie. 
+Bestanden van Profiler kunnen worden verwijderd wanneer u Web implementeren gebruikt om wijzigingen in uw webtoepassing te implementeren. U kunt voor komen dat de verwijdering wordt verwijderd door de map App_Data uit te sluiten van verwijderen tijdens de implementatie. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

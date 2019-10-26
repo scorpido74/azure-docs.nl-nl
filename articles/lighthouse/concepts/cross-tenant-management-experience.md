@@ -4,19 +4,19 @@ description: Azure delegated Resource Management maakt een cross-Tenant beheer m
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598439"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901819"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
-In dit artikel worden de scenario's beschreven die u als service provider kunt gebruiken met [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) om Azure-resources te beheren voor meerdere klanten vanuit uw eigen Tenant in de [Azure Portal](https://portal.azure.com).
+Als service provider kunt u [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) gebruiken voor het beheren van Azure-resources voor meerdere klanten vanuit uw eigen Tenant in de [Azure Portal](https://portal.azure.com). De meeste taken en services kunnen worden uitgevoerd op gedelegeerde Azure-resources in beheerde tenants. In dit artikel worden enkele van de verbeterde scenario's beschreven waarbij Azure delegated resource management kan worden effectief.
 
 > [!NOTE]
 > Azure delegated resource management kan ook worden gebruikt binnen een onderneming met meerdere tenants voor het vereenvoudigen van cross-Tenant beheer.
@@ -37,9 +37,15 @@ Met behulp van Azure delegated resource management kunnen geautoriseerde gebruik
 
 ![Klant bronnen die worden beheerd via een Tenant van een service provider](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>Ondersteunde services en scenario's
+## <a name="apis-and-management-tool-support"></a>Ondersteuning voor Api's en beheer hulpprogramma's
 
-Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgende scenario's met gedelegeerde klant resources:
+U kunt Beheer taken op gedelegeerde resources rechtstreeks uitvoeren in de portal of met behulp van Api's en beheer hulpprogramma's (zoals Azure CLI en Azure PowerShell). Alle bestaande Api's kunnen worden gebruikt bij het werken met gedelegeerde resources, zolang de functionaliteit wordt ondersteund voor cross-Tenant beheer en de gebruiker de juiste machtigingen heeft.
+
+We bieden ook Api's voor het uitvoeren van Azure gedelegeerde resource beheer taken. Zie de sectie **Naslag informatie** voor meer informatie.
+
+## <a name="enhanced-services-and-scenarios"></a>Verbeterde services en scenario's
+
+De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources in beheerde tenants. Hieronder vindt u enkele van de belangrijkste scenario's waarbij beheer van meerdere tenants effectief kan zijn.
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +61,7 @@ Op dit moment ondersteunt de functionaliteit voor cross-Tenant beheer de volgend
 
 [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Waarschuwingen weer geven voor gedelegeerde abonnementen in de Azure Portal of programmatisch via REST API-aanroepen, met de mogelijkheid om waarschuwingen voor alle abonnementen weer te geven
+- Waarschuwingen voor gedelegeerde abonnementen weer geven, met de mogelijkheid om waarschuwingen voor alle abonnementen weer te geven
 - Details van het activiteiten logboek voor gedelegeerde abonnementen weer geven
 - Log Analytics: gegevens opvragen uit externe werk ruimten van klanten in meerdere tenants
 - Waarschuwingen maken in de tenants van de klant die automatisering activeren, zoals Azure Automation runbooks of Azure Functions, in de Tenant van de service provider via webhooks
@@ -121,16 +127,9 @@ Ondersteunings aanvragen:
 Houd bij alle scenario's rekening met de volgende beperkingen:
 
 - Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com`. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/`. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
-- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar, beheerder van gebruikers toegang of ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden ook niet ondersteund.
+- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar of ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden niet ondersteund.
 - Op dit moment kunt u geen abonnement (of resource groep binnen een abonnement) voor Azure delegated Resource Management gebruiken als het abonnement gebruikmaakt van Azure Databricks. Als een abonnement is geregistreerd voor onboarding met de resource provider **micro soft. ManagedServices** , kunt u op dit moment geen Databricks-werk ruimte maken voor dat abonnement.
 - U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Api's en beheer hulpprogramma's gebruiken met beheer van meerdere tenants
-
-Voor de ondersteunde services en scenario's die hierboven worden vermeld, kunt u beheer taken rechtstreeks uitvoeren in de portal of met behulp van Api's en beheer hulpprogramma's (zoals Azure CLI en Azure PowerShell). Alle bestaande Api's kunnen worden gebruikt bij het werken met gedelegeerde resources (voor services die worden ondersteund).
-
-Er zijn ook Api's die specifiek zijn voor het uitvoeren van Azure gedelegeerde resource beheer taken. Zie de sectie **Naslag informatie** voor meer informatie.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

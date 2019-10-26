@@ -1,25 +1,20 @@
 ---
 title: Veelgestelde vragen over Azure-toepassing Insights | Microsoft Docs
 description: Veelgestelde vragen over Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802289"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899525"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Veelgestelde vragen
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: veelgestelde vragen
 
 ## <a name="configuration-problems"></a>Configuratie problemen
 *Ik ondervind problemen bij het instellen van mijn:*
@@ -69,28 +64,28 @@ De details zijn afhankelijk van het type project. Voor een webtoepassing:
 
 * Voegt deze bestanden toe aan uw project:
 
-  * ApplicationInsights.config.
-  * ai.js
+  * ApplicationInsights. config.
+  * AI. js
 * Installeert deze NuGet-pakketten:
 
   * *Application Insights-API* : de core-API
-  * *Application Insights-API voor* webtoepassingen: wordt gebruikt voor het verzenden van telemetrie van de server
+  * *Application Insights-API voor webtoepassingen* : wordt gebruikt voor het verzenden van telemetrie van de server
   * *Application Insights-API voor Java script-toepassingen* : wordt gebruikt voor het verzenden van telemetrie van de client
 
     De pakketten bevatten de volgende assembly's:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
+  * Micro soft. ApplicationInsights
+  * Micro soft. ApplicationInsights. platform
 * Hiermee worden items ingevoegd in:
 
   * Web.config
-  * packages.config
+  * packages. config
 * (Alleen nieuwe projecten: als u [Application Insights toevoegt aan een bestaand project][start], moet u dit hand matig doen.) Hiermee worden fragmenten ingevoegd in de client-en server code om ze te initialiseren met de Application Insights Resource-ID. In een MVC-app wordt bijvoorbeeld code ingevoegd in de basis pagina weergaven/gedeeld/_Layout. cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hoe kan ik upgrade van oudere SDK-versies?
 Zie de [release opmerkingen](release-notes.md) voor de SDK die geschikt is voor uw type toepassing.
 
 ## <a name="update"></a>Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?
-Klik `ApplicationInsights.config` in Solution Explorer met de rechter muisknop en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
+Klik in Solution Explorer met de rechter muisknop op `ApplicationInsights.config` en kies vervolgens **Update Application Insights**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
 
 ## <a name="what-is-status-monitor"></a>Wat is Status Monitor?
 
@@ -103,7 +98,7 @@ Een bureau blad-app die u kunt gebruiken op uw IIS-webserver om Application Insi
 Van server web apps:
 
 * HTTP-aanvragen
-* [Afhankelijkheden](asp-net-dependencies.md). Aanroepen naar: SQL-data bases; HTTP-aanroepen naar externe services; Azure Cosmos DB, tabel, Blob Storage en wachtrij. 
+* [Afhankelijkheden](asp-net-dependencies.md). Aanroepen naar: SQL data bases; HTTP-aanroepen naar externe services; Azure Cosmos DB, tabel, Blob Storage en wachtrij. 
 * [Uitzonde ringen](asp-net-exceptions.md) en stack traceringen.
 * [Prestatie meter items](performance-counters.md) : als u [status monitor](monitor-performance-live-website-now.md)gebruikt, wordt [Azure monitoring voor app Services](azure-web-apps.md), [Azure monitoring voor VM of virtual machine Scale set](azure-vm-vmss-apps.md)of de [Application Insights verzamelde Writer](java-collectd.md).
 * [Aangepaste gebeurtenissen en metrische gegevens](api-custom-events-metrics.md) die u codeert.
@@ -112,7 +107,7 @@ Van server web apps:
 Van [client webpagina's](javascript.md):
 
 * [Aantal pagina weergaven](usage-overview.md)
-* [Ajax](asp-net-dependencies.md) -aanroepen Aanvragen die afkomstig zijn van een script dat wordt uitgevoerd.
+* [Ajax-aanroepen](asp-net-dependencies.md) Aanvragen die afkomstig zijn van een script dat wordt uitgevoerd.
 * Laad gegevens pagina weergave
 * Aantal gebruikers en sessies
 * [Geverifieerde gebruikers-Id's](api-custom-events-metrics.md#authenticated-users)
@@ -137,8 +132,8 @@ Meer informatie voor [ASP.net](api-filtering-sampling.md) of [Java](java-filter-
 
 We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Browser-telemetrie: Het IP-adres van de afzender wordt verzameld.
-* Server-telemetrie: De module Application Insights verzamelt het IP-adres van de client. Als `X-Forwarded-For` is ingesteld, wordt deze niet verzameld.
+* Browser-telemetrie: we verzamelen het IP-adres van de afzender.
+* Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Het wordt niet verzameld als `X-Forwarded-For` is ingesteld.
 * Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
 
 
@@ -165,7 +160,7 @@ Dit is mogelijk als uw code dergelijke gegevens verzendt. Dit kan ook gebeuren a
 
 U kunt het volgende doen:
 
-* Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. of
+* Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. Of
 * Schrijf een proxy die op uw server wordt uitgevoerd en laat de webclient gegevens verzenden via die proxy.
 
 ## <a name="post"></a>Hoe kan ik raadpleegt u POST gegevens in diagnostische Zoek opdrachten?
@@ -200,13 +195,13 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 | Logboek traceringen zoeken |[Een logboek registratie adapter toevoegen](asp-net-trace-logs.md) |Diagnose uitzonde ringen, prestatie problemen |
 | Basis beginselen van client gebruik: pagina weergaven, sessies,... |[Java script-initialisatie functie in webpagina's](javascript.md) |Gebruiksanalyse |
 | Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](api-custom-events-metrics.md) |Gebruikerservaring verbeteren |
-| Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](api-custom-events-metrics.md) |Business intelligence |
+| Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](api-custom-events-metrics.md) |Business Intelligence |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Waarom zijn de aantallen in zoek-en metrische grafieken niet gelijk?
 
 Door [steek proeven](sampling.md) wordt het aantal telemetriegegevens (aanvragen, aangepaste gebeurtenissen, enzovoort) verminderd die daad werkelijk vanuit uw app naar de portal worden verzonden. In de zoek opdracht ziet u het aantal items dat daad werkelijk is ontvangen. In metrische grafieken die een aantal gebeurtenissen weer geven, ziet u het aantal oorspronkelijke gebeurtenissen dat heeft plaatsgevonden. 
 
-Elk item dat wordt verzonden, bevat een `itemCount` eigenschap die laat zien hoeveel oorspronkelijke gebeurtenissen een item vertegenwoordigt. Als u de bemonsterings bewerking wilt observeren, kunt u deze query uitvoeren in Analytics:
+Elk item dat wordt verzonden, bevat een `itemCount`-eigenschap die laat zien hoeveel oorspronkelijke gebeurtenissen een item vertegenwoordigt. Als u de bemonsterings bewerking wilt observeren, kunt u deze query uitvoeren in Analytics:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -249,9 +244,9 @@ We raden u aan om onze Sdk's te gebruiken en de [SDK API](api-custom-events-metr
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Kan ik een intranet webserver bewaken?
 
 Ja, maar u moet het verkeer naar onze services toestaan door Firewall-uitzonde ringen of proxy omleidingen.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
 - ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Bekijk [hier](../../azure-monitor/app/ip-addresses.md)onze volledige lijst met Services en IP-adressen.
@@ -265,7 +260,7 @@ Hiermee staat u toe dat uw webserver telemetrie naar onze eind punten verzendt.
 Verkeer van uw server naar een gateway op uw intranet routeren door eind punten in uw configuratie te overschrijven.
 Als deze eigenschappen van het eind punt niet aanwezig zijn in uw configuratie, gebruiken deze klassen de standaard waarden die hieronder worden weer gegeven in het voor beeld ApplicationInsights. config. 
 
-Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden `http://<your.gateway.address>/<relative path>`door.
+Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden door `http://<your.gateway.address>/<relative path>`.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voor beeld van ApplicationInsights. config met standaard eindpunten:
@@ -308,7 +303,7 @@ Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.m
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kan ik beschik baarheid-webtests op een intranet server uitvoeren?
 
-Onze [](monitor-web-app-availability.md) webtests worden uitgevoerd op de aanwezigheids punten die over de hele wereld worden gedistribueerd. Er zijn twee oplossingen:
+Onze [webtests](monitor-web-app-availability.md) worden uitgevoerd op de aanwezigheids punten die over de hele wereld worden gedistribueerd. Er zijn twee oplossingen:
 
 * Firewall deur: Hiermee worden aanvragen van de server met [de lange en de lijst met webtest agents](ip-addresses.md)toegestaan.
 * Schrijf uw eigen code voor het verzenden van periodieke aanvragen naar uw server vanuit uw intranet. U kunt Visual Studio-webtests voor dit doel uitvoeren. De tester kan de resultaten naar Application Insights verzenden met behulp van de API TrackAvailability ().

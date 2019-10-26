@@ -8,19 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173509"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893944"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>De Azure VMware-oplossing maken op basis van de CloudSimple-service
 
 Om aan de slag te gaan met de Azure VMware-oplossing door CloudSimple, maakt u de Azure VMware-oplossing door CloudSimple-service in de Azure Portal.
 
-> [!IMPORTANT]
-> Voordat u de CloudSimple-service maakt, moet u de resource provider micro soft. VMwareCloudSimple registreren bij uw Azure-abonnement. Volg de stappen in [de resource provider micro soft. VMwareCloudSimple inschakelen voor uw Azure-abonnement](enable-cloudsimple-service.md).
+## <a name="before-you-begin"></a>Voordat u begint
+
+Wijs een/28 CIDR-blok toe voor het gateway-subnet. Een gateway-subnet is vereist per CloudSimple-service en is uniek voor de regio waarin het is gemaakt. Het gateway-subnet wordt gebruikt voor Edge-netwerk services en vereist een/28 CIDR-blok. De adres ruimte van het gateway-subnet moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving. De netwerken die met CloudSimple communiceren, zijn onder andere on-premises netwerken en Azure Virtual Networks.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -30,10 +31,10 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
-    ![Search CloudSimple-service @ no__t-1
+    ![Search CloudSimple-service](media/create-cloudsimple-service-search.png)
 3. Selecteer **CloudSimple Services**.
 4. Klik op **toevoegen** om een nieuwe service te maken.
-    ![Add CloudSimple-service @ no__t-1
+    ![CloudSimple-service toevoegen](media/create-cloudsimple-service-add.png)
 5. Selecteer het abonnement waar u de CloudSimple-service wilt maken.
 6. Selecteer de resource groep voor de service. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
 7. Voer een naam in om de service te identificeren.

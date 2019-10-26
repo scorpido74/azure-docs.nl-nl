@@ -1,73 +1,68 @@
 ---
-title: Gebruiker, sessie en gebeurtenis analyse in Azure Application Insights | Microsoft docs
-description: Demografische analyse van de gebruikers van uw web-app.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Gebruikers-, sessie-en gebeurtenis analyse in Azure-toepassing inzichten | Micro soft docs
+description: Demografische analyse van gebruikers van uw web-app.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b0b734b6b680bea75786bfdbe77eac5e590cfe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372279"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899402"
 ---
-# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Analyse van gebruikers, sessies en gebeurtenissen in Application Insights
+# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Gebruikers, sessies en gebeurtenissen analyse in Application Insights
 
-Ontdek wanneer mensen uw web-app, welke pagina's die ze zijn het meest geïnteresseerd in, waarbij uw gebruikers zich bevinden, en welke browsers en besturingssystemen die ze gebruiken. Bedrijven en gebruikstelemetrie analyseren met behulp van [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Ontdek wanneer mensen uw web-app gebruiken, op welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden en welke browsers en besturings systemen ze gebruiken. Analyseer bedrijfs-en gebruiks telemetrie met behulp van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md).
 
-![Schermopname van Application Insights-gebruikers](./media/usage-segmentation/0001-users.png)
+![Scherm opname van Application Insights gebruikers](./media/usage-segmentation/0001-users.png)
 
 ## <a name="get-started"></a>Aan de slag
 
-Als er geen gegevens in de gebruikers, sessies of gebeurtenissen blades in de Application Insights-portal nog [meer informatie over het aan de slag met de hulpprogramma's voor gebruik](usage-overview.md).
+Als u nog geen gegevens ziet in de Blades gebruikers, sessies of gebeurtenissen in de Application Insights Portal, [leert u hoe u aan de slag kunt met de gebruiks hulpprogramma's](usage-overview.md).
 
-## <a name="the-users-sessions-and-events-segmentation-tool"></a>Het hulpprogramma van de segmentering van gebruikers, sessies en gebeurtenissen
+## <a name="the-users-sessions-and-events-segmentation-tool"></a>Het hulp programma gebruikers, sessies en gebeurtenissen segmentatie
 
-Drie van de blades gebruik hetzelfde hulpprogramma gebruiken om te opdelen telemetrie van uw web-app uit drie perspectieven. Door te filteren en de gegevens worden gesplitst, kunt u inzichten over het relatieve gebruik van verschillende pagina's en onderdelen.
+Drie van de gebruiks bladen gebruiken hetzelfde hulp programma om telemetrie van uw web-app vanuit drie perspectieven te segmenteren en te analyseren. Door de gegevens te filteren en te splitsen, kunt u inzichten opsporen over het relatieve gebruik van verschillende pagina's en functies.
 
-* **Hulpprogramma gebruikers**: Hoeveel mensen uw app en de functies gebruikt.  Gebruikers worden met behulp van anonieme id's die zijn opgeslagen in de browsercookies geteld. Gebruik van verschillende browsers of machines één persoon wordt geteld als meer dan één gebruiker.
-* **Programma sessies**: Het aantal sessies van gebruikersactiviteit hebt opgenomen bepaalde pagina's en functies van uw app. Een sessie wordt geteld na een halfuur van inactiviteit van de gebruiker, of na 24 uur continu gebruik.
-* **Gebeurtenissen hulpprogramma**: Hoe vaak bepaalde pagina's en functies van uw app worden gebruikt. De weergave van een pagina wordt geteld als een pagina in een browser wordt geladen in uw app, mits u [geïnstrumenteerd deze](../../azure-monitor/app/javascript.md). 
+* **Hulp programma gebruikers**: hoeveel mensen hebben uw app en de bijbehorende functies gebruikt.  Gebruikers worden geteld met anonieme Id's die zijn opgeslagen in browser cookies. Eén persoon die verschillende browsers of machines gebruikt, wordt als meer dan één gebruiker geteld.
+* **Hulp programma voor sessies**: hoeveel sessies van gebruikers activiteit hebben bepaalde pagina's en functies van uw app opgenomen. Een sessie wordt geteld na een half uur van inactiviteit van de gebruiker, of na 24 uur na continu gebruik.
+* **Hulp programma voor gebeurtenissen**: hoe vaak bepaalde pagina's en functies van uw app worden gebruikt. Een pagina weergave wordt geteld wanneer een browser een pagina uit uw app laadt, op voor waarde dat u [deze hebt geinstrumenteerd](../../azure-monitor/app/javascript.md). 
 
-    Een aangepaste gebeurtenis vertegenwoordigt één exemplaar van dat er iets gebeurt in uw app, vaak een tussenkomst van de gebruiker, zoals een knop klikt u op of de voltooiing van een taak. U code invoegen in uw app [aangepaste gebeurtenissen genereren](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Een aangepaste gebeurtenis vertegenwoordigt een exemplaar van iets wat er gebeurt in uw app, vaak een gebruikers interactie zoals het klikken op de knop of het volt ooien van een taak. U voegt code in uw app in om [aangepaste gebeurtenissen te genereren](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Query's uitvoeren voor bepaalde gebruikers
 
-Verken de verschillende groepen gebruikers door de opties voor query's aan de bovenkant van het hulpprogramma gebruikers aan te passen:
+Verken verschillende groepen gebruikers door de query opties boven aan het hulp programma gebruikers aan te passen:
 
-* Weergeven: Kies een cohort van gebruikers om te analyseren.
-* Die gebruik hebben gemaakt: Aangepaste gebeurtenissen en paginaweergaven kiezen.
-* During: Kies een tijdsbereik.
-* Door: Kiezen hoe u aan de bucket van de gegevens door een bepaalde periode of door een ander domein zoals browser of een plaats.
-* Splitsen op basis van: Kies een eigenschap waarmee te splitsen of een segment de gegevens. 
-* Filters toevoegen: De query beperken tot bepaalde gebruikers, sessies of gebeurtenissen op basis van hun eigenschappen, zoals de browser of een plaats. 
+* Weer geven: Kies een cohort van gebruikers die u wilt analyseren.
+* Wie heeft gebruikt: Kies aangepaste gebeurtenissen en pagina weergaven.
+* Tijdens: Kies een tijds bereik.
+* Op: Kies hoe de gegevens moeten worden gebuckd op basis van een bepaalde tijd of door een andere eigenschap zoals browser of plaats.
+* Splitsen op: Kies een eigenschap waarmee u de gegevens wilt splitsen of segmenteren. 
+* Filters toevoegen: de query beperken tot bepaalde gebruikers, sessies of gebeurtenissen op basis van hun eigenschappen, zoals browser of plaats. 
  
-## <a name="saving-and-sharing-reports"></a>Opslaan en delen van rapporten 
-U kunt gebruikers rapporten, exclusief voor u in de sectie Mijn rapporten of gedeeld met iedereen met toegang tot deze Application Insights-resource in de sectie gedeelde rapporten opslaan.
+## <a name="saving-and-sharing-reports"></a>Rapporten opslaan en delen 
+U kunt gebruikers rapporten opslaan, alleen persoonlijk aan u in de sectie Mijn rapporten, of delen met iedereen die toegang heeft tot deze Application Insights resource in de sectie gedeelde rapporten.
 
-Voor het delen van een koppeling naar een rapport gebruikers, sessies of gebeurtenissen. Klik op **Share** in de werkbalk, kopieer vervolgens de koppeling.
+Een koppeling naar een rapport gebruikers, sessies of gebeurtenissen delen; Klik op **delen** in de werk balk en kopieer de koppeling.
 
-Voor het delen van een kopie van de gegevens in een rapport gebruikers, sessies of gebeurtenissen. Klik op **Share** in de werkbalk en klik op de **Word pictogram** te maken van een Word-document met de gegevens. Of klik op de **Word pictogram** boven de belangrijkste grafiek.
+Een kopie van de gegevens delen in een rapport gebruikers, sessies of gebeurtenissen; Klik op **delen** in de werk balk en klik vervolgens op het **woord pictogram** om een Word-document te maken met de gegevens. U kunt ook op het pictogram van het **woord** boven het hoofd diagram klikken.
 
 ## <a name="meet-your-users"></a>Voldoen aan uw gebruikers
 
-De **voldoen aan uw gebruikers** sectie wordt informatie weergegeven over vijf voorbeeldgebruikers overeenkomt met de huidige query. Overweegt en verkennen van het gedrag van personen, naast de statistische functies, krijgt u inzicht in hoe mensen uw app daadwerkelijk gebruiken.
+De sectie **aan uw gebruikers voldoen** bevat informatie over vijf voorbeeld gebruikers die overeenkomen met de huidige query. Als aanvulling op aggregaties kunt u het gedrag van individuen overwegen en bekijken hoe mensen uw app daad werkelijk gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Om in te schakelen gebruik ervaringen, beginnen met het verzenden [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [paginaweergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Als u aangepaste gebeurtenissen of paginaweergaven al verzendt, Verken de hulpprogramma's voor gebruik als u wilt weten hoe gebruikers gebruiken voor uw service.
+- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Trechters](usage-funnels.md)
     - [Retentie](usage-retention.md)
     - [Gebruikersstromen](usage-flows.md)
     - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
-    - [Gebruikerscontext toevoegen](usage-send-user-context.md)
+    - [Gebruikers context toevoegen](usage-send-user-context.md)

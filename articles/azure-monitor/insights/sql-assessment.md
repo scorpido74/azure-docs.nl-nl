@@ -1,99 +1,93 @@
 ---
-title: Optimalisatie van uw SQL Server-omgeving met Azure Monitor | Microsoft Docs
-description: Met Azure Monitor kunt u de oplossing statuscontrole van SQL kunt gebruiken om het risico en de status van uw omgeving op een vast interval vast te stellen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Optimaliseer uw SQL Server-omgeving met Azure Monitor | Microsoft Docs
+description: Met Azure Monitor kunt u de SQL Health Check-oplossing gebruiken om het risico en de status van uw omgevingen op een regel matig interval te evalueren.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/28/2019
+ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120620"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900670"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalisatie van uw SQL-omgeving met de oplossing statuscontrole van SQL Server in Azure Monitor
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimaliseer uw SQL-omgeving met de SQL Server Health Check-oplossing in Azure Monitor
 
-![SQL-statuscontrole symbool](./media/sql-assessment/sql-assessment-symbol.png)
+![Symbool voor SQL-status controle](./media/sql-assessment/sql-assessment-symbol.png)
 
-U kunt de oplossing statuscontrole van SQL gebruiken om het risico en de status van uw server-omgevingen op een vast interval vast te stellen. In dit artikel helpt u bij het installeren van de oplossing zodat u corrigerende maatregelen voor potentiële problemen kunt uitvoeren.
+U kunt de SQL Health Check-oplossing gebruiken om het risico en de status van uw server omgevingen een regel matig interval te evalueren. Dit artikel helpt u bij het installeren van de oplossing, zodat u corrigerende maat regelen kunt nemen voor potentiële problemen.
 
-Deze oplossing biedt een geprioriteerde lijst met aanbevelingen die specifiek zijn voor uw geïmplementeerde serverinfrastructuur. De aanbevelingen zijn onderverdeeld in zes gebieden waarmee u snel inzicht in het risico en neemt u corrigerende maatregelen.
+Deze oplossing biedt een lijst met aanbevelingen die specifiek zijn voor uw geïmplementeerde server infrastructuur. De aanbevelingen worden gecategoriseerd op zes focus gebieden die u helpen om het risico snel te begrijpen en corrigerende maat regelen te nemen.
 
-De aanbevelingen zijn gebaseerd op de kennis en ervaring met Microsoft-engineers van duizenden klanten bezoeken. Elke aanbeveling bevat richtlijnen over waarom een probleem voor u mogelijk belangrijk en het implementeren van de voorgestelde wijzigingen.
+De aanbevelingen zijn gebaseerd op de kennis en ervaring die micro soft-technici hebben opgedaan vanuit duizenden klant bezoeken. Elke aanbeveling bevat richt lijnen voor de reden waarom een probleem te voor u is en hoe u de voorgestelde wijzigingen kunt implementeren.
 
-U kunt gebieden die het meest relevant zijn voor uw organisatie en de voortgang naar het uitvoeren van een risico's gratis en gezonde omgeving bijhouden.
+U kunt focus gebieden kiezen die het belangrijkst zijn voor uw organisatie en uw voortgang volgen met betrekking tot het uitvoeren van een risico vrije en goede omgeving.
 
-Nadat u de oplossing hebt toegevoegd en een beoordeling voltooid, samenvatting is informatie voor focusgebieden wordt weergegeven op de **SQL-statuscontrole** dashboard voor de infrastructuur in uw omgeving. De volgende secties wordt beschreven hoe u gebruik van de informatie op de **SQL-statuscontrole** dashboard, waar u kunt weergeven en vervolgens ondernemen aanbevolen acties voor uw SQL Server-infrastructuur.
+Nadat u de oplossing hebt toegevoegd en een evaluatie is voltooid, wordt de samenvattings informatie voor de focus gebieden weer gegeven op het dash board voor de **SQL-status controle** voor de infra structuur in uw omgeving. In de volgende secties wordt beschreven hoe u de informatie in het dash board van de **SQL-status controle** gebruikt, waar u de aanbevolen acties voor uw SQL Server-infra structuur kunt bekijken en weer geven.
 
-![afbeelding van SQL-statuscontrole tegel](./media/sql-assessment/sql-healthcheck-summary-tile.png)
+![afbeelding van de tegel SQL-status controle](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
-![afbeelding van SQL-statuscontrole-dashboard](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
+![afbeelding van het dash board van de SQL-status controle](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De oplossing statuscontrole van SQL vereist een ondersteunde versie van .NET Framework 4 zijn geïnstalleerd op elke computer die de Microsoft Monitoring Agent (MMA) geïnstalleerd is.  De MMA-agent wordt gebruikt door System Center 2016 - Operations Manager en Operations Manager 2012 R2 en Azure Monitor.  
-* De oplossing biedt ondersteuning voor SQL Server-versie 2012, 2014 en 2016.
-* Een Log Analytics-werkruimte om toe te voegen van de oplossing SQL-statuscontrole van de Azure marketplace in Azure portal.  Als u wilt installeren van de oplossing, moet u een beheerder of Inzender in het Azure-abonnement.
+* Voor de oplossing SQL Health check is een ondersteunde versie van .NET Framework 4 geïnstalleerd op elke computer waarop micro soft Monitoring Agent (MMA) is geïnstalleerd.  De MMA-agent wordt gebruikt door System Center 2016-Operations Manager en Operations Manager 2012 R2 en Azure Monitor.  
+* De oplossing ondersteunt SQL Server versie 2012, 2014 en 2016.
+* Een Log Analytics-werk ruimte om de SQL Health Check-oplossing toe te voegen vanuit Azure Marketplace in de Azure Portal.  Als u de oplossing wilt installeren, moet u een beheerder of Inzender zijn in het Azure-abonnement.
 
   > [!NOTE]
-  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment.exe toegevoegd aan servers met agents. Configuratiegegevens is gelezen en vervolgens naar Azure Monitor in de cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de cloudservice registreert de gegevens.
+  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
   >
   >
 
-Als u de statuscontrole voor uw SQL Server-servers, hiervoor een agent en de verbinding met Azure Monitor met een van de volgende ondersteunde methodes:
+Voor het uitvoeren van de status controle op uw SQL Server-servers, hebben ze een agent en connectiviteit tot Azure Monitor met een van de volgende ondersteunde methoden:
 
-1. Installeer de [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) als de server niet door System Center 2016 - Operations Manager of Operations Manager 2012 R2 bewaakt wordt.
-2. Als deze wordt bewaakt met System Center 2016 - Operations Manager of Operations Manager 2012 R2 en de beheergroep is niet geïntegreerd met Azure Monitor, kan de server worden met Log Analytics gegevens verzamelen en doorsturen naar de service en nog steeds multihomed bewaakt door Operations Manager.  
-3. Anders, als uw Operations Manager-beheergroep is geïntegreerd met de service, moet u de domeincontrollers voor het verzamelen van gegevens toevoegen door de service die de stappen onder [toevoegen door agents beheerde computers](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u hebt ingeschakeld de oplossing in uw werkruimte.  
+1. Installeer de [micro soft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) als de server nog niet wordt bewaakt door System Center 2016-Operations Manager of Operations Manager 2012 R2.
+2. Als het wordt bewaakt met System Center 2016-Operations Manager of Operations Manager 2012 R2 en de beheer groep is niet geïntegreerd met Azure Monitor, kan de server meerdere locaties hebben met Log Analytics om gegevens te verzamelen en door te sturen naar de service en nog steeds bewaakt door Operations Manager.  
+3. Als uw Operations Manager-beheer groep is geïntegreerd met de service, moet u de domein controllers voor het verzamelen van gegevens door de service toevoegen volgens de stappen onder door [agents beheerde computers toevoegen](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nadat u de oplossing hebt ingeschakeld in uw werk ruimte.  
 
-De agent op uw SQL-Server die rapporten in een Operations Manager-beheergroep, verzamelt gegevens verzendt naar de toegewezen beheerserver, en vervolgens rechtstreeks vanaf een beheerserver verzonden naar Azure Monitor.  De gegevens worden niet naar de Operations Manager-databases geschreven.  
+De agent op uw SQL Server die aan een Operations Manager beheer groep rapporteert, verzamelt gegevens, stuurt deze door naar de toegewezen beheer server en wordt vervolgens rechtstreeks van een beheer server naar Azure Monitor verzonden.  De gegevens worden niet naar de Operations Manager-data bases geschreven.  
 
-Als de SQL-Server wordt bewaakt door Operations Manager, moet u een Operations Manager runas-account configureren. Zie [Operations Manager run as-accounts voor Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) hieronder voor meer informatie.
+Als de SQL Server wordt bewaakt door Operations Manager, moet u een Operations Manager uitvoeren als-account configureren. Zie [Operations Manager run-as-accounts voor Azure monitor](#operations-manager-run-as-accounts-for-log-analytics) hieronder voor meer informatie.
 
-## <a name="sql-health-check-data-collection-details"></a>Details van gegevens verzameling SQL-statuscontrole
-SQL-statuscontrole verzamelt gegevens uit de volgende bronnen met behulp van de agent die u hebt ingeschakeld:
+## <a name="sql-health-check-data-collection-details"></a>Details van de gegevens verzameling voor SQL-status controle
+Met de SQL-status controle worden gegevens verzameld uit de volgende bronnen met behulp van de agent die u hebt ingeschakeld:
 
 * Windows Management Instrumentation (WMI)
 * Register
 * Prestatiemeteritems
-* Resultaten van SQL Server dynamische Beheerweergave weergeven
+* Resultaten van dynamische beheer weergave SQL Server
 
-Gegevens worden verzameld op de SQL Server en doorgestuurd naar Log Analytics in de zeven dagen.
+Gegevens worden op het SQL Server verzameld en naar Log Analytics om de zeven dagen doorgestuurd.
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager run as-accounts voor Log Analytics
-Log Analytics maakt gebruik van de Operations Manager-agent en beheer van de groep voor het verzamelen en verzenden van gegevens naar de service Log Analytics. Log Analytics gebouwd op de management packs voor workloads voor toevoegen waarde-services. Elke werkbelasting vereist workload-specifieke machtigingen voor het uitvoeren van management packs in een andere beveiligingscontext, zoals een domeingebruikersaccount. U moet referenties opgeven door het configureren van een Operations Manager runas-account.
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager uitvoeren als-accounts voor Log Analytics
+Log Analytics gebruikt de Operations Manager agent en beheer groep om gegevens te verzamelen en te verzenden naar de Log Analytics-service. Log Analytics bouwt voort op de Management Packs voor werk belastingen om services te kunnen toevoegen. Elke workload vereist systeemspecifieke bevoegdheden om Management Packs uit te voeren in een andere beveiligings context, zoals een domein gebruikers account. U moet referentie gegevens opgeven door een Operations Manager uitvoeren als-account te configureren.
 
-Gebruik de volgende informatie om in te stellen van de Operations Manager runas-account voor SQL-Serverstatus controleren.
+Gebruik de volgende informatie om de Operations Manager uitvoeren als-account in te stellen voor de SQL-status controle.
 
-### <a name="set-the-run-as-account-for-sql-health-check"></a>Uitvoeren als-account voor SQL-statuscontrole instellen
- Als u al van het SQL Server managementpack gebruikmaakt, moet u de configuratie van dat uitvoeren als gebruiken.
+### <a name="set-the-run-as-account-for-sql-health-check"></a>Het run as-account voor de SQL-status controle instellen
+ Als u de SQL Server-management pack al gebruikt, moet u die run as-configuratie gebruiken.
 
-#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Het SQL Run As-account in de Operations-console configureren
+#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Het SQL run as-account configureren in de operations-console
 > [!NOTE]
-> Werkstromen in het managementpack wordt standaard uitgevoerd in de beveiligingscontext van het lokale systeemaccount gebruikt. Als u met behulp van de Microsoft Monitoring Agent rechtstreeks verbonden met de service in plaats van rechtstreeks rapportage aan een Operations Manager-beheergroep, slaat u de stappen 1-5 hieronder en voer de T-SQL- of PowerShell-voorbeeld, op te geven NT AUTHORITY\SYSTEM als de de naam van de gebruiker.
+> Standaard worden werk stromen in de management pack uitgevoerd in de beveiligings context van het lokale systeem account. Als u micro soft monitoring agent gebruikt die rechtstreeks is verbonden met de service en niet rechtstreeks aan een Operations Manager-beheer groep meldt, slaat u de stappen 1-5 hieronder over en voert u het T-SQL-of Power shell-voor beeld uit, waarbij u NT AUTHORITY\SYSTEM opgeeft als gebruikers naam.
 >
 >
 
-1. Open de Operations-console in Operations Manager, en klik vervolgens op **beheer**.
-2. Onder **Run As-configuratie**, klikt u op **profielen**, en open **SQL-evaluatie Run As-profiel**.
-3. Op de **Run As-Accounts** pagina, klikt u op **toevoegen**.
-4. Selecteer een Windows uitvoeren als-account met de referenties die nodig zijn voor SQL Server, of klik op **nieuw** een te maken.
+1. Open de operations-console in Operations Manager en klik vervolgens op **beheer**.
+2. Klik onder **Run as-configuratie**op **profielen**en open **SQL-evaluatie uitvoeren als-profiel**.
+3. Klik op de pagina **uitvoeren als-accounts** op **toevoegen**.
+4. Selecteer een Windows run as-account dat de referenties bevat die nodig zijn voor SQL Server, of klik op **Nieuw** om er een te maken.
 
    > [!NOTE]
-   > Het Run As-accounttype moet Windows. Uitvoeren als-account moet ook deel uit van de lokale groep Administrators op alle Windows-Servers die als host fungeert voor SQL Server-exemplaren.
+   > Het type run as-account moet Windows zijn. Het run as-account moet ook deel uitmaken van de lokale groep Administrators op alle Windows-servers die als host fungeren voor SQL Server exemplaren.
    >
    >
 5. Klik op **Opslaan**.
-6. Wijzig en voer de volgende T-SQL-voorbeeld op elke SQL Server-exemplaar voor het verlenen van minimale machtigingen die vereist zijn voor het uitvoeren als-Account om uit te voeren van de statuscontrole. U hoeft echter te doen als een uitvoeren als-Account al deel uit van de serverrol sysadmin op de SQL Server-exemplaren maakt.
+6. Wijzig en voer vervolgens het volgende T-SQL-voor beeld uit op elk SQL Server-exemplaar om minimale machtigingen te verlenen die vereist zijn voor het uitvoeren als-account om de status controle uit te voeren. U hoeft dit echter niet te doen als een uitvoeren als-account al deel uitmaakt van de serverrol sysadmin op SQL Server exemplaren.
 
 ```
     ---
@@ -114,8 +108,8 @@ Gebruik de volgende informatie om in te stellen van de Operations Manager runas-
 
 ```
 
-#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Het configureren van het SQL Run As-account met behulp van Windows PowerShell
-Open een PowerShell-venster en voer het volgende script uit nadat u deze hebt bijgewerkt met uw gegevens:
+#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Het SQL run as-account configureren met Windows Power shell
+Open een Power shell-venster en voer het volgende script uit nadat u het hebt bijgewerkt met uw gegevens:
 
 ```
     import-module OperationsManager
@@ -126,105 +120,105 @@ Open een PowerShell-venster en voer het volgende script uit nadat u deze hebt bi
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Inzicht krijgen in hoe aanbevelingen met prioriteit wordt toegepast
-Elke aanbeveling krijgt een waarde valutaconversie in gevallen waarin het relatieve belang van de aanbeveling. Alleen de tien belangrijkste aanbevelingen worden weergegeven.
+## <a name="understanding-how-recommendations-are-prioritized"></a>Uitleg over de prioriteit van aanbevelingen
+Aan elke aanbevolen aanbeveling wordt een wegings waarde gegeven die het relatieve belang van de aanbeveling identificeert. Alleen de tien belangrijkste aanbevelingen worden weer gegeven.
 
-### <a name="how-weights-are-calculated"></a>Hoe het gewicht worden berekend
-Wegingen zijn samengevoegde waarden op basis van drie belangrijke factoren:
+### <a name="how-weights-are-calculated"></a>Hoe de wegingen worden berekend
+Wegingen zijn aggregatie waarden op basis van drie belang rijke factoren:
 
-* De *kans* dat een probleem dat is geïdentificeerd ervoor zorgen problemen dat. Een grotere kans is gelijk aan een grotere totale score voor de aanbeveling.
-* De *impact* van het probleem op uw organisatie als dit leidt een probleem tot. Er is een hogere impact gelijk aan een grotere totale score voor de aanbeveling.
-* De *inspanning* vereist de aanbeveling kunt implementeren. Er is een hogere inspanning gelijk aan een kleinere totale score voor de aanbeveling.
+* De *kans* dat een probleem is geïdentificeerd, veroorzaakt problemen. Een hogere kans komt overeen met een grotere algemene score voor de aanbeveling.
+* De *impact* van het probleem in uw organisatie als er een probleem is. Een hogere impact komt overeen met een grotere algemene score voor de aanbeveling.
+* De *inspanningen* die nodig zijn om de aanbeveling te implementeren. Een hogere inspanning is gelijk aan een kleinere algemene score voor de aanbeveling.
 
-Het gewicht voor elke aanbeveling wordt uitgedrukt als een percentage van de totale score voor elke aandachtsgebied beschikbaar. Bijvoorbeeld, als u een aanbeveling in de beveiliging en naleving aandachtsgebied heeft een score van 5%, vergroten uitvoering van deze aanbeveling de algehele beveiliging en naleving score van 5%.
+De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de totale beschik bare score voor elk focus gebied. Als bijvoorbeeld een aanbeveling in het focus gebied beveiliging en naleving een Score van 5% heeft, verhoogt de implementatie van die aanbeveling de algehele score voor beveiliging en naleving met 5%.
 
-### <a name="focus-areas"></a>Focusgebieden
-**Beveiliging en naleving** -deze aandachtsgebied bevat aanbevelingen voor potentiële beveiligingsrisico's opsporen en schendingen van bedrijfsbeleid en technische, juridische en wettelijke nalevingsvereisten.
+### <a name="focus-areas"></a>Focus gebieden
+**Beveiliging en naleving** : dit focus gebied bevat aanbevelingen voor mogelijke beveiligings dreigingen en inbreuken, bedrijfs beleid en technische, juridische en wettelijke nalevings vereisten.
 
-**Beschikbaarheid en bedrijfscontinuïteit** -deze aandachtsgebied bevat aanbevelingen voor beschikbaarheid van de service, de tolerantie van uw infrastructuur en zakelijke beveiliging.
+**Beschik baarheid en bedrijfs continuïteit** : dit focus gebied bevat aanbevelingen voor de beschik baarheid van de service, de tolerantie van uw infra structuur en zakelijke beveiliging.
 
-**Prestaties en schaalbaarheid** -deze aandachtsgebied bevat aanbevelingen voor uw organisatie het IT-infrastructuur groeien, zorg ervoor dat uw IT-omgeving voldoet aan de huidige prestatievereisten en kan reageren op veranderende infrastructuur behoeften.
+**Prestaties en schaal baarheid** : dit focus gebied bevat aanbevelingen om de IT-infra structuur van uw organisatie te verg Roten, zodat uw IT-omgeving voldoet aan de huidige prestatie vereisten en kan reageren op veranderende infrastructuur behoeften.
 
-**Upgrade, migratie en implementatie van** -deze aandachtsgebied bevat aanbevelingen voor het upgraden, migreren en implementeren van SQL Server op uw bestaande infrastructuur.
+**Upgrade, migratie en implementatie** : dit focus gebied bevat aanbevelingen om u te helpen bij het upgraden, migreren en implementeren van SQL Server naar uw bestaande infra structuur.
 
-**Bewerkingen en bewaking** -deze aandachtsgebied bevat aanbevelingen voor het stroomlijnen van uw IT-activiteiten, preventief onderhoud implementeren en prestaties te maximaliseren.
+**Bewerkingen en controle** : dit focus gebied bevat aanbevelingen om uw IT-activiteiten te stroom lijnen, preventief onderhoud te implementeren en de prestaties te maximaliseren.
 
-**Wijzigings- en Configuratiebeheer** -deze aandachtsgebied bevat aanbevelingen om u te helpen beschermen van dagelijkse handelingen, ervoor te zorgen dat wijzigingen geen negatieve invloed hebben op uw infrastructuur wijzigen besturingselement procedures, vast te stellen en te volgen en controleren systeemconfiguraties.
+**Wijzigings-en configuratie beheer** : dit focus gebied bevat aanbevelingen voor het beveiligen van dagelijkse bewerkingen, zodat de wijzigingen geen negatieve invloed hebben op uw infra structuur, het bepalen van wijzigings beheer procedures en het bijhouden en controleren van het systeem configuraties.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u erop gericht om 100% te beoordelen in elke aandachtsgebied?
-Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen die zijn verkregen dankzij het Microsoft-technici via duizenden klanten bezoeken. Echter geen twee server-infrastructuur zijn hetzelfde, en specifieke aanbevelingen mogelijk meer of minder relevant voor u. Bijvoorbeeld, enkele aanbevelingen voor beveiliging mogelijk minder relevant zijn als uw virtuele machines worden niet blootgesteld aan Internet. Aanbevelingen voor sommige beschikbaarheid mogelijk minder relevant zijn voor services met lage prioriteit ad-hoc gegevens verzamelen en rapporteren. Problemen die tot een volwassen bedrijf van belang zijn mogelijk minder belangrijk voor een lid is. Kunt u om te bepalen welke focusgebieden zijn uw prioriteiten en kijken hoe uw scores na verloop van tijd veranderen.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
+Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
 
-Elke aanbeveling bevat richtlijnen over waarom het belangrijk is. U moet deze handleiding gebruiken om te beoordelen of het implementeren van de aanbeveling geschikt voor u is, gezien de aard van uw IT-services en de zakelijke eisen van uw organisatie.
+Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze richt lijnen om te evalueren of implementatie van de aanbeveling geschikt is voor u, gezien de aard van uw IT-Services en de zakelijke behoeften van uw organisatie.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Gebruik Health Check focus gebied aanbevelingen
-Voordat u een oplossing voor evaluatie in Azure Monitor gebruiken kunt, moet u de oplossing die is geïnstalleerd hebben.  Nadat deze is geïnstalleerd, kunt u het overzicht van de aanbevelingen weergeven met behulp van de SQL-statuscontrole tegel op de **overzicht** pagina voor Azure Monitor in Azure portal.
+## <a name="use-health-check-focus-area-recommendations"></a>Aanbevelingen voor het focus gebied status controleren gebruiken
+Voordat u een beoordelings oplossing in Azure Monitor kunt gebruiken, moet u de oplossing hebben geïnstalleerd.  Nadat deze is geïnstalleerd, kunt u de samen vatting van de aanbevelingen bekijken met behulp van de tegel SQL-status controle op de pagina **overzicht** voor Azure monitor in het Azure Portal.
 
-De beoordelingen samengevatte naleving voor uw infrastructuur en aanbevelingen voor inzoomen in weergeven.
+Bekijk de samen vatting van de nalevings evaluaties voor uw infra structuur en vervolgens inzoomen op aanbevelingen.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aanbevelingen voor een aandachtsgebied weergeven en neemt u corrigerende maatregelen
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aanbevelingen voor een focus gebied weer geven en corrigerende actie ondernemen
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Klik in Azure Portal op **Meer services** in de linkerbenedenhoek. Typ **Monitor** in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Monitor**.
-3. In de **Insights** sectie van de in het menu **meer**.  
-4. Op de **overzicht** pagina, klikt u op de **SQL-statuscontrole** tegel.
-5. Op de **statuscontrole** pagina, Controleer de samenvattingsinformatie in een van de focus gebied blades en klik vervolgens op een om aanbevelingen voor die aandachtsgebied weer te geven.
-6. Op een van de focus gebiedspagina's, kunt u de aanbevelingen met prioriteit gemaakt voor uw omgeving bekijken. Klik op een aanbeveling onder **betrokken objecten** voor meer informatie over waarom de aanbeveling is gedaan.<br><br> ![afbeelding van aanbevelingen voor de SQL-statuscontrole](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. U kunt ondernemen corrigerende maatregelen voorgesteld in **voorgestelde acties**. Wanneer het item is opgelost, record hoger beoordelingen die aanbevolen acties zijn uitgevoerd en worden uw nalevingsscore verhoogd. Gecorrigeerde items worden weergegeven als **doorgegeven objecten**.
+3. Selecteer in de sectie **inzichten** van het menu **meer**.  
+4. Klik op de pagina **overzicht** op de tegel **SQL-status controle** .
+5. Controleer op de pagina **status controle** de samenvattings informatie op een van de Blades van het focus gebied en klik vervolgens op een van de aanbevelingen voor het focus gebied weer te geven.
+6. Op een van de focus gebied pagina's kunt u de prioriteiten weer geven die zijn gemaakt voor uw omgeving. Klik op een aanbeveling onder **betrokken objecten** om details weer te geven over waarom de aanbeveling is gedaan.<br><br> ![installatie kopie van de aanbevelingen voor de SQL-status controle](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. U kunt corrigerende acties uitvoeren die worden voorgesteld in **aanbevolen acties**. Wanneer het item is opgelost, worden in latere evaluaties vastgelegd dat de aanbevolen acties zijn uitgevoerd en wordt de nalevings Score verhoogd. Gecorrigeerde items worden weer gegeven als **door gegeven objecten**.
 
 ## <a name="ignore-recommendations"></a>Aanbevelingen negeren
-Als u aanbevelingen die u wilt negeren hebt, kunt u een tekstbestand dat door Azure Monitor wordt gebruikt om te voorkomen dat de aanbevelingen wordt weergegeven in de resultaten van de evaluatie maken.
+Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat Azure Monitor gebruikt om te voor komen dat aanbevelingen worden weer gegeven in de evaluatie resultaten.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Voor het identificeren van de aanbevelingen die u worden genegeerd
-1. Klik in het menu Azure Monitor op **logboeken**.
-2. Gebruik de volgende query uit om de lijst met aanbevelingen die zijn mislukt voor computers in uw omgeving.
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>Om te bepalen welke aanbevelingen u wilt negeren
+1. Klik in het menu Azure Monitor op **Logboeken**.
+2. Gebruik de volgende query om de aanbevelingen weer te geven die zijn mislukt voor computers in uw omgeving.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    Hier volgt een schermafbeelding van het logboekquery:<br><br> ![mislukte aanbevelingen](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Hier ziet u een scherm opname met de logboek query:<br><br> ![mislukte aanbevelingen](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
-3. Kies de aanbevelingen die u wilt negeren. U gebruikt de waarden voor RecommendationId in de volgende procedure.
+3. Kies de aanbevelingen die u wilt negeren. In de volgende procedure gebruikt u de waarden voor RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Het maken en gebruiken van een tekstbestand IgnoreRecommendations.txt
-1. Maak een bestand met de naam IgnoreRecommendations.txt.
-2. Plak of typ elke RecommendationId voor elke aanbeveling dat u wilt dat Azure Monitor op een afzonderlijke regel negeren en vervolgens opslaan en sluiten van het bestand.
-3. Plaats het bestand in de volgende map op elke computer waar u Azure-Monitor voor het negeren van aanbevelingen.
-   * Op computers met de Microsoft Monitoring Agent (verbonden rechtstreeks of via de Operations Manager) - *SystemDrive*: \Program Files\Microsoft Monitoring Agent\Agent
-   * Op de beheerserver van Operations Manager - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
-   * Op de beheerserver van Operations Manager 2016 - *SystemDrive*: \Program Files\Microsoft System Center 2016\Operations Manager\Server
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations. txt-tekst bestand maken en gebruiken
+1. Maak een bestand met de naam IgnoreRecommendations. txt.
+2. Plak of typ elke RecommendationId voor elke aanbeveling die Azure Monitor wilt negeren op een afzonderlijke regel en sla het bestand op en sluit het.
+3. Plaats het bestand in de volgende map op elke computer waar u wilt dat Azure Monitor aanbevelingen negeert.
+   * Op computers met micro soft Monitoring Agent (rechtstreeks verbonden of via Operations Manager)- *Systeem station*: \Program Files\Microsoft monitoring Agent\Agent
+   * Op de Operations Manager-beheer server- *System Drive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Op de Operations Manager 2016-beheer server- *System Drive*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Om te controleren of dat er aanbevelingen worden genegeerd
-1. Na de volgende evaluatie wordt uitgevoerd, wordt standaard elke zeven dagen geplande, wordt de opgegeven aanbevelingen zijn gemarkeerd als genegeerd en wordt niet weergegeven op het dashboard van de evaluatie.
-2. U kunt de volgende zoeken in Logboeken-query's gebruiken om de genegeerde aanbevelingen weer te geven.
+### <a name="to-verify-that-recommendations-are-ignored"></a>Controleren of de aanbevelingen worden genegeerd
+1. Nadat de volgende geplande evaluatie standaard elke zeven dagen wordt uitgevoerd, worden de opgegeven aanbevelingen gemarkeerd als genegeerd en worden ze niet weer gegeven in het beoordelings dashboard.
+2. U kunt de volgende zoek query's in het logboek gebruiken om alle genegeerde aanbevelingen weer te geven.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Als u later besluit dat u wilt zien genegeerde aanbevelingen, IgnoreRecommendations.txt bestanden verwijderen of kunt u RecommendationIDs verwijderen uit deze.
+3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
 
-## <a name="sql-health-check-solution-faq"></a>SQL-statuscontrole oplossing Veelgestelde vragen
-*Hoe vaak wordt een controle van gatewayservicestatus uitgevoerd?*
+## <a name="sql-health-check-solution-faq"></a>Veelgestelde vragen over de SQL Health Check-oplossing
+*Hoe vaak wordt een status controle uitgevoerd?*
 
-* De controle is elke zeven dagen uitgevoerd.
+* De controle wordt elke zeven dagen uitgevoerd.
 
 *Is er een manier om te configureren hoe vaak de controle wordt uitgevoerd?*
 
-* Momenteel niet.
+* Op dit moment niet.
 
-*Als een andere server wordt gedetecteerd nadat ik de oplossing SQL-statuscontrole hebt toegevoegd, wordt deze gecontroleerd?*
+*Als er een andere server wordt gedetecteerd nadat ik de SQL Health Check-oplossing heb toegevoegd, wordt deze gecontroleerd?*
 
-* Ja, zodra deze gedetecteerd wordt deze gecontroleerd van vervolgens op elke zeven dagen.
+* Ja, zodra deze is gedetecteerd, wordt dit na elke zeven dagen gecontroleerd.
 
-*Als een server uit bedrijf genomen is, wanneer wordt deze verwijderd uit de statuscontrole?*
+*Als een server buiten gebruik wordt gesteld, wordt deze verwijderd uit de status controle?*
 
-* Als een server komt niet met het verzenden van gegevens voor drie weken, wordt deze verwijderd.
+* Als een server drie weken geen gegevens verzendt, wordt deze verwijderd.
 
-*Wat is de naam van het proces dat het verzamelen van gegevens wordt?*
+*Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 
-* Het verzamelen van de werkelijke gegevens op de server duurt ongeveer 1 uur. Het kan langer duren op servers die een groot aantal databases of SQL-exemplaren.
+* De werkelijke gegevens verzameling op de server duurt ongeveer 1 uur. Het kan langer duren op servers met een groot aantal SQL-exemplaren of-data bases.
 
 *Welk type gegevens worden verzameld?*
 
@@ -232,23 +226,23 @@ Als u aanbevelingen die u wilt negeren hebt, kunt u een tekstbestand dat door Az
   * WMI
   * Register
   * Prestatiemeteritems
-  * SQL dynamische beheerweergave (DMV).
+  * Dynamische beheer weergaven van SQL (DMV).
 
 *Is er een manier om te configureren wanneer gegevens worden verzameld?*
 
-* Momenteel niet.
+* Op dit moment niet.
 
-*Waarom heb ik het configureren van uitvoeren als-Account?*
+*Waarom moet ik een uitvoeren als-account configureren?*
 
-* Voor SQL Server, worden een klein aantal SQL-query's uitgevoerd. Zodat ze om uit te voeren, moet een Run As-Account met machtigingen voor SQL VIEW SERVER STATE worden gebruikt.  Bovendien zijn om een query uitvoeren op WMI, lokale beheerdersreferenties zijn vereist.
+* Voor SQL Server wordt een klein aantal SQL-query's uitgevoerd. Om ze te kunnen uitvoeren, moet een uitvoeren als-account met de machtigingen voor de weergave SERVER status voor SQL worden gebruikt.  Daarnaast zijn lokale beheerders referenties vereist om te kunnen zoeken in WMI.
 
-*Waarom worden alleen de top 10 aanbevelingen weergegeven?*
+*Waarom worden alleen de tien beste aanbevelingen weer gegeven?*
 
-* In plaats van zodat u enorme uitputtende lijst van taken, is het raadzaam dat u zich richten op de aanbevelingen met prioriteit eerst adressering. Nadat u deze kunt oplossen, worden extra aanbevelingen beschikbaar. Als u liever de gedetailleerde lijst, kunt u alle aanbevelingen met behulp van de Log Analytics zoeken in Logboeken kunt weergeven.
+* In plaats van een uitgebreide lijst met taken te geven, raden we u aan om eerst te focussen op de aanbevelingen met prioriteit. Nadat u ze hebt geadresseerd, worden er extra aanbevelingen beschikbaar. Als u de gedetailleerde lijst wilt zien, kunt u alle aanbevelingen weer geven met behulp van de Log Analytics logboeken zoeken.
 
-*Is er een manier om een aanbeveling negeren?*
+*Is er een manier om een aanbeveling te negeren?*
 
-* Ja, Zie [aanbevelingen negeren](#ignore-recommendations) hierboven.
+* Ja, zie de sectie [aanbevelingen negeren](#ignore-recommendations) hierboven.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Query's bijgehouden](../log-query/log-query-overview.md) voor meer informatie over het analyseren van gedetailleerde gegevens van de SQL-statuscontrole en aanbevelingen.
+* [Meld query's](../log-query/log-query-overview.md) om te leren hoe u gedetailleerde gegevens en aanbevelingen voor de SQL Health Checker kunt analyseren.

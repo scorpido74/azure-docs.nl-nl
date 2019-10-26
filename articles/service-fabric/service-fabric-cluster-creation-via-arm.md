@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599968"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901555"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Een Service Fabric-cluster maken met behulp van Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "68599968"
 
 Een [Azure service Fabric-cluster](service-fabric-deploy-anywhere.md) is een met het netwerk verbonden reeks virtuele machines waarop uw micro services worden geïmplementeerd en beheerd.  Een Service Fabric cluster dat wordt uitgevoerd in Azure is een Azure-resource en wordt geïmplementeerd met behulp van de Azure Resource Manager. In dit artikel wordt beschreven hoe u een beveiligd Service Fabric-cluster in azure kunt implementeren met behulp van Resource Manager. U kunt een standaard cluster sjabloon of een aangepaste sjabloon gebruiken.  Als u nog geen aangepaste sjabloon hebt, kunt u [er informatie over maken](service-fabric-cluster-creation-create-template.md).
 
-Cluster beveiliging wordt geconfigureerd wanneer het cluster voor het eerst wordt ingesteld en kan later niet worden gewijzigd. Lees [service Fabric scenario's voor cluster beveiliging][service-fabric-cluster-security]voordat u een cluster instelt. In azure gebruikt Service Fabric x509-certificaat om uw cluster en de bijbehorende eind punten te beveiligen, clients te verifiëren en gegevens te versleutelen. Azure Active Directory wordt ook aanbevolen om de toegang tot beheer eindpunten te beveiligen. U moet Azure AD-tenants en-gebruikers maken voordat u het cluster maakt.  Lees voor meer informatie [Azure AD instellen om clients te verifiëren](service-fabric-cluster-creation-setup-aad.md).
+Het type beveiliging dat is gekozen om het cluster te beveiligen (bijvoorbeeld: Windows-identiteit, x509 enz.) moet worden opgegeven voor de eerste keer dat het cluster wordt gemaakt en kan daarna niet meer worden gewijzigd. Lees [service Fabric scenario's voor cluster beveiliging][service-fabric-cluster-security]voordat u een cluster instelt. In azure gebruikt Service Fabric x509-certificaat om uw cluster en de bijbehorende eind punten te beveiligen, clients te verifiëren en gegevens te versleutelen. Azure Active Directory wordt ook aanbevolen om de toegang tot beheer eindpunten te beveiligen. Lees voor meer informatie [Azure AD instellen om clients te verifiëren](service-fabric-cluster-creation-setup-aad.md).
 
 Als u een productie cluster maakt voor het uitvoeren van productie werkbelastingen, raden we u aan eerst de [controle lijst voor productie voorbereiding](service-fabric-production-readiness-checklist.md)te lezen.
 
@@ -44,7 +44,7 @@ In dit artikel gebruikt u de modules Service Fabric RM Power shell of Azure CLI 
 * [Azure CLI-versie 2,0 en hoger][azure-CLI]
 
 U kunt hier de referentie documentatie voor de Service Fabric-modules vinden:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [AZ. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [AZ SF CLI-module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -74,7 +74,7 @@ De sjabloon die wordt gebruikt, is beschikbaar in de sjabloon voor [beelden van 
 Met de volgende opdracht kunt u Windows-of Linux-clusters maken. u moet het besturings systeem dienovereenkomstig opgeven. De Power shell/CLI-opdrachten voeren ook het certificaat uit in de opgegeven *CertificateOutputFolder*. Zorg echter dat de map certificaat al is gemaakt. De opdracht neemt ook andere para meters op, zoals de VM-SKU.
 
 > [!NOTE]
-> De volgende Power shell-opdracht werkt alleen met `Az` de module Azure PowerShell. Als u de huidige versie van Azure Resource Manager Power shell-versie wilt controleren, voert u de volgende Power shell-opdracht ' Get-module AZ ' uit. Volg [deze koppeling](/powershell/azure/install-Az-ps) om uw Azure Resource Manager Power shell-versie bij te werken. 
+> De volgende Power shell-opdracht werkt alleen met de module Azure PowerShell `Az`. Als u de huidige versie van Azure Resource Manager Power shell-versie wilt controleren, voert u de volgende Power shell-opdracht ' Get-module AZ ' uit. Volg [deze koppeling](/powershell/azure/install-Az-ps) om uw Azure Resource Manager Power shell-versie bij te werken. 
 >
 >
 
@@ -173,7 +173,7 @@ Gebruik de volgende opdracht om het cluster te maken als u een certificaat hebt 
 Als dit een door de certificerings instantie ondertekend certificaat is dat u ook voor andere doel einden gebruikt, is het raadzaam om een afzonderlijke resource groep specifiek voor uw sleutel kluis op te geven. We raden u aan de sleutel kluis in een eigen resource groep te plaatsen. Met deze actie kunt u de berekenings-en opslag Resource groepen verwijderen, met inbegrip van de resource groep die uw Service Fabric cluster bevat, zonder dat u uw sleutels en geheimen kwijtraakt. **De resource groep die de sleutel kluis bevat, *moet zich in dezelfde regio bevinden* als de cluster die deze gebruikt.**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Gebruik het standaard vijf knoop punt, één knooppunt type sjabloon die in de module wordt geleverd
-De sjabloon die wordt gebruikt, is beschikbaar op [de Azure-voor beelden: Sjabloon voor](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) Windows-sjablonen en- [Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+De sjabloon die wordt gebruikt, is beschikbaar in de sjabloon Azure-voor [beelden: Windows-sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) en [Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 Implementeer het cluster met behulp van Power shell:
 

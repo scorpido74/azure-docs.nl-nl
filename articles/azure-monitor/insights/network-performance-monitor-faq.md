@@ -1,23 +1,18 @@
 ---
 title: Veelgestelde vragen-Netwerkprestatiemeter oplossing in azure | Microsoft Docs
 description: In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter in azure vastgelegd. Met Netwerkprestatiemeter (NPM) kunt u de prestaties van uw netwerken nagenoeg in realtime bewaken en netwerk prestatie knelpunten detecteren en vinden.
-services: log-analytics
-documentationcenter: ''
-author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/12/2018
+author: vinynigam
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782113"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898855"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -25,7 +20,7 @@ ms.locfileid: "68782113"
 
 In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter (NPM) in azure vastgelegd
 
-[Netwerkprestatiemeter](/azure/networking/network-monitoring-overview) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) eindpunten bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Netwerkprestatiemeter](/azure/networking/network-monitoring-overview) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Netwerkprestatiemeter detecteert netwerk problemen zoals verkeer blackholing, routerings fouten en problemen die niet kunnen worden gedetecteerd door conventionele methoden voor netwerk bewaking. De oplossing genereert waarschuwingen en waarschuwt u als een drempelwaarde voor een netwerkverbinding wordt overschreden. Bovendien worden problemen met de netwerkprestaties tijdig gedetecteerd en wordt de oorzaak van het probleem op een bepaald netwerksegment of apparaat opgespoord. 
 
@@ -64,7 +59,7 @@ Voor het knoop punt voor de ondersteuning van bewaking met het TCP-protocol:
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hoe kan ik de TCP-poort die wordt gebruikt door NPM wijzigen voor bewaking?
-U kunt de TCP-poort die door NPM wordt gebruikt voor bewaking wijzigen door het script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit te voeren. U moet het poort nummer invoeren dat u wilt gebruiken als para meter. Als u bijvoorbeeld TCP wilt inschakelen op poort 8060, voert `EnableRules.ps1 8060`u uit. Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knoop punten die worden gebruikt voor de bewaking.
+U kunt de TCP-poort die door NPM wordt gebruikt voor bewaking wijzigen door het script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit te voeren. U moet het poort nummer invoeren dat u wilt gebruiken als para meter. Als u bijvoorbeeld TCP wilt inschakelen op poort 8060, voert u `EnableRules.ps1 8060`uit. Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knoop punten die worden gebruikt voor de bewaking.
 
 Het script configureert alleen Windows Firewall lokaal. Als u een netwerk firewall of NSG-regels (netwerk beveiligings groep) hebt, moet u ervoor zorgen dat het verkeer dat bestemd is voor de TCP-poort die wordt gebruikt door NPM wordt toegestaan.
 
@@ -74,7 +69,7 @@ U moet ten minste één agent gebruiken voor elk subnet dat u wilt bewaken.
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Wat is het maximum aantal agents dat ik kan gebruiken of zie fout '... ' u hebt de configuratie limiet bereikt "?
 NPM beperkt het aantal Ip's tot 5000 Ip's per werk ruimte. Als een knoop punt zowel IPv4-als IPv6-adressen heeft, worden de twee Ip's voor dat knoop punt geteld. Deze limiet van 5000 Ip's zou daarom de bovengrens bepalen van het aantal agents. U kunt het tabblad inactieve agents verwijderen van knoop punten in NPM > > configureren. NPM houdt ook geschiedenis bij van alle IP-adressen die ooit zijn toegewezen aan de virtuele machine die als host fungeert voor de agent en die elke worden beschouwd als een afzonderlijk IP-adres dat bijdragen aan de maximum limiet van 5000 Ip's. Om IP-adressen voor uw werk ruimte vrij te maken, kunt u de pagina knoop punten gebruiken om de IP-adressen te verwijderen die niet in gebruik zijn.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Hoe worden verlies en latentie berekend?
 Bron agenten verzenden TCP-SYN-aanvragen (als TCP is gekozen als protocol voor bewaking) of ICMP-ECHO aanvragen (als ICMP is gekozen als het protocol voor bewaking) tot doel-IP met regel matige tussen pozen om ervoor te zorgen dat alle paden tussen de bron-IP-doel de combi natie wordt gedekt. Het percentage ontvangen pakketten en de round-trip tijd van het pakket wordt gemeten om het verlies en de latentie van elk pad te berekenen. Deze gegevens worden geaggregeerd over het polling-interval en over alle paden om de geaggregeerde waarden van verlies en latentie voor de IP-combi natie voor het betreffende polling-interval op te halen.
@@ -165,7 +160,7 @@ E2EMedianLatency is de latentie dat elke drie minuten na het samen voegen van de
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Waarom verschilt de latentie van hop-by-hop van HopLatencyValues 
 HopLatencyValues zijn bron naar eind punt.
-Bijvoorbeeld: Hops-A, B, C. AvgHopLatency-10, 15, 20. Dit betekent bron tot een latentie = 10, bron naar B latentie = 15 en de bron-naar C-latentie is 20. In de gebruikers interface wordt een hop-z-latentie berekend als 5 in de topologie
+Bijvoorbeeld: hops-A, B, C. AvgHopLatency-10, 15, 20. Dit betekent bron tot een latentie = 10, bron naar B latentie = 15 en de bron-naar C-latentie is 20. In de gebruikers interface wordt een hop-z-latentie berekend als 5 in de topologie
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>De oplossing toont 100% verlies, maar er is een verbinding tussen de bron en het doel
 Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk firewall of Azure NSG) de communicatie tussen de bron agent en de bestemming blokkeert via de poort die wordt gebruikt voor bewaking door NPM (de poort is standaard 8084, tenzij de klant heeft dit gewijzigd).
@@ -175,7 +170,7 @@ Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk fir
 * Als u wilt controleren of een tussenliggende netwerk firewall of Azure NSG de communicatie op de vereiste poort niet blokkeert, gebruikt u het PsPing-hulp programma van derden met behulp van de onderstaande instructies:
   * het hulp programma psping kan [hier](https://technet.microsoft.com/sysinternals/psping.aspx) worden gedownload 
   * Voer de volgende opdracht uit vanaf het bron knooppunt.
-    * psping-n 15 \<doel knooppunt IP\>-adres:p ortnumber standaard gebruikt 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het script EnableRules. ps1, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
+    * psping-n 15 \<doel knooppunt IP-adres\>:p ortNumber standaard NPM gebruikt 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het script EnableRules. ps1, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
 * Controleer of de pings zijn geslaagd. Als dat niet het geval is, duidt dit erop dat een tussenliggende netwerk firewall of Azure NSG het verkeer op deze poort blokkeert.
 * Voer nu de opdracht uit vanaf het doel knooppunt naar het IP-adres van het bron knooppunt.
 
@@ -219,7 +214,7 @@ Dit kan gebeuren als er sprake is van een of meer waar is:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>In de monitor van de service connectiviteit is de reactie tijd van de service NA, maar netwerk verlies en latentie geldig
 Dit kan gebeuren als de doel service geen webtoepassing is, maar de test is geconfigureerd als een Webtest. Bewerk de configuratie van de test en kies het test type netwerk in plaats van het web.
 
-## <a name="miscellaneous"></a>Overig
+## <a name="miscellaneous"></a>Diversen
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Is er sprake van invloed op de prestaties van het knoop punt dat wordt gebruikt voor bewaking?
 Het NPM-proces is zo geconfigureerd dat er wordt gestopt als er meer dan 5% van de CPU-bronnen van de host worden gebruikt. Dit is om ervoor te zorgen dat u de knoop punten voor hun gebruikelijke werk belastingen kunt blijven gebruiken zonder dat dit invloed heeft op de prestaties.

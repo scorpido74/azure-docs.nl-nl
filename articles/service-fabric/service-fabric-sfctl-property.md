@@ -3,31 +3,32 @@ title: Azure Service Fabric CLI-sfctl eigenschap | Microsoft Docs
 description: Hierin worden de opdrachten voor de Service Fabric CLI sfctl-eigenschappen beschreven.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035252"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901061"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Eigenschappen voor opslaan en opvragen onder Service Fabric namen.
 
 ## <a name="commands"></a>Opdrachten
 
-|Opdracht|Description|
+|Opdracht|Beschrijving|
 | --- | --- |
-| verwijderen | Hiermee verwijdert u de opgegeven Service Fabric eigenschap. |
+| delete | Hiermee verwijdert u de opgegeven Service Fabric eigenschap. |
 | Toevoegen | Hiermee wordt de opgegeven Service Fabric-eigenschap opgehaald. |
 | list | Haalt informatie op over alle Service Fabric eigenschappen onder een bepaalde naam. |
 | slaan | Hiermee wordt een Service Fabric eigenschap gemaakt of bijgewerkt. |
@@ -39,17 +40,17 @@ Hiermee verwijdert u de opgegeven Service Fabric eigenschap onder een bepaalde n
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --naam-id [vereist] | De naam van de service Fabric, zonder het\:URI-schema ' fabric '. |
+| --naam-id [vereist] | De naam van de Service Fabric, zonder het URI-schema van het Fabric-\:. |
 | --eigenschap-naam [vereist] | Hiermee geeft u de naam op van de eigenschap die moet worden opgehaald. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -62,17 +63,17 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een opgegeven naam opge
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --naam-id [vereist] | De naam van de service Fabric, zonder het\:URI-schema ' fabric '. |
+| --naam-id [vereist] | De naam van de Service Fabric, zonder het URI-schema van het Fabric-\:. |
 | --eigenschap-naam [vereist] | Hiermee geeft u de naam op van de eigenschap die moet worden opgehaald. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -85,18 +86,18 @@ Een Service Fabric naam kan een of meer benoemde eigenschappen hebben die aangep
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --naam-id [vereist] | De naam van de service Fabric, zonder het\:URI-schema ' fabric '. |
+| --naam-id [vereist] | De naam van de Service Fabric, zonder het URI-schema van het Fabric-\:. |
 | --vervolg token | De vervolg token parameter wordt gebruikt om de volgende set resultaten op te halen. Een vervolg token met een niet-lege waarde wordt opgenomen in het antwoord van de API wanneer de resultaten van het systeem niet in één antwoord passen. Wanneer deze waarde wordt door gegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolg token geen waarde. De waarde van deze para meter mag geen URL-code ring zijn. |
 | --include--waarden | Hiermee kunt u opgeven of de waarden van de geretourneerde eigenschappen moeten worden meegenomen. Waar als waarden moeten worden geretourneerd met de meta gegevens; False om alleen meta gegevens van eigenschappen te retour neren. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -109,19 +110,19 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een bepaalde naam gemaa
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --naam-id [vereist] | De naam van de service Fabric, zonder het\:URI-schema ' fabric '. |
+| --naam-id [vereist] | De naam van de Service Fabric, zonder het URI-schema van het Fabric-\:. |
 | --eigenschap-naam [vereist] | De naam van de eigenschap Service Fabric. |
 | --waarde [vereist] | Beschrijft een Service Fabric eigenschaps waarde. Dit is een JSON-teken reeks. <br><br> De JSON-teken reeks heeft twee velden: het type van de gegevens en de waarde van de gegevens. De ' kind ' moet het eerste item zijn dat in de JSON-teken reeks wordt weer gegeven en kan waarden ' binary ', ' Int64 ', ' Double ', ' String ' of ' GUID ' zijn. De waarde moet een serialisatie kunnen hebben met de opgegeven typen. De waarden ' type ' en ' data ' moeten worden weer gegeven als teken reeksen. |
-| --aangepast-ID-type | De aangepaste type-id van de eigenschap. Met deze eigenschap kan de gebruiker het type van de waarde van de eigenschap labelen. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --aangepast-ID-type | De aangepaste type-ID van de eigenschap. Met deze eigenschap kan de gebruiker het type van de waarde van de eigenschap labelen. |
+| --time-out-t | Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

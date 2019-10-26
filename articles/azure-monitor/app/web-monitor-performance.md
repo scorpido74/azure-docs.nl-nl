@@ -1,152 +1,147 @@
 ---
-title: De status van uw app en het gebruik met Application Insights bewaken
-description: Aan de slag met Application Insights. Analyseer gebruik, beschikbaarheid en prestaties van uw on-premises of de Microsoft Azure-toepassingen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: De status en het gebruik van uw app bewaken met Application Insights
+description: Aan de slag met Application Insights. Analyseer het gebruik, de beschik baarheid en prestaties van uw on-premises of Microsoft Azure toepassingen.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373001"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899306"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Prestaties in webtoepassingen controleren
 
 
-Zorg ervoor dat uw toepassing goed presteert en Ontdek snel fouten. [Application Insights] [ start] wordt informatie over eventuele prestatieproblemen en uitzonderingen, en kunt u vinden en diagnosticeren van de belangrijkste oorzaken.
+Zorg ervoor dat uw toepassing goed presteert en kom snel te weten over eventuele fouten. [Application Insights][start] geeft u informatie over prestatie problemen en uitzonde ringen en helpt u bij het vinden en diagnosticeren van de hoofd oorzaken.
 
-Application Insights kunnen zowel Java als ASP.NET-webtoepassingen en services, WCF-services bewaken. Ze kunnen worden gehost on-premises, op virtuele machines, of als Microsoft Azure websites. 
+Application Insights kunt Java-en ASP.NET-webtoepassingen en-services, WCF-services bewaken. Ze kunnen lokaal, op virtuele machines of als Microsoft Azure websites worden gehost. 
 
-Application Insights kan duren voordat telemetrie van webpagina's en een groot aantal apparaten, zoals iOS, Android en Windows Store-apps aan de clientzijde.
+Aan de client zijde kan Application Insights telemetrie maken op basis van webpagina's en een groot aantal verschillende apparaten, waaronder iOS-, Android-en Windows Store-apps.
 
-## <a name="setup"></a>Instellen van de bewaking van toepassingsprestaties
-Als u hebt nog Application Insights aan uw project toegevoegd (dat wil zeggen, als er geen ApplicationInsights.config), kies een van de volgende manieren aan de slag:
+## <a name="setup"></a>Prestatie bewaking instellen
+Als u Application Insights nog niet aan uw project hebt toegevoegd (dat wil zeggen, als het geen ApplicationInsights. config heeft), kiest u een van de volgende manieren om aan de slag te gaan:
 
-* [ASP.NET-web-apps](../../azure-monitor/app/asp-net.md)
-  * [Uitzondering bewaking toevoegen](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Afhankelijkheidsbewaking toevoegen](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE-web-apps](../../azure-monitor/app/java-get-started.md)
-  * [Afhankelijkheidsbewaking toevoegen](../../azure-monitor/app/java-agent.md)
+* [ASP.NET-Web-apps](../../azure-monitor/app/asp-net.md)
+  * [Uitzonderings bewaking toevoegen](../../azure-monitor/app/asp-net-exceptions.md)
+  * [Afhankelijkheids bewaking toevoegen](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Java EE web apps](../../azure-monitor/app/java-get-started.md)
+  * [Afhankelijkheids bewaking toevoegen](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>Verkennen van metrische gegevens voor prestaties
-In [de Azure-portal](https://portal.azure.com), blader naar de Application Insights-resource die u hebt ingesteld voor uw toepassing. De overzichtsblade bevat algemene prestatiegegevens:
+## <a name="view"></a>Metrische prestatie gegevens verkennen
+Blader in [het Azure Portal](https://portal.azure.com)naar de Application Insights resource die u voor uw toepassing hebt ingesteld. De Blade overzicht bevat algemene prestatie gegevens:
 
-Klik op een grafiek voor meer details en om resultaten te bekijken voor een langere periode. Bijvoorbeeld, klikt u op de tegel aanvragen en selecteer vervolgens een tijdsbereik:
+Klik op een grafiek om meer details weer te geven en om de resultaten gedurende een langere periode weer te geven. Klik bijvoorbeeld op de tegel aanvragen en selecteer vervolgens een tijds bereik:
 
-![Klik verder naar meer gegevens en selecteer een tijdsbereik](./media/web-monitor-performance/appinsights-48metrics.png)
+![Klik op door naar meer gegevens en selecteer een tijds bereik](./media/web-monitor-performance/appinsights-48metrics.png)
 
-Klik op een grafiek om te kiezen welke metrische gegevens worden weergegeven, of Voeg een nieuwe grafiek toe en selecteert u de metrische gegevens:
+Klik op een grafiek om te kiezen welke metrische gegevens worden weer gegeven of Voeg een nieuwe grafiek toe en selecteer de metrische gegevens:
 
-![Klik op een grafiek voor metrische gegevens kiezen](./media/web-monitor-performance/appinsights-61perfchoices.png)
+![Klik op een grafiek om de metrische gegevens te kiezen](./media/web-monitor-performance/appinsights-61perfchoices.png)
 
 > [!NOTE]
-> **Schakel alle metrische** om te zien van de volledige selectie dat beschikbaar is. De metrische gegevens kunnen worden onderverdeeld in groepen; Wanneer een lid van een groep is geselecteerd, worden alleen de andere leden van die groep weergegeven.
+> **Schakel alle metrische gegevens uit** om de volledige selectie te zien die beschikbaar is. De metrische gegevens vallen in groepen. Als een lid van een groep is geselecteerd, worden alleen de andere leden van die groep weer gegeven.
 
-## <a name="metrics"></a>Wat doet deze alle gemiddelde? Prestaties van tegels en rapporten
-Er zijn verschillende maatstaven voor prestaties die kunt u krijgen. Laten we beginnen met die standaard worden weergegeven op de toepassingsblade.
+## <a name="metrics"></a>Wat betekent dit allemaal? Tegels en rapporten van prestaties
+Er zijn diverse prestatie gegevens die u kunt ophalen. Laten we beginnen met de apps die standaard worden weer gegeven op de Blade van de toepassing.
 
 ### <a name="requests"></a>Aanvragen
-Het aantal HTTP-aanvragen ontvangen in een opgegeven periode. Vergelijk dit met de resultaten in andere rapporten om te zien hoe uw app zich gedraagt wanneer de belasting varieert.
+Het aantal HTTP-aanvragen dat in een opgegeven periode is ontvangen. Vergelijk dit met de resultaten in andere rapporten om te zien hoe uw app zich gedraagt als de belasting varieert.
 
-HTTP-aanvragen bevatten alle GET of POST-aanvragen voor pagina's, gegevens en installatiekopieën.
+HTTP-aanvragen bevatten alle GET-of POST-aanvragen voor pagina's, gegevens en afbeeldingen.
 
-Klik op de tegel om op te halen van tellingen voor specifieke URL's.
+Klik op de tegel om het aantal specifieke Url's te bepalen.
 
-### <a name="average-response-time"></a>Gemiddelde reactietijd
-Hiermee wordt de tijd tussen een webaanvraag invoeren van uw toepassing en het antwoord wordt geretourneerd.
+### <a name="average-response-time"></a>Gemiddelde reactie tijd
+Hiermee wordt de tijd gemeten tussen een webaanvraag die uw toepassing invoert en het antwoord dat wordt geretourneerd.
 
-De punten weergegeven zwevend gemiddelde. Als er veel aanvragen worden ingediend, is er mogelijk enkele die afwijken van het gemiddelde zonder een duidelijke piek of dip in de grafiek.
+Op de punten wordt een zwevend gemiddelde weer gegeven. Als er veel aanvragen zijn, is er mogelijk een afwijkend van het gemiddelde zonder een duidelijke piek of DIP in de grafiek.
 
-Zoeken naar ongebruikelijke pieken. In het algemeen verwachten reactietijd toe met een toename van aanvragen. Als de toename van onevenredige, uw app kan worden te maken met een resourcelimiet, zoals CPU of de capaciteit van een service die wordt gebruikt.
+Zoek naar ongebruikelijke pieken. In het algemeen wordt de reactie tijd verwacht met een toename in aanvragen. Als de toename niet evenredig is, kan uw app een resource limiet hebben, zoals CPU of de capaciteit van een service die wordt gebruikt.
 
-Klik op de tegel om terug te keren voor specifieke URL's ophalen.
+Klik op de tegel om tijden voor specifieke Url's op te halen.
 
 ![](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Langzaamste aanvragen
 ![](./media/web-monitor-performance/appinsights-44slowest.png)
 
-Laat zien welke aanvragen mogelijk nodig hebt voor het afstemmen van prestaties.
+Hier ziet u welke aanvragen mogelijk prestatie afstemming nodig hebben.
 
 ### <a name="failed-requests"></a>Mislukte aanvragen
 ![](./media/web-monitor-performance/appinsights-46failed.png)
 
-Aantal aanvragen dat heeft een niet-onderschepte uitzonderingen geretourneerd.
+Een aantal aanvragen dat niet-onderschepte uitzonde ringen heeft veroorzaakt.
 
-Klik op de tegel om te zien van de details van specifieke problemen en selecteer een afzonderlijke aanvraag voor de details. 
+Klik op de tegel om de details van specifieke fouten te bekijken en selecteer een afzonderlijke aanvraag om het detail venster weer te geven. 
 
-Alleen een representatieve steekproef van fouten wordt voor afzonderlijke inspectie bewaard.
+Voor afzonderlijke inspecties wordt alleen een representatief voor beeld van fouten bewaard.
 
 ### <a name="other-metrics"></a>Andere metrische gegevens
-Om te zien wat andere metrische gegevens weergeven, klikt u op een grafiek en schakelt u alle metrische gegevens om te zien van de volledige beschikbaar stelt. Klik op (i) als de definitie van alle gegevens wilt weergeven.
+Als u wilt zien welke andere metrische gegevens u kunt weer geven, klikt u op een grafiek en schakelt u de selectie van alle metrische gegevens uit om de volledige set weer te geven. Klik (i) om de definitie van elke metriek weer te geven.
 
-![Schakel alle metrische gegevens om te zien van de hele set](./media/web-monitor-performance/appinsights-62allchoices.png)
+![De selectie van alle metrische gegevens opheffen om de hele set weer te geven](./media/web-monitor-performance/appinsights-62allchoices.png)
 
-Elke meetwaarde selecteren, schakelt de overige beheergroepen die niet kan worden weergegeven op de dezelfde grafiek.
+Als u een wille keurige waarde selecteert, worden de andere gegevens uitgeschakeld die niet in hetzelfde diagram kunnen worden weer gegeven.
 
 ## <a name="set-alerts"></a>Waarschuwingen instellen
-Om te worden geïnformeerd via e-mail van ongebruikelijke waarden van elke meetwaarde, moet u een waarschuwing toevoegen. U kunt toekennen aan het e-mailbericht verzenden naar de accountbeheerders, of specifieke e-mailadressen.
+Voeg een waarschuwing toe om een melding te ontvangen van een e-mail bericht van ongebruikelijke waarden van een wille keurige waarde. U kunt kiezen of u het e-mail bericht wilt verzenden naar de account beheerders of naar specifieke e-mail adressen.
 
 ![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
-De resource voordat de andere eigenschappen instellen. Kies de resources die de webtest niet als u wilt instellen van waarschuwingen over metrische gegevens voor prestaties of het gebruik.
+Stel de resource in vóór de andere eigenschappen. Kies niet de webtest-resources als u waarschuwingen wilt instellen voor metrische gegevens over prestaties of gebruik.
 
-Wees voorzichtig om te weten de eenheden waarin u wordt gevraagd om in te voeren van de drempelwaarde.
+Let op de eenheden waarin u wordt gevraagd de drempel waarde in te voeren.
 
-*Ik zie niet de knop Waarschuwing toevoegen.* -Is dit een groep account die u alleen-lezentoegang hebt? Neem contact op met de accountbeheerder.
+*Ik zie de knop Waarschuwing toevoegen niet.* -Is dit een groeps account waarvoor u alleen-lezen toegang hebt? Neem contact op met de account beheerder.
 
 ## <a name="diagnosis"></a>Problemen vaststellen
-Hier volgen enkele tips voor het zoeken en oplossen van problemen met prestaties:
+Hier volgen enkele tips voor het zoeken en diagnosticeren van prestatie problemen:
 
-* Instellen van [webtests] [ availability] om te worden gewaarschuwd als uw site uitvalt of niet juist of langzaam reageert. 
-* Vergelijken met het aantal aanvragen met andere metrische gegevens om te controleren of de mislukte of trage reactie zijn gerelateerd aan het laden.
-* [Plaats en zoeken naar trace-instructies] [ diagnostic] in uw code aan problemen met deze functie.
-* Bewaken van uw Web-app in de bewerking opnieuw uit met [Live Metrics Stream][livestream].
-* De status van uw .NET-toepassing met vastleggen [Snapshot Debugger][snapshot].
+* Stel [webtests][availability] in om te worden gewaarschuwd als uw website uitvalt of onjuist of traag reageert. 
+* Vergelijk het aantal aanvragen met andere metrische gegevens om te zien of er fouten of trage reacties zijn gerelateerd aan de belasting.
+* U kunt in uw code [tracerings instructies invoegen en zoeken][diagnostic] om problemen op te sporen.
+* Bewaak uw web-app in bewerking met [Live Metrics stream][livestream].
+* Leg de status van uw .NET-toepassing vast met [Snapshot debugger][snapshot].
 
-## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Zoeken en herstellen van knelpunten met de ervaring voor het onderzoeken van prestaties
+## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Prestatie knelpunten opsporen en oplossen met prestatie onderzoek
 
-Traag presterende bewerkingen controleren in uw Web-app kunt u de ervaring voor het onderzoeken van prestaties. Kunt u snel een bepaalde trage bewerking selecteren en gebruik [Profiler](../../azure-monitor/app/profiler.md) hoofdmap ertoe leiden dat de trage bewerkingen omlaag naar de code. Met behulp van de van de nieuwe duurdistributie die wordt weergegeven voor de geselecteerde bewerking dat kunt u snel in een oogopslag beoordelen hoe ernstig de ervaring is voor uw klanten. U kunt zien hoeveel van uw gebruikersinteracties betrokken zijn voor elke trage bewerking. In het volgende voorbeeld hebben we besloten te nader bekijken op de ervaring voor de bewerking GET Customers/Details. In de duurdistributie, kunnen we zien dat er drie pieken zijn. Meest linkse piek is ongeveer 400 ms en geweldige reactie van de gebruikerservaring vertegenwoordigt. Middelste piek is rond 1.2 s en vertegenwoordigt een middelmatige ervaring. Ten slotte op de 3.6 s hebben we een andere small piek die het 99e percentiel ervaring die onze klanten te laten ontevreden leidt waarschijnlijk tot vertegenwoordigt. Deze ervaring is tien keer langzamer dan de geweldige ervaring voor dezelfde bewerking. 
+U kunt de ervaring voor prestatie onderzoek gebruiken om trage bewerkingen in uw web-app te bekijken. U kunt snel een specifieke trage bewerking selecteren en [Profiler](../../azure-monitor/app/profiler.md) gebruiken om te zorgen dat de langzame bewerkingen worden uitgevoerd naar code. Met de nieuwe duur verdeling die voor de geselecteerde bewerking wordt weer gegeven, kunt u in één oogopslag zien hoe slecht de ervaring is voor uw klanten. U kunt zien hoeveel van uw gebruikers interacties voor elke trage bewerking zijn beïnvloed. In het volgende voor beeld hebben we besloten om de ervaring voor het ophalen van klanten/details te bekijken. In de duur van de distributie ziet u dat er drie pieken zijn. De meest linkse Prikker is ongeveer 400 MS en vormt een fantastische reactie ervaring. Middelste Prikker is ongeveer 1,2 s en vertegenwoordigt een mediocre-ervaring. Tot slot op de 3,6 s hebben we nog een kleine piek die de 99e-percentiel ervaring vertegenwoordigt, waardoor onze klanten waarschijnlijk niet meer tevreden kunnen raken. Deze ervaring is tien keer langzamer dan de geweldige ervaring voor dezelfde bewerking. 
 
-![GET Customers/Details drie duur van pieken](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+![Ontvang klanten/Details drie duur pieken](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
-Als u een beter beeld van de gebruikerservaringen voor deze bewerking, selecteren we een grotere tijdsbereik. We kunnen vervolgens ook verfijnen in de tijd op een specifieke periode waarin de bewerking traag is. In het volgende voorbeeld hebt we van de standaardwaarde 24 uur tijdsbereik voor de zeven dagen het tijdsbereik en vervolgens worden ingezoomd op het tijdvenster van 9:47 tot 12:47 tussen di de 12 en woe de 13 overgeschakeld. Zowel de van de duurdistributie en het aantal voorbeeld en profiler-traceringen zijn bijgewerkt aan de rechterkant.
+Om een beter beeld te krijgen van de gebruikers ervaringen voor deze bewerking, kunnen we een groter tijds bereik selecteren. We kunnen vervolgens ook minder tijd inzoomen op een specifiek tijd venster waarin de bewerking is vertraagd. In het volgende voor beeld is het tijds bereik van de standaard periode van 24 uur gewijzigd in een periode van zeven dagen en vervolgens ingezoomd op de 9:47 tot 12:47 tijd venster tussen di de twaalfde en de 13. Zowel de duur van de distributie als het aantal voorbeeld-en Profiler-traceringen zijn aan de rechter kant bijgewerkt.
 
-![GET Customers/Details drie duur van pieken in de zeven dagen bereik met een bepaalde periode](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
-Als u wilt beperken op de trage ervaringen, Inzoomen we vervolgens op de duur die tussen 95th en het 99e percentiel ligt. Dit zijn de % 4 van de interactie van gebruikers die traag zijn.
+Om in te zoomen op de trage ervaring, wordt de duur van de 95e en het 99e percentiel in de volgende stap in de tijd ingezoomd. Deze vertegenwoordigen de 4% van gebruikers interacties die traag zijn.
 
-![GET Customers/Details drie duur van pieken in de zeven dagen bereik met een bepaalde periode](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
-We kunnen nu een overzicht van de representatieve voorbeelden door te klikken op de knop voorbeelden of op de representatieve profiler-traceringen, door te klikken op de knop Profiler-traceringen. In dit voorbeeld zijn er vier traces die zijn verzameld voor GET Customers/Details in het venster en bereik duur van belang zijn.
+We kunnen de representatieve voor beelden nu bekijken, door te klikken op de knop voor beelden of door te klikken op de representatieve Profiler traceringen door op de knop Profiler traceringen. In dit voor beeld zijn er vier traceringen die zijn verzameld voor het ophalen van klanten/Details in het tijd venster en de duur van het bereik van de rente.
 
-Het probleem zich soms niet in uw code, maar in plaats van in een afhankelijkheid uw code wordt aangeroepen. U kunt overschakelen naar het tabblad afhankelijkheden in de weergave prestaties sorteren om te onderzoeken die trage afhankelijkheden. Standaard is de Prestatieweergave trending gemiddelden, maar wat u wilt om te kijken, is het 95e percentiel (of de 99th in het geval u een goed ontwikkelde service bewaakt). In het volgende voorbeeld hebben we ons gericht op de trage afhankelijkheden voor Azure BLOB, waar we PUT fabrikamaccount noemen. Het goede ervaringen cluster ongeveer 40 ms, terwijl de trage aanroepen naar de dezelfde afhankelijkheid drie keer langzamer zijn, clustering ongeveer 120 ms. Het duren niet veel van deze aanroepen om toe te voegen van de desbetreffende bewerking is aanzienlijk vertragen veroorzaken. U kunt inzoomen op de representatieve voorbeelden en profiler-traceringen, net zoals u met de Operations-tabblad kunt.
+Soms bevindt het probleem zich niet in uw code, maar in een afhankelijkheid van uw code aanroepen. U kunt overschakelen naar het tabblad Afhankelijkheden in de weer gave prestatie sorteren om dergelijke langzame afhankelijkheden te onderzoeken. Standaard is de prestatie weergave trending gemiddelden, maar wat u eigenlijk wilt bekijken is het 95e percentiel (of de 99e, voor het geval u een rijpere Service bewaakt). In het volgende voor beeld hebben we gefocust op de langzame Azure BLOB-afhankelijkheid, waar we PUT fabrikamaccount aanroepen. Het goede cluster rond 40 MS, terwijl de trage aanroepen naar dezelfde afhankelijkheid drie keer langzamer zijn, clustering rond 120 MS. Het is niet veel van deze aanroepen om toe te voegen om ervoor te zorgen dat de betreffende bewerking merkbaar langzamer verloopt. U kunt inzoomen op de representatieve voor beelden en Profiler traceringen, net zoals u dat kunt doen met het tabblad bewerkingen.
 
-![GET Customers/Details drie duur van pieken in de zeven dagen bereik met een bepaalde periode](./media/web-monitor-performance/SlowDependencies95thTrend.png)
+![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/SlowDependencies95thTrend.png)
 
-De ervaring voor het onderzoeken van prestaties bevat relevante inzichten naast de voorbeeldset die u besloten zich kunt richten op. De beste manier om te kijken naar alle van de inzichten die beschikbaar is overschakelen naar een periode van 30 dagen en selecteer vervolgens de algehele om inzichten te bekijken over alle bewerkingen voor de afgelopen maand.
+In de ervaring voor prestatie onderzoek ziet u relevante inzichten aan de kant van de voor beeld-set die u hebt gekozen om zich te richten op. De beste manier om alle beschik bare inzichten te bekijken, is om over te scha kelen naar een periode van 30 dagen en vervolgens algemeen te selecteren om inzicht te krijgen in alle bewerkingen voor de afgelopen maand.
 
-![GET Customers/Details drie duur van pieken in de zeven dagen bereik met een bepaalde periode](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Klanten/Details drie duur pieken in zeven dagen bereiken met een tijd venster](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next"></a>Volgende stappen
-[Webtests] [ availability] -hebt webaanvragen naar uw toepassing met regelmatige intervallen van over de hele wereld worden verzonden.
+[Webtests][availability] : laat webaanvragen met regel matige intervallen van over de hele wereld naar uw toepassing worden verzonden.
 
-[Vastleggen en zoeken van diagnostische traceringen] [ diagnostic] - invoegen van trace-aanroepen en doorzoeken van de resultaten zodat u problemen kunt herkennen.
+[Diagnostische traceringen vastleggen en zoeken][diagnostic] : plaats tracerings aanroepen en SIFT door de resultaten om problemen te lokaliseren.
 
-[Het bijhouden van gebruik] [ usage] -ontdek hoeveel mensen uw toepassing gebruiken.
+[Gebruiks tracking][usage] : Ontdek hoe mensen uw toepassing gebruiken.
 
-[Het oplossen van] [ qna] - en Q & A
+[Probleem oplossing][qna] -en Q & A
 
 
 

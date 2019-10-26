@@ -1,5 +1,5 @@
 ---
-title: Vereisten voor toegang tot de rapportage-API van Azure Active Directory | Microsoft Docs
+title: Vereisten voor de rapportage-API van Azure Active Directory | Microsoft Docs
 description: Meer informatie over de vereisten voor toegang tot de Azure AD Reporting-API
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241571"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895233"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
@@ -41,9 +41,9 @@ U moet het volgende doen om de toegang tot de rapportage-API voor te bereiden:
 
 Als u toegang wilt krijgen tot de rapportage gegevens via de API, moet een van de volgende rollen zijn toegewezen:
 
-- Beveiligingslezer
+- Beveiligings lezer
 
-- Beveiligingsbeheerder
+- Beveiligings beheerder
 
 - Globale beheerder
 
@@ -76,11 +76,11 @@ Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API,
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. Typ`Reporting API application`in het tekstvak **naam** .
+    a. In het tekstvak **naam** typt u `Reporting API application`.
 
     b. Voor het **type ondersteunde accounts**selecteert u **alleen accounts in deze organisatie**.
 
-    c. Typ`https://localhost`in de **OMleidings-URL** **webtekstvak selecteren** .
+    c. In de **omleidings-URL** **selecteren** webtekstvak, typt u `https://localhost`.
 
     d. Selecteer **Registreren**. 
 
@@ -91,7 +91,7 @@ Afhankelijk van de API die u wilt gebruiken, moet u uw app de volgende machtigin
 
 | API | Machtiging |
 | --- | --- |
-| Windows Azure Active Directory | Adreslijstgegevens lezen |
+| Windows Azure Active Directory | Directory gegevens lezen |
 | Microsoft Graph | Alle audit logboek gegevens lezen |
 
 
@@ -118,7 +118,7 @@ In de volgende sectie worden de stappen voor beide Api's vermeld. Als u geen toe
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. Opmerking: **Microsoft Graph** wordt standaard toegevoegd tijdens de API-registratie.
+5. Opmerking: de **Microsoft Graph** wordt standaard toegevoegd tijdens de API-registratie.
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -179,7 +179,7 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 5. Voeg op de pagina **een geheim van client toevoegen** toe:
 
-    a. Typ`Reporting API`in het tekstvak **Beschrijving** .
+    a. In het tekstvak **Beschrijving** typt u `Reporting API`.
 
     b. Als **verlopen**, selecteert u **in 2 jaar**.
 
@@ -195,30 +195,30 @@ In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het o
 
 Het Microsoft Graph v2-eind punt wordt momenteel niet ondersteund. Zorg ervoor dat u toegang hebt tot de activiteiten logboeken met behulp van het Microsoft Graph v1-eind punt.
 
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Fout: Kan de gebruikers rollen niet ophalen uit de AD-grafiek
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Fout: kan de gebruikers rollen niet ophalen uit de AD-grafiek
 
  Meld u aan bij uw account met behulp van de aanmeldings knoppen in de interface van Graph Explorer om te voor komen dat er een fout optreedt wanneer u zich aanmeldt met Graph Explorer. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Fout: Kan geen Premium-licentie controle uitvoeren vanuit de AD-grafiek 
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Fout: kan geen Premium-licentie controle uitvoeren vanuit de AD-grafiek 
 
 Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijgen tot aanmeldingen met behulp van Graph Explorer, kiest u **machtigingen voor wijzigen** onder uw account in het navigatie venster links en selecteert u **taken. readwrite** en **Directory. Read. all**. 
 
 ![Machtigingen voor gebruikers interface wijzigen](./media/troubleshoot-graph-api/modify-permissions.png)
 
 
-### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Fout: De Tenant is niet B2C of de Tenant heeft geen Premium-licentie
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Fout: de Tenant is niet B2C of de Tenant heeft geen Premium-licentie
 
 Voor toegang tot aanmeldings rapporten is een licentie voor Azure Active Directory Premium 1 (P1) vereist. Als dit fout bericht wordt weer gegeven tijdens het openen van de aanmeldingen, moet u ervoor zorgen dat uw Tenant is gelicentieerd met een Azure AD P1-licentie.
 
-### <a name="error-the-allowed-roles-does-not-include-user"></a>Fout: De toegestane rollen bevatten geen gebruiker. 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>Fout: de toegestane rollen bevatten geen gebruiker. 
 
  Voorkom fouten bij het openen van de controle Logboeken of het aanmelden met de API. Zorg ervoor dat uw account deel uitmaakt van de rol van **beveiligings lezer** of **rapport lezer** in uw Azure Active Directory-Tenant.
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fout: De machtiging voor het lezen van mapgegevens van de toepassing AAD ontbreekt 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fout: de machtiging voor het lezen van de Directory gegevens van de toepassing voor AAD ontbreekt 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Fout: MSGraph-API voor ontbrekende toepassing alle controle logboek gegevens lezen
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Fout: de machtiging alle controle logboek gegevens lezen van de toepassing MSGraph-API ontbreekt
 
 Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Directory rapportage](howto-configure-prerequisites-for-reporting-api.md) om ervoor te zorgen dat uw toepassing wordt uitgevoerd met de juiste set machtigingen. 
 

@@ -1,133 +1,128 @@
 ---
-title: Resources, rollen en toegangsbeheer in Azure Application Insights | Microsoft Docs
-description: Eigenaren, bijdragers en lezers van inzichten van uw organisatie.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Microsoft Docs
+description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/14/2019
+ms.openlocfilehash: eea991b553d69fce5c177c1eee48633484dc19db
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373698"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899966"
 ---
-# <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangsbeheer in Application Insights
+# <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
-U kunt bepalen wie heeft lezen en bijwerken van toegang tot uw gegevens in Azure [Application Insights][start], met behulp van [rollen gebaseerd toegangsbeheer in Microsoft Azure](../../role-based-access-control/role-assignments-portal.md).
+Met op [rollen gebaseerd toegangs beheer in Microsoft Azure](../../role-based-access-control/role-assignments-portal.md)kunt u bepalen wie toegang heeft tot uw gegevens in azure [Application Insights][start]lezen en bijwerken.
 
 > [!IMPORTANT]
-> Toegang toewijzen aan gebruikers in de **resourcegroep of abonnement** die uw toepassingsresource behoort - niet in de resource zelf. Toewijzen de **Application Insights-onderdeelinzender** rol. Dit zorgt ervoor uniform beheer van toegang tot webtests en waarschuwingen, samen met de bron van uw toepassing. [Meer informatie](#access).
+> Wijs toegang toe aan gebruikers in de **resource groep of het abonnement** waartoe de resource van de toepassing behoort, niet in de resource zelf. Wijs de rol van de **Application Insights onderdeel bijdrager** toe. Dit zorgt voor eenvormige controle van de toegang tot webtests en waarschuwingen samen met uw toepassings bron. [Meer informatie](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>Resources, groepen en abonnementen
 
-Eerste, sommige definities:
+Eerst worden enkele definities:
 
-* **Resource** : een exemplaar van een Microsoft Azure-service. Uw Application Insights-resource verzamelt, analyseert en worden de telemetriegegevens die zijn verzonden vanuit uw toepassing wordt weergegeven.  Andere soorten Azure-resources zijn web-apps, databases en virtuele machines.
+* **Resource** : een exemplaar van een Microsoft Azure service. Uw Application Insights resource verzamelt, analyseert en toont de telemetriegegevens die vanuit uw toepassing zijn verzonden.  Andere typen Azure-resources zijn web-apps, data bases en virtuele machines.
   
-    Als u wilt zien van uw resources, opent u de [Azure-portal][portal], meld u aan en klik op alle Resources. Om een resource, typt u deel van de naam in het filterveld in.
+    Als u uw resources wilt zien, opent u de [Azure Portal][portal], meldt u zich aan en klikt u op alle resources. Als u een resource wilt zoeken, typt u een deel van de naam in het veld Filter.
   
     ![Lijst met Azure-resources](./media/resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**Resourcegroep** ] [ group] -elke resource behoort tot één groep. Een groep is een handige manier voor het beheren van de bijbehorende resources, met name voor toegangsbeheer. Bijvoorbeeld, in één resourcegroep. kunt u plaatsen een Web-App, een Application Insights-resource voor het bewaken van de app en een opslagresource om te voorkomen dat de geëxporteerde gegevens.
+* [**Resource groep**][group] : elke resource behoort tot één groep. Een groep is een handige manier om gerelateerde resources te beheren, met name voor toegangs beheer. Zo kunt u bijvoorbeeld in één resource groep een web-app, een Application Insights-resource voor het bewaken van de app en een opslag Resource plaatsen om geëxporteerde gegevens te bewaren.
 
-* [**Abonnement** ](https://portal.azure.com) : als u wilt gebruikmaken van Application Insights of andere Azure-resources, kunt u aanmelden bij een Azure-abonnement. Elke resourcegroep behoort tot één Azure-abonnement, waarbij u uw prijs pakket kiezen en, als het abonnement van een organisatie, kiest u de leden en de toegangsmachtigingen.
-* [**Microsoft-account** ] [ account] -de gebruikersnaam en het wachtwoord dat u zich aanmeldt bij Microsoft Azure-abonnementen, XBox Live, Outlook.com en andere Microsoft-services.
+* [**Abonnement**](https://portal.azure.com) : als u Application Insights of andere Azure-resources wilt gebruiken, meldt u zich aan bij een Azure-abonnement. Elke resource groep behoort tot één Azure-abonnement, waar u uw prijs pakket kiest en als het een organisatie-abonnement is, kiest u de leden en hun toegangs machtigingen.
+* [**Microsoft-account**][account] : de gebruikers naam en het wacht woord waarmee u zich aanmeldt bij Microsoft Azure abonnementen, Xbox Live, Outlook.com en andere micro soft-Services.
 
-## <a name="access"></a> Toegang beheren in de resourcegroep
+## <a name="access"></a>Toegang beheren in de resource groep
 
-Het is belangrijk om te begrijpen dat naast de resource die u voor uw toepassing hebt gemaakt, er ook afzonderlijke verborgen resources voor waarschuwingen en webtests zijn. Ze zijn gekoppeld aan dezelfde [resourcegroep](#resource-group) als uw Application Insights-resource. Mogelijk hebt u andere Azure-services er, zoals websites of storage ook geplaatst.
+Het is belang rijk om te begrijpen dat naast de resource die u hebt gemaakt voor uw toepassing, ook afzonderlijke verborgen resources voor waarschuwingen en webtests worden weer gegeven. Ze zijn gekoppeld aan dezelfde [resource groep](#resource-group) als uw Application Insights-resource. Mogelijk hebt u ook andere Azure-Services in daar geplaatst, zoals websites of opslag.
 
-Toegang tot deze resources die daarom het raadzaam om te beheren:
+Om de toegang tot deze resources te beheren, is het aanbevolen om:
 
-* Toegangsbeheer op de **resourcegroep of abonnement** niveau.
-* Toewijzen de **Inzender voor Application Insights-onderdeel** rol aan gebruikers. Hierdoor kunnen ze webtests, waarschuwingen en Application Insights-resources, zonder dat toegang biedt tot alle andere services in de groep bewerken.
+* Toegang beheren op het niveau van de **resource groep of het abonnement** .
+* Wijs de rol Inzender voor het **Application Insights onderdeel** toe aan gebruikers. Hierdoor kunnen ze webtests, waarschuwingen en Application Insights resources bewerken zonder dat ze toegang hebben tot andere services in de groep.
 
-## <a name="to-provide-access-to-another-user"></a>Om toegang te bieden aan een andere gebruiker
+## <a name="to-provide-access-to-another-user"></a>Om toegang te verlenen aan een andere gebruiker
 
-U moet de eigenaar van rechten voor het abonnement of de resourcegroep hebben.
+U moet eigenaars rechten hebben voor het abonnement of de resource groep.
 
-De gebruiker moet beschikken over een [Microsoft-Account][account], of toegang tot hun [organisatie Microsoft-Account](../../active-directory/fundamentals/sign-up-organization.md). U kunt toegang bieden tot personen, en ook tot gebruikersgroepen die zijn gedefinieerd in Azure Active Directory.
+De gebruiker moet een [micro soft-account][account]hebben of toegang hebben tot het [micro soft-account](../../active-directory/fundamentals/sign-up-organization.md)van hun organisatie. U kunt toegang verlenen aan personen en ook aan gebruikers groepen die zijn gedefinieerd in Azure Active Directory.
 
-#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Navigeer naar de resourcegroep of rechtstreeks naar de resource zelf
+#### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>Navigeer naar een resource groep of rechtstreeks naar de resource zelf
 
-Kies **toegangsbeheer (IAM)** in het menu links.
+Kies **toegangs beheer (IAM)** in het menu aan de linkerkant.
 
-![Schermafbeelding van de Access control knop in Azure portal](./media/resources-roles-access-control/0001-access-control.png)
+![Scherm afbeelding van de knop toegangs beheer in Azure Portal](./media/resources-roles-access-control/0001-access-control.png)
 
-Selecteer **roltoewijzing toevoegen**
+**Roltoewijzing toevoegen** selecteren
 
-![Schermafbeelding van de toegang tot het systeemmenu met knop toevoegen gemarkeerd in het rood](./media/resources-roles-access-control/0002-add.png)
+![Scherm afbeelding van het toegangs beheer menu met de knop toevoegen gemarkeerd in rood](./media/resources-roles-access-control/0002-add.png)
 
-De **machtigingen toevoegen** onderstaande weergave is voornamelijk specifiek naar Application Insights-resources, als u de machtigingen voor toegangsbeheer van een hoger niveau, zoals resourcegroepen, bekeek ziet u aanvullende niet-toepassing Insights-georiënteerde rollen.
+De onderstaande **machtigingen weergave toevoegen** is voornamelijk specifiek voor Application Insights resources, als u de machtigingen voor toegangs beheer van een hoger niveau als resource groepen hebt bekeken, ziet u aanvullende niet-Application Insights gerichte rollen.
 
-Informatie weergeven over alle op rollen gebaseerd toegangsbeheer in Azure ingebouwde rollen gebruiken de [officiële referentie-inhoud](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Als u informatie wilt weer geven over alle ingebouwde rollen van op rollen gebaseerd toegangs beheer van Azure, gebruikt u de [officiële referentie-inhoud](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-![Schermafbeelding van de gebruiker rol toegangsbeheerlijst](./media/resources-roles-access-control/0003-user-roles.png)
+![Scherm afbeelding van de lijst met gebruikers rollen in toegangs beheer](./media/resources-roles-access-control/0003-user-roles.png)
 
-#### <a name="select-a-role"></a>Selecteer een rol
+#### <a name="select-a-role"></a>Een rol selecteren
 
-Indien van toepassing koppelen we aan de bijbehorende officiële documentatie.
+Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële referentie documentatie.
 
-| Rol | In de resourcegroep |
+| Rol | In de resource groep |
 | --- | --- |
-| [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Alles zijn, met inbegrip van gebruikerstoegang kunt wijzigen. |
-| [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Alles zijn, met inbegrip van alle resources kunt bewerken. |
-| [Inzender voor Application Insights-onderdeel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights-resources, -webtests en -waarschuwingen kunnen worden bewerkt. |
-| [Lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kan weergeven, maar niet van belang. |
-| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Wordt de gebruiker gemachtigd om functies van Application Insights Snapshot Debugger te gebruiken. Houd er rekening mee dat deze rol wordt opgenomen in de rollen niet de eigenaar of Inzender. |
-| Azure-Service implementeren Release Management Inzender | De inzendersrol voor services implementeren via Azure-Service implementeren. |
-| [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Speciale functie voor het verwijderen van persoonlijke gegevens. Zie onze [richtlijnen voor persoonlijke gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) voor meer informatie.   |
-| ExpressRoute-beheerder | Delete maken en beheren van express-routes.|
-| [Inzender van log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Inzender van log Analytics kan alle controlegegevens lezen en bewerken van instellingen voor controle. Bewerken van instellingen voor controle houdt het toevoegen van de VM-extensie voor virtuele machines; lezen van opslagaccountsleutels om te kunnen verzamelen van Logboeken van Azure Storage; configureren het maken en configureren van Automation-accounts; toevoegen van oplossingen en Azure diagnostics configureren op alle Azure-resources.  |
-| [Lezer van log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Lezer van log Analytics kunt bekijken en zoeken van alle bewakingsgegevens en de controle-instellingen, inclusief het weergeven van de configuratie van Azure diagnostics op alle Azure-resources weergeven. |
-| masterreader | Hiermee kan een gebruiker Alles weergeven maar geen wijzigingen aanbrengen. |
-| [Controlebijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kan alle controlegegevens lezen en controle-instellingen bijwerken. |
-| [Uitgever van de metrische gegevens controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Hiermee schakelt u het publiceren van metrische gegevens bij Azure-resources. |
-| [Controlelezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kan alle controlegegevens lezen. |
-| Inzender voor Resourcebeleid (Preview) | Supportticket gebruikers gevuld vanuit EA, met machtigingen voor het maken/wijzigen voor resourcebeleid, maken en het lezen van resources/hiërarchie.  |
-| [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Kan een gebruiker voor het beheren van toegang voor andere gebruikers voor het Azure-resources.|
-| [Inzender voor websites](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Hiermee kunt u websites (niet webabonnementen), maar niet de toegang tot beheren...|
+| [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kan alles wijzigen, met inbegrip van gebruikers toegang. |
+| [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kan alles bewerken, inclusief alle resources. |
+| [Inzender voor Application Insights onderdelen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kan Application Insights resources, webtests en waarschuwingen bewerken. |
+| [Lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kan weer geven, maar niet wijzigen. |
+| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Hiermee krijgt de gebruiker toestemming om Application Insights Snapshot Debugger-functies te gebruiken. Houd er rekening mee dat deze rol is opgenomen in de rollen eigenaar en Inzender. |
+| Inzender voor Azure service Deploy release management | Rol van Inzender voor services die worden geïmplementeerd via Azure service Deploy. |
+| [Gegevens opschoner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Speciale rol voor het leegmaken van persoonlijke gegevens. Bekijk onze [richt lijnen voor persoonlijke gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) voor meer informatie.   |
+| ExpressRoute-beheerder | Kan snelle routes maken en verwijderen.|
+| [Inzender Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources.  |
+| [Log Analytics lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. |
+| masterreader | Hiermee kan een gebruiker alles weer geven, maar geen wijzigingen aanbrengen. |
+| [Inzender bewaken](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kan alle bewakings gegevens lezen en controle-instellingen bijwerken. |
+| [De uitgever van metrische gegevens controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources. |
+| [Bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kan alle controle gegevens lezen. |
+| Inzender voor resource beleid (preview-versie) | Alsnog gebruikers van EA, met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie.  |
+| [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Hiermee kan een gebruiker de toegang tot Azure-resources beheren voor andere gebruikers.|
+| [Website bijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites.|
 
-'Bewerken' omvat het maken, verwijderen en bijwerken:
+' Bewerken ' omvat het maken, verwijderen en bijwerken:
 
-* Resources
+* Bronnen
 * Webtests
 * Waarschuwingen
 * Continue export
 
-#### <a name="select-the-user"></a>Selecteer de gebruiker
+#### <a name="select-the-user"></a>De gebruiker selecteren
 
-Als de gebruiker die u wilt niet in de directory, kunt u iedereen met een Microsoft-account kunt uitnodigen.
-(Als ze gebruikmaakt van services zoals Outlook.com, OneDrive, Windows Phone of XBox Live, hebben ze een Microsoft-account.)
+Als de gebruiker die u wilt, niet in de adres lijst staat, kunt u iedereen uitnodigen met een Microsoft-account.
+(Als ze gebruikmaken van services zoals Outlook.com, OneDrive, Windows Phone of XBox Live, hebben ze een Microsoft-account.)
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Op rollen gebaseerd toegangsbeheer in Azure](../../role-based-access-control/role-assignments-portal.md)
+* [Op rollen gebaseerd toegangs beheer in azure](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="powershell-query-to-determine-role-membership"></a>PowerShell-query om te bepalen van lidmaatschap van de rol
+## <a name="powershell-query-to-determine-role-membership"></a>Power shell-query voor het bepalen van het rollidmaatschap
 
-Aangezien bepaalde rollen kunnen worden gekoppeld aan meldingen en e-mailwaarschuwing kan het handig kunnen zijn voor het genereren van een lijst met gebruikers die deel uitmaken van een bepaalde rol zijn. We bieden de volgende voorbeeldquery's die kunnen worden aangepast aan uw specifieke behoeften aan om te helpen bij het genereren van deze typen lijsten:
+Omdat bepaalde rollen kunnen worden gekoppeld aan meldingen en e-mail waarschuwingen, kan het handig zijn om een lijst met gebruikers te genereren die tot een bepaalde rol behoren. Voor hulp bij het genereren van deze typen lijsten bieden we de volgende voorbeeld query's die kunnen worden aangepast aan uw specifieke behoeften:
 
-### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Hele abonnement van de query voor beheerdersrollen + rol Inzender
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Het hele abonnement voor beheerders rollen + Inzender rollen opvragen
 
 ```powershell
 (Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
-### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>In de context van een specifieke Application Insights-resource op te vragen voor eigenaren en medewerkers
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Query's uitvoeren in de context van een specifieke Application Insights resource voor eigen aren en mede werkers
 
 ```powershell
 $resourceGroup = “RGNAME”
@@ -136,7 +131,7 @@ $resourceType = “microsoft.insights/components”
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
-### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>In de context van een specifieke resourcegroep op te vragen voor eigenaren en medewerkers
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Query's uitvoeren in de context van een specifieke resource groep voor eigen aren en mede werkers
 
 ```powershell
 $resourceGroup = “RGNAME”

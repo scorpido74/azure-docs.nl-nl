@@ -1,19 +1,18 @@
 ---
 title: Aan de slag met Azure Monitor Log Analytics | Microsoft Docs
 description: In dit artikel vindt u een zelf studie over het gebruik van Log Analytics in de Azure Portal om query's te schrijven.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 07/19/2019
+ms.openlocfilehash: 1babd0828e21f0125dba55199d808a579a10f049
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076827"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900354"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Aan de slag met Log Analytics in Azure Monitor
 
@@ -43,9 +42,9 @@ Als u Log Analytics wilt gebruiken, moet uw browser toegang hebben tot de volgen
 
 | URI | IP | Poorten |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamisch | 80,443 |
-| api.loganalytics.io | Dynamisch | 80,443 |
-| docs.loganalytics.io | Dynamisch | 80,443 |
+| portal.loganalytics.io | Dynamisch | 80.443 |
+| api.loganalytics.io | Dynamisch | 80.443 |
+| docs.loganalytics.io | Dynamisch | 80.443 |
 
 ## <a name="basic-queries"></a>Eenvoudige query's
 Query's kunnen worden gebruikt om termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van uw gegevens. Beginnen met een basis query:
@@ -69,8 +68,8 @@ In dit voor beeld is het bereik van de **Zoek opdracht** naar de _gebeurtenis_ t
 ## <a name="running-a-query"></a>Een query uitvoeren
 Voer een query uit door op de knop **uitvoeren** te klikken of op **SHIFT + ENTER**te drukken. Houd rekening met de volgende details die bepalen welke code wordt uitgevoerd en welke gegevens worden geretourneerd:
 
-- Regel einden: Met één breuk wordt uw query gemakkelijker te lezen. Meerdere regel einden worden in afzonderlijke query's gesplitst.
-- Cursor Plaats de cursor ergens in de query om deze uit te voeren. De huidige query wordt als code beschouwd totdat een lege regel wordt gevonden.
+- Regel einden: een enkele onderbreking zorgt ervoor dat uw query gemakkelijker te lezen is. Meerdere regel einden worden in afzonderlijke query's gesplitst.
+- Cursor: plaats de cursor ergens in de query om deze uit te voeren. De huidige query wordt als code beschouwd totdat een lege regel wordt gevonden.
 - Tijds bereik: een tijds bereik van de _laatste 24 uur_ wordt standaard ingesteld. Als u een ander bereik wilt gebruiken, gebruikt u de tijd kiezer of voegt u een expliciet tijds bereik filter toe aan uw query.
 
 
@@ -79,7 +78,7 @@ Het schema is een verzameling tabellen die visueel worden gegroepeerd onder een 
 
 ![Schema](media/get-started-portal/schema.png)
 
-In elke tabel worden gegevens geordend in kolommen met verschillende gegevens typen, zoals wordt aangegeven door de pictogrammen naast de naam van de kolom. Bijvoorbeeld, de _gebeurtenis_ tabel weergegeven in de schermafbeelding bevat kolommen zoals _Computer_ is tekst, _Culture_ die een getal is en _TimeGenerated_ die datum/tijd is.
+In elke tabel worden gegevens geordend in kolommen met verschillende gegevens typen, zoals wordt aangegeven door de pictogrammen naast de naam van de kolom. Bijvoorbeeld, de _gebeurtenis_ tabel die in de scherm afbeelding wordt weer gegeven, bevat kolommen zoals een _computer_ die tekst is, _EventCategory_ die een getal is en _TimeGenerated_ de datum/tijd.
 
 ## <a name="filter-the-results"></a>De resultaten filteren
 Begin met het ophalen van alles in de _gebeurtenis_ tabel.
@@ -90,13 +89,13 @@ Event
 
 Log Analytics resultaten automatisch bereiken:
 
-- Tijds bereik:  Query's zijn standaard beperkt tot de afgelopen 24 uur.
-- Aantal resultaten: De resultaten zijn beperkt tot Maxi maal 10.000 records.
+- Tijds bereik: standaard zijn query's beperkt tot de afgelopen 24 uur.
+- Aantal resultaten: de resultaten zijn beperkt tot Maxi maal 10.000 records.
 
 Deze query is zeer algemeen en er worden te veel resultaten geretourneerd om nuttig te zijn. U kunt de resultaten filteren door middel van de tabel elementen of door expliciet een filter toe te voegen aan de query. Het filteren van resultaten via de tabel elementen is van toepassing op de bestaande resultatenset, terwijl een filter op de query zelf een nieuwe gefilterde resultatenset retourneert, waardoor nauw keurigere resultaten kunnen worden verkregen.
 
 ### <a name="add-a-filter-to-the-query"></a>Een filter toevoegen aan de query
-Er staat een pijl links van elke record. Klik op deze pijl om de details voor een bepaalde record openen.
+Er staat een pijl links van elke record. Klik op deze pijl om de Details voor een specifieke record te openen.
 
 Beweeg de muis aanwijzer boven een kolom naam voor de pictogrammen ' + ' en '-' om weer te geven. Als u een filter wilt toevoegen waarmee alleen records met dezelfde waarde worden geretourneerd, klikt u op het plus teken (+). Klik op-om records met deze waarde uit te sluiten en klik vervolgens op **uitvoeren** om de query opnieuw uit te voeren.
 
@@ -107,7 +106,7 @@ We gaan nu de aandacht richten op gebeurtenissen met een Ernst _fout_. Dit is op
 
 Klik op het filter pictogram naast de kolom Titel en selecteer in het pop-upvenster waarden die _beginnen met_ de tekst _fout_:
 
-![Filteren](media/get-started-portal/filter.png)
+![Filter](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Resultaten sorteren en groeperen
@@ -125,7 +124,7 @@ De resultaten tabel bevat vaak veel kolommen. Het kan voor komen dat sommige van
 ![Kolommen selecteren](media/get-started-portal/select-columns.png)
 
 
-## <a name="select-a-time-range"></a>Een tijdsbereik selecteren
+## <a name="select-a-time-range"></a>Een tijds bereik selecteren
 Log Analytics past standaard het tijds bereik van de _laatste 24 uur_ toe. Als u een ander bereik wilt gebruiken, selecteert u een andere waarde door middel van de tijd kiezer en klikt u op **uitvoeren**. Naast de vooraf ingestelde waarden, kunt u de optie _aangepast tijds bereik_ gebruiken om een absoluut bereik voor uw query te selecteren.
 
 ![Tijd kiezer](media/get-started-portal/time-picker.png)
@@ -135,7 +134,7 @@ Wanneer u een aangepast tijds bereik selecteert, zijn de geselecteerde waarden i
 Als de query expliciet een filter voor _TimeGenerated_bevat, wordt in de titel van de tijd kiezer de _set in de query_weer gegeven. Hand matige selectie wordt uitgeschakeld om conflicten te voor komen.
 
 
-## <a name="charts"></a>Grafieken
+## <a name="charts"></a>diagrammen
 Naast het retour neren van resultaten in een tabel, kunnen query resultaten in visuele indelingen worden weer gegeven. Gebruik de volgende query als voor beeld:
 
 ```Kusto
@@ -147,11 +146,11 @@ Event
 
 Standaard worden de resultaten weer gegeven in een tabel. Klik op _grafiek_ om de resultaten in een grafische weer gave te bekijken:
 
-![Staafdiagram](media/get-started-portal/bar-chart.png)
+![Staaf diagram](media/get-started-portal/bar-chart.png)
 
 De resultaten worden weer gegeven in een gestapeld staaf diagram. Klik op _gestapelde kolom_ en selecteer _cirkel_ om een andere weer gave van de resultaten weer te geven:
 
-![Cirkeldiagram](media/get-started-portal/pie-chart.png)
+![Cirkel diagram](media/get-started-portal/pie-chart.png)
 
 Verschillende eigenschappen van de weer gave, zoals x-en y-assen, of groeperings-en splits voorkeuren, kunnen hand matig worden gewijzigd vanuit de controle balk.
 
@@ -169,9 +168,9 @@ Als u een diagram of tabel wilt vastmaken aan een van uw gedeelde Azure-Dash boa
 
 Bepaalde vereenvoudigingen worden toegepast op een grafiek wanneer u deze vastmaakt aan een dash board:
 
-- Tabel kolommen en rijen: Als u een tabel wilt vastmaken aan het dash board, moet deze vier of minder kolommen bevatten. Alleen de bovenste zeven rijen worden weer gegeven.
+- Tabel kolommen en rijen: als u een tabel wilt vastmaken aan het dash board, moet deze vier of minder kolommen bevatten. Alleen de bovenste zeven rijen worden weer gegeven.
 - Tijds beperking: Query's worden automatisch beperkt tot de afgelopen veer tien dagen.
-- Beperking voor het aantal bakken: Als u een grafiek met een groot aantal afzonderlijke opslag locaties weergeeft, worden minder gevulde opslag locaties automatisch gegroepeerd in één _andere_ opslag locatie.
+- Beperking voor het aantal bakken: als u een grafiek met een groot aantal afzonderlijke opslag locaties weergeeft, worden minder gevulde opslag locaties automatisch gegroepeerd in één _andere_ opslag locatie.
 
 ## <a name="save-queries"></a>Query's opslaan
 Wanneer u een nuttige query hebt gemaakt, wilt u deze mogelijk opslaan of met anderen delen. Het pictogram **Opslaan** bevindt zich op de bovenste balk.
@@ -188,14 +187,14 @@ Log Analytics query's worden altijd opgeslagen naar een geselecteerde werk ruimt
 ## <a name="load-queries"></a>Query's laden
 Het pictogram query Verkenner bevindt zich in de rechter bovenhoek. Hiermee worden alle opgeslagen query's per categorie weer gegeven. U kunt hiermee ook specifieke query's markeren als favorieten om ze in de toekomst snel te vinden. Dubbel klik op een opgeslagen query om deze toe te voegen aan het huidige venster.
 
-![Queryverkenner](media/get-started-portal/query-explorer.png)
+![Query Verkenner](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exporteren en delen als koppeling
 Log Analytics ondersteunt verschillende methoden voor exporteren:
 
 - Excel: Sla de resultaten op als een CSV-bestand.
-- Power BI: De resultaten exporteren naar Power BI. Zie [Azure monitor logboek gegevens importeren in Power bi](../../azure-monitor/platform/powerbi.md) voor meer informatie.
-- Een koppeling delen: De query zelf kan worden gedeeld als een koppeling die vervolgens kan worden verzonden en uitgevoerd door andere gebruikers die toegang hebben tot dezelfde werk ruimte.
+- Power BI: Exporteer de resultaten naar Power BI. Zie [Azure monitor logboek gegevens importeren in Power bi](../../azure-monitor/platform/powerbi.md) voor meer informatie.
+- Een koppeling delen: de query zelf kan worden gedeeld als een koppeling die vervolgens kan worden verzonden en uitgevoerd door andere gebruikers die toegang hebben tot dezelfde werk ruimte.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,168 +1,250 @@
 ---
-title: Azure Resource Manager-sjabloonfuncties - resources | Microsoft Docs
-description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruikt voor het ophalen van waarden over resources.
+title: Azure Resource Manager-sjabloon functies-resources | Microsoft Docs
+description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827482"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894202"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
+# <a name="resource-functions-for-azure-resource-manager-templates"></a>Resource functies voor Azure Resource Manager sjablonen
 
-Resource Manager biedt de volgende functies voor het ophalen van waarden van resources:
+Resource Manager biedt de volgende functies voor het ophalen van resource waarden:
 
-* [lijst met *](#list)
-* [Providers](#providers)
-* [Verwijzing](#reference)
+* [extensionResourceId](#extensionresourceid)
+* [orderverzamellijst](#list)
+* [hardwareproviders](#providers)
+* [referentielaag](#reference)
 * [resourceGroup](#resourcegroup)
-* [ResourceId](#resourceid)
+* [resourceId](#resourceid)
 * [abonnement](#subscription)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
-Waarden van parameters, variabelen of de huidige implementatie Zie [waarde implementatiefuncties](resource-group-template-functions-deployment.md).
+Zie [implementatie waarde Functions](resource-group-template-functions-deployment.md)om waarden op te halen uit para meters, variabelen of de huidige implementatie.
+
+## <a name="extensionresourceid"></a>extensionResourceId
+
+```json
+extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
+```
+
+Retourneert de resource-ID voor een [extensie resource](extension-resource-types.md), een resource type dat wordt toegepast op een andere resource om aan de mogelijkheden ervan toe te voegen.
+
+### <a name="parameters"></a>Parameters
+
+| Parameter | Verplicht | Type | Beschrijving |
+|:--- |:--- |:--- |:--- |
+| resourceId |Ja |string |De resource-ID voor de resource waarop de uitbreidings resource wordt toegepast. |
+| resourceType |Ja |string |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |string |De naam van de resource. |
+| resourceName2 |Nee |string |Volgend resource naam segment, indien nodig. |
+
+Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
+
+### <a name="return-value"></a>Retour waarde
+
+De basis indeling van de resource-ID die wordt geretourneerd door deze functie is:
+
+```json
+{scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Het bereik segment varieert van de resource die wordt uitgebreid.
+
+Wanneer de extensie resource wordt toegepast op een **resource**, wordt de resource-id geretourneerd met de volgende indeling:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wanneer de extensie resource wordt toegepast op een **resource groep**, is de notatie:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wanneer de extensie resource wordt toegepast op een **abonnement**, is de indeling:
+
+```json
+/subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Wanneer de extensie resource wordt toegepast op een **beheer groep**, is de indeling:
+
+```json
+/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+### <a name="extensionresourceid-example"></a>extensionResourceId-voor beeld
+
+In het volgende voor beeld wordt de resource-ID voor een resource groeps vergrendeling geretourneerd.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "lockName":{
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "lockResourceId": {
+            "type": "string",
+            "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
+        }
+    }
+}
+```
 
 <a id="listkeys" />
 <a id="list" />
 
 ## <a name="list"></a>orderverzamellijst
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+```json
+list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
+```
 
-De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkingen. Elke implementatie retourneert waarden voor het resource type dat een lijst bewerking ondersteunt. De naam van de bewerking moet `list`beginnen met. Enkele veelvoorkomende gebruiks vormen `listKeys` zijn `listSecrets`en. 
+De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkingen. Elke implementatie retourneert waarden voor het resource type dat een lijst bewerking ondersteunt. De naam van de bewerking moet beginnen met `list`. Enkele algemene gebruiks vormen zijn `listKeys` en `listSecrets`. 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| resourceName of resourceIdentifier |Ja |string |De unieke id voor de resource. |
-| apiVersion |Ja |string |API-versie van de runtimestatus van de resource. Normaal gesproken in de indeling, **jjjj-mm-dd**. |
-| functionValues |Nee |object | Een object met waarden voor de functie. Geef alleen dit object voor functies die ondersteuning bieden voor ontvangst van een object met parameterwaarden, zoals **listAccountSas** op een storage-account. In dit artikel wordt een voor beeld gegeven van het door geven van functie waarden. | 
+| ResourceName of resourceIdentifier |Ja |string |De unieke id voor de resource. |
+| apiVersion |Ja |string |API-versie van de runtime status van de resource. Doorgaans in de notatie **jjjj-mm-dd**. |
+| functionValues |Nee |object | Een object met waarden voor de functie. Geef dit object alleen op voor functies die ondersteuning bieden voor het ontvangen van een object met parameter waarden, zoals **listAccountSas** op een opslag account. In dit artikel wordt een voor beeld gegeven van het door geven van functie waarden. | 
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functies list voor `input` gebruiken, omdat de expressie wordt toegewezen aan de resource-eigenschap. U kunt deze `count` niet gebruiken omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
+De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functies list voor `input` gebruiken omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
 
 ### <a name="implementations"></a>Implementaties
 
 Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 
-| Resourcetype | Functienaam |
+| Resourcetype | Functie naam |
 | ------------- | ------------- |
-| Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.AppConfiguration/configurationStores | Listkeys ophalen |
-| Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft.BotService/botServices/channels | listChannelWithKeys |
-| Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
-| Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Micro soft. AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Micro soft. AppConfiguration/configurationStores | Listkeys ophalen |
+| Micro soft. Automation/automationAccounts | [Listkeys ophalen](/rest/api/automation/keys/listbyautomationaccount) |
+| Micro soft. batch/batchAccounts | [listkeys ophalen](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Micro soft. BatchAI/werk ruimten/experimenten/taken | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Micro soft. Block Chain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Micro soft. Block Chain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Micro soft. BotService/botServices/channels | listChannelWithKeys |
+| Micro soft. cache/redis | [Listkeys ophalen](/rest/api/redis/redis/listkeys) |
+| Micro soft. CognitiveServices/accounts | [Listkeys ophalen](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Micro soft. ContainerRegistry/registers | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Micro soft. ContainerRegistry/registers | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Micro soft. ContainerRegistry/registers | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Micro soft. ContainerRegistry/registers/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
-| Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
+| Micro soft. ContainerRegistry/registers/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
 | Micro soft. ContainerRegistry/registers/taken | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
-| Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
-| Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
-| Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
-| Microsoft.DataBox/jobs | listCredentials |
-| Microsoft.DataFactory/datafactories/gateways | listauthkeys |
-| Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
-| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
-| Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
-| Microsoft.Devices/provisioningServices | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeys) |
-| Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
-| Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
-| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
-| Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
-| Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
+| Micro soft. container service/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Micro soft. container service/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
+| Micro soft. container service/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
+| Micro soft. DataBox/Jobs | listCredentials |
+| Micro soft. DataFactory/datafactories/gateways | listauthkeys |
+| Micro soft. DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Micro soft. DataLakeAnalytics/accounts/Storage accounts/containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Micro soft. devices/iotHubs | [listkeys ophalen](/rest/api/iothub/iothubresource/listkeys) |
+| Micro soft. apparaten/provisioningServices/sleutels | [listkeys ophalen](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Micro soft. devices/provisioningServices | [listkeys ophalen](/rest/api/iot-dps/iotdpsresource/listkeys) |
+| Micro soft. DevTestLab/Labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
+| Micro soft. DevTestLab/Labs/planningen | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
+| Micro soft. DevTestLab/Labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
+| Micro soft. DevTestLab/Labs/informatie | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
+| Micro soft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Micro soft. DocumentDB/databaseAccounts | [Listkeys ophalen](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Micro soft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Micro soft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Micro soft. EventGrid/domeinen | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Micro soft. EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
-| Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Microsoft.LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
-| Microsoft.LabServices/users | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
-| Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
+| Micro soft. EventGrid/domeinen | [Listkeys ophalen](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Micro soft. EventGrid/topics | [Listkeys ophalen](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Micro soft. EventHub/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/eventhub/namespaces/listkeys) |
+| Micro soft. EventHub/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Micro soft. EventHub/naam ruimten/Event hubs/authorizationRules | [listkeys ophalen](/rest/api/eventhub/eventhubs/listkeys) |
+| Micro soft. ImportExport/Jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Micro soft. LabServices/gebruikers | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
+| Micro soft. LabServices/gebruikers | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
+| Micro soft. Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Micro soft. Logic/integrationAccounts/assembly's | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Micro soft. Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
+| Micro soft. Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
 | Micro soft. Logic/integrationAccounts/Maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
-| Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
-| Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
+| Micro soft. Logic/integrationAccounts/partners | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
+| Micro soft. Logic/integrationAccounts/-schema's | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Micro soft. Logic/werk stromen | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
+| Micro soft. Logic/werk stromen | [listSwagger](/rest/api/logic/workflows/listswagger) |
 | Micro soft. Logic/werk stromen/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
 | Micro soft. Logic/werk stromen/versies/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/workspaces/computes | Listkeys ophalen |
-| Microsoft.MachineLearningServices/workspaces | Listkeys ophalen |
-| Microsoft.Maps/accounts | [listKeys](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft.Media/mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
-| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
-| Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
-| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/workspaces | [listKeys](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Micro soft. relay/naam ruimten/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
-| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys ophalen |
-| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
-| Micro soft. relay/naam ruimten/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
-| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/queues/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/topics/listkeys) |
-| Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
+| Micro soft. MachineLearning/webservices | [listkeys ophalen](/rest/api/machinelearning/webservices/listkeys) |
+| Micro soft. MachineLearning/werk ruimten | listworkspacekeys |
+| Micro soft. MachineLearningServices/werk ruimten/reken kracht | Listkeys ophalen |
+| Micro soft. MachineLearningServices/werk ruimten | Listkeys ophalen |
+| Micro soft. Maps/accounts | [Listkeys ophalen](/rest/api/maps-management/accounts/listkeys) |
+| Micro soft. Media/Media Services/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
+| Micro soft. Media/Media Services/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Micro soft. Media/Media Services/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Micro soft. Media/Media Services/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Micro soft. Network/applicationSecurityGroups | listIpConfigurations |
+| Micro soft. notification hubs/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/namespaces/listkeys) |
+| Micro soft. notification hubs/naam ruimten/notification hubs/authorizationRules | [listkeys ophalen](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Micro soft. OperationalInsights/werk ruimten | [Listkeys ophalen](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Micro soft. relay/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/relay/namespaces/listkeys) |
+| Micro soft. relay/naam ruimten/disasterRecoveryConfigs/authorizationRules | listkeys ophalen |
+| Micro soft. relay/naam ruimten/HybridConnections/authorizationRules | [listkeys ophalen](/rest/api/relay/hybridconnections/listkeys) |
+| Micro soft. relay/naam ruimten/WcfRelays/authorizationRules | [listkeys ophalen](/rest/api/relay/wcfrelays/listkeys) |
+| Micro soft. Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
+| Micro soft. Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
+| Micro soft. ServiceBus/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/servicebus/namespaces/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/wacht rijen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/queues/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/onderwerpen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/topics/listkeys) |
+| Micro soft. SignalRService/Signa lering | [listkeys ophalen](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts | [listkeys ophalen](/rest/api/storagerp/storageaccounts/listkeys) |
 | Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Micro soft. StorSimple/managers/apparaten | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Micro soft. StorSimple/managers/apparaten | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Micro soft. StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
 | Micro soft. StorSimple/managers | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft.Web/connectionGateways | ListStatus |
-| microsoft.web/connections | listconsentlinks |
-| Microsoft.Web/customApis | listWsdlInterfaces |
-| microsoft.web/locations | listwsdlinterfaces |
-| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
-| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| Micro soft. Web/connectionGateways | ListStatus |
+| micro soft. Web/verbindingen | listconsentlinks |
+| Micro soft. Web/customApis | listWsdlInterfaces |
+| micro soft. Web/locaties | listwsdlinterfaces |
+| micro soft. Web/apimanagementaccounts/api's/Connections | listconnectionkeys |
+| micro soft. Web/apimanagementaccounts/api's/Connections | listsecrets |
 | micro soft. web/sites/functies | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
-| microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/webapps/listhybridconnectionkeys) |
-| microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| micro soft. web/sites/hybridconnectionnamespaces/relays | [listkeys ophalen](/rest/api/appservice/webapps/listhybridconnectionkeys) |
+| micro soft. web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | micro soft. web/sites/sleuven/functies | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
-Om te bepalen welke resourcetypen de bewerking voor een lijst met hebt, hebt u de volgende opties:
+Als u wilt bepalen welke resource typen een lijst bewerking hebben, hebt u de volgende opties:
 
-* Weergave de [REST API-bewerkingen](/rest/api/) voor een resourceprovider, en zoekt u bewerkingen na opvragen. Bijvoorbeeld storage-accounts hebben de [listKeys bewerking](/rest/api/storagerp/storageaccounts).
-* Gebruik de Power shell [-cmdlet Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . Het volgende voorbeeld haalt alle bewerkingen na opvragen voor storage-accounts:
+* Bekijk de [rest API bewerkingen](/rest/api/) voor een resource provider en zoek naar lijst bewerkingen. Opslag accounts hebben bijvoorbeeld de Listkeys ophalen- [bewerking](/rest/api/storagerp/storageaccounts).
+* Gebruik de Power shell [-cmdlet Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) . In het volgende voor beeld worden alle lijst bewerkingen voor opslag accounts opgehaald:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* Gebruik de volgende Azure CLI-opdracht voor het filteren van alleen de bewerkingen na opvragen:
+* Gebruik de volgende Azure CLI-opdracht om alleen de bewerkingen van de lijst te filteren:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
 Het geretourneerde object is afhankelijk van de functie van de lijst die u gebruikt. De Listkeys ophalen voor een opslag account retourneert bijvoorbeeld de volgende indeling:
 
@@ -183,19 +265,19 @@ Het geretourneerde object is afhankelijk van de functie van de lijst die u gebru
 }
 ```
 
-Andere functies van de lijst met hebben verschillende retour bestandsindelingen. Als u wilt zien van de indeling van een functie, opnemen in de uitvoersectie zoals wordt weergegeven in de voorbeeldsjabloon.
+Andere lijst functies hebben verschillende retour indelingen. Als u de indeling van een functie wilt zien, neemt u deze op in de sectie outputs, zoals wordt weer gegeven in de voorbeeld sjabloon.
 
 ### <a name="remarks"></a>Opmerkingen
 
-De resource met behulp van de resourcenaam opgeven of de [resourceId functie](#resourceid). Wanneer u een lijst functie gebruikt in dezelfde sjabloon die de resource van de verwijzing implementeert, gebruikt u de resource naam.
+Geef de resource op met behulp van de resource naam of de [functie resourceId](#resourceid). Wanneer u een lijst functie gebruikt in dezelfde sjabloon die de resource van de verwijzing implementeert, gebruikt u de resource naam.
 
 Als u een **lijst** functie gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd. Er wordt een fout bericht weer **geven** als de functie List verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en-lijst met een voorwaardelijke geïmplementeerde resource.
 
 ### <a name="list-example"></a>Voor beeld van lijst
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) laat zien hoe de primaire en secundaire sleutels uit een opslagaccount in de uitvoersectie geretourneerd. Deze retourneert ook een SAS-token voor het opslagaccount. 
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ziet u hoe u de primaire en secundaire sleutels uit een opslag account retourneert in de sectie outputs. Er wordt ook een SAS-token voor het opslag account geretourneerd. 
 
-Om het SAS-token op te halen, geeft u een object voor de verloop tijd door. De verloop tijd moet in de toekomst liggen. In dit voorbeeld is bedoeld om ziet u hoe u de lijst met functies. Normaal gesproken u zou het SAS-token in de waarde van een resource gebruiken in plaats een uitvoerwaarde terug. Uitvoerwaarden worden opgeslagen in de geschiedenis van de implementatie en niet is beveiligd.
+Om het SAS-token op te halen, geeft u een object voor de verloop tijd door. De verloop tijd moet in de toekomst liggen. Dit voor beeld is bedoeld om te laten zien hoe u de lijst functies gebruikt. Normaal gesp roken gebruikt u het SAS-token in een resource waarde in plaats van het als uitvoer waarde te retour neren. Uitvoer waarden worden opgeslagen in de implementatie geschiedenis en zijn niet beveiligd.
 
 ```json
 {
@@ -260,22 +342,24 @@ Om het SAS-token op te halen, geeft u een object voor de verloop tijd door. De v
 }
 ```
 
-## <a name="providers"></a>Providers
+## <a name="providers"></a>hardwareproviders
 
-`providers(providerNamespace, [resourceType])`
+```json
+providers(providerNamespace, [resourceType])
+```
 
-Retourneert informatie over een resourceprovider en de ondersteunde resourcetypen. Als u een resourcetype niet opgeeft, retourneert de functie de ondersteunde typen voor de resourceprovider.
+Retourneert informatie over een resource provider en de ondersteunde resource typen. Als u geen resource type opgeeft, retourneert de functie alle ondersteunde typen voor de resource provider.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ja |string |Namespace van de provider |
-| ResourceType |Nee |string |Het type resource binnen de opgegeven naamruimte. |
+| providerNamespace |Ja |string |Naam ruimte van de provider |
+| resourceType |Nee |string |Het type resource binnen de opgegeven naam ruimte. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-Elk type ondersteunde wordt geretourneerd in de volgende indeling: 
+Elk ondersteund type wordt in de volgende indeling geretourneerd: 
 
 ```json
 {
@@ -285,11 +369,11 @@ Elk type ondersteunde wordt geretourneerd in de volgende indeling:
 }
 ```
 
-Matrix volgorde van de geretourneerde waarden wordt niet gegarandeerd.
+Matrix volgorde van de geretourneerde waarden is niet gegarandeerd.
 
 ### <a name="providers-example"></a>Voor beeld van providers
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) laat zien hoe u de provider-functie te gebruiken:
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) ziet u hoe u de functie provider gebruikt:
 
 ```json
 {
@@ -313,7 +397,7 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-Voor de **Microsoft.Web** resourceprovider en **sites** brontype in het voorgaande voorbeeld retourneert een object in de volgende indeling:
+Voor het resource type **micro soft. Web** resource provider en **sites** retourneert het voor gaande voor beeld een object in de volgende indeling:
 
 ```json
 {
@@ -335,29 +419,31 @@ Voor de **Microsoft.Web** resourceprovider en **sites** brontype in het voorgaan
 }
 ```
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Referentielaag
 
-`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
+```json
+reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
+```
 
-Retourneert een object waarmee de runtimestatus van een resource.
+Retourneert een-object dat de runtime status van een resource aangeeft.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| resourceName of resourceIdentifier |Ja |string |Naam of de unieke id van een resource. Wanneer u verwijst naar een resource in de huidige sjabloon, geef de naam van de resource als parameter. Wanneer u verwijst naar een eerder geïmplementeerde resource, geeft u de resource-ID op. |
-| apiVersion |Nee |string |API-versie van de opgegeven resource. Deze parameter opgeeft als de bron is niet in dezelfde sjabloon ingericht. Normaal gesproken in de indeling, **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
-| 'Volledige' |Nee |string |De waarde die aangeeft of het volledige resource-object te retourneren. Als u geen opgeeft `'Full'`, alleen het object voor eigenschappen van de resource wordt geretourneerd. De volledige-object bevat waarden, zoals de resource-ID en de locatie. |
+| ResourceName of resourceIdentifier |Ja |string |De naam of de unieke id van een resource. Als u naar een resource in de huidige sjabloon verwijst, geeft u alleen de resource naam op als para meter. Wanneer u verwijst naar een eerder geïmplementeerde resource, geeft u de resource-ID op. |
+| apiVersion |Nee |string |API-versie van de opgegeven resource. Neem deze para meter op wanneer de resource niet binnen dezelfde sjabloon is ingericht. Doorgaans in de notatie **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
+| Waard |Nee |string |Waarde die aangeeft of het volledige Resource-object moet worden geretourneerd. Als u `'Full'`niet opgeeft, wordt alleen het eigenschappen object van de resource geretourneerd. Het volledige object bevat waarden zoals de resource-ID en de locatie. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-Elk resourcetype geeft als resultaat van de verschillende eigenschappen voor de referentie-functie. De functie retourneren niet een enkele, vooraf gedefinieerde indeling. De geretourneerde waarde verschilt ook, op basis van of u het volledige object hebt opgegeven. Overzicht van de eigenschappen voor een resourcetype, het object in de uitvoersectie zoals wordt weergegeven in het voorbeeld te retourneren.
+Elk resource type retourneert verschillende eigenschappen voor de verwijzings functie. De functie retourneert geen enkele vooraf gedefinieerde notatie. De geretourneerde waarde verschilt ook op basis van het feit of u het volledige object hebt opgegeven. Als u de eigenschappen voor een resource type wilt zien, retourneert u het object in de sectie outputs, zoals wordt weer gegeven in het voor beeld.
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie verwijzing haalt de runtimestatus van een eerder geïmplementeerde resource of een resource in de huidige sjabloon wordt geïmplementeerd. In dit artikel ziet u voorbeelden voor beide scenario's.
+De functie Reference haalt de runtime status op van een eerder geïmplementeerde resource of een resource die in de huidige sjabloon is geïmplementeerd. In dit artikel vindt u voor beelden van beide scenario's.
 
-Meestal gebruikt u de **verwijzing** functie voor het retourneren van een bepaalde waarde van een object, zoals het eindpunt van blob-URI of de volledig gekwalificeerde domeinnaam.
+Normaal gesp roken gebruikt u de functie **Reference** om een bepaalde waarde van een object te retour neren, zoals de URI van het BLOB-eind punt of Fully Qualified Domain name.
 
 ```json
 "outputs": {
@@ -372,7 +458,7 @@ Meestal gebruikt u de **verwijzing** functie voor het retourneren van een bepaal
 }
 ```
 
-Gebruik `'Full'` wanneer u waarden in de resource die geen deel uitmaken van het schema eigenschappen nodig hebt. Bijvoorbeeld, om toegangsbeleid voor sleutelkluizen, Hiermee worden de identiteitseigenschappen voor een virtuele machine.
+Gebruik `'Full'` wanneer u resource waarden nodig hebt die geen deel uitmaken van het eigenschappen schema. Als u bijvoorbeeld een sleutel kluis toegangs beleid wilt instellen, haalt u de identiteits eigenschappen voor een virtuele machine op.
 
 ```json
 {
@@ -398,15 +484,15 @@ Gebruik `'Full'` wanneer u waarden in de resource die geen deel uitmaken van het
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De referentie-functie kan alleen worden gebruikt in de eigenschappen van de resourcedefinitie van een en de uitvoersectie van een sjabloon of de implementatie. In combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functie Reference gebruiken `input` voor omdat de expressie wordt toegewezen aan de resource-eigenschap. U kunt dit `count` niet gebruiken omdat het aantal moet worden bepaald voordat de verwijzings functie wordt opgelost.
+De functie Reference kan alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. Bij gebruik in combi natie met [eigenschaps herhaling](resource-group-create-multiple.md#property-iteration)kunt u de functie Reference gebruiken voor `input`, omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
 U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](resource-group-linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](resource-group-linked-templates.md#external-template).
 
-Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er **wordt** een fout bericht weer geven als de verwijzings functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
+Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er wordt een fout bericht weer geven als de **verwijzings** functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
 
 ### <a name="implicit-dependency"></a>Impliciete afhankelijkheid
 
-Met behulp van de referentie-functie, declareert u impliciet dat een resource afhankelijk van een andere resource is als de bron waarnaar wordt verwezen, is ingericht in dezelfde sjabloon en u naar de resource met de naam (geen resource-ID verwijst). U hoeft niet te gebruiken ook de eigenschap DEPENDSON te maken. De functie wordt niet geëvalueerd totdat de resource waarnaar wordt verwezen, de implementatie is voltooid.
+Als u de functie Reference gebruikt, declareert u impliciet dat de ene resource afhankelijk is van een andere resource als de resource waarnaar wordt verwezen in dezelfde sjabloon is ingericht en u naar de resource verwijst met de naam (niet Resource-ID). U hoeft niet ook de eigenschap dependsOn te gebruiken. De functie wordt niet geëvalueerd tot de resource waarnaar wordt verwezen, de implementatie heeft voltooid.
 
 ### <a name="resource-name-or-identifier"></a>Resource naam of-id
 
@@ -434,11 +520,11 @@ Bij het samen stellen van een volledig gekwalificeerde verwijzing naar een resou
 
 Bijvoorbeeld:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`is correct `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` is niet juist
+de juiste `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` voor de `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` is onjuist
 
 ### <a name="reference-example"></a>Referentie voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) implementeert een resource, en verwijst naar die resource.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) implementeert een resource en verwijst naar die resource.
 
 ```json
 {
@@ -477,7 +563,7 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 }
 ``` 
 
-Het vorige voorbeeld retourneert de twee objecten. Het object voor eigenschappen is in de volgende indeling:
+In het voor gaande voor beeld worden de twee objecten geretourneerd. Het eigenschappen object heeft de volgende indeling:
 
 ```json
 {
@@ -495,7 +581,7 @@ Het vorige voorbeeld retourneert de twee objecten. Het object voor eigenschappen
 }
 ```
 
-Het volledige object verkeert in de volgende indeling:
+Het volledige object heeft de volgende indeling:
 
 ```json
 {
@@ -532,7 +618,7 @@ Het volledige object verkeert in de volgende indeling:
 }
 ```
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) verwijst naar een opslagaccount die in deze sjabloon is niet geïmplementeerd. Het opslagaccount bestaat al binnen hetzelfde abonnement.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) verwijst naar een opslag account dat niet in deze sjabloon is geïmplementeerd. Het opslag account bestaat al in hetzelfde abonnement.
 
 ```json
 {
@@ -558,13 +644,15 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-`resourceGroup()`
+```json
+resourceGroup()
+```
 
-Retourneert een object dat de huidige resourcegroep vertegenwoordigt. 
+Retourneert een object dat de huidige resource groep vertegenwoordigt. 
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-Het geretourneerde object is in de volgende indeling:
+Het geretourneerde object heeft de volgende indeling:
 
 ```json
 {
@@ -585,9 +673,9 @@ De eigenschap **managedBy** wordt alleen geretourneerd voor resource groepen die
 
 ### <a name="remarks"></a>Opmerkingen
 
-De `resourceGroup()` functie kan niet worden gebruikt in een sjabloon die is [geïmplementeerd op het abonnements niveau](deploy-to-subscription.md). Deze kan alleen worden gebruikt in sjablonen die zijn geïmplementeerd in een resource groep.
+De functie `resourceGroup()` kan niet worden gebruikt in een sjabloon die is [geïmplementeerd op het abonnements niveau](deploy-to-subscription.md). Deze kan alleen worden gebruikt in sjablonen die zijn geïmplementeerd in een resource groep.
 
-Een algemene gebruik van de resourceGroup-functie is het maken van resources in dezelfde locatie als de resourcegroep. Het volgende voorbeeld wordt de locatie voor resourcegroep om toe te wijzen de locatie voor een website.
+Een veelvoorkomend gebruik van de functie resourceGroup is het maken van resources op dezelfde locatie als de resource groep. In het volgende voor beeld wordt de locatie van de resource groep gebruikt om de locatie voor een website toe te wijzen.
 
 ```json
 "resources": [
@@ -605,7 +693,7 @@ U kunt ook de functie resourceGroup gebruiken om labels van de resource groep to
 
 ### <a name="resource-group-example"></a>Voor beeld van resource groep
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) worden de eigenschappen van de resourcegroep geretourneerd.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) retourneert de eigenschappen van de resource groep.
 
 ```json
 {
@@ -621,7 +709,7 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-Het vorige voorbeeld retourneert een object in de volgende indeling:
+In het voor gaande voor beeld wordt een object in de volgende indeling geretourneerd:
 
 ```json
 {
@@ -637,28 +725,37 @@ Het vorige voorbeeld retourneert een object in de volgende indeling:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
+```json
+resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
+```
 
-Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de resourcenaam van de niet eenduidig of niet ingericht binnen dezelfde sjabloon is. 
+Retourneert de unieke id van een resource. U gebruikt deze functie als de resource naam niet eenduidig of niet binnen dezelfde sjabloon is ingericht. 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nee |tekenreeks (In GUID-indeling) |Standaard wordt het huidige abonnement. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een ander abonnement. |
-| resourceGroupName |Nee |string |Standaardwaarde is de huidige resourcegroep. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een andere resourcegroep. |
-| ResourceType |Ja |string |Het type resource, met inbegrip van de naamruimte van de resource-provider. |
+| subscriptionId |Nee |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. |
+| resourceGroupName |Nee |string |De standaard waarde is de huidige resource groep. Geef deze waarde op wanneer u een resource in een andere resource groep wilt ophalen. |
+| resourceType |Ja |string |Het type resource, inclusief de naam ruimte van de resource provider. |
 | resourceName1 |Ja |string |De naam van de resource. |
 | resourceName2 |Nee |string |Volgend resource naam segment, indien nodig. |
 
 Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-De id wordt geretourneerd in de volgende indeling:
+De resource-ID wordt geretourneerd in de volgende indeling:
 
-**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
 
+Als u de ID in andere indelingen wilt ophalen, raadpleegt u:
+
+* [extensionResourceId](#extensionresourceid)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -688,15 +785,7 @@ Als u de resource-ID voor een resource in een ander abonnement en een andere res
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Wanneer u gebruikt met een [implementatie op abonnements niveau](deploy-to-subscription.md), `resourceId()` kan de functie alleen de id ophalen van resources die op dat niveau zijn geïmplementeerd. U kunt bijvoorbeeld de ID van een beleids definitie of roldefinitie ophalen, maar niet de ID van een opslag account. Voor implementaties naar een resource groep is het tegenovergestelde waar. U kunt de resource-ID van resources die zijn geïmplementeerd op abonnements niveau niet ophalen.
-
-Als u de resource-ID van een resource op abonnements niveau wilt ophalen bij het implementeren van het abonnements bereik, gebruikt u:
-
-```json
-"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
-```
-
-Vaak het geval is, moet u deze functie wilt gebruiken bij het gebruik van een storage-account of een virtueel netwerk in een andere resourcegroep. Het volgende voorbeeld laat zien hoe een resource vanaf een externe resourcegroep eenvoudig kan worden gebruikt:
+Vaak moet u deze functie gebruiken wanneer u een opslag account of een virtueel netwerk in een andere resource groep gebruikt. In het volgende voor beeld ziet u hoe een resource uit een externe resource groep eenvoudig kan worden gebruikt:
 
 ```json
 {
@@ -742,7 +831,7 @@ Vaak het geval is, moet u deze functie wilt gebruiken bij het gebruik van een st
 
 ### <a name="resource-id-example"></a>Resource-ID-voor beeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) geeft als resultaat de resource-ID voor een opslagaccount in de resourcegroep:
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) retourneert de resource-id voor een opslag account in de resource groep:
 
 ```json
 {
@@ -770,24 +859,26 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het vorige voor beeld met de standaard waarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| sameRGOutput | Reeks | /Subscriptions/{Current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Reeks | /Subscriptions/{Current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Reeks | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Reeks | /Subscriptions/{Current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/servername/databases/databaseName |
+| sameRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Tekenreeks | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Tekenreeks | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>subscription
+## <a name="subscription"></a>abonnement
 
-`subscription()`
+```json
+subscription()
+```
 
-Retourneert informatie over het abonnement voor de huidige implementatie. 
+Retourneert Details over het abonnement voor de huidige implementatie. 
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Retour waarde
 
-De functie geeft als resultaat van de volgende indeling:
+De functie retourneert de volgende indeling:
 
 ```json
 {
@@ -800,7 +891,7 @@ De functie geeft als resultaat van de volgende indeling:
 
 ### <a name="subscription-example"></a>Voor beeld van abonnement
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) toont de abonnement-functie in de uitvoersectie aangeroepen. 
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) toont de abonnements functie die is aangeroepen in de sectie outputs. 
 
 ```json
 {
@@ -816,10 +907,124 @@ De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
+## <a name="subscriptionresourceid"></a>subscriptionResourceId
+
+```json
+subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
+```
+
+Retourneert de unieke id voor een resource die is geïmplementeerd op het abonnements niveau.
+
+### <a name="parameters"></a>Parameters
+
+| Parameter | Verplicht | Type | Beschrijving |
+|:--- |:--- |:--- |:--- |
+| subscriptionId |Nee |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. |
+| resourceType |Ja |string |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |string |De naam van de resource. |
+| resourceName2 |Nee |string |Volgend resource naam segment, indien nodig. |
+
+Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
+
+### <a name="return-value"></a>Retour waarde
+
+De id wordt geretourneerd in de volgende indeling:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Opmerkingen
+
+U gebruikt deze functie om de resource-ID op te halen voor resources die zijn [geïmplementeerd in het abonnement](deploy-to-subscription.md) in plaats van een resource groep. De geretourneerde ID wijkt af van de waarde die wordt geretourneerd door de functie [resourceId](#resourceid) door de waarde van een resource groep niet op te nemen.
+
+### <a name="subscriptionresourceid-example"></a>subscriptionResourceID-voor beeld
+
+De volgende sjabloon wijst een ingebouwde rol toe. U kunt de app implementeren voor een resource groep of abonnement. De functie subscriptionResourceId wordt gebruikt om de resource-ID voor ingebouwde rollen op te halen.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
+    },
+    "variables": {
+        "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+## <a name="tenantresourceid"></a>tenantResourceId
+
+```json
+tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+```
+
+Retourneert de unieke id voor een resource die is geïmplementeerd op Tenant niveau.
+
+### <a name="parameters"></a>Parameters
+
+| Parameter | Verplicht | Type | Beschrijving |
+|:--- |:--- |:--- |:--- |
+| resourceType |Ja |string |Het type resource, inclusief de naam ruimte van de resource provider. |
+| resourceName1 |Ja |string |De naam van de resource. |
+| resourceName2 |Nee |string |Volgend resource naam segment, indien nodig. |
+
+Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
+
+### <a name="return-value"></a>Retour waarde
+
+De id wordt geretourneerd in de volgende indeling:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Opmerkingen
+
+U gebruikt deze functie om de resource-ID op te halen voor een resource die wordt geïmplementeerd op de Tenant. De geretourneerde ID wijkt af van de waarden die worden geretourneerd door andere resource-ID-functies, met inbegrip van resource groep-of abonnements waarden.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](resource-group-authoring-templates.md).
-* U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md).
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](resource-group-create-multiple.md).
-* Zie voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt, [een toepassing implementeren met Azure Resource Manager-sjabloon](resource-group-template-deploy.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](resource-group-authoring-templates.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
+* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md)om meerdere sjablonen samen te voegen.
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](resource-group-create-multiple.md).
+* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](resource-group-template-deploy.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

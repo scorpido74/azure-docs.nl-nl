@@ -1,23 +1,18 @@
 ---
 title: Application Insights voor Worker-service-apps (niet-HTTP-apps) | Microsoft Docs
 description: .NET core/. NET Framework-niet-HTTP-apps bewaken met Application Insights.
-services: application-insights
-documentationcenter: .net
-author: cijothomas
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/15/2019
+author: cijothomas
 ms.author: cithomas
-ms.openlocfilehash: 2185f5b0c4148e643e90741235054fd06fdbb151
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/15/2019
+ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174622"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899237"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -46,7 +41,7 @@ Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist
 
 1. Roep de uitbreidings methode `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` aan op `IServiceCollection`, waardoor de instrumentatie sleutel wordt verstrekt. Deze methode moet worden aangeroepen aan het begin van de toepassing. De exacte locatie is afhankelijk van het type toepassing.
 
-1. Haal een exemplaar van @no__t 0 of `TelemetryClient`-exemplaar op uit de container Injection (DI) door het aanroepen van `serviceProvider.GetRequiredService<TelemetryClient>();` of door het injecteren van de constructor te gebruiken. Met deze stap wordt het instellen van de modules `TelemetryConfiguration` en automatische verzameling geactiveerd.
+1. Haal een `ILogger` exemplaar of `TelemetryClient` exemplaar op uit de container Injection (DI) door het aanroepen van `serviceProvider.GetRequiredService<TelemetryClient>();` of het gebruik van constructor-injectie. Met deze stap wordt het instellen van de modules `TelemetryConfiguration` en automatische verzameling geactiveerd.
 
 Specifieke instructies voor elk type toepassing worden beschreven in de volgende secties.
 
@@ -135,10 +130,10 @@ U kunt ook de instrumentatie sleutel opgeven in een van de volgende omgevings va
 Bijvoorbeeld: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 OF `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-Normaal gesp roken geeft `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleutel voor toepassingen die op Web Apps als webjobs worden geïmplementeerd.
+Normaal gesp roken bevat `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleutel voor toepassingen die op Web Apps als webjobs worden geïmplementeerd.
 
 > [!NOTE]
-> Een instrumentatie sleutel die is opgegeven in code wint via de omgevings variabele `APPINSIGHTS_INSTRUMENTATIONKEY`, die WINS over andere opties.
+> Een instrumentatie sleutel die is opgegeven in code wint via de omgevings variabele `APPINSIGHTS_INSTRUMENTATIONKEY`, die WINS over andere opties overneemt.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Achtergrond taken ASP.NET Core met gehoste services
 In [Dit](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) document wordt beschreven hoe u achtergrond taken maakt in ASP.net Core 2.1/2.2-toepassing.
@@ -301,7 +296,7 @@ Deze console toepassing gebruikt ook dezelfde standaard `TelemetryConfiguration`
 
 Voer de toepassing uit. Met de voorbeeld werk rollen van het bovenstaande voor beeld wordt een HTTP-oproep elke seconde verzonden naar bing.com, en worden er ook enkele logboeken met ILogger. Deze regels worden genest in `StartOperation`-aanroep van `TelemetryClient`, die wordt gebruikt voor het maken van een bewerking (in dit voor beeld `RequestTelemetry` met de naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gekoppeld aan de `RequestTelemetry` met een bovenliggende/onderliggende relatie. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
 
-Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) , met `RequestTelemetry` fungeren als de bovenliggende bewerking en elke telemetrie die in de worker-iteratie wordt gegenereerd, wordt behandeld als logisch deel uitmaakt naar dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig) dezelfde `operation_id` hebben. Als steek proef is gebaseerd op `operation_id`, houdt het sampling algoritme alle telemetrie van één iteratie over of verwijdert u deze.
+Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) , met `RequestTelemetry` fungeren als de bovenliggende bewerking en elke telemetrie die in de worker-iteratie wordt gegenereerd, wordt behandeld als logisch deel uitmaakt naar dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde `operation_id`heeft. Als steek proef is gebaseerd op `operation_id`, houdt het steekproef algoritme alle telemetrie van één iteratie over of verwijdert u deze.
 
 Hieronder ziet u de volledige telemetrie die automatisch is verzameld door Application Insights.
 
@@ -501,7 +496,7 @@ Als u telemetrie voorwaardelijk en dynamisch wilt uitschakelen, kunt u het `Tele
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hoe kan ik telemetrie traceren die niet automatisch wordt verzameld?
 
-Haal een exemplaar van `TelemetryClient` op met behulp van constructor-injectie en roep de vereiste `TrackXXX()`-methode aan. Het maken van nieuwe `TelemetryClient`-instanties wordt niet aanbevolen. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection`-container, die `TelemetryConfiguration` deelt met rest van de telemetrie. Het maken van een nieuw exemplaar van @no__t 0 wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
+Haal een exemplaar van `TelemetryClient` op met behulp van constructor-injectie en roep de vereiste `TrackXXX()`-methode aan. Het maken van nieuwe `TelemetryClient`-instanties wordt niet aanbevolen. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection`-container, die `TelemetryConfiguration` deelt met rest van de telemetrie. Het maken van een nieuw `TelemetryClient`-exemplaar wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
 
 ### <a name="can-i-use-visual-studio-ide-to-onboard-application-insights-to-a-worker-service-project"></a>Kan ik Visual Studio IDE gebruiken om Application Insights te doen voor een werk nemer service-project?
 

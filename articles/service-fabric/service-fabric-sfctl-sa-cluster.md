@@ -3,29 +3,30 @@ title: Azure Service Fabric CLI-sfctl sa-cluster | Microsoft Docs
 description: Hierin worden de zelfstandige sfctl-opdrachten voor de Service Fabric CLI-cluster beschreven.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 902ebab5dc12d7649edd0ed6e594e663e5332ce3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035226"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901019"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zelfstandige Service Fabric-clusters beheren.
 
 ## <a name="commands"></a>Opdrachten
 
-|Opdracht|Description|
+|Opdracht|Beschrijving|
 | --- | --- |
 | configuraties | Haal de configuratie van de zelfstandige Cluster Service Fabric. |
 | configuratie-upgrade | Het bijwerken van de configuratie van een zelfstandige Service Fabric-cluster starten. |
@@ -38,16 +39,16 @@ De cluster configuratie bevat eigenschappen van het cluster die verschillende kn
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --configuratie-API-versie [vereist] | De API-versie van de JSON-configuratie van de zelfstandige cluster. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -60,7 +61,7 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --cluster-config [vereist] | De cluster configuratie. |
 | --toepassings status-beleids regels | JSON-gecodeerde woorden lijst met paren van de naam van het toepassings type en het maximum percentage is slecht voordat er een fout optreedt. |
@@ -68,7 +69,7 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 | --status-controle-opnieuw | De tijds duur tussen pogingen om status controles uit te voeren als de toepassing of het cluster niet in orde is.  Standaard\: PT0H0M0S. |
 | --status-controle stabiel | De hoeveelheid tijd die de toepassing of het cluster in orde moet blijven voordat de upgrade wordt voortgezet naar het volgende upgrade domein.  Standaard\: PT0H0M0S. <br><br> Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. |
 | --status-check-wait | De tijds duur die moet worden gewacht na het volt ooien van een upgrade domein voordat het proces status controles wordt gestart.  Standaard\: PT0H0M0S. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | Standaard\: 60. |
 | --toepassingen met een slechte status | Het Maxi maal toegestane percentage van beschadigde toepassingen tijdens de upgrade. Toegestane waarden zijn gehele waarden van nul tot en met 100. |
 | --onjuiste knoop punten | Het Maxi maal toegestane percentage van beschadigde knoop punten tijdens de upgrade. Toegestane waarden zijn gehele waarden van nul tot en met 100. |
 | --upgrade-Domain-Delta-slechte statussen: knoop punten | Het Maxi maal toegestane percentage van de upgrade van de Delta status van het domein tijdens de upgrade. Toegestane waarden zijn gehele waarden van nul tot en met 100. |
@@ -77,9 +78,9 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -88,10 +89,9 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 ### <a name="examples"></a>Voorbeelden
 
 Een update voor een cluster configuratie starten
-
-```
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+``` 
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
@@ -101,15 +101,15 @@ De details van de upgrade status van de cluster configuratie van een zelfstandig
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

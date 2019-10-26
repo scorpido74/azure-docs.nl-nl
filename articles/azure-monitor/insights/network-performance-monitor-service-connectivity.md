@@ -1,49 +1,43 @@
 ---
-title: Network Performance Monitor-oplossing in Azure Log Analytics | Microsoft Docs
-description: De Connectiviteitsmonitor voor Service-mogelijkheid in Network Performance Monitor gebruiken voor het bewaken van de netwerkverbinding met een willekeurig eindpunt dat een open TCP-poort is.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Netwerkprestatiemeter oplossing in azure Log Analytics | Microsoft Docs
+description: Gebruik de monitor functie voor service connectiviteit in Netwerkprestatiemeter om de netwerk verbinding te bewaken met een eind punt met een open TCP-poort.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/20/2018
+ms.openlocfilehash: dd02dad6d0f5b42181ad0bb27201384a6336ed6e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052090"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898827"
 ---
 # <a name="service-connectivity-monitor"></a>Bewaking van serviceverbinding
 
-Kunt u de mogelijkheid van Service-Connectiviteitsmonitor [Network Performance Monitor](network-performance-monitor.md) voor het bewaken van de netwerkverbinding met een willekeurig eindpunt dat een open TCP-poort is. Dergelijke eindpunten zijn websites, SaaS-toepassingen, PaaS-toepassingen en SQL-databases. 
+U kunt de monitor functie voor service connectiviteit in [Netwerkprestatiemeter](network-performance-monitor.md) gebruiken om de netwerk verbinding te bewaken met een eind punt met een open TCP-poort. Dergelijke eind punten omvatten websites, SaaS-toepassingen, PaaS-toepassingen en SQL-data bases. 
 
-U kunt de volgende functies met Service-Connectiviteitsmonitor uitvoeren: 
+U kunt de volgende functies uitvoeren met Service Connectivity monitor: 
 
-- Controleer de netwerkverbinding met uw toepassingen en de netwerkservices van meerdere filialen of locaties. Toepassingen en -services omvatten Office 365, Dynamics CRM, interne line-of-business-toepassingen en SQL-databases.
-- Gebruik ingebouwde tests om te controleren van de netwerkverbinding met Office 365 en Dynamics 365-eindpunten. 
-- Bepaal de reactietijd, netwerklatentie en pakketverlies ervaren wanneer u verbinding maakt met het eindpunt.
-- Bepalen of de prestaties slecht presteert vanwege het netwerk of vanwege een probleem opgetreden tijdens aan het uiteinde van de provider van de toepassing is.
-- Identificeer hotspots in het netwerk die slecht presteert prestaties veroorzaakt mogelijk door de latentie bijgedragen door elke hop op een topologie-kaart weer te geven.
+- Controleer de netwerk verbinding met uw toepassingen en netwerk services van meerdere filialen of locaties. Toepassingen en netwerk services zijn onder andere Office 365, Dynamics CRM, interne line-of-business-toepassingen en SQL-data bases.
+- Ingebouwde tests gebruiken voor het bewaken van de netwerk verbinding met Office 365 en Dynamics 365-eind punten. 
+- Bepaal de reactie tijd, netwerk latentie en pakket verlies tijdens het maken van verbinding met het eind punt.
+- Bepaal of de prestaties van de toepassing worden veroorzaakt door het netwerk of vanwege een probleem met het einde van de toepassings provider.
+- Identificeer hot spots op het netwerk die mogelijk een slechte prestaties van de toepassing veroorzaken door de latentie van elke hop op een topologie kaart weer te geven.
 
 
 ![Bewaking van serviceverbinding](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Configuratie 
-Open de configuratie voor Network Performance Monitor te openen de [Network Performance Monitor oplossing](network-performance-monitor.md) en selecteer **configureren**.
+Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
 
-![Network Performance Monitor configureren](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
+![Netwerkprestatiemeter configureren](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
-### <a name="configure-log-analytics-agents-for-monitoring"></a>Log Analytics-agents configureren voor bewaking
-Schakelt u de volgende firewallregels op de knooppunten die worden gebruikt voor het bewaken van zodat de oplossing kunt u de topologie van uw knooppunten aan het service-eindpunt detecteren: 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Log Analytics agents voor bewaking configureren
+Schakel de volgende firewall regels in op de knoop punten die worden gebruikt voor bewaking, zodat de oplossing de topologie van uw knoop punten kan detecteren in het service-eind punt: 
 
 ```
 netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -54,90 +48,90 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-connectivity-monitor-tests"></a>Connectiviteitsmonitor voor Service-tests maken 
+### <a name="create-service-connectivity-monitor-tests"></a>Tests voor service connectiviteits monitors maken 
 
-Beginnen met het maken van de tests uitgevoerd voor het controleren van de netwerkverbinding met de service-eindpunten.
+Begin met het maken van uw tests om de netwerk verbinding met de service-eind punten te bewaken.
 
-1. Selecteer de **Service Connectiviteitsmonitor** tabblad.
-2. Selecteer **toevoegen testen**, en voer de testnaam en beschrijving. U kunt maximaal 450 tests per werkruimte maken. 
-3. Selecteer het type van de test:<br>
+1. Selecteer het tabblad **monitor voor service connectiviteit** .
+2. Selecteer **test toevoegen**en voer de naam en beschrijving van de test in. U kunt Maxi maal 450 tests per werk ruimte maken. 
+3. Selecteer het type test:<br>
 
-    * Selecteer **Web** voor het bewaken van de verbinding met een service die op HTTP/S-aanvragen, zoals outlook.office365.com of bing.com reageert.<br>
-    * Selecteer **netwerk** voor het bewaken van de verbinding met een service die reageert op aanvragen voor TCP, maar niet reageert op HTTP/S-aanvragen, zoals een SQL server, de FTP-server of de SSH-poort. 
-    * Bijvoorbeeld: Voor het maken van een WebTest voor een blob storage-account selecteert **Web** en voer doel als *yourstorageaccount*. blob.core.windows.net. Op deze manier kunt u tests voor andere table storage, queue-opslag en met behulp van Azure Files [deze koppeling.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
-4. Als u niet wilt netwerkmetingen, zoals netwerklatentie en pakketverlies topologie-detectie, schakelt u de **Netwerkmetingen** selectievakje. Het geselecteerd om op te halen van maximaal profiteren van de mogelijkheid houden. 
-5. In **doel**, voer de URL/FQDN-naam/IP-adres waarnaar u wilt bewaken van de verbinding met het netwerk.
-6. In **poortnummer**, voer het poortnummer van de doelservice. 
-7. In **testen frequentie**, voer een waarde voor hoe vaak u wilt dat de test om uit te voeren. 
-8. Selecteer de knooppunten van waaruit u wilt bewaken van de netwerkverbinding met de service. Zorg ervoor dat het aantal agents per test toegevoegd minder dan 150. Een agent kan maximaal 150 eindpunten agents kunt testen.
+    * Selecteer **Web** voor het controleren van de verbinding met een service die reageert op http/S-aanvragen, zoals outlook.office365.com of Bing.com.<br>
+    * Selecteer **netwerk** om de verbinding met een service te bewaken die op TCP-aanvragen reageert, maar niet reageert op http/S-aanvragen, zoals een SQL-Server, FTP-server of SSH-poort. 
+    * Bijvoorbeeld: als u een webtest wilt maken naar een Blob Storage-account, selecteert u **Web** en voert u doel in als *yourstorageaccount*. blob.core.Windows.net. Op dezelfde manier kunt u tests maken voor andere tabel opslag, wachtrij opslag en Azure Files met behulp van [deze koppeling.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
+4. Als u geen netwerk metingen wilt uitvoeren, zoals netwerk latentie, pakket verlies en topologie detectie, schakelt u het selectie vakje **netwerk metingen uitvoeren** uit. Zorg ervoor dat deze optie is geselecteerd om Maxi maal voor deel te halen uit de mogelijkheid. 
+5. In **doel**voert u de URL/FQDN/IP-adres in waarmee u de netwerk verbinding wilt bewaken.
+6. In **poort nummer**voert u het poort nummer van de doel service in. 
+7. In **test frequentie**voert u een waarde in voor hoe vaak de test moet worden uitgevoerd. 
+8. Selecteer de knoop punten waarvan u de netwerk verbinding met de service wilt bewaken. Zorg ervoor dat het aantal agents dat per test is toegevoegd, kleiner is dan 150. Elke agent kan Maxi maal 150 eind punten/agents testen.
 
     >[!NOTE]
-    > Voor Windows server-knooppunten gebruikt de mogelijkheid TCP-aanvragen naar de netwerkmetingen uitschakelen. Voor Windows-knooppunten op basis van een client gebruikt de mogelijkheid ICMP-aanvragen naar de netwerkmetingen uitschakelen. In sommige gevallen blokkeert de doeltoepassing binnenkomende ICMP-aanvragen wanneer de knooppunten Windows client-gebaseerde zijn. De oplossing is niet netwerkmetingen uitschakelen. U wordt aangeraden dat u Windows server-gebaseerde knooppunten in dergelijke gevallen gebruiken. 
+    > Voor knoop punten op basis van Windows Server gebruikt de mogelijkheid TCP-aanvragen om de netwerk metingen uit te voeren. Voor knoop punten op basis van Windows-clients gebruikt de mogelijkheid ICMP-gebaseerde aanvragen voor het uitvoeren van de netwerk metingen. In sommige gevallen blokkeert de doel toepassing binnenkomende ICMP-gebaseerde aanvragen wanneer de knoop punten op Windows-clients zijn gebaseerd. De oplossing kan geen netwerk metingen uitvoeren. In dergelijke gevallen kunt u het beste Windows Server-knoop punten gebruiken. 
 
-9. Als u niet wilt maken van health-gebeurtenissen voor de items die u selecteert, schakel **statuscontrole inschakelen in de doelen waarop deze test betrekking**. 
-10. Kies voorwaarden controleren. U kunt aangepaste drempelwaarden voor het genereren van health-gebeurtenis instellen door te voeren drempelwaarden. Wanneer de waarde van de voorwaarde hoger dan de geselecteerde drempelwaarde voor het geselecteerde netwerk of subnet paar gaat, wordt een statusgebeurtenis wordt gegenereerd. 
-11. Selecteer **opslaan** aan de configuratie op te slaan. 
+9. Als u geen status gebeurtenissen wilt maken voor de items die u selecteert, schakelt u **status controle inschakelen in de doelen waarop deze test betrekking**heeft. 
+10. Kies bewakings voorwaarden. U kunt aangepaste drempel waarden instellen voor het genereren van status gebeurtenissen door drempel waarde in te voeren. Wanneer de waarde van de voor waarde boven de geselecteerde drempelwaarde voor het geselecteerde netwerk of subnetwerk komt, wordt een status gebeurtenis gegenereerd. 
+11. Selecteer **Opslaan** om de configuratie op te slaan. 
 
-    ![Connectiviteitsmonitor voor service-testconfiguraties](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
+    ![Test configuraties voor service verbindings monitor](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
 ## <a name="walkthrough"></a>Walkthrough 
 
-Ga naar de dashboardweergave Network Performance Monitor. Als u een overzicht van de status van de verschillende tests die u hebt gemaakt, bekijk de **Service Connectiviteitsmonitor** pagina. 
+Ga naar de Netwerkprestatiemeter dashboard weergave. Bekijk de pagina **service Connectivity monitor** voor een overzicht van de status van de verschillende tests die u hebt gemaakt. 
 
-![Connectiviteitsmonitor voor service-pagina](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
+![Pagina Service Connectivity monitor](media/network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
-Selecteer de tegel om de details van de tests weer op te geven de **Tests** pagina. U kunt de status van de punt-in-time en de waarde van de reactietijd van service, netwerklatentie en pakketverlies voor alle tests weergeven in de tabel aan de linkerkant. Het besturingselement netwerk staat Recorder gebruiken om de momentopname van het netwerk op een later tijdstip in het verleden weer te geven. Selecteer de test in de tabel die u wilt onderzoeken. In de grafieken in het deelvenster aan de rechterkant vindt u de historische trend van het gegevensverlies, latentie en tijdwaarden van de reactie. Selecteer de **Test Details** koppeling om de prestaties van elk knooppunt weer te geven.
+Selecteer de tegel om de details van de tests op de pagina **tests** weer te geven. In de tabel aan de linkerkant kunt u de tijdgebonden status en waarde van de reactie tijd van de service, netwerk latentie en pakket verlies voor alle tests weer geven. Gebruik het besturings element netwerk status recorder om de netwerk momentopname op een ander tijdstip in het verleden te bekijken. Selecteer de test in de tabel die u wilt onderzoeken. In de grafieken in het deel venster aan de rechter kant kunt u de historische trend van de waarden voor verlies, latentie en reactie tijd bekijken. Selecteer de koppeling **Test Details** om de prestaties van elk knoop punt weer te geven.
 
-![Connectiviteitsmonitor voor service-tests](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
+![Monitor tests voor service connectiviteit](media/network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
-In de **Testknooppunten** weergeven, kunt u de netwerkverbinding van elk knooppunt observeren. Selecteer het knooppunt met verminderde prestaties. Dit is het knooppunt waar de toepassing is waargenomen langzaam worden uitgevoerd.
+In de weer gave **test knooppunten** kunt u de netwerk verbinding van elk knoop punt bekijken. Selecteer het knoop punt waarop de prestaties verslechteren. Dit is het knoop punt waar de toepassing langzaam wordt uitgevoerd.
 
-Bepalen of de prestaties slecht presteert vanwege een probleem aan het uiteinde van de provider van de toepassing of het netwerk met inachtneming van de correlatie tussen de reactietijd van de toepassing en de netwerklatentie. 
+Bepaal of de prestaties van de toepassing goed zijn vanwege het netwerk of een probleem op het einde van de toepassings provider door de correlatie tussen de reactie tijd van de toepassing en de netwerk latentie te bestuderen. 
 
-* **Toepassingsprobleem met de:** Een piek in de reactietijd, maar consistentie in de netwerklatentie kan erop wijzen dat het netwerk goed werkt en het probleem wordt mogelijk veroorzaakt door een probleem aan het einde van de toepassing. 
+* **Toepassings probleem:** Een piek in de reactie tijd, maar consistentie in de netwerk latentie geeft aan dat het netwerk goed werkt en het probleem kan worden veroorzaakt door een probleem met het einde van de toepassing. 
 
-    ![Connectiviteitsmonitor voor service-toepassingsprobleem](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
+    ![Toepassings probleem van de service connectiviteit controleren](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
-* **Netwerkprobleem:** Een piek in de reactietijd, samen met een bijbehorende piek in de netwerklatentie kan erop wijzen dat de toename van reactietijden veroorzaakt door een toename van de netwerklatentie worden kan. 
+* **Netwerk probleem:** Een piek in reactie tijd, vergezeld van een overeenkomende Prikker in netwerk latentie, geeft aan dat de toename van de reactie tijd kan worden veroorzaakt door een toename van de netwerk latentie. 
 
-    ![Connectiviteitsmonitor voor service-netwerkprobleem](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
+    ![Netwerk probleem bewaking service connectiviteit](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
-Nadat u hebt vastgesteld dat het probleem vanwege het netwerk is, selecteert u de **topologie** weergavekoppeling voor het identificeren van de lastige hop op de kaart topologie. Een voorbeeld wordt weergegeven in de volgende afbeelding. Buiten de 105 ms totale latentie tussen het knooppunt en het toepassingseindpunt van de is 96 ms vanwege de hop in rood gemarkeerd. Nadat u de lastige hop geïdentificeerd, kunt u corrigerende maatregelen kunt nemen. 
+Nadat u hebt vastgesteld dat het probleem is veroorzaakt door het netwerk, selecteert u de koppeling **topologie** weergave om de lastige-hop op de topologie kaart te identificeren. Er wordt een voor beeld weer gegeven in de volgende afbeelding. Van de totale latentie van 105 MS tussen het knoop punt en het eind punt van de toepassing, 96 MS wordt veroorzaakt door de hop die rood is gemarkeerd. Nadat u de lastige-hop hebt geïdentificeerd, kunt u corrigerende maat regelen nemen. 
 
-![Connectiviteitsmonitor voor service-tests](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Monitor tests voor service connectiviteit](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
-## <a name="diagnostics"></a>Diagnostiek 
+## <a name="diagnostics"></a>Diagnostics 
 
-Als u een afwijking ziet, volgt u deze stappen:
+Ga als volgt te werk als u een abnormale procedure ziet:
 
-* Als de reactietijd van service, de wegvallend netwerk en de latentie als NA worden weergegeven, kan een of meer van de volgende redenen de oorzaak zijn:
+* Als de reactie tijd van de service, het netwerk verlies en de latentie worden weer gegeven als N.V.T., kunnen de volgende redenen de oorzaak zijn:
 
     - De toepassing is niet beschikbaar.
-    - Het knooppunt dat wordt gebruikt voor het controleren van de netwerkverbinding met de service is niet actief.
-    - Het doel is opgegeven in de Testconfiguratie van de is onjuist.
-    - Het knooppunt beschikt niet over een netwerkverbinding.
+    - Het knoop punt dat wordt gebruikt voor het controleren van de netwerk verbinding met de service is niet beschikbaar.
+    - Het doel dat is ingevoerd in de test configuratie is onjuist.
+    - Het knoop punt heeft geen netwerk verbinding.
 
-* Als de reactietijd van een geldige service wordt weergegeven, maar wegvallend netwerk, evenals de latentie als NA worden weergegeven, kan een of meer van de volgende redenen de oorzaak zijn:
+* Als er een geldige reactie tijd van de service wordt weer gegeven, maar netwerk verlies en latentie worden weer gegeven als N.V.T., kunnen de volgende redenen zijn:
 
-    - Als het knooppunt dat wordt gebruikt voor het controleren van de netwerkverbinding met de service een Windows client-computer is, de doelservice ICMP-aanvragen blokkeert of een netwerkfirewall ICMP-aanvragen die afkomstig uit het knooppunt zijn blokkeert.
-    - De **Netwerkmetingen** selectievakje is uitgeschakeld in de Testconfiguratie. 
+    - Als het knoop punt dat wordt gebruikt om de netwerk verbinding met de service te controleren, een Windows-client computer is, blokkeert de doel service ICMP-aanvragen of een netwerk firewall blokkeert ICMP-aanvragen die afkomstig zijn van het knoop punt.
+    - Het selectie vakje **netwerk metingen uitvoeren** is leeg in de test configuratie. 
 
-* Als de reactietijd van de service is NA maar wegvallend netwerk, evenals de latentie geldig zijn, kan een web-App niet in de doelservice zijn. De Testconfiguratie van de bewerken, en kies het testtype als **netwerk** in plaats van **Web**. 
+* Als de reactie tijd van de service NA, maar netwerk verlies en latentie geldig zijn, is de doel service mogelijk geen webtoepassing. Bewerk de configuratie van de test en kies het test type **netwerk** in plaats van het **Web**. 
 
-* Als de toepassing wordt traag uitgevoerd, moet u bepalen of de prestaties slecht presteert vanwege een probleem aan het uiteinde van de provider van de toepassing of het netwerk.
+* Als de toepassing langzaam wordt uitgevoerd, bepaalt u of de prestaties van de toepassing worden veroorzaakt door het netwerk of door een probleem met het einde van de toepassings provider.
 
-## <a name="gcc-office-urls-for-us-government-customers"></a>GCC Office-URL's voor Amerikaanse overheidsklanten
-Alleen Amerikaanse ministerie van defensie-URL's zijn voor US Government Virginia regio, ingebouwde NPM. Klanten die gebruikmaken van GCC-URL's moeten maken van aangepaste tests en elke URL afzonderlijk toevoegen.
+## <a name="gcc-office-urls-for-us-government-customers"></a>GCC Office-Url's voor Amerikaanse overheids klanten
+Voor de regio van de Amerikaanse overheids-Virginia zijn alleen DOD-Url's ingebouwd NPM. Klanten die GCC-Url's gebruiken, moeten aangepaste tests maken en elke URL afzonderlijk toevoegen.
 
 | Veld | GCC |
 |:---   |:--- |
-| Office 365-Portal en gedeelde | portal.apps.mil |
-| Office 365-verificatie en identiteit | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Office 365-Portal en gedeeld | portal.apps.mil |
+| Office 365-verificatie en-identiteit | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
 | Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
-| MS Teams | gov.teams.microsoft.us | 
+| MS-teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens prestatierecords weer te geven.
+[Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.

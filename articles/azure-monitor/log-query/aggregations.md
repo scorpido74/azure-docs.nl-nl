@@ -1,38 +1,32 @@
 ---
-title: Aggregaties in Azure Monitor query's bijgehouden | Microsoft Docs
-description: Hierin wordt beschreven aggregatiefuncties in Azure Monitor log-query's die nuttige manieren om uw gegevens te analyseren.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Aggregaties in Azure Monitor-logboek query's | Microsoft Docs
+description: Hierin worden aggregatie functies beschreven in Azure Monitor-logboek query's die handige manieren bieden om uw gegevens te analyseren.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602724"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900414"
 ---
-# <a name="aggregations-in-azure-monitor-log-queries"></a>Aggregaties in Logboeken-query's van Azure Monitor
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Aggregaties in Azure Monitor-logboek query's
 
 > [!NOTE]
-> U moet voltooien [aan de slag met de Analytics-portal](get-started-portal.md) en [aan de slag met query's](get-started-queries.md) voordat het voltooien van deze les gaat uitvoeren.
+> U moet aan [de slag gaan met de analyse Portal](get-started-portal.md) en [aan de slag met query's](get-started-queries.md) voordat u deze les voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Dit artikel wordt beschreven aggregatiefuncties in Azure Monitor log-query's die nuttige manieren om uw gegevens te analyseren. Deze alle functies werken met de `summarize` operator die hiermee een tabel met samengevoegde resultaten van de invoertabel wordt.
+In dit artikel worden aggregatie functies in Azure Monitor-logboek query's beschreven die handige manieren bieden om uw gegevens te analyseren. Deze functies werken allemaal met de operator `summarize` die een tabel produceert met geaggregeerde resultaten van de invoer tabel.
 
-## <a name="counts"></a>Telt het aantal
+## <a name="counts"></a>VERVANGENB
 
 ### <a name="count"></a>count
-Telt het aantal rijen in de resultatenset nadat alle filters zijn toegepast. Het volgende voorbeeld wordt het totale aantal rijen in de _Perf_ tabel uit de laatste 30 minuten. Het resultaat wordt geretourneerd in een kolom met de naam *count_* , tenzij u deze een specifieke naam toewijzen:
+Het aantal rijen in de resultatenset tellen nadat filters zijn toegepast. In het volgende voor beeld wordt het totale aantal rijen in de _prestatie_ tabel van de laatste 30 minuten geretourneerd. Het resultaat wordt geretourneerd in een kolom met de naam *count_* , tenzij u een specifieke naam toewijst:
 
 
 ```Kusto
@@ -47,7 +41,7 @@ Perf
 | summarize num_of_records=count() 
 ```
 
-Een visualisatie tijdgrafiek kan nuttig zijn voor een trend Zie na verloop van tijd:
+Een timechart-visualisatie kan handig zijn om een trend over een bepaalde periode te bekijken:
 
 ```Kusto
 Perf 
@@ -56,13 +50,13 @@ Perf
 | render timechart
 ```
 
-De uitvoer van dit voorbeeld toont het aantal records voor prestaties trendlijn in intervallen van vijf minuten:
+De uitvoer van dit voor beeld toont de trend lijn aantal prestatie records in intervallen van vijf minuten:
 
 ![Aantal trend](media/aggregations/count-trend.png)
 
 
 ### <a name="dcount-dcountif"></a>DCount, dcountif
-Gebruik `dcount` en `dcountif` aan het aantal distinctieve waarden in een specifieke kolom. De volgende query wordt geëvalueerd als het aantal afzonderlijke computers in het afgelopen uur heartbeats worden verzonden:
+Gebruik `dcount` en `dcountif` om afzonderlijke waarden in een bepaalde kolom te tellen. De volgende query evalueert hoeveel afzonderlijke computers in het afgelopen uur heartbeats hebben verzonden:
 
 ```Kusto
 Heartbeat 
@@ -70,7 +64,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Als u wilt tellen alleen de Linux-computers die heartbeats worden verzonden, gebruik `dcountif`:
+Als u alleen de Linux-computers wilt tellen die heartbeats hebben verzonden, gebruikt u `dcountif`:
 
 ```Kusto
 Heartbeat 
@@ -79,7 +73,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Subgroepen evalueren
-Om uit te voeren een aantal of andere aggregaties op subgroepen in uw gegevens, gebruikt u de `by` trefwoord. Als u bijvoorbeeld voor het tellen van het aantal verschillende Linux-computers die in elk land/regio heartbeats worden verzonden:
+Gebruik het sleutel woord `by` om een aantal of andere aggregaties voor subgroepen in uw gegevens uit te voeren. Als u bijvoorbeeld het aantal afzonderlijke Linux-computers wilt tellen dat in elk land/elke regio heartbeats heeft verzonden:
 
 ```Kusto
 Heartbeat 
@@ -96,7 +90,7 @@ Heartbeat
 |Nederland      | 2                   |
 
 
-Voor het analyseren van kleinere subgroepen van uw gegevens, extra kolomnamen toevoegen aan de `by` sectie. U wilt bijvoorbeeld de afzonderlijke computers in elk land/regio per OSType tellen:
+Als u nog kleinere subgroepen van uw gegevens wilt analyseren, voegt u aanvullende kolom namen toe aan de sectie `by`. U kunt bijvoorbeeld de afzonderlijke computers van elk land/elke regio per OSType tellen:
 
 ```Kusto
 Heartbeat 
@@ -105,10 +99,10 @@ Heartbeat
 ```
 
 ## <a name="percentiles-and-variance"></a>Percentielen en variantie
-Bij het evalueren van numerieke waarden, een normaal worden bij deze gemiddelde met behulp van `summarize avg(expression)`. Gemiddelden worden beïnvloed door extreme waarden die kenmerkend zijn voor slechts enkele gevallen. Om dit probleem op te lossen, kunt u minder gevoelig zijn functies zoals `median` of `variance`.
+Bij het evalueren van numerieke waarden is het normaal om ze te berekenen met behulp van `summarize avg(expression)`. De gemiddelden worden beïnvloed door extreme waarden die slechts enkele gevallen kenmerkend zijn. U kunt dit probleem oplossen door minder gevoelige functies te gebruiken, zoals `median` of `variance`.
 
 ### <a name="percentile"></a>Percentiel
-Als u de mediaanwaarde zoekt, gebruikt u de `percentile` functie met een waarde op te geven van de percentiel:
+Als u de mediaan waarde wilt weten, gebruikt u de functie `percentile` met een waarde om het percentiel op te geven:
 
 ```Kusto
 Perf
@@ -117,7 +111,7 @@ Perf
 | summarize percentiles(CounterValue, 50) by Computer
 ```
 
-U kunt ook verschillende percentielen om een samengevoegd resultaat voor elke opgeven:
+U kunt ook verschillende percentielen opgeven om een geaggregeerd resultaat te krijgen voor elk:
 
 ```Kusto
 Perf
@@ -126,10 +120,10 @@ Perf
 | summarize percentiles(CounterValue, 25, 50, 75, 90) by Computer
 ```
 
-Dit kan laten zien dat een computer CPU's vergelijkbare mediaan waarden hebben, maar sommige zijn onveranderlijk rond de mediaan, andere computers veel hogere en lagere CPU waarden wat betekent dat zij ervaren pieken hebben gerapporteerd.
+Dit kan aantonen dat sommige computer-Cpu's vergelijk bare mediaan waarden hebben, maar dat sommige gestage rond de mediaan zijn, maar dat andere computers veel lagere CPU-waarden hebben gerapporteerd, wat betekent dat er pieken zijn opgetreden.
 
 ### <a name="variance"></a>Variantie
-Om te evalueren rechtstreeks de variantie van een waarde, gebruikt u de standaarddeviatie en variantie methoden:
+Gebruik de methoden standaard afwijking en variantie om de variantie van een waarde direct te evalueren:
 
 ```Kusto
 Perf
@@ -138,7 +132,7 @@ Perf
 | summarize stdev(CounterValue), variance(CounterValue) by Computer
 ```
 
-Er is een goede manier om de stabiliteit van het CPU-gebruik analyseren stdev combineren met de berekening van de mediaan:
+Een goede manier om de stabiliteit van het CPU-gebruik te analyseren is het combi neren van STDEV met de mediaan berekening:
 
 ```Kusto
 Perf
@@ -147,12 +141,12 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Zie andere lessen voor het gebruik van de [Kusto-querytaal](/azure/kusto/query/) met Azure Monitor gegevens vastleggen:
+Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/) met Azure monitor-logboek gegevens:
 
-- [Bewerkingen op tekenreeksen uitvoeren](string-operations.md)
-- [Datum- en tijdbewerkingen](datetime-operations.md)
+- [Teken reeks bewerkingen](string-operations.md)
+- [Datum-en tijd bewerkingen](datetime-operations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
-- [JSON en gegevensstructuren](json-data-structures.md)
-- [Geavanceerde query schrijven](advanced-query-writing.md)
+- [JSON en gegevens structuren](json-data-structures.md)
+- [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)

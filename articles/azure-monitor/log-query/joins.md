@@ -1,33 +1,27 @@
 ---
-title: Joins in Logboeken-query's van Azure Monitor | Microsoft Docs
-description: Dit artikel bevat een les over het gebruik van joins in Azure Monitor logboeken-query's.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Samen voegen in Azure Monitor-logboek query's | Microsoft Docs
+description: Dit artikel bevat een les over het gebruik van samen voegingen in Azure Monitor-logboek query's.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60520117"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900289"
 ---
-# <a name="joins-in-azure-monitor-log-queries"></a>Joins in Logboeken-query's van Azure Monitor
+# <a name="joins-in-azure-monitor-log-queries"></a>Samen voegen in Azure Monitor-logboek query's
 
 > [!NOTE]
-> U moet voltooien [aan de slag met Azure Monitor Log-Analytics](get-started-portal.md) en [logboeken-query's van Azure Monitor](get-started-queries.md) voordat het voltooien van deze les gaat uitvoeren.
+> U moet aan de [slag met Azure Monitor Log Analytics](get-started-portal.md) en [Azure monitor logboek query's](get-started-queries.md) uitvoeren voordat u deze les voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Met samenvoegingen kunt u gegevens uit meerdere tabellen, in dezelfde query kunt analyseren. Ze samenvoegen de rijen van twee gegevenssets met overeenkomende waarden van de opgegeven kolommen.
+Met samen voegingen kunt u gegevens uit meerdere tabellen analyseren, in dezelfde query. De rijen van twee gegevens sets worden samengevoegd door de waarden van de opgegeven kolommen te vergelijken.
 
 
 ```Kusto
@@ -44,23 +38,23 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-In dit voorbeeld wordt de eerste gegevensset gefilterd voor alle gebeurtenissen voor aanmelden. Dit is gekoppeld met een tweede gegevensset waarmee voor alle afmelding gebeurtenissen worden gefilterd. De verwachte kolommen zijn _Computer_, _Account_, _TargetLogonId_, en _TimeGenerated_. De gegevenssets worden gecorreleerd met een gedeelde kolom _TargetLogonId_. De uitvoer is één record per correlatie met het aanmelden en afmelden tijd.
+In dit voor beeld worden de eerste gegevensset filters voor alle aanmeldings gebeurtenissen. Deze is gekoppeld aan een tweede gegevensset die voor alle afmeldings gebeurtenissen filtert. De geprojecteerde kolommen zijn _computer_, _account_, _TargetLogonId_en _TimeGenerated_. De gegevens sets worden gecorreleerd door een gedeelde kolom _TargetLogonId_. De uitvoer is één record per correlatie, die zowel de aanmeld-als de afmeldings tijd heeft.
 
-Als u beide gegevenssets kolommen met dezelfde naam hebben, de kolommen van de gegevensset aan de rechterkant wilt toekennen aan een indexnummer zodat in dit voorbeeld de resultaten toont _TargetLogonId_ met waarden uit de tabel aan de linkerkant en  _TargetLogonId1_ met waarden uit de tabel aan de rechterkant. In dit geval wordt de tweede _TargetLogonId1_ kolom is verwijderd met behulp van de `project-away` operator.
+Als beide gegevens sets kolommen met dezelfde namen bevatten, krijgen de kolommen van de gegevensset aan de rechter kant een index nummer, dus in dit voor beeld worden de resultaten _TargetLogonId_ weer gegeven met waarden uit de tabel aan de linkerkant en _TargetLogonId1_ met waarden uit de tabel aan de rechter kant. In dit geval is de tweede kolom _TargetLogonId1_ verwijderd met behulp van de operator `project-away`.
 
 > [!NOTE]
-> Voor betere prestaties, blijven alleen de relevante kolommen van de gekoppelde data-sets, met behulp van de `project` operator.
+> U kunt de prestaties verbeteren door alleen de relevante kolommen van de gekoppelde gegevens sets te gebruiken met behulp van de operator `project`.
 
 
-De volgende syntaxis gebruiken om te koppelen van twee gegevenssets en de sleutel is toegevoegd aan een andere naam tussen de twee tabellen bevat:
+Gebruik de volgende syntaxis om twee gegevens sets samen te voegen en de gekoppelde sleutel heeft een andere naam dan de twee tabellen:
 ```
 Table1
 | join ( Table2 ) 
 on $left.key1 == $right.key2
 ```
 
-## <a name="lookup-tables"></a>Opzoektabellen
-Joins vaak gebruikt met behulp van statische toewijzing van waarden met behulp van `datatable` die helpen bij het omzetten van de resultaten in meer uitziet. Bijvoorbeeld, te verrijken van de beveiliging gebeurtenisgegevens met de naam van de gebeurtenis voor elke gebeurtenis-id.
+## <a name="lookup-tables"></a>Opzoek tabellen
+Bij het gebruik van samen voegingen wordt gebruikgemaakt van een statische toewijzing van waarden met behulp van `datatable` die u kan helpen bij het transformeren van de resultaten naar een te preseer bare manier. Als u bijvoorbeeld de gegevens van de beveiligings gebeurtenis wilt verrijken met de naam van de gebeurtenis voor elke gebeurtenis-ID.
 
 ```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
@@ -81,35 +75,35 @@ SecurityEvent
 | summarize count() by eventName
 ```
 
-![Lid maken met een datatable](media/joins/dim-table.png)
+![Samen voegen met een DataTable](media/joins/dim-table.png)
 
-## <a name="join-kinds"></a>Typen koppelen
-Geef het type koppelen met de _soort_ argument. Elk type voert een andere overeenkomst tussen de records van de opgegeven tabellen, zoals beschreven in de volgende tabel.
+## <a name="join-kinds"></a>Typen samen voegen
+Geef het type samen voeging met het argument _kind_ op. Elk type voert een andere overeenkomst uit tussen de records van de opgegeven tabellen, zoals beschreven in de volgende tabel.
 
-| Type join | Description |
+| Type samen voeging | Beschrijving |
 |:---|:---|
-| innerunique | Dit is de standaardmodus voor de join. Eerst de waarden van de overeenkomende kolom in de linkertabel worden gevonden en dubbele waarden zijn verwijderd.  De set met unieke waarden wordt vervolgens vergeleken met de rechtertabel. |
-| binnenste | Alleen overeenkomende records in beide tabellen zijn opgenomen in de resultaten. |
-| leftouter | Alle records in de linkertabel en overeenkomende records in de rechtertabel zijn opgenomen in de resultaten. Niet-overeenkomende uitvoereigenschappen bevatten null-waarden.  |
-| leftanti | Records aan de linkerkant waarvoor geen overeenkomsten vanaf de rechterkant worden opgenomen in de resultaten. De tabel met resultaten heeft alleen kolommen uit de linkertabel. |
-| leftsemi | Records aan de linkerkant waarvoor komt overeen met vanaf de rechterkant worden opgenomen in de resultaten. De tabel met resultaten heeft alleen kolommen uit de linkertabel. |
+| innerunique | Dit is de standaard modus voor samen voegen. Eerst worden de waarden van de overeenkomende kolom in de linkertabel gevonden en worden dubbele waarden verwijderd.  Vervolgens wordt de reeks unieke waarden vergeleken met de rechter tabel. |
+| wend | Alleen overeenkomende records in beide tabellen zijn opgenomen in de resultaten. |
+| leftouter | Alle records in de linkertabel en overeenkomende records in de rechter tabel zijn opgenomen in de resultaten. Niet-overeenkomende uitvoer eigenschappen bevatten Null-waarden.  |
+| leftanti | Records aan de linkerkant die geen overeenkomsten van rechts hebben, worden opgenomen in de resultaten. De resultaten tabel bevat alleen kolommen uit de linkertabel. |
+| leftsemi | Records aan de linkerkant die aan de rechter kant overeenkomen, worden opgenomen in de resultaten. De resultaten tabel bevat alleen kolommen uit de linkertabel. |
 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
 Houd rekening met de volgende punten voor optimale prestaties:
 
-- Een tijdfilter voor elke tabel gebruiken om te beperken van de records die moeten worden geëvalueerd voor de join.
-- Gebruik `where` en `project` te verminderen van het aantal rijen en kolommen in de invoer tabellen voordat u de join.
-- Als een tabel altijd kleiner zijn dan de andere is, kunt u deze als aan de linkerkant van de join gebruiken.
+- Gebruik een tijd filter voor elke tabel om de records te verminderen die moeten worden geëvalueerd voor de koppeling.
+- Gebruik `where` en `project` om het aantal rijen en kolommen in de invoer tabellen te verminderen vóór de koppeling.
+- Als de ene tabel altijd kleiner is dan de andere, gebruikt u deze als de linkerkant van de koppeling.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere lessen voor het gebruik van Azure Monitor logboeken-query's:
+Zie andere lessen voor het gebruik van Azure Monitor-logboek query's:
 
-- [Bewerkingen op tekenreeksen uitvoeren](string-operations.md)
-- [Aggregatiefuncties](aggregations.md)
+- [Teken reeks bewerkingen](string-operations.md)
+- [Aggregatie functies](aggregations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
-- [JSON en gegevensstructuren](json-data-structures.md)
-- [Geavanceerde query schrijven](advanced-query-writing.md)
-- [Grafieken](charts.md)
+- [JSON en gegevens structuren](json-data-structures.md)
+- [Geavanceerde query's schrijven](advanced-query-writing.md)
+- [Diagrammen](charts.md)

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143659"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901611"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over Windows 10 Enter prise multi-session
+# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
 In dit artikel worden veelgestelde vragen beantwoord en best practices voor Windows 10 Enter prise multi-session besproken.
  
@@ -28,7 +28,7 @@ Hoeveel interactieve sessies tegelijk actief kunnen zijn, is afhankelijk van de 
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Waarom rapporteert mijn toepassing Windows 10 Enter prise multi-session als een server besturingssysteem?
 
-Windows 10 Enter prise multi-session is een virtuele editie van Windows 10 Enter prise. Een van de verschillen is dat dit besturings systeem (OS) de [product type](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) rapporteert als een waarde van 2, dezelfde waarde als Windows Server. Met deze eigenschap blijft het besturings systeem compatibel met bestaande hulpprogram ma's voor het uitvoeren van RDSH-beheer, toepassingen met meerdere sessies op basis van RDSH en voornamelijk systeem prestatie optimalisaties op laag niveau voor RDSH-omgevingen. Sommige installatie Programma's van toepassingen kunnen de installatie van Windows 10 multi-session blok keren, afhankelijk van of ze de product type detecteren, is ingesteld op client. Als uw app niet kan worden geïnstalleerd, neemt u contact op met de leverancier van de toepassing voor een bijgewerkte versie. 
+Windows 10 Enter prise multi-session is een virtuele editie van Windows 10 Enter prise. Een van de verschillen is dat dit besturings systeem (OS) de [product type](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) rapporteert als een waarde van 3, dezelfde waarde als Windows Server. Met deze eigenschap blijft het besturings systeem compatibel met bestaande hulpprogram ma's voor het uitvoeren van RDSH-beheer, toepassingen met meerdere sessies op basis van RDSH en voornamelijk systeem prestatie optimalisaties op laag niveau voor RDSH-omgevingen. Sommige installatie Programma's van toepassingen kunnen de installatie van Windows 10 multi-session blok keren, afhankelijk van of ze de product type detecteren, is ingesteld op client. Als uw app niet kan worden geïnstalleerd, neemt u contact op met de leverancier van de toepassing voor een bijgewerkte versie. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Kan ik on-premises Windows 10 Enter prise multi-session uitvoeren?
 

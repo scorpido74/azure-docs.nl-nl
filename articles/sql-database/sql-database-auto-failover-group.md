@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.openlocfilehash: bb47f0d2e02ce5cd055ebaae2e2a2f33ce77cd43
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750475"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901405"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -65,7 +65,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
   U kunt verschillende afzonderlijke data bases op dezelfde SQL Database-Server in dezelfde failovergroep plaatsen. Als u één data base aan de failovergroep toevoegt, wordt er automatisch een secundaire data base gemaakt met dezelfde editie en reken grootte op de secundaire server.  U hebt de server opgegeven toen de failovergroep werd gemaakt. Als u een Data Base toevoegt die al een secundaire Data Base op de secundaire server heeft, wordt die geo-replicatie koppeling overgenomen door de groep. Wanneer u een Data Base toevoegt die al een secundaire Data Base bevat op een server die geen deel uitmaakt van de failovergroep, wordt er een nieuw secundair gemaakt op de secundaire server.
   
   > [!IMPORTANT]
-  > In een beheerd exemplaar worden alle gebruikers databases gerepliceerd. U kunt geen subset van gebruikers databases kiezen voor replicatie in de failovergroep.
+  > Zorg ervoor dat de secundaire server geen data base met dezelfde naam heeft als deze een bestaande secundaire data base is. In failover-groepen voor het beheerde exemplaar worden alle gebruikers databases gerepliceerd. U kunt geen subset van gebruikers databases kiezen voor replicatie in de failovergroep.
 
 - **Data bases in elastische pool toevoegen aan failovergroep**
 
@@ -89,6 +89,9 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 - **Beleid voor automatische failover**
 
   Een failover-groep is standaard geconfigureerd met een automatisch failoverbeleid. De SQL Database-service activeert failover nadat de fout is gedetecteerd en de respijt periode is verlopen. Het systeem moet controleren of de uitval niet kan worden verholpen door de ingebouwde [infra structuur met hoge Beschik baarheid van de SQL database-service](sql-database-high-availability.md) vanwege de schaal van de impact. Als u de werk stroom van de failover wilt beheren vanuit de toepassing, kunt u automatische failover uitschakelen.
+  
+  > [!NOTE]
+  > Omdat verificatie van de omvang van de storing en hoe snel deze kan worden verholpen, acties van het operationele team worden uitgevoerd, kan de respijt periode niet meer dan één uur worden ingesteld.  Deze beperking is van toepassing op alle data bases in de failovergroep, ongeacht hun gegevens synchronisatie status. 
 
 - **Alleen-lezen failoverbeleid**
 
@@ -150,7 +153,7 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
   Er kunnen een of meer failover-groepen worden gemaakt tussen twee servers in verschillende regio's (primaire en secundaire servers). Elke groep kan een of meer data bases bevatten die als een eenheid worden hersteld in het geval dat alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. De groep failover maakt geo-secundaire data base met dezelfde service doelstelling als de primaire. Als u een bestaande geo-replicatie relatie aan de failovergroep toevoegt, zorg er dan voor dat de geo-Secondary is geconfigureerd met dezelfde servicelaag en reken grootte als de primaire.
   
   > [!IMPORTANT]
-  > Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools.
+  > Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools. Als u de primaire of secundaire server naar een ander abonnement verplaatst nadat de failovergroep is gemaakt, kan dit leiden tot fouten in de failover-aanvragen en andere bewerkingen.
 
 - **Listener voor read-write gebruiken voor OLTP-workload**
 
@@ -225,8 +228,8 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
   > [!NOTE]
   > In bepaalde service lagen ondersteunt Azure SQL Database het gebruik van [alleen-lezen replica's](sql-database-read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly`-para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
-  > - Gebruik `<fog-name>.zone_id.database.windows.net` om verbinding te maken met een alleen-lezen replica op de primaire locatie.
-  > - Gebruik `<fog-name>.secondary.zone_id.database.windows.net` om verbinding te maken met een alleen-lezen replica op de secundaire locatie.
+  > - Gebruik `<fog-name>.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de primaire locatie.
+  > - Gebruik `<fog-name>.secondary.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de secundaire locatie.
 
 - **Voor bereidingen voor prestatie vermindering**
 
@@ -326,7 +329,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | Cmdlet | Beschrijving |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Hiermee wordt de failovergroep van de server verwijderd en worden alle secundaire data bases verwijderd die zijn opgenomen in de groep |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee wordt de configuratie van de failovergroep opgehaald |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep |
@@ -342,7 +345,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | Cmdlet | Beschrijving |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Hiermee wordt de configuratie van de failovergroep opgehaald|
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |De failover van de failovergroep naar de secundaire server wordt geactiveerd|

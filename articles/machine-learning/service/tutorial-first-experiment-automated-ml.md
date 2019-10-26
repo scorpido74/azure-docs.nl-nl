@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 726ac906b5f237cfc40a8399b7b1bef3071f98f3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72035679"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901791"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 
@@ -169,6 +169,8 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
     
 U hebt nu een Operational web service voor het genereren van voor spellingen.
 
+Ga verder met de [**volgende stappen**](#next-steps) om meer te weten te komen over het gebruik van uw nieuwe webservice en test uw voor spellingen met behulp van de ingebouwde Azure machine learning ondersteuning van Power bi.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Implementatie bestanden zijn groter dan gegevens en experimenteer bestanden, zodat ze meer kosten in beslaan. Verwijder alleen de implementatie bestanden om de kosten voor uw account te minimaliseren, of als u uw werk ruimte en de bestanden wilt laten experimenteren. U kunt ook de hele resource groep verwijderen als u niet van plan bent om een van de bestanden te gebruiken.  
@@ -192,7 +194,7 @@ Verwijder alleen het implementatie-exemplaar van de Azure Portal als u de resour
 In deze zelf studie voor automatisch machine learning hebt u de landings pagina voor de werk ruimte gebruikt voor het maken en implementeren van een classificatie model. Zie deze artikelen voor meer informatie en volgende stappen:
 
 > [!div class="nextstepaction"]
-> [Een webservice gebruiken](how-to-consume-web-service.md)
+> [Een webservice gebruiken](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Meer informatie over voor [verwerking](how-to-create-portal-experiments.md#preprocess).
 + Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).

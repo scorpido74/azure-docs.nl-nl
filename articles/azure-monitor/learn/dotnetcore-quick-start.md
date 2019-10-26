@@ -1,21 +1,19 @@
 ---
 title: Quickstart met Azure Application Insights | Microsoft Docs
 description: Biedt instructies om snel een ASP.NET Core web-app in te stellen voor bewaking met Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 313e0c6cb487ed986c38610131c4bc19f2eeb846
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916190"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900574"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Beginnen met controleren van de ASP.NET Core-webtoepassing
 
@@ -25,7 +23,7 @@ Deze Snelstartgids helpt u bij het toevoegen van de Application Insights SDK aan
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 - [Installeer Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
   - ASP.NET-ontwikkeling en webontwikkeling
@@ -39,7 +37,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
@@ -54,11 +52,11 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
+   | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost |
-   | **Location** | East US | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
-2. Klik op **Create**.
+2. Klik op **Maken**.
 
 ## <a name="configure-app-insights-sdk"></a>App Insights-SDK configureren
 
@@ -70,7 +68,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 3. Selecteer uw account en abonnement > Selecteer de **bestaande resource** die u hebt gemaakt in de Azure Portal > Klik op **registreren**.
 
-4. Selecteer **project** >  > **Manage NuGet** > **packages Bron: nuget.org**de Application Insights SDK-pakketten**bijwerken** naar de laatste stabiele release.
+4. Selecteer **Project** > **NuGet-pakketten te beheren** > **pakket bron: nuget.org** > de Application Insights SDK-pakketten bij te **werken** naar de laatste stabiele versie.
 
 5. Selecteer **Foutopsporing** > **Starten zonder foutopsporing** (Ctrl + F5) om de app te starten
 
@@ -89,7 +87,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    ![Toepassingskaart](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Klik op de pictogram **app-analyse** ![het pictogram toepassings overzicht van](./media/dotnetcore-quick-start/006.png) weergave van **in Analytics**. Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Klik op het pictogram **app Analytics** ![toepassings kaart pictogram](./media/dotnetcore-quick-start/006.png) **weer gave in Analytics**. Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
    ![Analytics-grafiek met gebruikersaanvragen gedurende een tijdsperiode](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -99,7 +97,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
 5. Klik aan de linkerkant op **metrische gegevens**. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resource te onderzoeken. U kunt op **Nieuwe grafiek toevoegen** klikken om aanvullende aangepaste weergaven te maken, of **Bewerken** selecteren om type, hoogte, kleurenpalet, groeperingen en metrische gegevens van bestaande grafieken te wijzigen. U kunt bijvoorbeeld een grafiek maken waarin de gemiddelde laad tijd van een browser pagina wordt weer gegeven door ' browser pagina laadtijd ' te kiezen in de vervolg keuzelijst metrische gegevens en ' Gem ' van aggregatie. Ga voor meer informatie over Azure Metrics Explorer [aan de slag met azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
-     ![Tabblad metrische gegevens: Grafiek met gemiddelde laad tijd van browser pagina's](./media/dotnetcore-quick-start/8metrics.png)
+     ![Tabblad metrische gegevens: gemiddelde laad tijd grafiek van browser pagina](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="video"></a>Video
 

@@ -6,25 +6,24 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 10/01/2019
+ms.topic: article
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
-ms.translationtype: HT
+ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803456"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893401"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -79,7 +78,7 @@ Selecteer de gewenste bron voor de claim `NameIdentifier` (of NameID). U kunt ki
 | userprincipalName | UPN (User Principal Name) van de gebruiker |
 | onpremisessamaccount | SAM-account naam die is gesynchroniseerd vanuit on-premises Azure AD |
 | id | objectid van de gebruiker in azure AD |
-| employeeid | werk nemers van de gebruiker |
+| employeeid | Werk nemer-ID van de gebruiker |
 | Uitbreidingen van de directory | Directory-extensies [die zijn gesynchroniseerd vanuit on-premises Active Directory met behulp van Azure AD Connect-synchronisatie](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Extensie kenmerken 1-15 | Kenmerken van on-premises extensies die worden gebruikt om het Azure AD-schema uit te breiden |
 
@@ -91,7 +90,7 @@ U kunt ook een constante (statische) waarde toewijzen aan claims die u in azure 
 
 1. Klik op de vereiste claim die u wilt wijzigen.
 
-1. Voer de constante waarde in het **bron kenmerk** in volgens uw organisatie en klik op **Opslaan**.
+1. Voer de constante waarde zonder aanhalings tekens in het **bron kenmerk** in volgens uw organisatie en klik op **Opslaan**.
 
     ![Open de sectie gebruikers kenmerken & claims in de Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
@@ -118,19 +117,27 @@ Toepassingsspecifieke claims toevoegen:
 1. Voer de **naam** van de claims in. De waarde hoeft niet strikt een URI-patroon te volgen, conform de SAML-specificatie. Als u een URI-patroon nodig hebt, kunt u dat in het veld **naam ruimte** plaatsen.
 1. Selecteer de **bron** waar de claim de waarde gaat ophalen. U kunt een gebruikers kenmerk selecteren in de vervolg keuzelijst bron kenmerk of een trans formatie Toep assen op het kenmerk gebruiker voordat u het als een claim verzendt.
 
-### <a name="application-specific-claims---transformations"></a>Toepassingsspecifieke claim transformaties
+### <a name="claim-transformations"></a>Claim transformaties
 
-U kunt ook de functies voor het transformeren van claims gebruiken.
+Een trans formatie Toep assen op een gebruikers kenmerk:
+
+1. Selecteer in **claim beheren**de optie *trans formatie* als claim bron om de pagina **trans formatie beheren** te openen.
+2. Selecteer de functie in de vervolg keuzelijst transformeren. Afhankelijk van de functie die u hebt geselecteerd, moet u para meters en een constante waarde opgeven om in de trans formatie te evalueren. Raadpleeg de onderstaande tabel voor meer informatie over de beschik bare functies.
+3. Als u meerdere trans formatie wilt Toep assen, klikt u op **trans formatie toevoegen**. U kunt Maxi maal twee trans formatie op een claim Toep assen. U kunt bijvoorbeeld eerst het e-mail voorvoegsel van de `user.mail`uitpakken. Vervolgens maakt u de reeks hoofd letters.
+
+   ![De NameID-waarde (naam-id) bewerken](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+
+U kunt de volgende functies gebruiken om claims te transformeren.
 
 | Functie | Beschrijving |
 |----------|-------------|
 | **ExtractMailPrefix()** | Hiermee verwijdert u het domein achtervoegsel uit het e-mail adres of de user principal name. Hiermee wordt alleen het eerste deel van de gebruikers naam geëxtraheerd dat wordt door gegeven (bijvoorbeeld ' joe_smith ' in plaats van joe_smith@contoso.com). |
-| **Samen voegen ()** | Hiermee maakt u een nieuwe waarde door twee kenmerken samen te voegen. U kunt desgewenst een scheidings teken tussen de twee kenmerken gebruiken. |
+| **Samen voegen ()** | Hiermee maakt u een nieuwe waarde door twee kenmerken samen te voegen. U kunt desgewenst een scheidings teken tussen de twee kenmerken gebruiken. Voor NameID-claim transformatie is de koppeling beperkt tot een geverifieerd domein. Als de geselecteerde gebruikers-id een domein heeft, wordt de gebruikers naam geëxtraheerd om het geselecteerde geverifieerde domein toe te voegen. Als u bijvoorbeeld het e-mail adres (joe_smith@contoso.com) selecteert als waarde voor de gebruikers-id en contoso.onmicrosoft.com selecteert als het geverifieerde domein, resulteert dit in joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar kleine letters. |
 | **ToUpper()** | Hiermee worden de tekens van het geselecteerde kenmerk geconverteerd naar hoofd letters. |
 | **Contains ()** | Voert een kenmerk of constante uit als de invoer overeenkomt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarbij de waarde het e-mail adres van de gebruiker is als deze het domein ' @contoso.com ' bevat, anders wilt u de user principal name uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)* : gebruiker. e-mail adres<br/>*Waarde*: ' @contoso.com '<br/>Para meter 2 (uitvoer): gebruiker. e-mail adres<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. userPrincipalName |
-| **EndWith()** | Voert een kenmerk of constante uit als de invoer eindigt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemer-werk nemers van de gebruiker is, wordt het werk-werk nummer eindigt op ' 000 ', anders wilt u een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)* : User. EmployeeID<br/>*Waarde*: 000<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
-| **StartWith()** | Voert een kenmerk of constante uit als de invoer begint met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemer van de gebruiker is, als het land/de regio begint met ' VS ', anders wilt u een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)* : gebruiker. land<br/>*Waarde*: "US"<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
+| **EndWith()** | Voert een kenmerk of constante uit als de invoer eindigt met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemer-ID van de gebruiker is als de werk nemer-ID eindigt op ' 000 ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)* : User. EmployeeID<br/>*Waarde*: 000<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
+| **StartWith()** | Voert een kenmerk of constante uit als de invoer begint met de opgegeven waarde. Als dat niet het geval is, kunt u een andere uitvoer opgeven.<br/>Als u bijvoorbeeld een claim wilt verzenden waarvan de waarde de werk nemers-ID van de gebruiker is als het land/de regio begint met ' VS ', moet u anders een extensie kenmerk uitvoeren. Hiervoor moet u de volgende waarden configureren:<br/>*Para meter 1 (invoer)* : gebruiker. land<br/>*Waarde*: "US"<br/>Para meter 2 (uitvoer): User. EmployeeID<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. extensionAttribute1 |
 | **Extra heren ()-na overeenkomende** | Retourneert de subtekenreeks nadat deze overeenkomt met de opgegeven waarde.<br/>Als de waarde van de invoer bijvoorbeeld "Finance_BSimon" is, is de overeenkomende waarde "Finance_", en de uitvoer van de claim is "BSimon". |
 | **Extra heren ()-vóór overeenkomst** | Retourneert de subtekenreeks totdat deze overeenkomt met de opgegeven waarde.<br/>Als de waarde van de invoer bijvoorbeeld "BSimon_US" is, is de overeenkomende waarde "_US", en de uitvoer van de claim is "BSimon". |
 | **Uitpakken ()-tussen overeenkomende** | Retourneert de subtekenreeks totdat deze overeenkomt met de opgegeven waarde.<br/>Als de waarde van de invoer bijvoorbeeld ' Finance_BSimon_US ' is, is de eerste overeenkomende waarde ' Finance_ ', de tweede overeenkomende waarde ' _US ', en de uitvoer van de claim is ' BSimon '. |
@@ -138,10 +145,39 @@ U kunt ook de functies voor het transformeren van claims gebruiken.
 | **ExtractAlpha ()-achtervoegsel** | Retourneert het achtervoegsel alfabetisch deel van de teken reeks.<br/>Als de waarde van de invoer bijvoorbeeld ' 123_Simon ' is, wordt "Simon" geretourneerd. |
 | **ExtractNumeric ()-voor voegsel** | Retourneert het numerieke gedeelte van de teken reeks.<br/>Als de waarde van de invoer bijvoorbeeld ' 123_BSimon ' is, retourneert deze ' 123 '. |
 | **ExtractNumeric ()-achtervoegsel** | Retourneert het numerieke deel van het achtervoegsel van de teken reeks.<br/>Als de waarde van de invoer bijvoorbeeld ' BSimon_123 ' is, retourneert deze ' 123 '. |
-| **IfEmpty()** | Voert een kenmerk of constante uit als de invoer null of leeg is.<br/>Als u bijvoorbeeld een kenmerk wilt uitvoeren dat is opgeslagen in een extensionAttribute als het werk-werk-werk nemers voor een bepaalde gebruiker leeg is. Hiervoor moet u de volgende waarden configureren:<br/>Para meter 1 (invoer): User. EmployeeID<br/>Para meter 2 (uitvoer): User. extensionAttribute1<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. EmployeeID |
-| **IfNotEmpty()** | Voert een kenmerk of constante uit als de invoer niet null of leeg is.<br/>Als u bijvoorbeeld een kenmerk wilt uitvoeren dat is opgeslagen in een extensionAttribute als het werk-werk-werk nemers voor een bepaalde gebruiker niet leeg is. Hiervoor moet u de volgende waarden configureren:<br/>Para meter 1 (invoer): User. EmployeeID<br/>Para meter 2 (uitvoer): User. extensionAttribute1 |
+| **IfEmpty()** | Voert een kenmerk of constante uit als de invoer null of leeg is.<br/>Als u bijvoorbeeld een kenmerk wilt uitvoeren dat in een extensionAttribute is opgeslagen als de werk nemer-ID voor een bepaalde gebruiker leeg is. Hiervoor moet u de volgende waarden configureren:<br/>Para meter 1 (invoer): User. EmployeeID<br/>Para meter 2 (uitvoer): User. extensionAttribute1<br/>Para meter 3 (uitvoer als er geen overeenkomst is): User. EmployeeID |
+| **IfNotEmpty()** | Voert een kenmerk of constante uit als de invoer niet null of leeg is.<br/>Als u bijvoorbeeld een kenmerk wilt uitvoeren dat in een extensionAttribute is opgeslagen als de werk nemer-ID voor een bepaalde gebruiker niet leeg is. Hiervoor moet u de volgende waarden configureren:<br/>Para meter 1 (invoer): User. EmployeeID<br/>Para meter 2 (uitvoer): User. extensionAttribute1 |
 
 Als u aanvullende trans formaties nodig hebt, verzendt u uw idee in het [Feedback forum in azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) in de categorie *SaaS-toepassing* .
+
+## <a name="emitting-claims-based-on-conditions"></a>Claims verzenden op basis van voor waarden
+
+U kunt de bron van een claim opgeven op basis van het gebruikers type en de groep waartoe de gebruiker behoort. 
+
+Het gebruikers type kan zijn:
+- **Alle**: alle gebruikers hebben toegang tot de toepassing.
+- **Leden**: native lid van de Tenant
+- **Alle gasten**: de gebruiker wordt overgezet van een externe organisatie met of zonder Azure AD.
+- **Aad-gasten**: een gast gebruiker maakt deel uit van een andere organisatie die gebruikmaakt van Azure AD.
+- **Externe gasten**: gast gebruikers behoren tot een externe organisatie die geen Azure AD heeft.
+
+
+Een scenario waarbij dit nuttig is wanneer de bron van een claim afwijkt van een gast en een werk nemer die toegang heeft tot een toepassing. U kunt opgeven dat als de gebruiker een werk nemer is, het NameID-bericht afkomstig is van de gebruiker. e-mail, maar als de gebruiker een gast is, wordt het NameID gebrond vanuit User. extensionAttribute1.
+
+Een claim voorwaarde toevoegen:
+
+1. Vouw in **claim beheren**de claim voorwaarden uit.
+2. Selecteer het gebruikers type.
+3. Selecteer de groep (en) waarvan de gebruiker deel moet uitmaken. U kunt Maxi maal 10 unieke groepen selecteren voor alle claims voor een bepaalde toepassing. 
+4. Selecteer de **bron** waar de claim de waarde gaat ophalen. U kunt een gebruikers kenmerk selecteren in de vervolg keuzelijst bron kenmerk of een trans formatie Toep assen op het kenmerk gebruiker voordat u het als een claim verzendt.
+
+De volg orde waarin u de voor waarden toevoegt, is belang rijk. Azure AD evalueert de voor waarden van boven naar beneden om te beslissen welke waarde moet worden opgegeven in de claim. 
+
+Zo is Brita Simon een gast gebruiker in de contoso-Tenant. Ze maakt deel uit van een andere organisatie die ook gebruikmaakt van Azure AD. Op basis van de onderstaande configuratie voor de fabrikam-toepassing, wanneer Brita zich probeert aan te melden bij Fabrikam, worden de voor waarden als volgt geëvalueerd door Azure AD.
+
+Eerst controleert Azure AD of het gebruikers type van Brita `All guests`is. Aangezien dit het geval is, wijst Azure AD de bron voor de claim toe aan `user.extensionattribute1`. Ten tweede verifieert Azure AD of het gebruikers type van Brita is `AAD guests`, omdat dit ook zo is, dan wijst Azure AD de bron voor de claim toe aan `user.mail`. Ten slotte wordt de claim verzonden met de waarde `user.email` voor Brita.
+
+![Voorwaardelijke configuratie van claims](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

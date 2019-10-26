@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 90fb3fe732889f3ba3965210cd8a681a0487f78e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d84a20a554308e1705c304a18062a4a1d762a72b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514984"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901435"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quick Start: SSH en RDP via een IoT Hub Device stream inschakelen met behulp van een C# proxy toepassing (preview-versie)
 
@@ -53,6 +53,8 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
   * VS - centraal
   * Centrale VS-EUAP
+  * Azië - zuidoost
+  * Europa - noord
 
 * De twee voorbeeld toepassingen die u in deze Quick start uitvoert, zijn C#geschreven in. U hebt de .NET Core SDK 2.1.0 of hoger nodig op uw ontwikkel computer.
 

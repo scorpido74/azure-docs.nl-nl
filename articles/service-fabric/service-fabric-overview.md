@@ -15,30 +15,28 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816103"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901599"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Overzicht van Azure Service Fabric
-Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Service Fabric biedt ook een oplossing voor de grote uitdaging van het ontwikkelen en beheren van systeemeigen cloudtoepassingen. Ontwikkelaars en beheerders kunnen complexe infrastructuurproblemen voorkomen en zich concentreren op het implementeren van bedrijfsspecifieke, veeleisende werkbelastingen die schaalbaar, betrouwbaar en beheerbaar zijn. Service Fabric is het platform van de nieuwe generatie voor het ontwikkelen en beheren van deze hoogwaardige zakelijke tier-1-toepassingen op cloudschaal die in containers worden uitgevoerd.
+Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Service Fabric biedt ook een oplossing voor de grote uitdaging van het ontwikkelen en beheren van systeemeigen cloudtoepassingen. Ontwikkelaars en beheerders kunnen complexe infrastructuurproblemen voorkomen en zich concentreren op het implementeren van bedrijfsspecifieke, veeleisende werkbelastingen die schaalbaar, betrouwbaar en beheerbaar zijn. Service Fabric is het platform van de nieuwe generatie voor het ontwikkelen en beheren van deze hoogwaardige zakelijke laag-1-toepassingen op cloudschaal die in containers worden uitgevoerd.
 
 In deze korte video worden Service Fabric en microservices geïntroduceerd:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Naleving
-Azure Service Fabric resource provider is beschikbaar in alle Azure-regio's en voldoet aan alle nalevings certificaten die Azure heeft. Dit omvat het volgende: SOC, ISO, PCI DSS, HIPAA en AVG. Raadpleeg het volgende voor een volledige lijst met compatibiliteits certificaten: [Nalevings aanbiedingen](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Azure Service Fabric resource provider is beschikbaar in alle Azure-regio's en voldoet aan alle nalevings certificaten die Azure heeft. Dit omvat het volgende: SOC, ISO, PCI DSS, HIPAA en AVG. Raadpleeg het volgende voor een volledige lijst met compliantie certificaten: [nalevings aanbod](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Toepassingen die uit microservices zijn samengesteld 
 Met Service Fabric kunt u schaalbare en betrouwbare toepassingen ontwikkelen en beheren die uit microservices bestaan. Deze worden met hoge dichtheid op een gedeelde groep computers uitgevoerd, een zogenaamde cluster. Het biedt een geavanceerde, lichtgewicht runtime voor het bouwen van gedistribueerde, schaalbare, staatloze en stateful microservices die worden uitgevoerd in de containers. Het biedt tevens mogelijkheden voor uitgebreide mogelijkheden voor toepassingsbeheer voor het inrichten, implementeren, bewaken, upgraden/patchen en verwijderen van geïmplementeerde toepassingen, waaronder services in containers.
 
 Op Service Fabric kunnen tegenwoordig talloze Microsoft-services draaien, waaronder Azure SQL Database, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype voor Bedrijven en vele Azure-kernservices.
 
-Service Fabric is afgestemd voor het maken van cloud-eigen services die zo nodig klein kunnen beginnen en tot grote schaal kunnen worden uitgebreid tot honderden of duizenden computers.
-
-De huidige services op internetschaal zijn gebouwd op basis van microservices. Voorbeelden van microservices zijn protocolgateways, gebruikersprofielen, winkelwagentjes, voorraadverwerking, wachtrijen caches. Service Fabric is een microserviceplatform die elke microservice (of container) een unieke naam geeft die staatloos of stateful kan zijn.
+Service Fabric is afgestemd voor het maken van cloud-eigen services die zo nodig klein kunnen beginnen en tot grote schaal kunnen worden uitgebreid tot honderden of duizenden computers. De huidige services op internetschaal zijn gebouwd op basis van microservices. Voorbeelden van microservices zijn protocolgateways, gebruikersprofielen, winkelwagentjes, voorraadverwerking, wachtrijen caches. 
 
 Service Fabric biedt uitgebreide mogelijkheden voor runtime- en levenscyclusbeheer voor toepassingen die uit deze microservices bestaan. Microservices worden gehost in containers die in de Service Fabric-cluster worden geïmplementeerd en geactiveerd. Door over te stappen van virtuele machines op containers wordt een dichtheid bewerkstelligt die een orde van grootte hoger ligt. Een dergelijke dichtheidsverhoging is mogelijk als u overstapt van containers op microservices in deze containers. Zo bestaat één cluster voor Azure SQL Database uit honderden computers waarop duizenden containers worden uitgevoerd die op hun beurt honderdduizenden databases hosten. Elke database is een stateful Service Fabric-microservice. 
 

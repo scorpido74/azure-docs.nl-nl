@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4a6fd7dd40905a8a81a104c9d6ef22040ff88f15
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 676b05b94fad506fba7c5bd2bd00061ae8a0426b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516314"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900765"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Quick Start: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een node. js-proxy toepassing (preview)
 
@@ -43,6 +43,9 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
   * VS - centraal
   * Centrale VS-EUAP
+  * Azië - zuidoost
+  * Europa - noord
+  
 
 * Als u de service-Local-toepassing in deze Quick Start wilt uitvoeren, moet u node. js V10 toevoegen. x. x of hoger op uw ontwikkel machine hebben.
   * Down load [node. js](https://nodejs.org) voor meerdere platforms.

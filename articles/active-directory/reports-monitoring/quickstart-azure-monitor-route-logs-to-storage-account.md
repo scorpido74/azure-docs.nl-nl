@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-Azure Active Directory logboeken archiveren in een opslag account | Microsoft Docs
+title: 'Zelf studie: Directory-logboeken archiveren in een opslag account | Microsoft Docs'
 description: Meer informatie over het instellen van Azure Diagnostics om Azure Active Directory-logboeken te pushen naar een opslag account
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d98fb0677b864fccfb5abd2b08381db1bd1c9c8f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: bce2c032eaa5ec77544477ff75e22492d70a650e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989743"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895090"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Zelfstudie: Azure AD-logboeken archiveren in een Azure-opslag account
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Zelf studie: Azure AD-logboeken archiveren in een Azure-opslag account
 
 In deze zelfstudie leert u diagnostische instellingen van Azure Monitor instellen voor het routeren van Azure Active Directory (AD)-logboeken naar een Azure-opslagaccount.
 
@@ -38,7 +38,7 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Activiteitenlogboeken in een Azure-opslagaccount archiveren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 2. Selecteer **Azure Active Directory** > **Activiteit** > **Auditlogboeken**. 
 
@@ -71,7 +71,7 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 12. Na circa vijftien minuten controleert u of de logboeken naar uw opslagaccount worden gepusht. Ga naar de [Azure-portal](https://portal.azure.com), klik op **Opslagaccount**s, kies het opslagaccount dat u eerder hebt gebruikt en selecteer **Blobs**. Voor **Auditlogboeken** selecteert u **insights-log-audit**. Voor **Aanmeldingslogboeken** selecteert u **insights-log-signin**.
 
-    ![Storage-account](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
+    ![Opslagaccount](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

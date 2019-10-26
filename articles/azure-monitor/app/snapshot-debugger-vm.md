@@ -1,23 +1,19 @@
 ---
 title: Snapshot Debugger voor .NET-Apps inschakelen in azure Service Fabric, Cloud service en Virtual Machines | Microsoft Docs
 description: Snapshot Debugger voor .NET-apps in azure Service Fabric, Cloud service en Virtual Machines inschakelen
-services: application-insights
-documentationcenter: ''
-author: brahmnes
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/07/2019
+author: brahmnes
 ms.author: bfung
-ms.openlocfilehash: 5a6cf763ae16b55806df2acaf2e03fd8c13d1e76
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 03/07/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 98ceeeb8efb11e2caeffadeb48270c419cc7e430
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359285"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899800"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Snapshot Debugger voor .NET-apps in azure Service Fabric, Cloud service en Virtual Machines inschakelen
 
@@ -25,11 +21,11 @@ Als uw kern toepassing voor ASP.NET of ASP.NET wordt uitgevoerd in Azure App Ser
 
 Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtual Machines of on-premises machines, moet u de volgende instructies gebruiken. 
     
-## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Momentopname verzamelen voor ASP.NET-toepassingen configureren
+## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Momentopname verzameling configureren voor ASP.NET-toepassingen
 
-1. [Application Insights inschakelen in uw web-app](../../azure-monitor/app/asp-net.md), als u dit nog niet hebt gedaan.
+1. [Schakel Application Insights in uw web-app in](../../azure-monitor/app/asp-net.md)als u deze nog niet hebt gedaan.
 
-2. Bevatten de [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket in uw app.
+2. Neem het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op in uw app.
 
 3. Aangepaste configuratie van Snapshot Debugger toegevoegd aan [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), indien nodig. De standaard configuratie van Snapshot Debugger is grotendeels leeg en alle instellingen zijn optioneel. Hier volgt een voor beeld van een configuratie equivalent met de standaard configuratie:
 
@@ -65,31 +61,31 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
     </TelemetryProcessors>
     ```
 
-4. Momentopnamen worden verzameld alleen op uitzonderingen die worden gerapporteerd aan Application Insights. In sommige gevallen (bijvoorbeeld oudere versies van het .NET-platform), moet u wellicht te [uitzondering verzamelen configureren](../../azure-monitor/app/asp-net-exceptions.md#exceptions) om te zien welke uitzonderingen met momentopnamen in de portal.
+4. Moment opnamen worden alleen verzameld voor uitzonde ringen die worden gerapporteerd aan Application Insights. In sommige gevallen (bijvoorbeeld oudere versies van het .NET-platform) moet u mogelijk een [uitzonderings verzameling configureren](../../azure-monitor/app/asp-net-exceptions.md#exceptions) om uitzonde ringen te bekijken met moment opnamen in de portal.
 
 
 ## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Momentopname verzameling configureren voor toepassingen die gebruikmaken van ASP.NET Core 2,0 of hoger
 
-1. [Application Insights inschakelen in uw ASP.NET Core web-app](../../azure-monitor/app/asp-net-core.md), als u dit nog niet hebt gedaan.
+1. [Schakel Application Insights in uw ASP.net core web-app in](../../azure-monitor/app/asp-net-core.md)als u deze nog niet hebt gedaan.
 
     > [!NOTE]
-    > Ervoor dat uw toepassing verwijst naar versie 2.1.1 of hoger, van het pakket Microsoft.ApplicationInsights.AspNetCore zijn.
+    > Zorg ervoor dat uw toepassing verwijst naar versie 2.1.1 of nieuwer van het pakket micro soft. ApplicationInsights. AspNetCore.
 
-2. Bevatten de [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket in uw app.
+2. Neem het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op in uw app.
 
-3. Wijzigen van uw toepassing `Startup` klasse die u wilt toevoegen en configureren van de Snapshot Collector telemetrie processor.
-    1. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.5 of hoger wordt gebruikt, voegt u de volgende using `Startup.cs`-instructies toe aan.
+3. Wijzig de `Startup` klasse van uw toepassing om de telemetrie-processor van Snapshot Collector toe te voegen en te configureren.
+    1. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.5 of hoger wordt gebruikt, voegt u de volgende using-instructies toe aan `Startup.cs`.
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       Voeg het volgende toe aan het einde van de ConfigureServices-methode `Startup` in de `Startup.cs`-klasse in.
+       Voeg het volgende toe aan het einde van de methode ConfigureServices in de klasse `Startup` in `Startup.cs`.
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.4 of hieronder wordt gebruikt, voegt u de volgende using `Startup.cs`-instructies toe aan.
+    2. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.4 of hieronder wordt gebruikt, voegt u de volgende using-instructies toe aan `Startup.cs`.
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -98,7 +94,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
        using Microsoft.ApplicationInsights.Extensibility;
        ```
     
-       Voeg de volgende `SnapshotCollectorTelemetryProcessorFactory` klasse aan `Startup` klasse.
+       Voeg de volgende `SnapshotCollectorTelemetryProcessorFactory`-klasse toe aan `Startup`-klasse.
     
        ```csharp
        class Startup
@@ -118,7 +114,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
            }
            ...
         ```
-        Voeg de `SnapshotCollectorConfiguration` en `SnapshotCollectorTelemetryProcessorFactory` services aan de pijplijn starten:
+        Voeg de `SnapshotCollectorConfiguration`-en `SnapshotCollectorTelemetryProcessorFactory`-Services toe aan de opstart pijplijn:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -155,13 +151,13 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
    }
    ```
 
-## <a name="configure-snapshot-collection-for-other-net-applications"></a>Momentopname verzamelen voor andere .NET-toepassingen configureren
+## <a name="configure-snapshot-collection-for-other-net-applications"></a>Momentopname verzameling configureren voor andere .NET-toepassingen
 
-1. Als uw toepassing is niet al zijn geïnstrumenteerd met Application Insights, aan de slag met [Application Insights inschakelen en het instellen van de instrumentatiesleutel](../../azure-monitor/app/windows-desktop.md).
+1. Als uw toepassing niet al is voorzien van Application Insights, gaat u aan de slag door [Application Insights in te scha kelen en de instrumentatie sleutel in te stellen](../../azure-monitor/app/windows-desktop.md).
 
-2. Voeg de [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket in uw app.
+2. Voeg het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket toe aan uw app.
 
-3. Momentopnamen worden verzameld alleen op uitzonderingen die worden gerapporteerd aan Application Insights. Mogelijk moet u uw code meldt deze wijzigen. De code van afhandelingsservice voor uitzondering, is afhankelijk van de structuur van uw toepassing, maar een voorbeeld is lager dan:
+3. Moment opnamen worden alleen verzameld voor uitzonde ringen die worden gerapporteerd aan Application Insights. Mogelijk moet u de code wijzigen om deze te rapporteren. De uitzonderings code is afhankelijk van de structuur van uw toepassing, maar hieronder vindt u een voor beeld:
     ```csharp
    TelemetryClient _telemetryClient = new TelemetryClient();
 

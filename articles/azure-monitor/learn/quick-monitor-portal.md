@@ -1,21 +1,19 @@
 ---
 title: Een ASP.NET-web-app bewaken met Azure Application Insights | Microsoft Docs
 description: Biedt instructies om snel een ASP.NET-Web-app in te stellen voor bewaking met Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 1edb83fcbe03fd113c59986bdbb6afcf2a0970bb
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916112"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900493"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Begin uw ASP.NET-webtoepassing te controleren
 
@@ -24,7 +22,7 @@ Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestatie
 Deze snelstartgids laat zien hoe u Application Insights kunt toevoegen aan een bestaande ASP.NET-webtoepassing en live statistieken kunt analyseren, wat slechts een van de diverse methoden is die u kunt gebruiken om uw toepassing te analyseren. Als u geen ASP.NET-webtoepassing hebt, kunt u er een maken nadat u de Snelstartgids voor het [maken van een ASP.net-Web-app](../../app-service/app-service-web-get-started-dotnet-framework.md)hebt gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
@@ -47,7 +45,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 4. Selecteer uw abonnement en klik op **Registreren**.
 
-5. Selecteer **project** >  > **Manage NuGet** > **packages Bron: nuget.org**de Application Insights SDK-pakketten**bijwerken** naar de laatste stabiele release.
+5. Selecteer **Project** > **NuGet-pakketten te beheren** > **pakket bron: nuget.org** > de Application Insights SDK-pakketten bij te **werken** naar de laatste stabiele versie.
 
 6. Voer uw toepassing uit door **Start Debugging** (Foutopsporing starten) te selecteren in het menu **Debug** (Foutopsporing) of door op de F5-toets te drukken.
 
@@ -71,7 +69,7 @@ U kunt nu Application Insights openen in Azure Portal om allerlei gegevens over 
 
     ![Toepassingskaart](media/quick-monitor-portal/05-appmap.png)
 
-3. Klik op de weer gave toepassings ![overzicht](media/quick-monitor-portal/app-viewinlogs-icon.png) van **app-analyse** pictogram **in Logboeken (Analytics)** op een van de toepassings onderdelen. Hiermee opent u **Logboeken (Analytics)** , dat een uitgebreide query taal biedt voor het analyseren van alle gegevens die zijn verzameld door Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Klik op het pictogram **app Analytics** ![toepassings overzicht](media/quick-monitor-portal/app-viewinlogs-icon.png) **weer gave in Logboeken (Analytics)** voor een van de toepassings onderdelen. Hiermee opent u **Logboeken (Analytics)** , dat een uitgebreide query taal biedt voor het analyseren van alle gegevens die zijn verzameld door Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
     ![Analyse](media/quick-monitor-portal/6viewanalytics.png)
 

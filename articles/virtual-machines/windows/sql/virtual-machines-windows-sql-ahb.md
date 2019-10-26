@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262857"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900693"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Het licentie model voor een SQL Server virtuele machine in azure wijzigen
 In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL VM-resource provider **micro soft. SqlVirtualMachine**.
@@ -31,7 +31,7 @@ Met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 
 
 Azure Hybrid Benefit staat het gebruik toe van SQL Server licenties met Software Assurance (' gekwalificeerde licentie ') op virtuele machines van Azure. Met Azure Hybrid Benefit worden klanten niet in rekening gebracht voor het gebruik van een SQL Server licentie op een virtuele machine. Ze moeten echter wel betalen voor de kosten van de onderliggende Cloud Compute (dat wil zeggen, het basis tarief), opslag en back-ups. Ze moeten ook betalen voor I/O die is gekoppeld aan het gebruik van de Services (indien van toepassing).
 
-Afhankelijk van de micro soft-product voorwaarden: "Klanten moeten aangeven dat ze Azure SQL Database (beheerde instantie, Elastische pool en Individuele database), Azure Data Factory, SQL Server Integration Services of SQL Server virtual machines onder Azure Hybrid Benefit voor SQL Server bij het configureren werk belastingen op Azure. "
+Volgens de product termen van micro soft: ' klanten moeten aangeven dat ze Azure SQL Database (beheerde instantie, Elastische pool en Individuele database), Azure Data Factory, SQL Server Integration Services of SQL Server Virtual Machines onder Azure Hybride voor deel voor SQL Server bij het configureren van werk belastingen op Azure. "
 
 Om het gebruik van Azure Hybrid Benefit voor SQL Server op een virtuele Azure-machine aan te geven en compatibel te zijn, hebt u drie opties:
 
@@ -65,7 +65,7 @@ U kunt het licentie model rechtstreeks vanuit de portal wijzigen:
 ![Azure Hybrid Benefit in de portal](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt de Azure CLI gebruiken om uw licentie model te wijzigen.  
 
@@ -149,12 +149,12 @@ U kunt het licentie type van een SQL Server-VM wijzigen als betalen naar gebruik
 
 ## <a name="known-errors"></a>Bekende fouten
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines\</resource-group > ' onder resource groep\<' resource-group > ' is niet gevonden.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource micro soft. SqlVirtualMachine/SqlVirtualMachines/\<resource-group > onder resource groep\<resource group > is niet gevonden.
 Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virtuele machine te wijzigen die niet is geregistreerd bij de resource provider van de SQL-VM:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-U moet de resource provider registreren bij uw [abonnement](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription)en vervolgens [uw SQL Server-VM registreren bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md). 
+U moet uw abonnement registreren bij de resource provider en vervolgens [uw SQL Server-VM registreren bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Kan argument niet valideren voor de para meter ' SKU '
 Deze fout kan optreden wanneer u probeert om uw SQL Server VM-licentie model te wijzigen met behulp van Azure PowerShell-versies later dan 4,0:

@@ -1,21 +1,19 @@
 ---
 title: Prestatieproblemen analyseren met behulp van Azure Application Insights | Microsoft Docs
 description: Zelfstudie voor het vinden en diagnosticeren van prestatieproblemen in uw toepassing met behulp van Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69032075"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900446"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Prestatieproblemen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -79,7 +77,7 @@ Application Insights verzamelt prestatiedetails over de verschillende bewerkinge
 ## <a name="use-logs-data-for-server"></a>Logboek gegevens gebruiken voor Server
  Logboeken bieden een uitgebreide query taal waarmee u alle gegevens kunt analyseren die zijn verzameld door Application Insights. U kunt deze gebruiken om diepgaande analysen uit te voeren op aanvraag- en prestatiegegevens.
 
-1. Ga terug naar het deel venster bewerking detail en klik op ![Logs pictogram](media/tutorial-performance/app-viewinlogs-icon.png)**weergave in Logboeken (Analytics)**
+1. Ga terug naar het deel venster bewerking detail en klik op ![logboeken](media/tutorial-performance/app-viewinlogs-icon.png)**weer geven in Logboeken (analyse)**
 
 2. Logboeken wordt geopend met een query voor elk van de weer gaven in het paneel.  U kunt deze query’s zó uitvoeren, of ze aanpassen aan uw behoeften.  De eerste query laat de duur van deze bewerking gedurende een bepaalde periode zien.
 
@@ -100,7 +98,7 @@ Naast het identificeren van serverprocessen om te optimaliseren, kan Application
 ## <a name="use-logs-data-for-client"></a>Logboek gegevens gebruiken voor client
 Net als de gegevens die worden verzameld voor de server prestaties, maakt Application Insights alle client gegevens beschikbaar voor diepe analyse met behulp van Logboeken.
 
-1. Ga terug naar de browser-samen vatting en klik op ![Logs pictogram ](media/tutorial-performance/app-viewinlogs-icon.png) **weer gave in Logboeken (Analytics)**
+1. Ga terug naar de browser-samen vatting en klik op ![pictogram logboeken](media/tutorial-performance/app-viewinlogs-icon.png) **weer gave in Logboeken (Analytics)**
 
 2. Logboeken wordt geopend met een query voor elk van de weer gaven in het paneel. De eerste query laat de duur zien van verschillende paginaweergaven gedurende een bepaalde periode.
 

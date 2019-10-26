@@ -1,21 +1,19 @@
 ---
 title: Quickstart websites controleren met Azure Monitor Application Insights | Microsoft Docs
 description: Hier vindt u instructies voor het snel instellen van client/browser-functies voor het controleren van websites met Azure Monitor Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: f423e96055c23ae1521466f0e697d7ad2254f8c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eecc3d739cb5500abdbd04a9aaca1ddcf86e352b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813900"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899258"
 ---
 # <a name="start-monitoring-your-website"></a>Start met het controleren van uw website
 
@@ -25,7 +23,7 @@ Deze quickstart helpt u bij het toevoegen van de [opensource Application Insight
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 - U hebt een Azure-abonnement nodig.
 
@@ -33,7 +31,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
@@ -48,11 +46,11 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
     | Instellingen        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
+   | **Naam**      | Globaal unieke waarde | Naam die de app beschrijft die u wilt controleren |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost |
-   | **Location** | East US | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
-2. Klik op **Create**.
+2. Klik op **Maken**.
 
 ## <a name="create-an-html-file"></a>Een HTML-bestand maken
 

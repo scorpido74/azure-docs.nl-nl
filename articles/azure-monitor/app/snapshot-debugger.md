@@ -1,23 +1,19 @@
 ---
 title: Azure-toepassing Insights-Snapshot Debugger voor .NET-Apps | Microsoft Docs
 description: Moment opnamen van fout opsporing worden automatisch verzameld wanneer uitzonde ringen worden gegenereerd in productie-.NET-Apps
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: brahmnes
-ms.date: 10/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c0d90d4eed7efb5c82ca9d61565bfe3f49e8aaa1
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.reviewer: brahmnes
+ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809508"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899797"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Fout opsporing voor moment opnamen op uitzonde ringen in .NET-Apps
 Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger (preview) in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.

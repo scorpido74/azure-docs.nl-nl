@@ -11,16 +11,16 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 35e768e15aae13376ca6663ed5ca5109cb0a159b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348917"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893534"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels in Azure Key Vault: Ondersteuning voor Bring Your Own Key
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels in Azure Key Vault: Bring Your Own Key ondersteuning
 
-[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) met Azure Key Vault-integratie kunt u de database versleutelings sleutel (dek) versleutelen met een door de klant beheerde asymmetrische sleutel met de naam TDe Protector. Dit wordt ook in het algemeen aangeduid als Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption.  In het BYOK-scenario wordt de TDE-Protector opgeslagen in een door de klant eigendom en beheerd [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), het op de cloud gebaseerde externe sleutel beheer systeem van Azure. De TDE-Protector kan worden [gegenereerd](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates) door de sleutel kluis of worden [overgebracht](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) naar de sleutel kluis van een on-premises HSM-apparaat. De TDE-DEK, die is opgeslagen op de opstart pagina van een Data Base, wordt versleuteld en ontsleuteld door de TDE-Protector die is opgeslagen in Azure Key Vault, die er nooit in wordt gelaten.  Aan SQL Database moeten machtigingen worden verleend om de DEK te ontsleutelen en te versleutelen. Als de machtigingen van de logische SQL-Server aan de sleutel kluis worden ingetrokken, is een Data Base niet toegankelijk, worden de verbindingen geweigerd en worden alle gegevens versleuteld. Voor Azure SQL Database wordt de TDE-Protector ingesteld op het niveau van de logische SQL-Server en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)wordt de TDe-Protector ingesteld op het niveau van de instantie en wordt deze overgenomen door alle versleutelde data bases op die instantie. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
+[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) met Azure Key Vault-integratie kunt u de database versleutelings sleutel (dek) versleutelen met een door de klant beheerde asymmetrische sleutel met de naam TDe Protector. Dit wordt ook in het algemeen aangeduid als Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption.  In het BYOK-scenario wordt de TDE-Protector opgeslagen in een door de klant eigendom en beheerd [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), het op de cloud gebaseerde externe sleutel beheer systeem van Azure. De TDE-Protector kan worden [gegenereerd](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates) door de sleutel kluis of worden [overgebracht](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) naar de sleutel kluis van een on-premises HSM-apparaat. De TDE-DEK, die is opgeslagen op de opstart pagina van een Data Base, wordt versleuteld en ontsleuteld door de TDE-Protector die is opgeslagen in Azure Key Vault, die er nooit in wordt gelaten.  Aan SQL Database moeten machtigingen worden verleend om de DEK te ontsleutelen en te versleutelen. Als de machtigingen van de logische SQL-Server aan de sleutel kluis worden ingetrokken, is een Data Base niet toegankelijk, worden de verbindingen geweigerd en worden alle gegevens versleuteld. Voor Azure SQL Database wordt de TDE-Protector ingesteld op het niveau van de logische SQL-Server en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)wordt de TDe-Protector ingesteld op het niveau van de instantie en wordt deze overgenomen door alle *versleutelde* data bases op die instantie. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
 > [!NOTE]
 > Transparent Data Encryption met Azure Key Vault-integratie (Bring Your Own Key) voor Azure SQL Database beheerde instantie is in preview.
@@ -65,9 +65,9 @@ Wanneer TDE voor het eerst is geconfigureerd voor het gebruik van een TDE-Protec
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Richt lijnen voor het configureren van Azure Key Vault
 
-- Een sleutel kluis maken met [zacht verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) en de beveiliging opschonen ingeschakeld om te beschermen tegen gegevens verlies in het geval van een onbedoelde sleutel – of sleutel kluis-verwijderen.  U moet [Power shell gebruiken om de eigenschap "zacht-delete" in te scha kelen](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) voor de sleutel kluis (deze optie is nog niet beschikbaar via de Azure-Portal, maar vereist voor Azure SQL):  
+- Een sleutel kluis maken met [zacht verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) en de beveiliging opschonen ingeschakeld om te beschermen tegen gegevens verlies in het geval van een onbedoelde sleutel – of sleutel kluis-verwijderen. U moet de eigenschap ' zacht-delete ' inschakelen op de sleutel kluis via [cli](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) of [Power shell](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) (deze optie is nog niet beschikbaar via de Azure-Portal, maar vereist voor Azure SQL):  
   - Voorlopig verwijderde resources worden bewaard gedurende een bepaalde periode, 90 dagen, tenzij ze worden hersteld of verwijderd.
-  - De **herstel** - en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid.
+  - De **herstel** -en **opschoon** acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid.
 - Stel een resource vergrendeling in voor de sleutel kluis om te bepalen wie deze kritieke resource kan verwijderen en om onbedoelde of ongeoorloofde verwijdering te voor komen.  [Meer informatie over resource vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
 - Verleen de SQL Database Server toegang tot de sleutel kluis met behulp van de identiteit van de Azure Active Directory (Azure AD).  Wanneer u de portal-gebruikers interface gebruikt, wordt de Azure AD-identiteit automatisch gemaakt en worden de toegangs machtigingen voor de sleutel kluis verleend aan de server.  Als u Power shell gebruikt om TDE te configureren met BYOK, moet de Azure AD-identiteit worden gemaakt en voltooid. Zie [Configure TDe with BYOK](transparent-data-encryption-byok-azure-sql-configure.md) en [Configure TDe with BYOK for Managed instance](https://aka.ms/sqlmibyoktdepowershell) voor gedetailleerde stapsgewijze instructies voor het gebruik van Power shell.
@@ -80,7 +80,7 @@ Wanneer TDE voor het eerst is geconfigureerd voor het gebruik van een TDE-Protec
    > [!NOTE]
    > Als TDE versleutelde SQL-data bases geen toegang meer hebben tot de sleutel kluis, omdat de firewall niet kan worden omzeild, zijn de data bases niet toegankelijk en worden aanmeldingen geweigerd totdat de firewall bypass-machtigingen zijn hersteld.
 
-- Controle en rapportage inschakelen voor alle versleutelings sleutels: Key Vault biedt logboeken die eenvoudig kunnen worden geïnjecteerd in andere hulpprogram ma's voor SIEM (Security Information and Event Management). [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) van operations management suite (OMS) is een voor beeld van een service die al is geïntegreerd.
+- Controle en rapportage inschakelen op alle versleutelings sleutels: Key Vault biedt logboeken die eenvoudig kunnen worden geïnjecteerd in andere hulpprogram ma's voor SIEM (Security Information and Event Management). [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) van operations management suite (OMS) is een voor beeld van een service die al is geïntegreerd.
 - Om te zorgen voor een hoge Beschik baarheid van versleutelde data bases, configureert u elke SQL Database-Server met twee Azure-sleutel kluizen die zich in verschillende regio's bevinden.
 
 
@@ -123,7 +123,7 @@ Als de logische SQL-Server de toegang tot de door de klant beheerde TDE-Protecto
 
 ## <a name="high-availability-geo-replication-and-backup--restore"></a>Hoge Beschik baarheid, geo-replicatie en back-up/herstellen
 
-### <a name="high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen
+### <a name="high-availability-and-disaster-recovery"></a>Grote beschikbaarheid en noodherstel
 
 Het configureren van hoge Beschik baarheid met Azure Key Vault is afhankelijk van de configuratie van uw data base en SQL Database-Server, en hier zijn de aanbevolen configuraties voor twee verschillende gevallen.  De eerste draagtas is een zelfstandige Data Base of SQL Database Server zonder geconfigureerde geo-redundantie.  Het tweede geval is een Data Base of SQL Database Server die is geconfigureerd met failover-groepen of geo-redundantie, waarbij moet worden gegarandeerd dat elke geo-redundante kopie een lokale Azure Key Vault in de failovergroep heeft om ervoor te zorgen dat geo-failovers werken.
 
@@ -192,13 +192,13 @@ Voordat u TDE inschakelt met door de klant beheerde sleutels in Azure Key Vault 
 
 Volg de stappen in het [overzicht van actieve geo-replicatie](sql-database-geo-replication-overview.md) om een failover te testen en activeren, die regel matig moet worden uitgevoerd om de toegangs machtigingen voor SQL te bevestigen voor de sleutel kluizen.
 
-### <a name="backup-and-restore"></a>Back-up en herstel
+### <a name="backup-and-restore"></a>Back-up en herstellen
 
 Wanneer een Data Base is versleuteld met TDE met behulp van een sleutel uit Key Vault, worden gegenereerde back-ups ook versleuteld met dezelfde TDE-Protector.
 
 Als u een back-up wilt herstellen die is versleuteld met een TDE-Protector van Key Vault, moet u ervoor zorgen dat het sleutel materiaal zich nog in de oorspronkelijke kluis in de oorspronkelijke sleutel naam bevindt. Wanneer de TDE-Protector voor een Data Base wordt gewijzigd, worden de oude back-ups van de Data Base **niet** bijgewerkt voor gebruik van de meest recente TDe-Protector. Daarom is het raadzaam dat u alle oude versies van de TDE-Protector in Key Vault behoudt, zodat database back-ups kunnen worden hersteld.
 
-Als een sleutel die nodig is voor het herstellen van een back-up, niet meer in de oorspronkelijke sleutel kluis is, wordt het volgende fout bericht weer gegeven: "Doel server `<Servername>` heeft geen toegang tot alle Azure-uri's die zijn \<gemaakt tussen tijds tempel \<#1 > en tijds tempel #2 >. Voer de bewerking opnieuw uit nadat alle Azure-Uri's zijn teruggezet.
+Als een sleutel die nodig is voor het herstellen van een back-up, niet meer in de oorspronkelijke sleutel kluis is opgenomen, wordt het volgende fout bericht weer gegeven: "doel server `<Servername>` heeft geen toegang tot alle Azure-Uri's die zijn gemaakt tussen \<Time Stamp #1 > en \<Time Stamp #2 > . Voer de bewerking opnieuw uit nadat alle Azure-Uri's zijn teruggezet.
 
 Als u dit wilt verhelpen, voert u de cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) uit om de lijst met sleutels te retour neren van Key Vault die zijn toegevoegd aan de server (tenzij ze door een gebruiker zijn verwijderd). Om ervoor te zorgen dat alle back-ups kunnen worden hersteld, moet u ervoor zorgen dat de doel server voor de back-up toegang heeft tot al deze sleutels.
 
@@ -210,4 +210,4 @@ Get-AzSqlServerKeyVaultKey `
 
 Zie [een Azure SQL database herstellen](sql-database-recovery-using-backups.md)voor meer informatie over herstel van back-ups voor SQL database. Zie [een Azure SQL Data Warehouse herstellen](../sql-data-warehouse/backup-and-restore.md)voor meer informatie over herstel van back-ups voor SQL Data Warehouse.
 
-Aanvullende overweging voor back-ups van logboek bestanden: Back-ups van logboek bestanden blijven versleuteld met de oorspronkelijke TDE Encryption, zelfs als de TDE-Protector is geroteerd en de data base nu een nieuwe TDE-Protector gebruikt.  Op het moment van terugzetten zijn beide sleutels nodig om de data base te herstellen.  Als het logboek bestand gebruikmaakt van een TDE-Protector die is opgeslagen in Azure Key Vault, is deze sleutel vereist tijdens de herstel tijd, zelfs als de data base is gewijzigd voor het gebruik van door de service beheerde TDE.
+Aanvullende overweging voor back-ups van logboek bestanden: back-ups van logboek bestanden blijven versleuteld met de oorspronkelijke TDE Encryption, zelfs als de TDE-Protector is geroteerd en de data base nu een nieuwe TDE-Protector gebruikt.  Op het moment van terugzetten zijn beide sleutels nodig om de data base te herstellen.  Als het logboek bestand gebruikmaakt van een TDE-Protector die is opgeslagen in Azure Key Vault, is deze sleutel vereist tijdens de herstel tijd, zelfs als de data base is gewijzigd voor het gebruik van door de service beheerde TDE.

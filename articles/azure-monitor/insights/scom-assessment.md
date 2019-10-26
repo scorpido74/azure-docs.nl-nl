@@ -1,108 +1,102 @@
 ---
-title: Optimalisatie van uw System Center Operations Manager-omgeving met Azure Log Analytics | Microsoft Docs
-description: U kunt de oplossing System Center Operations Manager Health Check gebruiken om het risico en de status van uw omgeving op een vast interval vast te stellen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
-ms.service: log-analytics
+title: Optimaliseer uw System Center Operations Manager-omgeving met Azure Log Analytics | Microsoft Docs
+description: U kunt de System Center Operations Manager-statuscontrole-oplossing gebruiken om het risico en de status van uw omgevingen volgens een regel matig interval te evalueren.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/25/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/25/2018
+ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401650"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898771"
 ---
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalisatie van uw omgeving met de oplossing System Center Operations Manager Health Check (Preview)
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimaliseer uw omgeving met de System Center Operations Manager-statuscontrole-oplossing (preview-versie)
 
-![System Center Operations Manager Health Check symbool](./media/scom-assessment/scom-assessment-symbol.png)
+![System Center Operations Manager-statuscontrole-symbool](./media/scom-assessment/scom-assessment-symbol.png)
 
-U kunt de oplossing System Center Operations Manager Health Check gebruiken om het risico en de status van uw System Center Operations Manager-beheergroep op een vast interval vast te stellen. Dit artikel helpt u bij het installeren, configureren en gebruiken van de oplossing zodat u corrigerende maatregelen voor potentiële problemen kunt uitvoeren.
+U kunt de System Center Operations Manager-statuscontrole-oplossing gebruiken om het risico en de status van uw System Center Operations Manager beheer groep volgens een regel matig interval te evalueren. Dit artikel helpt u bij het installeren, configureren en gebruiken van de oplossing, zodat u corrigerende maat regelen kunt nemen voor potentiële problemen.
 
-Deze oplossing biedt een geprioriteerde lijst met aanbevelingen die specifiek zijn voor uw geïmplementeerde serverinfrastructuur. De aanbevelingen zijn onderverdeeld in vier gebieden, waarmee u snel inzicht in het risico en neemt u corrigerende maatregelen.
+Deze oplossing biedt een lijst met aanbevelingen die specifiek zijn voor uw geïmplementeerde server infrastructuur. De aanbevelingen worden gecategoriseerd op vier focus gebieden, waarmee u het risico snel kunt begrijpen en corrigerende maat regelen kunt nemen.
 
-De aanbevelingen zijn gebaseerd op de kennis en ervaring met Microsoft-engineers van duizenden klanten bezoeken. Elke aanbeveling bevat richtlijnen over waarom een probleem voor u mogelijk belangrijk en het implementeren van de voorgestelde wijzigingen.
+De aanbevelingen zijn gebaseerd op de kennis en ervaring die micro soft-technici hebben opgedaan vanuit duizenden klant bezoeken. Elke aanbeveling bevat richt lijnen voor de reden waarom een probleem te voor u is en hoe u de voorgestelde wijzigingen kunt implementeren.
 
-U kunt gebieden die het meest relevant zijn voor uw organisatie en de voortgang naar het uitvoeren van een risico's gratis en gezonde omgeving bijhouden.
+U kunt focus gebieden kiezen die het belangrijkst zijn voor uw organisatie en uw voortgang volgen met betrekking tot het uitvoeren van een risico vrije en goede omgeving.
 
-Nadat u de oplossing hebt toegevoegd en een evaluatie uitgevoerd, samenvattende wordt informatie voor focusgebieden wordt weergegeven op de **System Center Operations Manager Health Check** dashboard voor uw infrastructuur. De volgende secties wordt beschreven hoe u gebruik van de informatie op de **System Center Operations Manager Health Check** dashboard, waar u kunt weergeven en vervolgens ondernemen aanbevolen acties voor uw Operations Manager-omgeving.
+Nadat u de oplossing hebt toegevoegd en er een evaluatie wordt uitgevoerd, wordt de samenvattings informatie voor de focus gebieden weer gegeven op het **System Center Operations Manager-statuscontrole** dash board voor uw infra structuur. In de volgende secties wordt beschreven hoe u de informatie op het **System Center Operations Manager-statuscontrole** -dash board gebruikt, waar u de aanbevolen acties voor uw Operations Manager omgeving kunt bekijken en vervolgens uitvoeren.
 
-![Tegel voor System Center Operations Manager-oplossing](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
+![Tegel System Center Operations Manager oplossing](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![System Center Operations Manager Health Check-dashboard](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
+![System Center Operations Manager-statuscontrole dash board](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>Installeren en configureren van de oplossing
+## <a name="installing-and-configuring-the-solution"></a>De oplossing installeren en configureren
 
-De oplossing werkt met Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager en Microsoft System Center Operations Manager 1807
+De oplossing werkt met micro soft System Center 2012 Operations Manager Service Pack 1, micro soft System Center 2012 R2 Operations Manager, micro soft System Center 2016 Operations Manager, micro soft System Center 2016 Operations Manager en micro soft systeem Center Operations Manager 1807
 
 Gebruik de volgende informatie om de oplossing te installeren en configureren.
 
-- Voordat u de oplossing statuscontrole in Log Analytics gebruiken kunt, moet u de oplossing die is geïnstalleerd hebben. Installeren van de oplossing van [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+- Voordat u de oplossing status controle in Log Analytics kunt gebruiken, moet u de oplossing hebben geïnstalleerd. Installeer de oplossing vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
-- Na het toevoegen van de oplossing naar de werkruimte, de **System Center Operations Manager Health Check** tegel op het dashboard wordt een aanvullende configuratie vereist weergegeven. Klik op de tegel en volg de configuratiestappen die worden vermeld op de pagina
+- Nadat de oplossing is toegevoegd aan de werk ruimte, wordt in de tegel **System Center Operations Manager-statuscontrole** op het dash board een extra configuratie bericht weer gegeven. Klik op de tegel en volg de configuratie stappen die worden vermeld op de pagina
 
-  ![System Center Operations Manager-dashboardtegel](./media/scom-assessment/scom-configrequired-tile.png)
+  ![Tegel System Center Operations Manager-dash board](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
-> Configuratie van System Center Operations Manager kan worden gedaan met behulp van een script met de volgende stappen die worden vermeld in de configuratiepagina van de oplossing in Log Analytics.
+> De configuratie van System Center Operations Manager kan worden uitgevoerd met behulp van een script door de stappen te volgen die worden vermeld op de pagina configuratie van de oplossing in Log Analytics.
 
- Voor het configureren van de evaluatie via Operations Manager Operations-console, moet u de stappen hieronder uitvoeren in de volgende volgorde:
-1. [Uitvoeren als-account instellen voor System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
-2. De System Center Operations Manager Health Check regel configureren
+ Voer de onderstaande stappen in de volgende volg orde uit om de evaluatie te configureren via Operations Manager Operations-console:
+1. [Het run as-account voor System Center Operations Manager-statuscontrole instellen](#operations-manager-run-as-accounts-for-log-analytics)  
+2. De System Center Operations Manager-statuscontrole-regel configureren
 
-## <a name="system-center-operations-manager-health-check-data-collection-details"></a>Details van System Center Operations Manager Health Check gegevens verzamelen
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>Details van het verzamelen van System Center Operations Manager-statuscontrole gegevens
 
-De oplossing System Center Operations Manager Health Check verzamelt gegevens uit de volgende bronnen:
+De System Center Operations Manager-statuscontrole oplossing verzamelt gegevens uit de volgende bronnen:
 
 * Register
 * Windows Management Instrumentation (WMI)
-* Gebeurtenislogboek
-* Gegevens uit een bestand
-* Rechtstreeks vanaf de Operations Manager met behulp van PowerShell en SQL-query's, vanaf een beheerserver die u hebt opgegeven.  
+* Gebeurtenis logboek
+* Bestands gegevens
+* Rechtstreeks vanuit Operations Manager Power shell-en SQL-query's uit te werken vanaf een beheer server die u hebt opgegeven.  
 
-Gegevens worden verzameld op de beheerserver en doorgestuurd naar Log Analytics in de zeven dagen.  
+Gegevens worden verzameld op de beheer server en elke zeven dagen doorgestuurd naar Log Analytics.  
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager run as-accounts voor Log Analytics
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager uitvoeren als-accounts voor Log Analytics
 
-Log Analytics bouwt voort op de management packs voor workloads voor toevoegen waarde-services. Elke werkbelasting vereist workload-specifieke machtigingen voor het uitvoeren van management packs in een andere beveiligingscontext, zoals een domeingebruikersaccount. Een Operations Manager runas-account configureren met referenties met bevoegdheden. Zie voor meer informatie, [over het maken van een uitvoeren als-account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) in de Operations Manager-documentatie.
+Log Analytics bouwt voort op Management Packs voor werk belastingen om services te kunnen toevoegen. Elke workload vereist systeemspecifieke bevoegdheden om Management Packs uit te voeren in een andere beveiligings context, zoals een domein gebruikers account. Configureer een Operations Manager uitvoeren als-account met bevoegde referenties. Zie [een uitvoeren als-account maken](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) in de Operations Manager documentatie voor meer informatie.
 
-Gebruik de volgende informatie om in te stellen van de Operations Manager runas-account voor System Center Operations Manager Health Check.
+Gebruik de volgende informatie om de Operations Manager uitvoeren als-account voor System Center Operations Manager-statuscontrole in te stellen.
 
-### <a name="set-the-run-as-account"></a>Uitvoeren als-account instellen
+### <a name="set-the-run-as-account"></a>Het run as-account instellen
 
-Uitvoeren als-account moet voldoen aan de volgende vereisten voordat u doorgaat:
+Het run as-account moet voldoen aan de volgende vereisten voordat u doorgaat:
 
-* Een domeingebruikersaccount die lid is van de lokale groep Administrators op alle servers die ondersteuning bieden een rol van Operations Manager - beheerserver, SQL Server die als host fungeert de operationele database, datawarehouse en ACS-database, rapportage, Web-console en Gateway-server.
-* Bewerking Manager Administrator-rol voor de beheergroep worden beoordeeld
-* Als het account heeft geen SQL sysadmin-rechten, voer de [script](#sql-script-to-grant-granular-permissions-to-the-run-as-account) om gedetailleerde machtigingen aan het account op elk exemplaar van SQL Server die als host fungeert voor een of meer van de Operations Manager-databases te verlenen.
+* Een domein gebruikers account dat lid is van de lokale groep Administrators op alle servers die een Operations Manager Role-Management Server ondersteunen SQL Server hosten van de operationele, Data Warehouse-en ACS-data base, rapportage, webconsole en gateway server.
+* De rol van Operations Manager-beheerder voor de beheer groep die wordt beoordeeld
+* Als het account geen SQL sysadmin-rechten heeft, voert u het [script](#sql-script-to-grant-granular-permissions-to-the-run-as-account) uit om gedetailleerde machtigingen toe te kennen aan het account op elk SQL Server exemplaar dat als host fungeert voor een of alle operations manager-data bases.
 
-1. Selecteer in de Operations Manager-Console de **beheer** navigatieknop.
-2. Onder **Run As-configuratie**, klikt u op **Accounts**.
-3. In de **uitvoeren als-Account** Wizard, op de **inleiding** pagina op **volgende**.
-4. Op de **algemene eigenschappen** weergeeft, schakelt **Windows** in de **type Run As-Account:** lijst.
-5. Typ een weergavenaam in de **weergavenaam** tekst in en typ desgewenst een beschrijving in de **beschrijving** vak en klik vervolgens op **volgende**.
-6. Op de **Distributiebeveiliging** weergeeft, schakelt **veiliger**.
-7. Klik op **Create**.  
+1. Selecteer de **beheer** navigatie knop In de Operations Manager-console.
+2. Klik onder **Run as-configuratie**op **accounts**.
+3. Klik in de wizard **Run as-account maken** op de pagina **Inleiding** op **volgende**.
+4. Selecteer op de pagina **algemene eigenschappen** de optie **Windows** in het **Run as-account type:** list.
+5. Typ een weergave naam in het tekstvak **weergave naam** en typ eventueel een beschrijving in het vak **Beschrijving** en klik vervolgens op **volgende**.
+6. Selecteer op de pagina **distributie beveiliging** de optie **veiliger**.
+7. Klik op **Maken**.  
 
-Nu dat de Run As-account is gemaakt, moet de doel-beheerservers in de beheergroep en die zijn gekoppeld aan een vooraf gedefinieerde Run As-profiel, zodat werkstromen worden uitgevoerd met de referenties.  
+Nu het run as-account is gemaakt, moet het worden ingesteld op beheerser vers in de beheer groep en zijn gekoppeld aan een vooraf gedefinieerd run as-profiel zodat werk stromen met de referenties worden uitgevoerd.  
 
-1. Onder **Run As-configuratie**, **Accounts**, dubbelklik in het deelvenster met resultaten op het account dat u eerder hebt gemaakt.
-2. Op de **distributie** tabblad **toevoegen** voor de **selecteerde computers** en toe te voegen van de beheerserver voor het distribueren van het account.  Klik op **OK** tweemaal de wijzigingen wilt opslaan.
-3. Onder **Run As-configuratie**, klikt u op **profielen**.
-4. Zoek de *SCOM-evaluatie profiel*.
-5. Naam van het profiel moet zijn: *Microsoft System Center Operations Manager Health Check Run As-profiel*.
-6. Met de rechtermuisknop op en de eigenschappen ervan bijwerken en toevoegen van de onlangs gemaakte uitvoeren als-Account u eerder hebt gemaakt.
+1. Dubbel klik onder **Run as-configuratie**, **accounts**in het resultaten venster op het account dat u eerder hebt gemaakt.
+2. Klik op het tabblad **distributie** op **toevoegen** voor het vak **geselecteerde computers** en voeg de beheer server toe om het account naar te distribueren.  Klik twee keer op **OK** om uw wijzigingen op te slaan.
+3. Klik onder **Run as-configuratie**op **profielen**.
+4. Zoek naar het *SCOM-beoordelings profiel*.
+5. De profiel naam moet: het *Run as-Profiel van micro soft System Center Operations Manager-statuscontrole*.
+6. Klik met de rechter muisknop en werk de eigenschappen bij en voeg het onlangs gemaakte run as-account toe dat u eerder hebt gemaakt.
 
-### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>SQL-script om gedetailleerde machtigingen voor het uitvoeren als-account te verlenen
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>SQL-script om gedetailleerde machtigingen te verlenen aan het run as-account
 
-Voer het volgende SQL-script om de vereiste machtigingen verlenen voor het uitvoeren als-account op de SQL Server-exemplaar dat is gebruikt door Operations Manager die als host fungeert de operationele database, datawarehouse en ACS-database.
+Voer het volgende SQL-script uit om de vereiste machtigingen te verlenen voor het uitvoeren als-account op het SQL Server-exemplaar dat wordt gebruikt door Operations Manager die als host fungeert voor de operationele, Data Warehouse-en ACS-data base.
 
 ```
 -- Replace <UserName> with the actual user name being used as Run As Account.
@@ -150,156 +144,156 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ```
 
-### <a name="configure-the-health-check-rule"></a>De regel voor het selectievakje health configureren
+### <a name="configure-the-health-check-rule"></a>De regel voor status controle configureren
 
-De System Center Operations Manager Health Check solution managementpack bevat een regel met de naam *Microsoft System Center Operations Manager Health controleren regel uitvoeren*. Deze regel is verantwoordelijk voor het uitvoeren van de statuscontrole. De regel in te schakelen en configureer de frequentie, gebruik de onderstaande procedures.
+De management pack van de System Center Operations Manager-statuscontrole oplossing bevat een regel met de naam *micro soft System Center Operations Manager run Health Check Rule*. Deze regel is verantwoordelijk voor het uitvoeren van de status controle. Als u de regel wilt inschakelen en de frequentie wilt configureren, gebruikt u de onderstaande procedures.
 
-De Microsoft System Center Operations Manager Health controleren regel uitvoeren is standaard uitgeschakeld. Als u wilt de statuscontrole uitvoeren, moet u de regel op een beheerserver inschakelen. Gebruik de volgende stappen.
+De regel voor het uitvoeren van de status controle van micro soft System Center Operations Manager is standaard uitgeschakeld. Als u de status controle wilt uitvoeren, moet u de regel inschakelen op een beheer server. Gebruik de volgende stappen.
 
-#### <a name="enable-the-rule-for-a-specific-management-server"></a>De regel voor een specifieke beheerserver inschakelen
+#### <a name="enable-the-rule-for-a-specific-management-server"></a>De regel voor een specifieke beheer server inschakelen
 
-1. In de **ontwerpen** werkruimte van de Operations Manager Operations-console, zoekt u de regel *Microsoft System Center Operations Manager Health controleren regel uitvoeren* in de **regels** deelvenster.
-2. In de lijst met zoekresultaten de optie met de tekst *Type: Management Server*.
-3. Met de rechtermuisknop op de regel en klik vervolgens op **onderdrukkingen** > **voor een specifiek object van klasse: Management Server**.
-4.  Selecteer in de beschikbare lijst met beheerservers, de beheerserver waar de regel moet worden uitgevoerd.  Dit moet u eerder hebt geconfigureerd om te koppelen van de uitvoeren als-account met dezelfde beheerserver.
-5.  Zorg ervoor dat u de waarde voor overschrijven om te wijzigen **waar** voor de **ingeschakeld** parameterwaarde.<br><br> ![parameter overschrijven](./media/scom-assessment/rule.png)
+1. Zoek in de werk ruimte **ontwerpen** van de Operations Manager Operations-console naar de regel *micro soft System Center Operations Manager uitvoerings status controle regel* in het deel venster **regels** .
+2. Selecteer in de zoek resultaten de versie die het tekst *type: beheer server*bevat.
+3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukkingen** > **voor een specifiek object van klasse: beheer server**.
+4.  Selecteer in de lijst beschik bare beheerser vers de beheer server waarop de regel moet worden uitgevoerd.  Dit moet dezelfde beheer server zijn die u eerder hebt geconfigureerd om het uitvoeren als-account aan te koppelen.
+5.  Zorg ervoor dat u de onderdrukkings waarde wijzigt in **True** voor de **ingeschakelde** parameter waarde.<br><br> ![onderdrukking para meter](./media/scom-assessment/rule.png)
 
-    Terwijl u nog steeds in dit venster, de frequentie van het type uitvoeren met behulp van de volgende procedure te configureren.
+    In dit venster configureert u de uitvoerings frequentie met behulp van de volgende procedure.
 
-#### <a name="configure-the-run-frequency"></a>Configureer de frequentie uitvoeren
+#### <a name="configure-the-run-frequency"></a>De uitvoerings frequentie configureren
 
-De evaluatie is standaard geconfigureerd voor het uitvoeren van elke 10.080 minuten (of zeven dagen). De waarde moet een minimumwaarde van 1440 minuten (of één dag), kunt u negeren. De waarde vertegenwoordigt de minimumtijd kloof tussen opeenvolgende evaluatie wordt uitgevoerd. Als u wilt overschrijven het interval, gebruik de volgende stappen.
+De evaluatie is zo geconfigureerd dat deze standaard elke 10.080 minuten (of zeven dagen) wordt uitgevoerd. U kunt de waarde vervangen door een minimum waarde van 1440 minuten (of één dag). De waarde vertegenwoordigt de minimale tijds hiaat die vereist is tussen de opeenvolgende evaluatie-uitvoeringen. Volg de onderstaande stappen om het interval te overschrijven.
 
-1. In de **ontwerpen** werkruimte van de Operations Manager-console, zoekt u de regel *Microsoft System Center Operations Manager Health controleren regel uitvoeren* in de **regels** de sectie.
-2. In de lijst met zoekresultaten de optie met de tekst *Type: Management Server*.
-3. Met de rechtermuisknop op de regel en klik vervolgens op **de regel onderdrukken** > **voor alle objecten van klasse: Management Server**.
-4. Wijzig de **Interval** parameterwaarde uw gewenste intervalwaarde. In het onderstaande voorbeeld is de waarde ingesteld op 1440 minuten (één dag).<br><br> ![interval voor parameter](./media/scom-assessment/interval.png)<br>  
+1. Zoek in de werk ruimte **ontwerpen** van de Operations Manager-console naar de regel *micro soft System Center Operations Manager uitvoerings status controle regel* in de sectie **regels** .
+2. Selecteer in de zoek resultaten de versie die het tekst *type: beheer server*bevat.
+3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukking van de regel** > **voor alle objecten van klasse: beheer server**.
+4. Wijzig de waarde van de para meter **interval** in de gewenste interval waarde. In het onderstaande voor beeld is de waarde ingesteld op 1440 minuten (één dag).<br><br> ![interval parameter](./media/scom-assessment/interval.png)<br>  
 
-    Als de waarde is ingesteld op minder dan 1440 minuten, klikt u vervolgens de regel wordt uitgevoerd in een interval van één dag. In dit voorbeeld de regel de intervalwaarde wordt genegeerd en wordt uitgevoerd met een frequentie van één dag.
+    Als de waarde is ingesteld op minder dan 1440 minuten, wordt de regel uitgevoerd op een interval van één dag. In dit voor beeld negeert de regel de interval waarde en wordt uitgevoerd met een frequentie van één dag.
 
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Inzicht krijgen in hoe aanbevelingen met prioriteit wordt toegepast
+## <a name="understanding-how-recommendations-are-prioritized"></a>Uitleg over de prioriteit van aanbevelingen
 
-Elke aanbeveling krijgt een waarde valutaconversie in gevallen waarin het relatieve belang van de aanbeveling. Alleen de 10 belangrijkste aanbevelingen worden weergegeven.
+Aan elke aanbevolen aanbeveling wordt een wegings waarde gegeven die het relatieve belang van de aanbeveling identificeert. Alleen de tien belangrijkste aanbevelingen worden weer gegeven.
 
-### <a name="how-weights-are-calculated"></a>Hoe het gewicht worden berekend
+### <a name="how-weights-are-calculated"></a>Hoe de wegingen worden berekend
 
-Wegingen zijn samengevoegde waarden op basis van drie belangrijke factoren:
+Wegingen zijn aggregatie waarden op basis van drie belang rijke factoren:
 
-- De *kans* dat een probleem dat is geïdentificeerd ervoor zorgen problemen dat. Een grotere kans is gelijk aan een grotere totale score voor de aanbeveling.
-- De *impact* van het probleem op uw organisatie als dit leidt een probleem tot. Er is een hogere impact gelijk aan een grotere totale score voor de aanbeveling.
-- De *inspanning* vereist de aanbeveling kunt implementeren. Er is een hogere inspanning gelijk aan een kleinere totale score voor de aanbeveling.
+- De *kans* dat een probleem is geïdentificeerd, veroorzaakt problemen. Een hogere kans komt overeen met een grotere algemene score voor de aanbeveling.
+- De *impact* van het probleem in uw organisatie als er een probleem is. Een hogere impact komt overeen met een grotere algemene score voor de aanbeveling.
+- De *inspanningen* die nodig zijn om de aanbeveling te implementeren. Een hogere inspanning is gelijk aan een kleinere algemene score voor de aanbeveling.
 
-Het gewicht voor elke aanbeveling wordt uitgedrukt als een percentage van de totale score voor elke aandachtsgebied beschikbaar. Bijvoorbeeld, als een aanbeveling in de beschikbaarheid en bedrijfscontinuïteit aandachtsgebied heeft een score van 5%, verhoogd uitvoering van deze aanbeveling uw algehele beschikbaarheid en bedrijfscontinuïteit score van 5%.
+De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de totale beschik bare score voor elk focus gebied. Als bijvoorbeeld een aanbeveling in het focus gebied beschik baarheid en bedrijfs continuïteit een Score van 5% heeft, verhoogt de implementatie van die aanbeveling uw totale score voor de beschik baarheid en bedrijfs continuïteit met 5%.
 
-### <a name="focus-areas"></a>Focusgebieden
+### <a name="focus-areas"></a>Focus gebieden
 
-**Beschikbaarheid en bedrijfscontinuïteit** -deze aandachtsgebied bevat aanbevelingen voor beschikbaarheid van de service, de tolerantie van uw infrastructuur en zakelijke beveiliging.
+**Beschik baarheid en bedrijfs continuïteit** : dit focus gebied bevat aanbevelingen voor de beschik baarheid van de service, de tolerantie van uw infra structuur en zakelijke beveiliging.
 
-**Prestaties en schaalbaarheid** -deze aandachtsgebied bevat aanbevelingen voor uw organisatie het IT-infrastructuur groeien, zorg ervoor dat uw IT-omgeving voldoet aan de huidige prestatievereisten en kan reageren op veranderende infrastructuur behoeften.
+**Prestaties en schaal baarheid** : dit focus gebied bevat aanbevelingen om de IT-infra structuur van uw organisatie te verg Roten, zodat uw IT-omgeving voldoet aan de huidige prestatie vereisten en kan reageren op veranderende infrastructuur behoeften.
 
-**Upgraden, migreren en implementatie** -deze aandachtsgebied bevat aanbevelingen voor het upgraden, migreren en implementeren van SQL Server op uw bestaande infrastructuur.
+**Upgrade, migratie en implementatie** : dit focus gebied bevat aanbevelingen om u te helpen bij het upgraden, migreren en implementeren van SQL Server naar uw bestaande infra structuur.
 
-**Bewerkingen en bewaking** -deze aandachtsgebied bevat aanbevelingen voor het stroomlijnen van uw IT-activiteiten, preventief onderhoud implementeren en prestaties te maximaliseren.
+**Bewerkingen en controle** : dit focus gebied bevat aanbevelingen om uw IT-activiteiten te stroom lijnen, preventief onderhoud te implementeren en de prestaties te maximaliseren.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u erop gericht om 100% te beoordelen in elke aandachtsgebied?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
 
-Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen die zijn verkregen dankzij het Microsoft-technici via duizenden klanten bezoeken. Echter geen twee server-infrastructuur zijn hetzelfde, en specifieke aanbevelingen mogelijk meer of minder relevant voor u. Bijvoorbeeld, enkele aanbevelingen voor beveiliging mogelijk minder relevant zijn als uw virtuele machines worden niet blootgesteld aan Internet. Aanbevelingen voor sommige beschikbaarheid mogelijk minder relevant zijn voor services met lage prioriteit ad-hoc gegevens verzamelen en rapporteren. Problemen die tot een volwassen bedrijf van belang zijn mogelijk minder belangrijk voor een lid is. Kunt u om te bepalen welke focusgebieden zijn uw prioriteiten en kijken hoe uw scores na verloop van tijd veranderen.
+Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
 
-Elke aanbeveling bevat richtlijnen over waarom het belangrijk is. Gebruik deze richtlijnen om te evalueren of het implementeren van de aanbeveling geschikt voor u is, gezien de aard van uw IT-services en de zakelijke eisen van uw organisatie.
+Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze richt lijnen om te evalueren of implementatie van de aanbeveling geschikt is voor u, gezien de aard van uw IT-Services en de zakelijke behoeften van uw organisatie.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Gebruik statuscontrole focus gebied aanbevelingen
+## <a name="use-health-check-focus-area-recommendations"></a>Aanbevelingen voor het focus gebied status controleren gebruiken
 
-Voordat u een oplossing status controleren in Log Analytics gebruiken kunt, moet u de oplossing geïnstalleerd hebben. Meer informatie over het installeren van oplossingen, Zie [installeren van een oplossing voor](../../azure-monitor/insights/solutions.md). Nadat deze is geïnstalleerd, kunt u het overzicht van de aanbevelingen weergeven met behulp van de System Center Operations Manager Health Check-tegel op de **overzicht** pagina voor uw werkruimte in de Azure-portal.
+Voordat u een health check-oplossing in Log Analytics kunt gebruiken, moet u de oplossing hebben geïnstalleerd. Zie [een beheer oplossing installeren](../../azure-monitor/insights/solutions.md)voor meer informatie over het installeren van oplossingen. Nadat deze is geïnstalleerd, kunt u de samen vatting van aanbevelingen bekijken met behulp van de tegel System Center Operations Manager-statuscontrole op de pagina **overzicht** voor uw werk ruimte in de Azure Portal.
 
-De beoordelingen samengevatte naleving voor uw infrastructuur en aanbevelingen voor inzoomen in weergeven.
+Bekijk de samen vatting van de nalevings evaluaties voor uw infra structuur en vervolgens inzoomen op aanbevelingen.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aanbevelingen voor een aandachtsgebied weergeven en neemt u corrigerende maatregelen
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aanbevelingen voor een focus gebied weer geven en corrigerende actie ondernemen
 1. Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
 2. Klik in Azure Portal op **Meer services** in de linkerbenedenhoek. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics**.
-3. In het deelvenster voor abonnementen van Log Analytics een werkruimte selecteren en klik vervolgens op de **werkruimte overzicht** menu-item.  
-4. Op de **overzicht** pagina, klikt u op de **System Center Operations Manager Health Check** tegel.
-5. Op de **System Center Operations Manager Health Check** pagina, Controleer de samenvattingsinformatie in een van de focus gebied blades en klik vervolgens op een om aanbevelingen voor die aandachtsgebied weer te geven.
-6. Op een van de focus gebiedspagina's, kunt u de aanbevelingen met prioriteit gemaakt voor uw omgeving bekijken. Klik op een aanbeveling onder **betrokken objecten** voor meer informatie over waarom de aanbeveling is gedaan.<br><br> ![aandachtsgebied](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. U kunt ondernemen corrigerende maatregelen voorgesteld in **voorgestelde acties**. Wanneer het item is opgelost, record hoger beoordelingen die aanbevolen acties zijn uitgevoerd en worden uw nalevingsscore verhoogd. Gecorrigeerde items worden weergegeven als **doorgegeven objecten**.
+3. Selecteer in het deel venster abonnementen Log Analytics een werk ruimte en klik vervolgens op het menu-item **werkruimte samenvatting** .  
+4. Klik op de pagina **overzicht** op de tegel **System Center Operations Manager-statuscontrole** .
+5. Controleer op de pagina **System Center Operations Manager-statuscontrole** de samenvattings informatie op een van de Blades van het focus gebied en klik vervolgens op een van de aanbevelingen voor de weer gave van het focus gebied.
+6. Op een van de focus gebied pagina's kunt u de prioriteiten weer geven die zijn gemaakt voor uw omgeving. Klik op een aanbeveling onder **betrokken objecten** om details weer te geven over waarom de aanbeveling is gedaan.<br><br> ![focus gebied](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. U kunt corrigerende acties uitvoeren die worden voorgesteld in **aanbevolen acties**. Wanneer het item is opgelost, worden in latere evaluaties vastgelegd dat de aanbevolen acties zijn uitgevoerd en wordt de nalevings Score verhoogd. Gecorrigeerde items worden weer gegeven als **door gegeven objecten**.
 
 ## <a name="ignore-recommendations"></a>Aanbevelingen negeren
 
-Als u aanbevelingen die u wilt negeren hebt, kunt u een tekstbestand met Log Analytics wordt gebruikt om te voorkomen dat de aanbevelingen wordt weergegeven in de resultaten van de evaluatie maken.
+Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat Log Analytics gebruikt om te voor komen dat aanbevelingen worden weer gegeven in de evaluatie resultaten.
 
-### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>Voor het identificeren van de aanbevelingen die u wilt negeren
-1. In de Azure-portal op de pagina van de Log Analytics-werkruimte voor de geselecteerde werkruimte, klikt u op de **zoeken in logboeken** menu-item.
-2. Gebruik de volgende query uit om de lijst met aanbevelingen die zijn mislukt voor computers in uw omgeving.
+### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>Voor het identificeren van aanbevelingen die u wilt negeren
+1. Klik in de Azure Portal op de pagina Log Analytics werk ruimte voor de geselecteerde werk ruimte op de menu opdracht **Zoeken in Logboeken** .
+2. Gebruik de volgende query om de aanbevelingen weer te geven die zijn mislukt voor computers in uw omgeving.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Als uw werkruimte is bijgewerkt naar de [nieuwe met Log Analytics-querytaal](../../azure-monitor/log-query/log-query-overview.md), en vervolgens de bovenstaande query's gewijzigd in het volgende.
+    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../../azure-monitor/log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Hier volgt een schermafbeelding van de zoeken in Logboeken-query:<br><br> ![zoeken in logboeken](./media/scom-assessment/scom-log-search.png)<br>
+    Hier ziet u een scherm opname met de zoek query voor het logboek:<br><br> ![zoeken in logboeken](./media/scom-assessment/scom-log-search.png)<br>
 
-3. Kies de aanbevelingen die u wilt negeren. U gebruikt de waarden voor RecommendationId in de volgende procedure.
+3. Kies de aanbevelingen die u wilt negeren. In de volgende procedure gebruikt u de waarden voor RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Het maken en gebruiken van een tekstbestand IgnoreRecommendations.txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations. txt-tekst bestand maken en gebruiken
 
-1. Maak een bestand met de naam IgnoreRecommendations.txt.
-2. Plak of typ elke RecommendationId voor elke aanbeveling dat u wilt dat in Log Analytics op een afzonderlijke regel negeren en vervolgens opslaan en sluiten van het bestand.
-3. Plaats het bestand in de volgende map op elke computer waarop u Log Analytics voor het negeren van aanbevelingen.
-4. Op de beheerserver van Operations Manager - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
+1. Maak een bestand met de naam IgnoreRecommendations. txt.
+2. Plak of typ elke RecommendationId voor elke aanbeveling die Log Analytics wilt negeren op een afzonderlijke regel en sla het bestand op en sluit het.
+3. Plaats het bestand in de volgende map op elke computer waar u wilt dat Log Analytics aanbevelingen negeert.
+4. Op de Operations Manager-beheer server- *System Drive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Om te controleren of dat er aanbevelingen worden genegeerd
+### <a name="to-verify-that-recommendations-are-ignored"></a>Controleren of de aanbevelingen worden genegeerd
 
-1. Na de volgende evaluatie wordt uitgevoerd, wordt standaard elke zeven dagen geplande, wordt de opgegeven aanbevelingen zijn gemarkeerd als genegeerd en wordt niet weergegeven op het statusdashboard van selectievakje.
-2. U kunt de volgende zoeken in Logboeken-query's gebruiken om de genegeerde aanbevelingen weer te geven.
+1. Nadat de volgende geplande evaluatie standaard elke zeven dagen wordt uitgevoerd, worden de opgegeven aanbevelingen gemarkeerd als genegeerd en worden ze niet weer gegeven in het dash board status controle.
+2. U kunt de volgende zoek query's in het logboek gebruiken om alle genegeerde aanbevelingen weer te geven.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
     >[!NOTE]
-    > Als uw werkruimte is bijgewerkt naar de [nieuwe met Log Analytics-querytaal](../../azure-monitor/log-query/log-query-overview.md), en vervolgens de bovenstaande query's gewijzigd in het volgende.
+    > Als uw werk ruimte is bijgewerkt naar de [nieuwe log Analytics query taal](../../azure-monitor/log-query/log-query-overview.md), wordt de bovenstaande query gewijzigd in het volgende.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Als u later besluit dat u wilt zien genegeerde aanbevelingen, IgnoreRecommendations.txt bestanden verwijderen of kunt u RecommendationIDs verwijderen uit deze.
+3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
 
-## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health Check oplossing Veelgestelde vragen
+## <a name="system-center-operations-manager-health-check-solution-faq"></a>Veelgestelde vragen over System Center Operations Manager-statuscontrole oplossingen
 
-*Ik heb de oplossing statuscontrole toegevoegd aan mijn werkruimte voor logboekanalyse. Maar ik zie niet de aanbevelingen. Waarom niet?* Na het toevoegen van de oplossing, gebruikt u de volgende stappen weergave de aanbevelingen in de Log Analytics-dashboard.  
+*Ik heb de oplossing voor de status controle toegevoegd aan mijn Log Analytics-werk ruimte. Maar de aanbevelingen worden niet weer geven. Waarom niet?* Nadat u de oplossing hebt toegevoegd, gebruikt u de volgende stappen om de aanbevelingen op het Log Analytics dash board weer te geven.  
 
-- [Uitvoeren als-account instellen voor System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
-- [De System Center Operations Manager Health Check regel configureren](#configure-the-health-check-rule)
+- [Het run as-account voor System Center Operations Manager-statuscontrole instellen](#operations-manager-run-as-accounts-for-log-analytics)  
+- [De System Center Operations Manager-statuscontrole-regel configureren](#configure-the-health-check-rule)
 
 
-*Is er een manier om te configureren hoe vaak de controle wordt uitgevoerd?* Ja. Zie [configureren van de run frequentie](#configure-the-run-frequency).
+*Is er een manier om te configureren hoe vaak de controle wordt uitgevoerd?* Ja. Zie [de uitvoerings frequentie configureren](#configure-the-run-frequency).
 
-*Als een andere server wordt gedetecteerd nadat ik de oplossing System Center Operations Manager Health Check hebt toegevoegd, wordt deze gecontroleerd?* Ja, na de detectie wordt deze gecontroleerd vanaf standaard elke zeven dagen.
+*Als er een andere server wordt gedetecteerd nadat ik de System Center Operations Manager-statuscontrole oplossing heb toegevoegd, wordt deze gecontroleerd?* Ja, nadat de detectie is ingeschakeld, wordt deze standaard elke zeven dagen gecontroleerd.
 
-*Wat is de naam van het proces dat het verzamelen van gegevens wordt?* AdvisorAssessment.exe
+*Wat is de naam van het proces dat het verzamelen van gegevens doet?* AdvisorAssessment. exe
 
-*Waar wordt het proces AdvisorAssessment.exe uitgevoerd?* AdvisorAssessment.exe wordt uitgevoerd onder het proces van de Health-service van de beheerserver waar de statusregel selectievakje is ingeschakeld. Met dit proces, is detectie van uw hele omgeving via externe gegevensverzameling bereikt.
+*Waar wordt het proces AdvisorAssessment. exe uitgevoerd?* AdvisorAssessment. exe wordt uitgevoerd onder het HealthService-proces van de beheer server waarop de status controle regel is ingeschakeld. Met dit proces wordt de detectie van uw hele omgeving gerealiseerd via het verzamelen van externe gegevens.
 
-*Hoe lang duurt het voor het verzamelen van gegevens?* Het verzamelen van gegevens op de server duurt ongeveer één uur. Het kan langer duren in omgevingen met veel exemplaren van de Operations Manager of databases.
+*Hoe lang duurt het om gegevens te verzamelen?* Het verzamelen van gegevens op de server duurt ongeveer één uur. Dit kan langer duren in omgevingen met veel Operations Manager exemplaren of data bases.
 
-*Wat gebeurt er als ik het interval van de evaluatie op minder dan 1440 minuten instellen?* De evaluatie is vooraf geconfigureerd om uit te voeren met een maximum van één keer per dag. Als u de waarde voor interval voor een waarde minder dan 1440 minuten overschrijft, gebruikt de evaluatie 1440 minuten als de waarde voor interval.
+*Wat moet ik doen als ik het interval van de evaluatie ingesteld op minder dan 1440 minuten?* De evaluatie is vooraf geconfigureerd om Maxi maal één keer per dag te worden uitgevoerd. Als u de interval waarde overschrijft naar een waarde die kleiner is dan 1440 minuten, gebruikt de evaluatie 1440 minuten als interval waarde.
 
-*Hoe weet ik of er vereiste fouten zijn?* Als de statuscontrole is uitgevoerd en er geen resultaten, is het waarschijnlijk dat enkele van de vereisten voor de controle is mislukt. U kunt query's uitvoeren: `Operation Solution=SCOMAssessment` en `SCOMAssessmentRecommendation FocusArea=Prerequisites` in zoeken in Logboeken om te zien van de vereisten is mislukt.
+*Hoe weet ik of er problemen zijn met de vereisten?* Als de status controle is uitgevoerd en u geen resultaten ziet, is het waarschijnlijk dat sommige van de vereisten voor de controle zijn mislukt. U kunt query's uitvoeren: `Operation Solution=SCOMAssessment` en `SCOMAssessmentRecommendation FocusArea=Prerequisites` in Logboeken zoeken om de mislukte vereisten weer te geven.
 
-*Er is een `Failed to connect to the SQL Instance (….).` bericht in de vereiste fouten. Wat is het probleem?* AdvisorAssessment.exe, het proces dat gegevens verzamelt, waaronder het proces van de Health-service wordt uitgevoerd op de beheerserver. Als onderdeel van de statuscontrole, wordt het proces probeert verbinding maken met de SQL-Server waar de Operations Manager-database aanwezig is. Deze fout kan optreden als firewallregels de verbinding met de SQL Server-exemplaar blokkeert.
+*Er is een `Failed to connect to the SQL Instance (….).` bericht in de vereiste fouten. Wat is het probleem?* AdvisorAssessment. exe, het proces dat gegevens verzamelt, wordt uitgevoerd onder het HealthService-proces op de-beheer server. Als onderdeel van de status controle probeert het proces verbinding te maken met de SQL Server waarop de Operations Manager-Data Base aanwezig is. Deze fout kan optreden wanneer Firewall regels de verbinding met het SQL Server-exemplaar blok keren.
 
-*Welk type gegevens worden verzameld?* De volgende typen gegevens worden verzameld: - WMI-gegevens - register gegevens - gegevens van EventLog - Operations Manager-gegevens via Windows PowerShell, SQL-query's en bestanden verzamelen van informatie.
+*Welk type gegevens worden verzameld?* De volgende typen gegevens worden verzameld:-WMI gegevens-REGI ster gegevens gegevens Operations Manager gegevens via Windows Power shell, SQL-Query's en File Information Collector.
 
-*Waarom heb ik het configureren van uitvoeren als-Account?* Met Operations Manager, worden verschillende SQL-query's uitgevoerd. Zodat ze om uit te voeren, moet u een Run As-Account met machtigingen die nodig zijn. Bovendien zijn lokale beheerdersreferenties vereist voor query uitvoeren op WMI.
+*Waarom moet ik een uitvoeren als-account configureren?* Met Operations Manager worden verschillende SQL-query's uitgevoerd. Als u wilt dat ze worden uitgevoerd, moet u een uitvoeren als-account gebruiken met de vereiste machtigingen. Daarnaast zijn lokale beheerders referenties vereist voor het opvragen van WMI.
 
-*Waarom worden alleen de top 10 aanbevelingen weergegeven?* In plaats van geeft u een uitgebreide en overweldigend lijst van taken, is het raadzaam dat u zich richten op de aanbevelingen met prioriteit eerst adressering. Nadat u deze kunt oplossen, worden extra aanbevelingen beschikbaar. Als u liever de gedetailleerde lijst, kunt u alle aanbevelingen met behulp van zoeken in Logboeken kunt weergeven.
+*Waarom worden alleen de tien beste aanbevelingen weer gegeven?* In plaats van een limitatieve lijst met taken te geven, raden we u aan om eerst te focussen op de aanbevelingen met prioriteit. Nadat u ze hebt geadresseerd, worden er extra aanbevelingen beschikbaar. Als u de gedetailleerde lijst wilt zien, kunt u alle aanbevelingen bekijken met zoeken in Logboeken.
 
-*Is er een manier om een aanbeveling negeren?* Ja, Zie de [aanbevelingen negeren](#ignore-recommendations).
+*Is er een manier om een aanbeveling te negeren?* Ja, zie de [aanbevelingen negeren](#ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) voor meer informatie over het analyseren van gedetailleerde gegevens voor System Center Operations Manager Health Check en aanbevelingen.
+- [Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) voor meer informatie over het analyseren van gedetailleerde System Center Operations Manager-statuscontrole gegevens en aanbevelingen.

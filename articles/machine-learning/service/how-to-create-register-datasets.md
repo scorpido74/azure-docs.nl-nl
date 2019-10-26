@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 10/10/2019
-ms.openlocfilehash: 54f8a1248688a6d62192e4f34cf6b98a94086da8
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a558658d7c853560f0939c99dc5dce739d985944
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274782"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900703"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Gegevens sets (preview) maken en openen in Azure Machine Learning
 
@@ -82,7 +82,7 @@ datastore = Datastore.get(workspace, datastore_name)
 ```
 #### <a name="create-tabulardatasets"></a>TabularDatasets maken
 
-Gebruik de [`from_delimited_files()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) methode op `TabularDatasetFactory`-klasse om bestanden te lezen in de CSV-of TSV-indeling en een niet-geregistreerde TabularDataset te maken. Als u leest uit meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
+Gebruik de methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) op `TabularDatasetFactory` klasse om bestanden te lezen in de CSV-of TSV-indeling en een niet-geregistreerde TabularDataset te maken. Als u leest uit meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -107,7 +107,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||S
 
-Gebruik de [`from_sql_query()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) methode op `TabularDatasetFactory`-klasse om te lezen van Azure SQL database.
+Gebruik de methode [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) op `TabularDatasetFactory` klasse om te lezen van Azure SQL database.
 
 ```Python
 
@@ -120,7 +120,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 In TabularDatasets kan een tijds tempel worden opgegeven vanuit een kolom in de gegevens of de patroon gegevens van het pad worden opgeslagen in om een time series-eigenschappen in te scha kelen, waarmee u eenvoudig en efficiënt filteren op tijd kunt.
 
-Gebruik de [`with_timestamp_columns()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) methode op `TabularDataset`-klasse om de kolom tijds tempel op te geven en filteren op tijd in te scha kelen. [Hier](https://aka.ms/azureml-tsd-notebook)vindt u meer voor beelden en informatie.
+Gebruik de methode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) op `TabularDataset` klasse om de kolom tijds tempel op te geven en filteren op tijd in te scha kelen. [Hier](https://aka.ms/azureml-tsd-notebook)vindt u meer voor beelden en informatie.
 
 ```Python
 # create a TabularDataset with time series trait
@@ -141,7 +141,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-filedatasets"></a>FileDatasets maken
 
-Gebruik de [`from_files()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) methode op `FileDatasetFactory`-klasse om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken.
+Gebruik de methode [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) op `FileDatasetFactory` klasse om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken.
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -187,11 +187,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>Versie gegevens sets
 
-U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Typische scenario's voor het maken van versie beheer zijn: 
-
-* Wanneer nieuwe gegevens beschikbaar zijn voor retraining.
-* Wanneer u verschillende benaderingen voor gegevens voorbereiding of functie techniek toepast.
-
+U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. De gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Meer informatie over de versies van de [gegevensset](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
 web_paths = [
@@ -210,7 +206,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-datasets-in-your-script"></a>Toegang tot gegevens sets in uw script
 
-Geregistreerde gegevens sets zijn lokaal en extern toegankelijk op reken clusters, zoals de Azure Machine Learning compute. Als u toegang wilt krijgen tot uw geregistreerde gegevensset voor experimenten, gebruikt u de volgende code om uw werk ruimte en geregistreerde gegevensset op naam op te halen. De [`get_by_name()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) methode voor de `Dataset`-klasse retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte.
+Geregistreerde gegevens sets zijn lokaal en extern toegankelijk op reken clusters, zoals de Azure Machine Learning compute. Als u toegang wilt krijgen tot uw geregistreerde gegevensset voor experimenten, gebruikt u de volgende code om uw werk ruimte en geregistreerde gegevensset op naam op te halen. De methode [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) op de klasse `Dataset` retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -231,6 +227,6 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie [over het trainen van gegevens sets](how-to-train-with-datasets.md)
+* Meer informatie [over het trainen van gegevens sets](how-to-train-with-datasets.md).
 * Gebruik automatische machine learning om [met TabularDatasets te trainen](https://aka.ms/automl-dataset).
 * Voor meer voor beelden van training met gegevens sets raadpleegt u de [voorbeeld notitieblokken](https://aka.ms/dataset-tutorial).

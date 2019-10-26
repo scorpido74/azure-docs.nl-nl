@@ -4,16 +4,17 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258872"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894164"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager-sjabloon functies
+
 In dit artikel worden alle functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon. Zie de [syntaxis van sjablonen](template-expressions.md)voor meer informatie over het gebruik van functies in uw sjabloon.
 
 Zie door de [gebruiker gedefinieerde functies](resource-group-authoring-templates.md#functions)om uw eigen functies te maken.
@@ -40,22 +41,22 @@ Zie door de [gebruiker gedefinieerde functies](resource-group-authoring-template
 Resource Manager biedt verschillende functies voor het werken met matrices en objecten.
 
 * [array](resource-group-template-functions-array.md#array)
-* [coalesce](resource-group-template-functions-array.md#coalesce)
+* [Voeg](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [daarin](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [gelaten](resource-group-template-functions-array.md#empty)
 * [instantie](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
+* [Snij punt](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [last](resource-group-template-functions-array.md#last)
-* [length](resource-group-template-functions-array.md#length)
+* [duren](resource-group-template-functions-array.md#last)
+* [lange](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
-* [range](resource-group-template-functions-array.md#range)
+* [bereik](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
 * [Houd](resource-group-template-functions-array.md#take)
-* [union](resource-group-template-functions-array.md#union)
+* [Réunion](resource-group-template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -66,10 +67,10 @@ Resource Manager biedt verschillende functies voor het werken met matrices en ob
 ## <a name="comparison-functions"></a>Vergelijkingsfuncties
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
-* [equals](resource-group-template-functions-comparison.md#equals)
-* [less](resource-group-template-functions-comparison.md#less)
+* [gelijk is aan](resource-group-template-functions-comparison.md#equals)
+* [jonge](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [greater](resource-group-template-functions-comparison.md#greater)
+* [groter](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
@@ -92,10 +93,10 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden uit sec
 ## <a name="logical-functions"></a>Logische functies
 Resource Manager biedt de volgende functies voor het werken met logische voor waarden:
 
-* [and](resource-group-template-functions-logical.md#and)
+* [maar](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
-* [not](resource-group-template-functions-logical.md#not)
+* [ten](resource-group-template-functions-logical.md#not)
 * [or](resource-group-template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
@@ -113,7 +114,7 @@ Resource Manager biedt de volgende functies voor het werken met logische voor wa
 Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
 * [add](resource-group-template-functions-numeric.md#add)
-* [copyIndex](resource-group-template-functions-numeric.md#copyindex)
+* [Functie copyindex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
@@ -123,6 +124,7 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 * [mul](resource-group-template-functions-numeric.md#mul)
 * [sub](resource-group-template-functions-numeric.md#sub)
 
+<a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
 <a id="list" aria-hidden="true" />
 <a id="providers" aria-hidden="true" />
@@ -130,19 +132,24 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 <a id="resourcegroup" aria-hidden="true" />
 <a id="resourceid" aria-hidden="true" />
 <a id="subscription" aria-hidden="true" />
+<a id="subscriptionResourceId" aria-hidden="true" />
+<a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Resourcefuncties
-Resource Manager biedt de volgende functies voor het ophalen van waarden van resources:
+Resource Manager biedt de volgende functies voor het ophalen van resource waarden:
 
+* [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
-* [listKeys](resource-group-template-functions-resource.md#listkeys)
+* [Listkeys ophalen](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [lijst met *](resource-group-template-functions-resource.md#list)
-* [Providers](resource-group-template-functions-resource.md#providers)
-* [Verwijzing](resource-group-template-functions-resource.md#reference)
+* [orderverzamellijst](resource-group-template-functions-resource.md#list)
+* [hardwareproviders](resource-group-template-functions-resource.md#providers)
+* [referentielaag](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [ResourceId](resource-group-template-functions-resource.md#resourceid)
-* [subscription](resource-group-template-functions-resource.md#subscription)
+* [resourceId](resource-group-template-functions-resource.md#resourceid)
+* [abonnement](resource-group-template-functions-resource.md#subscription)
+* [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
+* [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
 <a id="base64tojson" aria-hidden="true" />
@@ -188,31 +195,32 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [gelaten](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [instantie](resource-group-template-functions-string.md#first)
-* [format](resource-group-template-functions-string.md#format)
-* [guid](resource-group-template-functions-string.md#guid)
+* [Formatteer](resource-group-template-functions-string.md#format)
+* [GPT](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [last](resource-group-template-functions-string.md#last)
+* [duren](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [length](resource-group-template-functions-string.md#length)
+* [lange](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
-* [replace](resource-group-template-functions-string.md#replace)
+* [vervangen](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [string](resource-group-template-functions-string.md#string)
-* [substring](resource-group-template-functions-string.md#substring)
+* [tekenreeksexpressie](resource-group-template-functions-string.md#string)
+* [subtekenreeks](resource-group-template-functions-string.md#substring)
 * [Houd](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
 * [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [uri](resource-group-template-functions-string.md#uri)
+* [URI](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 * [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Zie [Azure Resource Manager sjablonen ontwerpen](resource-group-authoring-templates.md) voor een beschrijving van de secties in een Azure Resource Manager sjabloon
 * Zie voor het samen voegen van meerdere sjablonen [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md)
 * Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](resource-group-create-multiple.md)

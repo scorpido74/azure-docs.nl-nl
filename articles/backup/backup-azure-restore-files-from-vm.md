@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Bestanden en mappen herstellen vanuit een back-up van een Azure-VM'
+title: 'Azure Backup: bestanden en mappen herstellen vanuit een back-up van een Azure-VM'
 description: Bestanden herstellen vanaf een herstel punt van een virtuele machine in azure
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210369"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900316"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -45,7 +45,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 4. Selecteer in de vervolg keuzelijst **herstel punt selecteren** het herstel punt dat de gewenste bestanden bevat. Het meest recente herstel punt is standaard al geselecteerd.
 
-5. Als u de software wilt downloaden die wordt gebruikt om bestanden te kopiëren van het herstel punt, klikt u op uitvoerbaar **bestand downloaden** (voor Windows Azure VM) of het **Download script** (voor Linux Azure VM wordt een python-script gegenereerd).
+5. Als u de software wilt downloaden die wordt gebruikt om bestanden te kopiëren van het herstel punt, klikt u op **uitvoerbaar bestand downloaden** (voor Windows Azure VM) of het **Download script** (voor Linux Azure VM wordt een python-script gegenereerd).
 
     ![Gegenereerd wacht woord](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -67,15 +67,15 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
     - download.microsoft.com
     - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (voor open bare geografische gebieden van Azure)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (voor Azure China 21vianet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (voor Azure Amerikaanse overheid)
+        - https:\/-pod01-rec2.geo-name.backup.windowsazure.com (voor de open bare geografische gebieden van Azure)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (voor Azure China 21Vianet)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (voor Azure US Government)
         - https:\//pod01-rec2.geo-name.backup.windowsazure.de (voor Azure Duitsland)
     - uitgaande poort 3260
 
 > [!Note]
 > 
-> * De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor bijvoorbeeld: De naam van het gedownloade\'script begint\'met\'\' \'\_VMname\'Geoname _ GUID, zoals ContosoVM_wcus_12345678....<br><br>
+> * De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor beeld: de naam van het gedownloade script begint met \'VMname\'\_\'Geoname\'_\'GUID\', zoals ContosoVM_wcus_12345678....<br><br>
 > * De URL zou ' https:\//pod01-rec2.wcus.backup.windowsazure.com ' zijn
 
 
@@ -89,7 +89,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 #### <a name="for-windows"></a>Voor Windows
 
-Wanneer u het uitvoer bare bestand uitvoert, koppelt het besturings systeem de nieuwe volumes en worden er stationsletters toegewezen. U kunt Windows Verkenner of bestanden Verkenner gebruiken om deze stations te doorzoeken. De stationsletters die aan de volumes zijn toegewezen, mogen niet dezelfde letters zijn als de oorspronkelijke virtuele machine. de naam van het volume blijft echter behouden. Als het volume op de oorspronkelijke virtuele machine bijvoorbeeld ' gegevens schijf (E:`\`) ' is, kan dat volume als "gegevens schijf (" wille keurige letter ":`\`) op de lokale computer worden aangesloten. Blader door alle volumes die worden vermeld in de uitvoer van het script totdat u uw bestanden/map hebt gevonden.  
+Wanneer u het uitvoer bare bestand uitvoert, koppelt het besturings systeem de nieuwe volumes en worden er stationsletters toegewezen. U kunt Windows Verkenner of bestanden Verkenner gebruiken om deze stations te doorzoeken. De stationsletters die aan de volumes zijn toegewezen, mogen niet dezelfde letters zijn als de oorspronkelijke virtuele machine. de naam van het volume blijft echter behouden. Als het volume op de oorspronkelijke virtuele machine bijvoorbeeld ' gegevens schijf (E:`\`) ' is, kan dat volume op de lokale computer worden aangesloten als ' gegevens schijf (' wille keurige letter ':`\`). Blader door alle volumes die worden vermeld in de uitvoer van het script totdat u uw bestanden/map hebt gevonden.  
 
    ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -168,7 +168,7 @@ De volgende opdracht geeft informatie weer over alle RAID-schijven.
 $ mdadm –detail –scan
 ```
 
- De relevante RAID-schijf wordt weer gegeven als`/dev/mdm/<RAID array name in the protected VM>`
+ De relevante RAID-schijf wordt weer gegeven als `/dev/mdm/<RAID array name in the protected VM>`
 
 Gebruik de opdracht mount als de RAID-schijf fysieke volumes heeft.
 
@@ -196,7 +196,7 @@ In de volgende tabel ziet u de compatibiliteit tussen server-en computer besturi
 
 In Linux moet het besturings systeem van de computer die wordt gebruikt om bestanden te herstellen, ondersteuning bieden voor het bestands systeem van de beveiligde virtuele machine. Wanneer u een computer selecteert om het script uit te voeren, moet u ervoor zorgen dat de computer een compatibel besturings systeem heeft en een van de versies gebruikt die in de volgende tabel zijn geïdentificeerd:
 
-|Linux-besturingssysteem | Versies  |
+|Linux-besturings systeem | Versies  |
 | --------------- | ---- |
 | Ubuntu | 12,04 en hoger |
 | CentOS | 6,5 en hoger  |
@@ -213,11 +213,40 @@ In Linux moet het besturings systeem van de computer die wordt gebruikt om besta
 
 Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit te voeren en te verbinden.
 
-|Onderdeel | Version  |
+|Component | Version  |
 | --------------- | ---- |
 | bash | 4 en hoger |
 | python | 2.6.6 en hoger  |
 | TLS | 1,2 moet worden ondersteund  |
+
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Bestands herstel van back-ups van virtuele machines met grote schijven
+
+In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanuit back-ups van virtuele Azure-machines waarvan het aantal schijven > 16 is en elke schijf grootte > 4 TB.
+
+Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen in het geval van een groot aantal schijven (> 16) of grote schijven (> 4 TB).
+
+- Bewaar een afzonderlijke herstel server (virtuele machines van Azure VM D2v3) voor bestands herstel. U kunt dat alleen bestands herstel gebruiken en vervolgens uitschakelen wanneer dat niet vereist is. Het terugzetten op de oorspronkelijke machine wordt niet aanbevolen, omdat het aanzienlijke gevolgen heeft voor de VM zelf.
+- Voer vervolgens het script opnieuw uit om te controleren of de bestands herstel bewerking is gelukt.
+- Als het proces voor bestands herstel vastloopt (de schijven worden nooit gekoppeld of ze zijn gekoppeld, maar er worden geen volumes weer gegeven), voert u de volgende stappen uit.
+  - Als de Restore-server een Windows-VM is
+    - Zorg ervoor dat het besturings systeem WS 2012 + is.
+    - Zorg ervoor dat de register sleutels zijn ingesteld zoals hieronder wordt beschreven op de Restore-server en zorg ervoor dat u de server opnieuw opstart. Het getal naast de GUID kan variëren van 0001-0005. In het volgende voor beeld is het 0004. Navigeer door het pad naar de register sleutel tot het gedeelte para meters.
+
+    ![iSCSI-reg-Key-changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Als de Restore-server een virtuele Linux-machine is
+  - In het bestand/etc/iscsi/iscsid.conf wijzigt u de instelling van
+    - node. verbonden [0]. time-noop_out_timeout = 5 to node. verbonden [0]. Timeo. noop_out_timeout = 30
+- Nadat u het volgende hebt uitgevoerd, voert u het script nu opnieuw uit. Met deze wijzigingen is het zeer waarschijnlijk dat de bestands herstel is gelukt.
+- Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. In het geval van grote schijven neemt dit veel tijd in beslag. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden van portal/Power shell/CLI, te wachten op 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
+- Nadat het bestand is hersteld, gaat u terug naar de portal om te klikken op ontkoppelen van schijven voor herstel punten waar u geen volumes kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -225,13 +254,13 @@ Als u problemen ondervindt tijdens het herstellen van bestanden van de virtuele 
 
 | Fout bericht/scenario | Mogelijke oorzaak | Aanbevolen actie |
 | ------------------------ | -------------- | ------------------ |
-| Exe-uitvoer: *Uitzonde ring bij het maken van verbinding met het doel* |Het script kan geen toegang krijgen tot het herstel punt    | Controleer of de computer voldoet aan de vorige toegangs vereisten. |  
-| Exe-uitvoer: *Het doel is al via een iSCSI-sessie aangemeld.* | Het script is al uitgevoerd op dezelfde computer en de stations zijn gekoppeld | De volumes van het herstel punt zijn al gekoppeld. Ze kunnen niet worden gekoppeld met dezelfde stationsletters van de oorspronkelijke VM. Bladeren door alle beschik bare volumes in de Verkenner van het bestand |
-| Exe-uitvoer: *Dit script is ongeldig omdat de schijven zijn ontkoppeld via de portal, de limiet van 12 uur is overschreden. Down load een nieuw script uit de portal.* |    De schijven zijn ontkoppeld van de portal of de limiet van 12 uur overschreden | Deze specifieke exe is nu ongeldig en kan niet worden uitgevoerd. Als u de bestanden van het herstel punt in de tijd wilt openen, gaat u naar de portal voor een nieuw exe-bestand.|
-| Op de computer waarop het exe-programma wordt uitgevoerd: De nieuwe volumes worden niet ontkoppeld nadat u op de knop ontkoppelen hebt geklikt | De iSCSI-initiator op de computer reageert niet/het vernieuwen van de verbinding met het doel en het onderhouden van de cache. |  Nadat uop ontkoppelen hebt geklikt, wacht u een paar minuten. Als de nieuwe volumes niet worden ontkoppeld, bladert u door alle volumes. Door alle volumes te bladeren, zorgt u ervoor dat de initiator de verbinding vernieuwt. het volume wordt ontkoppeld met een fout bericht dat de schijf niet beschikbaar is.|
-| Exe-uitvoer: Het script wordt uitgevoerd, maar nieuwe volumes gekoppeld wordt niet weer gegeven in de script uitvoer |    Dit is een tijdelijke fout    | De volumes zouden al zijn gekoppeld. Open Explorer om te bladeren. Als u dezelfde computer gebruikt voor het uitvoeren van scripts elke keer, overweeg dan om de computer opnieuw op te starten en de lijst moet worden weer gegeven in de volgende exe-uitvoeringen. |
-| Specifiek voor Linux: Kan de gewenste volumes niet weer geven | Het besturings systeem van de computer waarop het script wordt uitgevoerd, herkent het onderliggende bestands systeem van de beveiligde virtuele machine mogelijk niet | Controleer of het herstel punt vastloopt en consistent is. Als het bestand consistent is, voert u het script uit op een andere computer waarvan het besturings systeem het bestands systeem van de beveiligde VM herkent |
-| Windows-specifiek: Kan de gewenste volumes niet weer geven | De schijven zijn mogelijk gekoppeld, maar de volumes zijn niet geconfigureerd | Zoek in het scherm schijf beheer de extra schijven die zijn gerelateerd aan het herstel punt. Als een van deze schijven de status offline heeft, kunt u deze online zetten door met de rechter muisknop op de schijf te klikken en op ' online ' te klikken.|
+| Exe-uitvoer: *uitzonde ring bij het maken van verbinding met het doel* |Het script kan geen toegang krijgen tot het herstel punt    | Controleer of de computer voldoet aan de vorige toegangs vereisten. |  
+| Exe-uitvoer: *het doel is al aangemeld via een iSCSI-sessie.* | Het script is al uitgevoerd op dezelfde computer en de stations zijn gekoppeld | De volumes van het herstel punt zijn al gekoppeld. Ze kunnen niet worden gekoppeld met dezelfde stationsletters van de oorspronkelijke VM. Bladeren door alle beschik bare volumes in de Verkenner van het bestand |
+| Exe-uitvoer: *Dit script is ongeldig omdat de schijven zijn ontkoppeld via de portal of de limiet van 12 uur is overschreden. Down load een nieuw script uit de portal.* |    De schijven zijn ontkoppeld van de portal of de limiet van 12 uur overschreden | Deze specifieke exe is nu ongeldig en kan niet worden uitgevoerd. Als u de bestanden van het herstel punt in de tijd wilt openen, gaat u naar de portal voor een nieuw exe-bestand.|
+| Op de computer waarop het exe-programma wordt uitgevoerd: de nieuwe volumes worden niet ontkoppeld nadat u op de knop ontkoppelen hebt geklikt | De iSCSI-initiator op de computer reageert niet/het vernieuwen van de verbinding met het doel en het onderhouden van de cache. |  Nadat u op **ontkoppelen**hebt geklikt, wacht u een paar minuten. Als de nieuwe volumes niet worden ontkoppeld, bladert u door alle volumes. Door alle volumes te bladeren, zorgt u ervoor dat de initiator de verbinding vernieuwt. het volume wordt ontkoppeld met een fout bericht dat de schijf niet beschikbaar is.|
+| Exe-uitvoer: het script wordt uitgevoerd, maar nieuwe volumes gekoppeld worden niet weer gegeven in de script uitvoer |    Dit is een tijdelijke fout    | De volumes zouden al zijn gekoppeld. Open Explorer om te bladeren. Als u dezelfde computer gebruikt voor het uitvoeren van scripts elke keer, overweeg dan om de computer opnieuw op te starten en de lijst moet worden weer gegeven in de volgende exe-uitvoeringen. |
+| Specifiek voor Linux: de gewenste volumes kunnen niet worden weer gegeven | Het besturings systeem van de computer waarop het script wordt uitgevoerd, herkent het onderliggende bestands systeem van de beveiligde virtuele machine mogelijk niet | Controleer of het herstel punt vastloopt en consistent is. Als het bestand consistent is, voert u het script uit op een andere computer waarvan het besturings systeem het bestands systeem van de beveiligde VM herkent |
+| Windows-specifiek: de gewenste volumes kunnen niet worden weer gegeven | De schijven zijn mogelijk gekoppeld, maar de volumes zijn niet geconfigureerd | Zoek in het scherm schijf beheer de extra schijven die zijn gerelateerd aan het herstel punt. Als een van deze schijven de status offline heeft, kunt u deze online zetten door met de rechter muisknop op de schijf te klikken en op ' online ' te klikken.|
 
 ## <a name="security"></a>Beveiliging
 
@@ -269,4 +298,4 @@ De gegevens stroom tussen de Recovery-service en de machine wordt beveiligd door
 
 Een bestands Access Control lijst (ACL) die aanwezig is in de bovenliggende/back-up van de virtuele machine, blijft ook behouden in het gekoppelde bestands systeem.
 
-Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur geldig. Als de gebruiker de toegang eerder wil verwijderen, meldt u zich aan bij Azure Portal/Power shell/CLI en voert u de ontkoppelde **schijven** uit voor dat specifieke herstel punt. Het script wordt onmiddellijk ongeldig gemaakt.
+Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur geldig. Als de gebruiker de toegang eerder wil verwijderen, meldt u zich aan bij Azure Portal/Power shell/CLI en voert u de **ontkoppelde schijven** uit voor dat specifieke herstel punt. Het script wordt onmiddellijk ongeldig gemaakt.

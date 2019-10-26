@@ -1,5 +1,5 @@
 ---
-title: Rapport Riskante aanmeldingen in de Azure Active Directory-portal | Microsoft Docs
+title: Rapport Risk ante aanmeldingen in de portal | Microsoft Docs
 description: Meer informatie over het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 services: active-directory
 author: cawrites
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 31a002af32ac6c07e6358a3ccd0f1420d3e8c9ef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127421"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895190"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 
@@ -42,9 +42,9 @@ Zie [How to configure the User Risk](../identity-protection/howto-user-risk-poli
 
 De rapporten met Risk ante aanmeldingen zijn beschikbaar voor gebruikers in de volgende rollen:
 
-- Beveiligingsbeheerder
+- Beveiligings beheerder
 - Globale beheerder
-- Beveiligingslezer
+- Beveiligings lezer
 
 Zie [beheerders rollen weer geven en toewijzen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal)voor meer informatie over het toewijzen van beheerders rollen aan een gebruiker in azure Active Directory.
 

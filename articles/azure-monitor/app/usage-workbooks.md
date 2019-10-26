@@ -1,130 +1,125 @@
 ---
-title: Interactieve rapporten maken met Azure Monitor werkmappen | Microsoft docs
-description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangepaste geparameteriseerde werkmappen
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Interactieve rapporten maken met Azure Monitor werkmappen | Micro soft docs
+description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbbf511286c63acf4a939e0a0e7d9c3dc9efa75b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569604"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899379"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interactieve rapporten maken met Azure Monitor-werkmappen
+# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interactieve rapporten maken met Azure Monitor werkmappen
 
-Werkmappen tekst, combineren [Analytics-query's](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), Azure metrische gegevens en parameters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang tot de dezelfde Azure-resources hebben.
+Werkmappen combi neren tekst, [analyse query's](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), Azure-metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
 
 Werkmappen zijn handig voor scenario's zoals:
 
-* Het gebruik van uw app verkennen wanneer u niet de metrische gegevens van belang van tevoren weet: aantal gebruikers, bewaarsnelheden, conversieverhoudingen, enzovoort. In tegenstelling tot andere tools voor gebruiksanalyse kunnen werkmappen u combineren van meerdere soorten visualisaties en analyses, waardoor ze ideaal voor dit soort vrije verkennen.
-* Uitleg over naar uw team hoe een nieuw uitgebrachte functie wordt uitgevoerd, door de gebruiker weergegeven aantallen voor interacties die sleutels en andere metrische gegevens.
-* Delen van de resultaten van een A / B experimenteren in uw app met andere leden van uw team. U kunt uitgelegd van de doelstellingen van het experiment met tekst en vervolgens elke metrische gegevens en het Analytics-query gebruikt voor het evalueren van het experiment, samen met duidelijke call-outs voor of elke metrische waarde boven of onder-doel is weergeven.
-* De impact van een storing rapportage over het gebruik van uw app, combineren van gegevens, tekstuitleg en een beschrijving van de volgende stappen om te voorkomen dat storingen in de toekomst.
+* Het gebruik van uw app verkennen wanneer u niet weet wat de metrische gegevens zijn die van belang zijn: aantal gebruikers, retentie tarieven, conversie tarieven, enzovoort. In tegens telling tot andere hulpprogram ma's voor gebruiks analyse kunt u met werkmappen meerdere soorten visualisaties en analyses combi neren, waardoor ze ideaal zijn voor dit soort vrije-vorm onderzoek.
+* Uitleg over uw team hoe een nieuw uitgebrachte functie wordt uitgevoerd, door het aantal gebruikers voor sleutel interacties en andere metrische gegevens weer te geven.
+* De resultaten van een A/B-experiment in uw app delen met andere leden van uw team. U kunt de doel stellingen voor het experiment uitleggen met tekst, vervolgens elke gebruiks metriek en analyse query weer geven die wordt gebruikt voor het evalueren van het experiment, samen met duidelijke aanroep-outs voor of elke metriek boven of onder-doel is.
+* Rapportage van de impact van een storing in het gebruik van uw app, het combi neren van gegevens, uitleg van teksten en een bespreking van de volgende stappen om storingen in de toekomst te voor komen.
 
 ## <a name="starting-with-a-template-or-saved-workbook"></a>Beginnen met een sjabloon of opgeslagen werkmap
 
-Een werkmap is opgebouwd uit secties die bestaan uit onafhankelijk bewerkbare grafieken, tabellen, tekst, en besturingselementen voor de invoer. Voor meer informatie over werkmappen, is het raadzaam een openen. 
+Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u het beste een up openen. 
 
-Selecteer **werkmappen** in het menu links uit in de Application Insights voor uw app-ervaring.
+Selecteer **werkmappen** in het menu links in de Application Insights-ervaring voor uw app.
 
-![Schermafbeelding van de navigatie met werkmappen](./media/usage-workbooks/001-workbooks.png)
+![Scherm afbeelding van navigatie naar werkmappen](./media/usage-workbooks/001-workbooks.png)
 
-Hiermee wordt een galerie werkmap met een aantal vooraf gedefinieerde werkmappen om u aan de slag te helpen gestart.
+Hiermee opent u een werkmap galerie met een aantal vooraf gemaakte werkmappen waarmee u aan de slag kunt.
 
-![Schermafbeelding van de werkmap-galerie](./media/usage-workbooks/002-workbook-gallery.png)
+![Scherm opname van werkmap galerie](./media/usage-workbooks/002-workbook-gallery.png)
 
-We beginnen met de **standaardsjabloon**, bevindt zich onder de kop **Quick start**.
+We beginnen met de **standaard sjabloon**, die zich onder de kop **Quick Start**bevindt.
 
-![Schermafbeelding van de werkmap-galerie](./media/usage-workbooks/003-default-template.png)
+![Scherm opname van werkmap galerie](./media/usage-workbooks/003-default-template.png)
 
-## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Bewerken, rangschikken, klonen en secties van de werkmap verwijderen
+## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Werkmap secties bewerken, ordenen, klonen en verwijderen
 
-Werkmappen hebben twee modi: **bewerkingsmodus**, en **Leesmodus**. Als de standaardwerkmap voor het eerst wordt gestart, wordt deze geopend **bewerkingsmodus**. Hiermee wordt alle inhoud van de werkmap, inclusief stappen en parameters die anders zijn verborgen. **Leesmodus** geeft een vereenvoudigde stijl van de rapportweergave. Hiermee kunt u abstracte onmiddellijk de complexiteit die is opgenomen in een rapport maken terwijl u nog steeds de onderliggende mechanics slechts enkele klikken wanneer dat nodig is voor de wijziging.
+Werkmappen hebben twee modi: **bewerkings modus**en **Lees modus**. Wanneer de standaard werkmap voor het eerst wordt gestart, wordt deze in de **bewerkings modus**geopend. Hiermee wordt de inhoud van de werkmap weer gegeven, inclusief alle stappen en para meters die op een andere manier verborgen zijn. De **Lees modus** toont een vereenvoudigde rapport stijl weergave. Op deze manier kunt u de complexiteit van het maken van een rapport samen stellen, terwijl de onderliggende mechanismen nog maar een paar muis klikken hebben wanneer dat nodig is voor wijzigingen.
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/editing-controls-new.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/editing-controls-new.png)
 
-1. Wanneer u klaar bent bewerken van een sectie, klikt u op **gedaan bewerken** in de linkerbenedenhoek van de sectie.
+1. Wanneer u klaar bent met het bewerken van een sectie, klikt u op **gereed bewerken** in de linkerbenedenhoek van de sectie.
 
-2. Voor het maken van een duplicaat van een sectie, klikt u op de **in deze sectie klonen** pictogram. Het is een geweldige manier het herhalen voor een query zonder verlies van vorige iteraties dubbele secties te maken.
+2. Als u een duplicaat van een sectie wilt maken, klikt u op het pictogram **deze sectie klonen** . Het maken van dubbele secties is een uitstekende manier om een query te herhalen zonder dat vorige herhalingen verloren gaan.
 
-3. Als u wilt verplaatsen van een sectie in een werkmap, klikt u op de **omhoog** of **omlaag** pictogram.
+3. Als u een sectie in een werkmap omhoog wilt verplaatsen, klikt u op het pictogram **omhoog** of **omlaag** .
 
-4. Als u wilt een sectie definitief verwijderen, klikt u op de **verwijderen** pictogram.
+4. Als u een sectie permanent wilt verwijderen, klikt u op het pictogram **verwijderen** .
 
-## <a name="adding-text-and-markdown-sections"></a>Tekst en Markdown secties toe te voegen
+## <a name="adding-text-and-markdown-sections"></a>Secties voor tekst en prijs verlaging toevoegen
 
-Koppen, uitleg en opmerkingen toevoegen aan uw werkmappen omzetten kunnen een set met tabellen en grafieken in een boodschap. Tekst secties in ondersteuning voor werkmappen de [Markdown-syntaxis](https://daringfireball.net/projects/markdown/) voor tekst met opmaak, zoals kopteksten, vet, cursief en lijsten met opsommingstekens.
+Door koppen, uitleg en commentaar toe te voegen aan uw werkmappen kunt u een set tabellen en grafieken omzetten in een verhalende tabel. Tekst secties in werkmappen ondersteunen de [Afkortings syntaxis](https://daringfireball.net/projects/markdown/) voor tekst opmaak, zoals kopteksten, vet, cursief en lijsten met opsommings tekens.
 
-Als u wilt een tekstsectie toevoegen aan uw werkmap, gebruikt u de **tekst toevoegen** knop aan de onderkant van de werkmap of aan de onderkant van elke sectie.
+Als u een tekst sectie wilt toevoegen aan uw werkmap, gebruikt u de knop **tekst toevoegen** onder aan de werkmap of aan de onderkant van een sectie.
 
 ## <a name="adding-query-sections"></a>Query secties toevoegen
 
-![Gedeelte van de query in werkmappen](./media/usage-workbooks/analytics-section-new.png)
+![Query sectie in werkmappen](./media/usage-workbooks/analytics-section-new.png)
 
-Gedeelte query toevoegen aan uw werkmap, gebruikt u de **query toevoegen** knop aan de onderkant van de werkmap of aan de onderkant van elke sectie.
+Als u een query sectie wilt toevoegen aan uw werkmap, gebruikt u de knop **query toevoegen** onder aan de werkmap of aan de onderkant van een sectie.
 
-Query secties zijn zeer flexibel en kunnen worden gebruikt om aan te vragen beantwoorden zoals:
+Query secties zijn zeer flexibel en kunnen worden gebruikt om vragen te beantwoorden zoals:
 
-* Het aantal uitzonderingen uw site throw tijdens dezelfde periode als een afname in gebruik
-* Wat was de verdeling van de laadtijden voor pagina's voor gebruikers die een pagina bekijken?
-* Hoeveel gebruikers een set pagina's weergegeven op uw site, maar niet een andere set pagina's? Dit kan nuttig zijn om te begrijpen als u clusters van gebruikers die gebruikmaken van verschillende subsets van functionaliteit van uw site zijn (Gebruik de `join` operator met de `kind=leftanti` modifier in de [Kusto-querytaal](/azure/kusto/query/)).
+* Hoeveel uitzonde ringen is uw site tijdens dezelfde periode gegenereerd als een afname in het gebruik?
+* Wat was de verdeling van pagina laad tijden voor gebruikers die een pagina bekijken?
+* Hoeveel gebruikers hebben een aantal pagina's op uw site weer gegeven, maar niet een andere set pagina's? Dit kan handig zijn als u clusters hebt met gebruikers die verschillende subsets van de functionaliteit van uw site gebruiken (gebruik de `join`-operator met de `kind=leftanti` modifier in de [query taal Kusto](/azure/kusto/query/)).
 
-U ook worden niet alleen beperkt tot de werkmap van de query uit de context van de toepassing gestart. U kunt query's uitvoeren voor meerdere apps met Application Insights bewaakt, evenals Log Analytics-werkruimten, zolang u toegang tot deze resources hebt.
+U kunt ook niet alleen een query uitvoeren vanuit de context van de toepassing waaruit u de werkmap hebt gestart. U kunt een query uitvoeren op meerdere Application Insights bewaakte apps en Log Analytics werk ruimten, zolang u hiervoor toegangs rechten voor deze resources hebt.
 
-Query van aanvullende externe Application Insights-resources gebruiken de **app** id.
+Als u een query wilt uitvoeren vanuit extra externe Application Insights resources, gebruikt u de **app** -id.
 
 ```
 union app('app01').requests, app('app02').requests, requests
 | summarize count() by bin(timestamp, 1h)
 ```  
 
-Deze query is het combineren van aanvragen van drie verschillende toepassingen. Een app met de naam app01, een app met de naam app02 en de aanvragen van de lokale Application Insights-resource.
+Met deze query worden aanvragen van drie verschillende toepassingen gecombineerd. Een app met de naam app01, een app met de naam app02 en de aanvragen van de lokale Application Insights resource.
 
-Ophalen van gegevens uit een extern gebruik van de Log Analytics-werkruimte de **werkruimte** id.
+Als u gegevens uit een externe Log Analytics werk ruimte wilt ophalen, gebruikt u de **werk ruimte** -id.
 
-Voor meer informatie over meerdere bronnen query's verwijzen naar de [officiële richtlijnen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+Raadpleeg de [officiële richt lijnen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)voor meer informatie over query's voor meerdere resources.
 
-### <a name="advanced-analytic-query-settings"></a>Geavanceerde analytische query-instellingen
+### <a name="advanced-analytic-query-settings"></a>Geavanceerde instellingen voor analytische query's
 
-Elke sectie bevat een eigen geavanceerde instellingen, die toegankelijk via het Instellingenpictogram zijn ![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/005-settings.png) gelegen aan de rechterkant van de **parameters toevoegen** knop.
+Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via het pictogram instellingen ![Application Insights sectie besturings elementen bewerken](./media/usage-workbooks/005-settings.png) rechts van de knop **para meters toevoegen** .
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/0006-settings-expanded.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/0006-settings-expanded.png)
 
    |         |          |
    | ---------------- |:-----|
-   | **Aangepaste breedte**    | Stel dit neemt een item, zodat u veel items op één regel zodat u kunt uw grafieken en tabellen beter te organiseren in uitgebreide interactieve rapporten passen een willekeurige grootte.  |
-   | **Voorwaardelijk zichtbaar** | Gebruik deze stappen op basis van een parameter in de Leesmodus verbergen. |
-   | **Een parameter exporteren**| Hiermee wordt een geselecteerde rij in het raster of diagram ertoe leiden dat latere stappen waarden wijzigen of zichtbaar worden.  |
-   | **Query weergeven als er niet bewerken** | U ziet nu de query boven de grafiek of de tabel, zelfs wanneer in de leesmodus.
-   | **Open op de knop analytics weergeven wanneer er geen bewerkingen** | Hiermee wordt de blauw pictogram Analytics toegevoegd aan de rechter hoek van de grafiek om één klik toegang te verlenen.|
+   | **Aangepaste breedte**    | Stel dit in om een item een wille keurige grootte te geven, zodat u veel items op één regel kunt aanpassen, zodat u uw grafieken en tabellen beter in een uitgebreide, interactieve rapporten ordent.  |
+   | **Voorwaardelijk zichtbaar** | Gebruik deze om stappen te verbergen op basis van een para meter in de Lees modus. |
+   | **Een para meter exporteren**| Hiermee kan een geselecteerde rij in het raster of diagram worden uitgevoerd om waarden te wijzigen of zichtbaar te worden.  |
+   | **Query weer geven wanneer deze niet wordt bewerkt** | Hiermee wordt de query boven de grafiek of tabel weer gegeven, zelfs in de Lees modus.
+   | **De knop openen in Analytics weer geven wanneer deze niet wordt bewerkt** | Hiermee voegt u het pictogram Blue Analytics toe aan de rechter bovenhoek van de grafiek om toegang met één klik toe te staan.|
 
-De meeste van deze instellingen zijn relatief gemakkelijk, maar om te begrijpen **exporteert u een parameter** is het beter om te controleren van een werkmap die van deze functionaliteit gebruikmaakt.
+De meeste van deze instellingen zijn redelijk intuïtief, maar om **een para meter** te kunnen exporteren, is het beter om een werkmap te onderzoeken die gebruikmaakt van deze functionaliteit.
 
-Een van de vooraf gedefinieerde werkmappen bevat informatie over actieve gebruikers.
+Een van de vooraf gemaakte werkmappen bevat informatie over actieve gebruikers.
 
-De eerste sectie van de werkmap is gebaseerd op gegevens van analytische query:
+De eerste sectie van de werkmap is gebaseerd op analyse query gegevens:
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/003-active-users.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/003-active-users.png)
 
-Het tweede gedeelte is ook gebaseerd op analytische query voor gegevens, maar het selecteren van een rij in de eerste tabel, wordt de inhoud van de grafiek interactief bijgewerkt:
+De tweede sectie is ook gebaseerd op analyse query gegevens, maar als u een rij in de eerste tabel selecteert, wordt de inhoud van de grafiek interactief bijgewerkt:
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/004-active-users-trend.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/004-active-users-trend.png)
 
- Dit is mogelijk door gebruik te maken van de **wanneer een item is geselecteerd, exporteert u een parameter** geavanceerde instellingen die zijn ingeschakeld in de tabel Analytics-query.
+ Dit is mogelijk via het gebruik van de optie **Wanneer een item is geselecteerd, een geavanceerde instellingen voor een para meter exporteren** die zijn ingeschakeld in de analyse query van de tabel.
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/007-settings-export.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/007-settings-export.png)
 
-De geëxporteerde waarden maakt vervolgens gebruik van de tweede analytics-query als een rij is geselecteerd. Als er geen rij is geselecteerd, wordt standaard de rij die de algehele waarden vertegenwoordigt. 
+De tweede analyse query gebruikt vervolgens de geëxporteerde waarden wanneer een rij wordt geselecteerd. Als er geen rij is geselecteerd, wordt standaard de rij weer geven die de algemene waarden vertegenwoordigt. 
 
 ```
 let start = startofday(ago({TimeRange} + {Metric}));
@@ -139,60 +134,60 @@ union customEvents, pageViews
 | render timechart 
 ```
 
-## <a name="adding-metrics-sections"></a>Metrische gegevens secties toevoegen
+## <a name="adding-metrics-sections"></a>Secties met metrische gegevens toevoegen
 
-Metrische gegevens secties bieden u volledige toegang tot Azure Monitor metrische gegevens opnemen in uw interactieve rapporten. Veel van de vooraf gedefinieerde werkmappen bevat zowel analytische query voor gegevens en metrische gegevens, zodat u kunt profiteren van het beste van beide functies op één plek. U hebt ook de mogelijkheid om op te halen metrische gegevens van resources in een van de abonnementen die u toegang tot hebt.
+Met metrische secties beschikt u over volledige toegang tot het opnemen van Azure Monitor metrische gegevens in uw interactieve rapporten. Veel van de vooraf ontwikkelde werk bladen bevatten zowel analytische query gegevens als metrische gegevens, zodat u optimaal gebruik kunt maken van het beste van beide functies op één plek. U hebt ook de mogelijkheid om de metrische gegevens van resources op te halen in een van de abonnementen waartoe u toegang hebt.
 
-Hier volgt een voorbeeld van gegevens van virtuele machines worden opgehaald in een werkmap om te bieden van een visualisatie raster van CPU-prestaties:
+Hier volgt een voor beeld van gegevens van virtuele machines die worden opgehaald in een werkmap om een raster visualisatie van CPU-prestaties te bieden:
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/008-metrics-grid.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/008-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Parameter secties toevoegen
 
-Werkmapparameters kunnen u waarden in de werkmap zonder handmatig bewerken in de secties query of tekst wijzigen.  Dit verwijdert de vereiste van dat u hoeft te begrijpen van de onderliggende analytics-querytaal en aanzienlijk breidt de potentiële doelgroep van rapportage op basis van een werkmap.
+Met de para meters van de werkmap kunt u waarden in de werkmap wijzigen zonder de query-of tekst secties hand matig te bewerken.  Dit betekent dat het niet nodig is om inzicht te krijgen in de onderliggende analyse query taal en de potentiële doel groep van rapporten op basis van een werkmap aanzienlijk uit te breiden.
 
-De waarden van parameters in query-, tekst- of andere gedeelten van de parameter zijn vervangen door de naam van de parameter accolades, plaatsen, zoals ``{parameterName}``.  Namen van taakparameters zijn beperkt tot dezelfde regels als JavaScript-id's, in feite alfabetische tekens of onderstrepingstekens bevatten, gevolgd door alfanumerieke tekens of onderstrepingstekens bevatten. Bijvoorbeeld, **a1** is toegestaan, maar **1a** is niet toegestaan.
+De waarden van para meters worden vervangen in de secties query, tekst of andere para meters door de naam van de para meter tussen accolades, zoals ``{parameterName}``, te plaatsen.  Parameter namen zijn beperkt tot vergelijk bare regels als Java script-id's, in principe alfabetische tekens of onderstrepingen, gevolgd door alfanumerieke tekens of onderstrepingen. Zo is **a1** toegestaan, maar **1a** is niet toegestaan.
 
-Parameters zijn lineair, starten vanaf de bovenkant van een werkmap en doorgestuurd naar latere stappen.  Parameters die zijn gedeclareerd later in een werkmap kunnen overschrijven die zijn gedeclareerd verder omhoog.  Hiermee kunt ook parameters dat query's gebruiken om toegang te krijgen tot de waarden van parameters gedefinieerd verder omhoog.  In de stap van de parameter zelf zijn parameters ook lineaire, links naar rechts, waarbij parameters aan de rechterkant een parameter die eerder in dat dezelfde stap gedeclareerd kunnen vertrouwen.
+Para meters zijn lineair, vanaf de bovenkant van een werkmap en doorlopend naar latere stappen.  Para meters die later in een werkmap zijn gedeclareerd, kunnen de variabelen overschrijven die zijn gedeclareerd.  Op deze manier kunt u ook para meters gebruiken om toegang te krijgen tot de waarden van para meters die verder worden gedefinieerd.  Binnen de stap zelf van een para meter zijn para meters ook lineair, van links naar rechts, waarbij para meters aan de rechter kant kunnen afhankelijk zijn van een para meter die eerder in diezelfde stap is gedeclareerd.
  
-Er zijn vier typen parameters die momenteel worden ondersteund:
+Er zijn vier verschillende typen para meters die momenteel worden ondersteund:
 
   |         |          |
    | ---------------- |:-----|
-   | **Tekst**    | de gebruiker bewerkt een tekstvak in en u kunt eventueel een query in te vullen in de standaard-waarde opgeven. |
-   | **Vervolgkeuzelijst** | De gebruiker kiest uit een set waarden. |
-   | **Tijdsbereikkiezer**| De gebruiker gaat kiezen uit een vooraf gedefinieerde set waarden voor tijd of kies uit meer dan een aangepast tijdsbereik.|
-   | **Bronkiezer** | De gebruiker kiest uit de bronnen die zijn geselecteerd voor de werkmap.|
+   | **Tekst**    | de gebruiker zal een tekstvak bewerken en u kunt desgewenst een query opgeven om de standaard waarde in te vullen. |
+   | **Vervolg keuzelijst** | De gebruiker kiest uit een reeks waarden. |
+   | **Tijds bereik kiezer**| De gebruiker kiest uit een vooraf gedefinieerde set waarden voor tijds bereik of kiest uit een aangepast tijds bereik.|
+   | **Resource kiezer** | De gebruiker kiest uit de resources die voor de werkmap zijn geselecteerd.|
 
-### <a name="using-a-text-parameter"></a>Met behulp van een tekstparameter
+### <a name="using-a-text-parameter"></a>Een tekst parameter gebruiken
 
-De waarde van een gebruiker typt in het tekstvak wordt vervangen rechtstreeks in de query, zonder aanhalingstekens of aanhalingstekens voor. Als de waarde die u moet een tekenreeks is de query aanhalingstekens rond de parameter moet hebben (zoals **{parameter}** ).
+De waarde die een gebruiker in het tekstvak typt, wordt rechtstreeks in de query vervangen zonder dat er een Escape of aanhalings tekens worden geplaatst. Als de waarde die u nodig hebt, een teken reeks is, moet de query aanhalings tekens hebben rondom de para meter (bijvoorbeeld **{para meter}** ).
 
-Hiermee wordt de waarde in een tekstvak in op overal worden gebruikt. Mag een tabelnaam, kolomnaam, naam van de functie, operator, enzovoort.
+Hierdoor kan de waarde in een tekstvak overal worden gebruikt. Dit kan een tabel naam, kolom naam, functie naam, operator, enzovoort zijn.
 
-Het parametertype tekst is een instelling **standaardwaarde ophalen uit analytische query**, waarmee de auteur van werkmap een query gebruiken voor het vullen van de standaardwaarde voor dit tekstvak.
+Het type van de tekst parameter heeft de instelling **standaard waarde ophalen uit Analytics query**, waarmee de auteur van de werkmap een query kan gebruiken om de standaard waarde voor het tekstvak te vullen.
 
-Wanneer u de standaardwaarde van een analytics-query, worden alleen de eerste waarde van de eerste rij (rij 0, 0 kolom) wordt gebruikt als de standaardwaarde. Daarom is het raadzaam om uw query om terug te keren slechts één rij en één kolom te beperken. Andere gegevens die zijn geretourneerd door de query wordt genegeerd. 
+Wanneer u de standaard waarde uit een Analytics-query gebruikt, wordt alleen de eerste waarde van de eerste rij (rij 0, kolom 0) als de standaard waarde gebruikt. Daarom is het raadzaam om uw query te beperken tot slechts één rij en één kolom. Alle andere gegevens die door de query worden geretourneerd, worden genegeerd. 
 
-Ongeacht de query retourneert de waarde wordt vervangen rechtstreeks met geen aanhalingstekens of aanhalingstekens. Als de query geen rijen worden geretourneerd, wordt het resultaat van de parameter is een lege tekenreeks (als de parameter niet vereist is) of een niet-gedefinieerde (als de parameter vereist is).
+Welke waarde de query retourneert, wordt direct vervangen zonder Escape of aanhalings tekens. Als de query geen rijen retourneert, is het resultaat van de para meter een lege teken reeks (als de para meter niet is vereist) of niet gedefinieerd (als de para meter is vereist).
 
-### <a name="using-a-dropdown"></a>Met behulp van een vervolgkeuzelijst
+### <a name="using-a-dropdown"></a>Een vervolg keuzelijst gebruiken
 
-Het parametertype van de vervolgkeuzelijst kunt u maken van een besturingselement voor de vervolgkeuzelijst, zodat de selectie van een of meer waarden.
+Met het parameter type vervolg keuzelijst kunt u een besturings element voor vervolg keuzelijst maken, waardoor een of meer waarden kunnen worden geselecteerd.
 
-De vervolgkeuzelijst wordt gevuld met een analytics-query. Als de query één kolom retourneert, zijn de waarden in die kolom de **waarde** en de **label** in het besturingselement voor vervolgkeuzelijst. Als de query twee kolommen retourneert, de eerste kolom is de **waarde**, en de tweede kolom is de **label** wordt weergegeven in de vervolgkeuzelijst.  Als de query drie kolommen worden geretourneerd, wordt de 3e kolom wordt gebruikt om aan te geven van de standaardselectie in deze vervolgkeuzelijst.  Deze kolom kan elk type, maar de eenvoudigste manier is om te gebruiken bool of numerieke typen, waarbij 0 is ingesteld op false en 1 is ingesteld op true.
+De vervolg keuzelijst wordt ingevuld door een Analytics-query. Als de query één kolom retourneert, zijn de waarden in die kolom zowel de **waarde** als het **Label** in het besturings element vervolg keuzelijst. Als de query twee kolommen retourneert, is de eerste kolom de **waarde**en de tweede kolom is het **Label** dat wordt weer gegeven in de vervolg keuzelijst.  Als de query drie kolommen retourneert, wordt de derde kolom gebruikt om de standaard selectie in die vervolg keuzelijst aan te geven.  Deze kolom kan elk wille keurig type zijn, maar het eenvoudigste is het gebruik van BOOL of numeric-typen, waarbij 0 false is en 1 True is.
 
- Als de kolom een tekenreekstype is null/leeg tekenreeks wordt beschouwd als onwaar en een andere waarde wordt beschouwd als ' True '. Voor enkelvoudige selectie vervolgkeuzelijsten, wordt de eerste waarde met de waarde true als de standaardselectie gebruikt.  Alle waarden met de waarde true worden gebruikt voor meerdere selectie vervolgkeuzelijsten, zoals de standaard geselecteerd. De items in de vervolgkeuzelijst worden weergegeven in welke volgorde de query rijen geretourneerd. 
+ Als de kolom een teken reeks type is, wordt Null/lege teken reeks als onwaar beschouwd en wordt een andere waarde als True beschouwd. Voor vervolg keuzelijsten met één selectie wordt de eerste waarde met de waarde True als de standaard selectie gebruikt.  Bij meerdere selectie vervolg keuzelijsten worden alle waarden met de waarde True als de standaard geselecteerde set gebruikt. De items in de vervolg keuzelijst worden weer gegeven in de volg orde waarin de query rijen heeft geretourneerd. 
 
-We bekijken de parameters die aanwezig zijn in de lijst met actieve gebruikers. Klik op het symbool bewerken naast **TimeRange**.
+Laten we eens kijken naar de para meters die aanwezig zijn in het rapport actieve gebruikers. Klik op het bewerkings symbool naast **time Range**.
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/009-time-range.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/009-time-range.png)
 
-De Parameter bewerken menu-item wordt geopend:
+Hiermee wordt het menu-item para meter bewerken geopend:
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/010-time-range-edit.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/010-time-range-edit.png)
 
-De query gebruikt een functie van de querytaal van analytics met de naam een **datatable** waarmee u een willekeurige tabel, volledige van inhoud, buiten het dunne lucht genereren. Bijvoorbeeld, de volgende analytics-query:
+De query gebruikt een functie van de Analytics-query taal, een **DataTable** , waarmee u een wille keurige tabel, vol inhoud, uit een dunne lucht kunt genereren. Bijvoorbeeld de volgende analyse query:
 
 ```
 datatable( column1:string, column2:string )
@@ -202,11 +197,11 @@ datatable( column1:string, column2:string )
 ]
 ```
 
-Het resultaat genereert:
+Genereert het resultaat:
 
-![Application Insights werkmappen sectie besturingselementen bewerken](./media/usage-workbooks/011-data-table.png)
+![Sectie besturings elementen voor het bewerken van Application Insights-werkmappen](./media/usage-workbooks/011-data-table.png)
 
-Een voorbeeld van een meer van toepassing is een vervolgkeuzelijst gebruiken om op te halen uit een set van landen/regio's met de naam:
+Een meer van toepassing voor beeld is het gebruik van een vervolg keuzelijst voor het kiezen van een set landen/regio's op naam:
 
 ```
 customEvents
@@ -217,51 +212,51 @@ customEvents
 | order by client_CountryOrRegion asc
 ```
 
-De query worden resultaten als volgt weergegeven:
+De query geeft de resultaten als volgt weer:
 
-![Vervolgkeuzelijst voor land/regio](./media/usage-workbooks/012-country-dropdown.png)
+![Vervolg keuzelijst land](./media/usage-workbooks/012-country-dropdown.png)
 
-Vervolgkeuzelijsten zijn zeer krachtige hulpprogramma's voor het aanpassen en het maken van interactieve rapporten.
+Vervolg keuzelijsten zijn uiterst krachtige hulp middelen voor het aanpassen en maken van interactieve rapporten.
 
-### <a name="time-range-parameters"></a>Bereik tijdparameters
+### <a name="time-range-parameters"></a>Tijds bereik parameters
 
-Terwijl u uw eigen aangepaste tijd bereik parameter via het parametertype van de vervolgkeuzelijst maken kunt, kunt u de out-of-box parametertype voor tijdsbereik ook gebruiken als u niet dezelfde mate van flexibiliteit hoeft. 
+Hoewel u uw eigen para meter voor een aangepast tijds bereik kunt maken via het parameter type vervolg keuzelijst, kunt u ook het parameter type out-of-Box time-out gebruiken als u niet dezelfde mate van flexibiliteit nodig hebt. 
 
-Time range parametertypen hebben 15 standaard bereiken die naar de laatste 90 dagen gaan van vijf minuten. Er is ook een optie om toe te staan selectie aangepast tijdsbereik, waardoor de operator van het rapport om te kiezen expliciete starten en stoppen van de waarden voor het tijdsbereik.
+De para meters voor het tijds bereik hebben 15 standaardbereiken van vijf minuten tot de laatste 90 dagen. Er is ook een optie voor het toestaan van aangepaste tijds bereik selectie, waarmee de operator van het rapport expliciete start-en stop waarden voor het tijds bereik kan kiezen.
 
-### <a name="resource-picker"></a>Bronkiezer
+### <a name="resource-picker"></a>Resource kiezer
 
-Het parametertype van de resource-kiezer biedt u de mogelijkheid om het bereik van uw rapport voor bepaalde typen resources te. Een voorbeeld van vooraf gedefinieerde werkmap die gebruikmaakt van het type resource datumkiezer is de **fout Insights** werkmap.
+Met het parameter type voor de resource kiezer kunt u het bereik van uw rapport beperken tot bepaalde typen resources. Een voor beeld van een vooraf gemaakte werkmap die gebruikmaakt van het resource Picker-type is de **fout Insights** -werkmap.
 
-![Vervolgkeuzelijst voor land/regio](./media/usage-workbooks/013-resource-picker.png)
+![Vervolg keuzelijst land](./media/usage-workbooks/013-resource-picker.png)
 
-## <a name="saving-and-sharing-workbooks-with-your-team"></a>Opslaan en delen van werkmappen met uw team
+## <a name="saving-and-sharing-workbooks-with-your-team"></a>Werkmappen opslaan en delen met uw team
 
-Werkmappen worden opgeslagen in een Application Insights-resource in de **mijn rapporten** persoonlijke in u of in de sectie de **gedeelde rapporten** sectie die toegankelijk is voor iedereen met toegang tot de Application Insights-resource. Als u wilt alle werkmappen in de bron weergeven, klikt u op de **Open** knop in de actiebalk.
+Werkmappen worden opgeslagen in een Application Insights resource, hetzij in de sectie **mijn rapporten** die persoonlijk is voor u of in de sectie **gedeelde rapporten** die toegankelijk is voor iedereen die toegang heeft tot de Application Insights resource. Als u alle werkmappen in de resource wilt weer geven, klikt u op de knop **openen** in de actie balk.
 
-Voor het delen van een werkmap die op dat moment wordt **mijn rapporten**:
+Een werkmap delen die momenteel deel uitmaken van **mijn rapporten**:
 
-1. Klik op **Open** in de actiebalk
-2. Klik op de knop '...' naast de werkmap die u wilt delen
+1. Klik op **openen** in de actie balk
+2. Klik op de '... ' Naast de werkmap die u wilt delen
 3. Klik op **verplaatsen naar gedeelde rapporten**.
 
-Als u wilt delen een werkmap met een koppeling of via e-mail, klikt u op **delen** in de actiebalk. Houd er rekening mee dat ontvangers van de koppeling moeten toegang hebben tot deze resource in Azure portal om de werkmap weer te geven. Als u wilt bewerken, moeten ontvangers minimaal Inzender-rechten voor de resource.
+Als u een werkmap met een koppeling of via e-mail wilt delen, klikt u op **delen** in de actie balk. Houd er rekening mee dat ontvangers van de koppeling toegang nodig hebben tot deze resource in de Azure Portal om de werkmap weer te geven. Voor het maken van bewerkingen moeten ontvangers ten minste Inzender machtigingen hebben voor de resource.
 
-Een koppeling naar een werkmap in een Azure-Dashboard vastmaken:
+Een koppeling naar een werkmap vastmaken aan een Azure-dash board:
 
-1. Klik op **Open** in de actiebalk
-2. Klik op de knop '...' naast de werkmap die u wilt vastmaken
+1. Klik op **openen** in de actie balk
+2. Klik op de '... ' Naast de werkmap die u wilt vastmaken
 3. Klik op **Vastmaken aan dashboard**.
 
-## <a name="contributing-workbook-templates"></a>Werkmapsjablonen bijdragen
+## <a name="contributing-workbook-templates"></a>Bijdraagtde werkmap sjablonen
 
-Hebt u een geweldige werkmapsjabloon hebt gemaakt en wilt delen met de community? Ga voor meer informatie naar onze [GitHub-opslagplaats](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
+Hebt u een sjabloon voor een meester werkmap gemaakt en wilt u deze delen met de Community? Ga voor meer informatie naar onze [github opslag plaats](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Om in te schakelen gebruik ervaringen, beginnen met het verzenden [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [paginaweergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Als u aangepaste gebeurtenissen of paginaweergaven al verzendt, Verken de hulpprogramma's voor gebruik als u wilt weten hoe gebruikers gebruiken voor uw service.
+- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Gebruikers, sessies, gebeurtenissen](../../azure-monitor/app/usage-segmentation.md)
     - [Trechters](../../azure-monitor/app/usage-funnels.md)
     - [Retentie](../../azure-monitor/app/usage-retention.md)
     - [Gebruikersstromen](../../azure-monitor/app/usage-flows.md)
-    - [Gebruikerscontext toevoegen](../../azure-monitor/app/usage-send-user-context.md)
+    - [Gebruikers context toevoegen](../../azure-monitor/app/usage-send-user-context.md)

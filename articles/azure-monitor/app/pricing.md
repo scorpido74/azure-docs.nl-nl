@@ -1,24 +1,19 @@
 ---
 title: Het gebruik en de kosten voor Azure-toepassing inzichten beheren | Microsoft Docs
 description: Telemetrie-volumes beheren en de kosten controleren in Application Insights.
-services: application-insights
-documentationcenter: ''
-author: DaleKoetke
-manager: carmonm
-ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 10/03/2019
+author: DaleKoetke
 ms.author: dalek
-ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/03/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554216"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900029"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -45,7 +40,7 @@ Er zijn twee manieren om dit op te lossen: gebruik van standaard bewaking en ada
 
 Met de [adaptieve steek proef](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempel waarde van 5 gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen in een adaptieve steek proef beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
 
-Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [insteek](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) proeven gebruiken voor de voor beelden wanneer de gegevens worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
+Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [insteek](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) proeven gebruiken voor de voor beelden wanneer de gegevens worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 
@@ -77,13 +72,15 @@ Azure biedt een groot aantal handige functies in de hub [Azure Cost Management e
 
 Meer informatie over uw gebruik kan worden verkregen door [uw gebruik te downloaden van Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven en vervolgens een filter toe te voegen aan de kolom ' instance ID ' die "bevat micro soft. Insights/onderdelen.  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
-## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
+## <a name="understanding-ingested-data-volume"></a>Meer informatie over opgenomen gegevens volume
 
-Als u wilt weten hoeveel gegevens uw app verzendt, kunt u het volgende doen:
+Als u wilt weten hoeveel gegevens er worden opgenomen in Application Insights, kunt u het volgende doen:
 
-* Ga naar het deel venster **gebruik en geraamd kosten** om de grafiek met het dagelijkse gegevens volume weer te geven. 
-* Voeg in Metrics Explorer een nieuwe grafiek toe. Voor de grafiek metriek selecteert u **gegevens punt volume**. Schakel **groeperen**in en groepeer vervolgens op **gegevens type**.
-* Gebruik het `systemEvents`-gegevens type. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
+1. Ga naar het deel venster **gebruik en geraamd kosten** om de grafiek met het dagelijkse gegevens volume weer te geven, zoals hierboven is beschreven.
+2. Voeg in Metrics Explorer een nieuwe grafiek toe. Voor de grafiek metriek selecteert u **gegevens punt volume**. Schakel **groeperen**in en groepeer vervolgens op **gegevens type**.
+3. Gebruik de tabel `systemEvents` zoals hieronder wordt weer gegeven. 
+
+U kunt bijvoorbeeld de tabel `systemEvents` gebruiken om het gegevens volume dat in de afgelopen 24 uur is opgenomen weer te geven met de query:
 
 ```kusto
 systemEvents 
@@ -94,7 +91,20 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
+Als u een grafiek van gegevens volume per gegevens type voor de afgelopen 30 dagen wilt zien, kunt u het volgende gebruiken:
+
+```kusto
+systemEvents 
+| where timestamp >= ago(30d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
 Deze query kan worden gebruikt in een [Azure-logboek waarschuwing](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) om waarschuwingen op gegevens volumes in te stellen. 
+
+## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
 
 De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de volgende technieken:
 
@@ -164,15 +174,13 @@ In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records aan 
 
 ## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
 
-De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
+De standaard Bewaar periode voor Application Insights resources is 90 dagen. Er kunnen verschillende retentieperioden worden geselecteerd voor elke Application Insights-resource. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
 Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens retentie** :
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
 
 De retentie kan ook via [Power shell worden ingesteld](powershell.md#set-the-data-retention) met behulp van de para meter `retentionInDays`. Als u de gegevens retentie instelt op 30 dagen, kunt u ook een onmiddellijke opschoning van oudere gegevens activeren met behulp van de para meter `immediatePurgeDataOn30Days`, wat nuttig kan zijn voor nalevings scenario's. Deze opschoon functionaliteit wordt alleen weer gegeven via Azure Resource Manager en moet worden gebruikt met extreme zorg. 
-
-Wanneer het factureren voor een langere Bewaar 2019 periode begint, worden de gegevens die langer zijn dan 90 dagen, gefactureerd als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Kosten voor gegevens overdracht met behulp van Application Insights
 
@@ -250,4 +258,5 @@ U kunt een script schrijven om de prijs categorie in te stellen met behulp van A
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/

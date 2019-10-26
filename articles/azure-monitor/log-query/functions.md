@@ -1,24 +1,18 @@
 ---
 title: Functies in Azure Monitor-logboek query's | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u functies gebruikt voor het aanroepen van een query vanuit een andere logboek query in Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/15/2018
+ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076706"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894181"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Functies in Azure Monitor-logboek query's gebruiken
 
@@ -28,12 +22,12 @@ Als u een logboek query met een andere query wilt gebruiken, kunt u deze opslaan
 
 Maak een functie met Log Analytics in het Azure Portal door op **Opslaan** te klikken en vervolgens de informatie in de volgende tabel op te geven.
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 |:---|:---|
-| Name           | Weergave naam voor de query in **query Explorer**. |
-| Opslaan als        | Function |
-| Functiealias | Korte naam voor het gebruik van de functie in andere query's. Mag geen spaties bevatten en moet uniek zijn. |
-| Categorie       | Een categorie voor het ordenen van opgeslagen query's en functies in **query Explorer**. |
+| Naam           | Weergave naam voor de query in **query Explorer**. |
+| Opslaan als        | Functie |
+| Functie alias | Korte naam voor het gebruik van de functie in andere query's. Mag geen spaties bevatten en moet uniek zijn. |
+| Category       | Een categorie voor het ordenen van opgeslagen query's en functies in **query Explorer**. |
 
 > [!NOTE]
 > Een functie in Azure Monitor kan geen andere functie bevatten.

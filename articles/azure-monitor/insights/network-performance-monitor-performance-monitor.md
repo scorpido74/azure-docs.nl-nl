@@ -1,138 +1,132 @@
 ---
-title: Prestaties bewaken functie in Network Performance Monitor-oplossing in Azure Log Analytics | Microsoft Docs
-description: De mogelijkheid Prestatiemeter van Network Performance Monitor kunt u netwerkconnectiviteit controleren voor verschillende punten in uw netwerk. U kunt controleren cloudimplementaties en on-premises locaties, meerdere datacenters en filialen, en met meerdere lagen, essentiële toepassingen of microservices.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Functie prestatie meter in Netwerkprestatiemeter oplossing in azure Log Analytics | Microsoft Docs
+description: Met de functie prestatie meter in Netwerkprestatiemeter kunt u de netwerk connectiviteit op verschillende punten in uw netwerk bewaken. U kunt Cloud implementaties en on-premises locaties, meerdere data centers en filialen, en bedrijfskritische toepassingen voor multi-tier of micro services bewaken.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: bb99689409ddff311e556250083b99842bc59927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/20/2018
+ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963465"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898835"
 ---
-# <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor-oplossing: Prestatiebewaking
+# <a name="network-performance-monitor-solution-performance-monitoring"></a>Netwerkprestatiemeter oplossing: prestatie bewaking
 
-De mogelijkheid van Prestatiemeter [Network Performance Monitor](network-performance-monitor.md) helpt u het controleren van de netwerkverbinding tussen verschillende punten in uw netwerk. U kunt controleren cloudimplementaties en on-premises locaties, meerdere datacenters en filialen, en met meerdere lagen, essentiële toepassingen of microservices. Met Prestatiemeter, kunt u netwerkproblemen detecteren voordat uw gebruikers klagen. Belangrijkste voordelen zijn dat u kunt: 
+Met de functie prestatie meter in [Netwerkprestatiemeter](network-performance-monitor.md) kunt u de netwerk connectiviteit op verschillende punten in uw netwerk bewaken. U kunt Cloud implementaties en on-premises locaties, meerdere data centers en filialen, en bedrijfskritische toepassingen voor multi-tier of micro services bewaken. Met prestatie meter kunt u netwerk problemen detecteren voordat uw gebruikers klagen. De belangrijkste voor delen zijn: 
 
-- Verlies en latentie controleren in verschillende subnetten en waarschuwingen kunt instellen.
-- Bewaken alle paden (inclusief redundante paden) op het netwerk.
-- Problemen met tijdelijke en point-in-time-netwerk, die moeilijk te repliceren.
-- Bepaal het specifieke segment van het netwerk, die verantwoordelijk is voor de verslechterde prestaties.
-- Bewaak de status van het netwerk, zonder dat SNMP nodig.
+- Bewaak verlies en latentie in verschillende subnetten en stel waarschuwingen in.
+- Bewaak alle paden (met inbegrip van redundante paden) in het netwerk.
+- Problemen met tijdelijke en punt-in-time-netwerk problemen oplossen die moeilijk te repliceren zijn.
+- Bepaal het specifieke segment in het netwerk, dat verantwoordelijk is voor verminderde prestaties.
+- Bewaak de status van het netwerk, zonder dat SNMP nodig is.
 
 
 ![Netwerkprestatiemeter](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Configuratie
-Open de configuratie voor Network Performance Monitor te openen de [Network Performance Monitor oplossing](network-performance-monitor.md), en selecteer **configureren**.
+Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter-oplossing](network-performance-monitor.md)en selecteert **u configureren**.
 
-![Network Performance Monitor configureren](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
+![Netwerkprestatiemeter configureren](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Nieuwe netwerken maken
 
-Een netwerk in Network Performance Monitor is een logische container voor subnetten. Hiermee kunt u de bewaking van de infrastructuur van uw netwerk op basis van uw behoeften organiseren. U kunt maken van een netwerk met een beschrijvende naam en subnetten aan toe te voegen op basis van uw bedrijfslogica. U kunt bijvoorbeeld een netwerk met de naam Londen maken en toevoegen van alle subnetten in uw datacenter Londen. Kunt u een netwerk met de naam *ContosoFrontEnd* en alle subnetten met de naam Contoso die de front-end van uw app dienen toe te voegen aan dit netwerk. De oplossing maakt automatisch een standaard-netwerk waarin alle subnetten in uw omgeving gedetecteerd. 
+Een netwerk in Netwerkprestatiemeter is een logische container voor subnetten. Zo kunt u de bewaking van uw netwerk infrastructuur organiseren volgens uw behoeften. U kunt een netwerk met een beschrijvende naam maken en hieraan subnetten toevoegen volgens uw bedrijfs logica. U kunt bijvoorbeeld een netwerk met de naam Londen maken en alle subnetten toevoegen in uw Londen Data Center. U kunt ook een netwerk met de naam *ContosoFrontEnd* maken en dit netwerk toevoegen aan alle subnetten met de naam contoso die de front-end van uw app bedienen. De oplossing maakt automatisch een standaard netwerk dat alle subnetten bevat die in uw omgeving zijn gedetecteerd. 
 
-Wanneer u een netwerk maakt, voegt u een subnet toe. Vervolgens wordt dat subnet verwijderd uit de standaard-netwerk. Als u een netwerk verwijdert, worden alle bijbehorende subnetten automatisch geretourneerd naar de standaard-netwerk. Het standaardnetwerk fungeert als een container voor alle subnetten die niet zijn opgenomen in een door de gebruiker gedefinieerde netwerk. U niet bewerken of verwijderen van de standaard-netwerk. Het blijft altijd in het systeem. U kunt zoveel aangepaste netwerken als u wilt maken. In de meeste gevallen zijn de subnetten in uw organisatie zijn gerangschikt in meer dan één netwerk. Maak een of meer netwerken om te groeperen van uw subnetten voor uw bedrijfslogica.
+Wanneer u een netwerk maakt, voegt u hieraan een subnet toe. Vervolgens wordt dat subnet verwijderd uit het standaard netwerk. Als u een netwerk verwijdert, worden alle subnetten automatisch teruggestuurd naar het standaard netwerk. Het standaard netwerk fungeert als een container voor alle subnetten die geen deel uitmaken van een door de gebruiker gedefinieerd netwerk. U kunt het standaard netwerk niet bewerken of verwijderen. Het blijft altijd in het systeem. U kunt zoveel aangepaste netwerken maken als u nodig hebt. In de meeste gevallen worden de subnetten in uw organisatie gerangschikt in meer dan één netwerk. Maak een of meer netwerken om uw subnetten te groeperen voor uw bedrijfs logica.
 
-Een nieuw netwerk te maken:
-
-
-1. Selecteer de **netwerken** tabblad.
-1. Selecteer **toevoegen netwerk**, en voer vervolgens de netwerknaam en de beschrijving. 
-2. Selecteer een of meer subnetten, en selecteer vervolgens **toevoegen**. 
-3. Selecteer **opslaan** aan de configuratie op te slaan. 
+Een nieuw netwerk maken:
 
 
-### <a name="create-monitoring-rules"></a>Maken van regels voor bewaking 
+1. Selecteer het tabblad **netwerken** .
+1. Selecteer **netwerk toevoegen**en voer vervolgens de naam en beschrijving van het netwerk in. 
+2. Selecteer een of meer subnetten en selecteer vervolgens **toevoegen**. 
+3. Selecteer **Opslaan** om de configuratie op te slaan. 
 
-Prestatiemeter genereert statusgebeurtenissen wanneer de drempel van de prestaties van netwerkverbindingen tussen twee subnetwerken of tussen twee netwerken is geschonden. Het systeem kunt automatisch deze drempels leren. U kunt ook aangepaste drempels opgeven. Het systeem maakt automatisch een standaardregel, die een statusgebeurtenis wanneer schendingen verlies of latentie tussen elk paar netwerk of subnet koppelingen genereert de drempelwaarde system geleerd. Dit proces zorgt de oplossing die uw netwerkinfrastructuur te controleren totdat u alle regels voor bewaking expliciet nog niet hebt gemaakt. Als de standaardregel is ingeschakeld, verzendt alle knooppunten synthetische transacties voor alle andere knooppunten dat u hebt ingeschakeld voor bewaking. De standaardregel is handig voor kleine netwerken. Een voorbeeld is een scenario waarin u een klein aantal servers met een microservice hebt en u wilt om ervoor te zorgen dat alle servers verbonden met elkaar zijn.
+
+### <a name="create-monitoring-rules"></a>Bewakings regels maken 
+
+Prestatie meter genereert status gebeurtenissen wanneer de drempel waarde van de prestaties van netwerk verbindingen tussen twee subnetwerken of tussen twee netwerken wordt geschonden. Het systeem kan deze drempel waarden automatisch achterhalen. U kunt ook aangepaste drempel waarden opgeven. Het systeem maakt automatisch een standaard regel, waardoor een status gebeurtenis wordt gegenereerd als het verlies of de latentie tussen een wille keurig paar netwerk-of subnetwerk koppelingen overtreedt op de drempel waarde die door het systeem is geleerd. Dit proces helpt de oplossing uw netwerk infrastructuur te controleren totdat u expliciet geen bewakings regels hebt gemaakt. Als de standaard regel is ingeschakeld, sturen alle knoop punten synthetische trans acties naar alle andere knoop punten die u hebt ingeschakeld voor bewaking. De standaard regel is handig voor kleine netwerken. Een voor beeld is een scenario waarin u een klein aantal servers hebt waarop een micro service wordt uitgevoerd en u ervoor wilt zorgen dat alle servers verbinding met elkaar hebben.
 
 >[!NOTE]
-> U wordt aangeraden dat u de standaardregel uitschakelen en het maken van aangepaste regels voor bewaking, vooral bij grote netwerken waarin u een groot aantal knooppunten voor bewaking gebruiken. Aangepaste bewakingsregels kan het verkeer dat wordt gegenereerd door de oplossing en help die u organiseert de bewaking van uw netwerk te verminderen.
+> We raden u aan de standaard regel uit te scha kelen en aangepaste bewakings regels te maken, met name voor grote netwerken waarin u een groot aantal knoop punten gebruikt voor bewaking. Aangepaste bewakings regels kunnen het verkeer dat door de oplossing wordt gegenereerd verminderen en helpt u bij het organiseren van de bewaking van uw netwerk.
 
-Regels voor bewaking op basis van uw bedrijfslogica maken. Een voorbeeld is als u wilt bewaken van de prestaties van de netwerkverbinding van twee office-sites met hoofdkantoor. Groep alle subnetten in office site1 in netwerk O1. Alle subnetten in office site2 in netwerk O2 groeperen. Ten slotte groep alle subnetten in het hoofdkantoor in netwerk h maakt twee regels voor bewaking--één tussen O1 en H en de andere tussen O2 en h 
+Maak bewakings regels volgens uw bedrijfs logica. Een voor beeld hiervan is als u de prestaties van de netwerk verbinding van twee Office-sites op hoofd kantoor wilt bewaken. Groepeer alle subnetten in Office site1 in netwerk O1. Groepeer vervolgens alle subnetten in Office Site2 in netwerk O2. Groepeer tot slot alle subnetten in het hoofd kantoor in netwerk H. twee controle regels maken: een tussen O1 en H en de andere tussen O2 en H. 
 
-Aangepaste regels voor bewaking maken:
+Aangepaste bewakings regels maken:
 
-1. Selecteer **regel toevoegen** op de **Monitor** tabblad en voer de naam en beschrijving.
-2. Selecteer het paar van netwerk- of subnetwerk koppelingen om te controleren in de lijst. 
-3. Selecteer het netwerk met de subnetwerken die u wilt dat uit de vervolgkeuzelijst van het netwerk. Selecteer vervolgens de subnetwerken in de vervolgkeuzelijst bijbehorende subnetwerk. Als u controleren van de subnetwerken in een netwerkverbinding wilt, selecteert u **alle subnetwerken**. Op dezelfde manier, selecteert u de andere subnetwerken die u wilt. Als u wilt uitsluiten van bewaking voor bepaalde subnetwerkkoppelingen van de selecties die u hebt aangebracht, selecteert u **uitzondering toevoegen**. 
-4. Kiezen tussen ICMP- en TCP-protocollen voor het uitvoeren van de synthetische transacties. 
-5. Als u niet wilt maken van health-gebeurtenissen voor de items die u hebt geselecteerd, schakel **statuscontrole inschakelen op de koppelingen wordt gedekt door deze regel**. 
-6. Kies voorwaarden controleren. Om in te stellen aangepaste drempelwaarden voor het genereren van health-gebeurtenis, voer drempelwaarden. Wanneer de waarde van de voorwaarde van de geselecteerde drempelwaarde voor het geselecteerde netwerk of subnet paar overschrijdt, wordt een statusgebeurtenis wordt gegenereerd. 
-7. Selecteer **opslaan** aan de configuratie op te slaan. 
+1. Selecteer **regel toevoegen** op het tabblad **monitor** en voer de naam en beschrijving van de regel in.
+2. Selecteer het paar netwerk-of subnetwerk koppelingen dat u vanuit de lijsten wilt bewaken. 
+3. Selecteer in de vervolg keuzelijst netwerk het netwerk dat de gewenste subnetwerken bevat. Selecteer vervolgens de subnetwerken in de vervolg keuzelijst met de bijbehorende subnetwerk. Als u alle subnetwerken in een netwerk koppeling wilt bewaken, selecteert u **alle subnetwerken**. Selecteer op dezelfde manier de andere subnetwerken die u wilt. Selecteer **uitzonde ring toevoegen**om bewaking uit te sluiten voor bepaalde subnetwerk koppelingen van de selecties die u hebt gemaakt. 
+4. Kies tussen ICMP-en TCP-protocollen om synthetische trans acties uit te voeren. 
+5. Als u geen status gebeurtenissen wilt maken voor de items die u hebt geselecteerd, schakelt u **status controle inschakelen in op de koppelingen waarop deze regel van toepassing**is. 
+6. Kies bewakings voorwaarden. Als u aangepaste drempels wilt instellen voor het genereren van status gebeurtenissen, voert u drempel waarden in. Wanneer de waarde van de voor waarde de geselecteerde drempel overschrijdt voor het geselecteerde netwerk of subnetwerk, wordt een status gebeurtenis gegenereerd. 
+7. Selecteer **Opslaan** om de configuratie op te slaan. 
 
-Nadat u een bewakingsregel hebt opgeslagen, kunt u die regel integreren met waarschuwingen te beheren door te selecteren **waarschuwing maken**. Een waarschuwingsregel wordt automatisch gemaakt met de zoekquery. Andere vereiste parameters worden automatisch ingevuld. U kunt waarschuwingen op basis van e-mail naast de bestaande waarschuwingen in Network Performance Monitor met behulp van een waarschuwingsregel, ontvangen. Waarschuwingen ook corrigerende acties met runbooks kunnen activeren, of ze kunnen integreren met bestaande oplossingen voor service-beheer met behulp van webhooks. Selecteer **waarschuwing beheren** bewerken van de instellingen voor meldingen. 
+Nadat u een bewakings regel hebt opgeslagen, kunt u deze regel met Waarschuwingenbeheer integreren door **waarschuwing maken**te selecteren. Er wordt automatisch een waarschuwings regel gemaakt met de zoek query. Andere vereiste para meters worden automatisch ingevuld. U kunt met behulp van een waarschuwings regel e-mail waarschuwingen ontvangen, naast de bestaande waarschuwingen in Netwerkprestatiemeter. Waarschuwingen kunnen ook herstel bewerkingen activeren met runbooks, of ze kunnen integreren met bestaande Service beheer oplossingen met behulp van webhooks. Selecteer **waarschuwing beheren** om de instellingen van de waarschuwing te bewerken. 
 
-U kunt nu meer Prestatiemeter-regels maken of verplaatsen naar het dashboard van de oplossing de mogelijkheid te gebruiken.
+U kunt nu meer regels voor prestatie controle maken of naar het dash board van de oplossing gaan om de mogelijkheid te gebruiken.
 
-### <a name="choose-the-protocol"></a>Kies het protocol
+### <a name="choose-the-protocol"></a>Het protocol kiezen
 
-Network Performance Monitor maakt gebruik van synthetische transacties voor het berekenen van network performance metrische gegevens zoals pakket koppeling beschermd tegen verlies en latentie. Dit concept beter begrijpen, houd rekening met een Network Performance Monitor-agent die is verbonden met één end van een netwerkverbinding. Deze agent Network Performance Monitor stuurt testpakketten naar een tweede Network Performance Monitor agent verbonden met een andere einde van het netwerk. De tweede agent antwoorden met response-pakketten. Dit proces wordt een paar keer herhaald. Door te meten of het aantal antwoorden en de tijd die elk antwoord ontvangen, de eerste Network Performance Monitor agent beoordeelt de latentie van de verbinding en verloren pakketten. 
+Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het berekenen van metrische gegevens over netwerk prestaties, zoals pakket verlies en koppelings latentie. Voor een beter begrip van dit concept moet u een Netwerkprestatiemeter agent die is verbonden met één uiteinde van een netwerk koppeling. Deze Netwerkprestatiemeter-agent stuurt test pakketten naar een tweede Netwerkprestatiemeter agent die is verbonden met een ander eind van het netwerk. De tweede agent antwoordt op antwoord pakketten. Dit proces wordt een paar keer herhaald. Door het aantal antwoorden te meten en de tijd die nodig is om elk antwoord te ontvangen, worden de eerste Netwerkprestatiemeter agent de verbindings latentie en pakket drup pels geëvalueerd. 
 
-De indeling, de grootte en de volgorde van deze pakketten wordt bepaald door het protocol dat u bij het maken van regels voor bewaking. Op basis van het protocol van de pakketten, de tussenliggende netwerkapparaten, zoals routers en switches, kunnen deze pakketten verwerken anders. Uw keuze protocol is als gevolg daarvan kan van invloed op de nauwkeurigheid van de resultaten. Uw keuze protocol bepaalt ook of u eventuele handmatige stappen uitvoeren moet nadat u de oplossing Netwerkprestatiemeter implementeert. 
+De notatie, grootte en volg orde van deze pakketten wordt bepaald door het protocol dat u kiest wanneer u bewakings regels maakt. Op basis van het Protocol van de pakketten kan de tussenliggende netwerk apparaten, zoals routers en switches, deze pakketten anders verwerken. Daarom is uw protocol keuze van invloed op de nauw keurigheid van de resultaten. Uw protocol keuze bepaalt ook of u hand matige stappen moet uitvoeren nadat u de Netwerkprestatiemeter oplossing hebt geïmplementeerd. 
 
-Network Performance Monitor biedt u de keuze tussen ICMP- en TCP-protocollen voor het uitvoeren van synthetische transacties. Als u ICMP wanneer u een regel synthetische transactie maken, de agents Network Performance Monitor ICMP ECHO berichten wordt gebruikt voor het berekenen van de netwerklatentie en pakketverlies. ICMP-ECHO maakt gebruik van hetzelfde bericht dat wordt verzonden door het hulpprogramma conventionele ping. Als u TCP als protocol gebruikt, verzenden Network Performance Monitor agents TCP SYN pakketten via het netwerk. Deze stap wordt gevolgd door een TCP-handshake is voltooid en de verbinding is verwijderd met behulp van de eerste pakketten. 
+Netwerkprestatiemeter biedt u de keuze tussen ICMP-en TCP-protocollen voor het uitvoeren van synthetische trans acties. Als u ICMP kiest wanneer u een synthetische transactie regel maakt, gebruiken de Netwerkprestatiemeter-agents ICMP-ECHO berichten om de netwerk latentie en pakket verlies te berekenen. ICMP-ECHO gebruikt hetzelfde bericht dat door het conventionele ping-hulp programma wordt verzonden. Wanneer u TCP als protocol gebruikt, verzenden Netwerkprestatiemeter agents TCP SYN-pakketten via het netwerk. Deze stap wordt gevolgd door de voltooiing van een TCP-handshake en de verbinding wordt verwijderd met behulp van eerste pakketten. 
 
-Houd rekening met de volgende informatie voordat u een protocol kiezen: 
+Houd rekening met de volgende informatie voordat u een protocol kiest: 
 
-* **Detectie van meerdere netwerkroutes.** TCP is meer nauwkeurige wanneer meerdere routes detecteren en er minder agents in elk subnet nodig. Een of twee agents die gebruikmaken van TCP kunnen bijvoorbeeld alle redundante paden tussen subnetten te detecteren. U moet verschillende agents die gebruikmaken van ICMP om dezelfde resultaten te behalen. Via ICMP, hebt u een aantal routes tussen twee subnetten, moet u meer dan 5N agents in het subnet van een bron- of doelservers.
+* **Detectie van meerdere netwerk routes.** TCP is nauw keuriger bij het detecteren van meerdere routes en er zijn minder agents in elk subnet nodig. Een of twee agents die gebruikmaken van TCP, kunnen bijvoorbeeld alle redundante paden tussen subnetten detecteren. U hebt verschillende agents nodig die ICMP gebruiken om Vergelijk bare resultaten te krijgen. Als u met behulp van ICMP een aantal routes tussen twee subnetten hebt, hebt u meer dan 5N agents nodig in een bron-of doel-subnet.
 
-* **De nauwkeurigheid van de resultaten.** Routers en switches vaak lagere prioriteit toewijzen aan ICMP-ECHO-pakketten in vergelijking met TCP-pakketten. In bepaalde situaties wanneer netwerkapparaten zwaar worden geladen, weerspiegelt de gegevens die zijn verkregen door het TCP beter aansluiten de verlies en latentie die wordt ervaren door toepassingen. Dit gebeurt omdat de meeste van de toepassingsverkeer stroomt via TCP. In dergelijke gevallen biedt ICMP minder nauwkeurige resultaten in vergelijking met TCP. 
+* **Nauw keurigheid van de resultaten.** Routers en switches wijzen vaak een lagere prioriteit toe aan ICMP-ECHO pakketten vergeleken met TCP-pakketten. In bepaalde situaties, wanneer netwerk apparaten zwaar worden belast, zijn de gegevens die worden verkregen door de TCP nauw keuriger, het verlies en de latentie van toepassingen. Dit probleem treedt op omdat het meeste toepassings verkeer via TCP verloopt. In dergelijke gevallen levert ICMP minder nauw keurige resultaten ten opzichte van TCP. 
 
-* **Firewall-configuratie.** TCP-protocol is vereist dat de TCP-pakketten worden verzonden naar een bestemmingspoort. De standaardpoort gebruikt door Network Performance Monitor agents is 8084. U kunt de poort wijzigen bij het configureren van agents. Zorg ervoor dat uw netwerkfirewalls of (NSG) regels voor netwerkbeveiligingsgroepen (in Azure) verkeer op de gegevenspoort toestaan. U moet ook om ervoor te zorgen dat de lokale firewall op de computers waarop agents zijn geïnstalleerd is geconfigureerd voor het toestaan van verkeer op deze poort. U kunt PowerShell-scripts gebruiken firewallregels configureren op uw Windows-computers, maar u moet de firewall van uw netwerk handmatig configureren. ICMP werkt echter niet met behulp van een poort. ICMP-verkeer is in de meeste zakelijke scenario's, kunt u gebruikmaken van netwerk diagnostische hulpprogramma's, zoals het hulpprogramma ping toegestaan via de firewalls. Als u één VM van elkaar pingen kan, kunt u het ICMP-protocol gebruiken zonder handmatig configureren van firewalls.
+* **Firewall configuratie.** TCP-protocol vereist dat TCP-pakketten worden verzonden naar een doel poort. De standaard poort die wordt gebruikt door Netwerkprestatiemeter agents is 8084. U kunt de poort wijzigen wanneer u agents configureert. Zorg ervoor dat uw netwerk firewalls of NSG-regels (netwerk beveiligings groep) verkeer op de poort toestaan. U moet er ook voor zorgen dat de lokale firewall op de computers waarop agents zijn geïnstalleerd, zodanig is geconfigureerd dat verkeer wordt toegestaan op deze poort. U kunt Power shell-scripts gebruiken om firewall regels te configureren op uw computers met Windows, maar u moet de netwerk firewall hand matig configureren. Daarentegen werkt ICMP niet met behulp van een poort. In de meeste bedrijfs scenario's wordt ICMP-verkeer via de firewalls toegestaan om u in staat te stellen diagnostische hulpprogram ma's voor het netwerk, zoals het hulp programma Ping, te gebruiken. Als u een computer van een andere machine kunt pingen, kunt u het ICMP-protocol gebruiken zonder dat u firewalls hand matig hoeft te configureren.
 
 >[!NOTE] 
-> Sommige firewalls blokkeren mogelijk de ICMP, wat kan leiden tot opnieuw verzenden die in een groot aantal gebeurtenissen in uw gegevens en gebeurtenissen beheersysteem voor informatiebeveiliging resulteert. Zorg ervoor dat het protocol dat u niet wordt geblokkeerd door een firewall of de NSG. Network Performance Monitor kan niet anders het netwerksegment bewaken. U wordt aangeraden dat u TCP voor bewaking gebruiken. ICMP gebruiken in scenario's waarin u TCP, bijvoorbeeld wanneer niet gebruiken: 
+> Sommige firewalls blok keren mogelijk ICMP, wat kan leiden tot opnieuw verzenden als gevolg van een groot aantal gebeurtenissen in uw beveiligings gegevens en het beheer systeem voor gebeurtenissen. Zorg ervoor dat het door u gekozen protocol niet wordt geblokkeerd door een netwerk firewall of NSG. Als dat niet het geval is, kan Netwerkprestatiemeter het netwerk segment niet bewaken. U wordt aangeraden TCP te gebruiken voor bewaking. Gebruik ICMP in scenario's waarin u TCP niet kunt gebruiken, zoals: 
 >
-> - U gebruikt Windows client-knooppunten, omdat het onbewerkte TCP-sockets zijn niet toegestaan in Windows-clients.
-> - TCP wordt geblokkeerd door uw firewall of de NSG.
-> - Weet u het wijzigen van het protocol niet.
+> - U gebruikt Windows-knoop punten op basis van een client, omdat TCP raw-sockets niet zijn toegestaan in Windows-clients.
+> - De netwerk firewall of NSG blokkeert TCP.
+> - U weet niet hoe u het protocol kunt wijzigen.
 
-Als u ICMP gebruiken tijdens de implementatie, kunt u overschakelen naar TCP op elk gewenst moment door de standaardinstellingen voor bewaking van de regel te bewerken.
+Als u ervoor kiest om ICMP te gebruiken tijdens de implementatie, kunt u op elk gewenst moment overstappen op TCP door de standaard regel voor bewaking te bewerken.
 
-1. Ga naar **netwerkprestaties** > **Monitor** > **configureren**   >  **Monitor**. Selecteer vervolgens **standaardregel**. 
-2. Schuif naar de **Protocol** uit en selecteer het protocol dat u wilt gebruiken. 
-3. Selecteer **opslaan** om toe te passen van de instelling. 
+1. Ga naar **netwerk prestaties** > **monitor** > >-  **monitor**  **configureren** . Selecteer vervolgens **standaard regel**. 
+2. Ga naar de sectie **protocol** en selecteer het protocol dat u wilt gebruiken. 
+3. Selecteer **Opslaan** om de instelling toe te passen. 
 
-Zelfs als de standaardregel voor een specifieke protocol gebruikt, kunt u nieuwe regels maken met een ander protocol. U kunt zelfs een combinatie van regels waarbij sommige regels ICMP gebruiken en andere TCP gebruiken maken. 
+Zelfs als de standaard regel een specifiek protocol gebruikt, kunt u nieuwe regels maken met een ander protocol. U kunt zelfs een combi natie van regels maken waarbij sommige regels ICMP gebruiken en anderen TCP gebruiken. 
 
 ## <a name="walkthrough"></a>Walkthrough 
 
-Bekijk nu een eenvoudige onderzoek naar de hoofdoorzaak van een statusgebeurtenis in.
+Bekijk nu een eenvoudig onderzoek naar de hoofd oorzaak van een status gebeurtenis.
 
-Op het dashboard van de oplossing toont een statusgebeurtenis dat er een netwerkverbinding beschadigd is. U kunt het probleem onderzoeken, selecteert u de **netwerk koppelingen die worden bewaakt** tegel.
+In het dash board van de oplossing ziet u een status gebeurtenis die aangeeft dat een netwerk koppeling slecht is. Als u het probleem wilt onderzoeken, selecteert u de tegel **netwerk koppelingen die worden bewaakt** .
 
-De Inzoomen op pagina ziet u dat de **DMZ2 DMZ1** netwerkkoppeling niet in orde is. Selecteer **subnetkoppelingen weergeven** voor deze netwerkkoppeling. 
+Op de pagina inzoomen ziet u dat de netwerk koppeling van de **DMZ2-DMZ1** slecht is. Selecteer **subnet-koppelingen weer geven** voor deze netwerk koppeling. 
 
 
-De Inzoomen op pagina ziet u alle subnetwerkkoppelingen in de **DMZ2 DMZ1** netwerkverbinding. Voor beide subnetwerkkoppelingen Gekruiste de latentie van de drempelwaarde, waardoor de netwerkkoppeling niet in orde. U kunt ook de latentie-trends van beide subnetwerkkoppelingen zien. Gebruik de Tijdselectie beheren in de grafiek om zich te richten op het bereik van de tijd die nodig is. Hier ziet u het tijdstip waarop die bij de piek het bereiken van latentie. Zoeken in de logboeken later voor deze periode is het probleem kunnen onderzoeken. Selecteer **knooppuntkoppelingen weergeven** verder inzoomen. 
+Op de pagina inzoomen worden alle subnetwerk koppelingen weer gegeven in de **DMZ2-DMZ1-** netwerk koppeling. Voor beide koppelingen van het subnetwerk heeft de latentie de drempel waarde overschreden, waardoor de netwerk koppeling niet meer in orde is. U kunt ook de latentie trends van beide koppelingen van het subnetwerk bekijken. Gebruik het besturings element tijd selectie in de grafiek om de focus te richten op het vereiste tijds bereik. U kunt het tijdstip van de dag bekijken waarop de latentie de piek bereikt. Zoek op een later tijdstip de logboeken voor deze periode om het probleem te onderzoeken. Selecteer **knooppunt koppelingen weer geven** om verder in te zoomen. 
  
- ![Pagina met koppelingen subnetwerk](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
+ ![Pagina met koppelingen naar het subnetwerk](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
-Net als bij de vorige pagina, Inzoomen op voor de specifieke subnetwerkkoppeling worden op deze pagina de samenstellende knooppuntkoppelingen. U kunt dezelfde acties uitvoeren hier als u in de vorige stap hebt gedaan. Selecteer **topologie weergeven** om weer te geven van de topologie tussen de twee knooppunten. 
+Net als bij de vorige pagina bevat de inzoom pagina voor de desbetreffende subnetwerk koppeling de samenstellende knooppunt koppelingen. U kunt hier soort gelijke acties uitvoeren zoals u in de vorige stap hebt gedaan. Selecteer **topologie weer geven** om de topologie tussen de twee knoop punten weer te geven. 
  
- ![Pagina met koppelingen knooppunt](media/network-performance-monitor-performance-monitor/node-links.png) 
+ ![Pagina knooppunt koppelingen](media/network-performance-monitor-performance-monitor/node-links.png) 
 
-Alle paden tussen de twee geselecteerde knooppunten worden in de topologie-kaart getekend. U kunt de hop-by-hop '-topologie van routes tussen twee knooppunten op de kaart topologie kunt visualiseren. Het biedt u een helder beeld van het aantal routes bestaan tussen de twee knooppunten en wat de gegevenspakketten nemen paden. Netwerk-knelpunten worden weergegeven in het rood. Als u wilt een defecte netwerkverbinding of een foutieve netwerkapparaat vinden, bekijkt u de rode elementen op de kaart topologie. 
+Alle paden tussen de twee geselecteerde knoop punten worden uitgezet in de topologie kaart. U kunt de topologie van de hop-by-hop van routes tussen twee knoop punten op de topologie kaart visualiseren. Hiermee krijgt u een duidelijk beeld van het aantal routes tussen de twee knoop punten en de paden waarmee de gegevens pakketten worden uitgevoerd. Knel punten in netwerk prestaties worden rood weer gegeven. Als u een defecte netwerk verbinding of een defect netwerk apparaat wilt zoeken, kijkt u naar de rode elementen op de topologie kaart. 
 
- ![Topologiedashboard met topologiekaart weer](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
+ ![Topologie dashboard met topologie overzicht](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
-U kunt bekijken, het verlies van gegevens, latentie en het aantal hops in elk pad in de **actie** deelvenster. Gebruik de schuifbalk om de details van de paden niet in orde weer te geven. De filters gebruiken om te selecteren van de paden met de slechte hops zodat de topologie voor alleen de geselecteerde paden wordt getekend. Als u wilt in- of buiten de topologiekaart weer wilt uitzoomen, gebruikt u het muiswiel. 
+U kunt het verlies, de latentie en het aantal hops in elk pad in het deel venster **actie** bekijken. Gebruik de schuif balk om de details van de beschadigde paden weer te geven. Gebruik de filters om de paden met de onjuiste hop te selecteren, zodat de topologie voor alleen de geselecteerde paden wordt uitgezet. Gebruik uw muis wiel om in of uit te zoomen op de topologie kaart. 
 
-In de volgende afbeelding is de hoofdoorzaak van het probleemgebieden naar het specifieke gedeelte van het netwerk worden weergegeven in de rode paden en hops. Selecteer een knooppunt in de kaart topologie om de eigenschappen van het knooppunt, waaronder de FQDN-naam en IP-adres weer te geven. Selecteren van een hop bevat het IP-adres van de hop. 
+In de volgende afbeelding wordt de hoofd oorzaak van de probleem gebieden naar de specifieke sectie van het netwerk weer gegeven in de rode paden en hops. Selecteer een knoop punt in de topologie kaart om de eigenschappen van het knoop punt weer te geven, inclusief de FQDN en het IP-adres. Als u een hop selecteert, wordt het IP-adres van de hop weer gegeven. 
  
-![Topologiekaart weer met de eigenschappen van het knooppunt geselecteerd](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
+![Topologie toewijzing met geselecteerde knooppunt eigenschappen](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens prestatierecords weer te geven.
+[Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.

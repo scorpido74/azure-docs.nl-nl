@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599986"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901536"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Een Service Fabric cluster resource manager-sjabloon maken
 
@@ -38,7 +38,7 @@ Voorbeeld sjablonen voor Resource Manager zijn beschikbaar in de [Azure-voor bee
 In dit artikel worden de voorbeeld sjabloon en sjabloon parameters voor het [beveiligde cluster met vijf knoop punten][service-fabric-secure-cluster-5-node-1-nodetype] gebruikt. Down load *azuredeploy. json* en *azuredeploy. para meters. json* naar uw computer en open beide bestanden in uw favoriete tekst editor.
 
 > [!NOTE]
-> Voor nationale Clouds (Azure Government, Azure China, Azure Duitsland `fabricSettings` ) moet u ook het volgende toevoegen aan uw sjabloon: `AADLoginEndpoint`, `AADTokenEndpointFormat` en. `AADCertEndpointFormat`
+> Voor nationale Clouds (Azure Government, Azure China, Azure Duitsland) moet u ook de volgende `fabricSettings` toevoegen aan uw sjabloon: `AADLoginEndpoint`, `AADTokenEndpointFormat` en `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Certificaten toevoegen
 U voegt certificaten toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze sleutel-kluis parameters en waarden toe aan een resource manager-sjabloon parameter bestand (*azuredeploy. para meters. json*).
@@ -146,7 +146,7 @@ Het cluster verificatie certificaat moet worden geconfigureerd in zowel de Servi
 U voegt de Azure AD-configuratie toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze Azure AD-para meters en-waarden toe aan een resource manager-sjabloon parameter bestand (*azuredeploy. para meters. json*). 
 
 > [!NOTE]
-> U moet Azure AD-tenants en-gebruikers maken voordat u het cluster maakt.  Lees voor meer informatie [Azure AD instellen om clients te verifiëren](service-fabric-cluster-creation-setup-aad.md).
+> In Linux moeten Azure AD-tenants en gebruikers worden gemaakt voordat ze het cluster kunnen maken.  Lees voor meer informatie [Azure AD instellen om clients te verifiëren](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -265,9 +265,9 @@ Zie voor meer informatie over de JSON-syntaxis en de eigenschappen voor de resou
 
 * [Micro soft. ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248309"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893439"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Wacht woord-en account vergrendelings beleid in beheerde domeinen
 
 Als u de beveiliging van gebruikers in Azure Active Directory Domain Services (Azure AD DS) wilt beheren, kunt u verfijnde wachtwoord beleidsregels definiëren voor het beheren van account vergrendelings instellingen of minimale wachtwoord lengte en complexiteit. Er wordt een standaard beleid voor verfijnd gekorreld wacht woord gemaakt en toegepast op alle gebruikers in een door Azure AD DS beheerd domein. Om nauw keurige controle te bieden en te voldoen aan specifieke bedrijfs-of nalevings behoeften, kunnen extra beleids regels worden gemaakt en toegepast op specifieke groepen gebruikers.
 
 In dit artikel wordt beschreven hoe u met behulp van de Active Directory-beheercentrum een nauw keurig wachtwoord beleid in azure AD DS maakt en configureert.
+
+> [!NOTE]
+> Wachtwoord beleid is alleen beschikbaar voor Azure AD DS beheerde domeinen die zijn gemaakt met het Resource Manager-implementatie model. Voor oudere beheerde domeinen die zijn gemaakt met klassiek, [migreert u vanuit het klassieke virtuele netwerk model naar Resource Manager][migrate-from-classic].
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -34,6 +37,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
   * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
   * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+  * Het Azure AD DS-exemplaar moet zijn gemaakt met behulp van het Resource Manager-implementatie model. Migreer, indien nodig, [van het klassieke virtuele netwerk model naar Resource Manager][migrate-from-classic].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
   * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
@@ -130,3 +134,4 @@ Raadpleeg de volgende artikelen voor meer informatie over wachtwoord beleid en h
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

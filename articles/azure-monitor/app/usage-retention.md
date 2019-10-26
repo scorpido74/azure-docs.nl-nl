@@ -1,76 +1,71 @@
 ---
-title: Analyse van de gebruikers bewaren voor web-apps met Azure Application Insights | Microsoft docs
-description: Hoeveel gebruikers terugkomen naar uw app?
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Analyse van gebruikers retentie voor webtoepassingen met Azure-toepassing Insights | Micro soft docs
+description: Hoeveel gebruikers retour neren uw app?
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372607"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899423"
 ---
-# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van de gebruikers bewaren voor web-apps met Application Insights
+# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van gebruikers retentie voor webtoepassingen met Application Insights
 
-De functie bewaren in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) helpt u hoeveel gebruikers terug naar uw app, en hoe vaak ze specifieke taken uitvoeren of bereiken van de doelstellingen analyseren. Als u een game site uitvoert, kan u bijvoorbeeld de nummers van gebruikers die naar de site terugkeert na het verlies van een spel met het nummer en nadat de winnende retourneren vergelijken. Aan de hand van deze kennis kunt u zowel uw gebruikerservaring en uw strategie voor zakelijke verbeteren.
+De functie voor het bewaren van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) helpt u bij het analyseren van het aantal gebruikers dat naar uw app terugkeert, en hoe vaak ze bepaalde taken uitvoeren of doel stellingen bereiken. Als u bijvoorbeeld een spel site uitvoert, kunt u het aantal gebruikers dat terugkeert naar de site vergelijken nadat een spel is verloren met het nummer dat als resultaat heeft gegeven na de hoogste bieder. Deze kennis kan u helpen om zowel uw gebruikers ervaring als uw bedrijfs strategie te verbeteren.
 
 ## <a name="get-started"></a>Aan de slag
 
-Als er geen gegevens in het programma retentie in de Application Insights-portal nog [meer informatie over het aan de slag met de hulpprogramma's voor gebruik](usage-overview.md).
+Als u de gegevens in het hulp programma voor retentie nog niet ziet in de Application Insights Portal, [leert u hoe u aan de slag kunt gaan met de gebruiks hulpprogramma's](usage-overview.md).
 
-## <a name="the-retention-tool"></a>Het programma retentie
+## <a name="the-retention-tool"></a>Het hulp programma voor retentie
 
 ![Retentie-informatie](./media/usage-retention/retention.png)
 
-1. De werkbalk kan gebruikers nieuwe bewaarperiode rapporten maken, bestaande retentie rapporten openen, huidige bewaarperiode rapport opslaan of opslaan als, wijzigingen aangebracht in de opgeslagen rapporten ongedaan maken, gegevens in het rapport vernieuwen, rapport via e-mail of een directe koppeling delen en toegang tot de documentatie de pagina. 
-2. Standaard toont de bewaarperiode alle gebruikers die u hebt vervolgens zijn teruggekomen en hebt iets anders gedurende een periode. U kunt andere combinatie van gebeurtenissen naar toespitsen op specifieke gebruikersactiviteiten selecteren.
-3. Voeg een of meer filters op Eigenschappen. Bijvoorbeeld, kunt u zich richten op gebruikers in een bepaald land of regio. Klik op **Update** na het instellen van de filters. 
-4. De grafiek met totale retentie bevat een overzicht van gebruikersretentie in de geselecteerde periode. 
-5. Het raster bevat het aantal gebruikers op basis van de opbouwfunctie voor query's in #2 wordt bewaard. Elke rij vertegenwoordigt een cohort van gebruikers die een gebeurtenis in de weergegeven tijd uitgevoerd. Elke cel in de rij laat zien hoe vaak deze cohort geretourneerd ten minste één keer in een latere periode. Sommige gebruikers kunnen in meer dan één punt retourneren. 
-6. De insights-kaarten weergeven top vijf initiërende gebeurtenissen en de top vijf geretourneerde gebeurtenissen, zodat gebruikers een beter begrip van hun rapport bewaren. 
+1. Met de werk balk kunnen gebruikers nieuwe Bewaar rapporten maken, bestaande Bewaar rapporten openen, het huidige retentie Rapport opslaan of opslaan als, wijzigingen in opgeslagen rapporten ongedaan maken, gegevens in het rapport vernieuwen, het rapport delen via e-mail of directe koppeling en de documentatie openen Faxvoorblad. 
+2. Standaard toont de Bewaar periode alle gebruikers die er iets voor hebben gedaan en iets anders heeft geduurd. U kunt een andere combi natie van gebeurtenissen selecteren om de focus op specifieke gebruikers activiteiten te verfijnen.
+3. Voeg een of meer filters op eigenschappen toe. U kunt zich bijvoorbeeld richten op gebruikers in een bepaald land of een bepaalde regio. Klik op **bijwerken** nadat u de filters hebt ingesteld. 
+4. In het algemene Bewaar diagram ziet u een overzicht van de gebruikers retentie over de geselecteerde tijds periode. 
+5. Het raster toont het aantal gebruikers dat is bewaard volgens de opbouw functie voor query's in #2. Elke rij vertegenwoordigt een cohort van gebruikers die een gebeurtenis in de weer gegeven tijds periode hebben uitgevoerd. Elke cel in de rij laat zien hoeveel van de cohort ten minste één keer in een latere periode is geretourneerd. Sommige gebruikers kunnen in meer dan één periode terugkeren. 
+6. De inzichten kaarten geven vijf begin gebeurtenissen en vijf geretourneerde gebeurtenissen weer om gebruikers een beter inzicht te geven in het retentie Rapport. 
 
-![Aanwijzen met de muis bewaren](./media/usage-retention/hover.png)
+![Muis aanwijzer vasthouden](./media/usage-retention/hover.png)
 
-Gebruikers kunnen Beweeg de muisaanwijzer over de cellen in het programma retentie voor toegang tot de analytics-knop en knopinfo zijn waarin wordt uitgelegd wat de cel betekent. De knop Analytics leidt gebruikers naar het Analytics-hulpprogramma met een vooraf gevulde query voor het genereren van gebruikers van de cel. 
+Gebruikers kunnen met de muis aanwijzer over cellen op het retentie hulpprogramma klikken om toegang te krijgen tot de analyse knop en tool tips waarin wordt uitgelegd wat de cel betekent. De analyse knop neemt gebruikers in het analyse hulpprogramma met een vooraf gevulde query om gebruikers uit de cel te genereren. 
 
-## <a name="use-business-events-to-track-retention"></a>Gebruik zakelijke gebeurtenissen bijhouden bewaren
+## <a name="use-business-events-to-track-retention"></a>Zakelijke gebeurtenissen gebruiken om Bewaar perioden bij te houden
 
-Als u de handigste retentie-analyse, meten gebeurtenissen die staan voor belangrijke zakelijke activiteiten. 
+Meet gebeurtenissen die belang rijke bedrijfs activiteiten vertegenwoordigen om de meest nuttige analyse van de Bewaar periode te verkrijgen. 
 
-Veel gebruikers mogelijk een pagina bijvoorbeeld geopend in uw app zonder het spel dat wordt weergegeven. Alleen de paginaweergaven bijhouden, zou een onjuiste schatting van hoeveel mensen keer terug naar het spel spelen na eerder genieten daarom bieden. Als u een helder beeld van de spelers, moet uw app een aangepaste gebeurtenis wanneer een gebruiker daadwerkelijk wordt afgespeeld verzenden.  
+Veel gebruikers kunnen bijvoorbeeld een pagina in uw app openen zonder het spel te spelen dat wordt weer gegeven. Het bijhouden van alleen de pagina weergaven levert daarom een onnauwkeurige schatting op van het aantal mensen dat het spel heeft geretourneerd nadat het eerder is geweest. Om een duidelijke afbeelding van het retour neren van spelers te krijgen, moet uw app een aangepaste gebeurtenis verzenden wanneer een gebruiker daad werkelijk speelt.  
 
-Het is raadzaam om Codeer aangepaste gebeurtenissen die staan voor belangrijke zakelijke acties en gebruik deze voor uw analyse bewaren. Voor het vastleggen van het spel resultaat, moet u een regel code voor het verzenden van een aangepaste gebeurtenis naar Application Insights schrijven. Als u dit in de code van de webpagina's of in Node.JS schrijven, wordt deze ziet er als volgt uit:
+Het is een goed idee om aangepaste gebeurtenissen te coderen die belang rijke zakelijke acties vertegenwoordigen en deze te gebruiken voor de retentie analyse. Als u het resultaat van het spel wilt vastleggen, moet u een regel code schrijven om een aangepaste gebeurtenis naar Application Insights te verzenden. Als u het op de webpagina code of in node. JS schrijft, ziet het er als volgt uit:
 
 ```JavaScript
     appinsights.trackEvent("won game");
 ```
 
-Of in de servercode ASP.NET:
+Of in ASP.NET-Server code:
 
 ```csharp
    telemetry.TrackEvent("won game");
 ```
 
-[Meer informatie over het schrijven van aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+Meer [informatie over het schrijven van aangepaste gebeurtenissen](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Om in te schakelen gebruik ervaringen, beginnen met het verzenden [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [paginaweergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Als u aangepaste gebeurtenissen of paginaweergaven al verzendt, Verken de hulpprogramma's voor gebruik als u wilt weten hoe gebruikers gebruiken voor uw service.
+- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Gebruikersstromen](usage-flows.md)
     - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
-    - [Gebruikerscontext toevoegen](usage-send-user-context.md)
+    - [Gebruikers context toevoegen](usage-send-user-context.md)
 
 

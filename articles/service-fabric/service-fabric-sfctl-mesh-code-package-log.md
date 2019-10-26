@@ -3,29 +3,30 @@ title: Azure Service Fabric CLI-sfctl mesh code-pakket-log | Microsoft Docs
 description: Beschrijft de Service Fabric CLI sfctl netcode-package-log-opdrachten.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b1949f87dcdb1e3d9fe8e7fd08d8d8ba3b8203a0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: d1f0e34389a48b79c049f26e8b04c870f0f1a9a7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036448"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901268"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 De logboeken ophalen voor de container van het opgegeven code pakket voor de opgegeven service replica.
 
 ## <a name="commands"></a>Opdrachten
 
-|Opdracht|Description|
+|Opdracht|Beschrijving|
 | --- | --- |
 | Toevoegen | Hiermee worden de logboeken van de container opgehaald. |
 
@@ -36,7 +37,7 @@ Hiermee haalt u de logboeken voor de container van het opgegeven code pakket van
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --app-naam--Application name [required] | De naam van de toepassing. |
 | --code-pakket naam [vereist] | De naam van het code pakket van de service. |
@@ -46,9 +47,9 @@ Hiermee haalt u de logboeken voor de container van het opgegeven code pakket van
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

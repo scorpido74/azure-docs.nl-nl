@@ -1,33 +1,29 @@
 ---
-title: Schrijf code voor het volgen van aanvragen met Azure Application Insights | Microsoft Docs
-description: Schrijf code als aanvragen wilt volgen met Application Insights, zodat u kunt profielen voor uw aanvragen ophalen.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Code schrijven voor het bijhouden van aanvragen met Azure-toepassing Insights | Microsoft Docs
+description: Schrijf code voor het bijhouden van aanvragen met Application Insights zodat u profielen voor uw aanvragen kunt ophalen.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 3f449c98ed44f13fb6b3849ef2457cd8fbd916de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730851"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900017"
 ---
-# <a name="write-code-to-track-requests-with-application-insights"></a>Code voor het volgen van aanvragen met Application Insights schrijven
+# <a name="write-code-to-track-requests-with-application-insights"></a>Code schrijven voor het bijhouden van aanvragen met Application Insights
 
-Als u wilt weergeven van profielen voor uw toepassing op de pagina van de prestaties, moet Azure Application Insights om aanvragen voor uw toepassing te volgen. Application Insights kunnen aanvragen voor toepassingen die zijn gebouwd op al zijn geïnstrumenteerd frameworks automatisch bijhouden. Twee voorbeelden zijn ASP.NET en ASP.NET Core. 
+Om profielen voor uw toepassing weer te geven op de pagina prestaties, moet Azure-toepassing Insights aanvragen voor uw toepassing bijhouden. Application Insights kunt automatisch aanvragen bijhouden voor toepassingen die zijn gebouwd op al-instrumentale frameworks. Er zijn twee voor beelden van ASP.NET en ASP.NET Core. 
 
-Voor andere toepassingen, zoals Azure Cloud Services-werkrollen en Service Fabric stateless API's, moet u code schrijven om te zien van Application Insights waar uw verzoeken, begin en einde. Nadat u deze code hebt geschreven, worden aanvragen telemetrie wordt verzonden naar Application Insights. U kunt de telemetrie bekijken op de pagina van de prestaties en profielen worden verzameld voor deze aanvragen. 
+Voor andere toepassingen, zoals Azure Cloud Services worker-rollen en Service Fabric stateless Api's, moet u code schrijven om Application Insights te geven waar uw aanvragen beginnen en eindigen. Nadat u deze code hebt geschreven, wordt de telemetrie van aanvragen verzonden naar Application Insights. U kunt de telemetrie weer geven op de pagina prestaties en er worden profielen verzameld voor deze aanvragen. 
 
-Handmatig als aanvragen wilt volgen, het volgende doen:
+Ga als volgt te werk om aanvragen hand matig bij te houden:
 
-  1. Voeg de volgende code al vroeg in de levensduur van de toepassing:  
+  1. Voeg de volgende code toe in de levens duur van de toepassing:  
 
         ```csharp
         using Microsoft.ApplicationInsights.Extensibility;
@@ -35,9 +31,9 @@ Handmatig als aanvragen wilt volgen, het volgende doen:
         // Replace with your own Application Insights instrumentation key.
         TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
         ```
-      Zie voor meer informatie over de configuratie van deze globale instrumentation [met Service Fabric met Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
+      Zie [service Fabric gebruiken met Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)voor meer informatie over deze configuratie van de algemene instrumentatie sleutel.  
 
-  1. Voor elk stukje code dat u wilt instrumenteren, voegt u een `StartOperation<RequestTelemetry>` **met behulp van** instructie rond het, zoals wordt weergegeven in het volgende voorbeeld:
+  1. Voor elk stukje code dat u wilt instrumenteren, voegt u een `StartOperation<RequestTelemetry>` toe **met behulp** van een instructie, zoals wordt weer gegeven in het volgende voor beeld:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -51,7 +47,7 @@ Handmatig als aanvragen wilt volgen, het volgende doen:
         }
         ```
 
-        Aanroepen van `StartOperation<RequestTelemetry>` binnen een andere `StartOperation<RequestTelemetry>` bereik wordt niet ondersteund. U kunt `StartOperation<DependencyTelemetry>` in de geneste scope in plaats daarvan. Bijvoorbeeld:  
+        Het aanroepen van `StartOperation<RequestTelemetry>` binnen een ander `StartOperation<RequestTelemetry>` bereik wordt niet ondersteund. U kunt in plaats daarvan `StartOperation<DependencyTelemetry>` gebruiken in het geneste bereik. Bijvoorbeeld:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

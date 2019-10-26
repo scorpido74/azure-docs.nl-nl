@@ -1,18 +1,18 @@
 ---
 title: Time handling in Azure Stream Analytics begrijpen
-description: Meer informatie over hoe tijds afhandeling werkt en hoe u problemen met de verwerking van tijden in Azure Stream Analytics kunt oplossen.
+description: Meer informatie over hoe tijds afhandeling werkt in Azure Stream Analytics, zoals het kiezen van de beste start tijd, het afhandelen van late en vroege gebeurtenissen en de metrische gegevens voor de afhandeling van tijd.
 author: jasonwhowell
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598022"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901426"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Time handling in Azure Stream Analytics begrijpen
 

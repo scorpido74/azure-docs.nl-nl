@@ -1,5 +1,5 @@
 ---
-title: Zelf studie gegevens ophalen met behulp van de rapportage-API van Azure AD met certificaten | Microsoft Docs
+title: Zelf studie voor AD Reporting API met certificaten | Microsoft Docs
 description: In deze zelf studie wordt uitgelegd hoe u de rapportage-API van Azure AD gebruikt met certificaat referenties om gegevens op te halen uit directory's zonder tussen komst van de gebruiker.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989488"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895135"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelfstudie: Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelf studie: gegevens ophalen met behulp van de API voor Azure Active Directory rapportage met certificaten
 
 De [Azure Active Directory (Azure AD) rapportage-API's](concept-reporting-api.md) bieden toegang tot de gegevens op programmeerniveau via een set op REST-gebaseerde API's. U kunt deze API's vanuit een groot aantal computertalen en hulpprogramma's aanroepen. Als u toegang wilt krijgen tot de rapportage-API van Azure AD zonder tussen komst van de gebruiker, moet u uw toegang configureren voor het gebruik van certificaten.
 
@@ -39,12 +39,12 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
 
 4. Down load en Installeer [Azure AD Power shell v2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md).
 
-5. Install [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Deze module biedt verschillende cmdlets, waaronder:
+5. Installeer [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Deze module biedt verschillende cmdlets, waaronder:
     - De ADAL-bibliotheken die nodig zijn voor authenticatie
     - Toegangstokens van gebruiker, toepassingssleutels en certificaten met behulp van ADAL
     - Afhandeling van pagina's met zoekresultaten door Graph API
 
-6. Als dit de eerste keer is dat u de module **install-MSCloudIdUtilsModule**uitvoert, kunt u deze ook importeren met de Power shell **-opdracht import-module** . Uw sessie moet er ongeveer als volgt uitzien: ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Als dit de eerste keer is dat u de module **install-MSCloudIdUtilsModule**uitvoert, kunt u deze ook importeren met de Power shell **-opdracht import-module** . Uw sessie moet er ongeveer als volgt uitzien: ![Windows Power shell-](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Gebruik de **New-SelfSignedCertificate** Power shell-commandlet om een test certificaat te maken.
 
@@ -69,7 +69,7 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
 
 4. Noteer de toepassings-ID en de vinger afdruk van het certificaat dat u zojuist hebt geregistreerd bij uw toepassing. Ga naar **instellingen** en klik op **sleutels**om de vinger afdruk te vinden op de pagina toepassing in de portal. De vinger afdruk wordt weer geven in de lijst met **open bare sleutels** .
 
-5. Open het manifest van de toepassing in de inline manifest editor en Vervang de eigenschap PropertyName door uw nieuwe certificaat gegevens met behulp van het volgende schema. 
+5. Open het manifest van de toepassing in de inline manifest editor en vervang *de eigenschap PropertyName* door uw nieuwe certificaat gegevens met behulp van het volgende schema. 
 
    ```
    "keyCredentials": [

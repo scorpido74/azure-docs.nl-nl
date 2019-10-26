@@ -4,15 +4,15 @@ description: Voor CSP-partners zorgt Azure gedelegeerd resource beheer voor bete
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/17/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cf9b834d79fa36bbe327a72089388b3f1a1a0c14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550292"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901839"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse en het programma Cloud Solution Provider
 
@@ -36,6 +36,11 @@ Met behulp van Azure delegated Resource Management kunt u verschillende groepen 
 Als u een abonnement hebt gemaakt via het CSP-programma, volgt u de stappen die worden beschreven in [onboarding van een abonnement op Azure gedelegeerd resource beheer](../how-to/onboard-customer.md). Gebruikers met de rol beheerder agent in uw Tenant kunnen dit onboarding uitvoeren.
 
 ![Tenant beheer met ADMINISTRATE en Azure delegated resource management](../media/csp-2.jpg)
+
+> [!NOTE]
+> De [pagina **mijn klanten** in de Azure Portal](../how-to/view-manage-customers.md) bevat nu een **Cloud Solution Provider (preview)** -sectie waarin facturerings gegevens en resources voor CSP-klanten worden weer gegeven die [de micro soft-klant overeenkomst (MCA) hebben ondertekend](https://docs.microsoft.com/partner-center/confirm-customer-agreement) en onder het Azure-abonnement. Zie [aan de slag met uw micro soft-partner overeenkomst](https://docs.microsoft.com/azure/billing/mpa-overview)voor meer informatie.
+>
+> CSP-klanten kunnen in deze sectie worden weer gegeven, ongeacht of ze voor het beheer van de gedelegeerde resources van Azure worden uitgevoerd. Als dat het geval is, worden ze ook weer gegeven in de sectie **klanten** , zoals wordt beschreven in [klanten en gedelegeerde resources weer geven en beheren](../how-to/view-manage-customers.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

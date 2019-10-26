@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851701"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896472"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Een gebruiker of groep toewijzen aan een bedrijfs-app in Azure Active Directory
 
-Als u een gebruiker of groep aan een bedrijfs-app wilt toewijzen, moet u de juiste machtigingen hebben voor het beheren van de Enter prise-app en moet u globale beheerder zijn voor de Directory. Voor micro soft-toepassingen (zoals Office 365-apps) gebruikt u Power shell om gebruikers toe te wijzen aan een bedrijfs-app.
+Als u een gebruiker of groep aan een bedrijfs-app wilt toewijzen, moet u een van deze beheerders rollen hebben toegewezen: globale beheerder, toepassings beheerder, Cloud toepassings beheerder of worden toegewezen als de eigenaar van de Enter prise-app.  Voor micro soft-toepassingen (zoals Office 365-apps) gebruikt u Power shell om gebruikers toe te wijzen aan een bedrijfs-app.
 
 > [!NOTE]
 > Zie de [pagina met Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory)voor licentie vereisten voor de functies die in dit artikel worden besproken.
@@ -87,7 +87,7 @@ De **gebruikers toewijzing is vereist?** optie:
 
 Raadpleeg de documentatie voor [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) voor meer informatie over het toewijzen van een gebruiker aan een toepassingsrol.
 
-Als u een groep aan een bedrijfs-app wilt toewijzen, moet `Get-AzureADUser` u `Get-AzureADGroup`vervangen door.
+Als u een groep aan een bedrijfs-app wilt toewijzen, moet u `Get-AzureADUser` vervangen door `Get-AzureADGroup`.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -109,7 +109,7 @@ In dit voor beeld wordt de gebruiker Julia Simon toegewezen aan de [micro soft W
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Voer de opdracht `$sp.AppRoles` uit om de beschik bare functies voor de Application Analytics-toepassing weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
+1. Voer de opdracht `$sp.AppRoles` uit om de beschik bare functies voor de toepassing voor het Toep assen van de app weer te geven. In dit voor beeld willen we de rol analist (beperkte toegang) Julia Simon toewijzen.
 
    ![Toont de functies die beschikbaar zijn voor een gebruiker met behulp van de rol werk plek Analytics](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 

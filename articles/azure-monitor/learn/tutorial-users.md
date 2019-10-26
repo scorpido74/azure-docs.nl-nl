@@ -1,21 +1,19 @@
 ---
 title: Uw klanten begrijpen in Azure Application Insights | Microsoft Docs
 description: Zelfstudie over het gebruiken van Application Insights om inzicht te krijgen in de wijze waarop klanten van uw app gebruikmaken.
-keywords: ''
-services: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601551"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894674"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Gebruik Application Insights om inzicht te krijgen in de wijze waarop klanten van uw app gebruikmaken
 
@@ -35,7 +33,7 @@ Azure Application Insights verzamelt gebruiksgegevens om u meer inzicht te geven
 
 Vereisten voor het voltooien van deze zelfstudie:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
+- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 - Download en installeer de [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
@@ -59,11 +57,11 @@ In het deelvenster **Gebruikers** kunt u op verschillende manieren inzicht krijg
 
     ![Tijdsbereik wijzigen](media/tutorial-users/TimeRange.png)
 
-4. Klik op de vervolgkeuzelijst **Splitsen op basis van** om een uitsplitsing op basis van een gebruikerseigenschap aan de grafiek toe te voegen.  Selecteer **Land of regio**.  De grafiek bevat de dezelfde gegevens maar kunt u om een uitsplitsing van het aantal gebruikers voor elk land/regio weer te geven.
+4. Klik op de vervolgkeuzelijst **Splitsen op basis van** om een uitsplitsing op basis van een gebruikerseigenschap aan de grafiek toe te voegen.  Selecteer **Land of regio**.  De grafiek bevat dezelfde gegevens, maar biedt u de mogelijkheid om een uitsplitsing van het aantal gebruikers voor elk land of elke regio weer te geven.
 
     ![Land of regio-grafiek](media/tutorial-users/CountryorRegion.png)
 
-5. Plaats de cursor over verschillende balken in de grafiek en houd er rekening mee dat het aantal voor elk land/regio alleen het tijdvenster wordt vertegenwoordigd door die voor de balk weergeeft.
+5. Plaats de cursor op verschillende balken in het diagram en houd er rekening mee dat het aantal voor elk land/elke regio alleen het tijd venster weerspiegelt dat door die balk wordt weer gegeven.
 6. Bekijk de kolom **Insights** aan de rechterkant voor analyse van uw gebruikersgegevens.  Dit levert informatie op zoals het aantal unieke sessies gedurende de periode en records met gemeenschappelijke eigenschappen die significant zijn voor de gebruikersgegevens 
 
     ![Insights-kolom](media/tutorial-users/insights.png)
@@ -86,7 +84,7 @@ Het deelvenster **Sessies** lijkt op het deelvenster **Gebruikers**.  Terwijl **
     ![Sessietijdlijn](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Vergelijkbare gebruikers groeperen
-Een **Cohort** is een set gebruikers die worden gegroepeerd met vergelijkbare kenmerken.  U kunt cohorten gebruiken om gegevens in andere deelvensters te filteren zodat u bepaalde groepen gebruikers kunt analyseren.  U wilt bijvoorbeeld alleen gebruikers analyseren die een aankoop hebben voltooid.
+Een **cohort** is een set gebruikers die is gegroepeerd op soort gelijke kenmerken.  U kunt cohorten gebruiken om gegevens in andere deelvensters te filteren zodat u bepaalde groepen gebruikers kunt analyseren.  U wilt bijvoorbeeld alleen gebruikers analyseren die een aankoop hebben voltooid.
 
 1.  Selecteer **Cohorten** in het menu.
 2.  Klik op **Nieuw** om een nieuw cohort te maken.

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Spellingcontrole met de Bing Spellingcontrole REST API en C#'
+title: 'Snelstartgids: Controleer de spelling met de Bing Spellingcontrole REST API enC#'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole REST API om spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: a2c121ed58882427022b716081b096c913d447f8
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: MT
+ms.openlocfilehash: be9301bdc70279974bbdbb5d2cb874e5bccc9358
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423625"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898446"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole REST API en C#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstartgids: Controleer de spelling met de Bing Spellingcontrole REST API enC#
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige C#-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige C#-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Installeren `Newtonsoft.Json` als een NuGet-pakket in Visual Studio:
+* `Newtonsoft.Json` installeren als een NuGet-pakket in Visual Studio:
     1. Klik in **Solution Explorer**met de rechter muisknop op het oplossings bestand.
     1. Selecteer **NuGet-pakketten beheren voor oplossing**.
-    1. `Newtonsoft.Json` Zoek en installeer het pakket.
+    1. Zoek naar `Newtonsoft.Json` en installeer het pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe console oplossing met `SpellCheckSample` de naam in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
+1. Maak in Visual Studio een nieuwe console oplossing met de naam `SpellCheckSample`. Voeg de volgende naamruimten in het hoofdcodebestand in.
     
     ```csharp
     using System;
@@ -62,7 +62,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     }
     ```
 
-3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus `&mode=`voor spelling controle toe. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
+3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe na `mkt=`. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe na `&mode=`. De modus is `proof` (de meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammaticale fouten onderschept).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -75,10 +75,10 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     ```csharp
     async static void SpellCheck()
     {
-        HttpClient client = new HttpClient();
+        var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        HttpResponseMessage response = new HttpResponseMessage();
+        HttpResponseMessage response = null;
         // add the rest of the code snippets here (except for main())...
     }
     ```
@@ -92,14 +92,11 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 3. Maak een lijst met een object `KeyValuePair` met uw tekst en gebruik het voor het maken van een object `FormUrlEncodedContent`. Stel de headerinformatie in en gebruik `PostAsync()` om de aanvraag te verzenden.
 
     ```csharp
-    List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-    values.Add(new KeyValuePair<string, string>("text", text));
+    var values = new Dictionary<string, string>();
+    values.Add("text", text);
     
-    using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
-    {
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-        response = await client.PostAsync(uri, content);
-    }
+    content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+    response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
 ## <a name="get-and-print-the-api-response"></a>De API-reactie ophalen en afdrukken

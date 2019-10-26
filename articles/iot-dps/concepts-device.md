@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173387"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897588"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Concepten van IoT Hub Device Provisioning Service-apparaten
 
@@ -44,7 +44,7 @@ Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), 
 
 ## <a name="registration-id"></a>Registratie-ID
 
-De registratie-ID wordt gebruikt om een apparaat in de Device Provisioning-Service op unieke wijze te identificeren. De registratie-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, kleine letters en kan afbreek streepjes bevatten.
+De registratie-ID wordt gebruikt om een apparaat in de Device Provisioning-Service op unieke wijze te identificeren. De apparaat-ID moet uniek zijn in het bereik van de service [-id](#id-scope)voor de inrichting. Elk apparaat moet een registratie-ID hebben. De registratie-ID is alfanumeriek, niet hoofdletter gevoelig en kan speciale tekens bevatten, waaronder dubbele punt, punt, onderstrepings teken en afbreek streepje.
 
 * In het geval van TPM wordt de registratie-ID door de TPM zelf verschaft.
 * In het geval van X. 509 Attestation wordt de registratie-ID gegeven als de onderwerpnaam van het certificaat.

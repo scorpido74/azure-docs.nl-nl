@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: MT
+ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166497"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901646"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
 
@@ -54,11 +54,11 @@ Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoo
 
 Alle configuratie voor het ABFS-stuur programma wordt opgeslagen in het configuratie bestand <code>core-site.xml</code>. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
 
-Details van alle ondersteunde configuratie vermeldingen zijn opgegeven in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html).
+Details van alle ondersteunde configuratie vermeldingen zijn opgegeven in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html).
 
 ### <a name="hadoop-documentation"></a>Hadoop-documentatie
 
-Het ABFS-stuur programma is volledig gedocumenteerd in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)
+Het ABFS-stuur programma is volledig gedocumenteerd in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 

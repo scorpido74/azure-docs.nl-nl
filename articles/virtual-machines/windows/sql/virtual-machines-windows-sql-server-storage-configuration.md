@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828618"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896956"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslag configuratie voor SQL Server Vm's
 
@@ -62,7 +62,7 @@ Schijf cache voor Premium-SSD kan *alleen-lezen*, *readwrite* of *geen*zijn.
 
 
    > [!TIP]
-   > Zorg ervoor dat uw opslag configuratie overeenkomt met de beperkingen die zijn opgelegd door de geselecteerde VM-grootte. Als u opslag parameters kiest die de prestaties van de VM-grootte overschrijden, resulteert dit in een fout: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Verlaag de IOPs door het schijf type te wijzigen of verhoog de limiet voor de snelheid van de virtuele machine door de VM-grootte te verhogen. 
+   > Zorg ervoor dat uw opslag configuratie overeenkomt met de beperkingen die zijn opgelegd door de geselecteerde VM-grootte. Als u opslag parameters kiest die de prestaties van de VM-grootte overschrijden, treedt er een fout op: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Verlaag de IOPs door het schijf type te wijzigen of verhoog de limiet voor de snelheid van de virtuele machine door de VM-grootte te verhogen. 
 
 
 Op basis van uw keuzes voert Azure de volgende opslag configuratie taken uit na het maken van de VM:
@@ -83,7 +83,7 @@ Als u de volgende Resource Manager-sjablonen gebruikt, worden standaard twee Pre
 * [Een VM maken met geautomatiseerde patching](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Een virtuele machine maken met Azure-integratie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
-### <a name="quickstart-template"></a>Quickstart-sjabloon
+### <a name="quickstart-template"></a>Snelstartsjabloon
 
 U kunt de volgende Snelstartgids-sjabloon gebruiken om een SQL Server virtuele machine te implementeren met behulp van opslag optimalisatie. 
 
@@ -124,31 +124,28 @@ Zie de pagina [prijzen voor opslag](https://azure.microsoft.com/pricing/details/
 
 Azure gebruikt de volgende instellingen voor het maken van de opslag groep op SQL Server Vm's.
 
-| Instelling | Value |
+| Instelling | Waarde |
 | --- | --- |
 | Stripe-grootte |256 KB (data warehousing); 64 KB (transactioneel) |
 | Schijfformaten |1 TB elk |
 | Cache |Lezen |
 | Toewijzings grootte |64 KB NTFS Allocation Unit Size |
-| Directe bestands initialisatie |Enabled |
-| Pagina's in het geheugen vergren delen |Enabled |
-| Herstel |Eenvoudig herstel (geen tolerantie) |
-| Aantal kolommen |Aantal gegevens schijven<sup>1</sup> |
-| TempDB-locatie |Opgeslagen op gegevens schijven<sup>2</sup> |
+| Herstel | Eenvoudig herstel (geen tolerantie) |
+| Aantal kolommen |Aantal gegevens schijven tot 8<sup>1</sup> |
+
 
 <sup>1</sup> nadat de opslag groep is gemaakt, kunt u het aantal kolommen in de opslag groep niet wijzigen.
 
-<sup>2</sup> deze instelling is alleen van toepassing op het eerste station dat u maakt met behulp van de functie voor opslag configuratie.
 
 ## <a name="workload-optimization-settings"></a>Instellingen voor werk belasting optimalisatie
 
 In de volgende tabel worden de drie beschik bare opties voor werkbelasting typen en de bijbehorende optimalisaties beschreven:
 
-| Type werkbelasting | Description | Optimalisaties |
+| Type werk belasting | Beschrijving | Optimalisaties |
 | --- | --- | --- |
 | **Algemeen** |Standaard instelling die de meeste werk belastingen ondersteunt |Geen |
 | **Transactionele verwerking** |Optimaliseert de opslag voor traditionele OLTP-workloads van data bases |Tracerings vlag 1117<br/>Tracerings vlag 1118 |
-| **Gegevensopslag** |Optimaliseert de opslag voor analyse-en rapportage werk belastingen |Tracerings vlag 610<br/>Tracerings vlag 1117 |
+| **Gegevens opslag** |Optimaliseert de opslag voor analyse-en rapportage werk belastingen |Tracerings vlag 610<br/>Tracerings vlag 1117 |
 
 > [!NOTE]
 > U kunt het type werk belasting alleen opgeven wanneer u een virtuele SQL-machine inricht door deze te selecteren in de stap opslag configuratie.

@@ -1,26 +1,20 @@
 ---
 title: Trends analyseren in Visual Studio | Microsoft Docs
 description: Trends analyseren, visualiseren en verkennen in uw Application Insights Telemetry in Visual Studio.
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 2b08dfd87910cbb9f23f6b108a970d160612e1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: vs-azure
+ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255891"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899321"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trends analyseren in Visual Studio
 Het hulpprogramma Application Insights Trends visualiseert hoe belangrijke telemetriegebeurtenissen van uw webtoepassing wijzigen gedurende een periode, zodat u snel problemen en afwijkingen kunt identificeren. Door een koppeling naar meer gedetailleerde diagnostische gegevens, kan Trends u helpen bij het verbeteren de prestaties van uw app, de oorzaken van uitzonderingen traceren en inzicht verwerven over uw aangepaste gebeurtenissen.
@@ -60,7 +54,7 @@ Application Insights Trends maakt een tijdreeksvisualisatie vanaf de telemetrie 
 
 Gebruik de besturingselementen aan de bovenkant van het venster om aan te passen welke typen telemetrie worden weergeven. Kies eerst de telemetrietypes waarin u bent geïnteresseerd:
 
-* **Telemetrietype** -serveraanvragen, uitzonderingen, afhankelijkheden of aangepaste gebeurtenissen
+* **Type telemetrie** -server aanvragen, uitzonde ringen, afhankelijkheden of aangepaste gebeurtenissen
 * **Tijdsbereik** - ongeacht uw locatie van de laatste 30 minuten in de afgelopen 3 dagen
 * **Groeperen op** - uitzonderingstype, probleem-id, land/regio en meer.
 
@@ -69,7 +63,7 @@ Klik vervolgens op **Telemetrie analyseren** om de query uit te voeren.
 U kunt als volgt tussen de bellen in de visualisatie navigeren:
 
 * Klik om een bel te selecteren, waarmee de filters onder in het venster worden bijgewerkt en de gebeurtenissen tijdens een bepaalde periode worden samengevat
-* Dubbelklik op een bel om te navigeren naar de zoekfunctie en alle afzonderlijke telemetriegebeurtenissen die tijdens die periode
+* Dubbel klik op een bel om naar de zoek functie te gaan en alle afzonderlijke telemetrie-gebeurtenissen te zien die tijdens die periode zijn opgetreden
 * Ctrl-klik om de selectie ervan in de visualisatie op te heffen.
 
 > [!TIP]
@@ -77,8 +71,8 @@ U kunt als volgt tussen de bellen in de visualisatie navigeren:
 > 
 > 
 
-## <a name="filter"></a>Filteren
-Ontdek meer specifieke trends met de filterbesturingselementen aan de onderkant van het venster. Klik op de filternaam om het filter toe te passen. U kunt snel schakelen tussen verschillende filters voor het detecteren van trends die in een dimensie van uw telemetrie kunnen worden verborgen. Als u een filter in één dimensie toepast, zoals uitzonderingstype, blijven filters in andere dimensies aanklikbaar hoewel ze uitgegrijsd worden weergegeven. Klik opnieuw op de filters om ze te deselecteren. Ctrl-klik om meerdere filters in dezelfde dimensie selecteren.
+## <a name="filter"></a>Filter
+Ontdek meer specifieke trends met de filterbesturingselementen aan de onderkant van het venster. Klik op de filternaam om het filter toe te passen. U kunt snel schakelen tussen verschillende filters voor het detecteren van trends die in een dimensie van uw telemetrie kunnen worden verborgen. Als u een filter in één dimensie toepast, zoals een uitzonderings type, blijven filters in andere dimensies klikken, zelfs als ze grijs worden weer gegeven. Klik opnieuw op een filter om het ongedaan te maken. Ctrl-klik om meerdere filters in dezelfde dimensie selecteren.
 
 ![Trendfilters](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -94,7 +88,7 @@ Om één van deze filters te deselecteren klikt u op de knop **Geselecteerde fil
 ![Meerdere filters](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Afwijkingen vinden
-Het hulpprogramma Trends kan bellen van gebeurtenissen aangeven die afwijken van andere bellen in dezelfde tijdreeksen. Kies in de vervolgkeuzelijst Weergavetype **Aantal in tijdsinterval (afwijkingen markeren)** of **Percentages in tijdsinterval (afwijkingen markeren)** . Rode bellen zijn afwijkend. Afwijkingen worden gedefinieerd als bellen met aantallen/percentages die 2.1 maal de standaardafwijking van aantallen/percentages die zijn opgetreden in de afgelopen twee tijdsintervallen (48 uur als u de afgelopen 24 uur, enz bekijkt.).
+Het hulpprogramma Trends kan bellen van gebeurtenissen aangeven die afwijken van andere bellen in dezelfde tijdreeksen. Kies in de vervolgkeuzelijst Weergavetype **Aantal in tijdsinterval (afwijkingen markeren)** of **Percentages in tijdsinterval (afwijkingen markeren)** . Rode bellen zijn afwijkend. Afwijkingen worden gedefinieerd als bellen met aantallen/percentages van meer dan 2,1 keer de standaard afwijking van de aantallen/percentages die zijn opgetreden in de afgelopen twee Peri Oden (48 uur als u de afgelopen 24 uur, enzovoort) bekijkt.
 
 ![Gekleurde punten geven aan afwijkingen aan](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

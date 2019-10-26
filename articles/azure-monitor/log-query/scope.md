@@ -1,19 +1,18 @@
 ---
 title: Query bereik vastleggen in Azure Monitor Log Analytics | Microsoft Docs
 description: Beschrijft het bereik en het tijds bereik voor een logboek query in Azure Monitor Log Analytics.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/25/2019
+ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405739"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900237"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Query bereik en tijds bereik in Azure Monitor vastleggen Log Analytics
 Wanneer u een [logboek query](log-query-overview.md) uitvoert in [Log Analytics in het Azure Portal](get-started-portal.md), is de set gegevens die door de query wordt geëvalueerd, afhankelijk van het bereik en het tijds bereik dat u selecteert. In dit artikel worden de bereik-en tijds periode beschreven en wordt uitgelegd hoe u deze kunt instellen, afhankelijk van uw vereisten. Ook wordt het gedrag van verschillende soorten bereiken beschreven.
@@ -30,10 +29,10 @@ Het bereik wordt bepaald door de methode die u gebruikt om Log Analytics te star
 
 | Querybereik | Records in bereik | Het selecteren van | Bereik wijzigen |
 |:---|:---|:---|:---|
-| Log Analytics-werkruimte | Alle records in de Log Analytics-werk ruimte. | Selecteer **Logboeken** in het menu **Azure monitor** of in het menu **log Analytics-werk ruimten** .  | Kan het bereik wijzigen in elk ander resource type. |
+| Log Analytics werk ruimte | Alle records in de Log Analytics-werk ruimte. | Selecteer **Logboeken** in het menu **Azure monitor** of in het menu **log Analytics-werk ruimten** .  | Kan het bereik wijzigen in elk ander resource type. |
 | Application Insights toepassing | Alle records in de Application Insights-toepassing. | Selecteer **analyse** op de pagina **overzicht** van Application Insights. | Kan het bereik alleen wijzigen in een andere Application Insights toepassing. |
-| Resource group | Records die zijn gemaakt door alle resources in de resource groep. Kan gegevens uit meerdere Log Analytics-werk ruimten bevatten. | Selecteer **Logboeken** in het menu van de resource groep. | Kan bereik niet wijzigen.|
-| Subscription | Records die zijn gemaakt door alle resources in het abonnement. Kan gegevens uit meerdere Log Analytics-werk ruimten bevatten. | Selecteer **Logboeken** in het menu abonnement.   | Kan bereik niet wijzigen. |
+| Resourcegroep | Records die zijn gemaakt door alle resources in de resource groep. Kan gegevens uit meerdere Log Analytics-werk ruimten bevatten. | Selecteer **Logboeken** in het menu van de resource groep. | Kan bereik niet wijzigen.|
+| Abonnement | Records die zijn gemaakt door alle resources in het abonnement. Kan gegevens uit meerdere Log Analytics-werk ruimten bevatten. | Selecteer **Logboeken** in het menu abonnement.   | Kan bereik niet wijzigen. |
 | Andere Azure-resources | Records die zijn gemaakt door de resource. Kan gegevens uit meerdere Log Analytics-werk ruimten bevatten.  | Selecteer **Logboeken** in het menu resource.<br>OF<br>Selecteer **Logboeken** in het menu **Azure monitor** en selecteer vervolgens een nieuwe scope. | Kan het bereik alleen wijzigen in hetzelfde resource type. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Beperkingen bij het bereiken van een resource
@@ -41,13 +40,13 @@ Het bereik wordt bepaald door de methode die u gebruikt om Log Analytics te star
 Wanneer het query bereik een Log Analytics werk ruimte of een Application Insights toepassing is, zijn alle opties in de portal en alle query opdrachten beschikbaar. De volgende opties in de portal zijn niet beschikbaar als deze zijn gekoppeld aan een resource, omdat ze zijn verbonden met één werk ruimte of toepassing:
 
 - Opslaan
-- Queryverkenner
-- Nieuwe waarschuwingsregel
+- Query Verkenner
+- Nieuwe waarschuwings regel
 
 U kunt de volgende opdrachten niet gebruiken in een query wanneer het bereik is ingesteld op een resource, omdat het query bereik al werk ruimten bevat met gegevens voor die resource of set resources:
 
 - [app](app-expression.md)
-- [workspace](workspace-expression.md)
+- [werk ruimte](workspace-expression.md)
  
 
 ## <a name="query-limits"></a>Query limieten
@@ -61,16 +60,16 @@ Log Analytics biedt beveiliging tegen buitensporige overhead van query's die wer
 
 De uitvoering van uw query wordt geblokkeerd als het bereik werk ruimten in 20 of meer regio's bevat. In dit geval wordt u gevraagd om het aantal werkruimte regio's te verminderen en probeert u de query opnieuw uit te voeren. In de vervolg keuzelijst worden alle regio's in het bereik van de query weer gegeven. u moet het aantal regio's verminderen voordat u de query opnieuw probeert uit te voeren.
 
-![Query mislukt](media/scope/query-failed.png)
+![De query is mislukt](media/scope/query-failed.png)
 
 
 ## <a name="time-range"></a>Tijdsbereik
 Met het tijds bereik wordt de set records opgegeven die voor de query worden geëvalueerd op basis van het moment waarop de record is gemaakt. Dit wordt gedefinieerd door een standaard eigenschap op elke record in de werk ruimte of toepassing, zoals opgegeven in de volgende tabel.
 
-| Location | Eigenschap |
+| Locatie | Eigenschap |
 |:---|:---|
-| Log Analytics-werkruimte          | TimeGenerated |
-| Application Insights toepassing | timestamp     |
+| Log Analytics werk ruimte          | TimeGenerated |
+| Application Insights toepassing | tijdstempel     |
 
 Stel het tijds bereik in door het te selecteren in de tijd kiezer boven aan het Log Analytics-venster.  U kunt een vooraf gedefinieerde periode selecteren of **aangepast** selecteren om een specifiek tijds bereik op te geven.
 

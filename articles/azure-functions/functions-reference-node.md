@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255013"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898949"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
 
@@ -50,7 +50,7 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-In de hoofdmap van het project bevindt zich een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. js) en een bindings configuratie bestand (function. json). De naam van de bovenliggende map van @no__t 0 is altijd de naam van uw functie.
+In de hoofdmap van het project bevindt zich een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. js) en een bindings configuratie bestand (function. json). De naam van de bovenliggende map van `function.json`is altijd de naam van uw functie.
 
 De bindings uitbreidingen vereist in [versie 2. x](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj`-bestand, met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
@@ -314,7 +314,7 @@ context.log.error("An error has occurred.");
 
 Omdat de _fout_ het hoogste traceer niveau is, wordt deze tracering naar de uitvoer op alle tracerings niveaus geschreven zolang logboek registratie is ingeschakeld.
 
-Alle @no__t-methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode node. js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
+Alle `context.log`-methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode node. js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -397,9 +397,9 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Alleen antwoord]_ Door het aanroepen van `context.res.send(body?: any)`.** Er wordt een HTTP-antwoord gemaakt met invoer `body` als antwoord tekst. `context.done()` wordt impliciet aangeroepen.
++ **_[Alleen antwoord]_ Door `context.res.send(body?: any)`aan te roepen.** Er wordt een HTTP-antwoord gemaakt met invoer `body` als antwoord tekst. `context.done()` wordt impliciet aangeroepen.
 
-+ **_[Alleen antwoord]_ Door het aanroepen van `context.done()`.** Een speciaal type HTTP-binding retourneert het antwoord dat is door gegeven aan de methode `context.done()`. De volgende HTTP-uitvoer binding definieert een `$return` uitvoer parameter:
++ **_[Alleen antwoord]_ Door `context.done()`aan te roepen.** Een speciaal type HTTP-binding retourneert het antwoord dat is door gegeven aan de methode `context.done()`. De volgende HTTP-uitvoer binding definieert een `$return` uitvoer parameter:
 
     ```json
     {
@@ -421,7 +421,7 @@ De volgende tabel bevat de node. js-versie die wordt gebruikt door elke primaire
 | Functie versie | Node. js-versie | 
 |---|---|
 | 1.x | 6.11.2 (vergrendeld door de runtime) |
-| 2.x  | _Actieve LTS_ en _onderhoud LTS_ node. js-versies (~ 10 aanbevolen). Richt de versie in Azure in door de WEBSITE_NODE_DEFAULT_VERSION- [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op `~10`.|
+| 2.x  | _Actieve LTS_ en _onderhoud LTS_ node. js-versies (~ 10 aanbevolen). Richt de versie in Azure in door de [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION in te stellen op `~10`.|
 
 U kunt de huidige versie bekijken die door de runtime wordt gebruikt door de bovenstaande app-instelling te controleren of door `process.version` af te drukken vanuit een wille keurige functie.
 
@@ -449,7 +449,7 @@ Er zijn twee manieren om pakketten te installeren op uw functie-app:
 ### <a name="deploying-with-dependencies"></a>Implementeren met afhankelijkheden
 1. Installeer alle vereiste pakketten lokaal door `npm install` uit te voeren.
 
-2. Implementeer uw code en zorg ervoor dat de map @no__t 0 is opgenomen in de implementatie. 
+2. Implementeer uw code en zorg ervoor dat de map `node_modules` is opgenomen in de implementatie. 
 
 
 ### <a name="using-kudu"></a>Kudu gebruiken
@@ -465,7 +465,7 @@ Er zijn twee manieren om pakketten te installeren op uw functie-app:
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-In functions worden [app-instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen met behulp van `process.env`, zoals hier wordt weer gegeven in de tweede en derde aanroepen naar `context.log()` waar we de `AzureWebJobsStorage`-en `WEBSITE_SITE_NAME`-omgevings variabelen registreren:
+In functions worden [app-instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen met behulp van `process.env`, zoals hier wordt weer gegeven in de tweede en derde aanroepen naar `context.log()` waar de `AzureWebJobsStorage` en `WEBSITE_SITE_NAME` omgevings variabelen worden geregistreerd:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -485,7 +485,7 @@ Wanneer u lokaal uitvoert, worden de app-instellingen gelezen uit het bestand [L
 
 De `function.json`-eigenschappen `scriptFile` en `entryPoint` kunnen worden gebruikt voor het configureren van de locatie en de naam van de geëxporteerde functie. Deze eigenschappen kunnen belang rijk zijn wanneer uw Java script wordt transmaald.
 
-### <a name="using-scriptfile"></a>@No__t-0 gebruiken
+### <a name="using-scriptfile"></a>`scriptFile` gebruiken
 
 Een Java script-functie wordt standaard uitgevoerd op basis van `index.js`, een bestand met dezelfde bovenliggende map als de bijbehorende `function.json`.
 
@@ -514,7 +514,7 @@ De `function.json` voor `myNodeFunction` moet een eigenschap `scriptFile` bevatt
 }
 ```
 
-### <a name="using-entrypoint"></a>@No__t-0 gebruiken
+### <a name="using-entrypoint"></a>`entryPoint` gebruiken
 
 In `scriptFile` (of `index.js`) moet een functie worden geëxporteerd met behulp van `module.exports` om te vinden en uit te voeren. De functie die wordt uitgevoerd wanneer de trigger wordt geactiveerd, is standaard de enige export vanuit dat bestand, de export met de naam `run` of de export met de naam `index`.
 
@@ -621,7 +621,7 @@ npm run build:production
 func azure functionapp publish <APP_NAME>
 ```
 
-Vervang in deze opdracht `<APP_NAME>` door de naam van uw functie-app.
+Vervang `<APP_NAME>` in deze opdracht door de naam van uw functie-app.
 
 ## <a name="considerations-for-javascript-functions"></a>Overwegingen voor Java script-functies
 
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

@@ -1,60 +1,55 @@
 ---
-title: Gebruiker gedrag analyseprogramma's in Azure Application Insights oplossen
-description: Gids voor probleemoplossing - site en het appgebruik met Application Insights te analyseren.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Problemen oplossen met hulpprogram ma's voor analyse van gebruikers gedrag in Azure-toepassing Insights
+description: 'Gids voor probleem oplossing: analyse van site-en app-gebruik met Application Insights.'
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9222f4611f87869c1bacf3084035c0ab9322fa40
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371849"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899354"
 ---
-# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Gebruiker gedrag analyseprogramma's in Application Insights oplossen
-Hebt u vragen over de [gebruiker gedrag analyseprogramma's in Application Insights](usage-overview.md): [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md), [Trechters](usage-funnels.md), [Gebruikersstromen](usage-flows.md), [retentie](usage-retention.md), of cohorten? Hier volgen enkele antwoorden.
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problemen oplossen met hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights
+Hebt u vragen over de [hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights](usage-overview.md): [gebruikers, sessies, gebeurtenissen](usage-segmentation.md), [trechters](usage-funnels.md), [Gebruikersstromen](usage-flows.md), [retentie](usage-retention.md)of cohorten? Hier volgen enkele antwoorden.
 
-## <a name="counting-users"></a>Telling van gebruikers
-**De gebruiker gedrag analysehulpprogramma's laten zien dat mijn app een gebruikerssessie heeft, maar ik weet dat mijn app heeft veel gebruikers/sessies. Hoe kan ik deze onjuiste aantallen oplossen?**
+## <a name="counting-users"></a>Gebruikers tellen
+**De analyse hulpprogramma's voor gebruikers gedrag tonen dat mijn app één gebruiker/sessie heeft, maar ik weet dat mijn app veel gebruikers/sessies heeft. Hoe kan ik het verkeerde aantal herstellen?**
 
-Alle telemetriegebeurtenissen in Application Insights hebben een [anonieme gebruikers-ID](../../azure-monitor/app/data-model-context.md) en een [sessie-ID](../../azure-monitor/app/data-model-context.md) als twee van de standaardeigenschappen. Standaard aantal alle van de tools voor gebruiksanalyse gebruikers en sessies op basis van deze id. Als deze standaard eigenschappen zijn niet wordt ingevuld met de unieke id's voor elke gebruiker en de sessie van uw app, ziet u een onjuiste telling van gebruikers en sessies in de analytics-hulpprogramma's voor gebruik.
+Alle telemetrie-gebeurtenissen in Application Insights hebben een [anonieme gebruikers-id](../../azure-monitor/app/data-model-context.md) en een [sessie-id](../../azure-monitor/app/data-model-context.md) als twee van de standaard eigenschappen. Standaard tellen alle hulpprogram ma's voor gebruiks analyse gebruikers en sessies op basis van deze Id's. Als deze standaard eigenschappen niet worden gevuld met unieke Id's voor elke gebruiker en sessie van uw app, wordt in de gebruiks analyse hulpprogramma's een onjuist aantal gebruikers en sessies weer geven.
 
-Als u een web-app wordt bewaakt, de eenvoudigste oplossing is het toevoegen van de [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) aan uw app en zorg ervoor dat het script codefragment is geladen op elke pagina die u wilt bewaken. De JavaScript SDK automatisch genereert anonieme gebruiker en sessie-id's, vervolgens gevuld telemetriegebeurtenissen met deze id's als ze zijn verzonden vanuit uw app.
+Als u een web-app bewaken, is de eenvoudigste oplossing om de [Application Insights java script SDK](../../azure-monitor/app/javascript.md) toe te voegen aan uw app en ervoor te zorgen dat het script fragment wordt geladen op elke pagina die u wilt bewaken. Met de Java script SDK worden automatisch anonieme gebruikers-en sessie-Id's gegenereerd. vervolgens worden telemetrie-gebeurtenissen met deze Id's gevuld wanneer ze vanuit uw app worden verzonden.
 
-Als u een webservice (geen gebruikersinterface), uw bewakingsgegevens [maken van een telemetrie-initializer die de anonieme gebruiker-ID en sessie-ID-eigenschappen vult](usage-send-user-context.md) op basis van uw service begrippen van unieke gebruikers en sessies.
+Als u een webservice bewaken (geen gebruikers interface), [maakt u een telemetrie-initialisatie functie waarmee de eigenschappen van de anonieme gebruikers-id en de sessie-id worden ingevuld](usage-send-user-context.md) op basis van de begrippen van de service van unieke gebruikers en sessies.
 
-Als uw app verzendt [geverifieerde gebruikers-id's](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), u kunt rekenen op basis van geverifieerde gebruikers-id's in het hulpprogramma voor gebruikers. Kies in de vervolgkeuzelijst 'Show', 'Geverifieerde gebruikers'.
+Als uw app [geverifieerde gebruikers-id's](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)verzendt, kunt u tellen op basis van geverifieerde gebruikers-id's in het hulp programma gebruikers. Kies in de vervolg keuzelijst weer geven de optie geverifieerde gebruikers.
 
-De gebruiker gedrag analysehulpprogramma's ondersteund momenteel niet tellen gebruikers of -sessies op basis van eigenschappen dan anonieme gebruikers-ID, geverifieerde gebruikers-ID of sessie-ID.
+De hulpprogram ma's voor analyse van gebruikers gedrag bieden momenteel geen ondersteuning voor het tellen van gebruikers of sessies op basis van andere eigenschappen dan een anonieme gebruikers-ID, een geverifieerde gebruikers-ID of een sessie-ID.
 
-## <a name="naming-events"></a>Naamgeving van gebeurtenissen
-**Mijn app heeft duizenden andere paginaweergave en de namen van aangepaste gebeurtenis. Het is moeilijk onderscheid maken tussen deze en de analysehulpmiddelen van de gebruiker-gedrag vaak reageert. Hoe kan ik deze naamgevingsconventie problemen oplossen?**
+## <a name="naming-events"></a>Naamgevings gebeurtenissen
+**Mijn app heeft duizenden verschillende pagina weergaven en aangepaste gebeurtenis namen. Het is moeilijk om deze te onderscheiden en de analyse hulpprogramma's van het gebruikers gedrag worden vaak niet meer op de reactie. Hoe kan ik deze naamgevings problemen oplossen?**
 
-Paginaweergave en de namen van aangepaste gebeurtenis worden gebruikt in de analysehulpmiddelen van de gebruiker-gedrag. Naamgeving van gebeurtenissen goed is essentieel voor het ophalen van de waarde van deze hulpprogramma's. Het doel is een balans tussen met te weinig, overmatig algemene namen ("knop hebt geklikt") en met te veel, zeer specifieke namen ("knop bewerken hebt geklikt op http:\//www.contoso.com/index ').
+De pagina weergave en aangepaste gebeurtenis namen worden gebruikt in de analyse hulpprogramma's voor gebruikers gedrag. De bron van de naamgeving van gebeurtenissen is van cruciaal belang voor het verkrijgen van waarde uit deze hulpprogram ma's. Het doel is een evenwicht tussen het gebruik van te weinig, te veel generieke namen (' knop geklikt ') en er zijn teveel, meer specifieke namen (op de knop bewerken geklikt op http:\//www.contoso.com/index).
 
-Als u wilt geen wijzigingen aanbrengt aan de paginaweergave en aangepaste gebeurtenisnamen van die uw app verzendt, moet u de broncode en opnieuw implementeren van uw app wijzigen. **Alle telemetrie gegevens in Application Insights voor 90 dagen worden opgeslagen en kan niet worden verwijderd**, zodat de wijzigingen die u in gebeurtenisnamen aanbrengt duurt 90 dagen volledig manifest. Voor de 90 dagen na het aanbrengen van wijzigingen in de naam, wordt de gebeurtenisnamen van zowel de oude en nieuwe weergegeven in uw telemetrie, dus aanpassen van query's en communiceren vanuit uw teams dienovereenkomstig.
+Als u wijzigingen wilt aanbrengen in de pagina weergave en aangepaste gebeurtenis namen die uw app verzendt, moet u de bron code van uw app wijzigen en opnieuw implementeren. **Alle telemetriegegevens in Application Insights worden 90 dagen opgeslagen en kunnen niet worden verwijderd**. wijzigingen die u aanbrengt in gebeurtenis namen, worden 90 dagen in volledig manifesten. Voor de 90 dagen nadat de naam is gewijzigd, worden zowel de oude als de nieuwe namen van de gebeurtenissen in uw telemetrie weer gegeven. u kunt daarom query's en communicatie binnen uw teams aanpassen.
 
-Als uw app te veel pagina weergavenamen verzendt, controleert u of de namen van deze pagina weergeven in de code handmatig worden opgegeven of als ze wordt automatisch door de Application Insights JavaScript SDK verzonden bent:
+Als uw app te veel pagina weergave namen verzendt, controleert u of deze pagina weergave namen hand matig zijn opgegeven in de code of dat ze automatisch worden verzonden door de Application Insights java script SDK:
 
-* Als de weergavenamen van de pagina handmatig worden opgegeven in de code met behulp van de [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), wijzigt u de naam moet minder specifiek. Veelvoorkomende fouten, zoals de naam van de paginaweergave-URL plaatsen vermijden. In plaats daarvan gebruikt u de URL-parameter van de `trackPageView` API. Andere gegevens van de naam van de pagina verplaatsen naar aangepaste eigenschappen.
+* Als de namen van de pagina weergaven hand matig worden opgegeven in code met behulp van de [`trackPageView`-API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), wijzigt u de naam zodat deze minder specifiek is. Vermijd veelvoorkomende fouten, zoals het plaatsen van de URL in de naam van de pagina weergave. Gebruik in plaats daarvan de URL-para meter van de `trackPageView`-API. Andere details van de pagina weergave naam verplaatsen naar aangepaste eigenschappen.
 
-* Als de Application Insights JavaScript SDK automatisch paginanamen weergeven verzendt, kunt u titels van uw pagina's wijzigen of overschakelen naar verzending handmatig paginanamen weergeven. De SDK verzendt de [titel](https://developer.mozilla.org/docs/Web/HTML/Element/title) van elke pagina als de naam van de pagina, standaard. U kunt uw titels om te worden algemene, maar houd ook rekening met de SEO en andere gevolgen die deze wijziging hebt kan wijzigen. Handmatig op te geven in de weergave met de naam de `trackPageView` API vervangt de namen van de automatisch verzameld, zodat u meer algemene namen in telemetrie verzenden kunt zonder te hoeven wijzigen van pagina's.   
+* Als de Application Insights java script SDK automatisch pagina weergave namen verzendt, kunt u de titels van uw pagina's wijzigen of overschakelen naar het hand matig verzenden van pagina weergave namen. De SDK verzendt standaard de [titel](https://developer.mozilla.org/docs/Web/HTML/Element/title) van elke pagina als de weergave naam van de pagina. U kunt uw titels zo wijzigen dat ze meer algemeen zijn, maar mindful zijn van SEO en andere gevolgen voor deze wijziging. Het hand matig opgeven van pagina weergave namen met de `trackPageView`-API overschrijft de automatisch verzamelde namen, zodat u meer algemene namen in telemetrie kunt verzenden zonder pagina titels te wijzigen.   
 
-Als uw app te veel namen van aangepaste gebeurtenissen verzendt is, moet u de naam in de volgende code worden minder specifieke wijzigen. Nogmaals, te voorkomen dat de URL's en andere per pagina of dynamische gegevens rechtstreeks in de namen van aangepaste gebeurtenis plaatsen. In plaats daarvan deze gegevens te verplaatsen naar aangepaste eigenschappen van het aangepaste gebeurtenis met de `trackEvent` API. Bijvoorbeeld, in plaats van `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, wordt aangeraden dat er ongeveer als `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
+Als uw app te veel aangepaste gebeurtenis namen verzendt, wijzigt u de naam in de code zodat deze minder specifiek is. Vermijd het gebruik van Url's en andere gegevens per pagina of dynamische informatie rechtstreeks in de aangepaste gebeurtenis namen. Verplaats deze gegevens in plaats daarvan naar aangepaste eigenschappen van de aangepaste gebeurtenis met de `trackEvent`-API. Zo kunt u in plaats van `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`bijvoorbeeld een `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van gebruiker gedrag analytics-hulpprogramma 's](usage-overview.md)
+* [Overzicht van analyse hulpprogramma's voor gebruikers gedrag](usage-overview.md)
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp krijgen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

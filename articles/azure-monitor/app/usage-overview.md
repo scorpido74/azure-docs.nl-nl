@@ -1,22 +1,18 @@
 ---
 title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128963"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899439"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
@@ -30,7 +26,7 @@ De beste ervaring wordt verkregen door Application Insights te installeren in de
 
     * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat deze wordt ``</head>``gesloten. Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
+2. **Webpagina code:** Voeg het volgende script toe aan de webpagina voordat de ``</head>``worden gesloten. Vervang de instrumentatie sleutel door de juiste waarde voor uw Application Insights Bron:
     
     ```html
     <script type="text/javascript">
@@ -77,7 +73,7 @@ Retentie helpt u te begrijpen hoe vaak uw gebruikers terugkeren naar het gebruik
 - Formulier hypo Thesen op basis van echte gebruikers gegevens 
 - Bepalen of er een probleem is met het bewaren van uw product 
 
-![Bewaarperiode](./media/usage-overview/retention.png) 
+![Retentie](./media/usage-overview/retention.png) 
 
 Met de besturings elementen voor retentie bovenaan kunt u specifieke gebeurtenissen en tijds bereik definiëren voor het berekenen van de Bewaar periode. De grafiek in het midden geeft een visuele weer gave van het algemene Bewaar percentage op basis van het opgegeven tijds bereik. In de grafiek aan de onderkant staat een afzonderlijke Bewaar periode in een bepaalde tijd. Met dit detail niveau kunt u begrijpen wat uw gebruikers doen en wat van invloed kan zijn op het retour neren van gebruikers met een gedetailleerdere granulariteit.  
 
@@ -159,9 +155,9 @@ In de initialisatie functie van de web-app, zoals Global.asax.cs:
 **ASP.NET Core-Apps**
 
 > [!NOTE]
-> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core toepassingen. 
+> Het toevoegen van initializer met behulp van `ApplicationInsights.config` of het gebruik van `TelemetryConfiguration.Active` is niet geldig voor ASP.NET Core toepassingen. 
 
-Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van `Startup.cs` uw klasse.
+Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuwe `TelemetryInitializer` toe door deze toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` methode van uw `Startup.cs`-klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

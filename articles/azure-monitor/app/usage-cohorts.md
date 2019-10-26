@@ -1,120 +1,115 @@
 ---
-title: Azure Application Insights gebruik cohorten | Microsoft Docs
-description: Verschillende groepen of gebruikers, sessies, gebeurtenissen of bewerkingen die iets hebben analyseren
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure-toepassing-cohortes voor inzichten gebruiken | Microsoft Docs
+description: Analyseer verschillende sets of gebruikers, sessies, gebeurtenissen of bewerkingen met een gemeen schappelijke waarde
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604103"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899497"
 ---
-# <a name="application-insights-cohorts"></a>Application Insights cohorten
+# <a name="application-insights-cohorts"></a>Application Insights cohortes
 
-Een cohort is een set van gebruikers, sessies, gebeurtenissen of bewerkingen die iets met elkaar gemeen hebben. In Azure Application Insights worden cohorten gedefinieerd door een analytics-query. In gevallen waar u hebt voor het analyseren van een specifieke set van gebruikers of gebeurtenissen optreden, cohorten kunnen biedt u meer flexibiliteit om exact de set die u geïnteresseerd bent in.
+Een cohort is een set gebruikers, sessies, gebeurtenissen of bewerkingen die een gemeen schappelijke waarde hebben. In Azure-toepassing inzichten worden cohorts gedefinieerd door een Analytics-query. In gevallen waarin u een specifieke set gebruikers of gebeurtenissen herhaaldelijk moet analyseren, kunnen cohorts meer flexibiliteit bieden om precies de set te zien waarin u geïnteresseerd bent.
 
-![Deelvenster cohorten](./media/usage-cohorts/001.png)
+![Het deel venster cohorts](./media/usage-cohorts/001.png)
 
-## <a name="cohorts-versus-basic-filters"></a>Cohorten versus basisfilters
+## <a name="cohorts-versus-basic-filters"></a>Cohortes versus basis filters
 
-Cohorten worden gebruikt op een manier die vergelijkbaar is met filters. Maar de cohorten definities zijn opgebouwd uit aangepaste analytics-query's, zodat ze complexe en nog veel meer aanpasbaar. In tegenstelling tot filters, kunt u cohorten opslaan zodat andere leden van uw team opnieuw kunnen worden gebruikt.
+Cohortes worden op dezelfde manier gebruikt als filters. De definities van cohortes zijn gebaseerd op aangepaste analyse query's, zodat ze veel meer kunnen worden aangepast en complex zijn. In tegens telling tot filters kunt u cohorts opslaan zodat andere leden van uw team ze kunnen hergebruiken.
 
-U kunt een cohort van gebruikers die u hebt al geprobeerd een nieuwe functie in uw app definiëren. U kunt deze cohort opslaan in uw Application Insights-resource. Het is eenvoudig voor het analyseren van deze groep van specifieke gebruikers is opgeslagen in de toekomst.
+U kunt een cohort definiëren van gebruikers die alle hebben geprobeerd een nieuwe functie in uw app uit te proberen. U kunt deze cohort opslaan in uw Application Insights-resource. Het is eenvoudig om deze opgeslagen groep specifieke gebruikers in de toekomst te analyseren.
 
 > [!NOTE]
-> Nadat ze zijn gemaakt, zijn cohorten beschikbaar in de hulpprogramma's voor gebruikers, sessies, gebeurtenissen en Gebruikersstromen.
+> Nadat ze zijn gemaakt, zijn er cohorts beschikbaar van de hulpprogram ma's gebruikers, sessies, gebeurtenissen en Gebruikersstromen.
 
-## <a name="example-engaged-users"></a>Voorbeeld: Betrokken gebruikers
+## <a name="example-engaged-users"></a>Voor beeld: ingeschakelde gebruikers
 
-Uw team definieert een betrokken gebruiker als iedereen die gebruikmaakt van uw app in vijf of meer keer in een maand. In deze sectie maakt definiëren u een cohort van deze betrokken gebruikers.
+Uw team definieert een ingeschakelde gebruiker als iedereen die uw app vijf of meer keer in een bepaalde maand gebruikt. In deze sectie definieert u een cohort van deze ingeschakelde gebruikers.
 
-1. Open het hulpprogramma voor cohorten.
+1. Open het hulp programma cohorts.
 
-2. Selecteer de **sjabloongalerie** tabblad. Ziet u een verzameling van sjablonen voor verschillende cohorten.
+2. Selecteer het tabblad **sjabloon galerie** . U ziet een verzameling sjablonen voor verschillende cohorts.
 
-3. Selecteer **betrokken gebruikers--op dagen gebruikt**.
+3. Selecteer **ingeschakelde gebruikers--op dagen gebruikt**.
 
-    Er zijn drie parameters voor deze cohort:
-    * **Activiteiten**, waarin u kiezen welke gebeurtenissen en paginaweergaven tellen als "gebruik."
-    * **Periode**, de definitie van een maand.
-    * **UsedAtLeastCustom**, het aantal keren gebruikers moeten iets gebruiken binnen een periode moeten worden geteld als betrokken.
+    Er zijn drie para meters voor deze cohort:
+    * **Activiteiten**, waar u kunt kiezen welke gebeurtenissen en pagina weergaven het ' gebruik ' tellen.
+    * **Period**, de definitie van een maand.
+    * **UsedAtLeastCustom**, het aantal keren dat gebruikers iets moeten gebruiken binnen een periode om te tellen als actief.
 
-4. Wijziging **UsedAtLeastCustom** naar **5 + dagen**, en laat **periode** op de standaardwaarde van 28 dagen.
+4. Wijzig **UsedAtLeastCustom** in **5 + dagen**en geef de standaard waarde van 28 **dagen aan.**
 
-    ![Betrokken gebruikers](./media/usage-cohorts/003.png)
+    ![Ingeschakelde gebruikers](./media/usage-cohorts/003.png)
 
-    Nu deze cohort alle gebruikers-id's verzonden met een aangepaste gebeurtenis of pagina weergave op 5 vertegenwoordigt scheiden dagen in de afgelopen 28.
+    Nu vertegenwoordigt deze cohort alle gebruikers-Id's die met een aangepaste gebeurtenis of pagina weergave worden verzonden op 5 afzonderlijke dagen in de afgelopen 28.
 
 5. Selecteer **Opslaan**.
 
    > [!TIP]
-   > Geef uw cohort een naam, zoals ' Engaged gebruikers (5 + dagen). " Sla het op 'Mijn rapporten' of 'gedeelde rapporten,", afhankelijk van of u wilt dat anderen die toegang hebben tot deze Application Insights-resource om te zien deze cohort.
+   > Geef uw cohort een naam, bijvoorbeeld ' ingeschakelde gebruikers (5 + dagen) '. Sla het bestand op in ' mijn rapporten ' of ' gedeelde rapporten ', afhankelijk van of u wilt dat andere personen die toegang hebben tot deze Application Insights resource, deze cohort kunnen zien.
 
-6. Selecteer **terug naar de galerie**.
+6. Selecteer **terug naar galerie**.
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>Wat kunt u doen met behulp van deze cohort?
 
-Open het hulpprogramma voor gebruikers. In de **weergeven** vervolgkeuzelijst kiest u het cohort dat u hebt gemaakt onder **gebruikers die deel uitmaken van**.
+Open het hulp programma gebruikers. Kies in de vervolg keuzelijst **weer geven** de cohort die u hebt gemaakt onder **gebruikers die deel uitmaken**.
 
-Het hulpprogramma gebruikers wordt nu gefilterd op deze cohort van gebruikers:
+Het hulp programma gebruikers wordt nu gefilterd op deze cohort van gebruikers:
 
-![Gebruikers deelvenster gefilterd op een bepaalde cohort](./media/usage-cohorts/004.png)
+![Deel venster gebruikers gefilterd op een bepaalde cohort](./media/usage-cohorts/004.png)
 
-Enkele belangrijke dingen die opvallen:
+Enkele belang rijke aandachtspunten:
 
-* U kunt geen deze set maken via normale filters. De datum-logica wordt meer geavanceerde.
-* U kunt deze cohort verder filteren met behulp van de normale filters in het hulpprogramma gebruikers. Hoewel het cohort is gedefinieerd in 28 dagen windows, kunt u dus nog steeds het tijdsbereik in het hulpprogramma gebruikers worden 30 en 60 en 90 dagen aanpassen.
+* U kunt deze set niet via normale filters maken. De datum logica is geavanceerder.
+* U kunt deze cohort verder filteren met behulp van de normale filters in het hulp programma gebruikers. Hoewel de cohort is gedefinieerd op Windows 28 dagen, kunt u het tijds bereik in het hulp programma gebruikers nog steeds aanpassen aan 30, 60 of 90 dagen.
 
-Deze filters bieden ondersteuning voor meer geavanceerde vragen die onmogelijk is om uit te drukken via de opbouwfunctie voor query's. Een voorbeeld is _mensen die in de afgelopen 28 dagen betrokken zijn. Het gedrag van deze dezelfde personen gedurende de afgelopen 60 dagen?_
+Deze filters ondersteunen meer geavanceerde vragen die niet in de opbouw functie voor query's kunnen worden uitgedrukt. Een voor beeld is _mensen die de afgelopen 28 dagen zijn betrokken. Hoe hebben diezelfde mensen zich in de afgelopen 60 dagen gedragen?_
 
-## <a name="example-events-cohort"></a>Voorbeeld: Gebeurtenissencohort
+## <a name="example-events-cohort"></a>Voor beeld: gebeurtenissen cohort
 
-Ook kunt u cohorten van gebeurtenissen. In deze sectie definieert u een cohort van de gebeurtenissen en paginaweergaven. Vervolgens ziet u hoe u ze op de andere hulpprogramma's gebruiken. Deze cohort kan een reeks gebeurtenissen die uw team acht definiëren _active gebruik_ of een set met betrekking tot een bepaalde functie.
+U kunt ook cohorts van gebeurtenissen maken. In deze sectie definieert u een cohort van de gebeurtenissen en pagina weergaven. Vervolgens ziet u hoe u deze kunt gebruiken in de andere hulpprogram ma's. In deze cohort kan een set gebeurtenissen worden gedefinieerd die door uw team worden beschouwd als _actief gebruik_ of een set die betrekking heeft op een bepaalde nieuwe functie.
 
-1. Open het hulpprogramma voor cohorten.
+1. Open het hulp programma cohorts.
 
-2. Selecteer de **sjabloongalerie** tabblad. Voor verschillende cohorten ziet u een verzameling van sjablonen.
+2. Selecteer het tabblad **sjabloon galerie** . U ziet een verzameling sjablonen voor verschillende cohorts.
 
-3. Selecteer **gebeurtenissen kiezen**.
+3. Selecteer **gebeurtenissen**selecteren.
 
-    ![Schermafbeelding van gebeurtenissen kiezen](./media/usage-cohorts/006.png)
+    ![Scherm opname van gebeurtenissen selecteren](./media/usage-cohorts/006.png)
 
-4. In de **activiteiten** vervolgkeuzelijst vak, selecteert u de gebeurtenissen die u wilt worden in de cohort.
+4. Selecteer in de vervolg keuzelijst **activiteiten** de gebeurtenissen die u in de cohort wilt maken.
 
-5. Sla het cohort en geef deze een naam.
+5. Sla de cohort op en geef deze een naam.
 
-## <a name="example-active-users-where-you-modify-a-query"></a>Voorbeeld: Actieve gebruikers waar u een query wijzigen
+## <a name="example-active-users-where-you-modify-a-query"></a>Voor beeld: actieve gebruikers waar u een query wijzigt
 
-De vorige twee cohorten zijn gedefinieerd met behulp van de vervolgkeuzelijsten. Maar u kunt ook cohorten definiëren met behulp van analytics-query's voor totale flexibiliteit. Om te zien hoe een cohort van gebruikers te maken van het Verenigd Koninkrijk.
+De vorige twee cohortes zijn gedefinieerd met behulp van vervolg keuzelijsten. U kunt ook cohorts definiëren door analyse query's te gebruiken voor de totale flexibiliteit. Om te zien hoe u een cohort van gebruikers maakt vanuit het Verenigd Konink rijk.
 
-![Gebruik van het programma cohorten hek animatie](./media/usage-cohorts/cohorts0001.gif)
+![Bewegende afbeelding doorlopend gebruik van het hulp programma cohorts](./media/usage-cohorts/cohorts0001.gif)
 
-1. Open het hulpprogramma cohorten, selecteer de **sjabloongalerie** tabblad, en selecteer **leeg gebruikerscohort**.
+1. Open het hulp programma cohorts, selecteer het tabblad **sjabloon galerie** en selecteer **lege gebruikers cohort**.
 
-    ![Leeg gebruikerscohort](./media/usage-cohorts/001.png)
+    ![Nieuwe gebruikers cohort](./media/usage-cohorts/001.png)
 
     Er zijn drie secties:
-   * Een Markdown tekstsectie, waar u het cohort in meer detail voor anderen in uw team beschreven.
+   * Een sectie met een afkorting tekst, waar u de cohort uitvoeriger beschrijft voor anderen in uw team.
 
-   * Een gedeelte van de parameters, waar u uw eigen parameters, zoals maken **activiteiten** en andere vervolgkeuzelijsten uit de vorige twee voorbeelden.
+   * Een sectie para meters, waar u uw eigen para meters, zoals **activiteiten** en andere vervolg keuzelijsten van de vorige twee voor beelden, maakt.
 
-   * Een querysectie, waar u het cohort definiëren met behulp van een analytics-query.
+   * Een query sectie, waarin u de cohort definieert met behulp van een analyse query.
 
-     In de querysectie u [een analytics-query schrijven](/azure/kusto/query). De query selecteert het aantal rijen met een beschrijving van het cohort dat u wilt definiëren. Het programma cohorten vervolgens impliciet wordt toegevoegd een "| samenvatten op user_Id'-component in de query. Deze gegevens is een voorbeeld hieronder de query in een tabel, zodat u kunt ervoor zorgen dat uw query resultaten worden geretourneerd.
+     In de sectie query schrijft u [een Analytics-query](/azure/kusto/query). Met de query wordt de bepaalde set rijen geselecteerd waarmee de cohort wordt beschreven die u wilt definiëren. Het hulp programma cohorts voegt vervolgens impliciet een ' | samenvatten per user_Id-component voor de query. Deze gegevens worden weer gegeven onder de query in een tabel, zodat u er zeker van kunt zijn dat uw query resultaten oplevert.
 
      > [!NOTE]
-     > Als u de query niet ziet, probeert u het formaat van de sectie als u wilt deze groter en weergeven van de query. De GIF-animaties kunnen aan het begin van deze sectie ziet u het formaat gedrag.
+     > Als u de query niet ziet, probeert u het formaat van de sectie aan te geven om deze hoger te maken en de query te tonen. Met animatie. gif aan het begin van deze sectie wordt het gedrag voor het wijzigen van de grootte geïllustreerd.
 
 2. Kopieer en plak de volgende tekst in de query-editor:
 
@@ -123,22 +118,22 @@ De vorige twee cohorten zijn gedefinieerd met behulp van de vervolgkeuzelijsten.
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Selecteer **Query uitvoeren**. Als er geen gebruikers-id's worden weergegeven in de tabel, overstappen naar een land/de regio waar uw toepassing heeft voor gebruikers.
+3. Selecteer **query uitvoeren**. Als er geen gebruikers-Id's worden weer gegeven in de tabel, wijzigt u in een land/regio waarin uw toepassing gebruikers heeft.
 
-4. Opslaan en de naam van het cohort.
+4. Sla de cohort op en noem deze.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-_Ik heb een cohort van gebruikers van een bepaald land/regio gedefinieerd. Als ik deze cohort in het hulpprogramma gebruikers op het zojuist instellen van een filter op dat land/regio, zie ik verschillende resultaten. Waarom is dat?_
+_Ik heb een cohort van gebruikers gedefinieerd vanuit een bepaald land/regio. Wanneer ik deze cohort in het hulp programma gebruikers vergelijkt om alleen een filter in te stellen voor dat land/deze regio, zie ik verschillende resultaten. Waarom?_
 
-Cohorten en filters zijn verschillend. Stel dat u een cohort van gebruikers uit het Verenigd Koninkrijk hebt (gedefinieerd als in het vorige voorbeeld) en vergelijken van de resultaten met het instellen van het filter "land of regio = Verenigd Koninkrijk."
+Cohort en filters verschillen. Stel dat u een cohort hebt van gebruikers uit het Verenigd Konink rijk (gedefinieerd als het vorige voor beeld) en vergelijkt u met de resultaten voor het instellen van het filter ' land of regio = Verenigd Konink rijk '.
 
-* De versie van de cohort toont alle gebeurtenissen van gebruikers die een of meer gebeurtenissen uit het Verenigd Koninkrijk in het huidige tijdsbereik verzonden. Als u op land of regio splitsen, ziet u waarschijnlijk veel landen en regio's.
-* De versie van de filters worden alleen gebeurtenissen uit het Verenigd Koninkrijk weergegeven. Maar als u op land of regio splitsen, ziet u alleen het Verenigd Koninkrijk.
+* De cohort-versie toont alle gebeurtenissen van gebruikers die een of meer gebeurtenissen van het Verenigd Konink rijk in het huidige tijds bereik hebben verzonden. Als u op land of regio splitst, ziet u waarschijnlijk veel landen en regio's.
+* De filters-versie toont alleen gebeurtenissen uit het Verenigd Konink rijk. Maar als u op land of regio splitst, ziet u alleen het Verenigd Konink rijk.
 
 ## <a name="learn-more"></a>Meer informatie
 
-* [Querytaal voor analytische gegevens](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analyse query taal](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
-* [Gebruikersstromen](usage-flows.md)
-* [Gebruiksoverzicht](usage-overview.md)
+* [Gebruikers stromen](usage-flows.md)
+* [Overzicht van gebruik](usage-overview.md)

@@ -1,24 +1,18 @@
 ---
 title: Verschillen in de query taal van Azure Monitor-logboek | Microsoft Docs
 description: Naslag informatie voor de Kusto-query taal die wordt gebruikt door Azure Monitor. Bevat extra elementen die specifiek zijn voor Azure Monitor en elementen die niet worden ondersteund in Azure Monitor-logboek query's.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d3c2daafc9116d23d837e86e60ca628bbe34647
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990171"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900388"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Verschillen in de query taal van Azure Monitor-logboek
 
@@ -31,16 +25,16 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Instructies worden niet ondersteund in Azure Monitor
 
-* [Alias](/azure/kusto/query/aliasstatement)
+* [Toe](/azure/kusto/query/aliasstatement)
 * [Query parameters](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Functies die niet worden ondersteund in Azure Monitor
 
-* [cluster()](/azure/kusto/query/clusterfunction)
+* [cluster ()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [Data Base ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -59,8 +53,8 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 ## <a name="additional-operators-in-azure-monitor"></a>Extra Opera tors in Azure Monitor
 De volgende Opera tors ondersteunen specifieke Azure Monitor functies en zijn niet beschikbaar buiten Azure Monitor.
 
-* [app()](app-expression.md)
-* [workspace()](workspace-expression.md)
+* [app ()](app-expression.md)
+* [werk ruimte ()](workspace-expression.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

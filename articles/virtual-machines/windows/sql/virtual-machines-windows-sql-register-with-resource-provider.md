@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 433480b4a587b3a085c3b1c0ba4122ae98eb4508
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756193"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897721"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -246,9 +246,9 @@ Voer het volgende Power shell-code fragment uit:
   ```
 ---
 
-## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>De resource provider van de SQL-VM registreren bij een abonnement 
+## <a name="register-subscription-with-rp"></a>Abonnement registreren bij RP
 
-Als u uw SQL Server-VM wilt registreren bij de resource provider van de SQL-VM, moet u de resource provider registreren bij uw abonnement. U kunt dit doen met behulp van de Azure Portal, de Azure CLI of Power shell.
+Als u uw SQL Server-VM wilt registreren bij de resource provider van de SQL-VM, moet u uw abonnement eerst registreren bij de resource provider.  U kunt dit doen met behulp van de Azure Portal, de Azure CLI of Power shell.
 
 ### <a name="azure-portal"></a>Azure Portal
 

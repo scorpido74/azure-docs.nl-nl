@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f1dfbbc6036273e6ddf724e185e23073e7a78505
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809119"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900777"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Zelf studie: deel 2-de gerouteerde berichten weer geven
 
@@ -116,9 +116,9 @@ Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stre
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
-4. Selecteer **invoer**onder **taak topologie**.
+1. Selecteer **invoer**onder **taak topologie**.
 
-5. Selecteer in het deel venster **invoer** de optie **stroom invoer toevoegen** en selecteer IOT hub. Vul de volgende velden in op het scherm dat wordt weergegeven:
+2. Selecteer in het deel venster **invoer** de optie **stroom invoer toevoegen** en selecteer IOT hub. Vul de volgende velden in op het scherm dat wordt weergegeven:
 
    **Invoeralias**: in deze zelfstudie wordt gebruikgemaakt **contosoinputs**.
 
@@ -138,7 +138,7 @@ Als u de gegevens in een Power BI-visualisatie wilt zien, stelt u eerst een Stre
 
    ![De invoer voor de stream Analytics-taak instellen](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. Selecteer **Opslaan**.
+3. Selecteer **Opslaan**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Een uitvoer aan de Stream Analytics-taak toevoegen
 

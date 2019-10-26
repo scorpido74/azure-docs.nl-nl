@@ -1,18 +1,18 @@
 ---
 title: Overzicht van logboek query's in Azure Monitor | Microsoft Docs
 description: Beantwoordt veelgestelde vragen met betrekking tot logboek query's en haalt u aan de slag.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 89633d77a6270b5c34cd9b4f52bc7286f84b1976
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 06/19/2019
+ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827305"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900274"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
 Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.
@@ -36,7 +36,7 @@ Azure Monitor Logboeken is gebaseerd op [Azure Data Explorer](/azure/data-explor
 
 Zie de [documentatie van Azure Data Explorer KQL](/azure/kusto/query) voor volledige documentatie over KQL en naslag informatie over de verschillende beschik bare functies.<br>
 Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md) voor een snelle walkthrough van de taal met gegevens uit Azure monitor Logboeken.
-Zie [Azure monitor taal verschillen](data-explorer-difference.md) in de logboeken voor kleine verschillen in de versie van KQL die door Azure monitor wordt gebruikt.
+Zie [Azure monitor taal verschillen in de logboeken](data-explorer-difference.md) voor kleine verschillen in de versie van KQL die door Azure monitor wordt gebruikt.
 
 ## <a name="what-data-is-available-to-log-queries"></a>Welke gegevens zijn beschikbaar voor logboek query's?
 Alle gegevens die in Azure Monitor logboeken zijn verzameld, kunnen worden opgehaald en geanalyseerd in logboek query's. Met verschillende gegevens bronnen worden de gegevens naar verschillende tabellen geschreven, maar u kunt meerdere tabellen in één query toevoegen om gegevens te analyseren over meerdere bronnen. Wanneer u een query bouwt, moet u eerst bepalen welke tabellen de gegevens bevatten die u zoekt. u hebt dus mini maal een basis informatie over hoe gegevens in Azure Monitor logboeken zijn gestructureerd.
@@ -94,10 +94,10 @@ Naast het interactief werken met logboek query's en hun resultaten in Log Analyt
 
 - **Waarschuwings regels.** [Waarschuwings regels](../platform/alerts-overview.md) identificeren proactief problemen van gegevens in uw werk ruimte.  Elke waarschuwings regel is gebaseerd op een zoek opdracht in logboeken die automatisch regel matig wordt uitgevoerd.  De resultaten worden gecontroleerd om te bepalen of er een waarschuwing moet worden gemaakt.
 - **Dash boards.** U kunt de resultaten van een wille keurige query vastmaken aan een [Azure-dash board](../learn/tutorial-logs-dashboards.md) , zodat u logboek-en metrische gegevens samenvoegt en optioneel kunt delen met andere Azure-gebruikers.
-- **Weergaven.**  U kunt visualisaties van gegevens maken die moeten worden opgenomen in gebruikers dashboards met de [weer gave Designer](../platform/view-designer.md).  Logboek query's bieden de gegevens die worden [](../platform/view-designer-tiles.md) gebruikt door tegels en [visualisatie onderdelen](../platform/view-designer-parts.md) in elke weer gave.  
+- **Weergaven.**  U kunt visualisaties van gegevens maken die moeten worden opgenomen in gebruikers dashboards met de [weer gave Designer](../platform/view-designer.md).  Logboek query's bieden de gegevens die worden gebruikt door [tegels](../platform/view-designer-tiles.md) en [visualisatie onderdelen](../platform/view-designer-parts.md) in elke weer gave.  
 - **Exporteren.**  Wanneer u logboek gegevens importeert van Azure Monitor naar Excel of [Power bi](../platform/powerbi.md), kunt u een logboek query maken om de gegevens te definiëren die moeten worden geëxporteerd.
-- **PowerShell.** U kunt een Power shell-script uitvoeren vanaf een opdracht regel of een Azure Automation runbook dat gebruikmaakt van [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) om logboek gegevens op te halen van Azure monitor.  Voor deze cmdlet is een query vereist om te bepalen welke gegevens moeten worden opgehaald.
-- **API voor Azure Monitor-Logboeken.**  Met de [API voor Azure monitor](https://dev.loganalytics.io) -logboeken kan elke rest API-client logboek gegevens uit de werk ruimte ophalen.  De API-aanvraag bevat een query die wordt uitgevoerd op Azure Monitor om te bepalen welke gegevens moeten worden opgehaald.
+- **Zo.** U kunt een Power shell-script uitvoeren vanaf een opdracht regel of een Azure Automation runbook dat gebruikmaakt van [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) om logboek gegevens op te halen van Azure monitor.  Voor deze cmdlet is een query vereist om te bepalen welke gegevens moeten worden opgehaald.
+- **API voor Azure Monitor-Logboeken.**  Met de [API voor Azure monitor-logboeken](https://dev.loganalytics.io) kan elke rest API-client logboek gegevens uit de werk ruimte ophalen.  De API-aanvraag bevat een query die wordt uitgevoerd op Azure Monitor om te bepalen welke gegevens moeten worden opgehaald.
 
 
 ## <a name="next-steps"></a>Volgende stappen

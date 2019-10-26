@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516526"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900932"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app C# in via IOT hub Device streams (preview)
 
@@ -33,6 +33,8 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
   * VS - centraal
   * Centrale VS-EUAP
+  * Europa - noord
+  * Azië - zuidoost
 
 * De twee voorbeeld toepassingen die u in deze Quick start uitvoert, zijn C#geschreven in. U hebt de .NET Core SDK 2.1.0 of hoger nodig op uw ontwikkel computer.
   * Down load de [.net core SDK voor meerdere platforms van .net](https://www.microsoft.com/net/download/all).

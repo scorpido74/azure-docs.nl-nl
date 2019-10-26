@@ -1,21 +1,19 @@
 ---
 title: 'Snelstartgids: monitor met Azure-toepassing Insights'
 description: Biedt instructies om snel een Node.js-web-app in te stellen om te controleren met Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 23fdf326bd1d3deac56f138130c3767427d062e5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528877"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894947"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quick Start: uw node. js-webtoepassing bewaken met Azure-toepassing Insights
 
@@ -92,7 +90,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
 
    ![Toepassings toewijzing Application Insights](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Selecteer het pictogram van de **app-analyse** ![Application kaart pictogram ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **weer gave in de analyse**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
+3. Selecteer het pictogram voor de **app-analyse** ![toepassings kaart pictogram](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **weer gave in Analytics**.  Hierdoor wordt **Application Insights Analytics** geopend. Dit biedt een querytaal met opmaak voor het analyseren van alle gegevens die zijn verzameld met Application Insights. In dit geval wordt er een query gegenereerd waarmee het aantal aanvragen wordt weergegeven als een grafiek. U kunt uw eigen query's schrijven om andere gegevens te analyseren.
 
    ![Application Insights Analytics-grafieken](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 

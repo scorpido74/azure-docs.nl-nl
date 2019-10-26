@@ -1,96 +1,91 @@
 ---
-title: Azure Application Insights gebruik Impact | Microsoft docs
-description: Analyseren hoe verschillende eigenschappen mogelijk van invloed zijn op conversieverhoudingen van onderdelen van uw apps.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Gebruiks impact van Azure-toepassing Insights | Micro soft docs
+description: Analyseer hoe verschillende eigenschappen mogelijke conversie tarieven voor delen van uw apps hebben.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fffe71cb80be7795201ab672ca632788f4f18e5c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604189"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899448"
 ---
-# <a name="impact-analysis-with-application-insights"></a>Impactanalyse met Application Insights
+# <a name="impact-analysis-with-application-insights"></a>Impact analyse met Application Insights
 
-Impact analyseren hoe laadtijden en andere eigenschappen van invloed zijn op conversieverhoudingen van verschillende onderdelen van uw app. Voor nauwkeuriger wordt geplaatst, worden ontdekt hoe **elke dimensie** van een **paginaweergave**, **aangepaste gebeurtenis**, of **aanvraag** is van invloed op het gebruik van een verschillende **paginaweergave** of **aangepaste gebeurtenis**. 
+Impact analyseert hoe laad tijden en andere eigenschappen invloed hebben op de conversie snelheid voor verschillende onderdelen van uw app. Om het nauw keuriger te plaatsen, detecteert het **hoe elke dimensie** van **een pagina weergave**, **aangepaste gebeurtenis**of **aanvraag** van invloed is op het gebruik van een andere **pagina weergave** of een **aangepaste gebeurtenis**. 
 
-![Hulpprogramma voor impact](./media/usage-impact/0001-impact.png)
+![Hulp programma voor impact](./media/usage-impact/0001-impact.png)
 
-## <a name="still-not-sure-what-impact-does"></a>Nog steeds niet zeker wat gevolgen voor moet doet?
+## <a name="still-not-sure-what-impact-does"></a>Weet u nog steeds niet wat invloed heeft?
 
-Een manier om na te denken van de Impact is als de ultieme hulpprogramma voor het vereffenen van argumenten met iemand in uw team over hoe traagheid in een bepaald aspect van uw site is die betrekking hebben op of gebruikers blijven. Hoewel gebruikers een bepaalde hoeveelheid traagheid tolereren kunnen, kunt u Impact inzicht in de beste manier om te verdelen optimalisatie en prestaties te maximaliseren gebruikersconversie.
+Een manier om de impact te zien is als het ultieme hulp programma voor het afzetten van argumenten met iemand in uw team over hoe traag in sommige aspecten van uw site invloed heeft op de werking van de gebruiker. Hoewel gebruikers een zekere mate van tragheid kunnen verdragen, geeft de impact u inzicht in de manier waarop het beste de optimalisatie en de prestaties van de gebruikers conversie kan worden gebalanceerd.
 
-Maar alleen een subset van de mogelijkheden van de Impact analyseren van prestaties is. Aangezien Impact biedt ondersteuning voor aangepaste gebeurtenissen en dimensies, zijn beantwoorden van vragen zoals hoe is de keuze van de gebruiker-browser gerelateerd met verschillende snelheden van conversie slechts een paar muisklikken.
+Maar het analyseren van prestaties is slechts een subset van de mogelijkheden van impact. Omdat de impact aangepaste gebeurtenissen en dimensies ondersteunt, is het beantwoorden van vragen zoals de keuze van de gebruikers browser die overeenkomt met de verschillende snelheid van de conversie, maar een paar muis klikken.
 
-![Schermafbeelding conversie door browsers](./media/usage-impact/0004-browsers.png)
+![Scherm afbeeldings conversie per browser](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Uw Application Insights-resource moet paginaweergaven of aangepaste gebeurtenissen met het hulpprogramma Impact bevatten. [Meer informatie over het instellen van uw app voor het verzamelen van paginaweergaven automatisch met de Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md). Houd er rekening mee dat omdat u bij het analyseren van CORRELATIE, voorbeeld grootte is ook belangrijk.
+> Uw Application Insights-resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma impact. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](../../azure-monitor/app/javascript.md). Denk er ook aan dat u bij het analyseren van de correlatie, voor beelden van de grootte.
 >
 >
 
-## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Laadtijd van browserpagina beïnvloedt hoeveel mensen op de pagina Mijn converteren?
+## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Is de laad tijd van pagina's van invloed op het aantal mensen dat op mijn pagina wordt geconverteerd?
 
-Kies een initiële paginaweergave, aangepaste gebeurtenis of aanvraag om te beginnen met het beantwoorden van vragen met het hulpprogramma Impact.
+Kies voor het beantwoorden van vragen met het effect hulp programma een eerste pagina weergave, aangepaste gebeurtenis of aanvraag.
 
-![Hulpprogramma voor impact](./media/usage-impact/0002-dropdown.png)
+![Hulp programma voor impact](./media/usage-impact/0002-dropdown.png)
 
-1. Selecteer de paginaweergave van een in de **voor de paginaweergave** vervolgkeuzelijst.
-2. Laat de **analyseren hoe de** vervolgkeuzelijst op de standaardselectie van **duur** (In deze context **duur** is een alias voor **laadtijd van browserpagina**.)
-3. Voor de **heeft gevolgen voor het gebruik van** vervolgkeuzelijst, selecteert u een aangepaste gebeurtenis. Deze gebeurtenis moet overeenkomen met een UI-element op de weergave van de pagina die u hebt geselecteerd in stap 1.
+1. Selecteer een pagina weergave in de vervolg keuzelijst **voor de pagina weergave** .
+2. Zorg **ervoor dat de** vervolg keuzelijst **analyseren hoe** de standaard waarde is geselecteerd (in deze context **duur** is een alias voor de **laad tijd**van de pagina.)
+3. Selecteer een aangepaste gebeurtenis voor de **gevolgen van het gebruik van de** vervolg keuzelijst. Deze gebeurtenis moet overeenkomen met een UI-element in de pagina weergave die u hebt geselecteerd in stap 1.
 
-![Schermafbeelding van de resultaten](./media/usage-impact/0003-results.png)
+![Scherm opname van resultaten](./media/usage-impact/0003-results.png)
 
-In dit geval als **productpagina** laadtijd verhoogt de conversieverhouding te **aankoop-Product hebt geklikt** uitvalt. Op basis van de distributie hierboven, kan de duur van een optimale pagina laden van 3,5 seconden voor het bereiken van een mogelijke 55% conversieverhouding worden gericht. Verdere voor verbeterde prestaties verminderen laadtijd hieronder 3,5 seconden doen op dit moment niet correleert met de conversie van extra voordelen.
+In dit exemplaar is de laad tijd van de **product pagina** de conversie factor voor het kopen van het **product** hoger. Op basis van de bovenstaande distributie kan een optimale verhouding van 3,5 seconden voor de pagina belasting worden aangehouden om een mogelijke 55% conversie te krijgen. Meer verbeteringen in prestaties om de laad tijd onder 3,5 seconden te verminderen, zijn momenteel niet gecorreleerd met aanvullende conversie voordelen.
 
-## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Wat gebeurt er als ik ben paginaweergaven bijhouden of tijden op aangepaste manieren laden?
+## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Wat gebeurt er als u pagina weergaven of laad tijden op aangepaste manieren bijhoudt?
 
-Impact ondersteunt zowel standaard als aangepaste eigenschappen en metingen. Gebruik wat u wilt. Gebruik in plaats van de duur van filters op de primaire en secundaire gebeurtenissen om meer specifieke.
+Impact ondersteunt zowel standaard als aangepaste eigenschappen en metingen. Gebruik wat u wilt. Gebruik in plaats van duur filters voor de primaire en secundaire gebeurtenissen om meer specifieke te krijgen.
 
-## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Converteer gebruikers uit verschillende landen of regio's met verschillende snelheden?
+## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Worden gebruikers uit verschillende landen of regio's geconverteerd met verschillende tarieven?
 
-1. Selecteer de paginaweergave van een in de **voor de paginaweergave** vervolgkeuzelijst.
-2. Kies 'Land of regio' **analyseren hoe de** vervolgkeuzelijst
-3. Voor de **heeft gevolgen voor het gebruik van** vervolgkeuzelijst, selecteer een aangepaste gebeurtenis die overeenkomt met een UI-element op de paginaweergave u in stap 1 hebt gekozen.
+1. Selecteer een pagina weergave in de vervolg keuzelijst **voor de pagina weergave** .
+2. Kies land of regio in **analyseren hoe de** vervolg keuzelijst
+3. Selecteer voor de **effecten van de vervolg keuzelijst het gebruik van** een aangepaste gebeurtenis die overeenkomt met een UI-element in de pagina weergave die u in stap 1 hebt gekozen.
 
-In dit geval passen de resultaten niet meer in het model van een doorlopende x-as als in het eerste voorbeeld. In plaats daarvan wordt een vergelijkbaar met een gesegmenteerde trechter visualisatie weergegeven. Sorteren op **gebruik** om de variatie van de conversie naar uw aangepaste gebeurtenissen op basis van land/regio weer te geven.
+In dit geval passen de resultaten niet meer in een doorlopend x-as-model, zoals in het eerste voor beeld. In plaats daarvan wordt een visualisatie weer gegeven die vergelijkbaar is met een gesegmenteerde trechter. Sorteer op **gebruik** om de variatie van de conversie naar uw aangepaste gebeurtenis op basis van het land of de regio weer te geven.
 
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hoe wordt het hulpprogramma gevolgen deze conversieverhoudingen berekend?
+## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hoe berekent het onderdeel impact deze conversie tarieven?
 
-Achter de schermen, het hulpprogramma Impact is afhankelijk van de [Pearson correlatiecoëfficiënt](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Resultaten worden berekend tussen 1 en 1-1 die een negatieve lineaire correlatie en 1 die vertegenwoordigt een positieve lineaire correlatie vertegenwoordigt.
+Onder de motorkap is de impact van het hulp programma afhankelijk van de [correlatie coëfficiënt van Pearson](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Resultaten worden berekend tussen-1 en 1 met-1 die een negatieve lineaire correlatie vertegenwoordigen en 1 die een positieve lineaire correlatie vertegenwoordigt.
 
-De uitsplitsing van de basis van de werking van impactanalyse is als volgt:
+De algemene uitsplitsing van de werking van impact analyse is als volgt:
 
-Laat _A_ = de hoofdpagina weergave/aangepaste gebeurtenis/aanvraag u in de eerste vervolgkeuzelijst selecteert. (**Voor de paginaweergave**).
+Laat _een_ = de hoofd pagina weer geven/aangepaste gebeurtenis/aanvraag die u in de eerste vervolg keuzelijst selecteert. (**Voor de pagina weergave**).
 
-Laat _B_ = de secundaire pagina weergave/aangepaste gebeurtenis die u selecteert (**heeft gevolgen voor het gebruik van**).
+Laat _B_ = de secundaire pagina weergave/aangepaste gebeurtenis die u selecteert (heeft**invloed op het gebruik van**).
 
-Impact kijkt naar een voorbeeld van alle sessies van gebruikers in het geselecteerde tijdsbereik. Voor elke sessie, wordt er gezocht naar elk exemplaar van _A_.
+Impact kijkt naar een voor beeld van alle sessies van gebruikers in het geselecteerde tijds bereik. Voor elke sessie zoekt het naar elk exemplaar van _A_.
 
-Sessies vervolgens zijn onderverdeeld in twee verschillende soorten van _subsessions_ op basis van een van twee voorwaarden:
+Sessies worden vervolgens onderverdeeld in twee verschillende soorten _subsessies_ op basis van een van de volgende twee omstandigheden:
 
-- Een geconverteerde koppeling bestaat uit een sessie eindigt met een _B_ gebeurtenis en omvat alle _A_ gebeurtenissen die vóór plaatsvinden _B_.
-- Een niet-geconverteerde koppeling vindt plaats wanneer alle _A_de optreden, zonder een terminal _B_.
+- Een geconverteerde subsessie bestaat uit een sessie die eindigt op een _B_ -gebeurtenis en _omvat alle gebeurtenissen_ die vóór _B_worden uitgevoerd.
+- Een niet-geconverteerde subsessie treedt op wanneer alle _a_plaatsvindt zonder een Terminal _B_.
 
-Hoe Impact uiteindelijk wordt berekend is afhankelijk van of we door metrische gegevens of dimensie analyseren. Voor alle metrische gegevens _A_het in een koppeling wordt het gemiddelde genomen. Terwijl afmetingen voor de waarde van elk _A_ bijdraagt _1/N_ op de waarde die is toegewezen aan _B_ waar _N_ is het aantal _A_de in de koppeling.
+Hoe invloed wordt uiteindelijk berekend, is afhankelijk van het feit of er wordt geanalyseerd op basis van metrische gegevens of dimensies. Voor metrische gegevens van alle _a_in een subsessie wordt het gemiddelde berekend. Overwegende dat voor dimensies de waarde van elk _A een_ bijdrage levert aan _1/N_ aan de waarde die is toegewezen aan _B_ , waarbij _N_ het aantal in de subsessie _is._
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Om in te schakelen gebruik ervaringen, beginnen met het verzenden [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [paginaweergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Als u aangepaste gebeurtenissen of paginaweergaven al verzendt, Verken de hulpprogramma's voor gebruik als u wilt weten hoe gebruikers gebruiken voor uw service.
+- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Trechters](usage-funnels.md)
     - [Retentie](usage-retention.md)
     - [Gebruikersstromen](usage-flows.md)
     - [Werkmappen](../../azure-monitor/app/usage-workbooks.md)
-    - [Gebruikerscontext toevoegen](usage-send-user-context.md)
+    - [Gebruikers context toevoegen](usage-send-user-context.md)

@@ -1,24 +1,18 @@
 ---
 title: Aan de slag met logboek query's in Azure Monitor | Microsoft Docs
 description: In dit artikel vindt u een zelf studie voor het schrijven van logboek query's in Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/09/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076758"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894306"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboek query's in Azure Monitor
 
@@ -63,7 +57,7 @@ De query die hierboven wordt weer gegeven, retourneert tien resultaten uit de *S
 * Het sluis teken (|) scheidt opdrachten, dus de uitvoer van de eerste in de invoer van de volgende opdracht. U kunt elk gewenst aantal elementen in de pipes toevoegen.
 * Na de pipe is de opdracht **nemen** , die een specifiek aantal wille keurige records uit de tabel retourneert.
 
-We kunnen de query zelfs zonder toe te voegen `| take 10` , ook wel geldig zijn, maar er kunnen wel 10.000 resultaten worden geretourneerd.
+We kunnen de query ook daad werkelijk uitvoeren zonder `| take 10` toe te voegen, die nog steeds geldig is, maar kan resulteren in 10.000 resultaten.
 
 ### <a name="search-queries"></a>Zoekquery 's
 Zoek query's zijn minder gestructureerd en zijn over het algemeen geschikt voor het zoeken van records die een specifieke waarde bevatten in een van de kolommen:
@@ -73,7 +67,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Met deze query wordt in de *SecurityEvent* -tabel gezocht naar records die de woord groep ' cryptographic ' bevatten. Van deze records worden 10 records geretourneerd en weer gegeven. Als we het `in (SecurityEvent)` onderdeel weglaten en gewoon `search "Cryptographic"`worden uitgevoerd, gaat de zoek opdracht over op *alle* tabellen, wat langer duurt en minder efficiënt is.
+Met deze query wordt in de *SecurityEvent* -tabel gezocht naar records die de woord groep ' cryptographic ' bevatten. Van deze records worden 10 records geretourneerd en weer gegeven. Als we het `in (SecurityEvent)` gedeelte weglaten en `search "Cryptographic"`gewoon worden uitgevoerd, gaat de zoek opdracht over op *alle* tabellen, wat langer duurt en minder efficiënt is.
 
 > [!WARNING]
 > Zoek query's zijn meestal trager dan query's op basis van een tabel, omdat ze meer gegevens moeten verwerken. 
@@ -112,11 +106,11 @@ SecurityEvent
 
 Wanneer u filter voorwaarden schrijft, kunt u de volgende expressies gebruiken:
 
-| Expressie | Description | Voorbeeld |
+| Expressie | Beschrijving | Voorbeeld |
 |:---|:---|:---|
 | == | Gelijkheid controleren<br>(hoofdletter gevoelig) | `Level == 8` |
 | =~ | Gelijkheid controleren<br>(niet hoofdletter gevoelig) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Ongelijkheid controleren<br>(beide expressies zijn identiek) | `Level != 4` |
+| ! =, < > | Ongelijkheid controleren<br>(beide expressies zijn identiek) | `Level != 4` |
 | *en*, *of* | Vereist tussen omstandigheden| `Level == 16 or CommandLine != ""` |
 
 Als u wilt filteren op meerdere voor waarden, kunt u **en**gebruiken:
@@ -135,7 +129,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Waarden kunnen verschillende typen hebben, dus u moet deze mogelijk converteren om een vergelijking op het juiste type uit te voeren. Bijvoorbeeld, *de kolom SecurityEvent* is van het type teken reeks, dus moet u deze converteren naar een numeriek type, bijvoorbeeld *int* of *Long*, voordat u numerieke Opera tors kunt gebruiken:`SecurityEvent | where toint(Level) >= 10`
+> Waarden kunnen verschillende typen hebben, dus u moet deze mogelijk converteren om een vergelijking op het juiste type uit te voeren. Zo is de kolom SecurityEvent *niveau* van het type teken reeks, dus moet u deze converteren naar een numeriek type, bijvoorbeeld *int* of *Long*, voordat u numerieke Opera tors kunt gebruiken: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Een tijds bereik opgeven
 
@@ -154,7 +148,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-In het bovenstaande filter `ago(30m)` betekent ' 30 minuten geleden ' zodat deze query alleen records retourneert van de laatste 30 minuten. Andere tijds eenheden zijn dagen (2D), minuten (25m) en seconden (10).
+In het bovenstaande filter `ago(30m)` ' 30 minuten geleden ' betekent dat deze query alleen records retourneert van de laatste 30 minuten. Andere tijds eenheden zijn dagen (2D), minuten (25m) en seconden (10).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Project en uitbreiden: kolommen selecteren en berekenen
@@ -226,7 +220,7 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Een overzicht van een kolom tijd
-Het groeperen van resultaten kan ook worden gebaseerd op een tijd kolom of een andere doorlopende waarde. U hoeft alleen `by TimeGenerated` maar een samen vatting te maken van groepen voor elke enkele milliseconden gedurende het tijds bereik, omdat dit unieke waarden zijn. 
+Het groeperen van resultaten kan ook worden gebaseerd op een tijd kolom of een andere doorlopende waarde. U hoeft alleen maar een samen vatting te maken van `by TimeGenerated`, hoewel er groepen worden gemaakt voor elke enkele milliseconde gedurende het tijds bereik, omdat dit unieke waarden zijn. 
 
 Als u groepen wilt maken op basis van doorlopende waarden, kunt u het bereik het beste met behulp van **bin**opsplitsen in beheer bare eenheden. De volgende query analyseert de *prestatie* records die het vrije geheugen (*beschik bare Mbytes*) meten op een specifieke computer. De gemiddelde waarde van elke periode van één uur wordt berekend in de afgelopen 7 dagen:
 

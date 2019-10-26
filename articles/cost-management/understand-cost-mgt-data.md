@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374534"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900170"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
 Dit artikel helpt u beter inzicht te krijgen in de kosten en gebruiks gegevens van Azure die zijn opgenomen in Azure Cost Management. Hierin wordt uitgelegd hoe vaak gegevens worden verwerkt, verzameld, weer gegeven en gesloten. U wordt maandelijks gefactureerd voor Azure-gebruik. Hoewel facturerings cycli maandelijkse Peri Oden zijn, variëren de begin-en eind datum van de cyclus per abonnements type. Hoe vaak Cost Management het ontvangen van gebruiks gegevens verschilt, is afhankelijk van verschillende factoren. Deze factoren omvatten hoe lang het duurt om de gegevens te verwerken en hoe vaak Azure-Services het gebruik naar het facturerings systeem verzenden.
 
-Cost Management omvat alle gebruik en aankopen, inclusief reserve ringen en aanbiedingen van derden voor Enterprise Agreement (EA). Micro soft-accounts voor klanten overeenkomst (MCA) en individuele abonnementen met betalen per gebruik-tarieven omvatten alleen gebruiks doeleinden van Azure en Marketplace-Services. Ondersteuning en andere kosten zijn niet inbegrepen. Kosten worden geschat tot er een factuur wordt gegenereerd en er wordt geen rekening gehouden met de credit bedragen.
+Cost Management omvat alle gebruik en aankopen, inclusief reserve ringen en aanbiedingen van derden voor Enterprise Agreement (EA). Micro soft-gebruikers overeenkomst accounts en individuele abonnementen met betalen per gebruik-tarieven omvatten alleen verbruik van Azure-en Marketplace-Services. Ondersteuning en andere kosten zijn niet inbegrepen. Kosten worden geschat tot er een factuur wordt gegenereerd en er wordt geen rekening gehouden met de credit bedragen.
 
 ## <a name="supported-microsoft-azure-offers"></a>Ondersteunde Microsoft Azure aanbiedingen
 
@@ -32,9 +32,9 @@ De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedi
 | **Azure Government** | Azure Government Enter prise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Mei 2014<sup>1</sup> |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Mei 2014<sup>1</sup> |
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Mei 2014<sup>1</sup> |
-| **Micro soft-klant overeenkomst** | [Microsoft Azure plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
-| **Micro soft-klant overeenkomst** | [Microsoft Azure plan voor dev/test](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
-| **Micro soft-partner overeenkomst** | Microsoft Azure Plan | CSP_2015-05-01, CSP_MG_2017-12-01, CSPDEVTEST_2018-05-01 | N/A | Oktober 2019 |
+| **Microsoft-klantovereenkomst** | [Microsoft Azure plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
+| **Microsoft-klantovereenkomst** | [Microsoft Azure plan voor dev/test](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | <sup>3</sup> maart 2019 |
+| **Micro soft-klant overeenkomst ondersteund door partners** | Microsoft Azure Plan | CSP_2015-05-01, CSP_MG_2017-12-01 en CSPDEVTEST_2018-05-01<br><br>De quotum-ID wordt opnieuw gebruikt voor micro soft-klanten overeenkomst en verouderde CSP-abonnementen. Op dit moment worden alleen micro soft-klanten overeenkomst abonnementen ondersteund. | N/A | Oktober 2019 |
 | **Micro soft Developer Network (MSDN)** | [MSDN platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 oktober 2018<sup>2</sup> |
 | **Pay-As-You-Go** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 oktober 2018<sup>2</sup> |

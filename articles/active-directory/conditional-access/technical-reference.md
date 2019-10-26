@@ -4,19 +4,19 @@ description: Bekijk een overzicht van de ondersteunde instellingen in een Azure 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: reference
 ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274183"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893461"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang
 
@@ -145,7 +145,7 @@ Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt
 | Pad | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Naam | 1 |
 | Type | REG_SZ (teken reeks) |
-| Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/service/updatum2/CRX |
+| Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sleutel:
 

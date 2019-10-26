@@ -1,77 +1,71 @@
 ---
-title: Werken met datum-/ tijdwaarden in Logboeken-query's van Azure Monitor | Microsoft Docs
-description: Beschrijft hoe u wilt werken met de datum en tijd-gegevens in Azure Monitor logboeken-query's.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Werken met datum-en tijd waarden in Azure Monitor-logboek query's | Microsoft Docs
+description: Hierin wordt beschreven hoe u met datum-en tijd gegevens in Azure Monitor-logboek query's kunt werken.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112354"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894221"
 ---
-# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Werken met datum-/ tijdwaarden in Logboeken-query's van Azure Monitor
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Werken met datum-en tijd waarden in Azure Monitor-logboek query's
 
 > [!NOTE]
-> U moet voltooien [aan de slag met de Analytics-portal](get-started-portal.md) en [aan de slag met query's](get-started-queries.md) voordat het voltooien van deze les gaat uitvoeren.
+> U moet aan [de slag gaan met de analyse Portal](get-started-portal.md) en [aan de slag met query's](get-started-queries.md) voordat u deze les voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Dit artikel wordt beschreven hoe u werkt met de datum en tijd waarop gegevens in Azure Monitor logboeken-query's.
+In dit artikel wordt beschreven hoe u met datum-en tijd gegevens in Azure Monitor-logboek query's kunt werken.
 
 
-## <a name="date-time-basics"></a>Grondbeginselen van de datum-tijd
-De Kusto-query-taal heeft twee primaire gegevenstypen die zijn gekoppeld aan de datums en tijden: datum/tijd en periode. Alle datums worden uitgedrukt in UTC. Meerdere tijdindelingen voor datum / worden ondersteund, is de ISO8601-notatie voorkeur. 
+## <a name="date-time-basics"></a>Basis principes van datum en tijd
+De Kusto-query taal bevat twee hoofd gegevens typen die zijn gekoppeld aan datums en tijden: datetime en time span. Alle datums worden uitgedrukt in UTC. Hoewel er meerdere datum notaties worden ondersteund, wordt de ISO8601-indeling de voor keur. 
 
-Timespans worden uitgedrukt als een decimaal getal gevolgd door een tijdeenheid:
+TimeSpans worden uitgedrukt als een decimaal gevolgd door een tijds eenheid:
 
-|verkorte versie van   | tijdseenheid    |
+|Steno   | tijds eenheid    |
 |:---|:---|
-|d           | dag          |
-|h           | uur         |
-|m           | Minuut       |
-|s           | Tweede       |
-|ms          | milliseconden  |
-|wachttijden van microseconden | wachttijden van microseconden  |
-|maatstreepjes        | nanoseconden   |
+|!           | profieldag          |
+|u           | uur         |
+|m           | Notulen       |
+|s           | tweede       |
+|Mevrouw          | milliseconde  |
+|wacht | wacht  |
+|beurs        | nano seconden   |
 
-Datum/tijd kunnen worden gemaakt met het gebruik van een tekenreeks met de `todatetime` operator. Bijvoorbeeld: als u wilt controleren van de virtuele machine heartbeats verzonden in een specifiek tijdsbestek, gebruiken de `between` operator op die een tijdsperiode opgeven.
+Datetimes kunnen worden gemaakt door een teken reeks te casten met behulp van de operator `todatetime`. Als u bijvoorbeeld de VM-heartbeats wilt bekijken die in een bepaalde periode zijn verzonden, gebruikt u de operator `between` om een tijds bereik op te geven.
 
 ```Kusto
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
-Een ander gebruikelijk scenario is een datum/tijd om deze te vergelijken. Bijvoorbeeld, als u wilt zien alle heartbeats in de afgelopen twee minuten, kunt u de `now` operator samen met een TimeSpan-waarde die aangeeft van twee minuten:
+Een ander gebruikelijk scenario is het vergelijken van een datum/tijd met de huidige. Als u bijvoorbeeld alle heartbeats in de afgelopen twee minuten wilt zien, kunt u de operator `now` gebruiken in combi natie met een time span die twee minuten vertegenwoordigt:
 
 ```Kusto
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
-Een snelkoppeling is ook beschikbaar voor deze functie:
+Er is ook een snelkoppeling beschikbaar voor deze functie:
 ```Kusto
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
-Hoewel de kortste en meest leesbare methode wordt gebruikt de `ago` operator:
+De kortste en meest Lees bare methode gebruiken de operator `ago`:
 ```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
-Stel in plaats van de begin- en -tijd, te weten dat de begintijd en de duur. U kunt Herschrijf de query als volgt:
+Stel dat u in plaats van de begin-en eind tijd te weten weet wat de begin tijd en de duur zijn. U kunt de query als volgt herschrijven:
 
 ```Kusto
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
@@ -81,8 +75,8 @@ Heartbeat
 | extend timeFromStart = TimeGenerated - startDatetime
 ```
 
-## <a name="converting-time-units"></a>Tijdseenheden converteren
-U kunt een datum/tijd of de periode in een tijdeenheid dan de standaard express. Bijvoorbeeld, als u een berekende kolom hebt en foutgebeurtenissen van de laatste 30 minuten beoordeelt hoe lang geleden waarin de gebeurtenis heeft plaatsgevonden:
+## <a name="converting-time-units"></a>Tijds eenheden converteren
+Mogelijk wilt u een datum-/tijdwaarde of time span uitdrukken in een andere tijds eenheid dan de standaard waarde. Als u bijvoorbeeld fout gebeurtenissen van de afgelopen 30 minuten bekijkt en een berekende kolom nodig hebt waarin wordt weer gegeven hoe lang geleden de gebeurtenis heeft plaatsgevonden:
 
 ```Kusto
 Event
@@ -91,7 +85,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-De `timeAgo` kolom bevat waarden, zoals: "00:09:31.5118992', wat betekent dat ze zijn geformatteerd als hh:mm:ss.fffffff. Als u wilt formatteren van deze waarden naar de `numver` van minuten sinds de begintijd, deelt u die waarde door 'minuut':
+De `timeAgo` kolom bevat waarden zoals: "00:09:31.5118992", wat betekent dat ze zijn opgemaakt als uu: mm: SS. fffffff. Als u deze waarden wilt opmaken tot de `numver` minuten sinds de begin tijd, deelt u deze waarde door ' 1 minuut ':
 
 ```Kusto
 Event
@@ -102,10 +96,10 @@ Event
 ```
 
 
-## <a name="aggregations-and-bucketing-by-time-intervals"></a>Aggregaties en bucketing door tijdsintervallen
-Een ander gebruikelijk scenario is de noodzaak om statistische gegevens gedurende een bepaalde periode in een bepaald tijdsinterval. Voor dit scenario een `bin` operator kan worden gebruikt als onderdeel van een component samenvatten.
+## <a name="aggregations-and-bucketing-by-time-intervals"></a>Aggregaties en Bucket op basis van tijds intervallen
+Een ander gebruikelijk scenario is de nood zaak om statistieken te verkrijgen over een bepaalde periode van een bepaalde tijd. Voor dit scenario kan een operator `bin` worden gebruikt als onderdeel van een component samenvat.
 
-Gebruik de volgende query uit om het aantal gebeurtenissen die hebben plaatsgevonden om de 5 minuten gedurende de afgelopen half uur:
+Gebruik de volgende query om het aantal gebeurtenissen op te halen dat in het afgelopen halfjaar elke vijf minuten is opgetreden:
 
 ```Kusto
 Event
@@ -113,9 +107,9 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-Deze query levert de volgende tabel:  
+Deze query produceert de volgende tabel:  
 
-|TimeGenerated(UTC)|events_count|
+|TimeGenerated (UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
 |2018-08-01T09:35:00.000|41|
@@ -124,7 +118,7 @@ Deze query levert de volgende tabel:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-Een andere manier om te maken van de buckets van resultaten, is met functies, zoals `startofday`:
+Een andere manier om buckets met resultaten te maken, is met behulp van functies, zoals `startofday`:
 
 ```Kusto
 Event
@@ -132,42 +126,42 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Deze query geeft de volgende resultaten:
+Deze query levert de volgende resultaten op:
 
-|timestamp|count_|
+|tijdstempel|aantal|
 |--|--|
-|2018-07-28T00:00:00.000|7,136|
-|2018-07-29T00:00:00.000|12,315|
-|2018-07-30T00:00:00.000|16,847|
-|2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416|
+|2018-07-28T00:00:00.000|7\.136|
+|2018-07-29T00:00:00.000|12.315|
+|2018-07-30T00:00:00.000|16.847|
+|2018-07-31T00:00:00.000|12.616|
+|2018-08-01T00:00:00.000|5\.416|
 
 
 ## <a name="time-zones"></a>Tijdzones
-Omdat alle datum-/ tijdwaarden worden uitgedrukt in UTC, is het vaak nuttig om te converteren van deze waarden naar de lokale tijdzone. Deze berekening bijvoorbeeld gebruiken om te converteren van UTC naar PST tijden:
+Omdat alle datum-/tijdwaarden worden uitgedrukt in UTC, is het vaak handig deze waarden te converteren naar de lokale tijd zone. Gebruik deze berekening bijvoorbeeld om UTC naar PST-tijden te converteren:
 
 ```Kusto
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```
 
-## <a name="related-functions"></a>Verwante functies
+## <a name="related-functions"></a>Gerelateerde functies
 
-| Category | Function |
+| Category | Functie |
 |:---|:---|
-| Gegevenstypen converteren | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
-| Ronde waarde die u wilt de grootte van opslaglocatie | [bin](/azure/kusto/query/binfunction) |
-| Ophalen van een bepaalde datum of tijd | [geleden](/azure/kusto/query/agofunction) [nu](/azure/kusto/query/nowfunction)   |
-| Onderdeel van de waarde ophalen | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Haal de waarde van een relatieve datum  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [beginvanweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| Gegevens typen converteren | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
+| Waarde afronden naar bin-grootte | [dockopslaglocatie](/azure/kusto/query/binfunction) |
+| Een specifieke datum of tijd ophalen | [](/azure/kusto/query/agofunction) [nu](/azure/kusto/query/nowfunction) geleden   |
+| Onderdeel van waarde ophalen | [datetime_part](/azure/kusto/query/datetime-partfunction) [getMonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [DayofWeek](/azure/kusto/query/dayofweekfunction) [DAYOFYEAR](/azure/kusto/query/dayofyearfunction) [WeekofYear](/azure/kusto/query/weekofyearfunction) |
+| Een relatieve datum waarde ophalen  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [opsomming](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere lessen voor het gebruik van de [Kusto-querytaal](/azure/kusto/query/) met Azure Monitor gegevens vastleggen:
+Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/) met Azure monitor-logboek gegevens:
 
-- [Bewerkingen op tekenreeksen uitvoeren](string-operations.md)
-- [Aggregatiefuncties](aggregations.md)
+- [Teken reeks bewerkingen](string-operations.md)
+- [Aggregatie functies](aggregations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
-- [JSON en gegevensstructuren](json-data-structures.md)
-- [Geavanceerde query schrijven](advanced-query-writing.md)
+- [JSON en gegevens structuren](json-data-structures.md)
+- [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)

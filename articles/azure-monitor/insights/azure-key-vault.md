@@ -1,24 +1,18 @@
 ---
 title: Azure Key Vault oplossing in Azure Monitor | Microsoft Docs
 description: U kunt de Azure Key Vault oplossing in Azure Monitor gebruiken om Azure Key Vault logboeken te controleren.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/27/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 03/27/2019
+ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997691"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899217"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -35,7 +29,7 @@ Als u de oplossing wilt gebruiken, moet u logboek registratie van Azure Key Vaul
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>Installeren en configureren van de oplossing
+## <a name="install-and-configure-the-solution"></a>De oplossing installeren en configureren
 Gebruik de volgende instructies voor het installeren en configureren van de Azure Key Vault oplossing:
 
 1. Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md) om de Azure Key Vault oplossing toe te voegen aan uw log Analytics-werk ruimte.
@@ -57,7 +51,7 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 8. Klik op *Opslaan* om de logboek registratie van diagnostische gegevens in log Analytics werk ruimte in te scha kelen.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Diagnostische gegevens van Key Vault inschakelen met behulp van Power shell
-Het volgende Power shell-script biedt een voor beeld van `Set-AzDiagnosticSetting` hoe u diagnostische logboek registratie inschakelt voor Key Vault:
+Het volgende Power shell-script biedt een voor beeld van het gebruik van `Set-AzDiagnosticSetting` om diagnostische logboek registratie in te scha kelen voor Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -103,7 +97,7 @@ Nadat u op de tegel **Key Vault-analyse** hebt geklikt, kunt u samen vattingen v
 ## <a name="azure-monitor-log-records"></a>Azure Monitor logboek records
 De Azure Key Vault oplossing analyseert records die een type sleutel **kluizen** hebben die worden verzameld uit audit event- [logboeken](../../key-vault/key-vault-logging.md) in azure Diagnostics.  De eigenschappen voor deze records bevinden zich in de volgende tabel:  
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | `Type` |*AzureDiagnostics* |
 | `SourceSystem` |*Azure* |
@@ -120,8 +114,8 @@ De Azure Key Vault oplossing analyseert records die een type sleutel **kluizen**
 | `Resource` |De naam van de sleutel kluis |
 | `ResourceGroup` |Resource groep van de sleutel kluis |
 | `ResourceId` |Azure Resource Manager-resource-id. Voor Key Vault-Logboeken is dit de Key Vault Resource-ID. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceProvider` |*Micro soft. KEYVAULT* |
+| `ResourceType` | *KLUIZEN* |
 | `ResultSignature` |HTTP-status (bijvoorbeeld *OK*) |
 | `ResultType` |Resultaat van REST API aanvraag (bijvoorbeeld *geslaagd*) |
 | `SubscriptionId` |Azure-abonnements-ID van het abonnement met de Key Vault |
@@ -139,13 +133,13 @@ De bijgewerkte oplossing gebruiken:
 2. Schakel de Azure Key Vault-oplossing in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md)
 3. Alle opgeslagen query's, Dash boards of waarschuwingen bijwerken voor gebruik van het nieuwe gegevens type
    + Type is gewijzigd van: AzureDiagnostics. U kunt het resource type gebruiken om te filteren op Logboeken Key Vault.
-   + Gebruik in plaats `KeyVaults`van:`AzureDiagnostics | where ResourceType'=="VAULTS"`
-   + Bedragvelden (Veld namen zijn hoofdletter gevoelig)
-   + Voor elk veld met een achtervoegsel van \_s, \_d of \_g in de naam, wijzigt u het eerste teken in kleine letters
-   + Voor een veld met het achtervoegsel \_o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Gebruik in plaats van: `KeyVaults``AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Velden: (veld namen zijn hoofdletter gevoelig)
+   + Voor een veld met een achtervoegsel van \_s, \_d of \_g in de naam, wijzigt u het eerste teken in kleine letters
+   + Voor een veld met een achtervoegsel van \_o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + Veld CallerIpAddress gewijzigd in CallerIPAddress
    + Het veld RemoteIPCountry is niet meer aanwezig
-4. Verwijder de oplossing *Key Vault-analyse (afgeschaft)* . Als u Power shell gebruikt, gebruikt u`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Verwijder de oplossing *Key Vault-analyse (afgeschaft)* . Als u Power shell gebruikt, gebruikt u `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Gegevens die vóór de wijziging zijn verzameld, zijn niet zichtbaar in de nieuwe oplossing. U kunt door gaan met het zoeken naar deze gegevens met behulp van het oude type en de veld namen.
 

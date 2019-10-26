@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI-sfctl-instellingen telemetrie | Microsoft Docs
 description: Hierin worden de telemetrie-opdrachten voor de Service Fabric CLI sfctl-instellingen beschreven.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: cf5ebbeb4d9b4757e0c55eeb1a9268065efb2c7c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: d926c71ae8fd9e196b86c14c7fb96cc65b587b65
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035205"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900981"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 Telemetrie-instellingen configureren die lokaal zijn voor dit exemplaar van sfctl.
@@ -27,7 +28,7 @@ Sfctl-telemetrie verzamelt opdracht naam zonder opgegeven para meters of hun waa
 
 ## <a name="commands"></a>Opdrachten
 
-|Opdracht|Description|
+|Opdracht|Beschrijving|
 | --- | --- |
 | set-telemetrie | Telemetrie in-of uitschakelen. |
 
@@ -36,16 +37,16 @@ Telemetrie in-of uitschakelen.
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --uit | Schakel telemetrie uit. |
 | --aan | Schakel telemetrie in. Dit is de standaardwaarde. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

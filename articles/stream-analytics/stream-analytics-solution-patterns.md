@@ -1,26 +1,26 @@
 ---
-title: Oplossings patronen Azure Stream Analytics
-description: Meer informatie over de verschillende algemene oplossings patronen voor Azure Stream Analytics.
+title: Azure Stream Analytics-oplossingspatronen
+description: Meer informatie over algemene oplossings patronen voor Azure Stream Analytics, zoals Dash boards, gebeurtenis berichten, gegevens archieven, verrijkingen van referentie gegevens en bewaking.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173041"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901679"
 ---
-# <a name="azure-stream-analytics-solution-patterns"></a>Oplossings patronen Azure Stream Analytics
+# <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
-Net als bij veel andere services in azure kunt u Stream Analytics het beste met andere services gebruiken om een grotere end-to-end oplossing te maken. In dit artikel worden eenvoudige Azure Stream Analytics oplossingen en verschillende architecturale patronen besproken. U kunt deze patronen bouwen om complexere oplossingen te ontwikkelen. De patronen die in dit artikel worden beschreven, kunnen worden gebruikt in een groot aantal verschillende scenario's. Voor beelden van scenario-specifieke patronen zijn beschikbaar in [Azure](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)-oplossings architecturen.
+Net als bij veel andere services in azure kunt u Stream Analytics het beste met andere services gebruiken om een grotere end-to-end oplossing te maken. In dit artikel worden eenvoudige Azure Stream Analytics oplossingen en verschillende architecturale patronen besproken. U kunt deze patronen bouwen om complexere oplossingen te ontwikkelen. De patronen die in dit artikel worden beschreven, kunnen worden gebruikt in een groot aantal verschillende scenario's. Voor beelden van scenario-specifieke patronen zijn beschikbaar in [Azure-oplossings architecturen](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Een Stream Analytics taak maken om in realtime Dash boards te kunnen werken
 
-Met Azure Stream Analytics kunt u snel realtime-Dash boards en-waarschuwingen opschonen. Met een eenvoudige oplossing worden gebeurtenissen van Event hubs of IOT hub opgenomen, en wordt [het Power bi dash board met een](/power-bi/service-real-time-streaming)gegevensverzamelinggegevens gevoed. Zie de gedetailleerde zelf studie [gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power bi dash board](stream-analytics-manage-job.md)voor meer informatie.
+Met Azure Stream Analytics kunt u snel realtime-Dash boards en-waarschuwingen opschonen. Met een eenvoudige oplossing worden gebeurtenissen van Event hubs of IOT hub opgenomen, en wordt [het Power bi dash board met een gegevensverzamelinggegevens gevoed](/power-bi/service-real-time-streaming). Zie de gedetailleerde zelf studie [gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power bi dash board](stream-analytics-manage-job.md)voor meer informatie.
 
 ![ASA Power BI-dash board](media/stream-analytics-solution-patterns/pbidashboard.png)
 
@@ -72,7 +72,7 @@ Dit patroon verbetert de flexibiliteit en beheer baarheid van het systeem. Hoewe
 
 ## <a name="use-reference-data-for-application-customization"></a>Referentie gegevens gebruiken voor het aanpassen van toepassingen
 
-De functie voor het Azure Stream Analytics referentie gegevens is specifiek ontworpen voor aanpassing aan eind gebruikers, zoals waarschuwings drempelwaarde, verwerkings regels en geofences. [](geospatial-scenarios.md) De toepassingslaag kan parameter wijzigingen accepteren en in een SQL database opslaan. Met de Stream Analytics taak wordt periodiek een query uitgevoerd op wijzigingen in de data base en worden de aanpassings parameters toegankelijk via een referentie gegevens koppeling. Voor meer informatie over het gebruik van referentie gegevens voor het aanpassen van toepassingen raadpleegt u [SQL-referentie gegevens](sql-reference-data.md) en [samen voegen met referentie gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+De functie voor het Azure Stream Analytics referentie gegevens is specifiek ontworpen voor aanpassing aan eind gebruikers, zoals waarschuwings drempelwaarde, verwerkings regels en [geofences](geospatial-scenarios.md). De toepassingslaag kan parameter wijzigingen accepteren en in een SQL database opslaan. Met de Stream Analytics taak wordt periodiek een query uitgevoerd op wijzigingen in de data base en worden de aanpassings parameters toegankelijk via een referentie gegevens koppeling. Voor meer informatie over het gebruik van referentie gegevens voor het aanpassen van toepassingen raadpleegt u [SQL-referentie gegevens](sql-reference-data.md) en [samen voegen met referentie gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Dit patroon kan ook worden gebruikt voor het implementeren van een regel engine waarbij de drempel waarden van de regels worden gedefinieerd vanuit referentie gegevens. Zie voor meer informatie over regels de [procedure Configureer bare op drempel waarden gebaseerde regels in azure stream Analytics](stream-analytics-threshold-based-rules.md).
 
@@ -149,7 +149,7 @@ Opnieuw opstarten vanaf de huidige tijd is eenvoudig, met het bebalans van een o
 
 Het inrichten van meer resources kan het proces versnellen, maar het effect van een verwerkings snelheid is complex.
 
-- Test of uw taak schaalbaar is tot een groter aantal SUs. Niet alle query's zijn schaalbaar. U moet controleren of uw query is geparallelleerd. [](stream-analytics-parallelization.md)
+- Test of uw taak schaalbaar is tot een groter aantal SUs. Niet alle query's zijn schaalbaar. U moet controleren of uw query is [geparallelleerd](stream-analytics-parallelization.md).
 
 - Zorg ervoor dat de upstream-Event Hubs voldoende partities bevat of IoT Hub u meer doorvoer eenheden (TUs) kunt toevoegen om de invoer doorvoer te schalen. Houd er rekening mee dat elke Event Hubs TU dergelijke bij een uitvoer snelheid van 2 MB/s.
 
@@ -174,7 +174,7 @@ Voor backfilling is het nog steeds belang rijk om ten minste tijdelijk meer bron
 |**Dash boards**   |Maakt tussen ruimte    |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
 |**Waarschuwingen**   |Aanvaardbaar |OK voor korte onderbreking    |Niet nodig |
 |**App voor gebeurtenis bronnen** |Aanvaardbaar |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
-|**Gegevensopslag**   |Gegevens verlies  |Aanvaardbaar |Niet nodig |
+|**Gegevens opslag**   |Gegevens verlies  |Aanvaardbaar |Niet nodig |
 |**Offline analyse**  |Gegevens verlies  |Aanvaardbaar |Niet nodig|
 
 ## <a name="putting-it-all-together"></a>Alles samenvoegen

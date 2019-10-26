@@ -1,21 +1,19 @@
 ---
 title: Runtime-uitzonderingen analyseren met behulp van Azure Application Insights | Microsoft Docs
 description: Zelfstudie voor het vinden en diagnosticeren van runtime-uitzonderingen in uw toepassing met behulp van Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595609"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900472"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -34,7 +32,7 @@ Azure Application Insights verzamelt telemetrie van uw toepassing om runtime-uit
 
 Vereisten voor het voltooien van deze zelfstudie:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
+- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 - Download en installeer de [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
@@ -75,7 +73,7 @@ Application Insights verzamelt fouten in uw toepassing en laat u zien hoe vaak z
     ![Details van uitzondering](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Mislukt code identificeren
-De Snapshot Debugger verzamelt momentopnamen van de meest frequente uitzonderingen in uw toepassing om u te helpen bij de diagnose van de onderliggende oorzaak in de productie.  U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Daarna hebt u de optie om op te sporen van de broncode van de momentopname downloaden en te openen in Visual Studio 2019 Enterprise.
+De Snapshot Debugger verzamelt momentopnamen van de meest frequente uitzonderingen in uw toepassing om u te helpen bij de diagnose van de onderliggende oorzaak in de productie.  U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Daarna hebt u de mogelijkheid om fouten in de bron code op te sporen door de moment opname te downloaden en te openen in Visual Studio 2019 Enter prise.
 
 1. Klik in de eigenschappen van de uitzondering op **Momentopname voor foutopsporing openen**.
 2. Het deelvenster **Debug Snapshot** (fouten opsporen in momentopname) wordt geopend met de aanroepstack voor de aanvraag.  Klik op een methode om de waarden van alle lokale variabelen op het moment van de aanvraag weer te geven.  Te beginnen bij de bovenste methode in dit voorbeeld, zien we lokale variabelen die geen waarde hebben.
@@ -98,7 +96,7 @@ Alle gegevens die door Application Insights worden verzameld, worden opgeslagen 
 
 1. Klik op de CodeLens-informatie boven de code om telemetrie van Application Insights te bekijken.
 
-    ![Code](media/tutorial-runtime-exceptions/codelens.png)
+    ![Coderen](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Klik op **Impact analyseren** om Application Insights Analytics te openen.  Het wordt gevuld met enkele query's die details bieden over mislukte aanvragen, zoals getroffen gebruikers, browsers en regio's.<br><br>![Analytische gegevens](media/tutorial-runtime-exceptions/analytics.png)<br>
 

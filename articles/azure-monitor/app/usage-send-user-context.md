@@ -1,64 +1,58 @@
 ---
-title: Ervaringen met gebruikerscontext id's gebruik in te schakelen in Azure Application Insights verzenden | Microsoft Docs
-description: Bijhouden hoe gebruikers verplaatsen via de service door toe te wijzen ze allemaal een unieke, permanente ID-reeks in Application Insights.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
+title: Gebruikers context-Id's verzenden om gebruiks ervaringen in Azure-toepassing inzichten in te scha kelen | Microsoft Docs
+description: Houd bij hoe gebruikers door uw service bladeren door elk daarvan een unieke, permanente ID-reeks toe te wijzen in Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371832"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899365"
 ---
-# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Gebruikerscontext-id's aan het gebruik van tekst in Azure Application Insights verzenden
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Gebruikers context-Id's verzenden om gebruiks ervaringen in Azure-toepassing Insights in te scha kelen
 
 ## <a name="tracking-users"></a>Gebruikers bijhouden
 
-Application Insights kunt u controleren en bijhouden van uw gebruikers via een set hulpprogramma's voor het gebruik van product:
+Met Application Insights kunt u uw gebruikers bewaken en volgen via een aantal hulpprogram ma's voor product gebruik:
 
 - [Gebruikers, sessies, gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Trechters](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Retentie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) cohorten
+- [Retentie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Cohorten
 - [Werkmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Als u wilt bijhouden wat een gebruiker na verloop van tijd doet, moet Application Insights een ID voor elke gebruiker of de sessie. Neem de volgende id's in elke aangepaste gebeurtenis of pagina weergave.
+Application Insights moet een ID voor elke gebruiker of sessie hebben om bij te houden wat een gebruiker heeft geduurd. Neem de volgende Id's op in elke aangepaste gebeurtenis of pagina weergave.
 
-- Gebruikers, Trechters, bewaren en cohorten: Opnemen van gebruikers-ID.
-- Sessies: Sessie-id
+- Gebruikers, trechters, retentie en cohorten: gebruikers-ID toevoegen.
+- Sessies: Neem de sessie-ID op.
 
 > [!NOTE]
-> Dit is een geavanceerde artikel geeft een overzicht van de handmatige stappen voor het bijhouden van gebruikersactiviteit met Application Insights. Met veel webtoepassingen **stappen mogelijk niet meer nodig**, als de standaard-server-side SDK's in combinatie met de [JavaScript SDK op de Browser-Client-side](../../azure-monitor/app/website-monitoring.md ), vaak voldoende zijn voor het automatisch bijhouden Gebruikersactiviteit. Als u dit nog niet hebt geconfigureerd [bewaking aan clientzijde](../../azure-monitor/app/website-monitoring.md ) naast de SDK-serverzijde dat eerst doen en te testen om te zien als de gebruiker gedrag analytics-hulpprogramma's worden uitgevoerd zoals verwacht.
+> Dit is een geavanceerd artikel met een overzicht van de hand matige stappen voor het bijhouden van gebruikers activiteiten met Application Insights. Bij veel webtoepassingen **kunnen deze stappen niet worden**uitgevoerd, omdat de standaard sdk's aan de server zijde in combi natie met de [client/browser-side java script SDK](../../azure-monitor/app/website-monitoring.md ), vaak voldoende zijn om automatisch gebruikers activiteiten bij te houden. Als u naast de SDK aan de server zijde nog geen [bewaking aan client zijde](../../azure-monitor/app/website-monitoring.md ) hebt geconfigureerd, moet u dat eerst doen en testen om te controleren of de analyse hulpprogramma's van het gebruikers gedrag zoals verwacht worden uitgevoerd.
 
-## <a name="choosing-user-ids"></a>Gebruikers-id's te kiezen
+## <a name="choosing-user-ids"></a>Gebruikers-Id's kiezen
 
-Gebruikers-id's behouden tussen gebruikerssessies om bij te houden hoe gebruikers zich gedragen na verloop van tijd. Er zijn verschillende manieren voor het opslaan van de ID.
+Gebruikers-Id's moeten blijven bestaan in gebruikers sessies om bij te houden hoe gebruikers zich in de loop van de tijd gedragen. Er zijn verschillende benaderingen voor het persistent maken van de ID.
 
-- Een definitie van een gebruiker die u al in uw service hebt.
-- Als de service toegang tot een browser heeft, kan deze de browser een cookie met de ID in het doorgeven. De ID blijven behouden voor zolang de cookie in de browser van de gebruiker blijft.
-- Indien nodig, kunt u een nieuwe ID elke sessie, maar de resultaten van gebruikers worden beperkt. Bijvoorbeeld, u niet mogelijk om te zien hoe het gedrag van gebruikers na verloop van tijd verandert.
+- Een definitie van een gebruiker die al in uw service is geïnstalleerd.
+- Als de service toegang heeft tot een browser, kan deze de browser een cookie met een ID erin door geven. De ID blijft behouden zolang de cookie in de browser van de gebruiker blijft.
+- Als dat nodig is, kunt u elke sessie een nieuwe ID gebruiken, maar de resultaten van de gebruikers zijn beperkt. U kunt bijvoorbeeld niet zien hoe het gedrag van een gebruiker in de loop van de tijd verandert.
 
-De ID moet een Guid of een andere tekenreeks complex genoeg voor unieke identificatie voor elke gebruiker. Het kan bijvoorbeeld een lange willekeurig getal zijn.
+De ID moet een GUID of een andere teken reeks zijn die complex genoeg is om elke gebruiker uniek te identificeren. Het kan bijvoorbeeld een lang wille keurig getal zijn.
 
-Als de ID persoonlijke gegevens over de gebruiker bevat, is het niet de juiste waarde om te verzenden naar Application Insights als een gebruikers-ID. U kunt verzenden die een ID als een [geverifieerde gebruikers-ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), maar deze niet voldoet aan de gebruiker-ID-vereisten voor gebruiksscenario's.
+Als de ID persoonlijke informatie over de gebruiker bevat, is het geen geschikte waarde om naar Application Insights te verzenden als een gebruikers-ID. U kunt een dergelijke ID verzenden als een [geverifieerde gebruikers-id](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), maar niet voldoen aan de vereiste voor de gebruikers-id voor gebruiks scenario's.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-apps: Instellen van de context van de gebruiker in een ITelemetryInitializer
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: de gebruikers context instellen in een ITelemetryInitializer
 
-Maak een telemetrische initializer, zoals beschreven in detail [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). De sessie-ID via de aanvraagtelemetrie doorgeven en stel de Context.User.Id en de Context.Session.Id.
+Maak een initialisatie functie voor telemetrie, zoals [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)wordt beschreven. Geef de sessie-ID door via de aanvraag-telemetrie en stel de Context.User.Id en de Context.Session.Id in.
 
-In het volgende voorbeeld wordt de gebruikers-ID op een id die na de sessie is verlopen. Gebruik zo mogelijk een gebruikers-ID die clusterverbinding blijven tussen sessies behouden.
+In dit voor beeld wordt de gebruikers-ID ingesteld op een id die na de sessie verloopt. Gebruik, indien mogelijk, een gebruikers-ID die in verschillende sessies wordt bewaard.
 
-### <a name="telemetry-initializer"></a>Telemetrie-initializer
+### <a name="telemetry-initializer"></a>Initialisatie functie voor telemetrie
 
 ```csharp
 using System;
@@ -136,9 +130,9 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Om in te schakelen gebruik ervaringen, beginnen met het verzenden [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [paginaweergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Als u aangepaste gebeurtenissen of paginaweergaven al verzendt, Verken de hulpprogramma's voor gebruik als u wilt weten hoe gebruikers gebruiken voor uw service.
-    - [Gebruiksoverzicht](usage-overview.md)
+- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
+    - [Overzicht van gebruik](usage-overview.md)
     - [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Retentie](usage-retention.md)

@@ -5,22 +5,22 @@ keywords: app service, Azure app service, Scale, app service-plan, wijzigen, mak
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067208"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898958"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
 
@@ -33,23 +33,17 @@ Een [Azure app service plan](overview-hosting-plans.md) bevat de resources die e
 
 U kunt een leeg App Service plan maken of u kunt een plan maken als onderdeel van het maken van een app.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **nieuwe** > **Web en mobiel**en selecteer vervolgens web- **app** of een ander soort app service-app.
-
-2. Selecteer een bestaand App Service plan of maak een plan voor de nieuwe app.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **nieuwe** > **Web-app** of een ander soort app service-app.
 
    ![Maak een app in de Azure Portal.][createWebApp]
 
-   Een plan maken:
+2. Configureer de sectie met **instantie Details** voordat u het app service-abonnement configureert. Instellingen zoals **publiceren** en **besturings systemen** kunnen de beschik bare prijs categorieën voor uw app service plan wijzigen. De **regio** bepaalt waar uw app service plan wordt gemaakt.
+   
+3. Selecteer in de sectie **app service plan** een bestaand abonnement of maak een plan door **Nieuw maken**te selecteren.
 
-   a. Selecteer **[+] nieuwe maken**.
+   ![Een App Service-abonnement maken.][createASP] 
 
-      ![Een App Service-abonnement maken.][createASP] 
-
-   b. Voer de naam van het plan in bij **app service plan**.
-
-   c. Selecteer bij **locatie**een geschikte locatie.
-
-   d. Voor **prijs categorie**selecteert u een geschikte prijs categorie voor de service. Selecteer **alles weer geven** om meer prijs opties weer te geven, zoals **gratis** en **gedeeld**. Nadat u de prijs categorie hebt geselecteerd, klikt u op de knop **selecteren** .
+4. Wanneer u een plan maakt, kunt u de prijs categorie van het nieuwe plan selecteren. In **SKU en grootte**selecteert u **grootte wijzigen** om de prijs categorie te wijzigen. 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ U kunt een app naar een andere App Service plan verplaatsen, zolang het bron pla
 
 1. Blader in het [Azure Portal](https://portal.azure.com)naar de app die u wilt verplaatsen.
 
-1. Zoek in het menu naar de sectie **app service plan** .
+2. Selecteer in het menu links de optie **app service abonnement wijzigen**.
 
-1. Selecteer **wijziging app service plan** om de **app service plan** kiezer te openen.
+3. Selecteer in de vervolg keuzelijst **app service plan** een bestaand plan om de app naar te verplaatsen. In de vervolg keuzelijst worden alleen abonnementen weer gegeven die deel uitmaken van dezelfde resource groep en geografische regio als het huidige App Service plan. Als dat plan niet bestaat, kunt u standaard een plan maken. U kunt ook hand matig een nieuw plan maken door **Nieuw maken**te selecteren.
 
+4. Als u een plan maakt, kunt u de prijs categorie van het nieuwe plan selecteren. Selecteer in **prijs categorie**de bestaande laag om deze te wijzigen. 
+   
+   > [!IMPORTANT]
+   > Als u een app van een abonnement op een hoger niveau verplaatst naar een onderlaagd abonnement, bijvoorbeeld van **D1** naar **F1**, kan de app bepaalde mogelijkheden in het doel plan verliezen. Als uw app bijvoorbeeld SSL-certificaten gebruikt, ziet u mogelijk het volgende fout bericht:
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. Wanneer u klaar bent, selecteert u **OK**.
+   
    ![App Service plan kiezer.][change] 
-
-1. Selecteer in de **app service plan** kiezer een bestaand plan om deze app naar te verplaatsen.   
-
-Op de pagina **app service plan selecteren** worden alleen abonnementen weer gegeven die deel uitmaken van dezelfde resource groep en geografische regio als het app service plan van de huidige app.
-
-Elk abonnement heeft een eigen prijs categorie. Als u bijvoorbeeld een site verplaatst van een **gratis** laag naar een **Standard** -laag, kunnen alle hieraan toegewezen apps de functies en resources van de laag **standaard** gebruiken. Het verplaatsen van een app van een abonnement met een hoger niveau naar een onderlaagd abonnement betekent echter dat u geen toegang meer hebt tot bepaalde functies. Als uw app gebruikmaakt van een functie die niet beschikbaar is in het doel abonnement, krijgt u een fout melding waarin wordt aangegeven welke functie wordt gebruikt die niet beschikbaar is. 
-
-Als een van uw apps bijvoorbeeld SSL-certificaten gebruikt, ziet u mogelijk het volgende fout bericht:
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-In dit geval moet u, voordat u de app naar het doel abonnement kunt verplaatsen, het volgende doen:
-- Schaal de prijs categorie van het doel abonnement op **basis** of hoger.
-- Verwijder alle SSL-verbindingen met uw app.
 
 ## <a name="move-an-app-to-a-different-region"></a>Een app verplaatsen naar een andere regio
 
@@ -92,7 +81,7 @@ De regio waarin uw app wordt uitgevoerd, is de regio van het App Service plan wa
 U vindt de **kloon-app** in de sectie **hulp middelen voor ontwikkel aars** van het menu.
 
 > [!IMPORTANT]
-> Voor klonen gelden enkele beperkingen. U kunt deze informatie lezen in [Azure app service](app-service-web-app-cloning.md)het klonen van apps.
+> Voor klonen gelden enkele beperkingen. U kunt deze informatie lezen in [Azure app service het klonen van apps](app-service-web-app-cloning.md).
 
 ## <a name="scale-an-app-service-plan"></a>Een App Service plan schalen
 

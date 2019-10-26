@@ -1,24 +1,19 @@
 ---
 title: Problemen met de beschikbaarheids tests van Azure-toepassing Insights oplossen | Microsoft Docs
 description: Problemen met webtests oplossen in Azure-toepassing Insights. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695045"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899528"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -29,7 +24,7 @@ Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunn
 |Symptoom/fout bericht| Mogelijke oorzaken|
 |--------|------|
 |Kan geen beveiligd SSL/TLS-kanaal maken  | SSL-versie. Alleen TLS 1,0, 1,1 en 1,2 worden ondersteund. **SSLv3 wordt niet ondersteund.**
-|TLSv 1.2-record laag: Waarschuwing (niveau: Onherstelbare beschrijving: Ongeldige record-MAC)| Zie stack Exchange-thread voor [meer informatie](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
+|TLSv 1.2-record laag: waarschuwing (niveau: onherstelbaar, beschrijving: ongeldige record-MAC)| Zie stack Exchange-thread voor [meer informatie](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
 |Een URL die mislukt is, is een CDN (Content Delivery Network) | Dit kan worden veroorzaakt door een onjuiste configuratie in uw CDN |  
 
 ### <a name="possible-workaround"></a>Mogelijke tijdelijke oplossing

@@ -3,32 +3,33 @@ title: Azure Service Fabric CLI-sfctl Store | Microsoft Docs
 description: Beschrijft de Service Fabric CLI sfctl Store-opdrachten.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: ccd9e8323f6e0de7b81c7600e7828e4858c51201
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e8a085c4aa6df34441f22da5542231999930d89f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035868"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900947"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Voer elementaire bewerkingen op bestands niveau uit in het cluster installatie kopie archief.
 
 ## <a name="commands"></a>Opdrachten
 
-|Opdracht|Description|
+|Opdracht|Beschrijving|
 | --- | --- |
-| verwijderen | Hiermee verwijdert u de bestaande inhoud van het installatie kopie archief. |
-| root-info | Hiermee haalt u de inhouds informatie op in de hoofdmap van het archief met installatie kopieën. |
+| delete | Hiermee verwijdert u de bestaande inhoud van het installatie kopie archief. |
+| hoofdmap-info | Hiermee haalt u de inhouds informatie op in de hoofdmap van het archief met installatie kopieën. |
 | gave | Hiermee wordt de informatie over de inhoud van de installatie kopie opgehaald. |
 
 ## <a name="sfctl-store-delete"></a>sfctl Store verwijderen
@@ -38,16 +39,16 @@ Hiermee verwijdert u de bestaande inhoud van het archief van de installatie kopi
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --content-path [required] | Het relatieve pad naar het bestand of de map in het archief van de installatie kopie van de hoofdmap. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -60,15 +61,15 @@ Hiermee wordt de informatie over de inhoud van de installatie kopie in de hoofdm
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
@@ -81,16 +82,16 @@ Retourneert informatie over de inhoud van de afbeeldings opslag in de opgegeven 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --content-path [required] | Het relatieve pad naar het bestand of de map in het archief van de installatie kopie van de hoofdmap. |
-| --time-out-t | Time-out van server in seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
-| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

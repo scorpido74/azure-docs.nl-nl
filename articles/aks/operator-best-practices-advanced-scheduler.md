@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026105"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900116"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
@@ -44,7 +44,7 @@ Wanneer u een pod implementeert in een AKS-cluster, plant Kubernetes alleen een 
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die in de vorige stap zijn toegepast op het knoop punt te verdragen:
+Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die wordt toegepast op het knoop punt in de vorige stap, te verdragen:
 
 ```yaml
 kind: Pod
@@ -179,7 +179,7 @@ Een goed voor beeld is een webtoepassing die ook een Azure-cache gebruikt voor r
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-Dit voor beeld is een complexere implementatie dan het gebruik van knooppunt selecties of knooppunt affiniteit. De implementatie biedt u de controle over de manier waarop Kubernetes op knoop punten van peuling plant en kan bronnen logisch isoleren. Zie voor een volledig voor beeld van deze webtoepassing met Azure cache voor redis het voor beeld van een [peul op hetzelfde knoop punt][k8s-pod-affinity].
+Dit voor beeld is een complexere implementatie dan het gebruik van knooppunt selecties of knooppunt affiniteit. De implementatie biedt u de controle over de manier waarop Kubernetes op knoop punten van peuling plant en kan bronnen logisch isoleren. Voor een volledig voor beeld van deze webtoepassing met Azure cache voor redis raadpleegt u [samen op hetzelfde knoop punt][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Volgende stappen
 

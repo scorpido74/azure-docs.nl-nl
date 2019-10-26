@@ -1,31 +1,25 @@
 ---
-title: Azure Web Apps analytische gegevens bekijken | Microsoft Docs
-description: U kunt de oplossing Azure Web Apps Analytics gebruiken om inzicht te krijgen over uw Azure-Web-Apps door het verzamelen van verschillende metrische gegevens over al uw Azure-Web-App-resources.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure Web Apps analytic-gegevens weer geven | Microsoft Docs
+description: U kunt de Azure Web Apps-analyse-oplossing gebruiken om inzicht te krijgen in uw Azure-Web Apps door verschillende metrische gegevens te verzamelen voor alle resources van uw Azure-web-app.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/02/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ebe0b9d3cbe14bf35e05db3349a5aebb11b5716
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/02/2018
+ms.openlocfilehash: 6b0a4276e27cdcbfaad133a69ac2f4cc3b750805
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494730"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899079"
 ---
-# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Analytische gegevens van de weergave voor metrische gegevens voor alle resources in uw Azure-Web-App
+# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Analytische gegevens weer geven voor gegevens over alle Azure web app-resources
 
-![Symbool van Web-Apps](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+![Web Apps-symbool](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> De oplossing Azure Web-App-analyse is verplaatst naar de ondersteuning van de community.  
->- De oplossing is niet meer beschikbaar op de Azure Marketplace, maar kan worden geïnstalleerd vanaf [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) waar dit wordt ondersteund door de community.
->- Klanten die de oplossing al hebt geïnstalleerd kunnen echter ook doorgaan met deze wijzigingen.  
->- Microsoft raadt aan dat u [Application Insights](../../azure-monitor/app/app-insights-overview.md) voor het bewaken van uw webtoepassingen.
+> De analyse oplossing van Azure web app is verplaatst naar ondersteuning van de community.  
+>- De oplossing is niet meer beschikbaar op de Azure Marketplace, maar kan worden geïnstalleerd vanuit [Azure Quick](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) start-sjablonen, waar deze worden ondersteund door de community.
+>- Klanten die de oplossing al hebben geïnstalleerd, kunnen deze blijven gebruiken met wijzigingen.  
+>- Micro soft raadt u aan [Application Insights](../../azure-monitor/app/app-insights-overview.md) te gebruiken voor het bewaken van uw webtoepassingen.

@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics taken weer geven in Visual Studio
-description: In dit artikel wordt beschreven hoe u Azure Stream Analytics taken in Visual Studio kunt weer geven en beheren.
+description: Meer informatie over het weer geven, starten en stoppen, testen van verbindingen, het controleren van resultaten en het exporteren van uw Azure Stream Analytics taken met Visual Studio.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173016"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893559"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio gebruiken om Azure Stream Analytics taken weer te geven
 
@@ -38,8 +38,6 @@ U kunt de taak weergave gebruiken om te communiceren met Azure Stream Analytics 
 
     ![Stream Analytics server Verkenner-lijst](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. Vouw uw taak knooppunt uit en dubbel klik op het **taak weergave** knooppunt om een taak weergave te openen.
     
    ![Uitgevouwen taak knooppunt](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ Azure Stream Analytics taken kunnen volledig worden beheerd vanuit de taak weerg
     
    ![Stream Analytics taak besturings elementen](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>Taak resultaten controleren
 
 Stream Analytics-hulpprogram ma's voor Visual Studio ondersteunen momenteel uitvoer voorbeelden voor Azure Data Lake Storage en Blob-opslag. Als u resultaat wilt weer geven, dubbelklikt u op het knoop punt uitvoer van het taak diagram in de **taak weergave** en voert u de juiste referenties in.
 
    ![Taak BLOB-uitvoer Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>Taken exporteren naar een project
 
@@ -87,6 +83,6 @@ De resultaten van de **Test verbinding** worden weer gegeven in het **uitvoer** 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Stream Analytics taken bewaken en beheren met Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
-* [Snelstart: Een Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
-* [Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure-pijp lijnen](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Snelstartgids: een Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
+* [Zelf studie: een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure-pijp lijnen](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Continue integratie en ontwikkeling met Stream Analytics-hulpprogramma’s](stream-analytics-tools-for-visual-studio-cicd.md)

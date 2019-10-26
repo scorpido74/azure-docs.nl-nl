@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-logboeken integreren met Splunk met behulp van Azure Monitor | Microsoft Docs
+title: Splunk integreren met behulp van Azure Monitor | Microsoft Docs
 description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met behulp van Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26df2b37a249f808cc044b41960ca1e210a311a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c083ba97fc2f2b1d53458c2fb1176c0ebf1024ec
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988220"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895167"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Procedure: Azure Active Directory-logboeken integreren met Splunk met behulp van Azure Monitor
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u Azure Active Directory (Azure AD)-Logboeken kunt in
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze functie te gebruiken:
-* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het streamen van [uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * De Azure Monitor-invoeg toepassing voor Splunk. [Down load en configureer uw Splunk-exemplaar](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md).
 
 ## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory-logboeken integreren 

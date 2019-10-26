@@ -1,34 +1,28 @@
 ---
 title: Voor beelden van Azure Monitor-logboek query | Microsoft Docs
 description: Voor beelden van logboek query's in Azure Monitor met behulp van de Kusto-query taal.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718915"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900374"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
 Dit artikel bevat verschillende voor beelden van [query's](log-query-overview.md) met behulp van de [Kusto-query taal](/azure/kusto/query/) om verschillende soorten logboek gegevens op te halen uit Azure monitor. Er worden verschillende methoden gebruikt om gegevens samen te voegen en te analyseren. u kunt deze voor beelden gebruiken om verschillende strategieën te identificeren die u voor uw eigen vereisten kunt gebruiken.  
 
 Zie de [Kusto-taal referentie](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met Azure monitor.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Evenements
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Gebeurtenissen op toepassings niveau zoeken die worden beschreven als ' cryptografisch '
-In dit voorbeeld wordt gezocht naar de **gebeurtenissen** tabel voor records waarin **EventLog** is _Application_ en **RenderedDescription** bevat _cryptographic_. Bevat records van de afgelopen 24 uur.
+In dit voor beeld wordt de tabel **Events** doorzocht op records waarin **Eventlog** _Application_ and **RenderedDescription** bevat _Cryptographic_. Bevat records van de afgelopen 24 uur.
 
 ```Kusto
 Event
@@ -38,13 +32,13 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Zoek gebeurtenissen met betrekking tot het opmars hallen
-Zoek tabellen **gebeurtenis** -en **SecurityEvents** voor records dieunmarshaling vermelden.
+Zoek tabellen **gebeurtenis** -en **SecurityEvents** voor records die _unmarshaling_vermelden.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Heartbeat
+## <a name="heartbeat"></a>Hart
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Grafiek een week-over-week weergave van het aantal computers dat gegevens verzendt
 
@@ -79,7 +73,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde status records vergelijken met heartbeat-records
 
 In dit voor beeld vindt u gerelateerde beveiligings status records en heartbeat-records, die overeenkomen op computer en tijd.
-Houd er rekening mee dat het veld tijd wordt afgerond op de dichtstbijzijnde minuut. We hebben de berekening van de runtime opslaglocatie gebruikt `round_time=bin(TimeGenerated, 1m)`om dat te doen:.
+Houd er rekening mee dat het veld tijd wordt afgerond op de dichtstbijzijnde minuut. We hebben de volgende runtime bin-berekening gebruikt: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -205,10 +199,10 @@ Perf
 | render timechart
 ```
 
-## <a name="protection-status"></a>Beveiligingsstatus
+## <a name="protection-status"></a>Beveiligings status
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Computers met een status duur van niet-rapportage beveiliging
-In dit voorbeeld geeft een lijst van computers waarop de beveiligingsstatus van _Not Reporting_ en de duur die ze in deze status zijn.
+In dit voor beeld worden computers weer gegeven die de beveiligings status _niet rapporteren_ hebben en de duur die ze in deze status hadden.
 
 ```Kusto
 ProtectionStatus
@@ -237,7 +231,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Beveiligings gebeurtenissen per activiteits-ID tellen
 
 
-In dit voor beeld wordt gebruikgemaakt van de vaste structuur van de kolom **activiteit** : \<ID\>--naam.\<\>
+In dit voor beeld wordt gebruikgemaakt van de vaste structuur van de kolom **activiteit** : \<-ID\>-\<naam\>.
 De waarde van de **activiteit** wordt geparseerd in twee nieuwe kolommen en telt het exemplaar van elke **activityID**.
 
 ```Kusto
@@ -249,7 +243,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Beveiligings gebeurtenissen met betrekking tot machtigingen tellen
-In dit voorbeeld toont het aantal **securityEvent** records waarin de **activiteit** kolom bevat de gehele duur _Permissions_. De query is van toepassing op records die zijn gemaakt in de afgelopen 30 minuten.
+In dit voor beeld wordt het aantal **securityEvent** -records weer gegeven waarin de kolom **activiteit** de volledige term _machtigingen_bevat. De query is van toepassing op records die zijn gemaakt in de afgelopen 30 minuten.
 
 ```Kusto
 SecurityEvent
@@ -278,7 +272,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Naam en ID van de parser-activiteit
-De twee voor beelden hieronder zijn afhankelijk van de vaste structuur van de kolom **activiteit** : \<ID\>--naam.\<\> In het eerste voor beeld wordt de operator **parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
+De twee voor beelden hieronder zijn afhankelijk van de vaste structuur van de kolom **activiteit** : \<ID\>-\<naam\>. In het eerste voor beeld wordt de operator **parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -356,7 +350,7 @@ SecurityEvent
 | project-away Account1
 ```
 
-Met **de instructie** **samen voegen**kunnen we controleren of dezelfde verdachte accounts later kunnen worden aangemeld.
+Met de instructie **samen voegen**kunnen we **controleren of dezelfde** verdachte accounts later kunnen worden aangemeld.
 
 ```Kusto
 let timeframe = 1d;

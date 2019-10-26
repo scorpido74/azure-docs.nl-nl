@@ -14,21 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67486011"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901510"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
 
-Voor clusters die worden uitgevoerd op Azure, wordt Azure Active Directory (Azure AD) aanbevolen voor het beveiligen van de toegang tot beheer eindpunten.  In dit artikel wordt beschreven hoe u Azure AD zo kunt instellen dat clients worden geverifieerd voor een Service Fabric cluster, dat moet worden uitgevoerd voordat [het cluster wordt gemaakt](service-fabric-cluster-creation-via-arm.md).  Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. Toepassingen worden onderverdeeld in gebruikers met een webgebaseerde aanmeldings gebruikersinterface en die met een systeem eigen client ervaring. 
+Voor clusters die worden uitgevoerd op Azure, wordt Azure Active Directory (Azure AD) aanbevolen voor het beveiligen van de toegang tot beheer eindpunten. In dit artikel wordt beschreven hoe u Azure AD zo kunt instellen dat clients voor een Service Fabric cluster worden geverifieerd.
 
-Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-functionaliteit, met inbegrip van de webconsoles [Service Fabric Explorer][service-fabric-visualizing-your-cluster] en [Visual Studio][service-fabric-manage-application-in-visual-studio]. Als gevolg hiervan, maakt u twee Azure Active Directory-toepassingen voor het beheren van toegang tot het cluster: een webtoepassing en een systeemeigen toepassing.  Nadat de toepassingen zijn gemaakt, wijst u gebruikers toe aan de rollen alleen-lezen en beheerder.
+In dit artikel wordt de term ' Application ' gebruikt om te verwijzen naar [Azure Active Directory toepassingen](../active-directory/develop/developer-glossary.md#client-application), niet service Fabric toepassingen. zo nodig wordt het onderscheid gemaakt. Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk.
+
+Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-functionaliteit, met inbegrip van de webconsoles [Service Fabric Explorer][service-fabric-visualizing-your-cluster] en [Visual Studio][service-fabric-manage-application-in-visual-studio]. Als gevolg hiervan maakt u twee Azure AD-toepassingen om de toegang tot het cluster te beheren: één webtoepassing en één systeem eigen toepassing. Nadat de toepassingen zijn gemaakt, kunt u gebruikers toewijzen aan alleen-lezen en beheerders rollen.
 
 > [!NOTE]
-> U moet de volgende stappen uitvoeren voordat u het cluster maakt. Omdat de scripts clusternamen en eindpunten verwachten, moeten de waarden worden gepland en geen waarden zijn die u al hebt gemaakt.
+> Op Linux moet u de volgende stappen uitvoeren voordat u het cluster maakt. In Windows hebt u ook de mogelijkheid om [Azure AD-verificatie te configureren voor een bestaand cluster](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel nemen we aan dat u al een tenant hebt gemaakt. Als u dit nog niet hebt gedaan, begint u door [Een Azure Active Directory-tenant verkrijgen][active-directory-howto-tenant] te lezen.
@@ -57,7 +59,7 @@ U kunt uw *TenantId* vinden door de Power shell-opdracht `Get-AzureSubscription`
 
 De *Clusternaam* wordt gebruikt voor als prefix aan de Azure Active Directory-toepassingen die zijn gemaakt door het script. Deze hoeft niet precies overeen te komen met de naam van het daadwerkelijke cluster. De naam is uitsluitend bedoeld om het eenvoudiger te maken dat Azure Active Directory-artefacten worden toegewezen aan het Service Fabric-cluster waarmee ze worden gebruikt.
 
-*WebApplicationReplyUrl* wordt het standaardeindpunt dat Azure Active Directory retourneert naar uw gebruikers nadat ze klaar zijn aanmelden. Stel dit eindpunt in als het Service Fabric Explorer-eindpunt voor uw cluster, dit is standaard:
+*WebApplicationReplyUrl* wordt het standaardeindpunt dat Azure Active Directory retourneert naar uw gebruikers nadat ze klaar zijn aanmelden. Stel dit eind punt in als het Service Fabric Explorer-eind punt voor uw cluster. Als u Azure AD-toepassingen maakt om een bestaand cluster weer te geven, moet u ervoor zorgen dat deze URL overeenkomt met het eind punt van uw bestaande cluster. Als u toepassingen voor een nieuw cluster maakt, moet u het eind punt plannen dat uw cluster zal hebben en ervoor zorgen dat het eind punt van een bestaand cluster niet wordt gebruikt. Het Service Fabric Explorer-eind punt is standaard:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -66,7 +68,7 @@ U wordt gevraagd of u zich aanmeldt bij een account dat beheerdersrechten voor d
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
 
-Het script drukt de JSON af die vereist is voor de Azure Resource Manager sjabloon wanneer u [het cluster maakt](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). het is dus een goed idee om het Power shell-venster geopend te laten.
+Het script drukt de JSON af die vereist is voor de Azure Resource Manager sjabloon bij [het maken van uw Aad-cluster](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). Daarom is het een goed idee om het Power shell-venster geopend te laten.
 
 ```json
 "azureActiveDirectory": {
@@ -85,26 +87,26 @@ Nadat u zich hebt aangemeld bij Azure AD in Service Fabric Explorer, keert de br
 
 ![Dialoog venster SFX-certificaat][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Reason
+#### <a name="reason"></a>Reden
 De gebruiker heeft geen rol toegewezen in de Azure AD-cluster toepassing. Azure AD-verificatie mislukt dus op Service Fabric cluster. Service Fabric Explorer terugvallen op de verificatie van het certificaat.
 
 #### <a name="solution"></a>Oplossing
-Volg de instructies voor het instellen van Azure AD en het toewijzen van gebruikers rollen. We raden u ook aan om ' gebruikers toewijzing vereist voor toegang tot de app ' `SetupApplications.ps1` in te scha kelen.
+Volg de instructies voor het instellen van Azure AD en het toewijzen van gebruikers rollen. U wordt ook aangeraden om de optie gebruikers toewijzing vereist voor toegang tot de app in te scha kelen, zoals `SetupApplications.ps1` doet.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>De verbinding met Power shell is mislukt met een fout: De opgegeven referenties zijn ongeldig
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>De verbinding met Power shell is mislukt met de volgende fout: de opgegeven referenties zijn ongeldig
 #### <a name="problem"></a>Probleem
-Wanneer u Power shell gebruikt om verbinding te maken met het cluster met behulp van de beveiligings modus AzureActiveDirectory, mislukt de verbinding wanneer u zich hebt aangemeld bij Azure AD. er is een fout opgetreden: De opgegeven referenties zijn ongeldig.
+Wanneer u Power shell gebruikt om verbinding te maken met het cluster met behulp van de beveiligings modus AzureActiveDirectory, mislukt de verbinding met een fout: de opgegeven referenties zijn ongeldig.
 
 #### <a name="solution"></a>Oplossing
 Deze oplossing is hetzelfde als die van de voor gaande.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer retourneert een fout wanneer u zich aanmeldt: "AADSTS50011"
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer retourneert een fout wanneer u zich aanmeldt: ' AADSTS50011 '
 #### <a name="problem"></a>Probleem
-Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, wordt een fout geretourneerd door de pagina: "AADSTS50011: De antwoord adres &lt;-&gt; URL komt niet overeen met de antwoord adressen die zijn geconfigureerd &lt;voor&gt;de toepassing: GUID.
+Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, retourneert de pagina een fout: "AADSTS50011: het antwoord adres &lt;URL&gt; komt niet overeen met de antwoord adressen die zijn geconfigureerd voor de toepassing: &lt;GUID&gt;."
 
 ![Het SFX-antwoord adres komt niet overeen][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Reason
+#### <a name="reason"></a>Reden
 De cluster toepassing (web) die staat voor Service Fabric Explorer pogingen om te verifiëren bij Azure AD en als onderdeel van de aanvraag, levert de omleidings-URL. De URL wordt echter niet weer gegeven in de lijst met **antwoord-url's** voor de Azure AD-toepassing.
 
 #### <a name="solution"></a>Oplossing
@@ -125,7 +127,7 @@ Zie [Connect-ServiceFabricCluster cmdlet](https://docs.microsoft.com/powershell/
 Ja. Maar vergeet niet om de URL van Service Fabric Explorer toe te voegen aan uw cluster toepassing (web). Anders werkt Service Fabric Explorer niet.
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Waarom heb ik nog steeds een server certificaat nodig terwijl Azure AD is ingeschakeld?
-FabricClient en FabricGateway voeren een wederzijdse verificatie uit. Tijdens Azure AD-verificatie biedt Azure AD-integratie een client identiteit voor de server en wordt het server certificaat gebruikt voor het verifiëren van de identiteit van de server. Zie [X. 509-certificaten en service Fabric][x509-certificates-and-service-fabric]voor meer informatie over service Fabric certificaten.
+FabricClient en FabricGateway voeren een wederzijdse verificatie uit. Tijdens Azure AD-verificatie biedt Azure AD-integratie een client identiteit voor de server en wordt het server certificaat gebruikt door de client om de identiteit van de server te verifiëren. Zie [X. 509-certificaten en service Fabric][x509-certificates-and-service-fabric]voor meer informatie over service Fabric certificaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Configureer en implementeer een cluster](service-fabric-cluster-creation-via-arm.md)nadat u Azure Active Directory toepassingen hebt ingesteld en rollen hebt ingesteld voor gebruikers.

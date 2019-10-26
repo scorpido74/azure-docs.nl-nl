@@ -17,12 +17,12 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db7b794166126d54ede0ee8eb67653d006a1619
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: b47a96931cdf60eb40bd3d899dd7a6fb947ad553
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809958"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893302"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een python-console-app met behulp van de identiteit van de app
 
@@ -141,10 +141,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
 
-U moet MSAL python eenmaal installeren
+U moet de afhankelijkheden van dit voor beeld één keer installeren
 
 ```console
-pip install msal
+pip install -r requirements.txt
 ```
 
 Voer vervolgens de toepassing uit via de opdracht prompt of de-console:
@@ -167,7 +167,7 @@ U ziet in de console-uitvoer een bepaald JSON-fragment dat een lijst met gebruik
  U kunt MSAL python installeren door de volgende PIP-opdracht uit te voeren.
 
 ```powershell
-pip install -r requirements.txt
+pip install msal
 ```
 
 ### <a name="msal-initialization"></a>MSAL initialiseren

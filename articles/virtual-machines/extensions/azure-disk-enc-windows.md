@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598004"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901339"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (micro soft. Azure. Security. AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Zie voor een volledige lijst met vereisten [Azure Disk Encryption voor Linux-vm'
 
 ## <a name="extension-schemata"></a>Extensie schema's
 
-Er zijn twee schema's voor Azure Disk Encryption: v 1.1, een nieuwer, aanbevolen schema dat geen gebruik maakt van Azure Active Directory (AAD)-eigenschappen en v 0.1, een ouder schema dat AAD-eigenschappen vereist. U moet de schema versie gebruiken die overeenkomt met de extensie die u gebruikt: schema v 1.1 voor de AzureDiskEncryption-extensie versie 1,1, schema v 0.1 voor de AzureDiskEncryption-extensie versie 0,1.
+Er zijn twee schema's voor de Windows AzureDiskEncryption-uitbrei ding: v 2.2, een nieuwer, aanbevolen schema dat geen gebruik maakt van Azure Active Directory (AAD)-eigenschappen en v 1.1, een ouder schema dat AAD-eigenschappen vereist. U moet de schema versie gebruiken die overeenkomt met de extensie die u gebruikt: schema v 2.2 voor de AzureDiskEncryption-extensie versie 2,2, schema v 1.1 voor de AzureDiskEncryption-extensie versie 1,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schema v 1.1: geen AAD (aanbevolen)
+### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: geen AAD (aanbevolen)
 
-Het v 1.1-schema wordt aanbevolen en vereist geen Azure Active Directory eigenschappen.
+Het v 2.2-schema wordt aanbevolen voor alle nieuwe virtuele machines en vereist geen Azure Active Directory eigenschappen.
 
 ```json
 {
@@ -67,11 +67,11 @@ Het v 1.1-schema wordt aanbevolen en vereist geen Azure Active Directory eigensc
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schema v 0,1: met AAD 
+### <a name="schema-v11-with-aad"></a>Schema v 1.1: met AAD 
 
-Voor het 0,1-schema zijn `aadClientID` en `aadClientSecret` of `AADClientCertificate` vereist.
+Het 1,1-schema vereist `aadClientID` en `aadClientSecret` of `AADClientCertificate` en wordt niet aanbevolen voor nieuwe Vm's.
 
-@No__t_0 gebruiken:
+`aadClientSecret`gebruiken:
 
 ```json
 {
@@ -101,7 +101,7 @@ Voor het 0,1-schema zijn `aadClientID` en `aadClientSecret` of `AADClientCertifi
 }
 ```
 
-@No__t_0 gebruiken:
+`AADClientCertificate`gebruiken:
 
 ```json
 {
@@ -139,10 +139,10 @@ Voor het 0,1-schema zijn `aadClientID` en `aadClientSecret` of `AADClientCertifi
 | apiVersion | 2015-06-15 | date |
 | Uitgever | Micro soft. Azure. Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (0,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GPT | 
-| (0,1-schema) AADClientSecret | wachtwoord | string |
-| (0,1-schema) AADClientCertificate | vingerafdruk | string |
+| typeHandlerVersion | 1,1, 2,2 | string |
+| (1,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | GPT | 
+| (1,1-schema) AADClientSecret | wachtwoord | string |
+| (1,1-schema) AADClientCertificate | vingerafdruk | string |
 | DiskFormatQuery | {"dev_path": "", "naam": "", "File_system": ""} | JSON-woorden lijst |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |

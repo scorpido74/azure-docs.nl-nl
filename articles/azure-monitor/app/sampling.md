@@ -1,24 +1,19 @@
 ---
 title: Bemonsterde telemetrie in Azure-toepassing Insights | Microsoft Docs
 description: Hoe u het telemetrie-volume onder controle kunt houden.
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372569"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899860"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -381,7 +376,7 @@ De steek proeven voor opname worden niet uitgevoerd terwijl de op SDK gebaseerde
 ## <a name="sampling-for-web-pages-with-javascript"></a>Steek proeven voor webpagina's met Java script
 U kunt webpagina's configureren voor steek proeven met een vaste frequentie vanaf elke server. 
 
-Wanneer u [de webpagina's voor Application Insights configureert](../../azure-monitor/app/javascript.md), wijzigt u het Java script-fragment dat u van de Application Insights Portal ontvangt. (In ASP.NET-apps gaat het fragment meestal in _Layout. cshtml.)  Voeg een regel toe als `samplingPercentage: 10,` vóór de instrumentatie sleutel:
+Wanneer u [de webpagina's voor Application Insights configureert](../../azure-monitor/app/javascript.md), wijzigt u het Java script-fragment dat u van de Application Insights Portal ontvangt. (In ASP.NET-apps gaat het fragment meestal in _Layout. cshtml.)  Voeg een regel toe, zoals `samplingPercentage: 10,` vóór de instrumentatie sleutel:
 
     <script>
     var appInsights= ... 
