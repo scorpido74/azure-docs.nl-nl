@@ -251,6 +251,10 @@
           items:
             - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Problemen oplossen
+          items:
+            - name: Verbindingsfouten oplossen
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

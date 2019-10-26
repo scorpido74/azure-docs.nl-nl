@@ -1,24 +1,18 @@
 ---
 title: Optimaliseer uw Active Directory-omgeving met Azure Monitor | Microsoft Docs
 description: U kunt de Active Directory Health Check-oplossing gebruiken om het risico en de status van uw omgevingen volgens een regel matig interval te evalueren.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883081"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899192"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimaliseer uw Active Directory-omgeving met de Active Directory Health Check-oplossing in Azure Monitor
 
@@ -47,7 +41,7 @@ Nadat u de oplossing hebt toegevoegd en een controle is voltooid, wordt de samen
 * Een Log Analytics-werk ruimte om de Active Directory Health Check-oplossing toe te voegen vanuit de Azure Marketplace in de Azure Portal. Er is geen aanvullende configuratie vereist.
 
   > [!NOTE]
-  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de cloudservice registreert de gegevens.
+  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
   >
   >
 
@@ -179,7 +173,7 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
 
 *Is er een manier om te configureren hoe vaak de status controle wordt uitgevoerd?*
 
-* Momenteel niet.
+* Op dit moment niet.
 
 *Als er een andere server voor wordt gedetecteerd nadat ik een oplossing voor de status controle heb toegevoegd, wordt deze gecontroleerd*
 
@@ -191,7 +185,7 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
 
 *Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 
@@ -199,7 +193,7 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
 
 *Is er een manier om te configureren wanneer gegevens worden verzameld?*
 
-* Momenteel niet.
+* Op dit moment niet.
 
 *Waarom worden alleen de tien beste aanbevelingen weer gegeven?*
 
