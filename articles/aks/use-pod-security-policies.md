@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 131a71e27bba1c37b6d50b718b8eac788109a59f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058332"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933771"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
@@ -106,10 +106,10 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Het beveiligings beleid *privileged* pod wordt toegepast op elke geverifieerde gebruiker in het AKS-cluster. Deze toewijzing wordt beheerd door ClusterRoles en ClusterRoleBindings. Gebruik de opdracht [kubectl Get clusterrolebindings][kubectl-get] en zoek naar de *standaard: priviledged:* binding:
+Het beveiligings beleid *privileged* pod wordt toegepast op elke geverifieerde gebruiker in het AKS-cluster. Deze toewijzing wordt beheerd door ClusterRoles en ClusterRoleBindings. Gebruik de opdracht [kubectl Get clusterrolebindings][kubectl-get] en zoek naar de *standaard: Privileged:* binding:
 
 ```console
-kubectl get clusterrolebindings default:priviledged -o yaml
+kubectl get clusterrolebindings default:privileged -o yaml
 ```
 
 Zoals wordt weer gegeven in de volgende verkorte uitvoer, wordt de *PSP: beperkte* ClusterRole toegewezen aan elk *systeem: geverifieerde* gebruikers. Deze mogelijkheid biedt een basis niveau van beperkingen zonder dat uw eigen beleid wordt gedefinieerd.
@@ -119,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:priviledged
+  name: default:privileged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:priviledged
+  name: psp:privileged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -156,7 +156,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Alias opdrachten maken voor beheerders en gebruikers die geen beheerder zijn
 
-Als u het verschil tussen de normale gebruiker met beheerders rechten `kubectl` wilt markeren wanneer u en de niet-beheerder gebruiker hebt gemaakt in de vorige stappen, maakt u twee opdracht regel aliassen:
+Als u het verschil tussen de normale gebruiker met beheerders rechten wilt markeren wanneer u `kubectl` gebruikt en de niet-beheerders gebruiker die in de vorige stappen is gemaakt, maakt u twee opdracht regel aliassen:
 
 * De alias voor de **kubectl-beheerder** is de gewone beheerder en ligt binnen het bereik van de naam ruimte *PSP-AKS* .
 * De **kubectl-nonadminuser** -alias is voor de niet *-beheerder-gebruiker* die in de vorige stap is gemaakt en is afgestemd op de *PSP-AKS-* naam ruimte.
@@ -170,9 +170,9 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Het maken van een privileged pod testen
 
-We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context `privileged: true`van. Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *beperkte* beleid deze aanvraag weigeren.
+We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context van `privileged: true`. Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *beperkte* beleid deze aanvraag weigeren.
 
-Maak een bestand met `nginx-privileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand met de naam `nginx-privileged.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -207,7 +207,7 @@ Het Pod is niet bereikbaar voor de plannings fase, dus er zijn geen resources om
 
 In het vorige voor beeld heeft de pod-specificatie geautoriseerde escalatie aangevraagd. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gepland. We gaan nu proberen om dezelfde NGINX-pod uit te voeren zonder de escalatie aanvraag van de bevoegdheid.
 
-Maak een bestand met `nginx-unprivileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand met de naam `nginx-unprivileged.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -226,7 +226,7 @@ Maak de Pod met de opdracht [kubectl apply][kubectl-apply] en geef de naam van u
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-De Kubernetes-planner accepteert de pod-aanvraag. Als u echter de status van de pod bekijkt met `kubectl get pods`, is er een fout:
+De Kubernetes-planner accepteert de pod-aanvraag. Als u echter de status van de Pod met behulp van `kubectl get pods`bekijkt, is er een fout:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -267,9 +267,9 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Het maken van een pod met een specifieke gebruikers context testen
 
-In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context `runAsUser: 2000`, zoals.
+In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context, zoals `runAsUser: 2000`.
 
-Maak een bestand met `nginx-unprivileged-nonroot.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand met de naam `nginx-unprivileged-nonroot.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -290,7 +290,7 @@ Maak de Pod met de opdracht [kubectl apply][kubectl-apply] en geef de naam van u
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-De Kubernetes-planner accepteert de pod-aanvraag. Als u echter de status van de pod bekijkt met, is `kubectl get pods`er een andere fout dan in het vorige voor beeld:
+De Kubernetes-planner accepteert de pod-aanvraag. Als u echter de status van de Pod met `kubectl get pods`bekijkt, is er een andere fout dan in het vorige voor beeld:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -352,7 +352,7 @@ Nu u het gedrag van het standaard beveiligings beleid voor pod hebt gezien, bied
 
 We gaan een beleid maken voor het afwijzen van het Peul waarvoor privileged Access moet worden aangevraagd. Andere opties, zoals *runAsUser* of toegestane *volumes*, worden niet expliciet beperkt. Dit type beleid weigert een aanvraag voor bevoegde toegang, maar anders kan het cluster de aangevraagde peul uitvoeren.
 
-Maak een bestand met `psp-deny-privileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand met de naam `psp-deny-privileged.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -393,7 +393,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 In de vorige stap hebt u een pod-beveiligings beleid gemaakt waarmee u de peuling kunt afwijzen waarvoor privileged Access moet worden aangevraagd. Als u wilt toestaan dat het beleid wordt gebruikt, maakt u een *rol* of een *ClusterRole*. Vervolgens koppelt u een van deze rollen met behulp van een *RoleBinding* of *ClusterRoleBinding*.
 
-Voor dit voor beeld maakt u een ClusterRole waarmee u het beleid *PSP-deny-privileged* kunt *gebruiken* dat u in de vorige stap hebt gemaakt. Maak een bestand met `psp-deny-privileged-clusterrole.yaml` de naam en plak het volgende YAML-manifest:
+Voor dit voor beeld maakt u een ClusterRole waarmee u het beleid *PSP-deny-privileged* kunt *gebruiken* dat u in de vorige stap hebt gemaakt. Maak een bestand met de naam `psp-deny-privileged-clusterrole.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 kind: ClusterRole
@@ -417,7 +417,7 @@ Maak de ClusterRole met de opdracht [kubectl apply][kubectl-apply] en geef de na
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Maak nu een ClusterRoleBinding om de ClusterRole te gebruiken die u in de vorige stap hebt gemaakt. Maak een bestand met `psp-deny-privileged-clusterrolebinding.yaml` de naam en plak het volgende YAML-manifest:
+Maak nu een ClusterRoleBinding om de ClusterRole te gebruiken die u in de vorige stap hebt gemaakt. Maak een bestand met de naam `psp-deny-privileged-clusterrolebinding.yaml` en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -445,7 +445,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Het maken van een niet-gemachtigd pod opnieuw testen
 
-Als uw aangepaste pod-beveiligings beleid is toegepast en een binding voor het gebruikers account voor het gebruik van het beleid, probeert u opnieuw een niet-gemachtigd pod te maken. Gebruik hetzelfde `nginx-privileged.yaml` manifest om de Pod te maken met behulp van de opdracht [kubectl apply][kubectl-apply] :
+Als uw aangepaste pod-beveiligings beleid is toegepast en een binding voor het gebruikers account voor het gebruik van het beleid, probeert u opnieuw een niet-gemachtigd pod te maken. Gebruik hetzelfde `nginx-privileged.yaml`-manifest om de Pod te maken met behulp van de opdracht [kubectl apply][kubectl-apply] :
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml

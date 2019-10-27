@@ -1,53 +1,49 @@
 ---
-title: Azure Monitor log processen automatiseren met Microsoft Flow
-description: Lees hoe u Microsoft Flow snel herhaalbare om processen te automatiseren met behulp van de Azure Log Analytics-connector kunt gebruiken.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-ms.service: log-analytics
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
+title: Azure Monitor logboek processen automatiseren met Microsoft Flow
+description: Meer informatie over hoe u Microsoft Flow kunt gebruiken om Herhaal bare processen snel te automatiseren met behulp van de Azure Log Analytics-connector.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/29/2017
+author: MGoedtel
 ms.author: bwren
-ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 09/29/2017
+ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807037"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932319"
 ---
-# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor log processen automatiseren met de connector voor Microsoft Flow
-[Microsoft Flow](https://ms.flow.microsoft.com) kunt u geautomatiseerde werkstromen met behulp van honderden acties voor verschillende services maken. Uitvoer van een actie kan worden gebruikt als invoer voor andere zodat u kunt maken van de integratie tussen verschillende services.  De Azure Log Analytics-connector voor Microsoft Flow kunt u werkstromen kunnen opzetten waarmee gegevens opgehaald door bits-logboeken-query's vanuit een Log Analytics-werkruimte in Azure Monitor.
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor logboek processen automatiseren met de connector voor Microsoft Flow
+Met [Microsoft flow](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Uitvoer van de ene actie kan worden gebruikt als invoer voor een andere, zodat u integratie tussen verschillende services kunt maken.  Met de Azure Log Analytics-connector voor Microsoft Flow kunt u werk stromen bouwen met gegevens die zijn opgehaald door logboek query's van een Log Analytics-werk ruimte in Azure Monitor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Bijvoorbeeld, kunt u Microsoft Flow te gebruiken Azure Monitor-logboekgegevens in een e-mailmelding van Office 365, een bug in Azure DevOps maken of een Slack-bericht.  Door een eenvoudige planning of vanuit een actie in een gekoppelde service, zoals wanneer een e-mailbericht of een tweet wordt ontvangen, kunt u een werkstroom activeren.  
+U kunt bijvoorbeeld Microsoft Flow gebruiken om Azure Monitor logboek gegevens te gebruiken in een e-mail melding van Office 365, een bug te maken in azure DevOps of een bericht over een toegestane vertraging te plaatsen.  U kunt een werk stroom activeren op basis van een eenvoudig schema of van een actie in een verbonden service, zoals wanneer een e-mail of een tweet wordt ontvangen.  
 
-De in dit artikel leert u hoe u een stroom maken die de resultaten van een query voor Azure Monitor automatisch via e-mail, slechts één voorbeeld verzonden van hoe u de Log Analytics-connector in Microsoft Flow kunt gebruiken. 
+In de zelf studie in dit artikel leest u hoe u een stroom maakt waarmee automatisch de resultaten van een Azure Monitor logboek query per e-mail worden verzonden, maar één voor beeld van hoe u de Log Analytics-connector in Microsoft Flow kunt gebruiken. 
 
 
-## <a name="step-1-create-a-flow"></a>Stap 1: Stroom maken
-1. Aanmelden bij [Microsoft Flow](https://flow.microsoft.com), en selecteer **mijn stromen**.
-2. Klik op **+ maken met een lege App**.
+## <a name="step-1-create-a-flow"></a>Stap 1: een stroom maken
+1. Meld u aan bij [Microsoft flow](https://flow.microsoft.com)en selecteer **mijn stromen**.
+2. Klik op **+ leeg item maken**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>Stap 2: Een trigger voor uw stroom maken
+## <a name="step-2-create-a-trigger-for-your-flow"></a>Stap 2: een trigger maken voor uw stroom
 1. Klik op **honderden connectors en triggers zoeken**.
-2. Type **planning** in het zoekvak in.
-3. Selecteer **planning**, en selecteer vervolgens **planning - terugkeerpatroon**.
-4. In de **frequentie** vak Selecteer **dag** en in de **Interval** Voer **1**.<br><br>![In het dialoogvenster van Microsoft Flow-trigger](media/flow-tutorial/flow01.png)
+2. Typ **schema** in het zoekvak.
+3. Selecteer **planning**en selecteer vervolgens **schema-terugkeer patroon**.
+4. In het vak **frequentie** selecteert u **dag** en voert u in het vak **interval** **1**in.<br><br>![Microsoft Flow trigger dialoog venster](media/flow-tutorial/flow01.png)
 
 
-## <a name="step-3-add-a-log-analytics-action"></a>Stap 3: Een Log Analytics-actie toevoegen
-1. Klik op **+ nieuwe stap**, en klik vervolgens op **een actie toevoegen**.
-2. Zoeken naar **Log Analytics**.
-3. Klik op **Azure Log Analytics-query uitvoert en resultaten te visualiseren**.<br><br>![Log Analytics uitvoeren van query-venster](media/flow-tutorial/flow02.png)
+## <a name="step-3-add-a-log-analytics-action"></a>Stap 3: een Log Analytics actie toevoegen
+1. Klik op **+ nieuwe stap**en klik vervolgens op **een actie toevoegen**.
+2. Zoeken naar **log Analytics**.
+3. Klik op **Azure log Analytics: Query's uitvoeren en resultaten visualiseren**.<br><br>![query venster Log Analytics uitvoeren](media/flow-tutorial/flow02.png)
 
-## <a name="step-4-configure-the-log-analytics-action"></a>Stap 4: De actie Log Analytics configureren
+## <a name="step-4-configure-the-log-analytics-action"></a>Stap 4: de Log Analytics actie configureren
 
-1. Geef de details voor uw werkruimte, waaronder de abonnement-ID, resourcegroep, en de naam van de werkruimte.
-2. Toevoegen van de volgende log-query uit om de **Query** venster.  Dit is slechts een voorbeeld-query en u kunt vervangen door een andere waarmee gegevens worden geretourneerd.
+1. Geef de details op voor uw werk ruimte, met inbegrip van de abonnements-ID, resource groep en werkruimte naam.
+2. Voeg de volgende logboek query toe aan het **query** -venster.  Dit is alleen een voorbeeld query en u kunt vervangen door een andere waarde die gegevens retourneert.
    ```
     Event
     | where EventLevelName == "Error" 
@@ -56,31 +52,31 @@ De in dit artikel leert u hoe u een stroom maken die de resultaten van een query
     | sort by Computer
    ```
 
-2. Selecteer **HTML-tabel** voor de **grafiektype**.<br><br>![Log Analytics-actie](media/flow-tutorial/flow03.png)
+2. Selecteer de **HTML-tabel** voor het **grafiek type**.<br><br>![Log Analytics actie](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>Stap 5: Configureren van de stroom om e-mail te verzenden
+## <a name="step-5-configure-the-flow-to-send-email"></a>Stap 5: de stroom configureren voor het verzenden van e-mail
 
-1. Klik op **nieuwe stap**, en klik vervolgens op **+ een actie toevoegen**.
-2. Zoeken naar **Office 365 Outlook**.
-3. Klik op **Office 365 Outlook: een e-mail verzenden**.<br><br>![Selectievenster voor Office 365 Outlook](media/flow-tutorial/flow04.png)
+1. Klik op **nieuwe stap**en vervolgens op **+ een actie toevoegen**.
+2. Zoek naar **Office 365 Outlook**.
+3. Klik op **Office 365 Outlook – een E-mail verzenden**.<br><br>![Office 365](media/flow-tutorial/flow04.png) selectie venster van Outlook
 
-4. Geef het e-mailadres van een ontvanger in het **naar** -venster en een onderwerp in voor de e-mailadres in **onderwerp**.
-5. Klik ergens in de **hoofdtekst** vak.  Een **dynamische inhoud** venster wordt geopend met de waarden van vorige acties.  
-6. Selecteer **hoofdtekst**.  Dit is de resultaten van de query in de actie Log Analytics.
-6. Klik op **geavanceerde opties weergeven**.
-7. In de **Is HTML** Schakel **Ja**.<br><br>![Venster voor Office 365 e-configuratie](media/flow-tutorial/flow05.png)
+4. Geef het e-mail adres van een ontvanger op in het venster **aan** en een onderwerp voor het e-mail bericht in het **onderwerp**.
+5. Klik op een wille keurige plaats in het vak **hoofd tekst** .  Een venster met **dynamische inhoud** wordt geopend met waarden van eerdere acties.  
+6. Selecteer **hoofd tekst**.  Dit zijn de resultaten van de query in de Log Analytics actie.
+6. Klik op **Geavanceerde opties weer geven**.
+7. Selecteer in het vak **is HTML** de optie **Ja**.<br><br>![Office 365-e-mail configuratie venster](media/flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>Stap 6: Opslaan en uw stroom testen
-1. In de **Stroomnaam** vak, een naam voor uw stroom toevoegen en klik vervolgens op **stroom maken**.<br><br>![Stroom opslaan](media/flow-tutorial/flow06.png)
-2. De stroom is nu gemaakt en wordt uitgevoerd na een dag dat de planning die u hebt opgegeven. 
-3. Als u wilt testen onmiddellijk de stroom, klikt u op **nu uitvoeren** en vervolgens **stroom uitvoeren**.<br><br>![Stroom uitvoeren](media/flow-tutorial/flow07.png)
-3. Wanneer de stroom is voltooid, controleert u het e-mailbericht van de ontvanger die u hebt opgegeven.  U moet een e-mailbericht met een instantie die vergelijkbaar is met het volgende hebben ontvangen:<br><br>![Voorbeeldbericht](media/flow-tutorial/flow08.png)
+## <a name="step-6-save-and-test-your-flow"></a>Stap 6: uw stroom opslaan en testen
+1. Voeg in het vak **stroom naam** een naam voor de stroom toe en klik vervolgens op **stroom maken**.<br><br>stroom](media/flow-tutorial/flow06.png) ![opslaan
+2. De stroom wordt nu gemaakt en wordt uitgevoerd na een dag die het schema is dat u hebt opgegeven. 
+3. Als u de stroom onmiddellijk wilt testen, klikt u op **nu uitvoeren** en vervolgens op **stroom uitvoeren**.<br><br>stroom](media/flow-tutorial/flow07.png) ![uitvoeren
+3. Wanneer de stroom is voltooid, controleert u het e-mail adres van de ontvanger die u hebt opgegeven.  U moet een e-mail bericht hebben ontvangen met een hoofd tekst die er ongeveer als volgt uitziet:<br><br>![Voor beeld-e-mail](media/flow-tutorial/flow08.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [query's bijgehouden in Azure Monitor](../log-query/log-query-overview.md).
-- Meer informatie over [Microsoft Flow](https://ms.flow.microsoft.com).
+- Meer informatie over [logboek query's vindt u in azure monitor](../log-query/log-query-overview.md).
+- Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
 
 
 

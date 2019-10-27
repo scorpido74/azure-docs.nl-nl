@@ -1,50 +1,44 @@
 ---
-title: Workspace() expressie in de query voor Azure Monitor | Microsoft Docs
-description: De werkruimte-expressie wordt gebruikt in een query voor Azure Monitor voor het ophalen van gegevens uit een specifieke werkruimte in dezelfde resourcegroep, een andere resourcegroep of een ander abonnement.
-services: log-analytics
-documentationcenter: ''
+title: de expressie Workspace () in Azure Monitor-logboek query | Microsoft Docs
+description: De werkruimte expressie wordt gebruikt in een Azure Monitor logboek query om gegevens op te halen uit een specifieke werk ruimte in dezelfde resource groep, een andere resource groep of een ander abonnement.
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/10/2018
+ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785673"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932841"
 ---
-# <a name="workspace-expression-in-azure-monitor-log-query"></a>de expressie Workspace() in Azure Monitor log-query
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>de expressie Workspace () in Azure Monitor-logboek query
 
-De `workspace` expressie in een Azure Monitor-query wordt gebruikt voor het ophalen van gegevens uit een specifieke werkruimte in dezelfde resourcegroep, een andere resourcegroep of een ander abonnement. Dit is handig om op te nemen van logboekgegevens in een Application Insights-query en om gegevens te doorzoeken in meerdere werkruimten in een logboekquery.
+De `workspace` expressie wordt gebruikt in een Azure Monitor query om gegevens op te halen uit een specifieke werk ruimte in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit is handig als u logboek gegevens in een Application Insights query wilt gebruiken en gegevens wilt opvragen over meerdere werk ruimten in een logboek query.
 
 
 ## <a name="syntax"></a>Syntaxis
 
-`workspace(`*Identifier*`)`
+`workspace(`*id*`)`
 
 ## <a name="arguments"></a>Argumenten
 
-- *Id*: Hiermee geeft u de werkruimte met behulp van een van de indelingen in de onderstaande tabel.
+- *Id*: Hiermee wordt de werk ruimte geïdentificeerd aan de hand van een van de volgende indelingen in de tabel.
 
-| ID | Description | Voorbeeld
+| Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
-| Resourcenaam | Menselijke leesbare naam van de werkruimte (AKA "naam van onderdeel") | Workspace("contosoretail") |
-| Gekwalificeerde naam | Volledige naam van de werkruimte in de vorm: "resourceGroup-subscriptionName/componentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| Id | GUID van de werkruimte | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Azure-Resource-ID | ID voor de Azure-resource | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
+| Naam resource | Door de mens lees bare naam van de werk ruimte (ook wel "onderdeel naam") | werk ruimte ("contosoretail") |
+| Gekwalificeerde naam | Volledige naam van de werk ruimte in de vorm: "subscriptionname/resourceGroup/onderdeel naam" | werk ruimte (' contoso/ContosoResource/ContosoWorkspace ') |
+| Id | GUID van de werk ruimte | werk ruimte ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Azure-Resource-ID | Id voor de Azure-resource | werk ruimte ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Opmerkingen
 
-* U moet leestoegang hebben tot de werkruimte.
-* Een bijbehorende expressie is `app` waarmee u query's uitvoeren voor Application Insights-toepassingen.
+* U moet lees toegang hebben tot de werk ruimte.
+* Een gerelateerde expressie is `app` waarmee u een query kunt uitvoeren op Application Insights toepassingen.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -71,6 +65,6 @@ union
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [app expressie](app-expression.md) om te verwijzen naar een Application Insights-app.
-- Meer informatie over hoe u [Azure Monitor gegevens](log-query-overview.md) is opgeslagen.
-- Toegang tot volledige documentatie voor de [Kusto-querytaal](/azure/kusto/query/).
+- Zie de [app-expressie](app-expression.md) om te verwijzen naar een Application Insights-app.
+- Meer informatie over hoe [Azure monitor gegevens](log-query-overview.md) worden opgeslagen.
+- Toegang tot volledige documentatie voor de [Kusto-query taal](/azure/kusto/query/).

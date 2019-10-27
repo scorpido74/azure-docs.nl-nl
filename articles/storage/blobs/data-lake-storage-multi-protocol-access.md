@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9767282b3dd764a45f25a14d62af70a13c80b0ac
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300267"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933142"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Toegang tot meerdere protocollen op Azure Data Lake Storage (preview-versie)
 
@@ -35,7 +35,7 @@ Dit geldt ook voor hulpprogram ma's en toepassingen van derden. U kunt ze naar a
 
 ## <a name="use-all-blob-storage-features"></a>Alle functies van Blob-opslag gebruiken
 
-Blob Storage-functies, zoals [Diagnostische logboek registratie](../common/storage-analytics-logging.md), [toegangs lagen](storage-blob-storage-tiers.md)en [beheer van levenscyclus opslag](storage-lifecycle-management-concepts.md) , werken nu met accounts die een hiërarchische naam ruimte hebben. Daarom kunt u hiërarchische naam ruimten in uw Blob Storage-accounts inschakelen zonder dat u toegang hebt tot de belangrijkste functies van verbroken. 
+Blob Storage-functies, zoals [Diagnostische logboek registratie](../common/storage-analytics-logging.md), [toegangs lagen](storage-blob-storage-tiers.md)en [beheer van levenscyclus opslag](storage-lifecycle-management-concepts.md) , werken nu met accounts die een hiërarchische naam ruimte hebben. Daarom kunt u hiërarchische naam ruimten inschakelen op uw Blob Storage-accounts zonder de toegang tot deze belang rijke functies te verliezen. 
 
 > [!NOTE]
 > Zie het artikel [bekende problemen](data-lake-storage-known-issues.md) voor een overzicht van de beperkingen.

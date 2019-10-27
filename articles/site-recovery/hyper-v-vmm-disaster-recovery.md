@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b0fa4dbc336067ee3e3b2baa49ec872f65a3154b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813754"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933531"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -29,6 +29,9 @@ In dit artikel wordt uitgelegd hoe u herstel na noodgevallen naar een secundaire
 > * Een replicatiebeleid maken
 > * Replicatie inschakelen voor een VM
 
+> [!WARNING]
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
+
 ## <a name="prerequisites"></a>Vereisten
 
 Vereisten om dit scenario te voltooien:
@@ -38,7 +41,7 @@ Vereisten om dit scenario te voltooien:
 - Controleren of de virtuele machines die u wilt repliceren voldoen aan [ondersteuning voor gerepliceerde machines](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - VMM-servers voorbereiden op netwerktoewijzing.
 
-### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerktoewijzing
+### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerkkoppeling
 
 Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-netwerken met virtuele machines toegewezen aan bron- en doelclouds. Bij toewijzing gebeurt het volgende:
 
@@ -64,7 +67,7 @@ Bereid VMM als volgt voor:
 
 Selecteer wat u wilt repliceren en waar u naar wilt repliceren.
 
-1. Klik op **Site Recovery** > **Stap 1: infrastructuur voorbereiden** > **Beveiligingsdoel.**
+1. Klik op **Site Recovery** > **Stap 1: infrastructuur voorbereiden** > **Beveiligingsdoel**.
 2. Selecteer **Naar herstelsite** en selecteer **Ja, met Hyper-V**.
 3. Selecteer **Ja** om aan te geven dat u VMM gebruikt voor het beheren van de Hyper-V-hosts.
 4. Selecteer **Ja** als u een secundaire VMM-server hebt. Als u replicatie tussen clouds op een enkele VMM-server implementeert, klikt u op **Nee**. Klik vervolgens op **OK**.
@@ -115,7 +118,7 @@ Selecteer de VMM-doelserver en -cloud:
 1. Klik op **Infrastructuur voorbereiden** > **Doel**, en selecteer de VMM-doelserver.
 2. VMM-clouds die zijn gesynchroniseerd met Site Recovery worden weergegeven. Selecteer de doelcloud.
 
-   ![Doel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Kiezen](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen
@@ -133,12 +136,12 @@ Controleer voordat u begint of alle hosts die het beleid gebruiken hetzelfde bes
 2. Geef in **Bewaarperiode van het herstelpunt** op hoeveel uur elk herstelpunt moet worden bewaard binnen een tijdsvenster. Gerepliceerde machines kunnen te allen tijde worden hersteld naar een willekeurig punt binnen een tijdsvenster.
 3. Geef in **Frequentie van de app-consistente momentopname** op hoe vaak (elke 1-12 uur) er herstelpunten moeten worden gemaakt met toepassingsconsistente momentopnamen. Hyper-V maakt gebruik van twee soorten momentopnamen:
     - **Standaardmomentopname**: biedt een incrementele momentopname van de volledige virtuele machine.
-    - **App-consistente momentopname**: maakt een momentopname van de toepassingsgegevens in de VM op een bepaald tijdstip. Met Volume Shadow Copy Service (VSS) wordt ervoor gezorgd dat apps een consistente status hebben wanneer de momentopname wordt gemaakt. Het inschakelen van app-consistente momentopnamen is van invloed op prestaties van de app op de bron-VM's. Stel een waarde in die lager is dan het aantal aanvullende herstelpunten dat u configureert.
+    - **App-consistente momentopname**: biedt een momentopname van de toepassingsgegevens in de VM op een bepaald tijdstip. Met Volume Shadow Copy Service (VSS) wordt ervoor gezorgd dat apps een consistente status hebben wanneer de momentopname wordt gemaakt. Het inschakelen van app-consistente momentopnamen is van invloed op prestaties van de app op de bron-VM's. Stel een waarde in die lager is dan het aantal aanvullende herstelpunten dat u configureert.
 4. Geef bij **Compressie tijdens gegevensoverdracht** op of overgedragen replicatiegegevens moeten worden gecomprimeerd.
 5. Selecteer **Gerepliceerde VM verwijderen** om op te geven dat de gerepliceerde virtuele machine moet worden verwijderd als u de beveiliging voor de bron-VM uitschakelt. Als u deze instelling inschakelt, wordt deze als u de beveiliging voor de bron-VM uitschakelt uit de Site Recovery-console verwijderd, worden Site Recovery-instellingen voor de VMM verwijderd uit de VMM-console en wordt de replica verwijderd.
 6. Geef, als u via het netwerk repliceert, bij **Initiële replicatiemethode** op of de initiële replicatie moet worden gestart of plan deze in. Om netwerkbandbreedte te besparen, wilt u deze mogelijk buiten de drukste tijden plannen. Klik vervolgens op **OK**.
 
-     ![Replicatiebeleid](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Beleid voor replicatie](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Het nieuwe beleid wordt automatisch gekoppeld aan de VMM-cloud. Klik bij **Replicatiebeleid** op **OK**. 
 

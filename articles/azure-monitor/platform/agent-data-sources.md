@@ -1,24 +1,18 @@
 ---
 title: Agent gegevens bronnen configureren in Azure Monitor | Microsoft Docs
 description: Gegevens bronnen definiëren de logboek gegevens die Azure Monitor verzameld van agents en andere verbonden bronnen.  In dit artikel wordt beschreven hoe Azure Monitor gegevens bronnen gebruikt, wordt uitgelegd hoe u deze kunt configureren en wordt een overzicht gegeven van de verschillende gegevens bronnen die beschikbaar zijn.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f4e86a3a7b6a0781ea6c020bd0afc9364b7132f7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 11/28/2018
+ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839335"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932821"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Gegevens bronnen van agents in Azure Monitor
 De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de gegevens bronnen die u configureert.  De gegevens van agents worden opgeslagen als [logboek gegevens](data-platform-logs.md) met een set records.  Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.
@@ -29,14 +23,14 @@ De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de 
 De volgende tabel geeft een lijst van de agent gegevens bronnen die momenteel beschikbaar zijn in Azure Monitor.  Elk heeft een koppeling naar een afzonderlijk artikel met Details voor die gegevens bron.   Het bevat ook informatie over de methode en frequentie van de verzameling. 
 
 
-| Gegevensbron | Platform | Log Analytics-agent | Operations Manager-agent | Azure Storage | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | Verzamelingsfrequentie |
+| Gegevens bron | Platform | Log Analytics-agent | Operations Manager-agent | Azure Storage | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | Verzamelingsfrequentie |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Aangepaste logboeken](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | bij aankomst |
 | [Aangepaste logboeken](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | bij aankomst |
 | [IIS-logboeken](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |is afhankelijk van de instelling van het logboek bestand voor de rollover |
 | [Prestatiemeteritems](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |zoals gepland, mini maal 10 seconden |
 | [Prestatiemeteritems](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |zoals gepland, mini maal 10 seconden |
-| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |vanuit Azure Storage: 10 minuten; van agent: op aankomst |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |uit Azure Storage: 10 minuten; van agent: op aankomst |
 | [Windows-gebeurtenis logboeken](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | bij aankomst |
 
 

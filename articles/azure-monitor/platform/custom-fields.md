@@ -1,24 +1,18 @@
 ---
 title: Aangepaste velden in Azure Monitor | Microsoft Docs
 description: Met de functie voor aangepaste velden van Azure Monitor kunt u uw eigen Doorzoek bare velden maken op basis van records in een Log Analytics-werk ruimte die aan de eigenschappen van een verzameld record worden toegevoegd.  In dit artikel wordt het proces voor het maken van een aangepast veld beschreven en vindt u een gedetailleerd overzicht van een voorbeeld gebeurtenis.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/23/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 08/23/2019
+ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012737"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932612"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor
 
@@ -51,20 +45,20 @@ De eerste stap is het identificeren van de records waarmee het aangepaste veld w
 1. Ga naar **Logboeken** en gebruik een [query om de records op te halen](../log-query/log-query-overview.md) die het aangepaste veld zullen bevatten.
 2. Selecteer een record die Log Analytics gebruikt als model voor het extra heren van gegevens om het aangepaste veld in te vullen.  U kunt de gegevens die u wilt extra heren uit deze record identificeren en Log Analytics gebruikt deze informatie om te bepalen wat de logica is om het aangepaste veld voor alle vergelijk bare records te vullen.
 3. Vouw de record eigenschappen uit, klik op het weglatings teken links van de bovenste eigenschap van de record en selecteer **velden extra heren uit**.
-4. De **wizard** voor het uitpakken van velden wordt geopend en de record die u hebt geselecteerd, wordt weer gegeven in de **hoofd voorbeeld** kolom.  Het aangepaste veld wordt gedefinieerd voor records met dezelfde waarden in de eigenschappen die zijn geselecteerd.  
+4. De **wizard voor het uitpakken van velden** wordt geopend en de record die u hebt geselecteerd, wordt weer gegeven in de **hoofd voorbeeld** kolom.  Het aangepaste veld wordt gedefinieerd voor records met dezelfde waarden in de eigenschappen die zijn geselecteerd.  
 5. Als de selectie niet precies is wat u wilt, selecteert u extra velden om de criteria te verfijnen.  Als u de veld waarden voor de criteria wilt wijzigen, moet u annuleren en selecteert u een andere record die overeenkomt met de criteria die u wilt.
 
 ### <a name="step-2---perform-initial-extract"></a>Stap 2: Voer de eerste extractie uit.
 Zodra u de records met het aangepaste veld hebt geïdentificeerd, identificeert u de gegevens die u wilt extra heren.  Log Analytics gebruikt deze informatie om Vergelijk bare patronen in vergelijk bare records te identificeren.  In de stap hierna kunt u de resultaten valideren en meer informatie geven over Log Analytics voor gebruik in de analyse.
 
-1. Markeer de tekst in de voorbeeld record die u wilt vullen van het aangepaste veld.  Vervolgens wordt er een dialoog venster weer gegeven waarin u een naam en gegevens type voor het veld kunt opgeven en de eerste extractie kunt uitvoeren.  De tekens  **\_CF** worden automatisch toegevoegd.
+1. Markeer de tekst in de voorbeeld record die u wilt vullen van het aangepaste veld.  Vervolgens wordt er een dialoog venster weer gegeven waarin u een naam en gegevens type voor het veld kunt opgeven en de eerste extractie kunt uitvoeren.  De tekens **\_CF** worden automatisch toegevoegd.
 2. Klik op **extra heren** om een analyse van de verzamelde records uit te voeren.  
 3. In de secties **samen vatting** en **Zoek resultaten** worden de resultaten van het uittreksel weer gegeven, zodat u de nauw keurigheid ervan kunt controleren.  **Samen vatting** geeft de criteria weer die worden gebruikt voor het identificeren van records en een aantal voor elk van de geïdentificeerde gegevens waarden.  **Zoek resultaten** bieden een gedetailleerde lijst met records die voldoen aan de criteria.
 
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Stap 3: Controleer de nauw keurigheid van het uitpakken en maak het aangepaste veld
 Wanneer u de eerste extractie hebt uitgevoerd, worden de resultaten van Log Analytics weer gegeven op basis van de gegevens die al zijn verzameld.  Als de resultaten nauw keurig lijken, kunt u het aangepaste veld maken zonder verdere werkzaamheden.  Als dat niet het geval is, kunt u de resultaten verfijnen zodat Log Analytics de logica kunt verbeteren.
 
-1. Als de waarden in de eerste extractie niet juist zijn, klikt u op het bewerkings pictogram naast een onnauwkeurige record en selecteert u **deze markering wijzigen** om de selectie te wijzigen.
+1. Als de waarden in de eerste extractie niet juist zijn, klikt u op het **bewerkings** pictogram naast een onnauwkeurige record en selecteert u **deze markering wijzigen** om de selectie te wijzigen.
 2. De vermelding wordt gekopieerd naar de sectie **aanvullende voor beelden** onder het **hoofd voorbeeld**.  U kunt de markering hier aanpassen om Log Analytics inzicht te krijgen in de selectie die moet worden aangebracht.
 3. Klik op **extra heren** om deze nieuwe informatie te gebruiken om alle bestaande records te evalueren.  De resultaten kunnen worden gewijzigd voor andere records dan het account dat u zojuist hebt gewijzigd op basis van deze nieuwe informatie.
 4. Ga door met het toevoegen van correcties totdat alle records in het uittreksel correct de gegevens identificeren om het nieuwe aangepaste veld in te vullen.
@@ -85,7 +79,7 @@ In het volgende gedeelte wordt een volledig voor beeld van het maken van een aan
 
 We voeren de volgende query in om alle gebeurtenissen te retour neren van service besturings beheer met de gebeurtenis-ID 7036. Dit is de gebeurtenis die aangeeft dat een service wordt gestart of gestopt.
 
-![Query’s uitvoeren](media/custom-fields/query.png)
+![Query](media/custom-fields/query.png)
 
 Vervolgens selecteert u een record met gebeurtenis-ID 7036 en vouwt u deze uit.
 
@@ -95,9 +89,9 @@ Aangepaste velden worden gedefinieerd door te klikken op de ellips naast de bove
 
 ![Velden extra heren](media/custom-fields/extract-fields.png)
 
-De **wizard** voor het uitpakken van velden wordt geopend en de velden **Eventlog en Event** **gebeurtenis** zijn geselecteerd in de **hoofd voorbeeld** kolom.  Dit geeft aan dat het aangepaste veld wordt gedefinieerd voor gebeurtenissen uit het systeem logboek met de gebeurtenis-ID 7036.  Dit is voldoende, dus we hoeven geen andere velden te selecteren.
+De **wizard voor het uitpakken van velden** wordt geopend en de velden Eventlog en **Event** **gebeurtenis** zijn geselecteerd in de **hoofd voorbeeld** kolom.  Dit geeft aan dat het aangepaste veld wordt gedefinieerd voor gebeurtenissen uit het systeem logboek met de gebeurtenis-ID 7036.  Dit is voldoende, dus we hoeven geen andere velden te selecteren.
 
-![Belangrijkste voorbeeld](media/custom-fields/main-example.png)
+![Hoofd voorbeeld](media/custom-fields/main-example.png)
 
 We markeren de naam van de service in de eigenschap **RenderedDescription** en gebruiken de **service** om de naam van de service te identificeren.  Het aangepaste veld wordt **Service_CF**genoemd. Het veld type in dit geval is een teken reeks, dus we kunnen dat ongewijzigd laten.
 
